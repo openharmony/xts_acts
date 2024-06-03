@@ -241,7 +241,7 @@ export default function NetworkManagerMulticastSSLTest() {
         done();
       }).catch((error: BusinessError) => {
         console.info(`${caseName} certVerification failed, error: ${JSON.stringify(error)}`);
-        expect(error.code == 2305001).assertTrue();
+        expect(error.code == 2305069).assertTrue();
         done();
       })
     })

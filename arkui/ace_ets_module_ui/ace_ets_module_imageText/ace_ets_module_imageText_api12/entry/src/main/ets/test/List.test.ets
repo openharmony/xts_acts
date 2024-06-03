@@ -38,6 +38,8 @@ import removeStyles from './TextTest/removeStyles.test'
 import StyledStringTest from './TextTest/StyledStringTest.test'
 import clearStyles from './TextTest/clearStyles.test'
 import TextStyle from './TextTest/TextStyle.test';
+import TextStyleWavy from './TextTest/TextStyleWavy.test';
+
 import MarqueeApi from './Marquee/MarqueeApi.test';
 import APIContentTypeTest from './TextInput/APIContentTypeTest.test';
 import APIUnderlineColorTest from './TextInput/APIUnderlineColorTest.test';
@@ -61,19 +63,46 @@ import RichEditor5 from './RichEditorEnhance/RichEditor5.test'
 import RichEditor6 from './RichEditorEnhance/RichEditor6.test'
 import RichEditor7 from './RichEditorEnhance/RichEditor7.test'
 import TextInputTextAreaSearch from './RichEditorEnhance/TextInputTextAreaSearch.test'
+import TextAreaApi1 from './TextArea/TextAreaApi1.test'
+import TextAreaApi2 from './TextArea/TextAreaApi2.test'
+import TextAreaApi3 from './TextArea/TextAreaApi3.test'
+import textApi1 from './Text/TextApi1.test'
+
+import TextArea_lineBreakStrategyTest from './TextAreaTest/TextAreaAPITest/TextArea_lineBreakStrategyTest.test'
+import TextArea_lineSpacingTest from './TextAreaTest/TextAreaAPITest/TextArea_lineSpacingTest.test'
+import TextInput_lineBreakStrategyTest from './TextInput/TextInputAPITest/TextInput_lineBreakStrategyTest.test'
+import Text_lineBreakStrategyTest from './TextTest/TextAPITest/Text_lineBreakStrategyTest.test'
+import Text_lineSpacingTest from './TextTest/TextAPITest/Text_lineSpacingTest.test'
+import marqueeOptionsTest from './TextTest/TextAPITest/marqueeOptionsTest.test'
+import textStrategyJsunit from './TextTest/textStrategyJsunit.test';
 import Context from './TextTest/Context.test'
 import getLayout from './TextTest/getLayout.test'
 import imageAddApi from './ImageTest/imageAddApi.test'
 import SymbolGlyphApi from './SymbolGlyph/SymbolGlyphApi.test'
 import styledStringApi from './TextTest/styledStringApi.test'
 import SelectionMenuApi from './RichEditor/SelectionMenuApi.test'
-import TextAreaApi1 from './TextArea/TextAreaApi1.test'
-import TextAreaApi2 from './TextArea/TextAreaApi2.test'
-import TextAreaApi3 from './TextArea/TextAreaApi3.test'
-import textApi1 from './Text/TextApi1.test'
+import StyledStringApi1 from './StyledString/StyledStringApi1.test'
+import TextInputApi1 from './TextInput/TextInputApi1.test'
+import TextClockApiTest from './TextColckTest/TextClockApiTest/TextClockApiTest.test'
+import TextTimerApiTest from './TextTimerTest/TextTimerApiTest/TextTimerApiTest.test'
+import AttributeUpdaterTest from './TextTest/TextAPITest/AttributeUpdaterTest.test'
+import UnitTest from './TextTest/TextAPITest/Unit.test'
+import APIClipMaskShape from './ImageTest/APIClipMaskShape.test'
+import TextInputAddApi from './TextInput/TextInputAddApi.test'.
+
+import RichEditorChangeValueTest1 from './RichEditor/RichEditorChangeValueTest1.test'
+import RichEditorGetLayoutManagerTest1 from './RichEditor/RichEditorGetLayoutManagerTest1.test'
+import RichEditorStyledStringTest1 from './RichEditor/RichEditorStyledStringTest1.test'
+import RichEditorStyledStringTest2 from './RichEditor/RichEditorStyledStringTest2.test'
+import RichEditorApi2 from './RichEditor/RichEditorApi2.test'
+import RichEditorApi6 from './RichEditor/RichEditorApi6.test'
+import RichEditorApi7 from './RichEditor/RichEditorApi7.test'
+import TextAreaApi4 from './TextArea/TextAreaApi4.test'
+import TextAreaTest from './TextAreaTest/TextAreaAPITest/TextAreaTest.test'
 export default function testsuite() {
-APIContentTypeTest();
-APIUnderlineColorTest();
+  APIContentTypeTest();
+  APIUnderlineColorTest();
+  TextInputAddApi();
   onSelectionChange1();
   onSelectionChange2();
   onSelectionChange3();
@@ -94,12 +123,6 @@ APIUnderlineColorTest();
   onSelectionChange18();
   onSelectionChange19();
   MediaCachedImageTest();
-  Context()
-  getLayout()
-  imageAddApi()
-  SymbolGlyphApi()
-  styledStringApi()
-  SelectionMenuApi()
   onComplete()
   removeStyles()
   clearStyles()
@@ -130,4 +153,36 @@ APIUnderlineColorTest();
   TextAreaApi2();
   TextAreaApi3();
   textApi1();
+
+  TextArea_lineBreakStrategyTest();
+  TextArea_lineSpacingTest();
+  TextInput_lineBreakStrategyTest();
+  Text_lineBreakStrategyTest();
+  Text_lineSpacingTest();
+  marqueeOptionsTest();
+  textStrategyJsunit();
+
+  Context()
+  getLayout()
+  imageAddApi()
+  SymbolGlyphApi()
+  styledStringApi()
+  SelectionMenuApi()
+  StyledStringApi1();
+  TextInputApi1();
+  TextClockApiTest();
+  TextTimerApiTest();
+  AttributeUpdaterTest();
+  UnitTest();
+  APIClipMaskShape();
+
+  RichEditorChangeValueTest1();
+  RichEditorGetLayoutManagerTest1();
+  RichEditorStyledStringTest1();
+  RichEditorStyledStringTest2();
+  RichEditorApi2();
+  RichEditorApi6();
+  RichEditorApi7();
+  TextAreaApi4()
+  TextAreaTest()
 }

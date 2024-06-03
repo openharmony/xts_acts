@@ -13,8 +13,9 @@
  * limitations under the License.
  */
 import ability_featureAbility from '@ohos.ability.featureAbility';
+import { BusinessError } from '@ohos.base';
 
-var printLog1 = "Fa:Auxiliary:MainAbility2:";
+let printLog1 = "Fa:Auxiliary:MainAbility2:";
 @Entry
 @Component
 struct Index {
@@ -42,7 +43,7 @@ struct Index {
           try {
             ability_featureAbility.getContext().requestPermissionsFromUser(list, 1).then((permissionRequestResult) => {
               console.info(printLog1 + "requestPermissionsFromUser data = " + JSON.stringify(permissionRequestResult));
-            }).catch((err) => {
+            }).catch((err: BusinessError) => {
               console.info(printLog1 + "requestPermissionsFromUser err = " + JSON.stringify(err));
             });
           } catch(err) {

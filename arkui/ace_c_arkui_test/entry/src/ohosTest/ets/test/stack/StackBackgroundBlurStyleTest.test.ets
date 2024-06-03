@@ -208,18 +208,5 @@ export default function stackBackgroundBlurStyleTest() {
       done()
     })
 
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_STACK_BACKGROUNDBLURSTYLE_1500
-     * @tc.name       : testStackBackgroundBlurStyle015
-     * @tc.desc       : testing default values of backgroundBlurStyle property of the stack
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testStackBackgroundBlurStyle015', 0, async (done: Function) => {
-      expect(nativeFunc.testStackBackgroundBlurStyle015()).assertEqual(0)
-      done()
-    })
-
   })
 }

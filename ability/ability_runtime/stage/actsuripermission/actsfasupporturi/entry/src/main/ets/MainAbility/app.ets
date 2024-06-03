@@ -12,14 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import ability from '@ohos.ability.ability';
 import featureAbility from '@ohos.ability.featureAbility';
+import Want from '@ohos.app.ability.Want';
 import fileUri from '@ohos.file.fileuri';
 import fs from '@ohos.file.fs';
 import wantConstant from '@ohos.ability.wantConstant';
+import { BusinessError } from '@ohos.base';
 
 let printLog1 : string = '[demo] FaMainAbility'
 
-export default {
+class Test {
   onCreate() {
     console.info(printLog1 + 'onCreate');
     let context = featureAbility.getContext()
@@ -34,7 +37,7 @@ export default {
           console.info(printLog1 + " file created, fd: " + file.fd);
           let uri : string = fileUri.getUriFromPath(filePath);
           console.info(printLog1 + ' onCreate uri: ' + JSON.stringify(uri));
-          let want = {
+          let want: Want = {
             flags : wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION,
             bundleName : "com.acts.authorizeduriapplication",
             abilityName : "Hap2MainAbility1",
@@ -43,36 +46,38 @@ export default {
               number : 19
             }
           }
-          let param = {
+          let param: ability.StartAbilityParameter = {
             want: want
           }
           featureAbility.startAbility(param).then(() => {
             console.log('startAbility succeed');
-          }).catch((error) => {
+          }).catch((error: BusinessError) => {
             console.log('startAbility failed, error.code: ' + JSON.stringify(error.code) + ' error.message: ' + JSON.stringify(error.message));
           });
         }
       });
     })
-  },
+  }
 
   onDestroy() {
     console.info(printLog1 + 'onDestroy');
-  },
+  }
 
   onActive() {
     console.info(printLog1 + 'onActive');
-  },
+  }
 
   onInactive() {
     console.info(printLog1 + 'onInactive');
-  },
+  }
 
   onShow() {
     console.info(printLog1 + 'onShow');
-  },
+  }
 
   onHide() {
     console.info(printLog1 + 'onHide');
   }
 }
+
+export default new Test()

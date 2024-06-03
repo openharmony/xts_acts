@@ -1,8 +1,8 @@
 {
   "string": [
     {
-      "name": "entry_desc",
-      "value": "description"
+      "name": "module_desc",
+      "value": "module description"
     },
     {
       "name": "MainAbility_desc",
@@ -10,19 +10,7 @@
     },
     {
       "name": "MainAbility_label",
-      "value": "fa_app"
-    },
-    {
-      "name": "fa",
-      "value": "fa_name"
-    },
-    {
-      "name": "description_TestAbility",
-      "value": "eTS_Empty Ability"
-    },
-    {
-      "name": "entry_TestAbility",
-      "value": "entry_TestAbility"
+      "value": "label"
     }
   ]
 }

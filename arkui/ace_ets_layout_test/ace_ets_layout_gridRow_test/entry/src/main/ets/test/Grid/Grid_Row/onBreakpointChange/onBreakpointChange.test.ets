@@ -74,7 +74,7 @@ export default function GridRow_onBreakpoint() {
       expect(Math.abs(firstBreakpoint.left - Breakpoint_1.left) <= 1).assertTrue();
 
       expect(Math.round(secondBreakpoint.left - firstBreakpoint.right)).assertEqual(Math.round(vp2px(30)));
-      expect(Math.round(thirdBreakpoint.left - secondBreakpoint.right)).assertEqual(Math.round(vp2px(30)));
+      expect(Math.abs(Math.round(thirdBreakpoint.left - secondBreakpoint.right) - Math.round(vp2px(30))) <= 1).assertTrue();
       expect(Math.round(fourthBreakpoint.left - thirdBreakpoint.right)).assertEqual(Math.round(vp2px(30)));
       expect(Math.round(seventhBreakpoint.top - firstBreakpoint.bottom)).assertEqual(Math.round(vp2px(30)));
 

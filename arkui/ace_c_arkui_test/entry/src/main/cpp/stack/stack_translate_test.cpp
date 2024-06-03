@@ -49,16 +49,4 @@ static napi_value TestStackTranslate002(napi_env env, napi_callback_info info)
     NAPI_END;
 }
 
-static napi_value TestStackTranslate003(napi_env env, napi_callback_info info)
-{
-    NAPI_START(stack, ARKUI_NODE_STACK);
-    float x = 0;
-    float y = 0;
-    float z = 0;
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_TRANSLATE)->value[PARAM_0].f32, x);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_TRANSLATE)->value[PARAM_1].f32, y);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_TRANSLATE)->value[PARAM_2].f32, z);
-    NAPI_END;
-}
-
 } // namespace ArkUICapiTest

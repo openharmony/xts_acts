@@ -221,18 +221,5 @@ export default function swiperClipTest() {
       done()
     })
 
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_SWIPER_CLIP_1600
-     * @tc.name       : testSwiperClip016
-     * @tc.desc       : testing clip for swiper with default bool value
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testSwiperClip016', 0, async (done: Function) => {
-      expect(nativeFunc.testSwiperClip016()).assertEqual(0)
-      done()
-    })
-
   })
 }

@@ -274,36 +274,6 @@ export default function webController() {
     })
 
     /*
-    * @tc.number     : SUB_WEB_ONINACTIVE_0100
-    * @tc.name       : testOnInactive001
-    * @tc.desc       : test onInactive
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testOnInactive001', 0, async (done: Function) => {
-      Utils.emitEvent("testOnInactive001", 10)
-      await Utils.sleep(2000);
-      Utils.registerEvent("testOnInactive001", true, 31000, done);
-      sendEventByKey('WebControllerButton', 10, '');
-    })
-
-    /*
-    * @tc.number     : SUB_WEB_ONACTIVE_0100
-    * @tc.name       : testOnActive001
-    * @tc.desc       : test onActive
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testOnActive001', 0, async (done: Function) => {
-      Utils.emitEvent("testOnActive001", 10)
-      await Utils.sleep(2000);
-      Utils.registerEvent("testOnActive001", "resource://rawfile/webPart1index.html", 31001, done);
-      sendEventByKey('WebControllerButton', 10, '');
-    })
-
-    /*
     * @tc.number     : SUB_WEB_CLEARHISTORY_0100
     * @tc.name       : testClearHistory001
     * @tc.desc       : test clearHistory
@@ -705,6 +675,36 @@ export default function webController() {
       Utils.emitEvent("testRequestFocus001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testRequestFocus001", true, 33030, done);
+      sendEventByKey('WebControllerButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_ONINACTIVE_0100
+    * @tc.name       : testOnInactive001
+    * @tc.desc       : test onInactive
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testOnInactive001', 0, async (done: Function) => {
+      Utils.emitEvent("testOnInactive001", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testOnInactive001", true, 31000, done);
+      sendEventByKey('WebControllerButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_ONACTIVE_0100
+    * @tc.name       : testOnActive001
+    * @tc.desc       : test onActive
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testOnActive001', 0, async (done: Function) => {
+      Utils.emitEvent("testOnActive001", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("testOnActive001", "resource://rawfile/webPart1index.html", 31001, done);
       sendEventByKey('WebControllerButton', 10, '');
     })
   })

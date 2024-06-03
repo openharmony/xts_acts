@@ -46,6 +46,7 @@ let nfcSEService = null;
 let aidArray = [160, 0, 0, 1, 81, 0, 0, 0];
 let p2 = 0x00;
 let command = [128, 202, 159, 127, 0];
+let readerIsPresent = null;
 
 export default function channelCallbacktest() {
     describe('channelCallbacktest', function () {
@@ -55,9 +56,28 @@ export default function channelCallbacktest() {
                 let seIsConnected = Service.isConnected();
                 console.info("[NFC_test] Logical SEService isConnected The connection status is: " + seIsConnected);
                 if (seIsConnected) {
-                    getReader = Service.getReaders();
-                    Reader = getReader[0];
-                    let readerIsPresent = Reader.isSecureElementPresent();
+                            getReader = Service.getReaders();
+                            console.info("channelCallbacktest getReader value  is: " + getReader);                                    
+                            let getReader00 = getReader[0];
+                            let getReader01 = getReader[1];
+                            console.info("channelCallbacktest getReaders results list 0 is" + getReader00);
+                            let getReader000 = getReader00.getName();
+                            let getReader001 = getReader01.getName();
+                            console.info("channelCallbacktest getReader name is: " + getReader000 + "/" + getReader001);
+                    try {
+                        if (getReader000 == 'eSE'){
+                             readerIsPresent = getReader00.isSecureElementPresent();
+                             console.info("channelCallbacktest getReader00 readerIsPresent " + readerIsPresent);
+                             Reader = getReader00;                            
+                   }else {
+                             readerIsPresent = getReader01.isSecureElementPresent();
+                             console.info("channelCallbacktest getReader01 readerIsPresent " + readerIsPresent);
+                             Reader = getReader01;                             
+                   }
+                        
+                    } catch (error) { 
+                             console.info("channelCallbacktest this is error " + error);                       
+                    }
                     console.info("[NFC_test] Logical Reader isConnected The connection status is: " + readerIsPresent);
                     if (readerIsPresent) {
                         Session = Reader.openSession();
@@ -83,7 +103,7 @@ export default function channelCallbacktest() {
 
         afterAll(async function (done) {
             nfcSEService.shutdown();
-            sleep(5000);
+            sleep(900);
             console.info('[nfc_test] afterAll channelcallback shutdown success');
             done();
         })
@@ -132,7 +152,7 @@ export default function channelCallbacktest() {
                 console.info("[NFC_test]09 openBasicChannel_p2_callback occurs exception:" + error.code + "---" + error);
                 expect().assertFail();
             }
-            sleep(3000);
+            sleep(900);
             done();
         })
 
@@ -180,7 +200,7 @@ export default function channelCallbacktest() {
                 console.info("[NFC_test]10 openLogicalChannel_P2_callback occurs exception:" + error.code + "---" + error);
                 expect().assertFail();
             }
-            sleep(3000);
+            sleep(900);
             done();
         })
 
@@ -229,7 +249,7 @@ export default function channelCallbacktest() {
                 console.info("[NFC_test]11 openBasicChannel_callback occurs exception:" + error.code + "---" + error);
                 expect().assertFail();
             }
-            sleep(5000);
+            sleep(900);
             done();
         })
 
@@ -264,7 +284,7 @@ export default function channelCallbacktest() {
                                                 expect(data).assertInstanceOf('Array');
                                             }
                                         });
-                                        sleep(5000);
+                                        sleep(900);
                                         nfcLogicalChannel.close();
                                         console.info("[NFC_test]12 Data received by the application select command: " );                                        
                                     }
@@ -284,7 +304,7 @@ export default function channelCallbacktest() {
                 console.info("[NFC_test]12 openLogicalChannel_callback occurs exception:" + error.code + "---" + error);
                 expect().assertFail();
             }
-            sleep(3000);
+            sleep(900);
             done();
         })
 

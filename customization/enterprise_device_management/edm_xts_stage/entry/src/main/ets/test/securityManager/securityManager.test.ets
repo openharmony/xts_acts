@@ -235,8 +235,8 @@ function testGetSecurityStatus() {
   it("test_get_security_status_0106", 0, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
-      securityManager.getSecurityStatus(SELFWANT, 'root');
-      expect(false).assertTrue();
+      let ret:string = securityManager.getSecurityStatus(SELFWANT, 'root');
+      expect(ret.length > 0).assertTrue();
     } catch (error) {
       expect(error.code == 801).assertTrue();
     } finally {

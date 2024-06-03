@@ -112,6 +112,9 @@ export default function HiAppEventJSTest() {
          */
         it('testHiAppEventJs05', 0, async function (done) {
             console.info('testHiAppEventJs05 start');
+            let config = {
+                "": "",
+            };
             let processor = {
                 name: 'analyticskit_native',
                 debugMode: false,
@@ -123,6 +126,8 @@ export default function HiAppEventJSTest() {
                 batchReport: -2,
                 userIds: [''],
                 userProperties: [''],
+                configId: -1,
+                customConfigs: config,
                 eventConfigs: [
                     {
                         domain: '',

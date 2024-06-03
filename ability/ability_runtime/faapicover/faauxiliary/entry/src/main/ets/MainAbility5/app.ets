@@ -14,17 +14,19 @@
  */
 import ability_featureAbility from '@ohos.ability.featureAbility';
 import commonEvent from '@ohos.commonEvent';
+import CommonEventManager from '@ohos.commonEventManager';
+import { BusinessError } from '@ohos.base';
 
-var printLog1 = "Fa:Auxiliary:MainAbility5:";
-var listPush1 = "Fa_Auxiliary_MainAbility5_";
-export default {
+let printLog1 = "Fa:Auxiliary:MainAbility5:";
+let listPush1 = "Fa_Auxiliary_MainAbility5_";
+class Test {
   onCreate() {
     console.info(printLog1 + 'onCreate');
 
     ability_featureAbility.getWant().then((data) => {
       console.info(printLog1 + "getWant data = " + JSON.stringify(data));
 
-      var flags = {
+      let flags: CommonEventManager.CommonEventPublishData = {
         parameters: {
           flags: data.flags
         }
@@ -32,35 +34,37 @@ export default {
       commonEvent.publish(listPush1 + "onCreate", flags, (err) => {
         console.info(printLog1 + listPush1 + "onCreate");
       });
-    }).catch((err) => {
+    }).catch((err: BusinessError) => {
       console.info(printLog1 + "getWant err = " + JSON.stringify(err));
     });
 
     setTimeout(()=>{
       ability_featureAbility.terminateSelf().then((data) => {
         console.info(printLog1 + "terminateSelf data = " + JSON.stringify(data));
-      }).catch((err) => {
+      }).catch((err: BusinessError) => {
         console.info(printLog1 + "terminateSelf err = " + JSON.stringify(err));
       });
     }, 3000)
-  },
+  }
   onDestroy() {
     console.info(printLog1 + 'onDestroy');
 
     commonEvent.publish(listPush1 + "onDestroy", (err) => {
       console.info(printLog1 + listPush1 + "onDestroy");
     });
-  },
+  }
   onActive() {
     console.info(printLog1 + 'onActive');
-  },
+  }
   onInactive() {
     console.info(printLog1 + 'onInactive');
-  },
+  }
   onShow() {
     console.info(printLog1 + 'onShow');
-  },
+  }
   onHide() {
     console.info(printLog1 + 'onHide');
   }
 }
+
+export default new Test()

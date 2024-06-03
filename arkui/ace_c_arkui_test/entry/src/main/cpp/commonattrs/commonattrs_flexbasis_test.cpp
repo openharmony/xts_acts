@@ -25,7 +25,7 @@ static napi_value TestCommonAttrsFlexBasis001(napi_env env, napi_callback_info i
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(button, NODE_FLEX_BASIS, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(button, NODE_FLEX_BASIS)->value->f32, width);
+    ASSERT_EQ(nodeAPI->getAttribute(button, NODE_FLEX_BASIS)->value[PARAM_0].f32, width);
     NAPI_END;
 }
 
@@ -37,7 +37,7 @@ static napi_value TestCommonAttrsFlexBasis002(napi_env env, napi_callback_info i
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(button, NODE_FLEX_BASIS, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
-    ASSERT_NE(nodeAPI->getAttribute(button, NODE_FLEX_BASIS)->value->f32, width);
+    ASSERT_NE(nodeAPI->getAttribute(button, NODE_FLEX_BASIS)->value[PARAM_0].f32, width);
     NAPI_END;
 }
 } // namespace ArkUICapiTest

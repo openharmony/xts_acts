@@ -32,19 +32,21 @@ struct Time_cancel {
   }
 
   build() {
-    Column() {
-      Text(this.cancelButtonStyle_Text)
-        .id('cancelButtonStyle_Text')
-        .margin(20)
-      Button("TimePickerDialog 24小时制")
-        .margin(20)
-        .onClick(() => {
-          TimePickerDialog.show(this.Time_Options)
-          if (this.Time_Options.cancelButtonStyle!.type == ButtonType.Circle) {
-            this.cancelButtonStyle_Text = 'cancelButtonStyle_Text'
-          }
-        })
-        .id('btn')
-    }.width('100%')
+    Row() {
+      Column() {
+        Text(this.cancelButtonStyle_Text)
+          .id('cancelButtonStyle_Text')
+          .margin(20)
+        Button("TimePickerDialog 24小时制")
+          .margin(20)
+          .onClick(() => {
+            TimePickerDialog.show(this.Time_Options)
+            if (this.Time_Options.cancelButtonStyle!.type == ButtonType.Normal) {
+              this.cancelButtonStyle_Text = 'cancelButtonStyle_Text'
+            }
+          })
+          .id('btn')
+      }.width('100%')
+    }.width('100%').height('100%').id('row')
   }
 }

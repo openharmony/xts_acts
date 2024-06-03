@@ -151,7 +151,7 @@ export default function inputMethodDrawnControlJSUnit() {
       let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
         code: 10
       }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+      commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -209,7 +209,7 @@ export default function inputMethodDrawnControlJSUnit() {
       let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
         code: 20
       }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+      commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -252,7 +252,7 @@ export default function inputMethodDrawnControlJSUnit() {
       let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
         code: 30
       }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+      commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -310,7 +310,7 @@ export default function inputMethodDrawnControlJSUnit() {
       let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
         code: 40
       }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+      commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -376,16 +376,26 @@ export default function inputMethodDrawnControlJSUnit() {
         events: ["SUB_Misc_InputMethod_onGetLeftTextOfCursor_0050"]
       }
       let subscriber: ESObject;
-      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data) => {
-        subscriber = data;
-        console.info("====>SUB_Misc_InputMethod_onGetLeftTextOfCursor_0050 subscriber data:" + JSON.stringify(data));
-        commoneventmanager.subscribe(subscriber, subscriberCallback);
-        console.info("====>SUB_Misc_InputMethod_onGetLeftTextOfCursor_0050 subscriber finish");
-
-        let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
-          code: 50
+      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        try{
+          subscriber = data;
+          console.info("====>SUB_Misc_InputMethod_onGetLeftTextOfCursor_0050 subscriber data:" + JSON.stringify(data));
+          commoneventmanager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_Misc_InputMethod_onGetLeftTextOfCursor_0050 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
+            code: 50
+          }
+          commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
+        }, 500)
+        
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -477,16 +487,26 @@ export default function inputMethodDrawnControlJSUnit() {
         events: ["SUB_Misc_InputMethod_offGetLeftTextOfCursor_0070"]
       }
       let subscriber: ESObject;
-      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data) => {
-        subscriber = data;
-        console.info("====>SUB_Misc_InputMethod_offGetLeftTextOfCursor_0070 subscriber data:" + JSON.stringify(data));
-        commoneventmanager.subscribe(subscriber, subscriberCallback);
-        console.info("====>SUB_Misc_InputMethod_offGetLeftTextOfCursor_0070 subscriber finish");
-
-        let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
-          code: 70
+      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        try{
+          subscriber = data;
+          console.info("====>SUB_Misc_InputMethod_offGetLeftTextOfCursor_0070 subscriber data:" + JSON.stringify(data));
+          commoneventmanager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_Misc_InputMethod_offGetLeftTextOfCursor_0070 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
+            code: 70
+          }
+          commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
+        }, 500)
+        
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -553,16 +573,26 @@ export default function inputMethodDrawnControlJSUnit() {
         events: ["SUB_Misc_InputMethod_onGetRightTextOfCursor_0080"]
       }
       let subscriber: ESObject;
-      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data) => {
-        subscriber = data;
-        console.info("====>SUB_Misc_InputMethod_onGetRightTextOfCursor_0080 subscriber data:" + JSON.stringify(data));
-        commoneventmanager.subscribe(subscriber, subscriberCallback);
-        console.info("====>SUB_Misc_InputMethod_onGetRightTextOfCursor_0080 subscriber finish");
-
-        let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
-          code: 80
+      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        try{
+          subscriber = data;
+          console.info("====>SUB_Misc_InputMethod_onGetRightTextOfCursor_0080 subscriber data:" + JSON.stringify(data));
+          commoneventmanager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_Misc_InputMethod_onGetRightTextOfCursor_0080 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
+            code: 80
+          }
+          commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
+        }, 500)
+        
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -654,16 +684,26 @@ export default function inputMethodDrawnControlJSUnit() {
         events: ["SUB_Misc_InputMethod_offGetRightTextOfCursor_0100"]
       }
       let subscriber: ESObject;
-      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data) => {
-        subscriber = data;
-        console.info("====>SUB_Misc_InputMethod_offGetRightTextOfCursor_0100 subscriber data:" + JSON.stringify(data));
-        commoneventmanager.subscribe(subscriber, subscriberCallback);
-        console.info("====>SUB_Misc_InputMethod_offGetRightTextOfCursor_0100 subscriber finish");
-
-        let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
-          code: 100
+      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        try{
+          subscriber = data;
+          console.info("====>SUB_Misc_InputMethod_offGetRightTextOfCursor_0100 subscriber data:" + JSON.stringify(data));
+          commoneventmanager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_Misc_InputMethod_offGetRightTextOfCursor_0100 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
+            code: 100
+          }
+          commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
+        }, 500)
+        
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -729,16 +769,26 @@ export default function inputMethodDrawnControlJSUnit() {
         events: ["SUB_Misc_InputMethod_onGetTextIndexAtCursor_0110"]
       }
       let subscriber: ESObject;
-      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data) => {
-        subscriber = data;
-        console.info("====>SUB_Misc_InputMethod_onGetTextIndexAtCursor_0110 subscriber data:" + JSON.stringify(data));
-        commoneventmanager.subscribe(subscriber, subscriberCallback);
-        console.info("====>SUB_Misc_InputMethod_onGetTextIndexAtCursor_0110 subscriber finish");
-
-        let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
-          code: 110
+      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        try{
+          subscriber = data;
+          console.info("====>SUB_Misc_InputMethod_onGetTextIndexAtCursor_0110 subscriber data:" + JSON.stringify(data));
+          commoneventmanager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_Misc_InputMethod_onGetTextIndexAtCursor_0110 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
+            code: 110
+          }
+          commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
+        }, 500)
+        
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -829,16 +879,26 @@ export default function inputMethodDrawnControlJSUnit() {
         events: ["SUB_Misc_InputMethod_offGetTextIndexAtCursor_0130"]
       }
       let subscriber: ESObject;
-      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data) => {
-        subscriber = data;
-        console.info("====>SUB_Misc_InputMethod_offGetTextIndexAtCursor_0130 subscriber data:" + JSON.stringify(data));
-        commoneventmanager.subscribe(subscriber, subscriberCallback);
-        console.info("====>SUB_Misc_InputMethod_offGetTextIndexAtCursor_0130 subscriber finish");
-
-        let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
-          code: 130
+      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        try{
+          subscriber = data;
+          console.info("====>SUB_Misc_InputMethod_offGetTextIndexAtCursor_0130 subscriber data:" + JSON.stringify(data));
+          commoneventmanager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_Misc_InputMethod_offGetTextIndexAtCursor_0130 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
+            code: 130
+          }
+          commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
+        }, 500)
+        
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -916,18 +976,27 @@ export default function inputMethodDrawnControlJSUnit() {
         events: ["SUB_Misc_inputMethod_onEditorAttributeChanged_0140"]
       }
       let subscriber: ESObject;
-      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data) => {
-        subscriber = data;
-        console.info("====>SUB_Misc_inputMethod_onEditorAttributeChanged_0140 subscriber data:" + JSON.stringify(data));
-        commoneventmanager.subscribe(subscriber, subscriberCallback);
-        console.info("====>SUB_Misc_inputMethod_onEditorAttributeChanged_0140 subscriber finish");
-
-        let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
-          code: 140
+      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        try{
+          subscriber = data;
+          console.info("====>SUB_Misc_inputMethod_onEditorAttributeChanged_0140 subscriber data:" + JSON.stringify(data));
+          commoneventmanager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_Misc_inputMethod_onEditorAttributeChanged_0140 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commoneventmanager.publish('test', commonEventPublishData, publishCallback);
-      })
 
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
+            code: 140
+          }
+          commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
+      })
     });
 
     /*
@@ -1025,16 +1094,26 @@ export default function inputMethodDrawnControlJSUnit() {
         events: ["SUB_Misc_inputMethod_offEditorAttributeChanged_0160"]
       }
       let subscriber: ESObject;
-      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data) => {
-        subscriber = data;
-        console.info("====>SUB_Misc_inputMethod_offEditorAttributeChanged_0160 subscriber data:" + JSON.stringify(data));
-        commoneventmanager.subscribe(subscriber, subscriberCallback);
-        console.info("====>SUB_Misc_inputMethod_offEditorAttributeChanged_0160 subscriber finish");
-
-        let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
-          code: 160
+      commoneventmanager.createSubscriber(commonEventSubscribeInfo).then((data)=>{
+        try{
+          subscriber = data;
+          console.info("====>SUB_Misc_inputMethod_offEditorAttributeChanged_0160 subscriber data:" + JSON.stringify(data));
+          commoneventmanager.subscribe(subscriber, subscriberCallback);
+          console.info("====>SUB_Misc_inputMethod_offEditorAttributeChanged_0160 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
         }
-        commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
+            code: 160
+          }
+          commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
+        }, 500)
+
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
       })
     });
 
@@ -1084,7 +1163,7 @@ export default function inputMethodDrawnControlJSUnit() {
       let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
         code: 170
       }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+      commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -1143,7 +1222,7 @@ export default function inputMethodDrawnControlJSUnit() {
       let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
         code: 180
       }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+      commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -1191,7 +1270,7 @@ export default function inputMethodDrawnControlJSUnit() {
       let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
         code: 190
       }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+      commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -1250,7 +1329,7 @@ export default function inputMethodDrawnControlJSUnit() {
       let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
         code: 200
       }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+      commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -1299,7 +1378,7 @@ export default function inputMethodDrawnControlJSUnit() {
       let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
         code: 210
       }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+      commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -1359,7 +1438,7 @@ export default function inputMethodDrawnControlJSUnit() {
       let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
         code: 220
       }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+      commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -1487,7 +1566,7 @@ export default function inputMethodDrawnControlJSUnit() {
       let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
         code: 250
       }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+      commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -1547,7 +1626,7 @@ export default function inputMethodDrawnControlJSUnit() {
       let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
         code: 260
       }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+      commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -1598,7 +1677,7 @@ export default function inputMethodDrawnControlJSUnit() {
       let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
         code: 270
       }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+      commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -1665,7 +1744,7 @@ export default function inputMethodDrawnControlJSUnit() {
       let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
         code: 280
       }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+      commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -1811,7 +1890,7 @@ export default function inputMethodDrawnControlJSUnit() {
       let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
         code: 290
       }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+      commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -1892,7 +1971,7 @@ export default function inputMethodDrawnControlJSUnit() {
       let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
         code: 300
       }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+      commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -1959,7 +2038,7 @@ export default function inputMethodDrawnControlJSUnit() {
       let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
         code: 310
       }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+      commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -2040,7 +2119,7 @@ export default function inputMethodDrawnControlJSUnit() {
       let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
         code: 320
       }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+      commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -2121,7 +2200,7 @@ export default function inputMethodDrawnControlJSUnit() {
       let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
         code: 330
       }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+      commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -2188,7 +2267,7 @@ export default function inputMethodDrawnControlJSUnit() {
       let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
         code: 340
       }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+      commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -2269,7 +2348,7 @@ export default function inputMethodDrawnControlJSUnit() {
       let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
         code: 350
       }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+      commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -2541,7 +2620,7 @@ export default function inputMethodDrawnControlJSUnit() {
       let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
         code: 360
       }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+      commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -2608,7 +2687,7 @@ export default function inputMethodDrawnControlJSUnit() {
       let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
         code: 370
       }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+      commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -2689,7 +2768,7 @@ export default function inputMethodDrawnControlJSUnit() {
       let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
         code: 380
       }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+      commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -2770,7 +2849,7 @@ export default function inputMethodDrawnControlJSUnit() {
       let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
         code: 390
       }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+      commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -2837,7 +2916,7 @@ export default function inputMethodDrawnControlJSUnit() {
       let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
         code: 400
       }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+      commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -2918,7 +2997,7 @@ export default function inputMethodDrawnControlJSUnit() {
       let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
         code: 410
       }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+      commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -2999,7 +3078,7 @@ export default function inputMethodDrawnControlJSUnit() {
       let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
         code: 420
       }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+      commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -3066,7 +3145,7 @@ export default function inputMethodDrawnControlJSUnit() {
       let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
         code: 430
       }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+      commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -3147,7 +3226,7 @@ export default function inputMethodDrawnControlJSUnit() {
       let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
         code: 440
       }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+      commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
     });
 
     /*
@@ -3261,7 +3340,7 @@ export default function inputMethodDrawnControlJSUnit() {
       let commonEventPublishData: commoneventmanager.CommonEventPublishData = {
         code: 450
       }
-      commoneventmanager.publish('test', commonEventPublishData, publishCallback);
+      commoneventmanager.publish('inputMethodDrawnControlTest', commonEventPublishData, publishCallback);
     });
 
   })

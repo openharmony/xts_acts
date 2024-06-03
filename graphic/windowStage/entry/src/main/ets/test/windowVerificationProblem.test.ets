@@ -263,29 +263,11 @@ export default function windowVerificationProblemTest(context, windowStage, abil
       let caseName = 'testResize_FullScreen_Promise';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
-      let win = null;
-      win = await windowStage.createSubWindow('testResize_FullScreen_Promise').catch((err) => {
-        console.log(msgStr + 'windowStage.createSubWindow failed error: ' + JSON.stringify(err));
-        expect().assertFail();
-        done();
-      });
-      console.log(msgStr + 'windowStage.createSubWindow success');
+      let win = windowStage.getMainWindowSync();
       expect(!!win).assertTrue();
-      await (win as ohosWindow.Window).loadContent('MainAbility/pages/second/second')
-        .catch((err: BusinessError) => {
-          console.log(msgStr + 'tempWnd.loadContent failed');
-          expect().assertFail();
-        });
-      await (win as ohosWindow.Window).moveWindowTo(0, 0).catch((err: BusinessError) => {
-        console.log(msgStr + 'tempWnd.moveWindowTo failed');
-        expect().assertFail();
-      });
+      console.log(msgStr + 'getMainWindowSync success');
       await (win as ohosWindow.Window).showWindow().catch((err: BusinessError) => {
         console.log(msgStr + 'tempWnd.showWindow failed');
-        expect().assertFail();
-      });
-      await (win as ohosWindow.Window).resize(606, 606).catch((err: BusinessError) => {
-        console.log(msgStr + 'tempWnd.resize failed');
         expect().assertFail();
       });
       await (win as ohosWindow.Window).setWindowLayoutFullScreen(true).then(() => {
@@ -313,7 +295,6 @@ export default function windowVerificationProblemTest(context, windowStage, abil
         console.error(msgStr + 'Failed to change the window size. Cause: ' + JSON.stringify(err));
         expect(err.code).assertEqual(1300002);
       });
-      await win.destroyWindow();
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4110

@@ -27,7 +27,8 @@ static napi_value TestScrollScrollAble001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_SCROLL_SCROLL_DIRECTION, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_SCROLL_DIRECTION)->value->i32, ARKUI_SCROLL_DIRECTION_VERTICAL);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_SCROLL_DIRECTION)->value[PARAM_0].i32,
+              ARKUI_SCROLL_DIRECTION_VERTICAL);
     NAPI_END;
 }
 
@@ -38,7 +39,7 @@ static napi_value TestScrollScrollAble002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_SCROLL_SCROLL_DIRECTION, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_SCROLL_DIRECTION)->value->i32,
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_SCROLL_DIRECTION)->value[PARAM_0].i32,
               ARKUI_SCROLL_DIRECTION_HORIZONTAL);
     NAPI_END;
 }
@@ -50,7 +51,8 @@ static napi_value TestScrollScrollAble003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_SCROLL_SCROLL_DIRECTION, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_SCROLL_DIRECTION)->value->i32, ARKUI_SCROLL_DIRECTION_NONE);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_SCROLL_DIRECTION)->value[PARAM_0].i32,
+              ARKUI_SCROLL_DIRECTION_NONE);
     NAPI_END;
 }
 
@@ -63,7 +65,7 @@ static napi_value TestScrollScrollAble004(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(scroll, NODE_SCROLL_SCROLL_DIRECTION, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(scroll, NODE_SCROLL_SCROLL_DIRECTION) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(scroll, NODE_SCROLL_SCROLL_DIRECTION)->value->i32, mode);
+        ASSERT_NE(nodeAPI->getAttribute(scroll, NODE_SCROLL_SCROLL_DIRECTION)->value[PARAM_0].i32, mode);
     }
     NAPI_END;
 }

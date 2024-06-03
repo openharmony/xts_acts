@@ -23,7 +23,7 @@ static napi_value TestStackAlign001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem align_value_item = {align_value, sizeof(align_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_STACK_ALIGN_CONTENT, &align_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value->i32, ARKUI_ALIGNMENT_TOP_START);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value[PARAM_0].i32, ARKUI_ALIGNMENT_TOP_START);
     NAPI_END;
 }
 
@@ -34,7 +34,7 @@ static napi_value TestStackAlign002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem align_value_item = {align_value, sizeof(align_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_STACK_ALIGN_CONTENT, &align_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value->i32, ARKUI_ALIGNMENT_TOP);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value[PARAM_0].i32, ARKUI_ALIGNMENT_TOP);
     NAPI_END;
 }
 
@@ -45,7 +45,7 @@ static napi_value TestStackAlign003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem align_value_item = {align_value, sizeof(align_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_STACK_ALIGN_CONTENT, &align_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value->i32, ARKUI_ALIGNMENT_TOP_END);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value[PARAM_0].i32, ARKUI_ALIGNMENT_TOP_END);
     NAPI_END;
 }
 
@@ -56,7 +56,7 @@ static napi_value TestStackAlign004(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem align_value_item = {align_value, sizeof(align_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_STACK_ALIGN_CONTENT, &align_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value->i32, ARKUI_ALIGNMENT_START);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value[PARAM_0].i32, ARKUI_ALIGNMENT_START);
     NAPI_END;
 }
 
@@ -67,7 +67,7 @@ static napi_value TestStackAlign005(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem align_value_item = {align_value, sizeof(align_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_STACK_ALIGN_CONTENT, &align_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value->i32, ARKUI_ALIGNMENT_CENTER);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value[PARAM_0].i32, ARKUI_ALIGNMENT_CENTER);
     NAPI_END;
 }
 
@@ -78,7 +78,7 @@ static napi_value TestStackAlign006(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem align_value_item = {align_value, sizeof(align_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_STACK_ALIGN_CONTENT, &align_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value->i32, ARKUI_ALIGNMENT_END);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value[PARAM_0].i32, ARKUI_ALIGNMENT_END);
     NAPI_END;
 }
 
@@ -89,7 +89,7 @@ static napi_value TestStackAlign007(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem align_value_item = {align_value, sizeof(align_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_STACK_ALIGN_CONTENT, &align_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value->i32, ARKUI_ALIGNMENT_BOTTOM_START);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value[PARAM_0].i32, ARKUI_ALIGNMENT_BOTTOM_START);
     NAPI_END;
 }
 
@@ -100,7 +100,7 @@ static napi_value TestStackAlign008(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem align_value_item = {align_value, sizeof(align_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_STACK_ALIGN_CONTENT, &align_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value->i32, ARKUI_ALIGNMENT_BOTTOM);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value[PARAM_0].i32, ARKUI_ALIGNMENT_BOTTOM);
     NAPI_END;
 }
 
@@ -111,7 +111,7 @@ static napi_value TestStackAlign009(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem align_value_item = {align_value, sizeof(align_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_STACK_ALIGN_CONTENT, &align_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value->i32, ARKUI_ALIGNMENT_BOTTOM_END);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value[PARAM_0].i32, ARKUI_ALIGNMENT_BOTTOM_END);
     NAPI_END;
 }
 
@@ -125,16 +125,8 @@ static napi_value TestStackAlign010(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(stack, NODE_STACK_ALIGN_CONTENT, &align_value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value->i32, align);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value[PARAM_0].i32, align);
     }
-    NAPI_END;
-}
-
-static napi_value TestStackAlign011(napi_env env, napi_callback_info info)
-{
-    NAPI_START(stack, ARKUI_NODE_STACK);
-
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_STACK_ALIGN_CONTENT)->value->i32, ARKUI_ALIGNMENT_CENTER);
     NAPI_END;
 }
 

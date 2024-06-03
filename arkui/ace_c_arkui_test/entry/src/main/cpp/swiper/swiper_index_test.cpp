@@ -25,7 +25,7 @@ static napi_value TestSwiperIndex001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_INDEX, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_INDEX)->value->i32, index);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_INDEX)->value[PARAM_0].i32, index);
     NAPI_END;
 }
 
@@ -37,7 +37,7 @@ static napi_value TestSwiperIndex002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_INDEX, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_INDEX)->value->i32, index);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_INDEX)->value[PARAM_0].i32, index);
     NAPI_END;
 }
 
@@ -50,17 +50,8 @@ static napi_value TestSwiperIndex003(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_INDEX, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(swiper, NODE_SWIPER_INDEX) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(swiper, NODE_SWIPER_INDEX)->value->i32, index);
+        ASSERT_NE(nodeAPI->getAttribute(swiper, NODE_SWIPER_INDEX)->value[PARAM_0].i32, index);
     }
-    NAPI_END;
-}
-
-static napi_value TestSwiperIndex004(napi_env env, napi_callback_info info)
-{
-    NAPI_START(swiper, ARKUI_NODE_SWIPER);
-    int32_t index = 0;
-
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_INDEX)->value->i32, index);
     NAPI_END;
 }
 

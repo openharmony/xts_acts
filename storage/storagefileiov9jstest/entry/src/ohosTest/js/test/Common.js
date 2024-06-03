@@ -16,6 +16,7 @@
 import fileIO from '@ohos.file.fs';
 import util from '@ohos.util';
 import featureAbility from '@ohos.ability.featureAbility';
+import buffer from '@ohos.buffer';
 
 export const FILE_CONTENT = 'hello world';
 
@@ -32,7 +33,7 @@ export function prepareFile(fpath, content) {
     fileIO.fsyncSync(file.fd)
     fileIO.closeSync(file)
     return true
-  } 
+  }
   catch (e) {
     console.log('Failed to prepareFile for ' + e)
     return false
@@ -110,5 +111,6 @@ export {
   describe,
   it,
   expect,
-  util
+  util,
+  buffer
 };

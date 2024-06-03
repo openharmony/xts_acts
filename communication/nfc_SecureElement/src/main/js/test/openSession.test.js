@@ -26,6 +26,7 @@ let Reader = null;
 let Session = null;
 let getReader = null;
 let nfcSEService = null;
+let readerIsPresent = null;
 
 async function getSEService() {
     return new Promise((resolve, reject) => {
@@ -52,9 +53,28 @@ export default function openSessionTest() {
                 let seIsConnected = Service.isConnected();
                 console.info("[NFC_test] SEService isConnected The connection status is: " + seIsConnected);
                 if (seIsConnected) {
-                    getReader = Service.getReaders();
-                    Reader = getReader[0];
-                    let readerIsPresent = Reader.isSecureElementPresent();
+                            getReader = Service.getReaders();
+                            console.info("openSessionTest getReader value  is: " + getReader);                                    
+                            let getReader00 = getReader[0];
+                            let getReader01 = getReader[1];
+                            console.info("openSessionTest getReaders results list 0 is" + getReader00);
+                            let getReader000 = getReader00.getName();
+                            let getReader001 = getReader01.getName();
+                            console.info("openSessionTest getReader name is: " + getReader000 + "/" + getReader001);
+                    try {
+                        if (getReader000 == 'eSE'){
+                             readerIsPresent = getReader00.isSecureElementPresent();
+                             console.info("openSessionTest getReader00 readerIsPresent " + readerIsPresent);
+                             Reader = getReader00;                            
+                   }else {
+                             readerIsPresent = getReader01.isSecureElementPresent();
+                             console.info("openSessionTest getReader01 readerIsPresent " + readerIsPresent);
+                             Reader = getReader01;                             
+                   }
+                        
+                    } catch (error) { 
+                             console.info("openSessionTest this is error " + error);                       
+                    }
                     console.info("[NFC_test] Reader isConnected The connection status is: " + readerIsPresent);
                     if (readerIsPresent) {
                         Session = Reader.openSession();
@@ -75,7 +95,7 @@ export default function openSessionTest() {
         })
         afterAll(async function (done) {
             nfcSEService.shutdown();
-            sleep(5000);
+            sleep(900);
             console.info('[nfc_test] afterAll Se_session shutdown success');
             done();
         })
@@ -141,7 +161,7 @@ export default function openSessionTest() {
                     console.info("[NFC_test]8 Check the first one session is open: " + isopenSession);
                     expect(isopenSession).assertFalse();
                     Session.close();
-                    sleep(3000)
+                    sleep(900)
                     console.info("[NFC_test]8 second session is closed successfully");
                     let iscloseSession = Session.isClosed();
                     console.info("[NFC_test]8 After close Check the first one session is open: " + iscloseSession);

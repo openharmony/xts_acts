@@ -24,6 +24,7 @@ export class ComponentAttrs {
   switchPointColor: string;
   enabled: string;
   focusable: boolean;
+  trackColor: string;
 }
 
 /**

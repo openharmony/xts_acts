@@ -1,19 +1,19 @@
 {
-    "description": "Configuration for hjunit demo Tests",
+    "description": "Configuration for ActsMindSporeNdkTest Tests",
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
-        "bundle-name": "com.open.harmony.componentapi06",
-        "module-name": "entry_test",
         "shell-timeout": "600000",
-        "testcase-timeout": 240000
+        "bundle-name": "com.open.harmony.componentapi06",
+        "module-name": "entry_test"
     },
-    "kits": [{
-        "test-file-name": [
-            "ActsAceComponentApi06Test.hap"
-        ],
-        "type": "AppInstallKit",
-        "cleanup-apps": true
+    "kits": [
+        {
+            "test-file-name": [
+              "ActsAceComponentApi06Test.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
         },
         {
             "type": "ShellKit",

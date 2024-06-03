@@ -17,13 +17,11 @@ import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry
 import { Hypium } from '@ohos/hypium'
 import testsuite from '../test/List.test'
 import common from '@ohos.app.ability.common';
-export let testContext:common.UIAbilityContext;
 
 export default class MainAbility extends Ability {
     onCreate(want, launchParam) {
+        PersistentStorage.persistProp("testContext", this.context);
         console.log('MainAbility onCreate')
-        globalThis.context = this.context;
-        testContext = this.context
         var abilityDelegator: any
         abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
         var abilityDelegatorArguments: any
@@ -32,7 +30,7 @@ export default class MainAbility extends Ability {
         Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
     }
 
-    onDestroy() {
+    onDestroy(){
         console.log('MainAbility onDestroy');
     }
 
@@ -41,15 +39,15 @@ export default class MainAbility extends Ability {
         windowStage.setUIContent(this.context, 'MainAbility/pages/index', null);
     }
 
-    onWindowStageDestroy() {
+    onWindowStageDestroy(){
         console.log('MainAbility onWindowStageDestroy');
     }
 
-    onForeground() {
+    onForeground(){
         console.log('MainAbility onForeground');
     }
 
-    onBackground() {
+    onBackground(){
         console.log('MainAbility onBackground');
     }
 };

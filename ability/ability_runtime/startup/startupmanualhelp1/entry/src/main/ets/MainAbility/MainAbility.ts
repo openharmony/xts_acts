@@ -20,7 +20,7 @@ export default class MainAbility extends Ability {
         console.log('MainAbility onCreate');
     }
 
-    onDestroy() {
+    onDestroy(){
         console.log('MainAbility onDestroy');
     }
 
@@ -29,15 +29,15 @@ export default class MainAbility extends Ability {
         windowStage.setUIContent(this.context, 'MainAbility/pages/index', null);
     }
 
-    onWindowStageDestroy() {
+    onWindowStageDestroy(){
         console.log('MainAbility onWindowStageDestroy');
     }
 
-    onForeground() {
+    onForeground(){
         console.log('MainAbility onForeground');
     }
 
-    onBackground() {
+    onBackground(){
         console.log('MainAbility onBackground');
     }
 };

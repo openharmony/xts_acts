@@ -77,7 +77,7 @@ export class KeyboardController {
         }
 
         var commonEventSubscribeInfo = {
-            events: ["test"]
+            events: ["inputMethodEngineKeyTest"]
         };
 
         var subscriber;

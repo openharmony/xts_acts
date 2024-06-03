@@ -32,6 +32,9 @@ import Monitor5Test from './MonitorTest/Monitor5.test';
 import Monitor6Test from './MonitorTest/Monitor6.test';
 import RepeatEachJsunit from './RepeatTest/RepeatEachJsunit.test';
 import persistStorageATest from './GetSharedLocalTest/persistStorageA.test';
+import appStorageRefJsunit from './StorageTest/appStorageRefJsunit.test';
+import localStorageRefJsunit from './StorageTest/localStorageRefJsunit.test';
+import IMonitorTest from './MonitorTest/IMonitor.test';
 export default function testsuite() {
   ExtendTrackTest();
   NestTrackTest();
@@ -53,4 +56,7 @@ export default function testsuite() {
   Monitor6Test()
   RepeatEachJsunit();
   persistStorageATest();
+  appStorageRefJsunit();
+  localStorageRefJsunit();
+  IMonitorTest();
 }

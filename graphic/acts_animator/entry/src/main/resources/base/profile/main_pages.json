@@ -1,5 +1,5 @@
 {
-    "src": [
-        "MainAbility/pages/index/index"
-    ]
+  "src": [
+    "pages/Index"
+  ]
 }

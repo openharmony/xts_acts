@@ -677,6 +677,42 @@ export default function webviewApi() {
         Utils.registerEvent("testWeb_CreateResponse", true, 7742, done);
         sendEventByKey('webHostingButton', 10, '');
     })
+
+    /*
+     * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0361
+     * @tc.name       : testWebResourceRequest_GetResourceType
+     * @tc.desc       : test WebResourceRequest_GetResourceType
+     * @tc.size_t     : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testWebResourceRequest_GetResourceType', 0, async (done: Function) => {
+
+      hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResourceRequest_GetResourceType PASS');
+
+      Utils.emitEvent("emitWebResourceRequest_GetResourceType", 10)
+      await Utils.sleep(1000);
+      Utils.registerEvent("testWebResourceRequest_GetResourceType", true, 7743, done);
+      sendEventByKey('webHostingButton', 10, '');
+    })
+
+    /*
+     * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0362
+     * @tc.name       : testWebResourceRequest_GetFrameUrl
+     * @tc.desc       : test WebResourceRequest_GetFrameUrl
+     * @tc.size_t     : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testWebResourceRequest_GetFrameUrl', 0, async (done: Function) => {
+
+      hilog.info(0x0000, 'testTag', '%{public}s', 'testWebResourceRequest_GetFrameUrl PASS');
+
+      Utils.emitEvent("emitWebResourceRequest_GetFrameUrl", 10)
+      await Utils.sleep(1000);
+      Utils.registerEvent("testWebResourceRequest_GetFrameUrl", true, 7744, done);
+      sendEventByKey('webHostingButton', 10, '');
+    })
     
   })
 }

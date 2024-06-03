@@ -43,6 +43,7 @@ struct closeCustomDialog {
         Text(this.change)
           .id('CloseCustomDialog')
         Button("click me")
+          .id('btn')
           .onClick(() => {
             let uiContext = this.getUIContext();
             let promptAction = uiContext.getPromptAction();

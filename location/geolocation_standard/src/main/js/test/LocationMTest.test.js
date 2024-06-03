@@ -19,6 +19,7 @@ import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
 import bundle from '@ohos.bundle'
 import osaccount from '@ohos.account.osAccount'
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
+import notificationManager from '@ohos.notificationManager';
 
 let LocationRequestScenario = {UNSET : 0x300 ,NAVIGATION : 0x301 ,
     TRAJECTORY_TRACKING : 0x302 ,CAR_HAILING : 0x303,
@@ -1148,6 +1149,253 @@ export default function geolocationTest_geo7() {
     })
 
     /**
+    * @tc.number SUB_HSS_LocationSystem_LocRequest_3000
+    * @tc.name Test locationChange
+    * @tc.desc Initiate a specified continuous location request and set the reporting precision of abnormal location.
+    * @tc.size MEDIUM
+    * @tc.type Function
+    * @tc.level Level 2
+    */
+    it('SUB_HSS_LocationSystem_LocRequest_3000', 0, async function (done) {
+        enableLocationSwitch();
+        let requestInfo1 = {'interval': 1, 'locationScenario': 0x401};
+        var locationChange1 = (location) => {
+            console.log('[lbs_js] SUB_HSS_LocationSystem_LocRequest_3000 data:' + JSON.stringify(location));
+            expect(true).assertEqual(locationChange1 !=null);
+        };
+        try {
+            geolocationm.on('locationChange', requestInfo1, locationChange1);
+        } catch (error) {
+            console.info("[lbs_js] SUB_HSS_LocationSystem_LocRequest_3000 try err." + JSON.stringify(error));
+            expect(true).assertFalse();
+        }
+        try {
+            geolocationm.off('locationChange', locationChange1);
+        } catch (error) {
+            console.info("[lbs_js] SUB_HSS_LocationSystem_LocRequest_3000 try err." + JSON.stringify(error));
+            expect(true).assertFalse();
+        }
+        await sleep(1500);
+        done();
+    })
+
+    /**
+    * @tc.number SUB_HSS_LocationSystem_LocRequest_3100
+    * @tc.name Test locationChange
+    * @tc.desc Initiate a specified continuous location request and set the reporting precision of abnormal location.
+    * @tc.size MEDIUM
+    * @tc.type Function
+    * @tc.level Level 2
+    */
+    it('SUB_HSS_LocationSystem_LocRequest_3100', 0, async function (done) {
+        enableLocationSwitch();
+        let requestInfo1 = {'interval': 1, 'locationScenario': 0x402};
+        var locationChange1 = (location) => {
+            console.log('[lbs_js] SUB_HSS_LocationSystem_LocRequest_3100 data:' + JSON.stringify(location));
+            expect(true).assertEqual(locationChange1 !=null);
+        };
+        try {
+            geolocationm.on('locationChange', requestInfo1, locationChange1);
+        } catch (error) {
+            console.info("[lbs_js] SUB_HSS_LocationSystem_LocRequest_3100 try err." + JSON.stringify(error));
+            expect(true).assertFalse();
+        }
+        try {
+            geolocationm.off('locationChange', locationChange1);
+        } catch (error) {
+            console.info("[lbs_js] SUB_HSS_LocationSystem_LocRequest_3100 try err." + JSON.stringify(error));
+            expect(true).assertFalse();
+        }
+        await sleep(1500);
+        done();
+    })
+
+    /**
+    * @tc.number SUB_HSS_LocationSystem_LocRequest_3200
+    * @tc.name Test locationChange
+    * @tc.desc Initiate a specified continuous location request and set the reporting precision of abnormal location.
+    * @tc.size MEDIUM
+    * @tc.type Function
+    * @tc.level Level 2
+    */
+    it('SUB_HSS_LocationSystem_LocRequest_3200', 0, async function (done) {
+        enableLocationSwitch();
+        let requestInfo1 = {'interval': 1, 'locationScenario': 0x403};
+        var locationChange1 = (location) => {
+            console.log('[lbs_js] SUB_HSS_LocationSystem_LocRequest_3200 data:' + JSON.stringify(location));
+            expect(true).assertEqual(locationChange1 !=null);
+        };
+        try {
+            geolocationm.on('locationChange', requestInfo1, locationChange1);
+        } catch (error) {
+            console.info("[lbs_js] SUB_HSS_LocationSystem_LocRequest_3200 try err." + JSON.stringify(error));
+            expect(true).assertFalse();
+        }
+        try {
+            geolocationm.off('locationChange', locationChange1);
+        } catch (error) {
+            console.info("[lbs_js] SUB_HSS_LocationSystem_LocRequest_3200 try err." + JSON.stringify(error));
+            expect(true).assertFalse();
+        }
+        await sleep(1500);
+        done();
+    })
+
+    /**
+    * @tc.number SUB_HSS_LocationSystem_LocRequest_3300
+    * @tc.name Test locationChange
+    * @tc.desc Initiate a specified continuous location request and set the reporting precision of abnormal location.
+    * @tc.size MEDIUM
+    * @tc.type Function
+    * @tc.level Level 2
+    */
+    it('SUB_HSS_LocationSystem_LocRequest_3300', 0, async function (done) {
+        enableLocationSwitch();
+        let requestInfo1 = {'interval': 1, 'locationScenario': 0x403};
+        var locationChange1 = (location) => {
+            console.log('[lbs_js] SUB_HSS_LocationSystem_LocRequest_3300 data:' + JSON.stringify(location));
+            expect(true).assertEqual(locationChange1 !=null);
+        };
+        try {
+            geolocationm.on('locationChange', requestInfo1, locationChange1);
+        } catch (error) {
+            console.info("[lbs_js] SUB_HSS_LocationSystem_LocRequest_3300 try err." + JSON.stringify(error));
+            expect(true).assertFalse();
+        }
+        try {
+            geolocationm.off('locationChange', locationChange1);
+        } catch (error) {
+            console.info("[lbs_js] SUB_HSS_LocationSystem_LocRequest_3300 try err." + JSON.stringify(error));
+            expect(true).assertFalse();
+        }
+        await sleep(1500);
+        done();
+    })
+
+    /**
+    * @tc.number SUB_HSS_LocationSystem_LocRequest_3400
+    * @tc.name Test locationChange
+    * @tc.desc Initiate a specified continuous location request and set the reporting precision of abnormal location.
+    * @tc.size MEDIUM
+    * @tc.type Function
+    * @tc.level Level 2
+    */
+    it('SUB_HSS_LocationSystem_LocRequest_3400', 0, async function (done) {
+        enableLocationSwitch();
+        let requestInfo1 = {'interval': 1, 'locationScenario': 0x601};
+        var locationChange1 = (location) => {
+            console.log('[lbs_js] SUB_HSS_LocationSystem_LocRequest_3400 data:' + JSON.stringify(location));
+            expect(true).assertEqual(locationChange1 !=null);
+        };
+        try {
+            geolocationm.on('locationChange', requestInfo1, locationChange1);
+        } catch (error) {
+            console.info("[lbs_js] SUB_HSS_LocationSystem_LocRequest_3400 try err." + JSON.stringify(error));
+            expect(true).assertFalse();
+        }
+        try {
+            geolocationm.off('locationChange', locationChange1);
+        } catch (error) {
+            console.info("[lbs_js] SUB_HSS_LocationSystem_LocRequest_3400 try err." + JSON.stringify(error));
+            expect(true).assertFalse();
+        }
+        await sleep(1500);
+        done();
+    })
+
+    /**
+    * @tc.number SUB_HSS_LocationSystem_LocRequest_3500
+    * @tc.name Test locationChange
+    * @tc.desc Initiate a specified continuous location request and set the reporting precision of abnormal location.
+    * @tc.size MEDIUM
+    * @tc.type Function
+    * @tc.level Level 2
+    */
+    it('SUB_HSS_LocationSystem_LocRequest_3500', 0, async function (done) {
+        enableLocationSwitch();
+        let requestInfo1 = {'interval': 1, 'locationScenario': 0x602};
+        var locationChange1 = (location) => {
+            console.log('[lbs_js] SUB_HSS_LocationSystem_LocRequest_3500 data:' + JSON.stringify(location));
+            expect(true).assertEqual(locationChange1 !=null);
+        };
+        try {
+            geolocationm.on('locationChange', requestInfo1, locationChange1);
+        } catch (error) {
+            console.info("[lbs_js] SUB_HSS_LocationSystem_LocRequest_3500 try err." + JSON.stringify(error));
+            expect(true).assertFalse();
+        }
+        try {
+            geolocationm.off('locationChange', locationChange1);
+        } catch (error) {
+            console.info("[lbs_js] SUB_HSS_LocationSystem_LocRequest_3500 try err." + JSON.stringify(error));
+            expect(true).assertFalse();
+        }
+        await sleep(1500);
+        done();
+    })
+
+    /**
+    * @tc.number SUB_HSS_LocationSystem_LocRequest_3600
+    * @tc.name Test locationChange
+    * @tc.desc Initiate a specified continuous location request and set the reporting precision of abnormal location.
+    * @tc.size MEDIUM
+    * @tc.type Function
+    * @tc.level Level 2
+    */
+    it('SUB_HSS_LocationSystem_LocRequest_3600', 0, async function (done) {
+        enableLocationSwitch();
+        let requestInfo1 = {'interval': 1, 'locationScenario': 0x603};
+        var locationChange1 = (location) => {
+            console.log('[lbs_js] SUB_HSS_LocationSystem_LocRequest_3600 data:' + JSON.stringify(location));
+            expect(true).assertEqual(locationChange1 !=null);
+        };
+        try {
+            geolocationm.on('locationChange', requestInfo1, locationChange1);
+        } catch (error) {
+            console.info("[lbs_js] SUB_HSS_LocationSystem_LocRequest_3600 try err." + JSON.stringify(error));
+            expect(true).assertFalse();
+        }
+        try {
+            geolocationm.off('locationChange', locationChange1);
+        } catch (error) {
+            console.info("[lbs_js] SUB_HSS_LocationSystem_LocRequest_3600 try err." + JSON.stringify(error));
+            expect(true).assertFalse();
+        }
+        await sleep(1500);
+        done();
+    })
+
+    /**
+    * @tc.number SUB_HSS_LocationSystem_LocationError_0100
+    * @tc.name Test locationChange
+    * @tc.desc Initiate a specified continuous location request and set the reporting precision of abnormal location.
+    * @tc.size MEDIUM
+    * @tc.type Function
+    * @tc.level Level 2
+    */
+    it('SUB_HSS_LocationSystem_LocationError_0100', 0, async function (done) {
+        enableLocationSwitch();
+        var locationError1 = (errcode) => {
+            console.log('[lbs_js] SUB_HSS_LocationSystem_LocationError_0100 data:' + JSON.stringify(errcode));
+            expect(true).assertEqual(errcode !=null);
+        };
+        try {
+            geolocationm.on('locationError', locationError1);
+        } catch (error) {
+            console.info("[lbs_js] SUB_HSS_LocationSystem_LocationError_0100 try err." + JSON.stringify(error));
+            expect(true).assertFalse();
+        }
+        try {
+            geolocationm.off('locationError', locationError1);
+        } catch (error) {
+            console.info("[lbs_js] SUB_HSS_LocationSystem_LocationError_0100 try err." + JSON.stringify(error));
+            expect(true).assertFalse();
+        }
+        await sleep(1500);
+        done();
+    })
+
+    /**
      * @tc.number SUB_HSS_LocationSystem_LastLoc_0300
      * @tc.name Test getLastLocation
      * @tc.desc Obtain the last location after a single location.
@@ -1208,9 +1456,10 @@ export default function geolocationTest_geo7() {
             console.info('[lbs_js] gnssStatusChange1: ' + satelliteStatusInfo);
             expect(true).assertEqual(satelliteStatusInfo != null)
             console.info('[lbs_js] SatelliteStatusInfo satellitesNumber: ' + data[0].satellitesNumber +
-            'satelliteIds' + data[0].satelliteIds +'carrierToNoiseDensitys'+ data[0].carrierToNoiseDensitys
-            +'altitudes' + data[0].altitudes+' azimuths: ' + data[0].azimuths +
-            'carrierFrequencies: ' + data[0].carrierFrequencies);
+            ' satelliteIds: ' + data[0].satelliteIds + ' carrierToNoiseDensitys: ' + data[0].carrierToNoiseDensitys
+            +' altitudes: ' + data[0].altitudes +' azimuths: ' + data[0].azimuths +
+            'carrierFrequencies: ' + data[0].carrierFrequencies + ' satelliteAdditionalInfo: '
+            + data[0].satelliteAdditionalInfo + ' satelliteConstellation: ' + data[0].satelliteConstellation);
         }
         try {
             geolocationm.on('satelliteStatusChange', gnssStatusCb);
@@ -1629,7 +1878,7 @@ export default function geolocationTest_geo7() {
                         expect(err.code).assertEqual(801);
                     }
                     console.info("[lbs_js] fenceStatusChange3 callback result: " + JSON.stringify(want));
-                    expect(true).assertEqual(want !=null);
+                    expect(true).assertEqual(want != null);
                 });
         } catch (error) {
             console.info("[lbs_js] FenceStatusOn3 try error:"+ JSON.stringify(error));
@@ -1642,11 +1891,96 @@ export default function geolocationTest_geo7() {
                         return console.info("fenceStatusChange3 callback  err:" + err);
                     }
                     console.info("[lbs_js] off fenceStatusChange3 callback result:" + JSON.stringify(want));
-                    expect(true).assertEqual(want !=null);
+                    expect(true).assertEqual(want != null);
                 });
         } catch (error) {
             console.info("[lbs_js] FenceStatusOff3 try error:"+ JSON.stringify(error));
             expect(error.code).assertEqual("401");
+        }
+        await sleep(1000);
+        done();
+    })
+
+    /**
+     * @tc.number SUB_HSS_LocationSystem_GeoFence_0400
+     * @tc.name Test fenceStatusChange
+     * @tc.desc Test the function of locating the validity period of the fence.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 1
+     */
+    it('SUB_HSS_LocationSystem_GeoFence_0400', 0, async function (done) {
+        await changedLocationMode();
+        let geofence = {
+            "latitude": 31.12,
+            "longitude": 121.11,
+            "radius": 1,
+            "expiration": 1,
+            "coordinateSystemType": 1
+        };
+        let events = [1, 2, 4];
+        let fenceRequest = {
+            "geofence": geofence,
+            "monitorTransitionEvents": events,
+            "geofenceTransitionCallback" : (err, transition) => {
+                if (err) {
+                    console.info("SUB_HSS_LocationSystem_GeoFence_0400 transition callback  err:" + err);
+                    expect(true).assertEqual(JSON.stringify(err) != null);
+                    return;
+                }
+                console.info("[lbs_js] SUB_HSS_LocationSystem_GeoFence_0400 callback result:" + JSON.stringify(transition));
+                expect(true).assertEqual(transition != null);
+            }
+        };
+        let fenceId = -1;
+        try {
+            await geolocationm.addGnssGeofence(fenceRequest).then((id) => {
+                console.info("[lbs_js] SUB_HSS_LocationSystem_GeoFence_0400 addGnssGeofence success, id = " + id);
+                fenceId = id;
+                expect(true).assertEqual(id != -1);
+              }).catch((err) => {
+                console.info("[lbs_js] SUB_HSS_LocationSystem_GeoFence_0400 add error=" + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(err) != null);
+              }
+            );
+        } catch (error) {
+            console.info("[lbs_js] SUB_HSS_LocationSystem_GeoFence_0400 add try error:"+ JSON.stringify(error));
+            expect(true).assertEqual(JSON.stringify(error) != null);
+        }
+        await sleep(10000);
+        try {
+            await geolocationm.removeGnssGeofence(fenceId).then(() => {
+                console.info("[lbs_js] SUB_HSS_LocationSystem_GeoFence_0400 remove success");
+                expect(true).assertEqual(fenceId != -1);
+            }).catch((error) => {
+                console.info("[lbs_js] SUB_HSS_LocationSystem_GeoFence_0400 remove error=" + JSON.stringify(error));
+                expect(true).assertEqual(JSON.stringify(error) != null);
+            });
+            console.info("SUB_HSS_LocationSystem_GeoFence_0400 remove fenceId:" + fenceId);
+        } catch (error) {
+            console.info("[lbs_js] SUB_HSS_LocationSystem_GeoFence_0400 remove try error:"+ JSON.stringify(error));
+            expect(true).assertEqual(JSON.stringify(error) != null);
+        }
+        await sleep(10000);
+        done();
+    })
+
+    /**
+     * @tc.number SUB_HSS_LocationSystem_GeoFence_0700
+     * @tc.name Test fenceStatusChange
+     * @tc.desc Test the function of locating the validity period of the fence.
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 1
+     */
+    it('SUB_HSS_LocationSystem_GeoFence_0700', 0, async function (done) {
+        await changedLocationMode();
+        try {
+            let types = geolocationm.getGeofenceSupportedCoordTypes();
+            expect(true).assertEqual(JSON.stringify(types) != null);
+        } catch (error) {
+            console.info("[lbs_js] SUB_HSS_LocationSystem_GeoFence_0700 try error:" + JSON.stringify(error));
+            expect(true).assertFalse();
         }
         await sleep(1000);
         done();
@@ -1681,6 +2015,113 @@ export default function geolocationTest_geo7() {
         done();
     })
 
+    /**
+     * @tc.number SUB_HSS_LocationSystem_SingleLoc_3600
+     * @tc.name Test getCurrentLocation
+     * @tc.desc Initiate a single location request in a specified scenario and set the navigation scenario..
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_HSS_LocationSystem_SingleLoc_3600', 0, async function (done) {
+        let singleLocationRequest = { 'locatingTimeoutMs': 1000, 'locatingPriority': 0x501 };
+        try {
+            geolocationm.getCurrentLocation(singleLocationRequest, (err, result) => {
+                if (err) {
+                    console.info("[lbs_js] SUB_HSS_LocationSystem_SingleLoc_3600 callback err:  " + JSON.stringify(err));
+                    expect(err.code).assertEqual(3301200);
+                    console.info('[lbs_js] SUB_HSS_LocationSystem_SingleLoc_3600 reject after')
+                } else {
+                    console.info("[lbs_js] SUB_HSS_LocationSystem_SingleLoc_3600 callback, result:  " + JSON.stringify(result));
+                    expect(true).assertEqual(result != null);
+                }
+            });
+        } catch (error) {
+            console.info("[lbs_js] SUB_HSS_LocationSystem_SingleLoc_3600 callback try err." + JSON.stringify(error));
+            expect(true).assertEqual(JSON.stringify(error) != null);
+        }
+        await sleep(1000);
+        done();
+    })
+
+    /**
+     * @tc.number SUB_HSS_LocationSystem_SingleLoc_3700
+     * @tc.name Test getCurrentLocation
+     * @tc.desc Initiate a single location request in a specified scenario and set the navigation scenario..
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_HSS_LocationSystem_SingleLoc_3700', 0, async function (done) {
+        let singleLocationRequest = { 'locatingTimeoutMs': 1000, 'locatingPriority': 0x502 };
+        try {
+            geolocationm.getCurrentLocation(singleLocationRequest, (err, result) => {
+                if (err) {
+                    console.info("[lbs_js] SUB_HSS_LocationSystem_SingleLoc_3700 callback err:  " + JSON.stringify(err));
+                    expect(err.code).assertEqual(3301200);
+                    console.info('[lbs_js] SUB_HSS_LocationSystem_SingleLoc_3700 reject after')
+                } else {
+                    console.info("[lbs_js] SUB_HSS_LocationSystem_SingleLoc_3700 callback, result:  " + JSON.stringify(result));
+                    expect(true).assertEqual(result != null);
+                }
+            });
+        } catch (error) {
+            console.info("[lbs_js] SUB_HSS_LocationSystem_SingleLoc_3700 callback try err." + JSON.stringify(error));
+            expect(true).assertEqual(JSON.stringify(error) != null);
+        }
+        await sleep(1000);
+        done();
+    })
+
+   /**
+    * @tc.number SUB_HSS_LocationSystem_SingleLoc_3800
+    * @tc.name Test getCurrentLocation
+    * @tc.desc Initiate a specified single location request and set the exception location timeout interval.
+    * @tc.size MEDIUM
+    * @tc.type Function
+    * @tc.level Level 2
+    */
+    it('SUB_HSS_LocationSystem_SingleLoc_3800', 0, async function (done) {
+        let singleLocationRequest = { 'locatingTimeoutMs': 1000, 'locatingPriority': 0x501 };
+        try {
+            await geolocationm.getCurrentLocation(singleLocationRequest).then((result) => {
+                console.info('[lbs_js] SUB_HSS_LocationSystem_SingleLoc_3800 promise result271 ' + JSON.stringify(result));
+            }).catch(error => {
+                console.info('[lbs_js] SUB_HSS_LocationSystem_SingleLoc_3800 promise err271:' + JSON.stringify(error));
+                expect(error.code).assertEqual(3301200);
+            });
+        } catch (error) {
+            console.info("[lbs_js] SUB_HSS_LocationSystem_SingleLoc_3800 promise try err." + JSON.stringify(error));
+            expect(error.code).assertEqual("401");
+        }
+        await sleep(1000);
+        done();
+    })
+
+   /**
+    * @tc.number SUB_HSS_LocationSystem_SingleLoc_3900
+    * @tc.name Test getCurrentLocation
+    * @tc.desc Initiate a specified single location request and set the exception location timeout interval.
+    * @tc.size MEDIUM
+    * @tc.type Function
+    * @tc.level Level 2
+    */
+    it('SUB_HSS_LocationSystem_SingleLoc_3900', 0, async function (done) {
+        let singleLocationRequest = { 'locatingTimeoutMs': 1000, 'locatingPriority': 0x502 };
+        try {
+            await geolocationm.getCurrentLocation(singleLocationRequest).then((result) => {
+                console.info('[lbs_js] SUB_HSS_LocationSystem_SingleLoc_3900 promise result271 ' + JSON.stringify(result));
+            }).catch(error => {
+                console.info('[lbs_js] SUB_HSS_LocationSystem_SingleLoc_3900 promise err271:' + JSON.stringify(error));
+                expect(error.code).assertEqual(3301200);
+            });
+        } catch (error) {
+            console.info("[lbs_js] SUB_HSS_LocationSystem_SingleLoc_3900 promise try err." + JSON.stringify(error));
+            expect(error.code).assertEqual("401");
+        }
+        await sleep(1000);
+        done();
+    })
     })
 }
 

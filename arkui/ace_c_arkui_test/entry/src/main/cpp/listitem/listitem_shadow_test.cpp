@@ -25,7 +25,7 @@ static napi_value TestListItemShadow001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(listItem, NODE_SHADOW, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(listItem, NODE_SHADOW)->value->i32, shadow);
+    ASSERT_EQ(nodeAPI->getAttribute(listItem, NODE_SHADOW)->value[PARAM_0].i32, shadow);
     NAPI_END;
 }
 
@@ -37,7 +37,7 @@ static napi_value TestListItemShadow002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(listItem, NODE_SHADOW, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(listItem, NODE_SHADOW)->value->i32, shadow);
+    ASSERT_EQ(nodeAPI->getAttribute(listItem, NODE_SHADOW)->value[PARAM_0].i32, shadow);
     NAPI_END;
 }
 
@@ -49,7 +49,7 @@ static napi_value TestListItemShadow003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(listItem, NODE_SHADOW, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(listItem, NODE_SHADOW)->value->i32, shadow);
+    ASSERT_EQ(nodeAPI->getAttribute(listItem, NODE_SHADOW)->value[PARAM_0].i32, shadow);
     NAPI_END;
 }
 
@@ -61,7 +61,7 @@ static napi_value TestListItemShadow004(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(listItem, NODE_SHADOW, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(listItem, NODE_SHADOW)->value->i32, shadow);
+    ASSERT_EQ(nodeAPI->getAttribute(listItem, NODE_SHADOW)->value[PARAM_0].i32, shadow);
     NAPI_END;
 }
 
@@ -73,7 +73,7 @@ static napi_value TestListItemShadow005(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(listItem, NODE_SHADOW, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(listItem, NODE_SHADOW)->value->i32, shadow);
+    ASSERT_EQ(nodeAPI->getAttribute(listItem, NODE_SHADOW)->value[PARAM_0].i32, shadow);
     NAPI_END;
 }
 
@@ -85,7 +85,7 @@ static napi_value TestListItemShadow006(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(listItem, NODE_SHADOW, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(listItem, NODE_SHADOW)->value->i32, shadow);
+    ASSERT_EQ(nodeAPI->getAttribute(listItem, NODE_SHADOW)->value[PARAM_0].i32, shadow);
     NAPI_END;
 }
 } // namespace ArkUICapiTest

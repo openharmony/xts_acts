@@ -1509,12 +1509,17 @@ describe('UriTest', function () {
      * @tc.level: Level 2
      */
     it('testUriAddQueryValue006', 0, function () {
-      let value = "value";
-      let route = new uri.URI('https://www.test.com');
-      let newRoute = route.addQueryValue("param", value);
-      expect(newRoute.getQueryValue("param")).assertEqual(value);
-      expect(newRoute.getQueryValues("param")[0]).assertEqual(value);
-      expect(newRoute.toString()).assertEqual("https://www.test.com?param=value");
+        let value = "value";
+        let testUri = new uri.URI('https://www.test.com');
+        let addQuery = testUri.addQueryValue("param", value);
+        expect(addQuery.getQueryValue("param")).assertEqual(value);
+        expect(addQuery.getQueryValues("param")[0]).assertEqual(value);
+        expect(addQuery.toString()).assertEqual("https://www.test.com?param=value");
+        value = "value1";
+        let valueChange = testUri.addQueryValue("param", value);
+        expect(valueChange.toString()).assertEqual("https://www.test.com?param=value1");
+        let newChange = addQuery.addQueryValue("param", value);
+        expect(newChange.toString()).assertEqual("https://www.test.com?param=value&param=value1");
     })
 
     // Check the UriAddQueryValue.
@@ -1852,6 +1857,10 @@ describe('UriTest', function () {
       let route = new uri.URI('https://www.test.com/search?active=true&active=false');
       let isActive = route.getBooleanQueryValue("active", false);
       expect(isActive).assertEqual(true);
+      let uriInstance1 = new uri.URI("https://www.test.com/search?active=aa&active=false");
+      expect(uriInstance1.getBooleanQueryValue("active", false)).assertEqual(true);
+      let uriInstance2 = new uri.URI("https://www.test.com/search?active=0");
+      expect(uriInstance2.getBooleanQueryValue("active", true)).assertEqual(false);
     })
 
     // Check the UriClearQuery.
@@ -2944,6 +2953,229 @@ describe('UriTest', function () {
       expect(uriTest.encodedQuery).assertEqual('param=10~!*&para~m1=20!-~');
       expect(uriTest.encodedAuthority).assertEqual('www.bian~cheng.net');
       expect(uriTest.encodedSSP).assertEqual('//www.bian~cheng.net/inde~x?param=10~!*&para~m1=20!-~');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_16900
+     * @tc.name: testAddQueryJson001
+     * @tc.desc:  URI query add json
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+     it('testAddQueryJson001', 0, function () {
+      let uriTest = new uri.URI('aaa://drive/page?need=false&bbb=true');
+      let newUri = uriTest.addQueryValue("data", '{"type": 0, "from": "from"}');
+      expect(newUri.toString()).assertEqual('aaa://drive/page?need=false&bbb=true&data=%7B%22type%22%3A%200%2C%20%22from%22%3A%20%22from%22%7D');
+      expect(newUri.query).assertEqual('need=false&bbb=true&data={"type": 0, "from": "from"}');
+      expect(newUri.getQueryValue('data')).assertEqual('{"type": 0, "from": "from"}');
+      expect(newUri.encodedQuery).assertEqual('need=false&bbb=true&data=%7B%22type%22%3A%200%2C%20%22from%22%3A%20%22from%22%7D');
+    })
+
+    // Check the UriCreateFromParts parameter.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_17000
+     * @tc.name: testCreateFromPartsPara004
+     * @tc.desc: Abnormal parameters.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testCreateFromPartsPara004', 0, function () {
+      try {
+        uri.URI.createFromParts(null, "bbb", "ccc");
+      } catch (err) {
+        expect(err.toString()).assertEqual("BusinessError: The input parameter scheme is invalid");
+        expect(err.code).assertEqual(401);
+        expect(err.message).assertEqual("The input parameter scheme is invalid");
+      }
+      try {
+        uri.URI.createFromParts("aaa", null, "ccc");
+      } catch (err) {
+        expect(err.toString()).assertEqual("BusinessError: The input parameter ssp is invalid");
+        expect(err.code).assertEqual(401);
+        expect(err.message).assertEqual("The input parameter ssp is invalid");
+      }
+      try {
+        uri.URI.createFromParts("aaa", "bbb", null);
+      } catch (err) {
+        expect(err.toString()).assertEqual("BusinessError: The input parameter fragment is invalid");
+        expect(err.code).assertEqual(401);
+        expect(err.message).assertEqual("The input parameter fragment is invalid");
+      }
+    })
+
+    // Check the UriAddQueryValue parameter.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_17100
+     * @tc.name: testAddQueryValuePara003
+     * @tc.desc: Abnormal parameters.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testAddQueryValuePara003', 0, function () {
+      try {
+        let route = new uri.URI('https://www.test.com');
+        route.addQueryValue("param", null);
+      } catch (err) {
+        expect(err.toString()).assertEqual("BusinessError: The input parameter value is invalid");
+        expect(err.code).assertEqual(401);
+        expect(err.message).assertEqual("The input parameter value is invalid");
+      }
+      try {
+        let route = new uri.URI('https://www.test.com');
+        route.addQueryValue(null, "value");
+      } catch (err) {
+        expect(err.toString()).assertEqual("BusinessError: The input parameter key is invalid");
+        expect(err.code).assertEqual(401);
+        expect(err.message).assertEqual("The input parameter key is invalid");
+      }
+    })
+
+    // Check the UriAddEncodedSegment parameter.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_17200
+     * @tc.name: testAddEncodedSegmentPara002
+     * @tc.desc: Abnormal parameters.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testAddEncodedSegmentPara002', 0, function () {
+      try {
+        let route = new uri.URI('https://www.test.com');
+        route.addEncodedSegment(null);
+      } catch (err) {
+        expect(err.toString()).assertEqual("BusinessError: The input pathSegment value is invalid");
+        expect(err.code).assertEqual(401);
+        expect(err.message).assertEqual("The input pathSegment value is invalid");
+      }
+    })
+
+    // Check the UriAddSegment parameter.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_17300
+     * @tc.name: testAddSegmentPara001
+     * @tc.desc: Encoded URI specific scheme section
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testAddSegmentPara002', 0, function () {
+      try {
+        let route = new uri.URI('https://www.test.com');
+        route.addSegment(null);
+      } catch (err) {
+        expect(err.toString()).assertEqual("BusinessError: The input pathSegment value is invalid");
+        expect(err.code).assertEqual(401);
+        expect(err.message).assertEqual("The input pathSegment value is invalid");
+      }
+    })
+
+    // Check the UriGetQueryValue parameter.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_17400
+     * @tc.name: testGetQueryValuePara002
+     * @tc.desc: Abnormal parameters.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetQueryValuePara002', 0, function () {
+      try {
+        let route1 = new uri.URI('https://www.test.com?param_g=value_1');
+        route1.getQueryValue(null);
+      } catch (err) {
+        expect(err.toString()).assertEqual("BusinessError: The input parameter key is invalid");
+        expect(err.code).assertEqual(401);
+        expect(err.message).assertEqual("The input parameter key is invalid");
+      }
+    })
+  
+    // Check the UriGetQueryValues parameter.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_17500
+     * @tc.name: testGetQueryValuesPara002
+     * @tc.desc:  Abnormal parameters.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetQueryValuesPara002', 0, function () {
+      try {
+        let route1 = new uri.URI('https://www.test.com?param_g=value_1');
+        route1.getQueryValues(null);
+      } catch (err) {
+        expect(err.toString()).assertEqual("BusinessError: The input parameter key is invalid");
+        expect(err.code).assertEqual(401);
+        expect(err.message).assertEqual("The input parameter key is invalid");
+      }
+    })
+
+    // Check the UriGetBooleanQueryValue parameter.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_17600
+     * @tc.name: testGetBooleanQueryValuePara003
+     * @tc.desc: Abnormal parameters.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetBooleanQueryValuePara003', 0, function () {
+      try {
+        let route1 = new uri.URI('https://www.test.com?param_g=value_1');
+        route1.getBooleanQueryValue("param_g", null);
+      } catch (err) {
+        expect(err.toString()).assertEqual("BusinessError: The input parameter defaultValue is invalid");
+        expect(err.code).assertEqual(401);
+        expect(err.message).assertEqual("The input parameter defaultValue is invalid");
+      }
+      try {
+        let route1 = new uri.URI('https://www.test.com?param_g=value_1');
+        route1.getBooleanQueryValue(null, true);
+      } catch (err) {
+        expect(err.toString()).assertEqual("BusinessError: The input parameter key is invalid");
+        expect(err.code).assertEqual(401);
+        expect(err.message).assertEqual("The input parameter key is invalid");
+      }
+    })
+    // Check the Uri constructor json.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_17700
+     * @tc.name: testConstructorJson001
+     * @tc.desc:  URI constructor json
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testConstructorJson001', 0, function () {
+      let uriObj = new uri.URI("testUri://testHost/testNumPage?need=false&bbb=true&data={\"aaa\":0,\"bbb\":\"ccc\"}");
+      expect(uriObj.query).assertEqual('need=false&bbb=true&data={"aaa":0,"bbb":"ccc"}');
+      expect(JSON.parse(uriObj.getQueryValue('data')).aaa).assertEqual(0);
+      expect(JSON.parse(uriObj.getQueryValue('data')).bbb).assertEqual('ccc');
+    })
+    // Check the Uri Special Characters.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_17800
+     * @tc.name: testSpecialCharacters001
+     * @tc.desc:  URI Special Characters
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testSpecialCharacters001', 0, function () {
+      let uriStr = "hta{}_b- c|~d!a$b&c=d+e,;'()*vvtp://www.bi an'|{}()$~,;*!_-+:80/index?par(,;/) '_$:?+a{}|m=10-!*&pa ra~m1=20!-~#par(,;/) '_$:?+a{}|m=10-!*&para~m1=20!-~";
+      let newUri = new uri.URI(uriStr);
+      expect(newUri.scheme).assertEqual("hta{}_b- c|~d!a$b&c=d+e,;'()*vvtp");
+      expect(newUri.getSegment()[0]).assertEqual("index");
+      expect(newUri.query).assertEqual("par(,;/) '_$:?+a{}|m=10-!*&pa ra~m1=20!-~");
+      expect(newUri.ssp).assertEqual("//www.bi an'|{}()$~,;*!_-+:80/index?par(,;/) '_$:?+a{}|m=10-!*&pa ra~m1=20!-~");
+      expect(newUri.authority).assertEqual("www.bi an'|{}()$~,;*!_-+:80");
+      expect(newUri.fragment).assertEqual("par(,;/) '_$:?+a{}|m=10-!*&para~m1=20!-~");
+      expect(newUri.host).assertEqual("www.bi an'|{}()$~,;*!_-+");
+      expect(newUri.userInfo).assertEqual(null);
+      expect(newUri.port).assertEqual("80");
     })
 })
 }

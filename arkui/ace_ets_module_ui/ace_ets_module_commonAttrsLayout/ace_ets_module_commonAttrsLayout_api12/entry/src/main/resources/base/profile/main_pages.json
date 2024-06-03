@@ -1,6 +1,7 @@
 {
     "src": [
         "MainAbility/pages/index/index",
-        "MainAbility/pages/onSizeChange/onSizeChange"
+        "MainAbility/pages/onSizeChange/onSizeChange",
+        "MainAbility/pages/borderRadius/LocalizedBorderRadiuses"
     ]
 }

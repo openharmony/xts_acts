@@ -20,6 +20,9 @@
         "MainAbility/pages/Monitor/Monitor5",
         "MainAbility/pages/Monitor/Monitor6",
         "MainAbility/pages/Repeat/RepeatEach",
-        "MainAbility/pages/GetSharedLocal/persistStorageA"
+        "MainAbility/pages/GetSharedLocal/persistStorageA",
+        "MainAbility/pages/Storage/appStorageRef",
+        "MainAbility/pages/Storage/localStorageRef",
+        "MainAbility/pages/Monitor/IMonitor"
     ]
 }

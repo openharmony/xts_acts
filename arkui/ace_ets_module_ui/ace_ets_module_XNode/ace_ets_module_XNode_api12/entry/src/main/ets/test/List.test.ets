@@ -26,6 +26,21 @@ import setLayout from './FrameNodeTest/setLayout.test';
 import RenderNodeAttributeTest from './renderNode/RenderNodeAttributeTest.test';
 import setRectShape from './GraphicsTest/setRectShape.test';
 import LengthUnitTest from './GraphicsTest/LengthUnit.test'
+import getBlendColor from './GraphicsTest/getBlendColor.test';
+import resourceColor from './GraphicsTest/resourceColor.test';
+import getNumeric from './GraphicsTest/getNumeric.test';
+import getAlpha from './GraphicsTest/getAlpha.test';
+import getBlue from './GraphicsTest/getBlue.test';
+import getGreen from './GraphicsTest/getGreen.test';
+import getRed from './GraphicsTest/getRed.test';
+import onAppear from './FrameNodeTest/onAppear.test';
+import setMeasureSizeTest from './FrameNodeTest/setMeasureSize.test';
+import setCircleShapeTest from './GraphicsTest/setCircleShape.test';
+import commonEventTest1 from './FrameNodeTest/commonEventTest1.test';
+
+import CornerTest from './GraphicsTest/GraphicsApiTest/CornerTest.test';
+import LengthMetricsUnitTest from './GraphicsTest/GraphicsApiTest/LengthMetricsUnitTest.test';
+import PercentReferenceTest from './GraphicsTest/GraphicsApiTest/PercentReferenceTest.test';
 
 export default function testsuite() {
   borderRadiuses();
@@ -40,4 +55,18 @@ export default function testsuite() {
   RenderNodeAttributeTest();
   setRectShape();
   LengthUnitTest();
+  getBlendColor();
+  resourceColor();
+  getNumeric();
+  getAlpha();
+  getBlue();
+  getGreen();
+  getRed();
+  onAppear();
+  setMeasureSizeTest();
+  commonEventTest1();
+  CornerTest();
+  LengthMetricsUnitTest();
+  PercentReferenceTest();
+  setCircleShapeTest();
 }

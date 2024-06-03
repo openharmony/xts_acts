@@ -16,7 +16,7 @@
 @Entry
 @Component
 struct TextAreaHeightAdaptivePolicyTest {
-  build() {
+  build(){
     Row() {
       Column() {
         TextArea({ placeholder: 'placeholder(TextArea)' })
