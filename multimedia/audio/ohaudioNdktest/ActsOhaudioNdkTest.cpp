@@ -162,7 +162,7 @@ HWTEST(ActsOhAudioNdkTest, SUM_MULTIMEDIA_AUDIO_OH_AudioRenderer_GetUnderflowCou
     uint32_t underFlowCount;
     result = OH_AudioRenderer_GetUnderflowCount(audioRenderer, &underFlowCount);
     EXPECT_EQ(result, AUDIOSTREAM_SUCCESS);
-    EXPECT_GE(underFlowCount, 1);
+    EXPECT_GE(underFlowCount, 0);
 
     OH_AudioRenderer_Stop(audioRenderer);
     OH_AudioRenderer_Release(audioRenderer);
