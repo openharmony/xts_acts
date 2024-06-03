@@ -14,12 +14,14 @@
  */
 
 import { describe, it, expect } from "@ohos/hypium";
+import common from '@ohos.app.ability.common';
+import { BusinessError } from '@ohos.base';
 
-let createModuleContext: any;
-let bundleName: any;
+let createModuleContext:common.Context | null;
+let bundleName:string;
 
 export default function actsCreateModuleContextTest() {
-  describe("CreateModuleContext", function () {
+  describe("CreateModuleContext", () => {
     /**
      * @tc.number: SUB_AA_CreateModuleContext_0100
      * @tc.name: AbilityContext calls createModuleContext, passing in the moduleName of
@@ -27,7 +29,7 @@ export default function actsCreateModuleContextTest() {
      * @tc.desc: Verify that the context of the application can be obtained
      * @tc.level: 1
      */
-    it("SUB_AA_CreateModuleContext_0100", 0, async function (done) {
+    it("SUB_AA_CreateModuleContext_0100", 0, async (done:Function) => {
       console.info("SUB_AA_AbilityStage_0100 begin");
 
       createModuleContext = null;
@@ -35,7 +37,7 @@ export default function actsCreateModuleContextTest() {
       createModuleContext =
         globalThis.abilityContext.createModuleContext("entry_test");
 
-      bundleName = createModuleContext.applicationInfo.name;
+      bundleName = createModuleContext!.applicationInfo.name;
 
       expect(bundleName).assertEqual("com.example.createmodulecontexttest");
       done();
@@ -48,7 +50,7 @@ export default function actsCreateModuleContextTest() {
      * @tc.desc: Verify that the context of the application can be obtained
      * @tc.level: 3
      */
-    it("SUB_AA_CreateModuleContext_0200", 0, async function (done) {
+    it("SUB_AA_CreateModuleContext_0200", 0, async (done:Function) => {
       console.log("SUB_AA_CreateModuleContext_0200 begin");
 
       createModuleContext = null;
@@ -56,7 +58,7 @@ export default function actsCreateModuleContextTest() {
       createModuleContext =
         globalThis.abilityContext.createModuleContext("feature");
 
-      bundleName = createModuleContext.applicationInfo.name;
+      bundleName = createModuleContext!.applicationInfo.name;
 
       expect(bundleName).assertEqual("com.example.createmodulecontexttest");
       done();
@@ -69,7 +71,7 @@ export default function actsCreateModuleContextTest() {
      * @tc.desc: Verify that the context of the application can not be obtained
      * @tc.level: 3
      */
-    it("SUB_AA_CreateModuleContext_0300", 0, async function (done) {
+    it("SUB_AA_CreateModuleContext_0300", 0, async (done:Function) => {
       console.info("SUB_AA_CreateModuleContext_0300 begin");
 
       createModuleContext = null;
@@ -78,7 +80,7 @@ export default function actsCreateModuleContextTest() {
         createModuleContext =
           globalThis.abilityContext.createModuleContext("entry_assist");
       } catch (err) {
-        let e = err.toString();
+        let e:string = err.toString();
         let errLog = "Invalid input parameter"
         console.debug("====>e====>" + e);
         expect(e.indexOf(errLog) >= 0).assertTrue();
@@ -94,7 +96,7 @@ export default function actsCreateModuleContextTest() {
      * @tc.desc: Verify that the context of the application can not be obtained
      * @tc.level: 3
      */
-    it("SUB_AA_CreateModuleContext_0400", 0, async function (done) {
+    it("SUB_AA_CreateModuleContext_0400", 0, async (done:Function) => {
       console.info("SUB_AA_CreateModuleContext_0400 begin");
 
       createModuleContext = null;
@@ -103,7 +105,7 @@ export default function actsCreateModuleContextTest() {
         createModuleContext =
           globalThis.abilityContext.createModuleContext("abc");
       } catch (err) {
-        let e = err.toString();
+        let e:string = err.toString();
         let errLog = "Invalid input parameter"
         console.debug("====>e====>" + e);
         expect(e.indexOf(errLog) >= 0).assertTrue();
@@ -119,7 +121,7 @@ export default function actsCreateModuleContextTest() {
      * @tc.desc: Verify that the context of the application can not be obtained
      * @tc.level: 3
      */
-    it("SUB_AA_CreateModuleContext_0500", 0, async function (done) {
+    it("SUB_AA_CreateModuleContext_0500", 0, async (done:Function) => {
       console.info("SUB_AA_CreateModuleContext_0500 begin");
 
       createModuleContext = null;
@@ -128,7 +130,7 @@ export default function actsCreateModuleContextTest() {
         createModuleContext =
           globalThis.abilityContext.createModuleContext(undefined);
       } catch (err) {
-        let e = err.toString();
+        let e:string = err.toString();
         let errLog = "Parse param moduleName failed, moduleName must be string."
         console.info("SUB_AA_CreateModuleContext_0500 createModuleContext is " + JSON.stringify(createModuleContext));
         console.debug("====>e====>" + e);
@@ -146,7 +148,7 @@ export default function actsCreateModuleContextTest() {
      * @tc.desc: Verify that the context of the application can be obtained
      * @tc.level: 3
      */
-    it("SUB_AA_CreateModuleContext_0600", 0, async function (done) {
+    it("SUB_AA_CreateModuleContext_0600", 0, async (done:Function) => {
       console.info("SUB_AA_CreateModuleContext_0600 begin");
 
       createModuleContext = null;
@@ -154,7 +156,7 @@ export default function actsCreateModuleContextTest() {
       createModuleContext =
         globalThis.abilityStageContext.createModuleContext("entry_test");
 
-      bundleName = createModuleContext.applicationInfo.name;
+      bundleName = createModuleContext!.applicationInfo.name;
 
       expect(bundleName).assertEqual("com.example.createmodulecontexttest");
       done();
@@ -167,7 +169,7 @@ export default function actsCreateModuleContextTest() {
      * @tc.desc: Verify that the context of the application can be obtained
      * @tc.level: 3
      */
-    it("SUB_AA_CreateModuleContext_0700", 0, async function (done) {
+    it("SUB_AA_CreateModuleContext_0700", 0, async (done:Function) => {
       console.info("SUB_AA_CreateModuleContext_0700 begin");
 
       createModuleContext = null;
@@ -175,7 +177,7 @@ export default function actsCreateModuleContextTest() {
       createModuleContext =
         globalThis.abilityStageContext.createModuleContext("feature");
 
-      bundleName = createModuleContext.applicationInfo.name;
+      bundleName = createModuleContext!.applicationInfo.name;
 
       expect(bundleName).assertEqual("com.example.createmodulecontexttest");
       done();
@@ -188,7 +190,7 @@ export default function actsCreateModuleContextTest() {
      * @tc.desc: Verify that the context of the application can not be obtained
      * @tc.level: 3
      */
-    it("SUB_AA_CreateModuleContext_0800", 0, async function (done) {
+    it("SUB_AA_CreateModuleContext_0800", 0, async (done:Function) => {
       console.info("SUB_AA_CreateModuleContext_0800 begin");
 
       createModuleContext = null;
@@ -197,7 +199,7 @@ export default function actsCreateModuleContextTest() {
         createModuleContext =
           globalThis.abilityContext.createModuleContext("entry_assist");
       } catch (err) {
-        let e = err.toString();
+        let e:string = err.toString();
         let errLog = "Invalid input parameter"
         console.debug("====>e====>" + e);
         expect(e.indexOf(errLog) >= 0).assertTrue();
@@ -213,7 +215,7 @@ export default function actsCreateModuleContextTest() {
      * @tc.desc: Verify that the context of the application can not be obtained
      * @tc.level: 3
      */
-    it("SUB_AA_CreateModuleContext_0900", 0, async function (done) {
+    it("SUB_AA_CreateModuleContext_0900", 0, async (done:Function) => {
       console.info("SUB_AA_CreateModuleContext_0900 begin");
 
       createModuleContext = null;
@@ -222,7 +224,7 @@ export default function actsCreateModuleContextTest() {
         createModuleContext =
           globalThis.abilityContext.createModuleContext("createmodue");
       } catch (err) {
-        let e = err.toString();
+        let e:string = err.toString();
         let errLog = "Invalid input parameter"
         console.debug("====>e====>" + e);
         expect(e.indexOf(errLog) >= 0).assertTrue();
@@ -238,7 +240,7 @@ export default function actsCreateModuleContextTest() {
      * @tc.desc: Verify that the context of the application can not be obtained
      * @tc.level: 3
      */
-    it("SUB_AA_CreateModuleContext_1000", 0, async function (done) {
+    it("SUB_AA_CreateModuleContext_1000", 0, async (done:Function) => {
       console.info("SUB_AA_CreateModuleContext_1000 begin");
 
       createModuleContext = null;
@@ -247,7 +249,7 @@ export default function actsCreateModuleContextTest() {
         createModuleContext =
           globalThis.abilityStageContext.createModuleContext(undefined);
       } catch (err) {
-        let e = err.toString();
+        let e:string = err.toString();
         let errLog = "Parse param moduleName failed, moduleName must be string."
         console.info("SUB_AA_CreateModuleContext_1000 createModuleContext is " + JSON.stringify(createModuleContext));
         console.debug("====>e====>" + e);

@@ -17,9 +17,13 @@ import Ability from '@ohos.app.ability.UIAbility'
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 import { Hypium } from '@ohos/hypium'
 import testsuite from '../test/List.test'
+import Want from '@ohos.app.ability.Want';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import common from '@ohos.app.ability.common';
+import window from '@ohos.window';
 
 export default class MainAbility extends Ability {
-    async onCreate(want, launchParam) {
+    async onCreate(want:Want, launchParam: AbilityConstant.LaunchParam) {
         globalThis.abilityContext = this.context;
         console.log('MainAbility onCreate')
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
@@ -31,9 +35,9 @@ export default class MainAbility extends Ability {
         console.log('MainAbility onDestroy')
     }
 
-    onWindowStageCreate(windowStage) {
+    onWindowStageCreate(windowStage:window.WindowStage) {
         console.log('MainAbility onWindowStageCreate')
-        windowStage.setUIContent(this.context, 'pages/index', null)
+        windowStage.loadContent('pages/index', null)
 
     }
 
