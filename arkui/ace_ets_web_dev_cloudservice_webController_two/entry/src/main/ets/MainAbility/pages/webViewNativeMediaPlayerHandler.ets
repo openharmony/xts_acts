@@ -900,6 +900,16 @@ struct WebComponent {
                         }
                         break;
                     }
+                  case "emitWebViewNativeMediaPlayerHandleDurationChanged": {
+                     try {
+                        console.log('emitWebViewNativeMediaPlayerHandleDurationChanged==>')
+                        await Utils.sleep(1500)
+                        Utils.emitEvent(true,1302)
+                     } catch (error) {
+                        Utils.emitEvent('error',1302)
+                     }
+                    break;
+                  }
                     case "emitWebViewNativeMediaPlayerHandleVideoSizeChanged": {
                         try {
                             console.log('emitWebViewNativeMediaPlayerHandleVideoSizeChanged==>')
