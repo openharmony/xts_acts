@@ -11,7 +11,7 @@
   "kits": [
     {
       "test-file-name": [
-        "ActFormMenuProviderTest.hap"
+        "ActsFormMenuProviderTest.hap"
       ],
       "type": "AppInstallKit",
       "cleanup-apps": true
@@ -24,7 +24,7 @@
         "uinput -T -m 300 2700 280 200"
       ],
       "teardown-command": [
-        "power-shell setmode 601"
+        "uinput -T -m 300 2700 280 200"
       ]
     }
   ]
