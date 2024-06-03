@@ -1,6 +1,7 @@
 {
     "src": [
         "MainAbility/pages/index/index",
+        "MainAbility/pages/APIParticleEmitter",
         "MainAbility/pages/AnimatorResult/AnimatorResult",
         "MainAbility/pages/AnimatorResult/setExpectedFrameRateRange",
         "MainAbility/pages/setPolyToPoly",
