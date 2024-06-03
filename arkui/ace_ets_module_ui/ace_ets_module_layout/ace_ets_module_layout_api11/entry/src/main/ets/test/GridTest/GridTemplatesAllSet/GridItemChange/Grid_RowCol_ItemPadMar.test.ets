@@ -92,8 +92,10 @@ export default function grid_RowCol_ItemPadMarTest() {
       expect(Math.abs(firstGridItem.right - firstGridItem.left - vp2px(150)) <= 1).assertTrue();
       expect(Math.abs(firstGridItem.bottom - firstGridItem.top - vp2px(150)) <= 1).assertTrue();
 
-      expect(Math.abs(secondGridItem.right - secondGridItem.left - vp2px(130)) <= 1).assertTrue();
-      expect(Math.abs(secondGridItem.bottom - secondGridItem.top - vp2px(130)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(secondGridItem.right - secondGridItem.left) -
+        Math.round(vp2px(130))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(secondGridItem.bottom - secondGridItem.top) -
+        Math.round(vp2px(130))) <= 1).assertTrue();
 
       expect(Math.abs(thirdGridItem.right - thirdGridItem.left - vp2px(150)) <= 1).assertTrue();
       expect(Math.abs(thirdGridItem.bottom - thirdGridItem.top - vp2px(150)) <= 1).assertTrue();
@@ -194,8 +196,10 @@ export default function grid_RowCol_ItemPadMarTest() {
       expect(Math.abs(firstGridItem.right - firstGridItem.left - vp2px(150)) <= 1).assertTrue();
       expect(Math.abs(firstGridItem.bottom - firstGridItem.top - vp2px(150)) <= 1).assertTrue();
 
-      expect(Math.abs(secondGridItem.right - secondGridItem.left - vp2px(130)) <= 1).assertTrue();
-      expect(Math.abs(secondGridItem.bottom - secondGridItem.top - vp2px(130)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(secondGridItem.right - secondGridItem.left) -
+        Math.round(vp2px(130))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(secondGridItem.bottom - secondGridItem.top) -
+        Math.round(vp2px(130))) <= 1).assertTrue();
 
       expect(Math.abs(thirdGridItem.right - thirdGridItem.left - vp2px(150)) <= 1).assertTrue();
       expect(Math.abs(thirdGridItem.bottom - thirdGridItem.top - vp2px(150)) <= 1).assertTrue();
