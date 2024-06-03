@@ -84,6 +84,11 @@ Note:If the text contains special characters, please escape them according to th
 				<filteritem type="filename" name="*.ico" desc="all ico file have check"/>
                 <filteritem type="filename" name="*.mkv" desc="all bin file have check"/>
 				<filteritem type="filename" name="*.mp3" desc="all mp3 file have check"/>
+                <filteritem type="filename" name="*.ico" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.svg" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.arw" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.webp" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.bmp" desc="all bin file have check"/>
             </filefilter>
             <filefilter name="defaultFilter" desc="Filters for default" >
                 <filteritem type="filepath" name="global/global_stage/entry/src/main/resources/rawfile/rawfiletest.xml" desc="resource files do not to be added"/>
