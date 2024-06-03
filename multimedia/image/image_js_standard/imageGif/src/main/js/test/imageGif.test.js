@@ -21,6 +21,7 @@ export default function imageGif() {
     describe("imageGif", function () {
         const RGBA_8888 = image.PixelMapFormat.RGBA_8888;
         const EXPECTFRAMECOUNT = 3;
+        const ERR_CODE = 62980149;
         const ERR_CODE1 = 62980096;
         const ERR_CODE2 = 62980118;
         let filePath;
@@ -165,6 +166,37 @@ export default function imageGif() {
                     console.info(`${testNum} delayTimes show end`);
                     done();
                 });
+            }
+        }
+
+        async function getDisposalTypePromise(done, testNum, picName) {
+            await getFd(picName);
+            let imageSourceApi = image.createImageSource(fdNumber);
+            if (imageSourceApi == undefined) {
+                console.info(`${testNum} getDisposalTypePromise create imagesource failed`);
+                expect(false).assertTrue();
+                done();
+            } else {
+                try {
+                    console.info(`${testNum} getDisposalTypePromise create imagesource success`);
+                    imageSourceApi.getDisposalTypeList().then((disposalTypes) => {
+                        console.info(`${testNum} getDisposalTypePromise getDisposalTypeList success`);
+                        expect(true).assertTrue();
+                        console.info(`${testNum} disposalTypes show begin length: ${disposalTypes.length} `);
+                        for (var i = 0; i < disposalTypes.length; i++) {
+                            console.info(`${testNum} disposalTypes[ ${i} ]= ${disposalTypes[i]}`);
+                        }
+                        console.info(`${testNum} disposalTypes show end`);
+                    }).catch((err) => {
+                        console.info(`${testNum} getDisposalTypePromise getDisposalTypeList failed err: code is ${err.code},message is ${err.message}`);
+                        expect(err.code == ERR_CODE).assertTrue();
+                    })
+                    done();
+                } catch (error) {
+                    console.log(`${testNum} getDisposalTypePromise err: ${error}`);
+                    expect(false).assertTrue();
+                    done();
+                };
             }
         }
 
@@ -315,28 +347,93 @@ export default function imageGif() {
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_PROMISE_0100
-         * @tc.name      :  getDelayTime - promise
-         * @tc.desc      : 1.create imagesource
-         *                 2.getDelayTime
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
+         * @tc.name      : test getDelayTimeList(promise) one frame gif
+         * @tc.desc      : 1.create one frame gif imagesource
+         *                 2.getDelayTimeList(promise)
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_PROMISE_0100", 0, async function (done) {
-            getDelayTimePromise(done, "SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_PROMISE_0100", "moving_test.gif");
+            getDelayTimePromise(done, "SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_PROMISE_0100", "test.gif");
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_PROMISE_0200
+         * @tc.name      : test getDelayTimeList(promise) gif
+         * @tc.desc      : 1.create gif imagesource
+         *                 2.getDelayTimeList(promise)
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_PROMISE_0200", 0, async function (done) {
+            getDelayTimePromise(done, "SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_PROMISE_0200", "moving_test.gif");
         });
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_CALLBACK_0100
-         * @tc.name      :  getDelayTime - callback
-         * @tc.desc      : 1.create imagesource
-         *                 2.getDelayTime
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
+         * @tc.name      : test getDelayTimeList(callback) one frame gif
+         * @tc.desc      : 1.create one frame gif imagesource
+         *                 2.getDelayTimeList(callback)
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
          * @tc.level     : Level 0
          */
         it("SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_CALLBACK_0100", 0, async function (done) {
-            getDelayTimeCallBack(done, "SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_CALLBACK_0100", "moving_test.gif");
+            getDelayTimeCallBack(done, "SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_CALLBACK_0100", "test.gif");
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_CALLBACK_0200
+         * @tc.name      : test getDelayTimeList(callback) gif
+         * @tc.desc      : 1.create gif imagesource
+         *                 2.getDelayTimeList(callback)
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_CALLBACK_0200", 0, async function (done) {
+            getDelayTimeCallBack(done, "SUB_MULTIMEDIA_IMAGE_GIF_GETDELAYTIME_CALLBACK_0200", "moving_test.gif");
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_GETDISPOSALTYPE_PROMISE_0100
+         * @tc.name      : test getDisposalType promise for gif
+         * @tc.desc      : 1.create gif imagesource
+         *                 2.getDisposalType
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GIF_GETDISPOSALTYPE_PROMISE_0100", 0, async function (done) {
+            getDisposalTypePromise(done, "SUB_MULTIMEDIA_IMAGE_GIF_GETDISPOSALTYPE_PROMISE_0100", "moving_test.gif");
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_GETDISPOSALTYPE_PROMISE_0200
+         * @tc.name      : test getDisposalType promise for one frame gif
+         * @tc.desc      : 1.create one frame gif imagesource
+         *                 2.getDisposalType
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GIF_GETDISPOSALTYPE_PROMISE_0200", 0, async function (done) {
+            getDisposalTypePromise(done, "SUB_MULTIMEDIA_IMAGE_GIF_GETDISPOSALTYPE_PROMISE_0200", "test.gif");
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GIF_GETDISPOSALTYPE_PROMISE_0300
+         * @tc.name      : test getDisposalType promise jpg error
+         * @tc.desc      : 1.create jpg imagesource
+         *                 2.getDisposalType
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_GIF_GETDISPOSALTYPE_PROMISE_0300", 0, async function (done) {
+            getDisposalTypePromise(done, "SUB_MULTIMEDIA_IMAGE_GIF_GETDISPOSALTYPE_PROMISE_0300", "test.jpg");
         });
 
         /**

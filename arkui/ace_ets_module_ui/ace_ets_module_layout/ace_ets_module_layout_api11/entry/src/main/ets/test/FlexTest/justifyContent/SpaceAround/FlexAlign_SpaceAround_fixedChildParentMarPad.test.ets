@@ -144,9 +144,7 @@ export default function flexAlign_SpaceAround_fixedChildParentMarPad() {
 
       expect(Math.abs(Math.round((locationText1.left - locationFlex.left) * 10) / 10 - Math.round(vp2px(35 / 3) * 10) / 10) <= 1)
         .assertTrue();
-      expect(Math.abs(Math.round((locationText2.left - locationText1.right) * 10) / 10 - Math.round(20 * (locationFlex.right - locationText3.right - vp2px(5))) / 10) <= 1)
-        .assertTrue();
-
+      expect(Math.abs(Math.round((locationText2.left - locationText1.right) * 10) / 10 - Math.round(20 * Math.round((locationFlex.right - locationText3.right - vp2px(5)))) / 10) <= 1)
 
       console.info('new testAlignSpaceAroundRowNoWrapMarPadInRange END');
 

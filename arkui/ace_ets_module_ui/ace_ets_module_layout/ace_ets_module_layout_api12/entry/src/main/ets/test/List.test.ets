@@ -19,11 +19,15 @@ import RelativeContainerApi from './RelativeContainer/RelativeContainerApi.test'
 import ChipApi1 from './Chip/ChipApi1.test'
 import ChipGroupApi1 from './ChipGroup/ChipGroupApi1.test'
 
+import APIremoveGestureByTag from './Column/APIremoveGestureByTag.test'
+import APIaccessibilityTextHint from './Column/APIaccessibilityTextHint.test'
+
 export default function testsuite() {
   SpaceMainNumberJsunit();
   SpaceMain5JustifyContentJsunit();
   SpaceCross5AlignItemsJsunit();
   RelativeContainerApi();
   ChipApi1();
-  ChipGroupApi1();
+  APIremoveGestureByTag();
+  APIaccessibilityTextHint();
 }

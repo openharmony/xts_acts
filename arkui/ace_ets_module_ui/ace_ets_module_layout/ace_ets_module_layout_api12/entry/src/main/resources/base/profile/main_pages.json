@@ -1,6 +1,8 @@
 {
     "src": [
         "MainAbility/pages/index/index",
+        "MainAbility/pages/Column/APIaccessibilityTextHint",
+        "MainAbility/pages/Column/APIremoveGestureByTag",
         "MainAbility/pages/Flex/SpaceMainNumber",
         "MainAbility/pages/Flex/SpaceCross5AlignItems",
         "MainAbility/pages/Flex/SpaceMain5JustifyContent",

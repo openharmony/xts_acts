@@ -20,6 +20,7 @@ import featureAbility from "@ohos.ability.featureAbility";
 
 export default function imageWebp() {
     describe("imageWebp", function () {
+        const ERR_CODE = 62980149;
         let globalpixelmap;
         let globalImagesource;
         let globalPacker;
@@ -509,6 +510,67 @@ export default function imageWebp() {
                     done();
                 });
             console.info(`${testNum} leave`);
+        }
+
+        async function getDelayTimePromise(done, testNum, file) {
+            await getFd(file);
+            let imageSourceApi = image.createImageSource(filePath);
+            if (imageSourceApi == undefined) {
+                console.info(`${testNum} getDelayTimePromise create image source failed`);
+                expect(false).assertTrue();
+                done();
+            } else {
+                try {
+                    console.info(`${testNum} getDelayTimePromise create image source success`);
+                    globalImagesource = imageSourceApi;
+                    imageSourceApi.getDelayTimeList().then((delayTimes) => {
+                        console.info(`${testNum} getDelayTimePromise getDelayTime success`);
+                        expect(true).assertTrue();
+                        console.info(`${testNum} delayTimes show begin length: ${delayTimes.length} `);
+                        for (var i = 0; i < delayTimes.length; i++) {
+                            console.info(`${testNum} delayTimes[ ${i} ]= ${delayTimes[i]}`);
+                        }
+                        console.info(`${testNum} delayTimes show end`);
+                    }).catch((err) => {
+                        console.info(`${testNum} getDelayTimePromise getDelayTime failed err: code is ${err.code}, message is ${err.message}`);
+                        expect(err.code == ERR_CODE).assertTrue();
+                    })
+                    done();
+                } catch (error) {
+                    console.log("getDelayTimePromise error: " + error);
+                    expect(false).assertTrue();
+                    done();
+                }
+            }
+        }
+
+        async function getDelayTimeCallBack(done, testNum, file) {
+            await getFd(file);
+            let imageSourceApi = image.createImageSource(filePath);
+            if (imageSourceApi == undefined) {
+                console.info(`${testNum} getDelayTimeCallBack create imagesource failed`);
+                expect(false).assertTrue();
+                done();
+            } else {
+                console.info(`${testNum} getDelayTimeCallBack create imagesource success`);
+                globalImagesource = imageSourceApi;
+                imageSourceApi.getDelayTimeList((err, delayTimes) => {
+                    if (err != undefined) {
+                        console.info(`${testNum} getDelayTimeCallBack getDelayTime failed err: code is ${err.code}, message is ${err.message}`);
+                        expect(err.code == ERR_CODE).assertTrue();
+                        done();
+                        return;
+                    }
+                    expect(delayTimes != undefined).assertTrue();
+                    console.info(`${testNum} getDelayTimeCallBack getDelayTime success`);
+                    console.info(`${testNum} delayTimes show begin(length:` + delayTimes.length + `)`);
+                    for (var i = 0; i < delayTimes.length; i++) {
+                        console.info(`${testNum} delayTimes[` + i + `]=` + delayTimes[i]);
+                    }
+                    console.info(`${testNum} delayTimes show end`);
+                    done();
+                });
+            }
         }
 
         /**
@@ -1180,6 +1242,85 @@ export default function imageWebp() {
         it("SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_PROMISE_0200", 0, async function (done) {
             let packOpts = { format: ["image/jpeg"], quality: 0 };
             packingPromise(done, "SUB_MULTIMEDIA_IMAGE_WEBP_PACKING_PROMISE_0200", packOpts);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_PROMISE_0100
+         * @tc.name      : test getDelayTime promise for one frame webp
+         * @tc.desc      : 1.create one frame webp imagesource
+         *                 2.getDelayTime
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_PROMISE_0100", 0, async function (done) {
+            getDelayTimePromise(done, "SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_PROMISE_0100", "test_large.webp");
+        });
+
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_PROMISE_0200
+         * @tc.name      : test getDelayTime promise for webp
+         * @tc.desc      : 1.create webp imagesource
+         *                 2.getDelayTime
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_PROMISE_0200", 0, async function (done) {
+            getDelayTimePromise(done, "SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_PROMISE_0200", "moving_test.webp");
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_PROMISE_0300
+         * @tc.name      : test getDelayTime promise for unsupported jpg
+         * @tc.desc      : 1.create jpg imagesource
+         *                 2.getDelayTime
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_PROMISE_0300", 0, async function (done) {
+            getDelayTimePromise(done, "SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_PROMISE_0300", "test.jpg");
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_CALLBACK_0100
+         * @tc.name      : test getDelayTime callback for one frame webp
+         * @tc.desc      : 1.create one frame webp imagesource
+         *                 2.getDelayTime with callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_CALLBACK_0100", 0, async function (done) {
+            getDelayTimeCallBack(done, "SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_CALLBACK_0100", "test_large.webp");
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_CALLBACK_0200
+         * @tc.name      : test getDelayTime callback for webp
+         * @tc.desc      : 1.create webp imagesource
+         *                 2.getDelayTime with callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_CALLBACK_0200", 0, async function (done) {
+            getDelayTimeCallBack(done, "SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_CALLBACK_0200", "moving_test.webp");
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_CALLBACK_0300
+         * @tc.name      : test getDelayTime callback for unsupported jpg
+         * @tc.desc      : 1.create jpg imagesource
+         *                 2.getDelayTime with callback
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_CALLBACK_0300", 0, async function (done) {
+            getDelayTimeCallBack(done, "SUB_MULTIMEDIA_IMAGE_WEBP_GETDELAYTIME_CALLBACK_0300", "test.jpg");
         });
     });
 }

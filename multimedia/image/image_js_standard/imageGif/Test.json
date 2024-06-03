@@ -27,7 +27,9 @@
             "type": "PushKit",
             "pre-push": [],
             "push": [
-                "./resource/image/moving_test.gif ->/data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/files"
+                "./resource/image/moving_test.gif ->/data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/files",
+                "./resource/image/test.gif ->/data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/files",
+                "./resource/image/test.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image/haps/entry/files"
             ]
         },
         {

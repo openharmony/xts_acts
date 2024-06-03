@@ -1,6 +1,7 @@
 {
     "src": [
         "MainAbility/pages/index/index",
-        "MainAbility/pages/Canvas/APICanvasSize"
+        "MainAbility/pages/Canvas/APICanvasSize",
+        "MainAbility/pages/DrawModifier/DrawModifier"
     ]
 }
