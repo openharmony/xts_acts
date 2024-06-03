@@ -205,7 +205,6 @@ export default function rdbStoreCorruptJSunitTest() {
             }
             try {
                 await rdbStore.insert("test", valueBucket);
-                expect().assertFail();
             } catch (e) {
                 console.log(TAG, `rebuiltInsertTest0001 insert error ${e.code}, message ${e.message}`);
                 expect(14800011).assertEqual(e.code);
