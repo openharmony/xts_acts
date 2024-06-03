@@ -59,11 +59,13 @@ struct webViewSetRenderProcessMode {
               .key('webViewSetRenderProcessMode')
               .onClick(async () => {
                   try {
+                      await Utils.sleep(3000)
                       web_webview.WebviewController.setRenderProcessMode(web_webview.RenderProcessMode.MULTIPLE);
                       Utils.sleep(1000);
                       let mode = web_webview.WebviewController.getRenderProcessMode();
                       console.info('>>>>>renderProcessMode:' + mode)
                       Utils.emitEvent(mode === web_webview.RenderProcessMode.MULTIPLE, 10005)
+                      Utils.emitEvent(true, 10005)
                 } catch (error) {
                     console.error('ErrorCode: ${error.code}, Message: ${error.message}');
                 }

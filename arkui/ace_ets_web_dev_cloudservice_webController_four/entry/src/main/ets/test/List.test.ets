@@ -16,10 +16,12 @@ import webViewGetFrameUrlResourceType from './webViewGetFrameUrlResourceType.tes
 import webViewAnrCallback from './webViewAnrCallback.test';
 import webViewOnViewportFitChange from './webViewOnViewportFitChange.test';
 import webViewWarmupServiceWorker from './webViewWarmupServiceWorker.test';
+import webViewWebResourceTypeProps from './webViewWebResourceTypeProps.test';
 
 export default function testsuite() {
   webViewGetFrameUrlResourceType()
   webViewOnViewportFitChange()
   webViewWarmupServiceWorker()
+  webViewWebResourceTypeProps()
   webViewAnrCallback()
 }

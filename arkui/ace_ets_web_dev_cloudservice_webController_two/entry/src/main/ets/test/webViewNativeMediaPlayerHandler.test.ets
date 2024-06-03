@@ -42,7 +42,7 @@ export default function webViewNativeMediaPlayerHandler() {
     });
       
     beforeEach(async (done: Function) => {
-        await Utils.sleep(1000);
+        await Utils.sleep(2000);
       console.info("webViewNativeMediaPlayerHandler beforeEach start");
       done();
     })
