@@ -55,7 +55,7 @@ struct webViewWebResourceTypeProps {
               Button('web click')
               .key('webViewWebResourceTypeProps')
               .onClick(async () => {
-                  console.info("key==>" + this.emitKey)
+                  console.info('key==>' + this.emitKey)
                   this.controller.loadUrl($rawfile('resourceType.html'))
                   await Utils.sleep(1000)
                   switch (this.emitKey) {
