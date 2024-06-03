@@ -61,7 +61,7 @@ struct ChipApi1 {
       })
 
       Button('getInspectorTree').onClick(()=>{
-        this.text1 = '' + JSON.parse(JSON.stringify(getInspectorTree())).$children[0].$children[0].$children[0].$children[0].$attrs.backgroundColor
+        this.text1 = '' + JSON.parse(JSON.stringify(getInspectorTree())).$children[0].$children[0].$attrs.backgroundColor
 
       }).id('ChipApi1_btn1')
 
