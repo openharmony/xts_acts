@@ -17,16 +17,8 @@
 #include "hctest.h"
 #include "devattest_interface.h"
 
-#define DEVATTEST_INIT -2
-#define DEVATTEST_SUCCESS 0
-
-typedef enum {
-    SOFTWARE_RESULT_VERSIONID,
-    SOFTWARE_RESULT_PATCHLEVEL,
-    SOFTWARE_RESULT_ROOTHASH,
-    SOFTWARE_RESULT_PCID,
-    SOFTWARE_RESULT_RESERVE,
-} SOFTWARE_RESULT_DETAIL_TYPE;
+#define ACTS_DEVATTEST_INIT      (-2)
+#define ACTS_DEVATTEST_SUCCESS   0
 
 /**
  * @tc.desc      : register a test suite, this suite is used to test basic flow and interface dependency
@@ -57,7 +49,7 @@ static BOOL DeviceAttestFuncTestSuiteTearDown(void)
 
 BOOL AttestStatusNumberValid(int32_t attestStatusNumber)
 {
-    if (attestStatusNumber < DEVATTEST_INIT || attestStatusNumber > DEVATTEST_SUCCESS) {
+    if (attestStatusNumber < ACTS_DEVATTEST_INIT || attestStatusNumber > ACTS_DEVATTEST_SUCCESS) {
         return FALSE;
     }
     return TRUE;
@@ -87,7 +79,7 @@ BOOL AttestStatusValid(AttestResultInfo attestResultInfo)
     if (!AttestStatusNumberValid(attestResultInfo.softwareResultDetail[SOFTWARE_RESULT_RESERVE])) {
         result = FALSE;
     }
-    if (attestResultInfo.authResult == DEVATTEST_SUCCESS) {
+    if (attestResultInfo.authResult == ACTS_DEVATTEST_SUCCESS) {
         if (attestResultInfo.ticketLength <= 0) {
             result = FALSE;
         }
@@ -112,9 +104,9 @@ BOOL AttestStatusValid(AttestResultInfo attestResultInfo)
  */
 LITE_TEST_CASE(DeviceAttestFuncTestSuite, subDeviceAttest0100, LEVEL0)
 {
-    int32_t ret = DEVATTEST_SUCCESS;
+    int32_t ret = ACTS_DEVATTEST_SUCCESS;
     ret = StartDevAttestTask();
-    TEST_ASSERT_EQUAL_INT(ret, DEVATTEST_SUCCESS);
+    TEST_ASSERT_EQUAL_INT(ret, ACTS_DEVATTEST_SUCCESS);
 };
 
 /**
@@ -127,11 +119,11 @@ LITE_TEST_CASE(DeviceAttestFuncTestSuite, subDeviceAttest0100, LEVEL0)
  */
 LITE_TEST_CASE(DeviceAttestFuncTestSuite, subDeviceAttest0200, LEVEL0)
 {
-    int32_t ret = DEVATTEST_SUCCESS;
+    int32_t ret = ACTS_DEVATTEST_SUCCESS;
     AttestResultInfo attestResultInfo = { 0 };
     attestResultInfo.ticket = NULL;
     ret = GetAttestStatus(&attestResultInfo);
-    TEST_ASSERT_EQUAL_INT(ret, DEVATTEST_SUCCESS);
+    TEST_ASSERT_EQUAL_INT(ret, ACTS_DEVATTEST_SUCCESS);
     TEST_ASSERT_EQUAL_INT(AttestStatusValid(attestResultInfo), TRUE);  
 };
 
