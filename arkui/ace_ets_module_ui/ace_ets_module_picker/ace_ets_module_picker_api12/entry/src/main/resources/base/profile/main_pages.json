@@ -21,6 +21,7 @@
         "MainAbility/pages/Toggle/ToggleEnabled",
         "MainAbility/pages/select/selectApi1",
         "MainAbility/pages/select/triggerSelect",
-        "MainAbility/pages/Slider/slideRange"
+        "MainAbility/pages/Slider/slideRange",
+        "MainAbility/pages/Slider/SliderAttrs2"
     ]
 }

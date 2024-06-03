@@ -68,7 +68,7 @@ export default function stackBrightnessTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_STACK_BRIGHTNESS_0400
      * @tc.name       : testStackBrightness004
-     * @tc.desc       : testing brightness for stack with default value
+     * @tc.desc       : testing brightness for stack with normal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -81,7 +81,7 @@ export default function stackBrightnessTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_STACK_BRIGHTNESS_0500
      * @tc.name       : testStackBrightness005
-     * @tc.desc       : testing brightness for stack with normal value
+     * @tc.desc       : testing brightness for stack with large value
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -107,26 +107,13 @@ export default function stackBrightnessTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_STACK_BRIGHTNESS_0700
      * @tc.name       : testStackBrightness007
-     * @tc.desc       : testing brightness for stack with large value
+     * @tc.desc       : testing brightness for stack with normal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
     it('testStackBrightness007', 0, async (done: Function) => {
       expect(nativeFunc.testStackBrightness007()).assertEqual(0)
-      done()
-    })
-
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_STACK_BRIGHTNESS_0800
-     * @tc.name       : testStackBrightness008
-     * @tc.desc       : testing brightness for stack with normal value
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testStackBrightness008', 0, async (done: Function) => {
-      expect(nativeFunc.testStackBrightness008()).assertEqual(0)
       done()
     })
 

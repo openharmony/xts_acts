@@ -36,6 +36,9 @@ static auto createChildNode(ArkUI_NativeNodeAPI_1 *nodeAPI, bool enabled)
     ArkUI_AttributeItem margin_item = {margin_value, sizeof(margin_value) / sizeof(ArkUI_NumberValue)};
     nodeAPI->setAttribute(nodeHandle, NODE_MARGIN, &margin_item);
 
+    ArkUI_AttributeItem label_item = {.string = ""};
+    nodeAPI->setAttribute(nodeHandle, NODE_BUTTON_LABEL, &label_item);
+
     ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_RED}};
     ArkUI_AttributeItem background_color_item = {background_color_value,
                                                  sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};

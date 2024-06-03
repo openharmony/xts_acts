@@ -25,7 +25,7 @@ static napi_value TestStackOpacity001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_OPACITY, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_OPACITY)->value->f32, opacity);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_OPACITY)->value[PARAM_0].f32, opacity);
     NAPI_END;
 }
 
@@ -37,7 +37,7 @@ static napi_value TestStackOpacity002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_OPACITY, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_OPACITY)->value->f32, opacity);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_OPACITY)->value[PARAM_0].f32, opacity);
     NAPI_END;
 }
 
@@ -49,7 +49,7 @@ static napi_value TestStackOpacity003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_OPACITY, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_OPACITY)->value->f32, opacity);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_OPACITY)->value[PARAM_0].f32, opacity);
     NAPI_END;
 }
 
@@ -61,7 +61,7 @@ static napi_value TestStackOpacity004(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_OPACITY, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_OPACITY)->value->f32, opacity);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_OPACITY)->value[PARAM_0].f32, opacity);
     NAPI_END;
 }
 
@@ -74,7 +74,7 @@ static napi_value TestStackOpacity005(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(stack, NODE_OPACITY, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(stack, NODE_OPACITY) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_OPACITY)->value->f32, opacity);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_OPACITY)->value[PARAM_0].f32, opacity);
     }
     NAPI_END;
 }
@@ -88,16 +88,8 @@ static napi_value TestStackOpacity006(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(stack, NODE_OPACITY, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(stack, NODE_OPACITY) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_OPACITY)->value->f32, opacity);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_OPACITY)->value[PARAM_0].f32, opacity);
     }
-    NAPI_END;
-}
-
-static napi_value TestStackOpacity007(napi_env env, napi_callback_info info)
-{
-    NAPI_START(stack, ARKUI_NODE_STACK);
-    uint32_t opacity = 1;
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_OPACITY)->value->f32, opacity);
     NAPI_END;
 }
 

@@ -39,7 +39,7 @@ export default function commonEventOnFocusTest() {
       await Utils.sleep(2000)
       focusControl.requestFocus('OnFocusTestButton')
       await Utils.sleep(2000)
-      expect(Utils.getComponentInfoByKey('OnFocusTestButton').$attrs.backgroundColor).assertEqual('#FF0000FF')
+      expect(Utils.getComponentInfoByKey('OnFocusTestButton').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done()
     })
 

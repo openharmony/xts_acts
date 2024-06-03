@@ -25,8 +25,6 @@ struct RelativeContainer_AnchorPoint_TwoDirection {
     Row() {
       RelativeContainer() {
         Row()
-          .width(100)
-          .height(100)
           .backgroundColor("#FF66FF")
           .alignRules({
             top: { anchor: "__container__", align: VerticalAlign.Top },

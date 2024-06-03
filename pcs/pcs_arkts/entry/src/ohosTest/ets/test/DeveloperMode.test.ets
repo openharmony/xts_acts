@@ -21,6 +21,7 @@ import fs from '@ohos.file.fs';
 import hilog from '@ohos.hilog';
 import deviceInfo from '@ohos.deviceInfo';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import AbilityUtils from './AbilityUtils';
 
 class testClass {
   number: Number = 0
@@ -34,6 +35,7 @@ export default function developerModeTest() {
     beforeAll(async (done: Function) => {
       abilityContext = AppStorage.get<common.UIAbilityContext>('TestAbilityContext') as common.UIAbilityContext
       applicationContext = abilityContext.getApplicationContext()
+      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       done()
     })
     

@@ -26,7 +26,7 @@ static napi_value TestSwiperWidth001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem width_value_item = {width_value, sizeof(width_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_WIDTH, &width_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_WIDTH)->value->f32, width);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_WIDTH)->value[PARAM_0].f32, width);
     NAPI_END;
 }
 
@@ -40,7 +40,7 @@ static napi_value TestSwiperWidth002(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(swiper, NODE_WIDTH, &width_value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(swiper, NODE_WIDTH) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(swiper, NODE_WIDTH)->value->f32, width);
+        ASSERT_NE(nodeAPI->getAttribute(swiper, NODE_WIDTH)->value[PARAM_0].f32, width);
     }
     NAPI_END;
 }
@@ -54,7 +54,7 @@ static napi_value TestSwiperWidth003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem width_value_item = {width_value, sizeof(width_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_WIDTH, &width_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_WIDTH)->value->f32, width);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_WIDTH)->value[PARAM_0].f32, width);
     NAPI_END;
 }
 

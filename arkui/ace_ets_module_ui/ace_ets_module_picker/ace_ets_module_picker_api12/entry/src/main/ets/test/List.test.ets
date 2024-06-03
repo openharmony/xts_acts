@@ -35,6 +35,7 @@ import selectApi1 from './select/selectApi1.test'
 import triggerSelect from './select/triggerSelect.test'
 import slideRange from './SliderTest/slideRange.test'
 
+import SliderAttrs2 from './SliderTest/SliderAttrs2.test'
 export default function testsuite() {
     gradientHeight()
     dividerJsunit()
@@ -57,4 +58,5 @@ export default function testsuite() {
     selectApi1();
     triggerSelect()
     slideRange()
+    SliderAttrs2();
 }

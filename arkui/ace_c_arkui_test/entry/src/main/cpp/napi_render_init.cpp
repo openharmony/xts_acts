@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+#include "button/button_onclick_test.h"
+#include "checkbox/checkbox_onchange_test.h"
 #include "common/common.h"
 #include "commonattrs/commonattrs_enabled_test.h"
 #include "commonattrs/commonattrs_focusable_test.h"
@@ -24,6 +26,9 @@
 #include "commonevent/commonevent_onclick_test.h"
 #include "commonattrs/commonattrs_hittestbehavior_test.h"
 #include "commonattrs/commonattrs_id_test.h"
+#include "customcomponent/customcomponent_onmeasure_test.h"
+#include "customcomponent/customcomponent_onlayout_test.h"
+#include "customcomponent/customcomponent_ondraw_test.h"
 #include "image/image_hittestbehavior_test.h"
 #include "image/image_id_test.h"
 #include "image/image_oncomplete_test.h"
@@ -42,11 +47,47 @@
 #include "scroll/scroll_onscrollstart_test.h"
 #include "scroll/scroll_onscrollstop_test.h"
 #include "scroll/scroll_scrolledge_test.h"
+#include "scroll/scroll_scrollto_test.h"
+#include "scroll/scroll_currentoffset_test.h"
 #include "stack/stack_hittestbehavior_test.h"
 #include "stack/stack_onareachange_test.h"
 #include "stack/stack_ontouch_test.h"
 #include "text/text_enabled_test.h"
 #include "manager/plugin_manager.h"
+#include "calendarpicker/calendarpicker_onchange_test.h"
+#include "textpicker/textpicker_onchange_test.h"
+#include "datepicker/datepicker_ondatechange_test.h"
+#include "timepicker/timepicker_onchange_test.h"
+#include "customcomponent/customcomponent_enabled_test.h"
+#include "customcomponent/customcomponent_focusable_test.h"
+#include "customcomponent/customcomponent_onappear_test.h"
+#include "customcomponent/customcomponent_ontouch_test.h"
+#include "customcomponent/customcomponent_onareachange_test.h"
+#include "customcomponent/customcomponent_onblur_test.h"
+#include "customcomponent/customcomponent_onfocus_test.h"
+#include "customcomponent/customcomponent_onclick_test.h"
+#include "customcomponent/customcomponent_hittestbehavior_test.h"
+#include "customcomponent/customcomponent_id_test.h"
+#include "textarea/textarea_enabled_test.h"
+#include "textinput/textinput_enabled_test.h"
+#include "textinput/textinput_onchange_test.h"
+#include "calendarpicker/calendarpicker_enabled_test.h"
+#include "checkbox/checkbox_enabled_test.h"
+#include "datepicker/datepicker_enabled_test.h"
+#include "slider/slider_enabled_test.h"
+#include "refresh/refresh_onrefreshing_test.h"
+#include "refresh/refresh_onstatechange_test.h"
+#include "textarea/textarea_onfocus_test.h"
+#include "textarea/textarea_onblur_test.h"
+#include "textarea/textarea_key_test.h"
+#include "textinput/textinput_key_test.h"
+#include "textarea/textarea_onchange_test.h"
+#include "slider/slider_onchange_test.h"
+#include "textinput/textinput_onblur_test.h"
+#include "textinput/textinput_onfocus_test.h"
+#include "textinput/textinput_onsubmit_test.h"
+#include "textinput/textinput_oncut_test.h"
+#include "textinput/textinput_onpaste_test.h"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -60,6 +101,10 @@ static napi_value Init(napi_env env, napi_value exports)
 
     napi_property_descriptor desc[] = {
         {"getContext", nullptr, PluginManager::GetContext, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"buttonOnClickTest", nullptr, ButtonOnClickTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"checkboxOnChangeTest", nullptr, CheckboxOnChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
         {"commonAttrsEnabledTest", nullptr, CommonAttrsEnabledTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"commonAttrsFocusableTest", nullptr, CommonAttrsFocusableTest::CreateNativeNode, nullptr, nullptr, nullptr,
@@ -80,6 +125,12 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, napi_default, nullptr},
         {"commonAttrsIdTest", nullptr, CommonAttrsIdTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
          nullptr},
+        {"customComponentOnMeasureTest", nullptr, CustomComponentOnMeasureTest::CreateNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"customComponentOnLayoutTest", nullptr, CustomComponentOnLayoutTest::CreateNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"customComponentOnDrawTest", nullptr, CustomComponentOnDrawTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
         {"imageHitTestBehaviorTest", nullptr, ImageHitTestBehaviorTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"imageIdTest", nullptr, ImageIdTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -125,8 +176,14 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"scrollOnScrollStartTest", nullptr, ScrollOnScrollStartTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"scrollHitTestBehaviorTest", nullptr, ScrollHitTestBehaviorTest::CreateNativeNode, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
+        {"scrollHitTestBehaviorDefaultTest", nullptr, ScrollHitTestBehaviorTest::CreateNativeNodeDefault, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"scrollHitTestBehaviorBlockTest", nullptr, ScrollHitTestBehaviorTest::CreateNativeNodeBlock, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"scrollHitTestBehaviorTransparentTest", nullptr, ScrollHitTestBehaviorTest::CreateNativeNodeTransparent,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"scrollHitTestBehaviorNoneTest", nullptr, ScrollHitTestBehaviorTest::CreateNativeNodeNone, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
         {"textEnabledTest", nullptr, TextEnabledTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"stackHitTestBehaviorTest", nullptr, StackHitTestBehaviorTest::CreateNativeNode, nullptr, nullptr, nullptr,
@@ -135,6 +192,130 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"stackOnTouchTest", nullptr, StackOnTouchTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
          nullptr},
+        {"calendarPickerOnChangeTest", nullptr, CalendarPickerOnChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"textPickerOnChangeTest", nullptr, TextPickerOnChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"datePickerOnDateChangeTest", nullptr, DatePickerOnDateChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"timePickerOnChangeTest", nullptr, TimePickerOnChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"customComponentEnabledTest", nullptr, CustomComponentEnabledTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"customComponentFocusableTest", nullptr, CustomComponentFocusableTest::CreateNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"customComponentOnAppearTest", nullptr, CustomComponentOnAppearTest::CreateNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"customComponentOnAreaChangeTest", nullptr, CustomComponentOnAreaChangeTest::CreateNativeNode, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"customComponentOnTouchTest", nullptr, CustomComponentOnTouchTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"customComponentOnBlurTest", nullptr, CustomComponentOnBlurTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"customComponentOnFocusTest", nullptr, CustomComponentOnFocusTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"customComponentOnClickTest", nullptr, CustomComponentOnClickTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"customComponentHitTestBehaviorTest", nullptr, CustomComponentHitTestBehaviorTest::CreateNativeNode, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"customComponentIdTest", nullptr, CustomComponentIdTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"textAreaEnabledTest", nullptr, TextAreaEnabledTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"textInputEnabledTest", nullptr, TextInputEnabledTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"textInputOnChangeTest", nullptr, TextInputOnChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"calendarPickerEnabledTest", nullptr, CalendarPickerEnabledTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"checkboxEnabledTest", nullptr, CheckboxEnabledTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"datePickerEnabledTest", nullptr, DatePickerEnabledTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"sliderEnabledTest", nullptr, SliderEnabledTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"refreshOnRefreshingTest", nullptr, RefreshOnRefreshingTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"refreshOnStateChangeTest", nullptr, RefreshOnStateChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"textAreaOnFocusTest", nullptr, TextAreaOnFocusTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"textAreaOnBlurTest", nullptr, TextAreaOnBlurTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"textAreaKeyTest", nullptr, TextAreaKeyTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"textInputKeyTest", nullptr, TextInputKeyTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"textAreaOnChangeTest", nullptr, TextAreaOnChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"textAreaOnChangeTypeTest", nullptr, TextAreaOnChangeTest::ChangeType, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"sliderOnChangeTest", nullptr, SliderOnChangeTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"textInputOnFocusTest", nullptr, TextInputOnFocusTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"textInputOnBlurTest", nullptr, TextInputOnBlurTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"textInputOnSubmitTest", nullptr, TextInputOnSubmitTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"textInputOnCutTest", nullptr, TextInputOnCutTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"textInputOnPasteTest", nullptr, TextInputOnPasteTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"scrollScrollToLinearTest", nullptr, ScrollScrollToTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"scrollScrollToEaseTest", nullptr, ScrollScrollToTest::CreateNativeNodeEase, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"scrollScrollToEaseInOutTest", nullptr, ScrollScrollToTest::CreateNativeNodeEaseInOut, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"scrollScrollToEaseInTest", nullptr, ScrollScrollToTest::CreateNativeNodeEaseIn, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"scrollScrollToEaseOutTest", nullptr, ScrollScrollToTest::CreateNativeNodeEaseOut, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"scrollScrollToExtremeDecelerationTest", nullptr, ScrollScrollToTest::CreateNativeNodeExtremeDeceleration,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"scrollScrollToFastOutLinearInTest", nullptr, ScrollScrollToTest::CreateNativeNodeFastOutLinearIn, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"scrollScrollToFastOutSlowInTest", nullptr, ScrollScrollToTest::CreateNativeNodeFastOutSlowIn, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"scrollScrollToFrictionTest", nullptr, ScrollScrollToTest::CreateNativeNodeFriction, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"scrollScrollToLinearOutSlowInTest", nullptr, ScrollScrollToTest::CreateNativeNodeLinearOutSlowIn, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"scrollScrollToRhythmTest", nullptr, ScrollScrollToTest::CreateNativeNodeRhythm, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"scrollScrollToSharpTest", nullptr, ScrollScrollToTest::CreateNativeNodeSharp, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"scrollScrollToSmoothTest", nullptr, ScrollScrollToTest::CreateNativeNodeSmooth, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"scrollCurrentOffsetLinearTest", nullptr, ScrollCurrentOffsetTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"scrollCurrentOffsetEaseTest", nullptr, ScrollCurrentOffsetTest::CreateNativeNodeEase, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"scrollCurrentOffsetEaseInOutTest", nullptr, ScrollCurrentOffsetTest::CreateNativeNodeEaseInOut, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"scrollCurrentOffsetEaseInTest", nullptr, ScrollCurrentOffsetTest::CreateNativeNodeEaseIn, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"scrollCurrentOffsetEaseOutTest", nullptr, ScrollCurrentOffsetTest::CreateNativeNodeEaseOut, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"scrollCurrentOffsetExtremeDecelerationTest", nullptr,
+         ScrollCurrentOffsetTest::CreateNativeNodeExtremeDeceleration, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"scrollCurrentOffsetFastOutLinearInTest", nullptr, ScrollCurrentOffsetTest::CreateNativeNodeFastOutLinearIn,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"scrollCurrentOffsetFastOutSlowInTest", nullptr, ScrollCurrentOffsetTest::CreateNativeNodeFastOutSlowIn,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"scrollCurrentOffsetFrictionTest", nullptr, ScrollCurrentOffsetTest::CreateNativeNodeFriction, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"scrollCurrentOffsetLinearOutSlowInTest", nullptr, ScrollCurrentOffsetTest::CreateNativeNodeLinearOutSlowIn,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"scrollCurrentOffsetRhythmTest", nullptr, ScrollCurrentOffsetTest::CreateNativeNodeRhythm, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"scrollCurrentOffsetSharpTest", nullptr, ScrollCurrentOffsetTest::CreateNativeNodeSharp, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"scrollCurrentOffsetSmoothTest", nullptr, ScrollCurrentOffsetTest::CreateNativeNodeSmooth, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

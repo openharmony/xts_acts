@@ -13,6 +13,10 @@
  * limitations under the License.
  */
 
+export const buttonOnClickTest: (a: string) => void;
+
+export const checkboxOnChangeTest: (a: string) => void;
+
 export const commonAttrsEnabledTest: (a: string) => void;
 
 export const commonAttrsFocusableTest: (a: string) => void;
@@ -32,6 +36,12 @@ export const commonEventOnClickTest: (a: string) => void;
 export const commonAttrsHitTestBehaviorTest: (a: string) => void;
 
 export const commonAttrsIdTest: (a: string) => void;
+
+export const customComponentOnMeasureTest: (a: string) => void;
+
+export const customComponentOnLayoutTest: (a: string) => void;
+
+export const customComponentOnDrawTest: (a: string) => void;
 
 export const imageHitTestBehaviorTest: (a: string) => void;
 
@@ -63,7 +73,7 @@ export const toggleEnabledTest: (a: string) => void;
 
 export const scrollNestedScrollTest: (a: string) => void;
 
-export const scrollNestedScrollChangeTestType: (b:number) => void;
+export const scrollNestedScrollChangeTestType: (b: number) => void;
 
 export const scrollOnScrollTest: (a: string) => void;
 
@@ -85,11 +95,67 @@ export const scrollScrollEdgeTest: (a: string, b: number) => void;
 
 export const scrollScrollSnapTest: (a: string) => void;
 
-export const scrollScrollToTest: (a: string, b:string) => void;
+export const scrollScrollToLinearTest: (a: string) => void;
+
+export const scrollScrollToEaseTest: (a: string) => void;
+
+export const scrollScrollToEaseInOutTest: (a: string) => void;
+
+export const scrollScrollToEaseInTest: (a: string) => void;
+
+export const scrollScrollToEaseOutTest: (a: string) => void;
+
+export const scrollScrollToExtremeDecelerationTest: (a: string) => void;
+
+export const scrollScrollToFastOutLinearInTest: (a: string) => void;
+
+export const scrollScrollToFastOutSlowInTest: (a: string) => void;
+
+export const scrollScrollToFrictionTest: (a: string) => void;
+
+export const scrollScrollToLinearOutSlowInTest: (a: string) => void;
+
+export const scrollScrollToRhythmTest: (a: string) => void;
+
+export const scrollScrollToSharpTest: (a: string) => void;
+
+export const scrollScrollToSmoothTest: (a: string) => void;
+
+export const scrollCurrentOffsetLinearTest: (a: string) => void;
+
+export const scrollCurrentOffsetEaseTest: (a: string) => void;
+
+export const scrollCurrentOffsetEaseInOutTest: (a: string) => void;
+
+export const scrollCurrentOffsetEaseInTest: (a: string) => void;
+
+export const scrollCurrentOffsetEaseOutTest: (a: string) => void;
+
+export const scrollCurrentOffsetExtremeDecelerationTest: (a: string) => void;
+
+export const scrollCurrentOffsetFastOutLinearInTest: (a: string) => void;
+
+export const scrollCurrentOffsetFastOutSlowInTest: (a: string) => void;
+
+export const scrollCurrentOffsetFrictionTest: (a: string) => void;
+
+export const scrollCurrentOffsetLinearOutSlowInTest: (a: string) => void;
+
+export const scrollCurrentOffsetRhythmTest: (a: string) => void;
+
+export const scrollCurrentOffsetSharpTest: (a: string) => void;
+
+export const scrollCurrentOffsetSmoothTest: (a: string) => void;
 
 export const scrollOnScrollFrameBeginTest: (a: string) => void;
 
-export const scrollHitTestBehaviorTest: (a: string) => void;
+export const scrollHitTestBehaviorDefaultTest: (a: string) => void;
+
+export const scrollHitTestBehaviorBlockTest: (a: string) => void;
+
+export const scrollHitTestBehaviorTransparentTest: (a: string) => void;
+
+export const scrollHitTestBehaviorNoneTest: (a: string) => void;
 
 export const stackHitTestBehaviorTest: (a: string) => void;
 
@@ -97,4 +163,74 @@ export const stackOnAreaChangeTest: (a: string) => void;
 
 export const stackOnTouchTest: (a: string) => void;
 
+export const textAreaEnabledTest: (a: string) => void;
+
+export const textInputEnabledTest: (a: string) => void;
+
+export const textInputOnChangeTest: (a: string) => void;
+
+export const calendarPickerEnabledTest: (a: string) => void;
+
+export const checkboxEnabledTest: (a: string) => void;
+
+export const datePickerEnabledTest: (a: string) => void;
+
+export const sliderEnabledTest: (a: string) => void;
+
 export const textEnabledTest: (a: string) => void;
+
+export const calendarPickerOnChangeTest: (a: string) => void;
+
+export const textPickerOnChangeTest: (a: string) => void;
+
+export const datePickerOnDateChangeTest: (a: string) => void;
+
+export const timePickerOnChangeTest: (a: string) => void;
+
+export const customComponentEnabledTest: (a: string) => void;
+
+export const customComponentFocusableTest: (a: string) => void;
+
+export const customComponentOnAreaChangeTest: (a: string) => void;
+
+export const customComponentOnAppearTest: (a: string) => void;
+
+export const customComponentOnBlurTest: (a: string) => void;
+
+export const customComponentOnTouchTest: (a: string) => void;
+
+export const customComponentOnFocusTest: (a: string) => void;
+
+export const customComponentOnClickTest: (a: string) => void;
+
+export const customComponentHitTestBehaviorTest: (a: string) => void;
+
+export const customComponentIdTest: (a: string) => void;
+
+export const refreshOnStateChangeTest: (a: string) => void;
+
+export const refreshOnRefreshingTest: (a: string) => void;
+
+export const textAreaOnFocusTest: (a: string) => void;
+
+export const textAreaOnBlurTest: (a: string) => void;
+
+export const textAreaKeyTest: (a: string) => void;
+
+export const textInputKeyTest: (a: string) => void;
+
+export const textAreaOnChangeTest: (a: string) => void;
+
+export const textAreaOnChangeTypeTest: (a: number) => void;
+
+export const sliderOnChangeTest: (a: string) => void;
+
+export const textInputOnBlurTest: (a: string) => void;
+
+export const textInputOnFocusTest: (a: string) => void;
+
+export const textInputOnSubmitTest: (a: string) => void;
+
+export const textInputOnCutTest: (a: string) => void;
+
+export const textInputOnPasteTest: (a: string) => void;

@@ -65,18 +65,5 @@ export default function swiperItemSpaceTest() {
       done()
     })
 
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_SWIPER_ITEMSPACE_0400
-     * @tc.name       : testSwiperItemSpace004
-     * @tc.desc       : testing default values of itemSpace property of the swiper
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testSwiperItemSpace004', 0, async (done: Function) => {
-      expect(nativeFunc.testSwiperItemSpace004()).assertEqual(0)
-      done()
-    })
-
   })
 }

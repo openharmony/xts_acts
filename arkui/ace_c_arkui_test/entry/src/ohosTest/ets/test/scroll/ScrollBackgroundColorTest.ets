@@ -38,5 +38,31 @@ export default function scrollBackgroundColorTest() {
       expect(nativeFunc.testScrollBackgroundColor001()).assertEqual(0)
       done();
     });
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_SCROLL_BACKGROUNDCOLOR_0200
+     * @tc.name       : testScrollBackgroundColor002
+     * @tc.desc       : testing background Color for scroll with default value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testScrollBackgroundColor002', 0, async (done: Function) => {
+      expect(nativeFunc.testScrollBackgroundColor002()).assertEqual(0)
+      done();
+    });
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_SCROLL_BACKGROUNDCOLOR_0300
+     * @tc.name       : testScrollBackgroundColor003
+     * @tc.desc       : testing background Color for scroll with default value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testScrollBackgroundColor003', 0, async (done: Function) => {
+      expect(nativeFunc.testScrollBackgroundColor003()).assertEqual(0)
+      done();
+    });
   })
 }

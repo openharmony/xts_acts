@@ -1,0 +1,12 @@
+{
+    "description": "Configuration for pcs python test",
+    "environment": [
+      {
+        "type": "device"
+      }
+    ],
+    "driver": {
+      "type": "DeviceTest",
+      "py_file": "testPermissionName.py"
+    }
+  }

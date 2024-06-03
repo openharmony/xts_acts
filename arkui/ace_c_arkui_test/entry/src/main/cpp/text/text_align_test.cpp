@@ -25,7 +25,7 @@ static napi_value TestTextAlign001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_ALIGNMENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_ALIGNMENT)->value->i32, align);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_ALIGNMENT)->value[PARAM_0].i32, align);
     NAPI_END;
 }
 
@@ -37,7 +37,7 @@ static napi_value TestTextAlign002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_ALIGNMENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_ALIGNMENT)->value->i32, align);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_ALIGNMENT)->value[PARAM_0].i32, align);
     NAPI_END;
 }
 
@@ -49,7 +49,7 @@ static napi_value TestTextAlign003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_ALIGNMENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_ALIGNMENT)->value->i32, align);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_ALIGNMENT)->value[PARAM_0].i32, align);
     NAPI_END;
 }
 
@@ -61,7 +61,7 @@ static napi_value TestTextAlign004(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_ALIGNMENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_ALIGNMENT)->value->i32, align);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_ALIGNMENT)->value[PARAM_0].i32, align);
     NAPI_END;
 }
 
@@ -73,7 +73,7 @@ static napi_value TestTextAlign005(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_ALIGNMENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_ALIGNMENT)->value->i32, align);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_ALIGNMENT)->value[PARAM_0].i32, align);
     NAPI_END;
 }
 
@@ -85,7 +85,7 @@ static napi_value TestTextAlign006(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_ALIGNMENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_ALIGNMENT)->value->i32, align);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_ALIGNMENT)->value[PARAM_0].i32, align);
     NAPI_END;
 }
 
@@ -97,7 +97,7 @@ static napi_value TestTextAlign007(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_ALIGNMENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_ALIGNMENT)->value->i32, align);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_ALIGNMENT)->value[PARAM_0].i32, align);
     NAPI_END;
 }
 
@@ -109,7 +109,7 @@ static napi_value TestTextAlign008(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_ALIGNMENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_ALIGNMENT)->value->i32, align);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_ALIGNMENT)->value[PARAM_0].i32, align);
     NAPI_END;
 }
 
@@ -121,7 +121,7 @@ static napi_value TestTextAlign009(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_ALIGNMENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_ALIGNMENT)->value->i32, align);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_ALIGNMENT)->value[PARAM_0].i32, align);
     NAPI_END;
 }
 
@@ -130,7 +130,7 @@ static napi_value TestTextAlign010(napi_env env, napi_callback_info info)
     NAPI_START(text, ARKUI_NODE_TEXT);
     int32_t align = ARKUI_ALIGNMENT_CENTER;
     auto textDefault = nodeAPI->createNode(ARKUI_NODE_BUTTON);
-    ASSERT_EQ(nodeAPI->getAttribute(textDefault, NODE_ALIGNMENT)->value->i32, align);
+    ASSERT_EQ(nodeAPI->getAttribute(textDefault, NODE_ALIGNMENT)->value[PARAM_0].i32, align);
     NAPI_END;
 }
 

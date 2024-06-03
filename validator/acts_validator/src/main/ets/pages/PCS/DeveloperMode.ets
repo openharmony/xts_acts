@@ -35,17 +35,17 @@ let abilityContext = getContext(this) as context.UIAbilityContext;
 @Component
 struct testDeveloperMode {
   @State name: string = 'DeveloperMode';
-  @State StepTips: string = '操作步骤：设置保证调试/开发者模式开启' + '\n' + '查看页面读取到的调试/开发者模式状态' + '\n' + '预期结果：页面中调试/开发者模式状态为TRUE';
-  @State TestResult: boolean = false;
-  @State StartEnable: boolean = true;
-  @State Result: string = "UNDEFINED";
+  @State stepTips: string = '操作步骤：设置保证调试/开发者模式开启' + '\n' + '查看页面读取到的调试/开发者模式状态' + '\n' + '预期结果：页面中调试/开发者模式状态为TRUE';
+  @State testResult: boolean = false;
+  @State startEnable: boolean = true;
+  @State result: string = "UNDEFINED";
   scroller: Scroller = new Scroller();
 
   async aboutToAppear() {
-    await FirstDialog.ChooseDialog(this.StepTips, this.name);
-    this.TestResult = false;
-    this.StartEnable = true;
-    this.Result = "UNDEFINED";
+    await FirstDialog.ChooseDialog(this.stepTips, this.name);
+    this.testResult = false;
+    this.startEnable = true;
+    this.result = "UNDEFINED";
   }
 
   @Builder
@@ -67,10 +67,10 @@ struct testDeveloperMode {
               .margin('10vp')
               .onClick(async () => {
                 if(systemparameter.getSync('const.security.developermode.state') == 'true') {
-                  this.Result = "TRUE"
-                  this.TestResult = true
+                  this.result = "TRUE"
+                  this.testResult = true
                 } else {
-                  this.Result = "FLASE"
+                  this.result = "FLASE"
                 }
               })
 
@@ -90,21 +90,21 @@ struct testDeveloperMode {
                   .backgroundColor(0x317aff)
                   .width('50%')
                   .margin('10vp')
-                  .enabled(this.StartEnable)
-                  .opacity(this.StartEnable ? 1 : 0.4)
+                  .enabled(this.startEnable)
+                  .opacity(this.startEnable ? 1 : 0.4)
                   .onClick(async () => {
                     if(systemparameter.getSync('const.security.developermode.state') == 'true') {
-                      this.Result = "TRUE"
-                      this.TestResult = true
+                      this.result = "TRUE"
+                      this.testResult = true
                     } else {
-                      this.Result = "FLASE"
+                      this.result = "FLASE"
                     }
                   })
               }
             }
 
             Row() {
-              Text('\n' + '\n' + `调试/开发者模式状态：` + this.Result)
+              Text('\n' + '\n' + `调试/开发者模式状态：` + this.result)
                 .fontColor(Color.White)
                 .fontSize('24fp')
             }
@@ -125,13 +125,13 @@ struct testDeveloperMode {
     Column() {
       CustomContainer({
         title: this.name,
-        Url: 'pages/PCS/PCS_index',
-        StepTips: this.StepTips,
+        url: 'pages/PCS/PCS_index',
+        stepTips: this.stepTips,
         content: this.specificNoParam,
         name: $name,
-        TestResult: $TestResult,
-        StartEnable: $StartEnable,
-        Result: $Result,
+        testResult: $testResult,
+        startEnable: $startEnable,
+        result: $result,
       })
     }
     .width('100%')

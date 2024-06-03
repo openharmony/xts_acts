@@ -23,7 +23,7 @@ namespace ArkUICapiTest {
 static napi_value TestScrollScrollBar001(napi_env env, napi_callback_info info)
 {
     NAPI_START(scroll, ARKUI_NODE_SCROLL);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_BAR_DISPLAY_MODE)->value->i32,
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_BAR_DISPLAY_MODE)->value[PARAM_0].i32,
               ARKUI_SCROLL_BAR_DISPLAY_MODE_AUTO);
     NAPI_END;
 }
@@ -35,7 +35,7 @@ static napi_value TestScrollScrollBar002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_SCROLL_BAR_DISPLAY_MODE, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_BAR_DISPLAY_MODE)->value->i32,
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_BAR_DISPLAY_MODE)->value[PARAM_0].i32,
               ARKUI_SCROLL_BAR_DISPLAY_MODE_OFF);
     NAPI_END;
 }
@@ -47,7 +47,7 @@ static napi_value TestScrollScrollBar003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_SCROLL_BAR_DISPLAY_MODE, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_BAR_DISPLAY_MODE)->value->i32,
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_BAR_DISPLAY_MODE)->value[PARAM_0].i32,
               ARKUI_SCROLL_BAR_DISPLAY_MODE_ON);
     NAPI_END;
 }
@@ -61,7 +61,7 @@ static napi_value TestScrollScrollBar004(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(scroll, NODE_SCROLL_BAR_DISPLAY_MODE, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(scroll, NODE_SCROLL_BAR_DISPLAY_MODE) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(scroll, NODE_SCROLL_BAR_DISPLAY_MODE)->value->i32, mode);
+        ASSERT_NE(nodeAPI->getAttribute(scroll, NODE_SCROLL_BAR_DISPLAY_MODE)->value[PARAM_0].i32, mode);
     }
     NAPI_END;
 }

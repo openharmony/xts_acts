@@ -24,7 +24,7 @@ static napi_value TestTextLineBreakStrategy001(napi_env env, napi_callback_info 
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_WORD_BREAK, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_WORD_BREAK)->value->i32, ARKUI_WORD_BREAK_NORMAL);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_WORD_BREAK)->value[PARAM_0].i32, ARKUI_WORD_BREAK_NORMAL);
     NAPI_END;
 }
 
@@ -35,7 +35,7 @@ static napi_value TestTextLineBreakStrategy002(napi_env env, napi_callback_info 
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_WORD_BREAK, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_WORD_BREAK)->value->i32, ARKUI_WORD_BREAK_BREAK_ALL);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_WORD_BREAK)->value[PARAM_0].i32, ARKUI_WORD_BREAK_BREAK_ALL);
     NAPI_END;
 }
 
@@ -46,7 +46,7 @@ static napi_value TestTextLineBreakStrategy003(napi_env env, napi_callback_info 
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_WORD_BREAK, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_WORD_BREAK)->value->i32, ARKUI_WORD_BREAK_BREAK_WORD);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_WORD_BREAK)->value[PARAM_0].i32, ARKUI_WORD_BREAK_BREAK_WORD);
     NAPI_END;
 }
 
@@ -58,7 +58,7 @@ static napi_value TestTextLineBreakStrategy004(napi_env env, napi_callback_info 
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_WORD_BREAK, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
     if (nodeAPI->getAttribute(text, NODE_TEXT_WORD_BREAK) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(text, NODE_TEXT_WORD_BREAK)->value->i32, PARAM_NEGATIVE_1);
+        ASSERT_NE(nodeAPI->getAttribute(text, NODE_TEXT_WORD_BREAK)->value[PARAM_0].i32, PARAM_NEGATIVE_1);
     }
     NAPI_END;
 }

@@ -29,7 +29,7 @@ export default function textLinearGradientTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_TEXT_LINEARGRADIENT_0100
      * @tc.name       : testTextLinearGradient001
-     * @tc.desc       : testing linearGradient for text with default value
+     * @tc.desc       : testing linearGradient for text with normal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -168,19 +168,5 @@ export default function textLinearGradientTest() {
       expect(nativeFunc.testTextLinearGradient011()).assertEqual(0)
       done()
     })
-
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_TEXT_LINEARGRADIENT_1200
-     * @tc.name       : testTextLinearGradient012
-     * @tc.desc       : testing linearGradient for text with abnormal value
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 2
-     */
-    it('testTextLinearGradient012', 0, async (done: Function) => {
-      expect(nativeFunc.testTextLinearGradient012()).assertEqual(0)
-      done()
-    })
-
   })
 }

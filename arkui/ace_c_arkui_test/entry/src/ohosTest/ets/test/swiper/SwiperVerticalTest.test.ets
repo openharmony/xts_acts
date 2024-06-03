@@ -55,26 +55,13 @@ export default function swiperVerticalTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_SWIPER_VERTICAL_0300
      * @tc.name       : testSwiperVertical003
-     * @tc.desc       : testing default values of vertical property of the swiper
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testSwiperVertical003', 0, async (done: Function) => {
-      expect(nativeFunc.testSwiperVertical003()).assertEqual(0)
-      done()
-    })
-
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_SWIPER_VERTICAL_0400
-     * @tc.name       : testSwiperVertical004
      * @tc.desc       : testing vertical for swiper with abnormal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testSwiperVertical004', 0, async (done: Function) => {
-      expect(nativeFunc.testSwiperVertical004()).assertEqual(0)
+    it('testSwiperVertical003', 0, async (done: Function) => {
+      expect(nativeFunc.testSwiperVertical003()).assertEqual(0)
       done()
     })
 

@@ -16,6 +16,9 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import bundle from '@ohos.bundle';
 import bundleManager from '@ohos.bundle.bundleManager';
+import { BusinessError } from '@ohos.base';
+import Want from '@ohos.app.ability.Want';
+import wantConstant from '@ohos.app.ability.wantConstant';
 
 export default function actsStageContextTest() {
     describe('ActsStageContextTest', function () {
@@ -342,6 +345,34 @@ export default function actsStageContextTest() {
             expect(count1).assertEqual(1);
             expect(count2).assertEqual(1);
             done();
+        })
+
+        /**
+         * @tc.number: ACTS_StageContext_1500
+         * @tc.name: APP_CLONE_INDEX_KEY with invalid appCloneIndex
+         * @tc.desc: Function test
+         * @tc.size: MediumTest
+         * @tc.type: Function
+         * @tc.level   1
+         */
+        it('ACTS_StageContext_1500',0, async function (done) {
+            let invalidAppCloneIndex = 1001;
+            let want: Want = {
+                bundleName: "com.example.stage_app",
+                abilityName: "MainAbility",
+                parameters: {
+                    [wantConstant.Params.APP_CLONE_INDEX_KEY]: invalidAppCloneIndex
+                }
+            }
+            globalThis.abilityContext.startAbility(want).then(() => {
+                expect().assertFail()
+                done()
+            }).catch((err: BusinessError) => {
+                console.info(`=============ACTS_StageContext_1500 code: ` + err.code);
+                let expectErrCode = 16000073;
+                expect(err.code).assertEqual(expectErrCode);
+                done()
+            })
         })
     })
 }

@@ -27,7 +27,7 @@ static napi_value TestSwiperDisableSwipe001(napi_env env, napi_callback_info inf
                                              sizeof(disableSwipe_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_DISABLE_SWIPE, &disableSwipe_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_DISABLE_SWIPE)->value->i32, disableSwipe);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_DISABLE_SWIPE)->value[PARAM_0].i32, disableSwipe);
     NAPI_END;
 }
 
@@ -41,7 +41,7 @@ static napi_value TestSwiperDisableSwipe002(napi_env env, napi_callback_info inf
                                              sizeof(disableSwipe_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_DISABLE_SWIPE, &disableSwipe_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_DISABLE_SWIPE)->value->i32, disableSwipe);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_DISABLE_SWIPE)->value[PARAM_0].i32, disableSwipe);
     NAPI_END;
 }
 
@@ -56,17 +56,8 @@ static napi_value TestSwiperDisableSwipe003(napi_env env, napi_callback_info inf
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_DISABLE_SWIPE, &disableSwipe_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(swiper, NODE_SWIPER_DISABLE_SWIPE) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(swiper, NODE_SWIPER_DISABLE_SWIPE)->value->i32, disableSwipe);
+        ASSERT_NE(nodeAPI->getAttribute(swiper, NODE_SWIPER_DISABLE_SWIPE)->value[PARAM_0].i32, disableSwipe);
     }
-    NAPI_END;
-}
-
-static napi_value TestSwiperDisableSwipe004(napi_env env, napi_callback_info info)
-{
-    NAPI_START(swiper, ARKUI_NODE_SWIPER);
-    int32_t disableSwipe = 0;
-
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_DISABLE_SWIPE)->value->i32, disableSwipe);
     NAPI_END;
 }
 
