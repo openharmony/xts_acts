@@ -5698,3 +5698,1903 @@ describe('TextEncoderTest', function () {
      * @tc.size: MediumTest
      * @tc.type: Function
      * @tc.level: Level 2
+     */
+    it('testLruBufferContains004', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put('abcd',20)
+      let result1 = that.contains(1)
+      let result2 = that.contains(20)
+      expect(result1).assertEqual(true)
+      expect(result2).assertEqual(false)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0067
+     * @tc.name: testLruBufferContains005
+     * @tc.desc: Checks whether the current buffer contains a specified key.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferContains005', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put('string','string')
+      let result1 = that.contains(1)
+      let result2 = that.contains('string')
+      let result3 = that.contains(0)
+      expect(result1).assertEqual(true)
+      expect(result2).assertEqual(true)
+      expect(result3).assertEqual(false)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0068
+     * @tc.name: testLruBufferRemove001
+     * @tc.desc: Deletes a specified key and its associated value from the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferRemove001', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      let result = that.remove(1)
+      expect(result).assertEqual(2)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0069
+     * @tc.name: testLruBufferRemove002
+     * @tc.desc: Deletes a specified key and its associated value from the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferRemove002', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put('abcd',20)
+      let result1 = that.remove(1)
+      let result2 = that.remove('abcd')
+      expect(result1).assertEqual(2)
+      expect(result2).assertEqual(20)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0070
+     * @tc.name: testLruBufferRemove003
+     * @tc.desc: Deletes a specified key and its associated value from the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferRemove003', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      let result1 = that.remove(1)
+      let result2 = that.remove(5)
+      expect(result1).assertEqual(2)
+      expect(result2).assertEqual(undefined)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0071
+     * @tc.name: testLruBufferRemove004
+     * @tc.desc: Deletes a specified key and its associated value from the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferRemove004', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(0,'abc')
+      that.put('abcd',20)
+      let result1 = that.remove(1)
+      let result2 = that.remove('abcd')
+      expect(result1).assertEqual(undefined)
+      expect(result2).assertEqual(20)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0072
+     * @tc.name: testLruBufferRemove005
+     * @tc.desc: Deletes a specified key and its associated value from the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferRemove005', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(3,10)
+      that.put(5,15)
+      let result1 = that.remove(1)
+      let result2 = that.remove(3)
+      let result3 = that.get(3)
+      expect(result1).assertEqual(2)
+      expect(result2).assertEqual(10)
+      expect(result3).assertEqual(undefined)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0073
+     * @tc.name: testLruBufferCreateDefault001
+     * @tc.desc: Executes subsequent operations if miss to compute a value for the specific key.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferCreateDefault001', 0, function () {
+      let that = new util.LruBuffer()
+      let result = that.createDefault(1)
+      expect(result).assertEqual(undefined)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0074
+     * @tc.name: testLruBufferCreateDefault002
+     * @tc.desc: Executes subsequent operations if miss to compute a value for the specific key.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferCreateDefault002', 0, function () {
+      let that = new util.LruBuffer()
+      let result = that.createDefault(0)
+      expect(result).assertEqual(undefined)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0075
+     * @tc.name: testLruBufferCreateDefault003
+     * @tc.desc: Executes subsequent operations if miss to compute a value for the specific key.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferCreateDefault003', 0, function () {
+      let that = new util.LruBuffer()
+      let result = that.createDefault('string')
+      expect(result).assertEqual(undefined)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0076
+     * @tc.name: testLruBufferCreateDefault004
+     * @tc.desc: Executes subsequent operations if miss to compute a value for the specific key.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferCreateDefault004', 0, function () {
+      let that = new util.LruBuffer()
+      let result = that.createDefault(10)
+      expect(result).assertEqual(undefined)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0077
+     * @tc.name: testLruBufferCreateDefault005
+     * @tc.desc: Executes subsequent operations if miss to compute a value for the specific key.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferCreateDefault005', 0, function () {
+      let that = new util.LruBuffer()
+      let result1 = that.createDefault('abc')
+      let result2 = that.createDefault('ab')
+      expect(result1).assertEqual(undefined)
+      expect(result2).assertEqual(undefined)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0078
+     * @tc.name: testLruBufferKeys001
+     * @tc.desc: Obtains a list of keys for the values in the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferKeys001', 0, function () {
+      let that = new util.LruBuffer()
+      that.put('string','abc')
+      let result = that.keys()
+      expect(result[0]).assertEqual('string')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0079
+     * @tc.name: testLruBufferKeys002
+     * @tc.desc: Obtains a list of keys for the values in the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferKeys002', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(3,10)
+      that.put(5,15)
+      that.put('abc',20)
+      let result = that.keys()
+      expect(result[0]).assertEqual(1)
+      expect(result[1]).assertEqual(3)
+      expect(result[2]).assertEqual(5)
+      expect(result[3]).assertEqual('abc')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0080
+     * @tc.name: testLruBufferKeys003
+     * @tc.desc: Obtains a list of keys for the values in the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferKeys003', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(3,10)
+      that.put(5,15)
+      that.put('abc',20)
+      that.get(3)
+      let result = that.keys()
+      expect(result[0]).assertEqual(1)
+      expect(result[1]).assertEqual(5)
+      expect(result[2]).assertEqual('abc')
+      expect(result[3]).assertEqual(3)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0081
+     * @tc.name: testLruBufferKeys004
+     * @tc.desc: Obtains a list of keys for the values in the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferKeys004', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(3,10)
+      that.put(5,15)
+      that.put('abc',20)
+      that.get(3)
+      that.contains(1)
+      let result = that.keys()
+      expect(result[0]).assertEqual(5)
+      expect(result[1]).assertEqual('abc')
+      expect(result[2]).assertEqual(3)
+      expect(result[3]).assertEqual(1)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0082
+     * @tc.name: testLruBufferKeys005
+     * @tc.desc: Obtains a list of keys for the values in the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferKeys005', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(3,10)
+      that.put(5,15)
+      that.put('abc',20)
+      that.get(3)
+      that.remove(5)
+      that.contains(3)
+      that.get(1)
+      that.contains('abc')
+      let result = that.keys()
+      expect(result[0]).assertEqual(3)
+      expect(result[1]).assertEqual(1)
+      expect(result[2]).assertEqual('abc')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0083
+     * @tc.name: testLruBufferValues001
+     * @tc.desc: Obtains a list of all values in the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferValues001', 0, function () {
+      let that = new util.LruBuffer()
+      that.put('string','abc')
+      let result = that.values()
+      expect(result[0]).assertEqual('abc')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0084
+     * @tc.name: testLruBufferValues002
+     * @tc.desc: Obtains a list of all values in the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferValues002', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(3,10)
+      that.put(5,15)
+      that.put('abc',20)
+      let result = that.values()
+      expect(result[0]).assertEqual(2)
+      expect(result[1]).assertEqual(10)
+      expect(result[2]).assertEqual(15)
+      expect(result[3]).assertEqual(20)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0085
+     * @tc.name: testLruBufferValues003
+     * @tc.desc: Obtains a list of all values in the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferValues003', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(3,10)
+      that.put(5,15)
+      that.put('abc',20)
+      that.get(3)
+      let result = that.values()
+      expect(result[0]).assertEqual(2)
+      expect(result[1]).assertEqual(15)
+      expect(result[2]).assertEqual(20)
+      expect(result[3]).assertEqual(10)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0086
+     * @tc.name: testLruBufferValues004
+     * @tc.desc: Obtains a list of all values in the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferValues004', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(3,10)
+      that.put(5,15)
+      that.put('abc',20)
+      that.get(3)
+      that.contains(1)
+      let result = that.values()
+      expect(result[0]).assertEqual(15)
+      expect(result[1]).assertEqual(20)
+      expect(result[2]).assertEqual(10)
+      expect(result[3]).assertEqual(2)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0087
+     * @tc.name: testLruBufferValues005
+     * @tc.desc: Obtains a list of all values in the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferValues005', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(3,10)
+      that.put(5,15)
+      that.put('abc',20)
+      that.get(3)
+      that.remove(5)
+      that.contains(3)
+      that.get(1)
+      that.contains('abc')
+      let result = that.values()
+      expect(result[0]).assertEqual(10)
+      expect(result[1]).assertEqual(2)
+      expect(result[2]).assertEqual(20)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0088
+     * @tc.name: testLruBufferToString001
+     * @tc.desc: Returns a string representation of the object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferToString001', 0, function () {
+      let that = new util.LruBuffer()
+      that.put('1111','bcjdshc')
+      that.put(1,2)
+      let result = that.toString()
+      expect(result).assertEqual('Lrubuffer[ maxSize = 64, hits = 0, misses = 0, hitRate = 0% ]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0089
+     * @tc.name: testLruBufferToString002
+     * @tc.desc: Returns a string representation of the object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferToString002', 0, function () {
+      let that = new util.LruBuffer()
+      that.put('1111','bcjdshc')
+      that.put(1,2)
+      that.get(1)
+      that.get('1111')
+      let result = that.toString()
+      expect(result).assertEqual('Lrubuffer[ maxSize = 64, hits = 2, misses = 0, hitRate = 100% ]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0090
+     * @tc.name: testLruBufferToString003
+     * @tc.desc: Returns a string representation of the object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferToString003', 0, function () {
+      let that = new util.LruBuffer(100)
+      that.put(1,2)
+      that.put(3,10)
+      that.put(5,15)
+      that.put('abc',20)
+      that.get(3)
+      let result = that.toString()
+      expect(result).assertEqual('Lrubuffer[ maxSize = 100, hits = 1, misses = 0, hitRate = 100% ]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0091
+     * @tc.name: testLruBufferToString004
+     * @tc.desc: Returns a string representation of the object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferToString004', 0, function () {
+      let that = new util.LruBuffer(100)
+      that.put(1,2)
+      that.put(3,10)
+      that.put(5,15)
+      that.put('abc',20)
+      that.get(3)
+      that.get(2)
+      let result = that.toString()
+      expect(result).assertEqual('Lrubuffer[ maxSize = 100, hits = 1, misses = 1, hitRate = 50% ]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0092
+     * @tc.name: testLruBufferToString005
+     * @tc.desc: Returns a string representation of the object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferToString005', 0, function () {
+      let that = new util.LruBuffer(100)
+      that.put(1,2)
+      that.put(3,10)
+      that.put(5,15)
+      that.put('abc',20)
+      that.get(3)
+      that.get(2)
+      that.get(1)
+      that.contains(5)
+      let result = that.toString()
+      expect(result).assertEqual('Lrubuffer[ maxSize = 100, hits = 3, misses = 1, hitRate = 75% ]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0093
+     * @tc.name: testLruBufferEntries001
+     * @tc.desc: Returns an array of key-value pairs of enumeratable properties of a given object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferEntries001', 0, function () {
+      let that = new util.LruBuffer()
+      that.put('string','abc')
+      let i=0;
+      let arr={};
+      for (let entry of that.entries()) {
+        arr[i]=entry[0];
+        i++;
+        arr[i]=entry[1];
+        i++;
+      }
+      expect(arr[1]).assertEqual('abc');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0094
+     * @tc.name: testLruBufferEntries002
+     * @tc.desc: Returns an array of key-value pairs of enumeratable properties of a given object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferEntries002', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(3,10)
+      that.put(5,15)
+      that.put('abc',20)
+      let i=0;
+      let arr={};
+      for (let entry of that.entries()) {
+        arr[i]=entry[0];
+        i++;
+        arr[i]=entry[1];
+        i++;
+      }
+      expect(arr[1]).assertEqual(2);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0095
+     * @tc.name: testLruBufferEntries003
+     * @tc.desc: Returns an array of key-value pairs of enumeratable properties of a given object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferEntries003', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(3,10)
+      that.put(5,15)
+      that.put('abc',20)
+      that.get(3)
+      let i=0;
+      let arr={};
+      for (let entry of that.entries()) {
+        arr[i]=entry[0];
+        i++;
+        arr[i]=entry[1];
+        i++;
+      }
+      expect(arr[0]).assertEqual(1);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0096
+     * @tc.name: testLruBufferEntries004
+     * @tc.desc: Returns an array of key-value pairs of enumeratable properties of a given object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferEntries004', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(3,10)
+      that.put(5,15)
+      that.put('abc',20)
+      that.get(3)
+      that.contains(1)
+      let i=0;
+      let arr={};
+      for (let entry of that.entries()) {
+        arr[i]=entry[0];
+        i++;
+        arr[i]=entry[1];
+        i++;
+      }
+      expect(arr[1]).assertEqual(15)
+      expect(arr[3]).assertEqual(20)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0097
+     * @tc.name: testLruBufferEntries005
+     * @tc.desc: Returns an array of key-value pairs of enumeratable properties of a given object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferEntries005', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(3,10)
+      that.put(5,15)
+      that.put('abc',20)
+      that.get(3)
+      that.remove(5)
+      that.contains(3)
+      that.get(1)
+      that.contains('abc')
+      let i=0;
+      let arr={};
+      for (let entry of that.entries()) {
+        arr[i]=entry[0];
+        i++;
+        arr[i]=entry[1];
+        i++;
+      }
+      expect(arr[1]).assertEqual(10)
+      expect(arr[3]).assertEqual(2)
+      expect(arr[5]).assertEqual(20)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0098
+     * @tc.name: testLruBufferSymboliterator001
+     * @tc.desc: Returns a two - dimensional array in the form of key - value pairs.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferSymboliterator001', 0, function () {
+      let that = new util.LruBuffer()
+      that.put('string','abc')
+      that.put('abc',20)
+      let i=0;
+      let arr= [];
+      for (let entry of that[Symbol.iterator]()) {
+        arr[i]=entry[0];
+        i++;
+        arr[i]=entry[1];
+        i++;
+      }
+      expect(arr[1]).assertEqual('abc');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0099
+     * @tc.name: testLruBufferSymboliterator002
+     * @tc.desc: Returns a two - dimensional array in the form of key - value pairs.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferSymboliterator002', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(3,10)
+      that.put(5,15)
+      that.put('abc',20)
+      let i=0;
+      let arr={};
+      for (let entry of that[Symbol.iterator]()) {
+        arr[i]=entry[0];
+        i++;
+        arr[i]=entry[1];
+        i++;
+      }
+      expect(arr[1]).assertEqual(2);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0100
+     * @tc.name: testLruBufferSymboliterator003
+     * @tc.desc: Returns a two - dimensional array in the form of key - value pairs.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferSymboliterator003', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(3,10)
+      that.put(5,15)
+      that.put('abc',20)
+      that.get(3)
+      let i=0;
+      let arr={};
+      for (let entry of that[Symbol.iterator]()) {
+        arr[i]=entry[0];
+        i++;
+        arr[i]=entry[1];
+        i++;
+      }
+      expect(arr[0]).assertEqual(1);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0101
+     * @tc.name: testLruBufferSymboliterator004
+     * @tc.desc: Returns a two - dimensional array in the form of key - value pairs.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferSymboliterator004', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(3,10)
+      that.put(5,15)
+      that.put('abc',20)
+      that.get(3)
+      that.contains(1)
+      let i=0;
+      let arr={};
+      for (let entry of that[Symbol.iterator]()) {
+        arr[i]=entry[0];
+        i++;
+        arr[i]=entry[1];
+        i++;
+      }
+      expect(arr[1]).assertEqual(15)
+      expect(arr[3]).assertEqual(20)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0102
+     * @tc.name: testLruBufferSymboliterator005
+     * @tc.desc: Returns a two - dimensional array in the form of key - value pairs.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferSymboliterator005', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(3,10)
+      that.put(5,15)
+      that.put('abc',20)
+      that.get(3)
+      that.remove(5)
+      that.contains(3)
+      that.get(1)
+      that.contains('abc')
+      let i=0;
+      let arr={};
+      for (let entry of that[Symbol.iterator]()) {
+        arr[i]=entry[0];
+        i++;
+        arr[i]=entry[1];
+        i++;
+      }
+      expect(arr[1]).assertEqual(10)
+      expect(arr[3]).assertEqual(2)
+      expect(arr[5]).assertEqual(20)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0103
+     * @tc.name: testLruBufferAfterRemoval001
+     * @tc.desc: Executes subsequent operations after a value is deleted.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferAfterRemoval001', 0, function () {
+      let arr = [];
+      class ChildLruBuffer extends util.LruBuffer
+      {
+        constructor()
+        {
+          super();
+        }
+        static getInstance()
+        {
+          return new ChildLruBuffer();
+        }
+        afterRemoval(isEvict, key, value, newValue)
+        {
+          if (isEvict === false)
+          {
+            arr = [key, value, newValue];
+          }
+        }
+
+      }
+      ChildLruBuffer.getInstance().afterRemoval(false,10,30,null)
+      expect(arr[0]).assertEqual(10)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0104
+     * @tc.name: testLruBufferAfterRemoval002
+     * @tc.desc: Executes subsequent operations after a value is deleted.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferAfterRemoval002', 0, function () {
+      let arr = [];
+      class ChildLruBuffer extends util.LruBuffer
+      {
+        constructor()
+        {
+          super();
+        }
+        static getInstance()
+        {
+          return new ChildLruBuffer();
+        }
+        afterRemoval(isEvict, key, value, newValue)
+        {
+          if (isEvict === false)
+          {
+            arr = [key, value, newValue];
+          }
+        }
+      }
+      ChildLruBuffer.getInstance().afterRemoval(false,'string',10,null)
+      expect(arr[0]).assertEqual('string')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0105
+     * @tc.name: testLruBufferAfterRemoval003
+     * @tc.desc: Executes subsequent operations after a value is deleted.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferAfterRemoval003', 0, function () {
+      let arr = [];
+      class ChildLruBuffer extends util.LruBuffer
+      {
+        constructor()
+        {
+          super();
+        }
+        static getInstance()
+        {
+          return new ChildLruBuffer();
+        }
+        afterRemoval(isEvict, key, value, newValue)
+        {
+          if (isEvict === false)
+          {
+            arr = [key, value, newValue];
+          }
+        }
+      }
+      ChildLruBuffer.getInstance().afterRemoval(false,10,30,12)
+      expect(arr[2]).assertEqual(12)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0106
+     * @tc.name: testLruBufferAfterRemoval004
+     * @tc.desc: Executes subsequent operations after a value is deleted.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferAfterRemoval004', 0, function () {
+      let arr = [];
+      class ChildLruBuffer extends util.LruBuffer
+      {
+        constructor()
+        {
+          super();
+        }
+        static getInstance()
+        {
+          return new ChildLruBuffer();
+        }
+        afterRemoval(isEvict, key, value, newValue)
+        {
+          if (isEvict === false)
+          {
+            arr = [key, value, newValue];
+          }
+        }
+      }
+      ChildLruBuffer.getInstance().afterRemoval(false,'abc',30,'string')
+      expect(arr[1]).assertEqual(30)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0107
+     * @tc.name: testLruBufferAfterRemoval005
+     * @tc.desc: Executes subsequent operations after a value is deleted.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferAfterRemoval005', 0, function () {
+      let arr = [];
+      class ChildLruBuffer extends util.LruBuffer
+      {
+        constructor()
+        {
+          super();
+        }
+        static getInstance()
+        {
+          return new ChildLruBuffer();
+        }
+        afterRemoval(isEvict, key, value, newValue)
+        {
+          if (isEvict === true)
+          {
+            arr = [key, value, newValue];
+          }
+        }
+      }
+      ChildLruBuffer.getInstance().afterRemoval(true,'abc','ab','string')
+      expect(arr[2]).assertEqual('string')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0108
+     * @tc.name: testLruBufferAfterRemoval006
+     * @tc.desc: Executes subsequent operations after a value is deleted.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferAfterRemoval006', 0, function () {
+      let arr = [];
+      class ChildLruBuffer extends util.LruBuffer
+      {
+        constructor(capacity)
+        {
+          super(capacity);
+        }
+        afterRemoval(isEvict, key, value, newValue)
+        {
+          if (isEvict === true)
+          {
+            arr = [key, value];
+          }
+        }
+      }
+      let that = new ChildLruBuffer(2);
+      that.put(1,2)
+      that.put(3,10)
+      that.put('abc',20)
+      expect(arr[1]).assertEqual(2)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0109
+     * @tc.name: testLruBufferAfterRemoval007
+     * @tc.desc: Executes subsequent operations after a value is deleted.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferAfterRemoval007', 0, function () {
+      let arr = [];
+      class ChildLruBuffer extends util.LruBuffer
+      {
+        constructor(capacity)
+        {
+          super(capacity);
+        }
+        afterRemoval(isEvict, key, value, newValue)
+        {
+          if (isEvict === false)
+          {
+            arr = [key, value, newValue];
+          }
+        }
+      }
+      let that = new ChildLruBuffer(3);
+      that.put(1,2)
+      that.put(3,10)
+      that.put(1,8)
+      expect(arr[2]).assertEqual(8)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_UTIL_0110
+     * @tc.name: testLruBufferAfterRemoval008
+     * @tc.desc: Executes subsequent operations after a value is deleted.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferAfterRemoval008', 0, function () {
+      let arrk = [];
+      let arrv = [];
+      class ChildLruBuffer extends util.LruBuffer
+      {
+        constructor(capacity)
+        {
+          super(capacity);
+        }
+        afterRemoval(isEvict, key, value, newValue)
+        {
+          if (isEvict === false)
+          {
+            arrk = Array.from(key);
+            arrv = Array.from(value);
+          }
+        }
+      }
+      let that = new ChildLruBuffer(3);
+      that.put(1,2)
+      that.put(3,10)
+      that.put(2,8)
+      that.clear();
+      expect(arrk[0]).assertEqual(1)
+      expect(arrk[1]).assertEqual(3)
+      expect(arrk[2]).assertEqual(2)
+      expect(arrv[0]).assertEqual(2)
+      expect(arrv[1]).assertEqual(10)
+      expect(arrv[2]).assertEqual(8)
+    })
+  })
+
+  describe('TypesTest', function() {
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0001
+     * @tc.name: testIsAnyArrayBuffer001
+     * @tc.desc: Check whether the entered value is of arraybuffer or sharedarraybuffer type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsAnyArrayBuffer001', 0, function() {
+      let proc = new util.types();
+      let result = proc.isAnyArrayBuffer(new ArrayBuffer(1));
+      expect(result).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0002
+     * @tc.name: testIsAnyArrayBuffer002
+     * @tc.desc: Check whether the entered value is of arraybuffer or sharedarraybuffer type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsAnyArrayBuffer002', 0, function() {
+      let proc = new util.types();
+      let result = proc.isAnyArrayBuffer(true);
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0003
+     * @tc.name: testIsAnyArrayBuffer003
+     * @tc.desc: Check whether the entered value is of arraybuffer or sharedarraybuffer type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsAnyArrayBuffer003', 0, function() {
+      let proc = new util.types();
+      let result = proc.isAnyArrayBuffer(false);
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0004
+     * @tc.name: testIsAnyArrayBuffer004
+     * @tc.desc: Check whether the entered value is of arraybuffer or sharedarraybuffer type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsAnyArrayBuffer004', 0, function() {
+      let proc = new util.types();
+      let buf = new ArrayBuffer(1);
+      let result = proc.isAnyArrayBuffer(buf);
+      expect(result).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0005
+     * @tc.name: testIsAnyArrayBuffer005
+     * @tc.desc: Check whether the entered value is of arraybuffer or sharedarraybuffer type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsAnyArrayBuffer005', 0, function() {
+      let proc = new util.types();
+      let result = proc.isAnyArrayBuffer(new Boolean(false));
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0006
+     * @tc.name: testIsArrayBufferView001
+     * @tc.desc: Check whether the entered value is napi_ int8_ array or napi_ uint8_ array
+     or naPi_ uint8_ clamped_ array or naPi_ int16_ array or naPi_ uint16_ array or napi_ int32_ array or napi_
+     uint32_ array or napi_ float32_ array or napi_ float64_ array array or DataView type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsArrayBufferView001', 0, function() {
+      let proc = new util.types();
+      let result = proc.isArrayBufferView(new Int8Array([]));
+      expect(result).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0007
+     * @tc.name: testIsArrayBufferView002
+     * @tc.desc: Check whether the entered value is napi_ int8_ array or napi_ uint8_ array
+     or naPi_ uint8_ clamped_ array or naPi_ int16_ array or naPi_ uint16_ array or napi_
+     int32_ array or napi_ uint32_ array or napi_ float32_ array or napi_ float64_ array array or DataView type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsArrayBufferView002', 0, function() {
+      let proc = new util.types();
+      let result = proc.isArrayBufferView(new Int32Array([]));
+      expect(result).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0008
+     * @tc.name: testIsArrayBufferView003
+     * @tc.desc: Check whether the entered value is napi_ int8_ array or napi_ uint8_
+     array or naPi_ uint8_ clamped_ array or naPi_ int16_ array or naPi_ uint16_ array or napi_ int32_ array or
+     napi_ uint32_ array or napi_ float32_ array or napi_ float64_ array array or DataView type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsArrayBufferView003', 0, function() {
+      let proc = new util.types();
+      let result = proc.isArrayBufferView(new DataView(new ArrayBuffer(16)));
+      expect(result).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0009
+     * @tc.name: testIsArrayBufferView004
+     * @tc.desc: Check whether the entered value is napi_ int8_ array or napi_ uint8_ array or naPi_ uint8_
+     clamped_ array or naPi_ int16_ array or naPi_ uint16_ array or napi_ int32_ array or napi_ uint32_ array or
+     napi_ float32_ array or napi_ float64_ array array or DataView type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsArrayBufferView004', 0, function() {
+      let proc = new util.types();
+      let result = proc.isArrayBufferView(false);
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0010
+     * @tc.name: testIsArrayBufferView005
+     * @tc.desc: Check whether the entered value is napi_ int8_ array or napi_ uint8_ array or naPi_ uint8_
+     clamped_ array or naPi_ int16_ array or naPi_ uint16_ array or napi_ int32_ array or napi_ uint32_ array or
+     napi_ float32_ array or napi_ float64_ array array or DataView type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsArrayBufferView005', 0, function() {
+      let proc = new util.types();
+      let result = proc.isArrayBufferView(new Int16Array());
+      expect(result).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0011
+     * @tc.name: testIsArgumentsObject001
+     * @tc.desc: Check whether the entered value is an arguments object type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsArgumentsObject001', 0, function() {
+      let proc = new util.types();
+      function foo() {
+        let result = proc.isArgumentsObject(arguments);
+        expect(result).assertEqual(true);
+      }
+      let f = foo();
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0012
+     * @tc.name: testIsArgumentsObject002
+     * @tc.desc: Check whether the entered value is an arguments object type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsArgumentsObject002', 0, function() {
+      let proc = new util.types();
+      let result = proc.isArgumentsObject(new Int8Array([]));
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0013
+     * @tc.name: testIsArgumentsObject003
+     * @tc.desc: Check whether the entered value is an arguments object type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsArgumentsObject003', 0, function() {
+      let proc = new util.types();
+      let result = proc.isArgumentsObject(true);
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0014
+     * @tc.name: testIsArgumentsObject004
+     * @tc.desc: Check whether the entered value is an arguments object type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsArgumentsObject004', 0, function() {
+      let proc = new util.types();
+      let result = proc.isArgumentsObject(false);
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0015
+     * @tc.name: testIsArgumentsObject005
+     * @tc.desc: Check whether the entered value is an arguments object type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsArgumentsObject005', 0, function() {
+      let proc = new util.types();
+      let result = proc.isArgumentsObject(new Boolean());
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0016
+     * @tc.name: testIsArrayBuffer001
+     * @tc.desc: Check whether the entered value is of arraybuffer type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsArrayBuffer001', 0, function() {
+      let proc = new util.types();
+      let result = proc.isArrayBuffer(new ArrayBuffer(0));
+      expect(result).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0017
+     * @tc.name: testIsArrayBuffer002
+     * @tc.desc: Check whether the entered value is of arraybuffer type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsArrayBuffer002', 0, function() {
+      let proc = new util.types();
+      let result = proc.isArrayBuffer(true);
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0018
+     * @tc.name: testIsArrayBuffer003
+     * @tc.desc: Check whether the entered value is of arraybuffer type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsArrayBuffer003', 0, function() {
+      let proc = new util.types();
+      let result = proc.isArrayBuffer(false);
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0019
+     * @tc.name: testIsArrayBuffer004
+     * @tc.desc: Check whether the entered value is of arraybuffer type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsArrayBuffer004', 0, function() {
+      let proc = new util.types();
+      let result = proc.isArrayBuffer(new Int8Array());
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0020
+     * @tc.name: testIsArrayBuffer005
+     * @tc.desc: Check whether the entered value is of arraybuffer type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsArrayBuffer005', 0, function() {
+      let proc = new util.types();
+      let result = proc.isArrayBuffer(new Int16Array());
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0021
+     * @tc.name: testIsAsyncFunction001
+     * @tc.desc: Check whether the value entered is an asynchronous function type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsAsyncFunction001', 0, function() {
+      let proc = new util.types();
+      let result = proc.isAsyncFunction(false);
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0022
+     * @tc.name: testIsAsyncFunction002
+     * @tc.desc: Check whether the value entered is an asynchronous function type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsAsyncFunction002', 0, function() {
+      let proc = new util.types();
+      let result = proc.isAsyncFunction(function foo() {});
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0023
+     * @tc.name: testIsAsyncFunction003
+     * @tc.desc: Check whether the value entered is an asynchronous function type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsAsyncFunction003', 0, function() {
+      let proc = new util.types();
+      let result = proc.isAsyncFunction(new Int8Array());
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0024
+     * @tc.name: testIsAsyncFunction004
+     * @tc.desc: Check whether the value entered is an asynchronous function type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsAsyncFunction004', 0, function() {
+      let proc = new util.types();
+      let result = proc.isAsyncFunction(true);
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0025
+     * @tc.name: testIsBigInt64Array001
+     * @tc.desc: Check whether the entered value is of bigint64array array type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsBigInt64Array001', 0, function() {
+      let proc = new util.types();
+      let result = proc.isBigInt64Array(new BigInt64Array([]));
+      expect(result).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0026
+     * @tc.name: testIsBigInt64Array002
+     * @tc.desc: Check whether the entered value is of bigint64array array type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsBigInt64Array002', 0, function() {
+      let proc = new util.types();
+      let result = proc.isBigInt64Array(new Int32Array([]));
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0027
+     * @tc.name: testIsBigInt64Array003
+     * @tc.desc: Check whether the entered value is of bigint64array array type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsBigInt64Array003', 0, function() {
+      let proc = new util.types();
+      let result = proc.isBigInt64Array(new Uint8Array([]));
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0028
+     * @tc.name: testIsBigInt64Array004
+     * @tc.desc: Check whether the entered value is of bigint64array array type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsBigInt64Array004', 0, function() {
+      let proc = new util.types();
+      let result = proc.isBigInt64Array(new Float64Array([]));
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0029
+     * @tc.name: testIsBigInt64Array005
+     * @tc.desc: Check whether the entered value is of bigint64array array type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsBigInt64Array005', 0, function() {
+      let proc = new util.types();
+      let result = proc.isBigInt64Array(new Int8Array([]));
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0030
+     * @tc.name: testIsBigUint64Array001
+     * @tc.desc: Check whether the entered value is of biguint64array array array type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsBigUint64Array001', 0, function() {
+      let proc = new util.types();
+      let result = proc.isBigUint64Array(new BigUint64Array([]));
+      expect(result).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0031
+     * @tc.name: testIsBigUint64Array002
+     * @tc.desc: Check whether the entered value is of biguint64array array array type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsBigUint64Array002', 0, function() {
+      let proc = new util.types();
+      let result = proc.isBigUint64Array(new Int8Array([]));
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0032
+     * @tc.name: testIsBigUint64Array003
+     * @tc.desc: Check whether the entered value is of biguint64array array array type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsBigUint64Array003', 0, function() {
+      let proc = new util.types();
+      let result = proc.isBigUint64Array(new Float64Array([]));
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0033
+     * @tc.name: testIsBigUint64Array004
+     * @tc.desc: Check whether the entered value is of biguint64array array array type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsBigUint64Array004', 0, function() {
+      let proc = new util.types();
+      let result = proc.isBigUint64Array(new Uint8Array([]));
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0034
+     * @tc.name: testIsBigUint64Array005
+     * @tc.desc: Check whether the entered value is of biguint64array array array type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsBigUint64Array005', 0, function() {
+      let proc = new util.types();
+      let result = proc.isBigUint64Array(new BigInt64Array([]));
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0035
+     * @tc.name: testIsBigUint64Array006
+     * @tc.desc: Check whether the entered value is of biguint64array array array type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsBigUint64Array006', 0, function() {
+      let proc = new util.types();
+      let result = proc.isBigUint64Array(new Int8Array([]));
+      expect(result).assertEqual(false);
+    })
+
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0036
+     * @tc.name: testIsBooleanObject001
+     * @tc.desc: Check whether the entered value is a Boolean object type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsBooleanObject001', 0, function() {
+      let proc = new util.types();
+      let result = proc.isBooleanObject(new Boolean(false));
+      expect(result).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0037
+     * @tc.name: testIsBooleanObject002
+     * @tc.desc: Check whether the entered value is a Boolean object type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsBooleanObject002', 0, function() {
+      let proc = new util.types();
+      let result = proc.isBooleanObject(new Boolean(true));
+      expect(result).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0038
+     * @tc.name: testIsBooleanObject003
+     * @tc.desc: Check whether the entered value is a Boolean object type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsBooleanObject003', 0, function() {
+      let proc = new util.types();
+      let result = proc.isBooleanObject(true);
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0039
+     * @tc.name: testIsBooleanObject004
+     * @tc.desc: Check whether the entered value is a Boolean object type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsBooleanObject004', 0, function() {
+      let proc = new util.types();
+      let result = proc.isBooleanObject(false);
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0040
+     * @tc.name: testIsBooleanObject005
+     * @tc.desc: Check whether the entered value is a Boolean object type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsBooleanObject005', 0, function() {
+      let proc = new util.types();
+      let result = proc.isBooleanObject(Boolean(true));
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0041
+     * @tc.name: testIsBoxedPrimitive001
+     * @tc.desc: Check whether the entered value is a Boolean or number or string or symbol object type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsBoxedPrimitive001', 0, function() {
+      let proc = new util.types();
+      let result = proc.isBoxedPrimitive(false);
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0042
+     * @tc.name: testIsBoxedPrimitive002
+     * @tc.desc: Check whether the entered value is a Boolean or number or string or symbol object type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsBoxedPrimitive002', 0, function() {
+      let proc = new util.types();
+      let result = proc.isBoxedPrimitive(new Boolean(false));
+      expect(result).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0043
+     * @tc.name: testIsBoxedPrimitive003
+     * @tc.desc: Check whether the entered value is a Boolean or number or string or symbol object type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsBoxedPrimitive003', 0, function() {
+      let proc = new util.types();
+      let result = proc.isBoxedPrimitive(Symbol('foo'));
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0044
+     * @tc.name: testIsBoxedPrimitive004
+     * @tc.desc: Check whether the entered value is a Boolean or number or string or symbol object type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsBoxedPrimitive004', 0, function() {
+      let proc = new util.types();
+      let result = proc.isBoxedPrimitive(Object(Symbol('foo')));
+      expect(result).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0045
+     * @tc.name: testIsBoxedPrimitive005
+     * @tc.desc: Check whether the entered value is a Boolean or number or string or symbol object type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsBoxedPrimitive005', 0, function() {
+      let proc = new util.types();
+      let result = proc.isBoxedPrimitive(new Boolean(true));
+      expect(result).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0046
+     * @tc.name: testIsDataView001
+     * @tc.desc: Check whether the entered value is of DataView type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsDataView001', 0, function() {
+      let proc = new util.types();
+      const ab = new ArrayBuffer(20);
+      let result = proc.isDataView(new DataView(ab));
+      expect(result).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0047
+     * @tc.name: testIsDataView002
+     * @tc.desc: Check whether the entered value is of DataView type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsDataView002', 0, function() {
+      let proc = new util.types();
+      let result = proc.isDataView(new Int8Array());
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0048
+     * @tc.name: testIsDataView003
+     * @tc.desc: Check whether the entered value is of DataView type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsDataView003', 0, function() {
+      let proc = new util.types();
+      let result = proc.isDataView(new Float64Array());
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0049
+     * @tc.name: testIsDataView004
+     * @tc.desc: Check whether the entered value is of DataView type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsDataView004', 0, function() {
+      let proc = new util.types();
+      let result = proc.isDataView(true);
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0050
+     * @tc.name: testIsDataView005
+     * @tc.desc: Check whether the entered value is of DataView type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsDataView005', 0, function() {
+      let proc = new util.types();
+      let result = proc.isDataView(false);
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0051
+     * @tc.name: testIsDate001
+     * @tc.desc: Check whether the entered value is of type date.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsDate001', 0, function() {
+      let proc = new util.types();
+      let result = proc.isDate(new Date());
+      expect(result).assertEqual(true);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0052
+     * @tc.name: testIsDate002
+     * @tc.desc: Check whether the entered value is of type date.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsDate002', 0, function() {
+      let proc = new util.types();
+      let result = proc.isDate(new Int8Array());
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0053
+     * @tc.name: testIsDate003
+     * @tc.desc: Check whether the entered value is of type date.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsDate003', 0, function() {
+      let proc = new util.types();
+      let result = proc.isDate(true);
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0054
+     * @tc.name: testIsDate004
+     * @tc.desc: Check whether the entered value is of type date.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsDate004', 0, function() {
+      let proc = new util.types();
+      let result = proc.isDate(new Int16Array());
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0055
+     * @tc.name: testIsDate005
+     * @tc.desc: Check whether the entered value is of type date.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsDate005', 0, function() {
+      let proc = new util.types();
+      let result = proc.isDate(new Float64Array());
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0056
+     * @tc.name: testIsExternal001
+     * @tc.desc: Check whether the entered value is a native external value type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsExternal001', 0, function() {
+      let proc = new util.types();
+      let result = proc.isExternal(new Float32Array());
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0057
+     * @tc.name: testIsExternal002
+     * @tc.desc: Check whether the entered value is a native external value type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsExternal002', 0, function() {
+      let proc = new util.types();
+      let result = proc.isExternal(new Int8Array([]));
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0058
+     * @tc.name: testIsExternal003
+     * @tc.desc: Check whether the entered value is a native external value type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsExternal003', 0, function() {
+      let proc = new util.types();
+      let result = proc.isExternal(true);
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0059
+     * @tc.name: testIsExternal004
+     * @tc.desc: Check whether the entered value is a native external value type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsExternal004', 0, function() {
+      let proc = new util.types();
+      let result = proc.isExternal(false);
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0060
+     * @tc.name: testIsExternal005
+     * @tc.desc: Check whether the entered value is a native external value type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsExternal005', 0, function() {
+      let proc = new util.types();
+      let result = proc.isExternal(new Int16Array());
+      expect(result).assertEqual(false);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_TYPES_0061
+     * @tc.name: testIsFloat32Array001
+     * @tc.desc: Check whether the entered value is of float32array array type.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testIsFloat32Array001', 0, function() {
+      let proc = new util.types();
+      let result = proc.isFloat32Array(new Float32Array());
+      expect(result).assertEqual(true);
+    })
