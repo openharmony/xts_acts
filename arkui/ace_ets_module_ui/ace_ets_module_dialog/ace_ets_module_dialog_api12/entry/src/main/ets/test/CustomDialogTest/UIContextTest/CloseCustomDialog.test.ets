@@ -28,7 +28,7 @@ export default function CloseCustomDialogTest() {
         router.clear();
         let pages = router.getState();
         console.info("get CloseCustomDialogTest state pages:" + JSON.stringify(pages));
-        if (!("CloseCustomDialogTest" == pages.name)) {
+        if (!("CloseCustomDialog" == pages.name)) {
           console.info("get CloseCustomDialogTest pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
