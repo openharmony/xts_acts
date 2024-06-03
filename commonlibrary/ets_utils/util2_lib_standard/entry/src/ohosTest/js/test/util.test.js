@@ -3798,3 +3798,1903 @@ describe('LRUCacheTest', function () {
      * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_KEYS_005
      * @tc.name: testLRUCacheKeys005
      * @tc.desc: Obtains a list of keys for the values in the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCacheKeys005', 0, function () {
+        var that = new util.LRUCache()
+        that.put(1,2)
+        that.put(3,10)
+        that.put(5,15)
+        that.put('abc',20)
+        that.get(3)
+        that.remove(5)
+        that.contains(3)
+        that.get(1)
+        that.contains('abc')
+        var result = that.keys()
+        expect(result[0]).assertEqual(3)
+        expect(result[1]).assertEqual(1)
+        expect(result[2]).assertEqual('abc')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_VALUES_001
+     * @tc.name: testLRUCacheValues001
+     * @tc.desc: Obtains a list of all values in the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCacheValues001', 0, function () {
+        var that = new util.LRUCache()
+        that.put('string','abc')
+        var result = that.values()
+        expect(result[0]).assertEqual('abc')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_VALUES_002
+     * @tc.name: testLRUCacheValues002
+     * @tc.desc: Obtains a list of all values in the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCacheValues002', 0, function () {
+        var that = new util.LRUCache()
+        that.put(1,2)
+        that.put(3,10)
+        that.put(5,15)
+        that.put('abc',20)
+        var result = that.values()
+        expect(result[0]).assertEqual(2)
+        expect(result[1]).assertEqual(10)
+        expect(result[2]).assertEqual(15)
+        expect(result[3]).assertEqual(20)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_VALUES_003
+     * @tc.name: testLRUCacheValues003
+     * @tc.desc: Obtains a list of all values in the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCacheValues003', 0, function () {
+        var that = new util.LRUCache()
+        that.put(1,2)
+        that.put(3,10)
+        that.put(5,15)
+        that.put('abc',20)
+        that.get(3)
+        var result = that.values()
+        expect(result[0]).assertEqual(2)
+        expect(result[1]).assertEqual(15)
+        expect(result[2]).assertEqual(20)
+        expect(result[3]).assertEqual(10)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_VALUES_004
+     * @tc.name: testLRUCacheValues004
+     * @tc.desc: Obtains a list of all values in the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCacheValues004', 0, function () {
+        var that = new util.LRUCache()
+        that.put(1,2)
+        that.put(3,10)
+        that.put(5,15)
+        that.put('abc',20)
+        that.get(3)
+        that.contains(1)
+        var result = that.values()
+        expect(result[0]).assertEqual(15)
+        expect(result[1]).assertEqual(20)
+        expect(result[2]).assertEqual(10)
+        expect(result[3]).assertEqual(2)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_VALUES_005
+     * @tc.name: testLRUCacheValues005
+     * @tc.desc: Obtains a list of all values in the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCacheValues005', 0, function () {
+        var that = new util.LRUCache()
+        that.put(1,2)
+        that.put(3,10)
+        that.put(5,15)
+        that.put('abc',20)
+        that.get(3)
+        that.remove(5)
+        that.contains(3)
+        that.get(1)
+        that.contains('abc')
+        var result = that.values()
+        expect(result[0]).assertEqual(10)
+        expect(result[1]).assertEqual(2)
+        expect(result[2]).assertEqual(20)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_TO_STRING_001
+     * @tc.name: testLRUCacheToString001
+     * @tc.desc: Returns a string representation of the object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCacheToString001', 0, function () {
+        var that = new util.LRUCache()
+        that.put('1111','bcjdshc')
+        that.put(1,2)
+        var result = that.toString()
+        expect(result).assertEqual('LRUCache[ maxSize = 64, hits = 0, misses = 0, hitRate = 0% ]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_TO_STRING_002
+     * @tc.name: testLRUCacheToString002
+     * @tc.desc: Returns a string representation of the object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCacheToString002', 0, function () {
+        var that = new util.LRUCache()
+        that.put('1111','bcjdshc')
+        that.put(1,2)
+        that.get(1)
+        that.get('1111')
+        var result = that.toString()
+        expect(result).assertEqual('LRUCache[ maxSize = 64, hits = 2, misses = 0, hitRate = 100% ]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_TO_STRING_003
+     * @tc.name: testLRUCacheToString003
+     * @tc.desc: Returns a string representation of the object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCacheToString003', 0, function () {
+        var that = new util.LRUCache(100)
+        that.put(1,2)
+        that.put(3,10)
+        that.put(5,15)
+        that.put('abc',20)
+        that.get(3)
+        var result = that.toString()
+        expect(result).assertEqual('LRUCache[ maxSize = 100, hits = 1, misses = 0, hitRate = 100% ]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_TO_STRING_004
+     * @tc.name: testLRUCacheToString004
+     * @tc.desc: Returns a string representation of the object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCacheToString004', 0, function () {
+        var that = new util.LRUCache(100)
+        that.put(1,2)
+        that.put(3,10)
+        that.put(5,15)
+        that.put('abc',20)
+        that.get(3)
+        that.get(2)
+        var result = that.toString()
+        expect(result).assertEqual('LRUCache[ maxSize = 100, hits = 1, misses = 1, hitRate = 50% ]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_TO_STRING_005
+     * @tc.name: testLRUCacheToString005
+     * @tc.desc: Returns a string representation of the object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCacheToString005', 0, function () {
+        var that = new util.LRUCache(100)
+        that.put(1,2)
+        that.put(3,10)
+        that.put(5,15)
+        that.put('abc',20)
+        that.get(3)
+        that.get(2)
+        that.get(1)
+        that.contains(5)
+        var result = that.toString()
+        expect(result).assertEqual('LRUCache[ maxSize = 100, hits = 3, misses = 1, hitRate = 75% ]')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_ENTRIES_001
+     * @tc.name: testLRUCacheEntries001
+     * @tc.desc: Returns an array of key-value pairs of enumeratable properties of a given object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCacheEntries001', 0, function () {
+        var that = new util.LRUCache()
+        that.put('string','abc')
+        var i=0;
+        var arr={};
+        for (let entry of that.entries()) {
+            arr[i]=entry[0];
+            i++;
+            arr[i]=entry[1];
+            i++;
+        }
+        expect(arr[1]).assertEqual('abc');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_ENTRIES_002
+     * @tc.name: testLRUCacheEntries002
+     * @tc.desc: Returns an array of key-value pairs of enumeratable properties of a given object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCacheEntries002', 0, function () {
+        var that = new util.LRUCache()
+        that.put(1,2)
+        that.put(3,10)
+        that.put(5,15)
+        that.put('abc',20)
+        var i=0;
+        var arr={};
+        for (let entry of that.entries()) {
+            arr[i]=entry[0];
+            i++;
+            arr[i]=entry[1];
+            i++;
+        }
+        expect(arr[1]).assertEqual(2);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_ENTRIES_003
+     * @tc.name: testLRUCacheEntries003
+     * @tc.desc: Returns an array of key-value pairs of enumeratable properties of a given object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCacheEntries003', 0, function () {
+        var that = new util.LRUCache()
+        that.put(1,2)
+        that.put(3,10)
+        that.put(5,15)
+        that.put('abc',20)
+        that.get(3)
+        var i=0;
+        var arr={};
+        for (let entry of that.entries()) {
+            arr[i]=entry[0];
+            i++;
+            arr[i]=entry[1];
+            i++;
+        }
+        expect(arr[0]).assertEqual(1);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_ENTRIES_004
+     * @tc.name: testLRUCacheEntries004
+     * @tc.desc: Returns an array of key-value pairs of enumeratable properties of a given object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCacheEntries004', 0, function () {
+        var that = new util.LRUCache()
+        that.put(1,2)
+        that.put(3,10)
+        that.put(5,15)
+        that.put('abc',20)
+        that.get(3)
+        that.contains(1)
+        var i=0;
+        var arr={};
+        for (let entry of that.entries()) {
+            arr[i]=entry[0];
+            i++;
+            arr[i]=entry[1];
+            i++;
+        }
+        expect(arr[1]).assertEqual(15)
+        expect(arr[3]).assertEqual(20)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_ENTRIES_005
+     * @tc.name: testLRUCacheEntries005
+     * @tc.desc: Returns an array of key-value pairs of enumeratable properties of a given object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCacheEntries005', 0, function () {
+        var that = new util.LRUCache()
+        that.put(1,2)
+        that.put(3,10)
+        that.put(5,15)
+        that.put('abc',20)
+        that.get(3)
+        that.remove(5)
+        that.contains(3)
+        that.get(1)
+        that.contains('abc')
+        var i=0;
+        var arr={};
+        for (let entry of that.entries()) {
+            arr[i]=entry[0];
+            i++;
+            arr[i]=entry[1];
+            i++;
+        }
+        expect(arr[1]).assertEqual(10)
+        expect(arr[3]).assertEqual(2)
+        expect(arr[5]).assertEqual(20)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_[SYMBOL.ITERATOR]_001
+     * @tc.name: testLRUCache[Symbol.iterator]001
+     * @tc.desc: Returns a two - dimensional array in the form of key - value pairs.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCache[Symbol.iterator]001', 0, function () {
+        var that = new util.LRUCache()
+        that.put('string','abc')
+        that.put('abc',20)
+        var i=0;
+        var arr={};
+        for (let entry of that[Symbol.iterator]()) {
+            arr[i]=entry[0];
+            i++;
+            arr[i]=entry[1];
+            i++;
+        }
+        expect(arr[1]).assertEqual('abc');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_[SYMBOL.ITERATOR]_002
+     * @tc.name: testLRUCache[Symbol.iterator]002
+     * @tc.desc: Returns a two - dimensional array in the form of key - value pairs.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCache[Symbol.iterator]002', 0, function () {
+        var that = new util.LRUCache()
+        that.put(1,2)
+        that.put(3,10)
+        that.put(5,15)
+        that.put('abc',20)
+        var i=0;
+        var arr={};
+        for (let entry of that[Symbol.iterator]()) {
+            arr[i]=entry[0];
+            i++;
+            arr[i]=entry[1];
+            i++;
+        }
+        expect(arr[1]).assertEqual(2);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_[SYMBOL.ITERATOR]_003
+     * @tc.name: testLRUCache[Symbol.iterator]003
+     * @tc.desc: Returns a two - dimensional array in the form of key - value pairs.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCache[Symbol.iterator]003', 0, function () {
+        var that = new util.LRUCache()
+        that.put(1,2)
+        that.put(3,10)
+        that.put(5,15)
+        that.put('abc',20)
+        that.get(3)
+        var i=0;
+        var arr={};
+        for (let entry of that[Symbol.iterator]()) {
+            arr[i]=entry[0];
+            i++;
+            arr[i]=entry[1];
+            i++;
+        }
+        expect(arr[0]).assertEqual(1);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_[SYMBOL.ITERATOR]_004
+     * @tc.name: testLRUCache[Symbol.iterator]004
+     * @tc.desc: Returns a two - dimensional array in the form of key - value pairs.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCache[Symbol.iterator]004', 0, function () {
+        var that = new util.LRUCache()
+        that.put(1,2)
+        that.put(3,10)
+        that.put(5,15)
+        that.put('abc',20)
+        that.get(3)
+        that.contains(1)
+        var i=0;
+        var arr={};
+        for (let entry of that[Symbol.iterator]()) {
+            arr[i]=entry[0];
+            i++;
+            arr[i]=entry[1];
+            i++;
+        }
+        expect(arr[1]).assertEqual(15)
+        expect(arr[3]).assertEqual(20)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_[SYMBOL.ITERATOR]_005
+     * @tc.name: testLRUCache[Symbol.iterator]005
+     * @tc.desc: Returns a two - dimensional array in the form of key - value pairs.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCache[Symbol.iterator]005', 0, function () {
+        var that = new util.LRUCache()
+        that.put(1,2)
+        that.put(3,10)
+        that.put(5,15)
+        that.put('abc',20)
+        that.get(3)
+        that.remove(5)
+        that.contains(3)
+        that.get(1)
+        that.contains('abc')
+        var i=0;
+        var arr={};
+        for (let entry of that[Symbol.iterator]()) {
+            arr[i]=entry[0];
+            i++;
+            arr[i]=entry[1];
+            i++;
+        }
+        expect(arr[1]).assertEqual(10)
+        expect(arr[3]).assertEqual(2)
+        expect(arr[5]).assertEqual(20)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_AFTER_REMOVAL_001
+     * @tc.name: testLRUCacheAfterRemoval001
+     * @tc.desc: Executes subsequent operations after a value is deleted.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCacheAfterRemoval001', 0, function () {
+        var arr = [];
+        class ChildLRUCache extends util.LRUCache
+        {
+            constructor()
+            {
+                super();
+            }
+            static getInstance()
+            {
+                if(this.instance ==  null)
+                {
+                    this.instance = new ChildLRUCache();
+                }
+                return this.instance;
+            }
+            afterRemoval(isEvict, key, value, newValue)
+            {
+                if (isEvict === false)
+                {
+                    arr = [key, value, newValue];
+                }
+            }
+        }
+        ChildLRUCache.getInstance().afterRemoval(false,10,30,null)
+        expect(arr[0]).assertEqual(10)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_AFTER_REMOVAL_002
+     * @tc.name: testLRUCacheAfterRemoval002
+     * @tc.desc: Executes subsequent operations after a value is deleted.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCacheAfterRemoval002', 0, function () {
+        var arr = [];
+        class ChildLRUCache extends util.LRUCache
+        {
+            constructor()
+            {
+                super();
+            }
+            static getInstance()
+            {
+                if(this.instance ==  null)
+                {
+                    this.instance = new ChildLRUCache();
+                }
+                return this.instance;
+            }
+            afterRemoval(isEvict, key, value, newValue)
+            {
+                if (isEvict === false)
+                {
+                    arr = [key, value, newValue];
+                }
+            }
+        }
+        ChildLRUCache.getInstance().afterRemoval(false,'string',10,null)
+        expect(arr[0]).assertEqual('string')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_AFTER_REMOVAL_003
+     * @tc.name: testLRUCacheAfterRemoval003
+     * @tc.desc: Executes subsequent operations after a value is deleted.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCacheAfterRemoval003', 0, function () {
+        var arr = [];
+        class ChildLRUCache extends util.LRUCache
+        {
+            constructor()
+            {
+                super();
+            }
+            static getInstance()
+            {
+                if(this.instance ==  null)
+                {
+                    this.instance = new ChildLRUCache();
+                }
+                return this.instance;
+            }
+            afterRemoval(isEvict, key, value, newValue)
+            {
+                if (isEvict === false)
+                {
+                    arr = [key, value, newValue];
+                }
+            }
+        }
+        ChildLRUCache.getInstance().afterRemoval(false,10,30,12)
+        expect(arr[2]).assertEqual(12)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_AFTER_REMOVAL_004
+     * @tc.name: testLRUCacheAfterRemoval004
+     * @tc.desc: Executes subsequent operations after a value is deleted.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCacheAfterRemoval004', 0, function () {
+        var arr = [];
+        class ChildLRUCache extends util.LRUCache
+        {
+            constructor()
+            {
+                super();
+            }
+            static getInstance()
+            {
+                if(this.instance ==  null)
+                {
+                    this.instance = new ChildLRUCache();
+                }
+                return this.instance;
+            }
+            afterRemoval(isEvict, key, value, newValue)
+            {
+                if (isEvict === false)
+                {
+                    arr = [key, value, newValue];
+                }
+            }
+        }
+        ChildLRUCache.getInstance().afterRemoval(false,'abc',30,'string')
+        expect(arr[1]).assertEqual(30)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_AFTER_REMOVAL_005
+     * @tc.name: testLRUCacheAfterRemoval005
+     * @tc.desc: Executes subsequent operations after a value is deleted.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCacheAfterRemoval005', 0, function () {
+        var arr = [];
+        class ChildLRUCache extends util.LRUCache
+        {
+            constructor()
+            {
+                super();
+            }
+            static getInstance()
+            {
+                if(this.instance ==  null)
+                {
+                    this.instance = new ChildLRUCache();
+                }
+                return this.instance;
+            }
+            afterRemoval(isEvict, key, value, newValue)
+            {
+                if (isEvict === true)
+                {
+                    arr = [key, value, newValue];
+                }
+            }
+        }
+        ChildLRUCache.getInstance().afterRemoval(true,'abc','ab','string')
+        expect(arr[2]).assertEqual('string')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_AFTER_REMOVAL_006
+     * @tc.name: testLRUCacheAfterRemoval006
+     * @tc.desc: Executes subsequent operations after a value is deleted.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCacheAfterRemoval006', 0, function () {
+        var arr = [];
+        class ChildLRUCache extends util.LRUCache
+        {
+            constructor(capacity)
+            {
+                super(capacity);
+            }
+            afterRemoval(isEvict, key, value, newValue)
+            {
+                if (isEvict === true)
+                {
+                    arr = [key, value];
+                }
+            }
+        }
+        var that = new ChildLRUCache(2);
+        that.put(1,2)
+        that.put(3,10)
+        that.put('abc',20)
+        expect(arr[1]).assertEqual(2)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_AFTER_REMOVAL_007
+     * @tc.name: testLRUCacheAfterRemoval007
+     * @tc.desc: Executes subsequent operations after a value is deleted.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testLRUCacheAfterRemoval007', 0, function () {
+        var arr = [];
+        class ChildLRUCache extends util.LRUCache
+        {
+            constructor(capacity)
+            {
+                super(capacity);
+            }
+            afterRemoval(isEvict, key, value, newValue)
+            {
+                if (isEvict === false)
+                {
+                    arr = [key, value, newValue];
+                }
+            }
+        }
+        var that = new ChildLRUCache(3);
+        that.put(1,2)
+        that.put(3,10)
+        that.put(1,8)
+        expect(arr[2]).assertEqual(8)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_LRU_CACHE_AFTER_REMOVAL_008
+     * @tc.name: testLRUCacheAfterRemoval008
+     * @tc.desc: Executes subsequent operations after a value is deleted.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+     it('testLRUCacheAfterRemoval008', 0, function () {
+        var arrk = [];
+        var arrv = [];
+        class ChildLRUCache extends util.LRUCache
+        {
+          constructor(capacity)
+          {
+            super(capacity);
+          }
+          afterRemoval(isEvict, key, value, newValue)
+          {
+            if (isEvict === false)
+            {
+              arrk = Array.from(key);
+              arrv = Array.from(value);
+            }
+          }
+        }
+        var that = new ChildLRUCache(3);
+        that.put(1,2)
+        that.put(3,10)
+        that.put(2,8)
+        that.clear();
+        expect(arrk[0]).assertEqual(1)
+        expect(arrk[1]).assertEqual(3)
+        expect(arrk[2]).assertEqual(2)
+        expect(arrv[0]).assertEqual(2)
+        expect(arrv[1]).assertEqual(10)
+        expect(arrv[2]).assertEqual(8)
+    })
+})
+
+describe('FunctionTest', function () {
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_FORMAT_001
+     * @tc.name: testUtilformat001
+     * @tc.desc: Returns the formatted string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilformat001', 0, function () {
+        var format = "%i,%s";
+        var value1 = 1.5;
+        var value2 = "qwer";
+        var value3 = 15;
+        var result = util.format(format, value1, value2, value3);
+        expect(result).assertEqual("1,qwer 15");
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_FORMAT_002
+     * @tc.name: testUtilformat002
+     * @tc.desc: Returns the formatted string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilformat002', 0, function () {
+        var format = "%O";
+        var value = { name: 'jack' ,age: 15 };
+        var result = util.format(format, value);
+        expect(result).assertEqual("{ name: 'jack',\n  age: 15 }");
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_FORMAT_003
+     * @tc.name: testUtilformat003
+     * @tc.desc: Returns the formatted string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilformat003', 0, function () {
+        var format = "%o";
+        var value = [1, 2, 3];
+        var result = util.format(format, value);
+        var res = '[ 1, 2, 3, [length]: 3 ]'
+        expect(result).assertEqual('[ 1, 2, 3, [length]: 3 ]');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_FORMAT_004
+     * @tc.name: testUtilformat004
+     * @tc.desc: Returns the formatted string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilformat004', 0, function () {
+        var format = "%s,%s,%s";
+        var value1 = "1.5";
+        var value2 = "qwer";
+        var result = util.format(format, value1, value2);
+        expect(result).assertEqual('1.5,qwer,%s');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_FORMAT_005
+     * @tc.name: testUtilformat005
+     * @tc.desc: Returns the formatted string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilformat005', 0, function () {
+        var format = "%d,%d";
+        var value1 = 6;
+        var value2 = 16;
+        var result = util.format(format, value1, value2);
+        expect(result).assertEqual('6,16');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_FORMAT_THROW_ERROR_001
+     * @tc.name: testUtilformatThrowError001
+     * @tc.desc: Returns the formatted string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilformatThrowError001', 0, function () {
+        try {
+            var format = 123;
+            var value1 = 1.5;
+            var value2 = "qwer";
+            var value3 = 15;
+            var result = util.format(format, value1, value2, value3);
+            expect(result).assertEqual("1,qwer 15");
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 123 must be string or array");
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_ERROR_TO_STRING_001
+     * @tc.name: testUtilerrnoToString001
+     * @tc.desc: Get the string name of the system errno.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilerrnoToString001', 0, async function () {
+        var errnum = 10;
+        var result = util.errnoToString(errnum);
+        expect(result).assertEqual('Unknown system error 10');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_ERROR_TO_STRING_002
+     * @tc.name: testUtilerrnoToString002
+     * @tc.desc: Get the string name of the system errno.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilerrnoToString002', 0, async function () {
+        var errnum = 0;
+        var result = util.errnoToString(errnum);
+        expect(result).assertEqual('Unknown system error 0');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_ERROR_TO_STRING_003
+     * @tc.name: testUtilerrnoToString003
+     * @tc.desc: Get the string name of the system errno.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilerrnoToString003', 0, async function () {
+        var errnum = -1;
+        var result = util.errnoToString(errnum);
+        expect(result).assertEqual('operation not permitted');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_ERROR_TO_STRING_004
+     * @tc.name: testUtilerrnoToString004
+     * @tc.desc: Get the string name of the system errno.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilerrnoToString004', 0, async function () {
+        var errnum = 9;
+        var result = util.errnoToString(errnum);
+        expect(result).assertEqual('Unknown system error 9');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_ERROR_TO_STRING_005
+     * @tc.name: testUtilerrnoToString005
+     * @tc.desc: Get the string name of the system errno.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilerrnoToString005', 0, async function () {
+        var errnum = 555;
+        var result = util.errnoToString(errnum);
+        expect(result).assertEqual('Unknown system error 555');
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_ERROR_TO_STRING_THROW_ERROR_001
+     * @tc.name: testUtilerrnoToStringThrowError001
+     * @tc.desc: Get the string name of the system errno.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilerrnoToStringThrowError001', 0, async function () {
+        try {
+            var errnum = 'str';
+            var result = util.errnoToString(errnum);
+            expect(result).assertEqual('Unknown system error 10');
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of str must be number");
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_PROMISIFY_THROW_ERROR_001
+     * @tc.name: testUtilPromisifyThrowError001
+     * @tc.desc: Takes a function following the common error-first callback style,
+       taking an callback as the last argument, and return a function that returns promises.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilPromisifyThrowError001', 0, async function () {
+        try {
+            var fn = 'str';
+            (async () => {
+                const value = await util.promisify(fn);
+                expect(value(null, "Hello")).strictEqual('Hello');
+            })();
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of fn must be function");
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_RANDOM_UUID_THROW_ERROR_001
+     * @tc.name: testUtilRandomUUIDThrowError001
+     * @tc.desc: Generate a random RFC 4122 version 4 UUID.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+
+    it('testUtilRandomUUIDThrowError001', 0, async function () {
+        try {
+            var result = util.randomUUID(123);
+            expect(result.length).assertEqual(36);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 123 must be boolean");
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_RANDOM_BINARY_UUID_THROW_ERROR_001
+     * @tc.name: testUtilRandomBinaryUUIDThrowError001
+     * @tc.desc: Generate a random RFC 4122 version 4 UUID.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilRandomBinaryUUIDThrowError001', 0, async function () {
+        try {
+            var result = util.randomBinaryUUID(123);
+            expect(result.length).assertEqual(16);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 123 must be boolean");
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_RANDOM_PARSE_UUID_THROW_001
+     * @tc.name: testUtilParseUUIDThrow001
+     * @tc.desc: Generate a random RFC 4122 version 4 UUID.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilParseUUIDThrow001', 0, async function () {
+        try {
+            var result = util.parseUUID(123);
+            expect(result.length).assertEqual(16);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Syntax Error.Invalid 123 string");
+        }
+    })
+})
+
+describe('RationalNumberTest', function () {
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_PARSE_RATIONAL_NUMBER_001
+     * @tc.name: test_parseRationalNumber_001
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_parseRationalNumber_001', 0, function () {
+        var res = util.RationalNumber.parseRationalNumber(2, 1)
+        var result = res.valueOf()
+        expect(result).assertEqual(2)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_PARSE_RATIONAL_NUMBER_THROW_ERROR_001
+     * @tc.name: test_parseRationalNumberThrowError_001
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_parseRationalNumberThrowError_001', 0, function () {
+        try {
+            var pro = util.RationalNumber.parseRationalNumber('str', 2)
+            var result = res.valueOf()
+            expect(result).assertEqual(2)
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of str must be number");
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_CREATE_RATIONAL_FROM_STRING_001
+     * @tc.name: test_createRationalFromString_001
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_createRationalFromString_001', 0, function () {
+        var res = util.RationalNumber.createRationalFromString('-1:2')
+        var result = res.valueOf()
+        expect(result).assertEqual(-0.5)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_CREATE_RATIONAL_FROM_STRING_002
+     * @tc.name: test_createRationalFromString_002
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_createRationalFromString_002', 0, function () {
+        var res = util.RationalNumber.createRationalFromString('+3/4')
+        var result = res.valueOf()
+        expect(result).assertEqual(0.75)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_CREATE_RATIONAL_FROM_STRING_003
+     * @tc.name: test_createRationalFromString_003
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_createRationalFromString_003', 0, function () {
+        var res = util.RationalNumber.createRationalFromString('+3:-4')
+        var result = res.valueOf()
+        expect(result).assertEqual(-0.75)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_CREATE_RATIONAL_FROM_STRING_004
+     * @tc.name: test_createRationalFromString_004
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_createRationalFromString_004', 0, function () {
+        var res = util.RationalNumber.createRationalFromString('+2:4')
+        var result = res.valueOf()
+        expect(result).assertEqual(0.5)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_CREATE_RATIONAL_FROM_STRING_005
+     * @tc.name: test_createRationalFromString_005
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_createRationalFromString_005', 0, function () {
+        var res = util.RationalNumber.createRationalFromString('+2:-4')
+        var result = res.valueOf()
+        expect(result).assertEqual(-0.5)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_CREATE_RATIONAL_FROM_STRING_THROW_ERROR_001
+     * @tc.name: test_createRationalFromStringThrowError_001
+     * @tc.desc: Creates a RationalNumber object based on a given string.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_createRationalFromStringThrowError_001', 0, function () {
+        try {
+            var res = util.RationalNumber.createRationalFromString(123)
+            var result = res.valueOf()
+            expect(result).assertEqual(-0.5)
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 123 must be string");
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_COMPARE_001
+     * @tc.name: test_compare_001
+     * @tc.desc: Compares the current RationalNumber object with a given object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_compare_001', 0, function () {
+        var pro = util.RationalNumber.parseRationalNumber(2, 1)
+        var proc = util.RationalNumber.parseRationalNumber(3, 4)
+        var res = pro.compare(proc)
+        expect(res).assertEqual(1)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_COMPARE_002
+     * @tc.name: test_compare_002
+     * @tc.desc: Compares the current RationalNumber object with a given object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_compare_002', 0, function () {
+        var pro = util.RationalNumber.parseRationalNumber(2, 1)
+        var proc = util.RationalNumber.parseRationalNumber(0, 0)
+        var res = pro.compare(proc)
+        expect(res).assertEqual(-1)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_COMPARE_003
+     * @tc.name: test_compare_003
+     * @tc.desc: Compares the current RationalNumber object with a given object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_compare_003', 0, function () {
+        var pro = util.RationalNumber.parseRationalNumber(2, 1)
+        var proc = util.RationalNumber.parseRationalNumber(8, 3)
+        var res = pro.compare(proc)
+        expect(res).assertEqual(-1)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_COMPARE_004
+     * @tc.name: test_compare_004
+     * @tc.desc: Compares the current RationalNumber object with a given object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_compare_004', 0, function () {
+        var pro = util.RationalNumber.parseRationalNumber(2, 1)
+        var proc = util.RationalNumber.parseRationalNumber(2, 1)
+        var res = pro.compare(proc)
+        expect(res).assertEqual(0)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_COMPARE_005
+     * @tc.name: test_compare_005
+     * @tc.desc: Compares the current RationalNumber object with a given object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_compare_005', 0, function () {
+        var pro = util.RationalNumber.parseRationalNumber(0, 0)
+        var proc = util.RationalNumber.parseRationalNumber(2, 1)
+        var res = pro.compare(proc)
+        expect(res).assertEqual(1)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_COMPARE_THROW_ERROR_001
+     * @tc.name: test_compareThrowError_001
+     * @tc.desc: Compares the current RationalNumber object with a given object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_compareThrowError_001', 0, function () {
+        try {
+            var pro = util.RationalNumber.parseRationalNumber(2, 1)
+            var proc = 'str'
+            var res = pro.compare(proc)
+            expect(res).assertEqual(1)
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of str must be RationalNumber");
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_GET_COMMON_FACTOR_001
+     * @tc.name: testgetCommonFactor001
+     * @tc.desc: Obtains the greatest common divisor of two specified numbers.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testgetCommonFactor001', 0, function () {
+        var res = util.RationalNumber.getCommonFactor(4, 8)
+        expect(res).assertEqual(4)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_GET_COMMON_FACTOR_002
+     * @tc.name: testgetCommonFactor002
+     * @tc.desc: Obtains the greatest common divisor of two specified numbers.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testgetCommonFactor002', 0, function () {
+        var res = util.RationalNumber.getCommonFactor(10, 15)
+        expect(res).assertEqual(5)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_GET_COMMON_FACTOR_003
+     * @tc.name: testgetCommonFactor003
+     * @tc.desc: Obtains the greatest common divisor of two specified numbers.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testgetCommonFactor003', 0, function () {
+        var res = util.RationalNumber.getCommonFactor(8, 4)
+        expect(res).assertEqual(4)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_GET_COMMON_FACTOR_004
+     * @tc.name: testgetCommonFactor004
+     * @tc.desc: Obtains the greatest common divisor of two specified numbers.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testgetCommonFactor004', 0, function () {
+        var res = util.RationalNumber.getCommonFactor(8, 16)
+        expect(res).assertEqual(8)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_GET_COMMON_FACTOR_005
+     * @tc.name: testgetCommonFactor005
+     * @tc.desc: Obtains the greatest common divisor of two specified numbers.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testgetCommonFactor005', 0, function () {
+        var res = util.RationalNumber.getCommonFactor(2, 16)
+        expect(res).assertEqual(2)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_GET_COMMON_FACTOR_THROW_ERROR_001
+     * @tc.name: testgetCommonFactorThrowError001
+     * @tc.desc: Obtains the greatest common divisor of two specified numbers.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testgetCommonFactorThrowError001', 0, function () {
+        try {
+            var res = util.RationalNumber.getCommonFactor('str', 8)
+            expect(res).assertEqual(4)
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of str must be number");
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_GET_HASH_001
+     * @tc.name: testUtilGetHash001
+     * @tc.desc: Get the hash value of an object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilGetHash001', 0, function () {
+        let person = {
+          name: "Alice",
+          age: 30
+        };
+        let result1 = util.getHash(person);
+        let result2 = util.getHash(person);
+        expect(result1).assertEqual(result2);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_GET_HASH_002
+     * @tc.name: testUtilGetHash002
+     * @tc.desc: Get the hash value of an object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilGetHash002', 0, function () {
+        let numbers = [1, 2, 3, 4, 5];
+        let result1 = util.getHash(numbers);
+        let result2 = util.getHash(numbers);
+        expect(result1).assertEqual(result2);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_GET_HASH_003
+     * @tc.name: testUtilGetHash003
+     * @tc.desc: Get the hash value of an object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilGetHash003', 0, function () {
+        class Car {
+          make;
+          model;
+
+          constructor(make, model) {
+            this.make = make;
+            this.model = model;
+          }
+        }
+
+        let myCar = new Car("Toyota", "Corolla");
+        let result1 = util.getHash(myCar);
+        let result2 = util.getHash(myCar);
+        expect(result1).assertEqual(result2);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_GET_HASH_004
+     * @tc.name: testUtilGetHash004
+     * @tc.desc: Get the hash value of an object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilGetHash004', 0, function () {
+        let now = new Date();
+        let result1 = util.getHash(now);
+        let result2 = util.getHash(now);
+        expect(result1).assertEqual(result2);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_GET_HASH_005
+     * @tc.name: testUtilGetHash005
+     * @tc.desc: Get the hash value of an object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilGetHash005', 0, function () {
+        let regex = new RegExp("abc");
+        let result1 = util.getHash(regex);
+        let result2 = util.getHash(regex);
+        expect(result1).assertEqual(result2);
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_UTIL_GET_HASH_006
+     * @tc.name: testUtilGetHash006
+     * @tc.desc: Get the hash value of an object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('testUtilGetHash006', 0, function () {
+        let mathObject = Math;
+        let result1 = util.getHash(mathObject);
+        let result2 = util.getHash(mathObject);
+        expect(result1).assertEqual(result2);
+    })
+})
+
+describe('Base64HelperTest', function () {
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODESYNC_BASE64_001
+     * @tc.name: test_encodeSync_base64_001
+     * @tc.desc: Encodes all bytes from the specified u8 array into a newly-allocated u8
+        array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encodeSync_base64_001', 0, function () {
+        var that = new util.Base64Helper()
+        var array = new Uint8Array([115,49,51]);
+        var rarray = new Uint8Array([99,122,69,122]);
+        var result = that.encodeSync(array);
+        for (var i = 0; i < 4; i++) {
+            expect(result[i]).assertEqual(rarray[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODESYNC_BASE64_002
+     * @tc.name: test_encodeSync_base64_002
+     * @tc.desc: Encodes all bytes from the specified u8 array into a newly-allocated u8
+        array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encodeSync_base64_002', 0, function () {
+        var that = new util.Base64Helper()
+        var array = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
+        var rarray = new Uint8Array([81,109,70,122,90,84,89,48,73,69,53,118,90,71,85,117,97,110,77,61]);
+        var result = that.encodeSync(array);
+        for (var i = 0; i < 20; i++) {
+            expect(result[i]).assertEqual(rarray[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODESYNC_BASE64_003
+     * @tc.name: test_encodeSync_base64_003
+     * @tc.desc: Encodes all bytes from the specified u8 array into a newly-allocated u8
+        array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encodeSync_base64_003', 0, function () {
+        var that = new util.Base64Helper()
+        var array = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,105,
+        110,32,78,111,100,101,46,106,115]);
+        var rarray = new Uint8Array([81,109,70,122,90,84,89,48,73,69,86,117,89,50,57,107,97,87,53,110,
+        73,71,108,117,73,69,53,118,90,71,85,117,97,110,77,61]);
+        var result = that.encodeSync(array);
+        for (var i = 0; i < 36; i++) {
+            expect(result[i]).assertEqual(rarray[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODESYNC_BASE64_004
+     * @tc.name: test_encodeSync_base64_004
+     * @tc.desc: Encodes all bytes from the specified u8 array into a newly-allocated u8
+       array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encodeSync_base64_004', 0, function () {
+        var that = new util.Base64Helper()
+        var array = new Uint8Array([168, 174, 155, 255]);
+        var rarray = new Uint8Array([113,75,54,98,47,119,61,61]);
+        var result = that.encodeSync(array);
+        for (var i = 0; i < 8; i++) {
+            expect(result[i]).assertEqual(rarray[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODESYNC_BASE64_005
+     * @tc.name: test_encodeSync_base64_005
+     * @tc.desc: Encodes all bytes from the specified u8 array into a newly-allocated u8
+        array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encodeSync_base64_005', 0, function () {
+        var that = new util.Base64Helper()
+        var array = new Uint8Array([66, 97, 115, 101, 54, 52]);
+        var rarray = new Uint8Array([81, 109, 70, 122, 90, 84, 89, 48]);
+        var result = that.encodeSync(array);
+        for (var i = 0; i <8; i++) {
+            expect(result[i]).assertEqual(rarray[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODESYNC_BASE64_006
+     * @tc.name: test_encodeSync_base64_006
+     * @tc.desc: Encodes all bytes from the specified u8 array into a newly-allocated u8
+        array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encodeSync_base64_006', 0, function () {
+        try {
+            var that = new util.Base64Helper();
+            var array = new Uint32Array([66, 97, 115, 101, 54, 52]);
+            var result = that.encodeSync(array);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: The type of Parameter must be Uint8Array")
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_TO_STRING_BASE64_001
+     * @tc.name: test_encodeToStringSync_base64_001
+     * @tc.desc: Encodes the specified byte array into a String using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encodeToStringSync_base64_001', 0, function () {
+        var that = new util.Base64Helper()
+        var array = new Uint8Array([115,49,51]);
+        var result = that.encodeToStringSync(array)
+        expect(result).assertEqual('czEz')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_TO_STRING_BASE64_002
+     * @tc.name: test_encodeToStringSync_base64_002
+     * @tc.desc: Encodes the specified byte array into a String using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encodeToStringSync_base64_002', 0, function () {
+        var that = new util.Base64Helper()
+        var array = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
+        var result = that.encodeToStringSync(array);
+        expect(result).assertEqual('QmFzZTY0IE5vZGUuanM=')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_TO_STRING_BASE64_003
+     * @tc.name: test_encodeToStringSync_base64_003
+     * @tc.desc: Encodes the specified byte array into a String using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encodeToStringSync_base64_003', 0, function () {
+        var that = new util.Base64Helper()
+        var array = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,105,110,
+        32,78,111,100,101,46,106,115]);
+        var result = that.encodeToStringSync(array);
+        expect(result).assertEqual('QmFzZTY0IEVuY29kaW5nIGluIE5vZGUuanM=')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_TO_STRING_BASE64_005
+     * @tc.name: test_encodeToStringSync_base64_004
+     * @tc.desc: Encodes the specified byte array into a String using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encodeToStringSync_base64_004', 0, function () {
+        var that = new util.Base64Helper()
+        var array = new Uint8Array([168, 174, 155, 255]);
+        var result = that.encodeToStringSync(array);
+        expect(result).assertEqual('qK6b/w==')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_TO_STRING_BASE64_005
+     * @tc.name: test_encodeToStringSync_base64_005
+     * @tc.desc: Encodes the specified byte array into a String using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encodeToStringSync_base64_005', 0, function () {
+        var that = new util.Base64Helper()
+        var array = new Uint8Array([66, 97, 115, 101, 54, 52]);
+        var result = that.encodeToStringSync(array);
+        expect(result).assertEqual('QmFzZTY0')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODE_TO_STRING_BASE64_006
+     * @tc.name: test_encodeToStringSync_base64_006
+     * @tc.desc: Encodes the specified byte array into a String using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+        it('test_encodeToStringSync_base64_006', 0, function () {
+        try {
+            var that = new util.Base64Helper()
+            var array = new Uint32Array([66, 97, 115, 101, 54, 52]);
+            var result = that.encodeToStringSync(array);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: The type of Parameter must be Uint8Array")
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DECODESYC_BASE64_001
+     * @tc.name: test_decodeSync_base64_001
+     * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
+        array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_decodeSync_base64_001', 0, function () {
+        var that = new util.Base64Helper()
+        var buff = 'czEz';
+        var rarray = new Uint8Array([115,49,51]);
+        var result = that.decodeSync(buff);
+        for (var i = 0; i < 3; i++) {
+            expect(result[i]).assertEqual(rarray[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DECODESYC_BASE64_002
+     * @tc.name: test_decodeSync_base64_002
+     * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
+        array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_decodeSync_base64_002', 0, function () {
+        var that = new util.Base64Helper()
+        var buff = 'QmFzZTY0IE5vZGUuanM=';
+        var rarray = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
+        var result = that.decodeSync(buff);
+        for (var i = 0; i < 14; i++) {
+            expect(result[i]).assertEqual(rarray[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DECODESYC_BASE64_003
+     * @tc.name: test_decodeSync_base64_003
+     * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
+        array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_decodeSync_base64_003', 0, function () {
+        var that = new util.Base64Helper()
+        var buff = 'QmFzZTY0IEVuY29kaW5nIGluIE5vZGUuanM=';
+        var rarray = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,
+        105,110,32,78,111,100,101,46,106,115]);
+        var result = that.decodeSync(buff);
+        for (var i = 0; i < 26; i++) {
+            expect(result[i]).assertEqual(rarray[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DECODESYC_BASE64_004
+     * @tc.name: test_decodeSync_base64_004
+     * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
+        array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_decodeSync_base64_004', 0, function () {
+        var that = new util.Base64Helper()
+        var buff = 'qK6b/w==';
+        var rarray = new Uint8Array([168, 174, 155, 255]);
+        var result = that.decodeSync(buff);
+        for (var i = 0; i < 4; i++) {
+            expect(result[i]).assertEqual(rarray[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DECODESYC_BASE64_005
+     * @tc.name: test_decodeSync_base64_005
+     * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
+        array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_decodeSync_base64_005', 0, function () {
+        var that = new util.Base64Helper()
+        var buff = 'QmFzZTY0';
+        var rarray = new Uint8Array([66, 97, 115, 101, 54, 52]);
+        var result = that.decodeSync(buff);
+        for (var i = 0; i <6; i++) {
+            expect(result[i]).assertEqual(rarray[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DECODESYC_BASE64_006
+     * @tc.name: test_decodeSync_base64_006
+     * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
+        array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_decodeSync_base64_006', 0, function () {
+        try {
+            var that = new util.Base64Helper()
+            var array = new Uint32Array([99,122,69,122]);
+            var result = that.decodeSync(array);
+        } catch (e) {
+            expect(e.toString()).assertEqual("BusinessError: The type of Parameter must be Uint8Array or string")
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DECODESYC_BASE64_007
+     * @tc.name: test_decodeSync_base64_007
+     * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
+        array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_decodeSync_base64_007', 0, function () {
+        var that = new util.Base64Helper()
+        var array = new Uint8Array([81,109,70,122,90,84,89,48,73,69,53,118,90,71,85,117,97,110,77,61]);
+        var rarray = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
+        var result = that.decodeSync(array);
+        for (var i = 0; i < 14; i++) {
+            expect(result[i]).assertEqual(rarray[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DECODESYC_BASE64_008
+     * @tc.name: test_decodeSync_base64_008
+     * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
+        array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_decodeSync_base64_008', 0, function () {
+        var that = new util.Base64Helper()
+        var array = new Uint8Array([81,109,70,122,90,84,89,48,73,69,86,117,89,50,57,107,97,87,
+        53,110,73,71,108,117,73,69,53,118,90,71,85,117,97,110,77,61]);
+        var rarray = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,105,
+        110,32,78,111,100,101,46,106,115]);
+        var result = that.decodeSync(array);
+        for (var i = 0; i < 26; i++) {
+            expect(result[i]).assertEqual(rarray[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DECODESYC_BASE64_009
+     * @tc.name: test_decodeSync_base64_009
+     * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
+        array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_decodeSync_base64_009', 0, function () {
+        var that = new util.Base64Helper()
+        var array = new Uint8Array([113,75,54,98,47,119,61,61]);
+        var rarray = new Uint8Array([168, 174, 155, 255]);
+        var result = that.decodeSync(array);
+        for (var i = 0; i < 4; i++) {
+            expect(result[i]).assertEqual(rarray[i]);
+        }
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_DECODESYC_BASE64_010
+     * @tc.name: test_decodeSync_base64_010
+     * @tc.desc: Decodes a Base64 encoded String or input u8 array into a newly-allocated u8
+        array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_decodeSync_base64_010', 0, function () {
+        var that = new util.Base64Helper()
+        var array = new Uint8Array([81, 109, 70, 122, 90, 84, 89, 48]);
+        var rarray = new Uint8Array([66, 97, 115, 101, 54, 52]);
+        var result = that.decodeSync(array);
+        for (var i = 0; i <6; i++) {
+            expect(result[i]).assertEqual(rarray[i]);
+        }
+    })
+
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODEASYNC_BASE64_001
+     * @tc.name: test_encodeAsync_base64_001
+     * @tc.desc: Asynchronously encodes all bytes in the specified u8 array into the newly
+         allocated u8 array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encodeAsync_base64_001', 0, async function () {
+        var that = await new util.Base64Helper();
+        var array = new Uint8Array([115,49,51]);
+        var rarray = new Uint8Array([99,122,69,122]);
+        that.encode(array).then(val=>{
+            for (var i = 0; i < rarray.length; i++) {
+                expect(val[i]).assertEqual(rarray[i])
+            }
+        })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODEASYNC_BASE64_002
+     * @tc.name: test_encodeAsync_base64_002
+     * @tc.desc: Asynchronously encodes all bytes in the specified u8 array into the newly
+         allocated u8 array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encodeAsync_base64_002', 0, async function () {
+        var that = new util.Base64Helper()
+        var array = new Uint8Array([66, 97, 115, 101, 54, 52, 32, 78, 111, 100, 101, 46, 106, 115]);
+        var rarray = new Uint8Array([81,109,70,122,90,84,89,48,73,69,53,118,90,71,85,117,97,110,77,61]);
+        that.encode(array).then(val=>{
+            for (var i = 0; i < rarray.length; i++) {
+                expect(val[i]).assertEqual(rarray[i])
+            }
+        })
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ENCODEASYNC_BASE64_003
+     * @tc.name: test_encodeAsync_base64_003
+     * @tc.desc: Asynchronously encodes all bytes in the specified u8 array into the newly allocated u8
+        array using the Base64 encoding scheme.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 1
+     */
+    it('test_encodeAsync_base64_003', 0, async function () {
+        var that = new util.Base64Helper()
+        var array = new Uint8Array([66,97,115,101,54,52,32,69,110,99,111,100,105,110,103,32,105,110,32,
+        78,111,100,101,46,106,115]);
+        var rarray = new Uint8Array([81,109,70,122,90,84,89,48,73,69,86,117,89,50,57,107,97,87,53,110,73,
+        71,108,117,73,69,53,118,90,71,85,117,97,110,77,61]);
+        that.encode(array).then(val=>{
+            for (var i = 0; i < rarray.length; i++) {
+                expect(val[i]).assertEqual(rarray[i])
+            }
