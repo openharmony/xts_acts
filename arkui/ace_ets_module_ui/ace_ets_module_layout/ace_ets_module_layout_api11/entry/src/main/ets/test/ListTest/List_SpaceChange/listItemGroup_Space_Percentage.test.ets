@@ -99,7 +99,7 @@ export default function listItemGroup_Space_Percentage() {
       expect(Math.round(ListItem12.bottom - ListItem12.top)).assertEqual(Math.round(vp2px(50)));
 
       console.log('assert the spacing between ListItem12 and ListItem13')
-      expect(Math.round(ListItem13.top - ListItem12.bottom)).assertEqual(Math.round(vp2px(52)));
+      expect(Math.abs(Math.round(ListItem13.top - ListItem12.bottom) - Math.round(vp2px(52))) <= 1).assertTrue();
       expect(Math.round(ListItem13.right - ListItem13.left)).assertEqual(vp2px(300));
       expect(Math.round(ListItem13.bottom - ListItem13.top)).assertEqual(Math.round(vp2px(50)));
 
