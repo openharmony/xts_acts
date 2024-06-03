@@ -59,104 +59,104 @@ struct webViewWebResourceTypeProps {
                   this.controller.loadUrl($rawfile('resourceType.html'))
                   await Utils.sleep(1000)
                   switch (this.emitKey) {
-                      case 'emitWebView_webResourceType_MAIN_FRAME': {
-                          if(webview.WebResourceType.MAIN_FRAME.toString() === '0'){
-                            Utils.emitEvent(true,1343)
-                          }
-                          break;
-                      }
-                      case 'emitWebView_webResourceType_SUB_FRAME': {
-                          if(webview.WebResourceType.SUB_FRAME.toString() === '1'){
-                            Utils.emitEvent(true,1344)
-                          }
-                          break;
-                      }
-                      case 'emitWebView_webResourceType_STYLE_SHEET': {
-                          if(webview.WebResourceType.STYLE_SHEET.toString() === '2'){
-                            Utils.emitEvent(true,1345)
-                          }
-                          break;
-                      }
-                      case 'emitWebView_webResourceType_SCRIPT': {
-                          if(webview.WebResourceType.SCRIPT.toString() === '3'){
-                            Utils.emitEvent(true,1346)
-                          }
-                          break;
-                      }
-                      case 'emitWebView_webResourceType_IMAGE': {
-                          if(webview.WebResourceType.IMAGE.toString() === '4'){
-                            Utils.emitEvent(true,1347)
-                          }
-                          break;
-                      }
-                      case 'emitWebView_webResourceType_FONT_RESOURCE': {
-                          if(webview.WebResourceType.FONT_RESOURCE.toString() === '5'){
-                            Utils.emitEvent(true,1348)
-                          }
-                          break;
-                      }
-                      case 'emitWebView_webResourceType_OBJECT': {
-                          if(webview.WebResourceType.OBJECT.toString() === '7'){
-                            Utils.emitEvent(true,1349)
-                          }
-                          break;
-                      }
-                      case 'emitWebView_webResourceType_MEDIA': {
-                          if(webview.WebResourceType.MEDIA.toString() === '8'){
-                            Utils.emitEvent(true,1350)
-                          }
-                          break;
-                      }
-                      case 'emitWebView_webResourceType_WORKER': {
-                          this.controller.loadUrl('http://114.115.208.239:8070/colombo_test/webResourceType/worker/worker.html')
-                          await Utils.sleep(1000)
-                          if(webview.WebResourceType.WORKER.toString() === '9'){
-                            Utils.emitEvent(true,1351)
-                          }
-                          break;
-                      }
-                      case 'emitWebView_webResourceType_SHARED_WORKER': {
-                          this.controller.loadUrl('http://114.115.208.239:8070/colombo_test/webResourceType/sharedWorker/sharedWorker.html')
-                          await Utils.sleep(1000)
-                          if(webview.WebResourceType.SHARED_WORKER.toString() === '10'){
-                            Utils.emitEvent(true,1352)
-                          }
-                          break;
-                      }
-                      case 'emitWebView_webResourceType_PREFETCH': {
-                          if(webview.WebResourceType.PREFETCH.toString() === '11'){
-                            Utils.emitEvent(true,1353)
-                          }
-                          break;
-                      }
-                      case 'emitWebView_webResourceType_FAVICON': {
-                          if(webview.WebResourceType.FAVICON.toString() === '12'){
-                            Utils.emitEvent(true,1354)
-                          }
-                          break;
-                      }
-                      case 'emitWebView_webResourceType_XHR': {
-                          if(webview.WebResourceType.XHR.toString() === '13'){
-                            Utils.emitEvent(true,1355)
-                          }
-                          break;
-                      }
-                      case 'emitWebView_webResourceType_PING': {
-                          this.controller.runJavaScript('triggerPingHref()')
-                          await Utils.sleep(1000)
-                          if(webview.WebResourceType.PING.toString() === '14'){
-                            Utils.emitEvent(true,1356)
-                          }
-                          break;
-                      }
-                      case 'emitWebView_webResourceType_CSP_REPORT': {
-                          this.controller.loadUrl($rawfile('csp.html'))
-                          await Utils.sleep(1000)
-                          if(webview.WebResourceType.CSP_REPORT.toString() === '16'){
-                            Utils.emitEvent(true,1357)
-                          }
-                          break;
-                      }
+                    case 'emitWebView_webResourceType_MAIN_FRAME': {
+                        if(webview.WebResourceType.MAIN_FRAME.toString() === '0'){
+                          Utils.emitEvent(true,1343)
+                        }
+                        break;
+                    }
+                    case 'emitWebView_webResourceType_SUB_FRAME': {
+                        if(webview.WebResourceType.SUB_FRAME.toString() === '1'){
+                          Utils.emitEvent(true,1344)
+                        }
+                        break;
+                    }
+                    case 'emitWebView_webResourceType_STYLE_SHEET': {
+                        if(webview.WebResourceType.STYLE_SHEET.toString() === '2'){
+                          Utils.emitEvent(true,1345)
+                        }
+                        break;
+                    }
+                    case 'emitWebView_webResourceType_SCRIPT': {
+                        if(webview.WebResourceType.SCRIPT.toString() === '3'){
+                          Utils.emitEvent(true,1346)
+                        }
+                        break;
+                    }
+                    case 'emitWebView_webResourceType_IMAGE': {
+                        if(webview.WebResourceType.IMAGE.toString() === '4'){
+                          Utils.emitEvent(true,1347)
+                        }
+                        break;
+                    }
+                    case 'emitWebView_webResourceType_FONT_RESOURCE': {
+                        if(webview.WebResourceType.FONT_RESOURCE.toString() === '5'){
+                          Utils.emitEvent(true,1348)
+                        }
+                        break;
+                    }
+                    case 'emitWebView_webResourceType_OBJECT': {
+                        if(webview.WebResourceType.OBJECT.toString() === '7'){
+                          Utils.emitEvent(true,1349)
+                        }
+                        break;
+                    }
+                    case 'emitWebView_webResourceType_MEDIA': {
+                        if(webview.WebResourceType.MEDIA.toString() === '8'){
+                          Utils.emitEvent(true,1350)
+                        }
+                        break;
+                    }
+                    case 'emitWebView_webResourceType_WORKER': {
+                        this.controller.loadUrl('http://114.115.208.239:8070/colombo_test/webResourceType/worker/worker.html')
+                        await Utils.sleep(1000)
+                        if(webview.WebResourceType.WORKER.toString() === '9'){
+                          Utils.emitEvent(true,1351)
+                        }
+                        break;
+                    }
+                    case 'emitWebView_webResourceType_SHARED_WORKER': {
+                        this.controller.loadUrl('http://114.115.208.239:8070/colombo_test/webResourceType/sharedWorker/sharedWorker.html')
+                        await Utils.sleep(1000)
+                        if(webview.WebResourceType.SHARED_WORKER.toString() === '10'){
+                          Utils.emitEvent(true,1352)
+                        }
+                        break;
+                    }
+                    case 'emitWebView_webResourceType_PREFETCH': {
+                        if(webview.WebResourceType.PREFETCH.toString() === '11'){
+                          Utils.emitEvent(true,1353)
+                        }
+                        break;
+                    }
+                    case 'emitWebView_webResourceType_FAVICON': {
+                        if(webview.WebResourceType.FAVICON.toString() === '12'){
+                          Utils.emitEvent(true,1354)
+                        }
+                        break;
+                    }
+                    case 'emitWebView_webResourceType_XHR': {
+                        if(webview.WebResourceType.XHR.toString() === '13'){
+                          Utils.emitEvent(true,1355)
+                        }
+                        break;
+                    }
+                    case 'emitWebView_webResourceType_PING': {
+                        this.controller.runJavaScript('triggerPingHref()')
+                        await Utils.sleep(1000)
+                        if(webview.WebResourceType.PING.toString() === '14'){
+                          Utils.emitEvent(true,1356)
+                        }
+                        break;
+                    }
+                    case 'emitWebView_webResourceType_CSP_REPORT': {
+                        this.controller.loadUrl($rawfile('csp.html'))
+                        await Utils.sleep(1000)
+                        if(webview.WebResourceType.CSP_REPORT.toString() === '16'){
+                          Utils.emitEvent(true,1357)
+                        }
+                        break;
+                    }
 
                     default:{
                         if(webview.WebResourceType.SUB_RESOURCE.toString() === '6'){
@@ -190,7 +190,7 @@ struct webViewWebResourceTypeProps {
               try {
                 this.schemeHandler.onRequestStart(
                   (request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
-                    console.log("[schemeHandler] onRequestStart")
+                    console.log('[schemeHandler] onRequestStart')
                     request.getFrameUrl()
                     request.getRequestResourceType()
                     return false;

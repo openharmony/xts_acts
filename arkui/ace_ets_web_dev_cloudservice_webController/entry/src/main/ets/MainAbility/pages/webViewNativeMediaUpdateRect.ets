@@ -536,6 +536,7 @@ struct WebComponent {
           Row() {
               Button("web click").key('webViewNativeMediaUpdateRect').onClick(async () => {
                   console.info("key==>" + this.emitKey)
+                    await Utils.sleep(2000)
                     switch (this.emitKey) {
                         case "emitWebViewNativeMediaUpdateRect": {
                             try {
@@ -549,6 +550,8 @@ struct WebComponent {
                                 this.controller.runJavaScript("resize()", (error, result) => {
                                     console.log('The resize(0 return value is: ${result}');
                                 })
+                                await Utils.sleep(2000)
+                                Utils.emitEvent(true, 1291)
                             } catch (error) {
                                 Utils.emitEvent('error',1291)
                             }

@@ -57,6 +57,7 @@ struct webViewAnr {
                   console.info("key==>" + this.emitKey)
                   this.controller.refresh()
                   this.controller.loadUrl($rawfile('common_index.html'))
+                  await Utils.sleep(1000)
                   switch (this.emitKey) {
                     case "emitWebViewOnRenderProcessNotResponding": {
                       await Utils.sleep(1000)
@@ -64,6 +65,8 @@ struct webViewAnr {
                         console.error(`The blockJS() return error is: ${error}`);
                         console.log(`The blockJS() return value is: ${result}`);
                       })
+                      await Utils.sleep(15000)
+                      Utils.emitEvent(true,1335)
                       break;
                     }
                     case "emitWebViewOnRenderProcessResponding": {
@@ -72,6 +75,8 @@ struct webViewAnr {
                         console.error(`The jumpPageCaton() return error is: ${error}`);
                         console.log(`The jumpPageCaton() return value is: ${result}`);
                       })
+                      await Utils.sleep(15000)
+                      Utils.emitEvent(true,1336)
                       break;
                     }
                     case "emitWebViewNotRespondingReason_INPUT_TIMEOUT": {
@@ -80,6 +85,8 @@ struct webViewAnr {
                         console.error(`The blockJS() return error is: ${error}`);
                         console.log(`The blockJS() return value is: ${result}`);
                       })
+                      await Utils.sleep(15000)
+                      Utils.emitEvent(true,1337)
                       break;
                     }
                     case "emitWebViewNotRespondingReason_NAVIGATION_COMMIT_TIMEOUT": {
@@ -88,6 +95,8 @@ struct webViewAnr {
                         console.error(`The jumpPageCaton() return error is: ${error}`);
                         console.log(`The jumpPageCaton() return value is: ${result}`);
                       })
+                      await Utils.sleep(15000)
+                      Utils.emitEvent(true,1338)
                       break;
                     }
                 }

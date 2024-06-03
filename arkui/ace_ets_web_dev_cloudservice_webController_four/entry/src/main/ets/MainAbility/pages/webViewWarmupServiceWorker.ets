@@ -41,7 +41,7 @@ struct webViewWarmupServiceWorker {
   
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
       if (eventData != null) {
-          console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+          console.info('valueChangeCallBack:' + JSON.stringify(eventData));
           if (eventData.data != null && eventData.data.ACTION != null) {
               this.emitKey = eventData.data.ACTION;
           }
@@ -51,12 +51,13 @@ struct webViewWarmupServiceWorker {
   build() {
       Column() {
           Row() {
-              Button("web click")
+              Button('web click')
               .key('webViewWarmupServiceWorker')
               .onClick(async () => {
-                  console.info("key==>" + this.emitKey)
+                  console.info('key==>' + this.emitKey)
+                  await Utils.sleep(2000)
                   switch (this.emitKey) {
-                      case "emitWebViewWarmupServiceWorker": {
+                    case 'emitWebViewWarmupServiceWorker': {
                           this.controller.loadUrl('https://www.baidu.com')
                           try{
                             webview.WebviewController.warmupServiceWorker('https://www.baidu.com')

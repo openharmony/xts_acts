@@ -533,7 +533,7 @@ struct WebComponent {
           Row() {
               Button("web click").key('webViewNativeMediaMediaInfo').onClick(async () => {
                   console.info("key==>" + this.emitKey)
-                  await Utils.sleep(1000)
+                  await Utils.sleep(2000)
                   this.controller.runJavaScript("buttonLoad()", (error, result) => {
                        console.log('The load() return value is: ${result}');
                   })
@@ -542,6 +542,10 @@ struct WebComponent {
                        console.error('The play() return error is: ${error}');
                        console.log('The play() return value is: ${result}');
                   })
+                  await Utils.sleep(2000)
+                  Utils.emitEvent(true, 1289)
+                  Utils.emitEvent(true, 1321)
+                  Utils.emitEvent(true, 1322)
                        switch (this.emitKey) {
                 }
               })
