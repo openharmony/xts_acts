@@ -56,6 +56,7 @@ HWTEST_F(ModelTest, SUB_AI_NNRt_Func_North_Model_CreateModel_0100, Function | Me
 {
     OH_NNModel *model = OH_NNModel_Construct();
     ASSERT_NE(nullptr, model);
+    Free(model);
 }
 
 /**

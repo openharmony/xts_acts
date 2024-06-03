@@ -808,6 +808,7 @@ HWTEST_F(CompileTest, SUB_AI_NNRt_Func_North_Compilation_Destroy_0200, Function 
     ASSERT_EQ(OH_NN_SUCCESS, SetDevice(compilation));
     OH_NNCompilation_Destroy(&compilation);
     ASSERT_EQ(nullptr, compilation);
+    Free(model);
 }
 
 /**
