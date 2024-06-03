@@ -784,17 +784,17 @@ export default function CalendarManagerTest() {
         attendee: [
           {
             name: '小王',
-            email: 'xiaowang@huawei.com',
+            email: 'peter@yuanha.com',
             role: calendarManager.AttendeeRole.ORGANIZER
           },
           {
             name: '小李',
-            email: 'xiaoli@huawei.com',
+            email: 'peter@yuanha.com',
             role: calendarManager.AttendeeRole.PARTICIPANT
           },
           {
             name: '老李',
-            email: 'laoxiao@huawei.com',
+            email: 'peter@yuanha.com',
             role: calendarManager.AttendeeRole.PARTICIPANT
           }
         ],
@@ -1477,7 +1477,8 @@ export default function CalendarManagerTest() {
         },
       }
       try {
-        await calendarMgr?.editEvent(Schedule);
+        let eventId = await calendarMgr.editEvent(Schedule);
+        expect(eventId != null).assertTrue();
       } catch (err) {
         console.info(CaseName + "Failed to editEvent" + JSON.stringify(err));
       }
