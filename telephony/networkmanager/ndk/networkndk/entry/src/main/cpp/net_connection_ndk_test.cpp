@@ -293,7 +293,8 @@ static napi_value OHOSNetConnUnregisterDnsResolver(napi_env env, napi_callback_i
     return result;
 }
 
-static napi_value OHNetConnBindSocket(napi_env env, napi_callback_info info) {
+static napi_value OHNetConnBindSocket(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value args[1] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
