@@ -1,11 +1,11 @@
 {
-    "description": "Configuration for powermgr display Tests",
+    "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
+        "test-timeout": "180000",
+        "shell-timeout": "180000",
         "bundle-name": "com.example.mypowerdisplayapp",
-        "package-name": "com.example.mypowerdisplayapp",
-        "test-timeout": "90000",
-        "shell-timeout": "90000"
+        "package-name": "com.example.mypowerdisplayapp"
     },
     "kits": [
         {
@@ -14,7 +14,12 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
         }
     ]
 }
-
