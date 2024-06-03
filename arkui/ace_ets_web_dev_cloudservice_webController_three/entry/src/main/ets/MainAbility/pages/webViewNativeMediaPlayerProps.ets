@@ -754,6 +754,15 @@ struct WebComponent {
                         }
                         break;
                     }
+                    case "emitWebViewNativeMediaPlayerReadyStateHAVENOTHING": {
+                        try {
+                            await Utils.sleep(1500)
+                            Utils.emitEvent(true,1308)
+                        } catch (error) {
+                            Utils.emitEvent('error',1308)
+                        }
+                        break;
+                    }
                     case "emitWebViewNativeMediaPlayerFORMATERROR": {
                         try {
                             this.controller.loadUrl($rawfile('nativeMediaError.html'))
