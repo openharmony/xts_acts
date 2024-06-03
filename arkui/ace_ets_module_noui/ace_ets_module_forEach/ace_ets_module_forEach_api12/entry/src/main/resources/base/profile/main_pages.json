@@ -1,8 +1,5 @@
 {
-    "src": [
-        "MainAbility/pages/index/index",
-        "MainAbility/pages/lazyforeach/DataOperationType",
-        "MainAbility/pages/lazyforeach/lazyChange",
-        "MainAbility/pages/lazyforeach/lazyReload"
-    ]
+  "src": [
+    "pages/Index"
+  ]
 }

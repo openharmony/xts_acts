@@ -19,6 +19,9 @@
         "2*2",
         "1*1"
       ],
+      "supportShapes": [
+        "circle"
+      ],
       "formConfigAbility": "ability://xxxxx",
       "formVisibleNotify":true
     }

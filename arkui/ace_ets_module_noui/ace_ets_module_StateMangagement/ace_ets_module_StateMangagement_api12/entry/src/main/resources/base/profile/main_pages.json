@@ -22,6 +22,7 @@
         "MainAbility/pages/Repeat/RepeatEach",
         "MainAbility/pages/GetSharedLocal/persistStorageA",
         "MainAbility/pages/Storage/appStorageRef",
-        "MainAbility/pages/Storage/localStorageRef"
+        "MainAbility/pages/Storage/localStorageRef",
+        "MainAbility/pages/Monitor/IMonitor"
     ]
 }

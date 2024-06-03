@@ -32,7 +32,7 @@ import ToggleSwitchStyle from './ToggleTest/ToggleSwitchStyle.test'
 import ToggleContentIsOn from './ToggleTest/ToggleIsOn.test.ets';
 import ToggleContentEnabled from './ToggleTest/ToggleEnabled.test.ets';
 import selectApi1 from './select/selectApi1.test'
-
+import SliderAttrs2 from './SliderTest/SliderAttrs2.test'
 export default function testsuite() {
     gradientHeight()
     dividerJsunit()
@@ -53,5 +53,5 @@ export default function testsuite() {
     ToggleContentIsOn();
     ToggleContentEnabled();
     selectApi1();
-
+    SliderAttrs2();
 }

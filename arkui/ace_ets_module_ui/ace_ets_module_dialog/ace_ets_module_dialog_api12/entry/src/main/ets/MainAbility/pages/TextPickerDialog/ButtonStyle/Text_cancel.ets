@@ -49,6 +49,6 @@ struct Text_cancel {
           })
           .id('btn')
       }.width('100%')
-    }.height('100%')
+    }.width('100%').height('100%').id('row')
   }
 }

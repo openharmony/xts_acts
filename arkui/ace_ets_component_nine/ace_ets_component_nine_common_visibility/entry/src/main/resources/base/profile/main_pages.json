@@ -1,7 +1,5 @@
 {
   "src": [
-    "MainAbility/pages/index/Index",
-    "MainAbility/pages/common/VisibilityPage",
-    "MainAbility/pages/component/blankPage"
+    "pages/Index"
   ]
 }

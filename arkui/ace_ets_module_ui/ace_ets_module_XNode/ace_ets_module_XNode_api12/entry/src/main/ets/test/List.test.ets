@@ -30,6 +30,13 @@ import getBlue from './GraphicsTest/getBlue.test';
 import getGreen from './GraphicsTest/getGreen.test';
 import getRed from './GraphicsTest/getRed.test';
 import onAppear from './FrameNodeTest/onAppear.test';
+import setMeasureSizeTest from './FrameNodeTest/setMeasureSize.test';
+import setCircleShapeTest from './GraphicsTest/setCircleShape.test';
+import commonEventTest1 from './FrameNodeTest/commonEventTest1.test';
+
+import CornerTest from './GraphicsTest/GraphicsApiTest/CornerTest.test';
+import LengthMetricsUnitTest from './GraphicsTest/GraphicsApiTest/LengthMetricsUnitTest.test';
+import PercentReferenceTest from './GraphicsTest/GraphicsApiTest/PercentReferenceTest.test';
 
 export default function testsuite() {
   borderRadiuses();
@@ -50,4 +57,10 @@ export default function testsuite() {
   getGreen();
   getRed();
   onAppear();
+  setMeasureSizeTest();
+  commonEventTest1();
+  CornerTest();
+  LengthMetricsUnitTest();
+  PercentReferenceTest();
+  setCircleShapeTest();
 }

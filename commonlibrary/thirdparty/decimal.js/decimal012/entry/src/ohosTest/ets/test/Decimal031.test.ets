@@ -77,7 +77,7 @@ function test_comparedTo_012 (a: string, b: string, expected: number) {
 }
 function test_cos_013 (n: string, pr: number, rm: Rounding, expected: string) {
     Decimal.set ({ precision: pr, rounding: rm });
-    expect(expected).assertEqual(expected,Decimal.cos(n).valueOf());
+    expect(expected).assertEqual(Decimal.cos(n).valueOf());
     expect(expected).assertEqual(new Decimal(n).cos().valueOf());
 }
 function test_cosh_014 (n: string, pr: number, rm: Rounding, expected: string) {

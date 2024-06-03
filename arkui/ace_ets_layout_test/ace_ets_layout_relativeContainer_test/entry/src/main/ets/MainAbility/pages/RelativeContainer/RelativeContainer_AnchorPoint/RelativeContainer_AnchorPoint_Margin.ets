@@ -48,7 +48,6 @@ struct RelativeContainer_AnchorPoint_Margin {
           .id("RelativeContainer_AnchorPoint_Margin_tx2")
           .borderWidth(2)
           .borderColor(Color.Green)
-          .height(30)
           .width(150)
       }
       .key("RelativeContainer_AnchorPoint_Margin_r1")
