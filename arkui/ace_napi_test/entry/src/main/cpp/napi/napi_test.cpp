@@ -4584,6 +4584,15 @@ static napi_value ThreadSafePriority(napi_env env, napi_callback_info info)
     return value;
 }
 
+static napi_value ThreadSafePriorityWithInvalidParam(napi_env env, napi_callback_info info)
+{
+    napi_status status = napi_call_threadsafe_function_with_priority(nullptr, nullptr, napi_priority_idle, true);
+    NAPI_ASSERT(env, status == napi_invalid_arg, "call threadsafe with priority successfully");
+    napi_value value = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &value));
+    return value;
+}
+
 EXTERN_C_START
 
 static napi_value Init(napi_env env, napi_value exports)
@@ -4759,6 +4768,8 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("exceptionalNapiNewInstance", ExceptionalNapiNewInstance),
         DECLARE_NAPI_FUNCTION("exceptionalNapiCrateAndGetValueString", ExceptionalNapiCrateAndGetValueString),
         {"threadSafePriority", nullptr, ThreadSafePriority, nullptr, nullptr, nullptr, napi_default, callbackData},
+        {"threadSafePriorityWithInvalidParam", nullptr, ThreadSafePriorityWithInvalidParam, nullptr, nullptr, nullptr,
+            napi_default, nullptr},
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
 
