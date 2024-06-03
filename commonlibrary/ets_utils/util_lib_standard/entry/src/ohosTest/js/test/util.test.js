@@ -3798,3 +3798,1903 @@ describe('TextEncoderTest', function () {
 
     /**
      * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0007
+     * @tc.name: test_compareTo_002
+     * @tc.desc: Compares the current RationalNumber object with a given object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_compareTo_002', 0, function () {
+      let pro = new util.RationalNumber(2, 1)
+      let proc = new util.RationalNumber(0, 0)
+      let res = pro.compareTo(proc)
+      expect(res).assertEqual(-1)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0008
+     * @tc.name: test_compareTo_003
+     * @tc.desc: Compares the current RationalNumber object with a given object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_compareTo_003', 0, function () {
+      let pro = new util.RationalNumber(2, 1)
+      let proc = new util.RationalNumber(8, 3)
+      let res = pro.compareTo(proc)
+      expect(res).assertEqual(-1)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0009
+     * @tc.name: test_compareTo_004
+     * @tc.desc: Compares the current RationalNumber object with a given object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_compareTo_004', 0, function () {
+      let pro = new util.RationalNumber(2, 1)
+      let proc = new util.RationalNumber(2, 1)
+      let res = pro.compareTo(proc)
+      expect(res).assertEqual(0)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0010
+     * @tc.name: test_compareTo_005
+     * @tc.desc: Compares the current RationalNumber object with a given object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_compareTo_005', 0, function () {
+      let pro = new util.RationalNumber(0, 0)
+      let proc = new util.RationalNumber(2, 1)
+      let res = pro.compareTo(proc)
+      expect(res).assertEqual(1)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0011
+     * @tc.name: test_equals_001
+     * @tc.desc: Checks whether a given object is the same as the current RationalNumber object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_equals_001', 0, function () {
+      let pro = new util.RationalNumber(2, 1)
+      let proc = new util.RationalNumber(3, 4)
+      let res = pro.equals(proc)
+      expect(res).assertEqual(false)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0012
+     * @tc.name: test_equals_002
+     * @tc.desc: Checks whether a given object is the same as the current RationalNumber object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_equals_002', 0, function () {
+      let pro = new util.RationalNumber(2, 1)
+      let proc = new util.RationalNumber(4, 2)
+      let res = pro.equals(proc)
+      expect(res).assertEqual(true)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0013
+     * @tc.name: test_equals_003
+     * @tc.desc: Checks whether a given object is the same as the current RationalNumber object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_equals_003', 0, function () {
+      let pro = new util.RationalNumber(0, 1)
+      let proc = new util.RationalNumber(0, 2)
+      let res = pro.equals(proc)
+      expect(res).assertEqual(true)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0014
+     * @tc.name: test_equals_004
+     * @tc.desc: Checks whether a given object is the same as the current RationalNumber object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_equals_004', 0, function () {
+      let pro = new util.RationalNumber(0, 0)
+      let proc = new util.RationalNumber(0, 2)
+      let res = pro.equals(proc)
+      expect(res).assertEqual(false)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0015
+     * @tc.name: test_equals_005
+     * @tc.desc: Checks whether a given object is the same as the current RationalNumber object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('test_equals_005', 0, function () {
+      let pro = new util.RationalNumber(-2, 0)
+      let proc = new util.RationalNumber(2, 0)
+      let res = pro.equals(proc)
+      expect(res).assertEqual(false)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0016
+     * @tc.name: testRationalNumberValueOf001
+     * @tc.desc: Obtains the value of the current RationalNumber object as a number.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testRationalNumberValueOf001', 0, function () {
+      let pro = new util.RationalNumber(2, 1)
+      let res = pro.valueOf()
+      expect(res).assertEqual(2)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0017
+     * @tc.name: testRationalNumberValueOf002
+     * @tc.desc: Obtains the value of the current RationalNumber object as a number.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testRationalNumberValueOf002', 0, function () {
+      let pro = new util.RationalNumber(2, 10)
+      let res = pro.valueOf()
+      expect(res).assertEqual(0.2)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0018
+     * @tc.name: testRationalNumberValueOf003
+     * @tc.desc: Obtains the value of the current RationalNumber object as a number.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testRationalNumberValueOf003', 0, function () {
+      let pro = new util.RationalNumber(1, 2)
+      let res = pro.valueOf()
+      expect(res).assertEqual(0.5)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0019
+     * @tc.name: testRationalNumberValueOf004
+     * @tc.desc: Obtains the value of the current RationalNumber object as a number.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testRationalNumberValueOf004', 0, function () {
+      let pro = new util.RationalNumber(4, 2)
+      let res = pro.valueOf()
+      expect(res).assertEqual(2)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0020
+     * @tc.name: testRationalNumberValueOf005
+     * @tc.desc: Obtains the value of the current RationalNumber object as a number.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testRationalNumberValueOf005', 0, function () {
+      let pro = new util.RationalNumber(4, 1)
+      let res = pro.valueOf()
+      expect(res).assertEqual(4)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0021
+     * @tc.name: testGetCommonDivisor001
+     * @tc.desc: Obtains the greatest common divisor of two specified numbers.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetCommonDivisor001', 0, function () {
+      let pro = new util.RationalNumber(0, 0)
+      let res = pro.getCommonDivisor(4, 8)
+      expect(res).assertEqual(4)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0022
+     * @tc.name: testGetCommonDivisor002
+     * @tc.desc: Obtains the greatest common divisor of two specified numbers.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetCommonDivisor002', 0, function () {
+      let pro = new util.RationalNumber(0, 0)
+      let res = pro.getCommonDivisor(10, 15)
+      expect(res).assertEqual(5)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0023
+     * @tc.name: testGetCommonDivisor003
+     * @tc.desc: Obtains the greatest common divisor of two specified numbers.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetCommonDivisor003', 0, function () {
+      let pro = new util.RationalNumber(0, 0)
+      let res = pro.getCommonDivisor(8, 4)
+      expect(res).assertEqual(4)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0024
+     * @tc.name: testGetCommonDivisor004
+     * @tc.desc: Obtains the greatest common divisor of two specified numbers.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetCommonDivisor004', 0, function () {
+      let pro = new util.RationalNumber(0, 0)
+      let res = pro.getCommonDivisor(8, 16)
+      expect(res).assertEqual(8)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0025
+     * @tc.name: testGetCommonDivisor005
+     * @tc.desc: Obtains the greatest common divisor of two specified numbers.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetCommonDivisor005', 0, function () {
+      let pro = new util.RationalNumber(0, 0)
+      let res = pro.getCommonDivisor(2, 16)
+      expect(res).assertEqual(2)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0026
+     * @tc.name: testGetDenominator001
+     * @tc.desc: Obtains the denominator of the current RationalNumber object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetDenominator001', 0, function () {
+      let pro = new util.RationalNumber(2, 1)
+      let res = pro.getDenominator()
+      expect(res).assertEqual(1)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0027
+     * @tc.name: testGetDenominator002
+     * @tc.desc: Obtains the denominator of the current RationalNumber object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetDenominator002', 0, function () {
+      let pro = new util.RationalNumber(2, 3)
+      let res = pro.getDenominator()
+      expect(res).assertEqual(3)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0028
+     * @tc.name: testGetDenominator003
+     * @tc.desc: Obtains the denominator of the current RationalNumber object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetDenominator003', 0, function () {
+      let pro = new util.RationalNumber(2, 0)
+      let res = pro.getDenominator()
+      expect(res).assertEqual(0)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0029
+     * @tc.name: testGetDenominator004
+     * @tc.desc: Obtains the denominator of the current RationalNumber object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetDenominator004', 0, function () {
+      let pro = new util.RationalNumber(10, 5)
+      let res = pro.getDenominator()
+      expect(res).assertEqual(1)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0030
+     * @tc.name: testGetDenominator005
+     * @tc.desc: Obtains the denominator of the current RationalNumber object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetDenominator005', 0, function () {
+      let pro = new util.RationalNumber(6, 3)
+      let res = pro.getDenominator()
+      expect(res).assertEqual(1)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0031
+     * @tc.name: testGetDenominator006
+     * @tc.desc: Obtains the denominator of the current RationalNumber object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetDenominator006', 0, function () {
+      let pro = new util.RationalNumber(6, -3)
+      let res = pro.getDenominator()
+      expect(res).assertEqual(1)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0032
+     * @tc.name: testGetNumerator001
+     * @tc.desc: Obtains the numerator of the current RationalNumber object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetNumerator001', 0, function () {
+      let pro = new util.RationalNumber(-2, 1)
+      let res = pro.getNumerator()
+      expect(res).assertEqual(-2)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0033
+     * @tc.name: testGetNumerator002
+     * @tc.desc: Obtains the numerator of the current RationalNumber object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetNumerator002', 0, function () {
+      let pro = new util.RationalNumber(0, 3)
+      let res = pro.getNumerator()
+      expect(res).assertEqual(0)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0034
+     * @tc.name: testGetNumerator003
+     * @tc.desc: Obtains the numerator of the current RationalNumber object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetNumerator003', 0, function () {
+      let pro = new util.RationalNumber(2, 4)
+      let res = pro.getNumerator()
+      expect(res).assertEqual(1)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0035
+     * @tc.name: testGetNumerator004
+     * @tc.desc: Obtains the numerator of the current RationalNumber object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetNumerator004', 0, function () {
+      let pro = new util.RationalNumber(3, 6)
+      let res = pro.getNumerator()
+      expect(res).assertEqual(1)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0036
+     * @tc.name: testGetNumerator005
+     * @tc.desc: Obtains the numerator of the current RationalNumber object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testGetNumerator005', 0, function () {
+      let pro = new util.RationalNumber(10, 5)
+      let res = pro.getNumerator()
+      expect(res).assertEqual(2)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0037
+     * @tc.name: testisFinite001
+     * @tc.desc: Checks whether the current RationalNumber object represents a finite value.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testisFinite001', 0, function () {
+      let pro = new util.RationalNumber(-2, 1)
+      let res = pro.isFinite()
+      expect(res).assertEqual(true)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0038
+     * @tc.name: testisFinite002
+     * @tc.desc: Checks whether the current RationalNumber object represents a finite value.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testisFinite002', 0, function () {
+      let pro = new util.RationalNumber(0, 3)
+      let res = pro.isFinite()
+      expect(res).assertEqual(true)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0039
+     * @tc.name: testisFinite003
+     * @tc.desc: Checks whether the current RationalNumber object represents a finite value.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testisFinite003', 0, function () {
+      let pro = new util.RationalNumber(2, 0)
+      let res = pro.isFinite()
+      expect(res).assertEqual(false)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0040
+     * @tc.name: testisFinite004
+     * @tc.desc: Checks whether the current RationalNumber object represents a finite value.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testisFinite004', 0, function () {
+      let pro = new util.RationalNumber(1, 3)
+      let res = pro.isFinite()
+      expect(res).assertEqual(true)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0041
+     * @tc.name: testisFinite005
+     * @tc.desc: Checks whether the current RationalNumber object represents a finite value.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testisFinite005', 0, function () {
+      let pro = new util.RationalNumber(10, 5)
+      let res = pro.isFinite()
+      expect(res).assertEqual(true)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0042
+     * @tc.name: testisNaN001
+     * @tc.desc: Checks whether the current RationalNumber object represents a finite value.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testisNaN001', 0, function () {
+      let pro = new util.RationalNumber(-2, 1)
+      let res = pro.isNaN()
+      expect(res).assertEqual(false)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0043
+     * @tc.name: testisNaN002
+     * @tc.desc: Checks whether the current RationalNumber object represents a Not-a-Number (NaN) value.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testisNaN002', 0, function () {
+      let pro = new util.RationalNumber(0, 3)
+      let res = pro.isNaN()
+      expect(res).assertEqual(false)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0044
+     * @tc.name: testisNaN003
+     * @tc.desc: Checks whether the current RationalNumber object represents a Not-a-Number (NaN) value.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testisNaN003', 0, function () {
+      let pro = new util.RationalNumber(0, 0)
+      let res = pro.isNaN()
+      expect(res).assertEqual(true)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0045
+     * @tc.name: testisNaN004
+     * @tc.desc: Checks whether the current RationalNumber object represents a Not-a-Number (NaN) value.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testisNaN004', 0, function () {
+      let pro = new util.RationalNumber(10, 0)
+      let res = pro.isNaN()
+      expect(res).assertEqual(false)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0046
+     * @tc.name: testisNaN005
+     * @tc.desc: Checks whether the current RationalNumber object represents a Not-a-Number (NaN) value.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testisNaN005', 0, function () {
+      let pro = new util.RationalNumber(10, 1)
+      let res = pro.isNaN()
+      expect(res).assertEqual(false)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0047
+     * @tc.name: testisZero001
+     * @tc.desc: Checks whether the current RationalNumber object represents the value 0.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testisZero001', 0, function () {
+      let pro = new util.RationalNumber(-2, 1)
+      let res = pro.isZero()
+      expect(res).assertEqual(false)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0048
+     * @tc.name: testisZero002
+     * @tc.desc: Checks whether the current RationalNumber object represents the value 0.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testisZero002', 0, function () {
+      let pro = new util.RationalNumber(0, 3)
+      let res = pro.isZero()
+      expect(res).assertEqual(true)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0049
+     * @tc.name: testisZero003
+     * @tc.desc: Checks whether the current RationalNumber object represents the value 0.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testisZero003', 0, function () {
+      let pro = new util.RationalNumber(0, 0)
+      let res = pro.isZero()
+      expect(res).assertEqual(false)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0050
+     * @tc.name: testisZero004
+     * @tc.desc: Checks whether the current RationalNumber object represents the value 0.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testisZero004', 0, function () {
+      let pro = new util.RationalNumber(10, 2)
+      let res = pro.isZero()
+      expect(res).assertEqual(false)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0051
+     * @tc.name: testisZero005
+     * @tc.desc: Checks whether the current RationalNumber object represents the value 0.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testisZero005', 0, function () {
+      let pro = new util.RationalNumber(1, 1)
+      let res = pro.isZero()
+      expect(res).assertEqual(false)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0052
+     * @tc.name: testRationalNumberToString001
+     * @tc.desc: Obtains a string representation of the current RationalNumber object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testRationalNumberToString001', 0, function () {
+      let pro = new util.RationalNumber(-2, 1)
+      let res = pro.toString()
+      expect(res).assertEqual("-2/1")
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0053
+     * @tc.name: testRationalNumberToString002
+     * @tc.desc: Obtains a string representation of the current RationalNumber object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testRationalNumberToString002', 0, function () {
+      let pro = new util.RationalNumber(0, 0)
+      let res = pro.toString()
+      expect(res).assertEqual("NaN")
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0054
+     * @tc.name: testRationalNumberToString003
+     * @tc.desc: Obtains a string representation of the current RationalNumber object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testRationalNumberToString003', 0, function () {
+      let pro = new util.RationalNumber(3, 0)
+      let res = pro.toString()
+      expect(res).assertEqual("Infinity")
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0055
+     * @tc.name: testRationalNumberToString004
+     * @tc.desc: Obtains a string representation of the current RationalNumber object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testRationalNumberToString004', 0, function () {
+      let pro = new util.RationalNumber(-3, 0)
+      let res = pro.toString()
+      expect(res).assertEqual("-Infinity")
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_RATIONALNUMBER_0056
+     * @tc.name: testRationalNumberToString005
+     * @tc.desc: Obtains a string representation of the current RationalNumber object.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testRationalNumberToString005', 0, function () {
+      let pro = new util.RationalNumber(2, 3)
+      let res = pro.toString()
+      expect(res).assertEqual('2/3')
+    })
+  })
+
+  describe('LruBufferFunTest', function () {
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0001
+     * @tc.name: testLruBufferUpdateGetCapacity001
+     * @tc.desc: Updates the buffer capacity to a specified capacity.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferUpdateGetCapacity001', 0, function () {
+      let that = new util.LruBuffer()
+      that.updateCapacity(10)
+      let result = that.getCapacity()
+      expect(result).assertEqual(10)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0002
+     * @tc.name: testLruBufferUpdateGetCapacity002
+     * @tc.desc: Updates the buffer capacity to a specified capacity.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferUpdateGetCapacity002', 0, function () {
+      let that = new util.LruBuffer()
+      that.updateCapacity(2147483646)
+      let result = that.getCapacity()
+      expect(result).assertEqual(2147483646)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0003
+     * @tc.name: testLruBufferUpdateGetCapacity003
+     * @tc.desc: Updates the buffer capacity to a specified capacity.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferUpdateGetCapacity003', 0, function () {
+      let that = new util.LruBuffer(100)
+      that.updateCapacity(20)
+      let result = that.getCapacity()
+      expect(result).assertEqual(20)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0004
+     * @tc.name: testLruBufferUpdateGetCapacity004
+     * @tc.desc: Updates the buffer capacity to a specified capacity.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferUpdateGetCapacity004', 0, function () {
+      let that = new util.LruBuffer(50)
+      that.updateCapacity(2)
+      let result = that.getCapacity()
+      expect(result).assertEqual(2)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0005
+     * @tc.name: testLruBufferUpdateGetCapacity005
+     * @tc.desc: Updates the buffer capacity to a specified capacity.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferUpdateGetCapacity005', 0, function () {
+      let that = new util.LruBuffer(200)
+      that.updateCapacity(100)
+      let result = that.getCapacity()
+      expect(result).assertEqual(100)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0006
+     * @tc.name: testLruBufferGet001
+     * @tc.desc: Obtains the value associated with a specified key.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGet001', 0, function () {
+      let that = new util.LruBuffer(100)
+      that.put(1,2)
+      let result = that.get(1)
+      expect(result).assertEqual(2)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0007
+     * @tc.name: testLruBufferGet002
+     * @tc.desc: Obtains the value associated with a specified key.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGet002', 0, function () {
+      let that = new util.LruBuffer(100)
+      that.put(1,2)
+      let result = that.get(5)
+      expect(result).assertEqual(undefined)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0008
+     * @tc.name: testLruBufferGet003
+     * @tc.desc: Obtains the value associated with a specified key.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGet003', 0, function () {
+      let that = new util.LruBuffer(100)
+      that.put(1,2)
+      that.put(2,10)
+      that.put('abcd',15)
+      let result1 = that.get(20)
+      let result2 = that.get('abcd')
+      let result3 = that.get(2)
+      expect(result1).assertEqual(undefined)
+      expect(result2).assertEqual(15)
+      expect(result3).assertEqual(10)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0009
+     * @tc.name: testLruBufferGet004
+     * @tc.desc: Obtains the value associated with a specified key.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGet004', 0, function () {
+      let that = new util.LruBuffer()
+      that.put('1111','bcjdshc')
+      that.put(20,'cdjcaxb')
+      that.put('abcd',15)
+      let result1 = that.get('1111')
+      let result2 = that.get(20)
+      let result3 = that.get('abcd')
+      let result4 = that.get(25)
+      expect(result1).assertEqual('bcjdshc')
+      expect(result2).assertEqual('cdjcaxb')
+      expect(result3).assertEqual(15)
+      expect(result4).assertEqual(undefined)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0010
+     * @tc.name: testLruBufferGet005
+     * @tc.desc: Obtains the value associated with a specified key.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGet005', 0, function () {
+      let that = new util.LruBuffer()
+      that.put('1111','bcjdshc')
+      that.put(20,'cdjcaxb')
+      that.updateCapacity(2)
+      that.put('abcd',15)
+      let result1 = that.get('1111')
+      let result2 = that.get(20)
+      let result3 = that.get('abcd')
+      let result4 = that.get(25)
+      expect(result1).assertEqual(undefined)
+      expect(result2).assertEqual('cdjcaxb')
+      expect(result3).assertEqual(15)
+      expect(result4).assertEqual(undefined)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0011
+     * @tc.name: testLruBufferPut001
+     * @tc.desc: Adds a key-value pair to the buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferPut001', 0, function () {
+      let that = new util.LruBuffer()
+      let temp = that.put('1111','bcjdshc')
+      expect(temp).assertEqual('bcjdshc')
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0012
+     * @tc.name: testLruBufferPut002
+     * @tc.desc: Adds a key-value pair to the buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferPut002', 0, function () {
+      let that = new util.LruBuffer()
+      let temp1 = that.put('1111','bcjdshc')
+      let temp2 = that.put('1111',13)
+      expect(temp2).assertEqual(13)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0013
+     * @tc.name: testLruBufferPut003
+     * @tc.desc: Adds a key-value pair to the buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferPut003', 0, function () {
+      let that = new util.LruBuffer()
+      let temp = that.put('1111','bcjdshc')
+      let temp1 = that.put(1,12)
+      let temp2 = that.put(2,5)
+      let temp3 = that.put(2,'adasfdad')
+      let temp4 = that.put('abc',10)
+      expect(temp1).assertEqual(12)
+      expect(temp2).assertEqual(5)
+      expect(temp3).assertEqual('adasfdad')
+      expect(temp4).assertEqual(10)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0014
+     * @tc.name: testLruBufferPut004
+     * @tc.desc: Adds a key-value pair to the buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferPut004', 0, function () {
+      let that = new util.LruBuffer()
+      let temp = that.put('1111','bcjdshc')
+      let temp1 = that.put(1,12)
+      let temp2 = that.put(2,5)
+      that.updateCapacity(2)
+      let temp3 = that.put(2,'adasfdad')
+      let temp4 = that.put('1111',10)
+      expect(temp).assertEqual('bcjdshc')
+      expect(temp1).assertEqual(12)
+      expect(temp2).assertEqual(5)
+      expect(temp3).assertEqual('adasfdad')
+      expect(temp4).assertEqual(10)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0015
+     * @tc.name: testLruBufferPut005
+     * @tc.desc: Adds a key-value pair to the buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferPut005', 0, function () {
+      let that = new util.LruBuffer()
+      let temp = that.put('1111','bcjdshc')
+      let temp1 = that.put(1,12)
+      let temp2 = that.put(2,5)
+      let temp3 = that.put(1,10)
+      let temp4 = that.put(2,22)
+      let temp5 = that.put(2,30)
+      expect(temp).assertEqual('bcjdshc')
+      expect(temp1).assertEqual(12)
+      expect(temp2).assertEqual(5)
+      expect(temp3).assertEqual(10)
+      expect(temp4).assertEqual(22)
+      expect(temp5).assertEqual(30)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0016
+     * @tc.name: testLruBufferGetCreateCount001
+     * @tc.desc: Obtains the number of times createDefault(Object) returned a value.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetCreateCount001', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(2,10)
+      that.put('abcd',15)
+      that.get(3)
+      that.get(5)
+      that.get(10)
+      let result = that.getCreateCount()
+      expect(result).assertEqual(0)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0017
+     * @tc.name: testLruBufferGetCreateCount002
+     * @tc.desc: Obtains the number of times createDefault(Object) returned a value.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetCreateCount002', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(2,10)
+      that.put('abcd',15)
+      that.get(6)
+      that.get(8)
+      that.get(20)
+      let result = that.getCreateCount()
+      expect(result).assertEqual(0)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0018
+     * @tc.name: testLruBufferGetCreateCount003
+     * @tc.desc: Obtains the number of times createDefault(Object) returned a value.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetCreateCount003', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(2,10)
+      that.get('abc')
+      that.get('cndk')
+      let result = that.getCreateCount()
+      expect(result).assertEqual(0)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0019
+     * @tc.name: testLruBufferGetCreateCount004
+     * @tc.desc: Obtains the number of times createDefault(Object) returned a value.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetCreateCount004', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(5,2)
+      that.put(10,10)
+      that.put('abcd','abcd')
+      that.get(3)
+      that.get(20)
+      that.get(12)
+      let result = that.getCreateCount()
+      expect(result).assertEqual(0)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0020
+     * @tc.name: testLruBufferGetCreateCount005
+     * @tc.desc: Obtains the number of times createDefault(Object) returned a value.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetCreateCount005', 0, function () {
+      let that = new util.LruBuffer()
+      that.put('xsjk','bcjds')
+      that.put('ajc',10)
+      that.put('abcd',15)
+      that.get(2)
+      that.get(10)
+      that.get(30)
+      let result = that.getCreateCount()
+      expect(result).assertEqual(0)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0021
+     * @tc.name: testLruBufferGetMissCount001
+     * @tc.desc: Obtains the number of times that the queried values are not matched.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetMissCount001', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(2,10)
+      that.put('abcd',15)
+      that.get(3)
+      that.get(5)
+      that.get(10)
+      let result = that.getMissCount()
+      expect(result).assertEqual(3)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0022
+     * @tc.name: testLruBufferGetMissCount002
+     * @tc.desc: Obtains the number of times that the queried values are not matched.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetMissCount002', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(5,2)
+      that.put(1,10)
+      that.put('abcd','bcjsc')
+      that.get(2)
+      that.get(10)
+      that.get(15)
+      let result = that.getMissCount()
+      expect(result).assertEqual(3)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0023
+     * @tc.name: testLruBufferGetMissCount003
+     * @tc.desc: Obtains the number of times that the queried values are not matched.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetMissCount003', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(10,10)
+      that.put(3,20)
+      that.put(12,16)
+      that.get(1)
+      that.get(2)
+      that.get(6)
+      let result = that.getMissCount()
+      expect(result).assertEqual(3)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0024
+     * @tc.name: testLruBufferGetMissCount004
+     * @tc.desc: Obtains the number of times that the queried values are not matched.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetMissCount004', 0, function () {
+      let that = new util.LruBuffer()
+      that.put('acb','asdc')
+      that.put('vfb',1)
+      that.put('abcd','abcd')
+      that.get(3)
+      that.get(5)
+      that.get(10)
+      let result = that.getMissCount()
+      expect(result).assertEqual(3)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0025
+     * @tc.name: testLruBufferGetMissCount005
+     * @tc.desc: Obtains the number of times that the queried values are not matched.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetMissCount005', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(2,10)
+      that.put('abcd',15)
+      that.get(3)
+      that.get(5)
+      that.get(10)
+      that.contains(2)
+      that.contains(6)
+      let result = that.getMissCount()
+      expect(result).assertEqual(4)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0026
+     * @tc.name: testLruBufferGetMissCount006
+     * @tc.desc: Obtains the number of times that the queried values are not matched.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetMissCount006', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(2,10)
+      that.put('abcd',15)
+      that.get(1)
+      that.get(2)
+      that.get('abcd')
+      let result = that.getMissCount()
+      expect(result).assertEqual(0)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0027
+     * @tc.name: testLruBufferGetRemovalCount001
+     * @tc.desc: Obtains the number of times that values are evicted from the buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetRemovalCount001', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(2,10)
+      that.put('abcd',15)
+      that.put(3,20)
+      that.put(5,30)
+      let result = that.getRemovalCount()
+      expect(result).assertEqual(0)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0028
+     * @tc.name: testLruBufferGetRemovalCount002
+     * @tc.desc: Obtains the number of times that values are evicted from the buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetRemovalCount002', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(10,2)
+      that.put(3,2)
+      that.put(15,15)
+      that.put(1,20)
+      let result = that.getRemovalCount()
+      expect(result).assertEqual(0)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0029
+     * @tc.name: testLruBufferGetRemovalCount003
+     * @tc.desc: Obtains the number of times that values are evicted from the buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetRemovalCount003', 0, function () {
+      let that = new util.LruBuffer()
+      that.put('abc',2)
+      that.put('abcd','abcd')
+      that.put(3,2)
+      let result = that.getRemovalCount()
+      expect(result).assertEqual(0)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0030
+     * @tc.name: testLruBufferGetRemovalCount004
+     * @tc.desc: Obtains the number of times that values are evicted from the buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetRemovalCount004', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(2,10)
+      that.put('abcd',15)
+      that.updateCapacity(2)
+      that.put(3,20)
+      that.put(5,30)
+      let result = that.getRemovalCount()
+      expect(result).assertEqual(3)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0031
+     * @tc.name: testLruBufferGetRemovalCount005
+     * @tc.desc: Obtains the number of times that values are evicted from the buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetRemovalCount005', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(2,10)
+      that.put('abcd',15)
+      that.updateCapacity(3)
+      that.put('string',20)
+      that.put('abc',30)
+      that.put(10,20)
+      let result = that.getRemovalCount()
+      expect(result).assertEqual(3)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0032
+     * @tc.name: testLruBufferGetMatchCount001
+     * @tc.desc: Obtains the number of times that the queried values are successfully matched.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetMatchCount001', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(2,10)
+      that.put('abcd',15)
+      that.get(1)
+      that.get(2)
+      that.get('abcd')
+      let result = that.getMatchCount()
+      expect(result).assertEqual(3)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0033
+     * @tc.name: testLruBufferGetMatchCount002
+     * @tc.desc: Obtains the number of times that the queried values are successfully matched.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetMatchCount002', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(10,2)
+      that.put(2,1)
+      that.put('abcd',15)
+      that.get(10)
+      that.get(2)
+      that.get('abcd')
+      that.get('string')
+      let result = that.getMatchCount()
+      expect(result).assertEqual(3)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0034
+     * @tc.name: testLruBufferGetMatchCount003
+     * @tc.desc: Obtains the number of times that the queried values are successfully matched.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetMatchCount003', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(0,1)
+      that.put(30,10)
+      that.put('abcd',15)
+      that.get(0)
+      that.get(30)
+      that.get('abcd')
+      let result = that.getMatchCount()
+      expect(result).assertEqual(3)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0035
+     * @tc.name: testLruBufferGetMatchCount004
+     * @tc.desc: Obtains the number of times that the queried values are successfully matched.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetMatchCount004', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(2,10)
+      that.put('abcd',15)
+      that.get(1)
+      that.get(2)
+      that.get('abcd')
+      that.contains(2)
+      that.contains('abcd')
+      that.contains(20)
+      let result = that.getMatchCount()
+      expect(result).assertEqual(5)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0036
+     * @tc.name: testLruBufferGetMatchCount005
+     * @tc.desc: Obtains the number of times that the queried values are successfully matched.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetMatchCount005', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(2,10)
+      that.put('abcd',15)
+      that.put('string','string')
+      that.get(1)
+      that.get(2)
+      that.get('abcd')
+      that.get('string')
+      that.contains(2)
+      that.contains('abcd')
+      that.contains('string')
+      that.contains(10)
+      let result = that.getMatchCount()
+      expect(result).assertEqual(7)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0037
+     * @tc.name: testLruBufferGetMatchCount006
+     * @tc.desc: Obtains the number of times that the queried values are successfully matched.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetMatchCount006', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(2,10)
+      that.put('abcd',15)
+      that.get(5)
+      let result = that.getMatchCount()
+      expect(result).assertEqual(0)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0038
+     * @tc.name: testLruBufferGetPutCount001
+     * @tc.desc: Obtains the number of times that values are added to the buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetPutCount001', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      let result = that.getPutCount()
+      expect(result).assertEqual(1)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0039
+     * @tc.name: testLruBufferGetPutCount002
+     * @tc.desc: Obtains the number of times that values are added to the buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetPutCount002', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(5,3)
+      that.put(2,10)
+      let result = that.getPutCount()
+      expect(result).assertEqual(2)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0040
+     * @tc.name: testLruBufferGetPutCount003
+     * @tc.desc: Obtains the number of times that values are added to the buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetPutCount003', 0, function () {
+      let that = new util.LruBuffer()
+      that.put('string',2)
+      that.put('abcd',1)
+      that.put('ab','a')
+      let result = that.getPutCount()
+      expect(result).assertEqual(3)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0041
+     * @tc.name: testLruBufferGetPutCount004
+     * @tc.desc: Obtains the number of times that values are added to the buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetPutCount004', 0, function () {
+      let that = new util.LruBuffer()
+      that.put('string','string')
+      that.put('ac','abc')
+      that.put('abcd',15)
+      let result = that.getPutCount()
+      expect(result).assertEqual(3)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0042
+     * @tc.name: testLruBufferGetPutCount005
+     * @tc.desc: Obtains the number of times that values are added to the buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetPutCount005', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(2,10)
+      that.updateCapacity(2)
+      that.put('abcd','abc')
+      let result = that.getPutCount()
+      expect(result).assertEqual(3)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0043
+     * @tc.name: testLruBufferGetCapacity001
+     * @tc.desc: Obtains the capacity of the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetCapacity001', 0, function () {
+      let that = new util.LruBuffer()
+      let result = that.getCapacity()
+      expect(result).assertEqual(64)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0044
+     * @tc.name: testLruBufferGetCapacity002
+     * @tc.desc: Obtains the capacity of the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetCapacity002', 0, function () {
+      let that = new util.LruBuffer(2)
+      let result = that.getCapacity()
+      expect(result).assertEqual(2)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0045
+     * @tc.name: testLruBufferGetCapacity003
+     * @tc.desc: Obtains the capacity of the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetCapacity003', 0, function () {
+      let that = new util.LruBuffer(100)
+      let result = that.getCapacity()
+      expect(result).assertEqual(100)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0046
+     * @tc.name: testLruBufferGetCapacity004
+     * @tc.desc: Obtains the capacity of the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetCapacity004', 0, function () {
+      let that = new util.LruBuffer()
+      that.updateCapacity(50)
+      let result = that.getCapacity()
+      expect(result).assertEqual(50)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0047
+     * @tc.name: testLruBufferGetCapacity005
+     * @tc.desc: Obtains the capacity of the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferGetCapacity005', 0, function () {
+      let that = new util.LruBuffer(100)
+      that.updateCapacity(10)
+      let result = that.getCapacity()
+      expect(result).assertEqual(10)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0048
+     * @tc.name: testLruBufferLength001
+     * @tc.desc: Obtains the total number of values in the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferLength001', 0, function () {
+      let that = new util.LruBuffer()
+      let result = that.length
+      expect(result).assertEqual(0)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0049
+     * @tc.name: testLruBufferLength002
+     * @tc.desc: Obtains the total number of values in the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferLength002', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      let result = that.length
+      expect(result).assertEqual(1)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0050
+     * @tc.name: testLruBufferLength003
+     * @tc.desc: Obtains the total number of values in the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferLength003', 0, function () {
+      let that = new util.LruBuffer()
+      that.put('abc',2)
+      that.put('string','string')
+      let result = that.length
+      expect(result).assertEqual(2)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0051
+     * @tc.name: testLruBufferLength004
+     * @tc.desc: Obtains the total number of values in the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferLength004', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(2,10)
+      that.put('abcd',15)
+      that.put('abcd',20)
+      let result = that.length
+      expect(result).assertEqual(3)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0052
+     * @tc.name: testLruBufferLength005
+     * @tc.desc: Obtains the total number of values in the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferLength005', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(2,10)
+      that.put('abcd',15)
+      that.put('abcd',20)
+      that.updateCapacity(3);
+      that.put(5,33);
+      that.put(25,35);
+      let result = that.length
+      expect(result).assertEqual(3)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0053
+     * @tc.name: testLruBufferClear001
+     * @tc.desc: Clears key-value pairs from the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferClear001', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      let result1 = that.length
+      that.clear()
+      let result2 = that.length
+      expect(result1).assertEqual(1)
+      expect(result2).assertEqual(0)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0054
+     * @tc.name: testLruBufferClear002
+     * @tc.desc: Clears key-value pairs from the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferClear002', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(2,10)
+      that.put(5,33);
+      that.put(25,35);
+      let result1 = that.length
+      that.clear()
+      let result2 = that.length
+      expect(result1).assertEqual(4)
+      expect(result2).assertEqual(0)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0055
+     * @tc.name: testLruBufferClear003
+     * @tc.desc: Clears key-value pairs from the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferClear003', 0, function () {
+      let that = new util.LruBuffer()
+      that.put('abc',2)
+      that.put(2,'abc')
+      that.put('ancd','abcd')
+      that.put(10,35)
+      let result1 = that.length
+      that.clear()
+      let result2 = that.length
+      expect(result1).assertEqual(4)
+      expect(result2).assertEqual(0)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0056
+     * @tc.name: testLruBufferClear004
+     * @tc.desc: Clears key-value pairs from the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferClear004', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(2,10)
+      that.put(5,33);
+      that.updateCapacity(3);
+      let result1 = that.length
+      that.clear()
+      let result2 = that.length
+      expect(result1).assertEqual(3)
+      expect(result2).assertEqual(0)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0057
+     * @tc.name: testLruBufferClear005
+     * @tc.desc: Clears key-value pairs from the current buffer.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferClear005', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(2,10)
+      that.put(5,33);
+      that.put('abcd','string');
+      that.updateCapacity(2);
+      let result1 = that.length
+      that.clear()
+      let result2 = that.length
+      expect(result1).assertEqual(2)
+      expect(result2).assertEqual(0)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0058
+     * @tc.name: testLruBufferIsEmpty001
+     * @tc.desc: Checks whether the current buffer is empty.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferIsEmpty001', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      let result = that.isEmpty()
+      expect(result).assertEqual(false)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0059
+     * @tc.name: testLruBufferIsEmpty002
+     * @tc.desc: Checks whether the current buffer is empty.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferIsEmpty002', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(2,10)
+      let result = that.isEmpty()
+      expect(result).assertEqual(false)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0060
+     * @tc.name: testLruBufferIsEmpty003
+     * @tc.desc: Checks whether the current buffer is empty.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferIsEmpty003', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(2,10)
+      that.put(5,33)
+      let result = that.isEmpty()
+      expect(result).assertEqual(false)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0061
+     * @tc.name: testLruBufferIsEmpty004
+     * @tc.desc: Checks whether the current buffer is empty.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferIsEmpty004', 0, function () {
+      let that = new util.LruBuffer()
+      that.put('abc',2)
+      that.put('string',10)
+      that.put('ab','abc')
+      let result = that.isEmpty()
+      expect(result).assertEqual(false)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0062
+     * @tc.name: testLruBufferIsEmpty005
+     * @tc.desc: Checks whether the current buffer is empty.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferIsEmpty005', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      that.put(2,10)
+      that.put(5,33);
+      that.clear()
+      let result = that.isEmpty()
+      expect(result).assertEqual(true)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0063
+     * @tc.name: testLruBufferContains001
+     * @tc.desc: Checks whether the current buffer contains a specified key.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferContains001', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(1,2)
+      let result = that.contains(1)
+      expect(result).assertEqual(true)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0064
+     * @tc.name: testLruBufferContains002
+     * @tc.desc: Checks whether the current buffer contains a specified key.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferContains002', 0, function () {
+      let that = new util.LruBuffer()
+      that.put(0,5)
+      let result = that.contains(0)
+      expect(result).assertEqual(true)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0065
+     * @tc.name: testLruBufferContains003
+     * @tc.desc: Checks whether the current buffer contains a specified key.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testLruBufferContains003', 0, function () {
+      let that = new util.LruBuffer()
+      that.put('abc','abc')
+      let result = that.contains(1)
+      expect(result).assertEqual(false)
+    })
+
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_LRUBUFFER_0066
+     * @tc.name: testLruBufferContains004
+     * @tc.desc: Checks whether the current buffer contains a specified key.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
