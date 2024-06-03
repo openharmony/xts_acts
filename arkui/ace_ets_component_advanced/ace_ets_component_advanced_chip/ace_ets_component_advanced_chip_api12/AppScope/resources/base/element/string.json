@@ -1,8 +1,12 @@
 {
- "string":[
+  "string": [
     {
-      "name":"app_name",
-      "value":"ohosProject"
+      "name": "app_name",
+      "value": "ohosProject"
+    },
+    {
+      "name": "description_application",
+      "value": "ohosProject"
     }
   ]
-}      
+}

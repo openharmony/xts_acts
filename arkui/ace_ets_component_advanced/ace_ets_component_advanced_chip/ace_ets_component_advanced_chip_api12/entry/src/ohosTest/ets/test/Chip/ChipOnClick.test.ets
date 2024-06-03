@@ -17,14 +17,18 @@ import router from '@system.router';
 import { Driver } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 
+interface optionsObj {
+  uri: string
+}
+
 export default function ChipOnClose() {
-    describe('ChipOnClick', function () {
-        beforeAll(async function () {
+    describe('ChipOnClick', () => {
+        beforeAll(async () => {
             console.info("beforeAll case");
         });
-        beforeEach(async function (done) {
+        beforeEach(async (done: Function) => {
             console.info("search_caret beforeEach start");
-            let options = {
+            let options: optionsObj = {
                 uri: 'MainAbility/pages/Chip/ChipOnClick',
             }
             try {
@@ -43,11 +47,11 @@ export default function ChipOnClose() {
             }
             done();
         });
-        afterEach(async function () {
+        afterEach(async () => {
             console.info("afterEach case");
         });
 
-        afterAll(async function () {
+        afterAll(async () => {
             console.info("afterAll case");
         });
 
@@ -73,7 +77,7 @@ export default function ChipOnClose() {
             console.info('ChipOnClick_001 click success');
 
             let strJson1 = getInspectorByKey('ChipOnClickText');
-            let obj2 = JSON.parse(strJson1);
+            let obj2: Record<string, ESObject> = JSON.parse(strJson1);
             await CommonFunc.sleep(1000);
             console.info("[ChipOnClick_001] component obj is: " + JSON.stringify(JSON.parse(strJson1)));
             expect(obj2.$attrs.content).assertEqual('onClicked');
