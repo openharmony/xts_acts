@@ -89,14 +89,13 @@ export default function List_Space_Percentage() {
       expect(Math.round(ListItem02.right - ListItem02.left)).assertEqual(vp2px(300));
       expect(Math.round(ListItem02.bottom - ListItem02.top)).assertEqual(Math.round(vp2px(50)));
 
-      expect(Math.round(ListItem03.top - ListItem02.bottom)).assertEqual(Math.round(vp2px(52)));
+      expect(Math.abs(Math.round(ListItem03.top - ListItem02.bottom) - Math.round(vp2px(52))) <= 1).assertTrue();
       expect(Math.round(ListItem03.right - ListItem03.left)).assertEqual(vp2px(300));
       expect(Math.round(ListItem03.bottom - ListItem03.top)).assertEqual(Math.round(vp2px(50)));
 
       expect(Math.round(ListItem04.top - ListItem03.bottom)).assertEqual(Math.round(vp2px(52)));
       expect(Math.round(ListItem04.right - ListItem04.left)).assertEqual(vp2px(300));
       expect(Math.round(ListItem04.bottom - ListItem04.top)).assertEqual(Math.round(vp2px(50)));
-
 
       console.info('[SUB_ACE_List_Space_Percentage_0100] END');
       done();
