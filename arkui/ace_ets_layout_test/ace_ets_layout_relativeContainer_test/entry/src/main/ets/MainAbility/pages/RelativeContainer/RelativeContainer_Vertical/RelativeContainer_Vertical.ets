@@ -61,7 +61,6 @@ struct RelativeContainer_Vertical {
           .id("RelativeContainer_Vertical_tx2")
           .borderWidth(2)
           .borderColor(Color.Green)
-          .height(30)
           .width(250)
       }
       .width(300).height(300)

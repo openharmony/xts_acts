@@ -12509,5 +12509,105 @@ export default function audioRendererTest() {
       });
       done();
     })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_FLUSH_0100
+     * @tc.name      : AudioRenderer - STATE_RUNNING - Callback
+     * @tc.desc      : AudioRenderer - STATE_RUNNING
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_RENDERER_FLUSH_0100', 2, async function (done) {
+      let AudioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+        channels: audio.AudioChannel.CHANNEL_2,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+
+      let AudioRendererInfo = {
+        content: audio.ContentType.CONTENT_TYPE_RINGTONE,
+        usage: audio.StreamUsage.STREAM_USAGE_NOTIFICATION_RINGTONE,
+        rendererFlags: 0
+      }
+
+      let AudioRendererOptions = {
+        streamInfo: AudioStreamInfo,
+        rendererInfo: AudioRendererInfo
+      }
+      let resultFlag = false;
+
+      let audioRen;
+      let isPass = false;
+      await audio.createAudioRenderer(AudioRendererOptions).then((data) => {
+        audioRen = data;
+        console.info(`${TagFrmwkRender}: AudioRender Created : Success : Stream Type: SUCCESS`);
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: AudioRender Created : ERROR : ${err.message}`);
+        LE24 = audio.AudioSampleFormat.SAMPLE_FORMAT_S24LE;
+        LE32 = audio.AudioSampleFormat.SAMPLE_FORMAT_S32LE;
+        let sampleFormat = AudioRendererOptions.streamInfo.sampleFormat;
+        if ((sampleFormat == LE24 || sampleFormat == LE32) && err.code == 202) {
+          isPass = true;
+          return;
+        }
+        resultFlag = false;
+      });
+      console.log(`isPass: ${isPass}`);
+      if (isPass) {
+        resultFlag = true;
+        expect(resultFlag).assertTrue();
+        done();
+        return;
+      }
+
+      audioRen.on('stateChange', (AudioState) => {
+
+        console.log(`${TagFrmwk}: Volume Change Event is called`);
+
+        switch (AudioState) {
+          case audio.AudioState.STATE_RUNNING:
+            console.info(`${TagFrmwk}: state : STATE_RUNNING`);
+            audioRen.flush().then(() => {
+              console.info('Renderer flushed successfully');
+            }).catch((err) => {
+              console.error(`ERROR: ${err}`);
+            });
+            resultFlag = true;
+            break;
+          default:
+            console.info(`${TagFrmwk}: state : ${AudioState}`);
+            break;
+        }
+      });
+
+      await audioRen.start().then(() => {
+        console.info(`${TagFrmwkRender}: renderInstant started :SUCCESS`);
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: renderInstant start :ERROR : ${err.message}`);
+        resultFlag = false;
+      });
+
+      await sleep(500);
+
+      await audioRen.stop().then(() => {
+        console.info(`${TagFrmwkRender}: Renderer stopped : SUCCESS`);
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: Renderer stop:ERROR : ${err.message}`);
+      });
+
+      await audioRen.release().then(() => {
+        console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+      });
+      await sleep(1000);
+
+      expect(resultFlag).assertTrue();
+
+      done();
+
+    })
   })
 }

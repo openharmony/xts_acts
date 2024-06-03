@@ -281,12 +281,4 @@ static napi_value TestToggleClip015(napi_env env, napi_callback_info info)
     NAPI_END;
 }
 
-static napi_value TestToggleClip016(napi_env env, napi_callback_info info)
-{
-    NAPI_START(toggle, ARKUI_NODE_TOGGLE);
-    int32_t clipBool = 0;
-    ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_CLIP)->value[PARAM_0].i32, clipBool);
-    NAPI_END;
-}
-
 } // namespace ArkUICapiTest

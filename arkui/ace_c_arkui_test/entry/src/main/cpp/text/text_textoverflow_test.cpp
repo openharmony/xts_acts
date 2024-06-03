@@ -23,7 +23,7 @@ static napi_value TestTextTextOverflow001(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.i32 = ARKUI_TEXT_OVERFLOW_NONE}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_OVERFLOW, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_OVERFLOW)->value->i32, ARKUI_TEXT_OVERFLOW_NONE);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_OVERFLOW)->value[PARAM_0].i32, ARKUI_TEXT_OVERFLOW_NONE);
     ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
@@ -34,7 +34,7 @@ static napi_value TestTextTextOverflow002(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.i32 = ARKUI_TEXT_OVERFLOW_CLIP}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_OVERFLOW, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_OVERFLOW)->value->i32, ARKUI_TEXT_OVERFLOW_CLIP);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_OVERFLOW)->value[PARAM_0].i32, ARKUI_TEXT_OVERFLOW_CLIP);
     ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
@@ -45,7 +45,7 @@ static napi_value TestTextTextOverflow003(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.i32 = ARKUI_TEXT_OVERFLOW_ELLIPSIS}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_OVERFLOW, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_OVERFLOW)->value->i32, ARKUI_TEXT_OVERFLOW_ELLIPSIS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_OVERFLOW)->value[PARAM_0].i32, ARKUI_TEXT_OVERFLOW_ELLIPSIS);
     ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
@@ -56,7 +56,7 @@ static napi_value TestTextTextOverflow004(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.i32 = ARKUI_TEXT_OVERFLOW_MARQUEE}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_OVERFLOW, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_OVERFLOW)->value->i32, ARKUI_TEXT_OVERFLOW_MARQUEE);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_OVERFLOW)->value[PARAM_0].i32, ARKUI_TEXT_OVERFLOW_MARQUEE);
     ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
@@ -69,7 +69,7 @@ static napi_value TestTextTextOverflow005(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_OVERFLOW, &valueItem);
     if (nodeAPI->getAttribute(text, NODE_BACKGROUND_IMAGE) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(text, NODE_TEXT_OVERFLOW)->value->i32, exception);
+        ASSERT_NE(nodeAPI->getAttribute(text, NODE_TEXT_OVERFLOW)->value[PARAM_0].i32, exception);
     };
     ASSERT_EQ(ret, INVALID_PARAM);
     NAPI_END;

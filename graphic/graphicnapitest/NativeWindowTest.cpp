@@ -865,7 +865,8 @@ HWTEST_F(NativeWindowTest, FlushBuffer003, Function | MediumTest | Level2)
     rect->h = 0x100;
     region->rects = rect;
     ASSERT_EQ(OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow, nativeWindowBuffer, fenceFd, *region),
-              OHOS::SURFACE_ERROR_BUFFER_STATE_INVALID);
+              OHOS::SURFACE_ERROR_BUFFER_STATE_INVALID); 
+    
     delete rect;
     delete region;
 }

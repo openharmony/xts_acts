@@ -39,7 +39,7 @@ class testInstallSignedHap(TestCase):
         if 'apply quickfix succeed' not in installHqfResult.strip():
             errorList.append('install hqf failed')
         if len(errorList) > 0:
-            print('errorList: [' + ', '.join(errorList) + ']')
+            self.log.info('errorList: [' + ', '.join(errorList) + ']')
             assert False
 
     def teardown(self):

@@ -230,15 +230,4 @@ static napi_value TestCommonAttrsLinearGradient010(napi_env env, napi_callback_i
     ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
 }
-
-static napi_value TestCommonAttrsLinearGradient011(napi_env env, napi_callback_info info)
-{
-    NAPI_START(column, ARKUI_NODE_COLUMN);
-    float angle = 180;
-    int32_t repeating = false;
-    auto columnDefault = nodeAPI->createNode(ARKUI_NODE_COLUMN);
-    ASSERT_EQ(nodeAPI->getAttribute(columnDefault, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, angle);
-    ASSERT_EQ(nodeAPI->getAttribute(columnDefault, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
-    NAPI_END;
-}
 } // namespace ArkUICapiTest

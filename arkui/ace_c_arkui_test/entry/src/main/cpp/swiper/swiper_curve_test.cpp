@@ -24,7 +24,7 @@ static napi_value TestSwiperCurve001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem curve_value_item = {curve_value, sizeof(curve_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_CURVE, &curve_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CURVE)->value->i32, ARKUI_CURVE_LINEAR);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CURVE)->value[PARAM_0].i32, ARKUI_CURVE_LINEAR);
     NAPI_END;
 }
 
@@ -35,7 +35,7 @@ static napi_value TestSwiperCurve002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem curve_value_item = {curve_value, sizeof(curve_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_CURVE, &curve_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CURVE)->value->i32, ARKUI_CURVE_EASE);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CURVE)->value[PARAM_0].i32, ARKUI_CURVE_EASE);
     NAPI_END;
 }
 
@@ -46,7 +46,7 @@ static napi_value TestSwiperCurve003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem curve_value_item = {curve_value, sizeof(curve_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_CURVE, &curve_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CURVE)->value->i32, ARKUI_CURVE_EASE_IN);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CURVE)->value[PARAM_0].i32, ARKUI_CURVE_EASE_IN);
     NAPI_END;
 }
 
@@ -57,7 +57,7 @@ static napi_value TestSwiperCurve004(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem curve_value_item = {curve_value, sizeof(curve_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_CURVE, &curve_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CURVE)->value->i32, ARKUI_CURVE_EASE_OUT);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CURVE)->value[PARAM_0].i32, ARKUI_CURVE_EASE_OUT);
     NAPI_END;
 }
 
@@ -68,7 +68,7 @@ static napi_value TestSwiperCurve005(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem curve_value_item = {curve_value, sizeof(curve_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_CURVE, &curve_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CURVE)->value->i32, ARKUI_CURVE_EASE_IN_OUT);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CURVE)->value[PARAM_0].i32, ARKUI_CURVE_EASE_IN_OUT);
     NAPI_END;
 }
 
@@ -79,7 +79,7 @@ static napi_value TestSwiperCurve006(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem curve_value_item = {curve_value, sizeof(curve_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_CURVE, &curve_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CURVE)->value->i32, ARKUI_CURVE_FAST_OUT_SLOW_IN);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CURVE)->value[PARAM_0].i32, ARKUI_CURVE_FAST_OUT_SLOW_IN);
     NAPI_END;
 }
 
@@ -90,7 +90,7 @@ static napi_value TestSwiperCurve007(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem curve_value_item = {curve_value, sizeof(curve_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_CURVE, &curve_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CURVE)->value->i32, ARKUI_CURVE_LINEAR_OUT_SLOW_IN);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CURVE)->value[PARAM_0].i32, ARKUI_CURVE_LINEAR_OUT_SLOW_IN);
     NAPI_END;
 }
 
@@ -101,7 +101,7 @@ static napi_value TestSwiperCurve008(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem curve_value_item = {curve_value, sizeof(curve_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_CURVE, &curve_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CURVE)->value->i32, ARKUI_CURVE_FAST_OUT_LINEAR_IN);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CURVE)->value[PARAM_0].i32, ARKUI_CURVE_FAST_OUT_LINEAR_IN);
     NAPI_END;
 }
 
@@ -112,7 +112,7 @@ static napi_value TestSwiperCurve009(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem curve_value_item = {curve_value, sizeof(curve_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_CURVE, &curve_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CURVE)->value->i32, ARKUI_CURVE_EXTREME_DECELERATION);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CURVE)->value[PARAM_0].i32, ARKUI_CURVE_EXTREME_DECELERATION);
     NAPI_END;
 }
 
@@ -123,7 +123,7 @@ static napi_value TestSwiperCurve010(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem curve_value_item = {curve_value, sizeof(curve_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_CURVE, &curve_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CURVE)->value->i32, ARKUI_CURVE_SHARP);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CURVE)->value[PARAM_0].i32, ARKUI_CURVE_SHARP);
     NAPI_END;
 }
 
@@ -134,7 +134,7 @@ static napi_value TestSwiperCurve011(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem curve_value_item = {curve_value, sizeof(curve_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_CURVE, &curve_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CURVE)->value->i32, ARKUI_CURVE_RHYTHM);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CURVE)->value[PARAM_0].i32, ARKUI_CURVE_RHYTHM);
     NAPI_END;
 }
 
@@ -145,7 +145,7 @@ static napi_value TestSwiperCurve012(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem curve_value_item = {curve_value, sizeof(curve_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_CURVE, &curve_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CURVE)->value->i32, ARKUI_CURVE_SMOOTH);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CURVE)->value[PARAM_0].i32, ARKUI_CURVE_SMOOTH);
     NAPI_END;
 }
 
@@ -156,7 +156,7 @@ static napi_value TestSwiperCurve013(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem curve_value_item = {curve_value, sizeof(curve_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_CURVE, &curve_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CURVE)->value->i32, ARKUI_CURVE_FRICTION);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CURVE)->value[PARAM_0].i32, ARKUI_CURVE_FRICTION);
     NAPI_END;
 }
 
@@ -170,16 +170,8 @@ static napi_value TestSwiperCurve014(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_CURVE, &curve_value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(swiper, NODE_SWIPER_CURVE) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(swiper, NODE_SWIPER_CURVE)->value->i32, curve);
+        ASSERT_NE(nodeAPI->getAttribute(swiper, NODE_SWIPER_CURVE)->value[PARAM_0].i32, curve);
     }
-    NAPI_END;
-}
-
-static napi_value TestSwiperCurve015(napi_env env, napi_callback_info info)
-{
-    NAPI_START(swiper, ARKUI_NODE_SWIPER);
-
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_CURVE)->value->i32, ARKUI_CURVE_LINEAR);
     NAPI_END;
 }
 

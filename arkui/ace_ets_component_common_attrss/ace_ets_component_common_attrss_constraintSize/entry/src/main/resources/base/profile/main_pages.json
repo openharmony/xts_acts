@@ -1,6 +1,5 @@
 {
   "src": [
-    "MainAbility/pages/index/Index",
-    "MainAbility/pages/constraintSize/ConstraintSizePage"
+    "pages/Index"
   ]
 }

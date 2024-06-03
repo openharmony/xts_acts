@@ -25,7 +25,7 @@ static napi_value TestCommonAttrsClip001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(imageSpan, NODE_CLIP, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(imageSpan, NODE_CLIP)->value->i32, clip);
+    ASSERT_EQ(nodeAPI->getAttribute(imageSpan, NODE_CLIP)->value[PARAM_0].i32, clip);
     NAPI_END;
 }
 
@@ -37,7 +37,7 @@ static napi_value TestCommonAttrsClip002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(imageSpan, NODE_CLIP, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(imageSpan, NODE_CLIP)->value->i32, clip);
+    ASSERT_EQ(nodeAPI->getAttribute(imageSpan, NODE_CLIP)->value[PARAM_0].i32, clip);
     NAPI_END;
 }
 
@@ -49,7 +49,7 @@ static napi_value TestCommonAttrsClip003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(imageSpan, NODE_CLIP, &valueItem);
     ASSERT_EQ(ret, INVALID_PARAM);
-    ASSERT_NE(nodeAPI->getAttribute(imageSpan, NODE_CLIP)->value->i32, clip);
+    ASSERT_NE(nodeAPI->getAttribute(imageSpan, NODE_CLIP)->value[PARAM_0].i32, clip);
     NAPI_END;
 }
 

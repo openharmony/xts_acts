@@ -163,7 +163,7 @@ export default function inputMethodWindManageAbility() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -233,7 +233,7 @@ export default function inputMethodWindManageAbility() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -303,7 +303,7 @@ export default function inputMethodWindManageAbility() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -373,7 +373,7 @@ export default function inputMethodWindManageAbility() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -443,7 +443,7 @@ export default function inputMethodWindManageAbility() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -513,7 +513,7 @@ export default function inputMethodWindManageAbility() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -583,7 +583,7 @@ export default function inputMethodWindManageAbility() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -653,7 +653,7 @@ export default function inputMethodWindManageAbility() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -723,7 +723,7 @@ export default function inputMethodWindManageAbility() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -793,7 +793,7 @@ export default function inputMethodWindManageAbility() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -863,7 +863,7 @@ export default function inputMethodWindManageAbility() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -933,7 +933,7 @@ export default function inputMethodWindManageAbility() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -1003,7 +1003,7 @@ export default function inputMethodWindManageAbility() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -1073,7 +1073,7 @@ export default function inputMethodWindManageAbility() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -1149,7 +1149,7 @@ export default function inputMethodWindManageAbility() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -1219,7 +1219,7 @@ export default function inputMethodWindManageAbility() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -1295,7 +1295,7 @@ export default function inputMethodWindManageAbility() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -1371,7 +1371,7 @@ export default function inputMethodWindManageAbility() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -1447,7 +1447,7 @@ export default function inputMethodWindManageAbility() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -1523,7 +1523,7 @@ export default function inputMethodWindManageAbility() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -1623,7 +1623,7 @@ export default function inputMethodWindManageAbility() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -1693,7 +1693,7 @@ export default function inputMethodWindManageAbility() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -1799,7 +1799,7 @@ export default function inputMethodWindManageAbility() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -1869,7 +1869,7 @@ export default function inputMethodWindManageAbility() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -1939,7 +1939,7 @@ export default function inputMethodWindManageAbility() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -2009,7 +2009,7 @@ export default function inputMethodWindManageAbility() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
@@ -2080,7 +2080,149 @@ export default function inputMethodWindManageAbility() {
         }
         let t = setTimeout(async () => {
           clearTimeout(t);
-          commonEventManager.publish('test', commonEventPublishData, publishCallback);
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
+      })
+    });
+
+    /**
+      * @tc.number  Sub_InputMethod_IME_ScreenRotation_0100
+      * @tc.name    Sub_InputMethod_IME_ScreenRotation_0100
+      * @tc.desc    Function test
+      * @tc.size    MediumTest
+      * @tc.type    Function
+      * @tc.level   Level2
+      */
+    it('Sub_InputMethod_IME_ScreenRotation_0100', 0, async (done: Function) => {
+
+      function unSubscriberCallback(err) {
+        console.info("====>Sub_InputMethod_IME_ScreenRotation_0100 unSubscriberCallback start");
+        if (err) {
+          console.info("====>Sub_InputMethod_IME_ScreenRotation_0100 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_InputMethod_IME_ScreenRotation_0100 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback(err, data) {
+        console.info("====>Sub_InputMethod_IME_ScreenRotation_0100 subscriberCallback data:"
+          + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_InputMethod_IME_ScreenRotation_0100 end");
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info("====>Sub_InputMethod_IME_ScreenRotation_0100 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err) {
+        console.info("====>Sub_InputMethod_IME_ScreenRotation_0100 publishCallback start");
+        if (err) {
+          console.info("====>Sub_InputMethod_IME_ScreenRotation_0100 publishCallback failed:" + JSON.stringify(err));
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["Sub_InputMethod_IME_ScreenRotation_0100"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        try{
+          subscriber = data;
+          console.info("====>Sub_InputMethod_IME_ScreenRotation_0100 subscriber data:" + JSON.stringify(data))
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_InputMethod_IME_ScreenRotation_0100 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 217
+          }
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
+        }, 500)
+      }).catch((err) => {
+        console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)
+      })
+    });
+
+    /**
+      * @tc.number  Sub_InputMethod_IME_ScreenRotation_0200
+      * @tc.name    Sub_InputMethod_IME_ScreenRotation_0200
+      * @tc.desc    Function test
+      * @tc.size    MediumTest
+      * @tc.type    Function
+      * @tc.level   Level2
+      */
+    it('Sub_InputMethod_IME_ScreenRotation_0200', 0, async (done: Function) => {
+
+      function unSubscriberCallback(err) {
+        console.info("====>Sub_InputMethod_IME_ScreenRotation_0200 unSubscriberCallback start");
+        if (err) {
+          console.info("====>Sub_InputMethod_IME_ScreenRotation_0200 unSubscriberCallback failed:" +
+          JSON.stringify(err));
+        } else {
+          console.info("====>Sub_InputMethod_IME_ScreenRotation_0200 unSubscriberCallback finish");
+        }
+      }
+
+      function subscriberCallback(err, data) {
+        console.info("====>Sub_InputMethod_IME_ScreenRotation_0200 subscriberCallback data:"
+          + JSON.stringify(data));
+        commonEventManager.unsubscribe(subscriber, unSubscriberCallback);
+        let t = setTimeout(() => {
+          try {
+            expect(data.data).assertEqual("SUCCESS");
+            console.info("====>Sub_InputMethod_IME_ScreenRotation_0200 end");
+            clearTimeout(t);
+            done();
+          } catch (err) {
+            console.info("====>Sub_InputMethod_IME_ScreenRotation_0200 err:" + JSON.stringify(err));
+            clearTimeout(t);
+            done();
+          }
+        }, 500)
+      }
+
+      function publishCallback(err) {
+        console.info("====>Sub_InputMethod_IME_ScreenRotation_0200 publishCallback start");
+        if (err) {
+          console.info("====>Sub_InputMethod_IME_ScreenRotation_0200 publishCallback failed:" + JSON.stringify(err));
+        }
+      }
+
+      var commonEventSubscribeInfo = {
+        events: ["Sub_InputMethod_IME_ScreenRotation_0200"]
+      }
+      var subscriber;
+      commonEventManager.createSubscriber(commonEventSubscribeInfo).then((data) => {
+        try{
+          subscriber = data;
+          console.info("====>Sub_InputMethod_IME_ScreenRotation_0200 subscriber data:" + JSON.stringify(data))
+          commonEventManager.subscribe(subscriber, subscriberCallback);
+          console.info("====>Sub_InputMethod_IME_ScreenRotation_0200 subscriber finish");
+        }catch(err){
+          console.info(`====>Subscribe failed, code:${err.code}, message is ${err.message}`)
+        }
+
+        let t = setTimeout(async () => {
+          clearTimeout(t);
+          var commonEventPublishData = {
+            code: 218
+          }
+          commonEventManager.publish('InputMethodWindManageTest', commonEventPublishData, publishCallback);
         }, 500)
       }).catch((err) => {
         console.info(`====>createSubscriber failed, code:${err.code}, message is ${err.message}`)

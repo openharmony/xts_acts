@@ -31,7 +31,7 @@ static napi_value TestTextBaselineOffset001(napi_env env, napi_callback_info inf
     ArkUI_NumberValue value[] = {{.f32 = baselineOffsetValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_BASELINE_OFFSET, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_BASELINE_OFFSET)->value->f32, baselineOffsetValue);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_BASELINE_OFFSET)->value[PARAM_0].f32, baselineOffsetValue);
     ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
@@ -51,7 +51,7 @@ static napi_value TestTextBaselineOffset002(napi_env env, napi_callback_info inf
     ArkUI_NumberValue value[] = {{.f32 = baselineOffsetValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_BASELINE_OFFSET, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_BASELINE_OFFSET)->value->f32, baselineOffsetValue);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_BASELINE_OFFSET)->value[PARAM_0].f32, baselineOffsetValue);
     ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
@@ -72,7 +72,7 @@ static napi_value TestTextBaselineOffset003(napi_env env, napi_callback_info inf
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_BASELINE_OFFSET, &valueItem);
     if (nodeAPI->getAttribute(text, NODE_TEXT_BASELINE_OFFSET) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(text, NODE_TEXT_BASELINE_OFFSET)->value->f32, largeValue);
+        ASSERT_NE(nodeAPI->getAttribute(text, NODE_TEXT_BASELINE_OFFSET)->value[PARAM_0].f32, largeValue);
     }
 
     ASSERT_EQ(ret, SUCCESS);

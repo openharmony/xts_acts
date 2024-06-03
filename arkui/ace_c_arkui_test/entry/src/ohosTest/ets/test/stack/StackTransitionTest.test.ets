@@ -263,10 +263,10 @@ export default function stackTransitionTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_STACK_TRANSITION_1900
      * @tc.name       : testStackTransition019
-     * @tc.desc       : testing opacity transition for stack with default value
+     * @tc.desc       : testing opacity transition for stack with abnormal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 2
      */
     it('testStackTransition019', 0, async (done: Function) => {
       expect(nativeFunc.testStackTransition019()).assertEqual(0)
@@ -289,10 +289,10 @@ export default function stackTransitionTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_STACK_TRANSITION_2100
      * @tc.name       : testStackTransition021
-     * @tc.desc       : testing opacity transition for stack with abnormal value
+     * @tc.desc       : testing rotate transition for stack with normal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testStackTransition021', 0, async (done: Function) => {
       expect(nativeFunc.testStackTransition021()).assertEqual(0)
@@ -458,10 +458,10 @@ export default function stackTransitionTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_STACK_TRANSITION_3400
      * @tc.name       : testStackTransition034
-     * @tc.desc       : testing rotate transition for stack with normal value
+     * @tc.desc       : testing rotate transition for stack with abnormal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 2
      */
     it('testStackTransition034', 0, async (done: Function) => {
       expect(nativeFunc.testStackTransition034()).assertEqual(0)
@@ -471,10 +471,10 @@ export default function stackTransitionTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_STACK_TRANSITION_3500
      * @tc.name       : testStackTransition035
-     * @tc.desc       : testing rotate transition for stack with default value
+     * @tc.desc       : testing rotate transition for stack with abnormal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 2
      */
     it('testStackTransition035', 0, async (done: Function) => {
       expect(nativeFunc.testStackTransition035()).assertEqual(0)
@@ -484,10 +484,10 @@ export default function stackTransitionTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_STACK_TRANSITION_3600
      * @tc.name       : testStackTransition036
-     * @tc.desc       : testing rotate transition for stack with abnormal value
+     * @tc.desc       : testing scale transition for stack with normal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testStackTransition036', 0, async (done: Function) => {
       expect(nativeFunc.testStackTransition036()).assertEqual(0)
@@ -497,10 +497,10 @@ export default function stackTransitionTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_STACK_TRANSITION_3700
      * @tc.name       : testStackTransition037
-     * @tc.desc       : testing rotate transition for stack with abnormal value
+     * @tc.desc       : testing scale transition for stack with normal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testStackTransition037', 0, async (done: Function) => {
       expect(nativeFunc.testStackTransition037()).assertEqual(0)
@@ -653,10 +653,10 @@ export default function stackTransitionTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_STACK_TRANSITION_4900
      * @tc.name       : testStackTransition049
-     * @tc.desc       : testing scale transition for stack with normal value
+     * @tc.desc       : testing scale transition for stack with abnormal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 2
      */
     it('testStackTransition049', 0, async (done: Function) => {
       expect(nativeFunc.testStackTransition049()).assertEqual(0)
@@ -666,10 +666,10 @@ export default function stackTransitionTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_STACK_TRANSITION_5000
      * @tc.name       : testStackTransition050
-     * @tc.desc       : testing scale transition for stack with normal value
+     * @tc.desc       : testing scale transition for stack with abnormal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 2
      */
     it('testStackTransition050', 0, async (done: Function) => {
       expect(nativeFunc.testStackTransition050()).assertEqual(0)
@@ -679,7 +679,7 @@ export default function stackTransitionTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_STACK_TRANSITION_5100
      * @tc.name       : testStackTransition051
-     * @tc.desc       : testing scale transition for stack with default value
+     * @tc.desc       : testing translate transition for stack with normal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -692,10 +692,10 @@ export default function stackTransitionTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_STACK_TRANSITION_5200
      * @tc.name       : testStackTransition052
-     * @tc.desc       : testing scale transition for stack with abnormal value
+     * @tc.desc       : testing translate transition for stack with normal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testStackTransition052', 0, async (done: Function) => {
       expect(nativeFunc.testStackTransition052()).assertEqual(0)
@@ -705,10 +705,10 @@ export default function stackTransitionTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_STACK_TRANSITION_5300
      * @tc.name       : testStackTransition053
-     * @tc.desc       : testing scale transition for stack with abnormal value
+     * @tc.desc       : testing translate transition for stack with normal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 2
+     * @tc.level      : Level 1
      */
     it('testStackTransition053', 0, async (done: Function) => {
       expect(nativeFunc.testStackTransition053()).assertEqual(0)
@@ -848,10 +848,10 @@ export default function stackTransitionTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_STACK_TRANSITION_6400
      * @tc.name       : testStackTransition064
-     * @tc.desc       : testing translate transition for stack with normal value
+     * @tc.desc       : testing translate transition for stack with abnormal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 2
      */
     it('testStackTransition064', 0, async (done: Function) => {
       expect(nativeFunc.testStackTransition064()).assertEqual(0)
@@ -861,65 +861,13 @@ export default function stackTransitionTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_STACK_TRANSITION_6500
      * @tc.name       : testStackTransition065
-     * @tc.desc       : testing translate transition for stack with normal value
+     * @tc.desc       : testing translate transition for stack with abnormal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
-     * @tc.level      : Level 1
+     * @tc.level      : Level 2
      */
     it('testStackTransition065', 0, async (done: Function) => {
       expect(nativeFunc.testStackTransition065()).assertEqual(0)
-      done()
-    })
-
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_STACK_TRANSITION_6600
-     * @tc.name       : testStackTransition066
-     * @tc.desc       : testing translate transition for stack with normal value
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testStackTransition066', 0, async (done: Function) => {
-      expect(nativeFunc.testStackTransition066()).assertEqual(0)
-      done()
-    })
-
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_STACK_TRANSITION_6700
-     * @tc.name       : testStackTransition067
-     * @tc.desc       : testing translate transition for stack with default value
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testStackTransition067', 0, async (done: Function) => {
-      expect(nativeFunc.testStackTransition067()).assertEqual(0)
-      done()
-    })
-
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_STACK_TRANSITION_6800
-     * @tc.name       : testStackTransition068
-     * @tc.desc       : testing translate transition for stack with abnormal value
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 2
-     */
-    it('testStackTransition068', 0, async (done: Function) => {
-      expect(nativeFunc.testStackTransition068()).assertEqual(0)
-      done()
-    })
-
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_STACK_TRANSITION_6900
-     * @tc.name       : testStackTransition069
-     * @tc.desc       : testing translate transition for stack with abnormal value
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 2
-     */
-    it('testStackTransition069', 0, async (done: Function) => {
-      expect(nativeFunc.testStackTransition069()).assertEqual(0)
       done()
     })
 

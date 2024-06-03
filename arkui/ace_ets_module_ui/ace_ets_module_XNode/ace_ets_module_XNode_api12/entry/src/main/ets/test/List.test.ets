@@ -16,6 +16,7 @@ import borderRadiuses from './GraphicsTest/borderRadiuses.test';
 import borderStyles from './GraphicsTest/borderStyles.test';
 import edgeColors from './GraphicsTest/edgeColors.test';
 import edgeWidths from './GraphicsTest/edgeWidths.test';
+import graphicGetInterfaceTest from './GraphicsTest/graphicGetInterface.test';
 import renderNodeGetInterfaceTest from './renderNode/renderNodeTestInterface.test';
 import disposeTest from './FrameNodeTest/dispose.test';
 import getAttrsTest from './FrameNodeTest/getAttrs.test';
@@ -29,6 +30,14 @@ import getAlpha from './GraphicsTest/getAlpha.test';
 import getBlue from './GraphicsTest/getBlue.test';
 import getGreen from './GraphicsTest/getGreen.test';
 import getRed from './GraphicsTest/getRed.test';
+import onAppear from './FrameNodeTest/onAppear.test';
+import setMeasureSizeTest from './FrameNodeTest/setMeasureSize.test';
+import setCircleShapeTest from './GraphicsTest/setCircleShape.test';
+import commonEventTest1 from './FrameNodeTest/commonEventTest1.test';
+
+import CornerTest from './GraphicsTest/GraphicsApiTest/CornerTest.test';
+import LengthMetricsUnitTest from './GraphicsTest/GraphicsApiTest/LengthMetricsUnitTest.test';
+import PercentReferenceTest from './GraphicsTest/GraphicsApiTest/PercentReferenceTest.test';
 
 export default function testsuite() {
   borderRadiuses();
@@ -48,4 +57,12 @@ export default function testsuite() {
   getBlue();
   getGreen();
   getRed();
+  onAppear();
+  setMeasureSizeTest();
+  commonEventTest1();
+  CornerTest();
+  LengthMetricsUnitTest();
+  PercentReferenceTest();
+  setCircleShapeTest();
+  graphicGetInterfaceTest();
 }

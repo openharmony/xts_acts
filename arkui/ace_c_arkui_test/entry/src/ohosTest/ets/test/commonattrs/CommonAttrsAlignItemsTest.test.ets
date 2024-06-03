@@ -35,7 +35,7 @@ export default function commonAttrsAlignItemsTest() {
      * @tc.level: Level 1
      */
     it('testCommonAttrsAlignItems001', 0, async (done: Function) => {
-      expect(nativeFunc.testCommonAttrsAlignContent001()).assertEqual(0)
+      expect(nativeFunc.testCommonAttrsAlignItems001()).assertEqual(0)
       done();
     })
 

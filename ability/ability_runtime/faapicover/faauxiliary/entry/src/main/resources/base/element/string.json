@@ -1,8 +1,8 @@
 {
   "string": [
     {
-      "name": "entry_desc",
-      "value": "description"
+      "name": "module_desc",
+      "value": "module description"
     },
     {
       "name": "MainAbility_desc",
@@ -10,7 +10,11 @@
     },
     {
       "name": "MainAbility_label",
-      "value": "FaAuxiliary"
+      "value": "label"
+    },
+    {
+      "name": "entry_desc",
+      "value": "description"
     },
     {
       "name": "MainAbility2_desc",

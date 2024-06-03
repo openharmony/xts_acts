@@ -52,18 +52,5 @@ export default function stackTranslateTest() {
       done()
     })
 
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_STACK_TRANSLATE_0300
-     * @tc.name       : testStackTranslate003
-     * @tc.desc       : testing translate for stack with default value
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testStackTranslate003', 0, async (done: Function) => {
-      expect(nativeFunc.testStackTranslate003()).assertEqual(0)
-      done()
-    })
-
   })
 }

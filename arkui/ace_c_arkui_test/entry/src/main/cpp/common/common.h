@@ -69,6 +69,7 @@ namespace ArkUICapiTest {
 #define SIZE_90 90
 #define SIZE_100 100
 #define SIZE_180 180
+#define SIZE_150 150
 #define SIZE_200 200
 #define SIZE_250 250
 #define SIZE_300 300
@@ -97,6 +98,12 @@ namespace ArkUICapiTest {
 #define ON_APPEAR_EVENT_ID 6005
 #define ON_BLUR_EVENT_ID 6006
 #define ON_CHANGE_EVENT_ID 6007
+#define ON_SUBMIT_EVENT_ID 6008
+#define ON_CUT_EVENT_ID 6009
+#define ON_PASTE_EVENT_ID 6010
+#define ON_MEASURE_EVENT_ID 6011
+#define ON_LAYOUT_EVENT_ID 6012
+#define ON_DRAW_EVENT_ID 6013
 
 /**
  * Log print domain.
@@ -138,7 +145,7 @@ const unsigned int LOG_PRINT_DOMAIN = 0xFF00;
         std::string str1 = res1;                                                                                       \
         std::string str2 = res2;                                                                                       \
         if (::strcmp(res1, res2) != 0) {                                                                               \
-            std::string assertStr = "assert equal failed, expect is " + str1 + " and result is " + str2;               \
+            std::string assertStr = "assert equal failed, expect is " + str2 + " and result is " + str1;               \
             char assertChars[assertStr.size() + PARAM_1];                                                              \
             strcpy(assertChars, assertStr.c_str());                                                                    \
             napi_throw_error((env), nullptr, assertChars);                                                             \
@@ -155,7 +162,7 @@ const unsigned int LOG_PRINT_DOMAIN = 0xFF00;
         std::string str1 = res1;                                                                                       \
         std::string str2 = res2;                                                                                       \
         if (::strcmp(res1, res2) == 0) {                                                                               \
-            std::string assertStr = "assert not equal failed, expect is " + str1 + " and result is " + str2;           \
+            std::string assertStr = "assert not equal failed, expect is " + str2 + " and result is " + str1;           \
             char assertChars[assertStr.size() + PARAM_1];                                                              \
             strcpy(assertChars, assertStr.c_str());                                                                    \
             napi_throw_error((env), nullptr, assertChars);                                                             \

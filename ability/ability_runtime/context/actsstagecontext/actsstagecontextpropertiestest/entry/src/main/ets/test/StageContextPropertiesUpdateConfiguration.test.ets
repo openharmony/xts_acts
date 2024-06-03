@@ -14,6 +14,7 @@
  */
 
 import { describe, it, expect } from '@ohos/hypium'
+import { BusinessError } from '@ohos.base';
 import ConfigurationConstant from '@ohos.app.ability.ConfigurationConstant';
 
 export default function stageContextPropertiesTestUpdateConfiguration(applicationContext) {
@@ -23,6 +24,8 @@ export default function stageContextPropertiesTestUpdateConfiguration(applicatio
          * @tc.number: SUB_AA_SetColorMode_0100
          * @tc.name: Check if the application can be successfully set to the color mode
          * @tc.desc:  Function test
+         * @tc.size: MediumTest
+         * @tc.type: Function
          * @tc.level   1
          */
         it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetColorMode_0100', 0, function (done) {
@@ -48,6 +51,8 @@ export default function stageContextPropertiesTestUpdateConfiguration(applicatio
          * @tc.number: SUB_AA_SetColorMode_0200
          * @tc.name: Check if the application can be successfully set to the color mode
          * @tc.desc:  Function test
+         * @tc.size: MediumTest
+         * @tc.type: Function
          * @tc.level   1
          */
         it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetColorMode_0200', 0, function (done) {
@@ -73,6 +78,8 @@ export default function stageContextPropertiesTestUpdateConfiguration(applicatio
          * @tc.number: SUB_AA_SetLanguage_0100
          * @tc.name: Check if the application can be successfully set to the language
          * @tc.desc:  Function test
+         * @tc.size: MediumTest
+         * @tc.type: Function
          * @tc.level   1
          */
         it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetLanguage_0100', 0, function (done) {
@@ -91,6 +98,8 @@ export default function stageContextPropertiesTestUpdateConfiguration(applicatio
          * @tc.number: SUB_AA_SetLanguage_0200
          * @tc.name: Check if the application can be successfully set to the language
          * @tc.desc:  Function test
+         * @tc.size: MediumTest
+         * @tc.type: Function
          * @tc.level   1
          */
         it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetLanguage_0200', 0, function (done) {
@@ -110,6 +119,29 @@ export default function stageContextPropertiesTestUpdateConfiguration(applicatio
                 expect(resultTag).assertEqual(0)
                 done()
             }, 2000)
+        });
+
+        /**
+         * @tc.number: SUB_AA_GetCurrentAppCloneIndex_0100
+         * @tc.name: Check if the application get the appCloneIndex
+         * @tc.desc: Function test
+         * @tc.size: MediumTest
+         * @tc.type: Function
+         * @tc.level   1
+         */
+        it('SUB_Ability_AbilityRuntime_ApplicationContext_GetCurrentAppCloneIndex_0100', 0, function (done) {
+            console.info('=============ApplicationContext_GetCurrentAppCloneIndex_0100============')
+            try {
+                applicationContext.getCurrentAppCloneIndex();
+                expect().assertFail()
+                done()
+            } catch(err) {
+                let code = (err as BusinessError).code;
+                console.info(`=============ApplicationContext_GetCurrentAppCloneIndex_0100 code: ` + code);
+                let expectErrCode = 16000071;
+                expect(code).assertEqual(expectErrCode);
+                done()
+            }
         });
     })
 }

@@ -25,7 +25,7 @@ static napi_value TestListBackgroundColor001(napi_env env, napi_callback_info in
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(list, NODE_BACKGROUND_COLOR, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_BACKGROUND_COLOR)->value->u32, backgroundColor);
+    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_BACKGROUND_COLOR)->value[PARAM_0].u32, backgroundColor);
     NAPI_END;
 }
 

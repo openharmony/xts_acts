@@ -26,7 +26,7 @@ static napi_value TestSwiperHeight001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem height_value_item = {height_value, sizeof(height_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_HEIGHT, &height_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_HEIGHT)->value->f32, height);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_HEIGHT)->value[PARAM_0].f32, height);
     NAPI_END;
 }
 
@@ -40,7 +40,7 @@ static napi_value TestSwiperHeight002(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(swiper, NODE_HEIGHT, &height_value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(swiper, NODE_HEIGHT) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(swiper, NODE_HEIGHT)->value->f32, height);
+        ASSERT_NE(nodeAPI->getAttribute(swiper, NODE_HEIGHT)->value[PARAM_0].f32, height);
     }
     NAPI_END;
 }
@@ -54,7 +54,7 @@ static napi_value TestSwiperHeight003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem height_value_item = {height_value, sizeof(height_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_HEIGHT, &height_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_HEIGHT)->value->f32, height);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_HEIGHT)->value[PARAM_0].f32, height);
     NAPI_END;
 }
 

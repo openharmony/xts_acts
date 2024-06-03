@@ -1396,6 +1396,7 @@ export default function getBundleInfoForSelf() {
             expect(extensionList[i].enabled).assertTrue();
             expect(extensionList[i].readPermission).assertEqual("");
             expect(extensionList[i].writePermission).assertEqual("");
+            expect(extensionList[i].appIndex).assertEqual(0);
             count = count + 1;
             break;
           case "Form1":
@@ -1414,6 +1415,7 @@ export default function getBundleInfoForSelf() {
             expect(extensionList[i].enabled).assertTrue();
             expect(extensionList[i].readPermission).assertEqual("");
             expect(extensionList[i].writePermission).assertEqual("");
+            expect(extensionList[i].appIndex).assertEqual(0);
             count = count + 2;
             break;
           case 'workScheduler':

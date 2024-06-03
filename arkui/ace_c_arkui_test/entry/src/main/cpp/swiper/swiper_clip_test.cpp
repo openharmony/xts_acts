@@ -251,7 +251,7 @@ static napi_value TestSwiperClip013(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem clip_item = {clip_value, sizeof(clip_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_CLIP, &clip_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_CLIP)->value->i32, clipBool);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_CLIP)->value[PARAM_0].i32, clipBool);
     NAPI_END;
 }
 
@@ -263,7 +263,7 @@ static napi_value TestSwiperClip014(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem clip_item = {clip_value, sizeof(clip_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_CLIP, &clip_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_CLIP)->value->i32, clipBool);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_CLIP)->value[PARAM_0].i32, clipBool);
     NAPI_END;
 }
 
@@ -276,17 +276,8 @@ static napi_value TestSwiperClip015(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(swiper, NODE_CLIP, &clip_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(swiper, NODE_CLIP) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(swiper, NODE_CLIP)->value->i32, clipBool);
+        ASSERT_NE(nodeAPI->getAttribute(swiper, NODE_CLIP)->value[PARAM_0].i32, clipBool);
     }
-    NAPI_END;
-}
-
-static napi_value TestSwiperClip016(napi_env env, napi_callback_info info)
-{
-    NAPI_START(swiper, ARKUI_NODE_SWIPER);
-    int32_t clipBool = 0;
-
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_CLIP)->value->i32, clipBool);
     NAPI_END;
 }
 

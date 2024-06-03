@@ -28,7 +28,7 @@ static napi_value TestCommonAttrsInvert001(napi_env env, napi_callback_info info
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_INVERT, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_INVERT)->value->f32, MIN_VALUE);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_INVERT)->value[PARAM_0].f32, MIN_VALUE);
     NAPI_END;
 }
 
@@ -40,7 +40,7 @@ static napi_value TestCommonAttrsInvert002(napi_env env, napi_callback_info info
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_INVERT, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_INVERT)->value->f32, invert);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_INVERT)->value[PARAM_0].f32, invert);
     NAPI_END;
 }
 
@@ -52,7 +52,7 @@ static napi_value TestCommonAttrsInvert003(napi_env env, napi_callback_info info
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_INVERT, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_INVERT)->value->f32, invert);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_INVERT)->value[PARAM_0].f32, invert);
     NAPI_END;
 }
 
@@ -64,7 +64,7 @@ static napi_value TestCommonAttrsInvert004(napi_env env, napi_callback_info info
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_INVERT, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_INVERT)->value->f32, invert);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_INVERT)->value[PARAM_0].f32, invert);
     NAPI_END;
 }
 
@@ -76,7 +76,7 @@ static napi_value TestCommonAttrsInvert005(napi_env env, napi_callback_info info
     auto ret = nodeAPI->setAttribute(stack, NODE_INVERT, &valueItem);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(stack, NODE_INVERT) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_INVERT)->value->f32, MIN_ABNORMAL_VALUE);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_INVERT)->value[PARAM_0].f32, MIN_ABNORMAL_VALUE);
     }
 
     NAPI_END;
@@ -90,7 +90,7 @@ static napi_value TestCommonAttrsInvert006(napi_env env, napi_callback_info info
     auto ret = nodeAPI->setAttribute(stack, NODE_INVERT, &valueItem);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(stack, NODE_INVERT) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_INVERT)->value->f32, MAX_ABNORMAL_VALUE);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_INVERT)->value[PARAM_0].f32, MAX_ABNORMAL_VALUE);
     }
 
     NAPI_END;
