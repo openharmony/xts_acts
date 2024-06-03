@@ -90,6 +90,11 @@ import UnitTest from './TextTest/TextAPITest/Unit.test'
 import APIClipMaskShape from './ImageTest/APIClipMaskShape.test'
 import TextInputAddApi from './TextInput/TextInputAddApi.test'.
 
+import EffectFillStyle from './SymbolGlyphTest/EffectFillStyle.test'
+import EffectScope from './SymbolGlyphTest/EffectScope.test'
+import menuPolicyHIDE from './RichEditorTest/menuPolicyHIDE.test'
+import menuPolicySHOW from './RichEditorTest/menuPolicySHOW.test'
+
 import RichEditorChangeValueTest1 from './RichEditor/RichEditorChangeValueTest1.test'
 import RichEditorGetLayoutManagerTest1 from './RichEditor/RichEditorGetLayoutManagerTest1.test'
 import RichEditorStyledStringTest1 from './RichEditor/RichEditorStyledStringTest1.test'
@@ -162,6 +167,10 @@ export default function testsuite() {
   marqueeOptionsTest();
   textStrategyJsunit();
 
+  EffectFillStyle()
+  EffectScope()
+  menuPolicyHIDE()
+  menuPolicySHOW()
   Context()
   getLayout()
   imageAddApi()
