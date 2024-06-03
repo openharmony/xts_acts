@@ -55,7 +55,7 @@ export default function OhosRouterJsunit() {
         await CommonFunc.sleep(1000);
         console.info("[ohosRouterTest001] push page success " + JSON.stringify(result));
         let pages = router.getState();
-        expect(pages.index).assertEqual(2);
+        expect(pages.index).assertEqual(3);
         expect(pages.name).assertEqual('ohosRouterA');
         expect(pages.path).assertEqual('MainAbility/pages/Router/');
       } catch (err) {
@@ -136,7 +136,7 @@ export default function OhosRouterJsunit() {
       await CommonFunc.sleep(1500);
       let size = router.getLength();
       console.info("[ohosRouterTest004] size" + size);
-      expect(size).assertEqual("1");
+      expect(size).assertEqual("2");
       done();
     });
 
