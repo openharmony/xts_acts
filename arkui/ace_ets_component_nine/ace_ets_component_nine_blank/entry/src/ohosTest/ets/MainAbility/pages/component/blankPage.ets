@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -40,11 +40,11 @@ class BlankModifier implements AttributeModifier<BlankAttribute> {
 @Component
 struct BlankExample {  
   @State _BlankModifier: BlankModifier = new BlankModifier()
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("Blank page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.typeValue != null) {
-        this._BlankModifier._testType = eventData.data.typeValue;      
+      if (eventData.data!.typeValue != null) {
+        this._BlankModifier._testType = eventData.data!.typeValue;      
       }
       else {
         this._BlankModifier._testType = 0;    
@@ -54,13 +54,13 @@ struct BlankExample {
 
   onPageShow() {
     console.info('Blank page1 show called');
-    var stateChangeEvent01 = {
+    let stateChangeEvent01: events_emitter.InnerEvent = {
       eventId: 601,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent01, this.stateChangCallBack);
 
-    var stateChangeEvent02 = {
+    let stateChangeEvent02: events_emitter.InnerEvent = {
       eventId: 602,
       priority: events_emitter.EventPriority.LOW
     }

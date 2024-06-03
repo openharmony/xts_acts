@@ -1,4 +1,4 @@
-// @ts-nocheck
+
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,21 +18,24 @@ import router from '@system.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
+interface optionsObj {
+  uri: string
+}
+
 export default function blankJsunit() {
-  describe('blankTest', function () {
-    beforeEach(async function (done) {
+  describe('blankTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("blank beforeEach start");
-      let options = {
+      let options: optionsObj = {
         uri: 'MainAbility/pages/component/blankPage',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get blank state pages: " + JSON.stringify(pages));
         if (!("blankPage" == pages.name)) {
           console.info("get blank state pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          let result = await router.push(options);
           await Utils.sleep(2000);
           console.info("push blank page result: " + JSON.stringify(result));
         }
@@ -42,7 +45,7 @@ export default function blankJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("blank after each called");
     })
@@ -54,11 +57,11 @@ export default function blankJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testBlank01', 0, async function (done) {
+    it('testBlank01', 0, async (done: Function) => {
       console.info('[testBlank01] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('blank');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject> = JSON.parse(strJson);
       console.info("[testBlank01] component obj is: " + JSON.stringify(obj));
       expect(obj.$type).assertEqual('Blank');
       expect(obj.$attrs.color).assertEqual("#00000000");
@@ -72,16 +75,16 @@ export default function blankJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testBlank02', 0, async function (done) {
+    it('testBlank02', 0, async (done: Function) => {
       console.info('[testBlank02] START');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "typeValue": 1,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 601,
           priority: events_emitter.EventPriority.LOW
         }
@@ -92,7 +95,7 @@ export default function blankJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('blank');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: Record<string, ESObject> = JSON.parse(strJsonNew);
       console.info("[testBlank02] component objNew is: " + JSON.stringify(objNew));
       expect(objNew.$attrs.color).assertEqual("#FFFF0000");
       expect(objNew.$type).assertEqual('Blank');
@@ -106,16 +109,16 @@ export default function blankJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('testBlank03', 0, async function (done) {
+    it('testBlank03', 0, async (done: Function) => {
       console.info('[testBlank03] START');
       await Utils.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData  = {
           data: {
             "typeValue": 2,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 602,
           priority: events_emitter.EventPriority.LOW
         }
@@ -126,7 +129,7 @@ export default function blankJsunit() {
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('blank');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: Record<string, ESObject> = JSON.parse(strJsonNew);
       console.info("[testBlank03] component objNew is: " + JSON.stringify(objNew));
       expect(objNew.$attrs.color).assertEqual("#FF000000");
       expect(objNew.$type).assertEqual('Blank');
