@@ -17,23 +17,23 @@ class WaterFlowDataSource implements IDataSource {
   private dataArray: number[] = []
   private listeners: DataChangeListener[] = []
 
-  constructor() {
+  constructor(){
     for (let i = 0; i <= 100; i++) {
       this.dataArray.push(i);
     }
   }
-  totalCount(): number {
+  totalCount():number{
     return this.dataArray.length
   }
-  getData(index: number): number {
+  getData(index: number):number{
     return this.dataArray[index]
   }
-  registerDataChangeListener(listener: DataChangeListener): void {
+  registerDataChangeListener(listener: DataChangeListener):void{
     if (this.listeners.indexOf(listener) < 0) {
       this.listeners.push(listener)
     }
   }
-  unregisterDataChangeListener(listener: DataChangeListener): void {
+  unregisterDataChangeListener(listener: DataChangeListener):void{
     const pos = this.listeners.indexOf(listener);
     if (pos >= 0) {
       this.listeners.splice(pos, 1)

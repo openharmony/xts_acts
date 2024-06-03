@@ -12,11 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import  GlobalContext  from './../../common/GlobalContext';
+import GlobalContext from './../../common/GlobalContext';
 import { Value } from './../../common/Value';
 import { MessageManager, Callback } from './../../common/MessageManager';
 
-type MessageData = boolean|string|number|LineCapStyle
+type MessageData = boolean | string | number | LineCapStyle
 
 @Entry
 @Component

@@ -17,7 +17,7 @@ import GlobalContext from './../../../common/GlobalContext'
 import { Value } from '../../../common/Value';
 import { MessageManager, Callback, Message } from './../../../common/MessageManager';
 
-type MessageDaata = number|string
+type MessageDaata = number | string
 
 @Entry
 @Component
