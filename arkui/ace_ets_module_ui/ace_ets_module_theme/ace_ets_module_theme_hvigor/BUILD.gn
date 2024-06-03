@@ -11,10 +11,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-group("ActsAceEtsModuleThemeTest") {
+import("//test/xts/tools/build/suite.gni")
+
+ohos_app_assist_suite("ActsAceEtsThemeModuleTestMain") {
   testonly = true
-  deps = [
-    "ace_ets_module_theme_api12:ActsAceEtsModuleThemeApi12Test",
-    "ace_ets_module_theme_hvigor:ActsAceEtsModuleThemeTest",
-  ]
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsAceEtsThemeModuleTestMain"
+  part_name = "ace_engine"
+  subsystem_name = "arkui"
+}
+
+ohos_js_app_suite("ActsAceEtsModuleThemeTest") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsAceEtsModuleThemeTest"
+  part_name = "ace_engine"
+  subsystem_name = "arkui"
+  deps = [ ":ActsAceEtsThemeModuleTestMain" ]
 }
