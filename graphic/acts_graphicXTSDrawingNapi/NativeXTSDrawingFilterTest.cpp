@@ -52,7 +52,7 @@ class NativeXTSDrawingFilterTest : public testing::Test {};
 /*
  * @tc.name: OH_Drawing_FilterSetImageFilter
  * @tc.desc: test for OH_Drawing_FilterSetImageFilter.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -68,7 +68,7 @@ HWTEST_F(NativeXTSDrawingFilterTest, OH_Drawing_FilterSetImageFilter, TestSize.L
 /*
  * @tc.name: OH_Drawing_FilterGetColorFilter
  * @tc.desc: test for OH_Drawing_FilterGetColorFilter.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */

@@ -30,7 +30,7 @@ class NativeXTSDrawingMatrixTest : public testing::Test {};
 /*
  * @tc.name: OH_Drawing_MatrixCreateRotation
  * @tc.desc: test for OH_Drawing_MatrixCreateRotation.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -44,7 +44,7 @@ HWTEST_F(NativeXTSDrawingMatrixTest, OH_Drawing_MatrixCreateRotation, TestSize.L
 /*
  * @tc.name: OH_Drawing_MatrixCreateScale
  * @tc.desc: test for OH_Drawing_MatrixCreateScale.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -58,7 +58,7 @@ HWTEST_F(NativeXTSDrawingMatrixTest, OH_Drawing_MatrixCreateScale, TestSize.Leve
 /*
  * @tc.name: OH_Drawing_MatrixCreateTranslation
  * @tc.desc: test for OH_Drawing_MatrixCreateTranslation.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -72,7 +72,7 @@ HWTEST_F(NativeXTSDrawingMatrixTest, OH_Drawing_MatrixCreateTranslation, TestSiz
 /*
  * @tc.name: OH_Drawing_MatrixSetMatrix
  * @tc.desc: test for OH_Drawing_MatrixSetMatrix.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -87,7 +87,7 @@ HWTEST_F(NativeXTSDrawingMatrixTest, OH_Drawing_MatrixSetMatrix, TestSize.Level1
 /*
  * @tc.name: OH_Drawing_MatrixRotate
  * @tc.desc: test for OH_Drawing_MatrixRotate.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -102,7 +102,7 @@ HWTEST_F(NativeXTSDrawingMatrixTest, OH_Drawing_MatrixRotate, TestSize.Level1) {
 /*
  * @tc.name: OH_Drawing_MatrixTranslate
  * @tc.desc: test for OH_Drawing_MatrixTranslate.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -117,7 +117,7 @@ HWTEST_F(NativeXTSDrawingMatrixTest, OH_Drawing_MatrixTranslate, TestSize.Level1
 /*
  * @tc.name: OH_Drawing_MatrixScale
  * @tc.desc: test for OH_Drawing_MatrixScale.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -132,7 +132,7 @@ HWTEST_F(NativeXTSDrawingMatrixTest, OH_Drawing_MatrixScale, TestSize.Level1) {
 /*
  * @tc.name: OH_Drawing_MatrixSetPolyToPoly
  * @tc.desc: test for OH_Drawing_MatrixSetPolyToPoly.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -152,7 +152,7 @@ HWTEST_F(NativeXTSDrawingMatrixTest, OH_Drawing_MatrixSetPolyToPoly, TestSize.Le
 /*
  * @tc.name: OH_Drawing_MatrixSetRectToRect
  * @tc.desc: test for OH_Drawing_MatrixSetRectToRect.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -192,7 +192,7 @@ HWTEST_F(NativeXTSDrawingMatrixTest, OH_Drawing_MatrixSetRectToRect, TestSize.Le
 /*
  * @tc.name: OH_Drawing_MatrixPreScale
  * @tc.desc: test for OH_Drawing_MatrixPreScale.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -218,7 +218,7 @@ HWTEST_F(NativeXTSDrawingMatrixTest, OH_Drawing_MatrixPreScale, TestSize.Level1)
 /*
  * @tc.name: OH_Drawing_MatrixPreTranslate
  * @tc.desc: test for OH_Drawing_MatrixPreTranslate.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -243,7 +243,7 @@ HWTEST_F(NativeXTSDrawingMatrixTest, OH_Drawing_MatrixPreTranslate, TestSize.Lev
 /*
  * @tc.name: OH_Drawing_MatrixPreRotate
  * @tc.desc: test for OH_Drawing_MatrixPreRotate.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -267,7 +267,7 @@ HWTEST_F(NativeXTSDrawingMatrixTest, OH_Drawing_MatrixPreRotate, TestSize.Level1
 /*
  * @tc.name: OH_Drawing_MatrixPostScale
  * @tc.desc: test for OH_Drawing_MatrixPostScale.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -293,7 +293,7 @@ HWTEST_F(NativeXTSDrawingMatrixTest, OH_Drawing_MatrixPostScale, TestSize.Level1
 /*
  * @tc.name: OH_Drawing_MatrixPostTranslate
  * @tc.desc: test for OH_Drawing_MatrixPostTranslate.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -319,7 +319,7 @@ HWTEST_F(NativeXTSDrawingMatrixTest, OH_Drawing_MatrixPostTranslate, TestSize.Le
 /*
  * @tc.name: OH_Drawing_MatrixPostRotate
  * @tc.desc: test for OH_Drawing_MatrixPostRotate.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -342,7 +342,7 @@ HWTEST_F(NativeXTSDrawingMatrixTest, OH_Drawing_MatrixPostRotate, TestSize.Level
 /*
  * @tc.name: OH_Drawing_MatrixReset
  * @tc.desc: test for OH_Drawing_MatrixReset.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -358,7 +358,7 @@ HWTEST_F(NativeXTSDrawingMatrixTest, OH_Drawing_MatrixReset, TestSize.Level1) {
 /*
  * @tc.name: OH_Drawing_MatrixMapPoints
  * @tc.desc: test for OH_Drawing_MatrixMapPoints.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -376,7 +376,7 @@ HWTEST_F(NativeXTSDrawingMatrixTest, OH_Drawing_MatrixMapPoints, TestSize.Level1
 /*
  * @tc.name: OH_Drawing_MatrixMapRect
  * @tc.desc: test for OH_Drawing_MatrixMapRect.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */

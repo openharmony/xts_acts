@@ -34,7 +34,7 @@ class NativeXTSDrawingMemoryStreamTest : public testing::Test {};
 /*
  * @tc.name: OH_Drawing_MemoryStreamCreate
  * @tc.desc: test for OH_Drawing_MemoryStreamCreate.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -48,7 +48,7 @@ HWTEST_F(NativeXTSDrawingMemoryStreamTest, OH_Drawing_MemoryStreamCreate, TestSi
 /*
  * @tc.name: OH_Drawing_MemoryStreamDestroy
  * @tc.desc: test for OH_Drawing_MemoryStreamDestroy.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */

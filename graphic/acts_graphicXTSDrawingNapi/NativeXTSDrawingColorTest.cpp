@@ -51,7 +51,7 @@ class NativeXTSDrawingColorTest : public testing::Test {};
 /*
  * @tc.name: OH_Drawing_ColorSetArgb
  * @tc.desc: test for OH_Drawing_ColorSetArgb.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */

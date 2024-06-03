@@ -50,19 +50,12 @@ class NativeXTSDrawingTextBlobTest : public testing::Test {};
 /*
  * @tc.name: OH_Drawing_TextBlobUniqueID
  * @tc.desc: test for OH_Drawing_TextBlobUniqueID.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
 HWTEST_F(NativeXTSDrawingTextBlobTest, OH_Drawing_TextBlobUniqueID, TestSize.Level1) {
     // todo cpp crash when OH_Drawing_FontCreate
-    if (0) {
-        const char *str = "123456";
-        OH_Drawing_Font *font = OH_Drawing_FontCreate();
-        OH_Drawing_TextBlob *textBlob =
-            OH_Drawing_TextBlobCreateFromText(str, strlen(str), font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
-        EXPECT_TRUE(OH_Drawing_TextBlobUniqueID(textBlob) > 0);
-    }
     EXPECT_TRUE(OH_Drawing_TextBlobUniqueID(nullptr) == 0);
 }
 

@@ -51,7 +51,7 @@ class NativeXTSDrawingBrushTest : public testing::Test {};
 /*
  * @tc.name: OH_Drawing_BrushDestroy
  * @tc.desc: test for OH_Drawing_BrushDestroy.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -64,7 +64,7 @@ HWTEST_F(NativeXTSDrawingBrushTest, OH_Drawing_BrushDestroy, TestSize.Level1) {
 /*
  * @tc.name: OH_Drawing_BrushGetAlpha
  * @tc.desc: test for OH_Drawing_BrushGetAlpha.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -79,7 +79,7 @@ HWTEST_F(NativeXTSDrawingBrushTest, OH_Drawing_BrushGetAlpha, TestSize.Level1) {
 /*
  * @tc.name: OH_Drawing_BrushSetAlpha
  * @tc.desc: test for OH_Drawing_BrushSetAlpha.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -94,7 +94,7 @@ HWTEST_F(NativeXTSDrawingBrushTest, OH_Drawing_BrushSetAlpha, TestSize.Level1) {
 /*
  * @tc.name: OH_Drawing_BrushIsAntiAlias
  * @tc.desc: test for OH_Drawing_BrushIsAntiAlias.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -108,7 +108,7 @@ HWTEST_F(NativeXTSDrawingBrushTest, OH_Drawing_BrushIsAntiAlias, TestSize.Level1
 /*
  * @tc.name: OH_Drawing_BrushSetAntiAlias
  * @tc.desc: test for OH_Drawing_BrushSetAntiAlias.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -122,7 +122,7 @@ HWTEST_F(NativeXTSDrawingBrushTest, OH_Drawing_BrushSetAntiAlias, TestSize.Level
 /*
  * @tc.name: OH_Drawing_BrushGetColor
  * @tc.desc: test for OH_Drawing_BrushGetColor.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -136,7 +136,7 @@ HWTEST_F(NativeXTSDrawingBrushTest, OH_Drawing_BrushGetColor, TestSize.Level1) {
 /*
  * @tc.name: OH_Drawing_BrushSetColor
  * @tc.desc: test for OH_Drawing_BrushSetColor.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -150,7 +150,7 @@ HWTEST_F(NativeXTSDrawingBrushTest, OH_Drawing_BrushSetColor, TestSize.Level1) {
 /*
  * @tc.name: OH_Drawing_BrushSetFilter
  * @tc.desc: test for OH_Drawing_BrushSetFilter.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -182,7 +182,7 @@ HWTEST_F(NativeXTSDrawingBrushTest, OH_Drawing_BrushSetFilter, TestSize.Level1) 
 /*
  * @tc.name: OH_Drawing_BrushSetShaderEffect
  * @tc.desc: test for OH_Drawing_BrushSetShaderEffect.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -212,7 +212,7 @@ HWTEST_F(NativeXTSDrawingBrushTest, OH_Drawing_BrushSetShaderEffect, TestSize.Le
 /*
  * @tc.name: OH_Drawing_BrushSetShadowLayer
  * @tc.desc: test for OH_Drawing_BrushSetShadowLayer.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -231,7 +231,7 @@ HWTEST_F(NativeXTSDrawingBrushTest, OH_Drawing_BrushSetShadowLayer, TestSize.Lev
 /*
  * @tc.name: OH_Drawing_BrushGetFilter
  * @tc.desc: test for OH_Drawing_BrushGetFilter.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -252,7 +252,7 @@ HWTEST_F(NativeXTSDrawingBrushTest, OH_Drawing_BrushGetFilter, TestSize.Level1) 
 /*
  * @tc.name: OH_Drawing_BrushReset
  * @tc.desc: test for OH_Drawing_BrushReset.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */

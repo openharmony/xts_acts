@@ -50,7 +50,7 @@ class NativeXTSDrawingColorFilterTest : public testing::Test {};
 /*
  * @tc.name: OH_Drawing_ColorFilterCreateBlendMode
  * @tc.desc: test for OH_Drawing_ColorFilterCreateBlendMode.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -113,7 +113,7 @@ HWTEST_F(NativeXTSDrawingColorFilterTest, OH_Drawing_ColorFilterCreateBlendMode,
 /*
  * @tc.name: OH_Drawing_ColorFilterDestroy
  * @tc.desc: test for OH_Drawing_ColorFilterDestroy.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */

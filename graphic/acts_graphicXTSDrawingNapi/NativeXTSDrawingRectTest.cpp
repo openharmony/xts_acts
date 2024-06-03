@@ -33,7 +33,7 @@ class NativeXTSDrawingRectTest : public testing::Test {};
 /*
  * @tc.name: OH_Drawing_RectCreate
  * @tc.desc: test for OH_Drawing_RectCreate.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -46,7 +46,7 @@ HWTEST_F(NativeXTSDrawingRectTest, OH_Drawing_RectCreate, TestSize.Level1) {
 /*
  * @tc.name: OH_Drawing_RectIntersect
  * @tc.desc: test for OH_Drawing_RectIntersect.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -74,7 +74,7 @@ HWTEST_F(NativeXTSDrawingRectTest, OH_Drawing_RectIntersect, TestSize.Level1) {
 /*
  * @tc.name: OH_Drawing_RectJoin
  * @tc.desc: test for OH_Drawing_RectJoin.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -95,7 +95,7 @@ HWTEST_F(NativeXTSDrawingRectTest, OH_Drawing_RectJoin, TestSize.Level1) {
 /*
  * @tc.name: OH_Drawing_RectSetLeft
  * @tc.desc: test for OH_Drawing_RectSetLeft.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -111,7 +111,7 @@ HWTEST_F(NativeXTSDrawingRectTest, OH_Drawing_RectSetLeft, TestSize.Level1) {
 /*
  * @tc.name: OH_Drawing_RectSetTop
  * @tc.desc: test for OH_Drawing_RectSetTop.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -127,7 +127,7 @@ HWTEST_F(NativeXTSDrawingRectTest, OH_Drawing_RectSetTop, TestSize.Level1) {
 /*
  * @tc.name: OH_Drawing_RectSetRight
  * @tc.desc: test for OH_Drawing_RectSetRight.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -143,7 +143,7 @@ HWTEST_F(NativeXTSDrawingRectTest, OH_Drawing_RectSetRight, TestSize.Level1) {
 /*
  * @tc.name: OH_Drawing_RectSetBottom
  * @tc.desc: test for OH_Drawing_RectSetBottom.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -159,7 +159,7 @@ HWTEST_F(NativeXTSDrawingRectTest, OH_Drawing_RectSetBottom, TestSize.Level1) {
 /*
  * @tc.name: OH_Drawing_RectGetLeft
  * @tc.desc: test for OH_Drawing_RectGetLeft.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -175,7 +175,7 @@ HWTEST_F(NativeXTSDrawingRectTest, OH_Drawing_RectGetLeft, TestSize.Level1) {
 /*
  * @tc.name: OH_Drawing_RectGetTop
  * @tc.desc: test for OH_Drawing_RectGetTop.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -191,7 +191,7 @@ HWTEST_F(NativeXTSDrawingRectTest, OH_Drawing_RectGetTop, TestSize.Level1) {
 /*
  * @tc.name: OH_Drawing_RectGetRight
  * @tc.desc: test for OH_Drawing_RectGetRight.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -207,7 +207,7 @@ HWTEST_F(NativeXTSDrawingRectTest, OH_Drawing_RectGetRight, TestSize.Level1) {
 /*
  * @tc.name: OH_Drawing_RectGetBottom
  * @tc.desc: test for OH_Drawing_RectGetBottom.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -223,7 +223,7 @@ HWTEST_F(NativeXTSDrawingRectTest, OH_Drawing_RectGetBottom, TestSize.Level1) {
 /*
  * @tc.name: OH_Drawing_RectGetHeight
  * @tc.desc: test for OH_Drawing_RectGetHeight.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -237,7 +237,7 @@ HWTEST_F(NativeXTSDrawingRectTest, OH_Drawing_RectGetHeight, TestSize.Level1) {
 /*
  * @tc.name: OH_Drawing_RectGetWidth
  * @tc.desc: test for OH_Drawing_RectGetWidth.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -251,7 +251,7 @@ HWTEST_F(NativeXTSDrawingRectTest, OH_Drawing_RectGetWidth, TestSize.Level1) {
 /*
  * @tc.name: OH_Drawing_RectCopy
  * @tc.desc: test for OH_Drawing_RectCopy.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -274,7 +274,7 @@ HWTEST_F(NativeXTSDrawingRectTest, OH_Drawing_RectCopy, TestSize.Level1) {
 /*
  * @tc.name: OH_Drawing_RectDestroy
  * @tc.desc: test for OH_Drawing_RectDestroy.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */

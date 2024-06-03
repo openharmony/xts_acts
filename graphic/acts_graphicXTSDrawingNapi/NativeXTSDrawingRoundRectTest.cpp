@@ -33,7 +33,7 @@ class NativeXTSDrawingRoundRectTest : public testing::Test {};
 /*
  * @tc.name: OH_Drawing_RoundRectCreate
  * @tc.desc: test for OH_Drawing_RoundRectCreate.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -49,7 +49,7 @@ HWTEST_F(NativeXTSDrawingRoundRectTest, OH_Drawing_RoundRectCreate, TestSize.Lev
 /*
  * @tc.name: OH_Drawing_RoundRectSetCorner
  * @tc.desc: test for OH_Drawing_RoundRectSetCorner.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -67,7 +67,7 @@ HWTEST_F(NativeXTSDrawingRoundRectTest, OH_Drawing_RoundRectSetCorner, TestSize.
 /*
  * @tc.name: OH_Drawing_RoundRectGetCorner
  * @tc.desc: test for OH_Drawing_RoundRectGetCorner.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
@@ -87,7 +87,7 @@ HWTEST_F(NativeXTSDrawingRoundRectTest, OH_Drawing_RoundRectGetCorner, TestSize.
 /*
  * @tc.name: OH_Drawing_RoundRectDestroy
  * @tc.desc: test for OH_Drawing_RoundRectDestroy.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
