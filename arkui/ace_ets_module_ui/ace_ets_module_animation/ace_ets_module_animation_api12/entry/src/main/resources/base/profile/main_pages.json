@@ -6,6 +6,7 @@
         "MainAbility/pages/AnimatorResult/setExpectedFrameRateRange",
         "MainAbility/pages/setPolyToPoly",
         "MainAbility/pages/Particle/Particle",
-        "MainAbility/pages/SymbolGlyph/SymbolGlyph"
+        "MainAbility/pages/SymbolGlyph/SymbolGlyph",
+        "MainAbility/pages/Particle/particleAnimationTest"
     ]
 }
