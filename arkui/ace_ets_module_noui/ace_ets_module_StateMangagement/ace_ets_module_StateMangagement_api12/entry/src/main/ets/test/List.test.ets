@@ -34,6 +34,7 @@ import RepeatEachJsunit from './RepeatTest/RepeatEachJsunit.test';
 import persistStorageATest from './GetSharedLocalTest/persistStorageA.test';
 import appStorageRefJsunit from './StorageTest/appStorageRefJsunit.test';
 import localStorageRefJsunit from './StorageTest/localStorageRefJsunit.test';
+import IMonitorTest from './MonitorTest/IMonitor.test';
 export default function testsuite() {
   ExtendTrackTest();
   NestTrackTest();
@@ -57,4 +58,5 @@ export default function testsuite() {
   persistStorageATest();
   appStorageRefJsunit();
   localStorageRefJsunit();
+  IMonitorTest();
 }

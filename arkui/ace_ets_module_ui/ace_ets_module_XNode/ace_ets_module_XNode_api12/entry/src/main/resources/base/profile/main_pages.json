@@ -8,7 +8,7 @@
         "MainAbility/pages/Graphics/edgeWidths",
         "MainAbility/pages/renderNode/renderNodeSetGetInterface",
         "MainAbility/pages/FrameNode/dispose",
-	    "MainAbility/pages/FrameNode/getAttrs",
+	"MainAbility/pages/FrameNode/getAttrs",
         "MainAbility/pages/Graphics/setRectShape",
         "MainAbility/pages/Graphics/LengthUnit",
         "MainAbility/pages/Graphics/getBlendColor",
@@ -34,6 +34,12 @@
         "MainAbility/pages/FrameNode/createNodeText",
 	    "MainAbility/pages/Graphics/GraphicsApi/Corner",
 	    "MainAbility/pages/Graphics/GraphicsApi/LengthMetricsUnit",
-	    "MainAbility/pages/Graphics/GraphicsApi/PercentReference"
+	    "MainAbility/pages/Graphics/GraphicsApi/PercentReference",
+	"MainAbility/pages/FrameNode/setMeasureSize",
+	"MainAbility/pages/Graphics/GraphicsApi/Corner",
+	"MainAbility/pages/Graphics/GraphicsApi/LengthMetricsUnit",
+	"MainAbility/pages/Graphics/GraphicsApi/PercentReference",
+        "MainAbility/pages/Graphics/setCircleShape",
+        "MainAbility/pages/FrameNode/commonEventTest1"
     ]
 }

@@ -32,19 +32,21 @@ struct Time_accept {
   }
 
   build() {
-    Column() {
-      Text(this.acceptButtonStyle_Text)
-        .id('acceptButtonStyle_Text')
-        .margin(20)
-      Button("TimePickerDialog 24小时制")
-        .margin(20)
-        .onClick(() => {
-          TimePickerDialog.show(this.Time_Options)
-          if (this.Time_Options.acceptButtonStyle!.type == ButtonType.Circle) {
-            this.acceptButtonStyle_Text = 'acceptButtonStyle_Text'
-          }
-        })
-        .id('btn')
-    }.width('100%')
+    Row() {
+      Column() {
+        Text(this.acceptButtonStyle_Text)
+          .id('acceptButtonStyle_Text')
+          .margin(20)
+        Button("TimePickerDialog 24小时制")
+          .margin(20)
+          .onClick(() => {
+            TimePickerDialog.show(this.Time_Options)
+            if (this.Time_Options.acceptButtonStyle!.type == ButtonType.Normal) {
+              this.acceptButtonStyle_Text = 'acceptButtonStyle_Text'
+            }
+          })
+          .id('btn')
+      }.width('100%')
+    }.width('100%').height('100%').id('row')
   }
 }

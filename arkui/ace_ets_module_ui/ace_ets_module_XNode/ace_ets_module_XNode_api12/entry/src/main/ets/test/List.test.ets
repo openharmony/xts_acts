@@ -43,6 +43,8 @@ import createNodeScroll from './FrameNodeTest/createNodeScroll.test';
 import createNodeSearch from './FrameNodeTest/createNodeSearch.test';
 import createNodeStack from './FrameNodeTest/createNodeStack.test';
 import createNodeText from './FrameNodeTest/createNodeText.test';
+import setCircleShapeTest from './GraphicsTest/setCircleShape.test';
+import commonEventTest1 from './FrameNodeTest/commonEventTest1.test';
 
 import CornerTest from './GraphicsTest/GraphicsApiTest/CornerTest.test';
 import LengthMetricsUnitTest from './GraphicsTest/GraphicsApiTest/LengthMetricsUnitTest.test';
@@ -80,7 +82,9 @@ export default function testsuite() {
   createNodeSearch();
   createNodeStack();
   createNodeText();
+  commonEventTest1();
   CornerTest();
   LengthMetricsUnitTest();
   PercentReferenceTest();
+  setCircleShapeTest();
 }

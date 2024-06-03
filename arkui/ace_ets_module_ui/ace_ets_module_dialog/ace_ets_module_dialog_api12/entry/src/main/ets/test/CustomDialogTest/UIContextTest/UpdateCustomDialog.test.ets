@@ -28,7 +28,7 @@ export default function UpdateCustomDialogTest() {
         router.clear();
         let pages = router.getState();
         console.info("get UpdateCustomDialogTest state pages:" + JSON.stringify(pages));
-        if (!("UpdateCustomDialogTest" == pages.name)) {
+        if (!("UpdateCustomDialog" == pages.name)) {
           console.info("get UpdateCustomDialogTest pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);

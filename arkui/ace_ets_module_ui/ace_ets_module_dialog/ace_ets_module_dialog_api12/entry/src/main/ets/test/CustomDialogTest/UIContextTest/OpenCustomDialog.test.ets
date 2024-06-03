@@ -28,7 +28,7 @@ export default function openCustomDialogTest() {
         router.clear();
         let pages = router.getState();
         console.info("get openCustomDialogTest state pages:" + JSON.stringify(pages));
-        if (!("openCustomDialogTest" == pages.name)) {
+        if (!("OpenCustomDialog" == pages.name)) {
           console.info("get openCustomDialogTest pages.name:" + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);

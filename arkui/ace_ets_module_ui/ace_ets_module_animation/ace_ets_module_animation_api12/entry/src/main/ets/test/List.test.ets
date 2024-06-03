@@ -18,10 +18,12 @@ import AnimatorResultTest from './AnimatorResultTest/AnimatorResultTest.test'
 import setPolyToPoly from './setPolyToPoly.test'
 import SymbolGlyphTest from './SymbolGlyphTest/SymbolGlyphTest.test'
 import ParticleTest from './ParticleTest/ParticleTest.test'
+import APIParticleEmitter from './APIParticleEmitter.test'
 export default function testsuite() {
   AnimatorResultTest()
   setExpectedFrameRateRangeTest()
   setPolyToPoly();
   SymbolGlyphTest();
   ParticleTest();
+  APIParticleEmitter();
 }

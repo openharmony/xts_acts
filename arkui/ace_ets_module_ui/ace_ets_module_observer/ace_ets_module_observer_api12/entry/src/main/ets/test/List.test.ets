@@ -17,6 +17,7 @@ import ObserverNavDestinationState from './observerTest/ObserverNavDestinationSt
 import ObserverNavDestinationId from './observerTest/ObserverNavDestinationId.test';
 import ObserverPageId from './observerTest/ObserverPageId.test';
 import ObserverApi1 from './observerTest/ObserverApi1.test';
+import DensityInfoTest from './observerTest/DensityInfo.test';
 
 export default function testsuite() {
   observerScrollTest()
@@ -24,5 +25,5 @@ export default function testsuite() {
   ObserverNavDestinationId();
   ObserverPageId();
   ObserverApi1();
-
+  DensityInfoTest();
 }
