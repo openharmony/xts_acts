@@ -2450,5 +2450,18 @@ export default function nativeApiStringJsunit() {
       expect(value).assertEqual(0);
       done();
     });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0162
+     * @tc.name aceNapiTest0162
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0162', 0, async (done: Function) => {
+      console.info('aceNapiTest0162 START');
+      value = napitest.threadSafePriorityWithInvalidParam();
+      console.info('aceNapiTest0162 testString result is value: ' + JSON.stringify(value));
+      expect(value).assertEqual(0);
+      done();
+    });
   })
 }
