@@ -18,6 +18,8 @@
         "MainAbility/pages/DragController/DragInteractionOptions",
 	"MainAbility/pages/AttributeUpdater/initializeModifier",
         "MainAbility/pages/GestureHandler/clearGesture",
-        "MainAbility/pages/GestureHandler/addParallelGestureTest1"
+        "MainAbility/pages/GestureHandler/addParallelGestureTest1",
+        "MainAbility/pages/onKeyEvent/OnKeyPreIme",
+        "MainAbility/pages/onKeyEvent/getModifierKeyState"
     ]
 }

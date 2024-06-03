@@ -8,6 +8,7 @@
         "MainAbility/pages/UIContext/OverlayManager_004",
         "MainAbility/pages/UIContext/OverlayManager_005",
         "MainAbility/pages/UIContext/OverlayManager_006",
-        "MainAbility/pages/UIContext/getContextMenuController"
+        "MainAbility/pages/UIContext/getContextMenuController",
+        "MainAbility/pages/customProperty/customProperty"
     ]
 }

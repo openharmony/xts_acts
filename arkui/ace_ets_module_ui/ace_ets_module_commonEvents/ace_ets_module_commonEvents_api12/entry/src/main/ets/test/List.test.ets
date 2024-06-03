@@ -29,6 +29,11 @@ import DragInteractionOptionsTest from './DragController/DragInteractionOptions.
 import SourceToolTest from './GestureHandler/SourceTool.test';
 import initializeModifierTest from './AttributeUpdater/initializeModifier.test';
 import addParallelGestureTest1 from './GestureHandler/addParallelGestureTest1.test';
+import onKeyPreImeTest from './onKeyEventTest/onKeyPreIme.test';
+import getModifierKeyStateTest from './onKeyEventTest/getModifierKeyState.test';
+import clearGestureTest from './GestureHandler/clearGesture.test';
+
+
 export default function testsuite() {
   APIPreDragStatusTest();
   addGestureApplyGesture();
@@ -48,4 +53,7 @@ export default function testsuite() {
   SourceToolTest();
   initializeModifierTest();
   addParallelGestureTest1();
+  clearGestureTest();
+  onKeyPreImeTest();
+  getModifierKeyStateTest();
 }
