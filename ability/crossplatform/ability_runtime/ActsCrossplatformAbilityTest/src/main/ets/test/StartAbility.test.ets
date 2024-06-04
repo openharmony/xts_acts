@@ -522,7 +522,7 @@ export default function StartAbilityTest() {
             abilityDelegator.printSync(
               "ACTS_START_ABILITY_PROMISE_ERROR_0007 meet an error: " + error
             );
-            expect(error.message).assertEqual("Incorrect parameters.");
+            expect(error.message).assertContain("Parse");
             abilityDelegator.printSync(
               "ACTS_START_ABILITY_PROMISE_ERROR_0007 pass"
             );

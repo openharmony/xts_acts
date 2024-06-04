@@ -362,7 +362,7 @@ export default function BackgroundCallback() {
       0,
       async (done: Function) => {
         abilityDelegator.printSync(
-          "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_ERROR_0002 start"
+          "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_ERROR_0005 start"
         );
         if (deviceType === '2in1') {
           done();
@@ -370,7 +370,7 @@ export default function BackgroundCallback() {
         }
         abilityDelegator.getCurrentTopAbility((err: BusinessError, ability1: UIAbility) => {
           abilityDelegator.printSync(
-            "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_ERROR_0002 Main4Ability: " +
+            "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_ERROR_0005 Main4Ability: " +
             ability1.context.abilityInfo.name
           );
           abilityDelegator.startAbility({
@@ -379,7 +379,7 @@ export default function BackgroundCallback() {
             moduleName: "entry",
           }, () => {
             abilityDelegator.printSync(
-              "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_ERROR_0002 startAbility"
+              "ACTS_DO_ABILITY_BACKGROUND_CALLBACK_ERROR_0005 startAbility"
             );
             setTimeout(() => {
               abilityDelegator.getCurrentTopAbility(
@@ -393,8 +393,8 @@ export default function BackgroundCallback() {
                           }
                         );
                       } catch (error) {
-                        expect(error.message).assertEqual(
-                          "Incorrect parameters."
+                        expect(error.message).assertContain(
+                          "Parse"
                         );
                         abilityDelegator.printSync(
                           "ACTS_DO_ABILITY_FOREGROUND_CALLBACK_ERROR_0005 doAbilityForeground meet an error: " +

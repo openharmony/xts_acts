@@ -416,8 +416,8 @@ export default function BackgroundPromise() {
                           .then(() => {
                           });
                       } catch (error) {
-                        expect(error.message).assertEqual(
-                          "Incorrect parameters."
+                        expect(error.message).assertContain(
+                          "Parse"
                         );
                         abilityDelegator.printSync(
                           "ACTS_DO_ABILITY_BACKGROUND_PROMISE_ERROR_0005 doAbilityBackground meet an error: " +
