@@ -18,7 +18,7 @@
 @Component
 struct FolderStackTest1 {
   @State len_wid: number = 480
-  @State w: string = "40%"
+  @State w: string = "AppRotation"
   // @State appRotationValue:AppRotation[] = [AppRotation.ROTATION_0,AppRotation.ROTATION_90,AppRotation.ROTATION_180,AppRotation.ROTATION_270]
   build() {
     Column() {
@@ -40,7 +40,7 @@ struct FolderStackTest1 {
         }.width("100%").height("100%").justifyContent(FlexAlign.Start)
 
         Column() {
-          Text("video bar ")
+          Text(this.w)
             .width("100%")
             .height(50)
             .textAlign(TextAlign.Center)
@@ -70,6 +70,10 @@ struct FolderStackTest1 {
         console.log('this isHoverMode:' +msg.isHoverMode);
         console.log('this appRotation:' +msg.appRotation);
         console.log('this windowMode:' +msg.windowMode);
+        if (msg.appRotation === AppRotation.ROTATION_0) {
+          this.w = 'ROTATION_0'
+          console.info("App does not rotate to display vertically.")
+        }
       })
       // folderStack如果不撑满页面全屏，作为普通Stack使用
       .alignContent(Alignment.Bottom)
