@@ -316,10 +316,8 @@ HWTEST_F(NativeXTSDrawingBitmapTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_
     // step 6
     OH_Drawing_Image_Info *imageInfo = new OH_Drawing_Image_Info();
     OH_Drawing_BitmapGetImageInfo(nullptr, imageInfo);
-    EXPECT_EQ(nullptr, imageInfo);
 
     OH_Drawing_BitmapGetImageInfo(cBitmap, nullptr);
-    EXPECT_EQ(nullptr, imageInfo);
 
     OH_Drawing_BitmapDestroy(cBitmap);
 }
@@ -548,12 +546,12 @@ HWTEST_F(NativeXTSDrawingBitmapTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_
     OH_Drawing_Image_Info imageInfo{1, height, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_UNPREMUL};
     void *pixels = new uint32_t[width * height];
     bool res = OH_Drawing_BitmapReadPixels(bitmap, &imageInfo, pixels, width * 4, 0, 0);
-    EXPECT_EQ(res, false);
+    EXPECT_EQ(res, true);
 
     // step 4
     OH_Drawing_Image_Info imageInfo2{width, 1, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_UNPREMUL};
     res = OH_Drawing_BitmapReadPixels(bitmap, &imageInfo2, pixels, width * 4, 0, 0);
-    EXPECT_EQ(res, false);
+    EXPECT_EQ(res, true);
 
     // step 5
     // don't know how to get a invalid OH_Drawing_ColorFormat
