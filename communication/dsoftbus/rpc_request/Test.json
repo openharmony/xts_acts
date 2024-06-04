@@ -5,9 +5,8 @@
         "test-timeout": "600000",
         "shell-timeout": "600000",
         "testcase-timeout": 60000,
-        "bundle-name":"com.ohos.rpcrequesttest",
+        "bundle-name": "com.ohos.rpcrequesttest",
         "package-name": "com.ohos.rpcrequesttest"
-        
     },
     "kits": [
         {
@@ -16,10 +15,13 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },
+        {
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
         }
     ]
-
-
-
-
 }
