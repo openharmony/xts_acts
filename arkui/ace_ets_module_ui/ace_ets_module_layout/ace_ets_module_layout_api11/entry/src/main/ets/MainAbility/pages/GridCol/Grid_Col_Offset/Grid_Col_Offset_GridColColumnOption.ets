@@ -49,7 +49,7 @@ struct Grid_Col_Offset_GridColColumnOption {
           reference: BreakpointsReference.ComponentSize },
         direction: GridRowDirection.Row
       }) {
-        ForEach(this.bgColors, (color: Color, index: number) => {
+        ForEach(this.bgColors, (color: Color, index?: number) => {
           GridCol({
             span: this.addSpan,
             offset: {
