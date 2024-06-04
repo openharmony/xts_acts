@@ -1172,7 +1172,6 @@ describe("VibratorJsTest_misc_7", function () {
     */
     it("VibratorJsTest101", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         TAG = "VibratorJsTest101"
-        console.info(TAG + ' isAvailable ' + isAvailable);
             await vibrator.vibrate({
                 mode: 'long',
                 success: function () {
@@ -1225,7 +1224,6 @@ describe("VibratorJsTest_misc_7", function () {
     */
     it("VibratorJsTest102", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = "VibratorJsTest102"
-        console.info(TAG + ' isAvailable ' + isAvailable);
             try {
                 expect(typeof(vibrator.isHdHapticSupported())).assertEqual("boolean");
                 done()
@@ -1246,7 +1244,6 @@ describe("VibratorJsTest_misc_7", function () {
     */
     it("VibratorJsTest103", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = "VibratorJsTest103"
-        console.info(TAG + ' isAvailable ' + isAvailable);
             try {
                 let isSupport = vibrator.isHdHapticSupported()
                 expect(typeof(isSupport)).assertEqual("boolean");
@@ -1268,7 +1265,6 @@ describe("VibratorJsTest_misc_7", function () {
     */
     it("VibratorJsTest104", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = "VibratorJsTest104"
-        console.info(TAG + ' isAvailable ' + isAvailable);
             try {
                 let isSupport = vibrator.isHdHapticSupported(INVALID)
                 expect(isSupport).assertEqual(false);
@@ -1290,7 +1286,6 @@ describe("VibratorJsTest_misc_7", function () {
     */
     it("VibratorJsTest105", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = "VibratorJsTest105"
-        console.info(TAG + ' isAvailable ' + isAvailable);
             try {
                 let isSupport = vibrator.isHdHapticSupported('xxx')
                 console.info(TAG + " isSupport:" + isSupport);
@@ -1313,7 +1308,6 @@ describe("VibratorJsTest_misc_7", function () {
     */
     it("VibratorJsTest106", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = "VibratorJsTest106"
-        console.info(TAG + ' isAvailable ' + isAvailable);
             try {
                 let ret = vibrator.isSupportEffectSync(INVALID_EFFECT_ID);
                 expect(ret).assertEqual(false);
@@ -1336,7 +1330,6 @@ describe("VibratorJsTest_misc_7", function () {
     */
     it("VibratorJsTest107", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = "VibratorJsTest107"
-        console.info(TAG + ' isAvailable ' + isAvailable);
             try {
                 let ret = vibrator.isSupportEffectSync(INVALID);
                 expect(ret).assertEqual(false);
@@ -1359,7 +1352,6 @@ describe("VibratorJsTest_misc_7", function () {
     */
     it("VibratorJsTest108", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL0, async function (done) {
         TAG = "VibratorJsTest108"
-        console.info(TAG + ' isAvailable ' + isAvailable);
             try {
                 let ret = vibrator.isSupportEffectSync(EFFECT_ID);
                 console.info(TAG + " isSupportEffectSync ret: " + ret);
@@ -1382,7 +1374,6 @@ describe("VibratorJsTest_misc_7", function () {
     */
     it("VibratorJsTest109", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
         TAG = "VibratorJsTest109"
-        console.info(TAG + ' isAvailable ' + isAvailable);
             await vibrator.startVibration({
                 type: "time",
                 duration: 500
