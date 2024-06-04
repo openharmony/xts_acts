@@ -20,6 +20,7 @@ group("graphic") {
       "acts_animator:ActsAnimatorTest",
       "acts_display:ActsDisplayTest",
       "acts_graphicXTSDrawing:ActsGraphicXTSDrawingTest",
+      "acts_graphicXTSDrawingNapi:ActsGraphicXTSDrawingNapiTest",
       "acts_pipwindow:ActsPipWindowTest",
       "displayManager:ActsDisplayManagerTest",
       "effectKit:ActsEffectKitTest",
