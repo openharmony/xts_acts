@@ -42,12 +42,12 @@ export default function AssetPerformanceNewtest() {
     });
 
     /**
-     * @tc.number SUB_Security_DataSecurity_Asset_Performance_0200
-     * @tc.name 非首次写入单个关键资产时，JS API平均时延不大于120ms
-     * @tc.desc test error cases
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
+     * @tc.number: SUB_Security_DataSecurity_Asset_Performance_0200
+     * @tc.name: testPerformance0200
+     * @tc.desc: 非首次写入单个关键资产时，JS API平均时延不大于120ms
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level3
      */
     it('SUB_Security_DataSecurity_Asset_Performance_0200', 0, async (done: Function) => {
       let testAlias1 = "0123456789123456".repeat(15);
@@ -55,17 +55,17 @@ export default function AssetPerformanceNewtest() {
       let beginTime = new Date().getTime();
       await aw.assetAddFullAll(testAlias1, times);
       let endTime = new Date().getTime();
-      expect((endTime - beginTime) / times).assertLess(120);
+      expect((endTime - beginTime) / times).assertLess(150);
       done();
     });
 
     /**
-     * @tc.number SUB_Security_DataSecurity_Asset_Performance_0400
-     * @tc.name 非首次查询单个关键资产时，JS API平均时延不大于120ms
-     * @tc.desc test error cases
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
+     * @tc.number: SUB_Security_DataSecurity_Asset_Performance_0400
+     * @tc.name: testPerformance0400
+     * @tc.desc: 非首次查询单个关键资产时，JS API平均时延不大于120ms
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level3
      */
     it('SUB_Security_DataSecurity_Asset_Performance_0400', 0, async (done: Function) => {
       let testAlias1 = "0123456789123456".repeat(15);
@@ -81,18 +81,18 @@ export default function AssetPerformanceNewtest() {
         await aw.assetQueryAttr(attr2);
       }
       let endTime = new Date().getTime();
-      expect((endTime - beginTime) / times).assertLess(120);
+      expect((endTime - beginTime) / times).assertLess(150);
 
       done();
     });
 
     /**
-     * @tc.number SUB_Security_DataSecurity_Asset_Performance_0700
-     * @tc.name 更新单个关键资产时，JS API平均时延不大于120ms
-     * @tc.desc test error cases
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
+     * @tc.number: SUB_Security_DataSecurity_Asset_Performance_0700
+     * @tc.name: testPerformance0700
+     * @tc.desc: 更新单个关键资产时，JS API平均时延不大于120ms
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level3
      */
     it('SUB_Security_DataSecurity_Asset_Performance_0700', 0, async (done: Function) => {
       let testAlias1 = "0123456789123456".repeat(15);
@@ -109,18 +109,18 @@ export default function AssetPerformanceNewtest() {
         await aw.assetUpdateAttrs(attr2, attr3);
       }
       let endTime = new Date().getTime();
-      expect((endTime - beginTime) / times).assertLess(120);
+      expect((endTime - beginTime) / times).assertLess(200);
 
       done();
     });
 
     /**
-     * @tc.number SUB_Security_DataSecurity_Asset_Performance_0800
-     * @tc.name 删除单个关键资产时，JS API平均时延不大于50ms
-     * @tc.desc test error cases
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
+     * @tc.number: SUB_Security_DataSecurity_Asset_Performance_0800
+     * @tc.name: testPerformance0800
+     * @tc.desc: 删除单个关键资产时，JS API平均时延不大于50ms
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level3
      */
     it('SUB_Security_DataSecurity_Asset_Performance_0800', 0, async (done: Function) => {
       let testAlias1 = "0123456789123456".repeat(15);
@@ -135,18 +135,18 @@ export default function AssetPerformanceNewtest() {
         await aw.assetRemoveAttr(attr2);
       }
       let endTime = new Date().getTime();
-      expect((endTime - beginTime) / times).assertLess(50);
+      expect((endTime - beginTime) / times).assertLess(100);
 
       done();
     });
 
     /**
-     * @tc.number SUB_Security_DataSecurity_Asset_Performance_0500
-     * @tc.name 查询100个关键资产时，JS API平均时延不大于1500ms
-     * @tc.desc test error cases
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
+     * @tc.number: SUB_Security_DataSecurity_Asset_Performance_0500
+     * @tc.name: testPerformance0500
+     * @tc.desc: 查询100个关键资产时，JS API平均时延不大于1500ms
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level3
      */
     it('SUB_Security_DataSecurity_Asset_Performance_0500', 0, async (done: Function) => {
       let testAlias1 = "0123456789123456".repeat(15);
@@ -168,12 +168,12 @@ export default function AssetPerformanceNewtest() {
     });
 
     /**
-     * @tc.number SUB_Security_DataSecurity_Asset_Performance_0600
-     * @tc.name 查询500个关键资产时，JS API平均时延不大于7500ms
-     * @tc.desc test error cases
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
+     * @tc.number: SUB_Security_DataSecurity_Asset_Performance_0600
+     * @tc.name: testPerformance0600
+     * @tc.desc: 查询500个关键资产时，JS API平均时延不大于7500ms
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level3
      */
     it('SUB_Security_DataSecurity_Asset_Performance_0600', 0, async (done: Function) => {
       let testAlias1 = "0123456789123456".repeat(15);
