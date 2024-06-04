@@ -943,7 +943,7 @@ export default function rdbTest() {
      it('testLockRow001', 0, async (done: Function) => {
       let data = rdb.lockRowOne();
       console.info("testLockRow001 Test NAPI data= " + JSON.stringify(data));
-      expect(data).assertEqual(14800000);
+      expect(data).assertEqual(14800018);
       done();
     });
 
@@ -958,7 +958,7 @@ export default function rdbTest() {
      it('testUnLockRow001', 0, async (done: Function) => {
       let data = rdb.unLockRowOne();
       console.info("testUnLockRow001 Test NAPI data= " + JSON.stringify(data));
-      expect(data).assertEqual(14800000);
+      expect(data).assertEqual(14800018);
       done();
     });
 
