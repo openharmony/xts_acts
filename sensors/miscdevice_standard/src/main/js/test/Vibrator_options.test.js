@@ -56,6 +56,7 @@ describe("VibratorJsTest_misc_7", function () {
     const OPERATION_FAIL_MSG = 'Device operation failed.'
     const PERMISSION_ERROR_MSG = 'Permission denied.'
     const PARAMETER_ERROR_MSG = 'The parameter invalid.'
+    let TAG = ""
 
     /*
      * @tc.name:VibratorJsTest076
