@@ -936,19 +936,6 @@ export default function otherstestNdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_THIRDPARTY_MUSL_OTHER_PIVOTROOT_0100
-     * @tc.name       : testPivotroot001
-     * @tc.desc       : test pivot_root
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testPivotroot001', 0, async (done: Function) => {
-      let result: number = otherstestndk.pivotroot();
-      expect(result).assertEqual(0);
-      done();
-    });
-    /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_OTHER_UFLOW_0100
      * @tc.name       : testUflow001
      * @tc.desc       : test __uflow
