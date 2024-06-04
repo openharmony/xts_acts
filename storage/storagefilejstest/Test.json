@@ -1,9 +1,9 @@
 {
-    "description": "Configuration for hjunit demo Tests",
+    "description": "Configuration for storage file Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "180000",
-        "shell-timeout": "180000",
+        "test-timeout": "120000",
+        "shell-timeout": "120000",
         "bundle-name": "ohos.acts.storage.file",
         "package-name": "ohos.acts.storage.file"
     },

@@ -1,11 +1,12 @@
 {
     "description": "Configuration for hjunit demo Tests",
     "driver": {
-        "type": "OHJSUnitTest",
-        "test-timeout": "180000",
-        "shell-timeout": "180000",
-        "bundle-name": "com.openharmony.certificateframework2",
-        "package-name": "com.openharmony.certificateframework2"
+      "type": "OHJSUnitTest",
+      "test-timeout": "1200000",
+      "shell-timeout": "900000",
+      "testcase-timeout": "600000",
+      "bundle-name": "com.openharmony.certificateframework2",
+      "package-name": "com.openharmony.certificateframework2"
     },
     "kits": [
         {
@@ -14,12 +15,20 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },{
-            "type": "ShellKit",
-            "run-command": [
-                "power-shell wakeup",
-                "power-shell setmode 602"
-            ]
+        },
+        {
+          "type": "ShellKit",
+          "run-command": [
+            "remount",
+            "mkdir -p /data/local/tmp/xts-test",
+            "chmod 777 -R /data/local/tmp/xts-test"
+          ]
+        },
+        {
+          "type": "PushKit",
+          "push": [
+            "ActsCertFrameworkTwoJSNormalTest.hap -> /data/local/tmp/xts-test/ActsCertFrameworkTwoJSNormalTest.hap"
+          ]
         }
     ]
 }
