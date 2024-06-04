@@ -575,6 +575,7 @@ describe('AccessTokenTest', function () {
                 console.info("data:" + JSON.stringify(data));
                 console.info("data permissions:" + data.permissions);
                 console.info("data authResults:" + data.authResults);
+                console.info("data dialogShownResults: " + data.dialogShownResults);
                 expect(data.authResults).assertEqual(0);
             }).catch((err) => {
                 console.info("data:" + JSON.stringify(err));
@@ -600,6 +601,7 @@ describe('AccessTokenTest', function () {
                 console.info("data:" + JSON.stringify(data));
                 console.info("data permissions:" + data.permissions);
                 console.info("data authResults:" + data.authResults);
+                console.info("data dialogShownResults: " + data.dialogShownResults);
             }).catch((err) => {
                 console.info("data:" + JSON.stringify(err));
             })
@@ -623,6 +625,7 @@ describe('AccessTokenTest', function () {
                 console.info("data:" + JSON.stringify(data));
                 console.info("data permissions:" + data.permissions);
                 console.info("data authResults:" + data.authResults);
+                console.info("data dialogShownResults: " + data.dialogShownResults);
                 expect(data.authResults).assertEqual(0);
             });
         } catch(err) {
@@ -644,6 +647,7 @@ describe('AccessTokenTest', function () {
                 console.info("data:" + JSON.stringify(data));
                 console.info("data permissions:" + data.permissions);
                 console.info("data authResults:" + data.authResults);
+                console.info("data dialogShownResults: " + data.dialogShownResults);
             });
         } catch(err) {
             console.log(`Test_requestPermissionsFromUser_004 catch err->${JSON.stringify(err)}`);
