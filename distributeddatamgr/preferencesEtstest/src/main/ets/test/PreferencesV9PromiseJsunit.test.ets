@@ -407,21 +407,19 @@ export default function preferencesV9PromiseTest(){
          */
         it('SUB_DDM_JSPREFERENCEV9_PROMISE_1400', 0, async function (done) {
             console.log("SUB_DDM_JSPREFERENCEV9_PROMISE_1400 begin.")
-            await mPreference.clear();
+            let mPreference1 = await data_preferences.getPreferences(context, NAME)
             try {
                 var observer = function (key) {
                     console.info('SUB_DDM_JSPREFERENCEV9_PROMISE_1400 key' + key);
                     done();
                     expect(KEY_TEST_STRING_ELEMENT).assertEqual(key);
                 };
-                mPreference.on('change', observer);
-                await mPreference.put(KEY_TEST_STRING_ELEMENT, "abc");
-                await mPreference.flush();
+                mPreference1.on('change', observer);
+                await mPreference1.put(KEY_TEST_STRING_ELEMENT, "abc");
+                await mPreference1.flush();
             } catch (err) {
                 console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message)
                 expect(false).assertTrue()
-            } finally {
-                mPreference.off('change', observer);
             }
         })
 
