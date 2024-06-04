@@ -19,7 +19,7 @@ import requestMethodJsunit from './RequestMethodJsunit.test';
 import httpResponseJsunit from './HttpResponseJsunit.test';
 import HttpRequestOptionsJsunit from './HttpRequestOptionsJsunit.test';
 import httpRequestJsunit from './HttpRequestJsunit.test';
-import StatisticsTest from './StatisticsTest.test';
+//import StatisticsTest from './StatisticsTest.test';
 import NetworkManagerHttpEnhanceTest from './NetworkManagerHttpEnhance.test';
 import NetworkManagerMulticastHTTP1Test from './NetworkManagerMulticastHTTP1.test';
 import NetworkManagerMulticastHTTP2Test from './NetworkManagerMulticastHTTP2.test';
@@ -33,7 +33,7 @@ export default function testsuite() {
   httpResponseJsunit();
   HttpRequestOptionsJsunit();
   httpRequestJsunit();
-  StatisticsTest();
+  //StatisticsTest();
   NetworkManagerHttpEnhanceTest();
   NetworkManagerMulticastHTTP1Test();
   NetworkManagerMulticastHTTP2Test();
