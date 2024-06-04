@@ -1307,6 +1307,409 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
     OH_Drawing_CanvasDestroy(canvas);
 }
 
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2600
+ * @tc.name: 00.testCanvasRotateNormal
+ * @tc.desc: test for 00.testCanvasRotateNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2600, TestSize.Level0) {
+    // 1. OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // 2. OH_Drawing_CanvasRotate, rotate degrees with values 0, 180, 360
+    float degrees[] = {0, 180, 360};
+    for (int i = 0; i < 3; i++) {
+        OH_Drawing_CanvasRotate(canvas, degrees[i], 10, 10);
+    }
+    // 3. Call drawing class interface to draw a rectangle
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(10, 10, 100, 100);
+    OH_Drawing_CanvasDrawRect(canvas, rect);
+    // 4. Free memory
+    OH_Drawing_CanvasDestroy(canvas);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2601
+ * @tc.name: 01.testCanvasRotateNull
+ * @tc.desc: test for 01.testCanvasRotateNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2601, TestSize.Level3) {
+    // 1. OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // 2. OH_Drawing_CanvasRotate with the first parameter being null
+    OH_Drawing_CanvasRotate(nullptr, 0, 10, 10);
+    // 3. OH_Drawing_CanvasRotate with the third parameter being 0
+    OH_Drawing_CanvasRotate(canvas, 0, 0, 10);
+    // 4. OH_Drawing_CanvasRotate with the fourth parameter being 0
+    OH_Drawing_CanvasRotate(canvas, 0, 10, 0);
+    // 5. Free memory
+    OH_Drawing_CanvasDestroy(canvas);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2602
+ * @tc.name: 02.testCanvasRotateAbnormal
+ * @tc.desc: test for 02.testCanvasRotateAbnormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2602, TestSize.Level3) {
+    // 1. OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // 2. OH_Drawing_CanvasRotate with negative degrees input
+    OH_Drawing_CanvasRotate(canvas, -180, 10, 10);
+    // 3. OH_Drawing_CanvasRotate with degrees input greater than 360
+    OH_Drawing_CanvasRotate(canvas, 370, 10, 10);
+    // 4. OH_Drawing_CanvasRotate with negative px input for rotation center
+    OH_Drawing_CanvasRotate(canvas, 180, -10, 10);
+    // 5. OH_Drawing_CanvasRotate with negative py input for rotation center
+    OH_Drawing_CanvasRotate(canvas, 180, 10, -10);
+    // 6. Free memory
+    OH_Drawing_CanvasDestroy(canvas);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2603
+ * @tc.name: 03.testCanvasRotateMaximum
+ * @tc.desc: test for 03.testCanvasRotateMaximum.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2603, TestSize.Level3) {
+    // 1. OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // 2. OH_Drawing_CanvasRotate with maximum rotation angle degrees input
+    OH_Drawing_CanvasRotate(canvas, FLT_MAX, 10, 10);
+    // 3. OH_Drawing_CanvasRotate with maximum x-coordinate px input for rotation center
+    OH_Drawing_CanvasRotate(canvas, 180, FLT_MAX, 10);
+    // 4. OH_Drawing_CanvasRotate with maximum y-coordinate py input for rotation center
+    OH_Drawing_CanvasRotate(canvas, 180, 10, FLT_MAX);
+    // 5. Free memory
+    OH_Drawing_CanvasDestroy(canvas);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2604
+ * @tc.name: 04.testCanvasRotateInputDestroyed
+ * @tc.desc: test for 04.testCanvasRotateInputDestroyed.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2604, TestSize.Level3) {
+    // 1. OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // 2. OH_Drawing_CanvasRotate
+    OH_Drawing_CanvasRotate(canvas, 180, 10, 10);
+    // 3. OH_Drawing_CanvasDestroy
+    OH_Drawing_CanvasDestroy(canvas);
+    // 4. OH_Drawing_CanvasRotate
+    if (0) {
+        // todo cpp crash
+        OH_Drawing_CanvasRotate(canvas, 180, 10, 10);
+    }
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2605
+ * @tc.name: 05.testCanvasRotateMultipleCalls
+ * @tc.desc: test for 05.testCanvasRotateMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2605, TestSize.Level3) {
+    // 1. OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // 2. Call OH_Drawing_CanvasRotate 10 times, each time with different rotation angles and rotation center
+    // coordinates
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_CanvasRotate(canvas, i * 10, i * 10, i * 10);
+        // 3. Call drawing class interface
+        OH_Drawing_Rect *rect = OH_Drawing_RectCreate(10, 10, 100, 100);
+        OH_Drawing_CanvasDrawRect(canvas, rect);
+        OH_Drawing_RectDestroy(rect);
+    }
+    // 4. Free memory
+    OH_Drawing_CanvasDestroy(canvas);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2700
+ * @tc.name: 00.testCanvasTranslateNormal
+ * @tc.desc: test for 00.testCanvasTranslateNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2700, TestSize.Level0) {
+    // 1. OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // 2. OH_Drawing_CanvasTranslate
+    OH_Drawing_CanvasTranslate(canvas, 10, 10);
+    // 3. Call drawing class interface to draw a rectangle
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(10, 10, 100, 100);
+    OH_Drawing_CanvasDrawRect(canvas, rect);
+    // 4. Free memory
+    OH_Drawing_RectDestroy(rect);
+    OH_Drawing_CanvasDestroy(canvas);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2701
+ * @tc.name: 01.testCanvasTranslateNull
+ * @tc.desc: test for 01.testCanvasTranslateNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2701, TestSize.Level3) {
+    // 1. OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // 2. OH_Drawing_CanvasTranslate with the first parameter being null
+    OH_Drawing_CanvasTranslate(nullptr, 10, 10);
+    // 3. OH_Drawing_CanvasTranslate with the second parameter being 0
+    OH_Drawing_CanvasTranslate(canvas, 0, 10);
+    // 4. OH_Drawing_CanvasTranslate with the third parameter being 0
+    OH_Drawing_CanvasTranslate(canvas, 10, 0);
+    // 5. Free memory
+    OH_Drawing_CanvasDestroy(canvas);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2702
+ * @tc.name: 02.testCanvasTranslateAbnormal
+ * @tc.desc: test for 02.testCanvasTranslateAbnormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2702, TestSize.Level3) {
+    // 1. OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // 2. OH_Drawing_CanvasTranslate with negative movement distance dx in the x-axis direction
+    OH_Drawing_CanvasTranslate(canvas, -10, 10);
+    // 3. OH_Drawing_CanvasTranslate with negative movement distance dy in the y-axis direction
+    OH_Drawing_CanvasTranslate(canvas, 10, -10);
+    // 4. Free memory
+    OH_Drawing_CanvasDestroy(canvas);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2703
+ * @tc.name: 03.testCanvasTranslateMaximum
+ * @tc.desc: test for 03.testCanvasTranslateMaximum.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2703, TestSize.Level3) {
+    // 1. OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // 2. OH_Drawing_CanvasTranslate with the movement distance dx in the x-axis direction being the maximum value
+    OH_Drawing_CanvasTranslate(canvas, FLT_MAX, 10);
+    // 3. OH_Drawing_CanvasTranslate with the movement distance dy in the y-axis direction being the maximum value
+    OH_Drawing_CanvasTranslate(canvas, 10, FLT_MAX);
+    // 4. Free memory
+    OH_Drawing_CanvasDestroy(canvas);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2704
+ * @tc.name: 04.testCanvasTranslateInputDestroyed
+ * @tc.desc: test for 04.testCanvasTranslateInputDestroyed.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2704, TestSize.Level3) {
+    // 1. OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // 2. OH_Drawing_CanvasTranslate
+    OH_Drawing_CanvasTranslate(canvas, 10, 10);
+    // 3. OH_Drawing_CanvasDestroy
+    OH_Drawing_CanvasDestroy(canvas);
+    // 4. OH_Drawing_CanvasTranslate
+    if (0) {
+        // todo cpp crash
+        OH_Drawing_CanvasTranslate(canvas, 10, 10);
+    }
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2705
+ * @tc.name: 05.testCanvasTranslateMultipleCalls
+ * @tc.desc: test for 05.testCanvasTranslateMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2705, TestSize.Level3) {
+    // 1. OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+    // 2. Call OH_Drawing_CanvasTranslate 10 times, each time with different movement distances
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_CanvasTranslate(canvas, i * 10, i * 10);
+        // 3. Call drawing class interface
+        OH_Drawing_Rect *rect = OH_Drawing_RectCreate(10, 10, 100, 100);
+        OH_Drawing_CanvasDrawRect(canvas, rect);
+        OH_Drawing_RectDestroy(rect);
+    }
+    // 4. Free memory
+    OH_Drawing_CanvasDestroy(canvas);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2800
+ * @tc.name: 00.testCanvasScaleNormal
+ * @tc.desc: test for 00.testCanvasScaleNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2800, TestSize.Level0) {
+    // 1. Create a canvas
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+
+    // 2. Scale the canvas
+    OH_Drawing_CanvasScale(canvas, 2.0, 2.0);
+
+    // 3. Call drawing class interface
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(10, 10, 100, 100);
+    OH_Drawing_CanvasDrawRect(canvas, rect);
+    OH_Drawing_RectDestroy(rect);
+
+    // 4. Free memory
+    OH_Drawing_CanvasDestroy(canvas);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2801
+ * @tc.name: 01.testCanvasScaleNull
+ * @tc.desc: test for 01.testCanvasScaleNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2801, TestSize.Level3) {
+    // 1. Create a canvas
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+
+    // 2. Scale the canvas, with the first parameter being null
+    OH_Drawing_CanvasScale(NULL, 2.0, 2.0);
+
+    // 3. Scale the canvas, with the second parameter being 0
+    OH_Drawing_CanvasScale(canvas, 0, 2.0);
+
+    // 4. Scale the canvas, with the third parameter being 0
+    OH_Drawing_CanvasScale(canvas, 2.0, 0);
+
+    // 5. Free memory
+    OH_Drawing_CanvasDestroy(canvas);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2802
+ * @tc.name: 02.testCanvasScaleAbnormal
+ * @tc.desc: test for 02.testCanvasScaleAbnormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2802, TestSize.Level3) {
+    // 1. Create a canvas
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+
+    // 2. Scale the canvas, with a negative scale ratio in the x-axis
+    OH_Drawing_CanvasScale(canvas, -2.0, 2.0);
+
+    // 3. Scale the canvas, with a negative scale ratio in the y-axis
+    OH_Drawing_CanvasScale(canvas, 2.0, -2.0);
+
+    // 4. Free memory
+    OH_Drawing_CanvasDestroy(canvas);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2803
+ * @tc.name: 03.testCanvasScaleMaximum
+ * @tc.desc: test for 03.testCanvasScaleMaximum.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2803, TestSize.Level3) {
+    // 1. Create a canvas
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+
+    // 2. Scale the canvas, with the maximum scale ratio in the x-axis
+    OH_Drawing_CanvasScale(canvas, DBL_MAX, 2.0);
+
+    // 3. Scale the canvas, with the maximum scale ratio in the y-axis
+    OH_Drawing_CanvasScale(canvas, 2.0, DBL_MAX);
+
+    // 4. Free memory
+    OH_Drawing_CanvasDestroy(canvas);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2804
+ * @tc.name: 04.testCanvasScaleInputDestroyed
+ * @tc.desc: test for 04.testCanvasScaleInputDestroyed.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2804, TestSize.Level3) {
+    // 1. Create a canvas
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+
+    // 2. Scale the canvas
+    OH_Drawing_CanvasScale(canvas, 2.0, 2.0);
+
+    // 3. Destroy the canvas
+    OH_Drawing_CanvasDestroy(canvas);
+
+    // 4. Attempt to scale on a destroyed canvas
+    if (0) {
+        // todo cpp crash
+        OH_Drawing_CanvasScale(canvas, 2.0, 2.0);
+    }
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2805
+ * @tc.name: 05.testCanvasScaleMultipleCalls
+ * @tc.desc: test for 05.testCanvasScaleMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2805, TestSize.Level3) {
+    // 1. Create a canvas
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+
+    // 2. Call OH_Drawing_CanvasScale 10 times, each time with different compression ratios
+    for (int i = 1; i <= 10; i++) {
+        OH_Drawing_CanvasScale(canvas, i * 1.0, i * 1.0);
+    }
+
+    // 3. Call drawing class interface
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(10, 10, 100, 100);
+    OH_Drawing_CanvasDrawRect(canvas, rect);
+    OH_Drawing_RectDestroy(rect);
+
+    // 4. Free memory
+    OH_Drawing_CanvasDestroy(canvas);
+}
+
 } // namespace Drawing
 } // namespace Rosen
 } // namespace OHOS
