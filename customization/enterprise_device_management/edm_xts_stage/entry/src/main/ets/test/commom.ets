@@ -16,6 +16,7 @@
 import installer from '@ohos.bundle.installer';
 import adminManager from '@ohos.enterprise.adminManager'
 import bundleManager from '@ohos.enterprise.bundleManager'
+import securityManager from '@ohos.enterprise.securityManager'
 
 const WANT1 = {
   bundleName: "com.example.extensionzerotest",
@@ -91,7 +92,7 @@ const TEST_POLICIES: string = "test_policies";
 const TEST_POLICY_NAME: string = "test_policy_name";
 const TEST_POLICY_VALUE: string = "\"test_policy_value\"";
 const TEST_TOKEN_ID: number = 123;
-const TEST_CLIPBOARD_POLICY = 1;
+const TEST_CLIPBOARD_POLICY = securityManager.ClipboardPolicy.IN_APP;
 
 let isMultipleUserEnabled: boolean = true;
 

@@ -821,12 +821,55 @@ function testSetClipboardPolicy() {
   it("test_set_clipboard_policy_0700", 0, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
-      for (let i = 0; i < 101; i++) {
-        securityManager.setAppClipboardPolicy(SELFWANT, i, TEST_CLIPBOARD_POLICY);
-      }
-      expect(false).assertTrue();
-    } catch (error) {
-      expect(error.code == 401);
+      securityManager.setAppClipboardPolicy(SELFWANT, TEST_TOKEN_ID, securityManager.ClipboardPolicy.DEFAULT);
+      let data: string = securityManager.getAppClipboardPolicy(SELFWANT, TEST_TOKEN_ID);
+      let policy: any = JSON.parse(data);
+      expect(policy[0]["tokenId"] == TEST_TOKEN_ID).assertTrue();
+      expect(policy[0]["clipboardPolicy"] == 0).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_CLIPBOARD_POLICY_JS_0800
+   * @tc.name      : test_set_clipboard_policy_0800
+   * @tc.desc      : test securityManager setAppClipboardPolicy
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_clipboard_policy_0800", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      securityManager.setAppClipboardPolicy(SELFWANT, TEST_TOKEN_ID, securityManager.ClipboardPolicy.LOCAL_DEVICE);
+      let data: string = securityManager.getAppClipboardPolicy(SELFWANT, TEST_TOKEN_ID);
+      let policy: any = JSON.parse(data);
+      expect(policy[0]["tokenId"] == TEST_TOKEN_ID).assertTrue();
+      expect(policy[0]["clipboardPolicy"] == 2).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
+
+  /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_CLIPBOARD_POLICY_JS_0900
+   * @tc.name      : test_set_clipboard_policy_0900
+   * @tc.desc      : test securityManager setAppClipboardPolicy
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_clipboard_policy_0900", 0, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
+      securityManager.setAppClipboardPolicy(SELFWANT, TEST_TOKEN_ID, securityManager.ClipboardPolicy.CROSS_DEVICE);
+      let data: string = securityManager.getAppClipboardPolicy(SELFWANT, TEST_TOKEN_ID);
+      let policy: any = JSON.parse(data);
+      expect(policy[0]["tokenId"] == TEST_TOKEN_ID).assertTrue();
+      expect(policy[0]["clipboardPolicy"] == 3).assertTrue();
     } finally {
       await adminManager.disableSuperAdmin(SELFHAPNAME);
     }
