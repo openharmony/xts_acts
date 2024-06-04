@@ -3220,3 +3220,141 @@ HWTEST(MSLiteTest, OHOS_NNRT_0005, Function | MediumTest | Level1) {
     CompareResult(outputs, "ml_face_isface");
     OH_AI_ModelDestroy(&model);
 }
+
+
+// 正常场景：通过OH_AI_ModelGetInputs和OH_AI_ModelGetOutputs获取，实现数据免拷贝
+HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0001, Function | MediumTest | Level1) {
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    AddContextDeviceNNRT(context);
+    printf("==========Build model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "ml_face_isface", true);
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray outputs = OH_AI_ModelGetOutputs(model);
+    ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    CompareResult(outputs, "ml_face_isface");
+    OH_AI_ModelDestroy(&model);
+}
+
+void RunMSLiteModel(OH_AI_ModelHandle model, string model_name, bool is_transpose) {
+    const size_t MAX_DIMS = 10;
+    int64_t shape[MAX_DIMS];
+    size_t shape_num;
+    OH_AI_TensorHandleArray in_tensor_array;
+    OH_AI_TensorHandleArray out_tensor_array;
+    printf("==========OH_AI_TensorSetAllocator in_tensor==========\n");
+    OH_AI_TensorHandleArray inputs_handle = OH_AI_ModelGetInputs(model);
+    in_tensor_array.handle_num = inputs_handle.handle_num;
+    in_tensor_array.handle_list = (OH_AI_TensorHandle *)malloc(sizeof(OH_AI_TensorHandle) * in_tensor_array.handle_num);
+    for (size_t i = 0; i < inputs_handle.handle_num; i++) {
+        auto ori_tensor = inputs_handle.handle_list[i];
+        auto shape_ptr = OH_AI_TensorGetShape(ori_tensor, &shape_num);
+        for (size_t j = 0; j < shape_num; j++) {
+        shape[j] = shape_ptr[j];
+        }
+        void *in_allocator = OH_AI_TensorGetAllocator(ori_tensor);
+        OH_AI_TensorHandle in_tensor = OH_AI_TensorCreate(OH_AI_TensorGetName(ori_tensor), OH_AI_TensorGetDataType(ori_tensor),
+                                        shape, shape_num, nullptr, 0);  
+        OH_AI_TensorSetAllocator(in_tensor, in_allocator);
+        in_tensor_array.handle_list[i] = in_tensor;
+    }
+    printf("==========FillInputsData==========\n");
+    FillInputsData(in_tensor_array, model_name, is_transpose);
+    printf("==========OH_AI_TensorSetAllocator out_tensor==========\n");
+    OH_AI_TensorHandleArray outputs_handle = OH_AI_ModelGetOutputs(model);
+    out_tensor_array.handle_num = outputs_handle.handle_num;
+    out_tensor_array.handle_list = (OH_AI_TensorHandle *)malloc(sizeof(OH_AI_TensorHandle) * out_tensor_array.handle_num);
+    for (size_t i = 0; i < outputs_handle.handle_num; i++) {
+        auto ori_tensor = outputs_handle.handle_list[i];
+        auto shape_ptr = OH_AI_TensorGetShape(ori_tensor, &shape_num);
+        for (size_t j = 0; j < shape_num; j++) {
+        shape[j] = shape_ptr[j];
+        }
+        void *in_allocator = OH_AI_TensorGetAllocator(ori_tensor);
+        OH_AI_TensorHandle out_tensor = OH_AI_TensorCreate(OH_AI_TensorGetName(ori_tensor), OH_AI_TensorGetDataType(ori_tensor),
+                                        shape, shape_num, nullptr, 0);
+        OH_AI_TensorSetAllocator(out_tensor, in_allocator);
+        out_tensor_array.handle_list[i] = out_tensor;
+    }
+    printf("==========OH_AI_ModelPredict==========\n");
+    auto ret = OH_AI_ModelPredict(model, in_tensor_array, &out_tensor_array, NULL, NULL);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_TensorDestroy==========\n");
+    CompareResult(out_tensor_array, model_name);
+    for (size_t i = 0; i < in_tensor_array.handle_num; i++) {
+        auto ori_tensor = in_tensor_array.handle_list[i];
+        OH_AI_TensorDestroy(&ori_tensor);
+    }
+    free(in_tensor_array.handle_list);
+    for (size_t i = 0; i < out_tensor_array.handle_num; i++) {
+        auto ori_tensor = out_tensor_array.handle_list[i];
+        OH_AI_TensorDestroy(&ori_tensor);
+    }
+    free(out_tensor_array.handle_list);
+}
+
+// 正常场景：通过OH_AI_TensorCreate创建输入输出tensor，实现数据免拷贝
+HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0002, Function | MediumTest | Level1) {
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    AddContextDeviceNNRT(context);
+    printf("==========Build model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    RunMSLiteModel(model, "ml_face_isface", true);
+    printf("==========OH_AI_ModelDestroy==========\n");
+    OH_AI_ModelDestroy(&model);
+}
+
+// 异常场景：OH_AI_TensorSetAllocator设置空指针
+HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0003, Function | MediumTest | Level1) {
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    AddContextDeviceNNRT(context);
+    printf("==========Build model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========GetInputs==========\n");
+    const size_t MAX_DIMS = 10;
+    int64_t shape[MAX_DIMS];
+    size_t shape_num;
+    OH_AI_TensorHandleArray in_tensor_array;
+    OH_AI_TensorHandleArray inputs_handle = OH_AI_ModelGetInputs(model);
+    in_tensor_array.handle_num = inputs_handle.handle_num;
+    in_tensor_array.handle_list = (OH_AI_TensorHandle *)malloc(sizeof(OH_AI_TensorHandle) * in_tensor_array.handle_num);
+    for (size_t i = 0; i < inputs_handle.handle_num; i++) {
+        auto ori_tensor = inputs_handle.handle_list[i];
+        auto shape_ptr = OH_AI_TensorGetShape(ori_tensor, &shape_num);
+        for (size_t j = 0; j < shape_num; j++) {
+        shape[j] = shape_ptr[j];
+        }
+        OH_AI_TensorHandle in_tensor = OH_AI_TensorCreate(OH_AI_TensorGetName(ori_tensor),
+                                        OH_AI_TensorGetDataType(ori_tensor), shape, shape_num, nullptr, 0);
+        OH_AI_Status ret = OH_AI_TensorSetAllocator(in_tensor, nullptr);
+        ASSERT_NE(ret, OH_AI_STATUS_SUCCESS);
+        in_tensor_array.handle_list[i] = in_tensor;
+    }
+}
+
+// 正常场景：通过OH_AI_TensorCreate创建输入输出tensor，实现数据免拷贝, CPU后端场景
+HWTEST(MSLiteTest, SUB_AI_MindSpore_CPU_copy_free_0001, Function | MediumTest | Level1) {
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    AddContextDeviceCPU(context);
+    printf("==========Build model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    RunMSLiteModel(model, "ml_face_isface", true);
+    printf("==========OH_AI_ModelDestroy==========\n");
+    OH_AI_ModelDestroy(&model);
+}
