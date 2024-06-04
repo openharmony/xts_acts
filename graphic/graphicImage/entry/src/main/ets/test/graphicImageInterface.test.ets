@@ -197,7 +197,7 @@ export default function graphicImageInterfaceTest(context, windowStage, abilityS
     })
 
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_019
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_020
      * @tc.name      : testWriteBufferToPixelsSync
      * @tc.desc      : The transparent channel premultiplied mode of PixelMap is changed to non-premultiplied mode. The converted data is stored in the target PixelMap and the result is returned through Promise.
      * @tc.size      : MediumTest
@@ -233,6 +233,254 @@ export default function graphicImageInterfaceTest(context, windowStage, abilityS
           expect().assertFail()
           done()
       })
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_021
+     * @tc.name      : testReadPixelsSync_image
+     * @tc.desc      : Reads the image data in the area and returns the result synchronously.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testReadPixelsSync_image', 1, async function () {
+      let msg = " =testReadPixelsSync_image= "
+      const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
+      let opts: image.InitializationOptions = {
+        editable: true, pixelFormat: 3, size: {
+          height: 4, width: 6
+        }
+      }
+      try {
+        image.createPixelMap(color, opts).then((pixelMap: image.PixelMap) => {
+          const area: image.PositionArea = {
+            pixels: new ArrayBuffer(8),
+            offset: 0,
+            stride: 8,
+            region: {
+              size: {
+                height: 1, width: 2
+              }, x: 0, y: 0
+            }
+          };
+          pixelMap.readPixelsSync(area);
+          expect(true).assertTrue()
+          done()
+        }).catch((error: BusinessError) => {
+          console.error(msg + `Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
+          expect().assertFail()
+          done()
+        })
+      } catch (err) {
+        console.log(msg + " Faild in createPixelMapSync " + JSON.stringify(err))
+        expect().assertFail()
+        done()
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_022
+     * @tc.name      : testOpacitySync_image
+     * @tc.desc      : Sets the transparency ratio of PixelMap, initializes PixelMap, and returns the result synchronously.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testOpacitySync_image', 1, async function () {
+      let msg = " =testOpacitySync_image= "
+      const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
+      let opts: image.InitializationOptions = {
+        editable: true, pixelFormat: 3, size: {
+          height: 4, width: 6
+        }
+      }
+      try {
+        image.createPixelMap(color, opts).then((pixelMap: image.PixelMap) => {
+          let rate : number = 0.5;
+          pixelMap.opacitySync(rate);
+          expect(true).assertTrue()
+          done()
+        }).catch((error: BusinessError) => {
+          console.error(msg + `Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
+          expect().assertFail()
+          done()
+        })
+      } catch (err) {
+        console.log(msg + " Faild in createPixelMapSync " + JSON.stringify(err))
+        expect().assertFail()
+        done()
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_023
+     * @tc.name      : testCreateAlphaPixelmapSync_image
+     * @tc.desc      : Generate a PixelMap containing only the alpha channel information according to the alpha channel information. It can be used for shadow effect and the result of PixelMap type is returned synchronously.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testCreateAlphaPixelmapSync_image', 1, async function () {
+      let msg = " =testCreateAlphaPixelmapSync_image= "
+      const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
+      let opts: image.InitializationOptions = {
+        editable: true, pixelFormat: 3, size: {
+          height: 4, width: 6
+        }
+      }
+      try {
+        image.createPixelMap(color, opts).then((pixelMap: image.PixelMap) => {
+          let pixelmap : image.PixelMap = pixelMap.createAlphaPixelmapSync();
+          expect(true).assertTrue()
+          done()
+        }).catch((error: BusinessError) => {
+          console.error(msg + `Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
+          expect().assertFail()
+          done()
+        })
+      } catch (err) {
+        console.log(msg + " Faild in createPixelMapSync " + JSON.stringify(err))
+        expect().assertFail()
+        done()
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_024
+     * @tc.name      : testTranslateSync_image
+     * @tc.desc      : The image is transformed according to the input coordinates and the result is returned synchronously.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testTranslateSync_image', 1, async function () {
+      let msg = " =testTranslateSync_image= "
+      const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
+      let opts: image.InitializationOptions = {
+        editable: true, pixelFormat: 3, size: {
+          height: 4, width: 6
+        }
+      }
+      try {
+        image.createPixelMap(color, opts).then((pixelMap: image.PixelMap) => {
+          let translateX : number = 50.0;
+          let translateY : number = 10.0;
+          pixelMap.translateSync(translateX, translateY);
+          expect(true).assertTrue()
+          done()
+        }).catch((error: BusinessError) => {
+          console.error(msg + `Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
+          expect().assertFail()
+          done()
+        })
+      } catch (err) {
+        console.log(msg + " Faild in createPixelMapSync " + JSON.stringify(err))
+        expect().assertFail()
+        done()
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_025
+     * @tc.name      : testRotateSync_image
+     * @tc.desc      : Rotates the picture according to the angle entered and returns the result synchronously.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testRotateSync_image', 1, async function () {
+      let msg = " =testRotateSync_image= "
+      const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
+      let opts: image.InitializationOptions = {
+        editable: true, pixelFormat: 3, size: {
+          height: 4, width: 6
+        }
+      }
+      try {
+        image.createPixelMap(color, opts).then((pixelMap: image.PixelMap) => {
+          let angle : number = 90.0;
+          pixelMap.rotateSync(angle);
+          expect(true).assertTrue()
+          done()
+        }).catch((error: BusinessError) => {
+          console.error(msg + `Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
+          expect().assertFail()
+          done()
+        })
+      } catch (err) {
+        console.log(msg + " Faild in createPixelMapSync " + JSON.stringify(err))
+        expect().assertFail()
+        done()
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_026
+     * @tc.name      : testFlipSync_image
+     * @tc.desc      : Flips the image based on the conditions entered and returns the result synchronously.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testFlipSync_image', 1, async function () {
+      let msg = " =testFlipSync_image= "
+      const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
+      let opts: image.InitializationOptions = {
+        editable: true, pixelFormat: 3, size: {
+          height: 4, width: 6
+        }
+      }
+      try {
+        image.createPixelMap(color, opts).then((pixelMap: image.PixelMap) => {
+          let horizontal : boolean = true;
+          let vertical : boolean = false;
+          pixelMap.flipSync(horizontal, vertical);
+          expect(true).assertTrue()
+          done()
+        }).catch((error: BusinessError) => {
+          console.error(msg + `Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
+          expect().assertFail()
+          done()
+        })
+      } catch (err) {
+        console.log(msg + " Faild in createPixelMapSync " + JSON.stringify(err))
+        expect().assertFail()
+        done()
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_027
+     * @tc.name      : testCropSync_image
+     * @tc.desc      : Crops the picture to the size you enter.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testCropSync_image', 1, async function () {
+      let msg = " =testCropSync_image= "
+      const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
+      let opts: image.InitializationOptions = {
+        editable: true, pixelFormat: 3, size: {
+          height: 4, width: 6
+        }
+      }
+      try {
+        image.createPixelMap(color, opts).then((pixelMap: image.PixelMap) => {
+          let region : image.Region = { x: 0, y: 0, size: { height: 100, width: 100 } };
+          pixelMap.cropSync(region);
+          expect(true).assertTrue()
+          done()
+        }).catch((error: BusinessError) => {
+          console.error(msg + `Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
+          expect().assertFail()
+          done()
+        })
+      } catch (err) {
+        console.log(msg + " Faild in createPixelMapSync " + JSON.stringify(err))
+        expect().assertFail()
+        done()
+      }
     })
 
   })
