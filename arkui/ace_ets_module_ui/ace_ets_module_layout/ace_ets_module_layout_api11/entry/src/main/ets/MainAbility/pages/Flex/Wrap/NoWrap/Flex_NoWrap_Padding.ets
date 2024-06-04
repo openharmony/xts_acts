@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import GlobalContext from/../../../common/GlobalContext';
+import GlobalContext from '../../../../common/GlobalContext';
 import { Value } from '../../../../common/Value';
 import { MessageManager, Callback, Message } from '../../../../common/MessageManager';
 
