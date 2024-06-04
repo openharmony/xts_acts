@@ -94,8 +94,8 @@ export default function inputMethodWindManageAbility() {
     };
 
     async function runCmd() {
-      let cursor_x = rectInfo.left + Math.floor(Math.random() * (rectInfo.right - rectInfo.left) * 0.9);
-      let cursor_y = rectInfo.top + Math.floor(Math.random() * (rectInfo.bottom - rectInfo.top) * 0.9);
+      let cursor_x = rectInfo.left + 20 + Math.floor(Math.random() * (rectInfo.right - rectInfo.left) * 0.7);
+      let cursor_y = rectInfo.top + 20 + Math.floor(Math.random() * (rectInfo.bottom - rectInfo.top) * 0.7);
       console.info(`====>start click x: ${cursor_x}  y: ${cursor_y}`)
       await driver.click(cursor_x, cursor_y)
     }
