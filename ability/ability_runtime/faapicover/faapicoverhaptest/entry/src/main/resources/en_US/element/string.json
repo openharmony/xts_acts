@@ -11,14 +11,6 @@
     {
       "name": "MainAbility_label",
       "value": "label"
-    },
-    {
-      "name": "ServiceAbility_desc",
-      "value": "hap sample empty service"
-    },
-    {
-      "name": "ServiceAbility2_desc",
-      "value": "hap sample empty service"
     }
   ]
 }
