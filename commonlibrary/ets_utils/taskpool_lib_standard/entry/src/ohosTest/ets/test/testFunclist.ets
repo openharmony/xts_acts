@@ -15,7 +15,7 @@
 
 import taskpool from '@ohos.taskpool';
 import { BusinessError } from '@ohos.base'
-import { StrCat, A, B, printStrArgs } from './exportFunclist'
+import { StrCat, A, B, printStrArgs, printArgs } from './exportFunclist'
 import HashMap from '@ohos.util.HashMap';
 
 export async function currentFun(): Promise<void> {
@@ -114,11 +114,6 @@ export function promiseCase() {
   }).then(undefined, (error: BusinessError) => {
   })
   return p
-}
-
-export function printArgs(args: number): number {
-  "use concurrent"
-  return args;
 }
 
 export function printArgsFunc(Sum: Function, num1: number, num2: number): number {
@@ -273,3 +268,37 @@ export function isConcurrentTest1() {
 }
 
 export function isConcurrentTest2() {}
+
+export async function sequenceRunnerTest(): Promise<string> {
+  "use concurrent"
+  let finalString = "";
+  let t: Array<taskpool.Task> = []
+  for (let i = 0; i < 100; i++) {
+    t[i] = new taskpool.Task(printArgs, i);
+  }
+
+  let runner:taskpool.SequenceRunner = new taskpool.SequenceRunner("runner16");
+  for (let i = 0; i < 20; i++) {
+    if (i % 2 == 1) {
+      finalString += await runner.execute(t[i]) + ',';
+    }
+  }
+  return finalString;
+}
+
+export async function sequenceRunnerPriorityTest(): Promise<string> {
+  "use concurrent"
+  let finalString = "";
+  let t: Array<taskpool.Task> = []
+  for (let i = 0; i < 100; i++) {
+    t[i] = new taskpool.Task(printArgs, i);
+  }
+
+  let runner:taskpool.SequenceRunner = new taskpool.SequenceRunner("runner17");
+  for (let i = 0; i < 20; i++) {
+    if (i % 2 == 1) {
+      finalString += await runner.execute(t[i]) + ',';
+    }
+  }
+  return finalString;
+}
