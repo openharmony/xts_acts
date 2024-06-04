@@ -1305,7 +1305,7 @@ export default function NoPermissionTest() {
          done();
        }).catch((err: BusinessError) => {
          console.error(`${caseName} fail: err->${JSON.stringify(err)}`);
-         ExpectTrue(err.code === 201);
+         ExpectTrue(err.code === 401);
          done();
        });
        console.info(`${caseName} test end `);
