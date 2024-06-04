@@ -15,22 +15,23 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import inputMethod from '@ohos.inputMethod';
 import subtype from '@ohos.InputMethodSubtype';
+import { BusinessError } from '@ohos.base';
 
 export default function inputMethodAuthorityJSUnit() {
-  describe('inputMethodAuthorityJSUnit', function () {
+  describe('inputMethodAuthorityJSUnit', () => {
     console.info("====>************* inputMethodAuthorityJSUnit settings Test start*************");
 
     /*
- * @tc.number  inputmethod_test_switchInputMethod_001
- * @tc.name    Test Indicates the input method which will replace the current one.
- * @tc.desc    Function test
- * @tc.level   2
- */
-    it('inputmethod_test_switchInputMethod_001', 0, async function (done) {
+     * @tc.number  inputmethod_test_switchInputMethod_001
+     * @tc.name    Test Indicates the input method which will replace the current one.
+     * @tc.desc    Function test
+     * @tc.level   2
+    */
+    it('inputmethod_test_switchInputMethod_001', 0, async (done: Function) => {
       console.info("====>************* inputmethod_test_switchInputMethod_001 Test start*************");
       let inputM = inputMethod.getCurrentInputMethod()
       console.info("inputmethod_test_switchInputMethod_001 getCurrentInputMethod: " + JSON.stringify(inputM));
-      let inputMethodProperty = {
+      let inputMethodProperty: inputMethod.InputMethodProperty = {
         packageName: inputM.packageName,
         methodId: inputM.methodId,
         name: inputM.packageName,
@@ -42,7 +43,7 @@ export default function inputMethodAuthorityJSUnit() {
         expect(data == true).assertTrue();
         console.info("====>************* inputmethod_test_switchInputMethod_001 Test end*************");
         done();
-      }).catch(err => {
+      }).catch((err: BusinessError) => {
         console.info("====>inputmethod_test_switchInputMethod_001 err:" + err)
         expect().assertFail();
         done();
@@ -55,11 +56,11 @@ export default function inputMethodAuthorityJSUnit() {
      * @tc.desc    Function test
      * @tc.level   2
      */
-    it('inputmethod_test_switchInputMethod_002', 0, async function (done) {
+    it('inputmethod_test_switchInputMethod_002', 0, async (done: Function) => {
       console.info("====>************* inputmethod_test_switchInputMethod_002 Test start*************");
       let inputM = inputMethod.getCurrentInputMethod()
       console.info("inputmethod_test_switchInputMethod_002 getCurrentInputMethod: " + JSON.stringify(inputM));
-      let inputMethodProperty = {
+      let inputMethodProperty: inputMethod.InputMethodProperty = {
         packageName: inputM.packageName,
         methodId: inputM.methodId,
         name: inputM.packageName,
@@ -90,14 +91,14 @@ export default function inputMethodAuthorityJSUnit() {
      * @tc.desc    Function test
      * @tc.level   2
      */
-    it('inputmethod_test_showSoftKeyboard_001', 0, async function (done) {
+    it('inputmethod_test_showSoftKeyboard_001', 0, async (done: Function) => {
       let inputMethodCtrl = inputMethod.getInputMethodController()
       inputMethodCtrl.showSoftKeyboard((err) => {
         try {
-          if(err == undefined){
+          if (err == undefined) {
             expect().assertFail()
             done();
-          }else{
+          } else {
             expect(err.code).assertEqual(12800003)
             console.info("====>************* inputmethod_test_showSoftKeyboard_001 Test end*************");
             done();
@@ -115,7 +116,7 @@ export default function inputMethodAuthorityJSUnit() {
      * @tc.desc    Function test
      * @tc.level   2
      */
-    it('inputmethod_test_showSoftKeyboard_002', 0, async function (done) {
+    it('inputmethod_test_showSoftKeyboard_002', 0, async (done: Function) => {
       let inputMethodCtrl = inputMethod.getInputMethodController()
       inputMethodCtrl.showSoftKeyboard().then(() => {
         try {
@@ -125,9 +126,9 @@ export default function inputMethodAuthorityJSUnit() {
           console.info("====>inputmethod_test_showSoftKeyboard_002 err tests fail" + JSON.stringify(err));
           done();
         }
-      }).catch((err) => {
+      }).catch((err: BusinessError) => {
         console.info('====>inputmethod_test_showSoftKeyboard_002 promise failed : ' + JSON.stringify(err))
-        console.info('====>inputmethod_test_showSoftKeyboard_002 typeof(err.code): ' + typeof(err.code))
+        console.info('====>inputmethod_test_showSoftKeyboard_002 typeof(err.code): ' + typeof (err.code))
         console.info('====>inputmethod_test_showSoftKeyboard_002 typeof(err.code): ' + err.code)
         expect(err.code).assertEqual(12800003)
         console.info("====>************* inputmethod_test_showSoftKeyboard_002 Test end*************");
@@ -141,14 +142,14 @@ export default function inputMethodAuthorityJSUnit() {
      * @tc.desc    Function test
      * @tc.level   2
      */
-    it('inputmethod_test_hideSoftKeyboard_001', 0, async function (done) {
+    it('inputmethod_test_hideSoftKeyboard_001', 0, async (done: Function) => {
       let inputMethodCtrl = inputMethod.getInputMethodController()
       inputMethodCtrl.hideSoftKeyboard((err) => {
         try {
-          if(err == undefined){
+          if (err == undefined) {
             expect().assertFail()
             done();
-          }else{
+          } else {
             console.info('====>inputmethod_test_hideSoftKeyboard_001 callbacek failed : ' + JSON.stringify(err))
             expect(err.code).assertEqual(12800003)
             console.info("====>************* inputmethod_test_hideSoftKeyboard_001 Test end*************");
@@ -167,7 +168,7 @@ export default function inputMethodAuthorityJSUnit() {
      * @tc.desc    Function test
      * @tc.level   2
      */
-    it('inputmethod_test_hideSoftKeyboard_002', 0, async function (done) {
+    it('inputmethod_test_hideSoftKeyboard_002', 0, async (done: Function) => {
       let inputMethodCtrl = inputMethod.getInputMethodController()
       inputMethodCtrl.hideSoftKeyboard().then(() => {
         try {
@@ -177,7 +178,7 @@ export default function inputMethodAuthorityJSUnit() {
           console.info("====>inputmethod_test_hideSoftKeyboard_002 err tests fail" + JSON.stringify(err));
           done();
         }
-      }).catch((err) => {
+      }).catch((err: BusinessError) => {
         console.info('====>inputmethod_test_hideSoftKeyboard_002 promise failed : ' + JSON.stringify(err))
         expect(err.code).assertEqual(12800003);
         console.info("====>************* inputmethod_test_hideSoftKeyboard_002 Test end*************");
@@ -191,24 +192,24 @@ export default function inputMethodAuthorityJSUnit() {
      * @tc.desc    Function test
      * @tc.level   2
      */
-    it('inputMethod_test_switchCurrentInputMethodAndSubtype_001', 0, async function (done) {
+    it('inputMethod_test_switchCurrentInputMethodAndSubtype_001', 0, async (done: Function) => {
       console.info("====>************* inputMethod_test_switchCurrentInputMethodAndSubtype_001 Test start*************");
       let inputM = inputMethod.getCurrentInputMethod()
-      console.info("inputMethod_test_switchCurrentInputMethodAndSubtype_001 getCurrentInputMethod: " +  JSON.stringify(inputM));
-      let inputMethodProperty = {
-        packageName:inputM.packageName,
-        methodId:inputM.methodId,
-        name:inputM.packageName,
-        id:inputM.methodId,
+      console.info("inputMethod_test_switchCurrentInputMethodAndSubtype_001 getCurrentInputMethod: " + JSON.stringify(inputM));
+      let inputMethodProperty: inputMethod.InputMethodProperty = {
+        packageName: inputM.packageName,
+        methodId: inputM.methodId,
+        name: inputM.packageName,
+        id: inputM.methodId,
         label: "",
         labelId: 123,
         icon: "",
         iconId: 124,
-        extra:{}
+        extra: {}
       }
       let inputMS = inputMethod.getCurrentInputMethodSubtype()
-      console.info("inputMethod_test_switchCurrentInputMethodAndSubtype_001 getCurrentInputMethodSubtype: " +  JSON.stringify(inputMS));
-      let inputMethodSubProperty : subtype = {
+      console.info("inputMethod_test_switchCurrentInputMethodAndSubtype_001 getCurrentInputMethodSubtype: " + JSON.stringify(inputMS));
+      let inputMethodSubProperty: subtype = {
         id: inputMS.id,
         label: "",
         labelId: 123,
@@ -221,11 +222,11 @@ export default function inputMethodAuthorityJSUnit() {
         extra: {}
       };
 
-      inputMethod.switchCurrentInputMethodAndSubtype(inputMethodProperty, inputMethodSubProperty, (err,data) => {
+      inputMethod.switchCurrentInputMethodAndSubtype(inputMethodProperty, inputMethodSubProperty, (err, data) => {
         try {
           if (err) {
             console.error('inputMethod_test_switchCurrentInputMethodAndSubtype_001 err: ' + JSON.stringify(err));
-            expect( err.code === 12800008 ).assertTrue();
+            expect(err.code === 12800008).assertTrue();
             done();
           }
           console.info("====>inputMethod_test_switchCurrentInputMethodAndSubtype_001 data: " + JSON.stringify(data));
@@ -245,24 +246,24 @@ export default function inputMethodAuthorityJSUnit() {
      * @tc.desc    Function test
      * @tc.level   2
      */
-    it('inputMethod_test_switchCurrentInputMethodAndSubtype_002', 0, async function (done) {
+    it('inputMethod_test_switchCurrentInputMethodAndSubtype_002', 0, async (done: Function) => {
       console.info("====>************* inputMethod_test_switchCurrentInputMethodAndSubtype_002 Test start*************");
       let inputM = inputMethod.getCurrentInputMethod()
-      console.info("inputMethod_test_switchCurrentInputMethodAndSubtype_002 getCurrentInputMethod: " +  JSON.stringify(inputM));
-      let inputMethodProperty = {
-        packageName:inputM.packageName,
-        methodId:inputM.methodId,
-        name:inputM.packageName,
-        id:inputM.methodId,
+      console.info("inputMethod_test_switchCurrentInputMethodAndSubtype_002 getCurrentInputMethod: " + JSON.stringify(inputM));
+      let inputMethodProperty: inputMethod.InputMethodProperty = {
+        packageName: inputM.packageName,
+        methodId: inputM.methodId,
+        name: inputM.packageName,
+        id: inputM.methodId,
         label: "",
         labelId: 123,
         icon: "",
         iconId: 124,
-        extra:{}
+        extra: {}
       }
       let inputMS = inputMethod.getCurrentInputMethodSubtype()
-      console.info("inputMethod_test_switchCurrentInputMethodAndSubtype_002 getCurrentInputMethodSubtype: " +  JSON.stringify(inputMS));
-      let inputMethodSubProperty : subtype = {
+      console.info("inputMethod_test_switchCurrentInputMethodAndSubtype_002 getCurrentInputMethodSubtype: " + JSON.stringify(inputMS));
+      let inputMethodSubProperty: subtype = {
         id: inputMS.id,
         label: "",
         labelId: 123,
@@ -280,7 +281,7 @@ export default function inputMethodAuthorityJSUnit() {
           console.info("====>inputMethod_test_switchCurrentInputMethodAndSubtype_002 data: " + JSON.stringify(data));
           expect(data != null).assertTrue();
           done();
-        }).catch(err => {
+        }).catch((err : BusinessError) => {
           console.error('inputMethod_test_switchCurrentInputMethodAndSubtype_002 err: ' + JSON.stringify(err));
           expect().assertFail();
           done();
@@ -289,7 +290,8 @@ export default function inputMethodAuthorityJSUnit() {
         console.error('inputMethod_test_switchCurrentInputMethodAndSubtype_002 catch error: ' + JSON.stringify(error));
         expect().assertFail();
         done();
-      };
+      }
+      ;
       console.info("====>************* inputMethod_test_switchCurrentInputMethodAndSubtype_002 Test end*************");
     });
 
@@ -299,11 +301,11 @@ export default function inputMethodAuthorityJSUnit() {
      * @tc.desc    Function test
      * @tc.level   2
      */
-    it('inputMethod_test_switchCurrentInputMethodSubtype_001', 0, async function (done) {
+    it('inputMethod_test_switchCurrentInputMethodSubtype_001', 0, async (done: Function) => {
       console.info("====>************* inputMethod_test_switchCurrentInputMethodSubtype_001 Test start*************");
       let inputMS = inputMethod.getCurrentInputMethodSubtype()
-      console.info("inputMethod_test_switchCurrentInputMethodSubtype_001 getCurrentInputMethodSubtype: " +  JSON.stringify(inputMS));
-      let inputMethodSubProperty : subtype = {
+      console.info("inputMethod_test_switchCurrentInputMethodSubtype_001 getCurrentInputMethodSubtype: " + JSON.stringify(inputMS));
+      let inputMethodSubProperty: subtype = {
         id: inputMS.id,
         label: "",
         labelId: 123,
@@ -316,13 +318,14 @@ export default function inputMethodAuthorityJSUnit() {
         extra: {}
       };
 
-      inputMethod.switchCurrentInputMethodSubtype(inputMethodSubProperty, (err,data) => {
+      inputMethod.switchCurrentInputMethodSubtype(inputMethodSubProperty, (err, data) => {
         try {
           if (err) {
             console.error('inputMethod_test_switchCurrentInputMethodSubtype_001 err: ' + JSON.stringify(err));
             expect().assertFail();
             done();
-          };
+          }
+          ;
           console.info("====>inputMethod_test_switchCurrentInputMethodSubtype_001 data: " + JSON.stringify(data));
           expect(data != null).assertTrue();
           done();
@@ -340,11 +343,11 @@ export default function inputMethodAuthorityJSUnit() {
      * @tc.desc    Function test
      * @tc.level   2
      */
-    it('inputMethod_test_switchCurrentInputMethodSubtype_002', 0, async function (done) {
+    it('inputMethod_test_switchCurrentInputMethodSubtype_002', 0, async (done: Function) => {
       console.info("====>************* inputMethod_test_switchCurrentInputMethodSubtype_002 Test start*************");
       let inputMS = inputMethod.getCurrentInputMethodSubtype()
-      console.info("inputMethod_test_switchCurrentInputMethodSubtype_002 getCurrentInputMethodSubtype: " +  JSON.stringify(inputMS));
-      let inputMethodSubProperty : subtype = {
+      console.info("inputMethod_test_switchCurrentInputMethodSubtype_002 getCurrentInputMethodSubtype: " + JSON.stringify(inputMS));
+      let inputMethodSubProperty: subtype = {
         id: inputMS.id,
         label: "",
         labelId: 123,
@@ -362,16 +365,17 @@ export default function inputMethodAuthorityJSUnit() {
           console.info("====>inputMethod_test_switchCurrentInputMethodSubtype_002 data: " + JSON.stringify(data));
           expect(data != null).assertTrue();
           done();
-        }).catch(err => {
+        }).catch((err: BusinessError) => {
           console.error('inputMethod_test_switchCurrentInputMethodSubtype_002 err: ' + JSON.stringify(err));
           expect().assertFail();
           done();
         });
-      }catch (error) {
+      } catch (error) {
         console.error('inputMethod_test_switchCurrentInputMethodSubtype_002 catch error: ' + JSON.stringify(error));
         expect().assertFail();
         done();
-      };
+      }
+      ;
       console.info("====>************* inputMethod_test_switchCurrentInputMethodSubtype_002 Test end*************");
     });
 

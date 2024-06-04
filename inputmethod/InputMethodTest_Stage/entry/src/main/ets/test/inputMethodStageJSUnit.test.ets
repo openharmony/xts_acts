@@ -12,12 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import inputMethod from '@ohos.inputMethod';
 import subtype from '@ohos.InputMethodSubtype';
+import { BusinessError } from '@ohos.base';
 
 export default function inputMethodStageJSUnit() {
-  describe('inputMethodTest', function () {
+  describe('inputMethodTest', () => {
     console.info("====>************* settings Test start*************");
     /*
      * @tc.number  inputMethod_test_getController_001
@@ -27,23 +28,23 @@ export default function inputMethodStageJSUnit() {
      * @tc.type    Function
      * @tc.level   2
      */
-    it('inputMethod_test_getController_001', 0, async function (done) {
+    it('inputMethod_test_getController_001', 0, async (done: Function) => {
       console.info("====>-----------------inputMethod_test_getController_001 start---------------------");
-      try{
+      try {
         let inputMethodControl = inputMethod.getController();
         console.info("====>inputMethod_test_getController_001 result:" + typeof inputMethodControl);
-        if(typeof inputMethodControl == "object" ){
+        if (typeof inputMethodControl == "object") {
           console.info("====>inputMethod_test_getController_001 getController success");
           expect(true).assertTrue();
-        }else{
+        } else {
           console.info("====>inputMethod_test_getController_001 getController failed");
           expect().assertFail();
-        };
-      }catch(error){
+        }
+        ;
+      } catch (error) {
         console.info("====>inputMethod_test_getController_001 getController error" + JSON.stringify(error));
         expect().assertFail();
-      };
-
+      }
       console.info("====>-----------------inputMethod_test_getController_001 end---------------------");
       done();
     });
@@ -56,26 +57,26 @@ export default function inputMethodStageJSUnit() {
      * @tc.type    Function
      * @tc.level   2
      */
-    it('inputMethod_test_listInputMethodSubtype_001', 0, async function (done) {
+    it('inputMethod_test_listInputMethodSubtype_001', 0, async (done: Function) => {
       console.info("====>-----------------inputMethod_test_listInputMethodSubtype_001 start---------------------");
       let inputM = inputMethod.getCurrentInputMethod()
-      console.info("inputMethod_test_listInputMethodSubtype_001 getCurrentInputMethod: " +  JSON.stringify(inputM));
-      let inputMethodProperty = {
-        packageName:inputM.packageName,
-        methodId:inputM.methodId,
-        name:inputM.packageName,
-        id:inputM.methodId,
+      console.info("inputMethod_test_listInputMethodSubtype_001 getCurrentInputMethod: " + JSON.stringify(inputM));
+      let inputMethodProperty: inputMethod.InputMethodProperty = {
+        packageName: inputM.packageName,
+        methodId: inputM.methodId,
+        name: inputM.packageName,
+        id: inputM.methodId,
         label: "",
         icon: "",
         iconId: 124,
-        extra:{}
+        extra: {}
       }
 
       let inputMethodSetting = inputMethod.getSetting();
       console.info("====>inputMethod_test_listInputMethodSubtype_001 getSetting result:" + inputMethodSetting);
       inputMethodSetting.listInputMethodSubtype(inputMethodProperty, (err, data) => {
         try {
-          if(err){
+          if (err) {
             console.info("====>inputMethod_test_listInputMethodSubtype_001  failed" + JSON.stringify(err));
             expect().assertFail();
             done();
@@ -99,42 +100,44 @@ export default function inputMethodStageJSUnit() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('inputMethod_test_listInputMethodSubtype_002', 0, async function (done) {
+    it('inputMethod_test_listInputMethodSubtype_002', 0, async (done: Function) => {
       console.info("====>-----------------inputMethod_test_listInputMethodSubtype_002 start---------------------");
       let inputM = inputMethod.getCurrentInputMethod()
-      console.info("inputMethod_test_listInputMethodSubtype_002 getCurrentInputMethod: " +  JSON.stringify(inputM));
-      let inputMethodProperty = {
-        packageName:inputM.packageName,
-        methodId:inputM.methodId,
-        name:inputM.packageName,
-        id:inputM.methodId,
+      console.info("inputMethod_test_listInputMethodSubtype_002 getCurrentInputMethod: " + JSON.stringify(inputM));
+      let inputMethodProperty: inputMethod.InputMethodProperty = {
+        packageName: inputM.packageName,
+        methodId: inputM.methodId,
+        name: inputM.packageName,
+        id: inputM.methodId,
         label: "",
         icon: "",
         iconId: 124,
-        extra:{}
+        extra: {}
       }
 
       let inputMethodSetting = inputMethod.getSetting();
       console.info("====>inputMethod_test_listInputMethodSubtype_002 getSetting result:" + inputMethodSetting);
       inputMethodSetting.listInputMethodSubtype(inputMethodProperty, (err, data) => {
         try {
-          if(err){
+          if (err) {
             console.info("====>inputMethod_test_listInputMethodSubtype_002  failed" + JSON.stringify(err));
             expect().assertFail();
             done()
-          };
+          }
+          ;
           console.info("====>inputMethod_test_listInputMethodSubtype_002 listInputMethodSubtype:" + JSON.stringify(data));
-          if(data.length >= 1){
+          if (data.length >= 1) {
             let inputMethodSubtype = data[0]
             console.info("====>inputMethod_test_listInputMethodSubtype_002 inputMethodSubtype" + JSON.stringify(inputMethodSubtype));
             expect(inputMethodSubtype.id != null).assertTrue();
             expect(inputMethodSubtype.label != null).assertTrue();
             done();
-          }else{
+          } else {
             console.info("====>inputMethod_test_listInputMethodSubtype_002 listInputMethodSubtype length less 1");
             expect().assertFail();
             done();
-          };
+          }
+          ;
         } catch (error) {
           console.info("====>inputMethod_test_listInputMethodSubtype_002 listInputMethodSubtype catch error" + JSON.stringify(error));
           done();
@@ -152,38 +155,39 @@ export default function inputMethodStageJSUnit() {
      * @tc.level   2
      */
 
-    it('inputMethod_test_listInputMethodSubtype_003', 0, async function (done) {
+    it('inputMethod_test_listInputMethodSubtype_003', 0, async (done: Function) => {
       console.info("====>-----------------inputMethod_test_listInputMethodSubtype_003 start---------------------");
       let inputM = inputMethod.getCurrentInputMethod()
-      console.info("inputMethod_test_listInputMethodSubtype_003 getCurrentInputMethod: " +  JSON.stringify(inputM));
-      let inputMethodProperty = {
-        packageName:inputM.packageName,
-        methodId:inputM.methodId,
-        name:inputM.packageName,
-        id:inputM.methodId,
+      console.info("inputMethod_test_listInputMethodSubtype_003 getCurrentInputMethod: " + JSON.stringify(inputM));
+      let inputMethodProperty: inputMethod.InputMethodProperty = {
+        packageName: inputM.packageName,
+        methodId: inputM.methodId,
+        name: inputM.packageName,
+        id: inputM.methodId,
         label: "",
         icon: "",
         iconId: 124,
-        extra:{}
+        extra: {}
       }
 
-      try{
+      try {
         let inputMethodSetting = inputMethod.getSetting();
         console.info("====>inputMethod_test_listInputMethodSubtype_003 getSetting result:" + inputMethodSetting);
         inputMethodSetting.listInputMethodSubtype(inputMethodProperty).then((data) => {
           console.info("====>inputMethod_test_listInputMethodSubtype_003 listInputMethodSubtype: " + JSON.stringify(data));
           expect(true).assertTrue();
           done();
-        }).catch(err => {
+        }).catch((err: BusinessError) => {
           console.info("====>inputMethod_test_listInputMethodSubtype_003  failed" + JSON.stringify(err));
           expect().assertFail();
           done();
         });
-      }catch(error){
+      } catch (error) {
         console.info("====>inputMethod_test_listInputMethodSubtype_003 listInputMethodSubtype catch error" + JSON.stringify(error));
         expect().assertFail();
         done();
-      };
+      }
+      ;
       console.info("====>-----------------inputMethod_test_listInputMethodSubtype_003 end---------------------");
     });
 
@@ -195,43 +199,43 @@ export default function inputMethodStageJSUnit() {
      * @tc.type    Function
      * @tc.level   2
      */
-    it('inputMethod_test_listInputMethodSubtype_004', 0, async function (done) {
+    it('inputMethod_test_listInputMethodSubtype_004', 0, async (done: Function) => {
       console.info("====>-----------------inputMethod_test_listInputMethodSubtype_004 start---------------------");
       let inputM = inputMethod.getCurrentInputMethod()
-      console.info("inputMethod_test_listInputMethodSubtype_004 getCurrentInputMethod: " +  JSON.stringify(inputM));
-      let inputMethodProperty = {
-        packageName:inputM.packageName,
-        methodId:inputM.methodId,
-        name:inputM.packageName,
-        id:inputM.methodId,
+      console.info("inputMethod_test_listInputMethodSubtype_004 getCurrentInputMethod: " + JSON.stringify(inputM));
+      let inputMethodProperty: inputMethod.InputMethodProperty = {
+        packageName: inputM.packageName,
+        methodId: inputM.methodId,
+        name: inputM.packageName,
+        id: inputM.methodId,
         label: "",
         icon: "",
         iconId: 124,
-        extra:{}
+        extra: {}
       }
 
       let inputMethodSetting = inputMethod.getSetting();
       console.info("====>inputMethod_test_listInputMethodSubtype_004 getSetting result:" + inputMethodSetting);
       inputMethodSetting.listInputMethodSubtype(inputMethodProperty).then((data) => {
-        try{
+        try {
           console.info("====>inputMethod_test_listInputMethodSubtype_004 listInputMethodSubtype:" + JSON.stringify(data));
-          if(data.length >= 1){
+          if (data.length >= 1) {
             let inputMethodSubtype = data[0]
             console.info("====>inputMethod_test_listInputMethodSubtype_004  inputMethodSubtype" + JSON.stringify(inputMethodSubtype));
             expect(inputMethodSubtype.id != null).assertTrue();
             expect(inputMethodSubtype.label != null).assertTrue();
             done();
-          }else{
+          } else {
             console.info("====>inputMethod_test_listInputMethodSubtype_004 listInputMethodSubtype length less 1");
             expect().assertFail();
             done();
           }
-        }catch(error){
+        } catch (error) {
           console.info("====>inputMethod_test_listInputMethodSubtype_004 listInputMethodSubtype catch error" + JSON.stringify(error));
           expect().assertFail();
           done();
         }
-      }).catch(err => {
+      }).catch((err: BusinessError) => {
         console.info("====>inputMethod_test_listInputMethodSubtype_004  failed" + JSON.stringify(err));
         expect().assertFail();
         done();
@@ -247,17 +251,18 @@ export default function inputMethodStageJSUnit() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('inputMethod_test_listCurrentInputMethodSubtype_001', 0, async function (done) {
+    it('inputMethod_test_listCurrentInputMethodSubtype_001', 0, async (done: Function) => {
       console.info("====>-----------------inputMethod_test_listCurrentInputMethodSubtype_001 start---------------------");
       let inputMethodSetting = inputMethod.getSetting();
       console.info("====>inputMethod_test_listCurrentInputMethodSubtype_001 getSetting result:" + inputMethodSetting);
       inputMethodSetting.listCurrentInputMethodSubtype((err, data) => {
         try {
-          if(err){
+          if (err) {
             console.info("====>inputMethod_test_listCurrentInputMethodSubtype_001  failed" + JSON.stringify(err));
             expect().assertFail();
             done();
-          };
+          }
+          ;
           console.info("====>inputMethod_test_listCurrentInputMethodSubtype_001 listCurrentInputMethodSubtype: " + JSON.stringify(data));
           expect(true).assertTrue();
           done();
@@ -277,25 +282,26 @@ export default function inputMethodStageJSUnit() {
      * @tc.type    Function
      * @tc.level   2
      */
-    it('inputMethod_test_listCurrentInputMethodSubtype_002', 0, async function (done) {
+    it('inputMethod_test_listCurrentInputMethodSubtype_002', 0, async (done: Function) => {
       console.info("====>-----------------inputMethod_test_listCurrentInputMethodSubtype_002 start---------------------");
-      try{
+      try {
         let inputMethodSetting = inputMethod.getSetting();
         console.info("====>inputMethod_test_listCurrentInputMethodSubtype_002 getSetting result:" + inputMethodSetting);
         inputMethodSetting.listCurrentInputMethodSubtype().then((data) => {
           console.info("====>inputMethod_test_listCurrentInputMethodSubtype_002 listCurrentInputMethodSubtype: " + JSON.stringify(data));
           expect(true).assertTrue();
           done();
-        }).catch(err => {
+        }).catch((err: BusinessError) => {
           console.info("====>inputMethod_test_listCurrentInputMethodSubtype_002  failed" + JSON.stringify(err));
           expect().assertFail();
           done();
         });
-      }catch(error){
+      } catch (error) {
         console.info("====>inputMethod_test_listCurrentInputMethodSubtype_002 listCurrentInputMethodSubtype catch error" + JSON.stringify(error));
         expect().assertFail();
         done();
-      };
+      }
+      ;
       console.info("====>-----------------inputMethod_test_listCurrentInputMethodSubtype_002 end---------------------");
     });
 
@@ -307,19 +313,20 @@ export default function inputMethodStageJSUnit() {
      * @tc.type    Function
      * @tc.level   2
      */
-    it('inputMethod_test_getCurrentInputMethodSubtype_001', 0, async function (done) {
+    it('inputMethod_test_getCurrentInputMethodSubtype_001', 0, async (done: Function) => {
       console.info("====>-----------------inputMethod_test_getCurrentInputMethodSubtype_001 start---------------------");
-      try{
+      try {
         let inputMethodSubtype = inputMethod.getCurrentInputMethodSubtype();
         console.info("====>inputMethod_test_getCurrentInputMethodSubtype_001 result:" + typeof inputMethodSubtype);
-        if(typeof inputMethodSubtype == "object" ){
+        if (typeof inputMethodSubtype == "object") {
           console.info("====>inputMethod_test_getCurrentInputMethodSubtype_001 getCurrentInputMethodSubtype success");
           expect(true).assertTrue();
-        }else{
+        } else {
           console.info("====>inputMethod_test_getCurrentInputMethodSubtype_001 getCurrentInputMethodSubtype failed");
           expect().assertFail();
-        };
-      }catch(error){
+        }
+        ;
+      } catch (error) {
         console.info("====>inputMethod_test_getCurrentInputMethodSubtype_001 getCurrentInputMethodSubtype error" + JSON.stringify(error));
         expect().assertFail();
       }
@@ -336,17 +343,18 @@ export default function inputMethodStageJSUnit() {
      * @tc.type    Function
      * @tc.level   2
      */
-    it('inputMethod_test_showOptionalInputMethods_001', 0, async function (done) {
+    it('inputMethod_test_showOptionalInputMethods_001', 0, async (done: Function) => {
       console.info("====>-----------------inputMethod_test_showOptionalInputMethods_001 start---------------------");
       let inputMethodSetting = inputMethod.getSetting();
       console.info("====>inputMethod_test_showOptionalInputMethods_001 result:" + inputMethodSetting);
       inputMethodSetting.showOptionalInputMethods((err, data) => {
         try {
-          if(err){
+          if (err) {
             console.info("====>inputMethod_test_showOptionalInputMethods_001 showOptionalInputMethods faild: " + JSON.stringify(err));
             expect().assertFail();
             done();
-          };
+          }
+          ;
           console.info("====>inputMethod_test_showOptionalInputMethods_001 showOptionalInputMethods success data is : " + data);
           expect(true).assertTrue();
           setTimeout(() => {
@@ -368,7 +376,7 @@ export default function inputMethodStageJSUnit() {
      * @tc.type    Function
      * @tc.level   2
      */
-    it('inputMethod_test_showOptionalInputMethods_002', 0, async function (done) {
+    it('inputMethod_test_showOptionalInputMethods_002', 0, async (done: Function) => {
       console.info("====>-----------------inputMethod_test_showOptionalInputMethods_002 start---------------------");
       let inputMethodSetting = inputMethod.getSetting();
       try {
@@ -377,7 +385,7 @@ export default function inputMethodStageJSUnit() {
           console.info("====>inputMethod_test_showOptionalInputMethods_002 showOptionalInputMethods success data is: " + JSON.stringify(data));
           expect(true).assertTrue();
           done();
-        }).catch(err => {
+        }).catch((err: BusinessError) => {
           console.info("====>inputMethod_test_showOptionalInputMethods_002 showOptionalInputMethods faild: " + JSON.stringify(err));
           expect().assertFail();
           done();
@@ -386,7 +394,8 @@ export default function inputMethodStageJSUnit() {
         console.info("====>inputMethod_test_showOptionalInputMethods_002 showOptionalInputMethods catch error: " + JSON.stringify(error));
         expect().assertFail();
         done();
-      };
+      }
+      ;
       console.info("====>-----------------inputMethod_test_showOptionalInputMethods_002 end---------------------");
     });
 
@@ -398,24 +407,25 @@ export default function inputMethodStageJSUnit() {
      * @tc.type    Function
      * @tc.level   2
      */
-    it('inputMethod_test_stopInputSession_002', 0, async function (done) {
+    it('inputMethod_test_stopInputSession_002', 0, async (done: Function) => {
       console.info("====>-----------------inputMethod_test_stopInputSession_002 start---------------------");
-      try{
+      try {
         let inputMethodCtrl = inputMethod.getController();
         console.info("====>inputMethod_test_stopInputSession_002 result:" + typeof inputMethodCtrl);
         await inputMethodCtrl.stopInputSession().then((data) => {
           console.info("====>inputMethod_test_stopInputSession_002 data:" + data);
           expect().assertFail();
           done();
-        }).catch((err) => {
+        }).catch((err: BusinessError) => {
           expect(err.code).assertEqual(12800003)
           done();
         })
-      }catch(error){
+      } catch (error) {
         console.info("====>inputMethod_test_stopInputSession_002 catch error" + JSON.stringify(error));
         expect().assertFail();
         done();
-      };
+      }
+      ;
       console.info("====>-----------------inputMethod_test_stopInputSession_002 end---------------------");
     });
 
@@ -427,19 +437,19 @@ export default function inputMethodStageJSUnit() {
      * @tc.type    Function
      * @tc.level   2
      */
-    it('inputMethod_test_stopInputSession_001', 0, async function (done) {
+    it('inputMethod_test_stopInputSession_001', 0, async (done: Function) => {
       console.info("====>-----------------inputMethod_test_stopInputSession_001 start---------------------");
       let inputMethodCtrl = inputMethod.getController();
       console.debug("inputMethod_test_stopInputSession_001 result: " + typeof inputMethodCtrl);
-      inputMethodCtrl.stopInputSession((err)=>{
+      inputMethodCtrl.stopInputSession((err) => {
         try {
-          if(err){
+          if (err) {
             console.info("====>inputMethod_test_stopInputSession_001 faild: " + JSON.stringify(err));
             console.info("====>inputMethod_test_stopInputSession_001 faild: " + err.code);
-            console.info("====>inputMethod_test_stopInputSession_001 faild: " + typeof(err.code));
+            console.info("====>inputMethod_test_stopInputSession_001 faild: " + typeof (err.code));
             expect(err.code).assertEqual(12800003);
             done();
-          }else{
+          } else {
             expect().assertFail();
             done();
           }
@@ -457,7 +467,7 @@ export default function inputMethodStageJSUnit() {
      * @tc.type    Function
      * @tc.level   2
      */
-    it('Sub_Misc_inputMethod_TextInputType_0100', 0, async function (done) {
+    it('Sub_Misc_inputMethod_TextInputType_0100', 0, async (done: Function) => {
       let none = inputMethod.TextInputType.NONE;
       console.info("====>Sub_Misc_inputMethod_TextInputType_0100 none:" + none);
       expect(none).assertEqual(-1);
@@ -499,7 +509,7 @@ export default function inputMethodStageJSUnit() {
      * @tc.type    Function
      * @tc.level   2
      */
-    it('Sub_Misc_inputMethod_EnterKeyType_0100', 0, async function (done) {
+    it('Sub_Misc_inputMethod_EnterKeyType_0100', 0, async (done: Function) => {
       let unspecified = inputMethod.EnterKeyType.UNSPECIFIED;
       console.info("====>Sub_Misc_inputMethod_EnterKeyType_0100 unspecified:" + unspecified);
       expect(unspecified).assertEqual(0);
@@ -535,7 +545,7 @@ export default function inputMethodStageJSUnit() {
      * @tc.type    Function
      * @tc.level   2
      */
-    it('Sub_Misc_inputMethod_KeyboardStatus_0100', 0, async function (done) {
+    it('Sub_Misc_inputMethod_KeyboardStatus_0100', 0, async (done: Function) => {
       let none = inputMethod.KeyboardStatus.NONE;
       console.info("====>Sub_Misc_inputMethod_KeyboardStatus_0100 none:" + none);
       expect(none).assertEqual(0);
@@ -556,7 +566,7 @@ export default function inputMethodStageJSUnit() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_ExtendAction_0100', 0, async function (done) {
+    it('Sub_Misc_inputMethod_ExtendAction_0100', 0, async (done: Function) => {
       let select_all = inputMethod.ExtendAction.SELECT_ALL;
       console.info("====>Sub_Misc_inputMethod_ExtendAction_0100 select_all:" + select_all);
       expect(select_all).assertEqual(0);
@@ -580,7 +590,7 @@ export default function inputMethodStageJSUnit() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('Sub_Misc_inputMethod_Direction_0100', 0, async function (done) {
+    it('Sub_Misc_inputMethod_Direction_0100', 0, async (done: Function) => {
       let cursor_up = inputMethod.Direction.CURSOR_UP;
       console.info("====>Sub_Misc_inputMethod_Direction_0100 cursor_up:" + cursor_up);
       expect(cursor_up).assertEqual(1);
@@ -604,9 +614,9 @@ export default function inputMethodStageJSUnit() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('SUB_InputMethod_IMF_ListControl_0600', 0, function (done) {
+    it('SUB_InputMethod_IMF_ListControl_0600', 0, (done: Function) => {
       console.info("====>SUB_InputMethod_IMF_ListControl_0600 start");
-      let result: any = {
+      let result: ESObject = {
         kikakeyboard: "com.example.kikakeyboard",
         hmos: "com.huawei.hmos.inputmethod"
       }
@@ -632,7 +642,7 @@ export default function inputMethodStageJSUnit() {
     * @tc.type    Function
     * @tc.level   2
     */
-    it('SUB_InputMethod_IMF_Panel_0600', 0, async function (done) {
+    it('SUB_InputMethod_IMF_Panel_0600', 0, async (done: Function) => {
       console.info("====>SUB_InputMethod_IMF_Panel_0600 start");
       try {
         let inputMethodConfig = inputMethod.getSystemInputMethodConfigAbility();

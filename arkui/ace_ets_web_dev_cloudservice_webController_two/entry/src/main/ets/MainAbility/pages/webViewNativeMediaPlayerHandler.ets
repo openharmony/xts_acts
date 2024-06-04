@@ -879,6 +879,8 @@ struct WebComponent {
                             this.controller.runJavaScript("setSeek()", (error, result) => {
                                 console.log('The playerHandleTimeUpdate() return value is: ${result}');
                             })
+                            await Utils.sleep(1500)
+                            Utils.emitEvent(true,1300)
                         } catch (error) {
                             Utils.emitEvent('error',1300)
                         }
@@ -891,11 +893,23 @@ struct WebComponent {
                             this.controller.runJavaScript("setSeek()", (error, result) => {
                                 console.log('The playerHandleTimeUpdate() return value is: ${result}');
                             })
+                            await Utils.sleep(1500)
+                            Utils.emitEvent(true,1301)
                         } catch (error) {
                             Utils.emitEvent('error',1301)
                         }
                         break;
                     }
+                  case "emitWebViewNativeMediaPlayerHandleDurationChanged": {
+                     try {
+                        console.log('emitWebViewNativeMediaPlayerHandleDurationChanged==>')
+                        await Utils.sleep(1500)
+                        Utils.emitEvent(true,1302)
+                     } catch (error) {
+                        Utils.emitEvent('error',1302)
+                     }
+                    break;
+                  }
                     case "emitWebViewNativeMediaPlayerHandleVideoSizeChanged": {
                         try {
                             console.log('emitWebViewNativeMediaPlayerHandleVideoSizeChanged==>')
@@ -903,6 +917,8 @@ struct WebComponent {
                             this.controller.runJavaScript("resize()", (error, result) => {
                                 console.log('The resize() return value is: ${result}');
                             })
+                            await Utils.sleep(1500)
+                            Utils.emitEvent(true,1303)
                         } catch (error) {
                             Utils.emitEvent('error',1303)
                         }
@@ -915,6 +931,8 @@ struct WebComponent {
                             this.controller.runJavaScript("setPlayBackRate()", (error, result) => {
                                 console.log('The setPlayBackRate() return value is: ${result}');
                             })
+                            await Utils.sleep(2000)
+                            Utils.emitEvent(true,1304)
                         } catch (error) {
                             Utils.emitEvent('error',1304)
                         }
@@ -927,6 +945,8 @@ struct WebComponent {
                             this.controller.runJavaScript("setSeek()", (error, result) => {
                                 console.log('The playerHandleTimeUpdate() return value is: ${result}');
                             })
+                            await Utils.sleep(1500)
+                            Utils.emitEvent(true,1305)
                         } catch (error) {
                             Utils.emitEvent('error',1305)
                         }
@@ -939,6 +959,8 @@ struct WebComponent {
                             this.controller.runJavaScript("setSeek()", (error, result) => {
                                 console.log('The playerHandleTimeUpdate() return value is: ${result}');
                             })
+                            await Utils.sleep(1000)
+                            Utils.emitEvent(true,1306)
                         } catch (error) {
                             Utils.emitEvent('error',1306)
                         }
@@ -951,6 +973,8 @@ struct WebComponent {
                             this.controller.runJavaScript("setVolume()", (error, result) => {
                                 console.log('The setVolume() return value is: ${result}');
                             })
+                            await Utils.sleep(2000)
+                            Utils.emitEvent(true,1307)
                         } catch (error) {
                             Utils.emitEvent('error',1307)
                         }
@@ -963,6 +987,8 @@ struct WebComponent {
                             this.controller.runJavaScript("jumpToEnd()", (error, result) => {
                                 console.log('The jumpToEnd() return value is: ${result}');
                             })
+                            await Utils.sleep(2000)
+                            Utils.emitEvent(true,1308)
                         } catch (error) {
                             Utils.emitEvent('error',1308)
                         }
@@ -971,6 +997,8 @@ struct WebComponent {
                     case "emitWebViewNativeMediaPlayerHandleError": {
                         try {
                             this.controller.loadUrl($rawfile("nativeMediaError.html"))
+                            await Utils.sleep(1500)
+                            Utils.emitEvent(true,1309)
                         } catch (error) {
                             Utils.emitEvent('error',1309)
                         }
@@ -986,6 +1014,8 @@ struct WebComponent {
                             this.controller.runJavaScript("buttonPlay()", (error, result) => {
                                 console.log('The pause() return value is: ${result}');
                             })
+                            await Utils.sleep(1500)
+                            Utils.emitEvent(true,1312)
                         } catch (error) {
                             Utils.emitEvent('error',1312)
                         }
@@ -1002,6 +1032,8 @@ struct WebComponent {
                             this.controller.runJavaScript("setMutedFalse()", (error, result) => {
                                 console.log('The setMutedFalse() return value is: ${result}');
                             })
+                            await Utils.sleep(1500)
+                            Utils.emitEvent(true,1316)
                         } catch (error) {
                             Utils.emitEvent('error',1316)
                         }

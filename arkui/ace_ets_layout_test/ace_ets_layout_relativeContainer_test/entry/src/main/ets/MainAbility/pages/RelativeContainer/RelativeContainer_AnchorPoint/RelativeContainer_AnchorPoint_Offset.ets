@@ -47,7 +47,6 @@ struct RelativeContainer_AnchorPoint_Offset {
           .id("RelativeContainer_AnchorPoint_Offset_tx2")
           .borderWidth(2)
           .borderColor(Color.Green)
-          .height(30)
           .width(150)
           .offset({ x: 50, y: 0 })
       }

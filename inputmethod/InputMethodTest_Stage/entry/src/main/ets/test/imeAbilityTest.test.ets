@@ -12,25 +12,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import inputMethod from '@ohos.inputMethod'
+import { BusinessError } from '@ohos.base'
 
 export default function imeAbilityTest(abilityContext) {
-  describe('imeAbilityTest', function () {
-    var prop = {
+  describe('imeAbilityTest', () => {
+    let prop = {
       packageName: '',
       methodId: '',
-      name:'',
-      id:'',
-      extra:{}
+      name: '',
+      id: '',
+      extra: {}
     }
 
     /**
      * beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.
      */
-    beforeAll(function (done) {
+    beforeAll((done: Function) => {
       let inputM = inputMethod.getCurrentInputMethod()
-      console.info("====>beforeAll: switchInputMethod to: " +  JSON.stringify(inputM));
+      console.info("====>beforeAll: switchInputMethod to: " + JSON.stringify(inputM));
       prop.packageName = inputM.packageName;
       prop.methodId = inputM.methodId;
       prop.name = inputM.packageName;
@@ -41,13 +42,13 @@ export default function imeAbilityTest(abilityContext) {
     /**
      * afterEach: Test case-level clearance conditions, which are executed after each test case is executed.
      */
-    afterAll(async function (done) {
+    afterAll(async (done: Function) => {
       console.info('====>afterAll: switchInputMethod to origionInput.' + JSON.stringify(prop));
       try {
-        await inputMethod.switchInputMethod(prop).then((data)=>{
+        await inputMethod.switchInputMethod(prop).then((data) => {
           console.info('====>afterAll switchInputMethod to origionInput :' + data);
           done();
-        }).catch(err =>{
+        }).catch((err: BusinessError) => {
           console.info('====>afterAll switchInputMethod to origionInput error: ' + err);
           done();
         })
@@ -66,17 +67,17 @@ export default function imeAbilityTest(abilityContext) {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_InputMethod_IMEAbility_0001', 0, async function (done) {
+    it('SUB_InputMethod_IMEAbility_0001', 0, async (done: Function) => {
       console.info('====>----------SUB_InputMethod_IMEAbility_0001 start-------------');
-      let imExtAbilityProperty = {
-        packageName : "com.acts.imeability.test",
-        methodId : "com.acts.imeability.test.ImExtAbility",
-        name:"com.acts.imeability.test",
-        id:"com.acts.imeability.test.ImExtAbility",
-        extra:{}
+      let imExtAbilityProperty: inputMethod.InputMethodProperty = {
+        packageName: "com.acts.imeability.test",
+        methodId: "com.acts.imeability.test.ImExtAbility",
+        name: "com.acts.imeability.test",
+        id: "com.acts.imeability.test.ImExtAbility",
+        extra: {}
       }
       try {
-        inputMethod.switchInputMethod(imExtAbilityProperty).then((data)=>{
+        inputMethod.switchInputMethod(imExtAbilityProperty).then((data) => {
           console.info('====>SUB_InputMethod_IMEAbility_0001 switchInputMethod to IME :' + data);
           expect(data == true).assertTrue();
         });
@@ -98,19 +99,19 @@ export default function imeAbilityTest(abilityContext) {
     * @tc.type    Function
     * @tc.level   Level2
     */
-    it('SUB_InputMethod_IMEAbility_0002', 0, async function (done) {
+    it('SUB_InputMethod_IMEAbility_0002', 0, async (done: Function) => {
       console.info('====>-----------SUB_InputMethod_IMEAbility_0002 start-------------');
 
-      let imExtAbilityProperty = {
-        packageName : "com.acts.imeability.test",
-        methodId : "com.acts.imeability.test.ImExtAbility",
-        name:"com.acts.imeability.test",
-        id:"com.acts.imeability.test.ImExtAbility",
-        extra:{}
+      let imExtAbilityProperty: inputMethod.InputMethodProperty = {
+        packageName: "com.acts.imeability.test",
+        methodId: "com.acts.imeability.test.ImExtAbility",
+        name: "com.acts.imeability.test",
+        id: "com.acts.imeability.test.ImExtAbility",
+        extra: {}
       }
 
       try {
-        inputMethod.switchInputMethod(imExtAbilityProperty).then((data)=>{
+        inputMethod.switchInputMethod(imExtAbilityProperty).then((data) => {
           console.info('====>SUB_InputMethod_IMEAbility_0002 switchInputMethod to IME :' + data);
           expect(data == true).assertTrue();
         });

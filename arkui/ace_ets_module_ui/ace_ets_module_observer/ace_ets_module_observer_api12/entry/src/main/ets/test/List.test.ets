@@ -14,8 +14,11 @@
  */
 import observerScrollTest from './observerTest/observerScroll.test';
 import ObserverNavDestinationState from './observerTest/ObserverNavDestinationState.test';
+import ObserverApi1 from './observerTest/ObserverApi1.test';
 
 export default function testsuite() {
   observerScrollTest()
   ObserverNavDestinationState();
+  ObserverApi1();
+
 }

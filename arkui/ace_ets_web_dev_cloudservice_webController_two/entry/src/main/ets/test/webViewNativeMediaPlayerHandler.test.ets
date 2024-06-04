@@ -42,7 +42,7 @@ export default function webViewNativeMediaPlayerHandler() {
     });
       
     beforeEach(async (done: Function) => {
-        await Utils.sleep(1000);
+        await Utils.sleep(2000);
       console.info("webViewNativeMediaPlayerHandler beforeEach start");
       done();
     })
@@ -101,7 +101,7 @@ export default function webViewNativeMediaPlayerHandler() {
      *@tc.level 1
      */
     it('testWebViewNativeMediaPlayerHandleDurationChanged', 0, async (done: Function) => {
-      let emitKey = "emitWebViewNativeMediaPlayerHandlePlaybackRateChanged";
+      let emitKey = "emitWebViewNativeMediaPlayerHandleDurationChanged";
       Utils.emitEvent(emitKey, 10)
       Utils.registerEvent("testWebViewNativeMediaPlayerHandleDurationChanged", true, 1302, done);
       sendEventByKey('webViewNativeMediaPlayerHandler', 10, '');

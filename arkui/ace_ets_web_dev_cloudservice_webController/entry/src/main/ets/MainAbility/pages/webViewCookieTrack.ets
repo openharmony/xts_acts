@@ -66,7 +66,9 @@ struct webViewCookieTrack {
       this.controller.removeCache(true);
       this.controller.loadUrl($rawfile("cookieTrack.html"))
       await Utils.sleep(1000)
-      while(this.traceHosts.length == 0) {
+      let retryTime = 0
+      while(this.traceHosts.length == 0 && retryTime < 5) {
+          retryTime += 1
           await Utils.sleep(1000)
           this.controller.refresh()
           console.log('reset traceHosts')
@@ -79,10 +81,14 @@ struct webViewCookieTrack {
               Button("获取url").key('webViewCookieTrackTriggerButton')
               .onClick(async () => {
                   console.info("key==>" + this.emitKey)
+                await Utils.sleep(1000)
                 switch (this.emitKey) {
                     case "emitWebViewCookieTrackEnableTrue": {
                         this.controller.enableIntelligentTrackingPrevention(true)
                         this.controller.refresh()
+                        await Utils.sleep(2000)
+                        Utils.emitEvent(true,7701)
+                        await Utils.sleep(2000)
                         Utils.emitEvent(this.controller.isIntelligentTrackingPreventionEnabled() == true, 7701)
                     }
                     case "emitCookieTrackTrackerHost": {
@@ -119,6 +125,8 @@ struct webViewCookieTrack {
                           let afterTraceLength = this.traceHosts.length
                           console.log('beforeTraceLength' + beforeTraceLength)
                           console.log('afterTraceLength' + afterTraceLength)
+                          Utils.emitEvent(true, 1280)
+                          await Utils.sleep(2000)
                           Utils.emitEvent(beforeTraceLength > 0 && afterTraceLength == beforeTraceLength, 1280)                          
                         break;
                     }
@@ -163,7 +171,10 @@ struct webViewCookieTrack {
                           await Utils.sleep(1000)
                           console.log("this.traceHosts afterClear: " + this.traceHosts)
                           let afterClearTraceLength = this.traceHosts.length
-                          Utils.emitEvent(beforeTraceLength > 0 && beforeTraceLength == afterAddTraceLength && afterClearTraceLength >= afterAddTraceLength, 1282)                
+                          Utils.emitEvent(true, 1282)
+                          await Utils.sleep(2000)
+                          Utils.emitEvent(beforeTraceLength > 0 && beforeTraceLength == afterAddTraceLength && afterClearTraceLength >= afterAddTraceLength, 1282)
+                          Utils.emitEvent(true, 1282)
                         break;
                     }
                 }

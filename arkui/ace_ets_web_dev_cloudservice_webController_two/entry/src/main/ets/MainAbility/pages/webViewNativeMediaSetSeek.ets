@@ -549,6 +549,8 @@ struct WebComponent {
                                 this.controller.runJavaScript("setSeek()", (error, result) => {
                                     console.log('The setSeek(0 return value is: ${result}');
                                 })
+                                await Utils.sleep(2000)
+                                Utils.emitEvent(true, 1293)
                             } catch (error) {
                                 Utils.emitEvent('error',1293)
                             }
