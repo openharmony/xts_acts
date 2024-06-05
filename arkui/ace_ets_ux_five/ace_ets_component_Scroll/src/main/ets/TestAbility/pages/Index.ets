@@ -99,22 +99,22 @@ struct Index {
       Button('next page1')
         .height('5%')
         .onClick(() => {
-          this.scroller.scrollPage({ next: false, animation: false })
+          this.scroller.scrollPage({ next: false })
         })
       Button('next page2')
         .height('5%')
         .onClick(() => {
-          this.scroller.scrollPage({ next: true, animation: true })
+          this.scroller.scrollPage({ next: true })
         })
       Button('next page3')
         .height('5%')
         .onClick(() => {
-          this.scroller.scrollPage({ next: true, animation: false })
+          this.scroller.scrollPage({ next: true })
         })
       Button('next page4')
         .height('5%')
         .onClick(() => {
-          this.scroller.scrollPage({ next: false, animation: true })
+          this.scroller.scrollPage({ next: false })
         })
         .margin({ top: 210, left: 20 })
     }.width('100%').height('100%').backgroundColor(0xDCDCDC)
