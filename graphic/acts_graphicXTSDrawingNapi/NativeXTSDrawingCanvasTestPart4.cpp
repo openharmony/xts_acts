@@ -1215,26 +1215,24 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 0
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_3900, TestSize.Level0) {
-    constexpr int POINT_PARAMETER = 3;
-    constexpr int COLOR_PARAMETER = 3;
     OH_Drawing_Point2D point_one = {0, 0};
     OH_Drawing_Point2D point_two = {100, 100};
     OH_Drawing_Point2D point_three = {300, 100};
-    OH_Drawing_Point2D points_vertices[POINT_PARAMETER] = {point_one, point_two, point_three};
+    OH_Drawing_Point2D points_vertices[3] = {point_one, point_two, point_three};
 
     OH_Drawing_Point2D texs_one = {0, 0};
     OH_Drawing_Point2D texs_two = {1, 1};
     OH_Drawing_Point2D texs_three = {2, 0};
-    OH_Drawing_Point2D texs_vertices[POINT_PARAMETER] = {texs_one, texs_two, texs_three};
-    uint32_t colors[COLOR_PARAMETER] = {0xFFFF0000, 0xFFFF0000, 0xFFFF0000};
-    uint16_t indices[COLOR_PARAMETER] = {0, 1, 2};
+    OH_Drawing_Point2D texs_vertices[3] = {texs_one, texs_two, texs_three};
+    uint32_t colors[3] = {0xFFFF0000, 0xFFFF0000, 0xFFFF0000};
+    uint16_t indices[3] = {0, 1, 2};
     // 1. Call OH_Drawing_CanvasCreate to create a canvas object
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. Call OH_Drawing_CanvasDrawVertices with the second parameter iterating through the enum
     OH_Drawing_VertexMode mode[] = {VERTEX_MODE_TRIANGLES, VERTEX_MODE_TRIANGLES_STRIP, VERTEX_MODE_TRIANGLE_FAN};
     for (int i = 0; i < 3; i++) {
-        OH_Drawing_CanvasDrawVertices(canvas, mode[i], POINT_PARAMETER, points_vertices, texs_vertices, colors,
-                                      POINT_PARAMETER, indices, BLEND_MODE_COLOR);
+        OH_Drawing_CanvasDrawVertices(canvas, mode[i], 3, points_vertices, texs_vertices, colors, 3, indices,
+                                      BLEND_MODE_COLOR);
     }
     // 3. Call OH_Drawing_CanvasDrawVertices with the ninth parameter iterating through the enum
     OH_Drawing_BlendMode blendMode[] = {
@@ -1248,8 +1246,8 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
         BLEND_MODE_LUMINOSITY,
     };
     for (int i = 0; i < 30; i++) {
-        OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, POINT_PARAMETER, points_vertices, texs_vertices,
-                                      colors, POINT_PARAMETER, indices, blendMode[i]);
+        OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, 3, points_vertices, texs_vertices, colors, 3,
+                                      indices, blendMode[i]);
     }
     // 4. Free memory
     OH_Drawing_CanvasDestroy(canvas);
@@ -1264,43 +1262,41 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_3901, TestSize.Level3) {
-    constexpr int POINT_PARAMETER = 3;
-    constexpr int COLOR_PARAMETER = 3;
     OH_Drawing_Point2D point_one = {0, 0};
     OH_Drawing_Point2D point_two = {100, 100};
     OH_Drawing_Point2D point_three = {300, 100};
-    OH_Drawing_Point2D points_vertices[POINT_PARAMETER] = {point_one, point_two, point_three};
+    OH_Drawing_Point2D points_vertices[3] = {point_one, point_two, point_three};
 
     OH_Drawing_Point2D texs_one = {0, 0};
     OH_Drawing_Point2D texs_two = {1, 1};
     OH_Drawing_Point2D texs_three = {2, 0};
-    OH_Drawing_Point2D texs_vertices[POINT_PARAMETER] = {texs_one, texs_two, texs_three};
-    uint32_t colors[COLOR_PARAMETER] = {0xFFFF0000, 0xFFFF0000, 0xFFFF0000};
-    uint16_t indices[COLOR_PARAMETER] = {0, 1, 2};
+    OH_Drawing_Point2D texs_vertices[3] = {texs_one, texs_two, texs_three};
+    uint32_t colors[3] = {0xFFFF0000, 0xFFFF0000, 0xFFFF0000};
+    uint16_t indices[3] = {0, 1, 2};
 
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
 
     // 1. Call OH_Drawing_CanvasDrawVertices with the first parameter as nullptr
-    OH_Drawing_CanvasDrawVertices(nullptr, VERTEX_MODE_TRIANGLES, POINT_PARAMETER, points_vertices, texs_vertices,
-                                  colors, POINT_PARAMETER, indices, BLEND_MODE_COLOR);
+    OH_Drawing_CanvasDrawVertices(nullptr, VERTEX_MODE_TRIANGLES, 3, points_vertices, texs_vertices, colors, 3, indices,
+                                  BLEND_MODE_COLOR);
     // 2. Call OH_Drawing_CanvasDrawVertices with the third parameter as 0
-    OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, 0, points_vertices, texs_vertices, colors,
-                                  POINT_PARAMETER, indices, BLEND_MODE_COLOR);
+    OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, 0, points_vertices, texs_vertices, colors, 3, indices,
+                                  BLEND_MODE_COLOR);
     // 3. Call OH_Drawing_CanvasDrawVertices with the fourth parameter as nullptr
-    OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, POINT_PARAMETER, nullptr, texs_vertices, colors,
-                                  POINT_PARAMETER, indices, BLEND_MODE_COLOR);
+    OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, 3, nullptr, texs_vertices, colors, 3, indices,
+                                  BLEND_MODE_COLOR);
     // 4. Call OH_Drawing_CanvasDrawVertices with the fifth parameter as nullptr
-    OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, POINT_PARAMETER, points_vertices, nullptr, colors,
-                                  POINT_PARAMETER, indices, BLEND_MODE_COLOR);
+    OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, 3, points_vertices, nullptr, colors, 3, indices,
+                                  BLEND_MODE_COLOR);
     // 5. Call OH_Drawing_CanvasDrawVertices with the sixth parameter as nullptr
-    OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, POINT_PARAMETER, points_vertices, texs_vertices,
-                                  nullptr, POINT_PARAMETER, indices, BLEND_MODE_COLOR);
+    OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, 3, points_vertices, texs_vertices, nullptr, 3, indices,
+                                  BLEND_MODE_COLOR);
     // 6. Call OH_Drawing_CanvasDrawVertices with the seventh parameter as 0
-    OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, POINT_PARAMETER, points_vertices, texs_vertices,
-                                  colors, 0, indices, BLEND_MODE_COLOR);
+    OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, 3, points_vertices, texs_vertices, colors, 0, indices,
+                                  BLEND_MODE_COLOR);
     // 7. Call OH_Drawing_CanvasDrawVertices with the eighth parameter as nullptr
-    OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, POINT_PARAMETER, points_vertices, texs_vertices,
-                                  colors, POINT_PARAMETER, nullptr, BLEND_MODE_COLOR);
+    OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, 3, points_vertices, texs_vertices, colors, 3, nullptr,
+                                  BLEND_MODE_COLOR);
     // 8. Free memory
     OH_Drawing_CanvasDestroy(canvas);
 }
