@@ -1333,19 +1333,17 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_3903, TestSize.Level3) {
     // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
-    constexpr int POINT_PARAMETER = 3;
-    constexpr int COLOR_PARAMETER = 3;
     OH_Drawing_Point2D point_one = {0, 0};
     OH_Drawing_Point2D point_two = {100, 100};
     OH_Drawing_Point2D point_three = {300, 100};
-    OH_Drawing_Point2D points_vertices[POINT_PARAMETER] = {point_one, point_two, point_three};
+    OH_Drawing_Point2D points_vertices[3] = {point_one, point_two, point_three};
 
     OH_Drawing_Point2D texs_one = {0, 0};
     OH_Drawing_Point2D texs_two = {1, 1};
     OH_Drawing_Point2D texs_three = {2, 0};
-    OH_Drawing_Point2D texs_vertices[POINT_PARAMETER] = {texs_one, texs_two, texs_three};
-    uint32_t colors[COLOR_PARAMETER] = {0xFFFF0000, 0xFFFF0000, 0xFFFF0000};
-    uint16_t indices[COLOR_PARAMETER] = {0, 1, 2};
+    OH_Drawing_Point2D texs_vertices[3] = {texs_one, texs_two, texs_three};
+    uint32_t colors[3] = {0xFFFF0000, 0xFFFF0000, 0xFFFF0000};
+    uint16_t indices[3] = {0, 1, 2};
 
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
 
@@ -1353,10 +1351,10 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
         // todo cpp crash
         // 2. Call OH_Drawing_CanvasDrawVertices with the third parameter as the maximum value 0x7FFFFFFF
         OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, 0x7FFFFFFF, points_vertices, texs_vertices, colors,
-                                      POINT_PARAMETER, indices, BLEND_MODE_COLOR);
+                                      3, indices, BLEND_MODE_COLOR);
         // 3. Call OH_Drawing_CanvasDrawVertices with the seventh parameter as the maximum value 0x7FFFFFFF
-        OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, POINT_PARAMETER, points_vertices, texs_vertices,
-                                      colors, 0x7FFFFFFF, indices, BLEND_MODE_COLOR);
+        OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, 3, points_vertices, texs_vertices, colors,
+                                      0x7FFFFFFF, indices, BLEND_MODE_COLOR);
     }
 
     // 4. Free memory
