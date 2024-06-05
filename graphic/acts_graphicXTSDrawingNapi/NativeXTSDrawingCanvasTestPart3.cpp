@@ -15,6 +15,7 @@
 
 #include "gtest/gtest.h"
 
+#include "NativeXTSDrawingCanvasTest.h"
 #include "drawing_bitmap.h"
 #include "drawing_brush.h"
 #include "drawing_canvas.h"
@@ -38,7 +39,6 @@
 #include "drawing_typeface.h"
 #include "effect/color_filter.h"
 #include "effect/filter.h"
-#include <climits>
 
 using namespace testing;
 using namespace testing::ext;
@@ -46,17 +46,16 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class NativeXTSDrawingCanvasTestPart3 : public testing::Test {};
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_1900
- * @tc.name: 00.testCanvasDrawOvalNormal
- * @tc.desc: test for 00.testCanvasDrawOvalNormal.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_1900
+ * @tc.name: testCanvasDrawOvalNormal
+ * @tc.desc: test for testCanvasDrawOvalNormal.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_1900, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawOvalNormal, TestSize.Level0) {
     // 1. Create OH_Drawing_Canvas
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
 
@@ -72,14 +71,14 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_1901
- * @tc.name: 01.testCanvasDrawOvalNull
- * @tc.desc: test for 01.testCanvasDrawOvalNull.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_1901
+ * @tc.name: testCanvasDrawOvalNull
+ * @tc.desc: test for testCanvasDrawOvalNull.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_1901, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawOvalNull, TestSize.Level3) {
     // 1. Create OH_Drawing_Canvas
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. Create OH_Drawing_Rect
@@ -108,14 +107,14 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_1902
- * @tc.name: 02.testCanvasDrawOvalAbnormal
- * @tc.desc: test for 02.testCanvasDrawOvalAbnormal.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_1902
+ * @tc.name: testCanvasDrawOvalAbnormal
+ * @tc.desc: test for testCanvasDrawOvalAbnormal.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_1902, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawOvalAbnormal, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. Create OH_Drawing_Rect with left, top, right, and bottom values as negative numbers
@@ -150,14 +149,14 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_1903
- * @tc.name: 03.testCanvasDrawOvalMaximum
- * @tc.desc: test for 03.testCanvasDrawOvalMaximum.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_1903
+ * @tc.name: testCanvasDrawOvalMaximum
+ * @tc.desc: test for testCanvasDrawOvalMaximum.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_1903, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawOvalMaximum, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. Create OH_Drawing_Rect with FLT_MAX as the values for left, top, right, and bottom
@@ -175,26 +174,26 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_1904
- * @tc.name: 04.testCanvasDrawOvalInputDestroyed
- * @tc.desc: test for 04.testCanvasDrawOvalInputDestroyed.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_1904
+ * @tc.name: testCanvasDrawOvalInputDestroyed
+ * @tc.desc: test for testCanvasDrawOvalInputDestroyed.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_1904, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawOvalInputDestroyed, TestSize.Level3) {
     // Deprecated
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2000
- * @tc.name: 00.testCanvasDrawArcNormal
- * @tc.desc: test for 00.testCanvasDrawArcNormal.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2000
+ * @tc.name: testCanvasDrawArcNormal
+ * @tc.desc: test for testCanvasDrawArcNormal.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2000, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawArcNormal, TestSize.Level0) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. OH_Drawing_RectCreate
@@ -215,14 +214,14 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2001
- * @tc.name: 01.testCanvasDrawArcNull
- * @tc.desc: test for 01.testCanvasDrawArcNull.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2001
+ * @tc.name: testCanvasDrawArcNull
+ * @tc.desc: test for testCanvasDrawArcNull.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2001, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawArcNull, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. OH_Drawing_RectCreate
@@ -251,14 +250,14 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2002
- * @tc.name: 02.testCanvasDrawArcAbnormal
- * @tc.desc: test for 02.testCanvasDrawArcAbnormal.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2002
+ * @tc.name: testCanvasDrawArcAbnormal
+ * @tc.desc: test for testCanvasDrawArcAbnormal.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2002, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawArcAbnormal, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. OH_Drawing_CanvasDrawArc with OH_Drawing_Rect created with negative values for left, top, right, and bottom
@@ -305,14 +304,14 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2003
- * @tc.name: 03.testCanvasDrawArcMaximum
- * @tc.desc: test for 03.testCanvasDrawArcMaximum.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2003
+ * @tc.name: testCanvasDrawArcMaximum
+ * @tc.desc: test for testCanvasDrawArcMaximum.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2003, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawArcMaximum, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. OH_Drawing_CanvasDrawArc with OH_Drawing_Rect created with FLT_MAX as the values for left, top, right, and
@@ -342,26 +341,26 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2004
- * @tc.name: 04.testCanvasDrawArcInputDestroyed
- * @tc.desc: test for 04.testCanvasDrawArcInputDestroyed.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2004
+ * @tc.name: testCanvasDrawArcInputDestroyed
+ * @tc.desc: test for testCanvasDrawArcInputDestroyed.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2004, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawArcInputDestroyed, TestSize.Level3) {
     // Deprecated
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2100
- * @tc.name: 00.testCanvasDrawRoundRectNormal
- * @tc.desc: test for 00.testCanvasDrawRoundRectNormal.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2100
+ * @tc.name: testCanvasDrawRoundRectNormal
+ * @tc.desc: test for testCanvasDrawRoundRectNormal.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2100, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawRoundRectNormal, TestSize.Level0) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
 
@@ -379,14 +378,14 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2101
- * @tc.name: 01.testCanvasDrawRoundRectNull
- * @tc.desc: test for 01.testCanvasDrawRoundRectNull.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2101
+ * @tc.name: testCanvasDrawRoundRectNull
+ * @tc.desc: test for testCanvasDrawRoundRectNull.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2101, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawRoundRectNull, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
 
@@ -455,14 +454,14 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2102
- * @tc.name: 02.testCanvasDrawRoundRectAbnormal
- * @tc.desc: test for 02.testCanvasDrawRoundRectAbnormal.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2102
+ * @tc.name: testCanvasDrawRoundRectAbnormal
+ * @tc.desc: test for testCanvasDrawRoundRectAbnormal.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2102, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawRoundRectAbnormal, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
 
@@ -526,14 +525,14 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2103
- * @tc.name: 03.testCanvasDrawRoundRectMaximum
- * @tc.desc: test for 03.testCanvasDrawRoundRectMaximum.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2103
+ * @tc.name: testCanvasDrawRoundRectMaximum
+ * @tc.desc: test for testCanvasDrawRoundRectMaximum.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2103, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawRoundRectMaximum, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. OH_Drawing_CanvasDrawRoundRect with OH_Drawing_RoundRectCreate creating rect with left, top, right, bottom
@@ -573,26 +572,26 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2104
- * @tc.name: 04.testCanvasDrawRoundRectInputDestroyed
- * @tc.desc: test for 04.testCanvasDrawRoundRectInputDestroyed.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2104
+ * @tc.name: testCanvasDrawRoundRectInputDestroyed
+ * @tc.desc: test for testCanvasDrawRoundRectInputDestroyed.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2104, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawRoundRectInputDestroyed, TestSize.Level3) {
     // Deprecated
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2200
- * @tc.name: 00.testCanvasDrawTextBlobNormal
- * @tc.desc: test for 00.testCanvasDrawTextBlobNormal.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2200
+ * @tc.name: testCanvasDrawTextBlobNormal
+ * @tc.desc: test for testCanvasDrawTextBlobNormal.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2200, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawTextBlobNormal, TestSize.Level0) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
 
@@ -610,14 +609,14 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2201
- * @tc.name: 01.testCanvasDrawTextBlobNull
- * @tc.desc: test for 01.testCanvasDrawTextBlobNull.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2201
+ * @tc.name: testCanvasDrawTextBlobNull
+ * @tc.desc: test for testCanvasDrawTextBlobNull.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2201, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawTextBlobNull, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. OH_Drawing_TextBlobCreateFromString
@@ -640,14 +639,14 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2202
- * @tc.name: 02.testCanvasDrawTextBlobAbnormal
- * @tc.desc: test for 02.testCanvasDrawTextBlobAbnormal.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2202
+ * @tc.name: testCanvasDrawTextBlobAbnormal
+ * @tc.desc: test for testCanvasDrawTextBlobAbnormal.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2202, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawTextBlobAbnormal, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. Create OH_Drawing_TextBlob from text
@@ -668,14 +667,14 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2203
- * @tc.name: 04.testCanvasDrawTextBlobMaximum
- * @tc.desc: test for 04.testCanvasDrawTextBlobMaximum.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2203
+ * @tc.name: testCanvasDrawTextBlobMaximum
+ * @tc.desc: test for testCanvasDrawTextBlobMaximum.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2203, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawTextBlobMaximum, TestSize.Level3) {
     // 1. Create OH_Drawing_Canvas
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. Create OH_Drawing_TextBlob from text
@@ -696,26 +695,26 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2204
- * @tc.name: 05.testCanvasDrawTextBlobInputDestroyed
- * @tc.desc: test for 05.testCanvasDrawTextBlobInputDestroyed.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2204
+ * @tc.name: testCanvasDrawTextBlobInputDestroyed
+ * @tc.desc: test for testCanvasDrawTextBlobInputDestroyed.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2204, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawTextBlobInputDestroyed, TestSize.Level3) {
     // Deprecated
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2300
- * @tc.name: 00.testCanvasClipRectNormal
- * @tc.desc: test for 00.testCanvasClipRectNormal.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2300
+ * @tc.name: testCanvasClipRectNormal
+ * @tc.desc: test for testCanvasClipRectNormal.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2300, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasClipRectNormal, TestSize.Level0) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. OH_Drawing_RectCreate
@@ -733,14 +732,14 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2301
- * @tc.name: 01.testCanvasClipRectNull
- * @tc.desc: test for 01.testCanvasClipRectNull.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2301
+ * @tc.name: testCanvasClipRectNull
+ * @tc.desc: test for testCanvasClipRectNull.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2301, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasClipRectNull, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. OH_Drawing_RectCreate
@@ -770,14 +769,14 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2302
- * @tc.name: 02.testCanvasClipRectAbnormal
- * @tc.desc: test for 02.testCanvasClipRectAbnormal.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2302
+ * @tc.name: testCanvasClipRectAbnormal
+ * @tc.desc: test for testCanvasClipRectAbnormal.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2302, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasClipRectAbnormal, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. OH_Drawing_CanvasClipRect with OH_Drawing_Rect created with negative values for left, top, right, and bottom
@@ -810,14 +809,14 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2303
- * @tc.name: 03.testCanvasClipRectMaximum
- * @tc.desc: test for 03.testCanvasClipRectMaximum.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2303
+ * @tc.name: testCanvasClipRectMaximum
+ * @tc.desc: test for testCanvasClipRectMaximum.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2303, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasClipRectMaximum, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. OH_Drawing_CanvasClipRect with OH_Drawing_Rect created with extreme values for left, top, right, and bottom
@@ -835,26 +834,26 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2304
- * @tc.name: 04.testCanvasClipRectInputDestroyed
- * @tc.desc: test for 04.testCanvasClipRectInputDestroyed.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2304
+ * @tc.name: testCanvasClipRectInputDestroyed
+ * @tc.desc: test for testCanvasClipRectInputDestroyed.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2304, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasClipRectInputDestroyed, TestSize.Level3) {
     // Deprecated
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2400
- * @tc.name: 00.testCanvasClipRoundRectNormal
- * @tc.desc: test for 00.testCanvasClipRoundRectNormal.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2400
+ * @tc.name: testCanvasClipRoundRectNormal
+ * @tc.desc: test for testCanvasClipRoundRectNormal.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2400, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasClipRoundRectNormal, TestSize.Level0) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. OH_Drawing_RoundRectCreate
@@ -874,14 +873,14 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2401
- * @tc.name: 01.testCanvasClipRoundRectNull
- * @tc.desc: test for 01.testCanvasClipRoundRectNull.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2401
+ * @tc.name: testCanvasClipRoundRectNull
+ * @tc.desc: test for testCanvasClipRoundRectNull.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2401, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasClipRoundRectNull, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. OH_Drawing_RoundRectCreate
@@ -927,14 +926,14 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2402
- * @tc.name: 02.testCanvasClipRoundRectAbnormal
- * @tc.desc: test for 02.testCanvasClipRoundRectAbnormal.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2402
+ * @tc.name: testCanvasClipRoundRectAbnormal
+ * @tc.desc: test for testCanvasClipRoundRectAbnormal.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2402, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasClipRoundRectAbnormal, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. OH_Drawing_CanvasClipRoundRect, pass negative values for left, top, right, and bottom when creating
@@ -990,14 +989,14 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2403
- * @tc.name: 03.testCanvasClipRoundRectMaximum
- * @tc.desc: test for 03.testCanvasClipRoundRectMaximum.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2403
+ * @tc.name: testCanvasClipRoundRectMaximum
+ * @tc.desc: test for testCanvasClipRoundRectMaximum.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2403, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasClipRoundRectMaximum, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. OH_Drawing_CanvasClipRoundRect, pass extreme values for left, top, right, and bottom when creating
@@ -1029,26 +1028,26 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2404
- * @tc.name: 04.testCanvasClipRoundRectInputDestroyed
- * @tc.desc: test for 04.testCanvasClipRoundRectInputDestroyed.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2404
+ * @tc.name: testCanvasClipRoundRectInputDestroyed
+ * @tc.desc: test for testCanvasClipRoundRectInputDestroyed.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2404, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasClipRoundRectInputDestroyed, TestSize.Level3) {
     // Deprecated
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2500
- * @tc.name: 00.testCanvasClipPathNormal
- * @tc.desc: test for 00.testCanvasClipPathNormal.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2500
+ * @tc.name: testCanvasClipPathNormal
+ * @tc.desc: test for testCanvasClipPathNormal.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2500, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasClipPathNormal, TestSize.Level0) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. OH_Drawing_PathCreate
@@ -1074,14 +1073,14 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2501
- * @tc.name: 01.testCanvasClipPathNull
- * @tc.desc: test for 01.testCanvasClipPathNull.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2501
+ * @tc.name: testCanvasClipPathNull
+ * @tc.desc: test for testCanvasClipPathNull.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2501, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasClipPathNull, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. OH_Drawing_PathCreate
@@ -1107,26 +1106,26 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2502
- * @tc.name: 02.testCanvasClipPathInputDestroyed
- * @tc.desc: test for 02.testCanvasClipPathInputDestroyed.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2502
+ * @tc.name: testCanvasClipPathInputDestroyed
+ * @tc.desc: test for testCanvasClipPathInputDestroyed.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2502, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasClipPathInputDestroyed, TestSize.Level3) {
     // Deprecated
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2600
- * @tc.name: 00.testCanvasRotateNormal
- * @tc.desc: test for 00.testCanvasRotateNormal.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2600
+ * @tc.name: testCanvasRotateNormal
+ * @tc.desc: test for testCanvasRotateNormal.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2600, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasRotateNormal, TestSize.Level0) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. OH_Drawing_CanvasRotate, rotate degrees with values 0, 180, 360
@@ -1142,14 +1141,14 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2601
- * @tc.name: 01.testCanvasRotateNull
- * @tc.desc: test for 01.testCanvasRotateNull.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2601
+ * @tc.name: testCanvasRotateNull
+ * @tc.desc: test for testCanvasRotateNull.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2601, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasRotateNull, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. OH_Drawing_CanvasRotate with the first parameter being null
@@ -1163,14 +1162,14 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2602
- * @tc.name: 02.testCanvasRotateAbnormal
- * @tc.desc: test for 02.testCanvasRotateAbnormal.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2602
+ * @tc.name: testCanvasRotateAbnormal
+ * @tc.desc: test for testCanvasRotateAbnormal.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2602, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasRotateAbnormal, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. OH_Drawing_CanvasRotate with negative degrees input
@@ -1186,14 +1185,14 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2603
- * @tc.name: 03.testCanvasRotateMaximum
- * @tc.desc: test for 03.testCanvasRotateMaximum.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2603
+ * @tc.name: testCanvasRotateMaximum
+ * @tc.desc: test for testCanvasRotateMaximum.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2603, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasRotateMaximum, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. OH_Drawing_CanvasRotate with maximum rotation angle degrees input
@@ -1207,26 +1206,26 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2604
- * @tc.name: 04.testCanvasRotateInputDestroyed
- * @tc.desc: test for 04.testCanvasRotateInputDestroyed.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2604
+ * @tc.name: testCanvasRotateInputDestroyed
+ * @tc.desc: test for testCanvasRotateInputDestroyed.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2604, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasRotateInputDestroyed, TestSize.Level3) {
     // Deprecated
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2605
- * @tc.name: 05.testCanvasRotateMultipleCalls
- * @tc.desc: test for 05.testCanvasRotateMultipleCalls.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2605
+ * @tc.name: testCanvasRotateMultipleCalls
+ * @tc.desc: test for testCanvasRotateMultipleCalls.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2605, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasRotateMultipleCalls, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. Call OH_Drawing_CanvasRotate 10 times, each time with different rotation angles and rotation center
@@ -1243,14 +1242,14 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2700
- * @tc.name: 00.testCanvasTranslateNormal
- * @tc.desc: test for 00.testCanvasTranslateNormal.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2700
+ * @tc.name: testCanvasTranslateNormal
+ * @tc.desc: test for testCanvasTranslateNormal.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2700, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasTranslateNormal, TestSize.Level0) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. OH_Drawing_CanvasTranslate
@@ -1264,14 +1263,14 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2701
- * @tc.name: 01.testCanvasTranslateNull
- * @tc.desc: test for 01.testCanvasTranslateNull.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2701
+ * @tc.name: testCanvasTranslateNull
+ * @tc.desc: test for testCanvasTranslateNull.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2701, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasTranslateNull, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. OH_Drawing_CanvasTranslate with the first parameter being null
@@ -1285,14 +1284,14 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2702
- * @tc.name: 02.testCanvasTranslateAbnormal
- * @tc.desc: test for 02.testCanvasTranslateAbnormal.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2702
+ * @tc.name: testCanvasTranslateAbnormal
+ * @tc.desc: test for testCanvasTranslateAbnormal.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2702, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasTranslateAbnormal, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. OH_Drawing_CanvasTranslate with negative movement distance dx in the x-axis direction
@@ -1304,14 +1303,14 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2703
- * @tc.name: 03.testCanvasTranslateMaximum
- * @tc.desc: test for 03.testCanvasTranslateMaximum.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2703
+ * @tc.name: testCanvasTranslateMaximum
+ * @tc.desc: test for testCanvasTranslateMaximum.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2703, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasTranslateMaximum, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. OH_Drawing_CanvasTranslate with the movement distance dx in the x-axis direction being the maximum value
@@ -1323,26 +1322,26 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2704
- * @tc.name: 04.testCanvasTranslateInputDestroyed
- * @tc.desc: test for 04.testCanvasTranslateInputDestroyed.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2704
+ * @tc.name: testCanvasTranslateInputDestroyed
+ * @tc.desc: test for testCanvasTranslateInputDestroyed.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2704, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasTranslateInputDestroyed, TestSize.Level3) {
     // Deprecated
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2705
- * @tc.name: 05.testCanvasTranslateMultipleCalls
- * @tc.desc: test for 05.testCanvasTranslateMultipleCalls.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2705
+ * @tc.name: testCanvasTranslateMultipleCalls
+ * @tc.desc: test for testCanvasTranslateMultipleCalls.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2705, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasTranslateMultipleCalls, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. Call OH_Drawing_CanvasTranslate 10 times, each time with different movement distances
@@ -1358,14 +1357,14 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2800
- * @tc.name: 00.testCanvasScaleNormal
- * @tc.desc: test for 00.testCanvasScaleNormal.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2800
+ * @tc.name: testCanvasScaleNormal
+ * @tc.desc: test for testCanvasScaleNormal.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2800, TestSize.Level0) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasScaleNormal, TestSize.Level0) {
     // 1. Create a canvas
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
 
@@ -1382,14 +1381,14 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2801
- * @tc.name: 01.testCanvasScaleNull
- * @tc.desc: test for 01.testCanvasScaleNull.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2801
+ * @tc.name: testCanvasScaleNull
+ * @tc.desc: test for testCanvasScaleNull.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2801, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasScaleNull, TestSize.Level3) {
     // 1. Create a canvas
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
 
@@ -1407,14 +1406,14 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2802
- * @tc.name: 02.testCanvasScaleAbnormal
- * @tc.desc: test for 02.testCanvasScaleAbnormal.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2802
+ * @tc.name: testCanvasScaleAbnormal
+ * @tc.desc: test for testCanvasScaleAbnormal.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2802, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasScaleAbnormal, TestSize.Level3) {
     // 1. Create a canvas
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
 
@@ -1429,14 +1428,14 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2803
- * @tc.name: 03.testCanvasScaleMaximum
- * @tc.desc: test for 03.testCanvasScaleMaximum.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2803
+ * @tc.name: testCanvasScaleMaximum
+ * @tc.desc: test for testCanvasScaleMaximum.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2803, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasScaleMaximum, TestSize.Level3) {
     // 1. Create a canvas
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
 
@@ -1451,26 +1450,26 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2804
- * @tc.name: 04.testCanvasScaleInputDestroyed
- * @tc.desc: test for 04.testCanvasScaleInputDestroyed.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2804
+ * @tc.name: testCanvasScaleInputDestroyed
+ * @tc.desc: test for testCanvasScaleInputDestroyed.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2804, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasScaleInputDestroyed, TestSize.Level3) {
     // Deprecated
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2805
- * @tc.name: 05.testCanvasScaleMultipleCalls
- * @tc.desc: test for 05.testCanvasScaleMultipleCalls.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_2805
+ * @tc.name: testCanvasScaleMultipleCalls
+ * @tc.desc: test for testCanvasScaleMultipleCalls.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2805, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasScaleMultipleCalls, TestSize.Level3) {
     // 1. Create a canvas
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
 
