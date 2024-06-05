@@ -15,10 +15,7 @@
 
 #include "gtest/gtest.h"
 
-#include "EGL/egl.h"
-#include "EGL/eglext.h"
-#include "GLES3/gl32.h"
-#include "drawing_gpu_context.h"
+#include "drawing_color_space.h"
 
 using namespace testing;
 using namespace testing::ext;
@@ -26,28 +23,19 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class NativeXTSDrawingGpuContextTest : public testing::Test {};
+class DrawingNativeColorSpaceTest : public testing::Test {};
 
 /*
- * @tc.name: OH_Drawing_GpuContextCreateFromGL
- * @tc.desc: test for OH_Drawing_GpuContextCreateFromGL.
+ * @tc.name: OH_Drawing_ColorSpaceDestroy
+ * @tc.desc: test for OH_Drawing_ColorSpaceDestroy.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingGpuContextTest, OH_Drawing_GpuContextCreateFromGL, TestSize.Level1) {
-    // todo cpp crash when OH_Drawing_GpuContextCreateFromGL
-}
-
-/*
- * @tc.name: OH_Drawing_GpuContextDestroy
- * @tc.desc: test for OH_Drawing_GpuContextDestroy.
- * @tc.size  : SmallTest
- * @tc.type  : Function
- * @tc.level : Level 1
- */
-HWTEST_F(NativeXTSDrawingGpuContextTest, OH_Drawing_GpuContextDestroy, TestSize.Level1) {
-    // todo cpp crash when OH_Drawing_GpuContextCreateFromGL
+HWTEST_F(DrawingNativeColorSpaceTest, OH_Drawing_ColorSpaceDestroy, TestSize.Level1) {
+    OH_Drawing_ColorSpace *colorSpace = OH_Drawing_ColorSpaceCreateSrgb();
+    EXPECT_NE(colorSpace, nullptr);
+    OH_Drawing_ColorSpaceDestroy(colorSpace);
 }
 
 } // namespace Drawing

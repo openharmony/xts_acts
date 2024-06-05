@@ -28,7 +28,7 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class NativeXTSDrawingRoundRectTest : public testing::Test {};
+class DrawingNativeRoundRectTest : public testing::Test {};
 
 /*
  * @tc.name: OH_Drawing_RoundRectCreate
@@ -37,7 +37,7 @@ class NativeXTSDrawingRoundRectTest : public testing::Test {};
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingRoundRectTest, OH_Drawing_RoundRectCreate, TestSize.Level1) {
+HWTEST_F(DrawingNativeRoundRectTest, OH_Drawing_RoundRectCreate, TestSize.Level1) {
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(10, 100, 200, 300);
     EXPECT_NE(rect, nullptr);
     OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 10, 10);
@@ -53,7 +53,7 @@ HWTEST_F(NativeXTSDrawingRoundRectTest, OH_Drawing_RoundRectCreate, TestSize.Lev
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingRoundRectTest, OH_Drawing_RoundRectSetCorner, TestSize.Level1) {
+HWTEST_F(DrawingNativeRoundRectTest, OH_Drawing_RoundRectSetCorner, TestSize.Level1) {
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(10, 100, 200, 300);
     EXPECT_NE(rect, nullptr);
     OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 0, 0);
@@ -71,7 +71,7 @@ HWTEST_F(NativeXTSDrawingRoundRectTest, OH_Drawing_RoundRectSetCorner, TestSize.
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingRoundRectTest, OH_Drawing_RoundRectGetCorner, TestSize.Level1) {
+HWTEST_F(DrawingNativeRoundRectTest, OH_Drawing_RoundRectGetCorner, TestSize.Level1) {
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(10, 100, 200, 300);
     OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 0, 0);
     OH_Drawing_RoundRectSetCorner(nullptr, OH_Drawing_CornerPos::CORNER_POS_BOTTOM_LEFT, {10, 10});
@@ -91,7 +91,7 @@ HWTEST_F(NativeXTSDrawingRoundRectTest, OH_Drawing_RoundRectGetCorner, TestSize.
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingRoundRectTest, OH_Drawing_RoundRectDestroy, TestSize.Level1) {
+HWTEST_F(DrawingNativeRoundRectTest, OH_Drawing_RoundRectDestroy, TestSize.Level1) {
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(10, 100, 200, 300);
     EXPECT_NE(rect, nullptr);
     OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 10, 10);

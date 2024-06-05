@@ -23,7 +23,7 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class NativeXTSDrawingShadowLayerTest : public testing::Test {};
+class DrawingNativeShadowLayerTest : public testing::Test {};
 
 /*
  * @tc.name: OH_Drawing_ShadowLayerCreate
@@ -32,7 +32,7 @@ class NativeXTSDrawingShadowLayerTest : public testing::Test {};
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingShadowLayerTest, OH_Drawing_ShadowLayerCreate, TestSize.Level1) {
+HWTEST_F(DrawingNativeShadowLayerTest, OH_Drawing_ShadowLayerCreate, TestSize.Level1) {
     OH_Drawing_ShadowLayer *shadowLayer = OH_Drawing_ShadowLayerCreate(3.f, -3.f, 3.f, 0xFF00FF00);
     EXPECT_NE(shadowLayer, nullptr);
     OH_Drawing_ShadowLayerDestroy(shadowLayer);
@@ -45,7 +45,7 @@ HWTEST_F(NativeXTSDrawingShadowLayerTest, OH_Drawing_ShadowLayerCreate, TestSize
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingShadowLayerTest, OH_Drawing_ShadowLayerDestroy, TestSize.Level1) {
+HWTEST_F(DrawingNativeShadowLayerTest, OH_Drawing_ShadowLayerDestroy, TestSize.Level1) {
     OH_Drawing_ShadowLayer *shadowLayer = OH_Drawing_ShadowLayerCreate(3.f, -3.f, 3.f, 0xFF00FF00);
     EXPECT_NE(shadowLayer, nullptr);
     OH_Drawing_ShadowLayerDestroy(shadowLayer);

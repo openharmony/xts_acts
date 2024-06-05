@@ -16,11 +16,27 @@
 #include "gtest/gtest.h"
 
 #include "drawing_bitmap.h"
+#include "drawing_brush.h"
+#include "drawing_canvas.h"
 #include "drawing_color.h"
 #include "drawing_color_filter.h"
+#include "drawing_filter.h"
+#include "drawing_font.h"
 #include "drawing_image.h"
-#include "drawing_image_filter.h"
 #include "drawing_mask_filter.h"
+#include "drawing_matrix.h"
+#include "drawing_memory_stream.h"
+#include "drawing_path.h"
+#include "drawing_pen.h"
+#include "drawing_point.h"
+#include "drawing_rect.h"
+#include "drawing_region.h"
+#include "drawing_round_rect.h"
+#include "drawing_sampling_options.h"
+#include "drawing_shader_effect.h"
+#include "drawing_shadow_layer.h"
+#include "drawing_text_blob.h"
+#include "drawing_typeface.h"
 #include "effect/color_filter.h"
 #include "effect/filter.h"
 
@@ -30,32 +46,19 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class NativeXTSDrawingMaskFilterTest : public testing::Test {};
+class DrawingNativeColorTest : public testing::Test {};
 
 /*
- * @tc.name: OH_Drawing_MaskFilterCreateBlur
- * @tc.desc: test for OH_Drawing_MaskFilterCreateBlur.
+ * @tc.name: OH_Drawing_ColorSetArgb
+ * @tc.desc: test for OH_Drawing_ColorSetArgb.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingMaskFilterTest, OH_Drawing_MaskFilterCreateBlur, TestSize.Level1) {
-    OH_Drawing_MaskFilter *maskFilter = OH_Drawing_MaskFilterCreateBlur(OH_Drawing_BlurType::NORMAL, 10, true);
-    EXPECT_NE(maskFilter, nullptr);
-    OH_Drawing_MaskFilterDestroy(maskFilter);
-}
-
-/*
- * @tc.name: OH_Drawing_MaskFilterDestroy
- * @tc.desc: test for OH_Drawing_MaskFilterDestroy.
- * @tc.size  : SmallTest
- * @tc.type  : Function
- * @tc.level : Level 1
- */
-HWTEST_F(NativeXTSDrawingMaskFilterTest, OH_Drawing_MaskFilterDestroy, TestSize.Level1) {
-    OH_Drawing_MaskFilter *maskFilter = OH_Drawing_MaskFilterCreateBlur(OH_Drawing_BlurType::NORMAL, 10, true);
-    EXPECT_NE(maskFilter, nullptr);
-    OH_Drawing_MaskFilterDestroy(maskFilter);
+HWTEST_F(DrawingNativeColorTest, OH_Drawing_ColorSetArgb, TestSize.Level1) {
+    OH_Drawing_Brush *brush1 = OH_Drawing_BrushCreate();
+    OH_Drawing_BrushSetColor(brush1, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
+    EXPECT_EQ(OH_Drawing_BrushGetColor(brush1), 0xFFFF0000);
 }
 
 } // namespace Drawing

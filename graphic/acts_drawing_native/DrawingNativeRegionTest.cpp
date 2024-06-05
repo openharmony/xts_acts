@@ -26,7 +26,7 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class NativeXTSDrawingRegionTest : public testing::Test {};
+class DrawingNativeRegionTest : public testing::Test {};
 
 /*
  * @tc.name: OH_Drawing_RegionSetRect
@@ -35,7 +35,7 @@ class NativeXTSDrawingRegionTest : public testing::Test {};
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingRegionTest, OH_Drawing_RegionSetRect, TestSize.Level1) {
+HWTEST_F(DrawingNativeRegionTest, OH_Drawing_RegionSetRect, TestSize.Level1) {
     OH_Drawing_Region *region = OH_Drawing_RegionCreate();
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0.0f, 0.0f, 256.0f, 256.0f);
     EXPECT_TRUE(OH_Drawing_RegionSetRect(region, rect));
@@ -50,7 +50,7 @@ HWTEST_F(NativeXTSDrawingRegionTest, OH_Drawing_RegionSetRect, TestSize.Level1) 
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingRegionTest, OH_Drawing_RegionContains, TestSize.Level1) {
+HWTEST_F(DrawingNativeRegionTest, OH_Drawing_RegionContains, TestSize.Level1) {
     OH_Drawing_Region *region = OH_Drawing_RegionCreate();
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0.0f, 0.0f, 256.0f, 256.0f);
     OH_Drawing_RegionSetRect(region, rect);
@@ -71,7 +71,7 @@ HWTEST_F(NativeXTSDrawingRegionTest, OH_Drawing_RegionContains, TestSize.Level1)
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingRegionTest, OH_Drawing_RegionOp, TestSize.Level1) {
+HWTEST_F(DrawingNativeRegionTest, OH_Drawing_RegionOp, TestSize.Level1) {
     OH_Drawing_Region *region = OH_Drawing_RegionCreate();
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0.0f, 0.0f, 256.0f, 256.0f);
     OH_Drawing_RegionSetRect(region, rect);
@@ -94,7 +94,7 @@ HWTEST_F(NativeXTSDrawingRegionTest, OH_Drawing_RegionOp, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingRegionTest, OH_Drawing_RegionSetPath, TestSize.Level1) {
+HWTEST_F(DrawingNativeRegionTest, OH_Drawing_RegionSetPath, TestSize.Level1) {
     OH_Drawing_Region *region = OH_Drawing_RegionCreate();
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0.0f, 0.0f, 256.0f, 256.0f);
     OH_Drawing_RegionSetRect(region, rect);
@@ -122,7 +122,7 @@ HWTEST_F(NativeXTSDrawingRegionTest, OH_Drawing_RegionSetPath, TestSize.Level1) 
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingRegionTest, OH_Drawing_RegionDestroy, TestSize.Level1) {
+HWTEST_F(DrawingNativeRegionTest, OH_Drawing_RegionDestroy, TestSize.Level1) {
     OH_Drawing_Region *region = OH_Drawing_RegionCreate();
     EXPECT_NE(region, nullptr);
     OH_Drawing_RegionDestroy(region);

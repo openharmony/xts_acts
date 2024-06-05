@@ -25,7 +25,7 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class NativeXTSDrawingFontMgrTest : public testing::Test {};
+class DrawingNativeFontMgrTest : public testing::Test {};
 
 /*
  * @tc.name: OH_Drawing_FontMgrCreate
@@ -34,7 +34,7 @@ class NativeXTSDrawingFontMgrTest : public testing::Test {};
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrCreate, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontMgrTest, OH_Drawing_FontMgrCreate, TestSize.Level1) {
     OH_Drawing_FontMgr *mgr = OH_Drawing_FontMgrCreate();
     EXPECT_NE(mgr, nullptr);
     OH_Drawing_FontMgrDestroy(mgr);
@@ -47,7 +47,7 @@ HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrCreate, TestSize.Level1)
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrDestroy, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontMgrTest, OH_Drawing_FontMgrDestroy, TestSize.Level1) {
     OH_Drawing_FontMgr *mgr = OH_Drawing_FontMgrCreate();
     EXPECT_NE(mgr, nullptr);
     OH_Drawing_FontMgrDestroy(mgr);
@@ -60,7 +60,7 @@ HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrDestroy, TestSize.Level1
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrGetFamilyCount, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontMgrTest, OH_Drawing_FontMgrGetFamilyCount, TestSize.Level1) {
     OH_Drawing_FontMgr *mgr = OH_Drawing_FontMgrCreate();
     EXPECT_NE(mgr, nullptr);
     int count = OH_Drawing_FontMgrGetFamilyCount(mgr);
@@ -75,7 +75,7 @@ HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrGetFamilyCount, TestSize
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrGetFamilyName, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontMgrTest, OH_Drawing_FontMgrGetFamilyName, TestSize.Level1) {
     OH_Drawing_FontMgr *mgr = OH_Drawing_FontMgrCreate();
     EXPECT_NE(mgr, nullptr);
     char *familyName = OH_Drawing_FontMgrGetFamilyName(mgr, 0);
@@ -90,7 +90,7 @@ HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrGetFamilyName, TestSize.
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrDestroyFamilyName, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontMgrTest, OH_Drawing_FontMgrDestroyFamilyName, TestSize.Level1) {
     OH_Drawing_FontMgr *mgr = OH_Drawing_FontMgrCreate();
     EXPECT_NE(mgr, nullptr);
     char *familyName = OH_Drawing_FontMgrGetFamilyName(mgr, 0);
@@ -105,7 +105,7 @@ HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrDestroyFamilyName, TestS
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrCreateFontStyleSet, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontMgrTest, OH_Drawing_FontMgrCreateFontStyleSet, TestSize.Level1) {
     OH_Drawing_FontMgr *mgr = OH_Drawing_FontMgrCreate();
     EXPECT_NE(mgr, nullptr);
 
@@ -122,7 +122,7 @@ HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrCreateFontStyleSet, Test
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrDestroyFontStyleSet, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontMgrTest, OH_Drawing_FontMgrDestroyFontStyleSet, TestSize.Level1) {
     OH_Drawing_FontMgr *mgr = OH_Drawing_FontMgrCreate();
     EXPECT_NE(mgr, nullptr);
 
@@ -140,7 +140,7 @@ HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrDestroyFontStyleSet, Tes
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrMatchFamily, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontMgrTest, OH_Drawing_FontMgrMatchFamily, TestSize.Level1) {
     OH_Drawing_FontMgr *mgr = OH_Drawing_FontMgrCreate();
     EXPECT_NE(mgr, nullptr);
     const char *testFamilyName = "HarmonyOS-Sans";
@@ -157,7 +157,7 @@ HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrMatchFamily, TestSize.Le
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrMatchFamilyStyle, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontMgrTest, OH_Drawing_FontMgrMatchFamilyStyle, TestSize.Level1) {
     // todo cpp crash when OH_Drawing_FontMgrCreate
 }
 
@@ -168,7 +168,7 @@ HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrMatchFamilyStyle, TestSi
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrMatchFamilyStyleCharacter, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontMgrTest, OH_Drawing_FontMgrMatchFamilyStyleCharacter, TestSize.Level1) {
     // todo cpp crash when OH_Drawing_FontMgrCreate
 }
 
@@ -179,7 +179,7 @@ HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrMatchFamilyStyleCharacte
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontStyleSetCreateTypeface, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontMgrTest, OH_Drawing_FontStyleSetCreateTypeface, TestSize.Level1) {
     OH_Drawing_FontMgr *mgr = OH_Drawing_FontMgrCreate();
     OH_Drawing_FontStyleSet *fontStyleSet = OH_Drawing_FontMgrCreateFontStyleSet(mgr, 0);
     OH_Drawing_Typeface *typeface = OH_Drawing_FontStyleSetCreateTypeface(fontStyleSet, 0);
@@ -198,7 +198,7 @@ HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontStyleSetCreateTypeface, Tes
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontStyleSetGetStyle, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontMgrTest, OH_Drawing_FontStyleSetGetStyle, TestSize.Level1) {
     OH_Drawing_FontMgr *mgr = OH_Drawing_FontMgrCreate();
     OH_Drawing_FontStyleSet *fontStyleSet = OH_Drawing_FontMgrCreateFontStyleSet(mgr, 0);
     OH_Drawing_FontStyleStruct normalStyle;
@@ -217,7 +217,7 @@ HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontStyleSetGetStyle, TestSize.
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontStyleSetFreeStyleName, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontMgrTest, OH_Drawing_FontStyleSetFreeStyleName, TestSize.Level1) {
     OH_Drawing_FontMgr *mgr = OH_Drawing_FontMgrCreate();
     OH_Drawing_FontStyleSet *fontStyleSet = OH_Drawing_FontMgrCreateFontStyleSet(mgr, 0);
     OH_Drawing_FontStyleStruct normalStyle;
@@ -236,7 +236,7 @@ HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontStyleSetFreeStyleName, Test
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontStyleSetMatchStyle, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontMgrTest, OH_Drawing_FontStyleSetMatchStyle, TestSize.Level1) {
     OH_Drawing_FontMgr *mgr = OH_Drawing_FontMgrCreate();
     OH_Drawing_FontStyleSet *fontStyleSet = OH_Drawing_FontMgrCreateFontStyleSet(mgr, 0);
     OH_Drawing_FontStyleStruct normalStyle;
@@ -260,7 +260,7 @@ HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontStyleSetMatchStyle, TestSiz
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontStyleSetCount, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontMgrTest, OH_Drawing_FontStyleSetCount, TestSize.Level1) {
     OH_Drawing_FontMgr *mgr = OH_Drawing_FontMgrCreate();
     OH_Drawing_FontStyleSet *fontStyleSet = OH_Drawing_FontMgrCreateFontStyleSet(mgr, 0);
     int count = OH_Drawing_FontStyleSetCount(fontStyleSet);
