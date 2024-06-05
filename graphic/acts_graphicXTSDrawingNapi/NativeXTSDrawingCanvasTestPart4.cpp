@@ -1074,8 +1074,7 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
     for (int i = 0; i < 10; i++) {
         OH_Drawing_CanvasSetMatrix(canvas, matrix);
         OH_Drawing_CanvasResetMatrix(canvas);
-        float val = OH_Drawing_MatrixGetValue(matrix, 0);
-        EXPECT_EQ(val, 1);
+        EXPECT_EQ(OH_Drawing_MatrixGetValue(matrix, 0), 1);
     }
     // 6. Free memory
     OH_Drawing_MatrixDestroy(matrix);
