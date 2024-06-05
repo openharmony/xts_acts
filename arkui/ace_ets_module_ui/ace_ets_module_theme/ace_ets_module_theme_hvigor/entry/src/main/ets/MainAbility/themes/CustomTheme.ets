@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { CustomColors, CustomTheme } from '@ohos.arkui.theme';
-
+import { brownThemeColors } from './customTheme/BrownCustomThemeColor';
 import { greenThemeColors } from './customTheme/GreenCustomThemeColor';
 import { redThemeColors } from './customTheme/RedCustomThemeColor';
 import { systemColors } from './systemTheme/SystemColors';
@@ -25,6 +25,7 @@ export class CustomThemeImpl implements CustomTheme {
     this.colors = colors;
   }
 }
+export const brownCustomTheme: CustomTheme = new CustomThemeImpl(brownThemeColors);
 export const greenCustomTheme: CustomTheme =  new CustomThemeImpl(greenThemeColors);
 export const redCustomTheme: CustomTheme =  new CustomThemeImpl(redThemeColors);
 export const systemDefaultTheme: CustomTheme = new CustomThemeImpl(systemColors);

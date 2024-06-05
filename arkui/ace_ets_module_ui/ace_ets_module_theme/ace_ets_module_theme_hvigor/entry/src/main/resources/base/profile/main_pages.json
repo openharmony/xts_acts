@@ -2,6 +2,8 @@
     "src": [
           "MainAbility/pages/index/index",
           "MainAbility/pages/themeTokensPages/SetDefaultThemeTestPage",
-          "MainAbility/pages/themeTokensPages/SystemThemeTestPage"
+          "MainAbility/pages/themeTokensPages/SystemThemeTestPage",
+          "MainAbility/pages/themeTokensPages/WithThemeTestPage",
+          "MainAbility/pages/components/AlphabetIndexerPage"
     ]
 }

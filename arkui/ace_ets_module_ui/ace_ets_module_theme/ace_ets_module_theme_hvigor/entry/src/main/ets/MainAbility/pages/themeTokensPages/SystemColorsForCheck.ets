@@ -13,11 +13,8 @@
  * limitations under the License.
  */
 import { Colors } from '../../themes/checkSystemTokens/colorValues/ColorsTokens';
+import { DataClass } from '../../../test/Utils';
 
-export interface DataClass {
-  text: string;
-  token: ResourceColor;
-}
 export const colorsForCheck = 'checkColor';
 
 @Component

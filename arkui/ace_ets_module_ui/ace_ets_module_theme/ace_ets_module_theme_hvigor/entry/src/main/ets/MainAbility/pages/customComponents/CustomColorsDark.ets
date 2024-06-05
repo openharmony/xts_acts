@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import { postfixDark } from '../themeTokensPages/WithThemeTestPage';
 import { Theme } from '@ohos.arkui.theme';
 import {
   DataClass,
@@ -24,10 +25,10 @@ import {
   setInteractiveData
 } from '../../../test/Utils';
 
-export const colorTheme: string = 'theme';
+export let customButtonDarkTheme: Theme | undefined;
 
 @Component
-export struct CustomColorList {
+export struct  CustomColorsDark {
   @State data: DataClass[] = [];
 
   onWillApplyTheme(theme: Theme) {
@@ -41,7 +42,6 @@ export struct CustomColorList {
   }
 
   build() {
-    Row() {
       Column({ space: '8vp' }) {
         ForEach(this.data, (item: DataClass) => {
           Row() {
@@ -49,15 +49,14 @@ export struct CustomColorList {
               .width('15%')
               .height('20vp')
               .backgroundColor(item.token)
-              .key(`${item.text}${colorTheme}`)
+              .key(`${item.text}${postfixDark}`)
               .borderColor(Color.Black)
               .borderWidth('1vp')
-            Text(item.text)
+            Text(`${item.text}${postfixDark}`)
               .padding({ left: '8vp' })
           }
           .padding({ left: '8vp', right: '8vp' })
         }, (item: DataClass) => JSON.stringify(item.token) + item.text)
       }.alignItems(HorizontalAlign.Start)
     }
-  }
 }
