@@ -545,6 +545,7 @@ import textInputOnSubmitTest from './textinput/TextInputOnSubmitTest.test'
 import textInputOnCutTest from './textinput/TextInputOnCutTest.test'
 import textInputOnPasteTest from './textinput/TextInputOnPasteTest.test'
 import textInputDefaultFocusTest from './textinput/TextInputDefaultFocusTest'
+import TestArkUIAddApi from './arkApi/arkApi.test'
 
 export default function testsuite() {
   datePickerAccessibilityDescriptionTest()
@@ -1080,4 +1081,5 @@ export default function testsuite() {
   customComponentOnMeasureTest()
   customComponentOnLayoutTest()
   customComponentOnDrawTest()
+  TestArkUIAddApi()
 }

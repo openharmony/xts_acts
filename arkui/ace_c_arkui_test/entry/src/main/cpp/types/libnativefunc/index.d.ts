@@ -4741,3 +4741,15 @@ export const testTextInputStopEditing003: () => number;
 export const testTextInputStopEditing004: () => number;
 
 export const testTextInputStopEditing005: () => number;
+
+export const TestArkUIAddApi001: () => number;
+
+export const TestArkUIAddApi002: () => number;
+
+export const TestArkUIAddApi003: () => number;
+
+export const TestArkUIAddApi004: () => number;
+
+export const TestArkUIAddApi005: () => number;
+
+export const TestArkUIAddApi006: () => number;
