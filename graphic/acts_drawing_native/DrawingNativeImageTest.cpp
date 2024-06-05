@@ -24,7 +24,7 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class NativeXTSDrawingImageTest : public testing::Test {};
+class DrawingNativeImageTest : public testing::Test {};
 
 /*
  * @tc.name: OH_Drawing_ImageDestroy
@@ -33,7 +33,7 @@ class NativeXTSDrawingImageTest : public testing::Test {};
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingImageTest, OH_Drawing_ImageDestroy, TestSize.Level1) {
+HWTEST_F(DrawingNativeImageTest, OH_Drawing_ImageDestroy, TestSize.Level1) {
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
     OH_Drawing_ImageDestroy(image);
     EXPECT_TRUE(true);

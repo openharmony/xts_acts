@@ -36,7 +36,7 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class NativeXTSDrawingPathTest : public testing::Test {};
+class DrawingNativePathTest : public testing::Test {};
 
 /*
  * @tc.name: OH_Drawing_CreateDashPathEffect
@@ -45,7 +45,7 @@ class NativeXTSDrawingPathTest : public testing::Test {};
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_CreateDashPathEffect, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_CreateDashPathEffect, TestSize.Level1) {
     OH_Drawing_Pen *pen = OH_Drawing_PenCreate();
     EXPECT_NE(pen, nullptr);
     float intervals[] = {1, 1, 1};
@@ -62,7 +62,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_CreateDashPathEffect, TestSize.Lev
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathEffectDestroy, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathEffectDestroy, TestSize.Level1) {
     OH_Drawing_Pen *pen = OH_Drawing_PenCreate();
     EXPECT_NE(pen, nullptr);
     float intervals[] = {1, 1, 1};
@@ -79,7 +79,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathEffectDestroy, TestSize.Level1
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathDestroy, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathDestroy, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     EXPECT_NE(path, nullptr);
     OH_Drawing_PathDestroy(path);
@@ -92,7 +92,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathDestroy, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathMoveTo, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathMoveTo, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_PathMoveTo(path, 20, 20);
     OH_Drawing_PathMoveTo(path, -1, 21.5);
@@ -108,7 +108,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathMoveTo, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathLineTo, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathLineTo, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_PathLineTo(path, 50, 40);
     OH_Drawing_PathLineTo(path, -50, 10.2);
@@ -127,7 +127,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathLineTo, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathArcTo, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathArcTo, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_PathArcTo(path, 10, 10, 20, 0, 0, 90);
     OH_Drawing_PathArcTo(path, -10, 10, 10, -10, 0, 90);
@@ -143,7 +143,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathArcTo, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathQuadTo, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathQuadTo, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_PathQuadTo(path, 0, 0, 30, 30);
     OH_Drawing_PathQuadTo(path, -20.5f, -20.5f, 30, 0);
@@ -162,7 +162,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathQuadTo, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathConicTo, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathConicTo, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_PathConicTo(path, 0, 0, 30, 30, 1);
     OH_Drawing_PathConicTo(path, -20.5f, -20.5f, 30, 0, 1);
@@ -181,7 +181,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathConicTo, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathCubicTo, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathCubicTo, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_PathCubicTo(path, 30, 40, 60, 0, 50, 20);
     OH_Drawing_PathRCubicTo(path, 30, 40, 60, 0, 50, 20);
@@ -200,7 +200,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathCubicTo, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathAddRect, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathAddRect, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // rect left[50], top[50],right[250], bottom[250]
     OH_Drawing_PathAddRect(path, 50, 50, 250, 250, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
@@ -219,7 +219,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathAddRect, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathAddRoundRect, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathAddRoundRect, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(50, 50, 250, 250);
     OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 20, 20);
@@ -241,7 +241,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathAddRoundRect, TestSize.Level1)
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathAddArc, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathAddArc, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // rect left[50], top[50],right[250], bottom[250]
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(50, 50, 250, 250);
@@ -264,7 +264,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathAddArc, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathContains, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathContains, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     // rect left[50], top[50],right[250], bottom[250]
     OH_Drawing_PathAddRect(path, 50, 50, 250, 250, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
@@ -283,7 +283,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathContains, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathSetFillType, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathSetFillType, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_PathSetFillType(nullptr, PATH_FILL_TYPE_WINDING);
     OH_Drawing_PathSetFillType(path, PATH_FILL_TYPE_WINDING);
@@ -306,7 +306,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathSetFillType, TestSize.Level1) 
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathClose, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathClose, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_PathLineTo(path, 50, 40);
     OH_Drawing_PathClose(path);
@@ -324,7 +324,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathClose, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathReset, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathReset, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_PathMoveTo(path, 20, 20);
     OH_Drawing_PathReset(path);
@@ -340,7 +340,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathReset, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathAddOvalWithInitialPoint, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathAddOvalWithInitialPoint, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 100, 500, 400);
     OH_Drawing_PathAddOvalWithInitialPoint(path, rect, 10, PATH_DIRECTION_CW);
@@ -361,7 +361,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathAddOvalWithInitialPoint, TestS
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathRMoveTo, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathRMoveTo, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_PathRMoveTo(path, 100, 100);
     OH_Drawing_PathLineTo(path, 300, 300);
@@ -380,7 +380,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathRMoveTo, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathRLineTo, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathRLineTo, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_PathMoveTo(path, 100, 100);
     OH_Drawing_PathRLineTo(path, 300, 300);
@@ -399,7 +399,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathRLineTo, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathRQuadTo, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathRQuadTo, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_PathQuadTo(path, 0, 0, 30, 30);
     OH_Drawing_PathRQuadTo(path, 100, 100, 100, 300);
@@ -418,7 +418,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathRQuadTo, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathRConicTo, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathRConicTo, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_PathRConicTo(path, 100, 100, 100, 300, 5);
     OH_Drawing_PathRConicTo(path, 100, 100, 100, 300, 5);
@@ -437,7 +437,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathRConicTo, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathRCubicTo, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathRCubicTo, TestSize.Level1) {
     OH_Drawing_Path *path14 = OH_Drawing_PathCreate();
     OH_Drawing_PathCubicTo(path14, 30, 40, 60, 0, 50, 20);
     OH_Drawing_PathRCubicTo(path14, 30, 40, 60, 0, 50, 20);
@@ -456,7 +456,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathRCubicTo, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathAddPathWithMode, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathAddPathWithMode, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0.0f, 0.0f, 200.0f, 300.0f);
     OH_Drawing_PathAddRectWithInitialCorner(path, rect, PATH_DIRECTION_CW, 0);
@@ -479,7 +479,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathAddPathWithMode, TestSize.Leve
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathAddPathWithMatrixAndMode, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathAddPathWithMatrixAndMode, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0.0f, 0.0f, 200.0f, 300.0f);
     OH_Drawing_PathAddRectWithInitialCorner(path, rect, PATH_DIRECTION_CW, 0);
@@ -524,7 +524,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathAddPathWithMatrixAndMode, Test
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathAddPathWithOffsetAndMode, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathAddPathWithOffsetAndMode, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0.0f, 0.0f, 200.0f, 300.0f);
     OH_Drawing_PathAddRectWithInitialCorner(path, rect, PATH_DIRECTION_CW, 0);
@@ -547,7 +547,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathAddPathWithOffsetAndMode, Test
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathAddRectWithInitialCorner, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathAddRectWithInitialCorner, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0.0f, 0.0f, 200.0f, 300.0f);
     OH_Drawing_PathAddRectWithInitialCorner(path, rect, PATH_DIRECTION_CW, 0);
@@ -568,7 +568,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathAddRectWithInitialCorner, Test
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathOffset, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathOffset, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_Path *path2 = OH_Drawing_PathCreate();
     OH_Drawing_PathOffset(path, path2, 50, 40);
@@ -586,7 +586,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathOffset, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathTransformWithPerspectiveClip, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathTransformWithPerspectiveClip, TestSize.Level1) {
     OH_Drawing_Path *path15 = OH_Drawing_PathCreate();
     OH_Drawing_PathAddRect(path15, 100, 500, 500, 100, PATH_DIRECTION_CW);
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateTranslation(100, 100);
@@ -607,7 +607,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathTransformWithPerspectiveClip, 
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathGetLength, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathGetLength, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_PathSetFillType(nullptr, PATH_FILL_TYPE_WINDING);
     OH_Drawing_PathSetFillType(path, PATH_FILL_TYPE_WINDING);
@@ -631,7 +631,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathGetLength, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathAddOval, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathAddOval, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 100, 500, 400);
     OH_Drawing_PathAddOval(path, rect, PATH_DIRECTION_CW);
@@ -652,7 +652,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathAddOval, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathAddCircle, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathAddCircle, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     EXPECT_NE(path, nullptr);
     OH_Drawing_PathAddCircle(path, 1.0, 1.0, 1.0, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
@@ -672,7 +672,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathAddCircle, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathAddPolygon, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathAddPolygon, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     EXPECT_NE(path, nullptr);
 
@@ -695,7 +695,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathAddPolygon, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathGetBounds, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathGetBounds, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     EXPECT_NE(path, nullptr);
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 100, 500, 400);
@@ -715,7 +715,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathGetBounds, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathIsClosed, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathIsClosed, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     EXPECT_NE(path, nullptr);
     OH_Drawing_PathAddCircle(path, 1.0, 1.0, 1.0, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
@@ -731,7 +731,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathIsClosed, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathGetPositionTangent, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathGetPositionTangent, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     EXPECT_NE(path, nullptr);
 
@@ -753,7 +753,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathGetPositionTangent, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathOp, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathOp, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     EXPECT_NE(path, nullptr);
     OH_Drawing_PathAddCircle(path, 1.0, 1.0, 1.0, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
@@ -778,7 +778,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathOp, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathGetMatrix, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathGetMatrix, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     EXPECT_NE(path, nullptr);
     OH_Drawing_PathAddCircle(path, 1.0, 1.0, 1.0, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
@@ -800,7 +800,7 @@ HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathGetMatrix, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPathTest, OH_Drawing_PathBuildFromSvgString, TestSize.Level1) {
+HWTEST_F(DrawingNativePathTest, OH_Drawing_PathBuildFromSvgString, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     EXPECT_NE(path, nullptr);
     const char *str = "123456";

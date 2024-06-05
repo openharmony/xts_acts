@@ -45,7 +45,7 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class NativeXTSDrawingFontTest : public testing::Test {};
+class DrawingNativeFontTest : public testing::Test {};
 
 /*
  * @tc.name: OH_Drawing_FontSetBaselineSnap
@@ -54,7 +54,7 @@ class NativeXTSDrawingFontTest : public testing::Test {};
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontSetBaselineSnap, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontTest, OH_Drawing_FontSetBaselineSnap, TestSize.Level1) {
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
     OH_Drawing_FontSetBaselineSnap(font, true);
@@ -70,7 +70,7 @@ HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontSetBaselineSnap, TestSize.Leve
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontIsBaselineSnap, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontTest, OH_Drawing_FontIsBaselineSnap, TestSize.Level1) {
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
     OH_Drawing_FontSetBaselineSnap(nullptr, true);
@@ -91,7 +91,7 @@ HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontIsBaselineSnap, TestSize.Level
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontSetSubpixel, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontTest, OH_Drawing_FontSetSubpixel, TestSize.Level1) {
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
     OH_Drawing_FontSetSubpixel(nullptr, false);
@@ -112,7 +112,7 @@ HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontSetSubpixel, TestSize.Level1) 
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontIsSubpixel, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontTest, OH_Drawing_FontIsSubpixel, TestSize.Level1) {
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
     OH_Drawing_FontSetSubpixel(nullptr, false);
@@ -133,7 +133,7 @@ HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontIsSubpixel, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontSetForceAutoHinting, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontTest, OH_Drawing_FontSetForceAutoHinting, TestSize.Level1) {
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
     EXPECT_EQ(OH_Drawing_FontIsForceAutoHinting(nullptr), false);
@@ -153,7 +153,7 @@ HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontSetForceAutoHinting, TestSize.
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontIsForceAutoHinting, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontTest, OH_Drawing_FontIsForceAutoHinting, TestSize.Level1) {
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
     EXPECT_EQ(OH_Drawing_FontIsForceAutoHinting(nullptr), false);
@@ -173,7 +173,7 @@ HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontIsForceAutoHinting, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontGetTextSize, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontTest, OH_Drawing_FontGetTextSize, TestSize.Level1) {
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
     OH_Drawing_FontSetTextSize(font, 100);
@@ -189,7 +189,7 @@ HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontGetTextSize, TestSize.Level1) 
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontTextToGlyphs, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontTest, OH_Drawing_FontTextToGlyphs, TestSize.Level1) {
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     OH_Drawing_FontSetTextSize(font, 100); // 100 means font text size
     EXPECT_NE(font, nullptr);
@@ -215,7 +215,7 @@ HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontTextToGlyphs, TestSize.Level1)
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontGetWidths, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontTest, OH_Drawing_FontGetWidths, TestSize.Level1) {
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     OH_Drawing_FontSetTextSize(font, 100); // 100 means font text size
     EXPECT_NE(font, nullptr);
@@ -244,7 +244,7 @@ HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontGetWidths, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontIsLinearText, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontTest, OH_Drawing_FontIsLinearText, TestSize.Level1) {
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
     bool ret = OH_Drawing_FontIsLinearText(font);
@@ -262,7 +262,7 @@ HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontIsLinearText, TestSize.Level1)
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontGetTextSkewX, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontTest, OH_Drawing_FontGetTextSkewX, TestSize.Level1) {
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
     OH_Drawing_FontSetTextSkewX(font, 10);
@@ -278,7 +278,7 @@ HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontGetTextSkewX, TestSize.Level1)
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontIsFakeBoldText, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontTest, OH_Drawing_FontIsFakeBoldText, TestSize.Level1) {
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
     bool ret = OH_Drawing_FontIsFakeBoldText(font);
@@ -296,7 +296,7 @@ HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontIsFakeBoldText, TestSize.Level
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontSetScaleX, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontTest, OH_Drawing_FontSetScaleX, TestSize.Level1) {
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
     OH_Drawing_FontSetScaleX(nullptr, 2);
@@ -314,7 +314,7 @@ HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontSetScaleX, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontGetScaleX, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontTest, OH_Drawing_FontGetScaleX, TestSize.Level1) {
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
     OH_Drawing_FontSetScaleX(nullptr, 2);
@@ -332,7 +332,7 @@ HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontGetScaleX, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontSetHinting, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontTest, OH_Drawing_FontSetHinting, TestSize.Level1) {
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
     EXPECT_TRUE(OH_Drawing_FontGetHinting(nullptr) == OH_Drawing_FontHinting::FONT_HINTING_NONE);
@@ -352,7 +352,7 @@ HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontSetHinting, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontGetHinting, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontTest, OH_Drawing_FontGetHinting, TestSize.Level1) {
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
     EXPECT_TRUE(OH_Drawing_FontGetHinting(nullptr) == OH_Drawing_FontHinting::FONT_HINTING_NONE);
@@ -372,7 +372,7 @@ HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontGetHinting, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontSetEmbeddedBitmaps, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontTest, OH_Drawing_FontSetEmbeddedBitmaps, TestSize.Level1) {
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
     EXPECT_TRUE(OH_Drawing_FontIsEmbeddedBitmaps(nullptr) == false);
@@ -390,7 +390,7 @@ HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontSetEmbeddedBitmaps, TestSize.L
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontIsEmbeddedBitmaps, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontTest, OH_Drawing_FontIsEmbeddedBitmaps, TestSize.Level1) {
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
     EXPECT_TRUE(OH_Drawing_FontIsEmbeddedBitmaps(nullptr) == false);
@@ -408,7 +408,7 @@ HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontIsEmbeddedBitmaps, TestSize.Le
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontSetEdging, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontTest, OH_Drawing_FontSetEdging, TestSize.Level1) {
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
     EXPECT_EQ(OH_Drawing_FontGetEdging(font), OH_Drawing_FontEdging::FONT_EDGING_ANTI_ALIAS);
@@ -431,7 +431,7 @@ HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontSetEdging, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontGetEdging, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontTest, OH_Drawing_FontGetEdging, TestSize.Level1) {
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
     EXPECT_EQ(OH_Drawing_FontGetEdging(font), OH_Drawing_FontEdging::FONT_EDGING_ANTI_ALIAS);
@@ -454,7 +454,7 @@ HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontGetEdging, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontDestroy, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontTest, OH_Drawing_FontDestroy, TestSize.Level1) {
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
     OH_Drawing_FontDestroy(font);
@@ -467,7 +467,7 @@ HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontDestroy, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontSetFakeBoldText, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontTest, OH_Drawing_FontSetFakeBoldText, TestSize.Level1) {
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
     bool ret = OH_Drawing_FontIsFakeBoldText(font);
@@ -485,7 +485,7 @@ HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontSetFakeBoldText, TestSize.Leve
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontSetLinearText, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontTest, OH_Drawing_FontSetLinearText, TestSize.Level1) {
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
     bool ret = OH_Drawing_FontIsLinearText(font);
@@ -503,7 +503,7 @@ HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontSetLinearText, TestSize.Level1
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontSetTextSize, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontTest, OH_Drawing_FontSetTextSize, TestSize.Level1) {
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
     OH_Drawing_FontSetTextSize(font, 100);
@@ -519,7 +519,7 @@ HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontSetTextSize, TestSize.Level1) 
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontCountText, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontTest, OH_Drawing_FontCountText, TestSize.Level1) {
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     OH_Drawing_FontSetTextSize(font, 100); // 100 means font text size
     EXPECT_NE(font, nullptr);
@@ -537,7 +537,7 @@ HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontCountText, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontSetTextSkewX, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontTest, OH_Drawing_FontSetTextSkewX, TestSize.Level1) {
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
     OH_Drawing_FontSetTextSkewX(font, 10);
@@ -553,7 +553,7 @@ HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontSetTextSkewX, TestSize.Level1)
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontSetTypeface, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontTest, OH_Drawing_FontSetTypeface, TestSize.Level1) {
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     OH_Drawing_Typeface *typeSurface = OH_Drawing_TypefaceCreateDefault();
     OH_Drawing_FontSetTypeface(font, typeSurface);
@@ -566,7 +566,7 @@ HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontSetTypeface, TestSize.Level1) 
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontGetTypeface, TestSize.Level1) {
+HWTEST_F(DrawingNativeFontTest, OH_Drawing_FontGetTypeface, TestSize.Level1) {
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
     OH_Drawing_Typeface *typeface = OH_Drawing_TypefaceCreateFromFile(nullptr, 0);

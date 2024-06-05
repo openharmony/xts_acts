@@ -23,7 +23,7 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class NativeXTSDrawingPointTest : public testing::Test {};
+class DrawingNativePointTest : public testing::Test {};
 
 /*
  * @tc.name: OH_Drawing_PointCreate
@@ -32,7 +32,7 @@ class NativeXTSDrawingPointTest : public testing::Test {};
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPointTest, OH_Drawing_PointCreate, TestSize.Level1) {
+HWTEST_F(DrawingNativePointTest, OH_Drawing_PointCreate, TestSize.Level1) {
     OH_Drawing_Point *point = OH_Drawing_PointCreate(100, 60);
     EXPECT_NE(point, nullptr);
     OH_Drawing_PointDestroy(point);
@@ -45,7 +45,7 @@ HWTEST_F(NativeXTSDrawingPointTest, OH_Drawing_PointCreate, TestSize.Level1) {
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPointTest, OH_Drawing_PointDestroy, TestSize.Level1) {
+HWTEST_F(DrawingNativePointTest, OH_Drawing_PointDestroy, TestSize.Level1) {
     OH_Drawing_Point *point = OH_Drawing_PointCreate(100, 60);
     EXPECT_NE(point, nullptr);
     OH_Drawing_PointDestroy(point);

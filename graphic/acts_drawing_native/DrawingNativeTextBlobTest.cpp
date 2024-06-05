@@ -16,12 +16,28 @@
 #include "gtest/gtest.h"
 
 #include "drawing_bitmap.h"
+#include "drawing_brush.h"
+#include "drawing_canvas.h"
 #include "drawing_color.h"
 #include "drawing_color_filter.h"
+#include "drawing_filter.h"
+#include "drawing_font.h"
 #include "drawing_image.h"
-#include "drawing_image_filter.h"
 #include "drawing_mask_filter.h"
+#include "drawing_matrix.h"
 #include "drawing_memory_stream.h"
+#include "drawing_path.h"
+#include "drawing_pen.h"
+#include "drawing_point.h"
+#include "drawing_rect.h"
+#include "drawing_region.h"
+#include "drawing_round_rect.h"
+#include "drawing_sampling_options.h"
+#include "drawing_shader_effect.h"
+#include "drawing_text_blob.h"
+#include "drawing_typeface.h"
+#include "effect/color_filter.h"
+#include "effect/filter.h"
 
 using namespace testing;
 using namespace testing::ext;
@@ -29,34 +45,18 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class NativeXTSDrawingMemoryStreamTest : public testing::Test {};
+class DrawingNativeTextBlobTest : public testing::Test {};
 
 /*
- * @tc.name: OH_Drawing_MemoryStreamCreate
- * @tc.desc: test for OH_Drawing_MemoryStreamCreate.
+ * @tc.name: OH_Drawing_TextBlobUniqueID
+ * @tc.desc: test for OH_Drawing_TextBlobUniqueID.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingMemoryStreamTest, OH_Drawing_MemoryStreamCreate, TestSize.Level1) {
-    size_t length = 1;
-    OH_Drawing_MemoryStream *memoryStream = OH_Drawing_MemoryStreamCreate(nullptr, length, false);
-    OH_Drawing_MemoryStreamDestroy(memoryStream);
-    EXPECT_TRUE(true);
-}
-
-/*
- * @tc.name: OH_Drawing_MemoryStreamDestroy
- * @tc.desc: test for OH_Drawing_MemoryStreamDestroy.
- * @tc.size  : SmallTest
- * @tc.type  : Function
- * @tc.level : Level 1
- */
-HWTEST_F(NativeXTSDrawingMemoryStreamTest, OH_Drawing_MemoryStreamDestroy, TestSize.Level1) {
-    size_t length = 1;
-    OH_Drawing_MemoryStream *memoryStream = OH_Drawing_MemoryStreamCreate(nullptr, length, false);
-    OH_Drawing_MemoryStreamDestroy(memoryStream);
-    EXPECT_TRUE(true);
+HWTEST_F(DrawingNativeTextBlobTest, OH_Drawing_TextBlobUniqueID, TestSize.Level1) {
+    // todo cpp crash when OH_Drawing_FontCreate
+    EXPECT_TRUE(OH_Drawing_TextBlobUniqueID(nullptr) == 0);
 }
 
 } // namespace Drawing
