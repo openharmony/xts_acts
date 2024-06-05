@@ -166,6 +166,7 @@ import swiperCachedCountTest from './swiper/SwiperCachedCountTest.test'
 import textWidthTest from './text/TextWidthTest.test'
 import textHeightTest from './text/TextHeightTest.test'
 import textPositionTest from './text/TextPositionTest.test'
+import TextStyleGraphicTest from './text/TextStyleGraphicTest.test'
 import scrollWidthTest from './scroll/ScrollWidthTest.test'
 import scrollHeightTest from './scroll/ScrollHeightTest.test'
 import scrollPositionTest from './scroll/ScrollPositionTest.test'
@@ -855,6 +856,7 @@ export default function testsuite() {
   stackTransitionTest()
   stackTranslateTest()
   stackWidthTest()
+  TextStyleGraphicTest()
   toggleBackgroundColorTest()
   toggleClipTest()
   toggleFocusableTest()
