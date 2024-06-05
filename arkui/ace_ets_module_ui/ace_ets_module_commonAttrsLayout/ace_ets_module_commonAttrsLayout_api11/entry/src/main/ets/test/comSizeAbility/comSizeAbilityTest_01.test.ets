@@ -18,23 +18,23 @@ import router from '@system.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 export default function comSizeAbilityTest_01 () {
-  describe('comSizeAbilityTestJsunit', function () {
+  describe('comSizeAbilityTest_01', function () {
     beforeEach(async function (done) {
-      console.info("comSizeAbilityTestJsunit beforeEach start")
+      console.info("comSizeAbilityTest_01 beforeEach start")
       let options = {
         uri: 'MainAbility/pages/comSizeAbility/comSizeAbilityTest_01'
       }
       try {
         router.clear()
         let pages = router.getState()
-        console.info("get comSizeAbilityTestJsunit state pages: " + JSON.stringify(pages))
+        console.info("get comSizeAbilityTest_01 state pages: " + JSON.stringify(pages))
         if (!("comSizeAbilityTest" == pages.name)) {
-          console.info("get comSizeAbilityTestJsunit state pages.name: " + JSON.stringify(pages.name))
+          console.info("get comSizeAbilityTest_01 state pages.name: " + JSON.stringify(pages.name))
           let result = await router.push(options)
-          console.info("push comSizeAbilityTestJsunit success: " + JSON.stringify(result))
+          console.info("push comSizeAbilityTest_01 success: " + JSON.stringify(result))
         }
       } catch (err) {
-        console.error ("push comSizeAbilityTestJsunit page error: " + err)
+        console.error ("push comSizeAbilityTest_01 page error: " + err)
         expect().assertFail()
       }
       done()
