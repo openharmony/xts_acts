@@ -675,6 +675,7 @@ export default function sceneNodeTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in scene.root?.children.clear() " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
