@@ -12,7 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#pragma once
+#ifndef DrawingNativeCanvasTest_H
+#define DrawingNativeCanvasTest_H
+
 #include "gtest/gtest.h"
 
 namespace OHOS {
@@ -23,3 +25,5 @@ class DrawingNativeCanvasTest : public testing::Test {};
 } // namespace Drawing
 } // namespace Rosen
 } // namespace OHOS
+
+#endif // DrawingNativeCanvasTest_H
