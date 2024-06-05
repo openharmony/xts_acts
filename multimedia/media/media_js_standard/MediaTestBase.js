@@ -61,7 +61,7 @@ export async function getAvRecorderFd(pathName, fileType) {
         fdNumber : null
     }
     
-    await context.getFilesDir().then((fileDir) => {
+    await featureAbility.getContext().getFilesDir().then((fileDir) => {
         console.info("case file dir is" + JSON.stringify(fileDir));
         pathName = fileDir + '/' + pathName;
         console.info("case pathName is" + pathName);
@@ -119,7 +119,7 @@ export function isFileOpen(fileDescriptor, done) {
 
 export async function getFdRead(pathName, done) {
     let fdReturn;
-    await context.getFilesDir().then((fileDir) => {
+    await featureAbility.getContext().getFilesDir().then((fileDir) => {
         console.info("case file dir is" + JSON.stringify(fileDir));
         pathName = fileDir + '/' + pathName;
         console.info("case pathName is" + pathName);
@@ -244,7 +244,7 @@ export async function getFd(pathName) {
         fdNumber : null
     }
     
-    await context.getFilesDir().then((fileDir) => {
+    await featureAbility.getContext().getFilesDir().then((fileDir) => {
         console.info("case file dir is" + JSON.stringify(fileDir));
         pathName = fileDir + '/' + pathName;
         console.info("case pathName is" + pathName);
@@ -265,7 +265,7 @@ export async function getAudioFd(pathName) {
         fdNumber : null
     }
     
-    await context.getFilesDir().then((fileDir) => {
+    await featureAbility.getContext().getFilesDir().then((fileDir) => {
         console.info("case file dir is" + JSON.stringify(fileDir));
         pathName = fileDir + '/' + pathName;
         console.info("case pathName is" + pathName);

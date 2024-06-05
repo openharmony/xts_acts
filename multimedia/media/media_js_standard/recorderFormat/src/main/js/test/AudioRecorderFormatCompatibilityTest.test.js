@@ -15,6 +15,7 @@
 
 import media from '@ohos.multimedia.media'
 import fs from '@ohos.file.fs';
+import featureAbility from '@ohos.ability.featureAbility'
 import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
@@ -83,7 +84,7 @@ describe('AudioRecorderFormatCompatibilityTest', function () {
     })
 
     async function getFd(pathName) {
-        await context.getFilesDir().then((fileDir) => {
+        await featureAbility.getContext().getFilesDir().then((fileDir) => {
             console.info("case file dir is" + JSON.stringify(fileDir));
             pathName = fileDir + '/' + pathName;
             console.info("case pathName is" + pathName);
