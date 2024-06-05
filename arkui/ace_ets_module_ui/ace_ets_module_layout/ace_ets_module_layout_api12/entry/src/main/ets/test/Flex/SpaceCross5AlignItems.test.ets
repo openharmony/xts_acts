@@ -57,7 +57,7 @@ export default function SpaceCross5AlignItemsJsunit() {
       console.info("[SpaceCross5AlignItemsTest_0010] component obj is: " + JSON.stringify(obj.$attrs.space.cross));
       expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Column");
       expect(obj.$attrs.constructor.wrap).assertEqual("FlexWrap.NoWrap");
-      expect(obj.$attrs.space).assertEqual("5.00px");
+      expect(obj.$attrs.space).assertEqual("0.00px");
       console.info('[SpaceCross5AlignItemsTest_0010] END');
       done();
     });
@@ -77,7 +77,7 @@ export default function SpaceCross5AlignItemsJsunit() {
       console.info("[SpaceCross5AlignItemsTest_0020] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.ColumnReverse");
       expect(obj.$attrs.constructor.alignItems).assertEqual("ItemAlign.Start");
-      expect(obj.$attrs.space).assertEqual("5.00px");
+      expect(obj.$attrs.space).assertEqual("0.00px");
       console.info('[SpaceCross5AlignItemsTest_0020] END');
       done();
     }); 
@@ -96,7 +96,7 @@ export default function SpaceCross5AlignItemsJsunit() {
       let obj = JSON.parse(strJson);
       console.info("[SpaceCross5AlignItemsTest_0030] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.constructor.alignItems).assertEqual("ItemAlign.Center");
-      expect(obj.$attrs.space).assertEqual("5.00px");
+      expect(obj.$attrs.space).assertEqual("0.00px");
       console.info('[SpaceCross5AlignItemsTest_0030] END');
       done();
     }); 
@@ -115,7 +115,7 @@ export default function SpaceCross5AlignItemsJsunit() {
       let obj = JSON.parse(strJson);
       console.info("[SpaceCross5AlignItemsTest_0040] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.constructor.alignItems).assertEqual("ItemAlign.End");
-      expect(obj.$attrs.space).assertEqual("5.00px");
+      expect(obj.$attrs.space).assertEqual("0.00px");
       console.info('[SpaceCross5AlignItemsTest_0040] END');
       done();
     });
@@ -134,7 +134,7 @@ export default function SpaceCross5AlignItemsJsunit() {
       let obj = JSON.parse(strJson);
       console.info("[SpaceCross5AlignItemsTest_0050] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.constructor.alignItems).assertEqual("ItemAlign.Stretch");
-      expect(obj.$attrs.space).assertEqual("5.00px");
+      expect(obj.$attrs.space).assertEqual("0.00px");
       console.info('[SpaceCross5AlignItemsTest_0050] END');
       done();
     });
@@ -153,7 +153,7 @@ export default function SpaceCross5AlignItemsJsunit() {
       let obj = JSON.parse(strJson);
       console.info("[SpaceCross5AlignItemsTest_0060] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.constructor.alignItems).assertEqual("ItemAlign.Baseline");
-      expect(obj.$attrs.space).assertEqual("5.00px");
+      expect(obj.$attrs.space).assertEqual("0.00px");
       console.info('[SpaceCross5AlignItemsTest_0060] END');
       done();
     });
