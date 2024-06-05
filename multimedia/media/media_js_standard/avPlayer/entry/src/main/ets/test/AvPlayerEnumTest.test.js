@@ -145,6 +145,7 @@ export default function AvPlayerEnumTest() {
         it('SUB_MULTIMEDIA_MEDIA_AVPLAYER_ENUM_0700', 0, async function (done) {
             expect(media.PlaybackSpeed.SPEED_FORWARD_0_25_X).assertEqual(8);
             expect(media.PlaybackSpeed.SPEED_FORWARD_0_125_X).assertEqual(9);
+            done();
         })
     })
 }
