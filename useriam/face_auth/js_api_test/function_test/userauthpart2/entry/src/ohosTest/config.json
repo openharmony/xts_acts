@@ -34,6 +34,9 @@
       {
         "name": "ohos.permission.DISTRIBUTED_DATASYNC",
         "reason": "ceshi"
+      },
+      {
+        "name": "ohos.permission.ACCESS_BIOMETRIC"
       }
     ],
     "abilities": [
