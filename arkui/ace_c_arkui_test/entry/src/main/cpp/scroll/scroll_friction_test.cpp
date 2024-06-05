@@ -28,7 +28,7 @@ static napi_value TestScrollFriction001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_SCROLL_FRICTION, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_FRICTION)->value->f32, friction);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_FRICTION)->value[PARAM_0].f32, friction);
     NAPI_END;
 }
 
@@ -40,7 +40,7 @@ static napi_value TestScrollFriction002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_SCROLL_FRICTION, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_FRICTION)->value->f32, friction);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_FRICTION)->value[PARAM_0].f32, friction);
     NAPI_END;
 }
 } // namespace ArkUICapiTest

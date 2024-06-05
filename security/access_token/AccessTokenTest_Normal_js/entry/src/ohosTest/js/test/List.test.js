@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 import AccessTokenTest from './AccessToken.test.js'
+import ScreenLockFileManagerJsTest from './ScreenLockFileManager.test.js'
 export default function testsuite() {
 AccessTokenTest()
+ScreenLockFileManagerJsTest()
 }

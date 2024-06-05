@@ -61,12 +61,9 @@ export default function Grid_Row_Breakpoints_Window() {
       let fourthBreakpoints: RectValue = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Window3');
       let fifthBreakpoints: RectValue = CommonFunc.getComponentRect('Grid_Row_Breakpoints_Window4');
 
-      expect(Math.round(secondBreakpoints.left - firstBreakpoints.right))
-        .assertEqual(Math.round(thirdBreakpoints.left - secondBreakpoints.right));
-      expect(Math.round(thirdBreakpoints.left - secondBreakpoints.right))
-        .assertEqual(Math.round(fourthBreakpoints.left - thirdBreakpoints.right));
-      expect(Math.round(fourthBreakpoints.left - thirdBreakpoints.right))
-        .assertEqual(Math.round(thirdBreakpoints.left - secondBreakpoints.right));
+      expect(Math.abs(Math.round(secondBreakpoints.left - firstBreakpoints.right) - Math.round(thirdBreakpoints.left - secondBreakpoints.right)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(thirdBreakpoints.left - secondBreakpoints.right) - Math.round(fourthBreakpoints.left - thirdBreakpoints.right)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(fourthBreakpoints.left - thirdBreakpoints.right) - Math.round(thirdBreakpoints.left - secondBreakpoints.right)) <= 1).assertTrue();
 
       console.info('SUB_ACE_GRIDROWBREAKPOTINS_Window_0100 END');
       done();

@@ -27,8 +27,8 @@ static napi_value TestToggleSwitch001(napi_env env, napi_callback_info info)
     if (nodeAPI->getAttribute(toggle, NODE_WIDTH) != nullptr && nodeAPI->getAttribute(toggle, NODE_HEIGHT) != nullptr &&
         nodeAPI->getAttribute(toggle, NODE_MARGIN) != nullptr &&
         nodeAPI->getAttribute(toggle, NODE_MARGIN)->value != nullptr) {
-        ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_WIDTH)->value->f32, width);
-        ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_HEIGHT)->value->f32, height);
+        ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_WIDTH)->value[PARAM_0].f32, width);
+        ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_HEIGHT)->value[PARAM_0].f32, height);
         ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_MARGIN)->value[PARAM_0].f32, topBottomMargin);
         ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_MARGIN)->value[PARAM_1].f32, leftRightMargin);
         ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_MARGIN)->value[PARAM_2].f32, topBottomMargin);

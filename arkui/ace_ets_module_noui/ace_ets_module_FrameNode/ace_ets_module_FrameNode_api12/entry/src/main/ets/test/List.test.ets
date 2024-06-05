@@ -18,6 +18,8 @@ import nodeContainerTest from './frameNodeTest/nodeContainerTest.test';
 import APIsetOnclickTest from './frameNodeTest/APIsetOnclickTest.test';
 import APIsetOnTouchTest from './frameNodeTest/APIsetOnTouchTest.test';
 import frameNodeGetInterfaceTest from './frameNodeTest/frameNodeTestGetInterface.test';
+import APIsetOnFocusTest from './frameNodeTest/APIsetOnFocusTest.test';
+import APIsetOnHoverTest from './frameNodeTest/APIsetOnHoverTest.test';
 
 export default function testsuite() {
   APIsetOnclickTest();
@@ -26,4 +28,6 @@ export default function testsuite() {
   frameNodeTest1()
   nodeContainerTest()
   frameNodeGetInterfaceTest()
+  APIsetOnFocusTest()
+  APIsetOnHoverTest()
 }

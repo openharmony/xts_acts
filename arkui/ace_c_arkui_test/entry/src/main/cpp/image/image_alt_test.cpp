@@ -25,14 +25,10 @@ static napi_value TestImageAlt001(napi_env env, napi_callback_info info)
     const char *value = FIRST_MIDDLE_VALUE;
     ArkUI_AttributeItem valueItem = {};
     valueItem.string = value;
-    if (image != nullptr) {
-        auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_ALT, &valueItem);
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "TestImageAlt001", "ret is: %{public}d", ret);
-        ASSERT_EQ(ret, SUCCESS);
-        ASSERT_STREQ(nodeAPI->getAttribute(image, NODE_IMAGE_ALT)->string, value);
-    } else {
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "TestImageAlt001", "image is nullptr");
-    }
+
+    auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_ALT, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_STREQ(nodeAPI->getAttribute(image, NODE_IMAGE_ALT)->string, value);
     NAPI_END;
 }
 

@@ -20,6 +20,8 @@ import NavigationBarStyle from './Navigation/NavigationBarStyle.test'
 import NavigationOnPop from './Navigation/NavigationOnPop.test'
 import NavDestinationEvents from './NavDestinationTest/NavDestinationEvents.test'
 import NavDestinationRouterMap from './NavDestinationTest/NavDestinationRouterMap.test'
+import NavigationSymbolIcon from './Navigation/NavigationSymbolIcon.test'
+
 export default function testsuite() {
   NavigationApi1();
   NavigationApi2();
@@ -29,4 +31,5 @@ export default function testsuite() {
   NavigationOnPop();
   NavDestinationEvents();
   NavDestinationRouterMap();
+  NavigationSymbolIcon();
 }

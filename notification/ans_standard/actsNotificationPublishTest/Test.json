@@ -14,13 +14,12 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },
-        {
-            "type":"ShellKit",
-            "run-command":[
-                "anm setting -e com.example.actsnotificationpublish:0:1"
-            ],
-            "cleanup-apps":true
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
         }
     ]
 }

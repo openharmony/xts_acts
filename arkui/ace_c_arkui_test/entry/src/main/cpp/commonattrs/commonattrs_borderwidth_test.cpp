@@ -24,7 +24,7 @@ static napi_value TestCommonAttrsBorderWidth001(napi_env env, napi_callback_info
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(row, NODE_BORDER_WIDTH, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_BORDER_WIDTH)->value->f32, PARAM_5);
+    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_BORDER_WIDTH)->value[PARAM_0].f32, PARAM_5);
     NAPI_END;
 }
 
@@ -49,7 +49,7 @@ static napi_value TestCommonAttrsBorderWidth003(napi_env env, napi_callback_info
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(row, NODE_BORDER_WIDTH, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
-    ASSERT_NE(nodeAPI->getAttribute(row, NODE_BORDER_WIDTH)->value->f32, PARAM_NEGATIVE_10);
+    ASSERT_NE(nodeAPI->getAttribute(row, NODE_BORDER_WIDTH)->value[PARAM_0].f32, PARAM_NEGATIVE_10);
     NAPI_END;
 }
 

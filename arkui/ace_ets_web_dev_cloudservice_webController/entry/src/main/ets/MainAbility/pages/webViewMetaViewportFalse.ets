@@ -58,6 +58,7 @@ struct webViewOnMetaViewportFalse {
               .key('webViewMetaViewportFalse')
               .onClick(async () => {
                   console.info("key==>" + this.str)
+                  await Utils.sleep(3000);
                   switch (this.str) {
                     case "emitWebViewMetaViewportFalse": {
                         try {

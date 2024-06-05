@@ -24,7 +24,7 @@ static napi_value TestStackShadow001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem shadow_item = {shadow_value, sizeof(shadow_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_SHADOW, &shadow_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_SHADOW)->value->i32, ARKUI_SHADOW_STYLE_OUTER_DEFAULT_XS);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_SHADOW)->value[PARAM_0].i32, ARKUI_SHADOW_STYLE_OUTER_DEFAULT_XS);
     NAPI_END;
 }
 
@@ -35,7 +35,7 @@ static napi_value TestStackShadow002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem shadow_item = {shadow_value, sizeof(shadow_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_SHADOW, &shadow_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_SHADOW)->value->i32, ARKUI_SHADOW_STYLE_OUTER_DEFAULT_SM);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_SHADOW)->value[PARAM_0].i32, ARKUI_SHADOW_STYLE_OUTER_DEFAULT_SM);
     NAPI_END;
 }
 
@@ -46,7 +46,7 @@ static napi_value TestStackShadow003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem shadow_item = {shadow_value, sizeof(shadow_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_SHADOW, &shadow_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_SHADOW)->value->i32, ARKUI_SHADOW_STYLE_OUTER_DEFAULT_MD);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_SHADOW)->value[PARAM_0].i32, ARKUI_SHADOW_STYLE_OUTER_DEFAULT_MD);
     NAPI_END;
 }
 
@@ -57,7 +57,7 @@ static napi_value TestStackShadow004(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem shadow_item = {shadow_value, sizeof(shadow_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_SHADOW, &shadow_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_SHADOW)->value->i32, ARKUI_SHADOW_STYLE_OUTER_DEFAULT_LG);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_SHADOW)->value[PARAM_0].i32, ARKUI_SHADOW_STYLE_OUTER_DEFAULT_LG);
     NAPI_END;
 }
 
@@ -68,7 +68,7 @@ static napi_value TestStackShadow005(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem shadow_item = {shadow_value, sizeof(shadow_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_SHADOW, &shadow_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_SHADOW)->value->i32, ARKUI_SHADOW_STYLE_OUTER_FLOATING_SM);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_SHADOW)->value[PARAM_0].i32, ARKUI_SHADOW_STYLE_OUTER_FLOATING_SM);
     NAPI_END;
 }
 
@@ -79,7 +79,7 @@ static napi_value TestStackShadow006(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem shadow_item = {shadow_value, sizeof(shadow_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_SHADOW, &shadow_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_SHADOW)->value->i32, ARKUI_SHADOW_STYLE_OUTER_FLOATING_MD);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_SHADOW)->value[PARAM_0].i32, ARKUI_SHADOW_STYLE_OUTER_FLOATING_MD);
     NAPI_END;
 }
 
@@ -93,7 +93,7 @@ static napi_value TestStackShadow007(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(stack, NODE_SHADOW, &shadow_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(stack, NODE_SHADOW) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_SHADOW)->value->i32, shadow);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_SHADOW)->value[PARAM_0].i32, shadow);
     }
     NAPI_END;
 }

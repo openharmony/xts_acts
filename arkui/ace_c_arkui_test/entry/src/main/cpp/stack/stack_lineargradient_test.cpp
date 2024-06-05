@@ -356,17 +356,4 @@ static napi_value TestStackLinearGradient010(napi_env env, napi_callback_info in
     NAPI_END;
 }
 
-static napi_value TestStackLinearGradient011(napi_env env, napi_callback_info info)
-{
-    NAPI_START(stack, ARKUI_NODE_STACK);
-    float angle = 180;
-    int32_t repeating = 0;
-
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, angle);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32,
-              ARKUI_LINEAR_GRADIENT_DIRECTION_BOTTOM);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
-    NAPI_END;
-}
-
 } // namespace ArkUICapiTest

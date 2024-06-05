@@ -25,7 +25,7 @@ static napi_value TestListOpacity001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(list, NODE_OPACITY, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_OPACITY)->value->f32, opacity);
+    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_OPACITY)->value[PARAM_0].f32, opacity);
     NAPI_END;
 }
 
@@ -37,7 +37,7 @@ static napi_value TestListOpacity002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(list, NODE_OPACITY, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_OPACITY)->value->f32, opacity);
+    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_OPACITY)->value[PARAM_0].f32, opacity);
     NAPI_END;
 }
 
@@ -49,7 +49,7 @@ static napi_value TestListOpacity003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(list, NODE_OPACITY, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_OPACITY)->value->f32, opacity);
+    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_OPACITY)->value[PARAM_0].f32, opacity);
     NAPI_END;
 }
 
@@ -61,7 +61,7 @@ static napi_value TestListOpacity004(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(list, NODE_OPACITY, &valueItem);
     ASSERT_EQ(ret, INVALID_PARAM);
-    ASSERT_NE(nodeAPI->getAttribute(list, NODE_OPACITY)->value->f32, opacity);
+    ASSERT_NE(nodeAPI->getAttribute(list, NODE_OPACITY)->value[PARAM_0].f32, opacity);
     NAPI_END;
 }
 

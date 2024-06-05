@@ -22,7 +22,7 @@ static napi_value TestListEnableScrollInteraction001(napi_env env, napi_callback
     NAPI_START(list, ARKUI_NODE_LIST);
     int32_t enableScrollInteraction = true;
     auto listDefault = nodeAPI->createNode(ARKUI_NODE_LIST);
-    ASSERT_EQ(nodeAPI->getAttribute(listDefault, NODE_SCROLL_ENABLE_SCROLL_INTERACTION)->value->i32,
+    ASSERT_EQ(nodeAPI->getAttribute(listDefault, NODE_SCROLL_ENABLE_SCROLL_INTERACTION)->value[PARAM_0].i32,
               enableScrollInteraction);
     NAPI_END;
 }
@@ -35,7 +35,8 @@ static napi_value TestListEnableScrollInteraction002(napi_env env, napi_callback
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(list, NODE_SCROLL_ENABLE_SCROLL_INTERACTION, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_SCROLL_ENABLE_SCROLL_INTERACTION)->value->i32, enableScrollInteraction);
+    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_SCROLL_ENABLE_SCROLL_INTERACTION)->value[PARAM_0].i32,
+              enableScrollInteraction);
     NAPI_END;
 }
 
@@ -47,7 +48,8 @@ static napi_value TestListEnableScrollInteraction003(napi_env env, napi_callback
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(list, NODE_SCROLL_ENABLE_SCROLL_INTERACTION, &valueItem);
     ASSERT_EQ(ret, INVALID_PARAM);
-    ASSERT_NE(nodeAPI->getAttribute(list, NODE_SCROLL_ENABLE_SCROLL_INTERACTION)->value->i32, enableScrollInteraction);
+    ASSERT_NE(nodeAPI->getAttribute(list, NODE_SCROLL_ENABLE_SCROLL_INTERACTION)->value[PARAM_0].i32,
+              enableScrollInteraction);
     NAPI_END;
 }
 

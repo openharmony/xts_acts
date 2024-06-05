@@ -104,18 +104,5 @@ export default function stackOpacityTest() {
       done()
     })
 
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_STACK_OPACITY_0700
-     * @tc.name       : testStackOpacity007
-     * @tc.desc       : testing opacity for stack with default value
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testStackOpacity007', 0, async (done: Function) => {
-      expect(nativeFunc.testStackOpacity007()).assertEqual(0)
-      done()
-    })
-
   })
 }

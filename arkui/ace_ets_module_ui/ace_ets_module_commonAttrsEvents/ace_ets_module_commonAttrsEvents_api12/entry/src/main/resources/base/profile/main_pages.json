@@ -2,6 +2,10 @@
     "src": [
         "MainAbility/pages/index/index",
 
+        "MainAbility/pages/onHoverStatusChange/onHoverStatusChange",
+        "MainAbility/pages/onTouchIntercept/onTouchIntercept",
+        "MainAbility/pages/onWillApplyTheme/onWillApplyTheme",
+        
         "MainAbility/pages/Focus/requestFocus/requestFocus1",
         "MainAbility/pages/Focus/requestFocus/requestFocus2",
         "MainAbility/pages/Focus/requestFocus/requestFocus3",
@@ -26,6 +30,8 @@
         "MainAbility/pages/Focus/requestFocus/requestFocus22",
         "MainAbility/pages/Focus/requestFocus/requestFocus23",
         "MainAbility/pages/Focus/requestFocus/requestFocus24",
-        "MainAbility/pages/Focus/requestFocus/requestFocus25"
+        "MainAbility/pages/Focus/requestFocus/requestFocus25",
+        "MainAbility/pages/Focus/FocusApi1"
+
     ]
 }

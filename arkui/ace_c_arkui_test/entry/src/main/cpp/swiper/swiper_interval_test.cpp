@@ -25,7 +25,7 @@ static napi_value TestSwiperInterval001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_INTERVAL, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_INTERVAL)->value->i32, interval);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_INTERVAL)->value[PARAM_0].f32, interval);
     NAPI_END;
 }
 
@@ -37,20 +37,11 @@ static napi_value TestSwiperInterval002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_INTERVAL, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_INTERVAL)->value->i32, interval);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_INTERVAL)->value[PARAM_0].f32, interval);
     NAPI_END;
 }
 
 static napi_value TestSwiperInterval003(napi_env env, napi_callback_info info)
-{
-    NAPI_START(swiper, ARKUI_NODE_SWIPER);
-    float interval = 3000;
-
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_INTERVAL)->value->i32, interval);
-    NAPI_END;
-}
-
-static napi_value TestSwiperInterval004(napi_env env, napi_callback_info info)
 {
     NAPI_START(swiper, ARKUI_NODE_SWIPER);
     float interval = -600;
@@ -59,7 +50,7 @@ static napi_value TestSwiperInterval004(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_INTERVAL, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(swiper, NODE_SWIPER_INTERVAL) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(swiper, NODE_SWIPER_INTERVAL)->value->i32, interval);
+        ASSERT_NE(nodeAPI->getAttribute(swiper, NODE_SWIPER_INTERVAL)->value[PARAM_0].f32, interval);
     }
     NAPI_END;
 }

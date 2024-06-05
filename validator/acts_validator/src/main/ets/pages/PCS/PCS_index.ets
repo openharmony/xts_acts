@@ -46,7 +46,9 @@ struct PCSPage {
     { title: 'testUninstallHap', uri: 'pages/PCS/UninstallHap' },
     { title: 'testSubscribeCommonEvent', uri: 'pages/PCS/SubscribeCommonEvent' },
     { title: 'testDeveloperMode', uri: 'pages/PCS/DeveloperMode' },
-    { title: 'testDHCPClientAndServer', uri: 'pages/PCS/DHCPClientAndServer' }
+    { title: 'testDHCPClientAndServer', uri: 'pages/PCS/DHCPClientAndServer' },
+    { title: 'testSecureScreenLock', uri: 'pages/PCS/SecureScreenLock' },
+    { title: 'testRebootScreenUnlock', uri: 'pages/PCS/RebootScreenUnlock' }
   ]
   @State ColorObject: Object[] = letColor;
   @State ColorTrue: number[] = [];

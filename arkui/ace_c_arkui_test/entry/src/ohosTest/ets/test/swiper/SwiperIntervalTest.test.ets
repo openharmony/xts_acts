@@ -55,26 +55,13 @@ export default function swiperIntervalTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_SWIPER_INTERVAL_0300
      * @tc.name       : testSwiperInterval003
-     * @tc.desc       : testing default values of interval property of the swiper
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testSwiperInterval003', 0, async (done: Function) => {
-      expect(nativeFunc.testSwiperInterval003()).assertEqual(0)
-      done()
-    })
-
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_SWIPER_INTERVAL_0400
-     * @tc.name       : testSwiperInterval004
      * @tc.desc       : testing interval for swiper with abnormal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testSwiperInterval004', 0, async (done: Function) => {
-      expect(nativeFunc.testSwiperInterval004()).assertEqual(0)
+    it('testSwiperInterval003', 0, async (done: Function) => {
+      expect(nativeFunc.testSwiperInterval003()).assertEqual(0)
       done()
     })
   })

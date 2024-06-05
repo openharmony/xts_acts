@@ -57,20 +57,4 @@ static napi_value TestStackRotate002(napi_env env, napi_callback_info info)
     NAPI_END;
 }
 
-static napi_value TestStackRotate003(napi_env env, napi_callback_info info)
-{
-    NAPI_START(stack, ARKUI_NODE_STACK);
-    float x = 0;
-    float y = 0;
-    float z = 0;
-    float angle = 0;
-    float perspective = 0;
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_ROTATE)->value[PARAM_0].f32, x);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_ROTATE)->value[PARAM_1].f32, y);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_ROTATE)->value[PARAM_2].f32, z);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_ROTATE)->value[PARAM_3].f32, angle);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_ROTATE)->value[PARAM_4].f32, perspective);
-    NAPI_END;
-}
-
 } // namespace ArkUICapiTest

@@ -22,11 +22,9 @@ static auto createChildNode(ArkUI_NativeNodeAPI_1 *nodeAPI, int enabled)
 {
     auto nodeHandle = nodeAPI->createNode(ARKUI_NODE_TOGGLE);
 
-    if (enabled != SIZE_100) {
-        ArkUI_NumberValue enabled_value[] = {{.i32 = enabled}};
-        ArkUI_AttributeItem enabled_item = {enabled_value, sizeof(enabled_value) / sizeof(ArkUI_NumberValue)};
-        nodeAPI->setAttribute(nodeHandle, NODE_ENABLED, &enabled_item);
-    }
+    ArkUI_NumberValue enabled_value[] = {{.i32 = enabled}};
+    ArkUI_AttributeItem enabled_item = {enabled_value, sizeof(enabled_value) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(nodeHandle, NODE_ENABLED, &enabled_item);
 
     ArkUI_NumberValue switch_point_color_value[] = {{.u32 = COLOR_RED}};
     ArkUI_AttributeItem switch_point_color_item = {switch_point_color_value,
@@ -104,9 +102,6 @@ napi_value ToggleEnabledTest::CreateNativeNode(napi_env env, napi_callback_info 
     // third toggle
     auto toggleAbnormal = createChildNode(nodeAPI, PARAM_NEGATIVE_1);
 
-    // fourth toggle
-    auto toggleDefault = createChildNode(nodeAPI, SIZE_100);
-
     // set toggle ID
     ArkUI_AttributeItem id_item = {};
     id_item.string = "OnClickEnabledToggle";
@@ -117,14 +112,10 @@ napi_value ToggleEnabledTest::CreateNativeNode(napi_env env, napi_callback_info 
     ArkUI_AttributeItem id_third_item = {};
     id_third_item.string = "OnClickAbnormalToggle";
     nodeAPI->setAttribute(toggleAbnormal, NODE_ID, &id_third_item);
-    ArkUI_AttributeItem id_fourth_item = {};
-    id_fourth_item.string = "OnClickDefaultToggle";
-    nodeAPI->setAttribute(toggleDefault, NODE_ID, &id_fourth_item);
 
     nodeAPI->addChild(column, toggle);
     nodeAPI->addChild(column, toggleDisabled);
     nodeAPI->addChild(column, toggleAbnormal);
-    nodeAPI->addChild(column, toggleDefault);
 
     // Bind click event
     nodeAPI->registerNodeEventReceiver(&OnEventReceive);

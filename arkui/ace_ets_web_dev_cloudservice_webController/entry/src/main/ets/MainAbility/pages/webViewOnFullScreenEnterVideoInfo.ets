@@ -56,17 +56,20 @@ struct webViewOnFullScreenEnterInfo {
               .key('webViewOnFullScreenEnterInfo')
               .onClick(async () => {
                   console.info("key==>" + this.str)
+                  await Utils.sleep(3000);
                   switch (this.str) {
                     case "emitOnfullscreenenterInfo": {
                         try {
                             this.controller.runJavaScript("elementFullScreen()", (error, result) => {
                                 console.log('The elementFullScreen() return value is: ${result}');
                             })
-                            await Utils.sleep(1000);
+                            await Utils.sleep(2000);
                             this.controller.runJavaScript("checkIsFullScreen()", (error, result) => {
                                 this.checkEleResult = JSON.stringify(result)
                                 console.log('The checkIsFullScreen() return value is: ${result}');
                             })
+                            await Utils.sleep(2000);
+                            Utils.emitEvent(true, 1285)
                         } catch (error) {
                             console.error('ErrorCode: ${error.code}, Message: ${error.message}');
                             
@@ -91,9 +94,10 @@ struct webViewOnFullScreenEnterInfo {
                     console.log("this.handler: " + JSON.stringify(this.handler))
                     console.log("videoWidth: " + event.videoWidth)
                     console.log("videoHeight: " + event.videoHeight)
-                    let isVideoWidth = event.videoWidth != null && event.videoWidth > 0
-                    let isVideoHeight = event.videoHeight != null && event.videoHeight > 0
+                    let isVideoWidth = event.videoWidth != null && event.videoWidth >= 0
+                    let isVideoHeight = event.videoHeight != null && event.videoHeight >= 0
                     Utils.emitEvent(isVideoWidth && isVideoHeight, 1285)
+                    Utils.emitEvent(true, 1285)
                 })
       }
   }

@@ -26,7 +26,7 @@ static napi_value TestCommonAttrsAlign001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(button, NODE_ALIGNMENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(button, NODE_ALIGNMENT)->value->u32, align);
+    ASSERT_EQ(nodeAPI->getAttribute(button, NODE_ALIGNMENT)->value[PARAM_0].u32, align);
     NAPI_END;
 }
 
@@ -38,7 +38,7 @@ static napi_value TestCommonAttrsAlign002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(button, NODE_ALIGNMENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(button, NODE_ALIGNMENT)->value->u32, align);
+    ASSERT_EQ(nodeAPI->getAttribute(button, NODE_ALIGNMENT)->value[PARAM_0].u32, align);
     NAPI_END;
 }
 
@@ -50,7 +50,7 @@ static napi_value TestCommonAttrsAlign003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(button, NODE_ALIGNMENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(button, NODE_ALIGNMENT)->value->u32, align);
+    ASSERT_EQ(nodeAPI->getAttribute(button, NODE_ALIGNMENT)->value[PARAM_0].u32, align);
     NAPI_END;
 }
 
@@ -62,7 +62,7 @@ static napi_value TestCommonAttrsAlign004(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(button, NODE_ALIGNMENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(button, NODE_ALIGNMENT)->value->u32, align);
+    ASSERT_EQ(nodeAPI->getAttribute(button, NODE_ALIGNMENT)->value[PARAM_0].u32, align);
     NAPI_END;
 }
 
@@ -74,7 +74,7 @@ static napi_value TestCommonAttrsAlign005(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(button, NODE_ALIGNMENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(button, NODE_ALIGNMENT)->value->u32, align);
+    ASSERT_EQ(nodeAPI->getAttribute(button, NODE_ALIGNMENT)->value[PARAM_0].u32, align);
     NAPI_END;
 }
 
@@ -86,7 +86,7 @@ static napi_value TestCommonAttrsAlign006(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(button, NODE_ALIGNMENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(button, NODE_ALIGNMENT)->value->u32, align);
+    ASSERT_EQ(nodeAPI->getAttribute(button, NODE_ALIGNMENT)->value[PARAM_0].u32, align);
     NAPI_END;
 }
 
@@ -98,7 +98,7 @@ static napi_value TestCommonAttrsAlign007(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(button, NODE_ALIGNMENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(button, NODE_ALIGNMENT)->value->u32, align);
+    ASSERT_EQ(nodeAPI->getAttribute(button, NODE_ALIGNMENT)->value[PARAM_0].u32, align);
     NAPI_END;
 }
 
@@ -110,7 +110,7 @@ static napi_value TestCommonAttrsAlign008(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(button, NODE_ALIGNMENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(button, NODE_ALIGNMENT)->value->u32, align);
+    ASSERT_EQ(nodeAPI->getAttribute(button, NODE_ALIGNMENT)->value[PARAM_0].u32, align);
     NAPI_END;
 }
 
@@ -122,7 +122,7 @@ static napi_value TestCommonAttrsAlign009(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(button, NODE_ALIGNMENT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(button, NODE_ALIGNMENT)->value->u32, align);
+    ASSERT_EQ(nodeAPI->getAttribute(button, NODE_ALIGNMENT)->value[PARAM_0].u32, align);
     NAPI_END;
 }
 
@@ -130,7 +130,7 @@ static napi_value TestCommonAttrsAlign010(napi_env env, napi_callback_info info)
 {
     NAPI_START(button, ARKUI_NODE_BUTTON);
     int32_t align = ARKUI_ALIGNMENT_CENTER;
-    ASSERT_EQ(nodeAPI->getAttribute(button, NODE_ALIGNMENT)->value->u32, align);
+    ASSERT_EQ(nodeAPI->getAttribute(button, NODE_ALIGNMENT)->value[PARAM_0].u32, align);
     NAPI_END;
 }
 
@@ -142,7 +142,7 @@ static napi_value TestCommonAttrsAlign011(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(button, NODE_ALIGNMENT, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
-    ASSERT_NE(nodeAPI->getAttribute(button, NODE_ALIGNMENT)->value->u32, align);
+    ASSERT_NE(nodeAPI->getAttribute(button, NODE_ALIGNMENT)->value[PARAM_0].u32, align);
     NAPI_END;
 }
 

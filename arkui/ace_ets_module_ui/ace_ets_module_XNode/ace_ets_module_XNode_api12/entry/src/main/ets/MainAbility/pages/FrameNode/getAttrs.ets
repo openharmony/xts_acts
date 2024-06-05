@@ -23,6 +23,7 @@ class MyNodeControllerGet extends NodeController {
   private rootNode: FrameNode | null = null;
   private uiContext: UIContext | null = null;
   private childrenCount: number = 0;
+  private name: string = "Init";
 
   makeNode(uiContext: UIContext): FrameNode | null {
     this.rootNode = new FrameNode(uiContext);
@@ -159,6 +160,12 @@ class MyNodeControllerGet extends NodeController {
     console.log(TEST_TAG + id);
   }
 
+  getUniqueId()
+  {
+    let uniqueId = this.frameNode?.getUniqueId();
+    console.log(TEST_TAG + uniqueId);
+  }
+
   getNodeType(){
     let nodeType = this.frameNode?.getNodeType();
     console.log(TEST_TAG + nodeType);
@@ -187,6 +194,11 @@ class MyNodeControllerGet extends NodeController {
   getInspectorInfo(){
     let inspectorInfo = this.frameNode?.getInspectorInfo();
     console.log(TEST_TAG + JSON.stringify(inspectorInfo));
+  }
+
+  getCustomProperty(){
+    let customProperty = this.frameNode?.getCustomProperty("FrameNode_button");
+    console.log(TEST_TAG + customProperty);
   }
 
   throwError(){
@@ -283,6 +295,27 @@ struct GetAttrsFrameNode {
         .onClick(()=>{
           if(this.uiContext && this.node){
             this.getData = "" + JSON.stringify(this.node.getUserConfigSize())
+          }
+        })
+      Button("getUniqueId").id("getUniqueId")
+        .width(300)
+        .onClick(()=>{
+          if(this.uiContext && this.node){
+            this.getData = "" + JSON.stringify(this.node.getUniqueId())
+          }
+        })
+      Button("getCustomProperty").id("getCustomProperty")
+        .width(300)
+        .onClick(()=>{
+          if(this.uiContext && this.node){
+            this.getData = "" + JSON.stringify(this.node.getCustomProperty("FrameNode_button"))
+          }
+        })
+      Button("getCommonAttribute").id("getCommonAttribute")
+        .width(300)
+        .onClick(()=>{
+          if(this.uiContext && this.node){
+            this.getData = "" + JSON.stringify(this.node.commonAttribute.padding)
           }
         })
       Button("getId")

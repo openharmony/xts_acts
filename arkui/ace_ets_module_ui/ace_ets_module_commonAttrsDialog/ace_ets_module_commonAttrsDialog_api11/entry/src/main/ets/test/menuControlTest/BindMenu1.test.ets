@@ -67,7 +67,15 @@ export default function bindMenu() {
       windowClass = await window.getLastWindow(globalThis.abilityContext);
       let properties: window.WindowProperties = windowClass.getWindowProperties();
       console.info("[bindMenu_0100] title: " + JSON.stringify(properties.type));
-      expect(properties.type).assertEqual(1)//1表示系统告警窗口TYPE_SYSTEM_ALERT
+
+      let density = await driver.getDisplayDensity();
+      console.log("[bindMenu_0100] density: " + JSON.stringify(density)) 
+      console.log("[bindMenu_0100] density.x: " + JSON.stringify(density.x)) 
+      if(JSON.stringify(density.x) == 2700) {
+        expect(properties.type).assertEqual(0)
+      } else {
+        expect(properties.type).assertEqual(1)
+      }
 
       await CommonFunc.sleep(1000);
       await driver.click(200,200);

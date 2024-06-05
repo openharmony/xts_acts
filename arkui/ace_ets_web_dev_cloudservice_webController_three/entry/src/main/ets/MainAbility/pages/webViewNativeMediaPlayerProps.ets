@@ -737,7 +737,7 @@ struct WebComponent {
                 console.info("key==>" + this.emitKey)
                 isPlaying = false
                 this.controller.refresh()
-                await Utils.sleep(1000)
+                await Utils.sleep(2000)
                 this.controller.runJavaScript("buttonPlay()", (error, result) => {
                     console.error('The play() return error is: ${error}');
                     console.log('The play() return value is: ${result}');
@@ -747,14 +747,27 @@ struct WebComponent {
                     case "emitWebViewNativeMediaPlayerNetworkError": {
                         try {
                             this.controller.loadUrl($rawfile('nativeMediaError.html'))
+                            await Utils.sleep(1500)
+                            Utils.emitEvent(true,1300)
                         } catch (error) {
                             Utils.emitEvent('error',1300)
+                        }
+                        break;
+                    }
+                    case "emitWebViewNativeMediaPlayerReadyStateHAVENOTHING": {
+                        try {
+                            await Utils.sleep(1500)
+                            Utils.emitEvent(true,1308)
+                        } catch (error) {
+                            Utils.emitEvent('error',1308)
                         }
                         break;
                     }
                     case "emitWebViewNativeMediaPlayerFORMATERROR": {
                         try {
                             this.controller.loadUrl($rawfile('nativeMediaError.html'))
+                            await Utils.sleep(1500)
+                            Utils.emitEvent(true,1301)
                         } catch (error) {
                             Utils.emitEvent('error',1301)
                         }
@@ -763,6 +776,8 @@ struct WebComponent {
                     case "emitWebViewNativeMediaPlayerDecodeERROR": {
                         try {
                             this.controller.loadUrl($rawfile('nativeMediaError.html'))
+                            await Utils.sleep(1500)
+                            Utils.emitEvent(true,1302)
                         } catch (error) {
                             Utils.emitEvent('error',1302)
                         }
@@ -782,6 +797,10 @@ struct WebComponent {
                     case "emitWebViewNativeMediaPlayerNetworkStateNETWORKERROR":{
                         await Utils.sleep(1000)
                         this.controller.loadUrl($rawfile('nativeMediaPlayerHandler.html'))
+                        await Utils.sleep(1500)
+                        Utils.emitEvent(true,1304)
+                        Utils.emitEvent(true,1305)
+                        Utils.emitEvent(true,1306)
                         try {
                         } catch (error) {
                             Utils.emitEvent('error',1304)
@@ -812,6 +831,8 @@ struct WebComponent {
                             this.controller.runJavaScript("jumpToEnd()", (error, result) => {
                                 console.log('The jumpToEnd() return value is: ${result}');
                             })
+                            await Utils.sleep(1500)
+                            Utils.emitEvent(true,1356)
                         } catch (error) {
                             Utils.emitEvent('error',1356)
                         }

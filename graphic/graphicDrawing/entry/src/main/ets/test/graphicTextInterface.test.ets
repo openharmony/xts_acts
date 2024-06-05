@@ -185,6 +185,8 @@ export default function graphicTextInterface(context, windowStage, abilityStorag
           baseline: text.TextBaseline.ALPHABETIC,
           baselineOffset: 66
         };
+        placeholderSpan.width = 0;
+        expect(0).assertEqual(placeholderSpan.width);
       } catch (err) {
         console.info(msg + 'test PlaceholderSpan error ' + JSON.stringify(err));
         expect().assertFail();
@@ -206,6 +208,8 @@ export default function graphicTextInterface(context, windowStage, abilityStorag
           start: 50,
           end: 100
         };
+        range.start = 0;
+        expect(0).assertEqual(range.start);
       } catch (err) {
         console.info(msg + 'test Range error ' + JSON.stringify(err));
         expect().assertFail();
@@ -229,6 +233,8 @@ export default function graphicTextInterface(context, windowStage, abilityStorag
           },
           direction: text.TextDirection.RTL
         };
+        textBox.direction = text.TextDirection.LTR;
+        expect(1).assertEqual(textBox.direction);
       } catch (err) {
         console.info(msg + 'test TextBox error ' + JSON.stringify(err));
         expect().assertFail();

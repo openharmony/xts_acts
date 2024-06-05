@@ -19,7 +19,6 @@
 
 #include "devattest_interface.h"
 
-#define ATTEST_SOFTWARE_RESULT_SIZE 5
 #define ACTS_DEVATTEST_SUCCESS 0
 #define SLEEP_TIMEOUT 1
 

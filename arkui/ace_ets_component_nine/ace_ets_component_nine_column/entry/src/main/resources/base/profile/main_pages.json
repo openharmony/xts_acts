@@ -1,7 +1,5 @@
 {
   "src": [
-    "MainAbility/pages/index/Index", 
-    "MainAbility/pages/component/columnHorizontalAlign",
-    "MainAbility/pages/component/columnJustifyContent"
+    "pages/Index"
   ]
 }

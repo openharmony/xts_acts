@@ -1121,5 +1121,85 @@ export default function geolocationTest_geo5() {
         done();
     })
 
+    /**
+     * @tc.number SUB_HSS_LocationSystem_Geo_3500
+     * @tc.name TestgetAddressesFromLocation
+     * @tc.desc Longitude input parameter boundary test for the reverse address resolution function in a specified range
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_HSS_LocationSystem_Geo_3500', 0, async function (done) {
+        let geocoder1 = geolocationm.isGeocoderAvailable();
+        if (geocoder1) {
+            let geocodeRequest1 = {
+                "description": "北京天安门",
+                "maxItems": 1,
+                "minLatitude": 39.85,
+                "minLongitude": -180,
+                "maxLatitude": 39.95,
+                "maxLongitude": 116.45,
+                "country": "cn"
+            };
+            try{
+                await geolocationm.getAddressesFromLocationName(geocodeRequest1).then((result) => {
+                    console.info("[lbs_js] SUB_HSS_LocationSystem_Geo_3500 promise1: " + JSON.stringify(result));
+                    expect(true).assertEqual((JSON.stringify(result)) != null);
+                }).catch((error) => {
+                    console.info("[lbs_js] SUB_HSS_LocationSystem_Geo_3500 promise1 then error." + JSON.stringify(error));
+                    console.info('[lbs_js] not support now');
+                    expect(error.code).assertEqual(3301400);
+                });
+            }catch(error){
+                console.info("[lbs_js] SUB_HSS_LocationSystem_Geo_3500 message1." + JSON.stringify(error.message));
+                expect(true).assertFalse();
+            }
+            await sleep(1000);
+        } else {
+            console.info("[lbs_js] The geocoding service is unavailable.");
+        }
+        done();
+    })
+
+    /**
+     * @tc.number SUB_HSS_LocationSystem_Geo_3600
+     * @tc.name TestgetAddressesFromLocation
+     * @tc.desc Longitude input parameter boundary test for the reverse address resolution function in a specified range
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('SUB_HSS_LocationSystem_Geo_3600', 0, async function (done) {
+        let geocoder1 = geolocationm.isGeocoderAvailable();
+        if (geocoder1) {
+            let geocodeRequest1 = {
+                "description": "北京天安门",
+                "maxItems": 1,
+                "minLatitude": 39.85,
+                "minLongitude": -180,
+                "maxLatitude": 39.95,
+                "maxLongitude": 116.45,
+                "country": "us"
+            };
+            try{
+                await geolocationm.getAddressesFromLocationName(geocodeRequest1).then((result) => {
+                    console.info("[lbs_js] SUB_HSS_LocationSystem_Geo_3600 promise1: " + JSON.stringify(result));
+                    expect(true).assertEqual((JSON.stringify(result)) != null);
+                }).catch((error) => {
+                    console.info("[lbs_js] SUB_HSS_LocationSystem_Geo_3600 promise1 then error." + JSON.stringify(error));
+                    console.info('[lbs_js] not support now');
+                    expect(error.code).assertEqual(3301400);
+                });
+            }catch(error){
+                console.info("[lbs_js] SUB_HSS_LocationSystem_Geo_3600 message1." + JSON.stringify(error.message));
+                expect(true).assertFalse();
+            }
+            await sleep(1000);
+        } else {
+            console.info("[lbs_js] The geocoding service is unavailable.");
+        }
+        done();
+    })
+
     })
 }

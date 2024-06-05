@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-
 #include "common/common.h"
 namespace ArkUICapiTest {
 
@@ -229,17 +228,6 @@ static napi_value TestListItemLinearGradient010(napi_env env, napi_callback_info
     ASSERT_EQ(nodeAPI->getAttribute(listItem, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, angle);
     ASSERT_EQ(nodeAPI->getAttribute(listItem, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
     ASSERT_EQ(nodeAPI->getAttribute(listItem, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
-    NAPI_END;
-}
-
-static napi_value TestListItemLinearGradient011(napi_env env, napi_callback_info info)
-{
-    NAPI_START(listItem, ARKUI_NODE_LIST_ITEM);
-    float angle = SIZE_180;
-    int32_t repeating = false;
-    auto listItemDefault = nodeAPI->createNode(ARKUI_NODE_LIST_ITEM);
-    ASSERT_EQ(nodeAPI->getAttribute(listItemDefault, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, angle);
-    ASSERT_EQ(nodeAPI->getAttribute(listItemDefault, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
 }
 } // namespace ArkUICapiTest

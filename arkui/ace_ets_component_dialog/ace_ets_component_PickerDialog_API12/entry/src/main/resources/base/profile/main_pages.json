@@ -1,9 +1,5 @@
 {
   "src": [
-    "MainAbility/pages/index/index",
-    "MainAbility/pages/Dialog/TextPickerDialog",
-    "MainAbility/pages/Dialog/TimePickerDialog",
-    "MainAbility/pages/Dialog/CalendarPickerDialog",
-    "MainAbility/pages/Dialog/DatePickerDialog"
+    "pages/Index"
   ]
 }

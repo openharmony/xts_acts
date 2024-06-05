@@ -1,26 +1,25 @@
 {
-    "description": "Configuration for hjunit demo Tests",
+    "description": "Configuration for aceEtsComponentCommonAttrs Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "600000",
+        "test-timeout": "18000000",
         "bundle-name": "com.open.harmony.componentapi05",
-        "module-name": "entry_test",
-        "shell-timeout": "600000",
-        "testcase-timeout": 240000
+        "module-name": "phone",
+        "shell-timeout": "60000000",
+        "testcase-timeout": 6000000
     },
     "kits": [{
         "test-file-name": [
-            "ActsAceComponentApi05Test.hap"
+          "ActsAceComponentApi05Test.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true
-        },
-        {
-            "type": "ShellKit",
-            "run-command": [
-                "power-shell wakeup",
-                "power-shell setmode 602"
-            ]
-        }
-    ]
+    }, {
+        "type": "ShellKit",
+        "run-command": [
+            "power-shell wakeup",
+            "power-shell setmode 602"
+        ]
+
+    }]
 }

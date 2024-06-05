@@ -1,26 +1,25 @@
 {
-    "description": "Configuration for powermgr power Tests",
+    "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "60000",
-        "shell-timeout": "60000",
+        "test-timeout": "180000",
+        "shell-timeout": "180000",
         "bundle-name": "com.example.mypowerapp",
-        "package-name": "com.example.mypowerapp",
-        "testcase-timeout": 60000
+        "package-name": "com.example.mypowerapp"
     },
     "kits": [
-        {
-            "type": "ShellKit",
-            "run-command": [
-                "power-shell wakeup"
-            ]
-        },
         {
             "test-file-name": [
                 "ActsPowerMgrPowerTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
         }
     ]
 }

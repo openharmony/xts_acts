@@ -13,33 +13,230 @@
  * limitations under the License.
  */
 
+#include "accessibility/button_accessibilitydescription_test.cpp"
+#include "accessibility/button_accessibilitygroup_test.cpp"
+#include "accessibility/button_accessibilitylevel_test.cpp"
+#include "accessibility/button_accessibilitytext_test.cpp"
+#include "accessibility/checkbox_accessibilitydescription_test.cpp"
+#include "accessibility/checkbox_accessibilitygroup_test.cpp"
+#include "accessibility/checkbox_accessibilitylevel_test.cpp"
+#include "accessibility/checkbox_accessibilitytext_test.cpp"
+#include "accessibility/datepicker_accessibilitydescription_test.cpp"
+#include "accessibility/datepicker_accessibilitygroup_test.cpp"
+#include "accessibility/datepicker_accessibilitylevel_test.cpp"
+#include "accessibility/datepicker_accessibilitytext_test.cpp"
+#include "accessibility/list_accessibilitydescription_test.cpp"
+#include "accessibility/list_accessibilitygroup_test.cpp"
+#include "accessibility/list_accessibilitylevel_test.cpp"
+#include "accessibility/list_accessibilitytext_test.cpp"
+#include "accessibility/progress_accessibilitydescription_test.cpp"
+#include "accessibility/progress_accessibilitygroup_test.cpp"
+#include "accessibility/progress_accessibilitylevel_test.cpp"
+#include "accessibility/progress_accessibilitytext_test.cpp"
+#include "accessibility/refresh_accessibilitydescription_test.cpp"
+#include "accessibility/refresh_accessibilitygroup_test.cpp"
+#include "accessibility/refresh_accessibilitylevel_test.cpp"
+#include "accessibility/refresh_accessibilitytext_test.cpp"
+#include "accessibility/scroll_accessibilitydescription_test.cpp"
+#include "accessibility/scroll_accessibilitygroup_test.cpp"
+#include "accessibility/scroll_accessibilitylevel_test.cpp"
+#include "accessibility/scroll_accessibilitytext_test.cpp"
+#include "accessibility/slider_accessibilitydescription_test.cpp"
+#include "accessibility/slider_accessibilitygroup_test.cpp"
+#include "accessibility/slider_accessibilitylevel_test.cpp"
+#include "accessibility/slider_accessibilitytext_test.cpp"
+#include "accessibility/span_accessibilitydescription_test.cpp"
+#include "accessibility/span_accessibilitygroup_test.cpp"
+#include "accessibility/span_accessibilitylevel_test.cpp"
+#include "accessibility/span_accessibilitytext_test.cpp"
+#include "accessibility/swiper_accessibilitydescription_test.cpp"
+#include "accessibility/swiper_accessibilitygroup_test.cpp"
+#include "accessibility/swiper_accessibilitylevel_test.cpp"
+#include "accessibility/swiper_accessibilitytext_test.cpp"
+#include "accessibility/text_accessibilitydescription_test.cpp"
+#include "accessibility/text_accessibilitygroup_test.cpp"
+#include "accessibility/text_accessibilitylevel_test.cpp"
+#include "accessibility/text_accessibilitytext_test.cpp"
+#include "accessibility/textarea_accessibilitydescription_test.cpp"
+#include "accessibility/textarea_accessibilitygroup_test.cpp"
+#include "accessibility/textarea_accessibilitylevel_test.cpp"
+#include "accessibility/textarea_accessibilitytext_test.cpp"
+#include "accessibility/textinput_accessibilitydescription_test.cpp"
+#include "accessibility/textinput_accessibilitygroup_test.cpp"
+#include "accessibility/textinput_accessibilitylevel_test.cpp"
+#include "accessibility/textinput_accessibilitytext_test.cpp"
+#include "accessibility/textpicker_accessibilitydescription_test.cpp"
+#include "accessibility/textpicker_accessibilitygroup_test.cpp"
+#include "accessibility/textpicker_accessibilitylevel_test.cpp"
+#include "accessibility/textpicker_accessibilitytext_test.cpp"
+#include "accessibility/timepicker_accessibilitydescription_test.cpp"
+#include "accessibility/timepicker_accessibilitygroup_test.cpp"
+#include "accessibility/timepicker_accessibilitylevel_test.cpp"
+#include "accessibility/timepicker_accessibilitytext_test.cpp"
+#include "accessibility/toggle_accessibilitydescription_test.cpp"
+#include "accessibility/toggle_accessibilitygroup_test.cpp"
+#include "accessibility/toggle_accessibilitylevel_test.cpp"
+#include "accessibility/toggle_accessibilitytext_test.cpp"
+#include "calendarpicker/calendarpicker_edgealign_test.cpp"
+#include "calendarpicker/calendarpicker_textstyle_test.cpp"
+#include "button/button_fontsize_test.cpp"
+#include "button/button_fontcolor_test.cpp"
+#include "button/button_fontweight_test.cpp"
+#include "button/button_backgroundcolor_test.cpp"
+#include "checkbox/checkbox_mark_test.cpp"
+#include "checkbox/checkbox_select_test.cpp"
+#include "checkbox/checkbox_selectedcolor_test.cpp"
+#include "checkbox/checkbox_shape_test.cpp"
+#include "checkbox/checkbox_unselectedcolor_test.cpp"
 #include "common/common.h"
-#include "commonattrs/commonattrs_width_test.cpp"
-#include "commonattrs/commonattrs_height_test.cpp"
-#include "commonattrs/commonattrs_backgroundcolor_test.cpp"
-#include "commonattrs/commonattrs_position_test.cpp"
-#include "commonattrs/commonattrs_borderwidth_test.cpp"
-#include "commonattrs/commonattrs_bordercolor_test.cpp"
-#include "commonattrs/commonattrs_borderradius_test.cpp"
-#include "commonattrs/commonattrs_borderstyle_test.cpp"
 #include "commonattrs/commonattrs_align_test.cpp"
 #include "commonattrs/commonattrs_aligncontent_test.cpp"
 #include "commonattrs/commonattrs_alignitems_test.cpp"
 #include "commonattrs/commonattrs_alignself_test.cpp"
+#include "commonattrs/commonattrs_backgroundcolor_test.cpp"
+#include "commonattrs/commonattrs_blendmode_test.cpp"
+#include "commonattrs/commonattrs_bordercolor_test.cpp"
+#include "commonattrs/commonattrs_borderradius_test.cpp"
+#include "commonattrs/commonattrs_borderstyle_test.cpp"
+#include "commonattrs/commonattrs_borderwidth_test.cpp"
+#include "commonattrs/commonattrs_clip_test.cpp"
+#include "commonattrs/commonattrs_constraintsize_test.cpp"
+#include "commonattrs/commonattrs_contrast_test.cpp"
 #include "commonattrs/commonattrs_direction_test.cpp"
 #include "commonattrs/commonattrs_flexbasis_test.cpp"
 #include "commonattrs/commonattrs_flexgrow_test.cpp"
 #include "commonattrs/commonattrs_flexshrink_test.cpp"
-#include "commonattrs/commonattrs_justifycontent_test.cpp"
-#include "commonattrs/commonattrs_transform_test.cpp"
-#include "commonattrs/commonattrs_mask_test.cpp"
-#include "commonattrs/commonattrs_blendmode_test.cpp"
 #include "commonattrs/commonattrs_foregroundblurstyle_test.cpp"
-#include "commonattrs/commonattrs_contrast_test.cpp"
 #include "commonattrs/commonattrs_grayscale_test.cpp"
+#include "commonattrs/commonattrs_height_test.cpp"
 #include "commonattrs/commonattrs_invert_test.cpp"
+#include "commonattrs/commonattrs_justifycontent_test.cpp"
+#include "commonattrs/commonattrs_lineargradient_test.cpp"
+#include "commonattrs/commonattrs_margin_test.cpp"
+#include "commonattrs/commonattrs_mask_test.cpp"
 #include "commonattrs/commonattrs_opacity_test.cpp"
+#include "commonattrs/commonattrs_position_test.cpp"
+#include "commonattrs/commonattrs_radialgradient_test.cpp"
+#include "commonattrs/commonattrs_scale_test.cpp"
 #include "commonattrs/commonattrs_sepia_test.cpp"
+#include "commonattrs/commonattrs_shadow_test.cpp"
+#include "commonattrs/commonattrs_sweepgradient_test.cpp"
+#include "commonattrs/commonattrs_transform_test.cpp"
+#include "commonattrs/commonattrs_width_test.cpp"
+#include "customcomponent/customcomponent_accessibilitydescription_test.cpp"
+#include "customcomponent/customcomponent_accessibilitygroup_test.cpp"
+#include "customcomponent/customcomponent_accessibilitylevel_test.cpp"
+#include "customcomponent/customcomponent_accessibilitytext_test.cpp"
+#include "customcomponent/customcomponent_align_test.cpp"
+#include "customcomponent/customcomponent_alignself_test.cpp"
+#include "customcomponent/customcomponent_backgroundcolor_test.cpp"
+#include "customcomponent/customcomponent_blendmode_test.cpp"
+#include "customcomponent/customcomponent_bordercolor_test.cpp"
+#include "customcomponent/customcomponent_borderradius_test.cpp"
+#include "customcomponent/customcomponent_borderstyle_test.cpp"
+#include "customcomponent/customcomponent_borderwidth_test.cpp"
+#include "customcomponent/customcomponent_clip_test.cpp"
+#include "customcomponent/customcomponent_constraintsize_test.cpp"
+#include "customcomponent/customcomponent_contrast_test.cpp"
+#include "customcomponent/customcomponent_direction_test.cpp"
+#include "customcomponent/customcomponent_flexbasis_test.cpp"
+#include "customcomponent/customcomponent_flexgrow_test.cpp"
+#include "customcomponent/customcomponent_flexshrink_test.cpp"
+#include "customcomponent/customcomponent_foregroundblurstyle_test.cpp"
+#include "customcomponent/customcomponent_grayscale_test.cpp"
+#include "customcomponent/customcomponent_height_test.cpp"
+#include "customcomponent/customcomponent_invert_test.cpp"
+#include "customcomponent/customcomponent_lineargradient_test.cpp"
+#include "customcomponent/customcomponent_margin_test.cpp"
+#include "customcomponent/customcomponent_mask_test.cpp"
+#include "customcomponent/customcomponent_opacity_test.cpp"
+#include "customcomponent/customcomponent_position_test.cpp"
+#include "customcomponent/customcomponent_radialgradient_test.cpp"
+#include "customcomponent/customcomponent_scale_test.cpp"
+#include "customcomponent/customcomponent_sepia_test.cpp"
+#include "customcomponent/customcomponent_shadow_test.cpp"
+#include "customcomponent/customcomponent_sweepgradient_test.cpp"
+#include "customcomponent/customcomponent_transform_test.cpp"
+#include "customcomponent/customcomponent_width_test.cpp"
+#include "customdialog/customdialog_alignment_test.cpp"
+#include "customdialog/customdialog_close_test.cpp"
+#include "customdialog/customdialog_customstyle_test.cpp"
+#include "customdialog/customdialog_open_test.cpp"
+#include "customdialog/customdialog_maskcolor_test.cpp"
+#include "datepicker/datepicker_disappeartextstyle_test.cpp"
+#include "datepicker/datepicker_end_test.cpp"
+#include "datepicker/datepicker_lunar_test.cpp"
+#include "datepicker/datepicker_selected_test.cpp"
+#include "datepicker/datepicker_selectedtextstyle_test.cpp"
+#include "datepicker/datepicker_start_test.cpp"
+#include "datepicker/datepicker_textstyle_test.cpp"
+#include "image/image_alt_test.cpp"
+#include "image/image_autoresize_test.cpp"
+#include "image/image_backgroundcolor_test.cpp"
+#include "image/image_blur_test.cpp"
+#include "image/image_bordercolor_test.cpp"
+#include "image/image_borderradius_test.cpp"
+#include "image/image_borderstyle_test.cpp"
+#include "image/image_borderwidth_test.cpp"
+#include "image/image_brightness_test.cpp"
+#include "image/image_clip_test.cpp"
+#include "image/image_colorfilter_test.cpp"
+#include "image/image_height_test.cpp"
+#include "image/image_interpolation_test.cpp"
+#include "image/image_lineargradient_test.cpp"
+#include "image/image_objectfit_test.cpp"
+#include "image/image_objectrepeat_test.cpp"
+#include "image/image_opacity_test.cpp"
+#include "image/image_position_test.cpp"
+#include "image/image_radialgradient_test.cpp"
+#include "image/image_rotate_test.cpp"
+#include "image/image_saturate_test.cpp"
+#include "image/image_scale_test.cpp"
+#include "image/image_shadow_test.cpp"
+#include "image/image_src_test.cpp"
+#include "image/image_sweepgradient_test.cpp"
+#include "image/image_transform_test.cpp"
+#include "image/image_translate_test.cpp"
+#include "image/image_width_test.cpp"
+#include "list/list_backgroundcolor_test.cpp"
+#include "list/list_blur_test.cpp"
+#include "list/list_bordercolor_test.cpp"
+#include "list/list_borderradius_test.cpp"
+#include "list/list_borderwidth_test.cpp"
+#include "list/list_brightness_test.cpp"
+#include "list/list_cachedcount_test.cpp"
+#include "list/list_clip_test.cpp"
+#include "list/list_edgeeffect_test.cpp"
+#include "list/list_enablescrollinteraction_test.cpp"
+#include "list/list_friction_test.cpp"
+#include "list/list_height_test.cpp"
+#include "list/list_lineargradient_test.cpp"
+#include "list/list_listdirection_test.cpp"
+#include "list/list_opacity_test.cpp"
+#include "list/list_rotate_test.cpp"
+#include "list/list_saturate_test.cpp"
+#include "list/list_scale_test.cpp"
+#include "list/list_scrollbar_test.cpp"
+#include "list/list_shadow_test.cpp"
+#include "list/list_sticky_test.cpp"
+#include "list/list_translate_test.cpp"
+#include "list/list_width_test.cpp"
+#include "listitem/listitem_backgroundcolor_test.cpp"
+#include "listitem/listitem_blur_test.cpp"
+#include "listitem/listitem_bordercolor_test.cpp"
+#include "listitem/listitem_borderradius_test.cpp"
+#include "listitem/listitem_borderwidth_test.cpp"
+#include "listitem/listitem_brightness_test.cpp"
+#include "listitem/listitem_clip_test.cpp"
+#include "listitem/listitem_height_test.cpp"
+#include "listitem/listitem_lineargradient_test.cpp"
+#include "listitem/listitem_opacity_test.cpp"
+#include "listitem/listitem_rotate_test.cpp"
+#include "listitem/listitem_saturate_test.cpp"
+#include "listitem/listitem_scale_test.cpp"
+#include "listitem/listitem_shadow_test.cpp"
+#include "listitem/listitem_translate_test.cpp"
+#include "listitem/listitem_width_test.cpp"
 #include "scroll/scroll_backgroundcolor_test.cpp"
 #include "scroll/scroll_blur_test.cpp"
 #include "scroll/scroll_bordercolor_test.cpp"
@@ -47,14 +244,15 @@
 #include "scroll/scroll_borderwidth_test.cpp"
 #include "scroll/scroll_brightness_test.cpp"
 #include "scroll/scroll_clip_test.cpp"
-#include "scroll/scroll_currentoffset_test.cpp"
 #include "scroll/scroll_edgeeffect_test.cpp"
 #include "scroll/scroll_enablescrollinteraction_test.cpp"
 #include "scroll/scroll_friction_test.cpp"
+#include "scroll/scroll_height_test.cpp"
 #include "scroll/scroll_lineargradient_test.cpp"
 #include "scroll/scroll_opacity_test.cpp"
 #include "scroll/scroll_overlay_test.cpp"
 #include "scroll/scroll_pageenable_test.cpp"
+#include "scroll/scroll_position_test.cpp"
 #include "scroll/scroll_rotate_test.cpp"
 #include "scroll/scroll_saturate_test.cpp"
 #include "scroll/scroll_scale_test.cpp"
@@ -62,9 +260,9 @@
 #include "scroll/scroll_scrollbar_test.cpp"
 #include "scroll/scroll_scrollbarcolor_test.cpp"
 #include "scroll/scroll_scrollsnap_test.cpp"
-#include "scroll/scroll_scrollto_test.cpp"
 #include "scroll/scroll_shadow_test.cpp"
 #include "scroll/scroll_translate_test.cpp"
+#include "scroll/scroll_width_test.cpp"
 #include "stack/stack_align_test.cpp"
 #include "stack/stack_backgroundblurstyle_test.cpp"
 #include "stack/stack_backgroundcolor_test.cpp"
@@ -91,19 +289,10 @@
 #include "stack/stack_transition_test.cpp"
 #include "stack/stack_translate_test.cpp"
 #include "stack/stack_width_test.cpp"
-#include "toggle/toggle_backgroundcolor_test.cpp"
-#include "toggle/toggle_clip_test.cpp"
-#include "toggle/toggle_focusable_test.cpp"
-#include "toggle/toggle_height_test.cpp"
-#include "toggle/toggle_margin_test.cpp"
-#include "toggle/toggle_position_test.cpp"
-#include "toggle/toggle_selectedcolor_test.cpp"
-#include "toggle/toggle_switchpointcolor_test.cpp"
-#include "toggle/toggle_width_test.cpp"
-#include "toggle/toggle_switch_test.cpp"
 #include "swiper/swiper_autoplay_test.cpp"
 #include "swiper/swiper_backgroundcolor_test.cpp"
 #include "swiper/swiper_backgroundimage_test.cpp"
+#include "swiper/swiper_cachedcount_test.cpp"
 #include "swiper/swiper_clip_test.cpp"
 #include "swiper/swiper_curve_test.cpp"
 #include "swiper/swiper_disableswipe_test.cpp"
@@ -119,88 +308,6 @@
 #include "swiper/swiper_position_test.cpp"
 #include "swiper/swiper_vertical_test.cpp"
 #include "swiper/swiper_width_test.cpp"
-#include "swiper/swiper_cachedcount_test.cpp"
-#include "text/text_width_test.cpp"
-#include "text/text_height_test.cpp"
-#include "text/text_position_test.cpp"
-#include "scroll/scroll_width_test.cpp"
-#include "scroll/scroll_height_test.cpp"
-#include "scroll/scroll_position_test.cpp"
-#include "image/image_width_test.cpp"
-#include "image/image_height_test.cpp"
-#include "image/image_position_test.cpp"
-#include "image/image_alt_test.cpp"
-#include "image/image_autoresize_test.cpp"
-#include "image/image_backgroundcolor_test.cpp"
-#include "image/image_blur_test.cpp"
-#include "image/image_bordercolor_test.cpp"
-#include "image/image_borderradius_test.cpp"
-#include "image/image_borderstyle_test.cpp"
-#include "image/image_borderwidth_test.cpp"
-#include "image/image_brightness_test.cpp"
-#include "image/image_clip_test.cpp"
-#include "image/image_colorfilter_test.cpp"
-#include "image/image_interpolation_test.cpp"
-#include "image/image_lineargradient_test.cpp"
-#include "image/image_objectfit_test.cpp"
-#include "image/image_objectrepeat_test.cpp"
-#include "image/image_opacity_test.cpp"
-#include "image/image_radialgradient_test.cpp"
-#include "image/image_rotate_test.cpp"
-#include "image/image_saturate_test.cpp"
-#include "image/image_scale_test.cpp"
-#include "image/image_shadow_test.cpp"
-#include "image/image_src_test.cpp"
-#include "image/image_sweepgradient_test.cpp"
-#include "image/image_transform_test.cpp"
-#include "image/image_translate_test.cpp"
-#include "commonattrs/commonattrs_clip_test.cpp"
-#include "commonattrs/commonattrs_constraintsize_test.cpp"
-#include "commonattrs/commonattrs_lineargradient_test.cpp"
-#include "commonattrs/commonattrs_margin_test.cpp"
-#include "commonattrs/commonattrs_scale_test.cpp"
-#include "commonattrs/commonattrs_shadow_test.cpp"
-#include "list/list_width_test.cpp"
-#include "list/list_height_test.cpp"
-#include "list/list_backgroundcolor_test.cpp"
-#include "list/list_borderwidth_test.cpp"
-#include "list/list_bordercolor_test.cpp"
-#include "list/list_borderradius_test.cpp"
-#include "list/list_opacity_test.cpp"
-#include "list/list_clip_test.cpp"
-#include "list/list_translate_test.cpp"
-#include "list/list_scale_test.cpp"
-#include "list/list_rotate_test.cpp"
-#include "list/list_brightness_test.cpp"
-#include "list/list_saturate_test.cpp"
-#include "list/list_blur_test.cpp"
-#include "list/list_shadow_test.cpp"
-#include "list/list_lineargradient_test.cpp"
-#include "list/list_scrollbar_test.cpp"
-#include "list/list_listdirection_test.cpp"
-#include "list/list_sticky_test.cpp"
-#include "list/list_friction_test.cpp"
-#include "list/list_edgeeffect_test.cpp"
-#include "list/list_enablescrollinteraction_test.cpp"
-#include "listitem/listitem_width_test.cpp"
-#include "listitem/listitem_height_test.cpp"
-#include "listitem/listitem_backgroundcolor_test.cpp"
-#include "listitem/listitem_borderwidth_test.cpp"
-#include "listitem/listitem_bordercolor_test.cpp"
-#include "listitem/listitem_borderradius_test.cpp"
-#include "listitem/listitem_opacity_test.cpp"
-#include "listitem/listitem_clip_test.cpp"
-#include "listitem/listitem_translate_test.cpp"
-#include "listitem/listitem_scale_test.cpp"
-#include "listitem/listitem_rotate_test.cpp"
-#include "listitem/listitem_brightness_test.cpp"
-#include "listitem/listitem_saturate_test.cpp"
-#include "listitem/listitem_blur_test.cpp"
-#include "listitem/listitem_shadow_test.cpp"
-#include "listitem/listitem_lineargradient_test.cpp"
-#include "list/list_cachedcount_test.cpp"
-#include "commonattrs/commonattrs_radialgradient_test.cpp"
-#include "commonattrs/commonattrs_sweepgradient_test.cpp"
 #include "text/text_align_test.cpp"
 #include "text/text_alignrules_test.cpp"
 #include "text/text_backgroundcolor_test.cpp"
@@ -218,9 +325,11 @@
 #include "text/text_fontsize_test.cpp"
 #include "text/text_fontstyle_test.cpp"
 #include "text/text_fontweight_test.cpp"
+#include "text/text_height_test.cpp"
 #include "text/text_heightadaptivepolicy_test.cpp"
 #include "text/text_letterspacing_test.cpp"
 #include "text/text_lineargradient_test.cpp"
+#include "text/text_linebreakstrategy_test.cpp"
 #include "text/text_lineheight_test.cpp"
 #include "text/text_mask_test.cpp"
 #include "text/text_maxfontsize_test.cpp"
@@ -230,6 +339,7 @@
 #include "text/text_opacity_test.cpp"
 #include "text/text_overlay_test.cpp"
 #include "text/text_padding_test.cpp"
+#include "text/text_position_test.cpp"
 #include "text/text_radialgradient_test.cpp"
 #include "text/text_scale_test.cpp"
 #include "text/text_shadow_test.cpp"
@@ -241,7 +351,131 @@
 #include "text/text_textshadow_test.cpp"
 #include "text/text_transform_test.cpp"
 #include "text/text_visibility_test.cpp"
-#include "text/text_linebreakstrategy_test.cpp"
+#include "text/text_width_test.cpp"
+#include "textinput/textinput_backgroundcolor_test.cpp"
+#include "textinput/textinput_backgroundimage_test.cpp"
+#include "textinput/textinput_caretcolor_test.cpp"
+#include "textinput/textinput_clip_test.cpp"
+#include "textinput/textinput_fontcolor_test.cpp"
+#include "textinput/textinput_fontsize_test.cpp"
+#include "textinput/textinput_fontstyle_test.cpp"
+#include "textinput/textinput_fontweight_test.cpp"
+#include "textinput/textinput_padding_test.cpp"
+#include "textinput/textinput_showunderline_test.cpp"
+#include "textinput/textinput_textalign_test.cpp"
+#include "textpicker/textpicker_canloop_test.cpp"
+#include "textpicker/textpicker_defaultpickeritemheight_test.cpp"
+#include "textpicker/textpicker_disappeartextstyle_test.cpp"
+#include "textpicker/textpicker_selected_test.cpp"
+#include "textpicker/textpicker_selectedindex_test.cpp"
+#include "textpicker/textpicker_selectedtextstyle_test.cpp"
+#include "textpicker/textpicker_textstyle_test.cpp"
+#include "textpicker/textpicker_value_test.cpp"
+#include "timepicker/timepicker_disappeartextstyle_test.cpp"
+#include "timepicker/timepicker_height_test.cpp"
+#include "timepicker/timepicker_selected_test.cpp"
+#include "timepicker/timepicker_selectedtextstyle_test.cpp"
+#include "timepicker/timepicker_textstyle_test.cpp"
+#include "timepicker/timepicker_usemilitarytime_test.cpp"
+#include "toggle/toggle_backgroundcolor_test.cpp"
+#include "toggle/toggle_clip_test.cpp"
+#include "toggle/toggle_focusable_test.cpp"
+#include "toggle/toggle_height_test.cpp"
+#include "toggle/toggle_margin_test.cpp"
+#include "toggle/toggle_position_test.cpp"
+#include "toggle/toggle_selectedcolor_test.cpp"
+#include "toggle/toggle_switch_test.cpp"
+#include "toggle/toggle_switchpointcolor_test.cpp"
+#include "toggle/toggle_width_test.cpp"
+#include "xcomponent/xcomponent_sourceid_test.cpp"
+#include "xcomponent/xcomponent_type_test.cpp"
+#include "textpicker/textpicker_range_test.cpp"
+#include "imagespan/imagespan_width_test.cpp"
+#include "imagespan/imagespan_height_test.cpp"
+#include "imagespan/imagespan_objectfit_test.cpp"
+#include "imagespan/imagespan_verticalalign_test.cpp"
+#include "imagespan/imagespan_padding_test.cpp"
+#include "column/column_foregroundblurstyle_test.cpp"
+#include "textarea/textarea_width_test.cpp"
+#include "textarea/textarea_height_test.cpp"
+#include "textarea/textarea_position_test.cpp"
+#include "textinput/textinput_width_test.cpp"
+#include "textinput/textinput_height_test.cpp"
+#include "textinput/textinput_position_test.cpp"
+#include "textinput/textinput_showpasswordicon_test.cpp"
+#include "textinput/textinput_caretstyle_test.cpp"
+#include "textinput/textinput_selectedbackgroundcolor_test.cpp"
+#include "textinput/textinput_type_test.cpp"
+#include "textinput/textinput_enterkeytype_test.cpp"
+#include "textinput/textinput_enablekeyboardonfocus_test.cpp"
+#include "calendarpicker/calendarpicker_width_test.cpp"
+#include "datepicker/datepicker_width_test.cpp"
+#include "checkbox/checkbox_width_test.cpp"
+#include "checkbox/checkbox_height_test.cpp"
+#include "textpicker/textpicker_width_test.cpp"
+#include "textpicker/textpicker_height_test.cpp"
+#include "flex/flex_width_test.cpp"
+#include "flex/flex_height_test.cpp"
+#include "xcomponent/xcomponent_width_test.cpp"
+#include "xcomponent/xcomponent_height_test.cpp"
+#include "row/row_height_test.cpp"
+#include "slider/slider_width_test.cpp"
+#include "slider/slider_height_test.cpp"
+#include "column/column_width_test.cpp"
+#include "column/column_height_test.cpp"
+#include "column/column_padding_test.cpp"
+#include "span/span_decoration_test.cpp"
+#include "span/span_textcase_test.cpp"
+#include "span/span_letterspacing_test.cpp"
+#include "span/span_lineheight_test.cpp"
+#include "span/span_fontcolor_test.cpp"
+#include "span/span_fontsize_test.cpp"
+#include "span/span_fontstyle_test.cpp"
+#include "span/span_fontweight_test.cpp"
+#include "loadingprogress/loadingprogress_color_test.cpp"
+#include "loadingprogress/loadingprogress_enableloading_test.cpp"
+#include "progress/progress_color_test.cpp"
+#include "progress/progress_backgroundcolor_test.cpp"
+#include "progress/progress_style_test.cpp"
+#include "textarea/textarea_backgroundcolor_test.cpp"
+#include "textarea/textarea_borderradius_test.cpp"
+#include "textarea/textarea_caretcolor_test.cpp"
+#include "textarea/textarea_fontcolor_test.cpp"
+#include "textarea/textarea_fontfamily_test.cpp"
+#include "textarea/textarea_fontsize_test.cpp"
+#include "textarea/textarea_fontstyle_test.cpp"
+#include "textarea/textarea_fontweight_test.cpp"
+#include "textarea/textarea_lineheight_test.cpp"
+#include "textarea/textarea_maxlength_test.cpp"
+#include "textarea/textarea_padding_test.cpp"
+#include "textarea/textarea_placeholdercolor_test.cpp"
+#include "textarea/textarea_placeholderfont_test.cpp"
+#include "textarea/textarea_stopediting_test.cpp"
+#include "textarea/textarea_textalign_test.cpp"
+#include "textarea/textarea_textcase_test.cpp"
+#include "textarea/textarea_defaultfocus_test.cpp"
+#include "textinput/textinput_fontfamily_test.cpp"
+#include "textinput/textinput_maxlength_test.cpp"
+#include "textinput/textinput_placeholdercolor_test.cpp"
+#include "textinput/textinput_placeholderfont_test.cpp"
+#include "textinput/textinput_clearbuttonmode_test.cpp"
+#include "textinput/textinput_responseregion_test.cpp"
+#include "textarea/textarea_responseregion_test.cpp"
+#include "slider/slider_blockcolor_test.cpp"
+#include "slider/slider_blockstyle_test.cpp"
+#include "slider/slider_direction_test.cpp"
+#include "slider/slider_max_test.cpp"
+#include "slider/slider_min_test.cpp"
+#include "slider/slider_reverse_test.cpp"
+#include "slider/slider_selectedcolor_test.cpp"
+#include "slider/slider_showsteps_test.cpp"
+#include "slider/slider_step_test.cpp"
+#include "slider/slider_style_test.cpp"
+#include "slider/slider_trackcolor_test.cpp"
+#include "slider/slider_value_test.cpp"
+#include "textinput/textinput_stopediting_test.cpp"
+#include "textinput/textinput_lineheight_test.cpp"
+#include "textinput/textinput_defaultfocus_test.cpp"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -253,6 +487,79 @@ static napi_value Init(napi_env env, napi_value exports)
     }
 
     napi_property_descriptor desc[] = {
+        {"testScrollLinearGradient010", nullptr, TestScrollLinearGradient010, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaFontFamily003", nullptr, TestTextAreaFontFamily003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaFontColor002", nullptr, TestTextAreaFontColor002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaFontColor003", nullptr, TestTextAreaFontColor003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testLoadingProgressEnableLoading003", nullptr, TestLoadingProgressEnableLoading003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testProgressBackgroundColor002", nullptr, TestProgressBackgroundColor002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testProgressBackgroundColor003", nullptr, TestProgressBackgroundColor003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testProgressColor002", nullptr, TestProgressColor002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testProgressColor003", nullptr, TestProgressColor003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testLoadingProgressColor002", nullptr, TestLoadingProgressColor002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testLoadingProgressColor003", nullptr, TestLoadingProgressColor003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testButtonBackgroundColor001", nullptr, TestButtonBackgroundColor001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testButtonBackgroundColor002", nullptr, TestButtonBackgroundColor002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testButtonBackgroundColor003", nullptr, TestButtonBackgroundColor003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testButtonFontColor001", nullptr, TestButtonFontColor001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testButtonFontColor002", nullptr, TestButtonFontColor002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testButtonFontColor003", nullptr, TestButtonFontColor003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testButtonFontSize001", nullptr, TestButtonFontSize001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testButtonFontSize002", nullptr, TestButtonFontSize002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testButtonFontSize003", nullptr, TestButtonFontSize003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testButtonFontSize004", nullptr, TestButtonFontSize004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testButtonFontWeight001", nullptr, TestButtonFontWeight001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testButtonFontWeight002", nullptr, TestButtonFontWeight002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testButtonFontWeight003", nullptr, TestButtonFontWeight003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testButtonFontWeight004", nullptr, TestButtonFontWeight004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testButtonFontWeight005", nullptr, TestButtonFontWeight005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testButtonFontWeight006", nullptr, TestButtonFontWeight006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testButtonFontWeight007", nullptr, TestButtonFontWeight007, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testButtonFontWeight008", nullptr, TestButtonFontWeight008, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testButtonFontWeight009", nullptr, TestButtonFontWeight009, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testButtonFontWeight010", nullptr, TestButtonFontWeight010, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testButtonFontWeight011", nullptr, TestButtonFontWeight011, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testButtonFontWeight012", nullptr, TestButtonFontWeight012, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testButtonFontWeight013", nullptr, TestButtonFontWeight013, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testButtonFontWeight014", nullptr, TestButtonFontWeight014, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testButtonFontWeight015", nullptr, TestButtonFontWeight015, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testButtonFontWeight016", nullptr, TestButtonFontWeight016, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCheckboxMark001", nullptr, TestCheckboxMark001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCheckboxMark002", nullptr, TestCheckboxMark002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCheckboxMark003", nullptr, TestCheckboxMark003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCheckboxMark004", nullptr, TestCheckboxMark004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCheckboxMark005", nullptr, TestCheckboxMark005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCheckboxMark006", nullptr, TestCheckboxMark006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCheckboxSelect001", nullptr, TestCheckboxSelect001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCheckboxSelect002", nullptr, TestCheckboxSelect002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCheckboxSelect003", nullptr, TestCheckboxSelect003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCheckboxSelectedColor001", nullptr, TestCheckboxSelectedColor001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCheckboxSelectedColor002", nullptr, TestCheckboxSelectedColor002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCheckboxSelectedColor003", nullptr, TestCheckboxSelectedColor003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCheckboxShape001", nullptr, TestCheckboxShape001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCheckboxShape002", nullptr, TestCheckboxShape002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCheckboxShape003", nullptr, TestCheckboxShape003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCheckboxUnselectedColor001", nullptr, TestCheckboxUnselectedColor001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCheckboxUnselectedColor002", nullptr, TestCheckboxUnselectedColor002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCheckboxUnselectedColor003", nullptr, TestCheckboxUnselectedColor003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
         {"testCommonAttrsAlign001", nullptr, TestCommonAttrsAlign001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testCommonAttrsAlign002", nullptr, TestCommonAttrsAlign002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testCommonAttrsAlign003", nullptr, TestCommonAttrsAlign003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -920,7 +1227,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testStackAlign008", nullptr, TestStackAlign008, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackAlign009", nullptr, TestStackAlign009, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackAlign010", nullptr, TestStackAlign010, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testStackAlign011", nullptr, TestStackAlign011, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackBackgroundBlurStyle001", nullptr, TestStackBackgroundBlurStyle001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testStackBackgroundBlurStyle002", nullptr, TestStackBackgroundBlurStyle002, nullptr, nullptr, nullptr,
@@ -949,8 +1255,6 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"testStackBackgroundBlurStyle014", nullptr, TestStackBackgroundBlurStyle014, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"testStackBackgroundBlurStyle015", nullptr, TestStackBackgroundBlurStyle015, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
         {"testStackBackgroundColor001", nullptr, TestStackBackgroundColor001, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"testStackBackgroundColor002", nullptr, TestStackBackgroundColor002, nullptr, nullptr, nullptr, napi_default,
@@ -975,8 +1279,6 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"testStackBackgroundImagePosition002", nullptr, TestStackBackgroundImagePosition002, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"testStackBackgroundImagePosition003", nullptr, TestStackBackgroundImagePosition003, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
         {"testStackBackgroundImageSize001", nullptr, TestStackBackgroundImageSize001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testStackBackgroundImageSize002", nullptr, TestStackBackgroundImageSize002, nullptr, nullptr, nullptr,
@@ -989,7 +1291,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testStackBorderColor004", nullptr, TestStackBorderColor004, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackBorderColor005", nullptr, TestStackBorderColor005, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackBorderColor006", nullptr, TestStackBorderColor006, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testStackBorderColor007", nullptr, TestStackBorderColor007, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackBorderRadius001", nullptr, TestStackBorderRadius001, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"testStackBorderRadius002", nullptr, TestStackBorderRadius002, nullptr, nullptr, nullptr, napi_default,
@@ -1012,7 +1313,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testStackBorderStyle004", nullptr, TestStackBorderStyle004, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackBorderStyle005", nullptr, TestStackBorderStyle005, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackBorderStyle006", nullptr, TestStackBorderStyle006, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testStackBorderStyle007", nullptr, TestStackBorderStyle007, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackBorderWidth001", nullptr, TestStackBorderWidth001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackBorderWidth002", nullptr, TestStackBorderWidth002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackBorderWidth003", nullptr, TestStackBorderWidth003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -1026,7 +1326,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testStackBrightness005", nullptr, TestStackBrightness005, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackBrightness006", nullptr, TestStackBrightness006, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackBrightness007", nullptr, TestStackBrightness007, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testStackBrightness008", nullptr, TestStackBrightness008, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackClip001", nullptr, TestStackClip001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackClip002", nullptr, TestStackClip002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackClip003", nullptr, TestStackClip003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -1042,7 +1341,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testStackClip013", nullptr, TestStackClip013, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackClip014", nullptr, TestStackClip014, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackClip015", nullptr, TestStackClip015, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testStackClip016", nullptr, TestStackClip016, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackHeight001", nullptr, TestStackHeight001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackHeight002", nullptr, TestStackHeight002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackHeight003", nullptr, TestStackHeight003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -1067,8 +1365,6 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr},
         {"testStackLinearGradient010", nullptr, TestStackLinearGradient010, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"testStackLinearGradient011", nullptr, TestStackLinearGradient011, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
         {"testStackMargin001", nullptr, TestStackMargin001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackMargin002", nullptr, TestStackMargin002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackMargin003", nullptr, TestStackMargin003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -1079,23 +1375,19 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testStackOpacity004", nullptr, TestStackOpacity004, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackOpacity005", nullptr, TestStackOpacity005, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackOpacity006", nullptr, TestStackOpacity006, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testStackOpacity007", nullptr, TestStackOpacity007, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackPosition001", nullptr, TestStackPosition001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackPosition002", nullptr, TestStackPosition002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackRotate001", nullptr, TestStackRotate001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackRotate002", nullptr, TestStackRotate002, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testStackRotate003", nullptr, TestStackRotate003, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackSaturate001", nullptr, TestStackSaturate001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackSaturate002", nullptr, TestStackSaturate002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackSaturate003", nullptr, TestStackSaturate003, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackSaturate004", nullptr, TestStackSaturate004, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackSaturate005", nullptr, TestStackSaturate005, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackSaturate006", nullptr, TestStackSaturate006, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testStackSaturate007", nullptr, TestStackSaturate007, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackScale001", nullptr, TestStackScale001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackScale002", nullptr, TestStackScale002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackScale003", nullptr, TestStackScale003, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testStackScale004", nullptr, TestStackScale004, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackShadow001", nullptr, TestStackShadow001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackShadow002", nullptr, TestStackShadow002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackShadow003", nullptr, TestStackShadow003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -1105,7 +1397,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testStackShadow007", nullptr, TestStackShadow007, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackTransform001", nullptr, TestStackTransform001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackTransform002", nullptr, TestStackTransform002, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testStackTransform003", nullptr, TestStackTransform003, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackTransition001", nullptr, TestStackTransition001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackTransition002", nullptr, TestStackTransition002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackTransition003", nullptr, TestStackTransition003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -1171,13 +1462,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testStackTransition063", nullptr, TestStackTransition063, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackTransition064", nullptr, TestStackTransition064, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackTransition065", nullptr, TestStackTransition065, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testStackTransition066", nullptr, TestStackTransition066, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testStackTransition067", nullptr, TestStackTransition067, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testStackTransition068", nullptr, TestStackTransition068, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testStackTransition069", nullptr, TestStackTransition069, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackTranslate001", nullptr, TestStackTranslate001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackTranslate002", nullptr, TestStackTranslate002, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testStackTranslate003", nullptr, TestStackTranslate003, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackWidth001", nullptr, TestStackWidth001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackWidth002", nullptr, TestStackWidth002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testStackWidth003", nullptr, TestStackWidth003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -1202,7 +1488,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testToggleClip013", nullptr, TestToggleClip013, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testToggleClip014", nullptr, TestToggleClip014, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testToggleClip015", nullptr, TestToggleClip015, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testToggleClip016", nullptr, TestToggleClip016, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testToggleFocusable001", nullptr, TestToggleFocusable001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testToggleFocusable002", nullptr, TestToggleFocusable002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testToggleFocusable003", nullptr, TestToggleFocusable003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -1237,7 +1522,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testSwiperAutoPlay001", nullptr, TestSwiperAutoPlay001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperAutoPlay002", nullptr, TestSwiperAutoPlay002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperAutoPlay003", nullptr, TestSwiperAutoPlay003, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testSwiperAutoPlay004", nullptr, TestSwiperAutoPlay004, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperBackgroundColor001", nullptr, TestSwiperBackgroundColor001, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"testSwiperBackgroundColor002", nullptr, TestSwiperBackgroundColor002, nullptr, nullptr, nullptr, napi_default,
@@ -1273,7 +1557,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testSwiperClip013", nullptr, TestSwiperClip013, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperClip014", nullptr, TestSwiperClip014, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperClip015", nullptr, TestSwiperClip015, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testSwiperClip016", nullptr, TestSwiperClip016, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperCurve001", nullptr, TestSwiperCurve001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperCurve002", nullptr, TestSwiperCurve002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperCurve003", nullptr, TestSwiperCurve003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -1288,14 +1571,11 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testSwiperCurve012", nullptr, TestSwiperCurve012, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperCurve013", nullptr, TestSwiperCurve013, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperCurve014", nullptr, TestSwiperCurve014, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testSwiperCurve015", nullptr, TestSwiperCurve015, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperDisableSwipe001", nullptr, TestSwiperDisableSwipe001, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"testSwiperDisableSwipe002", nullptr, TestSwiperDisableSwipe002, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"testSwiperDisableSwipe003", nullptr, TestSwiperDisableSwipe003, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
-        {"testSwiperDisableSwipe004", nullptr, TestSwiperDisableSwipe004, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"testSwiperDisplayArrow001", nullptr, TestSwiperDisplayArrow001, nullptr, nullptr, nullptr, napi_default,
          nullptr},
@@ -1305,8 +1585,6 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr},
         {"testSwiperDisplayArrow004", nullptr, TestSwiperDisplayArrow004, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"testSwiperDisplayArrow005", nullptr, TestSwiperDisplayArrow005, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
         {"testSwiperDisplayCount001", nullptr, TestSwiperDisplayCount001, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"testSwiperDisplayCount002", nullptr, TestSwiperDisplayCount002, nullptr, nullptr, nullptr, napi_default,
@@ -1315,49 +1593,38 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr},
         {"testSwiperDisplayCount004", nullptr, TestSwiperDisplayCount004, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"testSwiperDisplayCount005", nullptr, TestSwiperDisplayCount005, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
         {"testSwiperDuration001", nullptr, TestSwiperDuration001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperDuration002", nullptr, TestSwiperDuration002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperDuration003", nullptr, TestSwiperDuration003, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testSwiperDuration004", nullptr, TestSwiperDuration004, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperHeight001", nullptr, TestSwiperHeight001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperHeight002", nullptr, TestSwiperHeight002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperHeight003", nullptr, TestSwiperHeight003, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperIndex001", nullptr, TestSwiperIndex001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperIndex002", nullptr, TestSwiperIndex002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperIndex003", nullptr, TestSwiperIndex003, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testSwiperIndex004", nullptr, TestSwiperIndex004, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperIndicator001", nullptr, TestSwiperIndicator001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperIndicator002", nullptr, TestSwiperIndicator002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperIndicator003", nullptr, TestSwiperIndicator003, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testSwiperIndicator004", nullptr, TestSwiperIndicator004, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperInterval001", nullptr, TestSwiperInterval001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperInterval002", nullptr, TestSwiperInterval002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperInterval003", nullptr, TestSwiperInterval003, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testSwiperInterval004", nullptr, TestSwiperInterval004, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperItemSpace001", nullptr, TestSwiperItemSpace001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperItemSpace002", nullptr, TestSwiperItemSpace002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperItemSpace003", nullptr, TestSwiperItemSpace003, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testSwiperItemSpace004", nullptr, TestSwiperItemSpace004, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperLoop001", nullptr, TestSwiperLoop001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperLoop002", nullptr, TestSwiperLoop002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperLoop003", nullptr, TestSwiperLoop003, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testSwiperLoop004", nullptr, TestSwiperLoop004, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperPosition001", nullptr, TestSwiperPosition001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperPosition002", nullptr, TestSwiperPosition002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperVertical001", nullptr, TestSwiperVertical001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperVertical002", nullptr, TestSwiperVertical002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperVertical003", nullptr, TestSwiperVertical003, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testSwiperVertical004", nullptr, TestSwiperVertical004, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperWidth001", nullptr, TestSwiperWidth001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperWidth002", nullptr, TestSwiperWidth002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperWidth003", nullptr, TestSwiperWidth003, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperCachedCount001", nullptr, TestSwiperCachedCount001, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"testSwiperCachedCount002", nullptr, TestSwiperCachedCount002, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
-        {"testSwiperCachedCount003", nullptr, TestSwiperCachedCount003, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"testImageHeight001", nullptr, TestImageHeight001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testImageHeight002", nullptr, TestImageHeight002, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -1418,8 +1685,6 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"testCommonAttrsLinearGradient010", nullptr, TestCommonAttrsLinearGradient010, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"testCommonAttrsLinearGradient011", nullptr, TestCommonAttrsLinearGradient011, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
         {"testCommonAttrsMargin001", nullptr, TestCommonAttrsMargin001, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"testCommonAttrsMargin002", nullptr, TestCommonAttrsMargin002, nullptr, nullptr, nullptr, napi_default,
@@ -1476,7 +1741,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testListEdgeEffect001", nullptr, TestListEdgeEffect001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testListEdgeEffect002", nullptr, TestListEdgeEffect002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testListEdgeEffect003", nullptr, TestListEdgeEffect003, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testListEdgeEffect004", nullptr, TestListEdgeEffect004, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testListEnableScrollInteraction001", nullptr, TestListEnableScrollInteraction001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testListEnableScrollInteraction002", nullptr, TestListEnableScrollInteraction002, nullptr, nullptr, nullptr,
@@ -1485,7 +1749,6 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"testListFriction001", nullptr, TestListFriction001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testListFriction002", nullptr, TestListFriction002, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testListFriction003", nullptr, TestListFriction003, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testListHeight001", nullptr, TestListHeight001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testListHeight002", nullptr, TestListHeight002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testListHeight003", nullptr, TestListHeight003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -1557,8 +1820,6 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"testListItemLinearGradient010", nullptr, TestListItemLinearGradient010, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"testListItemLinearGradient011", nullptr, TestListItemLinearGradient011, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
         {"testListItemOpacity001", nullptr, TestListItemOpacity001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testListItemOpacity002", nullptr, TestListItemOpacity002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testListItemOpacity003", nullptr, TestListItemOpacity003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -1620,8 +1881,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testListLinearGradient009", nullptr, TestListLinearGradient009, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"testListLinearGradient010", nullptr, TestListLinearGradient010, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
-        {"testListLinearGradient011", nullptr, TestListLinearGradient011, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"testListListDirection001", nullptr, TestListListDirection001, nullptr, nullptr, nullptr, napi_default,
          nullptr},
@@ -1831,8 +2090,6 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr},
         {"testTextLinearGradient011", nullptr, TestTextLinearGradient011, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"testTextLinearGradient012", nullptr, TestTextLinearGradient012, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
         {"testTextLineHeight001", nullptr, TestTextLineHeight001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testTextLineHeight002", nullptr, TestTextLineHeight002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testTextLineHeight003", nullptr, TestTextLineHeight003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -1933,14 +2190,14 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testTextVisibility002", nullptr, TestTextVisibility002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testTextVisibility003", nullptr, TestTextVisibility003, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testTextVisibility004", nullptr, TestTextVisibility004, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testTextLineBreakStrategy001", nullptr, TestTextLineBreakStrategy001, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testTextLineBreakStrategy002", nullptr, TestTextLineBreakStrategy002, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testTextLineBreakStrategy003", nullptr, TestTextLineBreakStrategy003, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testTextLineBreakStrategy004", nullptr, TestTextLineBreakStrategy004, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
+        {"testTextLineBreakStrategy001", nullptr, TestTextLineBreakStrategy001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextLineBreakStrategy002", nullptr, TestTextLineBreakStrategy002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextLineBreakStrategy003", nullptr, TestTextLineBreakStrategy003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextLineBreakStrategy004", nullptr, TestTextLineBreakStrategy004, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
         {"testTextAlignRules001", nullptr, TestTextAlignRules001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testTextAlignRules002", nullptr, TestTextAlignRules002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testTextAlignRules003", nullptr, TestTextAlignRules003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -2048,6 +2305,10 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"testScrollBackgroundColor001", nullptr, TestScrollBackgroundColor001, nullptr, nullptr, nullptr, napi_default,
          nullptr},
+        {"testScrollBackgroundColor002", nullptr, TestScrollBackgroundColor002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testScrollBackgroundColor003", nullptr, TestScrollBackgroundColor003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
         {"testScrollBlur001", nullptr, TestScrollBlur001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testScrollBlur002", nullptr, TestScrollBlur002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testScrollBlur003", nullptr, TestScrollBlur003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -2073,8 +2334,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testScrollClip001", nullptr, TestScrollClip001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testScrollClip002", nullptr, TestScrollClip002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testScrollClip003", nullptr, TestScrollClip003, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testScrollCurrentOffset001", nullptr, TestScrollCurrentOffset001, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
         {"testScrollEdgeEffect001", nullptr, TestScrollEdgeEffect001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testScrollEdgeEffect002", nullptr, TestScrollEdgeEffect002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testScrollEdgeEffect003", nullptr, TestScrollEdgeEffect003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -2132,6 +2391,10 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testScrollScrollAble004", nullptr, TestScrollScrollAble004, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testScrollScrollBarColor001", nullptr, TestScrollScrollBarColor001, nullptr, nullptr, nullptr, napi_default,
          nullptr},
+        {"testScrollScrollBarColor002", nullptr, TestScrollScrollBarColor002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testScrollScrollBarColor003", nullptr, TestScrollScrollBarColor003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
         {"testScrollScrollBar001", nullptr, TestScrollScrollBar001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testScrollScrollBar002", nullptr, TestScrollScrollBar002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testScrollScrollBar003", nullptr, TestScrollScrollBar003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -2140,19 +2403,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testScrollScrollSnap002", nullptr, TestScrollScrollSnap002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testScrollScrollSnap003", nullptr, TestScrollScrollSnap003, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testScrollScrollSnap004", nullptr, TestScrollScrollSnap004, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testScrollScrollTo001", nullptr, TestScrollScrollTo001, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testScrollScrollTo002", nullptr, TestScrollScrollTo002, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testScrollScrollTo003", nullptr, TestScrollScrollTo003, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testScrollScrollTo004", nullptr, TestScrollScrollTo004, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testScrollScrollTo005", nullptr, TestScrollScrollTo005, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testScrollScrollTo006", nullptr, TestScrollScrollTo006, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testScrollScrollTo007", nullptr, TestScrollScrollTo007, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testScrollScrollTo008", nullptr, TestScrollScrollTo008, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testScrollScrollTo009", nullptr, TestScrollScrollTo009, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testScrollScrollTo010", nullptr, TestScrollScrollTo010, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testScrollScrollTo011", nullptr, TestScrollScrollTo011, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testScrollScrollTo012", nullptr, TestScrollScrollTo012, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testScrollScrollTo013", nullptr, TestScrollScrollTo013, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testScrollShadow001", nullptr, TestScrollShadow001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testScrollShadow002", nullptr, TestScrollShadow002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testScrollShadow003", nullptr, TestScrollShadow003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -2167,6 +2417,1846 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testScrollFriction002", nullptr, TestScrollFriction001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testScrollPageEnable001", nullptr, TestScrollPageEnable001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testScrollPageEnable002", nullptr, TestScrollPageEnable002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCalendarPickerEdgeAlign001", nullptr, TestCalendarPickerEdgeAlign001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCalendarPickerEdgeAlign002", nullptr, TestCalendarPickerEdgeAlign002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCalendarPickerEdgeAlign003", nullptr, TestCalendarPickerEdgeAlign003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCalendarPickerEdgeAlign004", nullptr, TestCalendarPickerEdgeAlign004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCalendarPickerTextStyle001", nullptr, TestCalendarPickerTextStyle001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCalendarPickerTextStyle002", nullptr, TestCalendarPickerTextStyle002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCalendarPickerTextStyle003", nullptr, TestCalendarPickerTextStyle003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCalendarPickerTextStyle004", nullptr, TestCalendarPickerTextStyle004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCalendarPickerTextStyle005", nullptr, TestCalendarPickerTextStyle005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCalendarPickerTextStyle006", nullptr, TestCalendarPickerTextStyle006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCalendarPickerTextStyle007", nullptr, TestCalendarPickerTextStyle007, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCalendarPickerTextStyle008", nullptr, TestCalendarPickerTextStyle008, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCalendarPickerTextStyle009", nullptr, TestCalendarPickerTextStyle009, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCalendarPickerTextStyle010", nullptr, TestCalendarPickerTextStyle010, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCalendarPickerTextStyle011", nullptr, TestCalendarPickerTextStyle011, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCalendarPickerTextStyle012", nullptr, TestCalendarPickerTextStyle012, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCalendarPickerTextStyle013", nullptr, TestCalendarPickerTextStyle013, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCalendarPickerTextStyle014", nullptr, TestCalendarPickerTextStyle014, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCalendarPickerTextStyle015", nullptr, TestCalendarPickerTextStyle015, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCalendarPickerTextStyle016", nullptr, TestCalendarPickerTextStyle016, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextPickerDisappearTextStyle001", nullptr, TestTextPickerDisappearTextStyle001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextPickerDisappearTextStyle002", nullptr, TestTextPickerDisappearTextStyle002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextPickerTextStyle001", nullptr, TestTextPickerTextStyle001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextPickerTextStyle002", nullptr, TestTextPickerTextStyle002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextPickerSelectedTextStyle001", nullptr, TestTextPickerSelectedTextStyle001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextPickerSelectedTextStyle002", nullptr, TestTextPickerSelectedTextStyle002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextPickerSelectedIndex001", nullptr, TestTextPickerSelectedIndex001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextPickerSelectedIndex002", nullptr, TestTextPickerSelectedIndex002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextPickerSelectedIndex003", nullptr, TestTextPickerSelectedIndex003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextPickerSelected001", nullptr, TestTextPickerSelected001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextPickerSelected002", nullptr, TestTextPickerSelected002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextPickerSelected003", nullptr, TestTextPickerSelected003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextPickerCanLoop001", nullptr, TestTextPickerCanLoop001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextPickerCanLoop002", nullptr, TestTextPickerCanLoop002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextPickerDefaultPickerItemHeight001", nullptr, TestTextPickerDefaultPickerItemHeight001, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testTextPickerDefaultPickerItemHeight002", nullptr, TestTextPickerDefaultPickerItemHeight002, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testTextPickerDefaultPickerItemHeight003", nullptr, TestTextPickerDefaultPickerItemHeight003, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testTextPickerValue001", nullptr, TestTextPickerValue001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextPickerValue002", nullptr, TestTextPickerValue002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCustomDialogOpen001", nullptr, TestCustomDialogOpen001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCustomDialogOpen002", nullptr, TestCustomDialogOpen002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCustomDialogClose001", nullptr, TestCustomDialogClose001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomDialogClose002", nullptr, TestCustomDialogClose002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomDialogAlignment001", nullptr, TestCustomDialogAlignment001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomDialogAlignment002", nullptr, TestCustomDialogAlignment002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomDialogAlignment003", nullptr, TestCustomDialogAlignment003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomDialogAlignment004", nullptr, TestCustomDialogAlignment004, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomDialogAlignment005", nullptr, TestCustomDialogAlignment005, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomDialogAlignment006", nullptr, TestCustomDialogAlignment006, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomDialogAlignment007", nullptr, TestCustomDialogAlignment007, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomDialogAlignment008", nullptr, TestCustomDialogAlignment008, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomDialogAlignment009", nullptr, TestCustomDialogAlignment009, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomDialogAlignment010", nullptr, TestCustomDialogAlignment010, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomDialogCustomStyle001", nullptr, TestCustomDialogCustomStyle001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomDialogCustomStyle002", nullptr, TestCustomDialogCustomStyle002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testDatePickerLunar001", nullptr, TestDatePickerLunar001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testDatePickerLunar002", nullptr, TestDatePickerLunar002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testDatePickerLunar003", nullptr, TestDatePickerLunar003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testDatePickerLunar004", nullptr, TestDatePickerLunar004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testDatePickerStart001", nullptr, TestDatePickerStart001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testDatePickerStart002", nullptr, TestDatePickerStart002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testDatePickerEnd001", nullptr, TestDatePickerEnd001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testDatePickerEnd002", nullptr, TestDatePickerEnd002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testDatePickerSelected001", nullptr, TestDatePickerSelected001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testDatePickerSelected002", nullptr, TestDatePickerSelected002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testDatePickerSelectedTextStyle001", nullptr, TestDatePickerSelectedTextStyle001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testDatePickerSelectedTextStyle002", nullptr, TestDatePickerSelectedTextStyle002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testDatePickerDisappearTextStyle001", nullptr, TestDatePickerDisappearTextStyle001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testDatePickerDisappearTextStyle002", nullptr, TestDatePickerDisappearTextStyle002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testDatePickerTextStyle001", nullptr, TestDatePickerTextStyle001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testDatePickerTextStyle002", nullptr, TestDatePickerTextStyle002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTimePickerUseMilitaryTime001", nullptr, TestTimePickerUseMilitaryTime001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTimePickerUseMilitaryTime002", nullptr, TestTimePickerUseMilitaryTime002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTimePickerUseMilitaryTime003", nullptr, TestTimePickerUseMilitaryTime003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTimePickerUseMilitaryTime004", nullptr, TestTimePickerUseMilitaryTime004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTimePickerHeight001", nullptr, TestTimePickerHeight001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTimePickerHeight002", nullptr, TestTimePickerHeight002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTimePickerHeight003", nullptr, TestTimePickerHeight003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTimePickerSelected001", nullptr, TestTimePickerSelected001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTimePickerSelected002", nullptr, TestTimePickerSelected002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTimePickerSelectedTextStyle001", nullptr, TestTimePickerSelectedTextStyle001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTimePickerSelectedTextStyle002", nullptr, TestTimePickerSelectedTextStyle002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTimePickerDisappearTextStyle001", nullptr, TestTimePickerDisappearTextStyle001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTimePickerDisappearTextStyle002", nullptr, TestTimePickerDisappearTextStyle002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTimePickerTextStyle001", nullptr, TestTimePickerTextStyle001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTimePickerTextStyle002", nullptr, TestTimePickerTextStyle002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testXComponentSourceId001", nullptr, TestXComponentSourceId001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testXComponentSourceId002", nullptr, TestXComponentSourceId002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testXComponentType001", nullptr, TestXComponentType001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testXComponentType002", nullptr, TestXComponentType002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testXComponentType003", nullptr, TestXComponentType003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testXComponentType004", nullptr, TestXComponentType004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCustomDialogMaskColor001", nullptr, TestCustomDialogMaskColor001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomDialogMaskColor002", nullptr, TestCustomDialogMaskColor002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextPickerRange001", nullptr, TestTextPickerRange001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextPickerRange002", nullptr, TestTextPickerRange002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextPickerRange003", nullptr, TestTextPickerRange003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextPickerRange004", nullptr, TestTextPickerRange004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextPickerRange005", nullptr, TestTextPickerRange005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextPickerRange006", nullptr, TestTextPickerRange006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputAccessibilityDescription001", nullptr, TestTextInputAccessibilityDescription001, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputAccessibilityDescription002", nullptr, TestTextInputAccessibilityDescription002, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputAccessibilityGroup001", nullptr, TestTextInputAccessibilityGroup001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputAccessibilityGroup002", nullptr, TestTextInputAccessibilityGroup002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputAccessibilityGroup003", nullptr, TestTextInputAccessibilityGroup003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputAccessibilityGroup004", nullptr, TestTextInputAccessibilityGroup004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputAccessibilityLevel001", nullptr, TestTextInputAccessibilityLevel001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputAccessibilityLevel002", nullptr, TestTextInputAccessibilityLevel002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputAccessibilityLevel003", nullptr, TestTextInputAccessibilityLevel003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputAccessibilityLevel004", nullptr, TestTextInputAccessibilityLevel004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputAccessibilityText001", nullptr, TestTextInputAccessibilityText001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputAccessibilityText002", nullptr, TestTextInputAccessibilityText002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaAccessibilityDescription001", nullptr, TestTextAreaAccessibilityDescription001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testTextAreaAccessibilityDescription002", nullptr, TestTextAreaAccessibilityDescription002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testTextAreaAccessibilityGroup001", nullptr, TestTextAreaAccessibilityGroup001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaAccessibilityGroup002", nullptr, TestTextAreaAccessibilityGroup002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaAccessibilityGroup003", nullptr, TestTextAreaAccessibilityGroup003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaAccessibilityGroup004", nullptr, TestTextAreaAccessibilityGroup004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaAccessibilityLevel001", nullptr, TestTextAreaAccessibilityLevel001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaAccessibilityLevel002", nullptr, TestTextAreaAccessibilityLevel002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaAccessibilityLevel003", nullptr, TestTextAreaAccessibilityLevel003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaAccessibilityLevel004", nullptr, TestTextAreaAccessibilityLevel004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaAccessibilityText001", nullptr, TestTextAreaAccessibilityText001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaAccessibilityText002", nullptr, TestTextAreaAccessibilityText002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSwiperAccessibilityDescription001", nullptr, TestSwiperAccessibilityDescription001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testSwiperAccessibilityDescription002", nullptr, TestSwiperAccessibilityDescription002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testSwiperAccessibilityGroup001", nullptr, TestSwiperAccessibilityGroup001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSwiperAccessibilityGroup002", nullptr, TestSwiperAccessibilityGroup002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSwiperAccessibilityGroup003", nullptr, TestSwiperAccessibilityGroup003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSwiperAccessibilityGroup004", nullptr, TestSwiperAccessibilityGroup004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSwiperAccessibilityLevel001", nullptr, TestSwiperAccessibilityLevel001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSwiperAccessibilityLevel002", nullptr, TestSwiperAccessibilityLevel002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSwiperAccessibilityLevel003", nullptr, TestSwiperAccessibilityLevel003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSwiperAccessibilityLevel004", nullptr, TestSwiperAccessibilityLevel004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSwiperAccessibilityText001", nullptr, TestSwiperAccessibilityText001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSwiperAccessibilityText002", nullptr, TestSwiperAccessibilityText002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testScrollAccessibilityDescription001", nullptr, TestScrollAccessibilityDescription001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testScrollAccessibilityDescription002", nullptr, TestScrollAccessibilityDescription002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testScrollAccessibilityGroup001", nullptr, TestScrollAccessibilityGroup001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testScrollAccessibilityGroup002", nullptr, TestScrollAccessibilityGroup002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testScrollAccessibilityGroup003", nullptr, TestScrollAccessibilityGroup003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testScrollAccessibilityGroup004", nullptr, TestScrollAccessibilityGroup004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testScrollAccessibilityLevel001", nullptr, TestScrollAccessibilityLevel001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testScrollAccessibilityLevel002", nullptr, TestScrollAccessibilityLevel002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testScrollAccessibilityLevel003", nullptr, TestScrollAccessibilityLevel003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testScrollAccessibilityLevel004", nullptr, TestScrollAccessibilityLevel004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testScrollAccessibilityText001", nullptr, TestScrollAccessibilityText001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testScrollAccessibilityText002", nullptr, TestScrollAccessibilityText002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testListAccessibilityDescription001", nullptr, TestListAccessibilityDescription001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testListAccessibilityDescription002", nullptr, TestListAccessibilityDescription002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testListAccessibilityGroup001", nullptr, TestListAccessibilityGroup001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testListAccessibilityGroup002", nullptr, TestListAccessibilityGroup002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testListAccessibilityGroup003", nullptr, TestListAccessibilityGroup003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testListAccessibilityGroup004", nullptr, TestListAccessibilityGroup004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testListAccessibilityLevel001", nullptr, TestListAccessibilityLevel001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testListAccessibilityLevel002", nullptr, TestListAccessibilityLevel002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testListAccessibilityLevel003", nullptr, TestListAccessibilityLevel003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testListAccessibilityLevel004", nullptr, TestListAccessibilityLevel004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testListAccessibilityText001", nullptr, TestListAccessibilityText001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testListAccessibilityText002", nullptr, TestListAccessibilityText002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testToggleAccessibilityDescription001", nullptr, TestToggleAccessibilityDescription001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testToggleAccessibilityDescription002", nullptr, TestToggleAccessibilityDescription002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testToggleAccessibilityGroup001", nullptr, TestToggleAccessibilityGroup001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testToggleAccessibilityGroup002", nullptr, TestToggleAccessibilityGroup002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testToggleAccessibilityGroup003", nullptr, TestToggleAccessibilityGroup003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testToggleAccessibilityGroup004", nullptr, TestToggleAccessibilityGroup004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testToggleAccessibilityLevel001", nullptr, TestToggleAccessibilityLevel001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testToggleAccessibilityLevel002", nullptr, TestToggleAccessibilityLevel002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testToggleAccessibilityLevel003", nullptr, TestToggleAccessibilityLevel003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testToggleAccessibilityLevel004", nullptr, TestToggleAccessibilityLevel004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testToggleAccessibilityText001", nullptr, TestToggleAccessibilityText001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testToggleAccessibilityText002", nullptr, TestToggleAccessibilityText002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAccessibilityDescription001", nullptr, TestTextAccessibilityDescription001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAccessibilityDescription002", nullptr, TestTextAccessibilityDescription002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAccessibilityGroup001", nullptr, TestTextAccessibilityGroup001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAccessibilityGroup002", nullptr, TestTextAccessibilityGroup002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAccessibilityGroup003", nullptr, TestTextAccessibilityGroup003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAccessibilityGroup004", nullptr, TestTextAccessibilityGroup004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAccessibilityLevel001", nullptr, TestTextAccessibilityLevel001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAccessibilityLevel002", nullptr, TestTextAccessibilityLevel002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAccessibilityLevel003", nullptr, TestTextAccessibilityLevel003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAccessibilityLevel004", nullptr, TestTextAccessibilityLevel004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAccessibilityText001", nullptr, TestTextAccessibilityText001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAccessibilityText002", nullptr, TestTextAccessibilityText002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testSpanAccessibilityDescription001", nullptr, TestSpanAccessibilityDescription001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSpanAccessibilityDescription002", nullptr, TestSpanAccessibilityDescription002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSpanAccessibilityGroup001", nullptr, TestSpanAccessibilityGroup001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSpanAccessibilityGroup002", nullptr, TestSpanAccessibilityGroup002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSpanAccessibilityGroup003", nullptr, TestSpanAccessibilityGroup003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSpanAccessibilityGroup004", nullptr, TestSpanAccessibilityGroup004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSpanAccessibilityLevel001", nullptr, TestSpanAccessibilityLevel001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSpanAccessibilityLevel002", nullptr, TestSpanAccessibilityLevel002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSpanAccessibilityLevel003", nullptr, TestSpanAccessibilityLevel003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSpanAccessibilityLevel004", nullptr, TestSpanAccessibilityLevel004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSpanAccessibilityText001", nullptr, TestSpanAccessibilityText001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testSpanAccessibilityText002", nullptr, TestSpanAccessibilityText002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testRefreshAccessibilityDescription001", nullptr, TestRefreshAccessibilityDescription001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testRefreshAccessibilityDescription002", nullptr, TestRefreshAccessibilityDescription002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testRefreshAccessibilityGroup001", nullptr, TestRefreshAccessibilityGroup001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRefreshAccessibilityGroup002", nullptr, TestRefreshAccessibilityGroup002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRefreshAccessibilityGroup003", nullptr, TestRefreshAccessibilityGroup003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRefreshAccessibilityGroup004", nullptr, TestRefreshAccessibilityGroup004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRefreshAccessibilityLevel001", nullptr, TestRefreshAccessibilityLevel001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRefreshAccessibilityLevel002", nullptr, TestRefreshAccessibilityLevel002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRefreshAccessibilityLevel003", nullptr, TestRefreshAccessibilityLevel003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRefreshAccessibilityLevel004", nullptr, TestRefreshAccessibilityLevel004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRefreshAccessibilityText001", nullptr, TestRefreshAccessibilityText001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRefreshAccessibilityText002", nullptr, TestRefreshAccessibilityText002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testDatePickerAccessibilityDescription001", nullptr, TestDatePickerAccessibilityDescription001, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testDatePickerAccessibilityDescription002", nullptr, TestDatePickerAccessibilityDescription002, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testDatePickerAccessibilityGroup001", nullptr, TestDatePickerAccessibilityGroup001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testDatePickerAccessibilityGroup002", nullptr, TestDatePickerAccessibilityGroup002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testDatePickerAccessibilityGroup003", nullptr, TestDatePickerAccessibilityGroup003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testDatePickerAccessibilityGroup004", nullptr, TestDatePickerAccessibilityGroup004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testDatePickerAccessibilityLevel001", nullptr, TestDatePickerAccessibilityLevel001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testDatePickerAccessibilityLevel002", nullptr, TestDatePickerAccessibilityLevel002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testDatePickerAccessibilityLevel003", nullptr, TestDatePickerAccessibilityLevel003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testDatePickerAccessibilityLevel004", nullptr, TestDatePickerAccessibilityLevel004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testDatePickerAccessibilityText001", nullptr, TestDatePickerAccessibilityText001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testDatePickerAccessibilityText002", nullptr, TestDatePickerAccessibilityText002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTimePickerAccessibilityDescription001", nullptr, TestTimePickerAccessibilityDescription001, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testTimePickerAccessibilityDescription002", nullptr, TestTimePickerAccessibilityDescription002, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testTimePickerAccessibilityGroup001", nullptr, TestTimePickerAccessibilityGroup001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTimePickerAccessibilityGroup002", nullptr, TestTimePickerAccessibilityGroup002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTimePickerAccessibilityGroup003", nullptr, TestTimePickerAccessibilityGroup003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTimePickerAccessibilityGroup004", nullptr, TestTimePickerAccessibilityGroup004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTimePickerAccessibilityLevel001", nullptr, TestTimePickerAccessibilityLevel001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTimePickerAccessibilityLevel002", nullptr, TestTimePickerAccessibilityLevel002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTimePickerAccessibilityLevel003", nullptr, TestTimePickerAccessibilityLevel003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTimePickerAccessibilityLevel004", nullptr, TestTimePickerAccessibilityLevel004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTimePickerAccessibilityText001", nullptr, TestTimePickerAccessibilityText001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTimePickerAccessibilityText002", nullptr, TestTimePickerAccessibilityText002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSliderAccessibilityDescription001", nullptr, TestSliderAccessibilityDescription001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testSliderAccessibilityDescription002", nullptr, TestSliderAccessibilityDescription002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testSliderAccessibilityGroup001", nullptr, TestSliderAccessibilityGroup001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSliderAccessibilityGroup002", nullptr, TestSliderAccessibilityGroup002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSliderAccessibilityGroup003", nullptr, TestSliderAccessibilityGroup003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSliderAccessibilityGroup004", nullptr, TestSliderAccessibilityGroup004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSliderAccessibilityLevel001", nullptr, TestSliderAccessibilityLevel001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSliderAccessibilityLevel002", nullptr, TestSliderAccessibilityLevel002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSliderAccessibilityLevel003", nullptr, TestSliderAccessibilityLevel003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSliderAccessibilityLevel004", nullptr, TestSliderAccessibilityLevel004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSliderAccessibilityText001", nullptr, TestSliderAccessibilityText001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSliderAccessibilityText002", nullptr, TestSliderAccessibilityText002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testButtonAccessibilityDescription001", nullptr, TestButtonAccessibilityDescription001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testButtonAccessibilityDescription002", nullptr, TestButtonAccessibilityDescription002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testButtonAccessibilityGroup001", nullptr, TestButtonAccessibilityGroup001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testButtonAccessibilityGroup002", nullptr, TestButtonAccessibilityGroup002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testButtonAccessibilityGroup003", nullptr, TestButtonAccessibilityGroup003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testButtonAccessibilityGroup004", nullptr, TestButtonAccessibilityGroup004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testButtonAccessibilityLevel001", nullptr, TestButtonAccessibilityLevel001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testButtonAccessibilityLevel002", nullptr, TestButtonAccessibilityLevel002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testButtonAccessibilityLevel003", nullptr, TestButtonAccessibilityLevel003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testButtonAccessibilityLevel004", nullptr, TestButtonAccessibilityLevel004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testButtonAccessibilityText001", nullptr, TestButtonAccessibilityText001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testButtonAccessibilityText002", nullptr, TestButtonAccessibilityText002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextPickerAccessibilityDescription001", nullptr, TestTextPickerAccessibilityDescription001, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testTextPickerAccessibilityDescription002", nullptr, TestTextPickerAccessibilityDescription002, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testTextPickerAccessibilityGroup001", nullptr, TestTextPickerAccessibilityGroup001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextPickerAccessibilityGroup002", nullptr, TestTextPickerAccessibilityGroup002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextPickerAccessibilityGroup003", nullptr, TestTextPickerAccessibilityGroup003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextPickerAccessibilityGroup004", nullptr, TestTextPickerAccessibilityGroup004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextPickerAccessibilityLevel001", nullptr, TestTextPickerAccessibilityLevel001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextPickerAccessibilityLevel002", nullptr, TestTextPickerAccessibilityLevel002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextPickerAccessibilityLevel003", nullptr, TestTextPickerAccessibilityLevel003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextPickerAccessibilityLevel004", nullptr, TestTextPickerAccessibilityLevel004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextPickerAccessibilityText001", nullptr, TestTextPickerAccessibilityText001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextPickerAccessibilityText002", nullptr, TestTextPickerAccessibilityText002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCheckboxAccessibilityDescription001", nullptr, TestCheckboxAccessibilityDescription001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCheckboxAccessibilityDescription002", nullptr, TestCheckboxAccessibilityDescription002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCheckboxAccessibilityGroup001", nullptr, TestCheckboxAccessibilityGroup001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCheckboxAccessibilityGroup002", nullptr, TestCheckboxAccessibilityGroup002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCheckboxAccessibilityGroup003", nullptr, TestCheckboxAccessibilityGroup003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCheckboxAccessibilityGroup004", nullptr, TestCheckboxAccessibilityGroup004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCheckboxAccessibilityLevel001", nullptr, TestCheckboxAccessibilityLevel001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCheckboxAccessibilityLevel002", nullptr, TestCheckboxAccessibilityLevel002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCheckboxAccessibilityLevel003", nullptr, TestCheckboxAccessibilityLevel003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCheckboxAccessibilityLevel004", nullptr, TestCheckboxAccessibilityLevel004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCheckboxAccessibilityText001", nullptr, TestCheckboxAccessibilityText001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCheckboxAccessibilityText002", nullptr, TestCheckboxAccessibilityText002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testProgressAccessibilityDescription001", nullptr, TestProgressAccessibilityDescription001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testProgressAccessibilityDescription002", nullptr, TestProgressAccessibilityDescription002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testProgressAccessibilityGroup001", nullptr, TestProgressAccessibilityGroup001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testProgressAccessibilityGroup002", nullptr, TestProgressAccessibilityGroup002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testProgressAccessibilityGroup003", nullptr, TestProgressAccessibilityGroup003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testProgressAccessibilityGroup004", nullptr, TestProgressAccessibilityGroup004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testProgressAccessibilityLevel001", nullptr, TestProgressAccessibilityLevel001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testProgressAccessibilityLevel002", nullptr, TestProgressAccessibilityLevel002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testProgressAccessibilityLevel003", nullptr, TestProgressAccessibilityLevel003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testProgressAccessibilityLevel004", nullptr, TestProgressAccessibilityLevel004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testProgressAccessibilityText001", nullptr, TestProgressAccessibilityText001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testProgressAccessibilityText002", nullptr, TestProgressAccessibilityText002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentSweepGradient001", nullptr, TestCustomComponentSweepGradient001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentSweepGradient002", nullptr, TestCustomComponentSweepGradient002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentSweepGradient003", nullptr, TestCustomComponentSweepGradient003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentSweepGradient004", nullptr, TestCustomComponentSweepGradient004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentSweepGradient005", nullptr, TestCustomComponentSweepGradient005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentRadialGradient001", nullptr, TestCustomComponentRadialGradient001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomComponentRadialGradient002", nullptr, TestCustomComponentRadialGradient002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomComponentRadialGradient003", nullptr, TestCustomComponentRadialGradient003, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomComponentRadialGradient004", nullptr, TestCustomComponentRadialGradient004, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomComponentAlignSelf001", nullptr, TestCustomComponentAlignSelf001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentAlignSelf002", nullptr, TestCustomComponentAlignSelf002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentAlignSelf003", nullptr, TestCustomComponentAlignSelf003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentAlignSelf004", nullptr, TestCustomComponentAlignSelf004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentAlignSelf005", nullptr, TestCustomComponentAlignSelf005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentAlignSelf006", nullptr, TestCustomComponentAlignSelf006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentFlexBasis001", nullptr, TestCustomComponentFlexBasis001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentFlexBasis002", nullptr, TestCustomComponentFlexBasis002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentFlexGrow001", nullptr, TestCustomComponentFlexGrow001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentFlexGrow002", nullptr, TestCustomComponentFlexGrow002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentFlexShrink001", nullptr, TestCustomComponentFlexShrink001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentFlexShrink002", nullptr, TestCustomComponentFlexShrink002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentClip001", nullptr, TestCustomComponentClip001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentClip002", nullptr, TestCustomComponentClip002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentClip003", nullptr, TestCustomComponentClip003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentClip004", nullptr, TestCustomComponentClip004, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentClip005", nullptr, TestCustomComponentClip005, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentClip006", nullptr, TestCustomComponentClip006, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentClip007", nullptr, TestCustomComponentClip007, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentConstraintSize001", nullptr, TestCustomComponentConstraintSize001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomComponentConstraintSize002", nullptr, TestCustomComponentConstraintSize002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomComponentConstraintSize003", nullptr, TestCustomComponentConstraintSize003, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomComponentConstraintSize004", nullptr, TestCustomComponentConstraintSize004, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomComponentLinearGradient001", nullptr, TestCustomComponentLinearGradient001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomComponentLinearGradient002", nullptr, TestCustomComponentLinearGradient002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomComponentLinearGradient003", nullptr, TestCustomComponentLinearGradient003, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomComponentLinearGradient004", nullptr, TestCustomComponentLinearGradient004, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomComponentLinearGradient005", nullptr, TestCustomComponentLinearGradient005, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomComponentLinearGradient006", nullptr, TestCustomComponentLinearGradient006, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomComponentLinearGradient007", nullptr, TestCustomComponentLinearGradient007, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomComponentLinearGradient008", nullptr, TestCustomComponentLinearGradient008, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomComponentLinearGradient009", nullptr, TestCustomComponentLinearGradient009, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomComponentLinearGradient010", nullptr, TestCustomComponentLinearGradient010, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomComponentMargin001", nullptr, TestCustomComponentMargin001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentMargin002", nullptr, TestCustomComponentMargin002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentMargin003", nullptr, TestCustomComponentMargin003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentMargin004", nullptr, TestCustomComponentMargin004, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentScale001", nullptr, TestCustomComponentScale001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentScale002", nullptr, TestCustomComponentScale002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentScale003", nullptr, TestCustomComponentScale003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentScale004", nullptr, TestCustomComponentScale004, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentScale005", nullptr, TestCustomComponentScale005, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentShadow001", nullptr, TestCustomComponentShadow001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentShadow002", nullptr, TestCustomComponentShadow002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentShadow003", nullptr, TestCustomComponentShadow003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentShadow004", nullptr, TestCustomComponentShadow004, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentShadow005", nullptr, TestCustomComponentShadow005, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentShadow006", nullptr, TestCustomComponentShadow006, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentAlign001", nullptr, TestCustomComponentAlign001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentAlign002", nullptr, TestCustomComponentAlign002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentAlign003", nullptr, TestCustomComponentAlign003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentAlign004", nullptr, TestCustomComponentAlign004, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentAlign005", nullptr, TestCustomComponentAlign005, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentAlign006", nullptr, TestCustomComponentAlign006, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentAlign007", nullptr, TestCustomComponentAlign007, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentAlign008", nullptr, TestCustomComponentAlign008, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentAlign009", nullptr, TestCustomComponentAlign009, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentAlign010", nullptr, TestCustomComponentAlign010, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentAlign011", nullptr, TestCustomComponentAlign011, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentDirection001", nullptr, TestCustomComponentDirection001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentDirection002", nullptr, TestCustomComponentDirection002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentDirection003", nullptr, TestCustomComponentDirection003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentDirection004", nullptr, TestCustomComponentDirection004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentDirection005", nullptr, TestCustomComponentDirection005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBackgroundColor001", nullptr, TestCustomComponentBackgroundColor001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomComponentBackgroundColor002", nullptr, TestCustomComponentBackgroundColor002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomComponentBackgroundColor003", nullptr, TestCustomComponentBackgroundColor003, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomComponentBorderColor001", nullptr, TestCustomComponentBorderColor001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBorderColor002", nullptr, TestCustomComponentBorderColor002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBorderRadius001", nullptr, TestCustomComponentBorderRadius001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBorderRadius002", nullptr, TestCustomComponentBorderRadius002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBorderRadius003", nullptr, TestCustomComponentBorderRadius003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBorderRadius004", nullptr, TestCustomComponentBorderRadius004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBorderRadius005", nullptr, TestCustomComponentBorderRadius005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBorderRadius006", nullptr, TestCustomComponentBorderRadius006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBorderStyle001", nullptr, TestCustomComponentBorderStyle001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBorderStyle002", nullptr, TestCustomComponentBorderStyle002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBorderStyle003", nullptr, TestCustomComponentBorderStyle003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBorderStyle004", nullptr, TestCustomComponentBorderStyle004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBorderStyle005", nullptr, TestCustomComponentBorderStyle005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBorderStyle006", nullptr, TestCustomComponentBorderStyle006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBorderWidth001", nullptr, TestCustomComponentBorderWidth001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBorderWidth002", nullptr, TestCustomComponentBorderWidth002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBorderWidth003", nullptr, TestCustomComponentBorderWidth003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBorderWidth004", nullptr, TestCustomComponentBorderWidth004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle001", nullptr, TestCustomComponentForegroundBlurStyle001, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle002", nullptr, TestCustomComponentForegroundBlurStyle002, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle003", nullptr, TestCustomComponentForegroundBlurStyle003, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle004", nullptr, TestCustomComponentForegroundBlurStyle004, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle005", nullptr, TestCustomComponentForegroundBlurStyle005, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle006", nullptr, TestCustomComponentForegroundBlurStyle006, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle007", nullptr, TestCustomComponentForegroundBlurStyle007, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle008", nullptr, TestCustomComponentForegroundBlurStyle008, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle009", nullptr, TestCustomComponentForegroundBlurStyle009, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle010", nullptr, TestCustomComponentForegroundBlurStyle010, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle011", nullptr, TestCustomComponentForegroundBlurStyle011, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle012", nullptr, TestCustomComponentForegroundBlurStyle012, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle013", nullptr, TestCustomComponentForegroundBlurStyle013, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle014", nullptr, TestCustomComponentForegroundBlurStyle014, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle015", nullptr, TestCustomComponentForegroundBlurStyle015, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle016", nullptr, TestCustomComponentForegroundBlurStyle016, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle017", nullptr, TestCustomComponentForegroundBlurStyle017, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle018", nullptr, TestCustomComponentForegroundBlurStyle018, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle019", nullptr, TestCustomComponentForegroundBlurStyle019, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle020", nullptr, TestCustomComponentForegroundBlurStyle020, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle021", nullptr, TestCustomComponentForegroundBlurStyle021, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle022", nullptr, TestCustomComponentForegroundBlurStyle022, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle023", nullptr, TestCustomComponentForegroundBlurStyle023, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle024", nullptr, TestCustomComponentForegroundBlurStyle024, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle025", nullptr, TestCustomComponentForegroundBlurStyle025, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle026", nullptr, TestCustomComponentForegroundBlurStyle026, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle027", nullptr, TestCustomComponentForegroundBlurStyle027, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle028", nullptr, TestCustomComponentForegroundBlurStyle028, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle029", nullptr, TestCustomComponentForegroundBlurStyle029, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle030", nullptr, TestCustomComponentForegroundBlurStyle030, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle031", nullptr, TestCustomComponentForegroundBlurStyle031, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentForegroundBlurStyle032", nullptr, TestCustomComponentForegroundBlurStyle032, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentHeight001", nullptr, TestCustomComponentHeight001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentHeight002", nullptr, TestCustomComponentHeight002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentHeight003", nullptr, TestCustomComponentHeight003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentPosition001", nullptr, TestCustomComponentPosition001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentPosition002", nullptr, TestCustomComponentPosition002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentWidth001", nullptr, TestCustomComponentWidth001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentWidth002", nullptr, TestCustomComponentWidth002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentWidth003", nullptr, TestCustomComponentWidth003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentTransform001", nullptr, TestCustomComponentTransform001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentTransform002", nullptr, TestCustomComponentTransform002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentTransform003", nullptr, TestCustomComponentTransform003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentTransform004", nullptr, TestCustomComponentTransform004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentMask001", nullptr, TestCustomComponentMask001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentMask002", nullptr, TestCustomComponentMask002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentMask003", nullptr, TestCustomComponentMask003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentMask004", nullptr, TestCustomComponentMask004, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentMask005", nullptr, TestCustomComponentMask005, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentMask006", nullptr, TestCustomComponentMask006, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentMask007", nullptr, TestCustomComponentMask007, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentMask008", nullptr, TestCustomComponentMask008, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentMask009", nullptr, TestCustomComponentMask009, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentMask010", nullptr, TestCustomComponentMask010, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentMask011", nullptr, TestCustomComponentMask011, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentMask012", nullptr, TestCustomComponentMask012, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentMask013", nullptr, TestCustomComponentMask013, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentMask014", nullptr, TestCustomComponentMask014, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentMask015", nullptr, TestCustomComponentMask015, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentMask016", nullptr, TestCustomComponentMask016, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentBlendMode001", nullptr, TestCustomComponentBlendMode001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode002", nullptr, TestCustomComponentBlendMode002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode003", nullptr, TestCustomComponentBlendMode003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode004", nullptr, TestCustomComponentBlendMode004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode005", nullptr, TestCustomComponentBlendMode005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode006", nullptr, TestCustomComponentBlendMode006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode007", nullptr, TestCustomComponentBlendMode007, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode008", nullptr, TestCustomComponentBlendMode008, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode009", nullptr, TestCustomComponentBlendMode009, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode010", nullptr, TestCustomComponentBlendMode010, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode011", nullptr, TestCustomComponentBlendMode011, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode012", nullptr, TestCustomComponentBlendMode012, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode013", nullptr, TestCustomComponentBlendMode013, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode014", nullptr, TestCustomComponentBlendMode014, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode015", nullptr, TestCustomComponentBlendMode015, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode016", nullptr, TestCustomComponentBlendMode016, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode017", nullptr, TestCustomComponentBlendMode017, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode018", nullptr, TestCustomComponentBlendMode018, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode019", nullptr, TestCustomComponentBlendMode019, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode020", nullptr, TestCustomComponentBlendMode020, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode021", nullptr, TestCustomComponentBlendMode021, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode022", nullptr, TestCustomComponentBlendMode022, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode023", nullptr, TestCustomComponentBlendMode023, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode024", nullptr, TestCustomComponentBlendMode024, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode025", nullptr, TestCustomComponentBlendMode025, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode026", nullptr, TestCustomComponentBlendMode026, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode027", nullptr, TestCustomComponentBlendMode027, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode028", nullptr, TestCustomComponentBlendMode028, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode029", nullptr, TestCustomComponentBlendMode029, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode030", nullptr, TestCustomComponentBlendMode030, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode031", nullptr, TestCustomComponentBlendMode031, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode032", nullptr, TestCustomComponentBlendMode032, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode033", nullptr, TestCustomComponentBlendMode033, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode034", nullptr, TestCustomComponentBlendMode034, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode035", nullptr, TestCustomComponentBlendMode035, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode036", nullptr, TestCustomComponentBlendMode036, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode037", nullptr, TestCustomComponentBlendMode037, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode038", nullptr, TestCustomComponentBlendMode038, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode039", nullptr, TestCustomComponentBlendMode039, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode040", nullptr, TestCustomComponentBlendMode040, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode041", nullptr, TestCustomComponentBlendMode041, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode042", nullptr, TestCustomComponentBlendMode042, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode043", nullptr, TestCustomComponentBlendMode043, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode044", nullptr, TestCustomComponentBlendMode044, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode045", nullptr, TestCustomComponentBlendMode045, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode046", nullptr, TestCustomComponentBlendMode046, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode047", nullptr, TestCustomComponentBlendMode047, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode048", nullptr, TestCustomComponentBlendMode048, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode049", nullptr, TestCustomComponentBlendMode049, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode050", nullptr, TestCustomComponentBlendMode050, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode051", nullptr, TestCustomComponentBlendMode051, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode052", nullptr, TestCustomComponentBlendMode052, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode053", nullptr, TestCustomComponentBlendMode053, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode054", nullptr, TestCustomComponentBlendMode054, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode055", nullptr, TestCustomComponentBlendMode055, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode056", nullptr, TestCustomComponentBlendMode056, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode057", nullptr, TestCustomComponentBlendMode057, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode058", nullptr, TestCustomComponentBlendMode058, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode059", nullptr, TestCustomComponentBlendMode059, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode060", nullptr, TestCustomComponentBlendMode060, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentBlendMode061", nullptr, TestCustomComponentBlendMode061, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentContrast001", nullptr, TestCustomComponentContrast001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentContrast002", nullptr, TestCustomComponentContrast002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentContrast003", nullptr, TestCustomComponentContrast003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentContrast004", nullptr, TestCustomComponentContrast004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentContrast005", nullptr, TestCustomComponentContrast005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentContrast006", nullptr, TestCustomComponentContrast006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentGrayscale001", nullptr, TestCustomComponentGrayscale001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentGrayscale002", nullptr, TestCustomComponentGrayscale002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentGrayscale003", nullptr, TestCustomComponentGrayscale003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentGrayscale004", nullptr, TestCustomComponentGrayscale004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentGrayscale005", nullptr, TestCustomComponentGrayscale005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentGrayscale006", nullptr, TestCustomComponentGrayscale006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentInvert001", nullptr, TestCustomComponentInvert001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentInvert002", nullptr, TestCustomComponentInvert002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentInvert003", nullptr, TestCustomComponentInvert003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentInvert004", nullptr, TestCustomComponentInvert004, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentInvert005", nullptr, TestCustomComponentInvert005, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentInvert006", nullptr, TestCustomComponentInvert006, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentOpacity001", nullptr, TestCustomComponentOpacity001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentOpacity002", nullptr, TestCustomComponentOpacity002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentOpacity003", nullptr, TestCustomComponentOpacity003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentOpacity004", nullptr, TestCustomComponentOpacity004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentOpacity005", nullptr, TestCustomComponentOpacity005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentOpacity006", nullptr, TestCustomComponentOpacity006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCustomComponentSepia001", nullptr, TestCustomComponentSepia001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentSepia002", nullptr, TestCustomComponentSepia002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentSepia003", nullptr, TestCustomComponentSepia003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentSepia004", nullptr, TestCustomComponentSepia004, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentSepia005", nullptr, TestCustomComponentSepia005, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentSepia006", nullptr, TestCustomComponentSepia006, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCustomComponentAccessibilityDescription001", nullptr, TestCustomComponentAccessibilityDescription001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentAccessibilityDescription002", nullptr, TestCustomComponentAccessibilityDescription002,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentAccessibilityGroup001", nullptr, TestCustomComponentAccessibilityGroup001, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentAccessibilityGroup002", nullptr, TestCustomComponentAccessibilityGroup002, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentAccessibilityGroup003", nullptr, TestCustomComponentAccessibilityGroup003, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentAccessibilityGroup004", nullptr, TestCustomComponentAccessibilityGroup004, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentAccessibilityLevel001", nullptr, TestCustomComponentAccessibilityLevel001, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentAccessibilityLevel002", nullptr, TestCustomComponentAccessibilityLevel002, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentAccessibilityLevel003", nullptr, TestCustomComponentAccessibilityLevel003, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentAccessibilityLevel004", nullptr, TestCustomComponentAccessibilityLevel004, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
+        {"testCustomComponentAccessibilityText001", nullptr, TestCustomComponentAccessibilityText001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testCustomComponentAccessibilityText002", nullptr, TestCustomComponentAccessibilityText002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testTextInputBackgroundColor001", nullptr, TestTextInputBackgroundColor001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+
+        {"testTextInputBackgroundColor002", nullptr, TestTextInputBackgroundColor002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputBackgroundImage001", nullptr, TestTextInputBackgroundImage001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+
+        {"testTextInputBackgroundImage002", nullptr, TestTextInputBackgroundImage002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputBackgroundImage003", nullptr, TestTextInputBackgroundImage003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+
+        {"testTextInputBackgroundImage004", nullptr, TestTextInputBackgroundImage004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputBackgroundImage005", nullptr, TestTextInputBackgroundImage005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputBackgroundImage006", nullptr, TestTextInputBackgroundImage006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputCaretColor001", nullptr, TestTextInputCaretColor001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+
+        {"testTextInputCaretColor002", nullptr, TestTextInputCaretColor002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputClip001", nullptr, TestTextInputClip001, nullptr, nullptr, nullptr, napi_default, nullptr},
+
+        {"testTextInputClip002", nullptr, TestTextInputClip002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputClip003", nullptr, TestTextInputClip003, nullptr, nullptr, nullptr, napi_default, nullptr},
+
+        {"testTextInputClip004", nullptr, TestTextInputClip004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputClip005", nullptr, TestTextInputClip005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputClip006", nullptr, TestTextInputClip006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputClip007", nullptr, TestTextInputClip007, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputFontColor001", nullptr, TestTextInputFontColor001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+
+        {"testTextInputFontColor002", nullptr, TestTextInputFontColor002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputFontSize001", nullptr, TestTextInputFontSize001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+
+        {"testTextInputFontSize002", nullptr, TestTextInputFontSize002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputFontSize003", nullptr, TestTextInputFontSize003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+
+        {"testTextInputFontSize004", nullptr, TestTextInputFontSize004, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputFontStyle001", nullptr, TestTextInputFontStyle001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+
+        {"testTextInputFontStyle002", nullptr, TestTextInputFontStyle002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputFontStyle003", nullptr, TestTextInputFontStyle003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputFontWeight001", nullptr, TestTextInputFontWeight001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputFontWeight002", nullptr, TestTextInputFontWeight002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputFontWeight003", nullptr, TestTextInputFontWeight003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputFontWeight004", nullptr, TestTextInputFontWeight004, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputFontWeight005", nullptr, TestTextInputFontWeight005, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputFontWeight006", nullptr, TestTextInputFontWeight006, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputFontWeight007", nullptr, TestTextInputFontWeight007, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputFontWeight008", nullptr, TestTextInputFontWeight008, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputFontWeight009", nullptr, TestTextInputFontWeight009, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputFontWeight010", nullptr, TestTextInputFontWeight010, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputFontWeight011", nullptr, TestTextInputFontWeight011, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputFontWeight012", nullptr, TestTextInputFontWeight012, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputFontWeight013", nullptr, TestTextInputFontWeight013, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputFontWeight014", nullptr, TestTextInputFontWeight014, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputFontWeight015", nullptr, TestTextInputFontWeight015, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputFontWeight016", nullptr, TestTextInputFontWeight016, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputPadding001", nullptr, TestTextInputPadding001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputPadding002", nullptr, TestTextInputPadding002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputPadding003", nullptr, TestTextInputPadding003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputPadding004", nullptr, TestTextInputPadding004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputShowUnderLine001", nullptr, TestTextInputShowUnderLine001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputShowUnderLine002", nullptr, TestTextInputShowUnderLine002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputTextAlign001", nullptr, TestTextInputTextAlign001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputTextAlign002", nullptr, TestTextInputTextAlign002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputTextAlign003", nullptr, TestTextInputTextAlign003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputTextAlign004", nullptr, TestTextInputTextAlign004, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputTextAlign005", nullptr, TestTextInputTextAlign005, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testImageSpanWidth001", nullptr, TestImageSpanWidth001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testImageSpanWidth002", nullptr, TestImageSpanWidth002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testImageSpanWidth003", nullptr, TestImageSpanWidth003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testImageSpanHeight001", nullptr, TestImageSpanHeight001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testImageSpanHeight002", nullptr, TestImageSpanHeight002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testImageSpanHeight003", nullptr, TestImageSpanHeight003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testImageSpanObjectFit001", nullptr, TestImageSpanObjectFit001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testImageSpanObjectFit002", nullptr, TestImageSpanObjectFit002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testImageSpanObjectFit003", nullptr, TestImageSpanObjectFit003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testImageSpanObjectFit004", nullptr, TestImageSpanObjectFit004, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testImageSpanObjectFit005", nullptr, TestImageSpanObjectFit005, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testImageSpanObjectFit006", nullptr, TestImageSpanObjectFit006, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testImageSpanObjectFit007", nullptr, TestImageSpanObjectFit007, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testImageSpanVerticalAlign001", nullptr, TestImageSpanVerticalAlign001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testImageSpanVerticalAlign002", nullptr, TestImageSpanVerticalAlign002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testImageSpanVerticalAlign003", nullptr, TestImageSpanVerticalAlign003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testImageSpanVerticalAlign004", nullptr, TestImageSpanVerticalAlign004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testImageSpanVerticalAlign005", nullptr, TestImageSpanVerticalAlign005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testImageSpanPadding001", nullptr, TestImageSpanPadding001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testImageSpanPadding002", nullptr, TestImageSpanPadding002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testImageSpanPadding003", nullptr, TestImageSpanPadding003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testImageSpanPadding004", nullptr, TestImageSpanPadding004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCheckboxHeight001", nullptr, TestCheckboxHeight001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCheckboxHeight002", nullptr, TestCheckboxHeight002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCheckboxHeight003", nullptr, TestCheckboxHeight003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCheckboxWidth001", nullptr, TestCheckboxWidth001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCheckboxWidth002", nullptr, TestCheckboxWidth002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCheckboxWidth003", nullptr, TestCheckboxWidth003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextPickerHeight001", nullptr, TestTextPickerHeight001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextPickerHeight002", nullptr, TestTextPickerHeight002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextPickerHeight003", nullptr, TestTextPickerHeight003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextPickerWidth001", nullptr, TestTextPickerWidth001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextPickerWidth002", nullptr, TestTextPickerWidth002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextPickerWidth003", nullptr, TestTextPickerWidth003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testFlexHeight001", nullptr, TestFlexHeight001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testFlexHeight002", nullptr, TestFlexHeight002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testFlexHeight003", nullptr, TestFlexHeight003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testFlexWidth001", nullptr, TestFlexWidth001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testFlexWidth002", nullptr, TestFlexWidth002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testFlexWidth003", nullptr, TestFlexWidth003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testXComponentHeight001", nullptr, TestXComponentHeight001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testXComponentHeight002", nullptr, TestXComponentHeight002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testXComponentHeight003", nullptr, TestXComponentHeight003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testXComponentWidth001", nullptr, TestXComponentWidth001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testXComponentWidth002", nullptr, TestXComponentWidth002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testXComponentWidth003", nullptr, TestXComponentWidth003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCalendarPickerWidth001", nullptr, TestCalendarPickerWidth001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCalendarPickerWidth002", nullptr, TestCalendarPickerWidth002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCalendarPickerWidth003", nullptr, TestCalendarPickerWidth003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testDatePickerWidth001", nullptr, TestDatePickerWidth001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testDatePickerWidth002", nullptr, TestDatePickerWidth002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testDatePickerWidth003", nullptr, TestDatePickerWidth003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanDecoration001", nullptr, TestSpanDecoration001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanDecoration002", nullptr, TestSpanDecoration002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanDecoration003", nullptr, TestSpanDecoration003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanDecoration004", nullptr, TestSpanDecoration004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanDecoration005", nullptr, TestSpanDecoration005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanLetterSpacing001", nullptr, TestSpanLetterSpacing001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testSpanLetterSpacing002", nullptr, TestSpanLetterSpacing002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testSpanLetterSpacing003", nullptr, TestSpanLetterSpacing003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testSpanTextCase001", nullptr, TestSpanTextCase001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanTextCase002", nullptr, TestSpanTextCase002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanTextCase003", nullptr, TestSpanTextCase003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanTextCase004", nullptr, TestSpanTextCase004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanLineHeight001", nullptr, TestSpanLineHeight001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanLineHeight002", nullptr, TestSpanLineHeight002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanLineHeight003", nullptr, TestSpanLineHeight003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanFontColor001", nullptr, TestSpanFontColor001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanFontColor002", nullptr, TestSpanFontColor002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanFontColor003", nullptr, TestSpanFontColor003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanFontSize001", nullptr, TestSpanFontSize001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanFontSize002", nullptr, TestSpanFontSize002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanFontSize003", nullptr, TestSpanFontSize003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanFontStyle001", nullptr, TestSpanFontStyle001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanFontStyle002", nullptr, TestSpanFontStyle002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanFontStyle003", nullptr, TestSpanFontStyle003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanFontWeight001", nullptr, TestSpanFontWeight001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanFontWeight002", nullptr, TestSpanFontWeight002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanFontWeight003", nullptr, TestSpanFontWeight003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanFontWeight004", nullptr, TestSpanFontWeight004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanFontWeight005", nullptr, TestSpanFontWeight005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanFontWeight006", nullptr, TestSpanFontWeight006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanFontWeight007", nullptr, TestSpanFontWeight007, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanFontWeight008", nullptr, TestSpanFontWeight008, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanFontWeight009", nullptr, TestSpanFontWeight009, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanFontWeight010", nullptr, TestSpanFontWeight010, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanFontWeight011", nullptr, TestSpanFontWeight011, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanFontWeight012", nullptr, TestSpanFontWeight012, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanFontWeight013", nullptr, TestSpanFontWeight013, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanFontWeight014", nullptr, TestSpanFontWeight014, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanFontWeight015", nullptr, TestSpanFontWeight015, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSpanFontWeight016", nullptr, TestSpanFontWeight016, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testColumnHeight001", nullptr, TestColumnHeight001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testColumnHeight002", nullptr, TestColumnHeight002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testColumnHeight003", nullptr, TestColumnHeight003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testColumnWidth001", nullptr, TestColumnWidth001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testColumnWidth002", nullptr, TestColumnWidth002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testColumnWidth003", nullptr, TestColumnWidth003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRowHeight001", nullptr, TestRowHeight001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRowHeight002", nullptr, TestRowHeight002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRowHeight003", nullptr, TestRowHeight003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderHeight001", nullptr, TestSliderHeight001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderHeight002", nullptr, TestSliderHeight002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderHeight003", nullptr, TestSliderHeight003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderWidth001", nullptr, TestSliderWidth001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderWidth002", nullptr, TestSliderWidth002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderWidth003", nullptr, TestSliderWidth003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testColumnPadding001", nullptr, TestColumnPadding001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testColumnPadding002", nullptr, TestColumnPadding002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testColumnPadding003", nullptr, TestColumnPadding003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testColumnPadding004", nullptr, TestColumnPadding004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testColumnForegroundBlurStyle001", nullptr, TestColumnForegroundBlurStyle001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testColumnForegroundBlurStyle002", nullptr, TestColumnForegroundBlurStyle002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testColumnForegroundBlurStyle003", nullptr, TestColumnForegroundBlurStyle003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testColumnForegroundBlurStyle004", nullptr, TestColumnForegroundBlurStyle004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testColumnForegroundBlurStyle005", nullptr, TestColumnForegroundBlurStyle005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testColumnForegroundBlurStyle006", nullptr, TestColumnForegroundBlurStyle006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testColumnForegroundBlurStyle007", nullptr, TestColumnForegroundBlurStyle007, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testColumnForegroundBlurStyle008", nullptr, TestColumnForegroundBlurStyle008, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testColumnForegroundBlurStyle009", nullptr, TestColumnForegroundBlurStyle009, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testColumnForegroundBlurStyle010", nullptr, TestColumnForegroundBlurStyle010, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testColumnForegroundBlurStyle011", nullptr, TestColumnForegroundBlurStyle011, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testColumnForegroundBlurStyle012", nullptr, TestColumnForegroundBlurStyle012, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testColumnForegroundBlurStyle013", nullptr, TestColumnForegroundBlurStyle013, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testColumnForegroundBlurStyle014", nullptr, TestColumnForegroundBlurStyle014, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testColumnForegroundBlurStyle015", nullptr, TestColumnForegroundBlurStyle015, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testColumnForegroundBlurStyle016", nullptr, TestColumnForegroundBlurStyle016, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testColumnForegroundBlurStyle017", nullptr, TestColumnForegroundBlurStyle017, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testColumnForegroundBlurStyle018", nullptr, TestColumnForegroundBlurStyle018, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testColumnForegroundBlurStyle019", nullptr, TestColumnForegroundBlurStyle019, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testColumnForegroundBlurStyle020", nullptr, TestColumnForegroundBlurStyle020, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testColumnForegroundBlurStyle021", nullptr, TestColumnForegroundBlurStyle021, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testColumnForegroundBlurStyle022", nullptr, TestColumnForegroundBlurStyle022, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testColumnForegroundBlurStyle023", nullptr, TestColumnForegroundBlurStyle023, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testColumnForegroundBlurStyle024", nullptr, TestColumnForegroundBlurStyle024, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testColumnForegroundBlurStyle025", nullptr, TestColumnForegroundBlurStyle025, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testColumnForegroundBlurStyle026", nullptr, TestColumnForegroundBlurStyle026, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testColumnForegroundBlurStyle027", nullptr, TestColumnForegroundBlurStyle027, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testColumnForegroundBlurStyle028", nullptr, TestColumnForegroundBlurStyle028, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testColumnForegroundBlurStyle029", nullptr, TestColumnForegroundBlurStyle029, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testColumnForegroundBlurStyle030", nullptr, TestColumnForegroundBlurStyle030, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testColumnForegroundBlurStyle031", nullptr, TestColumnForegroundBlurStyle031, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testColumnForegroundBlurStyle032", nullptr, TestColumnForegroundBlurStyle032, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaHeight001", nullptr, TestTextAreaHeight001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextAreaHeight002", nullptr, TestTextAreaHeight002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextAreaHeight003", nullptr, TestTextAreaHeight003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextAreaWidth001", nullptr, TestTextAreaWidth001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextAreaWidth002", nullptr, TestTextAreaWidth002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextAreaWidth003", nullptr, TestTextAreaWidth003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextAreaPosition001", nullptr, TestTextAreaPosition001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextAreaPosition002", nullptr, TestTextAreaPosition002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputWidth001", nullptr, TestTextInputWidth001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputWidth002", nullptr, TestTextInputWidth002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputWidth003", nullptr, TestTextInputWidth003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputHeight001", nullptr, TestTextInputHeight001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputHeight002", nullptr, TestTextInputHeight002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputHeight003", nullptr, TestTextInputHeight003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputCaretStyle001", nullptr, TestTextInputCaretStyle001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputCaretStyle002", nullptr, TestTextInputCaretStyle002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputCaretStyle003", nullptr, TestTextInputCaretStyle003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputSelectedBackgroundColor001", nullptr, TestTextInputSelectedBackgroundColor001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testTextInputSelectedBackgroundColor002", nullptr, TestTextInputSelectedBackgroundColor002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testTextInputSelectedBackgroundColor003", nullptr, TestTextInputSelectedBackgroundColor003, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testTextInputShowPasswordIcon001", nullptr, TestTextInputShowPasswordIcon001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputShowPasswordIcon002", nullptr, TestTextInputShowPasswordIcon002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputShowPasswordIcon003", nullptr, TestTextInputShowPasswordIcon003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputPosition001", nullptr, TestTextInputPosition001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputPosition002", nullptr, TestTextInputPosition001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputType001", nullptr, TestTextInputType001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputType002", nullptr, TestTextInputType002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputType003", nullptr, TestTextInputType003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputType004", nullptr, TestTextInputType004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputType005", nullptr, TestTextInputType005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputType006", nullptr, TestTextInputType006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputType007", nullptr, TestTextInputType007, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputType008", nullptr, TestTextInputType008, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputType009", nullptr, TestTextInputType009, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputType010", nullptr, TestTextInputType010, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputType011", nullptr, TestTextInputType011, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputEnterKeyType001", nullptr, TestTextInputEnterKeyType001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputEnterKeyType002", nullptr, TestTextInputEnterKeyType002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputEnterKeyType003", nullptr, TestTextInputEnterKeyType003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputEnterKeyType004", nullptr, TestTextInputEnterKeyType004, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputEnterKeyType005", nullptr, TestTextInputEnterKeyType005, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputEnterKeyType006", nullptr, TestTextInputEnterKeyType006, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputEnterKeyType007", nullptr, TestTextInputEnterKeyType007, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputEnterKeyType008", nullptr, TestTextInputEnterKeyType008, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputEnableKeyboardOnFocus001", nullptr, TestTextInputEnableKeyboardOnFocus001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testTextInputEnableKeyboardOnFocus002", nullptr, TestTextInputEnableKeyboardOnFocus002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testTextInputEnableKeyboardOnFocus003", nullptr, TestTextInputEnableKeyboardOnFocus003, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testLoadingProgressColor001", nullptr, TestLoadingProgressColor001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testLoadingProgressEnableLoading001", nullptr, TestLoadingProgressEnableLoading001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testLoadingProgressEnableLoading002", nullptr, TestLoadingProgressEnableLoading002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testProgressColor001", nullptr, TestProgressColor001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testProgressBackgroundColor001", nullptr, TestProgressBackgroundColor001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testProgressStyle001", nullptr, TestProgressStyle001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testProgressStyle002", nullptr, TestProgressStyle002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testProgressStyle003", nullptr, TestProgressStyle003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testProgressStyle004", nullptr, TestProgressStyle004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testProgressStyle005", nullptr, TestProgressStyle005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testProgressStyle006", nullptr, TestProgressStyle006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextAreaBackgroundColor001", nullptr, TestTextAreaBackGroundColor001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaBackgroundColor002", nullptr, TestTextAreaBackGroundColor002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaBackgroundColor003", nullptr, TestTextAreaBackGroundColor003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaBorderRadius001", nullptr, TestTextAreaBorderRadius001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaBorderRadius002", nullptr, TestTextAreaBorderRadius002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaBorderRadius003", nullptr, TestTextAreaBorderRadius003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaCaretColor001", nullptr, TestTextAreaCaretColor001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaCaretColor002", nullptr, TestTextAreaCaretColor002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaCaretColor003", nullptr, TestTextAreaCaretColor003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaFontColor001", nullptr, TestTextAreaFontColor001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaFontFamily001", nullptr, TestTextAreaFontFamily001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaFontFamily002", nullptr, TestTextAreaFontFamily002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaFontSize001", nullptr, TestTextAreaFontSize001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextAreaFontSize002", nullptr, TestTextAreaFontSize002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextAreaFontSize003", nullptr, TestTextAreaFontSize003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextAreaFontStyle001", nullptr, TestTextAreaFontStyle001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaFontStyle002", nullptr, TestTextAreaFontStyle002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaFontWeight001", nullptr, TestTextAreaFontWeight001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaFontWeight002", nullptr, TestTextAreaFontWeight002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaFontWeight003", nullptr, TestTextAreaFontWeight003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaFontWeight004", nullptr, TestTextAreaFontWeight004, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaFontWeight005", nullptr, TestTextAreaFontWeight005, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaFontWeight006", nullptr, TestTextAreaFontWeight006, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaFontWeight007", nullptr, TestTextAreaFontWeight007, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaFontWeight008", nullptr, TestTextAreaFontWeight008, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaFontWeight009", nullptr, TestTextAreaFontWeight009, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaFontWeight010", nullptr, TestTextAreaFontWeight010, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaFontWeight011", nullptr, TestTextAreaFontWeight011, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaFontWeight012", nullptr, TestTextAreaFontWeight012, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaFontWeight013", nullptr, TestTextAreaFontWeight013, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaFontWeight014", nullptr, TestTextAreaFontWeight014, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaFontWeight015", nullptr, TestTextAreaFontWeight015, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaFontWeight016", nullptr, TestTextAreaFontWeight016, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaLineHeight001", nullptr, TestTextAreaLineHeight001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaLineHeight002", nullptr, TestTextAreaLineHeight002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaMaxLength001", nullptr, TestTextAreaMaxLength001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaMaxLength002", nullptr, TestTextAreaMaxLength002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaMaxLength003", nullptr, TestTextAreaMaxLength003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaPadding001", nullptr, TestTextAreaPadding001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextAreaPadding002", nullptr, TestTextAreaPadding002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextAreaPlaceholderColor001", nullptr, TestTextAreaPlaceHolderColor001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaPlaceholderColor002", nullptr, TestTextAreaPlaceHolderColor002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaPlaceholderColor003", nullptr, TestTextAreaPlaceHolderColor003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaPlaceholderFont001", nullptr, TestTextAreaPlaceHolderFont001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaPlaceholderFont002", nullptr, TestTextAreaPlaceHolderFont002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaPlaceholderFont003", nullptr, TestTextAreaPlaceHolderFont003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaPlaceholderFont004", nullptr, TestTextAreaPlaceHolderFont004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaPlaceholderFont005", nullptr, TestTextAreaPlaceHolderFont005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaPlaceholderFont006", nullptr, TestTextAreaPlaceHolderFont006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaPlaceholderFont007", nullptr, TestTextAreaPlaceHolderFont007, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaPlaceholderFont008", nullptr, TestTextAreaPlaceHolderFont008, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaPlaceholderFont009", nullptr, TestTextAreaPlaceHolderFont009, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaPlaceholderFont010", nullptr, TestTextAreaPlaceHolderFont010, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaPlaceholderFont011", nullptr, TestTextAreaPlaceHolderFont011, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaPlaceholderFont012", nullptr, TestTextAreaPlaceHolderFont012, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaPlaceholderFont013", nullptr, TestTextAreaPlaceHolderFont013, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaPlaceholderFont014", nullptr, TestTextAreaPlaceHolderFont014, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaPlaceholderFont015", nullptr, TestTextAreaPlaceHolderFont015, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaPlaceholderFont016", nullptr, TestTextAreaPlaceHolderFont016, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaPlaceholderFont017", nullptr, TestTextAreaPlaceHolderFont017, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaPlaceholderFont018", nullptr, TestTextAreaPlaceHolderFont018, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaPlaceholderFont019", nullptr, TestTextAreaPlaceHolderFont019, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaPlaceholderFont020", nullptr, TestTextAreaPlaceHolderFont020, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputPlaceholderFont001", nullptr, TestTextInputPlaceHolderFont001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputPlaceholderFont002", nullptr, TestTextInputPlaceHolderFont002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputPlaceholderFont003", nullptr, TestTextInputPlaceHolderFont003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputPlaceholderFont004", nullptr, TestTextInputPlaceHolderFont004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputPlaceholderFont005", nullptr, TestTextInputPlaceHolderFont005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputPlaceholderFont006", nullptr, TestTextInputPlaceHolderFont006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputPlaceholderFont007", nullptr, TestTextInputPlaceHolderFont007, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputPlaceholderFont008", nullptr, TestTextInputPlaceHolderFont008, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputPlaceholderFont009", nullptr, TestTextInputPlaceHolderFont009, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputPlaceholderFont010", nullptr, TestTextInputPlaceHolderFont010, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputPlaceholderFont011", nullptr, TestTextInputPlaceHolderFont011, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputPlaceholderFont012", nullptr, TestTextInputPlaceHolderFont012, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputPlaceholderFont013", nullptr, TestTextInputPlaceHolderFont013, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputPlaceholderFont014", nullptr, TestTextInputPlaceHolderFont014, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputPlaceholderFont015", nullptr, TestTextInputPlaceHolderFont015, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputPlaceholderFont016", nullptr, TestTextInputPlaceHolderFont016, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputPlaceholderFont017", nullptr, TestTextInputPlaceHolderFont017, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputPlaceholderFont018", nullptr, TestTextInputPlaceHolderFont018, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputPlaceholderFont019", nullptr, TestTextInputPlaceHolderFont019, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputPlaceholderFont020", nullptr, TestTextInputPlaceHolderFont020, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaStopEditing001", nullptr, TestTextAreaStopEditing001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaStopEditing002", nullptr, TestTextAreaStopEditing002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaTextAlign001", nullptr, TestTextAreaTextAlign001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaTextAlign002", nullptr, TestTextAreaTextAlign002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaTextAlign003", nullptr, TestTextAreaTextAlign003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaTextAlign004", nullptr, TestTextAreaTextAlign004, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaTextAlign005", nullptr, TestTextAreaTextAlign005, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaTestCase001", nullptr, TestTextAreaTestCase001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextAreaTestCase002", nullptr, TestTextAreaTestCase002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextAreaTestCase003", nullptr, TestTextAreaTestCase003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputFontFamily001", nullptr, TestTextInputFontFamily001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputFontFamily002", nullptr, TestTextInputFontFamily002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputMaxLength001", nullptr, TestTextInputMaxLength001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputMaxLength002", nullptr, TestTextInputMaxLength002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputMaxLength003", nullptr, TestTextInputMaxLength003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputPlaceholderColor001", nullptr, TestTextInputPlaceholderColor001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputPlaceholderColor002", nullptr, TestTextInputPlaceholderColor002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputPlaceholderColor003", nullptr, TestTextInputPlaceholderColor003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputClearButtonMode001", nullptr, TestTextInputClearButtonMode001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputClearButtonMode002", nullptr, TestTextInputClearButtonMode002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputClearButtonMode003", nullptr, TestTextInputClearButtonMode003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputClearButtonMode004", nullptr, TestTextInputClearButtonMode004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputResponseRegion001", nullptr, TestTextInputResponseRegion001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputResponseRegion002", nullptr, TestTextInputResponseRegion002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaDefaultFocus001", nullptr, TestTextAreaDefaultFocus001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaDefaultFocus002", nullptr, TestTextAreaDefaultFocus002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextAreaResponseRegion001", nullptr, TestTextAreaResponseRegion001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaResponseRegion002", nullptr, TestTextAreaResponseRegion002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSliderBlockColor001", nullptr, TestSliderBlockColor001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderBlockColor002", nullptr, TestSliderBlockColor002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderBlockColor003", nullptr, TestSliderBlockColor003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderBlockColor004", nullptr, TestSliderBlockColor004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderBlockColor005", nullptr, TestSliderBlockColor005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderBlockColor006", nullptr, TestSliderBlockColor006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderBlockColor007", nullptr, TestSliderBlockColor007, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderBlockStyle001", nullptr, TestSliderBlockStyle001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderBlockStyle002", nullptr, TestSliderBlockStyle002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderBlockStyle003", nullptr, TestSliderBlockStyle003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderBlockStyle004", nullptr, TestSliderBlockStyle004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderBlockStyle005", nullptr, TestSliderBlockStyle005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderBlockStyle006", nullptr, TestSliderBlockStyle006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderBlockStyle007", nullptr, TestSliderBlockStyle007, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderBlockStyle008", nullptr, TestSliderBlockStyle008, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderBlockStyle009", nullptr, TestSliderBlockStyle009, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderBlockStyle010", nullptr, TestSliderBlockStyle010, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderBlockStyle011", nullptr, TestSliderBlockStyle011, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderBlockStyle012", nullptr, TestSliderBlockStyle012, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderDirection001", nullptr, TestSliderDirection001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderDirection002", nullptr, TestSliderDirection002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderDirection003", nullptr, TestSliderDirection003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderDirection004", nullptr, TestSliderDirection004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderDirection005", nullptr, TestSliderDirection005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderMax001", nullptr, TestSliderMax001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderMax002", nullptr, TestSliderMax002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderMax003", nullptr, TestSliderMax003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderMax004", nullptr, TestSliderMax004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderMax005", nullptr, TestSliderMax005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderMin001", nullptr, TestSliderMin001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderMin002", nullptr, TestSliderMin002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderMin003", nullptr, TestSliderMin003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderMin004", nullptr, TestSliderMin004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderMin005", nullptr, TestSliderMin005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderReverse001", nullptr, TestSliderReverse001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderReverse002", nullptr, TestSliderReverse002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderReverse003", nullptr, TestSliderReverse003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderReverse004", nullptr, TestSliderReverse004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderReverse005", nullptr, TestSliderReverse005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderSelectedColor001", nullptr, TestSliderSelectedColor001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testSliderSelectedColor002", nullptr, TestSliderSelectedColor002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testSliderSelectedColor003", nullptr, TestSliderSelectedColor003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testSliderSelectedColor004", nullptr, TestSliderSelectedColor004, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testSliderSelectedColor005", nullptr, TestSliderSelectedColor005, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testSliderSelectedColor006", nullptr, TestSliderSelectedColor006, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testSliderSelectedColor007", nullptr, TestSliderSelectedColor007, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testSliderShowSteps001", nullptr, TestSliderShowSteps001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderShowSteps002", nullptr, TestSliderShowSteps002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderShowSteps003", nullptr, TestSliderShowSteps003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderShowSteps004", nullptr, TestSliderShowSteps004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderShowSteps005", nullptr, TestSliderShowSteps005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderStep001", nullptr, TestSliderStep001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderStep002", nullptr, TestSliderStep002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderStep003", nullptr, TestSliderStep003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderStep004", nullptr, TestSliderStep004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderStep005", nullptr, TestSliderStep005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderStyle001", nullptr, TestSliderStyle001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderStyle002", nullptr, TestSliderStyle002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderStyle003", nullptr, TestSliderStyle003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderStyle004", nullptr, TestSliderStyle004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderStyle005", nullptr, TestSliderStyle005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderTrackColor001", nullptr, TestSliderTrackColor001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderTrackColor002", nullptr, TestSliderTrackColor002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderTrackColor003", nullptr, TestSliderTrackColor003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderTrackColor004", nullptr, TestSliderTrackColor004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderTrackColor005", nullptr, TestSliderTrackColor005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderTrackColor006", nullptr, TestSliderTrackColor006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderValue001", nullptr, TestSliderValue001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderValue002", nullptr, TestSliderValue002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderValue003", nullptr, TestSliderValue003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderValue004", nullptr, TestSliderValue004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSliderValue005", nullptr, TestSliderValue005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testTextInputLineHeight001", nullptr, TestTextInputLineHeight001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputLineHeight002", nullptr, TestTextInputLineHeight002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputLineHeight003", nullptr, TestTextInputLineHeight003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputLineHeight004", nullptr, TestTextInputLineHeight004, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputLineHeight005", nullptr, TestTextInputLineHeight005, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputStopEditing001", nullptr, TestTextInputStopEditing001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputStopEditing002", nullptr, TestTextInputStopEditing002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputStopEditing003", nullptr, TestTextInputStopEditing003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputStopEditing004", nullptr, TestTextInputStopEditing004, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputStopEditing005", nullptr, TestTextInputStopEditing005, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputAccessibilityLevel005", nullptr, TestTextInputAccessibilityLevel005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputAccessibilityLevel006", nullptr, TestTextInputAccessibilityLevel006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaAccessibilityLevel005", nullptr, TestTextAreaAccessibilityLevel005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAreaAccessibilityLevel006", nullptr, TestTextAreaAccessibilityLevel006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSwiperAccessibilityLevel005", nullptr, TestSwiperAccessibilityLevel005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSwiperAccessibilityLevel006", nullptr, TestSwiperAccessibilityLevel006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testScrollAccessibilityLevel005", nullptr, TestScrollAccessibilityLevel005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testScrollAccessibilityLevel006", nullptr, TestScrollAccessibilityLevel006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testListAccessibilityLevel005", nullptr, TestListAccessibilityLevel005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testListAccessibilityLevel006", nullptr, TestListAccessibilityLevel006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testToggleAccessibilityLevel005", nullptr, TestToggleAccessibilityLevel005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testToggleAccessibilityLevel006", nullptr, TestToggleAccessibilityLevel006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAccessibilityLevel005", nullptr, TestTextAccessibilityLevel005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextAccessibilityLevel006", nullptr, TestTextAccessibilityLevel006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSpanAccessibilityLevel005", nullptr, TestSpanAccessibilityLevel005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSpanAccessibilityLevel006", nullptr, TestSpanAccessibilityLevel006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRefreshAccessibilityLevel005", nullptr, TestRefreshAccessibilityLevel005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testRefreshAccessibilityLevel006", nullptr, TestRefreshAccessibilityLevel006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testDatePickerAccessibilityLevel005", nullptr, TestDatePickerAccessibilityLevel005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testDatePickerAccessibilityLevel006", nullptr, TestDatePickerAccessibilityLevel006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTimePickerAccessibilityLevel005", nullptr, TestTimePickerAccessibilityLevel005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTimePickerAccessibilityLevel006", nullptr, TestTimePickerAccessibilityLevel006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSliderAccessibilityLevel005", nullptr, TestSliderAccessibilityLevel005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testSliderAccessibilityLevel006", nullptr, TestSliderAccessibilityLevel006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testButtonAccessibilityLevel005", nullptr, TestButtonAccessibilityLevel005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testButtonAccessibilityLevel006", nullptr, TestButtonAccessibilityLevel006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextPickerAccessibilityLevel005", nullptr, TestTextPickerAccessibilityLevel005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextPickerAccessibilityLevel006", nullptr, TestTextPickerAccessibilityLevel006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCheckboxAccessibilityLevel005", nullptr, TestCheckboxAccessibilityLevel005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCheckboxAccessibilityLevel006", nullptr, TestCheckboxAccessibilityLevel006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testProgressAccessibilityLevel005", nullptr, TestProgressAccessibilityLevel005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testProgressAccessibilityLevel006", nullptr, TestProgressAccessibilityLevel006, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextInputDefaultFocus001", nullptr, TestTextInputDefaultFocus001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testTextInputDefaultFocus002", nullptr, TestTextInputDefaultFocus002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testCalendarPickerEdgeAlign005", nullptr, TestCalendarPickerEdgeAlign005, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testTextPickerDefaultPickerItemHeight004", nullptr, TestTextPickerDefaultPickerItemHeight004, nullptr,
+         nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

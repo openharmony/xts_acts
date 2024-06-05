@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import onSizeChange from './onSizeChangeTest/onSizeChange.test'
+import LocalizedBorderRadiuses from './borderRadiusTest/LocalizedBorderRadiuses.test'
 
 export default function testsuite() {
    onSizeChange()
+   LocalizedBorderRadiuses();
 }

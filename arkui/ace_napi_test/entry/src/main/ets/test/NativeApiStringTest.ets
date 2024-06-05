@@ -2458,10 +2458,9 @@ export default function nativeApiStringJsunit() {
      */
     it('aceNapiTest0162', 0, async (done: Function) => {
       console.info('aceNapiTest0162 START');
-      value = napitest.threadSafePriority((num1, num2) => {
-        return num1 + num2;
-      });
+      value = napitest.threadSafePriorityWithInvalidParam();
       console.info('aceNapiTest0162 testString result is value: ' + JSON.stringify(value));
+      expect(value).assertEqual(0);
       done();
     });
   })

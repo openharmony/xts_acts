@@ -108,43 +108,153 @@ function testSetDisallowedPolicy() {
   it("test_set_disallowed_policy_0103", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
-      restrictions.setDisallowedPolicy(SELFWANT, LABEL_BLUETOOTH, true);
-      expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_BLUETOOTH)).assertTrue();
       restrictions.setDisallowedPolicy(SELFWANT, LABEL_BLUETOOTH, false);
       expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_BLUETOOTH)).assertFalse();
+    } catch (error) {
+      expect(false).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
 
-      restrictions.setDisallowedPolicy(SELFWANT, LABEL_MODIFY_DATETIME, true);
-      expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_MODIFY_DATETIME)).assertTrue();
+ /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_JS_0104
+   * @tc.name      : test_set_disallowed_policy_0104
+   * @tc.desc      : test restrictions setDisallowedPolicy
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_disallowed_policy_0104", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
       restrictions.setDisallowedPolicy(SELFWANT, LABEL_MODIFY_DATETIME, false);
       expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_MODIFY_DATETIME)).assertFalse();
+    } catch (error) {
+      expect(false).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
 
-      restrictions.setDisallowedPolicy(SELFWANT, LABEL_PRINTER, true);
-      expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_PRINTER)).assertTrue();
+ /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_JS_0105
+   * @tc.name      : test_set_disallowed_policy_0105
+   * @tc.desc      : test restrictions setDisallowedPolicy
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_disallowed_policy_0105", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
       restrictions.setDisallowedPolicy(SELFWANT, LABEL_PRINTER, false);
       expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_PRINTER)).assertFalse();
+    } catch (error) {
+      expect(false).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
 
-      restrictions.setDisallowedPolicy(SELFWANT, LABEL_HDC, true);
-      expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_HDC)).assertTrue();
+ /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_JS_0106
+   * @tc.name      : test_set_disallowed_policy_0106
+   * @tc.desc      : test restrictions setDisallowedPolicy
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_disallowed_policy_0106", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
       restrictions.setDisallowedPolicy(SELFWANT, LABEL_HDC, false);
       expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_HDC)).assertFalse();
+    } catch (error) {
+      expect(false).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
 
-      restrictions.setDisallowedPolicy(SELFWANT, LABEL_MIC, true);
-      expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_MIC)).assertTrue();
+ /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_JS_0107
+   * @tc.name      : test_set_disallowed_policy_0107
+   * @tc.desc      : test restrictions setDisallowedPolicy
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_disallowed_policy_0107", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
       restrictions.setDisallowedPolicy(SELFWANT, LABEL_MIC, false);
       expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_MIC)).assertFalse();
+    } catch (error) {
+      expect(false).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });
 
-      restrictions.setDisallowedPolicy(SELFWANT, LABEL_FINGER_PRINT, true);
-      expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_FINGER_PRINT)).assertTrue();
+ /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_JS_0108
+   * @tc.name      : test_set_disallowed_policy_0108
+   * @tc.desc      : test restrictions setDisallowedPolicy
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_disallowed_policy_0108", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
       restrictions.setDisallowedPolicy(SELFWANT, LABEL_FINGER_PRINT, false);
       expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_FINGER_PRINT)).assertFalse();
+    } catch (error) {
+      expect(false).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  });  
 
-      restrictions.setDisallowedPolicy(SELFWANT, LABEL_USB, true);
-      expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_USB)).assertTrue();
+ /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_JS_0109
+   * @tc.name      : test_set_disallowed_policy_0109
+   * @tc.desc      : test restrictions setDisallowedPolicy
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_disallowed_policy_0109", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
       restrictions.setDisallowedPolicy(SELFWANT, LABEL_USB, false);
       expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_USB)).assertFalse();
+    } catch (error) {
+      expect(false).assertTrue();
+    } finally {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
+    }
+    done();
+  }); 
 
-      restrictions.setDisallowedPolicy(SELFWANT, LABEL_WIFI, true);
-      expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_WIFI)).assertTrue();
+ /**
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_JS_0110
+   * @tc.name      : test_set_disallowed_policy_0110
+   * @tc.desc      : test restrictions setDisallowedPolicy
+   * @tc.level     : Level 2
+   * @tc.type      : Function
+   * @tc.size      : MediumTest
+   */
+  it("test_set_disallowed_policy_0110", Level.LEVEL2, async (done: Function) => {
+    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
+    try {
       restrictions.setDisallowedPolicy(SELFWANT, LABEL_WIFI, false);
       expect(restrictions.getDisallowedPolicy(SELFWANT, LABEL_WIFI)).assertFalse();
     } catch (error) {
@@ -156,14 +266,14 @@ function testSetDisallowedPolicy() {
   });
 
   /**
-   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_JS_0104
-   * @tc.name      : test_set_disallowed_policy_0104
+   * @tc.number    : SUB_CUSTOMIZATION_EDM_SET_DISALLOWED_POLICY_JS_0111
+   * @tc.name      : test_set_disallowed_policy_0111
    * @tc.desc      : test restrictions setDisallowedPolicy with unsupported label
    * @tc.level     : Level 2
    * @tc.type      : Function
    * @tc.size      : MediumTest
    */
-  it("test_set_disallowed_policy_0104", Level.LEVEL2, async (done: Function) => {
+  it("test_set_disallowed_policy_0111", Level.LEVEL2, async (done: Function) => {
     await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
     try {
       restrictions.setDisallowedPolicy(SELFWANT, '123', false);

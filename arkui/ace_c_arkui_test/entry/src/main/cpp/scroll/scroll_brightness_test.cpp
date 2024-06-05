@@ -27,7 +27,7 @@ namespace ArkUICapiTest {
 static napi_value TestScrollBrightness001(napi_env env, napi_callback_info info)
 {
     NAPI_START(scroll, ARKUI_NODE_SCROLL);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_BRIGHTNESS)->value->f32, DEFAULT_VALUE);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_BRIGHTNESS)->value[PARAM_0].f32, DEFAULT_VALUE);
     NAPI_END;
 }
 
@@ -38,7 +38,7 @@ static napi_value TestScrollBrightness002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_BRIGHTNESS, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_BRIGHTNESS)->value->f32, MAX_VALUE);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_BRIGHTNESS)->value[PARAM_0].f32, MAX_VALUE);
     NAPI_END;
 }
 
@@ -49,7 +49,7 @@ static napi_value TestScrollBrightness003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_BRIGHTNESS, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_BRIGHTNESS)->value->f32, MIN_VALUE);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_BRIGHTNESS)->value[PARAM_0].f32, MIN_VALUE);
     NAPI_END;
 }
 } // namespace ArkUICapiTest

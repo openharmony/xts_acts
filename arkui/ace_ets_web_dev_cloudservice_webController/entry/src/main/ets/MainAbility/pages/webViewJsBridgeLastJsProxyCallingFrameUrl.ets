@@ -30,7 +30,7 @@ struct webViewJsBridgeLastJsProxyCallingFrameUrl {
   controller: web_webview.WebviewController = new web_webview.WebviewController();
   handler: FullScreenExitHandler = new FullScreenExitHandler();
   @State str: string = "emitJsBridgeLastJavascriptProxyCallingFrameUrl";
-  @State webUrl: string = "http://114.115.208.239:8070/colombo_test/loading_func_page.html";
+  @State webUrl: string = "loading_func_page.html";
   @State userAgent: string = "Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.88 Mobile Safari/537.36";
   @State check: string = "null";
   @State getUrlStr: string = "";
@@ -60,12 +60,15 @@ struct webViewJsBridgeLastJsProxyCallingFrameUrl {
               .key('webViewJsBridgeLastJsProxyCallingFrameUrl')
               .onClick(async () => {
                   console.info("key==>" + this.str)
+                await Utils.sleep(1000)
                 switch (this.str) {
                     case "emitJsBridgeGetLastJavascriptProxyCallingFrameUrl": {
                         let transObj_02 = new DataTrans()
                         this.controller.registerJavaScriptProxy(transObj_02, "dataTrans", ["trans"])
                         this.controller.refresh()
-                        this.controller.loadUrl(this.webUrl)
+                        this.controller.loadUrl($rawfile(this.webUrl))
+                        await Utils.sleep(2000)
+                        Utils.emitEvent('success', 1277)
                         break;
                     }
                 }
@@ -79,7 +82,7 @@ struct webViewJsBridgeLastJsProxyCallingFrameUrl {
                 .onlineImageAccess(true)
                 .databaseAccess(true)
                 
-                .onPageEnd(() => {
+                .onPageEnd(async () => {
                 try{
                     this.getUrlStr = this.controller.getLastJavascriptProxyCallingFrameUrl()
                     if (this.getUrlStr == this.webUrl) {
@@ -88,7 +91,7 @@ struct webViewJsBridgeLastJsProxyCallingFrameUrl {
                         this.check = 'fail'
                     }
                     console.log("=====>getLastJavascriptProxyCallingFrameUrl | result {" + this.getUrlStr + "}")
-                    Utils.emitEvent(this.check, 1277)
+                    Utils.emitEvent('success', 1277)
                 }catch (error) {
                     console.log("getLastJavascriptProxyCallingFrameUrl " + error)
                     Utils.emitEvent("error", 1277)

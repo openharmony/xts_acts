@@ -19,25 +19,17 @@
 
 #include "devattest_interface.h"
 
-#define DEVATTEST_INIT (-2)
-#define DEVATTEST_SUCCESS 0
+#define ACTS_DEVATTEST_INIT      (-2)
+#define ACTS_DEVATTEST_SUCCESS   0
 
 using namespace std;
 using namespace testing::ext;
-
-typedef enum {
-    SOFTWARE_RESULT_VERSIONID,
-    SOFTWARE_RESULT_PATCHLEVEL,
-    SOFTWARE_RESULT_ROOTHASH,
-    SOFTWARE_RESULT_PCID,
-    SOFTWARE_RESULT_RESERVE,
-} SOFTWARE_RESULT_DETAIL_TYPE;
 
 class DeviceAttestQuerryTest : public testing::Test {
 public:
     bool AttestStatusNumberValid(int32_t attestStatusNumber)
     {
-        if (attestStatusNumber < DEVATTEST_INIT || attestStatusNumber > DEVATTEST_SUCCESS) {
+        if (attestStatusNumber < ACTS_DEVATTEST_INIT || attestStatusNumber > ACTS_DEVATTEST_SUCCESS) {
             return false;
         }
         return true;
@@ -80,13 +72,13 @@ public:
                           + to_string(attestResultInfo.softwareResultDetail[SOFTWARE_RESULT_RESERVE]);
             result = false;
         }
-        if (attestResultInfo.authResult == DEVATTEST_SUCCESS) {
+        if (attestResultInfo.authResult == ACTS_DEVATTEST_SUCCESS) {
             if (attestResultInfo.ticketLength <= 0) {
                 failString += string(" ticketLength is ")
                               + to_string(attestResultInfo.ticketLength);
                 result = false;
             }
-            if (attestResultInfo.ticket == "") {
+            if (attestResultInfo.ticket == nullptr || strcmp(attestResultInfo.ticket, "") == 0) {
                 failString += string(" ticket is empty");
                 result = false;
             }
@@ -111,12 +103,12 @@ protected:
  */
 HWTEST_F(DeviceAttestQuerryTest, subDeviceAttestTest0200, Function | MediumTest | Level1)
 {
-    int32_t ret = DEVATTEST_SUCCESS;
+    int32_t ret = ACTS_DEVATTEST_SUCCESS;
     AttestResultInfo attestResultInfo = { 0 };
-    attestResultInfo.ticket = NULL;
+    attestResultInfo.ticket = nullptr;
     printf("[CLIENT MAIN] query.\n");
     ret = GetAttestStatus(&attestResultInfo);
-    EXPECT_EQ(ret, DEVATTEST_SUCCESS);
+    EXPECT_EQ(ret, ACTS_DEVATTEST_SUCCESS);
     bool resultBool = AttestStatusValid(attestResultInfo);
     EXPECT_EQ(resultBool, true);        
 }
@@ -128,19 +120,18 @@ HWTEST_F(DeviceAttestQuerryTest, subDeviceAttestTest0200, Function | MediumTest 
  */
 HWTEST_F(DeviceAttestQuerryTest, subDeviceAttestTest0300, Function | MediumTest | Level1)
 {
-    int32_t ret = DEVATTEST_SUCCESS;
+    int32_t ret = ACTS_DEVATTEST_SUCCESS;
     ret = StartDevAttestTask();
     printf("[CLIENT MAIN] StartDevAttestTask ret:%d.\n", ret);
-    EXPECT_EQ(ret, DEVATTEST_SUCCESS);
+    EXPECT_EQ(ret, ACTS_DEVATTEST_SUCCESS);
     AttestResultInfo attestResultInfo = { 0 };
-    attestResultInfo.ticket = NULL;
+    attestResultInfo.ticket = nullptr;
     printf("[CLIENT MAIN] query.\n");
     ret = GetAttestStatus(&attestResultInfo);
     printf("[CLIENT MAIN] wrong. ret:%d\n", ret);
 #ifdef __LINUX__
-    EXPECT_EQ(ret, DEVATTEST_SUCCESS);
+    EXPECT_EQ(ret, ACTS_DEVATTEST_SUCCESS);
 #else
-    EXPECT_FALSE(ret == DEVATTEST_SUCCESS);
+    EXPECT_FALSE(ret == ACTS_DEVATTEST_SUCCESS);
 #endif
 }
-

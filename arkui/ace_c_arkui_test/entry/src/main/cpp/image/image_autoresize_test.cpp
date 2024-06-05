@@ -23,15 +23,9 @@ static napi_value TestImageAutoResize001(napi_env env, napi_callback_info info)
     int32_t autoResizeValue = false;
     ArkUI_NumberValue value[] = {{.i32 = autoResizeValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
-    if (image != nullptr) {
-        auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_AUTO_RESIZE, &valueItem);
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "TestImageAutoResize001", "ret is: %{public}d", ret);
-        ASSERT_EQ(ret, SUCCESS);
-        ASSERT_EQ(nodeAPI->getAttribute(image, NODE_IMAGE_AUTO_RESIZE)->value->i32, autoResizeValue);
-    } else {
-        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "TestImageAutoResize001", "image is nullptr");
-    }
-
+    auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_AUTO_RESIZE, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_IMAGE_AUTO_RESIZE)->value[PARAM_0].i32, autoResizeValue);
     NAPI_END;
 }
 
@@ -43,7 +37,7 @@ static napi_value TestImageAutoResize002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_AUTO_RESIZE, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_IMAGE_AUTO_RESIZE)->value->i32, autoResizeValue);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_IMAGE_AUTO_RESIZE)->value[PARAM_0].i32, autoResizeValue);
     NAPI_END;
 }
 

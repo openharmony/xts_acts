@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+export const savePixelMapForPath: (path: string) => number;
+
 export const OHEffectBufferInfoCreate: () => number;
 export const OHEffectBufferInfoSetAddr: (a: number) => number;
 export const OHEffectBufferInfoGetAddr: (a: number) => number;
@@ -60,8 +62,8 @@ export const OHImageEffectSetInputNativeBuffer: () => number;
 export const OHImageEffectSetInputPixelmap: (a: number) => number;
 export const OHImageEffectSetInputUri: (a: number) => number;
 export const OHImageEffectSetOutputNativeBuffer: () => number;
-export const OHImageEffectSetOutputPixelmap: () => number;
+export const OHImageEffectSetOutputPixelmap: (a: number) => number;
 export const OHImageEffectSetOutputSurface: (a: number) => number;
 export const OHImageEffectSetOutputUri: (a: number) => number;
-export const OHImageEffectStart: (a: number) => number;
+export const OHImageEffectStart: () => number;
 export const OHImageEffectStop: () => number;

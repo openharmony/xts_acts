@@ -499,5 +499,63 @@ export default function NetConnectionNDKTest() {
       done();
     });
 
+
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETCONNBINDSOCKET_0100
+     * @tc.name   ：TestOHNetConnBindSocket_0100
+     * @tc.desc   ：Bind the socket to the specified network.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnBindSocket_0100', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnBindSocket(CASE_INDEX_1);
+      expect(re).assertEqual(NETCONNECTION_OK);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETCONNBINDSOCKET_0200
+     * @tc.name   ：TestOHNetConnBindSocket_0200
+     * @tc.desc   ：Bind the socket to the specified network.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnBindSocket_0200', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnBindSocket(CASE_INDEX_2);
+      expect(re).assertEqual(ERROR_CODE_401);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETCONNBINDSOCKET_0300
+     * @tc.name   ：TestOHNetConnBindSocket_0300
+     * @tc.desc   ：Bind the socket to the specified network.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnBindSocket_0300', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnBindSocket(CASE_INDEX_3);
+      expect(re).assertEqual(ERROR_CODE_401);
+      done();
+    });
+
+    /**
+     * @tc.number : SUB_NETWORK_WEBSOCKET_OHNETCONNBINDSOCKET_0400
+     * @tc.name   ：TestOHNetConnBindSocket_0400
+     * @tc.desc   ：Bind the socket to the specified network.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHNetConnBindSocket_0400', 0, async (done: Function) => {
+      let re: number = ncAPI.OHNetConnBindSocket(CASE_INDEX_4);
+      expect(re).assertEqual(ERROR_CODE_401);
+      done();
+    });
+
   });
 }

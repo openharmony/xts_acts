@@ -26,7 +26,7 @@ static napi_value TestStackBrightness001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_BRIGHTNESS, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BRIGHTNESS)->value->f32, brightnessValueZero);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BRIGHTNESS)->value[PARAM_0].f32, brightnessValueZero);
     NAPI_END;
 }
 
@@ -38,7 +38,7 @@ static napi_value TestStackBrightness002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_BRIGHTNESS, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BRIGHTNESS)->value->f32, brightnessValue);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BRIGHTNESS)->value[PARAM_0].f32, brightnessValue);
     NAPI_END;
 }
 
@@ -50,19 +50,11 @@ static napi_value TestStackBrightness003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_BRIGHTNESS, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BRIGHTNESS)->value->f32, brightnessValue);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BRIGHTNESS)->value[PARAM_0].f32, brightnessValue);
     NAPI_END;
 }
 
 static napi_value TestStackBrightness004(napi_env env, napi_callback_info info)
-{
-    NAPI_START(stack, ARKUI_NODE_STACK);
-    float brightnessValue = 1;
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BRIGHTNESS)->value->f32, brightnessValue);
-    NAPI_END;
-}
-
-static napi_value TestStackBrightness005(napi_env env, napi_callback_info info)
 {
     NAPI_START(stack, ARKUI_NODE_STACK);
     float brightnessValue = 1.5;
@@ -70,11 +62,11 @@ static napi_value TestStackBrightness005(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_BRIGHTNESS, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BRIGHTNESS)->value->f32, brightnessValue);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BRIGHTNESS)->value[PARAM_0].f32, brightnessValue);
     NAPI_END;
 }
 
-static napi_value TestStackBrightness006(napi_env env, napi_callback_info info)
+static napi_value TestStackBrightness005(napi_env env, napi_callback_info info)
 {
     NAPI_START(stack, ARKUI_NODE_STACK);
     float brightnessValue = 2;
@@ -82,11 +74,11 @@ static napi_value TestStackBrightness006(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_BRIGHTNESS, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BRIGHTNESS)->value->f32, brightnessValue);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BRIGHTNESS)->value[PARAM_0].f32, brightnessValue);
     NAPI_END;
 }
 
-static napi_value TestStackBrightness007(napi_env env, napi_callback_info info)
+static napi_value TestStackBrightness006(napi_env env, napi_callback_info info)
 {
     NAPI_START(stack, ARKUI_NODE_STACK);
     float brightnessValue = 3;
@@ -94,11 +86,11 @@ static napi_value TestStackBrightness007(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_BRIGHTNESS, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BRIGHTNESS)->value->f32, brightnessValue);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BRIGHTNESS)->value[PARAM_0].f32, brightnessValue);
     NAPI_END;
 }
 
-static napi_value TestStackBrightness008(napi_env env, napi_callback_info info)
+static napi_value TestStackBrightness007(napi_env env, napi_callback_info info)
 {
     NAPI_START(stack, ARKUI_NODE_STACK);
     float brightnessValue = 1;
@@ -106,7 +98,7 @@ static napi_value TestStackBrightness008(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_BRIGHTNESS, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BRIGHTNESS)->value->f32, brightnessValue);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_BRIGHTNESS)->value[PARAM_0].f32, brightnessValue);
     NAPI_END;
 }
 

@@ -17,8 +17,12 @@ import themePageTest from "./theme/themePageTest.test.ets";
 import themePageToggleTest from "./theme/themePageToggleTest.test.ets";
 import themePageSliderTest from "./theme/themePageSliderTest.test.ets";
 
+import APIFontPrimaryTest from "./theme/APIFontPrimaryTest.test.ets";
+import themePageListTest from "./theme/themePageListTest.test.ets";
 export default function testsuite() {
+  APIFontPrimaryTest();
   themePageTest();
   themePageToggleTest();
   themePageSliderTest();
+  themePageListTest();
 }

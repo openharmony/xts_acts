@@ -129,13 +129,10 @@ ArkUI_NodeHandle StackHitTestBehaviorTest::CreateSubStackNode(ArkUI_NativeNodeAP
         stack_brother_background_color_value, sizeof(stack_brother_background_color_value) / sizeof(ArkUI_NumberValue)};
     node_api->setAttribute(stackBrother, NODE_BACKGROUND_COLOR, &stack_brother_background_color_item);
 
-    if (hitTestBehavior != SIZE_100) {
-        ArkUI_NumberValue stack_brother_hittestbehavior_value[] = {{.i32 = hitTestBehavior}};
-        ArkUI_AttributeItem stack_brother_hittestbehavior_item = {stack_brother_hittestbehavior_value,
-                                                                  sizeof(stack_brother_hittestbehavior_value) /
-                                                                      sizeof(ArkUI_NumberValue)};
-        node_api->setAttribute(stackBrother, NODE_HIT_TEST_BEHAVIOR, &stack_brother_hittestbehavior_item);
-    }
+    ArkUI_NumberValue stack_brother_hittestbehavior_value[] = {{.i32 = hitTestBehavior}};
+    ArkUI_AttributeItem stack_brother_hittestbehavior_item = {
+        stack_brother_hittestbehavior_value, sizeof(stack_brother_hittestbehavior_value) / sizeof(ArkUI_NumberValue)};
+    node_api->setAttribute(stackBrother, NODE_HIT_TEST_BEHAVIOR, &stack_brother_hittestbehavior_item);
 
     node_api->registerNodeEvent(stackBrother, NODE_TOUCH_EVENT, STACK_BROTHER_ON_TOUCH_EVENT_ID, nullptr);
 
@@ -210,14 +207,6 @@ napi_value StackHitTestBehaviorTest::CreateNativeNode(napi_env env, napi_callbac
     onTouchTestStackParent = "OnTouchTestStackParentExceptAbove";
     onTouchTestStack = "OnTouchTestStackExceptAbove";
     onTouchTestStackBrother = "OnTouchTestStackBrotherExceptAbove";
-    stackParent = CreateSubStackNode(nodeAPI, hitTestBehavior, onTouchTestStackParent.c_str(), onTouchTestStack.c_str(),
-                                     onTouchTestStackBrother.c_str());
-    nodeAPI->addChild(column, stackParent);
-
-    hitTestBehavior = SIZE_100;
-    onTouchTestStackParent = "OnTouchTestDefaultStackParent";
-    onTouchTestStack = "OnTouchTestDefaultStack";
-    onTouchTestStackBrother = "OnTouchTestDefaultStackBrother";
     stackParent = CreateSubStackNode(nodeAPI, hitTestBehavior, onTouchTestStackParent.c_str(), onTouchTestStack.c_str(),
                                      onTouchTestStackBrother.c_str());
     nodeAPI->addChild(column, stackParent);

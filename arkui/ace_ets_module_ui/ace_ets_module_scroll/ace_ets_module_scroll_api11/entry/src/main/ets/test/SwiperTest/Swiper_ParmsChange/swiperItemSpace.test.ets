@@ -33,6 +33,9 @@ import {
   MouseButton
 } from '@ohos.UiTest';
 
+import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+
 export default function swiperItemSpace() {
   describe('swiperItemSpaceTest', () => {
     beforeEach(async (done: Function) => {
@@ -95,13 +98,17 @@ export default function swiperItemSpace() {
       // await CommonFunc.sleep(500);
       // await driver.swipe(vp2px(180), vp2px(100), vp2px(20), vp2px(100));
       await CommonFunc.sleep(1000);
+
       let gridRect:RectValue = CommonFunc.getComponentRectOnScreen('itemspacekey')
-      await driver.swipe(
-        Number.parseInt(`${(gridRect.right - gridRect.left) * 0.8 + gridRect.left}`),
-        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`),
-        Number.parseInt(`${(gridRect.right - gridRect.left) * 0.1 + gridRect.left}`),
-        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`),
-        500);
+      const delegator: AbilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+      let x1 = Number.parseInt(`${(gridRect.right - gridRect.left) * 0.8 + gridRect.left}`);
+      let y1 = Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`);
+      let x2 = Number.parseInt(`${(gridRect.right - gridRect.left) * 0.1 + gridRect.left}`);
+      let y2 = Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`);
+      let time = (x1 - x2) / 0.5;
+      let cmd = 'uinput -T -m ' + JSON.stringify(x1) + ' ' + JSON.stringify(y1) + ' ' + JSON.stringify(x2) + ' ' + JSON.stringify(y2) + ' ' + JSON.stringify(time);
+      await delegator.executeShellCommand(cmd);
+
       await CommonFunc.sleep(3000);
       itemspacekey = CommonFunc.getComponentRect('itemspacekey');
       itemspacekey01 = CommonFunc.getComponentRect('itemspacekey01');
@@ -171,13 +178,17 @@ export default function swiperItemSpace() {
      // // await driver.swipe(250, 230, 200, 230);
      //  await CommonFunc.sleep(1000);
       await CommonFunc.sleep(1000);
+
       let gridRect:RectValue = CommonFunc.getComponentRectOnScreen('itemspacekey')
-      await driver.swipe(
-        Number.parseInt(`${(gridRect.right - gridRect.left) * 0.8 + gridRect.left}`),
-        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`),
-        Number.parseInt(`${(gridRect.right - gridRect.left) * 0.1 + gridRect.left}`),
-        Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`),
-        500);
+      const delegator: AbilityDelegatorRegistry.AbilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+      let x1 = Number.parseInt(`${(gridRect.right - gridRect.left) * 0.8 + gridRect.left}`);
+      let y1 = Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`);
+      let x2 = Number.parseInt(`${(gridRect.right - gridRect.left) * 0.1 + gridRect.left}`);
+      let y2 = Number.parseInt(`${(gridRect.bottom - gridRect.top) * 0.5 + gridRect.top}`);
+      let time = (x1 - x2) / 0.5;
+      let cmd = 'uinput -T -m ' + JSON.stringify(x1) + ' ' + JSON.stringify(y1) + ' ' + JSON.stringify(x2) + ' ' + JSON.stringify(y2) + ' ' + JSON.stringify(time);
+      await delegator.executeShellCommand(cmd);
+
       await CommonFunc.sleep(3000);
       itemspacekey = CommonFunc.getComponentRect('itemspacekey');
       itemspacekey01 = CommonFunc.getComponentRect('itemspacekey01');

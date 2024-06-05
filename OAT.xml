@@ -82,6 +82,16 @@ Note:If the text contains special characters, please escape them according to th
 				<filteritem type="filename" name="*.der" desc="all bin file have check"/>
                 <filteritem type="filename" name="*.mkv" desc="all bin file have check"/>
                 <filteritem type="filename" name="*.mp3" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.ico" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.svg" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.arw" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.webp" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.bmp" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.glb" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.lsb" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.spv" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.ktx" desc="all bin file have check"/>
+                <filteritem type="filename" name="*.gltf" desc="all bin file have check"/>
             </filefilter>
             <filefilter name="defaultFilter" desc="Filters for default" >
                 <filteritem type="filepath" name="global/global_stage/entry/src/main/resources/rawfile/rawfiletest.xml" desc="resource files do not to be added"/>
@@ -92,6 +102,7 @@ Note:If the text contains special characters, please escape them according to th
                 <filteritem type="filename" name="*.mov" desc="mov files do not to be added "/>
                 <filteritem type="filename" name="*.xml" desc="xml files do not to be added "/>
                 <filteritem type="filename" name="*.py" desc="py files do not to be added "/>
+                <filteritem type="filename" name="*.gltf" desc="gltf files do not to be added"/>
             </filefilter>
         </filefilterlist>
     </oatconfig>

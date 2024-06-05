@@ -243,7 +243,7 @@ export default function HttpRequestMethodTest() {
             }, (err: BusinessError, data: http.HttpResponse) => {
               if (err) {
                 console.info(`${caseName} httpRequest fail ${JSON.stringify(err)}`);
-                ExpectFail();
+                ExpectTrue(err.code == 2300999);//The device does not support HTTP3
                 httpRequest.destroy();
                 done();
               } else {
@@ -293,7 +293,7 @@ export default function HttpRequestMethodTest() {
               done();
             }).catch((err: BusinessError) => {
               console.info(`${caseName}  httpRequest fail ${JSON.stringify(err)}`);
-              ExpectFail();
+              ExpectTrue(err.code == 2300999);//The device does not support HTTP3
               httpRequest.destroy();
               done();
             });
@@ -513,7 +513,7 @@ export default function HttpRequestMethodTest() {
             }, (err: BusinessError, data: http.HttpResponse) => {
               if (err) {
                 console.info(`${caseName} httpRequest fail ${JSON.stringify(err)}`);
-                ExpectFail();
+                ExpectTrue(err.code == 2300999);//The device does not support HTTP3
                 httpRequest.destroy();
                 done();
               } else {
@@ -563,7 +563,7 @@ export default function HttpRequestMethodTest() {
               done();
             }).catch((err: BusinessError) => {
               console.info(`${caseName}  httpRequest fail ${JSON.stringify(err)}`);
-              ExpectFail();
+              ExpectTrue(err.code == 2300999);//The device does not support HTTP3
               httpRequest.destroy();
               done();
             });
@@ -786,7 +786,7 @@ export default function HttpRequestMethodTest() {
         }, (err: BusinessError, data: http.HttpResponse) => {
           if (err) {
             console.info(`${caseName} httpRequest fail ${JSON.stringify(err)}`);
-            ExpectFail();
+            ExpectTrue(err.code == 2300999);//The device does not support HTTP3
             httpRequest.destroy();
             done();
           } else {
@@ -835,7 +835,7 @@ export default function HttpRequestMethodTest() {
               done();
             }).catch((err: BusinessError) => {
               console.info(`${caseName}  httpRequest fail ${JSON.stringify(err)}`);
-              ExpectFail();
+              ExpectTrue(err.code == 2300999);//The device does not support HTTP3
               httpRequest.destroy();
               done();
             });
@@ -1055,7 +1055,7 @@ export default function HttpRequestMethodTest() {
             }, (err: BusinessError, data: http.HttpResponse) => {
               if (err) {
                 console.info(`${caseName} httpRequest fail ${JSON.stringify(err)}`);
-                ExpectFail();
+                ExpectTrue(err.code == 2300999);//The device does not support HTTP3
                 httpRequest.destroy();
                 done();
               } else {
@@ -1105,7 +1105,7 @@ export default function HttpRequestMethodTest() {
               done();
             }).catch((err: BusinessError) => {
               console.info(`${caseName}  httpRequest fail ${JSON.stringify(err)}`);
-              ExpectFail();
+              ExpectTrue(err.code == 2300999);//The device does not support HTTP3
               httpRequest.destroy();
               done();
             });
@@ -1327,7 +1327,7 @@ export default function HttpRequestMethodTest() {
         }, (err: BusinessError, data: http.HttpResponse) => {
           if (err) {
             console.info(`${caseName} httpRequest fail ${JSON.stringify(err)}`);
-            ExpectFail();
+            ExpectTrue(err.code == 2300999);//The device does not support HTTP3
             httpRequest.destroy();
             done();
           } else {
@@ -1375,7 +1375,7 @@ export default function HttpRequestMethodTest() {
               done();
             }).catch((err: BusinessError) => {
               console.info(`${caseName}  httpRequest fail ${JSON.stringify(err)}`);
-              ExpectFail();
+              ExpectTrue(err.code == 2300999);//The device does not support HTTP3
               httpRequest.destroy();
               done();
             });
@@ -1595,7 +1595,7 @@ export default function HttpRequestMethodTest() {
             }, (err: BusinessError, data: http.HttpResponse) => {
               if (err) {
                 console.info(`${caseName} httpRequest fail ${JSON.stringify(err)}`);
-                ExpectFail();
+                ExpectTrue(err.code == 2300999);//The device does not support HTTP3
                 httpRequest.destroy();
                 done();
               } else {
@@ -1645,7 +1645,7 @@ export default function HttpRequestMethodTest() {
               done();
             }).catch((err: BusinessError) => {
               console.info(`${caseName}  httpRequest fail ${JSON.stringify(err)}`);
-              ExpectFail();
+              ExpectTrue(err.code == 2300999);//The device does not support HTTP3
               httpRequest.destroy();
               done();
             });
@@ -1865,7 +1865,7 @@ export default function HttpRequestMethodTest() {
             }, (err: BusinessError, data: http.HttpResponse) => {
               if (err) {
                 console.info(`${caseName} httpRequest fail ${JSON.stringify(err)}`);
-                ExpectFail();
+                ExpectTrue(err.code == 2300999);//The device does not support HTTP3
                 httpRequest.destroy();
                 done();
               } else {
@@ -1915,7 +1915,7 @@ export default function HttpRequestMethodTest() {
               done();
             }).catch((err: BusinessError) => {
               console.info(`${caseName}  httpRequest fail ${JSON.stringify(err)}`);
-              ExpectFail();
+              ExpectTrue(err.code == 2300999);//The device does not support HTTP3
               httpRequest.destroy();
               done();
             });
@@ -2135,7 +2135,7 @@ export default function HttpRequestMethodTest() {
             }, (err: BusinessError, data: http.HttpResponse) => {
               if (err) {
                 console.info(`${caseName} httpRequest fail ${JSON.stringify(err)}`);
-                ExpectFail();
+                ExpectTrue(err.code == 2300999);//The device does not support HTTP3
                 httpRequest.destroy();
                 done();
               } else {
@@ -2185,7 +2185,7 @@ export default function HttpRequestMethodTest() {
               done();
             }).catch((err: BusinessError) => {
               console.info(`${caseName}  httpRequest fail ${JSON.stringify(err)}`);
-              ExpectFail();
+              ExpectTrue(err.code == 2300999);//The device does not support HTTP3
               httpRequest.destroy();
               done();
             });

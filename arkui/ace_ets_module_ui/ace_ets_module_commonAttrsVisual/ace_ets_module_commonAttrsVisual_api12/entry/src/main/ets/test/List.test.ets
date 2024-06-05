@@ -14,7 +14,13 @@
  */
 import backgroundImageResizableTest from './backgroundImageTest/backgroundImageResizable.test';
 import foregroundEffect from './foregroundEffect.test'
+import systemBarEffectTest from './ImageEffectTest/systemBarEffect1.test'
+import freezeTest from './ImageEffectTest/freeze.test'
+
+
 export default function testsuite() {
   backgroundImageResizableTest();
   foregroundEffect();
+  systemBarEffectTest();
+  freezeTest();
 }

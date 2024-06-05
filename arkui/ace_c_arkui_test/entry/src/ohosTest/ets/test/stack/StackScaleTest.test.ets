@@ -55,26 +55,13 @@ export default function stackScaleTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_STACK_SCALE_0300
      * @tc.name       : testStackScale003
-     * @tc.desc       : testing scale for stack with normal value
+     * @tc.desc       : testing scale for stack with negative value
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
      */
     it('testStackScale003', 0, async (done: Function) => {
       expect(nativeFunc.testStackScale003()).assertEqual(0)
-      done()
-    })
-
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_STACK_SCALE_0400
-     * @tc.name       : testStackScale004
-     * @tc.desc       : testing scale for stack with negative value
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testStackScale004', 0, async (done: Function) => {
-      expect(nativeFunc.testStackScale004()).assertEqual(0)
       done()
     })
 

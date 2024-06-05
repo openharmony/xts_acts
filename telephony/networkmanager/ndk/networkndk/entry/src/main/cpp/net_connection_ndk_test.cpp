@@ -293,6 +293,37 @@ static napi_value OHOSNetConnUnregisterDnsResolver(napi_env env, napi_callback_i
     return result;
 }
 
+static napi_value OHNetConnBindSocket(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int32_t index;
+    napi_get_value_int32(env, args[PARAM_INDEX_0], &index);
+
+    int ret = -1;
+    if (index == CASE_INDEX_1) {
+        NetConn_NetHandle netHandle;
+        OH_NetConn_GetDefaultNet(&netHandle);
+        ret = OH_NetConn_BindSocket(netHandle.netId, &netHandle);
+    } else if (index == CASE_INDEX_2) {
+        NetConn_NetHandle netHandle;
+        OH_NetConn_GetDefaultNet(&netHandle);
+        ret = OH_NetConn_BindSocket(netHandle.netId, nullptr);
+    } else if (index == CASE_INDEX_3) {
+        NetConn_NetHandle netHandle;
+        OH_NetConn_GetDefaultNet(&netHandle);
+        ret = OH_NetConn_BindSocket(-1, &netHandle);
+    } else if (index == CASE_INDEX_4) {
+        ret = OH_NetConn_BindSocket(-1, nullptr);
+    }
+
+    napi_value result = nullptr;
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -314,6 +345,7 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"OHOSNetConnUnregisterDnsResolver", nullptr, OHOSNetConnUnregisterDnsResolver, nullptr, nullptr, nullptr,
          napi_default, nullptr},
+        {"OHNetConnBindSocket", nullptr, OHNetConnBindSocket, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

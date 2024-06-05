@@ -2107,7 +2107,7 @@ export default function pasteComponentTest() {
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('keyPaste');
       let obj = JSON.parse(strJsonNew);
-      expect(obj.$attrs.backgroundColor).assertEqual('#00000000');
+      expect(obj.$attrs.backgroundColor).assertEqual('#FF000000');
       await Utils.sleep(1000);
       try {
         let clickCallback = (clickData) => {

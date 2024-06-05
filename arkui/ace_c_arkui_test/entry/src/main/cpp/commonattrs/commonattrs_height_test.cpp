@@ -24,7 +24,7 @@ static napi_value TestCommonAttrsHeight001(napi_env env, napi_callback_info info
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(button, NODE_HEIGHT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(button, NODE_HEIGHT)->value->f32, SIZE_200);
+    ASSERT_EQ(nodeAPI->getAttribute(button, NODE_HEIGHT)->value[PARAM_0].f32, SIZE_200);
     NAPI_END;
 }
 
@@ -35,7 +35,7 @@ static napi_value TestCommonAttrsHeight002(napi_env env, napi_callback_info info
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(button, NODE_HEIGHT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(button, NODE_HEIGHT)->value->f32, PARAM_10000);
+    ASSERT_EQ(nodeAPI->getAttribute(button, NODE_HEIGHT)->value[PARAM_0].f32, PARAM_10000);
     NAPI_END;
 }
 
@@ -47,7 +47,7 @@ static napi_value TestCommonAttrsHeight003(napi_env env, napi_callback_info info
     auto ret = nodeAPI->setAttribute(button, NODE_HEIGHT, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(button, NODE_HEIGHT) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(button, NODE_HEIGHT)->value->f32, PARAM_NEGATIVE_10);
+        ASSERT_NE(nodeAPI->getAttribute(button, NODE_HEIGHT)->value[PARAM_0].f32, PARAM_NEGATIVE_10);
     }
     NAPI_END;
 }

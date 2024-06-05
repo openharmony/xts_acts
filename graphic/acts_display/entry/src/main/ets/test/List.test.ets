@@ -16,10 +16,12 @@ import windowCallbackTest from './windowCallback.test'
 import displayAndWindowRefactorInterfaceTest from './displayAndWindowRefactorInterface.test'
 import parameterVerificationIsOptional from './parameterVerificationIsOptional.test'
 import windowVerificationProblem from './windowVerificationProblem.test'
+import screenHotTest from './screenhot.test'
 
 export default function testsuite() {
   parameterVerificationIsOptional(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
   windowCallbackTest(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
   displayAndWindowRefactorInterfaceTest(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
   windowVerificationProblem(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
+  screenHotTest();
 }
