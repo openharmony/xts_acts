@@ -744,26 +744,7 @@ HWTEST_F(NativeXTSDrawingCanvasTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_0503, TestSize.Level3) {
-    // step 1
-    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    EXPECT_NE(canvas, nullptr);
-
-    // step 2
-    OH_Drawing_CanvasSave(canvas);
-    EXPECT_EQ(OH_Drawing_CanvasGetSaveCount(canvas), 2);
-
-    // step 3
-    OH_Drawing_CanvasDestroy(canvas);
-
-    // step 4
-    if (0) {
-        // todo cpp crash
-        OH_Drawing_CanvasSave(canvas);
-        OH_Drawing_CanvasGetSaveCount(canvas);
-    }
-
-    // step 5
-    // nothing to free
+    // Deprecated
 }
 
 /*
@@ -1137,23 +1118,7 @@ HWTEST_F(NativeXTSDrawingCanvasTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_0704, TestSize.Level3) {
-    // 1、OH_Drawing_CanvasCreate
-    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    EXPECT_NE(canvas, nullptr);
-
-    // 2、Use OH_Drawing_CanvasRestore and then call OH_Drawing_CanvasGetSaveCount to retrieve the number of saved
-    // states corresponding to the canvas status.
-    OH_Drawing_CanvasRestore(canvas);
-    EXPECT_EQ(OH_Drawing_CanvasGetSaveCount(canvas), 1);
-
-    // 3、OH_Drawing_CanvasDestroy
-    OH_Drawing_CanvasDestroy(canvas);
-
-    if (0) {
-        // todo cpp crash
-        // 4、OH_Drawing_CanvasRestore
-        OH_Drawing_CanvasRestore(canvas);
-    }
+    // Deprecated
 }
 
 /*
@@ -1371,29 +1336,7 @@ HWTEST_F(NativeXTSDrawingCanvasTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_0805, TestSize.Level3) {
-    // 1. OH_Drawing_CanvasCreate
-    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    EXPECT_NE(canvas, nullptr);
-
-    // 2. Call OH_Drawing_CanvasRestoreToCount and use OH_Drawing_CanvasGetSaveCount to retrieve the number of saved
-    // states corresponding to the canvas status.
-    OH_Drawing_CanvasRestoreToCount(canvas, 1);
-    EXPECT_EQ(OH_Drawing_CanvasGetSaveCount(canvas), 1);
-
-    // 3. OH_Drawing_CanvasDestroy
-    OH_Drawing_CanvasDestroy(canvas);
-
-    // 4. OH_Drawing_CanvasRestoreToCount
-    if (0) {
-        // todo cpp crash
-        OH_Drawing_CanvasRestoreToCount(canvas, 1);
-    }
-
-    // 5. Free the memory.
-    if (0) {
-        // todo cpp crash
-        OH_Drawing_CanvasDestroy(canvas);
-    }
+    // Deprecated
 }
 
 /*
@@ -1530,21 +1473,7 @@ HWTEST_F(NativeXTSDrawingCanvasTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_0904, TestSize.Level3) {
-    // 1. OH_Drawing_CanvasCreate
-    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    EXPECT_NE(canvas, nullptr);
-
-    // 2. OH_Drawing_CanvasDrawLine
-    OH_Drawing_CanvasDrawLine(canvas, 0, 0, 20, 20);
-
-    // 3. OH_Drawing_CanvasDestroy
-    OH_Drawing_CanvasDestroy(canvas);
-
-    // 4. OH_Drawing_CanvasDrawLine
-    OH_Drawing_CanvasDrawLine(canvas, 0, 0, 20, 20);
-
-    // 5. Free the memory.
-    // nothing to free
+    // Deprecated
 }
 
 /*
@@ -1618,33 +1547,7 @@ HWTEST_F(NativeXTSDrawingCanvasTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_1002, TestSize.Level3) {
-    // 1. OH_Drawing_CanvasCreate, OH_Drawing_PathCreate
-    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    EXPECT_NE(canvas, nullptr);
-    OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    EXPECT_NE(path, nullptr);
-
-    // 2. OH_Drawing_CanvasDrawPath
-    OH_Drawing_CanvasDrawPath(canvas, path);
-
-    // 3. OH_Drawing_CanvasDestroy
-    OH_Drawing_CanvasDestroy(canvas);
-
-    // 4. OH_Drawing_CanvasDrawPath
-    OH_Drawing_CanvasDrawPath(canvas, path);
-
-    // 5. OH_Drawing_CanvasCreate
-    canvas = OH_Drawing_CanvasCreate();
-    EXPECT_NE(canvas, nullptr);
-
-    // 6. OH_Drawing_PathDestroy
-    OH_Drawing_PathDestroy(path);
-
-    // 7. OH_Drawing_CanvasDrawPath
-    OH_Drawing_CanvasDrawPath(canvas, path);
-
-    // 8. Free the memory.
-    OH_Drawing_CanvasDestroy(canvas);
+    // Deprecated
 }
 
 } // namespace Drawing

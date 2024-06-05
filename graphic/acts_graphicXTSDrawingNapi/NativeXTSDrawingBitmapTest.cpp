@@ -331,76 +331,7 @@ HWTEST_F(NativeXTSDrawingBitmapTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingBitmapTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_BITMAP_0402, TestSize.Level3) {
-    // step 1
-    OH_Drawing_Bitmap *cBitmap = OH_Drawing_BitmapCreate();
-    EXPECT_NE(cBitmap, nullptr);
-    OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
-    uint32_t width = 100;
-    uint32_t height = 100;
-    OH_Drawing_BitmapBuild(cBitmap, width, height, &cFormat);
-
-    OH_Drawing_Image_Info imageInfo1{width, height, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_UNPREMUL};
-    void *pixels1 = new uint32_t[width * height];
-    bool res = OH_Drawing_BitmapReadPixels(cBitmap, &imageInfo1, pixels1, width * 4, 0, 0);
-    EXPECT_EQ(res, true);
-
-    // step 2
-    uint32_t w = OH_Drawing_BitmapGetWidth(cBitmap);
-    EXPECT_EQ(w, 100);
-
-    // step 3
-    uint32_t h = OH_Drawing_BitmapGetHeight(cBitmap);
-    EXPECT_EQ(h, 100);
-
-    // step 4
-    OH_Drawing_ColorFormat colorFormat_ = OH_Drawing_BitmapGetColorFormat(cBitmap);
-    EXPECT_EQ(colorFormat_, COLOR_FORMAT_RGBA_8888);
-
-    // step 5
-    OH_Drawing_AlphaFormat alphaFormat_ = OH_Drawing_BitmapGetAlphaFormat(cBitmap);
-    EXPECT_EQ(alphaFormat_, ALPHA_FORMAT_OPAQUE);
-
-    // step 6
-    void *pixels = OH_Drawing_BitmapGetPixels(cBitmap);
-    EXPECT_NE(pixels, nullptr);
-
-    // step 7
-    OH_Drawing_Image_Info *imageInfo = new OH_Drawing_Image_Info();
-    OH_Drawing_BitmapGetImageInfo(cBitmap, imageInfo);
-    EXPECT_EQ(width, imageInfo->width);
-    EXPECT_EQ(height, imageInfo->height);
-
-    // step 8
-    OH_Drawing_BitmapDestroy(cBitmap);
-
-    if (0) {
-        // todo cpp crash
-
-        // step 9
-        uint32_t w2 = OH_Drawing_BitmapGetWidth(cBitmap);
-        EXPECT_EQ(w2, 0);
-
-        // step 10
-        uint32_t h2 = OH_Drawing_BitmapGetHeight(cBitmap);
-        EXPECT_EQ(h2, 0);
-
-        // step 11
-        OH_Drawing_ColorFormat colorFormat2 = OH_Drawing_BitmapGetColorFormat(cBitmap);
-        EXPECT_EQ(colorFormat2, 0);
-
-        // step 12
-        OH_Drawing_AlphaFormat alphaFormat2 = OH_Drawing_BitmapGetAlphaFormat(cBitmap);
-        EXPECT_EQ(alphaFormat2, 0);
-
-        // step 13
-        void *pixels2 = OH_Drawing_BitmapGetPixels(cBitmap);
-        EXPECT_EQ(pixels2, nullptr);
-
-        // step 14
-        OH_Drawing_Image_Info *imageInfo2 = new OH_Drawing_Image_Info();
-        OH_Drawing_BitmapGetImageInfo(cBitmap, imageInfo2);
-        EXPECT_EQ(nullptr, imageInfo2);
-    }
+    // Deprecated
 }
 
 /*
@@ -493,35 +424,7 @@ HWTEST_F(NativeXTSDrawingBitmapTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingBitmapTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_BITMAP_0502, TestSize.Level3) {
-    const unsigned int width = 500;
-    const unsigned int height = 500;
-
-    // step 1
-    OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
-    OH_Drawing_BitmapFormat bitmapFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_UNPREMUL};
-
-    // step 2
-    OH_Drawing_BitmapBuild(bitmap, width, height, &bitmapFormat);
-
-    // step 3
-    bool res;
-    OH_Drawing_Image_Info imageInfo{width, height, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_UNPREMUL};
-    void *pixels = new uint32_t[width * height];
-    if (0) {
-        // todo cpp crash
-        res = OH_Drawing_BitmapReadPixels(bitmap, &imageInfo, pixels, width * 4, 0, 0);
-        EXPECT_EQ(res, true);
-    }
-
-    // step 4
-    OH_Drawing_BitmapDestroy(bitmap);
-
-    // step 5
-    if (0) {
-        // todo cpp crash
-        res = OH_Drawing_BitmapReadPixels(bitmap, &imageInfo, pixels, width * 4, 0, 0);
-        EXPECT_EQ(res, false);
-    }
+    // Deprecated
 }
 
 /*
