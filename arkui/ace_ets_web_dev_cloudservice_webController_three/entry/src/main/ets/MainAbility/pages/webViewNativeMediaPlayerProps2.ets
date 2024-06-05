@@ -767,13 +767,13 @@ struct WebComponent {
                             console.log("mediaInfo" + JSON.stringify(mediaInfo))
                             let isMediaTypeVideo: boolean = true
                             let isMediaTypeAudio: boolean = true
-                            console.log("mediaProps" + webview.MediaType.VIDEO)
-                            console.log("mediaProps" + webview.MediaType.AUDIO)
-                            console.log("mediaProps" + webview.SourceType.URL)
-                            console.log("mediaProps" + webview.SourceType.MSE)
-                            console.log("mediaProps" + webview.Preload.NONE)
-                            console.log("mediaProps" + webview.Preload.METADATA)
-                            console.log("mediaProps" + webview.Preload.AUTO)
+                            console.log('mediaPlayerProps:' + webview.MediaType.VIDEO)
+                            console.log('mediaPlayerProps:' + webview.MediaType.AUDIO)
+                            console.log('mediaPlayerProps:' + webview.SourceType.URL)
+                            console.log('mediaPlayerProps:' + webview.SourceType.MSE)
+                            console.log('mediaPlayerProps:' + webview.Preload.NONE)
+                            console.log('mediaPlayerProps:' + webview.Preload.METADATA)
+                            console.log('mediaPlayerProps:' + webview.Preload.AUTO)
                             webview.MediaType.VIDEO.toString() === '0'
                             webview.MediaType.AUDIO.toString() === '1'
                             webview.SourceType.URL.toString() === '0'
