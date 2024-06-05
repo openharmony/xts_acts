@@ -4,13 +4,13 @@
         "type": "OHJSUnitTest",
         "test-timeout": "60000",
         "shell-timeout": "60000",
-        "bundle-name": "com.example.accessibleabilitylist",
-        "package-name": "com.example.accessibleabilitylist_test"
+        "bundle-name": "com.example.actssetchecksyncenable",
+        "package-name": "com.example.actssetchecksyncenable"
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsAccessibleAbilityListTest.hap"
+                "ActsSetCheckSyncEnableTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
