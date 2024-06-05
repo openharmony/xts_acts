@@ -1522,7 +1522,7 @@ HWTEST_F(NativeXTSDrawingCanvasTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);
 
-    // 2. OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // 2. OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     EXPECT_NE(path, nullptr);
 
