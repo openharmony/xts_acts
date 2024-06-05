@@ -107,6 +107,7 @@ export default function sceneResourcesTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in anim.seek(0.3) " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -127,6 +128,7 @@ export default function sceneResourcesTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in anim.restart() " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
@@ -400,6 +402,7 @@ export default function sceneResourcesTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in env.irradianceCoefficients " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     })
