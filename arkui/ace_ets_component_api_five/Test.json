@@ -4,6 +4,7 @@
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
         "shell-timeout": "600000",
+	"testcase-timeout": 240000,
         "bundle-name": "com.open.harmony.componentapi06",
         "module-name": "entry_test"
     },

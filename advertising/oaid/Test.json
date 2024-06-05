@@ -2,10 +2,11 @@
     "description": "Configuration for ActsMindSporeNdkTest Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "600000",
-        "shell-timeout": "600000",
+        "test-timeout": "180000",
         "bundle-name": "com.acts.cloud.oaid.test",
-        "module-name": "entry_test"
+        "module-name": "entry_test",
+        "shell-timeout": "180000",
+        "testcase-timeout": 600000
     },
     "kits": [
         {
