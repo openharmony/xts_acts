@@ -34,7 +34,29 @@
       {
         "name": "ohos.permission.DISTRIBUTED_DATASYNC",
         "reason": "ceshi"
-      }
+      },
+      {
+        "reason": "reason_manage_face",
+        "usedScene": {
+            "ability": [
+                "com.myface.Ability",
+                "com.myface.AbilityBackground"
+            ],
+            "when": "always"
+        },
+        "name": "ohos.permission.MANAGE_FACE"
+    },
+    {
+        "reason": "reason_access_biometric",
+        "usedScene": {
+            "ability": [
+                "com.mybiometric.Ability",
+                "com.mybiometric.AbilityBackground"
+            ],
+            "when": "always"
+        },
+        "name": "ohos.permission.ACCESS_BIOMETRIC"
+    }
     ],
     "abilities": [
       {
