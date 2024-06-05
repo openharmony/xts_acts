@@ -35,6 +35,7 @@ ohos_moduletest_suite("ActsGraphicXTSDrawingNapiTest") {
     "NativeXTSDrawingColorTest.cpp",
     "NativeXTSDrawingFilterTest.cpp",
     "NativeXTSDrawingFontMgrTest.cpp",
+    "NativeXTSDrawingFontTest.cpp",
     "NativeXTSDrawingGpuContextTest.cpp",
     "NativeXTSDrawingImageFilterTest.cpp",
     "NativeXTSDrawingImageTest.cpp",

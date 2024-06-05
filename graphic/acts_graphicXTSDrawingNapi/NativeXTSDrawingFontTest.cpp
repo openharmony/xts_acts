@@ -55,7 +55,6 @@ class NativeXTSDrawingFontTest : public testing::Test {};
  * @tc.level : Level 1
  */
 HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontSetBaselineSnap, TestSize.Level1) {
-    // todo cpp crash
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
     OH_Drawing_FontSetBaselineSnap(font, true);
@@ -72,7 +71,6 @@ HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontSetBaselineSnap, TestSize.Leve
  * @tc.level : Level 1
  */
 HWTEST_F(NativeXTSDrawingFontTest, OH_Drawing_FontIsBaselineSnap, TestSize.Level1) {
-    // todo cpp crash
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
     OH_Drawing_FontSetBaselineSnap(nullptr, true);
