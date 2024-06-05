@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-import * as mediaTestBase from '../../../../../../MediaTestBase';
 import media from '@ohos.multimedia.media';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
@@ -55,6 +54,22 @@ export default function AVPlayerMediaSource() {
         player.setMediaSource(mediaSource, playStrategy);
         done();
       })
+
+    /* *
+      * @tc.number    : SUB_MULTIMEDIA_PLAYER_MEDIASOURCE_FUNCTION_0200
+      * @tc.name      : 002.testMediaSource
+      * @tc.desc      : Local Video playback control test
+      * @tc.size      : MediumTest
+      * @tc.type      : Function Test
+      * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_PLAYER_MEDIASOURCE_FUNCTION_0200', 0, async function (done) {
+      let header = {"User-Agent" : "User-Agent-Value"};
+      let mediaSource = media.createMediaSourceWithUrl("http://xxx",  header);
+      let mimeType = media.AVMimeTypes.APPLICATION_M3U8;
+      mediaSource.setMimeType(mimeType);
+      done();
+    })
 
   })
 }
