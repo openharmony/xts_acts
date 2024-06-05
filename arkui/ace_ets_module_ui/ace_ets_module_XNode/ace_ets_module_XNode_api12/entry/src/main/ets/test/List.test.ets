@@ -20,6 +20,10 @@ import graphicGetInterfaceTest from './GraphicsTest/graphicGetInterface.test';
 import renderNodeGetInterfaceTest from './renderNode/renderNodeTestInterface.test';
 import disposeTest from './FrameNodeTest/dispose.test';
 import getAttrsTest from './FrameNodeTest/getAttrs.test';
+import getPosition from './FrameNodeTest/getPosition.test';
+import setLayout from './FrameNodeTest/setLayout.test';
+
+
 import RenderNodeAttributeTest from './renderNode/RenderNodeAttributeTest.test';
 import setRectShape from './GraphicsTest/setRectShape.test';
 import LengthUnitTest from './GraphicsTest/LengthUnit.test'
@@ -59,6 +63,8 @@ export default function testsuite() {
   renderNodeGetInterfaceTest();
   disposeTest();
   getAttrsTest();
+  getPosition();
+  setLayout();
   RenderNodeAttributeTest();
   setRectShape();
   LengthUnitTest();
