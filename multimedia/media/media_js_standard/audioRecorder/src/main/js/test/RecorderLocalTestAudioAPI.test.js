@@ -162,7 +162,7 @@ export default function RecorderLocalTestAudioAPI() {
         })
     
         afterAll(async function () {
-            await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
+            await mediaTestBase.closeFd(fdObject?.fdNumber);
             console.info('afterAll case');
         })
     

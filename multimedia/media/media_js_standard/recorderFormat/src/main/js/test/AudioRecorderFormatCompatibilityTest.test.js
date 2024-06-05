@@ -14,9 +14,7 @@
  */
 
 import media from '@ohos.multimedia.media'
-import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
-import bundle from '@ohos.bundle'
-import mediaLibrary from '@ohos.multimedia.mediaLibrary'
+import fs from '@ohos.file.fs';
 import * as mediaTestBase from '../../../../../MediaTestBase.js';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 
@@ -85,37 +83,25 @@ describe('AudioRecorderFormatCompatibilityTest', function () {
     })
 
     async function getFd(pathName) {
-        let displayName = pathName;
-        const mediaTest = mediaLibrary.getMediaLibrary();
-        let fileKeyObj = mediaLibrary.FileKey;
-        let mediaType = mediaLibrary.MediaType.AUDIO;
-        let publicPath = await mediaTest.getPublicDirectory(mediaLibrary.DirectoryType.DIR_AUDIO);
-        let dataUri = await mediaTest.createAsset(mediaType, displayName, publicPath);
-        if (dataUri != undefined) {
-            let args = dataUri.id.toString();
-            let fetchOp = {
-                selections : fileKeyObj.ID + "=?",
-                selectionArgs : [args],
-            }
-            let fetchFileResult = await mediaTest.getFileAssets(fetchOp);
-            fileAsset = await fetchFileResult.getAllObject();
-            fdNumber = await fileAsset[0].open('Rw');
-            fdPath = "fd://" + fdNumber.toString();
-            console.info(`[mediaLibrary] case fdPath: ${fdPath}`);
-        } else {
-                console.error('[mediaLibrary] case dataUri is null')
-            }
+        await context.getFilesDir().then((fileDir) => {
+            console.info("case file dir is" + JSON.stringify(fileDir));
+            pathName = fileDir + '/' + pathName;
+            console.info("case pathName is" + pathName);
+        });
+        
+        let file = fs.openSync(pathName, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+        fileAsset = file;
+        fdNumber = file.fd;
+        fdPath = "fd://" + fdNumber.toString();
+        console.info('case getFd number is: ' + fdObject.fdNumber);
     }
 
     async function closeFd() {
-        if (fileAsset != null) {
-            await fileAsset[0].close(fdNumber).then(() => {
-                console.info('[mediaLibrary] case close fd success');
-            }).catch((err) => {
-                console.error('[mediaLibrary] case close fd failed');
-            });
+        console.info('case come in closeFd')
+        if (fdNumber != null) {
+            fs.closeSync(fdNumber);
         } else {
-            console.error('[mediaLibrary] case fileAsset is null');
+            console.info('[fs.closeSync] case fdNumber is null');
         }
     }
 

@@ -74,10 +74,11 @@ export default function RecorderLocalTestAudioFUNC() {
     
         beforeEach(function () {
             console.info('beforeEach case');
+            fdObject = null;
         })
     
         afterEach(async function () {
-            await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
+            await mediaTestBase.closeFd(fdObject?.fdNumber);
             console.info('afterEach case');
         })
     

@@ -16,7 +16,7 @@
 import resourceManager from '@ohos.resourceManager';
 import {expect} from 'deccjsunit/index'
 import router from '@system.router'
-import mediaLibrary from '@ohos.multimedia.mediaLibrary'
+import fs from '@ohos.file.fs';
 import fileio from '@ohos.fileio'
 import featureAbility from '@ohos.ability.featureAbility'
 import { UiDriver, BY, PointerMatrix } from '@ohos.UiTest';
@@ -60,33 +60,18 @@ export async function getAvRecorderFd(pathName, fileType) {
         fileAsset : null,
         fdNumber : null
     }
-    let displayName = pathName;
-    console.info('[mediaLibrary] displayName is ' + displayName);
-    console.info('[mediaLibrary] fileType is ' + fileType);
-    const mediaTest = mediaLibrary.getMediaLibrary();
-    let fileKeyObj = mediaLibrary.FileKey;
-    let mediaType;
-    let publicPath;
-    if (fileType == 'audio') {
-        mediaType = mediaLibrary.MediaType.AUDIO;
-        publicPath = await mediaTest.getPublicDirectory(mediaLibrary.DirectoryType.DIR_AUDIO);
-    } else {
-        mediaType = mediaLibrary.MediaType.VIDEO;
-        publicPath = await mediaTest.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO);
-    }
-    console.info('[mediaLibrary] publicPath is ' + publicPath);
-    let dataUri = await mediaTest.createAsset(mediaType, displayName, publicPath);
-    if (dataUri != undefined) {
-        let args = dataUri.id.toString();
-        let fetchOp = {
-            selections : fileKeyObj.ID + "=?",
-            selectionArgs : [args],
-        }
-        let fetchFileResult = await mediaTest.getFileAssets(fetchOp);
-        fdObject.fileAsset = await fetchFileResult.getAllObject();
-        fdObject.fdNumber = await fdObject.fileAsset[0].open('rw');
-        console.info('case getFd number is: ' + fdObject.fdNumber);
-    }
+    
+    await context.getFilesDir().then((fileDir) => {
+        console.info("case file dir is" + JSON.stringify(fileDir));
+        pathName = fileDir + '/' + pathName;
+        console.info("case pathName is" + pathName);
+    });
+    
+    let file = fs.openSync(pathName, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fdObject.fileAsset = file;
+    fdObject.fdNumber = file.fd;
+    console.info('case getFd number is: ' + fdObject.fdNumber);
+    
     return fdObject;
 }
 
@@ -253,63 +238,52 @@ export async function clearRouter() {
 }
 
 export async function getFd(pathName) {
+    console.info('case come in getFd')
     let fdObject = {
         fileAsset : null,
         fdNumber : null
     }
-    let displayName = pathName;
-    const mediaTest = mediaLibrary.getMediaLibrary();
-    let fileKeyObj = mediaLibrary.FileKey;
-    let mediaType = mediaLibrary.MediaType.VIDEO;
-    let publicPath = await mediaTest.getPublicDirectory(mediaLibrary.DirectoryType.DIR_VIDEO);
-    let dataUri = await mediaTest.createAsset(mediaType, displayName, publicPath);
-    if (dataUri != undefined) {
-        let args = dataUri.id.toString();
-        let fetchOp = {
-            selections : fileKeyObj.ID + "=?",
-            selectionArgs : [args],
-        }
-        let fetchFileResult = await mediaTest.getFileAssets(fetchOp);
-        fdObject.fileAsset = await fetchFileResult.getAllObject();
-        fdObject.fdNumber = await fdObject.fileAsset[0].open('rw');
-        console.info('case getFd number is: ' + fdObject.fdNumber);
-    }
+    
+    await context.getFilesDir().then((fileDir) => {
+        console.info("case file dir is" + JSON.stringify(fileDir));
+        pathName = fileDir + '/' + pathName;
+        console.info("case pathName is" + pathName);
+    });
+    
+    let file = fs.openSync(pathName, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fdObject.fileAsset = file;
+    fdObject.fdNumber = file.fd;
+    console.info('case getFd number is: ' + fdObject.fdNumber);
+    
     return fdObject;
 }
 
 export async function getAudioFd(pathName) {
+    console.info('case come in getAudioFd')
     let fdObject = {
         fileAsset : null,
         fdNumber : null
     }
-    let displayName = pathName;
-    const mediaTest = mediaLibrary.getMediaLibrary();
-    let fileKeyObj = mediaLibrary.FileKey;
-    let mediaType = mediaLibrary.MediaType.AUDIO;
-    let publicPath = await mediaTest.getPublicDirectory(mediaLibrary.DirectoryType.DIR_AUDIO);
-    let dataUri = await mediaTest.createAsset(mediaType, displayName, publicPath);
-    if (dataUri != undefined) {
-        let args = dataUri.id.toString();
-        let fetchOp = {
-            selections : fileKeyObj.ID + "=?",
-            selectionArgs : [args],
-        }
-        let fetchFileResult = await mediaTest.getFileAssets(fetchOp);
-        fdObject.fileAsset = await fetchFileResult.getAllObject();
-        fdObject.fdNumber = await fdObject.fileAsset[0].open('rw');
-        console.info('case getFd number is: ' + fdObject.fdNumber);
-    }
+    
+    await context.getFilesDir().then((fileDir) => {
+        console.info("case file dir is" + JSON.stringify(fileDir));
+        pathName = fileDir + '/' + pathName;
+        console.info("case pathName is" + pathName);
+    });
+    
+    let file = fs.openSync(pathName, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+    fdObject.fileAsset = file;
+    fdObject.fdNumber = file.fd;
+    console.info('case getFd number is: ' + fdObject.fdNumber);
+    
     return fdObject;
 }
 
-export async function closeFd(fileAsset, fdNumber) {
-    if (fileAsset != null) {
-        await fileAsset[0].close(fdNumber).then(() => {
-            console.info('[mediaLibrary] case close fd success');
-        }).catch((err) => {
-            console.info('[mediaLibrary] case close fd failed');
-        });
+export async function closeFd(fdNumber) {
+    console.info('case come in closeFd')
+    if (fdNumber != null) {
+        fs.closeSync(fdNumber);
     } else {
-        console.info('[mediaLibrary] case fileAsset is null');
+        console.info('[fs.closeSync] case fdNumber is null');
     }
 }

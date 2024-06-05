@@ -78,6 +78,7 @@ export default function avRecorderTest() {
         beforeEach(async function () {
             console.info('beforeEach case');
             await avRecorderTestBase.sleep(3000);
+            fdObject = null;
         })
 
         afterEach(async function () {
@@ -87,12 +88,12 @@ export default function avRecorderTest() {
                     console.info(TAG + 'this testCase execution completed')
                 }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
             }
+            mediaTestBase.closeFd(fdObject?.fdNumber);
             await avRecorderTestBase.sleep(1000);
             console.info('afterEach case');
         })
 
         afterAll(function () {
-            mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
             console.info('afterAll case');
         })
 

@@ -12,8 +12,6 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "rm -rf /storage/media/100/local/files/Audios/audio_*",
-                "rm -rf /storage/media/100/local/files/Videos/audio_*",
                 "param set persist.ace.testmode.enabled 1",
                 "power-shell wakeup",
                 "uinput -T -m 300 2700 280 200",
