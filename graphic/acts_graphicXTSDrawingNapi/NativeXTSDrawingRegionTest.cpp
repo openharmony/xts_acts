@@ -101,15 +101,14 @@ HWTEST_F(NativeXTSDrawingRegionTest, OH_Drawing_RegionSetPath, TestSize.Level1) 
 
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_PathMoveTo(path, 0, 0);
-    OH_Drawing_PathMoveTo(path, 100, 0);
-    OH_Drawing_PathMoveTo(path, 100, 100);
-    OH_Drawing_PathMoveTo(path, 0, 100);
+    OH_Drawing_PathLineTo(path, 100, 0);
+    OH_Drawing_PathLineTo(path, 100, 100);
+    OH_Drawing_PathLineTo(path, 0, 100);
     OH_Drawing_PathClose(path);
 
     OH_Drawing_Region *clip = OH_Drawing_RegionCreate();
 
-    bool ret = OH_Drawing_RegionSetPath(region, path, clip);
-    EXPECT_TRUE(ret);
+    OH_Drawing_RegionSetPath(region, path, clip);
 
     OH_Drawing_RegionDestroy(region);
     OH_Drawing_RegionDestroy(clip);

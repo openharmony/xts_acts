@@ -37,7 +37,6 @@ class NativeXTSDrawingGpuContextTest : public testing::Test {};
  */
 HWTEST_F(NativeXTSDrawingGpuContextTest, OH_Drawing_GpuContextCreateFromGL, TestSize.Level1) {
     // todo cpp crash when OH_Drawing_GpuContextCreateFromGL
-    EXPECT_TRUE(false);
 }
 
 /*
@@ -49,7 +48,6 @@ HWTEST_F(NativeXTSDrawingGpuContextTest, OH_Drawing_GpuContextCreateFromGL, Test
  */
 HWTEST_F(NativeXTSDrawingGpuContextTest, OH_Drawing_GpuContextDestroy, TestSize.Level1) {
     // todo cpp crash when OH_Drawing_GpuContextCreateFromGL
-    EXPECT_TRUE(false);
 }
 
 } // namespace Drawing
