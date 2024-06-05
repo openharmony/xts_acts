@@ -74,7 +74,7 @@ export default function onSelectionChange3() {
       expect(Obj1_2.$attrs.content).assertEqual('1');
       await CommonFunc.sleep(2500);
 
-      await richEditor.longClick();
+      await richEditor.doubleClick();
       await CommonFunc.sleep(1000);
       let paste = await driver.findComponent(ON.text('粘贴'))
       await paste.click()
