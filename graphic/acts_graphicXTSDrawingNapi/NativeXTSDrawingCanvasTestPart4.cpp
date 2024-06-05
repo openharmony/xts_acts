@@ -936,17 +936,17 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 0
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_3500, TestSize.Level0) {
-    // 1、OH_Drawing_CanvasCreate
+    // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    // 2、OH_Drawing_MatrixCreate
+    // 2. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
     OH_Drawing_MatrixSetMatrix(matrix, 1, 0, 0, 0, -1, 0, 0, 0, 1);
-    // 3、OH_Drawing_CanvasSetMatrix对应调用OH_Drawing_MatrixGetValue获取矩阵信息
+    // 3. Call OH_Drawing_CanvasSetMatrix and use OH_Drawing_MatrixGetValue to get the matrix information
     OH_Drawing_CanvasSetMatrix(canvas, matrix);
     float val = OH_Drawing_MatrixGetValue(matrix, 0);
     EXPECT_EQ(val, 1);
 
-    // 4、释放内存
+    // 4. Free memory
     OH_Drawing_MatrixDestroy(matrix);
     OH_Drawing_CanvasDestroy(canvas);
 }
@@ -960,16 +960,16 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_3501, TestSize.Level3) {
-    // 1、OH_Drawing_CanvasCreate
+    // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    // 2、OH_Drawing_MatrixCreate
+    // 2. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
     OH_Drawing_MatrixSetMatrix(matrix, 1, 0, 0, 0, -1, 0, 0, 0, 1);
-    // 3、OH_Drawing_CanvasSetMatrix第一个参数为空
+    // 3. OH_Drawing_CanvasSetMatrix with the first parameter as null
     OH_Drawing_CanvasSetMatrix(nullptr, matrix);
-    // 4、OH_Drawing_CanvasSetMatrix第二个参数为空
+    // 4. OH_Drawing_CanvasSetMatrix with the second parameter as null
     OH_Drawing_CanvasSetMatrix(canvas, nullptr);
-    // 5、释放内存
+    // 5. Free memory
     OH_Drawing_MatrixDestroy(matrix);
     OH_Drawing_CanvasDestroy(canvas);
 }
@@ -983,18 +983,19 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_3502, TestSize.Level3) {
-    // 1、OH_Drawing_CanvasCreate
+    // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    // 2、OH_Drawing_MatrixCreate
+    // 2. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
     OH_Drawing_MatrixSetMatrix(matrix, 1, 0, 0, 0, -1, 0, 0, 0, 1);
-    // 3、OH_Drawing_CanvasSetMatrix调用10次，每次调用后对应调用OH_Drawing_MatrixGetValue获取矩阵信息
+    // 3. Call OH_Drawing_CanvasSetMatrix 10 times, and after each call, call OH_Drawing_MatrixGetValue to get the
+    // matrix information
     for (int i = 0; i < 10; i++) {
         OH_Drawing_CanvasSetMatrix(canvas, matrix);
         float val = OH_Drawing_MatrixGetValue(matrix, 0);
         EXPECT_EQ(val, 1);
     }
-    // 4、释放内存
+    // 4. Free memory
     OH_Drawing_MatrixDestroy(matrix);
     OH_Drawing_CanvasDestroy(canvas);
 }
@@ -1020,11 +1021,11 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 0
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_3600, TestSize.Level0) {
-    // 1、调用OH_Drawing_CanvasCreate创建一个画布对象
+    // 1. Call OH_Drawing_CanvasCreate to create a canvas object
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    // 2、调用OH_Drawing_CanvasResetMatrix
+    // 2. Call OH_Drawing_CanvasResetMatrix
     OH_Drawing_CanvasResetMatrix(canvas);
-    // 3、释放内存
+    // 3. Free memory
     OH_Drawing_CanvasDestroy(canvas);
 }
 
@@ -1037,7 +1038,7 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_3601, TestSize.Level3) {
-    // 1、调用OH_Drawing_CanvasResetMatrix入参为空
+    // 1. Call OH_Drawing_CanvasResetMatrix with a null parameter
     OH_Drawing_CanvasResetMatrix(nullptr);
 }
 
@@ -1050,31 +1051,33 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_3603, TestSize.Level3) {
-    // 1、调用OH_Drawing_CanvasCreate创建一个画布对象
+    // 1. Call OH_Drawing_CanvasCreate to create a canvas object
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    // 2、OH_Drawing_MatrixCreate
+    // 2. Call OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
     OH_Drawing_MatrixSetMatrix(matrix, 1, 0, 0, 0, -1, 0, 0, 0, 1);
-    // 3、OH_Drawing_CanvasSetMatrix调用10次，OH_Drawing_CanvasResetMatrix调用10次，对应调用OH_Drawing_MatrixGetValue获取矩阵信息
+    // 3. Call OH_Drawing_CanvasSetMatrix 10 times, call OH_Drawing_CanvasResetMatrix 10 times, and get matrix
+    // information using OH_Drawing_MatrixGetValue
     for (int i = 0; i < 10; i++) {
         OH_Drawing_CanvasSetMatrix(canvas, matrix);
     }
     for (int i = 0; i < 10; i++) {
         OH_Drawing_CanvasResetMatrix(canvas);
     }
-    // 4、调用OH_Drawing_CanvasSetMatrix，OH_Drawing_CanvasResetMatrix，对应调用OH_Drawing_MatrixGetValue获取矩阵信息
+    // 4. Call OH_Drawing_CanvasSetMatrix, OH_Drawing_CanvasResetMatrix, and get matrix information using
+    // OH_Drawing_MatrixGetValue
     OH_Drawing_CanvasSetMatrix(canvas, matrix);
     OH_Drawing_CanvasResetMatrix(canvas);
     float val = OH_Drawing_MatrixGetValue(matrix, 0);
     EXPECT_EQ(val, 1);
-    // 5、重复10次步骤4
+    // 5. Repeat steps 4 for 10 times
     for (int i = 0; i < 10; i++) {
         OH_Drawing_CanvasSetMatrix(canvas, matrix);
         OH_Drawing_CanvasResetMatrix(canvas);
         float val = OH_Drawing_MatrixGetValue(matrix, 0);
         EXPECT_EQ(val, 1);
     }
-    // 6、释放内存
+    // 6. Free memory
     OH_Drawing_MatrixDestroy(matrix);
     OH_Drawing_CanvasDestroy(canvas);
 }
@@ -1088,24 +1091,24 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 0
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_3700, TestSize.Level0) {
-    // 1、调用调用OH_Drawing_CanvasCreate创建一个画布对象
+    // 1. Call OH_Drawing_CanvasCreate to create a canvas object
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);
-    // 2、调用OH_Drawing_ImageCreate创建一个图片对象
+    // 2. Call OH_Drawing_ImageCreate to create an image object
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
     EXPECT_NE(image, nullptr);
-    // 3、调用OH_Drawing_RectCreate创建一个矩形对象
+    // 3. Call OH_Drawing_RectCreate to create a rectangle object
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
-    // 4、调用OH_Drawing_RectCreate创建一个矩形对象
+    // 4. Call OH_Drawing_RectCreate to create a rectangle object
     OH_Drawing_Rect *rect2 = OH_Drawing_RectCreate(0, 0, 100, 100);
-    // 5、调用OH_Drawing_SamplingOptionsCreate创建一个采样选项对象
+    // 5. Call OH_Drawing_SamplingOptionsCreate to create a sampling options object
     OH_Drawing_SamplingOptions *options = OH_Drawing_SamplingOptionsCreate(OH_Drawing_FilterMode::FILTER_MODE_NEAREST,
                                                                            OH_Drawing_MipmapMode::MIPMAP_MODE_NEAREST);
     EXPECT_NE(options, nullptr);
-    // 6、调用OH_Drawing_CanvasDrawImageRectWithSrc第六个参数遍历枚举
+    // 6. Call OH_Drawing_CanvasDrawImageRectWithSrc with the sixth parameter iterating through the enumeration
     OH_Drawing_CanvasDrawImageRectWithSrc(canvas, image, rect, rect2, options, STRICT_SRC_RECT_CONSTRAINT);
     OH_Drawing_CanvasDrawImageRectWithSrc(canvas, image, rect, rect2, options, FAST_SRC_RECT_CONSTRAINT);
-    // 7、释放内存
+    // 7. Free memory
     OH_Drawing_RectDestroy(rect);
     OH_Drawing_RectDestroy(rect2);
     OH_Drawing_SamplingOptionsDestroy(options);
@@ -1130,17 +1133,17 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
     OH_Drawing_Rect *rect2 = OH_Drawing_RectCreate(0, 0, 100, 100);
     OH_Drawing_SamplingOptions *options = OH_Drawing_SamplingOptionsCreate(OH_Drawing_FilterMode::FILTER_MODE_NEAREST,
                                                                            OH_Drawing_MipmapMode::MIPMAP_MODE_NEAREST);
-    // 1、调用OH_Drawing_CanvasDrawImageRectWithSrc第一个参数为空
+    // 1. Call OH_Drawing_CanvasDrawImageRectWithSrc with the first parameter being nullptr
     OH_Drawing_CanvasDrawImageRectWithSrc(nullptr, image, rect, rect2, options, STRICT_SRC_RECT_CONSTRAINT);
-    // 2、调用OH_Drawing_CanvasDrawImageRectWithSrc第二个参数为空
+    // 2. Call OH_Drawing_CanvasDrawImageRectWithSrc with the second parameter being nullptr
     OH_Drawing_CanvasDrawImageRectWithSrc(canvas, nullptr, rect, rect2, options, STRICT_SRC_RECT_CONSTRAINT);
-    // 3、调用OH_Drawing_CanvasDrawImageRectWithSrc第三个参数为空
+    // 3. Call OH_Drawing_CanvasDrawImageRectWithSrc with the third parameter being nullptr
     OH_Drawing_CanvasDrawImageRectWithSrc(canvas, image, nullptr, rect2, options, STRICT_SRC_RECT_CONSTRAINT);
-    // 4、调用OH_Drawing_CanvasDrawImageRectWithSrc第四个参数为空
+    // 4. Call OH_Drawing_CanvasDrawImageRectWithSrc with the fourth parameter being nullptr
     OH_Drawing_CanvasDrawImageRectWithSrc(canvas, image, rect, nullptr, options, STRICT_SRC_RECT_CONSTRAINT);
-    // 5、调用OH_Drawing_CanvasDrawImageRectWithSrc第五个参数为空
+    // 5. Call OH_Drawing_CanvasDrawImageRectWithSrc with the fifth parameter being nullptr
     OH_Drawing_CanvasDrawImageRectWithSrc(canvas, image, rect, rect2, nullptr, STRICT_SRC_RECT_CONSTRAINT);
-    // 6、释放内存
+    // 6. Free memory
     OH_Drawing_RectDestroy(rect);
     OH_Drawing_RectDestroy(rect2);
     OH_Drawing_SamplingOptionsDestroy(options);
@@ -1157,18 +1160,18 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 0
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_3800, TestSize.Level0) {
-    // 1、调用OH_Drawing_CanvasCreate创建一个画布对象
+    // 1. Create a canvas object using OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    // 2、调用OH_Drawing_ImageCreate创建一个图片对象
+    // 2. Create an image object using OH_Drawing_ImageCreate
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
-    // 3、调用OH_Drawing_RectCreate创建一个矩形对象
+    // 3. Create a rectangle object using OH_Drawing_RectCreate
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
-    // 4、调用OH_Drawing_SamplingOptionsCreate创建一个采样选项对象
+    // 4. Create a sampling options object using OH_Drawing_SamplingOptionsCreate
     OH_Drawing_SamplingOptions *options = OH_Drawing_SamplingOptionsCreate(OH_Drawing_FilterMode::FILTER_MODE_NEAREST,
                                                                            OH_Drawing_MipmapMode::MIPMAP_MODE_NEAREST);
-    // 5、调用OH_Drawing_CanvasDrawImageRect
+    // 5. Call OH_Drawing_CanvasDrawImageRect
     OH_Drawing_CanvasDrawImageRect(canvas, image, rect, options);
-    // 6、释放内存
+    // 6. Free memory
     OH_Drawing_RectDestroy(rect);
     OH_Drawing_SamplingOptionsDestroy(options);
     OH_Drawing_ImageDestroy(image);
@@ -1189,15 +1192,15 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
     OH_Drawing_SamplingOptions *options = OH_Drawing_SamplingOptionsCreate(OH_Drawing_FilterMode::FILTER_MODE_NEAREST,
                                                                            OH_Drawing_MipmapMode::MIPMAP_MODE_NEAREST);
-    // 1、调用OH_Drawing_CanvasDrawImageRect第一个参数为空
+    // 1. Call OH_Drawing_CanvasDrawImageRect with the first parameter as null
     OH_Drawing_CanvasDrawImageRect(nullptr, image, rect, options);
-    // 2、调用OH_Drawing_CanvasDrawImageRect第二个参数为空
+    // 2. Call OH_Drawing_CanvasDrawImageRect with the second parameter as null
     OH_Drawing_CanvasDrawImageRect(canvas, nullptr, rect, options);
-    // 3、调用OH_Drawing_CanvasDrawImageRect第三个参数为空
+    // 3. Call OH_Drawing_CanvasDrawImageRect with the third parameter as null
     OH_Drawing_CanvasDrawImageRect(canvas, image, nullptr, options);
-    // 4、调用OH_Drawing_CanvasDrawImageRect第四个参数为空
+    // 4. Call OH_Drawing_CanvasDrawImageRect with the fourth parameter as null
     OH_Drawing_CanvasDrawImageRect(canvas, image, rect, nullptr);
-    // 5、释放内存
+    // 5. Free memory
     OH_Drawing_RectDestroy(rect);
     OH_Drawing_SamplingOptionsDestroy(options);
     OH_Drawing_ImageDestroy(image);
@@ -1226,15 +1229,15 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
     OH_Drawing_Point2D texs_vertices[POINT_PARAMETER] = {texs_one, texs_two, texs_three};
     uint32_t colors[COLOR_PARAMETER] = {0xFFFF0000, 0xFFFF0000, 0xFFFF0000};
     uint16_t indices[COLOR_PARAMETER] = {0, 1, 2};
-    // 1、调用OH_Drawing_CanvasCreate创建一个画布对象
+    // 1. Call OH_Drawing_CanvasCreate to create a canvas object
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    // 2、调用OH_Drawing_CanvasDrawVertices第二个参数遍历枚举
+    // 2. Call OH_Drawing_CanvasDrawVertices with the second parameter iterating through the enum
     OH_Drawing_VertexMode mode[] = {VERTEX_MODE_TRIANGLES, VERTEX_MODE_TRIANGLES_STRIP, VERTEX_MODE_TRIANGLE_FAN};
     for (int i = 0; i < 3; i++) {
         OH_Drawing_CanvasDrawVertices(canvas, mode[i], POINT_PARAMETER, points_vertices, texs_vertices, colors,
                                       POINT_PARAMETER, indices, BLEND_MODE_COLOR);
     }
-    // 3、调用OH_Drawing_CanvasDrawVertices第九个参数遍历枚举
+    // 3. Call OH_Drawing_CanvasDrawVertices with the ninth parameter iterating through the enum
     OH_Drawing_BlendMode blendMode[] = {
         BLEND_MODE_CLEAR,      BLEND_MODE_SRC,        BLEND_MODE_DST,         BLEND_MODE_SRC_OVER,
         BLEND_MODE_DST_OVER,   BLEND_MODE_SRC_IN,     BLEND_MODE_DST_IN,      BLEND_MODE_SRC_OUT,
@@ -1249,7 +1252,7 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
         OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, POINT_PARAMETER, points_vertices, texs_vertices,
                                       colors, POINT_PARAMETER, indices, blendMode[i]);
     }
-    // 4、释放内存
+    // 4. Free memory
     OH_Drawing_CanvasDestroy(canvas);
 }
 
@@ -1278,28 +1281,28 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
 
-    // 1、调用OH_Drawing_CanvasDrawVertices第一个参数为空
+    // 1. Call OH_Drawing_CanvasDrawVertices with the first parameter as nullptr
     OH_Drawing_CanvasDrawVertices(nullptr, VERTEX_MODE_TRIANGLES, POINT_PARAMETER, points_vertices, texs_vertices,
                                   colors, POINT_PARAMETER, indices, BLEND_MODE_COLOR);
-    // 2、调用OH_Drawing_CanvasDrawVertices第三个参数为0
+    // 2. Call OH_Drawing_CanvasDrawVertices with the third parameter as 0
     OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, 0, points_vertices, texs_vertices, colors,
                                   POINT_PARAMETER, indices, BLEND_MODE_COLOR);
-    // 3、调用OH_Drawing_CanvasDrawVertices第四个参数为空
+    // 3. Call OH_Drawing_CanvasDrawVertices with the fourth parameter as nullptr
     OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, POINT_PARAMETER, nullptr, texs_vertices, colors,
                                   POINT_PARAMETER, indices, BLEND_MODE_COLOR);
-    // 4、调用OH_Drawing_CanvasDrawVertices第五个参数为空
+    // 4. Call OH_Drawing_CanvasDrawVertices with the fifth parameter as nullptr
     OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, POINT_PARAMETER, points_vertices, nullptr, colors,
                                   POINT_PARAMETER, indices, BLEND_MODE_COLOR);
-    // 5、调用OH_Drawing_CanvasDrawVertices第六个参数为空
+    // 5. Call OH_Drawing_CanvasDrawVertices with the sixth parameter as nullptr
     OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, POINT_PARAMETER, points_vertices, texs_vertices,
                                   nullptr, POINT_PARAMETER, indices, BLEND_MODE_COLOR);
-    // 6、调用OH_Drawing_CanvasDrawVertices第七个参数为0
+    // 6. Call OH_Drawing_CanvasDrawVertices with the seventh parameter as 0
     OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, POINT_PARAMETER, points_vertices, texs_vertices,
                                   colors, 0, indices, BLEND_MODE_COLOR);
-    // 7、调用OH_Drawing_CanvasDrawVertices第八个参数为空
+    // 7. Call OH_Drawing_CanvasDrawVertices with the eighth parameter as nullptr
     OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, POINT_PARAMETER, points_vertices, texs_vertices,
                                   colors, POINT_PARAMETER, nullptr, BLEND_MODE_COLOR);
-    // 8、释放内存
+    // 8. Free memory
     OH_Drawing_CanvasDestroy(canvas);
 }
 
@@ -1312,16 +1315,16 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_3902, TestSize.Level3) {
-    // 1、调用OH_Drawing_CanvasCreate创建一个画布对象
+    // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
 
-    // 2、调用OH_Drawing_CanvasDrawVertices第三个参数传入浮点数
-    // 编译报错，无法传入浮点数
+    // 2. Call OH_Drawing_CanvasDrawVertices with a floating-point number as the third parameter
+    // Compilation error, cannot pass a floating-point number
 
-    // 3、调用OH_Drawing_CanvasDrawVertices第七个参数传入浮点数
-    // 编译报错，无法传入浮点数
+    // 3. Call OH_Drawing_CanvasDrawVertices with a floating-point number as the seventh parameter
+    // Compilation error, cannot pass a floating-point number
 
-    // 4、释放内存
+    // 4. Free memory
     OH_Drawing_CanvasDestroy(canvas);
 }
 
@@ -1334,7 +1337,7 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_3903, TestSize.Level3) {
-    // 1、调用OH_Drawing_CanvasCreate创建一个画布对象
+    // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
     constexpr int POINT_PARAMETER = 3;
     constexpr int COLOR_PARAMETER = 3;
     OH_Drawing_Point2D point_one = {0, 0};
@@ -1353,15 +1356,15 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 
     if (0) {
         // todo cpp crash
-        // 2、调用OH_Drawing_CanvasDrawVertices第三个参数传入极大值0x7FFFFFFF
+        // 2. Call OH_Drawing_CanvasDrawVertices with the third parameter as the maximum value 0x7FFFFFFF
         OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, 0x7FFFFFFF, points_vertices, texs_vertices, colors,
                                       POINT_PARAMETER, indices, BLEND_MODE_COLOR);
-        // 3、调用OH_Drawing_CanvasDrawVertices第七个参数传入极大值0x7FFFFFFF
+        // 3. Call OH_Drawing_CanvasDrawVertices with the seventh parameter as the maximum value 0x7FFFFFFF
         OH_Drawing_CanvasDrawVertices(canvas, VERTEX_MODE_TRIANGLES, POINT_PARAMETER, points_vertices, texs_vertices,
                                       colors, 0x7FFFFFFF, indices, BLEND_MODE_COLOR);
     }
 
-    // 4、释放内存
+    // 4. Free memory
     OH_Drawing_CanvasDestroy(canvas);
 }
 
@@ -1374,9 +1377,9 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 0
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_4000, TestSize.Level0) {
-    // 1、调用OH_Drawing_CanvasCreate创建一个画布对象
+    // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    // 2、调用OH_Drawing_CanvasReadPixels
+    // 2. Call OH_Drawing_CanvasReadPixels
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     constexpr uint32_t width = 200;
@@ -1385,7 +1388,7 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
     void *pixels = OH_Drawing_BitmapGetPixels(bitmap);
     OH_Drawing_Image_Info imageInfo;
     OH_Drawing_CanvasReadPixels(canvas, &imageInfo, pixels, 0, 0, 0);
-    // 3、释放内存
+    // 3. Free memory
     OH_Drawing_BitmapDestroy(bitmap);
     OH_Drawing_CanvasDestroy(canvas);
 }
@@ -1400,7 +1403,7 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_4001, TestSize.Level3) {
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    // 1、调用OH_Drawing_CanvasReadPixels第一个参数为空
+    // 1. Call OH_Drawing_CanvasReadPixels with the first parameter as nullptr
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     constexpr uint32_t width = 200;
@@ -1409,11 +1412,11 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
     void *pixels = OH_Drawing_BitmapGetPixels(bitmap);
     OH_Drawing_Image_Info imageInfo;
     OH_Drawing_CanvasReadPixels(nullptr, &imageInfo, pixels, 0, 0, 0);
-    // 2、调用OH_Drawing_CanvasReadPixels第二个参数为空
+    // 2. Call OH_Drawing_CanvasReadPixels with the second parameter as nullptr
     OH_Drawing_CanvasReadPixels(canvas, nullptr, pixels, 0, 0, 0);
-    // 3、调用OH_Drawing_CanvasReadPixels第三个参数为空
+    // 3. Call OH_Drawing_CanvasReadPixels with the third parameter as nullptr
     OH_Drawing_CanvasReadPixels(canvas, &imageInfo, nullptr, 0, 0, 0);
-    // 4、释放内存
+    // 4. Free memory
     OH_Drawing_BitmapDestroy(bitmap);
     OH_Drawing_CanvasDestroy(canvas);
 }
@@ -1428,7 +1431,6 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_4002, TestSize.Level3) {
     // Deprecated
-    // 和开发交流后忽略此用例
 }
 
 /*
@@ -1440,9 +1442,9 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_4003, TestSize.Level3) {
-    // 1、调用OH_Drawing_CanvasCreate创建一个画布对象
+    // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    // 2、调用OH_Drawing_CanvasReadPixels第四个参数传入负数或者浮点数
+    // 2. Call OH_Drawing_CanvasReadPixels with the fourth parameter as a negative number or a floating-point number
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     constexpr uint32_t width = 200;
@@ -1452,11 +1454,11 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
     OH_Drawing_Image_Info imageInfo;
     OH_Drawing_CanvasReadPixels(canvas, &imageInfo, pixels, -1, 0, 0);
     OH_Drawing_CanvasReadPixels(canvas, &imageInfo, pixels, 1.0f, 0, 0);
-    // 3、调用OH_Drawing_CanvasReadPixels第五个参数传入浮点数
+    // 3. Call OH_Drawing_CanvasReadPixels with the fifth parameter as a floating-point number
     OH_Drawing_CanvasReadPixels(canvas, &imageInfo, pixels, 0, 1.0f, 0);
-    // 4、调用OH_Drawing_CanvasReadPixels第六个参数传入浮点数
+    // 4. Call OH_Drawing_CanvasReadPixels with the sixth parameter as a floating-point number
     OH_Drawing_CanvasReadPixels(canvas, &imageInfo, pixels, 0, 0, 1.0f);
-    // 5、释放内存
+    // 5. Free memory
     OH_Drawing_BitmapDestroy(bitmap);
     OH_Drawing_CanvasDestroy(canvas);
 }
@@ -1470,9 +1472,9 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_4004, TestSize.Level3) {
-    // 1、调用OH_Drawing_CanvasCreate创建一个画布对象
+    // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    // 2、调用OH_Drawing_CanvasReadPixels第四个参数传入极大值0xFFFFFFFF
+    // 2. Call OH_Drawing_CanvasReadPixels with the fourth parameter as the maximum value 0xFFFFFFFF
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     constexpr uint32_t width = 200;
@@ -1481,11 +1483,11 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
     void *pixels = OH_Drawing_BitmapGetPixels(bitmap);
     OH_Drawing_Image_Info imageInfo;
     OH_Drawing_CanvasReadPixels(canvas, &imageInfo, pixels, 0xFFFFFFFF, 0, 0);
-    // 3、调用OH_Drawing_CanvasReadPixels第五个参数传入极大值0x7FFFFFFF
+    // 3. Call OH_Drawing_CanvasReadPixels with the fifth parameter as the maximum value 0x7FFFFFFF
     OH_Drawing_CanvasReadPixels(canvas, &imageInfo, pixels, 0, 0x7FFFFFFF, 0);
-    // 4、调用OH_Drawing_CanvasReadPixels第六个参数传入极大值0x7FFFFFFF
+    // 4. Call OH_Drawing_CanvasReadPixels with the sixth parameter as the maximum value 0x7FFFFFFF
     OH_Drawing_CanvasReadPixels(canvas, &imageInfo, pixels, 0, 0, 0x7FFFFFFF);
-    // 5、释放内存
+    // 5. Free memory
     OH_Drawing_BitmapDestroy(bitmap);
     OH_Drawing_CanvasDestroy(canvas);
 }
@@ -1499,13 +1501,13 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 0
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_4100, TestSize.Level0) {
-    // 1、调用OH_Drawing_CanvasCreate创建一个画布对象
+    // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    // 2、调用OH_Drawing_BitmapCreate创建一个位图对象
+    // 2. Create a bitmap object by calling OH_Drawing_BitmapCreate
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
-    // 3、调用OH_Drawing_CanvasReadPixelsToBitmap
+    // 3. Call OH_Drawing_CanvasReadPixelsToBitmap
     OH_Drawing_CanvasReadPixelsToBitmap(canvas, bitmap, 1, 1);
-    // 4、释放内存
+    // 4. Free memory
     OH_Drawing_BitmapDestroy(bitmap);
     OH_Drawing_CanvasDestroy(canvas);
 }
@@ -1521,15 +1523,15 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_4101, TestSize.Level3) {
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
-    // 1、调用OH_Drawing_CanvasReadPixelsToBitmap第一个参数为空
+    // 1. Call OH_Drawing_CanvasReadPixelsToBitmap with the first parameter as null
     OH_Drawing_CanvasReadPixelsToBitmap(nullptr, bitmap, 1, 1);
-    // 2、调用OH_Drawing_CanvasReadPixelsToBitmap第二个参数为空
+    // 2. Call OH_Drawing_CanvasReadPixelsToBitmap with the second parameter as null
     OH_Drawing_CanvasReadPixelsToBitmap(canvas, nullptr, 1, 1);
-    // 3、调用OH_Drawing_CanvasReadPixelsToBitmap第三个参数为0
+    // 3. Call OH_Drawing_CanvasReadPixelsToBitmap with the third parameter as 0
     OH_Drawing_CanvasReadPixelsToBitmap(canvas, bitmap, 0, 1);
-    // 4、调用OH_Drawing_CanvasReadPixelsToBitmap第四个参数为0
+    // 4. Call OH_Drawing_CanvasReadPixelsToBitmap with the fourth parameter as 0
     OH_Drawing_CanvasReadPixelsToBitmap(canvas, bitmap, 1, 0);
-    // 5、释放内存
+    // 5. Free memory
     OH_Drawing_BitmapDestroy(bitmap);
     OH_Drawing_CanvasDestroy(canvas);
 }
@@ -1543,15 +1545,15 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_4102, TestSize.Level3) {
-    // 1、调用OH_Drawing_CanvasCreate创建一个画布对象
+    // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    // 2、调用OH_Drawing_BitmapCreate创建一个位图对象
+    // 2. Create a bitmap object by calling OH_Drawing_BitmapCreate
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
-    // 3、调用OH_Drawing_CanvasReadPixelsToBitmap第三个参数为浮点数
+    // 3. Call OH_Drawing_CanvasReadPixelsToBitmap with the third parameter as a floating-point number
     OH_Drawing_CanvasReadPixelsToBitmap(canvas, bitmap, 1.0f, 0);
-    // 4、调用OH_Drawing_CanvasReadPixelsToBitmap第四个参数为浮点数
+    // 4. Call OH_Drawing_CanvasReadPixelsToBitmap with the fourth parameter as a floating-point number
     OH_Drawing_CanvasReadPixelsToBitmap(canvas, bitmap, 1, 1.0f);
-    // 5、释放内存
+    // 5. Free memory
     OH_Drawing_BitmapDestroy(bitmap);
     OH_Drawing_CanvasDestroy(canvas);
 }
@@ -1565,15 +1567,15 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart4, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_4103, TestSize.Level3) {
-    // 1、调用OH_Drawing_CanvasCreate创建一个画布对象
+    // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    // 2、调用OH_Drawing_BitmapCreate创建一个位图对象
+    // 2. Create a bitmap object by calling OH_Drawing_BitmapCreate
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
-    // 3、调用OH_Drawing_CanvasReadPixelsToBitmap第三个参数为极大值0x7FFFFFFF
+    // 3. Call OH_Drawing_CanvasReadPixelsToBitmap with the third parameter set to the maximum value 0x7FFFFFFF
     OH_Drawing_CanvasReadPixelsToBitmap(canvas, bitmap, 0x7FFFFFFF, 0);
-    // 4、调用OH_Drawing_CanvasReadPixelsToBitmap第四个参数为极大值0x7FFFFFFF
+    // 4. Call OH_Drawing_CanvasReadPixelsToBitmap with the fourth parameter set to the maximum value 0x7FFFFFFF
     OH_Drawing_CanvasReadPixelsToBitmap(canvas, bitmap, 1, 0x7FFFFFFF);
-    // 5、释放内存
+    // 5. Free memory
     OH_Drawing_BitmapDestroy(bitmap);
     OH_Drawing_CanvasDestroy(canvas);
 }

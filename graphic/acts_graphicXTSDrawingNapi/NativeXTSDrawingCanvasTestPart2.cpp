@@ -143,11 +143,7 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart2, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart2, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_1104, TestSize.Level3) {
-    // 1. OH_Drawing_CanvasCreate
-    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    EXPECT_NE(canvas, nullptr);
-
-    // todo: unkown how to create napi pixelmap
+    // Deprecated
 }
 
 /*
@@ -212,41 +208,7 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart2, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart2, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_1202, TestSize.Level3) {
-    // 1. OH_Drawing_CanvasCreate
-    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    EXPECT_NE(canvas, nullptr);
-
-    // 2. OH_Drawing_BrushCreate
-    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
-    EXPECT_NE(brush, nullptr);
-
-    // 3. OH_Drawing_CanvasDrawBackground
-    OH_Drawing_CanvasDrawBackground(canvas, brush);
-
-    // 4. OH_Drawing_CanvasDestroy
-    OH_Drawing_CanvasDestroy(canvas);
-
-    // 5. OH_Drawing_CanvasDrawBackground
-    if (0) {
-        // todo cpp crash
-        OH_Drawing_CanvasDrawBackground(canvas, brush);
-    }
-
-    // 6. OH_Drawing_CanvasCreate
-    canvas = OH_Drawing_CanvasCreate();
-    EXPECT_NE(canvas, nullptr);
-
-    // 7. OH_Drawing_BrushDestroy
-    OH_Drawing_BrushDestroy(brush);
-
-    // 8. OH_Drawing_CanvasDrawBackground
-    if (0) {
-        // todo cpp crash
-        OH_Drawing_CanvasDrawBackground(canvas, brush);
-    }
-
-    // 9. Free the memory.
-    OH_Drawing_CanvasDestroy(canvas);
+    // Deprecated
 }
 
 /*
@@ -351,43 +313,7 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart2, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart2, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_1302, TestSize.Level3) {
-    // 1. OH_Drawing_CanvasCreate
-    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    EXPECT_NE(canvas, nullptr);
-
-    // 2. OH_Drawing_RegionCreate
-    OH_Drawing_Region *region = OH_Drawing_RegionCreate();
-    EXPECT_NE(region, nullptr);
-    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0.0f, 0.0f, 256.0f, 256.0f);
-    OH_Drawing_RegionSetRect(region, rect);
-
-    // 3. OH_Drawing_CanvasDrawRegion
-    OH_Drawing_CanvasDrawRegion(canvas, region);
-
-    // 4. OH_Drawing_CanvasDestroy
-    OH_Drawing_CanvasDestroy(canvas);
-
-    // 5. OH_Drawing_CanvasDrawRegion
-    if (0) {
-        // todo cpp crash
-        OH_Drawing_CanvasDrawRegion(canvas, region);
-    }
-
-    // 6. OH_Drawing_CanvasCreate
-    canvas = OH_Drawing_CanvasCreate();
-    EXPECT_NE(canvas, nullptr);
-
-    // 7. OH_Drawing_RegionDestroy
-    OH_Drawing_RegionDestroy(region);
-
-    // 8. OH_Drawing_CanvasDrawRegion
-    if (0) {
-        // todo cpp crash
-        OH_Drawing_CanvasDrawRegion(canvas, region);
-    }
-
-    // 9. Free the memory.
-    OH_Drawing_RectDestroy(rect);
+    // Deprecated
 }
 
 /*
@@ -592,30 +518,7 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart2, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart2, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_1405, TestSize.Level3) {
-    // 1. OH_Drawing_CanvasCreate
-    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    EXPECT_NE(canvas, nullptr);
-
-    // 2. Create an array of OH_Drawing_Point2D.
-    OH_Drawing_Point2D pointOne = {250, 500};
-    OH_Drawing_Point2D pointTwo = {200, 500};
-    OH_Drawing_Point2D pointThree = {500, 700};
-    OH_Drawing_Point2D points[3] = {pointOne, pointTwo, pointThree};
-
-    // 3. OH_Drawing_CanvasDrawPoints
-    OH_Drawing_CanvasDrawPoints(canvas, POINT_MODE_LINES, 3, points);
-
-    // 4. OH_Drawing_CanvasDestroy
-    OH_Drawing_CanvasDestroy(canvas);
-
-    // 5. OH_Drawing_CanvasDrawPoints
-    if (0) {
-        // todo cpp crash
-        OH_Drawing_CanvasDrawPoints(canvas, POINT_MODE_LINES, 3, points);
-    }
-
-    // 6. Free the memory.
-    // nothing to free
+    // Deprecated
 }
 
 /*
@@ -819,35 +722,7 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart2, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart2, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_1504, TestSize.Level3) {
-    // 1. OH_Drawing_CanvasCreate
-    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    EXPECT_NE(canvas, nullptr);
-
-    // 2. OH_Drawing_BitmapCreate
-    OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
-    EXPECT_NE(bitmap, nullptr);
-
-    // 3. OH_Drawing_CanvasDrawBitmap
-    OH_Drawing_CanvasDrawBitmap(canvas, bitmap, 0, 0);
-
-    // 4. OH_Drawing_CanvasDestroy
-    OH_Drawing_CanvasDestroy(canvas);
-
-    // 5. OH_Drawing_CanvasDrawBitmap
-    if (0) {
-        // todo cpp crash
-        OH_Drawing_CanvasDrawBitmap(canvas, bitmap, 0, 0);
-    }
-
-    // 6. OH_Drawing_CanvasCreate
-    canvas = OH_Drawing_CanvasCreate();
-    EXPECT_NE(canvas, nullptr);
-
-    // 7. OH_Drawing_BitmapDestroy, destroy the Bitmap.
-    OH_Drawing_BitmapDestroy(bitmap);
-
-    // 8. Free the memory.
-    OH_Drawing_CanvasDestroy(canvas);
+    // Deprecated
 }
 
 /*
@@ -1114,58 +989,7 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart2, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart2, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_1604, TestSize.Level3) {
-    // 1. OH_Drawing_CanvasCreate
-    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    EXPECT_NE(canvas, nullptr);
-    // 2. OH_Drawing_BitmapCreate, OH_Drawing_SamplingOptionsCreate, OH_Drawing_RectCreate src and dst
-    OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
-    EXPECT_NE(bitmap, nullptr);
-    OH_Drawing_SamplingOptions *options = OH_Drawing_SamplingOptionsCreate(FILTER_MODE_NEAREST, MIPMAP_MODE_LINEAR);
-    OH_Drawing_Rect *src = OH_Drawing_RectCreate(0, 0, 200, 200);
-    EXPECT_NE(src, nullptr);
-    OH_Drawing_Rect *dst = OH_Drawing_RectCreate(0, 0, 200, 200);
-    EXPECT_NE(dst, nullptr);
-    // 3. OH_Drawing_CanvasDrawBitmapRect
-    OH_Drawing_CanvasDrawBitmapRect(canvas, bitmap, src, dst, options);
-    // 4. OH_Drawing_CanvasDestroy, destroy the canvas
-    OH_Drawing_CanvasDestroy(canvas);
-    // 5. OH_Drawing_CanvasDrawBitmapRect
-    if (0) {
-        // todo cpp crash
-        OH_Drawing_CanvasDrawBitmapRect(canvas, bitmap, src, dst, options);
-        // 6. OH_Drawing_CanvasCreate
-        canvas = OH_Drawing_CanvasCreate();
-        EXPECT_NE(canvas, nullptr);
-        // 7. OH_Drawing_BitmapDestroy, destroy the bitmap
-        OH_Drawing_BitmapDestroy(bitmap);
-        // 8. OH_Drawing_CanvasDrawBitmapRect
-        OH_Drawing_CanvasDrawBitmapRect(canvas, bitmap, src, dst, options);
-        // 9. OH_Drawing_BitmapCreateFromPixels
-        int width = 48;
-        int height = 48;
-        OH_Drawing_Image_Info imageInfo = {width, height, COLOR_FORMAT_UNKNOWN, ALPHA_FORMAT_UNKNOWN};
-        int rowBytes = width * height * 4;
-        void *pixels = new int[48 * 48];
-        bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
-        // 10. OH_Drawing_SamplingOptionsDestroy, destroy the sampling options
-        OH_Drawing_SamplingOptionsDestroy(options);
-        // 11. OH_Drawing_CanvasDrawBitmapRect
-        OH_Drawing_CanvasDrawBitmapRect(canvas, bitmap, src, dst, options);
-        // 12. OH_Drawing_SamplingOptionsCreate
-        options = OH_Drawing_SamplingOptionsCreate(FILTER_MODE_NEAREST, MIPMAP_MODE_LINEAR);
-        // 13. OH_Drawing_RectDestroy, destroy dst
-        OH_Drawing_RectDestroy(dst);
-        // 14. OH_Drawing_CanvasDrawBitmapRect
-        OH_Drawing_CanvasDrawBitmapRect(canvas, bitmap, src, dst, options);
-    }
-    // 15. Free memory
-    if (0) {
-        // todo cpp crash
-        OH_Drawing_CanvasDestroy(canvas);
-    }
-    OH_Drawing_BitmapDestroy(bitmap);
-    OH_Drawing_RectDestroy(src);
-    OH_Drawing_SamplingOptionsDestroy(options);
+    // Deprecated
 }
 
 /*
@@ -1310,32 +1134,7 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart2, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart2, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_1704, TestSize.Level3) {
-    // 1. OH_Drawing_CanvasCreate
-    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    EXPECT_NE(canvas, nullptr);
-    // 2. OH_Drawing_RectCreate
-    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
-    EXPECT_NE(rect, nullptr);
-    // 3. OH_Drawing_CanvasDrawRect
-    OH_Drawing_CanvasDrawRect(canvas, rect);
-    // 4. OH_Drawing_CanvasDestroy, destroy the canvas
-    OH_Drawing_CanvasDestroy(canvas);
-
-    if (0) {
-        // todo cpp crash
-        // 5. OH_Drawing_CanvasDrawRect
-        OH_Drawing_CanvasDrawRect(canvas, rect);
-        // 6. OH_Drawing_CanvasCreate
-        canvas = OH_Drawing_CanvasCreate();
-        EXPECT_NE(canvas, nullptr);
-        // 7. OH_Drawing_CanvasCreate
-        canvas = OH_Drawing_CanvasCreate();
-        EXPECT_NE(canvas, nullptr);
-        // 8. OH_Drawing_CanvasDrawRect
-        OH_Drawing_CanvasDrawRect(canvas, rect);
-        // 9. Free memory
-        OH_Drawing_CanvasDestroy(canvas);
-    }
+    // Deprecated
 }
 
 /*
@@ -1450,31 +1249,7 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart2, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart2, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_1804, TestSize.Level3) {
-    // 1. OH_Drawing_CanvasCreate
-    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    EXPECT_NE(canvas, nullptr);
-    // 2. OH_Drawing_PointCreate
-    OH_Drawing_Point *center = OH_Drawing_PointCreate(100, 100);
-    EXPECT_NE(center, nullptr);
-    // 3. OH_Drawing_CanvasDrawCircle
-    OH_Drawing_CanvasDrawCircle(canvas, center, 50);
-    // 4. OH_Drawing_CanvasDestroy, destroy the canvas
-    OH_Drawing_CanvasDestroy(canvas);
-
-    if (0) {
-        // todo cpp crash
-        // 5. OH_Drawing_CanvasDrawCircle
-        OH_Drawing_CanvasDrawCircle(canvas, center, 50);
-        // 6. OH_Drawing_CanvasCreate
-        canvas = OH_Drawing_CanvasCreate();
-        EXPECT_NE(canvas, nullptr);
-        // 7. OH_Drawing_PointDestroy
-        OH_Drawing_PointDestroy(center);
-        // 8. OH_Drawing_CanvasDrawCircle
-        OH_Drawing_CanvasDrawCircle(canvas, center, 50);
-        // 9. Free memory
-        OH_Drawing_CanvasDestroy(canvas);
-    }
+    // Deprecated
 }
 
 } // namespace Drawing

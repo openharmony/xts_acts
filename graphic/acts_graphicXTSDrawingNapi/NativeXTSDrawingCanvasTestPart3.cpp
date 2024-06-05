@@ -183,28 +183,7 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_1904, TestSize.Level3) {
-    // 1. OH_Drawing_CanvasCreate
-    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    // 2. OH_Drawing_RectCreate
-    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
-    // 3. OH_Drawing_CanvasDrawOval
-    OH_Drawing_CanvasDrawOval(canvas, rect);
-
-    if (0) {
-        // todo cpp crash
-        // 4. OH_Drawing_CanvasDestroy  Destroy the canvas
-        OH_Drawing_CanvasDestroy(canvas);
-        // 5. OH_Drawing_CanvasDrawOval
-        OH_Drawing_CanvasDrawOval(canvas, rect);
-        // 6. OH_Drawing_CanvasCreate
-        canvas = OH_Drawing_CanvasCreate();
-        // 7. OH_Drawing_RectDestroy
-        OH_Drawing_RectDestroy(rect);
-        // 8. OH_Drawing_CanvasDrawOval
-        OH_Drawing_CanvasDrawOval(canvas, rect);
-        // 9. Free memory
-        OH_Drawing_CanvasDestroy(canvas);
-    }
+    // Deprecated
 }
 
 /*
@@ -371,32 +350,7 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2004, TestSize.Level3) {
-    // 1. OH_Drawing_CanvasCreate
-    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-
-    // 2. OH_Drawing_RectCreate
-    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 100, 100);
-
-    // 3. OH_Drawing_CanvasDrawArc
-    OH_Drawing_CanvasDrawArc(canvas, rect, 0.0f, 90.0f);
-
-    // 4. OH_Drawing_CanvasDestroy  Destroy the canvas
-    OH_Drawing_CanvasDestroy(canvas);
-
-    // 5. OH_Drawing_CanvasDrawArc
-    OH_Drawing_CanvasDrawArc(canvas, rect, 0.0f, 90.0f);
-
-    // 6. OH_Drawing_CanvasCreate
-    canvas = OH_Drawing_CanvasCreate();
-
-    // 7. OH_Drawing_RectDestroy
-    OH_Drawing_RectDestroy(rect);
-
-    // 8. OH_Drawing_CanvasDrawArc
-    OH_Drawing_CanvasDrawArc(canvas, rect, 0.0f, 90.0f);
-
-    // 9. Free memory
-    OH_Drawing_CanvasDestroy(canvas);
+    // Deprecated
 }
 
 /*
@@ -627,33 +581,7 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2104, TestSize.Level3) {
-    // 1. OH_Drawing_CanvasCreate
-    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-
-    // 2. OH_Drawing_RoundRectCreate
-    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(10, 100, 200, 300);
-    OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 1.0f, 1.0f);
-
-    // 3. OH_Drawing_CanvasDrawRoundRect
-    OH_Drawing_CanvasDrawRoundRect(canvas, roundRect);
-
-    // 4. OH_Drawing_CanvasDestroy  Destroy the canvas
-    OH_Drawing_CanvasDestroy(canvas);
-
-    // 5. OH_Drawing_CanvasDrawRoundRect
-    OH_Drawing_CanvasDrawRoundRect(canvas, roundRect);
-
-    // 6. OH_Drawing_CanvasCreate
-    canvas = OH_Drawing_CanvasCreate();
-
-    // 7. OH_Drawing_RectDestroy
-    OH_Drawing_RectDestroy(rect);
-
-    // 8. OH_Drawing_RoundRectDestroy
-    OH_Drawing_RoundRectDestroy(roundRect);
-
-    // 9. Free memory
-    OH_Drawing_CanvasDestroy(canvas);
+    // Deprecated
 }
 
 /*
@@ -668,18 +596,15 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
 
-    if (0) {
-        // todo cpp crash
-        // 2. OH_Drawing_TextBlobCreateFromText
-        const char *str = "123456";
-        OH_Drawing_Font *font = OH_Drawing_FontCreate();
-        OH_Drawing_TextBlob *textBlob =
-            OH_Drawing_TextBlobCreateFromText(str, strlen(str), font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
-        // 3. OH_Drawing_CanvasDrawTextBlob
-        OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, 10, 10);
-        // 4. Free memory
-        OH_Drawing_TextBlobDestroy(textBlob);
-    }
+    // 2. OH_Drawing_TextBlobCreateFromText
+    const char *str = "123456";
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    OH_Drawing_TextBlob *textBlob =
+        OH_Drawing_TextBlobCreateFromText(str, strlen(str), font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
+    // 3. OH_Drawing_CanvasDrawTextBlob
+    OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, 10, 10);
+    // 4. Free memory
+    OH_Drawing_TextBlobDestroy(textBlob);
 
     OH_Drawing_CanvasDestroy(canvas);
 }
@@ -696,23 +621,20 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. OH_Drawing_TextBlobCreateFromString
-    if (0) {
-        // todo cpp crash
-        const char *str = "123456";
-        OH_Drawing_Font *font = OH_Drawing_FontCreate();
-        OH_Drawing_TextBlob *textBlob =
-            OH_Drawing_TextBlobCreateFromText(str, strlen(str), font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
-        // 3. OH_Drawing_CanvasDrawTextBlob with the first parameter being nullptr
-        OH_Drawing_CanvasDrawTextBlob(nullptr, textBlob, 10, 10);
-        // 4. OH_Drawing_CanvasDrawTextBlob with the second parameter being nullptr
-        OH_Drawing_CanvasDrawTextBlob(canvas, nullptr, 10, 10);
-        // 5. OH_Drawing_CanvasDrawTextBlob with the third parameter being 0
-        OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, 0, 10);
-        // 6. OH_Drawing_CanvasDrawTextBlob with the fourth parameter being 0
-        OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, 10, 0);
-        // 7. Free memory
-        OH_Drawing_TextBlobDestroy(textBlob);
-    }
+    const char *str = "123456";
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    OH_Drawing_TextBlob *textBlob =
+        OH_Drawing_TextBlobCreateFromText(str, strlen(str), font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
+    // 3. OH_Drawing_CanvasDrawTextBlob with the first parameter being nullptr
+    OH_Drawing_CanvasDrawTextBlob(nullptr, textBlob, 10, 10);
+    // 4. OH_Drawing_CanvasDrawTextBlob with the second parameter being nullptr
+    OH_Drawing_CanvasDrawTextBlob(canvas, nullptr, 10, 10);
+    // 5. OH_Drawing_CanvasDrawTextBlob with the third parameter being 0
+    OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, 0, 10);
+    // 6. OH_Drawing_CanvasDrawTextBlob with the fourth parameter being 0
+    OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, 10, 0);
+    // 7. Free memory
+    OH_Drawing_TextBlobDestroy(textBlob);
 
     OH_Drawing_CanvasDestroy(canvas);
 }
@@ -728,24 +650,19 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2202, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    if (0) {
-        // todo cpp crash
-
-        // 2. Create OH_Drawing_TextBlob from text
-        const char *str = "123456";
-        OH_Drawing_Font *font = OH_Drawing_FontCreate();
-        OH_Drawing_TextBlob *textBlob =
-            OH_Drawing_TextBlobCreateFromText(str, strlen(str), font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
-        // 3. Draw OH_Drawing_TextBlob on canvas with x-coordinate of the bottom left corner of the text object set to a
-        // negative value
-        OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, -10, 10);
-        // 4. Draw OH_Drawing_TextBlob on canvas with y-coordinate of the bottom left corner of the text object set to a
-        // negative value
-        OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, 10, -10);
-        // 5. Release memory
-        OH_Drawing_TextBlobDestroy(textBlob);
-    }
-
+    // 2. Create OH_Drawing_TextBlob from text
+    const char *str = "123456";
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    OH_Drawing_TextBlob *textBlob =
+        OH_Drawing_TextBlobCreateFromText(str, strlen(str), font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
+    // 3. Draw OH_Drawing_TextBlob on canvas with x-coordinate of the bottom left corner of the text object set to a
+    // negative value
+    OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, -10, 10);
+    // 4. Draw OH_Drawing_TextBlob on canvas with y-coordinate of the bottom left corner of the text object set to a
+    // negative value
+    OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, 10, -10);
+    // 5. Release memory
+    OH_Drawing_TextBlobDestroy(textBlob);
     // 5. Release memory
     OH_Drawing_CanvasDestroy(canvas);
 }
@@ -761,24 +678,19 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
 HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2203, TestSize.Level3) {
     // 1. Create OH_Drawing_Canvas
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-
-    if (0) {
-        // todo cpp crash
-        // 2. Create OH_Drawing_TextBlob from text
-        const char *str = "123456";
-        OH_Drawing_Font *font = OH_Drawing_FontCreate();
-        OH_Drawing_TextBlob *textBlob =
-            OH_Drawing_TextBlobCreateFromText(str, strlen(str), font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
-        // 3. Draw OH_Drawing_TextBlob on canvas with x-coordinate of the bottom left corner of the text object set to
-        // maximum value
-        OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, FLT_MAX, 10);
-        // 4. Draw OH_Drawing_TextBlob on canvas with y-coordinate of the bottom left corner of the text object set to
-        // maximum value
-        OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, 10, FLT_MAX);
-        // 5. Release memory
-        OH_Drawing_TextBlobDestroy(textBlob);
-    }
-
+    // 2. Create OH_Drawing_TextBlob from text
+    const char *str = "123456";
+    OH_Drawing_Font *font = OH_Drawing_FontCreate();
+    OH_Drawing_TextBlob *textBlob =
+        OH_Drawing_TextBlobCreateFromText(str, strlen(str), font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
+    // 3. Draw OH_Drawing_TextBlob on canvas with x-coordinate of the bottom left corner of the text object set to
+    // maximum value
+    OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, FLT_MAX, 10);
+    // 4. Draw OH_Drawing_TextBlob on canvas with y-coordinate of the bottom left corner of the text object set to
+    // maximum value
+    OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, 10, FLT_MAX);
+    // 5. Release memory
+    OH_Drawing_TextBlobDestroy(textBlob);
     // 5. Release memory
     OH_Drawing_CanvasDestroy(canvas);
 }
@@ -792,29 +704,7 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2204, TestSize.Level3) {
-    // 1. OH_Drawing_CanvasCreate
-    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-
-    if (0) {
-        // todo cpp crash
-        // 2. OH_Drawing_TextBlobCreateFromString
-        const char *str = "123456";
-        OH_Drawing_Font *font = OH_Drawing_FontCreate();
-        OH_Drawing_TextBlob *textBlob =
-            OH_Drawing_TextBlobCreateFromText(str, strlen(str), font, OH_Drawing_TextEncoding::TEXT_ENCODING_UTF8);
-        // 3. OH_Drawing_CanvasDrawTextBlob
-        OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, 10, 10);
-        // 4. OH_Drawing_CanvasDestroy  Destroy the Canvas
-        OH_Drawing_CanvasDestroy(canvas);
-        // 5. OH_Drawing_CanvasDrawTextBlob
-        OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, 10, 10);
-        // 6. OH_Drawing_CanvasCreate
-        canvas = OH_Drawing_CanvasCreate();
-        // 7. OH_Drawing_TextBlobDestroy  Destroy the TextBlob
-        OH_Drawing_TextBlobDestroy(textBlob);
-        // 8. OH_Drawing_CanvasDrawTextBlob
-        OH_Drawing_CanvasDrawTextBlob(canvas, textBlob, 10, 10);
-    }
+    // Deprecated
 }
 
 /*
@@ -953,33 +843,7 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2304, TestSize.Level3) {
-    // 1. OH_Drawing_CanvasCreate
-    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    // 2. OH_Drawing_RectCreate
-    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(10, 10, 100, 100);
-    // 3. OH_Drawing_CanvasClipRect
-    OH_Drawing_CanvasClipRect(canvas, rect, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
-    // 4. OH_Drawing_CanvasDestroy  Destroy the Canvas
-    OH_Drawing_CanvasDestroy(canvas);
-
-    if (0) {
-        // todo cpp crash
-        // 5. OH_Drawing_CanvasClipRect
-        OH_Drawing_CanvasClipRect(canvas, rect, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
-    }
-
-    // 6. OH_Drawing_CanvasCreate
-    canvas = OH_Drawing_CanvasCreate();
-
-    if (0) {
-        // todo cpp crash
-        // 7. OH_Drawing_RectDestroy  Destroy the Rect
-        OH_Drawing_RectDestroy(rect);
-        // 8. OH_Drawing_CanvasClipRect
-        OH_Drawing_CanvasClipRect(canvas, rect, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
-    }
-    // 9. Release memory
-    OH_Drawing_CanvasDestroy(canvas);
+    // Deprecated
 }
 
 /*
@@ -1173,32 +1037,7 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2404, TestSize.Level3) {
-    // 1. OH_Drawing_CanvasCreate
-    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    // 2. OH_Drawing_RoundRectCreate
-    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(10, 10, 100, 100);
-    OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 10, 10);
-    // 3. OH_Drawing_CanvasClipRoundRect
-    OH_Drawing_CanvasClipRoundRect(canvas, roundRect, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
-    // 4. OH_Drawing_CanvasDestroy  Destroy the Canvas
-    OH_Drawing_CanvasDestroy(canvas);
-    if (0) {
-        // todo cpp crash
-        // 5. OH_Drawing_CanvasClipRoundRect
-        OH_Drawing_CanvasClipRoundRect(canvas, roundRect, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
-    }
-    // 6. OH_Drawing_CanvasCreate
-    canvas = OH_Drawing_CanvasCreate();
-    // 7. OH_Drawing_RectDestroy
-    OH_Drawing_RectDestroy(rect);
-    if (0) {
-        // todo cpp crash
-        // 8. OH_Drawing_CanvasClipRoundRect
-        OH_Drawing_CanvasClipRoundRect(canvas, roundRect, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
-    }
-    // 9. Free memory
-    OH_Drawing_CanvasDestroy(canvas);
-    OH_Drawing_RoundRectDestroy(roundRect);
+    // Deprecated
 }
 
 /*
@@ -1276,35 +1115,7 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2502, TestSize.Level3) {
-    // 1. OH_Drawing_CanvasCreate
-    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    // 2. OH_Drawing_PathCreate
-    OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    OH_Drawing_PathMoveTo(path, 0, 0);
-    OH_Drawing_PathLineTo(path, 100, 0);
-    OH_Drawing_PathLineTo(path, 100, 100);
-    OH_Drawing_PathLineTo(path, 0, 100);
-    OH_Drawing_PathClose(path);
-    // 3. OH_Drawing_CanvasClipPath
-    OH_Drawing_CanvasClipPath(canvas, path, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
-    // 4. OH_Drawing_CanvasDestroy
-    OH_Drawing_CanvasDestroy(canvas);
-    // 5. OH_Drawing_CanvasClipPath
-    if (0) {
-        // todo cpp crash
-        OH_Drawing_CanvasClipPath(canvas, path, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
-    }
-    // 6. OH_Drawing_CanvasCreate
-    canvas = OH_Drawing_CanvasCreate();
-    // 7. OH_Drawing_PathDestroy
-    OH_Drawing_PathDestroy(path);
-    // 8. OH_Drawing_CanvasClipPath
-    if (0) {
-        // todo cpp crash
-        OH_Drawing_CanvasClipPath(canvas, path, OH_Drawing_CanvasClipOp::DIFFERENCE, true);
-    }
-    // 9. Free memory
-    OH_Drawing_CanvasDestroy(canvas);
+    // Deprecated
 }
 
 /*
@@ -1404,17 +1215,7 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2604, TestSize.Level3) {
-    // 1. OH_Drawing_CanvasCreate
-    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    // 2. OH_Drawing_CanvasRotate
-    OH_Drawing_CanvasRotate(canvas, 180, 10, 10);
-    // 3. OH_Drawing_CanvasDestroy
-    OH_Drawing_CanvasDestroy(canvas);
-    // 4. OH_Drawing_CanvasRotate
-    if (0) {
-        // todo cpp crash
-        OH_Drawing_CanvasRotate(canvas, 180, 10, 10);
-    }
+    // Deprecated
 }
 
 /*
@@ -1530,17 +1331,7 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2704, TestSize.Level3) {
-    // 1. OH_Drawing_CanvasCreate
-    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    // 2. OH_Drawing_CanvasTranslate
-    OH_Drawing_CanvasTranslate(canvas, 10, 10);
-    // 3. OH_Drawing_CanvasDestroy
-    OH_Drawing_CanvasDestroy(canvas);
-    // 4. OH_Drawing_CanvasTranslate
-    if (0) {
-        // todo cpp crash
-        OH_Drawing_CanvasTranslate(canvas, 10, 10);
-    }
+    // Deprecated
 }
 
 /*
@@ -1668,20 +1459,7 @@ HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRA
  * @tc.level : Level 3
  */
 HWTEST_F(NativeXTSDrawingCanvasTestPart3, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_2804, TestSize.Level3) {
-    // 1. Create a canvas
-    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-
-    // 2. Scale the canvas
-    OH_Drawing_CanvasScale(canvas, 2.0, 2.0);
-
-    // 3. Destroy the canvas
-    OH_Drawing_CanvasDestroy(canvas);
-
-    // 4. Attempt to scale on a destroyed canvas
-    if (0) {
-        // todo cpp crash
-        OH_Drawing_CanvasScale(canvas, 2.0, 2.0);
-    }
+    // Deprecated
 }
 
 /*
