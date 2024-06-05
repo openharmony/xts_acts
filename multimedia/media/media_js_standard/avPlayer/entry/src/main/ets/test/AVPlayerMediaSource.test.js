@@ -66,7 +66,7 @@ export default function AVPlayerMediaSource() {
     it('SUB_MULTIMEDIA_PLAYER_MEDIASOURCE_FUNCTION_0200', 0, async function (done) {
       let header = {"User-Agent" : "User-Agent-Value"};
       let mediaSource = media.createMediaSourceWithUrl("http://xxx",  header);
-      let mimeType = media.AVMimeTypes = media.AVMimeTypes.APPLICATION_M3U8;
+      let mimeType = media.AVMimeTypes.APPLICATION_M3U8;
       mediaSource.setMimeType(mimeType);
       done();
     })
