@@ -13,11 +13,11 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-module_output_path = "hit/ActsGraphicXTSDrawingNapiTest"
+module_output_path = "hit/ActsDrawingNativeTest"
 
 ###############################################################################
 
-ohos_moduletest_suite("ActsGraphicXTSDrawingNapiTest") {
+ohos_moduletest_suite("ActsDrawingNativeTest") {
   module_out_path = module_output_path
   subsystem_name = "graphic"
   part_name = "graphic_2d"

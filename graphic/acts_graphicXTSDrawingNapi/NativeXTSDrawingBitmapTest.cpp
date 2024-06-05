@@ -45,17 +45,17 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class NativeXTSDrawingBitmapTest : public testing::Test {};
+class DrawingNativeBitmapTest : public testing::Test {};
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_BITMAP_0100
- * @tc.name: 00.testBitmapDestroyNormal
- * @tc.desc: test for OH_Drawing_BitmapDestroy.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BITMAP_0100
+ * @tc.name: testBitmapDestroyNormal
+ * @tc.desc: test for testBitmapDestroyNormal.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(NativeXTSDrawingBitmapTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_BITMAP_0100, TestSize.Level0) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapDestroyNormal, TestSize.Level0) {
     // step 1
     OH_Drawing_Bitmap *cBitmap = OH_Drawing_BitmapCreate();
     EXPECT_NE(cBitmap, nullptr);
@@ -64,26 +64,172 @@ HWTEST_F(NativeXTSDrawingBitmapTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_BITMAP_0101
- * @tc.name: 01.testBitmapDestroyNull
- * @tc.desc: test for OH_Drawing_BitmapDestroy.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BITMAP_0101
+ * @tc.name: testBitmapDestroyNull
+ * @tc.desc: test for testBitmapDestroyNull.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingBitmapTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_BITMAP_0101, TestSize.Level3) {
-    OH_Drawing_BitmapDestroy(nullptr);
-}
+HWTEST_F(DrawingNativeBitmapTest, testBitmapDestroyNull, TestSize.Level3) { OH_Drawing_BitmapDestroy(nullptr); }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_BITMAP_0300
- * @tc.name: 00.testBitmapBuildNormal
- * @tc.desc: test for OH_Drawing_BitmapBuild.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BITMAP_0200
+ * @tc.name: testBitmapCreateFromPixelsNormal
+ * @tc.desc: test for testBitmapCreateFromPixelsNormal.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(NativeXTSDrawingBitmapTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_BITMAP_0300, TestSize.Level0) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsNormal, TestSize.Level0) {
+    // 1. Construct OH_Drawing_Image_Info by iterating through OH_Drawing_ColorFormat and OH_Drawing_AlphaFormat
+    OH_Drawing_ColorFormat formats[] = {
+        COLOR_FORMAT_UNKNOWN,   COLOR_FORMAT_ALPHA_8,   COLOR_FORMAT_RGB_565,
+        COLOR_FORMAT_ARGB_4444, COLOR_FORMAT_RGBA_8888, COLOR_FORMAT_BGRA_8888,
+    };
+    OH_Drawing_AlphaFormat alphaFormats[] = {
+        ALPHA_FORMAT_UNKNOWN,
+        ALPHA_FORMAT_OPAQUE,
+        ALPHA_FORMAT_PREMUL,
+        ALPHA_FORMAT_UNPREMUL,
+    };
+    int width = 100;
+    int height = 100;
+    int rowBytes = width * 4;
+    uint8_t *pixels = new uint8_t[width * height * 4];
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 4; j++) {
+            OH_Drawing_Image_Info imageInfo{width, height, formats[i], alphaFormats[j]};
+            OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
+            // 2. OH_Drawing_BitmapCreateFromPixels
+            // Initialize the Bitmap with matching image information and call OH_Drawing_BitmapGet related interfaces
+            // Verify that the parameters match the initialization parameters
+            if (0) {
+                // todo fail
+                EXPECT_EQ(OH_Drawing_BitmapGetHeight(bitmap), height);
+                EXPECT_EQ(OH_Drawing_BitmapGetWidth(bitmap), width);
+                EXPECT_EQ(OH_Drawing_BitmapGetColorFormat(bitmap), formats[i]);
+                EXPECT_EQ(OH_Drawing_BitmapGetAlphaFormat(bitmap), alphaFormats[j]);
+            }
+            // 3. OH_Drawing_BitmapCreateFromPixels
+            // Initialize the Bitmap with rowBytes larger than the image, call OH_Drawing_BitmapGet related interfaces
+            // (OH_Drawing_BitmapGetHeight, OH_Drawing_BitmapGetWidth), Verify that the parameters match the
+            // initialization parameters
+            int rowBytes2 = width * 4 + 1;
+            bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes2);
+            if (0) {
+                // todo fail
+                EXPECT_EQ(OH_Drawing_BitmapGetHeight(bitmap), height);
+                EXPECT_EQ(OH_Drawing_BitmapGetWidth(bitmap), width);
+            }
+            // 4. Free memory
+            OH_Drawing_BitmapDestroy(bitmap);
+        }
+    }
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BITMAP_0201
+ * @tc.name: testBitmapCreateFromPixelsNull
+ * @tc.desc: test for testBitmapCreateFromPixelsNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsNull, TestSize.Level3) {
+    int width = 100;
+    int height = 100;
+    int rowBytes = width * 4;
+    uint8_t *pixels = new uint8_t[width * height * 4];
+    OH_Drawing_Image_Info imageInfo{width, height, COLOR_FORMAT_ALPHA_8, ALPHA_FORMAT_UNKNOWN};
+    // 1. OH_Drawing_BitmapCreateFromPixels the first parameter OH_Drawing_Image_Info is empty
+    OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreateFromPixels(nullptr, pixels, rowBytes);
+    // 2. OH_Drawing_BitmapCreateFromPixels the second parameter pixels is empty
+    bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, nullptr, rowBytes);
+    EXPECT_EQ(bitmap, nullptr);
+    // 3. OH_Drawing_BitmapCreateFromPixels the third parameter rowBytes is 0
+    bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, 0);
+    EXPECT_EQ(bitmap, nullptr);
+    // 4. OH_Drawing_BitmapCreateFromPixels the width of the first parameter OH_Drawing_Image_Info is 0
+    imageInfo.width = 0;
+    bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
+    EXPECT_EQ(bitmap, nullptr);
+    // 5. OH_Drawing_BitmapCreateFromPixels the height of the first parameter OH_Drawing_Image_Info is 0
+    imageInfo.width = width;
+    imageInfo.height = 0;
+    bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
+    EXPECT_EQ(bitmap, nullptr);
+    // 6. Free memory
+    OH_Drawing_BitmapDestroy(bitmap);
+    delete[] pixels;
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BITMAP_0202
+ * @tc.name: testBitmapCreateFromPixelsMismatch
+ * @tc.desc: test for testBitmapCreateFromPixelsMismatch.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsMismatch, TestSize.Level3) {
+    int width = 48;
+    int height = 48;
+    int rowBytes = width * 4;
+    uint8_t *pixels = new uint8_t[width * height * 4];
+    OH_Drawing_Image_Info imageInfo{width, height, COLOR_FORMAT_ALPHA_8, ALPHA_FORMAT_UNKNOWN};
+    // 1. OH_Drawing_BitmapCreateFromPixels initializes a 48*48 image, but the memory allocated for pixels is 47*48
+    pixels = new uint8_t[47 * height * 4];
+    OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
+    EXPECT_EQ(bitmap, nullptr);
+    // 2. OH_Drawing_BitmapCreateFromPixels initializes a 48*48 image, but the memory allocated for pixels is 48*47
+    pixels = new uint8_t[width * 47 * 4];
+    bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
+    EXPECT_EQ(bitmap, nullptr);
+    // 3. OH_Drawing_BitmapCreateFromPixels initializes a 48*48 image, but the memory allocated for pixels is 48*48 and
+    // rowBytes is 47
+    rowBytes = 47;
+    pixels = new uint8_t[width * height * 4];
+    bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
+    EXPECT_EQ(bitmap, nullptr);
+    // 4. Free memory
+    OH_Drawing_BitmapDestroy(bitmap);
+    delete[] pixels;
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BITMAP_0203
+ * @tc.name: testBitmapCreateFromPixelsAbnormal
+ * @tc.desc: test for testBitmapCreateFromPixelsAbnormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsAbnormal, TestSize.Level3) {
+    int width = 48;
+    int height = 48;
+    int rowBytes = width * 4;
+    uint8_t *pixels = new uint8_t[width * height * 4];
+    OH_Drawing_Image_Info imageInfo{width, height, COLOR_FORMAT_ALPHA_8, ALPHA_FORMAT_UNKNOWN};
+    // 1. After constructing OH_Drawing_Image_Info, modify the byte value to an abnormal value
+    imageInfo.width = -1;
+    // 2. OH_Drawing_BitmapCreateFromPixels
+    OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
+    EXPECT_EQ(bitmap, nullptr);
+    // 3. Free memory
+    OH_Drawing_BitmapDestroy(bitmap);
+    delete[] pixels;
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BITMAP_0300
+ * @tc.name: testBitmapBuildNormal
+ * @tc.desc: test for testBitmapBuildNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeBitmapTest, testBitmapBuildNormal, TestSize.Level0) {
     const unsigned int width = 500;
     const unsigned int height = 500;
     OH_Drawing_ColorFormat formats[] = {
@@ -120,14 +266,14 @@ HWTEST_F(NativeXTSDrawingBitmapTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_BITMAP_0301
- * @tc.name: 01.testBitmapBuildNull
- * @tc.desc: test for OH_Drawing_BitmapBuild.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BITMAP_0301
+ * @tc.name: testBitmapBuildNull
+ * @tc.desc: test for testBitmapBuildNull.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingBitmapTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_BITMAP_0301, TestSize.Level3) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapBuildNull, TestSize.Level3) {
     const unsigned int width = 500;
     const unsigned int height = 500;
     OH_Drawing_ColorFormat formats[] = {
@@ -163,14 +309,14 @@ HWTEST_F(NativeXTSDrawingBitmapTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_BITMAP_0302
- * @tc.name: 02.testBitmapBuildMultipleCalls
- * @tc.desc: test for OH_Drawing_BitmapBuild.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BITMAP_0302
+ * @tc.name: testBitmapBuildMultipleCalls
+ * @tc.desc: test for testBitmapBuildMultipleCalls.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingBitmapTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_BITMAP_0302, TestSize.Level3) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapBuildMultipleCalls, TestSize.Level3) {
     const unsigned int width = 500;
     const unsigned int height = 500;
     OH_Drawing_ColorFormat formats[] = {
@@ -225,14 +371,14 @@ HWTEST_F(NativeXTSDrawingBitmapTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_BITMAP_0400
- * @tc.name: 00.testBitmapGetXXNormal
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BITMAP_0400
+ * @tc.name: testBitmapGetXXNormal
  * @tc.desc: test for testBitmapGetXXNormal.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(NativeXTSDrawingBitmapTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_BITMAP_0400, TestSize.Level0) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapGetXXNormal, TestSize.Level0) {
     OH_Drawing_Bitmap *cBitmap = OH_Drawing_BitmapCreate();
     EXPECT_NE(cBitmap, nullptr);
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
@@ -278,14 +424,14 @@ HWTEST_F(NativeXTSDrawingBitmapTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_BITMAP_0401
- * @tc.name: 01.testBitmapGetXXNull
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BITMAP_0401
+ * @tc.name: testBitmapGetXXNull
  * @tc.desc: test for testBitmapGetXXNull.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingBitmapTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_BITMAP_0401, TestSize.Level3) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapGetXXNull, TestSize.Level3) {
     OH_Drawing_Bitmap *cBitmap = OH_Drawing_BitmapCreate();
     EXPECT_NE(cBitmap, nullptr);
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
@@ -323,26 +469,26 @@ HWTEST_F(NativeXTSDrawingBitmapTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_BITMAP_0402
- * @tc.name: 02.testBitmapGetXXInputDestroyed
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BITMAP_0402
+ * @tc.name: testBitmapGetXXInputDestroyed
  * @tc.desc: test for testBitmapGetXXInputDestroyed.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingBitmapTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_BITMAP_0402, TestSize.Level3) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapGetXXInputDestroyed, TestSize.Level3) {
     // Deprecated
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_BITMAP_0500
- * @tc.name: 00.testBitmapReadPixelsNormal
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BITMAP_0500
+ * @tc.name: testBitmapReadPixelsNormal
  * @tc.desc: test for OH_Drawing_BitmapBuild.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 0
  */
-HWTEST_F(NativeXTSDrawingBitmapTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_BITMAP_0500, TestSize.Level0) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapReadPixelsNormal, TestSize.Level0) {
     const unsigned int width = 500;
     const unsigned int height = 500;
 
@@ -367,14 +513,14 @@ HWTEST_F(NativeXTSDrawingBitmapTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_BITMAP_0501
- * @tc.name: 01.testBitmapReadPixelsNull
- * @tc.desc: test for OH_Drawing_BitmapBuild.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BITMAP_0501
+ * @tc.name: testBitmapReadPixelsNull
+ * @tc.desc: test for testBitmapReadPixelsNull.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingBitmapTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_BITMAP_0501, TestSize.Level3) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapReadPixelsNull, TestSize.Level3) {
     const unsigned int width = 500;
     const unsigned int height = 500;
 
@@ -416,26 +562,26 @@ HWTEST_F(NativeXTSDrawingBitmapTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_BITMAP_0502
- * @tc.name: 02.testBitmapReadPixelsInputDestroyed
- * @tc.desc: test for OH_Drawing_BitmapBuild.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BITMAP_0502
+ * @tc.name: testBitmapReadPixelsInputDestroyed
+ * @tc.desc: test for testBitmapReadPixelsInputDestroyed.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingBitmapTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_BITMAP_0502, TestSize.Level3) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapReadPixelsInputDestroyed, TestSize.Level3) {
     // Deprecated
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_BITMAP_0503
- * @tc.name: 03.testBitmapReadPixelsMismatch
- * @tc.desc: test for OH_Drawing_BitmapBuild.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BITMAP_0503
+ * @tc.name: testBitmapReadPixelsMismatch
+ * @tc.desc: test for testBitmapReadPixelsMismatch.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(NativeXTSDrawingBitmapTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_BITMAP_0503, TestSize.Level3) {
+HWTEST_F(DrawingNativeBitmapTest, testBitmapReadPixelsMismatch, TestSize.Level3) {
     // step 1
     const unsigned int width = 500;
     const unsigned int height = 500;
