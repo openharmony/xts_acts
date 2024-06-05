@@ -86,7 +86,7 @@ HWTEST_F(NativeXTSDrawingCanvasTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_
  * @tc.level : Level 0
  */
 HWTEST_F(NativeXTSDrawingCanvasTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_BITMAP_0200, TestSize.Level0) {
-    // 1、遍历OH_Drawing_ColorFormat、OH_Drawing_AlphaFormat构造OH_Drawing_Image_Info
+    // 1. Construct OH_Drawing_Image_Info by iterating through OH_Drawing_ColorFormat and OH_Drawing_AlphaFormat
     OH_Drawing_ColorFormat formats[] = {
         COLOR_FORMAT_UNKNOWN,   COLOR_FORMAT_ALPHA_8,   COLOR_FORMAT_RGB_565,
         COLOR_FORMAT_ARGB_4444, COLOR_FORMAT_RGBA_8888, COLOR_FORMAT_BGRA_8888,
@@ -105,9 +105,9 @@ HWTEST_F(NativeXTSDrawingCanvasTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_
         for (int j = 0; j < 4; j++) {
             OH_Drawing_Image_Info imageInfo{width, height, formats[i], alphaFormats[j]};
             OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
-            // 2、OH_Drawing_BitmapCreateFromPixels
-            // 初始化Bitmap，参数匹配图片信息，对应调用OH_Drawing_BitmapGet相关接口
-            // 验证参数与初始化参数一致
+            // 2. OH_Drawing_BitmapCreateFromPixels
+            // Initialize the Bitmap with matching image information and call OH_Drawing_BitmapGet related interfaces
+            // Verify that the parameters match the initialization parameters
             if (0) {
                 // todo fail
                 EXPECT_EQ(OH_Drawing_BitmapGetHeight(bitmap), height);
@@ -115,9 +115,10 @@ HWTEST_F(NativeXTSDrawingCanvasTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_
                 EXPECT_EQ(OH_Drawing_BitmapGetColorFormat(bitmap), formats[i]);
                 EXPECT_EQ(OH_Drawing_BitmapGetAlphaFormat(bitmap), alphaFormats[j]);
             }
-            // 3、OH_Drawing_BitmapCreateFromPixels
-            // 初始化Bitmap，rowBytes大于图片，对应调用OH_Drawing_BitmapGet相关接口（OH_Drawing_BitmapGetHeight、OH_Drawing_BitmapGetWidth）调用，
-            // 验证参数与初始化参数一致
+            // 3. OH_Drawing_BitmapCreateFromPixels
+            // Initialize the Bitmap with rowBytes larger than the image, call OH_Drawing_BitmapGet related interfaces
+            // (OH_Drawing_BitmapGetHeight, OH_Drawing_BitmapGetWidth), Verify that the parameters match the
+            // initialization parameters
             int rowBytes2 = width * 4 + 1;
             bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes2);
             if (0) {
@@ -125,7 +126,7 @@ HWTEST_F(NativeXTSDrawingCanvasTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_
                 EXPECT_EQ(OH_Drawing_BitmapGetHeight(bitmap), height);
                 EXPECT_EQ(OH_Drawing_BitmapGetWidth(bitmap), width);
             }
-            // 4、释放内存
+            // 4. Free memory
             OH_Drawing_BitmapDestroy(bitmap);
         }
     }
@@ -145,24 +146,24 @@ HWTEST_F(NativeXTSDrawingCanvasTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_
     int rowBytes = width * 4;
     uint8_t *pixels = new uint8_t[width * height * 4];
     OH_Drawing_Image_Info imageInfo{width, height, COLOR_FORMAT_ALPHA_8, ALPHA_FORMAT_UNKNOWN};
-    // 1、OH_Drawing_BitmapCreateFromPixels 第一个参数OH_Drawing_Image_Info为空
+    // 1. OH_Drawing_BitmapCreateFromPixels the first parameter OH_Drawing_Image_Info is empty
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreateFromPixels(nullptr, pixels, rowBytes);
-    // 2、OH_Drawing_BitmapCreateFromPixels 第二个参数pixels为空
+    // 2. OH_Drawing_BitmapCreateFromPixels the second parameter pixels is empty
     bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, nullptr, rowBytes);
     EXPECT_EQ(bitmap, nullptr);
-    // 3、OH_Drawing_BitmapCreateFromPixels  第三个参数rowBytes为0
+    // 3. OH_Drawing_BitmapCreateFromPixels the third parameter rowBytes is 0
     bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, 0);
     EXPECT_EQ(bitmap, nullptr);
-    // 4、OH_Drawing_BitmapCreateFromPixels  第一个参数OH_Drawing_Image_Info的width为0
+    // 4. OH_Drawing_BitmapCreateFromPixels the width of the first parameter OH_Drawing_Image_Info is 0
     imageInfo.width = 0;
     bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
     EXPECT_EQ(bitmap, nullptr);
-    // 5、OH_Drawing_BitmapCreateFromPixels  第一个参数OH_Drawing_Image_Info的height为0
+    // 5. OH_Drawing_BitmapCreateFromPixels the height of the first parameter OH_Drawing_Image_Info is 0
     imageInfo.width = width;
     imageInfo.height = 0;
     bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
     EXPECT_EQ(bitmap, nullptr);
-    // 6、释放内存
+    // 6. Free memory
     OH_Drawing_BitmapDestroy(bitmap);
     delete[] pixels;
 }
@@ -181,20 +182,21 @@ HWTEST_F(NativeXTSDrawingCanvasTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_
     int rowBytes = width * 4;
     uint8_t *pixels = new uint8_t[width * height * 4];
     OH_Drawing_Image_Info imageInfo{width, height, COLOR_FORMAT_ALPHA_8, ALPHA_FORMAT_UNKNOWN};
-    // 1、OH_Drawing_BitmapCreateFromPixels 初始化图片48*48，pixels 申请的内存为47*48
+    // 1. OH_Drawing_BitmapCreateFromPixels initializes a 48*48 image, but the memory allocated for pixels is 47*48
     pixels = new uint8_t[47 * height * 4];
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
     EXPECT_EQ(bitmap, nullptr);
-    // 2、OH_Drawing_BitmapCreateFromPixels 初始化图片48*48，pixels 申请的内存为48*47
+    // 2. OH_Drawing_BitmapCreateFromPixels initializes a 48*48 image, but the memory allocated for pixels is 48*47
     pixels = new uint8_t[width * 47 * 4];
     bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
     EXPECT_EQ(bitmap, nullptr);
-    // 3、OH_Drawing_BitmapCreateFromPixels 初始化图片48*48，pixels 申请的内存为48*48，rowBytes为47
+    // 3. OH_Drawing_BitmapCreateFromPixels initializes a 48*48 image, but the memory allocated for pixels is 48*48 and
+    // rowBytes is 47
     rowBytes = 47;
     pixels = new uint8_t[width * height * 4];
     bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
     EXPECT_EQ(bitmap, nullptr);
-    // 4、释放内存
+    // 4. Free memory
     OH_Drawing_BitmapDestroy(bitmap);
     delete[] pixels;
 }
@@ -213,12 +215,12 @@ HWTEST_F(NativeXTSDrawingCanvasTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_
     int rowBytes = width * 4;
     uint8_t *pixels = new uint8_t[width * height * 4];
     OH_Drawing_Image_Info imageInfo{width, height, COLOR_FORMAT_ALPHA_8, ALPHA_FORMAT_UNKNOWN};
-    // 1、OH_Drawing_Image_Info构造完成后修改其中字节为异常值
+    // 1. After constructing OH_Drawing_Image_Info, modify the byte value to an abnormal value
     imageInfo.width = -1;
-    // 2、OH_Drawing_BitmapCreateFromPixels
+    // 2. OH_Drawing_BitmapCreateFromPixels
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
     EXPECT_EQ(bitmap, nullptr);
-    // 3、释放内存
+    // 3. Free memory
     OH_Drawing_BitmapDestroy(bitmap);
     delete[] pixels;
 }
@@ -1082,8 +1084,8 @@ HWTEST_F(NativeXTSDrawingCanvasTest, SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_NDK_DRAWING_CANVAS_0703
- * @tc.name: 03.testCanvasRestore未save时调用
- * @tc.desc: test for 03.testCanvasRestore未save时调用.
+ * @tc.name: 03.testCanvasRestoreBeforeSave
+ * @tc.desc: test for 03.testCanvasRestoreBeforeSave.
  * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 3
