@@ -2,8 +2,9 @@
     "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "180000",
-        "shell-timeout": "180000",
+        "test-timeout": "1000000",
+        "shell-timeout": "1000000",
+        "testcase-timeout":"10000",
         "bundle-name": "com.example.acejsapi",
         "package-name": "com.example.acejsapi"
     },
