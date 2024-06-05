@@ -941,7 +941,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasRestoreMultipleCalls, TestSize.Level
  * @tc.type  : Function
  * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeCanvasTest, SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_0703, TestSize.Level3) {
+HWTEST_F(DrawingNativeCanvasTest, testCanvasRestoreBeforeSave, TestSize.Level3) {
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);
