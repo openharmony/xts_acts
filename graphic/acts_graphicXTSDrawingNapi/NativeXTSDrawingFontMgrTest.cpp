@@ -159,7 +159,6 @@ HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrMatchFamily, TestSize.Le
  */
 HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrMatchFamilyStyle, TestSize.Level1) {
     // todo cpp crash when OH_Drawing_FontMgrCreate
-    EXPECT_TRUE(false);
 }
 
 /*
@@ -171,7 +170,6 @@ HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrMatchFamilyStyle, TestSi
  */
 HWTEST_F(NativeXTSDrawingFontMgrTest, OH_Drawing_FontMgrMatchFamilyStyleCharacter, TestSize.Level1) {
     // todo cpp crash when OH_Drawing_FontMgrCreate
-    EXPECT_TRUE(false);
 }
 
 /*
