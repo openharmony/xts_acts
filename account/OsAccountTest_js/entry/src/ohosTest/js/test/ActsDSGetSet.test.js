@@ -532,7 +532,6 @@ export default function ActsDAGetSetTest() {
                 scalableData:{},
                 avatar: limitAvatar
             };
-            console.info(JSON.stringify(obj))
             accountAbility.setOsAccountDistributedInfo(obj, (err)=>{
                 console.info("====>setOsAccountDistributedInfo_test011 update_err:" + JSON.stringify(err))
                 expect(err.code).assertEqual(12300002);
@@ -548,8 +547,7 @@ export default function ActsDAGetSetTest() {
         */
         it('setOsAccountDistributedInfo_test012', 0, async function (done) {
             const accountAbility = account.getDistributedAccountAbility()
-            var limitAvatar = ''.padEnd(10 * 1024 * 1024 + 1, 'o')          
-            console.info(limitAvatar.length)
+            var limitAvatar = ''.padEnd(10 * 1024 * 1024 + 1, 'o')
             console.info('====>setOsAccountDistributedInfo_test012 avatar_length:' + limitAvatar.length)
             let obj = {
                 id: '12345',
@@ -588,7 +586,6 @@ export default function ActsDAGetSetTest() {
                 event: 'Ohos.account.event.LOGIN',
                 scalableData:limitInfo,
             };
-            console.info(JSON.stringify(obj))
             accountAbility.setOsAccountDistributedInfo(obj, (err)=>{
                 console.info("====>setOsAccountDistributedInfo_test013 update_err:" + JSON.stringify(err))
                 expect(err.code).assertEqual(12300002);
