@@ -19,7 +19,7 @@
     "type": "entry",
     "srcEntry": "./ets/Application/AbilityStage.ts",
     "description": "$string:module_desc",
-    "mainElement": "MainAbility",
+    "mainElement": "EntryAbility",
     "deviceTypes": [
       "default",
       "tablet",
@@ -30,8 +30,8 @@
     "pages": "$profile:main_pages",
     "abilities": [
       {
-        "name": "com.arkui.ace.layout.MainAbility",
-        "srcEntry": "./ets/MainAbility/MainAbility.ts",
+        "name": "com.arkui.ace.layout.EntryAbility",
+        "srcEntry": "./ets/entryability/EntryAbility.ets",
         "description": "$string:description_application",
         "icon": "$media:icon",
         "label": "$string:entry_label",
