@@ -143,7 +143,7 @@ HWTEST_F(DrawingNativeFontMgrTest, OH_Drawing_FontMgrDestroyFontStyleSet, TestSi
 HWTEST_F(DrawingNativeFontMgrTest, OH_Drawing_FontMgrMatchFamily, TestSize.Level1) {
     OH_Drawing_FontMgr *mgr = OH_Drawing_FontMgrCreate();
     EXPECT_NE(mgr, nullptr);
-    const char *testFamilyName = "HarmonyOS-Sans";
+    const char *testFamilyName = "";
     OH_Drawing_FontStyleSet *fontStyleSet = OH_Drawing_FontMgrMatchFamily(mgr, testFamilyName);
     EXPECT_NE(fontStyleSet, nullptr);
     OH_Drawing_FontMgrDestroyFontStyleSet(fontStyleSet);
