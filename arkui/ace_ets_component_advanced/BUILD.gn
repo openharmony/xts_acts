@@ -14,6 +14,11 @@
 group("componentAdvancedTest") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "ace_ets_component_advanced_chip:componentChipTest" ]
+    deps = [ 
+    "ace_ets_component_advanced_chip:componentChipTest",
+    "ace_ets_component_advanced_arcbutton:componentArcButtonTest",
+    "ace_ets_component_advanced_arclist:componentArcListTest",
+    "ace_ets_component_advanced_qrcode:componentQrcodeTest",
+    ]
   }
 }

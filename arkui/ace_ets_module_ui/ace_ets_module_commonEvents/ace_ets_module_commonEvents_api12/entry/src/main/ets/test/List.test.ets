@@ -33,6 +33,21 @@ import onKeyPreImeTest from './onKeyEventTest/onKeyPreIme.test';
 import getModifierKeyStateTest from './onKeyEventTest/getModifierKeyState.test';
 import clearGestureTest from './GestureHandler/clearGesture.test';
 
+// 手指操作：单击、双击、长按
+import TapGestureBasicClickTest from './TapGesture/TapGestureBasicClickTest.test';
+import TapGestureBasicDoubleClickTest from './TapGesture/TapGestureBasicDoubleClickTest.test';
+import LongPressGestureLongClickTest from './LongPressGesture/LongPressGestureLongClickTest.test';
+// 鼠标操作：单击、双击、长按
+import TapGestureBasicClickMouseTest from './TapGesture/TapGestureBasicClickMouseTest.test';
+import TapGestureBasicDoubleClickMouseTest from './TapGesture/TapGestureBasicDoubleClickMouseTest.test';
+import LongPressGestureLongClickMouseTest from './LongPressGesture/LongPressGestureLongClickMouseTest.test';
+// 单指不同方向滑动
+import PanGestureExample01Test from './PanGesture/PanGestureExample01Test.test';
+import PanGestureExample02Test from './PanGesture/PanGestureExample02Test.test';
+import SwipeGestureExample01Test from './SwipeGesture/SwipeGestureExample01Test.test';
+// 多指操作
+import PanGestureExample03Test from './PanGesture/PanGestureExample03Test.test';
+import SwipeGestureExample03Test from './SwipeGesture/SwipeGestureExample03Test.test';
 
 export default function testsuite() {
   APIPreDragStatusTest();
@@ -56,4 +71,15 @@ export default function testsuite() {
   clearGestureTest();
   onKeyPreImeTest();
   getModifierKeyStateTest();
+  TapGestureBasicClickTest();
+  TapGestureBasicDoubleClickTest();
+  LongPressGestureLongClickTest();
+  TapGestureBasicClickMouseTest();
+  TapGestureBasicDoubleClickMouseTest();
+  LongPressGestureLongClickMouseTest();
+  PanGestureExample01Test();
+  PanGestureExample02Test();
+  SwipeGestureExample01Test();
+  PanGestureExample03Test();
+  SwipeGestureExample03Test();
 }
