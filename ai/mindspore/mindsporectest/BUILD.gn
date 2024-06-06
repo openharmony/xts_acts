@@ -22,6 +22,7 @@ config("mindspore_config") {
 ohos_moduletest_suite("ActsMindSporeTest") {
   module_out_path = module_output_path
   sources = [
+    "src/ohos_c_api_test_mindir_op.cpp",
     "src/ohos_c_api_test_mslite.cpp",
     "src/ohos_common.cpp",
   ]
@@ -32,9 +33,17 @@ ohos_moduletest_suite("ActsMindSporeTest") {
     "c_utils:utils",
     "mindspore:mindspore-ndk",
   ]
+
+  include_dirs = [
+    "//third_party/mindspore/mindspore-src/source/mindspore/lite/mindir/",
+    "//third_party/mindspore/mindspore-src/source/mindspore/lite/mindir/include",
+    "//third_party/mindspore/mindspore-src/source/mindspore/lite/mindir/inner_headers",
+  ]
+
   deps = [
     "//third_party/googletest:gmock",
     "//third_party/googletest:gtest",
+    "//third_party/mindspore/mindspore-src/source/mindspore/lite/mindir:mindir_lib",
   ]
 
   subsystem_name = "ai"
