@@ -142,6 +142,9 @@ export default function SearchJsunit() {
 
       // Verify the onSubmit function of the Search component
       let textComponent2 = await driver.findComponent(BY.text('search'));
+      if(!textComponent2){
+        textComponent2 = await driver.findComponent(BY.text('SEARCH'));
+      }
       await textComponent2.click()
       await CommonFunc.sleep(1000);
       console.info("[SearchJsunit_0300] CLICK_SEARCH succ ");
@@ -152,17 +155,12 @@ export default function SearchJsunit() {
 
       // Verify the onCopy function of the Search component
       await textComponent1.click()
-      await textComponent1.longClick()
+      await textComponent1.doubleClick()
       await CommonFunc.sleep(1000);
       console.info("[SearchJsunit_0300] first longClick succ ");
       let textComponent3 = await driver.findComponent(BY.text('全选'));
-      if ( textComponent3 != null ) {
-        await textComponent3.click()
-      }
+      await textComponent3?.click()
       let textComponent4 = await driver.findComponent(BY.text('复制'));
-      if ( textComponent4 == null ) {
-        console.info("[SearchJsunit_0300] after longClick can not find component 复制");
-      }
       await textComponent4.click()
       await CommonFunc.sleep(3000);
       console.info("[SearchJsunit_0300] click copy succ ");
@@ -173,17 +171,12 @@ export default function SearchJsunit() {
 
       // Verify the onCut function of the Search component
       await textComponent1.click()
-      await textComponent1.longClick()
+      await textComponent1.doubleClick()
       await CommonFunc.sleep(1000);
       console.info("[SearchJsunit_0300] secand longClick succ ");
       let textComponent5 = await driver.findComponent(BY.text('全选'));
-      if ( textComponent5 != null ) {
-        await textComponent5.click()
-      }
+      await textComponent5?.click()
       let textComponent6 = await driver.findComponent(BY.text('剪切'));
-      if ( textComponent6 == null ) {
-        console.info("[SearchJsunit_0300] after longClick can not find component 剪切");
-      }
       await textComponent6.click()
       await CommonFunc.sleep(3000);
       console.info("[SearchJsunit_0300] click cut succ ");
@@ -193,12 +186,13 @@ export default function SearchJsunit() {
       expect(obj4.$attrs.content).assertEqual('onCut:hello');
 
       // Verify the onPaste function of the Search component
+      await textComponent1.click()
+      await CommonFunc.sleep(1000);
+      await textComponent2.click()
+      await CommonFunc.sleep(1000);
       await textComponent1.longClick()
       await CommonFunc.sleep(1000);
       let textComponent8 = await driver.findComponent(BY.text('粘贴'));
-      if ( textComponent8 == null ) {
-        console.info("[SearchJsunit_0300] after longClick can not find component 粘贴");
-      }
       await textComponent8.click()
       await CommonFunc.sleep(3000);
       console.info("[SearchJsunit_0300] click paste succ ");

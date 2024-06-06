@@ -179,7 +179,9 @@ export default function textAreaJsunit() {
       // test the copy event
       let driver = UiDriver.create();
       let text = await driver.findComponent(BY.key('textArea'));
-      await text.longClick();
+      await text.click();
+      await CommonFunc.sleep(1000);
+      await text.doubleClick();
       await CommonFunc.sleep(1000);
       let allSelect = await driver.findComponent(BY.text('全选'));
       if (allSelect != null) {
@@ -198,7 +200,7 @@ export default function textAreaJsunit() {
       expect(txt).assertEqual('copy');
 
       // test the paste event
-      await text.longClick();
+      await text.doubleClick();
       await CommonFunc.sleep(1000);
       let paste = await driver.findComponent(BY.text('粘贴'));
       if (paste != null) {
@@ -221,7 +223,7 @@ export default function textAreaJsunit() {
       let textArea = await driver.findComponent(BY.key('textArea'));
       await textArea.inputText('123');
       await CommonFunc.sleep(1000);
-      await textArea.longClick();
+      await textArea.doubleClick();
       await CommonFunc.sleep(1000);
       let allSelect = await driver.findComponent(BY.text('全选'));
       if (allSelect != null) {

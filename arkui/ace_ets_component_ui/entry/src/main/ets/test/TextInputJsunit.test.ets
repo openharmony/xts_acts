@@ -182,10 +182,10 @@ export default function TextInputJsunit() {
       let textFalse = await textComponent2.getText();
       expect(textFalse).assertEqual('onEditChange:false');
       console.info("[TextInputJsunit_0400] Verify editChange succ !");
-      
+
       // Verify onCopy function of TextInput component
       await textComponent.click()
-      await textComponent.longClick()
+      await textComponent.doubleClick()
       await CommonFunc.sleep(3000);
       let textComponent3 = await driver.findComponent(BY.text('全选'));
       if ( textComponent3 != null ) {
@@ -207,7 +207,7 @@ export default function TextInputJsunit() {
       console.info("[TextInputJsunit_0400] Verify copy succ !");
 
       // Verify onCut function of TextInput component
-      await textComponent.longClick()
+      await textComponent.doubleClick()
       await CommonFunc.sleep(1000);
       let textComponent5 = await driver.findComponent(BY.text('全选'));
       if ( textComponent5 != null ) {
@@ -228,6 +228,9 @@ export default function TextInputJsunit() {
 
       // Verify onPaste function of TextInput component
       await textComponent.click()
+      await CommonFunc.sleep(1000);
+      await password.click()
+      await CommonFunc.sleep(1000);
       await textComponent.longClick()
       await CommonFunc.sleep(1000);
       let textComponent7 = await driver.findComponent(BY.text('粘贴'));
