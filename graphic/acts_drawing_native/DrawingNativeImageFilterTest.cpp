@@ -29,16 +29,16 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class NativeXTSDrawingImageTest : public testing::Test {};
+class DrawingNativeImageFilterTest : public testing::Test {};
 
 /*
  * @tc.name: OH_Drawing_ImageFilterCreateBlur
  * @tc.desc: test for OH_Drawing_ImageFilterCreateBlur.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingImageTest, OH_Drawing_ImageFilterCreateBlur, TestSize.Level1) {
+HWTEST_F(DrawingNativeImageFilterTest, OH_Drawing_ImageFilterCreateBlur, TestSize.Level1) {
     OH_Drawing_ImageFilter *f = OH_Drawing_ImageFilterCreateBlur(1.0, 1.0, OH_Drawing_TileMode::MIRROR, nullptr);
     EXPECT_NE(f, nullptr);
     OH_Drawing_ImageFilterDestroy(f);
@@ -47,11 +47,11 @@ HWTEST_F(NativeXTSDrawingImageTest, OH_Drawing_ImageFilterCreateBlur, TestSize.L
 /*
  * @tc.name: OH_Drawing_ImageFilterCreateFromColorFilter
  * @tc.desc: test for OH_Drawing_ImageFilterCreateFromColorFilter.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingImageTest, OH_Drawing_ImageFilterCreateFromColorFilter, TestSize.Level1) {
+HWTEST_F(DrawingNativeImageFilterTest, OH_Drawing_ImageFilterCreateFromColorFilter, TestSize.Level1) {
     OH_Drawing_ColorFilter *colorFilter =
         OH_Drawing_ColorFilterCreateBlendMode(0xff0000ff, OH_Drawing_BlendMode::BLEND_MODE_SRC);
     OH_Drawing_ImageFilter *f = OH_Drawing_ImageFilterCreateFromColorFilter(colorFilter, nullptr);
@@ -63,11 +63,11 @@ HWTEST_F(NativeXTSDrawingImageTest, OH_Drawing_ImageFilterCreateFromColorFilter,
 /*
  * @tc.name: OH_Drawing_ImageFilterDestroy
  * @tc.desc: test for OH_Drawing_ImageFilterDestroy.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingImageTest, OH_Drawing_ImageFilterDestroy, TestSize.Level1) {
+HWTEST_F(DrawingNativeImageFilterTest, OH_Drawing_ImageFilterDestroy, TestSize.Level1) {
     OH_Drawing_ColorFilter *colorFilter =
         OH_Drawing_ColorFilterCreateBlendMode(0xff0000ff, OH_Drawing_BlendMode::BLEND_MODE_SRC);
     OH_Drawing_ImageFilter *f = OH_Drawing_ImageFilterCreateFromColorFilter(colorFilter, nullptr);

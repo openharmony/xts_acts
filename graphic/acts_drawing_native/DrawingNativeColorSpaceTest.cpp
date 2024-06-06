@@ -15,7 +15,7 @@
 
 #include "gtest/gtest.h"
 
-#include "drawing_point.h"
+#include "drawing_color_space.h"
 
 using namespace testing;
 using namespace testing::ext;
@@ -23,32 +23,19 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class NativeXTSDrawingPointTest : public testing::Test {};
+class DrawingNativeColorSpaceTest : public testing::Test {};
 
 /*
- * @tc.name: OH_Drawing_PointCreate
- * @tc.desc: test for OH_Drawing_PointCreate.
- * @tc.size  : MediumTest
+ * @tc.name: OH_Drawing_ColorSpaceDestroy
+ * @tc.desc: test for OH_Drawing_ColorSpaceDestroy.
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPointTest, OH_Drawing_PointCreate, TestSize.Level1) {
-    OH_Drawing_Point *point = OH_Drawing_PointCreate(100, 60);
-    EXPECT_NE(point, nullptr);
-    OH_Drawing_PointDestroy(point);
-}
-
-/*
- * @tc.name: OH_Drawing_PointDestroy
- * @tc.desc: test for OH_Drawing_PointDestroy.
- * @tc.size  : MediumTest
- * @tc.type  : Function
- * @tc.level : Level 1
- */
-HWTEST_F(NativeXTSDrawingPointTest, OH_Drawing_PointDestroy, TestSize.Level1) {
-    OH_Drawing_Point *point = OH_Drawing_PointCreate(100, 60);
-    EXPECT_NE(point, nullptr);
-    OH_Drawing_PointDestroy(point);
+HWTEST_F(DrawingNativeColorSpaceTest, OH_Drawing_ColorSpaceDestroy, TestSize.Level1) {
+    OH_Drawing_ColorSpace *colorSpace = OH_Drawing_ColorSpaceCreateSrgb();
+    EXPECT_NE(colorSpace, nullptr);
+    OH_Drawing_ColorSpaceDestroy(colorSpace);
 }
 
 } // namespace Drawing

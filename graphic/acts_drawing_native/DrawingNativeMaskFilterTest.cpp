@@ -30,16 +30,16 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class NativeXTSDrawingMaskFilterTest : public testing::Test {};
+class DrawingNativeMaskFilterTest : public testing::Test {};
 
 /*
  * @tc.name: OH_Drawing_MaskFilterCreateBlur
  * @tc.desc: test for OH_Drawing_MaskFilterCreateBlur.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingMaskFilterTest, OH_Drawing_MaskFilterCreateBlur, TestSize.Level1) {
+HWTEST_F(DrawingNativeMaskFilterTest, OH_Drawing_MaskFilterCreateBlur, TestSize.Level1) {
     OH_Drawing_MaskFilter *maskFilter = OH_Drawing_MaskFilterCreateBlur(OH_Drawing_BlurType::NORMAL, 10, true);
     EXPECT_NE(maskFilter, nullptr);
     OH_Drawing_MaskFilterDestroy(maskFilter);
@@ -48,11 +48,11 @@ HWTEST_F(NativeXTSDrawingMaskFilterTest, OH_Drawing_MaskFilterCreateBlur, TestSi
 /*
  * @tc.name: OH_Drawing_MaskFilterDestroy
  * @tc.desc: test for OH_Drawing_MaskFilterDestroy.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingMaskFilterTest, OH_Drawing_MaskFilterDestroy, TestSize.Level1) {
+HWTEST_F(DrawingNativeMaskFilterTest, OH_Drawing_MaskFilterDestroy, TestSize.Level1) {
     OH_Drawing_MaskFilter *maskFilter = OH_Drawing_MaskFilterCreateBlur(OH_Drawing_BlurType::NORMAL, 10, true);
     EXPECT_NE(maskFilter, nullptr);
     OH_Drawing_MaskFilterDestroy(maskFilter);

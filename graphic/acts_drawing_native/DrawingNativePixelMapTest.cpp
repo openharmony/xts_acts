@@ -23,16 +23,16 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class NativeXTSDrawingPixelMapTest : public testing::Test {};
+class DrawingNativePixelMapTest : public testing::Test {};
 
 /*
  * @tc.name: OH_Drawing_PixelMapGetFromNativePixelMap
  * @tc.desc: test for OH_Drawing_PixelMapGetFromNativePixelMap.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPixelMapTest, OH_Drawing_PixelMapGetFromNativePixelMap, TestSize.Level1) {
+HWTEST_F(DrawingNativePixelMapTest, OH_Drawing_PixelMapGetFromNativePixelMap, TestSize.Level1) {
     // todo: don't know how to get NativePixelMap_
     NativePixelMap_ *npm = nullptr;
     OH_Drawing_PixelMap *pm = OH_Drawing_PixelMapGetFromNativePixelMap(npm);
@@ -42,11 +42,11 @@ HWTEST_F(NativeXTSDrawingPixelMapTest, OH_Drawing_PixelMapGetFromNativePixelMap,
 /*
  * @tc.name: OH_Drawing_PixelMapGetFromOhPixelMapNative
  * @tc.desc: test for OH_Drawing_PixelMapGetFromOhPixelMapNative.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPixelMapTest, OH_Drawing_PixelMapGetFromOhPixelMapNative, TestSize.Level1) {
+HWTEST_F(DrawingNativePixelMapTest, OH_Drawing_PixelMapGetFromOhPixelMapNative, TestSize.Level1) {
     // todo: don't know how to get OH_PixelmapNative
     OH_PixelmapNative *npm = nullptr;
     OH_Drawing_PixelMap *pm = OH_Drawing_PixelMapGetFromOhPixelMapNative(npm);
@@ -56,11 +56,11 @@ HWTEST_F(NativeXTSDrawingPixelMapTest, OH_Drawing_PixelMapGetFromOhPixelMapNativ
 /*
  * @tc.name: OH_Drawing_PixelMapDissolve
  * @tc.desc: test for OH_Drawing_PixelMapDissolve.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingPixelMapTest, OH_Drawing_PixelMapDissolve, TestSize.Level1) {
+HWTEST_F(DrawingNativePixelMapTest, OH_Drawing_PixelMapDissolve, TestSize.Level1) {
     // todo: don't know how to get OH_Drawing_PixelMap
     OH_Drawing_PixelMap *npm = nullptr;
     OH_Drawing_PixelMapDissolve(npm);

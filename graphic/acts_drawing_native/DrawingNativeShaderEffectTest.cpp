@@ -31,16 +31,16 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class NativeXTSDrawingShaderEffectTest : public testing::Test {};
+class DrawingNativeShaderEffectTest : public testing::Test {};
 
 /*
  * @tc.name: OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix
  * @tc.desc: test for OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingShaderEffectTest, OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix,
+HWTEST_F(DrawingNativeShaderEffectTest, OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMatrix,
          TestSize.Level1) {
     OH_Drawing_Point2D startPt = {100, 400};
     OH_Drawing_Point2D endPt = {200, 500};
@@ -63,11 +63,11 @@ HWTEST_F(NativeXTSDrawingShaderEffectTest, OH_Drawing_ShaderEffectCreateLinearGr
 /*
  * @tc.name: OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix
  * @tc.desc: test for OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingShaderEffectTest, OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix,
+HWTEST_F(DrawingNativeShaderEffectTest, OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMatrix,
          TestSize.Level1) {
     OH_Drawing_Point2D centerPt = {100, 100};
     float radius = 10.0;
@@ -89,11 +89,11 @@ HWTEST_F(NativeXTSDrawingShaderEffectTest, OH_Drawing_ShaderEffectCreateRadialGr
 /*
  * @tc.name: OH_Drawing_ShaderEffectCreateColorShader
  * @tc.desc: test for OH_Drawing_ShaderEffectCreateColorShader.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingShaderEffectTest, OH_Drawing_ShaderEffectCreateColorShader, TestSize.Level1) {
+HWTEST_F(DrawingNativeShaderEffectTest, OH_Drawing_ShaderEffectCreateColorShader, TestSize.Level1) {
     uint32_t color = 0xff00ff00;
     OH_Drawing_ShaderEffect *effect = OH_Drawing_ShaderEffectCreateColorShader(color);
     EXPECT_NE(effect, nullptr);

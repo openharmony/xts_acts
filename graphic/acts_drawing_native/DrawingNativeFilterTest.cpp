@@ -47,16 +47,16 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class NativeXTSDrawingFilterTest : public testing::Test {};
+class DrawingNativeFilterTest : public testing::Test {};
 
 /*
  * @tc.name: OH_Drawing_FilterSetImageFilter
  * @tc.desc: test for OH_Drawing_FilterSetImageFilter.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFilterTest, OH_Drawing_FilterSetImageFilter, TestSize.Level1) {
+HWTEST_F(DrawingNativeFilterTest, OH_Drawing_FilterSetImageFilter, TestSize.Level1) {
     OH_Drawing_Filter *cFilter_ = OH_Drawing_FilterCreate();
     EXPECT_NE(cFilter_, nullptr);
     OH_Drawing_ImageFilter *f = OH_Drawing_ImageFilterCreateBlur(1.0, 1.0, OH_Drawing_TileMode::MIRROR, nullptr);
@@ -68,11 +68,11 @@ HWTEST_F(NativeXTSDrawingFilterTest, OH_Drawing_FilterSetImageFilter, TestSize.L
 /*
  * @tc.name: OH_Drawing_FilterGetColorFilter
  * @tc.desc: test for OH_Drawing_FilterGetColorFilter.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingFilterTest, OH_Drawing_FilterGetColorFilter, TestSize.Level1) {
+HWTEST_F(DrawingNativeFilterTest, OH_Drawing_FilterGetColorFilter, TestSize.Level1) {
     OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
     EXPECT_NE(filter, nullptr);
     OH_Drawing_ColorFilter *colorFilter =

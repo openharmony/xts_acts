@@ -12,33 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#ifndef DRAWING_NATIVE_CANVAS_TEST_H
+#define DRAWING_NATIVE_CANVAS_TEST_H
 
 #include "gtest/gtest.h"
-
-#include "drawing_bitmap.h"
-#include "drawing_image.h"
-
-using namespace testing;
-using namespace testing::ext;
 
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class NativeXTSDrawingImageTest : public testing::Test {};
-
-/*
- * @tc.name: OH_Drawing_ImageDestroy
- * @tc.desc: test for OH_Drawing_ImageDestroy.
- * @tc.size  : MediumTest
- * @tc.type  : Function
- * @tc.level : Level 1
- */
-HWTEST_F(NativeXTSDrawingImageTest, OH_Drawing_ImageDestroy, TestSize.Level1) {
-    OH_Drawing_Image *image = OH_Drawing_ImageCreate();
-    OH_Drawing_ImageDestroy(image);
-    EXPECT_TRUE(true);
-}
+class DrawingNativeCanvasTest : public testing::Test {};
 
 } // namespace Drawing
 } // namespace Rosen
 } // namespace OHOS
+
+#endif // DRAWING_NATIVE_CANVAS_TEST_H

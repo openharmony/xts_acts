@@ -45,16 +45,16 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class NativeXTSDrawingColorFilterTest : public testing::Test {};
+class DrawingNativeColorFilterTest : public testing::Test {};
 
 /*
  * @tc.name: OH_Drawing_ColorFilterCreateBlendMode
  * @tc.desc: test for OH_Drawing_ColorFilterCreateBlendMode.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingColorFilterTest, OH_Drawing_ColorFilterCreateBlendMode, TestSize.Level1) {
+HWTEST_F(DrawingNativeColorFilterTest, OH_Drawing_ColorFilterCreateBlendMode, TestSize.Level1) {
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
 
@@ -113,11 +113,11 @@ HWTEST_F(NativeXTSDrawingColorFilterTest, OH_Drawing_ColorFilterCreateBlendMode,
 /*
  * @tc.name: OH_Drawing_ColorFilterDestroy
  * @tc.desc: test for OH_Drawing_ColorFilterDestroy.
- * @tc.size  : MediumTest
+ * @tc.size  : SmallTest
  * @tc.type  : Function
  * @tc.level : Level 1
  */
-HWTEST_F(NativeXTSDrawingColorFilterTest, OH_Drawing_ColorFilterDestroy, TestSize.Level1) {
+HWTEST_F(DrawingNativeColorFilterTest, OH_Drawing_ColorFilterDestroy, TestSize.Level1) {
     OH_Drawing_ColorFilter *cColorFilter_ = OH_Drawing_ColorFilterCreateBlendMode(0xFF0000FF, BLEND_MODE_COLOR);
     OH_Drawing_ColorFilterDestroy(cColorFilter_);
     EXPECT_TRUE(true);
