@@ -69,6 +69,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_0100
    * @tc.name: connectDevice
    * @tc.desc: Negative test: open device, error devAddress
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_0100', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_0100 begin');
@@ -111,6 +114,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_0200
    * @tc.name: connectDevice
    * @tc.desc: Negative test: open device, error busNum
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_0200', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_0200 begin');
@@ -151,6 +157,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_0300
    * @tc.name: connectDevice
    * @tc.desc: Negative test: open device, error serial
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_0300', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_0300 begin');
@@ -194,6 +203,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_0400
    * @tc.name: connectDevice
    * @tc.desc: Negative test: open device, error name
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_0400', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_0400 begin');
@@ -233,6 +245,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_0500
    * @tc.name: connectDevice
    * @tc.desc: Negative test: open device, error manufacturerName
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_0500', 0, async function () {
     console.info('usb connect_device_06 begin');
@@ -273,6 +288,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_0600
    * @tc.name: connectDevice
    * @tc.desc: Negative test: open device, error productName
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_0600', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_0600 begin');
@@ -316,6 +334,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_0700
    * @tc.name: connectDevice
    * @tc.desc: Negative test: open device, error version
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_0700', 0, async function () {
     console.info('usb connect_device_08 begin');
@@ -359,6 +380,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_0800
    * @tc.name: connectDevice
    * @tc.desc: Negative test: open device, error vendorId
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_0800', 0, async function () {
     console.info('usb connect_device_09 begin');
@@ -402,6 +426,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_0900
    * @tc.name: connectDevice
    * @tc.desc: Negative test: open device, error productId
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_0900', 0, async function () {
     console.info('usb connect_device_10 begin');
@@ -445,6 +472,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_1000
    * @tc.name: connectDevice
    * @tc.desc: Negative test: open device, error clazz
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_1000', 0, async function () {
     console.info('usb connect_device_11 begin');
@@ -487,6 +517,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_1100
    * @tc.name: connectDevice
    * @tc.desc: Negative test: open device, error subClass
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_1100', 0, async function () {
     console.info('usb connect_device_12 begin');
@@ -530,6 +563,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_1200
    * @tc.name: connectDevice
    * @tc.desc: Negative test: open device, error protocol
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_1200', 0, async function () {
     console.info('usb connect_device_13 begin');
@@ -572,6 +608,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_0400
    * @tc.name: connectDevice
    * @tc.desc: Negative test: open device, parameter type error
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_0400', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_0400 begin');
@@ -608,6 +647,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_1700
    * @tc.name: connectDevice
    * @tc.desc: Negative test: open device, parameter number exception, necessary parameters not input
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_1700', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_1700 begin');
@@ -644,6 +686,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_3400
    * @tc.name: hasRight
    * @tc.desc: Negative test: parameters exception, error deviceName
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_3400', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_3400 begin');
@@ -672,6 +717,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_3500
    * @tc.name: hasRight
    * @tc.desc: Negative test: parameters exception, the device a letter name
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_3500', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_3500 begin');
@@ -700,6 +748,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_0200
    * @tc.name: hasRight
    * @tc.desc: Negative test: Permission query, parameter type error
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_0200', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_0200 begin');
@@ -728,6 +779,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_1800
    * @tc.name: hasRight
    * @tc.desc: Negative test: Permission query, parameter number exception, necessary parameters not input
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_1800', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_1800 begin');
@@ -756,6 +810,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_3200
    * @tc.name: requestRight
    * @tc.desc: Negative test: Request permission, error deviceName
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_3200', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_3200 begin');
@@ -788,6 +845,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_3300
    * @tc.name: requestRight
    * @tc.desc: Negative test: Request permission, the device name is a number
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_3300', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_3300 begin');
@@ -820,6 +880,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_0300
    * @tc.name: requestRight
    * @tc.desc: Negative test: Request permission, parameter type error
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_0300', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_0300 begin');
@@ -848,6 +911,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_1900
    * @tc.name: requestRight
    * @tc.desc: Negative test: Request permission, parameter number exception, necessary parameters not input
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_1900', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_1900 begin');
@@ -876,6 +942,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_0100
    * @tc.name: getDevices
    * @tc.desc: Negative test: Get device list, parameters exception(parameter transfer without parameter interface)
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_0100', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_0100 begin');
@@ -899,6 +968,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_0500
    * @tc.name: closePipe
    * @tc.desc: Negative test: close device, parameter type error
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_0500', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_0500 begin');
@@ -927,6 +999,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_2000
    * @tc.name: closePipe
    * @tc.desc: Negative test: close device, parameter number exception, necessary parameters not input
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_2000', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_2000 begin');
@@ -955,6 +1030,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_0600
    * @tc.name: getRawDescriptor
    * @tc.desc: Negative test: Get the original USB descriptor, parameter type error
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_0600', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_0600 begin');
@@ -983,7 +1061,10 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_2100
    * @tc.name: getRawDescriptor
    * @tc.desc: Negative test: Get the original USB descriptor, parameter number exception,
-   * necessary parameters not input
+   *           necessary parameters not input
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_2100', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_2100 begin');
@@ -1012,6 +1093,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_0800
    * @tc.name: removeRight
    * @tc.desc: Negative test: Remove Permissions, parameter type error
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_0800', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_0800 begin');
@@ -1040,6 +1124,9 @@ describe('UsbCoreJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_2200
    * @tc.name: removeRight
    * @tc.desc: Negative test: Remove Permissions, parameter number exception, necessary parameters not input
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_2200', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_2200 begin');

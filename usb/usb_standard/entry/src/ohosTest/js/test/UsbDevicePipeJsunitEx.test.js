@@ -149,6 +149,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_TranCompatibility_0700
    * @tc.name: bulkTransfer
    * @tc.desc: Negative test: bulk transfer, send data, error outEndpoint.address = 123
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_TranCompatibility_0700', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_TranCompatibility_0700 begin');
@@ -185,6 +188,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_TranCompatibility_0800
    * @tc.name: bulkTransfer
    * @tc.desc: Negative test: bulk transfer, send data, error outEndpoint.number = 123
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_TranCompatibility_0800', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_TranCompatibility_0800 begin');
@@ -221,6 +227,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_TranCompatibility_0900
    * @tc.name: bulkTransfer
    * @tc.desc: Negative test: bulk transfer, send data, error outEndpoint.type = 123
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_TranCompatibility_0900', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_TranCompatibility_0900 begin');
@@ -257,6 +266,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_0900
    * @tc.name: bulkTransfer
    * @tc.desc: Negative test: bulk transfer, parameter number exception, input a parameter
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
    it('SUB_USB_HostManager_JS_ErrCode_0900', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_0900 begin');
@@ -295,6 +307,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_3600
    * @tc.name: bulkTransfer
    * @tc.desc: Negative test: bulk transfer, parameter number exception, input two parameter
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_3600', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_3600 begin');
@@ -333,6 +348,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_2400
    * @tc.name: bulkTransfer
    * @tc.desc: Negative test: bulk transfer, parameter number exception, necessary parameters not input
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_2400', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_2400 begin');
@@ -368,6 +386,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_3000
    * @tc.name: bulkTransfer
    * @tc.desc: Negative test: bulk transfer, parameter pipe type error
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
    it('SUB_USB_HostManager_JS_ErrCode_3000', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_3000 begin');
@@ -411,6 +432,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_3700
    * @tc.name: bulkTransfer
    * @tc.desc: Negative test: bulk transfer, parameter endpoint type error
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_3700', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_3700 begin');
@@ -454,6 +478,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_3800
    * @tc.name: bulkTransfer
    * @tc.desc: Negative test: bulk transfer, parameter Uint8Array type error
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_3800', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_3800 begin');
@@ -495,6 +522,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_4100
    * @tc.name: bulkTransfer
    * @tc.desc: Negative test: bulk transfer, parameter timeout type error
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_4100', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_4100 begin');
@@ -540,6 +570,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_2400
    * @tc.name: claimInterface
    * @tc.desc: Negative test: Get interface, USBInterface afferent error id
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_2400', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_2400 begin');
@@ -580,6 +613,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_2500
    * @tc.name: claimInterface
    * @tc.desc: Negative test: Get interface, USBInterface afferent error protocol
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_2500', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_2500 begin');
@@ -620,6 +656,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_2600
    * @tc.name: claimInterface
    * @tc.desc: Negative test: Get interface, USBInterface afferent error clazz
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_2600', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_2600 begin');
@@ -660,6 +699,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_2700
    * @tc.name: claimInterface
    * @tc.desc: Negative test: Get interface, USBInterface afferent error name
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_2700', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_2700 begin');
@@ -700,6 +742,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_2800
    * @tc.name: claimInterface
    * @tc.desc: Negative test: Get interface, USBInterface afferent error subClass
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_2800', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_2800 begin');
@@ -740,6 +785,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_1000
    * @tc.name: claimInterface
    * @tc.desc: Negative test: Get interface, parameter number exception, input a parameter
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_1000', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_1000 begin');
@@ -773,6 +821,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_2500
    * @tc.name: claimInterface
    * @tc.desc: Negative test: Get interface, parameter number exception, necessary parameters not input
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_2500', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_2500 begin');
@@ -806,6 +857,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_3100
    * @tc.name: claimInterface
    * @tc.desc: Negative test: Get interface, parameter pipe type error
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_3100', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_3100 begin');
@@ -845,6 +899,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_3900
    * @tc.name: claimInterface
    * @tc.desc: Negative test: Get interface, parameter iface type error
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_3900', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_3900 begin');
@@ -875,6 +932,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_1600
    * @tc.name: releaseInterface
    * @tc.desc: Negative test: release Interface, error Interface id
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_1600', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_1600 begin');
@@ -915,6 +975,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_1700
    * @tc.name: releaseInterface
    * @tc.desc: Negative test: release Interface, error Interface name
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_1700', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_1700 begin');
@@ -955,6 +1018,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_1800
    * @tc.name: releaseInterface
    * @tc.desc: Negative test: release Interface, error Interface clazz
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_1800', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_1800 begin');
@@ -995,6 +1061,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_1900
    * @tc.name: releaseInterface
    * @tc.desc: Negative test: release Interface, error Interface protocol
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_1900', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_1900 begin');
@@ -1035,6 +1104,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_2000
    * @tc.name: releaseInterface
    * @tc.desc: Negative test: release Interface, error Interface subClass
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_2000', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_2000 begin');
@@ -1075,6 +1147,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_1400
    * @tc.name: releaseInterface
    * @tc.desc: Negative test: release Interface, parameter number exception, input a parameter
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_1400', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_1400 begin');
@@ -1109,6 +1184,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_2600
    * @tc.name: releaseInterface
    * @tc.desc: Negative test: release Interface, parameter number exception, necessary parameters not input
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_2600', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_2600 begin');
@@ -1142,6 +1220,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_3300
    * @tc.name: releaseInterface
    * @tc.desc: Negative test: release Interface, parameter pipe type error
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
    it('SUB_USB_HostManager_JS_ErrCode_3300', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_3300 begin');
@@ -1176,6 +1257,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_1500
    * @tc.name: releaseInterface
    * @tc.desc: Negative test: release Interface, parameter iface type error
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_1500', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_1500 begin');
@@ -1201,6 +1285,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_4200
    * @tc.name: setInterface
    * @tc.desc: Negative test: Set device interface, Interface protocol error
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_4200', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_4200 begin');
@@ -1232,6 +1319,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_4300
    * @tc.name: setInterface
    * @tc.desc: Negative test: Set device interface, Interface clazz error
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_4300', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_4300 begin');
@@ -1263,6 +1353,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_4400
    * @tc.name: setInterface
    * @tc.desc: Negative test: Set device interface, Interface subClass error
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_4400', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_4400 begin');
@@ -1295,6 +1388,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_4500
    * @tc.name: setInterface
    * @tc.desc: Negative test: Set device interface, Interface name error
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_4500', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_4400 begin');
@@ -1326,6 +1422,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_1200
    * @tc.name: setInterface
    * @tc.desc: Negative test: Set device interface, parameter number exception, input a parameter
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_1200', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_1200 begin');
@@ -1355,6 +1454,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_2700
    * @tc.name: setInterface
    * @tc.desc: Negative test: Set device interface, parameter number exception, necessary parameters not input
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_2700', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_2700 begin');
@@ -1383,6 +1485,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_3400
    * @tc.name: setInterface
    * @tc.desc: Negative test: Set device interface, parameter pipe type error
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
    it('SUB_USB_HostManager_JS_ErrCode_3400', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_3400 begin');
@@ -1422,6 +1527,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_4300
    * @tc.name: setInterface
    * @tc.desc: Negative test: Set device interface, parameter iface type error
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_4300', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_4300 begin');
@@ -1452,6 +1560,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_3700
    * @tc.name: setConfiguration
    * @tc.desc: Negative test: Set Device Configuration, USBConfig name error
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_3700', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_3700 begin');
@@ -1481,6 +1592,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_3800
    * @tc.name: setConfiguration
    * @tc.desc: Negative test: Set Device Configuration, USBConfig name, id error
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_3800', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_3800 begin');
@@ -1511,6 +1625,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_3900
    * @tc.name: setConfiguration
    * @tc.desc: Negative test: Set Device Configuration, USBConfig attributes error
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_3900', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_3900 begin');
@@ -1540,6 +1657,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_4000
    * @tc.name: setConfiguration
    * @tc.desc: Negative test: Set Device Configuration, USBConfig name interval(1-16) error
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_4000', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_4000 begin');
@@ -1570,6 +1690,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_1100
    * @tc.name: setConfiguration
    * @tc.desc: Negative test: Set Device Configuration, parameter number exception, input a parameter
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_1100', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_1100 begin');
@@ -1598,6 +1721,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_2800
    * @tc.name: setConfiguration
    * @tc.desc: Negative test: Set Device Configuration, parameter number exception, necessary parameters not input
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_2800', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_2800 begin');
@@ -1626,6 +1752,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_3500
    * @tc.name: setConfiguration
    * @tc.desc: Negative test: Set Device Configuration, parameter pipe type error
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
    it('SUB_USB_HostManager_JS_ErrCode_3500', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_3500 begin');
@@ -1660,6 +1789,9 @@ describe('UsbDevicePipeJsFunctionsTestEx', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_4200
    * @tc.name: setConfiguration
    * @tc.desc: Negative test: Set Device Configuration, parameter config type error
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_4200', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_4200 begin');

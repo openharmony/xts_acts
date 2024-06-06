@@ -70,6 +70,9 @@ describe('UsbCoreJsFunctionsTest', function () {
    * @tc.name: getDevices
    * @tc.desc: Positive test: Get device list
    * @tc.desc: 【C-ALL-HARDWARE-0502】必须支持连接标准 USB 外围设备
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Func_0500', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_Func_0500 begin');
@@ -94,6 +97,9 @@ describe('UsbCoreJsFunctionsTest', function () {
    * @tc.number: SUB_USB_HostManager_JS_Func_0900
    * @tc.name: hasRight
    * @tc.desc: Positive test: Permission query
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Func_0900', 0, function () {
     console.info('usb has_right_01 begin');
@@ -121,6 +127,9 @@ describe('UsbCoreJsFunctionsTest', function () {
    * @tc.number: SUB_USB_HostManager_JS_Func_0800
    * @tc.name: requestRight
    * @tc.desc: Positive test: Request permission
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Func_0800', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_Func_0800 begin');
@@ -151,6 +160,9 @@ describe('UsbCoreJsFunctionsTest', function () {
    * @tc.number: SUB_USB_HostManager_JS_Func_1200
    * @tc.name: removeRight
    * @tc.desc: Positive test: Remove Permissions
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Func_1200', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_Func_1200 begin');
@@ -182,6 +194,9 @@ describe('UsbCoreJsFunctionsTest', function () {
    * @tc.number: SUB_USB_HostManager_JS_Func_0100
    * @tc.name: connectDevice
    * @tc.desc: Positive test: open device
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Func_0100', 0, async function () {
     console.info('usb SUB_USB_HostManager_JS_Func_0100 begin');
@@ -215,6 +230,9 @@ describe('UsbCoreJsFunctionsTest', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_1300
    * @tc.name: closePipe
    * @tc.desc: Negative test: close device, busNum error
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_1300', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_1300 begin');
@@ -242,6 +260,9 @@ describe('UsbCoreJsFunctionsTest', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_1400
    * @tc.name: closePipe
    * @tc.desc: Negative test: close device, devAddress error
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_1400', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_1400 begin');
@@ -268,6 +289,9 @@ describe('UsbCoreJsFunctionsTest', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_1500
    * @tc.name: closePipe
    * @tc.desc: Negative test: close device, devAddress && busNum error
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_1500', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_1500 begin');
@@ -295,6 +319,9 @@ describe('UsbCoreJsFunctionsTest', function () {
    * @tc.number: SUB_USB_HostManager_JS_Func_0300
    * @tc.name: closePipe
    * @tc.desc: Positive test: close device
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Func_0300', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_Func_0300 begin');
@@ -321,6 +348,9 @@ describe('UsbCoreJsFunctionsTest', function () {
    * @tc.number: SUB_USB_HostManager_JS_Func_0700
    * @tc.name: getRawDescriptor
    * @tc.desc: Positive test: Get the original USB descriptor
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Func_0700', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_Func_0700 begin');
@@ -350,6 +380,9 @@ describe('UsbCoreJsFunctionsTest', function () {
    * @tc.number: SUB_USB_HostManager_JS_Func_0600
    * @tc.name: getFileDescriptor
    * @tc.desc: Positive test: Get file descriptor
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Func_0600', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_Func_0600 begin');
@@ -378,6 +411,9 @@ describe('UsbCoreJsFunctionsTest', function () {
    * @tc.number: SUB_USB_HostManager_JS_Compatibility_2900
    * @tc.name: getFileDescriptor
    * @tc.desc: Negative test: Get file descriptor, error busNum=512
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_Compatibility_2900', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_2900 begin');
@@ -402,11 +438,14 @@ describe('UsbCoreJsFunctionsTest', function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_2900 :  PASS');
   })
 
-   /**
-    * @tc.number: SUB_USB_HostManager_JS_Compatibility_3000
-    * @tc.name: getFileDescriptor
-    * @tc.desc: Negative test: Get file descriptor,error devAddress=512
-    */
+  /**
+   * @tc.number: SUB_USB_HostManager_JS_Compatibility_3000
+   * @tc.name: getFileDescriptor
+   * @tc.desc: Negative test: Get file descriptor,error devAddress=512
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
   it('SUB_USB_HostManager_JS_Compatibility_3000', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_3000 begin');
     if (portCurrentMode == 1) {
@@ -431,10 +470,13 @@ describe('UsbCoreJsFunctionsTest', function () {
   })
 
   /**
-  * @tc.number: SUB_USB_HostManager_JS_Compatibility_3100
-  * @tc.name: getFileDescriptor
-  * @tc.desc: Negative test: Get file descriptor,error busNum=512 && devAddress=512
-  */
+   * @tc.number: SUB_USB_HostManager_JS_Compatibility_3100
+   * @tc.name: getFileDescriptor
+   * @tc.desc: Negative test: Get file descriptor,error busNum=512 && devAddress=512
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
   it('SUB_USB_HostManager_JS_Compatibility_3100', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_Compatibility_3100 begin');
     if (portCurrentMode == 1) {
@@ -462,6 +504,9 @@ describe('UsbCoreJsFunctionsTest', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_0700
    * @tc.name: getFileDescriptor
    * @tc.desc: Negative test: Get file descriptor, parameter type error
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_0700', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_0700 begin');
@@ -491,6 +536,9 @@ describe('UsbCoreJsFunctionsTest', function () {
    * @tc.number: SUB_USB_HostManager_JS_ErrCode_1600
    * @tc.name: getFileDescriptor
    * @tc.desc: Negative test: Get file descriptor, parameter number exception, necessary parameters not input
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
    */
   it('SUB_USB_HostManager_JS_ErrCode_1600', 0, function () {
     console.info('usb SUB_USB_HostManager_JS_ErrCode_1600 begin');
