@@ -632,7 +632,7 @@ export default function JsvmJsunit() {
     });
      /**
      * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0050
-     * @tc.name      JsvmTest0500
+     * @tc.name      JsvmTest050
      * @tc.desc      JsvmTest
      */
     it('JsvmTest050', 0, async function (done) {
@@ -5950,6 +5950,18 @@ instanceOf(obj, Person);
         let rst = napitest.testJswmInterface();
         console.info('JsvmTest0437 testString result is:' + JSON.stringify(rst));
         expect(rst).assertEqual(true);
+      done();
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0433
+     * @tc.name      JsvmTest0433
+     * @tc.desc      JsvmTest
+     */
+    it('JsvmTest0433', 0, async function (done) {
+      console.info('JsvmTest0433 START');
+      value = napitest.testValueOperation5()
+      console.info('JsvmTest0433 testString result is:'+ value + "--" + JSON.stringify(value) );
+      expect(value).assertEqual(0);
       done();
     });
   });
