@@ -4754,3 +4754,14 @@ export const TestArkUIAddApi004: () => number;
 export const TestArkUIAddApi005: () => number;
 
 export const TestArkUIAddApi006: () => number;
+
+export const testAnimation_001: () => number;
+export const testAnimation_002: () => number;
+export const testAnimation_003: () => number;
+export const testAnimation_004: () => number;
+export const testAnimation_005: () => number;
+export const testWaterFlower_001: () => number;
+export const testWaterFlower_002: () => number;
+export const testWaterFlower_003: () => number;
+export const testWaterFlower_004: () => number;
+export const testWaterFlower_005: () => number;
