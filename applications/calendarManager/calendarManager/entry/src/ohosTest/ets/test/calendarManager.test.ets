@@ -192,9 +192,8 @@ export default function CalendarManagerTest() {
     * @tc.level   Level 2
     */
     it("SUB_Application_CalendarManagerApi_test_0400", 0, () => {
-      //expect(calendarManager.AttendeeRole.ORGANIZER == 'organizer').assertTrue();
-      //expect(calendarManager.AttendeeRole.PARTICIPANT == 'participant').assertTrue();
-      expect(calendarManager.ServiceType.MEETING == 'Meeting').assertTrue();
+      expect(calendarManager.AttendeeRole.ORGANIZER == 'organizer').assertTrue();
+      expect(calendarManager.AttendeeRole.PARTICIPANT == 'participant').assertTrue();
     });
 
     /*
@@ -834,17 +833,17 @@ export default function CalendarManagerTest() {
           {
             name: '小王',
             email: 'peter@yuanha.com',
-           // role: calendarManager.AttendeeRole.ORGANIZER
+            role: calendarManager.AttendeeRole.ORGANIZER
           },
           {
             name: '小李',
             email: 'peter@yuanha.com',
-          //  role: calendarManager.AttendeeRole.PARTICIPANT
+            role: calendarManager.AttendeeRole.PARTICIPANT
           },
           {
             name: '老李',
             email: 'peter@yuanha.com',
-          //  role: calendarManager.AttendeeRole.PARTICIPANT
+            role: calendarManager.AttendeeRole.PARTICIPANT
           }
         ],
         timeZone: '',
