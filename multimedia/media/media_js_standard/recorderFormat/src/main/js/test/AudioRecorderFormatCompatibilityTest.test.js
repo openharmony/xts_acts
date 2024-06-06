@@ -94,7 +94,7 @@ describe('AudioRecorderFormatCompatibilityTest', function () {
         fileAsset = file;
         fdNumber = file.fd;
         fdPath = "fd://" + fdNumber.toString();
-        console.info('case getFd number is: ' + fdObject.fdNumber);
+        console.info('case getFd number is: ' + fdNumber);
     }
 
     async function closeFd() {
