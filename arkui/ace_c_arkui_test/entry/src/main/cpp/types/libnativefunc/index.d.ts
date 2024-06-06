@@ -64,6 +64,7 @@ export const testButtonFontWeight014: () => number;
 export const testButtonFontWeight015: () => number;
 
 export const testButtonFontWeight016: () => number;
+export const textTextStyleGraphic001: () => number;
 
 export const testCheckboxMark001: () => number;
 
