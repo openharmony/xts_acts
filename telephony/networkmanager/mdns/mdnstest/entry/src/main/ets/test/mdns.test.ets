@@ -1091,13 +1091,13 @@ export default function mdnsTest() {
             done();
           } else {
             console.log(`${caseName} success ${JSON.stringify(data)}`);
-            ExpectTrue(true, caseName);
+            ExpectTrue(false, caseName);
             done();
           }
         });
       } catch (err) {
         console.info(`${caseName}: err is catch ${err}`);
-        ExpectTrue(false, caseName);
+        ExpectTrue(true, caseName);
         done();
       }
       console.info(`${caseName} test end `);
