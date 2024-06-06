@@ -156,7 +156,7 @@ export default function Component3DTest() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Component3D_1');
       let obj = JSON.parse(strJson);
-      expect(obj.$attrs.shader).assertEqual('OhosRawFile://assets/app/shaders');
+      expect(obj.$attrs.shader).assertEqual('OhosRawFile://assets/app/shaders/shader/London.shader');
       console.info('[Component3DTest_0700] END');
       done();
     });

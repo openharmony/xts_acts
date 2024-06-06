@@ -23,7 +23,7 @@ struct Component3D_1 {
         Text('GLTF Example')
         Component3D( this.scene )
           .id('Component3D_1')
-          .shader($rawfile('assets/app/shaders'))
+          .shader($rawfile('assets/app/shaders/shader/London.shader'))
           .shaderImageTexture($rawfile('assets/London.jpg'))
           .customRender($rawfile('assets/app/rendernodegraphs/London.rng'), true)
           .shaderInputBuffer([1.0,2.0])
