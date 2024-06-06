@@ -16,6 +16,7 @@
 import Ability from '@ohos.app.ability.UIAbility'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import { BusinessError } from '@ohos.base';
+import sendableResourceManager from '@ohos.sendableResourceManager';
 
 export default function globalStageTest() {
   describe("globalStageTest", () => {
@@ -972,6 +973,109 @@ export default function globalStageTest() {
         console.log('SUB_GLOBAL_GetSymbol_0130_errorMessage' + e.message);
       }
       done();
+    })
+
+    it('SUB_GOLBAL_REMSGR_isRawDir_0010',0,async ()=>{
+      try {
+        let value = globalThis.yq.resourceManager.isRawDir('rawfiletest.xml');
+        console.log('SUB_GOLBAL_REMSGR_isRawDir_0010_value'+value);
+        expect(value==false).assertTrue();
+      }catch (e){
+        console.log('SUB_GOLBAL_REMSGR_isRawDir_0010_errorCode'+e.code);
+        console.log('SUB_GOLBAL_REMSGR_isRawDir_0010_errorMessage'+e.message);
+      }
+    })
+
+    it('SUB_GOLBAL_REMSGR_getOverrideConfiguration_0010',0,async ()=>{
+      try {
+        let value = globalThis.yq.resourceManager.getOverrideConfiguration();
+        console.log('SUB_GOLBAL_REMSGR_getOverrideConfiguration_0010_value'+value.mnc);
+        expect(value.mnc==0).assertTrue();
+      }catch (e){
+        console.log('SUB_GOLBAL_REMSGR_getOverrideConfiguration_0010_errorCode'+e.code);
+        console.log('SUB_GOLBAL_REMSGR_getOverrideConfiguration_0010_errorMessage'+e.message);
+      }
+    })
+
+    it('SUB_GOLBAL_REMSGR_getOverrideResourceManager_0010',0,async ()=>{
+      try {
+        let completeOverrideConfiguration:resourceManager.Configuration= {
+          mcc : 460,
+          mnc : 101,
+          locale : 'en-US',
+          direction: resourceManager.Direction.DIRECTION_HORIZONTAL,
+          deviceType:resourceManager.DeviceType.DEVICE_TYPE_PHONE,
+          colorMode:1,
+          screenDensity:resourceManager.ScreenDensity.SCREEN_SDPI
+        }
+        let value = globalThis.yq.resourceManager.getOverrideResourceManager(completeOverrideConfiguration);
+        console.log('SUB_GOLBAL_REMSGR_getOverrideResourceManager_0010_value'+value.getOverrideConfiguration().mcc);
+        expect(value.getOverrideConfiguration().mcc==460).assertTrue();
+      }catch (e){
+        console.log('SUB_GOLBAL_REMSGR_getOverrideResourceManager_0010_errorCode'+e.code);
+        console.log('SUB_GOLBAL_REMSGR_getOverrideResourceManager_0010_errorMessage'+e.message);
+      }
+    })
+
+    it('SUB_GOLBAL_REMSGR_updateOverrideConfiguration_0010',0,async ()=>{
+      try {
+        let completeOverrideConfiguration:resourceManager.Configuration= {
+          mcc : 460,
+          mnc : 101,
+          locale : 'en-US',
+          direction: resourceManager.Direction.DIRECTION_HORIZONTAL,
+          deviceType:resourceManager.DeviceType.DEVICE_TYPE_PHONE,
+          colorMode:1,
+          screenDensity:resourceManager.ScreenDensity.SCREEN_SDPI
+        }
+        let value = globalThis.yq.resourceManager.getOverrideResourceManager();
+        console.log('SUB_GOLBAL_REMSGR_updateOverrideConfiguration_0010_value-before'+value.getOverrideConfiguration().mcc);
+        expect(value.getOverrideConfiguration().mcc==0).assertTrue();
+        value.updateOverrideConfiguration(completeOverrideConfiguration);
+        console.log('SUB_GOLBAL_REMSGR_updateOverrideConfiguration_0010_value-after'+value.getOverrideConfiguration().mcc);
+        expect(value.getOverrideConfiguration().mcc==460).assertTrue();
+      }catch (e){
+        console.log('SUB_GOLBAL_REMSGR_updateOverrideConfiguration_0010_errorCode'+e.code);
+        console.log('SUB_GOLBAL_REMSGR_updateOverrideConfiguration_0010_errorMessage'+e.message);
+      }
+    })
+
+    it('SUB_GOLBAL_REMSGR_resourceToSendableResource_0010',0,async ()=>{
+      try {
+        let resource:resourceManager.Resource= {
+          bundleName: 'com.example.myapplication',
+          moduleName: 'entry',
+          id: $r('app.string.module_desc').id,
+          params:["sdfd",123],
+          type:10001,
+        }
+        let value = sendableResourceManager.resourceToSendableResource(resource);
+        console.log('SUB_GOLBAL_REMSGR_resourceToSendableResource_0010_value'+value.type);
+        expect(value.type==10001).assertTrue();
+      }catch (e){
+        console.log('SUB_GOLBAL_REMSGR_resourceToSendableResource_0010_errorCode'+e.code);
+        console.log('SUB_GOLBAL_REMSGR_resourceToSendableResource_0010_errorMessage'+e.message);
+      }
+    })
+
+    it('SUB_GOLBAL_REMSGR_sendableResourceToResource_0010',0,async ()=>{
+      try {
+        let resource:resourceManager.Resource= {
+          bundleName: 'com.example.myapplication',
+          moduleName: 'entry',
+          id: $r('app.string.module_desc').id,
+          params:["sdfd",123],
+          type:10001,
+        }
+        let sendableresource= sendableResourceManager.resourceToSendableResource(resource);
+        let value = sendableResourceManager.sendableResourceToResource(sendableresource);
+        value.type=10002
+        console.log('SUB_GOLBAL_REMSGR_sendableResourceToResource_0010_value'+value.type);
+        expect(value.type==10002).assertTrue();
+      }catch (e){
+        console.log('SUB_GOLBAL_REMSGR_sendableResourceToResource_0010_errorCode'+e.code);
+        console.log('SUB_GOLBAL_REMSGR_sendableResourceToResource_0010_errorMessage'+e.message);
+      }
     })
 
     console.log('*************end globalStageTest*************');
