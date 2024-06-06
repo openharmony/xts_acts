@@ -1443,13 +1443,13 @@ export default function CalendarManagerTest() {
     });
 
     /*
-  * @tc.number  SUB_Application_CalendarManagerApi_EditEvent_Promise_0100
-  * @tc.name    Create a single event,invoking this interface will open the event creation page.
-  * @tc.desc    Function test
-  * @tc.size    SmallTest
-  * @tc.type    User
-  * @tc.level   Level 2
-  */
+    * @tc.number  SUB_Application_CalendarManagerApi_EditEvent_Promise_0100
+    * @tc.name    Create a single event,invoking this interface will open the event creation page.
+    * @tc.desc    Function test
+    * @tc.size    SmallTest
+    * @tc.type    User
+    * @tc.level   Level 2
+    */
     it("SUB_Application_CalendarManagerApi_EditEvent_Promise_0100", 0, async (done: Function) => {
       let CaseName = 'SUB_Application_CalendarManagerApi_EditEvent_Promise_0100';
       let TimeZone = '';
