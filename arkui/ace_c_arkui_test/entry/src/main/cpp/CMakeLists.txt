@@ -85,6 +85,7 @@ add_library(nativerender SHARED
     textinput/textinput_onsubmit_test.cpp
     textinput/textinput_oncut_test.cpp
     textinput/textinput_onpaste_test.cpp
+    arkApi/arkApi.cpp
 )
 
 add_library(nativefunc SHARED
