@@ -1562,6 +1562,18 @@ export const testListBlur001: () => number;
 
 export const testListBlur002: () => number;
 
+export const testListSwipeActionCreate: () => number;
+
+export const testListSwipeActionSetActionAreaDistance001: () => number;
+
+export const testListSwipeActionOptionCreate: () => number;
+
+export const testListSwipeActionItem006: () => number;
+
+export const testListSwipeActionItem007: () => number;
+
+export const testListSwipeActionOptionEdgeEffect: () => number;
+
 export const testListBorderColor001: () => number;
 
 export const testListBorderColor002: () => number;

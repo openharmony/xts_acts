@@ -221,6 +221,7 @@
 #include "list/list_sticky_test.cpp"
 #include "list/list_translate_test.cpp"
 #include "list/list_width_test.cpp"
+#include "list/list_swipeActionItem_test.cpp"
 #include "listitem/listitem_backgroundcolor_test.cpp"
 #include "listitem/listitem_blur_test.cpp"
 #include "listitem/listitem_bordercolor_test.cpp"
@@ -1715,6 +1716,17 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr},
         {"testListBackgroundColor001", nullptr, TestListBackgroundColor001, nullptr, nullptr, nullptr, napi_default,
          nullptr},
+        {"testListSwipeActionCreate", nullptr, listSwipeActionCreate, nullptr, nullptr, nullptr, napi_default,nullptr},
+        {"testListSwipeActionSetActionAreaDistance001", nullptr, listSwipeActionSetActionAreaDistance001, nullptr, nullptr, nullptr, napi_default,
+        nullptr},
+        {"testListSwipeActionOptionCreate", nullptr, listSwipeActionOptionCreate, nullptr, nullptr, nullptr, napi_default,
+        nullptr},
+        {"testListSwipeActionItem006", nullptr, listSwipeActionItem006, nullptr, nullptr, nullptr, napi_default,
+        nullptr},
+        {"testListSwipeActionItem007", nullptr, listSwipeActionItem007, nullptr, nullptr, nullptr, napi_default,
+        nullptr},
+        {"testListSwipeActionOptionEdgeEffect", nullptr, listSwipeActionOptionEdgeEffect, nullptr, nullptr, nullptr, napi_default,
+        nullptr},
         {"testListBlur001", nullptr, TestListBlur001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testListBlur002", nullptr, TestListBlur002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testListBorderColor001", nullptr, TestListBorderColor001, nullptr, nullptr, nullptr, napi_default, nullptr},

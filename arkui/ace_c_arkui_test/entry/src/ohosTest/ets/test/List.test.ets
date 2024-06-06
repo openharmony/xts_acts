@@ -212,6 +212,7 @@ import listListDirectionTest from './list/ListListDirectionTest.test'
 import listLinearGradientTest from './list/ListLinearGradientTest.test'
 import listScrollBarTest from './list/ListScrollBarTest.test'
 import listEdgeEffectTest from './list/ListEdgeEffectTest.test'
+import ListSwipeActionItemTest from './list/ListSwipeActionItemTest.test'
 import commonAttrsClipTest from './commonattrs/CommonAttrsClipTest.test'
 import commonAttrsLinearGradientTest from './commonattrs/CommonAttrsLinearGradientTest.test'
 import commonAttrsShadowTest from './commonattrs/CommonAttrsShadowTest.test'
@@ -1025,6 +1026,7 @@ export default function testsuite() {
   imageOnErrorTest()
   listHitTestBehaviorTest()
   listItemHitTestBehaviorTest()
+  ListSwipeActionItemTest()
   toggleOnChangeTest()
   toggleEnabledTest()
   scrollNestedScrollTest()
