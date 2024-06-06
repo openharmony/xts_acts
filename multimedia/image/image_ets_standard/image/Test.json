@@ -4,7 +4,7 @@
         "type": "OHJSUnitTest",
         "test-timeout": "300000",
         "bundle-name": "ohos.acts.multimedia.image.image",
-        "module-name": "entry",
+        "module-name": "entry_test",
         "shell-timeout": "300000",
         "testcase-timeout": "180000"
     },
@@ -19,16 +19,16 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.image.image/haps/entry/files/",
-                "chmod -R 666 /data/app/el2/100/base/ohos.acts.multimedia.image.image/haps/entry/files/*"
+                "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.image.image/haps/entry_test/files/",
+                "chmod -R 666 /data/app/el2/100/base/ohos.acts.multimedia.image.image/haps/entry_test/files/*"
             ]
         },
         {
             "type": "PushKit",
             "pre-push": [],
             "push": [
-                "./resource/image/test_tree_400.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.image/haps/entry/files",
-                "./resource/image/test_tree_411.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.image/haps/entry/files"
+                "./resource/image/CUVAHdr.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.image/haps/entry_test/files",
+                "./resource/image/JPEGVividSingle.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.image/haps/entry_test/files"
             ]
         }
     ]
