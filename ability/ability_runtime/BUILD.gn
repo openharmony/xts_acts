@@ -74,6 +74,7 @@ group("ability_runtime") {
       "amsuiextensionexireason:amsuiextensionexireason",
       "apicover:apicover",
       "apitest:ActsApiTest",
+      "appclone:appclonetest",
       "capichildprocess:ActsCapiChildProcessTest",
       "context:context",
       "fa:fa",
