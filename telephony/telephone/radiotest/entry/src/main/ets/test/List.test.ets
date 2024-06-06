@@ -14,7 +14,18 @@
  */
 
 import telephonyRadioPublicTest from './TelephonyRadioPublic.test';
+import telephonyRadioPublicNeedCardTest from './TelephonyRadioPublic1.test';
+
+import sim from '@ohos.telephony.sim';
+
+let hasSimCard: Boolean = sim.hasSimCardSync(0);
 
 export default function testsuite() {
-  telephonyRadioPublicTest();
+
+  if(hasSimCard){
+    telephonyRadioPublicTest();
+    telephonyRadioPublicNeedCardTest();
+  }else{
+    telephonyRadioPublicTest();
+  }
 }
