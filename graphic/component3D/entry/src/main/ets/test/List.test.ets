@@ -15,5 +15,6 @@
 import Component3DTest from './Component3DTest.test';
 import Component3D1Test from './Component3DTest.test';
 export default function testsuite() {
+  Component3DTest()
   Component3D1Test()
 }
