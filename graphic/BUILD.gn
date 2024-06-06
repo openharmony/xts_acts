@@ -22,6 +22,7 @@ group("graphic") {
       "acts_drawing_native:ActsDrawingNativeTest",
       "acts_graphicXTSDrawing:ActsGraphicXTSDrawingTest",
       "acts_pipwindow:ActsPipWindowTest",
+      "component3D:ActsComponent3DTest",
       "displayManager:ActsDisplayManagerTest",
       "effectKit:ActsEffectKitTest",
       "graphic3D:ActsGraphic3DTest",
