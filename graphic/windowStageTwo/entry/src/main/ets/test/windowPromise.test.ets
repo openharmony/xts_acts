@@ -365,7 +365,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         let grayScale = 0;
         windowClass.setWindowGrayScale(grayScale).then(() => {
           console.info(msgStr + 'Succeeded in setting the grayScale 0.');
-          expect(true), assertTrue();
+          expect(true).assertTrue();
           done();
         }).catch((err) => {
           console.error(msgStr + `Failed to set the grayScale. Cause code: ${err.code}, message: ${err.message}`);
@@ -373,7 +373,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
             console.info(msgStr + '此设备不支持setWindowGrayScale能力.');
             done();
           } else {
-            expect(false), assertTrue();
+            expect(false).assertTrue();
             done();
           }
         });
@@ -399,7 +399,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       try {
         windowClass.setWindowGrayScale(grayScale).then(() => {
           console.info(msgStr + 'Succeeded in setting the grayScale 0.5.');
-          expect(true), assertTrue();
+          expect(true).assertTrue();
           done();
         }).catch((err) => {
           console.error(msgStr + `Failed to set the grayScale. Cause code: ${err.code}, message: ${err.message}`);
@@ -407,7 +407,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
             console.info(msgStr + '此设备不支持setWindowGrayScale能力.');
             done();
           } else {
-            expect(false), assertTrue();
+            expect(false).assertTrue();
             done();
           }
         });
@@ -433,7 +433,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       try {
         windowClass.setWindowGrayScale(grayScale).then(() => {
           console.info(msgStr + 'Succeeded in setting the grayScale 1.');
-          expect(true), assertTrue();
+          expect(true).assertTrue();
           done();
         }).catch((err) => {
           console.error(msgStr + `Failed to set the grayScale. Cause code: ${err.code}, message: ${err.message}`);
@@ -441,7 +441,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
             console.info(msgStr + '此设备不支持setWindowGrayScale能力.');
             done();
           } else {
-            expect(false), assertTrue();
+            expect(false).assertTrue();
             done();
           }
         });
@@ -468,7 +468,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       try {
         windowClass.setWindowGrayScale(grayScale).then(() => {
           console.info(msgStr + 'Succeeded in setting the grayScale -1.');
-          expect(false), assertTrue();
+          expect(false).assertTrue();
           done();
         }).catch((err) => {
           console.error(msgStr + `Failed to set the grayScale. Cause code: ${err.code}, message: ${err.message}`);
@@ -476,7 +476,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
             console.info(msgStr + '此设备不支持setWindowGrayScale能力.');
             done();
           } else {
-            expect(false), assertTrue();
+            expect(false).assertTrue();
             done();
           }
         });
@@ -503,7 +503,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       try {
         windowClass.setWindowGrayScale(grayScale).then(() => {
           console.info(msgStr + 'Succeeded in setting the grayScale 2.');
-          expect(false), assertTrue();
+          expect(false).assertTrue();
           done();
         }).catch((err) => {
           console.error(msgStr + `Failed to set the grayScale. Cause code: ${err.code}, message: ${err.message}`);
@@ -511,7 +511,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
             console.info(msgStr + '此设备不支持setWindowGrayScale能力.');
             done();
           } else {
-            expect(false), assertTrue();
+            expect(false).assertTrue();
             done();
           }
         });
@@ -541,7 +541,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
           console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
           await subWindowClass.setWindowGrayScale(grayScale).then(() => {
             console.info(msgStr + 'Succeeded in setting the grayScale 1.');
-            expect(true), assertTrue();
+            expect(true).assertTrue();
             done();
           }).catch((err) => {
             console.error(msgStr + `Failed to set the grayScale. Cause code: ${err.code}, message: ${err.message}`);
@@ -555,13 +555,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
           });
         }).catch((err) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
-          expect(false), assertTrue();
+          expect(false).assertTrue();
           done();
         });
 
       } catch (error) {
         console.log(msgStr + 'Failed to setWindowGrayScale' + JSON.stringify(error.code) + error.message);
-        expect(false), assertTrue();
+        expect(false).assertTrue();
         done();
       }
     })
@@ -574,6 +574,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
          * @tc.type      : Function
          * @tc.level     : Level 2
          */
+
     it("test_on_windowRectChange", 2, async function (done) {
       let msgStr = "test_on_windowRectChange";
       console.log(msgStr + "begin");

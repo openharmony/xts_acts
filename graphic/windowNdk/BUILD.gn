@@ -1,0 +1,52 @@
+# Copyright (c) 2024 Huawei Device Co., Ltd.
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import("//test/xts/tools/build/suite.gni")
+
+ohos_js_hap_suite("ActsWindowNdkTest") {
+  hap_profile = "entry/src/main/module.json"
+  js_build_mode = "debug"
+  deps = [
+    ":windowNdk_js_assets",
+    ":windowNdk_resources",
+  ]
+  ets2abc = true
+  certificate_profile = "signature/openharmony_sx.p7b"
+  hap_name = "ActsWindowNdkTest"
+  subsystem_name = "window"
+  part_name = "window_manager"
+  shared_libraries = [
+    "entry/src/main/cpp:entry",
+    ":libentry",
+  ]
+}
+ohos_prebuilt_shared_library("libentry") {
+  source = rebase_path(libcxx_ndk_shared_file)
+  subsystem_name = "window"
+  part_name = "napi"
+}
+
+ohos_app_scope("windowNdk_app_profile") {
+  app_profile = "AppScope/app.json"
+  sources = [ "AppScope/resources" ]
+}
+
+ohos_js_assets("windowNdk_js_assets") {
+  source_dir = "entry/src/main/ets"
+}
+
+ohos_resources("windowNdk_resources") {
+  sources = [ "entry/src/main/resources" ]
+  deps = [ ":windowNdk_app_profile" ]
+  hap_profile = "entry/src/main/module.json"
+}
