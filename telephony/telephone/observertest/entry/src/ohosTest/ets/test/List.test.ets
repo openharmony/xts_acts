@@ -18,8 +18,16 @@ import observerManagerTest from './ObserverManager.test';
 import observerManagerCallStateTest from './ObserverManagerCallState.test';
 import observerManagerSimStateTest1 from './ObserverManagerSimState1.test';
 
+import sim from '@ohos.telephony.sim';
+
+let hasSimCard: Boolean = sim.hasSimCardSync(0);
+
 export default function testsuite() {
-  observerManagerCallStateTest();
-  observerManagerSimStateTest1();
-  observerManagerTest();
+  if(hasSimCard){
+    observerManagerCallStateTest();
+    observerManagerSimStateTest1();
+    observerManagerTest();
+  } else {
+    observerManagerSimStateTest1();
+  }
 }
