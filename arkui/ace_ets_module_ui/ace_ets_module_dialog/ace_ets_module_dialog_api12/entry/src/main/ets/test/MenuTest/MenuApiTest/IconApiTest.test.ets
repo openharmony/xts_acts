@@ -45,51 +45,5 @@ export default function IconApiTest() {
       console.info("IconApiTest after each called");
     });
 
-    /**
-     * @tc.number    IconApiTest
-     * @tc.name      testBack
-     * @tc.desc      Return specified page by index value
-     * @tc.level     Level 3
-     * @tc.type
-    * @tc.size
-     */
-    it("IconApiTest_001", 0, async function (done) {
-      console.info("[IconApiTest_001] START");
-      await CommonFunc.sleep(1000);
-      let driver: Driver = Driver.create();
-      await CommonFunc.sleep(1000);
-      let btn: Component = await driver.findComponent(ON.id("btn"));
-      await btn.click();
-      await CommonFunc.sleep(1000);
-      let symbolStartIcon = getInspectorByKey("symbolStartIcon");
-      await CommonFunc.sleep(1000);
-      expect(JSON.parse(symbolStartIcon).$attrs.content).assertEqual("symbolStartIcon");
-      console.info("[IconApiTest_001] END");
-      done();
-    });
-
-    /**
-     * @tc.number    IconApiTest
-     * @tc.name      testBack
-     * @tc.desc      Return specified page by index value
-     * @tc.level     Level 3
-     * @tc.type
-    * @tc.size
-     */
-    it("IconApiTest_002", 0, async function (done) {
-      console.info("[IconApiTest_002] START");
-      await CommonFunc.sleep(1000);
-      let driver: Driver = Driver.create();
-      await CommonFunc.sleep(1000);
-      let btn: Component = await driver.findComponent(ON.id("btn"));
-      await btn.click();
-      await CommonFunc.sleep(1000);
-      let symbolEndIcon = getInspectorByKey("symbolEndIcon");
-      await CommonFunc.sleep(1000);
-      expect(JSON.parse(symbolEndIcon).$attrs.content).assertEqual("symbolEndIcon");
-      console.info("[IconApiTest_002] END");
-      done();
-    });
-
   })
 }

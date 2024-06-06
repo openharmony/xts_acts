@@ -12,37 +12,3 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { SymbolGlyphModifier } from '@ohos.arkui.modifier';
-@Entry
-@Component
-struct MenuExample {
-  @State symbolIconModifier1: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_photo')).fontSize('24vp');
-  @State symbolIconModifier2: SymbolGlyphModifier = new SymbolGlyphModifier($r('sys.symbol.ohos_photo')).fontSize('24vp');
-  @State TextValue: string = 'click for Menu'
-
-  build() {
-    Column() {
-      Text(this.TextValue).id("symbolIconValue")
-    }
-    .id("symbolIcon")
-    .width('100%')
-    .margin({ top: 5 })
-    .bindMenu([
-      {
-        value: 'Menu1',
-        symbolIcon:this.symbolIconModifier1,
-        action: () => {
-          this.TextValue = 'set symbolIcon success'
-          console.info('handle Menu1 select')
-        }
-      },
-      {
-        value: 'Menu2',
-        symbolIcon:this.symbolIconModifier2,
-        action: () => {
-          console.info('handle Menu2 select')
-        }
-      },
-    ])
-  }
-}
