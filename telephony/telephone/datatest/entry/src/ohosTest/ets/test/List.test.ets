@@ -15,7 +15,15 @@
  */
 
 import dataManagerHasCartTest from './DataManagerHasCard.test';
+import dataManagerEmptyTest from './DataManagerEmpty.test';
+import sim from '@ohos.telephony.sim';
+
+let hasSimCard: Boolean = sim.hasSimCardSync(0);
 
 export default function testsuite() {
-  dataManagerHasCartTest();
+  if(hasSimCard){
+    dataManagerHasCartTest();
+  }else{
+    dataManagerEmptyTest();
+  }
 }
