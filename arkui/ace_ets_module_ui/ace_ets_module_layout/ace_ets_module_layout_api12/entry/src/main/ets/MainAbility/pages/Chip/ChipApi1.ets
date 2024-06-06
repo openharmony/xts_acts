@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 import { Chip, ChipSize } from '@ohos.arkui.advanced.Chip';
-import { SymbolGlyphModifier } from '@ohos.arkui.modifier';
 
 @Entry
 @Component
@@ -28,14 +27,6 @@ struct ChipApi1 {
           size: { width: 16, height: 16 },
           fillColor: Color.Blue,
           activatedFillColor: Color.Blue
-        },
-        prefixSymbol: {
-          normal: new SymbolGlyphModifier($r('sys.symbol.ohos_star')).fontSize(16),
-          activated: new SymbolGlyphModifier($r('sys.symbol.ohos_star')).fontSize(16),
-        },
-        suffixSymbol: {
-          normal: new SymbolGlyphModifier($r('sys.symbol.ohos_star')).fontSize(16),
-          activated: new SymbolGlyphModifier($r('sys.symbol.ohos_star')).fontSize(16),
         },
         label: {
           text: "操作块",
