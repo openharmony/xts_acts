@@ -37,7 +37,7 @@ static napi_value TextTextStyleGraphic001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem texContent = {.string = content};
     nodeAPI->setAttribute(textStyleGrap, NODE_WIDTH, &texContent);
     OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
-    OH_Drawing_SetTypographyTextMaxLines(typoStyle, 5);
+    OH_Drawing_SetTypographyTextMaxLines(typoStyle, PARAM_5);
     ArkUI_StyledString *styledString = OH_ArkUI_StyledString_Create(typoStyle, OH_Drawing_CreateFontCollection());
     
     OH_Drawing_TextStyle *styled1 = OH_Drawing_CreateTextStyle();
