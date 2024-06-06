@@ -60,7 +60,7 @@ export default function onSelectionChange5() {
       await CommonFunc.sleep(300);
 
       let richEditor = await driver.findComponent(ON.id('onSelectionChange5_RichEditor'));
-      await richEditor.longClick();
+      await richEditor.doubleClick();
       await CommonFunc.sleep(1000);
       let Select  = await driver.findComponent(ON.text('全选'))
       await Select .click()
@@ -90,7 +90,7 @@ export default function onSelectionChange5() {
       await CommonFunc.sleep(2500);
 
       let richEditor2 = await driver.findComponent(ON.id('onSelectionChange5_RichEditor'));
-      await richEditor2.longClick();
+      await richEditor2.doubleClick();
       await CommonFunc.sleep(1000);
       let paste = await driver.findComponent(ON.text('粘贴'))
       await paste.click()
