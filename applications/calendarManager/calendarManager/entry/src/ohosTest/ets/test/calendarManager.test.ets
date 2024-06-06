@@ -37,12 +37,16 @@ interface locationObj {
 
 interface attendeeObj {
   name: string,
-  email: string
+  email: string,
+  role?: calendarManager.AttendeeRole
 }
 
 interface recurrenceRuleObj {
   recurrenceFrequency: calendarManager.RecurrenceFrequency,
-  expire: number
+  expire?: number,
+  count?: number,
+  interval?: number,
+  excludedDates?: number[]
 }
 
 interface serviceObj {
