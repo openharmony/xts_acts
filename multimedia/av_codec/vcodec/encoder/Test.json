@@ -12,16 +12,19 @@
             "type": "PushKit",
             "pre-push" : [
                 "mount -o rw,remount /",
+                "mkdir -p /data/test/media",
                 "mkdir -p /data/local/tmp/"
             ],
             "push": [
-              "ActsEncoderTest->/data/local/tmp/ActsEncoderTest"
+              "ActsEncoderTest->/data/local/tmp/ActsEncoderTest",
+              "./resource/media/codec/video_encoder/. ->/data/test/media/"
             ]
         },
         {
             "type": "ShellKit",
             "run-command": [
                 "hilog -Q pidoff",
+                "restorecon /data/test/media",
                 "chmod 777 -R /data/local/tmp"
             ]
         }

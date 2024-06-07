@@ -12,16 +12,20 @@
             "type": "PushKit",
             "pre-push" : [
                 "mount -o rw,remount /",
+                "mkdir -p /data/test/media/audio/",
                 "mkdir -p /data/local/tmp/"
             ],
             "push": [
-              "ActsDemuxerTest->/data/local/tmp/ActsDemuxerTest"
+              "ActsDemuxerTest->/data/local/tmp/ActsDemuxerTest",
+              "./resource/media/codec/demuxer/. ->/data/test/media/",
+              "./resource/media/codec/demuxer/audio/. ->/data/test/media/audio/"
             ]
         },
         {
             "type": "ShellKit",
             "run-command": [
                 "hilog -Q pidoff",
+                "restorecon /data/test/media",
                 "chmod 777 -R /data/local/tmp"
             ]
         }

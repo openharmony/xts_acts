@@ -21,8 +21,6 @@ encoder_moduletest_native_include_dirs = [
   "./include",
   "$MEDIA_ROOT_DIR/../../graphic/graphic_2d/interfaces/inner_api",
   "$MEDIA_ROOT_DIR/interfaces/kits/c",
-
-  #"$MEDIA_ROOT_DIR/interfaces/inner_api/native",
   "$MEDIA_ROOT_DIR/../../../third_party/openssl/ohos_lite/include",
 ]
 
@@ -70,7 +68,6 @@ ohos_moduletest_suite("ActsEncoderTest") {
   }
 
   deps = [
-    #"$MEDIA_ROOT_DIR/interfaces/inner_api/native:av_codec_client",
     "$MEDIA_ROOT_DIR/interfaces/kits/c:native_media_codecbase",
     "$MEDIA_ROOT_DIR/interfaces/kits/c:native_media_venc",
   ]
@@ -86,6 +83,6 @@ ohos_moduletest_suite("ActsEncoderTest") {
     "window_manager:libwm",
   ]
 
-  resource_config_file =
-      "$MEDIA_ROOT_DIR/test/moduletest/resources/ohos_test.xml"
+  part_name = "av_codec"
+  subsystem_name = "multimedia"
 }

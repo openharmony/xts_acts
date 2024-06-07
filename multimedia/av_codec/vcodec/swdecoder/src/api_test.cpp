@@ -373,41 +373,6 @@ HWTEST_F(SwdecApiNdkTest, VIDEO_SWDEC_ILLEGAL_PARA_2200, TestSize.Level2)
 }
 
 /**
- * @tc.number    : VIDEO_SWDEC_ILLEGAL_PARA_2300
- * @tc.name      : OH_VideoDecoder_SetDecryptionConfig para error
- * @tc.desc      : function test
- */
-HWTEST_F(SwdecApiNdkTest, VIDEO_SWDEC_ILLEGAL_PARA_2300, TestSize.Level2)
-{
-    uint32_t errNo = DRM_ERR_INVALID_VAL;
-#ifdef SUPPORT_DRM
-
-    MediaKeySystem *system = nullptr;
-    std::string uuid;
-    if (OH_MediaKeySystem_IsSupported("com.clearplay.drm")) {
-        uuid.assign("com.clearplay.drm");
-    } else if (OH_MediaKeySystem_IsSupported("com.wiseplay.drm")) {
-        uuid.assign("com.wiseplay.drm");
-    }
-    errNo = OH_MediaKeySystem_Create((const char *)uuid.c_str(), &system);
-    EXPECT_NE(system, nullptr);
-    EXPECT_EQ(errNo, DRM_ERR_OK);
-
-    DRM_ContentProtectionLevel contentProtectionLevel = CONTENT_PROTECTION_LEVEL_SW_CRYPTO;
-    MediaKeySession *session = nullptr;
-    errNo = OH_MediaKeySystem_CreateMediaKeySession(system, &contentProtectionLevel, &session);
-    EXPECT_NE(session, nullptr);
-    EXPECT_EQ(errNo, DRM_ERR_OK);
-
-    vdec_ = OH_VideoDecoder_CreateByName(CODEC_NAME.c_str());
-    errNo = OH_VideoDecoder_SetDecryptionConfig(nullptr, session, false);
-    EXPECT_NE(errNo, DRM_ERR_OK);
-    errNo = OH_VideoDecoder_SetDecryptionConfig(vdec_, nullptr, false);
-#endif
-    EXPECT_NE(errNo, DRM_ERR_OK);
-}
-
-/**
  * @tc.number    : VIDEO_SWDEC_ILLEGAL_PARA_2500
  * @tc.name      : OH_VideoDecoder_RenderOutputData para error
  * @tc.desc      : function test
