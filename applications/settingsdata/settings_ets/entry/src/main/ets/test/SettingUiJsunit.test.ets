@@ -1323,8 +1323,8 @@ export default function settingUiJsunit() {
     it('settings_register_Key_Observer_121', 0, (done: Function) => {
       let name = 'settings.screen.brightness121'; //关键字
       let domainName = 'secure';
-      settings.setValueSync(globalThis.abilityContext, name, '1', domainName);
       try {
+        settings.setValueSync(globalThis.abilityContext, name, '1', domainName);
         settings.registerKeyObserver(globalThis.abilityContext, name, domainName, (err, ret) => {
           let ret1 = settings.getValueSync(globalThis.abilityContext, name, domainName);
           expect(ret1 === '1').assertTrue();
@@ -1354,8 +1354,8 @@ export default function settingUiJsunit() {
     it('settings_register_Key_Observer_123', 0, (done: Function) => {
       let name = 'settings.screen.brightness123'; //关键字
       let domainName = settings.domainName.DEVICE_SHARED;
-      settings.setValueSync(globalThis.abilityContext, name, '1', domainName);
       try {
+        settings.setValueSync(globalThis.abilityContext, name, '1', domainName);
         settings.registerKeyObserver(globalThis.abilityContext, name, domainName, (err, ret) => {
           let ret1 = settings.getValueSync(globalThis.abilityContext, name, domainName);
           expect(ret1 === '1').assertTrue();
@@ -1371,8 +1371,8 @@ export default function settingUiJsunit() {
     it('settings_register_Key_Observer_124', 0, (done: Function) => {
       let name = 'settings.screen.brightness124'; //关键字
       let domainName = settings.domainName.USER_PROPERTY;
-      settings.setValueSync(globalThis.abilityContext, name, '1', domainName);
       try {
+        settings.setValueSync(globalThis.abilityContext, name, '1', domainName);
         settings.registerKeyObserver(globalThis.abilityContext, name, domainName, (err, ret) => {
           let ret1 = settings.getValueSync(globalThis.abilityContext, name, domainName);
           expect(ret1 === '1').assertTrue();
