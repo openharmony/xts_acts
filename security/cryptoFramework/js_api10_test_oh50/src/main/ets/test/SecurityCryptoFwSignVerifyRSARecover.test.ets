@@ -80,7 +80,7 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
       let paddingName: string = "NoPadding";
       let isOnlySign: boolean = true;
       let mdName: string = "NoHash";
-      let dataLen: number = 1024;
+      let dataLen: number = 128;
       let isSync: boolean = true;
       let isPadding: boolean = true;
       try {
