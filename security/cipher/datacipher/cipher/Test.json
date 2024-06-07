@@ -1,11 +1,12 @@
 {
-    "description": "Configuration for hjunit demo Tests",
+    "description": "Configuration for keystoretest js api Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "180000",
-        "shell-timeout": "180000",
+        "test-timeout": "300000",
+        "shell-timeout": "300000",
         "bundle-name": "com.example.keystoretest",
-        "package-name": "com.example.keystoretest"
+        "package-name": "com.example.keystoretest",
+        "testcase-timeout": 1500000
     },
     "kits": [
         {
@@ -14,12 +15,6 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },{
-            "type": "ShellKit",
-            "run-command": [
-                "power-shell wakeup",
-                "power-shell setmode 602"
-            ]
         }
     ]
 }

@@ -166,6 +166,7 @@ import swiperCachedCountTest from './swiper/SwiperCachedCountTest.test'
 import textWidthTest from './text/TextWidthTest.test'
 import textHeightTest from './text/TextHeightTest.test'
 import textPositionTest from './text/TextPositionTest.test'
+import TextStyleGraphicTest from './text/TextStyleGraphicTest.test'
 import scrollWidthTest from './scroll/ScrollWidthTest.test'
 import scrollHeightTest from './scroll/ScrollHeightTest.test'
 import scrollPositionTest from './scroll/ScrollPositionTest.test'
@@ -545,6 +546,7 @@ import textInputOnSubmitTest from './textinput/TextInputOnSubmitTest.test'
 import textInputOnCutTest from './textinput/TextInputOnCutTest.test'
 import textInputOnPasteTest from './textinput/TextInputOnPasteTest.test'
 import textInputDefaultFocusTest from './textinput/TextInputDefaultFocusTest'
+import TestArkUIAddApi from './arkApi/arkApi.test'
 
 export default function testsuite() {
   datePickerAccessibilityDescriptionTest()
@@ -855,6 +857,7 @@ export default function testsuite() {
   stackTransitionTest()
   stackTranslateTest()
   stackWidthTest()
+  TextStyleGraphicTest()
   toggleBackgroundColorTest()
   toggleClipTest()
   toggleFocusableTest()
@@ -1080,4 +1083,5 @@ export default function testsuite() {
   customComponentOnMeasureTest()
   customComponentOnLayoutTest()
   customComponentOnDrawTest()
+  TestArkUIAddApi()
 }

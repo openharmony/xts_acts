@@ -1,6 +1,6 @@
 {
   "app": {
-    "bundleName": "com.example.accessibleabilitylist",
+    "bundleName": "com.example.actsgetwantalltesthap",
     "vendor": "example",
     "version": {
       "code": 1000000,
@@ -9,7 +9,7 @@
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.example.accessibleabilitylist_test",
+    "package": "com.example.actsgetwantalltesthap",
     "name": ".entry_test",
     "mainAbility": ".TestAbility",
     "deviceType": [
@@ -24,17 +24,8 @@
       "installationFree": false
     },
     "defPermissions": [
-      {
-        "availableScope": [],
-        "grantMode": "system_grant",
-        "name": "ohos.permission.DISTRIBUTED_DATASYNC"
-      }
     ],
     "reqPermissions": [
-      {
-        "name": "ohos.permission.DISTRIBUTED_DATASYNC",
-        "reason": "ceshi"
-      }
     ],
     "abilities": [
       {

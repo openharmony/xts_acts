@@ -50,6 +50,38 @@
         "type": "page",
         "visible": true,
         "launchType": "standard"
+      },
+      {
+          "srcPath": "TestDataAbility",
+          "name": ".TestDataAbility",
+          "icon": "$media:icon",
+          "srcLanguage": "js",
+          "description": "$string:description_testdataability",
+          "type": "data",
+          "visible": true,
+          "uri": "dataability://com.example.myapplication.TestDataAbility"
+      },
+      {
+          "srcPath": "TestDataAbility2",
+          "name": ".TestDataAbility2",
+          "icon": "$media:icon",
+          "srcLanguage": "js",
+          "description": "$string:description_testdataability",
+          "type": "data",
+          "visible": true,
+          "uri": "dataability://com.example.myapplication.TestDataAbility2"
+      },
+      {
+          "srcPath": "TestDataAbility3",
+          "name": ".TestDataAbility3",
+          "icon": "$media:icon",
+          "srcLanguage": "js",
+          "description": "$string:description_testdataability",
+          "type": "data",
+          "visible": true,
+          "uri": "dataability://com.example.myapplication.TestDataAbility3",
+          "readPermission": "ohos.permission.READ_CONTACTS",
+          "writePermission": "ohos.permission.WRITE_CONTACTS"
       }
     ],
     "js": [

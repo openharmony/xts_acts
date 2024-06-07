@@ -64,6 +64,7 @@ export const testButtonFontWeight014: () => number;
 export const testButtonFontWeight015: () => number;
 
 export const testButtonFontWeight016: () => number;
+export const textTextStyleGraphic001: () => number;
 
 export const testCheckboxMark001: () => number;
 
@@ -4741,3 +4742,15 @@ export const testTextInputStopEditing003: () => number;
 export const testTextInputStopEditing004: () => number;
 
 export const testTextInputStopEditing005: () => number;
+
+export const TestArkUIAddApi001: () => number;
+
+export const TestArkUIAddApi002: () => number;
+
+export const TestArkUIAddApi003: () => number;
+
+export const TestArkUIAddApi004: () => number;
+
+export const TestArkUIAddApi005: () => number;
+
+export const TestArkUIAddApi006: () => number;

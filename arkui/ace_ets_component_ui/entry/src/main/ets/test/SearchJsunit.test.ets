@@ -126,9 +126,12 @@ export default function SearchJsunit() {
     it('SearchJsunit_0300', 0, async function (done) {
       // Verify the functions of the Search component
       console.info('[SearchJsunit_0300] START');
-      globalThis.value.message.notify({name:'changeValue',value:''})
       await CommonFunc.sleep(1000);
-      
+      globalThis.value.message.notify({
+        name: 'changeValue', value: ''
+      })
+      await CommonFunc.sleep(1000);
+
       // Verify the onChange function of the Search component
       let driver = await UiDriver.create()
       let textComponent1 = await driver.findComponent(BY.key('search'));
@@ -142,7 +145,11 @@ export default function SearchJsunit() {
 
       // Verify the onSubmit function of the Search component
       let textComponent2 = await driver.findComponent(BY.text('search'));
-      await textComponent2.click()
+      if (!textComponent2) {
+        textComponent2 = await driver.findComponent(BY.text('SEARCH'));
+      }
+      await CommonFunc.sleep(1000);
+      await textComponent2.click();
       await CommonFunc.sleep(1000);
       console.info("[SearchJsunit_0300] CLICK_SEARCH succ ");
       let strJson2 = getInspectorByKey('submit');
@@ -152,7 +159,7 @@ export default function SearchJsunit() {
 
       // Verify the onCopy function of the Search component
       await textComponent1.click()
-      await textComponent1.longClick()
+      await textComponent1.doubleClick()
       await CommonFunc.sleep(1000);
       console.info("[SearchJsunit_0300] first longClick succ ");
       let textComponent3 = await driver.findComponent(BY.text('全选'));
@@ -173,7 +180,7 @@ export default function SearchJsunit() {
 
       // Verify the onCut function of the Search component
       await textComponent1.click()
-      await textComponent1.longClick()
+      await textComponent1.doubleClick()
       await CommonFunc.sleep(1000);
       console.info("[SearchJsunit_0300] secand longClick succ ");
       let textComponent5 = await driver.findComponent(BY.text('全选'));
@@ -193,6 +200,10 @@ export default function SearchJsunit() {
       expect(obj4.$attrs.content).assertEqual('onCut:hello');
 
       // Verify the onPaste function of the Search component
+      await textComponent1.click();
+      await CommonFunc.sleep(1000);
+      await textComponent2.click();
+      await CommonFunc.sleep(1000);
       await textComponent1.longClick()
       await CommonFunc.sleep(1000);
       let textComponent8 = await driver.findComponent(BY.text('粘贴'));

@@ -85,6 +85,7 @@ add_library(nativerender SHARED
     textinput/textinput_onsubmit_test.cpp
     textinput/textinput_oncut_test.cpp
     textinput/textinput_onpaste_test.cpp
+    arkApi/arkApi.cpp
 )
 
 add_library(nativefunc SHARED
@@ -124,6 +125,6 @@ find_library(
 )
 
 target_link_libraries(nativerender PUBLIC
-    libnative_drawing.so ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib})
+    libnative_drawing.so libace_napi.z.so ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib})
 target_link_libraries(nativefunc PUBLIC
-    ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib})
+libnative_drawing.so libace_napi.z.so ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib})

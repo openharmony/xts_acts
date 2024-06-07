@@ -106,7 +106,8 @@ struct webViewAnr {
           .onRenderProcessNotResponding(async (data) => {
             console.log("onRenderProcessNotResponding: [jsStack]= " + data.jsStack +
             ", [process]=" + data.pid + ", [reason]=" + data.reason);
-
+            console.log('data.reason:' + RenderProcessNotRespondingReason.INPUT_TIMEOUT)
+            console.log('data.reason:' + RenderProcessNotRespondingReason.NAVIGATION_COMMIT_TIMEOUT)
             await Utils.sleep(1000)
             this.controller.runJavaScript("stopBlockJs()", (error, result) => {
               console.error(`The stopBlockJs() return error is: ${error}`);

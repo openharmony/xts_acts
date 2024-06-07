@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+#
 # Copyright (c) 2024 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -52,7 +55,7 @@ class testSelinuxFileLable(TestCase):
                 if filePath.count('/') > 1:
                     errorList.append(configuration[0] + '  ' + configuration[1])
         if len(errorList) != 0:
-            print('These file\'s lable is not allowed. errorList: [' + ', '.join(errorList) + ']')
+            self.log.info('These file\'s lable is not allowed. errorList: [' + ', '.join(errorList) + ']')
             assert False
 
     def teardown(self):

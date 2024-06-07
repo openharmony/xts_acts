@@ -3859,6 +3859,105 @@ export default function graphicDrawing(context, windowStage, abilityStorage) {
         expect().assertFail();
       }
     })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_3120
+     * @tc.name      : testFilterMode_Enum
+     * @tc.desc      : Filter mode enumeration
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testFilterMode_Enum', 0, async function () {
+      let msg = "testFilterMode_Enum"
+      console.info(msg + 'begin');
+      try {
+        expect(0).assertEqual(drawing.FilterMode.FILTER_MODE_NEAREST);
+        expect(1).assertEqual(drawing.FilterMode.FILTER_MODE_LINEAR);
+      } catch (err) {
+        console.info(msg + 'test enum value of FilterMode error ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_3130
+     * @tc.name      : testClipOp_Enum
+     * @tc.desc      : Enumeration of canvas cropping methods
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testClipOp_Enum', 0, async function () {
+      let msg = "testClipOp_Enum"
+      console.info(msg + 'begin');
+      try {
+        expect(0).assertEqual(drawing.ClipOp.DIFFERENCE);
+        expect(1).assertEqual(drawing.ClipOp.INTERSECT);
+      } catch (err) {
+        console.info(msg + 'test enum value of ClipOp error ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_3140
+     * @tc.name      : testJoinStyle_Enum
+     * @tc.desc      : Defines an enumeration of line corner styles
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testJoinStyle_Enum', 0, async function () {
+      let msg = "testJoinStyle_Enum"
+      console.info(msg + 'begin');
+      try {
+        expect(0).assertEqual(drawing.JoinStyle.MITER_JOIN);
+        expect(1).assertEqual(drawing.JoinStyle.ROUND_JOIN);
+        expect(2).assertEqual(drawing.JoinStyle.BEVEL_JOIN);
+      } catch (err) {
+        console.info(msg + 'test enum value of JoinStyle error ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_3150
+     * @tc.name      : testCapStyle_Enum
+     * @tc.desc      : Defines an enumeration of line hat styles
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testCapStyle_Enum', 0, async function () {
+      let msg = "testCapStyle_Enum"
+      console.info(msg + 'begin');
+      try {
+        expect(0).assertEqual(drawing.CapStyle.FLAT_CAP);
+        expect(1).assertEqual(drawing.CapStyle.SQUARE_CAP);
+        expect(2).assertEqual(drawing.CapStyle.ROUND_CAP);
+      } catch (err) {
+        console.info(msg + 'test enum value of CapStyle error ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWING_JS_API_3160
+     * @tc.name      : testBlurType_Enum
+     * @tc.desc      : Defines an enumeration of line hat styles
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testBlurType_Enum', 0, async function () {
+      let msg = "testBlurType_Enum"
+      console.info(msg + 'begin');
+      try {
+        expect(0).assertEqual(drawing.BlurType.NORMAL);
+        expect(1).assertEqual(drawing.BlurType.SOLID);
+        expect(2).assertEqual(drawing.BlurType.OUTER);
+        expect(3).assertEqual(drawing.BlurType.INNER);
+      } catch (err) {
+        console.info(msg + 'test enum value of BlurType error ' + JSON.stringify(err));
+        expect().assertFail();
+      }
+    })
   })
 }
 

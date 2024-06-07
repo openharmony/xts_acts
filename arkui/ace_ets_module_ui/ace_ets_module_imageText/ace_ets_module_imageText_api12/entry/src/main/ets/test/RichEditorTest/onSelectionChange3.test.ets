@@ -60,7 +60,7 @@ export default function onSelectionChange3() {
       await CommonFunc.sleep(1000);
 
       let richEditor = await driver.findComponent(ON.id('onSelectionChange3_RichEditor'));
-      await richEditor.longClick();
+      await richEditor.doubleClick();
       await CommonFunc.sleep(1000);
       let text1_1 = getInspectorByKey('onSelectionChange3_text1');
       let Obj1_1 = JSON.parse(text1_1);

@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import graphicSendableImageInterfaceTest from './graphicSendableImageInterface.test'
+import graphicImageInterfaceTest from './graphicImageInterface.test'
 
 export default function testsuite() {
   graphicSendableImageInterfaceTest()
+  graphicImageInterfaceTest()
 }
