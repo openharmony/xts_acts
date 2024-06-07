@@ -12,5 +12,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export const filterKeyCode: (a: number, b: number) => number;
-export const unFilterKeyCode: (a: number) => number;
+{
+  "app": {
+    "signingConfigs": [
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "compileSdkVersion": 12,
+        "compatibleSdkVersion": 12,
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}

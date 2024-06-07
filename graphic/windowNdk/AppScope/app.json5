@@ -12,5 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export const filterKeyCode: (a: number, b: number) => number;
-export const unFilterKeyCode: (a: number) => number;
+{
+  "app": {
+    "bundleName": "com.example.windowndk",
+    "vendor": "example",
+    "versionCode": 1000000,
+    "versionName": "1.0.0",
+    "icon": "$media:app_icon",
+    "label": "$string:app_name"
+  }
+}

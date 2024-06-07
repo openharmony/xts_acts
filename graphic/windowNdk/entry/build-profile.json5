@@ -12,5 +12,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export const filterKeyCode: (a: number, b: number) => number;
-export const unFilterKeyCode: (a: number) => number;
+{
+  "apiType": 'stageMode',
+  "buildOption": {
+    "externalNativeOptions": {
+      "path": "./src/main/cpp/CMakeLists.txt",
+      "arguments": "",
+      "cppFlags": "",
+	  "abiFilters": ["arm64-v8a", "armeabi-v7a", "x86_64"],
+    }
+  },
+  "targets": [
+    {
+      "name": "default",
+    },
+    {
+      "name": "ohosTest",
+    }
+  ]
+}

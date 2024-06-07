@@ -13,20 +13,22 @@
  * limitations under the License.
  */
 #include "napi/native_api.h"
-#include "oh_window_comm.h"
-#include "oh_window_event_filter.h"
-#include "oh_input_manager.h"
-#include "oh_key_code.h"
+#include "window_manager/oh_window_comm.h"
+#include "window_manager/oh_window_event_filter.h"
+#include "multimodalinput/oh_input_manager.h"
+#include "multimodalinput/oh_key_code.h"
 #include <bits/alltypes.h>
 #include <hilog/log.h>
 
 static int keyCode1 = -1;
 static bool filterESC(Input_KeyEvent *event){
     auto keyCode = OH_Input_GetKeyEventKeyCode(event);
+    auto actionTime = OH_Input_GetKeyEventActionTime(event);
+    auto action = OH_Input_GetKeyEventAction(event);
     return keyCode == keyCode1;
 }
 
-static napi_value filterKeyCode(napi_env env, napi_callback_info info) {
+static napi_value filterKeyCode(napi_env env, napi_callback_info info){
     size_t argc = 2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc,  args,nullptr, nullptr);
@@ -39,12 +41,12 @@ static napi_value filterKeyCode(napi_env env, napi_callback_info info) {
     int32_t keyCode;
     napi_get_value_int32(env, args[1], &keyCode);
     keyCode1 = keyCode;
-    WindowManager_ErrorCode result = OH_NativeWindowManager_RegisterKeyEventFilter(windowId, filterESC);
+    auto result = OH_NativeWindowManager_RegisterKeyEventFilter(windowId, filterESC);
     napi_value res;
     napi_create_int32(env, result, &res);
     return res;
 }
-static napi_value unFilterKeyCode(napi_env env, napi_callback_info info) {
+static napi_value unFilterKeyCode(napi_env env, napi_callback_info info){
     napi_value args[2] = {nullptr};
     napi_valuetype valuetype0;
     napi_typeof(env, args[0], &valuetype0);
@@ -55,7 +57,7 @@ static napi_value unFilterKeyCode(napi_env env, napi_callback_info info) {
     int32_t keyCode;
     napi_get_value_int32(env, args[1], &keyCode);
     keyCode1 = keyCode;
-    WindowManager_ErrorCode result = OH_NativeWindowManager_UnregisterKeyEventFilter(windowId);
+    auto result = OH_NativeWindowManager_UnregisterKeyEventFilter(windowId);
     napi_value res;
     napi_create_int32(env, result, &res);
     return res;

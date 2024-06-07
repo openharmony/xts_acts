@@ -13,40 +13,19 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsWindowNdkTest") {
-  hap_profile = "entry/src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":windowNdk_js_assets",
-    ":windowNdk_resources",
-  ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ActsWindowNdkTest"
-  subsystem_name = "window"
+ohos_app_assist_suite("ActsWindowNdkTest_ndk_main") {
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsWindowNdkMainTest"
   part_name = "window_manager"
-  shared_libraries = [
-    "entry/src/main/cpp:entry",
-    ":libentry",
-  ]
-}
-ohos_prebuilt_shared_library("libentry") {
-  source = rebase_path(libcxx_ndk_shared_file)
   subsystem_name = "window"
-  part_name = "napi"
 }
-
-ohos_app_scope("windowNdk_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-
-ohos_js_assets("windowNdk_js_assets") {
-  source_dir = "entry/src/main/ets"
-}
-
-ohos_resources("windowNdk_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":windowNdk_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
+ohos_js_app_suite("ActsWindowNdkTest") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsWindowNdkTest"
+  part_name = "window_manager"
+  subsystem_name = "window"
+  deps = [ ":ActsWindowNdkTest_ndk_main" ]
 }

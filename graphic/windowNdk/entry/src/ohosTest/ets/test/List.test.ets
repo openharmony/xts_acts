@@ -12,5 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export const filterKeyCode: (a: number, b: number) => number;
-export const unFilterKeyCode: (a: number) => number;
+import windowNdk from './windowNdk.test';
+
+export default function testsuite() {
+  windowNdk();
+}

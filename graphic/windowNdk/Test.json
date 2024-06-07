@@ -3,29 +3,24 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
+        "shell-timeout": "180000",
         "bundle-name": "com.example.windowndk",
-        "module-name": "entry_test",
-        "shell-timeout": "600000",
-        "testcase-timeout": "70000"
+        "module-name": "entry_test"
     },
     "kits": [
         {
-            "type": "ShellKit",
-            "run-command": [
-                "wait 5",
-                "power-shell wakeup",
-                "uinput -T -m 300 2700 280 200",
-                "wait 5",
-                "uinput -T -m 300 2700 280 200",
-                "power-shell setmode 602"
-            ]
-        },
-        {
             "test-file-name": [
-                "ActsWindowNdkTest.hap"
+                "ActsWindowNdkTest.hap",
+                "ActsWindowNdkMainTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
         }
     ]
 }

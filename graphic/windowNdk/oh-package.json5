@@ -12,5 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export const filterKeyCode: (a: number, b: number) => number;
-export const unFilterKeyCode: (a: number) => number;
+{
+  "license": "",
+  "devDependencies": {
+    "@ohos/hypium": "1.0.6"
+  },
+  "author": "",
+  "name": "myapplication",
+  "description": "Please describe the basic information.",
+  "main": "",
+  "version": "1.0.0",
+  "dependencies": {}
+}

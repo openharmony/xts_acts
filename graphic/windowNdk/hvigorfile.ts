@@ -12,5 +12,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export const filterKeyCode: (a: number, b: number) => number;
-export const unFilterKeyCode: (a: number) => number;
+// Script for compiling build behavior. It is built in the build plug-in and cannot be modified currently.
+export { appTasks } from '@ohos/hvigor-ohos-plugin';
