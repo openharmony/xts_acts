@@ -39,6 +39,9 @@ export default function securityTest() {
     beforeAll(async (done: Function) => {
       abilityContext = AppStorage.get<common.UIAbilityContext>('TestAbilityContext') as common.UIAbilityContext
       applicationContext = abilityContext.getApplicationContext()
+      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
+      let driver = Driver.create()
+      await driver.delayMs(2000)
       done()
     })
 

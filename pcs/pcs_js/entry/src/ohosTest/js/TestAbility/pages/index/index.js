@@ -19,22 +19,28 @@ export default {
     data: {
         title: "",
         absolutionPathImageComplete: 'AbsolutionPathFail',
-        relativePathImageCompleted: 'RelativePathFail',
-        fileText1: "",
-        fileText2: ""
+        relativePathImageCompleted1: 'RelativePath1Fail',
+        relativePathImageCompleted2: 'RelativePath2Fail',
+        relativePathImageCompleted3: 'RelativePath3Fail',
+        fileText1: ""
     },
     onInit() {
         this.title = this.$t('strings.world');
         this.writeText1()
+        sleep(2000)
         this.readtext1()
-        this.writeText2()
-        this.readtext2()
     },
     onComplete1(event) {
         this.absolutionPathImageComplete = 'AbsolutionPathSuccess'
     },
     onComplete2(event) {
-        this.relativePathImageCompleted = 'RelativePathSuccess'
+        this.relativePathImageCompleted1 = 'RelativePath1Success'
+    },
+    onComplete3(event) {
+        this.relativePathImageCompleted2 = 'RelativePath2Success'
+    },
+    onComplete4(event) {
+        this.relativePathImageCompleted3 = 'RelativePath3Success'
     },
     writeText1() {
         file.writeText({
@@ -60,33 +66,9 @@ export default {
                 console.error('read file fail , code: ' + code + ', data: ' + data);
             },
         })
-    },
-    writeText2() {
-        file.writeText({
-            uri: "internal://app/../test.txt",
-            text: 'test text',
-            success: function () {
-                console.info('write file success');
-            },
-            fail: function (data, code) {
-                console.error('write file fail, code: ' + code + ', data: ' + data)
-            },
-        })
-    },
-    readtext2() {
-        let that = this
-        file.readText({
-            uri: 'internal://app/../test.txt',
-            success: function (data) {
-                that.fileText2 = data.text
-                console.info('read file success.');
-            },
-            fail: function (data, code) {
-                console.error('read file fail , code: ' + code + ', data: ' + data);
-            },
-        })
     }
 }
 
-
-
+function sleep(time) {
+    return new Promise((resolve) => setTimeout(resolve, time));
+}

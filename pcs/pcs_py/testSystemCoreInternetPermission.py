@@ -17,6 +17,7 @@
 from devicetest.core.test_case import TestCase, Step
 from PermissionUtils import PermissionUtils
 import json
+import time
 
 # @tc.number: STD-SECURITY-0107
 # @tc.name: testSystemCoreInternetPermission
@@ -39,6 +40,7 @@ class testSystemCoreInternetPermission(TestCase):
         for initFile in initFileList:
             if initFile.endswith('.cfg'):
                 cfgInfo = self.device1.execute_shell_command("cat /system/etc/init/" + initFile).strip()
+                time.sleep(0.5)
                 cfgInfoObj = json.loads(cfgInfo)
                 if 'services' not in cfgInfoObj:
                     continue

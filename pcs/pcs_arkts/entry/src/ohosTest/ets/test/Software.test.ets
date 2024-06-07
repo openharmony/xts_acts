@@ -31,6 +31,9 @@ export default function softwareTest() {
     beforeAll(async (done: Function) => {
       abilityContext = AppStorage.get<common.UIAbilityContext>('TestAbilityContext') as common.UIAbilityContext
       expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
+      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
+      let driver = Driver.create()
+      await driver.delayMs(2000)
       hasAbilityTestExec = false
       hasAbilityTestPassed = false
       done()

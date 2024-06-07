@@ -31,7 +31,7 @@ class testCommandWukong(TestCase):
 
     def process(self):
         Step("Process")
-        sysCapsStr = self.device1.execute_shell_command("cat /system/etc/SystemCapability.json")
+        sysCapsStr = self.device1.execute_shell_command("cat /system/etc/param/syscap.para")
         sysCapsList = sysCapUtils.getAllSysCaps(sysCapsStr)
         if "SystemCapability.ArkUI.ArkUI.Full" in sysCapsList:
             wukongOutput = self.device1.execute_shell_command("wukong help")

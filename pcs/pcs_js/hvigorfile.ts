@@ -13,16 +13,5 @@
  * limitations under the License.
  */
 
-import developerModeTest from './DeveloperMode.test';
-import hardwareTest from './Hardware.test';
-import performanceTest from './Performance.test';
-import securityTest from './Security.test';
-import softwareTest from './Software.test';
-
-export default function testsuite() {
-  hardwareTest()
-  developerModeTest()
-  softwareTest()
-  securityTest()
-  performanceTest()
-}
+// Script for compiling build behavior. It is built in the build plug-in and cannot be modified currently.
+export { legacyAppTasks } from '@ohos/hvigor-ohos-plugin';

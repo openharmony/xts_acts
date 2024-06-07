@@ -14,14 +14,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import time
+from devicetest.core.test_case import Step
+from devicetest.core.suite.test_suite import TestSuite
 
-class sysCapUtils:
+class PCSPyTest(TestSuite):
+    
+    def setup(self):
+        Step("Setup")
 
-    def getAllSysCaps(sysCapsStr):
-        time.sleep(1)
-        sysCapsList = []
-        for sysCapStr in sysCapsStr.splitlines():
-            if sysCapStr.startswith('const.SystemCapability.') and sysCapStr.endswith('=true'):
-                sysCapsList.append(sysCapStr[6 : len(sysCapStr)-5])
-        return sysCapsList
+    def teardown(self):
+        Step("Teardown")

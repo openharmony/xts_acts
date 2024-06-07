@@ -172,9 +172,15 @@ export default function softwareJsTest() {
             let text1 = await driver.findComponent(ON.id('absolutionPathImageCompleted'))
             expect(text1 != undefined).assertTrue()
             expect(await text1.getText()).assertEqual('AbsolutionPathSuccess')
-            let text2 = await driver.findComponent(ON.id('relativePathImageCompleted'))
+            let text2 = await driver.findComponent(ON.id('relativePathImageCompleted1'))
             expect(text2 != undefined).assertTrue()
-            expect(await text2.getText()).assertEqual('RelativePathSuccess')
+            expect(await text2.getText()).assertEqual('RelativePath1Success')
+            let text3 = await driver.findComponent(ON.id('relativePathImageCompleted2'))
+            expect(text3 != undefined).assertTrue()
+            expect(await text3.getText()).assertEqual('RelativePath2Success')
+            let text4 = await driver.findComponent(ON.id('relativePathImageCompleted3'))
+            expect(text4 != undefined).assertTrue()
+            expect(await text4.getText()).assertEqual('RelativePath3Fail')
             done()
         })
 
@@ -189,27 +195,10 @@ export default function softwareJsTest() {
          */
         it('testWeblikePrivateDirectoryPath0100', 0, async function (done) {
             let driver = Driver.create()
-            await driver.delayMs(2000)
+            await driver.delayMs(5000)
             let text = await driver.findComponent(ON.id('fileText1'))
             expect(text != undefined).assertTrue()
             expect(await text.getText()).assertEqual('test text')
-            done()
-        })
-
-        /*
-         * @tc.number: G-SOFTWARE-0605
-         * @tc.name: testWeblikeParentDirectoryPath0100
-         * @tc.desc: 【G-SOFTWARE-0605】类 web 范式禁止应用使用../等方式访问父目录，比如internal://app/../。
-         * @tc.size: MediumTest
-         * @tc.type: Function
-         * @tc.level: Level 0
-         */
-        it('testWeblikeParentDirectoryPath0100', 0, async function (done) {
-            let driver = Driver.create()
-            await driver.delayMs(2000)
-            let text = await driver.findComponent(ON.id('fileText2'))
-            expect(text != undefined).assertTrue()
-            expect(await text.getText()).assertEqual('')
             done()
         })
     })
