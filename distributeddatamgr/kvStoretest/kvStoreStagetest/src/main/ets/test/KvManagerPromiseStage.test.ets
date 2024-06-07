@@ -61,7 +61,7 @@ export default function kvManagerPromiseTest(){
 
     afterAll(async function (done) {
       console.info('afterAll');
-      await sleep(2000);
+      await sleep(500);
       done();
     })
 

@@ -1600,7 +1600,7 @@ describe('deviceKvStorePromiseTest', function () {
                 console.info('testDeviceKvStorestartTransaction001 commit fail ' + err);
                 expect(null).assertFail();
             });
-            await sleep(2000);
+            await sleep(500);
             expect(count == 1).assertTrue();
         }catch(e) {
             console.info('testDeviceKvStorestartTransaction001 e ' + e);
@@ -1653,7 +1653,7 @@ describe('deviceKvStorePromiseTest', function () {
                 console.info('testDeviceKvStorestartTransaction002 rollback fail ' + err);
                 expect(null).assertFail();
             });
-            await sleep(2000);
+            await sleep(500);
             expect(count == 0).assertTrue();
         }catch(e) {
             console.info('testDeviceKvStorestartTransaction002 e ' + e);

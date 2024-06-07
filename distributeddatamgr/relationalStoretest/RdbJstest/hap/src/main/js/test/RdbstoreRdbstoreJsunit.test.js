@@ -224,7 +224,7 @@ describe('rdbStoreTest', function () {
             done();
             console.info(TAG + "************* testRdbStore0008 end   *************");
         });
-        await sleep(1000)
+        await sleep(500)
     })
 
     /**
@@ -242,7 +242,7 @@ describe('rdbStoreTest', function () {
             done();
             console.info(TAG + "************* testRdbStore0009 end   *************");
         });
-        await sleep(1000)
+        await sleep(500)
     })
     
     console.info(TAG + "*************Unit Test End*************");

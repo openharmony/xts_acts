@@ -256,10 +256,10 @@ export default function kvStoreBackupCallbackJsunittest(){
                 files[0] = file ;
                 publicBackup(kvStore,file) ;
                 console.log("SUB_DDM_DKV_KVBACKUP_MANALRESTORE_CALLBACK_0200 before restore");
-                await sleep(1000);
+                await sleep(500);
                 publicRestore(kvStore);
                 console.log("SUB_DDM_DKV_KVBACKUP_MANALRESTORE_CALLBACK_0200 going restore ");
-                await sleep(1000);
+                await sleep(500);
                 publicDeleteBackup(kvStore,files).then((data) => {
                     let delResult = delresult[0];
                     console.info("SUB_DDM_DKV_KVBACKUP_MANALRESTORE_CALLBACK_0200 delResult = " + delResult);
@@ -290,7 +290,7 @@ export default function kvStoreBackupCallbackJsunittest(){
                 console.log("SUB_DDM_DKV_KVBACKUP_BUCKUP_CALLBACK_0100 before backup");
                 publicBackup(kvStore,file) ;
                 console.log("SUB_DDM_DKV_KVBACKUP_BUCKUP_CALLBACK_0100 going backup");
-                await sleep(1000);
+                await sleep(500);
                 publicDeleteBackup(kvStore,files).then((data) => {
                     let delResult = delresult[0];
                     console.info("SUB_DDM_DKV_KVBACKUP_BUCKUP_CALLBACK_0100 delResult = " + delResult);
@@ -321,7 +321,7 @@ export default function kvStoreBackupCallbackJsunittest(){
                 console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_CALLBACK_0100 before backup");
                 publicBackup(kvStore,file) ;
                 console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_CALLBACK_0100 going backup");
-                await sleep(1000);
+                await sleep(500);
                 await publicDeleteBackup(kvStore,files).then((data) => {
                     let delResult = delresult[0];
                     console.info("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_CALLBACK_0100 delResult = " + delResult);
@@ -350,7 +350,7 @@ export default function kvStoreBackupCallbackJsunittest(){
                 console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_CALLBACK_0200 before backup");
                 publicBackup(kvStore,file) ;
                 console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_CALLBACK_0200 going backup");
-                await sleep(1000);
+                await sleep(500);
                 publicDeleteBackup(kvStore,files).then((data) => {
                     let delResult = delresult[0];
                     console.info("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_CALLBACK_0200 delResult = " + delResult);
@@ -380,7 +380,7 @@ export default function kvStoreBackupCallbackJsunittest(){
                 console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_CALLBACK_0300 before backup");
                 publicBackup(kvStore,file) ;
                 console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_CALLBACK_0300 going backup");
-                await sleep(1000);
+                await sleep(500);
                 await publicDeleteBackup(kvStore,files).then((data) => {
                     let delResult = delresult[0];
                     console.info("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_CALLBACK_0300 delResult = " + delResult);
@@ -456,7 +456,7 @@ export default function kvStoreBackupCallbackJsunittest(){
                 await sleep(500);
 
                 console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_CALLBACK_0500 before publicDeleteBackup");
-                await sleep(1000);
+                await sleep(500);
                 publicDeleteBackup(kvStore,files).then((data) => {
 
                     expect("1").assertEqual(delresult[0][0])
@@ -531,7 +531,7 @@ export default function kvStoreBackupCallbackJsunittest(){
                     expect(true).assertEqual(JSON.stringify(err) == "{\"code\":\"\"}");
                     console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_CALLBACK_0600 Sixth backup err");
                 })
-                await sleep(1000);
+                await sleep(500);
                 console.log("SUB_DDM_DKV_KVBACKUP_MANALBACKUP_CALLBACK_0600 before publicDeleteBackup");
                 publicDeleteBackup(kvStore,files).then((data) => {
 
@@ -570,10 +570,10 @@ export default function kvStoreBackupCallbackJsunittest(){
                 files[0] = file ;
                 publicBackup(kvStore,file);
                 console.log("SUB_DDM_DKV_KVBACKUP_RESTORETOSPECIFIEDVERSION_CALLBACK_0100 before restoresp");
-                await sleep(1000);
+                await sleep(500);
                 publicRestoreSp(kvStore,file);
                 console.log("SUB_DDM_DKV_KVBACKUP_RESTORETOSPECIFIEDVERSION_CALLBACK_0100 going restoresp");
-                await sleep(1000);
+                await sleep(500);
                 publicDeleteBackup(kvStore,files).then((data) => {
                     let delResult = delresult[0];
                     console.info("SUB_DDM_DKV_KVBACKUP_RESTORETOSPECIFIEDVERSION_CALLBACK_0100 delResult = " + delResult);
@@ -602,10 +602,10 @@ export default function kvStoreBackupCallbackJsunittest(){
                 files[0] = file ;
                 publicBackup(kvStore,file);
                 console.log("SUB_DDM_DKV_KVBACKUP_RESTORETOSPECIFIEDVERSION_CALLBACK_0200 before restoresp");
-                await sleep(1000);
+                await sleep(500);
                 publicRestoreSp(kvStore,file);
                 console.log("SUB_DDM_DKV_KVBACKUP_RESTORETOSPECIFIEDVERSION_CALLBACK_0200 going restoresp");
-                await sleep(1000);
+                await sleep(500);
                 publicDeleteBackup(kvStore,files).then((data) => {
                     let delResult = delresult[0];
                     console.info("SUB_DDM_DKV_KVBACKUP_RESTORETOSPECIFIEDVERSION_CALLBACK_0200 delResult = " + delResult);
@@ -634,10 +634,10 @@ export default function kvStoreBackupCallbackJsunittest(){
                 files[0] = file ;
                 publicBackup(kvStore,file);
                 console.log("SUB_DDM_DKV_KVBACKUP_RESTORETOSPECIFIEDVERSION_CALLBACK_0300 before restoresp");
-                await sleep(1000);
+                await sleep(500);
                 publicRestoreSp(kvStore,file);
                 console.log("SUB_DDM_DKV_KVBACKUP_RESTORETOSPECIFIEDVERSION_CALLBACK_0300 going restoresp");
-                await sleep(1000);
+                await sleep(500);
                 publicDeleteBackup(kvStore,files).then((data) => {
                     let delResult = delresult[0];
                     console.info("SUB_DDM_DKV_KVBACKUP_RESTORETOSPECIFIEDVERSION_CALLBACK_0300 delResult = " + delResult);
@@ -666,10 +666,10 @@ export default function kvStoreBackupCallbackJsunittest(){
                 files[0] = file ;
                 publicBackup(kvStore,file);
                 console.log("SUB_DDM_DKV_KVBACKUP_RESTORETOSPECIFIEDVERSION_CALLBACK_0400 before restoresp");
-                await sleep(1000);
+                await sleep(500);
                 publicRestoreSp(kvStore,file);
                 console.log("SUB_DDM_DKV_KVBACKUP_RESTORETOSPECIFIEDVERSION_CALLBACK_0400 going restoresp");
-                await sleep(1000);
+                await sleep(500);
                 publicDeleteBackup(kvStore,files).then((data) => {
                     let delResult = delresult[0];
                     console.info("SUB_DDM_DKV_KVBACKUP_RESTORETOSPECIFIEDVERSION_CALLBACK_0400 delResult = " + delResult);
@@ -697,7 +697,7 @@ export default function kvStoreBackupCallbackJsunittest(){
                 file  = '' ;
                 publicBackup(kvStore,file) ;
                 console.log("SUB_DDM_DKV_KVBACKUP_RESTORETOSPECIFIEDVERSION_CALLBACK_0500 before restoresp");
-                await sleep(1000);
+                await sleep(500);
                 publicRestoreSp(kvStore,file).then((data) => {
                     console.log("SUB_DDM_DKV_KVBACKUP_RESTORETOSPECIFIEDVERSION_CALLBACK_0500 going restoresp = " + JSON.stringify(data));
                     expect(true).assertEqual(false);
