@@ -72,7 +72,7 @@ group("multimedia") {
       "media/media_js_standard/avRecorder:av_recorder_js_hap",
       "media/media_js_standard/avplayeraudiondk:avplayer_audio_ndk_ets_hap",
       "media/media_js_standard/recorderFormat:recorder_format_js_hap",
-      "media/media_js_standard/screenCapture_ndk_test:screenCapture_xts_ndk_hap",
+      "media/media_js_standard/screenCapture_ndk_test:ActsNativeAVScreenCaptureTest",
       "media/media_js_standard/soundPool:soundpool_js_hap",
       "media/media_js_standard/videoPlayer:video_player_js_hap",
       "medialibrary/mediaLibrary_album:mediaLibrary_album_hap",
