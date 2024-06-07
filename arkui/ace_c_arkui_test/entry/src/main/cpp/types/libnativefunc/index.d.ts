@@ -4765,3 +4765,33 @@ export const testWaterFlower_002: () => number;
 export const testWaterFlower_003: () => number;
 export const testWaterFlower_004: () => number;
 export const testWaterFlower_005: () => number;
+
+export const testArkUI001: () => number;
+
+export const testArkUI002: () => number;
+
+export const testArkUI003: () => number;
+
+export const testArkUI004: () => number;
+
+export const testArkUI005: () => number;
+
+export const testArkUI006: () => number;
+
+export const testArkUI007: () => number;
+
+export const testArkUI008: () => number;
+
+export const testArkUI009: () => number;
+
+export const testArkUI010: () => number;
+
+export const testArkUI011: () => number;
+
+export const testArkUI012: () => number;
+
+export const testArkUI013: () => number;
+
+export const testArkUI014: () => number;
+
+export const testArkUI015: () => number;

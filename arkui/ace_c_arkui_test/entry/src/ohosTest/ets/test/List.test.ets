@@ -547,7 +547,7 @@ import textInputOnCutTest from './textinput/TextInputOnCutTest.test'
 import textInputOnPasteTest from './textinput/TextInputOnPasteTest.test'
 import textInputDefaultFocusTest from './textinput/TextInputDefaultFocusTest'
 import TestArkUIAddApi from './arkApi/arkApi.test'
-
+import testArkUI from './arkApi/arkUIApiTest.test'
 import testAnimationTest from './animation/animationTest.test'
 import testWaterFlower from './waterFlower/waterFlowerTest.test'
 export default function testsuite() {
@@ -1086,6 +1086,7 @@ export default function testsuite() {
   customComponentOnLayoutTest()
   customComponentOnDrawTest()
   TestArkUIAddApi()
+  testArkUI()
   testAnimationTest()
   testWaterFlower()
 }
