@@ -18,6 +18,7 @@
 namespace ArkUICapiTest {
 
 #define GRAY_SCALE_MAX 127
+#define FOREGROUND_BLUR_STYLE_LEVEL_NORMAL 0.5
 
 static napi_value TestCommonAttrsForegroundBlurStyle001(napi_env env, napi_callback_info info)
 {
@@ -275,11 +276,11 @@ static napi_value TestCommonAttrsForegroundBlurStyle022(napi_env env, napi_callb
 {
     NAPI_START(stack, ARKUI_NODE_STACK);
     int32_t value = PARAM_NEGATIVE_1;
-    ArkUI_NumberValue values[] = {{.i32 = ARKUI_BLUR_STYLE_THIN}, {}, {}, {.i32 = value}};
+    ArkUI_NumberValue values[] = {{.i32 = ARKUI_BLUR_STYLE_THIN}, {}, {}, {}, {.i32 = value}};
     ArkUI_AttributeItem item = {values, sizeof(values) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_FOREGROUND_BLUR_STYLE, &item);
     ASSERT_EQ(ret, INVALID_PARAM);
-    ASSERT_NE(nodeAPI->getAttribute(stack, NODE_FOREGROUND_BLUR_STYLE)->value[PARAM_3].i32, value);
+    ASSERT_NE(nodeAPI->getAttribute(stack, NODE_FOREGROUND_BLUR_STYLE)->value[PARAM_4].i32, value);
     NAPI_END;
 }
 
@@ -287,11 +288,11 @@ static napi_value TestCommonAttrsForegroundBlurStyle023(napi_env env, napi_callb
 {
     NAPI_START(stack, ARKUI_NODE_STACK);
     int32_t value = PARAM_0;
-    ArkUI_NumberValue values[] = {{.i32 = ARKUI_BLUR_STYLE_THIN}, {}, {}, {.i32 = value}};
+    ArkUI_NumberValue values[] = {{.i32 = ARKUI_BLUR_STYLE_THIN}, {}, {}, {}, {.i32 = value}};
     ArkUI_AttributeItem item = {values, sizeof(values) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_FOREGROUND_BLUR_STYLE, &item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_FOREGROUND_BLUR_STYLE)->value[PARAM_3].i32, value);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_FOREGROUND_BLUR_STYLE)->value[PARAM_4].i32, value);
     NAPI_END;
 }
 
@@ -299,11 +300,11 @@ static napi_value TestCommonAttrsForegroundBlurStyle024(napi_env env, napi_callb
 {
     NAPI_START(stack, ARKUI_NODE_STACK);
     int32_t value = PARAM_20;
-    ArkUI_NumberValue values[] = {{.i32 = ARKUI_BLUR_STYLE_THIN}, {}, {}, {.i32 = value}};
+    ArkUI_NumberValue values[] = {{.i32 = ARKUI_BLUR_STYLE_THIN}, {}, {}, {}, {.i32 = value}};
     ArkUI_AttributeItem item = {values, sizeof(values) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_FOREGROUND_BLUR_STYLE, &item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_FOREGROUND_BLUR_STYLE)->value[PARAM_3].i32, value);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_FOREGROUND_BLUR_STYLE)->value[PARAM_4].i32, value);
     NAPI_END;
 }
 
@@ -311,11 +312,11 @@ static napi_value TestCommonAttrsForegroundBlurStyle025(napi_env env, napi_callb
 {
     NAPI_START(stack, ARKUI_NODE_STACK);
     int32_t value = GRAY_SCALE_MAX;
-    ArkUI_NumberValue values[] = {{.i32 = ARKUI_BLUR_STYLE_THIN}, {}, {}, {.i32 = value}};
+    ArkUI_NumberValue values[] = {{.i32 = ARKUI_BLUR_STYLE_THIN}, {}, {}, {}, {.i32 = value}};
     ArkUI_AttributeItem item = {values, sizeof(values) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_FOREGROUND_BLUR_STYLE, &item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_FOREGROUND_BLUR_STYLE)->value[PARAM_3].i32, value);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_FOREGROUND_BLUR_STYLE)->value[PARAM_4].i32, value);
     NAPI_END;
 }
 
@@ -323,11 +324,11 @@ static napi_value TestCommonAttrsForegroundBlurStyle026(napi_env env, napi_callb
 {
     NAPI_START(stack, ARKUI_NODE_STACK);
     int32_t value = SIZE_200;
-    ArkUI_NumberValue values[] = {{.i32 = ARKUI_BLUR_STYLE_THIN}, {}, {}, {.i32 = value}};
+    ArkUI_NumberValue values[] = {{.i32 = ARKUI_BLUR_STYLE_THIN}, {}, {}, {}, {.i32 = value}};
     ArkUI_AttributeItem item = {values, sizeof(values) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_FOREGROUND_BLUR_STYLE, &item);
     ASSERT_EQ(ret, INVALID_PARAM);
-    ASSERT_NE(nodeAPI->getAttribute(stack, NODE_FOREGROUND_BLUR_STYLE)->value[PARAM_3].i32, value);
+    ASSERT_NE(nodeAPI->getAttribute(stack, NODE_FOREGROUND_BLUR_STYLE)->value[PARAM_4].i32, value);
     NAPI_END;
 }
 
@@ -335,11 +336,11 @@ static napi_value TestCommonAttrsForegroundBlurStyle027(napi_env env, napi_callb
 {
     NAPI_START(stack, ARKUI_NODE_STACK);
     int32_t value = PARAM_NEGATIVE_1;
-    ArkUI_NumberValue values[] = {{.i32 = ARKUI_BLUR_STYLE_THIN}, {}, {}, {}, {.i32 = value}};
+    ArkUI_NumberValue values[] = {{.i32 = ARKUI_BLUR_STYLE_THIN}, {}, {}, {}, {}, {.i32 = value}};
     ArkUI_AttributeItem item = {values, sizeof(values) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_FOREGROUND_BLUR_STYLE, &item);
     ASSERT_EQ(ret, INVALID_PARAM);
-    ASSERT_NE(nodeAPI->getAttribute(stack, NODE_FOREGROUND_BLUR_STYLE)->value[PARAM_4].i32, value);
+    ASSERT_NE(nodeAPI->getAttribute(stack, NODE_FOREGROUND_BLUR_STYLE)->value[PARAM_5].i32, value);
     NAPI_END;
 }
 
@@ -347,11 +348,11 @@ static napi_value TestCommonAttrsForegroundBlurStyle028(napi_env env, napi_callb
 {
     NAPI_START(stack, ARKUI_NODE_STACK);
     int32_t value = PARAM_0;
-    ArkUI_NumberValue values[] = {{.i32 = ARKUI_BLUR_STYLE_THIN}, {}, {}, {}, {.i32 = value}};
+    ArkUI_NumberValue values[] = {{.i32 = ARKUI_BLUR_STYLE_THIN}, {}, {}, {}, {}, {.i32 = value}};
     ArkUI_AttributeItem item = {values, sizeof(values) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_FOREGROUND_BLUR_STYLE, &item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_FOREGROUND_BLUR_STYLE)->value[PARAM_4].i32, value);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_FOREGROUND_BLUR_STYLE)->value[PARAM_5].i32, value);
     NAPI_END;
 }
 
@@ -359,11 +360,11 @@ static napi_value TestCommonAttrsForegroundBlurStyle029(napi_env env, napi_callb
 {
     NAPI_START(stack, ARKUI_NODE_STACK);
     int32_t value = PARAM_20;
-    ArkUI_NumberValue values[] = {{.i32 = ARKUI_BLUR_STYLE_THIN}, {}, {}, {}, {.i32 = value}};
+    ArkUI_NumberValue values[] = {{.i32 = ARKUI_BLUR_STYLE_THIN}, {}, {}, {}, {}, {.i32 = value}};
     ArkUI_AttributeItem item = {values, sizeof(values) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_FOREGROUND_BLUR_STYLE, &item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_FOREGROUND_BLUR_STYLE)->value[PARAM_4].i32, value);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_FOREGROUND_BLUR_STYLE)->value[PARAM_5].i32, value);
     NAPI_END;
 }
 
@@ -371,11 +372,11 @@ static napi_value TestCommonAttrsForegroundBlurStyle030(napi_env env, napi_callb
 {
     NAPI_START(stack, ARKUI_NODE_STACK);
     int32_t value = GRAY_SCALE_MAX;
-    ArkUI_NumberValue values[] = {{.i32 = ARKUI_BLUR_STYLE_THIN}, {}, {}, {}, {.i32 = value}};
+    ArkUI_NumberValue values[] = {{.i32 = ARKUI_BLUR_STYLE_THIN}, {}, {}, {}, {}, {.i32 = value}};
     ArkUI_AttributeItem item = {values, sizeof(values) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_FOREGROUND_BLUR_STYLE, &item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_FOREGROUND_BLUR_STYLE)->value[PARAM_4].i32, value);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_FOREGROUND_BLUR_STYLE)->value[PARAM_5].i32, value);
     NAPI_END;
 }
 
@@ -383,11 +384,11 @@ static napi_value TestCommonAttrsForegroundBlurStyle031(napi_env env, napi_callb
 {
     NAPI_START(stack, ARKUI_NODE_STACK);
     int32_t value = SIZE_200;
-    ArkUI_NumberValue values[] = {{.i32 = ARKUI_BLUR_STYLE_THIN}, {}, {}, {}, {.i32 = value}};
+    ArkUI_NumberValue values[] = {{.i32 = ARKUI_BLUR_STYLE_THIN}, {}, {}, {}, {}, {.i32 = value}};
     ArkUI_AttributeItem item = {values, sizeof(values) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_FOREGROUND_BLUR_STYLE, &item);
     ASSERT_EQ(ret, INVALID_PARAM);
-    ASSERT_NE(nodeAPI->getAttribute(stack, NODE_FOREGROUND_BLUR_STYLE)->value[PARAM_4].i32, value);
+    ASSERT_NE(nodeAPI->getAttribute(stack, NODE_FOREGROUND_BLUR_STYLE)->value[PARAM_5].i32, value);
     NAPI_END;
 }
 
@@ -395,9 +396,11 @@ static napi_value TestCommonAttrsForegroundBlurStyle032(napi_env env, napi_callb
 {
     NAPI_START(stack, ARKUI_NODE_STACK);
     int32_t value = PARAM_20;
+    float level = FOREGROUND_BLUR_STYLE_LEVEL_NORMAL;
     ArkUI_NumberValue values[] = {{.i32 = ARKUI_BLUR_STYLE_THIN},
                                   {.i32 = ARKUI_COLOR_MODE_SYSTEM},
                                   {.i32 = ARKUI_ADAPTIVE_COLOR_AVERAGE},
+                                  {.f32 = level},
                                   {.i32 = value},
                                   {.i32 = value}};
     ArkUI_AttributeItem item = {values, sizeof(values) / sizeof(ArkUI_NumberValue)};
@@ -407,8 +410,9 @@ static napi_value TestCommonAttrsForegroundBlurStyle032(napi_env env, napi_callb
     ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_FOREGROUND_BLUR_STYLE)->value[PARAM_1].i32, ARKUI_COLOR_MODE_SYSTEM);
     ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_FOREGROUND_BLUR_STYLE)->value[PARAM_2].i32,
               ARKUI_ADAPTIVE_COLOR_AVERAGE);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_FOREGROUND_BLUR_STYLE)->value[PARAM_3].i32, value);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_FOREGROUND_BLUR_STYLE)->value[PARAM_3].f32, level);
     ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_FOREGROUND_BLUR_STYLE)->value[PARAM_4].i32, value);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_FOREGROUND_BLUR_STYLE)->value[PARAM_5].i32, value);
     NAPI_END;
 }
 

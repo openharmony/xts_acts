@@ -24,11 +24,11 @@ static napi_value TestTextBorderColor001(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.u32 = red}};
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_BORDER_COLOR, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_COLOR)->value[PARAM_0].u32, red);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_COLOR)->value[PARAM_1].u32, red);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_COLOR)->value[PARAM_2].u32, red);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_COLOR)->value[PARAM_3].u32, red);
-    ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
 
@@ -39,11 +39,11 @@ static napi_value TestTextBorderColor002(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.u32 = black}};
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_BORDER_COLOR, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_COLOR)->value[PARAM_0].u32, black);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_COLOR)->value[PARAM_1].u32, black);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_COLOR)->value[PARAM_2].u32, black);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_COLOR)->value[PARAM_3].u32, black);
-    ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
 
@@ -54,11 +54,11 @@ static napi_value TestTextBorderColor003(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.u32 = white}};
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_BORDER_COLOR, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_COLOR)->value[PARAM_0].u32, white);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_COLOR)->value[PARAM_1].u32, white);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_COLOR)->value[PARAM_2].u32, white);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_COLOR)->value[PARAM_3].u32, white);
-    ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
 
@@ -72,11 +72,11 @@ static napi_value TestTextBorderColor004(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.u32 = red}, {.u32 = green}, {.u32 = blue}, {.u32 = yellow}};
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_BORDER_COLOR, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_COLOR)->value[PARAM_0].u32, red);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_COLOR)->value[PARAM_1].u32, green);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_COLOR)->value[PARAM_2].u32, blue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_COLOR)->value[PARAM_3].u32, yellow);
-    ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
 

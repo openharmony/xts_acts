@@ -30,8 +30,8 @@ static napi_value TestTextTextCase002(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.i32 = ARKUI_TEXT_CASE_LOWER}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_CASE, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_CASE)->value[PARAM_0].i32, ARKUI_TEXT_CASE_LOWER);
     ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_CASE)->value[PARAM_0].i32, ARKUI_TEXT_CASE_LOWER);
     NAPI_END;
 }
 
@@ -41,8 +41,8 @@ static napi_value TestTextTextCase003(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.i32 = ARKUI_TEXT_CASE_UPPER}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_CASE, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_CASE)->value[PARAM_0].i32, ARKUI_TEXT_CASE_UPPER);
     ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_CASE)->value[PARAM_0].i32, ARKUI_TEXT_CASE_UPPER);
     NAPI_END;
 }
 
@@ -53,11 +53,10 @@ static napi_value TestTextTextCase004(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.i32 = exception}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_CASE, &valueItem);
-    if (nodeAPI->getAttribute(text, NODE_BACKGROUND_IMAGE) != nullptr) {
+    ASSERT_EQ(ret, INVALID_PARAM);
+    if (nodeAPI->getAttribute(text, NODE_TEXT_CASE) != nullptr) {
         ASSERT_NE(nodeAPI->getAttribute(text, NODE_TEXT_CASE)->value[PARAM_0].i32, exception);
     };
-
-    ASSERT_EQ(ret, INVALID_PARAM);
     NAPI_END;
 }
 

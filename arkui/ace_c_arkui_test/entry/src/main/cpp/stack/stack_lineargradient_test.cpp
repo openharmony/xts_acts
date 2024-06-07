@@ -27,7 +27,7 @@ static napi_value TestStackLinearGradient001(napi_env env, napi_callback_info in
     float end = 1.0;
     float stops[] = {begin, end};
     float angle = 60;
-    float expectAngle = 0;
+    float expectAngle = 180;
     int32_t size = 2;
     int32_t repeating = 0;
 
@@ -61,7 +61,7 @@ static napi_value TestStackLinearGradient002(napi_env env, napi_callback_info in
     float end = 1.0;
     float stops[] = {begin, end};
     float angle = 60;
-    float expectAngle = 0;
+    float expectAngle = 180;
     int32_t size = 2;
     int32_t repeating = 0;
 
@@ -95,7 +95,7 @@ static napi_value TestStackLinearGradient003(napi_env env, napi_callback_info in
     float end = 1.0;
     float stops[] = {begin, end};
     float angle = 60;
-    float expectAngle = 0;
+    float expectAngle = 180;
     int32_t size = 2;
     int32_t repeating = 0;
 
@@ -129,7 +129,7 @@ static napi_value TestStackLinearGradient004(napi_env env, napi_callback_info in
     float end = 1.0;
     float stops[] = {begin, end};
     float angle = 60;
-    float expectAngle = 0;
+    float expectAngle = 180;
     int32_t size = 2;
     int32_t repeating = 0;
 
@@ -163,7 +163,7 @@ static napi_value TestStackLinearGradient005(napi_env env, napi_callback_info in
     float end = 1.0;
     float stops[] = {begin, end};
     float angle = 60;
-    float expectAngle = 0;
+    float expectAngle = 180;
     int32_t size = 2;
     int32_t repeating = 0;
 
@@ -197,7 +197,7 @@ static napi_value TestStackLinearGradient006(napi_env env, napi_callback_info in
     float end = 1.0;
     float stops[] = {begin, end};
     float angle = 60;
-    float expectAngle = 0;
+    float expectAngle = 180;
     int32_t size = 2;
     int32_t repeating = 0;
 
@@ -231,7 +231,7 @@ static napi_value TestStackLinearGradient007(napi_env env, napi_callback_info in
     float end = 1.0;
     float stops[] = {begin, end};
     float angle = 60;
-    float expectAngle = 0;
+    float expectAngle = 180;
     int32_t size = 2;
     int32_t repeating = 0;
 
@@ -265,7 +265,7 @@ static napi_value TestStackLinearGradient008(napi_env env, napi_callback_info in
     float end = 1.0;
     float stops[] = {begin, end};
     float angle = 60;
-    float expectAngle = 0;
+    float expectAngle = 180;
     int32_t size = 2;
     int32_t repeating = 0;
 
@@ -299,7 +299,7 @@ static napi_value TestStackLinearGradient009(napi_env env, napi_callback_info in
     float end = 1.0;
     float stops[] = {begin, end};
     float angle = 60;
-    float expectAngle = 0;
+    float expectAngle = 180;
     int32_t size = 2;
     int32_t repeating = 0;
 

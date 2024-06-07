@@ -24,8 +24,8 @@ static napi_value TestTextMinFontSize001(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.f32 = minFontSizeValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_MIN_FONT_SIZE, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_MIN_FONT_SIZE)->value[PARAM_0].f32, minFontSizeValue);
     ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_MIN_FONT_SIZE)->value[PARAM_0].f32, minFontSizeValue);
     NAPI_END;
 }
 
@@ -36,8 +36,8 @@ static napi_value TestTextMinFontSize002(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.f32 = minFontSizeValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_MIN_FONT_SIZE, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_MIN_FONT_SIZE)->value[PARAM_0].f32, minFontSizeValue);
     ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_MIN_FONT_SIZE)->value[PARAM_0].f32, minFontSizeValue);
     NAPI_END;
 }
 

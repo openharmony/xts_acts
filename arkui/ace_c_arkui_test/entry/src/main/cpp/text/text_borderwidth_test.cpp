@@ -24,11 +24,11 @@ static napi_value TestTextBorderWidth001(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.f32 = borderWidthValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_BORDER_WIDTH, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_WIDTH)->value[PARAM_0].f32, borderWidthValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_WIDTH)->value[PARAM_1].f32, borderWidthValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_WIDTH)->value[PARAM_2].f32, borderWidthValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_WIDTH)->value[PARAM_3].f32, borderWidthValue);
-    ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
 
@@ -42,11 +42,11 @@ static napi_value TestTextBorderWidth002(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.f32 = topValue}, {.f32 = rightValue}, {.f32 = bottomValue}, {.f32 = leftValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_BORDER_WIDTH, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_WIDTH)->value[PARAM_0].f32, topValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_WIDTH)->value[PARAM_1].f32, rightValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_WIDTH)->value[PARAM_2].f32, bottomValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_WIDTH)->value[PARAM_3].f32, leftValue);
-    ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
 
@@ -57,10 +57,10 @@ static napi_value TestTextBorderWidth003(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.f32 = exceptionValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_BORDER_WIDTH, &valueItem);
+    ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(text, NODE_BORDER_WIDTH) != nullptr) {
         ASSERT_NE(nodeAPI->getAttribute(text, NODE_BORDER_WIDTH)->value[PARAM_3].f32, exceptionValue);
     }
-    ASSERT_EQ(ret, INVALID_PARAM);
     NAPI_END;
 }
 
@@ -77,14 +77,13 @@ static napi_value TestTextBorderWidth004(napi_env env, napi_callback_info info)
                                  {.f32 = leftExceptionValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_BORDER_WIDTH, &valueItem);
+    ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(text, NODE_BORDER_WIDTH) != nullptr) {
         ASSERT_NE(nodeAPI->getAttribute(text, NODE_BORDER_WIDTH)->value[PARAM_0].f32, topExceptionValue);
         ASSERT_NE(nodeAPI->getAttribute(text, NODE_BORDER_WIDTH)->value[PARAM_1].f32, rightExceptionValue);
         ASSERT_NE(nodeAPI->getAttribute(text, NODE_BORDER_WIDTH)->value[PARAM_2].f32, bottomExceptionValue);
         ASSERT_NE(nodeAPI->getAttribute(text, NODE_BORDER_WIDTH)->value[PARAM_3].f32, leftExceptionValue);
     }
-
-    ASSERT_EQ(ret, INVALID_PARAM);
     NAPI_END;
 }
 

@@ -23,8 +23,8 @@ static napi_value TestTextBackgroundImage001(napi_env env, napi_callback_info in
     ArkUI_AttributeItem srcItem = {};
     srcItem.string = "resource://media/icon.png";
     auto ret = nodeAPI->setAttribute(text, NODE_BACKGROUND_IMAGE, &srcItem);
-    ASSERT_STREQ(nodeAPI->getAttribute(text, NODE_BACKGROUND_IMAGE)->string, "resource://media/icon.png");
     ASSERT_EQ(ret, SUCCESS);
+    ASSERT_STREQ(nodeAPI->getAttribute(text, NODE_BACKGROUND_IMAGE)->string, "resource://media/icon.png");
     NAPI_END;
 }
 
@@ -35,9 +35,9 @@ static napi_value TestTextBackgroundImage002(napi_env env, napi_callback_info in
     ArkUI_AttributeItem srcItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     srcItem.string = "resource://media/icon.png";
     auto ret = nodeAPI->setAttribute(text, NODE_BACKGROUND_IMAGE, &srcItem);
+    ASSERT_EQ(ret, SUCCESS);
     ASSERT_STREQ(nodeAPI->getAttribute(text, NODE_BACKGROUND_IMAGE)->string, "resource://media/icon.png");
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BACKGROUND_IMAGE)->value[PARAM_0].i32, ARKUI_IMAGE_REPEAT_NONE);
-    ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
 
@@ -48,9 +48,9 @@ static napi_value TestTextBackgroundImage003(napi_env env, napi_callback_info in
     ArkUI_AttributeItem srcItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     srcItem.string = "resource://media/icon.png";
     auto ret = nodeAPI->setAttribute(text, NODE_BACKGROUND_IMAGE, &srcItem);
+    ASSERT_EQ(ret, SUCCESS);
     ASSERT_STREQ(nodeAPI->getAttribute(text, NODE_BACKGROUND_IMAGE)->string, "resource://media/icon.png");
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BACKGROUND_IMAGE)->value[PARAM_0].i32, ARKUI_IMAGE_REPEAT_X);
-    ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
 
@@ -61,9 +61,9 @@ static napi_value TestTextBackgroundImage004(napi_env env, napi_callback_info in
     ArkUI_AttributeItem srcItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     srcItem.string = "resource://media/icon.png";
     auto ret = nodeAPI->setAttribute(text, NODE_BACKGROUND_IMAGE, &srcItem);
+    ASSERT_EQ(ret, SUCCESS);
     ASSERT_STREQ(nodeAPI->getAttribute(text, NODE_BACKGROUND_IMAGE)->string, "resource://media/icon.png");
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BACKGROUND_IMAGE)->value[PARAM_0].i32, ARKUI_IMAGE_REPEAT_Y);
-    ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
 
@@ -74,9 +74,9 @@ static napi_value TestTextBackgroundImage005(napi_env env, napi_callback_info in
     ArkUI_AttributeItem srcItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     srcItem.string = "resource://media/icon.png";
     auto ret = nodeAPI->setAttribute(text, NODE_BACKGROUND_IMAGE, &srcItem);
+    ASSERT_EQ(ret, SUCCESS);
     ASSERT_STREQ(nodeAPI->getAttribute(text, NODE_BACKGROUND_IMAGE)->string, "resource://media/icon.png");
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BACKGROUND_IMAGE)->value[PARAM_0].i32, ARKUI_IMAGE_REPEAT_XY);
-    ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
 
@@ -86,8 +86,8 @@ static napi_value TestTextBackgroundImage006(napi_env env, napi_callback_info in
     ArkUI_AttributeItem srcItem = {};
     srcItem.string = "nullptr";
     auto ret = nodeAPI->setAttribute(text, NODE_BACKGROUND_IMAGE, &srcItem);
-    ASSERT_STREQ(nodeAPI->getAttribute(text, NODE_BACKGROUND_IMAGE)->string, "nullptr");
     ASSERT_EQ(ret, SUCCESS);
+    ASSERT_STREQ(nodeAPI->getAttribute(text, NODE_BACKGROUND_IMAGE)->string, "nullptr");
     NAPI_END;
 }
 

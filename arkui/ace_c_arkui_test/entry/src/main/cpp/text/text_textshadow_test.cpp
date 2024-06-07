@@ -35,12 +35,12 @@ static napi_value TestTextTextShadow002(napi_env env, napi_callback_info info)
         {.f32 = radius}, {.i32 = ARKUI_SHADOW_TYPE_COLOR}, {.u32 = colour}, {.f32 = xDeviation}, {.f32 = yDeviation}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_TEXT_SHADOW, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_TEXT_SHADOW)->value[PARAM_0].f32, radius);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_TEXT_SHADOW)->value[PARAM_1].i32, ARKUI_SHADOW_TYPE_COLOR);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_TEXT_SHADOW)->value[PARAM_2].u32, colour);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_TEXT_SHADOW)->value[PARAM_3].f32, xDeviation);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_TEXT_SHADOW)->value[PARAM_4].f32, yDeviation);
-    ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
 
@@ -56,12 +56,12 @@ static napi_value TestTextTextShadow003(napi_env env, napi_callback_info info)
         {.f32 = radius}, {.i32 = ARKUI_SHADOW_TYPE_BLUR}, {.u32 = colour}, {.f32 = xDeviation}, {.f32 = yDeviation}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_TEXT_SHADOW, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_TEXT_SHADOW)->value[PARAM_0].f32, radius);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_TEXT_SHADOW)->value[PARAM_1].i32, ARKUI_SHADOW_TYPE_BLUR);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_TEXT_SHADOW)->value[PARAM_2].u32, colour);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_TEXT_SHADOW)->value[PARAM_3].f32, xDeviation);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_TEXT_SHADOW)->value[PARAM_4].f32, yDeviation);
-    ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
 
