@@ -130,7 +130,7 @@ void VEncAPI11Sample::DumpLtrInfo(OH_AVBuffer *buffer)
     OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_PER_FRAME_POC, &framePoc);
 }
 
-void VEncAPI11Sample::DumpQPInfo(OH_AVBuffer *buffer){}
+void VEncAPI11Sample::DumpQPInfo(OH_AVBuffer *buffer) {}
 
 void VEncAPI11Sample::DumpInfo(OH_AVCodecBufferAttr attr, OH_AVBuffer *buffer)
 {
