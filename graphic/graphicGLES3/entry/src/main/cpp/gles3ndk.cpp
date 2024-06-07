@@ -5685,7 +5685,7 @@ static napi_value GLGetnUniformuiv(napi_env env, napi_callback_info info)
     return getError(env, glError);
 }
 
-static napi_value GlActiveShaderProgramAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLActiveShaderProgramAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -5698,7 +5698,7 @@ static napi_value GlActiveShaderProgramAbnormal(napi_env env, napi_callback_info
     return result;
 }
 
-static napi_value GlActiveTextureAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLActiveTextureAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -5711,7 +5711,7 @@ static napi_value GlActiveTextureAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlAttachShaderAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLAttachShaderAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -5724,7 +5724,7 @@ static napi_value GlAttachShaderAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlBeginQueryAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLBeginQueryAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -5737,7 +5737,7 @@ static napi_value GlBeginQueryAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlBeginTransformFeedbackAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLBeginTransformFeedbackAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -5750,7 +5750,7 @@ static napi_value GlBeginTransformFeedbackAbnormal(napi_env env, napi_callback_i
     return result;
 }
 
-static napi_value GlBindAttribLocationAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLBindAttribLocationAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -5763,7 +5763,7 @@ static napi_value GlBindAttribLocationAbnormal(napi_env env, napi_callback_info 
     return result;
 }
 
-static napi_value GlBindBufferAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLBindBufferAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -5776,7 +5776,7 @@ static napi_value GlBindBufferAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlBindBufferBaseAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLBindBufferBaseAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -5789,7 +5789,7 @@ static napi_value GlBindBufferBaseAbnormal(napi_env env, napi_callback_info info
     return result;
 }
 
-static napi_value GlBindBufferRangeAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLBindBufferRangeAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -5802,7 +5802,7 @@ static napi_value GlBindBufferRangeAbnormal(napi_env env, napi_callback_info inf
     return result;
 }
 
-static napi_value GlBindFramebufferAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLBindFramebufferAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -5815,7 +5815,7 @@ static napi_value GlBindFramebufferAbnormal(napi_env env, napi_callback_info inf
     return result;
 }
 
-static napi_value GlBindImageTextureAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLBindImageTextureAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -5828,7 +5828,7 @@ static napi_value GlBindImageTextureAbnormal(napi_env env, napi_callback_info in
     return result;
 }
 
-static napi_value GlBindProgramPipelineAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLBindProgramPipelineAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -5841,7 +5841,7 @@ static napi_value GlBindProgramPipelineAbnormal(napi_env env, napi_callback_info
     return result;
 }
 
-static napi_value GlBindRenderbufferAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLBindRenderbufferAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -5854,7 +5854,7 @@ static napi_value GlBindRenderbufferAbnormal(napi_env env, napi_callback_info in
     return result;
 }
 
-static napi_value GlBindSamplerAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLBindSamplerAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -5867,7 +5867,7 @@ static napi_value GlBindSamplerAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlBindTextureAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLBindTextureAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -5880,7 +5880,7 @@ static napi_value GlBindTextureAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlBindTransformFeedbackAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLBindTransformFeedbackAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -5893,7 +5893,7 @@ static napi_value GlBindTransformFeedbackAbnormal(napi_env env, napi_callback_in
     return result;
 }
 
-static napi_value GlBindVertexArrayAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLBindVertexArrayAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -5906,7 +5906,7 @@ static napi_value GlBindVertexArrayAbnormal(napi_env env, napi_callback_info inf
     return result;
 }
 
-static napi_value GlBindVertexBufferAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLBindVertexBufferAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -5919,7 +5919,7 @@ static napi_value GlBindVertexBufferAbnormal(napi_env env, napi_callback_info in
     return result;
 }
 
-static napi_value GlBlendEquationAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLBlendEquationAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -5932,7 +5932,7 @@ static napi_value GlBlendEquationAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlBlendEquationiAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLBlendEquationiAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -5945,7 +5945,7 @@ static napi_value GlBlendEquationiAbnormal(napi_env env, napi_callback_info info
     return result;
 }
 
-static napi_value GlBlendEquationSeparateAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLBlendEquationSeparateAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -5958,7 +5958,7 @@ static napi_value GlBlendEquationSeparateAbnormal(napi_env env, napi_callback_in
     return result;
 }
 
-static napi_value GlBlendEquationSeparateiAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLBlendEquationSeparateiAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -5971,7 +5971,7 @@ static napi_value GlBlendEquationSeparateiAbnormal(napi_env env, napi_callback_i
     return result;
 }
 
-static napi_value GlBlendFuncAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLBlendFuncAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -5984,7 +5984,7 @@ static napi_value GlBlendFuncAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlBlendFunciAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLBlendFunciAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -5997,7 +5997,7 @@ static napi_value GlBlendFunciAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlBlendFuncSeparateAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLBlendFuncSeparateAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6010,7 +6010,7 @@ static napi_value GlBlendFuncSeparateAbnormal(napi_env env, napi_callback_info i
     return result;
 }
 
-static napi_value GlBlendFuncSeparateiAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLBlendFuncSeparateiAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6023,7 +6023,7 @@ static napi_value GlBlendFuncSeparateiAbnormal(napi_env env, napi_callback_info 
     return result;
 }
 
-static napi_value GlBlitFramebufferAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLBlitFramebufferAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6036,7 +6036,7 @@ static napi_value GlBlitFramebufferAbnormal(napi_env env, napi_callback_info inf
     return result;
 }
 
-static napi_value GlBufferDataAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLBufferDataAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6049,7 +6049,7 @@ static napi_value GlBufferDataAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlBufferSubDataAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLBufferSubDataAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6062,7 +6062,7 @@ static napi_value GlBufferSubDataAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlCheckFramebufferStatusAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLCheckFramebufferStatusAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6075,7 +6075,7 @@ static napi_value GlCheckFramebufferStatusAbnormal(napi_env env, napi_callback_i
     return result;
 }
 
-static napi_value GlClearAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLClearAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6088,7 +6088,7 @@ static napi_value GlClearAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlClearBufferfiAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLClearBufferfiAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6101,7 +6101,7 @@ static napi_value GlClearBufferfiAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlClearBufferfvAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLClearBufferfvAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6114,7 +6114,7 @@ static napi_value GlClearBufferfvAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlClearBufferivAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLClearBufferivAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6127,7 +6127,7 @@ static napi_value GlClearBufferivAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlClearBufferuivAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLClearBufferuivAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6140,7 +6140,7 @@ static napi_value GlClearBufferuivAbnormal(napi_env env, napi_callback_info info
     return result;
 }
 
-static napi_value GlClientWaitSyncAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLClientWaitSyncAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6153,7 +6153,7 @@ static napi_value GlClientWaitSyncAbnormal(napi_env env, napi_callback_info info
     return result;
 }
 
-static napi_value GlColorMaskiAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLColorMaskiAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6166,7 +6166,7 @@ static napi_value GlColorMaskiAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlCopyBufferSubDataAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLCopyBufferSubDataAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6179,7 +6179,7 @@ static napi_value GlCopyBufferSubDataAbnormal(napi_env env, napi_callback_info i
     return result;
 }
 
-static napi_value GlCopyImageSubDataAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLCopyImageSubDataAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6193,7 +6193,7 @@ static napi_value GlCopyImageSubDataAbnormal(napi_env env, napi_callback_info in
     return result;
 }
 
-static napi_value GlCopyTexImage2DAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLCopyTexImage2DAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6206,7 +6206,7 @@ static napi_value GlCopyTexImage2DAbnormal(napi_env env, napi_callback_info info
     return result;
 }
 
-static napi_value GlCopyTexSubImage2DAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLCopyTexSubImage2DAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6219,7 +6219,7 @@ static napi_value GlCopyTexSubImage2DAbnormal(napi_env env, napi_callback_info i
     return result;
 }
 
-static napi_value GlCreateShaderAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLCreateShaderAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6232,7 +6232,7 @@ static napi_value GlCreateShaderAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlCreateShaderProgramvAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLCreateShaderProgramvAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6245,7 +6245,7 @@ static napi_value GlCreateShaderProgramvAbnormal(napi_env env, napi_callback_inf
     return result;
 }
 
-static napi_value GlCullFaceAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLCullFaceAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6258,7 +6258,7 @@ static napi_value GlCullFaceAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlDebugMessageControlAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLDebugMessageControlAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6271,7 +6271,7 @@ static napi_value GlDebugMessageControlAbnormal(napi_env env, napi_callback_info
     return result;
 }
 
-static napi_value GlDeleteBuffersAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLDeleteBuffersAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6284,7 +6284,7 @@ static napi_value GlDeleteBuffersAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlDeleteFramebuffersAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLDeleteFramebuffersAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6297,7 +6297,7 @@ static napi_value GlDeleteFramebuffersAbnormal(napi_env env, napi_callback_info 
     return result;
 }
 
-static napi_value GlDeleteProgramAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLDeleteProgramAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6310,7 +6310,7 @@ static napi_value GlDeleteProgramAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlDeleteProgramPipelinesAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLDeleteProgramPipelinesAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6323,7 +6323,7 @@ static napi_value GlDeleteProgramPipelinesAbnormal(napi_env env, napi_callback_i
     return result;
 }
 
-static napi_value GlDeleteQueriesAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLDeleteQueriesAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6336,7 +6336,7 @@ static napi_value GlDeleteQueriesAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlDeleteRenderbuffersAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLDeleteRenderbuffersAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6349,7 +6349,7 @@ static napi_value GlDeleteRenderbuffersAbnormal(napi_env env, napi_callback_info
     return result;
 }
 
-static napi_value GlDeleteSamplersAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLDeleteSamplersAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6362,7 +6362,7 @@ static napi_value GlDeleteSamplersAbnormal(napi_env env, napi_callback_info info
     return result;
 }
 
-static napi_value GlDeleteShaderAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLDeleteShaderAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6375,7 +6375,7 @@ static napi_value GlDeleteShaderAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlDeleteSyncAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLDeleteSyncAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6388,7 +6388,7 @@ static napi_value GlDeleteSyncAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlDeleteTexturesAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLDeleteTexturesAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6401,7 +6401,7 @@ static napi_value GlDeleteTexturesAbnormal(napi_env env, napi_callback_info info
     return result;
 }
 
-static napi_value GlDeleteTransformFeedbacksAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLDeleteTransformFeedbacksAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6414,7 +6414,7 @@ static napi_value GlDeleteTransformFeedbacksAbnormal(napi_env env, napi_callback
     return result;
 }
 
-static napi_value GlDeleteVertexArraysAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLDeleteVertexArraysAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6427,7 +6427,7 @@ static napi_value GlDeleteVertexArraysAbnormal(napi_env env, napi_callback_info 
     return result;
 }
 
-static napi_value GlDepthFuncAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLDepthFuncAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6440,7 +6440,7 @@ static napi_value GlDepthFuncAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlDetachShaderAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLDetachShaderAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6453,7 +6453,7 @@ static napi_value GlDetachShaderAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlDisableAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLDisableAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6466,7 +6466,7 @@ static napi_value GlDisableAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlDisableiAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLDisableiAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6479,7 +6479,7 @@ static napi_value GlDisableiAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlDisableVertexAttribArrayAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLDisableVertexAttribArrayAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6492,7 +6492,7 @@ static napi_value GlDisableVertexAttribArrayAbnormal(napi_env env, napi_callback
     return result;
 }
 
-static napi_value GlDispatchComputeAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLDispatchComputeAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6505,7 +6505,7 @@ static napi_value GlDispatchComputeAbnormal(napi_env env, napi_callback_info inf
     return result;
 }
 
-static napi_value GlDispatchComputeIndirectAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLDispatchComputeIndirectAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6518,7 +6518,7 @@ static napi_value GlDispatchComputeIndirectAbnormal(napi_env env, napi_callback_
     return result;
 }
 
-static napi_value GlDrawArraysAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLDrawArraysAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6531,7 +6531,7 @@ static napi_value GlDrawArraysAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlDrawArraysIndirectAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLDrawArraysIndirectAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6544,7 +6544,7 @@ static napi_value GlDrawArraysIndirectAbnormal(napi_env env, napi_callback_info 
     return result;
 }
 
-static napi_value GlDrawArraysInstancedAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLDrawArraysInstancedAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6557,7 +6557,7 @@ static napi_value GlDrawArraysInstancedAbnormal(napi_env env, napi_callback_info
     return result;
 }
 
-static napi_value GlDrawBuffersAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLDrawBuffersAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6570,7 +6570,7 @@ static napi_value GlDrawBuffersAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlFlushMappedBufferRangeAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLFlushMappedBufferRangeAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6583,7 +6583,7 @@ static napi_value GlFlushMappedBufferRangeAbnormal(napi_env env, napi_callback_i
     return result;
 }
 
-static napi_value GlFramebufferParameteriAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLFramebufferParameteriAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6596,7 +6596,7 @@ static napi_value GlFramebufferParameteriAbnormal(napi_env env, napi_callback_in
     return result;
 }
 
-static napi_value GlFramebufferRenderbufferAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLFramebufferRenderbufferAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6609,7 +6609,7 @@ static napi_value GlFramebufferRenderbufferAbnormal(napi_env env, napi_callback_
     return result;
 }
 
-static napi_value GlFramebufferTextureAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLFramebufferTextureAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6622,7 +6622,7 @@ static napi_value GlFramebufferTextureAbnormal(napi_env env, napi_callback_info 
     return result;
 }
 
-static napi_value GlFramebufferTexture2DAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLFramebufferTexture2DAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6635,7 +6635,7 @@ static napi_value GlFramebufferTexture2DAbnormal(napi_env env, napi_callback_inf
     return result;
 }
 
-static napi_value GlFramebufferTextureLayerAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLFramebufferTextureLayerAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6648,7 +6648,7 @@ static napi_value GlFramebufferTextureLayerAbnormal(napi_env env, napi_callback_
     return result;
 }
 
-static napi_value GlFrontFaceAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLFrontFaceAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6661,7 +6661,7 @@ static napi_value GlFrontFaceAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlGenBuffersAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGenBuffersAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6674,7 +6674,7 @@ static napi_value GlGenBuffersAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlGenerateMipmapAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGenerateMipmapAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6687,7 +6687,7 @@ static napi_value GlGenerateMipmapAbnormal(napi_env env, napi_callback_info info
     return result;
 }
 
-static napi_value GlGenFramebuffersAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGenFramebuffersAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6700,7 +6700,7 @@ static napi_value GlGenFramebuffersAbnormal(napi_env env, napi_callback_info inf
     return result;
 }
 
-static napi_value GlGenProgramPipelinesAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGenProgramPipelinesAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6713,7 +6713,7 @@ static napi_value GlGenProgramPipelinesAbnormal(napi_env env, napi_callback_info
     return result;
 }
 
-static napi_value GlGenQueriesAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGenQueriesAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6726,7 +6726,7 @@ static napi_value GlGenQueriesAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlGenRenderbuffersAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGenRenderbuffersAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6739,7 +6739,7 @@ static napi_value GlGenRenderbuffersAbnormal(napi_env env, napi_callback_info in
     return result;
 }
 
-static napi_value GlGenSamplersAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGenSamplersAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6752,7 +6752,7 @@ static napi_value GlGenSamplersAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlGenTexturesAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGenTexturesAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6765,7 +6765,7 @@ static napi_value GlGenTexturesAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlGenTransformFeedbacksAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGenTransformFeedbacksAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6778,7 +6778,7 @@ static napi_value GlGenTransformFeedbacksAbnormal(napi_env env, napi_callback_in
     return result;
 }
 
-static napi_value GlGenVertexArraysAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGenVertexArraysAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6791,7 +6791,7 @@ static napi_value GlGenVertexArraysAbnormal(napi_env env, napi_callback_info inf
     return result;
 }
 
-static napi_value GlGetActiveAttribAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetActiveAttribAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6804,7 +6804,7 @@ static napi_value GlGetActiveAttribAbnormal(napi_env env, napi_callback_info inf
     return result;
 }
 
-static napi_value GlGetAttachedShadersAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetAttachedShadersAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6817,7 +6817,7 @@ static napi_value GlGetAttachedShadersAbnormal(napi_env env, napi_callback_info 
     return result;
 }
 
-static napi_value GlGetAttribLocationAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetAttribLocationAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6831,7 +6831,7 @@ static napi_value GlGetAttribLocationAbnormal(napi_env env, napi_callback_info i
     return result;
 }
 
-static napi_value GlGetBooleani_vAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetBooleani_vAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6844,7 +6844,7 @@ static napi_value GlGetBooleani_vAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlGetBooleanvAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetBooleanvAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6857,7 +6857,7 @@ static napi_value GlGetBooleanvAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlGetBufferParameteri64vAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetBufferParameteri64vAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6870,7 +6870,7 @@ static napi_value GlGetBufferParameteri64vAbnormal(napi_env env, napi_callback_i
     return result;
 }
 
-static napi_value GlGetBufferParameterivAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetBufferParameterivAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6883,7 +6883,7 @@ static napi_value GlGetBufferParameterivAbnormal(napi_env env, napi_callback_inf
     return result;
 }
 
-static napi_value GlGetBufferPointervAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetBufferPointervAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6896,7 +6896,7 @@ static napi_value GlGetBufferPointervAbnormal(napi_env env, napi_callback_info i
     return result;
 }
 
-static napi_value GlGetFloatvAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetFloatvAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6909,7 +6909,7 @@ static napi_value GlGetFloatvAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlGetFragDataLocationAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetFragDataLocationAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6922,7 +6922,7 @@ static napi_value GlGetFragDataLocationAbnormal(napi_env env, napi_callback_info
     return result;
 }
 
-static napi_value GlGetFramebufferAttachmentParameterivAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetFramebufferAttachmentParameterivAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6935,7 +6935,7 @@ static napi_value GlGetFramebufferAttachmentParameterivAbnormal(napi_env env, na
     return result;
 }
 
-static napi_value GlGetFramebufferParameterivAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetFramebufferParameterivAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6948,7 +6948,7 @@ static napi_value GlGetFramebufferParameterivAbnormal(napi_env env, napi_callbac
     return result;
 }
 
-static napi_value GlGetInteger64i_vAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetInteger64i_vAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6961,7 +6961,7 @@ static napi_value GlGetInteger64i_vAbnormal(napi_env env, napi_callback_info inf
     return result;
 }
 
-static napi_value GlGetInteger64vAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetInteger64vAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6974,7 +6974,7 @@ static napi_value GlGetInteger64vAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlGetIntegeri_vAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetIntegeri_vAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -6987,7 +6987,7 @@ static napi_value GlGetIntegeri_vAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlGetIntegervAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetIntegervAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7000,7 +7000,7 @@ static napi_value GlGetIntegervAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlGetInternalformativAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetInternalformativAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7013,7 +7013,7 @@ static napi_value GlGetInternalformativAbnormal(napi_env env, napi_callback_info
     return result;
 }
 
-static napi_value GlGetObjectLabelAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetObjectLabelAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7026,7 +7026,7 @@ static napi_value GlGetObjectLabelAbnormal(napi_env env, napi_callback_info info
     return result;
 }
 
-static napi_value GlGetObjectPtrLabelAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetObjectPtrLabelAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7039,7 +7039,7 @@ static napi_value GlGetObjectPtrLabelAbnormal(napi_env env, napi_callback_info i
     return result;
 }
 
-static napi_value GlGetPointervAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetPointervAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7052,7 +7052,7 @@ static napi_value GlGetPointervAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlGetProgramBinaryAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetProgramBinaryAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7065,7 +7065,7 @@ static napi_value GlGetProgramBinaryAbnormal(napi_env env, napi_callback_info in
     return result;
 }
 
-static napi_value GlGetProgramInterfaceivAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetProgramInterfaceivAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7078,7 +7078,7 @@ static napi_value GlGetProgramInterfaceivAbnormal(napi_env env, napi_callback_in
     return result;
 }
 
-static napi_value GlGetProgramivAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetProgramivAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7091,7 +7091,7 @@ static napi_value GlGetProgramivAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlGetProgramPipelineivAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetProgramPipelineivAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7104,7 +7104,7 @@ static napi_value GlGetProgramPipelineivAbnormal(napi_env env, napi_callback_inf
     return result;
 }
 
-static napi_value GlGetProgramResourceIndexAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetProgramResourceIndexAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7117,7 +7117,7 @@ static napi_value GlGetProgramResourceIndexAbnormal(napi_env env, napi_callback_
     return result;
 }
 
-static napi_value GlGetProgramResourceivAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetProgramResourceivAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7130,7 +7130,7 @@ static napi_value GlGetProgramResourceivAbnormal(napi_env env, napi_callback_inf
     return result;
 }
 
-static napi_value GlGetProgramResourceLocationAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetProgramResourceLocationAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7143,7 +7143,7 @@ static napi_value GlGetProgramResourceLocationAbnormal(napi_env env, napi_callba
     return result;
 }
 
-static napi_value GlGetProgramResourceNameAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetProgramResourceNameAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7156,7 +7156,7 @@ static napi_value GlGetProgramResourceNameAbnormal(napi_env env, napi_callback_i
     return result;
 }
 
-static napi_value GlGetQueryivAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetQueryivAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7169,7 +7169,7 @@ static napi_value GlGetQueryivAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlGetQueryObjectuivAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetQueryObjectuivAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7182,7 +7182,7 @@ static napi_value GlGetQueryObjectuivAbnormal(napi_env env, napi_callback_info i
     return result;
 }
 
-static napi_value GlGetRenderbufferParameterivAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetRenderbufferParameterivAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7195,7 +7195,7 @@ static napi_value GlGetRenderbufferParameterivAbnormal(napi_env env, napi_callba
     return result;
 }
 
-static napi_value GlGetSamplerParameterfvAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetSamplerParameterfvAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7208,7 +7208,7 @@ static napi_value GlGetSamplerParameterfvAbnormal(napi_env env, napi_callback_in
     return result;
 }
 
-static napi_value GlGetSamplerParameterIivAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetSamplerParameterIivAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7221,7 +7221,7 @@ static napi_value GlGetSamplerParameterIivAbnormal(napi_env env, napi_callback_i
     return result;
 }
 
-static napi_value GlGetSamplerParameterIuivAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetSamplerParameterIuivAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7234,7 +7234,7 @@ static napi_value GlGetSamplerParameterIuivAbnormal(napi_env env, napi_callback_
     return result;
 }
 
-static napi_value GlGetSamplerParameterivAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLGetSamplerParameterivAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7247,7 +7247,7 @@ static napi_value GlGetSamplerParameterivAbnormal(napi_env env, napi_callback_in
     return result;
 }
 
-static napi_value GlUniform1fAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniform1fAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7260,7 +7260,7 @@ static napi_value GlUniform1fAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlUniform1fvAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniform1fvAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7273,7 +7273,7 @@ static napi_value GlUniform1fvAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlUniform1iAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniform1iAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7286,7 +7286,7 @@ static napi_value GlUniform1iAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlUniform1ivAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniform1ivAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7299,7 +7299,7 @@ static napi_value GlUniform1ivAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlUniform1uiAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniform1uiAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7312,7 +7312,7 @@ static napi_value GlUniform1uiAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlUniform1uivAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniform1uivAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7325,7 +7325,7 @@ static napi_value GlUniform1uivAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlUniform2fAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniform2fAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7338,7 +7338,7 @@ static napi_value GlUniform2fAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlUniform2fvAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniform2fvAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7351,7 +7351,7 @@ static napi_value GlUniform2fvAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlUniform2iAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniform2iAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7364,7 +7364,7 @@ static napi_value GlUniform2iAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlUniform2ivAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniform2ivAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7377,7 +7377,7 @@ static napi_value GlUniform2ivAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlUniform2uiAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniform2uiAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7390,7 +7390,7 @@ static napi_value GlUniform2uiAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlUniform2uivAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniform2uivAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7403,7 +7403,7 @@ static napi_value GlUniform2uivAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlUniform3fAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniform3fAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7416,7 +7416,7 @@ static napi_value GlUniform3fAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlUniform3fvAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniform3fvAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7429,7 +7429,7 @@ static napi_value GlUniform3fvAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlUniform3iAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniform3iAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7442,7 +7442,7 @@ static napi_value GlUniform3iAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlUniform3ivAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniform3ivAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7455,7 +7455,7 @@ static napi_value GlUniform3ivAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlUniform3uiAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniform3uiAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7468,7 +7468,7 @@ static napi_value GlUniform3uiAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlUniform3uivAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniform3uivAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7481,7 +7481,7 @@ static napi_value GlUniform3uivAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlUniform4fAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniform4fAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7494,7 +7494,7 @@ static napi_value GlUniform4fAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlUniform4fvAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniform4fvAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7507,7 +7507,7 @@ static napi_value GlUniform4fvAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlUniform4iAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniform4iAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7520,7 +7520,7 @@ static napi_value GlUniform4iAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlUniform4ivAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniform4ivAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7533,7 +7533,7 @@ static napi_value GlUniform4ivAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlUniform4uiAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniform4uiAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7546,7 +7546,7 @@ static napi_value GlUniform4uiAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlUniform4uivAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniform4uivAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7559,7 +7559,7 @@ static napi_value GlUniform4uivAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlUniformBlockBindingAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniformBlockBindingAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7572,7 +7572,7 @@ static napi_value GlUniformBlockBindingAbnormal(napi_env env, napi_callback_info
     return result;
 }
 
-static napi_value GlUniformMatrix2fvAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniformMatrix2fvAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7585,7 +7585,7 @@ static napi_value GlUniformMatrix2fvAbnormal(napi_env env, napi_callback_info in
     return result;
 }
 
-static napi_value GlUniformMatrix2x3fvAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniformMatrix2x3fvAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7598,7 +7598,7 @@ static napi_value GlUniformMatrix2x3fvAbnormal(napi_env env, napi_callback_info 
     return result;
 }
 
-static napi_value GlUniformMatrix2x4fvAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniformMatrix2x4fvAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7611,7 +7611,7 @@ static napi_value GlUniformMatrix2x4fvAbnormal(napi_env env, napi_callback_info 
     return result;
 }
 
-static napi_value GlUniformMatrix3fvAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniformMatrix3fvAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7624,7 +7624,7 @@ static napi_value GlUniformMatrix3fvAbnormal(napi_env env, napi_callback_info in
     return result;
 }
 
-static napi_value GlUniformMatrix3x2fvAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniformMatrix3x2fvAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7637,7 +7637,7 @@ static napi_value GlUniformMatrix3x2fvAbnormal(napi_env env, napi_callback_info 
     return result;
 }
 
-static napi_value GlUniformMatrix3x4fvAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniformMatrix3x4fvAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7650,7 +7650,7 @@ static napi_value GlUniformMatrix3x4fvAbnormal(napi_env env, napi_callback_info 
     return result;
 }
 
-static napi_value GlUniformMatrix4fvAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniformMatrix4fvAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7663,7 +7663,7 @@ static napi_value GlUniformMatrix4fvAbnormal(napi_env env, napi_callback_info in
     return result;
 }
 
-static napi_value GlUniformMatrix4x2fvAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniformMatrix4x2fvAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7676,7 +7676,7 @@ static napi_value GlUniformMatrix4x2fvAbnormal(napi_env env, napi_callback_info 
     return result;
 }
 
-static napi_value GlUniformMatrix4x3fvAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLUniformMatrix4x3fvAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7689,7 +7689,7 @@ static napi_value GlUniformMatrix4x3fvAbnormal(napi_env env, napi_callback_info 
     return result;
 }
 
-static napi_value GlCompileShaderAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLCompileShaderAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7702,7 +7702,7 @@ static napi_value GlCompileShaderAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlCompressedTexImage2DAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLCompressedTexImage2DAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7715,7 +7715,7 @@ static napi_value GlCompressedTexImage2DAbnormal(napi_env env, napi_callback_inf
     return result;
 }
 
-static napi_value GlCompressedTexImage3DAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLCompressedTexImage3DAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7728,7 +7728,7 @@ static napi_value GlCompressedTexImage3DAbnormal(napi_env env, napi_callback_inf
     return result;
 }
 
-static napi_value GlCompressedTexSubImage2DAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLCompressedTexSubImage2DAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7741,7 +7741,7 @@ static napi_value GlCompressedTexSubImage2DAbnormal(napi_env env, napi_callback_
     return result;
 }
 
-static napi_value GlCompressedTexSubImage3DAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLCompressedTexSubImage3DAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7755,7 +7755,7 @@ static napi_value GlCompressedTexSubImage3DAbnormal(napi_env env, napi_callback_
     return result;
 }
 
-static napi_value GlCopyTexSubImage3DAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLCopyTexSubImage3DAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7768,7 +7768,7 @@ static napi_value GlCopyTexSubImage3DAbnormal(napi_env env, napi_callback_info i
     return result;
 }
 
-static napi_value GlDrawElementsAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLDrawElementsAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7781,7 +7781,7 @@ static napi_value GlDrawElementsAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlDrawElementsBaseVertexAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLDrawElementsBaseVertexAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7794,7 +7794,7 @@ static napi_value GlDrawElementsBaseVertexAbnormal(napi_env env, napi_callback_i
     return result;
 }
 
-static napi_value GlDrawElementsIndirectAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLDrawElementsIndirectAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7807,7 +7807,7 @@ static napi_value GlDrawElementsIndirectAbnormal(napi_env env, napi_callback_inf
     return result;
 }
 
-static napi_value GlDrawElementsInstancedAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLDrawElementsInstancedAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7820,7 +7820,7 @@ static napi_value GlDrawElementsInstancedAbnormal(napi_env env, napi_callback_in
     return result;
 }
 
-static napi_value GlDrawElementsInstancedBaseVertexAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLDrawElementsInstancedBaseVertexAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7833,7 +7833,7 @@ static napi_value GlDrawElementsInstancedBaseVertexAbnormal(napi_env env, napi_c
     return result;
 }
 
-static napi_value GlDrawRangeElementsAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLDrawRangeElementsAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7846,7 +7846,7 @@ static napi_value GlDrawRangeElementsAbnormal(napi_env env, napi_callback_info i
     return result;
 }
 
-static napi_value GlDrawRangeElementsBaseVertexAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLDrawRangeElementsBaseVertexAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7859,7 +7859,7 @@ static napi_value GlDrawRangeElementsBaseVertexAbnormal(napi_env env, napi_callb
     return result;
 }
 
-static napi_value GlEnableAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLEnableAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7872,7 +7872,7 @@ static napi_value GlEnableAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlEnableiAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLEnableiAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7885,7 +7885,7 @@ static napi_value GlEnableiAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlEnableVertexAttribArrayAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLEnableVertexAttribArrayAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7898,7 +7898,7 @@ static napi_value GlEnableVertexAttribArrayAbnormal(napi_env env, napi_callback_
     return result;
 }
 
-static napi_value GlEndQueryAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLEndQueryAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7911,7 +7911,7 @@ static napi_value GlEndQueryAbnormal(napi_env env, napi_callback_info info)
     return result;
 }
 
-static napi_value GlEndTransformFeedbackAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLEndTransformFeedbackAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -7924,7 +7924,7 @@ static napi_value GlEndTransformFeedbackAbnormal(napi_env env, napi_callback_inf
     return result;
 }
 
-static napi_value GlFenceSyncAbnormal(napi_env env, napi_callback_info info)
+static napi_value GLFenceSyncAbnormal(napi_env env, napi_callback_info info)
 {
     (void)info;
     EGLWindow eglWindow = {EGL_NO_DISPLAY, EGL_NO_SURFACE, EGL_NO_CONTEXT};
@@ -8352,279 +8352,279 @@ static napi_value Init(napi_env env, napi_value exports)
         {"gLVertexBindingDivisor", nullptr, GLVertexBindingDivisor, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"gLViewport", nullptr, GLViewport, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"gLWaitSync", nullptr, GLWaitSync, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glActiveShaderProgramAbnormal", nullptr, GlActiveShaderProgramAbnormal, nullptr, nullptr, nullptr,
+        {"glActiveShaderProgramAbnormal", nullptr, GLActiveShaderProgramAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glActiveTextureAbnormal", nullptr, GlActiveTextureAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glAttachShaderAbnormal", nullptr, GlAttachShaderAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glBeginQueryAbnormal", nullptr, GlBeginQueryAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glBeginTransformFeedbackAbnormal", nullptr, GlBeginTransformFeedbackAbnormal, nullptr, nullptr, nullptr,
+        {"glActiveTextureAbnormal", nullptr, GLActiveTextureAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glAttachShaderAbnormal", nullptr, GLAttachShaderAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glBeginQueryAbnormal", nullptr, GLBeginQueryAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glBeginTransformFeedbackAbnormal", nullptr, GLBeginTransformFeedbackAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glBindAttribLocationAbnormal", nullptr, GlBindAttribLocationAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glBindAttribLocationAbnormal", nullptr, GLBindAttribLocationAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glBindBufferAbnormal", nullptr, GlBindBufferAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glBindBufferBaseAbnormal", nullptr, GlBindBufferBaseAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glBindBufferAbnormal", nullptr, GLBindBufferAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glBindBufferBaseAbnormal", nullptr, GLBindBufferBaseAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glBindBufferRangeAbnormal", nullptr, GlBindBufferRangeAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glBindBufferRangeAbnormal", nullptr, GLBindBufferRangeAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glBindFramebufferAbnormal", nullptr, GlBindFramebufferAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glBindFramebufferAbnormal", nullptr, GLBindFramebufferAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glBindImageTextureAbnormal", nullptr, GlBindImageTextureAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glBindImageTextureAbnormal", nullptr, GLBindImageTextureAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glBindProgramPipelineAbnormal", nullptr, GlBindProgramPipelineAbnormal, nullptr, nullptr, nullptr,
+        {"glBindProgramPipelineAbnormal", nullptr, GLBindProgramPipelineAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glBindRenderbufferAbnormal", nullptr, GlBindRenderbufferAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glBindRenderbufferAbnormal", nullptr, GLBindRenderbufferAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glBindSamplerAbnormal", nullptr, GlBindSamplerAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glBindTextureAbnormal", nullptr, GlBindTextureAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glBindTransformFeedbackAbnormal", nullptr, GlBindTransformFeedbackAbnormal, nullptr, nullptr, nullptr,
+        {"glBindSamplerAbnormal", nullptr, GLBindSamplerAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glBindTextureAbnormal", nullptr, GLBindTextureAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glBindTransformFeedbackAbnormal", nullptr, GLBindTransformFeedbackAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glBindVertexArrayAbnormal", nullptr, GlBindVertexArrayAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glBindVertexArrayAbnormal", nullptr, GLBindVertexArrayAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glBindVertexBufferAbnormal", nullptr, GlBindVertexBufferAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glBindVertexBufferAbnormal", nullptr, GLBindVertexBufferAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glBlendEquationAbnormal", nullptr, GlBlendEquationAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glBlendEquationiAbnormal", nullptr, GlBlendEquationiAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glBlendEquationAbnormal", nullptr, GLBlendEquationAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glBlendEquationiAbnormal", nullptr, GLBlendEquationiAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glBlendEquationSeparateAbnormal", nullptr, GlBlendEquationSeparateAbnormal, nullptr, nullptr, nullptr,
+        {"glBlendEquationSeparateAbnormal", nullptr, GLBlendEquationSeparateAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glBlendEquationSeparateiAbnormal", nullptr, GlBlendEquationSeparateiAbnormal, nullptr, nullptr, nullptr,
+        {"glBlendEquationSeparateiAbnormal", nullptr, GLBlendEquationSeparateiAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glBlendFuncAbnormal", nullptr, GlBlendFuncAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glBlendFunciAbnormal", nullptr, GlBlendFunciAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glBlendFuncSeparateAbnormal", nullptr, GlBlendFuncSeparateAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glBlendFuncAbnormal", nullptr, GLBlendFuncAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glBlendFunciAbnormal", nullptr, GLBlendFunciAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glBlendFuncSeparateAbnormal", nullptr, GLBlendFuncSeparateAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glBlendFuncSeparateiAbnormal", nullptr, GlBlendFuncSeparateiAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glBlendFuncSeparateiAbnormal", nullptr, GLBlendFuncSeparateiAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glBlitFramebufferAbnormal", nullptr, GlBlitFramebufferAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glBlitFramebufferAbnormal", nullptr, GLBlitFramebufferAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glBufferDataAbnormal", nullptr, GlBufferDataAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glBufferSubDataAbnormal", nullptr, GlBufferSubDataAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glCheckFramebufferStatusAbnormal", nullptr, GlCheckFramebufferStatusAbnormal, nullptr, nullptr, nullptr,
+        {"glBufferDataAbnormal", nullptr, GLBufferDataAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glBufferSubDataAbnormal", nullptr, GLBufferSubDataAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glCheckFramebufferStatusAbnormal", nullptr, GLCheckFramebufferStatusAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glClearAbnormal", nullptr, GlClearAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glClearBufferfiAbnormal", nullptr, GlClearBufferfiAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glClearBufferfvAbnormal", nullptr, GlClearBufferfvAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glClearBufferivAbnormal", nullptr, GlClearBufferivAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glClearBufferuivAbnormal", nullptr, GlClearBufferuivAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glClearAbnormal", nullptr, GLClearAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glClearBufferfiAbnormal", nullptr, GLClearBufferfiAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glClearBufferfvAbnormal", nullptr, GLClearBufferfvAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glClearBufferivAbnormal", nullptr, GLClearBufferivAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glClearBufferuivAbnormal", nullptr, GLClearBufferuivAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glClientWaitSyncAbnormal", nullptr, GlClientWaitSyncAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glClientWaitSyncAbnormal", nullptr, GLClientWaitSyncAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glColorMaskiAbnormal", nullptr, GlColorMaskiAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glCopyBufferSubDataAbnormal", nullptr, GlCopyBufferSubDataAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glColorMaskiAbnormal", nullptr, GLColorMaskiAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glCopyBufferSubDataAbnormal", nullptr, GLCopyBufferSubDataAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glCopyImageSubDataAbnormal", nullptr, GlCopyImageSubDataAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glCopyImageSubDataAbnormal", nullptr, GLCopyImageSubDataAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glCopyTexImage2DAbnormal", nullptr, GlCopyTexImage2DAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glCopyTexImage2DAbnormal", nullptr, GLCopyTexImage2DAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glCopyTexSubImage2DAbnormal", nullptr, GlCopyTexSubImage2DAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glCopyTexSubImage2DAbnormal", nullptr, GLCopyTexSubImage2DAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glCreateShaderAbnormal", nullptr, GlCreateShaderAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glCreateShaderProgramvAbnormal", nullptr, GlCreateShaderProgramvAbnormal, nullptr, nullptr, nullptr,
+        {"glCreateShaderAbnormal", nullptr, GLCreateShaderAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glCreateShaderProgramvAbnormal", nullptr, GLCreateShaderProgramvAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glCullFaceAbnormal", nullptr, GlCullFaceAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glDebugMessageControlAbnormal", nullptr, GlDebugMessageControlAbnormal, nullptr, nullptr, nullptr,
+        {"glCullFaceAbnormal", nullptr, GLCullFaceAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glDebugMessageControlAbnormal", nullptr, GLDebugMessageControlAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glDeleteBuffersAbnormal", nullptr, GlDeleteBuffersAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glDeleteFramebuffersAbnormal", nullptr, GlDeleteFramebuffersAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glDeleteBuffersAbnormal", nullptr, GLDeleteBuffersAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glDeleteFramebuffersAbnormal", nullptr, GLDeleteFramebuffersAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glDeleteProgramAbnormal", nullptr, GlDeleteProgramAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glDeleteProgramPipelinesAbnormal", nullptr, GlDeleteProgramPipelinesAbnormal, nullptr, nullptr, nullptr,
+        {"glDeleteProgramAbnormal", nullptr, GLDeleteProgramAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glDeleteProgramPipelinesAbnormal", nullptr, GLDeleteProgramPipelinesAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glDeleteQueriesAbnormal", nullptr, GlDeleteQueriesAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glDeleteRenderbuffersAbnormal", nullptr, GlDeleteRenderbuffersAbnormal, nullptr, nullptr, nullptr,
+        {"glDeleteQueriesAbnormal", nullptr, GLDeleteQueriesAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glDeleteRenderbuffersAbnormal", nullptr, GLDeleteRenderbuffersAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glDeleteSamplersAbnormal", nullptr, GlDeleteSamplersAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glDeleteSamplersAbnormal", nullptr, GLDeleteSamplersAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glDeleteShaderAbnormal", nullptr, GlDeleteShaderAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glDeleteSyncAbnormal", nullptr, GlDeleteSyncAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glDeleteTexturesAbnormal", nullptr, GlDeleteTexturesAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glDeleteShaderAbnormal", nullptr, GLDeleteShaderAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glDeleteSyncAbnormal", nullptr, GLDeleteSyncAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glDeleteTexturesAbnormal", nullptr, GLDeleteTexturesAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glDeleteTransformFeedbacksAbnormal", nullptr, GlDeleteTransformFeedbacksAbnormal, nullptr, nullptr, nullptr,
+        {"glDeleteTransformFeedbacksAbnormal", nullptr, GLDeleteTransformFeedbacksAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glDeleteVertexArraysAbnormal", nullptr, GlDeleteVertexArraysAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glDeleteVertexArraysAbnormal", nullptr, GLDeleteVertexArraysAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glDepthFuncAbnormal", nullptr, GlDepthFuncAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glDetachShaderAbnormal", nullptr, GlDetachShaderAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glDisableAbnormal", nullptr, GlDisableAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glDisableiAbnormal", nullptr, GlDisableiAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glDisableVertexAttribArrayAbnormal", nullptr, GlDisableVertexAttribArrayAbnormal, nullptr, nullptr, nullptr,
+        {"glDepthFuncAbnormal", nullptr, GLDepthFuncAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glDetachShaderAbnormal", nullptr, GLDetachShaderAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glDisableAbnormal", nullptr, GLDisableAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glDisableiAbnormal", nullptr, GLDisableiAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glDisableVertexAttribArrayAbnormal", nullptr, GLDisableVertexAttribArrayAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glDispatchComputeAbnormal", nullptr, GlDispatchComputeAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glDispatchComputeAbnormal", nullptr, GLDispatchComputeAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glDispatchComputeIndirectAbnormal", nullptr, GlDispatchComputeIndirectAbnormal, nullptr, nullptr, nullptr,
+        {"glDispatchComputeIndirectAbnormal", nullptr, GLDispatchComputeIndirectAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glDrawArraysAbnormal", nullptr, GlDrawArraysAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glDrawArraysIndirectAbnormal", nullptr, GlDrawArraysIndirectAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glDrawArraysAbnormal", nullptr, GLDrawArraysAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glDrawArraysIndirectAbnormal", nullptr, GLDrawArraysIndirectAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glDrawArraysInstancedAbnormal", nullptr, GlDrawArraysInstancedAbnormal, nullptr, nullptr, nullptr,
+        {"glDrawArraysInstancedAbnormal", nullptr, GLDrawArraysInstancedAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glDrawBuffersAbnormal", nullptr, GlDrawBuffersAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glFlushMappedBufferRangeAbnormal", nullptr, GlFlushMappedBufferRangeAbnormal, nullptr, nullptr, nullptr,
+        {"glDrawBuffersAbnormal", nullptr, GLDrawBuffersAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glFlushMappedBufferRangeAbnormal", nullptr, GLFlushMappedBufferRangeAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glFramebufferParameteriAbnormal", nullptr, GlFramebufferParameteriAbnormal, nullptr, nullptr, nullptr,
+        {"glFramebufferParameteriAbnormal", nullptr, GLFramebufferParameteriAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glFramebufferRenderbufferAbnormal", nullptr, GlFramebufferRenderbufferAbnormal, nullptr, nullptr, nullptr,
+        {"glFramebufferRenderbufferAbnormal", nullptr, GLFramebufferRenderbufferAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glFramebufferTextureAbnormal", nullptr, GlFramebufferTextureAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glFramebufferTextureAbnormal", nullptr, GLFramebufferTextureAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glFramebufferTexture2DAbnormal", nullptr, GlFramebufferTexture2DAbnormal, nullptr, nullptr, nullptr,
+        {"glFramebufferTexture2DAbnormal", nullptr, GLFramebufferTexture2DAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glFramebufferTextureLayerAbnormal", nullptr, GlFramebufferTextureLayerAbnormal, nullptr, nullptr, nullptr,
+        {"glFramebufferTextureLayerAbnormal", nullptr, GLFramebufferTextureLayerAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glFrontFaceAbnormal", nullptr, GlFrontFaceAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glGenBuffersAbnormal", nullptr, GlGenBuffersAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glGenerateMipmapAbnormal", nullptr, GlGenerateMipmapAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glFrontFaceAbnormal", nullptr, GLFrontFaceAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glGenBuffersAbnormal", nullptr, GLGenBuffersAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glGenerateMipmapAbnormal", nullptr, GLGenerateMipmapAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glGenFramebuffersAbnormal", nullptr, GlGenFramebuffersAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glGenFramebuffersAbnormal", nullptr, GLGenFramebuffersAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glGenProgramPipelinesAbnormal", nullptr, GlGenProgramPipelinesAbnormal, nullptr, nullptr, nullptr,
+        {"glGenProgramPipelinesAbnormal", nullptr, GLGenProgramPipelinesAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glGenQueriesAbnormal", nullptr, GlGenQueriesAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glGenRenderbuffersAbnormal", nullptr, GlGenRenderbuffersAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glGenQueriesAbnormal", nullptr, GLGenQueriesAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glGenRenderbuffersAbnormal", nullptr, GLGenRenderbuffersAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glGenSamplersAbnormal", nullptr, GlGenSamplersAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glGenTexturesAbnormal", nullptr, GlGenTexturesAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glGenTransformFeedbacksAbnormal", nullptr, GlGenTransformFeedbacksAbnormal, nullptr, nullptr, nullptr,
+        {"glGenSamplersAbnormal", nullptr, GLGenSamplersAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glGenTexturesAbnormal", nullptr, GLGenTexturesAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glGenTransformFeedbacksAbnormal", nullptr, GLGenTransformFeedbacksAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glGenVertexArraysAbnormal", nullptr, GlGenVertexArraysAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glGenVertexArraysAbnormal", nullptr, GLGenVertexArraysAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glGetActiveAttribAbnormal", nullptr, GlGetActiveAttribAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glGetActiveAttribAbnormal", nullptr, GLGetActiveAttribAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glGetAttachedShadersAbnormal", nullptr, GlGetAttachedShadersAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glGetAttachedShadersAbnormal", nullptr, GLGetAttachedShadersAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glGetAttribLocationAbnormal", nullptr, GlGetAttribLocationAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glGetAttribLocationAbnormal", nullptr, GLGetAttribLocationAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glGetBooleani_vAbnormal", nullptr, GlGetBooleani_vAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glGetBooleanvAbnormal", nullptr, GlGetBooleanvAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glGetBufferParameteri64vAbnormal", nullptr, GlGetBufferParameteri64vAbnormal, nullptr, nullptr, nullptr,
+        {"glGetBooleani_vAbnormal", nullptr, GLGetBooleani_vAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glGetBooleanvAbnormal", nullptr, GLGetBooleanvAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glGetBufferParameteri64vAbnormal", nullptr, GLGetBufferParameteri64vAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glGetBufferParameterivAbnormal", nullptr, GlGetBufferParameterivAbnormal, nullptr, nullptr, nullptr,
+        {"glGetBufferParameterivAbnormal", nullptr, GLGetBufferParameterivAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glGetBufferPointervAbnormal", nullptr, GlGetBufferPointervAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glGetBufferPointervAbnormal", nullptr, GLGetBufferPointervAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glGetFloatvAbnormal", nullptr, GlGetFloatvAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glGetFragDataLocationAbnormal", nullptr, GlGetFragDataLocationAbnormal, nullptr, nullptr, nullptr,
+        {"glGetFloatvAbnormal", nullptr, GLGetFloatvAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glGetFragDataLocationAbnormal", nullptr, GLGetFragDataLocationAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glGetFramebufferAttachmentParameterivAbnormal", nullptr, GlGetFramebufferAttachmentParameterivAbnormal,
+        {"glGetFramebufferAttachmentParameterivAbnormal", nullptr, GLGetFramebufferAttachmentParameterivAbnormal,
          nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glGetFramebufferParameterivAbnormal", nullptr, GlGetFramebufferParameterivAbnormal, nullptr, nullptr, nullptr,
+        {"glGetFramebufferParameterivAbnormal", nullptr, GLGetFramebufferParameterivAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glGetInteger64i_vAbnormal", nullptr, GlGetInteger64i_vAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glGetInteger64i_vAbnormal", nullptr, GLGetInteger64i_vAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glGetInteger64vAbnormal", nullptr, GlGetInteger64vAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glGetIntegeri_vAbnormal", nullptr, GlGetIntegeri_vAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glGetIntegervAbnormal", nullptr, GlGetIntegervAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glGetInternalformativAbnormal", nullptr, GlGetInternalformativAbnormal, nullptr, nullptr, nullptr,
+        {"glGetInteger64vAbnormal", nullptr, GLGetInteger64vAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glGetIntegeri_vAbnormal", nullptr, GLGetIntegeri_vAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glGetIntegervAbnormal", nullptr, GLGetIntegervAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glGetInternalformativAbnormal", nullptr, GLGetInternalformativAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glGetObjectLabelAbnormal", nullptr, GlGetObjectLabelAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glGetObjectLabelAbnormal", nullptr, GLGetObjectLabelAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glGetObjectPtrLabelAbnormal", nullptr, GlGetObjectPtrLabelAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glGetObjectPtrLabelAbnormal", nullptr, GLGetObjectPtrLabelAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glGetPointervAbnormal", nullptr, GlGetPointervAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glGetProgramBinaryAbnormal", nullptr, GlGetProgramBinaryAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glGetPointervAbnormal", nullptr, GLGetPointervAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glGetProgramBinaryAbnormal", nullptr, GLGetProgramBinaryAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glGetProgramInterfaceivAbnormal", nullptr, GlGetProgramInterfaceivAbnormal, nullptr, nullptr, nullptr,
+        {"glGetProgramInterfaceivAbnormal", nullptr, GLGetProgramInterfaceivAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glGetProgramivAbnormal", nullptr, GlGetProgramivAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glGetProgramPipelineivAbnormal", nullptr, GlGetProgramPipelineivAbnormal, nullptr, nullptr, nullptr,
+        {"glGetProgramivAbnormal", nullptr, GLGetProgramivAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glGetProgramPipelineivAbnormal", nullptr, GLGetProgramPipelineivAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glGetProgramResourceIndexAbnormal", nullptr, GlGetProgramResourceIndexAbnormal, nullptr, nullptr, nullptr,
+        {"glGetProgramResourceIndexAbnormal", nullptr, GLGetProgramResourceIndexAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glGetProgramResourceivAbnormal", nullptr, GlGetProgramResourceivAbnormal, nullptr, nullptr, nullptr,
+        {"glGetProgramResourceivAbnormal", nullptr, GLGetProgramResourceivAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glGetProgramResourceLocationAbnormal", nullptr, GlGetProgramResourceLocationAbnormal, nullptr, nullptr,
+        {"glGetProgramResourceLocationAbnormal", nullptr, GLGetProgramResourceLocationAbnormal, nullptr, nullptr,
          nullptr, napi_default, nullptr},
-        {"glGetProgramResourceNameAbnormal", nullptr, GlGetProgramResourceNameAbnormal, nullptr, nullptr, nullptr,
+        {"glGetProgramResourceNameAbnormal", nullptr, GLGetProgramResourceNameAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glGetQueryivAbnormal", nullptr, GlGetQueryivAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glGetQueryObjectuivAbnormal", nullptr, GlGetQueryObjectuivAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glGetQueryivAbnormal", nullptr, GLGetQueryivAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glGetQueryObjectuivAbnormal", nullptr, GLGetQueryObjectuivAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glGetRenderbufferParameterivAbnormal", nullptr, GlGetRenderbufferParameterivAbnormal, nullptr, nullptr,
+        {"glGetRenderbufferParameterivAbnormal", nullptr, GLGetRenderbufferParameterivAbnormal, nullptr, nullptr,
          nullptr, napi_default, nullptr},
-        {"glGetSamplerParameterfvAbnormal", nullptr, GlGetSamplerParameterfvAbnormal, nullptr, nullptr, nullptr,
+        {"glGetSamplerParameterfvAbnormal", nullptr, GLGetSamplerParameterfvAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glGetSamplerParameterIivAbnormal", nullptr, GlGetSamplerParameterIivAbnormal, nullptr, nullptr, nullptr,
+        {"glGetSamplerParameterIivAbnormal", nullptr, GLGetSamplerParameterIivAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glGetSamplerParameterIuivAbnormal", nullptr, GlGetSamplerParameterIuivAbnormal, nullptr, nullptr, nullptr,
+        {"glGetSamplerParameterIuivAbnormal", nullptr, GLGetSamplerParameterIuivAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glGetSamplerParameterivAbnormal", nullptr, GlGetSamplerParameterivAbnormal, nullptr, nullptr, nullptr,
+        {"glGetSamplerParameterivAbnormal", nullptr, GLGetSamplerParameterivAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glUniform1fAbnormal", nullptr, GlUniform1fAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glUniform1fvAbnormal", nullptr, GlUniform1fvAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glUniform1iAbnormal", nullptr, GlUniform1iAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glUniform1ivAbnormal", nullptr, GlUniform1ivAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glUniform1uiAbnormal", nullptr, GlUniform1uiAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glUniform1uivAbnormal", nullptr, GlUniform1uivAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glUniform2fAbnormal", nullptr, GlUniform2fAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glUniform2fvAbnormal", nullptr, GlUniform2fvAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glUniform2iAbnormal", nullptr, GlUniform2iAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glUniform2ivAbnormal", nullptr, GlUniform2ivAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glUniform2uiAbnormal", nullptr, GlUniform2uiAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glUniform2uivAbnormal", nullptr, GlUniform2uivAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glUniform3fAbnormal", nullptr, GlUniform3fAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glUniform3fvAbnormal", nullptr, GlUniform3fvAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glUniform3iAbnormal", nullptr, GlUniform3iAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glUniform3ivAbnormal", nullptr, GlUniform3ivAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glUniform3uiAbnormal", nullptr, GlUniform3uiAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glUniform3uivAbnormal", nullptr, GlUniform3uivAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glUniform4fAbnormal", nullptr, GlUniform4fAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glUniform4fvAbnormal", nullptr, GlUniform4fvAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glUniform4iAbnormal", nullptr, GlUniform4iAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glUniform4ivAbnormal", nullptr, GlUniform4ivAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glUniform4uiAbnormal", nullptr, GlUniform4uiAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glUniform4uivAbnormal", nullptr, GlUniform4uivAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glUniformBlockBindingAbnormal", nullptr, GlUniformBlockBindingAbnormal, nullptr, nullptr, nullptr,
+        {"glUniform1fAbnormal", nullptr, GLUniform1fAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glUniform1fvAbnormal", nullptr, GLUniform1fvAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glUniform1iAbnormal", nullptr, GLUniform1iAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glUniform1ivAbnormal", nullptr, GLUniform1ivAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glUniform1uiAbnormal", nullptr, GLUniform1uiAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glUniform1uivAbnormal", nullptr, GLUniform1uivAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glUniform2fAbnormal", nullptr, GLUniform2fAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glUniform2fvAbnormal", nullptr, GLUniform2fvAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glUniform2iAbnormal", nullptr, GLUniform2iAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glUniform2ivAbnormal", nullptr, GLUniform2ivAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glUniform2uiAbnormal", nullptr, GLUniform2uiAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glUniform2uivAbnormal", nullptr, GLUniform2uivAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glUniform3fAbnormal", nullptr, GLUniform3fAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glUniform3fvAbnormal", nullptr, GLUniform3fvAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glUniform3iAbnormal", nullptr, GLUniform3iAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glUniform3ivAbnormal", nullptr, GLUniform3ivAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glUniform3uiAbnormal", nullptr, GLUniform3uiAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glUniform3uivAbnormal", nullptr, GLUniform3uivAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glUniform4fAbnormal", nullptr, GLUniform4fAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glUniform4fvAbnormal", nullptr, GLUniform4fvAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glUniform4iAbnormal", nullptr, GLUniform4iAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glUniform4ivAbnormal", nullptr, GLUniform4ivAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glUniform4uiAbnormal", nullptr, GLUniform4uiAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glUniform4uivAbnormal", nullptr, GLUniform4uivAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glUniformBlockBindingAbnormal", nullptr, GLUniformBlockBindingAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glUniformMatrix2fvAbnormal", nullptr, GlUniformMatrix2fvAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glUniformMatrix2fvAbnormal", nullptr, GLUniformMatrix2fvAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glUniformMatrix2x3fvAbnormal", nullptr, GlUniformMatrix2x3fvAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glUniformMatrix2x3fvAbnormal", nullptr, GLUniformMatrix2x3fvAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glUniformMatrix2x4fvAbnormal", nullptr, GlUniformMatrix2x4fvAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glUniformMatrix2x4fvAbnormal", nullptr, GLUniformMatrix2x4fvAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glUniformMatrix3fvAbnormal", nullptr, GlUniformMatrix3fvAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glUniformMatrix3fvAbnormal", nullptr, GLUniformMatrix3fvAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glUniformMatrix3x2fvAbnormal", nullptr, GlUniformMatrix3x2fvAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glUniformMatrix3x2fvAbnormal", nullptr, GLUniformMatrix3x2fvAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glUniformMatrix3x4fvAbnormal", nullptr, GlUniformMatrix3x4fvAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glUniformMatrix3x4fvAbnormal", nullptr, GLUniformMatrix3x4fvAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glUniformMatrix4fvAbnormal", nullptr, GlUniformMatrix4fvAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glUniformMatrix4fvAbnormal", nullptr, GLUniformMatrix4fvAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glUniformMatrix4x2fvAbnormal", nullptr, GlUniformMatrix4x2fvAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glUniformMatrix4x2fvAbnormal", nullptr, GLUniformMatrix4x2fvAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glUniformMatrix4x3fvAbnormal", nullptr, GlUniformMatrix4x3fvAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glUniformMatrix4x3fvAbnormal", nullptr, GLUniformMatrix4x3fvAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glCompileShaderAbnormal", nullptr, GlCompileShaderAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glCompressedTexImage2DAbnormal", nullptr, GlCompressedTexImage2DAbnormal, nullptr, nullptr, nullptr,
+        {"glCompileShaderAbnormal", nullptr, GLCompileShaderAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glCompressedTexImage2DAbnormal", nullptr, GLCompressedTexImage2DAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glCompressedTexImage3DAbnormal", nullptr, GlCompressedTexImage3DAbnormal, nullptr, nullptr, nullptr,
+        {"glCompressedTexImage3DAbnormal", nullptr, GLCompressedTexImage3DAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glCompressedTexSubImage2DAbnormal", nullptr, GlCompressedTexSubImage2DAbnormal, nullptr, nullptr, nullptr,
+        {"glCompressedTexSubImage2DAbnormal", nullptr, GLCompressedTexSubImage2DAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glCompressedTexSubImage3DAbnormal", nullptr, GlCompressedTexSubImage3DAbnormal, nullptr, nullptr, nullptr,
+        {"glCompressedTexSubImage3DAbnormal", nullptr, GLCompressedTexSubImage3DAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glCopyTexSubImage3DAbnormal", nullptr, GlCopyTexSubImage3DAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glCopyTexSubImage3DAbnormal", nullptr, GLCopyTexSubImage3DAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glDrawElementsAbnormal", nullptr, GlDrawElementsAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glDrawElementsBaseVertexAbnormal", nullptr, GlDrawElementsBaseVertexAbnormal, nullptr, nullptr, nullptr,
+        {"glDrawElementsAbnormal", nullptr, GLDrawElementsAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glDrawElementsBaseVertexAbnormal", nullptr, GLDrawElementsBaseVertexAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glDrawElementsIndirectAbnormal", nullptr, GlDrawElementsIndirectAbnormal, nullptr, nullptr, nullptr,
+        {"glDrawElementsIndirectAbnormal", nullptr, GLDrawElementsIndirectAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glDrawElementsInstancedAbnormal", nullptr, GlDrawElementsInstancedAbnormal, nullptr, nullptr, nullptr,
+        {"glDrawElementsInstancedAbnormal", nullptr, GLDrawElementsInstancedAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glDrawElementsInstancedBaseVertexAbnormal", nullptr, GlDrawElementsInstancedBaseVertexAbnormal, nullptr,
+        {"glDrawElementsInstancedBaseVertexAbnormal", nullptr, GLDrawElementsInstancedBaseVertexAbnormal, nullptr,
          nullptr, nullptr, napi_default, nullptr},
-        {"glDrawRangeElementsAbnormal", nullptr, GlDrawRangeElementsAbnormal, nullptr, nullptr, nullptr, napi_default,
+        {"glDrawRangeElementsAbnormal", nullptr, GLDrawRangeElementsAbnormal, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"glDrawRangeElementsBaseVertexAbnormal", nullptr, GlDrawRangeElementsBaseVertexAbnormal, nullptr, nullptr,
+        {"glDrawRangeElementsBaseVertexAbnormal", nullptr, GLDrawRangeElementsBaseVertexAbnormal, nullptr, nullptr,
          nullptr, napi_default, nullptr},
-        {"glEnableAbnormal", nullptr, GlEnableAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glEnableiAbnormal", nullptr, GlEnableiAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glEnableVertexAttribArrayAbnormal", nullptr, GlEnableVertexAttribArrayAbnormal, nullptr, nullptr, nullptr,
+        {"glEnableAbnormal", nullptr, GLEnableAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glEnableiAbnormal", nullptr, GLEnableiAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glEnableVertexAttribArrayAbnormal", nullptr, GLEnableVertexAttribArrayAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glEndQueryAbnormal", nullptr, GlEndQueryAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"glEndTransformFeedbackAbnormal", nullptr, GlEndTransformFeedbackAbnormal, nullptr, nullptr, nullptr,
+        {"glEndQueryAbnormal", nullptr, GLEndQueryAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glEndTransformFeedbackAbnormal", nullptr, GLEndTransformFeedbackAbnormal, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"glFenceSyncAbnormal", nullptr, GlFenceSyncAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"glFenceSyncAbnormal", nullptr, GLFenceSyncAbnormal, nullptr, nullptr, nullptr, napi_default, nullptr},
 
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);

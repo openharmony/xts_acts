@@ -120,7 +120,7 @@ export default function RichEditor3() {
       let driver = Driver.create();
       await driver.delayMs(1000)
       let RichEditorGetAttribute = await driver.findComponent(ON.id("RichEditorGetAttribute"));
-      await RichEditorGetAttribute.longClick()
+      await RichEditorGetAttribute.doubleClick()
       let quanxuan = await driver.findComponent(ON.text("全选"));
       await quanxuan.click()
       let PSTextAlign = await driver.findComponent(ON.id("PSTextAlign"));

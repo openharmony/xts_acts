@@ -71,10 +71,11 @@ export default function richEditorApi4() {
       await CommonFunc.sleep(2000);
 
       let driver = Driver.create();
-      await CommonFunc.sleep(300);
+      await CommonFunc.sleep(1000);
       await driver.mouseLongClick({
         x: 300, y: 300
       }, MouseButton.MOUSE_BUTTON_LEFT)
+      await CommonFunc.sleep(2000);
       let text1 = getInspectorByKey('richEditorApi4_text1');
       let Obj1: ESObject = JSON.parse(text1);
       expect(Obj1.$attrs.content).assertEqual('333');

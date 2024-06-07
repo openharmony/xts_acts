@@ -2,15 +2,17 @@
     "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "180000",
-        "shell-timeout": "180000",
-        "bundle-name": "com.example.accessibleabilitylist",
-        "package-name": "com.example.accessibleabilitylist_test"
+        "test-timeout": "60000",
+        "shell-timeout": "60000",
+        "bundle-name": "com.example.getmultipleaccountstest",
+        "package-name": "com.example.getmultipleaccountstest"
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsAccessibleAbilityListTest.hap"
+                "ActsGetMultipleAccountsTest.hap",
+                "ActsAccountAccessibleFirst.hap",
+                "ActsAccountAccessibleSecond.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

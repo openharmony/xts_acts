@@ -60,54 +60,63 @@ struct webViewWebResourceTypeProps {
                   await Utils.sleep(1000)
                   switch (this.emitKey) {
                     case 'emitWebView_webResourceType_MAIN_FRAME': {
+                        console.log('webResourceTypeProp:' + webview.WebResourceType.MAIN_FRAME)
                         if(webview.WebResourceType.MAIN_FRAME.toString() === '0'){
                           Utils.emitEvent(true,1343)
                         }
                         break;
                     }
                     case 'emitWebView_webResourceType_SUB_FRAME': {
+                        console.log('webResourceTypeProp:' + webview.WebResourceType.SUB_FRAME)
                         if(webview.WebResourceType.SUB_FRAME.toString() === '1'){
                           Utils.emitEvent(true,1344)
                         }
                         break;
                     }
                     case 'emitWebView_webResourceType_STYLE_SHEET': {
+                        console.log('webResourceTypeProp:' + webview.WebResourceType.STYLE_SHEET)
                         if(webview.WebResourceType.STYLE_SHEET.toString() === '2'){
                           Utils.emitEvent(true,1345)
                         }
                         break;
                     }
                     case 'emitWebView_webResourceType_SCRIPT': {
+                        console.log('webResourceTypeProp:' + webview.WebResourceType.SCRIPT)
                         if(webview.WebResourceType.SCRIPT.toString() === '3'){
                           Utils.emitEvent(true,1346)
                         }
                         break;
                     }
                     case 'emitWebView_webResourceType_IMAGE': {
+                        console.log('webResourceTypeProp:' + webview.WebResourceType.IMAGE)
                         if(webview.WebResourceType.IMAGE.toString() === '4'){
                           Utils.emitEvent(true,1347)
                         }
                         break;
                     }
                     case 'emitWebView_webResourceType_FONT_RESOURCE': {
+                        console.log('webResourceTypeProp:' + webview.WebResourceType.FONT_RESOURCE)
                         if(webview.WebResourceType.FONT_RESOURCE.toString() === '5'){
                           Utils.emitEvent(true,1348)
                         }
                         break;
                     }
                     case 'emitWebView_webResourceType_OBJECT': {
+                        console.log('webResourceTypeProp:' + webview.WebResourceType.OBJECT)
                         if(webview.WebResourceType.OBJECT.toString() === '7'){
                           Utils.emitEvent(true,1349)
                         }
                         break;
                     }
                     case 'emitWebView_webResourceType_MEDIA': {
+                        console.log('webResourceTypeProp:' + webview.WebResourceType.MEDIA)
                         if(webview.WebResourceType.MEDIA.toString() === '8'){
                           Utils.emitEvent(true,1350)
                         }
                         break;
                     }
                     case 'emitWebView_webResourceType_WORKER': {
+                        console.log('webResourceTypeProp:' + webview.WebResourceType.WORKER)
                         this.controller.loadUrl('http://114.115.208.239:8070/colombo_test/webResourceType/worker/worker.html')
                         await Utils.sleep(1000)
                         if(webview.WebResourceType.WORKER.toString() === '9'){
@@ -116,6 +125,7 @@ struct webViewWebResourceTypeProps {
                         break;
                     }
                     case 'emitWebView_webResourceType_SHARED_WORKER': {
+                        console.log('webResourceTypeProp:' + webview.WebResourceType.SHARED_WORKER)
                         this.controller.loadUrl('http://114.115.208.239:8070/colombo_test/webResourceType/sharedWorker/sharedWorker.html')
                         await Utils.sleep(1000)
                         if(webview.WebResourceType.SHARED_WORKER.toString() === '10'){
@@ -124,24 +134,28 @@ struct webViewWebResourceTypeProps {
                         break;
                     }
                     case 'emitWebView_webResourceType_PREFETCH': {
+                        console.log('webResourceTypeProp:' + webview.WebResourceType.PREFETCH)
                         if(webview.WebResourceType.PREFETCH.toString() === '11'){
                           Utils.emitEvent(true,1353)
                         }
                         break;
                     }
                     case 'emitWebView_webResourceType_FAVICON': {
+                        console.log('webResourceTypeProp:' + webview.WebResourceType.FAVICON)
                         if(webview.WebResourceType.FAVICON.toString() === '12'){
                           Utils.emitEvent(true,1354)
                         }
                         break;
                     }
                     case 'emitWebView_webResourceType_XHR': {
+                        console.log('webResourceTypeProp:' + webview.WebResourceType.XHR)
                         if(webview.WebResourceType.XHR.toString() === '13'){
                           Utils.emitEvent(true,1355)
                         }
                         break;
                     }
                     case 'emitWebView_webResourceType_PING': {
+                        console.log('webResourceTypeProp:' + webview.WebResourceType.PING)
                         this.controller.runJavaScript('triggerPingHref()')
                         await Utils.sleep(1000)
                         if(webview.WebResourceType.PING.toString() === '14'){
@@ -150,6 +164,7 @@ struct webViewWebResourceTypeProps {
                         break;
                     }
                     case 'emitWebView_webResourceType_CSP_REPORT': {
+                        console.log('webResourceTypeProp:' + webview.WebResourceType.CSP_REPORT)
                         this.controller.loadUrl($rawfile('csp.html'))
                         await Utils.sleep(1000)
                         if(webview.WebResourceType.CSP_REPORT.toString() === '16'){
@@ -159,6 +174,11 @@ struct webViewWebResourceTypeProps {
                     }
 
                     default:{
+                        console.log('webResourceTypeProp:' + webview.WebResourceType.SUB_RESOURCE)
+                        console.log('webResourceTypeProp:' + webview.WebResourceType.SERVICE_WORKER)
+                        console.log('webResourceTypeProp:' + webview.WebResourceType.PLUGIN_RESOURCE)
+                        console.log('webResourceTypeProp:' + webview.WebResourceType.NAVIGATION_PRELOAD_MAIN_FRAME)
+                        console.log('webResourceTypeProp:' + webview.WebResourceType.NAVIGATION_PRELOAD_SUB_FRAME)
                         if(webview.WebResourceType.SUB_RESOURCE.toString() === '6'){
                           Utils.emitEvent(true,1358)
                         }
@@ -171,7 +191,7 @@ struct webViewWebResourceTypeProps {
                         if(webview.WebResourceType.NAVIGATION_PRELOAD_MAIN_FRAME.toString() === '19'){
                           Utils.emitEvent(true,1358)
                         }
-                        if(webview.WebResourceType.NAVIGATION_PRELOAD_MAIN_FRAME.toString() === '20'){
+                        if(webview.WebResourceType.NAVIGATION_PRELOAD_SUB_FRAME.toString() === '20'){
                           Utils.emitEvent(true,1358)
                         }
                         break;

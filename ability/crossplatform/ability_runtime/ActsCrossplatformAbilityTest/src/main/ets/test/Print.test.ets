@@ -69,7 +69,7 @@ export default function PrintTest() {
           "ACTS_PRINT_CALLBACK_ERROR_0002 print message:" + e.message
         );
         expect(e.code).assertEqual(401);
-        expect(e.message).assertEqual("Incorrect parameters.");
+        expect(e.message).assertContain("Parse");
         abilityDelegator.printSync(
           "ACTS_PRINT_CALLBACK_ERROR_0002 print callback meet an error: msg is int"
         );
@@ -224,7 +224,7 @@ export default function PrintTest() {
           "ACTS_PRINT_PROMISE_ERROR_0002 print callback message:" + e.message
         );
         expect(e.code).assertEqual(401);
-        expect(e.message).assertEqual("Incorrect parameters.");
+        expect(e.message).assertContain("Parse");
         abilityDelegator.printSync(
           "ACTS_PRINT_PROMISE_ERROR_0002 print promise meet an error: msg is int"
         );

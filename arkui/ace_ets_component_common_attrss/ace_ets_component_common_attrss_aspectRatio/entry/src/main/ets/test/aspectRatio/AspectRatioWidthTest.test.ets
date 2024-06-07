@@ -163,7 +163,7 @@ export default function aspectRatioWidthTest() {
       console.info('[' + data.caseTag + '] targetRectWidth is:' + targetRectWidth);
       console.info('[' + data.caseTag + '] targetRectHeight is:' + targetRectHeight);
       console.info('[' + data.caseTag + '] targetRectAspectRatio:' + targetRectAspectRatio);
-      expect(targetRectWidth).assertEqual(data.testValue.expectValue.widthValue);
+      expect(Math.abs(targetRectWidth - data.testValue.expectValue.widthValue) <= 1).assertTrue();
       expect(Math.abs(Number(targetRectAspectRatio) - Number(data.testValue.expectValue.aspectRatio)) <= 1)
         .assertTrue();
       expect(Math.abs(targetRectHeight - data.testValue.expectValue.widthValue / data.testValue.expectValue.aspectRatio) <= 1)

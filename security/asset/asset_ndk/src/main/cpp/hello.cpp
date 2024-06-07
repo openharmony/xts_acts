@@ -107,8 +107,8 @@ static int32_t AssetPreAndPostQuerySuccess(Asset_Attr *attr, uint32_t attrCnt)
         if (ret2 == ASSET_SUCCESS) {
             result = 1;
         }
+        OH_Asset_FreeBlob(&challenge);
     }
-    OH_Asset_FreeBlob(&challenge);
     return result;
 }
 
@@ -243,13 +243,13 @@ static napi_value Asset_PreQuery(napi_env env, napi_callback_info info)
     napi_value tmp;
     if (ret == ASSET_SUCCESS) {
         napi_create_string_utf8(env, reinterpret_cast<char *>(challenge.data), challenge.size, &tmp);
+        OH_Asset_FreeBlob(&challenge);
         if (tmp != NULL) {
             return tmp;
         } else {
             ret = -1;
         }
     }
-    OH_Asset_FreeBlob(&challenge);
     napi_create_uint32(env, ret, &result);
     return result;
 }
@@ -286,12 +286,13 @@ static napi_value Asset_PreAndPostQuery(napi_env env, napi_callback_info info)
             };
             int32_t ret2 = OH_Asset_PostQuery(attr2, sizeof(attr2) / sizeof(attr2[0]));
             napi_create_uint32(env, ret2, &result);
+            OH_Asset_FreeBlob(&challenge);
             return result;
         } else {
             ret = -1;
         }
     }
-    OH_Asset_FreeBlob(&challenge);
+    
     napi_create_uint32(env, ret, &result);
     return result;
 }

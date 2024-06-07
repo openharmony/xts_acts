@@ -3,9 +3,9 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
+        "shell-timeout": "600000",
         "bundle-name": "com.example.faapicoverhaptest",
         "package-name": "com.example.faapicoverhaptest",
-        "shell-timeout": "600000",
         "testcase-timeout": 70000
     },
     "kits": [
@@ -16,8 +16,7 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },
-        {
+        },{
             "type": "ShellKit",
             "run-command": [
                 "power-shell wakeup",
@@ -25,5 +24,5 @@
                 "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100"
             ]
         }
-    ] 
+    ]
 }

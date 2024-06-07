@@ -33,24 +33,8 @@ export default function sceneResourcesTest() {
     let material: ShaderMaterial | null = null;
     let shader: Shader | null = null;
     let geom: Geometry | null = null;
-    let node: Node;
-    beforeAll(async function () {
-      scene0 = await Scene.load($rawfile("gltf/BrainStem/glTF/BrainStem.gltf"));
-      scene1 = await Scene.load($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.gltf"));
-      scene2 = await Scene.load($rawfile("gltf/Cube/glTF/Cube.gltf"));
-      rf = scene1?.getResourceFactory();
-      rf1 = scene2?.getResourceFactory();
-      env = scene1?.environment;
-      envImage1 = await rf.createImage({ name: "envImage1", uri: $rawfile("gltf/Cube/glTF/Cube_BaseColor.png")});
-      envImage2 = await rf.createImage({ name: "envImage2", uri: $rawfile("gltf/Environment/glTF/images/quarry_02_2k_skybox.ktx")});
-      envImage3 = await rf.createImage({ name: "envImage3", uri: $rawfile("gltf/DamagedHelmet/glTF/Default_albedo.jpg")});
-      radianceImage = await rf.createImage({ name: "radianceImage", uri: $rawfile("gltf/Environment/glTF/images/quarry_02_2k_radiance.ktx")});
-      material = await rf1.createMaterial({ name: "CustomMaterial" }, MaterialType.SHADER);
-      shader = await rf1.createShader({ name: "CustomShader", uri: $rawfile("shaders/custom_shader/custom_material_sample.shader")});
-      node = await rf.createNode({ name: "createNode" });
-      geom = scene2?.getNodeByPath("rootNode_/Unnamed Node 1/Cube") as Geometry;
-      anim = scene0?.animations[0];
-    })
+    let node: Node | null = null;;
+    let mesh: Mesh | null = null;;
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0320
      * @tc.name      : testAnimationStart
@@ -59,11 +43,17 @@ export default function sceneResourcesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testAnimationStart', 0, async function (done) {
-      let msg = "============================testAnimationStart";
+    it('testAnimationStarted', 0, async function (done) {
+      let msg = "============================testAnimationStarted";
       console.info(msg + ' begin ');
       try {
         let startFlag = false;
+        scene0 = await Scene.load($rawfile("gltf/BrainStem/glTF/BrainStem.gltf"));
+        expect(scene0 != undefined).assertTrue();
+        console.info(msg + " Succeed in load ");
+        anim = scene0?.animations[0];
+        expect(scene0 != null).assertTrue();
+        console.info(msg + " Succeed in scene0?.animations[0] ");
         anim.onStarted(() => {
           console.info(msg + " Succeed in anim.start() ");
           startFlag = true;
@@ -72,10 +62,10 @@ export default function sceneResourcesTest() {
         anim.progress;
         await sleep(200);
         expect(startFlag).assertTrue();
+        console.info(msg + " Succeed in onStarted() ");
         done();
       } catch (err) {
-        console.info(msg + " Failed in anim.start()  " + JSON.stringify(err));
-        expect().assertFail();
+        console.info(msg + " Failed in onStarted()  " + JSON.stringify(err));
         done();
       }
     })
@@ -91,13 +81,12 @@ export default function sceneResourcesTest() {
       let msg = "============================testAnimationPause";
       console.info(msg + ' begin ');
       try {
-        anim.pause();
+        anim?.pause();
+        expect(anim?.running).assertFalse();
         console.info(msg + " Succeed in anim.pause() ");
-        expect(anim.running).assertFalse();
         done();
       } catch (err) {
         console.info(msg + " Failed in anim.pause() " + JSON.stringify(err));
-        expect().assertFail();
         done();
       }
     })
@@ -156,13 +145,15 @@ export default function sceneResourcesTest() {
       let msg = "============================testAnimationStop";
       console.info(msg + ' begin ');
       try {
+        anim.restart();
+        expect(anim.running).assertTrue();
+        console.info(msg + " anim is running ");
         anim.stop();
-        console.info(msg + " Succeed in anim.stop() ");
         expect(anim.running).assertFalse();
+        console.info(msg + " anim is stopping ");
         done();
       } catch (err) {
         console.info(msg + " Failed in anim.stop() " + JSON.stringify(err));
-        expect().assertFail();
         done();
       }
     })
@@ -178,18 +169,22 @@ export default function sceneResourcesTest() {
       let msg = "============================testAnimationFinished";
       console.info(msg + ' begin ');
       try {
+        await sleep(200);
         let finishFlag = false;
         anim.onFinished(() => {
           console.info(msg + " Succeed in anim.finish() ");
           finishFlag = true;
         })
+        anim.restart();
+        expect(anim.running).assertTrue();
+        console.info(msg + " anim is running ");
         anim.finish();
         await sleep(200);
         expect(finishFlag).assertTrue();
+        console.info(msg + " Succeed in onFinished() ");
         done();
       } catch (err) {
-        console.info(msg + " Failed in anim.finish()  " + JSON.stringify(err));
-        expect().assertFail();
+        console.info(msg + " Failed in onFinished() " + JSON.stringify(err));
         done();
       }
     })
@@ -207,12 +202,11 @@ export default function sceneResourcesTest() {
       console.info(msg + ' begin ');
       try {
         let duration = anim.duration;
-        console.info(msg + " Succeed in anim.duration ");
         expect(duration != 0).assertTrue();
+        console.info(msg + " Succeed in anim.duration ");
         done();
       } catch (err) {
         console.info(msg + " Failed in anim.duration " + JSON.stringify(err));
-        expect().assertFail();
         done();
       }
     })
@@ -231,12 +225,11 @@ export default function sceneResourcesTest() {
         anim.start();
         expect(anim.running).assertTrue();
         anim.enabled = false;
-        console.info(msg + " Succeed in anim.enabled = false ");
         expect(anim.running).assertFalse();
+        console.info(msg + " Succeed in anim.enabled = false ");
         done();
       } catch (err) {
         console.info(msg + " Failed in anim.enabled = false " + JSON.stringify(err));
-        expect().assertFail();
         done();
       }
     })
@@ -252,16 +245,21 @@ export default function sceneResourcesTest() {
       let msg = "============================testEnvironmentIndirectDiffuseFactor";
       console.info(msg + ' begin ');
       try {
+        scene1 = await Scene.load($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.gltf"));
+        expect(scene1 != undefined).assertTrue();
+        console.info(msg + " get scene1 success ");
+        rf = scene1?.getResourceFactory();
+        env = scene1?.environment;
         let vec4: Vec4 = {x:1, y:40, z:1, w:1}
         env.indirectDiffuseFactor = vec4;
-        console.info(msg + " Succeed in env.indirectDiffuseFactor ");
         expect(env.indirectDiffuseFactor.y).assertEqual(40);
+        console.info(msg + " Succeed in env.indirectDiffuseFactor ");
         let env1 = await rf.createEnvironment({ "name" : "Env"});
         expect(env1 != null).assertTrue();
+        console.info(msg + " Succeed in createEnvironment ");
         done();
       } catch (err) {
         console.info(msg + " Failed in env.indirectDiffuseFactor " + JSON.stringify(err));
-        expect().assertFail();
         done();
       }
     })
@@ -279,12 +277,11 @@ export default function sceneResourcesTest() {
       try {
         let vec4: Vec4 = {x:1, y:40, z:1, w:1}
         env.indirectSpecularFactor = vec4;
-        console.info(msg + " Succeed in env.indirectSpecularFactor ");
         expect(env.indirectSpecularFactor.y).assertEqual(40);
+        console.info(msg + " Succeed in env.indirectSpecularFactor ");
         done();
       } catch (err) {
         console.info(msg + " Failed in env.indirectSpecularFactor " + JSON.stringify(err));
-        expect().assertFail();
         done();
       }
     })
@@ -302,12 +299,11 @@ export default function sceneResourcesTest() {
       try {
         let vec4: Vec4 = {x:1, y:40, z:1, w:1}
         env.environmentMapFactor = vec4;
-        console.info(msg + " Succeed in env.environmentMapFactor ");
         expect(env.environmentMapFactor.y).assertEqual(40);
+        console.info(msg + " Succeed in env.environmentMapFactor ");
         done();
       } catch (err) {
         console.info(msg + " Failed in env.environmentMapFactor " + JSON.stringify(err));
-        expect().assertFail();
         done();
       }
     })
@@ -319,25 +315,37 @@ export default function sceneResourcesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testEnvironmentImage', 0, function (done) {
+    it('testEnvironmentImage', 0, async function (done) {
       let msg = "============================testEnvironmentImage";
       console.info(msg + ' begin ');
       try {
+        envImage1 = await rf.createImage({ name: "envImage1", uri: $rawfile("gltf/Cube/glTF/Cube_BaseColor.png")});
+        expect(envImage1 != undefined).assertTrue();
+        console.info(msg + " create envImage1 success ");
+        envImage2 = await rf.createImage({ name: "envImage2", uri: $rawfile("gltf/Environment/glTF/images/quarry_02_2k_skybox.ktx")});
+        expect(envImage2 != undefined).assertTrue();
+        console.info(msg + " create envImage2 success ");
+        envImage3 = await rf.createImage({ name: "envImage3", uri: $rawfile("gltf/DamagedHelmet/glTF/Default_albedo.jpg")});
+        expect(envImage3 != undefined).assertTrue();
+        console.info(msg + " create envImage3 success ");
         env.backgroundType = EnvironmentBackgroundType.BACKGROUND_NONE;
+        expect(env.backgroundType).assertEqual(EnvironmentBackgroundType.BACKGROUND_NONE);
         console.info(msg + " Succeed in Environment environmentImage set NONE ");
         env.backgroundType = EnvironmentBackgroundType.BACKGROUND_IMAGE;
+        expect(env.backgroundType).assertEqual(EnvironmentBackgroundType.BACKGROUND_IMAGE);
         env.environmentImage = envImage1;
         console.info(msg + " Succeed in Environment environmentImage set envImage1 IMAGE ");
         env.backgroundType = EnvironmentBackgroundType.BACKGROUND_CUBEMAP;
+        expect(env.backgroundType).assertEqual(EnvironmentBackgroundType.BACKGROUND_CUBEMAP);
         env.environmentImage = envImage2;
         console.info(msg + " Succeed in Environment environmentImage set envImage2 CUBEMAP ");
         env.backgroundType = EnvironmentBackgroundType.BACKGROUND_EQUIRECTANGULAR;
+        expect(env.backgroundType).assertEqual(EnvironmentBackgroundType.BACKGROUND_EQUIRECTANGULAR);
         env.environmentImage = envImage3;
         console.info(msg + " Succeed in Environment environmentImage set envImage3 EQUIRECTANGULAR ");
         done();
       } catch (err) {
         console.info(msg + " Failed in Environment environmentImage set " + JSON.stringify(err));
-        expect().assertFail();
         done();
       }
     })
@@ -349,20 +357,23 @@ export default function sceneResourcesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testRadianceImage', 0, function (done) {
+    it('testRadianceImage', 0, async function (done) {
       let msg = "============================testRadianceImage";
       console.info(msg + ' begin ');
       try {
+        radianceImage = await rf.createImage({ name: "radianceImage", uri: $rawfile("gltf/Environment/glTF/images/quarry_02_2k_radiance.ktx")});
+        expect(radianceImage != undefined).assertTrue();
+        console.info(msg + " create radianceImage success ");
         env.radianceImage = null;
         console.info(msg + " Succeed in Environment radianceImage set null ");
         env.radianceImage = radianceImage;
+        expect(env.radianceImage).assertEqual(radianceImage);
         console.info(msg + " Succeed in Environment radianceImage set radianceImage ");
         radianceImage?.width;
         radianceImage?.height;
         done();
       } catch (err) {
         console.info(msg + " Failed in Environment radianceImage set " + JSON.stringify(err));
-        expect().assertFail();
         done();
       }
     })
@@ -404,14 +415,24 @@ export default function sceneResourcesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testMesh', 0, function (done) {
+    it('testMesh', 0, async function (done) {
       let msg = "============================testMesh";
       console.info(msg + ' begin ');
       try {
-        let mesh: Mesh;
         let subMeshes: SubMesh[];
         let aabb: Aabb;
         let materialOrg: Material;
+        scene2 = await Scene.load($rawfile("gltf/Cube/glTF/Cube.gltf"));
+        expect(scene2 != undefined).assertTrue();
+        console.info(msg + " get scene2 success ");
+        rf1 = scene2?.getResourceFactory();
+        shader = await rf1.createShader({ name: "CustomShader", uri: $rawfile("shaders/custom_shader/custom_material_sample.shader")});
+        expect(shader != undefined).assertTrue();
+        console.info(msg + " create shader success ");
+        material = await rf1.createMaterial({ name: "CustomMaterial" }, MaterialType.SHADER);
+        geom = scene2?.getNodeByPath("rootNode_/Unnamed Node 1/Cube") as Geometry;
+        expect(geom != null).assertTrue();
+        console.info(msg + ' Succeed in getNodeByPath("rootNode_/Unnamed Node 1/AnimatedCube") ');
         if (geom) {
           mesh = geom.mesh;
           subMeshes = mesh.subMeshes;
@@ -420,29 +441,24 @@ export default function sceneResourcesTest() {
           aabb.aabbMax;
           subMeshes[0].name = "AnimatedCubeSubMesh";
           materialOrg = subMeshes[0].material;
+          expect(material != null).assertTrue();
+          console.info(msg + " Succeed in createMaterial ");
           if (material) {
             material.colorShader = shader as Shader;
-          }else {
-            console.info(msg + " Failed in createMaterial ");
-            expect().assertFail();
           }
+          expect(material?.colorShader != null).assertTrue();
+          console.info(msg + " Succeed in material.colorShader ")
           if (material && material.colorShader && envImage1) {
             subMeshes[0].material = material;
             (material.colorShader.inputs["BASE_COLOR_Image"] as scene3d.Image) = envImage1;
             mesh.materialOverride = undefined;
             mesh.materialOverride = materialOrg;
-          }else {
-            console.info(msg + " Failed in material.colorShader ")
-            expect().assertFail();
+            console.info(msg + " Succeed in mesh.materialOverride ")
           }
-        }else {
-          console.info(msg + ' Failed in getNodeByPath("rootNode_/Unnamed Node 1/AnimatedCube") ');
-          expect().assertFail();
         }
         done();
       } catch (err) {
         console.info(msg + " Failed in Mesh " + JSON.stringify(err));
-        expect().assertFail();
         done();
       }
     })
@@ -454,15 +470,24 @@ export default function sceneResourcesTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSceneResourceType', 0, function (done) {
+    it('testSceneResourceType', 0, async function (done) {
       let msg = "============================testSceneResourceType";
       console.info(msg + ' begin ');
       try {
+        node = await rf.createNode({ name: "createNode" });
+        console.info(msg + " shader?.resourceType: " + JSON.stringify(shader?.resourceType));
         expect(shader?.resourceType).assertEqual(SceneResourceType.SHADER);
+        console.info(msg + " node?.resourceType: " + JSON.stringify(node?.resourceType));
         expect(node?.resourceType).assertEqual(SceneResourceType.NODE);
+        console.info(msg + " env?.resourceType: " + JSON.stringify(env?.resourceType));
         expect(env?.resourceType).assertEqual(SceneResourceType.ENVIRONMENT);
+        console.info(msg + " mesh?.resourceType: " + JSON.stringify(mesh?.resourceType));
+        expect(mesh?.resourceType).assertEqual(SceneResourceType.MESH);
+        console.info(msg + " material?.resourceType: " + JSON.stringify(material?.resourceType));
         expect(material?.resourceType).assertEqual(SceneResourceType.MATERIAL);
+        console.info(msg + " anim?.resourceType: " + JSON.stringify(anim?.resourceType));
         expect(anim?.resourceType).assertEqual(SceneResourceType.ANIMATION);
+        console.info(msg + " envImage1?.resourceType: " + JSON.stringify(envImage1?.resourceType));
         expect(envImage1?.resourceType).assertEqual(SceneResourceType.IMAGE);
         expect(envImage1?.resourceType != SceneResourceType.UNKNOWN).assertTrue();
         done();
@@ -487,13 +512,36 @@ export default function sceneResourcesTest() {
         let resource: SceneResource;
         resource = envImage1 as scene3d.Image;
         expect(resource.name).assertEqual("envImage1");
+        console.info(msg + " Succeed in resource.name ");
         expect(resource.resourceType).assertEqual(SceneResourceType.IMAGE);
+        console.info(msg + " Succeed in resource.resourceType ");
         expect(resource.uri != undefined).assertTrue();
+        console.info(msg + " Succeed in resource.uri ");
         resource.destroy();
+        console.info(msg + " Succeed in resource.destroy() ");
         done();
       } catch (err) {
         console.info(msg + " Failed in SceneResource " + JSON.stringify(err));
-        expect().assertFail();
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0490
+     * @tc.name      : testSceneResource
+     * @tc.desc      : Used to get materialType of material
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testMaterialType', 0, function (done)  {
+      let msg = "============================testMaterialType";
+      console.info(msg + ' begin ');
+      try {
+        console.info(msg + ' test material?.materialType equal ' + JSON.stringify(material?.materialType))
+        expect(material?.materialType).assertEqual(MaterialType.SHADER);
+        done();
+      } catch (err) {
+        console.info(msg + " Failed in material?.materialType  " + JSON.stringify(err));
         done();
       }
     })

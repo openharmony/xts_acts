@@ -20,6 +20,10 @@ import graphicGetInterfaceTest from './GraphicsTest/graphicGetInterface.test';
 import renderNodeGetInterfaceTest from './renderNode/renderNodeTestInterface.test';
 import disposeTest from './FrameNodeTest/dispose.test';
 import getAttrsTest from './FrameNodeTest/getAttrs.test';
+import getPosition from './FrameNodeTest/getPosition.test';
+import setLayout from './FrameNodeTest/setLayout.test';
+
+
 import RenderNodeAttributeTest from './renderNode/RenderNodeAttributeTest.test';
 import setRectShape from './GraphicsTest/setRectShape.test';
 import LengthUnitTest from './GraphicsTest/LengthUnit.test'
@@ -32,6 +36,18 @@ import getGreen from './GraphicsTest/getGreen.test';
 import getRed from './GraphicsTest/getRed.test';
 import onAppear from './FrameNodeTest/onAppear.test';
 import setMeasureSizeTest from './FrameNodeTest/setMeasureSize.test';
+import createNodeBlank from './FrameNodeTest/createNodeBlank.test';
+import createNodeColumn from './FrameNodeTest/createNodeColumn.test';
+import createNodeDivider from './FrameNodeTest/createNodeDivider.test';
+import createNodeFlex from './FrameNodeTest/createNodeFlex.test';
+import createNodeGrid from './FrameNodeTest/createNodeGrid.test';
+import createNodeImage from './FrameNodeTest/createNodeImage.test';
+import createNodeList from './FrameNodeTest/createNodeList.test';
+import createNodeLoad from './FrameNodeTest/createNodeLoad.test';
+import createNodeScroll from './FrameNodeTest/createNodeScroll.test';
+import createNodeSearch from './FrameNodeTest/createNodeSearch.test';
+import createNodeStack from './FrameNodeTest/createNodeStack.test';
+import createNodeText from './FrameNodeTest/createNodeText.test';
 import setCircleShapeTest from './GraphicsTest/setCircleShape.test';
 import commonEventTest1 from './FrameNodeTest/commonEventTest1.test';
 
@@ -47,6 +63,8 @@ export default function testsuite() {
   renderNodeGetInterfaceTest();
   disposeTest();
   getAttrsTest();
+  getPosition();
+  setLayout();
   RenderNodeAttributeTest();
   setRectShape();
   LengthUnitTest();
@@ -59,6 +77,18 @@ export default function testsuite() {
   getRed();
   onAppear();
   setMeasureSizeTest();
+  createNodeBlank();
+  createNodeColumn();
+  createNodeDivider();
+  createNodeFlex();
+  createNodeGrid();
+  createNodeImage();
+  createNodeList();
+  createNodeLoad();
+  createNodeScroll();
+  createNodeSearch();
+  createNodeStack();
+  createNodeText();
   commonEventTest1();
   CornerTest();
   LengthMetricsUnitTest();

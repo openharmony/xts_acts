@@ -122,6 +122,9 @@ struct TextAreaExample {
           console.info("paste value is " + value);
           this.message4 = 'paste'
         })
+        .onClick(()=>{
+          this.controller.stopEditing()
+        })
 
       Text(this.message1).key('change')
       Text(this.message2).key('copy')

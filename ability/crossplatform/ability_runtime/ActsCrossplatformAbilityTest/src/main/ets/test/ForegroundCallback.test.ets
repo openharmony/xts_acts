@@ -387,8 +387,8 @@ export default function ForegroundCallback() {
                           }
                         );
                       } catch (error) {
-                        expect(error.message).assertEqual(
-                          "Incorrect parameters."
+                        expect(error.message).assertContain(
+                          "Parse"
                         );
                         abilityDelegator.printSync(
                           "ACTS_DO_ABILITY_FOREGROUND_CALLBACK_ERROR_0005 doAbilityForeground meet an error: " +
