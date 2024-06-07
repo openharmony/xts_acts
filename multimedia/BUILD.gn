@@ -88,6 +88,7 @@ group("multimedia") {
       "media/media_js_standard/soundPool:soundpool_js_hap",
       "media/media_js_standard/videoPlayer:video_player_js_hap",
       "media/media_ndk_standard/AVPlayerNDK:OhAVPlayerNDK",
+	  "medialibrary/mediaLibrary_NotAvailable:mediaLibrary_js_hap",
       "photoAccess/photoAccess:photoAccess_js_hap",
     ]
   } else {
