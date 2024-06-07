@@ -13,11 +13,23 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_app_suite("ActsApplicationinfoTest") {
-  test_hap = true
-  testonly = true
+ohos_js_hap_suite("ActsApplicationinfoTest") {
+  hap_profile = "./src/main/config.json"
+  deps = [
+    ":hjs_demo_js_assets",
+    ":hjs_demo_resources",
+  ]
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsApplicationinfoTest"
-  part_name = "form_fwk"
   subsystem_name = "ability"
+  part_name = "form_fwk"
+}
+ohos_js_assets("hjs_demo_js_assets") {
+  js2abc = true
+  hap_profile = "./src/main/config.json"
+  source_dir = "./src/main/js"
+}
+ohos_resources("hjs_demo_resources") {
+  sources = [ "./src/main/resources" ]
+  hap_profile = "./src/main/config.json"
 }
