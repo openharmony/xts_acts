@@ -12,9 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-#include <ace/xcomponent/native_interface_xcomponent.h>
+#include <arkui/native_gesture.h>
+#include <arkui/native_node_napi.h>
 #include "common/common.h"
+#include <ace/xcomponent/native_interface_xcomponent.h>
 
 namespace ArkUICapiTest {
 
@@ -58,5 +59,78 @@ static napi_value TestArkUIAddApi006(napi_env env, napi_callback_info info)
     ASSERT_EQ(ret, 0.0f);
     NAPI_END;
 }
+
+static napi_value TestArkUIAddApi007(napi_env env, napi_callback_info info)
+{
+    auto ret = OH_ArkUI_PointerEvent_GetWindowY(nullptr);
+    ASSERT_EQ(ret, 0.0f);
+    NAPI_END;
+}
+
+static napi_value TestArkUIAddApi008(napi_env env, napi_callback_info info)
+{
+    auto ret2 = OH_ArkUI_PointerEvent_GetDisplayX(nullptr);
+    ASSERT_EQ(ret2, 0.0f);
+    NAPI_END;
+}
+
+static napi_value TestArkUIAddApi009(napi_env env, napi_callback_info info)
+{
+    auto ret3 = OH_ArkUI_PointerEvent_GetDisplayY(nullptr);
+    ASSERT_EQ(ret3, 0.0f);
+    NAPI_END;
+}
+
+static napi_value TestArkUIAddApi010(napi_env env, napi_callback_info info)
+{
+    auto ret4 = OH_ArkUI_AxisEvent_GetHorizontalAxisValue(nullptr);
+    ASSERT_EQ(ret4, 0.0f);
+    NAPI_END;
+}
+
+static napi_value TestArkUIAddApi011(napi_env env, napi_callback_info info)
+{
+    auto ret5 = OH_ArkUI_AxisEvent_GetVerticalAxisValue(nullptr);
+    ASSERT_EQ(ret5, 0.0f);
+    NAPI_END;
+}
+
+static napi_value TestArkUIAddApi012(napi_env env, napi_callback_info info)
+{
+    auto ret6 = OH_ArkUI_AxisEvent_GetPinchAxisScaleValue(nullptr);
+    ASSERT_EQ(ret6, 0.0f);
+    NAPI_END;
+}
+
+static napi_value TestArkUIAddApi013(napi_env env, napi_callback_info info)
+{
+    auto ret6 = OH_ArkUI_AxisEvent_GetPinchAxisScaleValue(nullptr);
+    ASSERT_EQ(ret6, 0.0f);
+    NAPI_END;
+}
+
+static napi_value TestArkUIAddApi014(napi_env env, napi_callback_info info)
+{
+    auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
+    auto swipeGesture = gestureApi->createSwipeGesture(1, GESTURE_DIRECTION_HORIZONTAL,10);
+    auto onActionCallBack = [](ArkUI_GestureEvent *event, void *extraParam) {
+        auto ret10 = OH_ArkUI_LongPress_GetRepeatCount(event);
+        auto actionType = OH_ArkUI_GestureEvent_GetActionType(event);
+        auto ret7 = OH_ArkUI_GetNodeHandleFromNapiValue(nullptr, nullptr, nullptr);
+        auto offsetX = OH_ArkUI_PanGesture_GetOffsetX(nullptr);
+        auto velocity = OH_ArkUI_PanGesture_GetVelocity(nullptr);
+        auto velocityX = OH_ArkUI_PanGesture_GetVelocityX(nullptr);
+        auto velocityY = OH_ArkUI_PanGesture_GetVelocityY(nullptr);
+        auto rawInputEvent = OH_ArkUI_GestureEvent_GetRawInputEvent(nullptr);
+        
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, 
+        "Manager", "callback actionType: %{public}d, offsetX %{public}f, velocity %{public}f, velocityX %{public}f, velocityY %{public}f", 
+        actionType, offsetX, velocity, velocityX, velocityY);
+    };
+    NAPI_START(column, ARKUI_NODE_COLUMN);
+    gestureApi->setGestureEventTarget(swipeGesture,GESTURE_EVENT_ACTION_ACCEPT,column,onActionCallBack);
+    NAPI_END;
+}
+
 
 }
