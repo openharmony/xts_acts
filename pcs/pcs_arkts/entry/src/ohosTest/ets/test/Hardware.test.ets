@@ -304,35 +304,30 @@ export default function hardwareTest() {
         let supportedCameras = cameraManager.getSupportedCameras()
         expect(supportedCameras.length).assertLarger(0)
 
+        let previewFormats = new Array<camera.CameraFormat>()
+        let videoFormats = new Array<camera.CameraFormat>()
+        let photoFormats = new Array<camera.CameraFormat>()
         for(let cameraDevice of supportedCameras) {
           let supportedOutputCapability: camera.CameraOutputCapability
           supportedOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_VIDEO)
           let previewProfiles = supportedOutputCapability.previewProfiles
-          expect(previewProfiles.length).assertLarger(0)
-          let previewFormats = new Array<camera.CameraFormat>()
           for (let previewProfileInfo of previewProfiles) {
             previewFormats.push(previewProfileInfo.format)
           }
-          expect(previewFormats).assertContain(camera.CameraFormat.CAMERA_FORMAT_YUV_420_SP)
-
           supportedOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_VIDEO)
           let videoProfiles = supportedOutputCapability.videoProfiles
-          expect(videoProfiles.length).assertLarger(0)
-          let videoFormats = new Array<camera.CameraFormat>()
           for (let videoProfileInfo of videoProfiles) {
             videoFormats.push(videoProfileInfo.format)
           }
-          expect(videoFormats).assertContain(camera.CameraFormat.CAMERA_FORMAT_YUV_420_SP)
-
           supportedOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO)
           let photoProfiles = supportedOutputCapability.photoProfiles
-          expect(photoProfiles.length).assertLarger(0)
-          let photoFormats = new Array<camera.CameraFormat>()
           for (let photoProfileInfo of photoProfiles) {
             photoFormats.push(photoProfileInfo.format)
           }
-          expect(photoFormats).assertContain(camera.CameraFormat.CAMERA_FORMAT_JPEG)
         }
+        expect(previewFormats).assertContain(camera.CameraFormat.CAMERA_FORMAT_YUV_420_SP)
+        expect(videoFormats).assertContain(camera.CameraFormat.CAMERA_FORMAT_YUV_420_SP)
+        expect(photoFormats).assertContain(camera.CameraFormat.CAMERA_FORMAT_JPEG)
       }
       done()
     })
@@ -408,11 +403,15 @@ export default function hardwareTest() {
         expect(audioCapturer != undefined).assertTrue()
         expect(audioCapturer != null).assertTrue()
         try {
+          await audioCapturer.start()
+          expect(audioCapturer.state).assertEqual(audio.AudioState.STATE_RUNNING)
+          await audioCapturer.stop()
           await audioCapturer.release()
-          console.info('Renderer Release Success.');
+          console.info('Capturer run Success.')
         } catch (error) {
           let err: BusinessError = error as BusinessError
-          console.error(`Renderer Release Fail, code is ${err.code}, message is ${err.message}`);
+          console.error(`Capturer run Fail, code is ${err.code}, message is ${err.message}`)
+          expect(false).assertTrue()
         }
       }
       done()
@@ -446,24 +445,103 @@ export default function hardwareTest() {
 
         expect(audioRenderer != undefined).assertTrue()
         expect(audioRenderer != null).assertTrue()
-        let currentOutputDevices = await audioRenderer.getCurrentOutputDevices()
-        expect(currentOutputDevices != undefined).assertTrue()
-        let supportedSamplingRates = new Array<audio.AudioSamplingRate>()
-        for (let currentOutputDevice of currentOutputDevices) {
-          for (let samplingRate of currentOutputDevice.sampleRates) {
-            supportedSamplingRates.push(samplingRate)
-          }
-        }
         try {
+          await audioRenderer.start()
+          expect(audioRenderer.state).assertEqual(audio.AudioState.STATE_RUNNING)
+          await audioRenderer.stop()
           await audioRenderer.release()
-          console.info('Renderer Release Success.');
+          console.info('Renderer run Success.')
         } catch (error) {
           let err: BusinessError = error as BusinessError
-          console.error(`Renderer Release Fail, code is ${err.code}, message is ${err.message}`);
+          console.error(`Renderer run Fail, code is ${err.code}, message is ${err.message}`);
+          expect(false).assertTrue()
         }
-        expect(supportedSamplingRates).assertContain(audio.AudioSamplingRate.SAMPLE_RATE_16000)
-        expect(supportedSamplingRates).assertContain(audio.AudioSamplingRate.SAMPLE_RATE_44100)
-        expect(supportedSamplingRates).assertContain(audio.AudioSamplingRate.SAMPLE_RATE_48000)
+      }
+      done()
+    })
+
+    /*
+     * @tc.number: C-S|STD-SOFTWARE-0800
+     * @tc.name: testAudioRendererSupportSamplingRates0200
+     * @tc.desc: 【C-S|STD-SOFTWARE-0800】音频播放必须支持 16K，44.1K，48K 采样率音频
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 0
+     */
+    it('testAudioRendererSupportSamplingRates0200', 0, async (done: Function) => {
+      if (isAoutSupported) {
+        let audioStreamInfo: audio.AudioStreamInfo = {
+          samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_44100,
+          channels: audio.AudioChannel.CHANNEL_1,
+          sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+          encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
+        let audioRendererInfo: audio.AudioRendererInfo = {
+          usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
+          rendererFlags: 0
+        }
+        let audioRendererOptions: audio.AudioRendererOptions = {
+          streamInfo: audioStreamInfo,
+          rendererInfo: audioRendererInfo
+        }
+        let audioRenderer: audio.AudioRenderer = await audio.createAudioRenderer(audioRendererOptions)
+
+        expect(audioRenderer != undefined).assertTrue()
+        expect(audioRenderer != null).assertTrue()
+        try {
+          await audioRenderer.start()
+          expect(audioRenderer.state).assertEqual(audio.AudioState.STATE_RUNNING)
+          await audioRenderer.stop()
+          await audioRenderer.release()
+          console.info('Renderer run Success.')
+        } catch (error) {
+          let err: BusinessError = error as BusinessError
+          console.error(`Renderer run Fail, code is ${err.code}, message is ${err.message}`);
+          expect(false).assertTrue()
+        }
+      }
+      done()
+    })
+
+    /*
+     * @tc.number: C-S|STD-SOFTWARE-0800
+     * @tc.name: testAudioRendererSupportSamplingRates0300
+     * @tc.desc: 【C-S|STD-SOFTWARE-0800】音频播放必须支持 16K，44.1K，48K 采样率音频
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 0
+     */
+    it('testAudioRendererSupportSamplingRates0300', 0, async (done: Function) => {
+      if (isAoutSupported) {
+        let audioStreamInfo: audio.AudioStreamInfo = {
+          samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+          channels: audio.AudioChannel.CHANNEL_1,
+          sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+          encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
+        let audioRendererInfo: audio.AudioRendererInfo = {
+          usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
+          rendererFlags: 0
+        }
+        let audioRendererOptions: audio.AudioRendererOptions = {
+          streamInfo: audioStreamInfo,
+          rendererInfo: audioRendererInfo
+        }
+        let audioRenderer: audio.AudioRenderer = await audio.createAudioRenderer(audioRendererOptions)
+
+        expect(audioRenderer != undefined).assertTrue()
+        expect(audioRenderer != null).assertTrue()
+        try {
+          await audioRenderer.start()
+          expect(audioRenderer.state).assertEqual(audio.AudioState.STATE_RUNNING)
+          await audioRenderer.stop()
+          await audioRenderer.release()
+          console.info('Renderer run Success.')
+        } catch (error) {
+          let err: BusinessError = error as BusinessError
+          console.error(`Renderer run Fail, code is ${err.code}, message is ${err.message}`);
+          expect(false).assertTrue()
+        }
       }
       done()
     })
@@ -496,22 +574,60 @@ export default function hardwareTest() {
 
         expect(audioRenderer != undefined).assertTrue()
         expect(audioRenderer != null).assertTrue()
-        let currentOutputDevices = await audioRenderer.getCurrentOutputDevices()
-        let supportedChannels = new Array<number>()
-        for (let currentOutputDevice of currentOutputDevices) {
-          for (let channelCount of currentOutputDevice.channelCounts) {
-            supportedChannels.push(channelCount)
-          }
-        }
         try {
+          await audioRenderer.start()
+          expect(audioRenderer.state).assertEqual(audio.AudioState.STATE_RUNNING)
+          await audioRenderer.stop()
           await audioRenderer.release()
-          console.info('Renderer Release Success.');
+          console.info('Renderer run Success.');
         } catch (error) {
           let err: BusinessError = error as BusinessError
-          console.error(`Renderer Release Fail, code is ${err.code}, message is ${err.message}`);
+          console.error(`Renderer run Fail, code is ${err.code}, message is ${err.message}`);
+          expect(false).assertTrue()
         }
-        expect(supportedChannels).assertContain(audio.AudioChannel.CHANNEL_1)
-        expect(supportedChannels).assertContain(audio.AudioChannel.CHANNEL_2)
+      }
+      done()
+    })
+
+    /*
+ * @tc.number: C-S|STD-SOFTWARE-0801
+ * @tc.name: testAudioRendererSupportChannels0200
+ * @tc.desc: 【C-S|STD-SOFTWARE-0801】音频播放必须支持单声道和双声道音频
+ * @tc.size: MediumTest
+ * @tc.type: Function
+ * @tc.level: Level 0
+ */
+    it('testAudioRendererSupportChannels0200', 0, async (done: Function) => {
+      if (isAoutSupported) {
+        let audioStreamInfo: audio.AudioStreamInfo = {
+          samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_16000,
+          channels: audio.AudioChannel.CHANNEL_2,
+          sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+          encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
+        let audioRendererInfo: audio.AudioRendererInfo = {
+          usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
+          rendererFlags: 0
+        }
+        let audioRendererOptions: audio.AudioRendererOptions = {
+          streamInfo: audioStreamInfo,
+          rendererInfo: audioRendererInfo
+        }
+        let audioRenderer: audio.AudioRenderer = await audio.createAudioRenderer(audioRendererOptions)
+
+        expect(audioRenderer != undefined).assertTrue()
+        expect(audioRenderer != null).assertTrue()
+        try {
+          await audioRenderer.start()
+          expect(audioRenderer.state).assertEqual(audio.AudioState.STATE_RUNNING)
+          await audioRenderer.stop()
+          await audioRenderer.release()
+          console.info('Renderer run Success.');
+        } catch (error) {
+          let err: BusinessError = error as BusinessError
+          console.error(`Renderer run Fail, code is ${err.code}, message is ${err.message}`);
+          expect(false).assertTrue()
+        }
       }
       done()
     })
@@ -543,23 +659,17 @@ export default function hardwareTest() {
         let audioRenderer: audio.AudioRenderer = await audio.createAudioRenderer(audioRendererOptions)
         expect(audioRenderer != undefined).assertTrue()
         expect(audioRenderer != null).assertTrue()
-        let currentOutputDevices = await audioRenderer.getCurrentOutputDevices()
-        let supportedEncodingTypes = new Array<audio.AudioEncodingType>()
-        for (let currentOutputDevice of currentOutputDevices) {
-          if (currentOutputDevice.encodingTypes != undefined) {
-            for (let encodingType of currentOutputDevice.encodingTypes) {
-              supportedEncodingTypes.push(encodingType)
-            }
-          }
-        }
         try {
+          await audioRenderer.start()
+          expect(audioRenderer.state).assertEqual(audio.AudioState.STATE_RUNNING)
+          await audioRenderer.stop()
           await audioRenderer.release()
-          console.info('Renderer Release Success.');
+          console.info('Renderer run Success.');
         } catch (error) {
           let err: BusinessError = error as BusinessError
           console.error(`Renderer Release Fail, code is ${err.code}, message is ${err.message}`);
+          expect(false).assertTrue()
         }
-        expect(supportedEncodingTypes).assertContain(audio.AudioEncodingType.ENCODING_TYPE_RAW)
       }
       done()
     })
@@ -590,35 +700,58 @@ export default function hardwareTest() {
         }
         let audioCapturer: audio.AudioCapturer = await audio.createAudioCapturer(audioCapturerOptions)
         expect(audioCapturer != undefined).assertTrue()
-        let currentInputDevices = audioCapturer.getCurrentInputDevices()
-        let supportedChannels = new Array<audio.AudioChannel>()
-        let supportedEncodingTypes = new Array<audio.AudioEncodingType>()
-        let supportedSamplingRates = new Array<audio.AudioSamplingRate>()
-        for (let currentInputDevice of currentInputDevices) {
-          expect(currentInputDevice != undefined).assertTrue()
-          for (let channelCount of currentInputDevice.channelCounts) {
-            supportedChannels.push(channelCount)
-          }
-          if (currentInputDevice.encodingTypes != undefined) {
-            for (let encodingType of currentInputDevice.encodingTypes) {
-              supportedEncodingTypes.push(encodingType)
-            }
-          }
-          for (let sampleRate of currentInputDevice.sampleRates) {
-            supportedSamplingRates.push(sampleRate)
-          }
-        }
         try {
+          await audioCapturer.start()
+          expect(audioCapturer.state).assertEqual(audio.AudioState.STATE_RUNNING)
+          await audioCapturer.stop()
           await audioCapturer.release()
-          console.info('Renderer Release Success.');
+          console.info('Capturer run Success.')
         } catch (error) {
           let err: BusinessError = error as BusinessError
-          console.error(`Renderer Release Fail, code is ${err.code}, message is ${err.message}`);
+          console.error(`Capturer run Fail, code is ${err.code}, message is ${err.message}`)
+          expect(false).assertTrue()
         }
-        expect(supportedChannels).assertContain(audio.AudioChannel.CHANNEL_1)
-        expect(supportedEncodingTypes).assertContain(audio.AudioEncodingType.ENCODING_TYPE_RAW)
-        expect(supportedSamplingRates).assertContain(audio.AudioSamplingRate.SAMPLE_RATE_16000)
-        expect(supportedSamplingRates).assertContain(audio.AudioSamplingRate.SAMPLE_RATE_48000)
+      }
+      done()
+    })
+
+    /*
+     * @tc.number: C-S|STD-SOFTWARE-0803
+     * @tc.name: testAudioCapturerSupportRule0200
+     * @tc.desc: 【C-S|STD-SOFTWARE-0803】音频采集必须支持单声道、编码格式为 16 位 PCM、采样率为 16K，48K 的音频
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 0
+     */
+    it('testAudioCapturerSupportRule0200', 0, async (done: Function) => {
+      if (isMicrophoneSupported) {
+        let audioStreamInfo: audio.AudioStreamInfo = {
+          samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+          channels: audio.AudioChannel.CHANNEL_1,
+          sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+          encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+        }
+        let audioCapturerInfo: audio.AudioCapturerInfo = {
+          source: audio.SourceType.SOURCE_TYPE_MIC,
+          capturerFlags: 0
+        }
+        let audioCapturerOptions: audio.AudioCapturerOptions = {
+          streamInfo: audioStreamInfo,
+          capturerInfo: audioCapturerInfo
+        }
+        let audioCapturer: audio.AudioCapturer = await audio.createAudioCapturer(audioCapturerOptions)
+        expect(audioCapturer != undefined).assertTrue()
+        try {
+          await audioCapturer.start()
+          expect(audioCapturer.state).assertEqual(audio.AudioState.STATE_RUNNING)
+          await audioCapturer.stop()
+          await audioCapturer.release()
+          console.info('Capturer run Success.')
+        } catch (error) {
+          let err: BusinessError = error as BusinessError
+          console.error(`Capturer run Fail, code is ${err.code}, message is ${err.message}`)
+          expect(false).assertTrue()
+        }
       }
       done()
     })

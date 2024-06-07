@@ -22,6 +22,7 @@ import hilog from '@ohos.hilog';
 import deviceInfo from '@ohos.deviceInfo';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import AbilityUtils from './AbilityUtils';
+import { Driver } from '@ohos.UiTest';
 
 class testClass {
   number: Number = 0
@@ -36,6 +37,8 @@ export default function developerModeTest() {
       abilityContext = AppStorage.get<common.UIAbilityContext>('TestAbilityContext') as common.UIAbilityContext
       applicationContext = abilityContext.getApplicationContext()
       expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
+      let driver = Driver.create()
+      await driver.delayMs(2000)
       done()
     })
     

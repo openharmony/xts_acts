@@ -45,7 +45,22 @@
               "action.system.home"
             ]
           }
+        ],
+        "backgroundModes": [
+          "audioPlayback"
         ]
+      }
+    ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.KEEP_BACKGROUND_RUNNING",
+        "reason": "$string:reason",
+        "usedScene": {
+          "abilities": [
+            "FormAbility"
+          ],
+          "when": "inuse"
+        }
       }
     ]
   }

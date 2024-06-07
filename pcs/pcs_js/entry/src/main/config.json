@@ -5,27 +5,21 @@
     "version": {
       "code": 1000000,
       "name": "1.0.0"
-    },
-    "apiVersion": {
-      "compatible": 4,
-      "target": 5,
-      "releaseType": "Beta1"
     }
   },
   "deviceConfig": {},
   "module": {
     "package": "com.acts.pcs.jstest",
-    "name": ".entry_test",
-    "mainAbility": ".TestAbility",
+    "name": ".entry",
+    "mainAbility": ".MainAbility",
     "deviceType": [
-      "default",
       "phone",
       "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,
-      "moduleName": "entry_test",
-      "moduleType": "feature",
+      "moduleName": "entry",
+      "moduleType": "entry",
       "installationFree": false
     },
     "abilities": [
@@ -42,12 +36,12 @@
         ],
         "orientation": "unspecified",
         "formsEnabled": false,
-        "name": ".TestAbility",
+        "name": ".MainAbility",
         "srcLanguage": "js",
-        "srcPath": "TestAbility",
+        "srcPath": "MainAbility",
         "icon": "$media:icon",
-        "description": "$string:TestAbility_desc",
-        "label": "$string:TestAbility_label",
+        "description": "$string:MainAbility_desc",
+        "label": "$string:MainAbility_label",
         "type": "page",
         "visible": true,
         "launchType": "standard"
@@ -58,16 +52,12 @@
         "pages": [
           "pages/index/index"
         ],
-        "name": ".TestAbility",
+        "name": ".MainAbility",
         "window": {
           "designWidth": 720,
           "autoDesignWidth": false
         }
       }
-    ],
-    "testRunner": {
-      "name": "OpenHarmonyTestRunner",
-      "srcPath": "TestRunner"
-    }
+    ]
   }
 }

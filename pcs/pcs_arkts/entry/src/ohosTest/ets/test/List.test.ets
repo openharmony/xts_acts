@@ -21,8 +21,8 @@ import softwareTest from './Software.test';
 
 export default function testsuite() {
   hardwareTest()
-  performanceTest()
   developerModeTest()
   softwareTest()
   securityTest()
+  performanceTest()
 }
