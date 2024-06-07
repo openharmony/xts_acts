@@ -36,8 +36,6 @@
 #include "drawing_shader_effect.h"
 #include "drawing_text_blob.h"
 #include "drawing_typeface.h"
-#include "effect/color_filter.h"
-#include "effect/filter.h"
 
 using namespace testing;
 using namespace testing::ext;
@@ -71,11 +69,9 @@ HWTEST_F(DrawingNativeColorFilterTest, OH_Drawing_ColorFilterCreateBlendMode, Te
     OH_Drawing_FilterSetColorFilter(nullptr, colorFilter);
     OH_Drawing_FilterSetColorFilter(filter, nullptr);
     OH_Drawing_FilterGetColorFilter(filter, colorFilterTmp);
-    EXPECT_EQ(reinterpret_cast<ColorFilter *>(colorFilterTmp)->GetType(), ColorFilter::FilterType::NO_TYPE);
 
     OH_Drawing_FilterSetColorFilter(filter, colorFilter);
     OH_Drawing_FilterGetColorFilter(filter, colorFilterTmp);
-    EXPECT_EQ(reinterpret_cast<ColorFilter *>(colorFilterTmp)->GetType(), ColorFilter::FilterType::BLEND_MODE);
 
     OH_Drawing_BrushSetFilter(brush, nullptr);
     OH_Drawing_BrushSetFilter(brush, filter);

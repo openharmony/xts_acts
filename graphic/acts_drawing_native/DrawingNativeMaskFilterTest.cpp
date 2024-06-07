@@ -21,8 +21,6 @@
 #include "drawing_image.h"
 #include "drawing_image_filter.h"
 #include "drawing_mask_filter.h"
-#include "effect/color_filter.h"
-#include "effect/filter.h"
 
 using namespace testing;
 using namespace testing::ext;

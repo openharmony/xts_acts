@@ -72,7 +72,6 @@ ohos_moduletest_suite("ActsDrawingNativeTest") {
   }
 
   external_deps = [
-    "graphic_2d:2d_graphics",
     "graphic_2d:native_drawing_ndk",
     "hilog:libhilog",
   ]
