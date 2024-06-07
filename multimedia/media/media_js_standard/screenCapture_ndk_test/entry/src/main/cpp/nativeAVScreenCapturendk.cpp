@@ -75,23 +75,6 @@ void OnError(OH_AVScreenCapture *capture, int32_t errorCode, void *userData)
     (void)userData;
 }
 
-void OnStateChange(struct OH_AVScreenCapture *capture, OH_AVScreenCaptureStateCode stateCode, void *userData)
-{
-    (void)capture;
-    (void)stateCode;
-    (void)userData;
-}
-
-void OnBufferAvailable(OH_AVScreenCapture *capture, OH_AVBuffer *buffer, OH_AVScreenCaptureBufferType bufferType,
-                       int64_t timestamp, void *userData)
-{
-    (void)capture;
-    (void)buffer;
-    (void)bufferType;
-    (void)timestamp;
-    (void)userData;
-}
-
 void OnError(OH_AVCodec *codec, int32_t errorCode, void *userData)
 {
     (void)codec;
