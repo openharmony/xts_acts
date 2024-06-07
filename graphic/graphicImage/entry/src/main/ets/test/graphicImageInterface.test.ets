@@ -483,5 +483,35 @@ export default function graphicImageInterfaceTest(context, windowStage, abilityS
       }
     })
 
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICIMAGE_JS_API_028
+     * @tc.name      : testSrcPixelFormat
+     * @tc.desc      : Crops the picture to the size you enter.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testSrcPixelFormat', 1, async function () {
+      let msg = " =testSrcPixelFormat= "
+      const color: ArrayBuffer = new ArrayBuffer(96); // 96为需要创建的像素buffer大小，取值为：height * width *4
+      let opts: image.InitializationOptions = {
+        editable: true,
+        pixelFormat: 3,
+        size: {
+          height: 4, width: 6
+        },
+        srcPixelFormat: 2
+      }
+      image.createPixelMap(color, opts).then((pixelMap: image.PixelMap) => {
+        console.log(msg + " Succeed in createPixelMap ")
+        expect(true).assertTrue()
+        done()
+      }).catch((error: BusinessError) => {
+        console.error(msg + `Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
+        expect().assertFail()
+        done()
+      })
+    })
+
   })
 }
