@@ -16,8 +16,9 @@
 #include "common/common.h"
 #include <ace/xcomponent/native_interface_xcomponent.h>
 #include <arkui/native_type.h>
-#define res -2
-#define res2 -1
+#define res ((int)-2)
+#define res2 ((int)-1)
+#define res3 ((int)401)
 
 
 namespace ArkUICapiTest {
@@ -46,7 +47,7 @@ static napi_value testArkUI003(napi_env env, napi_callback_info info)
 static napi_value testArkUI004(napi_env env, napi_callback_info info)
 {
     auto ret = OH_NativeXComponent_RegisterOnTouchInterceptCallback (nullptr, nullptr);
-    ASSERT_EQ(ret, 401);
+    ASSERT_EQ(ret, res3);
     NAPI_END;
 }
 
