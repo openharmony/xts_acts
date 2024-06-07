@@ -31,10 +31,11 @@ export default function photoPickerTest() {
     async function selectPromise(testNum, done, isSelectOriginal, expectSelectNum) {
       try {
         let photoPicker = new photoAccessHelper.PhotoViewPicker();
-        photoPicker.select().then((result) => {
+        photoPicker.select().then((result: photoAccessHelper.PhotoSelectResult) => {
           console.info(`${testNum}::select result: ${JSON.stringify(result)}`);
           console.info(`${testNum}::expectSelectNum: ${expectSelectNum}, actual: ${result.photoUris.length}`);
           console.info(`${testNum}::expectIsSelectOriginal: ${isSelectOriginal}, actual: ${result.isOriginalPhoto}`);
+          expect(isSelectOriginal).assertEqual(result.isOriginalPhoto)
           done();
         }).catch((err) => {
           console.info(`${testNum}::select err: ${JSON.stringify(err)}`);
