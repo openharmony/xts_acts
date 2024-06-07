@@ -218,6 +218,7 @@
 #include "list/list_scale_test.cpp"
 #include "list/list_scrollbar_test.cpp"
 #include "list/list_shadow_test.cpp"
+#include "list/list_childMainSize_test.cpp"
 #include "list/list_sticky_test.cpp"
 #include "list/list_translate_test.cpp"
 #include "list/list_width_test.cpp"
@@ -1796,6 +1797,22 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr},
         {"testListItemBrightness004", nullptr, TestListItemBrightness004, nullptr, nullptr, nullptr, napi_default,
          nullptr},
+        {"testListChildMainSize001", nullptr, TestListChildMainSize001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testListChildMainSize002", nullptr, TestListChildMainSize002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testListChildMainSize003", nullptr, TestListChildMainSize003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testListChildMainSize004", nullptr, TestListChildMainSize004, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testListChildMainSize005", nullptr, TestListChildMainSize005, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testListChildMainSize006", nullptr, TestListChildMainSize006, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testListSwipeOption007", nullptr, TestListSwipeOption007, nullptr, nullptr, nullptr, napi_default,
+         nullptr}, 
+        {"testListSwipeOption008", nullptr, TestListSwipeOption008, nullptr, nullptr, nullptr, napi_default,
+         nullptr}, 
         {"testListItemClip001", nullptr, TestListItemClip001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testListItemClip002", nullptr, TestListItemClip002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testListItemClip003", nullptr, TestListItemClip003, nullptr, nullptr, nullptr, napi_default, nullptr},

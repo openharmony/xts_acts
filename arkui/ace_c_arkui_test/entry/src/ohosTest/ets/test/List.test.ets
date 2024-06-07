@@ -205,6 +205,7 @@ import listItemBackgroundColorTest from './listitem/ListItemBackgroundColorTest.
 import listItemWidthTest from './listitem/ListItemWidthTest.test'
 import listItemHeightTest from './listitem/ListItemHeightTest.test'
 import listEnableScrollInteractionTest from './list/ListEnableScrollInteractionTest.test'
+import ListSwipeChildMinSizeTest from  './list/ListSwipeChildMinSizeTest.test.ets'
 import listCachedCountTest from './list/ListCachedCountTest.test'
 import listFrictionTest from './list/ListFrictionTest.test'
 import listStickyTest from './list/ListStickyTest.test'
@@ -796,6 +797,7 @@ export default function testsuite() {
   imageTranslateTest()
   listHeightTest()
   listWidthTest()
+  ListSwipeChildMinSizeTest()
   listBackgroundColorTest()
   listBorderWidthTest()
   listBorderColorTest()
