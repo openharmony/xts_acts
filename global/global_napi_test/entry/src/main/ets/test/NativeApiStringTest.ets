@@ -120,5 +120,75 @@ export default function abilityTest() {
       done();
     })
 
+    /* *
+    * @tc.number  SUB_GLOBAL_isRawDir_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('isRawDir_ndktest_0100',0, function () {
+      let value=ndk.isRawDir(getContext().resourceManager,'')
+      expect(value).assertTrue()
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_getDrawableDescriptor_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getDrawableDescriptor_ndktest_0100',0, function () {
+      let value=ndk.getDrawableDescriptor(getContext().resourceManager,$r('app.media.icon').id)
+      expect(value).assertTrue()
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_getDrawableDescriptorByName_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getDrawableDescriptorByName_ndktest_0100',0, function () {
+      let value=ndk.getDrawableDescriptorByName(getContext().resourceManager)
+      expect(value).assertTrue()
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_getMediaBase64_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getMediaBase64_ndktest_0100',0, function () {
+      let value=ndk.getMediaBase64(getContext().resourceManager,$r('app.media.icon').id)
+      expect(value).assertTrue()
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_getMediaBase64ByName_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getMediaBase64ByName_ndktest_0100',0, function () {
+      let value=ndk.getMediaBase64ByName(getContext().resourceManager)
+      expect(value).assertTrue()
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_getMedia_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getMedia_ndktest_0100',0, function () {
+      let value=ndk.getMedia(getContext().resourceManager,$r('app.media.icon').id)
+      expect(value).assertTrue()
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_getMediaByName_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getMediaByName_ndktest_0100',0, function () {
+      let value=ndk.getMediaByName(getContext().resourceManager)
+      expect(value).assertTrue()
+    })
+
   })
 }
