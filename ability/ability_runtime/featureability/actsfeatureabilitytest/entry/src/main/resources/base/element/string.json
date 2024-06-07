@@ -1,20 +1,24 @@
 {
   "string": [
     {
-      "name": "module_desc",
-      "value": "module description"
+      "name": "app_name",
+      "value": "actsfeatureabilitytest"
     },
     {
-      "name": "MainAbility_desc",
-      "value": "description"
-    },
-    {
-      "name": "MainAbility_label",
-      "value": "label"
+      "name": "mainability_description",
+      "value": "JS_Phone_Empty Feature Ability"
     },
     {
       "name": "permreason_camera",
       "value": "permreason camera"
+    },
+    {
+        "name": "TestAbility_desc",
+        "value": "description"
+    },
+    {
+        "name": "TestAbility_label",
+        "value": "label"
     }
   ]
 }
