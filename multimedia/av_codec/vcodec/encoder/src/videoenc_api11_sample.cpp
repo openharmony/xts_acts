@@ -132,11 +132,7 @@ void VEncAPI11Sample::DumpLtrInfo(OH_AVBuffer *buffer)
 
 void VEncAPI11Sample::DumpQPInfo(OH_AVBuffer *buffer)
 {
-    // OH_AVFormat *format = OH_AVBuffer_GetParameter(buffer);
-    // int32_t qp_average = 0;
-    // double mse = 0;
-    // OH_AVFormat_GetIntValue(format, OH_MD_KEY_VIDEO_ENCODER_QP_AVERAGE, &qp_average);
-    // OH_AVFormat_GetDoubleValue(format, OH_MD_KEY_VIDEO_ENCODER_MSE, &mse);
+
 }
 
 void VEncAPI11Sample::DumpInfo(OH_AVCodecBufferAttr attr, OH_AVBuffer *buffer)
@@ -145,7 +141,6 @@ void VEncAPI11Sample::DumpInfo(OH_AVCodecBufferAttr attr, OH_AVBuffer *buffer)
         DumpLtrInfo(buffer);
     }
     if (getQpMse && attr.flags == AVCODEC_BUFFER_FLAGS_NONE) {
-        // DumpQPInfo(buffer);
     }
 }
 
