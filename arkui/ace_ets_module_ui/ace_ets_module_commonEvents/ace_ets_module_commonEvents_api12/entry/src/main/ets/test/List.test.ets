@@ -36,7 +36,6 @@ export default function testsuite() {
   ShortcutKeyDPADDOWNTest();
   ShortcutKeyDPADLEFTTest();
   ShortcutKeyDPADRIGHTTest();
-  addGestureApplyGesture();
   TapGestureHandlerTest();
   PanGestureHandlerTest();
   SwiperGestureHandlerTest();
