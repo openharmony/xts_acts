@@ -4,6 +4,12 @@
           "MainAbility/pages/themeTokensPages/SetDefaultThemeTestPage",
           "MainAbility/pages/themeTokensPages/SystemThemeTestPage",
           "MainAbility/pages/themeTokensPages/WithThemeTestPage",
-          "MainAbility/pages/components/AlphabetIndexerPage"
+          "MainAbility/pages/components/AlphabetIndexerPage",
+          "MainAbility/pages/components/BadgePage",
+          "MainAbility/pages/components/ButtonPage",
+          "MainAbility/pages/components/CheckboxPage",
+          "MainAbility/pages/components/CounterPage",
+          "MainAbility/pages/components/DatePickerPage",
+          "MainAbility/pages/components/DividerPage"
     ]
 }
