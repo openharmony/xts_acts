@@ -33,6 +33,8 @@ add_library(nativerender SHARED
     image/image_oncomplete_test.cpp
     image/image_onerror_test.cpp
     list/list_hittestbehavior_test.cpp
+    list/list_nodeadapter_test.cpp
+    list/list_nodeadapterevent_test.cpp
     listitem/listitem_hittestbehavior_test.cpp
     toggle/toggle_onchange_test.cpp
     toggle/toggle_enabled_test.cpp

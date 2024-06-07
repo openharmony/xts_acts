@@ -222,6 +222,8 @@
 #include "list/list_translate_test.cpp"
 #include "list/list_width_test.cpp"
 #include "list/list_swipeActionItem_test.cpp"
+#include "list/list_nodeadapter_test.cpp"
+#include "list/list_nodeadapterevent_test.cpp"
 #include "listitem/listitem_backgroundcolor_test.cpp"
 #include "listitem/listitem_blur_test.cpp"
 #include "listitem/listitem_bordercolor_test.cpp"
@@ -1770,6 +1772,10 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testListHeight001", nullptr, TestListHeight001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testListHeight002", nullptr, TestListHeight002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testListHeight003", nullptr, TestListHeight003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testListNodeAdapter001", nullptr, TestListNodeAdapter001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testListNodeAdapter002", nullptr, TestListNodeAdapter002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testListNodeAdapter003", nullptr, TestListNodeAdapter003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testListNodeAdapterEvent001", nullptr, TestListNodeAdapterEvent001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testListItemBackgroundColor001", nullptr, TestListItemBackgroundColor001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testListItemBlur001", nullptr, TestListItemBlur001, nullptr, nullptr, nullptr, napi_default, nullptr},
