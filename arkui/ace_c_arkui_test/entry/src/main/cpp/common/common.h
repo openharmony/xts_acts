@@ -64,6 +64,7 @@ namespace ArkUICapiTest {
 #define SIZE_30 30
 #define SIZE_40 40
 #define SIZE_50 50
+#define SIZE_56 56
 #define SIZE_60 60
 #define SIZE_80 80
 #define SIZE_90 90
