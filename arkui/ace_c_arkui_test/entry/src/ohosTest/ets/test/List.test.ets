@@ -548,6 +548,8 @@ import textInputOnPasteTest from './textinput/TextInputOnPasteTest.test'
 import textInputDefaultFocusTest from './textinput/TextInputDefaultFocusTest'
 import TestArkUIAddApi from './arkApi/arkApi.test'
 
+import testAnimationTest from './animation/animationTest.test'
+import testWaterFlower from './waterFlower/waterFlowerTest.test'
 export default function testsuite() {
   datePickerAccessibilityDescriptionTest()
   datePickerAccessibilityGroupTest()
@@ -1084,4 +1086,6 @@ export default function testsuite() {
   customComponentOnLayoutTest()
   customComponentOnDrawTest()
   TestArkUIAddApi()
+  testAnimationTest()
+  testWaterFlower()
 }
