@@ -604,6 +604,52 @@ export default function imageJsTest() {
         })
 
         /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_READPIXELSTOBUFFER_SYNC_0100
+         * @tc.name      : readPixelsToBuffer-promise
+         * @tc.desc      : read all pixels to an buffer
+         *                 1.create PixelMap,buffer
+         *                 2.call readPixelsToBuffer
+         *                 3.return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_READPIXELSTOBUFFER_SYNC_0100', 0, async function (done) {
+            console.info('SUB_MULTIMEDIA_IMAGE_READPIXELSTOBUFFER_SYNC_0100 in');
+            const color = new ArrayBuffer(96);
+            var bufferArr = new Uint8Array(color);
+            for (var i = 0; i < bufferArr.length; i++) {
+                bufferArr[i] = i + 1;
+            }
+
+            let opts = { editable: true, pixelFormat: 4, size: { height: 4, width: 6 } }
+            let pixelmap = image.createPixelMapSync(color, opts);
+            if (pixelmap == undefined) {
+                console.info('SUB_MULTIMEDIA_IMAGE_READPIXELSTOBUFFER_SYNC_0100 createPixelMap failed');
+                expect(false).assertTrue();
+            }
+            const readBuffer = new ArrayBuffer(96);
+            pixelmap.readPixelsToBufferSync(readBuffer);
+            var bufferArr2 = new Uint8Array(readBuffer);
+            var res = true;
+            for (var i = 0; i < bufferArr2.length; i++) {
+                if (bufferArr2[i] != tcBuf020[i]) {
+                    res = false;
+                    console.info('TC_20_buffer' + bufferArr2[i]);
+                    console.info('SUB_MULTIMEDIA_IMAGE_READPIXELSTOBUFFER_SYNC_0100 failed');
+                    expect(false).assertTrue();
+                    done();
+                break;
+                }
+            }
+            if (res) {
+                console.info('SUB_MULTIMEDIA_IMAGE_READPIXELSTOBUFFER_SYNC_0100 success');
+                expect(true).assertTrue();
+                done();
+            }
+        })
+
+        /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_READPIXELSTOBUFFER_CALLBACK_0100
          * @tc.name      : readPixelsToBuffer-callback
          * @tc.desc      : read all pixels to an buffer
@@ -990,6 +1036,188 @@ export default function imageJsTest() {
         })
 
         /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_READPIXELS_SYNC_0100
+         * @tc.name      : readPixels-sync
+         * @tc.desc      : 1.create PixelMap
+         *                 2.call readPixels
+         *                 3.sync return array
+         *                 4.callbackcall return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_READPIXELS_SYNC_0100', 0, async function (done) {
+            const color = new ArrayBuffer(96);
+            var bufferArr = new Uint8Array(color);
+            for (var i = 0; i < bufferArr.length; i++) {
+                bufferArr[i] = i + 1;
+            }
+            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+            let pixelmap = image.createPixelMapSync(color, opts);
+            if (pixelmap == undefined) {
+                console.info('SUB_MULTIMEDIA_IMAGE_READPIXELS_SYNC_0100 createPixelMapSync failed');
+                expect(false).assertTrue()
+                done();
+            }
+            const area = {
+                pixels: new ArrayBuffer(8),
+                offset: 0,
+                stride: 8,
+                region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
+            }
+            pixelmap.readPixelsSync(area);
+            var bufferArr2 = new Uint8Array(area.pixels);
+            var res = true;
+            for (var i = 0; i < bufferArr2.length; i++) {
+                if (bufferArr2[i] != tcBuf021[i]) {
+                    res = false;
+                    console.info('SUB_MULTIMEDIA_IMAGE_READPIXELS_SYNC_0100 failed');
+                    expect(false).assertTrue();
+                    done();
+                    break;
+                }
+            }
+            if (res) {
+                console.info('SUB_MULTIMEDIA_IMAGE_READPIXELS_SYNC_0100 success');
+                expect(true).assertTrue()
+                done();
+            }
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_READPIXELS_SYNC_0200
+         * @tc.name      : readPixels-sync(buffer:0)
+         * @tc.desc      : 1.create PixelMap
+         *                 2.call readPixels
+         *                 3.sync return array
+         *                 4.callbackcall return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_READPIXELS_SYNC_0200', 0, async function (done) {
+            const color = new ArrayBuffer(96);
+            var bufferArr = new Uint8Array(color);
+            for (var i = 0; i < bufferArr.length; i++) {
+                bufferArr[i] = i + 1;
+            }
+            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+            let pixelmap = image.createPixelMapSync(color, opts)
+            if (pixelmap == undefined) {
+                expect(false).assertTrue();
+                console.info('SUB_MULTIMEDIA_IMAGE_READPIXELS_SYNC_0200 create pixelmap failed');
+                done();
+            } else {
+                const area = {
+                    pixels: new ArrayBuffer(0),
+                    offset: 0,
+                    stride: 8,
+                    region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
+                }
+                var res = false;
+                pixelmap.readPixelsSync(area)
+                res = true
+                if(!res){
+                        console.info('SUB_MULTIMEDIA_IMAGE_READPIXELS_SYNC_0200 failed');
+                        expect(false).assertTrue();
+                        done();
+                } else {
+                    expect(true).assertTrue();
+                    console.info('SUB_MULTIMEDIA_IMAGE_READPIXELS_SYNC_0200 success');
+                    done();
+                }
+            }
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_READPIXELS_SYNC_0300
+         * @tc.name      : readPixels-sync(offset > buffer)
+         * @tc.desc      : 1.create PixelMap
+         *                 2.call readPixels
+         *                 3.sync return array
+         *                 4.callbackcall return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_READPIXELS_SYNC_0300', 0, async function (done) {
+            const color = new ArrayBuffer(96);
+            var bufferArr = new Uint8Array(color);
+            for (var i = 0; i < bufferArr.length; i++) {
+                bufferArr[i] = i + 1;
+            }
+            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+            let pixelmap = image.createPixelMapSync(color, opts);
+            if (pixelmap == undefined) {
+                expect(false).assertTrue();
+                console.info('SUB_MULTIMEDIA_IMAGE_READPIXELS_SYNC_0300 createPixelMap failed');
+                done();
+            }
+            const area = {
+                pixels: new ArrayBuffer(20),
+                offset: 21,
+                stride: 8,
+                region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
+            }
+            var res = false;
+            pixelmap.readPixelsSync(area);
+            res = true;
+            if(!res){
+                console.info('SUB_MULTIMEDIA_IMAGE_READPIXELS_SYNC_0300 failed');
+                expect(false).assertTrue();
+                done();
+            }else {
+                expect(true).assertTrue();
+                console.info('SUB_MULTIMEDIA_IMAGE_READPIXELS_SYNC_0300 success');
+                done();
+            }
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_READPIXELS_SYNC_0400
+         * @tc.name      : readPixels-sync(region: { size: { height: -1, width:-1}, x: 0, y: 0 })
+         * @tc.desc      : 1.create PixelMap
+         *                 2.call readPixels
+         *                 3.sync return array
+         *                 4.callbackcall return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_READPIXELS_SYNC_0400', 0, async function (done) {
+            const color = new ArrayBuffer(96);
+            var bufferArr = new Uint8Array(color);
+            for (var i = 0; i < bufferArr.length; i++) {
+                bufferArr[i] = i + 1;
+            }
+            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+            let pixelmap = image.createPixelMapSync(color, opts);
+            if (pixelmap == undefined) {
+                expect(false).assertTrue();
+                console.info('SUB_MULTIMEDIA_IMAGE_READPIXELS_SYNC_0400 createPixelMap success');
+                done();
+            }
+            const area = {
+                pixels: new ArrayBuffer(20),
+                offset: 0,
+                stride: 8,
+                region: { size: { height: -1, width: -1 }, x: 0, y: 0 }
+            }
+            var res = false;
+            pixelmap.readPixelsSync(area);
+            res = true;
+            if(!res){
+                console.info('SUB_MULTIMEDIA_IMAGE_READPIXELS_SYNC_0400 failed');
+                expect(false).assertTrue();
+                done();
+            }else {
+                expect(true).assertTrue();
+                console.info('SUB_MULTIMEDIA_IMAGE_READPIXELS_SYNC_0400 success');
+                done();
+            }
+        })
+        
+        /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_WRITEPIXELS_PROMISE_0100
          * @tc.name      : writePixels-promise
          * @tc.desc      : 1.create PixelMap
@@ -1056,6 +1284,64 @@ export default function imageJsTest() {
                     expect().assertFail();
                     done();
                 })
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_WRITEPIXELS_SYNC_0100
+         * @tc.name      : writePixels-sync
+         * @tc.desc      : 1.create PixelMap
+         *                 2.call writePixels
+         *                 3.call return undefined
+         *                 4.callbackcall return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_WRITEPIXELS_SYNC_0100', 0, async function (done) {
+            const color = new ArrayBuffer(96);
+            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+            let pixelmap = image.createPixelMapSync(color, opts);
+            if (pixelmap == undefined) {
+                console.info('SUB_MULTIMEDIA_IMAGE_WRITEPIXELS_SYNC_0100 createPixelMap failed');
+                expect(false).assertTrue()
+                done();
+            }
+            const area = {
+                pixels: new ArrayBuffer(8),
+                offset: 0,
+                stride: 8,
+                region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
+            }
+            var bufferArr = new Uint8Array(area.pixels);
+            for (var i = 0; i < bufferArr.length; i++) {
+                bufferArr[i] = i + 1;
+            }
+            console.info('============ bufferArr ' + JSON.stringify(bufferArr));
+            pixelmap.writePixelsSync(area);
+            const readArea = {
+                pixels: new ArrayBuffer(8),
+                offset: 0,
+                stride: 8,
+                region: { size: { height: 1, width: 2 }, x: 0, y: 0 }
+            };
+            console.info('============ bufferArr ' + JSON.stringify(readArea));
+            pixelmap.readPixelsSync(readArea);
+            var readArr = new Uint8Array(readArea.pixels);
+            var res = true;
+            for (var i = 0; i < readArr.length; i++) {
+                if (readArr[i] != tcBuf022[i]) {
+                    res = false;
+                    console.info('SUB_MULTIMEDIA_IMAGE_WRITEPIXELS_SYNC_0100 failed');
+                    expect(false).assertTrue();
+                    done();
+                    break;
+                }
+            }
+            if (res) {
+                console.info('SUB_MULTIMEDIA_IMAGE_WRITEPIXELS_SYNC_0100 success');
+                expect(true).assertTrue()
+                done();
+            }
         })
 
         /**
@@ -1234,6 +1520,51 @@ export default function imageJsTest() {
         })
 
         /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_WRITEBUFFERTOPIXELS_SYNC_0100
+         * @tc.name      : writeBufferToPixels-sync
+         * @tc.desc      : 1.create PixelMap,buffer
+         *                 2.call writeBufferToPixels
+         *                 3.call return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_WRITEBUFFERTOPIXELS_SYNC_0100', 0, async function (done) {
+            const color = new ArrayBuffer(96);
+            let opts = { editable: true, pixelFormat: 3, size: { height: 4, width: 6 } }
+            let pixelmap = image.createPixelMapSync(color, opts);
+            if (pixelmap == undefined) {
+                console.info('SUB_MULTIMEDIA_IMAGE_WRITEBUFFERTOPIXELS_SYNC_0100 createPixelMap failed');
+                expect(false).assertTrue()
+                done();
+            }
+            const writeColor = new ArrayBuffer(96);
+            var bufferArr = new Uint8Array(writeColor);
+            for (var i = 0; i < bufferArr.length; i++) {
+                bufferArr[i] = i + 1;
+            }
+            pixelmap.writeBufferToPixelsSync(writeColor);
+            const readBuffer = new ArrayBuffer(96);
+            pixelmap.readPixelsToBufferSync(readBuffer)
+            var bufferArr = new Uint8Array(readBuffer);
+            var res = true;
+            for (var i = 0; i < bufferArr.length; i++) {
+                if (bufferArr[i] == 0) {
+                    res = false;
+                    console.info('SUB_MULTIMEDIA_IMAGE_WRITEBUFFERTOPIXELS_SYNC_0100 failed');
+                    expect(false).assertTrue()
+                    done();
+                    break;
+                }
+            }
+            if (res) {
+                console.info('SUB_MULTIMEDIA_IMAGE_WRITEBUFFERTOPIXELS_SYNC_0100 success');
+                expect(true).assertTrue();
+                done();
+            }
+        })
+
+        /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_PIXELMAP_PROMISE_0100
          * @tc.name      : getImageInfo-pixelmap-promise
          * @tc.desc      : 1.create PixelMap,ImageInfo
@@ -1279,6 +1610,39 @@ export default function imageJsTest() {
                     expect().assertFail();
                     done();
                 })
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_PIXELMAP_SYNC_0100
+         * @tc.name      : getImageInfo-pixelmap-promise
+         * @tc.desc      : 1.create PixelMap,ImageInfo
+         *                 2.call getImageInfo
+         *                 3.call return imageinfo
+         *                 4.callback return undefined
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 1
+         */
+        it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_PIXELMAP_SYNC_0100', 0, async function (done) {
+            const color = new ArrayBuffer(96);
+            let opts = { editable: true, pixelFormat: 2, size: { height: 6, width: 8 } }
+            let pixelmap = image.createPixelMapSync(color, opts)
+                if (pixelmap == undefined) {
+                    console.info('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_PIXELMAP_SYNC_0100 createPixelMap failed');
+                    expect(false).assertTrue()
+                    done();
+                }
+                let imageInfo = pixelmap.getImageInfoSync();
+                    if (imageInfo == undefined) {
+                        console.info('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_PIXELMAP_SYNC_0100 imageInfo is empty');
+                            expect(false).assertTrue()
+                            done();
+                        }
+                    if (imageInfo.size.height == 6 && imageInfo.size.width == 8) {
+                        console.info('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_PIXELMAP_SYNC_0100 success ');
+                        expect(true).assertTrue()
+                        done();
+                    }
         })
 
         /**
