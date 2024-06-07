@@ -37,12 +37,16 @@ interface locationObj {
 
 interface attendeeObj {
   name: string,
-  email: string
+  email: string,
+  role?: calendarManager.AttendeeRole
 }
 
 interface recurrenceRuleObj {
   recurrenceFrequency: calendarManager.RecurrenceFrequency,
-  expire: number
+  expire?: number,
+  count?: number,
+  interval?: number,
+  excludedDates?: number[]
 }
 
 interface serviceObj {
@@ -177,6 +181,19 @@ export default function CalendarManagerTest() {
       expect(calendarManager.ServiceType.CLASS == 'Class').assertTrue();
       expect(calendarManager.ServiceType.SPORTS_EVENTS == 'SportsEvents').assertTrue();
       expect(calendarManager.ServiceType.SPORTS_EXERCISE == 'SportsExercise').assertTrue();
+    });
+
+    /*
+    * @tc.number  SUB_Application_CalendarManagerApi_test_0400
+    * @tc.name    Test Enumeration of AttendeeRole types.
+    * @tc.desc    Function test
+    * @tc.size    SmallTest
+    * @tc.type    User
+    * @tc.level   Level 2
+    */
+    it("SUB_Application_CalendarManagerApi_test_0400", 0, () => {
+      expect(calendarManager.AttendeeRole.ORGANIZER == 'organizer').assertTrue();
+      expect(calendarManager.AttendeeRole.PARTICIPANT == 'participant').assertTrue();
     });
 
     /*
@@ -815,15 +832,18 @@ export default function CalendarManagerTest() {
         attendee: [
           {
             name: '小王',
-            email: 'xiaowang@huawei.com'
+            email: 'peter@yuanha.com',
+            role: calendarManager.AttendeeRole.ORGANIZER
           },
           {
             name: '小李',
-            email: 'xiaoli@huawei.com'
+            email: 'peter@yuanha.com',
+            role: calendarManager.AttendeeRole.PARTICIPANT
           },
           {
             name: '老李',
-            email: 'laoxiao@huawei.com'
+            email: 'peter@yuanha.com',
+            role: calendarManager.AttendeeRole.PARTICIPANT
           }
         ],
         timeZone: '',
@@ -1468,6 +1488,49 @@ export default function CalendarManagerTest() {
         console.info(CaseName + "Failed to create calendar" + JSON.stringify(err));
         expect().assertFail();
       });
+    });
+
+    /*
+    * @tc.number  SUB_Application_CalendarManagerApi_EditEvent_Promise_0100
+    * @tc.name    Create a single event,invoking this interface will open the event creation page.
+    * @tc.desc    Function test
+    * @tc.size    SmallTest
+    * @tc.type    User
+    * @tc.level   Level 2
+    */
+    it("SUB_Application_CalendarManagerApi_EditEvent_Promise_0100", 0, async (done: Function) => {
+      let CaseName = 'SUB_Application_CalendarManagerApi_EditEvent_Promise_0100';
+      let TimeZone = '';
+      systemDateTime.getTimezone((error, data) => {
+        if (error) {
+          console.info(`Failed to get timezone. message: ${error.message}, code: ${error.code}`);
+          return;
+        }
+        console.info(`Succeeded in get timezone : ${data}`);
+        TimeZone = data;
+      });
+
+      const date = new Date();
+      let Schedule: calendarManager.Event = {
+        type: calendarManager.EventType.NORMAL,
+        startTime: date.getTime(),
+        endTime: date.getTime() + 60 * 60 * 1000,
+        identifier: "1aa96c08-d732-443b-aa0a-6eb1559dfb19",
+        recurrenceRule: {
+          recurrenceFrequency: calendarManager.RecurrenceFrequency.DAILY,
+          count: 100,
+          interval: 2,
+          expire: date.getTime() + 60 * 60 * 1000 * 3,
+          excludedDates: [date.getTime() + 60 * 60 * 1000 * 2]
+        },
+      }
+      try {
+        let eventId = await calendarMgr.editEvent(Schedule);
+        expect(eventId != null).assertTrue();
+      } catch (err) {
+        console.info(CaseName + "Failed to editEvent" + JSON.stringify(err));
+      }
+      done();
     });
 
   });
