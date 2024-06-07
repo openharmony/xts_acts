@@ -15,6 +15,6 @@ group("ActsAceEtsModuleThemeTest") {
   testonly = true
   deps = [
     "ace_ets_module_theme_api12:ActsAceEtsModuleThemeApi12Test",
-    "ace_ets_module_theme_hvigor:ActsAceEtsModuleThemeTest",
+    "ace_ets_module_theme_hvigor:ActsAceEtsModuleThemeHVigorTest",
   ]
 }
