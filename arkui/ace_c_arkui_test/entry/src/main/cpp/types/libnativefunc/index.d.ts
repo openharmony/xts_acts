@@ -4755,6 +4755,22 @@ export const TestArkUIAddApi005: () => number;
 
 export const TestArkUIAddApi006: () => number;
 
+export const TestArkUIAddApi007: () => number;
+
+export const TestArkUIAddApi008: () => number;
+
+export const TestArkUIAddApi009: () => number;
+
+export const TestArkUIAddApi010: () => number;
+
+export const TestArkUIAddApi011: () => number;
+
+export const TestArkUIAddApi012: () => number;
+
+export const TestArkUIAddApi013: () => number;
+
+export const TestArkUIAddApi014: () => number;
+
 export const testAnimation_001: () => number;
 export const testAnimation_002: () => number;
 export const testAnimation_003: () => number;

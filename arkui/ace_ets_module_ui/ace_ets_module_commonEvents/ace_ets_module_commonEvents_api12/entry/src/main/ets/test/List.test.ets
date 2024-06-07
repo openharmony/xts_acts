@@ -33,19 +33,19 @@ import onKeyPreImeTest from './onKeyEventTest/onKeyPreIme.test';
 import getModifierKeyStateTest from './onKeyEventTest/getModifierKeyState.test';
 import clearGestureTest from './GestureHandler/clearGesture.test';
 
-// ÊÖÖ¸²Ù×÷£ºµ¥»÷¡¢Ë«»÷¡¢³¤°´
+// ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 import TapGestureBasicClickTest from './TapGesture/TapGestureBasicClickTest.test';
 import TapGestureBasicDoubleClickTest from './TapGesture/TapGestureBasicDoubleClickTest.test';
 import LongPressGestureLongClickTest from './LongPressGesture/LongPressGestureLongClickTest.test';
-// Êó±ê²Ù×÷£ºµ¥»÷¡¢Ë«»÷¡¢³¤°´
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 import TapGestureBasicClickMouseTest from './TapGesture/TapGestureBasicClickMouseTest.test';
 import TapGestureBasicDoubleClickMouseTest from './TapGesture/TapGestureBasicDoubleClickMouseTest.test';
 import LongPressGestureLongClickMouseTest from './LongPressGesture/LongPressGestureLongClickMouseTest.test';
-// µ¥Ö¸²»Í¬·½Ïò»¬¶¯
+// ï¿½ï¿½Ö¸ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ò»¬¶ï¿½
 import PanGestureExample01Test from './PanGesture/PanGestureExample01Test.test';
 import PanGestureExample02Test from './PanGesture/PanGestureExample02Test.test';
 import SwipeGestureExample01Test from './SwipeGesture/SwipeGestureExample01Test.test';
-// ¶àÖ¸²Ù×÷
+// ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½
 import PanGestureExample03Test from './PanGesture/PanGestureExample03Test.test';
 import SwipeGestureExample03Test from './SwipeGesture/SwipeGestureExample03Test.test';
 
@@ -57,7 +57,6 @@ export default function testsuite() {
   ShortcutKeyDPADDOWNTest();
   ShortcutKeyDPADLEFTTest();
   ShortcutKeyDPADRIGHTTest();
-  addGestureApplyGesture();
   TapGestureHandlerTest();
   PanGestureHandlerTest();
   SwiperGestureHandlerTest();

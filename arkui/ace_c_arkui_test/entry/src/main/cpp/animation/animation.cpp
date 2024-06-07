@@ -48,8 +48,10 @@ static napi_value testAnimation_004(napi_env env, napi_callback_info info)
 
 static napi_value testAnimation_005(napi_env env, napi_callback_info info)
 {
+    auto option = OH_ArkUI_AnimateOption_Create ();
     auto result = OH_ArkUI_AnimateOption_GetIterations(nullptr);
     ASSERT_EQ(result, 0);
+    OH_ArkUI_AnimateOption_Dispose(option);
     NAPI_END;
 }
 
