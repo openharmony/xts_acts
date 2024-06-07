@@ -13,17 +13,38 @@
  * limitations under the License.
  */
 
-export default {
-    data: {
-        title: ''
-    },
-    onInit() {
-        this.title = this.$t('strings.world');
-    },
-    onActive() {
-        console.info('onShow finish');
-    },
-    onReady() {
-        console.info('onReady');
-    },
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.title {
+    font-size: 60px;
+    text-align: center;
+    width: 100%;
+    height: 40%;
+    margin: 10px;
+}
+.btn {
+    width: 50%;
+    height: 100px;
+    font-size: 40px;
+}
+
+@media screen and (device-type: phone) and (orientation: landscape) {
+    .title {
+        font-size: 60px;
+    }
+}
+
+@media screen and (device-type: tablet) and (orientation: landscape) {
+    .title {
+        font-size: 100px;
+    }
 }

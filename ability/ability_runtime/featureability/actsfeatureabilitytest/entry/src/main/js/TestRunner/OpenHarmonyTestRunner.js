@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,30 +12,48 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import hilog from '@ohos.hilog';
-import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+
+import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+
+function translateParamsToString(parameters) {
+    const keySet = new Set([
+        '-s class', '-s notClass', '-s suite', '-s itName',
+        '-s level', '-s testType', '-s size', '-s timeout',
+        '-s package', '-s dryRun'
+    ])
+    let targetParams = '';
+    for (const key in parameters) {
+        if (keySet.has(key)) {
+            targetParams += ' ' + key + ' ' + parameters[key]
+        }
+    }
+    return targetParams.trim()
+}
 
  export default {
     onPrepare() {
-        hilog.info(0x0000, 'testTag', '%{public}s', 'OpenHarmonyTestRunner OnPrepare');
+        console.info('OpenHarmonyTestRunner OnPrepare')
     },
     onRun() {
-        hilog.info(0x0000, 'testTag', '%{public}s', 'OpenHarmonyTestRunner onRun run');
+        console.log('OpenHarmonyTestRunner onRun run')
         var abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
         var abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
 
         var testAbilityName = abilityDelegatorArguments.parameters['-p'] + '.TestAbility'
+
         var cmd = 'aa start -d 0 -a ' + testAbilityName + ' -b ' + abilityDelegatorArguments.bundleName
+        cmd += ' ' + translateParamsToString(abilityDelegatorArguments.parameters)
         var debug = abilityDelegatorArguments.parameters["-D"]
+        console.info('debug value : '+debug)
         if (debug == 'true')
         {
             cmd += ' -D'
         }
-        hilog.info(0x0000, 'testTag', 'cmd : %{public}s', cmd);
+        console.info('cmd : '+cmd)
         abilityDelegator.executeShellCommand(cmd, (err, data) => {
-            hilog.info(0x0000, 'testTag', 'executeShellCommand : err : %{public}s', JSON.stringify(err) ?? '');
-            hilog.info(0x0000, 'testTag', 'executeShellCommand : data : %{public}s', data.stdResult ?? '');
-            hilog.info(0x0000, 'testTag', 'executeShellCommand : data : %{public}s', data.exitCode ?? '');
+            console.info('executeShellCommand : err : ' + JSON.stringify(err));
+            console.info('executeShellCommand : data : ' + data.stdResult);
+            console.info('executeShellCommand : data : ' + data.exitCode);
         })
     }
 };
