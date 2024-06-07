@@ -33,6 +33,7 @@ group("graphic") {
       "graphicGLES3:ActsGraphicGles3Test",
       "graphicGlesExtension:ActsGraphicGlesExtensionTest",
       "graphicImage:ActsGraphicImageTest",
+      "graphicText:ActsGraphicTextTest",
       "graphicnapidrawingtest:ActsGraphicNapiDrawingTest",
       "graphicnapitest:ActsGraphicNapiTest",
       "graphicvulkannapitest:ActsGraphicVulkanTest",
