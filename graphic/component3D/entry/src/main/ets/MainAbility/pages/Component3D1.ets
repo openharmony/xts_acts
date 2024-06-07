@@ -12,9 +12,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Component3DTest from './Component3DTest.test';
-import Component3D1Test from './Component3DTest.test';
-export default function testsuite() {
-  Component3DTest()
-  Component3D1Test()
+// xxx.ets
+@Entry
+@Component
+struct component3D1 {
+  scene: SceneOptions = { scene: $rawfile('gltf/DamageHemlt/glTF/DamagedHelmet.gltf'), modelType: ModelType.TEXTURE};
+  build() {
+    Row() {
+      Column() {
+        Text('GLTF Example')
+        Component3D( this.scene )
+          .id('Component3D1_1')
+          .environment($rawfile('gltf/Environment/glTF/Environment.gltf'))
+          .renderWidth('90%').renderHeight('90%')
+      }.width('100%')
+    }
+    .height('100%')
+  }
 }
