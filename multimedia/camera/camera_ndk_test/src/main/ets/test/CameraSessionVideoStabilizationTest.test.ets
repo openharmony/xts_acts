@@ -18,7 +18,8 @@ import image from '@ohos.multimedia.image';
 import deviceInfo from '@ohos.deviceInfo';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { Camera_VideoStabilizationMode, GlobalThis } from './Constants';
-import mediaLibrary from '@ohos.multimedia.mediaLibrary';
+import fs from '@ohos.file.fs';
+import featureAbility from '@ohos.ability.featureAbility'
 
 const TAG = "CameraXts cameraSessionVideoStabilizationTest: ";
 
@@ -37,15 +38,12 @@ function isEmpty(data: cameraObj.cameraInfo) {
 }
 
 async function closeFd() {
-  if (mFileAsset != null) {
-    await mFileAsset[0].close(mFdNumber).then(() => {
-      console.info('[mediaLibrary] case close fd success');
-    }).catch(() => {
-      console.info('[mediaLibrary] case close fd failed');
-    });
-  } else {
-    console.info('[mediaLibrary] case fileAsset is null');
-  }
+        console.info('case come in closeFd')
+        if (fdNumber != null) {
+            fs.closeSync(fdNumber);
+        } else {
+            console.info('[fs.closeSync] case fdNumber is null');
+        }
 }
 
 async function getPhotoReceiverSurface() {
