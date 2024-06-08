@@ -167,7 +167,7 @@ export default function AVPlayerNdkTest() {
       done();
     });
 
-        /**
+    /**
      * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETAUDIORENDERERINFO_0100
      * @tc.name       : testOhAvPlayerSetAudioRendererInfo001
      * @tc.desc       : test OH_AVPlayer_SetAudioRendererInfo
