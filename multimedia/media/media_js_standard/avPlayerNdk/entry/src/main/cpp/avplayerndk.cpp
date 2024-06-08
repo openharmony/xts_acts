@@ -234,12 +234,10 @@ static napi_value OhAvPlayerSetAudioEffectMode(napi_env env, napi_callback_info 
 {
     napi_value result = nullptr;
     int backParam = FAIL;
-    OH_AVPlayer *player = OH_AVPlayer_Create();
-    if (GetFDSourceInfo(player) == AV_ERR_OK) {
-        OH_AVErrCode errCode = OH_AVPlayer_SetAudioEffectMode(player, EFFECT_NONE);
-        if (errCode == AV_ERR_OK) {
-            backParam = SUCCESS;
-        }
+    OH_AVPlayer *player = GetPrepareAVPlayer();
+    OH_AVErrCode errCode = OH_AVPlayer_SetAudioEffectMode(player, EFFECT_NONE);
+    if (errCode == AV_ERR_OK) {
+        backParam = SUCCESS;
     }
     OH_AVPlayer_ReleaseSync(player);
     napi_create_int32(env, backParam, &result);
