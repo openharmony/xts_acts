@@ -1467,7 +1467,7 @@ export default function singleKvStoreCallbackTest(){
               await kvStore.commit(async function (err,data) {
                 console.info('testSingleKvStorestartTransaction101 commit success');
                 expect(err == undefined).assertTrue();
-                await sleep(2000);
+                await sleep(500);
                 expect(count == 1).assertTrue();
                 done();
               });
@@ -1512,7 +1512,7 @@ export default function singleKvStoreCallbackTest(){
               await kvStore.rollback(async function (err,data) {
                 console.info('testSingleKvStorestartTransaction102 rollback success');
                 expect(err == undefined).assertTrue();
-                await sleep(2000);
+                await sleep(500);
                 expect(count == 0).assertTrue();
                 done();
               });
@@ -2484,7 +2484,7 @@ export default function singleKvStoreCallbackTest(){
         expect(err != null).assertTrue();
       }
 
-      await sleep(1000)
+      await sleep(500)
       done();
     })
 

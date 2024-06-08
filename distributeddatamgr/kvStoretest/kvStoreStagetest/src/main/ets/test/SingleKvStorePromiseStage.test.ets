@@ -1564,7 +1564,7 @@ export default function singleKvStorePromiseTest(){
           console.info('testSingleKvStorestartTransaction001 commit fail ' + err);
           expect(err != null).assertTrue();
         });
-        await sleep(2000);
+        await sleep(500);
         expect(count == 1).assertTrue();
       }catch(e) {
         console.info('testSingleKvStorestartTransaction001 e ' + e);
@@ -1617,7 +1617,7 @@ export default function singleKvStorePromiseTest(){
           console.info('testSingleKvStorestartTransaction002 rollback fail ' + err);
           expect(err != null).assertTrue();
         });
-        await sleep(2000);
+        await sleep(500);
         expect(count == 0).assertTrue();
       }catch(e) {
         console.info('testSingleKvStorestartTransaction002 e ' + e);

@@ -408,7 +408,7 @@ export default function relationalStoreTest() {
           deleteResult = true;
         }
         console.info(`Delete RdbStore successfully.`);
-        await sleep(1000);
+        await sleep(500);
         expect(deleteResult).assertTrue();
         done();
       });
@@ -437,7 +437,7 @@ export default function relationalStoreTest() {
         .then(async () => {
           console.info(`Delete RdbStore successfully.`);
           deleteResult = true;
-          await sleep(1000);
+          await sleep(500);
           expect(deleteResult).assertTrue();
           done();
         })
@@ -477,7 +477,7 @@ export default function relationalStoreTest() {
             deleteResult = true;
           }
           console.info(`Delete RdbStore successfully.`);
-          await sleep(1000);
+          await sleep(500);
           expect(deleteResult).assertTrue();
           done();
         });
@@ -511,7 +511,7 @@ export default function relationalStoreTest() {
           .then(async () => {
             console.info(`Delete RdbStore successfully.`);
             deleteResult = true;
-            await sleep(1000);
+            await sleep(500);
             expect(deleteResult).assertTrue();
             done();
           })
@@ -669,7 +669,7 @@ export default function relationalStoreTest() {
           deleteResult = true;
         }
         console.info(`testDeleteRdbStoreError005 Delete RdbStore successfully.`);
-        await sleep(1000);
+        await sleep(500);
         expect(deleteResult).assertTrue();
         done();
       });
@@ -698,7 +698,7 @@ export default function relationalStoreTest() {
         .then(async () => {
           console.info(`testDeleteRdbStoreError006 Delete RdbStore successfully.`);
           deleteResult = true;
-          await sleep(1000);
+          await sleep(500);
           expect(deleteResult).assertTrue();
           done();
         })

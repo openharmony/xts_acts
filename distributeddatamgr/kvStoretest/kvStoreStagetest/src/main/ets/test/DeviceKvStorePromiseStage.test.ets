@@ -1594,7 +1594,7 @@ export default function deviceKvStorePromiseTest(){
           console.info('testDeviceKvStorestartTransaction001 commit fail ' + err);
           expect(null).assertFail();
         });
-        await sleep(2000);
+        await sleep(500);
         expect(count == 1).assertTrue();
       }catch(e) {
         console.info('testDeviceKvStorestartTransaction001 e ' + e);
@@ -1647,7 +1647,7 @@ export default function deviceKvStorePromiseTest(){
           console.info('testDeviceKvStorestartTransaction002 rollback fail ' + err);
           expect(null).assertFail();
         });
-        await sleep(2000);
+        await sleep(500);
         expect(count == 0).assertTrue();
       }catch(e) {
         console.info('testDeviceKvStorestartTransaction002 e ' + e);

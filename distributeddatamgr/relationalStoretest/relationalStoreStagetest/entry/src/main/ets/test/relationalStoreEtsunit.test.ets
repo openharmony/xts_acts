@@ -323,7 +323,7 @@ export default function relationalStoreTest(context){
                         console.info(`${TAG} delete rdb store success,result is ${deleteResult}`)
                     }
                 })
-                await sleep(1000)
+                await sleep(500)
                 expect(deleteResult).assertTrue();
                 done();
             })

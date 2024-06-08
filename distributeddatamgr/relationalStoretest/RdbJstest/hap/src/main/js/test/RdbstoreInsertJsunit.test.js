@@ -717,7 +717,7 @@ export default function rdbstoreInsertTest() {
                 })
                 resultSet = null
             })
-            await sleep(2000)
+            await sleep(500)
             done()
             console.info(TAG + "************* testRdbStorebatchInsertCallback0001 end *************");
         })
@@ -785,7 +785,7 @@ export default function rdbstoreInsertTest() {
                     done();
                 })
             })
-            await sleep(2000)
+            await sleep(500)
             resultSet = null
             done()
             console.info(TAG + "************* testRdbStorebatchInsertCallback0002 end *************");
@@ -889,7 +889,7 @@ export default function rdbstoreInsertTest() {
                     done();
                 })
             })
-            await sleep(2000)
+            await sleep(500)
             resultSet = null
             done();
             console.info(TAG + "************* testRdbStorebatchInsertCallback0003 end *************");
@@ -942,7 +942,7 @@ export default function rdbstoreInsertTest() {
                     done();
                 })
             })
-            await sleep(2000)
+            await sleep(500)
             resultSet = null;
             done()
             console.info(TAG + "************* testRdbStorebatchInsertCallback0004 end *************");
@@ -1006,7 +1006,7 @@ export default function rdbstoreInsertTest() {
                     done();
                 })
             })
-            await sleep(2000)
+            await sleep(500)
             resultSet = null;
             done();
             console.info(TAG + "************* testRdbStorebatchInsertCallback0005 end *************");

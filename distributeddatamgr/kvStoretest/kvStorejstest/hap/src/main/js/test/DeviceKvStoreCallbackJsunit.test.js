@@ -1374,7 +1374,7 @@ describe('deviceKvStoreCallbackTest', function () {
                         await kvStore.commit(async function (err,data) {
                             console.info('testDeviceKvStorestartTransaction101 commit success');
                             expect(err == undefined).assertTrue();
-                            await sleep(2000);
+                            await sleep(500);
                             expect(count == 1).assertTrue();
                             done();
                         });
@@ -1416,7 +1416,7 @@ describe('deviceKvStoreCallbackTest', function () {
                         await kvStore.rollback(async function (err,data) {
                             console.info('testDeviceKvStorestartTransaction102 rollback success');
                             expect(err == undefined).assertTrue();
-                            await sleep(2000);
+                            await sleep(500);
                             expect(count == 0).assertTrue();
                             done();
                         });
