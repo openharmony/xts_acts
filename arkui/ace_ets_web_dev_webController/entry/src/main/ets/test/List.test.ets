@@ -36,6 +36,7 @@ import webOnAudioStateChanged from './webOnAudioStateChanged.test';
 import webviewTerminateRenderProcess from './webviewTerminateRenderProcess.test';
 import webviewSelectionMenuOptions from './webviewSelectionMenuOptions.test';
 import DNSHostIP from './DNSHostIP.test';
+import webZoomAccessTest from './WebZoomAccessTest.test'
 
 export default function testsuite() {
   //webOnBeforeUnload()
@@ -62,5 +63,7 @@ export default function testsuite() {
   DNSHostIP();
   webviewSelectionMenuOptions();
   webviewTerminateRenderProcess();
+  webZoomAccessTest()
+  
   
 }

@@ -84,7 +84,7 @@ export default function webViewContZoomAndOthersError() {
     it('testZoomEnableErr', 0, async (done: Function) => {
       emitKey = "emitSearchAllAsyncInitErr";
       Utils.registerEvent("testZoomEnableErr", "17100004", 666, done);
-      Utils.registerEvent("testZoomEnableErr", "Function not enable", 667, done);
+      Utils.registerEvent("testZoomEnableErr", "Function not enabled.", 667, done);
       sendEventByKey('webViewContZoomAndOthersError', 10, '');
     })
     /*
@@ -183,7 +183,7 @@ export default function webViewContZoomAndOthersError() {
     it('testZoomInEnableErr', 0, async (done: Function) => {
       emitKey = "emitZoomOutInitErr";
       Utils.registerEvent("testZoomInEnableErr", "17100004", 684, done);
-      Utils.registerEvent("testZoomInEnableErr", "Function not enable", 685, done);
+      Utils.registerEvent("testZoomInEnableErr", "Function not enabled.", 685, done);
       sendEventByKey('webViewContZoomAndOthersError', 10, '');
     })
     /*
@@ -205,7 +205,7 @@ export default function webViewContZoomAndOthersError() {
     it('testZoomOutEnableErr', 0, async (done: Function) => {
       emitKey = "emitGetHitTestValueInitErr";
       Utils.registerEvent("testZoomOutEnableErr", "17100004", 688, done);
-      Utils.registerEvent("testZoomOutEnableErr", "Function not enable", 689, done);
+      Utils.registerEvent("testZoomOutEnableErr", "Function not enabled.", 689, done);
       sendEventByKey('webViewContZoomAndOthersError', 10, '');
     })
     /*
