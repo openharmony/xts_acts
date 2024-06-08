@@ -197,6 +197,55 @@ static int GetBackParam(int param, OH_AVErrCode errCode)
     return backParam;
 }
 
+static napi_value OhAvPlayerSetAudioRendererInfo(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    int backParam = FAIL;
+    OH_AVPlayer *player = OH_AVPlayer_Create();
+    if (GetFDSourceInfo(player) == AV_ERR_OK) {
+        OH_AVErrCode errCode = OH_AVPlayer_SetAudioRendererInfo(player, AUDIOSTREAM_USAGE_UNKNOWN);
+        if (errCode == AV_ERR_OK) {
+            backParam = SUCCESS;
+        }
+    }
+    OH_AVPlayer_ReleaseSync(player);
+    napi_create_int32(env, backParam, &result);
+    return result;
+}
+
+static napi_value OhAvPlayerSetAudioInterruptMode(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    int backParam = FAIL;
+    OH_AVPlayer *player = OH_AVPlayer_Create();
+    if (GetFDSourceInfo(player) == AV_ERR_OK) {
+        OH_AVErrCode errCode = OH_AVPlayer_SetAudioInterruptMode(player,
+            AUDIOSTREAM_INTERRUPT_MODE_INDEPENDENT);
+        if (errCode == AV_ERR_OK) {
+            backParam = SUCCESS;
+        }
+    }
+    OH_AVPlayer_ReleaseSync(player);
+    napi_create_int32(env, backParam, &result);
+    return result;
+}
+
+static napi_value OhAvPlayerSetAudioEffectMode(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    int backParam = FAIL;
+    OH_AVPlayer *player = OH_AVPlayer_Create();
+    if (GetFDSourceInfo(player) == AV_ERR_OK) {
+        OH_AVErrCode errCode = OH_AVPlayer_SetAudioEffectMode(player, EFFECT_NONE);
+        if (errCode == AV_ERR_OK) {
+            backParam = SUCCESS;
+        }
+    }
+    OH_AVPlayer_ReleaseSync(player);
+    napi_create_int32(env, backParam, &result);
+    return result;
+}
+
 static napi_value OhAvPlayerPrepare(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
@@ -1073,7 +1122,13 @@ static napi_value Init(napi_env env, napi_value exports)
         {"AvPlayerGetCurrentTrack", nullptr, OhAvPlayerGetCurrentTrack, nullptr, nullptr, nullptr,
             napi_default, nullptr},
         {"AvPlayerGetCurrentTrackAbnormalOne", nullptr, OhAvPlayerGetCurrentTrackAbnormalOne, nullptr,
-            nullptr, nullptr, napi_default, nullptr}
+            nullptr, nullptr, napi_default, nullptr},
+        {"AvPlayerSetAudioRendererInfo", nullptr, OhAvPlayerSetAudioRendererInfo, nullptr, nullptr, nullptr,
+            napi_default, nullptr},
+        {"AvPlayerSetAudioInterruptMode", nullptr, OhAvPlayerSetAudioInterruptMode, nullptr, nullptr, nullptr,
+            napi_default, nullptr},
+        {"AvPlayerSetAudioEffectMode", nullptr, OhAvPlayerSetAudioEffectMode, nullptr, nullptr, nullptr,
+            napi_default, nullptr}
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
