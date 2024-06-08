@@ -167,6 +167,48 @@ export default function AVPlayerNdkTest() {
       done();
     });
 
+        /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETAUDIORENDERERINFO_0100
+     * @tc.name       : testOhAvPlayerSetAudioRendererInfo001
+     * @tc.desc       : test OH_AVPlayer_SetAudioRendererInfo
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetAudioRendererInfo001', 0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetAudioRendererInfo();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETAUDIOINTERRUPTMODE_0100
+     * @tc.name       : testOhAvPlayerSetAudioInterruptMode001
+     * @tc.desc       : test OH_AVPlayer_SetAudioInterruptMode
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetAudioInterruptMode001', 0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetAudioInterruptMode();
+      expect(result).assertEqual(0);
+      done();
+    });
+
+    /**
+     * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_SETAUDIOEFFECTMODE_0100
+     * @tc.name       : testOhAvPlayerSetAudioEffectMode001
+     * @tc.desc       : test OH_AVPlayer_SetAudioEffectMode
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 0
+     */
+    it('testOhAvPlayerSetAudioEffectMode001', 0, async (done: Function) => {
+      let result: number = avplayer.AvPlayerSetAudioEffectMode();
+      expect(result).assertEqual(0);
+      done();
+    });
+    
     /**
      * @tc.number     : SUB_MULTIMEIDA_AVPLAYER_NDK_PREPARE_0100
      * @tc.name       : testOhAvPlayerPrepare001
