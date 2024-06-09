@@ -18,8 +18,7 @@
 
 #define NUMBER_0 0
 #define VALUE_0 10
-#define INVAILE_PARA -1
-
+const int INVAILE_PARA = -1;
 
 namespace ArkUICapiTest {
 
