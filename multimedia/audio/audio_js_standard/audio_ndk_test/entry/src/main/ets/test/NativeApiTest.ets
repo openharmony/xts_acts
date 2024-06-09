@@ -2225,5 +2225,37 @@ export default function audioNDK() {
       expect(a).assertEqual(1)
       done()
     })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_WRITE_DATA_CALLBACK_0100
+     * @tc.name      : set rendererWriteDataCallback with VALID result after create audioStreamBuilder
+     * @tc.desc      : test OH_AudioStreamBuilder_SetRendererWriteDataCallback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_WRITE_DATA_CALLBACK_0100', 0, async (done: Function) => {
+      let a = myaudioNdk.audioStreamBuilderSetRendererWriteDataCallback_001();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_WRITE_DATA_CALLBACK_0100`,
+        `audioStreamBuilderSetRendererWriteDataCallback_001: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_WRITE_DATA_CALLBACK_0200
+     * @tc.name      : set rendererWriteDataCallback with INVALID result after create audioStreamBuilder
+     * @tc.desc      : test OH_AudioStreamBuilder_SetRendererWriteDataCallback
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level2
+     */
+    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_WRITE_DATA_CALLBACK_0200', 0, async (done: Function) => {
+      let a = myaudioNdk.audioStreamBuilderSetRendererWriteDataCallback_002();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_WRITE_DATA_CALLBACK_0200`,
+        `audioStreamBuilderSetRendererWriteDataCallback_002: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
   })
 }
