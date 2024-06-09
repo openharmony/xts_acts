@@ -713,7 +713,7 @@ export default function UtdfileNameTest() {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0460 start');
       let result = UTD.getUniformDataTypeByFilenameExtension(".docm");
       console.log("typeId:" + result);
-      expect(result).assertEqual(UTD.UniformDataType.WORDPROCESSINGML_DOCUMENT);
+      expect(result).assertEqual("org.openxmlformats.wordprocessingml.document.macroenabled");
     });
     /**
      * @tc.name      : testSUBDistributedDataUDMFSDKUtdfileNameExtentionsJsAPITest0470
@@ -741,7 +741,7 @@ export default function UtdfileNameTest() {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0480 start');
       let result = UTD.getUniformDataTypeByFilenameExtension(".xlsm");
       console.log("typeId:" + result);
-      expect(result).assertEqual(UTD.UniformDataType.SPREADSHEETML_SHEET);
+      expect(result).assertEqual("org.openxmlformats.spreadsheetml.sheet.macroenabled");
     });
     /**
      * @tc.name      : testSUBDistributedDataUDMFSDKUtdfileNameExtentionsJsAPITest0440
@@ -760,14 +760,14 @@ export default function UtdfileNameTest() {
     /**
      * @tc.name      : testSUBDistributedDataUDMFSDKUtdfileNameExtentionsJsAPITest0500
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0500
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .pptm
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .pptx
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0500', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0500 start');
-      let result = UTD.getUniformDataTypeByFilenameExtension(".pptm");
+      let result = UTD.getUniformDataTypeByFilenameExtension(".pptx");
       console.log("typeId:" + result);
       expect(result).assertEqual(UTD.UniformDataType.PRESENTATIONML_PRESENTATION);
     });

@@ -102,7 +102,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
       expect(typeObj.filenameExtensions.toString()).assertEqual("");
-      expect(typeObj.mimeTypes.toString()).assertEqual("");
+      expect(typeObj.mimeTypes.toString()).assertEqual("*/*");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0150 end");
     });
     /**
@@ -158,7 +158,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.description).assertEqual("Text of unspecified encoding, with no markup.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_txt");
-      expect(typeObj.filenameExtensions.toString()).assertEqual(".txt");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".txt,.text");
       expect(typeObj.mimeTypes.toString()).assertEqual("text/plain");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0200 end");
     });
@@ -327,7 +327,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
       expect(typeObj.filenameExtensions.toString()).assertEqual(".sh,.command");
-      expect(typeObj.mimeTypes.toString()).assertEqual("");
+      expect(typeObj.mimeTypes.toString()).assertEqual("text/x-shellscript");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0800 end");
     });
     /**
@@ -355,7 +355,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
       expect(typeObj.filenameExtensions.toString()).assertEqual(".csh");
-      expect(typeObj.mimeTypes.toString()).assertEqual("");
+      expect(typeObj.mimeTypes.toString()).assertEqual("text/x-csh");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0900 end");
     });
     /**
@@ -550,7 +550,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
       expect(typeObj.filenameExtensions.toString()).assertEqual(".h");
-      expect(typeObj.mimeTypes.toString()).assertEqual("");
+      expect(typeObj.mimeTypes.toString()).assertEqual("text/-chdr");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1600 end");
     });
     /**
@@ -578,7 +578,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
       expect(typeObj.filenameExtensions.toString()).assertEqual(".c");
-      expect(typeObj.mimeTypes.toString()).assertEqual("");
+      expect(typeObj.mimeTypes.toString()).assertEqual("text/x-csrc");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1700 end");
     });
     /**
@@ -605,8 +605,8 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.description).assertEqual("C++ header file.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
-      expect(typeObj.filenameExtensions.toString()).assertEqual(".hpp,.h++,.hxx");
-      expect(typeObj.mimeTypes.toString()).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".hpp,.h++,.hxx,.hh");
+      expect(typeObj.mimeTypes.toString()).assertEqual("text/x-c++hdr");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1800 end");
     });
     /**
@@ -634,7 +634,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
       expect(typeObj.filenameExtensions.toString()).assertEqual(".cp,.cpp,.c++,.cc,.cxx");
-      expect(typeObj.mimeTypes.toString()).assertEqual("");
+      expect(typeObj.mimeTypes.toString()).assertEqual("text/x-c++src");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1900 end");
     });
     /**
@@ -912,7 +912,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.belongingToTypes[0]).assertEqual("general.image");
       expect(typeObj.description).assertEqual("JPEG image.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.filenameExtensions.toString()).assertEqual(".jpg,.jpeg");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".jpg,.jpeg,.jpe");
       expect(typeObj.mimeTypes.toString()).assertEqual("image/jpeg");
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_image");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2900 end");
@@ -1026,7 +1026,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_image");
       expect(typeObj.filenameExtensions.toString()).assertEqual(".bmp");
-      expect(typeObj.mimeTypes.toString()).assertEqual("");
+      expect(typeObj.mimeTypes.toString()).assertEqual("image/bmp,image/x-ms-bmp");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3300 end");
     });
     /**
@@ -1054,7 +1054,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_image");
       expect(typeObj.filenameExtensions.toString()).assertEqual(".ico");
-      expect(typeObj.mimeTypes.toString()).assertEqual("");
+      expect(typeObj.mimeTypes.toString()).assertEqual("image/ico,image/x-icon");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3400 end");
     });
     /**
@@ -1194,7 +1194,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
       expect(typeObj.filenameExtensions.toString()).assertEqual(".ppt");
-      expect(typeObj.mimeTypes.toString()).assertEqual("application/mspowerpoint");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/vnd.ms-powerpoint");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_3900 end");
     });
     /**
@@ -1361,7 +1361,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.description).assertEqual("MPEG-1 or MPEG-2 video.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_video");
-      expect(typeObj.filenameExtensions.toString()).assertEqual(".mpg,.mpeg,.m75,.m15");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".mpg,.mpeg,.m75,.m15,.mpe");
       expect(typeObj.mimeTypes.toString()).assertEqual("video/mpg,video/mpeg,video/x-mpg,video/x-mpeg");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4500 end");
     });
@@ -1445,7 +1445,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.description).assertEqual("3GPP2 video.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_video");
-      expect(typeObj.filenameExtensions.toString()).assertEqual(".3g2,.3gp2");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".3g2,.3gp2,3gpp2");
       expect(typeObj.mimeTypes.toString()).assertEqual("video/3gpp2");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4800 end");
     });
@@ -1469,7 +1469,7 @@ export default function UDMFApiDescriptorTest() {
       console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
       console.log("mimeTypes:" + typeObj.mimeTypes.toString());
       expect(typeObj.typeId).assertEqual("com.microsoft.windows-media-wm");
-      expect(typeObj.belongingToTypes[0]).assertEqual("general.video");
+      expect(typeObj.belongingToTypes.toString()).assertEqual("com.microsoft.advanced-systems-format,general.video");
       expect(typeObj.description).assertEqual("Windows WM video.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_video");
@@ -1497,7 +1497,7 @@ export default function UDMFApiDescriptorTest() {
       console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
       console.log("mimeTypes:" + typeObj.mimeTypes.toString());
       expect(typeObj.typeId).assertEqual("com.microsoft.windows-media-wmv");
-      expect(typeObj.belongingToTypes[0]).assertEqual("general.video");
+      expect(typeObj.belongingToTypes.toString()).assertEqual("com.microsoft.advanced-systems-format,general.video");
       expect(typeObj.description).assertEqual("Windows WMV video.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_video");
@@ -1525,7 +1525,7 @@ export default function UDMFApiDescriptorTest() {
       console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
       console.log("mimeTypes:" + typeObj.mimeTypes.toString());
       expect(typeObj.typeId).assertEqual("com.microsoft.windows-media-wmp");
-      expect(typeObj.belongingToTypes[0]).assertEqual("general.video");
+      expect(typeObj.belongingToTypes.toString()).assertEqual("com.microsoft.advanced-systems-format,general.video");
       expect(typeObj.description).assertEqual("Windows WMP video.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_video");
@@ -1777,7 +1777,7 @@ export default function UDMFApiDescriptorTest() {
       console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
       console.log("mimeTypes:" + typeObj.mimeTypes.toString());
       expect(typeObj.typeId).assertEqual("com.microsoft.windows-media-wma");
-      expect(typeObj.belongingToTypes[0]).assertEqual("general.audio");
+      expect(typeObj.belongingToTypes.toString()).assertEqual("com.microsoft.advanced-systems-format,general.audio");
       expect(typeObj.description).assertEqual("Windows WMA audio.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_wma");
@@ -1805,12 +1805,12 @@ export default function UDMFApiDescriptorTest() {
       console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
       console.log("mimeTypes:" + typeObj.mimeTypes.toString());
       expect(typeObj.typeId).assertEqual("com.microsoft.waveform-audio");
-      expect(typeObj.belongingToTypes[0]).assertEqual("general.audio");
+      expect(typeObj.belongingToTypes.toString()).assertEqual("com.microsoft.advanced-systems-format,general.audio");
       expect(typeObj.description).assertEqual("Waveform audio.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_wav");
       expect(typeObj.filenameExtensions.toString()).assertEqual(".wav,.wave");
-      expect(typeObj.mimeTypes.toString()).assertEqual("audio/wav,audio/wave");
+      expect(typeObj.mimeTypes.toString()).assertEqual("audio/wav,audio/wave,audio/x-wav");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_6100 end");
     });
     /**
@@ -1833,7 +1833,7 @@ export default function UDMFApiDescriptorTest() {
       console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
       console.log("mimeTypes:" + typeObj.mimeTypes.toString());
       expect(typeObj.typeId).assertEqual("com.microsoft.windows-media-wmx");
-      expect(typeObj.belongingToTypes[0]).assertEqual("general.video");
+      expect(typeObj.belongingToTypes.toString()).assertEqual("com.microsoft.advanced-systems-format,general.video");
       expect(typeObj.description).assertEqual("Windows WMX video.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_video");
@@ -1861,7 +1861,7 @@ export default function UDMFApiDescriptorTest() {
       console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
       console.log("mimeTypes:" + typeObj.mimeTypes.toString());
       expect(typeObj.typeId).assertEqual("com.microsoft.windows-media-wvx");
-      expect(typeObj.belongingToTypes[0]).assertEqual("general.video");
+      expect(typeObj.belongingToTypes.toString()).assertEqual("com.microsoft.advanced-systems-format,general.video");
       expect(typeObj.description).assertEqual("Windows WVX video.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_video");
@@ -1889,7 +1889,7 @@ export default function UDMFApiDescriptorTest() {
       console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
       console.log("mimeTypes:" + typeObj.mimeTypes.toString());
       expect(typeObj.typeId).assertEqual("com.microsoft.windows-media-wax");
-      expect(typeObj.belongingToTypes[0]).assertEqual("general.audio");
+      expect(typeObj.belongingToTypes.toString()).assertEqual("com.microsoft.advanced-systems-format,general.audio");
       expect(typeObj.description).assertEqual("Windows WAX audio.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_audio");
@@ -2258,7 +2258,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_compress");
       expect(typeObj.filenameExtensions.toString()).assertEqual(".tgz");
-      expect(typeObj.mimeTypes.toString()).assertEqual("");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/x-gtar");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_7700 end");
     });
     /**
@@ -2281,7 +2281,7 @@ export default function UDMFApiDescriptorTest() {
       console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
       console.log("mimeTypes:" + typeObj.mimeTypes.toString());
       expect(typeObj.typeId).assertEqual("general.calendar");
-      expect(typeObj.belongingToTypes[0]).assertEqual("general.object");
+      expect(typeObj.belongingToTypes[0]).assertEqual("general.text");
       expect(typeObj.description).assertEqual("Base type for scheduled events.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_calendar");
@@ -2397,8 +2397,8 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.description).assertEqual("Base type for electronic business card.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
-      expect(typeObj.filenameExtensions.toString()).assertEqual("");
-      expect(typeObj.mimeTypes.toString()).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".vcf,vcard");
+      expect(typeObj.mimeTypes.toString()).assertEqual("text/vcard,text/x-vcard");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8200 end");
     });
     /**
@@ -4192,7 +4192,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
       expect(typeObj.filenameExtensions.toString()).assertEqual(".xbm");
-      expect(typeObj.mimeTypes.toString()).assertEqual("image/x-quicktime");
+      expect(typeObj.mimeTypes.toString()).assertEqual("image/x-xbitmap,image/x-xbm");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0250 end");
     });
 
@@ -4337,7 +4337,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
       expect(typeObj.filenameExtensions.toString()).assertEqual(".sd2");
-      expect(typeObj.mimeTypes.toString()).assertEqual("");
+      expect(typeObj.mimeTypes.toString()).assertEqual("audio/x-sd2");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0310 end");
     });
 
@@ -4511,7 +4511,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.description).assertEqual("Audio Interchange File Format.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
-      expect(typeObj.filenameExtensions.toString()).assertEqual(".aifc,.aif");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".aifc,.aif,.aiff");
       expect(typeObj.mimeTypes.toString()).assertEqual("audio/x-aiff");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0380 end");
     });
@@ -4598,7 +4598,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.description).assertEqual("Office Open XML Document.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
-      expect(typeObj.filenameExtensions.toString()).assertEqual(".docx,.docm");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".docx");
       expect(typeObj.mimeTypes.toString()).assertEqual("application/vnd.openxmlformats-officedocument.wordprocessingml.document");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0420 end");
     });
@@ -4627,7 +4627,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.description).assertEqual("Office Open XML Workbook.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
-      expect(typeObj.filenameExtensions.toString()).assertEqual(".xlsx,.xlsm");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".xlsx");
       expect(typeObj.mimeTypes.toString()).assertEqual("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0430 end");
     });
@@ -4656,7 +4656,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.description).assertEqual("Office Open XML Presentation.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
-      expect(typeObj.filenameExtensions.toString()).assertEqual(".pptx,.pptm");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".pptx");
       expect(typeObj.mimeTypes.toString()).assertEqual("application/vnd.openxmlformats-officedocument.presentationml.presentation");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0440 end");
     });
@@ -4887,12 +4887,12 @@ export default function UDMFApiDescriptorTest() {
       console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
       console.log("mimeTypes:" + typeObj.mimeTypes.toString());
       expect(typeObj.typeId).assertEqual("general.vcs");
-      expect(typeObj.belongingToTypes.toString()).assertEqual("general.calendar,general.text");
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.calendar");
       expect(typeObj.description).assertEqual("vCalendar type.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
       expect(typeObj.filenameExtensions.toString()).assertEqual(".vcs");
-      expect(typeObj.mimeTypes.toString()).assertEqual("application/vcs");
+      expect(typeObj.mimeTypes.toString()).assertEqual("text/calendar");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0530 end");
     });
 
@@ -4916,12 +4916,12 @@ export default function UDMFApiDescriptorTest() {
       console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
       console.log("mimeTypes:" + typeObj.mimeTypes.toString());
       expect(typeObj.typeId).assertEqual("general.ics");
-      expect(typeObj.belongingToTypes.toString()).assertEqual("general.calendar,general.text");
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.calendar");
       expect(typeObj.description).assertEqual("iCalendar type.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
       expect(typeObj.filenameExtensions.toString()).assertEqual(".ics");
-      expect(typeObj.mimeTypes.toString()).assertEqual("application/ics");
+      expect(typeObj.mimeTypes.toString()).assertEqual("text/calendar");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0540 end");
     });
 
