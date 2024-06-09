@@ -1914,6 +1914,22 @@ export const testListItemWidth002: () => number;
 
 export const testListItemWidth003: () => number;
 
+export const testListChildMainSize001: () => number;
+
+export const testListChildMainSize002: () => number;
+
+export const testListChildMainSize003: () => number;
+
+export const testListChildMainSize004: () => number;
+
+export const testListChildMainSize005: () => number;
+
+export const testListSwipeOption007: () => number;
+
+export const testListChildMainSize006: () => number;
+
+export const testListSwipeOption008: () => number;
+
 export const testCommonAttrsClip001: () => number;
 
 export const testCommonAttrsClip002: () => number;
