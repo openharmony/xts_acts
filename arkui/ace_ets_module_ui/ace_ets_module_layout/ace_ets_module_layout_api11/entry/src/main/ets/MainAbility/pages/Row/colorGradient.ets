@@ -16,25 +16,25 @@
 import events_emitter from '@ohos.events.emitter';
 
 class LinearGradientValue {
-  angle: number;
-  direction: GradientDirection;
-  colors: Array<[ResourceColor, number]>;
-  repeating: boolean;
+  angle!: number;
+  direction!: GradientDirection;
+  colors!: Array<[ResourceColor, number]>;
+  repeating!: boolean;
 }
 
 class SweepGradientValue {
-  center: [number, number];
-  start: number;
-  colors: Array<[ResourceColor, number]>;
-  end: number;
-  repeating: boolean;
+  center!: [number, number];
+  start!: number;
+  colors!: Array<[ResourceColor, number]>;
+  end!: number;
+  repeating!: boolean;
 }
 
 class RadialGradientValue {
-  center: [number, number];
-  radius: number | string;
-  colors: Array<[ResourceColor, number]>;
-  repeating: boolean;
+  center!: [number, number];
+  radius!: number | string;
+  colors!: Array<[ResourceColor, number]>;
+  repeating!: boolean;
 }
 
 @Entry
@@ -63,14 +63,14 @@ struct ColorGradientExample {
     console.info("[ColorGradient] page stateChangCallBack");
     if (eventData != null) {
       console.info("[ColorGradient] page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.linearGradientValue != null) {
-        this.linearGradientValue = JSON.parse(eventData.data.linearGradientValue);
+      if (eventData.data?.linearGradientValue != null) {
+        this.linearGradientValue = JSON.parse(eventData.data?.linearGradientValue);
       }
-      if (eventData.data.sweepGradientValue != null) {
-        this.sweepGradientValue = JSON.parse(eventData.data.sweepGradientValue);
+      if (eventData.data?.sweepGradientValue != null) {
+        this.sweepGradientValue = JSON.parse(eventData.data?.sweepGradientValue);
       }
-      if (eventData.data.radialGradientValue != null) {
-        this.radialGradientValue = JSON.parse(eventData.data.radialGradientValue);
+      if (eventData.data?.radialGradientValue != null) {
+        this.radialGradientValue = JSON.parse(eventData.data?.radialGradientValue);
       }
     }
   }

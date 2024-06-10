@@ -32,12 +32,12 @@ struct Inspector {
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("[inspector] page stateChangCallBack");
     if (eventData != null) {
       console.info("[inspector] page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.setColor != null) {
-        this.setColor = eventData.data.setColor;
+      if (eventData.data?.setColor != null) {
+        this.setColor = eventData.data?.setColor;
       }
     }
   }
@@ -80,7 +80,7 @@ struct Inspector {
                 console.info("inspector_101 onClick start to emit action state")
                 events_emitter.emit(backEvent, backData)
               } catch (err) {
-                console.info("inspector_101 onClick emit action state err: " + JSON.stringify(err.message))
+                console.info("inspector_101 onClick emit action state err: " + JSON.stringify((err as Error)?.message))
               }
             })
           Text("inspectorApiTwo")
@@ -89,7 +89,7 @@ struct Inspector {
             .fontWeight(FontWeight.Bold)
             .onClick(() => {
               try {
-                let i = JSON.parse(JSON.stringify(getInspectorNodes()))["inspectors"][0]["id"]
+                let i: string = JSON.parse(JSON.stringify(getInspectorNodes()))["inspectors"][0]["id"]
                 let getInspectorNodeByIdObj = JSON.stringify(getInspectorNodeById(parseInt(i)))
                 console.info("getInspectorNodeByIdObj is " + getInspectorNodeByIdObj)
                 let backData1: events_emitter.EventData = {
@@ -104,7 +104,7 @@ struct Inspector {
                 console.info("inspector_102 onClick start to emit action state")
                 events_emitter.emit(backEvent1, backData1)
               } catch (err) {
-                console.info("inspector_102 onClick emit action state err: " + JSON.stringify(err.message))
+                console.info("inspector_102 onClick emit action state err: " + JSON.stringify((err as Error)?.message))
               }
             })
 
@@ -128,7 +128,7 @@ struct Inspector {
                 Profiler.unregisterVsyncCallback();
                 this.catchStatus = "callBackSuccess"
               } catch (err) {
-                console.info("inspector_103 onClick err: " + JSON.stringify(err.message))
+                console.info("inspector_103 onClick err: " + JSON.stringify((err as Error)?.message))
                 this.catchStatus = "callBackFail"
               }
               try {
@@ -144,7 +144,7 @@ struct Inspector {
                 console.info("inspector_103 onClick start to emit action state")
                 events_emitter.emit(backEvent2, backData2)
               } catch (err) {
-                console.info("inspector_103 onClick emit action state err: " + JSON.stringify(err.message))
+                console.info("inspector_103 onClick emit action state err: " + JSON.stringify((err as Error)?.message))
               }
             })
         }

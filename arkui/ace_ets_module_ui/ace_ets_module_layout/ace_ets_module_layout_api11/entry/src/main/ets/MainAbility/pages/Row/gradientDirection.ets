@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +17,7 @@ import events_emitter from '@ohos.events.emitter';
 @Entry
 @Component
 struct linearGradientExample {
-  @State direction: GradientDirection = GradientDirection.LeftTop
+  @State sDirection: GradientDirection = GradientDirection.LeftTop
 
   build() {
     Column({ space: 5 }) {
@@ -28,7 +27,7 @@ struct linearGradientExample {
         .height(100)
         .linearGradient({
           angle: 45,
-          direction: this.direction,
+          direction: this.sDirection,
           colors: [[0xAEE1E1, 0.0], [0xD3E0DC, 0.3], [0xFCD1D1, 1.0]]
         }).key("GradientDirection")
     }
@@ -38,31 +37,31 @@ struct linearGradientExample {
 
   onPageShow() {
     console.info('gradientDirection page show called');
-    var stateChangeEventOne = {
+    let stateChangeEventOne: events_emitter.InnerEvent = {
       eventId: 106,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventOne, this.stateChangCallBack)
     console.info('gradientDirection page show called');
-    var stateChangeEventTwo = {
+    let stateChangeEventTwo: events_emitter.InnerEvent = {
       eventId: 107,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventTwo, this.stateChangCallBack)
     console.info('gradientDirection page show called');
-    var stateChangeEventThree = {
+    let stateChangeEventThree: events_emitter.InnerEvent = {
       eventId: 108,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventThree, this.stateChangCallBack)
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("GradientDirection page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.ACTION != null) {
-        this.direction = eventData.data.ACTION;
-        console.log("direction1 is" + eventData.data.ACTION)
+      if (eventData.data?.ACTION != null) {
+        this.sDirection = eventData.data?.ACTION;
+        console.log("direction1 is" + eventData.data?.ACTION)
       }
     }
   }

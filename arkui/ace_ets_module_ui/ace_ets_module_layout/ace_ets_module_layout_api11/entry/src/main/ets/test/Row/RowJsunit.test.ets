@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 
 function sleep(time: number) {
   return new Promise((resolve: (value: string) => void) => {
@@ -31,8 +31,8 @@ export default function rowJsunit() {
 
   describe('rowTest', () => {
     beforeEach(async () => {
-      let options = {
-        uri: 'MainAbility/pages/Row/Row',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Row/Row',
       }
       try {
         router.clear();
@@ -64,7 +64,7 @@ export default function rowJsunit() {
       console.info('++++++++++++++++ Row TestCase 1 START ++++++++++++++++');
       await sleep(1)
       let strJson = getInspectorByKey('row');
-      let obj: Record<string, Object> = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("get inspector value is: " + JSON.stringify(obj));
       console.log(JSON.stringify(obj.$type))
       expect(obj.$type).assertEqual('Row')

@@ -13,18 +13,19 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
+import GlobalContext from '../../MainAbility/common/GlobalContext'
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
 export default function GridItemJsunit() {
-  describe('GridItemJsunit', function () {
-    beforeEach(async function (done) {
+  describe('GridItemJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("GridItemJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Grid/GridItemPage',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Grid/GridItemPage',
       }
       try {
         router.clear();
@@ -48,12 +49,12 @@ export default function GridItemJsunit() {
      * @tc.name       Test GridItemJsunit_0100
      * @tc.desc       Test Get GridItem attribute
      */
-    it('GridItemJsunit_0100', 0, async function (done) {
+    it('GridItemJsunit_0100', 0, async (done: Function) => {
       // Get the information of the GridItem component
       console.info('[GridItemJsunit_0100] START');
       await CommonFunc.sleep(2000);
       let strJson1 = getInspectorByKey('gridItem1');
-      let obj = JSON.parse(strJson1);
+      let obj: ESObject = JSON.parse(strJson1);
       console.info("[GridItemJsunit_0100] component obj is: " + JSON.stringify(obj));
       //expect(obj.$attrs.rowStart).assertEqual('1');
       //expect(obj.$attrs.rowEnd).assertEqual('4');
@@ -62,7 +63,7 @@ export default function GridItemJsunit() {
       expect(obj.$attrs.forceRebuild).assertEqual('false');
       await CommonFunc.sleep(1000);
       let strJson2 = getInspectorByKey('gridItem2');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[GridItemJsunit_0100] component obj2 is: " + JSON.stringify(obj2));
       //expect(obj2.$attrs.columnStart).assertEqual('1');
       //expect(obj2.$attrs.columnEnd).assertEqual('5');
@@ -78,32 +79,32 @@ export default function GridItemJsunit() {
      * @tc.name       Test GridItemJsunit_0200
      * @tc.desc       Test Modify GridItem attribute value
      */
-    it('GridItemJsunit_0200', 0, async function (done) {
+    it('GridItemJsunit_0200', 0, async (done: Function) => {
       // Modify the properties of component GridItem
       console.info('[GridItemJsunit_0200] START');
-      globalThis.value.message.notify({name:'rowStart',value:'2'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'rowStart',value:'2'})
       await CommonFunc.sleep(2000);
-      globalThis.value.message.notify({name:'rowEnd',value:'5'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'rowEnd',value:'5'})
       await CommonFunc.sleep(2000);
-      globalThis.value.message.notify({name:'columnStart',value:'2'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'columnStart',value:'2'})
       await CommonFunc.sleep(2000);
-      globalThis.value.message.notify({name:'columnEnd',value:'4'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'columnEnd',value:'4'})
       await CommonFunc.sleep(2000);
-      globalThis.value.message.notify({name:'forceRebuild',value:'false'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'forceRebuild',value:'false'})
       await CommonFunc.sleep(2000);
-      globalThis.value.message.notify({name:'selectable',value:'true'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'selectable',value:'true'})
       await CommonFunc.sleep(2000);
 
       // Get the propoties value of the GridItem component
       let strJson = getInspectorByKey('gridItem1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[GridItemJsunit_0200] component obj is: " + JSON.stringify(obj));
       //expect(obj.$attrs.rowStart).assertEqual('2');
       //expect(obj.$attrs.rowEnd).assertEqual('5');
       expect(obj.$attrs.selectable).assertEqual('true');
       await CommonFunc.sleep(1000);
       let strJson2 = getInspectorByKey('gridItem2');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[GridItemJsunit_0200] component obj2 is: " + JSON.stringify(obj2));
       //expect(obj2.$attrs.columnStart).assertEqual('2');
       //expect(obj2.$attrs.columnEnd).assertEqual('4');
@@ -112,32 +113,32 @@ export default function GridItemJsunit() {
       done();
     });
 
-    it('GridItemJsunit_0300', 0, async function (done) {
+    it('GridItemJsunit_0300', 0, async (done: Function) => {
       // Illegal modification of properties of component gridItem
       console.info('[GridItemJsunit_0300] START');
-      globalThis.value.message.notify({name:'rowStart',value:'test'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'rowStart',value:'test'})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'rowEnd',value:'#'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'rowEnd',value:'#'})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'columnStart',value:'-10'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'columnStart',value:'-10'})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'columnEnd',value:'%a'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'columnEnd',value:'%a'})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'forceRebuild',value:'0'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'forceRebuild',value:'0'})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'selectable',value:'test'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'selectable',value:'test'})
       await CommonFunc.sleep(2000);
 
       // Get the propoties value of the GridItem component
       let strJson = getInspectorByKey('gridItem1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[GridItemJsunit_0300] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.rowStart).assertEqual('0');
       expect(obj.$attrs.rowEnd).assertEqual('0');
       expect(obj.$attrs.selectable).assertEqual('true');
       await CommonFunc.sleep(1000);
       let strJson2 = getInspectorByKey('gridItem2');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[GridItemJsunit_0300] component obj2 is: " + JSON.stringify(obj2));
       expect(obj2.$attrs.columnStart).assertEqual('0');
       expect(obj2.$attrs.columnEnd).assertEqual('0');
@@ -146,7 +147,7 @@ export default function GridItemJsunit() {
       done();
     });
 
-    it('GridItemJsunit_0400', 0, async function (done) {
+    it('GridItemJsunit_0400', 0, async (done: Function) => {
       // Verify the function of onSelect of GridItem component 
       console.info('[GridItemJsunit_0400] START');
       let grid1 = CommonFunc.getComponentRect('grid1');
@@ -163,7 +164,7 @@ export default function GridItemJsunit() {
       done();
     });
 
-    it('GridJsunit_0500', 0, async function (done) {
+    it('GridJsunit_0500', 0, async (done: Function) => {
       // Verify the columnsTemplate of Grid component
       console.info('[GridJsunit_0500] START');
       let gridItem1 = CommonFunc.getComponentRect('0');
@@ -176,7 +177,7 @@ export default function GridItemJsunit() {
       done();
     });
 
-    it('GridJsunit_0600', 0, async function (done) {
+    it('GridJsunit_0600', 0, async (done: Function) => {
       // Verify the rowsTemplate of Grid component 
       console.info('[GridJsunit_0600] START');
       await CommonFunc.sleep(1000);
@@ -189,7 +190,7 @@ export default function GridItemJsunit() {
       done();
     });
 
-    it('GridJsunit_0700', 0, async function (done) {
+    it('GridJsunit_0700', 0, async (done: Function) => {
       // Verify the columnsGap of Grid component 
       console.info('[GridJsunit_0700] START');
       await CommonFunc.sleep(1000);
@@ -203,12 +204,12 @@ export default function GridItemJsunit() {
       done();
     });
 
-    it('GridJsunit_0800', 0, async function (done) {
+    it('GridJsunit_0800', 0, async (done: Function) => {
       // Verify the rowsGap of Grid component 
       console.info('[GridJsunit_0800] START');
-      globalThis.value.message.notify({name:'rowStart',value:'1'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'rowStart',value:'1'})
       await CommonFunc.sleep(1000);
-      globalThis.value.message.notify({name:'rowEnd',value:'4'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'rowEnd',value:'4'})
       await CommonFunc.sleep(1000);
       let driver = await UiDriver.create()
       let gridItem1 = CommonFunc.getComponentRect('gridItem1');

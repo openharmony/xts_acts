@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,15 +13,15 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/utils/Common';
 
 export default function dividerJsunitt() {
-  describe('dividerJsunitt', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Divider/dividerr',
+  describe('dividerJsunitt', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Divider/dividerr',
       }
       try {
         router.clear();
@@ -40,53 +39,53 @@ export default function dividerJsunitt() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("divider after each called");
     });
 
-    it('dividerTest_0100', 0, async function (done) {
+    it('dividerTest_0100', 0, async (done: Function) => {
       console.info('dividerTest_0100 START');
       let strJson = getInspectorByKey('Divider');
       console.info("dividerTest_0100 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("dividerTest_0100 component obj is: " + JSON.stringify(obj));
       expect(obj.$type).assertEqual('Divider');
       console.info('dividerTest_0200 END');
       done();
     });
 
-    it('dividerTest_0200', 0, async function (done) {
+    it('dividerTest_0200', 0, async (done: Function) => {
       console.info('dividerTest_0200 START');
       let strJson = getInspectorByKey('Divider');
       console.info("dividerTest_0200 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("dividerTest_0200 component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.color).assertEqual('#FFCCCCCC');
       console.info('dividerTest_0200 END');
       done();
     });
 
-    it('dividerTest_0300', 0, async function (done) {
+    it('dividerTest_0300', 0, async (done: Function) => {
       console.info('dividerTest_0300 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "color": '#FF000990',
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 85,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("dividerTest_0300 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("dividerTest_0300 change component data error: " + err.message);
+        console.log("dividerTest_0300 change component data error: " + (err as Error)?.message);
       }
       await CommonFunc.sleep(3000);
       let strJsonNew = getInspectorByKey('Divider');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("dividerTest_0300 component objNew is: " + JSON.stringify(objNew));
       expect(objNew.$attrs.color).assertEqual('#FF000990');
       console.info('dividerTest_0300 END');

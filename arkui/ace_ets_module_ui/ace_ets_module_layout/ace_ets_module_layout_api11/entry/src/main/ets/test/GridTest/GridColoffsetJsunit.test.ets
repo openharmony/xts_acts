@@ -13,18 +13,19 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
+import GlobalContext from '../../MainAbility/common/GlobalContext'
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
 export default function GridColOffsetJsunit() {
-  describe('GridColOffsetJsunit', function () {
-    beforeEach(async function (done) {
+  describe('GridColOffsetJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("GridColOffsetJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Grid/GridColoffsetPage',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Grid/GridColoffsetPage',
       }
       try {
         router.clear();
@@ -43,24 +44,24 @@ export default function GridColOffsetJsunit() {
       done();
     });
 
-    it('GridColOffsetJsunit_0100', 0, async function (done) {
+    it('GridColOffsetJsunit_0100', 0, async (done: Function) => {
       // Get the information of the GridCol component
       let strJson = getInspectorByKey('keykey2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('GridCol');
       console.info("[GridColOffsetJsunit_0100] component  strJson:" + JSON.stringify(obj.$attrs.gridColOffset));
       expect(obj.$attrs.gridColOffset).assertEqual("0");
       done();
     });
 
-    it('GridColOffsetJsunit_0200', 0, async function (done) {
+    it('GridColOffsetJsunit_0200', 0, async (done: Function) => {
       // Modify the properties of component GridCol
       console.info('[GridColOffsetJsunit_0200] START');
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'gridColoffset',value:2});
+      GlobalContext.getContext().getObject<number>('value').message.notify({name:'gridColoffset',value:2});
       await CommonFunc.sleep(200);
       let strJson = getInspectorByKey('keykey2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('GridCol');
       console.info("[GridColOffsetJsunit_0100] component  strJson:" + JSON.stringify(obj.$attrs.gridColOffset));
       expect(obj.$attrs.gridColOffset).assertEqual("2");

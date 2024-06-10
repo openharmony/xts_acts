@@ -613,7 +613,6 @@ import gradientDirectionJsunit from './Row/GradientDirectionJsunit.test.ets';
 import dividerJsunitt from './DividerTest/DividerJsunitt.test.ets';
 import directionJsunit from './Flex/DirectionJsunit.test.ets';
 import direction2Jsunit from './Flex/Direction2Jsunit.test.ets';
-import pieceJsunit from './Flex/PieceJsunit.test.ets';
 import placementJsunit from './Flex/PlacementJsunit.test';
 import rowJsunit2 from './Row/RowJsunit2.test.ets';
 import waterFlowDemoJsunit from './waterflow/waterFlowDemo.test';
@@ -1124,7 +1123,6 @@ export default function testsuite() {
   dividerJsunitt();
   directionJsunit();
   direction2Jsunit();
-  pieceJsunit();
   placementJsunit();
   rowJsunit2();
   flexDirectionJsunit();

@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
 export default function ListLanes04() {
-  describe('ListLanes04', function () {
-    beforeEach(async function (done) {
+  describe('ListLanes04', () => {
+    beforeEach(async (done: Function) => {
       console.info("ListLanes04 beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/List/ListLanes04',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/List/ListLanes04',
       }
       try {
         router.clear();
@@ -49,7 +49,7 @@ export default function ListLanes04() {
       * @tc.desc  : set gutter to 0 and listDirection to Axis.Horizontal
       * @tc.level : Level 3
       */
-    it('ListLanes04_001', 0, async function (done) {
+    it('ListLanes04_001', 0, async (done: Function) => {
 
       console.info('[ListLanes04_001] START');
       await CommonFunc.sleep(1000);
@@ -69,7 +69,7 @@ export default function ListLanes04() {
       * @tc.desc  : set gutter to -1 and listDirection to Axis.Horizontal
       * @tc.level : Level 3
       */
-    it('ListLanes04_002', 0, async function (done) {
+    it('ListLanes04_002', 0, async (done: Function) => {
 
       console.info('[ListLanes04_002] START');
       await CommonFunc.sleep(1000);
@@ -89,12 +89,12 @@ export default function ListLanes04() {
       * @tc.desc  : set gutter to 10% and listDirection to Axis.Horizontal
       * @tc.level : Level 3
       */
-    it('ListLanes04_003', 0, async function (done) {
+    it('ListLanes04_003', 0, async (done: Function) => {
 
       console.info('[ListLanes04_003] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ListLanesKey04_3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ListLanes04_003] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.laneGutter).assertEqual('10.00%');

@@ -17,6 +17,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from "../../../MainAbility/common/Common";
+import GlobalContext from '../../../MainAbility/common/GlobalContext'
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 
 export default function ColumnWidthHeight_SubChange() {
@@ -42,10 +43,10 @@ export default function ColumnWidthHeight_SubChange() {
     });
     afterEach(async () => {
       await CommonFunc.sleep(2000);
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 50
       });
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 300
       });
       console.info("FlexBase after each called");
@@ -58,10 +59,10 @@ export default function ColumnWidthHeight_SubChange() {
      */
     it('testColumnSubcomponentModifyHeight', 0, async () => {
       console.info('new testColumnSubcomponentModifyHeight START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 80
       });
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 300
       });
       await CommonFunc.sleep(2000);
@@ -83,10 +84,10 @@ export default function ColumnWidthHeight_SubChange() {
      */
     it('testColumnSubcomponentModifyWidth', 0, async () => {
       console.info('new testColumnSubcomponentModifyWidth START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'height', value: 50
       });
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'width', value: 200
       });
       await CommonFunc.sleep(2000);

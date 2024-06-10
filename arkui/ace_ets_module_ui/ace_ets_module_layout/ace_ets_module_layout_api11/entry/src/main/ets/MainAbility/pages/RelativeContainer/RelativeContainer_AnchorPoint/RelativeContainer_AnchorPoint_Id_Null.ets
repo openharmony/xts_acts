@@ -43,7 +43,7 @@ struct RelativeContainer_AnchorPoint_Id_Null {
             right: { anchor: "__container__", align: HorizontalAlign.End }
           })
           .key("RelativeContainer_AnchorPoint_Id_Null_row2")
-          .id(null)
+          .id(null!)
       }
       .key("RelativeContainer_AnchorPoint_Id_Null_r1")
       .width(300).height(300)

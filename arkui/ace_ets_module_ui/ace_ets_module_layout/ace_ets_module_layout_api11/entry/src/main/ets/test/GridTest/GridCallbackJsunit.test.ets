@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
 export default function GridCallbackJsunit() {
-  describe('GridCallbackJsunit', function () {
-    beforeEach(async function (done) {
+  describe('GridCallbackJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("GridCallbackJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Grid/GridCallbackPage',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Grid/GridCallbackPage',
       }
       try {
         router.clear();
@@ -43,7 +43,7 @@ export default function GridCallbackJsunit() {
       done();
     });
 
-    it('GridCallbackJsunit_1000', 0, async function (done) {
+    it('GridCallbackJsunit_1000', 0, async (done: Function) => {
       // Verify Neither rowsTemplate nor columnsTemplate is set
       console.info('[GridCallbackJsunit_1000] START');
 

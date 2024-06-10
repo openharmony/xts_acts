@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,15 +13,15 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from '../Utils';
 import events_emitter from '@ohos.events.emitter';
 
 export default function directionJsunit(){
-  describe('directionJsunit', function (){
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Flex/direction',
+  describe('directionJsunit', () =>{
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/direction',
       }
       try {
         router.clear();
@@ -40,67 +39,67 @@ export default function directionJsunit(){
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("direction after each called");
     });
 
-    it('directionTest_0100', 0, async function (done) {
+    it('directionTest_0100', 0, async (done: Function) => {
       console.info('directionTest_0100 START');
       let strJson = getInspectorByKey('direction');
       console.info("directionTest_0100 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("directionTest_0100 component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.constructor.direction).assertEqual("FlexDirection.Column");
       done();
     });
 
-    it('directionTest_0200', 0, async function (done) {
+    it('directionTest_0200', 0, async (done: Function) => {
       console.info('directionTest_0200 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "direction": FlexDirection.Row,
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 84,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("directionTest_0200 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("directionTest_0200 change component data error: " + err.message);
+        console.log("directionTest_0200 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('direction');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("directionTest_0200 component objNew is: " + JSON.stringify(objNew));
       expect(objNew.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       console.info('directionTest_0200 END');
       done();
     });
 
-    it('directionTest_0300', 0, async function (done) {
+    it('directionTest_0300', 0, async (done: Function) => {
       console.info('directionTest_0300 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "direction": 666,
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 84,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("directionTest_0300 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("directionTest_0300 change component data error: " + err.message);
+        console.log("directionTest_0300 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('direction');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("directionTest_0300 component objNew is: " + JSON.stringify(objNew));
       expect(objNew.$attrs.constructor.direction).assertEqual('FlexDirection.Row');
       console.info('directionTest_0300 END');

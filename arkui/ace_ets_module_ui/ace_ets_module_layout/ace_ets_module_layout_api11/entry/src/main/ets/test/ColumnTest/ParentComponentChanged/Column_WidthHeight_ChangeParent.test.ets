@@ -17,6 +17,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
+import GlobalContext from '../../../MainAbility/common/GlobalContext'
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 
 export default function column_WidthHeight_ChangeParent() {
@@ -55,11 +56,11 @@ export default function column_WidthHeight_ChangeParent() {
      */
     it('testColumnWidthHeightChangeParentHeightInRange', 0, async () => {
       console.info('new testColumnWidthHeightChangeParentHeightInRange START');
-      globalThis.value.message.notify({ name: 'height', value: 400 })
-      globalThis.value.message.notify({ name: 'width', value: 350 })
+      GlobalContext.getContext().getObject<number>('value').message.notify({ name: 'height', value: 400 })
+      GlobalContext.getContext().getObject<number>('value').message.notify({ name: 'width', value: 350 })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('ColumnWidthHeightChange1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Column');
       let locationText1 : RectValue = CommonFunc.getComponentRect('WidthHeight_Test1');
       let locationText2 : RectValue = CommonFunc.getComponentRect('WidthHeight_Test2');
@@ -90,11 +91,11 @@ export default function column_WidthHeight_ChangeParent() {
      */
     it('testColumnWidthHeightChangeParentHeightOutRange', 0, async () => {
       console.info('new testColumnWidthHeightChangeParentHeightOutRange START');
-      globalThis.value.message.notify({ name: 'height', value: 300 })
-      globalThis.value.message.notify({ name: 'width', value: 350 })
+      GlobalContext.getContext().getObject<number>('value').message.notify({ name: 'height', value: 300 })
+      GlobalContext.getContext().getObject<number>('value').message.notify({ name: 'width', value: 350 })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('ColumnWidthHeightChange1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Column');
       let locationText1 : RectValue = CommonFunc.getComponentRect('WidthHeight_Test1');
       let locationText2 : RectValue = CommonFunc.getComponentRect('WidthHeight_Test2');
@@ -125,11 +126,11 @@ export default function column_WidthHeight_ChangeParent() {
      */
     it('testColumnWidthHeightChangeParentWidthOutRange', 0, async () => {
       console.info('new testColumnWidthHeightChangeParentWidthOutRange START');
-      globalThis.value.message.notify({ name: 'height', value: 400 })
-      globalThis.value.message.notify({ name: 'width', value: 200 })
+      GlobalContext.getContext().getObject<number>('value').message.notify({ name: 'height', value: 400 })
+      GlobalContext.getContext().getObject<number>('value').message.notify({ name: 'width', value: 200 })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('ColumnWidthHeightChange1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Column');
       let locationText1 : RectValue = CommonFunc.getComponentRect('WidthHeight_Test1');
       let locationText2 : RectValue = CommonFunc.getComponentRect('WidthHeight_Test2');

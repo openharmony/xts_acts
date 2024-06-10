@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,15 +13,15 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from '../Utils';
 import events_emitter from '@ohos.events.emitter';
 
 export default function direction2Jsunit(){
-  describe('direction2Jsunit', function (){
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Flex/direction2',
+  describe('direction2Jsunit', () =>{
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Flex/direction2',
       }
       try {
         router.clear();
@@ -40,67 +39,67 @@ export default function direction2Jsunit(){
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("direction after each called");
     });
 
-    it('direction2Test_0200', 0, async function (done) {
+    it('direction2Test_0200', 0, async (done: Function) => {
       console.info('direction2Test_0200 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "direction": Direction.Rtl,
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 1082,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("direction2Test_0200 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("direction2Test_0200 change component data error: " + err.message);
+        console.log("direction2Test_0200 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('direction_2');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("direction2Test_0200 component objNew is: " + JSON.stringify(objNew));
       expect(objNew.$attrs.direction).assertEqual('Direction.Rtl');
       console.info('direction2Test_0200 END');
       done();
     });
 
-   it('direction2Test_0100', 0, async function (done) {
+   it('direction2Test_0100', 0, async (done: Function) => {
       console.info('direction2Test_0100 START');
       let strJson = getInspectorByKey('direction_2');
       console.info("direction2Test_0100 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("direction2Test_0100 component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.direction).assertEqual("Direction.Rtl");
       done();
     });
 
-    it('direction2Test_0300', 0, async function (done) {
+    it('direction2Test_0300', 0, async (done: Function) => {
       console.info('direction2Test_0300 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "direction":  Direction.Auto,
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 1083,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("direction2Test_0300 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("direction2Test_0300 change component data error: " + err.message);
+        console.log("direction2Test_0300 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(1000);
       let strJsonNew = getInspectorByKey('direction_2');
-      let objNew = JSON.parse(strJsonNew);
+      let objNew: ESObject = JSON.parse(strJsonNew);
       console.info("direction2Test_0300 component objNew is: " + JSON.stringify(objNew));
       expect(objNew.$attrs.direction).assertEqual('Direction.Auto');
       console.info('direction2Test_0300 END');

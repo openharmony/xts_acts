@@ -38,8 +38,8 @@ struct VisibilityExample {
     console.info("[hiddenChangCallBack] stateChangCallBack");
     if (eventData != null) {
       console.info("[hiddenChangCallBack] state change called:" + JSON.stringify(eventData));
-      if (eventData.data.visibility != null) {
-        this.visibility1 = eventData.data.visibility;
+      if (eventData.data?.visibility != null) {
+        this.visibility1 = eventData.data?.visibility;
       }
     }
   }
@@ -47,8 +47,8 @@ struct VisibilityExample {
     console.info("[noneChangCallBack] stateChangCallBack");
     if (eventData != null) {
       console.info("[noneChangCallBack] state change called:" + JSON.stringify(eventData));
-      if (eventData.data.visibility != null) {
-        this.visibility1 = eventData.data.visibility;
+      if (eventData.data?.visibility != null) {
+        this.visibility1 = eventData.data?.visibility;
       }
     }
   }

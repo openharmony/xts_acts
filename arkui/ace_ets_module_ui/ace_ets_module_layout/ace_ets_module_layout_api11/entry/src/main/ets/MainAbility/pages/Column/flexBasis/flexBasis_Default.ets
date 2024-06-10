@@ -12,18 +12,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from './../../../common/MessageManager1';
+import GlobalContext from './../../../common/GlobalContext';
+import { Value } from './../../../common/Value';
+import { MessageManager, Callback, Message } from './../../../common/MessageManager';
+
 @Entry
 @Component
 struct flexBasis_Default {
   @State addflexBasis: number = 0
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager<number> = new MessageManager()
   onPageShow() {
     console.info('flexBasis_Default onPageShow');
-    globalThis.value = {
-      name:'messageManager',message:this.messageManager
+    let value: Value<number> = {
+      name: 'messageManager', message: this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    GlobalContext.getContext().setObject('value', value);
+    let callback: Callback<number> = (message: Message<number>) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'addflexBasis') {
         this.addflexBasis = message.value;
