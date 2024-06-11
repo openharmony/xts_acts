@@ -15,10 +15,12 @@
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
+import { BusinessError } from '@ohos.base';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam){
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+    globalThis.abilityWant = want;
   }
 
   onDestroy(){
@@ -29,11 +31,32 @@ export default class EntryAbility extends UIAbility {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
-    windowStage.loadContent('MainAbility/pages/index/index', (err, data) => {
+    globalThis.windowStage = windowStage
+    globalThis.abilityContext = this.context
+    windowStage.loadContent('MainAbility/pages/index/index', (err: BusinessError, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
       }
+      let windowClass: window.Window | undefined = undefined;
+      windowStage.getMainWindow((err: BusinessError, data) => {
+        let errCode: number = err.code;
+        if (errCode) {
+          console.error('Failed to obtain the main window. Cause: ' + JSON.stringify(err));
+          return;
+        }
+        windowClass = data;
+        hilog.info(0x0000, 'testTag', 'Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
+        try {
+          let properties : window.WindowProperties = windowClass.getWindowProperties();
+          let wRect : window.Rect =  properties.windowRect;
+          globalThis.winLeft = wRect.left;
+          globalThis.winTop = wRect.top;
+          hilog.info(0x0000, 'testTag', 'Succeeded get winLeft:' + globalThis.winLeft + ',winTop:' + globalThis.winTop );
+        } catch (exception) {
+          hilog.error(0x0000, 'testTag', 'Failed to obtain the window properties. Cause: ' + JSON.stringify(exception));
+        }
+      })
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content.');
     });
   }
