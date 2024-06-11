@@ -68,13 +68,12 @@ napi_value static TestListNodeAdapter003(napi_env env, napi_callback_info info)
 {
     NAPI_START(list, ARKUI_NODE_LIST);
     ArkUI_NodeAdapterHandle adapter = OH_ArkUI_NodeAdapter_Create();
-
     struct UserCallback *adapterCallback = new UserCallback();
     adapterCallback->callback = [&](void *event) {
         auto *adapterEvent = reinterpret_cast<ArkUI_NodeAdapterEvent *>(event);
         auto type = OH_ArkUI_NodeAdapterEvent_GetType(adapterEvent);
         switch (type) {
-            case NODE_ADAPTER_EVENT_WILL_ATTACH_TO_NODE:
+            case NODE_ADAPTER_EVENT_WILL_ATTACH_TO_NODE: {
                 // 通知Adapter进行局部元素插入，插入10个
                 uint32_t startPosition = 0;
                 uint32_t itemCount = 10;
@@ -95,7 +94,7 @@ napi_value static TestListNodeAdapter003(napi_env env, napi_callback_info info)
                 ArkUI_NodeHandle **items = nullptr;
                 uint32_t ret_size;
                 ret_inner = OH_ArkUI_NodeAdapter_GetAllItems(adapter, items, &ret_size);
-                break;
+            } break;
             default:
                 break;
         }
