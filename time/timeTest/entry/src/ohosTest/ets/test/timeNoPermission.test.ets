@@ -36,6 +36,7 @@ export default function systemTimeNoPermissionJsunit() {
           if(err){
             console.info("====>SUB_Misc_systemTime_NoPermission_setTime_0010 setTime permission fail: " + JSON.stringify(err));
             expect(err.code).assertEqual(-1);
+            expect(err.message).assertContain("Permission denied");
             done();
           }else{
             console.info('====>SUB_Misc_systemTime_NoPermission_setTime_0010 success: ' + data);
@@ -69,7 +70,7 @@ export default function systemTimeNoPermissionJsunit() {
       }catch(err){
         console.error('====>SUB_Misc_systemTime_NoPermission_setTime_0020 setTime catch err' + JSON.stringify(err))
         expect(err.code).assertEqual(-1);
-        expect(err.message).assertContain("permission denied");
+        expect(err.message).assertContain("Permission denied");
         done();
         console.info("====>SUB_Misc_systemTime_NoPermission_setTime_0020 end");
       }
@@ -91,6 +92,7 @@ export default function systemTimeNoPermissionJsunit() {
           if(err){
             console.info("====>SUB_Misc_systemTime_NoPermission_setDate_0010 setTime permission fail: " + JSON.stringify(err));
             expect(err.code).assertEqual(-1);
+            expect(err.message).assertContain("Permission denied");
             done();
           }else{
             console.info('====>SUB_Misc_systemTime_NoPermission_setDate_0010 success: ' + data);
@@ -124,7 +126,7 @@ export default function systemTimeNoPermissionJsunit() {
       }catch(err){
         console.error('====>SUB_Misc_systemTime_NoPermission_setDate_0020 setTime catch err: ' + JSON.stringify(err))
         expect(err.code).assertEqual(-1);
-        expect(err.message).assertContain("permission denied");
+        expect(err.message).assertContain("Permission denied");
         done();
         console.info("====>SUB_Misc_systemTime_NoPermission_setDate_0020 end");
       }
@@ -145,6 +147,7 @@ export default function systemTimeNoPermissionJsunit() {
           if(err){
             console.info("====>SUB_Misc_systemTime_NoPermission_setTimezone_0010 setTime permission fail: " + JSON.stringify(err));
             expect(err.code).assertEqual(-1);
+            expect(err.message).assertContain("Permission denied");
             done();
           }else{
             console.info('====>SUB_Misc_systemTime_NoPermission_setTimezone_0010 success: ' + data);
@@ -177,7 +180,7 @@ export default function systemTimeNoPermissionJsunit() {
       }catch(err){
         console.error('====>SUB_Misc_systemTime_NoPermission_setTimezone_0020 setTime catch err: ' + JSON.stringify(err))
         expect(err.code).assertEqual(-1);
-        expect(err.message).assertContain("permission denied");
+        expect(err.message).assertContain("Permission denied");
         done();
         console.info("====>SUB_Misc_systemTime_NoPermission_setTimezone_0020 end");
       }
