@@ -13,10 +13,16 @@
  * limitations under the License.
  */
 
+import accelerometer_nop_Test from './SensorOnOff_Accelerometer_nop_Test.test';
+import accelerometer_Uncalibrated_nop_Test from './SensorOnOff_Accelerometer_Uncalibrated_nop_Test.test';
+import linear_Accelerometer_nop_Test from './SensorOnOff_Linear_Accelerometer_nop_Test.test';
 import pedometerDetection_nop_Test from './SensorOnOff_Pedometer_Detection_nop_Test.test';
 import pedometer_nop_Test from './SensorOnOff_Pedometer_nop_Test.test';
 
 export default function testsuite() {
   pedometerDetection_nop_Test();
-  pedometer_nop_Test()
+  pedometer_nop_Test();
+  linear_Accelerometer_nop_Test();
+  accelerometer_Uncalibrated_nop_Test();
+  accelerometer_nop_Test()
 }
