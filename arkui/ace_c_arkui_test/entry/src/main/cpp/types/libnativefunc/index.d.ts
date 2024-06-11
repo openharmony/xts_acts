@@ -4817,7 +4817,8 @@ export const testWaterFlower_002: () => number;
 export const testWaterFlower_003: () => number;
 export const testWaterFlower_004: () => number;
 export const testWaterFlower_005: () => number;
-
+export const accessibilityState_001: () => number;
+export const accessibilityState_002: () => number;
 export const testArkUI001: () => number;
 
 export const testArkUI002: () => number;
