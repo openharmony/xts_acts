@@ -67,7 +67,7 @@ export default function accelerometer_Uncalibrated_nop_Test() {
      */
     it("Accelerometer_Uncalibrated_Sensor_nop_Test01", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       try {
-        sensor.on(sensor.SensorId.ACCELEROMETER_UNCALIBRATED, ()=>{}, {
+        sensor.on(sensor.SensorId.ACCELEROMETER_UNCALIBRATED, callback, {
           'interval': 100000000
         });
         setTimeout(() => {
@@ -93,7 +93,7 @@ export default function accelerometer_Uncalibrated_nop_Test() {
     it("Accelerometer_Uncalibrated_Sensor_nop_Test02", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info('--------Accelerometer_Uncalibrated_Sensor_nop_Test02--------');
       try {
-        sensor.once(sensor.SensorId.ACCELEROMETER_UNCALIBRATED, ()=>{});
+        sensor.once(sensor.SensorId.ACCELEROMETER_UNCALIBRATED, callback);
       } catch (error) {
         console.error('Accelerometer_Uncalibrated_Sensor_nop_Test02 catch error:' + JSON.stringify(error));
         let e: BusinessError = error as BusinessError;
@@ -113,7 +113,7 @@ export default function accelerometer_Uncalibrated_nop_Test() {
     it("Accelerometer_Uncalibrated_Sensor_nop_Test03", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info('--------Accelerometer_Uncalibrated_Sensor_nop_Test03--------');
       try {
-        sensor.off(sensor.SensorId.ACCELEROMETER_UNCALIBRATED, ()=>{});
+        sensor.off(sensor.SensorId.ACCELEROMETER_UNCALIBRATED, callback);
       } catch (error) {
         console.error('Accelerometer_Uncalibrated_Sensor_nop_Test03 catch error:' + JSON.stringify(error));
         let e: BusinessError = error as BusinessError;
