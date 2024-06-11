@@ -111,5 +111,59 @@ export default function stageContextPropertiesTestUpdateConfiguration(applicatio
                 done()
             }, 2000)
         });
+        
+         /**
+         * @tc.number: SUB_AA_SetFont_0100
+         * @tc.name: Check if the application can be successfully set to the font
+         * @tc.desc:  Function test
+         * @tc.level   1
+         */
+         it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetFont_0100', 0, function (done) {
+            console.info('=============ApplicationContext_SetFont_0100============')
+            try {
+                applicationContext.setFont("fontName");
+                done()
+            } catch(e) {
+                expect().assertFail()
+                done()
+            }
+        });
+        
+         /**
+         * @tc.number: SUB_AA_SetFont_0200
+         * @tc.name: Check wrong parameters
+         * @tc.desc:  Function test
+         * @tc.level   1
+         */
+         it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetFont_0200', 0, function (done) {
+            console.info('=============ApplicationContext_SetFont_0200============')
+            try {
+                applicationContext.setFont(undefined);
+                expect().assertFail()
+                done()
+            } catch(e) {
+                expect(JSON.stringify(e.code)).assertEqual("401")
+                done()
+            }
+        });
+        
+         /**
+         * @tc.number: SUB_AA_SetFont_0300
+         * @tc.name: Check wrong parameters
+         * @tc.desc:  Function test
+         * @tc.level   1
+         */
+         it('SUB_Ability_AbilityRuntime_Configration_ApplicationContext_SetFont_0300', 0, function (done) {
+            console.info('=============ApplicationContext_SetFont_0300============')
+            try {
+                applicationContext.setFont(null);
+                expect().assertFail()
+                done()
+            } catch(e) {
+                expect(JSON.stringify(e.code)).assertEqual("401")
+                done()
+            }
+        });
+        
     })
 }
