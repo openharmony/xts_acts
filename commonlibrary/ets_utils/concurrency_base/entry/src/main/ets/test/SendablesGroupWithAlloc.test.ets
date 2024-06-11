@@ -31,8 +31,7 @@ export default function SendableGroupWithAllocTest() {
          * @tc.author: oleg-ignatenko
          */
         it('testManySendablesToGroup', 0, async (done: Function) => {
-           let result = await skipConditional( // NOTE flaky in full runs on rk3568
-             "testManySendablesToGroup in progress", true, testManySendablesToGroup);
+           let result = await testManySendablesToGroup();
            expect(result).assertEqual("PASSED");
            done();
         })
@@ -42,7 +41,7 @@ export default function SendableGroupWithAllocTest() {
          * @tc.desc: checks Sendable with primitive type
          * @tc.author: oleg-ignatenko
          */
-        it("Excluded_" + "testSendableToGroupAndUpdateWithAlloc", 0, async (done: Function) => {
+        it("testSendableToGroupAndUpdateWithAlloc", 0, async (done: Function) => {
            let result = await skipConditional(
              "testSendableToGroupAndUpdateWithAlloc in progress", true, testSendableToGroupAndUpdate);
            expect(result).assertEqual("PASSED");
@@ -54,7 +53,7 @@ export default function SendableGroupWithAllocTest() {
          * @tc.desc: checks Sendable with primitive type
          * @tc.author: oleg-ignatenko
          */
-        it("Excluded_" + "testSendablesFromOtherTaskWithAlloc", 0, async (done: Function) => {
+        it("testSendablesFromOtherTaskWithAlloc", 0, async (done: Function) => {
            let result = await skipConditional(
              "testSendablesFromOtherTaskWithAlloc excluded", true, testSendablesFromOtherTaskWithAlloc);
            expect(result).assertEqual("PASSED");

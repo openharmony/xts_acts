@@ -44,7 +44,7 @@ export default function SendableGroupTest() {
          * @tc.desc: checks Sendable with primitive type
          * @tc.author: oleg-ignatenko
          */
-        it('Excluded_testSendablesFromOtherTask', 0, async (done: Function) => {
+        it('testSendablesFromOtherTask', 0, async (done: Function) => {
            let result = await skipConditional("testSendablesFromOtherTask excluded", true, testSendablesFromOtherTask);
            expect(result).assertEqual("PASSED");
            done();
@@ -55,7 +55,7 @@ export default function SendableGroupTest() {
          * @tc.desc: checks Sendable with primitive type
          * @tc.author: oleg-ignatenko
          */
-        it('Excluded_testSendablesFromOtherTask_1', 0, async (done: Function) => {
+        it('testSendablesFromOtherTask_1', 0, async (done: Function) => {
            let result = await skipConditional(
              "testSendablesFromOtherTask_1 excluded", true, testSendablesFromOtherTask_1);
            expect(result).assertEqual("PASSED");
@@ -67,59 +67,59 @@ export default function SendableGroupTest() {
          * @tc.desc: checks Sendable with primitive type
          * @tc.author: oleg-ignatenko
          */
-        it('Excluded_testSendableToGroupAndUpdate', 0, async (done: Function) => {
+        it('testSendableToGroupAndUpdate', 0, async (done: Function) => {
            let result = await skipConditional(
              "testSendableToGroupAndUpdate excluded", true, testSendableToGroupAndUpdate);
            expect(result).assertEqual("PASSED");
            done();
         })
-    })
 
-  /**
-   * @tc.name: testSendablesFromOtherTask_2
-   * @tc.desc: checks Sendable with primitive type specific scenario
-   * @tc.author: oleg-ignatenko
-   */
-  it('Excluded_testSendablesFromOtherTask_2', 0, async (done: Function) => {
-    let result = await skipConditional(
-      "testSendablesFromOtherTask_2 excluded", true, testSendablesFromOtherTask_2);
-    expect(result).assertEqual("PASSED");
-    done();
-  })
+        /**
+         * @tc.name: testSendablesFromOtherTask_2
+         * @tc.desc: checks Sendable with primitive type specific scenario
+         * @tc.author: oleg-ignatenko
+         */
+        it('testSendablesFromOtherTask_2', 0, async (done: Function) => {
+          let result = await skipConditional(
+            "testSendablesFromOtherTask_2 excluded", true, testSendablesFromOtherTask_2);
+          expect(result).assertEqual("PASSED");
+          done();
+        })
 
-  /**
-   * @tc.name: testSendablesFromOtherTask_2_1
-   * @tc.desc: checks Sendable with primitive type specific scenario
-   * @tc.author: oleg-ignatenko
-   */
-  it('Excluded_testSendablesFromOtherTask_2_1', 0, async (done: Function) => {
-    let result = await skipConditional(
-      "testSendablesFromOtherTask_2_1 excluded", true, testSendablesFromOtherTask_2_1);
-    expect(result).assertEqual("PASSED");
-    done();
-  })
+        /**
+         * @tc.name: testSendablesFromOtherTask_2_1
+         * @tc.desc: checks Sendable with primitive type specific scenario
+         * @tc.author: oleg-ignatenko
+         */
+        it('testSendablesFromOtherTask_2_1', 0, async (done: Function) => {
+          let result = await skipConditional(
+            "testSendablesFromOtherTask_2_1 excluded", true, testSendablesFromOtherTask_2_1);
+          expect(result).assertEqual("PASSED");
+          done();
+        })
 
-  /**
-   * @tc.name: testSendablesFromOtherTask_3
-   * @tc.desc: checks Sendable with primitive type specific scenario
-   * @tc.author: oleg-ignatenko
-   */
-  it('Excluded_testSendablesFromOtherTask_3', 0, async (done: Function) => {
-    let result = await skipConditional(
-      "testSendablesFromOtherTask_3 excluded", true, testSendablesFromOtherTask_3);
-    expect(result).assertEqual("PASSED");
-    done();
-  })
+        /**
+         * @tc.name: testSendablesFromOtherTask_3
+         * @tc.desc: checks Sendable with primitive type specific scenario
+         * @tc.author: oleg-ignatenko
+         */
+        it('testSendablesFromOtherTask_3', 0, async (done: Function) => {
+          let result = await skipConditional(
+            "testSendablesFromOtherTask_3 excluded", true, testSendablesFromOtherTask_3);
+          expect(result).assertEqual("PASSED");
+          done();
+        })
 
-  /**
-   * @tc.name: testSendablesFromOtherTask_3_1
-   * @tc.desc: checks Sendable with primitive type specific scenario
-   * @tc.author: oleg-ignatenko
-   */
-  it('Excluded_testSendablesFromOtherTask_3_1', 0, async (done: Function) => {
-    let result = await skipConditional(
-      "testSendablesFromOtherTask_3_1 excluded", true, testSendablesFromOtherTask_3_1);
-    expect(result).assertEqual("PASSED");
-    done();
-  })
+        /**
+         * @tc.name: testSendablesFromOtherTask_3_1
+         * @tc.desc: checks Sendable with primitive type specific scenario
+         * @tc.author: oleg-ignatenko
+         */
+        it('testSendablesFromOtherTask_3_1', 0, async (done: Function) => {
+          let result = await skipConditional(
+            "testSendablesFromOtherTask_3_1 excluded", true, testSendablesFromOtherTask_3_1);
+          expect(result).assertEqual("PASSED");
+          done();
+        })
+      })
 }
