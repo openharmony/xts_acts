@@ -48,7 +48,7 @@ describe('backupdir_js_test',async function(){
    /**
    * @tc.number SUB_BASIC_FM_FileAPI_BackupDir_0100
    * @tc.name backup_backupdir_001
-   * @tc.desc Test backupdi() interfaces
+   * @tc.desc Test backupdir() interfaces
    * @tc.size MEDIUM
    * @tc.type Function
    * @tc.level Level 0
