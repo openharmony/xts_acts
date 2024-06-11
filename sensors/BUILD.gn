@@ -21,7 +21,7 @@ group("sensors") {
       "miscdevice_standard:miscdevice_js_test",
       "sensor/sensor_cpp_standard:ActsSensorNdkTest",
       "sensor_standard:sensor_js_test",
-      "sensor_standard_nop:sensor_js_nop_test"
+      "sensor_standard_nop:sensor_js_nop_test",
     ]
   }
 }

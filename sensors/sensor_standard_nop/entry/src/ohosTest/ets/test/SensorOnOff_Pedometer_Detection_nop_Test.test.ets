@@ -47,24 +47,24 @@ export default function pedometerDetection_nop_Test() {
       // This API supports only one parameter: clear action function.
     })
     /*
-     * @tc.number:SUB_SensorsSystem_newPedometerDetection_Sensor_nop_Test01
-     * @tc.name: newPedometerDetection_Sensor_nop_Test01
+     * @tc.number:SUB_SensorsSystem_PedometerDetection_Sensor_nop_Test01
+     * @tc.name: PedometerDetection_Sensor_nop_Test01
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newPedometerDetection_Sensor_nop_Test01", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      console.info('--------newPedometerDetection_Sensor_nop_Test01--------');
+    it("PedometerDetection_Sensor_nop_Test01", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info('--------PedometerDetection_Sensor_nop_Test01--------');
       try {
         sensor.getSingleSensor(sensor.SensorId.PEDOMETER_DETECTION, (error, data) => {
           if (error) {
-            console.error('newPedometerDetection_Sensor_nop_Test01 getSingleSensor fail:' + JSON.stringify(error));
+            console.error('PedometerDetection_Sensor_nop_Test01 getSingleSensor fail:' + JSON.stringify(error));
             done();
           } else {
             try {
               sensor.on(sensor.SensorId.PEDOMETER_DETECTION, (data) => {
-                console.info('newPedometerDetection_Sensor_nop_Test01 On success');
+                console.info('PedometerDetection_Sensor_nop_Test01 On success');
               }, {
                 'interval': 100000000
               });
@@ -73,7 +73,7 @@ export default function pedometerDetection_nop_Test() {
                 done();
               }, 4000);
             } catch (error) {
-              console.error('newPedometerDetection_Sensor_nop_Test01 catch error:' + JSON.stringify(error));
+              console.error('PedometerDetection_Sensor_nop_Test01 catch error:' + JSON.stringify(error));
               let e: BusinessError = error as BusinessError;
               expect(e.code).assertEqual(PARAMETER_ERROR_CODE);
               done()
@@ -81,38 +81,38 @@ export default function pedometerDetection_nop_Test() {
           }
         });
       } catch (error) {
-        console.info('getSingleSensor newPedometerDetection_Sensor_nop_Test01 fail, errCode:' + error.code + ' ,msg:' + error.message);
+        console.info('getSingleSensor PedometerDetection_Sensor_nop_Test01 fail, errCode:' + error.code + ' ,msg:' + error.message);
         expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
         done();
       }
     })
 
     /*
-     * @tc.number:SUB_SensorsSystem_newPedometerDetection_Sensor_nop_Test02
-     * @tc.name: newPedometerDetection_Sensor_nop_Test02
+     * @tc.number:SUB_SensorsSystem_PedometerDetection_Sensor_nop_Test02
+     * @tc.name: PedometerDetection_Sensor_nop_Test01
      * @tc.desc:Using the once method without permission
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newPedometerDetection_Sensor_nop_Test02", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      console.info('--------newPedometerDetection_Sensor_nop_Test02--------');
+    it("PedometerDetection_Sensor_nop_Test02", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info('--------PedometerDetection_Sensor_nop_Test02--------');
       try {
         sensor.getSingleSensor(sensor.SensorId.PEDOMETER_DETECTION, (error, data) => {
           if (error) {
-            console.error('newPedometerDetection_Sensor_nop_Test02 getSingleSensor fail:' + JSON.stringify(error));
+            console.error('PedometerDetection_Sensor_nop_Test02 getSingleSensor fail:' + JSON.stringify(error));
             done();
           } else {
             try {
               sensor.once(sensor.SensorId.PEDOMETER_DETECTION, (data) => {
-                console.info('newPedometerDetection_Sensor_nop_Test02 On success');
+                console.info('PedometerDetection_Sensor_nop_Test02 On success');
               });
               setTimeout(() => {
                 sensor.off(sensor.SensorId.PEDOMETER_DETECTION);
                 done();
               }, 4000);
             } catch (error) {
-              console.error('newPedometerDetection_Sensor_nop_Test02 catch error:' + JSON.stringify(error));
+              console.error('PedometerDetection_Sensor_nop_Test02 catch error:' + JSON.stringify(error));
               let e: BusinessError = error as BusinessError;
               expect(e.code).assertEqual(PARAMETER_ERROR_CODE);
               done()
@@ -120,52 +120,52 @@ export default function pedometerDetection_nop_Test() {
           }
         });
       } catch (error) {
-        console.info('getSingleSensor newPedometerDetection_Sensor_nop_Test02 fail, errCode:' + error.code + ' ,msg:' + error.message);
+        console.info('getSingleSensor PedometerDetection_Sensor_nop_Test02 fail, errCode:' + error.code + ' ,msg:' + error.message);
         expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
         done();
       }
     })
 
     /*
-     * @tc.number:SUB_SensorsSystem_newPedometerDetection_Sensor_nop_Test03
-     * @tc.name: newPedometerDetection_Sensor_nop_Test03
+     * @tc.number:SUB_SensorsSystem_PedometerDetection_Sensor_nop_Test03
+     * @tc.name: PedometerDetection_Sensor_nop_Test01
      * @tc.desc:Using the off method without permission
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it("newPedometerDetection_Sensor_nop_Test03", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
-      console.info('--------newPedometerDetection_Sensor_nop_Test03--------');
+    it("PedometerDetection_Sensor_nop_Test03", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+      console.info('--------PedometerDetection_Sensor_nop_Test03--------');
       try {
         sensor.getSingleSensor(sensor.SensorId.PEDOMETER_DETECTION, (error, data) => {
           if (error) {
-            console.error('newPedometerDetection_Sensor_nop_Test03 getSingleSensor fail:' + JSON.stringify(error));
+            console.error('PedometerDetection_Sensor_nop_Test03 getSingleSensor fail:' + JSON.stringify(error));
             done();
           } else {
             try {
               sensor.once(sensor.SensorId.PEDOMETER_DETECTION, (data) => {
-                console.info('newPedometerDetection_Sensor_nop_Test03 On success');
+                console.info('PedometerDetection_Sensor_nop_Test03 On success');
               });
             } catch (error) {
               let e: BusinessError = error as BusinessError;
               expect(e.code).assertEqual(PARAMETER_ERROR_CODE);
               done()
-              console.info('nop_newPedometerDetection_SensorJsTest On fail, errorCode:' + JSON.stringify(error));
+              console.info('nop_PedometerDetection_SensorJsTest On fail, errorCode:' + JSON.stringify(error));
               try {
                 sensor.off(sensor.SensorId.PEDOMETER_DETECTION, () => {
-                  console.info('nop_newPedometerDetection_SensorJsTest off success');
+                  console.info('nop_PedometerDetection_SensorJsTest off success');
                 });
               } catch (error) {
                 let e: BusinessError = error as BusinessError;
                 expect(e.code).assertEqual(PARAMETER_ERROR_CODE);
                 done()
-                console.info('nop_newPedometerDetection_SensorJsTest off fail, errorCode:' + JSON.stringify(error));
+                console.info('nop_PedometerDetection_SensorJsTest off fail, errorCode:' + JSON.stringify(error));
               }
             }
           }
         });
       } catch (error) {
-        console.info('getSingleSensor newPedometerDetection_Sensor_nop_Test03 fail, errCode:' + error.code + ' ,msg:' + error.message);
+        console.info('getSingleSensor PedometerDetection_Sensor_nop_Test03 fail, errCode:' + error.code + ' ,msg:' + error.message);
         expect(error.code).assertEqual(SENSOR_NO_SUPPORT_CODE);
         done();
       }
