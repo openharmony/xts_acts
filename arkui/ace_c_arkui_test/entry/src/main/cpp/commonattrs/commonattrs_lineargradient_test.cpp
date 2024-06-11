@@ -19,7 +19,7 @@ namespace ArkUICapiTest {
 static napi_value TestCommonAttrsLinearGradient001(napi_env env, napi_callback_info info)
 {
     NAPI_START(column, ARKUI_NODE_COLUMN);
-    float angle = 180;
+    float angle = 90;
     int32_t direction = ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT;
     int32_t repeating = false;
     unsigned int colors[] = {0xFFFFFFFF, 0xFF0000FF};
@@ -32,7 +32,7 @@ static napi_value TestCommonAttrsLinearGradient001(napi_env env, napi_callback_i
     auto ret = nodeAPI->setAttribute(column, NODE_LINEAR_GRADIENT, &valueItem);
 
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, PARAM_0);
+    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, SIZE_180);
     ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
     ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
@@ -54,7 +54,7 @@ static napi_value TestCommonAttrsLinearGradient002(napi_env env, napi_callback_i
     auto ret = nodeAPI->setAttribute(column, NODE_LINEAR_GRADIENT, &valueItem);
 
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, PARAM_0);
+    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, SIZE_180);
     ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
     ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
@@ -63,7 +63,7 @@ static napi_value TestCommonAttrsLinearGradient002(napi_env env, napi_callback_i
 static napi_value TestCommonAttrsLinearGradient003(napi_env env, napi_callback_info info)
 {
     NAPI_START(column, ARKUI_NODE_COLUMN);
-    float angle = 180;
+    float angle = 90;
     int32_t direction = ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT;
     int32_t repeating = true;
     unsigned int colors[] = {0xFFFFFFFF, 0xFF0000FF};
@@ -76,7 +76,7 @@ static napi_value TestCommonAttrsLinearGradient003(napi_env env, napi_callback_i
     auto ret = nodeAPI->setAttribute(column, NODE_LINEAR_GRADIENT, &valueItem);
 
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, PARAM_0);
+    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, SIZE_180);
     ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
     ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
@@ -98,7 +98,7 @@ static napi_value TestCommonAttrsLinearGradient004(napi_env env, napi_callback_i
     auto ret = nodeAPI->setAttribute(column, NODE_LINEAR_GRADIENT, &valueItem);
 
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, PARAM_0);
+    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, SIZE_180);
     ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
     ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
@@ -107,7 +107,7 @@ static napi_value TestCommonAttrsLinearGradient004(napi_env env, napi_callback_i
 static napi_value TestCommonAttrsLinearGradient005(napi_env env, napi_callback_info info)
 {
     NAPI_START(column, ARKUI_NODE_COLUMN);
-    float angle = 180;
+    float angle = 90;
     int32_t direction = ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_TOP;
     int32_t repeating = false;
     unsigned int colors[] = {0xFFFFFFFF, 0xFF0000FF};
@@ -120,7 +120,7 @@ static napi_value TestCommonAttrsLinearGradient005(napi_env env, napi_callback_i
     auto ret = nodeAPI->setAttribute(column, NODE_LINEAR_GRADIENT, &valueItem);
 
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, PARAM_0);
+    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, SIZE_180);
     ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
     ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
@@ -129,7 +129,7 @@ static napi_value TestCommonAttrsLinearGradient005(napi_env env, napi_callback_i
 static napi_value TestCommonAttrsLinearGradient006(napi_env env, napi_callback_info info)
 {
     NAPI_START(column, ARKUI_NODE_COLUMN);
-    float angle = 180;
+    float angle = 90;
     int32_t direction = ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM;
     int32_t repeating = false;
     unsigned int colors[] = {0xFFFFFFFF, 0xFF0000FF};
@@ -142,7 +142,7 @@ static napi_value TestCommonAttrsLinearGradient006(napi_env env, napi_callback_i
     auto ret = nodeAPI->setAttribute(column, NODE_LINEAR_GRADIENT, &valueItem);
 
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, PARAM_0);
+    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, SIZE_180);
     ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
     ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
@@ -151,7 +151,7 @@ static napi_value TestCommonAttrsLinearGradient006(napi_env env, napi_callback_i
 static napi_value TestCommonAttrsLinearGradient007(napi_env env, napi_callback_info info)
 {
     NAPI_START(column, ARKUI_NODE_COLUMN);
-    float angle = 180;
+    float angle = 90;
     int32_t direction = ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT_TOP;
     int32_t repeating = false;
     unsigned int colors[] = {0xFFFFFFFF, 0xFF0000FF};
@@ -164,7 +164,7 @@ static napi_value TestCommonAttrsLinearGradient007(napi_env env, napi_callback_i
     auto ret = nodeAPI->setAttribute(column, NODE_LINEAR_GRADIENT, &valueItem);
 
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, PARAM_0);
+    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, SIZE_180);
     ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
     ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
@@ -173,7 +173,7 @@ static napi_value TestCommonAttrsLinearGradient007(napi_env env, napi_callback_i
 static napi_value TestCommonAttrsLinearGradient008(napi_env env, napi_callback_info info)
 {
     NAPI_START(column, ARKUI_NODE_COLUMN);
-    float angle = 180;
+    float angle = 90;
     int32_t direction = ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT_BOTTOM;
     int32_t repeating = false;
     unsigned int colors[] = {0xFFFFFFFF, 0xFF0000FF};
@@ -185,7 +185,7 @@ static napi_value TestCommonAttrsLinearGradient008(napi_env env, napi_callback_i
     valueItem.object = &colorStop;
     auto ret = nodeAPI->setAttribute(column, NODE_LINEAR_GRADIENT, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, PARAM_0);
+    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, SIZE_180);
     ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
     ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
@@ -194,7 +194,7 @@ static napi_value TestCommonAttrsLinearGradient008(napi_env env, napi_callback_i
 static napi_value TestCommonAttrsLinearGradient009(napi_env env, napi_callback_info info)
 {
     NAPI_START(column, ARKUI_NODE_COLUMN);
-    float angle = 180;
+    float angle = 90;
     int32_t direction = ARKUI_LINEAR_GRADIENT_DIRECTION_NONE;
     int32_t repeating = false;
     unsigned int colors[] = {0xFFFFFFFF, 0xFF0000FF};
@@ -205,7 +205,7 @@ static napi_value TestCommonAttrsLinearGradient009(napi_env env, napi_callback_i
     valueItem.object = &colorStop;
     auto ret = nodeAPI->setAttribute(column, NODE_LINEAR_GRADIENT, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, PARAM_0);
+    ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, SIZE_180);
     ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
     ASSERT_EQ(nodeAPI->getAttribute(column, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
@@ -214,7 +214,7 @@ static napi_value TestCommonAttrsLinearGradient009(napi_env env, napi_callback_i
 static napi_value TestCommonAttrsLinearGradient010(napi_env env, napi_callback_info info)
 {
     NAPI_START(column, ARKUI_NODE_COLUMN);
-    float angle = 180;
+    float angle = 90;
     int32_t direction = ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM;
     int32_t repeating = false;
     unsigned int colors[] = {0xFFFFFFFF, 0xFF0000FF};

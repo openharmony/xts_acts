@@ -20,7 +20,8 @@ namespace ArkUICapiTest {
 static napi_value TestStackTransition001(napi_env env, napi_callback_info info)
 {
     NAPI_START(stack, ARKUI_NODE_STACK);
-    ArkUI_NumberValue move_transition_value[] = {{.i32 = ARKUI_TRANSITION_EDGE_TOP}};
+    ArkUI_NumberValue move_transition_value[] = {
+        {.i32 = ARKUI_TRANSITION_EDGE_TOP}, {.i32 = SIZE_600}, {.i32 = ARKUI_CURVE_LINEAR}};
     ArkUI_AttributeItem move_transition_item = {move_transition_value,
                                                 sizeof(move_transition_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_MOVE_TRANSITION, &move_transition_item);
@@ -32,7 +33,8 @@ static napi_value TestStackTransition001(napi_env env, napi_callback_info info)
 static napi_value TestStackTransition002(napi_env env, napi_callback_info info)
 {
     NAPI_START(stack, ARKUI_NODE_STACK);
-    ArkUI_NumberValue move_transition_value[] = {{.i32 = ARKUI_TRANSITION_EDGE_BOTTOM}};
+    ArkUI_NumberValue move_transition_value[] = {
+        {.i32 = ARKUI_TRANSITION_EDGE_BOTTOM}, {.i32 = SIZE_600}, {.i32 = ARKUI_CURVE_LINEAR}};
     ArkUI_AttributeItem move_transition_item = {move_transition_value,
                                                 sizeof(move_transition_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_MOVE_TRANSITION, &move_transition_item);
@@ -44,7 +46,8 @@ static napi_value TestStackTransition002(napi_env env, napi_callback_info info)
 static napi_value TestStackTransition003(napi_env env, napi_callback_info info)
 {
     NAPI_START(stack, ARKUI_NODE_STACK);
-    ArkUI_NumberValue move_transition_value[] = {{.i32 = ARKUI_TRANSITION_EDGE_START}};
+    ArkUI_NumberValue move_transition_value[] = {
+        {.i32 = ARKUI_TRANSITION_EDGE_START}, {.i32 = SIZE_600}, {.i32 = ARKUI_CURVE_LINEAR}};
     ArkUI_AttributeItem move_transition_item = {move_transition_value,
                                                 sizeof(move_transition_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_MOVE_TRANSITION, &move_transition_item);
@@ -56,7 +59,8 @@ static napi_value TestStackTransition003(napi_env env, napi_callback_info info)
 static napi_value TestStackTransition004(napi_env env, napi_callback_info info)
 {
     NAPI_START(stack, ARKUI_NODE_STACK);
-    ArkUI_NumberValue move_transition_value[] = {{.i32 = ARKUI_TRANSITION_EDGE_END}};
+    ArkUI_NumberValue move_transition_value[] = {
+        {.i32 = ARKUI_TRANSITION_EDGE_END}, {.i32 = SIZE_600}, {.i32 = ARKUI_CURVE_LINEAR}};
     ArkUI_AttributeItem move_transition_item = {move_transition_value,
                                                 sizeof(move_transition_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_MOVE_TRANSITION, &move_transition_item);

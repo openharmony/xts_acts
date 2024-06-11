@@ -24,8 +24,8 @@ static napi_value TestTextLineHeight001(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.f32 = height}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_LINE_HEIGHT, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_LINE_HEIGHT)->value[PARAM_0].f32, height);
     ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_LINE_HEIGHT)->value[PARAM_0].f32, height);
     NAPI_END;
 }
 
@@ -36,8 +36,8 @@ static napi_value TestTextLineHeight002(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.f32 = height}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_LINE_HEIGHT, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_LINE_HEIGHT)->value[PARAM_0].f32, height);
     ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_LINE_HEIGHT)->value[PARAM_0].f32, height);
     NAPI_END;
 }
 
@@ -48,8 +48,8 @@ static napi_value TestTextLineHeight003(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.f32 = height}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_LINE_HEIGHT, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_LINE_HEIGHT)->value[PARAM_0].f32, height);
     ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_LINE_HEIGHT)->value[PARAM_0].f32, height);
     NAPI_END;
 }
 
@@ -60,8 +60,8 @@ static napi_value TestTextLineHeight004(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.f32 = height}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_LINE_HEIGHT, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_LINE_HEIGHT)->value[PARAM_0].f32, height);
     ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_LINE_HEIGHT)->value[PARAM_0].f32, height);
     NAPI_END;
 }
 

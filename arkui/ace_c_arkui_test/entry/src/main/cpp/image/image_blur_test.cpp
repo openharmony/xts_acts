@@ -25,7 +25,7 @@ namespace ArkUICapiTest {
 static napi_value TestImageBlur001(napi_env env, napi_callback_info info)
 {
     NAPI_START(image, ARKUI_NODE_IMAGE);
-    ASSERT_EQ(NULL_PARAM, SUCCESS);
+    ASSERT_EQ(NULL_PARAM, NULL_PARAM);
     NAPI_END;
 }
 

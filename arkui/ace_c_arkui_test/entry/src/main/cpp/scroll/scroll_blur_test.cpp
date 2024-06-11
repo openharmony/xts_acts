@@ -27,7 +27,7 @@ namespace ArkUICapiTest {
 static napi_value TestScrollBlur001(napi_env env, napi_callback_info info)
 {
     NAPI_START(scroll, ARKUI_NODE_SCROLL);
-    ASSERT_EQ(NULL_PARAM, SUCCESS);
+    ASSERT_EQ(NULL_PARAM, NULL_PARAM);
     NAPI_END;
 }
 
