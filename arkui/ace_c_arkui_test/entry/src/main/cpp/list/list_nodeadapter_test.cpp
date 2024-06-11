@@ -77,22 +77,24 @@ napi_value static TestListNodeAdapter003(napi_env env, napi_callback_info info)
         auto *adapterEvent = reinterpret_cast<ArkUI_NodeAdapterEvent *>(event);
         auto type = OH_ArkUI_NodeAdapterEvent_GetType(adapterEvent);
         switch (type) {
-            case NODE_ADAPTER_EVENT_WILL_ATTACH_TO_NODE: {
-                // 通知Adapter进行局部元素插入，插入10个
-                int32_t ret_inner = OH_ArkUI_NodeAdapter_InsertItem(adapter, g_startPosition, g_itemCount);
-                // 通知Adapter进行局部元素移位
-                ret_inner = OH_ArkUI_NodeAdapter_MoveItem(adapter, g_from, g_to);
-                // 通知Adapter进行全量元素变化
-                ret_inner = OH_ArkUI_NodeAdapter_ReloadAllItems(adapter);
-                // 通知Adapter进行局部元素变化
-                ret_inner = OH_ArkUI_NodeAdapter_ReloadItem(adapter, g_startPosition, g_itemCount);
-                // 通知Adapter进行局部元素删除
-                ret_inner = OH_ArkUI_NodeAdapter_RemoveItem(adapter, g_startPosition, g_itemCount);
-                // 获取存储在Adapter中的所有元素
-                ArkUI_NodeHandle **items = nullptr;
-                uint32_t ret_size;
-                ret_inner = OH_ArkUI_NodeAdapter_GetAllItems(adapter, items, &ret_size);
-            } break;
+            case NODE_ADAPTER_EVENT_WILL_ATTACH_TO_NODE:
+                {
+                    // 通知Adapter进行局部元素插入，插入10个
+                    int32_t ret_inner = OH_ArkUI_NodeAdapter_InsertItem(adapter, g_startPosition, g_itemCount);
+                    // 通知Adapter进行局部元素移位
+                    ret_inner = OH_ArkUI_NodeAdapter_MoveItem(adapter, g_from, g_to);
+                    // 通知Adapter进行全量元素变化
+                    ret_inner = OH_ArkUI_NodeAdapter_ReloadAllItems(adapter);
+                    // 通知Adapter进行局部元素变化
+                    ret_inner = OH_ArkUI_NodeAdapter_ReloadItem(adapter, g_startPosition, g_itemCount);
+                    // 通知Adapter进行局部元素删除
+                    ret_inner = OH_ArkUI_NodeAdapter_RemoveItem(adapter, g_startPosition, g_itemCount);
+                    // 获取存储在Adapter中的所有元素
+                    ArkUI_NodeHandle **items = nullptr;
+                    uint32_t ret_size;
+                    ret_inner = OH_ArkUI_NodeAdapter_GetAllItems(adapter, items, &ret_size);
+                }
+                break;
             default:
                 break;
         }
