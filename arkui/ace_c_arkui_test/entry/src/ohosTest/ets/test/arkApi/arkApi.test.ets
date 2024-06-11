@@ -208,6 +208,58 @@ export default function TestArkUIAddApi() {
       done()
     })
 
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_UIInputEvent_1500
+     * @tc.name       : TestArkUIAddApi015
+     * @tc.desc       : testing OH_ArkUI Api
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('TestArkUIAddApi015', 0, async (done: Function) => {
+      expect(nativeFunc.TestArkUIAddApi015()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_UIInputEvent_1600
+     * @tc.name       : TestArkUIAddApi016
+     * @tc.desc       : testing OH_ArkUI Api
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('TestArkUIAddApi016', 0, async (done: Function) => {
+      expect(nativeFunc.TestArkUIAddApi016()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_UIInputEvent_1700
+     * @tc.name       : TestArkUIAddApi017
+     * @tc.desc       : testing OH_ArkUI Api
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('TestArkUIAddApi017', 0, async (done: Function) => {
+      expect(nativeFunc.TestArkUIAddApi017()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_UIInputEvent_1800
+     * @tc.name       : TestArkUIAddApi018
+     * @tc.desc       : testing OH_ArkUI Api
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('TestArkUIAddApi018', 0, async (done: Function) => {
+      expect(nativeFunc.TestArkUIAddApi018()).assertEqual(0)
+      done()
+    })
+
 
 
   })
