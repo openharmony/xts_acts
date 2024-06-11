@@ -17,7 +17,11 @@
 
 namespace ArkUICapiTest {
 
-static int g_TotalNodeCnt = 1000;
+static int g_totalNodeCnt = 1000;
+static uint32_t g_from = 1;
+static uint32_t g_to = 2;
+static uint32_t g_startPosition = 0;
+static uint32_t g_itemCount = 10;
 
 static napi_value TestListNodeAdapter001(napi_env env, napi_callback_info info)
 {
@@ -27,14 +31,14 @@ static napi_value TestListNodeAdapter001(napi_env env, napi_callback_info info)
     ArkUI_NodeAdapterHandle adapter = OH_ArkUI_NodeAdapter_Create();
 
     // 设置适配器中的元素总数
-    OH_ArkUI_NodeAdapter_SetTotalNodeCount(adapter, g_TotalNodeCnt);
+    OH_ArkUI_NodeAdapter_SetTotalNodeCount(adapter, g_totalNodeCnt);
 
     uint32_t res_cnt = OH_ArkUI_NodeAdapter_GetTotalNodeCount(adapter);
-    ASSERT_EQ(res_cnt, g_TotalNodeCnt);
+    ASSERT_EQ(res_cnt, g_totalNodeCnt);
 
     // 销毁组件适配器对象
     OH_ArkUI_NodeAdapter_Dispose(adapter);
-    ASSERT_EQ(res_cnt, g_TotalNodeCnt);
+    ASSERT_EQ(res_cnt, g_totalNodeCnt);
 
     NAPI_END;
 }
@@ -75,21 +79,15 @@ napi_value static TestListNodeAdapter003(napi_env env, napi_callback_info info)
         switch (type) {
             case NODE_ADAPTER_EVENT_WILL_ATTACH_TO_NODE: {
                 // 通知Adapter进行局部元素插入，插入10个
-                uint32_t startPosition = 0;
-                uint32_t itemCount = 10;
-                int32_t ret_inner = OH_ArkUI_NodeAdapter_InsertItem(adapter, startPosition, itemCount);
+                int32_t ret_inner = OH_ArkUI_NodeAdapter_InsertItem(adapter, g_startPosition, g_itemCount);
                 // 通知Adapter进行局部元素移位
-                uint32_t from = 1;
-                uint32_t to = 2;
-                ret_inner = OH_ArkUI_NodeAdapter_MoveItem(adapter, from, to);
+                ret_inner = OH_ArkUI_NodeAdapter_MoveItem(adapter, g_from, g_to);
                 // 通知Adapter进行全量元素变化
                 ret_inner = OH_ArkUI_NodeAdapter_ReloadAllItems(adapter);
                 // 通知Adapter进行局部元素变化
-                startPosition = 1;
-                itemCount = 2;
-                ret_inner = OH_ArkUI_NodeAdapter_ReloadItem(adapter, startPosition, itemCount);
+                ret_inner = OH_ArkUI_NodeAdapter_ReloadItem(adapter, g_startPosition, g_itemCount);
                 // 通知Adapter进行局部元素删除
-                ret_inner = OH_ArkUI_NodeAdapter_RemoveItem(adapter, startPosition, itemCount);
+                ret_inner = OH_ArkUI_NodeAdapter_RemoveItem(adapter, g_startPosition, g_itemCount);
                 // 获取存储在Adapter中的所有元素
                 ArkUI_NodeHandle **items = nullptr;
                 uint32_t ret_size;

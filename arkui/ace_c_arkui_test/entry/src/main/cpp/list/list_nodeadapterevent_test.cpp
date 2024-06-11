@@ -112,6 +112,8 @@ static void CallBack(ArkUI_NodeAdapterEvent *event)
         case NODE_ADAPTER_EVENT_ON_REMOVE_NODE_FROM_ADAPTER:
             OnRemoveNodeFromAdapter(event);
             break;
+        default:
+            break;
     }
 }
 
