@@ -3312,12 +3312,13 @@ export default function audioCapturer() {
                 let audioCapPromise = await audio.createAudioCapturer(AudioCapturerOptions);
                 audioCapPromise.getAudioStreamId().then((data) => {
                     expect(true).assertTrue();
+                    audioCapPromise.release();
                     console.info(`${Tag}: getAudioStreamId : Converted: ${data}`);
                 }).catch((err) => {
                     expect(true).assertTrue();
+                    audioCapPromise.release();
                     console.error(`${Tag}: getAudioStreamId : ERROR : ${err}`);
                 });
-                audioCapPromise.release();
             } catch (err) {
                 console.log(`${Tag} error code: ${err.code} ,message:${err.message}`);
                 expect(false).assertTrue();
@@ -3356,16 +3357,18 @@ export default function audioCapturer() {
                     let StreamIdSync = audioCapPromise.getAudioStreamIdSync();
                     console.info(`${Tag}: getAudioStreamId : Converted: ${StreamIdSync}`);
                     expect(true).assertTrue();
+                    audioCapPromise.release();
                 }).catch((err) => {
                     console.error(`AudioCapturer Created : ERROR : ${err}`);
                     expect(false).assertTrue();
+                    audioCapPromise.release();
                 });
 
             } catch (err) {
                 console.log(`${Tag} error code: ${err.code} ,message:${err.message}`);
                 expect(false).assertTrue();
+                audioCapPromise.release();
             }
-            await audioCapPromise.release();
             done();
         })
         
