@@ -271,6 +271,7 @@ import scrollScrollToTest from './scroll/ScrollScrollToTest.test'
 import scrollOverlayTest from './scroll/ScrollOverlayTest.test'
 import scrollLinearGradientTest from './scroll/ScrollLinearGradientTest'
 import scrollPageEnableTest from './scroll/ScrollPageEnableTest'
+import TestArkUIAddApi from './arkApi/arkApi.test'
 
 export default function testsuite() {
   commonAttrsAlignSelfTest()
@@ -532,4 +533,5 @@ export default function testsuite() {
   stackHitTestBehaviorTest()
   stackOnTouchTest()
   textEnabledTest()
+  TestArkUIAddApi()
 }

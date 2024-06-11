@@ -242,6 +242,7 @@
 #include "text/text_transform_test.cpp"
 #include "text/text_visibility_test.cpp"
 #include "text/text_linebreakstrategy_test.cpp"
+#include "arkApi/arkApi.cpp"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -2167,6 +2168,20 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testScrollFriction002", nullptr, TestScrollFriction001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testScrollPageEnable001", nullptr, TestScrollPageEnable001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testScrollPageEnable002", nullptr, TestScrollPageEnable002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi001", nullptr, TestArkUIAddApi001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi002", nullptr, TestArkUIAddApi002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi003", nullptr, TestArkUIAddApi003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi004", nullptr, TestArkUIAddApi004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi005", nullptr, TestArkUIAddApi005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi006", nullptr, TestArkUIAddApi006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi007", nullptr, TestArkUIAddApi007, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi008", nullptr, TestArkUIAddApi008, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi009", nullptr, TestArkUIAddApi009, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi010", nullptr, TestArkUIAddApi010, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi011", nullptr, TestArkUIAddApi011, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi012", nullptr, TestArkUIAddApi012, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi013", nullptr, TestArkUIAddApi013, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi014", nullptr, TestArkUIAddApi014, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");
