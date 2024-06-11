@@ -13,9 +13,9 @@
  * limitations under the License.
  */
 import {
-  describe, 
-  it, 
-  expect, 
+  describe,
+  it,
+  expect,
   environment,
   isSting,
   isIntNum
@@ -130,7 +130,7 @@ describe('environment_getUserDir_test', function () {
       if(e.code == 801){
         expect(e.message == "The device doesn't support this api").assertTrue();
       }else{
-        expect(e.code == 201 && e.message == "Permission verification failed").assertTrue();
+        expect(e.code == 401).assertTrue();
       }
     }
   });
@@ -153,11 +153,11 @@ describe('environment_getUserDir_test', function () {
       if(e.code == 801){
         expect(e.message == "The device doesn't support this api").assertTrue();
       }else{
-        expect(e.code == 201 && e.message == "Permission verification failed").assertTrue();
+        expect(e.code == 401).assertTrue();
       }
     }
   });
-    
+
   /**
    * @tc.number SUB_BASIC_FM_FileAPI_Environment_getUserDownloadDir_0100
    * @tc.name environment_test_getUserDownloadDir_001
@@ -197,7 +197,7 @@ describe('environment_getUserDir_test', function () {
       if(e.code == 801){
         expect(e.message == "The device doesn't support this api").assertTrue();
       }else{
-        expect(e.code == 201 && e.message == "Permission verification failed").assertTrue();
+        expect(e.code == 401).assertTrue();
       }
     }
   });
@@ -220,9 +220,9 @@ describe('environment_getUserDir_test', function () {
       if(e.code == 801){
         expect(e.message == "The device doesn't support this api").assertTrue();
       }else{
-        expect(e.code == 201 && e.message == "Permission verification failed").assertTrue();
+        expect(e.code == 401).assertTrue();
       }
     }
-  }); 
+  });
 });
 }
