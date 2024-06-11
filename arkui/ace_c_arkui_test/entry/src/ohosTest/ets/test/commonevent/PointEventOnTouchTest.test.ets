@@ -28,13 +28,13 @@ export default function PointEventOnTouchTest() {
 
     /*
     * @tc.number     : SUB_ARKUI_CAPI_POINTEVENT_ONTOUCH_0100
-    * @tc.name       : pointEventOnTouch001
+    * @tc.name       : testPointEventOnTouch001
     * @tc.desc       : test onTouch event callback
     * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('pointEventOnTouch001', 0, async (done: Function) => {
+    it('testPointEventOnTouch001', 0, async (done: Function) => {
       await Utils.clickComponent('OnTouchTest')
       await Utils.sleep(2000)
       expect(Utils.getComponentInfoByKey('OnTouchTest').$attrs.backgroundColor).assertEqual('#FF00FF00')
@@ -43,13 +43,13 @@ export default function PointEventOnTouchTest() {
 
     /*
     * @tc.number     : SUB_ARKUI_CAPI_POINTEVENT_ONTOUCH_0200
-    * @tc.name       : pointEventOnTouch002
+    * @tc.name       : testPointEventOnTouch002
     * @tc.desc       : test onTouch event not callback
     * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('pointEventOnTouch002', 0, async (done: Function) => {
+    it('testPointEventOnTouch002', 0, async (done: Function) => {
       await Utils.clickComponent('OnTouchTestDisable')
       await Utils.sleep(2000)
       expect(Utils.getComponentInfoByKey('OnTouchTestDisable').$attrs.backgroundColor).assertEqual('#FFFF0000')
