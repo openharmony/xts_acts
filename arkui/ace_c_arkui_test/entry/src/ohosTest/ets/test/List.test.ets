@@ -188,6 +188,8 @@ import listRotateTest from './list/ListRotateTest.test'
 import listSaturateTest from './list/ListSaturateTest.test'
 import listBlurTest from './list/ListBlurTest.test'
 import listShadowTest from './list/ListShadowTest.test'
+import ListNodeAdapterTest from './list/ListNodeAdapterTest.test'
+import ListNodeAdapterEventTest from './list/ListNodeAdapterEventTest.test'
 import listItemLinearGradientTest from './listitem/ListItemLinearGradientTest.test'
 import listItemShadowTest from './listitem/ListItemShadowTest.test'
 import listItemBlurTest from './listitem/ListItemBlurTest.test'
@@ -820,6 +822,8 @@ export default function testsuite() {
   listCachedCountTest()
   listEdgeEffectTest()
   listEnableScrollInteractionTest()
+  ListNodeAdapterTest()
+  ListNodeAdapterEventTest()
   listItemHeightTest()
   listItemWidthTest()
   listItemBackgroundColorTest()
