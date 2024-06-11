@@ -38,6 +38,20 @@ export default function TextStyleGraphicTest() {
       expect(nativeFunc.textTextStyleGraphic001()).assertEqual(0)
       done()
     })
+    
+    
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_TextTextStyleGraphic002
+     * @tc.name       : testStyleGraphic_002
+     * @tc.desc       : testing text style
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testStyleGraphic_002', 0, async (done: Function) => {
+      expect(nativeFunc.textTextStyleGraphic002()).assertEqual(0)
+      done()
+    })
 
 
   })

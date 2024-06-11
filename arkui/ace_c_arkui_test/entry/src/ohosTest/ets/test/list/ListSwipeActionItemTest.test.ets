@@ -103,7 +103,32 @@ export default function ListSwipeActionItemTest() {
       expect(nativeFunc.testListSwipeActionOptionCreate()).assertEqual(1);
       done()
     })
+    
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_LIST_SwipeAction_OptionCreate
+     * @tc.name       : testListSwipeAction007
+     * @tc.desc       : testing swipeActionOption create
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+    */
+    it('testListSwipeAction007', 0, async (done: Function) => {
+      expect(nativeFunc.testListSwipeActionItem008()).assertEqual(1);
+      done()
+    })
 
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_LIST_SwipeAction_OptionCreate
+     * @tc.name       : testListSwipeAction008
+     * @tc.desc       : testing swipeActionOption create
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+    */
+    it('testListSwipeAction008', 0, async (done: Function) => {
+      expect(nativeFunc.testListSwipeActionItem009()).assertEqual(1);
+      done()
+    })
 
   })
 }
