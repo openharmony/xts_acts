@@ -129,7 +129,124 @@ export default function ListSwipeChildMinSizeTest() {
       expect(nativeFunc.testListSwipeOption008()).assertEqual(0)
       done()
     })
+     
+     /*
+     * @tc.number     : SUB_ARKUI_CAPI_NodeUtils_010
+     * @tc.name       : testNodeUtils010
+     * @tc.desc       : testing NodeUtils interface
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testNodeUtils010', 0, async (done: Function) => {
+      expect(nativeFunc.testNodeUtils010()).assertEqual(0)
+      done()
+    })
 
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_NodeUtils_020
+     * @tc.name       : testNodeUtils020
+     * @tc.desc       : testing NodeUtils interface
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+   */
+    it('testNodeUtils020', 0, async (done: Function) => {
+      expect(nativeFunc.testNodeUtils020()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_NodeUtils_030
+     * @tc.name       : testNodeUtils030
+     * @tc.desc       : testing NodeUtils interface
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+    */
+    it('testNodeUtils030', 0, async (done: Function) => {
+      expect(nativeFunc.testNodeUtils030()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_NodeUtils_040
+     * @tc.name       : testNodeUtils040
+     * @tc.desc       : testing NodeUtils interface
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+    */
+    it('testNodeUtils040', 0, async (done: Function) => {
+      expect(nativeFunc.testNodeUtils040()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_NodeUtils_050
+     * @tc.name       : testNodeUtils050
+     * @tc.desc       : testing NodeUtils interface
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+    */
+    it('testNodeUtils050', 0, async (done: Function) => {
+      expect(nativeFunc.testNodeUtils050()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_NodeUtils_060
+     * @tc.name       : testNodeUtils060
+     * @tc.desc       : testing NodeUtils interface
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+    */
+    it('testNodeUtils060', 0, async (done: Function) => {
+      expect(nativeFunc.testNodeUtils060()).assertEqual(0)
+      done()
+    })
+
+  /*
+   * @tc.number     : SUB_ARKUI_CAPI_ImageAnimator_0090
+   * @tc.name       : testImageAniMator009
+   * @tc.desc       : testing testImageAnimator interface
+   * @tc.size       : MediumTest
+   * @tc.type       : Function
+   * @tc.level      : Level 1
+  */
+    it('testImageAniMator009', 0, async (done: Function) => {
+      expect(nativeFunc.testImageAniMator009()).assertEqual(1)
+      done()
+    })
+     
+  /*
+   * @tc.number     : SUB_ARKUI_CAPI_ImageAnimator_010
+   * @tc.name       : testImageAniMator010
+   * @tc.desc       : testing testImageAnimator interface
+   * @tc.size       : MediumTest
+   * @tc.type       : Function
+   * @tc.level      : Level 1
+  */
+    it('testImageAniMator010', 0, async (done: Function) => {
+      expect(nativeFunc.testImageAniMator010()).assertEqual(0)
+      done()
+    })
+
+
+  /*
+   * @tc.number     : SUB_ARKUI_CAPI_ImageAnimator_011
+   * @tc.name       : testImageAniMator011
+   * @tc.desc       : testing testImageAnimator interface
+   * @tc.size       : MediumTest
+   * @tc.type       : Function
+   * @tc.level      : Level 1
+  */
+    it('testImageAniMator010', 0, async (done: Function) => {
+      expect(nativeFunc.testImageAniMator011()).assertEqual(1)
+      done()
+    }) 
 
 
 

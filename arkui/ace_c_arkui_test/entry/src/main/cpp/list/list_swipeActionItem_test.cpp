@@ -104,8 +104,31 @@ static napi_value listSwipeActionItem007(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value listSwipeActionItem008(napi_env env, napi_callback_info info)
+{
+    auto listSwipeActionItem = OH_ArkUI_ListItemSwipeActionItem_Create();
 
+    ArkUIData testData = {3.0f, 0};
+   
+    OH_ArkUI_ListItemSwipeActionItem_SetOnActionWithUserData(listSwipeActionItem, &testData, nullptr);
+    OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionAreaWithUserData(listSwipeActionItem, nullptr, nullptr);
+    OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionAreaWithUserData(listSwipeActionItem, nullptr,  nullptr);
+    OH_ArkUI_ListItemSwipeActionItem_Dispose(listSwipeActionItem);
+    napi_value result = nullptr;  
+    napi_create_int32(env, 1, &result);                                                                                 
+    return result;
+}
 
+static napi_value listSwipeActionItem009(napi_env env, napi_callback_info info)
+{
+    auto listItemSwipeActionOption = OH_ArkUI_ListItemSwipeActionOption_Create();
+    OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChangeWithUserData(listItemSwipeActionOption, nullptr, nullptr);
+    OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChange(listItemSwipeActionOption, nullptr);
+    OH_ArkUI_ListItemSwipeActionOption_Dispose(listItemSwipeActionOption);
+    napi_value result = nullptr;  
+    napi_create_int32(env, 1, &result);                                                                                 
+    return result;
+}
 
 
 

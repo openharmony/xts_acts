@@ -1936,6 +1936,30 @@ export const testListSwipeOption007: () => number;
 
 export const testListChildMainSize006: () => number;
 
+export const testNodeUtils010: ()=> number;
+
+export const testNodeUtils020: ()=> number;
+
+export const testNodeUtils030: ()=> number;
+
+export const testNodeUtils040: ()=> number;
+
+export const testNodeUtils050: ()=> number;
+
+export const testNodeUtils060: ()=> number;
+
+export const testImageAniMator009: () => number;
+
+export const testImageAniMator010: () => number;
+
+export const testImageAniMator011: () => number;
+
+export const testListSwipeActionItem008: ()=> number;
+
+export const testListSwipeActionItem009: ()=> number;
+
+export const textTextStyleGraphic002: () => number;
+
 export const testListSwipeOption008: () => number;
 
 export const testCommonAttrsClip001: () => number;

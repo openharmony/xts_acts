@@ -52,4 +52,23 @@ static napi_value TextTextStyleGraphic001(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value TextTextStyleGraphic002(napi_env env, napi_callback_info info)
+{
+    NAPI_START(textStyleGrap, ARKUI_NODE_TEXT);
+    const char *content = "C addPlaceHolder Test";
+    ArkUI_AttributeItem texContent = {.string = content};
+    nodeAPI->setAttribute(textStyleGrap, NODE_WIDTH, &texContent);
+    OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
+    OH_Drawing_SetTypographyTextMaxLines(typoStyle, PARAM_5);
+    ArkUI_StyledString *styledString = OH_ArkUI_StyledString_Create(typoStyle, OH_Drawing_CreateFontCollection());
+    
+    OH_Drawing_PlaceholderSpan placeholder = {5.0, 8.0, ALIGNMENT_ABOVE_BASELINE, TEXT_BASELINE_ALPHABETIC, 7.0};
+    OH_ArkUI_StyledString_AddPlaceholder(styledString, &placeholder);
+    OH_ArkUI_StyledString_Destroy(styledString);
+    napi_value result = nullptr;  
+    napi_create_int32(env, 0, &result);                                                                                 
+    return result;
+}
+
+
 } // namespace ArkUICapiTest

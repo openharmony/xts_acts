@@ -96,5 +96,114 @@ static napi_value TestListSwipeOption008(napi_env env, napi_callback_info info)
     NAPI_END;
 }
 
+static napi_value TestNodeUtils010(napi_env env, napi_callback_info info)
+{   
+    ArkUI_IntSize layoutSize = {0, 0};
+    auto nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(                                           
+                OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1")); 
+    ArkUI_NodeHandle nodeHandle = nodeAPI->createNode(ARKUI_NODE_COLUMN);
+    auto ret = OH_ArkUI_NodeUtils_GetLayoutSize(nodeHandle, &layoutSize);
+    ASSERT_EQ(ret, SUCCESS);
+    NAPI_END;
+}
+
+static napi_value TestNodeUtils020(napi_env env, napi_callback_info info)
+{   
+    ArkUI_IntOffset localoffset = {0, 0};
+    auto nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(                                           
+                OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1")); 
+    ArkUI_NodeHandle nodeHandle = nodeAPI->createNode(ARKUI_NODE_COLUMN);
+    
+    auto ret = OH_ArkUI_NodeUtils_GetLayoutPosition(nodeHandle, &localoffset);
+    ASSERT_EQ(ret, SUCCESS);
+    NAPI_END;
+}
+
+
+static napi_value TestNodeUtils030(napi_env env, napi_callback_info info)
+{   
+    ArkUI_IntOffset globaloffset = {0, 0};
+    auto nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(                                           
+                OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1")); 
+    ArkUI_NodeHandle nodeHandle = nodeAPI->createNode(ARKUI_NODE_COLUMN);
+    
+    auto ret = OH_ArkUI_NodeUtils_GetLayoutPositionInWindow(nodeHandle, &globaloffset);
+    ASSERT_EQ(ret, SUCCESS);
+    NAPI_END;
+}
+
+static napi_value TestNodeUtils040(napi_env env, napi_callback_info info)
+{   
+    ArkUI_IntOffset screenoffset = {0, 0};
+    auto nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(                                           
+                OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1")); 
+    ArkUI_NodeHandle nodeHandle = nodeAPI->createNode(ARKUI_NODE_COLUMN);
+    
+    auto ret = OH_ArkUI_NodeUtils_GetLayoutPositionInScreen(nodeHandle, &screenoffset);
+    ASSERT_EQ(ret, SUCCESS);
+    NAPI_END;
+}
+
+static napi_value TestNodeUtils050(napi_env env, napi_callback_info info)
+{   
+    ArkUI_IntOffset screenoffset = {0, 0};
+    auto nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(                                           
+                OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1")); 
+    ArkUI_NodeHandle nodeHandle = nodeAPI->createNode(ARKUI_NODE_COLUMN);
+    
+    auto ret = OH_ArkUI_NodeUtils_GetPositionWithTranslateInScreen(nodeHandle, &screenoffset);
+    ASSERT_EQ(ret, SUCCESS);
+    NAPI_END;
+}
+
+static napi_value TestNodeUtils060(napi_env env, napi_callback_info info)
+{   
+    ArkUI_IntOffset translateOffset = {0, 0};
+    auto nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(                                           
+                OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1")); 
+    ArkUI_NodeHandle nodeHandle = nodeAPI->createNode(ARKUI_NODE_COLUMN);
+    
+    auto ret = OH_ArkUI_NodeUtils_GetPositionWithTranslateInWindow(nodeHandle, &translateOffset);
+    ASSERT_EQ(ret, SUCCESS);
+    NAPI_END;
+}
+
+static napi_value TestImageAniMator009(napi_env env, napi_callback_info info)
+{   
+    char *content = "C textStyle Test";
+    auto ret = OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString(content);
+    if(ret == nullptr) {
+        NAPI_END;
+    }
+    napi_value result = nullptr;  
+    napi_create_int32(env, 1, &result);
+    OH_ArkUI_ImageAnimatorFrameInfo_Dispose(ret);                                                                                
+    return result;
+}
+
+static napi_value TestImageAniMator010(napi_env env, napi_callback_info info)
+{   
+    ArkUI_DrawableDescriptor *drawableDescripter = nullptr;
+    auto ret = OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawableDescriptor(drawableDescripter);
+    if(ret == nullptr) {
+        NAPI_END;
+    }
+    napi_value result = nullptr;  
+    napi_create_int32(env, 1, &result);                                                                                 
+    return result;
+}
+
+static napi_value TestImageAniMator011(napi_env env, napi_callback_info info)
+{   
+     char *content = "C textStyle Test";
+     auto ret = OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString(content);
+     OH_ArkUI_ImageAnimatorFrameInfo_SetWidth(ret, VALUE_0);
+     auto value = OH_ArkUI_ImageAnimatorFrameInfo_GetWidth(ret);
+     ASSERT_EQ(value, VALUE_0);
+     napi_value result = nullptr;  
+     napi_create_int32(env, 1, &result);                                                                                 
+     return result;
+}
+
 
 } // namespace ArkUICapiTest
