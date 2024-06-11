@@ -3364,7 +3364,6 @@ export default function audioCapturer() {
             } catch (err) {
                 console.log(`${Tag} error code: ${err.code} ,message:${err.message}`);
                 expect(false).assertTrue();
-                audioCapPromise.release();
             }
             await audioCapPromise.release();
             done();
