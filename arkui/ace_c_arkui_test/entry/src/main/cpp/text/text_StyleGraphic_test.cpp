@@ -59,7 +59,7 @@ static napi_value TextTextStyleGraphic002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem texContent = {.string = content};
     nodeAPI->setAttribute(textStyleGrap, NODE_WIDTH, &texContent);
     OH_Drawing_TypographyStyle *typoStyle = OH_Drawing_CreateTypographyStyle();
-    OH_Drawing_SetTypographyTextMaxLines(typoStyle, 5);
+    OH_Drawing_SetTypographyTextMaxLines(typoStyle, PARAM_5);
     ArkUI_StyledString *styledString = OH_ArkUI_StyledString_Create(typoStyle, OH_Drawing_CreateFontCollection());
     
     OH_Drawing_PlaceholderSpan placeholder = {5.0, 8.0, ALIGNMENT_ABOVE_BASELINE, TEXT_BASELINE_ALPHABETIC, 7.0};
