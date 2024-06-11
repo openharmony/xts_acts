@@ -350,5 +350,32 @@ export default function AVSessionJsTest() {
 			}
 			done();
 		})
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_CASTDISPLAYCHANGE_0100
+         * @tc.name      : session castDisplayChange
+         * @tc.desc      : Testing call session castDisplayChange(CastDisplayState.STATE_ON|CastDisplayState.STATE_OFF)
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level0
+		 */
+		it("SUB_MULTIMEDIA_AVSESSION_CASTDISPLAYCHANGE_0100", 0, async function (done) {
+			try {
+                let castDisplay;
+                currentAVSession.on('castDisplayChange', (display) => {
+                    if (display.state === avSession.CastDisplayState.STATE_ON) {
+                        castDisplay = display;
+                        console.info('castDisplayChange display : ${display.id} ON');
+                    } else if (display.state === avSession.CastDisplayState.STATE_OFF){
+                        console.info('castDisplayChange display : ${display.id} OFF');
+                    }
+                });
+			} catch (err) {
+				expect(err.code).assertEqual(6600102);
+                console.log(TAG + "SUB_MULTIMEDIA_AVSESSION_OFFCOMMONCOMMAND_0300 finished");
+			}
+			done();
+		})
+
 	})
 }
