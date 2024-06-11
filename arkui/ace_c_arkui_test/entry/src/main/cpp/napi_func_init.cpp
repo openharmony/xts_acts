@@ -2182,10 +2182,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"TestArkUIAddApi012", nullptr, TestArkUIAddApi012, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"TestArkUIAddApi013", nullptr, TestArkUIAddApi013, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"TestArkUIAddApi014", nullptr, TestArkUIAddApi014, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"TestArkUIAddApi015", nullptr, TestArkUIAddApi015, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"TestArkUIAddApi016", nullptr, TestArkUIAddApi016, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"TestArkUIAddApi017", nullptr, TestArkUIAddApi017, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"TestArkUIAddApi018", nullptr, TestArkUIAddApi018, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

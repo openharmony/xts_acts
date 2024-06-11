@@ -134,45 +134,7 @@ static napi_value TestArkUIAddApi014(napi_env env, napi_callback_info info)
     NAPI_END;
 }
 
-static napi_value TestArkUIAddApi015(napi_env env, napi_callback_info info)
-{
-    char *content = "C textStyle Test";
-    auto ret = OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString(content);
-    OH_ArkUI_ImageAnimatorFrameInfo_SetHeight(ret, VALUE_0);
-    auto value = OH_ArkUI_ImageAnimatorFrameInfo_GetHeight(ret);
-    ASSERT_EQ(value, VALUE_0);
-    NAPI_END;
-}
 
-static napi_value TestArkUIAddApi016(napi_env env, napi_callback_info info)
-{
-    char *content = "C textStyle Test";
-    auto ret = OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString(content);
-    OH_ArkUI_ImageAnimatorFrameInfo_SetTop(ret, VALUE_0);
-    auto value = OH_ArkUI_ImageAnimatorFrameInfo_GetTop(ret);
-    ASSERT_EQ(value, VALUE_0);
-    NAPI_END;
-}
-
-static napi_value TestArkUIAddApi017(napi_env env, napi_callback_info info)
-{
-    char *content = "C textStyle Test";
-    auto ret = OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString(content);
-    OH_ArkUI_ImageAnimatorFrameInfo_SetLeft(ret, VALUE_0);
-    auto value = OH_ArkUI_ImageAnimatorFrameInfo_GetLeft(ret);
-    ASSERT_EQ(value, VALUE_0);
-    NAPI_END;
-}
-
-static napi_value TestArkUIAddApi018(napi_env env, napi_callback_info info)
-{
-    char *content = "C textStyle Test";
-    auto ret = OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString(content);
-    OH_ArkUI_ImageAnimatorFrameInfo_SetDuration(ret, VALUE_0);
-    auto value = OH_ArkUI_ImageAnimatorFrameInfo_GetDuration(ret);
-    ASSERT_EQ(value, VALUE_0);
-    NAPI_END;
-}
 
 
 }

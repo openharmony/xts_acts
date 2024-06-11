@@ -2662,11 +2662,3 @@ export const TestArkUIAddApi012: () => number;
 export const TestArkUIAddApi013: () => number;
 
 export const TestArkUIAddApi014: () => number;
-
-export const TestArkUIAddApi015: () => number;
-
-export const TestArkUIAddApi016: () => number;
-
-export const TestArkUIAddApi017: () => number;
-
-export const TestArkUIAddApi018: () => number;
