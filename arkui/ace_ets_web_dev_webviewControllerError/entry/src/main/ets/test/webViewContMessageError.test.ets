@@ -64,7 +64,7 @@ export default function webViewContMessageError() {
     it('testPostMessageEventPortClose', 0, async (done: Function) => {
       emitKey = "emitPostMessageEventUnPortErr";
       Utils.registerEvent("testPostMessageEventPortClose", "17100010", 602, done);
-      Utils.registerEvent("testPostMessageEventPortClose", "Can not post message using this port", 603, done);
+      Utils.registerEvent("testPostMessageEventPortClose", "Failed to post messages through the port.", 603, done);
       sendEventByKey('webViewContMessageError', 10, '');
     })
   })
