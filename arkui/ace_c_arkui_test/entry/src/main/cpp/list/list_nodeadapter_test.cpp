@@ -17,6 +17,8 @@
 
 namespace ArkUICapiTest {
 
+static int g_TotalNodeCnt = 1000;
+
 static napi_value TestListNodeAdapter001(napi_env env, napi_callback_info info)
 {
     NAPI_START(list, ARKUI_NODE_LIST);
@@ -25,14 +27,14 @@ static napi_value TestListNodeAdapter001(napi_env env, napi_callback_info info)
     ArkUI_NodeAdapterHandle adapter = OH_ArkUI_NodeAdapter_Create();
 
     // 设置适配器中的元素总数
-    OH_ArkUI_NodeAdapter_SetTotalNodeCount(adapter, 1000);
+    OH_ArkUI_NodeAdapter_SetTotalNodeCount(adapter, g_TotalNodeCnt);
 
     uint32_t res_cnt = OH_ArkUI_NodeAdapter_GetTotalNodeCount(adapter);
-    ASSERT_EQ(res_cnt, 1000);
+    ASSERT_EQ(res_cnt, g_TotalNodeCnt);
 
     // 销毁组件适配器对象
     OH_ArkUI_NodeAdapter_Dispose(adapter);
-    ASSERT_EQ(res_cnt, 1000);
+    ASSERT_EQ(res_cnt, g_TotalNodeCnt);
 
     NAPI_END;
 }
@@ -65,8 +67,6 @@ struct UserCallback {
 napi_value static TestListNodeAdapter003(napi_env env, napi_callback_info info)
 {
     NAPI_START(list, ARKUI_NODE_LIST);
-
-    // 创建适配器
     ArkUI_NodeAdapterHandle adapter = OH_ArkUI_NodeAdapter_Create();
 
     struct UserCallback *adapterCallback = new UserCallback();
@@ -74,70 +74,32 @@ napi_value static TestListNodeAdapter003(napi_env env, napi_callback_info info)
         auto *adapterEvent = reinterpret_cast<ArkUI_NodeAdapterEvent *>(event);
         auto type = OH_ArkUI_NodeAdapterEvent_GetType(adapterEvent);
         switch (type) {
-            case NODE_ADAPTER_EVENT_WILL_ATTACH_TO_NODE: {
+            case NODE_ADAPTER_EVENT_WILL_ATTACH_TO_NODE:
                 // 通知Adapter进行局部元素插入，插入10个
                 uint32_t startPosition = 0;
                 uint32_t itemCount = 10;
                 int32_t ret_inner = OH_ArkUI_NodeAdapter_InsertItem(adapter, startPosition, itemCount);
-                OH_LOG_Print(LOG_APP,
-                    LOG_INFO,
-                    LOG_PRINT_DOMAIN,
-                    "TestListNodeAdapter",
-                    "OH_ArkUI_NodeAdapter_InsertItem:%d",
-                    ret_inner);
-
                 // 通知Adapter进行局部元素移位
                 uint32_t from = 1;
                 uint32_t to = 2;
                 ret_inner = OH_ArkUI_NodeAdapter_MoveItem(adapter, from, to);
-                OH_LOG_Print(LOG_APP,
-                    LOG_INFO,
-                    LOG_PRINT_DOMAIN,
-                    "TestListNodeAdapter",
-                    "OH_ArkUI_NodeAdapter_MoveItem:%d",
-                    ret_inner);
-
                 // 通知Adapter进行全量元素变化
                 ret_inner = OH_ArkUI_NodeAdapter_ReloadAllItems(adapter);
-
                 // 通知Adapter进行局部元素变化
                 startPosition = 1;
                 itemCount = 2;
                 ret_inner = OH_ArkUI_NodeAdapter_ReloadItem(adapter, startPosition, itemCount);
-                OH_LOG_Print(LOG_APP,
-                    LOG_INFO,
-                    LOG_PRINT_DOMAIN,
-                    "TestListNodeAdapter",
-                    "OH_ArkUI_NodeAdapter_ReloadItem:%d",
-                    ret_inner);
-
                 // 通知Adapter进行局部元素删除
-                startPosition = 1;
-                itemCount = 2;
                 ret_inner = OH_ArkUI_NodeAdapter_RemoveItem(adapter, startPosition, itemCount);
-                OH_LOG_Print(LOG_APP,
-                    LOG_INFO,
-                    LOG_PRINT_DOMAIN,
-                    "TestListNodeAdapter",
-                    "OH_ArkUI_NodeAdapter_RemoveItem:%d",
-                    ret_inner);
-
                 // 获取存储在Adapter中的所有元素
                 ArkUI_NodeHandle **items = nullptr;
                 uint32_t ret_size;
                 ret_inner = OH_ArkUI_NodeAdapter_GetAllItems(adapter, items, &ret_size);
-                OH_LOG_Print(LOG_APP,
-                    LOG_INFO,
-                    LOG_PRINT_DOMAIN,
-                    "TestListNodeAdapter",
-                    "OH_ArkUI_NodeAdapter_GetAllItems:%d",
-                    ret_inner);
-            } break;
+                break;
             default:
                 break;
         }
     };
-
     // 注册事件回调函数
     int32_t ret =
         OH_ArkUI_NodeAdapter_RegisterEventReceiver(adapter, adapterCallback, [](ArkUI_NodeAdapterEvent *event) {
@@ -147,12 +109,10 @@ napi_value static TestListNodeAdapter003(napi_env env, napi_callback_info info)
         });
     // 断言是否注册成功
     ASSERT_EQ(ret, ARKUI_ERROR_CODE_NO_ERROR);
-
     // 把adapter挂载到list上
     ArkUI_AttributeItem item{nullptr, 0, nullptr, adapter};
     ret = nodeAPI->setAttribute(list, NODE_LIST_NODE_ADAPTER, &item);
     ASSERT_EQ(ret, SUCCESS);
-
     NAPI_END;
 }
 
