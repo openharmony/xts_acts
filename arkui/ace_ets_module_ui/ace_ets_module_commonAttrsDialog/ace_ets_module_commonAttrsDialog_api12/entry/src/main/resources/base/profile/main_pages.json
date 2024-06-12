@@ -13,7 +13,6 @@
         "MainAbility/pages/bindSheet/SheetMode",
         "MainAbility/pages/bindSheet/springBack",
         "MainAbility/pages/bindSheet/DetentsChange",
-        "MainAbility/pages/bindSheet/SheetTransition",
-        "MainAbility/pages/menuControl/symbolIcon"
+        "MainAbility/pages/bindSheet/SheetTransition"
     ]
 }
