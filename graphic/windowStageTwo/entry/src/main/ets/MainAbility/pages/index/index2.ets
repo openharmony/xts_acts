@@ -18,7 +18,7 @@ import router from '@ohos.router';
 @Component
 struct Index2 {
   
- @State message: string = '这是自窗'
+ @State message: string = '这是子窗'
    build() {
          Row() {
            Column() {
