@@ -38,6 +38,7 @@ ohos_shared_library("resmgrndk") {
 
   testonly = true
   deps = [
+    "${global_resmgr_path}/frameworks/resmgr:ohresmgr",
     "${global_resmgr_path}/frameworks/resmgr:librawfile",
     "//interface/sdk_c/global/resource_management:librawfile_ndk",
   ]
