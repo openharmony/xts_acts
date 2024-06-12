@@ -1856,8 +1856,6 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr},
         {"testAccessibility080", nullptr,  TestAccessibility080, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"testAccessibility080", nullptr,  TestAccessibility080, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
         {"testAccessibility090", nullptr,  TestAccessibility090, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"testAccessibility010", nullptr,  TestAccessibility010, nullptr, nullptr, nullptr, napi_default,
