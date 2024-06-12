@@ -3899,26 +3899,31 @@ export default function window_test() {
         console.log(msgStr + ' begin');
         try {
             if (window.WindowStatusType) {
-                expect(window.WindowStatusType.UNDEFINED == 0)
-                expect(window.WindowStatusType.FULL_SCREEN == 1)
-                expect(window.WindowStatusType.MAXIMIZE == 2)
-                expect(window.WindowStatusType.MINIMIZE == 3)
-                expect(window.WindowStatusType.FLOATING == 4)
-                expect(window.WindowStatusType.SPLIT_SCREEN == 5)
+                expect(window.WindowStatusType.UNDEFINED).assertEqual(0);
+                expect(window.WindowStatusType.FULL_SCREEN).assertEqual(1);
+                expect(window.WindowStatusType.MAXIMIZE).assertEqual(2);
+                expect(window.WindowStatusType.MINIMIZE).assertEqual(3);
+                expect(window.WindowStatusType.FLOATING).assertEqual(4);
+                expect(window.WindowStatusType.SPLIT_SCREEN).assertEqual(5);
+                done();
             } else {
                 console.log(msgStr + 'WindowStatusType is not calleble')
+                expect(false).assertTrue();
+                done();
             }
-            expect(true).assertTrue()
+            
         } catch(err) {
             if (err.code) {
                 console.log(msgStr + "failed to test enum value" + JSON.stringify(err))
                 expect().assertFail()
+                done();
             } else {
                 expect(true).assertTrue()
                 console.log(msgStr + "failed to test enum value" + JSON.stringify(err))
+                done()
             }
         }
-        done()
+        
     })
 
     })

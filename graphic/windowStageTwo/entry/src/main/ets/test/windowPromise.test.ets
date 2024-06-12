@@ -539,6 +539,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         await windowStage.createSubWindow('test_subWindow_setWindowGrayScale_1').then(async (data) => {
           let subWindowClass = data;
           console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          subWindowClass.setUiContent('pages/index/index2');
           await subWindowClass.setWindowGrayScale(grayScale).then(() => {
             console.info(msgStr + 'Succeeded in setting the grayScale 1.');
             expect(true).assertTrue();
@@ -549,7 +550,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
               console.info(msgStr + '此设备不支持setWindowGrayScale能力.');
               done();
             } else {
-              expect(false), assertTrue();
+              expect(false).assertTrue();
               done();
             }
           });
