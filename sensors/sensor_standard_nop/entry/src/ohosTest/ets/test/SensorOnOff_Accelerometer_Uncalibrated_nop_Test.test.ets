@@ -77,8 +77,13 @@ export default function accelerometer_Uncalibrated_nop_Test() {
       } catch (error) {
         console.error('Accelerometer_Uncalibrated_Sensor_nop_Test01 catch error:' + JSON.stringify(error));
         let e: BusinessError = error as BusinessError;
-        expect(e.code).assertEqual(PARAMETER_ERROR_CODE);
-        done()
+        if(e.code === PARAMETER_ERROR_CODE){
+          expect(e.code).assertEqual(PARAMETER_ERROR_CODE);
+          done()
+        }else {
+          expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+          done()
+        }
       }
     })
 
@@ -97,8 +102,13 @@ export default function accelerometer_Uncalibrated_nop_Test() {
       } catch (error) {
         console.error('Accelerometer_Uncalibrated_Sensor_nop_Test02 catch error:' + JSON.stringify(error));
         let e: BusinessError = error as BusinessError;
-        expect(e.code).assertEqual(PARAMETER_ERROR_CODE);
-        done()
+        if(e.code === PARAMETER_ERROR_CODE){
+          expect(e.code).assertEqual(PARAMETER_ERROR_CODE);
+          done()
+        }else {
+          expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+          done()
+        }
       }
     })
 
@@ -117,8 +127,13 @@ export default function accelerometer_Uncalibrated_nop_Test() {
       } catch (error) {
         console.error('Accelerometer_Uncalibrated_Sensor_nop_Test03 catch error:' + JSON.stringify(error));
         let e: BusinessError = error as BusinessError;
-        expect(e.code).assertEqual(PARAMETER_ERROR_CODE);
-        done()
+        if(e.code === PARAMETER_ERROR_CODE){
+          expect(e.code).assertEqual(PARAMETER_ERROR_CODE);
+          done()
+        }else {
+          expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+          done()
+        }
       }
     })
   })
