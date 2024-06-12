@@ -38,7 +38,7 @@ static napi_value TestImageLinearGradient001(napi_env env, napi_callback_info in
     valueItem.object = &colorStop;
     auto ret = nodeAPI->setAttribute(image, NODE_LINEAR_GRADIENT, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, angle);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, DEFAULT_ANGLE_VALUE);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
@@ -58,7 +58,7 @@ static napi_value TestImageLinearGradient002(napi_env env, napi_callback_info in
     valueItem.object = &colorStop;
     auto ret = nodeAPI->setAttribute(image, NODE_LINEAR_GRADIENT, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, angle);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, DEFAULT_ANGLE_VALUE);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
@@ -78,7 +78,7 @@ static napi_value TestImageLinearGradient003(napi_env env, napi_callback_info in
     valueItem.object = &colorStop;
     auto ret = nodeAPI->setAttribute(image, NODE_LINEAR_GRADIENT, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, angle);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, DEFAULT_ANGLE_VALUE);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
@@ -98,7 +98,7 @@ static napi_value TestImageLinearGradient004(napi_env env, napi_callback_info in
     valueItem.object = &colorStop;
     auto ret = nodeAPI->setAttribute(image, NODE_LINEAR_GRADIENT, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, angle);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, DEFAULT_ANGLE_VALUE);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
@@ -118,7 +118,7 @@ static napi_value TestImageLinearGradient005(napi_env env, napi_callback_info in
     valueItem.object = &colorStop;
     auto ret = nodeAPI->setAttribute(image, NODE_LINEAR_GRADIENT, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, angle);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, DEFAULT_ANGLE_VALUE);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
@@ -138,7 +138,7 @@ static napi_value TestImageLinearGradient006(napi_env env, napi_callback_info in
     valueItem.object = &colorStop;
     auto ret = nodeAPI->setAttribute(image, NODE_LINEAR_GRADIENT, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, angle);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, DEFAULT_ANGLE_VALUE);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
@@ -158,7 +158,7 @@ static napi_value TestImageLinearGradient007(napi_env env, napi_callback_info in
     valueItem.object = &colorStop;
     auto ret = nodeAPI->setAttribute(image, NODE_LINEAR_GRADIENT, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, angle);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, DEFAULT_ANGLE_VALUE);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
@@ -178,7 +178,7 @@ static napi_value TestImageLinearGradient008(napi_env env, napi_callback_info in
     valueItem.object = &colorStop;
     auto ret = nodeAPI->setAttribute(image, NODE_LINEAR_GRADIENT, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, angle);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, DEFAULT_ANGLE_VALUE);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
@@ -198,7 +198,7 @@ static napi_value TestImageLinearGradient009(napi_env env, napi_callback_info in
     valueItem.object = &colorStop;
     auto ret = nodeAPI->setAttribute(image, NODE_LINEAR_GRADIENT, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, angle);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, DEFAULT_ANGLE_VALUE);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
@@ -238,7 +238,7 @@ static napi_value TestImageLinearGradient011(napi_env env, napi_callback_info in
     valueItem.object = &colorStop;
     auto ret = nodeAPI->setAttribute(image, NODE_LINEAR_GRADIENT, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, angle);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, DEFAULT_ANGLE_VALUE);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
@@ -258,7 +258,7 @@ static napi_value TestImageLinearGradient012(napi_env env, napi_callback_info in
     valueItem.object = &colorStop;
     auto ret = nodeAPI->setAttribute(image, NODE_LINEAR_GRADIENT, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, angle);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, DEFAULT_ANGLE_VALUE);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
@@ -278,7 +278,7 @@ static napi_value TestImageLinearGradient013(napi_env env, napi_callback_info in
     valueItem.object = &colorStop;
     auto ret = nodeAPI->setAttribute(image, NODE_LINEAR_GRADIENT, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, angle);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, DEFAULT_ANGLE_VALUE);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
@@ -298,7 +298,7 @@ static napi_value TestImageLinearGradient014(napi_env env, napi_callback_info in
     valueItem.object = &colorStop;
     auto ret = nodeAPI->setAttribute(image, NODE_LINEAR_GRADIENT, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, angle);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, DEFAULT_ANGLE_VALUE);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
@@ -318,7 +318,7 @@ static napi_value TestImageLinearGradient015(napi_env env, napi_callback_info in
     valueItem.object = &colorStop;
     auto ret = nodeAPI->setAttribute(image, NODE_LINEAR_GRADIENT, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, angle);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, DEFAULT_ANGLE_VALUE);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
@@ -338,7 +338,7 @@ static napi_value TestImageLinearGradient016(napi_env env, napi_callback_info in
     valueItem.object = &colorStop;
     auto ret = nodeAPI->setAttribute(image, NODE_LINEAR_GRADIENT, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, angle);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, DEFAULT_ANGLE_VALUE);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
@@ -358,7 +358,7 @@ static napi_value TestImageLinearGradient017(napi_env env, napi_callback_info in
     valueItem.object = &colorStop;
     auto ret = nodeAPI->setAttribute(image, NODE_LINEAR_GRADIENT, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, angle);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, DEFAULT_ANGLE_VALUE);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
@@ -378,7 +378,7 @@ static napi_value TestImageLinearGradient018(napi_env env, napi_callback_info in
     valueItem.object = &colorStop;
     auto ret = nodeAPI->setAttribute(image, NODE_LINEAR_GRADIENT, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, angle);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, DEFAULT_ANGLE_VALUE);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
@@ -398,7 +398,7 @@ static napi_value TestImageLinearGradient019(napi_env env, napi_callback_info in
     valueItem.object = &colorStop;
     auto ret = nodeAPI->setAttribute(image, NODE_LINEAR_GRADIENT, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, angle);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, DEFAULT_ANGLE_VALUE);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32, direction);
     ASSERT_EQ(nodeAPI->getAttribute(image, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;

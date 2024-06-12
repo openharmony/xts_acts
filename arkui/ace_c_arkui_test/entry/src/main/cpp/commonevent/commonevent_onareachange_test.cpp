@@ -17,9 +17,11 @@
 #include "../manager/plugin_manager.h"
 #include <string>
 
-#define ON_CLICK_EVENT_ID_OFFSET 16001
-
 namespace ArkUICapiTest {
+
+#define ON_CLICK_EVENT_ID_OFFSET 16001
+#define ON_AREA_CHANGE_SIZE_EVENT_ID 7004
+#define ON_AREA_CHANGE_OFFSET_EVENT_ID 8004
 
 static bool g_hasOnAreaChangeInit = false;
 
@@ -44,6 +46,14 @@ static auto createChildNode(ArkUI_NativeNodeAPI_1 *nodeAPI, uint32_t initialColo
     nodeAPI->registerNodeEvent(nodeHandle, NODE_ON_CLICK, clickEventID, nullptr);
 
     return nodeHandle;
+}
+
+static void PrintOnAreaChangeBackData(ArkUI_NodeComponentEvent *result)
+{
+    for (int i = PARAM_0; i < PARAM_12; i++) {
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "CommonEventOnAreaChangeTest",
+                     "PrintOnAreaChangeBackData result->data[%{public}d].f32: %{public}f", i, result->data[i].f32);
+    }
 }
 
 static void OnEventReceive(ArkUI_NodeEvent *event)
@@ -77,7 +87,43 @@ static void OnEventReceive(ArkUI_NodeEvent *event)
         nodeAPI->setAttribute(nodeHandler, NODE_OFFSET, &offset_item);
     }
 
+    if (g_hasOnAreaChangeInit && eventId == ON_AREA_CHANGE_SIZE_EVENT_ID) {
+        ArkUI_NodeComponentEvent *result = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
+        PrintOnAreaChangeBackData(result);
+        bool checkResult = false;
+        checkResult = (result->data[PARAM_0].f32 < result->data[PARAM_6].f32) &&
+                      (result->data[PARAM_1].f32 == result->data[PARAM_7].f32) &&
+                      (result->data[PARAM_2].f32 == result->data[PARAM_8].f32) &&
+                      (result->data[PARAM_3].f32 == result->data[PARAM_9].f32) &&
+                      (result->data[PARAM_4].f32 > result->data[PARAM_10].f32) &&
+                      (result->data[PARAM_5].f32 == result->data[PARAM_11].f32);
+        if (checkResult) {
+            ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
+            ArkUI_AttributeItem background_color_item = {background_color_value,
+                                                         sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
+            nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
+        }
+    }
+
     if (g_hasOnAreaChangeInit && eventId == ON_AREA_CHANGE_EVENT_ID) {
+        ArkUI_NodeComponentEvent *result = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
+        PrintOnAreaChangeBackData(result);
+        bool checkResult = false;
+        checkResult = (result->data[PARAM_0].f32 == result->data[PARAM_6].f32) &&
+                      (result->data[PARAM_1].f32 == result->data[PARAM_7].f32) &&
+                      (result->data[PARAM_2].f32 == result->data[PARAM_8].f32) &&
+                      (result->data[PARAM_3].f32 == result->data[PARAM_9].f32) &&
+                      (result->data[PARAM_4].f32 > result->data[PARAM_10].f32) &&
+                      (result->data[PARAM_5].f32 == result->data[PARAM_11].f32);
+        if (checkResult) {
+            ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
+            ArkUI_AttributeItem background_color_item = {background_color_value,
+                                                         sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
+            nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
+        }
+    }
+
+    if (g_hasOnAreaChangeInit && eventId == ON_AREA_CHANGE_OFFSET_EVENT_ID) {
         ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
         ArkUI_AttributeItem background_color_item = {background_color_value,
                                                      sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
@@ -129,9 +175,9 @@ napi_value CommonEventOnAreaChangeTest::CreateNativeNode(napi_env env, napi_call
     nodeAPI->addChild(rowMove, imageSpanMoveCompare);
     nodeAPI->addChild(rowOffset, imageSpanOffset);
 
-    nodeAPI->registerNodeEvent(imageSpanSize, NODE_EVENT_ON_AREA_CHANGE, ON_AREA_CHANGE_EVENT_ID, nullptr);
+    nodeAPI->registerNodeEvent(imageSpanSize, NODE_EVENT_ON_AREA_CHANGE, ON_AREA_CHANGE_SIZE_EVENT_ID, nullptr);
     nodeAPI->registerNodeEvent(imageSpanMove, NODE_EVENT_ON_AREA_CHANGE, ON_AREA_CHANGE_EVENT_ID, nullptr);
-    nodeAPI->registerNodeEvent(imageSpanOffset, NODE_EVENT_ON_AREA_CHANGE, ON_AREA_CHANGE_EVENT_ID, nullptr);
+    nodeAPI->registerNodeEvent(imageSpanOffset, NODE_EVENT_ON_AREA_CHANGE, ON_AREA_CHANGE_OFFSET_EVENT_ID, nullptr);
     nodeAPI->registerNodeEventReceiver(&OnEventReceive);
 
     nodeAPI->addChild(column, rowSize);

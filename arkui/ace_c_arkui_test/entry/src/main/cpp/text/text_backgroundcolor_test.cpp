@@ -23,7 +23,7 @@ static napi_value TestTextBackgroundColor001(napi_env env, napi_callback_info in
     ArkUI_NumberValue value[] = {{.u32 = COLOR_RED}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_BACKGROUND_COLOR, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BACKGROUND_COLOR)->value->u32, COLOR_RED);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BACKGROUND_COLOR)->value[PARAM_0].u32, COLOR_RED);
     ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
@@ -34,7 +34,7 @@ static napi_value TestTextBackgroundColor002(napi_env env, napi_callback_info in
     ArkUI_NumberValue value[] = {{.u32 = COLOR_BLACK}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_BACKGROUND_COLOR, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BACKGROUND_COLOR)->value->u32, COLOR_BLACK);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BACKGROUND_COLOR)->value[PARAM_0].u32, COLOR_BLACK);
     ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
@@ -45,7 +45,7 @@ static napi_value TestTextBackgroundColor003(napi_env env, napi_callback_info in
     ArkUI_NumberValue value[] = {{.u32 = COLOR_WHITE}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_BACKGROUND_COLOR, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BACKGROUND_COLOR)->value->u32, COLOR_WHITE);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BACKGROUND_COLOR)->value[PARAM_0].u32, COLOR_WHITE);
     ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }

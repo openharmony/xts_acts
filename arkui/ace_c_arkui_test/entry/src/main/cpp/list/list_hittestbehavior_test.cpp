@@ -31,14 +31,13 @@ void ListHitTestBehaviorTest::OnEventReceive(ArkUI_NodeEvent *event)
 {
     // blue
     uint32_t backgroundColor = COLOR_BLUE;
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ListEventOnTouchTest", "OnEventReceive");
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ListOnClickTest", "OnEventReceive");
     if (event == nullptr) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ListEventOnClickTest", "OnEventReceive: event is null");
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "ListOnClickTest", "OnEventReceive: event is null");
         return;
     }
     int32_t eventId = OH_ArkUI_NodeEvent_GetTargetId(event);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "CommonAttrsEnabledTest", "OnEventReceive eventId: %{public}d",
-                 eventId);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ListOnClickTest", "OnEventReceive eventId: %{public}d", eventId);
     ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
     auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
@@ -188,6 +187,10 @@ ArkUI_NodeHandle ListHitTestBehaviorTest::CreateSubListNode(ArkUI_NativeNodeAPI_
                                               sizeof(listItemHeightValue) / sizeof(ArkUI_NumberValue)};
     nodeAPI->setAttribute(listItem, NODE_HEIGHT, &listItemHeightItem);
 
+    ArkUI_NumberValue listItemHittestbehaviorValue[] = {{.i32 = ARKUI_HIT_TEST_MODE_TRANSPARENT}};
+    ArkUI_AttributeItem listItemHittestbehaviorItem = {
+        listItemHittestbehaviorValue, sizeof(listItemHittestbehaviorValue) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(listItem, NODE_HIT_TEST_BEHAVIOR, &listItemHittestbehaviorItem);
     // Set the background color of the listItem component
     ArkUI_NumberValue listItemBackgroundColorValue[] = {{.u32 = listItemBackgroundColor}};
     ArkUI_AttributeItem listItemBackgroundColorItem = {

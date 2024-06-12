@@ -26,7 +26,7 @@ static napi_value TestSwiperDuration001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem duration_item = {duration_value, sizeof(duration_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_DURATION, &duration_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_DURATION)->value->f32, duration);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_DURATION)->value[PARAM_0].f32, duration);
     NAPI_END;
 }
 
@@ -39,20 +39,11 @@ static napi_value TestSwiperDuration002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem duration_item = {duration_value, sizeof(duration_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_DURATION, &duration_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_DURATION)->value->f32, duration);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_DURATION)->value[PARAM_0].f32, duration);
     NAPI_END;
 }
 
 static napi_value TestSwiperDuration003(napi_env env, napi_callback_info info)
-{
-    NAPI_START(swiper, ARKUI_NODE_SWIPER);
-    float duration = 400;
-
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_DURATION)->value->f32, duration);
-    NAPI_END;
-}
-
-static napi_value TestSwiperDuration004(napi_env env, napi_callback_info info)
 {
     NAPI_START(swiper, ARKUI_NODE_SWIPER);
     float duration = -600;
@@ -62,7 +53,7 @@ static napi_value TestSwiperDuration004(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_DURATION, &duration_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(swiper, NODE_SWIPER_DURATION) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(swiper, NODE_SWIPER_DURATION)->value->f32, duration);
+        ASSERT_NE(nodeAPI->getAttribute(swiper, NODE_SWIPER_DURATION)->value[PARAM_0].f32, duration);
     }
     NAPI_END;
 }

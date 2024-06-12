@@ -23,8 +23,8 @@ static napi_value TestTextShadow001(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.i32 = ARKUI_SHADOW_STYLE_OUTER_DEFAULT_XS}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_SHADOW, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_SHADOW)->value->i32, ARKUI_SHADOW_STYLE_OUTER_DEFAULT_XS);
     ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_SHADOW)->value[PARAM_0].i32, ARKUI_SHADOW_STYLE_OUTER_DEFAULT_XS);
     NAPI_END;
 }
 
@@ -34,8 +34,8 @@ static napi_value TestTextShadow002(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.i32 = ARKUI_SHADOW_STYLE_OUTER_DEFAULT_SM}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_SHADOW, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_SHADOW)->value->i32, ARKUI_SHADOW_STYLE_OUTER_DEFAULT_SM);
     ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_SHADOW)->value[PARAM_0].i32, ARKUI_SHADOW_STYLE_OUTER_DEFAULT_SM);
     NAPI_END;
 }
 
@@ -45,8 +45,8 @@ static napi_value TestTextShadow003(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.i32 = ARKUI_SHADOW_STYLE_OUTER_DEFAULT_MD}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_SHADOW, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_SHADOW)->value->i32, ARKUI_SHADOW_STYLE_OUTER_DEFAULT_MD);
     ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_SHADOW)->value[PARAM_0].i32, ARKUI_SHADOW_STYLE_OUTER_DEFAULT_MD);
     NAPI_END;
 }
 
@@ -56,8 +56,8 @@ static napi_value TestTextShadow004(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.i32 = ARKUI_SHADOW_STYLE_OUTER_DEFAULT_LG}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_SHADOW, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_SHADOW)->value->i32, ARKUI_SHADOW_STYLE_OUTER_DEFAULT_LG);
     ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_SHADOW)->value[PARAM_0].i32, ARKUI_SHADOW_STYLE_OUTER_DEFAULT_LG);
     NAPI_END;
 }
 
@@ -67,8 +67,8 @@ static napi_value TestTextShadow005(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.i32 = ARKUI_SHADOW_STYLE_OUTER_FLOATING_SM}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_SHADOW, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_SHADOW)->value->i32, ARKUI_SHADOW_STYLE_OUTER_FLOATING_SM);
     ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_SHADOW)->value[PARAM_0].i32, ARKUI_SHADOW_STYLE_OUTER_FLOATING_SM);
     NAPI_END;
 }
 
@@ -78,8 +78,8 @@ static napi_value TestTextShadow006(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.i32 = ARKUI_SHADOW_STYLE_OUTER_FLOATING_MD}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_SHADOW, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_SHADOW)->value->i32, ARKUI_SHADOW_STYLE_OUTER_FLOATING_MD);
     ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_SHADOW)->value[PARAM_0].i32, ARKUI_SHADOW_STYLE_OUTER_FLOATING_MD);
     NAPI_END;
 }
 
@@ -90,11 +90,10 @@ static napi_value TestTextShadow007(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.i32 = exception}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_SHADOW, &valueItem);
-    if (nodeAPI->getAttribute(text, NODE_SHADOW) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(text, NODE_SHADOW)->value->i32, exception);
-    };
-
     ASSERT_EQ(ret, INVALID_PARAM);
+    if (nodeAPI->getAttribute(text, NODE_SHADOW) != nullptr) {
+        ASSERT_NE(nodeAPI->getAttribute(text, NODE_SHADOW)->value[PARAM_0].i32, exception);
+    };
     NAPI_END;
 }
 

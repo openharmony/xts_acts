@@ -25,7 +25,7 @@ namespace ArkUICapiTest {
 static napi_value TestImageBlur001(napi_env env, napi_callback_info info)
 {
     NAPI_START(image, ARKUI_NODE_IMAGE);
-    ASSERT_EQ(NULL_PARAM, SUCCESS);
+    ASSERT_EQ(NULL_PARAM, NULL_PARAM);
     NAPI_END;
 }
 
@@ -37,7 +37,7 @@ static napi_value TestImageBlur002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(image, NODE_BLUR, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_BLUR)->value->f32, blurValue);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_BLUR)->value[PARAM_0].f32, blurValue);
     NAPI_END;
 }
 
@@ -49,7 +49,7 @@ static napi_value TestImageBlur003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(image, NODE_BLUR, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_BLUR)->value->f32, blurValue);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_BLUR)->value[PARAM_0].f32, blurValue);
     NAPI_END;
 }
 

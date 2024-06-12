@@ -20,7 +20,7 @@ namespace ArkUICapiTest {
 static napi_value TestTextFontStyle001(napi_env env, napi_callback_info info)
 {
     NAPI_START(text, ARKUI_NODE_TEXT);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_FONT_STYLE)->value->i32, ARKUI_FONT_STYLE_NORMAL);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_FONT_STYLE)->value[PARAM_0].i32, ARKUI_FONT_STYLE_NORMAL);
     NAPI_END;
 }
 
@@ -30,8 +30,8 @@ static napi_value TestTextFontStyle002(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.i32 = ARKUI_FONT_STYLE_ITALIC}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_FONT_STYLE, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_FONT_STYLE)->value->i32, ARKUI_FONT_STYLE_ITALIC);
     ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_FONT_STYLE)->value[PARAM_0].i32, ARKUI_FONT_STYLE_ITALIC);
     NAPI_END;
 }
 
@@ -42,11 +42,10 @@ static napi_value TestTextFontStyle003(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.i32 = exceptionValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_FONT_STYLE, &valueItem);
-    if (nodeAPI->getAttribute(text, NODE_FONT_STYLE) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(text, NODE_FONT_STYLE)->value->i32, exceptionValue);
-    };
-
     ASSERT_EQ(ret, INVALID_PARAM);
+    if (nodeAPI->getAttribute(text, NODE_FONT_STYLE) != nullptr) {
+        ASSERT_NE(nodeAPI->getAttribute(text, NODE_FONT_STYLE)->value[PARAM_0].i32, exceptionValue);
+    };
     NAPI_END;
 }
 

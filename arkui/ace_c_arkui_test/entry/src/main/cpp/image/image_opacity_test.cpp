@@ -32,7 +32,7 @@ static napi_value TestImageOpacity001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(image, NODE_OPACITY, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_OPACITY)->value->f32, opacity);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_OPACITY)->value[PARAM_0].f32, opacity);
     NAPI_END;
 }
 
@@ -44,7 +44,7 @@ static napi_value TestImageOpacity002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(image, NODE_OPACITY, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_OPACITY)->value->f32, opacity);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_OPACITY)->value[PARAM_0].f32, opacity);
     NAPI_END;
 }
 
@@ -56,7 +56,7 @@ static napi_value TestImageOpacity003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(image, NODE_OPACITY, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_OPACITY)->value->f32, opacity);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_OPACITY)->value[PARAM_0].f32, opacity);
     NAPI_END;
 }
 
@@ -64,7 +64,7 @@ static napi_value TestImageOpacity004(napi_env env, napi_callback_info info)
 {
     NAPI_START(image, ARKUI_NODE_IMAGE);
     float opacity = DEFAULT_VALUE;
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_OPACITY)->value->f32, opacity);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_OPACITY)->value[PARAM_0].f32, opacity);
     NAPI_END;
 }
 
@@ -77,7 +77,7 @@ static napi_value TestImageOpacity005(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(image, NODE_OPACITY, &valueItem);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(image, NODE_OPACITY) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(image, NODE_OPACITY)->value->f32, opacity);
+        ASSERT_NE(nodeAPI->getAttribute(image, NODE_OPACITY)->value[PARAM_0].f32, opacity);
     }
     NAPI_END;
 }
@@ -91,7 +91,7 @@ static napi_value TestImageOpacity006(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(image, NODE_OPACITY, &valueItem);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(image, NODE_OPACITY) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(image, NODE_OPACITY)->value->f32, opacity);
+        ASSERT_NE(nodeAPI->getAttribute(image, NODE_OPACITY)->value[PARAM_0].f32, opacity);
     }
     NAPI_END;
 }

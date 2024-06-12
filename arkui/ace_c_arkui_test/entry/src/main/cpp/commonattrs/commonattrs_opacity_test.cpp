@@ -29,7 +29,7 @@ static napi_value TestCommonAttrsOpacity001(napi_env env, napi_callback_info inf
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(checkbox, NODE_OPACITY, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(checkbox, NODE_OPACITY)->value->f32, MIN_VALUE);
+    ASSERT_EQ(nodeAPI->getAttribute(checkbox, NODE_OPACITY)->value[PARAM_0].f32, MIN_VALUE);
     NAPI_END;
 }
 
@@ -41,7 +41,7 @@ static napi_value TestCommonAttrsOpacity002(napi_env env, napi_callback_info inf
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(checkbox, NODE_OPACITY, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(checkbox, NODE_OPACITY)->value->f32, opacity);
+    ASSERT_EQ(nodeAPI->getAttribute(checkbox, NODE_OPACITY)->value[PARAM_0].f32, opacity);
     NAPI_END;
 }
 
@@ -53,14 +53,14 @@ static napi_value TestCommonAttrsOpacity003(napi_env env, napi_callback_info inf
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(checkbox, NODE_OPACITY, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(checkbox, NODE_OPACITY)->value->f32, opacity);
+    ASSERT_EQ(nodeAPI->getAttribute(checkbox, NODE_OPACITY)->value[PARAM_0].f32, opacity);
     NAPI_END;
 }
 
 static napi_value TestCommonAttrsOpacity004(napi_env env, napi_callback_info info)
 {
     NAPI_START(checkbox, ARKUI_NODE_CHECKBOX);
-    ASSERT_EQ(nodeAPI->getAttribute(checkbox, NODE_OPACITY)->value->f32, DEFAULT_VALUE);
+    ASSERT_EQ(nodeAPI->getAttribute(checkbox, NODE_OPACITY)->value[PARAM_0].f32, DEFAULT_VALUE);
     NAPI_END;
 }
 
@@ -72,7 +72,7 @@ static napi_value TestCommonAttrsOpacity005(napi_env env, napi_callback_info inf
     auto ret = nodeAPI->setAttribute(checkbox, NODE_OPACITY, &valueItem);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(checkbox, NODE_OPACITY) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(checkbox, NODE_OPACITY)->value->f32, MIN_ABNORMAL_VALUE);
+        ASSERT_NE(nodeAPI->getAttribute(checkbox, NODE_OPACITY)->value[PARAM_0].f32, MIN_ABNORMAL_VALUE);
     }
 
     NAPI_END;
@@ -86,7 +86,7 @@ static napi_value TestCommonAttrsOpacity006(napi_env env, napi_callback_info inf
     auto ret = nodeAPI->setAttribute(checkbox, NODE_OPACITY, &valueItem);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(checkbox, NODE_OPACITY) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(checkbox, NODE_OPACITY)->value->f32, MAX_ABNORMAL_VALUE);
+        ASSERT_NE(nodeAPI->getAttribute(checkbox, NODE_OPACITY)->value[PARAM_0].f32, MAX_ABNORMAL_VALUE);
     }
 
     NAPI_END;

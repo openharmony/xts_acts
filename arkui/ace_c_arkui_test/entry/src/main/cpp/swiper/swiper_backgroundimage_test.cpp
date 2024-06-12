@@ -28,7 +28,7 @@ static napi_value TestSwiperBackgroundImage001(napi_env env, napi_callback_info 
     auto ret = nodeAPI->setAttribute(swiper, NODE_BACKGROUND_IMAGE, &background_image_value_item);
     ASSERT_EQ(ret, SUCCESS);
     ASSERT_STREQ(nodeAPI->getAttribute(swiper, NODE_BACKGROUND_IMAGE)->string, imageUrl);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_BACKGROUND_IMAGE)->value->i32, ARKUI_IMAGE_REPEAT_NONE);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_BACKGROUND_IMAGE)->value[PARAM_0].i32, ARKUI_IMAGE_REPEAT_NONE);
     NAPI_END;
 }
 
@@ -43,7 +43,7 @@ static napi_value TestSwiperBackgroundImage002(napi_env env, napi_callback_info 
     auto ret = nodeAPI->setAttribute(swiper, NODE_BACKGROUND_IMAGE, &background_image_value_item);
     ASSERT_EQ(ret, SUCCESS);
     ASSERT_STREQ(nodeAPI->getAttribute(swiper, NODE_BACKGROUND_IMAGE)->string, imageUrl);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_BACKGROUND_IMAGE)->value->i32, ARKUI_IMAGE_REPEAT_X);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_BACKGROUND_IMAGE)->value[PARAM_0].i32, ARKUI_IMAGE_REPEAT_X);
     NAPI_END;
 }
 
@@ -58,7 +58,7 @@ static napi_value TestSwiperBackgroundImage003(napi_env env, napi_callback_info 
     auto ret = nodeAPI->setAttribute(swiper, NODE_BACKGROUND_IMAGE, &background_image_value_item);
     ASSERT_EQ(ret, SUCCESS);
     ASSERT_STREQ(nodeAPI->getAttribute(swiper, NODE_BACKGROUND_IMAGE)->string, imageUrl);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_BACKGROUND_IMAGE)->value->i32, ARKUI_IMAGE_REPEAT_Y);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_BACKGROUND_IMAGE)->value[PARAM_0].i32, ARKUI_IMAGE_REPEAT_Y);
     NAPI_END;
 }
 
@@ -73,7 +73,7 @@ static napi_value TestSwiperBackgroundImage004(napi_env env, napi_callback_info 
     auto ret = nodeAPI->setAttribute(swiper, NODE_BACKGROUND_IMAGE, &background_image_value_item);
     ASSERT_EQ(ret, SUCCESS);
     ASSERT_STREQ(nodeAPI->getAttribute(swiper, NODE_BACKGROUND_IMAGE)->string, imageUrl);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_BACKGROUND_IMAGE)->value->i32, ARKUI_IMAGE_REPEAT_XY);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_BACKGROUND_IMAGE)->value[PARAM_0].i32, ARKUI_IMAGE_REPEAT_XY);
     NAPI_END;
 }
 
@@ -90,7 +90,7 @@ static napi_value TestSwiperBackgroundImage005(napi_env env, napi_callback_info 
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(swiper, NODE_BACKGROUND_IMAGE) != nullptr) {
         ASSERT_STRNE(nodeAPI->getAttribute(swiper, NODE_BACKGROUND_IMAGE)->string, imageUrl);
-        ASSERT_NE(nodeAPI->getAttribute(swiper, NODE_BACKGROUND_IMAGE)->value->i32, repeatValue);
+        ASSERT_NE(nodeAPI->getAttribute(swiper, NODE_BACKGROUND_IMAGE)->value[PARAM_0].i32, repeatValue);
     }
     NAPI_END;
 }
@@ -108,7 +108,7 @@ static napi_value TestSwiperBackgroundImage006(napi_env env, napi_callback_info 
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(swiper, NODE_BACKGROUND_IMAGE) != nullptr) {
         ASSERT_STRNE(nodeAPI->getAttribute(swiper, NODE_BACKGROUND_IMAGE)->string, imageUrl);
-        ASSERT_NE(nodeAPI->getAttribute(swiper, NODE_BACKGROUND_IMAGE)->value->i32, repeatValue);
+        ASSERT_NE(nodeAPI->getAttribute(swiper, NODE_BACKGROUND_IMAGE)->value[PARAM_0].i32, repeatValue);
     }
     NAPI_END;
 }
@@ -117,7 +117,7 @@ static napi_value TestSwiperBackgroundImage007(napi_env env, napi_callback_info 
 {
     NAPI_START(swiper, ARKUI_NODE_SWIPER);
 
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_BACKGROUND_IMAGE)->value->i32, ARKUI_IMAGE_REPEAT_NONE);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_BACKGROUND_IMAGE)->value[PARAM_0].i32, ARKUI_IMAGE_REPEAT_NONE);
     NAPI_END;
 }
 

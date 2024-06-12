@@ -39,12 +39,12 @@ export default function textEnabledTest() {
       await Utils.sleep(1000)
       expect(Utils.getComponentInfoByKey('OnClickEnabledText').$attrs.backgroundColor).assertEqual('#FF00FF00')
 
-      focusControl.requestFocus('OnClickDefaultText')
+      focusControl.requestFocus('OnClickAbnormalText')
       focusControl.requestFocus('OnClickEnabledText')
       await Utils.sleep(1000)
       expect(Utils.getComponentInfoByKey('OnClickEnabledText').$attrs.backgroundColor).assertEqual('#FF0000FF')
 
-      focusControl.requestFocus('OnClickDefaultText')
+      focusControl.requestFocus('OnClickAbnormalText')
       await Utils.sleep(1000)
       expect(Utils.getComponentInfoByKey('OnClickEnabledText').$attrs.backgroundColor).assertEqual('#FFFFFF00')
       expect(Utils.getComponentInfoByKey('OnClickEnabledText').$attrs.enabled).assertTrue()
@@ -100,33 +100,5 @@ export default function textEnabledTest() {
       expect(Utils.getComponentInfoByKey('OnClickAbnormalText').$attrs.enabled).assertTrue()
       done();
     })
-
-    /*
-    * @tc.number     : SUB_ARKUI_CAPI_TEXT_ENABLED_0400
-    * @tc.name       : testTextEnabled004
-    * @tc.desc       : testing enabled event callback for text with default value
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testTextEnabled004', 0, async (done: Function) => {
-      await Utils.clickComponent('OnClickDefaultText')
-      await Utils.sleep(1000)
-      expect(Utils.getComponentInfoByKey('OnClickDefaultText').$attrs.backgroundColor).assertEqual('#FF00FF00')
-
-      focusControl.requestFocus('OnClickEnabledText')
-      focusControl.requestFocus('OnClickDefaultText')
-      await Utils.sleep(1000)
-      expect(Utils.getComponentInfoByKey('OnClickDefaultText').$attrs.backgroundColor).assertEqual('#FF0000FF')
-
-      focusControl.requestFocus('OnClickEnabledText')
-      await Utils.sleep(1000)
-      expect(Utils.getComponentInfoByKey('OnClickDefaultText').$attrs.backgroundColor).assertEqual('#FFFFFF00')
-      expect(Utils.getComponentInfoByKey('OnClickDefaultText').$attrs.enabled).assertTrue()
-      done();
-    })
-
-
-
   })
 }

@@ -20,7 +20,7 @@ namespace ArkUICapiTest {
 static napi_value TestListSticky001(napi_env env, napi_callback_info info)
 {
     NAPI_START(list, ARKUI_NODE_LIST);
-    ASSERT_EQ(NULL_PARAM, SUCCESS);
+    ASSERT_EQ(NULL_PARAM, NULL_PARAM);
     NAPI_END;
 }
 
@@ -32,7 +32,7 @@ static napi_value TestListSticky002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(list, NODE_LIST_STICKY, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_LIST_STICKY)->value->i32, sticky);
+    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_LIST_STICKY)->value[PARAM_0].i32, sticky);
     NAPI_END;
 }
 
@@ -44,7 +44,7 @@ static napi_value TestListSticky003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(list, NODE_LIST_STICKY, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_LIST_STICKY)->value->i32, sticky);
+    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_LIST_STICKY)->value[PARAM_0].i32, sticky);
     NAPI_END;
 }
 
@@ -56,7 +56,7 @@ static napi_value TestListSticky004(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(list, NODE_LIST_STICKY, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_LIST_STICKY)->value->i32, sticky);
+    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_LIST_STICKY)->value[PARAM_0].i32, sticky);
     NAPI_END;
 }
 
@@ -68,7 +68,7 @@ static napi_value TestListSticky005(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(list, NODE_LIST_STICKY, &valueItem);
     ASSERT_EQ(ret, INVALID_PARAM);
-    ASSERT_EQ(NULL_PARAM, SUCCESS);
+    ASSERT_EQ(NULL_PARAM, NULL_PARAM);
     NAPI_END;
 }
 

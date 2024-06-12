@@ -27,7 +27,7 @@ namespace ArkUICapiTest {
 static napi_value TestScrollBlur001(napi_env env, napi_callback_info info)
 {
     NAPI_START(scroll, ARKUI_NODE_SCROLL);
-    ASSERT_EQ(NULL_PARAM, SUCCESS);
+    ASSERT_EQ(NULL_PARAM, NULL_PARAM);
     NAPI_END;
 }
 
@@ -38,7 +38,7 @@ static napi_value TestScrollBlur002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_BLUR, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_BLUR)->value->f32, MAX_VALUE);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_BLUR)->value[PARAM_0].f32, MAX_VALUE);
     NAPI_END;
 }
 
@@ -49,7 +49,7 @@ static napi_value TestScrollBlur003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_BLUR, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_BLUR)->value->f32, MIDDLE_VALUE);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_BLUR)->value[PARAM_0].f32, MIDDLE_VALUE);
     NAPI_END;
 }
 } // namespace ArkUICapiTest

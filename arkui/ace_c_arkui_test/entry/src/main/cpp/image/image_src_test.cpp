@@ -18,7 +18,7 @@
 #define FIRST_MIDDLE_VALUE "./resources/base/media/icon.png"
 #define SECOND_MIDDLE_VALUE                                                                                            \
     "https://gitee.com/openharmony/docs/raw/master/zh-cn/application-dev/"                                             \
-    "reference/apis-arkui/arkui-ts/figures/edgewidths.png";
+    "reference/apis-arkui/arkui-ts/figures/edgewidths.png"
 
 namespace ArkUICapiTest {
 

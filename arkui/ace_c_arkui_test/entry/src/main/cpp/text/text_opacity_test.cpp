@@ -24,8 +24,8 @@ static napi_value TestTextOpacity001(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.f32 = opacity}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_OPACITY, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_OPACITY)->value->f32, opacity);
     ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_OPACITY)->value[PARAM_0].f32, opacity);
     NAPI_END;
 }
 
@@ -36,8 +36,8 @@ static napi_value TestTextOpacity002(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.f32 = opacity}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_OPACITY, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_OPACITY)->value->f32, opacity);
     ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_OPACITY)->value[PARAM_0].f32, opacity);
     NAPI_END;
 }
 
@@ -48,8 +48,8 @@ static napi_value TestTextOpacity003(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.f32 = opacity}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_OPACITY, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_OPACITY)->value->f32, opacity);
     ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_OPACITY)->value[PARAM_0].f32, opacity);
     NAPI_END;
 }
 
@@ -60,11 +60,10 @@ static napi_value TestTextOpacity004(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.f32 = opacity}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_OPACITY, &valueItem);
-    if (nodeAPI->getAttribute(text, NODE_OPACITY) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(text, NODE_OPACITY)->value->f32, opacity);
-    };
-
     ASSERT_EQ(ret, INVALID_PARAM);
+    if (nodeAPI->getAttribute(text, NODE_OPACITY) != nullptr) {
+        ASSERT_NE(nodeAPI->getAttribute(text, NODE_OPACITY)->value[PARAM_0].f32, opacity);
+    };
     NAPI_END;
 }
 

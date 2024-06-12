@@ -30,7 +30,7 @@ static napi_value TestTextVisibility002(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.i32 = ARKUI_VISIBILITY_HIDDEN}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_VISIBILITY, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_VISIBILITY)->value->i32, ARKUI_VISIBILITY_HIDDEN);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_VISIBILITY)->value[PARAM_0].i32, ARKUI_VISIBILITY_HIDDEN);
     ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
@@ -41,7 +41,7 @@ static napi_value TestTextVisibility003(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.i32 = ARKUI_VISIBILITY_NONE}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_VISIBILITY, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_VISIBILITY)->value->i32, ARKUI_VISIBILITY_NONE);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_VISIBILITY)->value[PARAM_0].i32, ARKUI_VISIBILITY_NONE);
     ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
@@ -54,7 +54,7 @@ static napi_value TestTextVisibility004(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_VISIBILITY, &valueItem);
     if (nodeAPI->getAttribute(text, NODE_VISIBILITY) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(text, NODE_VISIBILITY)->value->i32, exception);
+        ASSERT_NE(nodeAPI->getAttribute(text, NODE_VISIBILITY)->value[PARAM_0].i32, exception);
     };
     ASSERT_EQ(ret, INVALID_PARAM);
     NAPI_END;

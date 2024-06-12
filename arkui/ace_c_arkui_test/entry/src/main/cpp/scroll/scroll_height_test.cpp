@@ -25,7 +25,7 @@ static napi_value TestScrollHeight001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem height_value_item = {height_value, sizeof(height_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_HEIGHT, &height_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_HEIGHT)->value->f32, height);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_HEIGHT)->value[PARAM_0].f32, height);
     NAPI_END;
 }
 
@@ -38,7 +38,7 @@ static napi_value TestScrollHeight002(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(scroll, NODE_HEIGHT, &height_value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(scroll, NODE_HEIGHT) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(scroll, NODE_HEIGHT)->value->f32, height);
+        ASSERT_NE(nodeAPI->getAttribute(scroll, NODE_HEIGHT)->value[PARAM_0].f32, height);
     }
     NAPI_END;
 }
@@ -51,7 +51,7 @@ static napi_value TestScrollHeight003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem height_value_item = {height_value, sizeof(height_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_HEIGHT, &height_value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_HEIGHT)->value->f32, height);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_HEIGHT)->value[PARAM_0].f32, height);
     NAPI_END;
 }
 

@@ -24,7 +24,7 @@ static napi_value TestTextClip001(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.i32 = clipValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_CLIP, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_CLIP)->value->i32, clipValue);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_CLIP)->value[PARAM_0].i32, clipValue);
     ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
@@ -36,7 +36,7 @@ static napi_value TestTextClip002(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.i32 = clipValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_CLIP, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_CLIP)->value->i32, clipValue);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_CLIP)->value[PARAM_0].i32, clipValue);
     ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
@@ -49,7 +49,7 @@ static napi_value TestTextClip003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_CLIP, &valueItem);
     if (nodeAPI->getAttribute(text, NODE_CLIP) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(text, NODE_CLIP)->value->i32, clipValue);
+        ASSERT_NE(nodeAPI->getAttribute(text, NODE_CLIP)->value[PARAM_0].i32, clipValue);
     };
 
     ASSERT_EQ(ret, INVALID_PARAM);
@@ -156,7 +156,7 @@ static napi_value TestTextClip009(napi_env env, napi_callback_info info)
                                  {.f32 = filletHeightValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_CLIP_SHAPE, &valueItem);
-    if (nodeAPI->getAttribute(text, NODE_BACKGROUND_IMAGE) != nullptr) {
+    if (nodeAPI->getAttribute(text, NODE_CLIP_SHAPE) != nullptr) {
         ASSERT_NE(nodeAPI->getAttribute(text, NODE_CLIP_SHAPE)->value[PARAM_1].f32, widthValue);
         ASSERT_NE(nodeAPI->getAttribute(text, NODE_CLIP_SHAPE)->value[PARAM_2].f32, heightValue);
         ASSERT_NE(nodeAPI->getAttribute(text, NODE_CLIP_SHAPE)->value[PARAM_3].f32, filletWidthValue);

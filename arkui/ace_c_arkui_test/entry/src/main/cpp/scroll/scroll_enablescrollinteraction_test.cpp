@@ -27,7 +27,7 @@ static napi_value TestScrollEnableScrollInteraction001(napi_env env, napi_callba
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_SCROLL_ENABLE_SCROLL_INTERACTION, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_ENABLE_SCROLL_INTERACTION)->value->i32, true);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_ENABLE_SCROLL_INTERACTION)->value[PARAM_0].i32, true);
     NAPI_END;
 }
 
@@ -38,7 +38,7 @@ static napi_value TestScrollEnableScrollInteraction002(napi_env env, napi_callba
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_SCROLL_ENABLE_SCROLL_INTERACTION, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_ENABLE_SCROLL_INTERACTION)->value->i32, false);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_ENABLE_SCROLL_INTERACTION)->value[PARAM_0].i32, false);
     NAPI_END;
 }
 
@@ -49,7 +49,7 @@ static napi_value TestScrollEnableScrollInteraction003(napi_env env, napi_callba
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_SCROLL_ENABLE_SCROLL_INTERACTION, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
-    ASSERT_NE(nodeAPI->getAttribute(scroll, NODE_SCROLL_ENABLE_SCROLL_INTERACTION)->value->i32, ABNORMAL_PARAM);
+    ASSERT_NE(nodeAPI->getAttribute(scroll, NODE_SCROLL_ENABLE_SCROLL_INTERACTION)->value[PARAM_0].i32, ABNORMAL_PARAM);
     NAPI_END;
 }
 } // namespace ArkUICapiTest

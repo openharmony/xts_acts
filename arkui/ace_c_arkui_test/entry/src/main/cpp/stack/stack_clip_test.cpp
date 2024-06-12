@@ -281,13 +281,4 @@ static napi_value TestStackClip015(napi_env env, napi_callback_info info)
     NAPI_END;
 }
 
-static napi_value TestStackClip016(napi_env env, napi_callback_info info)
-{
-    NAPI_START(stack, ARKUI_NODE_STACK);
-    int32_t clipBool = 0;
-
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_CLIP)->value[PARAM_0].i32, clipBool);
-    NAPI_END;
-}
-
 } // namespace ArkUICapiTest

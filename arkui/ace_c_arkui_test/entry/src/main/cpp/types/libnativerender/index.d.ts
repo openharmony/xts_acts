@@ -85,11 +85,67 @@ export const scrollScrollEdgeTest: (a: string, b: number) => void;
 
 export const scrollScrollSnapTest: (a: string) => void;
 
-export const scrollScrollToTest: (a: string, b:string) => void;
+export const scrollScrollToLinearTest: (a: string) => void;
+
+export const scrollScrollToEaseTest: (a: string) => void;
+
+export const scrollScrollToEaseInOutTest: (a: string) => void;
+
+export const scrollScrollToEaseInTest: (a: string) => void;
+
+export const scrollScrollToEaseOutTest: (a: string) => void;
+
+export const scrollScrollToExtremeDecelerationTest: (a: string) => void;
+
+export const scrollScrollToFastOutLinearInTest: (a: string) => void;
+
+export const scrollScrollToFastOutSlowInTest: (a: string) => void;
+
+export const scrollScrollToFrictionTest: (a: string) => void;
+
+export const scrollScrollToLinearOutSlowInTest: (a: string) => void;
+
+export const scrollScrollToRhythmTest: (a: string) => void;
+
+export const scrollScrollToSharpTest: (a: string) => void;
+
+export const scrollScrollToSmoothTest: (a: string) => void;
+
+export const scrollCurrentOffsetLinearTest: (a: string) => void;
+
+export const scrollCurrentOffsetEaseTest: (a: string) => void;
+
+export const scrollCurrentOffsetEaseInOutTest: (a: string) => void;
+
+export const scrollCurrentOffsetEaseInTest: (a: string) => void;
+
+export const scrollCurrentOffsetEaseOutTest: (a: string) => void;
+
+export const scrollCurrentOffsetExtremeDecelerationTest: (a: string) => void;
+
+export const scrollCurrentOffsetFastOutLinearInTest: (a: string) => void;
+
+export const scrollCurrentOffsetFastOutSlowInTest: (a: string) => void;
+
+export const scrollCurrentOffsetFrictionTest: (a: string) => void;
+
+export const scrollCurrentOffsetLinearOutSlowInTest: (a: string) => void;
+
+export const scrollCurrentOffsetRhythmTest: (a: string) => void;
+
+export const scrollCurrentOffsetSharpTest: (a: string) => void;
+
+export const scrollCurrentOffsetSmoothTest: (a: string) => void;
 
 export const scrollOnScrollFrameBeginTest: (a: string) => void;
 
-export const scrollHitTestBehaviorTest: (a: string) => void;
+export const scrollHitTestBehaviorDefaultTest: (a: string) => void;
+
+export const scrollHitTestBehaviorBlockTest: (a: string) => void;
+
+export const scrollHitTestBehaviorTransparentTest: (a: string) => void;
+
+export const scrollHitTestBehaviorNoneTest: (a: string) => void;
 
 export const stackHitTestBehaviorTest: (a: string) => void;
 

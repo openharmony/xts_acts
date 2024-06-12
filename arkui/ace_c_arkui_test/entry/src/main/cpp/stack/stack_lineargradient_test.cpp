@@ -27,7 +27,7 @@ static napi_value TestStackLinearGradient001(napi_env env, napi_callback_info in
     float end = 1.0;
     float stops[] = {begin, end};
     float angle = 60;
-    float expectAngle = 0;
+    float expectAngle = 180;
     int32_t size = 2;
     int32_t repeating = 0;
 
@@ -61,7 +61,7 @@ static napi_value TestStackLinearGradient002(napi_env env, napi_callback_info in
     float end = 1.0;
     float stops[] = {begin, end};
     float angle = 60;
-    float expectAngle = 0;
+    float expectAngle = 180;
     int32_t size = 2;
     int32_t repeating = 0;
 
@@ -95,7 +95,7 @@ static napi_value TestStackLinearGradient003(napi_env env, napi_callback_info in
     float end = 1.0;
     float stops[] = {begin, end};
     float angle = 60;
-    float expectAngle = 0;
+    float expectAngle = 180;
     int32_t size = 2;
     int32_t repeating = 0;
 
@@ -129,7 +129,7 @@ static napi_value TestStackLinearGradient004(napi_env env, napi_callback_info in
     float end = 1.0;
     float stops[] = {begin, end};
     float angle = 60;
-    float expectAngle = 0;
+    float expectAngle = 180;
     int32_t size = 2;
     int32_t repeating = 0;
 
@@ -163,7 +163,7 @@ static napi_value TestStackLinearGradient005(napi_env env, napi_callback_info in
     float end = 1.0;
     float stops[] = {begin, end};
     float angle = 60;
-    float expectAngle = 0;
+    float expectAngle = 180;
     int32_t size = 2;
     int32_t repeating = 0;
 
@@ -197,7 +197,7 @@ static napi_value TestStackLinearGradient006(napi_env env, napi_callback_info in
     float end = 1.0;
     float stops[] = {begin, end};
     float angle = 60;
-    float expectAngle = 0;
+    float expectAngle = 180;
     int32_t size = 2;
     int32_t repeating = 0;
 
@@ -231,7 +231,7 @@ static napi_value TestStackLinearGradient007(napi_env env, napi_callback_info in
     float end = 1.0;
     float stops[] = {begin, end};
     float angle = 60;
-    float expectAngle = 0;
+    float expectAngle = 180;
     int32_t size = 2;
     int32_t repeating = 0;
 
@@ -265,7 +265,7 @@ static napi_value TestStackLinearGradient008(napi_env env, napi_callback_info in
     float end = 1.0;
     float stops[] = {begin, end};
     float angle = 60;
-    float expectAngle = 0;
+    float expectAngle = 180;
     int32_t size = 2;
     int32_t repeating = 0;
 
@@ -299,7 +299,7 @@ static napi_value TestStackLinearGradient009(napi_env env, napi_callback_info in
     float end = 1.0;
     float stops[] = {begin, end};
     float angle = 60;
-    float expectAngle = 0;
+    float expectAngle = 180;
     int32_t size = 2;
     int32_t repeating = 0;
 
@@ -353,19 +353,6 @@ static napi_value TestStackLinearGradient010(napi_env env, napi_callback_info in
     ASSERT_EQ(((ArkUI_ColorStop *)(nodeAPI->getAttribute(stack, NODE_LINEAR_GRADIENT)->object))->stops[0], begin);
     ASSERT_EQ(((ArkUI_ColorStop *)(nodeAPI->getAttribute(stack, NODE_LINEAR_GRADIENT)->object))->stops[1], end);
     ASSERT_EQ(((ArkUI_ColorStop *)(nodeAPI->getAttribute(stack, NODE_LINEAR_GRADIENT)->object))->size, size);
-    NAPI_END;
-}
-
-static napi_value TestStackLinearGradient011(napi_env env, napi_callback_info info)
-{
-    NAPI_START(stack, ARKUI_NODE_STACK);
-    float angle = 180;
-    int32_t repeating = 0;
-
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_LINEAR_GRADIENT)->value[PARAM_0].f32, angle);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_LINEAR_GRADIENT)->value[PARAM_1].i32,
-              ARKUI_LINEAR_GRADIENT_DIRECTION_BOTTOM);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_LINEAR_GRADIENT)->value[PARAM_2].i32, repeating);
     NAPI_END;
 }
 

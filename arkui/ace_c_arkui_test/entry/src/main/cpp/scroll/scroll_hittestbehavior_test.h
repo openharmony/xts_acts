@@ -28,9 +28,11 @@ public:
     ~ScrollHitTestBehaviorTest();
     static void OnEventReceive(ArkUI_NodeEvent *event);
     static ArkUI_NodeHandle CreateSubScrollNode(ArkUI_NativeNodeAPI_1 *node_api, int32_t hittestbehavior,
-                                                const char *onTouchTestStack, const char *onTouchTestScroll,
-                                                const char *onTouchTestScrollBrother);
-    static napi_value CreateNativeNode(napi_env env, napi_callback_info info);
+                                                const char *ontouchteststack);
+    static napi_value CreateNativeNodeDefault(napi_env env, napi_callback_info info);
+    static napi_value CreateNativeNodeBlock(napi_env env, napi_callback_info info);
+    static napi_value CreateNativeNodeTransparent(napi_env env, napi_callback_info info);
+    static napi_value CreateNativeNodeNone(napi_env env, napi_callback_info info);
 };
 } // namespace ArkUICapiTest
 #endif // ARKUI_CAPI_XTS_SCROLL_HITTESTBEHAVIOR_TEST_H

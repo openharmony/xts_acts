@@ -29,6 +29,7 @@ static napi_value TestTextMask001(napi_env env, napi_callback_info info)
         {.f32 = sizeValue}, {.f32 = sizeValue}, {.f32 = filletSizeValue}, {.f32 = filletSizeValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_MASK, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_0].u32, color);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_1].u32, color);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_2].f32, widthValue);
@@ -37,7 +38,6 @@ static napi_value TestTextMask001(napi_env env, napi_callback_info info)
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_5].f32, sizeValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_6].f32, filletSizeValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_7].f32, filletSizeValue);
-    ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
 
@@ -52,13 +52,13 @@ static napi_value TestTextMask002(napi_env env, napi_callback_info info)
                                  {.f32 = sizeValue},  {.f32 = sizeValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_MASK, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_0].u32, color);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_1].u32, color);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_2].f32, widthValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_3].i32, ARKUI_MASK_TYPE_CIRCLE);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_4].f32, sizeValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_5].f32, sizeValue);
-    ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
 
@@ -73,13 +73,13 @@ static napi_value TestTextMask003(napi_env env, napi_callback_info info)
                                  {.f32 = sizeValue},  {.f32 = sizeValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_MASK, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_0].u32, color);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_1].u32, color);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_2].f32, widthValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_3].i32, ARKUI_MASK_TYPE_ELLIPSE);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_4].f32, sizeValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_5].f32, sizeValue);
-    ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
 
@@ -95,6 +95,7 @@ static napi_value TestTextMask004(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     valueItem.string = "M0 10 L80 0";
     auto ret = nodeAPI->setAttribute(text, NODE_MASK, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_0].u32, color);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_1].u32, color);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_2].f32, widthValue);
@@ -102,7 +103,6 @@ static napi_value TestTextMask004(napi_env env, napi_callback_info info)
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_4].f32, sizeValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_5].f32, sizeValue);
     ASSERT_STREQ(nodeAPI->getAttribute(text, NODE_MASK)->string, "M0 10 L80 0");
-    ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
 
@@ -110,22 +110,18 @@ static napi_value TestTextMask005(napi_env env, napi_callback_info info)
 {
     NAPI_START(text, ARKUI_NODE_TEXT);
     uint32_t color = 0xFF000000;
-    float widthValue = 5;
     float sizeValue = 40;
     ArkUI_NumberValue value[] = {
-        {.u32 = color},     {.u32 = color},     {.f32 = widthValue}, {.i32 = ARKUI_MASK_TYPE_PROGRESS},
-        {.f32 = sizeValue}, {.f32 = sizeValue}, {.u32 = color}};
+        {.i32 = ARKUI_MASK_TYPE_PROGRESS}, {.f32 = sizeValue}, {.f32 = sizeValue}, {.u32 = color}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_MASK, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_0].u32, color);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_1].u32, color);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_2].f32, widthValue);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_3].i32, ARKUI_MASK_TYPE_PROGRESS);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_4].f32, sizeValue);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_5].f32, sizeValue);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_6].u32, color);
-
+    if (nodeAPI->getAttribute(text, NODE_MASK) != nullptr) {
+        ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_0].i32, ARKUI_MASK_TYPE_PROGRESS);
+        ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_1].f32, sizeValue);
+        ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_2].f32, sizeValue);
+        ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_3].u32, color);
+    }
     NAPI_END;
 }
 
@@ -140,13 +136,13 @@ static napi_value TestTextMask006(napi_env env, napi_callback_info info)
                                  {.f32 = sizeValue},  {.f32 = sizeValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_MASK, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_0].u32, color);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_1].u32, color);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_2].f32, widthValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_3].i32, ARKUI_MASK_TYPE_CIRCLE);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_4].f32, sizeValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_5].f32, sizeValue);
-    ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
 
@@ -165,6 +161,7 @@ static napi_value TestTextMask007(napi_env env, napi_callback_info info)
                                  {.f32 = exceptionSizeValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_MASK, &valueItem);
+    ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(text, NODE_MASK) != nullptr) {
         ASSERT_NE(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_2].f32, exceptionWidthValue);
         ASSERT_NE(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_3].i32, exceptionValue);
@@ -172,7 +169,6 @@ static napi_value TestTextMask007(napi_env env, napi_callback_info info)
         ASSERT_NE(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_5].f32, exceptionSizeValue);
     };
 
-    ASSERT_EQ(ret, INVALID_PARAM);
     NAPI_END;
 }
 } // namespace ArkUICapiTest

@@ -28,7 +28,7 @@ static napi_value TestImageBackgroundColor001(napi_env env, napi_callback_info i
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(image, NODE_BACKGROUND_COLOR, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_BACKGROUND_COLOR)->value->u32, color);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_BACKGROUND_COLOR)->value[PARAM_0].u32, color);
     NAPI_END;
 }
 
@@ -40,7 +40,7 @@ static napi_value TestImageBackgroundColor002(napi_env env, napi_callback_info i
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(image, NODE_BACKGROUND_COLOR, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_BACKGROUND_COLOR)->value->u32, color);
+    ASSERT_EQ(nodeAPI->getAttribute(image, NODE_BACKGROUND_COLOR)->value[PARAM_0].u32, color);
     NAPI_END;
 }
 

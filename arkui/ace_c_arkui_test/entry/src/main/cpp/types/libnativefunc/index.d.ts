@@ -487,8 +487,6 @@ export const testStackAlign009: () => number;
 
 export const testStackAlign010: () => number;
 
-export const testStackAlign011: () => number;
-
 export const testStackBackgroundBlurStyle001: () => number;
 
 export const testStackBackgroundBlurStyle002: () => number;
@@ -517,8 +515,6 @@ export const testStackBackgroundBlurStyle013: () => number;
 
 export const testStackBackgroundBlurStyle014: () => number;
 
-export const testStackBackgroundBlurStyle015: () => number;
-
 export const testStackBackgroundColor001: () => number;
 
 export const testStackBackgroundColor002: () => number;
@@ -543,8 +539,6 @@ export const testStackBackgroundImagePosition001: () => number;
 
 export const testStackBackgroundImagePosition002: () => number;
 
-export const testStackBackgroundImagePosition003: () => number;
-
 export const testStackBackgroundImageSize001: () => number;
 
 export const testStackBackgroundImageSize002: () => number;
@@ -562,8 +556,6 @@ export const testStackBorderColor004: () => number;
 export const testStackBorderColor005: () => number;
 
 export const testStackBorderColor006: () => number;
-
-export const testStackBorderColor007: () => number;
 
 export const testStackBorderRadius001: () => number;
 
@@ -593,8 +585,6 @@ export const testStackBorderStyle005: () => number;
 
 export const testStackBorderStyle006: () => number;
 
-export const testStackBorderStyle007: () => number;
-
 export const testStackBorderWidth001: () => number;
 
 export const testStackBorderWidth002: () => number;
@@ -620,8 +610,6 @@ export const testStackBrightness005: () => number;
 export const testStackBrightness006: () => number;
 
 export const testStackBrightness007: () => number;
-
-export const testStackBrightness008: () => number;
 
 export const testStackClip001: () => number;
 
@@ -653,8 +641,6 @@ export const testStackClip014: () => number;
 
 export const testStackClip015: () => number;
 
-export const testStackClip016: () => number;
-
 export const testStackHeight001: () => number;
 
 export const testStackHeight002: () => number;
@@ -683,8 +669,6 @@ export const testStackLinearGradient009: () => number;
 
 export const testStackLinearGradient010: () => number;
 
-export const testStackLinearGradient011: () => number;
-
 export const testStackMargin001: () => number;
 
 export const testStackMargin002: () => number;
@@ -705,8 +689,6 @@ export const testStackOpacity005: () => number;
 
 export const testStackOpacity006: () => number;
 
-export const testStackOpacity007: () => number;
-
 export const testStackPosition001: () => number;
 
 export const testStackPosition002: () => number;
@@ -714,8 +696,6 @@ export const testStackPosition002: () => number;
 export const testStackRotate001: () => number;
 
 export const testStackRotate002: () => number;
-
-export const testStackRotate003: () => number;
 
 export const testStackSaturate001: () => number;
 
@@ -729,15 +709,11 @@ export const testStackSaturate005: () => number;
 
 export const testStackSaturate006: () => number;
 
-export const testStackSaturate007: () => number;
-
 export const testStackScale001: () => number;
 
 export const testStackScale002: () => number;
 
 export const testStackScale003: () => number;
-
-export const testStackScale004: () => number;
 
 export const testStackShadow001: () => number;
 
@@ -756,8 +732,6 @@ export const testStackShadow007: () => number;
 export const testStackTransform001: () => number;
 
 export const testStackTransform002: () => number;
-
-export const testStackTransform003: () => number;
 
 export const testStackTransition001: () => number;
 
@@ -889,19 +863,9 @@ export const testStackTransition064: () => number;
 
 export const testStackTransition065: () => number;
 
-export const testStackTransition066: () => number;
-
-export const testStackTransition067: () => number;
-
-export const testStackTransition068: () => number;
-
-export const testStackTransition069: () => number;
-
 export const testStackTranslate001: () => number;
 
 export const testStackTranslate002: () => number;
-
-export const testStackTranslate003: () => number;
 
 export const testStackWidth001: () => number;
 
@@ -944,8 +908,6 @@ export const testToggleClip013: () => number;
 export const testToggleClip014: () => number;
 
 export const testToggleClip015: () => number;
-
-export const testToggleClip016: () => number;
 
 export const testToggleFocusable001: () => number;
 
@@ -1003,8 +965,6 @@ export const testSwiperAutoPlay002: () => number;
 
 export const testSwiperAutoPlay003: () => number;
 
-export const testSwiperAutoPlay004: () => number;
-
 export const testSwiperBackgroundColor001: () => number;
 
 export const testSwiperBackgroundColor002: () => number;
@@ -1055,8 +1015,6 @@ export const testSwiperClip014: () => number;
 
 export const testSwiperClip015: () => number;
 
-export const testSwiperClip016: () => number;
-
 export const testSwiperCurve001: () => number;
 
 export const testSwiperCurve002: () => number;
@@ -1085,15 +1043,11 @@ export const testSwiperCurve013: () => number;
 
 export const testSwiperCurve014: () => number;
 
-export const testSwiperCurve015: () => number;
-
 export const testSwiperDisableSwipe001: () => number;
 
 export const testSwiperDisableSwipe002: () => number;
 
 export const testSwiperDisableSwipe003: () => number;
-
-export const testSwiperDisableSwipe004: () => number;
 
 export const testSwiperDisplayArrow001: () => number;
 
@@ -1103,8 +1057,6 @@ export const testSwiperDisplayArrow003: () => number;
 
 export const testSwiperDisplayArrow004: () => number;
 
-export const testSwiperDisplayArrow005: () => number;
-
 export const testSwiperDisplayCount001: () => number;
 
 export const testSwiperDisplayCount002: () => number;
@@ -1113,15 +1065,11 @@ export const testSwiperDisplayCount003: () => number;
 
 export const testSwiperDisplayCount004: () => number;
 
-export const testSwiperDisplayCount005: () => number;
-
 export const testSwiperDuration001: () => number;
 
 export const testSwiperDuration002: () => number;
 
 export const testSwiperDuration003: () => number;
-
-export const testSwiperDuration004: () => number;
 
 export const testSwiperHeight001: () => number;
 
@@ -1135,15 +1083,11 @@ export const testSwiperIndex002: () => number;
 
 export const testSwiperIndex003: () => number;
 
-export const testSwiperIndex004: () => number;
-
 export const testSwiperIndicator001: () => number;
 
 export const testSwiperIndicator002: () => number;
 
 export const testSwiperIndicator003: () => number;
-
-export const testSwiperIndicator004: () => number;
 
 export const testSwiperInterval001: () => number;
 
@@ -1151,23 +1095,17 @@ export const testSwiperInterval002: () => number;
 
 export const testSwiperInterval003: () => number;
 
-export const testSwiperInterval004: () => number;
-
 export const testSwiperItemSpace001: () => number;
 
 export const testSwiperItemSpace002: () => number;
 
 export const testSwiperItemSpace003: () => number;
 
-export const testSwiperItemSpace004: () => number;
-
 export const testSwiperLoop001: () => number;
 
 export const testSwiperLoop002: () => number;
 
 export const testSwiperLoop003: () => number;
-
-export const testSwiperLoop004: () => number;
 
 export const testSwiperPosition001: () => number;
 
@@ -1179,8 +1117,6 @@ export const testSwiperVertical002: () => number;
 
 export const testSwiperVertical003: () => number;
 
-export const testSwiperVertical004: () => number;
-
 export const testSwiperWidth001: () => number;
 
 export const testSwiperWidth002: () => number;
@@ -1190,8 +1126,6 @@ export const testSwiperWidth003: () => number;
 export const testSwiperCachedCount001: () => number;
 
 export const testSwiperCachedCount002: () => number;
-
-export const testSwiperCachedCount003: () => number;
 
 export const testImageHeight001: () => number;
 
@@ -1593,8 +1527,6 @@ export const testListEdgeEffect002: () => number;
 
 export const testListEdgeEffect003: () => number;
 
-export const testListEdgeEffect004: () => number;
-
 export const testListEnableScrollInteraction001: () => number;
 
 export const testListEnableScrollInteraction002: () => number;
@@ -1604,8 +1536,6 @@ export const testListEnableScrollInteraction003: () => number;
 export const testListFriction001: () => number;
 
 export const testListFriction002: () => number;
-
-export const testListFriction003: () => number;
 
 export const testListHeight001: () => number;
 
@@ -1632,8 +1562,6 @@ export const testListLinearGradient008: () => number;
 export const testListLinearGradient009: () => number;
 
 export const testListLinearGradient010: () => number;
-
-export const testListLinearGradient011: () => number;
 
 export const testListListDirection001: () => number;
 
@@ -1813,8 +1741,6 @@ export const testListItemLinearGradient009: () => number;
 
 export const testListItemLinearGradient010: () => number;
 
-export const testListItemLinearGradient011: () => number;
-
 export const testListItemOpacity001: () => number;
 
 export const testListItemOpacity002: () => number;
@@ -1928,8 +1854,6 @@ export const testCommonAttrsLinearGradient008: () => number;
 export const testCommonAttrsLinearGradient009: () => number;
 
 export const testCommonAttrsLinearGradient010: () => number;
-
-export const testCommonAttrsLinearGradient011: () => number;
 
 export const testCommonAttrsMargin001: () => number;
 
@@ -2209,8 +2133,6 @@ export const testTextLinearGradient010: () => number;
 
 export const testTextLinearGradient011: () => number;
 
-export const testTextLinearGradient012: () => number;
-
 export const testTextLineHeight001: () => number;
 
 export const testTextLineHeight002: () => number;
@@ -2441,6 +2363,10 @@ export const testCommonAttrsRadialGradient004: () => number;
 
 export const testScrollBackgroundColor001: () => number;
 
+export const testScrollBackgroundColor002: () => number;
+
+export const testScrollBackgroundColor003: () => number;
+
 export const testScrollBlur001: () => number;
 
 export const testScrollBlur002: () => number;
@@ -2475,8 +2401,6 @@ export const testScrollClip002: () => number;
 
 export const testScrollClip003: () => number;
 
-export const testScrollCurrentOffset001: () => number;
-
 export const testScrollEdgeEffect001: () => number;
 
 export const testScrollEdgeEffect002: () => number;
@@ -2510,6 +2434,8 @@ export const testScrollLinearGradient007: () => number;
 export const testScrollLinearGradient008: () => number;
 
 export const testScrollLinearGradient009: () => number;
+
+export const testScrollLinearGradient010: () => number;
 
 export const testScrollOpacity001: () => number;
 
@@ -2568,6 +2494,10 @@ export const testScrollScrollAble003: () => number;
 export const testScrollScrollAble004: () => number;
 
 export const testScrollScrollBarColor001: () => number;
+
+export const testScrollScrollBarColor002: () => number;
+
+export const testScrollScrollBarColor003: () => number;
 
 export const testScrollScrollBar001: () => number;
 

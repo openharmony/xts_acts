@@ -453,8 +453,6 @@ export default function testsuite() {
   scrollEdgeEffectTest()
   scrollFrictionTest()
   scrollScrollSnapTest()
-  scrollCurrentOffsetTest()
-  scrollScrollToTest()
   scrollOverlayTest()
   scrollLinearGradientTest()
   scrollSaturateTest()
@@ -533,5 +531,7 @@ export default function testsuite() {
   stackHitTestBehaviorTest()
   stackOnTouchTest()
   textEnabledTest()
+  scrollCurrentOffsetTest()
+  scrollScrollToTest()
   TestArkUIAddApi()
 }

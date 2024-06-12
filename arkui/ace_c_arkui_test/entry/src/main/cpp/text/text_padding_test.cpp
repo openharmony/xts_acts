@@ -24,11 +24,11 @@ static napi_value TestTextPadding001(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.f32 = paddingValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_PADDING, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_PADDING)->value[PARAM_0].f32, paddingValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_PADDING)->value[PARAM_1].f32, paddingValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_PADDING)->value[PARAM_2].f32, paddingValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_PADDING)->value[PARAM_3].f32, paddingValue);
-    ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
 
@@ -39,11 +39,11 @@ static napi_value TestTextPadding002(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.f32 = paddingValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_PADDING, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_PADDING)->value[PARAM_0].f32, paddingValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_PADDING)->value[PARAM_1].f32, paddingValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_PADDING)->value[PARAM_2].f32, paddingValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_PADDING)->value[PARAM_3].f32, paddingValue);
-    ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
 
@@ -58,11 +58,11 @@ static napi_value TestTextPadding003(napi_env env, napi_callback_info info)
         {.f32 = topValue}, {.f32 = rightValue}, {.f32 = bottomValue}, {.f32 = leftValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_PADDING, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_PADDING)->value[PARAM_0].f32, topValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_PADDING)->value[PARAM_1].f32, rightValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_PADDING)->value[PARAM_2].f32, bottomValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_PADDING)->value[PARAM_3].f32, leftValue);
-    ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
 
@@ -77,11 +77,11 @@ static napi_value TestTextPadding004(napi_env env, napi_callback_info info)
         {.f32 = topValue}, {.f32 = rightValue}, {.f32 = bottomValue}, {.f32 = leftValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_PADDING, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_PADDING)->value[PARAM_0].f32, topValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_PADDING)->value[PARAM_1].f32, rightValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_PADDING)->value[PARAM_2].f32, bottomValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_PADDING)->value[PARAM_3].f32, leftValue);
-    ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
 } // namespace ArkUICapiTest

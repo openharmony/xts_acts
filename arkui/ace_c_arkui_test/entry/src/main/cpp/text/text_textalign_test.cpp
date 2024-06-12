@@ -23,8 +23,8 @@ static napi_value TestTextTextAlign001(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.i32 = ARKUI_TEXT_ALIGNMENT_START}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_ALIGN, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_ALIGN)->value->i32, ARKUI_TEXT_ALIGNMENT_START);
     ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_ALIGN)->value[PARAM_0].i32, ARKUI_TEXT_ALIGNMENT_START);
     NAPI_END;
 }
 
@@ -34,8 +34,8 @@ static napi_value TestTextTextAlign002(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.i32 = ARKUI_TEXT_ALIGNMENT_CENTER}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_ALIGN, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_ALIGN)->value->i32, ARKUI_TEXT_ALIGNMENT_CENTER);
     ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_ALIGN)->value[PARAM_0].i32, ARKUI_TEXT_ALIGNMENT_CENTER);
     NAPI_END;
 }
 
@@ -45,8 +45,8 @@ static napi_value TestTextTextAlign003(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.i32 = ARKUI_TEXT_ALIGNMENT_END}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_ALIGN, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_ALIGN)->value->i32, ARKUI_TEXT_ALIGNMENT_END);
     ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_ALIGN)->value[PARAM_0].i32, ARKUI_TEXT_ALIGNMENT_END);
     NAPI_END;
 }
 
@@ -56,8 +56,8 @@ static napi_value TestTextTextAlign004(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.i32 = ARKUI_TEXT_ALIGNMENT_JUSTIFY}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_ALIGN, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_ALIGN)->value->i32, ARKUI_TEXT_ALIGNMENT_JUSTIFY);
     ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_ALIGN)->value[PARAM_0].i32, ARKUI_TEXT_ALIGNMENT_JUSTIFY);
     NAPI_END;
 }
 
@@ -68,11 +68,10 @@ static napi_value TestTextTextAlign005(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.i32 = exception}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_ALIGN, &valueItem);
-    if (nodeAPI->getAttribute(text, NODE_TEXT_ALIGN) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(text, NODE_TEXT_ALIGN)->value->i32, exception);
-    };
-
     ASSERT_EQ(ret, INVALID_PARAM);
+    if (nodeAPI->getAttribute(text, NODE_TEXT_ALIGN) != nullptr) {
+        ASSERT_NE(nodeAPI->getAttribute(text, NODE_TEXT_ALIGN)->value[PARAM_0].i32, exception);
+    };
     NAPI_END;
 }
 
