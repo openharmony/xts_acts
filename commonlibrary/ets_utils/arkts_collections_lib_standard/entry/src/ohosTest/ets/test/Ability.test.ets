@@ -220,5 +220,24 @@ export default function abilityTest() {
       expect(objectValue).assertEqual("{\"digit\":1}");
       done();
     })
+
+    /**
+     * @tc.number    : CollectionsTestClass011
+     * @tc.name      : ArkTS Collections Uint8ClampedArray
+     * @tc.desc      : ArkTS Collections Uint8ClampedArray
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('CollectionsTestClass011', 0, async (done: Function) => {
+      let arkTSTest : collections.Uint8ClampedArray = new collections.Uint8ClampedArray(5);
+      expect(arkTSTest.length).assertEqual(5);
+      const buffer : collections.ArrayBuffer = new collections.ArrayBuffer(8);
+      let arkTSByBuffer : collections.Uint8ClampedArray = new collections.Uint8ClampedArray(buffer);
+      expect(arkTSByBuffer.length).assertEqual(8);
+      let arkTSByBufferView: collections.Uint8ClampedArray = new collections.Uint8ClampedArray(buffer, 2, 2);
+      expect(arkTSByBufferView.length).assertEqual(2);
+      done();
+    })
   })
 }
