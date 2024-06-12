@@ -13,26 +13,23 @@
  * limitations under the License.
  */
 
-#ifndef CAPI_CHILD_PROCESS_TEST_IPC_INTERFACE_H
-#define CAPI_CHILD_PROCESS_TEST_IPC_INTERFACE_H
+#include <chrono>
+#include <thread>
+#include "AbilityKit/native_child_process.h"
+#include "loghelper.h"
 
-#include <cstdint>
+extern "C" {
+OHIPCRemoteStub* NativeChildProcess_OnConnect()
+{
+    OH_LOG_INFO(LOG_APP, "Child process - OnConnect for busy test - Begin");
+    constexpr long delayMs = 200;
+    std::this_thread::sleep_for(std::chrono::milliseconds(delayMs));
+    OH_LOG_INFO(LOG_APP, "Child process - OnConnect for busy test - End");
+    return nullptr;
+}
 
-class IpcInterface {
-public:
-    virtual ~IpcInterface() = default;
-    virtual bool RequestExitChildProcess() = 0;
-    virtual int32_t Add(int32_t a, int32_t b) = 0;
-    virtual int32_t StartNativeChildProcess() = 0;
-    
-protected:
-    enum IpcId {
-        IPC_ID_REQUEST_EXIT_PROCESS = 1,
-        IPC_ID_ADD,
-        IPC_ID_START_NATIVE_CHILD_PROCESS
-    };
-    
-    inline static constexpr char interfaceToken_[] = "NativeChildIpcTest";
-};
+void NativeChildProcess_MainProc()
+{
+}
 
-#endif // CAPI_CHILD_PROCESS_TEST_IPC_INTERFACE_H
+} // extern "C"

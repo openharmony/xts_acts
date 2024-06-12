@@ -21,3 +21,21 @@ target_link_libraries(entry PUBLIC
     libchild_process.so
     libipc_capi.so
 )
+
+add_library(invalidstub SHARED
+    InvalidStubLib.cpp
+)
+
+target_link_libraries(invalidstub PUBLIC
+    libhilog_ndk.z.so
+    libchild_process.so
+)
+
+add_library(busytest SHARED
+    BusyTest.cpp
+)
+
+target_link_libraries(busytest PUBLIC
+    libhilog_ndk.z.so
+    libchild_process.so
+)

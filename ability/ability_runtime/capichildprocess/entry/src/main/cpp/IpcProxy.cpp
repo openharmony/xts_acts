@@ -35,8 +35,8 @@ bool IpcProxy::RequestExitChildProcess()
         return false;
     }
     
-    StdUniPtrIpcProxy data(OH_IPCParcel_Create(), OH_IPCParcel_Destroy);
-    StdUniPtrIpcProxy reply(OH_IPCParcel_Create(), OH_IPCParcel_Destroy);
+    StdUniPtrIpcParcel data(OH_IPCParcel_Create(), OH_IPCParcel_Destroy);
+    StdUniPtrIpcParcel reply(OH_IPCParcel_Create(), OH_IPCParcel_Destroy);
     if (data == nullptr || reply == nullptr) {
         return false;
     }
@@ -64,8 +64,8 @@ int32_t IpcProxy::Add(int32_t a, int32_t b)
     }
     
     int32_t result = INT32_MIN;
-    StdUniPtrIpcProxy data(OH_IPCParcel_Create(), OH_IPCParcel_Destroy);
-    StdUniPtrIpcProxy reply(OH_IPCParcel_Create(), OH_IPCParcel_Destroy);
+    StdUniPtrIpcParcel data(OH_IPCParcel_Create(), OH_IPCParcel_Destroy);
+    StdUniPtrIpcParcel reply(OH_IPCParcel_Create(), OH_IPCParcel_Destroy);
     if (data == nullptr || reply == nullptr) {
         return result;
     }
@@ -81,6 +81,37 @@ int32_t IpcProxy::Add(int32_t a, int32_t b)
     ipcOpt.timeout = 0;
     ipcOpt.reserved = nullptr;
     int ret = OH_IPCRemoteProxy_SendRequest(ipcProxy_, IPC_ID_ADD, data.get(), reply.get(), &ipcOpt);
+    if (ret != OH_IPC_SUCCESS) {
+        return result;
+    }
+    
+    OH_IPCParcel_ReadInt32(reply.get(), &result);
+    return result;
+}
+
+int32_t IpcProxy::StartNativeChildProcess()
+{
+    if (ipcProxy_ == nullptr) {
+        return INT32_MIN;
+    }
+    
+    int32_t result = INT32_MIN;
+    StdUniPtrIpcParcel data(OH_IPCParcel_Create(), OH_IPCParcel_Destroy);
+    StdUniPtrIpcParcel reply(OH_IPCParcel_Create(), OH_IPCParcel_Destroy);
+    if (data == nullptr || reply == nullptr) {
+        return result;
+    }
+    
+    if (!WriteInterfaceToken(data.get())) {
+        return result;
+    }
+    
+    OH_IPC_MessageOption ipcOpt;
+    ipcOpt.mode = OH_IPC_REQUEST_MODE_SYNC;
+    ipcOpt.timeout = 0;
+    ipcOpt.reserved = nullptr;
+    int ret = OH_IPCRemoteProxy_SendRequest(
+        ipcProxy_, IPC_ID_START_NATIVE_CHILD_PROCESS, data.get(), reply.get(), &ipcOpt);
     if (ret != OH_IPC_SUCCESS) {
         return result;
     }

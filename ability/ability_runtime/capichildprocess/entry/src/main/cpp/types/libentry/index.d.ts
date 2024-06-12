@@ -16,3 +16,8 @@
 export const childProcessAdd: (a: number, b: number) => number;
 export const startNativeChildProcess: (libName: String) => number;
 export const requestExitChildProcess: () => number;
+export const callApiWithNullCallback: () => number;
+export const callApiWithNullLibName: () => number;
+export const callApiWithNull: () => number;
+export const childProcessStartNewProcess: () => number;
+export const busyTest: () => number;

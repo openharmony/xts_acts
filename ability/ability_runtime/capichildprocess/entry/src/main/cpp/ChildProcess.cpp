@@ -14,6 +14,14 @@
  */
 
 #include "ChildProcess.h"
+#include "AbilityKit/native_child_process.h"
+
+static void DummyCallBack(int errCode, OHIPCRemoteProxy *remoteProxy)
+{
+    if (remoteProxy != nullptr) {
+        OH_IPCRemoteProxy_Destroy(remoteProxy);
+    }
+}
 
 void ChildProcess::MainProc()
 {
@@ -37,4 +45,9 @@ bool ChildProcess::RequestExitChildProcess()
 int32_t ChildProcess::Add(int32_t a, int32_t b)
 {
     return a + b;
+}
+
+int32_t ChildProcess::StartNativeChildProcess()
+{
+    return OH_Ability_CreateNativeChildProcess("libentry.so", DummyCallBack);
 }
