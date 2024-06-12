@@ -1733,6 +1733,14 @@ export const testListWidth002: () => number;
 
 export const testListWidth003: () => number;
 
+export const testListNodeAdapter001: () => number;
+
+export const testListNodeAdapter002: () => number;
+
+export const testListNodeAdapter003: () => number;
+
+export const testListNodeAdapterEvent001: () => number;
+
 export const testListItemBackgroundColor001: () => number;
 
 export const testListItemBlur001: () => number;
