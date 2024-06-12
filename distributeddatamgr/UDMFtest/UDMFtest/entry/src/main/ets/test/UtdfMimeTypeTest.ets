@@ -669,16 +669,16 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUBDistributedDataUDMFSDKUtdMimeTypeJsAPITest0460
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0460
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.ms-word.document.macroEnabled.12"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.oasis.opendocument.presentation"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0460', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0460 start');
-      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-word.document.macroEnabled.12");
+      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.oasis.opendocument.presentation");
       console.log("typeId:" + result);
-      expect(result).assertEqual("org.openxmlformats.wordprocessingml.document.macroenabled");
+      expect(result).assertEqual(UTD.UniformDataType.OPENDOCUMENT_PRESENTATION);
     });
     /**
      * @tc.name      : testSUBDistributedDataUDMFSDKUtdMimeTypeJsAPITest0470
@@ -698,16 +698,16 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUBDistributedDataUDMFSDKUtdMimeTypeJsAPITest0480
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0480
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.ms-excel.sheet.macroEnabled.12"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.oasis.opendocument.formula"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0480', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0480 start');
-      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-excel.sheet.macroEnabled.12");
+      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.oasis.opendocument.formula");
       console.log("typeId:" + result);
-      expect(result).assertEqual("org.openxmlformats.spreadsheetml.sheet.macroenabled");
+      expect(result).assertEqual(UTD.UniformDataType.OPENDOCUMENT_FORMULA);
     });
 
     /**
