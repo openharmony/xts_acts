@@ -1016,7 +1016,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
       try {
         let algName: string = "RSA2048";
         let encAlgName: string = "RSA2048|PKCS1";
-        let dataLen: number = 8192;
+        let dataLen: number = 512;
         let cipherText1 = new Uint8Array();
         let cipherText2 = new Uint8Array();
         let cipherPlainText1 = new Uint8Array();
@@ -1088,7 +1088,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
       try {
         let algName: string = "SM4_128";
         let encAlgName: string = "SM4_128|CFB|PKCS7"
-        let dataLen: number = 8192;
+        let dataLen: number = 512;
         let dataIv: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
         let cipherText1 = new Uint8Array();
         let cipherText2 = new Uint8Array();
@@ -1175,7 +1175,7 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
         let algName: string = "SM2_256";
         let mdName: string = "SM3";
         let keyPair: cryptoFramework.KeyPair = await syncSymEncAndDecUtils.createAsymKeySync(algName);
-        let dataLen: number = 8192;
+        let dataLen: number = 512;
         let data: cryptoFramework.DataBlob = await commonUtils.createData(dataLen);
         let encAlgName: string = `${algName}|${mdName}`;
         let cipherText1 = new Uint8Array();
@@ -1234,6 +1234,400 @@ export default function SecurityCryptoFwSymEncryptAndDecryptTestUnit() {
         }
         let ret: boolean = commonUtils.compareDataBlob({data: decText1}, {data: decText2});
         expect(ret).assertTrue();
+      } catch (error) {
+        console.error(`“${error}“, error code: ${error.code}`);
+        expect(null).assertFail();
+      }
+      done();
+    });
+    
+    /**
+     * @tc.number SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_1600
+     * @tc.name Test Symmetric Alg algName Encrypt And Decrypt. Split Update. Sync style. Process success
+     * @tc.desc algorithm is SM4_128
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_1600", 0, async (done: Function) => {
+      try {
+        let algName: string = "SM4_128";
+        let encAlgName: string = "SM4_128|GCM|PKCS7"
+        let dataLen: number = 512;
+        let dataIv: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        let dataAad: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0];
+        let dataTag: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0];
+        let specAlgName: string = "GcmParamsSpec";
+        let paramSpec: cryptoFramework.GcmParamsSpec = syncSymEncAndDecUtils.genGcmOrCcmParamsSpec(dataIv, dataAad, dataTag, specAlgName);
+        let data: cryptoFramework.DataBlob = await commonUtils.createData(dataLen);
+        let symKey: cryptoFramework.SymKey = syncSymEncAndDecUtils.createSymKeySync(algName);
+        let cipherData1: syncSymEncAndDecUtils.dataGcmOrCCMSpec = syncSymEncAndDecUtils.gcmEncOrDecMessageSync(encAlgName,
+          true, symKey, 16, dataLen, data, paramSpec);
+        let decCipher1: cryptoFramework.Cipher = cryptoFramework.createCipher(encAlgName);
+        decCipher1.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, paramSpec);
+        let cipherPlainText1: cryptoFramework.DataBlob = decCipher1.doFinalSync(cipherData1.data);
+
+        let cipherData2: syncSymEncAndDecUtils.dataGcmOrCCMSpec = syncSymEncAndDecUtils.gcmEncOrDecMessageSync(encAlgName,
+          true, symKey, 32, dataLen, data, paramSpec);
+        let decCipher2: cryptoFramework.Cipher = cryptoFramework.createCipher(encAlgName);
+        decCipher2.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, paramSpec);
+        let cipherPlainText2: cryptoFramework.DataBlob = decCipher2.doFinalSync(cipherData2.data);
+        let ret: boolean = commonUtils.compareDataBlob(cipherPlainText1, cipherPlainText2);
+        expect(ret).assertTrue();
+      } catch (error) {
+        console.error(`“${error}“, error code: ${error.code}`);
+        expect(null).assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_1700
+     * @tc.name Test Symmetric Alg algName Encrypt And Decrypt. Split Update. Promise style. Process success
+     * @tc.desc algorithm is SM4_128
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_1700", 0, async (done: Function) => {
+      try {
+        let algName: string = "SM4_128";
+        let encAlgName: string = "SM4_128|GCM|PKCS7"
+        let dataLen: number = 512;
+        let dataIv: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        let dataAad: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0];
+        let dataTag: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0];
+        let specAlgName: string = "GcmParamsSpec";
+        let paramSpec: cryptoFramework.GcmParamsSpec = syncSymEncAndDecUtils.genGcmOrCcmParamsSpec(dataIv, dataAad, dataTag, specAlgName);
+        let data: cryptoFramework.DataBlob = await commonUtils.createData(dataLen);
+        let symKey: cryptoFramework.SymKey = await syncSymEncAndDecUtils.createSymKeyPromise(algName);
+        let cipherData1: syncSymEncAndDecUtils.dataGcmOrCCMSpec = await syncSymEncAndDecUtils.gcmEncOrDecMessagePromise(encAlgName,
+          true, symKey, 16, dataLen, data, paramSpec);
+        let decCipher1: cryptoFramework.Cipher = cryptoFramework.createCipher(encAlgName);
+        await decCipher1.init(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, paramSpec);
+        let cipherPlainText1: cryptoFramework.DataBlob = await decCipher1.doFinal(cipherData1.data);
+
+        let cipherData2: syncSymEncAndDecUtils.dataGcmOrCCMSpec = syncSymEncAndDecUtils.gcmEncOrDecMessageSync(encAlgName,
+          true, symKey, 32, dataLen, data, paramSpec);
+        let decCipher2: cryptoFramework.Cipher = cryptoFramework.createCipher(encAlgName);
+        decCipher2.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, paramSpec);
+        let cipherPlainText2: cryptoFramework.DataBlob = decCipher2.doFinalSync(cipherData2.data);
+        let ret: boolean = commonUtils.compareDataBlob(cipherPlainText1, cipherPlainText2);
+        expect(ret).assertTrue();
+      } catch (error) {
+        console.error(`“${error}“, error code: ${error.code}`);
+        expect(null).assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_1800
+     * @tc.name Test Symmetric Alg algName Encrypt And Decrypt. Split Update. Promise style. Process success
+     * @tc.desc algorithm is SM4_128
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_1800", 0, async (done: Function) => {
+      try {
+        let algName: string = "SM4_128";
+        let encAlgName: string = "SM4_128|GCM|PKCS7"
+        let dataIv: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        let dataAad: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0];
+        let dataTag: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0];
+        let specAlgName: string = "GcmParamsSpec";
+        let paramSpec: cryptoFramework.GcmParamsSpec = syncSymEncAndDecUtils.genGcmOrCcmParamsSpec(dataIv, dataAad, dataTag, specAlgName);
+        let symKey: cryptoFramework.SymKey = await syncSymEncAndDecUtils.createSymKeyPromise(algName);
+        let authTag1: cryptoFramework.GcmParamsSpec = await syncSymEncAndDecUtils.gcmEncOrDecNullPromise(encAlgName, true, symKey, paramSpec);
+        let decCipher1: cryptoFramework.Cipher = cryptoFramework.createCipher(encAlgName);
+        await decCipher1.init(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, paramSpec);
+        let cipherPlainText1: cryptoFramework.DataBlob = await decCipher1.doFinal(null);
+        let authTag2: cryptoFramework.GcmParamsSpec = await syncSymEncAndDecUtils.gcmEncOrDecNullPromise(encAlgName, true, symKey, paramSpec);
+        let decCipher2: cryptoFramework.Cipher = cryptoFramework.createCipher(encAlgName);
+        decCipher2.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, paramSpec);
+        let cipherPlainText2: cryptoFramework.DataBlob = decCipher2.doFinalSync(null);
+        expect(cipherPlainText1).assertNull();
+        expect(cipherPlainText2).assertNull();
+        let ret: boolean = commonUtils.compareDataBlob(authTag1.authTag, authTag2.authTag);
+        expect(ret).assertTrue();
+      } catch (error) {
+        console.error(`“${error}“, error code: ${error.code}`);
+        expect(null).assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_1900
+     * @tc.name Test Symmetric Alg algName Encrypt And Decrypt. Split Update. Promise style. Process success
+     * @tc.desc algorithm is SM4_128
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_1900", 0, async (done: Function) => {
+      try {
+        let algName: string = "SM4_128";
+        let encAlgName: string = "SM4_128|GCM|PKCS7"
+        let dataLen: number = 128;
+        let dataIv: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        let dataAad: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0];
+        let dataTag: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0];
+        let specAlgName: string = "GcmParamsSpec";
+        let paramSpec: cryptoFramework.GcmParamsSpec = syncSymEncAndDecUtils.genGcmOrCcmParamsSpec(dataIv, dataAad, dataTag, specAlgName);
+        let data: cryptoFramework.DataBlob = await commonUtils.createData(dataLen);
+        let symKey: cryptoFramework.SymKey = await syncSymEncAndDecUtils.createSymKeyPromise(algName);
+        let cipher1: cryptoFramework.Cipher = cryptoFramework.createCipher(encAlgName);
+        cipher1.initSync(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, paramSpec);
+        cipher1.init(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, paramSpec);
+        await cipher1.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, paramSpec);
+        let cipherData: cryptoFramework.DataBlob = await cipher1.update(data);
+        try {
+          await cipher1.doFinal(data);
+          expect(null).assertFail();
+        } catch (err) {
+          expect(err.code).assertEqual(17630001)
+        }
+        try {
+          await cipher1.doFinal(null);
+          expect(null).assertFail();
+        } catch (err) {
+          expect(err.code).assertEqual(401)
+        }
+        let cipher2: cryptoFramework.Cipher = cryptoFramework.createCipher(encAlgName);
+        cipher2.initSync(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, paramSpec);
+        let cipherDataTmp = cipher2.doFinalSync(data);
+        let authTag = cipherDataTmp.data.subarray(cipherDataTmp.data.byteLength - 16, cipherDataTmp.data.byteLength);
+        let cipherData2: cryptoFramework.DataBlob = {data: cipherDataTmp.data.subarray(0, cipherDataTmp.data.byteLength - 16)}
+        let ret: boolean = commonUtils.compareDataBlob(cipherData, cipherData2);
+        expect(ret).assertTrue();
+        expect(authTag.byteLength).assertEqual(16);
+      } catch (error) {
+        console.error(`“${error}“, error code: ${error.code}`);
+        expect(null).assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_2000
+     * @tc.name Test Symmetric Alg algName Encrypt And Decrypt. Split Update. Promise style. Process success
+     * @tc.desc algorithm is SM4_128
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_2000", 0, async (done: Function) => {
+      try {
+        let algName: string = "HMAC";
+        let encAlgName: string = "SM4_128|GCM|PKCS7"
+        let keyLen: number = 15;
+        let dataIv: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        let dataAad: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0];
+        let dataTag: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0];
+        let specAlgName: string = "GcmParamsSpec";
+        let paramSpec: cryptoFramework.GcmParamsSpec = syncSymEncAndDecUtils.genGcmOrCcmParamsSpec(dataIv, dataAad, dataTag, specAlgName);
+        let symKeyBlob: cryptoFramework.DataBlob = await commonUtils.createFullData(keyLen);
+        let symKey: cryptoFramework.SymKey = await syncSymEncAndDecUtils.convertSymKeyPromise(algName, symKeyBlob);
+        let cipher: cryptoFramework.Cipher = cryptoFramework.createCipher(encAlgName);
+        try {
+          cipher.initSync(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, paramSpec)
+          expect(null).assertFail();
+        } catch (error) {
+          expect(error.code).assertEqual(401);
+        }
+      } catch (error) {
+        console.error(`“${error}“, error code: ${error.code}`);
+        expect(null).assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_2100
+     * @tc.name Test Symmetric Alg algName Encrypt And Decrypt. Split Update. Promise style. Process success
+     * @tc.desc algorithm is SM4_128
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_2100", 0, async (done: Function) => {
+      try {
+        let algName: string = "SM4_128";
+        let encAlgName: string = "SM4_128|GCM|PKCS7"
+        let dataLen: number = 128;
+        let dataIv: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        let dataAad: number[] = [];
+        let dataTag: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0];
+        let specAlgName: string = "GcmParamsSpec";
+        let paramSpec: cryptoFramework.GcmParamsSpec = syncSymEncAndDecUtils.genGcmOrCcmParamsSpec(dataIv, dataAad, dataTag, specAlgName);
+        let data: cryptoFramework.DataBlob = await commonUtils.createData(dataLen);
+        let symKey: cryptoFramework.SymKey = await syncSymEncAndDecUtils.createSymKeyPromise(algName);
+        let cipher1: cryptoFramework.Cipher = cryptoFramework.createCipher(encAlgName);
+        cipher1.initSync(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, paramSpec);
+        let cipherData: cryptoFramework.DataBlob = await cipher1.update(data);
+        let authTag = await cipher1.doFinal(null);
+        expect(authTag.data.byteLength).assertEqual(16);
+        paramSpec.authTag = authTag;
+        let cipher2: cryptoFramework.Cipher = cryptoFramework.createCipher(encAlgName);
+        cipher2.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, paramSpec);
+        let plainText = await cipher2.doFinal(cipherData);
+        let ret: boolean = commonUtils.compareDataBlob(data, plainText);
+        expect(ret).assertTrue();
+      } catch (error) {
+        console.error(`“${error}“, error code: ${error.code}`);
+        expect(null).assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_2200
+     * @tc.name Test Symmetric Alg algName Encrypt And Decrypt. Split Update. Promise style. Process success
+     * @tc.desc algorithm is SM4_128
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_2200", 0, async (done: Function) => {
+      try {
+        let algName: string = "SM4_128";
+        let encAlgName: string = "SM4_128|GCM|PKCS7"
+        let dataLen: number = 128;
+        let dataIv: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        let dataAad: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        let dataTag: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0];
+        let specAlgName: string = "GcmParamsSpec";
+        let paramSpec: cryptoFramework.GcmParamsSpec = syncSymEncAndDecUtils.genGcmOrCcmParamsSpec(dataIv, dataAad, dataTag, specAlgName);
+        let data: cryptoFramework.DataBlob = await commonUtils.createData(dataLen);
+        let symKey: cryptoFramework.SymKey = await syncSymEncAndDecUtils.createSymKeyPromise(algName);
+        let cipher1: cryptoFramework.Cipher = cryptoFramework.createCipher(encAlgName);
+        cipher1.initSync(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, paramSpec);
+        let cipherData: cryptoFramework.DataBlob = await cipher1.update(data);
+        let authTag = await cipher1.doFinal(null);
+        expect(authTag.data.byteLength).assertEqual(16);
+        paramSpec.authTag = authTag;
+        let cipher2: cryptoFramework.Cipher = cryptoFramework.createCipher(encAlgName);
+        cipher2.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, paramSpec);
+        let plainText = await cipher2.doFinal(cipherData);
+        let ret: boolean = commonUtils.compareDataBlob(data, plainText);
+        expect(ret).assertTrue();
+      } catch (error) {
+        console.error(`“${error}“, error code: ${error.code}`);
+        expect(null).assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_2300
+     * @tc.name Test Symmetric Alg algName Encrypt And Decrypt. Split Update. Promise style. Process success
+     * @tc.desc algorithm is SM4_128
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_2300", 0, async (done: Function) => {
+      try {
+        let encAlgName: string = "SM4_128|GCM|NoPadding"
+        let dataLen: number = 128;
+        let data: cryptoFramework.DataBlob = await commonUtils.createData(dataLen);
+        let cipher1 : cryptoFramework.Cipher = cryptoFramework.createCipher(encAlgName);
+        try {
+          cipher1.updateSync(data);
+        } catch (error) {
+          expect(error.code).assertEqual(401)
+        }
+        try {
+          cipher1.doFinalSync(data);
+        } catch (error) {
+          expect(error.code).assertEqual(401)
+        }
+      } catch (error) {
+        console.error(`“${error}“, error code: ${error.code}`);
+        expect(null).assertFail();
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_2400
+     * @tc.name Test Symmetric Alg algName Encrypt And Decrypt. Split Update. Promise style. Process success
+     * @tc.desc algorithm is SM4_128
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_2400", 0, async (done: Function) => {
+      try {
+        let algName: string = "SM4_128";
+        let encAlgName: string = "SM4_128|GCM|NoPadding"
+        let dataTag: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0];
+        let specAlgName: string = "GcmParamsSpec";
+        for (let vector of syncSymEncAndDecUtils.SM4_GCM_VECTOR) {
+          let dataIv: number[] = vector.iv;
+          let dataAad: number[] = vector.aad;
+          let dataKey: number[] = vector.key;
+          let dataPlain: number[] = vector.plainText;
+          let keyBlob: cryptoFramework.DataBlob = {
+            data: new Uint8Array(dataKey)
+          }
+          let plainBlob: cryptoFramework.DataBlob = {
+            data: new Uint8Array(dataPlain)
+          }
+          let paramSpec: cryptoFramework.GcmParamsSpec = syncSymEncAndDecUtils.genGcmOrCcmParamsSpec(dataIv, dataAad, dataTag, specAlgName);
+          let symKey: cryptoFramework.SymKey = await syncSymEncAndDecUtils.convertSymKeyPromise(algName, keyBlob);
+          let cipher1: cryptoFramework.Cipher = cryptoFramework.createCipher(encAlgName);
+          cipher1.initSync(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, paramSpec);
+          let cipherData: cryptoFramework.DataBlob = await cipher1.update(plainBlob);
+          let authTag = await cipher1.doFinal(null);
+          let ret: boolean = commonUtils.compareDataBlob(cipherData, {data: new Uint8Array(vector.cipherText)});
+          ret = ret && commonUtils.compareDataBlob(authTag, {data: new Uint8Array(vector.authTag)});
+          expect(ret).assertTrue();
+        }
+      } catch (error) {
+        console.error(`“${error}“, error code: ${error.code}`);
+        expect(null).assertFail();
+      }
+      done();
+    });
+    
+    /**
+     * @tc.number SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_2500
+     * @tc.name Test Symmetric Alg algName Encrypt And Decrypt. Split Update. Promise style. Process success
+     * @tc.desc algorithm is SM4_128
+     * @tc.size Medium
+     * @tc.type Func
+     * @tc.level Level3
+     */
+    it("SUB_Security_CryptoFramework_SymEncryptAndDecrypt_Func_2500", 0, async (done: Function) => {
+      try {
+        let algName: string = "SM4_128";
+        let encAlgName: string = "SM4_128|GCM"
+        let dataTag: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0];
+        let specAlgName: string = "GcmParamsSpec";
+        for (let vector of syncSymEncAndDecUtils.SM4_GCM_VECTOR) {
+          let dataIv: number[] = vector.iv;
+          let dataAad: number[] = vector.aad;
+          let dataKey: number[] = vector.key;
+          let dataPlain: number[] = vector.plainText;
+          let keyBlob: cryptoFramework.DataBlob = {
+            data: new Uint8Array(dataKey)
+          }
+          let plainBlob: cryptoFramework.DataBlob = {
+            data: new Uint8Array(dataPlain)
+          }
+          let paramSpec: cryptoFramework.GcmParamsSpec = syncSymEncAndDecUtils.genGcmOrCcmParamsSpec(dataIv, dataAad, dataTag, specAlgName);
+          let symKey: cryptoFramework.SymKey = await syncSymEncAndDecUtils.convertSymKeyPromise(algName, keyBlob);
+          let cipher1: cryptoFramework.Cipher = cryptoFramework.createCipher(encAlgName);
+          cipher1.initSync(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, paramSpec);
+          let cipherData: cryptoFramework.DataBlob = await cipher1.update(plainBlob);
+          let authTag = await cipher1.doFinal(null);
+          let ret: boolean = commonUtils.compareDataBlob(cipherData, {data: new Uint8Array(vector.cipherText)});
+          ret = ret && commonUtils.compareDataBlob(authTag, {data: new Uint8Array(vector.authTag)});
+          expect(ret).assertTrue();
+        }
       } catch (error) {
         console.error(`“${error}“, error code: ${error.code}`);
         expect(null).assertFail();

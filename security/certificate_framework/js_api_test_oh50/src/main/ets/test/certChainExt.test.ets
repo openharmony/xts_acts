@@ -16,6 +16,13 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import cert from '@ohos.security.cert';
 import { BusinessError } from '@ohos.base';
+import util from '@ohos.util';
+import {
+  certUft8WithChineseSubject,
+  certUft8WithSpecialSubject,
+  certUft8WithNullSubject,
+  certUft8WithSubject
+} from './utils/certificate/publicCertificatePromise';
 
 export default function certFrameworkCertChainExtJsAPIFunctionTestUnit() {
   describe("certFrameworkCertChainExtJsAPIFunctionTestUnit", () => {
@@ -683,6 +690,140 @@ export default function certFrameworkCertChainExtJsAPIFunctionTestUnit() {
         done();
       }
     });
+    
+    /**
+     * @tc.number SUB_Security_Cert_Framework_CertChainExt_Func_1600
+     * @tc.name check Subject with Chinese
+     * @tc.desc Use Promise Type
+     * @tc.size SmallTest
+     * @tc.level Level1
+     * @tc.type Function
+     */
+    it("SUB_Security_Cert_Framework_CertChainExt_Func_1600", 0, async (done: Function) => {
+      let caseName = "SUB_Security_Cert_Framework_CertChainExt_Func_1600";
+      let encodingBlob: cert.EncodingBlob = {
+        data: stringToUint8Array(certUft8WithChineseSubject),
+        encodingFormat: cert.EncodingFormat.FORMAT_PEM
+      };
+      try {
+        let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
+        let mode: cert.EncodingType = 0;
+        let subjectNameBlob = x509Cert.getSubjectName(mode);
+        let encoder = util.TextDecoder.create('utf8', {ignoreBOM: false});
+        const subjectName = encoder.decodeWithStream(subjectNameBlob.data)
+        let subjectNameBlob2 = x509Cert.getSubjectName();
+        let encoder2 = util.TextDecoder.create('utf8', {ignoreBOM: false});
+        const subjectName2 = encoder2.decodeWithStream(subjectNameBlob2.data)
+        expect(subjectName).assertEqual("C=CN,ST=陕西,L=西安,O=测试,CN=中文测试");
+        expect(subjectName2.length).assertLarger(0);
+      } catch (error) {
+        console.error(`${caseName} catch error: ${JSON.stringify(error)}`);
+        expect(null).assertFail()
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_Cert_Framework_CertChainExt_Func_1700
+     * @tc.name check Subject with Chinese
+     * @tc.desc Use Promise Type
+     * @tc.size SmallTest
+     * @tc.level Level1
+     * @tc.type Function
+     */
+    it("SUB_Security_Cert_Framework_CertChainExt_Func_1700", 0, async (done: Function) => {
+      let caseName = "SUB_Security_Cert_Framework_CertChainExt_Func_1700";
+      let encodingBlob: cert.EncodingBlob = {
+        data: stringToUint8Array(certUft8WithSpecialSubject),
+        encodingFormat: cert.EncodingFormat.FORMAT_PEM
+      };
+      try {
+        let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
+        let mode: cert.EncodingType = 0;
+        let subjectNameBlob = x509Cert.getSubjectName(mode);
+        let encoder = util.TextDecoder.create('utf8', {ignoreBOM: false});
+        const subjectName = encoder.decodeWithStream(subjectNameBlob.data)
+        let subjectNameBlob2 = x509Cert.getSubjectName();
+        let encoder2 = util.TextDecoder.create('utf8', {ignoreBOM: false});
+        const subjectName2 = encoder2.decodeWithStream(subjectNameBlob2.data)
+        expect(subjectName).assertEqual("C=CN,ST=陕西,L=西￥安,O=测%试,CN=中文@测试");
+        expect(subjectName2.length).assertLarger(0);
+      } catch (error) {
+        console.error(`${caseName} catch error: ${JSON.stringify(error)}`);
+        expect(null).assertFail()
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_Cert_Framework_CertChainExt_Func_1800
+     * @tc.name check Subject with Chinese
+     * @tc.desc Use Promise Type
+     * @tc.size SmallTest
+     * @tc.level Level1
+     * @tc.type Function
+     */
+    it("SUB_Security_Cert_Framework_CertChainExt_Func_1800", 0, async (done: Function) => {
+      let caseName = "SUB_Security_Cert_Framework_CertChainExt_Func_1800";
+      try {
+        let encodingBlob: cert.EncodingBlob = {
+          data: stringToUint8Array(certUft8WithNullSubject),
+          encodingFormat: cert.EncodingFormat.FORMAT_PEM
+        };
+        let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
+        let mode: cert.EncodingType = 0;
+        try {
+          x509Cert.getSubjectName();
+          expect(null).assertFail()
+        } catch (error) {
+          expect(error.code).assertEqual(19030001);
+        }
+        try {
+          x509Cert.getSubjectName(mode);
+          expect(null).assertFail()
+        } catch (error) {
+          expect(error.code).assertEqual(19030001);
+        }
+      } catch (error) {
+        console.error(`${caseName} catch error: ${JSON.stringify(error)}`);
+        expect(null).assertFail()
+      }
+      done();
+    });
+
+    /**
+     * @tc.number SUB_Security_Cert_Framework_CertChainExt_Func_1900
+     * @tc.name check Subject with Chinese
+     * @tc.desc Use Promise Type
+     * @tc.size SmallTest
+     * @tc.level Level1
+     * @tc.type Function
+     */
+    it("SUB_Security_Cert_Framework_CertChainExt_Func_1900", 0, async (done: Function) => {
+      let caseName = "SUB_Security_Cert_Framework_CertChainExt_Func_1900";
+      let encodingBlob: cert.EncodingBlob = {
+        data: stringToUint8Array(certUft8WithSubject),
+        encodingFormat: cert.EncodingFormat.FORMAT_PEM
+      };
+      try {
+        let x509Cert: cert.X509Cert = await cert.createX509Cert(encodingBlob);
+        let mode: cert.EncodingType = 0;
+        let subjectNameBlob = x509Cert.getSubjectName(mode);
+        let encoder = util.TextDecoder.create('utf8', {ignoreBOM: false});
+        const subjectName = encoder.decodeWithStream(subjectNameBlob.data)
+
+        let subjectNameBlob2 = x509Cert.getSubjectName();
+        let encoder2 = util.TextDecoder.create('utf8', {ignoreBOM: false});
+        const subjectName2 = encoder2.decodeWithStream(subjectNameBlob2.data)
+        expect(subjectName).assertEqual("CN=Example Root CA");
+        expect(subjectName2).assertEqual("/CN=Example Root CA");
+      } catch (error) {
+        console.error(`${caseName} catch error: ${JSON.stringify(error)}`);
+        expect(null).assertFail()
+      }
+      done();
+    });
+    
   });
 }
 
