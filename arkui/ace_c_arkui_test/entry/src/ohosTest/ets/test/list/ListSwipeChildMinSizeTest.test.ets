@@ -208,6 +208,73 @@ export default function ListSwipeChildMinSizeTest() {
       done()
     })
 
+     /*
+     * @tc.number     : SUB_ARKUI_CAPI_Accessibility_070
+     * @tc.name       : testAccessibility070
+     * @tc.desc       : testing Accessibility interface
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+    */
+    it('testAccessibility070', 0, async (done: Function) => {
+      expect(nativeFunc.testAccessibility070()).assertEqual(1)
+      done()
+    })
+  
+   
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_Accessibility_080
+     * @tc.name       : testAccessibility080
+     * @tc.desc       : testing Accessibility interface
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+    */
+    it('testAccessibility080', 0, async (done: Function) => {
+      expect(nativeFunc.testAccessibility080()).assertEqual(1)
+      done()
+    })
+
+     /*
+     * @tc.number     : SUB_ARKUI_CAPI_Accessibility_090
+     * @tc.name       : testAccessibility090
+     * @tc.desc       : testing Accessibility interface
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+    */
+    it('testAccessibility090', 0, async (done: Function) => {
+      expect(nativeFunc.testAccessibility090()).assertEqual(1)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_Accessibility_010
+     * @tc.name       : testAccessibility010
+     * @tc.desc       : testing Accessibility interface
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+    */
+    it('testAccessibility010', 0, async (done: Function) => {
+      expect(nativeFunc.testAccessibility010()).assertEqual(1)
+      done()
+    })
+
+     /*
+     * @tc.number     : SUB_ARKUI_CAPI_Accessibility_011
+     * @tc.name       : testAccessibility011
+     * @tc.desc       : testing Accessibility interface
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+    */
+    it('testAccessibility011', 0, async (done: Function) => {
+      expect(nativeFunc.testAccessibility011()).assertEqual(1)
+      done()
+    })
+  
+
   /*
    * @tc.number     : SUB_ARKUI_CAPI_ImageAnimator_0090
    * @tc.name       : testImageAniMator009
