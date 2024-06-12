@@ -746,7 +746,7 @@ export default function workerTest() {
       } catch (error) {
         console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
         expectAssertEqual(error.code, 10200007);
-        expectAssertContain(error.message, 'The worker file patch is invalid path');
+        expectAssertContain(error.message, 'The worker file path is invalid path');
         done();
       }
       console.info(`${caseName} test end`);
@@ -6373,7 +6373,7 @@ export default function workerTest() {
       } catch (error) {
         console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
         expectAssertEqual(error.code, 10200007);
-        expectAssertContain(error.message, 'The worker file patch is invalid path');
+        expectAssertContain(error.message, 'The worker file path is invalid path');
         done();
       }
       console.info(`${caseName} test end`);
