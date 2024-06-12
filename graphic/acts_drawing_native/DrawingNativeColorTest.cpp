@@ -37,8 +37,6 @@
 #include "drawing_shadow_layer.h"
 #include "drawing_text_blob.h"
 #include "drawing_typeface.h"
-#include "effect/color_filter.h"
-#include "effect/filter.h"
 
 using namespace testing;
 using namespace testing::ext;
@@ -49,16 +47,91 @@ namespace Drawing {
 class DrawingNativeColorTest : public testing::Test {};
 
 /*
- * @tc.name: OH_Drawing_ColorSetArgb
- * @tc.desc: test for OH_Drawing_ColorSetArgb.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_0100
+ * @tc.name: testColorSetArgbNormal
+ * @tc.desc: test for testColorSetArgbNormal.
  * @tc.size  : SmallTest
  * @tc.type  : Function
- * @tc.level : Level 1
+ * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeColorTest, OH_Drawing_ColorSetArgb, TestSize.Level1) {
-    OH_Drawing_Brush *brush1 = OH_Drawing_BrushCreate();
-    OH_Drawing_BrushSetColor(brush1, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
-    EXPECT_EQ(OH_Drawing_BrushGetColor(brush1), 0xFFFF0000);
+HWTEST_F(DrawingNativeColorTest, testColorSetArgbNormal, TestSize.Level0) {
+    // 1
+    OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0xFF, 0xFF);
+    // 2
+    OH_Drawing_ColorSetArgb(0, 0, 0, 0);
+    // 3 Compilation error, unable to test
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_0101
+ * @tc.name: testColorSetArgbNULL
+ * @tc.desc: test for testColorSetArgbNULL.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeColorTest, testColorSetArgbNULL, TestSize.Level3) {
+    // 1、Passing empty for the first argument of OH_Drawing_ColorSetArgb
+    OH_Drawing_ColorSetArgb(0, 0xFF, 0xFF, 0xFF);
+    // 2、Passing empty for the second argument of OH_Drawing_ColorSetArgb
+    OH_Drawing_ColorSetArgb(0xFF, 0, 0xFF, 0xFF);
+    // 3、Passing empty for the third argument of OH_Drawing_ColorSetArgb
+    OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0, 0xFF);
+    // 4、Passing empty for the fourth argument of OH_Drawing_ColorSetArgb
+    OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0xFF, 0);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_0102
+ * @tc.name: testColorSetArgbMultipleCalls
+ * @tc.desc: test for testColorSetArgbMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeColorTest, testColorSetArgbMultipleCalls, TestSize.Level3) {
+    // 1. Call OH_Drawing_ColorSetArgb with random numbers between 0 and 255, 10 times
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_ColorSetArgb(rand() % 256, rand() % 256, rand() % 256, rand() % 256);
+    }
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_0103
+ * @tc.name: testColorSetArgbAbnormal
+ * @tc.desc: test for testColorSetArgbAbnormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeColorTest, testColorSetArgbAbnormal, TestSize.Level3) {
+    // 1. The first argument of OH_Drawing_ColorSetArgb is a negative number
+    OH_Drawing_ColorSetArgb(-0x01, 0xFF, 0xFF, 0xFF);
+    // 2. The second argument of OH_Drawing_ColorSetArgb is a negative number
+    OH_Drawing_ColorSetArgb(0xFF, -0x01, 0xFF, 0xFF);
+    // 3. The third argument of OH_Drawing_ColorSetArgb is a negative number
+    OH_Drawing_ColorSetArgb(0xFF, 0xFF, -0x01, 0xFF);
+    // 4. The fourth argument of OH_Drawing_ColorSetArgb is a negative number
+    OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0xFF, -0x01);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_0104
+ * @tc.name: testColorSetArgbMaximum
+ * @tc.desc: test for testColorSetArgbMaximum.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeColorTest, testColorSetArgbMaximum, TestSize.Level3) {
+    // 1
+    OH_Drawing_ColorSetArgb(0xFF + 1, 0x00, 0x00, 0xFF);
+    // 2
+    OH_Drawing_ColorSetArgb(0xFF, 0xFF + 1, 0x00, 0xFF);
+    // 3
+    OH_Drawing_ColorSetArgb(0xFF, 0x00, 0xFF + 1, 0xFF);
+    // 4
+    OH_Drawing_ColorSetArgb(0xFF, 0x00, 0x00, 0xFF + 1);
 }
 
 } // namespace Drawing

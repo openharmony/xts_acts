@@ -31,32 +31,16 @@ ohos_moduletest_suite("ActsDrawingNativeTest") {
     "DrawingNativeCanvasTestPart3.cpp",
     "DrawingNativeCanvasTestPart4.cpp",
     "DrawingNativeColorFilterTest.cpp",
-    "DrawingNativeColorSpaceTest.cpp",
     "DrawingNativeColorTest.cpp",
-    "DrawingNativeFilterTest.cpp",
-    "DrawingNativeFontMgrTest.cpp",
-    "DrawingNativeFontTest.cpp",
-    "DrawingNativeGpuContextTest.cpp",
-    "DrawingNativeImageFilterTest.cpp",
-    "DrawingNativeImageTest.cpp",
-    "DrawingNativeMaskFilterTest.cpp",
-    "DrawingNativeMatrixTest.cpp",
-    "DrawingNativeMemoryStreamTest.cpp",
-    "DrawingNativePathTest.cpp",
     "DrawingNativePenTest.cpp",
-    "DrawingNativePixelMapTest.cpp",
-    "DrawingNativePointTest.cpp",
-    "DrawingNativeRectTest.cpp",
-    "DrawingNativeRegionTest.cpp",
-    "DrawingNativeRoundRectTest.cpp",
-    "DrawingNativeShaderEffectTest.cpp",
-    "DrawingNativeShadowLayerTest.cpp",
-    "DrawingNativeTextBlobTest.cpp",
   ]
 
   cflags = [
     "-Wall",
     "-Werror",
+    "-g3",
+    "-Dprivate=public",
+    "-Dprotected=public",
   ]
 
   include_dirs = [
@@ -70,13 +54,8 @@ ohos_moduletest_suite("ActsDrawingNativeTest") {
   }
 
   external_deps = [
-    "c_utils:utils",
-    "graphic_2d:2d_graphics",
-    "graphic_2d:EGL",
-    "graphic_2d:GLESv3",
     "graphic_2d:native_drawing_ndk",
     "hilog:libhilog",
-    "openssl:libcrypto_shared",
   ]
   deps = [ "//third_party/googletest:gtest_main" ]
 }

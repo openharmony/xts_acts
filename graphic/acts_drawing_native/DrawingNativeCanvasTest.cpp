@@ -37,8 +37,6 @@
 #include "drawing_shader_effect.h"
 #include "drawing_text_blob.h"
 #include "drawing_typeface.h"
-#include "effect/color_filter.h"
-#include "effect/filter.h"
 
 using namespace testing;
 using namespace testing::ext;
