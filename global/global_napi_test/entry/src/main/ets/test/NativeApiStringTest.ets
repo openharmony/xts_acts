@@ -126,7 +126,7 @@ export default function abilityTest() {
     * @tc.desc    test ResourceManager NDK interface
     */
     it('isRawDir_ndktest_0100',0, function () {
-      let value=ndk.isRawDir(getContext().resourceManager,'')
+      let value=ndk.isRawDir(resManager.getResourceManager(),'')
       expect(value).assertTrue()
     })
 
@@ -136,7 +136,7 @@ export default function abilityTest() {
     * @tc.desc    test ResourceManager NDK interface
     */
     it('getDrawableDescriptor_ndktest_0100',0, function () {
-      let value=ndk.getDrawableDescriptor(getContext().resourceManager,$r('app.media.icon').id)
+      let value=ndk.getDrawableDescriptor(resManager.getResourceManager(),$r('app.media.icon').id)
       expect(value).assertTrue()
     })
 
@@ -146,7 +146,7 @@ export default function abilityTest() {
     * @tc.desc    test ResourceManager NDK interface
     */
     it('getDrawableDescriptorByName_ndktest_0100',0, function () {
-      let value=ndk.getDrawableDescriptorByName(getContext().resourceManager)
+      let value=ndk.getDrawableDescriptorByName(resManager.getResourceManager())
       expect(value).assertTrue()
     })
 
@@ -156,7 +156,7 @@ export default function abilityTest() {
     * @tc.desc    test ResourceManager NDK interface
     */
     it('getMediaBase64_ndktest_0100',0, function () {
-      let value=ndk.getMediaBase64(getContext().resourceManager,$r('app.media.icon').id)
+      let value=ndk.getMediaBase64(resManager.getResourceManager(),$r('app.media.icon').id)
       expect(value).assertTrue()
     })
 
@@ -166,7 +166,7 @@ export default function abilityTest() {
     * @tc.desc    test ResourceManager NDK interface
     */
     it('getMediaBase64ByName_ndktest_0100',0, function () {
-      let value=ndk.getMediaBase64ByName(getContext().resourceManager)
+      let value=ndk.getMediaBase64ByName(resManager.getResourceManager())
       expect(value).assertTrue()
     })
 
@@ -176,7 +176,7 @@ export default function abilityTest() {
     * @tc.desc    test ResourceManager NDK interface
     */
     it('getMedia_ndktest_0100',0, function () {
-      let value=ndk.getMedia(getContext().resourceManager,$r('app.media.icon').id)
+      let value=ndk.getMedia(resManager.getResourceManager(),$r('app.media.icon').id)
       expect(value).assertTrue()
     })
 
@@ -186,7 +186,7 @@ export default function abilityTest() {
     * @tc.desc    test ResourceManager NDK interface
     */
     it('getMediaByName_ndktest_0100',0, function () {
-      let value=ndk.getMediaByName(getContext().resourceManager)
+      let value=ndk.getMediaByName(resManager.getResourceManager())
       expect(value).assertTrue()
     })
 
