@@ -485,6 +485,7 @@
 #include "arkApi/arkUIAPi.cpp"
 #include "animation/animation.cpp"
 #include "waterFlower/waterFlower.cpp"
+#include "accessibilityState/accessibilityState.cpp"
 
 
 namespace ArkUICapiTest {
@@ -4359,7 +4360,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testWaterFlower_003", nullptr, testWaterFlower_003, nullptr , nullptr, nullptr, napi_default, nullptr},
         {"testWaterFlower_004", nullptr, testWaterFlower_004, nullptr , nullptr, nullptr, napi_default, nullptr},
         {"testWaterFlower_005", nullptr, testWaterFlower_004, nullptr , nullptr, nullptr, napi_default, nullptr},
-
+        {"accessibilityState_001", nullptr, accessibilityState_001, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"accessibilityState_002", nullptr, accessibilityState_002, nullptr , nullptr, nullptr, napi_default, nullptr},
         {"testArkUI001", nullptr, testArkUI001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testArkUI002", nullptr, testArkUI002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testArkUI003", nullptr, testArkUI003, nullptr, nullptr, nullptr, napi_default, nullptr},

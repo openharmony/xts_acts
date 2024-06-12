@@ -555,6 +555,8 @@ import TestArkUIAddApi from './arkApi/arkApi.test'
 import testArkUI from './arkApi/arkUIApiTest.test'
 import testAnimationTest from './animation/animationTest.test'
 import testWaterFlower from './waterFlower/waterFlowerTest.test'
+import accessibilityStateTest from './accessibilityState/accessibilityStateTest.test'
+
 export default function testsuite() {
   datePickerAccessibilityDescriptionTest()
   datePickerAccessibilityGroupTest()
@@ -1099,4 +1101,6 @@ export default function testsuite() {
   testArkUI()
   testAnimationTest()
   testWaterFlower()
+  accessibilityStateTest()
+
 }

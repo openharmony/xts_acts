@@ -56,12 +56,25 @@ static napi_value testWaterFlower_004(napi_env env, napi_callback_info info)
 
 static napi_value testWaterFlower_005(napi_env env, napi_callback_info info)
 {
-    auto option = OH_ArkUI_WaterFlowSectionOption_Create();
-    OH_ArkUI_WaterFlowSectionOption_SetSize(option,12);
-    auto result = OH_ArkUI_WaterFlowSectionOption_GetSize(option);
-    ASSERT_EQ(result, 12);
-    OH_ArkUI_WaterFlowSectionOption_Dispose(option);
-    NAPI_END;
+        auto option = OH_ArkUI_WaterFlowSectionOption_Create();
+        OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex(option, 0, [](int index) -> float { return index * 0; });
+    
+        struct ArkUICustomData{
+            float id;
+            int index;
+        };
+        auto customData = new ArkUICustomData{12,1};
+        OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData(option, 1, customData,
+        [](int index,void *value) -> float{
+            auto data = reinterpret_cast<ArkUICustomData *>(value);
+            return index * 20;
+        });
+    
+        OH_ArkUI_WaterFlowSectionOption_SetSize(option, 12);
+        auto result = OH_ArkUI_WaterFlowSectionOption_GetSize(option);
+        ASSERT_EQ(result, 12);
+        OH_ArkUI_WaterFlowSectionOption_Dispose(option);
+        NAPI_END;
 }
 
 
