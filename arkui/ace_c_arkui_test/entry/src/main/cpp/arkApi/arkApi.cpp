@@ -174,5 +174,72 @@ static napi_value TestArkUIAddApi018(napi_env env, napi_callback_info info)
     NAPI_END;
 }
 
+static napi_value TestArkUIAddApi019(napi_env env, napi_callback_info info)
+{
+    
+    NAPI_START(image, ARKUI_NODE_IMAGE_ANIMATOR);
+    
+    ArkUI_NumberValue value[1];
+    value[0].i32 = 10;
+    ArkUI_AttributeItem item = { value, 1 };
+    
+    auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_ANIMATOR_ITERATION, &item);
+    ASSERT_EQ(ret, SUCCESS);
+    NAPI_END;
+}
+
+static napi_value TestArkUIAddApi020(napi_env env, napi_callback_info info)
+{
+    
+    NAPI_START(image, ARKUI_NODE_IMAGE_ANIMATOR);
+    
+    ArkUI_NumberValue value[1];
+    value[0].i32 = -1;
+    ArkUI_AttributeItem item = { value, 1 };
+    
+    auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_ANIMATOR_ITERATION, &item);
+    ASSERT_EQ(ret, SUCCESS);
+    NAPI_END;
+}
+
+static napi_value TestArkUIAddApi021(napi_env env, napi_callback_info info)
+{
+    
+    NAPI_START(image, ARKUI_NODE_IMAGE_ANIMATOR);
+    ArkUI_NumberValue value[1];
+    value[0].i32 = 1000;
+    ArkUI_AttributeItem item = { value, 1 };
+    
+    auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_ANIMATOR_DURATION, &item);
+    ASSERT_EQ(ret, SUCCESS);
+    NAPI_END;
+}
+
+static napi_value TestArkUIAddApi022(napi_env env, napi_callback_info info)
+{
+    
+    NAPI_START(image, ARKUI_NODE_IMAGE_ANIMATOR);
+    ArkUI_NumberValue value[1];
+    value[0].i32 = -1000;
+    ArkUI_AttributeItem item = { value, 1 };
+    
+    auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_ANIMATOR_DURATION, &item);
+    ASSERT_EQ(ret, SUCCESS);
+    NAPI_END;
+}
+
+static napi_value TestArkUIAddApi023(napi_env env, napi_callback_info info)
+{
+    
+    NAPI_START(image, ARKUI_NODE_IMAGE_ANIMATOR);
+    ArkUI_NumberValue value[1];
+    value[0].i32 = 0;
+    ArkUI_AttributeItem item = { value, 1 };
+    
+    auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_ANIMATOR_DURATION, &item);
+    ASSERT_EQ(ret, SUCCESS);
+    NAPI_END;
+}
+
 
 }
