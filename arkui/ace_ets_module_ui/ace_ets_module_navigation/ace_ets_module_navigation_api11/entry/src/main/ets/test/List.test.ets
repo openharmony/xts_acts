@@ -95,7 +95,6 @@ import navigatorCodeJsunit from './Navigation/NavigatorCodeJsunit.test.ets';
 
 export default function testsuite() {
   navigationTypeTest();
-
   StepperJsunit11();
   NavigationParamTest();
   NavigationApi();
@@ -165,8 +164,6 @@ export default function testsuite() {
   stepperUIJsunit();
   transitionJsunit();
   sharedTransitionJsunit();
-  
-  navigationTypeTest();
   NavigationApiFirst()
   sidebarIconsJsunit()
   stepperItemDisabledJsunit()
@@ -174,6 +171,6 @@ export default function testsuite() {
   navigatorTargetJsunit()
   pageRouteTest()
   searchOnCutJsunit()
-   navigationJsunittt();
+  navigationJsunittt();
   navigatorCodeJsunit();
 }
