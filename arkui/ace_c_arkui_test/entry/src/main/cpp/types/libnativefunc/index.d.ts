@@ -1178,6 +1178,14 @@ export const testSwiperIndicator002: () => number;
 
 export const testSwiperIndicator003: () => number;
 
+export const testSwiperIndicator004: () => number;
+
+export const testSwiperIndicator005: () => number;
+
+export const testSwiperIndicator006: () => number;
+
+export const testSwiperIndicator007: () => number;
+
 export const testSwiperInterval001: () => number;
 
 export const testSwiperInterval002: () => number;

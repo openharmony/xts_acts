@@ -55,4 +55,69 @@ static napi_value TestSwiperIndicator003(napi_env env, napi_callback_info info)
     NAPI_END;
 }
 
+static napi_value TestSwiperIndicator004(napi_env env, napi_callback_info info)
+{
+    auto indicator = OH_ArkUI_SwiperIndicator_Create(ARKUI_SWIPER_INDICATOR_TYPE_DOT);
+    OH_ArkUI_SwiperIndicator_SetStartPosition(indicator, 5);
+    OH_ArkUI_SwiperIndicator_SetTopPosition(indicator, 5);
+    OH_ArkUI_SwiperIndicator_SetEndPosition(indicator, 5);
+    OH_ArkUI_SwiperIndicator_SetBottomPosition(indicator, 5);
+
+    ASSERT_EQ(OH_ArkUI_SwiperIndicator_GetStartPosition(indicator), 5);
+    ASSERT_EQ(OH_ArkUI_SwiperIndicator_GetTopPosition(indicator), 5);
+    ASSERT_EQ(OH_ArkUI_SwiperIndicator_GetEndPosition(indicator), 5);
+    ASSERT_EQ(OH_ArkUI_SwiperIndicator_GetBottomPosition(indicator), 5);
+    
+    OH_ArkUI_SwiperIndicator_Dispose(indicator);
+
+    NAPI_END;
+}
+
+static napi_value TestSwiperIndicator005(napi_env env, napi_callback_info info)
+{
+    auto indicator = OH_ArkUI_SwiperIndicator_Create(ARKUI_SWIPER_INDICATOR_TYPE_DOT);
+
+    OH_ArkUI_SwiperIndicator_SetItemWidth(indicator, 10);
+    OH_ArkUI_SwiperIndicator_SetItemHeight(indicator, 20);
+
+    ASSERT_EQ(OH_ArkUI_SwiperIndicator_GetItemWidth(indicator), 10);
+    ASSERT_EQ(OH_ArkUI_SwiperIndicator_GetItemHeight(indicator), 20);
+
+    OH_ArkUI_SwiperIndicator_Dispose(indicator);
+
+    NAPI_END;
+}
+
+static napi_value TestSwiperIndicator006(napi_env env, napi_callback_info info)
+{
+    auto indicator = OH_ArkUI_SwiperIndicator_Create(ARKUI_SWIPER_INDICATOR_TYPE_DOT);
+    
+    OH_ArkUI_SwiperIndicator_SetSelectedItemWidth(indicator, 10);
+    OH_ArkUI_SwiperIndicator_SetSelectedItemHeight(indicator, 20);
+    
+    ASSERT_EQ(OH_ArkUI_SwiperIndicator_GetSelectedItemWidth(indicator), 10);
+    ASSERT_EQ(OH_ArkUI_SwiperIndicator_GetSelectedItemHeight(indicator), 20);
+
+    OH_ArkUI_SwiperIndicator_Dispose(indicator);
+
+    NAPI_END;
+}
+
+static napi_value TestSwiperIndicator007(napi_env env, napi_callback_info info)
+{
+    auto indicator = OH_ArkUI_SwiperIndicator_Create(ARKUI_SWIPER_INDICATOR_TYPE_DOT);
+
+    OH_ArkUI_SwiperIndicator_SetMask(indicator, 1);
+    OH_ArkUI_SwiperIndicator_SetColor(indicator, 0xFFFFFF00);
+    OH_ArkUI_SwiperIndicator_SetSelectedColor(indicator, 0xFF0000FF);
+
+    ASSERT_EQ(OH_ArkUI_SwiperIndicator_GetMask(indicator), 1);
+    ASSERT_EQ(OH_ArkUI_SwiperIndicator_GetColor(indicator), 0xFFFFFF00);
+    ASSERT_EQ(OH_ArkUI_SwiperIndicator_GetSelectedColor(indicator), 0xFF0000FF);
+    
+    OH_ArkUI_SwiperIndicator_Dispose(indicator);
+
+    NAPI_END;
+}
+
 } // namespace ArkUICapiTest
