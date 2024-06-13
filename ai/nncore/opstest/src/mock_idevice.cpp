@@ -12,84 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#include <string>
 #include <sys/mman.h>
 
 #include "nncore_const.h"
 #include "mock_idevice.h"
-#include "hdi_device_v2_1.h"
-#include "hdi_returncode_utils_v2_1.h"
-#include "common/log.h"
-#include "common/utils.h"
-#include "nnbackend.h"
-#include "backend_registrar.h"
-
-namespace OHOS {
-namespace NeuralNetworkRuntime {
-void PrintRetLog(int32_t ret, int32_t nnrtSuccess, const std::string& makeName)
-{
-    if (ret < nnrtSuccess) {
-            LOGW("%s failed. An error occurred in HDI, errorcode is %{public}d.", makeName.c_str(), ret);
-        } else {
-            OHOS::HDI::Nnrt::V2_1::NNRT_ReturnCode nnrtRet = static_cast<OHOS::HDI::Nnrt::V2_1::NNRT_ReturnCode>(ret);
-            LOGW("%s failed. Errorcode is %{public}s.", makeName.c_str(), ConverterRetToString(nnrtRet).c_str());
-        }
-}
-
-std::shared_ptr<Backend> HDIDeviceV2_1Creator()
-{
-    std::string deviceName;
-    std::string vendorName;
-    std::string version;
-
-    // only one device from HDI now.
-    OHOS::sptr<V2_1::INnrtDevice> iDevice = V2_1::INnrtDevice::Get();
-    if (iDevice == nullptr) {
-        LOGW("Get HDI device failed.");
-        return nullptr;
-    }
-
-    auto ret = iDevice->GetDeviceName(deviceName);
-    int32_t nnrtSuccess = static_cast<int32_t>(V2_1::NNRT_ReturnCode::NNRT_SUCCESS);
-    if (ret != nnrtSuccess) {
-        std::string makeName = "Get device name";
-        PrintRetLog(ret, nnrtSuccess, makeName);
-        return nullptr;
-    }
-
-    ret = iDevice->GetVendorName(vendorName);
-    if (ret != nnrtSuccess) {
-        std::string makeName = "Get vendor name";
-        PrintRetLog(ret, nnrtSuccess, makeName);
-        return nullptr;
-    }
-
-    std::pair<uint32_t, uint32_t> hdiVersion;
-    ret = iDevice->GetVersion(hdiVersion.first, hdiVersion.second);
-    if (ret != nnrtSuccess) {
-        std::string makeName = "Get version";
-        PrintRetLog(ret, nnrtSuccess, makeName);
-        return nullptr;
-    }
-    version = 'v' + std::to_string(hdiVersion.first) + '_' + std::to_string(hdiVersion.second);
-    const std::string& backendName = GenUniqueName(deviceName, vendorName, version);
-
-    std::shared_ptr<Device> device = CreateSharedPtr<HDIDeviceV2_1>(iDevice);
-    if (device == nullptr) {
-        LOGW("Failed to create device, because fail to create device instance.");
-        return nullptr;
-    }
-
-    std::shared_ptr<Backend> backend = std::make_shared<NNBackend>(device, std::hash<std::string>{}(backendName));
-    if (backend == nullptr) {
-        LOGW("Failed to register backend, because fail to create backend.");
-    }
-    return backend;
-}
-
-REGISTER_BACKEND(HDIDeviceV2_1, HDIDeviceV2_1Creator)
-} // namespace NeuralNetworkRuntime
-} // namespace OHOS
 
 namespace OHOS {
 namespace HDI {
