@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import deviceAttestInfoTest from './deviceAttestInfo.test'
+import { window } from '@kit.ArkUI';
 
-export default function testsuite(context, windowStage, abilityStorage) {
+export default function testsuite(context: Context, windowStage:window.WindowStage,
+                                  abilityStorage: LocalStorage) {
   deviceAttestInfoTest(context, windowStage, abilityStorage)
 }
