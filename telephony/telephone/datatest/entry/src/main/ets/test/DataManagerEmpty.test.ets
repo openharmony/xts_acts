@@ -18,14 +18,6 @@ import data from '@ohos.telephony.data';
 import { BusinessError } from '@ohos.base';
 import sim from '@ohos.telephony.sim';
 
-const ExpectTrue: (n: boolean) => void = (n: boolean) => {
-  try {
-    expect(n).assertTrue();
-  } catch (err) {
-    console.info("expectInfo", `test failed`);
-  }
-}
-
 export default function dataManagerEmptyTest() {
   describe("testEmpty", () => {
     /*
@@ -40,6 +32,7 @@ export default function dataManagerEmptyTest() {
       let a: number = 1;
       let b: number = 2;
       expect(a+b).assertEqual(3);
+      done();
     });
   });
 }

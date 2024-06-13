@@ -34,6 +34,7 @@ export default function telephonyRadioNoPermissionEmptyTest() {
       let a: number = 1;
       let b: number = 2;
       expect(a+b).assertEqual(3);
+      done();
     });
 
   });

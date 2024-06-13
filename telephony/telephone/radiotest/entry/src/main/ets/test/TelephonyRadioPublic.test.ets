@@ -1128,32 +1128,6 @@ export default function telephonyRadioPublicTest() {
     });
 
     /*
-     * @tc.number: SUB_Telephony_Radio_IsRadioOn_0300
-     * @tc.name  : testTelephonyRadioIsRadioOn0300
-     * @tc.desc  : Check if the main card's Radio is turned on. Use callback for asynchronous callback.
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : Level 3
-     */
-    it('testTelephonyRadioIsRadioOn0300', 0, async (done: Function) => {
-      let caseName: string = 'testTelephonyRadioIsRadioOn0300';
-      console.info(`${caseName} test start`);
-      radio.isRadioOn(SLOT_0, (err: BusinessError, data: boolean) => {
-        if (err) {
-          console.info(`${caseName} failed, callback: err->${JSON.stringify(err)}`);
-          ExpectTrue(true);
-          console.info(`${caseName} test end`);
-          done();
-        } else {
-          console.info(`${caseName} success, callback: data->${JSON.stringify(data)}`);
-          ExpectTrue(true);
-          console.info(`${caseName} test end`);
-          done();
-        }
-      });
-    });
-
-    /*
      * @tc.number: SUB_Telephony_Radio_IsRadioOn_0500
      * @tc.name  : testTelephonyRadioIsRadioOn0500
      * @tc.desc  : Check if the main card's Radio is turned on. Use callback for asynchronous callback.
