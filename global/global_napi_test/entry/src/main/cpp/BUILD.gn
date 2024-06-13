@@ -47,6 +47,7 @@ ohos_shared_library("resmgrndk") {
   external_deps = [
     "hilog:libhilog",
     "napi:ace_napi",
+    "ace_engine:ace_ndk",
   ]
 
   subsystem_name = "global"
