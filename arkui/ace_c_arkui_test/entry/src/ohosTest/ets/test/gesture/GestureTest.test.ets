@@ -119,5 +119,22 @@ export default function gestureTest() {
     expect(Utils.getComponentInfoByKey('rotateID').$attrs.backgroundColor).assertEqual('#FF00FF00')
     done();
   })
+
+  /*
+  * @tc.number     : SUB_ARKUI_CAPI_INTERRUPT_001
+  * @tc.name       : test interrupt 001
+  * @tc.desc       : test interrupt
+  * @tc.size       : MediumTest
+  * @tc.type       : Function
+  * @tc.level      : Level 1
+  */
+  it('testInterruptGesture001', 0, async (done: Function) => {
+      let PAGE_TAG = 'InterruptGestureTest';
+      await Utils.pushPage(`gesture/${PAGE_TAG}`, done);
+      let driver = Driver.create();
+      await driver.swipe(100,100,100,200,600);
+      expect(Utils.getComponentInfoByKey('interruptID').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      done();
+  })
   })
 }
