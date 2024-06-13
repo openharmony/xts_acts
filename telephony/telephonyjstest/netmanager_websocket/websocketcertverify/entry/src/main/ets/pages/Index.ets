@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12,28 +12,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import hilog from '@ohos.hilog';
 
-import {  Context } from '@ohos.abilityAccessCtrl';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'Hello World'
 
-export class GlobalContext {
-  private constructor() {
-  }
-
-  private static instance: GlobalContext;
-  private _objects = new Map<string, Object>();
-
-  public static getContext(): GlobalContext {
-    if(!GlobalContext.instance) {
-      GlobalContext.instance = new GlobalContext();
+  build() {
+    Row() {
+      Column() {
+        Text(this.message)
+          .fontSize(50)
+          .fontWeight(FontWeight.Bold)
+          .onClick(() => {
+          })
+      }
+      .width('100%')
     }
-    return GlobalContext.instance;
-  }
-
-  getObject(value: string): any {
-    return this._objects.get(value);
-  }
-
-  setObject(key: string, objectClass: any): void {
-    this._objects.set(key, objectClass)
+    .height('100%')
   }
 }

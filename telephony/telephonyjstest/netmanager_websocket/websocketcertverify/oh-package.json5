@@ -13,27 +13,15 @@
  * limitations under the License.
  */
 
-import {  Context } from '@ohos.abilityAccessCtrl';
-
-export class GlobalContext {
-  private constructor() {
-  }
-
-  private static instance: GlobalContext;
-  private _objects = new Map<string, Object>();
-
-  public static getContext(): GlobalContext {
-    if(!GlobalContext.instance) {
-      GlobalContext.instance = new GlobalContext();
-    }
-    return GlobalContext.instance;
-  }
-
-  getObject(value: string): any {
-    return this._objects.get(value);
-  }
-
-  setObject(key: string, objectClass: any): void {
-    this._objects.set(key, objectClass)
-  }
+{
+  "license": "",
+  "devDependencies": {
+    "@ohos/hypium": "1.0.6"
+  },
+  "author": "",
+  "name": "myapplication",
+  "description": "Please describe the basic information.",
+  "main": "",
+  "version": "1.0.0",
+  "dependencies": {}
 }
