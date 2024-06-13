@@ -35,8 +35,11 @@ function registerTorchStatusChange(cameraManager: cameraManager):void{
 
 function callback(err:BusinessError, torchStatusInfo:camera.TorchStatusInfo):void{
   let errSode = camera.CameraErrorCode.UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS;
+  let isTorchAbailable = torchStatusInfo.isTorchAvailable
+  let isTorchActive = torchStatusInfo.isTorchActive
+  let torchLevel = torchStatusInfo.torchLevel
   console.info(TAG+"Entering GET_CAMERAS CameraErrorCode" + errSode);
-  console.info(`onTorchStatusChange, isTorchAbailable:${torchStatusInfo.isTorchActive},level:${torchStatusInfo.torchLevel}`)
+  console.info("onTorchStatusChange, isTorchAbailable:"+ isTorchAbailable ,"isTorchActive:"+ isTorchActive,"level:"+ torchLevel);
 }
 
 function  getSupportedCameras(cameraManager: camera.CameraManager):Array<camera.CameraDevice>{
