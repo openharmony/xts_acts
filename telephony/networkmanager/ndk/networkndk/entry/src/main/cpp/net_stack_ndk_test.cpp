@@ -24,7 +24,7 @@
 #include <iostream>
 #include <fstream>
 
-#define WEBSOCKET_ADDRESS "wss://echo.websocket.org"
+#define WEBSOCKET_ADDRESS "wss://ws.welive.huawei.com/"
 #define WEBSOCKET_LOG_TAG "LogTagNetwork"
 #define WEBSOCKET_LOG_DOMAIN 0x0000
 #define MAX_DATA_LENGTH (4 * 1024 * 1024)

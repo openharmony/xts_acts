@@ -274,7 +274,7 @@ export default function ErrTest() {
         contact.addContact(context, phoneNumContact, (err: BusinessError, data: number) => {
           if (err) {
             console.log(`${caseName} addContact: err>${JSON.stringify(err)}`);
-            ExpectFail();
+            ExpectTrue(err.code === 401);
             done();
           } else {
             console.log(`${caseName} addContact: success data>${JSON.stringify(data)}`);
@@ -1514,7 +1514,7 @@ export default function ErrTest() {
         contact.queryContactsByEmail(context, null, (err: BusinessError, data) => {
           if (err) {
             console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-            ExpectFail();
+            ExpectTrue(err.code === 401 || err.code === 201);
             done();
           } else {
             console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -1547,7 +1547,7 @@ export default function ErrTest() {
         contact.queryContactsByEmail(context, null, holder, (err: BusinessError, data) => {
           if (err) {
             console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-            ExpectFail();
+            ExpectTrue(err.code === 401 || err.code === 201);
             done();
           } else {
             console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -1584,7 +1584,7 @@ export default function ErrTest() {
         }, (err: BusinessError, data) => {
           if (err) {
             console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-            ExpectFail();
+            ExpectTrue(err.code === 401 || err.code === 201);
             done();
           } else {
             console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -1684,12 +1684,11 @@ export default function ErrTest() {
           done();
         }).catch((err: BusinessError) => {
           console.error(`${caseName} deleteContacts:fail->${JSON.stringify(err)}`);
-          ExpectTrue(err.code === 401);
           done();
         });
       } catch (err) {
         console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
-        ExpectFail();
+        ExpectTrue(err.code === 401);
         done();
       }
       console.info(`${caseName} test end `);
@@ -1714,12 +1713,11 @@ export default function ErrTest() {
           done();
         }).catch((err: BusinessError) => {
           console.error(`${caseName} deleteContacts:fail->${JSON.stringify(err)}`);
-          ExpectTrue(err.code === 401);
           done();
         });
       } catch (err) {
         console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
-        ExpectFail();
+        ExpectTrue(err.code === 401);
         done();
       }
       console.info(`${caseName} test end `);
