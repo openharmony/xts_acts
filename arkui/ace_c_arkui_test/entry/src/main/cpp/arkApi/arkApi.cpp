@@ -18,6 +18,8 @@
 #include "common/common.h"
 #include <ace/xcomponent/native_interface_xcomponent.h>
 #define VALUE_0 10
+#define VALUE_1 1000
+#define VALUE_2 -1000
 
 namespace ArkUICapiTest {
 
@@ -176,13 +178,10 @@ static napi_value TestArkUIAddApi018(napi_env env, napi_callback_info info)
 
 static napi_value TestArkUIAddApi019(napi_env env, napi_callback_info info)
 {
-    
     NAPI_START(image, ARKUI_NODE_IMAGE_ANIMATOR);
-    
     ArkUI_NumberValue value[1];
-    value[0].i32 = 10;
+    value[0].i32 = VALUE_0;
     ArkUI_AttributeItem item = { value, 1 };
-    
     auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_ANIMATOR_ITERATION, &item);
     ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
@@ -190,13 +189,10 @@ static napi_value TestArkUIAddApi019(napi_env env, napi_callback_info info)
 
 static napi_value TestArkUIAddApi020(napi_env env, napi_callback_info info)
 {
-    
     NAPI_START(image, ARKUI_NODE_IMAGE_ANIMATOR);
-    
     ArkUI_NumberValue value[1];
     value[0].i32 = -1;
     ArkUI_AttributeItem item = { value, 1 };
-    
     auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_ANIMATOR_ITERATION, &item);
     ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
@@ -204,12 +200,10 @@ static napi_value TestArkUIAddApi020(napi_env env, napi_callback_info info)
 
 static napi_value TestArkUIAddApi021(napi_env env, napi_callback_info info)
 {
-    
     NAPI_START(image, ARKUI_NODE_IMAGE_ANIMATOR);
     ArkUI_NumberValue value[1];
-    value[0].i32 = 1000;
+    value[0].i32 = VALUE_1;
     ArkUI_AttributeItem item = { value, 1 };
-    
     auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_ANIMATOR_DURATION, &item);
     ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
@@ -217,12 +211,10 @@ static napi_value TestArkUIAddApi021(napi_env env, napi_callback_info info)
 
 static napi_value TestArkUIAddApi022(napi_env env, napi_callback_info info)
 {
-    
     NAPI_START(image, ARKUI_NODE_IMAGE_ANIMATOR);
     ArkUI_NumberValue value[1];
-    value[0].i32 = -1000;
+    value[0].i32 = VALUE_2;
     ArkUI_AttributeItem item = { value, 1 };
-    
     auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_ANIMATOR_DURATION, &item);
     ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
@@ -230,12 +222,10 @@ static napi_value TestArkUIAddApi022(napi_env env, napi_callback_info info)
 
 static napi_value TestArkUIAddApi023(napi_env env, napi_callback_info info)
 {
-    
     NAPI_START(image, ARKUI_NODE_IMAGE_ANIMATOR);
     ArkUI_NumberValue value[1];
     value[0].i32 = 0;
     ArkUI_AttributeItem item = { value, 1 };
-    
     auto ret = nodeAPI->setAttribute(image, NODE_IMAGE_ANIMATOR_DURATION, &item);
     ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
