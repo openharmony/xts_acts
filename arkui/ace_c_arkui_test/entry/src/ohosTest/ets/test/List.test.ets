@@ -274,6 +274,8 @@ import scrollOverlayTest from './scroll/ScrollOverlayTest.test'
 import scrollLinearGradientTest from './scroll/ScrollLinearGradientTest'
 import scrollPageEnableTest from './scroll/ScrollPageEnableTest'
 import TestArkUIAddApi from './arkApi/arkApi.test'
+import testAnimationTest from './animation/animationTest.test'
+import testWaterFlower from './waterFlower/waterFlowerTest.test'
 
 export default function testsuite() {
   commonAttrsAlignSelfTest()
@@ -538,4 +540,6 @@ export default function testsuite() {
   stackOnTouchTest()
   textEnabledTest()
   TestArkUIAddApi()
+  testAnimationTest()
+  testWaterFlower()
 }
