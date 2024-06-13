@@ -1,6 +1,5 @@
-// @ts-nocheck
-/**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+/*
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,25 +12,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-@Entry
-@Component
-struct MyComponent {
-  aboutToAppear() {
-  }
-
-  build() {
-    Flex({
-      direction: FlexDirection.Column,
-      alignItems: ItemAlign.Center,
-      justifyContent: FlexAlign.Center
-    }) {
-      Text('ACE ETS TEST')
-        .fontSize(50)
-        .fontWeight(FontWeight.Bold)
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-
+// Script for compiling build behavior. It is built in the build plug-in and cannot be modified currently.
+export { legacyAppTasks } from '@ohos/hvigor-ohos-plugin';
