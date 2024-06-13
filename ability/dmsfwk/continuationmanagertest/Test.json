@@ -4,9 +4,9 @@
         "type": "OHJSUnitTest",
         "test-timeout": "1200000",
         "shell-timeout": "1200000",
-        "testcase-timeout": 60000,
         "bundle-name": "ohos.acts.distributedschedule.continuationmanager",
-        "package-name": "ohos.acts.distributedschedule.continuationmanager"
+        "package-name": "ohos.acts.distributedschedule.continuationmanager",
+        "testcase-timeout": 60000
     },
     "kits": [
         {
@@ -15,7 +15,8 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },{
+        },
+        {
             "type": "ShellKit",
             "run-command": [
                 "power-shell wakeup",
