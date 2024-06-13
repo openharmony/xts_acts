@@ -12,13 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 {
   "module": {
-    "name": "entry_test",
-    "type": "feature",
+    "name": "entry",
+    "type": "entry",
     "description": "$string:module_test_desc",
-    "mainElement": "TestAbility",
+    "mainElement": "MainAbility",
     "deviceTypes": [
       "phone",
       "tablet",
@@ -26,11 +25,11 @@
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
-    "pages": "$profile:main_pages",
+    "pages": "$profile:test_pages",
     "abilities": [
       {
-        "name": "TestAbility",
-        "srcEntry": "./ets/testability/TestAbility.ets",
+        "name": "MainAbility",
+        "srcEntry": "./ets/entryability/EntryAbility.ts",
         "description": "$string:TestAbility_desc",
         "icon": "$media:icon",
         "label": "$string:TestAbility_label",
@@ -47,11 +46,6 @@
             ]
           }
         ]
-      }
-    ],
-    "requestPermissions": [
-      {
-        "name": "ohos.permission.INTERNET"
       }
     ]
   }
