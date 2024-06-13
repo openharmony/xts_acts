@@ -22,10 +22,107 @@ import data from '@ohos.telephony.data'
 import fileuri from '@ohos.file.fileuri';
 import fs from '@ohos.file.fs';
 import fileio from '@ohos.fileio';
+import { BusinessError } from '@ohos.base'
+import colorSpaceManager from '@ohos.graphics.colorSpaceManager';
 
 const TAG = "CameraPickerTest: ";
 
 const sleep = (delay: number) => new Promise<void>((resolve) => setTimeout(resolve, delay));
+
+function registerTorchStatusChange(cameraManager: cameraManager):void{
+  cameraManager.on('torchStatusChange', callback);
+}
+
+function callback(err:BusinessError, torchStatusInfo:camera.TorchStatusInfo):void{
+  let errSode = camera.CameraErrorCode.UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS;
+  let isTorchAbailable = torchStatusInfo.isTorchAvailable
+  let isTorchActive = torchStatusInfo.isTorchActive
+  let torchLevel = torchStatusInfo.torchLevel
+  console.info(TAG+"Entering GET_CAMERAS CameraErrorCode" + errSode);
+  console.info(`onTorchStatusChange, isTorchAbailable:${torchStatusInfo.isTorchActive},level:${torchStatusInfo.torchLevel}`)
+  console.info("onTorchStatusChange, isTorchAbailable:"+ isTorchAbailable ,"isTorchActive:"+ isTorchActive,"level:"+ torchLevel);
+}
+
+function  getSupportedCameras(cameraManager: camera.CameraManager):Array<camera.CameraDevice>{
+  let cameras: Array<camera.CameraDevice> = [];
+  try {
+    cameras = cameraManager.getSupportedCameras();
+    if(cameras!= null && cameras.length>0){
+      for(let i =0; i<cameras.length;i++){
+        let cameraOrientation = cameras[i].cameraOrientation;
+      }
+    }
+  }catch (error){
+    let  err = error as BusinessError;
+  }
+  return cameras;
+}
+
+function getSupportedColorSpaces(session:camera.PhotoSession):Array<colorSpaceManager.ColorSpace>{
+  let  colcorSpaces:Array<colorSpaceManager.ColorSpace> = [];
+  try {
+    colcorSpaces = session.getSupportedColorSpaces();
+  }catch (error){
+    let err = err as BusinessError;
+  }
+  return colcorSpaces;
+}
+
+function getActiveColorSpace(session:camera.PhotoSession):colorSpaceManager.ColorSpace | undefined{
+  let colorSpace : colorSpaceManager.ColorSpace | undefined = undefined;
+  try {
+    colorSpace = session.getActiveColorSpace();
+  }catch (error){
+    let  err = error as BusinessError;
+  }
+  return colorSpace;
+}
+
+function  getSupportedFrameRates(previewOutput:camera.PreviewOutput):Array<camera.FrameRateRange>{
+  let supportedFrameRatesArray: Array<camera.FrameRateRange> = previewOutput.getSupportedFrameRates();
+  return supportedFrameRatesArray;
+}
+
+function setFrameRateRateRange(previewOutput:camera.PreviewOutput,frameRateRange:Array<number>):void{
+  previewOutput.setFrameRate(frameRateRange[0],frameRateRange[1]);
+}
+
+function  getActiveFrameRate(previewOutput:camera.PreviewOutput):camera.FrameRateRange{
+  let activeFrameRate: camera.FrameRateRange = previewOutput.getActiveFrameRate();
+  return activeFrameRate;
+}
+
+function  isMovingPhotoSupported(photoOutput:camera.PhotoOutput):boolean{
+  let isSupported : boolean = false;
+  try {
+    isSupported = photoOutput.isMovingPhotoSupported();
+  }catch (error){
+    let  err = error as BusinessError;
+  }
+  return isSupported;
+}
+
+function enableMovinfPhoto(photoOutput:camera.PhotoOutput):void{
+  try {
+    photoOutput.enableMovingPhoto(true);
+  }catch (error){
+    let err = error as BusinessError;
+  }
+}
+
+function getSupportedFrameRates_priview(previewOutput:camera.PreviewOutput):Array<camera.FrameRateRange>{
+  let supportedFrameRatesArray: Array<camera.FrameRateRange> = previewOutput.getSupportedFrameRates();
+  return supportedFrameRatesArray;
+}
+
+function setFrameRateRange_priview(previewOutput:camera.PreviewOutput,frameRateRange:Array<number>):void{
+  previewOutput.setFrameRate(frameRateRange[0],frameRateRange[1]);
+}
+
+function getActiveFrameRate_priview(previewOutput:camera.PreviewOutput):camera.FrameRateRange{
+  let activeFraneRate: camera.FrameRateRange = previewOutput.getActiveFrameRate();
+  return activeFraneRate;
+}
 
 export default function cameraPicker() {
 
