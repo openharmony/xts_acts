@@ -17,8 +17,8 @@ import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry
 import commonEventManager from '@ohos.commonEventManager';
 import UIAbility from '@ohos.app.ability.UIAbility';
 
-export default function OnWindowStageWillDestoryTest() {
-  describe('OnWindowStageWillDestoryTest', function () {
+export default function OnWindowStageWillDestroyTest() {
+  describe('OnWindowStageWillDestroyTest', function () {
 
     let TAG = '';
     let events = ['MainAbility13onDestroy', 'MainAbility13onForeground', 'MainAbility13onBackground']
@@ -35,15 +35,15 @@ export default function OnWindowStageWillDestoryTest() {
     });
 
     /**
-     * @tc.number: SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0100
+     * @tc.number: SUB_Ability_AbilityRuntime_OnWindowStageWillDestroy_0100
      * @tc.name: check if the lifecycle is executed
      * @tc.desc: check if the lifecycle is executed
      * @tc.size: MediumTest
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it("SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0100", 0, async function (done) {
-      TAG = 'SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0100'
+    it("SUB_Ability_AbilityRuntime_OnWindowStageWillDestroy_0100", 0, async function (done) {
+      TAG = 'SUB_Ability_AbilityRuntime_OnWindowStageWillDestroy_0100'
       console.info(TAG + ' start.');
       commonEventManager.createSubscriber({
         events: events
@@ -68,23 +68,23 @@ export default function OnWindowStageWillDestoryTest() {
         let event = data.event;
         let parameters = data['parameters']
         if (event === 'MainAbility13onDestroy') {
-          let onWindowStageWillDestoryExecutCount = parameters.onWindowStageWillDestoryExecutCount;
-          expect(onWindowStageWillDestoryExecutCount).assertEqual(1);
+          let onWindowStageWillDestroyExecutCount = parameters.onWindowStageWillDestoryExecutCount;
+          expect(onWindowStageWillDestroyExecutCount).assertEqual(1);
           done();
         }
       }
     });
 
     /**
-     * @tc.number: SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0200
+     * @tc.number: SUB_Ability_AbilityRuntime_OnWindowStageWillDestroy_0200
      * @tc.name: check if the lifecycle is executed
      * @tc.desc: check if the lifecycle is executed
      * @tc.size: MediumTest
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it("SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0200", 0, async function (done) {
-      TAG = 'SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0200'
+    it("SUB_Ability_AbilityRuntime_OnWindowStageWillDestroy_0200", 0, async function (done) {
+      TAG = 'SUB_Ability_AbilityRuntime_OnWindowStageWillDestroy_0200'
       console.info(TAG + ' start.');
       let ability13:UIAbility
       commonEventManager.createSubscriber({
@@ -131,23 +131,23 @@ export default function OnWindowStageWillDestoryTest() {
           });
         }
         if (event === 'MainAbility13onDestroy') {
-          let onWindowStageWillDestoryExecutCount = parameters.onWindowStageWillDestoryExecutCount;
-          expect(onWindowStageWillDestoryExecutCount).assertEqual(1);
+          let onWindowStageWillDestroyExecutCount = parameters.onWindowStageWillDestoryExecutCount;
+          expect(onWindowStageWillDestroyExecutCount).assertEqual(1);
           done();
         }
       }
     });
 
     /**
-     * @tc.number: SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0300
+     * @tc.number: SUB_Ability_AbilityRuntime_OnWindowStageWillDestroy_0300
      * @tc.name: check if the lifecycle is executed
      * @tc.desc: check if the lifecycle is executed
      * @tc.size: MediumTest
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it("SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0300", 0, async function (done) {
-      TAG = 'SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0300'
+    it("SUB_Ability_AbilityRuntime_OnWindowStageWillDestroy_0300", 0, async function (done) {
+      TAG = 'SUB_Ability_AbilityRuntime_OnWindowStageWillDestroy_0300'
       console.info(TAG + ' start.');
       let destoryCount = 0;
       commonEventManager.createSubscriber({
@@ -187,15 +187,15 @@ export default function OnWindowStageWillDestoryTest() {
     });
 
     /**
-     * @tc.number: SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0400
+     * @tc.number: SUB_Ability_AbilityRuntime_OnWindowStageWillDestroy_0400
      * @tc.name: check if the lifecycle is executed
      * @tc.desc: check if the lifecycle is executed
      * @tc.size: MediumTest
      * @tc.type: Function
      * @tc.level: Level 1
      */
-    it("SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0400", 0, async function (done) {
-      TAG = 'SUB_Ability_AbilityRuntime_OnWindowStageWillDestory_0400'
+    it("SUB_Ability_AbilityRuntime_OnWindowStageWillDestroy_0400", 0, async function (done) {
+      TAG = 'SUB_Ability_AbilityRuntime_OnWindowStageWillDestroy_0400'
       console.info(TAG + ' start.');
       commonEventManager.createSubscriber({
         events: events
@@ -217,9 +217,9 @@ export default function OnWindowStageWillDestoryTest() {
         let event = data.event;
         let parameters = data['parameters']
         if (event === 'MainAbility13onDestroy') {
-          let onWindowStageWillDestoryExecutCount = parameters.onWindowStageWillDestoryExecutCount;
+          let onWindowStageWillDestroyExecutCount = parameters.onWindowStageWillDestoryExecutCount;
           let offCatchError = parameters.offCatchError;
-          expect(onWindowStageWillDestoryExecutCount).assertEqual(1);
+          expect(onWindowStageWillDestroyExecutCount).assertEqual(1);
           expect(offCatchError).assertFalse();
           done();
         }
