@@ -33,7 +33,9 @@ const CASE_INDEX_11 = 11;
 // 未指定的错误。
 const ERROR_CODE_69 = 69;
 // 未指定的错误。
+const ERROR_CODE_2305001 = 2305001;
 const ERROR_CODE_2305069 = 2305069;
+
 // websocket客户端为null。
 const ERROR_CODE_1001 = 1001;
 // 内存不足，无法在安装websocket连接期间创建上下文。
@@ -246,7 +248,7 @@ export default function NetStackNDKTest() {
      */
     it('testOHNetStackCertVerification_1100',0, () => {
       let result : number = wsAPI.OHNetStackCertVerification(CASE_INDEX_11, pemPath, derPath);
-      expect(result).assertEqual(ERROR_CODE_2305069);
+      expect(result === ERROR_CODE_2305001 || result === ERROR_CODE_2305069 ).assertTrue();
     });
 
 

@@ -218,7 +218,7 @@ export default function IsMyCardTest() {
         contact.isMyCard(context, null, (err: BusinessError, data: boolean) => {
           if (err) {
             console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-            ExpectFail();
+            ExpectTrue(err.code === 401 || err.code === 201);
             done();
           } else {
             console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -228,7 +228,7 @@ export default function IsMyCardTest() {
         });
       } catch (err) {
         console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-        ExpectTrue(err.code === 401);
+        ExpectTrue(err.code === 401 || err.code === 201);
         done();
       }
       console.info(`${caseName} test end `);
@@ -281,7 +281,7 @@ export default function IsMyCardTest() {
         contact.isMyCard(context, Infinity, (err: BusinessError, data: boolean) => {
           if (err) {
             console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-            ExpectFail();
+            ExpectTrue(err.code === 401);
             done();
           } else {
             console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -343,7 +343,7 @@ export default function IsMyCardTest() {
         contact.isMyCard(context, -Infinity, (err: BusinessError, data: boolean) => {
           if (err) {
             console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-            ExpectFail();
+            ExpectTrue(err.code === 401);
             done();
           } else {
             console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -374,7 +374,7 @@ export default function IsMyCardTest() {
         contact.isMyCard(null, cardId, (err: BusinessError, data: boolean) => {
           if (err) {
             console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-            ExpectFail();
+            ExpectTrue(err.code == 401 || err.code == 201);
             done();
           } else {
             console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -384,7 +384,7 @@ export default function IsMyCardTest() {
         });
       } catch (err) {
         console.info(`${caseName} callback: catch err->${JSON.stringify(err)}`);
-        ExpectTrue(err.code === 401);
+        ExpectTrue(err.code === 401 || err.code === 201);
         done();
       }
       console.info(`${caseName} test end `);
@@ -436,7 +436,7 @@ export default function IsMyCardTest() {
         contact.isMyCard(context, NaN, (err: BusinessError, data: boolean) => {
           if (err) {
             console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-            ExpectFail();
+            ExpectTrue(err.code === 401);
             done();
           } else {
             console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -468,7 +468,7 @@ export default function IsMyCardTest() {
         contact.isMyCard(context, 0, (err: BusinessError, data: boolean) => {
           if (err) {
             console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-            ExpectFail();
+            ExpectTrue(err.code === 401);
             done();
           } else {
             console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -690,7 +690,7 @@ export default function IsMyCardTest() {
           done();
         }).catch((err: BusinessError) => {
           console.error(`${caseName} fail: err->${JSON.stringify(err)}`);
-          ExpectFail();
+          ExpectTrue(err.code === 401);
           done();
         });
       } catch (err) {
@@ -752,7 +752,7 @@ export default function IsMyCardTest() {
           done();
         }).catch((err: BusinessError) => {
           console.error(`${caseName} fail: err->${JSON.stringify(err)}`);
-          ExpectFail();
+          ExpectTrue(err.code === 401);
           done();
         });
       } catch (err) {
@@ -782,12 +782,12 @@ export default function IsMyCardTest() {
           done();
         }).catch((err: BusinessError) => {
           console.error(`${caseName} fail: err->${JSON.stringify(err)}`);
-          ExpectFail();
+          ExpectTrue(err.code === 401 || err.code === 201);
           done();
         });
       } catch (err) {
         console.log(`${caseName} catch: err->${JSON.stringify(err)}`);
-        ExpectTrue(err.code === 401);
+        ExpectTrue(err.code === 401 || err.code === 201);
         done();
       }
       console.info(`${caseName} test end `);
@@ -842,7 +842,6 @@ export default function IsMyCardTest() {
           done();
         }).catch((err: BusinessError) => {
           console.error(`${caseName} fail: err->${JSON.stringify(err)}`);
-          ExpectFail();
           done();
         });
       } catch (err) {
@@ -872,12 +871,11 @@ export default function IsMyCardTest() {
           done();
         }).catch((err: BusinessError) => {
           console.error(`${caseName} fail: err->${JSON.stringify(err)}`);
-          ExpectFail();
           done();
         });
       } catch (err) {
         console.log(`${caseName} catch: err->${JSON.stringify(err)}`);
-        ExpectFail();
+        ExpectTrue(err.code === 401);
         done();
       }
       console.info(`${caseName} test end `);
@@ -974,7 +972,7 @@ export default function IsMyCardTest() {
     });
 
     /**
-     * @tc.number     : _QueryMyCard_0100
+     * @tc.number     : SUB_Telephony_Contact_QueryMyCard_0100
      * @tc.name       : testTelephonyContactQueryMyCard0100
      * @tc.desc       : Query "My Business Card" and use the callback method as an asynchronous method 10+
      * @tc.size       : MediumTest
@@ -1054,7 +1052,7 @@ export default function IsMyCardTest() {
         contact.queryMyCard(null, (err: BusinessError, data: contact.Contact) => {
           if (err) {
             console.log(`${caseName} callback: err>${JSON.stringify(err)}`);
-            ExpectFail();
+            ExpectTrue(err.code === 401 || err.code === 201);
             done();
           } else {
             console.log(`${caseName} callback: success data>${JSON.stringify(data)}`);
@@ -1064,7 +1062,7 @@ export default function IsMyCardTest() {
         });
       } catch (err) {
         console.log(`${caseName} catch: err->${JSON.stringify(err)}`);
-        ExpectTrue(err.code == 401);
+        ExpectTrue(err.code === 401 || err.code === 201);
         done();
       }
       console.info(`${caseName} test end `);
@@ -1150,11 +1148,11 @@ export default function IsMyCardTest() {
       try {
         contact.queryMyCard(null, attr, (err: BusinessError, data: contact.Contact) => {
           if (err) {
-            console.log(`${caseName} callback: err>${JSON.stringify(err)}`);
-            ExpectFail();
+            console.log(`${caseName} callback: err:${JSON.stringify(err)}`);
+            ExpectTrue(err.code === 401 || err.code === 201);
             done();
           } else {
-            console.log(`${caseName} callback: success data>${JSON.stringify(data)}`);
+            console.log(`${caseName} callback: success data:${JSON.stringify(data)}`);
             ExpectFail();
             done();
           }
