@@ -33,6 +33,7 @@ ohos_moduletest_suite("ActsDrawingNativeTest") {
     "DrawingNativeColorFilterTest.cpp",
     "DrawingNativeColorTest.cpp",
     "DrawingNativePenTest.cpp",
+    "DrawingNativeShaderEffectTest.cpp",
   ]
 
   cflags = [
