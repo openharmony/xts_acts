@@ -1295,20 +1295,20 @@ export default function NoPermissionTest() {
      * @tc.level      : Level 2
      */
     it('testTelephonyContactIsMyCard1900', 0, async (done: Function) => {
-       const caseName: string = "testTelephonyContactIsMyCard1900";
-       console.info(`${caseName} test start `);
-       let context: Context = AppStorage.get('context') as Context;
-       let promise = contact.isMyCard(context, contactData.id);
-       promise.then((data: boolean) => {
-         console.log(`${caseName} success: data->${JSON.stringify(data)}`);
-         ExpectFail();
-         done();
-       }).catch((err: BusinessError) => {
-         console.error(`${caseName} fail: err->${JSON.stringify(err)}`);
-         ExpectTrue(err.code === 401);
-         done();
-       });
-       console.info(`${caseName} test end `);
-     });
+      const caseName: string = "testTelephonyContactIsMyCard1900";
+      console.info(`${caseName} test start `);
+      let context: Context = AppStorage.get('context') as Context;
+      let promise = contact.isMyCard(context, 0);
+      promise.then((data: boolean) => {
+        console.log(`${caseName} success: data->${JSON.stringify(data)}`);
+        ExpectFail();
+        done();
+      }).catch((err: BusinessError) => {
+        console.error(`${caseName} fail: err->${JSON.stringify(err)}`);
+        ExpectTrue(err.code === 401);
+        done();
+      });
+      console.info(`${caseName} test end `);
+    });
   })
 }

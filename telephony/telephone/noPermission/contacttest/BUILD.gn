@@ -13,29 +13,11 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsTelephonyContactNoPermissionTest") {
-  hap_profile = "entry/src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":contacttest_demo_ets_resources",
-    ":contacttest_demo_ets_test_resources",
-  ]
-  ets2abc = true
+ohos_js_app_suite("ActsTelephonyContactNoPermissionTest") {
+  test_hap = true
+  testonly = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsTelephonyContactNoPermissionTest"
-
   part_name = "sms_mms"
   subsystem_name = "telephony"
-}
-ohos_app_scope("contacttest_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-ohos_js_assets("contacttest_demo_ets_resources") {
-  source_dir = "entry/src/main/ets"
-}
-ohos_resources("contacttest_demo_ets_test_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":contacttest_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
 }
