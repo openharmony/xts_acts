@@ -556,6 +556,8 @@ import testArkUI from './arkApi/arkUIApiTest.test'
 import testAnimationTest from './animation/animationTest.test'
 import testWaterFlower from './waterFlower/waterFlowerTest.test'
 import accessibilityStateTest from './accessibilityState/accessibilityStateTest.test'
+import relativecontaineAlignmentRuleOptionTest from './relativecontaine/RelativeContaineAlignmentRuleOptionTest.test'
+import relativecontaineBarrierOptionTest from './relativecontaine/RelativeContaineBarrierOptionTest.test'
 
 export default function testsuite() {
   datePickerAccessibilityDescriptionTest()
@@ -1102,5 +1104,6 @@ export default function testsuite() {
   testAnimationTest()
   testWaterFlower()
   accessibilityStateTest()
-
+  relativecontaineAlignmentRuleOptionTest()
+  relativecontaineBarrierOptionTest()
 }

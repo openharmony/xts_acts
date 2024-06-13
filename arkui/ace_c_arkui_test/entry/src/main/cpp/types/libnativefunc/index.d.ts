@@ -4908,3 +4908,15 @@ export const testArkUI013: () => number;
 export const testArkUI014: () => number;
 
 export const testArkUI015: () => number;
+
+export const testRelativeContaineAlignmentRuleOption001: () => number;
+
+export const testRelativeContaineAlignmentRuleOption002: () => number;
+
+export const testRelativeContaineAlignmentRuleOption003: () => number;
+
+export const testRelativeContaineBarrierOption001: () => number;
+
+export const testRelativeContaineBarrierOption002: () => number;
+
+export const testRelativeContaineBarrierOption003: () => number;
