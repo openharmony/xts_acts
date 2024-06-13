@@ -16,10 +16,10 @@ import { describe, expect, it } from '@ohos/hypium';
 import sms from '@ohos.telephony.sms';
 import radio from '@ohos.telephony.radio';
 import sim from '@ohos.telephony.sim';
-
+import { BusinessError } from '@ohos.base';
 export default function smsUiJsunit() {
-  describe('smsUiJsunit', function () {
-    var rawArray = [
+  describe('smsUiJsunit', ()=> {
+    let rawArray = [
       0x08, 0x91, 0x68, 0x31, 0x08, 0x20, 0x00, 0x75, 0xF4, 0x24, 0x0D, 0x91,
       0x68, 0x81, 0x29, 0x56, 0x29, 0x83, 0xF6, 0x00, 0x00, 0x12, 0x40, 0x80,
       0x01, 0x02, 0x14, 0x23, 0x02, 0xC1, 0x30
@@ -33,7 +33,7 @@ export default function smsUiJsunit() {
    *             shortMessage Don't empty
    * @tc.desc    Function test
    */
-    it('Telephony_SmsMms_createMessage_Async_0100', 0, async function (done) {
+    it('Telephony_SmsMms_createMessage_Async_0100', 0, async (done:Function) => {
       sms.createMessage(rawArray, '3gpp', (err, shortMessage) => {
         if (err) {
           expect().assertFail();
@@ -75,7 +75,7 @@ export default function smsUiJsunit() {
      *             pass in the PDU(rawArray) in line with the coding specification, the specification is 3GPP,
      *             shortMessage Don't empty
      */
-    it('Telephony_SmsMms_createMessage_Promise_0100', 0, async function (done) {
+    it('Telephony_SmsMms_createMessage_Promise_0100', 0, async (done:Function) => {
       sms.createMessage(rawArray, '3gpp').then(shortMessage => {
         expect(shortMessage.visibleMessageBody == "Aa").assertTrue();
         expect(shortMessage.visibleRawAddress.length !== 0).assertTrue();
@@ -89,7 +89,7 @@ export default function smsUiJsunit() {
         expect(shortMessage.status !== -1).assertTrue();
         expect(shortMessage.isSmsStatusReportMessage).assertTrue();
         done();
-      }).catch(err => {
+      }).catch((err:BusinessError) => {
         expect().assertFail();
         console.log('Telephony_SmsMms_createMessage_Promise_0100 fail' + JSON.stringify(err));
         done();
@@ -101,7 +101,7 @@ export default function smsUiJsunit() {
    * @tc.name
    * @tc.desc    Function test
    */
-    it('Telephony_SmsMms_getSendSmsResult_Async_0100', 0, async function (done) {
+    it('Telephony_SmsMms_getSendSmsResult_Async_0100', 0, async (done:Function) => {
       expect(sms.SendSmsResult.SEND_SMS_SUCCESS == 0).assertTrue();
       expect(sms.SendSmsResult.SEND_SMS_FAILURE_UNKNOWN == 1).assertTrue();
       expect(sms.SendSmsResult.SEND_SMS_FAILURE_RADIO_OFF == 2).assertTrue();
@@ -114,7 +114,7 @@ export default function smsUiJsunit() {
    * @tc.name
    * @tc.desc    Function test
    */
-    it('Telephony_SmsMms_ShortMessageClass_Async_0100', 0, async function (done) {
+    it('Telephony_SmsMms_ShortMessageClass_Async_0100', 0, async (done:Function) => {
       expect(sms.ShortMessageClass.UNKNOWN == 0).assertTrue();
       expect(sms.ShortMessageClass.INSTANT_MESSAGE == 1).assertTrue();
       expect(sms.ShortMessageClass.OPTIONAL_MESSAGE == 2).assertTrue();
@@ -128,7 +128,7 @@ export default function smsUiJsunit() {
      * @tc.name   Test getOpName interface
      * @tc.desc
      */
-    it('Telephony_Sms_getDefaultSmsSimId_CallBack_0100', 0, async function (done) {
+    it('Telephony_Sms_getDefaultSmsSimId_CallBack_0100', 0, async (done:Function) => {
       sms.getDefaultSmsSimId((err, data) => {
         if(err){
           console.info("Telephony_Sms_getDefaultSmsSimId_CallBack_0100 err = " + JSON.stringify(err));
@@ -149,7 +149,7 @@ export default function smsUiJsunit() {
      * @tc.name   Test getOpName interface
      * @tc.desc
      */
-    it('Telephony_Sms_getDefaultSmsSimId_Promise_0100', 0, async function (done) {
+    it('Telephony_Sms_getDefaultSmsSimId_Promise_0100', 0, async (done:Function) => {
       let promise = sms.getDefaultSmsSimId();
       promise.then(data => {
         console.info("Telephony_Sms_getDefaultSmsSimId_Promise_0100 data = " + JSON.stringify(data));
@@ -158,7 +158,7 @@ export default function smsUiJsunit() {
           expect(data).assertFalse();
           done();
         });
-      }).catch(err => {
+      }).catch((err:BusinessError) => {
         console.info("Telephony_Sms_getDefaultSmsSimId_Promise_0100 err = " + JSON.stringify(err));
         expect(false).assertTrue();
         done();

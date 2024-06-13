@@ -14,8 +14,9 @@
  */
 import { describe, expect, it } from '@ohos/hypium';
 import call from '@ohos.telephony.call';
+import { BusinessError } from '@ohos.base';
 
-export function toString(data) {
+export function toString(data:object) {
   if (typeof data === 'object') {
     return JSON.stringify(data);
   } else {
@@ -24,7 +25,7 @@ export function toString(data) {
 };
 
 export default function callJsunit() {
-  describe('callTest', function () {
+  describe('callTest', ()=> {
     console.log("==========> call Test start ==========>");
 
     /**
@@ -32,7 +33,7 @@ export default function callJsunit() {
      * @tc.name Checks whether a device supports voice calls.
      * @tc.desc Return type test
      */
-    it("Telephony_Call_HasVoiceCapability_HasVoiceCapability", 0, async function (done) {
+    it("Telephony_Call_HasVoiceCapability_HasVoiceCapability", 0, async (done:Function)=> {
       let caseName = 'Telephony_Call_HasVoiceCapability_HasVoiceCapability';
       console.log(`==========> ${caseName} Test start ==========>`);
       let ret = false;
@@ -50,7 +51,7 @@ export default function callJsunit() {
      * @tc.name Make a call.
      * @tc.desc Function test
      */
-    it("Telephony_Call_Call_MakeCall_0100", 0, async function (done) {
+    it("Telephony_Call_Call_MakeCall_0100", 0, async (done:Function)=> {
       let caseName: string = "Telephony_Call_Call_MakeCall_0100";
       console.log(`==========> ${caseName} Test start ==========>`);
       try {
@@ -77,14 +78,14 @@ export default function callJsunit() {
      * @tc.name Makes a call.
      * @tc.desc Function test
      */
-    it("Telephony_Call_Call_MakeCall_0200", 0, async function (done) {
+    it("Telephony_Call_Call_MakeCall_0200", 0, async (done:Function)=> {
       let caseName: string = "Telephony_Call_Call_MakeCall_0200";
       console.log(`==========> ${caseName} Test start ==========>`);
       let telNumber = "";
       try {
         call.makeCall(telNumber).then(() => {
           done();
-        }).catch(error => {
+        }).catch((error:BusinessError) => {
           console.log("makeCall callback: err->" + JSON.stringify(error));
           expect(false).assertTrue();
           done();
