@@ -8136,10 +8136,10 @@ export default function ConnectionPublicTest() {
         });
         netCon.on('netAvailable', (data: connection.NetHandle) => {
           console.info(`${caseName} Succeeded to get data:  + ${JSON.stringify(data)}}`);
-          ExpectTrue(true);
-          console.info(`${caseName}---End`);
-          done();
         });
+        ExpectTrue(true);
+        console.info(`${caseName}---End`);
+        done();
       } catch (err) {
         console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
         ExpectFail();
@@ -8173,10 +8173,10 @@ export default function ConnectionPublicTest() {
         });
         netCon.on('netCapabilitiesChange', (data: connection.NetCapabilityInfo) => {
           console.info(`${caseName} Succeeded to get data:  + ${JSON.stringify(data)}}`);
-          ExpectTrue(true);
-          console.info(`${caseName}---End`);
-          done();
         });
+        ExpectTrue(true);
+        console.info(`${caseName}---End`);
+        done();
       } catch (err) {
         console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
         ExpectFail();
@@ -8210,10 +8210,10 @@ export default function ConnectionPublicTest() {
         });
         netCon.on('netConnectionPropertiesChange', (data: connection.NetConnectionPropertyInfo) => {
           console.info(`${caseName} Succeeded to get data:  + ${JSON.stringify(data)}}`);
-          ExpectTrue(true);
-          console.info(`${caseName}---End`);
-          done();
         });
+        ExpectTrue(true);
+        console.info(`${caseName}---End`);
+        done();
       } catch (err) {
         console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
         ExpectFail();
