@@ -20,7 +20,9 @@
     "deviceType": [
       "default",
       "phone",
-      "tablet"
+      "tablet",
+      "2in1",
+      "tv"
     ],
     "distro": {
       "deliveryWithInstall": true,

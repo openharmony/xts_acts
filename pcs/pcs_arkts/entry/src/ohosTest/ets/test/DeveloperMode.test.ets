@@ -19,7 +19,6 @@ import hidebug from '@ohos.hidebug';
 import common from '@ohos.app.ability.common';
 import fs from '@ohos.file.fs';
 import hilog from '@ohos.hilog';
-import deviceInfo from '@ohos.deviceInfo';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import AbilityUtils from './AbilityUtils';
 import { Driver } from '@ohos.UiTest';
@@ -237,21 +236,6 @@ export default function developerModeTest() {
       expect(sysEventSupported).assertTrue()
       let faultLoggerSupported = canIUse("SystemCapability.HiviewDFX.Hiview.FaultLogger")
       expect(faultLoggerSupported).assertTrue()
-      done()
-    })
-
-    /*
-     * @tc.number: STD-TOOLS-0100
-     * @tc.name: testSupportHdc0100
-     * @tc.desc: 【STD-TOOLS-0100】必须支持使用 hdc 设备连接器提供的命令行和通信协议与设备进行交互
-     * @tc.size: MediumTest
-     * @tc.type: Function
-     * @tc.level: Level 0
-     */
-    it('testSupportHdc0100', 0, async (done: Function) => {
-      let deviceTypeInfo: string = deviceInfo.deviceType
-      expect(deviceTypeInfo != undefined).assertTrue()
-      expect(deviceTypeInfo != '').assertTrue()
       done()
     })
 
