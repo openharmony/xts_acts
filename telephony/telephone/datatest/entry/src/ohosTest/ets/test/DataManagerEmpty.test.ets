@@ -17,15 +17,6 @@ import { describe, it, expect, beforeAll, afterAll } from '@ohos/hypium';
 import data from '@ohos.telephony.data';
 import { BusinessError } from '@ohos.base';
 import sim from '@ohos.telephony.sim';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-
-const ExpectTrue: (n: boolean) => void = (n: boolean) => {
-  try {
-    expect(n).assertTrue();
-  } catch (err) {
-    console.info("expectInfo", `test failed`);
-  }
-}
 
 export default function dataManagerEmptyTest() {
   describe("testEmpty", () => {
@@ -38,11 +29,10 @@ export default function dataManagerEmptyTest() {
         * @tc.level : Level 3
         */
     it('telephonyDataManagerEmptyTest0100', 0, async (done: Function) => {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
-      let a = 'abc';
-      let b = 'b';
-      expect(a).assertContain(b);
-      expect(a).assertEqual(a);
+      let a: number = 1;
+      let b: number = 2;
+      expect(a+b).assertEqual(3);
+      done();
     });
   });
 }
