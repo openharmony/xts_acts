@@ -56,6 +56,7 @@ ohos_moduletest_suite("ActsGraphicNapiTest") {
     "hilog:libhilog",
     "ipc:ipc_core",
     "samgr:samgr_proxy",
+    "ipc:ipc_capi",
   ]
 
   deps = [
