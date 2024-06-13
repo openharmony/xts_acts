@@ -23,6 +23,7 @@
 #include "drawing_rect.h"
 #include "drawing_round_rect.h"
 #include "drawing_shader_effect.h"
+#include "drawing_error_code.h"
 
 using namespace testing;
 using namespace testing::ext;
@@ -97,6 +98,36 @@ HWTEST_F(DrawingNativeShaderEffectTest, OH_Drawing_ShaderEffectCreateColorShader
     OH_Drawing_ShaderEffect *effect = OH_Drawing_ShaderEffectCreateColorShader(color);
     EXPECT_NE(effect, nullptr);
     OH_Drawing_ShaderEffectDestroy(effect);
+}
+/*
+ * @tc.name: testShaderEffectCreateTwoPointConicalGradientNormal
+ * @tc.desc: test for OH_Drawing_ShaderEffectCreateTwoPointConicalGradient.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+HWTEST_F(DrawingNativeShaderEffectTest, testShaderEffectCreateTwoPointConicalGradientNormal, TestSize.Level1) {
+    OH_Drawing_Point2D startPt = {100, 100};
+    OH_Drawing_Point2D endPt = {500, 500};
+    uint32_t colors[] = {0xffff0000, 0xff00ff00};
+    float pos[] = {0, 1.0};
+    uint32_t size = 3;
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    EXPECT_NE(matrix, nullptr);
+    OH_Drawing_MatrixSetMatrix(matrix, 0, 1, 0, 1, -1, 0, -1, 0, 1);
+    OH_Drawing_ShaderEffect *PointConicalGradient = OH_Drawing_ShaderEffectCreateTwoPointConicalGradient(
+        &startPt, 20, &endPt, 40, colors, pos, size, OH_Drawing_TileMode::DECAL, matrix);
+    EXPECT_NE(PointConicalGradient, nullptr);
+}
+/*
+ * @tc.name: testErrorCodeGet
+ * @tc.desc: test for OH_Drawing_ErrorCodeGet.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+HWTEST_F(DrawingNativeShaderEffectTest, testErrorCodeGet, TestSize.Level1) {
+    EXPECT_NE(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
 }
 
 } // namespace Drawing
