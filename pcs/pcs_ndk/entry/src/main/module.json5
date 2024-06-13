@@ -21,7 +21,10 @@
     "mainElement": "EntryAbility",
     "deviceTypes": [
       "phone",
-      "tablet"
+      "tablet",
+      "2in1",
+      "default",
+      "tv"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,

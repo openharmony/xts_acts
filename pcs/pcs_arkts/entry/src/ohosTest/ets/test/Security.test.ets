@@ -79,6 +79,12 @@ export default function securityTest() {
      */
     it('testBackgroundCameraBanned0100', 0, async (done: Function) => {
       expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
+      if(camera.getCameraManager(applicationContext).getSupportedCameras().length == 0) {
+        console.log(`No Supported usb camera`)
+        expect(true).assertTrue()
+        done()
+        return
+      }
       let driver = Driver.create()
       await driver.delayMs(1000)
       let permissions: Array<Permissions> = ['ohos.permission.CAMERA']

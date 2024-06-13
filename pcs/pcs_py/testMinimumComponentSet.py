@@ -47,7 +47,7 @@ class testMinimumComponentSet(TestCase):
             if minimumComponentSysCap not in deviceSysCapsList:
                 missingList.append(minimumComponentSysCap)
         if len(missingList) != 0:
-            print('missingList: [' + ', '.join(missingList) + ']')
+            self.log.info('missingList: [' + ', '.join(missingList) + ']')
             assert False
 
     def teardown(self):
