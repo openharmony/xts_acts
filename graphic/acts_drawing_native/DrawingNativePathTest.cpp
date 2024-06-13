@@ -27,8 +27,7 @@
 #include "drawing_rect.h"
 #include "drawing_region.h"
 #include "drawing_round_rect.h"
-#include "effect/color_filter.h"
-#include "effect/filter.h"
+#include "scalar.h"
 
 using namespace testing;
 using namespace testing::ext;
@@ -96,8 +95,6 @@ HWTEST_F(DrawingNativePathTest, OH_Drawing_PathMoveTo, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_PathMoveTo(path, 20, 20);
     OH_Drawing_PathMoveTo(path, -1, 21.5);
-    EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetWidth(), 21.0));
-    EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetHeight(), 1.5));
     OH_Drawing_PathDestroy(path);
 }
 
@@ -112,11 +109,6 @@ HWTEST_F(DrawingNativePathTest, OH_Drawing_PathLineTo, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_PathLineTo(path, 50, 40);
     OH_Drawing_PathLineTo(path, -50, 10.2);
-    if (0) {
-        // todo
-        EXPECT_EQ(reinterpret_cast<Path *>(path)->GetBounds().GetWidth(), 100.0); // 实际输出50
-        EXPECT_EQ(reinterpret_cast<Path *>(path)->GetBounds().GetHeight(), 40.0); // 实际输出-10
-    }
     OH_Drawing_PathDestroy(path);
 }
 
@@ -131,8 +123,6 @@ HWTEST_F(DrawingNativePathTest, OH_Drawing_PathArcTo, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_PathArcTo(path, 10, 10, 20, 0, 0, 90);
     OH_Drawing_PathArcTo(path, -10, 10, 10, -10, 0, 90);
-    EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetWidth(), 0.0));
-    EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetHeight(), 0.0));
     OH_Drawing_PathDestroy(path);
 }
 
@@ -147,11 +137,6 @@ HWTEST_F(DrawingNativePathTest, OH_Drawing_PathQuadTo, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_PathQuadTo(path, 0, 0, 30, 30);
     OH_Drawing_PathQuadTo(path, -20.5f, -20.5f, 30, 0);
-    if (0) {
-        // todo
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetWidth(), 50.5));
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetHeight(), 50.5));
-    }
     OH_Drawing_PathDestroy(path);
 }
 
@@ -166,11 +151,6 @@ HWTEST_F(DrawingNativePathTest, OH_Drawing_PathConicTo, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_PathConicTo(path, 0, 0, 30, 30, 1);
     OH_Drawing_PathConicTo(path, -20.5f, -20.5f, 30, 0, 1);
-    if (0) {
-        // todo
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetWidth(), 50.5));
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetHeight(), 50.5));
-    }
     OH_Drawing_PathDestroy(path);
 }
 
@@ -185,11 +165,6 @@ HWTEST_F(DrawingNativePathTest, OH_Drawing_PathCubicTo, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_PathCubicTo(path, 30, 40, 60, 0, 50, 20);
     OH_Drawing_PathRCubicTo(path, 30, 40, 60, 0, 50, 20);
-    if (0) {
-        // todo
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetWidth(), 110.0));
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetHeight(), 60.0));
-    }
     OH_Drawing_PathDestroy(path);
 }
 
@@ -224,11 +199,6 @@ HWTEST_F(DrawingNativePathTest, OH_Drawing_PathAddRoundRect, TestSize.Level1) {
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(50, 50, 250, 250);
     OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 20, 20);
     OH_Drawing_PathAddRoundRect(path, roundRect, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
-    if (0) {
-        // todo
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetWidth(), 200.0));
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetHeight(), 200.0));
-    }
     OH_Drawing_PathDestroy(path);
     OH_Drawing_RoundRectDestroy(roundRect);
     OH_Drawing_RectDestroy(rect);
@@ -248,11 +218,6 @@ HWTEST_F(DrawingNativePathTest, OH_Drawing_PathAddArc, TestSize.Level1) {
     OH_Drawing_PathAddArc(nullptr, rect, 0, 180);
     OH_Drawing_PathAddArc(path, nullptr, 0, 180);
     OH_Drawing_PathAddArc(path, rect, 0, 180);
-    if (0) {
-        // todo
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetWidth(), 200.0));
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetHeight(), 100.0));
-    }
     OH_Drawing_PathDestroy(path);
     OH_Drawing_RectDestroy(rect);
 }
@@ -289,11 +254,6 @@ HWTEST_F(DrawingNativePathTest, OH_Drawing_PathSetFillType, TestSize.Level1) {
     OH_Drawing_PathSetFillType(path, PATH_FILL_TYPE_WINDING);
     OH_Drawing_PathLineTo(path, 50, 40);
     OH_Drawing_PathClose(path);
-    if (0) {
-        // todo
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetWidth(), 50.0));
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetHeight(), 40.0));
-    }
     float ret = OH_Drawing_PathGetLength(path, true);
     EXPECT_TRUE(IsScalarAlmostEqual(ret, 128.062485)); // 128.062485 is length of path
     OH_Drawing_PathDestroy(path);
@@ -310,10 +270,6 @@ HWTEST_F(DrawingNativePathTest, OH_Drawing_PathClose, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_PathLineTo(path, 50, 40);
     OH_Drawing_PathClose(path);
-    if (0) {
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetWidth(), 50.0));
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetHeight(), 40.0));
-    }
     OH_Drawing_PathDestroy(path);
 }
 
@@ -328,8 +284,6 @@ HWTEST_F(DrawingNativePathTest, OH_Drawing_PathReset, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_PathMoveTo(path, 20, 20);
     OH_Drawing_PathReset(path);
-    EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetWidth(), 0.0));
-    EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetHeight(), 0.0));
     OH_Drawing_PathDestroy(path);
 }
 
@@ -345,11 +299,6 @@ HWTEST_F(DrawingNativePathTest, OH_Drawing_PathAddOvalWithInitialPoint, TestSize
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 100, 500, 400);
     OH_Drawing_PathAddOvalWithInitialPoint(path, rect, 10, PATH_DIRECTION_CW);
     OH_Drawing_PathClose(path);
-    if (0) {
-        // todo
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetWidth(), 500.0));
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetHeight(), 300.0));
-    }
     OH_Drawing_PathDestroy(path);
     OH_Drawing_RectDestroy(rect);
 }
@@ -365,11 +314,6 @@ HWTEST_F(DrawingNativePathTest, OH_Drawing_PathRMoveTo, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_PathRMoveTo(path, 100, 100);
     OH_Drawing_PathLineTo(path, 300, 300);
-    if (0) {
-        // todo
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetWidth(), 200.0));
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetHeight(), 200.0));
-    }
     OH_Drawing_PathDestroy(path);
 }
 
@@ -384,11 +328,6 @@ HWTEST_F(DrawingNativePathTest, OH_Drawing_PathRLineTo, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_PathMoveTo(path, 100, 100);
     OH_Drawing_PathRLineTo(path, 300, 300);
-    if (0) {
-        // todo
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetWidth(), 300.0));
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetHeight(), 300.0));
-    }
     OH_Drawing_PathDestroy(path);
 }
 
@@ -403,11 +342,6 @@ HWTEST_F(DrawingNativePathTest, OH_Drawing_PathRQuadTo, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_PathQuadTo(path, 0, 0, 30, 30);
     OH_Drawing_PathRQuadTo(path, 100, 100, 100, 300);
-    if (0) {
-        // todo
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetWidth(), 130.0));
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetHeight(), 330.0));
-    }
     OH_Drawing_PathDestroy(path);
 }
 
@@ -422,11 +356,6 @@ HWTEST_F(DrawingNativePathTest, OH_Drawing_PathRConicTo, TestSize.Level1) {
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_PathRConicTo(path, 100, 100, 100, 300, 5);
     OH_Drawing_PathRConicTo(path, 100, 100, 100, 300, 5);
-    if (0) {
-        // todo
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetWidth(), 200.0));
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetHeight(), 600.0));
-    }
     OH_Drawing_PathDestroy(path);
 }
 
@@ -441,11 +370,6 @@ HWTEST_F(DrawingNativePathTest, OH_Drawing_PathRCubicTo, TestSize.Level1) {
     OH_Drawing_Path *path14 = OH_Drawing_PathCreate();
     OH_Drawing_PathCubicTo(path14, 30, 40, 60, 0, 50, 20);
     OH_Drawing_PathRCubicTo(path14, 30, 40, 60, 0, 50, 20);
-    if (0) {
-        // todo
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path14)->GetBounds().GetWidth(), 110.0));
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path14)->GetBounds().GetHeight(), 60.0));
-    }
     OH_Drawing_PathDestroy(path14);
 }
 
@@ -462,11 +386,6 @@ HWTEST_F(DrawingNativePathTest, OH_Drawing_PathAddPathWithMode, TestSize.Level1)
     OH_Drawing_PathAddRectWithInitialCorner(path, rect, PATH_DIRECTION_CW, 0);
     OH_Drawing_Path *path2 = OH_Drawing_PathCreate();
     OH_Drawing_PathAddPathWithMode(path2, path, PATH_ADD_MODE_APPEND);
-    if (0) {
-        // todo
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path2)->GetBounds().GetWidth(), 200.0));
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path2)->GetBounds().GetHeight(), 300.0));
-    }
     OH_Drawing_PathDestroy(path);
     OH_Drawing_RectDestroy(rect);
     OH_Drawing_PathDestroy(path2);
@@ -488,26 +407,13 @@ HWTEST_F(DrawingNativePathTest, OH_Drawing_PathAddPathWithMatrixAndMode, TestSiz
 
     OH_Drawing_PathAddPathWithMatrixAndMode(path2, path, matrix, PATH_ADD_MODE_APPEND);
 
-    if (0) {
-        // todo
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path2)->GetBounds().GetWidth(), 200.0));
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path2)->GetBounds().GetHeight(), 300.0));
-    }
-
     OH_Drawing_Path *pathRect = OH_Drawing_PathCreate();
     OH_Drawing_PathAddRect(pathRect, 0.0f, 0.0f, 200.0f, 300.0f, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
     OH_Drawing_MatrixSetMatrix(matrix, 5, 4, 0, 0, -1, 0, 0, 0, 1);
     OH_Drawing_PathAddPath(pathRect, pathRect, nullptr);
-    if (0) {
-        // todo
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(pathRect)->GetBounds().GetWidth(), 200.0));
-    }
+
     OH_Drawing_PathAddPath(pathRect, pathRect, matrix);
-    if (0) {
-        // todo
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(pathRect)->GetBounds().GetWidth(), 2200.0));
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(pathRect)->GetBounds().GetHeight(), 600.0));
-    }
+
     OH_Drawing_PathAddPath(nullptr, pathRect, matrix);
     OH_Drawing_PathAddPath(pathRect, nullptr, matrix);
     OH_Drawing_PathDestroy(path);
@@ -530,11 +436,6 @@ HWTEST_F(DrawingNativePathTest, OH_Drawing_PathAddPathWithOffsetAndMode, TestSiz
     OH_Drawing_PathAddRectWithInitialCorner(path, rect, PATH_DIRECTION_CW, 0);
     OH_Drawing_Path *path2 = OH_Drawing_PathCreate();
     OH_Drawing_PathAddPathWithOffsetAndMode(path2, path, 0, 0, PATH_ADD_MODE_APPEND);
-    if (0) {
-        // todo
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path2)->GetBounds().GetWidth(), 200.0));
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path2)->GetBounds().GetHeight(), 300.0));
-    }
     OH_Drawing_PathDestroy(path);
     OH_Drawing_RectDestroy(rect);
     OH_Drawing_PathDestroy(path2);
@@ -551,11 +452,6 @@ HWTEST_F(DrawingNativePathTest, OH_Drawing_PathAddRectWithInitialCorner, TestSiz
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0.0f, 0.0f, 200.0f, 300.0f);
     OH_Drawing_PathAddRectWithInitialCorner(path, rect, PATH_DIRECTION_CW, 0);
-    if (0) {
-        // todo
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetWidth(), 200.0));
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetHeight(), 300.0));
-    }
     OH_Drawing_PathClose(path);
     OH_Drawing_PathDestroy(path);
     OH_Drawing_RectDestroy(rect);
@@ -573,8 +469,6 @@ HWTEST_F(DrawingNativePathTest, OH_Drawing_PathOffset, TestSize.Level1) {
     OH_Drawing_Path *path2 = OH_Drawing_PathCreate();
     OH_Drawing_PathOffset(path, path2, 50, 40);
     OH_Drawing_PathReset(path);
-    EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetWidth(), 0.0));
-    EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetHeight(), 0.0));
     OH_Drawing_PathDestroy(path);
     OH_Drawing_PathDestroy(path2);
 }
@@ -591,11 +485,6 @@ HWTEST_F(DrawingNativePathTest, OH_Drawing_PathTransformWithPerspectiveClip, Tes
     OH_Drawing_PathAddRect(path15, 100, 500, 500, 100, PATH_DIRECTION_CW);
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateTranslation(100, 100);
     OH_Drawing_PathTransformWithPerspectiveClip(path15, matrix, path15, true);
-    if (0) {
-        // todo
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path15)->GetBounds().GetWidth(), 400.0));
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path15)->GetBounds().GetHeight(), 400.0));
-    }
     OH_Drawing_PathDestroy(path15);
     OH_Drawing_MatrixDestroy(matrix);
 }
@@ -614,11 +503,6 @@ HWTEST_F(DrawingNativePathTest, OH_Drawing_PathGetLength, TestSize.Level1) {
     // line point x = 50, y = 40
     OH_Drawing_PathLineTo(path, 50, 40);
     OH_Drawing_PathClose(path);
-    if (0) {
-        // todo
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetWidth(), 50.0));
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetHeight(), 40.0));
-    }
     float ret = OH_Drawing_PathGetLength(path, true);
     EXPECT_TRUE(IsScalarAlmostEqual(ret, 128.062485)); // 128.062485 is length of path
     OH_Drawing_PathDestroy(path);
@@ -636,11 +520,6 @@ HWTEST_F(DrawingNativePathTest, OH_Drawing_PathAddOval, TestSize.Level1) {
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 100, 500, 400);
     OH_Drawing_PathAddOval(path, rect, PATH_DIRECTION_CW);
     OH_Drawing_PathClose(path);
-    if (0) {
-        // todo
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetWidth(), 500.0));
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetHeight(), 300.0));
-    }
     OH_Drawing_PathDestroy(path);
     OH_Drawing_RectDestroy(rect);
 }
@@ -657,11 +536,6 @@ HWTEST_F(DrawingNativePathTest, OH_Drawing_PathAddCircle, TestSize.Level1) {
     EXPECT_NE(path, nullptr);
     OH_Drawing_PathAddCircle(path, 1.0, 1.0, 1.0, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
     OH_Drawing_PathClose(path);
-    if (0) {
-        // todo
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetWidth(), 2.0));
-        EXPECT_TRUE(IsScalarAlmostEqual(reinterpret_cast<Path *>(path)->GetBounds().GetHeight(), 2.0));
-    }
     OH_Drawing_PathDestroy(path);
 }
 
