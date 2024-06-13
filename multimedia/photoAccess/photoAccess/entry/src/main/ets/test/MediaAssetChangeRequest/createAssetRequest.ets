@@ -75,7 +75,7 @@ export default function createAssetRequestTest() {
             }
             let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest = new photoAccessHelper.MediaAssetChangeRequest(photoAsset);
             assetChangeRequest.saveCameraPhoto();
-            await phAccessHelper.applyChanges(assetChangeRequest);
+            await helper.applyChanges(assetChangeRequest);
             console.info(`${testNum} :: apply saveCameraPhoto successfully`);
             let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await helper.getAssets(fetchOptions);
             let asset = await fetchResult.getFirstObject();
