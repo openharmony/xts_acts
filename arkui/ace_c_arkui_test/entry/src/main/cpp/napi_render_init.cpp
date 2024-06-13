@@ -20,6 +20,7 @@
 #include "commonattrs/commonattrs_focusable_test.h"
 #include "commonevent/commonevent_onappear_test.h"
 #include "commonevent/commonevent_ontouch_test.h"
+#include "commonevent/pointevent_ontouch_test.h"
 #include "commonevent/commonevent_onareachange_test.h"
 #include "commonevent/commonevent_onblur_test.h"
 #include "commonevent/commonevent_onfocus_test.h"
@@ -114,6 +115,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"commonEventOnAreaChangeTest", nullptr, CommonEventOnAreaChangeTest::CreateNativeNode, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"commonEventOnTouchTest", nullptr, CommonEventOnTouchTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"pointEventOnTouchTest", nullptr, PointEventOnTouchTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"commonEventOnBlurTest", nullptr, CommonEventOnBlurTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
