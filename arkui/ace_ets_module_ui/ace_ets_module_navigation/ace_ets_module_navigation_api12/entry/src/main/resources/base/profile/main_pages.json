@@ -9,6 +9,31 @@
         "MainAbility/pages/Navigation/NavigationOnPop",
         "MainAbility/pages/NavDestination/NavDestinationEvents",
         "MainAbility/pages/NavDestination/NavDestinationRouterMap",
-        "MainAbility/pages/Navigation/NavigationSymbolIcon"
+        "MainAbility/pages/Navigation/NavigationSymbolIcon",
+
+        "MainAbility/pages/Navigation/NavPathStack1",
+        "MainAbility/pages/Navigation/NavPathStack2",
+        "MainAbility/pages/Navigation/NavPathStack3",
+        "MainAbility/pages/Navigation/NavPathStack4",
+        "MainAbility/pages/Navigation/NavPathStack5",
+        "MainAbility/pages/Navigation/NavPathStack6",
+        "MainAbility/pages/Navigation/NavPathStack7",
+        "MainAbility/pages/Navigation/NavPathStack8",
+        "MainAbility/pages/Navigation/NavPathStack9",
+        "MainAbility/pages/Navigation/NavPathStack10",
+        "MainAbility/pages/Navigation/NavPathStack11",
+        "MainAbility/pages/Navigation/NavPathStack12",
+        "MainAbility/pages/Navigation/NavPathStack13",
+        "MainAbility/pages/Navigation/NavPathStack14",
+        "MainAbility/pages/Navigation/NavPathStack15",
+        "MainAbility/pages/Navigation/NavPathStack16",
+        "MainAbility/pages/Navigation/NavPathStack17",
+        "MainAbility/pages/Navigation/NavPathStack18",
+        "MainAbility/pages/Navigation/NavPathStack19",
+        "MainAbility/pages/Navigation/NavPathStack20",
+        "MainAbility/pages/Navigation/NavPathStack21",
+        "MainAbility/pages/Navigation/NavPathStack22",
+        "MainAbility/pages/Navigation/NavPathStack23",
+        "MainAbility/pages/Navigation/NavPathStack24"
     ]
 }
