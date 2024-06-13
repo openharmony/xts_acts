@@ -70,7 +70,7 @@ export default function richEditorApi1() {
       await CommonFunc.sleep(2000);
 
       let driver = Driver.create();
-      await CommonFunc.sleep(300);
+      await CommonFunc.sleep(2000);
 
       let RichEditor1 = CommonFunc.getComponentRect('RichEditor1')
       await driver.longClick(Math.round((RichEditor1.right - RichEditor1.left) * 0.5 + RichEditor1.left),

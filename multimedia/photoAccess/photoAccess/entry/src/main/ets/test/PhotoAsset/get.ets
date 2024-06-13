@@ -35,7 +35,7 @@ export default function getTest () {
           const uri = asset.get(key).toString();
           const isIncludes = uri.includes(expectUri);
           expect(isIncludes).assertTrue();
-        } else if (key === 'date_added' || key === 'date_modified' || key === 'date_taken') {
+        } else if (key === 'date_added' || key === 'date_modified' || key === 'date_taken' || key === 'date_added_ms' || key === 'date_modified_ms') {
           expect(isNum(asset.get(key))).assertTrue();
         } else {
           expect(asset.get(key)).assertEqual(value);
@@ -562,5 +562,70 @@ export default function getTest () {
       const value = 0;
       await get(done, testNum, fetchOps, key, value);
     });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_6600
+     * @tc.name      : get_066
+     * @tc.desc      : image get photoKeys.DATE_ADDED_MS
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('get_066', 1, async function (done) {
+      const testNum = 'get_066';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
+      const key = photoKeys.DATE_ADDED_MS;
+      const value = 1;
+      await get(done, testNum, fetchOps, key, value);
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_6700
+     * @tc.name      : get_067
+     * @tc.desc      : video get photoKeys.DATE_ADDED_MS
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('get_067', 1, async function (done) {
+      const testNum = 'get_067';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
+      const key = photoKeys.DATE_ADDED_MS;
+      const value = 1;
+      await get(done, testNum, fetchOps, key, value);
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_6800
+     * @tc.name      : get_068
+     * @tc.desc      : image get photoKeys.DATE_MODIFIED_MS
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('get_068', 1, async function (done) {
+      const testNum = 'get_068';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
+      const key = photoKeys.DATE_MODIFIED_MS;
+      const value = 1;
+      await get(done, testNum, fetchOps, key, value);
+    });
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_6900
+     * @tc.name      : get_069
+     * @tc.desc      : video get photoKeys.DATE_MODIFIED_MS
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('get_069', 1, async function (done) {
+      const testNum = 'get_069';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
+      const key = photoKeys.DATE_MODIFIED_MS;
+      const value = 1;
+      await get(done, testNum, fetchOps, key, value);
+    });
+
   })
 }

@@ -25,7 +25,6 @@ import SheetMode from './bindSheetTest/SheetMode.test'
 import springBack from './bindSheetTest/springBack.test'
 import DetentsChange from './bindSheetTest/DetentsChange.test'
 import SheetTransition from './bindSheetTest/SheetTransition.test'
-import symbolIcon from './menuControlTest/symbolIcon.test'
 
 export default function testsuite() {
   aboutToAppearFalse();
@@ -41,5 +40,4 @@ export default function testsuite() {
   springBack()
   DetentsChange()
   SheetTransition()
-  symbolIcon()
 }

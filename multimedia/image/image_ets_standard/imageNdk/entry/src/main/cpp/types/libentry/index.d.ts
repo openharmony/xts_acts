@@ -87,8 +87,10 @@ export const PackToFileFromImageSource: (packer:image.ImagePacker, packing:image
 export const PackToFileFromPixelMap: (packer:image.ImagePacker, packing:image.PackingOption,
                                       source: image.PixelMap | number, fd:number) => number;
 export const PackerRelease: (Packer:image.ImagePacker) => number;
-
-
-
-
-
+export const CheckHasHdr: () => number;
+export const DecodingOptionsSetDesiredDynamicRange: (options: image.DecodingOptions, desiredDynamicRange:number) => number;
+export const DecodingOptionsGetDesiredDynamicRange: (options: image.DecodingOptions) => number;
+export const GetImageSourceDynamicRange: (source: image.ImageSource) => number;
+export const GetPixelMapDynamicRange: (source: image.PixelMap) => number;
+export const PackingOptionsGetDesiredDynamicRange: (packing:image.PackingOption) => number;
+export const PackingOptionsSetDesiredDynamicRange: (packing:image.PackingOption, dynamicRange:number) => number;

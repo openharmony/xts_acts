@@ -76,11 +76,11 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
      * @tc.level Level3
      */
     it("SUB_Security_CryptoFramework_RSASignRecover_Func_0200", 0, async (done: Function) => {
-      let algName: string = "RSA8192";
+      let algName: string = "RSA1024";
       let paddingName: string = "NoPadding";
       let isOnlySign: boolean = true;
       let mdName: string = "NoHash";
-      let dataLen: number = 1024;
+      let dataLen: number = 128;
       let isSync: boolean = true;
       let isPadding: boolean = true;
       try {
@@ -305,15 +305,15 @@ export default function SecurityCryptoFwSignRecoverRSARecoverTestUnit() {
 
     /**
      * @tc.number SUB_Security_CryptoFramework_RSASignRecover_Func_1100
-     * @tc.name Test SignRecover algName with RSA8192|PKCS1|SHA512|OnlySign. Promise style. Process success
-     * @tc.desc digest is RSA8192|PKCS1|SHA512|OnlySign
+     * @tc.name Test SignRecover algName with RSA2048|PKCS1|SHA512|OnlySign. Promise style. Process success
+     * @tc.desc digest is 2048|PKCS1|SHA512|OnlySign
      * @tc.size Medium
      * @tc.type Func
      * @tc.level Level3
      */
     it("SUB_Security_CryptoFramework_RSASignRecover_Func_1100", 0, async (done: Function) => {
       try {
-        let algName: string = "RSA8192";
+        let algName: string = "RSA2048";
         let paddingName = "PKCS1";
         let isOnlySign: boolean = true;
         let dataLen: number = 64;

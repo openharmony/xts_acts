@@ -2631,7 +2631,7 @@ export default function imageDecodeOptionsRawTest() {
 
     /**
      *
-     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0100
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0100
      * @tc.name      : createPixelMap(decodingOptions)-DNG
      * @tc.desc      : 1.create imageSource
      *                 2.set index and DecodeOptions
@@ -2641,25 +2641,25 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0100", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0100", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
-        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0100', 0, 1, 90, true, Size, Region, 7,
+        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0100', 0, 1, 90, true, Size, Region, 7,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'decodingOptions');
         expect(result).assertTrue();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
-          'SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0100 error:' + e);
+          'SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0100 error:' + e);
         expect().assertFail();
         done();
       }
     });
 
     /**
-     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0200
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0200
      * @tc.name      : createPixelMap(decodingOptions, asyncCallback)-DNG
      * @tc.desc      : 1.create imageSource
      *                 2.set index and DecodeOptions
@@ -2669,18 +2669,18 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0200", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0200", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
-        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0200', 0, 1, 90, true, Size, Region, 7,
+        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0200', 0, 1, 90, true, Size, Region, 7,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'callBackCreate');
         expect(result).assertTrue();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
-          'SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0200 error:' + e);
+          'SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0200 error:' + e);
         expect().assertFail();
         done();
       }
@@ -2688,7 +2688,7 @@ export default function imageDecodeOptionsRawTest() {
 
     /**
      *
-     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0300
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0300
      * @tc.name      : createPixelMap(decodingOptions)-DNG
      * @tc.desc      : 1.create imageSource
      *                 2.set index and DecodeOptions
@@ -2698,25 +2698,25 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0300", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0300", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
-        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0300', 0, 1, 90, true, Size, Region, 7,
+        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0300', 0, 1, 90, true, Size, Region, 7,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.DCI_P3), 'decodingOptions');
         expect(result).assertTrue();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
-          'SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0300 error:' + e);
+          'SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0300 error:' + e);
         expect().assertFail();
         done();
       }
     });
 
     /**
-     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0400
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0400
      * @tc.name      : createPixelMap(decodingOptions, asyncCallback)-DNG
      * @tc.desc      : 1.create imageSource
      *                 2.set index and DecodeOptions
@@ -2726,18 +2726,18 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0400", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0400", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
-        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0400', 0, 1, 90, true, Size, Region, 7,
+        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0400', 0, 1, 90, true, Size, Region, 7,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.DCI_P3), 'callBackCreate');
         expect(result).assertTrue();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
-          'SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0400 error:' + e);
+          'SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0400 error:' + e);
         expect().assertFail();
         done();
       }
@@ -2745,7 +2745,7 @@ export default function imageDecodeOptionsRawTest() {
 
     /**
      *
-     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0500
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0500
      * @tc.name      : createPixelMap(decodingOptions)-DNG
      * @tc.desc      : 1.create imageSource
      *                 2.set index and DecodeOptions
@@ -2755,25 +2755,25 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0500", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0500", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
-        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0500', 0, 1, 90, true, Size, Region, 7,
+        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0500', 0, 1, 90, true, Size, Region, 7,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.DISPLAY_P3), 'decodingOptions');
         expect(result).assertTrue();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
-          'SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0500 error:' + e);
+          'SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0500 error:' + e);
         expect().assertFail();
         done();
       }
     });
 
     /**
-     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0600
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0600
      * @tc.name      : createPixelMap(decodingOptions, asyncCallback)-DNG
      * @tc.desc      : 1.create imageSource
      *                 2.set index and DecodeOptions
@@ -2783,18 +2783,18 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0600", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0600", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
-        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0600', 0, 1, 90, true, Size, Region, 7,
+        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0600', 0, 1, 90, true, Size, Region, 7,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.DISPLAY_P3), 'callBackCreate');
         expect(result).assertTrue();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
-          'SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0600 error:' + e);
+          'SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0600 error:' + e);
         expect().assertFail();
         done();
       }
@@ -2802,7 +2802,7 @@ export default function imageDecodeOptionsRawTest() {
 
     /**
      *
-     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0700
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0700
      * @tc.name      : createPixelMap(decodingOptions)-DNG
      * @tc.desc      : 1.create imageSource
      *                 2.set index and DecodeOptions
@@ -2812,25 +2812,25 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0700", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0700", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
-        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0700', 0, 1, 90, true, Size, Region, 7,
+        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0700', 0, 1, 90, true, Size, Region, 7,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.ADOBE_RGB_1998), 'decodingOptions');
         expect(result).assertTrue();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
-          'SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0700 error:' + e);
+          'SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0700 error:' + e);
         expect().assertFail();
         done();
       }
     });
 
     /**
-     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0800
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0800
      * @tc.name      : createPixelMap(decodingOptions, asyncCallback)-DNG
      * @tc.desc      : 1.create imageSource
      *                 2.set index and DecodeOptions
@@ -2840,18 +2840,18 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0800", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0800", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
-        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0800', 0, 1, 90, true, Size, Region, 7,
+        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0800', 0, 1, 90, true, Size, Region, 7,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.ADOBE_RGB_1998), 'callBackCreate');
         expect(result).assertTrue();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
-          'SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0800 error:' + e);
+          'SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0800 error:' + e);
         expect().assertFail();
         done();
       }
@@ -2859,7 +2859,7 @@ export default function imageDecodeOptionsRawTest() {
 
     /**
      *
-     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0900
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0900
      * @tc.name      : createPixelMap(decodingOptions)-DNG
      * @tc.desc      : 1.create imageSource
      *                 2.set index and DecodeOptions
@@ -2869,25 +2869,25 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0900", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0900", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
-        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0900', -1, 1, 90, true, Size, Region, 7,
+        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0900', -1, 1, 90, true, Size, Region, 7,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'decodingOptions');
         expect(result).assertFalse();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
-          'SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_0900 error:' + e);
+          'SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_0900 error:' + e);
         expect().assertFail();
         done();
       }
     });
 
     /**
-     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1000
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1000
      * @tc.name      : createPixelMap(decodingOptions, asyncCallback)-DNG
      * @tc.desc      : 1.create imageSource
      *                 2.set index and DecodeOptions
@@ -2897,18 +2897,18 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1000", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1000", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
-        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1000', -1, 1, 90, true, Size, Region, 7,
+        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1000', -1, 1, 90, true, Size, Region, 7,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'callBackCreate');
         expect(result).assertFalse();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
-          'SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1000 error:' + e);
+          'SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1000 error:' + e);
         expect().assertFail();
         done();
       }
@@ -2916,7 +2916,7 @@ export default function imageDecodeOptionsRawTest() {
 
     /**
      *
-     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1100
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1100
      * @tc.name      : createPixelMap(decodingOptions)-DNG
      * @tc.desc      : 1.create imageSource
      *                 2.set index and DecodeOptions
@@ -2926,25 +2926,25 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1100", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1100", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
-        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1100', 0, -1, 90, true, Size, Region, 7,
+        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1100', 0, -1, 90, true, Size, Region, 7,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'decodingOptions');
         expect(result).assertFalse();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
-          'SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1100 error:' + e);
+          'SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1100 error:' + e);
         expect().assertFail();
         done();
       }
     });
 
     /**
-     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1200
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1200
      * @tc.name      : createPixelMap(decodingOptions, asyncCallback)-DNG
      * @tc.desc      : 1.create imageSource
      *                 2.set index and DecodeOptions
@@ -2954,18 +2954,18 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1200", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1200", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
-        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1200', 0, -1, 90, true, Size, Region, 7,
+        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1200', 0, -1, 90, true, Size, Region, 7,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'callBackCreate');
         expect(result).assertFalse();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
-          'SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1200 error:' + e);
+          'SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1200 error:' + e);
         expect().assertFail();
         done();
       }
@@ -2973,7 +2973,7 @@ export default function imageDecodeOptionsRawTest() {
 
     /**
      *
-     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1300
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1300
      * @tc.name      : createPixelMap(decodingOptions)-DNG
      * @tc.desc      : 1.create imageSource
      *                 2.set index and DecodeOptions
@@ -2983,25 +2983,25 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1300", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1300", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
-        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1300', 0, 1, -1, true, Size, Region, 7,
+        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1300', 0, 1, -1, true, Size, Region, 7,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'decodingOptions');
         expect(result).assertFalse();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
-          'SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1300 error:' + e);
+          'SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1300 error:' + e);
         expect().assertFail();
         done();
       }
     });
 
     /**
-     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1400
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1400
      * @tc.name      : createPixelMap(decodingOptions, asyncCallback)-DNG
      * @tc.desc      : 1.create imageSource
      *                 2.set index and DecodeOptions
@@ -3011,18 +3011,18 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1400", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1400", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
-        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1400', 0, 1, -1, true, Size, Region, 7,
+        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1400', 0, 1, -1, true, Size, Region, 7,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'callBackCreate');
         expect(result).assertFalse();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
-          'SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1400 error:' + e);
+          'SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1400 error:' + e);
         expect().assertFail();
         done();
       }
@@ -3030,7 +3030,7 @@ export default function imageDecodeOptionsRawTest() {
 
     /**
      *
-     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1500
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1500
      * @tc.name      : createPixelMap(decodingOptions)-DNG
      * @tc.desc      : 1.create imageSource
      *                 2.set index and DecodeOptions
@@ -3040,25 +3040,25 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1500", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1500", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { height: -5, width: -100 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
-        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1500', 0, 1, 90, true, Size, Region, 7,
+        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1500', 0, 1, 90, true, Size, Region, 7,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'decodingOptions');
         expect(result).assertTrue();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
-          'SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1500 error:' + e);
+          'SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1500 error:' + e);
         expect().assertFail();
         done();
       }
     });
 
     /**
-     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1600
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1600
      * @tc.name      : createPixelMap(decodingOptions, asyncCallback)-DNG
      * @tc.desc      : 1.create imageSource
      *                 2.set index and DecodeOptions
@@ -3068,18 +3068,18 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1600", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1600", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { height: -1, width: 3 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
-        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1600', 0, 1, 90, true, Size, Region, 7,
+        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1600', 0, 1, 90, true, Size, Region, 7,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'callBackCreate');
         expect(result).assertTrue();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
-          'SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1600 error:' + e);
+          'SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1600 error:' + e);
         expect().assertFail();
         done();
       }
@@ -3087,7 +3087,7 @@ export default function imageDecodeOptionsRawTest() {
 
     /**
      *
-     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1700
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1700
      * @tc.name      : createPixelMap(decodingOptions)-DNG
      * @tc.desc      : 1.create imageSource
      *                 2.set index and DecodeOptions
@@ -3097,25 +3097,25 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1700", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1700", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { height: 2, width: -1 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
-        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1700', 0, 1, 90, true, Size, Region, 7,
+        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1700', 0, 1, 90, true, Size, Region, 7,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'decodingOptions');
         expect(result).assertTrue();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
-          'SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1700 error:' + e);
+          'SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1700 error:' + e);
         expect().assertFail();
         done();
       }
     });
 
     /**
-     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1800
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1800
      * @tc.name      : createPixelMap(decodingOptions, asyncCallback)-DNG
      * @tc.desc      : 1.create imageSource
      *                 2.set index and DecodeOptions
@@ -3125,18 +3125,18 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1800", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1800", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { height: 2, width: -1 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
-        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1800', 0, 1, 90, true, Size, Region, 7,
+        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1800', 0, 1, 90, true, Size, Region, 7,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'callBackCreate');
         expect(result).assertTrue();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
-          'SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1800 error:' + e);
+          'SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1800 error:' + e);
         expect().assertFail();
         done();
       }
@@ -3144,7 +3144,7 @@ export default function imageDecodeOptionsRawTest() {
 
     /**
      *
-     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1900
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1900
      * @tc.name      : createPixelMap(decodingOptions)-DNG
      * @tc.desc      : 1.create imageSource
      *                 2.set index and DecodeOptions
@@ -3154,25 +3154,25 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1900", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1900", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
         let Region : image.Region = { x: -1, y: 0, size: { height: 2, width: 3 } };
-        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1900', 0, 1, 90, true, Size, Region, 7,
+        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1900', 0, 1, 90, true, Size, Region, 7,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'decodingOptions');
         expect(result).assertFalse();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
-          'SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_1900 error:' + e);
+          'SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1900 error:' + e);
         expect().assertFail();
         done();
       }
     });
 
     /**
-     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2000
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2000
      * @tc.name      : createPixelMap(decodingOptions, asyncCallback)-DNG
      * @tc.desc      : 1.create imageSource
      *                 2.set index and DecodeOptions
@@ -3182,18 +3182,18 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2000", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2000", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
         let Region : image.Region = { x: -1, y: 0, size: { height: 2, width: 3 } };
-        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2000', 0, 1, 90, true, Size, Region, 7,
+        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2000', 0, 1, 90, true, Size, Region, 7,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'callBackCreate');
         expect(result).assertFalse();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
-          'SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2000 error:' + e);
+          'SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2000 error:' + e);
         expect().assertFail();
         done();
       }
@@ -3201,7 +3201,7 @@ export default function imageDecodeOptionsRawTest() {
 
     /**
      *
-     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2100
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2100
      * @tc.name      : createPixelMap(decodingOptions)-DNG
      * @tc.desc      : 1.create imageSource
      *                 2.set index and DecodeOptions
@@ -3211,25 +3211,25 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2100", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2100", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
         let Region : image.Region = { x: 0, y: -1, size: { height: 2, width: 3 } };
-        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2100', 0, 1, 90, true, Size, Region, 7,
+        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2100', 0, 1, 90, true, Size, Region, 7,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'decodingOptions');
         expect(result).assertFalse();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
-          'SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2100 error:' + e);
+          'SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2100 error:' + e);
         expect().assertFail();
         done();
       }
     });
 
     /**
-     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2200
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2200
      * @tc.name      : createPixelMap(decodingOptions, asyncCallback)-DNG
      * @tc.desc      : 1.create imageSource
      *                 2.set index and DecodeOptions
@@ -3239,18 +3239,18 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2200", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2200", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
         let Region : image.Region = { x: 0, y: -1, size: { height: 2, width: 3 } };
-        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2200', 0, 1, 90, true, Size, Region, 7,
+        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2200', 0, 1, 90, true, Size, Region, 7,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'callBackCreate');
         expect(result).assertFalse();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
-          'SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2200 error:' + e);
+          'SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2200 error:' + e);
         expect().assertFail();
         done();
       }
@@ -3258,7 +3258,7 @@ export default function imageDecodeOptionsRawTest() {
 
     /**
      *
-     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2300
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2300
      * @tc.name      : createPixelMap(decodingOptions)-DNG
      * @tc.desc      : 1.create imageSource
      *                 2.set index and DecodeOptions
@@ -3268,25 +3268,25 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2300", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2300", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: -1, width: 3 } };
-        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2300', 0, 1, 90, true, Size, Region, 7,
+        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2300', 0, 1, 90, true, Size, Region, 7,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'decodingOptions');
         expect(result).assertTrue();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
-          'SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2300 error:' + e);
+          'SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2300 error:' + e);
         expect().assertFail();
         done();
       }
     });
 
     /**
-     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2400
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2400
      * @tc.name      : createPixelMap(decodingOptions, asyncCallback)-DNG
      * @tc.desc      : 1.create imageSource
      *                 2.set index and DecodeOptions
@@ -3296,18 +3296,18 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2400", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2400", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: -1, width: 3 } };
-        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2400', 0, 1, 90, true, Size, Region, 7,
+        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2400', 0, 1, 90, true, Size, Region, 7,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'callBackCreate');
         expect(result).assertTrue();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
-          'SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2400 error:' + e);
+          'SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2400 error:' + e);
         expect().assertFail();
         done();
       }
@@ -3315,7 +3315,7 @@ export default function imageDecodeOptionsRawTest() {
 
     /**
      *
-     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2500
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2500
      * @tc.name      : createPixelMap(decodingOptions)-DNG
      * @tc.desc      : 1.create imageSource
      *                 2.set index and DecodeOptions
@@ -3325,25 +3325,25 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2500", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2500", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 2, width: -1 } };
-        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2500', 0, 1, 90, true, Size, Region, 7,
+        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2500', 0, 1, 90, true, Size, Region, 7,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'decodingOptions');
         expect(result).assertTrue();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
-          'SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2500 error:' + e);
+          'SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2500 error:' + e);
         expect().assertFail();
         done();
       }
     });
 
     /**
-     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2600
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2600
      * @tc.name      : createPixelMap(decodingOptions, asyncCallback)-DNG
      * @tc.desc      : 1.create imageSource
      *                 2.set index and DecodeOptions
@@ -3353,18 +3353,18 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2600", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2600", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 2, width: -1 } };
-        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2600', 0, 1, 90, true, Size, Region, 7,
+        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2600', 0, 1, 90, true, Size, Region, 7,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'callBackCreate');
         expect(result).assertTrue();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
-          'SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2600 error:' + e);
+          'SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2600 error:' + e);
         expect().assertFail();
         done();
       }
@@ -3372,7 +3372,7 @@ export default function imageDecodeOptionsRawTest() {
 
     /**
      *
-     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2700
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2700
      * @tc.name      : createPixelMap(decodingOptions)-DNG
      * @tc.desc      : 1.create imageSource
      *                 2.set index and DecodeOptions
@@ -3382,25 +3382,25 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2700", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2700", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
-        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2700', 0, 1, 90, true, Size, Region, 7,
+        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2700', 0, 1, 90, true, Size, Region, 7,
           -100, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'decodingOptions');
         expect(result).assertTrue();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
-          'SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2700 error:' + e);
+          'SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2700 error:' + e);
         expect().assertFail();
         done();
       }
     });
 
     /**
-     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2800
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2800
      * @tc.name      : createPixelMap(decodingOptions, asyncCallback)-DNG
      * @tc.desc      : 1.create imageSource
      *                 2.set index and DecodeOptions
@@ -3410,18 +3410,18 @@ export default function imageDecodeOptionsRawTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2800", 0, async (done: Function) => {
+    it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2800", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
         let Size : image.Size = { width: 548, height: 730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
-        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2800', 0, 1, 90, true, Size, Region, 7,
+        await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2800', 0, 1, 90, true, Size, Region, 7,
           -100, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'callBackCreate');
         expect(result).assertTrue();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
-          'SUB_DECODEOPTIONS_WITH_RGBA_F16_CREATEPIXELMAP_2800 error:' + e);
+          'SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_2800 error:' + e);
         expect().assertFail();
         done();
       }

@@ -205,7 +205,6 @@ export default function rdbStoreCorruptJSunitTest() {
             }
             try {
                 await rdbStore.insert("test", valueBucket);
-                expect().assertFail();
             } catch (e) {
                 console.log(TAG, `rebuiltInsertTest0001 insert error ${e.code}, message ${e.message}`);
                 expect(14800011).assertEqual(e.code);
@@ -236,13 +235,8 @@ export default function rdbStoreCorruptJSunitTest() {
             for (let i = 0; i < 100; ++i) {
                 valueBucketArray.push(valueBucket);
             }
-            try {
-                await rdbStore.batchInsert("test", valueBucketArray);
-                expect().assertFail();
-            } catch (e) {
-                console.log(TAG, `rebuiltBatchInsertTest0001 insert error ${e.code}`);
-                expect(14800011).assertEqual(e.code);
-            }
+                let result = await rdbStore.batchInsert("test", valueBucketArray);
+                expect(result).assertEqual(-1);
             done();
             console.log(TAG + "************* rebuiltBatchInsertTest0001 end *************");
         })

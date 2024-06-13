@@ -1733,6 +1733,14 @@ export const testListWidth002: () => number;
 
 export const testListWidth003: () => number;
 
+export const testListNodeAdapter001: () => number;
+
+export const testListNodeAdapter002: () => number;
+
+export const testListNodeAdapter003: () => number;
+
+export const testListNodeAdapterEvent001: () => number;
+
 export const testListItemBackgroundColor001: () => number;
 
 export const testListItemBlur001: () => number;
@@ -2634,3 +2642,31 @@ export const testScrollTranslate004: () => number;
 export const testScrollPageEnable001: () => number;
 
 export const testScrollPageEnable002: () => number;
+
+export const TestArkUIAddApi001: () => number;
+
+export const TestArkUIAddApi002: () => number;
+
+export const TestArkUIAddApi003: () => number;
+
+export const TestArkUIAddApi004: () => number;
+
+export const TestArkUIAddApi005: () => number;
+
+export const TestArkUIAddApi006: () => number;
+
+export const TestArkUIAddApi007: () => number;
+
+export const TestArkUIAddApi008: () => number;
+
+export const TestArkUIAddApi009: () => number;
+
+export const TestArkUIAddApi010: () => number;
+
+export const TestArkUIAddApi011: () => number;
+
+export const TestArkUIAddApi012: () => number;
+
+export const TestArkUIAddApi013: () => number;
+
+export const TestArkUIAddApi014: () => number;

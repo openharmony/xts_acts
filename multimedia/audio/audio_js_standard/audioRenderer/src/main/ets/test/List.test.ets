@@ -17,16 +17,16 @@ import AudioEffectTest from './AudioEffect.test'
 import audioRendererTest from './AudioRenderer.test'    
 import audioRendererTestPc from './AudioRendererPc.test'    
 import AudioRendererInterruptUnitTest from './AudioRenderInterrupt.test'
-import parameter from '@ohos.systemparameter';
-let info = parameter.getSync("const.SystemCapability.Communication.NFC.Core" ,"false");
+import maxAmplitudeFor from './MaxAmplitudeFor.test'
+import call from  '@ohos.telephony.call'
+let voice = call.hasVoiceCapability()
 export default function testsuite() {
-    if (info != "false"){
+    if (voice){
         audioRendererTest()
         AudioRendererInterruptUnitTest()
         AudioEffectTest()
+        maxAmplitudeFor()
     }else{
         audioRendererTestPc();
     }
-        
-    
 }

@@ -31,18 +31,18 @@ struct ChipGroupApi1 {
   @Builder
   ChipGroupSuffix(): void {
     IconGroupSuffix({
-      items: [
-        new SymbolGlyphModifier($r('sys.symbol.magnifyingglass'))
-          .onClick(() => {
-            if (this.selected_state == false) {
-              this.selected_index = [0, 1, 2, 3, 4, 5, 6];
-              this.selected_state = true;
-            } else {
-              this.selected_index = [];
-              this.selected_state = false;
-            }
-          })
-      ]
+      items: [{
+        icon: { src: $r('sys.media.ohos_ic_public_search_filled'), size: { width: 36, height: 36 } },
+        action: () => {
+          if (this.selected_state == false) {
+            this.selected_index = [0, 1, 2, 3, 4, 5, 6]
+            this.selected_state = true
+          } else {
+            this.selected_index = []
+            this.selected_state = false
+          }
+        }
+      }]
     })
   }
 

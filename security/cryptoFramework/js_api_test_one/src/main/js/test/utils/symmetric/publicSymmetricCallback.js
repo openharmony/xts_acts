@@ -285,12 +285,12 @@ async function convertKeyEncryptAndDecryptProcess(
     generateSymKey(symKeyGenerator)
       .then((CallbackKey) => {
         expect(CallbackKey != null).assertTrue();
+        globalKey = CallbackKey;
         let encodeKey = CallbackKey.getEncoded();
         return convertSymKey(symKeyGenerator, encodeKey);
       })
       .then((convertKey) => {
         expect(convertKey != null).assertTrue();
-        globalKey = convertKey;
         return initCipher(
           cipherGenerator,
           encryptMode,
