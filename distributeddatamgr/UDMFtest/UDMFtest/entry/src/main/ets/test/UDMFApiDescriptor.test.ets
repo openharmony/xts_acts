@@ -1469,7 +1469,7 @@ export default function UDMFApiDescriptorTest() {
       console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
       console.log("mimeTypes:" + typeObj.mimeTypes.toString());
       expect(typeObj.typeId).assertEqual("com.microsoft.windows-media-wm");
-      expect(typeObj.belongingToTypes.toString()).assertEqual("com.microsoft.advanced-systems-format,general.video");
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.video,com.microsoft.advanced-systems-format");
       expect(typeObj.description).assertEqual("Windows WM video.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_video");
@@ -1497,7 +1497,7 @@ export default function UDMFApiDescriptorTest() {
       console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
       console.log("mimeTypes:" + typeObj.mimeTypes.toString());
       expect(typeObj.typeId).assertEqual("com.microsoft.windows-media-wmv");
-      expect(typeObj.belongingToTypes.toString()).assertEqual("com.microsoft.advanced-systems-format,general.video");
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.video,com.microsoft.advanced-systems-format");
       expect(typeObj.description).assertEqual("Windows WMV video.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_video");
@@ -1525,7 +1525,7 @@ export default function UDMFApiDescriptorTest() {
       console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
       console.log("mimeTypes:" + typeObj.mimeTypes.toString());
       expect(typeObj.typeId).assertEqual("com.microsoft.windows-media-wmp");
-      expect(typeObj.belongingToTypes.toString()).assertEqual("com.microsoft.advanced-systems-format,general.video");
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.video,com.microsoft.advanced-systems-format");
       expect(typeObj.description).assertEqual("Windows WMP video.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_video");
@@ -1777,7 +1777,7 @@ export default function UDMFApiDescriptorTest() {
       console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
       console.log("mimeTypes:" + typeObj.mimeTypes.toString());
       expect(typeObj.typeId).assertEqual("com.microsoft.windows-media-wma");
-      expect(typeObj.belongingToTypes.toString()).assertEqual("com.microsoft.advanced-systems-format,general.audio");
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.audio,com.microsoft.advanced-systems-format");
       expect(typeObj.description).assertEqual("Windows WMA audio.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_wma");
@@ -1805,7 +1805,7 @@ export default function UDMFApiDescriptorTest() {
       console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
       console.log("mimeTypes:" + typeObj.mimeTypes.toString());
       expect(typeObj.typeId).assertEqual("com.microsoft.waveform-audio");
-      expect(typeObj.belongingToTypes.toString()).assertEqual("com.microsoft.advanced-systems-format,general.audio");
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.audio,com.microsoft.advanced-systems-format");
       expect(typeObj.description).assertEqual("Waveform audio.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_wav");
@@ -1833,7 +1833,7 @@ export default function UDMFApiDescriptorTest() {
       console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
       console.log("mimeTypes:" + typeObj.mimeTypes.toString());
       expect(typeObj.typeId).assertEqual("com.microsoft.windows-media-wmx");
-      expect(typeObj.belongingToTypes.toString()).assertEqual("com.microsoft.advanced-systems-format,general.video");
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.video,com.microsoft.advanced-systems-format");
       expect(typeObj.description).assertEqual("Windows WMX video.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_video");
@@ -1861,7 +1861,7 @@ export default function UDMFApiDescriptorTest() {
       console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
       console.log("mimeTypes:" + typeObj.mimeTypes.toString());
       expect(typeObj.typeId).assertEqual("com.microsoft.windows-media-wvx");
-      expect(typeObj.belongingToTypes.toString()).assertEqual("com.microsoft.advanced-systems-format,general.video");
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.video,com.microsoft.advanced-systems-format");
       expect(typeObj.description).assertEqual("Windows WVX video.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_video");
@@ -1889,7 +1889,7 @@ export default function UDMFApiDescriptorTest() {
       console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
       console.log("mimeTypes:" + typeObj.mimeTypes.toString());
       expect(typeObj.typeId).assertEqual("com.microsoft.windows-media-wax");
-      expect(typeObj.belongingToTypes.toString()).assertEqual("com.microsoft.advanced-systems-format,general.audio");
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.audio,com.microsoft.advanced-systems-format");
       expect(typeObj.description).assertEqual("Windows WAX audio.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_audio");
