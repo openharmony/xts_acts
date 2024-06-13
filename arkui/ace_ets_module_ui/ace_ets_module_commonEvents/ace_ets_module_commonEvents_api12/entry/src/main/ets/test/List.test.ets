@@ -42,9 +42,13 @@ import LongPressGestureLongClickMouseTest from './LongPressGesture/LongPressGest
 import PanGestureExample01Test from './PanGesture/PanGestureExample01Test.test';
 import PanGestureExample02Test from './PanGesture/PanGestureExample02Test.test';
 import SwipeGestureExample01Test from './SwipeGesture/SwipeGestureExample01Test.test';
+import SwipeGestureExample02Test from './SwipeGesture/SwipeGestureExample02Test.test';
 import PanGestureExample03Test from './PanGesture/PanGestureExample03Test.test';
 import SwipeGestureExample03Test from './SwipeGesture/SwipeGestureExample03Test.test';
-
+import RotationGestureBasic01Test from './RotationGesture/RotationGestureBasic01Test.test';
+import RotationGestureBasic02Test from './RotationGesture/RotationGestureBasic02Test.test';
+import PinchGestureBasic01Test from './PinchGesture/PinchGestureBasic01Test.test';
+import PinchGestureBasic02Test from './PinchGesture/PinchGestureBasic02Test.test';
 export default function testsuite() {
   APIPreDragStatusTest();
   addGestureApplyGesture();
@@ -77,4 +81,9 @@ export default function testsuite() {
   SwipeGestureExample01Test();
   PanGestureExample03Test();
   SwipeGestureExample03Test();
+  SwipeGestureExample02Test();
+  RotationGestureBasic01Test();
+  RotationGestureBasic02Test();
+  PinchGestureBasic01Test();
+  PinchGestureBasic02Test();
 }
