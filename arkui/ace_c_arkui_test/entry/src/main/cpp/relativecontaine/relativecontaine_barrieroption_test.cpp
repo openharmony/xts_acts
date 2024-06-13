@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-#include <string.h>
+#include <cstring>
 #include "common/common.h"
 #define NUM_0 0
 #define NUM_1 1
@@ -22,13 +22,12 @@ namespace ArkUICapiTest {
 
 static napi_value TestRelativeContaineBarrierOption001(napi_env env, napi_callback_info info)
 {
-    const char* barrier_set_id = "BarrierOption";
+    const char* barrierId = "BarrierOption";
     auto barrier = OH_ArkUI_BarrierOption_Create(NUM_1);
-    OH_ArkUI_BarrierOption_SetId(barrier, barrier_set_id, NUM_0);
+    OH_ArkUI_BarrierOption_SetId(barrier, barrierId, NUM_0);
 
     auto ret = OH_ArkUI_BarrierOption_GetId(barrier, NUM_0);
-    if(::strcmp(ret, barrier_set_id) != NUM_0)
-    {
+    if (::strcmp(ret, barrierId) != NUM_0) {
         napi_value errorResult = nullptr;                                                                          \
         napi_create_int32(env, PARAM_NEGATIVE_1, &errorResult);                                                    \
         return errorResult;
@@ -66,8 +65,7 @@ static napi_value TestRelativeContaineBarrierOption003(napi_env env, napi_callba
     
     char text1[] = "text";
     auto ret = OH_ArkUI_BarrierOption_GetReferencedId(barrier, NUM_0, NUM_0);
-    if(::strcmp(ret, text1) != NUM_0)
-    {
+    if (::strcmp(ret, text1) != NUM_0) {
         napi_value errorResult = nullptr;                                                                          \
         napi_create_int32(env, PARAM_NEGATIVE_1, &errorResult);                                                    \
         return errorResult;

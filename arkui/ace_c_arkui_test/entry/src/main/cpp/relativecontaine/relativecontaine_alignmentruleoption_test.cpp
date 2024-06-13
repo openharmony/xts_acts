@@ -14,8 +14,8 @@
  */
 
 #include "common/common.h"
-#include <math.h>
-#include <string.h>
+#include <cmath>
+#include <cstring>
 #define NUM 0.3
 #define NUM_0 0
 #define EPSILON 1e-6
@@ -39,29 +39,27 @@ static napi_value TestRelativeContaineAlignmentRuleOption001(napi_env env, napi_
 
     char text1[] = "text";
     auto ret = OH_ArkUI_AlignmentRuleOption_GetStartId(alignmentrule);
-    if(::strcmp(ret, text1) != NUM_0)
-    {
+    if (::strcmp(ret, text1) != NUM_0) {
         napi_value errorResult = nullptr;                                                                          \
         napi_create_int32(env, PARAM_NEGATIVE_1, &errorResult);                                                    \
         return errorResult;
     }
     ret = OH_ArkUI_AlignmentRuleOption_GetEndId(alignmentrule);
-    if(::strcmp(ret, text1) != NUM_0)
-    {
+    if (::strcmp(ret, text1) != NUM_0) {
         napi_value errorResult = nullptr;                                                                          \
         napi_create_int32(env, PARAM_NEGATIVE_1, &errorResult);                                                    \
         return errorResult;
     }
     ret = OH_ArkUI_AlignmentRuleOption_GetCenterIdHorizontal(alignmentrule);
-    if(::strcmp(ret, text1) != NUM_0)
-    {
+    if (::strcmp(ret, text1) != NUM_0) {
         napi_value errorResult = nullptr;                                                                          \
         napi_create_int32(env, PARAM_NEGATIVE_1, &errorResult);                                                    \
         return errorResult;
     }
     ASSERT_EQ(OH_ArkUI_AlignmentRuleOption_GetStartAlignment(alignmentrule), ARKUI_HORIZONTAL_ALIGNMENT_END);
     ASSERT_EQ(OH_ArkUI_AlignmentRuleOption_GetEndAlignment(alignmentrule), ARKUI_HORIZONTAL_ALIGNMENT_CENTER);
-    ASSERT_EQ(OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentHorizontal(alignmentrule), ARKUI_HORIZONTAL_ALIGNMENT_START);
+    ASSERT_EQ(OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentHorizontal(alignmentrule), 
+    ARKUI_HORIZONTAL_ALIGNMENT_START);
 
     OH_ArkUI_AlignmentRuleOption_Dispose(alignmentrule);
 
@@ -86,29 +84,27 @@ static napi_value TestRelativeContaineAlignmentRuleOption002(napi_env env, napi_
     OH_ArkUI_AlignmentRuleOption_SetCenterVertical(alignmentrule, "text", ARKUI_VERTICAL_ALIGNMENT_TOP);
     
     auto ret = OH_ArkUI_AlignmentRuleOption_GetTopId(alignmentrule);
-    if(::strcmp(ret, text1) != NUM_0)
-    {
+    if (::strcmp(ret, text1) != NUM_0) {
         napi_value errorResult = nullptr;                                                                          \
         napi_create_int32(env, PARAM_NEGATIVE_1, &errorResult);                                                    \
         return errorResult;
     }
     ret = OH_ArkUI_AlignmentRuleOption_GetBottomId(alignmentrule);
-    if(::strcmp(ret, text1) != NUM_0)
-    {
+    if (::strcmp(ret, text1) != NUM_0) {
         napi_value errorResult = nullptr;                                                                          \
         napi_create_int32(env, PARAM_NEGATIVE_1, &errorResult);                                                    \
         return errorResult;
     }
     ret = OH_ArkUI_AlignmentRuleOption_GetCenterIdVertical(alignmentrule);
-    if(::strcmp(ret, text1) != NUM_0)
-    {
+    if (::strcmp(ret, text1) != NUM_0) {
         napi_value errorResult = nullptr;                                                                          \
         napi_create_int32(env, PARAM_NEGATIVE_1, &errorResult);                                                    \
         return errorResult;
     }
     ASSERT_EQ(OH_ArkUI_AlignmentRuleOption_GetTopAlignment(alignmentrule), ARKUI_VERTICAL_ALIGNMENT_BOTTOM);
     ASSERT_EQ(OH_ArkUI_AlignmentRuleOption_GetBottomAlignment(alignmentrule), ARKUI_VERTICAL_ALIGNMENT_CENTER);
-    ASSERT_EQ(OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentVertical(alignmentrule), ARKUI_VERTICAL_ALIGNMENT_TOP);
+    ASSERT_EQ(OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentVertical(alignmentrule), 
+    ARKUI_VERTICAL_ALIGNMENT_TOP);
 
     OH_ArkUI_AlignmentRuleOption_Dispose(alignmentrule);
 
