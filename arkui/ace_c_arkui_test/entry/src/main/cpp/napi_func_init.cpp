@@ -486,6 +486,8 @@
 #include "animation/animation.cpp"
 #include "waterFlower/waterFlower.cpp"
 #include "accessibilityState/accessibilityState.cpp"
+#include "relativecontaine/relativecontaine_alignmentruleoption_test.cpp"
+#include "relativecontaine/relativecontaine_barrieroption_test.cpp"
 
 
 namespace ArkUICapiTest {
@@ -4392,6 +4394,12 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testArkUI013", nullptr, testArkUI013, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testArkUI014", nullptr, testArkUI014, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testArkUI015", nullptr, testArkUI015, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRelativeContaineAlignmentRuleOption001", nullptr, TestRelativeContaineAlignmentRuleOption001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRelativeContaineAlignmentRuleOption002", nullptr, TestRelativeContaineAlignmentRuleOption002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRelativeContaineAlignmentRuleOption003", nullptr, TestRelativeContaineAlignmentRuleOption003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRelativeContaineBarrierOption001", nullptr, TestRelativeContaineBarrierOption001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRelativeContaineBarrierOption002", nullptr, TestRelativeContaineBarrierOption002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRelativeContaineBarrierOption003", nullptr, TestRelativeContaineBarrierOption003, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");
