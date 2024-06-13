@@ -245,6 +245,8 @@
 #include "text/text_visibility_test.cpp"
 #include "text/text_linebreakstrategy_test.cpp"
 #include "arkApi/arkApi.cpp"
+#include "animation/animation.cpp"
+#include "waterFlower/waterFlower.cpp"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -2195,6 +2197,18 @@ static napi_value Init(napi_env env, napi_value exports)
         {"TestArkUIAddApi012", nullptr, TestArkUIAddApi012, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"TestArkUIAddApi013", nullptr, TestArkUIAddApi013, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"TestArkUIAddApi014", nullptr, TestArkUIAddApi014, nullptr, nullptr, nullptr, napi_default, nullptr},
+            
+        {"testAnimation_001", nullptr, testAnimation_001, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"testAnimation_002", nullptr, testAnimation_002, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"testAnimation_003", nullptr, testAnimation_003, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"testAnimation_004", nullptr, testAnimation_004, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"testAnimation_005", nullptr, testAnimation_005, nullptr , nullptr, nullptr, napi_default, nullptr},
+    
+        {"testWaterFlower_001", nullptr, testWaterFlower_001, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"testWaterFlower_002", nullptr, testWaterFlower_002, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"testWaterFlower_003", nullptr, testWaterFlower_003, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"testWaterFlower_004", nullptr, testWaterFlower_004, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"testWaterFlower_005", nullptr, testWaterFlower_004, nullptr , nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");
