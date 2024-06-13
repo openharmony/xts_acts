@@ -45,15 +45,17 @@ export default function createAssetRequestTest() {
     async function saveCameraPhotoByExistPhotoAsset(done: function, testNum: string) {
         let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
         let fetchOptions: photoAccessHelper.FetchOptions = {
-            fetchColumns: [],
+            fetchColumns: ['date_added', 'date_modified'],
             predicates: predicates
         };
         try {
             let flag: number = 2;
             let photoAsset: photoAccessHelper.PhotoAsset = undefined;
+            let date_added_before: number = 0;
+	        let date_modified_before: number = 0;
             let assetCount = 0;
             while(flag > 0) {
-                let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+                let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await helper.getAssets(fetchOptions);
                 if (fetchResult !== undefined) {
                    console.info(`${testNum} :: fetchResult success`);
                    photoAsset = await fetchResult.getFirstObject();
@@ -63,6 +65,10 @@ export default function createAssetRequestTest() {
                       continue;
                    }
                 }
+                date_added_before = photoAsset.get(photoKeys.DATE_ADDED);
+		        date_modified_before = photoAsset.get(photoKeys.DATE_MODIFIED);
+				console.log(`${testNum} :: date_added_before == ${date_added_before}`);
+				console.log(`${testNum} :: date_modified_before == ${date_modified_before}`);
                 assetCount = fetchResult.getCount();
                 console.log(`${testNum} :: assetCount = ${assetCount}`);
                 break;
@@ -71,9 +77,16 @@ export default function createAssetRequestTest() {
             assetChangeRequest.saveCameraPhoto();
             await phAccessHelper.applyChanges(assetChangeRequest);
             console.info(`${testNum} :: apply saveCameraPhoto successfully`);
-            let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
+            let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await helper.getAssets(fetchOptions);
+            let asset = await fetchResult.getFirstObject();
+	        let date_added_after = asset.get(photoKeys.DATE_ADDED);
+	        let date_modified_after = asset.get(photoKeys.DATE_MODIFIED);
+			console.log(`${testNum} :: date_added_after == ${date_added_after}`);
+			console.log(`${testNum} :: date_modified_after == ${date_modified_after}`);
             let count = fetchResult.getCount();
             expect(count).assertEqual(assetCount);
+            expect(date_added_after).assertEqual(date_added_before);
+	        expect(date_modified_after).assertEqual(date_modified_before);
             done();
         } catch(error: BusinessError) {
            console.error(`${testNum} :: saveCameraPhotoByExistPhotoAsset failed with error: ${error.code}, ${error.message}`);
