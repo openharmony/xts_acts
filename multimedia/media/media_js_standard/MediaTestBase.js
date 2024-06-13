@@ -22,7 +22,6 @@ import featureAbility from '@ohos.ability.featureAbility'
 import { UiDriver, BY, PointerMatrix } from '@ohos.UiTest';
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 const CODECMIMEVALUE = ['video/avc', 'audio/mp4a-latm', 'audio/mpeg']
-const context = featureAbility.getContext();
 const delegator = abilityDelegatorRegistry.getAbilityDelegator();
 export async function getPermission(permissionNames) {
     featureAbility.getContext().requestPermissionsFromUser(permissionNames, 0, async (data) => {
@@ -52,27 +51,6 @@ export async function driveFn(num) {
         await msleepAsync(2000)
     }
     await msleepAsync(2000)
-}
-
-export async function getAvRecorderFd(pathName, fileType) {
-    console.info('case come in getAvRecorderFd')
-    let fdObject = {
-        fileAsset : null,
-        fdNumber : null
-    }
-    
-    await featureAbility.getContext().getFilesDir().then((fileDir) => {
-        console.info("case file dir is" + JSON.stringify(fileDir));
-        pathName = fileDir + '/' + pathName;
-        console.info("case pathName is" + pathName);
-    });
-    
-    let file = fs.openSync(pathName, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-    fdObject.fileAsset = file;
-    fdObject.fdNumber = file.fd;
-    console.info('case getFd number is: ' + fdObject.fdNumber);
-    
-    return fdObject;
 }
 
 // File operation
@@ -239,27 +217,6 @@ export async function clearRouter() {
 
 export async function getFd(pathName) {
     console.info('case come in getFd')
-    let fdObject = {
-        fileAsset : null,
-        fdNumber : null
-    }
-    
-    await featureAbility.getContext().getFilesDir().then((fileDir) => {
-        console.info("case file dir is" + JSON.stringify(fileDir));
-        pathName = fileDir + '/' + pathName;
-        console.info("case pathName is" + pathName);
-    });
-    
-    let file = fs.openSync(pathName, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-    fdObject.fileAsset = file;
-    fdObject.fdNumber = file.fd;
-    console.info('case getFd number is: ' + fdObject.fdNumber);
-    
-    return fdObject;
-}
-
-export async function getAudioFd(pathName) {
-    console.info('case come in getAudioFd')
     let fdObject = {
         fileAsset : null,
         fdNumber : null

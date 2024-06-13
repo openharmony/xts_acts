@@ -1209,7 +1209,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_MPEG4_0100 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -1250,7 +1250,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0400 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -1291,7 +1291,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0500 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -1332,7 +1332,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0600 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -1373,7 +1373,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0800 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -1418,7 +1418,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0400 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -1459,7 +1459,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0500 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -1500,7 +1500,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0600 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -1541,7 +1541,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0800 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -1586,7 +1586,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_CALLBACK_0500 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -1627,7 +1627,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0500 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -1668,7 +1668,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0500 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -1709,7 +1709,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0100 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             console.info('avRecorderResumeCallBack1 test start');
@@ -1743,7 +1743,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0200 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -1776,7 +1776,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0300 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -1815,7 +1815,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_CALLBACK_0700 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -1852,7 +1852,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0100 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -1891,7 +1891,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0200 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -1930,7 +1930,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0300 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -1969,7 +1969,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESUME_PROMISE_0700 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -2009,7 +2009,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_CALLBACK_0300 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -2046,7 +2046,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_CALLBACK_0400 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -2087,7 +2087,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_CALLBACK_0600 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -2126,7 +2126,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_CALLBACK_0800 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -2167,7 +2167,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0100 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -2200,7 +2200,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0200 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -2233,7 +2233,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0300 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -2271,7 +2271,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0400 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -2311,7 +2311,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0600 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -2350,7 +2350,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0700 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -2387,7 +2387,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_STOP_PROMISE_0800 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -2430,7 +2430,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0100 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             console.info('avRecorderResumeCallBack1 test start');
@@ -2464,7 +2464,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0200 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -2497,7 +2497,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0300 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -2536,7 +2536,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0400 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -2575,7 +2575,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0500 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -2614,7 +2614,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0600 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -2653,7 +2653,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0700 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -2688,7 +2688,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_CALLBACK_0800 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -2729,7 +2729,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0100 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -2762,7 +2762,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0200 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -2795,7 +2795,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0300 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -2832,7 +2832,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0400 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -2873,7 +2873,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0600 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -2912,7 +2912,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0700 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -2947,7 +2947,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_RESET_PROMISE_0800 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -2991,7 +2991,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0100 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -3026,7 +3026,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0200 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -3071,7 +3071,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0300 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -3117,7 +3117,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0400 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -3165,7 +3165,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0500 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -3211,7 +3211,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0600 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -3257,7 +3257,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0700 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -3298,7 +3298,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_PROMISE_0800 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let loopTimes = 3;
@@ -3363,7 +3363,7 @@ export default function avVideoRecorderTestOne() {
                 location : { latitude : 30, longitude : 130 }
             }
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avNewConfig.url = fdPath;
             checkDevice(avNewConfig)
@@ -3419,7 +3419,7 @@ export default function avVideoRecorderTestOne() {
                 location : { latitude : 30, longitude : 130 }
             }
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avNewConfig.url = fdPath;
             checkDevice(avNewConfig)
@@ -3475,7 +3475,7 @@ export default function avVideoRecorderTestOne() {
                 location : { latitude : 30, longitude : 130 }
             }
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avNewConfig.url = fdPath;
             checkDevice(avNewConfig)
@@ -3531,7 +3531,7 @@ export default function avVideoRecorderTestOne() {
                 location : { latitude : 30, longitude : 130 }
             }
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avNewConfig.url = fdPath;
             checkDevice(avNewConfig)
@@ -3568,7 +3568,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0100 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -3603,7 +3603,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0200 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -3642,7 +3642,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0300 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -3685,7 +3685,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0400 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -3732,7 +3732,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0500 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -3781,7 +3781,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0600 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -3828,7 +3828,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0700 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -3875,7 +3875,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_PROMISE_0800 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let loopTimes = 3;
@@ -3922,7 +3922,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0100 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -3957,7 +3957,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0200 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -3994,7 +3994,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0300 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -4041,7 +4041,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0400 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -4090,7 +4090,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0500 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -4137,7 +4137,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0600 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -4184,7 +4184,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0700 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -4225,7 +4225,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_PROMISE_0800 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let loopTimes = 3;
@@ -4277,7 +4277,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0100 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -4312,7 +4312,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0200 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -4349,7 +4349,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0300 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -4392,7 +4392,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0400 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -4439,7 +4439,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0500 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -4486,7 +4486,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0600 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -4533,7 +4533,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0700 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -4574,7 +4574,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_PROMISE_0800 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let loopTimes = 3;
@@ -4627,7 +4627,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0100 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -4668,7 +4668,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0200 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -4711,7 +4711,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0300 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -4758,7 +4758,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0400 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -4801,7 +4801,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0500 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -4844,7 +4844,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0600 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -4889,7 +4889,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0700 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -4934,7 +4934,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0800 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -4981,7 +4981,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_0900 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -5043,7 +5043,7 @@ export default function avVideoRecorderTestOne() {
                 location : { latitude : 30, longitude : 130 }
             }
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avNewConfig.url = fdPath;
             checkDevice(avNewConfig)
@@ -5100,7 +5100,7 @@ export default function avVideoRecorderTestOne() {
                 location : { latitude : 30, longitude : 130 }
             }
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avNewConfig.url = fdPath;
             checkDevice(avNewConfig)
@@ -5159,7 +5159,7 @@ export default function avVideoRecorderTestOne() {
                 location : { latitude : 30, longitude : 130 }
             }
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avNewConfig.url = fdPath;
             checkDevice(avNewConfig)
@@ -5220,7 +5220,7 @@ export default function avVideoRecorderTestOne() {
                 location : { latitude : 30, longitude : 130 }
             }
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avNewConfig.url = fdPath;
             checkDevice(avNewConfig)
@@ -5279,7 +5279,7 @@ export default function avVideoRecorderTestOne() {
                 location : { latitude : 30, longitude : 130 }
             }
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avNewConfig.url = fdPath;
             checkDevice(avNewConfig)
@@ -5324,7 +5324,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_0100 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -5361,7 +5361,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_0200 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -5398,7 +5398,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_0300 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -5439,7 +5439,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_0400 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -5476,7 +5476,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_0500 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -5513,7 +5513,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_0600 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -5552,7 +5552,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_0700 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -5591,7 +5591,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_0800 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -5632,7 +5632,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_0900 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -5673,7 +5673,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_1000 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -5710,7 +5710,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_1100 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -5747,7 +5747,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_1200 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -5788,7 +5788,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_1300 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -5825,7 +5825,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_1400 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -5863,7 +5863,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_CALLBACK_0100 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -5894,7 +5894,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_CALLBACK_0200 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -5931,7 +5931,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_CALLBACK_0300 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -5970,7 +5970,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_CALLBACK_0400 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -6013,7 +6013,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_CALLBACK_0500 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -6054,7 +6054,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_CALLBACK_0600 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -6095,7 +6095,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_CALLBACK_0700 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -6130,7 +6130,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PREPARE_CALLBACK_0800 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -6185,7 +6185,7 @@ export default function avVideoRecorderTestOne() {
                 location : { latitude : 30, longitude : 130 }
             }
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avNewConfig.url = fdPath;
             checkDevice(avNewConfig)
@@ -6237,7 +6237,7 @@ export default function avVideoRecorderTestOne() {
                 location : { latitude : 30, longitude : 130 }
             }
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avNewConfig.url = fdPath;
             checkDevice(avNewConfig)
@@ -6289,7 +6289,7 @@ export default function avVideoRecorderTestOne() {
                 location : { latitude : 30, longitude : 130 }
             }
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avNewConfig.url = fdPath;
             checkDevice(avNewConfig)
@@ -6341,7 +6341,7 @@ export default function avVideoRecorderTestOne() {
                 location : { latitude : 30, longitude : 130 }
             }
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avNewConfig.url = fdPath;
             checkDevice(avNewConfig)
@@ -6374,7 +6374,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_CALLBACK_0100 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -6407,7 +6407,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_CALLBACK_0200 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -6440,7 +6440,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_CALLBACK_0300 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -6477,7 +6477,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_CALLBACK_0400 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -6518,7 +6518,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_CALLBACK_0500 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -6561,7 +6561,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_CALLBACK_0600 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -6602,7 +6602,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_CALLBACK_0700 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -6643,7 +6643,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETSURFACE_CALLBACK_0800 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -6681,7 +6681,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_CALLBACK_0100 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -6714,7 +6714,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_CALLBACK_0200 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -6747,7 +6747,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_CALLBACK_0300 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -6788,7 +6788,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_CALLBACK_0400 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -6831,7 +6831,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_CALLBACK_0500 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -6872,7 +6872,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_CALLBACK_0600 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -6913,7 +6913,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_CALLBACK_0700 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -6948,7 +6948,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_START_CALLBACK_0800 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -6988,7 +6988,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_CALLBACK_0100 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -7021,7 +7021,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_CALLBACK_0200 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -7054,7 +7054,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_CALLBACK_0300 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -7091,7 +7091,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_CALLBACK_0400 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -7132,7 +7132,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_CALLBACK_0500 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -7173,7 +7173,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_CALLBACK_0600 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -7212,7 +7212,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_CALLBACK_0700 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -7251,7 +7251,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_PAUSE_CALLBACK_0800 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfig.url = fdPath;
             let mySteps = new Array(
@@ -7299,7 +7299,7 @@ export default function avVideoRecorderTestOne() {
             avProfileMpegAac.videoBitrate = 280000
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigMpegAac.url = fdPath;
             let mySteps = new Array(
@@ -7345,7 +7345,7 @@ export default function avVideoRecorderTestOne() {
             avProfileMpegAac.videoBitrate = 560000
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigMpegAac.url = fdPath;
             let mySteps = new Array(
@@ -7391,7 +7391,7 @@ export default function avVideoRecorderTestOne() {
             avProfileMpegAac.videoBitrate = 1120000
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigMpegAac.url = fdPath;
             let mySteps = new Array(
@@ -7437,7 +7437,7 @@ export default function avVideoRecorderTestOne() {
             avProfileMpegAac.videoBitrate = 2240000
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigMpegAac.url = fdPath;
             let mySteps = new Array(
@@ -7481,7 +7481,7 @@ export default function avVideoRecorderTestOne() {
             avConfigMpegAac.orientationHint = 90
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigMpegAac.url = fdPath;
             let mySteps = new Array(
@@ -7525,7 +7525,7 @@ export default function avVideoRecorderTestOne() {
             avConfigMpegAac.orientationHint = 180
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigMpegAac.url = fdPath;
             let mySteps = new Array(
@@ -7569,7 +7569,7 @@ export default function avVideoRecorderTestOne() {
             avConfigMpegAac.orientationHint = 270
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigMpegAac.url = fdPath;
             let mySteps = new Array(
@@ -7613,7 +7613,7 @@ export default function avVideoRecorderTestOne() {
             avProfileMpegAac.videoFrameRate = 5
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigMpegAac.url = fdPath;
             let mySteps = new Array(
@@ -7657,7 +7657,7 @@ export default function avVideoRecorderTestOne() {
             avProfileMpegAac.videoFrameRate = 30
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigMpegAac.url = fdPath;
             let mySteps = new Array(
@@ -7699,7 +7699,7 @@ export default function avVideoRecorderTestOne() {
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_MPEG4_1200 start')
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigMpeg.url = fdPath
             let mySteps = new Array(
@@ -7740,7 +7740,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_MPEG4_0100 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigMpegAac.url = fdPath;
 
@@ -7788,7 +7788,7 @@ export default function avVideoRecorderTestOne() {
             avProfileMpegAac.videoBitrate = 280000
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigMpegAac.url = fdPath;
 
@@ -7836,7 +7836,7 @@ export default function avVideoRecorderTestOne() {
             avProfileMpegAac.videoBitrate = 560000
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigMpegAac.url = fdPath;
 
@@ -7884,7 +7884,7 @@ export default function avVideoRecorderTestOne() {
             avProfileMpegAac.videoBitrate = 1120000
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigMpegAac.url = fdPath;
 
@@ -7932,7 +7932,7 @@ export default function avVideoRecorderTestOne() {
             avProfileMpegAac.videoBitrate = 2240000
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigMpegAac.url = fdPath;
 
@@ -7978,7 +7978,7 @@ export default function avVideoRecorderTestOne() {
             avConfigMpegAac.orientationHint = 90
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigMpegAac.url = fdPath;
 
@@ -8024,7 +8024,7 @@ export default function avVideoRecorderTestOne() {
             avConfigMpegAac.orientationHint = 180
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigMpegAac.url = fdPath;
 
@@ -8070,7 +8070,7 @@ export default function avVideoRecorderTestOne() {
             avConfigMpegAac.orientationHint = 270
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigMpegAac.url = fdPath;
 
@@ -8116,7 +8116,7 @@ export default function avVideoRecorderTestOne() {
         //     avProfileMpegAac.videoFrameRate = 5
         //
         //     let fileName = avVideoRecorderTestBase.resourceName()
-        //     fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+        //     fdObject = await mediaTestBase.getFd(fileName);
         //     fdPath = "fd://" + fdObject.fdNumber;
         //     avConfigMpegAac.url = fdPath;
         //
@@ -8162,7 +8162,7 @@ export default function avVideoRecorderTestOne() {
             avProfileMpegAac.videoFrameRate = 30
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigMpegAac.url = fdPath;
 
@@ -8206,7 +8206,7 @@ export default function avVideoRecorderTestOne() {
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_MPEG4_1200 start')
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigMpeg.url = fdPath
 
@@ -8249,7 +8249,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_H264_0100 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigH264Aac.url = fdPath;
             let mySteps = new Array(
@@ -8295,7 +8295,7 @@ export default function avVideoRecorderTestOne() {
             avProfileH264Aac.videoBitrate = 280000
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigH264Aac.url = fdPath;
             let mySteps = new Array(
@@ -8341,7 +8341,7 @@ export default function avVideoRecorderTestOne() {
             avProfileH264Aac.videoBitrate = 560000
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigH264Aac.url = fdPath;
             let mySteps = new Array(
@@ -8387,7 +8387,7 @@ export default function avVideoRecorderTestOne() {
             avProfileH264Aac.videoBitrate = 1120000
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigH264Aac.url = fdPath;
             let mySteps = new Array(
@@ -8433,7 +8433,7 @@ export default function avVideoRecorderTestOne() {
             avProfileH264Aac.videoBitrate = 2240000
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigH264Aac.url = fdPath;
             let mySteps = new Array(
@@ -8477,7 +8477,7 @@ export default function avVideoRecorderTestOne() {
             avConfigH264Aac.orientationHint = 90
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigH264Aac.url = fdPath;
             let mySteps = new Array(
@@ -8521,7 +8521,7 @@ export default function avVideoRecorderTestOne() {
             avConfigH264Aac.orientationHint = 180
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigH264Aac.url = fdPath;
             let mySteps = new Array(
@@ -8565,7 +8565,7 @@ export default function avVideoRecorderTestOne() {
             avConfigH264Aac.orientationHint = 270
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigH264Aac.url = fdPath;
             let mySteps = new Array(
@@ -8609,7 +8609,7 @@ export default function avVideoRecorderTestOne() {
             avProfileH264Aac.videoFrameRate = 5
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigH264Aac.url = fdPath;
             let mySteps = new Array(
@@ -8653,7 +8653,7 @@ export default function avVideoRecorderTestOne() {
             avProfileH264Aac.videoFrameRate = 30
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigH264Aac.url = fdPath;
             let mySteps = new Array(
@@ -8695,7 +8695,7 @@ export default function avVideoRecorderTestOne() {
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_PROMISE_H264_1200 start')
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigH264.url = fdPath
             let mySteps = new Array(
@@ -8736,7 +8736,7 @@ export default function avVideoRecorderTestOne() {
         //   }
         //     console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_H264_0100 start')
         //     let fileName = avVideoRecorderTestBase.resourceName()
-        //     fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+        //     fdObject = await mediaTestBase.getFd(fileName);
         //     fdPath = "fd://" + fdObject.fdNumber;
         //     avConfigH264Aac.url = fdPath;
         //
@@ -8784,7 +8784,7 @@ export default function avVideoRecorderTestOne() {
             avProfileH264Aac.videoBitrate = 280000
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigH264Aac.url = fdPath;
 
@@ -8832,7 +8832,7 @@ export default function avVideoRecorderTestOne() {
             avProfileH264Aac.videoBitrate = 560000
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigH264Aac.url = fdPath;
 
@@ -8880,7 +8880,7 @@ export default function avVideoRecorderTestOne() {
             avProfileH264Aac.videoBitrate = 1120000
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigH264Aac.url = fdPath;
 
@@ -8928,7 +8928,7 @@ export default function avVideoRecorderTestOne() {
             avProfileH264Aac.videoBitrate = 2240000
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigH264Aac.url = fdPath;
 
@@ -8974,7 +8974,7 @@ export default function avVideoRecorderTestOne() {
             avConfigH264Aac.orientationHint = 90
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigH264Aac.url = fdPath;
 
@@ -9020,7 +9020,7 @@ export default function avVideoRecorderTestOne() {
             avConfigH264Aac.orientationHint = 180
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigH264Aac.url = fdPath;
 
@@ -9066,7 +9066,7 @@ export default function avVideoRecorderTestOne() {
             avConfigH264Aac.orientationHint = 270
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigH264Aac.url = fdPath;
 
@@ -9112,7 +9112,7 @@ export default function avVideoRecorderTestOne() {
         //     avProfileH264Aac.videoFrameRate = 5
         //
         //     let fileName = avVideoRecorderTestBase.resourceName()
-        //     fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+        //     fdObject = await mediaTestBase.getFd(fileName);
         //     fdPath = "fd://" + fdObject.fdNumber;
         //     avConfigH264Aac.url = fdPath;
         //
@@ -9158,7 +9158,7 @@ export default function avVideoRecorderTestOne() {
             avProfileH264Aac.videoFrameRate = 30
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigH264Aac.url = fdPath;
 
@@ -9202,7 +9202,7 @@ export default function avVideoRecorderTestOne() {
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_FUNCTION_CALLBACK_H264_1200 start')
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigH264.url = fdPath
 
@@ -9245,7 +9245,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_GETAVRECORDERCONFIG_PROMISE_0100 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigH264Aac.url = fdPath;
             let mySteps = new Array(
@@ -9284,7 +9284,7 @@ export default function avVideoRecorderTestOne() {
                 avConfigH265Aac.videoCodec = media.CodecMimeType.VIDEO_AVC
             }
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigH265Aac.url = fdPath;
             let mySteps = new Array(
@@ -9328,7 +9328,7 @@ export default function avVideoRecorderTestOne() {
                 avConfigH265Aac.videoCodec = media.CodecMimeType.VIDEO_AVC
             }
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigH265Aac.url = fdPath;
 
@@ -9374,7 +9374,7 @@ export default function avVideoRecorderTestOne() {
                 avConfigH265Aac.videoCodec = media.CodecMimeType.VIDEO_AVC
             }
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigH265Aac.url = fdPath
             avConfigH265Aac.isHdr = false
@@ -9419,7 +9419,7 @@ export default function avVideoRecorderTestOne() {
             console.info(TAG + 'SUM_MULTIMEDIA_AVRECORDER_GET_CURRENT_CAPTURER_INFO_CALLBACK_0100 start')
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigOnlyAac.url = fdPath
 
@@ -9463,7 +9463,7 @@ export default function avVideoRecorderTestOne() {
             console.info(TAG + 'SUM_MULTIMEDIA_AVRECORDER_GET_AVAILABLE_ENCODER_CALLBACK_0100 start')
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigOnlyAac.url = fdPath
 
@@ -9507,7 +9507,7 @@ export default function avVideoRecorderTestOne() {
             console.info(TAG + 'SUM_MULTIMEDIA_AVRECORDER_GET_MAX_AMPLITUDE_CALLBACK_0100 start')
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigOnlyAac.url = fdPath
 
@@ -9551,7 +9551,7 @@ export default function avVideoRecorderTestOne() {
             console.info(TAG + 'SUM_MULTIMEDIA_AVRECORDER_GET_CURRENT_CAPTURER_INFO_PROMISE_0100 start')
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigOnlyAac.url = fdPath
 
@@ -9595,7 +9595,7 @@ export default function avVideoRecorderTestOne() {
             console.info(TAG + 'SUM_MULTIMEDIA_AVRECORDER_GET_AVAILABLE_ENCODER_PROMISE_0100 start')
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigOnlyAac.url = fdPath
 
@@ -9639,7 +9639,7 @@ export default function avVideoRecorderTestOne() {
             console.info(TAG + 'SUM_MULTIMEDIA_AVRECORDER_GET_MAX_AMPLITUDE_PROMISE_0100 start')
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigOnlyAac.url = fdPath
 
@@ -9702,7 +9702,7 @@ export default function avVideoRecorderTestOne() {
             console.info(TAG + 'SUM_MULTIMEDIA_AVRECORDER_UPDATE_ROTATION__0100 start')
 
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avConfigOnlyAac.url = fdPath
 
@@ -9786,7 +9786,7 @@ export default function avVideoRecorderTestOne() {
             }
             console.info(TAG + 'SUB_MULTIMEDIA_AVRECORDER_VIDEO_METADATA_0100 start')
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avmetaConfig.url = fdPath;
             checkDevice(avmetaConfig)
@@ -9832,7 +9832,7 @@ export default function avVideoRecorderTestOne() {
             }
             avmetaConfig.metadata.customInfo = customInfo;
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avmetaConfig.url = fdPath;
             checkDevice(avmetaConfig)
@@ -9868,7 +9868,7 @@ export default function avVideoRecorderTestOne() {
 
             avmetaConfig.metadata.videoOrientation = "99";
             let fileName = avVideoRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "video");
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             avmetaConfig.url = fdPath;
             checkDevice(avmetaConfig)
