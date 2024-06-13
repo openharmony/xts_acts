@@ -52,5 +52,18 @@ export default function accessibilityStateTest() {
       done()
     })
 
+     /*
+     * @tc.number     : SUB_ARKUI_CAPI_AccessibilityState_0300
+     * @tc.name       : accessibilityStateTest003
+     * @tc.desc       : testing create for AccessibilityState with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('accessibilityStateTest003', 0, async (done: Function) => {
+      expect(nativeFunc.accessibilityState_003()).assertEqual(0)
+      done()
+    })
+
   })
 }
