@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include <cmath>
 
 #include "gtest/gtest.h"
 
@@ -37,8 +38,6 @@
 #include "drawing_shadow_layer.h"
 #include "drawing_text_blob.h"
 #include "drawing_typeface.h"
-#include "effect/color_filter.h"
-#include "effect/filter.h"
 
 using namespace testing;
 using namespace testing::ext;
@@ -49,226 +48,721 @@ namespace Drawing {
 class DrawingNativeBrushTest : public testing::Test {};
 
 /*
- * @tc.name: OH_Drawing_BrushDestroy
- * @tc.desc: test for OH_Drawing_BrushDestroy.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_0100
+ * @tc.name: testBrushCreateNormal
+ * @tc.desc: test for testBrushCreateNormal.
  * @tc.size  : SmallTest
  * @tc.type  : Function
- * @tc.level : Level 1
+ * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeBrushTest, OH_Drawing_BrushDestroy, TestSize.Level1) {
+HWTEST_F(DrawingNativeBrushTest, testBrushCreateNormal, TestSize.Level0) {
+    // 1. Call OH_Drawing_BrushCreate to create a brush object
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    // 2. Free memory
     OH_Drawing_BrushDestroy(brush);
-    EXPECT_TRUE(true);
 }
 
 /*
- * @tc.name: OH_Drawing_BrushGetAlpha
- * @tc.desc: test for OH_Drawing_BrushGetAlpha.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_0200
+ * @tc.name: testBrushCopyNormal
+ * @tc.desc: test for testBrushCopyNormal.
  * @tc.size  : SmallTest
  * @tc.type  : Function
- * @tc.level : Level 1
+ * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeBrushTest, OH_Drawing_BrushGetAlpha, TestSize.Level1) {
+HWTEST_F(DrawingNativeBrushTest, testBrushCopyNormal, TestSize.Level0) {
+    // 1. Create a brush object 1 by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush1 = OH_Drawing_BrushCreate();
-    constexpr uint8_t alpha = 128;
-    OH_Drawing_BrushSetAlpha(brush1, alpha);
-    EXPECT_EQ(OH_Drawing_BrushGetAlpha(brush1), alpha);
+    // 2. Set the color of brush 1 by calling OH_Drawing_BrushSetColor
+    OH_Drawing_BrushSetColor(brush1, 0x12345678);
+    // 3. Copy brush 1 to create brush object 2 by calling OH_Drawing_BrushCopy
+    OH_Drawing_Brush *brush2 = OH_Drawing_BrushCopy(brush1);
+    // 4. Get the color of brush object 2 by calling OH_Drawing_BrushGetColor
+    uint32_t color = OH_Drawing_BrushGetColor(brush2);
+    EXPECT_EQ(color, 0x12345678);
+    // 5. Modify the color of brush object 1 by calling OH_Drawing_BrushSetColor
+    OH_Drawing_BrushSetColor(brush1, 0x87654321);
+    // 6. Get the color of brush object 2 again by calling OH_Drawing_BrushGetColor
+    color = OH_Drawing_BrushGetColor(brush2);
+    EXPECT_EQ(color, 0x12345678);
+    // 7. Free memory
     OH_Drawing_BrushDestroy(brush1);
+    OH_Drawing_BrushDestroy(brush2);
 }
 
 /*
- * @tc.name: OH_Drawing_BrushSetAlpha
- * @tc.desc: test for OH_Drawing_BrushSetAlpha.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_0201
+ * @tc.name: testBrushCopyNull
+ * @tc.desc: test for testBrushCopyNull.
  * @tc.size  : SmallTest
  * @tc.type  : Function
- * @tc.level : Level 1
+ * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeBrushTest, OH_Drawing_BrushSetAlpha, TestSize.Level1) {
-    OH_Drawing_Brush *brush1 = OH_Drawing_BrushCreate();
-    constexpr uint8_t alpha = 128;
-    OH_Drawing_BrushSetAlpha(brush1, alpha);
-    EXPECT_EQ(OH_Drawing_BrushGetAlpha(brush1), alpha);
-    OH_Drawing_BrushDestroy(brush1);
-}
-
-/*
- * @tc.name: OH_Drawing_BrushIsAntiAlias
- * @tc.desc: test for OH_Drawing_BrushIsAntiAlias.
- * @tc.size  : SmallTest
- * @tc.type  : Function
- * @tc.level : Level 1
- */
-HWTEST_F(DrawingNativeBrushTest, OH_Drawing_BrushIsAntiAlias, TestSize.Level1) {
-    OH_Drawing_Brush *brush1 = OH_Drawing_BrushCreate();
-    OH_Drawing_BrushSetAntiAlias(brush1, false);
-    EXPECT_EQ(OH_Drawing_BrushIsAntiAlias(brush1), false);
-    OH_Drawing_BrushDestroy(brush1);
-}
-
-/*
- * @tc.name: OH_Drawing_BrushSetAntiAlias
- * @tc.desc: test for OH_Drawing_BrushSetAntiAlias.
- * @tc.size  : SmallTest
- * @tc.type  : Function
- * @tc.level : Level 1
- */
-HWTEST_F(DrawingNativeBrushTest, OH_Drawing_BrushSetAntiAlias, TestSize.Level1) {
-    OH_Drawing_Brush *brush1 = OH_Drawing_BrushCreate();
-    EXPECT_NE(brush1, nullptr);
-    OH_Drawing_BrushSetAntiAlias(brush1, true);
-    OH_Drawing_BrushDestroy(brush1);
-}
-
-/*
- * @tc.name: OH_Drawing_BrushGetColor
- * @tc.desc: test for OH_Drawing_BrushGetColor.
- * @tc.size  : SmallTest
- * @tc.type  : Function
- * @tc.level : Level 1
- */
-HWTEST_F(DrawingNativeBrushTest, OH_Drawing_BrushGetColor, TestSize.Level1) {
-    OH_Drawing_Brush *brush1 = OH_Drawing_BrushCreate();
-    OH_Drawing_BrushSetColor(brush1, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
-    EXPECT_EQ(OH_Drawing_BrushGetColor(brush1), 0xFFFF0000);
-    OH_Drawing_BrushDestroy(brush1);
-}
-
-/*
- * @tc.name: OH_Drawing_BrushSetColor
- * @tc.desc: test for OH_Drawing_BrushSetColor.
- * @tc.size  : SmallTest
- * @tc.type  : Function
- * @tc.level : Level 1
- */
-HWTEST_F(DrawingNativeBrushTest, OH_Drawing_BrushSetColor, TestSize.Level1) {
-    OH_Drawing_Brush *brush1 = OH_Drawing_BrushCreate();
-    OH_Drawing_BrushSetColor(brush1, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
-    OH_Drawing_BrushDestroy(brush1);
-    EXPECT_TRUE(true);
-}
-
-/*
- * @tc.name: OH_Drawing_BrushSetFilter
- * @tc.desc: test for OH_Drawing_BrushSetFilter.
- * @tc.size  : SmallTest
- * @tc.type  : Function
- * @tc.level : Level 1
- */
-HWTEST_F(DrawingNativeBrushTest, OH_Drawing_BrushSetFilter, TestSize.Level1) {
+HWTEST_F(DrawingNativeBrushTest, testBrushCopyNull, TestSize.Level3) {
+    // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
-    OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
-    EXPECT_EQ(OH_Drawing_BrushGetColor(brush), 0xFFFF0000);
-    OH_Drawing_ColorFilter *outerFilter = OH_Drawing_ColorFilterCreateLuma();
-    OH_Drawing_ColorFilter *innerFilter = OH_Drawing_ColorFilterCreateSrgbGammaToLinear();
-    OH_Drawing_ColorFilter *compose = OH_Drawing_ColorFilterCreateCompose(nullptr, nullptr);
-    EXPECT_EQ(compose, nullptr);
-    compose = OH_Drawing_ColorFilterCreateCompose(outerFilter, innerFilter);
-    EXPECT_NE(compose, nullptr);
-    OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
-    OH_Drawing_FilterSetColorFilter(filter, compose);
-    OH_Drawing_BrushSetFilter(brush, filter);
-    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(200, 500, 300, 600);
-    OH_Drawing_CanvasDrawRect(canvas, rect);
-    OH_Drawing_RectDestroy(rect);
-    OH_Drawing_ColorFilterDestroy(outerFilter);
-    OH_Drawing_ColorFilterDestroy(innerFilter);
-    OH_Drawing_ColorFilterDestroy(compose);
-    OH_Drawing_FilterDestroy(filter);
+    // 2. Copy a brush object by calling OH_Drawing_BrushCopy with nullptr as parameter
+    OH_Drawing_Brush *brushCopy = OH_Drawing_BrushCopy(nullptr);
+    // 3. Free memory
     OH_Drawing_BrushDestroy(brush);
-    OH_Drawing_CanvasDestroy(canvas);
+    OH_Drawing_BrushDestroy(brushCopy);
 }
 
 /*
- * @tc.name: OH_Drawing_BrushSetShaderEffect
- * @tc.desc: test for OH_Drawing_BrushSetShaderEffect.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_0202
+ * @tc.name: testBrushCopyInputDestroyed
+ * @tc.desc: test for testBrushCopyInputDestroyed.
  * @tc.size  : SmallTest
  * @tc.type  : Function
- * @tc.level : Level 1
+ * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeBrushTest, OH_Drawing_BrushSetShaderEffect, TestSize.Level1) {
-    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
+HWTEST_F(DrawingNativeBrushTest, testBrushCopyInputDestroyed, TestSize.Level3) {
+    // 1. Call OH_Drawing_BrushCreate to create a brush object 1
+    OH_Drawing_Brush *brush1 = OH_Drawing_BrushCreate();
+    // 2. Copy brush object 1 to create brush object 2 by calling OH_Drawing_BrushCopy
+    OH_Drawing_Brush *brush2 = OH_Drawing_BrushCopy(brush1);
+    // 3. Destroy brush object 1 by calling OH_Drawing_BrushDestroy
+    OH_Drawing_BrushDestroy(brush1);
+    // 4. Set the color of brush object 2 by calling OH_Drawing_BrushSetColor
+    OH_Drawing_BrushSetColor(brush2, 0x12345678);
+    // 5. Get the color of brush object 2 by calling OH_Drawing_BrushGetColor
+    uint32_t color = OH_Drawing_BrushGetColor(brush2);
+    EXPECT_EQ(color, 0x12345678);
+    // 6. Free memory
+    OH_Drawing_BrushDestroy(brush2);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_0203
+ * @tc.name: testBrushCopyMultipleCalls
+ * @tc.desc: test for testBrushCopyMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeBrushTest, testBrushCopyMultipleCalls, TestSize.Level3) {
+    // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
-    OH_Drawing_BrushSetColor(brush, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0x00, 0x00));
+    // 2. Call OH_Drawing_BrushCopy ten times in a loop
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_Brush *brushCopy = OH_Drawing_BrushCopy(brush);
+        OH_Drawing_BrushDestroy(brushCopy);
+    }
+    // 3. Free memory
+    OH_Drawing_BrushDestroy(brush);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_0300
+ * @tc.name: testBrushDestroyNormal
+ * @tc.desc: test for testBrushDestroyNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeBrushTest, testBrushDestroyNormal, TestSize.Level0) {
+    // 1. Call OH_Drawing_BrushCreate to create a brush object
+    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    // 2. Call OH_Drawing_BrushDestroy to destroy the object
+    OH_Drawing_BrushDestroy(brush);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_0301
+ * @tc.name: testBrushDestroyNull
+ * @tc.desc: test for testBrushDestroyNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeBrushTest, testBrushDestroyNull, TestSize.Level3) {
+    // 1. Create a brush object by calling OH_Drawing_BrushCreate
+    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    // 2. Call OH_Drawing_BrushDestroy with nullptr as parameter
+    OH_Drawing_BrushDestroy(nullptr);
+    // 3. Free memory
+    OH_Drawing_BrushDestroy(brush);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_0400
+ * @tc.name: testBrushIsAntiAliasNormal
+ * @tc.desc: test for testBrushIsAntiAliasNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeBrushTest, testBrushIsAntiAliasNormal, TestSize.Level0) {
+    // 1. Call OH_Drawing_BrushCreate to create a brush object
+    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    // 2. Call OH_Drawing_BrushSetAntiAlias to set the anti-aliasing property to true
+    OH_Drawing_BrushSetAntiAlias(brush, true);
+    // 3. Call OH_Drawing_BrushIsAntiAlias to check the return value
+    bool isAntiAlias = OH_Drawing_BrushIsAntiAlias(brush);
+    EXPECT_EQ(isAntiAlias, true);
+    // 4. Free memory
+    OH_Drawing_BrushDestroy(brush);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_0401
+ * @tc.name: testBrushIsAntiAliasNull
+ * @tc.desc: test for testBrushIsAntiAliasNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeBrushTest, testBrushIsAntiAliasNull, TestSize.Level3) {
+    // 1. Create a brush object by calling OH_Drawing_BrushCreate
+    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    // 2. Call OH_Drawing_BrushIsAntiAlias with nullptr as parameter
+    OH_Drawing_BrushIsAntiAlias(nullptr);
+    // 3. Free memory
+    OH_Drawing_BrushDestroy(brush);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_0500
+ * @tc.name: testBrushSetAntiAliasNormal
+ * @tc.desc: test for testBrushSetAntiAliasNormal.
+ * @tc.size: SmallTest
+ * @tc.type: Function
+ * @tc.level: Level 0
+ */
+HWTEST_F(DrawingNativeBrushTest, testBrushSetAntiAliasNormal, TestSize.Level0) {
+    // 1. Call OH_Drawing_BrushCreate to create a brush object
+    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    // 2. Call OH_Drawing_BrushSetAntiAlias to set the anti-aliasing property to true
+    OH_Drawing_BrushSetAntiAlias(brush, true);
+    // 3. Call OH_Drawing_BrushIsAntiAlias to check the return value
+    bool isAntiAlias = OH_Drawing_BrushIsAntiAlias(brush);
+    EXPECT_EQ(isAntiAlias, true);
+    // 4. Free memory
+    OH_Drawing_BrushDestroy(brush);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_0501
+ * @tc.name: testBrushSetAntiAliasNull
+ * @tc.desc: test for testBrushSetAntiAliasNull.
+ * @tc.size: SmallTest
+ * @tc.type: Function
+ * @tc.level: Level 3
+ */
+HWTEST_F(DrawingNativeBrushTest, testBrushSetAntiAliasNull, TestSize.Level3) {
+    // 1. Create a brush object by calling OH_Drawing_BrushCreate
+    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    // 2. Call OH_Drawing_BrushSetAntiAlias with nullptr as the first parameter
+    OH_Drawing_BrushSetAntiAlias(nullptr, true);
+    // 3. Free memory
+    OH_Drawing_BrushDestroy(brush);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_0600
+ * @tc.name: testBrushGetColorNormal
+ * @tc.desc: Test for testBrushGetColorNormal.
+ * @tc.size: SmallTest
+ * @tc.type: Function
+ * @tc.level: Level 0
+ */
+HWTEST_F(DrawingNativeBrushTest, testBrushGetColorNormal, TestSize.Level0) {
+    // 1. Create a brush object by calling OH_Drawing_BrushCreate
+    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    // 2. Set the color of the brush object by calling OH_Drawing_BrushSetColor
+    OH_Drawing_BrushSetColor(brush, 0x12345678);
+    // 3. Get the color of the brush object by calling OH_Drawing_BrushGetColor
+    uint32_t color = OH_Drawing_BrushGetColor(brush);
+    EXPECT_EQ(color, 0x12345678);
+    // 4. Free memory
+    OH_Drawing_BrushDestroy(brush);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_0601
+ * @tc.name: testBrushGetColorNull
+ * @tc.desc: Test for testBrushGetColorNull.
+ * @tc.size: SmallTest
+ * @tc.type: Function
+ * @tc.level: Level 3
+ */
+HWTEST_F(DrawingNativeBrushTest, testBrushGetColorNull, TestSize.Level3) {
+    // 1. Create a brush object by calling OH_Drawing_BrushCreate
+    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    // 2. Call OH_Drawing_BrushGetColor with nullptr as parameter
+    OH_Drawing_BrushGetColor(nullptr);
+    // 3. Free memory
+    OH_Drawing_BrushDestroy(brush);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_0700
+ * @tc.name: testBrushSetColorNormal
+ * @tc.desc: Test for testBrushSetColorNormal.
+ * @tc.size: SmallTest
+ * @tc.type: Function
+ * @tc.level: Level 0
+ */
+HWTEST_F(DrawingNativeBrushTest, testBrushSetColorNormal, TestSize.Level0) {
+    // 1. Create a brush object by calling OH_Drawing_BrushCreate
+    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    // 2. Set the color of the brush object by calling OH_Drawing_BrushSetColor
+    OH_Drawing_BrushSetColor(brush, 0x12345678);
+    // 3. Get the color of the brush object by calling OH_Drawing_BrushGetColor
+    uint32_t color = OH_Drawing_BrushGetColor(brush);
+    EXPECT_EQ(color, 0x12345678);
+    // 4. Free memory
+    OH_Drawing_BrushDestroy(brush);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_0701
+ * @tc.name: testBrushSetColorNull
+ * @tc.desc: Test for testBrushSetColorNull.
+ * @tc.size: SmallTest
+ * @tc.type: Function
+ * @tc.level: Level 3
+ */
+HWTEST_F(DrawingNativeBrushTest, testBrushSetColorNull, TestSize.Level3) {
+    // 1. Create a brush object by calling OH_Drawing_BrushCreate
+    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    // 2. Call OH_Drawing_BrushSetColor with nullptr as the first parameter
+    OH_Drawing_BrushSetColor(nullptr, 0x12345678);
+    // 3. Call OH_Drawing_BrushSetColor with 0 as the second parameter
+    OH_Drawing_BrushSetColor(brush, 0);
+    // 4. Call OH_Drawing_BrushGetColor to get the brush color
+    uint32_t color = OH_Drawing_BrushGetColor(brush);
+    EXPECT_EQ(color, 0);
+    // 5. Free memory
+    OH_Drawing_BrushDestroy(brush);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_0702
+ * @tc.name: testBrushSetColorAbnormal
+ * @tc.desc: Test for testBrushSetColorAbnormal.
+ * @tc.size: SmallTest
+ * @tc.type: Function
+ * @tc.level: Level 3
+ */
+HWTEST_F(DrawingNativeBrushTest, testBrushSetColorAbnormal, TestSize.Level3) {
+    // 1. Create a brush object by calling OH_Drawing_BrushCreate
+    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    // 2. Call OH_Drawing_BrushSetColor with a negative number or a non-uint32_t type parameter as the second argument
+    OH_Drawing_BrushSetColor(brush, -1);
+    // Ignoring the test for passing a floating-point number, as it will result in an error
+    // 3. Call OH_Drawing_BrushGetColor to get the brush color
+    uint32_t color = OH_Drawing_BrushGetColor(brush);
+    EXPECT_EQ(color, std::pow(2, 32) - 1);
+    // 4. Free memory
+    OH_Drawing_BrushDestroy(brush);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_0703
+ * @tc.name: testBrushSetColorMaximum
+ * @tc.desc: Test for testBrushSetColorMaximum.
+ * @tc.size: SmallTest
+ * @tc.type: Function
+ * @tc.level: Level 3
+ */
+HWTEST_F(DrawingNativeBrushTest, testBrushSetColorMaximum, TestSize.Level3) {
+    // 1. Create a brush object by calling OH_Drawing_BrushCreate
+    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    // 2. Set the color of the brush object by calling OH_Drawing_BrushSetColor with a value greater than the maximum
+    // value of uint32_t (0xFFFFFFFF)
+    OH_Drawing_BrushSetColor(brush, 0xFFFFFFFF + 1);
+    // 3. Get the color of the brush object by calling OH_Drawing_BrushGetColor
+    uint32_t color = OH_Drawing_BrushGetColor(brush);
+    EXPECT_EQ(color, 0);
+    // 4. Free memory
+    OH_Drawing_BrushDestroy(brush);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_0800
+ * @tc.name: testBrushGetAlphaNormal
+ * @tc.desc: Test for testBrushGetAlphaNormal.
+ * @tc.size: SmallTest
+ * @tc.type: Function
+ * @tc.level: Level 0
+ */
+HWTEST_F(DrawingNativeBrushTest, testBrushGetAlphaNormal, TestSize.Level0) {
+    // 1. Create a brush object by calling OH_Drawing_BrushCreate
+    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    // 2. Set the alpha value of the brush object by calling OH_Drawing_BrushSetAlpha
+    OH_Drawing_BrushSetAlpha(brush, 128);
+    // 3. Get the alpha value of the brush object by calling OH_Drawing_BrushGetAlpha
+    uint8_t alpha = OH_Drawing_BrushGetAlpha(brush);
+    EXPECT_EQ(alpha, 128);
+    // 4. Free memory
+    OH_Drawing_BrushDestroy(brush);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_0801
+ * @tc.name: testBrushGetAlphaNull
+ * @tc.desc: Test for testBrushGetAlphaNull.
+ * @tc.size: SmallTest
+ * @tc.type: Function
+ * @tc.level: Level 3
+ */
+HWTEST_F(DrawingNativeBrushTest, testBrushGetAlphaNull, TestSize.Level3) {
+    // 1. Create a brush object by calling OH_Drawing_BrushCreate
+    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    // 2. Call OH_Drawing_BrushGetAlpha with nullptr as parameter
+    OH_Drawing_BrushGetAlpha(nullptr);
+    // 3. Free memory
+    OH_Drawing_BrushDestroy(brush);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_0900
+ * @tc.name: testBrushSetAlphaNormal
+ * @tc.desc: Test for testBrushSetAlphaNormal.
+ * @tc.size: SmallTest
+ * @tc.type: Function
+ * @tc.level: Level 0
+ */
+HWTEST_F(DrawingNativeBrushTest, testBrushSetAlphaNormal, TestSize.Level0) {
+    // 1. Create a brush object by calling OH_Drawing_BrushCreate
+    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    // 2. Set the alpha value of the brush object by calling OH_Drawing_BrushSetAlpha
+    OH_Drawing_BrushSetAlpha(brush, 128);
+    // 3. Get the alpha value of the brush object by calling OH_Drawing_BrushGetAlpha
+    uint8_t alpha = OH_Drawing_BrushGetAlpha(brush);
+    EXPECT_EQ(alpha, 128);
+    // 4. Free memory
+    OH_Drawing_BrushDestroy(brush);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_0901
+ * @tc.name: testBrushSetAlphaNull
+ * @tc.desc: Test for testBrushSetAlphaNull.
+ * @tc.size: SmallTest
+ * @tc.type: Function
+ * @tc.level: Level 3
+ */
+HWTEST_F(DrawingNativeBrushTest, testBrushSetAlphaNull, TestSize.Level3) {
+    // 1. Create a brush object by calling OH_Drawing_BrushCreate
+    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    // 2. Call OH_Drawing_BrushSetAlpha with nullptr as the first parameter
+    OH_Drawing_BrushSetAlpha(nullptr, 128);
+    // 3. Call OH_Drawing_BrushSetAlpha with 0 as the second parameter
+    OH_Drawing_BrushSetAlpha(brush, 0);
+    // 4. Free memory
+    OH_Drawing_BrushDestroy(brush);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_0902
+ * @tc.name: testBrushSetAlphaAbnormal
+ * @tc.desc: Test for testBrushSetAlphaAbnormal.
+ * @tc.size: SmallTest
+ * @tc.type: Function
+ * @tc.level: Level 3
+ */
+HWTEST_F(DrawingNativeBrushTest, testBrushSetAlphaAbnormal, TestSize.Level3) {
+    // 1. Create a brush object by calling OH_Drawing_BrushCreate
+    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    // 2. Call OH_Drawing_BrushSetAlpha with a negative number or a non-uint8_t type parameter as the second argument
+    OH_Drawing_BrushSetAlpha(brush, -1);
+    // 3. Call OH_Drawing_BrushGetAlpha to get the alpha value
+    uint8_t alpha = OH_Drawing_BrushGetAlpha(brush);
+    EXPECT_EQ(alpha, 0xff);
+    // 4. Free memory
+    OH_Drawing_BrushDestroy(brush);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_0903
+ * @tc.name: testBrushSetAlphaMaximum
+ * @tc.desc: Test for testBrushSetAlphaMaximum.
+ * @tc.size: SmallTest
+ * @tc.type: Function
+ * @tc.level: Level 3
+ */
+HWTEST_F(DrawingNativeBrushTest, testBrushSetAlphaMaximum, TestSize.Level3) {
+    // 1. Create a brush object by calling OH_Drawing_BrushCreate
+    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    // 2. Set the alpha value of the brush object by calling OH_Drawing_BrushSetAlpha with a value greater than the
+    // maximum value of uint8_t (0xFFFFFFFF + 1)
+    OH_Drawing_BrushSetAlpha(brush, 0xFFFFFFFF + 1);
+    // 3. Get the alpha value of the brush object by calling OH_Drawing_BrushGetAlpha
+    uint8_t alpha = OH_Drawing_BrushGetAlpha(brush);
+    EXPECT_EQ(alpha, 0);
+    // 4. Free memory
+    OH_Drawing_BrushDestroy(brush);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_1000
+ * @tc.name: testBrushSetShaderEffectNormal
+ * @tc.desc: Test for testBrushSetShaderEffectNormal.
+ * @tc.size: SmallTest
+ * @tc.type: Function
+ * @tc.level: Level 0
+ */
+HWTEST_F(DrawingNativeBrushTest, testBrushSetShaderEffectNormal, TestSize.Level0) {
+    // 1. Create a brush object by calling OH_Drawing_BrushCreate
+    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    // 2. Create a shader object by calling OH_Drawing_ShaderEffectCreate
     OH_Drawing_Point *startPt = OH_Drawing_PointCreate(100, 400);
     OH_Drawing_Point *endPt = OH_Drawing_PointCreate(200, 500);
     uint32_t color[] = {0xffff0000, 0xff00ff00};
     float pos[] = {0., 1.0};
     OH_Drawing_ShaderEffect *linearGradient =
         OH_Drawing_ShaderEffectCreateLinearGradient(startPt, endPt, color, pos, 2, OH_Drawing_TileMode::CLAMP);
-    OH_Drawing_BrushSetShaderEffect(nullptr, linearGradient);
-    OH_Drawing_BrushSetShaderEffect(brush, nullptr);
+    // 3. Set the shader effect for the brush object by calling OH_Drawing_BrushSetShaderEffect
     OH_Drawing_BrushSetShaderEffect(brush, linearGradient);
-    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(200, 500, 300, 600);
-    OH_Drawing_CanvasDrawRect(canvas, rect);
-    OH_Drawing_RectDestroy(rect);
-    OH_Drawing_ShaderEffectDestroy(nullptr);
+    // 4. Free memory
     OH_Drawing_ShaderEffectDestroy(linearGradient);
     OH_Drawing_PointDestroy(startPt);
     OH_Drawing_PointDestroy(endPt);
-    OH_Drawing_CanvasDestroy(canvas);
+    OH_Drawing_BrushDestroy(brush);
 }
 
 /*
- * @tc.name: OH_Drawing_BrushSetShadowLayer
- * @tc.desc: test for OH_Drawing_BrushSetShadowLayer.
- * @tc.size  : SmallTest
- * @tc.type  : Function
- * @tc.level : Level 1
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_1001
+ * @tc.name: testBrushSetShaderEffectNull
+ * @tc.desc: Test for testBrushSetShaderEffectNull.
+ * @tc.size: SmallTest
+ * @tc.type: Function
+ * @tc.level: Level 3
  */
-HWTEST_F(DrawingNativeBrushTest, OH_Drawing_BrushSetShadowLayer, TestSize.Level1) {
-    OH_Drawing_ShadowLayer *shadowLayer = OH_Drawing_ShadowLayerCreate(3.f, -3.f, 3.f, 0xFF00FF00);
-    EXPECT_NE(shadowLayer, nullptr);
+HWTEST_F(DrawingNativeBrushTest, testBrushSetShaderEffectNull, TestSize.Level3) {
+    // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
-    EXPECT_NE(brush, nullptr);
-    OH_Drawing_BrushSetShadowLayer(nullptr, shadowLayer);
-    OH_Drawing_BrushSetShadowLayer(brush, nullptr);
+    OH_Drawing_Point *startPt = OH_Drawing_PointCreate(100, 400);
+    OH_Drawing_Point *endPt = OH_Drawing_PointCreate(200, 500);
+    uint32_t color[] = {0xffff0000, 0xff00ff00};
+    float pos[] = {0., 1.0};
+    OH_Drawing_ShaderEffect *linearGradient =
+        OH_Drawing_ShaderEffectCreateLinearGradient(startPt, endPt, color, pos, 2, OH_Drawing_TileMode::CLAMP);
+    // 2. Call OH_Drawing_BrushSetShaderEffect with nullptr as the first parameter
+    OH_Drawing_BrushSetShaderEffect(nullptr, linearGradient);
+    // 3. Call OH_Drawing_BrushSetShaderEffect with nullptr as the second parameter
+    OH_Drawing_BrushSetShaderEffect(brush, nullptr);
+    // 4. Free memory
+    OH_Drawing_ShaderEffectDestroy(linearGradient);
+    OH_Drawing_PointDestroy(startPt);
+    OH_Drawing_PointDestroy(endPt);
+    OH_Drawing_BrushDestroy(brush);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_1100
+ * @tc.name: testBrushSetShadowLayerNormal
+ * @tc.desc: Test for testBrushSetShadowLayerNormal.
+ * @tc.size: SmallTest
+ * @tc.type: Function
+ * @tc.level: Level 0
+ */
+HWTEST_F(DrawingNativeBrushTest, testBrushSetShadowLayerNormal, TestSize.Level0) {
+    // 1. Create a brush object by calling OH_Drawing_BrushCreate
+    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    // 2. Create a shadow layer object by calling OH_Drawing_ShadowLayerCreate
+    OH_Drawing_ShadowLayer *shadowLayer = OH_Drawing_ShadowLayerCreate(10, 10, 10, 0x12345678);
+    // 3. Set the shadow layer for the brush object by calling OH_Drawing_BrushSetShadowLayer
     OH_Drawing_BrushSetShadowLayer(brush, shadowLayer);
+    // 4. Free memory
     OH_Drawing_ShadowLayerDestroy(shadowLayer);
-    OH_Drawing_BrushDestroy(brush);
 }
 
 /*
- * @tc.name: OH_Drawing_BrushGetFilter
- * @tc.desc: test for OH_Drawing_BrushGetFilter.
- * @tc.size  : SmallTest
- * @tc.type  : Function
- * @tc.level : Level 1
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_1101
+ * @tc.name: testBrushSetShadowLayerNull
+ * @tc.desc: Test for testBrushSetShadowLayerNull.
+ * @tc.size: SmallTest
+ * @tc.type: Function
+ * @tc.level: Level 3
  */
-HWTEST_F(DrawingNativeBrushTest, OH_Drawing_BrushGetFilter, TestSize.Level1) {
+HWTEST_F(DrawingNativeBrushTest, testBrushSetShadowLayerNull, TestSize.Level3) {
+    // 1. Create a brush object by calling OH_Drawing_BrushCreate
     OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
-    OH_Drawing_Filter *cFilter = OH_Drawing_FilterCreate();
-    OH_Drawing_Filter *tmpFilter = OH_Drawing_FilterCreate();
-
-    OH_Drawing_BrushSetFilter(brush, cFilter);
-    OH_Drawing_BrushGetFilter(brush, tmpFilter);
-
-    OH_Drawing_BrushDestroy(brush);
-    OH_Drawing_FilterDestroy(cFilter);
-    OH_Drawing_FilterDestroy(tmpFilter);
-    EXPECT_TRUE(true);
+    OH_Drawing_ShadowLayer *shadowLayer = OH_Drawing_ShadowLayerCreate(10, 10, 10, 0x12345678);
+    // 2. Call OH_Drawing_BrushSetShadowLayer with nullptr as the first parameter
+    OH_Drawing_BrushSetShadowLayer(nullptr, shadowLayer);
+    // 3. Call OH_Drawing_BrushSetShadowLayer with nullptr as the second parameter
+    OH_Drawing_BrushSetShadowLayer(brush, nullptr);
+    // 4. Free memory
+    OH_Drawing_ShadowLayerDestroy(shadowLayer);
 }
 
 /*
- * @tc.name: OH_Drawing_BrushReset
- * @tc.desc: test for OH_Drawing_BrushReset.
- * @tc.size  : SmallTest
- * @tc.type  : Function
- * @tc.level : Level 1
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_1200
+ * @tc.name: testBrushSetFilterNormal
+ * @tc.desc: Test for testBrushSetFilterNormal.
+ * @tc.size: SmallTest
+ * @tc.type: Function
+ * @tc.level: Level 0
  */
-HWTEST_F(DrawingNativeBrushTest, OH_Drawing_BrushReset, TestSize.Level1) {
-    OH_Drawing_Brush *brush1 = OH_Drawing_BrushCreate();
-    OH_Drawing_BrushSetAntiAlias(brush1, true);
-    OH_Drawing_BrushSetColor(brush1, OH_Drawing_ColorSetArgb(0x00, 0xFF, 0x00, 0xFF));
-    constexpr uint8_t alpha = 128;
-    OH_Drawing_BrushSetAlpha(brush1, alpha);
+HWTEST_F(DrawingNativeBrushTest, testBrushSetFilterNormal, TestSize.Level0) {
+    // 1. Create a brush object by calling OH_Drawing_BrushCreate
+    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    // 2. Create a filter object by calling OH_Drawing_FilterCreate
+    OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
+    // 3. Set the filter for the brush object by calling OH_Drawing_BrushSetFilter
+    OH_Drawing_BrushSetFilter(brush, filter);
+    // 4. Free memory
+    OH_Drawing_FilterDestroy(filter);
+    OH_Drawing_BrushDestroy(brush);
+}
 
-    OH_Drawing_BrushReset(brush1);
-    EXPECT_EQ(OH_Drawing_BrushIsAntiAlias(brush1), false);
-    EXPECT_EQ(OH_Drawing_BrushGetColor(brush1), 0xFF000000);
-    EXPECT_EQ(OH_Drawing_BrushGetAlpha(brush1), 0xFF);
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_1201
+ * @tc.name: testBrushSetFilterNull
+ * @tc.desc: Test for testBrushSetFilterNull.
+ * @tc.size: SmallTest
+ * @tc.type: Function
+ * @tc.level: Level 3
+ */
+HWTEST_F(DrawingNativeBrushTest, testBrushSetFilterNull, TestSize.Level3) {
+    // 1. Create a brush object by calling OH_Drawing_BrushCreate
+    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
+    // 2. Call OH_Drawing_BrushSetFilter with nullptr as the first parameter
+    OH_Drawing_BrushSetFilter(nullptr, filter);
+    // 3. Call OH_Drawing_BrushSetFilter with nullptr as the second parameter
+    OH_Drawing_BrushSetFilter(brush, nullptr);
+    // 4. Free memory
+    OH_Drawing_FilterDestroy(filter);
+    OH_Drawing_BrushDestroy(brush);
+}
 
-    OH_Drawing_BrushDestroy(brush1);
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_1300
+ * @tc.name: testBrushGetFilterNormal
+ * @tc.desc: Test for testBrushGetFilterNormal.
+ * @tc.size: SmallTest
+ * @tc.type: Function
+ * @tc.level: Level 0
+ */
+HWTEST_F(DrawingNativeBrushTest, testBrushGetFilterNormal, TestSize.Level0) {
+    // 1. Create a brush object by calling OH_Drawing_BrushCreate
+    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    // 2. Create a filter object by calling OH_Drawing_FilterCreate
+    OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
+    // 3. Set the filter for the brush object by calling OH_Drawing_BrushSetFilter
+    OH_Drawing_BrushSetFilter(brush, filter);
+    // 4. Get the filter by calling OH_Drawing_BrushGetFilter
+    OH_Drawing_Filter *tmpFilter = OH_Drawing_FilterCreate();
+    OH_Drawing_BrushGetFilter(brush, tmpFilter);
+    // 5. Free memory
+    OH_Drawing_FilterDestroy(filter);
+    OH_Drawing_FilterDestroy(tmpFilter);
+    OH_Drawing_BrushDestroy(brush);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_1301
+ * @tc.name: testBrushGetFilterNull
+ * @tc.desc: Test for testBrushGetFilterNull.
+ * @tc.size: SmallTest
+ * @tc.type: Function
+ * @tc.level: Level 3
+ */
+HWTEST_F(DrawingNativeBrushTest, testBrushGetFilterNull, TestSize.Level3) {
+    // 1. Create a brush object by calling OH_Drawing_BrushCreate
+    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
+    // 2. Call OH_Drawing_BrushGetFilter with nullptr as the first parameter
+    OH_Drawing_BrushGetFilter(nullptr, filter);
+    // 3. Call OH_Drawing_BrushGetFilter with nullptr as the second parameter
+    OH_Drawing_BrushGetFilter(brush, nullptr);
+    // 4. Free memory
+    OH_Drawing_FilterDestroy(filter);
+    OH_Drawing_BrushDestroy(brush);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_1400
+ * @tc.name: testBrushSetBlendModeNormal
+ * @tc.desc: Test for testBrushSetBlendModeNormal.
+ * @tc.size: SmallTest
+ * @tc.type: Function
+ * @tc.level: Level 0
+ */
+HWTEST_F(DrawingNativeBrushTest, testBrushSetBlendModeNormal, TestSize.Level0) {
+    // 1. Create a brush object by calling OH_Drawing_BrushCreate
+    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    // 2. Call OH_Drawing_BrushSetBlendMode with the second parameter being an enumeration
+    OH_Drawing_BlendMode blendMode[] = {
+        BLEND_MODE_CLEAR,      BLEND_MODE_SRC,        BLEND_MODE_DST,         BLEND_MODE_SRC_OVER,
+        BLEND_MODE_DST_OVER,   BLEND_MODE_SRC_IN,     BLEND_MODE_DST_IN,      BLEND_MODE_SRC_OUT,
+        BLEND_MODE_DST_OUT,    BLEND_MODE_SRC_ATOP,   BLEND_MODE_DST_ATOP,    BLEND_MODE_XOR,
+        BLEND_MODE_PLUS,       BLEND_MODE_MODULATE,   BLEND_MODE_SCREEN,      BLEND_MODE_OVERLAY,
+        BLEND_MODE_DARKEN,     BLEND_MODE_LIGHTEN,    BLEND_MODE_COLOR_DODGE, BLEND_MODE_COLOR_BURN,
+        BLEND_MODE_HARD_LIGHT, BLEND_MODE_SOFT_LIGHT, BLEND_MODE_DIFFERENCE,  BLEND_MODE_EXCLUSION,
+        BLEND_MODE_MULTIPLY,   BLEND_MODE_HUE,        BLEND_MODE_SATURATION,  BLEND_MODE_COLOR,
+        BLEND_MODE_LUMINOSITY,
+    };
+    for (int i = 0; i < sizeof(blendMode) / sizeof(OH_Drawing_BlendMode); i++) {
+        OH_Drawing_BrushSetBlendMode(brush, blendMode[i]);
+    }
+    // 3. Free memory
+    OH_Drawing_BrushDestroy(brush);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_1401
+ * @tc.name: testBrushSetBlendModeNull
+ * @tc.desc: Test for testBrushSetBlendModeNull.
+ * @tc.size: SmallTest
+ * @tc.type: Function
+ * @tc.level: Level 3
+ */
+HWTEST_F(DrawingNativeBrushTest, testBrushSetBlendModeNull, TestSize.Level3) {
+    // 1. Create a brush object by calling OH_Drawing_BrushCreate
+    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    // 2. Call OH_Drawing_BrushSetBlendMode with nullptr as the first parameter
+    OH_Drawing_BrushSetBlendMode(nullptr, BLEND_MODE_CLEAR);
+    // 3. Free memory
+    OH_Drawing_BrushDestroy(brush);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_1500
+ * @tc.name: testBrushResetNormal
+ * @tc.desc: Test for testBrushResetNormal.
+ * @tc.size: SmallTest
+ * @tc.type: Function
+ * @tc.level: Level 0
+ */
+HWTEST_F(DrawingNativeBrushTest, testBrushResetNormal, TestSize.Level0) {
+    // 1. Create a brush object by calling OH_Drawing_BrushCreate
+    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    uint32_t color1 = OH_Drawing_BrushGetColor(brush);
+    // 2. Set the color for the brush object by calling OH_Drawing_BrushSetColor
+    OH_Drawing_BrushSetColor(brush, 0x12345678);
+    // 3. Get the color of the brush object by calling OH_Drawing_BrushGetColor
+    uint32_t color2 = OH_Drawing_BrushGetColor(brush);
+    EXPECT_EQ(color2, 0x12345678);
+    // 4. Reset the state of the brush object by calling OH_Drawing_BrushReset
+    OH_Drawing_BrushReset(brush);
+    // 5. Get the color of the brush object by calling OH_Drawing_BrushGetColor
+    uint32_t color3 = OH_Drawing_BrushGetColor(brush);
+    EXPECT_EQ(color3, color1);
+    // 6. Free memory
+    OH_Drawing_BrushDestroy(brush);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_BRUSH_1501
+ * @tc.name: testBrushResetNull
+ * @tc.desc: Test for testBrushResetNull.
+ * @tc.size: SmallTest
+ * @tc.type: Function
+ * @tc.level: Level 3
+ */
+HWTEST_F(DrawingNativeBrushTest, testBrushResetNull, TestSize.Level3) {
+    // 1. Create a brush object by calling OH_Drawing_BrushCreate
+    OH_Drawing_Brush *brush = OH_Drawing_BrushCreate();
+    // 2. Call OH_Drawing_BrushReset with nullptr as the parameter
+    OH_Drawing_BrushReset(nullptr);
+    // 3. Free memory
+    OH_Drawing_BrushDestroy(brush);
 }
 
 } // namespace Drawing
