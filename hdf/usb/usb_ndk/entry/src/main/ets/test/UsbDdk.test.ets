@@ -35,7 +35,7 @@ export default function usbDdkTest() {
         for (let item of devices) {
           let device: deviceManager.USBDevice = item as deviceManager.USBDevice;
           dev = device.deviceId;
-          console.info(`Device id is ${device.deviceId}`)
+          console.info(`Device id is ${device.deviceId}`);
         }
       } catch (error) {
         console.error(`Failed to query device. Code is ${error.code}, message is ${error.message}`);
@@ -43,7 +43,7 @@ export default function usbDdkTest() {
     })
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_0100
+     * @tc.number     : SUB_Driver_Ext_DDKETS_0100
      * @tc.name       : testUsbInit001
      * @tc.desc       : OH_Usb_Init Interface testing
      * @tc.size       : MediumTest
@@ -58,7 +58,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_0200
+     * @tc.number     : SUB_Driver_Ext_DDKETS_0200
      * @tc.name       : testUsbRelease001
      * @tc.desc       : OH_Usb_Release Interface testing
      * @tc.size       : MediumTest
@@ -73,7 +73,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_0300
+     * @tc.number     : SUB_Driver_Ext_DDKETS_0300
      * @tc.name       : testUsbGetDeviceDescriptor001
      * @tc.desc       : OH_Usb_GetDeviceDescriptor Interface testing
      * @tc.size       : MediumTest
@@ -95,7 +95,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_0400
+     * @tc.number     : SUB_Driver_Ext_DDKETS_0400
      * @tc.name       : testUsbGetDeviceDescriptor002
      * @tc.desc       : OH_Usb_GetDeviceDescriptor Interface testing
      * @tc.size       : MediumTest
@@ -116,7 +116,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_0500
+     * @tc.number     : SUB_Driver_Ext_DDKETS_0500
      * @tc.name       : testUsbGetConfigDescriptor001
      * @tc.desc       : OH_Usb_GetConfigDescriptor Interface testing
      * @tc.size       : MediumTest
@@ -137,7 +137,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_0600
+     * @tc.number     : SUB_Driver_Ext_DDKETS_0600
      * @tc.name       : testUsbGetConfigDescriptor002
      * @tc.desc       : OH_Usb_GetConfigDescriptor Interface testing
      * @tc.size       : MediumTest
@@ -158,7 +158,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_0700
+     * @tc.number     : SUB_Driver_Ext_DDKETS_0700
      * @tc.name       : testUsbGetConfigDescriptor003
      * @tc.desc       : OH_Usb_GetConfigDescriptor Interface testing
      * @tc.size       : MediumTest
@@ -179,7 +179,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_0800
+     * @tc.number     : SUB_Driver_Ext_DDKETS_0800
      * @tc.name       : testUsbFreeConfigDescriptor001
      * @tc.desc       : OH_Usb_FreeConfigDescriptor Interface testing
      * @tc.size       : MediumTest
@@ -200,7 +200,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_0900
+     * @tc.number     : SUB_Driver_Ext_DDKETS_0900
      * @tc.name       : testUsbClaimInterface001
      * @tc.desc       : OH_Usb_ClaimInterface Interface testing
      * @tc.size       : MediumTest
@@ -221,7 +221,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_1000
+     * @tc.number     : SUB_Driver_Ext_DDKETS_1000
      * @tc.name       : testUsbClaimInterface002
      * @tc.desc       : OH_Usb_ClaimInterface Interface testing
      * @tc.size       : MediumTest
@@ -242,7 +242,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_1100
+     * @tc.number     : SUB_Driver_Ext_DDKETS_1100
      * @tc.name       : testUsbClaimInterface003
      * @tc.desc       : OH_Usb_ClaimInterface Interface testing
      * @tc.size       : MediumTest
@@ -263,7 +263,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_1200
+     * @tc.number     : SUB_Driver_Ext_DDKETS_1200
      * @tc.name       : testUsbReleaseInterface001
      * @tc.desc       : OH_Usb_ReleaseInterface Interface testing
      * @tc.size       : MediumTest
@@ -284,7 +284,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_1300
+     * @tc.number     : SUB_Driver_Ext_DDKETS_1300
      * @tc.name       : testUsbSelectInterfaceSetting001
      * @tc.desc       : OH_Usb_SelectInterfaceSetting Interface testing
      * @tc.size       : MediumTest
@@ -305,7 +305,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_1400
+     * @tc.number     : SUB_Driver_Ext_DDKETS_1400
      * @tc.name       : testUsbSelectInterfaceSetting002
      * @tc.desc       : OH_Usb_SelectInterfaceSetting Interface testing
      * @tc.size       : MediumTest
@@ -326,7 +326,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_1500
+     * @tc.number     : SUB_Driver_Ext_DDKETS_1500
      * @tc.name       : testUsbGetCurrentInterfaceSetting001
      * @tc.desc       : OH_Usb_GetCurrentInterfaceSetting Interface testing
      * @tc.size       : MediumTest
@@ -347,7 +347,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_1600
+     * @tc.number     : SUB_Driver_Ext_DDKETS_1600
      * @tc.name       : testUsbGetCurrentInterfaceSetting002
      * @tc.desc       : OH_Usb_GetCurrentInterfaceSetting Interface testing
      * @tc.size       : MediumTest
@@ -368,7 +368,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_1700
+     * @tc.number     : SUB_Driver_Ext_DDKETS_1700
      * @tc.name       : testUsbGetCurrentInterfaceSetting003
      * @tc.desc       : OH_Usb_GetCurrentInterfaceSetting Interface testing
      * @tc.size       : MediumTest
@@ -389,7 +389,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_1800
+     * @tc.number     : SUB_Driver_Ext_DDKETS_1800
      * @tc.name       : testUsbSendControlReadRequest001
      * @tc.desc       : OH_Usb_SendControlReadRequest Interface testing
      * @tc.size       : MediumTest
@@ -410,7 +410,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_1900
+     * @tc.number     : SUB_Driver_Ext_DDKETS_1900
      * @tc.name       : testUsbSendControlReadRequest002
      * @tc.desc       : OH_Usb_SendControlReadRequest Interface testing
      * @tc.size       : MediumTest
@@ -431,7 +431,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_2000
+     * @tc.number     : SUB_Driver_Ext_DDKETS_2000
      * @tc.name       : testUsbSendControlReadRequest003
      * @tc.desc       : OH_Usb_SendControlReadRequest Interface testing
      * @tc.size       : MediumTest
@@ -452,7 +452,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_2100
+     * @tc.number     : SUB_Driver_Ext_DDKETS_2100
      * @tc.name       : testUsbSendControlReadRequest004
      * @tc.desc       : OH_Usb_SendControlReadRequest Interface testing
      * @tc.size       : MediumTest
@@ -473,7 +473,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_2200
+     * @tc.number     : SUB_Driver_Ext_DDKETS_2200
      * @tc.name       : testUsbSendControlReadRequest005
      * @tc.desc       : OH_Usb_SendControlReadRequest Interface testing
      * @tc.size       : MediumTest
@@ -494,7 +494,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_2300
+     * @tc.number     : SUB_Driver_Ext_DDKETS_2300
      * @tc.name       : testUsbSendControlWriteRequest001
      * @tc.desc       : OH_Usb_SendControlWriteRequest Interface testing
      * @tc.size       : MediumTest
@@ -515,7 +515,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_2400
+     * @tc.number     : SUB_Driver_Ext_DDKETS_2400
      * @tc.name       : testUsbSendControlWriteRequest002
      * @tc.desc       : OH_Usb_SendControlWriteRequest Interface testing
      * @tc.size       : MediumTest
@@ -536,7 +536,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_2500
+     * @tc.number     : SUB_Driver_Ext_DDKETS_2500
      * @tc.name       : testUsbSendControlWriteRequest003
      * @tc.desc       : OH_Usb_SendControlWriteRequest Interface testing
      * @tc.size       : MediumTest
@@ -557,7 +557,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_2600
+     * @tc.number     : SUB_Driver_Ext_DDKETS_2600
      * @tc.name       : testUsbSendControlWriteRequest004
      * @tc.desc       : OH_Usb_SendControlWriteRequest Interface testing
      * @tc.size       : MediumTest
@@ -578,7 +578,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_2700
+     * @tc.number     : SUB_Driver_Ext_DDKETS_2700
      * @tc.name       : testUsbSendPipeRequest001
      * @tc.desc       : OH_Usb_SendPipeRequest Interface testing
      * @tc.size       : MediumTest
@@ -599,7 +599,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_2800
+     * @tc.number     : SUB_Driver_Ext_DDKETS_2800
      * @tc.name       : testUsbSendPipeRequest002
      * @tc.desc       : OH_Usb_SendPipeRequest Interface testing
      * @tc.size       : MediumTest
@@ -620,7 +620,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_2900
+     * @tc.number     : SUB_Driver_Ext_DDKETS_2900
      * @tc.name       : testUsbSendPipeRequest003
      * @tc.desc       : OH_Usb_SendPipeRequest Interface testing
      * @tc.size       : MediumTest
@@ -641,7 +641,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_3000
+     * @tc.number     : SUB_Driver_Ext_DDKETS_3000
      * @tc.name       : testUsbSendPipeRequest004
      * @tc.desc       : OH_Usb_SendPipeRequest Interface testing
      * @tc.size       : MediumTest
@@ -662,7 +662,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_3100
+     * @tc.number     : SUB_Driver_Ext_DDKETS_3100
      * @tc.name       : testUsbCreateDeviceMemMap001
      * @tc.desc       : OH_Usb_CreateDeviceMemMap Interface testing
      * @tc.size       : MediumTest
@@ -683,7 +683,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_3200
+     * @tc.number     : SUB_Driver_Ext_DDKETS_3200
      * @tc.name       : testUsbCreateDeviceMemMap002
      * @tc.desc       : OH_Usb_CreateDeviceMemMap Interface testing
      * @tc.size       : MediumTest
@@ -704,7 +704,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_3300
+     * @tc.number     : SUB_Driver_Ext_DDKETS_3300
      * @tc.name       : testUsbDestroyDeviceMemMap001
      * @tc.desc       : OH_Usb_DestroyDeviceMemMap Interface testing
      * @tc.size       : MediumTest
@@ -725,7 +725,7 @@ export default function usbDdkTest() {
     });
 
      /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_3400
+     * @tc.number     : SUB_Driver_Ext_DDKETS_3400
      * @tc.name       : testUsbSendPipeRequestWithAshmem001
      * @tc.desc       : OH_Usb_SendPipeRequestWithAshmem Interface testing
      * @tc.size       : MediumTest
@@ -754,7 +754,7 @@ export default function usbDdkTest() {
     });
 
      /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_3500
+     * @tc.number     : SUB_Driver_Ext_DDKETS_3500
      * @tc.name       : testUsbSendPipeRequestWithAshmem002
      * @tc.desc       : OH_Usb_SendPipeRequestWithAshmem Interface testing
      * @tc.size       : MediumTest
@@ -783,7 +783,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_3600
+     * @tc.number     : SUB_Driver_Ext_DDKETS_3600
      * @tc.name       : testUsbSendPipeRequestWithAshmem003
      * @tc.desc       : OH_Usb_SendPipeRequestWithAshmem Interface testing
      * @tc.size       : MediumTest
@@ -812,7 +812,7 @@ export default function usbDdkTest() {
     });
 
     /**
-     * @tc.number     : SUB_USB_DriverExt_DDKETS_3700
+     * @tc.number     : SUB_Driver_Ext_DDKETS_3700
      * @tc.name       : testUsbSendPipeRequestWithAshmem004
      * @tc.desc       : OH_Usb_SendPipeRequestWithAshmem Interface testing
      * @tc.size       : MediumTest
