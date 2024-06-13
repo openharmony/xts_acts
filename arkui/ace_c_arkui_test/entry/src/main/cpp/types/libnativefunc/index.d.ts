@@ -1956,6 +1956,16 @@ export const testNodeUtils050: ()=> number;
 
 export const testNodeUtils060: ()=> number;
 
+export const testAccessibility070: ()=> number;
+
+export const testAccessibility080: ()=> number;
+
+export const testAccessibility090: ()=> number;
+
+export const testAccessibility010: ()=> number;
+
+export const testAccessibility011: ()=> number;
+
 export const testImageAniMator009: () => number;
 
 export const testImageAniMator010: () => number;

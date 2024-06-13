@@ -204,6 +204,62 @@ static napi_value TestImageAniMator011(napi_env env, napi_callback_info info)
      napi_create_int32(env, 1, &result);                                                                                 
      return result;
 }
+static napi_value TestAccessibility070(napi_env env, napi_callback_info info)
+{
+    auto ret = OH_ArkUI_AccessibilityValue_Create();
+    if (ret == nullptr) {
+        NAPI_END;
+    }
+    OH_ArkUI_AccessibilityValue_Dispose(ret);
+    napi_value result = nullptr;  
+    napi_create_int32(env, 1, &result);                                                                                 
+    return result;
+}
 
+static napi_value TestAccessibility080(napi_env env, napi_callback_info info)
+{
+    auto ret = OH_ArkUI_AccessibilityValue_Create();
+    OH_ArkUI_AccessibilityValue_SetMin(ret, VALUE_0);
+    auto value = OH_ArkUI_AccessibilityValue_GetMin(ret);
+    ASSERT_EQ(value, VALUE_0);
+    napi_value result = nullptr;  
+    napi_create_int32(env, 1, &result);                                                                                 
+    return result;
+}
+
+static napi_value TestAccessibility090(napi_env env, napi_callback_info info)
+{
+    auto ret = OH_ArkUI_AccessibilityValue_Create();
+    OH_ArkUI_AccessibilityValue_SetMax(ret, VALUE_0);
+    auto value = OH_ArkUI_AccessibilityValue_GetMax(ret);
+    ASSERT_EQ(value, VALUE_0);
+    napi_value result = nullptr;  
+    napi_create_int32(env, 1, &result);                                                                                 
+    return result;
+}
+
+static napi_value TestAccessibility010(napi_env env, napi_callback_info info)
+{
+    auto ret = OH_ArkUI_AccessibilityValue_Create();
+    OH_ArkUI_AccessibilityValue_SetCurrent(ret, VALUE_0);
+    auto value = OH_ArkUI_AccessibilityValue_GetCurrent(ret);
+    ASSERT_EQ(value, VALUE_0);
+    napi_value result = nullptr;  
+    napi_create_int32(env, 1, &result);                                                                                 
+    return result;
+}
+
+
+static napi_value TestAccessibility011(napi_env env, napi_callback_info info)
+{
+    auto ret = OH_ArkUI_AccessibilityValue_Create();
+    const char *content = "C textStyle Test";
+    OH_ArkUI_AccessibilityValue_SetText(ret, content);
+    auto value = OH_ArkUI_AccessibilityValue_GetText(ret);
+    ASSERT_STREQ(content, value);
+    napi_value result = nullptr;  
+    napi_create_int32(env, 1, &result);                                                                                 
+    return result;
+}
 
 } // namespace ArkUICapiTest
