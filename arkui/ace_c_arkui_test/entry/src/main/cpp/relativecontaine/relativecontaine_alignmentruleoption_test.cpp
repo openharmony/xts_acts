@@ -59,7 +59,7 @@ static napi_value TestRelativeContaineAlignmentRuleOption001(napi_env env, napi_
     ASSERT_EQ(OH_ArkUI_AlignmentRuleOption_GetStartAlignment(alignmentrule), ARKUI_HORIZONTAL_ALIGNMENT_END);
     ASSERT_EQ(OH_ArkUI_AlignmentRuleOption_GetEndAlignment(alignmentrule), ARKUI_HORIZONTAL_ALIGNMENT_CENTER);
     ASSERT_EQ(OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentHorizontal(alignmentrule), 
-    ARKUI_HORIZONTAL_ALIGNMENT_START);
+        ARKUI_HORIZONTAL_ALIGNMENT_START);
 
     OH_ArkUI_AlignmentRuleOption_Dispose(alignmentrule);
 
@@ -104,7 +104,7 @@ static napi_value TestRelativeContaineAlignmentRuleOption002(napi_env env, napi_
     ASSERT_EQ(OH_ArkUI_AlignmentRuleOption_GetTopAlignment(alignmentrule), ARKUI_VERTICAL_ALIGNMENT_BOTTOM);
     ASSERT_EQ(OH_ArkUI_AlignmentRuleOption_GetBottomAlignment(alignmentrule), ARKUI_VERTICAL_ALIGNMENT_CENTER);
     ASSERT_EQ(OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentVertical(alignmentrule), 
-    ARKUI_VERTICAL_ALIGNMENT_TOP);
+        ARKUI_VERTICAL_ALIGNMENT_TOP);
 
     OH_ArkUI_AlignmentRuleOption_Dispose(alignmentrule);
 
