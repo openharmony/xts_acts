@@ -19,7 +19,7 @@
 #include <ace/xcomponent/native_interface_xcomponent.h>
 #define VALUE_0 10
 #define VALUE_1 1000
-#define VALUE_2 -1000
+#define VALUE_2 (-1000)
 
 namespace ArkUICapiTest {
 
