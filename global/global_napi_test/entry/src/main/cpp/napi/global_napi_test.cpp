@@ -298,7 +298,7 @@ static napi_value IsRawDir(napi_env env, napi_callback_info info){
     napi_get_value_string_utf8(env, argv[1], strBuf,sizeof(strBuf),&strSize);
     std::string filename(strBuf,strSize);
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
-    bool result = OH_ResourceManager_IsRawDir(mNativeResMgr,filename.cstr());
+    bool result = OH_ResourceManager_IsRawDir(mNativeResMgr,filename.c_str());
     bool flag = (result == false);
     napi_value value = nullptr;
     napi_get_boolean(env, flag, &value);
