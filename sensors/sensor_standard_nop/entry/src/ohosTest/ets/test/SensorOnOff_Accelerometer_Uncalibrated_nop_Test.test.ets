@@ -123,6 +123,7 @@ export default function accelerometer_Uncalibrated_nop_Test() {
     it("Accelerometer_Uncalibrated_Sensor_nop_Test03", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info('--------Accelerometer_Uncalibrated_Sensor_nop_Test03--------');
       try {
+        sensor.on(sensor.SensorId.ACCELEROMETER_UNCALIBRATED, callback);
         sensor.off(sensor.SensorId.ACCELEROMETER_UNCALIBRATED, callback);
       } catch (error) {
         console.error('Accelerometer_Uncalibrated_Sensor_nop_Test03 catch error:' + JSON.stringify(error));
