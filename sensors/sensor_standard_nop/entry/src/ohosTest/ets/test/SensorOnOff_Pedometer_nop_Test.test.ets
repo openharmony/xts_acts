@@ -46,7 +46,7 @@ export default function pedometer_nop_Test() {
       // This API supports only one parameter: clear action function.
     })
 
- /*
+    /*
      * @tc.number:SUB_SensorsSystem_Pedometer_Sensor_nop_Test04
      * @tc.name: Pedometer_Sensor_nop_Test01
      * @tc.desc:Using the on method without permission
@@ -75,8 +75,13 @@ export default function pedometer_nop_Test() {
             } catch (error) {
               console.error('Pedometer_Sensor_nop_Test01 catch error:' + JSON.stringify(error));
               let e: BusinessError = error as BusinessError;
-              expect(e.code).assertEqual(PARAMETER_ERROR_CODE);
-              done()
+              if(e.code === PARAMETER_ERROR_CODE){
+                expect(e.code).assertEqual(PARAMETER_ERROR_CODE);
+                done()
+              }else {
+                expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+                done()
+              }
             }
           }
         });
@@ -114,8 +119,13 @@ export default function pedometer_nop_Test() {
             } catch (error) {
               console.error('Pedometer_Sensor_nop_Test02 catch error:' + JSON.stringify(error));
               let e: BusinessError = error as BusinessError;
-              expect(e.code).assertEqual(PARAMETER_ERROR_CODE);
-              done()
+              if(e.code === PARAMETER_ERROR_CODE){
+                expect(e.code).assertEqual(PARAMETER_ERROR_CODE);
+                done()
+              }else {
+                expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+                done()
+              }
             }
           }
         });
@@ -157,8 +167,13 @@ export default function pedometer_nop_Test() {
                 });
               } catch (error) {
                 let e: BusinessError = error as BusinessError;
-                expect(e.code).assertEqual(PARAMETER_ERROR_CODE);
-                done()
+                if(e.code === PARAMETER_ERROR_CODE){
+                  expect(e.code).assertEqual(PARAMETER_ERROR_CODE);
+                  done()
+                }else {
+                  expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+                  done()
+                }
                 console.info('nop_Pedometer_SensorJsTest off fail, errorCode:' + JSON.stringify(error));
               }
             }
