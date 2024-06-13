@@ -32,10 +32,12 @@ ohos_copy("PyTestCase") {
     "./testInstallSignedHap.py",
     "./testJsConfiguration.py",
     "./testMinimumComponentSet.py",
+    "./testPermissionName.py",
     "./testPermissionsNotMissing.py",
     "./testRealRandomGenerate.py",
     "./testSDCardMount.py",
     "./testSelinuxFileLable.py",
+    "./testSupportHdc.py",
     "./testSystemCoreInternetPermission.py",
     "./testTrustedRootCaExist.py",
   ]

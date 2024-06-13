@@ -488,8 +488,7 @@
 #include "accessibilityState/accessibilityState.cpp"
 #include "relativecontaine/relativecontaine_alignmentruleoption_test.cpp"
 #include "relativecontaine/relativecontaine_barrieroption_test.cpp"
-
-
+#include "customcomponent/customcomponent_event_null_test.cpp"
 namespace ArkUICapiTest {
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -4411,12 +4410,15 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testRelativeContaineBarrierOption003", nullptr, TestRelativeContaineBarrierOption003,
          nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"customComponentEventNullTest001",
+            nullptr, CustomComponentEventNull001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"customComponentEventNullTest002",
+            nullptr, CustomComponentEventNull002, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");
         return nullptr;
     }
-
     return exports;
 }
 EXTERN_C_END

@@ -234,3 +234,5 @@ export const textInputOnSubmitTest: (a: string) => void;
 export const textInputOnCutTest: (a: string) => void;
 
 export const textInputOnPasteTest: (a: string) => void;
+
+export const gestureTest: (a: string) => void;

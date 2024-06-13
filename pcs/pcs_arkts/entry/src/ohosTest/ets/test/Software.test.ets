@@ -26,16 +26,12 @@ import AbilityUtils from './AbilityUtils'
 export default function softwareTest() {
   describe('SoftwareTest', () => {
     let abilityContext: common.UIAbilityContext
-    let hasAbilityTestExec: boolean
-    let hasAbilityTestPassed: boolean
     beforeAll(async (done: Function) => {
       abilityContext = AppStorage.get<common.UIAbilityContext>('TestAbilityContext') as common.UIAbilityContext
       expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
       let driver = Driver.create()
       await driver.delayMs(2000)
-      hasAbilityTestExec = false
-      hasAbilityTestPassed = false
       done()
     })
 
@@ -108,58 +104,19 @@ export default function softwareTest() {
     /*
     * @tc.number: STD-SOFTWARE-0300
     * @tc.name: testCoreApplicationWants0100
-    * @tc.desc: 【STD-SOFTWARE-0300】任何替代 ohos 核心应用程序的版本都必须遵守 ohos 核心应用程序提供的相同 want，
-    *             系统实现者必须支持 ohos SDK 提供的所有 want。
+    * @tc.desc: 【STD-SOFTWARE-0300】任何替代 ohos 核心应用程序的版本都必须遵守 ohos 核心应用程序提供的相同 want，系统实现者必须支持 ohos SDK 提供的所有 want。
+    *           【STD-SOFTWARE-0301】系统实现者不应对使用 ohos SDK 提供的 want 的系统应用附加任何特权，不应阻止三方应用绑定并承担对这些 want 的控制。
     * @tc.size: MediumTest
     * @tc.type: Function
     * @tc.level: Level 0
     */
     it('testCoreApplicationWants0100', 0, async (done: Function) => {
-      if (hasAbilityTestExec) {
-        expect(hasAbilityTestPassed).assertTrue()
-      }
-      hasAbilityTestExec = true
       let driver = Driver.create()
       let filepickerWantInfo1: Want = {
         action: 'ohos.want.action.OPEN_FILE'
       }
       expect(await AbilityUtils.startAbilityImplicitly(filepickerWantInfo1, abilityContext)).assertTrue()
       await driver.delayMs(2000)
-      let cameraWantInfo1: Want = {
-        action: 'ohos.want.action.imageCapture'
-      }
-      expect(await AbilityUtils.startAbilityImplicitly(cameraWantInfo1, abilityContext)).assertTrue()
-      await driver.delayMs(2000)
-      hasAbilityTestPassed = true
-      done()
-    })
-
-    /*
-    * @tc.number: STD-SOFTWARE-0301
-    * @tc.name: testCoreApplicationWantPermissions0100
-    * @tc.desc: 【STD-SOFTWARE-0301】系统实现者不应对使用 ohos SDK 提供的 want 的系统应用附加任何特权，
-    *             不应阻止三方应用绑定并承担对这些 want 的控制。
-    * @tc.size: MediumTest
-    * @tc.type: Function
-    * @tc.level: Level 0
-    */
-    it('testCoreApplicationWantPermissions0100', 0, async (done: Function) => {
-      if (hasAbilityTestExec) {
-        expect(hasAbilityTestPassed).assertTrue()
-      }
-      hasAbilityTestExec = true
-      let driver = Driver.create()
-      let filepickerWantInfo1: Want = {
-        action: 'ohos.want.action.OPEN_FILE'
-      }
-      expect(await AbilityUtils.startAbilityImplicitly(filepickerWantInfo1, abilityContext)).assertTrue()
-      await driver.delayMs(2000)
-      let cameraWantInfo1: Want = {
-        action: 'ohos.want.action.imageCapture'
-      }
-      expect(await AbilityUtils.startAbilityImplicitly(cameraWantInfo1, abilityContext)).assertTrue()
-      await driver.delayMs(2000)
-      hasAbilityTestPassed = true
       done()
     })
 

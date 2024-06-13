@@ -14,7 +14,10 @@
     "mainAbility": ".MainAbility",
     "deviceType": [
       "phone",
-      "tablet"
+      "tablet",
+      "2in1",
+      "default",
+      "tv"
     ],
     "distro": {
       "deliveryWithInstall": true,

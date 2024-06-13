@@ -4920,3 +4920,6 @@ export const testRelativeContaineBarrierOption001: () => number;
 export const testRelativeContaineBarrierOption002: () => number;
 
 export const testRelativeContaineBarrierOption003: () => number;
+export const customComponentEventNullTest001: () => number;
+
+export const customComponentEventNullTest002: () => number;

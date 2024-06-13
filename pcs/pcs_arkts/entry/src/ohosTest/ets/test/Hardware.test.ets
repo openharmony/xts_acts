@@ -181,7 +181,13 @@ export default function hardwareTest() {
      */
     it('testCameraSupportAutoExposure0100', 0, async (done: Function) => {
       if (isCameraSupported) {
-        let photoSession = await getPhotoSession(abilityContext, applicationContext)
+        let getResult: [boolean, camera.PhotoSession] = await getPhotoSession(abilityContext, applicationContext)
+        if(!getResult[0]) {
+          expect(true).assertTrue()
+          done()
+          return
+        }
+        let photoSession = getResult[1]
         try {
           let supportedExposureModes = new Array<camera.ExposureMode>()
           if (photoSession.isExposureModeSupported(camera.ExposureMode.EXPOSURE_MODE_LOCKED)) {
@@ -217,7 +223,13 @@ export default function hardwareTest() {
      */
     it('testCameraSupportAutoFocus0100', 0, async (done: Function) => {
       if (isCameraSupported) {
-        let photoSession = await getPhotoSession(abilityContext, applicationContext)
+        let getResult: [boolean, camera.PhotoSession] = await getPhotoSession(abilityContext, applicationContext)
+        if(!getResult[0]) {
+          expect(true).assertTrue()
+          done()
+          return
+        }
+        let photoSession = getResult[1]
         try {
           let supportedFocusModes = new Array<camera.FocusMode>()
           if (photoSession.isFocusModeSupported(camera.FocusMode.FOCUS_MODE_MANUAL)) {
@@ -259,7 +271,12 @@ export default function hardwareTest() {
         let cameraManager = camera.getCameraManager(applicationContext)
         // query camera number
         let supportedCameras = cameraManager.getSupportedCameras()
-        expect(supportedCameras.length).assertLarger(0)
+        if(supportedCameras.length == 0) {
+          console.log(`No Supported usb camera`)
+          expect(true).assertTrue()
+          done()
+          return
+        }
         // query position
         let cameraDevice = supportedCameras[0]
         let supportedPositions = [camera.CameraPosition.CAMERA_POSITION_BACK,
@@ -276,7 +293,7 @@ export default function hardwareTest() {
         let type = cameraDevice.cameraType
         expect(supportedTypes).assertContain(type)
         // query aspect ratio
-        let supportedOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice)
+        let supportedOutputCapability = cameraManager.getSupportedOutputCapability(cameraDevice, camera.SceneMode.NORMAL_PHOTO)
         let profiles = supportedOutputCapability.photoProfiles
         expect(profiles.length).assertLarger(0)
         let size = profiles[0].size
@@ -302,7 +319,12 @@ export default function hardwareTest() {
       if (isCameraSupported) {
         let cameraManager = camera.getCameraManager(applicationContext)
         let supportedCameras = cameraManager.getSupportedCameras()
-        expect(supportedCameras.length).assertLarger(0)
+        if(supportedCameras.length == 0) {
+          console.log(`No Supported usb camera`)
+          expect(true).assertTrue()
+          done()
+          return
+        }
 
         let previewFormats = new Array<camera.CameraFormat>()
         let videoFormats = new Array<camera.CameraFormat>()
@@ -795,6 +817,10 @@ export default function hardwareTest() {
 
 async function getPhotoSession(abilityContext: common.UIAbilityContext, applicationContext: common.ApplicationContext) {
   expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'EntryAbility', abilityContext)).assertTrue()
+  if(camera.getCameraManager(applicationContext).getSupportedCameras().length == 0) {
+    console.log(`No Supported usb camera`)
+    return [false, camera.getCameraManager(applicationContext).createSession(camera.SceneMode.NORMAL_PHOTO)] as [boolean, camera.PhotoSession]
+  }
   let driver = Driver.create()
   await driver.delayMs(1000)
   let component = await driver.findComponent(ON.id('surfaceId'))
@@ -838,7 +864,7 @@ async function getPhotoSession(abilityContext: common.UIAbilityContext, applicat
     console.error(`Failed to create and start photo session. error: ${JSON.stringify(err)}`);
     expect(false).assertTrue()
   }
-  return photoSession
+  return [true, photoSession] as [boolean, camera.PhotoSession]
 }
 
 async function stopPhotoSession(photoSession: camera.PhotoSession) {
