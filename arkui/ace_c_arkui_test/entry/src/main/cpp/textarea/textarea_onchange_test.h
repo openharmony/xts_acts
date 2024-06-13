@@ -28,7 +28,6 @@ class TextAreaOnChangeTest {
 public:
     ~TextAreaOnChangeTest();
     static napi_value CreateNativeNode(napi_env env, napi_callback_info info);
-    static napi_value ChangeType(napi_env env, napi_callback_info info);
 };
 } // namespace ArkUICapiTest
 #endif // ARKUI_CAPI_XTS_TEXTAREA_ONCHANGE_TEST_H

@@ -223,8 +223,6 @@ export const textInputKeyTest: (a: string) => void;
 
 export const textAreaOnChangeTest: (a: string) => void;
 
-export const textAreaOnChangeTypeTest: (a: number) => void;
-
 export const sliderOnChangeTest: (a: string) => void;
 
 export const textInputOnBlurTest: (a: string) => void;

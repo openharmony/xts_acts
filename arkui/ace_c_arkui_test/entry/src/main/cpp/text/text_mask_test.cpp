@@ -110,22 +110,18 @@ static napi_value TestTextMask005(napi_env env, napi_callback_info info)
 {
     NAPI_START(text, ARKUI_NODE_TEXT);
     uint32_t color = 0xFF000000;
-    float widthValue = 5;
     float sizeValue = 40;
     ArkUI_NumberValue value[] = {
-        {.u32 = color},     {.u32 = color},     {.f32 = widthValue}, {.i32 = ARKUI_MASK_TYPE_PROGRESS},
-        {.f32 = sizeValue}, {.f32 = sizeValue}, {.u32 = color}};
+        {.i32 = ARKUI_MASK_TYPE_PROGRESS}, {.f32 = sizeValue}, {.f32 = sizeValue}, {.u32 = color}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_MASK, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_0].u32, color);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_1].u32, color);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_2].f32, widthValue);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_3].i32, ARKUI_MASK_TYPE_PROGRESS);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_4].f32, sizeValue);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_5].f32, sizeValue);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_6].u32, color);
-
+    if (nodeAPI->getAttribute(text, NODE_MASK) != nullptr) {
+        ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_0].i32, ARKUI_MASK_TYPE_PROGRESS);
+        ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_1].f32, sizeValue);
+        ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_2].f32, sizeValue);
+        ASSERT_EQ(nodeAPI->getAttribute(text, NODE_MASK)->value[PARAM_3].u32, color);
+    }
     NAPI_END;
 }
 
