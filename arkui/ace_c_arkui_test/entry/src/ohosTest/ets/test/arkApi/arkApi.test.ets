@@ -262,5 +262,72 @@ export default function TestArkUIAddApi() {
 
 
 
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_UIInputEvent_1900
+     * @tc.name       : TestArkUIAddApi019
+     * @tc.desc       : testing OH_ArkUI Api
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('TestArkUIAddApi019', 0, async (done: Function) => {
+      expect(nativeFunc.TestArkUIAddApi019()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_UIInputEvent_2000
+     * @tc.name       : TestArkUIAddApi020
+     * @tc.desc       : testing OH_ArkUI Api
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('TestArkUIAddApi020', 0, async (done: Function) => {
+      expect(nativeFunc.TestArkUIAddApi020()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_UIInputEvent_2100
+     * @tc.name       : TestArkUIAddApi021
+     * @tc.desc       : testing OH_ArkUI Api
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('TestArkUIAddApi021', 0, async (done: Function) => {
+      expect(nativeFunc.TestArkUIAddApi021()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_UIInputEvent_2200
+     * @tc.name       : TestArkUIAddApi022
+     * @tc.desc       : testing OH_ArkUI Api
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('TestArkUIAddApi022', 0, async (done: Function) => {
+      expect(nativeFunc.TestArkUIAddApi022()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_UIInputEvent_2300
+     * @tc.name       : TestArkUIAddApi023
+     * @tc.desc       : testing OH_ArkUI Api
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('TestArkUIAddApi023', 0, async (done: Function) => {
+      expect(nativeFunc.TestArkUIAddApi023()).assertEqual(0)
+      done()
+    })
+
+
+
   })
 }
