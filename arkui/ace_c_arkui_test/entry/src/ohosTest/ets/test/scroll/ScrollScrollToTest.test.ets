@@ -35,7 +35,7 @@ export default function scrollScrollToTest() {
      */
     it('testScrollScrollTo001', 0, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollToLinearTest';
-      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
@@ -50,7 +50,7 @@ export default function scrollScrollToTest() {
      */
     it('testScrollScrollTo002', 0, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollToEaseTest';
-      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
@@ -65,7 +65,7 @@ export default function scrollScrollToTest() {
      */
     it('testScrollScrollTo003', 0, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollToEaseInTest';
-      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
@@ -80,7 +80,7 @@ export default function scrollScrollToTest() {
      */
     it('testScrollScrollTo004', 0, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollToEaseOutTest';
-      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
@@ -95,7 +95,7 @@ export default function scrollScrollToTest() {
      */
     it('testScrollScrollTo005', 0, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollToEaseInOutTest';
-      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
@@ -110,7 +110,7 @@ export default function scrollScrollToTest() {
      */
     it('testScrollScrollTo006', 0, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollToFastOutSlowInTest';
-      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
@@ -125,7 +125,7 @@ export default function scrollScrollToTest() {
      */
     it('testScrollScrollTo007', 0, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollToLinearOutSlowInTest';
-      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
@@ -140,7 +140,7 @@ export default function scrollScrollToTest() {
      */
     it('testScrollScrollTo008', 0, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollToFastOutLinearInTest';
-      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
@@ -155,7 +155,7 @@ export default function scrollScrollToTest() {
      */
     it('testScrollScrollTo009', 0, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollToExtremeDecelerationTest';
-      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
@@ -170,7 +170,7 @@ export default function scrollScrollToTest() {
      */
     it('testScrollScrollTo010', 0, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollToSharpTest';
-      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
@@ -185,7 +185,7 @@ export default function scrollScrollToTest() {
      */
     it('testScrollScrollTo011', 0, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollToRhythmTest';
-      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
@@ -200,7 +200,7 @@ export default function scrollScrollToTest() {
      */
     it('testScrollScrollTo012', 0, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollToSmoothTest';
-      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
@@ -215,7 +215,7 @@ export default function scrollScrollToTest() {
      */
     it('testScrollScrollTo013', 0, async (done: Function) => {
       let PAGE_TAG = 'ScrollScrollToFrictionTest';
-      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('ScrollTo').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });

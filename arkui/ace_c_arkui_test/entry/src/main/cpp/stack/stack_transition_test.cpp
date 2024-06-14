@@ -87,12 +87,12 @@ static napi_value TestStackTransition005(napi_env env, napi_callback_info info)
 static napi_value TestStackTransition006(napi_env env, napi_callback_info info)
 {
     NAPI_START(stack, ARKUI_NODE_STACK);
-    float opacity = 0;
-    int32_t duration = 0;
-    int32_t curve = ARKUI_CURVE_LINEAR;
-    int32_t delay = 0;
-    int32_t iterations = 0;
-    int32_t playMode = ARKUI_ANIMATION_PLAY_MODE_NORMAL;
+    float opacity = 0.5;
+    int32_t duration = 500;
+    int32_t curve = ARKUI_CURVE_FAST_OUT_SLOW_IN;
+    int32_t delay = 500;
+    int32_t iterations = 2;
+    int32_t playMode = ARKUI_ANIMATION_PLAY_MODE_REVERSE;
     float tempo = -1;
 
     ArkUI_NumberValue opacity_transition_value[] = {{.f32 = opacity}, {.i32 = duration},   {.i32 = curve},
@@ -101,14 +101,16 @@ static napi_value TestStackTransition006(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem opacity_transition_item = {opacity_transition_value,
                                                    sizeof(opacity_transition_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_OPACITY_TRANSITION, &opacity_transition_item);
-    ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_OPACITY_TRANSITION)->value[PARAM_0].f32, opacity);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_OPACITY_TRANSITION)->value[PARAM_1].i32, duration);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_OPACITY_TRANSITION)->value[PARAM_2].i32, curve);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_OPACITY_TRANSITION)->value[PARAM_3].i32, delay);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_OPACITY_TRANSITION)->value[PARAM_4].i32, iterations);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_OPACITY_TRANSITION)->value[PARAM_5].i32, playMode);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_OPACITY_TRANSITION)->value[PARAM_6].f32, PARAM_1);
+    ASSERT_EQ(ret, INVALID_PARAM);
+    if (nodeAPI->getAttribute(stack, NODE_OPACITY_TRANSITION) != nullptr) {
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_OPACITY_TRANSITION)->value[PARAM_0].f32, opacity);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_OPACITY_TRANSITION)->value[PARAM_1].i32, duration);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_OPACITY_TRANSITION)->value[PARAM_2].i32, curve);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_OPACITY_TRANSITION)->value[PARAM_3].i32, delay);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_OPACITY_TRANSITION)->value[PARAM_4].i32, iterations);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_OPACITY_TRANSITION)->value[PARAM_5].i32, playMode);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_OPACITY_TRANSITION)->value[PARAM_6].f32, PARAM_NEGATIVE_1);
+    }
     NAPI_END;
 }
 
@@ -516,11 +518,11 @@ static napi_value TestStackTransition021(napi_env env, napi_callback_info info)
     float z = 50;
     float angle = 50;
     float perspective = 50;
-    int32_t duration = 0;
-    int32_t curve = ARKUI_CURVE_LINEAR;
-    int32_t delay = 0;
-    int32_t iterations = 0;
-    int32_t playMode = ARKUI_ANIMATION_PLAY_MODE_NORMAL;
+    int32_t duration = 500;
+    int32_t curve = ARKUI_CURVE_FAST_OUT_SLOW_IN;
+    int32_t delay = 500;
+    int32_t iterations = 2;
+    int32_t playMode = ARKUI_ANIMATION_PLAY_MODE_REVERSE;
     float tempo = -1;
 
     ArkUI_NumberValue rotate_transition_value[] = {
@@ -529,18 +531,20 @@ static napi_value TestStackTransition021(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem rotate_transition_item = {rotate_transition_value,
                                                   sizeof(rotate_transition_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_ROTATE_TRANSITION, &rotate_transition_item);
-    ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_ROTATE_TRANSITION)->value[PARAM_0].f32, x);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_ROTATE_TRANSITION)->value[PARAM_1].f32, y);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_ROTATE_TRANSITION)->value[PARAM_2].f32, z);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_ROTATE_TRANSITION)->value[PARAM_3].f32, angle);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_ROTATE_TRANSITION)->value[PARAM_4].f32, perspective);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_ROTATE_TRANSITION)->value[PARAM_5].i32, duration);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_ROTATE_TRANSITION)->value[PARAM_6].i32, curve);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_ROTATE_TRANSITION)->value[PARAM_7].i32, delay);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_ROTATE_TRANSITION)->value[PARAM_8].i32, iterations);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_ROTATE_TRANSITION)->value[PARAM_9].i32, playMode);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_ROTATE_TRANSITION)->value[PARAM_10].f32, PARAM_1);
+    ASSERT_EQ(ret, INVALID_PARAM);
+    if (nodeAPI->getAttribute(stack, NODE_OPACITY_TRANSITION) != nullptr) {
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_ROTATE_TRANSITION)->value[PARAM_0].f32, x);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_ROTATE_TRANSITION)->value[PARAM_1].f32, y);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_ROTATE_TRANSITION)->value[PARAM_2].f32, z);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_ROTATE_TRANSITION)->value[PARAM_3].f32, angle);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_ROTATE_TRANSITION)->value[PARAM_4].f32, perspective);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_ROTATE_TRANSITION)->value[PARAM_5].i32, duration);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_ROTATE_TRANSITION)->value[PARAM_6].i32, curve);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_ROTATE_TRANSITION)->value[PARAM_7].i32, delay);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_ROTATE_TRANSITION)->value[PARAM_8].i32, iterations);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_ROTATE_TRANSITION)->value[PARAM_9].i32, playMode);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_ROTATE_TRANSITION)->value[PARAM_10].f32, PARAM_NEGATIVE_1);
+    }
     NAPI_END;
 }
 
@@ -1058,11 +1062,11 @@ static napi_value TestStackTransition036(napi_env env, napi_callback_info info)
     float x = 0.5;
     float y = 0.5;
     float z = 0.5;
-    int32_t duration = 0;
-    int32_t curve = ARKUI_CURVE_LINEAR;
-    int32_t delay = 0;
-    int32_t iterations = 0;
-    int32_t playMode = ARKUI_ANIMATION_PLAY_MODE_NORMAL;
+    int32_t duration = 500;
+    int32_t curve = ARKUI_CURVE_FAST_OUT_SLOW_IN;
+    int32_t delay = 500;
+    int32_t iterations = 2;
+    int32_t playMode = ARKUI_ANIMATION_PLAY_MODE_REVERSE;
     float tempo = -1;
 
     ArkUI_NumberValue scale_transition_value[] = {{.f32 = x},          {.f32 = y},        {.f32 = z},
@@ -1071,16 +1075,18 @@ static napi_value TestStackTransition036(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem scale_transition_item = {scale_transition_value,
                                                  sizeof(scale_transition_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_SCALE_TRANSITION, &scale_transition_item);
-    ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_SCALE_TRANSITION)->value[PARAM_0].f32, x);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_SCALE_TRANSITION)->value[PARAM_1].f32, y);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_SCALE_TRANSITION)->value[PARAM_2].f32, z);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_SCALE_TRANSITION)->value[PARAM_3].i32, duration);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_SCALE_TRANSITION)->value[PARAM_4].i32, curve);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_SCALE_TRANSITION)->value[PARAM_5].i32, delay);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_SCALE_TRANSITION)->value[PARAM_6].i32, iterations);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_SCALE_TRANSITION)->value[PARAM_7].i32, playMode);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_SCALE_TRANSITION)->value[PARAM_8].f32, PARAM_1);
+    ASSERT_EQ(ret, INVALID_PARAM);
+    if (nodeAPI->getAttribute(stack, NODE_SCALE_TRANSITION) != nullptr) {
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_SCALE_TRANSITION)->value[PARAM_0].f32, x);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_SCALE_TRANSITION)->value[PARAM_1].f32, y);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_SCALE_TRANSITION)->value[PARAM_2].f32, z);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_SCALE_TRANSITION)->value[PARAM_3].i32, duration);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_SCALE_TRANSITION)->value[PARAM_4].i32, curve);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_SCALE_TRANSITION)->value[PARAM_5].i32, delay);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_SCALE_TRANSITION)->value[PARAM_6].i32, iterations);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_SCALE_TRANSITION)->value[PARAM_7].i32, playMode);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_SCALE_TRANSITION)->value[PARAM_8].f32, PARAM_NEGATIVE_1);
+    }
     NAPI_END;
 }
 
@@ -1542,11 +1548,11 @@ static napi_value TestStackTransition051(napi_env env, napi_callback_info info)
     float x = 50;
     float y = 50;
     float z = 50;
-    int32_t duration = 0;
-    int32_t curve = ARKUI_CURVE_LINEAR;
-    int32_t delay = 0;
-    int32_t iterations = 0;
-    int32_t playMode = ARKUI_ANIMATION_PLAY_MODE_NORMAL;
+    int32_t duration = 500;
+    int32_t curve = ARKUI_CURVE_FAST_OUT_SLOW_IN;
+    int32_t delay = 500;
+    int32_t iterations = 2;
+    int32_t playMode = ARKUI_ANIMATION_PLAY_MODE_REVERSE;
     float tempo = -1;
 
     ArkUI_NumberValue translate_transition_value[] = {{.f32 = x},          {.f32 = y},        {.f32 = z},
@@ -1555,16 +1561,18 @@ static napi_value TestStackTransition051(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem translate_transition_item = {translate_transition_value,
                                                      sizeof(translate_transition_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(stack, NODE_TRANSLATE_TRANSITION, &translate_transition_item);
-    ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_TRANSLATE_TRANSITION)->value[PARAM_0].f32, x);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_TRANSLATE_TRANSITION)->value[PARAM_1].f32, y);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_TRANSLATE_TRANSITION)->value[PARAM_2].f32, z);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_TRANSLATE_TRANSITION)->value[PARAM_3].i32, duration);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_TRANSLATE_TRANSITION)->value[PARAM_4].i32, curve);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_TRANSLATE_TRANSITION)->value[PARAM_5].i32, delay);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_TRANSLATE_TRANSITION)->value[PARAM_6].i32, iterations);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_TRANSLATE_TRANSITION)->value[PARAM_7].i32, playMode);
-    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_TRANSLATE_TRANSITION)->value[PARAM_8].f32, PARAM_1);
+    ASSERT_EQ(ret, INVALID_PARAM);
+    if (nodeAPI->getAttribute(stack, NODE_TRANSLATE_TRANSITION) != nullptr) {
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_TRANSLATE_TRANSITION)->value[PARAM_0].f32, x);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_TRANSLATE_TRANSITION)->value[PARAM_1].f32, y);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_TRANSLATE_TRANSITION)->value[PARAM_2].f32, z);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_TRANSLATE_TRANSITION)->value[PARAM_3].i32, duration);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_TRANSLATE_TRANSITION)->value[PARAM_4].i32, curve);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_TRANSLATE_TRANSITION)->value[PARAM_5].i32, delay);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_TRANSLATE_TRANSITION)->value[PARAM_6].i32, iterations);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_TRANSLATE_TRANSITION)->value[PARAM_7].i32, playMode);
+        ASSERT_NE(nodeAPI->getAttribute(stack, NODE_TRANSLATE_TRANSITION)->value[PARAM_8].f32, PARAM_NEGATIVE_1);
+    }
     NAPI_END;
 }
 

@@ -253,8 +253,6 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr},
         {"textAreaOnChangeTest", nullptr, TextAreaOnChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"textAreaOnChangeTypeTest", nullptr, TextAreaOnChangeTest::ChangeType, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
         {"sliderOnChangeTest", nullptr, SliderOnChangeTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"textInputOnFocusTest", nullptr, TextInputOnFocusTest::CreateNativeNode, nullptr, nullptr, nullptr,

@@ -48,8 +48,8 @@ static napi_value TestListItemBrightness003(napi_env env, napi_callback_info inf
     ArkUI_NumberValue value[] = {{.f32 = brightness}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(listItem, NODE_BRIGHTNESS, &valueItem);
-    ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(listItem, NODE_BRIGHTNESS)->value[PARAM_0].f32, brightness);
+    ASSERT_EQ(ret, INVALID_PARAM);
+    ASSERT_NE(nodeAPI->getAttribute(listItem, NODE_BRIGHTNESS)->value[PARAM_0].f32, brightness);
     NAPI_END;
 }
 

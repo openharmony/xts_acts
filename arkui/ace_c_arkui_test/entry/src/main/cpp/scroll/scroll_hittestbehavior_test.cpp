@@ -186,6 +186,10 @@ ArkUI_NodeHandle ScrollHitTestBehaviorTest::CreateSubScrollNode(ArkUI_NativeNode
     ArkUI_AttributeItem columnHeightItem = {columnHeightValue, sizeof(columnHeightValue) / sizeof(ArkUI_NumberValue)};
     nodeAPI->setAttribute(column, NODE_HEIGHT, &columnHeightItem);
 
+    ArkUI_NumberValue columnHittestbehaviorValue[] = {{.i32 = ARKUI_HIT_TEST_MODE_TRANSPARENT}};
+    ArkUI_AttributeItem columnHittestbehaviorItem = {columnHittestbehaviorValue,
+                                                     sizeof(columnHittestbehaviorValue) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(column, NODE_HIT_TEST_BEHAVIOR, &columnHittestbehaviorItem);
     // Set the background color of the column component
     ArkUI_NumberValue columnBackgroundColorValue[] = {{.u32 = columnBackgroundColor}};
     ArkUI_AttributeItem columnBackgroundColorItem = {columnBackgroundColorValue,

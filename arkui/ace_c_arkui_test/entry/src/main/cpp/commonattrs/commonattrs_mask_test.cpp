@@ -385,18 +385,15 @@ static napi_value TestCommonAttrsMask013(napi_env env, napi_callback_info info)
 static napi_value TestCommonAttrsMask014(napi_env env, napi_callback_info info)
 {
     NAPI_START(mask, ARKUI_NODE_COLUMN);
-    uint32_t maskFillColor = 0xFFFF3333;
-    uint32_t maskStrokeColor = 0xFF000000;
-    float maskStrokeWidth = 10.00;
     int32_t maskType = ARKUI_MASK_TYPE_PROGRESS;
     float maskProgressCurrentValue = 50.00;
     float maskProgressMaxValue = 100.00;
     uint32_t maskProgressColor = 0xFF00FF00;
 
-    ArkUI_NumberValue value[] = {
-        {.u32 = maskFillColor},    {.u32 = maskStrokeColor},          {.f32 = maskStrokeWidth},
-        {.i32 = maskType},         {.f32 = maskProgressCurrentValue}, {.f32 = maskProgressMaxValue},
-        {.u32 = maskProgressColor}};
+    ArkUI_NumberValue value[] = {{.i32 = maskType},
+                                 {.f32 = maskProgressCurrentValue},
+                                 {.f32 = maskProgressMaxValue},
+                                 {.u32 = maskProgressColor}};
 
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(mask, NODE_MASK, &value_item);
@@ -413,18 +410,15 @@ static napi_value TestCommonAttrsMask014(napi_env env, napi_callback_info info)
 static napi_value TestCommonAttrsMask015(napi_env env, napi_callback_info info)
 {
     NAPI_START(mask, ARKUI_NODE_COLUMN);
-    uint32_t maskFillColor = 0xFFFF3333;
-    uint32_t maskStrokeColor = 0xFF000000;
-    float maskStrokeWidth = 0.00;
     int32_t maskType = ARKUI_MASK_TYPE_PROGRESS;
     float maskProgressCurrentValue = 0.00;
     float maskProgressMaxValue = 0.00;
     uint32_t maskProgressColor = 0xFF00FF00;
 
-    ArkUI_NumberValue value[] = {
-        {.u32 = maskFillColor},    {.u32 = maskStrokeColor},          {.f32 = maskStrokeWidth},
-        {.i32 = maskType},         {.f32 = maskProgressCurrentValue}, {.f32 = maskProgressMaxValue},
-        {.u32 = maskProgressColor}};
+    ArkUI_NumberValue value[] = {{.i32 = maskType},
+                                 {.f32 = maskProgressCurrentValue},
+                                 {.f32 = maskProgressMaxValue},
+                                 {.u32 = maskProgressColor}};
 
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(mask, NODE_MASK, &value_item);
@@ -441,26 +435,24 @@ static napi_value TestCommonAttrsMask015(napi_env env, napi_callback_info info)
 static napi_value TestCommonAttrsMask016(napi_env env, napi_callback_info info)
 {
     NAPI_START(mask, ARKUI_NODE_COLUMN);
-    uint32_t maskFillColor = 0xFFFF3333;
-    uint32_t maskStrokeColor = 0xFF000000;
-    float maskStrokeWidth = -10.00;
     int32_t maskType = ARKUI_MASK_TYPE_PROGRESS;
     float maskProgressCurrentValue = -50.00;
     float maskProgressMaxValue = -100.00;
     uint32_t maskProgressColor = 0xFF00FF00;
 
-    ArkUI_NumberValue value[] = {
-        {.u32 = maskFillColor},    {.u32 = maskStrokeColor},          {.f32 = maskStrokeWidth},
-        {.i32 = maskType},         {.f32 = maskProgressCurrentValue}, {.f32 = maskProgressMaxValue},
-        {.u32 = maskProgressColor}};
+    ArkUI_NumberValue value[] = {{.i32 = maskType},
+                                 {.f32 = maskProgressCurrentValue},
+                                 {.f32 = maskProgressMaxValue},
+                                 {.u32 = maskProgressColor}};
 
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(mask, NODE_MASK, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(mask, NODE_MASK) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(mask, NODE_MASK)->value[PARAM_2].f32, maskStrokeWidth);
-        ASSERT_NE(nodeAPI->getAttribute(mask, NODE_MASK)->value[PARAM_4].f32, maskProgressCurrentValue);
-        ASSERT_NE(nodeAPI->getAttribute(mask, NODE_MASK)->value[PARAM_5].f32, maskProgressMaxValue);
+        ASSERT_NE(nodeAPI->getAttribute(mask, NODE_MASK)->value[PARAM_0].i32, maskType);
+        ASSERT_NE(nodeAPI->getAttribute(mask, NODE_MASK)->value[PARAM_1].f32, maskProgressCurrentValue);
+        ASSERT_NE(nodeAPI->getAttribute(mask, NODE_MASK)->value[PARAM_2].f32, maskProgressMaxValue);
+        ASSERT_NE(nodeAPI->getAttribute(mask, NODE_MASK)->value[PARAM_3].u32, maskProgressColor);
     }
     NAPI_END;
 }

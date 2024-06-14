@@ -94,7 +94,7 @@ export default function stackTransitionTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_STACK_TRANSITION_0600
      * @tc.name       : testStackTransition006
-     * @tc.desc       : testing opacity transition for stack with normal value
+     * @tc.desc       : testing opacity transition for stack with abnormal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -289,7 +289,7 @@ export default function stackTransitionTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_STACK_TRANSITION_2100
      * @tc.name       : testStackTransition021
-     * @tc.desc       : testing rotate transition for stack with normal value
+     * @tc.desc       : testing rotate transition for stack with abnormal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -484,7 +484,7 @@ export default function stackTransitionTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_STACK_TRANSITION_3600
      * @tc.name       : testStackTransition036
-     * @tc.desc       : testing scale transition for stack with normal value
+     * @tc.desc       : testing scale transition for stack with abnormal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
@@ -679,7 +679,7 @@ export default function stackTransitionTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_STACK_TRANSITION_5100
      * @tc.name       : testStackTransition051
-     * @tc.desc       : testing translate transition for stack with normal value
+     * @tc.desc       : testing translate transition for stack with abnormal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1
