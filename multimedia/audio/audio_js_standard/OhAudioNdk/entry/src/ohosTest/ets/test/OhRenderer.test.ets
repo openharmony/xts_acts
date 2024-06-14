@@ -1765,7 +1765,7 @@ export default function OhRendererTest() {
       for (let index: number = 0; index < fileList.length; index++) {
         let re: number = await testStreamBuilder.CreatAudioPlayerWithWavFile(index);
         if (re === CODE_SUCCESS) {
-          Utils.sleep(sleep1000);
+          Utils.sleep(sleep500);
         } else {
           continue;
         }
