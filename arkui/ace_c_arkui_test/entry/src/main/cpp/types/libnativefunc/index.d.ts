@@ -4923,3 +4923,17 @@ export const testRelativeContaineBarrierOption003: () => number;
 export const customComponentEventNullTest001: () => number;
 
 export const customComponentEventNullTest002: () => number;
+
+export const testCommonAttrsAnimate001: () => number;
+
+export const testCommonAttrsAnimate002: () => number;
+
+export const testCommonAttrsAnimate003: () => number;
+
+export const testCommonAttrsAnimate004: () => number;
+
+export const testDrawableDescriptorCreate001: () => number;
+
+export const testDrawableDescriptorCreate002: () => number;
+
+export const testDrawableDescriptorCreate003: () => number;
