@@ -561,6 +561,10 @@ import relativecontaineBarrierOptionTest from './relativecontaine/RelativeContai
 import testGesture from './gesture/GestureTest.test'
 import commonAttrsAnimateTest from './commonattrs/CommonAttrsAnimateTest.test'
 import drawableDescriptorCreateTest from './drawabledescriptor/DrawableDescriptorCreateTest.test'
+import nodeContentTest from './nodecontent/NodeContentTest.test'
+import nativeXComponentTest from './nativexcomponent/NativeXComponentTest.test'
+import mouseEventTest from './mouseevent/MouseEventTest.test'
+import pointerEventTest from './pointerevent/PointerEventTest.test'
 
 export default function testsuite() {
   datePickerAccessibilityDescriptionTest()
@@ -1112,4 +1116,8 @@ export default function testsuite() {
   testGesture()
   commonAttrsAnimateTest()
   drawableDescriptorCreateTest()
+  nodeContentTest()
+  nativeXComponentTest()
+  mouseEventTest()
+  pointerEventTest()
 }
