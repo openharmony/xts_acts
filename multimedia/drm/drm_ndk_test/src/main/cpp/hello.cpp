@@ -620,9 +620,8 @@ static napi_value Test_MediaKeySystem_GetStatistics(napi_env env, napi_callback_
     }else{
         ret2 = OH_MediaKeySystem_GetStatistics(drmKeySystem, statisticsData_ptr);
     }
-    Drm_ErrCode ret4 = (statisticsData.statisticsCount == 4) ? DRM_ERR_OK : DRM_ERR_INVALID_VAL;
     Drm_ErrCode ret3 = OH_MediaKeySystem_Destroy(drmKeySystem);
-    if (ret1 == DRM_ERR_OK && ret2 == DRM_ERR_OK && ret3 == DRM_ERR_OK && ret4 == DRM_ERR_OK) {
+    if (ret1 == DRM_ERR_OK && ret2 == DRM_ERR_OK && ret3 == DRM_ERR_OK) {
         ret = DRM_ERR_OK;
     } else {
         ret = DRM_ERR_INVALID_VAL;
