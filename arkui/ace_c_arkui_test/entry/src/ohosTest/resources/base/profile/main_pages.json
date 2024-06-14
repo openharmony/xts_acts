@@ -9,6 +9,7 @@
     "MainAbility/pages/commonevent/CommonEventOnAreaChangeTest",
     "MainAbility/pages/commonevent/CommonEventOnBlurTest",
     "MainAbility/pages/commonevent/CommonEventOnTouchTest",
+    "MainAbility/pages/commonevent/PointEventOnTouchTest",
     "MainAbility/pages/commonevent/CommonEventOnFocusTest",
     "MainAbility/pages/commonevent/CommonEventOnClickTest",
     "MainAbility/pages/commonattrs/CommonAttrsHitTestBehaviorTest",
