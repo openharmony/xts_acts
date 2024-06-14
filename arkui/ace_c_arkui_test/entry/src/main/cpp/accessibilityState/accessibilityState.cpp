@@ -38,4 +38,13 @@ static napi_value accessibilityState_002(napi_env env, napi_callback_info info)
     OH_ArkUI_AccessibilityState_Dispose(statePrt);
     NAPI_END;
 }
+static napi_value accessibilityState_003(napi_env env, napi_callback_info info)
+{
+    auto statePrt = OH_ArkUI_AccessibilityState_Create();
+    OH_ArkUI_AccessibilityState_SetCheckedState(statePrt,1);
+    auto result = OH_ArkUI_AccessibilityState_GetCheckedState(statePrt);
+    ASSERT_EQ(result, 1);
+    OH_ArkUI_AccessibilityState_Dispose(statePrt);
+    NAPI_END;
+}
 } 
