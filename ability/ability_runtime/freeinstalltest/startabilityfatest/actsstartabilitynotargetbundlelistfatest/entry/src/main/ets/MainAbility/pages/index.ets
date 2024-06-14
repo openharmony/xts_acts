@@ -38,12 +38,12 @@ async function routePage() {
 struct Index {
   aboutToAppear() {
     console.info("aboutToAppear start!!!!")
-    var abilityDelegator: any
-    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    var abilityDelegatorArguments: any
-    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-    console.info('start run testcase!!!')
-    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+    //var abilityDelegator: any
+    //abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+    //var abilityDelegatorArguments: any
+    //abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+    //console.info('start run testcase!!!')
+    //Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
   }
 
   build() {

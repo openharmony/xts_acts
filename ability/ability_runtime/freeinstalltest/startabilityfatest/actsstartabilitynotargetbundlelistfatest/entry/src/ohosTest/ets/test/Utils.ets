@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,14 +14,14 @@
  */
 
 export default class Utils {
-  static rect_left;
-  static rect_top;
-  static rect_right;
-  static rect_bottom;
-  static rect_value;
+  static rect_left = 0;
+  static rect_top = 0;
+  static rect_right = 0;
+  static rect_bottom = 0;
+  static rect_value = 0;
 
-  static sleep(time) {
-    return new Promise((resolve, reject) => {
+  static sleep(time:number):Promise<void> {
+    return new Promise((resolve:(value:void)=>void, reject) => {
       setTimeout(() => {
         resolve()
       }, time)
@@ -31,36 +30,36 @@ export default class Utils {
     })
   }
 
-  static getComponentRect(key) {
-    let strJson = getInspectorByKey(key);
-    let obj = JSON.parse(strJson);
-    console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(obj));
-    let rectInfo = JSON.parse('[' + obj.$rect + ']')
-    console.info("[getInspectorByKey] rectInfo is: " + rectInfo);
-    this.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0]
-    this.rect_top = JSON.parse('[' + rectInfo[0] + ']')[1]
-    this.rect_right = JSON.parse('[' + rectInfo[1] + ']')[0]
-    this.rect_bottom = JSON.parse('[' + rectInfo[1] + ']')[1]
-    return this.rect_value = {
-      "left": this.rect_left, "top": this.rect_top, "right": this.rect_right, "bottom": this.rect_bottom
-    }
-  }
+  //static getComponentRect(key:number) {
+  //  let strJson = getInspectorByKey(key);
+  //  let obj = JSON.parse(strJson);
+  //  console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(obj));
+  //  let rectInfo = JSON.parse('[' + obj.$rect + ']')
+  //  console.info("[getInspectorByKey] rectInfo is: " + rectInfo);
+  //  Utils.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0]
+  //  Utils.rect_top = JSON.parse('[' + rectInfo[0] + ']')[1]
+  //  Utils.rect_right = JSON.parse('[' + rectInfo[1] + ']')[0]
+  //  Utils.rect_bottom = JSON.parse('[' + rectInfo[1] + ']')[1]
+  //  return Utils.rect_value = {
+  //    "left": Utils.rect_left, "top": Utils.rect_top, "right": Utils.rect_right, "bottom": Utils.rect_bottom
+  //  }
+  //}
 
-  static async swipe(downX, downY, upX, upY, steps) {
+  static async swipe(downX:number, downY:number, upX:number, upY:number, steps:number) {
     console.info('start to swipe')
-    this.drags(downX, downY, upX, upY, steps, false)
+    Utils.drags(downX, downY, upX, upY, steps, false)
   }
 
-  static async drag(downX, downY, upX, upY, steps) {
+  static async drag(downX:number, downY:number, upX:number, upY:number, steps:number) {
     console.info('start to drag')
-    this.drags(downX, downY, upX, upY, steps, true)
+    Utils.drags(downX, downY, upX, upY, steps, true)
   }
 
-  static async drags(downX, downY, upX, upY, steps, drag) {
-    var xStep;
-    var yStep;
-    var swipeSteps;
-    var ret;
+  static async drags(downX:number, downY:number, upX:number, upY:number, steps:number, drag:boolean) {
+    let xStep = 0;
+    let yStep = 0;
+    let swipeSteps = 0;
+    let ret = false;
     xStep = 0;
     yStep = 0;
     ret = false;
@@ -71,55 +70,55 @@ export default class Utils {
     xStep = (upX - downX) / swipeSteps;
     yStep = (upY - downY) / swipeSteps;
     console.info('move step is: ' + 'xStep: ' + xStep + '    yStep: ' + yStep)
-    var downPonit: TouchObject = {
+    let downPonit: TouchObject = {
       id: 1,
       x: downX,
       y: downY,
       type: TouchType.Down,
-    }
+    } as TouchObject;
     console.info('down touch started: ' + JSON.stringify(downPonit))
     sendTouchEvent(downPonit);
     console.info('start to move')
     if (drag) {
-      await this.sleep(500)
+      await Utils.sleep(500)
     }
-    for (var i = 1;i <= swipeSteps; i++) {
-      var movePoint: TouchObject = {
+    for (let i = 1;i <= swipeSteps; i++) {
+      let movePoint: TouchObject = {
         id: 1,
         x: downX + (xStep * i),
         y: downY + (yStep * i),
         type: TouchType.Move
-      }
+      } as TouchObject;
       console.info('move touch started: ' + JSON.stringify(movePoint))
       ret = sendTouchEvent(movePoint)
       if (ret == false) {
         break;
       }
-      await this.sleep(5)
+      await Utils.sleep(5)
     }
     console.info('start to up')
     if (drag) {
-      await this.sleep(100)
+      await Utils.sleep(100)
     }
-    var upPoint: TouchObject = {
+    let upPoint: TouchObject = {
       id: 1,
       x: upX,
       y: upY,
       type: TouchType.Up,
-    }
+    } as TouchObject;
     console.info('up touch started: ' + JSON.stringify(upPoint))
     sendTouchEvent(upPoint)
-    await this.sleep(500)
+    await Utils.sleep(500)
   }
 
   static getNowTime() {
     return new Date().getTime();
   }
 
-  static getDurationTime(log,startTime, endTime) {
+  static getDurationTime(log:string, startTime:number, endTime:number) {
     console.info("Get Interface startTime: " + startTime);
     console.info("Get Interface endTime: " + endTime);
-    var duration = (endTime - startTime);
+    let duration = (endTime - startTime);
     console.info("Get Interface duration: " + duration);
     return duration;
   }
