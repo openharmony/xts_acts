@@ -24,7 +24,7 @@ ohos_js_hap_suite("ActsComponent3DTest") {
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsComponent3DTest"
   part_name = "ace_engine"
-  subsystem_name = "arkui"
+  subsystem_name = "graphic"
 }
 
 ohos_app_scope("ace_ets_component_Component3D_test_app_profile") {
