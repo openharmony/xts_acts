@@ -17,7 +17,6 @@ import ohosWindow from '@ohos.window';
 import display from '@ohos.display';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
-import deviceInfo from '@ohos.deviceInfo';
 
 
 function expectedError(TRUE_FLAG: boolean, error: BusinessError, caseName: string, apiName: string, done: Function, code: number) {
@@ -55,12 +54,6 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
     let commonRGBColorArr: Array<string> = ['rgb(255,0,0)', 'rgb(0,255,0)', 'rgb(0,0,255)', 'rgb(255,255,255)', 'rgb(0,0,0)', 'rgb(249,0,230)', 'rgb(102,102,102)', 'rgb(255,247,0)'];
     let commonNUMBERColorArr: Array<string> = ['#00FF0000', '#0000FF00', '#000000FF', '#00FFFFFF', '#00000000', '#00F900E6', '#00666666', '#00FFF700'];
     let commonKEYColorArr: Array<string> = ['red', 'green', 'blue', 'white', 'black', 'pink', 'grey', 'yellow'];
-    let currentDeviceIsPC = false;
-    beforeAll(() => {
-      let deviceTypeInfo = deviceInfo.deviceType
-      currentDeviceIsPC = deviceTypeInfo === '2in1' ? true : false;
-      console.info('the value of the deviceType is :' + deviceInfo.deviceType);
-    })
 
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_0760
@@ -1849,54 +1842,43 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
      * @tc.type      : Function
      * @tc.level     : Level3
      */
-    it("testSetWindowMask_Function_Promise", 0, async function (done) {
+    it("testSetWindowMask_Function_Promise", 0, async function () {
       let msgStr = "testSetWindowMask_Function_Promise";
-      console.log(msgStr + " begin0");
-      if (currentDeviceIsPC) {
-        console.log(msgStr + " begin1")
-        let windowMask: Array<Array<number>> = new Array<Array<number>>()
-        for (let i = 0; i < 500; i++) {
-          let arr: Array<number> = new Array<number>(500);
-          for (let j = 0; j < 500; j++) {
-            if (i + j < 500) {
-              arr[j] = 0
-            } else {
-              arr[j] = 1
-            }
+      console.log(msgStr + " begin")
+      let windowMask: Array<Array<number>> = new Array<Array<number>>()
+      for (let i = 0; i < 500; i++) {
+        let arr: Array<number> = new Array<number>(500);
+        for (let j = 0; j < 500; j++) {
+          if (i + j < 500) {
+            arr[j] = 0
+          } else {
+            arr[j] = 1
           }
-          windowMask.push(arr)
         }
-        console.log(msgStr + " windowMask OK ")
-        let windowClass = await ohosWindow.getLastWindow(context);
-        console.log(msgStr + " getLastWindow OK ")
-        let nowWindow = windowStage.createSubWindow('nowWindowA')
-        nowWindow.then(wnd => {
-          console.log(msgStr + " createSubWindow OK ")
-          wnd.resize(500, 500)
-          console.log(msgStr + " resize OK ")
-          let promise = wnd.setWindowMask(windowMask)
-          promise.then(() => {
-            console.log(msgStr + ' Succeeded in setting the window mask.');
-            expect(true).assertTrue();
-            console.log(msgStr + true);
-            done();
-          }).catch((err: BusinessError) => {
-            console.log(msgStr + ' Failed to set the window mask. Cause: ' + JSON.stringify(err));
-            expect().assertFail();
-            done();
-          });
-        }).catch(err => {
-          console.log(msgStr + ' Failed to createSubWindow. Cause: ' + JSON.stringify(err));
-          expect().assertFail();
-          done();
-        })
-      } else {
-        console.log(msgStr + "该设备类型不是PC");
-        expect(deviceInfo.deviceType).assertEqual(deviceInfo.deviceType);
-        done();
+        windowMask.push(arr)
       }
+      console.log(msgStr + " windowMask OK ")
+      let wnd = await windowStage.createSubWindow('nowWindowA').catch(err => {
+        console.log(msgStr + ' Failed to createSubWindow. Cause: ' + JSON.stringify(err));
+        expect().assertFail();
+      })
+      console.log(msgStr + " createSubWindow OK ")
+      await wnd.resize(500, 500);
+      console.log(msgStr + " resize OK ")
+      await wnd.setWindowMask(windowMask).then(() => {
+        console.log(msgStr + ' Succeeded in setting the window mask.');
+      }).catch((err: BusinessError) => {
+        console.log(msgStr + ' Failed to set the window mask. Cause: ' + JSON.stringify(err));
+        if (err.code != 801) {
+          console.error(msgStr + 'Failed tosetWindowMask. Cause: ' + JSON.stringify(err));
+          expect().assertFail();
+        } else {
+          console.log(msgStr + '当前设备类型不支持该接口')
+          console.log(msgStr + JSON.stringify(err))
+          expect(err.code).assertEqual(801);
+        }
+      });
+      await (wnd as ohosWindow.Window).destroyWindow();
     })
-
-
   })
 }
