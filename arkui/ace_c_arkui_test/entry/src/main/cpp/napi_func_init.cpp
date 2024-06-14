@@ -489,6 +489,8 @@
 #include "relativecontaine/relativecontaine_alignmentruleoption_test.cpp"
 #include "relativecontaine/relativecontaine_barrieroption_test.cpp"
 #include "customcomponent/customcomponent_event_null_test.cpp"
+#include "commonattrs/commonattrs_animate_test.cpp"
+#include "drawabledescriptor/drawabledescriptor_create_test.cpp"
 namespace ArkUICapiTest {
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -4414,6 +4416,20 @@ static napi_value Init(napi_env env, napi_value exports)
             nullptr, CustomComponentEventNull001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"customComponentEventNullTest002",
             nullptr, CustomComponentEventNull002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCommonAttrsAnimate001", nullptr, TestCommonAttrsAnimate001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCommonAttrsAnimate002", nullptr, TestCommonAttrsAnimate002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCommonAttrsAnimate003", nullptr, TestCommonAttrsAnimate003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCommonAttrsAnimate004", nullptr, TestCommonAttrsAnimate004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testDrawableDescriptorCreate001", nullptr, TestDrawableDescriptorCreate001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testDrawableDescriptorCreate002", nullptr, TestDrawableDescriptorCreate002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testDrawableDescriptorCreate003", nullptr, TestDrawableDescriptorCreate003, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");
