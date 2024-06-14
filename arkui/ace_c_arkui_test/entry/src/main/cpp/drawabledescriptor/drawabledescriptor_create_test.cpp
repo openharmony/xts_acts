@@ -19,12 +19,14 @@
 #define NUM_0 0
 #define NUM_1 1
 #define NUM_2 2
+#define NUM_3 3
 #define NUM_4 4
 #define NUM_5 5
 #define NUM_6 6
 #define NUM_92 92
 #define NUM_96 96
 #define NUM_100 100
+#define NUM_255 255
 
 namespace ArkUICapiTest {
 
@@ -36,12 +38,11 @@ static napi_value TestDrawableDescriptorCreate001(napi_env env, napi_callback_in
     OH_PixelmapNativeHandle array[NUM_2];
 
     uint8_t data[NUM_96];
-    for (auto i = 0; i < NUM_92; i++) {
+    for (auto i = 0; i < NUM_92; i = i + 4;) {
         data[i] = uint8_t(0);
-        data[i+1] = uint8_t(0);
-        data[i+2] = uint8_t(0);
-        data[i+3] = uint8_t(255);
-        i = i + 4;
+        data[i+NUM_1] = uint8_t(0);
+        data[i+NUM_2] = uint8_t(0);
+        data[i+NUM_3] = uint8_t(255);
     }
 
     uint8_t data1[NUM_96];
@@ -71,7 +72,7 @@ static napi_value TestDrawableDescriptorCreate001(napi_env env, napi_callback_in
         ASSERT_EQ(NUM_1, NUM_0);
     }
     
-    ASSERT_EQ(OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArraySize(descriptorAnimated), 2);
+    ASSERT_EQ(OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArraySize(descriptorAnimated), NUM_2);
 
     OH_ArkUI_DrawableDescriptor_Dispose(descriptor);
     OH_ArkUI_DrawableDescriptor_Dispose(descriptor1);
@@ -88,12 +89,11 @@ static napi_value TestDrawableDescriptorCreate002(napi_env env, napi_callback_in
     OH_PixelmapNativeHandle array[NUM_2];
 
     uint8_t data[NUM_96];
-    for (auto i = 0; i < NUM_92; i++) {
+    for (auto i = 0; i < NUM_92; i = i + 4) {
         data[i] = uint8_t(0);
-        data[i+1] = uint8_t(0);
-        data[i+2] = uint8_t(0);
-        data[i+3] = uint8_t(255);
-        i = i + 4;
+        data[i+NUM_1] = uint8_t(0);
+        data[i+NUM_2] = uint8_t(0);
+        data[i+NUM_3] = uint8_t(255);
     }
 
     uint8_t data1[NUM_96];
