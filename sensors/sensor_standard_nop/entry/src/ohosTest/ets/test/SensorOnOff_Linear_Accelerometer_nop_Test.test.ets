@@ -122,6 +122,7 @@ export default function linear_Accelerometer_nop_Test() {
     it("Linear_Accelerometer_Sensor_nop_Test03", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info('--------Linear_Accelerometer_Sensor_nop_Test03--------');
       try {
+        sensor.on(sensor.SensorId.LINEAR_ACCELEROMETER, callback);
         sensor.off(sensor.SensorId.LINEAR_ACCELEROMETER, callback);
       } catch (error) {
         console.error('Linear_Accelerometer_Sensor_nop_Test03 catch error:' + JSON.stringify(error));

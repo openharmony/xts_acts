@@ -120,6 +120,7 @@ export default function gyroscope_nop_Test() {
     it("Gyroscope_Sensor_nop_Test03", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info('--------Gyroscope_Sensor_nop_Test03--------');
       try {
+        sensor.on(sensor.SensorId.GYROSCOPE,callback);
         sensor.off(sensor.SensorId.GYROSCOPE,callback);
       } catch (error) {
         console.error('Gyroscope_Sensor_nop_Test03 catch error:' + JSON.stringify(error));

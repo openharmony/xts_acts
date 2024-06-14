@@ -120,6 +120,7 @@ export default function gyroscope_uncalibrated_nop_Test() {
     it("Gyroscope_Uncalibrated_Sensor_nop_Test03", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
       console.info('--------Gyroscope_Uncalibrated_Sensor_nop_Test03--------');
       try {
+        sensor.on(sensor.SensorId.GYROSCOPE_UNCALIBRATED,callback);
         sensor.off(sensor.SensorId.GYROSCOPE_UNCALIBRATED,callback);
       } catch (error) {
         console.error('Gyroscope_Uncalibrated_Sensor_nop_Test03 catch error:' + JSON.stringify(error));
