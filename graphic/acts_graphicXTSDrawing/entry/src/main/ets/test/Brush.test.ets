@@ -14,124 +14,855 @@
  */
 
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
-import image from '@ohos.multimedia.image';
 import drawing from '@ohos.graphics.drawing';
 import common2D from '@ohos.graphics.common2D';
+import { getEnumCount } from './utils';
 
 export default function brushTest() {
-  describe('brush_test', () => {
-    let pixel: image.PixelMap;
+  describe('DrawingTsBrushTest', () => {
     const DEFAULT = 0;
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(async () => {
-      const color: ArrayBuffer = new ArrayBuffer(40000); // 96为需要创建的像素buffer大小，取值为：height * width *4
-      let opts: image.InitializationOptions = {
-        editable: true, pixelFormat: 3, size: {
-          height: 100, width: 100
-        }
-      }
-      pixel = await image.createPixelMap(color, opts);
-    })
+
+    });
     beforeEach(() => {
       // Presets an action, which is performed before each unit test case starts.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: preset action function.
-    })
+    });
     afterEach(() => {
       // Presets a clear action, which is performed after each unit test case ends.
       // The number of execution times is the same as the number of test cases defined by **it**.
       // This API supports only one parameter: clear action function.
-    })
+    });
     afterAll(() => {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
-    })
+    });
 
     /**
-     * @tc.number    : brush_test_setMaskFilter
-     * @tc.name      : brush_test_setMaskFilter
-     * @tc.desc      : Used to add additional masking filters to brushes.
-     * @tc.size      : MediumTest
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0100
+     * @tc.name      : testBrushSetColorNormal
+     * @tc.desc      : Test for testBrushSetColorNormal.
+     * @tc.size      : SmallTest
      * @tc.type      : Function
-     * @tc.level     : Level2
+     * @tc.level     : Level 0
      */
-    it('brush_test_setMaskFilter', DEFAULT, () => {
-      const msg = 'brush_test_setMaskFilter';
+    it('testBrushSetColorNormal', DEFAULT, () => {
+      const msg = 'testBrushSetColorNormal';
+      const brush = new drawing.Brush();
+      const colors: Array<common2D.Color> = [
+        {
+          alpha: 255, red: 255, green: 0, blue: 0
+        },
+        {
+          alpha: 245.3, red: 251.1, green: 10.1, blue: 12.1
+        },
+      ];
+      for (let i = 0; i < colors.length; i++) {
+        try {
+          brush.setColor(colors[i]);
+          console.info(msg + ` setColor succeeded`);
+        } catch (e) {
+          console.info(msg + ` setColor failed. Error code is: ${e.code}. Error message is: ${e.message}`);
+          expect().assertFail();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0101
+     * @tc.name      : testBrushSetColorNull
+     * @tc.desc      : Test for testBrushSetColorNull.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testBrushSetColorNull', DEFAULT, () => {
+      const msg = 'testBrushSetColorNull';
+      const brush = new drawing.Brush();
+      const colors: Array<Partial<common2D.Color>> = [
+        {
+          alpha: undefined, red: 0x00, green: 0xFF, blue: 0x00
+        },
+        {
+          alpha: 0xFF, red: undefined, green: 0xFF, blue: 0x00
+        },
+        {
+          alpha: 0xFF, red: 0x00, green: undefined, blue: 0x00
+        },
+        {
+          alpha: 0xFF, red: 0x00, green: 0xFF, blue: undefined
+        },
+        {
+          alpha: undefined, red: 0x00, green: 0xFF, blue: 0x00
+        },
+        {
+          alpha: 0xFF, red: undefined, green: 0xFF, blue: 0x00
+        },
+        {
+          alpha: 0xFF, red: 0x00, green: undefined, blue: 0x00
+        },
+        {
+          alpha: 0xFF, red: 0x00, green: 0xFF, blue: undefined
+        },
+      ];
+      for (let i = 0; i < colors.length; i++) {
+        try {
+          brush.setColor(colors[i] as common2D.Color);
+          console.info(msg + ` setColor succeeded`);
+        } catch (e) {
+          console.info(msg + ` setColor failed. Error code is: ${e.code}. Error message is: ${e.message}`);
+          expect(e.code).assertEqual(401);
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0102
+     * @tc.name      : testBrushSetColorMismatch
+     * @tc.desc      : Test for testBrushSetColorMismatch.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testBrushSetColorMismatch', DEFAULT, () => {
+      const msg = 'testBrushSetColorMismatch';
+      const brush = new drawing.Brush();
+
       try {
-        const brush = new drawing.Brush();
-        let maskFilter = drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, 10);
-        brush.setMaskFilter(maskFilter);
-        console.info(msg + 'setMaskFilter successed');
+        brush.setColor({alpha: 0xFF, red: 0x00, green: 0xFF, blue: 0x00}, {alpha: 0xFF, red: 0x00, green: 0xFF, blue: 0x00});
+        console.info(msg + ' setColor successed');
       } catch (e) {
-        console.info(msg + `setMaskFilter errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        console.info(msg + ` setColor errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        brush.setColor();
+        console.info(msg + ' setColor successed');
+      } catch (e) {
+        console.info(msg + ` setColor errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        brush.setColor('s');
+        console.info(msg + ' setColor successed');
+      } catch (e) {
+        console.info(msg + ` setColor errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0103
+     * @tc.name      : testBrushSetColorMultipleCalls
+     * @tc.desc      : Test for testBrushSetColorMultipleCalls.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testBrushSetColorMultipleCalls', DEFAULT, () => {
+      const msg = 'testBrushSetColorMultipleCalls';
+      const brush = new drawing.Brush();
+      for (let i = 0; i < 20; i++) {
+        const alpha = Math.floor(Math.random() * 256);
+        const red = Math.floor(Math.random() * 256);
+        const green = Math.floor(Math.random() * 256);
+        const blue = Math.floor(Math.random() * 256);
+        try {
+          brush.setColor({
+            alpha, red, green, blue
+          });
+          console.info(msg + ' setColor successed');
+        } catch (e) {
+          console.info(msg + ` setColor errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+          expect().assertFail();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0104
+     * @tc.name      : testBrushSetColorBoundaryValue
+     * @tc.desc      : Test for testBrushSetColorBoundaryValue.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testBrushSetColorBoundaryValue', DEFAULT, () => {
+      const msg = 'testBrushSetColorBoundaryValue';
+      const brush = new drawing.Brush();
+      const colors: Array<common2D.Color> = [
+        {
+          alpha: -1, red: 255, green: 0, blue: 255
+        },
+        {
+          alpha: 256, red: 255, green: 0, blue: 255
+        },
+        {
+          alpha: 255, red: -2, green: 0, blue: 255
+        },
+        {
+          alpha: 255, red: 256, green: 0, blue: 255
+        },
+        {
+          alpha: 255, red: 255, green: 256, blue: 255
+        },
+        {
+          alpha: 255, red: 255, green: -1, blue: 255
+        },
+        {
+          alpha: 255, red: 255, green: 0, blue: -1
+        },
+        {
+          alpha: 255, red: 255, green: 0, blue: 256
+        },
+      ];
+      for (let i = 0; i < colors.length; i++) {
+        try {
+          brush.setColor(colors[i]);
+          console.info(msg + ' setColor successed');
+        } catch (e) {
+          console.info(msg + ` setColor errorCode is:  ${e.code} + errormsg is: ${e.message}`)
+          expect(e.code).assertEqual(401);
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0200
+     * @tc.name      : testBrushSetAntiAliasNormal
+     * @tc.desc      : Test for testBrushSetAntiAliasNormal.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testBrushSetAntiAliasNormal', DEFAULT, () => {
+      const msg = 'testBrushSetAntiAliasNormal';
+      const brush = new drawing.Brush();
+
+      try {
+        brush.setAntiAlias(true);
+        console.info(msg + ' setAntiAlias successed');
+      } catch (e) {
+        console.info(msg + ` setAntiAlias errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
       }
-    })
+
+      try {
+        brush.setAntiAlias(false);
+        console.info(msg + ' setAntiAlias successed');
+      } catch (e) {
+        console.info(msg + ` setAntiAlias errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
+
+    });
 
     /**
-     * @tc.number    : brush_test_setMaskFilter_param_null
-     * @tc.name      : brush_test_setMaskFilter_param_null
-     * @tc.desc      : Used to add an additional masking filter to the brush (parameter is empty).
-     * @tc.size      : MediumTest
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0201
+     * @tc.name      : testBrushSetAntiAliasNull
+     * @tc.desc      : Test for testBrushSetAntiAliasNull.
+     * @tc.size      : SmallTest
      * @tc.type      : Function
-     * @tc.level     : Level2
+     * @tc.level     : Level 3
      */
-    it('brush_test_setMaskFilter_param_null', DEFAULT, () => {
-      const msg = 'brush_test_setMaskFilter_param_null';
+    it('testBrushSetAntiAliasNull', DEFAULT, () => {
+      const msg = 'testBrushSetAntiAliasNull';
+      const brush = new drawing.Brush();
+
+      try {
+        brush.setAntiAlias(undefined);
+        console.info(msg + ' setAntiAlias successed');
+      } catch (e) {
+        console.info(msg + ` setAntiAlias errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        brush.setAntiAlias(null);
+        console.info(msg + ' setAntiAlias successed');
+      } catch (e) {
+        console.info(msg + ` setAntiAlias errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0202
+     * @tc.name      : testBrushSetAntiAliasMismatch
+     * @tc.desc      : Test for testBrushSetAntiAliasMismatch.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testBrushSetAntiAliasMismatch', DEFAULT, () => {
+      const msg = 'testBrushSetAntiAliasMismatch';
+      const brush = new drawing.Brush();
+
+      try {
+        brush.setAntiAlias(1);
+        console.info(msg + ' setAntiAlias(1) succeeded');
+      } catch (e) {
+        console.info(msg + ` setAntiAlias(1) errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        brush.setAntiAlias(true, false);
+        console.info(msg + ' setAntiAlias(true, false) succeeded');
+      } catch (e) {
+        console.info(msg + ` setAntiAlias(true, false) errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        brush.setAntiAlias();
+        console.info(msg + ' setAntiAlias() succeeded');
+      } catch (e) {
+        console.info(msg + ` setAntiAlias() errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0203
+     * @tc.name      : testBrushSetAntiAliasMultipleCalls
+     * @tc.desc      : Test for testBrushSetAntiAliasMultipleCalls.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testBrushSetAntiAliasMultipleCalls', DEFAULT, () => {
+      const msg = 'testBrushSetAntiAliasMultipleCalls';
+      const brush = new drawing.Brush();
+      for (let i = 0; i < 20; i++) {
+        try {
+          const randomBoolean = Math.random() < 0.5;
+          brush.setAntiAlias(randomBoolean);
+          console.info(msg + ' setAntiAlias successed');
+        } catch (e) {
+          console.info(msg + ` setAntiAlias errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+          expect().assertFail();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0300
+     * @tc.name      : testBrushSetAlphaNormal
+     * @tc.desc      : Test for testBrushSetAlphaNormal.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testBrushSetAlphaNormal', DEFAULT, () => {
+      const msg = 'testBrushSetAlphaNormal';
+      const brush = new drawing.Brush();
+
+      try {
+        brush.setAlpha(255);
+        console.info(msg + ' setAlpha successed');
+      } catch (e) {
+        console.info(msg + ` setAlpha errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
+
+      try {
+        brush.setAlpha(0);
+        console.info(msg + ' setAlpha successed');
+      } catch (e) {
+        console.info(msg + ` setAlpha errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
+
+      try {
+        brush.setAlpha(255.562);
+        console.info(msg + ' setAlpha successed');
+      } catch (e) {
+        console.info(msg + ` setAlpha errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0301
+     * @tc.name      : testBrushSetAlphaNull
+     * @tc.desc      : Test for testBrushSetAlphaNull.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testBrushSetAlphaNull', DEFAULT, () => {
+      const msg = 'testBrushSetAlphaNull';
+      const brush = new drawing.Brush();
+
+      try {
+        brush.setAlpha(undefined);
+        console.info(msg + ' setAlpha successed');
+      } catch (e) {
+        console.info(msg + ` setAlpha errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        brush.setAlpha(null);
+        console.info(msg + ' setAlpha successed');
+      } catch (e) {
+        console.info(msg + ` setAlpha errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0302
+     * @tc.name      : testBrushSetAlphaMismatch
+     * @tc.desc      : Test for testBrushSetAlphaMismatch.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testBrushSetAlphaMismatch', DEFAULT, () => {
+      const msg = 'testBrushSetAlphaMismatch';
+      const brush = new drawing.Brush();
+
+      try {
+        brush.setAlpha(-1);
+        console.info(msg + ' setAlpha successed');
+      } catch (e) {
+        console.info(msg + ` setAlpha errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        brush.setAlpha(256);
+        console.info(msg + ' setAlpha successed');
+      } catch (e) {
+        console.info(msg + ` setAlpha errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0303
+     * @tc.name      : testBrushSetAlphaMultipleCalls
+     * @tc.desc      : Test for testBrushSetAlphaMultipleCalls.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testBrushSetAlphaMultipleCalls', DEFAULT, () => {
+      const msg = 'testBrushSetAlphaMultipleCalls';
       try {
         const brush = new drawing.Brush();
+        for (let i = 0; i < 20; i++) {
+          const randomAlpha = Math.floor(Math.random() * 256);
+          brush.setAlpha(randomAlpha);
+        }
+        console.info(msg + ' setAlpha successed');
+      } catch (e) {
+        console.info(msg + ` setAlpha errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0400
+     * @tc.name      : testBrushSetColorFilterNormal
+     * @tc.desc      : Test for testBrushSetColorFilterNormal.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testBrushSetColorFilterNormal', DEFAULT, () => {
+      const msg = 'testBrushSetColorFilterNormal';
+      try {
+        const brush = new drawing.Brush();
+        brush.setColorFilter(drawing.ColorFilter.createLinearToSRGBGamma());
+        console.info(msg + ' setColorFilter successed');
+      } catch (e) {
+        console.info(msg + ` setColorFilter errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0401
+     * @tc.name      : testBrushSetColorFilterNull
+     * @tc.desc      : Test for testBrushSetColorFilterNull.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testBrushSetColorFilterNull', DEFAULT, () => {
+      const msg = 'testBrushSetColorFilterNull';
+      const brush = new drawing.Brush();
+
+      try {
+        brush.setColorFilter(undefined);
+        console.info(msg + ' setColorFilter successed');
+      } catch (e) {
+        console.info(msg + ` setColorFilter errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        brush.setColorFilter(null);
+        console.info(msg + ' setColorFilter successed');
+      } catch (e) {
+        console.info(msg + ` setColorFilter errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0402
+     * @tc.name      : testBrushSetColorFilterMismatch
+     * @tc.desc      : Test for testBrushSetColorFilterMismatch.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testBrushSetColorFilterMismatch', DEFAULT, () => {
+      const msg = 'testBrushSetColorFilterMismatch';
+      try {
+        const brush = new drawing.Brush();
+        brush.setColorFilter('s');
+        console.info(msg + ' setColorFilter successed');
+      } catch (e) {
+        console.info(msg + ` setColorFilter errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0403
+     * @tc.name      : testBrushSetColorFilterMultipleCalls
+     * @tc.desc      : Test for testBrushSetColorFilterMultipleCalls.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testBrushSetColorFilterMultipleCalls', DEFAULT, () => {
+      const msg = 'testBrushSetColorFilterMultipleCalls';
+      const brush = new drawing.Brush();
+      try {
+        for (let i = 0; i < 20; i++) {
+          brush.setColorFilter(drawing.ColorFilter.createLinearToSRGBGamma());
+        }
+        console.info(msg + ' setColorFilter successed');
+      } catch (e) {
+        console.info(msg + ` setColorFilter errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0500
+     * @tc.name      : testBrushSetMaskFilterNormal
+     * @tc.desc      : Test for testBrushSetMaskFilterNormal.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testBrushSetMaskFilterNormal', DEFAULT, () => {
+      const msg = 'testBrushSetMaskFilterNormal';
+      try {
+        const brush = new drawing.Brush();
+        brush.setMaskFilter(drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, 10));
+        console.info(msg + ' setMaskFilter successed');
+      } catch (e) {
+        console.info(msg + ` setMaskFilter errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0501
+     * @tc.name      : testBrushSetMaskFilterNull
+     * @tc.desc      : Test for testBrushSetMaskFilterNull.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testBrushSetMaskFilterNull', DEFAULT, () => {
+      const msg = 'testBrushSetMaskFilterNull';
+      try {
+        const brush = new drawing.Brush();
+        brush.setMaskFilter(undefined);
         brush.setMaskFilter(null);
-        console.info(msg + 'setMaskFilter successed');
+        console.info(msg + ' setMaskFilter successed');
       } catch (e) {
-        console.info(msg + `setMaskFilter errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect(e.code).assertEqual(401)
+        console.info(msg + ` setMaskFilter errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
       }
-    })
+    });
 
     /**
-     * @tc.number    : brush_test_setShadowLayer
-     * @tc.name      : brush_test_setShadowLayer
-     * @tc.desc      : Sets the brush shadow layer effect. Empty means that the shadow layer effect is cleared and is currently only effective on text.
-     * @tc.size      : MediumTest
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0502
+     * @tc.name      : testBrushSetMaskFilterMismatch
+     * @tc.desc      : Test for testBrushSetMaskFilterMismatch.
+     * @tc.size      : SmallTest
      * @tc.type      : Function
-     * @tc.level     : Level2
+     * @tc.level     : Level 3
      */
-    it('brush_test_setShadowLayer', DEFAULT, () => {
-      const msg = 'brush_test_setShadowLayer';
+    it('testBrushSetMaskFilterMismatch', DEFAULT, () => {
+      const msg = 'testBrushSetMaskFilterMismatch';
       try {
-        let color: common2D.Color = {
-          alpha: 0xFF, red: 0x00, green: 0xFF, blue: 0x00
-        };
-        let shadowLayer = drawing.ShadowLayer.create(3, -3, 3, color);
         const brush = new drawing.Brush();
-        brush.setShadowLayer(shadowLayer);
-        console.info(msg + 'setShadowLayer successed');
+        brush.setMaskFilter('s');
+        console.info(msg + ' setMaskFilter successed');
       } catch (e) {
-        console.info(msg + `setShadowLayer errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        console.info(msg + ` setMaskFilter errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0503
+     * @tc.name      : testBrushSetMaskFilterMultipleCalls
+     * @tc.desc      : Test for testBrushSetMaskFilterMultipleCalls.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testBrushSetMaskFilterMultipleCalls', DEFAULT, () => {
+      const msg = 'testBrushSetMaskFilterMultipleCalls';
+      const brush = new drawing.Brush();
+
+      for (let i = 0; i < 20; i++) {
+        try {
+          const type = Math.floor(Math.random() * 4);
+          brush.setMaskFilter(drawing.MaskFilter.createBlurMaskFilter(type, 10));
+          console.info(msg + ' setMaskFilter successed');
+        } catch (e) {
+          console.info(msg + ` setMaskFilter errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+          expect().assertFail();
+        }
+      }
+
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0600
+     * @tc.name      : testBrushSetShadowLayerNormal
+     * @tc.desc      : Test for testBrushSetShadowLayerNormal.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testBrushSetShadowLayerNormal', DEFAULT, () => {
+      const msg = 'testBrushSetShadowLayerNormal';
+      try {
+        const brush = new drawing.Brush();
+        brush.setShadowLayer(drawing.ShadowLayer.create(3, -3, 3, {
+          alpha: 0xFF, red: 0x00, green: 0xFF, blue: 0x00
+        }));
+        console.info(msg + ' setShadowLayer successed');
+      } catch (e) {
+        console.info(msg + ` setShadowLayer errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
       }
-    })
-
+    });
 
     /**
-     * @tc.number    : brush_test_setShadowLayer_param_null
-     * @tc.name      : brush_test_setShadowLayer_param_null
-     * @tc.desc      : Sets the brush shadow layer effect. Empty means clear the shadow layer effect, which currently only works on text (parameter is empty).
-     * @tc.size      : MediumTest
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0601
+     * @tc.name      : testBrushSetShadowLayerNull
+     * @tc.desc      : Test for testBrushSetShadowLayerNull.
+     * @tc.size      : SmallTest
      * @tc.type      : Function
-     * @tc.level     : Level2
+     * @tc.level     : Level 3
      */
-    it('brush_test_setShadowLayer_param_null', DEFAULT, () => {
-      const msg = 'brush_test_setShadowLayer_param_null';
+    it('testBrushSetShadowLayerNull', DEFAULT, () => {
+      const msg = 'testBrushSetShadowLayerNull';
+      const brush = new drawing.Brush();
+
+      try {
+        brush.setShadowLayer(undefined);
+        console.info(msg + ' setShadowLayer successed');
+      } catch (e) {
+        console.info(msg + ` setShadowLayer errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        brush.setShadowLayer(null);
+        console.info(msg + ' setShadowLayer successed');
+      } catch (e) {
+        console.info(msg + ` setShadowLayer errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0602
+     * @tc.name      : testBrushSetShadowLayerMismatch
+     * @tc.desc      : Test for testBrushSetShadowLayerMismatch.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testBrushSetShadowLayerMismatch', DEFAULT, () => {
+      const msg = 'testBrushSetShadowLayerMismatch';
       try {
         const brush = new drawing.Brush();
-        brush.setShadowLayer(null);
-        console.info(msg + 'setShadowLayer successed');
+        brush.setShadowLayer('s');
+        console.info(msg + ' setShadowLayer successed');
       } catch (e) {
-        console.info(msg + `setShadowLayer errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect(e.code).assertEqual(401)
+        console.info(msg + ` setShadowLayer errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
       }
-    })
+    });
 
-  })
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0603
+     * @tc.name      : testBrushSetShadowLayerMultipleCalls
+     * @tc.desc      : Test for testBrushSetShadowLayerMultipleCalls.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testBrushSetShadowLayerMultipleCalls', DEFAULT, () => {
+      const msg = 'testBrushSetShadowLayerMultipleCalls';
+      const brush = new drawing.Brush();
+
+      for (let i = 0; i < 20; i++) {
+        try {
+          const radius = Math.floor(Math.random() * 100);
+          const dx = Math.floor(Math.random() * 100);
+          const dy = Math.floor(Math.random() * 100);
+          const color: common2D.Color = {
+            alpha: Math.floor(Math.random() * 256),
+            red: Math.floor(Math.random() * 256),
+            green: Math.floor(Math.random() * 256),
+            blue: Math.floor(Math.random() * 256),
+          };
+          brush.setShadowLayer(drawing.ShadowLayer.create(radius, dx, dy, color));
+          console.info(msg + ' setShadowLayer successed');
+        } catch (e) {
+          console.info(msg + ` setShadowLayer errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+          expect().assertFail();
+        }
+      }
+
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0700
+     * @tc.name      : testBrushSetBlendModeNormal
+     * @tc.desc      : Test for testBrushSetBlendModeNormal.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testBrushSetBlendModeNormal', DEFAULT, () => {
+      const msg = 'testBrushSetBlendModeNormal';
+      const brush = new drawing.Brush();
+
+      for (const key of Object.keys(drawing.BlendMode)) {
+        if (typeof key === 'string') {
+          try {
+            brush.setBlendMode(drawing.BlendMode[key]);
+            console.info(msg + ' setBlendMode successed');
+          } catch (e) {
+            console.info(msg + ` setBlendMode errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+            expect().assertFail();
+          }
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0701
+     * @tc.name      : testBrushSetBlendModeNull
+     * @tc.desc      : Test for testBrushSetBlendModeNull.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testBrushSetBlendModeNull', DEFAULT, () => {
+      const msg = 'testBrushSetBlendModeNull';
+      const brush = new drawing.Brush();
+
+      try {
+        brush.setBlendMode(undefined);
+        console.info(msg + ' setBlendMode successed');
+      } catch (e) {
+        console.info(msg + ` setBlendMode errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        brush.setBlendMode(null);
+        console.info(msg + ' setBlendMode successed');
+      } catch (e) {
+        console.info(msg + ` setBlendMode errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0702
+     * @tc.name      : testBrushSetBlendModeMismatch
+     * @tc.desc      : Test for testBrushSetBlendModeMismatch.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testBrushSetBlendModeMismatch', DEFAULT, () => {
+      const msg = 'testBrushSetBlendModeMismatch';
+      const brush = new drawing.Brush();
+
+      try {
+        brush.setBlendMode(drawing.BlendMode.SRC, 111);
+        console.info(msg + ' setBlendMode(drawing.BlendMode.SRC, 111) succeeded');
+      } catch (e) {
+        console.info(msg + ` setBlendMode(drawing.BlendMode.SRC, 111) errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        brush.setBlendMode();
+        console.info(msg + ' setBlendMode() succeeded');
+      } catch (e) {
+        console.info(msg + ` setBlendMode() errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        brush.setBlendMode('s');
+        console.info(msg + ' setBlendMode(\'s\') succeeded');
+      } catch (e) {
+        console.info(msg + ` setBlendMode('s') errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0703
+     * @tc.name      : testBrushSetBlendModeMultipleCalls
+     * @tc.desc      : Test for testBrushSetBlendModeMultipleCalls.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testBrushSetBlendModeMultipleCalls', DEFAULT, () => {
+      const msg = 'testBrushSetBlendModeMultipleCalls';
+      const brush = new drawing.Brush();
+
+      for (let i = 0; i < 20; i++) {
+        try {
+          const randomEnum = Math.floor(Math.random() * getEnumCount(drawing.BlendMode));
+          brush.setBlendMode(randomEnum);
+          console.info(msg + ' setBlendMode successed');
+        } catch (e) {
+          console.info(msg + ` setBlendMode errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+          expect().assertFail();
+        }
+      }
+    });
+
+  });
 }
