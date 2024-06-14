@@ -19,18 +19,12 @@ import drawing from '@ohos.graphics.drawing';
 import common2D from '@ohos.graphics.common2D';
 
 export default function shadowLayerTest() {
-  describe('shadowLayer_test', () => {
+  describe('DrawingTsShadowLayerTest', () => {
     let pixel: image.PixelMap;
     const DEFAULT = 0;
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(async () => {
-      const color: ArrayBuffer = new ArrayBuffer(40000); // 96为需要创建的像素buffer大小，取值为：height * width *4
-      let opts: image.InitializationOptions = {
-        editable: true, pixelFormat: 3, size: {
-          height: 100, width: 100
-        }
-      }
-      pixel = await image.createPixelMap(color, opts);
+
     })
     beforeEach(() => {
       // Presets an action, which is performed before each unit test case starts.
@@ -48,67 +42,354 @@ export default function shadowLayerTest() {
     })
 
     /**
-     * @tc.number    : shadowLayer_test_create
-     * @tc.name      : shadowLayer_test_create
-     * @tc.desc      : Used to create a shadow layer object.
-     * @tc.size      : MediumTest
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_SHADOWLAYER_0100
+     * @tc.name      : testShadowLayerCreateNormal
+     * @tc.desc      : Test for testShadowLayerCreateNormal.
+     * @tc.size      : SmallTest
      * @tc.type      : Function
-     * @tc.level     : Level2
+     * @tc.level     : Level 0
      */
-    it('shadowLayer_test_create', DEFAULT, () => {
-      const msg = 'shadowLayer_test_create';
+    it('testShadowLayerCreateNormal', DEFAULT, () => {
+      const msg = 'testShadowLayerCreateNormal';
+      const pen = new drawing.Pen();
+
       try {
-        let color: common2D.Color = {
+        drawing.ShadowLayer.create(50, 100, 100, {
           alpha: 0xFF, red: 0x00, green: 0xFF, blue: 0x00
-        };
-        drawing.ShadowLayer.create(3, -3, 3, color);
-        console.info(msg + 'create successed');
+        });
+        console.info(msg + ' create successed');
       } catch (e) {
-        console.info(msg + `create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect().assertFail()
+        console.info(msg + ` create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
       }
-    })
+
+      try {
+        drawing.ShadowLayer.create(50.2, 100.2, 100.1, {
+          alpha: 128.22, red: 246.1, green: 0, blue: 0
+        });
+        console.info(msg + ' create successed');
+      } catch (e) {
+        console.info(msg + ` create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
+
+      try {
+        drawing.ShadowLayer.create(50, -100, -100, {
+          alpha: 0xFF, red: 0x00, green: 0xFF, blue: 0x00
+        });
+        console.info(msg + ' create successed');
+      } catch (e) {
+        console.info(msg + ` create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
+    });
 
     /**
-     * @tc.number    : shadowLayer_test_create_param_null
-     * @tc.name      : shadowLayer_test_create_param_null
-     * @tc.desc      : Used to create a shadow layer object. (parameter is empty)
-     * @tc.size      : MediumTest
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_SHADOWLAYER_0101
+     * @tc.name      : testShadowLayerCreateNull
+     * @tc.desc      : Test for testShadowLayerCreateNull.
+     * @tc.size      : SmallTest
      * @tc.type      : Function
-     * @tc.level     : Level2
+     * @tc.level     : Level 3
      */
-    it('shadowLayer_test_create_param_null', DEFAULT, () => {
-      const msg = 'shadowLayer_test_create_param_null';
+    it('testShadowLayerCreateNull', DEFAULT, () => {
+      const msg = 'testShadowLayerCreateNull';
+
       try {
-        let color: common2D.Color = {
+        drawing.ShadowLayer.create(undefined, 100, 100, {
           alpha: 0xFF, red: 0x00, green: 0xFF, blue: 0x00
-        };
-        drawing.ShadowLayer.create(null, -3, 3, color);
-        console.info(msg + 'create successed');
+        });
       } catch (e) {
-        console.info(msg + `create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect(e.code).assertEqual(401)
+        console.info(msg + ` create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
       }
-    })
+
+      try {
+        drawing.ShadowLayer.create(50, undefined, 100, {
+          alpha: 0xFF, red: 0x00, green: 0xFF, blue: 0x00
+        });
+      } catch (e) {
+        console.info(msg + ` create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.ShadowLayer.create(50, 100, undefined, {
+          alpha: 0xFF, red: 0x00, green: 0xFF, blue: 0x00
+        });
+      } catch (e) {
+        console.info(msg + ` create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.ShadowLayer.create(50, 100, 100, undefined);
+      } catch (e) {
+        console.info(msg + ` create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.ShadowLayer.create(null, 100, 100, {
+          alpha: 0xFF, red: 0x00, green: 0xFF, blue: 0x00
+        });
+      } catch (e) {
+        console.info(msg + ` create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.ShadowLayer.create(50, null, 100, {
+          alpha: 0xFF, red: 0x00, green: 0xFF, blue: 0x00
+        });
+      } catch (e) {
+        console.info(msg + ` create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.ShadowLayer.create(50, 100, null, {
+          alpha: 0xFF, red: 0x00, green: 0xFF, blue: 0x00
+        });
+      } catch (e) {
+        console.info(msg + ` create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.ShadowLayer.create(50, 100, 100, null);
+      } catch (e) {
+        console.info(msg + ` create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.ShadowLayer.create(50, 100, 100, {
+          alpha: undefined, red: 0x00, green: 0xFF, blue: 0x00
+        });
+      } catch (e) {
+        console.info(msg + ` create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.ShadowLayer.create(50, 100, 100, {
+          alpha: 0xFF, red: undefined, green: 0xFF, blue: 0x00
+        });
+      } catch (e) {
+        console.info(msg + ` create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.ShadowLayer.create(50, 100, 100, {
+          alpha: 0xFF, red: 0x00, green: undefined, blue: 0x00
+        });
+      } catch (e) {
+        console.info(msg + ` create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.ShadowLayer.create(50, 100, 100, {
+          alpha: 0xFF, red: 0x00, green: 0xFF, blue: undefined
+        });
+      } catch (e) {
+        console.info(msg + ` create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.ShadowLayer.create(50, 100, 100, {
+          alpha: null, red: 0x00, green: 0xFF, blue: 0x00
+        });
+      } catch (e) {
+        console.info(msg + ` create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.ShadowLayer.create(50, 100, 100, {
+          alpha: 0xFF, red: null, green: 0xFF, blue: 0x00
+        });
+      } catch (e) {
+        console.info(msg + ` create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.ShadowLayer.create(50, 100, 100, {
+          alpha: 0xFF, red: 0x00, green: null, blue: 0x00
+        });
+      } catch (e) {
+        console.info(msg + ` create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.ShadowLayer.create(50, 100, 100, {
+          alpha: 0xFF, red: 0x00, green: 0xFF, blue: null
+        });
+      } catch (e) {
+        console.info(msg + ` create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+    });
 
     /**
-     * @tc.number    : shadowLayer_test_create_param_invalid
-     * @tc.name      : shadowLayer_test_create_param_invalid
-     * @tc.desc      : Used to create a shadow layer object. (Illegal parameter)
-     * @tc.size      : MediumTest
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_SHADOWLAYER_0102
+     * @tc.name      : testShadowLayerCreateMismatch
+     * @tc.desc      : Test for testShadowLayerCreateMismatch.
+     * @tc.size      : SmallTest
      * @tc.type      : Function
-     * @tc.level     : Level2
+     * @tc.level     : Level 3
      */
-    it("shadowLayer_test_create_param_invalid", DEFAULT, () => {
-      const msg = 'shadowLayer_test_create_param_invalid';
+    it('testShadowLayerCreateMismatch', DEFAULT, () => {
+      const msg = 'testShadowLayerCreateMismatch';
+
       try {
-        let color: Record<string, string> = {};
-        drawing.ShadowLayer.create(null, -3, 3, color as ESObject);
-        console.info(msg + 'create successed');
+        drawing.ShadowLayer.create(50, 100, 100, {
+          alpha: 0xFF, red: 0x00, green: 0xFF, blue: 0x00
+        }, {
+          alpha: 0xFF, red: 0x00, green: 0xFF, blue: 0x00
+        });
       } catch (e) {
-        console.info(msg + `create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect(e.code).assertEqual(401)
+        console.info(msg + ` create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
       }
-    })
-  })
+
+      try {
+        drawing.ShadowLayer.create(50, 100, 100);
+      } catch (e) {
+        console.info(msg + ` create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.ShadowLayer.create(50, 100, 's', {
+          alpha: 0xFF, red: 0x00, green: 0xFF, blue: 0x00
+        });
+      } catch (e) {
+        console.info(msg + ` create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_SHADOWLAYER_0103
+     * @tc.name      : testShadowLayerCreateMultipleCalls
+     * @tc.desc      : Test for testShadowLayerCreateMultipleCalls.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testShadowLayerCreateMultipleCalls', DEFAULT, () => {
+      const msg = 'testShadowLayerCreateMultipleCalls';
+
+      for (let i = 0; i < 20; i++) {
+        try {
+          const randomRadius = Math.random() * 100;
+          const randomOffsetX = Math.random() * 100;
+          const randomOffsetY = Math.random() * 100;
+          const randomColor: common2D.Color = {
+            alpha: Math.floor(Math.random() * 256),
+            red: Math.floor(Math.random() * 256),
+            green: Math.floor(Math.random() * 256),
+            blue: Math.floor(Math.random() * 256)
+          };
+          drawing.ShadowLayer.create(randomRadius, randomOffsetX, randomOffsetY, randomColor);
+          console.info(`${msg} create successed for iteration ${i}`);
+        } catch (e) {
+          console.info(`${msg} create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+          expect().assertFail();
+        }
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_SHADOWLAYER_0104
+     * @tc.name      : testShadowLayerCreateBoundaryValue
+     * @tc.desc      : Test for testShadowLayerCreateBoundaryValue.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testShadowLayerCreateBoundaryValue', DEFAULT, () => {
+      const msg = 'testShadowLayerCreateBoundaryValue';
+
+      try {
+        drawing.ShadowLayer.create(50, 100, 100, {
+          alpha: -1, red: 255, green: 0, blue: 255
+        });
+      } catch (e) {
+        console.info(msg + ` create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.ShadowLayer.create(50, 100, 100, {
+          alpha: 256, red: 255, green: 0, blue: 255
+        });
+      } catch (e) {
+        console.info(msg + ` create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.ShadowLayer.create(50, 100, 100, {
+          alpha: 255, red: -2, green: 0, blue: 255
+        });
+      } catch (e) {
+        console.info(msg + ` create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.ShadowLayer.create(50, 100, 100, {
+          alpha: 255, red: 256, green: 0, blue: 255
+        });
+      } catch (e) {
+        console.info(msg + ` create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.ShadowLayer.create(50, 100, 100, {
+          alpha: 255, red: 255, green: 256, blue: 255
+        });
+      } catch (e) {
+        console.info(msg + ` create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.ShadowLayer.create(50, 100, 100, {
+          alpha: 255, red: 255, green: -1, blue: 255
+        });
+      } catch (e) {
+        console.info(msg + ` create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.ShadowLayer.create(50, 100, 100, {
+          alpha: 255, red: 255, green: 0, blue: -1
+        });
+      } catch (e) {
+        console.info(msg + ` create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.ShadowLayer.create(50, 100, 100, {
+          alpha: 255, red: 255, green: 0, blue: 256
+        });
+      } catch (e) {
+        console.info(msg + ` create errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+    });
+
+
+  });
 }

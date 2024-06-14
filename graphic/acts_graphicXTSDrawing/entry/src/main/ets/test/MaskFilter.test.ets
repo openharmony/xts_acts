@@ -14,22 +14,15 @@
  */
 
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
-import image from '@ohos.multimedia.image';
 import drawing from '@ohos.graphics.drawing';
+import { getEnumCount } from './utils';
 
 export default function maskFilterTest() {
-  describe('maskFilter_test', () => {
-    let pixel: image.PixelMap;
+  describe('DrawingTsMaskFilterTest', () => {
     const DEFAULT = 0;
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(async () => {
-      const color: ArrayBuffer = new ArrayBuffer(40000); // 96为需要创建的像素buffer大小，取值为：height * width *4
-      let opts: image.InitializationOptions = {
-        editable: true, pixelFormat: 3, size: {
-          height: 100, width: 100
-        }
-      }
-      pixel = await image.createPixelMap(color, opts);
+
     })
     beforeEach(() => {
       // Presets an action, which is performed before each unit test case starts.
@@ -47,60 +40,158 @@ export default function maskFilterTest() {
     })
 
     /**
-     * @tc.number    : maskFilter_test_createBlurMaskFilter
-     * @tc.name      : maskFilter_test_createBlurMaskFilter
-     * @tc.desc      : Used to create a masking filter with a blurring effect.
-     * @tc.size      : MediumTest
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_MASKFILTER_0100
+     * @tc.name      : testCreateBlurMaskFilterNormal
+     * @tc.desc      : Test for testCreateBlurMaskFilterNormal.
+     * @tc.size      : SmallTest
      * @tc.type      : Function
-     * @tc.level     : Level2
+     * @tc.level     : Level 0
      */
-    it('maskFilter_test_createBlurMaskFilter', DEFAULT, () => {
-      const msg = 'maskFilter_test_createBlurMaskFilter';
+    it('testCreateBlurMaskFilterNormal', DEFAULT, () => {
+      const msg = 'testCreateBlurMaskFilterNormal';
+
+      // 1、drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, 10);
       try {
         drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, 10);
-        console.info(msg + 'createBlurMaskFilter successed');
+        console.info(msg + ' createBlurMaskFilter(drawing.BlurType.OUTER, 10) successed');
       } catch (e) {
-        console.info(msg + `createBlurMaskFilter errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect().assertFail()
+        console.info(msg + ` createBlurMaskFilter errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
       }
-    })
+
+      // 2、drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, 10.5);
+      try {
+        drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, 10.5);
+        console.info(msg + ' createBlurMaskFilter(drawing.BlurType.OUTER, 10.5) successed');
+      } catch (e) {
+        console.info(msg + ` createBlurMaskFilter errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
+    });
 
     /**
-     * @tc.number    : maskFilter_test_createBlurMaskFilter_param_null
-     * @tc.name      : maskFilter_test_createBlurMaskFilter_param_null
-     * @tc.desc      : Used to create a masking filter with a blurring effect. (Parameters are empty)
-     * @tc.size      : MediumTest
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_MASKFILTER_0101
+     * @tc.name      : testCreateBlurMaskFilterNull
+     * @tc.desc      : Test for testCreateBlurMaskFilterNull.
+     * @tc.size      : SmallTest
      * @tc.type      : Function
-     * @tc.level     : Level2
+     * @tc.level     : Level 3
      */
-    it("maskFilter_test_createBlurMaskFilter_param_null", DEFAULT, () => {
-      const msg = 'maskFilter_test_createBlurMaskFilter_param_null';
+    it('testCreateBlurMaskFilterNull', DEFAULT, () => {
+      const msg = 'testCreateBlurMaskFilterNull';
+
       try {
-        drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, null);
-        console.info(msg + 'createBlurMaskFilter successed');
+        drawing.MaskFilter.createBlurMaskFilter(undefined, 10);
+        console.info(msg + ' createBlurMaskFilter(undefined, 10) successed');
       } catch (e) {
-        console.info(msg + `createBlurMaskFilter errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect(e.code).assertEqual(401)
+        console.info(msg + ` createBlurMaskFilter errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
       }
-    })
+
+      // 2、drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, undefined);
+      try {
+        drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, undefined);
+        console.info(msg + ' createBlurMaskFilter(drawing.BlurType.OUTER, undefined) successed');
+      } catch (e) {
+        console.info(msg + ` createBlurMaskFilter errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      // 3、drawing.MaskFilter.createBlurMaskFilter(undefined, 10);
+      try {
+        drawing.MaskFilter.createBlurMaskFilter(undefined, 10);
+        console.info(msg + ' createBlurMaskFilter(undefined, 10) successed');
+      } catch (e) {
+        console.info(msg + ` createBlurMaskFilter errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      // 4、drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, undefined);
+      try {
+        drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, undefined);
+        console.info(msg + ' createBlurMaskFilter(drawing.BlurType.OUTER, undefined) successed');
+      } catch (e) {
+        console.info(msg + ` createBlurMaskFilter errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+    });
 
     /**
-     * @tc.number    : maskFilter_test_createBlurMaskFilter_param_invalid
-     * @tc.name      : maskFilter_test_createBlurMaskFilter_param_invalid
-     * @tc.desc      : Used to create a masking filter with a blurring effect. (Parameters illegal)
-     * @tc.size      : MediumTest
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_MASKFILTER_0102
+     * @tc.name      : testCreateBlurMaskFilterMismatch
+     * @tc.desc      : Test for testCreateBlurMaskFilterMismatch.
+     * @tc.size      : SmallTest
      * @tc.type      : Function
-     * @tc.level     : Level2
+     * @tc.level     : Level 3
      */
-    it("maskFilter_test_createBlurMaskFilter_param_invalid", DEFAULT, () => {
-      const msg = 'maskFilter_test_createBlurMaskFilter_param_invalid';
+    it('testCreateBlurMaskFilterMismatch', DEFAULT, () => {
+      const msg = 'testCreateBlurMaskFilterMismatch';
+
       try {
-        drawing.MaskFilter.createBlurMaskFilter(9999, 10);
-        console.info(msg + 'createBlurMaskFilter successed');
+        drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, 10, 10);
+        console.info(msg + ' createBlurMaskFilter(drawing.BlurType.OUTER, 10, 10) successed');
       } catch (e) {
-        console.info(msg + `createBlurMaskFilter errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect(e.code).assertEqual(401)
+        console.info(msg + ` createBlurMaskFilter errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
       }
-    })
+
+      try {
+        drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER);
+        console.info(msg + ' createBlurMaskFilter(drawing.BlurType.OUTER) successed');
+      } catch (e) {
+        console.info(msg + ` createBlurMaskFilter errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, '10');
+        console.info(msg + ' createBlurMaskFilter(drawing.BlurType.OUTER, \'10\') successed');
+      } catch (e) {
+        console.info(msg + ` createBlurMaskFilter errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, 0);
+        console.info(msg + ' createBlurMaskFilter(drawing.BlurType.OUTER, 0) successed');
+      } catch (e) {
+        console.info(msg + ` createBlurMaskFilter errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, -1);
+        console.info(msg + ' createBlurMaskFilter(drawing.BlurType.OUTER, -1) successed');
+      } catch (e) {
+        console.info(msg + ` createBlurMaskFilter errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_MASKFILTER_0103
+     * @tc.name      : testCreateBlurMaskFilterMultipleCalls
+     * @tc.desc      : Test for testCreateBlurMaskFilterMultipleCalls.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testCreateBlurMaskFilterMultipleCalls', DEFAULT, () => {
+      const msg = 'testCreateBlurMaskFilterMultipleCalls';
+
+      for (let i = 0; i < 20; i++) {
+        const randomEnum = Math.floor(Math.random() * (getEnumCount(drawing.BlurType)));
+        const randomValue = Math.random() * 10;
+
+        try {
+          drawing.MaskFilter.createBlurMaskFilter(randomEnum, randomValue);
+          console.info(`${msg} createBlurMaskFilter with ${randomEnum}, ${randomValue} succeeded`);
+        } catch (e) {
+          console.info(`${msg} createBlurMaskFilter errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+          expect().assertFail();
+        }
+      }
+    });
+
   })
 }
