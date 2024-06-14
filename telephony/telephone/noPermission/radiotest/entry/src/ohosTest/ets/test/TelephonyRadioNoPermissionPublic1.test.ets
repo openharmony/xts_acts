@@ -56,11 +56,10 @@ export default function telephonyRadioNoPermissionEmptyTest() {
      * @tc.level : Level 3
      */
     it('telephonyRadioNoPermissionEmptyTest0150', 0, async (done: Function) => {
-      hilog.info(0x0000, 'testTag', '%{public}s', 'it begin');
-      let a = 'abc';
-      let b = 'b';
-      expect(a).assertContain(b);
-      expect(a).assertEqual(a);
+      let a: number = 1;
+      let b: number = 2;
+      expect(a+b).assertEqual(3);
+      done();
     });
 
   });
