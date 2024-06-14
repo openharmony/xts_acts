@@ -245,6 +245,7 @@
 #include "text/text_visibility_test.cpp"
 #include "text/text_linebreakstrategy_test.cpp"
 #include "arkApi/arkApi.cpp"
+#include "arkApi/arkUIAPi.cpp"
 #include "animation/animation.cpp"
 #include "waterFlower/waterFlower.cpp"
 
@@ -2197,6 +2198,21 @@ static napi_value Init(napi_env env, napi_value exports)
         {"TestArkUIAddApi012", nullptr, TestArkUIAddApi012, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"TestArkUIAddApi013", nullptr, TestArkUIAddApi013, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"TestArkUIAddApi014", nullptr, TestArkUIAddApi014, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testArkUI001", nullptr, testArkUI001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testArkUI002", nullptr, testArkUI002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testArkUI003", nullptr, testArkUI003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testArkUI004", nullptr, testArkUI004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testArkUI005", nullptr, testArkUI005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testArkUI006", nullptr, testArkUI006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testArkUI007", nullptr, testArkUI007, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testArkUI008", nullptr, testArkUI008, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testArkUI009", nullptr, testArkUI009, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testArkUI010", nullptr, testArkUI010, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testArkUI011", nullptr, testArkUI011, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testArkUI012", nullptr, testArkUI012, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testArkUI013", nullptr, testArkUI013, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testArkUI014", nullptr, testArkUI014, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testArkUI015", nullptr, testArkUI015, nullptr, nullptr, nullptr, napi_default, nullptr},
             
         {"testAnimation_001", nullptr, testAnimation_001, nullptr , nullptr, nullptr, napi_default, nullptr},
         {"testAnimation_002", nullptr, testAnimation_002, nullptr , nullptr, nullptr, napi_default, nullptr},
