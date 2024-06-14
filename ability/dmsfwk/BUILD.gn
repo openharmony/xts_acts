@@ -16,9 +16,9 @@ import("//build/ohos_var.gni")
 group("dmsfwk") {
   testonly = true
   if (is_standard_system) {
-    deps = [ 
-      "continuationmanagertest:continuationmanager_js_test", 
-      "continuationmanagernoptest:continuationmanager_nop_test", 
+    deps = [
+      "continuationmanagernoptest:continuationmanager_nop_test",
+      "continuationmanagertest:continuationmanager_js_test",
     ]
   }
 }
