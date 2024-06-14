@@ -34,8 +34,8 @@ export default function abilityTest() {
       await sleep(100);
     }
 
-    const getTestResult = async (TAG: string, resolutionQuality: number, desiredPixelFormat: image.PixelMapFormat,
-                                 sizeFactor: number, serviceName: string, decodingDynamicRange: number | null = null) => {
+    const getTestResult = async (TAG: string, resolutionQuality: image.ResolutionQuality, desiredPixelFormat: image.PixelMapFormat,
+                                 sizeFactor: number, serviceName: string, decodingDynamicRange: image.DecodingDynamicRange | null = null)=> {
       const imageSourceApi = image.createImageSource(fdNumber);
       if (imageSourceApi == undefined) {
         console.info(TAG + " @@@ create image source failed");
@@ -105,7 +105,7 @@ export default function abilityTest() {
           let isHDR = imageInfo.isHdr;
           let pixelmapFormat = imageInfo.pixelFormat;
           // The AIHDR function only takes effect at ODC venues
-          // (isHDR === true) && (result = true) && (csm.getColorSpaceName() === colorSpaceManager.ColorSpace.LINEAR_BT2020) && (pixelmapFormat === 15);
+          (isHDR === true) && (result = true) && (csm.getColorSpaceName() === colorSpaceManager.ColorSpace.LINEAR_BT2020) && (pixelmapFormat === image.PixelMapFormat.RGBA_1010102);
           result = true
         }).catch((err: BusinessError) => {
           hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' getImageInfo err ' + JSON.stringify(err));
