@@ -14,6 +14,14 @@
  */
 
 #include "common/common.h"
+#define NUM_0 0
+#define NUM_1 1
+#define NUM__1 (-1)
+#define NUM_5 5
+#define NUM_10 10
+#define NUM_20 20
+#define COLOR 0xFFFFFF00
+#define COLOR1 0xFF0000FF
 
 namespace ArkUICapiTest {
 
