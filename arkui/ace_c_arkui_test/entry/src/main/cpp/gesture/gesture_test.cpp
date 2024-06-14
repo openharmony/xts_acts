@@ -99,7 +99,7 @@ ArkUI_NodeHandle CreateNativeNode(char* rootId)
     ArkUI_NumberValue heightValue[] = { {.f32 = 500} };
     ArkUI_AttributeItem heightItem = { .value = heightValue, .size = sizeof(widthValue) / sizeof(ArkUI_NumberValue) };
     nodeAPI->setAttribute(nativeNode, NODE_HEIGHT, &heightItem);
-    ArkUI_NumberValue value[] = {{.u32 = actionedColor}};
+    ArkUI_NumberValue value[] = {{.u32 = defalutColor}};
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     nodeAPI->setAttribute(nativeNode, NODE_BACKGROUND_COLOR, &value_item);
     ArkUI_AttributeItem id_item = {};

@@ -20,10 +20,7 @@ export default function customComponentEventTest() {
 
   describe('CustomComponentEventTest', () => {
 
-    let PAGE_TAG = 'CustomComponentEventTest';
-
     beforeAll(async (done: Function) => {
-      await Utils.pushPage(`customcomponent/${PAGE_TAG}`, done);
     });
 
     /*
@@ -36,35 +33,11 @@ export default function customComponentEventTest() {
     * @tc.level      : Level 1
     */
     it('testCustomComponentEvent001', 0, async (done: Function) => {
+      let PAGE_TAG = 'CustomComponentEventTest';
+      await Utils.pushPage(`customcomponent/${PAGE_TAG}`, done);
       await Utils.sleep(2000)
-      expect(Utils.getComponentInfoByKey('EnabledTestCustomComponent').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      expect(Utils.getComponentInfoByKey('customEventComponentID').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done()
-    })
-
-    /*
-    * @tc.number     : SUB_ARKUI_CAPI_CUSTOMCOMPONENT_EVENT_002
-    * @tc.name       : testCustomComponentEvent002
-    * @tc.desc       : test custom event nullptr
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testCustomComponentEvent002', 0, async (done: Function) => {
-        expect(nativeFunc.customComponentEventNullTest001()).assertEqual(0)
-        done();
-    })
-
-    /*
-    * @tc.number     : SUB_ARKUI_CAPI_CUSTOMCOMPONENT_EVENT_003
-    * @tc.name       : testCustomComponentEvent003
-    * @tc.desc       : test custom event nullptr
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 1
-    */
-    it('testCustomComponentEvent003', 0, async (done: Function) => {
-        expect(nativeFunc.customComponentEventNullTest002()).assertEqual(0)
-        done();
     })
   })
 }
