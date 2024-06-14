@@ -278,6 +278,7 @@ export default function textBlobTest() {
         try {
           const textBlob = drawing.TextBlob.makeFromRunBuffer(runBuffer, font, bounds);
           const b = textBlob.bounds();
+          console.info(`${msg} bounds result is ${JSON.stringify(b)}`);
           expect(b.left).assertEqual(bounds.left);
           expect(b.right).assertEqual(bounds.right);
           expect(b.top).assertEqual(bounds.top);
@@ -368,7 +369,7 @@ export default function textBlobTest() {
         console.info(`${msg} makeFromRunBuffer succeeded for bounds with null left value`);
       } catch (e) {
         console.info(`${msg} makeFromRunBuffer failed for bounds with null left value, errorCode is: ${e.code}, errorMessage is: ${e.message}`);
-        expect().assertFail();
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -378,7 +379,7 @@ export default function textBlobTest() {
         console.info(`${msg} makeFromRunBuffer succeeded for bounds with null right value`);
       } catch (e) {
         console.info(`${msg} makeFromRunBuffer failed for bounds with null right value, errorCode is: ${e.code}, errorMessage is: ${e.message}`);
-        expect().assertFail();
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -388,7 +389,7 @@ export default function textBlobTest() {
         console.info(`${msg} makeFromRunBuffer succeeded for bounds with null top value`);
       } catch (e) {
         console.info(`${msg} makeFromRunBuffer failed for bounds with null top value, errorCode is: ${e.code}, errorMessage is: ${e.message}`);
-        expect().assertFail();
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -398,7 +399,7 @@ export default function textBlobTest() {
         console.info(`${msg} makeFromRunBuffer succeeded for bounds with null bottom value`);
       } catch (e) {
         console.info(`${msg} makeFromRunBuffer failed for bounds with null bottom value, errorCode is: ${e.code}, errorMessage is: ${e.message}`);
-        expect().assertFail();
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -408,7 +409,7 @@ export default function textBlobTest() {
         console.info(`${msg} makeFromRunBuffer succeeded for bounds with undefined left value`);
       } catch (e) {
         console.info(`${msg} makeFromRunBuffer failed for bounds with undefined left value, errorCode is: ${e.code}, errorMessage is: ${e.message}`);
-        expect().assertFail();
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -418,7 +419,7 @@ export default function textBlobTest() {
         console.info(`${msg} makeFromRunBuffer succeeded for bounds with undefined right value`);
       } catch (e) {
         console.info(`${msg} makeFromRunBuffer failed for bounds with undefined right value, errorCode is: ${e.code}, errorMessage is: ${e.message}`);
-        expect().assertFail();
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -428,7 +429,7 @@ export default function textBlobTest() {
         console.info(`${msg} makeFromRunBuffer succeeded for bounds with undefined top value`);
       } catch (e) {
         console.info(`${msg} makeFromRunBuffer failed for bounds with undefined top value, errorCode is: ${e.code}, errorMessage is: ${e.message}`);
-        expect().assertFail();
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -438,7 +439,7 @@ export default function textBlobTest() {
         console.info(`${msg} makeFromRunBuffer succeeded for bounds with undefined bottom value`);
       } catch (e) {
         console.info(`${msg} makeFromRunBuffer failed for bounds with undefined bottom value, errorCode is: ${e.code}, errorMessage is: ${e.message}`);
-        expect().assertFail();
+        expect(e.code).assertEqual(401);
       }
     });
 
@@ -545,17 +546,19 @@ export default function textBlobTest() {
           try {
             // Call bounds method
             const result = textBlob.bounds();
-            expect(result.left).assertEqual(randomBounds.left);
-            expect(result.top).assertEqual(randomBounds.top);
-            expect(result.right).assertEqual(randomBounds.right);
-            expect(result.bottom).assertEqual(randomBounds.bottom);
+            console.info(`${msg} bounds result is ` + JSON.stringify(result));
+            console.info(`${msg} bounds input is ` + JSON.stringify(randomBounds));
+            expect(randomBounds.left).assertEqual(result.left);
+            expect(randomBounds.top).assertEqual(result.top);
+            expect(randomBounds.right).assertEqual(result.right);
+            expect(randomBounds.bottom).assertEqual(result.bottom);
             console.info(`${msg} bounds succeeded`);
           } catch (e) {
             console.info(`${msg} bounds failed, errorCode is: ${e.code}, errorMessage is: ${e.message}`);
             expect().assertFail();
           }
         } catch (e) {
-          console.info(`${msg} makeFromRunBuffer failed for call ${i + 1}, errorCode is: ${e.code}, errorMessage is: ${e.message}`);
+          console.info(`${msg} makeFromRunBuffer failed, errorCode is: ${e.code}, errorMessage is: ${e.message}`);
           expect().assertFail();
         }
       }
