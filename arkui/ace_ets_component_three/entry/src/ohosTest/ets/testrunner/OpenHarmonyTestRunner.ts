@@ -40,13 +40,13 @@ export default class OpenHarmonyTestRunner implements TestRunner {
         hilog.info(0x0000, 'testTag', '%{public}s', 'OpenHarmonyTestRunner onRun run');
         abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
         abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        var testAbilityName = abilityDelegatorArguments.bundleName + '.MainAbility'
+        var testAbilityName = abilityDelegatorArguments.bundleName + '.EntryAbility'
         let lMonitor = {
             abilityName: testAbilityName,
             onAbilityCreate: onAbilityCreateCallback,
         };
         abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback)
-        var cmd = 'aa start -d 0 -a com.open.harmony.acetestthree.MainAbility' + ' -b ' + abilityDelegatorArguments.bundleName
+        var cmd = 'aa start -d 0 -a com.open.harmony.acetestthree.EntryAbility' + ' -b ' + abilityDelegatorArguments.bundleName
         var debug = abilityDelegatorArguments.parameters['-D']
         if (debug == 'true')
         {

@@ -19,7 +19,10 @@
         "type": "ShellKit",
         "run-command": [
             "power-shell wakeup",
-            "power-shell setmode 602"
+            "power-shell setmode 602",
+            "uinput -T -c 1080 1080",
+            "uinput -T -d 654 2750 -m 654 2750 654 2284 -u 300 2284",
+            "power-shell timeout -o 864000000"
         ]
         
     }]
