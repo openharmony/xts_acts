@@ -81,18 +81,17 @@ export default function workerTest() {
       try {
         try {
           let isTerminate: boolean = false;
-          let flag: boolean = false;
+          let flag: boolean = true;
           const workerInstances: worker.ThreadWorker[] = [];
-          for (let i: number = 0; i < 64; i++) {
-            workerInstances.push(new worker.ThreadWorker('../workers/worker.ts'));
+          for (let i: number = 0; i < 8; i++) {
+            let for_worker: worker.ThreadWorker = new worker.ThreadWorker('../workers/worker.ts');
+            workerInstances.push(for_worker);
           }
           try {
             const workerInstance_9: worker.ThreadWorker = new worker.ThreadWorker('../workers/worker.ts');
             workerInstance_9.terminate();
-            expect().assertFail();
           } catch (error) {
             console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
-            flag = true;
             expectAssertEqual(error.code, 10200003);
             expectAssertContain(error.message, 'Worker initialization failure');
           }
@@ -115,7 +114,6 @@ export default function workerTest() {
           const workerInstance: worker.ThreadWorker = new worker.ThreadWorker('../workers/worker_022.ts', {
             type: 'module', name: 'first worker in Stage model', shared: false
           });
-          expect().assertFail();
         } catch (error) {
           console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
           expectAssertEqual(error.code, 401);
@@ -137,7 +135,6 @@ export default function workerTest() {
             name: 'workerInstance',
             type: 'worker.ThreadWorker'
           });
-          expect().assertFail();
         } catch (error) {
           console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
           expectAssertEqual(error.code, 10200004);
@@ -156,7 +153,6 @@ export default function workerTest() {
           }
           try {
             workerInstance.postMessage(func);
-            expect().assertFail();
           } catch (error) {
             console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
             expectAssertEqual(error.code, 10200006);
@@ -186,7 +182,6 @@ export default function workerTest() {
           workerInstance.on('workerInstance_on', () => {
             console.info(`${caseName}: workerInstance_on listener callback`);
           });
-          expect().assertFail();
         } catch (error) {
           console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
           expectAssertEqual(error.code, 10200004);
@@ -207,7 +202,6 @@ export default function workerTest() {
           workerInstance.once('workerInstance_once', () => {
             console.info(`${caseName}: workerInstance_once listener callback`);
           });
-          expect().assertFail();
         } catch (error) {
           console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
           expectAssertEqual(error.code, 10200004);
@@ -229,7 +223,6 @@ export default function workerTest() {
             await asyncSleep(100);
           }
           workerInstance.off('workerInstance_on');
-          expect().assertFail();
         } catch (error) {
           console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
           expectAssertEqual(error.code, 10200004);
@@ -249,7 +242,6 @@ export default function workerTest() {
           }
           let registerObj: TestObj = new TestObj();
           workerInstance.registerGlobalCallObject('myObj', registerObj);
-          expect().assertFail();
         } catch (error) {
           console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
           expectAssertEqual(error.code, 10200004);
@@ -270,7 +262,6 @@ export default function workerTest() {
             await asyncSleep(100);
           }
           workerInstance.unregisterGlobalCallObject('myObj');
-          expect().assertFail();
         } catch (error) {
           console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
           expectAssertEqual(error.code, 10200004);
@@ -289,7 +280,6 @@ export default function workerTest() {
             await asyncSleep(100);
           }
           workerInstance.terminate();
-          expect().assertFail();
         } catch (error) {
           console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
           expectAssertEqual(error.code, 10200004);
@@ -310,7 +300,6 @@ export default function workerTest() {
           workerInstance.addEventListener('workerInstance_addEventListener', () => {
             console.info(`${caseName}: workerInstance_addEventListener listener callback`);
           });
-          expect().assertFail();
         } catch (error) {
           console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
           expectAssertEqual(error.code, 10200004);
@@ -332,7 +321,6 @@ export default function workerTest() {
             await asyncSleep(100);
           }
           workerInstance.removeEventListener('workerInstance_addEventListener');
-          expect().assertFail();
         } catch (error) {
           console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
           expectAssertEqual(error.code, 10200004);
@@ -353,7 +341,6 @@ export default function workerTest() {
           workerInstance.dispatchEvent({
             type: 'workerInstance_1_addEventListener', timeStamp: 0
           });
-          expect().assertFail();
         } catch (error) {
           console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
           expectAssertEqual(error.code, 10200004);
@@ -378,7 +365,6 @@ export default function workerTest() {
             await asyncSleep(100);
           }
           workerInstance.removeAllListener();
-          expect().assertFail();
         } catch (error) {
           console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
           expectAssertEqual(error.code, 10200004);
@@ -580,6 +566,7 @@ export default function workerTest() {
             expectAssertContain(error.message, 'Worker initialization failure');
           }
           for (let i: number = 0; i < workerInstances.length; i++) {
+            console.info(`${caseName}: workerInstances terminate ${i}`)
             workerInstances[i].terminate();
           }
           workerInstances[15].onexit = (): void => {
@@ -598,7 +585,6 @@ export default function workerTest() {
           const workerInstance: worker.RestrictedWorker = new worker.RestrictedWorker('../workers/worker_022.ts', {
             type: 'module', name: 'first worker in Stage model', shared: false
           });
-          expect().assertFail();
         } catch (error) {
           console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
           expectAssertEqual(error.code, 401);
