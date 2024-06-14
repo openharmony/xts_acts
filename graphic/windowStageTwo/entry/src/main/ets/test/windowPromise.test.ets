@@ -539,21 +539,28 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         await windowStage.createSubWindow('test_subWindow_setWindowGrayScale_1').then(async (data) => {
           let subWindowClass = data;
           console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
-          subWindowClass.setUiContent('pages/index/index2');
-          await subWindowClass.setWindowGrayScale(grayScale).then(() => {
-            console.info(msgStr + 'Succeeded in setting the grayScale 1.');
-            expect(true).assertTrue();
-            done();
+          subWindowClass.setUiContent('MainAbility/pages/index/index2').then(async () => {
+            console.info(msgStr + 'Succeeded in setUiContent.');
+            await subWindowClass.setWindowGrayScale(grayScale).then(() => {
+              console.info(msgStr + 'Succeeded in setting the grayScale 1.');
+              expect(true).assertTrue();
+              done();
+            }).catch((err) => {
+              console.error(msgStr + `Failed to set the grayScale. Cause code: ${err.code}, message: ${err.message}`);
+              if (err.code == 801) {
+                console.info(msgStr + '此设备不支持setWindowGrayScale能力.');
+                done();
+              } else {
+                expect(false).assertTrue();
+                done();
+              }
+            });
           }).catch((err) => {
-            console.error(msgStr + `Failed to set the grayScale. Cause code: ${err.code}, message: ${err.message}`);
-            if (err.code == 801) {
-              console.info(msgStr + '此设备不支持setWindowGrayScale能力.');
-              done();
-            } else {
-              expect(false).assertTrue();
-              done();
-            }
+            console.error(msgStr + `Failed to setUiContent. Cause code: ${err.code}, message: ${err.message}`);
+            expect(false).assertTrue();
+            done();
           });
+
         }).catch((err) => {
           console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
           expect(false).assertTrue();
