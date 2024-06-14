@@ -38,11 +38,11 @@ static napi_value TestDrawableDescriptorCreate001(napi_env env, napi_callback_in
     OH_PixelmapNativeHandle array[NUM_2];
 
     uint8_t data[NUM_96];
-    for (auto i = 0; i < NUM_92; i = i + 4;) {
+    for (auto i = 0; i < NUM_92; i = i + NUM_4) {
         data[i] = uint8_t(0);
         data[i+NUM_1] = uint8_t(0);
         data[i+NUM_2] = uint8_t(0);
-        data[i+NUM_3] = uint8_t(255);
+        data[i+NUM_3] = uint8_t(NUM_255);
     }
 
     uint8_t data1[NUM_96];
@@ -89,11 +89,11 @@ static napi_value TestDrawableDescriptorCreate002(napi_env env, napi_callback_in
     OH_PixelmapNativeHandle array[NUM_2];
 
     uint8_t data[NUM_96];
-    for (auto i = 0; i < NUM_92; i = i + 4) {
+    for (auto i = 0; i < NUM_92; i = i + NUM_4) {
         data[i] = uint8_t(0);
         data[i+NUM_1] = uint8_t(0);
         data[i+NUM_2] = uint8_t(0);
-        data[i+NUM_3] = uint8_t(255);
+        data[i+NUM_3] = uint8_t(NUM_255);
     }
 
     uint8_t data1[NUM_96];
