@@ -1445,7 +1445,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.description).assertEqual("3GPP2 video.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_video");
-      expect(typeObj.filenameExtensions.toString()).assertEqual(".3g2,.3gp2,3gpp2");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".3g2,.3gp2,.3gpp2");
       expect(typeObj.mimeTypes.toString()).assertEqual("video/3gpp2");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_4800 end");
     });
@@ -2397,7 +2397,7 @@ export default function UDMFApiDescriptorTest() {
       expect(typeObj.description).assertEqual("Base type for electronic business card.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
-      expect(typeObj.filenameExtensions.toString()).assertEqual(".vcf,vcard");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".vcf,.vcard");
       expect(typeObj.mimeTypes.toString()).assertEqual("text/vcard,text/x-vcard");
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8200 end");
     });
