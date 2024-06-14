@@ -19,6 +19,7 @@ add_library(nativerender SHARED
     commonevent/commonevent_onareachange_test.cpp
     commonevent/commonevent_onblur_test.cpp
     commonevent/commonevent_ontouch_test.cpp
+    commonevent/pointevent_ontouch_test.cpp
     commonevent/commonevent_onfocus_test.cpp
     commonevent/commonevent_onclick_test.cpp
     commonattrs/commonattrs_hittestbehavior_test.cpp

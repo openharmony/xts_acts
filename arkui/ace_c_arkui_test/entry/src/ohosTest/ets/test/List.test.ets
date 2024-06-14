@@ -35,6 +35,7 @@ import commonEventOnBlurTest from './commonevent/CommonEventOnBlurTest.test'
 import commonEventOnAppearTest from './commonevent/CommonEventOnAppearTest.test'
 import commonEventOnAreaChangeTest from './commonevent/CommonEventOnAreaChangeTest.test'
 import commonEventOnTouchTest from './commonevent/CommonEventOnTouchTest.test'
+import PointEventOnTouchTest from './commonevent/PointEventOnTouchTest.test'
 import commonAttrsEnabledTest from './commonattrs/CommonAttrsEnabledTest.test'
 import commonAttrsFocusableTest from './commonattrs/CommonAttrsFocusableTest.test'
 import commonAttrsHitTestBehaviorTest from './commonattrs/CommonAttrsHitTestBehaviorTest.test'
@@ -514,6 +515,7 @@ export default function testsuite() {
   commonEventOnBlurTest()
   commonEventOnFocusTest()
   commonEventOnTouchTest()
+  PointEventOnTouchTest()
   commonEventOnClickTest()
   commonAttrsHitTestBehaviorTest()
   commonAttrsIdTest()
