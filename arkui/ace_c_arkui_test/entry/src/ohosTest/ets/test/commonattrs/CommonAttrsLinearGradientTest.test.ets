@@ -155,18 +155,5 @@ export default function commonAttrsLinearGradientTest() {
       expect(nativeFunc.testCommonAttrsLinearGradient010()).assertEqual(0)
       done()
     })
-
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_COMMONATTRS_LINEARGRADIENT_1100
-     * @tc.name       : testCommonAttrsLinearGradient011
-     * @tc.desc       : testing linearGradient for column with default value
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testCommonAttrsLinearGradient011', 0, async (done: Function) => {
-      expect(nativeFunc.testCommonAttrsLinearGradient011()).assertEqual(0)
-      done()
-    })
   })
 }

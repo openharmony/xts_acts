@@ -142,5 +142,18 @@ export default function scrollLinearGradientTest() {
       expect(nativeFunc.testScrollLinearGradient009()).assertEqual(0)
       done();
     });
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_SCROLL_LINEARGRADIENT_1000
+     * @tc.name       : testScrollLinearGradient010
+     * @tc.desc       : testing linearGradient for scroll with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testScrollLinearGradient010', 0, async (done: Function) => {
+      expect(nativeFunc.testScrollLinearGradient010()).assertEqual(0)
+      done();
+    });
   })
 }

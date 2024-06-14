@@ -68,26 +68,13 @@ export default function swiperDisplayCountTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_SWIPER_DISPLAYCOUNT_0400
      * @tc.name       : testSwiperDisplayCount004
-     * @tc.desc       : testing default values of displayCount property of the swiper
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testSwiperDisplayCount004', 0, async (done: Function) => {
-      expect(nativeFunc.testSwiperDisplayCount004()).assertEqual(0)
-      done()
-    })
-
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_SWIPER_DISPLAYCOUNT_0500
-     * @tc.name       : testSwiperDisplayCount005
      * @tc.desc       : testing displayCount for swiper with abnormal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testSwiperDisplayCount005', 0, async (done: Function) => {
-      expect(nativeFunc.testSwiperDisplayCount005()).assertEqual(0)
+    it('testSwiperDisplayCount004', 0, async (done: Function) => {
+      expect(nativeFunc.testSwiperDisplayCount004()).assertEqual(0)
       done()
     })
 

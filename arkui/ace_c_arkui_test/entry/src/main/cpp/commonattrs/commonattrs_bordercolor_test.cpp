@@ -24,7 +24,7 @@ static napi_value TestCommonAttrsBorderColor001(napi_env env, napi_callback_info
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(row, NODE_BORDER_COLOR, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_BORDER_COLOR)->value->u32, COLOR_GREEN);
+    ASSERT_EQ(nodeAPI->getAttribute(row, NODE_BORDER_COLOR)->value[PARAM_0].u32, COLOR_GREEN);
     NAPI_END;
 }
 

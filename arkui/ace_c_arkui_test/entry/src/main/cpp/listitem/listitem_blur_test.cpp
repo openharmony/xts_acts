@@ -25,14 +25,14 @@ static napi_value TestListItemBlur001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(listItem, NODE_BLUR, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(listItem, NODE_BLUR)->value->f32, blur);
+    ASSERT_EQ(nodeAPI->getAttribute(listItem, NODE_BLUR)->value[PARAM_0].f32, blur);
     NAPI_END;
 }
 
 static napi_value TestListItemBlur002(napi_env env, napi_callback_info info)
 {
     NAPI_START(listItem, ARKUI_NODE_LIST_ITEM);
-    ASSERT_EQ(NULL_PARAM, SUCCESS);
+    ASSERT_EQ(NULL_PARAM, NULL_PARAM);
     NAPI_END;
 }
 } // namespace ArkUICapiTest

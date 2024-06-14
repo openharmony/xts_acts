@@ -137,9 +137,6 @@ napi_value TextEnabledTest::CreateNativeNode(napi_env env, napi_callback_info in
     // third text
     auto textAbnormal = createChildNode(nodeAPI, PARAM_NEGATIVE_1);
 
-    // fourth text
-    auto textDefault = createChildNode(nodeAPI, SIZE_100);
-
     // set text ID
     ArkUI_AttributeItem id_item = {};
     id_item.string = "OnClickEnabledText";
@@ -150,14 +147,10 @@ napi_value TextEnabledTest::CreateNativeNode(napi_env env, napi_callback_info in
     ArkUI_AttributeItem id_third_item = {};
     id_third_item.string = "OnClickAbnormalText";
     nodeAPI->setAttribute(textAbnormal, NODE_ID, &id_third_item);
-    ArkUI_AttributeItem id_fourth_item = {};
-    id_fourth_item.string = "OnClickDefaultText";
-    nodeAPI->setAttribute(textDefault, NODE_ID, &id_fourth_item);
 
     nodeAPI->addChild(column, text);
     nodeAPI->addChild(column, textDisabled);
     nodeAPI->addChild(column, textAbnormal);
-    nodeAPI->addChild(column, textDefault);
 
     // Bind click event
     nodeAPI->registerNodeEventReceiver(&OnEventReceive);

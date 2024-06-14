@@ -24,7 +24,7 @@ static napi_value TestTextMaxLines001(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.i32 = lines}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_MAX_LINES, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_MAX_LINES)->value->i32, lines);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_MAX_LINES)->value[PARAM_0].i32, lines);
     ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
@@ -36,7 +36,7 @@ static napi_value TestTextMaxLines002(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.i32 = lines}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_MAX_LINES, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_MAX_LINES)->value->i32, lines);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_MAX_LINES)->value[PARAM_0].i32, lines);
     ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
@@ -48,7 +48,7 @@ static napi_value TestTextMaxLines003(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.i32 = lines}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_MAX_LINES, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_MAX_LINES)->value->i32, lines);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_MAX_LINES)->value[PARAM_0].i32, lines);
     ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }

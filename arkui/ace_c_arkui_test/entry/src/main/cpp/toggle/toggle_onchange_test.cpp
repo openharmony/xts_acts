@@ -19,6 +19,8 @@
 
 namespace ArkUICapiTest {
 
+#define ON_CHANGE_ISON_EVENT_ID 7007
+
 static void OnEventReceive(ArkUI_NodeEvent *event)
 {
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "ToggleOnChangeTest", "OnEventReceive");
@@ -31,10 +33,23 @@ static void OnEventReceive(ArkUI_NodeEvent *event)
     auto nodeHandler = OH_ArkUI_NodeEvent_GetNodeHandle(event);
     int32_t eventId = OH_ArkUI_NodeEvent_GetTargetId(event);
     if (eventId == ON_CHANGE_EVENT_ID) {
-        ArkUI_NumberValue switch_point_color_value[] = {{.u32 = 0xFFFF0000}};
-        ArkUI_AttributeItem switch_point_color_item = {switch_point_color_value,
-                                                       sizeof(switch_point_color_value) / sizeof(ArkUI_NumberValue)};
-        nodeAPI->setAttribute(nodeHandler, NODE_TOGGLE_SWITCH_POINT_COLOR, &switch_point_color_item);
+        ArkUI_NodeComponentEvent *result = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
+        if (result->data[0].i32) {
+            ArkUI_NumberValue switch_point_color_value[] = {{.u32 = COLOR_RED}};
+            ArkUI_AttributeItem switch_point_color_item = {switch_point_color_value, sizeof(switch_point_color_value) /
+                                                                                         sizeof(ArkUI_NumberValue)};
+            nodeAPI->setAttribute(nodeHandler, NODE_TOGGLE_SWITCH_POINT_COLOR, &switch_point_color_item);
+        }
+    }
+
+    if (eventId == ON_CHANGE_ISON_EVENT_ID) {
+        ArkUI_NodeComponentEvent *result = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
+        if (!result->data[0].i32) {
+            ArkUI_NumberValue switch_point_color_value[] = {{.u32 = COLOR_RED}};
+            ArkUI_AttributeItem switch_point_color_item = {switch_point_color_value, sizeof(switch_point_color_value) /
+                                                                                         sizeof(ArkUI_NumberValue)};
+            nodeAPI->setAttribute(nodeHandler, NODE_TOGGLE_SWITCH_POINT_COLOR, &switch_point_color_item);
+        }
     }
 }
 
@@ -84,7 +99,7 @@ napi_value ToggleOnChangeTest::CreateNativeNode(napi_env env, napi_callback_info
     nodeAPI->registerNodeEvent(toggle, NODE_ON_CLICK, ON_CLICK_EVENT_ID, nullptr);
     nodeAPI->registerNodeEvent(toggle, NODE_TOGGLE_ON_CHANGE, ON_CHANGE_EVENT_ID, nullptr);
     nodeAPI->registerNodeEvent(toggleSecond, NODE_ON_CLICK, ON_CLICK_EVENT_ID, nullptr);
-    nodeAPI->registerNodeEvent(toggleSecond, NODE_TOGGLE_ON_CHANGE, ON_CHANGE_EVENT_ID, nullptr);
+    nodeAPI->registerNodeEvent(toggleSecond, NODE_TOGGLE_ON_CHANGE, ON_CHANGE_ISON_EVENT_ID, nullptr);
 
     std::string id(xComponentID);
     if (OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(id), column) ==

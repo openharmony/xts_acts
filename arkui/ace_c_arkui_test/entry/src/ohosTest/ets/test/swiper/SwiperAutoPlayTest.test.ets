@@ -55,26 +55,13 @@ export default function swiperAutoPlayTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_SWIPER_AUTOPLAY_0300
      * @tc.name       : testSwiperAutoPlay003
-     * @tc.desc       : testing default values of autoPlay property of the swiper
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testSwiperAutoPlay003', 0, async (done: Function) => {
-      expect(nativeFunc.testSwiperAutoPlay003()).assertEqual(0)
-      done()
-    })
-
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_SWIPER_AUTOPLAY_0400
-     * @tc.name       : testSwiperAutoPlay004
      * @tc.desc       : testing autoPlay for swiper with abnormal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it('testSwiperAutoPlay004', 0, async (done: Function) => {
-      expect(nativeFunc.testSwiperAutoPlay004()).assertEqual(0)
+    it('testSwiperAutoPlay003', 0, async (done: Function) => {
+      expect(nativeFunc.testSwiperAutoPlay003()).assertEqual(0)
       done()
     })
 

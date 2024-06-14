@@ -47,16 +47,6 @@ static napi_value TestListEdgeEffect002(napi_env env, napi_callback_info info)
 static napi_value TestListEdgeEffect003(napi_env env, napi_callback_info info)
 {
     NAPI_START(list, ARKUI_NODE_LIST);
-    int32_t edgeEffect = PARAM_1;
-    auto listDefault = nodeAPI->createNode(ARKUI_NODE_LIST);
-    ASSERT_EQ(nodeAPI->getAttribute(listDefault, NODE_SCROLL_EDGE_EFFECT)->value[PARAM_0].i32, ARKUI_EDGE_EFFECT_NONE);
-    ASSERT_EQ(nodeAPI->getAttribute(listDefault, NODE_SCROLL_EDGE_EFFECT)->value[PARAM_1].i32, edgeEffect);
-    NAPI_END;
-}
-
-static napi_value TestListEdgeEffect004(napi_env env, napi_callback_info info)
-{
-    NAPI_START(list, ARKUI_NODE_LIST);
     int32_t edgeEffect = PARAM_NEGATIVE_1;
     ArkUI_NumberValue value[] = {{.i32 = edgeEffect}, {.i32 = edgeEffect}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};

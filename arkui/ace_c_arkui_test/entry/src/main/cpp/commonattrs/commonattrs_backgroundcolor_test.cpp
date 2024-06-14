@@ -24,7 +24,7 @@ static napi_value TestCommonAttrsBackgroundColor001(napi_env env, napi_callback_
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(flex, NODE_BACKGROUND_COLOR, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(flex, NODE_BACKGROUND_COLOR)->value->u32, COLOR_RED);
+    ASSERT_EQ(nodeAPI->getAttribute(flex, NODE_BACKGROUND_COLOR)->value[PARAM_0].u32, COLOR_RED);
     NAPI_END;
 }
 
@@ -36,7 +36,7 @@ static napi_value TestCommonAttrsBackgroundColor002(napi_env env, napi_callback_
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(flex, NODE_BACKGROUND_COLOR, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(flex, NODE_BACKGROUND_COLOR)->value->u32, backgroundColor);
+    ASSERT_EQ(nodeAPI->getAttribute(flex, NODE_BACKGROUND_COLOR)->value[PARAM_0].u32, backgroundColor);
     NAPI_END;
 }
 
@@ -48,7 +48,7 @@ static napi_value TestCommonAttrsBackgroundColor003(napi_env env, napi_callback_
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(flex, NODE_BACKGROUND_COLOR, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(flex, NODE_BACKGROUND_COLOR)->value->u32, backgroundColor);
+    ASSERT_EQ(nodeAPI->getAttribute(flex, NODE_BACKGROUND_COLOR)->value[PARAM_0].u32, backgroundColor);
     NAPI_END;
 }
 

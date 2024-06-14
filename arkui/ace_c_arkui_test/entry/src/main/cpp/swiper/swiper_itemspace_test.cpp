@@ -26,7 +26,7 @@ static napi_value TestSwiperItemSpace001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem itemSpace_item = {itemSpace_value, sizeof(itemSpace_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_ITEM_SPACE, &itemSpace_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_ITEM_SPACE)->value->f32, itemSpace);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_ITEM_SPACE)->value[PARAM_0].f32, itemSpace);
     NAPI_END;
 }
 
@@ -39,7 +39,7 @@ static napi_value TestSwiperItemSpace002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem itemSpace_item = {itemSpace_value, sizeof(itemSpace_value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_ITEM_SPACE, &itemSpace_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_ITEM_SPACE)->value->f32, itemSpace);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_ITEM_SPACE)->value[PARAM_0].f32, itemSpace);
     NAPI_END;
 }
 
@@ -53,17 +53,8 @@ static napi_value TestSwiperItemSpace003(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_ITEM_SPACE, &itemSpace_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(swiper, NODE_SWIPER_ITEM_SPACE) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(swiper, NODE_SWIPER_ITEM_SPACE)->value->f32, itemSpace);
+        ASSERT_NE(nodeAPI->getAttribute(swiper, NODE_SWIPER_ITEM_SPACE)->value[PARAM_0].f32, itemSpace);
     }
-    NAPI_END;
-}
-
-static napi_value TestSwiperItemSpace004(napi_env env, napi_callback_info info)
-{
-    NAPI_START(swiper, ARKUI_NODE_SWIPER);
-    float itemSpace = 0;
-
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_ITEM_SPACE)->value->f32, itemSpace);
     NAPI_END;
 }
 

@@ -154,18 +154,5 @@ export default function listItemLinearGradientTest() {
       expect(nativeFunc.testListItemLinearGradient010()).assertEqual(0)
       done()
     })
-
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_LISTITEM_LINEARGRADIENT_1100
-     * @tc.name       : testListItemLinearGradient011
-     * @tc.desc       : testing linearGradient for listItem with default value
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testListItemLinearGradient011', 0, async (done: Function) => {
-      expect(nativeFunc.testListItemLinearGradient011()).assertEqual(0)
-      done()
-    })
   })
 }

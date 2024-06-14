@@ -18,15 +18,15 @@ import { CommonView } from '../../componet/CommonView';
 
 @Entry
 @Component
-struct ScrollHitTestBehaviorTest {
-  PAGE_TAG: string = 'ScrollHitTestBehaviorTest';
+struct ScrollCurrentOffsetSmoothTest {
+  PAGE_TAG: string = 'ScrollCurrentOffsetSmoothTest';
 
   build() {
     Column() {
       CommonView({
         pageTag: this.PAGE_TAG,
       }).onAppear(() => {
-        render.scrollHitTestBehaviorTest(this.PAGE_TAG);
+        render.scrollCurrentOffsetSmoothTest(this.PAGE_TAG);
       })
     }
   }

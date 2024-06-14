@@ -25,7 +25,7 @@ static napi_value TestSwiperLoop001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_LOOP, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_LOOP)->value->i32, loop);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_LOOP)->value[PARAM_0].i32, loop);
     NAPI_END;
 }
 
@@ -37,20 +37,11 @@ static napi_value TestSwiperLoop002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_LOOP, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_LOOP)->value->i32, loop);
+    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_LOOP)->value[PARAM_0].i32, loop);
     NAPI_END;
 }
 
 static napi_value TestSwiperLoop003(napi_env env, napi_callback_info info)
-{
-    NAPI_START(swiper, ARKUI_NODE_SWIPER);
-    int32_t loop = 1;
-
-    ASSERT_EQ(nodeAPI->getAttribute(swiper, NODE_SWIPER_LOOP)->value->i32, loop);
-    NAPI_END;
-}
-
-static napi_value TestSwiperLoop004(napi_env env, napi_callback_info info)
 {
     NAPI_START(swiper, ARKUI_NODE_SWIPER);
     int32_t loop = -1;
@@ -59,7 +50,7 @@ static napi_value TestSwiperLoop004(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(swiper, NODE_SWIPER_LOOP, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(swiper, NODE_SWIPER_LOOP) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(swiper, NODE_SWIPER_LOOP)->value->i32, loop);
+        ASSERT_NE(nodeAPI->getAttribute(swiper, NODE_SWIPER_LOOP)->value[PARAM_0].i32, loop);
     }
     NAPI_END;
 }

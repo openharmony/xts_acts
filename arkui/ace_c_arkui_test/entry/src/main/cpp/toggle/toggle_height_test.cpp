@@ -25,7 +25,7 @@ static napi_value TestToggleHeight001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(toggle, NODE_HEIGHT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_HEIGHT)->value->f32, height);
+    ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_HEIGHT)->value[PARAM_0].f32, height);
     NAPI_END;
 }
 
@@ -37,7 +37,7 @@ static napi_value TestToggleHeight002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(toggle, NODE_HEIGHT, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_HEIGHT)->value->f32, height);
+    ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_HEIGHT)->value[PARAM_0].f32, height);
     NAPI_END;
 }
 
@@ -50,7 +50,7 @@ static napi_value TestToggleHeight003(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(toggle, NODE_HEIGHT, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(toggle, NODE_HEIGHT) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(toggle, NODE_HEIGHT)->value->f32, height);
+        ASSERT_NE(nodeAPI->getAttribute(toggle, NODE_HEIGHT)->value[PARAM_0].f32, height);
     }
     NAPI_END;
 }

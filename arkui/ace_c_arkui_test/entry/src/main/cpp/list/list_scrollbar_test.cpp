@@ -25,7 +25,7 @@ static napi_value TestListScrollBar001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(list, NODE_SCROLL_BAR_DISPLAY_MODE, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_SCROLL_BAR_DISPLAY_MODE)->value->i32, scrollBar);
+    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_SCROLL_BAR_DISPLAY_MODE)->value[PARAM_0].i32, scrollBar);
     NAPI_END;
 }
 
@@ -34,7 +34,7 @@ static napi_value TestListScrollBar002(napi_env env, napi_callback_info info)
     NAPI_START(list, ARKUI_NODE_LIST);
     int32_t scrollBar = ARKUI_SCROLL_BAR_DISPLAY_MODE_AUTO;
     auto listDefault = nodeAPI->createNode(ARKUI_NODE_LIST);
-    ASSERT_EQ(nodeAPI->getAttribute(listDefault, NODE_SCROLL_BAR_DISPLAY_MODE)->value->i32, scrollBar);
+    ASSERT_EQ(nodeAPI->getAttribute(listDefault, NODE_SCROLL_BAR_DISPLAY_MODE)->value[PARAM_0].i32, scrollBar);
     NAPI_END;
 }
 
@@ -46,7 +46,7 @@ static napi_value TestListScrollBar003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(list, NODE_SCROLL_BAR_DISPLAY_MODE, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_SCROLL_BAR_DISPLAY_MODE)->value->i32, scrollBar);
+    ASSERT_EQ(nodeAPI->getAttribute(list, NODE_SCROLL_BAR_DISPLAY_MODE)->value[PARAM_0].i32, scrollBar);
     NAPI_END;
 }
 
@@ -58,7 +58,7 @@ static napi_value TestListScrollBar004(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(list, NODE_SCROLL_BAR_DISPLAY_MODE, &valueItem);
     ASSERT_EQ(ret, INVALID_PARAM);
-    ASSERT_NE(nodeAPI->getAttribute(list, NODE_SCROLL_BAR_DISPLAY_MODE)->value->i32, scrollBar);
+    ASSERT_NE(nodeAPI->getAttribute(list, NODE_SCROLL_BAR_DISPLAY_MODE)->value[PARAM_0].i32, scrollBar);
     NAPI_END;
 }
 

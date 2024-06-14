@@ -26,7 +26,7 @@ static napi_value TestListItemClip001(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(listItem, NODE_CLIP, &valueItem);
 
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(listItem, NODE_CLIP)->value->i32, clip);
+    ASSERT_EQ(nodeAPI->getAttribute(listItem, NODE_CLIP)->value[PARAM_0].i32, clip);
     NAPI_END;
 }
 
@@ -38,7 +38,7 @@ static napi_value TestListItemClip002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(listItem, NODE_CLIP, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(listItem, NODE_CLIP)->value->i32, clip);
+    ASSERT_EQ(nodeAPI->getAttribute(listItem, NODE_CLIP)->value[PARAM_0].i32, clip);
     NAPI_END;
 }
 
@@ -50,7 +50,7 @@ static napi_value TestListItemClip003(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(listItem, NODE_CLIP, &valueItem);
     ASSERT_EQ(ret, INVALID_PARAM);
-    ASSERT_NE(nodeAPI->getAttribute(listItem, NODE_CLIP)->value->i32, clip);
+    ASSERT_NE(nodeAPI->getAttribute(listItem, NODE_CLIP)->value[PARAM_0].i32, clip);
     NAPI_END;
 }
 

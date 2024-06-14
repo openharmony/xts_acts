@@ -18,6 +18,8 @@
 #include <string>
 
 #define ON_CLICK_EVENT_ID_OFFSET 16001
+#define ON_AREA_CHANGE_SIZE_EVENT_ID 7004
+#define ON_AREA_CHANGE_OFFSET_EVENT_ID 8004
 
 namespace ArkUICapiTest {
 
@@ -46,18 +48,25 @@ static auto createChildNode(ArkUI_NativeNodeAPI_1 *nodeAPI, uint32_t initialColo
     return nodeHandle;
 }
 
+static void PrintOnAreaChangeBackData(ArkUI_NodeComponentEvent *result)
+{
+    for (int i = PARAM_0; i < PARAM_12; i++) {
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "StackOnAreaChangeTest",
+                     "PrintOnAreaChangeBackData result->data[%{public}d].f32: %{public}f", i, result->data[i].f32);
+    }
+}
+
 static void OnEventReceive(ArkUI_NodeEvent *event)
 {
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "CommonEventOnAreaChangeTest", "OnEventReceive");
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "StackOnAreaChangeTest", "OnEventReceive");
     if (event == nullptr) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "CommonEventOnAreaChangeTest",
-                     "OnEventReceive: event is null");
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "StackOnAreaChangeTest", "OnEventReceive: event is null");
         return;
     }
 
     int32_t eventId = OH_ArkUI_NodeEvent_GetTargetId(event);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "CommonEventOnAreaChangeTest",
-                 "OnEventReceive eventId: %{public}d", eventId);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "StackOnAreaChangeTest", "OnEventReceive eventId: %{public}d",
+                 eventId);
 
     ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
@@ -68,7 +77,6 @@ static void OnEventReceive(ArkUI_NodeEvent *event)
         ArkUI_NumberValue width_value[] = {{.f32 = SIZE_200}};
         ArkUI_AttributeItem width_item = {width_value, sizeof(width_value) / sizeof(ArkUI_NumberValue)};
         nodeAPI->setAttribute(nodeHandler, NODE_WIDTH, &width_item);
-        return;
     }
 
     if (eventId == ON_CLICK_EVENT_ID_OFFSET) {
@@ -76,22 +84,55 @@ static void OnEventReceive(ArkUI_NodeEvent *event)
         ArkUI_NumberValue offset_value[] = {{.f32 = SIZE_100}, {.f32 = SIZE_100}};
         ArkUI_AttributeItem offset_item = {offset_value, sizeof(offset_value) / sizeof(ArkUI_NumberValue)};
         nodeAPI->setAttribute(nodeHandler, NODE_OFFSET, &offset_item);
-        return;
     }
 
-    if (eventId == ON_AREA_CHANGE_EVENT_ID) {
-        if (g_changeFlag) {
+    if (g_changeFlag && eventId == ON_AREA_CHANGE_SIZE_EVENT_ID) {
+        ArkUI_NodeComponentEvent *result = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
+        PrintOnAreaChangeBackData(result);
+        bool checkResult = false;
+        checkResult = (result->data[PARAM_0].f32 < result->data[PARAM_6].f32) &&
+                      (result->data[PARAM_1].f32 == result->data[PARAM_7].f32) &&
+                      (result->data[PARAM_2].f32 == result->data[PARAM_8].f32) &&
+                      (result->data[PARAM_3].f32 == result->data[PARAM_9].f32) &&
+                      (result->data[PARAM_4].f32 > result->data[PARAM_10].f32) &&
+                      (result->data[PARAM_5].f32 == result->data[PARAM_11].f32);
+        if (checkResult) {
             ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
             ArkUI_AttributeItem background_color_item = {background_color_value,
                                                          sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
             nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
         }
     }
+
+    if (g_changeFlag && eventId == ON_AREA_CHANGE_EVENT_ID) {
+        ArkUI_NodeComponentEvent *result = OH_ArkUI_NodeEvent_GetNodeComponentEvent(event);
+        PrintOnAreaChangeBackData(result);
+        bool checkResult = false;
+        checkResult = (result->data[PARAM_0].f32 == result->data[PARAM_6].f32) &&
+                      (result->data[PARAM_1].f32 == result->data[PARAM_7].f32) &&
+                      (result->data[PARAM_2].f32 == result->data[PARAM_8].f32) &&
+                      (result->data[PARAM_3].f32 == result->data[PARAM_9].f32) &&
+                      (result->data[PARAM_4].f32 > result->data[PARAM_10].f32) &&
+                      (result->data[PARAM_5].f32 == result->data[PARAM_11].f32);
+        if (checkResult) {
+            ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
+            ArkUI_AttributeItem background_color_item = {background_color_value,
+                                                         sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
+            nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
+        }
+    }
+
+    if (g_changeFlag && eventId == ON_AREA_CHANGE_OFFSET_EVENT_ID) {
+        ArkUI_NumberValue background_color_value[] = {{.u32 = COLOR_GREEN}};
+        ArkUI_AttributeItem background_color_item = {background_color_value,
+                                                     sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
+        nodeAPI->setAttribute(nodeHandler, NODE_BACKGROUND_COLOR, &background_color_item);
+    }
 }
 
 napi_value StackOnAreaChangeTest::CreateNativeNode(napi_env env, napi_callback_info info)
 {
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "CommonEventOnAreaChangeTest", "CreateNativeNode");
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "StackOnAreaChangeTest", "CreateNativeNode");
 
     size_t argc = PARAM_1;
     napi_value args[PARAM_1] = {nullptr};
@@ -102,8 +143,7 @@ napi_value StackOnAreaChangeTest::CreateNativeNode(napi_env env, napi_callback_i
     napi_get_value_string_utf8(env, args[PARAM_0], xComponentID, length, &strLength);
 
     if ((env == nullptr) || (info == nullptr)) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "CommonEventOnAreaChangeTest",
-                     "GetContext env or info is null");
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "StackOnAreaChangeTest", "GetContext env or info is null");
         return nullptr;
     }
 
@@ -133,9 +173,9 @@ napi_value StackOnAreaChangeTest::CreateNativeNode(napi_env env, napi_callback_i
     nodeAPI->addChild(rowMove, stackSpanMoveCompare);
     nodeAPI->addChild(rowOffset, stackSpanOffset);
 
-    nodeAPI->registerNodeEvent(stackSpanSize, NODE_EVENT_ON_AREA_CHANGE, ON_AREA_CHANGE_EVENT_ID, nullptr);
+    nodeAPI->registerNodeEvent(stackSpanSize, NODE_EVENT_ON_AREA_CHANGE, ON_AREA_CHANGE_SIZE_EVENT_ID, nullptr);
     nodeAPI->registerNodeEvent(stackSpanMove, NODE_EVENT_ON_AREA_CHANGE, ON_AREA_CHANGE_EVENT_ID, nullptr);
-    nodeAPI->registerNodeEvent(stackSpanOffset, NODE_EVENT_ON_AREA_CHANGE, ON_AREA_CHANGE_EVENT_ID, nullptr);
+    nodeAPI->registerNodeEvent(stackSpanOffset, NODE_EVENT_ON_AREA_CHANGE, ON_AREA_CHANGE_OFFSET_EVENT_ID, nullptr);
     nodeAPI->registerNodeEventReceiver(&OnEventReceive);
 
     nodeAPI->addChild(column, rowSize);
@@ -145,7 +185,7 @@ napi_value StackOnAreaChangeTest::CreateNativeNode(napi_env env, napi_callback_i
     std::string id(xComponentID);
     if (OH_NativeXComponent_AttachNativeRootNode(PluginManager::GetInstance()->GetNativeXComponent(id), column) ==
         INVALID_PARAM) {
-        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "CommonEventOnAreaChangeTest",
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "StackOnAreaChangeTest",
                      "OH_NativeXComponent_AttachNativeRootNode failed");
     }
 

@@ -27,7 +27,7 @@ static napi_value TestScrollClip001(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_CLIP, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_CLIP)->value->i32, true);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_CLIP)->value[PARAM_0].i32, true);
     NAPI_END;
 }
 
@@ -38,7 +38,7 @@ static napi_value TestScrollClip002(napi_env env, napi_callback_info info)
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_CLIP, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_CLIP)->value->i32, false);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_CLIP)->value[PARAM_0].i32, false);
     NAPI_END;
 }
 
@@ -51,7 +51,7 @@ static napi_value TestScrollClip003(napi_env env, napi_callback_info info)
     auto ret = nodeAPI->setAttribute(scroll, NODE_CLIP, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(scroll, NODE_CLIP) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(scroll, NODE_CLIP)->value->i32, mode);
+        ASSERT_NE(nodeAPI->getAttribute(scroll, NODE_CLIP)->value[PARAM_0].i32, mode);
     }
     NAPI_END;
 }
