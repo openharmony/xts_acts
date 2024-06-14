@@ -21,6 +21,8 @@ import colorFilterTest from './ColorFilter.test';
 import penTest from './Pen.test';
 import brushTest from './Brush.test';
 import fontTest from './Font.test';
+import typefaceTest from './Typeface.test';
+import textBlobTest from './TextBlob.test';
 
 export default function testsuite() {
   samplingOptionsTest();
@@ -32,4 +34,6 @@ export default function testsuite() {
   penTest();
   brushTest();
   fontTest();
+  typefaceTest();
+  textBlobTest();
 }

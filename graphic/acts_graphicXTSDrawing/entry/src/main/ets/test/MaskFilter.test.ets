@@ -50,7 +50,6 @@ export default function maskFilterTest() {
     it('testCreateBlurMaskFilterNormal', DEFAULT, () => {
       const msg = 'testCreateBlurMaskFilterNormal';
 
-      // 1、drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, 10);
       try {
         drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, 10);
         console.info(msg + ' createBlurMaskFilter(drawing.BlurType.OUTER, 10) successed');
@@ -59,7 +58,6 @@ export default function maskFilterTest() {
         expect().assertFail();
       }
 
-      // 2、drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, 10.5);
       try {
         drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, 10.5);
         console.info(msg + ' createBlurMaskFilter(drawing.BlurType.OUTER, 10.5) successed');
@@ -88,7 +86,6 @@ export default function maskFilterTest() {
         expect(e.code).assertEqual(401);
       }
 
-      // 2、drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, undefined);
       try {
         drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, undefined);
         console.info(msg + ' createBlurMaskFilter(drawing.BlurType.OUTER, undefined) successed');
@@ -97,7 +94,6 @@ export default function maskFilterTest() {
         expect(e.code).assertEqual(401);
       }
 
-      // 3、drawing.MaskFilter.createBlurMaskFilter(undefined, 10);
       try {
         drawing.MaskFilter.createBlurMaskFilter(undefined, 10);
         console.info(msg + ' createBlurMaskFilter(undefined, 10) successed');
@@ -106,7 +102,6 @@ export default function maskFilterTest() {
         expect(e.code).assertEqual(401);
       }
 
-      // 4、drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, undefined);
       try {
         drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, undefined);
         console.info(msg + ' createBlurMaskFilter(drawing.BlurType.OUTER, undefined) successed');
