@@ -491,6 +491,10 @@
 #include "customcomponent/customcomponent_event_null_test.cpp"
 #include "commonattrs/commonattrs_animate_test.cpp"
 #include "drawabledescriptor/drawabledescriptor_create_test.cpp"
+#include "nodecontent/node_content_test.cpp"
+#include "nativexcomponent/native_xcomponent_test.cpp"
+#include "mouseevent/mouse_event_test.cpp"
+#include "pointerevent/pointer_event_test.cpp"
 namespace ArkUICapiTest {
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -4430,6 +4434,18 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, napi_default, nullptr},
         {"testDrawableDescriptorCreate003", nullptr, TestDrawableDescriptorCreate003, nullptr, nullptr,
          nullptr, napi_default, nullptr},
+        {"testNodeContent001", nullptr, TestNodeContent001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeContent002", nullptr, TestNodeContent002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeContent003", nullptr, TestNodeContent003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeContent004", nullptr, TestNodeContent004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeContent005", nullptr, TestNodeContent005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeContent006", nullptr, TestNodeContent006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeContent007", nullptr, TestNodeContent007, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNativeXComponent001", nullptr, TestNativeXComponent001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testMouseEvent001", nullptr, TestMouseEvent001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testMouseEvent002", nullptr, TestMouseEvent002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testPointerEvent001", nullptr, TestPointerEvent001, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");
