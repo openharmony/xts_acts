@@ -33,6 +33,7 @@ public:
     static napi_value CreatePanNativeNode(napi_env env, napi_callback_info info);
     static napi_value CreatePinchNativeNode(napi_env env, napi_callback_info info);
     static napi_value CreateRotateNativeNode(napi_env env, napi_callback_info info);
+    static napi_value CreateInterruptNativeNode(napi_env env, napi_callback_info info);
 };
 } // namespace ArkUICapiTest
 #endif // ARKUI_CAPI_DEMO_GUESTURE_TEST_H

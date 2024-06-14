@@ -245,7 +245,7 @@ napi_value GestureTest::CreatePanNativeNode(napi_env env, napi_callback_info inf
     auto guestureAPI = reinterpret_cast<ArkUI_NativeGestureAPI_1*>(
         OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
     auto panGuesture = guestureAPI->createPanGesture(1, GESTURE_DIRECTION_ALL, 5);
-    guestureAPI->setGestureEventTarget(panGuesture, GESTURE_EVENT_ACTION_ACCEPT, panNode, &OnSwipeActionCallBack);
+    guestureAPI->setGestureEventTarget(panGuesture, GESTURE_EVENT_ACTION_ACCEPT, panNode, &OnPanActionCallBack);
     guestureAPI->addGestureToNode(panNode, panGuesture, PARALLEL, NORMAL_GESTURE_MASK);
 
     std::string id(xComponentID);
@@ -372,6 +372,77 @@ napi_value GestureTest::CreateRotateNativeNode(napi_env env, napi_callback_info 
                      "OH_NativeXComponent_AttachNativeRootNode failed");
     }
 
+    napi_value exports;
+    if (napi_create_object(env, &exports) != napi_ok) {
+        napi_throw_type_error(env, NULL, "napi_create_object failed");
+        return nullptr;
+    }
+    return exports;
+}
+
+ArkUI_NodeHandle interruptNode;
+ArkUI_GestureInterruptResult OnInterruptCallback(ArkUI_GestureInterruptInfo* info)
+{
+    auto systag = OH_ArkUI_GestureInterruptInfo_GetSystemFlag(info);
+    auto recognizer = OH_ArkUI_GestureInterruptInfo_GetRecognizer(info);
+    auto gestureEvent = OH_ArkUI_GestureInterruptInfo_GetGestureEvent(info);
+    auto recognizerType = OH_ArkUI_GestureInterruptInfo_GetSystemRecognizerType(info);
+    if (gestureEvent == nullptr) {
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager", "onPanCallBack, gestureEvent nullptr");
+    } else {
+        auto inputEvent = OH_ArkUI_GestureEvent_GetRawInputEvent(gestureEvent);
+        auto sourceType = OH_ArkUI_UIInputEvent_GetSourceType(inputEvent);
+        auto toolType = OH_ArkUI_UIInputEvent_GetToolType(inputEvent);
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager",
+                                         "onPanCallBack, PanGesture sourceType %{public}d", sourceType);
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager",
+                                                     "onPanCallBack, PanGesture toolType %{public}d", toolType);
+    }
+    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager", "OnInterruptCallback,systag %{public}d", systag);
+    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Manager",
+        "OnInterruptCallback,systag %{public}d", recognizerType);
+    if (!flag && interruptNode) {
+        flag = true;
+        ArkUI_NumberValue value[] = {{.u32 = actionedColor}};
+        ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+        auto nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
+            OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
+        auto ret = nodeAPI->setAttribute(interruptNode, NODE_BACKGROUND_COLOR, &value_item);
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager",
+            "PANGESTURE  setBackgroundColor result %{public}d", ret);
+    }
+    return GESTURE_INTERRUPT_RESULT_REJECT;
+}
+
+napi_value GestureTest::CreateInterruptNativeNode(napi_env env, napi_callback_info info)
+{
+    OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "GuestureTest", "CreateInterruptNativeNode");
+    size_t argc = PARAM_1;
+    napi_value args[PARAM_1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    size_t length = PARAM_64;
+    size_t strLength = PARAM_0;
+    char xComponentID[PARAM_64] = {PARAM_0};
+    napi_get_value_string_utf8(env, args[PARAM_0], xComponentID, length, &strLength);
+
+    if ((env == nullptr) || (info == nullptr)) {
+        return nullptr;
+    }
+    flag = false;
+    interruptNode = CreateNativeNode("interruptID");
+    auto guestureAPI = reinterpret_cast<ArkUI_NativeGestureAPI_1*>(
+        OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
+    auto panGuesture = guestureAPI->createPanGesture(1, GESTURE_DIRECTION_ALL, 5);
+    guestureAPI->setGestureEventTarget(panGuesture, GESTURE_EVENT_ACTION_ACCEPT, interruptNode, &OnPanActionCallBack);
+    guestureAPI->addGestureToNode(interruptNode, panGuesture, PARALLEL, NORMAL_GESTURE_MASK);
+    guestureAPI->setGestureInterrupterToNode(interruptNode, &OnInterruptCallback);
+    std::string id(xComponentID);
+    if (OH_NativeXComponent_AttachNativeRootNode(
+        PluginManager::GetInstance()->GetNativeXComponent(id), interruptNode) ==
+        INVALID_PARAM) {
+        OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "CreatePinchNativeNode",
+                     "OH_NativeXComponent_AttachNativeRootNode failed");
+    }
     napi_value exports;
     if (napi_create_object(env, &exports) != napi_ok) {
         napi_throw_type_error(env, NULL, "napi_create_object failed");
