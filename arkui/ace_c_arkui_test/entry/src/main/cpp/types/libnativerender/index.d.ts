@@ -154,3 +154,5 @@ export const stackOnAreaChangeTest: (a: string) => void;
 export const stackOnTouchTest: (a: string) => void;
 
 export const textEnabledTest: (a: string) => void;
+
+export const gestureTest: (a: string) => void;

@@ -44,6 +44,8 @@ add_library(nativerender SHARED
     scroll/scroll_hittestbehavior_test.cpp
     scroll/scroll_scrollto_test.cpp
     scroll/scroll_currentoffset_test.cpp
+    gesture/gesture_test.cpp
+    customcomponent/customcomponent_event_test.cpp
     stack/stack_hittestbehavior_test.cpp
     stack/stack_onareachange_test
     stack/stack_ontouch_test.cpp

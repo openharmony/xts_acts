@@ -44,6 +44,8 @@
 #include "scroll/scroll_scrolledge_test.h"
 #include "scroll/scroll_scrollto_test.h"
 #include "scroll/scroll_currentoffset_test.h"
+#include "gesture/gesture_test.h"
+#include "customcomponent/customcomponent_event_test.h"
 #include "stack/stack_hittestbehavior_test.h"
 #include "stack/stack_onareachange_test.h"
 #include "stack/stack_ontouch_test.h"
@@ -195,6 +197,20 @@ static napi_value Init(napi_env env, napi_value exports)
         {"scrollCurrentOffsetSharpTest", nullptr, ScrollCurrentOffsetTest::CreateNativeNodeSharp, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"scrollCurrentOffsetSmoothTest", nullptr, ScrollCurrentOffsetTest::CreateNativeNodeSmooth, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"longPressGestureTest", nullptr, GestureTest::CreateLongPressNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"swipeGestureTest", nullptr, GestureTest::CreateSwipeNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"panGestureTest", nullptr, GestureTest::CreatePanNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"rotateGestureTest", nullptr, GestureTest::CreateRotateNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"pinchGestureTest", nullptr, GestureTest::CreatePinchNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"customComponentEventTest", nullptr, CustomComponentEventTest::CreateNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"interruptGestureTest", nullptr, GestureTest::CreateInterruptNativeNode, nullptr, nullptr,
          nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {

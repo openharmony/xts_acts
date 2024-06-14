@@ -165,6 +165,14 @@ const unsigned int LOG_PRINT_DOMAIN = 0xFF00;
         }                                                                                                              \
     } while (0)
 
+#define ASSERT_OBJ(result, expect)                                                                                     \
+    do {                                                                                                               \
+        if ((result) != (expect)) {                                                                                    \
+            napi_value errorResult = nullptr;                                                                          \
+            return errorResult;                                                                                        \
+        }                                                                                                              \
+    } while (0)
+
 #define NAPI_END                                                                                                       \
     do {                                                                                                               \
         napi_value result = nullptr;                                                                                   \
