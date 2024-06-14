@@ -17,8 +17,8 @@ import deviceManager from '@ohos.distributedDeviceManager';
 import { BusinessError } from '@ohos.base'
 
 export default class RemoteDeviceModel {
-  deviceList = [];
-  deviceManager;
+  deviceList:Array<deviceManager.DeviceBasicInfo> = [];
+  deviceManager: deviceManager.DeviceManager|null = null;
 
   constructor() {
   }
@@ -66,7 +66,9 @@ export default class RemoteDeviceModel {
   unregisterDeviceListCallback() {
     console.info('[dmsDemo] stopDeviceDiscovery');
     try {
-      this.deviceManager.stopDiscovering();
+      if (this.deviceManager) {
+        this.deviceManager.stopDiscovering();
+      }
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error('stopDiscovering errCode:' + e.code + ',errMessage:' + e.message);
