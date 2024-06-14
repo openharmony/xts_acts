@@ -66,6 +66,7 @@ export default function PasteboardDelayCopyTest() {
           expect().assertFail();
         }).catch((error:BusinessError) => {
           console.log("ttt setUnifiedData failed");
+          expect().assertFail();
         });
       } catch (error) {
         console.log("ttt setUnifiedData failed");
@@ -103,6 +104,7 @@ export default function PasteboardDelayCopyTest() {
           expect().assertFail();
         }).catch((error:BusinessError) => {
           console.log("ttt setUnifiedData failed error is "+error.message);
+          expect().assertFail();
         });
       } catch (error) {
         console.log("ttt setUnifiedData failed");
