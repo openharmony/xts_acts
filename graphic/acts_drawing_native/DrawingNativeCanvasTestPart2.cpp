@@ -13,8 +13,6 @@
  * limitations under the License.
  */
 
-#include "gtest/gtest.h"
-
 #include "DrawingNativeCanvasTest.h"
 #include "drawing_bitmap.h"
 #include "drawing_brush.h"
@@ -38,6 +36,7 @@
 #include "drawing_shader_effect.h"
 #include "drawing_text_blob.h"
 #include "drawing_typeface.h"
+#include "gtest/gtest.h"
 #include "image/pixelmap_native.h"
 
 using namespace testing;
@@ -47,18 +46,23 @@ namespace OHOS {
 namespace Rosen {
 namespace Drawing {
 
-OH_PixelmapNative *GET_OH_PixelmapNative() {
+OH_PixelmapNative *GET_OH_PixelmapNative()
+{
     OH_Pixelmap_InitializationOptions *options = nullptr;
     OH_PixelmapNative *pixelMap = nullptr;
     OH_PixelmapInitializationOptions_Create(&options);
     // 4 means width
-    OH_PixelmapInitializationOptions_SetWidth(options, 4);
+    uint32_t width = 4;
+    OH_PixelmapInitializationOptions_SetWidth(options, width);
     // 4 means height
-    OH_PixelmapInitializationOptions_SetHeight(options, 4);
+    uint32_t height = 4;
+    OH_PixelmapInitializationOptions_SetHeight(options, height);
     // 4 means RGBA format
-    OH_PixelmapInitializationOptions_SetPixelFormat(options, 3);
+    int32_t pixelFormat = 3;
+    OH_PixelmapInitializationOptions_SetPixelFormat(options, pixelFormat);
     // 2 means ALPHA_FORMAT_PREMUL format
-    OH_PixelmapInitializationOptions_SetAlphaType(options, 2);
+    int32_t alphaType = 2;
+    OH_PixelmapInitializationOptions_SetAlphaType(options, alphaType);
     // 255 means rgba data
     uint8_t data[] = {255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255};
     // 16 means data length
@@ -1398,6 +1402,6 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawCircleInputDestroyed, TestSize.L
     // Deprecated
 }
 
-} // namespace Drawing
-} // namespace Rosen
-} // namespace OHOS
+}  // namespace Drawing
+}  // namespace Rosen
+}  // namespace OHOS
