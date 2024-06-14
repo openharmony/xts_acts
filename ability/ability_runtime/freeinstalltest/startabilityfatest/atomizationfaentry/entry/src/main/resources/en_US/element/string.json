@@ -2,19 +2,15 @@
   "string": [
     {
       "name": "module_desc",
-      "value": "迁移111"
+      "value": "module description"
     },
     {
       "name": "MainAbility_desc",
-      "value": "eTS_Empty Ability"
+      "value": "description"
     },
     {
       "name": "MainAbility_label",
       "value": "label"
-    },
-    {
-      "name": "description_serviceability",
-      "value": "hap sample empty service"
     }
   ]
 }
