@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import drm from '@ohos.multimedia.drm';
 import util from '@ohos.util';
@@ -95,13 +95,13 @@ export default function abilityTest() {
             if(sysSupport === true){
                 let drmMediaKeySystem = drm.createMediaKeySystem(uuid);
                 let avPlayer = await media.createAVPlayer();
-                let keyinfos = avPlayer.getMediaKeySystemInfos();
-                if (keyinfos && keyinfos.length > 0){
-                    for (let item = 0; item < keyinfos.length; item++) {
-                        console.info(`getMediaKeySystemInfos item:${item}, keyinfos[${item}].uuid:${keyinfos[item].uuid}, keyinfos[${item}].pssh:${keyinfos[item].pssh}`)
+                let MediaKeySystemInfo = avPlayer.getMediaKeySystemInfos();
+                if (MediaKeySystemInfo && MediaKeySystemInfo.length > 0){
+                    for (let item = 0; item < MediaKeySystemInfo.length; item++) {
+                        console.info(`getMediaKeySystemInfos item:${item}, MediaKeySystemInfo[${item}].uuid:${MediaKeySystemInfo[item].uuid}, MediaKeySystemInfo[${item}].pssh:${MediaKeySystemInfo[item].pssh}`)
                     }
                 }
-                expect(keyinfos).assertUndefined();
+                expect(MediaKeySystemInfo).assertUndefined();
                 drmMediaKeySystem.destroy();
             }
             done();
@@ -1629,6 +1629,60 @@ export default function abilityTest() {
                 drmsys2.getCertificateStatus();
                 expect(cstatus).assertEqual(drm.CertificateStatus.CERT_STATUS_PROVISIONED);
                 drmsys2.destroy();
+            }
+            done();
+        })
+        /* *
+        * @tc.number    : SUB_MULTIMEDIA_DRM_AVPLAYER_3300
+        * @tc.name      : testGetTrackDescription
+        * @tc.desc      : 获取插件name以及uuid
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level0
+        */
+        it('SUB_MULTIMEDIA_DRM_AVPLAYER_3300', 0, function (done) {
+            if(sysSupport === true){
+                let MediaKeySystemDescription = drm.getMediaKeySystems();
+                for (let i = 0; i < MediaKeySystemDescription.length; i++) {
+                    console.log("XX SUB_MULTIMEDIA_DRM_AVPLAYER_3300 name is ",MediaKeySystemDescription[i].name);
+                    console.log("XX SUB_MULTIMEDIA_DRM_AVPLAYER_3300 uuid is ",MediaKeySystemDescription[i].uuid);
+                    expect(MediaKeySystemDescription[i].name).assertEqual("com.clearplay.drm")
+                    expect(MediaKeySystemDescription[i].uuid).assertEqual("47a10ff0ca3c49c69c12a764ffde091f")
+                }
+            }
+            done();
+        })
+        /* *
+        * @tc.number    : SUB_MULTIMEDIA_DRM_AVPLAYER_3400
+        * @tc.name      : testGetTrackDescription
+        * @tc.desc      : 获取插件name以及uuid
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level0
+        */
+        it('SUB_MULTIMEDIA_DRM_AVPLAYER_3400', 0, function (done) {
+            if(sysSupport === true){
+                let drmsys = drm.createMediaKeySystem(uuid);
+                let drmMaxLevel = drmsys.getMaxContentProtectionLevel();
+                console.log("XX SUB_MULTIMEDIA_DRM_AVPLAYER_3400 level is ",drmMaxLevel);
+                expect(drmMaxLevel).assertEqual(drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
+                drmsys.destroy();
+            }
+            done();
+        })
+        /* *
+        * @tc.number    : SUB_MULTIMEDIA_DRM_AVPLAYER_3500
+        * @tc.name      : testGetTrackDescription
+        * @tc.desc      : 获取插件name以及uuid
+        * @tc.size      : MediumTest
+        * @tc.type      : Function test
+        * @tc.level     : Level0
+        */
+        it('SUB_MULTIMEDIA_DRM_AVPLAYER_3500', 0, function (done) {
+            if(sysSupport === true){
+                let drmUuid = drm.getMediaKeySystemUuid("com.clearplay.drm");
+                console.log("XX SUB_MULTIMEDIA_DRM_AVPLAYER_3500 uuid is ",drmUuid);
+                expect(drmUuid).assertEqual("47a10ff0ca3c49c69c12a764ffde091f")
             }
             done();
         })
