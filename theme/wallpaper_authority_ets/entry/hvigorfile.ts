@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -12,9 +12,5 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-import wallpaperAuthorityJSUnit from './wallpaperauthorityTest.test';
-
-export default function testsuite() {
-  wallpaperAuthorityJSUnit();
-}
+// Script for compiling build behavior. It is built in the build plug-in and cannot be modified currently.
+export { legacyHapTasks } from '@ohos/hvigor-ohos-plugin';

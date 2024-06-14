@@ -1,6 +1,5 @@
-// @ts-nocheck
-/**
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+/*
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,11 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import TestRunner from '@ohos.application.testRunner';
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
+import TestRunner from '@ohos.application.testRunner'
+import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
 
-var abilityDelegator = undefined;
-var abilityDelegatorArguments = undefined;
+var abilityDelegator = undefined
+var abilityDelegatorArguments = undefined
 
 function translateParamsToString(parameters) {
     const keySet = new Set([
@@ -28,10 +27,10 @@ function translateParamsToString(parameters) {
     let targetParams = '';
     for (const key in parameters) {
         if (keySet.has(key)) {
-            targetParams += ' ' + key + ' ' + parameters[key];
+            targetParams += ' ' + key + ' ' + parameters[key]
         }
-    };
-    return targetParams.trim();
+    }
+    return targetParams.trim()
 }
 
 async function onAbilityCreateCallback() {
@@ -39,7 +38,7 @@ async function onAbilityCreateCallback() {
 }
 
 async function addAbilityMonitorCallback(err: any) {
-    console.info('addAbilityMonitorCallback : ' + JSON.stringify(err));
+    console.info('addAbilityMonitorCallback : ' + JSON.stringify(err))
 }
 
 export default class OpenHarmonyTestRunner implements TestRunner {
@@ -47,32 +46,32 @@ export default class OpenHarmonyTestRunner implements TestRunner {
     }
 
     onPrepare() {
-        console.info('OpenHarmonyTestRunner OnPrepare');
+        console.info('OpenHarmonyTestRunner OnPrepare')
     }
 
     onRun() {
-        console.log('OpenHarmonyTestRunner onRun run');
-        abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
-        abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+        console.log('OpenHarmonyTestRunner onRun run')
+        abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+        abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
 
         let lMonitor = {
             abilityName: testAbilityName,
             onAbilityCreate: onAbilityCreateCallback,
         };
-        var testAbilityName = abilityDelegatorArguments.parameters['-p'] + '.MainAbility';
-        abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback);
-        var cmd = 'aa start -d 0 -a ' + testAbilityName + ' -b ' + abilityDelegatorArguments.bundleName;
-        cmd += ' '+translateParamsToString(abilityDelegatorArguments.parameters);
-        console.info('cmd : '+cmd);
+        var testAbilityName = abilityDelegatorArguments.parameters['-p'] + '.MainAbility'
+        abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback)
+        var cmd = 'aa start -d 0 -a ' + testAbilityName + ' -b ' + abilityDelegatorArguments.bundleName
+        cmd += ' '+translateParamsToString(abilityDelegatorArguments.parameters)
+        console.info('cmd : '+cmd)
         abilityDelegator.executeShellCommand(cmd,
             (err: any, d: any) => {
                 console.info('executeShellCommand : err : ' + JSON.stringify(err));
                 console.info('executeShellCommand : data : ' + d.stdResult);
                 console.info('executeShellCommand : data : ' + d.exitCode);
             })
-        console.info('OpenHarmonyTestRunner onRun call abilityDelegator.getAppContext');
-        var context = abilityDelegator.getAppContext();
-        console.info('getAppContext : ' + JSON.stringify(context));
-        console.info('OpenHarmonyTestRunner onRun end');
+        console.info('OpenHarmonyTestRunner onRun call abilityDelegator.getAppContext')
+        var context = abilityDelegator.getAppContext()
+        console.info('getAppContext : ' + JSON.stringify(context))
+        console.info('OpenHarmonyTestRunner onRun end')
     }
 };
