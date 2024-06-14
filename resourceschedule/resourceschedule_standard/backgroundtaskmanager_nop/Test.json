@@ -23,12 +23,6 @@
 		        "power-shell wakeup",
                 "power-shell setmode 602"
             ]
-        },
-        {
-            "type": "ShellKit",
-            "teardown-command": [
-                "rm -rf data/test"
-            ]
         }
     ]
 }
