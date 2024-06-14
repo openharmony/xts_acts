@@ -25,10 +25,10 @@ class Test {
     abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
     console.info('start run testcase!!!');
     Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
-  },
+  }
   onDestroy() {
     console.info('Application onDestroy');
-  },
+  }
 }
 
 export default new Test()
