@@ -245,6 +245,7 @@
 #include "arkApi/arkApi.cpp"
 #include "arkApi/arkUIAPi.cpp"
 #include "animation/animation.cpp"
+#include "customcomponent/customcomponent_event_null_test.cpp"
 #include "waterFlower/waterFlower.cpp"
 
 namespace ArkUICapiTest {
@@ -2162,7 +2163,10 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testAnimation_003", nullptr, testAnimation_003, nullptr , nullptr, nullptr, napi_default, nullptr},
         {"testAnimation_004", nullptr, testAnimation_004, nullptr , nullptr, nullptr, napi_default, nullptr},
         {"testAnimation_005", nullptr, testAnimation_005, nullptr , nullptr, nullptr, napi_default, nullptr},
-    
+        {"customComponentEventNullTest001",
+            nullptr, CustomComponentEventNull001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"customComponentEventNullTest002",
+            nullptr, CustomComponentEventNull002, nullptr, nullptr, nullptr, napi_default, nullptr},    
         {"testWaterFlower_001", nullptr, testWaterFlower_001, nullptr , nullptr, nullptr, napi_default, nullptr},
         {"testWaterFlower_002", nullptr, testWaterFlower_002, nullptr , nullptr, nullptr, napi_default, nullptr},
         {"testWaterFlower_003", nullptr, testWaterFlower_003, nullptr , nullptr, nullptr, napi_default, nullptr},

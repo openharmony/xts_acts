@@ -2640,3 +2640,6 @@ export const testWaterFlower_002: () => number;
 export const testWaterFlower_003: () => number;
 export const testWaterFlower_004: () => number;
 export const testWaterFlower_005: () => number;
+export const customComponentEventNullTest001: () => number;
+
+export const customComponentEventNullTest002: () => number;
