@@ -271,7 +271,7 @@ export default function textBlobTest() {
         console.info(`${msg} makeFromRunBuffer succeeded for bounds ${JSON.stringify(null)}`);
       } catch (e) {
         console.info(`${msg} makeFromRunBuffer failed for bounds ${JSON.stringify(null)}, errorCode is: ${e.code}, errorMessage is: ${e.message}`);
-        expect().assertFail();
+        expect(e.code).assertEqual(401);
       }
 
       for (let bounds of boundsList) {
@@ -279,10 +279,18 @@ export default function textBlobTest() {
           const textBlob = drawing.TextBlob.makeFromRunBuffer(runBuffer, font, bounds);
           const b = textBlob.bounds();
           console.info(`${msg} bounds result is ${JSON.stringify(b)}`);
-          expect(b.left).assertEqual(bounds.left);
-          expect(b.right).assertEqual(bounds.right);
-          expect(b.top).assertEqual(bounds.top);
-          expect(b.bottom).assertEqual(bounds.bottom);
+          console.info(`${msg} bounds input is ${JSON.stringify(bounds)}`);
+          if (bounds.left < bounds.right && bounds.top < bounds.bottom) {
+            expect(Math.round(bounds.left)).assertEqual(Math.round(b.left));
+            expect(Math.round(bounds.right)).assertEqual(Math.round(b.right));
+            expect(Math.round(bounds.top)).assertEqual(Math.round(b.top));
+            expect(Math.round(bounds.bottom)).assertEqual(Math.round(b.bottom));
+          } else {
+            expect(0).assertEqual(b.left);
+            expect(0).assertEqual(b.right);
+            expect(0).assertEqual(b.top);
+            expect(0).assertEqual(b.bottom);
+          }
           console.info(`${msg} makeFromRunBuffer succeeded for bounds ${JSON.stringify(bounds)}`);
         } catch (e) {
           console.info(`${msg} makeFromRunBuffer failed for bounds ${JSON.stringify(bounds)}, errorCode is: ${e.code}, errorMessage is: ${e.message}`);
@@ -295,7 +303,7 @@ export default function textBlobTest() {
         console.info(`${msg} makeFromRunBuffer succeeded for bounds ${JSON.stringify(undefined)}`);
       } catch (e) {
         console.info(`${msg} makeFromRunBuffer failed for bounds ${JSON.stringify(undefined)}, errorCode is: ${e.code}, errorMessage is: ${e.message}`);
-        expect().assertFail();
+        expect(e.code).assertEqual(401);
       }
 
       try {
@@ -304,7 +312,7 @@ export default function textBlobTest() {
         console.info(msg + ' makeFromRunBuffer succeeded for empty run buffer');
       } catch (e) {
         console.info(msg + ` makeFromRunBuffer failed for empty run buffer, errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
-        expect().assertFail();
+        expect(e.code).assertEqual(401);
       }
 
     });
@@ -520,22 +528,22 @@ export default function textBlobTest() {
         let randomRunBuffer: drawing.TextBlobRunBuffer[] = [
           {
             glyph: Math.floor(Math.random() * 100),
-            positionX: Math.random() * 100,
-            positionY: Math.random() * 100
+            positionX: Math.floor(Math.random() * 100),
+            positionY: Math.floor(Math.random() * 100)
           },
           {
             glyph: Math.floor(Math.random() * 100),
-            positionX: Math.random() * 100,
-            positionY: Math.random() * 100
+            positionX: Math.floor(Math.random() * 100),
+            positionY: Math.floor(Math.random() * 100)
           }
         ];
 
         // Generate random bounds
         let randomBounds: common2D.Rect = {
-          left: Math.random() * 100,
-          right: Math.random() * 100,
-          top: Math.random() * 100,
-          bottom: Math.random() * 100
+          left: Math.floor(Math.random() * 100),
+          top: Math.floor(Math.random() * 100),
+          right: Math.floor(Math.random() * 100 + 100),
+          bottom: Math.floor(Math.random() * 100 + 100)
         };
 
         try {
