@@ -46,6 +46,28 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
+
+OH_PixelmapNative *GET_OH_PixelmapNative() {
+    OH_Pixelmap_InitializationOptions *options = nullptr;
+    OH_PixelmapNative *pixelMap = nullptr;
+    OH_PixelmapInitializationOptions_Create(&options);
+    // 4 means width
+    OH_PixelmapInitializationOptions_SetWidth(options, 4);
+    // 4 means height
+    OH_PixelmapInitializationOptions_SetHeight(options, 4);
+    // 4 means RGBA format
+    OH_PixelmapInitializationOptions_SetPixelFormat(options, 3);
+    // 2 means ALPHA_FORMAT_PREMUL format
+    OH_PixelmapInitializationOptions_SetAlphaType(options, 2);
+    // 255 means rgba data
+    uint8_t data[] = {255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255};
+    // 16 means data length
+    size_t dataLength = 16;
+    OH_PixelmapNative_CreatePixelmap(data, dataLength, options, &pixelMap);
+    OH_PixelmapInitializationOptions_Release(options);
+    return pixelMap;
+}
+
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_1100
  * @tc.name: testCanvasDrawPixelMapRectNormal
@@ -68,23 +90,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPixelMapRectNormal, TestSize.Lev
     EXPECT_NE(dst, nullptr);
 
     // 4. Obtain OH_Drawing_PixelMap from OH_Drawing_PixelMapGetFromOhPixelMapNative
-    OH_Pixelmap_InitializationOptions *options = nullptr;
-    OH_PixelmapNative *pixelMap = nullptr;
-    OH_PixelmapInitializationOptions_Create(&options);
-    // 4 means width
-    OH_PixelmapInitializationOptions_SetWidth(options, 4);
-    // 4 means height
-    OH_PixelmapInitializationOptions_SetHeight(options, 4);
-    // 4 means RGBA format
-    OH_PixelmapInitializationOptions_SetPixelFormat(options, 3);
-    // 2 means ALPHA_FORMAT_PREMUL format
-    OH_PixelmapInitializationOptions_SetAlphaType(options, 2);
-    // 255 means rgba data
-    uint8_t data[] = {255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255};
-    // 16 means data length
-    size_t dataLength = 16;
-    OH_PixelmapNative_CreatePixelmap(data, dataLength, options, &pixelMap);
-    EXPECT_NE(pixelMap, nullptr);
+    OH_PixelmapNative *pixelMap = GET_OH_PixelmapNative();
     OH_Drawing_PixelMap *drPixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(pixelMap);
     EXPECT_NE(drPixelMap, nullptr);
 
@@ -118,23 +124,8 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPixelMapRectNull, TestSize.Level
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);
 
-    OH_Pixelmap_InitializationOptions *options = nullptr;
-    OH_PixelmapNative *pixelMap = nullptr;
-    OH_PixelmapInitializationOptions_Create(&options);
-    // 4 means width
-    OH_PixelmapInitializationOptions_SetWidth(options, 4);
-    // 4 means height
-    OH_PixelmapInitializationOptions_SetHeight(options, 4);
-    // 4 means RGBA format
-    OH_PixelmapInitializationOptions_SetPixelFormat(options, 3);
-    // 2 means ALPHA_FORMAT_PREMUL format
-    OH_PixelmapInitializationOptions_SetAlphaType(options, 2);
-    // 255 means rgba data
-    uint8_t data[] = {255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255};
-    // 16 means data length
-    size_t dataLength = 16;
-    OH_PixelmapNative_CreatePixelmap(data, dataLength, options, &pixelMap);
-    EXPECT_NE(pixelMap, nullptr);
+    OH_PixelmapNative *pixelMap = GET_OH_PixelmapNative();
+
     OH_Drawing_PixelMap *drPixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(pixelMap);
     EXPECT_NE(drPixelMap, nullptr);
 
@@ -180,7 +171,6 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPixelMapRectNull, TestSize.Level
     OH_Drawing_SamplingOptionsDestroy(sampleOptions);
     OH_Drawing_PixelMapDissolve(drPixelMap);
     OH_Drawing_CanvasDestroy(canvas);
-    OH_PixelmapInitializationOptions_Release(options);
 }
 
 /*
@@ -196,23 +186,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPixelMapRectAbnormal, TestSize.L
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);
 
-    OH_Pixelmap_InitializationOptions *options = nullptr;
-    OH_PixelmapNative *pixelMap = nullptr;
-    OH_PixelmapInitializationOptions_Create(&options);
-    // 4 means width
-    OH_PixelmapInitializationOptions_SetWidth(options, 4);
-    // 4 means height
-    OH_PixelmapInitializationOptions_SetHeight(options, 4);
-    // 4 means RGBA format
-    OH_PixelmapInitializationOptions_SetPixelFormat(options, 3);
-    // 2 means ALPHA_FORMAT_PREMUL format
-    OH_PixelmapInitializationOptions_SetAlphaType(options, 2);
-    // 255 means rgba data
-    uint8_t data[] = {255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255};
-    // 16 means data length
-    size_t dataLength = 16;
-    OH_PixelmapNative_CreatePixelmap(data, dataLength, options, &pixelMap);
-    EXPECT_NE(pixelMap, nullptr);
+    OH_PixelmapNative *pixelMap = GET_OH_PixelmapNative();
     OH_Drawing_PixelMap *drPixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(pixelMap);
     EXPECT_NE(drPixelMap, nullptr);
 
@@ -230,7 +204,6 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPixelMapRectAbnormal, TestSize.L
     OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, nullptr, sampleOptions);
     OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, nullptr);
     OH_Drawing_PixelMapGetFromNativePixelMap(nullptr);
-
     // 2
     src = OH_Drawing_RectCreate(-1, 1, 1, 1);
     OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
@@ -240,13 +213,11 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPixelMapRectAbnormal, TestSize.L
     OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
     src = OH_Drawing_RectCreate(1, 1, 1, -1);
     OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
-
     // 3
     src = OH_Drawing_RectCreate(100, 100, 100, 200);
     OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
     src = OH_Drawing_RectCreate(100, 200, 200, 200);
     OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
-
     // 4
     src = OH_Drawing_RectCreate(100, 100, 100, 100);
     OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
@@ -271,7 +242,6 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPixelMapRectAbnormal, TestSize.L
     OH_Drawing_SamplingOptionsDestroy(sampleOptions);
     OH_Drawing_PixelMapDissolve(drPixelMap);
     OH_Drawing_CanvasDestroy(canvas);
-    OH_PixelmapInitializationOptions_Release(options);
 }
 
 /*
@@ -283,27 +253,10 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPixelMapRectAbnormal, TestSize.L
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPixelMapRectMaximum, TestSize.Level3) {
-    // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);
 
-    OH_Pixelmap_InitializationOptions *options = nullptr;
-    OH_PixelmapNative *pixelMap = nullptr;
-    OH_PixelmapInitializationOptions_Create(&options);
-    // 4 means width
-    OH_PixelmapInitializationOptions_SetWidth(options, 4);
-    // 4 means height
-    OH_PixelmapInitializationOptions_SetHeight(options, 4);
-    // 4 means RGBA format
-    OH_PixelmapInitializationOptions_SetPixelFormat(options, 3);
-    // 2 means ALPHA_FORMAT_PREMUL format
-    OH_PixelmapInitializationOptions_SetAlphaType(options, 2);
-    // 255 means rgba data
-    uint8_t data[] = {255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255};
-    // 16 means data length
-    size_t dataLength = 16;
-    OH_PixelmapNative_CreatePixelmap(data, dataLength, options, &pixelMap);
-    EXPECT_NE(pixelMap, nullptr);
+    OH_PixelmapNative *pixelMap = GET_OH_PixelmapNative();
     OH_Drawing_PixelMap *drPixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(pixelMap);
     EXPECT_NE(drPixelMap, nullptr);
 
@@ -314,7 +267,6 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPixelMapRectMaximum, TestSize.Le
 
     OH_Drawing_SamplingOptions *sampleOptions =
         OH_Drawing_SamplingOptionsCreate(FILTER_MODE_NEAREST, MIPMAP_MODE_NEAREST);
-
     // 2
     OH_Drawing_Rect *src1 = OH_Drawing_RectCreate(FLT_MAX, FLT_MAX, 100, 100);
     OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src1, dst, sampleOptions);
@@ -337,7 +289,6 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPixelMapRectMaximum, TestSize.Le
     OH_Drawing_SamplingOptionsDestroy(sampleOptions);
     OH_Drawing_PixelMapDissolve(drPixelMap);
     OH_Drawing_CanvasDestroy(canvas);
-    OH_PixelmapInitializationOptions_Release(options);
 }
 
 /*
