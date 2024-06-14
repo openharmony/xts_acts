@@ -90,6 +90,7 @@
 #include "textinput/textinput_oncut_test.h"
 #include "textinput/textinput_onpaste_test.h"
 #include "gesture/gesture_test.h"
+#include "customcomponent/customcomponent_event_test.h"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -329,7 +330,7 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, napi_default, nullptr},
         {"pinchGestureTest", nullptr, GestureTest::CreatePinchNativeNode, nullptr, nullptr,
          nullptr, napi_default, nullptr},
-        {"customComponentEventTest", nullptr, GestureTest::CreatePinchNativeNode, nullptr, nullptr,
+        {"customComponentEventTest", nullptr, CustomComponentEventTest::CreateNativeNode, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"interruptGestureTest", nullptr, GestureTest::CreateInterruptNativeNode, nullptr, nullptr,
          nullptr, napi_default, nullptr},

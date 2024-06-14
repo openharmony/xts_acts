@@ -25,9 +25,9 @@
 
 namespace ArkUICapiTest {
 
-class CustomComponentTest {
+class CustomComponentEventTest {
 public:
-    ~CustomComponentTest();
+    ~CustomComponentEventTest();
     static napi_value CreateNativeNode(napi_env env, napi_callback_info info);
 };
 } // namespace ArkUICapiTest

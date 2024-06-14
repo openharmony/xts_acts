@@ -559,6 +559,7 @@ import accessibilityStateTest from './accessibilityState/accessibilityStateTest.
 import relativecontaineAlignmentRuleOptionTest from './relativecontaine/RelativeContaineAlignmentRuleOptionTest.test'
 import relativecontaineBarrierOptionTest from './relativecontaine/RelativeContaineBarrierOptionTest.test'
 import testGesture from './gesture/GestureTest.test'
+import customComponentEventTest from './customcomponent/CustomComponentEventTest.test'
 import commonAttrsAnimateTest from './commonattrs/CommonAttrsAnimateTest.test'
 import drawableDescriptorCreateTest from './drawabledescriptor/DrawableDescriptorCreateTest.test'
 
@@ -1110,6 +1111,7 @@ export default function testsuite() {
   relativecontaineAlignmentRuleOptionTest()
   relativecontaineBarrierOptionTest()
   testGesture()
+  customComponentEventTest()
   commonAttrsAnimateTest()
   drawableDescriptorCreateTest()
 }
