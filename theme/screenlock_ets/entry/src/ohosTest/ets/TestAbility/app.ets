@@ -15,7 +15,7 @@
 
 import { Hypium } from '@ohos/hypium';
 import testsuite from '../test/List.test';
-import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 
 class Test {
   onCreate() {
