@@ -20,10 +20,8 @@ import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry
 class Test {
   onCreate() {
     console.info('Application onCreate');
-    let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator;
-    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-    let abilityDelegatorArguments: AbilityDelegatorRegistry.AbilityDelegatorArgs;
-    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
+    let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+    let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments();
     console.info('start run testcase!!!');
     Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite);
   }
