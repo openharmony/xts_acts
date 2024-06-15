@@ -367,6 +367,7 @@ export default function ApiCoverTest() {
         let baseContext: common.BaseContext = stageContext;
         let context: common.Context = stageContext;
         let flag = false;
+        let el5 = contextConstant.AreaMode.EL5;
         let el1 = contextConstant.AreaMode.EL1;
         let el2 = contextConstant.AreaMode.EL2;
         let eventHub: common.EventHub = context.eventHub;
