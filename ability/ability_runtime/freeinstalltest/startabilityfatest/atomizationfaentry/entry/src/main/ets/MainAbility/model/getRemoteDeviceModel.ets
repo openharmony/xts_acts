@@ -17,18 +17,18 @@ import deviceManager from '@ohos.distributedDeviceManager';
 import { BusinessError } from '@ohos.base'
 
 export default class RemoteDeviceModel {
-  deviceList = [];
-  deviceManager;
+  deviceList:Array<deviceManager.DeviceBasicInfo> = [];
+  devManager: deviceManager.DeviceManager | null = null;
 
   constructor() {
   }
 
   registerDeviceListCallback() {
-    if (typeof (this.deviceManager) === 'undefined') {
+    if (typeof (this.devManager) === 'undefined') {
       console.log('[dmsDemo] deviceManager.createDeviceManager begin');
       let self = this;
       try {
-        self.deviceManager = deviceManager.createDeviceManager('com.ohos.distributedmusicplayer');
+        self.devManager = deviceManager.createDeviceManager('com.ohos.distributedmusicplayer');
         self.registerDeviceListCallback_();
       } catch(err) {
         let e: BusinessError = err as BusinessError;
@@ -43,14 +43,14 @@ export default class RemoteDeviceModel {
 
   registerDeviceListCallback_(){
     console.info('[dmsDemo] registerDeviceListCallback');
-    if (this.deviceManager == undefined) {
+    if (this.devManager == undefined) {
       console.error('[dmsDemo] deviceManager has not initialized');
       return;
     }
 
     try {
       console.info('[dmsDemo] getTrustedDeviceListSync begin');
-      let list: Array<deviceManager.DeviceBasicInfo> = this.deviceManager.getAvailableDeviceListSync();
+      let list: Array<deviceManager.DeviceBasicInfo> = this.devManager.getAvailableDeviceListSync();
       console.info('[dmsDemo] getTrustedDeviceListSync end, deviceList=' + JSON.stringify(list));
       if (typeof (list) != 'undefined' && typeof (list.length) != 'undefined') {
         this.deviceList = list;
@@ -66,7 +66,9 @@ export default class RemoteDeviceModel {
   unregisterDeviceListCallback() {
     console.info('[dmsDemo] stopDeviceDiscovery');
     try {
-      this.deviceManager.stopDiscovering();
+      if (this.devManager) {
+        this.devManager.stopDiscovering();
+      }
     } catch (err) {
       let e: BusinessError = err as BusinessError;
       console.error('stopDiscovering errCode:' + e.code + ',errMessage:' + e.message);

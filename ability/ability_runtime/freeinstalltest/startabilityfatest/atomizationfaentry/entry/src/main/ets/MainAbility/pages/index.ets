@@ -15,12 +15,11 @@
 import router from '@system.router';
 import featureAbility from '@ohos.ability.featureAbility'
 
-async function routePage(uri) {
-  let options = {
-    uri: uri
-  }
+async function routePage(uri:string) {
   try {
-    await router.push(options)
+    await router.push({
+    uri: uri
+  })
   } catch (err) {
     console.error(`fail callback, code: ${err.code}, msg: ${err.msg}`)
   }

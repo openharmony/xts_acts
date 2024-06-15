@@ -17,7 +17,7 @@ ohos_js_app_suite("ActsCoverapiTest") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsCoverapiTest"
+  hap_name = "ActsCoverApiTest"
   part_name = "ability_runtime"
   subsystem_name = "ability"
 }
