@@ -18,6 +18,7 @@ import hilog from '@ohos.hilog';
 import window from '@ohos.window';
 import Want from '@ohos.app.ability.Want';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import appManager from '@ohos.app.ability.appManager';
 import commonEventManager from '@ohos.commonEventManager';
 
 const TEST_SUITE_NAME: string = 'cloneUIAbilityStarted';
@@ -83,6 +84,20 @@ export default class EntryAbility extends UIAbility {
           hilog.info(0x0000, 'testTag', '%{public}s', `${TEST_SUITE_NAME}-${JSON.stringify(parameters)} start_appClone_1900 publish success`);
         })
         this.context.terminateSelf();
+      }
+
+      if (want.parameters.testCase == 5100) {
+        this.context.getApplicationContext().getRunningProcessInformation().then((infos: Array<appManager.ProcessInformation>) => {
+          hilog.error(0x0000, 'testTag', 'infos: %{public}s', JSON.stringify(infos));
+          for (const item of infos) {
+            if (item.processName == 'com.ohos.appclonehap11' && item.appCloneIndex == appCloneIndex) {
+              commonEventManager.publish('process_information_0100', parameters, (err, data) => {
+                hilog.info(0x0000, 'testTag', '%{public}s', `${TEST_SUITE_NAME}-${JSON.stringify(parameters)} process_information_0100 publish success`);
+              })
+              this.context.terminateSelf();
+            }
+          }
+        })
       }
     }
   }

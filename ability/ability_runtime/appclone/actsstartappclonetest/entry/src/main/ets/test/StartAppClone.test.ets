@@ -1001,6 +1001,63 @@ export default function startAppCloneTest() {
         done();
       }
     });
+
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_ProcessInformation_0100
+     * @tc.name   : Call UIAbilityContext startRecentAbility
+     * @tc.desc   : expect app clone to start.
+     * @tc.type   : Function
+     * @tc.size   : MediumTest
+     * @tc.level  : 3
+     */
+    it('SUB_Ability_AbilityRuntime_ProcessInformation_0100', 0, async (done: Function) => {
+      let tag = `SUB_Ability_AbilityRuntime_ProcessInformation_0100`;
+      console.log(`${tag}, it begin`);
+
+      createAppClone();
+      await sleep(1000);
+
+      let subscribeInfo: CommonEventManager.CommonEventSubscribeInfo = {
+        events: ['process_information_0100']
+      };
+      let subscriber = CommonEventManager.createSubscriberSync(subscribeInfo);
+      let subscribeCB = (err: BusinessError, data: CommonEventManager.CommonEventData) => {
+        if (err) {
+          console.error(`receive event failed, code is ${err.code}, message is ${err.message}`);
+          expect().assertFail();
+          done();
+        } else {
+          console.info(`receive event success, event:${data.event}`);
+          if (data.event == 'process_information_0100') {
+            uninstallAppClone();
+            unSubscribe(subscriber, done);
+          }
+        }
+      }
+      CommonEventManager.subscribe(subscriber, subscribeCB);
+
+      let want: Want = {
+        bundleName: appCloneBundleName,
+        abilityName: 'EntryAbility',
+        parameters: {
+          [wantConstant.Params.APP_CLONE_INDEX_KEY]: appCloneIndex,
+          testCase: 5100
+        }
+      }
+      try {
+        AppStorage.get<common.UIAbilityContext>("testAbilityContext").startAbility(want).then(() => {
+          console.info('startAbility succeed');
+        }).catch((err: BusinessError) => {
+          console.error(`startRecentAbility failed, cause: ${JSON.stringify(err)}`);
+          expect().assertFail();
+          done();
+        });
+      } catch (err) {
+        console.error(`${tag} error, errorCode: ${JSON.stringify(err)}`);
+        expect().assertFail();
+        done();
+      }
+    });
   })
 }
 
