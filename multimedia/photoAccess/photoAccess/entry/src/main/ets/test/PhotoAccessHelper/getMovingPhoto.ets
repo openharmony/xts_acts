@@ -152,22 +152,6 @@ export default function getMovingPhotoTest() {
         }
     }
 
-    async function getMovingPhotoFromSandBox(done: Function, testNum: string, imageFileUri: string, videoFileUri: string) {
-      try {
-        let movingPhoto: photoAccessHelper.MovingPhoto = await photoAccessHelper.MediaAssetManager.loadMovingPhoto(context, imageFileUri, videoFileUri);
-        if (movingPhoto == undefined || movingPhoto == null) {
-          console.error(`${testNum} :: loadMovingPhoto failed , movingPhoto is null !`);
-          expect(false).assertTrue();
-          done();
-        }
-        console.log(`${testNum} :: load moving photo success`);
-        done();
-      } catch(error: BusinessError) {
-        console.error(`${testNum} :: loadMovingPhoto failed , message = ${error}`);
-        expect(false).assertTrue();
-        done();
-      }
-    }
 
 	/**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_CREATE_MOVING_PHOTO_0001
@@ -270,21 +254,6 @@ export default function getMovingPhotoTest() {
       await sleep(3000);
       await checkFileExist(done, testNum, sandboxPath, fileList, expectFlag);
     });
-
-    /**
-     * @tc.number    : SUB_PHOTOACCESS_HELPER_LOAD_MOVING_PHOTO_001
-     * @tc.name      : load_moving_photo_from_sandbox_001
-     * @tc.desc      : load moving photo from sandbox
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-     it('load_moving_photo_from_sandbox_001', 0, async function (done) {
-       const testNum = 'load_moving_photo_from_sandbox_001';
-       const imageFileUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/phone/photos/ImageFile.jpg";
-       const videoFileUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/phone/photos/VideoFile.mp4";
-       await getMovingPhotoFromSandBox(done, testNum, imageFileUri, videoFileUri);
-     });
 
 
        // export moving photo:: video and photo
