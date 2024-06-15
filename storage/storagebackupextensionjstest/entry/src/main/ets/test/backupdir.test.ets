@@ -15,7 +15,7 @@
 
 import { describe, it, expect } from '@ohos/hypium';
 import BackupExtensionContext from '@ohos.file.BackupExtensionContext';
-import BackupExtensionAbility from '@ohos.application.BackupExtensionAbility';
+import BackupExtensionAbility, { BundleVersion } from '@ohos.application.BackupExtensionAbility';
 import contextConstant from '@ohos.app.ability.contextConstant';
 
 export default class MyBackupExtAbility extends BackupExtensionAbility {
@@ -40,6 +40,18 @@ export default class MyBackupExtAbility extends BackupExtensionAbility {
       console.log(`onRestore el2 dir: ${dir}`);
       console.log("onRestore end");
    }
+
+   async onBackupEx() {
+    console.log(`onBackupEx ok`);
+    let info = "app diy info";
+    return info;
+  }
+
+  async onRestoreEx(BundleVersion) {
+    console.log(`onRestoreEx ok ${JSON.stringify(BundleVersion)}`);
+    let info = "app diy info";
+    return info;
+  }
 }
 
 export default function backupdirTest(){
@@ -64,6 +76,29 @@ describe('backupdir_js_test',async function(){
          expect(true).assertTrue();
       } catch (error) {
          console.info(`backupextension_backup_backupdir_001 error: ${JSON.stringify(error)}`);
+         expect(false).assertTrue();
+      }
+   });
+
+   /**
+   * @tc.number SUB_BASIC_FM_FileAPI_BackupDir_0200
+   * @tc.name backup_onBackupEx_001
+   * @tc.desc Test onBackupEx() interfaces
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+   it("backup_onBackupEx_001", 3, () => {
+      try {
+         let BackupExtensionAbility = new MyBackupExtAbility();
+         BackupExtensionAbility.onBackupEx();
+         console.log('backup-onBackupEx run ok');
+         BackupExtensionAbility.onRestoreEx(BundleVersion);
+         console.log('backup-onRestoreEx run ok');
+         expect(true).assertTrue();
+      } catch (error) {
+         console.info(`backup_onBackupEx_001 error: ${JSON.stringify(error)}`);
          expect(false).assertTrue();
       }
    });
