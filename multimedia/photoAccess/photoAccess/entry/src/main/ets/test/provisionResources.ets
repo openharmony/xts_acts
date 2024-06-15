@@ -45,8 +45,8 @@ export default function provisionResourcesTest() {
             console.info('afterAll case');
         });
 
-        const getAssetsCount = async function (done, testNum): number {
-            let count = 0;
+        const getAssetsCount = async function (testNum): number {
+            let count = -1;
             try {
                 let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
                 let fetchOptions: photoAccessHelper.FetchOptions = {
@@ -59,15 +59,14 @@ export default function provisionResourcesTest() {
                 return count;
             } catch(error) {
                 console.info(`${testNum} getAssets count failed, error: ${error}`)
-                expect(false).assertTrue();
-                done();
+                return count;
             } 
         }
 
         const checkResourceAsset = async function (done, testNum, fileNames) {
             
             try {
-                const count = await getAssets(done, testNum);
+                const count = await getAssetsCount(testNum);
                 assetCount += fileNames.length;
                 console.info(`${testNum} Get fetchResult successfully, count: ${count}`)
                 console.info(`${testNum} expect assetCount : ${assetCount}`)
@@ -318,11 +317,17 @@ export default function provisionResourcesTest() {
          */
         it('check_provision_resource_count_001', 0, async function (done) {
             const testNum = 'check_provision_resource_count_001';
-            await sleep(3000);
-            const count = await getAssetsCount(done, testNum);
-            console.log(`${testNum} :: expect resource num is ${assetCount}, actual is ${count}`);
-            expect(count).assertEqual(assetCount);
-            done();
+            try {
+                await sleep(3000);
+                const count = await getAssetsCount(testNum);
+                console.log(`${testNum} :: expect resource num is ${assetCount}, actual is ${count}`);
+                expect(count).assertEqual(assetCount);
+                done();
+            } catch (error) {
+                console.log(`${testNum} :: check provisionResources count error :: ${error} !`);
+                expect(false).assertTrue();
+                done();
+            }
         });
 
     });
