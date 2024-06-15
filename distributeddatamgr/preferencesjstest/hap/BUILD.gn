@@ -1,4 +1,4 @@
-# Copyright (C) 2021 Huawei Device Co., Ltd.
+# Copyright (c) 2021 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -13,23 +13,11 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("preferences_js_test") {
-  hap_profile = "./src/main/config.json"
-  deps = [
-    ":preferences_js_assets",
-    ":preferences_resources",
-  ]
+ohos_js_app_suite("preferences_js_test") {
+  test_hap = true
+  testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsPreferencesJsTest"
-  subsystem_name = "distributeddatamgr"
-  part_name = "preferences"
-}
-ohos_js_assets("preferences_js_assets") {
-  js2abc = true
-  hap_profile = "./src/main/config.json"
-  source_dir = "./src/main/js"
-}
-ohos_resources("preferences_resources") {
-  sources = [ "./src/main/resources" ]
-  hap_profile = "./src/main/config.json"
+  subsystem_name = "bundlemanager"
+  part_name = "bundle_framework"
 }
