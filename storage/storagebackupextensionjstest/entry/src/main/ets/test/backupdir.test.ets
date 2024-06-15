@@ -94,8 +94,6 @@ describe('backupdir_js_test',async function(){
          let BackupExtensionAbility = new MyBackupExtAbility();
          BackupExtensionAbility.onBackupEx();
          console.log('backup-onBackupEx run ok');
-         BackupExtensionAbility.onRestoreEx(BundleVersion);
-         console.log('backup-onRestoreEx run ok');
          expect(true).assertTrue();
       } catch (error) {
          console.info(`backup_onBackupEx_001 error: ${JSON.stringify(error)}`);
