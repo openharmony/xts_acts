@@ -69,7 +69,7 @@ struct FolderStackTest1 {
         console.log('this foldStatus:' +msg.foldStatus);
         console.log('this isHoverMode:' +msg.isHoverMode);
         console.log('this appRotation:' +msg.appRotation);
-        console.log('this windowMode:' +msg.windowMode);
+        console.log('this windowStatusType:' +msg.windowStatusType);
         if (msg.appRotation === AppRotation.ROTATION_0) {
           this.w = 'ROTATION_0'
           console.info("App does not rotate to display vertically.")
