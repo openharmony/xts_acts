@@ -427,6 +427,25 @@ export default function ObjectInterfaceTest() {
         });
 
         /**
+         * @tc.number abnormal_contactsApi_insert_test_2800
+         * @tc.name contactsApi_insert error
+         * @tc.desc Function test
+         */
+        it("abnormal_contactsApi_insert_test_2800", 0, async function (done) {
+            var contactDataError = {};
+            try {
+                var rawContactId = await contact.addContact(contactDataError);
+                console.info("abnormal_contactsApi_insert_test_2800 : rawContactId = " + rawContactId);
+                expect(rawContactId == -1).assertTrue();
+                done();
+            } catch (error) {
+                console.info("contactsApi_insert_test_100 : raw_contact insert error = " + error);
+                done();
+            }
+            sleep(500);
+        });
+
+        /**
          * @tc.number abnormal_contactsApi_query_contact_test_3100
          * @tc.name contactsApi_query_contact error
          * @tc.desc Function test
