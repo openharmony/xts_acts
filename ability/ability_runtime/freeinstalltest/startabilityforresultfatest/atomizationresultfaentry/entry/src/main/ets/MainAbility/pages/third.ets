@@ -20,6 +20,10 @@ import Prompt from '@system.prompt';
 import RemoteDeviceModel from '../model/getRemoteDeviceModel.ets';
 import bundleManager from '@ohos.bundle';
 import freeInstall from '@ohos.bundle.freeInstall';
+import { BusinessError } from '@ohos.base';
+import Want from '@ohos.app.ability.Want';
+import ability from '@ohos.ability.ability';
+import common from '@ohos.app.ability.common';
 
 const BUNDLE_NAME = 'com.example.qianyiyingyong.hmservice';
 const ABILITY_NAME = 'com.example.qianyiyingyong.MainAbility';
@@ -27,7 +31,7 @@ const ABILITY_NAME1 = 'com.example.hm2.MainAbility';
 const ABILITY_NAME2 = 'com.example.hm3.MainAbility';
 
 let remoteDeviceId = '';
-let remoteDeviceModel = null;
+let remoteDeviceModel: RemoteDeviceModel;
 
 @Entry
 @Component
@@ -99,7 +103,7 @@ struct Third {
         .margin({ top: 20 })
         .backgroundColor(Color.Grey)
         .onClick(() => {
-          var str = {
+          let str: ability.StartAbilityParameter = {
             'want': {
               'bundleName': BUNDLE_NAME,
               'abilityName': ABILITY_NAME1,
@@ -122,7 +126,7 @@ struct Third {
         .margin({ top: 20 })
         .backgroundColor(Color.Grey)
         .onClick(() => {
-          var str = {
+          let str: ability.StartAbilityParameter = {
             'want': {
               'bundleName': BUNDLE_NAME,
               'abilityName': ABILITY_NAME,
@@ -157,7 +161,7 @@ struct Third {
             this.tips(this.tipsMsg);
             return;
           }
-          var str = {
+          let str: ability.StartAbilityParameter = {
             'want': {
               'deviceId': '' === this.contextText ? remoteDeviceId : this.contextText,
               'bundleName': BUNDLE_NAME,
@@ -185,7 +189,7 @@ struct Third {
             this.tips(this.tipsMsg);
             return;
           }
-          var str = {
+          let str: ability.StartAbilityParameter = {
             'want': {
               'deviceId': '' === this.contextText ? remoteDeviceId : this.contextText,
               'bundleName': BUNDLE_NAME,
@@ -209,7 +213,7 @@ struct Third {
         .margin({ top: 20 })
         .backgroundColor(Color.Grey)
         .onClick(() => {
-          var str = {
+          let str: ability.StartAbilityParameter = {
             'want': {
               'bundleName': BUNDLE_NAME,
               'abilityName': ABILITY_NAME1,
@@ -227,60 +231,57 @@ struct Third {
     .height('100%')
   }
 
-  async updateModuleUpgradeFlag(tag, type1) {
+  async updateModuleUpgradeFlag(tag:string, type1:string) {
     console.info(tag + ' startAbility fAStartAbilityPromise START' + JSON.stringify(type1));
     await freeInstall.setHapModuleUpgradeFlag("com.example.qianyiyingyong.hmservice", type1, 1);
     console.info(tag + ' startAbility fAStartAbilityPromise END');
   }
 
-  async fAStartAbilityPromise(tag, str) {
+  async fAStartAbilityPromise(tag:string, str:ability.StartAbilityParameter) {
     console.info(tag + ' startAbility fAStartAbilityPromise START' + JSON.stringify(str));
-    let code;
+    let code:BusinessError|null = null;
     await featureAbility.startAbility(str)
       .then((data) => {
         console.info(tag + ' startAbility Operation successful. Promise Data: ' + JSON.stringify(data))
-        code = data;
-      }).catch((error) => {
+      }).catch((error:BusinessError) => {
         console.info(tag + ' startAbility Operation failed. Promise Cause: ' + JSON.stringify(error));
         code = error;
       })
     console.info(tag + ' startAbility Operation code Promise: ' + JSON.stringify(code));
-    if (code === 0) {
+    if (!code) {
       this.tips('成功');
     } else {
-      this.tips('错误码：' + code.code);
+      this.tips('错误码：' + JSON.stringify(code));
     }
     console.info(tag + ' startAbility fAStartAbilityPromise END');
   }
 
-  async fAStartAbilityCallBack(tag, str) {
-    let code;
+  async fAStartAbilityCallBack(tag:string, str:ability.StartAbilityParameter) {
+    let code:BusinessError|null = null;
     console.info(tag + 'startAbility fAStartAbilityCallBack START' + JSON.stringify(str));
     featureAbility.startAbility(str, (err, data) => {
-      code = data;
       if (err) {
         console.error(tag + ' Operation failed. CallBack Cause:' + JSON.stringify(err));
         code = err;
       }
-      if (code === 0) {
+      if (!code) {
         this.tips('成功');
       } else {
-        this.tips('错误码：' + code.code);
+        this.tips('错误码：' + JSON.stringify(code));
       }
       console.info('Operation successful. CallBack Data: ' + JSON.stringify(data))
     });
     console.info(tag + 'startAbility fAStartAbilityCallBack END');
   }
 
-  async fAStartAbilityForResultPromise(tag, str) {
+  async fAStartAbilityForResultPromise(tag:string, str:ability.StartAbilityParameter) {
     console.info(tag + ' fAStartAbilityForResultPromise START' + JSON.stringify(str));
-    let newData;
+    let newData:BusinessError|null = null;
     await featureAbility.startAbilityForResult(str)
       .then((data) => {
         this.tips('成功');
-        newData = data;
         console.info(tag + ' fAStartAbilityForResultPromise Operation successful. Promise Data: ' + JSON.stringify(data))
-      }).catch((error) => {
+      }).catch((error:BusinessError) => {
         console.info(tag + ' fAStartAbilityForResultPromise Operation failed. Promise Cause: ' + JSON.stringify(error));
         newData = error;
         this.tips('失败');
@@ -289,7 +290,7 @@ struct Third {
     console.info(tag + ' fAStartAbilityForResultPromise fAStartAbilityPromise END');
   }
 
-  async fAStartAbilityForResultCallBack(tag, str) {
+  async fAStartAbilityForResultCallBack(tag:string, str:ability.StartAbilityParameter) {
     console.info(tag + 'fAStartAbilityForResultCallBack START' + JSON.stringify(str));
     featureAbility.startAbilityForResult(str, (err, data) => {
       console.info(tag + 'fAStartAbilityForResultCallBack Operation CallBack Data: ' + JSON.stringify(data))
@@ -303,7 +304,7 @@ struct Third {
     console.info(tag + 'fAStartAbilityForResultCallBack END');
   }
 
-  tips(msg) {
+  tips(msg:string) {
     Prompt.showToast({
       message: msg,
       duration: 2000,
@@ -320,7 +321,9 @@ struct Third {
   aboutToAppear(): void {
     console.info('[startAbility] aboutToAppear in');
     remoteDeviceModel = new RemoteDeviceModel;
-    remoteDeviceModel.registerDeviceListCallback();
+    if (remoteDeviceModel) {
+      remoteDeviceModel.registerDeviceListCallback();
+    }
     console.info('[startAbility] aboutToAppear end');
   }
 

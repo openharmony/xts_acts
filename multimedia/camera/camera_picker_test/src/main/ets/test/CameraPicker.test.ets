@@ -141,6 +141,19 @@ export default function cameraPicker() {
       }
     }
 
+    const driveSafeFn = async () => {
+      let driver = await UiDriver.create()
+      console.info(`drivePhotoFn is ${JSON.stringify(driver)}`)
+      await sleep(100)
+      console.info(`UiDriver start`);
+      let button = await driver.findComponent(BY.text(`知道了`))
+      console.info(`button is ${JSON.stringify(button)}`)
+      await sleep(100);
+      if(button !== null){
+        await button.click();
+      }
+    }
+
     const drivePhotoFn = async () => {
       console.info(`enter drivePhotoFn`);
       let driver = await UiDriver.create();
@@ -264,6 +277,7 @@ export default function cameraPicker() {
         });
       await sleep(1000);
       await driveAllowFn();
+      await driveSafeFn();
       await drivePhotoFn();
       console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0100 ends here");
     });
@@ -295,6 +309,7 @@ export default function cameraPicker() {
         });
       await sleep(1000);
       await driveAllowFn();
+      await driveSafeFn();
       await drivePhotoFrontFn();
       console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0101 ends here");
     });
@@ -333,6 +348,7 @@ export default function cameraPicker() {
         });
       await sleep(1000);
       await driveAllowFn();
+      await driveSafeFn();
       await drivePhotoFn();
       console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0102 ends here");
     });
@@ -365,6 +381,7 @@ export default function cameraPicker() {
         });
       await sleep(1000);
       await driveAllowFn();
+      await driveSafeFn();
       await drivePhotoFn();
       console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_TAKEPHOTO_0103 ends here");
     });
@@ -398,6 +415,7 @@ export default function cameraPicker() {
         });
       await sleep(1000);
       await driveAllowFn();
+      await driveSafeFn();
       await driveVideoFn(videoDuration);
       console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0100 ends here");
     });
@@ -429,6 +447,7 @@ export default function cameraPicker() {
         });
       await sleep(1000);
       await driveAllowFn();
+      await driveSafeFn();
       await driveVideoFn(0);
       console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0101 ends here");
     });
@@ -462,6 +481,7 @@ export default function cameraPicker() {
         });
       await sleep(1000);
       await driveAllowFn();
+      await driveSafeFn();
       await driveVideoFrontFn(videoDuration);
       console.info(TAG + "SUB_MULTIMEDIA_CAMERA_PICKER_USECASS_RECORDVIDEO_0102 ends here");
     });
