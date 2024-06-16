@@ -126,7 +126,6 @@ struct WebOnPermissionRequest {
                     }
                     if (result) {
                       console.info('getResult() return result: ' + result)
-                      await Utils.sleep(3000);
                       Utils.emitEvent(result, 70322)
                     }
                   })
