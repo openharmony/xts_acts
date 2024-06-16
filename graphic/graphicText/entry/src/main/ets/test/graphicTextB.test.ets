@@ -25,7 +25,7 @@ export default function graphicTextBTest() {
     })
 
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_057
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_056
      * @tc.name      : testFontWidth
      * @tc.desc      : To test interface loadFontSync of FontCollection.
      * @tc.size      : MediumTest
@@ -55,7 +55,7 @@ export default function graphicTextBTest() {
     })
 
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_058
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_057
      * @tc.name      : testTextHeightBehavior
      * @tc.desc      : To test interface loadFontSync of FontCollection.
      * @tc.size      : MediumTest
@@ -81,7 +81,7 @@ export default function graphicTextBTest() {
     })
 
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_059
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_058
      * @tc.name      : testTextStyle_3
      * @tc.desc      : To test interface loadFontSync of FontCollection.
      * @tc.size      : MediumTest
@@ -174,7 +174,7 @@ export default function graphicTextBTest() {
     })
 
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_060
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_059
      * @tc.name      : testParagraphStyle_2
      * @tc.desc      : To test interface loadFontSync of FontCollection.
      * @tc.size      : MediumTest
