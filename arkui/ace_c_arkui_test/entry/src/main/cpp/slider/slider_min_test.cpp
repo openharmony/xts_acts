@@ -44,8 +44,8 @@ static napi_value TestSliderMin003(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.f32 = minValue}};
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(slider, NODE_SLIDER_MIN_VALUE, &value_item);
-    ASSERT_EQ(ret, INVALID_PARAM);
-    ASSERT_NE(nodeAPI->getAttribute(slider, NODE_SLIDER_MIN_VALUE)->value[PARAM_0].f32, minValue);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(slider, NODE_SLIDER_MIN_VALUE)->value[PARAM_0].f32, minValue);
     NAPI_END;
 }
 

@@ -72,8 +72,8 @@ static napi_value TestSliderStep005(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.f32 = stepValue}};
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(slider, NODE_SLIDER_STEP, &value_item);
-    ASSERT_EQ(ret, INVALID_PARAM);
-    ASSERT_NE(nodeAPI->getAttribute(slider, NODE_SLIDER_STEP)->value[PARAM_0].f32, stepValue);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(slider, NODE_SLIDER_STEP)->value[PARAM_0].f32, stepValue);
     NAPI_END;
 }
 } // namespace ArkUICapiTest

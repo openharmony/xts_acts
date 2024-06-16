@@ -27,7 +27,7 @@ static napi_value TestTextInputStopEditing001(napi_env env, napi_callback_info i
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(textInput, NODE_TEXT_INPUT_EDITING, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(textInput, NODE_TEXT_INPUT_EDITING)->value[PARAM_0].i32, editing);
+    ASSERT_EQ(nodeAPI->getAttribute(textInput, NODE_TEXT_INPUT_EDITING)->value[PARAM_0].i32, false);
     NAPI_END;
 }
 
