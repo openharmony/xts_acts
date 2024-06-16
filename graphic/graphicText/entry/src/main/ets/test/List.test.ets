@@ -13,12 +13,14 @@
  * limitations under the License.
  */
 import graphicTextATest from './graphicTextA.test'
+import graphicTextBTest from './graphicTextB.test'
 import graphicTextClass from './graphicTextClass.test'
 import graphicTextEnum from './graphicTextEnum.test'
 import graphicTextInterface from './graphicTextInterface.test'
 
 export default function testsuite() {
   graphicTextATest()
+  graphicTextBTest()
   graphicTextClass(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage);
   graphicTextEnum(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage);
   graphicTextInterface(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage); 
