@@ -19,6 +19,16 @@ import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
 import deviceInfo from '@ohos.deviceInfo';
 
+async function sleep(time) {
+  let timeoutId = null;
+  let promise = new Promise(resolve => {
+    timeoutId = setTimeout(() => {
+      resolve('sleep finished');
+    }, time);
+  })
+  let result = await promise;
+  clearTimeout(timeoutId)
+}
 
 function expectedError(TRUE_FLAG: boolean, error: BusinessError, caseName: string, apiName: string, done: Function, code: number) {
   let msgStr: string = 'jsUnittest ' + caseName + ' ' + apiName + ' failed, err: ';
@@ -536,12 +546,12 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       console.log(msgStr + "begin");
       let grayScale = 1;
       try {
-        await windowStage.createSubWindow('test_subWindow_setWindowGrayScale_1').then(async (data) => {
+        await windowStage.createSubWindow('test_subWindow_setWindowGrayScale_2').then(async (data) => {
           let subWindowClass = data;
           console.info('Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
-          subWindowClass.setUiContent('MainAbility/pages/index/index2').then(async () => {
+          await subWindowClass.setUIContent('MainAbility/pages/index/index2').then(() => {
             console.info(msgStr + 'Succeeded in setUiContent.');
-            await subWindowClass.setWindowGrayScale(grayScale).then(() => {
+            subWindowClass.setWindowGrayScale(grayScale).then(() => {
               console.info(msgStr + 'Succeeded in setting the grayScale 1.');
               expect(true).assertTrue();
               done();
@@ -555,14 +565,13 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
                 done();
               }
             });
-          }).catch((err) => {
-            console.error(msgStr + `Failed to setUiContent. Cause code: ${err.code}, message: ${err.message}`);
+          }).catch((err: BusinessError) => {
+            console.log(msgStr + `Failed to setUiContent. Cause code: ${err.code}, message: ${err.message}`);
             expect(false).assertTrue();
             done();
           });
-
         }).catch((err) => {
-          console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          console.log(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
           expect(false).assertTrue();
           done();
         });
@@ -603,6 +612,58 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       }
     })
 
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_IMMERSIVEMODE_ENABLEDATATE_0100
+     * @tc.name      : test_setImmersiveModeEnabledState_true
+     * @tc.desc      : test_setImmersiveModeEnabledState_true
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+
+    it("SUB_BASIC_WMS_SPCIAL_XTS_SET_IMMERSIVEMODE_ENABLEDATATE_0100", 2, async function (done) {
+      let msgStr = "SUB_BASIC_WMS_SPCIAL_XTS_SET_IMMERSIVEMODE_ENABLEDATATE_0100";
+      console.log(msgStr + "begin");
+      let windowClass = await windowStage.getMainWindow();
+      try {
+        let enabled = true;
+        windowClass.setImmersiveModeEnabledState(enabled);
+        let isEnabled = windowClass.getImmersiveModeEnabledState()
+        console.log(msgStr + 'success to setImmersiveModeEnabledState enabled:'+isEnabled);
+        expect(isEnabled).assertEqual(true);
+        done();
+      } catch (error) {
+        console.log(msgStr + 'Failed to setImmersiveModeEnabledState enable' + JSON.stringify(error.code) + error.message);
+        expect(false).assertTrue();
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_IMMERSIVEMODE_ENABLEDATATE_0200
+     * @tc.name      : test_setImmersiveModeEnabledState_false
+     * @tc.desc      : test_setImmersiveModeEnabledState_false
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+
+    it("SUB_BASIC_WMS_SPCIAL_XTS_SET_IMMERSIVEMODE_ENABLEDATATE_0200", 2, async function (done) {
+      let msgStr = "SUB_BASIC_WMS_SPCIAL_XTS_SET_IMMERSIVEMODE_ENABLEDATATE_0200";
+      console.log(msgStr + "begin");
+      let windowClass = await windowStage.getMainWindow();
+      try {
+        let enabled = false;
+        windowClass.setImmersiveModeEnabledState(enabled);
+        let isEnabled = windowClass.getImmersiveModeEnabledState()
+        console.log(msgStr + 'success to setImmersiveModeEnabledState disenabled:'+isEnabled);
+        expect(isEnabled).assertEqual(false);
+        done();
+      } catch (error) {
+        console.log(msgStr + 'Failed to setImmersiveModeEnabledState disEnable' + JSON.stringify(error.code) + error.message);
+        expect(false).assertTrue();
+        done();
+      }
+    })
 
   })
 }
