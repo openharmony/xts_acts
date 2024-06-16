@@ -15,6 +15,7 @@ group("telephone") {
   testonly = true
   deps = [
     "calltest:ActsTelephonyCallHasCardTest",
+    "contacttest:ActsTelephonyContactTest",
     "datatest:ActsTelephonyDataHasCardTest",
     "noCard:noCard",
     "noPermission:noPermission",
