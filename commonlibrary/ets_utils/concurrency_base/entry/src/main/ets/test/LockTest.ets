@@ -19,7 +19,7 @@ import taskpool from '@ohos.taskpool';
 import utils  from '@arkts.utils';
 import { check, check_negative } from './utils';
 
-let globalWorker: worker.ThreadWorker = new worker.ThreadWorker("entry/ets/workers/Worker.js");;
+let globalWorker: worker.ThreadWorker = new worker.ThreadWorker("entry/ets/workers/worker.ets");;
 
 /// TESTS IMPLEMENTATION ///
 
