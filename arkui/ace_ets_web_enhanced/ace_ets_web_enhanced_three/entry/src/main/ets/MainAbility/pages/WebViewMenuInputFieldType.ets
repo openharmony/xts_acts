@@ -18,13 +18,32 @@ import Utils from '../../test/Utils';
 import webView from '@ohos.web.webview';
 import events_emitter from '@ohos.events.emitter';
 import { Driver, MouseButton } from '@ohos.UiTest';
+import inputMethodEngine from '@ohos.inputMethodEngine'
 
 
 @Entry
 @Component
 struct WebViewMenuInputFieldType {
   @State str: string = ""
+  @State ResultKey: number = 1;
   @State userAgentPC: string = "";
+  webKeyboardController: WebKeyboardController = new WebKeyboardController()
+  inputAttributeMap: Map<string, number> = new Map([
+      ['UNSPECIFIED', inputMethodEngine.ENTER_KEY_TYPE_UNSPECIFIED],
+      ['GO', inputMethodEngine.ENTER_KEY_TYPE_GO],
+      ['SEARCH', inputMethodEngine.ENTER_KEY_TYPE_SEARCH],
+      ['SEND', inputMethodEngine.ENTER_KEY_TYPE_SEND],
+      ['NEXT', inputMethodEngine.ENTER_KEY_TYPE_NEXT],
+      ['DONE', inputMethodEngine.ENTER_KEY_TYPE_DONE],
+      ['PREVIOUS', inputMethodEngine.ENTER_KEY_TYPE_PREVIOUS]
+    ])
+
+    /**
+     * 自定义键盘组件Builder
+     */
+    @Builder
+    customKeyboardBuilder() {
+    }
   controller: webView.WebviewController = new webView.WebviewController();
 
   onPageShow() {
@@ -131,6 +150,174 @@ struct WebViewMenuInputFieldType {
               await driver.mouseMoveTo({x:0, y:0})
               break;
             }
+            case "onInterceptKeyboardAttach0100": {
+              this.ResultKey = 1
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                Utils.emitEvent(true, 2893)
+                break;
+              } else {
+                this.controller.loadUrl("resource://rawfile/onInterceptKeyboardAttach.html")
+              }
+              await Utils.sleep(2000);
+              let webRect = Utils.getComponentRect('WebViewMenuInputFieldTypeTestWebView');
+              let driver = Driver.create();
+              let X = Utils.getRectHorizontalCenterX(webRect)
+              let Y = Utils.getRectVerticalCenterY(webRect)
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              await driver.mouseMoveTo({x:0, y:0})
+              break;
+            }
+            case "onInterceptKeyboardAttach0200": {
+              this.ResultKey = 2
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                Utils.emitEvent(true, 2894)
+                break;
+              } else {
+                this.controller.loadUrl("resource://rawfile/onInterceptKeyboardAttachDefault.html")
+              }
+              await Utils.sleep(2000);
+              let webRect = Utils.getComponentRect('WebViewMenuInputFieldTypeTestWebView');
+              let driver = Driver.create();
+              let X = Utils.getRectHorizontalCenterX(webRect)
+              let Y = Utils.getRectVerticalCenterY(webRect)
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              await driver.mouseMoveTo({x:0, y:0})
+              break;
+            }
+            case "onInterceptKeyboardAttach0300": {
+              this.ResultKey = 3
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                Utils.emitEvent(6, 2895)
+                break;
+              } else {
+                this.controller.loadUrl("resource://rawfile/onInterceptKeyboardAttach_DONE.html")
+              }
+              await Utils.sleep(2000);
+              let webRect = Utils.getComponentRect('WebViewMenuInputFieldTypeTestWebView');
+              let driver = Driver.create();
+              let X = Utils.getRectHorizontalCenterX(webRect)
+              let Y = Utils.getRectVerticalCenterY(webRect)
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              await driver.mouseMoveTo({x:0, y:0})
+              break;
+            }
+            case "onInterceptKeyboardAttach0400": {
+              this.ResultKey = 4
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                Utils.emitEvent(2, 2896)
+                break;
+              } else {
+                this.controller.loadUrl("resource://rawfile/onInterceptKeyboardAttach_GO.html")
+              }
+              await Utils.sleep(2000);
+              let webRect = Utils.getComponentRect('WebViewMenuInputFieldTypeTestWebView');
+              let driver = Driver.create();
+              let X = Utils.getRectHorizontalCenterX(webRect)
+              let Y = Utils.getRectVerticalCenterY(webRect)
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              await driver.mouseMoveTo({x:0, y:0})
+              break;
+            }
+            case "onInterceptKeyboardAttach0500": {
+              this.ResultKey = 5
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                Utils.emitEvent(5, 2897)
+                break;
+              } else {
+                this.controller.loadUrl("resource://rawfile/onInterceptKeyboardAttach_NEXT.html")
+              }
+              await Utils.sleep(2000);
+              let webRect = Utils.getComponentRect('WebViewMenuInputFieldTypeTestWebView');
+              let driver = Driver.create();
+              let X = Utils.getRectHorizontalCenterX(webRect)
+              let Y = Utils.getRectVerticalCenterY(webRect)
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              await driver.mouseMoveTo({x:0, y:0})
+              break;
+            }
+            case "onInterceptKeyboardAttach0600": {
+              this.ResultKey = 6
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                Utils.emitEvent(7, 2898)
+                break;
+              } else {
+                this.controller.loadUrl("resource://rawfile/onInterceptKeyboardAttach_PREVIOUS.html")
+              }
+              await Utils.sleep(2000);
+              let webRect = Utils.getComponentRect('WebViewMenuInputFieldTypeTestWebView');
+              let driver = Driver.create();
+              let X = Utils.getRectHorizontalCenterX(webRect)
+              let Y = Utils.getRectVerticalCenterY(webRect)
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              await driver.mouseMoveTo({x:0, y:0})
+              break;
+            }
+            case "onInterceptKeyboardAttach0700": {
+              this.ResultKey = 7
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                Utils.emitEvent(3, 2899)
+                break;
+              } else {
+                this.controller.loadUrl("resource://rawfile/onInterceptKeyboardAttach_SEARCH.html")
+              }
+              await Utils.sleep(2000);
+              let webRect = Utils.getComponentRect('WebViewMenuInputFieldTypeTestWebView');
+              let driver = Driver.create();
+              let X = Utils.getRectHorizontalCenterX(webRect)
+              let Y = Utils.getRectVerticalCenterY(webRect)
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              await driver.mouseMoveTo({x:0, y:0})
+              break;
+            }
+            case "onInterceptKeyboardAttach0800": {
+              this.ResultKey = 8
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                Utils.emitEvent(4, 2880)
+                break;
+              } else {
+                this.controller.loadUrl("resource://rawfile/onInterceptKeyboardAttach_SEND.html")
+              }
+              await Utils.sleep(2000);
+              let webRect = Utils.getComponentRect('WebViewMenuInputFieldTypeTestWebView');
+              let driver = Driver.create();
+              let X = Utils.getRectHorizontalCenterX(webRect)
+              let Y = Utils.getRectVerticalCenterY(webRect)
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              await driver.mouseMoveTo({x:0, y:0})
+              break;
+            }
           }
         })
       }
@@ -158,6 +345,68 @@ struct WebViewMenuInputFieldType {
           }
           return true
         })
+        .onInterceptKeyboardAttach((KeyboardCallbackInfo) => {
+        let option: WebKeyboardOptions = {
+          useSystemKeyboard: true,
+        };
+        if (!KeyboardCallbackInfo) {
+          return option;
+        }
+
+        this.webKeyboardController = KeyboardCallbackInfo.controller
+        let attributes: Record<string, string> = KeyboardCallbackInfo.attributes
+        // 遍历attributes
+        let attributeKeys = Object.keys(attributes)
+        for (let i = 0; i < attributeKeys.length; i++) {
+          console.log('WebCustomKeyboard key = ' + attributeKeys[i] + ', value = ' + attributes[attributeKeys[i]])
+        }
+
+        if (attributes) {
+          if (attributes['data-keyboard'] == 'customKeyboard') {
+            console.log('WebCustomKeyboard use custom keyboard')
+            option.useSystemKeyboard = false;
+            option.customKeyboard = () => {
+              this.customKeyboardBuilder()
+            }
+            if(this.ResultKey == 1){
+              Utils.emitEvent(true, 2893)
+            }
+            return option;
+          }
+
+          if (attributes['keyboard-return'] != undefined) {
+            option.useSystemKeyboard = true;
+            let enterKeyType: number | undefined = this.inputAttributeMap.get(attributes['keyboard-return'])
+            console.log('keyboard-return'+enterKeyType)
+            if (enterKeyType != undefined) {
+              option.enterKeyType = enterKeyType
+            }
+            if(this.ResultKey == 3){
+              Utils.emitEvent(enterKeyType, 2895)
+            }
+            if(this.ResultKey == 4){
+              Utils.emitEvent(enterKeyType, 2896)
+            }
+            if(this.ResultKey == 5){
+              Utils.emitEvent(enterKeyType, 2897)
+            }
+            if(this.ResultKey == 6){
+              Utils.emitEvent(enterKeyType, 2898)
+            }
+            if(this.ResultKey == 7){
+              Utils.emitEvent(enterKeyType, 2899)
+            }
+            if(this.ResultKey == 8){
+              Utils.emitEvent(enterKeyType, 2880)
+            }
+            return option;
+          }
+        }
+        if(this.ResultKey == 2){
+          Utils.emitEvent(true, 2894)
+        }
+        return option;
+      })
     }
   }
 }
