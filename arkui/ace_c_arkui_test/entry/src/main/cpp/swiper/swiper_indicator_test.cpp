@@ -14,6 +14,14 @@
  */
 
 #include "common/common.h"
+#define NUM_0 0
+#define NUM_1 1
+#define NUM__1 (-1)
+#define NUM_5 5
+#define NUM_10 10
+#define NUM_20 20
+#define COLOR 0xFFFFFF00
+#define COLOR1 0xFF0000FF
 
 namespace ArkUICapiTest {
 
@@ -52,6 +60,71 @@ static napi_value TestSwiperIndicator003(napi_env env, napi_callback_info info)
     if (nodeAPI->getAttribute(swiper, NODE_SWIPER_SHOW_INDICATOR) != nullptr) {
         ASSERT_NE(nodeAPI->getAttribute(swiper, NODE_SWIPER_SHOW_INDICATOR)->value[PARAM_0].i32, indicator);
     }
+    NAPI_END;
+}
+
+static napi_value TestSwiperIndicator004(napi_env env, napi_callback_info info)
+{
+    auto indicator = OH_ArkUI_SwiperIndicator_Create(ARKUI_SWIPER_INDICATOR_TYPE_DOT);
+    OH_ArkUI_SwiperIndicator_SetStartPosition(indicator, NUM_5);
+    OH_ArkUI_SwiperIndicator_SetTopPosition(indicator, NUM_5);
+    OH_ArkUI_SwiperIndicator_SetEndPosition(indicator, NUM_5);
+    OH_ArkUI_SwiperIndicator_SetBottomPosition(indicator, NUM_5);
+
+    ASSERT_EQ(OH_ArkUI_SwiperIndicator_GetStartPosition(indicator), NUM_5);
+    ASSERT_EQ(OH_ArkUI_SwiperIndicator_GetTopPosition(indicator), NUM_5);
+    ASSERT_EQ(OH_ArkUI_SwiperIndicator_GetEndPosition(indicator), NUM_5);
+    ASSERT_EQ(OH_ArkUI_SwiperIndicator_GetBottomPosition(indicator), NUM_5);
+    
+    OH_ArkUI_SwiperIndicator_Dispose(indicator);
+
+    NAPI_END;
+}
+
+static napi_value TestSwiperIndicator005(napi_env env, napi_callback_info info)
+{
+    auto indicator = OH_ArkUI_SwiperIndicator_Create(ARKUI_SWIPER_INDICATOR_TYPE_DOT);
+
+    OH_ArkUI_SwiperIndicator_SetItemWidth(indicator, NUM_10);
+    OH_ArkUI_SwiperIndicator_SetItemHeight(indicator, NUM_20);
+
+    ASSERT_EQ(OH_ArkUI_SwiperIndicator_GetItemWidth(indicator), NUM_10);
+    ASSERT_EQ(OH_ArkUI_SwiperIndicator_GetItemHeight(indicator), NUM_20);
+
+    OH_ArkUI_SwiperIndicator_Dispose(indicator);
+
+    NAPI_END;
+}
+
+static napi_value TestSwiperIndicator006(napi_env env, napi_callback_info info)
+{
+    auto indicator = OH_ArkUI_SwiperIndicator_Create(ARKUI_SWIPER_INDICATOR_TYPE_DOT);
+    
+    OH_ArkUI_SwiperIndicator_SetSelectedItemWidth(indicator, NUM_10);
+    OH_ArkUI_SwiperIndicator_SetSelectedItemHeight(indicator, NUM_20);
+    
+    ASSERT_EQ(OH_ArkUI_SwiperIndicator_GetSelectedItemWidth(indicator), NUM_10);
+    ASSERT_EQ(OH_ArkUI_SwiperIndicator_GetSelectedItemHeight(indicator), NUM_20);
+
+    OH_ArkUI_SwiperIndicator_Dispose(indicator);
+
+    NAPI_END;
+}
+
+static napi_value TestSwiperIndicator007(napi_env env, napi_callback_info info)
+{
+    auto indicator = OH_ArkUI_SwiperIndicator_Create(ARKUI_SWIPER_INDICATOR_TYPE_DOT);
+
+    OH_ArkUI_SwiperIndicator_SetMask(indicator, NUM_1);
+    OH_ArkUI_SwiperIndicator_SetColor(indicator, COLOR);
+    OH_ArkUI_SwiperIndicator_SetSelectedColor(indicator, COLOR1);
+
+    ASSERT_EQ(OH_ArkUI_SwiperIndicator_GetMask(indicator), NUM_1);
+    ASSERT_EQ(OH_ArkUI_SwiperIndicator_GetColor(indicator), COLOR);
+    ASSERT_EQ(OH_ArkUI_SwiperIndicator_GetSelectedColor(indicator), COLOR1);
+    
+    OH_ArkUI_SwiperIndicator_Dispose(indicator);
+
     NAPI_END;
 }
 

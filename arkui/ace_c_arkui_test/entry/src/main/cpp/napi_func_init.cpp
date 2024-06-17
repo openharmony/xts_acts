@@ -247,6 +247,14 @@
 #include "animation/animation.cpp"
 #include "customcomponent/customcomponent_event_null_test.cpp"
 #include "waterFlower/waterFlower.cpp"
+#include "relativecontaine/relativecontaine_alignmentruleoption_test.cpp"
+#include "relativecontaine/relativecontaine_barrieroption_test.cpp"
+#include "commonattrs/commonattrs_animate_test.cpp"
+#include "drawabledescriptor/drawabledescriptor_create_test.cpp"
+#include "nodecontent/node_content_test.cpp"
+#include "nativexcomponent/native_xcomponent_test.cpp"
+#include "mouseevent/mouse_event_test.cpp"
+#include "pointerevent/pointer_event_test.cpp"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -1305,6 +1313,10 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testSwiperIndicator001", nullptr, TestSwiperIndicator001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperIndicator002", nullptr, TestSwiperIndicator002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperIndicator003", nullptr, TestSwiperIndicator003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSwiperIndicator004", nullptr, TestSwiperIndicator004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSwiperIndicator005", nullptr, TestSwiperIndicator005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSwiperIndicator006", nullptr, TestSwiperIndicator006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSwiperIndicator007", nullptr, TestSwiperIndicator007, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperInterval001", nullptr, TestSwiperInterval001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperInterval002", nullptr, TestSwiperInterval002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperInterval003", nullptr, TestSwiperInterval003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -2172,6 +2184,44 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testWaterFlower_003", nullptr, testWaterFlower_003, nullptr , nullptr, nullptr, napi_default, nullptr},
         {"testWaterFlower_004", nullptr, testWaterFlower_004, nullptr , nullptr, nullptr, napi_default, nullptr},
         {"testWaterFlower_005", nullptr, testWaterFlower_004, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"testRelativeContaineAlignmentRuleOption001", nullptr, TestRelativeContaineAlignmentRuleOption001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRelativeContaineAlignmentRuleOption002", nullptr, TestRelativeContaineAlignmentRuleOption002,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRelativeContaineAlignmentRuleOption003", nullptr, TestRelativeContaineAlignmentRuleOption003,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRelativeContaineBarrierOption001", nullptr, TestRelativeContaineBarrierOption001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRelativeContaineBarrierOption002", nullptr, TestRelativeContaineBarrierOption002,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRelativeContaineBarrierOption003", nullptr, TestRelativeContaineBarrierOption003,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCommonAttrsAnimate001", nullptr, TestCommonAttrsAnimate001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCommonAttrsAnimate002", nullptr, TestCommonAttrsAnimate002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCommonAttrsAnimate003", nullptr, TestCommonAttrsAnimate003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCommonAttrsAnimate004", nullptr, TestCommonAttrsAnimate004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testDrawableDescriptorCreate001", nullptr, TestDrawableDescriptorCreate001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testDrawableDescriptorCreate002", nullptr, TestDrawableDescriptorCreate002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testDrawableDescriptorCreate003", nullptr, TestDrawableDescriptorCreate003, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testNodeContent001", nullptr, TestNodeContent001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeContent002", nullptr, TestNodeContent002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeContent003", nullptr, TestNodeContent003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeContent004", nullptr, TestNodeContent004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeContent005", nullptr, TestNodeContent005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeContent006", nullptr, TestNodeContent006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeContent007", nullptr, TestNodeContent007, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNativeXComponent001", nullptr, TestNativeXComponent001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testMouseEvent001", nullptr, TestMouseEvent001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testMouseEvent002", nullptr, TestMouseEvent002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testPointerEvent001", nullptr, TestPointerEvent001, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

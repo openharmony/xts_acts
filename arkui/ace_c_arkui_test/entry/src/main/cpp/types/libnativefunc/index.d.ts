@@ -1089,6 +1089,14 @@ export const testSwiperIndicator002: () => number;
 
 export const testSwiperIndicator003: () => number;
 
+export const testSwiperIndicator004: () => number;
+
+export const testSwiperIndicator005: () => number;
+
+export const testSwiperIndicator006: () => number;
+
+export const testSwiperIndicator007: () => number;
+
 export const testSwiperInterval001: () => number;
 
 export const testSwiperInterval002: () => number;
@@ -2643,3 +2651,51 @@ export const testWaterFlower_005: () => number;
 export const customComponentEventNullTest001: () => number;
 
 export const customComponentEventNullTest002: () => number;
+
+export const testRelativeContaineAlignmentRuleOption001: () => number;
+
+export const testRelativeContaineAlignmentRuleOption002: () => number;
+
+export const testRelativeContaineAlignmentRuleOption003: () => number;
+
+export const testRelativeContaineBarrierOption001: () => number;
+
+export const testRelativeContaineBarrierOption002: () => number;
+
+export const testRelativeContaineBarrierOption003: () => number;
+
+export const testCommonAttrsAnimate001: () => number;
+
+export const testCommonAttrsAnimate002: () => number;
+
+export const testCommonAttrsAnimate003: () => number;
+
+export const testCommonAttrsAnimate004: () => number;
+
+export const testDrawableDescriptorCreate001: () => number;
+
+export const testDrawableDescriptorCreate002: () => number;
+
+export const testDrawableDescriptorCreate003: () => number;
+
+export const testNodeContent001: () => number;
+
+export const testNodeContent002: () => number;
+
+export const testNodeContent003: () => number;
+
+export const testNodeContent004: () => number;
+
+export const testNodeContent005: () => number;
+
+export const testNodeContent006: () => number;
+
+export const testNodeContent007: () => number;
+
+export const testNativeXComponent001: () => number;
+
+export const testMouseEvent001: () => number;
+
+export const testMouseEvent002: () => number;
+
+export const testPointerEvent001: () => number;
