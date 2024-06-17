@@ -17,7 +17,7 @@ ohos_js_app_suite("ActsGetAllAccountsNoParameter") {
   test_hap = true
   testonly = true
   certificate_profile = "./signature/openharmony_sx.p7b"
-  hap_name = "ActsGetAllAccountsNoParameter"
+  hap_name = "ActsGetAllAccountsNoParameterTest"
   part_name = "os_account"
   subsystem_name = "account"
 }
