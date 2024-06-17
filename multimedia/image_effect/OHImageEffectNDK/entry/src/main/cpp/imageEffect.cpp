@@ -803,9 +803,7 @@ static napi_value OHEffectFilterInfoGetSupportedFormats(napi_env env, napi_callb
     default:
         break;
     }
-    
     OH_EffectFilterInfo_Release(filterInfo);
-
     napi_create_int32(env, code, &ret);
     return ret;
 }
@@ -830,14 +828,11 @@ static napi_value OHEffectFilterInfoRelease(napi_env env, napi_callback_info inf
     default:
         break;
     }
-
     code = OH_EffectFilterInfo_Release(filterInfo);
     napi_value ret;
     napi_create_int32(env, code, &ret);
     return ret;
 }
-
-
 /**---------------------------------------------- EffectFilter -----------------------------------------------------**/
 static napi_value OHEffectFilterCreate(napi_env env, napi_callback_info info)
 {
