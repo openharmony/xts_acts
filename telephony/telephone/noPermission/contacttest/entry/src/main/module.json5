@@ -15,8 +15,8 @@
 
 {
 	"module": {
-		"name": "entry_test",
-		"type": "feature",
+		"name": "entry",
+		"type": "entry",
 		"description": "$string:module_test_desc",
 		"mainElement": "EntryAbility",
 		"deviceTypes": ["default", "tablet", "2in1"],
