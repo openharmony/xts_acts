@@ -27,9 +27,17 @@ import {
 
 export default function getMovingPhotoTest() {
   describe("getMovingPhotoTest", function () {
+     beforeAll(async function () {
+        console.info('beforeAll case');
+        await getPermission();
+        await sleep()
+     });
+
     const context = globalThis.abilityContext;
     const phAccessHelper = photoAccessHelper.getPhotoAccessHelper(globalThis.abilityContext);
     const sandboxPath = "/data/storage/el2/base/haps/phone/photos/";
+    const imageFileName = "ImageFile.jpg";
+    const videoFileName = "VideoFile.mp4"
 
     async function createMovingPhoto(done, testNum) {
         try {
@@ -65,11 +73,21 @@ export default function getMovingPhotoTest() {
             fetchColumns: [],
             predicates: predicates
         };
-        let assetResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
-        if (assetResult.getCount() <= 0) {
-            console.error(`${testNum}::pullMovingPhotoImgToSandbox::failed to get moving photo::have no moving photo !`);
-            expect(false).assertTrue();
-            done();
+        let assetResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset>;
+        let flag = 2;
+        while (flag > 0) {
+           assetResult = await phAccessHelper.getAssets(fetchOptions);
+           if (assetResult.getCount() <= 0) {
+                await createMovingPhoto(done, testNum);
+                flag--;
+                continue;
+           }
+           break;
+        }
+        if (flag <= 0) {
+             console.error(`${testNum}::create moving photo failed !`);
+             expect(false).assertTrue();
+             done();
         }
         let asset: photoAccessHelper.PhotoAsset = await assetResult.getFirstObject();
         let requestOptions: photoAccessHelper.RequestOptions = {
@@ -152,7 +170,7 @@ export default function getMovingPhotoTest() {
         }
     }
 
-    async function getMovingPhotoFromSandBox(done: Function, testNum: string, imageFileUri: string, videoFileUri: string) {
+    async function checkMovingPhotoLoadByResource(done: Function, testNum: string, imageFileUri: string, videoFileUri: string) {
       try {
         let movingPhoto: photoAccessHelper.MovingPhoto = await photoAccessHelper.MediaAssetManager.loadMovingPhoto(context, imageFileUri, videoFileUri);
         if (movingPhoto == undefined || movingPhoto == null) {
@@ -280,18 +298,24 @@ export default function getMovingPhotoTest() {
      * @tc.level     : Level 0
      */
      it('load_moving_photo_from_sandbox_001', 0, async function (done) {
+       imageFileName = "testImage.jpg";
+       videoFileName = "testVideo.mp4";
        const testNum = 'load_moving_photo_from_sandbox_001';
-       const imageFileUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/phone/photos/ImageFile.jpg";
-       const videoFileUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/phone/photos/VideoFile.mp4";
-       await getMovingPhotoFromSandBox(done, testNum, imageFileUri, videoFileUri);
+       const fileList: Array<string> = ["testImage.jpg", "testVideo.mp4"];
+       let imageFileUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/phone/photos/testImage.jpg";
+       let videoFileUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/phone/photos/testVideo.mp4";
+       await requestMovingPhotoContent(done, testNum, 0, false);
+       await sleep(3000);
+       await checkFileExist(done, testNum, sandboxPath, fileList, true);
+       checkMovingPhotoLoadByResource(done, testNum, imageFileUri, videoFileUri);
      });
 
 
        // export moving photo:: video and photo
       class MovingPhotoHandler implements photoAccessHelper.MediaAssetDataHandler<photoAccessHelper.MovingPhoto> {
         async onDataPrepared(movingPhoto: photoAccessHelper.MovingPhoto) {
-            let imageFileUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/phone/photos/ImageFile.jpg";
-            let videoFileUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/phone/photos/VideoFile.mp4";
+            let imageFileUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/phone/photos/" + imageFileName;
+            let videoFileUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/phone/photos/" + videoFileName;
             await movingPhoto.requestContent(imageFileUri, videoFileUri);
             let photoUri = await movingPhoto.getUri();
             console.log(`photoUri =====> ${photoUri}`);
