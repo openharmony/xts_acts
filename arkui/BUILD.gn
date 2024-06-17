@@ -70,6 +70,7 @@ group("arkui") {
     "ace_ets_web_scheme_handler_four_napis:ActsNativeWebSchemeHandlerTest",
     "ace_ets_web_scheme_handler_napis:ActsNativeWebSchemeHandlerOneTest",
     "ace_ets_web_scheme_handler_napis_enhance:ActsNativeWebSchemeHandlerEnhanceTest",
+    "ace_ets_web_scheme_handler_napis_enhance_two:ActsNativeWebSchemeHandlerEnhanceTwoTest",
     "ace_ets_web_scheme_handler_three_napis:ActsNativeWebSchemeHandlerThreeTest",
     "ace_ets_web_scheme_handler_two_napis:ActsNativeWebSchemeHandlerTwoTest",
     "ace_ets_web_view:ActsAceWebViewTest",
