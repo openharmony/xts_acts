@@ -1393,7 +1393,6 @@ static napi_value AudioRendererSetOnMarkReached_06(napi_env env, napi_callback_i
     OH_AudioStreamBuilder_Destroy(builder);
     napi_value res;
     napi_create_int32(env, result, &res);
-    return res;(env, result, &res);
     return res;
 }
 
