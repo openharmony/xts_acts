@@ -318,7 +318,7 @@ export default function abilityTest() {
         let last = getAbilityLastLifeCycle("MainAbilityA")
         expect(last).assertEqual("MainAbilityA onAbilityForeground");
       }
-      
+
       isTerminateSelfMainAbilityA = true;
       globalThis.ApplicationContextA
         .unregisterAbilityLifecycleCallback(globalThis.mainAbilityACallBackId, (error, data) => {
@@ -502,17 +502,17 @@ export default function abilityTest() {
         await sleep(1000);
         let last = getAbilityLastLifeCycle("MainAbilityA")
         expect(last).assertEqual("MainAbilityA onAbilityBackground");
-  
+
         globalThis.abilityBContext.terminateSelf()
         await sleep(500);
         last = getAbilityLastLifeCycle("MainAbilityA")
         expect(last).assertEqual("MainAbilityA onAbilityForeground");
-  
+
         startAbilityTest("MainAbilityB", TEST_CASE_NAME)
         await sleep(1000);
         last = getAbilityLastLifeCycle("MainAbilityA")
         expect(last).assertEqual("MainAbilityA onAbilityBackground");
-  
+
         globalThis.abilityBContext.terminateSelf()
         await sleep(500);
         last = getAbilityLastLifeCycle("MainAbilityA")
@@ -956,6 +956,27 @@ export default function abilityTest() {
           expect(error.code).assertEqual(1);
           done()
         });
+    })
+
+    /**
+     * @tc.number    : SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_2300
+     * @tc.name      : willLifecycleCallbackTest.
+     * @tc.desc      : will LifecycleCallback Test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_2300', 3, async function (done) {
+      let templeStr = globalThis.willAbilityStageListKey.join(',');
+      expect(templeStr.indexOf("MainAbilityA onAbilityWillCreate") != -1).assertTrue();
+      expect(templeStr.indexOf("MainAbilityA onWindowStageWillCreate") != -1).assertTrue();
+      expect(templeStr.indexOf("MainAbilityA onAbilityWillForeground") != -1).assertTrue();
+      expect(templeStr.indexOf("MainAbilityA onWillNewWant") != -1).assertTrue();
+      expect(templeStr.indexOf("MainAbilityA onNewWant") != -1).assertTrue();
+      expect(templeStr.indexOf("MainAbilityA onAbilityWillDestroy") != -1).assertTrue();
+      expect(templeStr.indexOf("MainAbilityA onAbilityWillBackground") != -1).assertTrue();
+      expect(templeStr.indexOf("MainAbilityA onWindowStageWillDestroy") != -1).assertTrue();
+      done();
     })
   })
 }
