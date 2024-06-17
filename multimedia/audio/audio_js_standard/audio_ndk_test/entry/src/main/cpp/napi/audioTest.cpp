@@ -1376,15 +1376,17 @@ static napi_value AudioRendererSetOnMarkReached_06(napi_env env, napi_callback_i
     OH_AudioRenderer_Callbacks callbacks;
     callbacks.OH_AudioRenderer_OnWriteData = AudioRendererOnMarkReachedWriteData;
     OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererCallback(builder, callbacks, nullptr);
+    // set buffer size to g_frameSize
     OH_AudioStreamBuilder_SetFrameSizeInCallback(builder, g_frameSize);
+
     OH_AudioRenderer *audioRenderer;
     OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
-    uint32_t samplePos = 10538570; // 10538568:Test_44100_2.wav The total number of frames in the audio file
+    uint32_t samplePos = 10538568; // 10538568:Test_44100_2.wav The total number of frames in the audio file
     OH_AudioRenderer_OnMarkReachedCallback callback = AudioRendererOnMarkReachedCb;
     result = OH_AudioRenderer_SetMarkPosition(audioRenderer, samplePos, callback, nullptr);
     LOG(false, "OH_Audio_Renderer_SetOnMarkReached_06 result is: %d", result);
     OH_AudioRenderer_Start(audioRenderer);
-    sleep(10); // 10:Play for 10 seconds
+    sleep(220); // 220:Play the entire music
     OH_AudioRenderer_Stop(audioRenderer);
     if (!g_flag) {
         result = AUDIOSTREAM_ERROR_SYSTEM;
@@ -3090,10 +3092,18 @@ static napi_value AudioAudioInternalRecordingSuccess01(napi_env env, napi_callba
 static napi_value AudioAudioInternalRecordingSuccess02(napi_env env, napi_callback_info info)
 {
     OH_AudioStreamBuilder *builder = CreateRenderBuilder();
-    OH_AudioRenderer *audioRenderer;
-    OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
-    OH_AudioStream_PrivacyType type = AUDIO_STREAM_PRIVACY_TYPE_PUBLIC;
+    OH_AudioStream_PrivacyType type = AUDIO_STREAM_PRIVACY_TYPE_PRIVATE;
     OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererPrivacy(builder, type);
+    OH_AudioRenderer *audioRenderer = nullptr;
+    OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
+    OH_AudioStream_PrivacyType type_get;
+    OH_AudioStream_Result result1 = OH_AudioRenderer_GetRendererPrivacy(audioRenderer, &type_get);
+    if (result == AUDIOSTREAM_SUCCESS && result1 == AUDIOSTREAM_SUCCESS
+        && type_get == AUDIO_STREAM_PRIVACY_TYPE_PRIVATE) {
+        result = AUDIOSTREAM_SUCCESS;
+    } else {
+        result = AUDIOSTREAM_ERROR_INVALID_PARAM;
+    };
     OH_AudioStreamBuilder_Destroy(builder);
     napi_value res;
     napi_create_int32(env, result, &res);
