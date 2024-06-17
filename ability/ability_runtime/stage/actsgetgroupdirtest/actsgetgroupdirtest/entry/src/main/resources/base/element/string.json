@@ -19,6 +19,14 @@
     {
       "name": "TestAbility_label",
       "value": "test label"
+    },
+    {
+     "name": "ExtensionAbility_desc",
+     "value": "description"
+    },
+    {
+     "name": "ExtensionAbility_label",
+     "value": "label"
     }
   ]
 }
