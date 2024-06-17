@@ -13,10 +13,10 @@
  * limitations under the License.
  */
 #include "napi/native_api.h"
-#include "native_drm_common.h"
-#include "native_drm_err.h"
-#include "native_mediakeysystem.h"
-#include "native_mediakeysession.h"
+#include "multimedia/common/native_drm_common.h"
+#include "multimedia/common/native_drm_err.h"
+#include "multimedia/common/native_mediakeysystem.h"
+#include "multimedia/common/native_mediakeysession.h"
 #include <errno.h>
 #include <string.h>
 #include <stdio.h>
@@ -1807,109 +1807,7 @@ static napi_value Test_MediaKeySession_SetMediaKeySessionCallback(napi_env env, 
     return result;
 }
 // add cases
-static napi_value Test_CreateMediaKeySession_multi(napi_env env, napi_callback_info info) {
-    napi_value result;
-    size_t argc = 2;
-    napi_value args[2] = {nullptr};
-    int32_t sessionNum = 0;
-    Drm_ErrCode ret = DRM_ERR_INVALID_VAL;
-    Drm_ErrCode ret2 = DRM_ERR_INVALID_VAL;
-    Drm_ErrCode ret4 = DRM_ERR_INVALID_VAL;    
-    MediaKeySystem *drmKeySystem = nullptr;
-    DRM_ContentProtectionLevel level = CONTENT_PROTECTION_LEVEL_SW_CRYPTO;
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    napi_get_value_int32(env, args[0], &sessionNum);
-    MediaKeySession *drmKeySession[100] = {nullptr};
-    Drm_ErrCode ret1 = OH_MediaKeySystem_Create(judge_uuid(), &drmKeySystem);
-    uint32_t count_create = 0;
-    for(int i=0;i<sessionNum;i++){
-        ret2 = OH_MediaKeySystem_CreateMediaKeySession(drmKeySystem, &level, &drmKeySession[i]);
-        if (ret2 != DRM_ERR_OK) {
-            goto EXIT1;
-        }
-        count_create ++;           
-    }
-EXIT1:    
-    for(uint32_t i=0;i<(count_create);i++){
-        ret4 = OH_MediaKeySession_Destroy(drmKeySession[i]);
-    }
-    Drm_ErrCode ret3 = OH_MediaKeySystem_Destroy(drmKeySystem);
-    if (ret1 == DRM_ERR_OK  &&(count_create == sessionNum) && ret3 == DRM_ERR_OK && ret4 == DRM_ERR_OK) {
-        ret = DRM_ERR_OK;
-    } else {
-        ret = DRM_ERR_INVALID_VAL;
-    }
-    napi_create_int32(env, ret, &result);
-    return result;
-}
-static napi_value Test_MediaKeySession_ProcessOfflineReleaseResponse_multi(napi_env env, napi_callback_info info) {
-    napi_value result;
-    size_t argc = 5;
-    napi_value args[5] = {nullptr};
-    int32_t releaseNum = 0;
 
-    Drm_ErrCode ret = DRM_ERR_INVALID_VAL;
-    DRM_ContentProtectionLevel sessionLevel = CONTENT_PROTECTION_LEVEL_SW_CRYPTO;
-    MediaKeySystem *drmKeySystem = nullptr;
-    MediaKeySession *drmKeySession = nullptr;
-
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    napi_get_value_int32(env, args[0], &releaseNum);
-
-    Drm_ErrCode ret1 = OH_MediaKeySystem_Create(judge_uuid(), &drmKeySystem);
-    Drm_ErrCode ret2 = OH_MediaKeySystem_CreateMediaKeySession(drmKeySystem, &sessionLevel, &drmKeySession);
-    uint8_t keyData[DATA_BUFF_LEN] = {0};
-    int32_t keyDataLen = DATA_BUFF_LEN;
-    getLicense(drmKeySession, LICENSE_OFFLINE,keyData,&keyDataLen); // 确保生成离线license
-  
-    Drm_ErrCode ret3 = DRM_ERR_INVALID_VAL;
-    if(strcmp(judge_uuid(), BLUE_AREA) == 0){
-        uint8_t releaseResponseData[50] = OFFLINERESPONSE;
-        int32_t responseLen = 50;
-        for(int i = 0; i<releaseNum; i++){
-            ret3 = OH_MediaKeySession_ProcessOfflineReleaseResponse(drmKeySession, keyData, keyDataLen,releaseResponseData,responseLen);
-        }
-    }else{
-    }
-    
-    Drm_ErrCode ret5 = OH_MediaKeySession_Destroy(drmKeySession);
-    Drm_ErrCode ret6 = OH_MediaKeySystem_Destroy(drmKeySystem);
-    if (ret1 == DRM_ERR_OK && ret2 == DRM_ERR_OK && ret3 == DRM_ERR_OK && ret5 == DRM_ERR_OK && ret6 == DRM_ERR_OK) { 
-        ret = DRM_ERR_OK;
-    } else {
-        ret = DRM_ERR_INVALID_VAL;
-    }
-    napi_create_int32(env, ret, &result);
-    return result;
-}
-static napi_value Test_MediaKeySystem_SetConfigurationString_multi(napi_env env, napi_callback_info info) {
-    napi_value result;
-    Drm_ErrCode ret = DRM_ERR_INVALID_VAL;
-    MediaKeySystem *drmKeySystem = nullptr;
-    Drm_ErrCode ret1 = OH_MediaKeySystem_Create(judge_uuid(), &drmKeySystem);
-    Drm_ErrCode ret2 = OH_MediaKeySystem_SetConfigurationString(drmKeySystem, "version", "4500000");
-    Drm_ErrCode ret3 = OH_MediaKeySystem_SetConfigurationString(drmKeySystem, "version", "2.2");
-    
-    char outBuff[20]={0};
-    int32_t outBuffLen = 20;
-    Drm_ErrCode ret4 = DRM_ERR_INVALID_VAL;  
-    if (ret2 == DRM_ERR_OK && ret3 == DRM_ERR_OK) {
-        ret4 = OH_MediaKeySystem_GetConfigurationString(drmKeySystem, "version", outBuff, outBuffLen);
-        if(strncmp(outBuff, "2.2",outBuffLen) == 0){
-            ret4 = DRM_ERR_OK;
-        }else{
-            ret4 = DRM_ERR_INVALID_VAL;
-        }
-    } 
-    Drm_ErrCode ret5 = OH_MediaKeySystem_Destroy(drmKeySystem);
-    if (ret1 == DRM_ERR_OK && ret2 == DRM_ERR_OK && ret5 == DRM_ERR_OK && ret4 == DRM_ERR_OK) {
-        ret = DRM_ERR_OK;
-    } else {
-        ret = DRM_ERR_INVALID_VAL;
-    }
-    napi_create_int32(env, ret, &result);
-    return result;
-}
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports) {
     napi_property_descriptor desc[] = {
@@ -1970,13 +1868,6 @@ static napi_value Init(napi_env env, napi_value exports) {
          nullptr, nullptr, napi_default, nullptr},
         {"Test_MediaKeySystem_ClearOfflineMediaKeys", nullptr, Test_MediaKeySystem_ClearOfflineMediaKeys, nullptr,
          nullptr, nullptr, napi_default, nullptr},
-// add cases    
-        {"Test_CreateMediaKeySession_multi", nullptr, Test_CreateMediaKeySession_multi, nullptr,
-         nullptr, nullptr, napi_default, nullptr},    
-        {"Test_MediaKeySession_ProcessOfflineReleaseResponse_multi", nullptr, Test_MediaKeySession_ProcessOfflineReleaseResponse_multi, nullptr,
-         nullptr, nullptr, napi_default, nullptr},    
-        {"Test_MediaKeySystem_SetConfigurationString_multi", nullptr, Test_MediaKeySystem_SetConfigurationString_multi, nullptr,
-         nullptr, nullptr, napi_default, nullptr},  
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
