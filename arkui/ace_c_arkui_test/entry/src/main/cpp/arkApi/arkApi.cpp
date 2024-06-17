@@ -25,8 +25,10 @@ namespace ArkUICapiTest {
 
 static napi_value TestArkUIAddApi001(napi_env env, napi_callback_info info)
 {
-    auto ret = OH_NativeXComponent_RegisterBlurEventCallback(nullptr, nullptr);
-    NAPI_END;
+    auto ret = OH_NativeXComponent_RegisterUIInputEventCallback(nullptr, nullptr, ArkUI_UIInputEvent_Type::ARKUI_UIINPUTEVENT_TYPE_AXIS);
+    napi_value result = nullptr;  
+    napi_create_int32(env, 0, &result);                                                                                 
+    return result;
 }
 
 static napi_value TestArkUIAddApi002(napi_env env, napi_callback_info info)
