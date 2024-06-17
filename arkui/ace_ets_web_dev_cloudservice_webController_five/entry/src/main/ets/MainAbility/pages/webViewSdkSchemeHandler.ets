@@ -164,13 +164,12 @@ struct webViewSdkSchemeHandler {
             .onControllerAttached(() => {
               try {
                 this.schemeHandler.onRequestStart(
-                  (request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) =>
-                  {
+                  (request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
                     console.log('[schemeHandler] onRequestStart')
                     Utils.emitEvent(true, 1533)
                     this.requests.push(request)
                     if(request.getRequestUrl().toLowerCase().indexOf('custom') > -1){
-                      if(this.httpBodyStream == null || this.httpBodyStream == undefined){
+                      if(this.httpBodyStream == null || this.httpBodyStream == undefined) {
                         this.httpBodyStream = request.getHttpBodyStream()
                       }
                       let response = new webview.WebSchemeHandlerResponse();
