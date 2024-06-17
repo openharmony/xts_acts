@@ -25,6 +25,8 @@ export const commonEventOnBlurTest: (a: string) => void;
 
 export const commonEventOnTouchTest: (a: string) => void;
 
+export const pointEventOnTouchTest: (a: string) => void;
+
 export const commonEventOnFocusTest: (a: string) => void;
 
 export const commonEventOnClickTest: (a: string) => void;
