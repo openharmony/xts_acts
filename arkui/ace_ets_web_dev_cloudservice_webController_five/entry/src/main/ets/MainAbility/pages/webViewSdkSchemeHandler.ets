@@ -24,7 +24,7 @@ struct webViewSdkSchemeHandler {
   controller: webview.WebviewController = new webview.WebviewController();
   schemeHandler: webview.WebSchemeHandler = new webview.WebSchemeHandler()
   httpBodyStream: webview.WebHttpBodyStream|null = null
-  @State emitKey: string = "emitWebViewGetFrameUrlResourceType";
+  @State emitKey: string = '';
   @State javaScriptAccess: boolean = true;
   @State fileAccess: boolean = true;
   @State domStorageAccess: boolean = true;
@@ -273,14 +273,12 @@ struct webViewSdkSchemeHandler {
                       Utils.emitEvent(true,1525)
                     }
                     response.setHeaderByName('Access-Control-Allow-Origin', '*' , true)
-                    if( response.getHeaderByName('Access-Control-Allow-Origin') === '*' )
-                    {
+                    if( response.getHeaderByName('Access-Control-Allow-Origin') === '*' ) {
                       Utils.emitEvent(true,1526)
                       Utils.emitEvent(true,1528)
                     }
                     response.setHeaderByName('Access-Control-Allow-Origin', 'none' , false)
-                    if( response.getHeaderByName('Access-Control-Allow-Origin') === '*' )
-                    {
+                    if( response.getHeaderByName('Access-Control-Allow-Origin') === '*' ) {
                       Utils.emitEvent(true,1527)
                       Utils.emitEvent(true,1528)
                     }
