@@ -276,7 +276,27 @@ export default function workerTest() {
           expectAssertEqual(error.code, 10200004);
           expectAssertContain(error.message, 'Worker instance is not running');
         }
+        done();
+      } catch (error) {
+        console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
+        expect().assertFail();
+        done();
+      }
+      console.info(`${caseName} test end`);
+    });
 
+    /**
+     * @tc.number     : SUB_Runtime_Language_Backend_WorkerConcurrency_10200
+     * @tc.name       : testWorkerError002
+     * @tc.desc       : test worker error
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testWorkerError002', 0, async (done: Function) => {
+      const caseName: string = 'testWorkerError002';
+      console.info(`${caseName} test start`);
+      try {
         try {
           const workerInstance: worker.ThreadWorker = new worker.ThreadWorker('../workers/worker.ts');
           let isTerminate: boolean = false;
