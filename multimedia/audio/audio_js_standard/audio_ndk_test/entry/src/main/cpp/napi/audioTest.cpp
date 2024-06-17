@@ -1379,7 +1379,7 @@ static napi_value AudioRendererSetOnMarkReached_06(napi_env env, napi_callback_i
     OH_AudioStreamBuilder_SetFrameSizeInCallback(builder, g_frameSize);
     OH_AudioRenderer *audioRenderer;
     OH_AudioStreamBuilder_GenerateRenderer(builder, &audioRenderer);
-    uint32_t samplePos = 10538570; 
+    uint32_t samplePos = 10538570; // 10538568:Test_44100_2.wav The total number of frames in the audio file
     OH_AudioRenderer_OnMarkReachedCallback callback = AudioRendererOnMarkReachedCb;
     result = OH_AudioRenderer_SetMarkPosition(audioRenderer, samplePos, callback, nullptr);
     LOG(false, "OH_Audio_Renderer_SetOnMarkReached_06 result is: %d", result);
