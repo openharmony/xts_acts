@@ -116,7 +116,7 @@
         }
       },
       {
-        "name": "ohos.permission.APP_TRACKING_CONSENT",
+        "name": "ohos.permission.WRITE_CONTACTS",
         "reason": "$string:reason",
         "usedScene": {
           "abilities": [
