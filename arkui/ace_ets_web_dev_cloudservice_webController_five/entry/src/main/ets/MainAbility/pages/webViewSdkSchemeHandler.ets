@@ -34,7 +34,9 @@ struct webViewSdkSchemeHandler {
   @State userAgent: string = 'Mozilla/5.0 (Window NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)' +
          'Chrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.27';
   requests:webview.WebSchemeHandlerRequest[] = []
-  scheme1: webview.WebCustomScheme = {schemeName: "custom", isSupportCORS: true, isSupportFetch: true}
+  scheme1: webview.WebCustomScheme = {
+    schemeName: 'custom', isSupportCORS: true, isSupportFetch: true
+  }
   htmlData: string = '{"test":1}';
   
   onPageShow() {
@@ -56,7 +58,7 @@ struct webViewSdkSchemeHandler {
   
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
       if (eventData != null) {
-          console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+          console.info('valueChangeCallBack:' + JSON.stringify(eventData));
           if (eventData.data != null && eventData.data.ACTION != null) {
               this.emitKey = eventData.data.ACTION;
           }
@@ -66,7 +68,7 @@ struct webViewSdkSchemeHandler {
   build() {
       Column() {
           Row() {
-              Button("web click")
+              Button('web click')
               .key('webViewSdkSchemeHandler')
               .onClick(async () => {
                   this.controller.refresh()
@@ -149,7 +151,7 @@ struct webViewSdkSchemeHandler {
                       }
                       break;
                     }
-                }
+                  }
               })
           }
           Web({ src: $rawfile('sdkSchemeHandler.html'), controller: this.controller })
@@ -161,127 +163,131 @@ struct webViewSdkSchemeHandler {
                 .databaseAccess(this.databaseAccess)
             .onControllerAttached(() => {
               try {
-                this.schemeHandler.onRequestStart((request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
-                  console.log('[schemeHandler] onRequestStart')
-                  Utils.emitEvent(true, 1533)
-                  this.requests.push(request)
-                  if(request.getRequestUrl().toLowerCase().indexOf('custom') > -1){
-                    if(this.httpBodyStream == null || this.httpBodyStream == undefined){
-                      this.httpBodyStream = request.getHttpBodyStream()
+                this.schemeHandler.onRequestStart(
+                  (request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) =>
+                  {
+                    console.log('[schemeHandler] onRequestStart')
+                    Utils.emitEvent(true, 1533)
+                    this.requests.push(request)
+                    if(request.getRequestUrl().toLowerCase().indexOf('custom') > -1){
+                      if(this.httpBodyStream == null || this.httpBodyStream == undefined){
+                        this.httpBodyStream = request.getHttpBodyStream()
+                      }
+                      let response = new webview.WebSchemeHandlerResponse();
+                      response.setStatus(200)
+                      response.setStatusText('text')
+                      response.setHeaderByName('Access-Control-Allow-Origin', '*' ,true)
+                      resourceHandler.didReceiveResponse(response);
+                      Utils.emitEvent(true, 1529)
+                      let buf = buffer.from(this.htmlData)
+                      resourceHandler.didReceiveResponseBody(buf.buffer);
+                      Utils.emitEvent(true, 1530)
+                      resourceHandler.didFinish();
+                      Utils.emitEvent(true, 1531)
+                      return true
                     }
+                    if(request.getHeader() !== undefined) {
+                      Utils.emitEvent(true,1501)
+                    }
+
+                    if(request.getRequestUrl() !== '') {
+                      Utils.emitEvent(true,1502)
+                    }
+
+                    if(request.getRequestMethod() !== '') {
+                      Utils.emitEvent(true,1503)
+                    }
+
+                    if(request.getReferrer() !== undefined) {
+                      Utils.emitEvent(true,1504)
+                    }
+
+                    if(request.isMainFrame() !== undefined) {
+                      Utils.emitEvent(true,1505)
+                    }
+
+                    if(request.hasGesture() !== undefined) {
+                      Utils.emitEvent(true,1506)
+                    }
+
+
+                    if(this.httpBodyStream !== undefined) {
+                      Utils.emitEvent(true,1507)
+                    }
+
+                    if(this.httpBodyStream?.getSize() !== undefined) {
+                      Utils.emitEvent(true,1508)
+                    }
+
+                    if(this.httpBodyStream?.getPosition() !== undefined) {
+                      Utils.emitEvent(true,1509)
+                    }
+
+                    if(this.httpBodyStream?.isChunked() !== undefined) {
+                      Utils.emitEvent(true,1510)
+                    }
+
+                    if(this.httpBodyStream?.isEof() !== undefined) {
+                      Utils.emitEvent(true,1511)
+                    }
+
+                    if(this.httpBodyStream?.isEof() !== undefined) {
+                      Utils.emitEvent(true,1512)
+                    }
+
                     let response = new webview.WebSchemeHandlerResponse();
+                    response.setUrl('https://www.weibo.com')
+                    if(response.getUrl().indexOf('weibo')>-1){
+                      Utils.emitEvent(true,1514)
+                      Utils.emitEvent(true,1515)
+                    }
+
+
+                    response.setNetErrorCode(-2)
+                    if(response.getNetErrorCode() == -2){
+                      Utils.emitEvent(true,1516)
+                      Utils.emitEvent(true,1517)
+                    }
+
                     response.setStatus(200)
-                    response.setStatusText('text')
-                    response.setHeaderByName('Access-Control-Allow-Origin', '*' ,true)
-                    resourceHandler.didReceiveResponse(response);
-                    Utils.emitEvent(true, 1529)
-                    let buf = buffer.from(this.htmlData)
-                    resourceHandler.didReceiveResponseBody(buf.buffer);
-                    Utils.emitEvent(true, 1530)
-                    resourceHandler.didFinish();
-                    Utils.emitEvent(true, 1531)
-                    return true
-                  }
-                  if(request.getHeader() !== undefined) {
-                    Utils.emitEvent(true,1501)
-                  }
+                    if(response.getStatus() == 200){
+                      Utils.emitEvent(true,1518)
+                      Utils.emitEvent(true,1519)
+                    }
 
-                  if(request.getRequestUrl() !== '') {
-                    Utils.emitEvent(true,1502)
-                  }
+                    response.setStatusText('ok')
+                    if(response.getStatusText() == 'ok'){
+                      Utils.emitEvent(true,1520)
+                      Utils.emitEvent(true,1521)
+                    }
 
-                  if(request.getRequestMethod() !== '') {
-                    Utils.emitEvent(true,1503)
-                  }
+                    response.setMimeType('text/html')
+                    if(response.getMimeType() == 'text/html'){
+                      Utils.emitEvent(true,1522)
+                      Utils.emitEvent(true,1523)
+                    }
 
-                  if(request.getReferrer() !== undefined) {
-                    Utils.emitEvent(true,1504)
-                  }
+                    response.setEncoding('utf-8')
+                    if(response.getEncoding() == 'utf-8'){
+                      Utils.emitEvent(true,1524)
+                      Utils.emitEvent(true,1525)
+                    }
+                    response.setHeaderByName('Access-Control-Allow-Origin', '*' , true)
+                    if( response.getHeaderByName('Access-Control-Allow-Origin') === '*' )
+                    {
+                      Utils.emitEvent(true,1526)
+                      Utils.emitEvent(true,1528)
+                    }
+                    response.setHeaderByName('Access-Control-Allow-Origin', 'none' , false)
+                    if( response.getHeaderByName('Access-Control-Allow-Origin') === '*' )
+                    {
+                      Utils.emitEvent(true,1527)
+                      Utils.emitEvent(true,1528)
+                    }
 
-                  if(request.isMainFrame() !== undefined) {
-                    Utils.emitEvent(true,1505)
-                  }
-
-                  if(request.hasGesture() !== undefined) {
-                    Utils.emitEvent(true,1506)
-                  }
-
-
-                  if(this.httpBodyStream !== undefined) {
-                    Utils.emitEvent(true,1507)
-                  }
-
-                  if(this.httpBodyStream?.getSize() !== undefined) {
-                    Utils.emitEvent(true,1508)
-                  }
-
-                  if(this.httpBodyStream?.getPosition() !== undefined) {
-                    Utils.emitEvent(true,1509)
-                  }
-
-                  if(this.httpBodyStream?.isChunked() !== undefined) {
-                    Utils.emitEvent(true,1510)
-                  }
-
-                  if(this.httpBodyStream?.isEof() !== undefined) {
-                    Utils.emitEvent(true,1511)
-                  }
-
-                  if(this.httpBodyStream?.isEof() !== undefined) {
-                    Utils.emitEvent(true,1512)
-                  }
-
-                  let response = new webview.WebSchemeHandlerResponse();
-                  response.setUrl('https://www.weibo.com')
-                  if(response.getUrl().indexOf('weibo')>-1){
-                    Utils.emitEvent(true,1514)
-                    Utils.emitEvent(true,1515)
-                  }
-
-
-                  response.setNetErrorCode(-2)
-                  if(response.getNetErrorCode() == -2){
-                    Utils.emitEvent(true,1516)
-                    Utils.emitEvent(true,1517)
-                  }
-
-                  response.setStatus(200)
-                  if(response.getStatus() == 200){
-                    Utils.emitEvent(true,1518)
-                    Utils.emitEvent(true,1519)
-                  }
-
-                  response.setStatusText('ok')
-                  if(response.getStatusText() == 'ok'){
-                    Utils.emitEvent(true,1520)
-                    Utils.emitEvent(true,1521)
-                  }
-
-                  response.setMimeType('text/html')
-                  if(response.getMimeType() == 'text/html'){
-                    Utils.emitEvent(true,1522)
-                    Utils.emitEvent(true,1523)
-                  }
-
-                  response.setEncoding('utf-8')
-                  if(response.getEncoding() == 'utf-8'){
-                    Utils.emitEvent(true,1524)
-                    Utils.emitEvent(true,1525)
-                  }
-                  response.setHeaderByName('Access-Control-Allow-Origin', '*' , true)
-                  if( response.getHeaderByName('Access-Control-Allow-Origin') === '*' ) {
-                    Utils.emitEvent(true,1526)
-                    Utils.emitEvent(true,1528)
-                  }
-                  response.setHeaderByName('Access-Control-Allow-Origin', 'none' , false)
-                  if( response.getHeaderByName('Access-Control-Allow-Origin') === '*' ) {
-                    Utils.emitEvent(true,1527)
-                    Utils.emitEvent(true,1528)
-                  }
-
-                  resourceHandler.didFail(WebNetErrorList.ERR_FAILED)
-                  Utils.emitEvent(true,1532)
-                  return false;
+                    resourceHandler.didFail(WebNetErrorList.ERR_FAILED)
+                    Utils.emitEvent(true,1532)
+                    return false;
                 })
 
 
