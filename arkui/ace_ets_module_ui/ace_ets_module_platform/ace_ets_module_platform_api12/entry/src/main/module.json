@@ -15,6 +15,11 @@
         "installationFree": false,
         "uiSyntax": "ets",
         "pages": "$profile:main_pages",
+        "requestPermissions": [
+            {
+                "name": "ohos.permission.INTERNET"
+            }
+        ],
         "metadata": [
             {
               "name": "ArkTSPartialUpdate",
