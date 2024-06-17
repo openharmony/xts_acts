@@ -13,10 +13,10 @@
  * limitations under the License.
  */
 #include "napi/native_api.h"
-#include "multimedia/common/native_drm_common.h"
-#include "multimedia/common/native_drm_err.h"
-#include "multimedia/common/native_mediakeysystem.h"
-#include "multimedia/common/native_mediakeysession.h"
+#include "native_drm_common.h"
+#include "native_drm_err.h"
+#include "native_mediakeysystem.h"
+#include "native_mediakeysession.h"
 #include <errno.h>
 #include <string.h>
 #include <stdio.h>
