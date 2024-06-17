@@ -19,6 +19,14 @@
    {
      "name": "MainAbility_label",
      "value": "entry_MainAbility"
+   },
+   {
+    "name": "ExtensionAbility_desc",
+    "value": "description"
+   },
+   {
+    "name": "ExtensionAbility_label",
+    "value": "entry_MainAbility"
    }
   ]
 }

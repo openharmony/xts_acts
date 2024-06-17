@@ -52,6 +52,17 @@
         ]
       }
     ],
+    "extensionAbilities": [
+      {
+        "name": "inputMethod",
+        "srcEntry": "./ets/inputmethodextability/InputMethodService.ts",
+        "description": "$string:ExtensionAbility_desc",
+        "icon": "$media:icon",
+        "label": "$string:ExtensionAbility_label",
+        "type": "inputMethod",
+        "exported": true
+      }
+    ],
     "requestPermissions": [
       {
         "name":"ohos.permission.START_ABILITIES_FROM_BACKGROUND",
