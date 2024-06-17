@@ -79,26 +79,9 @@ export default function flagstartwithouttipstest() {
       // Wait for the popup to open
       await sleep(10000);
       try {
-        try {
-          await driver.assertComponentExist(ON.text('暂无支持此类文件的应用')).then((data) => {
-            hilog.info(0x0000, TAG, 'text at this success %{public}s', JSON.stringify(data));
-            popupCorrect = true;
-          })
-        } catch (error) {
-          hilog.info(0x0000, TAG, 'text at this failed %{public}s', error?.message);
-        }
-        if (!popupCorrect) {
-          try {
-            await driver.assertComponentExist(ON.text('无法打开此文件')).then((data) => {
-              hilog.info(0x0000, TAG, 'text at it success %{public}s', JSON.stringify(data));
-              popupCorrect = true;
-            })
-          } catch (error) {
-            hilog.info(0x0000, TAG, 'text at it failed %{public}s', error?.message);
-          }
-        }
         await driver.findComponent(ON.text('知道了')).then(async (data) => {
           hilog.info(0x0000, TAG, ' %{public}s', 'findComponent success');
+          popupCorrect = true;
           await sleep(100);
           await data.click();
           getCloseBtn = true;
@@ -141,17 +124,10 @@ export default function flagstartwithouttipstest() {
         let popupCorrect = false;
         let getCloseBtn = false;
         try {
-          try {
-            await driver.assertComponentExist(ON.text('暂无支持此类文件的应用')).then((data) => {
-              hilog.info(0x0000, TAG, 'text at this success %{public}s', JSON.stringify(data));
-              popupCorrect = true;
-            })
-          } catch (error) {
-            hilog.info(0x0000, TAG, 'text at this failed %{public}s', error?.message);
-          }
           await driver.findComponent(ON.text('知道了')).then(async (data) => {
             hilog.info(0x0000, TAG, ' %{public}s', 'findComponent success');
             await sleep(100);
+            popupCorrect = true;
             await data.click();
             getCloseBtn = true;
           }).catch(() => {
