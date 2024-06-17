@@ -47,6 +47,7 @@ export default function AbilityStageMonitor2Test() {
          */
     it('PHASE2_ABILITY_STAGE_MONITOR_0100', 0, async  (done:Function) => {
       const want = factoryWant('com.example.delegatortest', 'MainAbility', 'featureassista');
+      console.log("PHASE2_ABILITY_STAGE_MONITOR_0100 :start");
       abilityDelegator.waitAbilityStageMonitor({
         moduleName: 'featureassista',
         srcEntrance: './ets/Application/AbilityStage.ts'
@@ -80,6 +81,7 @@ export default function AbilityStageMonitor2Test() {
      */
     it('PHASE2_ABILITY_STAGE_MONITOR_0200', 0, async  (done:Function) => {
       const want = factoryWant('com.example.delegatortest', 'MainAbility', 'featureassistb');
+      console.log("PHASE2_ABILITY_STAGE_MONITOR_0200 :start");
       abilityDelegator.waitAbilityStageMonitor({
         moduleName: 'featureassistb',
         srcEntrance: './ets/Application/AbilityStage.ts'
@@ -110,6 +112,7 @@ export default function AbilityStageMonitor2Test() {
      */
     it('PHASE2_ABILITY_STAGE_MONITOR_0300', 0, async  (done:Function) => {
       const want = factoryWant('com.example.delegatortest', 'MainAbility', 'featureassistc');
+      console.log("PHASE2_ABILITY_STAGE_MONITOR_0300 :start");
       abilityDelegator.waitAbilityStageMonitor({
         moduleName: 'featureassistc',
         srcEntrance: './ets/Application/AbilityStage.ts'
@@ -146,6 +149,7 @@ export default function AbilityStageMonitor2Test() {
      */
     it('PHASE2_ABILITY_STAGE_MONITOR_0400', 0, async  (done:Function) => {
       const want = factoryWant('com.example.delegatortest', 'MainAbility', 'featureassistd');
+      console.log("PHASE2_ABILITY_STAGE_MONITOR_0400 :start");
       abilityDelegator.waitAbilityStageMonitor({
         moduleName: 'featureassistd',
         srcEntrance: './ets/Application/AbilityStage.ts'
@@ -173,6 +177,7 @@ export default function AbilityStageMonitor2Test() {
      */
     it('PHASE2_ABILITY_STAGE_MONITOR_0500', 0, async  (done:Function) => {
       const want = factoryWant('com.example.delegatortest', 'MainAbility', 'featureassista');
+      console.log("PHASE2_ABILITY_STAGE_MONITOR_0500 :start");
       abilityDelegator.addAbilityStageMonitor({
         moduleName: 'featureassista',
         srcEntrance: './ets/Application/AbilityStage.ts'
@@ -217,6 +222,7 @@ export default function AbilityStageMonitor2Test() {
      */
     it('PHASE2_ABILITY_STAGE_MONITOR_0600', 0, async  (done:Function) => {
       const want = factoryWant('com.example.delegatortest', 'MainAbility', 'featureassistb');
+      console.log("PHASE2_ABILITY_STAGE_MONITOR_0600 :start");
       abilityDelegator.addAbilityStageMonitor({
         moduleName: 'featureassistb',
         srcEntrance: './ets/Application/AbilityStage.ts'
@@ -258,6 +264,7 @@ export default function AbilityStageMonitor2Test() {
      */
     it('PHASE2_ABILITY_STAGE_MONITOR_0700', 0, async  (done:Function) => {
       const want = factoryWant('com.example.delegatortest', 'MainAbility', 'featureassistc');
+      console.log("PHASE2_ABILITY_STAGE_MONITOR_0700 :start");
       abilityDelegator.waitAbilityStageMonitor({
         moduleName: 'featureassistc',
         srcEntrance: './ets/Application/AbilityStage.ts'
@@ -294,6 +301,7 @@ export default function AbilityStageMonitor2Test() {
      */
     it('PHASE2_ABILITY_STAGE_MONITOR_0800', 0, async  (done:Function) => {
       const want = factoryWant('com.example.delegatortest', 'MainAbility', 'featureassistd');
+      console.log("PHASE2_ABILITY_STAGE_MONITOR_0800 :start");
       await abilityDelegator.waitAbilityStageMonitor({
         moduleName: 'featureassistd',
         srcEntrance: './ets/Application/AbilityStage.ts'
@@ -328,6 +336,7 @@ export default function AbilityStageMonitor2Test() {
      */
     it('PHASE2_ABILITY_STAGE_MONITOR_0900', 0, async  (done:Function) => {
       const want = factoryWant('com.example.delegatortest', 'MainAbility', 'feature_error');
+      console.log("PHASE2_ABILITY_STAGE_MONITOR_0900 :start");
       await abilityDelegator.waitAbilityStageMonitor({
         moduleName: 'feature_error',
         srcEntrance: './ets/Application/AbilityStage.ts'
@@ -352,6 +361,7 @@ export default function AbilityStageMonitor2Test() {
      */
     it('PHASE2_ABILITY_STAGE_MONITOR_1000', 0, async  (done:Function) => {
       const want = factoryWant('com.example.delegatortest', 'MainAbility', 'featureassista');
+      console.log("PHASE2_ABILITY_STAGE_MONITOR_1000 :start");
       await abilityDelegator.waitAbilityStageMonitor({
         moduleName: 'featureassista',
         srcEntrance: './ets/Application/AbilityStageerror.ts'

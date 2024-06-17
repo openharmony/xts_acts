@@ -92,6 +92,7 @@ export default function AbilityMonitorTest() {
      */
     it("ACTS_ADD_ABILITY_MONITOR_CALLBACK_0100", 0, async (done: Function) => {
       TAG = "ACTS_ADD_ABILITY_MONITOR_CALLBACK_0100";
+      console.log(LABLE + TAG + ":start")
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       monitor = null;
       try {
@@ -129,6 +130,7 @@ export default function AbilityMonitorTest() {
      */
     it("ACTS_ADD_ABILITY_MONITOR_CALLBACK_0200", 0, async (done: Function) => {
       TAG = "ACTS_ADD_ABILITY_MONITOR_CALLBACK_0200";
+      console.log(LABLE + TAG + ":start")
       const want = factoryWant(
         "com.example.delegatortest",
         "Main2Ability",
@@ -174,6 +176,7 @@ export default function AbilityMonitorTest() {
      */
     it("ACTS_ADD_ABILITY_MONITOR_CALLBACK_0300", 0, async (done: Function) => {
       TAG = "ACTS_ADD_ABILITY_MONITOR_CALLBACK_0300";
+      console.log(LABLE + TAG + ":start")
       const want = factoryWant(
         "com.example.delegatortest",
         "Main2Ability",
@@ -216,6 +219,7 @@ export default function AbilityMonitorTest() {
      */
     it("ACTS_ADD_ABILITY_MONITOR_PROMISE_0100", 0, async (done: Function) => {
       TAG = "ACTS_ADD_ABILITY_MONITOR_PROMISE_0100";
+      console.log(LABLE + TAG + ":start")
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let monitor = null;
       try {
@@ -252,6 +256,7 @@ export default function AbilityMonitorTest() {
      */
     it("ACTS_ADD_ABILITY_MONITOR_PROMISE_0200", 0, async (done: Function) => {
       TAG = "ACTS_ADD_ABILITY_MONITOR_PROMISE_0200";
+      console.log(LABLE + TAG + ":start")
       const want = factoryWant(
         "com.example.delegatortest",
         "Main2Ability",
@@ -288,6 +293,7 @@ export default function AbilityMonitorTest() {
      */
     it("ACTS_ADD_ABILITY_MONITOR_PROMISE_0300", 0, async (done: Function) => {
       TAG = "ACTS_ADD_ABILITY_MONITOR_PROMISE_0300";
+      console.log(LABLE + TAG + ":start")
       const want = factoryWant(
         "com.example.delegatortest",
         "Main2Ability",
@@ -328,6 +334,7 @@ export default function AbilityMonitorTest() {
      */
     it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0100", 0, async (done: Function) => {
       TAG = "ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0100";
+      console.log(LABLE + TAG + ":start")
       let monitor = null;
       try {
         abilityDelegator.removeAbilityMonitor(monitor, (err: BusinessError) => {
@@ -363,7 +370,7 @@ export default function AbilityMonitorTest() {
      * @tc.level Level 2
      */
     it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0200", 0, async (done: Function) => {
-      TAG = "ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0200";
+      TAG = "ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0200";  
       console.log(LABLE + TAG + "start");
       const want = factoryWant(
         "com.example.delegatortest",

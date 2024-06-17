@@ -40,6 +40,7 @@ export default function GetCurrentTopAbilityTest() {
      * @tc.level : Level 2
      */
     it("ACTS_GET_CURRENT_TOP_ABILITY_CALL_BACK_0001", 0, async (done: Function) => {
+      console.log("ACTS_GET_CURRENT_TOP_ABILITY_CALL_BACK_0001 :start");
       let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator;
       abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       setTimeout(() => {
@@ -81,6 +82,7 @@ export default function GetCurrentTopAbilityTest() {
      * @tc.level : Level 2
      */
     it("ACTS_GET_CURRENT_TOP_ABILITY_PROMISE_0002", 0, async (done: Function) => {
+      console.log("ACTS_GET_CURRENT_TOP_ABILITY_PROMISE_0002 :start");
       let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator;
       abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       abilityDelegator.printSync(
