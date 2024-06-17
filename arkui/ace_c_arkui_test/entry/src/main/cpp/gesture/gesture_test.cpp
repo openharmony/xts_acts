@@ -30,6 +30,7 @@ void OnActionCallBack(ArkUI_GestureEvent *event, void *extraparam)
 {
     auto inputEvent = OH_ArkUI_GestureEvent_GetRawInputEvent(event);
     auto sourceType = OH_ArkUI_UIInputEvent_GetSourceType(inputEvent);
+    auto action = OH_ArkUI_UIInputEvent_GetAction(inputEvent);
     auto toolType = OH_ArkUI_UIInputEvent_GetToolType(inputEvent);
     auto pointerCount = OH_ArkUI_PointerEvent_GetPointerCount(inputEvent);
     auto pointerId = OH_ArkUI_PointerEvent_GetPointerId(inputEvent, 0);
@@ -44,10 +45,13 @@ void OnActionCallBack(ArkUI_GestureEvent *event, void *extraparam)
     auto getTiltY = OH_ArkUI_PointerEvent_GetTiltY(inputEvent, 0);
     auto getTouchAreaWidth = OH_ArkUI_PointerEvent_GetTouchAreaWidth(inputEvent, 0);
     auto getTouchAreaHeight = OH_ArkUI_PointerEvent_GetTouchAreaHeight(inputEvent, 0);
+    auto getHistorySize = OH_ArkUI_PointerEvent_GetHistorySize(inputEvent);
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "LONGPRESSGESTURE  inputEvent %{public}d",
         !!inputEvent);
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "LONGPRESSGESTURE  sourceType %{public}d",
         sourceType);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "LONGPRESSGESTURE  action %{public}d",
+        action);
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "LONGPRESSGESTURE  toolType %{public}d",
         toolType);
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "LONGPRESSGESTURE  pointerCount %{public}d",
@@ -72,6 +76,8 @@ void OnActionCallBack(ArkUI_GestureEvent *event, void *extraparam)
         getTiltX);
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "LONGPRESSGESTURE  getTiltY %{public}f",
         getTiltY);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "LONGPRESSGESTURE  historySize %{public}lu",
+        getHistorySize);
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "LONGPRESSGESTURE  getTouchAreaWidth %{public}f",
         getTouchAreaWidth);
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "LONGPRESSGESTURE  getTouchAreaHeight %{public}f",
