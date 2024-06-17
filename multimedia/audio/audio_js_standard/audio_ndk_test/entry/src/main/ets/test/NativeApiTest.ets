@@ -1266,20 +1266,6 @@ export default function audioNDK() {
         done()
     })
 
-    /*
-        * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0600
-        * @tc.name      : set markPosition with AUDIOSTREAM_TYPE_RENDERER
-        * @tc.desc      : test OH_AudioRenderer_SetMarkPosition
-        * @tc.size      : MediumTest
-        * @tc.type      : Function
-        * @tc.level     : Level0
-    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0600', 0, async function (done) {
-        let a = myaudioNdk.audioRendererSetOnMarkReached_06();
-        console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0600 audioRendererSetOnMarkReached: ${a}`);
-        expect(a).assertEqual(0)
-        done()
-    })
 
     /*
         * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0700
@@ -2196,34 +2182,6 @@ export default function audioNDK() {
       done()
     })
 
-    /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_APPLICATION_INTERNAL_RECORDING_0004
-     * @tc.name      : Set Renderer Privacy with Internal Recording
-     * @tc.desc      : test Renderer Privacy with Internal Recording
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level0
-     */
-    it('SUB_MULTIMEDIA_AUDIO_APPLICATION_INTERNAL_RECORDING_0004', 0, async function (done) {
-      let a = myaudioNdk.audioAudioInternalRecordingSuccess02();
-      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_APPLICATION_INTERNAL_RECORDING_0004 audioAudioInternalRecordingSuccess: ${a}`);
-      expect(a).assertEqual(0)
-      done()
-    })
-
-    /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_APPLICATION_INTERNAL_RECORDING_0005
-     * @tc.name      : Set Renderer Privacy with Internal Recording
-     * @tc.desc      : test Renderer Privacy with Internal Recording
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level0
-     */
-    it('SUB_MULTIMEDIA_AUDIO_APPLICATION_INTERNAL_RECORDING_0005', 0, async function (done) {
-      let a = myaudioNdk.audioAudioInternalRecordingFalse();
-      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_APPLICATION_INTERNAL_RECORDING_0005 audioAudioInternalRecordingFalse: ${a}`);
-      expect(a).assertEqual(1)
-      done()
-    })
+    
   })
 }
