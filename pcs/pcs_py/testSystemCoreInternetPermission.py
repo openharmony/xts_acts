@@ -51,7 +51,7 @@ class testSystemCoreInternetPermission(TestCase):
                         if 'permission' in service:
                             saPermissionList = service['permission']
                             if networkPermission in saPermissionList:
-                                errorList.append(initFile + 'has internet permission')
+                                errorList.append(initFile + ' has internet permission')
         if len(errorList) != 0:
             self.log.info('These system core service can not have internet permission. errorList: [' + ', '.join(errorList) + ']')
             assert False
