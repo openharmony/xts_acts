@@ -13,8 +13,6 @@
  * limitations under the License.
  */
 
-#include "gtest/gtest.h"
-
 #include "DrawingNativeCanvasTest.h"
 #include "drawing_bitmap.h"
 #include "drawing_brush.h"
@@ -29,6 +27,7 @@
 #include "drawing_memory_stream.h"
 #include "drawing_path.h"
 #include "drawing_pen.h"
+#include "drawing_pixel_map.h"
 #include "drawing_point.h"
 #include "drawing_rect.h"
 #include "drawing_region.h"
@@ -37,6 +36,8 @@
 #include "drawing_shader_effect.h"
 #include "drawing_text_blob.h"
 #include "drawing_typeface.h"
+#include "gtest/gtest.h"
+#include "image/pixelmap_native.h"
 
 using namespace testing;
 using namespace testing::ext;
@@ -44,6 +45,33 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
+
+OH_PixelmapNative *GET_OH_PixelmapNative()
+{
+    OH_Pixelmap_InitializationOptions *options = nullptr;
+    OH_PixelmapNative *pixelMap = nullptr;
+    OH_PixelmapInitializationOptions_Create(&options);
+    // 4 means width
+    uint32_t width = 4;
+    OH_PixelmapInitializationOptions_SetWidth(options, width);
+    // 4 means height
+    uint32_t height = 4;
+    OH_PixelmapInitializationOptions_SetHeight(options, height);
+    // 4 means RGBA format
+    int32_t pixelFormat = 3;
+    OH_PixelmapInitializationOptions_SetPixelFormat(options, pixelFormat);
+    // 2 means ALPHA_FORMAT_PREMUL format
+    int32_t alphaType = 2;
+    OH_PixelmapInitializationOptions_SetAlphaType(options, alphaType);
+    // 255 means rgba data
+    uint8_t data[] = {255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255};
+    // 16 means data length
+    size_t dataLength = 16;
+    OH_PixelmapNative_CreatePixelmap(data, dataLength, options, &pixelMap);
+    OH_PixelmapInitializationOptions_Release(options);
+    return pixelMap;
+}
+
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_1100
  * @tc.name: testCanvasDrawPixelMapRectNormal
@@ -65,18 +93,23 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPixelMapRectNormal, TestSize.Lev
     OH_Drawing_Rect *dst = OH_Drawing_RectCreate(0, 0, 100, 100);
     EXPECT_NE(dst, nullptr);
 
-    // 4. Iterate through OH_Drawing_FilterMode and OH_Drawing_MipmapMode to construct OH_Drawing_SamplingOptions for
-    // OH_Drawing_CanvasDrawPixelMapRect
-    // todo
+    // 4. Obtain OH_Drawing_PixelMap from OH_Drawing_PixelMapGetFromOhPixelMapNative
+    OH_PixelmapNative *pixelMap = GET_OH_PixelmapNative();
+    OH_Drawing_PixelMap *drPixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(pixelMap);
+    EXPECT_NE(drPixelMap, nullptr);
 
-    // 5. Obtain OH_Drawing_PixelMap from OH_Drawing_PixelMapGetFromOhPixelMapNative
-    // todo: unkown how to create napi pixelmap
+    // 5. Iterate through OH_Drawing_FilterMode and OH_Drawing_MipmapMode to construct OH_Drawing_SamplingOptions for
+    OH_Drawing_FilterMode filterMode[] = {FILTER_MODE_NEAREST, FILTER_MODE_LINEAR};
+    OH_Drawing_MipmapMode mode[] = {MIPMAP_MODE_NEAREST, MIPMAP_MODE_LINEAR, MIPMAP_MODE_NONE};
+    for (int i = 0; i < 2; i++) {
+        for (int j = 0; j < 3; j++) {
+            OH_Drawing_SamplingOptions *options = OH_Drawing_SamplingOptionsCreate(filterMode[i], mode[j]);
+            OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, options);
+        }
+    }
 
-    // 6. Iterate through OH_Drawing_FilterMode and OH_Drawing_MipmapMode to construct OH_Drawing_SamplingOptions for
-    // OH_Drawing_CanvasDrawPixelMapRect
-    // todo
-
-    // 7. Free the memory.
+    // 6. Free the memory.
+    OH_Drawing_PixelMapDissolve(drPixelMap);
     OH_Drawing_RectDestroy(src);
     OH_Drawing_RectDestroy(dst);
     OH_Drawing_CanvasDestroy(canvas);
@@ -95,7 +128,53 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPixelMapRectNull, TestSize.Level
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);
 
-    // todo: unkown how to create napi pixelmap
+    OH_PixelmapNative *pixelMap = GET_OH_PixelmapNative();
+
+    OH_Drawing_PixelMap *drPixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(pixelMap);
+    EXPECT_NE(drPixelMap, nullptr);
+
+    OH_Drawing_Rect *src = OH_Drawing_RectCreate(0, 0, 100, 100);
+    EXPECT_NE(src, nullptr);
+    OH_Drawing_Rect *dst = OH_Drawing_RectCreate(0, 0, 100, 100);
+    EXPECT_NE(dst, nullptr);
+
+    OH_Drawing_SamplingOptions *sampleOptions =
+        OH_Drawing_SamplingOptionsCreate(FILTER_MODE_NEAREST, MIPMAP_MODE_NEAREST);
+
+    OH_Drawing_CanvasDrawPixelMapRect(nullptr, drPixelMap, src, dst, sampleOptions);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, nullptr, src, dst, sampleOptions);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, nullptr, dst, sampleOptions);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, nullptr, sampleOptions);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, nullptr);
+    OH_Drawing_PixelMapGetFromNativePixelMap(nullptr);
+
+    OH_Drawing_Rect *src2 = OH_Drawing_RectCreate(0, 1, 1, 1);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src2, dst, sampleOptions);
+    src2 = OH_Drawing_RectCreate(1, 0, 1, 1);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src2, dst, sampleOptions);
+    src2 = OH_Drawing_RectCreate(1, 1, 0, 1);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src2, dst, sampleOptions);
+    src2 = OH_Drawing_RectCreate(1, 1, 1, 0);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src2, dst, sampleOptions);
+    src2 = OH_Drawing_RectCreate(0, 0, 0, 0);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src2, dst, sampleOptions);
+
+    OH_Drawing_Rect *dst2 = OH_Drawing_RectCreate(0, 1, 1, 1);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst2, sampleOptions);
+    dst2 = OH_Drawing_RectCreate(1, 0, 1, 1);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst2, sampleOptions);
+    dst2 = OH_Drawing_RectCreate(1, 1, 0, 1);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst2, sampleOptions);
+    dst2 = OH_Drawing_RectCreate(1, 1, 1, 0);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst2, sampleOptions);
+    dst2 = OH_Drawing_RectCreate(0, 0, 0, 0);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst2, sampleOptions);
+
+    OH_Drawing_RectDestroy(src);
+    OH_Drawing_RectDestroy(dst);
+    OH_Drawing_SamplingOptionsDestroy(sampleOptions);
+    OH_Drawing_PixelMapDissolve(drPixelMap);
+    OH_Drawing_CanvasDestroy(canvas);
 }
 
 /*
@@ -111,7 +190,62 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPixelMapRectAbnormal, TestSize.L
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);
 
-    // todo: unkown how to create napi pixelmap
+    OH_PixelmapNative *pixelMap = GET_OH_PixelmapNative();
+    OH_Drawing_PixelMap *drPixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(pixelMap);
+    EXPECT_NE(drPixelMap, nullptr);
+
+    OH_Drawing_Rect *src = OH_Drawing_RectCreate(0, 0, 100, 100);
+    EXPECT_NE(src, nullptr);
+    OH_Drawing_Rect *dst = OH_Drawing_RectCreate(0, 0, 100, 100);
+    EXPECT_NE(dst, nullptr);
+
+    OH_Drawing_SamplingOptions *sampleOptions =
+        OH_Drawing_SamplingOptionsCreate(FILTER_MODE_NEAREST, MIPMAP_MODE_NEAREST);
+
+    OH_Drawing_CanvasDrawPixelMapRect(nullptr, drPixelMap, src, dst, sampleOptions);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, nullptr, src, dst, sampleOptions);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, nullptr, dst, sampleOptions);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, nullptr, sampleOptions);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, nullptr);
+    OH_Drawing_PixelMapGetFromNativePixelMap(nullptr);
+    // 2
+    src = OH_Drawing_RectCreate(-1, 1, 1, 1);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
+    src = OH_Drawing_RectCreate(1, -1, 1, 1);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
+    src = OH_Drawing_RectCreate(1, 1, -1, 1);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
+    src = OH_Drawing_RectCreate(1, 1, 1, -1);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
+    // 3
+    src = OH_Drawing_RectCreate(100, 100, 100, 200);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
+    src = OH_Drawing_RectCreate(100, 200, 200, 200);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
+    // 4
+    src = OH_Drawing_RectCreate(100, 100, 100, 100);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
+    // 5
+    src = OH_Drawing_RectCreate(200, 200, 100, 100);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
+    // 6
+    src = OH_Drawing_RectCreate(0, 0, 100, 100);
+    dst = OH_Drawing_RectCreate(100, 100, 100, 200);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
+    dst = OH_Drawing_RectCreate(100, 200, 200, 200);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
+    // 7
+    dst = OH_Drawing_RectCreate(100, 100, 100, 100);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
+    // 8
+    dst = OH_Drawing_RectCreate(200, 200, 100, 100);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
+    // 9
+    OH_Drawing_RectDestroy(src);
+    OH_Drawing_RectDestroy(dst);
+    OH_Drawing_SamplingOptionsDestroy(sampleOptions);
+    OH_Drawing_PixelMapDissolve(drPixelMap);
+    OH_Drawing_CanvasDestroy(canvas);
 }
 
 /*
@@ -123,11 +257,42 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPixelMapRectAbnormal, TestSize.L
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPixelMapRectMaximum, TestSize.Level3) {
-    // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);
 
-    // todo: unkown how to create napi pixelmap
+    OH_PixelmapNative *pixelMap = GET_OH_PixelmapNative();
+    OH_Drawing_PixelMap *drPixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(pixelMap);
+    EXPECT_NE(drPixelMap, nullptr);
+
+    OH_Drawing_Rect *src = OH_Drawing_RectCreate(0, 0, 100, 100);
+    EXPECT_NE(src, nullptr);
+    OH_Drawing_Rect *dst = OH_Drawing_RectCreate(0, 0, 100, 100);
+    EXPECT_NE(dst, nullptr);
+
+    OH_Drawing_SamplingOptions *sampleOptions =
+        OH_Drawing_SamplingOptionsCreate(FILTER_MODE_NEAREST, MIPMAP_MODE_NEAREST);
+    // 2
+    OH_Drawing_Rect *src1 = OH_Drawing_RectCreate(FLT_MAX, FLT_MAX, 100, 100);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src1, dst, sampleOptions);
+    // 3
+    OH_Drawing_Rect *src2 = OH_Drawing_RectCreate(0, 0, FLT_MAX, FLT_MAX);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src2, dst, sampleOptions);
+    // 4
+    OH_Drawing_Rect *dst1 = OH_Drawing_RectCreate(FLT_MAX, FLT_MAX, 100, 100);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst1, sampleOptions);
+    // 5
+    OH_Drawing_Rect *dst2 = OH_Drawing_RectCreate(0, 0, FLT_MAX, FLT_MAX);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst2, sampleOptions);
+    // 6
+    OH_Drawing_RectDestroy(src1);
+    OH_Drawing_RectDestroy(src2);
+    OH_Drawing_RectDestroy(dst1);
+    OH_Drawing_RectDestroy(dst2);
+    OH_Drawing_RectDestroy(src);
+    OH_Drawing_RectDestroy(dst);
+    OH_Drawing_SamplingOptionsDestroy(sampleOptions);
+    OH_Drawing_PixelMapDissolve(drPixelMap);
+    OH_Drawing_CanvasDestroy(canvas);
 }
 
 /*
@@ -1237,6 +1402,6 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawCircleInputDestroyed, TestSize.L
     // Deprecated
 }
 
-} // namespace Drawing
-} // namespace Rosen
-} // namespace OHOS
+}  // namespace Drawing
+}  // namespace Rosen
+}  // namespace OHOS

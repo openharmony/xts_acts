@@ -36,6 +36,12 @@ ohos_moduletest_suite("ActsDrawingNativeTest") {
     "DrawingNativeShaderEffectTest.cpp",
   ]
 
+  sanitize = {
+    cfi = true
+    cfi_cross_dso = true
+    debug = false
+  }
+
   cflags = [
     "-Wall",
     "-Werror",
@@ -57,6 +63,7 @@ ohos_moduletest_suite("ActsDrawingNativeTest") {
   external_deps = [
     "graphic_2d:native_drawing_ndk",
     "hilog:libhilog",
+    "image_framework:pixelmap",
   ]
   deps = [ "//third_party/googletest:gtest_main" ]
 }
