@@ -176,7 +176,7 @@ export default function maskFilterTest() {
 
       for (let i = 0; i < 20; i++) {
         const randomEnum = Math.floor(Math.random() * (getEnumCount(drawing.BlurType)));
-        const randomValue = Math.random() * 10;
+        const randomValue = Math.random() * 10 + 1;
 
         try {
           drawing.MaskFilter.createBlurMaskFilter(randomEnum, randomValue);
