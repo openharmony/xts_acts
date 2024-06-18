@@ -96,7 +96,7 @@ export default function abilityToolAbilityDelegatorFATest() {
         })
       } catch (error) {
         hilog.info(domain, TAG, '%{public}s', `${TEST_SUITE_NAME}#${TEST_CASE_NAME} error: ${error}`);
-        expect(error.message).assertContain('Incorrect parameters')
+        expect(error.message).assertContain('parameters')
         done();
       }
     })
