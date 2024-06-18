@@ -241,14 +241,13 @@ function creatPcmFile(): boolean {
   return true;
 }
 
-async function getPermission() {
+
+export default function OhCapturerTest() {
   let permissions = ['ohos.permission.MICROPHONE'];
   featureAbility.getContext().requestPermissionsFromUser(permissions, 0, (data) => {
     console.info("request success" + JSON.stringify(data));
-  })
-}
-
-async function driveFn() {
+  })    
+  await Utils.sleep(sleep1000);
   console.info(`come in driveFn`);
   const delegator = abilityDelegatorRegistrys.getAbilityDelegator();
   let driver = await UiDriver.create();
@@ -263,17 +262,10 @@ async function driveFn() {
   console.info( `button is ${JSON.stringify(button)}`);
   await Utils.sleep(sleep500);
   await button.click();
-}
-
-export default function OhCapturerTest() {
-
+  await Utils.sleep(sleep1000);
 
   describe('OHCaptureTest',() => {
     beforeAll(async (done: Function) => {
-      await getPermission();
-      await Utils.sleep(sleep1000);
-      await driveFn();
-      await Utils.sleep(sleep1000);
       done();
     });
     beforeEach(() => {
