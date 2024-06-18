@@ -732,7 +732,7 @@ static napi_value OHEffectFilterInfoSetSupportedFormats(napi_env env, napi_callb
     return ret;
 }
 
-ImageEffect_ErrorCode GetSupportedFormats(int32_t index, OH_EffectFilterInfo *filterInfo) 
+ImageEffect_ErrorCode GetSupportedFormats(int32_t index, OH_EffectFilterInfo *filterInfo)
 {
     ImageEffect_Format formats[2] = {};
     uint32_t setSize = sizeof(formats) / sizeof(ImageEffect_Format);
