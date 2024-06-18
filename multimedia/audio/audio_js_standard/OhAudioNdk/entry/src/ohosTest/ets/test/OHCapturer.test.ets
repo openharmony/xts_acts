@@ -274,8 +274,6 @@ export default function OhCapturerTest() {
       await Utils.sleep(sleep1000);
       await driveFn();
       await Utils.sleep(sleep1000);
-      aff(done);
-      await Utils.sleep(sleep3000);
       done();
     });
     beforeEach(() => {
@@ -1208,7 +1206,6 @@ export default function OhCapturerTest() {
   describe('OhAudioCapturerRunTest', () => {
     beforeAll(async (done: Function) => {
       await creatPcmFile();
-      await aff(done);
       await Utils.sleep(sleep3000);
       done();
     });
@@ -1583,7 +1580,6 @@ export default function OhCapturerTest() {
   describe('OhAudioCapturerStateTest', () => {
     beforeAll(async (done: Function) => {
       await creatPcmFile();
-      aff(done);
       await Utils.sleep(sleep3000);
       done();
     });
