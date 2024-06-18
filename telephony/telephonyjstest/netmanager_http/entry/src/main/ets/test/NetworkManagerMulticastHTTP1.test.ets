@@ -78,7 +78,7 @@ export default function NetworkManagerMulticast1HTTP2Test() {
                 httpRequest.request(url,httpRequestOptions_http3,(err,data)=>{
                     if(err) {
                         console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
-                        expect(data.responseCode === 2300999).assertTrue();
+                        expect(err.code === 2300999).assertTrue();
                         done();
                     } else {
                         console.log(`${caseName} request succeed, err: ${JSON.stringify(data)}`);
@@ -103,7 +103,7 @@ export default function NetworkManagerMulticast1HTTP2Test() {
             httpRequest.request(url,httpRequestOptions_http3_HTTP1_1,(err,data)=>{
                 if(err) {
                     console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
-                    expect(data.responseCode === 2300999).assertTrue();
+                    expect(err.code === 2300999).assertTrue();
                     done();
                 } else {
                     console.log(`${caseName} request succeed, err: ${JSON.stringify(data)}`);
@@ -125,7 +125,7 @@ export default function NetworkManagerMulticast1HTTP2Test() {
             httpRequest.request(url,httpRequestOptions_http3_HTTP2,(err,data)=>{
                 if(err) {
                     console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
-                    expect(data.responseCode === 2300999).assertTrue();
+                    expect(err.code === 2300999).assertTrue();
                     done();
                 } else {
                     console.log(`${caseName} request succeed, err: ${JSON.stringify(data)}`);
