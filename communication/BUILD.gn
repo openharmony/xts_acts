@@ -38,6 +38,7 @@ group("communication") {
       "wifi_ErrorCode201:ActsErrorcode201Test",
       "wifi_ErrorCode401:ActsErrorcode401Test",
       "wifi_ets_standard:ActsEtsWifiTest",
+      "wifi_manager_nop:ActsManagerNopStageOhosTest",
       "wifi_p2p:ActsP2PJSTest",
       "wifi_standard:ActsWifiJSTest",
     ]
