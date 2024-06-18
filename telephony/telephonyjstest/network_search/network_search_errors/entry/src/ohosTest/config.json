@@ -1,7 +1,7 @@
 {
   "app": {
     "bundleName": "com.ohos.networksearch",
-    "vendor": "example",
+    "vendor": "ohos",
     "version": {
       "code": 1000000,
       "name": "1.0.0"
@@ -34,6 +34,14 @@
       {
         "name": "ohos.permission.DISTRIBUTED_DATASYNC",
         "reason": "ceshi"
+      },
+      {
+        "name":"ohos.permission.GET_NETWORK_INFO",
+        "reason":"need use ohos.permission.GET_NETWORK_INFO"
+      },
+	    {
+        "name":"ohos.permission.INTERNET",
+        "reason":"need use ohos.permission.INTERNET"
       }
     ],
     "abilities": [

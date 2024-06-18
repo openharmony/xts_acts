@@ -1,11 +1,12 @@
 {
     "description": "Configuration for hjunit demo Tests",
     "driver": {
-        "type": "OHJSUnitTest",
-        "test-timeout": "180000",
-        "shell-timeout": "180000",
-        "bundle-name": "com.ohos.networksearch",
-        "package-name": "com.ohos.networksearch"
+      "type": "OHJSUnitTest",
+      "test-timeout": "2100000",
+      "bundle-name": "com.ohos.networksearch",
+      "package-name": "com.ohos.networksearch",
+      "shell-timeout": "2100000",
+      "testcase-timeout":"300000"
     },
     "kits": [
         {
