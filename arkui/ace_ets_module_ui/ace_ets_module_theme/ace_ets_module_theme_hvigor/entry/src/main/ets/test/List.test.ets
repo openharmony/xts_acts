@@ -18,6 +18,13 @@ import systemThemeTest from './themeTokens/SystemTheme.test';
 import withThemeTest from './themeTokens/WithTheme.test';
 // components
 import alphabetIndexerThemeTest from './components/AlphabetIndexer.test';
+import badgeThemeTest from './components/Badge.test';
+import buttonThemeTest from './components/Button.test';
+import checkboxThemeTest from './components/Checkbox.test';
+import checkboxGroupThemeTest from './components/CheckboxGroup.test';
+import counterThemeTest from './components/Counter.test';
+import datePickerThemeTest from './components/DatePicker.test';
+import dividerThemeTest from './components/Divider.test';
 
 export default function testsuite() {
   // global tests
@@ -26,4 +33,11 @@ export default function testsuite() {
   withThemeTest();
   // components
   alphabetIndexerThemeTest();
+  badgeThemeTest();
+  buttonThemeTest();
+  checkboxThemeTest()
+  checkboxGroupThemeTest();
+  counterThemeTest();
+  datePickerThemeTest();
+  dividerThemeTest();
 }
