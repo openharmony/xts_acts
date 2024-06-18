@@ -24,7 +24,6 @@ const TAG = "testTag";
 const DOMAIN: number = 0x0000;
 
 const PERMISSION_DENIED_CODE = 201
-const PARAMETER_ERROR_CODE = 401
 
 export default function BackgroundTaskManagerTest() {
   describe('ActsBackgroundTaskManagerTest', () => {
@@ -77,19 +76,28 @@ export default function BackgroundTaskManagerTest() {
             delegator.getCurrentTopAbility().then((ability: UIAbility) => {
               let bgMode = backgroundTaskManager.BackgroundMode.AUDIO_PLAYBACK;
               backgroundTaskManager.startBackgroundRunning(ability.context, bgMode, want).then(() => {
+                hilog.info(DOMAIN, TAG, 'startBackgroundRunning promise run success.');
                 expect(false).assertTrue();
                 done();
               }).catch((error: BusinessError) => {
-                hilog.info(DOMAIN, TAG, 'error: %{public}s', JSON.stringify(error));
+                hilog.info(DOMAIN, TAG, 'startBackgroundRunning promise error: %{public}s', JSON.stringify(error));
                 expect(error.code).assertEqual(PERMISSION_DENIED_CODE);
                 done();
               })
+            }).catch((error: BusinessError) => {
+              hilog.info(DOMAIN, TAG, 'getCurrentTopAbility error: %{public}s', JSON.stringify(error));
+              expect(false).assertTrue();
+              done();
             });
+          }).catch((error: BusinessError) => {
+            hilog.info(DOMAIN, TAG, 'getWantAgent error: %{public}s', JSON.stringify(error));
+            expect(false).assertTrue();
+            done();
           })
         } catch (error) {
           let e: BusinessError = error as BusinessError;
           hilog.info(DOMAIN, TAG, 'aa error: %{public}s', JSON.stringify(error));
-          expect(e.code).assertEqual(PARAMETER_ERROR_CODE);
+          expect(false).assertTrue();
           done();
         }
 
@@ -116,19 +124,29 @@ export default function BackgroundTaskManagerTest() {
               backgroundTaskManager.startBackgroundRunning(ability.context, bgMode, want,
                 (error: BusinessError, data: void) => {
                   if (error) {
-                    hilog.info(DOMAIN, TAG, 'error: %{public}s', JSON.stringify(error));
+                    hilog.info(DOMAIN, TAG, 'startBackgroundRunning callback error: %{public}s', JSON.stringify(error));
                     expect(error.code).assertEqual(PERMISSION_DENIED_CODE);
                   } else {
+                    hilog.info(DOMAIN, TAG, 'startBackgroundRunning callback run success.');
                     expect(false).assertTrue();
                   }
                   done();
                 })
+            })
+              .catch((error: BusinessError) => {
+              hilog.info(DOMAIN, TAG, 'getCurrentTopAbility error: %{public}s', JSON.stringify(error));
+                expect(false).assertTrue();
+              done();
             });
+          }).catch((error: BusinessError) => {
+            hilog.info(DOMAIN, TAG, 'getWantAgent error: %{public}s', JSON.stringify(error));
+            expect(false).assertTrue();
+            done();
           })
         } catch (error) {
           let e: BusinessError = error as BusinessError;
           hilog.info(DOMAIN, TAG, 'aa error: %{public}s', JSON.stringify(error));
-          expect(e.code).assertEqual(PARAMETER_ERROR_CODE);
+          expect(false).assertTrue();
           done();
         }
 

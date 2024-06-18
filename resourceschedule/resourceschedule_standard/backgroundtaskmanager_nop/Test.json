@@ -20,7 +20,7 @@
             "run-command": [
                 "remount",
                 "mkdir /data/test",
-		        "power-shell wakeup",
+                "power-shell wakeup",
                 "power-shell setmode 602"
             ]
         }
