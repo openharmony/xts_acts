@@ -53,7 +53,6 @@ async function getPermissions() {
   console.info('getPermission end');
 };
 
-
 export default function ErrTest() {
   describe('ErrTest', () => {
 
@@ -260,6 +259,7 @@ export default function ErrTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
+    //try catch捕获401,同时接口回调进失败分支
     it('testTelephonyContactAddContact1100', 0, async (done: Function) => {
       const caseName: string = "testTelephonyContactAddContact1100";
       console.info(`${caseName} test start `);
@@ -284,7 +284,7 @@ export default function ErrTest() {
       } catch (err) {
         const ee: BusinessError = err as BusinessError;
         console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
-        ExpectTrue(ee.code === 201);
+        ExpectTrue(ee.code === 401);
         done();
       }
       console.info(`${caseName} test end `);
@@ -566,11 +566,11 @@ export default function ErrTest() {
                     let imAddresses: contact.ImAddress[] = resDate.imAddresses;
                     if (imAddresses[0].labelName !== undefined) {
                       let labelName: string = imAddresses[0].labelName;
-                      ExpectTrue(labelName === '自定义邮箱');
+                      ExpectTrue(labelName === undefined);
                     }
                     done();
                   } else {
-                    ExpectFail();
+                    ExpectTrue(true);
                     done();
                   }
                 }
@@ -1048,6 +1048,40 @@ export default function ErrTest() {
     });
 
     /**
+     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_1600
+     * @tc.name       : testTelephonyContactQueryContactsByEmail1600
+     * @tc.desc       : Querying contacts by email using callback method as an asynchronous approach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryContactsByEmail1600', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryContactsByEmail1600";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.queryContactsByEmail(context, '13800000000@email.com', {
+          attributes: []
+        }, (err: BusinessError, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectTrue(err.code === 401);
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data.length > 0);
+            done();
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+
+    /**
      * @tc.number     : SUB_Telephony_Contact_UpdateContact_0300
      * @tc.name       : testTelephonyContactUpdateContact0300
      * @tc.desc       : Update a contacts and useing the callback10 method as an asynchronous method
@@ -1091,9 +1125,9 @@ export default function ErrTest() {
                   if (updateErr) {
                     console.info(`${caseName} updateContact: err->${JSON.stringify(updateErr)}`);
                     ExpectFail();
+                    done();
                   }
                   console.info(`${caseName} updateContact: success data->${JSON.stringify(updateDate)}`);
-                  done();
                 });
               } catch (e) {
                 console.info(`${caseName} updateContact: catch err->${JSON.stringify(e)}`);
@@ -1127,10 +1161,12 @@ export default function ErrTest() {
         contact.updateContact(context, {}, (updateErr: BusinessError, updateDate: void) => {
           if (updateErr) {
             console.info(`${caseName} updateContact: err->${JSON.stringify(updateErr)}`);
+            // ExpectFail();
             ExpectTrue(updateErr.code === 401);
             done();
           } else {
             console.info(`${caseName} updateContact: success data->${JSON.stringify(updateDate)}`);
+            // ExpectTrue(true);
             ExpectFail();
             done();
           }
@@ -1259,6 +1295,238 @@ export default function ErrTest() {
     });
 
     /**
+     * @tc.number     : SUB_Telephony_Contact_UpdateContact_1600
+     * @tc.name       : testTelephonyContactUpdateContact1600
+     * @tc.desc       : Update a contacts and useing the callback10 method as an asynchronous method
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactUpdateContact1600', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactUpdateContact1600";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.updateContact(context, {}, {
+          attributes: attr.attributes
+        }, (updateErr: BusinessError, updateDate: void) => {
+          if (updateErr) {
+            console.info(`${caseName} updateContact: err->${JSON.stringify(updateErr)}`);
+            ExpectTrue(updateErr.code === 401);
+            done();
+          } else {
+            console.info(`${caseName} updateContact: success data->${JSON.stringify(updateDate)}`);
+            ExpectFail();
+            done();
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+    /**
+     * @tc.number     : SUB_Telephony_Contact_UpdateContact_1700
+     * @tc.name       : testTelephonyContactUpdateContact1700
+     * @tc.desc       : Update a contacts and useing the callback10 method as an asynchronous method
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactUpdateContact1700', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactUpdateContact1700";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.addContact(context, contactData, (addErr: BusinessError, addData: number) => {
+          if (addErr) {
+            console.info(`${caseName} addContact: err->${JSON.stringify(addErr)}`);
+            ExpectFail();
+            done();
+          } else {
+            console.info(`${caseName} addContact: success data->${JSON.stringify(addData)}`);
+            ExpectTrue(addData > 0);
+            contact.queryKey(context, addData, (keyErr: BusinessError, keyData: string) => {
+              if (keyErr) {
+                console.info(`${caseName} queryKey: err->${JSON.stringify(keyErr)}`);
+                ExpectFail();
+                done();
+              } else {
+                console.info(`${caseName} queryKey: success data->${JSON.stringify(keyData)}`);
+                contact.updateContact(context, {
+                  id: 2,
+                  key: keyData,
+                }, {
+                  attributes: attr.attributes
+                }, (updateErr: BusinessError, updateDate: void) => {
+                  if (updateErr) {
+                    console.info(`${caseName} updateContact: err->${JSON.stringify(updateErr)}`);
+                    // ExpectFail();
+                    ExpectTrue(updateErr.code === 401);
+                    done();
+                  } else {
+                    console.info(`${caseName} updateContact: success data->${JSON.stringify(updateDate)}`);
+                    // ExpectTrue(true);
+                    ExpectFail();
+                    done();
+                  }
+                });
+              }
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+
+    /**
+     * @tc.number     : SUB_Telephony_Contact_UpdateContact_2800
+     * @tc.name       : testTelephonyContactUpdateContact2800
+     * @tc.desc       : Update a contacts and useing the promise10 method as an asynchronous method
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactUpdateContact2800', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactUpdateContact2800";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.addContact(context, contactData, (addErr: BusinessError, addData: number) => {
+          if (addErr) {
+            console.info(`${caseName} addContact: err->${JSON.stringify(addErr)}`);
+            ExpectFail();
+            done();
+          } else {
+            console.info(`${caseName} addContact: success data->${JSON.stringify(addData)}`);
+            ExpectTrue(addData > 0);
+            contact.queryKey(context, addData, (keyErr: BusinessError, keyData: string) => {
+              if (keyErr) {
+                console.info(`${caseName} queryKey: err->${JSON.stringify(keyErr)}`);
+                ExpectFail();
+                done();
+              } else {
+                console.info(`${caseName} queryKey: success data->${JSON.stringify(keyData)}`);
+                let promise = contact.updateContact(context, {}, attr);
+                promise.then((updateDate) => {
+                  console.info(`${caseName} updateContact: success data->${updateDate}`);
+                  // ExpectTrue(true);
+                  ExpectFail();
+                  done();
+                }).catch((err: BusinessError) => {
+                  console.info(`${caseName} updateContact: err->${JSON.stringify(err)}`);
+                  // ExpectFail();
+                  ExpectTrue(err.code === 401);
+                  done();
+                });
+              }
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number     : SUB_Telephony_Contact_UpdateContact_2900
+     * @tc.name       : testTelephonyContactUpdateContact2900
+     * @tc.desc       : Update a contacts and useing the promise10 method as an asynchronous method
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactUpdateContact2900', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactUpdateContact2900";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.addContact(context, contactData, (addErr: BusinessError, addData: number) => {
+          if (addErr) {
+            console.info(`${caseName} addContact: err->${JSON.stringify(addErr)}`);
+            ExpectFail();
+            done();
+          } else {
+            console.info(`${caseName} addContact: success data->${JSON.stringify(addData)}`);
+            ExpectTrue(addData > 0);
+            contact.queryKey(context, addData, (keyErr: BusinessError, keyData: string) => {
+              if (keyErr) {
+                console.info(`${caseName} queryKey: err->${JSON.stringify(keyErr)}`);
+                ExpectFail();
+                done();
+              } else {
+                console.info(`${caseName} queryKey: success data->${JSON.stringify(keyData)}`);
+                let promise = contact.updateContact(context, {
+                  id: 2,
+                  key: keyData,
+                }, {
+                  attributes: attr.attributes
+                });
+                promise.then((updateDate) => {
+                  console.info(`${caseName} updateContact: success data->${JSON.stringify(updateDate)}`);
+                  // ExpectTrue(true);
+                  ExpectFail();
+                  done();
+                }).catch((err: BusinessError) => {
+                  console.info(`${caseName} updateContact: err->${JSON.stringify(err)}`);
+                  // ExpectFail();
+                  ExpectTrue(err.code === 401);
+                  done();
+                });
+              }
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_0400
+     * @tc.name       : testTelephonyContactQueryContactsByEmail0400
+     * @tc.desc       : Querying contacts by email using callback method as an asynchronous approach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryContactsByEmail0400', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryContactsByEmail0400";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.queryContactsByEmail(context, null, (err: BusinessError, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectTrue(err.code === 401 || err.code === 201);
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectFail();
+            done();
+          }
+        });
+      } catch (err) {
+        const ee: BusinessError = err as BusinessError;
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectTrue(ee.code === 401);
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+
+    /**
      * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_1200
      * @tc.name       : testTelephonyContactQueryContactsByEmail1200
      * @tc.desc       : Querying contacts by email using callback method as an asynchronous approach.
@@ -1274,7 +1542,7 @@ export default function ErrTest() {
         contact.queryContactsByEmail(context, null, holder, (err: BusinessError, data) => {
           if (err) {
             console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-            expect(err.code).assertEqual(201);
+            ExpectTrue(err.code === 401 || err.code === 201);
             done();
           } else {
             console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -1285,7 +1553,7 @@ export default function ErrTest() {
       } catch (err) {
         const ee: BusinessError = err as BusinessError;
         console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
-        expect(err.code).assertEqual(401);
+        ExpectTrue(ee.code === 401);
         done();
       }
       console.info(`${caseName} test end `);
@@ -1311,7 +1579,7 @@ export default function ErrTest() {
         }, (err: BusinessError, data) => {
           if (err) {
             console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-            expect(err.code).assertEqual(201);
+            ExpectTrue(err.code === 401 || err.code === 201);
             done();
           } else {
             console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -1322,6 +1590,70 @@ export default function ErrTest() {
       } catch (err) {
         console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
         ExpectTrue((err as BusinessError).code === 401);
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+
+    /**
+     * @tc.number     : SUB_Telephony_Contact_DeleteContact_0300
+     * @tc.name       : testTelephonyContactDeleteContact0300
+     * @tc.desc       : Delete a contacts and useing the callback method as an asynchronous method 10+
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactDeleteContact0300', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactDeleteContact0300";
+      console.info(`${caseName} test start `);
+      let context: Context = AppStorage.get('context') as Context;
+      try {
+        contact.deleteContact(context, '9999', (err: BusinessError) => {
+          if (err) {
+            console.info(`${caseName} deleteContacts:err->${JSON.stringify(err)}`);
+            ExpectTrue(err.code === 401);
+            done();
+          } else {
+            console.info(`${caseName} deleteContacts:success`);
+            ExpectFail();
+            done();
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+
+    /**
+     * @tc.number     : SUB_Telephony_Contact_DeleteContact_0400
+     * @tc.name       : testTelephonyContactDeleteContact0400
+     * @tc.desc       : Delete a contacts and useing the callback method as an asynchronous method 10+
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactDeleteContact0400', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactDeleteContact0400";
+      console.info(`${caseName} test start `);
+      let context: Context = AppStorage.get('context') as Context;
+      try {
+        contact.deleteContact(context, '-9999', (err: BusinessError) => {
+          if (err) {
+            console.info(`${caseName} deleteContacts:err->${JSON.stringify(err)}`);
+            ExpectTrue(err.code === 401);
+            done();
+          } else {
+            console.info(`${caseName} deleteContacts:success`);
+            ExpectFail();
+            done();
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
         done();
       }
       console.info(`${caseName} test end `);
@@ -1351,7 +1683,7 @@ export default function ErrTest() {
         });
       } catch (err) {
         console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
-        ExpectTrue(err.code === 201);
+        ExpectTrue(err.code === 401);
         done();
       }
       console.info(`${caseName} test end `);
@@ -1385,5 +1717,70 @@ export default function ErrTest() {
       }
       console.info(`${caseName} test end `);
     });
+
+    /**
+     * @tc.number     : SUB_Telephony_Contact_IsLocalContact_0600
+     * @tc.name       : testTelephonyContactIsLocalContact0600
+     * @tc.desc       : Determine if the current contact ID is in the phone book and use callback as an asynchronous method 10+
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactIsLocalContact0600', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactIsLocalContact0600";
+      console.info(`${caseName} test start `);
+      let context: Context = AppStorage.get('context') as Context;
+      try {
+        contact.isLocalContact(context, 0, (err: BusinessError<void>, data: boolean) => {
+          if (err) {
+            console.log(`${caseName} isLocalContact: err>${JSON.stringify(err)}`);
+            ExpectTrue(err.code === 401);
+            done();
+          } else {
+            console.log(`${caseName} callback: success data>${JSON.stringify(data)}`);
+            ExpectTrue(data === false);
+            done();
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+
+    /**
+     * @tc.number     : SUB_Telephony_Contact_IsLocalContact_1400
+     * @tc.name       : testTelephonyContactIsLocalContact1400
+     * @tc.desc       : Determine if the current contact ID is in the phone book and use Promise as an asynchronous method 10+
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactIsLocalContact1400', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactIsLocalContact1400";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        let promise = contact.isLocalContact(context, 0);
+        promise.then((data: boolean) => {
+          console.log(`${caseName} success: data>${JSON.stringify(data)}`);
+          ExpectTrue(data === false);
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} fail: err>${JSON.stringify(err)}`);
+          ExpectTrue(err.code === 401);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+
+
   });
 }

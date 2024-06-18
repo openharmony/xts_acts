@@ -314,6 +314,52 @@ export default function QueryGroupsTest() {
       console.info(`${caseName} test end `);
     });
 
+
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryGroups_0400
+     * @tc.name       : testTelephonyContactQueryGroups0400
+     * @tc.desc       : Query all groups of contacts and use the callback method as an asynchronous method.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryGroups0400', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryGroups0400";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.addContact(context, contactData, (err, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectFail();
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data > 0);
+            contact.queryGroups(context, {
+              holderId: -1,
+              bundleName: "",
+              displayName: "phone"
+            }, (err: BusinessError, data) => {
+              if (err) {
+                console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+                ExpectTrue(err.code === 401);
+                done();
+              } else {
+                console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+                ExpectTrue(data.length > 0)
+                done();
+              }
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
     /**
      * @tc.number     : SUB_Telephony_Contact_QueryGroups_0500
      * @tc.name       : testTelephonyContactQueryGroups0500
@@ -355,6 +401,96 @@ export default function QueryGroupsTest() {
       console.info(`${caseName} test end `);
     });
 
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryGroups_0700
+     * @tc.name       : testTelephonyContactQueryGroups0700
+     * @tc.desc       : Query all groups of contacts and use the Promise method as an asynchronous method.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryGroups0700', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryGroups0700";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.addContact(context, contactData, (err, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectFail();
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data > 0);
+            let promise = contact.queryGroups(context, {
+              holderId: -1,
+              bundleName: "",
+              displayName: ""
+            });
+            promise.then((data) => {
+              console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+              ExpectTrue(data.length > 0)
+              done();
+            }).catch((err: BusinessError) => {
+              console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+              ExpectTrue(err.code === 401);
+              done();
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryGroups_1100
+     * @tc.name       : testTelephonyContactQueryGroups1100
+     * @tc.desc       : Query all groups of contacts and use the callback method as an asynchronous method.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryGroups1100', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryGroups1100";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.addContact(context, contactData, (err, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectFail();
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data > 0);
+            contact.queryGroups(context, {
+              holderId: -1,
+              bundleName: "com.ohos.contacts",
+              displayName: ""
+            }, (err: BusinessError, data) => {
+              if (err) {
+                console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+                ExpectTrue(err.code === 401);
+                done();
+              } else {
+                console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+                ExpectTrue(data.length > 0)
+                done();
+              }
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
     /**
      * @tc.number     : SUB_Telephony_Contact_QueryGroups_1200
      * @tc.name       : testTelephonyContactQueryGroups1200
@@ -398,6 +534,50 @@ export default function QueryGroupsTest() {
       }
       console.info(`${caseName} test end `);
     });
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryGroups_1300
+     * @tc.name       : testTelephonyContactQueryGroups1300
+     * @tc.desc       : Query all groups of contacts and use the Promise method as an asynchronous method.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryGroups1300', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryGroups1300";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.addContact(context, contactData, (err, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectFail();
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data > 0);
+            let promise = contact.queryGroups(context, {
+              bundleName: "",
+              displayName: "phone"
+            });
+            promise.then((data) => {
+              console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+              ExpectTrue(data.length > 0)
+              done();
+            }).catch((err: BusinessError) => {
+              console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+              ExpectTrue(err.code === 401);
+              done();
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+
   });
 }
 

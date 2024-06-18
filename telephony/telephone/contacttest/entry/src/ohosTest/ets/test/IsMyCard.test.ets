@@ -171,7 +171,37 @@ export default function IsMyCardTest() {
       }
       console.info(`${caseName} test end `);
     });
-
+    /**
+     * @tc.number     : SUB_Telephony_Contact_IsMyCard_0200
+     * @tc.name       : testTelephonyContactIsMyCard0200
+     * @tc.desc       : Determine if it is "my business card" and use Promise method as an asynchronous method
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testTelephonyContactIsMyCard0200', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactIsMyCard0200";
+      console.info(`${caseName} test start `);
+      let context: Context = AppStorage.get('context') as Context;
+      try {
+        contact.isMyCard(context, INVALID_CONTACT_ID, (err: BusinessError, data: boolean) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectTrue(err.code === 401);
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data === false);
+            done();
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} callback: catch err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
     /**
      * @tc.number     : SUB_Telephony_Contact_IsMyCard_0300
      * @tc.name       : testTelephonyContactIsMyCard0300
@@ -266,7 +296,37 @@ export default function IsMyCardTest() {
       }
       console.info(`${caseName} test end `);
     });
-
+    /**
+     * @tc.number     : SUB_Telephony_Contact_IsMyCard_0700
+     * @tc.name       : testTelephonyContactIsMyCard0700
+     * @tc.desc       : Determine if it is "my business card" and use Promise method as an asynchronous method
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testTelephonyContactIsMyCard0700', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactIsMyCard0700";
+      console.info(`${caseName} test start `);
+      let context: Context = AppStorage.get('context') as Context;
+      try {
+        contact.isMyCard(context, -1000, (err: BusinessError, data: boolean) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectTrue(err.code === 401);
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data === false);
+            done();
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} callback: catch err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
     /**
      * @tc.number     : SUB_Telephony_Contact_IsMyCard_0800
      * @tc.name       : testTelephonyContactIsMyCard0800
@@ -423,7 +483,68 @@ export default function IsMyCardTest() {
       }
       console.info(`${caseName} test end `);
     });
-
+    /**
+     * @tc.number     : SUB_Telephony_Contact_IsMyCard_1300
+     * @tc.name       : testTelephonyContactIsMyCard1300
+     * @tc.desc       : Determine if it is "my business card" and use Promise method as an asynchronous method
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testTelephonyContactIsMyCard1300', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactIsMyCard1300";
+      console.info(`${caseName} test start `);
+      let context: Context = AppStorage.get('context') as Context;
+      try {
+        contact.isMyCard(context, 999999999999, (err: BusinessError, data: boolean) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectTrue(err.code === 401);
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data === false);
+            done();
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} callback: catch err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+    /**
+     * @tc.number     : SUB_Telephony_Contact_IsMyCard_1400
+     * @tc.name       : testTelephonyContactIsMyCard1400
+     * @tc.desc       : Determine if it is "my business card" and use Promise method as an asynchronous method
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testTelephonyContactIsMyCard1400', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactIsMyCard1400";
+      console.info(`${caseName} test start `);
+      let context: Context = AppStorage.get('context') as Context;
+      try {
+        contact.isMyCard(context, Number.MAX_SAFE_INTEGER, (err: BusinessError, data: boolean) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectTrue(err.code === 401);
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data === false);
+            done();
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} callback: catch err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
     /**
      * @tc.number     : SUB_Telephony_Contact_IsMyCard_1500
      * @tc.name       : testTelephonyContactIsMyCard1500
@@ -478,6 +599,36 @@ export default function IsMyCardTest() {
         }).catch((err: BusinessError) => {
           console.error(`${caseName} fail: err->${JSON.stringify(err)}`);
           ExpectFail();
+          done();
+        });
+      } catch (err) {
+        console.error(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+    /**
+     * @tc.number     : SUB_Telephony_Contact_IsMyCard_1700
+     * @tc.name       : testTelephonyContactIsMyCard1700
+     * @tc.desc       : Determine if it is "my business card" and use Promise method as an asynchronous method
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testTelephonyContactIsMyCard1700', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactIsMyCard1700";
+      console.info(`${caseName} test start `);
+      let context: Context = AppStorage.get('context') as Context;
+      try {
+        let promise = contact.isMyCard(context, INVALID_CONTACT_ID);
+        promise.then((data: boolean) => {
+          console.log(`${caseName} success: data->${JSON.stringify(data)}`);
+          ExpectTrue(data === false);
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} fail: err->${JSON.stringify(err)}`);
+          ExpectTrue(err.code === 401);
           done();
         });
       } catch (err) {
@@ -551,6 +702,37 @@ export default function IsMyCardTest() {
     });
 
     /**
+     * @tc.number     : SUB_Telephony_Contact_IsMyCard_2200
+     * @tc.name       : testTelephonyContactIsMyCard2200
+     * @tc.desc       : Determine if it is "my business card" and use Promise method as an asynchronous method
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testTelephonyContactIsMyCard2200', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactIsMyCard2200";
+      console.info(`${caseName} test start `);
+      let context: Context = AppStorage.get('context') as Context;
+      try {
+        let promise = contact.isMyCard(context, -1000);
+        promise.then((data: boolean) => {
+          console.log(`${caseName} success: data->${JSON.stringify(data)}`);
+          ExpectTrue(data === false);
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} fail: err->${JSON.stringify(err)}`);
+          ExpectTrue(err.code === 401);
+          done();
+        });
+      } catch (err) {
+        console.log(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+
+    /**
      * @tc.number     : SUB_Telephony_Contact_IsMyCard_2300
      * @tc.name       : testTelephonyContactIsMyCard2300
      * @tc.desc       : Determine if it is "my business card" and use Promise method as an asynchronous method
@@ -580,7 +762,36 @@ export default function IsMyCardTest() {
       }
       console.info(`${caseName} test end `);
     });
-
+    /**
+     * @tc.number     : SUB_Telephony_Contact_IsMyCard_2400
+     * @tc.name       : testTelephonyContactIsMyCard2400
+     * @tc.desc       : Determine if it is "my business card" and use Promise method as an asynchronous method
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testTelephonyContactIsMyCard2400', 0, async (done: Function) => {
+      let cardId: number = await addCard();
+      const caseName: string = "testTelephonyContactIsMyCard2400";
+      console.info(`${caseName} test start `);
+      try {
+        let promise = contact.isMyCard(null, cardId);
+        promise.then((data: boolean) => {
+          console.log(`${caseName} success: data->${JSON.stringify(data)}`);
+          ExpectTrue(true);
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} fail: err->${JSON.stringify(err)}`);
+          ExpectTrue(err.code === 401 || err.code === 201);
+          done();
+        });
+      } catch (err) {
+        console.log(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectTrue(err.code === 401 || err.code === 201);
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
     /**
      * @tc.number     : SUB_Telephony_Contact_IsMyCard_2500
      * @tc.name       : testTelephonyContactIsMyCard2500
@@ -669,7 +880,66 @@ export default function IsMyCardTest() {
       }
       console.info(`${caseName} test end `);
     });
-
+    /**
+     * @tc.number     : SUB_Telephony_Contact_IsMyCard_2800
+     * @tc.name       : testTelephonyContactIsMyCard2800
+     * @tc.desc       : Determine if it is "my business card" and use Promise method as an asynchronous method
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testTelephonyContactIsMyCard2800', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactIsMyCard2800";
+      console.info(`${caseName} test start `);
+      let context: Context = AppStorage.get('context') as Context;
+      try {
+        let promise = contact.isMyCard(context, 999999999999);
+        promise.then((data: boolean) => {
+          console.log(`${caseName} success: data->${JSON.stringify(data)}`);
+          ExpectFail();
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} fail: err->${JSON.stringify(err)}`);
+          ExpectTrue(err.code === 401);
+          done();
+        });
+      } catch (err) {
+        console.log(`${caseName} catch: err-> ${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+    /**
+     * @tc.number     : SUB_Telephony_Contact_IsMyCard_2900
+     * @tc.name       : testTelephonyContactIsMyCard2900
+     * @tc.desc       : Determine if it is "my business card" and use Promise method as an asynchronous method
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testTelephonyContactIsMyCard2900', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactIsMyCard2900";
+      console.info(`${caseName} test start `);
+      let context: Context = AppStorage.get('context') as Context;
+      try {
+        let promise = contact.isMyCard(context, Number.MAX_SAFE_INTEGER);
+        promise.then((data: boolean) => {
+          console.log(`${caseName} success: data->${JSON.stringify(data)}`);
+          ExpectTrue(data === false);
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} fail: err->${JSON.stringify(err)}`);
+          ExpectTrue(err.code === 401);
+          done();
+        });
+      } catch (err) {
+        console.log(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
     /**
      * @tc.number     : SUB_Telephony_Contact_IsMyCard_3000
      * @tc.name       : testTelephonyContactIsMyCard3000

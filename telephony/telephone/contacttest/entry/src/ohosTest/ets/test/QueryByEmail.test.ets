@@ -235,6 +235,70 @@ export default function QueryByEmailTest() {
     });
 
     /**
+     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_0200
+     * @tc.name       : testTelephonyContactQueryContactsByEmail0200
+     * @tc.desc       : Querying contacts by email using callback method as an asynchronous approach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryContactsByEmail0200', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryContactsByEmail0200";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.queryContactsByEmail(context, '13811111111@email.com', (err: BusinessError, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectTrue(err.code === 401);
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data.length === 0);
+            done();
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_0300
+     * @tc.name       : testTelephonyContactQueryContactsByEmail0300
+     * @tc.desc       : Querying contacts by email using callback method as an asynchronous approach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryContactsByEmail0300', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryContactsByEmail0300";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.queryContactsByEmail(context, '12!@#895@email.com', (err: BusinessError, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectTrue(err.code === 401);
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data.length === 0);
+            done();
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+
+    /**
      * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_0500
      * @tc.name       : testTelephonyContactQueryContactsByEmail0500
      * @tc.desc       : Querying contacts by email using callback method as an asynchronous approach.
@@ -285,7 +349,37 @@ export default function QueryByEmailTest() {
       }
       console.info(`${caseName} test end `);
     });
-
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_0600
+     * @tc.name       : testTelephonyContactQueryContactsByEmail0600
+     * @tc.desc       : Querying contacts by email using callback method as an asynchronous approach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryContactsByEmail0600', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryContactsByEmail0600";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.queryContactsByEmail(context, 'local_part_max_length64_characters@domain_part_max_length255_characters.com', (err: BusinessError, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectTrue(err.code === 401);
+            done();
+          } else {
+            console.info(`${caseName} callback: success  data->${JSON.stringify(data)}`);
+            ExpectTrue(data.length === 0);
+            done();
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
     /**
      * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_0700
      * @tc.name       : testTelephonyContactQueryContactsByEmail0700
@@ -327,7 +421,225 @@ export default function QueryByEmailTest() {
       }
       console.info(`${caseName} test end `);
     });
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_0800
+     * @tc.name       : testTelephonyContactQueryContactsByEmail0800
+     * @tc.desc       : Querying contacts by email using callback method as an asynchronous approach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryContactsByEmail0800', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryContactsByEmail0800";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.addContact(context, contactData, (err, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectFail();
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data > 0);
+            contact.queryContactsByEmail(context, '13800000000@email.com', {
+              holderId: -5,
+              bundleName: "",
+              displayName: ""
+            }, (err: BusinessError, data) => {
+              if (err) {
+                console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+                ExpectTrue(err.code === 401);
+                done();
+              } else {
+                console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+                ExpectTrue(data.length === 0);
+                done();
+              }
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_0900
+     * @tc.name       : testTelephonyContactQueryContactsByEmail0900
+     * @tc.desc       : Querying contacts by email using callback method as an asynchronous approach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryContactsByEmail0900', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryContactsByEmail0900";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.addContact(context, contactData, (err, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectFail();
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data > 0);
+            contact.queryContactsByEmail(context, '13800000000@email.com', {
+              holderId: 0,
+              bundleName: "",
+              displayName: ""
+            }, (err: BusinessError, data) => {
+              if (err) {
+                console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+                ExpectTrue(err.code === 401);
+                done();
+              } else {
+                console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+                ExpectTrue(data.length === 0);
+                done();
+              }
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_1000
+     * @tc.name       : testTelephonyContactQueryContactsByEmail1000
+     * @tc.desc       : Querying contacts by email using callback method as an asynchronous approach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryContactsByEmail1000', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryContactsByEmail1000";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.queryContactsByEmail(context, '123!@#456@email.com', holder, (err: BusinessError, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectTrue(err.code === 401);
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data.length === 0);
+            done();
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_1100
+     * @tc.name       : testTelephonyContactQueryContactsByEmail1100
+     * @tc.desc       : Querying contacts by email using callback method as an asynchronous approach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryContactsByEmail1100', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryContactsByEmail1100";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.queryContactsByEmail(context, '123456', holder, (err: BusinessError, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectTrue(err.code === 401);
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data.length === 0);
+            done();
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
 
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_1300
+     * @tc.name       : testTelephonyContactQueryContactsByEmail1300
+     * @tc.desc       : Querying contacts by email using callback method as an asynchronous approach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryContactsByEmail1300', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryContactsByEmail1300";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.queryContactsByEmail(context, '123456', {
+          holderId: 0,
+          bundleName: "",
+          displayName: ""
+        }, (err: BusinessError, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectTrue(err.code === 401);
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data.length === 0);
+            done();
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_1400
+     * @tc.name       : testTelephonyContactQueryContactsByEmail1400
+     * @tc.desc       : Querying contacts by email using callback method as an asynchronous approach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryContactsByEmail1400', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryContactsByEmail1400";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.queryContactsByEmail(context, '000000@email.com', holder, (err: BusinessError, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectTrue(err.code === 401);
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data.length === 0);
+            done();
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
     /**
      * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_1500
      * @tc.name       : testTelephonyContactQueryContactsByEmail1500
@@ -359,6 +671,888 @@ export default function QueryByEmailTest() {
                 ExpectTrue(data.length > 0);
                 done();
               }
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_1700
+     * @tc.name       : testContactQueryContactsByEmail017
+     * @tc.desc       : Querying contacts by email using callback method as an asynchronous approach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryContactsByEmail1700', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryContactsByEmail1700";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.addContact(context, contactData, (err, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectFail();
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data > 0);
+            contact.queryContactsByEmail(context, '123456', {
+              attributes: [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME]
+            }, (err: BusinessError, data) => {
+              if (err) {
+                console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+                ExpectTrue(err.code === 401);
+                done();
+              } else {
+                console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+                ExpectTrue(true);
+                done();
+              }
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_1800
+     * @tc.name       : testTelephonyContactQueryContactsByEmail1800
+     * @tc.desc       : Querying contacts by email using callback method as an asynchronous approach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryContactsByEmail1800', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryContactsByEmail1800";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.addContact(context, contactData, (err, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectFail();
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data > 0);
+            contact.queryContactsByEmail(context, '123456@email.com', {
+              holderId: 0,
+              bundleName: "",
+              displayName: ""
+            }, {
+              attributes: [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME]
+            }, (err: BusinessError, data) => {
+              if (err) {
+                console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+                ExpectTrue(err.code === 401);
+                done();
+              } else {
+                console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+                ExpectTrue(data.length === 0);
+                done();
+              }
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_1900
+     * @tc.name       : testTelephonyContactQueryContactsByEmail1900
+     * @tc.desc       : Querying contacts by email using callback method as an asynchronous approach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryContactsByEmail1900', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryContactsByEmail1900";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.addContact(context, contactData, (err, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectFail();
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data > 0);
+            contact.queryContactsByEmail(context, '123456@email.com', {
+              holderId: 1,
+              bundleName: "",
+              displayName: ""
+            }, {
+              attributes: [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME]
+            }, (err: BusinessError, data) => {
+              if (err) {
+                console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+                ExpectTrue(err.code === 401);
+                done();
+              } else {
+                console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+                ExpectTrue(data.length === 0);
+                done();
+              }
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_2000
+     * @tc.name       : testTelephonyContactQueryContactsByEmail2000
+     * @tc.desc       : Querying contacts by email using callback method as an asynchronous approach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryContactsByEmail2000', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryContactsByEmail2000";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.addContact(context, contactData, (err, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectFail();
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data > 0);
+            contact.queryContactsByEmail(context, '123456@email.com', {
+              holderId: -1,
+              bundleName: "",
+              displayName: ""
+            }, {
+              attributes: [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME]
+            }, (err: BusinessError, data) => {
+              if (err) {
+                console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+                ExpectTrue(err.code === 401);
+                done();
+              } else {
+                console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+                ExpectTrue(data.length === 0);
+                done();
+              }
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_2100
+     * @tc.name       : testTelephonyContactQueryContactsByEmail2100
+     * @tc.desc       : Querying contacts by email using callback method as an asynchronous approach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryContactsByEmail2100', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryContactsByEmail2100";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.addContact(context, contactData, (err, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectFail();
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data > 0);
+            contact.queryContactsByEmail(context, '0000@email.com', {
+              holderId: 0,
+              bundleName: "",
+              displayName: ""
+            }, {
+              attributes: [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME]
+            }, (err: BusinessError, data) => {
+              if (err) {
+                console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+                ExpectTrue(err.code === 401);
+                done();
+              } else {
+                console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+                ExpectTrue(data.length === 0);
+                done();
+              }
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_2200
+     * @tc.name       : testTelephonyContactQueryContactsByEmail2200
+     * @tc.desc       : Querying contacts by email using callback method as an asynchronous approach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryContactsByEmail2200', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryContactsByEmail2200";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.addContact(context, contactData, (err, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectFail();
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data > 0);
+            contact.queryContactsByEmail(context, '123!@#456@email.com', {
+              holderId: 0,
+              bundleName: "",
+              displayName: ""
+            }, {
+              attributes: [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME]
+            }, (err: BusinessError, data) => {
+              if (err) {
+                console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+                ExpectTrue(err.code === 401);
+                done();
+              } else {
+                console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+                ExpectTrue(data.length === 0);
+                done();
+              }
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_2300
+     * @tc.name       : testTelephonyContactQueryContactsByEmail2300
+     * @tc.desc       : Querying contacts by email using callback method as an asynchronous approach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryContactsByEmail2300', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryContactsByEmail2300";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.addContact(context, contactData, (err, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectFail();
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data > 0);
+            contact.queryContactsByEmail(context, '123455', {
+              holderId: 0,
+              bundleName: "",
+              displayName: ""
+            }, {
+              attributes: [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME]
+            }, (err: BusinessError, data) => {
+              if (err) {
+                console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+                ExpectTrue(err.code === 401);
+                done();
+              } else {
+                console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+                ExpectTrue(data.length === 0);
+                done();
+              }
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_2400
+     * @tc.name       : testTelephonyContactQueryContactsByEmail2400
+     * @tc.desc       : Querying contacts by email using callback method as an asynchronous approach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryContactsByEmail2400', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryContactsByEmail2400";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.addContact(context, contactData, (err, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectFail();
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data > 0);
+            contact.queryContactsByEmail(context, '000000@email.com', {
+              holderId: 1,
+              bundleName: "",
+              displayName: ""
+            }, {
+              attributes: [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME]
+            }, (err: BusinessError, data) => {
+              if (err) {
+                console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+                ExpectTrue(err.code === 401);
+                done();
+              } else {
+                console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+                ExpectTrue(data.length === 0);
+                done();
+              }
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_2500
+     * @tc.name       : testTelephonyContactQueryContactsByEmail2500
+     * @tc.desc       : Querying contacts by email using Promise method as an asynchronous approach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryContactsByEmail2500', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryContactsByEmail2500";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.addContact(context, contactData, (err, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectFail();
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data > 0);
+            let promise = contact.queryContactsByEmail(context, '123456@email.com', {
+              holderId: 0,
+              bundleName: "",
+              displayName: ""
+            }, {
+              attributes: [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME]
+            });
+            promise.then((data) => {
+              console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+              ExpectTrue(data.length === 0);
+              done();
+            }).catch((err: BusinessError) => {
+              console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+              ExpectTrue(err.code === 401);
+              done();
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_2600
+     * @tc.name       : testTelephonyContactQueryContactsByEmail2600
+     * @tc.desc       : Querying contacts by email using Promise method as an asynchronous approach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryContactsByEmail2600', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryContactsByEmail2600";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.addContact(context, contactData, (err, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectFail();
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data > 0);
+            let promise = contact.queryContactsByEmail(context, '123456@email.com', {
+              holderId: 1,
+              bundleName: "",
+              displayName: ""
+            }, {
+              attributes: [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME]
+            });
+            promise.then((data) => {
+              console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+              ExpectTrue(data.length === 0);
+              done();
+            }).catch((err: BusinessError) => {
+              console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+              ExpectTrue(err.code === 401);
+              done();
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_2700
+     * @tc.name       : testTelephonyContactQueryContactsByEmail2700
+     * @tc.desc       : Querying contacts by email using Promise method as an asynchronous approach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryContactsByEmail2700', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryContactsByEmail2700";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.addContact(context, contactData, (err, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectFail();
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data > 0);
+            let promise = contact.queryContactsByEmail(context, '123456@email.com', {
+              holderId: -5,
+              bundleName: "",
+              displayName: ""
+            }, {
+              attributes: [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME]
+            });
+            promise.then((data) => {
+              console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+              ExpectTrue(data.length === 0);
+              done();
+            }).catch((err: BusinessError) => {
+              console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+              ExpectTrue(err.code === 401);
+              done();
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_2800
+     * @tc.name       : testTelephonyContactQueryContactsByEmail2800
+     * @tc.desc       : Querying contacts by email using Promise method as an asynchronous approach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryContactsByEmail2800', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryContactsByEmail2800";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.addContact(context, contactData, (err, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectFail();
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data > 0);
+            let promise = contact.queryContactsByEmail(context, '00000@email.com', {
+              holderId: 0,
+              bundleName: "",
+              displayName: ""
+            }, {
+              attributes: [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME]
+            });
+            promise.then((data) => {
+              console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+              ExpectTrue(data.length === 0);
+              done();
+            }).catch((err: BusinessError) => {
+              console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+              ExpectTrue(err.code === 401);
+              done();
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_2900
+     * @tc.name       : testTelephonyContactQueryContactsByEmail2900
+     * @tc.desc       : Querying contacts by email using Promise method as an asynchronous approach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryContactsByEmail2900', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryContactsByEmail2900";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.addContact(context, contactData, (err, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectFail();
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data > 0);
+            let promise = contact.queryContactsByEmail(context, '123!@#456@email.com', {
+              holderId: 0,
+              bundleName: "",
+              displayName: ""
+            }, {
+              attributes: [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME]
+            });
+            promise.then((data) => {
+              console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+              ExpectTrue(data.length === 0);
+              done();
+            }).catch((err: BusinessError) => {
+              console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+              ExpectTrue(err.code === 401);
+              done();
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_3000
+     * @tc.name       : testTelephonyContactQueryContactsByEmail3000
+     * @tc.desc       : Querying contacts by email using Promise method as an asynchronous approach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryContactsByEmail3000', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryContactsByEmail3000";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.addContact(context, contactData, (err, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectFail();
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data > 0);
+            let promise = contact.queryContactsByEmail(context, '3698', {
+              holderId: 0,
+              bundleName: "",
+              displayName: ""
+            }, {
+              attributes: [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME]
+            });
+            promise.then((data) => {
+              console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+              ExpectTrue(data.length === 0);
+              done();
+            }).catch((err: BusinessError) => {
+              console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+              ExpectTrue(err.code === 401);
+              done();
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_3100
+     * @tc.name       : testTelephonyContactQueryContactsByEmail3100
+     * @tc.desc       : Querying contacts by email using Promise method as an asynchronous approach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryContactsByEmail3100', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryContactsByEmail3100";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.addContact(context, contactData, (err, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectFail();
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data > 0);
+            let promise = contact.queryContactsByEmail(context, '000000@email.com', {
+              holderId: 1,
+              bundleName: "",
+              displayName: ""
+            }, {
+              attributes: [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME]
+            });
+            promise.then((data) => {
+              console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+              ExpectTrue(data.length === 0);
+              done();
+            }).catch((err: BusinessError) => {
+              console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+              ExpectTrue(err.code === 401);
+              done();
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_3300
+     * @tc.name       : testTelephonyContactQueryContactsByEmail3300
+     * @tc.desc       : Querying contacts by email using callback method as an asynchronous approach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryContactsByEmail3300', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryContactsByEmail3300";
+      console.info(`${caseName} test start `);
+      let context: Context = AppStorage.get('context') as Context;
+      try {
+        contact.addContact(context, contactData, (err, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectFail();
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data > 0);
+            contact.queryContactsByEmail(context, '897452455', (err: BusinessError, data) => {
+              if (err) {
+                console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+                ExpectTrue(err.code === 401);
+                done();
+              } else {
+                console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+                ExpectTrue(data.length === 0);
+                done();
+              }
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+
+
+
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_3700
+     * @tc.name       : testTelephonyContactQueryContactsByEmail3700
+     * @tc.desc       : Querying contacts by email using callback method as an asynchronous approach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryContactsByEmail3700', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryContactsByEmail3700";
+      console.info(`${caseName} test start `);
+      let context: Context = AppStorage.get('context') as Context;
+      try {
+        contact.addContact(context, contactData, (err, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectFail();
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data > 0);
+            contact.queryContactsByEmail(context, '555555', attr, (err: BusinessError, data) => {
+              if (err) {
+                console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+                ExpectTrue(err.code === 401);
+                done();
+              } else {
+                console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+                ExpectTrue(data.length === 0);
+                done();
+              }
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_3900
+     * @tc.name       : testTelephonyContactQueryContactsByEmail3900
+     * @tc.desc       : Querying contacts by email using callback method as an asynchronous approach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryContactsByEmail3900', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryContactsByEmail3900";
+      console.info(`${caseName} test start `);
+      let context: Context = AppStorage.get('context') as Context;
+      try {
+        contact.addContact(context, contactData, (err, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectFail();
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data > 0);
+            contact.queryContactsByEmail(context, '666666', {
+              holderId: 0,
+              bundleName: "",
+              displayName: ""
+            }, {
+              attributes: [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME]
+            }, (err: BusinessError, data) => {
+              if (err) {
+                console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+                ExpectTrue(err.code === 401);
+                done();
+              } else {
+                console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+                ExpectTrue(data.length === 0);
+                done();
+              }
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+
+
+
+    /**
+     * @tc.number     : SUB_Telephony_Contact_QueryContactsByEmail_4100
+     * @tc.name       : testTelephonyContactQueryContactsByEmail4100
+     * @tc.desc       : Querying contacts by email using Promise method as an asynchronous approach.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryContactsByEmail4100', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryContactsByEmail4100";
+      console.info(`${caseName} test start `);
+      let context: Context = AppStorage.get('context') as Context;
+      try {
+        contact.addContact(context, contactData, (err, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectFail();
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data > 0);
+            let promise = contact.queryContactsByEmail(context, '123214', {
+              holderId: 0,
+              bundleName: "",
+              displayName: ""
+            }, {
+              attributes: [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME]
+            });
+            promise.then((data) => {
+              console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+              ExpectTrue(data.length === 0);
+              done();
+            }).catch((err: BusinessError) => {
+              console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+              ExpectTrue(err.code === 401);
+              done();
             });
           }
         });
