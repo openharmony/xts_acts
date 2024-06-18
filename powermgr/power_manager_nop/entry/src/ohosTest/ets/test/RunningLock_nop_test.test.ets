@@ -51,8 +51,11 @@ export default function RunningLock_nop_Test() {
      * @tc.number  AccountLocal_nop_Test_0100
      * @tc.name   Create a RunningLock lock (callback)
      * @tc.desc    Function test
+     * @tc.level: Level 1
+     * @tc.type: Function
+     * @tc.size: MediumTest
      */
-    it('AccountLocal_nop_Test_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('AccountLocal_nop_Test_0100', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       runningLock.create('running_lock_test', runningLock.RunningLockType.BACKGROUND, (err: BusinessError, lock: runningLock.RunningLock) => {
         if (err.code === PERMISSION_DENIED_CODE) {
           expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
@@ -68,8 +71,11 @@ export default function RunningLock_nop_Test() {
      * @tc.number  AccountLocal_nop_Test_0200
      * @tc.name   Create a RunningLock lock (then)
      * @tc.desc    Function test
+     * @tc.level: Level 1
+     * @tc.type: Function
+     * @tc.size: MediumTest
      */
-    it('AccountLocal_nop_Test_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('AccountLocal_nop_Test_0200', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('--------AccountLocal_nop_Test_0200--------');
       runningLock.create('running_lock_test', runningLock.RunningLockType.BACKGROUND).then((RunningLock) => {
         console.info('--------AccountLocal_nop_Test_0200-----RunningLock---' + RunningLock);
@@ -89,24 +95,27 @@ export default function RunningLock_nop_Test() {
      * @tc.number  AccountLocal_nop_Test_0300
      * @tc.name   Lock and hold RunningLock
      * @tc.desc    Function test
+     * @tc.level: Level 1
+     * @tc.type: Function
+     * @tc.size: MediumTest
      */
-    it('AccountLocal_nop_Test_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('AccountLocal_nop_Test_0300', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('--------AccountLocal_nop_Test_0300--------');
       runningLock.create('running_lock_test', runningLock.RunningLockType.BACKGROUND, (err: BusinessError, lock: runningLock.RunningLock) => {
-        console.info('hold running lock err'+err.code);
-        if(err.code === PERMISSION_DENIED_CODE){
+        console.info('hold running lock err' + err.code);
+        if (err.code === PERMISSION_DENIED_CODE) {
           try {
             lock.hold(500);
             console.info('hold running lock success');
-          } catch(err) {
-            let error:BusinessError = err as BusinessError
-            console.info('catch hold err'+error.code);
+          } catch (err) {
+            let error: BusinessError = err as BusinessError
+            console.info('catch hold err' + error.code);
             if (error.code === PERMISSION_DENIED_CODE) {
               expect(error.code).assertEqual(PERMISSION_DENIED_CODE);
               done();
-            } else if(error.code === PARAMETER_ERROR_CODE){
+            } else if (error.code === PARAMETER_ERROR_CODE) {
               expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            }else {
+            } else {
               expect(error.code).assertUndefined();
               done();
             }
@@ -120,23 +129,28 @@ export default function RunningLock_nop_Test() {
      * @tc.number  AccountLocal_nop_Test_0400
      * @tc.name   Release RunningLock
      * @tc.desc    Function test
+     * @tc.level: Level 1
+     * @tc.type: Function
+     * @tc.size: MediumTest
      */
-    it('AccountLocal_nop_Test_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async (done: Function) => {
+    it('AccountLocal_nop_Test_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('--------AccountLocal_nop_Test_0400--------');
+
+      console.info('--------AccountLocal_nop_Test_0300--------');
       runningLock.create('running_lock_test', runningLock.RunningLockType.BACKGROUND, (err: BusinessError, lock: runningLock.RunningLock) => {
-        if(err.code === PERMISSION_DENIED_CODE){
+        if (err.code === PERMISSION_DENIED_CODE) {
           try {
             lock.unhold();
             console.info('hold running lock success');
-          } catch(err) {
-            let error:BusinessError = err as BusinessError
-            console.info('catch hold err'+error.code);
+          } catch (err) {
+            let error: BusinessError = err as BusinessError
+            console.info('catch hold err' + error.code);
             if (error.code === PERMISSION_DENIED_CODE) {
               expect(error.code).assertEqual(PERMISSION_DENIED_CODE);
               done();
-            } else if(error.code === PARAMETER_ERROR_CODE){
+            } else if (error.code === PARAMETER_ERROR_CODE) {
               expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
-            }else {
+            } else {
               expect(error.code).assertUndefined();
               done();
             }
