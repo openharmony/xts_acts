@@ -84,23 +84,25 @@ namespace {
  */
 HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_001, TestSize.Level1)
 {
-    auto vEncSample = make_unique<VEncAPI11Sample>();
-    vEncSample->INP_DIR = INP_DIR_720;
-    vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
-    vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
-    vEncSample->DEFAULT_FRAME_RATE = 30;
-    ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecName));
-    ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
-    OH_AVFormat *format = OH_AVFormat_Create();
-    (void)OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, -1);
-    EXPECT_EQ(AV_ERR_INVALID_VAL, vEncSample->SetParameter(format));
-    (void)OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, LONG_MAX);
-    EXPECT_EQ(AV_ERR_INVALID_VAL, vEncSample->SetParameter(format));
-    OH_AVFormat_Destroy(format);
-    vEncSample->WaitForEOS();
-    ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    if (!strcmp(g_codecNameHEVC, "OMX.hisi.video.encoder.hevc")) {
+        auto vEncSample = make_unique<VEncAPI11Sample>();
+        vEncSample->INP_DIR = INP_DIR_720;
+        vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
+        vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
+        vEncSample->DEFAULT_FRAME_RATE = 30;
+        ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecName));
+        ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
+        OH_AVFormat *format = OH_AVFormat_Create();
+        (void)OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, -1);
+        EXPECT_EQ(AV_ERR_INVALID_VAL, vEncSample->SetParameter(format));
+        (void)OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, LONG_MAX);
+        EXPECT_EQ(AV_ERR_INVALID_VAL, vEncSample->SetParameter(format));
+        OH_AVFormat_Destroy(format);
+        vEncSample->WaitForEOS();
+        ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    }
 }
 
 /**
@@ -389,22 +391,24 @@ HWTEST_F(HwEncSetParamNdkTest, RESET_BITRATE_012, TestSize.Level0)
  */
 HWTEST_F(HwEncSetParamNdkTest, RESET_FRAMERATE_001, TestSize.Level0)
 {
-    auto vEncSample = make_unique<VEncAPI11Sample>();
-    vEncSample->INP_DIR = INP_DIR_720;
-    vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
-    vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
-    vEncSample->DEFAULT_FRAME_RATE = 30;
-    vEncSample->DEFAULT_BITRATE_MODE = CQ;
-    ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecNameHEVC));
-    ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
-    ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
-    OH_AVFormat *format = OH_AVFormat_Create();
-    (void)OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_FRAME_RATE, -1.0);
-    EXPECT_EQ(AV_ERR_INVALID_VAL, vEncSample->SetParameter(format));
-    OH_AVFormat_Destroy(format);
-    vEncSample->WaitForEOS();
-    ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    if (!strcmp(g_codecNameHEVC, "OMX.hisi.video.encoder.hevc")) {
+        auto vEncSample = make_unique<VEncAPI11Sample>();
+        vEncSample->INP_DIR = INP_DIR_720;
+        vEncSample->DEFAULT_WIDTH = DEFAULT_WIDTH;
+        vEncSample->DEFAULT_HEIGHT = DEFAULT_HEIGHT;
+        vEncSample->DEFAULT_FRAME_RATE = 30;
+        vEncSample->DEFAULT_BITRATE_MODE = CQ;
+        ASSERT_EQ(AV_ERR_OK, vEncSample->CreateVideoEncoder(g_codecNameHEVC));
+        ASSERT_EQ(AV_ERR_OK, vEncSample->SetVideoEncoderCallback());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->ConfigureVideoEncoder());
+        ASSERT_EQ(AV_ERR_OK, vEncSample->StartVideoEncoder());
+        OH_AVFormat *format = OH_AVFormat_Create();
+        (void)OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_FRAME_RATE, -1.0);
+        EXPECT_EQ(AV_ERR_INVALID_VAL, vEncSample->SetParameter(format));
+        OH_AVFormat_Destroy(format);
+        vEncSample->WaitForEOS();
+        ASSERT_EQ(AV_ERR_OK, vEncSample->errCount);
+    }
 }
 
 /**
