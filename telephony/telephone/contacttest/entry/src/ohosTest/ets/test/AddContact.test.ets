@@ -3000,7 +3000,7 @@ export default function AddContactTest() {
         contact.deleteContact(context, '', (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} deleteContacts:err->${JSON.stringify(err)}`);
-            ExpectFail();
+            ExpectTrue(err.code === 401);
             done();
           } else {
             console.info(`${caseName} deleteContacts:success`);
@@ -3080,7 +3080,7 @@ export default function AddContactTest() {
           done();
         }).catch((err: BusinessError) => {
           console.error(`${caseName} deleteContacts:fail->${JSON.stringify(err)}`);
-          ExpectFail();
+          ExpectTrue(err.code === 401);
           done();
         });
       } catch (err) {

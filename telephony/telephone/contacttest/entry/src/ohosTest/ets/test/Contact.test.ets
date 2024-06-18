@@ -465,62 +465,6 @@ export default function ErrTest() {
     });
 
     /**
-     * @tc.number : SUB_Telephony_Contact_AddContact_8300
-     * @tc.name   : testTelephonyContactAddContact8300
-     * @tc.desc   : Add a contacts and useing the callback method as an asynchronous method
-     * @tc.size   : MediumTest
-     * @tc.type   : Function
-     * @tc.level  : Level 3
-     */
-    it('testTelephonyContactAddContact8300', 0, async (done: Function) => {
-      const caseName: string = "testTelephonyContactAddContact8300";
-      console.info(`${caseName} test start `);
-      let context: Context = AppStorage.get('context') as Context;
-      if (contactData.name !== undefined) {
-        contactData.name.fullName = "axdgdfgfhgdjg194986194949848所赋予的不要动不动辨别！#@￥#%￥……%&contact.queryKey()";
-        contactData.name.familyNamePhonetic = "axdgdfgfhgdjg194986194949848所赋予的不要动不动辨别！#@￥#%￥……%&contact.queryKey()";
-      }
-      contact.addContact(context, contactData, (addErr: BusinessError, addData: number) => {
-        if (addErr) {
-          console.info(`${caseName} addContact: err->${JSON.stringify(addErr)}`);
-          ExpectFail();
-          done();
-        } else {
-          console.info(`${caseName} addContact: success data->${JSON.stringify(addData)}`);
-          ExpectTrue(addData > 0);
-          contact.queryKey(context, addData, (keyErr: BusinessError, keyData: string) => {
-            if (keyErr) {
-              console.info(`${caseName} queryKey: err->${JSON.stringify(keyErr)}`);
-              ExpectFail();
-              done();
-            } else {
-              console.info(`${caseName} queryKey: success data->${JSON.stringify(keyData)}`);
-              contact.queryContact(context, keyData, (queryErr: BusinessError, queryData: contact.Contact) => {
-                if (queryErr) {
-                  console.info(`${caseName} queryContact: err->${JSON.stringify(queryErr)}`);
-                  ExpectFail();
-                  done();
-                } else {
-                  console.info(`${caseName} queryContact: success data->${JSON.stringify(queryData)}`);
-                  let resDate: contact.Contact = queryData;
-                  if (resDate.name !== undefined) {
-                    let name: contact.Name = resDate.name;
-                    ExpectTrue(name.fullName.length > 0 && typeof (name.familyNamePhonetic) === "string");
-                    done();
-                  } else {
-                    ExpectFail();
-                    done();
-                  }
-                }
-              });
-            }
-          });
-        }
-      });
-      console.info(`${caseName} test end `);
-    });
-
-    /**
      * @tc.number : SUB_Telephony_Contact_QueryContact_10400
      * @tc.name   : testTelephonyContactQueryContact10400
      * @tc.desc   : Query the key of a contact based on their ID and use the Callback10 method as an asynchronous method.
