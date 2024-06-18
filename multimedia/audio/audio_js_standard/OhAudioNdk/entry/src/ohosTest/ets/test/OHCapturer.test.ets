@@ -19,6 +19,9 @@ import fs from '@ohos.file.fs';
 import Utils from './Utils';
 import abilityAccessCtrl, { Permissions } from '@ohos.abilityAccessCtrl';
 import { Component, Driver, ON } from '@ohos.UiTest';
+import featureAbility from '@ohos.ability.featureAbility';
+import { UiDriver, BY } from '@ohos.UiTest'
+import abilityDelegatorRegistrys from '@ohos.application.abilityDelegatorRegistry';
 
 let rateValue: number = 48000;
 let channelCount: number = 2;
@@ -238,30 +241,39 @@ function creatPcmFile(): boolean {
   return true;
 }
 
+async function getPermission() {
+  let permissions = ['ohos.permission.MICROPHONE'];
+  featureAbility.getContext().requestPermissionsFromUser(permissions, 0, (data) => {
+    console.info("request success" + JSON.stringify(data));
+  })
+}
+
+async function driveFn() {
+  console.info(`come in driveFn`);
+  const delegator = abilityDelegatorRegistrys.getAbilityDelegator();
+  let driver = await UiDriver.create();
+  console.info(`driver is ${JSON.stringify(driver)}`);
+  await Utils.sleep(sleep500);
+  console.info(`UiDriver start`);
+  let button = await driver.findComponent(BY.text('允许'));
+  if (button == null) {
+    let cmd = "hidumper -s WindowManagerService -a'-a'"
+    await delegator.executeShellCommand(cmd);
+  }
+  console.info( `button is ${JSON.stringify(button)}`);
+  await Utils.sleep(sleep500);
+  await button.click();
+}
+
 export default function OhCapturerTest() {
-  let aff = async (done: Function) => {
-    let context = AppStorage.get('context') as Context;
-    console.log('getPermission beforeAll');
-    let list: Array<Permissions> = ['ohos.permission.MICROPHONE'];
-    let atManager = abilityAccessCtrl.createAtManager();
-    atManager.requestPermissionsFromUser(context, list, (err, result) => {
-      if (err) {
-        console.log(`getPermission err ${JSON.stringify(err)}`);
-      } else {
-        console.log(`getPermission success`);
-      }
-      done();
-    });
-    const driver: Driver = Driver.create();
-    await driver.delayMs(number1500);
-    const AllowBtn: Component = await driver.findComponent(ON.text('允许'));
-    if (AllowBtn) {
-      await AllowBtn.click();
-    }
-  };
+
 
   describe('OHCaptureTest',() => {
     beforeAll(async (done: Function) => {
+      await getPermission();
+      await Utils.sleep(sleep1000);
+      await driveFn();
+      await Utils.sleep(sleep1000);
       aff(done);
       await Utils.sleep(sleep3000);
       done();
