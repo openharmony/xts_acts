@@ -13,10 +13,10 @@
  * limitations under the License.
  */
 
-import OhCapturerTest from './OHCapturer.test';
+import OhCapturerTesNewt from './OHCapturerNew.test';
 import OhRendererTest from './OhRenderer.test';
 
 export default function testsuite() {
   OhRendererTest();
-  OhCapturerTest();
+  OhCapturerTesNewt();
 }
