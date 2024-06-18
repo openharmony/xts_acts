@@ -28,7 +28,7 @@ import call from  '@ohos.telephony.call'
 let voice = call.hasVoiceCapability()
 
 export default function testsuite() {
-    if (voice){
+    if (!voice) {
           CameraSessionExposureTest();
           CameraSessionBaseTest();
           CameraSessionFlashTest();
@@ -38,7 +38,7 @@ export default function testsuite() {
           CameraImageProcessingTest();
           CameraErrorCodeUsecaseTest();
           cameraJSUnitOutput();
-    }else{
+    } else {
           CameraFunctionTest();
           CameraInputTest();
     }
