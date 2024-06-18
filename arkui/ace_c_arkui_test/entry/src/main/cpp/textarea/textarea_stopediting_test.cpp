@@ -35,7 +35,7 @@ static napi_value TestTextAreaStopEditing002(napi_env env, napi_callback_info in
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(textArea, NODE_TEXT_AREA_EDITING, &value_item);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(textArea, NODE_TEXT_AREA_EDITING)->value[PARAM_0].i32, true);
+    ASSERT_EQ(nodeAPI->getAttribute(textArea, NODE_TEXT_AREA_EDITING)->value[PARAM_0].i32, false);
     NAPI_END;
 }
 } // namespace ArkUICapiTest

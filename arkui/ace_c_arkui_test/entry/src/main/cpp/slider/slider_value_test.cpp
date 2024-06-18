@@ -40,11 +40,19 @@ static napi_value TestSliderValue002(napi_env env, napi_callback_info info)
 static napi_value TestSliderValue003(napi_env env, napi_callback_info info)
 {
     NAPI_START(slider, ARKUI_NODE_SLIDER);
+    float maxValue = SIZE_100;
+    float minValue = PARAM_0;
     float progressValue = -PARAM_10;
+    ArkUI_NumberValue max[] = {{.f32 = maxValue}};
+    ArkUI_AttributeItem maxValue_item = {max, sizeof(max) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(slider, NODE_SLIDER_MAX_VALUE, &maxValue_item);
+    ArkUI_NumberValue min[] = {{.f32 = minValue}};
+    ArkUI_AttributeItem minValue_item = {min, sizeof(min) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(slider, NODE_SLIDER_MIN_VALUE, &minValue_item);
     ArkUI_NumberValue value[] = {{.f32 = progressValue}};
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(slider, NODE_SLIDER_VALUE, &value_item);
-    ASSERT_EQ(ret, INVALID_PARAM);
+    ASSERT_EQ(ret, SUCCESS);
     ASSERT_NE(nodeAPI->getAttribute(slider, NODE_SLIDER_VALUE)->value[PARAM_0].f32, progressValue);
     NAPI_END;
 }

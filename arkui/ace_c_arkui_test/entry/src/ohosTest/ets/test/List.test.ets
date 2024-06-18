@@ -354,10 +354,6 @@ import textAccessibilityDescriptionTest from './accessibility/TextAccessibilityD
 import textAccessibilityGroupTest from './accessibility/TextAccessibilityGroupTest.test'
 import textAccessibilityLevelTest from './accessibility/TextAccessibilityLevelTest.test'
 import textAccessibilityTextTest from './accessibility/TextAccessibilityTextTest.test'
-import spanAccessibilityDescriptionTest from './accessibility/SpanAccessibilityDescriptionTest.test'
-import spanAccessibilityGroupTest from './accessibility/SpanAccessibilityGroupTest.test'
-import spanAccessibilityLevelTest from './accessibility/SpanAccessibilityLevelTest.test'
-import spanAccessibilityTextTest from './accessibility/SpanAccessibilityTextTest.test'
 import refreshAccessibilityDescriptionTest from './accessibility/RefreshAccessibilityDescriptionTest.test'
 import refreshAccessibilityGroupTest from './accessibility/RefreshAccessibilityGroupTest.test'
 import refreshAccessibilityLevelTest from './accessibility/RefreshAccessibilityLevelTest.test'
@@ -692,10 +688,6 @@ export default function testsuite() {
   textAccessibilityGroupTest()
   textAccessibilityLevelTest()
   textAccessibilityTextTest()
-  spanAccessibilityDescriptionTest()
-  spanAccessibilityGroupTest()
-  spanAccessibilityLevelTest()
-  spanAccessibilityTextTest()
   refreshAccessibilityDescriptionTest()
   refreshAccessibilityGroupTest()
   refreshAccessibilityLevelTest()

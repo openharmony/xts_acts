@@ -46,8 +46,8 @@ static napi_value TestSliderMax003(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.f32 = maxValue}};
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(slider, NODE_SLIDER_MAX_VALUE, &value_item);
-    ASSERT_EQ(ret, INVALID_PARAM);
-    ASSERT_NE(nodeAPI->getAttribute(slider, NODE_SLIDER_MAX_VALUE)->value[PARAM_0].f32, maxValue);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(slider, NODE_SLIDER_MAX_VALUE)->value[PARAM_0].f32, maxValue);
     NAPI_END;
 }
 

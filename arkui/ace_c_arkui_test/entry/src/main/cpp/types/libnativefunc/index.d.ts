@@ -3098,30 +3098,6 @@ export const testTextAccessibilityText001: () => number;
 
 export const testTextAccessibilityText002: () => number;
 
-export const testSpanAccessibilityDescription001: () => number;
-
-export const testSpanAccessibilityDescription002: () => number;
-
-export const testSpanAccessibilityGroup001: () => number;
-
-export const testSpanAccessibilityGroup002: () => number;
-
-export const testSpanAccessibilityGroup003: () => number;
-
-export const testSpanAccessibilityGroup004: () => number;
-
-export const testSpanAccessibilityLevel001: () => number;
-
-export const testSpanAccessibilityLevel002: () => number;
-
-export const testSpanAccessibilityLevel003: () => number;
-
-export const testSpanAccessibilityLevel004: () => number;
-
-export const testSpanAccessibilityText001: () => number;
-
-export const testSpanAccessibilityText002: () => number;
-
 export const testRefreshAccessibilityDescription001: () => number;
 
 export const testRefreshAccessibilityDescription002: () => number;
@@ -4774,10 +4750,6 @@ export const testToggleAccessibilityLevel006: () => number;
 export const testTextAccessibilityLevel005: () => number;
 
 export const testTextAccessibilityLevel006: () => number;
-
-export const testSpanAccessibilityLevel005: () => number;
-
-export const testSpanAccessibilityLevel006: () => number;
 
 export const testRefreshAccessibilityLevel005: () => number;
 

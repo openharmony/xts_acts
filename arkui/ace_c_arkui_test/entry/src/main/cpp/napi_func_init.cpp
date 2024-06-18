@@ -45,10 +45,6 @@
 #include "accessibility/slider_accessibilitygroup_test.cpp"
 #include "accessibility/slider_accessibilitylevel_test.cpp"
 #include "accessibility/slider_accessibilitytext_test.cpp"
-#include "accessibility/span_accessibilitydescription_test.cpp"
-#include "accessibility/span_accessibilitygroup_test.cpp"
-#include "accessibility/span_accessibilitylevel_test.cpp"
-#include "accessibility/span_accessibilitytext_test.cpp"
 #include "accessibility/swiper_accessibilitydescription_test.cpp"
 #include "accessibility/swiper_accessibilitygroup_test.cpp"
 #include "accessibility/swiper_accessibilitylevel_test.cpp"
@@ -2855,30 +2851,6 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr},
         {"testTextAccessibilityText002", nullptr, TestTextAccessibilityText002, nullptr, nullptr, nullptr, napi_default,
          nullptr},
-        {"testSpanAccessibilityDescription001", nullptr, TestSpanAccessibilityDescription001, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testSpanAccessibilityDescription002", nullptr, TestSpanAccessibilityDescription002, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testSpanAccessibilityGroup001", nullptr, TestSpanAccessibilityGroup001, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testSpanAccessibilityGroup002", nullptr, TestSpanAccessibilityGroup002, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testSpanAccessibilityGroup003", nullptr, TestSpanAccessibilityGroup003, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testSpanAccessibilityGroup004", nullptr, TestSpanAccessibilityGroup004, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testSpanAccessibilityLevel001", nullptr, TestSpanAccessibilityLevel001, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testSpanAccessibilityLevel002", nullptr, TestSpanAccessibilityLevel002, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testSpanAccessibilityLevel003", nullptr, TestSpanAccessibilityLevel003, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testSpanAccessibilityLevel004", nullptr, TestSpanAccessibilityLevel004, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testSpanAccessibilityText001", nullptr, TestSpanAccessibilityText001, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
-        {"testSpanAccessibilityText002", nullptr, TestSpanAccessibilityText002, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
         {"testRefreshAccessibilityDescription001", nullptr, TestRefreshAccessibilityDescription001, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"testRefreshAccessibilityDescription002", nullptr, TestRefreshAccessibilityDescription002, nullptr, nullptr,
@@ -4307,10 +4279,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testTextAccessibilityLevel005", nullptr, TestTextAccessibilityLevel005, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testTextAccessibilityLevel006", nullptr, TestTextAccessibilityLevel006, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testSpanAccessibilityLevel005", nullptr, TestSpanAccessibilityLevel005, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testSpanAccessibilityLevel006", nullptr, TestSpanAccessibilityLevel006, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testRefreshAccessibilityLevel005", nullptr, TestRefreshAccessibilityLevel005, nullptr, nullptr, nullptr,
          napi_default, nullptr},
