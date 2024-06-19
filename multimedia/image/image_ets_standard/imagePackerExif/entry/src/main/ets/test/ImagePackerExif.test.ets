@@ -47,9 +47,9 @@ let sleep = async (delay: number): Promise<void> => {
 };
 
 
-export default function imagePackeExifTest() {
+export default function imagePackerExifTest() {
 
-  describe('ActsImagePackeExifTest', () => {
+  describe('ActsImagePackerExifTest', () => {
 
     const picMimeType:Array<picType> = [{name:"test_exif_v2.jpg",mimeType:"image/jpeg", fileSuffix:"jpg"},
       {name:"test_exif_v2.webp",mimeType:"image/webp", fileSuffix:"webp"},
@@ -268,7 +268,7 @@ export default function imagePackeExifTest() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKTOFILE_IMAGESOURCE_PROMISE_0100
      * @tc.name      : packToFile -promise
-     * @tc.desc      : 1.pacToFile
+     * @tc.desc      : 1.packToFile
      *                 2.getImageProperty
      * @tc.size      : MediumTest
      * @tc.type      : Functional
@@ -297,7 +297,7 @@ export default function imagePackeExifTest() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKTOFILE_PIXELMAP_PROMISE_0100
      * @tc.name      : packToFile -promise
-     * @tc.desc      : 1.pacToFile
+     * @tc.desc      : 1.packToFile
      *                 2.getImageProperty
      * @tc.size      : MediumTest
      * @tc.type      : Functional
@@ -386,7 +386,7 @@ export default function imagePackeExifTest() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKTOFILE_PIXELMAP_CALLBACK_0100
      * @tc.name      : packToFile -callback
-     * @tc.desc      : 1.pacToFile
+     * @tc.desc      : 1.packToFile
      *                 2.getImageProperty
      * @tc.size      : MediumTest
      * @tc.type      : Functional
@@ -416,7 +416,7 @@ export default function imagePackeExifTest() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKTOFILE_IMAGESOURCE_CALLBACk_0100
      * @tc.name      : packToFile -callback
-     * @tc.desc      : 1.pacToFile
+     * @tc.desc      : 1.packToFile
      *                 2.getImageProperty
      * @tc.size      : MediumTest
      * @tc.type      : Functional

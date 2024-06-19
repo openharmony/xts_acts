@@ -59,7 +59,7 @@ group("multimedia") {
       "image/image_ets_standard/imageDecodeOptionsYuvRaw:image_decode_options_yuv_raw_hap",
       "image/image_ets_standard/imageExifGetModify:image_exif_get_modify_hap",
       "image/image_ets_standard/imageNdk:image_ndk_hap",
-      "image/image_ets_standard/imagePackeExif:image_packe_exif_hap",
+      "image/image_ets_standard/imagePackerExif:image_packer_exif_hap",
       "image/image_ets_standard/imageQualityEnhancement:image_quality_enhancement_hap",
       "image/image_js_standard/image:image_js_hap",
       "image/image_js_standard/imageColorSpaceTransfer:image_colorspace_transfer_hap",
