@@ -32,7 +32,6 @@ struct runMetrics1 {
 
   build() {
     Column() {
-      // Text('aaa')
       Text(this.textStr, { controller: this.controller })
       Text(this.AvgCharWidth + '').id('runMetrics_1')
       Text(this.MaxCharWidth + '').id('runMetrics_2')
