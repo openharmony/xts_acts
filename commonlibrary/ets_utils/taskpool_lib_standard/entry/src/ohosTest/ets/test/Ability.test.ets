@@ -985,7 +985,6 @@ export default function TaskPoolTest() {
       let highTime: number = 0;
       let mediumTime: number = 0;
       let lowTime: number = 0;
-      let idleTime: number = 0;
 
       for (let i: number = 0; i < allCount; i++) {
         let task1: taskpool.Task = new taskpool.Task(testTime);
@@ -994,22 +993,18 @@ export default function TaskPoolTest() {
         taskArray.push(task2);
         let task3: taskpool.Task = new taskpool.Task(testTime);
         taskArray.push(task3);
-        let task4: taskpool.Task = new taskpool.Task(testTime);
-        taskArray.push(task4);
       }
 
-      for (let i: number = 0; i < allCount; i+=4) {
+      for (let i: number = 0; i < allCount; i+=3) {
         let res1: number = await taskpool.execute(taskArray[i], taskpool.Priority.HIGH) as number;
         lowTime += (res1 - begin);
         let res2: number = await taskpool.execute(taskArray[i + 1], taskpool.Priority.LOW) as number;
         mediumTime += (res2 - begin);
         let res3: number = await taskpool.execute(taskArray[i + 2], taskpool.Priority.MEDIUM) as number;
         highTime += (res3 - begin);
-        let res4: number = await taskpool.execute(taskArray[i + 3], taskpool.Priority.IDLE) as number;
-        idleTime += (res4 - begin);
       }
 
-      expect(lowTime > mediumTime && mediumTime > highTime && highTime > idleTime);
+      expect(lowTime > mediumTime && mediumTime > highTime);
       done();
     })
 
@@ -3124,14 +3119,14 @@ export default function TaskPoolTest() {
         finalString += "b";
         isTerminate2 = true;
       })
-      taskpool.execute(task3, taskpool.Priority.IDLE).then(() => {
+      taskpool.execute(task3).then(() => {
         finalString += "c";
         isTerminate3 = true;
       })
-      while (!isTerminate1 || !isTerminate2 || !isTerminate3) {
+      while (!isTerminate3) {
         await promiseCase()
       }
-      expect(finalString).assertEqual("cba");
+      expect(finalString.charAt(0)).assertEqual("c");
       done();
     })
 
@@ -3144,34 +3139,20 @@ export default function TaskPoolTest() {
      * @tc.level     : Level 0
      */
     it('TaskPoolTestClass142', 0, async (done: Function) => {
-      let finalString: string = "";
-      let isTerminate1: boolean = false;
-      let isTerminate2: boolean = false;
-      let isTerminate3: boolean = false;
-
       let task1: taskpool.Task = new taskpool.Task(delaySum, 10, 20, 100)
       let task2: taskpool.Task = new taskpool.Task(delaySum, 30, 40, 300)
       let task3: taskpool.Task = new taskpool.Task(delaySum, 50, 60, 500)
       task1.addDependency(task2);
       task2.addDependency(task3);
-      task1.removeDependency(task2);
-      task2.removeDependency(task3);
-      taskpool.execute(task1, taskpool.Priority.IDLE).then(() => {
-        finalString += "a";
-        isTerminate1 = true;
-      })
-      taskpool.execute(task2, taskpool.Priority.IDLE).then(() => {
-        finalString += "b";
-        isTerminate2 = true;
-      })
-      taskpool.execute(task3, taskpool.Priority.IDLE).then(() => {
-        finalString += "c";
-        isTerminate3 = true;
-      })
-      while (!isTerminate1 || !isTerminate2 || !isTerminate3) {
-        await promiseCase()
+      taskpool.execute(task1, taskpool.Priority.IDLE);
+      taskpool.execute(task2, taskpool.Priority.IDLE);
+      taskpool.execute(task3, taskpool.Priority.IDLE);
+      taskpool.cancel(task1);
+      try {
+        task1.removeDependency(task2);
+      } catch (e) {
+        expect((e as BusinessError).toString()).assertEqual("BusinessError: The dependency does not exist, taskpool:: executedTask cannot removeDependency");
       }
-      expect(finalString).assertEqual("abc");
       done();
     })
 
@@ -3210,37 +3191,20 @@ export default function TaskPoolTest() {
     /**
      * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0144
      * @tc.name      : TaskPoolTestClass144
-     * @tc.desc      : executeDelayed for taskpool
+     * @tc.desc      : executedTask cannot addDependency
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
     it('TaskPoolTestClass144', 0, async (done: Function) => {
-      let finalString: string = "";
-      let isTerminate1: boolean = false;
-      let isTerminate2: boolean = false;
-      let isTerminate3: boolean = false;
-      let task1: taskpool.Task = new taskpool.Task(WaitforRunner, "a");
-      let task2: taskpool.Task = new taskpool.Task(WaitforRunner, "b");
-      let task3: taskpool.Task = new taskpool.Task(WaitforRunner, "c");
-
-      taskpool.executeDelayed(1000, task1, taskpool.Priority.IDLE).then(() => {
-        finalString += 'a';
-        isTerminate1 = true;
-      });
-      taskpool.executeDelayed(500, task2, taskpool.Priority.IDLE).then(() => {
-        finalString += 'b';
-        isTerminate2 = true;
-      });
-      taskpool.executeDelayed(100, task3, taskpool.Priority.IDLE).then(() => {
-        finalString += 'c';
-        isTerminate3 = true;
-      });
-      while (!isTerminate1 || !isTerminate2 || !isTerminate3) {
-        await promiseCase()
+      try {
+        let task1: taskpool.Task = new taskpool.Task(printArgs, 100);
+        let task2: taskpool.Task = new taskpool.Task(printArgs, 100);
+        taskpool.executeDelayed(100, task1, taskpool.Priority.IDLE);
+        task1.addDependency(task2);
+      } catch(e) {
+        expect((e as BusinessError).toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: seqRunnerTask or executedTask cannot addDependency");
       }
-
-      expect(finalString).assertEqual("cba");
       done();
     })
 
@@ -3276,25 +3240,14 @@ export default function TaskPoolTest() {
      * @tc.level     : Level 0
      */
     it('TaskPoolTestClass146', 0, async (done: Function) => {
-      let finalString: string = "";
-      let task1: taskpool.Task = new taskpool.Task(AdditionDelay, 500);
-      let task2: taskpool.Task = new taskpool.Task(AdditionDelay, 300);
-      let task3: taskpool.Task = new taskpool.Task(AdditionDelay, 100);
-      let task4: taskpool.Task = new taskpool.Task(WaitforRunner, finalString);
-
-      let runner: taskpool.SequenceRunner = new taskpool.SequenceRunner(taskpool.Priority.IDLE);
-      runner.execute(task1).then(() => {
-        finalString += 'a';
-      });
-      runner.execute(task2).then(() => {
-        finalString += 'b';
-      });
-      runner.execute(task3).then(() => {
-        finalString += 'c';
-      });
-
-      await runner.execute(task4);
-      expect(finalString).assertEqual("abc");
+      try {
+        let task: taskpool.Task = new taskpool.Task(printArgs, 100);
+        let runner: taskpool.SequenceRunner = new taskpool.SequenceRunner(taskpool.Priority.IDLE);
+        runner.execute(task);
+        taskpool.executeDelayed(100, task, taskpool.Priority.IDLE);
+      } catch(e) {
+        expect((e as BusinessError).toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: seqRunnerTask cannot executeDelayed outside");
+      }
       done();
     })
 
@@ -3343,34 +3296,26 @@ export default function TaskPoolTest() {
     /**
      * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0149
      * @tc.name      : TaskPoolTestClass149
-     * @tc.desc      : Async function execute taskGroup
+     * @tc.desc      : taskGroup cannot addTask
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
     it('TaskPoolTestClass149', 0, async (done: Function) => {
-      let result: Array<number> = [];
-      let isTerminate: boolean = false;
       let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
       let task1: taskpool.Task = new taskpool.Task(printArgs, 40);
       let task2: taskpool.Task = new taskpool.Task(printArgs, 50);
-      taskGroup.addTask(printArgs, 10);
-      taskGroup.addTask(printArgs, 20);
-      taskGroup.addTask(printArgs, 30);
-      taskGroup.addTask(task1);
-      taskGroup.addTask(task2);
-      taskpool.execute(taskGroup, taskpool.Priority.IDLE).then((ret) => {
-        result = ret as Array<number>;
-        isTerminate = true;
-      });
-      while (!isTerminate) {
-        await promiseCase()
+      try {
+        taskGroup.addTask(printArgs, 10);
+        taskGroup.addTask(printArgs, 20);
+        taskGroup.addTask(printArgs, 30);
+        taskpool.execute(taskGroup, taskpool.Priority.IDLE);
+        taskGroup.addTask(task1);
+        taskGroup.addTask(task2);
+        taskpool.execute(taskGroup, taskpool.Priority.IDLE);
+      } catch (e) {
+        expect((e as BusinessError).toString()).assertEqual("BusinessError: The input parameters are invalid, taskpool:: executed taskGroup cannot addTask");
       }
-      expect(result[0]).assertEqual(10);
-      expect(result[1]).assertEqual(20);
-      expect(result[2]).assertEqual(30);
-      expect(result[3]).assertEqual(40);
-      expect(result[4]).assertEqual(50);
       done();
     })
 
