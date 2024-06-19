@@ -42,6 +42,12 @@ import onHoverStatusChange from './onHoverStatusChange/onHoverStatusChange.test'
 import onTouchIntercept from './onTouchIntercept/onTouchIntercept.test'
 import onWillApplyTheme from './onWillApplyTheme/onWillApplyTheme.test'
 import FocusApi1 from './Focus/FocusApi1.test'
+import FocusScopeId1 from './Focus/focusScopeId/FocusScopeId1.test'
+import FocusScopeId2 from './Focus/focusScopeId/FocusScopeId2.test'
+import FocusScopeId3 from './Focus/focusScopeId/FocusScopeId3.test'
+import FocusScopeId4 from './Focus/focusScopeId/FocusScopeId4.test'
+import FocusScopeId5 from './Focus/focusScopeId/FocusScopeId5.test'
+import FocusScopeId6 from './Focus/focusScopeId/FocusScopeId6.test'
 
 export default function testsuite() {
   requestFocus1();
@@ -73,5 +79,10 @@ export default function testsuite() {
   onTouchIntercept()
   onWillApplyTheme()
   FocusApi1();
-
+  FocusScopeId1();
+  FocusScopeId2();
+  FocusScopeId3();
+  FocusScopeId4();
+  FocusScopeId5();
+  FocusScopeId6();
 }
