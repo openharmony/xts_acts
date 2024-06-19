@@ -13,12 +13,14 @@
  * limitations under the License.
  */
 
+#include "DrawingNativeCanvasCommon.h"
 #include "DrawingNativeCanvasTest.h"
 #include "drawing_bitmap.h"
 #include "drawing_brush.h"
 #include "drawing_canvas.h"
 #include "drawing_color.h"
 #include "drawing_color_filter.h"
+#include "drawing_error_code.h"
 #include "drawing_filter.h"
 #include "drawing_font.h"
 #include "drawing_image.h"
@@ -36,9 +38,8 @@
 #include "drawing_shader_effect.h"
 #include "drawing_text_blob.h"
 #include "drawing_typeface.h"
-#include "gtest/gtest.h"
 #include "image/pixelmap_native.h"
-#include "drawing_error_code.h"
+#include "gtest/gtest.h"
 
 using namespace testing;
 using namespace testing::ext;
@@ -46,33 +47,6 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-
-OH_PixelmapNative *GET_OH_PixelmapNative()
-{
-    OH_Pixelmap_InitializationOptions *options = nullptr;
-    OH_PixelmapNative *pixelMap = nullptr;
-    OH_PixelmapInitializationOptions_Create(&options);
-    // 4 means width
-    uint32_t width = 4;
-    OH_PixelmapInitializationOptions_SetWidth(options, width);
-    // 4 means height
-    uint32_t height = 4;
-    OH_PixelmapInitializationOptions_SetHeight(options, height);
-    // 4 means RGBA format
-    int32_t pixelFormat = 3;
-    OH_PixelmapInitializationOptions_SetPixelFormat(options, pixelFormat);
-    // 2 means ALPHA_FORMAT_PREMUL format
-    int32_t alphaType = 2;
-    OH_PixelmapInitializationOptions_SetAlphaType(options, alphaType);
-    // 255 means rgba data
-    uint8_t data[] = {255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255};
-    // 16 means data length
-    size_t dataLength = 16;
-    OH_PixelmapNative_CreatePixelmap(data, dataLength, options, &pixelMap);
-    OH_PixelmapInitializationOptions_Release(options);
-    return pixelMap;
-}
-
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_CANVAS_1100
  * @tc.name: testCanvasDrawPixelMapRectNormal
@@ -717,17 +691,16 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawBitmapNormal, TestSize.Level0) {
         ALPHA_FORMAT_UNPREMUL,
     };
 
-    if (0) {
-        // todo cpp crash
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 4; j++) {
-                int width = 500;
-                int height = 500;
-                OH_Drawing_Image_Info imageInfo = {width, height, formats[i], alphaFormats[j]};
-                int rowBytes = width * height * 4;
-                void *pixels = new int[width * height];
-                bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
-            }
+    for (int i = 0; i < 6; i++) {
+        for (int j = 0; j < 4; j++) {
+            OH_Drawing_Image_Info imageInfo;
+            int width = 500;
+            int height = 500;
+            int rowBytes = width * height * 4;
+            OH_Drawing_BitmapFormat cFormat{formats[i], alphaFormats[j]};
+            OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
+            void *pixels = OH_Drawing_BitmapGetPixels(bitmap);
+            bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
         }
     }
 
@@ -1403,6 +1376,6 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawCircleInputDestroyed, TestSize.L
     // Deprecated
 }
 
-}  // namespace Drawing
-}  // namespace Rosen
-}  // namespace OHOS
+} // namespace Drawing
+} // namespace Rosen
+} // namespace OHOS
