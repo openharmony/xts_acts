@@ -1510,6 +1510,25 @@ export default function CalendarManagerTest() {
         TimeZone = data;
       });
 
+      let calendarMgrMock: calendarManager.CalendarManager = {
+        createCalendar: (): Promise<calendarManager.Calendar> => {
+          throw new Error('Function not implemented.');
+        },
+        deleteCalendar: (): Promise<void> => {
+          throw new Error('Function not implemented.');
+        },
+
+        getAllCalendars: (): Promise<calendarManager.Calendar[]> => {
+          throw new Error('Function not implemented.');
+        },
+        editEvent: (event: calendarManager.Event): Promise<number> => {
+          throw new Error('Function not implemented.');
+        },
+        getCalendar: (): Promise<calendarManager.Calendar> => {
+          throw new Error('Function not implemented.');
+        }
+      };
+
       const date = new Date();
       let Schedule: calendarManager.Event = {
         type: calendarManager.EventType.NORMAL,
@@ -1524,9 +1543,13 @@ export default function CalendarManagerTest() {
           excludedDates: [date.getTime() + 60 * 60 * 1000 * 2]
         },
       }
+
+      let mocker = new MockKit();
+      let mockedOn: Function = mocker.mockFunc(calendarMgrMock, calendarMgrMock.editEvent);
+      when(mockedOn)(ArgumentMatchers.any).afterReturn(1);
       try {
         let eventId = await calendarMgr.editEvent(Schedule);
-        expect(eventId != null).assertTrue();
+        expect(eventId !== 0).assertTrue();
       } catch (err) {
         console.info(CaseName + "Failed to editEvent" + JSON.stringify(err));
       }
