@@ -17,6 +17,7 @@ import graphicTextBTest from './graphicTextB.test'
 import graphicTextClass from './graphicTextClass.test'
 import graphicTextEnum from './graphicTextEnum.test'
 import graphicTextInterface from './graphicTextInterface.test'
+import LineMetricsTest from './LineMetricsTest.test'
 
 export default function testsuite() {
   graphicTextATest()
@@ -24,4 +25,5 @@ export default function testsuite() {
   graphicTextClass(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage);
   graphicTextEnum(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage);
   graphicTextInterface(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage); 
+  LineMetricsTest()
 }
