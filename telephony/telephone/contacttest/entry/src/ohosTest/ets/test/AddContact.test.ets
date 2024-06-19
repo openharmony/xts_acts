@@ -19,7 +19,6 @@ import contact from '@ohos.contact';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import bundleManager from '@ohos.bundle.bundleManager';
 import account from '@ohos.account.osAccount';
-import { Driver } from '@ohos.UiTest';
 
 const ExpectTrue = (n: boolean) => {
   try {
@@ -190,6 +189,24 @@ export default function AddContactTest() {
       contact.Attribute.ATTR_WEBSITE
       ]
     };
+
+    /**
+     * @tc.number abnormal_contactsApi_insert_test_2800
+     * @tc.name contactsApi_insert error
+     * @tc.desc Function test
+     */
+    it("abnormal_contactsApi_insert_test_2800", 0,  async (done: Function) => {
+      let contactDataError: contact.Contact = {};
+      try {
+        let rawContactId = await contact.addContact(contactDataError);
+        console.info("abnormal_contactsApi_insert_test_2800 : rawContactId = " + rawContactId);
+        expect(rawContactId === -1).assertTrue();
+        done();
+      } catch (error) {
+        console.info("contactsApi_insert_test_100 : raw_contact insert error = " + error);
+        done();
+      }
+    });
 
     /**
      * @tc.number     : SUB_Telephony_Contact_AddContact_0100
@@ -2596,6 +2613,37 @@ export default function AddContactTest() {
     })
 
     /**
+     * @tc.number     : SUB_Telephony_Contact_IsLocalContact_0400
+     * @tc.name       : testTelephonyContactIsLocalContact0400
+     * @tc.desc       : Determine if the current contact ID is in the phone book and use callback as an asynchronous method 10+
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactIsLocalContact0400', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactIsLocalContact0400";
+      console.info(`${caseName} test start `);
+      let context: Context = AppStorage.get('context') as Context;
+      try {
+        contact.isLocalContact(context, -1, (err: BusinessError<void>, data: boolean) => {
+          if (err) {
+            console.log(`${caseName} err>${JSON.stringify(err)}`);
+            ExpectTrue(err.code === 401);
+            done();
+          } else {
+            console.log(`${caseName} success data>${JSON.stringify(data)}`);
+            ExpectTrue(data === false);
+            done();
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    })
+    /**
      * @tc.number     : SUB_Telephony_Contact_IsLocalContact_0500
      * @tc.name       : testTelephonyContactIsLocalContact0500
      * @tc.desc       : Determine if the current contact ID is in the phone book and use callback as an asynchronous method 10+
@@ -2627,6 +2675,38 @@ export default function AddContactTest() {
       console.info(`${caseName} test end `);
     })
 
+
+    /**
+     * @tc.number     : SUB_Telephony_Contact_IsLocalContact_0700
+     * @tc.name       : testTelephonyContactIsLocalContact0700
+     * @tc.desc       : Determine if the current contact ID is in the phone book and use the Promise method as an asynchronous method 10+
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactIsLocalContact0700', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactIsLocalContact0700";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.isLocalContact(context, -10000, (err: BusinessError<void>, data: boolean) => {
+          if (err) {
+            console.log(`${caseName} callback: err>${JSON.stringify(err)}`);
+            ExpectTrue(err.code === 401);
+            done();
+          } else {
+            console.log(`${caseName} callback: success data>${JSON.stringify(data)}`);
+            ExpectTrue(data === false)
+            done();
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    })
     /**
      * @tc.number     : SUB_Telephony_Contact_IsLocalContact_0800
      * @tc.name       : testTelephonyContactIsLocalContact0800
@@ -2738,6 +2818,36 @@ export default function AddContactTest() {
     })
 
     /**
+     * @tc.number     : SUB_Telephony_Contact_IsLocalContact_1200
+     * @tc.name       : testTelephonyContactIsLocalContact1200
+     * @tc.desc       : Determine if the current contact ID is in the phone book and use Promise as an asynchronous method 10+
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactIsLocalContact1200', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactIsLocalContact1200";
+      console.info(`${caseName} test start `);
+      let context: Context = AppStorage.get('context') as Context;
+      try {
+        let promise = contact.isLocalContact(context, -1);
+        promise.then((data: boolean) => {
+          console.log(`${caseName} success: data>${JSON.stringify(data)}`);
+          ExpectTrue(data === false);
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} fail: err>${JSON.stringify(err)}`);
+          ExpectTrue(err.code === 401);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    })
+    /**
      * @tc.number     : SUB_Telephony_Contact_IsLocalContact_1300
      * @tc.name       : testTelephonyContactIsLocalContact1300
      * @tc.desc       : Determine if the current contact ID is in the phone book and use Promise as an asynchronous method 10+
@@ -2768,6 +2878,36 @@ export default function AddContactTest() {
       console.info(`${caseName} test end `);
     })
 
+    /**
+     * @tc.number     : SUB_Telephony_Contact_IsLocalContact_1500
+     * @tc.name       : testTelephonyContactIsLocalContact1500
+     * @tc.desc       : Determine if the current contact ID is in the phone book and use Promise as an asynchronous method 10+
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactIsLocalContact1500', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactIsLocalContact1500";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        let promise = contact.isLocalContact(context, -10000);
+        promise.then((data: boolean) => {
+          console.log(`${caseName} success: data>${JSON.stringify(data)}`);
+          ExpectTrue(data === false);
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} fail: err>${JSON.stringify(err)}`);
+          ExpectTrue(err.code === 401);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    })
     /**
      * @tc.number     : SUB_Telephony_Contact_IsLocalContact_1600
      * @tc.name       : testTelephonyContactIsLocalContact1600
@@ -2844,6 +2984,37 @@ export default function AddContactTest() {
       });
       console.info(`${caseName} test end `);
     });
+    /**
+     * @tc.number     : SUB_Telephony_Contact_DeleteContact_0200
+     * @tc.name       : testTelephonyContactDeleteContact0200
+     * @tc.desc       : Delete a contacts and useing the callback method as an asynchronous method 10+
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactDeleteContact0200', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactDeleteContact0200";
+      console.info(`${caseName} test start `);
+      let context: Context = AppStorage.get('context') as Context;
+      try {
+        contact.deleteContact(context, '', (err: BusinessError) => {
+          if (err) {
+            console.info(`${caseName} deleteContacts:err->${JSON.stringify(err)}`);
+            ExpectTrue(err.code === 401);
+            done();
+          } else {
+            console.info(`${caseName} deleteContacts:success`);
+            ExpectTrue(true);
+            done();
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
 
     /**
      * @tc.number     : SUB_Telephony_Contact_DeleteContact_0600
@@ -2889,6 +3060,38 @@ export default function AddContactTest() {
       });
       console.info(`${caseName} test end `);
     });
+    /**
+     * @tc.number     : SUB_Telephony_Contact_DeleteContact_0700
+     * @tc.name       : testTelephonyContactDeleteContact0700
+     * @tc.desc       : Delete a contacts and useing the promise method as an asynchronous method 10+
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactDeleteContact0700', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactDeleteContact0700";
+      console.info(`${caseName} test start `);
+      let context: Context = AppStorage.get('context') as Context;
+      try {
+        let promise = contact.deleteContact(context, "");
+        promise.then(() => {
+          console.info(`${caseName} deleteContacts:success`);
+          ExpectTrue(true);
+          done();
+        }).catch((err: BusinessError) => {
+          console.error(`${caseName} deleteContacts:fail->${JSON.stringify(err)}`);
+          ExpectTrue(err.code === 401);
+          done();
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+
+
 
     /**
      * @tc.number     : SUB_Telephony_Contact_QueryHolders_0100
