@@ -37,6 +37,7 @@
 #include "drawing_shader_effect.h"
 #include "drawing_text_blob.h"
 #include "drawing_typeface.h"
+#include "drawing_error_code.h"
 
 using namespace testing;
 using namespace testing::ext;
@@ -163,7 +164,7 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateBlendModeMaximum, Te
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_FILTER_0100
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_FILTER_0200
  * @tc.name: testColorFilterCreateComposeNormal
  * @tc.desc: test for testColorFilterCreateComposeNormal.
  * @tc.size  : SmallTest
@@ -196,7 +197,7 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateComposeNormal, TestS
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_FILTER_0101
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_FILTER_0201
  * @tc.name: testColorFilterCreateComposeNULL
  * @tc.desc: test for testColorFilterCreateComposeNULL.
  * @tc.size  : SmallTest
@@ -211,7 +212,7 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateComposeNULL, TestSiz
 }
 
 /*
- * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_FILTER_0102
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_FILTER_0202
  * @tc.name: testColorFilterCreateComposeMultipleCalls
  * @tc.desc: test for testColorFilterCreateComposeMultipleCalls.
  * @tc.size  : SmallTest
@@ -255,6 +256,227 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateComposeMultipleCalls
         OH_Drawing_ColorFilterDestroy(colorFilter1);
         OH_Drawing_ColorFilterDestroy(colorFilter2);
     }
+}
+
+/*
+* @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_FILTER_0300
+* @tc.name: testColorFilterCreateMatrixNormal
+* @tc.desc: test for testColorFilterCreateMatrixNormal.
+* @tc.size  : SmallTest
+* @tc.type  : Function
+* @tc.level : Level 0
+*/
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateMatrixNormal, TestSize.Level0) {
+    const float matrix[20] = {
+        1, 0, 0, 0, 0,
+        0, 1, 0, 0, 0,
+        0, 0, 1, 0, 0,
+        0, 0, 0, 0.5f, 0
+    };
+    OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateMatrix(matrix);
+    EXPECT_NE(colorFilter, nullptr);
+
+    OH_Drawing_ColorFilterDestroy(colorFilter);
+}
+
+/*
+* @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_FILTER_0301
+* @tc.name: testColorFilterCreateMatrixNULL
+* @tc.desc: test for testColorFilterCreateMatrixNULL.
+* @tc.size  : SmallTest
+* @tc.type  : Function
+* @tc.level : Level 3
+*/
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateMatrixNULL, TestSize.Level3) {
+    OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateMatrix(nullptr);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+
+    const float matrix[20] = {};
+    colorFilter = OH_Drawing_ColorFilterCreateMatrix(matrix);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    
+    OH_Drawing_ColorFilterDestroy(colorFilter);
+}
+
+/*
+* @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_FILTER_0302
+* @tc.name: testColorFilterCreateMatrixAbnormal
+* @tc.desc: test for testColorFilterCreateMatrixAbnormal.
+* @tc.size  : SmallTest
+* @tc.type  : Function
+* @tc.level : Level 3
+*/
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateMatrixAbnormal, TestSize.Level3) {
+    const float matrix[19] = {
+        1, 0, 0, 0, 0,
+        0, 1, 0, 0, 0,
+        0, 0, 1, 0, 0,
+        0, 0, 0, 0.5f,
+    };
+    OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateMatrix(matrix);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    
+    const float matrix2[21] = {
+        1, 0, 0, 0, 0,
+        0, 1, 0, 0, 0,
+        0, 0, 1, 0, 0,
+        0, 0, 0, 0.5f,0,0
+    };
+    OH_Drawing_ColorFilter *colorFilter2 = OH_Drawing_ColorFilterCreateMatrix(matrix2);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+
+    OH_Drawing_ColorFilterDestroy(colorFilter);
+    OH_Drawing_ColorFilterDestroy(colorFilter2);
+}
+
+/*
+* @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_FILTER_0303
+* @tc.name: testColorFilterCreateMatrixMultipleCalls
+* @tc.desc: test for testColorFilterCreateMatrixMultipleCalls.
+* @tc.size  : SmallTest
+* @tc.type  : Function
+* @tc.level : Level 3
+*/
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateMatrixMultipleCalls, TestSize.Level3) {
+    for (int i = 0; i < 10; i++) {
+        const float matrix[20] = {
+            1, 0, 0, 0, 0,
+            0, 1, 0, 0, 0,
+            0, 0, 1, 0, 0,
+            0, 0, 0, 0.5f, 0
+        };
+        OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateMatrix(matrix);
+        EXPECT_NE(colorFilter, nullptr);
+
+        OH_Drawing_ColorFilterDestroy(colorFilter);
+    }
+}
+
+/*
+* @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_FILTER_0400
+* @tc.name: testColorFilterCreateLinearToSrgbGammaNormal
+* @tc.desc: test for testColorFilterCreateLinearToSrgbGammaNormal.
+* @tc.size  : SmallTest
+* @tc.type  : Function
+* @tc.level : Level 0
+*/
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateLinearToSrgbGammaNormal, TestSize.Level0) {
+    // 1、OH_Drawing_ColorFilterCreateLinearToSrgbGamma
+    OH_Drawing_ColorFilter* colorFilter = OH_Drawing_ColorFilterCreateLinearToSrgbGamma();
+
+    // 2、释放内存
+    OH_Drawing_ColorFilterDestroy(colorFilter);
+}
+
+/*
+* @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_FILTER_0401
+* @tc.name: testColorFilterCreateLinearToSrgbGammaMultipleCalls
+* @tc.desc: test for testColorFilterCreateLinearToSrgbGammaMultipleCalls.
+* @tc.size  : SmallTest
+* @tc.type  : Function
+* @tc.level : Level 3
+*/
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateLinearToSrgbGammaMultipleCalls, TestSize.Level3) {
+    // 1、OH_Drawing_ColorFilterCreateLinearToSrgbGamma 调用10次
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_ColorFilter* colorFilter = OH_Drawing_ColorFilterCreateLinearToSrgbGamma();
+        EXPECT_NE(colorFilter, nullptr);
+        OH_Drawing_ColorFilterDestroy(colorFilter);
+    }
+}
+
+/*
+* @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_FILTER_0500
+* @tc.name: testColorFilterCreateSrgbGammaToLinearNormal
+* @tc.desc: test for testColorFilterCreateSrgbGammaToLinearNormal.
+* @tc.size  : SmallTest
+* @tc.type  : Function
+* @tc.level : Level 0
+*/
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateSrgbGammaToLinearNormal, TestSize.Level0) {
+    // 1、OH_Drawing_ColorFilterCreateSrgbGammaToLinear
+    OH_Drawing_ColorFilter* colorFilter = OH_Drawing_ColorFilterCreateSrgbGammaToLinear();
+    // 2、释放内存
+    OH_Drawing_ColorFilterDestroy(colorFilter);
+}
+
+/*
+* @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_FILTER_0501
+* @tc.name: testColorFilterCreateSrgbGammaToLinearMultipleCalls
+* @tc.desc: test for testColorFilterCreateSrgbGammaToLinearMultipleCalls.
+* @tc.size  : SmallTest
+* @tc.type  : Function
+* @tc.level : Level 3
+*/
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateSrgbGammaToLinearMultipleCalls, TestSize.Level3) {
+    // 1、OH_Drawing_ColorFilterCreateSrgbGammaToLinear调用10次
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_ColorFilter* colorFilter = OH_Drawing_ColorFilterCreateSrgbGammaToLinear();
+        EXPECT_NE(colorFilter, nullptr);
+        OH_Drawing_ColorFilterDestroy(colorFilter);
+    }
+}
+
+/*
+* @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_FILTER_0600
+* @tc.name: testColorFilterCreateLumaNormal
+* @tc.desc: test for testColorFilterCreateLumaNormal.
+* @tc.size  : SmallTest
+* @tc.type  : Function
+* @tc.level : Level 0
+*/
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateLumaNormal, TestSize.Level0) {
+    // 1、OH_Drawing_ColorFilterCreateLuma
+    OH_Drawing_ColorFilter* colorFilter = OH_Drawing_ColorFilterCreateLuma();
+    EXPECT_NE(colorFilter, nullptr);
+    // 2、释放内存
+    OH_Drawing_ColorFilterDestroy(colorFilter);
+}
+
+/*
+* @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_FILTER_0601
+* @tc.name: testColorFilterCreateLumaMultipleCalls
+* @tc.desc: test for testColorFilterCreateLumaMultipleCalls.
+* @tc.size  : SmallTest
+* @tc.type  : Function
+* @tc.level : Level 3
+*/
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateLumaMultipleCalls, TestSize.Level3) {
+    // 1、OH_Drawing_ColorFilterCreateLuma调用10次
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_ColorFilter* colorFilter = OH_Drawing_ColorFilterCreateLuma();
+        EXPECT_NE(colorFilter, nullptr);
+        OH_Drawing_ColorFilterDestroy(colorFilter);
+    }
+}
+
+/*
+* @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_FILTER_0700
+* @tc.name: testColorFilterDestroyNormal
+* @tc.desc: test for testColorFilterDestroyNormal.
+* @tc.size  : SmallTest
+* @tc.type  : Function
+* @tc.level : Level 0
+*/
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterDestroyNormal, TestSize.Level0) {
+    // 1、OH_Drawing_ColorFilterCreateLuma
+    OH_Drawing_ColorFilter* colorFilter = OH_Drawing_ColorFilterCreateLuma();
+    EXPECT_NE(colorFilter, nullptr);
+    // 2、OH_Drawing_ColorFilterDestroy()
+    OH_Drawing_ColorFilterDestroy(colorFilter);
+}
+
+/*
+* @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_FILTER_0701
+* @tc.name: testColorFilterDestroyNULL
+* @tc.desc: test for testColorFilterDestroyNULL.
+* @tc.size  : SmallTest
+* @tc.type  : Function
+* @tc.level : Level 3
+*/
+HWTEST_F(DrawingNativeColorFilterTest, testColorFilterDestroyNULL, TestSize.Level3) {
+    // 1、OH_Drawing_ColorFilterDestroy入参空
+    OH_Drawing_ColorFilterDestroy(nullptr);
 }
 
 } // namespace Drawing
