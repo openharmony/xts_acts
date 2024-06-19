@@ -19,13 +19,27 @@ import webView from '@ohos.web.webview';
 import events_emitter from '@ohos.events.emitter';
 import { Driver, MouseButton } from '@ohos.UiTest';
 import inputMethodEngine from '@ohos.inputMethodEngine'
+import { CustomKeyboard } from '../../test/CustomKeyboard';
+
+import {
+  EKeyType,
+  EKeyboardType,
+  IKeyAttribute,
+  lowerCaseKeyData,
+  numericKeyData,
+  specialKeyData,
+  upperCaseKeyData
+} from '../../test/Constants';
 
 
 @Entry
 @Component
 struct WebViewMenuInputFieldType {
   @State str: string = ""
+  @State items: IKeyAttribute[] = numericKeyData;
   @State ResultKey: number = 1;
+  @State inputValue: string = ""
+  @State curKeyboardType: EKeyboardType = EKeyboardType.NUMERIC;
   @State userAgentPC: string = "";
   webKeyboardController: WebKeyboardController = new WebKeyboardController()
   inputAttributeMap: Map<string, number> = new Map([
@@ -38,12 +52,47 @@ struct WebViewMenuInputFieldType {
       ['PREVIOUS', inputMethodEngine.ENTER_KEY_TYPE_PREVIOUS]
     ])
 
+    onKeyboardEvent(item: IKeyAttribute) {
+    switch (item.type) {
+    // 输入类型，更新输入内容
+      case EKeyType.INPUT:
+        console.log("WebCustomKeyboard text input : " + item.value);
+        this.webKeyboardController.insertText(item.value);
+        break;
+    // 删除一个已输入的末尾字符
+      case EKeyType.DELETE:
+        this.webKeyboardController.deleteForward(1);
+        break;
+      case EKeyType.DELETEBACKWARD:
+        this.webKeyboardController.deleteBackward(1);
+        break;
+      case EKeyType.SENDENTER:
+        this.webKeyboardController.sendFunctionKey(1);
+        break;
+      default:
+    // logger.info('Sorry, we are out of input type.')
+    }
+  }
+
     /**
      * 自定义键盘组件Builder
      */
     @Builder
     customKeyboardBuilder() {
-    }
+    CustomKeyboard({
+      items: this.items,
+      curKeyboardType: this.curKeyboardType,
+      onKeyboardEvent: this.onKeyboardEvent,
+      webKeyboardController: this.webKeyboardController,
+    })
+      .onAppear(()=> {
+        console.log('WebCustomKeyboard custom keyboard appear');
+      })
+      .onDisAppear(() => {
+        console.log('WebCustomKeyboard custom keyboard disappear');
+      })
+
+  }
   controller: webView.WebviewController = new webView.WebviewController();
 
   onPageShow() {
