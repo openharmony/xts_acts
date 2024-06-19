@@ -1548,7 +1548,7 @@ export default function CalendarManagerTest() {
       let mockedOn: Function = mocker.mockFunc(calendarMgrMock, calendarMgrMock.editEvent);
       when(mockedOn)(ArgumentMatchers.any).afterReturn(1);
       try {
-        let eventId = await calendarMgr.editEvent(Schedule);
+        let eventId = await calendarMgrMock.editEvent(Schedule);
         expect(eventId !== 0).assertTrue();
       } catch (err) {
         console.info(CaseName + "Failed to editEvent" + JSON.stringify(err));
