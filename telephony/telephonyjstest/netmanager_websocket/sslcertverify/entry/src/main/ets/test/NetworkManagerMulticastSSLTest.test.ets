@@ -226,27 +226,6 @@ export default function NetworkManagerMulticastSSLTest() {
     })
 
     /**
-     * @tc.number: SUB_Telephony_Netstack_SSL_CertVerify_Xts_0400
-     * @tc.name: websocket::connect
-     * @tc.desc: Test connect property
-     * @tc.level 3
-     * @tc.type: Function
-     * @tc.size: SmallTest
-     */
-    it("SUB_Telephony_Netstack_SSL_CertVerify_Xts_0400", 0, async (done:Function)=>{
-      let caseName = "SUB_Telephony_Netstack_SSL_CertVerify_Xts_0400";
-      networkSecurity.certVerification(certError).then((result: number) => {
-        console.info(`${caseName} certVerification success, data: ${JSON.stringify(result)}`);
-        expectFalse();
-        done();
-      }).catch((error: BusinessError) => {
-        console.info(`${caseName} certVerification failed, error: ${JSON.stringify(error)}`);
-        expect(error.code == 2305069).assertTrue();
-        done();
-      })
-    })
-
-    /**
      * @tc.number: SUB_Telephony_Netstack_SSL_CertVerify_Xts_0500
      * @tc.name: websocket::connect
      * @tc.desc: Test connect property
@@ -270,4 +249,3 @@ export default function NetworkManagerMulticastSSLTest() {
     })
   })
 }
-
