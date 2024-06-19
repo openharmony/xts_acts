@@ -361,10 +361,10 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateMatrixMultipleCalls,
 * @tc.level : Level 0
 */
 HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateLinearToSrgbGammaNormal, TestSize.Level0) {
-    // 1、OH_Drawing_ColorFilterCreateLinearToSrgbGamma
+    // 1. Call OH_Drawing_ColorFilterCreateLinearToSrgbGamma
     OH_Drawing_ColorFilter* colorFilter = OH_Drawing_ColorFilterCreateLinearToSrgbGamma();
 
-    // 2、释放内存
+    // 2. Free memory
     OH_Drawing_ColorFilterDestroy(colorFilter);
 }
 
@@ -394,9 +394,9 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateLinearToSrgbGammaMul
 * @tc.level : Level 0
 */
 HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateSrgbGammaToLinearNormal, TestSize.Level0) {
-    // 1、OH_Drawing_ColorFilterCreateSrgbGammaToLinear
+    // 1. Call OH_Drawing_ColorFilterCreateSrgbGammaToLinear
     OH_Drawing_ColorFilter* colorFilter = OH_Drawing_ColorFilterCreateSrgbGammaToLinear();
-    // 2、释放内存
+    // 2. Free memory
     OH_Drawing_ColorFilterDestroy(colorFilter);
 }
 
@@ -409,7 +409,7 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateSrgbGammaToLinearNor
 * @tc.level : Level 3
 */
 HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateSrgbGammaToLinearMultipleCalls, TestSize.Level3) {
-    // 1、OH_Drawing_ColorFilterCreateSrgbGammaToLinear调用10次
+    // 1. Call OH_Drawing_ColorFilterCreateSrgbGammaToLinear 10 times
     for (int i = 0; i < 10; i++) {
         OH_Drawing_ColorFilter* colorFilter = OH_Drawing_ColorFilterCreateSrgbGammaToLinear();
         EXPECT_NE(colorFilter, nullptr);
@@ -426,10 +426,10 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateSrgbGammaToLinearMul
 * @tc.level : Level 0
 */
 HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateLumaNormal, TestSize.Level0) {
-    // 1、OH_Drawing_ColorFilterCreateLuma
+    // 1. OH_Drawing_ColorFilterCreateLuma
     OH_Drawing_ColorFilter* colorFilter = OH_Drawing_ColorFilterCreateLuma();
     EXPECT_NE(colorFilter, nullptr);
-    // 2、释放内存
+    // 2. Free memory
     OH_Drawing_ColorFilterDestroy(colorFilter);
 }
 
@@ -442,7 +442,7 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateLumaNormal, TestSize
 * @tc.level : Level 3
 */
 HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateLumaMultipleCalls, TestSize.Level3) {
-    // 1、OH_Drawing_ColorFilterCreateLuma调用10次
+    // 1. Call OH_Drawing_ColorFilterCreateLuma 10 times
     for (int i = 0; i < 10; i++) {
         OH_Drawing_ColorFilter* colorFilter = OH_Drawing_ColorFilterCreateLuma();
         EXPECT_NE(colorFilter, nullptr);
@@ -459,10 +459,10 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterCreateLumaMultipleCalls, T
 * @tc.level : Level 0
 */
 HWTEST_F(DrawingNativeColorFilterTest, testColorFilterDestroyNormal, TestSize.Level0) {
-    // 1、OH_Drawing_ColorFilterCreateLuma
+    // 1. OH_Drawing_ColorFilterCreateLuma
     OH_Drawing_ColorFilter* colorFilter = OH_Drawing_ColorFilterCreateLuma();
     EXPECT_NE(colorFilter, nullptr);
-    // 2、OH_Drawing_ColorFilterDestroy()
+    // 2. OH_Drawing_ColorFilterDestroy()
     OH_Drawing_ColorFilterDestroy(colorFilter);
 }
 
@@ -475,7 +475,7 @@ HWTEST_F(DrawingNativeColorFilterTest, testColorFilterDestroyNormal, TestSize.Le
 * @tc.level : Level 3
 */
 HWTEST_F(DrawingNativeColorFilterTest, testColorFilterDestroyNULL, TestSize.Level3) {
-    // 1、OH_Drawing_ColorFilterDestroy入参空
+    // 1. OH_Drawing_ColorFilterDestroy with empty parameter
     OH_Drawing_ColorFilterDestroy(nullptr);
 }
 

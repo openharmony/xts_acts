@@ -157,12 +157,13 @@ HWTEST_F(DrawingNativeFilterTest, testFilterSetImageFilterMultipleCalls, TestSiz
  * @tc.level : Level 0
  */
 HWTEST_F(DrawingNativeFilterTest, testFilterSetMaskFilterNormal, TestSize.Level0) {
-    // 1、调用OH_Drawing_FilterCreate创建OH_Drawing_Filter，调用OH_Drawing_MaskFilterCreateBlur创建OH_Drawing_MaskFilter
+    // 1. Create OH_Drawing_Filter using OH_Drawing_FilterCreate and OH_Drawing_MaskFilter using
+    // OH_Drawing_MaskFilterCreateBlur
     OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
     OH_Drawing_MaskFilter *maskFilter = OH_Drawing_MaskFilterCreateBlur(OH_Drawing_BlurType::NORMAL, 10, true);
-    // 2、OH_Drawing_FilterSetMaskFilter, 2、调用成功，errorcode返回OH_DRAWING_SUCCESS
+    // 2. Set mask filter using OH_Drawing_FilterSetMaskFilter, should return OH_DRAWING_SUCCESS
     OH_Drawing_FilterSetMaskFilter(filter, maskFilter);
-    // 3、释放内存, 3、调用成功
+    // 3. Destroy objects, should be successful
     OH_Drawing_FilterDestroy(filter);
     OH_Drawing_MaskFilterDestroy(maskFilter);
 }
@@ -178,17 +179,19 @@ HWTEST_F(DrawingNativeFilterTest, testFilterSetMaskFilterNormal, TestSize.Level0
 HWTEST_F(DrawingNativeFilterTest, testFilterSetMaskFilterNULL, TestSize.Level3) {
     OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
     OH_Drawing_MaskFilter *maskFilter = OH_Drawing_MaskFilterCreateBlur(OH_Drawing_BlurType::NORMAL, 10, true);
-    // 1、OH_Drawing_FilterSetMaskFilter第一个参数传空，通过OH_Drawing_ErrorCodeGet查看错误码,
-    // 1、无crash，errorcode返回OH_DRAWING_ERROR_INVALID_PARAMETER
+    // 1. Pass nullptr as the first parameter to OH_Drawing_FilterSetMaskFilter and check the error code using
+    // OH_Drawing_ErrorCodeGet,
+    // 1. No crash, error code returns OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_FilterSetMaskFilter(nullptr, maskFilter);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
 
-    // 2、OH_Drawing_FilterSetMaskFilter第二个参数传空，通过OH_Drawing_ErrorCodeGet查看错误码,
-    // 2、无crash，errorcode返回OH_DRAWING_ERROR_INVALID_PARAMETER
+    // 2. Pass nullptr as the second parameter to OH_Drawing_FilterSetMaskFilter and check the error code using
+    // OH_Drawing_ErrorCodeGet,
+    // 2. No crash, error code returns OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_FilterSetMaskFilter(filter, nullptr);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
 
-    // 3、释放内存, 3、调用成功
+    // 3. Free memory
     OH_Drawing_FilterDestroy(filter);
     OH_Drawing_MaskFilterDestroy(maskFilter);
 }
@@ -202,8 +205,8 @@ HWTEST_F(DrawingNativeFilterTest, testFilterSetMaskFilterNULL, TestSize.Level3) 
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativeFilterTest, testFilterSetMaskFilterMultipleCalls, TestSize.Level3) {
-    // 1、OH_Drawing_FilterSetMaskFilter调用10次传入不同的OH_Drawing_Filter和OH_Drawing_MaskFilter对象,
-    // 1、调用成功，errorcode返回OH_DRAWING_SUCCESS
+    // 1. Call OH_Drawing_FilterSetMaskFilter 10 times with different OH_Drawing_Filter and OH_Drawing_MaskFilter
+    // objects.
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
         OH_Drawing_MaskFilter *maskFilter = OH_Drawing_MaskFilterCreateBlur(OH_Drawing_BlurType::NORMAL, 10 + i, true);
@@ -222,14 +225,14 @@ HWTEST_F(DrawingNativeFilterTest, testFilterSetMaskFilterMultipleCalls, TestSize
  * @tc.level : Level 0
  */
 HWTEST_F(DrawingNativeFilterTest, testFilterSetColorFilterNormal, TestSize.Level0) {
-    // 1、调用OH_Drawing_FilterCreate创建OH_Drawing_Filter，调用OH_Drawing_ColorFilterCreateCompose创建OH_Drawing_ColorFilter
+    // 1. Create OH_Drawing_Filter using OH_Drawing_FilterCreate
     OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
     OH_Drawing_ColorFilter *outerFilter = OH_Drawing_ColorFilterCreateLuma();
     OH_Drawing_ColorFilter *innerFilter = OH_Drawing_ColorFilterCreateSrgbGammaToLinear();
     OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateCompose(outerFilter, innerFilter);
-    // 2、OH_Drawing_FilterSetColorFilter, 2、调用成功，errorcode返回OH_DRAWING_SUCCESS
+    // 2. Set color filter using OH_Drawing_FilterSetColorFilter
     OH_Drawing_FilterSetColorFilter(filter, colorFilter);
-    // 3、释放内存, 3、调用成功
+    // 3. Destroy objects, should be successful
     OH_Drawing_FilterDestroy(filter);
     OH_Drawing_ColorFilterDestroy(outerFilter);
     OH_Drawing_ColorFilterDestroy(innerFilter);
@@ -249,27 +252,27 @@ HWTEST_F(DrawingNativeFilterTest, testFilterSetColorFilterNULL, TestSize.Level3)
     OH_Drawing_ColorFilter *outerFilter = OH_Drawing_ColorFilterCreateLuma();
     OH_Drawing_ColorFilter *innerFilter = OH_Drawing_ColorFilterCreateSrgbGammaToLinear();
     OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateCompose(outerFilter, innerFilter);
-    // 1、OH_Drawing_FilterSetColorFilter第一个参数传空，通过OH_Drawing_ErrorCodeGet查看错误码,
-    // 1、无crash，errorcode返回OH_DRAWING_ERROR_INVALID_PARAMETER
+    // 1. Pass nullptr as the first parameter to OH_Drawing_FilterSetColorFilter and check the error code using
+    // OH_Drawing_ErrorCodeGet, No crash, error code returns OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_FilterSetColorFilter(nullptr, colorFilter);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
 
-    // 2、OH_Drawing_FilterSetColorFilter第二个参数传空，通过OH_Drawing_ErrorCodeGet查看错误码,
-    // 2、无crash，errorcode返回OH_DRAWING_ERROR_INVALID_PARAMETER
+    // 2. Pass nullptr as the second parameter to OH_Drawing_FilterSetColorFilter and check the error code using
+    // OH_Drawing_ErrorCodeGet, No crash, error code returns OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_FilterSetColorFilter(filter, nullptr);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
 
-    // 3、OH_Drawing_FilterGetColorFilter第一个参数传空，通过OH_Drawing_ErrorCodeGet查看错误码,
-    // 3、无crash，errorcode返回OH_DRAWING_ERROR_INVALID_PARAMETER
+    // 3. Pass nullptr as the first parameter to OH_Drawing_FilterGetColorFilter and check the error code using
+    // OH_Drawing_ErrorCodeGet, No crash, error code returns OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_FilterGetColorFilter(nullptr, colorFilter);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
 
-    // 4、OH_Drawing_FilterGetColorFilter第二个参数传空，通过OH_Drawing_ErrorCodeGet查看错误码,
-    // 4、无crash，errorcode返回OH_DRAWING_ERROR_INVALID_PARAMETER
+    // 4. Pass nullptr as the second parameter to OH_Drawing_FilterGetColorFilter and check the error code using
+    // OH_Drawing_ErrorCodeGet, No crash, error code returns OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_FilterGetColorFilter(filter, nullptr);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
 
-    // 5、释放内存, 5、调用成功
+    // 5. Free memory
     OH_Drawing_FilterDestroy(filter);
     OH_Drawing_ColorFilterDestroy(outerFilter);
     OH_Drawing_ColorFilterDestroy(innerFilter);
@@ -285,8 +288,8 @@ HWTEST_F(DrawingNativeFilterTest, testFilterSetColorFilterNULL, TestSize.Level3)
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativeFilterTest, testFilterSetColorFilterMultipleCalls, TestSize.Level3) {
-    // 1、OH_Drawing_FilterSetColorFilter调用10次传入不同的OH_Drawing_Filter和OH_Drawing_ColorFilter对象,
-    // 1、调用成功，errorcode返回OH_DRAWING_SUCCESS
+    // 1. Call OH_Drawing_FilterSetColorFilter 10 times with different OH_Drawing_Filter and OH_Drawing_ColorFilter
+    // objects. Call successful, errorcode returns OH_DRAWING_SUCCESS
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Filter *filter = OH_Drawing_FilterCreate();
         OH_Drawing_ColorFilter *outerFilter = OH_Drawing_ColorFilterCreateLuma();
@@ -300,6 +303,6 @@ HWTEST_F(DrawingNativeFilterTest, testFilterSetColorFilterMultipleCalls, TestSiz
     }
 }
 
-}  // namespace Drawing
-}  // namespace Rosen
-}  // namespace OHOS
+} // namespace Drawing
+} // namespace Rosen
+} // namespace OHOS

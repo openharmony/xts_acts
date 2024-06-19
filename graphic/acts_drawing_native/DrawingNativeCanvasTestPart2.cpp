@@ -38,6 +38,7 @@
 #include "drawing_typeface.h"
 #include "gtest/gtest.h"
 #include "image/pixelmap_native.h"
+#include "drawing_error_code.h"
 
 using namespace testing;
 using namespace testing::ext;

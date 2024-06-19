@@ -24,16 +24,22 @@ ohos_moduletest_suite("ActsDrawingNativeTest") {
   comPath = "../../../../../foundation/graphic/graphic_2d"
 
   sources = [
-    "DrawingNativeBitmapTest.cpp",
-    "DrawingNativeBrushTest.cpp",
-    "DrawingNativeCanvasTest.cpp",
-    "DrawingNativeCanvasTestPart2.cpp",
-    "DrawingNativeCanvasTestPart3.cpp",
-    "DrawingNativeCanvasTestPart4.cpp",
-    "DrawingNativeColorFilterTest.cpp",
-    "DrawingNativeColorTest.cpp",
-    "DrawingNativePenTest.cpp",
-    "DrawingNativeShaderEffectTest.cpp",
+     "DrawingNativeBitmapTest.cpp",
+     "DrawingNativeBrushTest.cpp",
+     "DrawingNativeCanvasTest.cpp",
+     "DrawingNativeCanvasTestPart2.cpp",
+     "DrawingNativeCanvasTestPart3.cpp",
+     "DrawingNativeCanvasTestPart4.cpp",
+     "DrawingNativeColorFilterTest.cpp",
+     "DrawingNativeColorSpaceTest.cpp",
+     "DrawingNativeColorTest.cpp",
+     "DrawingNativeFilterTest.cpp",
+     "DrawingNativeFontTest.cpp",
+     "DrawingNativeGpuContextTest.cpp",
+     "DrawingNativePathTest.cpp",
+     "DrawingNativePenTest.cpp",
+     "DrawingNativeRectTest.cpp",
+     "DrawingNativeShaderEffectTest.cpp",
   ]
 
   sanitize = {
@@ -61,6 +67,9 @@ ohos_moduletest_suite("ActsDrawingNativeTest") {
   }
 
   external_deps = [
+    "graphic_2d:2d_graphics",
+    "graphic_2d:EGL",
+    "graphic_2d:GLESv3",
     "graphic_2d:native_drawing_ndk",
     "hilog:libhilog",
     "image_framework:pixelmap",

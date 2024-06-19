@@ -20,7 +20,7 @@
 #include "drawing_mask_filter.h"
 #include "drawing_rect.h"
 #include "drawing_round_rect.h"
-#include "scalar.h"
+#include "utils/scalar.h"
 
 using namespace testing;
 using namespace testing::ext;

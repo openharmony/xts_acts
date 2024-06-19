@@ -601,13 +601,13 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapReadPixelsMismatch, TestSize.Level3)
     EXPECT_EQ(res, true);
 
     // step 5
-    // don't know how to get a invalid OH_Drawing_ColorFormat
+    // todo: don't know how to get a invalid OH_Drawing_ColorFormat
 
     // step 6
-    // don't know how to get a invalid OH_Drawing_AlphaFormat
+    // todo: don't know how to get a invalid OH_Drawing_AlphaFormat
 
     // step 7
-    // don't know how to test
+    // todo: don't know how to test
 
     // step 8
     OH_Drawing_Image_Info imageInfo5{width, height, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_UNPREMUL};
