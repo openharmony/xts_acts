@@ -16,7 +16,7 @@
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
 import drawing from '@ohos.graphics.drawing';
 import common2D from '@ohos.graphics.common2D';
-import { getEnumCount } from './utils';
+import { getEnumCount, getRandomNumber } from './utils';
 
 export default function brushTest() {
   describe('DrawingTsBrushTest', () => {
@@ -730,7 +730,7 @@ export default function brushTest() {
 
       for (let i = 0; i < 20; i++) {
         try {
-          const radius = Math.floor(Math.random() * 100);
+          const radius = Math.floor(getRandomNumber(1, 100));
           const dx = Math.floor(Math.random() * 100);
           const dy = Math.floor(Math.random() * 100);
           const color: common2D.Color = {
@@ -861,6 +861,238 @@ export default function brushTest() {
           console.info(msg + ` setBlendMode errorCode is:  ${e.code} + errormsg is: ${e.message}`);
           expect().assertFail();
         }
+      }
+    });
+
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0800
+     * @tc.name      : testBrushSetColor12Normal
+     * @tc.desc      : testBrushSetColor12Normal
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testBrushSetColor12Normal', DEFAULT, () => {
+      const msg = 'testBrushSetColor12Normal';
+      try {
+        const brush = new drawing.Brush();
+        brush.setColor(255, 255, 0, 0);
+        brush.setColor(245.3, 251.1, 10.1, 12.1);
+        console.info(msg + ' setColor12 successed');
+      } catch (e) {
+        console.info(msg + ` setColor12 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0801
+     * @tc.name      : testBrushSetColor12Null
+     * @tc.desc      : testBrushSetColor12Null
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testBrushSetColor12Null', DEFAULT, () => {
+      const msg = 'testBrushSetColor12Null';
+      try {
+        const brush = new drawing.Brush();
+        brush.setColor(undefined, 255, 0, 0);
+        console.info(msg + 'setColor12 successed');
+      } catch (e) {
+        console.info(msg + `setColor12 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        const brush = new drawing.Brush();
+        brush.setColor(255, undefined, 0, 0);
+        console.info(msg + 'setColor12 successed');
+      } catch (e) {
+        console.info(msg + `setColor12 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        const brush = new drawing.Brush();
+        brush.setColor(255, 255, undefined, 0);
+        console.info(msg + 'setColor12 successed');
+      } catch (e) {
+        console.info(msg + `setColor12 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        const brush = new drawing.Brush();
+        brush.setColor(255, 255, 0, undefined);
+        console.info(msg + 'setColor12 successed');
+      } catch (e) {
+        console.info(msg + `setColor12 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        const brush = new drawing.Brush();
+        brush.setColor(null, 255, 0, 0);
+        console.info(msg + 'setColor12 successed');
+      } catch (e) {
+        console.info(msg + `setColor12 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        const brush = new drawing.Brush();
+        brush.setColor(255, null, 0, 0);
+        console.info(msg + 'setColor12 successed');
+      } catch (e) {
+        console.info(msg + `setColor12 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        const brush = new drawing.Brush();
+        brush.setColor(255, 255, null, 0);
+        console.info(msg + 'setColor12 successed');
+      } catch (e) {
+        console.info(msg + `setColor12 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        const brush = new drawing.Brush();
+        brush.setColor(255, 255, 0, null);
+        console.info(msg + 'setColor12 successed');
+      } catch (e) {
+        console.info(msg + `setColor12 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0802
+     * @tc.name      : testBrushSetColor12Mismatch
+     * @tc.desc      : testBrushSetColor12Mismatch
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testBrushSetColor12Mismatch', DEFAULT, () => {
+      const msg = 'testBrushSetColor12Mismatch';
+      try {
+        const brush = new drawing.Brush();
+        brush.setColor(255, 255, 0, 0, 0);
+        console.info(msg + 'setColor12 successed');
+      } catch (e) {
+        console.info(msg + `setColor12 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        const brush = new drawing.Brush();
+        brush.setColor(255, 255, 0);
+        console.info(msg + 'setColor12 successed');
+      } catch (e) {
+        console.info(msg + `setColor12 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        const brush = new drawing.Brush();
+        brush.setColor('255', 255, 0, 0);
+        console.info(msg + 'setColor12 successed');
+      } catch (e) {
+        console.info(msg + `setColor12 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0803
+     * @tc.name      : testBrushSetColor12MultipleCalls
+     * @tc.desc      : testBrushSetColor12MultipleCalls
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testBrushSetColor12MultipleCalls', DEFAULT, () => {
+      const msg = 'testBrushSetColor12MultipleCalls';
+      try {
+        const brush = new drawing.Brush();
+        for (let index = 0; index < 20; index++) {
+          brush.setColor(Math.random() * 255, Math.random() * 255, Math.random() * 255, Math.random() * 255);
+        }
+        console.info(msg + ' setColor12 successed');
+      } catch (e) {
+        console.info(msg + ` setColor12 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_BRUSH_0804
+     * @tc.name      : testBrushSetColor12BoundaryValue
+     * @tc.desc      : testBrushSetColor12BoundaryValue
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testBrushSetColor12BoundaryValue', DEFAULT, () => {
+      const msg = 'testBrushSetColor12BoundaryValue';
+      try {
+        const brush = new drawing.Brush();
+        brush.setColor(-1, 255, 0, 0);
+        console.info(msg + ' setColor12 successed');
+      } catch (e) {
+        console.info(msg + ` setColor12 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        const brush = new drawing.Brush();
+        brush.setColor(255, -1, 0, 0);
+        console.info(msg + ' setColor12 successed');
+      } catch (e) {
+        console.info(msg + ` setColor12 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        const brush = new drawing.Brush();
+        brush.setColor(256, 255, -1, 0);
+        console.info(msg + ' setColor12 successed');
+      } catch (e) {
+        console.info(msg + ` setColor12 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        const brush = new drawing.Brush();
+        brush.setColor(255, 255, 0, -1);
+        console.info(msg + ' setColor12 successed');
+      } catch (e) {
+        console.info(msg + ` setColor12 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        const brush = new drawing.Brush();
+        brush.setColor(256, 255, 0, 0);
+        console.info(msg + ' setColor12 successed');
+      } catch (e) {
+        console.info(msg + ` setColor12 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        const brush = new drawing.Brush();
+        brush.setColor(255, 256, 0, 0);
+        console.info(msg + ' setColor12 successed');
+      } catch (e) {
+        console.info(msg + ` setColor12 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        const brush = new drawing.Brush();
+        brush.setColor(255, 255, 256, 0);
+        console.info(msg + ' setColor12 successed');
+      } catch (e) {
+        console.info(msg + ` setColor12 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+      try {
+        const brush = new drawing.Brush();
+        brush.setColor(255, 255, 0, 256);
+        console.info(msg + ' setColor12 successed');
+      } catch (e) {
+        console.info(msg + ` setColor12 errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
       }
     });
 

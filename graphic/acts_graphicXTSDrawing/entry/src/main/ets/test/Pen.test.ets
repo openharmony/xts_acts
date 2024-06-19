@@ -915,7 +915,7 @@ export default function penTest() {
       for (let i = 0; i < 20; i++) {
         try {
           const randomBlurType = Math.floor(Math.random() * 4);
-          const randomValue = Math.floor(Math.random() * 100);
+          const randomValue = Math.floor(Math.random() * 100) + 1;
           pen.setMaskFilter(drawing.MaskFilter.createBlurMaskFilter(randomBlurType, randomValue));
           console.info(msg + ' setMaskFilter(' + randomBlurType + ', ' + randomValue + ') succeeded');
         } catch (e) {

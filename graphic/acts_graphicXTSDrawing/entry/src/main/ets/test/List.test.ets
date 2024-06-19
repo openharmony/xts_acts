@@ -26,6 +26,7 @@ import drawingTsPathTest from './Path.test';
 import drawingTsCanvasTest from './Canvas.test';
 import drawingTsCanvasPart2Test from './CanvasPart2.test';
 import drawingTsCanvasPart3Test from './CanvasPart3.test';
+import drawingTsRegionTest from './Region.test'
 
 export default function testsuite() {
   samplingOptionsTest();
@@ -41,5 +42,6 @@ export default function testsuite() {
   drawingTsPathTest();
   drawingTsCanvasTest();
   drawingTsCanvasPart2Test();
-  drawingTsCanvasPart3Test();
+  drawingTsCanvasPart3Test(); 
+  drawingTsRegionTest();
 }
