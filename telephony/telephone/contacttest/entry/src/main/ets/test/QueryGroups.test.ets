@@ -343,7 +343,7 @@ export default function QueryGroupsTest() {
             }, (err: BusinessError, data) => {
               if (err) {
                 console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-                ExpectFail();
+                ExpectTrue(err.code === 401);
                 done();
               } else {
                 console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -433,7 +433,7 @@ export default function QueryGroupsTest() {
               done();
             }).catch((err: BusinessError) => {
               console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-              ExpectFail();
+              ExpectTrue(err.code === 401);
               done();
             });
           }
@@ -474,7 +474,7 @@ export default function QueryGroupsTest() {
             }, (err: BusinessError, data) => {
               if (err) {
                 console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-                ExpectFail();
+                ExpectTrue(err.code === 401);
                 done();
               } else {
                 console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -565,7 +565,7 @@ export default function QueryGroupsTest() {
               done();
             }).catch((err: BusinessError) => {
               console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-              ExpectFail();
+              ExpectTrue(err.code === 401);
               done();
             });
           }

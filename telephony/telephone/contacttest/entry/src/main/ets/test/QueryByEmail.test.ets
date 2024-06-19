@@ -250,7 +250,7 @@ export default function QueryByEmailTest() {
         contact.queryContactsByEmail(context, '13811111111@email.com', (err: BusinessError, data) => {
           if (err) {
             console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-            ExpectFail();
+            ExpectTrue(err.code === 401);
             done();
           } else {
             console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -282,7 +282,7 @@ export default function QueryByEmailTest() {
         contact.queryContactsByEmail(context, '12!@#895@email.com', (err: BusinessError, data) => {
           if (err) {
             console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-            ExpectFail();
+            ExpectTrue(err.code === 401);
             done();
           } else {
             console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -365,7 +365,7 @@ export default function QueryByEmailTest() {
         contact.queryContactsByEmail(context, 'local_part_max_length64_characters@domain_part_max_length255_characters.com', (err: BusinessError, data) => {
           if (err) {
             console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-            ExpectFail();
+            ExpectTrue(err.code === 401);
             done();
           } else {
             console.info(`${caseName} callback: success  data->${JSON.stringify(data)}`);
@@ -449,11 +449,11 @@ export default function QueryByEmailTest() {
             }, (err: BusinessError, data) => {
               if (err) {
                 console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-                ExpectFail();
+                ExpectTrue(err.code === 401);
                 done();
               } else {
                 console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
-                ExpectTrue(data.length > 0);
+                ExpectTrue(data.length === 0);
                 done();
               }
             });
@@ -494,11 +494,11 @@ export default function QueryByEmailTest() {
             }, (err: BusinessError, data) => {
               if (err) {
                 console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-                ExpectFail();
+                ExpectTrue(err.code === 401);
                 done();
               } else {
                 console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
-                ExpectTrue(data.length > 0);
+                ExpectTrue(data.length === 0);
                 done();
               }
             });
@@ -527,7 +527,7 @@ export default function QueryByEmailTest() {
         contact.queryContactsByEmail(context, '123!@#456@email.com', holder, (err: BusinessError, data) => {
           if (err) {
             console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-            ExpectFail();
+            ExpectTrue(err.code === 401);
             done();
           } else {
             console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -558,7 +558,7 @@ export default function QueryByEmailTest() {
         contact.queryContactsByEmail(context, '123456', holder, (err: BusinessError, data) => {
           if (err) {
             console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-            ExpectFail();
+            ExpectTrue(err.code === 401);
             done();
           } else {
             console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -594,7 +594,7 @@ export default function QueryByEmailTest() {
         }, (err: BusinessError, data) => {
           if (err) {
             console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-            ExpectFail();
+            ExpectTrue(err.code === 401);
             done();
           } else {
             console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -625,7 +625,7 @@ export default function QueryByEmailTest() {
         contact.queryContactsByEmail(context, '000000@email.com', holder, (err: BusinessError, data) => {
           if (err) {
             console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-            ExpectFail();
+            ExpectTrue(err.code === 401);
             done();
           } else {
             console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -707,7 +707,7 @@ export default function QueryByEmailTest() {
             }, (err: BusinessError, data) => {
               if (err) {
                 console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-                ExpectFail();
+                ExpectTrue(err.code === 401);
                 done();
               } else {
                 console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -754,7 +754,7 @@ export default function QueryByEmailTest() {
             }, (err: BusinessError, data) => {
               if (err) {
                 console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-                ExpectFail();
+                ExpectTrue(err.code === 401);
                 done();
               } else {
                 console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -801,7 +801,7 @@ export default function QueryByEmailTest() {
             }, (err: BusinessError, data) => {
               if (err) {
                 console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-                ExpectFail();
+                ExpectTrue(err.code === 401);
                 done();
               } else {
                 console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -849,7 +849,7 @@ export default function QueryByEmailTest() {
             }, (err: BusinessError, data) => {
               if (err) {
                 console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-                ExpectFail();
+                ExpectTrue(err.code === 401);
                 done();
               } else {
                 console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -897,7 +897,7 @@ export default function QueryByEmailTest() {
             }, (err: BusinessError, data) => {
               if (err) {
                 console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-                ExpectFail();
+                ExpectTrue(err.code === 401);
                 done();
               } else {
                 console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -945,7 +945,7 @@ export default function QueryByEmailTest() {
             }, (err: BusinessError, data) => {
               if (err) {
                 console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-                ExpectFail();
+                ExpectTrue(err.code === 401);
                 done();
               } else {
                 console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -993,7 +993,7 @@ export default function QueryByEmailTest() {
             }, (err: BusinessError, data) => {
               if (err) {
                 console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-                ExpectFail();
+                ExpectTrue(err.code === 401);
                 done();
               } else {
                 console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -1040,7 +1040,7 @@ export default function QueryByEmailTest() {
             }, (err: BusinessError, data) => {
               if (err) {
                 console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-                ExpectFail();
+                ExpectTrue(err.code === 401);
                 done();
               } else {
                 console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -1091,7 +1091,7 @@ export default function QueryByEmailTest() {
               done();
             }).catch((err: BusinessError) => {
               console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-              ExpectFail();
+              ExpectTrue(err.code === 401);
               done();
             });
           }
@@ -1137,7 +1137,7 @@ export default function QueryByEmailTest() {
               done();
             }).catch((err: BusinessError) => {
               console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-              ExpectFail();
+              ExpectTrue(err.code === 401);
               done();
             });
           }
@@ -1183,7 +1183,7 @@ export default function QueryByEmailTest() {
               done();
             }).catch((err: BusinessError) => {
               console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-              ExpectFail();
+              ExpectTrue(err.code === 401);
               done();
             });
           }
@@ -1229,7 +1229,7 @@ export default function QueryByEmailTest() {
               done();
             }).catch((err: BusinessError) => {
               console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-              ExpectFail();
+              ExpectTrue(err.code === 401);
               done();
             });
           }
@@ -1275,7 +1275,7 @@ export default function QueryByEmailTest() {
               done();
             }).catch((err: BusinessError) => {
               console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-              ExpectFail();
+              ExpectTrue(err.code === 401);
               done();
             });
           }
@@ -1321,7 +1321,7 @@ export default function QueryByEmailTest() {
               done();
             }).catch((err: BusinessError) => {
               console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-              ExpectFail();
+              ExpectTrue(err.code === 401);
               done();
             });
           }
@@ -1368,7 +1368,7 @@ export default function QueryByEmailTest() {
               done();
             }).catch((err: BusinessError) => {
               console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-              ExpectFail();
+              ExpectTrue(err.code === 401);
               done();
             });
           }
@@ -1405,7 +1405,7 @@ export default function QueryByEmailTest() {
             contact.queryContactsByEmail(context, '897452455', (err: BusinessError, data) => {
               if (err) {
                 console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-                ExpectFail();
+                ExpectTrue(err.code === 401);
                 done();
               } else {
                 console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -1449,7 +1449,7 @@ export default function QueryByEmailTest() {
             contact.queryContactsByEmail(context, '555555', attr, (err: BusinessError, data) => {
               if (err) {
                 console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-                ExpectFail();
+                ExpectTrue(err.code === 401);
                 done();
               } else {
                 console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -1497,7 +1497,7 @@ export default function QueryByEmailTest() {
             }, (err: BusinessError, data) => {
               if (err) {
                 console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-                ExpectFail();
+                ExpectTrue(err.code === 401);
                 done();
               } else {
                 console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -1551,7 +1551,7 @@ export default function QueryByEmailTest() {
               done();
             }).catch((err: BusinessError) => {
               console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-              ExpectFail();
+              ExpectTrue(err.code === 401);
               done();
             });
           }
