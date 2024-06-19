@@ -14,7 +14,6 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
-import account_osAccount from '@ohos.account.osAccount';
 import runningLock from '@ohos.runningLock';
 
 const PERMISSION_DENIED_CODE = 201
@@ -22,7 +21,6 @@ const PARAMETER_ERROR_CODE = 401
 const SERVICE_EXCEPTION_CODE = 14500101
 const SERVICE_EXCEPTION_MSG = 'Service exception.'
 const PARAMETER_ERROR_MSG = 'The parameter invalid.'
-const SENSOR_NO_SUPPORT_CODE = 14500102
 const PERMISSION_DENIED_MSG = 'Permission denied.'
 
 export default function RunningLock_nop_Test() {
@@ -135,8 +133,6 @@ export default function RunningLock_nop_Test() {
      */
     it('AccountLocal_nop_Test_0400', TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL1, async (done: Function) => {
       console.info('--------AccountLocal_nop_Test_0400--------');
-
-      console.info('--------AccountLocal_nop_Test_0300--------');
       runningLock.create('running_lock_test', runningLock.RunningLockType.BACKGROUND, (err: BusinessError, lock: runningLock.RunningLock) => {
         if (err.code === PERMISSION_DENIED_CODE) {
           try {
