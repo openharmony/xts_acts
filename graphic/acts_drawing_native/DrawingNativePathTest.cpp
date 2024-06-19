@@ -46,10 +46,10 @@ class DrawingNativePathTest : public testing::Test {};
  * @tc.level : Level 0
  */
 HWTEST_F(DrawingNativePathTest, testPathCreateNormal, TestSize.Level0) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Call OH_Drawing_PathCreate to create a path object
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
     EXPECT_NE(path, nullptr);
-    // 2、释放内存
+    // 2. Free memory
     OH_Drawing_PathDestroy(path);
 }
 
@@ -62,25 +62,27 @@ HWTEST_F(DrawingNativePathTest, testPathCreateNormal, TestSize.Level0) {
  * @tc.level : Level 0
  */
 HWTEST_F(DrawingNativePathTest, testPathCopyNormal, TestSize.Level0) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象1
+    // 1. Create a path object 1 by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path1 = OH_Drawing_PathCreate();
     EXPECT_NE(path1, nullptr);
-    // 2、调用OH_Drawing_PathMoveTo设置路径的起始点位置
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path1, 0, 0);
-    // 3、调用OH_Drawing_PathLineTo添加一条从路径的起点位置到目标点位置的线段
+    // 3. Add a line segment from the starting point to the target point to the path by calling OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path1, 100, 100);
-    // 4、调用OH_Drawing_PathLineTo添加一条从路径的最后点位置到目标点位置的线段
+    // 4. Add a line segment from the last point of the path to the target point to the path by calling
+    // OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path1, 200, 200);
-    // 5、调用OH_Drawing_PathLineTo添加一条从路径的最后点位置到目标点位置的线段
+    // 5. Add a line segment from the last point of the path to the target point to the path by calling
+    // OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path1, 300, 300);
-    // 6、调用OH_Drawing_PathClose闭合路径
+    // 6. Close the path by calling OH_Drawing_PathClose
     OH_Drawing_PathClose(path1);
-    // 7、调用OH_Drawing_PathCopy复制出路径1的副本路径2
+    // 7. Copy path 1 to path 2 by calling OH_Drawing_PathCopy
     OH_Drawing_Path *path2 = OH_Drawing_PathCopy(path1);
-    // 8、调用OH_Drawing_PathGetLength获取路径2的长度, 8、返回值和路径1的长度一致
+    // 8. Get the length of path 2 by calling OH_Drawing_PathGetLength
     bool isEqual = IsScalarAlmostEqual(OH_Drawing_PathGetLength(path1, false), OH_Drawing_PathGetLength(path2, false));
     EXPECT_TRUE(isEqual);
-    // 9、释放内存
+    // 9. Free memory
     OH_Drawing_PathDestroy(path1);
 }
 
@@ -93,12 +95,12 @@ HWTEST_F(DrawingNativePathTest, testPathCopyNormal, TestSize.Level0) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathCopyNull, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathCopy参数为空, 2、返回错误码OH_DRAWING_ERROR_INVALID_PARAMETER
+    // 2. Copy a path with nullptr as the parameter
     OH_Drawing_Path *path2 = OH_Drawing_PathCopy(nullptr);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-    // 3、释放内存
+    // 3. Free memory
     OH_Drawing_PathDestroy(path);
     OH_Drawing_PathDestroy(path2);
 }
@@ -112,26 +114,29 @@ HWTEST_F(DrawingNativePathTest, testPathCopyNull, TestSize.Level3) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathCopyInputDestroyed, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象1
+    // 1. Create a path object 1 by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path1 = OH_Drawing_PathCreate();
     EXPECT_NE(path1, nullptr);
-    // 2、调用OH_Drawing_PathMoveTo设置路径的起始点位置
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path1, 0, 0);
-    // 3、调用OH_Drawing_PathLineTo添加一条从路径的起点位置到目标点位置的线段
+    // 3. Add a line segment from the starting point to the target point to the path by calling OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path1, 100, 100);
-    // 4、调用OH_Drawing_PathLineTo添加一条从路径的最后点位置到目标点位置的线段
+    // 4. Add a line segment from the last point of the path to the target point to the path by calling
+    // OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path1, 200, 200);
-    // 5、调用OH_Drawing_PathLineTo添加一条从路径的最后点位置到目标点位置的线段
+    // 5. Add a line segment from the last point of the path to the target point to the path by calling
+    // OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path1, 300, 300);
-    // 6、调用OH_Drawing_PathClose闭合路径
+    // 6. Close the path by calling OH_Drawing_PathClose
     OH_Drawing_PathClose(path1);
-    // 7、调用OH_Drawing_PathCopy复制出路径1的副本路径2
+    // 7. Copy path 1 to path 2 by calling OH_Drawing_PathCopy
     OH_Drawing_Path *path2 = OH_Drawing_PathCopy(path1);
-    // 8、调用OH_Drawing_PathDestroy销毁路径1
+    // 8. Destroy path 1 by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path1);
-    // 9、调用OH_Drawing_PathGetLength获取路径2的长度, 9、返回值正常说明销毁路径1不影响路径2
+    // 9. Get the length of path 2 by calling OH_Drawing_PathGetLength, if the return value is not 0, it means
+    // destroying path 1 does not affect path 2
     EXPECT_NE(OH_Drawing_PathGetLength(path2, false), 0);
-    // 10、释放内存
+    // 10. Free memory
     OH_Drawing_PathDestroy(path2);
 }
 
@@ -144,9 +149,9 @@ HWTEST_F(DrawingNativePathTest, testPathCopyInputDestroyed, TestSize.Level3) {
  * @tc.level : Level 0
  */
 HWTEST_F(DrawingNativePathTest, testPathDestroyNormal, TestSize.Level0) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Call OH_Drawing_PathCreate to create a path object
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathDestroy销毁路径
+    // 2. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -159,12 +164,13 @@ HWTEST_F(DrawingNativePathTest, testPathDestroyNormal, TestSize.Level0) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathDestroyNull, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Call OH_Drawing_PathCreate to create a path object
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathDestroy参数为空, 2、返回错误码OH_DRAWING_ERROR_INVALID_PARAMETER
+    // 2. Call OH_Drawing_PathDestroy with nullptr as the parameter, expecting OH_DRAWING_ERROR_INVALID_PARAMETER error
+    // code
     OH_Drawing_PathDestroy(nullptr);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-    // 3、释放内存
+    // 3. Free memory
     OH_Drawing_PathDestroy(path);
 }
 
@@ -177,11 +183,11 @@ HWTEST_F(DrawingNativePathTest, testPathDestroyNull, TestSize.Level3) {
  * @tc.level : Level 0
  */
 HWTEST_F(DrawingNativePathTest, testPathMoveToNormal, TestSize.Level0) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径起始点
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、释放内存
+    // 3. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -194,16 +200,17 @@ HWTEST_F(DrawingNativePathTest, testPathMoveToNormal, TestSize.Level0) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathMoveToNull, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo第一个参数为空, 2、返回错误码OH_DRAWING_ERROR_INVALID_PARAMETER
+    // 2. Call OH_Drawing_PathMoveTo with nullptr as the first parameter, expecting OH_DRAWING_ERROR_INVALID_PARAMETER
+    // error code
     OH_Drawing_PathMoveTo(nullptr, 1, 1);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-    // 3、调用OH_Drawing_PathMoveTo第二个参数为0.00
+    // 3. Call OH_Drawing_PathMoveTo with 0.00 as the second parameter
     OH_Drawing_PathMoveTo(path, 0.00, 1);
-    // 4、调用OH_Drawing_PathMoveTo第三个参数为0.00
+    // 4. Call OH_Drawing_PathMoveTo with 0.00 as the third parameter
     OH_Drawing_PathMoveTo(path, 1, 0.00);
-    // 5、释放内存
+    // 5. Free memory
     OH_Drawing_PathDestroy(path);
 }
 
@@ -216,13 +223,15 @@ HWTEST_F(DrawingNativePathTest, testPathMoveToNull, TestSize.Level3) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathMoveToAbnormal, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo第二个参数传入整型或者字符型
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo with an integer or character type as the
+    // second parameter
     OH_Drawing_PathMoveTo(path, 2, 1.0f);
-    // 3、调用OH_Drawing_PathMoveTo第三个参数传入整型或者字符型
+    // 3. Set the starting point of the path by calling OH_Drawing_PathMoveTo with an integer or character type as the
+    // third parameter
     OH_Drawing_PathMoveTo(path, 1.0f, 2);
-    // 4、释放内存
+    // 4. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -235,13 +244,15 @@ HWTEST_F(DrawingNativePathTest, testPathMoveToAbnormal, TestSize.Level3) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathMoveToMaximal, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo第二个参数传入极大值0x7FFFFFFF+1, 2、调用失败，无crash
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo with the second parameter as the maximum
+    // value of FLT_MAX + 1, no crash
     OH_Drawing_PathMoveTo(path, FLT_MAX + 1, 1.0);
-    // 3、调用OH_Drawing_PathMoveTo第三个参数传入极大值0x7FFFFFFF+1, 3、调用失败，无crash
+    // 3. Set the starting point of the path by calling OH_Drawing_PathMoveTo with the third parameter as the maximum
+    // value of FLT_MAX + 1, no crash
     OH_Drawing_PathMoveTo(path, 1.0, FLT_MAX + 1);
-    // 4、释放内存
+    // 4. Free memory
     OH_Drawing_PathDestroy(path);
 }
 
@@ -254,13 +265,13 @@ HWTEST_F(DrawingNativePathTest, testPathMoveToMaximal, TestSize.Level3) {
  * @tc.level : Level 0
  */
 HWTEST_F(DrawingNativePathTest, testPathLineToNormal, TestSize.Level0) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径起始点
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathLineTo添加一条从路径的起点位置到目标点位置的线段
+    // 3. Add a line segment from the starting point to the target point to the path by calling OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path, 100, 100);
-    // 4、释放内存
+    // 4. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -273,16 +284,18 @@ HWTEST_F(DrawingNativePathTest, testPathLineToNormal, TestSize.Level0) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathLineToNull, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathLineTo第一个参数为空, 返回错误码OH_DRAWING_ERROR_INVALID_PARAMETER
+    // 2. Call OH_Drawing_PathLineTo with nullptr as the first parameter, expecting OH_DRAWING_ERROR_INVALID_PARAMETER
+    // error code
     OH_Drawing_PathLineTo(nullptr, 1, 1);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-    // 3、调用OH_Drawing_PathLineTo第二个参数为0.00, 调用失败，无crash
+    // 3. Call OH_Drawing_PathLineTo with 0.00 as the second parameter, no crash
     OH_Drawing_PathLineTo(path, 0.00, 1);
-    // 4、调用OH_Drawing_PathLineTo第三个参数为0.00, 调用失败，无crash
+    // 4. Call OH_Drawing_PathLineTo with 0.00 as the third parameter, no crash
     OH_Drawing_PathLineTo(path, 1, 0.00);
-    // 5、释放内存
+    // 5. Free memory
+    OH_Drawing_PathDestroy(path);
 }
 
 /*
@@ -294,15 +307,17 @@ HWTEST_F(DrawingNativePathTest, testPathLineToNull, TestSize.Level3) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathLineToAbnormal, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径起始点
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathLineTo第二个参数传入整型或者字符型
+    // 3. Add a line segment from the starting point to the target point to the path by calling OH_Drawing_PathLineTo
+    // with an integer or character type as the second parameter
     OH_Drawing_PathLineTo(path, 2, 1.0f);
-    // 4、调用OH_Drawing_PathLineTo第三个参数传入整型或者字符型
+    // 4. Add a line segment from the starting point to the target point to the path by calling OH_Drawing_PathLineTo
+    // with an integer or character type as the third parameter
     OH_Drawing_PathLineTo(path, 1.0f, 2);
-    // 5、释放内存
+    // 5. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -315,15 +330,17 @@ HWTEST_F(DrawingNativePathTest, testPathLineToAbnormal, TestSize.Level3) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathLineToMaximal, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径起始点
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathLineTo第二个参数传入极大值0x7FFFFFFF+1
+    // 3. Add a line segment from the starting point to the target point to the path by calling OH_Drawing_PathLineTo
+    // with the second parameter as the maximum value of FLT_MAX + 1, no crash
     OH_Drawing_PathLineTo(path, FLT_MAX + 1, 1.0);
-    // 4、调用OH_Drawing_PathLineTo第三个参数传入极大值0x7FFFFFFF+1
+    // 4. Add a line segment from the starting point to the target point to the path by calling OH_Drawing_PathLineTo
+    // with the third parameter as the maximum value of FLT_MAX + 1, no crash
     OH_Drawing_PathLineTo(path, 1.0, FLT_MAX + 1);
-    // 5、释放内存
+    // 5. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -336,21 +353,23 @@ HWTEST_F(DrawingNativePathTest, testPathLineToMaximal, TestSize.Level3) {
  * @tc.level : Level 0
  */
 HWTEST_F(DrawingNativePathTest, testPathArcToNormal, TestSize.Level0) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径的起始点位置
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathLineTo添加一条从路径的起点位置到目标点位置的线段
+    // 3. Add a line segment from the starting point to the target point to the path by calling OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path, 100, 100);
-    // 4、调用OH_Drawing_PathLineTo添加一条从路径的最后点位置到目标点位置的线段
+    // 4. Add a line segment from the last point of the path to the target point to the path by calling
+    // OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path, 200, 200);
-    // 5、调用OH_Drawing_PathLineTo添加一条从路径的最后点位置到目标点位置的线段
+    // 5. Add a line segment from the last point of the path to the target point to the path by calling
+    // OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path, 300, 300);
-    // 6、调用OH_Drawing_PathClose闭合路径
+    // 6. Close the path by calling OH_Drawing_PathClose
     OH_Drawing_PathClose(path);
-    // 7、调用OH_Drawing_PathArcTo用于给路径添加一段弧线
+    // 7. Add an arc to the path by calling OH_Drawing_PathArcTo
     OH_Drawing_PathArcTo(path, 10, 10, 20, 0, 0, 90);
-    // 8、释放内存
+    // 8. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -363,24 +382,25 @@ HWTEST_F(DrawingNativePathTest, testPathArcToNormal, TestSize.Level0) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathArcToNull, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathArcTo第一个参数为空, 2、返回错误码OH_DRAWING_ERROR_INVALID_PARAMETER
+    // 2. Call OH_Drawing_PathArcTo with nullptr as the first parameter, expecting OH_DRAWING_ERROR_INVALID_PARAMETER
+    // error code
     OH_Drawing_PathArcTo(nullptr, 10, 10, 20, 0, 0, 90);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-    // 3、调用OH_Drawing_PathArcTo第二个参数为0.00, 3、调用失败，无crash
+    // 3. Call OH_Drawing_PathArcTo with 0.00 as the second parameter, no crash
     OH_Drawing_PathArcTo(path, 0.00, 10, 20, 0, 0, 90);
-    // 4、调用OH_Drawing_PathArcTo第三个参数为0.00, 4、调用失败，无crash
+    // 4. Call OH_Drawing_PathArcTo with 0.00 as the third parameter, no crash
     OH_Drawing_PathArcTo(path, 10, 0.00, 20, 0, 0, 90);
-    // 5、调用OH_Drawing_PathArcTo第四个参数为0.00, 5、调用失败，无crash
+    // 5. Call OH_Drawing_PathArcTo with 0.00 as the fourth parameter, no crash
     OH_Drawing_PathArcTo(path, 10, 10, 0.00, 0, 0, 90);
-    // 6、调用OH_Drawing_PathArcTo第五个参数为0.00, 6、调用失败，无crash
+    // 6. Call OH_Drawing_PathArcTo with 0.00 as the fifth parameter, no crash
     OH_Drawing_PathArcTo(path, 10, 10, 20, 0.00, 0, 90);
-    // 7、调用OH_Drawing_PathArcTo第六个参数为0.00, 7、调用失败，无crash
+    // 7. Call OH_Drawing_PathArcTo with 0.00 as the sixth parameter, no crash
     OH_Drawing_PathArcTo(path, 10, 10, 20, 0, 0.00, 90);
-    // 8、调用OH_Drawing_PathArcTo第七个参数为0.00, 8、调用失败，无crash
+    // 8. Call OH_Drawing_PathArcTo with 0.00 as the seventh parameter, no crash
     OH_Drawing_PathArcTo(path, 10, 10, 20, 0, 0, 0.00);
-    // 9、释放内存
+    // 9. Free memory
     OH_Drawing_PathDestroy(path);
 }
 
@@ -393,21 +413,23 @@ HWTEST_F(DrawingNativePathTest, testPathArcToNull, TestSize.Level3) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathArcToAbnormal, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径的起始点位置
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathLineTo添加一条从路径的起点位置到目标点位置的线段
+    // 3. Add a line segment from the starting point to the target point to the path by calling OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path, 100, 100);
-    // 4、调用OH_Drawing_PathLineTo添加一条从路径的最后点位置到目标点位置的线段
+    // 4. Add a line segment from the last point of the path to the target point to the path by calling
+    // OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path, 200, 200);
-    // 5、调用OH_Drawing_PathLineTo添加一条从路径的最后点位置到目标点位置的线段
+    // 5. Add a line segment from the last point of the path to the target point to the path by calling
+    // OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path, 300, 300);
-    // 6、调用OH_Drawing_PathClose闭合路径
+    // 6. Close the path by calling OH_Drawing_PathClose
     OH_Drawing_PathClose(path);
-    // 7、调用OH_Drawing_PathArcTo参数传入整型
+    // 7. Add an arc to the path by calling OH_Drawing_PathArcTo with integer parameters
     OH_Drawing_PathArcTo(path, 10, 10, 20, 20, 20, 90);
-    // 8、释放内存
+    // 8. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -420,31 +442,39 @@ HWTEST_F(DrawingNativePathTest, testPathArcToAbnormal, TestSize.Level3) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathArcToMaximal, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径的起始点位置
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathLineTo添加一条从路径的起点位置到目标点位置的线段
+    // 3. Add a line segment from the starting point to the target point to the path by calling OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path, 100, 100);
-    // 4、调用OH_Drawing_PathLineTo添加一条从路径的最后点位置到目标点位置的线段
+    // 4. Add a line segment from the last point of the path to the target point to the path by calling
+    // OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path, 200, 200);
-    // 5、调用OH_Drawing_PathLineTo添加一条从路径的最后点位置到目标点位置的线段
+    // 5. Add a line segment from the last point of the path to the target point to the path by calling
+    // OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path, 300, 300);
-    // 6、调用OH_Drawing_PathClose闭合路径
+    // 6. Close the path by calling OH_Drawing_PathClose
     OH_Drawing_PathClose(path);
-    // 7、调用OH_Drawing_PathArcTo第二个参数传入极大值0x7FFFFFFF+1, 7、调用失败，无crash
+    // 7. Add an arc to the path by calling OH_Drawing_PathArcTo with the second parameter as the maximum value of
+    // FLT_MAX + 1, no crash
     OH_Drawing_PathArcTo(path, FLT_MAX + 1, 10, 20, 0, 0, 90);
-    // 8、调用OH_Drawing_PathArcTo第三个参数传入极大值0x7FFFFFFF+1, 8、调用失败，无crash
+    // 8. Add an arc to the path by calling OH_Drawing_PathArcTo with the third parameter as the maximum value of
+    // FLT_MAX + 1, no crash
     OH_Drawing_PathArcTo(path, 10, FLT_MAX + 1, 20, 0, 0, 90);
-    // 9、调用OH_Drawing_PathArcTo第四个参数传入极大值0x7FFFFFFF+1, 9、调用失败，无crash
+    // 9. Add an arc to the path by calling OH_Drawing_PathArcTo with the fourth parameter as the maximum value of
+    // FLT_MAX + 1, no crash
     OH_Drawing_PathArcTo(path, 10, 10, FLT_MAX + 1, 0, 0, 90);
-    // 10、调用OH_Drawing_PathArcTo第五个参数传入极大值0x7FFFFFFF+1, 10、调用失败，无crash
+    // 10. Add an arc to the path by calling OH_Drawing_PathArcTo with the fifth parameter as the maximum value of
+    // FLT_MAX + 1, no crash
     OH_Drawing_PathArcTo(path, 10, 10, 20, FLT_MAX + 1, 0, 90);
-    // 11、调用OH_Drawing_PathArcTo第六个参数传入极大值0x7FFFFFFF+1, 11、调用失败，无crash
+    // 11. Add an arc to the path by calling OH_Drawing_PathArcTo with the sixth parameter as the maximum value of
+    // FLT_MAX + 1, no crash
     OH_Drawing_PathArcTo(path, 10, 10, 20, 0, FLT_MAX + 1, 90);
-    // 12、调用OH_Drawing_PathArcTo第七个参数传入极大值0x7FFFFFFF+1, 12、调用失败，无crash
+    // 12. Add an arc to the path by calling OH_Drawing_PathArcTo with the seventh parameter as the maximum value of
+    // FLT_MAX + 1, no crash
     OH_Drawing_PathArcTo(path, 10, 10, 20, 0, 0, FLT_MAX + 1);
-    // 13、释放内存
+    // 13. Free memory
     OH_Drawing_PathDestroy(path);
 }
 
@@ -457,13 +487,14 @@ HWTEST_F(DrawingNativePathTest, testPathArcToMaximal, TestSize.Level3) {
  * @tc.level : Level 0
  */
 HWTEST_F(DrawingNativePathTest, testPathQuadToNormal, TestSize.Level0) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径起始点
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathQuadTo添加一条从路径最后点位置到目标点位置的二阶贝塞尔圆滑曲线
+    // 3. Add a quadratic Bezier curve from the last point of the path to the target point by calling
+    // OH_Drawing_PathQuadTo
     OH_Drawing_PathQuadTo(path, 100, 100, 200, 200);
-    // 4、释放内存
+    // 4. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -476,20 +507,21 @@ HWTEST_F(DrawingNativePathTest, testPathQuadToNormal, TestSize.Level0) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathQuadToNull, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathQuadTo第一个参数为空, 2、返回错误码OH_DRAWING_ERROR_INVALID_PARAMETER
+    // 2. Call OH_Drawing_PathQuadTo with nullptr as the first parameter, expecting OH_DRAWING_ERROR_INVALID_PARAMETER
+    // error code
     OH_Drawing_PathQuadTo(nullptr, 100, 100, 200, 200);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-    // 3、调用OH_Drawing_PathQuadTo第二个参数为0.00, 3、调用失败，无crash
+    // 3. Call OH_Drawing_PathQuadTo with 0.00 as the second parameter, no crash
     OH_Drawing_PathQuadTo(path, 0.00, 100, 200, 200);
-    // 4、调用OH_Drawing_PathQuadTo第三个参数为0.00, 4、调用失败，无crash
+    // 4. Call OH_Drawing_PathQuadTo with 0.00 as the third parameter, no crash
     OH_Drawing_PathQuadTo(path, 100, 0.00, 200, 200);
-    // 5、调用OH_Drawing_PathQuadTo第四个参数为0.00, 5、调用失败，无crash
+    // 5. Call OH_Drawing_PathQuadTo with 0.00 as the fourth parameter, no crash
     OH_Drawing_PathQuadTo(path, 100, 100, 0.00, 200);
-    // 6、调用OH_Drawing_PathQuadTo第五个参数为0.00, 6、调用失败，无crash
+    // 6. Call OH_Drawing_PathQuadTo with 0.00 as the fifth parameter, no crash
     OH_Drawing_PathQuadTo(path, 100, 100, 200, 0.00);
-    // 7、释放内存
+    // 7. Free memory
     OH_Drawing_PathDestroy(path);
 }
 
@@ -502,19 +534,19 @@ HWTEST_F(DrawingNativePathTest, testPathQuadToNull, TestSize.Level3) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathQuadToAbnormal, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径起始点
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathQuadTo第二个参数传入整型或者字符型
+    // 3. Add a quadratic Bezier curve to the path with the second parameter as an integer
     OH_Drawing_PathQuadTo(path, 100, 100.0f, 200.0f, 200.0f);
-    // 4、调用OH_Drawing_PathQuadTo第三个参数传入整型或者字符型
+    // 4. Add a quadratic Bezier curve to the path with the third parameter as an integer
     OH_Drawing_PathQuadTo(path, 100.0f, 100, 200.0f, 200.0f);
-    // 5、调用OH_Drawing_PathQuadTo第四个参数传入整型或者字符型
+    // 5. Add a quadratic Bezier curve to the path with the fourth parameter as an integer
     OH_Drawing_PathQuadTo(path, 100.0f, 100.0f, 200, 200.0f);
-    // 6、调用OH_Drawing_PathQuadTo第五个参数传入整型或者字符型
+    // 6. Add a quadratic Bezier curve to the path with the fifth parameter as an integer
     OH_Drawing_PathQuadTo(path, 100.0f, 100.0f, 200.0f, 200);
-    // 7、释放内存
+    // 7. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -527,19 +559,19 @@ HWTEST_F(DrawingNativePathTest, testPathQuadToAbnormal, TestSize.Level3) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathQuadToMaximal, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径起始点
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathQuadTo第二个参数传入极大值0x7FFFFFFF+1, 3、调用失败，无crash
+    // 3. Call OH_Drawing_PathQuadTo with the second parameter as the maximum value of FLT_MAX + 1, no crash
     OH_Drawing_PathQuadTo(path, FLT_MAX + 1, 100, 200, 200);
-    // 4、调用OH_Drawing_PathQuadTo第三个参数传入极大值0x7FFFFFFF+1, 4、调用失败，无crash
+    // 4. Call OH_Drawing_PathQuadTo with the third parameter as the maximum value of FLT_MAX + 1, no crash
     OH_Drawing_PathQuadTo(path, 100, FLT_MAX + 1, 200, 200);
-    // 5、调用OH_Drawing_PathQuadTo第四个参数传入极大值0x7FFFFFFF+1, 5、调用失败，无crash
+    // 5. Call OH_Drawing_PathQuadTo with the fourth parameter as the maximum value of FLT_MAX + 1, no crash
     OH_Drawing_PathQuadTo(path, 100, 100, FLT_MAX + 1, 200);
-    // 6、调用OH_Drawing_PathQuadTo第五个参数传入极大值0x7FFFFFFF+1, 6、调用失败，无crash
+    // 6. Call OH_Drawing_PathQuadTo with the fifth parameter as the maximum value of FLT_MAX + 1, no crash
     OH_Drawing_PathQuadTo(path, 100, 100, 200, FLT_MAX + 1);
-    // 7、释放内存
+    // 7. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -552,15 +584,15 @@ HWTEST_F(DrawingNativePathTest, testPathQuadToMaximal, TestSize.Level3) {
  * @tc.level : Level 0
  */
 HWTEST_F(DrawingNativePathTest, testPathConicToNormal, TestSize.Level0) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径的起始点位置
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathLineTo添加一条从路径的起点位置到目标点位置的线段
+    // 3. Add a line segment from the last point of the path to the target point by calling OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path, 100, 100);
-    // 4、调用OH_Drawing_PathConicTo在当前路径上添加一个二次贝塞尔曲线段
+    // 4. Add a quadratic Bezier curve to the path by calling OH_Drawing_PathConicTo
     OH_Drawing_PathConicTo(path, 50, 50, 100, 100, 0.5);
-    // 5、释放内存
+    // 5. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -573,22 +605,23 @@ HWTEST_F(DrawingNativePathTest, testPathConicToNormal, TestSize.Level0) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathConicToNull, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathConicTo第一个参数为空, 返回错误码OH_DRAWING_ERROR_INVALID_PARAMETER
+    // 2. Call OH_Drawing_PathConicTo with nullptr as the first parameter, expecting OH_DRAWING_ERROR_INVALID_PARAMETER
+    // error code
     OH_Drawing_PathConicTo(nullptr, 50, 50, 100, 100, 0.5);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-    // 3、调用OH_Drawing_PathConicTo第二个参数为0.00
+    // 3. Call OH_Drawing_PathConicTo with 0.00 as the second parameter, no crash
     OH_Drawing_PathConicTo(path, 0.00, 50, 100, 100, 0.5);
-    // 4、调用OH_Drawing_PathConicTo第三个参数为0.00
+    // 4. Call OH_Drawing_PathConicTo with 0.00 as the third parameter, no crash
     OH_Drawing_PathConicTo(path, 50, 0.00, 100, 100, 0.5);
-    // 5、调用OH_Drawing_PathConicTo第四个参数为0.00
+    // 5. Call OH_Drawing_PathConicTo with 0.00 as the fourth parameter, no crash
     OH_Drawing_PathConicTo(path, 50, 50, 0.00, 100, 0.5);
-    // 6、调用OH_Drawing_PathConicTo第五个参数为0.00
+    // 6. Call OH_Drawing_PathConicTo with 0.00 as the fifth parameter, no crash
     OH_Drawing_PathConicTo(path, 50, 50, 100, 0.00, 0.5);
-    // 7、调用OH_Drawing_PathConicTo第六个参数为0.00
+    // 7. Call OH_Drawing_PathConicTo with 0.00 as the sixth parameter, no crash
     OH_Drawing_PathConicTo(path, 50, 50, 100, 100, 0.00);
-    // 8、释放内存
+    // 8. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -601,23 +634,23 @@ HWTEST_F(DrawingNativePathTest, testPathConicToNull, TestSize.Level3) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathConicToAbnormal, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径的起始点位置
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathLineTo添加一条从路径的起点位置到目标点位置的线段
+    // 3. Add a line segment from the last point of the path to the target point by calling OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path, 100.0f, 100.0f);
-    // 4、调用OH_Drawing_PathConicTo第二个参数传入整型或者字符型
+    // 4. Add a conic curve to the path with the second parameter as an integer or character type
     OH_Drawing_PathConicTo(path, 50, 50.0f, 100.0f, 100.0f, 0.5f);
-    // 5、调用OH_Drawing_PathConicTo第三个参数传入整型或者字符型
+    // 5. Add a conic curve to the path with the third parameter as an integer or character type
     OH_Drawing_PathConicTo(path, 50.0f, 50, 100.0f, 100.0f, 0.5f);
-    // 6、调用OH_Drawing_PathConicTo第四个参数传入整型或者字符型
+    // 6. Add a conic curve to the path with the fourth parameter as an integer or character type
     OH_Drawing_PathConicTo(path, 50.0f, 50.0f, 100, 100.0f, 0.5f);
-    // 7、调用OH_Drawing_PathConicTo第五个参数传入整型或者字符型
+    // 7. Add a conic curve to the path with the fifth parameter as an integer or character type
     OH_Drawing_PathConicTo(path, 50.0f, 50.0f, 100.0f, 100, 0.5f);
-    // 8、调用OH_Drawing_PathConicTo第六个参数传入整型或者字符型
+    // 8. Add a conic curve to the path with the sixth parameter as an integer or character type
     OH_Drawing_PathConicTo(path, 50.0f, 50.0f, 100.0f, 100.0f, 1);
-    // 9、释放内存
+    // 9. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -630,23 +663,23 @@ HWTEST_F(DrawingNativePathTest, testPathConicToAbnormal, TestSize.Level3) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathConicToMaximal, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径的起始点位置
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathLineTo添加一条从路径的起点位置到目标点位置的线段
+    // 3. Add a line segment from the starting point of the path to the target point by calling OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path, 100, 100);
-    // 4、调用OH_Drawing_PathConicTo第二个参数传入极大值0x7FFFFFFF+1, 调用失败，无crash
+    // 4. Call OH_Drawing_PathConicTo with the second parameter as the maximum value of FLT_MAX + 1, no crash
     OH_Drawing_PathConicTo(path, FLT_MAX + 1, 50, 100, 100, 0.5);
-    // 5、调用OH_Drawing_PathConicTo第三个参数传入极大值0x7FFFFFFF+1, 调用失败，无crash
+    // 5. Call OH_Drawing_PathConicTo with the third parameter as the maximum value of FLT_MAX + 1, no crash
     OH_Drawing_PathConicTo(path, 50, FLT_MAX + 1, 100, 100, 0.5);
-    // 6、调用OH_Drawing_PathConicTo第四个参数传入极大值0x7FFFFFFF+1, 调用失败，无crash
+    // 6. Call OH_Drawing_PathConicTo with the fourth parameter as the maximum value of FLT_MAX + 1, no crash
     OH_Drawing_PathConicTo(path, 50, 50, FLT_MAX + 1, 100, 0.5);
-    // 7、调用OH_Drawing_PathConicTo第五个参数传入极大值0x7FFFFFFF+1, 调用失败，无crash
+    // 7. Call OH_Drawing_PathConicTo with the fifth parameter as the maximum value of FLT_MAX + 1, no crash
     OH_Drawing_PathConicTo(path, 50, 50, 100, FLT_MAX + 1, 0.5);
-    // 8、调用OH_Drawing_PathConicTo第六个参数传入极大值0x7FFFFFFF+1, 调用失败，无crash
+    // 8. Call OH_Drawing_PathConicTo with the sixth parameter as the maximum value of FLT_MAX + 1, no crash
     OH_Drawing_PathConicTo(path, 50, 50, 100, 100, FLT_MAX + 1);
-    // 9、释放内存
+    // 9. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -659,13 +692,13 @@ HWTEST_F(DrawingNativePathTest, testPathConicToMaximal, TestSize.Level3) {
  * @tc.level : Level 0
  */
 HWTEST_F(DrawingNativePathTest, testPathCubicToNormal, TestSize.Level0) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径的起始点位置
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathCubicTo添加一条从路径最后点位置到目标点位置的三阶贝塞尔圆滑曲线
+    // 3. Add a cubic Bezier curve from the last point of the path to the target point by calling OH_Drawing_PathCubicTo
     OH_Drawing_PathCubicTo(path, 100, 100, 200, 200, 300, 300);
-    // 4、释放内存
+    // 4. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -678,24 +711,25 @@ HWTEST_F(DrawingNativePathTest, testPathCubicToNormal, TestSize.Level0) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathCubicToNull, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathCubicTo第一个参数为空, 返回错误码OH_DRAWING_ERROR_INVALID_PARAMETER
+    // 2. Call OH_Drawing_PathCubicTo with nullptr as the first parameter, expecting OH_DRAWING_ERROR_INVALID_PARAMETER
+    // error code
     OH_Drawing_PathCubicTo(nullptr, 100, 100, 200, 200, 300, 300);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-    // 3、调用OH_Drawing_PathCubicTo第二个参数为0.00, 调用失败，无crash
+    // 3. Call OH_Drawing_PathCubicTo with 0.00 as the second parameter, no crash
     OH_Drawing_PathCubicTo(path, 0.00, 100, 200, 200, 300, 300);
-    // 4、调用OH_Drawing_PathCubicTo第三个参数为0.00, 调用失败，无crash
+    // 4. Call OH_Drawing_PathCubicTo with 0.00 as the third parameter, no crash
     OH_Drawing_PathCubicTo(path, 100, 0.00, 200, 200, 300, 300);
-    // 5、调用OH_Drawing_PathCubicTo第四个参数为0.00, 调用失败，无crash
+    // 5. Call OH_Drawing_PathCubicTo with 0.00 as the fourth parameter, no crash
     OH_Drawing_PathCubicTo(path, 100, 100, 0.00, 200, 300, 300);
-    // 6、调用OH_Drawing_PathCubicTo第五个参数为0.00, 调用失败，无crash
+    // 6. Call OH_Drawing_PathCubicTo with 0.00 as the fifth parameter, no crash
     OH_Drawing_PathCubicTo(path, 100, 100, 200, 0.00, 300, 300);
-    // 7、调用OH_Drawing_PathCubicTo第六个参数为0.00, 调用失败，无crash
+    // 7. Call OH_Drawing_PathCubicTo with 0.00 as the sixth parameter, no crash
     OH_Drawing_PathCubicTo(path, 100, 100, 200, 200, 0.00, 300);
-    // 8、调用OH_Drawing_PathCubicTo第七个参数为0.00, 调用失败，无crash
+    // 8. Call OH_Drawing_PathCubicTo with 0.00 as the seventh parameter, no crash
     OH_Drawing_PathCubicTo(path, 100, 100, 200, 200, 300, 0.00);
-    // 9、释放内存
+    // 9. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -708,23 +742,23 @@ HWTEST_F(DrawingNativePathTest, testPathCubicToNull, TestSize.Level3) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathCubicToAbnormal, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径的起始点位置
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathCubicTo第二个参数传入整型或者字符型
+    // 3. Add a cubic Bezier curve to the path with the second parameter as an integer
     OH_Drawing_PathCubicTo(path, 100, 100.0f, 200.0f, 200.0f, 300.0f, 300.0f);
-    // 4、调用OH_Drawing_PathCubicTo第三个参数传入整型或者字符型
+    // 4. Add a cubic Bezier curve to the path with the third parameter as an integer
     OH_Drawing_PathCubicTo(path, 100.0f, 100, 200.0f, 200.0f, 300.0f, 300.0f);
-    // 5、调用OH_Drawing_PathCubicTo第四个参数传入整型或者字符型
+    // 5. Add a cubic Bezier curve to the path with the fourth parameter as an integer
     OH_Drawing_PathCubicTo(path, 100.0f, 100.0f, 200, 200.0f, 300.0f, 300.0f);
-    // 6、调用OH_Drawing_PathCubicTo第五个参数传入整型或者字符型
+    // 6. Add a cubic Bezier curve to the path with the fifth parameter as an integer
     OH_Drawing_PathCubicTo(path, 100.0f, 100.0f, 200.0f, 200, 300.0f, 300.0f);
-    // 7、调用OH_Drawing_PathCubicTo第六个参数传入整型或者字符型
+    // 7. Add a cubic Bezier curve to the path with the sixth parameter as an integer
     OH_Drawing_PathCubicTo(path, 100.0f, 100.0f, 200.0f, 200.0f, 300, 300.0f);
-    // 8、调用OH_Drawing_PathCubicTo第七个参数传入整型或者字符型
+    // 8. Add a cubic Bezier curve to the path with the seventh parameter as an integer
     OH_Drawing_PathCubicTo(path, 100.0f, 100.0f, 200.0f, 200.0f, 300.0f, 300);
-    // 9、释放内存
+    // 9. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -737,23 +771,23 @@ HWTEST_F(DrawingNativePathTest, testPathCubicToAbnormal, TestSize.Level3) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathCubicToMaximal, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径的起始点位置
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathCubicTo第二个参数传入极大值0x7FFFFFFF+1, 调用失败，无crash
+    // 3. Call OH_Drawing_PathCubicTo with the second parameter as the maximum value of FLT_MAX + 1, no crash
     OH_Drawing_PathCubicTo(path, FLT_MAX + 1, 100, 200, 200, 300, 300);
-    // 4、调用OH_Drawing_PathCubicTo第三个参数传入极大值0x7FFFFFFF+1, 调用失败，无crash
+    // 4. Call OH_Drawing_PathCubicTo with the third parameter as the maximum value of FLT_MAX + 1, no crash
     OH_Drawing_PathCubicTo(path, 100, FLT_MAX + 1, 200, 200, 300, 300);
-    // 5、调用OH_Drawing_PathCubicTo第四个参数传入极大值0x7FFFFFFF+1, 调用失败，无crash
+    // 5. Call OH_Drawing_PathCubicTo with the fourth parameter as the maximum value of FLT_MAX + 1, no crash
     OH_Drawing_PathCubicTo(path, 100, 100, FLT_MAX + 1, 200, 300, 300);
-    // 6、调用OH_Drawing_PathCubicTo第五个参数传入极大值0x7FFFFFFF+1, 调用失败，无crash
+    // 6. Call OH_Drawing_PathCubicTo with the fifth parameter as the maximum value of FLT_MAX + 1, no crash
     OH_Drawing_PathCubicTo(path, 100, 100, 200, FLT_MAX + 1, 300, 300);
-    // 7、调用OH_Drawing_PathCubicTo第六个参数传入极大值0x7FFFFFFF+1, 调用失败，无crash
+    // 7. Call OH_Drawing_PathCubicTo with the sixth parameter as the maximum value of FLT_MAX + 1, no crash
     OH_Drawing_PathCubicTo(path, 100, 100, 200, 200, FLT_MAX + 1, 300);
-    // 8、调用OH_Drawing_PathCubicTo第七个参数传入极大值0x7FFFFFFF+1, 调用失败，无crash
+    // 8. Call OH_Drawing_PathCubicTo with the seventh parameter as the maximum value of FLT_MAX + 1, no crash
     OH_Drawing_PathCubicTo(path, 100, 100, 200, 200, 300, FLT_MAX + 1);
-    // 9、释放内存
+    // 9. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -766,15 +800,15 @@ HWTEST_F(DrawingNativePathTest, testPathCubicToMaximal, TestSize.Level3) {
  * @tc.level : Level 0
  */
 HWTEST_F(DrawingNativePathTest, testPathRMoveToNormal, TestSize.Level0) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径的起始点位置
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathLineTo添加一条从路径的起点位置到目标点位置的线段
+    // 3. Add a line segment from the starting point of the path to the target point by calling OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path, 100, 100);
-    // 4、调用OH_Drawing_PathRMoveTo设置一个相对于当前路径终点的路径起始点位置
+    // 4. Set a relative move to the path starting from the current endpoint by calling OH_Drawing_PathRMoveTo
     OH_Drawing_PathRMoveTo(path, 100, 100);
-    // 5、释放内存
+    // 5. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -787,15 +821,16 @@ HWTEST_F(DrawingNativePathTest, testPathRMoveToNormal, TestSize.Level0) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathRMoveToNull, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathRMoveTo第一个参数为空, 返回错误码OH_DRAWING_ERROR_INVALID_PARAMETER
+    // 2. Call OH_Drawing_PathRMoveTo with nullptr as the first parameter, expecting OH_DRAWING_ERROR_INVALID_PARAMETER
+    // error code
     OH_Drawing_PathRMoveTo(nullptr, 100, 100);
-    // 3、调用OH_Drawing_PathRMoveTo第二个参数为0.00, 调用失败，无crash
+    // 3. Call OH_Drawing_PathRMoveTo with 0.00 as the second parameter, no crash
     OH_Drawing_PathRMoveTo(path, 0.00, 100);
-    // 4、调用OH_Drawing_PathRMoveTo第三个参数为0.00, 调用失败，无crash
+    // 4. Call OH_Drawing_PathRMoveTo with 0.00 as the third parameter, no crash
     OH_Drawing_PathRMoveTo(path, 100, 0.00);
-    // 5、释放内存
+    // 5. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -808,17 +843,17 @@ HWTEST_F(DrawingNativePathTest, testPathRMoveToNull, TestSize.Level3) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathRMoveToAbnormal, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径的起始点位置
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathLineTo添加一条从路径的起点位置到目标点位置的线段
+    // 3. Add a line segment from the starting point of the path to the target point by calling OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path, 100.0f, 100.0f);
-    // 4、调用OH_Drawing_PathRMoveTo第二个参数传入整型或者字符型
+    // 4. Set a relative move to the path starting from the current endpoint by calling OH_Drawing_PathRMoveTo
     OH_Drawing_PathRMoveTo(path, 100, 100.0f);
-    // 5、调用OH_Drawing_PathRMoveTo第三个参数传入整型或者字符型
+    // 5. Set a relative move to the path starting from the current endpoint by calling OH_Drawing_PathRMoveTo
     OH_Drawing_PathRMoveTo(path, 100.0f, 100);
-    // 6、释放内存
+    // 6. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -831,17 +866,17 @@ HWTEST_F(DrawingNativePathTest, testPathRMoveToAbnormal, TestSize.Level3) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathRMoveToMaximal, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径的起始点位置
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathLineTo添加一条从路径的起点位置到目标点位置的线段
+    // 3. Add a line segment from the starting point of the path to the target point by calling OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path, 100, 100);
-    // 4、调用OH_Drawing_PathRMoveTo第二个参数传入极大值0x7FFFFFFF+1, 调用失败，无crash
+    // 4. Set a relative move to the path starting from the current endpoint by calling OH_Drawing_PathRMoveTo
     OH_Drawing_PathRMoveTo(path, FLT_MAX + 1, 100);
-    // 5、调用OH_Drawing_PathRMoveTo第三个参数传入极大值0x7FFFFFFF+1, 调用失败，无crash
+    // 5. Set a relative move to the path starting from the current endpoint by calling OH_Drawing_PathRMoveTo
     OH_Drawing_PathRMoveTo(path, 100, FLT_MAX + 1);
-    // 6、释放内存
+    // 6. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -854,17 +889,18 @@ HWTEST_F(DrawingNativePathTest, testPathRMoveToMaximal, TestSize.Level3) {
  * @tc.level : Level 0
  */
 HWTEST_F(DrawingNativePathTest, testPathRLineToNormal, TestSize.Level0) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径的起始点位置
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathLineTo添加一条从路径的起点位置到目标点位置的线段
+    // 3. Add a line segment from the starting point of the path to the target point by calling OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path, 100, 100);
-    // 4、调用OH_Drawing_PathRMoveTo设置一个相对于当前路径终点的路径起始点位置
+    // 4. Set a relative move to the path starting from the current endpoint by calling OH_Drawing_PathRMoveTo
     OH_Drawing_PathRMoveTo(path, 100, 100);
-    // 5、调用OH_Drawing_PathRLineTo使用相对位置在当前路径上添加一条当前路径终点到目标点位置的线段
+    // 5. Add a relative line to the path from the current endpoint to the target point by calling
+    // OH_Drawing_PathRLineTo
     OH_Drawing_PathRLineTo(path, 100, 100);
-    // 6、释放内存
+    // 6. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -877,16 +913,17 @@ HWTEST_F(DrawingNativePathTest, testPathRLineToNormal, TestSize.Level0) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathRLineToNull, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathRLineTo第一个参数为空, 返回错误码OH_DRAWING_ERROR_INVALID_PARAMETER
+    // 2. Call OH_Drawing_PathRLineTo with nullptr as the first parameter, expecting OH_DRAWING_ERROR_INVALID_PARAMETER
+    // error code
     OH_Drawing_PathRLineTo(nullptr, 100, 100);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-    // 3、调用OH_Drawing_PathRLineTo第二个参数为0.00, 调用失败，无crash
+    // 3. Call OH_Drawing_PathRLineTo with 0.00 as the second parameter, no crash
     OH_Drawing_PathRLineTo(path, 0.00, 100);
-    // 4、调用OH_Drawing_PathRLineTo第三个参数为0.00, 调用失败，无crash
+    // 4. Call OH_Drawing_PathRLineTo with 0.00 as the third parameter, no crash
     OH_Drawing_PathRLineTo(path, 100, 0.00);
-    // 5、释放内存
+    // 5. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -899,19 +936,21 @@ HWTEST_F(DrawingNativePathTest, testPathRLineToNull, TestSize.Level3) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathRLineToAbnormal, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径的起始点位置
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathLineTo添加一条从路径的起点位置到目标点位置的线段
+    // 3. Add a line segment from the starting point of the path to the target point by calling OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path, 100.0f, 100.0f);
-    // 4、调用OH_Drawing_PathRMoveTo设置一个相对于当前路径终点的路径起始点位置
+    // 4. Set a relative move to the path starting from the current endpoint by calling OH_Drawing_PathRMoveTo
     OH_Drawing_PathRMoveTo(path, 100, 100);
-    // 5、调用OH_Drawing_PathRLineTo第二个参数传入整型或者字符型
+    // 5. Add a relative line to the path from the current endpoint to the target point by calling
+    // OH_Drawing_PathRLineTo
     OH_Drawing_PathRLineTo(path, 100.0f, 100);
-    // 6、调用OH_Drawing_PathRLineTo第三个参数传入整型或者字符型
+    // 6. Add a relative line to the path from the current endpoint to the target point by calling
+    // OH_Drawing_PathRLineTo
     OH_Drawing_PathRLineTo(path, 100, 100.0f);
-    // 7、释放内存
+    // 7. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -924,19 +963,22 @@ HWTEST_F(DrawingNativePathTest, testPathRLineToAbnormal, TestSize.Level3) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathRLineToMaximal, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径的起始点位置
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathLineTo添加一条从路径的起点位置到目标点位置的线段
+    // 3. Add a line segment from the starting point of the path to the target point by calling OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path, 100, 100);
-    // 4、调用OH_Drawing_PathRMoveTo设置一个相对于当前路径终点的路径起始点位置
+    // 4. Set a relative move to the path starting from the current endpoint by calling OH_Drawing_PathRMoveTo
     OH_Drawing_PathRMoveTo(path, 100, 100);
-    // 5、调用OH_Drawing_PathRLineTo第二个参数传入极大值0x7FFFFFFF+1, 调用失败，无crash
+    // 5. Add a relative line to the path from the current endpoint to the target point by calling
+    // OH_Drawing_PathRLineTo
     OH_Drawing_PathRLineTo(path, FLT_MAX + 1, 100);
-    // 6、调用OH_Drawing_PathRLineTo第三个参数传入极大值0x7FFFFFFF+1, 调用失败，无crash
+    // 6. Add a relative line to the path from the current endpoint to the target point by calling
+    // OH_Drawing_PathRLineTo
     OH_Drawing_PathRLineTo(path, 100, FLT_MAX + 1);
-    // 7、释放内存
+    // 7. Free memory by calling OH_Drawing_PathDestroy
+    OH_Drawing_PathDestroy(path);
 }
 
 /*
@@ -948,17 +990,18 @@ HWTEST_F(DrawingNativePathTest, testPathRLineToMaximal, TestSize.Level3) {
  * @tc.level : Level 0
  */
 HWTEST_F(DrawingNativePathTest, testPathRQuadToNormal, TestSize.Level0) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径的起始点位置
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathLineTo添加一条从路径的起点位置到目标点位置的线段
+    // 3. Add a line segment from the starting point of the path to the target point by calling OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path, 100, 100);
-    // 4、调用OH_Drawing_PathRMoveTo设置一个相对于当前路径终点的路径起始点位置
+    // 4. Set a relative move to the path starting from the current endpoint by calling OH_Drawing_PathRMoveTo
     OH_Drawing_PathRMoveTo(path, 100, 100);
-    // 5、调用OH_Drawing_PathRQuadTo使用相对位置在当前路径上添加一条当前路径终点到目标点位置的二阶贝塞尔圆滑曲线
+    // 5. Add a relative quadratic Bezier curve to the path from the current endpoint to the target point by calling
+    // OH_Drawing_PathRQuadTo
     OH_Drawing_PathRQuadTo(path, 100, 100, 200, 200);
-    // 6、释放内存
+    // 6. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -971,20 +1014,21 @@ HWTEST_F(DrawingNativePathTest, testPathRQuadToNormal, TestSize.Level0) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathRQuadToNull, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathRQuadTo第一个参数为空, 2、返回错误码OH_DRAWING_ERROR_INVALID_PARAMETER
+    // 2. Call OH_Drawing_PathRQuadTo with nullptr as the first parameter, expecting OH_DRAWING_ERROR_INVALID_PARAMETER
+    // error code
     OH_Drawing_PathRQuadTo(nullptr, 0, 0, 0, 0);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-    // 3、调用OH_Drawing_PathRQuadTo第二个参数为0.00, 3、调用失败，无crash
+    // 3. Call OH_Drawing_PathRQuadTo with 0.00 as the second parameter, no crash
     OH_Drawing_PathRQuadTo(path, 0.00, 100, 100, 300);
-    // 4、调用OH_Drawing_PathRQuadTo第三个参数为0.00, 4、调用失败，无crash
+    // 4. Call OH_Drawing_PathRQuadTo with 0.00 as the third parameter, no crash
     OH_Drawing_PathRQuadTo(path, 100, 0.00, 100, 300);
-    // 5、调用OH_Drawing_PathRQuadTo第四个参数为0.00, 5、调用失败，无crash
+    // 5. Call OH_Drawing_PathRQuadTo with 0.00 as the fourth parameter, no crash
     OH_Drawing_PathRQuadTo(path, 100, 100, 0.00, 300);
-    // 6、调用OH_Drawing_PathRQuadTo第五个参数为0.00, 6、调用失败，无crash
+    // 6. Call OH_Drawing_PathRQuadTo with 0.00 as the fifth parameter, no crash
     OH_Drawing_PathRQuadTo(path, 100, 100, 100, 0.00);
-    // 7、释放内存
+    // 7. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -997,23 +1041,23 @@ HWTEST_F(DrawingNativePathTest, testPathRQuadToNull, TestSize.Level3) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathRQuadToAbnormal, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径的起始点位置
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathLineTo添加一条从路径的起点位置到目标点位置的线段
+    // 3. Add a line segment from the starting point of the path to the target point by calling OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path, 100.0f, 100.0f);
-    // 4、调用OH_Drawing_PathRMoveTo设置一个相对于当前路径终点的路径起始点位置
+    // 4. Set a relative move to the path starting from the current endpoint by calling OH_Drawing_PathRMoveTo
     OH_Drawing_PathRMoveTo(path, 100, 100);
-    // 5、调用OH_Drawing_PathRQuadTo第二个参数传入整型或者字符型
+    // 5. Call OH_Drawing_PathRQuadTo with an integer or character type as the second parameter
     OH_Drawing_PathRQuadTo(path, 100, 100.0f, 100.0f, 300.0f);
-    // 6、调用OH_Drawing_PathRQuadTo第三个参数传入整型或者字符型
+    // 6. Call OH_Drawing_PathRQuadTo with an integer or character type as the third parameter
     OH_Drawing_PathRQuadTo(path, 100.0f, 100, 100.0f, 300.0f);
-    // 7、调用OH_Drawing_PathRQuadTo第四个参数传入整型或者字符型
+    // 7. Call OH_Drawing_PathRQuadTo with an integer or character type as the fourth parameter
     OH_Drawing_PathRQuadTo(path, 100.0f, 100.0f, 100, 300.0f);
-    // 8、调用OH_Drawing_PathRQuadTo第五个参数传入整型或者字符型
+    // 8. Call OH_Drawing_PathRQuadTo with an integer or character type as the fifth parameter
     OH_Drawing_PathRQuadTo(path, 100.0f, 100.0f, 100.0f, 300);
-    // 9、释放内存
+    // 9. Free memory
     OH_Drawing_PathDestroy(path);
 }
 
@@ -1026,23 +1070,23 @@ HWTEST_F(DrawingNativePathTest, testPathRQuadToAbnormal, TestSize.Level3) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathRQuadToMaximal, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径的起始点位置
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathLineTo添加一条从路径的起点位置到目标点位置的线段
+    // 3. Add a line segment from the starting point of the path to the target point by calling OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path, 100, 100);
-    // 4、调用OH_Drawing_PathRMoveTo设置一个相对于当前路径终点的路径起始点位置
+    // 4. Set a relative move to the path starting from the current endpoint by calling OH_Drawing_PathRMoveTo
     OH_Drawing_PathRMoveTo(path, 100, 100);
-    // 5、调用OH_Drawing_PathRQuadTo第二个参数传入极大值0x7FFFFFFF+1, 调用失败，无crash
+    // 5. Call OH_Drawing_PathRQuadTo with a second parameter of FLT_MAX + 1
     OH_Drawing_PathRQuadTo(path, FLT_MAX + 1, 100, 100, 300);
-    // 6、调用OH_Drawing_PathRQuadTo第三个参数传入极大值0x7FFFFFFF+1, 调用失败，无crash
+    // 6. Call OH_Drawing_PathRQuadTo with a third parameter of FLT_MAX + 1
     OH_Drawing_PathRQuadTo(path, 100, FLT_MAX + 1, 100, 300);
-    // 7、调用OH_Drawing_PathRQuadTo第四个参数传入极大值0x7FFFFFFF+1, 调用失败，无crash
+    // 7. Call OH_Drawing_PathRQuadTo with a fourth parameter of FLT_MAX + 1
     OH_Drawing_PathRQuadTo(path, 100, 100, FLT_MAX + 1, 300);
-    // 8、调用OH_Drawing_PathRQuadTo第五个参数传入极大值0x7FFFFFFF+1, 调用失败，无crash
+    // 8. Call OH_Drawing_PathRQuadTo with a fifth parameter of FLT_MAX + 1
     OH_Drawing_PathRQuadTo(path, 100, 100, 100, FLT_MAX + 1);
-    // 9、释放内存
+    // 9. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -1055,17 +1099,18 @@ HWTEST_F(DrawingNativePathTest, testPathRQuadToMaximal, TestSize.Level3) {
  * @tc.level : Level 0
  */
 HWTEST_F(DrawingNativePathTest, testPathRConicToNormal, TestSize.Level0) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径的起始点位置
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathLineTo添加一条从路径的起点位置到目标点位置的线段
+    // 3. Add a line segment from the starting point of the path to the target point by calling OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path, 100, 100);
-    // 4、调用OH_Drawing_PathRMoveTo设置一个相对于当前路径终点的路径起始点位置
+    // 4. Set a relative move to the path starting from the current endpoint by calling OH_Drawing_PathRMoveTo
     OH_Drawing_PathRMoveTo(path, 100, 100);
-    // 5、调用OH_Drawing_PathRConicTo使用相对位置在当前路径上添加一条当前路径终点到目标点位置的圆锥曲线
+    // 5. Add a relative conic curve to the path from the current endpoint to the target point by calling
+    // OH_Drawing_PathRConicTo
     OH_Drawing_PathRConicTo(path, 100, 100, 100, 300, 5);
-    // 6、释放内存
+    // 6. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -1078,22 +1123,23 @@ HWTEST_F(DrawingNativePathTest, testPathRConicToNormal, TestSize.Level0) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathRConicToNull, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathRConicTo第一个参数为空, 返回错误码OH_DRAWING_ERROR_INVALID_PARAMETER
+    // 2. Call OH_Drawing_PathRConicTo with nullptr as the first parameter, expecting OH_DRAWING_ERROR_INVALID_PARAMETER
+    // error code
     OH_Drawing_PathRConicTo(nullptr, 100, 100, 100, 300, 5);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-    // 3、调用OH_Drawing_PathRConicTo第二个参数为0.00, 无crash
+    // 3. Call OH_Drawing_PathRConicTo with 0.00 as the second parameter, no crash
     OH_Drawing_PathRConicTo(path, 0.00, 100, 100, 300, 5);
-    // 4、调用OH_Drawing_PathRConicTo第三个参数为0.00, 无crash
+    // 4. Call OH_Drawing_PathRConicTo with 0.00 as the third parameter, no crash
     OH_Drawing_PathRConicTo(path, 100, 0.00, 100, 300, 5);
-    // 5、调用OH_Drawing_PathRConicTo第四个参数为0.00, 无crash
+    // 5. Call OH_Drawing_PathRConicTo with 0.00 as the fourth parameter, no crash
     OH_Drawing_PathRConicTo(path, 100, 100, 0.00, 300, 5);
-    // 6、调用OH_Drawing_PathRConicTo第五个参数为0.00, 无crash
+    // 6. Call OH_Drawing_PathRConicTo with 0.00 as the fifth parameter, no crash
     OH_Drawing_PathRConicTo(path, 100, 100, 100, 0.00, 5);
-    // 7、调用OH_Drawing_PathRConicTo第六个参数为0.00, 无crash
+    // 7. Call OH_Drawing_PathRConicTo with 0.00 as the sixth parameter, no crash
     OH_Drawing_PathRConicTo(path, 100, 100, 100, 300, 0.00);
-    // 8、释放内存
+    // 8. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -1106,25 +1152,25 @@ HWTEST_F(DrawingNativePathTest, testPathRConicToNull, TestSize.Level3) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathRConicToAbnormal, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径的起始点位置
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathLineTo添加一条从路径的起点位置到目标点位置的线段
+    // 3. Add a line segment from the starting point of the path to the target point by calling OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path, 100.0f, 100.0f);
-    // 4、调用OH_Drawing_PathRMoveTo设置一个相对于当前路径终点的路径起始点位置
+    // 4. Set a relative move to the path starting from the current endpoint by calling OH_Drawing_PathRMoveTo
     OH_Drawing_PathRMoveTo(path, 100, 100);
-    // 5、调用OH_Drawing_PathRConicTo第二个参数传入整型或者字符型
+    // 5. Call OH_Drawing_PathRConicTo with an integer as the second parameter
     OH_Drawing_PathRConicTo(path, 100, 100.0f, 100.0f, 300.0f, 5.0f);
-    // 6、调用OH_Drawing_PathRConicTo第三个参数传入整型或者字符型
+    // 6. Call OH_Drawing_PathRConicTo with an integer as the third parameter
     OH_Drawing_PathRConicTo(path, 100.0f, 100, 100.0f, 300.0f, 5.0f);
-    // 7、调用OH_Drawing_PathRConicTo第四个参数传入整型或者字符型
+    // 7. Call OH_Drawing_PathRConicTo with an integer as the fourth parameter
     OH_Drawing_PathRConicTo(path, 100.0f, 100.0f, 100, 300.0f, 5.0f);
-    // 8、调用OH_Drawing_PathRConicTo第五个参数传入整型或者字符型
+    // 8. Call OH_Drawing_PathRConicTo with an integer as the fifth parameter
     OH_Drawing_PathRConicTo(path, 100.0f, 100.0f, 100.0f, 300, 5.0f);
-    // 9、调用OH_Drawing_PathRConicTo第六个参数传入整型或者字符型
+    // 9. Call OH_Drawing_PathRConicTo with an integer as the sixth parameter
     OH_Drawing_PathRConicTo(path, 100.0f, 100.0f, 100.0f, 300.0f, 5);
-    // 10、释放内存
+    // 10. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -1137,25 +1183,25 @@ HWTEST_F(DrawingNativePathTest, testPathRConicToAbnormal, TestSize.Level3) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathRConicToMaximal, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径的起始点位置
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathLineTo添加一条从路径的起点位置到目标点位置的线段
+    // 3. Add a line segment from the starting point of the path to the target point by calling OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path, 100, 100);
-    // 4、调用OH_Drawing_PathRMoveTo设置一个相对于当前路径终点的路径起始点位置
+    // 4. Set a relative move to the path starting from the current endpoint by calling OH_Drawing_PathRMoveTo
     OH_Drawing_PathRMoveTo(path, 100, 100);
-    // 5、调用OH_Drawing_PathRConicTo第二个参数传入极大值0x7FFFFFFF+1, 5、调用失败，无crash
+    // 5. Call OH_Drawing_PathRConicTo with a second parameter of FLT_MAX + 1, no crash
     OH_Drawing_PathRConicTo(path, FLT_MAX + 1, 100, 100, 300, 5);
-    // 6、调用OH_Drawing_PathRConicTo第三个参数传入极大值0x7FFFFFFF+1, 6、调用失败，无crash
+    // 6. Call OH_Drawing_PathRConicTo with a third parameter of FLT_MAX + 1, no crash
     OH_Drawing_PathRConicTo(path, 100, FLT_MAX + 1, 100, 300, 5);
-    // 7、调用OH_Drawing_PathRConicTo第四个参数传入极大值0x7FFFFFFF+1, 7、调用失败，无crash
+    // 7. Call OH_Drawing_PathRConicTo with a fourth parameter of FLT_MAX + 1, no crash
     OH_Drawing_PathRConicTo(path, 100, 100, FLT_MAX + 1, 300, 5);
-    // 8、调用OH_Drawing_PathRConicTo第五个参数传入极大值0x7FFFFFFF+1, 8、调用失败，无crash
+    // 8. Call OH_Drawing_PathRConicTo with a fifth parameter of FLT_MAX + 1, no crash
     OH_Drawing_PathRConicTo(path, 100, 100, 100, FLT_MAX + 1, 5);
-    // 9、调用OH_Drawing_PathRConicTo第六个参数传入极大值0x7FFFFFFF+1, 9、调用失败，无crash
+    // 9. Call OH_Drawing_PathRConicTo with a sixth parameter of FLT_MAX + 1, no crash
     OH_Drawing_PathRConicTo(path, 100, 100, 100, 300, FLT_MAX + 1);
-    // 10、释放内存
+    // 10. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -1168,17 +1214,18 @@ HWTEST_F(DrawingNativePathTest, testPathRConicToMaximal, TestSize.Level3) {
  * @tc.level : Level 0
  */
 HWTEST_F(DrawingNativePathTest, testPathRCubicToNormal, TestSize.Level0) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径的起始点位置
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathLineTo添加一条从路径的起点位置到目标点位置的线段
+    // 3. Add a line segment from the starting point of the path to the target point by calling OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path, 100, 100);
-    // 4、调用OH_Drawing_PathRMoveTo设置一个相对于当前路径终点的路径起始点位置
+    // 4. Set a relative move to the path starting from the current endpoint by calling OH_Drawing_PathRMoveTo
     OH_Drawing_PathRMoveTo(path, 100, 100);
-    // 5、调用OH_Drawing_PathRCubicTo使用相对位置在当前路径上添加一条当前路径终点到目标点位置的三阶贝塞尔圆滑曲线
+    // 5. Add a relative cubic Bezier curve to the path from the current endpoint to the target point by calling
+    // OH_Drawing_PathRCubicTo
     OH_Drawing_PathRCubicTo(path, 100, 100, 200, 200, 300, 300);
-    // 6、释放内存
+    // 6. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -1191,23 +1238,24 @@ HWTEST_F(DrawingNativePathTest, testPathRCubicToNormal, TestSize.Level0) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathRCubicToNull, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathRCubicTo第一个参数为空, 2、返回错误码OH_DRAWING_ERROR_INVALID_PARAMETER
+    // 2. Call OH_Drawing_PathRCubicTo with nullptr as the first parameter, expecting OH_DRAWING_ERROR_INVALID_PARAMETER
+    // error code
     OH_Drawing_PathRCubicTo(nullptr, 100, 100, 200, 200, 300, 300);
-    // 3、调用OH_Drawing_PathRCubicTo第二个参数为0.00, 无crash
+    // 3. Call OH_Drawing_PathRCubicTo with 0.00 as the second parameter, no crash
     OH_Drawing_PathRCubicTo(path, 0.00, 100, 200, 200, 300, 300);
-    // 4、调用OH_Drawing_PathRCubicTo第三个参数为0.00, 无crash
+    // 4. Call OH_Drawing_PathRCubicTo with 0.00 as the third parameter, no crash
     OH_Drawing_PathRCubicTo(path, 100, 0.00, 200, 200, 300, 300);
-    // 5、调用OH_Drawing_PathRCubicTo第四个参数为0.00, 无crash
+    // 5. Call OH_Drawing_PathRCubicTo with 0.00 as the fourth parameter, no crash
     OH_Drawing_PathRCubicTo(path, 100, 100, 0.00, 200, 300, 300);
-    // 6、调用OH_Drawing_PathRCubicTo第五个参数为0.00, 无crash
+    // 6. Call OH_Drawing_PathRCubicTo with 0.00 as the fifth parameter, no crash
     OH_Drawing_PathRCubicTo(path, 100, 100, 200, 0.00, 300, 300);
-    // 7、调用OH_Drawing_PathRCubicTo第六个参数为0.00, 无crash
+    // 7. Call OH_Drawing_PathRCubicTo with 0.00 as the sixth parameter, no crash
     OH_Drawing_PathRCubicTo(path, 100, 100, 200, 200, 0.00, 300);
-    // 8、调用OH_Drawing_PathRCubicTo第七个参数为0.00, 无crash
+    // 8. Call OH_Drawing_PathRCubicTo with 0.00 as the seventh parameter, no crash
     OH_Drawing_PathRCubicTo(path, 100, 100, 200, 200, 300, 0.00);
-    // 9、释放内存
+    // 9. Free memory by calling OH_Drawing_PathDestroy
     OH_Drawing_PathDestroy(path);
 }
 
@@ -1220,27 +1268,27 @@ HWTEST_F(DrawingNativePathTest, testPathRCubicToNull, TestSize.Level3) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathRCubicToAbnormal, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径的起始点位置
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathLineTo添加一条从路径的起点位置到目标点位置的线段
+    // 3. Add a line segment from the starting point of the path to the target point by calling OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path, 100.0f, 100.0f);
-    // 4、调用OH_Drawing_PathRMoveTo设置一个相对于当前路径终点的路径起始点位置
+    // 4. Set a relative move to the path starting from the current endpoint by calling OH_Drawing_PathRMoveTo
     OH_Drawing_PathRMoveTo(path, 100, 100);
-    // 5、调用OH_Drawing_PathRCubicTo第二个参数传入整型或者字符型
+    // 5. Call OH_Drawing_PathRCubicTo with an integer as the second parameter
     OH_Drawing_PathRCubicTo(path, 100, 100.0f, 200.0f, 200.0f, 300.0f, 300.0f);
-    // 6、调用OH_Drawing_PathRCubicTo第三个参数传入整型或者字符型
+    // 6. Call OH_Drawing_PathRCubicTo with an integer as the third parameter
     OH_Drawing_PathRCubicTo(path, 100.0f, 100, 200.0f, 200.0f, 300.0f, 300.0f);
-    // 7、调用OH_Drawing_PathRCubicTo第四个参数传入整型或者字符型
+    // 7. Call OH_Drawing_PathRCubicTo with an integer as the fourth parameter
     OH_Drawing_PathRCubicTo(path, 100.0f, 100.0f, 200, 200.0f, 300.0f, 300.0f);
-    // 8、调用OH_Drawing_PathRCubicTo第五个参数传入整型或者字符型
+    // 8. Call OH_Drawing_PathRCubicTo with an integer as the fifth parameter
     OH_Drawing_PathRCubicTo(path, 100.0f, 100.0f, 200.0f, 200, 300.0f, 300.0f);
-    // 9、调用OH_Drawing_PathRCubicTo第六个参数传入整型或者字符型
+    // 9. Call OH_Drawing_PathRCubicTo with an integer as the sixth parameter
     OH_Drawing_PathRCubicTo(path, 100.0f, 100.0f, 200.0f, 200.0f, 300, 300.0f);
-    // 10、调用OH_Drawing_PathRCubicTo第七个参数传入整型或者字符型
+    // 10. Call OH_Drawing_PathRCubicTo with an integer as the seventh parameter
     OH_Drawing_PathRCubicTo(path, 100.0f, 100.0f, 200.0f, 200.0f, 300.0f, 300);
-    // 11、释放内存
+    // 11. Free memory
     OH_Drawing_PathDestroy(path);
 }
 
@@ -1253,27 +1301,27 @@ HWTEST_F(DrawingNativePathTest, testPathRCubicToAbnormal, TestSize.Level3) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathRCubicToMaximal, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径的起始点位置
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathLineTo添加一条从路径的起点位置到目标点位置的线段
+    // 3. Add a line segment from the starting point of the path to the target point by calling OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path, 100, 100);
-    // 4、调用OH_Drawing_PathRMoveTo设置一个相对于当前路径终点的路径起始点位置
+    // 4. Set a relative move to the path starting from the current endpoint by calling OH_Drawing_PathRMoveTo
     OH_Drawing_PathRMoveTo(path, 100, 100);
-    // 5、调用OH_Drawing_PathRCubicTo第二个参数传入极大值0x7FFFFFFF+1, 无crash
+    // 5. Call OH_Drawing_PathRCubicTo with the second parameter as the maximum value FLT_MAX+1, no crash
     OH_Drawing_PathRCubicTo(path, FLT_MAX + 1, 100, 200, 200, 300, 300);
-    // 6、调用OH_Drawing_PathRCubicTo第三个参数传入极大值0x7FFFFFFF+1, 无crash
+    // 6. Call OH_Drawing_PathRCubicTo with the third parameter as the maximum value FLT_MAX+1, no crash
     OH_Drawing_PathRCubicTo(path, 100, FLT_MAX + 1, 200, 200, 300, 300);
-    // 7、调用OH_Drawing_PathRCubicTo第四个参数传入极大值0x7FFFFFFF+1, 无crash
+    // 7. Call OH_Drawing_PathRCubicTo with the fourth parameter as the maximum value FLT_MAX+1, no crash
     OH_Drawing_PathRCubicTo(path, 100, 100, FLT_MAX + 1, 200, 300, 300);
-    // 8、调用OH_Drawing_PathRCubicTo第五个参数传入极大值0x7FFFFFFF+1, 无crash
+    // 8. Call OH_Drawing_PathRCubicTo with the fifth parameter as the maximum value FLT_MAX+1, no crash
     OH_Drawing_PathRCubicTo(path, 100, 100, 200, FLT_MAX + 1, 300, 300);
-    // 9、调用OH_Drawing_PathRCubicTo第六个参数传入极大值0x7FFFFFFF+1, 无crash
+    // 9. Call OH_Drawing_PathRCubicTo with the sixth parameter as the maximum value FLT_MAX+1, no crash
     OH_Drawing_PathRCubicTo(path, 100, 100, 200, 200, FLT_MAX + 1, 300);
-    // 10、调用OH_Drawing_PathRCubicTo第七个参数传入极大值0x7FFFFFFF+1, 1无crash
+    // 10. Call OH_Drawing_PathRCubicTo with the seventh parameter as the maximum value FLT_MAX+1, no crash
     OH_Drawing_PathRCubicTo(path, 100, 100, 200, 200, 300, FLT_MAX + 1);
-    // 11、释放内存
+    // 11. Free memory
     OH_Drawing_PathDestroy(path);
 }
 
@@ -1286,15 +1334,16 @@ HWTEST_F(DrawingNativePathTest, testPathRCubicToMaximal, TestSize.Level3) {
  * @tc.level : Level 0
  */
 HWTEST_F(DrawingNativePathTest, testPathAddRectNormal, TestSize.Level0) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径的起始点位置
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathLineTo添加一条从路径的起点位置到目标点位置的线段
+    // 3. Add a line segment from the starting point of the path to the target point by calling OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path, 100, 100);
-    // 4、调用OH_Drawing_PathAddRect按指定方向，向路径添加矩形轮廓。第六个参数遍历枚举调用该接口
+    // 4. Add a rectangle outline to the path with the specified direction by calling OH_Drawing_PathAddRect. Iterate
+    // through the enum to call this interface.
     OH_Drawing_PathAddRect(path, 100, 100, 200, 200, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
-    // 5、释放内存
+    // 5. Free memory
     OH_Drawing_PathDestroy(path);
 }
 
@@ -1307,20 +1356,20 @@ HWTEST_F(DrawingNativePathTest, testPathAddRectNormal, TestSize.Level0) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathAddRectNull, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathAddRect第一个参数为空, 返回错误码OH_DRAWING_ERROR_INVALID_PARAMETER
+    // 2. Call OH_Drawing_PathAddRect with the first parameter as nullptr, expect OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_PathAddRect(nullptr, 100, 100, 200, 200, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-    // 3、调用OH_Drawing_PathAddRect第二个参数为0.00, 调用失败，无crash
+    // 3. Call OH_Drawing_PathAddRect with 0.00 as the second parameter, no crash
     OH_Drawing_PathAddRect(path, 0.00, 100, 200, 200, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
-    // 4、调用OH_Drawing_PathAddRect第三个参数为0.00, 调用失败，无crash
+    // 4. Call OH_Drawing_PathAddRect with 0.00 as the third parameter, no crash
     OH_Drawing_PathAddRect(path, 100, 0.00, 200, 200, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
-    // 5、调用OH_Drawing_PathAddRect第四个参数为0.00, 调用失败，无crash
+    // 5. Call OH_Drawing_PathAddRect with 0.00 as the fourth parameter, no crash
     OH_Drawing_PathAddRect(path, 100, 100, 0.00, 200, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
-    // 6、调用OH_Drawing_PathAddRect第五个参数为0.00, 调用失败，无crash
+    // 6. Call OH_Drawing_PathAddRect with 0.00 as the fifth parameter, no crash
     OH_Drawing_PathAddRect(path, 100, 100, 200, 0.00, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
-    // 7、释放内存
+    // 7. Free memory
     OH_Drawing_PathDestroy(path);
 }
 
@@ -1333,21 +1382,21 @@ HWTEST_F(DrawingNativePathTest, testPathAddRectNull, TestSize.Level3) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathAddRectAbnormal, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径的起始点位置
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathLineTo添加一条从路径的起点位置到目标点位置的线段
+    // 3. Add a line segment from the starting point of the path to the target point by calling OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path, 100.0f, 100.0f);
-    // 4、调用OH_Drawing_PathAddRect第二个参数传入整型或者字符型
+    // 4. Call OH_Drawing_PathAddRect with an integer as the second parameter
     OH_Drawing_PathAddRect(path, 100, 100.0f, 200.0f, 200.0f, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
-    // 5、调用OH_Drawing_PathAddRect第三个参数传入整型或者字符型
+    // 5. Call OH_Drawing_PathAddRect with an integer as the third parameter
     OH_Drawing_PathAddRect(path, 100.0f, 100, 200.0f, 200.0f, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
-    // 6、调用OH_Drawing_PathAddRect第四个参数传入整型或者字符型
+    // 6. Call OH_Drawing_PathAddRect with an integer as the fourth parameter
     OH_Drawing_PathAddRect(path, 100.0f, 100.0f, 200, 200.0f, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
-    // 7、调用OH_Drawing_PathAddRect第五个参数传入整型或者字符型
+    // 7. Call OH_Drawing_PathAddRect with an integer as the fifth parameter
     OH_Drawing_PathAddRect(path, 100.0f, 100.0f, 200.0f, 200, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
-    // 8、释放内存
+    // 8. Free memory
     OH_Drawing_PathDestroy(path);
 }
 
@@ -1360,21 +1409,21 @@ HWTEST_F(DrawingNativePathTest, testPathAddRectAbnormal, TestSize.Level3) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativePathTest, testPathAddRectMaximal, TestSize.Level3) {
-    // 1、调用OH_Drawing_PathCreate创建一个路径对象
+    // 1. Create a path object by calling OH_Drawing_PathCreate
     OH_Drawing_Path *path = OH_Drawing_PathCreate();
-    // 2、调用OH_Drawing_PathMoveTo设置路径的起始点位置
+    // 2. Set the starting point of the path by calling OH_Drawing_PathMoveTo
     OH_Drawing_PathMoveTo(path, 0, 0);
-    // 3、调用OH_Drawing_PathLineTo添加一条从路径的起点位置到目标点位置的线段
+    // 3. Add a line segment from the starting point of the path to the target point by calling OH_Drawing_PathLineTo
     OH_Drawing_PathLineTo(path, 100, 100);
-    // 4、调用OH_Drawing_PathAddRect第二个参数传入极大值0x7FFFFFFF+1, 4、调用失败，无crash
+    // 4. Call OH_Drawing_PathAddRect with the second parameter as the maximum value FLT_MAX+1, no crash
     OH_Drawing_PathAddRect(path, FLT_MAX + 1, 100, 200, 200, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
-    // 5、调用OH_Drawing_PathAddRect第三个参数传入极大值0x7FFFFFFF+1, 5、调用失败，无crash
+    // 5. Call OH_Drawing_PathAddRect with the third parameter as the maximum value FLT_MAX+1, no crash
     OH_Drawing_PathAddRect(path, 100, FLT_MAX + 1, 200, 200, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
-    // 6、调用OH_Drawing_PathAddRect第四个参数传入极大值0x7FFFFFFF+1, 6、调用失败，无crash
+    // 6. Call OH_Drawing_PathAddRect with the fourth parameter as the maximum value FLT_MAX+1, no crash
     OH_Drawing_PathAddRect(path, 100, 100, FLT_MAX + 1, 200, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
-    // 7、调用OH_Drawing_PathAddRect第五个参数传入极大值0x7FFFFFFF+1, 7、调用失败，无crash
+    // 7. Call OH_Drawing_PathAddRect with the fifth parameter as the maximum value FLT_MAX+1, no crash
     OH_Drawing_PathAddRect(path, 100, 100, 200, FLT_MAX + 1, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
-    // 8、释放内存
+    // 8. Free memory
     OH_Drawing_PathDestroy(path);
 }
 
