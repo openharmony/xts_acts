@@ -19,42 +19,42 @@ import CommonFunc from '../../../MainAbility/common/Common';
 import { Driver, ON } from '@ohos.UiTest';
 
 
-export default function FocusScopeId5() {
-  describe('FocusScopeId5', () => {
+export default function FocusScopeId8() {
+  describe('FocusScopeId8', () => {
     beforeEach(async (done: Function) => {
-      console.info("FocusScopeId5 beforeEach start");
+      console.info("FocusScopeId8 beforeEach start");
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/Focus/focusScopeId/FocusScopeId5',
+        url: 'MainAbility/pages/Focus/focusScopeId/FocusScopeId8',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get FocusScopeId5 state success " + JSON.stringify(pages));
-        if (!("FocusScopeId5" == pages.name)) {
-          console.info("get FocusScopeId5 state success " + JSON.stringify(pages.name));
+        console.info("get FocusScopeId8 state success " + JSON.stringify(pages));
+        if (!("FocusScopeId8" == pages.name)) {
+          console.info("get FocusScopeId8 state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
-          console.info("push FocusScopeId5 page success " + JSON.stringify(result));
+          console.info("push FocusScopeId8 page success " + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push FocusScopeId5 page error: " + err);
+        console.error("push FocusScopeId8 page error: " + err);
       }
       done()
     });
 
     afterEach(async () => {
       await CommonFunc.sleep(1000);
-      console.info("FocusScopeId5 after each called");
+      console.info("FocusScopeId8 after each called");
     });
 
     /**
-     * @tc.number    FocusScopeId5_0100
-     * @tc.name      FocusScopeId5_0100
-     * @tc.desc      Support for mixed focusing of focus groups and ordinary components
+     * @tc.number    FocusScopeId8_0100
+     * @tc.name      FocusScopeId8_0100
+     * @tc.desc      Support cross group and circular focusing with tab keys in focus groups
      * @tc.level     Level 2
      */
-    it('FocusScopeId5_0100', 0, async function (done) {
-      console.info('[FocusScopeId5_0100] START');
+    it('FocusScopeId8_0100', 0, async function (done) {
+      console.info('[FocusScopeId8_0100] START');
       await CommonFunc.sleep(1000);
 
       let driver = Driver.create();
@@ -63,33 +63,41 @@ export default function FocusScopeId5() {
       await driver.triggerKey(2049);
       await CommonFunc.sleep(1000);
 
-      let btn3_6 = await driver.findComponent(ON.id('FocusScopeId5_btn3_6'));
+      let btn3_6 = await driver.findComponent(ON.id('FocusScopeId8_btn3_6'));
       let btn3_6_isFocusedValue = await btn3_6.isFocused()
       expect(btn3_6_isFocusedValue).assertEqual(true);
-      console.info('[FocusScopeId5_0100] btn3_6 isFocused');
+      console.info('[FocusScopeId8_0100] btn3_6 isFocused');
 
       await driver.triggerKey(2049);
       await CommonFunc.sleep(1000);
 
-      let btn_clearFocus = await driver.findComponent(ON.id('FocusScopeId5_clearFocus'));
-      let btn_clearFocus_isFocusedValue = await btn_clearFocus.isFocused()
-      expect(btn_clearFocus_isFocusedValue).assertEqual(true);
-      console.info('[FocusScopeId5_0100] btn_clearFocus isFocused');
+      await driver.triggerKey(2049);
+      await CommonFunc.sleep(1000);
 
       await driver.triggerKey(2049);
       await CommonFunc.sleep(1000);
 
-      let btn_requestFocus = await driver.findComponent(ON.id('FocusScopeId5_requestFocus'));
-      let btn_requestFocus_isFocusedValue = await btn_requestFocus.isFocused()
-      expect(btn_requestFocus_isFocusedValue).assertEqual(true);
-      console.info('[FocusScopeId5_0100] btn_requestFocus isFocused');
+      await driver.triggerKey(2049);
+      await CommonFunc.sleep(1000);
 
-      let clearFocus = await driver.findComponent(ON.id('FocusScopeId5_clearFocus'));
+      await driver.triggerKey(2049);
+      await CommonFunc.sleep(1000);
+
+      await driver.triggerKey(2049);
+      await CommonFunc.sleep(1000);
+
+      let btn1_1 = await driver.findComponent(ON.id('FocusScopeId8_btn1_1'));
+      let btn1_1_isFocusedValue = await btn1_1.isFocused()
+      expect(btn1_1_isFocusedValue).assertEqual(true);
+      console.info('[FocusScopeId8_0100] btn1_1 isFocused');
+
+      let scrollBar = await driver.findComponent(ON.id('FocusScopeId8_scroll'));
+      let clearFocus = await scrollBar.scrollSearch(ON.id('FocusScopeId8_clearFocus'));
       await clearFocus.click()
       await CommonFunc.sleep(1000);
-      console.info('[FocusScopeId5_0100] clearFocus click');
+      console.info('[FocusScopeId8_0100] clearFocus click');
 
-      console.info('[FocusScopeId5_0100] END');
+      console.info('[FocusScopeId8_0100] END');
       done();
     });
   })

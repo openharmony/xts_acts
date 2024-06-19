@@ -15,7 +15,7 @@
 import { ColorMetrics, LengthMetrics } from '@ohos.arkui.node'
 @Entry
 @Component
-struct FocusScopeId3 {
+struct FocusScopeId18 {
   @State text1:string = 'text1'
   @State modeValue: NavigationMode = NavigationMode.Stack
   @State pageInfos: NavPathStack = new NavPathStack()
@@ -33,7 +33,6 @@ struct FocusScopeId3 {
         Text('焦点组内组件设置focuxBox')
         Column({space:5}){
           Button('btn1')
-            .id('FocusScopeId3_btn1')
             .focusOnTouch(true)
             .focusBox({
               margin:new LengthMetrics(0),
@@ -41,27 +40,19 @@ struct FocusScopeId3 {
             })
 
           Button('btn2')
-            .id('FocusScopeId3_btn2')
             .focusOnTouch(true)
             .focusBox({
               margin:new LengthMetrics(0),
               strokeColor: ColorMetrics.rgba(255,0,0)
             })
-        }.focusScopeId('FocusScopeId3_focusGroup7',true)
+        }.focusScopeId('FocusScopeId18_focusGroup7',true)
         .borderWidth(1)
 
         Button('btn3')
-          .id('FocusScopeId3_btn3')
           .focusOnTouch(true)
           .focusBox({
             margin:new LengthMetrics(0),
             strokeColor: ColorMetrics.rgba(255,0,0)
-          })
-
-        Button('clearFocus')
-          .id('FocusScopeId3_clearFocus')
-          .onClick(()=>{
-            this.getUIContext().getFocusController().clearFocus()
           })
 
       }
@@ -72,24 +63,65 @@ struct FocusScopeId3 {
     Column() {
       Navigation(this.pageInfos){
         Scroll(){
-          Column({space:5}){
+          Column(){
+            Column({space:5}){
 
-            Button('pushPageOne')
-              .id('FocusScopeId3_pushPageOne')
-              .onClick(()=>{
-                this.pageInfos.pushPath({name:'pageOne'})
-              })
+              Text('焦点组5')
+              Column({space:5}){
+                Button('单栏')
+                  .id('FocusScopeId18_btn1_5')
+                  .onClick(()=>{
+                    this.modeValue = NavigationMode.Stack
+                  })
+                  .focusOnTouch(true)
 
+                Button('双栏1')
+                  .id('FocusScopeId18_btn2_5')
+                  .onClick(()=>{
+                    this.modeValue = NavigationMode.Split
+                  })
+                  .focusOnTouch(true)
+
+                Button('pushPageOne')
+                  .id('FocusScopeId18_btn3_5')
+                  .onClick(()=>{
+                    this.pageInfos.pushPath({name:'pageOne'})
+                  })
+                  .focusOnTouch(true)
+              }
+              .focusScopeId('FocusScopeId18_focusGroup5',true)
+              .borderWidth(1)
+
+
+              Text('焦点组6，第三个按钮设置默认获焦')
+              Column({space:5}){
+                Button('btn1').focusOnTouch(true)
+                  .id('FocusScopeId18_btn1_6')
+                Button('btn2').focusOnTouch(true)
+                  .id('FocusScopeId18_btn2_6')
+                Button('defaultFocus:true').focusOnTouch(true).defaultFocus(true)
+                  .id('FocusScopeId18_btn3_6')
+              }
+              .focusScopeId('FocusScopeId18_focusGroup6',true)
+              .borderWidth(1)
+
+              Button('clearFocus')
+                .id('FocusScopeId18_clearFocus')
+                .onClick(()=>{
+                  this.getUIContext().getFocusController().clearFocus()
+                })
+
+            }
           }
         }
       }
-      .id('FocusScopeId3_nav')
+      .id('FocusScopeId18_nav')
       .mode(this.modeValue)
       .title('navigation')
       .navDestination(this.PageMap)
       .height('100%')
 
     }.width('100%')
-    .id('FocusScopeId3_col')
+    .id('FocusScopeId18_col')
   }
 }

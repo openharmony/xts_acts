@@ -90,8 +90,13 @@ struct FocusScopeId6 {
             .focusScopeId('FocusScopeId6_focusGroup2',true)
             .borderWidth(1)
 
-
             Button('button').focusOnTouch(true).id('FocusScopeId6_btn_btn')
+
+            Button('clearFocus')
+              .id('FocusScopeId6_clearFocus')
+              .onClick(()=>{
+                this.getUIContext().getFocusController().clearFocus()
+              })
 
           }
         }

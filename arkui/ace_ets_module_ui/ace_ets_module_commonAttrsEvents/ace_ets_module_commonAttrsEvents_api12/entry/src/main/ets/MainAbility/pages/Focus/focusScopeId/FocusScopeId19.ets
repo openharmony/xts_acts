@@ -15,7 +15,7 @@
 import { ColorMetrics, LengthMetrics } from '@ohos.arkui.node'
 @Entry
 @Component
-struct FocusScopeId3 {
+struct FocusScopeId19 {
   @State text1:string = 'text1'
   @State modeValue: NavigationMode = NavigationMode.Stack
   @State pageInfos: NavPathStack = new NavPathStack()
@@ -33,7 +33,7 @@ struct FocusScopeId3 {
         Text('焦点组内组件设置focuxBox')
         Column({space:5}){
           Button('btn1')
-            .id('FocusScopeId3_btn1')
+            .id('FocusScopeId19_btn1')
             .focusOnTouch(true)
             .focusBox({
               margin:new LengthMetrics(0),
@@ -41,17 +41,17 @@ struct FocusScopeId3 {
             })
 
           Button('btn2')
-            .id('FocusScopeId3_btn2')
+            .id('FocusScopeId19_btn2')
             .focusOnTouch(true)
             .focusBox({
               margin:new LengthMetrics(0),
               strokeColor: ColorMetrics.rgba(255,0,0)
             })
-        }.focusScopeId('FocusScopeId3_focusGroup7',true)
+        }.focusScopeId('FocusScopeId19_focusGroup7',true)
         .borderWidth(1)
 
         Button('btn3')
-          .id('FocusScopeId3_btn3')
+          .id('FocusScopeId19_btn3')
           .focusOnTouch(true)
           .focusBox({
             margin:new LengthMetrics(0),
@@ -59,7 +59,7 @@ struct FocusScopeId3 {
           })
 
         Button('clearFocus')
-          .id('FocusScopeId3_clearFocus')
+          .id('FocusScopeId19_clearFocus')
           .onClick(()=>{
             this.getUIContext().getFocusController().clearFocus()
           })
@@ -75,7 +75,7 @@ struct FocusScopeId3 {
           Column({space:5}){
 
             Button('pushPageOne')
-              .id('FocusScopeId3_pushPageOne')
+              .id('FocusScopeId19_pushPageOne')
               .onClick(()=>{
                 this.pageInfos.pushPath({name:'pageOne'})
               })
@@ -83,13 +83,13 @@ struct FocusScopeId3 {
           }
         }
       }
-      .id('FocusScopeId3_nav')
+      .id('FocusScopeId19_nav')
       .mode(this.modeValue)
       .title('navigation')
       .navDestination(this.PageMap)
       .height('100%')
 
     }.width('100%')
-    .id('FocusScopeId3_col')
+    .id('FocusScopeId19_col')
   }
 }

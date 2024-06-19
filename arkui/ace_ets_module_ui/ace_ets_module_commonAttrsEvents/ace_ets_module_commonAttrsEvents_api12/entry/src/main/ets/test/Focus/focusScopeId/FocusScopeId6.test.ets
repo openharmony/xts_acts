@@ -50,7 +50,7 @@ export default function FocusScopeId6() {
     /**
      * @tc.number    FocusScopeId6_0100
      * @tc.name      FocusScopeId6_0100
-     * @tc.desc      Test support for directional key focus group penetration ability
+     * @tc.desc      Support for mixed focusing of focus groups and ordinary components
      * @tc.level     Level 2
      */
     it('FocusScopeId6_0100', 0, async function (done) {
@@ -63,10 +63,10 @@ export default function FocusScopeId6() {
       await driver.triggerKey(2049);
       await CommonFunc.sleep(1000);
 
-      let bnt1_1 = await driver.findComponent(ON.id('FocusScopeId6_btn1_1'));
-      let bnt1_1_isFocusedValue = await bnt1_1.isFocused()
-      expect(bnt1_1_isFocusedValue).assertEqual(true);
-      console.info('[FocusScopeId6_0100] bnt1_1 isFocused');
+      let btn1_1 = await driver.findComponent(ON.id('FocusScopeId6_btn1_1'));
+      let btn1_1_isFocusedValue = await btn1_1.isFocused()
+      expect(btn1_1_isFocusedValue).assertEqual(true);
+      console.info('[FocusScopeId6_0100] btn1_1 isFocused');
 
       await driver.triggerKey(2049);
       await CommonFunc.sleep(1000);
@@ -87,10 +87,15 @@ export default function FocusScopeId6() {
       await driver.triggerKey(2049);
       await CommonFunc.sleep(1000);
 
-      let bnt_btn = await driver.findComponent(ON.id('FocusScopeId6_btn_btn'));
-      let bnt_btn_isFocusedValue = await bnt_btn.isFocused()
-      expect(bnt_btn_isFocusedValue).assertEqual(true);
-      console.info('[FocusScopeId6_0100] bnt_btn isFocused');
+      let btn_btn = await driver.findComponent(ON.id('FocusScopeId6_btn_btn'));
+      let btn_btn_isFocusedValue = await btn_btn.isFocused()
+      expect(btn_btn_isFocusedValue).assertEqual(true);
+      console.info('[FocusScopeId6_0100] btn_btn isFocused');
+
+      let clearFocus = await driver.findComponent(ON.id('FocusScopeId6_clearFocus'));
+      await clearFocus.click()
+      await CommonFunc.sleep(1000);
+      console.info('[FocusScopeId6_0100] clearFocus click');
 
       console.info('[FocusScopeId6_0100] END');
       done();
