@@ -1,7 +1,10 @@
 {
     "src": [
         "MainAbility/pages/Index",
-        "MainAbility/pages/webViewSdkSchemeHandler"
+        "MainAbility/pages/webViewSdkSchemeHandler",
+        "MainAbility/pages/webViewSetConnectionTimeout",
+        "MainAbility/pages/webViewGetAndSetRenderProcessMode",
+        "MainAbility/pages/webViewOnNavigationEntryCommitted"
     ]
 }
 
