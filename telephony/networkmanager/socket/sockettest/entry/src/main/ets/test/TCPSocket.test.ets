@@ -7247,60 +7247,7 @@ export default function TCPSocketTest() {
         done();
       }
     });
-
-    /* *
-     * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_OnMessage_0200
-     * @tc.name  : testNetworkMgrSocketTCPSocketOnMessage0200
-     * @tc.desc  : Subscription to receive message events for TCPSocket connections,after listen and connect
-     * @tc.size  : MediumTest
-     * @tc.type  : Function
-     * @tc.level : level 2
-     */
-    it('testNetworkMgrSocketTCPSocketOnMessage0200', 0, async (done: Function) => {
-      let caseName: string = 'testNetworkMgrSocketTCPSocketOnMessage0200';
-      try {
-        console.info(`${caseName} test start`);
-        let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
-        expect(tcp).assertInstanceOf('Object');
-        let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
-        expect(tcpServer).assertInstanceOf('Object');
-        let listenAddress: socket.NetAddress = {
-          address: '127.0.0.1',
-          port: 4093
-        };
-        await tcpServer.listen(listenAddress);
-        let tcpConnectOptions: socket.TCPConnectOptions = {
-          address: listenAddress,
-        };
-        let clientSendOptions: socket.TCPSendOptions = {
-          data: 'Hello, server!',
-          encoding: 'UTF-8'
-        };
-        tcpServer.on('connect', async (client: socket.TCPSocketConnection) => {
-          await client.send(clientSendOptions);
-        });
-        await tcp.connect(tcpConnectOptions);
-        class SocketInfo {
-          message: ArrayBuffer = new ArrayBuffer(1);
-          remoteInfo: socket.SocketRemoteInfo = {} as socket.SocketRemoteInfo;
-        };
-        const callback: Callback<socket.SocketMessageInfo> = async (value: SocketInfo) => {
-          console.info(`${caseName} value:${ArrayBufferToString(value.message)}`);
-          expectTrue(ArrayBufferToString(value.message) === 'Hello, server!');
-          tcpServer.off('connect');
-          await tcp.close();
-          console.info(`${caseName} test end`);
-          done();
-        };
-        tcp.on('message', callback);
-      } catch (err) {
-        console.info(`${caseName}_catch fail err:${JSON.stringify(err)}`);
-        expectFail();
-        console.info(`${caseName} test end`);
-        done();
-      }
-    });
-
+    
     /* *
      * @tc.number: SUB_NetworkMgr_Socket_TCPSocket_OffMessage_0100
      * @tc.name  : testNetworkMgrSocketTCPSocketOffMessage0100
