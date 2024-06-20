@@ -22,8 +22,9 @@ let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 const TAG = '[Sample_Subscribe]';
 const DOMAIN = 0xF811;
 const PUBLISH_BUNDLE_NAME = 'com.example.menuprovider';
+const cmd = 'hilog -x | grep AddFormMenuItemSuccessAndFormId';
 const driver: Driver = Driver.create();
-const resourceManager = AbilityDelegatorRegistry.getAbilityDelegator().getAppContext().resourceManager;
+const resourceManager = AbilityDelegatorRegistry?.getAbilityDelegator()?.getAppContext()?.resourceManager;
 let sleep = async (delay: number = 1000): Promise<void> => {
   return new Promise((resolve, _) => {
     setTimeout(async () => {
@@ -38,13 +39,15 @@ export default function abilityTest() {
       await sleep(1000);
     })
     beforeEach(async () => {
+      await abilityDelegator.executeShellCommand("hilog -r");
+      await sleep(500);
       await abilityDelegator.startAbility({
         bundleName: PUBLISH_BUNDLE_NAME,
         abilityName: 'EntryAbility'
       })
       await sleep(1000);
       hilog.info(DOMAIN, TAG, '%{public}s', 'test start');
-      abilityDelegator.executeShellCommand("hilog -r")
+
     })
     /**
      * @tc.number: SUB_AA_ADD_FORM_MENU_ITEM_NORMAL_CASE_0100
@@ -64,13 +67,13 @@ export default function abilityTest() {
       const labelButton =  await driver.findComponent(ON.text(await resourceManager.getStringValue($r('app.string.EntryAbility_label'))));
       await sleep(200);
       await labelButton?.click();
-      await sleep(200);
+      await sleep(1000);
       console.log("TestLog-step3: use callback to inquiry the FormId");
-      abilityDelegator.executeShellCommand("hilog -x | grep \'AddFormMenuItem success and formId =\'")
+      await abilityDelegator.executeShellCommand(cmd)
         .then((data) => {
           console.log("TestLog-step4:" + JSON.stringify(data));
           console.log("TestLog-step5:" + JSON.stringify(data.stdResult));
-          let j = JSON.stringify(data.stdResult).split("JSAPP: AddFormMenuItem success and formId =", 2)
+          let j = JSON.stringify(data.stdResult).split("JSAPP: AddFormMenuItemSuccessAndFormId", 2)
           console.log("TestLog-step6:" + j[1]);
           let i = JSON.stringify(j[1]).split("\FormID  ");
           console.log("TestLog-step7:" + i[0]);
