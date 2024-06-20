@@ -13,6 +13,12 @@
  * limitations under the License.
  */
 import webViewSdkSchemeHandler from './webViewSdkSchemeHandler.test';
+import webViewSetConnectionTimeout from './webViewSetConnectionTimeout.test';
+import webViewGetAndSetRenderProcessMode from './webViewGetAndSetRenderProcessMode.test';
+import webViewOnNavigationEntryCommitted from './webViewOnNavigationEntryCommitted.test';
 export default function testsuite() {
   webViewSdkSchemeHandler()
+  webViewSetConnectionTimeout()
+  webViewGetAndSetRenderProcessMode()
+  webViewOnNavigationEntryCommitted()
 }
