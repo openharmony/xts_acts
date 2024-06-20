@@ -59,17 +59,28 @@ export default function requestDownloadJSUnit() {
       });
     };
 
+    let deleteTask = async (task: request.DownloadTask, path: string): Promise<void> => {
+      try {
+        let ifDelete = await task.delete();
+        console.info('====>if task delete: ' + ifDelete);
+        fileio.unlinkSync(path);
+        console.info('====>if uninstall file success' );
+      } catch (err) {
+        console.info('====>task delete failed, possibly the task delete err: ' + JSON.stringify(err));
+      }
+    }
+
     /**
      * @tc.number    SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001
      * @tc.desc      Starts a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it('SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001', 0, async function (done) {
       console.info("-----------------------SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001 is starting-----------------------");
       let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001.txt`
-      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001.txt`)
+      console.info("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_downloadFile_STAGE_API_CALLBACK_0001.txt`)
       let downloadFileConfig = {
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         header: {
@@ -100,14 +111,14 @@ export default function requestDownloadJSUnit() {
     /**
      * @tc.number    SUB_REQUEST_downloadFile_STAGE_API_PROMISE_0001
      * @tc.desc      Starts a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it('SUB_REQUEST_downloadFile_STAGE_API_PROMISE_0001', 0, async function (done) {
       console.info("-----------------------SUB_REQUEST_downloadFile_STAGE_API_PROMISE_0001 is starting-----------------------");
       let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_downloadFile_STAGE_API_PROMISE_0001.txt`
-      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_downloadFile_STAGE_API_PROMISE_0001.txt`)
+      console.info("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_downloadFile_STAGE_API_PROMISE_0001.txt`)
       let downloadFileConfig = {
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         header: {
@@ -144,14 +155,14 @@ export default function requestDownloadJSUnit() {
      * @tc.number SUB_REQUEST_DOWNLOAD_API_DELETE_0001
      * @tc.name SUB_REQUEST_DOWNLOAD_API_DELETE_0001
      * @tc.desc Delete the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it('SUB_REQUEST_DOWNLOAD_API_DELETE_0001', 0, async function (done) {
       console.info("====>-----------------------SUB_REQUEST_DOWNLOAD_API_delete_0001 is starting-----------------------");
       let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_DELETE_0001.txt`
-      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_DELETE_0001.txt`)
+      console.info("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_DELETE_0001.txt`)
       let downloadFileConfig = {
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         header: {
@@ -198,14 +209,14 @@ export default function requestDownloadJSUnit() {
      * @tc.number SUB_REQUEST_DOWNLOAD_API_DELETE_0002
      * @tc.name SUB_REQUEST_DOWNLOAD_API_DELETE_0002
      * @tc.desc Delete the download task.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it('SUB_REQUEST_DOWNLOAD_API_DELETE_0002', 0, async function (done) {
       console.info("====>-----------------------SUB_REQUEST_DOWNLOAD_API_DELETE_0002 is starting-----------------------");
       let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_DELETE_0002.txt`
-      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_DELETE_0002.txt`)
+      console.info("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_DELETE_0002.txt`)
       let downloadFileConfig = {
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         header: {
@@ -249,14 +260,14 @@ export default function requestDownloadJSUnit() {
      * @tc.number SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001
      * @tc.name SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001
      * @tc.desc Suspend the download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it('SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001', 0, async function (done) {
       console.info("====>-----------------------SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001 is starting-----------------------");
       let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001.txt`
-      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001.txt`)
+      console.info("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_SUSPEND_0001.txt`)
       let downloadFileConfig = {
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         header: {
@@ -301,14 +312,14 @@ export default function requestDownloadJSUnit() {
     /**
      * @tc.number SUB_REQUEST_DOWNLOAD_API_SUSPEND_0002
      * @tc.desc Suspend the download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it('SUB_REQUEST_DOWNLOAD_API_SUSPEND_0002', 0, async function (done) {
       console.info("====>-----------------------SUB_REQUEST_DOWNLOAD_API_SUSPEND_0002 is starting-----------------------");
       let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_SUSPEND_0002.txt`
-      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_SUSPEND_0002.txt`)
+      console.info("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_SUSPEND_0002.txt`)
       let downloadFileConfig = {
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         header: {
@@ -348,14 +359,14 @@ export default function requestDownloadJSUnit() {
      * @tc.number SUB_REQUEST_DOWNLOAD_API_RESTORE_0001
      * @tc.name SUB_REQUEST_DOWNLOAD_API_RESTORE_0001
      * @tc.desc Restore the download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it('SUB_REQUEST_DOWNLOAD_API_RESTORE_0001', 0, async function (done) {
       console.info("====>-----------------------SUB_REQUEST_DOWNLOAD_API_RESTORE_0001 is starting-----------------------");
       let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_RESTORE_0001.txt`
-      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_RESTORE_0001.txt`)
+      console.info("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_RESTORE_0001.txt`)
       let downloadFileConfig = {
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         header: {
@@ -400,14 +411,14 @@ export default function requestDownloadJSUnit() {
     /**
      * @tc.number SUB_REQUEST_DOWNLOAD_API_RESTORE_0002
      * @tc.desc Restore the download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it('SUB_REQUEST_DOWNLOAD_API_RESTORE_0002', 0, async function (done) {
       console.info("====>-----------------------SUB_REQUEST_DOWNLOAD_API_RESTORE_0002 is starting-----------------------");
       let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_RESTORE_0002.txt`
-      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_RESTORE_0002.txt`)
+      console.info("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_RESTORE_0002.txt`)
       let downloadFileConfig = {
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         header: {
@@ -450,14 +461,14 @@ export default function requestDownloadJSUnit() {
      * @tc.number SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001
      * @tc.name SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001
      * @tc.desc Get the download task info
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it('SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001', 0, async function (done) {
       console.info("====>---------------------SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001 is starting---------------------");
       let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001.txt`
-      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001.txt`)
+      console.info("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0001.txt`)
       let downloadFileConfig = {
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         header: {
@@ -503,14 +514,14 @@ export default function requestDownloadJSUnit() {
      * @tc.number SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002
      * @tc.name SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002
      * @tc.desc Get the download task info
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it('SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002', 0, async function (done) {
       console.info("====>-------------------SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002 is starting----------------------");
       let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002.txt`
-      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002.txt`)
+      console.info("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_GETTASKINFO_0002.txt`)
       let downloadFileConfig = {
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         header: {
@@ -553,14 +564,14 @@ export default function requestDownloadJSUnit() {
     /**
      * @tc.number SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001
      * @tc.desc Get mimetype of the download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it('SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001', 0, async function (done) {
       console.info("====>---------------------SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001 is starting---------------------");
       let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001.txt`
-      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001.txt`)
+      console.info("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0001.txt`)
       let downloadFileConfig = {
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         header: {
@@ -629,14 +640,14 @@ export default function requestDownloadJSUnit() {
     /**
      * @tc.number SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0002
      * @tc.desc Get mimetype of the download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
     it('SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0002', 0, async function (done) {
       console.info("====>-------------------SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0002 is starting----------------------");
       let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0002.txt`
-      console.debug("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0002.txt`)
+      console.info("====>downloadFileConfig:" + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DOWNLOAD_API_GETTASKMIMETYPE_0002.txt`)
       let downloadFileConfig = {
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         header: {
@@ -688,7 +699,7 @@ export default function requestDownloadJSUnit() {
     /**
      * @tc.number SUB_Misc_Request_Download_Notice_Task_001
      * @tc.desc Get mimetype of the download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -742,7 +753,7 @@ export default function requestDownloadJSUnit() {
     /**
      * @tc.number SUB_Misc_Request_Download_Notice_Task_002
      * @tc.desc Get mimetype of the download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -797,7 +808,7 @@ export default function requestDownloadJSUnit() {
     /**
      * @tc.number SUB_Misc_Request_Download_Notice_Task_003
      * @tc.desc Get mimetype of the download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -852,7 +863,7 @@ export default function requestDownloadJSUnit() {
     /**
      * @tc.number SUB_Misc_Request_DownloadManagement_0002
      * @tc.desc Get mimetype of the download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -911,7 +922,7 @@ export default function requestDownloadJSUnit() {
     /**
      * @tc.number SUB_Misc_Request_DownloadManagement_0003
      * @tc.desc Get mimetype of the download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -951,7 +962,7 @@ export default function requestDownloadJSUnit() {
     /**
      * @tc.number SUB_Misc_Request_DownloadManagement_0004
      * @tc.desc Get mimetype of the download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -985,7 +996,7 @@ export default function requestDownloadJSUnit() {
     /**
      * @tc.number SUB_Misc_Request_DownloadManagement_0005
      * @tc.desc Starts a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1014,7 +1025,7 @@ export default function requestDownloadJSUnit() {
     /**
      * @tc.number SUB_Misc_Request_Download_SupportSystem_DownloadSuccess_001
      * @tc.desc Get mimetype of the download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1065,7 +1076,7 @@ export default function requestDownloadJSUnit() {
     /**
      * @tc.number SUB_Misc_Request_Download_SupportSystem_DownloadSuccess_002
      * @tc.desc Get mimetype of the download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1120,7 +1131,7 @@ export default function requestDownloadJSUnit() {
     /**
      * @tc.number SUB_Misc_Request_Download_SupportSystem_ConflictDownload_001
      * @tc.desc Get mimetype of the download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1179,7 +1190,7 @@ export default function requestDownloadJSUnit() {
     /**
      * @tc.number SUB_Misc_REQUEST_Download_Promise_0030
      * @tc.desc Starts a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1208,7 +1219,7 @@ export default function requestDownloadJSUnit() {
     /**
      * @tc.number SUB_Misc_REQUEST_Download_Promise_0050
      * @tc.desc Starts a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1238,7 +1249,7 @@ export default function requestDownloadJSUnit() {
     /**
      * @tc.number Download_Test_0300
      * @tc.desc Called when the current download session fails.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1292,7 +1303,7 @@ export default function requestDownloadJSUnit() {
     /**
      * @tc.number Download_Test_0400
      * @tc.desc Get mimetype of the download task
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1346,7 +1357,7 @@ export default function requestDownloadJSUnit() {
     /**
      * @tc.number Download_Test_0600
      * @tc.desc Called when the current download session fails.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1405,7 +1416,7 @@ export default function requestDownloadJSUnit() {
     /**
      * @tc.number Download_Test_0700
      * @tc.desc Called when the current download session fails.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1476,7 +1487,7 @@ export default function requestDownloadJSUnit() {
     /**
      * @tc.number Download_Test_1100
      * @tc.desc Starts a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1536,7 +1547,7 @@ export default function requestDownloadJSUnit() {
     /**
      * @tc.number Download_Test_1400
      * @tc.desc Starts a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1565,7 +1576,7 @@ export default function requestDownloadJSUnit() {
     /**
      * @tc.number Download_Test_0100
      * @tc.desc Starts a download session.
-     * @tc.size      : MEDIUM
+     * @tc.size      MEDIUMTEST
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
@@ -1591,6 +1602,278 @@ export default function requestDownloadJSUnit() {
         expect(err.code).assertEqual(13400001);
         done();
       }
+    });
+
+    /**
+     * @tc.number    SUB_REQUEST_DownloadManagement_Download_0500
+     * @tc.desc      download delete task.
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_DownloadManagement_Download_0500', 0, async function (done) {
+      console.info('-----------------------SUB_REQUEST_DownloadManagement_Download_0500 is starting-----------------------');
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DownloadManagement_Download_0500.txt`
+      console.info('====>downloadFileConfig:' + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DownloadManagement_Download_0500.txt`)
+      let downloadFileConfig: request.DownloadConfig = {
+        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        description: 'XTS download test!',
+        networkType: request.NETWORK_WIFI,
+        filePath: downloadFilePath,
+        title: 'XTS download test!',
+        background: false
+      }
+      request.downloadFile(globalThis.abilityContext, downloadFileConfig, async (err, downloadTask)=>{
+        console.info('====>SUB_REQUEST_DownloadManagement_Download_0500 downloadTask: ' + downloadTask);
+        let onProgress = async (receivedSize: number, totalSize: number) => {
+          try {
+            downloadTask.off('progress');
+            console.info('====>SUB_REQUEST_DownloadManagement_Download_0500 onProgress success: ');
+            let ifDelete: boolean = await downloadTask.delete();
+            expect(ifDelete === true).assertTrue();
+            console.info('====>SUB_REQUEST_DownloadManagement_Download_0500 delete ifDelete: ' + ifDelete);
+            fileio.unlinkSync(downloadFilePath);
+            console.info('====>SUB_REQUEST_DownloadManagement_Download_0500 unlinkSync success: ');
+            done();
+          } catch (err) {
+            console.info('====>SUB_REQUEST_DownloadManagement_Download_0500 onProgress err: ' + JSON.stringify(err));
+            done();
+          }
+        }
+        try{
+          if(err){
+            console.info('====>SUB_REQUEST_DownloadManagement_Download_0500 downloadFile fail: ' + JSON.stringify(err));
+            expect().assertFail();
+          }
+          downloadTask.on('progress', onProgress);
+        } catch (error) {
+          await deleteTask(downloadTask, downloadFilePath)
+          console.info('====>SUB_REQUEST_DownloadManagement_Download_0500 catch error: ' + error);
+        }
+      });
+    });
+
+    /**
+     * @tc.number    SUB_REQUEST_DownloadManagement_Download_0300
+     * @tc.desc      download pause task.
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_DownloadManagement_Download_0300', 0, async function (done) {
+      console.info('-----------------------SUB_REQUEST_DownloadManagement_Download_0300 is starting-----------------------');
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DownloadManagement_Download_0300.txt`
+      console.info('====>downloadFileConfig:' + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DownloadManagement_Download_0300.txt`)
+      let downloadFileConfig: request.DownloadConfig = {
+        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        description: 'XTS download test!',
+        networkType: request.NETWORK_WIFI,
+        filePath: downloadFilePath,
+        title: 'XTS download test!',
+        background: false
+      }
+      request.downloadFile(globalThis.abilityContext, downloadFileConfig, async (err, downloadTask)=>{
+        console.info('====>SUB_REQUEST_DownloadManagement_Download_0300 downloadTask: ' + downloadTask);
+        let onProgress = async (receivedSize: number, totalSize: number) => {
+          try {
+            downloadTask.off('progress');
+            console.info('====>SUB_REQUEST_DownloadManagement_Download_0300 onProgress success: ');
+            await downloadTask.pause();
+            console.info('====>SUB_REQUEST_DownloadManagement_Download_0300 downloadTask.pause success: ');
+          } catch (err) {
+            await deleteTask(downloadTask, downloadFilePath);
+            console.info('====>SUB_REQUEST_DownloadManagement_Download_0300 onProgress err: ' + JSON.stringify(err));
+            done();
+          }
+        }
+
+        let pauseProgress = async () => {
+          try {
+            await deleteTask(downloadTask, downloadFilePath);
+            downloadTask.off('pause');
+            console.info('====>SUB_REQUEST_DownloadManagement_Download_0300 pauseProgress success: ');
+            expect(downloadTask !== null).assertTrue();
+            done();
+          } catch (err) {
+            console.info('====>SUB_REQUEST_DownloadManagement_Download_0300 pauseProgress err: ' + JSON.stringify(err));
+            done();
+          }
+        }
+
+        try{
+          if(err){
+            console.info('====>SUB_REQUEST_DownloadManagement_Download_0300 downloadFile fail: ' + JSON.stringify(err));
+            expect().assertFail();
+          }
+          downloadTask.on('progress', onProgress);
+          downloadTask.on('pause', pauseProgress);
+        } catch (error) {
+          await deleteTask(downloadTask, downloadFilePath)
+          console.info('====>SUB_REQUEST_DownloadManagement_Download_0300 catch error: ' + error);
+        }
+      });
+    });
+
+    /**
+     * @tc.number    SUB_REQUEST_DownloadManagement_DownloadSuccess_0100
+     * @tc.desc      download complete task.
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_DownloadManagement_DownloadSuccess_0100', 0, async function (done) {
+      console.info('-----------------------SUB_REQUEST_DownloadManagement_DownloadSuccess_0100 is starting-----------------------');
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DownloadManagement_DownloadSuccess_0100.txt`
+      console.info('====>downloadFileConfig:' + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DownloadManagement_DownloadSuccess_0100.txt`)
+      let downloadFileConfig: request.DownloadConfig = {
+        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        description: 'XTS download test!',
+        networkType: request.NETWORK_WIFI,
+        filePath: downloadFilePath,
+        title: 'XTS download test!',
+        background: false
+      }
+      request.downloadFile(globalThis.abilityContext, downloadFileConfig, async (err, downloadTask)=>{
+        console.info('====>SUB_REQUEST_DownloadManagement_DownloadSuccess_0100 downloadTask: ' + downloadTask);
+        let completeProgress = async () => {
+          try {
+            downloadTask.off('complete');
+            console.info('====>SUB_REQUEST_DownloadManagement_DownloadSuccess_0100 completeProgress success: ');
+            await deleteTask(downloadTask, downloadFilePath);
+            expect(downloadTask !== null).assertTrue();
+            done();
+          } catch (err) {
+            console.info('====>SUB_REQUEST_DownloadManagement_DownloadSuccess_0100 completeProgress err: ' + JSON.stringify(err));
+            done();
+          }
+        }
+
+        try{
+          if(err){
+            console.info('====>SUB_REQUEST_DownloadManagement_DownloadSuccess_0100 downloadFile fail: ' + JSON.stringify(err));
+            expect().assertFail();
+          }
+          downloadTask.on('complete', completeProgress);
+        } catch (error) {
+          await deleteTask(downloadTask, downloadFilePath)
+          console.info('====>SUB_REQUEST_DownloadManagement_DownloadSuccess_0100 catch error: ' + error);
+        }
+      });
+    });
+
+    /**
+     * @tc.number    SUB_REQUEST_SupportSystem_DownloadMultitask_0100
+     * @tc.desc      download completed multipart tasks.
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_SupportSystem_DownloadMultitask_0100', 0, async function (done) {
+      console.info('-----------------------SUB_REQUEST_SupportSystem_DownloadMultitask_0100 is starting-----------------------');
+      let downloadFilePath1 = `${globalThis.abilityContext.tempDir}/downloadFilePath1.txt`
+      let downloadFilePath2 = `${globalThis.abilityContext.tempDir}/downloadFilePath2.txt`
+      let downloadFileConfig1: request.DownloadConfig = {
+        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        description: 'XTS download test!',
+        networkType: request.NETWORK_WIFI,
+        filePath: downloadFilePath1,
+        title: 'XTS download test!',
+        background: false
+      }
+
+      let downloadFileConfig2: request.DownloadConfig = {
+        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        description: 'XTS download test!',
+        networkType: request.NETWORK_WIFI,
+        filePath: downloadFilePath2,
+        title: 'XTS download test!',
+        background: false
+      }
+
+      let complete1: boolean = false;
+      let complete2: boolean = false;
+      let downloadTask1 = await request.downloadFile(globalThis.abilityContext, downloadFileConfig1);
+      let downloadTask2 = await request.downloadFile(globalThis.abilityContext, downloadFileConfig2);
+      console.info('====>SUB_REQUEST_SupportSystem_DownloadMultitask_0100 create tow tasks success' );
+      let completeProgress1 = async () => {
+        complete1 = true;
+        downloadTask1.off('complete', completeProgress1);
+        console.info('====>SUB_REQUEST_SupportSystem_DownloadMultitask_0100 completeProgress1 success');
+        await deleteTask(downloadTask1, downloadFilePath1);
+        if(complete1 && complete2){
+          console.info('====>SUB_REQUEST_SupportSystem_DownloadMultitask_0100 both complete1');
+          expect(downloadTask1 !== null).assertTrue();
+          done();
+        } else  {
+          console.info('====>SUB_REQUEST_SupportSystem_DownloadMultitask_0100 completeProgress1 complete');
+        }
+      }
+
+      let completeProgress2 = async () => {
+        complete2 = true;
+        downloadTask2.off('complete', completeProgress2);
+        console.info('====>SUB_REQUEST_SupportSystem_DownloadMultitask_0100 completeProgress2 success: ');
+        await deleteTask(downloadTask2, downloadFilePath2);
+        if(complete1 && complete2){
+          console.info('====>SUB_REQUEST_SupportSystem_DownloadMultitask_0100 both complete2');
+          expect(downloadTask1 !== null).assertTrue();
+          done();
+        } else  {
+          console.info('====>SUB_REQUEST_SupportSystem_DownloadMultitask_0100 completeProgress2 complete');
+        }
+      }
+      downloadTask1.on('complete', completeProgress1);
+      downloadTask2.on('complete', completeProgress2);
+    });
+
+    /**
+     * @tc.number    SUB_REQUEST_SupportSystem_DownloadSuccess_0300
+     * @tc.desc      download pass on header task.
+     * @tc.size      MEDIUMTEST
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_REQUEST_SupportSystem_DownloadSuccess_0300', 0, async function (done) {
+      console.info('-----------------------SUB_REQUEST_SupportSystem_DownloadSuccess_0300 is starting-----------------------');
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_SupportSystem_DownloadSuccess_0300.txt`
+      console.info('====>downloadFileConfig:' + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_SupportSystem_DownloadSuccess_0300.txt`)
+      let downloadFileConfig: request.DownloadConfig = {
+        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        header:{
+          'Content-Type': 'application/octet-stream'
+        },
+        description: 'XTS download test!',
+        networkType: request.NETWORK_WIFI,
+        filePath: downloadFilePath,
+        title: 'XTS download test!',
+        background: false
+      }
+      request.downloadFile(globalThis.abilityContext, downloadFileConfig, async (err, downloadTask)=>{
+        console.info('====>SUB_REQUEST_SupportSystem_DownloadSuccess_0300 downloadTask: ' + downloadTask);
+        let completeProgress = async () => {
+          try {
+            downloadTask.off('complete');
+            console.info('====>SUB_REQUEST_SupportSystem_DownloadSuccess_0300 completeProgress success: ');
+            await deleteTask(downloadTask, downloadFilePath);
+            expect(downloadTask !== null).assertTrue();
+            done();
+          } catch (err) {
+            console.info('====>SUB_REQUEST_SupportSystem_DownloadSuccess_0300 completeProgress err: ' + JSON.stringify(err));
+            done();
+          }
+        }
+
+        try{
+          if(err){
+            console.info('====>SUB_REQUEST_SupportSystem_DownloadSuccess_0300 downloadFile fail: ' + JSON.stringify(err));
+            expect().assertFail();
+          }
+          downloadTask.on('complete', completeProgress);
+        } catch (error) {
+          await deleteTask(downloadTask, downloadFilePath)
+          console.info('====>SUB_REQUEST_SupportSystem_DownloadSuccess_0300 catch error: ' + error);
+        }
+      });
     });
 
   });

@@ -967,7 +967,7 @@ export default function requestUploadOnetJSUnitTest() {
                 task.off('progress');
                 task.off('completed');
                 expect(arr.slice(0,3).join()).assertEqual(arr1.join());
-                console.info("====>SUB_Misc_REQUEST_On_Upload_Progress_0030 offProgress success flag: " + flag);
+                console.info("====>SUB_Misc_REQUEST_On_Upload_Progress_0030 offProgress success");
                 done();
               }catch(err){
                 console.info("====>SUB_Misc_REQUEST_On_Upload_Progress_0030 offProgress fail err: " + JSON.stringify(err));
@@ -1024,7 +1024,7 @@ export default function requestUploadOnetJSUnitTest() {
                 expect(arr.length).assertEqual(0);
                 done();
               }catch(err){
-                console.info("====>SUB_Misc_REQUEST_On_Upload_Progress_0030 offProgress fail err: " + JSON.stringify(err));
+                console.info("====>SUB_Misc_REQUEST_Off_Upload_Progress_0030 offProgress fail err: " + JSON.stringify(err));
                 done();
               }
             })  
@@ -1110,7 +1110,7 @@ export default function requestUploadOnetJSUnitTest() {
             task.on('completed', (pro)=>{
               try{
                 task.off('completed');
-                console.info("====>SUB_Misc_REQUEST_Off_Download_Progress_0040 task progress on arr: " + JSON.stringify(arr));
+                console.info("====>SUB_Misc_REQUEST_Off_Download_Progress_0040 task progress on");
                 expect(flag).assertTrue();
                 done();
               }catch(err){
@@ -1236,7 +1236,7 @@ export default function requestUploadOnetJSUnitTest() {
       console.info("====>-----------------------SUB_REQUEST_Off_Upload_Completed_0200 is starting-----------------------");
       let flag = true;
       let on_offCompletedCallback1 =async (pro1: request.agent.Progress) => {
-        flage = false;
+        flag = false;
         console.info("====>SUB_REQUEST_Off_Upload_Completed_0200 pro1: " + JSON.stringify(pro1));
       }
 
@@ -1255,11 +1255,11 @@ export default function requestUploadOnetJSUnitTest() {
         task2.on('completed', (pro)=>{
           try{
             task2.off('completed');
-            console.info("====>SUB_Misc_REQUEST_Off_Upload_Progress_0030 task progress on arr: " + JSON.stringify(arr));
+            console.info("====>SUB_REQUEST_Off_Upload_Completed_0200 task progress on arr: ");
             expect(flag).assertTrue();
-            dome();
+            done();
           }catch(err){
-            console.info("====>SUB_Misc_REQUEST_On_Upload_Progress_0030 offProgress fail err: " + JSON.stringify(err));
+            console.info("====>SUB_REQUEST_Off_Upload_Completed_0200 offProgress fail err: " + JSON.stringify(err));
             done();
           }
         })  
