@@ -22,15 +22,15 @@ import business_error from '@ohos.base';
 struct webViewGetAndSetRenderProcessMode {
   controller: webview.WebviewController = new webview.WebviewController();
   schemeHandler: webview.WebSchemeHandler = new webview.WebSchemeHandler()
-  @State emitKey: string = "";
+  @State emitKey: string = '';
   @State javaScriptAccess: boolean = true;
   @State fileAccess: boolean = true;
   @State domStorageAccess: boolean = true;
   @State imageAccess: boolean = true;
   @State onlineImageAccess: boolean = true;
   @State databaseAccess: boolean = true;
-  @State userAgent: string = "Mozilla/5.0 (Window NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)" +
-         "Chrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.27";
+  @State userAgent: string = 'Mozilla/5.0 (Window NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)' +
+         'Chrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.27';
   @State isFrameResourceType: boolean = false
   
   onPageShow() {
@@ -53,16 +53,16 @@ struct webViewGetAndSetRenderProcessMode {
   build() {
       Column() {
           Row() {
-              Button("web click")
+              Button('web click')
               .key('webViewGetAndSetRenderProcessModeButton')
               .onClick(async () => {
-                  console.info("key==>" + this.emitKey)
+                  console.info('key==>' + this.emitKey)
                   await Utils.sleep(2000);
                   switch (this.emitKey) {
-                    case "emitWebViewGetAndSetRenderProcessMode01": {
+                    case 'emitWebViewGetAndSetRenderProcessMode01': {
                       try {
                         let oldMode = webview.WebviewController.getRenderProcessMode();
-                        console.log("oldMode===>"+oldMode)
+                        console.log('oldMode===>'+oldMode)
                         if (oldMode === 0) {
                           Utils.emitEvent('success', 8006);
                         } else {
@@ -74,14 +74,14 @@ struct webViewGetAndSetRenderProcessMode {
                       }
                       break;
                     }
-                    case "emitWebViewGetAndSetRenderProcessMode02": {
+                    case 'emitWebViewGetAndSetRenderProcessMode02': {
                       try {
                         let oldMode = webview.WebviewController.getRenderProcessMode();
-                        console.log("oldMode===>"+oldMode)
+                        console.log('oldMode===>'+oldMode)
                         webview.WebviewController.setRenderProcessMode(webview.RenderProcessMode.MULTIPLE);
                         await Utils.sleep(2000);
                         let newMode = webview.WebviewController.getRenderProcessMode();
-                        console.log("newMode===>"+newMode)
+                        console.log('newMode===>'+newMode)
                         if (oldMode===0&&newMode === 1) {
                           Utils.emitEvent('success', 8007);
                         } else {
@@ -96,7 +96,7 @@ struct webViewGetAndSetRenderProcessMode {
                 }
               })
           }
-          Web({ src: $rawfile("common_index.html"), controller: this.controller })
+          Web({ src: $rawfile('common_index.html'), controller: this.controller })
                 .javaScriptAccess(this.javaScriptAccess)
                 .fileAccess(this.fileAccess)
                 .imageAccess(this.imageAccess)

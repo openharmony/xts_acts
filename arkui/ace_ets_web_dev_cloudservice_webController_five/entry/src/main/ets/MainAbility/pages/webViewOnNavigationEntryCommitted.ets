@@ -22,15 +22,15 @@ import business_error from '@ohos.base';
 struct webViewOnNavigationEntryCommitted {
   controller: webview.WebviewController = new webview.WebviewController();
   schemeHandler: webview.WebSchemeHandler = new webview.WebSchemeHandler()
-  @State emitKey: string = "";
+  @State emitKey: string = '';
   @State javaScriptAccess: boolean = true;
   @State fileAccess: boolean = true;
   @State domStorageAccess: boolean = true;
   @State imageAccess: boolean = true;
   @State onlineImageAccess: boolean = true;
   @State databaseAccess: boolean = true;
-  @State userAgent: string = "Mozilla/5.0 (Window NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)" +
-         "Chrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.27";
+  @State userAgent: string = 'Mozilla/5.0 (Window NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)' +
+         'Chrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.27';
   @State isFrameResourceType: boolean = false
   
   onPageShow() {
@@ -43,7 +43,7 @@ struct webViewOnNavigationEntryCommitted {
   
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
       if (eventData != null) {
-          console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+          console.info('valueChangeCallBack:' + JSON.stringify(eventData));
           if (eventData.data != null && eventData.data.ACTION != null) {
               this.emitKey = eventData.data.ACTION;
           }
@@ -53,19 +53,19 @@ struct webViewOnNavigationEntryCommitted {
   build() {
       Column() {
           Row() {
-              Button("web click")
+              Button('web click')
               .key('webViewOnNavigationEntryCommittedButton')
               .onClick(async () => {
-                  console.info("key==>" + this.emitKey)
+                  console.info('key==>' + this.emitKey)
                   await Utils.sleep(2000);
                   switch (this.emitKey) {
-                    case "emitWebViewOnNavigationEntryCommitted01":
-                    case "emitWebViewOnNavigationEntryCommitted02":
-                    case "emitWebViewOnNavigationEntryCommitted03":
-                    case "emitWebViewOnNavigationEntryCommitted04":
-                    case "emitWebViewOnNavigationEntryCommitted05":{
+                    case 'emitWebViewOnNavigationEntryCommitted01':
+                    case 'emitWebViewOnNavigationEntryCommitted02':
+                    case 'emitWebViewOnNavigationEntryCommitted03':
+                    case 'emitWebViewOnNavigationEntryCommitted04':
+                    case 'emitWebViewOnNavigationEntryCommitted05':{
                       try {
-                        this.controller.loadUrl("https://www.weibo.com")
+                        this.controller.loadUrl('https://www.weibo.com')
                       } catch (error) {
                         let e:business_error.BusinessError = error as business_error.BusinessError;
                         console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
@@ -75,7 +75,7 @@ struct webViewOnNavigationEntryCommitted {
                 }
               })
           }
-          Web({ src: "https://www.baidu.com", controller: this.controller })
+          Web({ src: 'https://www.baidu.com', controller: this.controller })
                 .javaScriptAccess(this.javaScriptAccess)
                 .fileAccess(this.fileAccess)
                 .imageAccess(this.imageAccess)
@@ -83,11 +83,11 @@ struct webViewOnNavigationEntryCommitted {
                 .onlineImageAccess(this.onlineImageAccess)
                 .databaseAccess(this.databaseAccess)
                 .onNavigationEntryCommitted((event) => {
-                  console.log("onNavigationEntryCommitted: [isMainFrame]= " + event.isMainFrame +
-                    ", [isSameDocument]=" + event.isSameDocument +
-                    ", [didReplaceEntry]=" + event.didReplaceEntry +
-                    ", [navigationType]=" + event.navigationType +
-                    ", [url]=" + event.url);
+                  console.log('onNavigationEntryCommitted: [isMainFrame]= ' + event.isMainFrame +
+                    ', [isSameDocument]=' + event.isSameDocument +
+                    ', [didReplaceEntry]=' + event.didReplaceEntry +
+                    ', [navigationType]=' + event.navigationType +
+                    ', [url]=' + event.url);
                   if (event.isMainFrame===true||event.isMainFrame===false) {
                     Utils.emitEvent('success', 8009);
                   }

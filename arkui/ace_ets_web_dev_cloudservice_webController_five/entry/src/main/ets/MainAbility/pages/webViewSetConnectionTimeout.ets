@@ -22,15 +22,15 @@ import business_error from '@ohos.base';
 struct webViewSetConnectionTimeout {
   controller: webview.WebviewController = new webview.WebviewController();
   schemeHandler: webview.WebSchemeHandler = new webview.WebSchemeHandler()
-  @State emitKey: string = "";
+  @State emitKey: string = '';
   @State javaScriptAccess: boolean = true;
   @State fileAccess: boolean = true;
   @State domStorageAccess: boolean = true;
   @State imageAccess: boolean = true;
   @State onlineImageAccess: boolean = true;
   @State databaseAccess: boolean = true;
-  @State userAgent: string = "Mozilla/5.0 (Window NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)" +
-         "Chrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.27";
+  @State userAgent: string = 'Mozilla/5.0 (Window NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)' +
+         'Chrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.27';
   @State isFrameResourceType: boolean = false
   
   onPageShow() {
@@ -43,7 +43,7 @@ struct webViewSetConnectionTimeout {
   
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
       if (eventData != null) {
-          console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+          console.info('valueChangeCallBack:' + JSON.stringify(eventData));
           if (eventData.data != null && eventData.data.ACTION != null) {
               this.emitKey = eventData.data.ACTION;
           }
@@ -53,14 +53,14 @@ struct webViewSetConnectionTimeout {
   build() {
       Column() {
           Row() {
-              Button("web click")
+              Button('web click')
               .key('webViewSetConnectionTimeoutButton')
               .onClick(async () => {
-                  console.info("key==>" + this.emitKey)
+                  console.info('key==>' + this.emitKey)
                   this.controller.refresh()
                   await Utils.sleep(2500);
                   switch (this.emitKey) {
-                    case "emitWebViewSetConnectionTimeoutZeroSeconds": {
+                    case 'emitWebViewSetConnectionTimeoutZeroSeconds': {
                       try {
                         webview.WebviewController.setConnectionTimeout(0);
                       } catch (error) {
@@ -70,7 +70,7 @@ struct webViewSetConnectionTimeout {
                       }
                       break;
                     }
-                    case "emitWebViewSetConnectionTimeoutPointFiveSeconds": {
+                    case 'emitWebViewSetConnectionTimeoutPointFiveSeconds': {
                       try {
                         webview.WebviewController.setConnectionTimeout(0.5);
                       } catch (error) {
@@ -80,7 +80,7 @@ struct webViewSetConnectionTimeout {
                       }
                       break;
                     }
-                    case "emitWebViewSetConnectionTimeoutNegativeOneSeconds": {
+                    case 'emitWebViewSetConnectionTimeoutNegativeOneSeconds': {
                       try {
                         webview.WebviewController.setConnectionTimeout(-1);
                       } catch (error) {
@@ -90,7 +90,7 @@ struct webViewSetConnectionTimeout {
                       }
                       break;
                     }
-                    case "emitWebViewSetConnectionTimeoutWithA": {
+                    case 'emitWebViewSetConnectionTimeoutWithA': {
                       try {
                         webview.WebviewController.setConnectionTimeout(Number('a'));
                       } catch (error) {
@@ -100,7 +100,7 @@ struct webViewSetConnectionTimeout {
                       }
                       break;
                     }
-                    case "emitWebViewSetConnectionTimeoutTenSeconds": {
+                    case 'emitWebViewSetConnectionTimeoutTenSeconds': {
                       try {
                         webview.WebviewController.setConnectionTimeout(5);
                         this.controller.loadUrl('https://www.weibo111xxxbbb.com')
@@ -110,7 +110,7 @@ struct webViewSetConnectionTimeout {
                       }
                       break;
                     }
-                }
+                 }
               })
           }
           Web({ src: '', controller: this.controller })
