@@ -37,6 +37,7 @@ ohos_moduletest_suite("ActsDrawingNativeTest") {
      "DrawingNativeFontTest.cpp",
      "DrawingNativeGpuContextTest.cpp",
      "DrawingNativePathTest.cpp",
+     "DrawingNativePathTestPart2.cpp",
      "DrawingNativePenTest.cpp",
      "DrawingNativeRectTest.cpp",
      "DrawingNativeShaderEffectTest.cpp",
