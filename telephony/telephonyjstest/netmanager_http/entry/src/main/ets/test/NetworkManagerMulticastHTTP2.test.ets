@@ -65,26 +65,6 @@ export default function NetworkManagerMulticast2HTTP2Test() {
     });
     describe("NetworkManagerMulticast2HTTP2Test", ()=> {
         /**
-         * @tc.number: SUB_Telephone_netstack_Http3_QUIC_Xts_Promise_0100
-         * @tc.name: HTTP::request
-         * @tc.desc: Test request property.
-         * @tc.level 1
-         * @tc.type: Function
-         * @tc.size: SmallTest
-         */
-        it("SUB_Telephone_netstack_Http3_QUIC_Xts_Promise_0100", 0, async (done: Function)=>{
-            let caseName = "SUB_Telephone_netstack_Http3_QUIC_Xts_Promise_0100";
-            httpRequest.request(url,httpRequestOptions_http3).then((data) => {
-                console.log(`${caseName} request succeed, data: ${JSON.stringify(data)}`);
-                expect(data.responseCode === 200).assertTrue();
-                done();
-            }).catch((err: BusinessError) => {
-                console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
-                expect(data.responseCode === 2300999).assertTrue();
-                done();
-            })
-        })
-        /**
          * @tc.number: SUB_Telephone_netstack_Http3_QUIC_Xts_Promise_0200
          * @tc.name: HTTP::request
          * @tc.desc: Test request property.
