@@ -65,6 +65,65 @@ export default function graphicDrawingFontInterfaceTest(context, windowStage, ab
         done()
       }
     })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWINGFONT_JS_API_002
+     * @tc.name      : testSetScaleX
+     * @tc.desc      : Lets you set the scale of the glyph object on the x axis.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testSetScaleX', 1, async function (done) {
+      let msg = " ====testSetScaleX==== "
+      try {
+        console.log(msg + " ready go ! ")
+        let font = new drawing.Font();
+        font.setSize(100);
+        font.setScaleX(2);
+        const textBlob = drawing.TextBlob.makeFromString("hello", font, drawing.TextEncoding.TEXT_ENCODING_UTF8)
+        console.log(msg + " Succeed in font.setScaleX " + JSON.stringify(font))
+        console.log(msg + " Succeed in font.setScaleX " + font)
+        console.log(msg + " Succeed in font.setScaleX " + font.setScaleX)
+        console.log(msg + " Succeed in font.setScaleX, textBlob: " + textBlob)
+        expect(true).assertTrue()
+        done()
+      } catch (err) {
+        console.log(msg + " Faild in font.setScaleX " + JSON.stringify(err))
+        console.log(msg + " Faild in font.setScaleX " + err)
+        expect().assertFail()
+        done()
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICDRAWINGFONT_JS_API_002
+     * @tc.name      : testSetSkewX
+     * @tc.desc      : Lets you set the skew scale of the glyph object on the x axis.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testSetSkewX', 1, async function (done) {
+      let msg = " ====testSetSkewX==== "
+      try {
+        console.log(msg + " ready go ! ")
+        let font = new drawing.Font();
+        font.setSize(100);
+        font.setSkewX(1);
+        const textBlob = drawing.TextBlob.makeFromString("hello", font, drawing.TextEncoding.TEXT_ENCODING_UTF8)
+        console.log(msg + " Succeed in font.setSkewX " + JSON.stringify(font))
+        console.log(msg + " Succeed in font.setSkewX " + font)
+        console.log(msg + " Succeed in font.setSkewX " + textBlob)
+        expect(true).assertTrue()
+        done()
+      } catch (err) {
+        console.log(msg + " Faild in font.setSkewX " + JSON.stringify(err))
+        console.log(msg + " Faild in font.setSkewX " + err)
+        expect().assertFail()
+        done()
+      }
+    })
     
   })
 }
