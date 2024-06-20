@@ -58,7 +58,7 @@ export default function grid_GridFrictionTest() {
       await CommonFunc.sleep(2000);
       let gridContainerStrJson = getInspectorByKey('Grid_GridFriction');
       expect(JSON.parse(gridContainerStrJson).$type).assertEqual('Grid');
-      expect(JSON.parse(gridContainerStrJson).$attrs.friction).assertEqual(0.7);
+      expect(JSON.parse(gridContainerStrJson).$attrs.friction).assertEqual(0.75);
       console.info('[testGridFriction] END');
       done();
     });

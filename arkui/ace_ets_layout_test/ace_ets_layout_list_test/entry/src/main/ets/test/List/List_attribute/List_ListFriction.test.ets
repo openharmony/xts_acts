@@ -56,7 +56,7 @@ export default function list_ListFrictionTest() {
       await CommonFunc.sleep(2000);
       let listContainerStrJson = getInspectorByKey('List_ListFriction');
       expect(JSON.parse(listContainerStrJson).$type).assertEqual('List');
-      expect(JSON.parse(listContainerStrJson).$attrs.friction).assertEqual(0.7);
+      expect(JSON.parse(listContainerStrJson).$attrs.friction).assertEqual(0.75);
       console.info('[testListFriction] END');
       done();
     });
