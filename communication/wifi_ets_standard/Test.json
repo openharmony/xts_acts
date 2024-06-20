@@ -2,24 +2,24 @@
     "description": "Configuration for bluetooth api Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "600000",
+        "test-timeout": "180000",
+        "shell-timeout": "180000",
         "bundle-name": "ohos.acts.communication.wifi.wifiSta",
-        "module-name": "entry",
-        "shell-timeout": "600000",
-        "testcase-timeout": 600000
+        "module-name": "entry_test"
     },
-    "kits": [{
-        "test-file-name": [
-            "ActsEtsWifiTest.hap"
-        ],
-        "type": "AppInstallKit",
-        "cleanup-apps": true
-    },
-    {
-        "type": "ShellKit",
-        "run-command": [
-            "power-shell setmode 602",
-            "svc bluetooth enable"
-        ]
-    }]
+    "kits": [
+        {
+            "test-file-name": [
+                "ActsEtsWifiTest.hap"
+            ],
+            "type": "AppInstallKit",
+            "cleanup-apps": true
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "svc bluetooth enable",
+                "power-shell setmode 602"
+            ]
+        }
+    ]
 }

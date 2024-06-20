@@ -15,46 +15,55 @@
 import wifiMg from '@ohos.wifiManager';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
+function sleep(delay:number): Promise<void> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, delay);
+  }); 
+}
+
+async function tryToEnableWifi(){
+    if(!wifiMg.isWifiActive()){
+        console.info("wifi_test/enable wifi:" + wifiMg.enableWifi());
+        await sleep(5000);
+    }
+    console.info("wifi_test/wifi status:" + wifiMg.isWifiActive());
+}
+
+async function tryToDisConnWifi(){
+    if(wifiMg.isConnected()){
+        console.info("wifi_test/ wifi is connect status :" + wifiMg.isConnected());
+        try
+        {
+            wifiMg.disconnect()
+        }
+        catch(error)
+        {
+            console.info("wifi_test/wifi disconnect failed")
+        }
+        await sleep(1000);
+    }
+    console.info("wifi_test/wifi status:" + wifiMg.isWifiActive());
+}
+
+
 export default function wifiSta() {
 
-    describe('wifiSta', function () {
-        function sleep(delay) {
-        return new Promise(resovle => setTimeout(resovle, delay))
-        }
+    describe('wifiSta', async () => {
 
-        async function tryToEnableWifi(){
-            if(!wifiMg.isWifiActive()){
-                console.info("wifi_test/enable wifi:" + wifiMg.enableWifi());
-                await sleep(5000);
-            }
-            console.info("wifi_test/wifi status:" + wifiMg.isWifiActive());
-        }
-        async function tryToDisConnWifi(){
-            if(wifiMg.isConnected()){
-                console.info("wifi_test/ wifi is connect status :" + wifiMg.isConnected());
-                try
-                {
-                    wifiMg.disconnect()
-                }
-                catch(error)
-                {
-                    console.info("wifi_test/wifi disconnect failed")
-                }
-                await sleep(1000);
-            }
-            console.info("wifi_test/wifi status:" + wifiMg.isWifiActive());
-        }
-
-        beforeAll(async function (done) {
+        beforeAll(async (done:Function) =>{
             console.info('beforeAll case');
             done();
         })
 
-        beforeEach(function() {})
+        beforeEach(() => {
+        })
 
-        afterEach(function() {})
+        afterEach(() => {
+        })
 
-        afterAll(async function (done){
+        afterAll(async (done:Function)=>{
             console.info('AfterAll case');
             done();
         })
@@ -65,7 +74,7 @@ export default function wifiSta() {
          * @tc.type Function
          * @tc.level Level 0
          */
-        it('SUB_Communication_WiFi_XTS_Sta_0034', 0, async function(done) {
+        it('SUB_Communication_WiFi_XTS_Sta_0034', 0, async (done:Function) =>{
             try {
 		        let isMeteredHotspot = wifiMg.isMeteredHotspot();
 		        console.info("isMeteredHotspot:" + isMeteredHotspot);
