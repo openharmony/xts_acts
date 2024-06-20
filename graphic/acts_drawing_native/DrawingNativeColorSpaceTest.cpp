@@ -20,6 +20,8 @@
 #include "drawing_canvas.h"
 #include "drawing_color.h"
 #include "drawing_color_filter.h"
+#include "drawing_color_space.h"
+#include "drawing_error_code.h"
 #include "drawing_filter.h"
 #include "drawing_font.h"
 #include "drawing_image.h"
@@ -35,8 +37,6 @@
 #include "drawing_shader_effect.h"
 #include "drawing_text_blob.h"
 #include "drawing_typeface.h"
-#include "drawing_color_space.h"
-#include "drawing_error_code.h"
 
 using namespace testing;
 using namespace testing::ext;
@@ -47,60 +47,74 @@ namespace Drawing {
 class DrawingNativeColorSpaceTest : public testing::Test {};
 
 /*
-* @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_SPACE_0100
-* @tc.name: testColorSpaceCreateDestroySrgbNormal
-* @tc.desc: test for testColorSpaceCreateDestroySrgbNormal.
-* @tc.size  : SmallTest
-* @tc.type  : Function
-* @tc.level : Level 0
-*/
-HWTEST_F(DrawingNativeColorSpaceTest, testColorSpaceCreateDestroySrgbNormal, TestSize.Level0) {
-    const float matrix[20] = {
-        1, 0, 0, 0, 0,
-        0, 1, 0, 0, 0,
-        0, 0, 1, 0, 0,
-        0, 0, 0, 0.5f, 0
-    };
-    OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateMatrix(matrix);
-    EXPECT_NE(colorFilter, nullptr);
-
-    OH_Drawing_ColorFilterDestroy(colorFilter);
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_SPACE_0100
+ * @tc.name: testColorSpaceCreateSrgbNormal
+ * @tc.desc: Test for creating an sRGB color space with normal parameters.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeColorSpaceTest, testColorSpaceCreateSrgbNormal, TestSize.Level0) {
+    OH_Drawing_ColorSpace *colorSpace = OH_Drawing_ColorSpaceCreateSrgb();
+    EXPECT_NE(colorSpace, nullptr);
+    OH_Drawing_ColorSpaceDestroy(colorSpace);
 }
 
 /*
-* @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_SPACE_0101
-* @tc.name: testColorSpaceCreateDestroySrgbNULL
-* @tc.desc: test for testColorSpaceCreateDestroySrgbNULL.
-* @tc.size  : SmallTest
-* @tc.type  : Function
-* @tc.level : Level 3
-*/
-HWTEST_F(DrawingNativeColorSpaceTest, testColorSpaceCreateDestroySrgbNULL, TestSize.Level3) {
-    OH_Drawing_ColorFilterDestroy(nullptr);
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_SPACE_0101
+ * @tc.name: testColorSpaceDestroyNull
+ * @tc.desc: Test for destroying a color space with a NULL parameter.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeColorSpaceTest, testColorSpaceDestroyNull, TestSize.Level3) {
+    OH_Drawing_ColorSpaceDestroy(nullptr);
 }
 
 /*
-* @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_SPACE_0102
-* @tc.name: testColorSpaceCreateDestroySrgbMultipleCalls
-* @tc.desc: test for testColorSpaceCreateDestroySrgbMultipleCalls.
-* @tc.size  : SmallTest
-* @tc.type  : Function
-* @tc.level : Level 3
-*/
-HWTEST_F(DrawingNativeColorSpaceTest, testColorSpaceCreateDestroySrgbMultipleCalls, TestSize.Level3) {
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_SPACE_0102
+ * @tc.name: testColorSpaceCreateSrgbMultipleCalls
+ * @tc.desc: Test for creating an sRGB color space with multiple calls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeColorSpaceTest, testColorSpaceCreateSrgbMultipleCalls, TestSize.Level3) {
     for (int i = 0; i < 10; i++) {
-        const float matrix[20] = {
-            1, 0, 0, 0, 0,
-            0, 1, 0, 0, 0,
-            0, 0, 1, 0, 0,
-            0, 0, 0, 0.5f, 0
-        };
-        OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateMatrix(matrix);
-        EXPECT_NE(colorFilter, nullptr);
+        OH_Drawing_ColorSpace *colorSpace = OH_Drawing_ColorSpaceCreateSrgb();
+        EXPECT_NE(colorSpace, nullptr);
+        OH_Drawing_ColorSpaceDestroy(colorSpace);
     }
-    
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_SPACE_0200
+ * @tc.name: testColorSpaceCreateSrgbLinearNormal
+ * @tc.desc: Test for creating an sRGB linear color space with normal parameters.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeColorSpaceTest, testColorSpaceCreateSrgbLinearNormal, TestSize.Level0) {
+    OH_Drawing_ColorSpace *colorSpace = OH_Drawing_ColorSpaceCreateSrgbLinear();
+    EXPECT_NE(colorSpace, nullptr);
+    OH_Drawing_ColorSpaceDestroy(colorSpace);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_COLOR_SPACE_0201
+ * @tc.name: testColorSpaceCreateSrgbLinearMultipleCalls
+ * @tc.desc: Test for creating an sRGB linear color space with multiple calls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeColorSpaceTest, testColorSpaceCreateSrgbLinearMultipleCalls, TestSize.Level3) {
     for (int i = 0; i < 10; i++) {
-        OH_Drawing_ColorFilterDestroy(nullptr);
+        OH_Drawing_ColorSpace *colorSpace = OH_Drawing_ColorSpaceCreateSrgbLinear();
+        EXPECT_NE(colorSpace, nullptr);
+        OH_Drawing_ColorSpaceDestroy(colorSpace);
     }
 }
 

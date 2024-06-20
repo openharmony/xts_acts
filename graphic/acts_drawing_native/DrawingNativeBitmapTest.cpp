@@ -274,6 +274,7 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapBuildNormal, TestSize.Level0) {
 HWTEST_F(DrawingNativeBitmapTest, testBitmapBuildNull, TestSize.Level3) {
     const unsigned int width = 500;
     const unsigned int height = 500;
+
     OH_Drawing_ColorFormat formats[] = {
         COLOR_FORMAT_UNKNOWN,   COLOR_FORMAT_ALPHA_8,   COLOR_FORMAT_RGB_565,
         COLOR_FORMAT_ARGB_4444, COLOR_FORMAT_RGBA_8888, COLOR_FORMAT_BGRA_8888,
@@ -286,23 +287,13 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapBuildNull, TestSize.Level3) {
         ALPHA_FORMAT_UNPREMUL,
     };
 
-    // step 1
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
     OH_Drawing_BitmapFormat bitmapFormat = {formats[3], alphaFormats[0]};
 
-    if (0) {
-        // todo cpp crash
-        // step 2
-        OH_Drawing_BitmapBuild(nullptr, width, height, &bitmapFormat);
-        // step 3
-        OH_Drawing_BitmapBuild(bitmap, 0, height, &bitmapFormat);
-        // step 4
-        OH_Drawing_BitmapBuild(bitmap, width, 0, &bitmapFormat);
-        // step 5
-        OH_Drawing_BitmapBuild(bitmap, width, height, nullptr);
-    }
+    OH_Drawing_BitmapBuild(bitmap, 0, height, &bitmapFormat);
+    OH_Drawing_BitmapBuild(bitmap, width, 0, &bitmapFormat);
+    OH_Drawing_BitmapBuild(bitmap, width, height, nullptr);
 
-    // step 6
     OH_Drawing_BitmapDestroy(bitmap);
 }
 
