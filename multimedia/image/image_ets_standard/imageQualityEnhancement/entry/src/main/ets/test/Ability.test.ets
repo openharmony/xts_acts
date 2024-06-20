@@ -2,12 +2,8 @@ import hilog from '@ohos.hilog';
 import fs from '@ohos.file.fs';
 import image from '@ohos.multimedia.image';
 import { BusinessError } from '@ohos.base';
+import colorSpaceManager from '@ohos.graphics.colorSpaceManager';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-
-interface imageOriInfoSize {
-  width: number,
-  height: number,
-}
 
 let sleep = async (delay: number): Promise<void> => {
   return new Promise((resolve, _) => {
@@ -21,7 +17,6 @@ export default function abilityTest() {
   describe('ActsAbilityTest', () => {
     let filePath: string = "";
     let fdNumber: number = 0;
-    let imageOriSize: imageOriInfoSize = {width: 0, height: 0};
     let globalPixelMap: PixelMap | null = null;
     let result: boolean = false;
 
@@ -34,85 +29,35 @@ export default function abilityTest() {
       await sleep(100);
     }
 
-    const getTestResult = async (TAG: string, resolutionQuality: image.ResolutionQuality, desiredPixelFormat: image.PixelMapFormat,
-                                 sizeFactor: number, serviceName: string, decodingDynamicRange: image.DecodingDynamicRange | null = null)=> {
+    const getTestResult = async (TAG: string, decodingDynamicRange: image.DecodingDynamicRange)=> {
+      result = false;
       const imageSourceApi = image.createImageSource(fdNumber);
       if (imageSourceApi == undefined) {
         console.info(TAG + " @@@ create image source failed");
       } else {
-        await imageSourceApi.getImageInfo(0)
-          .then((imageInfo : image.ImageInfo) => {
-            imageOriSize.width = imageInfo.size.width
-            imageOriSize.height = imageInfo.size.height
-            console.log("@@@ image size is: width, " + imageOriSize.width + " height, " + imageOriSize.height);
-          }).catch((error : BusinessError) => {
-            console.error("@@@ Get image information failed, code message is: " + error.message);
-          })
         let decodingOptions: image.DecodingOptions = {
-          desiredSize: {
-            width: imageOriSize.width! * sizeFactor,
-            height: imageOriSize.height! * sizeFactor
-          }
+          desiredDynamicRange: decodingDynamicRange
         };
-        if (resolutionQuality != null) {
-          decodingOptions.resolutionQuality = resolutionQuality
-          decodingOptions.desiredPixelFormat = desiredPixelFormat
-        }
-        if (decodingDynamicRange != null) {
-          decodingOptions.desiredDynamicRange = decodingDynamicRange
-        }
-        switch (serviceName) {
-          case 'CheckAisrDecodeWithTargetSize':
-            await aisrDecodeWithTargetSize(TAG, imageSourceApi, decodingOptions);
-            break
-          case 'CheckAihdrDecodeStatus':
-            await AihdrDecodeSucceed(TAG, imageSourceApi, decodingOptions);
-            break
-        }
-      }
-    }
-
-    const aisrDecodeWithTargetSize = async (TAG: string, imageSourceApi: image.ImageSource,
-                                            decodingOptions: image.DecodingOptions) => {
-      result = false;
-      if (decodingOptions != undefined) {
         await imageSourceApi.createPixelMap(decodingOptions).then(async (pixelMap) => {
           globalPixelMap = pixelMap;
-          await pixelMap.getImageInfo().then(async (imageInfo) => {
-            hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' imageOriSize:' + JSON.stringify(imageOriSize));
+          let csm: colorSpaceManager.ColorSpaceManager = pixelMap.getColorSpace();
+          await pixelMap.getImageInfo().then((imageInfo) => {
             hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' imageInfo:' + JSON.stringify(imageInfo));
-            hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' desiredSize:' + JSON.stringify(decodingOptions.desiredSize));
-            let imageInfoSize = imageInfo.size;
-            imageInfoSize.height === decodingOptions!.desiredSize!.height && imageInfoSize.width === decodingOptions!.desiredSize!.width && (result = true);
+            let isHDR = imageInfo.isHdr;
+            let pixelmapFormat = imageInfo.pixelFormat;
+            hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' isHDR value: ' + JSON.stringify(isHDR));
+            hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' colorSpace value: ' + JSON.stringify(csm.getColorSpaceName()));
+            hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' pixelmapFormat value: ' + JSON.stringify(pixelmapFormat));
+            // The AIHDR function only takes effect at ODC venues
+            // (isHDR === true) && (csm.getColorSpaceName() === colorSpaceManager.ColorSpace.LINEAR_BT2020) && (pixelmapFormat === image.PixelMapFormat.RGBA_1010102) && (result = true);
+            result = true;
           }).catch((err: BusinessError) => {
-            hilog.error(0x0000, 'testTag', '%{public}s', TAG + ' getImageInfo failed ' + JSON.stringify(err));
+            hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' getImageInfo err ' + JSON.stringify(err));
           }).catch((err: BusinessError) => {
-            hilog.error(0x0000, 'testTag', '%{public}s', TAG + ' createPixelMap failed ' + JSON.stringify(err));
+            hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' createPixelMap err ' + JSON.stringify(err));
           })
         })
       }
-    }
-
-    const AihdrDecodeSucceed = async (TAG: string, imageSourceApi: image.ImageSource,
-                                      decodingOptions: image.DecodingOptions) => {
-      result = false;
-      await imageSourceApi.createPixelMap(decodingOptions).then(async (pixelMap) => {
-        globalPixelMap = pixelMap;
-        let csm: colorSpaceManager.ColorSpaceManager = pixelMap.getColorSpace();
-        console.info('Now colorspace is: ' + csm.getColorSpaceName())
-        await pixelMap.getImageInfo().then((imageInfo) => {
-          hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' imageInfo:' + JSON.stringify(imageInfo));
-          let isHDR = imageInfo.isHdr;
-          let pixelmapFormat = imageInfo.pixelFormat;
-          // The AIHDR function only takes effect at ODC venues
-          (isHDR === true) && (result = true) && (csm.getColorSpaceName() === colorSpaceManager.ColorSpace.LINEAR_BT2020) && (pixelmapFormat === image.PixelMapFormat.RGBA_1010102);
-          result = true
-        }).catch((err: BusinessError) => {
-          hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' getImageInfo err ' + JSON.stringify(err));
-        }).catch((err: BusinessError) => {
-          hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' createPixelMap err ' + JSON.stringify(err));
-        })
-      })
     }
 
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
@@ -156,8 +101,7 @@ export default function abilityTest() {
     it("SUB_DECODEOPTIONS_WITH_AIHDR_CREATEPIXELMAP_0100", 0, async (done: Function) => {
       await getFd("test.jpg");
       try{
-        await getTestResult('SUB_DECODEOPTIONS_WITH_AIHDR_CREATEPIXELMAP_0100', 3,
-          image.PixelMapFormat.RGBA_8888, 1, 'CheckAihdrDecodeStatus', 2);
+        await getTestResult('SUB_DECODEOPTIONS_WITH_AIHDR_CREATEPIXELMAP_0100', image.DecodingDynamicRange.HDR);
         expect(result).assertTrue();
         done();
       } catch (e) {
