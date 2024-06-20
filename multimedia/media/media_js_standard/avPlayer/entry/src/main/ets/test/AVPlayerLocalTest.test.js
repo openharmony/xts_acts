@@ -17,7 +17,7 @@ import * as mediaTestBase from '../../../../../../MediaTestBase';
 import media from '@ohos.multimedia.media'
 import audio from '@ohos.multimedia.audio';
 import drm from '@ohos.multimedia.drm';
-import { testAVPlayerFun, AV_PLAYER_STATE, setSource } from '../../../../../../AVPlayerTestBase.js';
+import { testAVPlayerFun, AV_PLAYER_STATE, setSource, setSubtitle } from '../../../../../../AVPlayerTestBase.js';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
 export default function AVPlayerLocalTest() {
@@ -25,6 +25,7 @@ export default function AVPlayerLocalTest() {
         const VIDEO_SOURCE = 'H264_AAC.mp4';
         const AUDIO_SOURCE = '01.mp3';
         const VIDEO_NOAUDIO = 'H264_NONE.mp4'
+        const SUBTITLE = 'srt_2800.srt'
         const PLAY_TIME = 3000;
         const TAG = 'AVPlayerLocalTest:';
         let fileDescriptor = null;
@@ -38,6 +39,7 @@ export default function AVPlayerLocalTest() {
         }
         let fdPath = '';
         let fdNumber = 0;
+        let subtitleFdSrc = null;
 
         beforeAll(async function () {
             console.info('beforeAll case');
@@ -49,6 +51,9 @@ export default function AVPlayerLocalTest() {
             });
             await mediaTestBase.getStageFileDescriptor(VIDEO_NOAUDIO).then((res) => {
                 fileDescriptor3 = res;
+            });
+            await mediaTestBase.getStageFileDescriptor(SUBTITLE).then((res) => {
+                subtitleFdSrc = res;
             });
         })
 
@@ -347,6 +352,26 @@ export default function AVPlayerLocalTest() {
             });
         }
 
+        async function testSubtitle(src, subtitleSrc, avPlayer, done) {
+            console.info(`case media source: ${src}`)
+            media.createAVPlayer((err, video) => {
+                console.info(`case media err: ${err}`)
+                if (typeof (video) !== 'undefined') {
+                    console.info('case createAVPlayer success');
+                    avPlayer = video;
+                    setOnCallback(avPlayer, done)
+                    setSource(avPlayer, src);
+                    setSubtitle(avPlayer, subtitleSrc)
+                    done()
+                }
+                if (err != null) {
+                    console.error(`case createAVPlayer error, errMessage is ${err.message}`);
+                    expect().assertFail();
+                    done();
+                }
+            });
+        }
+
         /* *
             * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_FDSRC_0100
             * @tc.name      : 001.test fdsrc
@@ -436,6 +461,31 @@ export default function AVPlayerLocalTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_VIDEO_PLAYER_OFF_CALLBACK_0100', 0, async function (done) {
             testOffCallback(fileDescriptor, avPlayer, done);
+        })
+
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SUBTITILE_0100
+            * @tc.name      : 001.test subtitle Function
+            * @tc.desc      : Local Video subtitle control test
+            * @tc.size      : MediumTest
+            * @tc.type      : Function test
+            * @tc.level     : Level1
+        */
+        it('SUB_MULTIMEDIA_MEDIA_VIDEO_SUBTITILE_0100', 0, async function (done) {
+            testSubtitle(fileDescriptor, subtitleFdSrc, avPlayer, done);
+        })
+
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SUBTITILE_0200
+            * @tc.name      : 002.test subtitle Function
+            * @tc.desc      : Local Video subtitle control test
+            * @tc.size      : MediumTest
+            * @tc.type      : Function test
+            * @tc.level     : Level1
+        */
+        it('SUB_MULTIMEDIA_MEDIA_VIDEO_SUBTITILE_0200', 0, async function (done) {
+            testSubtitle(fileDescriptor,
+                `fd://${subtitleFdSrc.fd}?offset=${subtitleFdSrc.offset}&size=${subtitleFdSrc.length}`, avPlayer, done);
         })
     })
 }
