@@ -21,9 +21,14 @@ export default function windowNdk() {
   describe('windowNdk', () => {
     let windowStage:window.WindowStage;
     let Tag = 'ActsWindowNdkTest';
-    beforeAll(() => {
+    let WindowClass:window.Window;
+    let windowId:number;
+    beforeAll(async() => {
       windowStage = AppStorage.get("windowStage") as window.WindowStage;
       console.log(`${Tag}:beforeAll start... `);
+      WindowClass = await windowStage.getMainWindow();
+      windowId = WindowClass.getWindowProperties().id;
+      console.log(`${Tag}:windowId:${windowId} `);
     })
     beforeEach(() => {
       console.log(`${Tag}:beforeEach start... `);
@@ -45,8 +50,6 @@ export default function windowNdk() {
      * @tc.level     : Level3
      */
     it('test_OH_NativeWindowManager_RegisterKeyEventFilter', 0, async (done:Function) => {
-        let WindowClass = await windowStage.getMainWindow();
-        let windowId = WindowClass.getWindowProperties().id;
         console.info(`${Tag}: test_OH_NativeWindowManager_RegisterKeyEventFilter RegisterKeyEventFilter windowId: ${windowId}`);
         let a = windowNdkTest.filterKeyCode(windowId,2070);
         console.info(`${Tag}: test_OH_NativeWindowManager_RegisterKeyEventFilter RegisterKeyEventFilter: ${a}`);
@@ -73,12 +76,10 @@ export default function windowNdk() {
      * @tc.level     : Level3
      */
     it('test_OH_NativeWindowManager_UnregisterKeyEventFilter', 0, async (done:Function) => {
-      let WindowClass = await windowStage.getMainWindow();
-      let windowId = WindowClass.getWindowProperties().id;
       let a = windowNdkTest.unFilterKeyCode(windowId);
       console.info(`${Tag}: test_OH_NativeWindowManager_UnregisterKeyEventFilter unRegisterKeyEventFilter windowId: ${windowId}`);
       console.info(`${Tag}: test_OH_NativeWindowManager_UnregisterKeyEventFilter unRegisterKeyEventFilter: ${a}`);
-      if(a==1000){
+      if(a==2000){
         console.info(`${Tag}: 此设备不支持SystemCapability.Window.SessionManager能力`);
         expect(true).assertTrue();
         done();
