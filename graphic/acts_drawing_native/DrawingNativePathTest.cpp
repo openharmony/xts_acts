@@ -13,8 +13,7 @@
  * limitations under the License.
  */
 
-#include "gtest/gtest.h"
-
+#include "DrawingNativePathCommon.h"
 #include "drawing_color.h"
 #include "drawing_color_filter.h"
 #include "drawing_filter.h"
@@ -28,6 +27,7 @@
 #include "drawing_region.h"
 #include "drawing_round_rect.h"
 #include "utils/scalar.h"
+#include "gtest/gtest.h"
 
 using namespace testing;
 using namespace testing::ext;
@@ -35,8 +35,6 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class DrawingNativePathTest : public testing::Test {};
-
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_0100
  * @tc.name: testPathCreateNormal
@@ -1425,6 +1423,276 @@ HWTEST_F(DrawingNativePathTest, testPathAddRectMaximal, TestSize.Level3) {
     OH_Drawing_PathAddRect(path, 100, 100, 200, FLT_MAX + 1, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
     // 8. Free memory
     OH_Drawing_PathDestroy(path);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_1600
+ * @tc.name: testPathAddRectWithInitialCornerNormal
+ * @tc.desc: Test for adding a rectangle to a path with initial corner and normal parameters.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativePathTest, testPathAddRectWithInitialCornerNormal, TestSize.Level0) {
+    // 1. Create a path object by calling OH_Drawing_PathCreate
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // 2. Create a rectangle object by calling OH_Drawing_RectCreate
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 100, 200, 200);
+    // 3. Set the starting point of the path by calling OH_Drawing_PathMoveTo
+    OH_Drawing_PathMoveTo(path, 0, 0);
+    // 4. Add a line segment from the starting point of the path to the target point by calling OH_Drawing_PathLineTo
+    OH_Drawing_PathLineTo(path, 100, 100);
+    // 5. Add a rectangle outline to the path with the specified direction by calling
+    // OH_Drawing_PathAddRectWithInitialCorner. Iterate through the enum to call this interface.
+    OH_Drawing_PathAddRectWithInitialCorner(path, rect, OH_Drawing_PathDirection::PATH_DIRECTION_CW, 0);
+    // 6. Free memory
+    OH_Drawing_PathDestroy(path);
+    OH_Drawing_RectDestroy(rect);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_1601
+ * @tc.name: testPathAddRectWithInitialCornerNull
+ * @tc.desc: Test for adding a rectangle to a path with initial corner and NULL or invalid parameters.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativePathTest, testPathAddRectWithInitialCornerNull, TestSize.Level3) {
+    // 1. Create a path object by calling OH_Drawing_PathCreate
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // 2. Create a rectangle object by calling OH_Drawing_RectCreate
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 100, 200, 200);
+    // 3. Call OH_Drawing_PathAddRectWithInitialCorner with the first parameter as nullptr, expect
+    // OH_DRAWING_ERROR_INVALID_PARAMETER
+    OH_Drawing_PathAddRectWithInitialCorner(nullptr, rect, OH_Drawing_PathDirection::PATH_DIRECTION_CW, 0);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 4. Call OH_Drawing_PathAddRectWithInitialCorner with the second parameter as nullptr, expect
+    // OH_DRAWING_ERROR_INVALID_PARAMETER
+    OH_Drawing_PathAddRectWithInitialCorner(path, nullptr, OH_Drawing_PathDirection::PATH_DIRECTION_CW, 0);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 5. Call OH_Drawing_PathAddRectWithInitialCorner with the fourth parameter as 0
+    OH_Drawing_PathAddRectWithInitialCorner(path, rect, OH_Drawing_PathDirection::PATH_DIRECTION_CW, 0);
+    // 6. Free memory
+    OH_Drawing_PathDestroy(path);
+    OH_Drawing_RectDestroy(rect);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_1602
+ * @tc.name: testPathAddRectWithInitialCornerAbnormal
+ * @tc.desc: Test for adding a rectangle to a path with initial corner and abnormal data types as parameters.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativePathTest, testPathAddRectWithInitialCornerAbnormal, TestSize.Level3) {
+    // 1. Create a path object by calling OH_Drawing_PathCreate
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // 2. Create a rectangle object by calling OH_Drawing_RectCreate
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 100, 200, 200);
+    // 3. Set the starting point of the path by calling OH_Drawing_PathMoveTo
+    OH_Drawing_PathMoveTo(path, 0, 0);
+    // 4. Add a line segment from the starting point of the path to the target point by calling OH_Drawing_PathLineTo
+    OH_Drawing_PathLineTo(path, 100.0f, 100.0f);
+    // 5. Call OH_Drawing_PathAddRectWithInitialCorner with the fourth parameter as a float or a character
+    OH_Drawing_PathAddRectWithInitialCorner(path, rect, OH_Drawing_PathDirection::PATH_DIRECTION_CW, 5.0f);
+    // 6. Free memory
+    OH_Drawing_PathDestroy(path);
+    OH_Drawing_RectDestroy(rect);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_1603
+ * @tc.name: testPathAddRectWithInitialCornerMaximal
+ * @tc.desc: Test for adding a rectangle to a path with initial corner and maximal values as parameters.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativePathTest, testPathAddRectWithInitialCornerMaximal, TestSize.Level3) {
+    // 1. Create a path object by calling OH_Drawing_PathCreate
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // 2. Create a rectangle object by calling OH_Drawing_RectCreate
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 100, 200, 200);
+    // 3. Set the starting point of the path by calling OH_Drawing_PathMoveTo
+    OH_Drawing_PathMoveTo(path, 0, 0);
+    // 4. Add a line segment from the starting point of the path to the target point by calling OH_Drawing_PathLineTo
+    OH_Drawing_PathLineTo(path, 100, 100);
+    // 5. Call OH_Drawing_PathAddRectWithInitialCorner with the fourth parameter as the maximum value INT32_MAX, no
+    // crash
+    OH_Drawing_PathAddRectWithInitialCorner(path, rect, OH_Drawing_PathDirection::PATH_DIRECTION_CW, INT32_MAX);
+    // 6. Free memory
+    OH_Drawing_PathDestroy(path);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_1700
+ * @tc.name: testPathAddRoundRectNormal
+ * @tc.desc: Test for adding a round rectangle to a path with normal parameters.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativePathTest, testPathAddRoundRectNormal, TestSize.Level0) {
+    // 1. Create a path object by calling OH_Drawing_PathCreate
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // 2. Create a rounded rectangle object by calling OH_Drawing_RoundRectCreate
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 100, 200, 200);
+    OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 20, 20);
+    // 3. Set the starting point of the path by calling OH_Drawing_PathMoveTo
+    OH_Drawing_PathMoveTo(path, 0, 0);
+    // 4. Add a line segment from the starting point of the path to the target point by calling OH_Drawing_PathLineTo
+    OH_Drawing_PathLineTo(path, 100, 100);
+    // 5. Add the rounded rectangle outline to the path with the specified direction by calling
+    // OH_Drawing_PathAddRoundRect. Iterate through the enum to call this interface.
+    OH_Drawing_PathDirection directions[] = {
+        PATH_DIRECTION_CW,
+        PATH_DIRECTION_CCW,
+    };
+    for (int i = 0; i < sizeof(directions) / sizeof(directions[0]); i++) {
+        OH_Drawing_PathAddRoundRect(path, roundRect, directions[i]);
+    }
+    // 6. Free memory
+    OH_Drawing_PathDestroy(path);
+    OH_Drawing_RoundRectDestroy(roundRect);
+    OH_Drawing_RectDestroy(rect);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_1701
+ * @tc.name: testPathAddRoundRectNull
+ * @tc.desc: Test for adding a round rectangle to a path with NULL or invalid parameters.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativePathTest, testPathAddRoundRectNull, TestSize.Level3) {
+    // 1. Create a path object by calling OH_Drawing_PathCreate
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // 2. Create a rounded rectangle object by calling OH_Drawing_RoundRectCreate
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 100, 200, 200);
+    OH_Drawing_RoundRect *roundRect = OH_Drawing_RoundRectCreate(rect, 20, 20);
+    // 3. Call OH_Drawing_PathAddRoundRect with the first parameter as nullptr, expect
+    // OH_DRAWING_ERROR_INVALID_PARAMETER
+    OH_Drawing_PathAddRoundRect(nullptr, roundRect, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 4. Call OH_Drawing_PathAddRoundRect with the second parameter as nullptr, expect
+    // OH_DRAWING_ERROR_INVALID_PARAMETER
+    OH_Drawing_PathAddRoundRect(path, nullptr, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 5. Free memory
+    OH_Drawing_PathDestroy(path);
+    OH_Drawing_RoundRectDestroy(roundRect);
+    OH_Drawing_RectDestroy(rect);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_1800
+ * @tc.name: testPathAddOvalWithInitialPointNormal
+ * @tc.desc: Test for adding an oval to a path with initial point and normal parameters.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativePathTest, testPathAddOvalWithInitialPointNormal, TestSize.Level0) {
+    // 1. Create a path object by calling OH_Drawing_PathCreate
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // 2. Create a rectangle object by calling OH_Drawing_RectCreate
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 100, 200, 200);
+    // 3. Set the starting point of the path by calling OH_Drawing_PathMoveTo
+    OH_Drawing_PathMoveTo(path, 0, 0);
+    // 4. Add a line segment from the starting point of the path to the target point by calling OH_Drawing_PathLineTo
+    OH_Drawing_PathLineTo(path, 100, 100);
+    // 5. Add an oval to the path, where the rectangle object is the bounding rectangle of the oval. Iterate through the
+    // enum to call this interface.
+    OH_Drawing_PathDirection directions[] = {
+        PATH_DIRECTION_CW,
+        PATH_DIRECTION_CCW,
+    };
+    for (int i = 0; i < sizeof(directions) / sizeof(directions[0]); i++) {
+        OH_Drawing_PathAddOvalWithInitialPoint(path, rect, 10, directions[i]);
+    }
+    // 6. Free memory
+    OH_Drawing_PathDestroy(path);
+    OH_Drawing_RectDestroy(rect);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_1801
+ * @tc.name: testPathAddOvalWithInitialPointNull
+ * @tc.desc: Test for adding an oval to a path with initial point and NULL or invalid parameters.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativePathTest, testPathAddOvalWithInitialPointNull, TestSize.Level3) {
+    // 1. Create a path object by calling OH_Drawing_PathCreate
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // 2. Create a rectangle object by calling OH_Drawing_RectCreate
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 100, 200, 200);
+    // 3. Call OH_Drawing_PathAddOvalWithInitialPoint with the first parameter as nullptr, expect
+    // OH_DRAWING_ERROR_INVALID_PARAMETER
+    OH_Drawing_PathAddOvalWithInitialPoint(nullptr, rect, 10, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 4. Call OH_Drawing_PathAddOvalWithInitialPoint with the second parameter as nullptr, expect
+    // OH_DRAWING_ERROR_INVALID_PARAMETER
+    OH_Drawing_PathAddOvalWithInitialPoint(path, nullptr, 10, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 5. Call OH_Drawing_PathAddOvalWithInitialPoint with the third parameter as 0, no crash
+    OH_Drawing_PathAddOvalWithInitialPoint(path, rect, 0, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
+    // 6. Free memory
+    OH_Drawing_PathDestroy(path);
+    OH_Drawing_RectDestroy(rect);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_1802
+ * @tc.name: testPathAddOvalWithInitialPointAbnormal
+ * @tc.desc: Test for adding an oval to a path with initial point and abnormal data types as parameters.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativePathTest, testPathAddOvalWithInitialPointAbnormal, TestSize.Level3) {
+    // 1. Create a path object by calling OH_Drawing_PathCreate
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // 2. Create a rectangle object by calling OH_Drawing_RectCreate
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 100, 200, 200);
+    // 3. Set the starting point of the path by calling OH_Drawing_PathMoveTo
+    OH_Drawing_PathMoveTo(path, 0, 0);
+    // 4. Add a line segment from the starting point of the path to the target point by calling OH_Drawing_PathLineTo
+    OH_Drawing_PathLineTo(path, 100.0f, 100.0f);
+    // 5. Call OH_Drawing_PathAddOvalWithInitialPoint with the third parameter as a float or a character
+    OH_Drawing_PathAddOvalWithInitialPoint(path, rect, 5.0f, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
+    // 6. Free memory
+    OH_Drawing_PathDestroy(path);
+    OH_Drawing_RectDestroy(rect);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_1803
+ * @tc.name: testPathAddOvalWithInitialPointMaximal
+ * @tc.desc: Test for adding an oval to a path with initial point and maximal values as parameters.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativePathTest, testPathAddOvalWithInitialPointMaximal, TestSize.Level3) {
+    // 1. Create a path object by calling OH_Drawing_PathCreate
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // 2. Create a rectangle object by calling OH_Drawing_RectCreate
+    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(100, 100, 200, 200);
+    // 3. Set the starting point of the path by calling OH_Drawing_PathMoveTo
+    OH_Drawing_PathMoveTo(path, 0, 0);
+    // 4. Add a line segment from the starting point of the path to the target point by calling OH_Drawing_PathLineTo
+    OH_Drawing_PathLineTo(path, 100, 100);
+    // 5. Call OH_Drawing_PathAddOvalWithInitialPoint with the third parameter as the maximum value UINT32_MAX + 1, no
+    // crash
+    OH_Drawing_PathAddOvalWithInitialPoint(path, rect, UINT32_MAX + 1, OH_Drawing_PathDirection::PATH_DIRECTION_CW);
+    // 6. Free memory
+    OH_Drawing_PathDestroy(path);
+    OH_Drawing_RectDestroy(rect);
 }
 
 } // namespace Drawing
