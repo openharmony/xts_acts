@@ -26,6 +26,7 @@ import SecurityCryptoFwHmacSyncTestUnit from './SecurityCryptoHmacSync.test'
 import SecurityCryptoFwAgreementSyncTestUnit from './SecurityCryptoFwNegotiateAlgSync.test'
 import SecurityCryptoFwSignVerifySyncTestUnit from './SecurityCryptoFwSignVerify.test'
 import SecurityCryptoFwPkcs1ToPkcs8TestUnit from './SecurityCryptoFwPkcs1ToPkcs8.test'
+import SecurityCryptoFwVectorTestUnit from './SecurityCryptoFwVector.test'
 
 
 export default function testsuite() {
@@ -42,4 +43,5 @@ export default function testsuite() {
   SecurityCryptoFwAgreementSyncTestUnit();
   SecurityCryptoFwSignVerifySyncTestUnit();
   SecurityCryptoFwPkcs1ToPkcs8TestUnit();
+  SecurityCryptoFwVectorTestUnit();
 }
