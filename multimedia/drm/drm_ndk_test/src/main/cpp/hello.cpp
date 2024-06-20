@@ -72,7 +72,12 @@
         }                                                        \
     } while (0)
 #define UNUSED_PARAMETER(P) (P)	
-	
+namespace {
+const int32_t STEP_ONE = 1;
+const int32_t STEP_TWO = 2;
+const int32_t STEP_THREE = 3;
+const int32_t STEP_FOUR = 4;
+}	
 static int getHttp(const char *IPAddr, int port, const char *link, const char *inbuf, unsigned int inbufLen,
                    uint8_t *outbuf, unsigned int *outbufLen) {
     int sockfd, ret, i, h;
@@ -1806,8 +1811,166 @@ static napi_value Test_MediaKeySession_SetMediaKeySessionCallback(napi_env env, 
     napi_create_int32(env, ret, &result);
     return result;
 }
-// add cases
+// add api
+Drm_ErrCode testMediaSystemSetCallBack(MediaKeySystem *mediaKeySystem, DRM_EventType eventType, 
+        uint8_t *info, int32_t infoLen, char *extra){
+    printf("testMediaSystemSetCallBack ok --- eventType is %d \n", eventType);
+    printf("Event: the info body is: ");
+    if(info != nullptr){
+        for(int32_t i=0; i< infoLen; i++){
+            printf("%x",info[i]);
+        }
+    }
+    if(extra != nullptr){
+        printf("\n Event:the extra is: %s \n", extra);
+    }
+    return DRM_ERR_OK;
+}
 
+static napi_value Test_MediaKeySystem_SetCallback(napi_env env, napi_callback_info info) {
+    napi_value result;
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    size_t inSystemLen = 0;
+    char *inSystem = nullptr;
+    size_t callBackLen = 0;
+    char *callBack = nullptr;
+    Drm_ErrCode ret = DRM_ERR_INVALID_VAL;
+    MediaKeySystem *drmKeySystem = nullptr;
+    MediaKeySession *drmKeySession = nullptr;
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    napi_get_value_string_utf8(env, args[0], nullptr, 0, &inSystemLen);
+    inSystem = new char[inSystemLen + 1];
+    napi_get_value_string_utf8(env, args[0], inSystem, inSystemLen + 1, &inSystemLen);
+    napi_get_value_string_utf8(env, args[1], nullptr, 0, &callBackLen);
+    callBack = new char[callBackLen + 1];
+    napi_get_value_string_utf8(env, args[1], callBack, callBackLen + 1, &callBackLen);
+    
+    Drm_ErrCode ret1 = OH_MediaKeySystem_Create(judge_uuid(), &drmKeySystem);
+    MediaKeySystem *sys_ptr = nullptr;
+    OH_MediaKeySystem_Callback callback_ptr = nullptr;
+    if (0 != strcmp(inSystem, " ")) {
+        sys_ptr = drmKeySystem;
+    }
+    if (0 != strcmp(callBack, " ")) {
+        callback_ptr = &testMediaSystemSetCallBack;
+    }    
+    Drm_ErrCode ret2 = OH_MediaKeySystem_SetCallback(sys_ptr, callback_ptr);
+  // triggering events: no provision then createSession failed
+    DRM_CertificateStatus certStatus = CERT_STATUS_UNAVAILABLE;
+    Drm_ErrCode ret3 = OH_MediaKeySystem_GetCertificateStatus(drmKeySystem,&certStatus);  
+    DRM_ContentProtectionLevel sessionLevel = CONTENT_PROTECTION_LEVEL_SW_CRYPTO; 
+    Drm_ErrCode ret4 = OH_MediaKeySystem_CreateMediaKeySession(drmKeySystem,&sessionLevel,&drmKeySession);
+	Drm_ErrCode ret5 = DRM_ERR_OK;
+    if(ret3 == DRM_ERR_OK && certStatus == CERT_STATUS_NOT_PROVISIONED){
+        ret4 = DRM_ERR_OK;
+    }else if(certStatus == CERT_STATUS_PROVISIONED){
+        ret5 = OH_MediaKeySession_Destroy(drmKeySession);  
+    }else;
+    Drm_ErrCode ret6 = OH_MediaKeySystem_Destroy(drmKeySystem);
+    if (ret1 == DRM_ERR_OK && ret3 == DRM_ERR_OK && ret2 == DRM_ERR_OK && ret4 == DRM_ERR_OK && ret5 == DRM_ERR_OK && ret6 == DRM_ERR_OK ) { 
+        ret = DRM_ERR_OK;
+    } else {
+        ret = DRM_ERR_INVALID_VAL;
+    }
+    napi_create_int32(env, ret, &result);
+    return result;
+}
+// session callBack
+Drm_ErrCode sessoinEventCallBackTest(MediaKeySession *mediaKeySessoin, DRM_EventType eventType,
+    uint8_t *info, int32_t infoLen, char *extra)
+{
+    printf("sessoinEventCallBackTest ok");
+    if (mediaKeySessoin == nullptr) {
+        return DRM_ERR_UNKNOWN;
+    }
+    printf("Event: the event type: %d", eventType);
+    printf("Event: the info body is: ");
+    if (info != nullptr) {
+        for (int32_t i = 0; i < infoLen; i++) {
+            printf("%x", info[i]);
+        }
+    }
+    if (extra != nullptr) {
+        printf("Event: the extra is: %s", extra);
+    }
+    return DRM_ERR_OK;
+}
+
+Drm_ErrCode sessoinKeyChangeCallBackTest(MediaKeySession *mediaKeySessoin, DRM_KeysInfo *keysInfo, bool hasNewGoodKeys)
+{
+    printf("sessoinKeyChangeCallBackTest ok");
+    if (mediaKeySessoin == nullptr) {
+        return DRM_ERR_UNKNOWN;
+    }
+    for (uint32_t i = 0; i < keysInfo->keysInfoCount; i++) {
+        for (uint32_t j = 0; j < MAX_KEY_ID_LEN; j += STEP_FOUR) {
+            printf("KeyChangedEvent: keyid is: ");
+            printf("%x %x %x %x",
+                keysInfo->keyId[i][j], keysInfo->keyId[i][j + STEP_ONE],
+                keysInfo->keyId[i][j + STEP_TWO], keysInfo->keyId[i][j + STEP_THREE]);
+        }
+        printf("KeyChangedEvent: statusValue %s", keysInfo->statusValue[i]);
+    }
+    return DRM_ERR_OK;
+}
+static napi_value Test_MediaKeySession_SetCallback(napi_env env, napi_callback_info info) {
+    napi_value result;
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    size_t inSystemLen = 0;
+    char *inSystem = nullptr;
+    size_t callBackLen = 0;
+    char *callBack = nullptr;
+    Drm_ErrCode ret = DRM_ERR_INVALID_VAL;
+    MediaKeySystem *drmKeySystem = nullptr;
+    MediaKeySession *drmKeySession = nullptr;
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    napi_get_value_string_utf8(env, args[0], nullptr, 0, &inSystemLen);
+    inSystem = new char[inSystemLen + 1];
+    napi_get_value_string_utf8(env, args[0], inSystem, inSystemLen + 1, &inSystemLen);
+    napi_get_value_string_utf8(env, args[1], nullptr, 0, &callBackLen);
+    callBack = new char[callBackLen + 1];
+    napi_get_value_string_utf8(env, args[1], callBack, callBackLen + 1, &callBackLen);
+    
+    Drm_ErrCode ret1 = OH_MediaKeySystem_Create(judge_uuid(), &drmKeySystem);
+    DRM_ContentProtectionLevel sessionLevel = CONTENT_PROTECTION_LEVEL_SW_CRYPTO; 
+    Drm_ErrCode ret2 = OH_MediaKeySystem_CreateMediaKeySession(drmKeySystem,&sessionLevel,&drmKeySession);
+    // triggering events: no key
+    DRM_OfflineMediakeyIdArray mediaKeyIds;
+    Drm_ErrCode ret3 = OH_MediaKeySystem_GetOfflineMediaKeyIds(drmKeySystem, &mediaKeyIds); 
+    if(ret3 == DRM_ERR_OK){
+        for(int j = 0; j< mediaKeyIds.idsCount; j++){
+            OH_MediaKeySystem_ClearOfflineMediaKeys(drmKeySystem,&mediaKeyIds.ids[j][0], mediaKeyIds.idsLen[j]);
+        }
+    }
+    OH_MediaKeySession_Callback testcallback;
+    memset(&testcallback, 0, sizeof(OH_MediaKeySession_Callback));
+    testcallback.eventCallback = &sessoinEventCallBackTest;
+    testcallback.keyChangeCallback = &sessoinKeyChangeCallBackTest;
+    MediaKeySession *session_ptr = nullptr;
+    OH_MediaKeySession_Callback *callback_ptr = nullptr;
+    if (0 != strcmp(inSystem, " ")) {
+        session_ptr = drmKeySession;
+    }
+    if (0 != strcmp(callBack, " ")) {
+        callback_ptr = &testcallback;
+    }    
+    Drm_ErrCode ret4 = OH_MediaKeySession_SetCallback(session_ptr, callback_ptr);
+  // triggering events: no provision then createSession failed
+    uint8_t keyData[DATA_BUFF_LEN] = {0};
+    int32_t keyDataLen = DATA_BUFF_LEN;
+    getLicense(drmKeySession, LICENSE_OFFLINE,keyData,&keyDataLen);
+    Drm_ErrCode ret5 = OH_MediaKeySession_Destroy(drmKeySession);    
+    Drm_ErrCode ret6 = OH_MediaKeySystem_Destroy(drmKeySystem);
+    if (ret1 == DRM_ERR_OK && ret3 == DRM_ERR_OK && ret2 == DRM_ERR_OK && ret4 == DRM_ERR_OK && ret5 == DRM_ERR_OK && ret6 == DRM_ERR_OK ) { 
+        ret = DRM_ERR_OK;
+    } else {
+        ret = DRM_ERR_INVALID_VAL;
+    }
+    napi_create_int32(env, ret, &result);
+    return result;
+}
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports) {
     napi_property_descriptor desc[] = {
@@ -1868,6 +2031,10 @@ static napi_value Init(napi_env env, napi_value exports) {
          nullptr, nullptr, napi_default, nullptr},
         {"Test_MediaKeySystem_ClearOfflineMediaKeys", nullptr, Test_MediaKeySystem_ClearOfflineMediaKeys, nullptr,
          nullptr, nullptr, napi_default, nullptr},
+        {"Test_MediaKeySystem_SetCallback", nullptr, Test_MediaKeySystem_SetCallback, nullptr,
+         nullptr, nullptr, napi_default, nullptr},    
+        {"Test_MediaKeySession_SetCallback", nullptr, Test_MediaKeySession_SetCallback, nullptr,
+         nullptr, nullptr, napi_default, nullptr},   		 
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
