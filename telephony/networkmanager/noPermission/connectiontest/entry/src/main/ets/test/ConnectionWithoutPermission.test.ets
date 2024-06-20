@@ -16,6 +16,9 @@
 import { describe, expect, it } from '@ohos/hypium';
 import connection from '@ohos.net.connection';
 import { BusinessError } from '@ohos.base';
+import hilog from '@ohos.hilog';
+
+const NOT_PERMISSION = 201
 
 const ExpectFail: () => void = () => {
   try {
@@ -620,6 +623,239 @@ export default function ConnectionWithoutPermissionTest() {
         console.info(`${caseName} test failed err: ${JSON.stringify(err)}`);
         ExpectFail();
         console.info(`${caseName}---End`);
+        done();
+      }
+    });
+
+    /*
+    * @tc.number:SUB_NetworkMgr_Connection_GetAddressByName_Callback_Nop_100
+    * @tc.name: testNetworkMgrConnectionGetAddressByNameCallbackNop100
+    * @tc.desc:Using the on method without permission
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
+    */
+    it('testNetworkMgrConnectionGetAddressByNameCallbackNop100', 0, async (done: Function) => {
+      hilog.info(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetAddressByNameCallbackNop100 begin');
+      try {
+        let host = "xxxx";
+        connection.getDefaultNetSync().getAddressByName(host, (error: BusinessError, data: connection.NetAddress) => {
+          if (error) {
+            hilog.error(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetAddressByNameCallbackNop100 fail' + JSON.stringify(error));
+            expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+            done();
+          } else {
+            hilog.info(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetAddressByNameCallbackNop100 success');
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (error) {
+        hilog.error(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetAddressByNameCallbackNop100 failed ' + JSON.stringify(error));
+        expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+        done();
+      }
+    });
+
+    /*
+     * @tc.number:SUB_NetworkMgr_Connection_GetAddressByName_Promise_Nop_200
+     * @tc.name: testNetworkMgrConnectionGetAddressByNamePromiseNop200
+     * @tc.desc:Using the on method without permission
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('testNetworkMgrConnectionGetAddressByNamePromiseNop200', 0, async (done: Function) => {
+      hilog.info(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetAddressByNamePromiseNop200 begin');
+      try {
+        let host = "xxxx";
+        connection.getDefaultNetSync().getAddressByName(host).then((data: connection.NetAddress) => {
+          hilog.info(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetAddressByNamePromiseNop200 success');
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          hilog.error(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetAddressByNamePromiseNop200 fail' + JSON.stringify(err));
+          expect(Number(err.code)).assertEqual(NOT_PERMISSION);
+          done();
+        });
+      } catch (error) {
+        hilog.error(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetAddressByNamePromiseNop200 failed ' + JSON.stringify(error));
+        expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+        done();
+      }
+    });
+
+    /*
+     * @tc.number:SUB_NetworkMgr_Connection_GetAddressesByName_Promise_Array_NetAddress_Nop_300
+     * @tc.name: testNetworkMgrConnectionGetAddressesByNamePromiseArrayNetAddressNop300
+     * @tc.desc:Using the on method without permission
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('testNetworkMgrConnectionGetAddressesByNamePromiseArrayNetAddressNop300', 0, async (done: Function) => {
+      hilog.info(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetAddressesByNamePromiseArrayNetAddressNop300 begin');
+      try {
+        let host = "xxxx";
+        connection.getDefaultNetSync().getAddressesByName(host).then((data: connection.NetAddress[]) => {
+          hilog.info(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetAddressesByNamePromiseArrayNetAddressNop300 success');
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          hilog.error(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetAddressesByNamePromiseArrayNetAddressNop300 fail' + JSON.stringify(err));
+          expect(Number(err.code)).assertEqual(NOT_PERMISSION);
+          done();
+        });
+      } catch (error) {
+        hilog.error(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetAddressesByNamePromiseArrayNetAddressNop300 failed ' + JSON.stringify(error));
+        expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+        done();
+      }
+    });
+
+    /*
+     * @tc.number:SUB_NetworkMgr_Connection_GetAddressesByName_Callback_Array_NetAddress_Nop_400
+     * @tc.name: testNetworkMgrConnectionGetAddressesByNameCallbackArrayNetAddressNop400
+     * @tc.desc:Using the on method without permission
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('testNetworkMgrConnectionGetAddressesByNameCallbackArrayNetAddressNop400', 0, async (done: Function) => {
+      hilog.info(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetAddressesByNameCallbackArrayNetAddressNop400 begin');
+      try {
+        let host = "xxxx";
+        connection.getDefaultNetSync()
+          .getAddressesByName(host, (error: BusinessError, data: connection.NetAddress[]) => {
+            if (error) {
+              hilog.error(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetAddressesByNameCallbackArrayNetAddressNop400 fail' + JSON.stringify(error));
+              expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+              done();
+            } else {
+              hilog.info(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetAddressesByNameCallbackArrayNetAddressNop400 success');
+              expect().assertFail();
+              done();
+            }
+          });
+      } catch (error) {
+        hilog.error(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetAddressesByNameCallbackArrayNetAddressNop400 failed ' + JSON.stringify(error));
+        expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+        done();
+      }
+    });
+
+    /*
+     * @tc.number:SUB_NetworkMgr_Connection_GetNetCapabilities_Callback_Nop_500
+     * @tc.name: testNetworkMgrConnectionGetNetCapabilitiesCallbackNop500
+     * @tc.desc:Using the on method without permission
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('testNetworkMgrConnectionGetNetCapabilitiesCallbackNop500', 0, async (done: Function) => {
+      hilog.info(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetNetCapabilitiesCallbackNop500 begin');
+      try {
+        let netHandle = connection.getDefaultNetSync();
+        connection.getNetCapabilities(netHandle, (error: BusinessError, data: connection.NetCapabilities) => {
+          if (error) {
+            hilog.error(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetNetCapabilitiesCallbackNop500 fail ' + JSON.stringify(error));
+            expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+            done();
+          } else {
+            hilog.info(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetNetCapabilitiesCallbackNop500 success');
+            expect().assertFail();
+            done();
+          }
+        })
+      } catch (error) {
+        hilog.error(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetNetCapabilitiesCallbackNop500 failed ' + JSON.stringify(error));
+        expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+        done();
+      }
+    });
+
+    /*
+     * @tc.number:SUB_NetworkMgr_Connection_GetNetCapabilities_Promise_Nop_600
+     * @tc.name: testNetworkMgrConnectionGetNetCapabilitiesPromiseNop600
+     * @tc.desc:Using the on method without permission
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('testNetworkMgrConnectionGetNetCapabilitiesPromiseNop600', 0, async (done: Function) => {
+      hilog.info(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetNetCapabilitiesPromiseNop600 begin');
+      try {
+        let netHandle = connection.getDefaultNetSync();
+        connection.getNetCapabilities(netHandle).then((data: connection.NetCapabilities) => {
+          hilog.info(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetNetCapabilitiesPromiseNop600 success');
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          hilog.error(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetNetCapabilitiesPromiseNop600 fail ' + JSON.stringify(err));
+          expect(Number(err.code)).assertEqual(NOT_PERMISSION);
+          done();
+        });
+      } catch (error) {
+        hilog.error(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetNetCapabilitiesPromiseNop600 failed ' + JSON.stringify(error));
+        expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+        done();
+      }
+    });
+
+    /*
+     * @tc.number:SUB_NetworkMgr_Connection_GetConnectionProperties_Promise_Nop_700
+     * @tc.name: testNetworkMgrConnectionGetConnectionPropertiesPromiseNop700
+     * @tc.desc:Using the on method without permission
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('testNetworkMgrConnectionGetConnectionPropertiesPromiseNop700', 0, async (done: Function) => {
+      hilog.info(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetConnectionPropertiesPromiseNop700 begin');
+      try {
+        let netHandle = connection.getDefaultNetSync();
+        connection.getConnectionProperties(netHandle).then((data: connection.ConnectionProperties) => {
+          hilog.info(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetConnectionPropertiesPromiseNop700 success');
+          expect().assertFail();
+          done();
+        }).catch((err: BusinessError) => {
+          hilog.error(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetConnectionPropertiesPromiseNop700 fail ' + JSON.stringify(err));
+          expect(Number(err.code)).assertEqual(NOT_PERMISSION);
+          done();
+        });
+      } catch (error) {
+        hilog.error(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetConnectionPropertiesPromiseNop700 failed ' + JSON.stringify(error));
+        expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+        done();
+      }
+    });
+
+    /*
+     * @tc.number:SUB_NetworkMgr_Connection_GetConnectionProperties_Callback_Nop_800
+     * @tc.name: testNetworkMgrConnectionGetConnectionPropertiesCallbackNop800
+     * @tc.desc:Using the on method without permission
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('testNetworkMgrConnectionGetConnectionPropertiesCallbackNop800', 0, async (done: Function) => {
+      hilog.info(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetConnectionPropertiesCallbackNop800 begin');
+      try {
+        let netHandle = connection.getDefaultNetSync();
+        connection.getConnectionProperties(netHandle, (error: BusinessError, data: connection.ConnectionProperties) => {
+          if (error) {
+            hilog.error(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetConnectionPropertiesCallbackNop800 fail ' + JSON.stringify(error));
+            expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+            done();
+          } else {
+            hilog.info(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetConnectionPropertiesCallbackNop800 success');
+            expect().assertFail();
+            done();
+          }
+        })
+      } catch (error) {
+        hilog.error(0x0000, 'ConnectionTag', '%{public}s', 'testNetworkMgrConnectionGetConnectionPropertiesCallbackNop800 failed ' + JSON.stringify(error));
+        expect(Number(error.code)).assertEqual(NOT_PERMISSION);
         done();
       }
     });
