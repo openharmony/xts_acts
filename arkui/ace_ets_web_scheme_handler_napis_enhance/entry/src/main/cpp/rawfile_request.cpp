@@ -89,6 +89,8 @@ void RawfileRequest::Start() {
     OH_ArkWebResourceRequest_GetUrl(resourceRequest_, &url);
     
     std::string urlStr(url);
+    reqUrl_ = urlStr;
+    
     std::size_t position = urlStr.rfind('/');
     if (position != std::string::npos) {
         rawfilePath_ = urlStr.substr(position + 1);
@@ -104,10 +106,11 @@ void RawfileRequest::Start() {
     }
 
     if (stream_) {
+        haveBodyStream_ = 0;
         OH_LOG_ERROR(LOG_APP, "have http body stream");
         OH_ArkWebHttpBodyStream_SetUserData(stream_, this);
-        OH_ArkWebHttpBodyStream_SetReadCallback(stream_, (ArkWeb_HttpBodyStreamReadCallback)ReadCallback);
-        OH_ArkWebHttpBodyStream_Init(stream_, (ArkWeb_HttpBodyStreamInitCallback)InitCallback);
+        isRead_ = OH_ArkWebHttpBodyStream_SetReadCallback(stream_, (ArkWeb_HttpBodyStreamReadCallback)ReadCallback);
+        isInit_ = OH_ArkWebHttpBodyStream_Init(stream_, (ArkWeb_HttpBodyStreamInitCallback)InitCallback);
         
     } else {
         ReadRawfileOnWorkerThread(reinterpret_cast<void *>(this));
@@ -123,7 +126,8 @@ void RawfileRequest::ReadRawfileDataOnWorkerThread() {
     } urlInfos[] = {
                     {"post_data.html", "text/html"},
                     {"chunked_post_stream.html", "text/html"},
-                    {"xhr", "application/json"}};
+                    {"xhr", "application/json"}
+    };
 
     if (!resourceManager()) {
         OH_LOG_ERROR(LOG_APP, "read rawfile error, resource manager is nullptr.");
@@ -150,8 +154,8 @@ void RawfileRequest::ReadRawfileDataOnWorkerThread() {
     OH_ArkWebResponse_SetCharset(response(), "UTF-8");
 
     long len = OH_ResourceManager_GetRawFileSize(rawfile);
-    OH_ArkWebResponse_SetHeaderByName(response(), "content-length", std::to_string(len).c_str(), false);
-    OH_ArkWebResponse_SetHeaderByName(response(), "Access-Control-Allow-Origin", "*", false);
+    haveResponse_ = OH_ArkWebResponse_SetHeaderByName(response(), "content-length", std::to_string(len).c_str(), false);
+    haveResponse_ = OH_ArkWebResponse_SetHeaderByName(response(), "Access-Control-Allow-Origin", "*", false);
     
     DidReceiveResponse();
 
@@ -179,7 +183,7 @@ void RawfileRequest::Stop() {
         OH_ArkWeb_DestroyResponse(response_);
     }
     OH_ArkWebResourceRequest_Destroy(resourceRequest_);
-    OH_ArkWebResourceHandler_Destroy(resourceHandler_);
+    haveResourceHandler_ = OH_ArkWebResourceHandler_Destroy(resourceHandler_);
 }
 
 void RawfileRequest::DidReceiveResponse() {
@@ -258,4 +262,10 @@ int32_t RawfileRequest::setHeaderByName() {
     } else {
         return -1;
     }
+}
+
+int32_t RawfileRequest::getRequestHeaderList() {
+	ArkWeb_RequestHeaderList* headerList;
+	OH_ArkWebResourceRequest_GetRequestHeaders(resourceRequest_, &headerList);
+	return OH_ArkWebRequestHeaderList_GetSize(headerList);
 }

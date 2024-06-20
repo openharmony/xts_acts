@@ -47,7 +47,7 @@ struct webRegisterCustomsComponent {
     console.error("aboutToAppear registerCustomSchemes")
     testNapi.registerCustomSchemes()
     web_webview.WebviewController.initializeWebEngine();
-    testNapi.setSchemeHandler();
+    this.isSet = testNapi.setSchemeHandler();
 
     console.error("aboutToAppear setSchemeHandler" + this.isSet)
     console.error("aboutToAppear registerCustomSchemes End")
@@ -175,6 +175,130 @@ struct webRegisterCustomsComponent {
               break;
             }
 
+            case "emitWeb_SchemeHandler": {
+              await Utils.sleep(1000);
+              console.log("emitWeb_SchemeHandler ==>");
+              console.log("emitWeb_SchemeHandler ==>" + this.isSet);
+
+              if (this.isSet == 0) {
+                Utils.emitEvent(true, 1006);
+              } else {
+                Utils.emitEvent(false, 1006);
+              }
+              break;
+            }
+
+            case "emitWeb_ResourceHandler": {
+              await Utils.sleep(1000);
+              console.log("emitWeb_ResourceHandler ==>");
+
+              let result:number = testNapi.resourceHandler();
+              await Utils.sleep(1000);
+              console.log("emitWeb_ResourceHandler ==>" + result);
+
+              if (result == 0) {
+                Utils.emitEvent(true, 1007);
+              } else {
+                Utils.emitEvent(false, 1007);
+              }
+              break;
+            }
+
+            case "emitWeb_Response": {
+              await Utils.sleep(1000);
+              console.log("emitWeb_Response ==>");
+
+              let result:number = testNapi.response();
+              await Utils.sleep(1000);
+              console.log("emitWeb_Response ==>" + result);
+
+              if (result == 0) {
+                Utils.emitEvent(true, 1008);
+              } else {
+                Utils.emitEvent(false, 1008);
+              }
+              break;
+            }
+
+            case "emitWeb_ResourceRequest": {
+              await Utils.sleep(1000);
+              console.log("emitWeb_ResourceRequest ==>");
+
+              let result:number = testNapi.resourceRequest();
+              await Utils.sleep(1000);
+              console.log("emitWeb_ResourceRequest ==>" + result);
+
+              if (result == 0) {
+                Utils.emitEvent(true, 1009);
+              } else {
+                Utils.emitEvent(false, 1009);
+              }
+              break;
+            }
+
+            case "emitWeb_RequestHeaderList": {
+              await Utils.sleep(1000);
+              console.log("emitWeb_RequestHeaderList ==>");
+
+              let result:number = testNapi.requestHeaderList();
+              await Utils.sleep(1000);
+              console.log("emitWeb_RequestHeaderList ==>" + result);
+
+              if (result == 0) {
+                Utils.emitEvent(true, 1010);
+              } else {
+                Utils.emitEvent(false, 1010);
+              }
+              break;
+            }
+
+            case "emitWeb_HttpBodyStream": {
+              await Utils.sleep(1000);
+              console.log("emitWeb_HttpBodyStream ==>");
+
+              let result:number = testNapi.httpBodyStream();
+              await Utils.sleep(1000);
+              console.log("emitWeb_HttpBodyStream ==>" + result);
+
+              if (result == 0) {
+                Utils.emitEvent(true, 1011);
+              } else {
+                Utils.emitEvent(false, 1011);
+              }
+              break;
+            }
+
+            case "emitWeb_HttpBodyStreamInitCallback": {
+              await Utils.sleep(1000);
+              console.log("emitWeb_HttpBodyStreamInitCallback ==>");
+
+              let result:number = testNapi.httpBodyStreamInitCallback();
+              await Utils.sleep(1000);
+              console.log("emitWeb_HttpBodyStreamInitCallback ==>" + result);
+
+              if (result == 0) {
+                Utils.emitEvent(true, 1012);
+              } else {
+                Utils.emitEvent(false, 1012);
+              }
+              break;
+            }
+
+            case "emitWeb_HttpBodyStreamReadCallback": {
+              await Utils.sleep(1000);
+              console.log("emitWeb_HttpBodyStreamReadCallback ==>");
+
+              let result:number = testNapi.httpBodyStreamReadCallback();
+              await Utils.sleep(1000);
+              console.log("emitWeb_HttpBodyStreamReadCallback ==>" + result);
+
+              if (result == 0) {
+                Utils.emitEvent(true, 1013);
+              } else {
+                Utils.emitEvent(false, 1013);
+              }
+              break;
+            }
           }
         })
       }

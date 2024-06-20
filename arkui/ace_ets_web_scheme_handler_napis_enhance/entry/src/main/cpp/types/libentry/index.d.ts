@@ -16,10 +16,18 @@ import  resourceManager  from "@ohos.resourceManager";
 
 
 export const registerCustomSchemes: () => void;
-export const setSchemeHandler: () => void;
+export const setSchemeHandler: () => number;
 export const initResourceManager: (resmgr: resourceManager.ResourceManager) => void;
 export const getNativeAPI: () => number;
 export const releaseString: () => number;
 export const releaseByteArray: () => number;
 export const destroyHttpBodyStream: () => number;
 export const setHeaderByName: () => number;
+
+export const resourceHandler: () => number;
+export const response: () => number;
+export const resourceRequest: () => number;
+export const requestHeaderList: () => number;
+export const httpBodyStream: () => number;
+export const httpBodyStreamInitCallback: () => number;
+export const httpBodyStreamReadCallback: () => number;

@@ -50,6 +50,13 @@ public:
     int32_t destroyHttpBodyStream();
     int32_t setHeaderByName();
     
+    int32_t getRequestHeaderList();
+    const std::string reqUrl() { return reqUrl_; };
+    int32_t haveBodyStream() { return haveBodyStream_; };
+    int32_t isInit() { return isInit_; };
+    int32_t isRead() { return isRead_; };
+    int32_t haveResponse() { return haveResponse_; };
+    int32_t haveResourceHandler() { return haveResourceHandler_; };
 
 private:
     const ArkWeb_ResourceRequest *resourceRequest_{nullptr};
@@ -60,6 +67,14 @@ private:
     std::string rawfilePath_;
     ArkWeb_HttpBodyStream *stream_{nullptr};
     std::mutex mutex_;
+    
+    std::string reqUrl_{"test"};
+    int32_t haveBodyStream_{-1};
+    int32_t isInit_{-1};
+    int32_t isRead_{-1};
+    int32_t haveResponse_{-1};
+    int32_t haveResourceHandler_{-1};
+    
 };
 
 #endif //TESTRAWFILE_RAWFILE_REQUEST_H

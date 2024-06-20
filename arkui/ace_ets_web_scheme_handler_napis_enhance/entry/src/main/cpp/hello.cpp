@@ -33,6 +33,14 @@ int32_t testReleaseByteArray = -1;
 int32_t testDestroyHttpBodyStream = -1;
 int32_t testSetHeaderByName = -1;
 
+int32_t testResourceHandler = -1;
+int32_t testResponse = -1;
+std::string testResourceRequest("test");
+int32_t testRequestHeaderList = -1;
+int32_t testHttpBodyStream = -1;
+int32_t testHttpBodyStreamInitCallback = -1;
+int32_t testHttpBodyStreamReadCallback = -1;
+
 // 注册三方协议的配置，需要在Web内核初始化之前调用，否则会注册失败。
 static napi_value RegisterCustomSchemes(napi_env env, napi_callback_info info) 
 {
@@ -56,7 +64,13 @@ void OnURLRequestStart(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resourc
     testReleaseString = request->releaseString();
     testReleaseByteArray = request->releaseByteArray();
     testSetHeaderByName = request->setHeaderByName();
-
+    
+    testHttpBodyStream = request->haveBodyStream();
+    testRequestHeaderList = request->getRequestHeaderList();
+    testResourceRequest = request->reqUrl();
+    testHttpBodyStreamInitCallback = request->isInit();
+    testHttpBodyStreamReadCallback = request->isRead();
+    
     OH_ArkWebSchemeHandler_GetUserData(schemeHandler);
 }
 
@@ -72,6 +86,9 @@ void OnURLRequestStop(const ArkWeb_SchemeHandler *schemeHandler, const ArkWeb_Re
     if (rawfileRequest) {
         rawfileRequest->Stop();
         testDestroyHttpBodyStream = rawfileRequest->destroyHttpBodyStream();
+        
+        testResponse = rawfileRequest->haveResponse();
+        testResourceHandler = rawfileRequest->haveResourceHandler();
     }
     
     OH_ArkWebSchemeHandler_SetUserData(g_schemeHandler, rawfileRequest);
@@ -82,6 +99,7 @@ void OnURLRequestStop(const ArkWeb_SchemeHandler *schemeHandler, const ArkWeb_Re
 static napi_value SetSchemeHandler(napi_env env, napi_callback_info info) 
 {
     OH_LOG_INFO(LOG_APP, "set scheme handler");
+    napi_value result;
 
     OH_ArkWeb_CreateSchemeHandler(&g_schemeHandler);
     OH_ArkWeb_CreateSchemeHandler(&g_schemeHandlerForSW);
@@ -93,7 +111,13 @@ static napi_value SetSchemeHandler(napi_env env, napi_callback_info info)
     OH_ArkWebSchemeHandler_SetOnRequestStop(g_schemeHandlerForSW, OnURLRequestStop);
     OH_ArkWeb_SetSchemeHandler("custom", "scheme-handler", g_schemeHandler);
     OH_ArkWebServiceWorker_SetSchemeHandler("custom", g_schemeHandlerForSW);
-    return nullptr;
+    
+    OH_ArkWeb_SetSchemeHandler("http", "scheme-handler", g_schemeHandler);
+    OH_ArkWeb_SetSchemeHandler("https", "scheme-handler", g_schemeHandler);
+    OH_ArkWebServiceWorker_SetSchemeHandler("https", g_schemeHandlerForSW);
+    
+    napi_create_int32(env, 0, &result);
+    return result;
 }
 
 static napi_value InitResourceManager(napi_env env, napi_callback_info info) 
@@ -168,6 +192,97 @@ static napi_value SetHeaderByName(napi_env env, napi_callback_info info)
     return result;
 }
 
+static napi_value ResourceHandler(napi_env env, napi_callback_info info) 
+{
+    napi_value result;
+    OH_LOG_INFO(LOG_APP, "ArkWeb_ResourceHandler");
+
+    if (testResourceHandler == 0) {
+        napi_create_int32(env, 0, &result);
+    } else {
+        napi_create_int32(env, -1, &result);
+    }
+    return result;
+}
+
+static napi_value Response(napi_env env, napi_callback_info info) 
+{
+    napi_value result;
+    OH_LOG_INFO(LOG_APP, "ArkWeb_Response");
+
+    if (testResponse == 0) {
+        napi_create_int32(env, 0, &result);
+    } else {
+        napi_create_int32(env, -1, &result);
+    }
+    return result;
+}
+
+static napi_value ResourceRequest(napi_env env, napi_callback_info info) 
+{
+    napi_value result;
+    OH_LOG_INFO(LOG_APP, "ArkWeb_ResourceRequest ");
+
+    if (testResourceRequest != "test") {
+        napi_create_int32(env, 0, &result);
+    } else {
+        napi_create_int32(env, -1, &result);
+    }
+    return result;
+}
+
+static napi_value RequestHeaderList(napi_env env, napi_callback_info info) 
+{
+    napi_value result;
+    OH_LOG_INFO(LOG_APP, "ArkWeb_RequestHeaderList ");
+
+    if (testRequestHeaderList != -1) {
+        napi_create_int32(env, 0, &result);
+    } else {
+        napi_create_int32(env, -1, &result);
+    }
+    return result;
+}
+
+static napi_value HttpBodyStream(napi_env env, napi_callback_info info) 
+{
+    napi_value result;
+    OH_LOG_INFO(LOG_APP, "ArkWeb_HttpBodyStream  ");
+
+    if (testHttpBodyStream == 0) {
+        napi_create_int32(env, 0, &result);
+    } else {
+        napi_create_int32(env, -1, &result);
+    }
+    return result;
+}
+
+static napi_value HttpBodyStreamInitCallback(napi_env env, napi_callback_info info) 
+{
+    napi_value result;
+    OH_LOG_INFO(LOG_APP, "ArkWeb_HttpBodyStreamInitCallback");
+
+    if (testHttpBodyStreamInitCallback == 0) {
+        napi_create_int32(env, 0, &result);
+    } else {
+        napi_create_int32(env, -1, &result);
+    }
+    return result;
+}
+
+static napi_value HttpBodyStreamReadCallback(napi_env env, napi_callback_info info) 
+{
+    napi_value result;
+    OH_LOG_INFO(LOG_APP, "ArkWeb_HttpBodyStreamReadCallback ");
+
+    if (testHttpBodyStreamReadCallback == 0) {
+        napi_create_int32(env, 0, &result);
+    } else {
+        napi_create_int32(env, -1, &result);
+    }
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports) {
     napi_property_descriptor desc[] = {
@@ -179,6 +294,15 @@ static napi_value Init(napi_env env, napi_value exports) {
         {"releaseByteArray", nullptr, ReleaseByteArray, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"destroyHttpBodyStream", nullptr, DestroyHttpBodyStream, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"setHeaderByName", nullptr, SetHeaderByName, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"resourceHandler", nullptr, ResourceHandler, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"response", nullptr, Response, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"resourceRequest", nullptr, ResourceRequest, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"requestHeaderList", nullptr, RequestHeaderList, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"httpBodyStream", nullptr, HttpBodyStream, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"httpBodyStreamInitCallback", nullptr, HttpBodyStreamInitCallback, nullptr, nullptr, nullptr, napi_default, 
+    nullptr},
+        {"httpBodyStreamReadCallback", nullptr, HttpBodyStreamReadCallback, nullptr, nullptr, nullptr, napi_default, 
+    nullptr},
     };
 
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
