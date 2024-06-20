@@ -22,7 +22,9 @@
 @rem    Add %NODE_HOME%/bin to the PATH environment variable
 @rem ----------------------------------------------------------------------------
 @rem
+
 @echo off
+@if NOT "%DEBUG%" == "" @echo on
 
 @rem Set local scope for the variables with windows NT shell
 if "%OS%"=="Windows_NT" setlocal
