@@ -2680,18 +2680,6 @@ export const testDrawableDescriptorCreate003: () => number;
 
 export const testNodeContent001: () => number;
 
-export const testNodeContent002: () => number;
-
-export const testNodeContent003: () => number;
-
-export const testNodeContent004: () => number;
-
-export const testNodeContent005: () => number;
-
-export const testNodeContent006: () => number;
-
-export const testNodeContent007: () => number;
-
 export const testNativeXComponent001: () => number;
 
 export const testMouseEvent001: () => number;
