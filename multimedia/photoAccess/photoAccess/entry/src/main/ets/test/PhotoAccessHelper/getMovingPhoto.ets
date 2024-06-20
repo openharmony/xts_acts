@@ -314,6 +314,7 @@ export default function getMovingPhotoTest() {
        // export moving photo:: video and photo
       class MovingPhotoHandler implements photoAccessHelper.MediaAssetDataHandler<photoAccessHelper.MovingPhoto> {
         async onDataPrepared(movingPhoto: photoAccessHelper.MovingPhoto) {
+            console.log("MovingPhotoHandler::movingPhoto onDataPrepared");
             let imageFileUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/phone/photos/" + imageFileName;
             let videoFileUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/phone/photos/" + videoFileName;
             await movingPhoto.requestContent(imageFileUri, videoFileUri);
@@ -330,6 +331,7 @@ export default function getMovingPhotoTest() {
       // export moving photo:: only photo
       class PhotoHandler implements photoAccessHelper.MediaAssetDataHandler<photoAccessHelper.MovingPhoto> {
         async onDataPrepared(movingPhoto: photoAccessHelper.MovingPhoto) {
+          console.log("PhotoHandler::movingPhoto onDataPrepared");
           let imageFileUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/phone/photos/test_picture.jpg";
           await movingPhoto.requestContent(photoAccessHelper.ResourceType.IMAGE_RESOURCE, imageFileUri);
           console.log("moving photo image content retrieved successfully");
@@ -339,6 +341,7 @@ export default function getMovingPhotoTest() {
       // export moving photo:: only video
       class VideoHandler implements photoAccessHelper.MediaAssetDataHandler<photoAccessHelper.MovingPhoto> {
         async onDataPrepared(movingPhoto: photoAccessHelper.MovingPhoto) {
+          console.log("VideoHandler::movingPhoto onDataPrepared");
           let videoFileUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/phone/photos/test_video.mp4";
           await movingPhoto.requestContent(photoAccessHelper.ResourceType.VIDEO_RESOURCE, videoFileUri);
           console.log("moving photo video content retrieved successfully");
@@ -347,6 +350,7 @@ export default function getMovingPhotoTest() {
       // export moving photo:: ArrayBuffer
       class ArrayBufferHandler implements photoAccessHelper.MediaAssetDataHandler<photoAccessHelper.MovingPhoto> {
         async onDataPrepared(movingPhoto: photoAccessHelper.MovingPhoto) {
+          console.log("ArrayBufferHandler::movingPhoto onDataPrepared");
           let buffer: ArrayBuffer = await movingPhoto.requestContent(photoAccessHelper.ResourceType.IMAGE_RESOURCE);
           if (buffer == undefined || buffer.byteLength <= 0) {
             console.error(`ArrayBufferHandler :: failed to request content ArrayBuffer !`);
