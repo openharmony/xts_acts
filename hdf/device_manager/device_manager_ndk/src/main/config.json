@@ -90,6 +90,11 @@
             "srcPath": "TestRunner"
         },
         "mainAbility": ".MainAbility",
-        "srcPath": ""
+        "srcPath": "",
+        "reqPermissions": [
+            {
+              "name": "ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER"
+            }
+        ]
     }
 }
