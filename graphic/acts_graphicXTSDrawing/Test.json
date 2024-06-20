@@ -21,7 +21,7 @@
         },
         {
             "test-file-name": [
-                "ActsGraphicXTSDrawingTest.hap"
+                "ActsDrawingTsTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

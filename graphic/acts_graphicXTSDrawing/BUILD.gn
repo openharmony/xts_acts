@@ -13,7 +13,7 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsGraphicXTSDrawingTest") {
+ohos_js_hap_suite("ActsDrawingTsTest") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   deps = [
@@ -22,7 +22,7 @@ ohos_js_hap_suite("ActsGraphicXTSDrawingTest") {
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ActsGraphicXTSDrawingTest"
+  hap_name = "ActsDrawingTsTest"
   subsystem_name = "window"
   part_name = "window_manager"
 }

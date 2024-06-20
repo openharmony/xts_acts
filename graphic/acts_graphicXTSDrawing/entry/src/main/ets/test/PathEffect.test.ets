@@ -18,18 +18,11 @@ import image from '@ohos.multimedia.image';
 import drawing from '@ohos.graphics.drawing';
 
 export default function pathEffectTest() {
-  describe('pathEffect_test', () => {
-    let pixel: image.PixelMap;
+  describe('DrawingTsPathEffectTest', () => {
     const DEFAULT = 0;
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(async () => {
-      const color: ArrayBuffer = new ArrayBuffer(40000); // 96为需要创建的像素buffer大小，取值为：height * width *4
-      let opts: image.InitializationOptions = {
-        editable: true, pixelFormat: 3, size: {
-          height: 100, width: 100
-        }
-      }
-      pixel = await image.createPixelMap(color, opts);
+
     })
     beforeEach(() => {
       // Presets an action, which is performed before each unit test case starts.
@@ -47,63 +40,196 @@ export default function pathEffectTest() {
     })
 
     /**
-     * @tc.number    : pathEffect_test_createDashPathEffect
-     * @tc.name      : pathEffect_test_createDashPathEffect
-     * @tc.desc      : Used to create path effect objects that turn paths into dashed lines.
-     * @tc.size      : MediumTest
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATHEFFECT_0100
+     * @tc.name      : testCreateDashPathEffectNormal
+     * @tc.desc      : Test for testCreateDashPathEffectNormal.
+     * @tc.size      : SmallTest
      * @tc.type      : Function
-     * @tc.level     : Level2
+     * @tc.level     : Level 0
      */
-    it('pathEffect_test_createDashPathEffect', DEFAULT, () => {
-      const msg = 'pathEffect_test_createDashPathEffect';
+    it('testCreateDashPathEffectNormal', DEFAULT, () => {
+      const msg = 'testCreateDashPathEffectNormal';
+
       try {
-        let intervals = [10, 5];
-        drawing.PathEffect.createDashPathEffect(intervals, 5);
-        console.info(msg + 'createDashPathEffect successed');
+        drawing.PathEffect.createDashPathEffect([10, 5], 5);
+        console.info(msg + ' createDashPathEffect with [10, 5], 5 successed');
       } catch (e) {
-        console.info(msg + `createDashPathEffect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect().assertFail()
+        console.info(msg + ` createDashPathEffect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
       }
-    })
+
+      try {
+        drawing.PathEffect.createDashPathEffect([10, 5], 5.52);
+        console.info(msg + ' createDashPathEffect with [10, 5], 5.52 successed');
+      } catch (e) {
+        console.info(msg + ` createDashPathEffect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
+
+      try {
+        drawing.PathEffect.createDashPathEffect([10, 5], 0);
+        console.info(msg + ' createDashPathEffect with [10, 5], 0 successed');
+      } catch (e) {
+        console.info(msg + ` createDashPathEffect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
+
+      try {
+        drawing.PathEffect.createDashPathEffect([10.52, 5.522], 0);
+        console.info(msg + ' createDashPathEffect with [10.52, 5.522], 0 successed');
+      } catch (e) {
+        console.info(msg + ` createDashPathEffect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
+    });
 
     /**
-     * @tc.number    : pathEffect_test_createDashPathEffect_param_invalid
-     * @tc.name      : pathEffect_test_createDashPathEffect_param_invalid
-     * @tc.desc      : Used to create path effect objects that turn paths into dashed lines. (Parameters illegal)
-     * @tc.size      : MediumTest
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATHEFFECT_0101
+     * @tc.name      : testCreateDashPathEffectNull
+     * @tc.desc      : Test for testCreateDashPathEffectNull.
+     * @tc.size      : SmallTest
      * @tc.type      : Function
-     * @tc.level     : Level2
+     * @tc.level     : Level 3
      */
-    it("pathEffect_test_createDashPathEffect_param_invalid", DEFAULT, () => {
-      const msg = 'pathEffect_test_createDashPathEffect_param_invalid';
+    it('testCreateDashPathEffectNull', DEFAULT, () => {
+      const msg = 'testCreateDashPathEffectNull';
+
       try {
-        let intervals = [];
-        drawing.PathEffect.createDashPathEffect(intervals, 5);
-        console.info(msg + 'createDashPathEffect successed');
+        drawing.PathEffect.createDashPathEffect(undefined, 5);
+        console.info(msg + ' createDashPathEffect with undefined, 5 successed');
       } catch (e) {
-        console.info(msg + `createDashPathEffect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect(e.code).assertEqual(401)
+        console.info(msg + ` createDashPathEffect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
       }
-    })
+
+      try {
+        drawing.PathEffect.createDashPathEffect([10, 5], undefined);
+        console.info(msg + ' createDashPathEffect with [10, 5], undefined successed');
+      } catch (e) {
+        console.info(msg + ` createDashPathEffect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.PathEffect.createDashPathEffect(null, 5);
+        console.info(msg + ' createDashPathEffect with null, 5 successed');
+      } catch (e) {
+        console.info(msg + ` createDashPathEffect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.PathEffect.createDashPathEffect([10, 5], null);
+        console.info(msg + ' createDashPathEffect with [10, 5], null successed');
+      } catch (e) {
+        console.info(msg + ` createDashPathEffect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        if (0) {
+          // todo: case block
+          drawing.PathEffect.createDashPathEffect([], 5);
+        }
+        console.info(msg + ' createDashPathEffect with [], 5 successed');
+      } catch (e) {
+        console.info(msg + ` createDashPathEffect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+    });
 
     /**
-     * @tc.number    : pathEffect_test_createDashPathEffect_param_null
-     * @tc.name      : pathEffect_test_createDashPathEffect_param_null
-     * @tc.desc      : Used to create path effect objects that turn paths into dashed lines. (Parameter is empty)
-     * @tc.size      : MediumTest
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATHEFFECT_0102
+     * @tc.name      : testCreateDashPathEffectMismatch
+     * @tc.desc      : Test for testCreateDashPathEffectMismatch.
+     * @tc.size      : SmallTest
      * @tc.type      : Function
-     * @tc.level     : Level2
+     * @tc.level     : Level 3
      */
-    it("pathEffect_test_createDashPathEffect_param_null", DEFAULT, () => {
-      const msg = 'pathEffect_test_createDashPathEffect_param_null';
+    it('testCreateDashPathEffectMismatch', DEFAULT, () => {
+      const msg = 'testCreateDashPathEffectMismatch';
+
       try {
-        let intervals = [10, 5];
-        drawing.PathEffect.createDashPathEffect(intervals, null);
-        console.info(msg + 'createDashPathEffect successed');
+        drawing.PathEffect.createDashPathEffect([10, 5, 10, 5], 5, 5);
+        console.info(msg + ' createDashPathEffect with [10, 5, 10, 5], 5, 5 successed');
       } catch (e) {
-        console.info(msg + `createDashPathEffect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect(e.code).assertEqual(401)
+        console.info(msg + ` createDashPathEffect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
       }
-    })
+
+      try {
+        drawing.PathEffect.createDashPathEffect([10, 5, 10, 5]);
+        console.info(msg + ' createDashPathEffect with [10, 5, 10, 5] successed');
+      } catch (e) {
+        console.info(msg + ` createDashPathEffect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.PathEffect.createDashPathEffect([10, 5, 10, 5], 's');
+        console.info(msg + ' createDashPathEffect with [10, 5, 10, 5], s successed');
+      } catch (e) {
+        console.info(msg + ` createDashPathEffect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.PathEffect.createDashPathEffect([10, 5, 10, 5, 5], 5);
+        console.info(msg + ' createDashPathEffect with [10, 5, 10, 5, 5], 5 successed');
+      } catch (e) {
+        console.info(msg + ` createDashPathEffect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.PathEffect.createDashPathEffect([10], 5);
+        console.info(msg + ' createDashPathEffect with [10], 5 successed');
+      } catch (e) {
+        console.info(msg + ` createDashPathEffect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.PathEffect.createDashPathEffect([-10, -5], 5);
+        console.info(msg + ' createDashPathEffect with [-10, -5], 5 successed');
+      } catch (e) {
+        console.info(msg + ` createDashPathEffect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.PathEffect.createDashPathEffect([10, 5], -5);
+        console.info(msg + ' createDashPathEffect with [10, 5], -5 successed');
+      } catch (e) {
+        console.info(msg + ` createDashPathEffect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATHEFFECT_0103
+     * @tc.name      : testCreateDashPathEffectMultipleCalls
+     * @tc.desc      : Test for testCreateDashPathEffectMultipleCalls.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testCreateDashPathEffectMultipleCalls', DEFAULT, () => {
+      const msg = 'testCreateDashPathEffectMultipleCalls';
+
+      for (let i = 0; i < 20; i++) {
+        const randomValues = [Math.random() * 10, Math.random() * 10];
+        const randomValue = Math.random() * 10;
+
+        try {
+          drawing.PathEffect.createDashPathEffect(randomValues, randomValue);
+          console.info(`${msg} createDashPathEffect with [${randomValues}], ${randomValue} succeeded`);
+        } catch (e) {
+          console.info(`${msg} createDashPathEffect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+          expect().assertFail();
+        }
+      }
+    });
+
   })
 }

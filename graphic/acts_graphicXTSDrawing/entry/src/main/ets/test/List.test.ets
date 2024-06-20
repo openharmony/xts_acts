@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 import samplingOptionsTest from './SamplingOptions.test';
-import canvasTest from './Canvas.test';
 import maskFilterTest from './MaskFilter.test';
 import pathEffectTest from './PathEffect.test';
 import shadowLayerTest from './ShadowLayer.test';
@@ -21,10 +20,16 @@ import colorFilterTest from './ColorFilter.test';
 import penTest from './Pen.test';
 import brushTest from './Brush.test';
 import fontTest from './Font.test';
+import typefaceTest from './Typeface.test';
+import textBlobTest from './TextBlob.test';
+import drawingTsPathTest from './Path.test';
+import drawingTsCanvasTest from './Canvas.test';
+import drawingTsCanvasPart2Test from './CanvasPart2.test';
+import drawingTsCanvasPart3Test from './CanvasPart3.test';
+import drawingTsRegionTest from './Region.test'
 
 export default function testsuite() {
   samplingOptionsTest();
-  canvasTest();
   maskFilterTest();
   pathEffectTest();
   shadowLayerTest();
@@ -32,4 +37,11 @@ export default function testsuite() {
   penTest();
   brushTest();
   fontTest();
+  typefaceTest();
+  textBlobTest();
+  drawingTsPathTest();
+  drawingTsCanvasTest();
+  drawingTsCanvasPart2Test();
+  drawingTsCanvasPart3Test(); 
+  drawingTsRegionTest();
 }
