@@ -27,6 +27,7 @@ public:
     void MainProc();
     bool RequestExitChildProcess() override;
     int32_t Add(int32_t a, int32_t b) override;
+    int32_t StartNativeChildProcess() override;
     
 private:
     using StdUniLock = std::unique_lock<std::mutex>;

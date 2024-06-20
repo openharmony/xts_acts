@@ -19,6 +19,6 @@
 #include <IPCKit/ipc_kit.h>
 #include <memory>
 
-using StdUniPtrIpcProxy = std::unique_ptr<OHIPCParcel, decltype(&OH_IPCParcel_Destroy)>;
+using StdUniPtrIpcParcel = std::unique_ptr<OHIPCParcel, decltype(&OH_IPCParcel_Destroy)>;
 
 #endif // CAPI_CHILD_PROCESS_TEST_IPCHELPER_H

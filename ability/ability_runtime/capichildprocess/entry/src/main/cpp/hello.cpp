@@ -122,6 +122,65 @@ static napi_value RequestExitChildProcess(napi_env env, napi_callback_info info)
     return napiRet;
 }
 
+static napi_value CallApiWithNullCallback(napi_env env, napi_callback_info info)
+{
+    int32_t ret = OH_Ability_CreateNativeChildProcess("libentry.so", nullptr);
+    napi_value napiRet;
+    napi_create_int32(env, ret, &napiRet);
+    return napiRet;
+}
+
+static napi_value CallApiWithNullLibName(napi_env env, napi_callback_info info)
+{
+    int32_t ret = OH_Ability_CreateNativeChildProcess(nullptr, OnNativeChildProcessStarted);
+    napi_value napiRet;
+    napi_create_int32(env, ret, &napiRet);
+    return napiRet;
+}
+
+static napi_value CallApiWithNull(napi_env env, napi_callback_info info)
+{
+    int32_t ret = OH_Ability_CreateNativeChildProcess(nullptr, nullptr);
+    napi_value napiRet;
+    napi_create_int32(env, ret, &napiRet);
+    return napiRet;
+}
+
+static napi_value ChildProcessStartNewProcess(napi_env env, napi_callback_info info)
+{
+    int32_t ret = INT32_MIN;
+    if (g_ipcProxyPnt != nullptr) {
+        ret = g_ipcProxyPnt->StartNativeChildProcess();
+        OH_LOG_INFO(LOG_APP, "Main process - StartNativeChildProcess ret:%{public}d", ret);
+    }
+    
+    napi_value napiRet;
+    napi_create_int32(env, ret, &napiRet);
+    return napiRet;
+}
+
+static napi_value BusyTest(napi_env env, napi_callback_info info)
+{
+    napi_value napiRet;
+    std::promise<int> promise;
+    g_promiseStartProcess = &promise;
+    int32_t ret = OH_Ability_CreateNativeChildProcess("libbusytest.so", OnNativeChildProcessStarted);
+    if (ret != NCP_NO_ERROR) {
+        OH_LOG_INFO(LOG_APP, "Main process - StartNativeChildProcess for busy test failed! ret:%{public}d", ret);
+        napi_create_int32(env, ret, &napiRet);
+        return napiRet;
+    }
+    
+    ret = OH_Ability_CreateNativeChildProcess("libentry.so", OnNativeChildProcessStarted);
+    
+    auto future = promise.get_future();
+    OH_LOG_INFO(LOG_APP, "Main process - Wait for busy test call back");
+    future.wait();
+    
+    napi_create_int32(env, ret, &napiRet);
+    return napiRet;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -130,6 +189,16 @@ static napi_value Init(napi_env env, napi_value exports)
         { "startNativeChildProcess", nullptr, StartNativeChildProcess,
             nullptr, nullptr, nullptr, napi_default, nullptr },
         { "requestExitChildProcess", nullptr, RequestExitChildProcess,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "callApiWithNullCallback", nullptr, CallApiWithNullCallback,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "callApiWithNullLibName", nullptr, CallApiWithNullLibName,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "callApiWithNull", nullptr, CallApiWithNull,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "childProcessStartNewProcess", nullptr, ChildProcessStartNewProcess,
+            nullptr, nullptr, nullptr, napi_default, nullptr },
+        { "busyTest", nullptr, BusyTest,
             nullptr, nullptr, nullptr, napi_default, nullptr },
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
