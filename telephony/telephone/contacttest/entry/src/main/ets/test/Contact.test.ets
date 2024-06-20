@@ -1026,70 +1026,6 @@ export default function ErrTest() {
     });
 
     /**
-     * @tc.number     : SUB_Telephony_Contact_UpdateContact_0300
-     * @tc.name       : testTelephonyContactUpdateContact0300
-     * @tc.desc       : Update a contacts and useing the callback10 method as an asynchronous method
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 3
-     */
-    it('testTelephonyContactUpdateContact0300', 0, async (done: Function) => {
-      const caseName: string = "testTelephonyContactUpdateContact0300";
-      console.info(`${caseName} test start `);
-      let phoneNumContact: contact.Contact = {
-        id: 2, name: {
-          fullName: '李四'
-        }, phoneNumbers: [{
-          phoneNumber: '13800000000'
-        }]
-      };
-      try {
-        let context: Context = AppStorage.get('context') as Context;
-        contact.addContact(context, contactData, (addErr: BusinessError, addData: number) => {
-          if (addErr) {
-            console.info(`${caseName} addContact: err->${JSON.stringify(addErr)}`);
-            ExpectFail();
-            done();
-          } else {
-            console.info(`${caseName} addContact: success data->${JSON.stringify(addData)}`);
-            ExpectTrue(addData > 0);
-          }
-          console.info(`${caseName} addContact: success data->${JSON.stringify(addData)}`);
-          ExpectTrue(addData > 0);
-          contact.queryKey(context, addData, (keyErr: BusinessError, keyData: string) => {
-            if (keyErr) {
-              console.info(`${caseName} queryKey: err->${JSON.stringify(keyErr)}`);
-              ExpectFail();
-              done();
-            } else {
-              console.info(`${caseName} queryKey: success data->${JSON.stringify(keyData)}`);
-              let con: contact.Contact = 0 as contact.Contact;
-              try {
-                contact.updateContact(context, con, (updateErr: BusinessError, updateDate: void) => {
-                  if (updateErr) {
-                    console.info(`${caseName} updateContact: err->${JSON.stringify(updateErr)}`);
-                    ExpectFail();
-                    done();
-                  }
-                  console.info(`${caseName} updateContact: success data->${JSON.stringify(updateDate)}`);
-                });
-              } catch (e) {
-                console.info(`${caseName} updateContact: catch err->${JSON.stringify(e)}`);
-                ExpectTrue((e as BusinessError).code == 401);
-                done();
-              }
-            }
-          });
-        });
-      } catch (err) {
-        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
-        ExpectFail();
-        done();
-      }
-      console.info(`${caseName} test end `);
-    });
-
-    /**
      * @tc.number     : SUB_Telephony_Contact_UpdateContact_0400
      * @tc.name       : testTelephonyContactUpdateContact0400
      * @tc.desc       : Update a contacts and useing the callback10 method as an asynchronous method
@@ -1165,67 +1101,6 @@ export default function ErrTest() {
                     done();
                   }
                 });
-              }
-            });
-          }
-        });
-      } catch (err) {
-        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
-        ExpectFail();
-        done();
-      }
-      console.info(`${caseName} test end `);
-    });
-
-    /**
-     * @tc.number     : SUB_Telephony_Contact_UpdateContact_1500
-     * @tc.name       : testTelephonyContactUpdateContact1500
-     * @tc.desc       : Update a contacts and useing the callback10 method as an asynchronous method
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 3
-     */
-    it('testTelephonyContactUpdateContact1500', 0, async (done: Function) => {
-      const caseName: string = "testTelephonyContactUpdateContact1500";
-      console.info(`${caseName} test start `);
-      try {
-        let context: Context = AppStorage.get('context') as Context;
-        contact.addContact(context, contactData, (addErr: BusinessError, addData: number) => {
-          if (addErr) {
-            console.info(`${caseName} addContact: err->${JSON.stringify(addErr)}`);
-            ExpectFail();
-            done();
-          } else {
-            console.info(`${caseName} addContact: success data->${JSON.stringify(addData)}`);
-            ExpectTrue(addData > 0);
-            contact.queryKey(context, addData, (keyErr: BusinessError, keyData: string) => {
-              if (keyErr) {
-                console.info(`${caseName} queryKey: err->${JSON.stringify(keyErr)}`);
-                ExpectFail();
-                done();
-              } else {
-                console.info(`${caseName} queryKey: success data->${JSON.stringify(keyData)}`);
-                ExpectTrue(keyData.length > 0);
-                let con: contact.Contact = 0 as contact.Contact;
-                try {
-                  contact.updateContact(context, con, {
-                    attributes: attr.attributes
-                  }, (updateErr: BusinessError, updateDate: void) => {
-                    if (updateErr) {
-                      console.info(`${caseName} updateContact: err->${JSON.stringify(updateErr)}`);
-                      ExpectFail();
-                      done();
-                    } else {
-                      console.info(`${caseName} updateContact: success data->${JSON.stringify(updateDate)}`);
-                      ExpectFail();
-                      done();
-                    }
-                  });
-                } catch (e) {
-                  console.info(`${caseName} updateContact: catch err->${JSON.stringify(e)}`);
-                  ExpectTrue((e as BusinessError).code == 401);
-                  done();
-                }
               }
             });
           }

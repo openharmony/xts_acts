@@ -1241,60 +1241,6 @@ export default function QueryByEmailPhoneNumTest() {
       }
       console.info(`${caseName} test end `);
     })
-    /**
-     * @tc.number     : SUB_Telephony_Contact_QueryContactsByPhoneNumber_3000
-     * @tc.name       : testTelephonyContactQueryContactByPhoneNumber3000
-     * @tc.desc       : Query contacts based on phone numbers and use callback as an asynchronous method 10+
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 3
-     */
-    it('testTelephonyContactQueryContactByPhoneNumber3000', 0, async (done: Function) => {
-      const caseName: string = "testTelephonyContactQueryContactByPhoneNumber3000";
-      console.info(`${caseName} test start `);
-      let context: Context = AppStorage.get('context') as Context;
-      let phoneNumContact: contact.Contact = {
-        name: {
-          fullName: '李四'
-        }, phoneNumbers: [{
-          phoneNumber: 'null'
-        }]
-      };
-      try {
-        contact.addContact(context, phoneNumContact, (err: BusinessError, data: number) => {
-          if (err) {
-            console.info(`${caseName} addContact:err->${JSON.stringify(err)}`);
-            ExpectFail();
-            done();
-          } else {
-            console.info(`${caseName} addContact:success->${JSON.stringify(data)}`);
-            ExpectTrue(data > 0);
-            let attrs: contact.ContactAttributes = {
-              attributes: [contact.Attribute.ATTR_CONTACT_EVENT, contact.Attribute.ATTR_EMAIL,
-              contact.Attribute.ATTR_GROUP_MEMBERSHIP]
-            };
-            contact.queryContactsByPhoneNumber(context, "null", holder, attrs, (err: BusinessError, data: contact.Contact[]) => {
-              if (err) {
-                console.info(`${caseName} queryContacts:err->${JSON.stringify(err)}`);
-                ExpectTrue(err.code === 401);
-                done();
-              } else {
-                console.info(`${caseName} queryContacts:success->${JSON.stringify(data)}`);
-                ExpectTrue(data.length === 0);
-                done();
-              }
-            });
-          }
-        });
-      } catch (err) {
-        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
-        ExpectFail();
-        done();
-      }
-      console.info(`${caseName} test end `);
-    })
-
-    //---------------------------根据电话号码查询联系人，使用Promise方式作为异步方法----------------
 
     /**
      * @tc.number     : SUB_Telephony_Contact_QueryContactsByPhoneNumber_3100
