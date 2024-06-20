@@ -36,8 +36,8 @@ export default function getMovingPhotoTest() {
     const context = globalThis.abilityContext;
     const phAccessHelper = photoAccessHelper.getPhotoAccessHelper(globalThis.abilityContext);
     const sandboxPath = "/data/storage/el2/base/haps/phone/photos/";
-    const imageFileName = "ImageFile.jpg";
-    const videoFileName = "VideoFile.mp4"
+    let imageFileName = "ImageFile.jpg";
+    let videoFileName = "VideoFile.mp4"
 
     async function createMovingPhoto(done, testNum) {
         try {
