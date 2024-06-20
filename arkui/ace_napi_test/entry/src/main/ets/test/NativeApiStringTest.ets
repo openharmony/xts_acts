@@ -2463,5 +2463,32 @@ export default function nativeApiStringJsunit() {
       expect(value).assertEqual(0);
       done();
     });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0139
+     * @tc.name aceNapiTest0163
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0163', 0, async function (done) {
+      console.info('aceNapiTest0163 START');
+      const workerInstance = new worker.Worker('workers/worker.js');
+      let isTerminate = false;
+      workerInstance.onexit = function () {
+        isTerminate = true;
+      }
+      expect(workerInstance != null).assertTrue();
+      let res = undefined;
+      workerInstance.onmessage = async (e) => {
+        console.info('aceNapiTest0163 testString result is: ' + e.data);
+        res = e.data;
+        workerInstance.terminate();
+      }
+      workerInstance.postMessage("call napi_define_sendable_class");
+      while (!isTerminate) {
+        await promiseCase()
+      }
+      expect(res).assertEqual("success")
+      done();
+    });
   })
 }
