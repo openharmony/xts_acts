@@ -3,10 +3,9 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
+        "shell-timeout": "180000",
         "bundle-name": "com.acts.test.actscodeparsingtest",
-        "module-name": "entry",
-        "shell-timeout": "600000",
-        "testcase-timeout": 70000
+        "module-name": "entry_test"
     },
     "kits": [
         {
@@ -15,6 +14,12 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
         }
-    ] 
+    ]
 }

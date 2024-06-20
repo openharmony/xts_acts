@@ -32,12 +32,12 @@ export default function actscodeparsingtest() {
       let jsonstr2 = '{"ustr": " ' + ustr2 + '"}';
       let jsonstr3 = '{"ustr": " ' + ustr3 + '"}';
       let jsonstr4 = '{"ustr": " ' + ustr4 + '"}';
-      let ustr_n1 = undefined;
-      let ustr_n2 = undefined;
-      let ustr_n3 = undefined;
-      let ustr_n4 = undefined;
+      let ustr_n1 :string = '';
+      let ustr_n2 :string = '';
+      let ustr_n3 :string = '';
+      let ustr_n4 :string = '';
       try {
-        let obj1: Record<string, Object> = JSON.parse(jsonstr1);
+        let obj1: Record<string, string> = JSON.parse(jsonstr1);
         ustr_n1 = obj1.ustr;
         console.info(TAG + 'obj1: ' + obj1);
       } catch (err) {
@@ -45,7 +45,7 @@ export default function actscodeparsingtest() {
         expect().assertFail();
       }
       try {
-        let obj2: Record<string, Object> = JSON.parse(jsonstr2);
+        let obj2: Record<string, string> = JSON.parse(jsonstr2);
         ustr_n2 = obj2.ustr;
         console.info(TAG + 'obj2: ' + obj2);
       } catch (err) {
@@ -53,7 +53,7 @@ export default function actscodeparsingtest() {
         expect().assertFail();
       }
       try {
-        let obj3: Record<string, Object> = JSON.parse(jsonstr3);
+        let obj3: Record<string, string> = JSON.parse(jsonstr3);
         ustr_n3 = obj3.ustr;
         console.info(TAG + 'obj3: ' + obj3);
       } catch (err) {
@@ -61,7 +61,7 @@ export default function actscodeparsingtest() {
         expect().assertFail();
       }
       try {
-        let obj4: Record<string, Object> = JSON.parse(jsonstr4);
+        let obj4: Record<string, string> = JSON.parse(jsonstr4);
         ustr_n4 = obj4.ustr;
         console.info(TAG + 'obj4: ' + obj4);
       } catch (err) {
