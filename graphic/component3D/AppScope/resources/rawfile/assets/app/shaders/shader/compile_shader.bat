@@ -1,4 +1,3 @@
-@echo off
  @rem Copyright (c) 2024 Huawei Device Co., Ltd.
  @rem Licensed under the Apache License, Version 2.0 (the "License");
  @rem you may not use this file except in compliance with the License.
@@ -11,6 +10,7 @@
  @rem WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  @rem See the License for the specific language governing permissions and
  @rem limitations under the License.
+ @echo off
 
 wsl.exe rsync -azP -e 'ssh -p 2222' huxiaoming@123.60.114.129:~/OHOS_20231204/foundation/graphic/graphic_3d/lume/Lume_3D/assets/3d/shaders/shader/London.frag.spv .
 wsl.exe rsync -azP -e 'ssh -p 2222' huxiaoming@123.60.114.129:~/OHOS_20231204/foundation/graphic/graphic_3d/lume/Lume_3D/assets/3d/shaders/shader/London.frag.spv.gl .

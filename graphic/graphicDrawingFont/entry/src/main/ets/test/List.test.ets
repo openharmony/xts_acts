@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import graphicDrawingFontInterfaceTest from './graphicDrawingFontInterface.test'
+import RunMetricsTest from './RunMetricsTest.test'
 
 export default function testsuite() {
   graphicDrawingFontInterfaceTest()
+  RunMetricsTest()
 }

@@ -14,7 +14,9 @@
  */
 import Component3DTest from './Component3DTest.test';
 import Component3D1Test from './Component3DTest.test';
+import backgroundBrightnessTest from './backgroundBrightnessTest.test'
 export default function testsuite() {
   Component3DTest()
   Component3D1Test()
+  backgroundBrightnessTest()
 }
