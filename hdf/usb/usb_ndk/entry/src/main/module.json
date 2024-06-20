@@ -55,16 +55,6 @@
           ],
           "when": "inuse"
         }
-      },
-      {
-        "name": "ohos.permission.MANAGE_USB_CONFIG",
-        "reason": "$string:reason_usb_ddk",
-        "usedScene": {
-          "abilities": [
-            "EntryAbility"
-          ],
-          "when": "inuse"
-        }
       }
     ]
   }
