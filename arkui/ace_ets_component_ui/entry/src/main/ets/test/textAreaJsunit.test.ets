@@ -14,7 +14,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, MouseButton} from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../MainAbility/utils/MessageManager';
 const waitUiReadyMs = 1000;
@@ -178,16 +178,19 @@ export default function textAreaJsunit() {
       await CommonFunc.sleep(1000);
       // test the copy event
       let driver = UiDriver.create();
-      let text = await driver.findComponent(BY.key('textArea'));
-      await text.click();
-      await CommonFunc.sleep(1000);
-      await text.doubleClick();
+      let driverX = await Driver.create()
+      let textAreaRect = CommonFunc.getComponentRectOnScreen('textArea')
+      let clickX = Math.round((textAreaRect.right + textAreaRect.left)/2)
+      let clickY = Math.round((textAreaRect.bottom + textAreaRect.top)/2)
+      await driverX.mouseClick({ x: clickX, y: clickY }, MouseButton.MOUSE_BUTTON_RIGHT)
       await CommonFunc.sleep(1000);
       let allSelect = await driver.findComponent(BY.text('全选'));
       if (allSelect != null) {
         await allSelect.click();
         await CommonFunc.sleep(1000);
       }
+      await driverX.mouseClick({ x: clickX, y: clickY }, MouseButton.MOUSE_BUTTON_RIGHT)
+      await CommonFunc.sleep(1000);
       let copy = await driver.findComponent(BY.text('复制'));
       if (copy != null) {
         await copy.click();
@@ -200,7 +203,7 @@ export default function textAreaJsunit() {
       expect(txt).assertEqual('copy');
 
       // test the paste event
-      await text.doubleClick();
+      await driverX.mouseClick({ x: clickX, y: clickY }, MouseButton.MOUSE_BUTTON_RIGHT)
       await CommonFunc.sleep(1000);
       let paste = await driver.findComponent(BY.text('粘贴'));
       if (paste != null) {
@@ -223,13 +226,19 @@ export default function textAreaJsunit() {
       let textArea = await driver.findComponent(BY.key('textArea'));
       await textArea.inputText('123');
       await CommonFunc.sleep(1000);
-      await textArea.doubleClick();
+      let driverX = await Driver.create()
+      let textAreaRect = CommonFunc.getComponentRectOnScreen('textArea')
+      let clickX = Math.round((textAreaRect.right + textAreaRect.left)/2)
+      let clickY = Math.round((textAreaRect.bottom + textAreaRect.top)/2)
+      await driverX.mouseClick({ x: clickX, y: clickY }, MouseButton.MOUSE_BUTTON_RIGHT)
       await CommonFunc.sleep(1000);
       let allSelect = await driver.findComponent(BY.text('全选'));
       if (allSelect != null) {
         await allSelect.click();
         await CommonFunc.sleep(1000);
       }
+      await driverX.mouseClick({ x: clickX, y: clickY }, MouseButton.MOUSE_BUTTON_RIGHT)
+      await CommonFunc.sleep(1000);
       let cutComponent = await driver.findComponent(BY.text('剪切'));
       if (cutComponent != null) {
         await cutComponent.click();
