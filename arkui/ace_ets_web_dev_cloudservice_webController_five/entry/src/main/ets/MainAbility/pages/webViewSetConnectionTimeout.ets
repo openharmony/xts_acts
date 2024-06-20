@@ -57,7 +57,8 @@ struct webViewSetConnectionTimeout {
               .key('webViewSetConnectionTimeoutButton')
               .onClick(async () => {
                   console.info("key==>" + this.emitKey)
-                  await Utils.sleep(2000);
+                  this.controller.refresh()
+                  await Utils.sleep(2500);
                   switch (this.emitKey) {
                     case "emitWebViewSetConnectionTimeoutZeroSeconds": {
                       try {
