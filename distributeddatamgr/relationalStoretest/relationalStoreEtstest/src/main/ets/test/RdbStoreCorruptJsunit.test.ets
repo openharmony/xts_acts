@@ -356,7 +356,7 @@ export default function rdbStoreCorruptJSunitTest() {
             console.log(TAG + "************* RepairedTest001 start *************");
             try{
                 console.log(TAG + "data_relationalStore.RebuildType.REPAIRED" + data_relationalStore.RebuildType.REPAIRED);
-                expect(data_relationalStore.RebuildType.REPAIRED).assertEqual(undefined);
+                expect(data_relationalStore.RebuildType.REPAIRED).assertEqual(2);
             } catch (err) {
                 expect(null).assertFail();
                 console.log(TAG + err.code + err.message);
