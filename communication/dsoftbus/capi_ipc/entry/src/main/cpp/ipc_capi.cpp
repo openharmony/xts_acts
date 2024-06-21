@@ -53,7 +53,6 @@ static void* MemAllocator(int32_t len)
 
 static napi_value Add(napi_env env, napi_callback_info info)
 {
-    size_t requireArgc = 2;
     size_t argc = 2;
     napi_value args[2] = {nullptr};
 
@@ -98,7 +97,7 @@ static napi_value OHIPCSkeletonGetCallingTokenId(napi_env env, napi_callback_inf
 {
     napi_value result;
     uint64_t tokenId = OH_IPCSkeleton_GetCallingTokenId();
-    if (tokenId < 0) {
+    if (tokenId = 0) {
         napi_create_int32(env, OH_IPC_ERROR_CODE_BASE, &result);
     } else {
         napi_create_int32(env, OH_IPC_SUCCESS, &result);
@@ -110,7 +109,7 @@ static napi_value OHIPCSkeletonGetFirstTokenId(napi_env env, napi_callback_info 
 {
     napi_value result;
     uint64_t firstTokenId = OH_IPCSkeleton_GetFirstTokenId();
-    if (firstTokenId < 0) {
+    if (firstTokenId = 0) {
         napi_create_int32(env, OH_IPC_ERROR_CODE_BASE, &result);
     } else {
         napi_create_int32(env, OH_IPC_SUCCESS, &result);
@@ -122,7 +121,7 @@ static napi_value OHIPCSkeletonGetSelfTokenId(napi_env env, napi_callback_info i
 {
     napi_value result;
     uint64_t selfTokenId = OH_IPCSkeleton_GetSelfTokenId();
-    if (selfTokenId < 0) {
+    if (selfTokenId = 0) {
         napi_create_int32(env, OH_IPC_ERROR_CODE_BASE, &result);
     } else {
         napi_create_int32(env, OH_IPC_SUCCESS, &result);
@@ -134,7 +133,7 @@ static napi_value OHIPCSkeletonGetCallingPid(napi_env env, napi_callback_info in
 {
     napi_value result;
     uint64_t callingPid = OH_IPCSkeleton_GetCallingPid();
-    if (callingPid < 0) {
+    if (callingPid = 0) {
         napi_create_int32(env, OH_IPC_ERROR_CODE_BASE, &result);
     } else {
         napi_create_int32(env, OH_IPC_SUCCESS, &result);
@@ -146,7 +145,7 @@ static napi_value OHIPCSkeletonGetCallingUid(napi_env env, napi_callback_info in
 {
     napi_value result;
     uint64_t callingUid = OH_IPCSkeleton_GetCallingUid();
-    if (callingUid < 0) {
+    if (callingUid = 0) {
         napi_create_int32(env, OH_IPC_ERROR_CODE_BASE, &result);
     } else {
         napi_create_int32(env, OH_IPC_SUCCESS, &result);
