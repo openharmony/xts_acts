@@ -41,3 +41,5 @@ export const Test_MediaKeySession_RestoreOfflineMediaKeys: (session:string,keyId
 export const Test_MediaKeySession_GetContentProtectionLevel: (session:string,levelPtr: string,) => number;
 export const Test_MediaKeySession_RequireSecureDecoderModule: (session:string,mineType:string,statusPtr:string,expectStatus:number) => number;
 export const Test_MediaKeySession_SetMediaKeySessionCallback: (session:string,callback:string) => number;
+export const Test_MediaKeySystem_SetCallback: (system:string, callback:string) => number;
+export const Test_MediaKeySession_SetCallback: (session:string, callback:string) => number;
