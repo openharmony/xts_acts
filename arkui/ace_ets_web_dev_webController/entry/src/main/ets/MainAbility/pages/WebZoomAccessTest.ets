@@ -63,6 +63,8 @@ struct WebZoomAccessTest {
           switch (this.str) {
             case "testWebZoomAccess001": {
               try {
+                this.controller.loadUrl("resource://rawfile/second.html")
+                await Utils.sleep(2000)
                 await Utils.fingerZoom('WebZoomAccessTestWebView', true);
                 await Utils.sleep(2000)
                 Utils.emitEvent(this.oldScale == 0 && this.newScale == 0, 6500)
