@@ -1469,7 +1469,7 @@ export default function UDMFApiDescriptorTest() {
       console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
       console.log("mimeTypes:" + typeObj.mimeTypes.toString());
       expect(typeObj.typeId).assertEqual("com.microsoft.windows-media-wm");
-      expect(typeObj.belongingToTypes.toString()).assertEqual("general.media,com.microsoft.advanced-systems-format");
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.video,com.microsoft.advanced-systems-format");
       expect(typeObj.description).assertEqual("Windows WM video.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_video");
