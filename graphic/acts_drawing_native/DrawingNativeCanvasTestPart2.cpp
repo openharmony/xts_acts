@@ -693,10 +693,10 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawBitmapNormal, TestSize.Level0) {
 
     for (int i = 0; i < 6; i++) {
         for (int j = 0; j < 4; j++) {
-            OH_Drawing_Image_Info imageInfo;
             int width = 500;
             int height = 500;
             int rowBytes = width * height * 4;
+            OH_Drawing_Image_Info imageInfo = {width, height, formats[i], alphaFormats[j]};
             OH_Drawing_BitmapFormat cFormat{formats[i], alphaFormats[j]};
             OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
             void *pixels = OH_Drawing_BitmapGetPixels(bitmap);
