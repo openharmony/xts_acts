@@ -18,6 +18,7 @@
 #include "drawing_bitmap.h"
 #include "drawing_color.h"
 #include "drawing_color_filter.h"
+#include "drawing_error_code.h"
 #include "drawing_image.h"
 #include "drawing_image_filter.h"
 #include "drawing_mask_filter.h"
@@ -31,28 +32,113 @@ namespace Drawing {
 class DrawingNativeMaskFilterTest : public testing::Test {};
 
 /*
- * @tc.name: OH_Drawing_MaskFilterCreateBlur
- * @tc.desc: test for OH_Drawing_MaskFilterCreateBlur.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MASK_FILTER_0100
+ * @tc.name: testMaskFilterCreateBlurDestroyNormal
+ * @tc.desc: Test for creating and destroying a blur mask filter with normal parameters.
  * @tc.size  : SmallTest
  * @tc.type  : Function
- * @tc.level : Level 1
+ * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeMaskFilterTest, OH_Drawing_MaskFilterCreateBlur, TestSize.Level1) {
-    OH_Drawing_MaskFilter *maskFilter = OH_Drawing_MaskFilterCreateBlur(OH_Drawing_BlurType::NORMAL, 10, true);
-    EXPECT_NE(maskFilter, nullptr);
+HWTEST_F(DrawingNativeMaskFilterTest, testMaskFilterCreateBlurDestroyNormal, TestSize.Level0) {
+    OH_Drawing_BlurType types[] = {
+        NORMAL,
+        SOLID,
+        OUTER,
+        INNER,
+    };
+    // 1. Enumerate through the blurType values in OH_Drawing_MaskFilterCreateBlur
+    for (OH_Drawing_BlurType type : types) {
+        OH_Drawing_MaskFilter *maskFilter = OH_Drawing_MaskFilterCreateBlur(type, 10, true);
+        EXPECT_NE(maskFilter, nullptr);
+        OH_Drawing_MaskFilterDestroy(maskFilter);
+    }
+    // 2. Call OH_Drawing_MaskFilterCreateBlur with a floating-point value for sigma
+    OH_Drawing_MaskFilter *maskFilter = OH_Drawing_MaskFilterCreateBlur(NORMAL, 10.0f, true);
+    // 3. Call OH_Drawing_MaskFilterCreateBlur with an integer value for sigma
+    maskFilter = OH_Drawing_MaskFilterCreateBlur(NORMAL, 10, true);
+    // 4. Call OH_Drawing_MaskFilterCreateBlur with respectCTM set to false
+    maskFilter = OH_Drawing_MaskFilterCreateBlur(NORMAL, 10, false);
+    // 5. Call OH_Drawing_MaskFilterCreateBlur with respectCTM set to true
+    maskFilter = OH_Drawing_MaskFilterCreateBlur(NORMAL, 10, true);
+    // 6. Call OH_Drawing_MaskFilterDestroy
     OH_Drawing_MaskFilterDestroy(maskFilter);
 }
 
 /*
- * @tc.name: OH_Drawing_MaskFilterDestroy
- * @tc.desc: test for OH_Drawing_MaskFilterDestroy.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MASK_FILTER_0101
+ * @tc.name: testMaskFilterCreateBlurDestroyNULL
+ * @tc.desc: Test for creating and destroying a blur mask filter with NULL parameters.
  * @tc.size  : SmallTest
  * @tc.type  : Function
- * @tc.level : Level 1
+ * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeMaskFilterTest, OH_Drawing_MaskFilterDestroy, TestSize.Level1) {
-    OH_Drawing_MaskFilter *maskFilter = OH_Drawing_MaskFilterCreateBlur(OH_Drawing_BlurType::NORMAL, 10, true);
-    EXPECT_NE(maskFilter, nullptr);
+HWTEST_F(DrawingNativeMaskFilterTest, testMaskFilterCreateBlurDestroyNULL, TestSize.Level3) {
+    // 1. Call OH_Drawing_MaskFilterCreateBlur with the second parameter as zero and check the error code using
+    // OH_Drawing_ErrorCodeGet
+    OH_Drawing_MaskFilter *maskFilter = OH_Drawing_MaskFilterCreateBlur(NORMAL, 0, true);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 2. Call OH_Drawing_MaskFilterDestroy with a null parameter
+    OH_Drawing_MaskFilterDestroy(nullptr);
+    // 3. Free memory
+    OH_Drawing_MaskFilterDestroy(maskFilter);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MASK_FILTER_0102
+ * @tc.name: testMaskFilterCreateBlurDestroyMultipleCalls
+ * @tc.desc: Test for multiple calls of creating and destroying a blur mask filter.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMaskFilterTest, testMaskFilterCreateBlurDestroyMultipleCalls, TestSize.Level3) {
+    // 1. Call OH_Drawing_MaskFilterCreateBlur and OH_Drawing_MaskFilterDestroy 10 times in a loop
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_MaskFilter *maskFilter = OH_Drawing_MaskFilterCreateBlur(NORMAL, 10, true);
+        EXPECT_NE(maskFilter, nullptr);
+        OH_Drawing_MaskFilterDestroy(maskFilter);
+    }
+    // 2. Call OH_Drawing_MaskFilterCreateBlur 10 times consecutively
+    OH_Drawing_MaskFilter *maskFilter;
+    for (int i = 0; i < 10; i++) {
+        maskFilter = OH_Drawing_MaskFilterCreateBlur(NORMAL, 10, true);
+    }
+    // 3. Call OH_Drawing_MaskFilterDestroy 10 times consecutively
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_MaskFilterDestroy(maskFilter);
+        maskFilter = nullptr;
+    }
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MASK_FILTER_0103
+ * @tc.name: testMaskFilterCreateBlurDestroyAbnormal
+ * @tc.desc: Test for creating and destroying a blur mask filter with abnormal parameters.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMaskFilterTest, testMaskFilterCreateBlurDestroyAbnormal, TestSize.Level3) {
+    // 1. Call OH_Drawing_MaskFilterCreateBlur with a negative value for sigma and check the error code using
+    // OH_Drawing_ErrorCodeGet
+    OH_Drawing_MaskFilter *maskFilter = OH_Drawing_MaskFilterCreateBlur(NORMAL, -10, true);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 2. Call OH_Drawing_MaskFilterDestroy to free memory
+    OH_Drawing_MaskFilterDestroy(maskFilter);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MASK_FILTER_0104
+ * @tc.name: testMaskFilterCreateBlurDestroyMaximum
+ * @tc.desc: Test for creating and destroying a blur mask filter with maximum values.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMaskFilterTest, testMaskFilterCreateBlurDestroyMaximum, TestSize.Level3) {
+    // 1. Call OH_Drawing_MaskFilterCreateBlur with a maximum value for sigma
+    OH_Drawing_MaskFilter *maskFilter = OH_Drawing_MaskFilterCreateBlur(NORMAL, FLT_MAX, true);
+    // 2. Call OH_Drawing_MaskFilterDestroy to free memory
     OH_Drawing_MaskFilterDestroy(maskFilter);
 }
 
