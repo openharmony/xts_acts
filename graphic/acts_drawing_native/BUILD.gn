@@ -36,18 +36,16 @@ ohos_moduletest_suite("ActsDrawingNativeTest") {
      "DrawingNativeFilterTest.cpp",
      "DrawingNativeFontTest.cpp",
      "DrawingNativeGpuContextTest.cpp",
+     "DrawingNativeImageFilterTest.cpp",
+     "DrawingNativeImageTest.cpp",
+     "DrawingNativeMemoryStreamTest.cpp",
      "DrawingNativePathTest.cpp",
      "DrawingNativePathTestPart2.cpp",
+     "DrawingNativePathTestPart3.cpp",
      "DrawingNativePenTest.cpp",
      "DrawingNativeRectTest.cpp",
      "DrawingNativeShaderEffectTest.cpp",
   ]
-
-  sanitize = {
-    cfi = true
-    cfi_cross_dso = true
-    debug = false
-  }
 
   cflags = [
     "-Wall",
