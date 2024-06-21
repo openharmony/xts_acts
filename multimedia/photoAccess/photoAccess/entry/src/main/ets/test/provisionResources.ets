@@ -33,7 +33,8 @@ export default function provisionResourcesTest() {
             await getPermission();
             await sleep()
         });
-        beforeEach(function () {
+        beforeEach(async function () {
+            await sleep(300);
             console.info('beforeEach case');
         });
         afterEach(async function () {
@@ -44,8 +45,8 @@ export default function provisionResourcesTest() {
             console.info('afterAll case');
         });
 
-        const checkResourceAsset = async function (done, testNum, fileNames) {
-            
+        const getAssetsCount = async function (testNum): number {
+            let count = -1;
             try {
                 let predicates: dataSharePredicates.DataSharePredicates = new dataSharePredicates.DataSharePredicates();
                 let fetchOptions: photoAccessHelper.FetchOptions = {
@@ -53,11 +54,22 @@ export default function provisionResourcesTest() {
                     predicates: predicates
                 };
                 let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
-                const count = fetchResult.getCount();
-                assetCount += fileNames.length;
-                expect(count).assertEqual(assetCount);
-                console.info(`${testNum} Get fetchResult successfully, count: ${count}`)
+                count = fetchResult.getCount();
                 fetchResult.close();
+                return count;
+            } catch(error) {
+                console.info(`${testNum} getAssets count failed, error: ${error}`)
+                return count;
+            } 
+        }
+
+        const checkResourceAsset = async function (done, testNum, fileNames) {
+            
+            try {
+                const count = await getAssetsCount(testNum);
+                assetCount += fileNames.length;
+                console.info(`${testNum} Get fetchResult successfully, count: ${count}`)
+                console.info(`${testNum} expect assetCount : ${assetCount}`)
                 done();
             } catch (error) {
                 console.info(`${testNum} checkResourceAsset failed, error: ${error}`)
@@ -294,5 +306,29 @@ export default function provisionResourcesTest() {
             await pushCreateAssetSingle(fileNames);
             await checkResourceAsset(done, testNum, fileNames);
         });
+
+        /**
+         * @tc.number    : SUB_MEDIA_PHOTOACCESS_CHECK_ASSETS_COUNT_001
+         * @tc.name      : check_provision_resource_count_001
+         * @tc.desc      : check provisionResources count
+         * @tc.size      : MEDIUM
+         * @tc.type      : Function
+         * @tc.level     : Level 0
+         */
+        it('check_provision_resource_count_001', 0, async function (done) {
+            const testNum = 'check_provision_resource_count_001';
+            try {
+                await sleep(3000);
+                const count = await getAssetsCount(testNum);
+                console.log(`${testNum} :: expect resource num is ${assetCount}, actual is ${count}`);
+                expect(count).assertEqual(assetCount);
+                done();
+            } catch (error) {
+                console.log(`${testNum} :: check provisionResources count error :: ${error} !`);
+                expect(false).assertTrue();
+                done();
+            }
+        });
+
     });
 }
