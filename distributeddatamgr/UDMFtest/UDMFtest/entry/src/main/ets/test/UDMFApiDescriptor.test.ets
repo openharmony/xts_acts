@@ -1469,7 +1469,7 @@ export default function UDMFApiDescriptorTest() {
       console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
       console.log("mimeTypes:" + typeObj.mimeTypes.toString());
       expect(typeObj.typeId).assertEqual("com.microsoft.windows-media-wm");
-      expect(typeObj.belongingToTypes.toString()).assertEqual("general.video,com.microsoft.advanced-systems-format");
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.media,com.microsoft.advanced-systems-format");
       expect(typeObj.description).assertEqual("Windows WM video.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("sys.media.ohos_ic_normal_white_grid_video");
@@ -6260,7 +6260,1167 @@ export default function UDMFApiDescriptorTest() {
       }
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1130 end");
     });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest8300
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8300
+     * @tc.desc      : Verify the properties of the navigation data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8300', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8300 start');
+      expect(UTD.UniformDataType.NAVIGATION).assertEqual("general.navigation");
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.NAVIGATION);
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual("general.navigation");
+      expect(typeObj.belongingToTypes[0]).assertEqual("general.object");
+      expect(typeObj.description).assertEqual("Base type for navigation.");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual("");
+      expect(typeObj.mimeTypes.toString()).assertEqual("");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8300 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2410
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2410
+     * @tc.desc      : Verify the properties of the xhtml file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2410', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2410 start');
+      expect(UTD.UniformDataType.XHTML ).assertEqual("general.xhtml");
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.XHTML);
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual("general.xhtml");
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.xml");
+      expect(typeObj.description).assertEqual("XHTML");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".xhtml");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/xhtml+xml");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2410 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2420
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2420
+     * @tc.desc      : Verify the properties of the rss file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2420', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2420 start');
+      expect(UTD.UniformDataType.RSS  ).assertEqual("general.rss");
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.RSS );
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual("general.rss");
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.xml");
+      expect(typeObj.description).assertEqual("Rich site summary");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".rss");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/rss+xml");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2420 end");
+    });
 
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2430
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2430
+     * @tc.desc      : Verify the properties of the css file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2430', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2430 start');
+      expect(UTD.UniformDataType.CSS ).assertEqual("general.css");
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.CSS );
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual("general.css");
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.script");
+      expect(typeObj.description).assertEqual("Cascading style sheets");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".css");
+      expect(typeObj.mimeTypes.toString()).assertEqual("text/css");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2430 end");
+    });
+
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2440
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2440
+     * @tc.desc      : Verify the properties of the tex file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2440', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2440 start');
+      expect(UTD.UniformDataType.TEX  ).assertEqual("general.tex");
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.TEX  );
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual("general.tex");
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.source-code");
+      expect(typeObj.description).assertEqual("Base type for TeX source code");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual("");
+      expect(typeObj.mimeTypes.toString()).assertEqual("");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2440 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2450
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2450
+     * @tc.desc      : Verify the properties of the asc-text file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2450', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2450 start');
+      expect(UTD.UniformDataType.ASC_TEXT).assertEqual("general.asc-text");
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.ASC_TEXT);
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual("general.asc-text");
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.text");
+      expect(typeObj.description).assertEqual("ASCII text file");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".asc");
+      expect(typeObj.mimeTypes.toString()).assertEqual("text/plain");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2450 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2450
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2450
+     * @tc.desc      : Verify the properties of the rich-text file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2460', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2460 start');
+      expect(UTD.UniformDataType.RICH_TEXT ).assertEqual("general.rich-text");
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.RICH_TEXT);
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual("general.rich-text");
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.text");
+      expect(typeObj.description).assertEqual("Rich text format file");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".rtf,.rtx");
+      expect(typeObj.mimeTypes.toString()).assertEqual("text/rtf,text/richtext");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2460 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2470
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2470
+     * @tc.desc      : Verify the properties of the delimited-values-text file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2470', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2470 start');
+      expect(UTD.UniformDataType.DELIMITED_VALUES_TEXT  ).assertEqual("general.delimited-values-text");
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.DELIMITED_VALUES_TEXT );
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual("general.delimited-values-text");
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.text");
+      expect(typeObj.description).assertEqual("Base type for delimited-values text");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual("");
+      expect(typeObj.mimeTypes.toString()).assertEqual("");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2470 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2480
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2480
+     * @tc.desc      : Verify the properties of the comma-separated-values-tex file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2480', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2480 start');
+      expect(UTD.UniformDataType.COMMA_SEPARATED_VALUES_TEXT).assertEqual('general.comma-separated-values-text');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.COMMA_SEPARATED_VALUES_TEXT);
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('general.comma-separated-values-text');
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.delimited-values-text");
+      expect(typeObj.description).assertEqual("Comma-separated values file");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".csv");
+      expect(typeObj.mimeTypes.toString()).assertEqual("text/csv");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2480 end");
+    });
+
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the tab-separated-values-text file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490 start');
+      expect(UTD.UniformDataType.TAB_SEPARATED_VALUES_TEXT).assertEqual("general.tab-separated-values-text");
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.TAB_SEPARATED_VALUES_TEXT);
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual("general.tab-separated-values-text");
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.delimited-values-text");
+      expect(typeObj.description).assertEqual("Tab-Separated values file");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".tsv");
+      expect(typeObj.mimeTypes.toString()).assertEqual("text/tab-separated-values");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2480 end");
+    });
+
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the gif file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2510', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2510 start');
+      expect(UTD.UniformDataType.GIF ).assertEqual('general.gif');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.GIF );
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('general.gif');
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.image");
+      expect(typeObj.description).assertEqual("GIF image");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".gif");
+      expect(typeObj.mimeTypes.toString()).assertEqual("image/gif");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2510 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the gif file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2520', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2510 start');
+      expect(UTD.UniformDataType.WORD_DOT).assertEqual('com.microsoft.word.dot');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.WORD_DOT);
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('com.microsoft.word.dot');
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.composite-object");
+      expect(typeObj.description).assertEqual("Microsoft Word document template");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".dot");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/msword");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2510 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the com.microsoft.powerpoint.pps file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2530', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2530 start');
+      expect(UTD.UniformDataType.POWERPOINT_PPS).assertEqual('com.microsoft.powerpoint.pps');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.POWERPOINT_PPS);
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('com.microsoft.powerpoint.pps');
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.composite-object");
+      expect(typeObj.description).assertEqual("Microsoft PowerPoint slide show");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".pps");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/vnd.ms-powerpoint");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2530 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the com.microsoft.powerpoint.pot file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2540', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2540 start');
+      expect(UTD.UniformDataType.POWERPOINT_POT).assertEqual('com.microsoft.powerpoint.pot');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.POWERPOINT_POT);
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('com.microsoft.powerpoint.pot');
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.composite-object");
+      expect(typeObj.description).assertEqual("Microsoft PowerPoint Template");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".pot");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/vnd.ms-powerpoint");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2540 end");
+    });
+
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the com.microsoft.excel.xlt file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2550', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2550 start');
+      expect(UTD.UniformDataType.EXCEL_XLT).assertEqual('com.microsoft.excel.xlt');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.EXCEL_XLT);
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('com.microsoft.excel.xlt');
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.composite-object");
+      expect(typeObj.description).assertEqual("Microsoft Excel spreadsheet template");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".xlt");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/vnd.ms-excel");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2550 end");
+    });
+
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the com.microsoft.visio.vsd file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2560', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2560 start');
+      expect(UTD.UniformDataType.VISIO_VSD ).assertEqual('com.microsoft.visio.vsd');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.VISIO_VSD );
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('com.microsoft.visio.vsd');
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.composite-object");
+      expect(typeObj.description).assertEqual("Microsoft Office Visio 2003-2010 drawing");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".vsd");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/vnd.visio");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2560 end");
+    });
+
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the ts file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2570', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2570 start');
+      expect(UTD.UniformDataType.TS).assertEqual('general.ts');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.TS );
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('general.ts');
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.video");
+      expect(typeObj.description).assertEqual("MPEG transport stream");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".ts");
+      expect(typeObj.mimeTypes.toString()).assertEqual("video/mp2ts,video/mp2t");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2570 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the mpegurl-video file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2580', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2580 start');
+      expect(UTD.UniformDataType.MPEGURL_VIDEO).assertEqual('general.mpegurl-video');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.MPEGURL_VIDEO);
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('general.mpegurl-video');
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.video");
+      expect(typeObj.description).assertEqual("Video playlist");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".mxu,.m4u");
+      expect(typeObj.mimeTypes.toString()).assertEqual("video/vnd.mpegurl");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2580 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the org.matroska.mkv file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2590', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2580 start');
+      expect(UTD.UniformDataType.MATROSKA_VIDEO ).assertEqual('org.matroska.mkv');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.MATROSKA_VIDEO );
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('org.matroska.mkv');
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.video");
+      expect(typeObj.description).assertEqual("Matroska video");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".mkv");
+      expect(typeObj.mimeTypes.toString()).assertEqual("video/x-matroska");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2580 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the com.adobe.flash file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2610', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2610 start');
+      expect(UTD.UniformDataType.FLASH).assertEqual('com.adobe.flash');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.FLASH  );
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('com.adobe.flash');
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.video");
+      expect(typeObj.description).assertEqual("Shockwave flash movie");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".swf");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/x-shockwave-flash");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2610 end");
+    });
+
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the general.mpegurl-audio file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2620', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2610 start');
+      expect(UTD.UniformDataType.MPEGURL_AUDIO ).assertEqual('general.mpegurl-audio');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.MPEGURL_AUDIO  );
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('general.mpegurl-audio');
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.audio");
+      expect(typeObj.description).assertEqual("Audio playlist");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".m3u");
+      expect(typeObj.mimeTypes.toString()).assertEqual("audio/mpegurl,audio/x-mpegurl");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2610 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the general.mpeg-4-audio file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2630', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2630 start');
+      expect(UTD.UniformDataType.MPEG_4_AUDIO).assertEqual('general.mpeg-4-audio');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.MPEG_4_AUDIO);
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('general.mpeg-4-audio');
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.audio");
+      expect(typeObj.description).assertEqual("Audio-only MPEG-4 file");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".m4a");
+      expect(typeObj.mimeTypes.toString()).assertEqual("audio/mpeg");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2630 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the mp2 file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2650', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2650 start');
+      expect(UTD.UniformDataType.MP2 ).assertEqual('general.mp2');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.MP2 );
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('general.mp2');
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.audio");
+      expect(typeObj.description).assertEqual("MPEG-1 audio layer II or MPEG-2 audio layer II");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".mp2");
+      expect(typeObj.mimeTypes.toString()).assertEqual("audio/mpeg");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2650 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the mpeg-audio file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2640', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2640 start');
+      expect(UTD.UniformDataType.MPEG_AUDIO ).assertEqual('general.mpeg-audio');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.MPEG_AUDIO );
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('general.mpeg-audio');
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.audio");
+      expect(typeObj.description).assertEqual("MPEG audio format");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".mpga");
+      expect(typeObj.mimeTypes.toString()).assertEqual("audio/mpeg");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2640 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the ulaw-audio file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2660', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2660 start');
+      expect(UTD.UniformDataType.ULAW_AUDIO  ).assertEqual('general.ulaw-audio');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.ULAW_AUDIO  );
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('general.ulaw-audio');
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.audio");
+      expect(typeObj.description).assertEqual("uLaw audio");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".au,.ulw,.snd");
+      expect(typeObj.mimeTypes.toString()).assertEqual("audio/basic,audio/au,audio/snd");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2660 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the org.matroska.mka file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2670', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2670 start');
+      expect(UTD.UniformDataType.MATROSKA_AUDIO).assertEqual('org.matroska.mka');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.MATROSKA_AUDIO);
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('org.matroska.mka');
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.audio");
+      expect(typeObj.description).assertEqual("Matroska audio");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".mka");
+      expect(typeObj.mimeTypes.toString()).assertEqual("audio/x-matroska");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2670 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the opg file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2680', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2690 start');
+      expect(UTD.UniformDataType.OPG).assertEqual('general.opg');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.OPG);
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('general.opg');
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.archive");
+      expect(typeObj.description).assertEqual("OPG archive");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".opg");
+      expect(typeObj.mimeTypes.toString()).assertEqual("");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2690 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the taz-archive file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2690', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2690 start');
+      expect(UTD.UniformDataType.TAZ_ARCHIVE ).assertEqual('general.taz-archive');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.TAZ_ARCHIVE );
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('general.taz-archive');
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.tar-archive");
+      expect(typeObj.description).assertEqual("Tar zipped file");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".taz,.tar.z,.tz");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/x-gtar");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2690 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the web-archive file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2710', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2710 start');
+      expect(UTD.UniformDataType.WEB_ARCHIVE).assertEqual('general.web-archive');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.WEB_ARCHIVE);
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('general.web-archive');
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.archive");
+      expect(typeObj.description).assertEqual("MHTML web archive");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".mht,.mhtml");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/x-mimearchive");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2710 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the iso file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2720', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2720 start');
+      expect(UTD.UniformDataType.ISO ).assertEqual('general.iso');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.ISO );
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('general.iso');
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.disk-image");
+      expect(typeObj.description).assertEqual("Disc image file");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".iso");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/x-iso9660-image");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2720 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the org.openxmlformats.drawingml.visio file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2730', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2730 start');
+      expect(UTD.UniformDataType.DRAWINGML_VISIO  ).assertEqual('org.openxmlformats.drawingml.visio');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.DRAWINGML_VISIO  );
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('org.openxmlformats.drawingml.visio');
+      expect(typeObj.belongingToTypes.toString()).assertEqual("org.openxmlformats.openxml,general.composite-object");
+      expect(typeObj.description).assertEqual("Microsoft Visio drawing");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".vsdx");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/vnd.openxmlformats-officedocument.drawingml.drawing");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2730 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the org.openxmlformats.drawingml.template file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2740', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2730 start');
+      expect(UTD.UniformDataType.DRAWINGML_TEMPLATE   ).assertEqual('org.openxmlformats.drawingml.template');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.DRAWINGML_TEMPLATE   );
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('org.openxmlformats.drawingml.template');
+      expect("general.composite-object,org.openxmlformats.openxml".includes(typeObj.belongingToTypes[0].toString())).assertEqual(true);
+      expect("general.composite-object,org.openxmlformats.openxml".includes(typeObj.belongingToTypes[1].toString())).assertEqual(true);
+      expect(typeObj.description).assertEqual("Microsoft Visio drawing template");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".vstx");
+      expect(typeObj.mimeTypes.toString()).assertEqual("");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2730 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the org.openxmlformats.wordprocessingml.template file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2750', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2750 start');
+      expect(UTD.UniformDataType.WORDPROCESSINGML_TEMPLATE).assertEqual('org.openxmlformats.wordprocessingml.template');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.WORDPROCESSINGML_TEMPLATE);
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('org.openxmlformats.wordprocessingml.template');
+      expect("general.composite-object,org.openxmlformats.openxml".includes(typeObj.belongingToTypes[0].toString())).assertEqual(true);
+      expect("general.composite-object,org.openxmlformats.openxml".includes(typeObj.belongingToTypes[1].toString())).assertEqual(true);
+      expect(typeObj.description).assertEqual("Office Open XML document template.");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".dotx");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/vnd.openxmlformats-officedocument.wordprocessingml.template");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2750 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the org.openxmlformats.presentationml.template file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2760', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2760 start');
+      expect(UTD.UniformDataType.PRESENTATIONML_TEMPLATE ).assertEqual('org.openxmlformats.presentationml.template');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.PRESENTATIONML_TEMPLATE );
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('org.openxmlformats.presentationml.template');
+      expect("general.composite-object,org.openxmlformats.openxml".includes(typeObj.belongingToTypes[0].toString())).assertEqual(true);
+      expect("general.composite-object,org.openxmlformats.openxml".includes(typeObj.belongingToTypes[1].toString())).assertEqual(true);
+      expect(typeObj.description).assertEqual("Office Open XML presentation template");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".potx");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/vnd.openxmlformats-officedocument.presentationml.template");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2760 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the org.openxmlformats.presentationml.slideshow file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2770', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2770 start');
+      expect(UTD.UniformDataType.PRESENTATIONML_SLIDESHOW  ).assertEqual('org.openxmlformats.presentationml.slideshow');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.PRESENTATIONML_SLIDESHOW  );
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('org.openxmlformats.presentationml.slideshow');
+      expect("general.composite-object,org.openxmlformats.openxml".includes(typeObj.belongingToTypes[0].toString())).assertEqual(true);
+      expect("general.composite-object,org.openxmlformats.openxml".includes(typeObj.belongingToTypes[1].toString())).assertEqual(true);
+      expect(typeObj.description).assertEqual("Office Open XML slide show");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".ppsx");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/vnd.openxmlformats-officedocument.presentationml.slideshow");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2770 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the org.openxmlformats.spreadsheetml.template file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2780', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2780 start');
+      expect(UTD.UniformDataType.SPREADSHEETML_TEMPLATE   ).assertEqual('org.openxmlformats.spreadsheetml.template');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.SPREADSHEETML_TEMPLATE   );
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('org.openxmlformats.spreadsheetml.template');
+      expect("general.composite-object,org.openxmlformats.openxml".includes(typeObj.belongingToTypes[0].toString())).assertEqual(true);
+      expect("general.composite-object,org.openxmlformats.openxml".includes(typeObj.belongingToTypes[1].toString())).assertEqual(true);
+      expect(typeObj.description).assertEqual("Office Open XML spreadsheet template");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".xltx");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/vnd.openxmlformats-officedocument.spreadsheetml.template");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2780 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the com.rarlab.rar-archive file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2790', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2780 start');
+      expect(UTD.UniformDataType.RAR_ARCHIVE).assertEqual('com.rarlab.rar-archive');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.RAR_ARCHIVE);
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('com.rarlab.rar-archive');
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.archive");
+      expect(typeObj.description).assertEqual("WinRAR compressed archive");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".rar");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/rar,application/vnd.rar");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2780 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the org.7-zip.7-zip-archive file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2810', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2810 start');
+      expect(UTD.UniformDataType.SEVEN_ZIP_ARCHIVE ).assertEqual('org.7-zip.7-zip-archive');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.SEVEN_ZIP_ARCHIVE );
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('org.7-zip.7-zip-archive');
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.archive");
+      expect(typeObj.description).assertEqual("7-zip compressed archive");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".7z");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/x-7z-compressed");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2810 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the general.ofd file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2820', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2820 start');
+      expect(UTD.UniformDataType.OFD).assertEqual('general.ofd');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.OFD);
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('general.ofd');
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.composite-object");
+      expect(typeObj.description).assertEqual("Open fixed-layout document, a national standard for format documents");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual(".ofd");
+      expect(typeObj.mimeTypes.toString()).assertEqual("");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2820 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the general.cad file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2830', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2830 start');
+      expect(UTD.UniformDataType.CAD ).assertEqual('general.cad');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.CAD );
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('general.cad');
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.object");
+      expect(typeObj.description).assertEqual("Base type for computer-aided design");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual("");
+      expect(typeObj.mimeTypes.toString()).assertEqual("");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2830 end");
+    });
+    /**
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.desc      : Verify the properties of the general.octet-stream file format data type
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2840', 0, () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2840 start');
+      expect(UTD.UniformDataType.OCTET_STREAM  ).assertEqual('general.octet-stream');
+      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.OCTET_STREAM  );
+      console.log("typeId:" + typeObj.typeId);
+      console.log("belongingToTypes:" + typeObj.belongingToTypes);
+      console.log("description:" + typeObj.description);
+      console.log("referenceURL:" + typeObj.referenceURL);
+      console.log("iconFile:" + typeObj.iconFile);
+      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
+      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
+      expect(typeObj.typeId).assertEqual('general.octet-stream');
+      expect(typeObj.belongingToTypes.toString()).assertEqual("general.object");
+      expect(typeObj.description).assertEqual("Arbitrary binary data");
+      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
+      expect(typeObj.iconFile).assertEqual("");
+      expect(typeObj.filenameExtensions.toString()).assertEqual("");
+      expect(typeObj.mimeTypes.toString()).assertEqual("application/octet-stream");
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2840 end");
+    });
 
   })
 }
