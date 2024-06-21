@@ -246,6 +246,20 @@ export default function ActsAceWebViewSdkSchemeHandler() {
       sendEventByKey('webViewSdkSchemeHandler', 10, '');
     })
     /*
+     *@tc.number SUB_ACE_WEB_SdkSchemeHandler_constructor_API_0001
+     *@tc.name testWebViewSdkSchemeHandler_SdkSchemeHandler_constructor
+     *@tc.desc test SdkSchemeHandler_constructor
+     *@tc.size MediumTest
+     *@tc.type Function
+     *@tc.level 1
+     */
+    it('testWebViewSdkSchemeHandler_constructor', 0, async (done: Function) => {
+      emitKey = "emitWebViewSdkSchemeHandler_constructor"
+      Utils.emitEvent(emitKey, 10);
+      Utils.registerEvent("testWebViewSdkSchemeHandler_constructor", true, 1512, done);
+      sendEventByKey('webViewSdkSchemeHandler', 10, '');
+    })
+    /*
      *@tc.number SUB_ACE_WEB_SdkSchemeHandler_setUrl_API_0001
      *@tc.name testWebViewSdkSchemeHandler_SdkSchemeHandler_setUrl
      *@tc.desc test SdkSchemeHandler_setUrl
