@@ -56,6 +56,7 @@ group("arkui") {
     "ace_ets_web_dev_cloudservice_webController:ActsAceWebDevCloudServiceWebControllerTest",
     "ace_ets_web_dev_cloudservice_webController_five:ActsAceWebDevCloudServiceWebControllerFiveTest",
     "ace_ets_web_dev_cloudservice_webController_four:ActsAceWebDevCloudServiceWebControllerFourTest",
+    "ace_ets_web_dev_cloudservice_webController_six:ActsAceWebDevCloudServiceWebControllerSixTest",
     "ace_ets_web_dev_cloudservice_webController_three:ActsAceWebDevCloudServiceWebControllerThreeTest",
     "ace_ets_web_dev_cloudservice_webController_two:ActsAceWebDevCloudServiceWebControllerTwoTest",
     "ace_ets_web_dev_four:ActsAceWebDevFourTest",
