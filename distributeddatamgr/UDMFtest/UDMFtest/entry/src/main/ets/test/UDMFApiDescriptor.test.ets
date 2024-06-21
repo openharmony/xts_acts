@@ -6545,8 +6545,8 @@ export default function UDMFApiDescriptorTest() {
     });
 
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2510
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2510
      * @tc.desc      : Verify the properties of the gif file format data type
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -6573,9 +6573,9 @@ export default function UDMFApiDescriptorTest() {
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2510 end");
     });
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
-     * @tc.desc      : Verify the properties of the gif file format data type
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2520
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2520
+     * @tc.desc      : Verify the properties of the com.microsoft.word.dot file format data type
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -6601,8 +6601,8 @@ export default function UDMFApiDescriptorTest() {
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2510 end");
     });
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2530
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2530
      * @tc.desc      : Verify the properties of the com.microsoft.powerpoint.pps file format data type
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -6629,8 +6629,8 @@ export default function UDMFApiDescriptorTest() {
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2530 end");
     });
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2540
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2540
      * @tc.desc      : Verify the properties of the com.microsoft.powerpoint.pot file format data type
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -6658,8 +6658,8 @@ export default function UDMFApiDescriptorTest() {
     });
 
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2550
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2550
      * @tc.desc      : Verify the properties of the com.microsoft.excel.xlt file format data type
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -6687,8 +6687,8 @@ export default function UDMFApiDescriptorTest() {
     });
 
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2560
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2560
      * @tc.desc      : Verify the properties of the com.microsoft.visio.vsd file format data type
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -6716,8 +6716,8 @@ export default function UDMFApiDescriptorTest() {
     });
 
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2570
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2570
      * @tc.desc      : Verify the properties of the ts file format data type
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -6744,8 +6744,8 @@ export default function UDMFApiDescriptorTest() {
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2570 end");
     });
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2580
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2580
      * @tc.desc      : Verify the properties of the mpegurl-video file format data type
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -6772,8 +6772,8 @@ export default function UDMFApiDescriptorTest() {
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2580 end");
     });
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2590
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2590
      * @tc.desc      : Verify the properties of the org.matroska.mkv file format data type
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -6800,8 +6800,8 @@ export default function UDMFApiDescriptorTest() {
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2580 end");
     });
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2610
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2610
      * @tc.desc      : Verify the properties of the com.adobe.flash file format data type
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -6829,8 +6829,8 @@ export default function UDMFApiDescriptorTest() {
     });
 
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2620
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2620
      * @tc.desc      : Verify the properties of the general.mpegurl-audio file format data type
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -6857,8 +6857,8 @@ export default function UDMFApiDescriptorTest() {
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2610 end");
     });
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2630
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2630
      * @tc.desc      : Verify the properties of the general.mpeg-4-audio file format data type
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -6885,8 +6885,8 @@ export default function UDMFApiDescriptorTest() {
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2630 end");
     });
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2650
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2650
      * @tc.desc      : Verify the properties of the mp2 file format data type
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -6913,8 +6913,8 @@ export default function UDMFApiDescriptorTest() {
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2650 end");
     });
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2640
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2640
      * @tc.desc      : Verify the properties of the mpeg-audio file format data type
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -6941,8 +6941,8 @@ export default function UDMFApiDescriptorTest() {
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2640 end");
     });
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2660
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2660
      * @tc.desc      : Verify the properties of the ulaw-audio file format data type
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -6969,8 +6969,8 @@ export default function UDMFApiDescriptorTest() {
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2660 end");
     });
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2670
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2670
      * @tc.desc      : Verify the properties of the org.matroska.mka file format data type
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -6997,8 +6997,8 @@ export default function UDMFApiDescriptorTest() {
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2670 end");
     });
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2680
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2680
      * @tc.desc      : Verify the properties of the opg file format data type
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -7025,8 +7025,8 @@ export default function UDMFApiDescriptorTest() {
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2690 end");
     });
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2690
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2690
      * @tc.desc      : Verify the properties of the taz-archive file format data type
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -7053,8 +7053,8 @@ export default function UDMFApiDescriptorTest() {
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2690 end");
     });
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2710
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2710
      * @tc.desc      : Verify the properties of the web-archive file format data type
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -7081,8 +7081,8 @@ export default function UDMFApiDescriptorTest() {
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2710 end");
     });
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2720
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2720
      * @tc.desc      : Verify the properties of the iso file format data type
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -7109,8 +7109,8 @@ export default function UDMFApiDescriptorTest() {
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2720 end");
     });
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2730
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2730
      * @tc.desc      : Verify the properties of the org.openxmlformats.drawingml.visio file format data type
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -7137,8 +7137,8 @@ export default function UDMFApiDescriptorTest() {
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2730 end");
     });
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2740
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2740
      * @tc.desc      : Verify the properties of the org.openxmlformats.drawingml.template file format data type
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -7166,8 +7166,8 @@ export default function UDMFApiDescriptorTest() {
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2730 end");
     });
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2750
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2750
      * @tc.desc      : Verify the properties of the org.openxmlformats.wordprocessingml.template file format data type
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -7195,8 +7195,8 @@ export default function UDMFApiDescriptorTest() {
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2750 end");
     });
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2760
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2760
      * @tc.desc      : Verify the properties of the org.openxmlformats.presentationml.template file format data type
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -7224,8 +7224,8 @@ export default function UDMFApiDescriptorTest() {
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2760 end");
     });
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2770
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2770
      * @tc.desc      : Verify the properties of the org.openxmlformats.presentationml.slideshow file format data type
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -7253,8 +7253,8 @@ export default function UDMFApiDescriptorTest() {
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2770 end");
     });
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2780
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2780
      * @tc.desc      : Verify the properties of the org.openxmlformats.spreadsheetml.template file format data type
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -7282,8 +7282,8 @@ export default function UDMFApiDescriptorTest() {
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2780 end");
     });
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2790
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2790
      * @tc.desc      : Verify the properties of the com.rarlab.rar-archive file format data type
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -7310,8 +7310,8 @@ export default function UDMFApiDescriptorTest() {
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2780 end");
     });
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2810
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2810
      * @tc.desc      : Verify the properties of the org.7-zip.7-zip-archive file format data type
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -7338,8 +7338,8 @@ export default function UDMFApiDescriptorTest() {
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2810 end");
     });
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2820
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2820
      * @tc.desc      : Verify the properties of the general.ofd file format data type
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -7366,8 +7366,8 @@ export default function UDMFApiDescriptorTest() {
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2820 end");
     });
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2830
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2830
      * @tc.desc      : Verify the properties of the general.cad file format data type
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -7394,8 +7394,8 @@ export default function UDMFApiDescriptorTest() {
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2830 end");
     });
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2490
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2490
+     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2840
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2840
      * @tc.desc      : Verify the properties of the general.octet-stream file format data type
      * @tc.size      : MediumTest
      * @tc.type      : Function
