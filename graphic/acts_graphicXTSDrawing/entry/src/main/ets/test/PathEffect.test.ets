@@ -14,8 +14,8 @@
  */
 
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
-import image from '@ohos.multimedia.image';
 import drawing from '@ohos.graphics.drawing';
+import { getRandomNumber } from './utils';
 
 export default function pathEffectTest() {
   describe('DrawingTsPathEffectTest', () => {
@@ -231,5 +231,111 @@ export default function pathEffectTest() {
       }
     });
 
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATHEFFECT_0200
+     * @tc.name      : testcreateCornerPathEffectNormal
+     * @tc.desc      : Test for testcreateCornerPathEffectNormal.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testcreateCornerPathEffectNormal', DEFAULT, () => {
+      const msg = 'testcreateCornerPathEffectNormal';
+
+      try {
+        drawing.PathEffect.createCornerPathEffect(1);
+        console.info(msg + ' createCornerPathEffect with [10, 5], 5 successed');
+      } catch (e) {
+        console.info(msg + ` createCornerPathEffect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
+
+      try {
+        drawing.PathEffect.createCornerPathEffect(30.1);
+        console.info(msg + ' createCornerPathEffect with [10, 5], 5.52 successed');
+      } catch (e) {
+        console.info(msg + ` createCornerPathEffect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATHEFFECT_0201
+     * @tc.name      : testcreateCornerPathEffectNull
+     * @tc.desc      : Test for testcreateCornerPathEffectNull.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testcreateCornerPathEffectNull', DEFAULT, () => {
+      const msg = 'testcreateCornerPathEffectNull';
+
+      try {
+        drawing.PathEffect.createCornerPathEffect(undefined);
+        console.info(msg + ' createCornerPathEffect with undefined, 5 successed');
+      } catch (e) {
+        console.info(msg + ` createCornerPathEffect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.PathEffect.createCornerPathEffect(null);
+        console.info(msg + ' createCornerPathEffect with [10, 5], undefined successed');
+      } catch (e) {
+        console.info(msg + ` createCornerPathEffect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATHEFFECT_0202
+     * @tc.name      : testcreateCornerPathEffectMultipleCalls
+     * @tc.desc      : Test for testcreateCornerPathEffectMultipleCalls.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testcreateCornerPathEffectMultipleCalls', DEFAULT, () => {
+      const msg = 'testcreateCornerPathEffectMultipleCalls';
+
+      try {
+        drawing.PathEffect.createCornerPathEffect(0);
+        console.info(msg + ' createCornerPathEffect with [10, 5, 10, 5], 5, 5 successed');
+      } catch (e) {
+        console.info(msg + ` createCornerPathEffect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.PathEffect.createCornerPathEffect(-1);
+        console.info(msg + ' createCornerPathEffect with [10, 5, 10, 5] successed');
+      } catch (e) {
+        console.info(msg + ` createCornerPathEffect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect(e.code).assertEqual(401);
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATHEFFECT_0203
+     * @tc.name      : testcreateCornerPathEffectMultipleCalls
+     * @tc.desc      : Test for testcreateCornerPathEffectMultipleCalls.
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testcreateCornerPathEffectMultipleCalls', DEFAULT, () => {
+      const msg = 'testcreateCornerPathEffectMultipleCalls';
+
+      for (let i = 0; i < 20; i++) {
+        try {
+          drawing.PathEffect.createCornerPathEffect(getRandomNumber(0, Number.MAX_SAFE_INTEGER));
+          console.info(`${msg} createCornerPathEffect succeeded`);
+        } catch (e) {
+          console.info(`${msg} createCornerPathEffect errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+          expect().assertFail();
+        }
+      }
+    });
   })
 }
