@@ -15,13 +15,14 @@
 
 
 import Utils from '../../test/Utils';
-import web_webview from '@ohos.web.webview'
+import web_webview from '@ohos.web.webview';
 import events_emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
 struct DNSHostIP {
   @State userAgentPC:string = "";
+  @State hostName: string | null | undefined= 'www.baidu.com';
   @State str: string = "";
   @State getURL: string = "";
   @State getURL1: string = "";
@@ -73,26 +74,25 @@ struct DNSHostIP {
               this.getURL = '';
               this.getURL1 = '';
               try {
-                web_webview.WebviewController.setHostIP('www.example.com', '124.95.179.4', 30);
-                await Utils.sleep(1000);
-                this.controller.loadUrl('www.example.com')
-                this.getURL = this.controller.getUrl();
-                console.log('setHostIP0100_getUrl1: ' + this.getURL)
-                await Utils.sleep(2000);
-                web_webview.WebviewController.clearHostIP('www.example.com');
-                await Utils.sleep(1000);
-                this.controller.removeCache(true);
+                web_webview.WebviewController.setHostIP('www.baidu.com', '124.95.179.4', 30);
+                await Utils.sleep(3000);
+                this.controller.loadUrl('www.baidu.com');
                 await Utils.sleep(5000);
-                this.controller.refresh();
-                this.controller.loadUrl('www.example.com')
-                await Utils.sleep(1000);
+                this.getURL = this.controller.getUrl();
+                console.log('setHostIP0100_getUrl: ' + this.getURL);
+                await Utils.sleep(2000);
+                web_webview.WebviewController.clearHostIP('www.dnstest.com');
+                this.controller.removeCache(true);
+                await Utils.sleep(65000);
+                this.controller.loadUrl('www.baidu.com');
+                await Utils.sleep(5000);
                 this.getURL1 = this.controller.getUrl();
-                console.log('setHostIP0100_getUrl2: ' + this.getURL1)
-                if (this.getURL == this.getURL1) {
-                  this.value = true
+                console.log('setHostIP0100_getUrl: ' + this.getURL1)
+                if (this.getURL != this.getURL1) {
+                  this.value = true;
                 }
                 console.log('setHostIP0100_value: ' + this.value)
-
+                this.controller.removeCache(true);
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
               }
@@ -101,7 +101,47 @@ struct DNSHostIP {
               }, 3000)
               break;
             }
-            case "setHostIP0800": {
+            case "setHostIP1200": {
+              this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  Utils.emitEvent(true, 8771)
+                  break;
+                }else if ((this.userAgentPC).includes("Tablet")){
+                  Utils.emitEvent(true, 8771)
+                  break;
+                }
+              this.value = false;
+              this.getURL = '';
+              this.getURL1 = '';
+              try {
+                web_webview.WebviewController.setHostIP('baidu.com', '124.95.179.4', 30);
+                await Utils.sleep(3000);
+                this.controller.loadUrl('baidu.com');
+                await Utils.sleep(5000);
+                this.getURL = this.controller.getUrl();
+                console.log('setHostIP1200_getUrl: ' + this.getURL);
+                await Utils.sleep(2000);
+                web_webview.WebviewController.clearHostIP('baidu.com');
+                this.controller.removeCache(true);
+                await Utils.sleep(65000);
+                this.controller.loadUrl('baidu.com');
+                await Utils.sleep(5000);
+                this.getURL1 = this.controller.getUrl();
+                console.log('setHostIP1200_getUrl1: ' + this.getURL1)
+                if (this.getURL != this.getURL1) {
+                  this.value = true;
+                }
+                console.log('setHostIP1200_value: ' + this.value)
+                this.controller.removeCache(true);
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              }
+              setTimeout(() => {
+                Utils.emitEvent(this.value, 8771)
+              }, 3000)
+              break;
+            }
+            case "setHostIP1300": {
               this.userAgentPC = this.controller.getUserAgent();
                 if ((this.userAgentPC).includes("PC")) {
                   Utils.emitEvent(true, 8772)
@@ -114,24 +154,25 @@ struct DNSHostIP {
               this.getURL = '';
               this.getURL1 = '';
               try {
-                web_webview.WebviewController.setHostIP('www.example.com', '124.95.179.4', 30);
-                await Utils.sleep(1000);
-                this.controller.loadUrl('www.example.com')
-                this.getURL = this.controller.getUrl();
-                console.log('setHostIP0800_getUrl1' + this.getURL)
-                await Utils.sleep(2000);
-                web_webview.WebviewController.clearHostIP('www.example.com');
-                await Utils.sleep(1000);
-                this.controller.removeCache(true);
+                web_webview.WebviewController.setHostIP('store.apple.com', '124.95.179.4', 30);
+                await Utils.sleep(3000);
+                this.controller.loadUrl('store.apple.com');
                 await Utils.sleep(5000);
-                this.controller.loadUrl('www.example.com')
-                await Utils.sleep(1000);
+                this.getURL = this.controller.getUrl();
+                console.log('setHostIP1300_getUrl: ' + this.getURL);
+                await Utils.sleep(2000);
+                web_webview.WebviewController.clearHostIP('store.apple.com');
+                this.controller.removeCache(true);
+                await Utils.sleep(60000);
+                this.controller.loadUrl('store.apple.com');
+                await Utils.sleep(5000);
                 this.getURL1 = this.controller.getUrl();
-                console.log('setHostIP0800_getUrl2' + this.getURL1)
-                if (this.getURL == this.getURL1) {
-                  this.value = true
+                console.log('setHostIP1300_getUrl1: ' + this.getURL1);
+                if (this.getURL != this.getURL1) {
+                  this.value = true;
                 }
-                console.log('setHostIP0800_value' + this.value)
+                console.log('setHostIP1300_value: ' + this.value);
+                this.controller.removeCache(true);
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
               }
@@ -140,10 +181,79 @@ struct DNSHostIP {
               }, 3000)
               break;
             }
+            case "setHostIP1500": {
+              this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  Utils.emitEvent(true, 8773)
+                  break;
+                }else if ((this.userAgentPC).includes("Tablet")){
+                  Utils.emitEvent(true, 8773)
+                  break;
+                }
+              this.value = false;
+              let value1: boolean = false;
+              let value2: boolean = false;
+              this.getURL1 = '';
+              this.getURL2 = '';
+              this.getURL3 = '';
+              this.getURL4 = '';
+
+              try {
+                web_webview.WebviewController.setHostIP('www.baidu.com', '124.95.179.4', 30);
+                await Utils.sleep(20000);
+                this.controller.loadUrl('www.baidu.com');
+                await Utils.sleep(5000);
+                this.getURL1 = this.controller.getUrl();
+                console.log('setHostIP1500_getUrl1' + this.getURL1)
+                await Utils.sleep(2000);
+                web_webview.WebviewController.clearHostIP('www.baidu.com');
+                this.controller.removeCache(true);
+                await Utils.sleep(65000);
+                this.controller.loadUrl('www.baidu.com')
+                await Utils.sleep(5000);
+                this.getURL2 = this.controller.getUrl();
+                console.log('setHostIP1500_getUrl2' + this.getURL2)
+                if (this.getURL1 != this.getURL2) {
+                  value1 = true
+                }
+                this.controller.removeCache(true);
+                await Utils.sleep(65000);
+                web_webview.WebviewController.setHostIP('www.baidu.com', '124.95.179.4', 30);
+                await Utils.sleep(3000);
+                this.controller.loadUrl('www.baidu.com')
+                await Utils.sleep(5000);
+                this.getURL3 = this.controller.getUrl();
+                console.log('setHostIP1500_getUrl3' + this.getURL3)
+                await Utils.sleep(2000);
+                web_webview.WebviewController.clearHostIP('www.baidu.com');
+                this.controller.removeCache(true);
+                await Utils.sleep(65000);
+                this.controller.loadUrl('www.baidu.com')
+                await Utils.sleep(5000);
+                this.getURL4 = this.controller.getUrl();
+                console.log('setHostIP1500_getUrl4' + this.getURL4)
+                if (this.getURL3 != this.getURL4) {
+                  value2 = true
+                }
+                if ((value1 == true) && (value2 == true)) {
+                  this.value = true
+                }
+                console.log('setHostIP1500_value: ' + this.value)
+                this.controller.removeCache(true);
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              }
+              setTimeout(() => {
+                Utils.emitEvent(this.value, 8773)
+              }, 3000)
+              break;
+            }
           }
         })
+
       }
-      Web({ src: 'https://www.example.com', controller: this.controller })
+      
+      Web({ src: 'www.dnsTest.com', controller: this.controller })
         .height(500)
         .width(500)
     }
