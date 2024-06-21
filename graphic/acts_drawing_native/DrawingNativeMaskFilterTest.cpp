@@ -99,14 +99,13 @@ HWTEST_F(DrawingNativeMaskFilterTest, testMaskFilterCreateBlurDestroyMultipleCal
         OH_Drawing_MaskFilterDestroy(maskFilter);
     }
     // 2. Call OH_Drawing_MaskFilterCreateBlur 10 times consecutively
-    OH_Drawing_MaskFilter *maskFilter;
+    OH_Drawing_MaskFilter *maskFilters[10];
     for (int i = 0; i < 10; i++) {
-        maskFilter = OH_Drawing_MaskFilterCreateBlur(NORMAL, 10, true);
+        maskFilters[i] = OH_Drawing_MaskFilterCreateBlur(NORMAL, 10, true);
     }
     // 3. Call OH_Drawing_MaskFilterDestroy 10 times consecutively
     for (int i = 0; i < 10; i++) {
-        OH_Drawing_MaskFilterDestroy(maskFilter);
-        maskFilter = nullptr;
+        OH_Drawing_MaskFilterDestroy(maskFilters[i]);
     }
 }
 

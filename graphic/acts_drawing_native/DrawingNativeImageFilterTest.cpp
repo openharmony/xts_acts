@@ -224,24 +224,22 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterDestroyNULL, TestSize.Leve
  */
 HWTEST_F(DrawingNativeImageFilterTest, testImageFilterDestroyMultipleCalls, TestSize.Level3) {
     // 1. Call OH_Drawing_ImageFilterCreateFromColorFilter 10 times
-    OH_Drawing_ColorFilter *colorFilter;
-    OH_Drawing_ImageFilter *filter;
+    OH_Drawing_ColorFilter *colorFilters[10];
+    OH_Drawing_ImageFilter *filters[10];
     for (int i = 0; i < 10; i++) {
-        colorFilter = OH_Drawing_ColorFilterCreateLinearToSrgbGamma();
-        filter = OH_Drawing_ImageFilterCreateFromColorFilter(colorFilter, nullptr);
+        colorFilters[i] = OH_Drawing_ColorFilterCreateLinearToSrgbGamma();
+        filters[i] = OH_Drawing_ImageFilterCreateFromColorFilter(colorFilters[i], nullptr);
     }
     // 2. Call OH_Drawing_ImageFilterDestroy 10 times
     for (int i = 0; i < 10; i++) {
-        OH_Drawing_ImageFilterDestroy(filter);
-        filter = nullptr;
+        OH_Drawing_ImageFilterDestroy(filters[i]);
+        OH_Drawing_ColorFilterDestroy(colorFilters[i]);
     }
     // 3. Call OH_Drawing_ImageFilterCreateBlur and OH_Drawing_ImageFilterDestroy alternately 10 times
     for (int i = 0; i < 10; i++) {
         OH_Drawing_ImageFilter *filter = OH_Drawing_ImageFilterCreateBlur(1, 1, OH_Drawing_TileMode::MIRROR, nullptr);
         OH_Drawing_ImageFilterDestroy(filter);
     }
-    OH_Drawing_ImageFilterDestroy(filter);
-    OH_Drawing_ColorFilterDestroy(colorFilter);
 }
 
 } // namespace Drawing

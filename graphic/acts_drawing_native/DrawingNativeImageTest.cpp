@@ -71,14 +71,13 @@ HWTEST_F(DrawingNativeImageTest, testImageCreateDestroyMultipleCalls, TestSize.L
         OH_Drawing_ImageDestroy(image);
     }
     // 2. Call OH_Drawing_ImageCreate 10 times continuously
-    OH_Drawing_Image *image;
+    OH_Drawing_Image *images[10];
     for (int i = 0; i < 10; i++) {
-        image = OH_Drawing_ImageCreate();
+        images[i] = OH_Drawing_ImageCreate();
     }
     // 3. Call OH_Drawing_ImageDestroy 10 times continuously
     for (int i = 0; i < 10; i++) {
-        OH_Drawing_ImageDestroy(image);
-        image = nullptr;
+        OH_Drawing_ImageDestroy(images[i]);
     }
 }
 
