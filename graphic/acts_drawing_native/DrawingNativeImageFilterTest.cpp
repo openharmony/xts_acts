@@ -40,22 +40,22 @@ class DrawingNativeImageFilterTest : public testing::Test {};
  * @tc.level : Level 0
  */
 HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurNormal, TestSize.Level0) {
-    // 1、OH_Drawing_ImageFilterCreateBlur枚举值OH_Drawing_TileMode遍历
+    // 1. Enumerate OH_Drawing_TileMode values in OH_Drawing_ImageFilterCreateBlur
     OH_Drawing_TileMode modes[] = {CLAMP, REPEAT, MIRROR, DECAL};
     for (OH_Drawing_TileMode mode : modes) {
         OH_Drawing_ImageFilter *filter = OH_Drawing_ImageFilterCreateBlur(1.0f, 1.0f, mode, nullptr);
         EXPECT_NE(filter, nullptr);
         OH_Drawing_ImageFilterDestroy(filter);
     }
-    // 2、OH_Drawing_ImageFilterCreateBlur接口sigmaX、sigmaY传入小数
+    // 2. Pass decimal values for sigmaX and sigmaY in OH_Drawing_ImageFilterCreateBlur
     OH_Drawing_ImageFilter *filter = OH_Drawing_ImageFilterCreateBlur(1.0f, 1.0f, OH_Drawing_TileMode::MIRROR, nullptr);
-    // 3、OH_Drawing_ImageFilterCreateBlur接口sigmaX、sigmaY传入整数
+    // 3. Pass integer values for sigmaX and sigmaY in OH_Drawing_ImageFilterCreateBlur
     filter = OH_Drawing_ImageFilterCreateBlur(1, 1, OH_Drawing_TileMode::MIRROR, nullptr);
-    // 4、OH_Drawing_ImageFilterCreateBlur接口input入参NULL
+    // 4. Pass NULL for input parameter in OH_Drawing_ImageFilterCreateBlur
     filter = OH_Drawing_ImageFilterCreateBlur(1.0f, 1.0f, OH_Drawing_TileMode::MIRROR, nullptr);
-    // 5、OH_Drawing_ImageFilterCreateBlur接口input入参非NULL
+    // 5. Pass non-NULL for input parameter in OH_Drawing_ImageFilterCreateBlur
     filter = OH_Drawing_ImageFilterCreateBlur(1.0f, 1.0f, OH_Drawing_TileMode::MIRROR, filter);
-    // 6、释放内存
+    // 6. Destroy the filter object
     OH_Drawing_ImageFilterDestroy(filter);
 }
 
@@ -68,11 +68,11 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurNormal, TestSize
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurNULL, TestSize.Level3) {
-    // 1、OH_Drawing_ImageFilterCreateBlur第一个参数为空
+    // 1. OH_Drawing_ImageFilterCreateBlur with the first parameter being null
     OH_Drawing_ImageFilter *filter = OH_Drawing_ImageFilterCreateBlur(0, 1.0f, OH_Drawing_TileMode::MIRROR, nullptr);
-    // 2、OH_Drawing_ImageFilterCreateBlur第二个参数为空
+    // 2. OH_Drawing_ImageFilterCreateBlur with the second parameter being null
     filter = OH_Drawing_ImageFilterCreateBlur(1.0f, 0, OH_Drawing_TileMode::MIRROR, nullptr);
-    // 3、释放内存
+    // 3. Destroy the filter object
     OH_Drawing_ImageFilterDestroy(filter);
 }
 
@@ -85,7 +85,8 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurNULL, TestSize.L
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurMultipleCalls, TestSize.Level3) {
-    // 1、OH_Drawing_ImageFilterCreateBlur（sigmaX、sigmaY传入随机数，OH_Drawing_TileMode随机枚举值），调用10次
+    // 1. OH_Drawing_ImageFilterCreateBlur (pass random values for sigmaX and sigmaY, random enum value for
+    // OH_Drawing_TileMode), call 10 times
     for (int i = 0; i < 10; i++) {
         std::random_device rd;
         std::mt19937 gen(rd());
@@ -106,10 +107,10 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurMultipleCalls, T
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurAbnormal, TestSize.Level3) {
-    // 1、OH_Drawing_ImageFilterCreateBlur接口sigmaX、sigmaY传入负数
+    // 1. Pass negative values for sigmaX and sigmaY in OH_Drawing_ImageFilterCreateBlur
     OH_Drawing_ImageFilter *filter =
         OH_Drawing_ImageFilterCreateBlur(-1.0f, -1.0f, OH_Drawing_TileMode::MIRROR, nullptr);
-    // 2、释放内存
+    // 2. Destroy the filter object
     OH_Drawing_ImageFilterDestroy(filter);
 }
 
@@ -122,10 +123,10 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurAbnormal, TestSi
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurMaximum, TestSize.Level3) {
-    // 1、OH_Drawing_ImageFilterCreateBlur接口sigmaX、sigmaY传入极大值
+    // 1. Create a blur image filter with maximum values for sigmaX and sigmaY in OH_Drawing_ImageFilterCreateBlur
     OH_Drawing_ImageFilter *filter =
         OH_Drawing_ImageFilterCreateBlur(FLT_MAX, FLT_MAX, OH_Drawing_TileMode::MIRROR, nullptr);
-    // 2、释放内存
+    // 2. Destroy the filter object
     OH_Drawing_ImageFilterDestroy(filter);
 }
 
@@ -138,15 +139,15 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateBlurMaximum, TestSiz
  * @tc.level : Level 0
  */
 HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateFromColorFilterNormal, TestSize.Level0) {
-    // 1、OH_Drawing_ImageFilterCreateBlur
+    // 1. OH_Drawing_ImageFilterCreateBlur
     OH_Drawing_ImageFilter *filter = OH_Drawing_ImageFilterCreateBlur(1, 1, OH_Drawing_TileMode::MIRROR, nullptr);
-    // 2、OH_Drawing_ColorFilterCreateLinearToSrgbGamma
+    // 2. OH_Drawing_ColorFilterCreateLinearToSrgbGamma
     OH_Drawing_ColorFilter *colorFilter = OH_Drawing_ColorFilterCreateLinearToSrgbGamma();
-    // 3、OH_Drawing_ImageFilterCreateFromColorFilter参数input为null
+    // 3. OH_Drawing_ImageFilterCreateFromColorFilter with null input parameter
     OH_Drawing_ImageFilter *imageFilter = OH_Drawing_ImageFilterCreateFromColorFilter(colorFilter, nullptr);
-    // 4、OH_Drawing_ImageFilterCreateFromColorFilter参数input不为null
+    // 4. OH_Drawing_ImageFilterCreateFromColorFilter with non-null input parameter
     imageFilter = OH_Drawing_ImageFilterCreateFromColorFilter(colorFilter, filter);
-    // 5、释放内存
+    // 5. Free memory
     OH_Drawing_ImageFilterDestroy(imageFilter);
     OH_Drawing_ColorFilterDestroy(colorFilter);
     OH_Drawing_ImageFilterDestroy(filter);
@@ -162,10 +163,11 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateFromColorFilterNorma
  */
 HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateFromColorFilterNULL, TestSize.Level3) {
     OH_Drawing_ImageFilter *filter = OH_Drawing_ImageFilterCreateBlur(1, 1, OH_Drawing_TileMode::MIRROR, nullptr);
-    // 1、OH_Drawing_ImageFilterCreateFromColorFilter第一个参数为空，通过OH_Drawing_ErrorCodeGet查看错误码
+    // 1. OH_Drawing_ImageFilterCreateFromColorFilter with the first parameter being null, check the error code using
+    // OH_Drawing_ErrorCodeGet
     OH_Drawing_ImageFilterCreateFromColorFilter(nullptr, filter);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-    // 2、释放内存
+    // 2. Free memory
     OH_Drawing_ImageFilterDestroy(filter);
 }
 
@@ -196,9 +198,7 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterCreateFromColorFilterMulti
  * @tc.level : Level 0
  */
 HWTEST_F(DrawingNativeImageFilterTest, testImageFilterDestroyNormal, TestSize.Level0) {
-    // 1、OH_Drawing_ImageFilterCreateBlur
     OH_Drawing_ImageFilter *filter = OH_Drawing_ImageFilterCreateBlur(1, 1, OH_Drawing_TileMode::MIRROR, nullptr);
-    // 2、OH_Drawing_ImageFilterDestroy
     OH_Drawing_ImageFilterDestroy(filter);
 }
 
@@ -211,7 +211,6 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterDestroyNormal, TestSize.Le
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativeImageFilterTest, testImageFilterDestroyNULL, TestSize.Level3) {
-    // 1、OH_Drawing_ImageFilterDestroy参数为空
     OH_Drawing_ImageFilterDestroy(nullptr);
 }
 
@@ -224,19 +223,19 @@ HWTEST_F(DrawingNativeImageFilterTest, testImageFilterDestroyNULL, TestSize.Leve
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativeImageFilterTest, testImageFilterDestroyMultipleCalls, TestSize.Level3) {
-    // 1、OH_Drawing_ImageFilterCreateFromColorFilter，调用10次
+    // 1. Call OH_Drawing_ImageFilterCreateFromColorFilter 10 times
     OH_Drawing_ColorFilter *colorFilter;
     OH_Drawing_ImageFilter *filter;
     for (int i = 0; i < 10; i++) {
         colorFilter = OH_Drawing_ColorFilterCreateLinearToSrgbGamma();
         filter = OH_Drawing_ImageFilterCreateFromColorFilter(colorFilter, nullptr);
     }
-    // 2、OH_Drawing_ImageFilterDestroy，调用10次
+    // 2. Call OH_Drawing_ImageFilterDestroy 10 times
     for (int i = 0; i < 10; i++) {
         OH_Drawing_ImageFilterDestroy(filter);
         filter = nullptr;
     }
-    // 3、OH_Drawing_ImageFilterCreateBlur-OH_Drawing_ImageFilterDestroy来回调用10次
+    // 3. Call OH_Drawing_ImageFilterCreateBlur and OH_Drawing_ImageFilterDestroy alternately 10 times
     for (int i = 0; i < 10; i++) {
         OH_Drawing_ImageFilter *filter = OH_Drawing_ImageFilterCreateBlur(1, 1, OH_Drawing_TileMode::MIRROR, nullptr);
         OH_Drawing_ImageFilterDestroy(filter);

@@ -37,9 +37,9 @@ class DrawingNativeImageTest : public testing::Test {};
  * @tc.level : Level 0
  */
 HWTEST_F(DrawingNativeImageTest, testImageCreateDestroyNormal, TestSize.Level0) {
-    // 1、OH_Drawing_ImageCreate
+    // 1. OH_Drawing_ImageCreate
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
-    // 2、OH_Drawing_ImageDestroy
+    // 2. OH_Drawing_ImageDestroy
     OH_Drawing_ImageDestroy(image);
 }
 
@@ -52,7 +52,7 @@ HWTEST_F(DrawingNativeImageTest, testImageCreateDestroyNormal, TestSize.Level0) 
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativeImageTest, testImageCreateDestroyNULL, TestSize.Level3) {
-    // 1、OH_Drawing_ImageDestroy第一个参数传空
+    // 1. OH_Drawing_ImageDestroy with a NULL parameter
     OH_Drawing_ImageDestroy(nullptr);
 }
 
@@ -65,17 +65,17 @@ HWTEST_F(DrawingNativeImageTest, testImageCreateDestroyNULL, TestSize.Level3) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativeImageTest, testImageCreateDestroyMultipleCalls, TestSize.Level3) {
-    // 1、OH_Drawing_ImageCreate-OH_Drawing_ImageDestroy来回调用10次
+    // 1. Call OH_Drawing_ImageCreate and OH_Drawing_ImageDestroy 10 times
     for (int i = 0; i < 10; i++) {
         OH_Drawing_Image *image = OH_Drawing_ImageCreate();
         OH_Drawing_ImageDestroy(image);
     }
-    // 2、OH_Drawing_ImageCreate连续调用10次
+    // 2. Call OH_Drawing_ImageCreate 10 times continuously
     OH_Drawing_Image *image;
     for (int i = 0; i < 10; i++) {
         image = OH_Drawing_ImageCreate();
     }
-    // 3、OH_Drawing_ImageDestroy连续调用10次
+    // 3. Call OH_Drawing_ImageDestroy 10 times continuously
     for (int i = 0; i < 10; i++) {
         OH_Drawing_ImageDestroy(image);
         image = nullptr;
@@ -91,16 +91,16 @@ HWTEST_F(DrawingNativeImageTest, testImageCreateDestroyMultipleCalls, TestSize.L
  * @tc.level : Level 0
  */
 HWTEST_F(DrawingNativeImageTest, testImageBuildFromBitmapNormal, TestSize.Level0) {
-    // 1、OH_Drawing_ImageCreate
+    // 1. OH_Drawing_ImageCreate
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
-    // 2、OH_Drawing_BitmapCreate
+    // 2. OH_Drawing_BitmapCreate
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
-    // 3、OH_Drawing_ImageBuildFromBitmap构造图片内容成功
+    // 3. OH_Drawing_ImageBuildFromBitmap successfully constructs the image content
     OH_Drawing_ImageBuildFromBitmap(image, bitmap);
     EXPECT_NE(bitmap, nullptr);
-    // 4、OH_Drawing_ImageBuildFromBitmap构造图片内容失败
+    // 4. OH_Drawing_ImageBuildFromBitmap fails to construct the image content
     OH_Drawing_ImageBuildFromBitmap(image, nullptr);
-    // 5、释放内存
+    // 5. Free memory
     OH_Drawing_ImageDestroy(image);
     OH_Drawing_BitmapDestroy(bitmap);
 }
@@ -114,17 +114,17 @@ HWTEST_F(DrawingNativeImageTest, testImageBuildFromBitmapNormal, TestSize.Level0
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativeImageTest, testImageBuildFromBitmapNULL, TestSize.Level3) {
-    // 1、OH_Drawing_ImageCreate
+    // 1. OH_Drawing_ImageCreate
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
-    // 2、OH_Drawing_BitmapCreate
+    // 2. OH_Drawing_BitmapCreate
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
-    // 3、OH_Drawing_ImageBuildFromBitmap第一个参数传空，通过OH_Drawing_ErrorCodeGet查看错误码
+    // 3. OH_Drawing_ImageBuildFromBitmap with a null parameter, check the error code with OH_Drawing_ErrorCodeGet
     OH_Drawing_ImageBuildFromBitmap(nullptr, bitmap);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-    // 4、OH_Drawing_ImageBuildFromBitmap第二个参数传空，通过OH_Drawing_ErrorCodeGet查看错误码
+    // 4. OH_Drawing_ImageBuildFromBitmap with a null parameter, check the error code with OH_Drawing_ErrorCodeGet
     OH_Drawing_ImageBuildFromBitmap(image, nullptr);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-    // 5、释放内存
+    // 5. Free memory
     OH_Drawing_ImageDestroy(image);
     OH_Drawing_BitmapDestroy(bitmap);
 }
@@ -160,7 +160,7 @@ HWTEST_F(DrawingNativeImageTest, testImageBuildFromBitmapMultipleCalls, TestSize
  * @tc.level : Level 0
  */
 HWTEST_F(DrawingNativeImageTest, testImageGetWidthHeightNormal, TestSize.Level0) {
-    // 1、OH_Drawing_ImageCreate
+    // 1. OH_Drawing_ImageCreate
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
@@ -168,13 +168,13 @@ HWTEST_F(DrawingNativeImageTest, testImageGetWidthHeightNormal, TestSize.Level0)
     constexpr uint32_t height = 200;
     OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
     OH_Drawing_ImageBuildFromBitmap(image, bitmap);
-    // 2、OH_Drawing_ImageGetWidth
+    // 2. OH_Drawing_ImageGetWidth
     int32_t width_ = OH_Drawing_ImageGetWidth(image);
     EXPECT_EQ(width_, 200);
-    // 3、OH_Drawing_ImageGetHeight
+    // 3. OH_Drawing_ImageGetHeight
     int32_t height_ = OH_Drawing_ImageGetHeight(image);
     EXPECT_EQ(height_, 200);
-    // 4、释放内存
+    // 4. Free memory
     OH_Drawing_ImageDestroy(image);
     OH_Drawing_BitmapDestroy(bitmap);
 }
@@ -195,10 +195,10 @@ HWTEST_F(DrawingNativeImageTest, testImageGetWidthHeightNULL, TestSize.Level3) {
     uint32_t height = 200;
     OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
     OH_Drawing_ImageBuildFromBitmap(image, bitmap);
-    // 1、OH_Drawing_ImageGetWidth参数传空，通过OH_Drawing_ErrorCodeGet查看错误码
+    // 1. OH_Drawing_ImageGetWidth with a null parameter, check the error code with OH_Drawing_ErrorCodeGet
     OH_Drawing_ImageGetWidth(nullptr);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-    // 2、OH_Drawing_ImageGetHeight参数传空，通过OH_Drawing_ErrorCodeGet查看错误码
+    // 2. OH_Drawing_ImageGetHeight with a null parameter, check the error code with OH_Drawing_ErrorCodeGet
     OH_Drawing_ImageGetHeight(nullptr);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
 }
@@ -273,20 +273,20 @@ HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoNormal, TestSize.Level0) {
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoNULL, TestSize.Level3) {
-    // 1、OH_Drawing_ImageCreate
+    // 1. OH_Drawing_ImageCreate
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
-    // 2、OH_Drawing_Image_Info
+    // 2. OH_Drawing_Image_Info
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     uint32_t width = 400;
     uint32_t height = 400;
     OH_Drawing_Image_Info imageInfo;
     OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
     OH_Drawing_ImageGetImageInfo(image, &imageInfo);
-    // 3、OH_Drawing_ImageGetImageInfo参数传空，通过OH_Drawing_ErrorCodeGet查看错误码
+    // 3. OH_Drawing_ImageGetImageInfo with a null parameter, check the error code with OH_Drawing_ErrorCodeGet
     OH_Drawing_ImageGetImageInfo(nullptr, &imageInfo);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-    // 4、释放内存
+    // 4. Free memory
     OH_Drawing_ImageDestroy(image);
     OH_Drawing_BitmapDestroy(bitmap);
 }
@@ -334,17 +334,17 @@ HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoMultipleCalls, TestSize.Le
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoAbnormal, TestSize.Level3) {
-    // 1、OH_Drawing_ImageCreate
+    // 1. OH_Drawing_ImageCreate
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
-    // 2、OH_Drawing_ImageGetImageInfo调用OH_Drawing_Image_Info创建时width=-400，Height=-400
+    // 2. OH_Drawing_ImageGetImageInfo creates OH_Drawing_Image_Info with width=-400 and height=-400
     OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     uint32_t width = -400;
     uint32_t height = -400;
     OH_Drawing_Image_Info imageInfo;
     OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
     OH_Drawing_ImageGetImageInfo(image, &imageInfo);
-    // 3、释放内存
+    // 3. Free memory
     OH_Drawing_ImageDestroy(image);
     OH_Drawing_BitmapDestroy(bitmap);
 }
@@ -358,17 +358,17 @@ HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoAbnormal, TestSize.Level3)
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativeImageTest, testImageGetImageInfoMaximum, TestSize.Level3) {
-    // 1、OH_Drawing_ImageCreate
+    // 1. OH_Drawing_ImageCreate
     OH_Drawing_Image *image = OH_Drawing_ImageCreate();
     OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreate();
-    // 2、OH_Drawing_ImageGetImageInfo调用OH_Drawing_Image_Info创建时width=极大值，Height=极大值
-    OH_Drawing_BitmapFormat cFormat {COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
+    // 2. OH_Drawing_ImageGetImageInfo creates OH_Drawing_Image_Info with width=maximum value and height=maximum value
+    OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
     uint32_t width = UINT32_MAX;
     uint32_t height = UINT32_MAX;
     OH_Drawing_Image_Info imageInfo;
     OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
     OH_Drawing_ImageGetImageInfo(image, &imageInfo);
-    // 3、释放内存
+    // 3. Free memory
     OH_Drawing_ImageDestroy(image);
     OH_Drawing_BitmapDestroy(bitmap);
 }
