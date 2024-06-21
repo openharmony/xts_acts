@@ -125,28 +125,38 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPixelMapRectNull, TestSize.Level
 
     OH_Drawing_Rect *src2 = OH_Drawing_RectCreate(0, 1, 1, 1);
     OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src2, dst, sampleOptions);
-    src2 = OH_Drawing_RectCreate(1, 0, 1, 1);
-    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src2, dst, sampleOptions);
-    src2 = OH_Drawing_RectCreate(1, 1, 0, 1);
-    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src2, dst, sampleOptions);
-    src2 = OH_Drawing_RectCreate(1, 1, 1, 0);
-    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src2, dst, sampleOptions);
-    src2 = OH_Drawing_RectCreate(0, 0, 0, 0);
-    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src2, dst, sampleOptions);
+    OH_Drawing_Rect *src3 = OH_Drawing_RectCreate(1, 0, 1, 1);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src3, dst, sampleOptions);
+    OH_Drawing_Rect *src4 = OH_Drawing_RectCreate(1, 1, 0, 1);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src4, dst, sampleOptions);
+    OH_Drawing_Rect *src5 = OH_Drawing_RectCreate(1, 1, 1, 0);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src5, dst, sampleOptions);
+    OH_Drawing_Rect *src6 = OH_Drawing_RectCreate(0, 0, 0, 0);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src6, dst, sampleOptions);
 
     OH_Drawing_Rect *dst2 = OH_Drawing_RectCreate(0, 1, 1, 1);
     OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst2, sampleOptions);
-    dst2 = OH_Drawing_RectCreate(1, 0, 1, 1);
-    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst2, sampleOptions);
-    dst2 = OH_Drawing_RectCreate(1, 1, 0, 1);
-    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst2, sampleOptions);
-    dst2 = OH_Drawing_RectCreate(1, 1, 1, 0);
-    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst2, sampleOptions);
-    dst2 = OH_Drawing_RectCreate(0, 0, 0, 0);
-    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst2, sampleOptions);
+    OH_Drawing_Rect *dst3 = OH_Drawing_RectCreate(1, 0, 1, 1);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst3, sampleOptions);
+    OH_Drawing_Rect *dst4 = OH_Drawing_RectCreate(1, 1, 0, 1);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst4, sampleOptions);
+    OH_Drawing_Rect *dst5 = OH_Drawing_RectCreate(1, 1, 1, 0);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst5, sampleOptions);
+    OH_Drawing_Rect *dst6 = OH_Drawing_RectCreate(0, 0, 0, 0);
+    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst6, sampleOptions);
 
     OH_Drawing_RectDestroy(src);
+    OH_Drawing_RectDestroy(src2);
+    OH_Drawing_RectDestroy(src3);
+    OH_Drawing_RectDestroy(src4);
+    OH_Drawing_RectDestroy(src5);
+    OH_Drawing_RectDestroy(src6);
     OH_Drawing_RectDestroy(dst);
+    OH_Drawing_RectDestroy(dst2);
+    OH_Drawing_RectDestroy(dst3);
+    OH_Drawing_RectDestroy(dst4);
+    OH_Drawing_RectDestroy(dst5);
+    OH_Drawing_RectDestroy(dst6);
     OH_Drawing_SamplingOptionsDestroy(sampleOptions);
     OH_Drawing_PixelMapDissolve(drPixelMap);
     OH_Drawing_CanvasDestroy(canvas);
@@ -186,32 +196,48 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPixelMapRectAbnormal, TestSize.L
     // 2
     src = OH_Drawing_RectCreate(-1, 1, 1, 1);
     OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
+    OH_Drawing_RectDestroy(src);
+
     src = OH_Drawing_RectCreate(1, -1, 1, 1);
     OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
+    OH_Drawing_RectDestroy(src);
+
     src = OH_Drawing_RectCreate(1, 1, -1, 1);
     OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
+    OH_Drawing_RectDestroy(src);
+    
     src = OH_Drawing_RectCreate(1, 1, 1, -1);
     OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
+    OH_Drawing_RectDestroy(src);
     // 3
     src = OH_Drawing_RectCreate(100, 100, 100, 200);
     OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
+    OH_Drawing_RectDestroy(src);
+
     src = OH_Drawing_RectCreate(100, 200, 200, 200);
     OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
+    OH_Drawing_RectDestroy(src);
     // 4
     src = OH_Drawing_RectCreate(100, 100, 100, 100);
     OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
+    OH_Drawing_RectDestroy(src);
     // 5
     src = OH_Drawing_RectCreate(200, 200, 100, 100);
     OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
+    OH_Drawing_RectDestroy(src);
     // 6
     src = OH_Drawing_RectCreate(0, 0, 100, 100);
     dst = OH_Drawing_RectCreate(100, 100, 100, 200);
     OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
+
+    OH_Drawing_RectDestroy(dst);
     dst = OH_Drawing_RectCreate(100, 200, 200, 200);
     OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
+    OH_Drawing_RectDestroy(dst);
     // 7
     dst = OH_Drawing_RectCreate(100, 100, 100, 100);
     OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
+    OH_Drawing_RectDestroy(dst);
     // 8
     dst = OH_Drawing_RectCreate(200, 200, 100, 100);
     OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
@@ -701,14 +727,13 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawBitmapNormal, TestSize.Level0) {
             OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
             void *pixels = OH_Drawing_BitmapGetPixels(bitmap);
             bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
+            // 5. OH_Drawing_CanvasDrawBitmap
+            OH_Drawing_CanvasDrawBitmap(canvas, bitmap, 0, 0);
+            OH_Drawing_BitmapDestroy(bitmap);
         }
     }
 
-    // 5. OH_Drawing_CanvasDrawBitmap
-    OH_Drawing_CanvasDrawBitmap(canvas, bitmap, 0, 0);
-
     // 6. OH_Drawing_BitmapCreateFromPixels, initialize the Bitmap with rowBytes greater than the image.
-
     int width = 500;
     int height = 500;
     OH_Drawing_Image_Info imageInfo = {width, height, COLOR_FORMAT_UNKNOWN, ALPHA_FORMAT_UNKNOWN};
@@ -720,6 +745,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawBitmapNormal, TestSize.Level0) {
     OH_Drawing_CanvasDrawBitmap(canvas, bitmap, 0, 0);
 
     // 8. Free the memory.
+    OH_Drawing_BitmapDestroy(bitmap);
     OH_Drawing_CanvasDestroy(canvas);
 }
 
@@ -757,6 +783,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawBitmapNull, TestSize.Level3) {
 
     // 6. OH_Drawing_CanvasDrawBitmap
     OH_Drawing_CanvasDrawBitmap(canvas, bitmap, 0, 0);
+    OH_Drawing_BitmapDestroy(bitmap);
 
     // 7. OH_Drawing_BitmapCreateFromPixels, initialize the image with a size of 48*48, and allocate memory for pixels
     // as 48*47.
@@ -769,6 +796,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawBitmapNull, TestSize.Level3) {
 
     // 8. OH_Drawing_CanvasDrawBitmap
     OH_Drawing_CanvasDrawBitmap(canvas, bitmap, 0, 0);
+    OH_Drawing_BitmapDestroy(bitmap);
 
     // 9. OH_Drawing_BitmapCreateFromPixels, initialize the image with a size of 48*48, allocate memory for pixels as
     // 48*48, and set rowBytes as 47.
@@ -789,6 +817,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawBitmapNull, TestSize.Level3) {
     OH_Drawing_CanvasDrawBitmap(canvas, bitmap, 0, 0);
 
     // 13. Free the memory.
+    OH_Drawing_BitmapDestroy(bitmap);
     OH_Drawing_CanvasDestroy(canvas);
 }
 
@@ -816,6 +845,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawBitmapAbnormal, TestSize.Level3)
     OH_Drawing_CanvasDrawBitmap(canvas, bitmap, 0, -1);
 
     // 5. Free the memory.
+    OH_Drawing_BitmapDestroy(bitmap);
     OH_Drawing_CanvasDestroy(canvas);
 }
 
@@ -845,6 +875,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawBitmapMaximum, TestSize.Level3) 
     OH_Drawing_CanvasDrawBitmap(canvas, bitmap, 0, FLT_MAX);
 
     // 5. Free the memory.
+    OH_Drawing_BitmapDestroy(bitmap);
     OH_Drawing_CanvasDestroy(canvas);
 }
 
@@ -893,6 +924,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawBitmapRectNormal, TestSize.Level
     }
     // 6. OH_Drawing_CanvasDrawBitmap
     OH_Drawing_CanvasDrawBitmap(canvas, bitmap, 0, 0);
+    OH_Drawing_BitmapDestroy(bitmap);
     // 7. OH_Drawing_BitmapCreateFromPixels, initialize Bitmap with a rowBytes larger than the image
     int width = 500;
     int height = 500;
@@ -955,6 +987,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawBitmapRectNull, TestSize.Level3)
     OH_Drawing_Image_Info imageInfo = {width, height, COLOR_FORMAT_UNKNOWN, ALPHA_FORMAT_UNKNOWN};
     int rowBytes = width * height * 4;
     void *pixels = new int[47 * 48];
+    OH_Drawing_BitmapDestroy(bitmap);
     bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
 
     // 6. OH_Drawing_CanvasDrawBitmapRect
@@ -967,6 +1000,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawBitmapRectNull, TestSize.Level3)
     imageInfo = {width, height, COLOR_FORMAT_UNKNOWN, ALPHA_FORMAT_UNKNOWN};
     rowBytes = width * height * 4;
     pixels = new int[48 * 47];
+    OH_Drawing_BitmapDestroy(bitmap);
     bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
 
     // 8. OH_Drawing_CanvasDrawBitmapRect
@@ -979,6 +1013,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawBitmapRectNull, TestSize.Level3)
     imageInfo = {width, height, COLOR_FORMAT_UNKNOWN, ALPHA_FORMAT_UNKNOWN};
     rowBytes = 47;
     pixels = new int[48 * 48];
+    OH_Drawing_BitmapDestroy(bitmap);
     bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
 
     // 10. OH_Drawing_CanvasDrawBitmapRect

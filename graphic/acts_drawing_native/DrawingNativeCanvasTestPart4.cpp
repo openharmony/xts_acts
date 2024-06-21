@@ -332,31 +332,37 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasGetLocalClipBoundsAbnormal, TestSize
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     // 2. OH_Drawing_CanvasGetLocalClipBounds with OH_Drawing_Rect created with negative values for left, top, right,
     // and bottom
-    OH_Drawing_Rect *rect = OH_Drawing_RectCreate(-100, 100, 100, 100);
-    OH_Drawing_CanvasGetLocalClipBounds(canvas, rect);
-    rect = OH_Drawing_RectCreate(100, -100, 100, 100);
-    OH_Drawing_CanvasGetLocalClipBounds(canvas, rect);
-    rect = OH_Drawing_RectCreate(100, 100, -100, 100);
-    OH_Drawing_CanvasGetLocalClipBounds(canvas, rect);
-    rect = OH_Drawing_RectCreate(100, 100, 100, -100);
-    OH_Drawing_CanvasGetLocalClipBounds(canvas, rect);
+    OH_Drawing_Rect *rect1 = OH_Drawing_RectCreate(-100, 100, 100, 100);
+    OH_Drawing_CanvasGetLocalClipBounds(canvas, rect1);
+    OH_Drawing_Rect *rect2 = OH_Drawing_RectCreate(100, -100, 100, 100);
+    OH_Drawing_CanvasGetLocalClipBounds(canvas, rect2);
+    OH_Drawing_Rect *rect3 = OH_Drawing_RectCreate(100, 100, -100, 100);
+    OH_Drawing_CanvasGetLocalClipBounds(canvas, rect3);
+    OH_Drawing_Rect *rect4 = OH_Drawing_RectCreate(100, 100, 100, -100);
+    OH_Drawing_CanvasGetLocalClipBounds(canvas, rect4);
     // 3. OH_Drawing_CanvasGetLocalClipBounds with OH_Drawing_Rect src created with the top-left coordinate equal to the
     // bottom-right coordinate or the top-left coordinate equal to the bottom-right coordinate
-    rect = OH_Drawing_RectCreate(100, 200, 200, 200);
-    OH_Drawing_CanvasGetLocalClipBounds(canvas, rect);
-    rect = OH_Drawing_RectCreate(200, 100, 200, 200);
-    OH_Drawing_CanvasGetLocalClipBounds(canvas, rect);
+    OH_Drawing_Rect *rect5 = OH_Drawing_RectCreate(100, 200, 200, 200);
+    OH_Drawing_CanvasGetLocalClipBounds(canvas, rect5);
+    OH_Drawing_Rect *rect6 = OH_Drawing_RectCreate(200, 100, 200, 200);
+    OH_Drawing_CanvasGetLocalClipBounds(canvas, rect6);
     // 4. OH_Drawing_CanvasGetLocalClipBounds with OH_Drawing_Rect src created with the top-left coordinate equal to the
     // bottom-right coordinate
-    rect = OH_Drawing_RectCreate(100, 100, 100, 100);
-    OH_Drawing_CanvasGetLocalClipBounds(canvas, rect);
+    OH_Drawing_Rect *rect7 = OH_Drawing_RectCreate(100, 100, 100, 100);
+    OH_Drawing_CanvasGetLocalClipBounds(canvas, rect7);
     // 5. OH_Drawing_CanvasGetLocalClipBounds with OH_Drawing_Rect src created with the top-left coordinate greater than
     // the bottom-right coordinate
-    rect = OH_Drawing_RectCreate(200, 200, 100, 100);
-    OH_Drawing_CanvasGetLocalClipBounds(canvas, rect);
-
+    OH_Drawing_Rect *rect8 = OH_Drawing_RectCreate(200, 200, 100, 100);
+    OH_Drawing_CanvasGetLocalClipBounds(canvas, rect8);
     // 6. Free memory
-    OH_Drawing_RectDestroy(rect);
+    OH_Drawing_RectDestroy(rect1);
+    OH_Drawing_RectDestroy(rect2);
+    OH_Drawing_RectDestroy(rect3);
+    OH_Drawing_RectDestroy(rect4);
+    OH_Drawing_RectDestroy(rect5);
+    OH_Drawing_RectDestroy(rect6);
+    OH_Drawing_RectDestroy(rect7);
+    OH_Drawing_RectDestroy(rect8);
     OH_Drawing_CanvasDestroy(canvas);
 }
 
@@ -524,20 +530,27 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasConcatMatrixtestCanvasGetTotalMatrix
     OH_Drawing_CanvasGetTotalMatrix(canvas, totalMatrix3);
     // 8. Repeat steps 2-7 10 times
     for (int i = 0; i < 10; i++) {
-        matrix = OH_Drawing_MatrixCreateScale(10, 10, 10, 10);
+        OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateScale(10, 10, 10, 10);
         OH_Drawing_CanvasConcatMatrix(canvas, matrix);
-        totalMatrix = OH_Drawing_MatrixCreate();
+        OH_Drawing_Matrix *totalMatrix = OH_Drawing_MatrixCreate();
         OH_Drawing_CanvasGetTotalMatrix(canvas, totalMatrix);
 
-        matrix2 = OH_Drawing_MatrixCreateRotation(180, 1, 1);
+        OH_Drawing_Matrix *matrix2 = OH_Drawing_MatrixCreateRotation(180, 1, 1);
         OH_Drawing_CanvasConcatMatrix(canvas, matrix2);
-        totalMatrix2 = OH_Drawing_MatrixCreate();
+        OH_Drawing_Matrix *totalMatrix2 = OH_Drawing_MatrixCreate();
         OH_Drawing_CanvasGetTotalMatrix(canvas, totalMatrix2);
 
-        matrix3 = OH_Drawing_MatrixCreateTranslation(10, 10);
+        OH_Drawing_Matrix *matrix3 = OH_Drawing_MatrixCreateTranslation(10, 10);
         OH_Drawing_CanvasConcatMatrix(canvas, matrix3);
-        totalMatrix3 = OH_Drawing_MatrixCreate();
+        OH_Drawing_Matrix *totalMatrix3 = OH_Drawing_MatrixCreate();
         OH_Drawing_CanvasGetTotalMatrix(canvas, totalMatrix3);
+
+        OH_Drawing_MatrixDestroy(matrix);
+        OH_Drawing_MatrixDestroy(matrix2);
+        OH_Drawing_MatrixDestroy(matrix3);
+        OH_Drawing_MatrixDestroy(totalMatrix);
+        OH_Drawing_MatrixDestroy(totalMatrix2);
+        OH_Drawing_MatrixDestroy(totalMatrix3);
     }
     // 9. Call OH_Drawing_CanvasConcatMatrix 10 times
     for (int i = 0; i < 10; i++) {

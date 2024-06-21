@@ -1199,10 +1199,10 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasRestoreToCountInputDestroyed, TestSi
  * @tc.level : Level 0
  */
 HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawLineNormal, TestSize.Level0) {
-    // 1、OH_Drawing_CanvasCreate
-    // 2、OH_Drawing_CanvasDrawLine,坐标传入浮点型数据
-    // 3、OH_Drawing_CanvasDrawLine,坐标传入整型数据
-    // 4、释放内存
+    // 1. OH_Drawing_CanvasCreate
+    // 2. OH_Drawing_CanvasDrawLine, passing floating-point coordinates
+    // 3. OH_Drawing_CanvasDrawLine, passing integer coordinates
+    // 4. Free memory
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     OH_Drawing_CanvasDrawLine(canvas, 0.0f, 0.0f, 20.0f, 20.0f);
     OH_Drawing_CanvasDrawLine(canvas, 0, 0, 20, 20);

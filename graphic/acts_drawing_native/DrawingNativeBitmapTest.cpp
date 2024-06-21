@@ -151,24 +151,29 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsNull, TestSize.Level
     uint8_t *pixels = new uint8_t[width * height * 4];
     OH_Drawing_Image_Info imageInfo{width, height, COLOR_FORMAT_ALPHA_8, ALPHA_FORMAT_UNKNOWN};
     // 1. OH_Drawing_BitmapCreateFromPixels the first parameter OH_Drawing_Image_Info is empty
-    OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreateFromPixels(nullptr, pixels, rowBytes);
+    OH_Drawing_Bitmap *bitmap1 = OH_Drawing_BitmapCreateFromPixels(nullptr, pixels, rowBytes);
+    EXPECT_EQ(bitmap1, nullptr);
     // 2. OH_Drawing_BitmapCreateFromPixels the second parameter pixels is empty
-    bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, nullptr, rowBytes);
-    EXPECT_EQ(bitmap, nullptr);
+    OH_Drawing_Bitmap *bitmap2 = OH_Drawing_BitmapCreateFromPixels(&imageInfo, nullptr, rowBytes);
+    EXPECT_EQ(bitmap2, nullptr);
     // 3. OH_Drawing_BitmapCreateFromPixels the third parameter rowBytes is 0
-    bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, 0);
-    EXPECT_EQ(bitmap, nullptr);
+    OH_Drawing_Bitmap *bitmap3 = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, 0);
+    EXPECT_EQ(bitmap3, nullptr);
     // 4. OH_Drawing_BitmapCreateFromPixels the width of the first parameter OH_Drawing_Image_Info is 0
     imageInfo.width = 0;
-    bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
-    EXPECT_EQ(bitmap, nullptr);
+    OH_Drawing_Bitmap *bitmap4 = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
+    EXPECT_EQ(bitmap4, nullptr);
     // 5. OH_Drawing_BitmapCreateFromPixels the height of the first parameter OH_Drawing_Image_Info is 0
     imageInfo.width = width;
     imageInfo.height = 0;
-    bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
-    EXPECT_EQ(bitmap, nullptr);
+    OH_Drawing_Bitmap *bitmap5 = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
+    EXPECT_EQ(bitmap5, nullptr);
     // 6. Free memory
-    OH_Drawing_BitmapDestroy(bitmap);
+    OH_Drawing_BitmapDestroy(bitmap1);
+    OH_Drawing_BitmapDestroy(bitmap2);
+    OH_Drawing_BitmapDestroy(bitmap3);
+    OH_Drawing_BitmapDestroy(bitmap4);
+    OH_Drawing_BitmapDestroy(bitmap5);
     delete[] pixels;
 }
 
@@ -187,22 +192,27 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsMismatch, TestSize.L
     uint8_t *pixels = new uint8_t[width * height * 4];
     OH_Drawing_Image_Info imageInfo{width, height, COLOR_FORMAT_ALPHA_8, ALPHA_FORMAT_UNKNOWN};
     // 1. OH_Drawing_BitmapCreateFromPixels initializes a 48*48 image, but the memory allocated for pixels is 47*48
-    pixels = new uint8_t[47 * height * 4];
-    OH_Drawing_Bitmap *bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
-    EXPECT_EQ(bitmap, nullptr);
+    uint8_t *pixels1 = new uint8_t[47 * height * 4];
+    OH_Drawing_Bitmap *bitmap1 = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels1, rowBytes);
+    EXPECT_EQ(bitmap1, nullptr);
     // 2. OH_Drawing_BitmapCreateFromPixels initializes a 48*48 image, but the memory allocated for pixels is 48*47
-    pixels = new uint8_t[width * 47 * 4];
-    bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
-    EXPECT_EQ(bitmap, nullptr);
+    uint8_t *pixels2 = new uint8_t[width * 47 * 4];
+    OH_Drawing_Bitmap *bitmap2 = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels2, rowBytes);
+    EXPECT_EQ(bitmap2, nullptr);
     // 3. OH_Drawing_BitmapCreateFromPixels initializes a 48*48 image, but the memory allocated for pixels is 48*48 and
     // rowBytes is 47
     rowBytes = 47;
-    pixels = new uint8_t[width * height * 4];
-    bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes);
-    EXPECT_EQ(bitmap, nullptr);
+    uint8_t *pixels3 = new uint8_t[width * height * 4];
+    OH_Drawing_Bitmap *bitmap3 = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels3, rowBytes);
+    EXPECT_EQ(bitmap3, nullptr);
     // 4. Free memory
-    OH_Drawing_BitmapDestroy(bitmap);
+    OH_Drawing_BitmapDestroy(bitmap1);
+    OH_Drawing_BitmapDestroy(bitmap2);
+    OH_Drawing_BitmapDestroy(bitmap3);
     delete[] pixels;
+    delete[] pixels1;
+    delete[] pixels2;
+    delete[] pixels3;
 }
 
 /*
@@ -602,13 +612,17 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapReadPixelsMismatch, TestSize.Level3)
     EXPECT_EQ(res, true);
 
     // step 5
-    // todo: don't know how to get a invalid OH_Drawing_ColorFormat
+    // OH_Drawing_BitmapReadPixels OH_Drawing_Image_Info color type mismatch
+    // compile error, skip case
 
     // step 6
-    // todo: don't know how to get a invalid OH_Drawing_AlphaFormat
+    // OH_Drawing_BitmapReadPixels OH_Drawing_Image_Info alpha type mismatch
+    // compile error, skip case
 
     // step 7
-    // todo: don't know how to test
+    OH_Drawing_Image_Info imageInfo4{width, height, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_UNPREMUL};
+    res = OH_Drawing_BitmapReadPixels(bitmap, &imageInfo4, pixels, width * 3, 0, 0);
+    EXPECT_EQ(res, false);
 
     // step 8
     OH_Drawing_Image_Info imageInfo5{width, height, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_UNPREMUL};
