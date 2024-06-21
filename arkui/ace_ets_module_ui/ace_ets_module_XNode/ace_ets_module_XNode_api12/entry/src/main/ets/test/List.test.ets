@@ -50,7 +50,7 @@ import createNodeStack from './FrameNodeTest/createNodeStack.test';
 import createNodeText from './FrameNodeTest/createNodeText.test';
 import setCircleShapeTest from './GraphicsTest/setCircleShape.test';
 import commonEventTest1 from './FrameNodeTest/commonEventTest1.test';
-
+import expectedUpdateInterval from './FrameNodeTest/expectedUpdateInterval.test';
 import CornerTest from './GraphicsTest/GraphicsApiTest/CornerTest.test';
 import LengthMetricsUnitTest from './GraphicsTest/GraphicsApiTest/LengthMetricsUnitTest.test';
 import PercentReferenceTest from './GraphicsTest/GraphicsApiTest/PercentReferenceTest.test';
@@ -95,4 +95,5 @@ export default function testsuite() {
   PercentReferenceTest();
   setCircleShapeTest();
   graphicGetInterfaceTest();
+  expectedUpdateInterval()
 }
