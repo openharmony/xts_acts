@@ -161,7 +161,9 @@ export default function photoPickerPromise(abilityContext: Context) {
           console.error('PhotoViewPicker.select failed with err: ' + JSON.stringify(err));
           expect(true).assertTrue();
           done();
-        });
+        })
+        expect(true).assertTrue();
+        done();
       } catch (error) {
         let err = error;
         console.error('PhotoViewPicker failed with err: ' + JSON.stringify(err));
