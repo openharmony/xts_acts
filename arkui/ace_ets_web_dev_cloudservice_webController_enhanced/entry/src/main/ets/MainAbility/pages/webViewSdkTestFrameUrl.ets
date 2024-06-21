@@ -24,7 +24,7 @@ struct webViewSdkTestFrameUrl {
   controller: webview.WebviewController = new webview.WebviewController();
   schemeHandler: webview.WebSchemeHandler = new webview.WebSchemeHandler()
   httpBodyStream: webview.WebHttpBodyStream|null = null
-  @State emitKey: string = "emitWebViewGetFrameUrlResourceType";
+  @State emitKey: string = '';
   @State javaScriptAccess: boolean = true;
   @State fileAccess: boolean = true;
   @State domStorageAccess: boolean = true;
@@ -48,7 +48,7 @@ struct webViewSdkTestFrameUrl {
   
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
       if (eventData != null) {
-          console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+          console.info('valueChangeCallBack:' + JSON.stringify(eventData));
           if (eventData.data != null && eventData.data.ACTION != null) {
               this.emitKey = eventData.data.ACTION;
           }
@@ -58,7 +58,7 @@ struct webViewSdkTestFrameUrl {
   build() {
       Column() {
           Row() {
-              Button("web click")
+              Button('web click')
               .key('webViewSdkTestFrameUrl')
               .onClick(async () => {
                   this.controller.refresh()
