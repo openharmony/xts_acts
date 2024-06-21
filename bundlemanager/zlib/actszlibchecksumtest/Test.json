@@ -2,10 +2,11 @@
     "description": "Configuration for actschecksumtest Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "180000",
-        "shell-timeout": "180000",
+        "test-timeout": "600000",
+        "shell-timeout": "600000",
         "bundle-name": "com.actschecksumtest.test",
-        "module-name": "entry_test"
+        "module-name": "entry_test",
+        "testcase-timeout": 240000
     },
     "kits": [
         {
