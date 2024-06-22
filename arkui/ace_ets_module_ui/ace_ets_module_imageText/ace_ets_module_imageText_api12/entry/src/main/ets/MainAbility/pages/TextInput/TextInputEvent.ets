@@ -31,7 +31,7 @@ struct TextInputEvent {
       Text(this.insertValue5).key('TextInputEventText5')
       Text(this.insertValue6).key('TextInputEventText6')
 
-      TextInput({ text: "TextInput" })
+      TextInput({ text: 'TextInput' })
         .height(60)
         .onWillInsert((info: InsertValue) => {
           this.insertValue = info.insertOffset + ''
