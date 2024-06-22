@@ -104,7 +104,7 @@ export default function RdbStoreReadOnlyTest() {
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_0100
-     * @tc.name open read-only database
+     * @tc.name readOnlyTest0100
      * @tc.desc 1. set isReadOnly as true
      *          2. open read-only database
      * @tc.size MediumTest
@@ -128,7 +128,7 @@ export default function RdbStoreReadOnlyTest() {
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_0200
-     * @tc.name delete read-only database
+     * @tc.name readOnlyTest0200
      * @tc.desc 1. set isReadOnly as true
      *          2. delete read-only database
      * @tc.size MediumTest
@@ -160,7 +160,7 @@ export default function RdbStoreReadOnlyTest() {
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_0300
-     * @tc.name open read-only database if the database is not exist
+     * @tc.name readOnlyTest0300
      * @tc.desc 1. set isReadOnly as true
      *          2. open read-only database  if the database is not exist
      * @tc.size MediumTest
@@ -183,7 +183,7 @@ export default function RdbStoreReadOnlyTest() {
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_0400
-     * @tc.name insert data into read-only database
+     * @tc.name readOnlyTest0400
      * @tc.desc insert data
      * @tc.size MediumTest
      * @tc.type Function
@@ -215,7 +215,7 @@ export default function RdbStoreReadOnlyTest() {
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_0500
-     * @tc.name insert data into read-only database
+     * @tc.name readOnlyTest0500
      * @tc.desc insertSync data
      * @tc.size MediumTest
      * @tc.type Function
@@ -248,7 +248,7 @@ export default function RdbStoreReadOnlyTest() {
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_0600
-     * @tc.name insert data into read-only database
+     * @tc.name readOnlyTest0600
      * @tc.desc batchInsert data
      * @tc.size MediumTest
      * @tc.type Function
@@ -286,7 +286,7 @@ export default function RdbStoreReadOnlyTest() {
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_0700
-     * @tc.name insert data into read-only database
+     * @tc.name readOnlyTest0700
      * @tc.desc batchInsertSync data
      * @tc.size MediumTest
      * @tc.type Function
@@ -324,7 +324,7 @@ export default function RdbStoreReadOnlyTest() {
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_0800
-     * @tc.name update data in read-only database
+     * @tc.name readOnlyTest0800
      * @tc.desc update data
      * @tc.size MediumTest
      * @tc.type Function
@@ -350,7 +350,7 @@ export default function RdbStoreReadOnlyTest() {
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_0900
-     * @tc.name update data in read-only database
+     * @tc.name readOnlyTest0900
      * @tc.desc updateSync data
      * @tc.size MediumTest
      * @tc.type Function
@@ -376,7 +376,7 @@ export default function RdbStoreReadOnlyTest() {
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_1000
-     * @tc.name delete data from read-only database
+     * @tc.name readOnlyTest1000
      * @tc.desc delete data
      * @tc.size MediumTest
      * @tc.type Function
@@ -402,7 +402,7 @@ export default function RdbStoreReadOnlyTest() {
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_1100
-     * @tc.name delete data from read-only database
+     * @tc.name readOnlyTest1100
      * @tc.desc deleteSync data
      * @tc.size MediumTest
      * @tc.type Function
@@ -429,7 +429,7 @@ export default function RdbStoreReadOnlyTest() {
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_1200
-     * @tc.name execute transaction for read-only database
+     * @tc.name readOnlyTest1200
      * @tc.desc begin transaction
      * @tc.size MediumTest
      * @tc.type Function
@@ -454,7 +454,7 @@ export default function RdbStoreReadOnlyTest() {
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_1300
-     * @tc.name query data from read-only database
+     * @tc.name readOnlyTest1300
      * @tc.desc query
      * @tc.size MediumTest
      * @tc.type Function
@@ -479,7 +479,7 @@ export default function RdbStoreReadOnlyTest() {
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_1400
-     * @tc.name querySql data from read-only database
+     * @tc.name readOnlyTest1400
      * @tc.desc querySql data
      * @tc.size MediumTest
      * @tc.type Function
@@ -505,7 +505,7 @@ export default function RdbStoreReadOnlyTest() {
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_1500
-     * @tc.name querySqlSync data from read-only database
+     * @tc.name readOnlyTest1500
      * @tc.desc querySqlSync data
      * @tc.size MediumTest
      * @tc.type Function
@@ -531,7 +531,7 @@ export default function RdbStoreReadOnlyTest() {
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_1600
-     * @tc.name execute set user_version to read-only database
+     * @tc.name readOnlyTest1600
      * @tc.desc  execute
      * @tc.size MediumTest
      * @tc.type Function
@@ -556,7 +556,7 @@ export default function RdbStoreReadOnlyTest() {
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_1700
-     * @tc.name executeSql set user_version to read-only database 
+     * @tc.name readOnlyTest1700
      * @tc.desc  executeSql
      * @tc.size MediumTest
      * @tc.type Function
@@ -581,7 +581,7 @@ export default function RdbStoreReadOnlyTest() {
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_1800
-     * @tc.name executeSync set user_version to read-only database
+     * @tc.name readOnlyTest1800
      * @tc.desc  executeSync
      * @tc.size MediumTest
      * @tc.type Function
@@ -606,7 +606,7 @@ export default function RdbStoreReadOnlyTest() {
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_1900
-     * @tc.name set user_version to read-only database
+     * @tc.name readOnlyTest1900
      * @tc.desc set user_version by store
      * @tc.size MediumTest
      * @tc.type Function
