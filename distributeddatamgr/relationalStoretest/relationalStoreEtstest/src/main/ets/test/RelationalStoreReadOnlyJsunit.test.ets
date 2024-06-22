@@ -57,8 +57,8 @@ const valueBucket2 = {
   'blobType': new Uint8Array([1, 2, 3]),
 };
 
-export default function RdbStoretestReadOnly() {
-  describe('RdbStoretestReadOnly', function () {
+export default function RdbStoreReadOnlyTest() {
+  describe('RdbStoreReadOnlyTest', function () {
     beforeAll(async function () {
       console.log(TAG + 'beforeAll');
       try {
