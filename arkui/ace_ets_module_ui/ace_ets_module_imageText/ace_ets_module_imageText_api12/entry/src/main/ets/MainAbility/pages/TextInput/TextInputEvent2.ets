@@ -61,7 +61,7 @@ struct TextInputEvent2 {
           })
           .key('TextInput2Event')
 
-        TextInput({ text: "0" })
+        TextInput({ text: '0' })
           .height(60)
           .width(100)
           .onWillInsert((info: InsertValue) => {
@@ -82,7 +82,7 @@ struct TextInputEvent2 {
       }
 
       Row() {
-        TextInput({ text: "0" })
+        TextInput({ text: '0' })
           .height(60)
           .width(100)
           .onWillInsert((info: InsertValue) => {
@@ -101,7 +101,7 @@ struct TextInputEvent2 {
           })
           .key('TextInput2Event3')
 
-        TextInput({ text: "0" })
+        TextInput({ text: '0' })
           .height(60)
           .width(100)
           .onWillInsert((info: InsertValue) => {

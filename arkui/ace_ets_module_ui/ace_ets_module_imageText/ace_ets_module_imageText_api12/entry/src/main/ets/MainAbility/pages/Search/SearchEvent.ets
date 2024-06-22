@@ -53,7 +53,7 @@ struct SearchEvent {
         })
         .key('SearchEvent')
 
-      Search({ value: "0" })
+      Search({ value: '0' })
         .height(60)
         .onWillInsert((info: InsertValue) => {
           this.insertValue = info.insertOffset + ''
@@ -66,7 +66,7 @@ struct SearchEvent {
         })
         .key('SearchEvent2')
 
-      Search({ value: "0" })
+      Search({ value: '0' })
         .height(60)
         .onWillDelete((info: DeleteValue) => {
           this.insertValue5 = info.deleteOffset + ''
