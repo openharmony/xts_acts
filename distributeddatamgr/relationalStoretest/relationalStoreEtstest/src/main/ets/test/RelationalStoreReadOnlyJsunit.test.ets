@@ -57,8 +57,8 @@ const valueBucket2 = {
   'blobType': new Uint8Array([1, 2, 3]),
 };
 
-export default function RdbStoreReadOnlyTest() {
-  describe('RdbStoreReadOnlyTest', function () {
+export default function RdbStoretestReadOnly() {
+  describe('RdbStoretestReadOnly', function () {
     beforeAll(async function () {
       console.log(TAG + 'beforeAll');
       try {
@@ -104,15 +104,15 @@ export default function RdbStoreReadOnlyTest() {
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_0100
-     * @tc.name readOnlyTest0100
+     * @tc.name testReadOnly0100
      * @tc.desc 1. set isReadOnly as true
      *          2. open read-only database
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('readOnlyTest0100', 0, async function (done) {
-      console.info(TAG + "************* readOnlyTest0100 start *************");
+    it('testReadOnly0100', 0, async function (done) {
+      console.info(TAG + "************* testReadOnly0100 start *************");
       try {
         let store3 = await relationalStore.getRdbStore(context, STORE_CONFIG3);
         console.info(TAG + 'getRdbStore  successfully.');
@@ -123,20 +123,20 @@ export default function RdbStoreReadOnlyTest() {
         expect().assertFail();
         done();
       }
-      console.log(TAG + "************* readOnlyTest0100 end *************");
+      console.log(TAG + "************* testReadOnly0100 end *************");
     })
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_0200
-     * @tc.name readOnlyTest0200
+     * @tc.name testReadOnly0200
      * @tc.desc 1. set isReadOnly as true
      *          2. delete read-only database
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('readOnlyTest0200', 0, async function (done) {
-      console.info(TAG + "************* readOnlyTest0200 start *************");
+    it('testReadOnly0200', 0, async function (done) {
+      console.info(TAG + "************* testReadOnly0200 start *************");
       try {
         let store3 = await relationalStore.getRdbStore(context, STORE_CONFIG3);
         console.info(TAG + 'getRdbStore  successfully.');
@@ -155,20 +155,20 @@ export default function RdbStoreReadOnlyTest() {
         expect().assertFail();
         done();
       }
-      console.log(TAG + "************* readOnlyTest0200 end *************");
+      console.log(TAG + "************* testReadOnly0200 end *************");
     })
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_0300
-     * @tc.name readOnlyTest0300
+     * @tc.name testReadOnly0300
      * @tc.desc 1. set isReadOnly as true
      *          2. open read-only database  if the database is not exist
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('readOnlyTest0300', 0, async function (done) {
-      console.info(TAG + "************* readOnlyTest0300 start *************");
+    it('testReadOnly0300', 0, async function (done) {
+      console.info(TAG + "************* testReadOnly0300 start *************");
       try {
         await relationalStore.getRdbStore(context, STORE_CONFIG1);
         expect().assertFail();
@@ -178,19 +178,19 @@ export default function RdbStoreReadOnlyTest() {
         expect(err.code).assertEqual(14800030);
         done();
       }
-      console.log(TAG + "************* readOnlyTest0300 end *************");
+      console.log(TAG + "************* testReadOnly0300 end *************");
     })
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_0400
-     * @tc.name readOnlyTest0400
+     * @tc.name testReadOnly0400
      * @tc.desc insert data
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('readOnlyTest0400', 0, async function (done) {
-      console.info(TAG + "************* readOnlyTest0400 start *************");
+    it('testReadOnly0400', 0, async function (done) {
+      console.info(TAG + "************* testReadOnly0400 start *************");
       let store = undefined;
       try {
         store = await relationalStore.getRdbStore(context, STORE_CONFIG2);
@@ -210,19 +210,19 @@ export default function RdbStoreReadOnlyTest() {
         expect(err.code).assertEqual(801);
         done();
       }
-      console.info(TAG + "************* readOnlyTest0400 end *************");
+      console.info(TAG + "************* testReadOnly0400 end *************");
     })
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_0500
-     * @tc.name readOnlyTest0500
+     * @tc.name testReadOnly0500
      * @tc.desc insertSync data
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('readOnlyTest0500', 0, async function (done) {
-      console.info(TAG + "************* readOnlyTest0500 start *************");
+    it('testReadOnly0500', 0, async function (done) {
+      console.info(TAG + "************* testReadOnly0500 start *************");
       let store = undefined;
       try {
         store = await relationalStore.getRdbStore(context, STORE_CONFIG2);
@@ -243,19 +243,19 @@ export default function RdbStoreReadOnlyTest() {
         expect(err.code).assertEqual(801);
         done();
       }
-      console.info(TAG + "************* readOnlyTest0500 end *************");
+      console.info(TAG + "************* testReadOnly0500 end *************");
     })
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_0600
-     * @tc.name readOnlyTest0600
+     * @tc.name testReadOnly0600
      * @tc.desc batchInsert data
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('readOnlyTest0600', 0, async function (done) {
-      console.info(TAG + "************* readOnlyTest0600 start *************");
+    it('testReadOnly0600', 0, async function (done) {
+      console.info(TAG + "************* testReadOnly0600 start *************");
       let store = undefined;
       try {
         store = await relationalStore.getRdbStore(context, STORE_CONFIG2);
@@ -281,19 +281,19 @@ export default function RdbStoreReadOnlyTest() {
         expect(err.code).assertEqual(801);
         done();
       }
-      console.info(TAG + "************* readOnlyTest0600 end *************");
+      console.info(TAG + "************* testReadOnly0600 end *************");
     })
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_0700
-     * @tc.name readOnlyTest0700
+     * @tc.name testReadOnly0700
      * @tc.desc batchInsertSync data
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('readOnlyTest0700', 0, async function (done) {
-      console.info(TAG + "************* readOnlyTest0700 start *************");
+    it('testReadOnly0700', 0, async function (done) {
+      console.info(TAG + "************* testReadOnly0700 start *************");
       let store = undefined;
       try {
         store = await relationalStore.getRdbStore(context, STORE_CONFIG2);
@@ -319,19 +319,19 @@ export default function RdbStoreReadOnlyTest() {
         expect(err.code).assertEqual(801);
         done();
       }
-      console.info(TAG + "************* readOnlyTest0700 end *************");
+      console.info(TAG + "************* testReadOnly0700 end *************");
     })
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_0800
-     * @tc.name readOnlyTest0800
+     * @tc.name testReadOnly0800
      * @tc.desc update data
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('readOnlyTest0800', 0, async function (done) {
-      console.info(TAG + "************* readOnlyTest0800 start *************");
+    it('testReadOnly0800', 0, async function (done) {
+      console.info(TAG + "************* testReadOnly0800 start *************");
       try {
         let store = await relationalStore.getRdbStore(context, STORE_CONFIG2);
         expect(store === undefined).assertFalse();
@@ -345,19 +345,19 @@ export default function RdbStoreReadOnlyTest() {
         expect(err.code).assertEqual(801);
         done();
       }
-      console.info(TAG + "************* readOnlyTest0800 end *************");
+      console.info(TAG + "************* testReadOnly0800 end *************");
     })
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_0900
-     * @tc.name readOnlyTest0900
+     * @tc.name testReadOnly0900
      * @tc.desc updateSync data
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('readOnlyTest0900', 0, async function (done) {
-      console.info(TAG + "************* readOnlyTest0900 start *************");
+    it('testReadOnly0900', 0, async function (done) {
+      console.info(TAG + "************* testReadOnly0900 start *************");
       try {
         let store = await relationalStore.getRdbStore(context, STORE_CONFIG2);
         expect(store === undefined).assertFalse();
@@ -371,19 +371,19 @@ export default function RdbStoreReadOnlyTest() {
         expect(err.code).assertEqual(801);
         done();
       }
-      console.info(TAG + "************* readOnlyTest0900 end *************");
+      console.info(TAG + "************* testReadOnly0900 end *************");
     })
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_1000
-     * @tc.name readOnlyTest1000
+     * @tc.name testReadOnly1000
      * @tc.desc delete data
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('readOnlyTest1000', 0, async function (done) {
-      console.info(TAG + "************* readOnlyTest1000 start *************");
+    it('testReadOnly1000', 0, async function (done) {
+      console.info(TAG + "************* testReadOnly1000 start *************");
       try {
         let store = await relationalStore.getRdbStore(context, STORE_CONFIG2);
         expect(store === undefined).assertFalse();
@@ -397,19 +397,19 @@ export default function RdbStoreReadOnlyTest() {
         done();
       }
 
-      console.info(TAG + "************* readOnlyTest1000 end *************");
+      console.info(TAG + "************* testReadOnly1000 end *************");
     })
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_1100
-     * @tc.name readOnlyTest1100
+     * @tc.name testReadOnly1100
      * @tc.desc deleteSync data
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('readOnlyTest1100', 0, async function (done) {
-      console.info(TAG + "************* readOnlyTest1100 start *************");
+    it('testReadOnly1100', 0, async function (done) {
+      console.info(TAG + "************* testReadOnly1100 start *************");
       try {
         let store = await relationalStore.getRdbStore(context, STORE_CONFIG2);
         expect(store === undefined).assertFalse();
@@ -418,25 +418,25 @@ export default function RdbStoreReadOnlyTest() {
         expect().assertFail();
         done();
       } catch (err) {
-        console.error(TAG, `readOnlyTest1100 delete failed, errCode:${err.code}, message:${err.message}`);
-        console.info(TAG +  "readOnlyTest1100 typeof(err.code)"+ typeof(err.code));
+        console.error(TAG, `testReadOnly1100 delete failed, errCode:${err.code}, message:${err.message}`);
+        console.info(TAG +  "testReadOnly1100 typeof(err.code)"+ typeof(err.code));
         expect(err.code).assertEqual(801);
         done();
       }
 
-      console.info(TAG + "************* readOnlyTest1100 end *************");
+      console.info(TAG + "************* testReadOnly1100 end *************");
     })
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_1200
-     * @tc.name readOnlyTest1200
+     * @tc.name testReadOnly1200
      * @tc.desc begin transaction
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('readOnlyTest1200', 0, async function (done) {
-      console.info(TAG + "************* readOnlyTest1200 start *************");
+    it('testReadOnly1200', 0, async function (done) {
+      console.info(TAG + "************* testReadOnly1200 start *************");
       try {
         let store = await relationalStore.getRdbStore(context, STORE_CONFIG2);
         expect(store === undefined).assertFalse();
@@ -444,24 +444,24 @@ export default function RdbStoreReadOnlyTest() {
         expect().assertFail();
         done();
       } catch (err) {
-        console.error(TAG, `readOnlyTest1200 begin transaction failed, errCode:${err.code}, message:${err.message}`);
-        console.info(TAG +  "readOnlyTest1200 typeof(err.code)"+ typeof(err.code));
+        console.error(TAG, `testReadOnly1200 begin transaction failed, errCode:${err.code}, message:${err.message}`);
+        console.info(TAG +  "testReadOnly1200 typeof(err.code)"+ typeof(err.code));
         expect(err.code).assertEqual("801");
         done();
       }
-      console.info(TAG + "************* readOnlyTest1200 end *************");
+      console.info(TAG + "************* testReadOnly1200 end *************");
     })
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_1300
-     * @tc.name readOnlyTest1300
+     * @tc.name testReadOnly1300
      * @tc.desc query
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('readOnlyTest1300', 0, async function (done) {
-      console.info(TAG + "************* readOnlyTest1300 start *************");
+    it('testReadOnly1300', 0, async function (done) {
+      console.info(TAG + "************* testReadOnly1300 start *************");
       try {
         let store = await relationalStore.getRdbStore(context, STORE_CONFIG2);
         expect(store === undefined).assertFalse();
@@ -474,19 +474,19 @@ export default function RdbStoreReadOnlyTest() {
         expect().assertFail();
         done();
       }
-      console.info(TAG + "************* readOnlyTest1300 end *************");
+      console.info(TAG + "************* testReadOnly1300 end *************");
     })
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_1400
-     * @tc.name readOnlyTest1400
+     * @tc.name testReadOnly1400
      * @tc.desc querySql data
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('readOnlyTest1400', 0, async function (done) {
-      console.info(TAG + "************* readOnlyTest1400 start *************");
+    it('testReadOnly1400', 0, async function (done) {
+      console.info(TAG + "************* testReadOnly1400 start *************");
       try {
         let store = await relationalStore.getRdbStore(context, STORE_CONFIG2);
         expect(store === undefined).assertFalse();
@@ -500,19 +500,19 @@ export default function RdbStoreReadOnlyTest() {
         expect().assertFail();
         done();
       }
-      console.info(TAG + "************* readOnlyTest1400 end *************");
+      console.info(TAG + "************* testReadOnly1400 end *************");
     })
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_1500
-     * @tc.name readOnlyTest1500
+     * @tc.name testReadOnly1500
      * @tc.desc querySqlSync data
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('readOnlyTest1500', 0, async function (done) {
-      console.info(TAG + "************* readOnlyTest1500 start *************");
+    it('testReadOnly1500', 0, async function (done) {
+      console.info(TAG + "************* testReadOnly1500 start *************");
       try {
         let store = await relationalStore.getRdbStore(context, STORE_CONFIG2);
         expect(store === undefined).assertFalse();
@@ -526,19 +526,19 @@ export default function RdbStoreReadOnlyTest() {
         expect().assertFail();
         done();
       }
-      console.info(TAG + "************* readOnlyTest1500 end *************");
+      console.info(TAG + "************* testReadOnly1500 end *************");
     })
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_1600
-     * @tc.name readOnlyTest1600
+     * @tc.name testReadOnly1600
      * @tc.desc  execute
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('readOnlyTest1600', 0, async function (done) {
-      console.info(TAG + "************* readOnlyTest1600 start *************");
+    it('testReadOnly1600', 0, async function (done) {
+      console.info(TAG + "************* testReadOnly1600 start *************");
       try {
         let store = await relationalStore.getRdbStore(context, STORE_CONFIG2);
         expect(store === undefined).assertFalse();
@@ -551,19 +551,19 @@ export default function RdbStoreReadOnlyTest() {
         expect(err.code).assertEqual(801);
         done();
       }
-      console.info(TAG + "************* readOnlyTest1600 end *************");
+      console.info(TAG + "************* testReadOnly1600 end *************");
     })
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_1700
-     * @tc.name readOnlyTest1700
+     * @tc.name testReadOnly1700
      * @tc.desc  executeSql
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('readOnlyTest1700', 0, async function (done) {
-      console.info(TAG + "************* readOnlyTest1700 start *************");
+    it('testReadOnly1700', 0, async function (done) {
+      console.info(TAG + "************* testReadOnly1700 start *************");
       try {
         let store = await relationalStore.getRdbStore(context, STORE_CONFIG2);
         expect(store === undefined).assertFalse();
@@ -576,19 +576,19 @@ export default function RdbStoreReadOnlyTest() {
         expect(err.code).assertEqual(801);
         done();
       }
-      console.info(TAG + "************* readOnlyTest1700 end *************");
+      console.info(TAG + "************* testReadOnly1700 end *************");
     })
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_1800
-     * @tc.name readOnlyTest1800
+     * @tc.name testReadOnly1800
      * @tc.desc  executeSync
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('readOnlyTest1800', 0, async function (done) {
-      console.info(TAG + "************* readOnlyTest1800 start *************");
+    it('testReadOnly1800', 0, async function (done) {
+      console.info(TAG + "************* testReadOnly1800 start *************");
       try {
         let store = await relationalStore.getRdbStore(context, STORE_CONFIG2);
         expect(store === undefined).assertFalse();
@@ -601,19 +601,19 @@ export default function RdbStoreReadOnlyTest() {
         expect(err.code).assertEqual(801);
         done();
       }
-      console.info(TAG + "************* readOnlyTest1800 end *************");
+      console.info(TAG + "************* testReadOnly1800 end *************");
     })
 
     /**
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ReadOnlyAPITest_1900
-     * @tc.name readOnlyTest1900
+     * @tc.name testReadOnly1900
      * @tc.desc set user_version by store
      * @tc.size MediumTest
      * @tc.type Function
      * @tc.level Level 2
      */
-    it('readOnlyTest1900', 0, async function (done) {
-      console.info(TAG + "************* readOnlyTest1900 start *************");
+    it('testReadOnly1900', 0, async function (done) {
+      console.info(TAG + "************* testReadOnly1900 start *************");
       try {
         let store = await relationalStore.getRdbStore(context, STORE_CONFIG2);
         expect(store === undefined).assertFalse();
@@ -621,12 +621,12 @@ export default function RdbStoreReadOnlyTest() {
         expect().assertFail();
         done();
       } catch (err) {
-        console.error(TAG, `readOnlyTest1900 set user_version failed, errCode:${err.code}, message:${err.message}`);
-        console.info(TAG +  "readOnlyTest1900 typeof(err.code)"+ typeof(err.code));
+        console.error(TAG, `testReadOnly1900 set user_version failed, errCode:${err.code}, message:${err.message}`);
+        console.info(TAG +  "testReadOnly1900 typeof(err.code)"+ typeof(err.code));
         expect(err.code).assertEqual("801");
         done();
       }
-      console.info(TAG + "************* readOnlyTest1900 end *************");
+      console.info(TAG + "************* testReadOnly1900 end *************");
     })
 
     console.info(TAG + "*************Unit Test End*************");
