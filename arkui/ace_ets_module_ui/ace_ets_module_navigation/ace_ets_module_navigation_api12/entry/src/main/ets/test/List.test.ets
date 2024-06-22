@@ -46,6 +46,49 @@ import NavPathStack21 from './Navigation/NavPathStack21.test'
 import NavPathStack22 from './Navigation/NavPathStack22.test'
 import NavPathStack23 from './Navigation/NavPathStack23.test'
 import NavPathStack24 from './Navigation/NavPathStack24.test'
+
+import Navigation_SingleInstanceJump1 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump1.test'
+import Navigation_SingleInstanceJump2 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump2.test'
+import Navigation_SingleInstanceJump3 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump3.test'
+import Navigation_SingleInstanceJump4 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump4.test'
+import Navigation_SingleInstanceJump5 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump5.test'
+import Navigation_SingleInstanceJump6 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump6.test'
+import Navigation_SingleInstanceJump7 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump7.test'
+import Navigation_SingleInstanceJump8 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump8.test'
+import Navigation_SingleInstanceJump9 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump9.test'
+import Navigation_SingleInstanceJump10 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump10.test'
+import Navigation_SingleInstanceJump11 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump11.test'
+import Navigation_SingleInstanceJump12 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump12.test'
+import Navigation_SingleInstanceJump13 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump13.test'
+import Navigation_SingleInstanceJump14 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump14.test'
+import Navigation_SingleInstanceJump15 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump15.test'
+import Navigation_SingleInstanceJump16 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump16.test'
+import Navigation_SingleInstanceJump17 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump17.test'
+import Navigation_SingleInstanceJump18 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump18.test'
+import Navigation_SingleInstanceJump19 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump19.test'
+import Navigation_SingleInstanceJump20 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump20.test'
+import Navigation_SingleInstanceJump21 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump21.test'
+import Navigation_SingleInstanceJump22 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump22.test'
+import Navigation_SingleInstanceJump23 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump23.test'
+import Navigation_SingleInstanceJump24 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump24.test'
+import Navigation_SingleInstanceJump25 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump25.test'
+import Navigation_SingleInstanceJump26 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump26.test'
+import Navigation_SingleInstanceJump27 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump27.test'
+import Navigation_SingleInstanceJump28 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump28.test'
+import Navigation_SingleInstanceJump29 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump29.test'
+import Navigation_SingleInstanceJump30 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump30.test'
+import Navigation_SingleInstanceJump31 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump31.test'
+import Navigation_SingleInstanceJump32 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump32.test'
+import Navigation_SingleInstanceJump33 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump33.test'
+import Navigation_SingleInstanceJump34 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump34.test'
+import Navigation_SingleInstanceJump35 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump35.test'
+import Navigation_SingleInstanceJump36 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump36.test'
+import Navigation_SingleInstanceJump37 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump37.test'
+import Navigation_SingleInstanceJump38 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump38.test'
+import Navigation_SingleInstanceJump39 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump39.test'
+import Navigation_SingleInstanceJump40 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump40.test'
+import Navigation_SingleInstanceJump41 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump41.test'
+import Navigation_SingleInstanceJump42 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump42.test'
 export default function testsuite() {
   NavigationApi1();
   NavigationApi2();
@@ -81,4 +124,47 @@ export default function testsuite() {
   NavPathStack22()
   NavPathStack23()
   NavPathStack24()
+
+  Navigation_SingleInstanceJump1()
+  Navigation_SingleInstanceJump2()
+  Navigation_SingleInstanceJump3()
+  Navigation_SingleInstanceJump4()
+  Navigation_SingleInstanceJump5()
+  Navigation_SingleInstanceJump6()
+  Navigation_SingleInstanceJump7()
+  Navigation_SingleInstanceJump8()
+  Navigation_SingleInstanceJump9()
+  Navigation_SingleInstanceJump10()
+  Navigation_SingleInstanceJump11()
+  Navigation_SingleInstanceJump12()
+  Navigation_SingleInstanceJump13()
+  Navigation_SingleInstanceJump14()
+  Navigation_SingleInstanceJump15()
+  Navigation_SingleInstanceJump16()
+  Navigation_SingleInstanceJump17()
+  Navigation_SingleInstanceJump18()
+  Navigation_SingleInstanceJump19()
+  Navigation_SingleInstanceJump20()
+  Navigation_SingleInstanceJump21()
+  Navigation_SingleInstanceJump22()
+  Navigation_SingleInstanceJump23()
+  Navigation_SingleInstanceJump24()
+  Navigation_SingleInstanceJump25()
+  Navigation_SingleInstanceJump26()
+  Navigation_SingleInstanceJump27()
+  Navigation_SingleInstanceJump28()
+  Navigation_SingleInstanceJump29()
+  Navigation_SingleInstanceJump30()
+  Navigation_SingleInstanceJump31()
+  Navigation_SingleInstanceJump32()
+  Navigation_SingleInstanceJump33()
+  Navigation_SingleInstanceJump34()
+  Navigation_SingleInstanceJump35()
+  Navigation_SingleInstanceJump36()
+  Navigation_SingleInstanceJump37()
+  Navigation_SingleInstanceJump38()
+  Navigation_SingleInstanceJump39()
+  Navigation_SingleInstanceJump40()
+  Navigation_SingleInstanceJump41()
+  Navigation_SingleInstanceJump42()
 }
