@@ -21,7 +21,7 @@ struct Navigation_SingleInstanceJump26{
 
 
   update():void{
-    let name:Array<string> = this.pathInfos.getAllPathName()
+    let name:string[] = this.pathInfos.getAllPathName()
     for (let i = 0; i < name.length; i++) {
       if (!this.pathInfos.getParamByIndex(i)) {
         this.text += ` ${name[i]},Param:undefined`
