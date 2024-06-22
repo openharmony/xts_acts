@@ -20,18 +20,6 @@
                 "power-shell wakeup",
                 "power-shell setmode 602"
             ]
-        },
-        {
-          "type": "PushKit",
-          "push": [
-              "ActsUserauthnopermissionTest.hap->/data/local/tmp/xts-test/ActsUserauthnopermissionTest.hap"
-          ]
-        },
-        {
-          "type": "ShellKit",
-          "run-command": [
-              "chmod 777 -R /data/local/tmp/xts-test"
-          ]
-      }
+        }
     ]
 }
