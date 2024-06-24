@@ -1051,12 +1051,12 @@ describe("VibratorJsTest_misc_3", function () {
                     }, 500);
                 });
             } else {
-                console.info(TAG + 'This device is not supportEffect haptic.effect.soft');
+                console.info(TAG + ' This device is not supportEffect haptic.effect.soft');
                 expect(true).assertTrue();
                 done();
             }            
         } else {
-            console.info(TAG + 'This device is not supportEffect');
+            console.info(TAG + ' This device is not supportEffect');
             expect(true).assertTrue();
             done();
         }
@@ -1095,12 +1095,12 @@ describe("VibratorJsTest_misc_3", function () {
                     }, 500);
                 });
             } else {
-                console.info(TAG + 'This device is not supportEffect haptic.effect.hard');
+                console.info(TAG + ' This device is not supportEffect haptic.effect.hard');
                 expect(true).assertTrue();
                 done();
             }            
         } else {
-            console.info(TAG + 'This device is not supportEffect');
+            console.info(TAG + ' This device is not supportEffect');
             expect(true).assertTrue();
             done();
         }
@@ -1139,12 +1139,12 @@ describe("VibratorJsTest_misc_3", function () {
                     }, 500);
                 });
             } else {
-                console.info(TAG + 'This device is not supportEffect haptic.effect.sharp');
+                console.info(TAG + ' This device is not supportEffect haptic.effect.sharp');
                 expect(true).assertTrue();
                 done();
             }            
         } else {
-            console.info(TAG + 'This device is not supportEffect');
+            console.info(TAG + ' This device is not supportEffect');
             expect(true).assertTrue();
             done();
         }
@@ -1183,12 +1183,12 @@ describe("VibratorJsTest_misc_3", function () {
                     }, 500);                    
                 });            
             } else {
-                console.info(TAG + 'This device is not supportEffect haptic.effect.soft');
+                console.info(TAG + ' This device is not supportEffect haptic.effect.soft');
                 expect(true).assertTrue();
                 done();
             }            
         } else {
-            console.info(TAG + 'This device is not supportEffect');
+            console.info(TAG + ' This device is not supportEffect');
             expect(true).assertTrue();
             done();
         }
@@ -1227,12 +1227,12 @@ describe("VibratorJsTest_misc_3", function () {
                     }, 500);
                 });
             } else {
-                console.info(TAG + 'This device is not supportEffect haptic.effect.hard');
+                console.info(TAG + ' This device is not supportEffect haptic.effect.hard');
                 expect(true).assertTrue();
                 done();
             }            
         } else {
-            console.info(TAG + 'This device is not supportEffect');
+            console.info(TAG + ' This device is not supportEffect');
             expect(true).assertTrue();
             done();
         }
@@ -1271,12 +1271,12 @@ describe("VibratorJsTest_misc_3", function () {
                     }, 500);
                 });                          
             } else {
-                console.info(TAG + 'This device is not supportEffect haptic.effect.sharp');
+                console.info(TAG + ' This device is not supportEffect haptic.effect.sharp');
                 expect(true).assertTrue();
                 done();
             }            
         } else {
-            console.info(TAG + 'This device is not supportEffect');
+            console.info(TAG + ' This device is not supportEffect');
             expect(true).assertTrue();
             done();
         }
@@ -1321,12 +1321,12 @@ describe("VibratorJsTest_misc_3", function () {
                     done()
                 }                      
             } else {
-                console.info(TAG + 'This device is not supportEffect haptic.effect.sharp');
+                console.info(TAG + ' This device is not supportEffect haptic.effect.sharp');
                 expect(true).assertTrue();
                 done();
             }            
         } else {
-            console.info(TAG + 'This device is not supportEffect');
+            console.info(TAG + ' This device is not supportEffect');
             expect(true).assertTrue();
             done();
         }
@@ -1371,12 +1371,12 @@ describe("VibratorJsTest_misc_3", function () {
                     done()
                 }                      
             } else {
-                console.info(TAG + 'This device is not supportEffect haptic.effect.sharp');
+                console.info(TAG + ' This device is not supportEffect haptic.effect.sharp');
                 expect(true).assertTrue();
                 done();
             }            
         } else {
-            console.info(TAG + 'This device is not supportEffect');
+            console.info(TAG + ' This device is not supportEffect');
             expect(true).assertTrue();
             done();
         }
