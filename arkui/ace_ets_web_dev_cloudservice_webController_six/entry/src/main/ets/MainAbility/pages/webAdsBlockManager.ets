@@ -23,7 +23,7 @@ import { WebNetErrorList } from '@ohos.web.netErrorList'
 struct webAdsBlockManager {
   controller: webview.WebviewController = new webview.WebviewController();
   main_url: string = 'baidu.com';
-  src_url: string = 'https//www.baidu.com/';
+  src_url: string = 'https://www.baidu.com/';
 
   @State testIsOnAdsBlocked: boolean = false;
   @State emitKey: string = '';
@@ -170,7 +170,7 @@ struct webAdsBlockManager {
                         arrDomainSuffixes.push(this.main_url);
                         webview.AdsBlockManager.addAdsBlockDisallowedList(arrDomainSuffixes);
                         await Utils.sleep(1000)
-                        this.controller.loadUrl(this.main_url)
+                        this.controller.loadUrl(this.src_url)
                         await Utils.sleep(1000)
                         let isBlockedCurPageAfter: boolean = this.controller.isAdsBlockEnabledForCurPage();
                         console.log(' addAdsBlockDisallowedList:  ' + this.main_url);
@@ -198,7 +198,7 @@ struct webAdsBlockManager {
                         arrDomainSuffixes.push(this.main_url);
                         webview.AdsBlockManager.removeAdsBlockDisallowedList(arrDomainSuffixes);
                         await Utils.sleep(1000)
-                        this.controller.loadUrl(this.main_url)
+                        this.controller.loadUrl(this.src_url)
                         await Utils.sleep(1000)
                         let isBlockedCurPageAfter: boolean = this.controller.isAdsBlockEnabledForCurPage();
                         console.log(' removeAdsBlockDisallowedList:  ' + this.main_url);
@@ -222,7 +222,7 @@ struct webAdsBlockManager {
                         await Utils.sleep(1000)
                         webview.AdsBlockManager.clearAdsBlockDisallowedList();
                         await Utils.sleep(1000)
-                        this.controller.loadUrl(this.main_url)
+                        this.controller.loadUrl(this.src_url)
                         await Utils.sleep(1000)
                         let isBlockedCurPageAfter: boolean = this.controller.isAdsBlockEnabledForCurPage();
                         console.log('clearAdsBlockDisallowedList:  ' + this.main_url);
@@ -250,7 +250,7 @@ struct webAdsBlockManager {
                         arrDomainSuffixes.push(this.main_url);
                         webview.AdsBlockManager.addAdsBlockAllowedList(arrDomainSuffixes);
                         await Utils.sleep(1000)
-                        this.controller.loadUrl(this.main_url)
+                        this.controller.loadUrl(this.src_url)
                         await Utils.sleep(1000)
                         let isBlockedCurPageAfter: boolean = this.controller.isAdsBlockEnabledForCurPage();
                         console.log(' addAdsBlockAllowedList:  ' + this.main_url);
@@ -278,7 +278,7 @@ struct webAdsBlockManager {
                         arrDomainSuffixes.push(this.main_url);
                         webview.AdsBlockManager.removeAdsBlockAllowedList(arrDomainSuffixes);
                         await Utils.sleep(1000)
-                        this.controller.loadUrl(this.main_url)
+                        this.controller.loadUrl(this.src_url)
                         await Utils.sleep(1000)
                         let isBlockedCurPageAfter: boolean = this.controller.isAdsBlockEnabledForCurPage();
                         console.log(' removeAdsBlockAllowedList:  ' + this.main_url);
@@ -303,7 +303,7 @@ struct webAdsBlockManager {
                         await Utils.sleep(1000)
                         webview.AdsBlockManager.clearAdsBlockAllowedList();
                         await Utils.sleep(1000)
-                        this.controller.loadUrl(this.main_url)
+                        this.controller.loadUrl(this.src_url)
                         await Utils.sleep(1000)
                         let isBlockedCurPageAfter: boolean = this.controller.isAdsBlockEnabledForCurPage();
                         console.log(' clearAdsBlockAllowedList:  ' + this.main_url);
