@@ -431,6 +431,18 @@ export default function ActsCommonEventManagerSupportTest() {
       console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2200 END`)
     })   
     
+    /*
+     * @tc.number    : SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2300
+     * @tc.name      : commonEventManager.Support
+     * @tc.desc      : HWID common event
+     */
+    it('SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2300', 0, async  function () {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2300 START`)
+      expect(commonEventManager.Support.COMMON_EVENT_MINORSMODE_ON).assertEqual('usual.event.MINORSMODE_ON')
+      expect(commonEventManager.Support.COMMON_EVENT_MINORSMODE_OFF).assertEqual('usual.event.MINORSMODE_OFF')
+      console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2300 END`)
+    })   
+
     console.info(`${TAG} SUB_NOTIFICATION_CES_SUPPORT_ENUM_TEST END`)
   })
 
