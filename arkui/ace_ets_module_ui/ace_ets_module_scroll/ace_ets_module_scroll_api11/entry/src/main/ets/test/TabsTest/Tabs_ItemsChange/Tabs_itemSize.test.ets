@@ -15,7 +15,7 @@
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc, { RectValue } from '../../../MainAbility/common/Common1';
+import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
 import {
   UiComponent,
   UiDriver,

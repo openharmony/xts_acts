@@ -19,7 +19,7 @@ import image from '@ohos.multimedia.image'
 @Entry
 @Component
 struct OffscreenSnapshotExample {
-  @State pixmap: image.PixelMap = undefined
+  @State pixmap?: image.PixelMap = undefined
 
   @Builder
   RandomBuilder() {

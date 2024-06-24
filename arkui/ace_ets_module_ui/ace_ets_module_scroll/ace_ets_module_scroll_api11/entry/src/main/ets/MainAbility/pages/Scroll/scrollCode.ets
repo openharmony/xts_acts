@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,30 +19,30 @@ import events_emitter from '@ohos.events.emitter';
 struct scrollCode {
   @State scrollable: ScrollDirection = ScrollDirection.Vertical;
   @State scrollBar: BarState = BarState.On;
-  @State scrollBarColor: Color = "#FF0000FF";
+  @State scrollBarColor: string = "#FF0000FF";
   @State scrollBarWidth: number = 30;
   scroller: Scroller = new Scroller()
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("scrollCode page state change called:" + JSON.stringify(eventData));
-      var scrollableValue = eventData.data.scrollable;
+      let scrollableValue: string = eventData.data?.scrollable;
       console.info("scrollableValue:" + scrollableValue);
       if (scrollableValue != null && scrollableValue.length != 0) {
-        this.scrollable = scrollableValue;
+        this.scrollable = ScrollDirection[scrollableValue];
         console.info("this.scrollable:" + this.scrollable);
       } else {
         console.info("scrollableValue is null or empty " + scrollableValue);
       }
-      var scrollBarValue = eventData.data.scrollBar;
+      let scrollBarValue: string = eventData.data?.scrollBar;
       console.info("scrollBarValue:" + scrollBarValue);
       if (scrollBarValue != null && scrollBarValue.length != 0) {
-        this.scrollBar = scrollBarValue;
+        this.scrollBar = BarState[scrollBarValue];
         console.info("this.scrollBar:" + this.scrollBar);
       } else {
         console.info("scrollBarValue is null or empty " + scrollBarValue);
       }
-      var scrollBarColorValue = eventData.data.scrollBarColor;
+      let scrollBarColorValue: string = eventData.data?.scrollBarColor;
       console.info("scrollBarColorValue:" + scrollBarColorValue);
       if (scrollBarColorValue != null && scrollBarColorValue.length != 0) {
         this.scrollBarColor = scrollBarColorValue;
@@ -51,10 +50,10 @@ struct scrollCode {
       } else {
         console.info("scrollBarColorValue is null or empty " + scrollBarColorValue);
       }
-      var scrollBarWidthValue = eventData.data.scrollBarWidth;
+      let scrollBarWidthValue: string = eventData.data?.scrollBarWidth;
       console.info("scrollBarWidthValue:" + scrollBarWidthValue);
       if (scrollBarWidthValue != null && scrollBarWidthValue.length != 0) {
-        this.scrollBarWidth = scrollBarWidthValue;
+        this.scrollBarWidth = parseInt(scrollBarWidthValue);
         console.info("this.scrollBarWidth:" + this.scrollBarWidth);
       } else {
         console.info("scrollBarWidthValue is null or empty " + scrollBarWidthValue);
@@ -66,36 +65,36 @@ struct scrollCode {
 
   onPageShow() {
     console.info('scrollCode page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent1: events_emitter.InnerEvent = {
       eventId: 185,
       priority: events_emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+    events_emitter.on(stateChangeEvent1, this.stateChangCallBack);
 
-    var stateChangeEvent = {
+    let stateChangeEvent2: events_emitter.InnerEvent = {
       eventId: 186,
       priority: events_emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+    events_emitter.on(stateChangeEvent2, this.stateChangCallBack);
 
-    var stateChangeEvent = {
+    let stateChangeEvent3: events_emitter.InnerEvent = {
       eventId: 187,
       priority: events_emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+    events_emitter.on(stateChangeEvent3, this.stateChangCallBack);
 
-    var stateChangeEvent = {
+    let stateChangeEvent4: events_emitter.InnerEvent = {
       eventId: 188,
       priority: events_emitter.EventPriority.LOW
     }
-    events_emitter.on(stateChangeEvent, this.stateChangCallBack);
+    events_emitter.on(stateChangeEvent4, this.stateChangCallBack);
   }
 
   build() {
     Stack({ alignContent: Alignment.TopStart }) {
       Scroll(this.scroller) {
         Column() {
-          ForEach(this.arr, (item) => {
+          ForEach(this.arr, (item: number) => {
             Text(item.toString())
               .width('90%')
               .height(150)
@@ -104,7 +103,7 @@ struct scrollCode {
               .fontSize(16)
               .textAlign(TextAlign.Center)
               .margin({ top: 10 })
-          }, item => item)
+          }, (item: string) => item)
         }.width('100%')
       }
       .key("ScrollCode")
@@ -135,14 +134,13 @@ struct scrollCode {
         .backgroundColor(0x2788D9)
         .fontSize(20)
         .onClick((event: ClickEvent) => {
-          this.onClickValue = true;
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "scrollToIndex": 10,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 189,
               priority: events_emitter.EventPriority.LOW
             }

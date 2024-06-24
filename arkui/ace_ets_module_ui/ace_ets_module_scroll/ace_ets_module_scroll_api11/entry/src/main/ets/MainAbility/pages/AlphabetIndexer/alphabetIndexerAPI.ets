@@ -35,7 +35,7 @@ struct AlphabetIndexerOnSelect {
     Log.showInfo(TAG, `aboutToDisAppear AlphabetIndexerOnSelect end`)
   }
 
-  showToast(message) {
+  showToast(message: string) {
     prompt.showToast({
       message: message,
       duration: 2000

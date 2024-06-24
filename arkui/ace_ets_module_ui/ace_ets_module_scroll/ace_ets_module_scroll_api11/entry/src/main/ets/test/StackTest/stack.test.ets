@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
 
@@ -21,8 +21,8 @@ export default function stackAlignContentJsunit() {
   describe('stackAlignContentTest2', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Stack/stack',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Stack/stack',
       }
       try {
         router.clear();

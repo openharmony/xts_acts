@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
 import events_emitter from '@ohos.events.emitter';
@@ -22,8 +22,8 @@ export default function scrollOnScrollBeginJsunit() {
   describe('scrollOnScrollBeginTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Scroll/scroll1',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Scroll/scroll1',
       }
       try {
         router.clear();
@@ -139,9 +139,9 @@ export default function scrollOnScrollBeginJsunit() {
       console.info('scrollOnScrollBegin testscrollOnScrollBegin0006 START');
       await Utils.sleep(2000);
 
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("scrollOnScrollBegin get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.STATUS).assertEqual(true);
+        expect(indexEvent.data?.STATUS).assertEqual(true);
       }
       let indexEvent: events_emitter.InnerEvent = {
         eventId: 10086,

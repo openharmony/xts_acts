@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../../MainAbility/utils/Common';
+import CommonFunc from '../../../MainAbility/common/Common';
 import {MessageManager,Callback} from '../../../MainAbility/utils/MessageManager';
 
 
 export default function SwiperMinSize() {
-  describe('SwiperMinSize', function () {
-    beforeEach(async function (done) {
+  describe('SwiperMinSize', () => {
+    beforeEach(async (done: Function) => {
       console.info("SwiperMinSize beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Swiper/swiperUI/SwiperMinSize',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Swiper/swiperUI/SwiperMinSize',
       }
       try {
         router.clear();
@@ -49,7 +49,7 @@ export default function SwiperMinSize() {
       * @tc.desc  : Don't set minSize
       * @tc.level : Level 3
       */
-    it('SwiperMinSize_001', 0, async function (done) {
+    it('SwiperMinSize_001', 0, async (done: Function) => {
 
       console.info('[SwiperMinSize_001] START');
       await CommonFunc.sleep(200);
@@ -68,7 +68,7 @@ export default function SwiperMinSize() {
       * @tc.desc  : Don't set minSize
       * @tc.level : Level 3
       */
-    it('SwiperMinSize_101', 0, async function (done) {
+    it('SwiperMinSize_101', 0, async (done: Function) => {
 
       console.info('[SwiperMinSize_101] START');
       await CommonFunc.sleep(200);
@@ -87,7 +87,7 @@ export default function SwiperMinSize() {
       * @tc.desc  : set minSize to 20
       * @tc.level : Level 3
       */
-    it('SwiperMinSize_002', 0, async function (done) {
+    it('SwiperMinSize_002', 0, async (done: Function) => {
 
       console.info('[SwiperMinSize_002] START');
       await CommonFunc.sleep(200);
@@ -109,7 +109,7 @@ export default function SwiperMinSize() {
      * @tc.desc  : set minSize to 20
      * @tc.level : Level 3
      */
-    it('SwiperMinSize_102', 0, async function (done) {
+    it('SwiperMinSize_102', 0, async (done: Function) => {
 
       console.info('[SwiperMinSize_102] START');
       await CommonFunc.sleep(200);
@@ -131,7 +131,7 @@ export default function SwiperMinSize() {
      * @tc.desc  : set minSize to 20
      * @tc.level : Level 3
      */
-    it('SwiperMinSize_202', 0, async function (done) {
+    it('SwiperMinSize_202', 0, async (done: Function) => {
 
       console.info('[SwiperMinSize_202] START');
       await CommonFunc.sleep(200);
@@ -153,7 +153,7 @@ export default function SwiperMinSize() {
      * @tc.desc  : set minSize to 20
      * @tc.level : Level 3
      */
-    it('SwiperMinSize_302', 0, async function (done) {
+    it('SwiperMinSize_302', 0, async (done: Function) => {
 
       console.info('[SwiperMinSize_302] START');
       await CommonFunc.sleep(200);
@@ -175,7 +175,7 @@ export default function SwiperMinSize() {
      * @tc.desc  : set minSize to 20
      * @tc.level : Level 3
      */
-    it('SwiperMinSize_402', 0, async function (done) {
+    it('SwiperMinSize_402', 0, async (done: Function) => {
 
       console.info('[SwiperMinSize_402] START');
       await CommonFunc.sleep(200);
@@ -197,7 +197,7 @@ export default function SwiperMinSize() {
       * @tc.desc  : set minSize to 20 and change component dimensions
       * @tc.level : Level 3
       */
-    it('SwiperMinSize_003', 0, async function (done) {
+    it('SwiperMinSize_003', 0, async (done: Function) => {
 
       console.info('[SwiperMinSize_003] START');
       await CommonFunc.sleep(200);
@@ -220,7 +220,7 @@ export default function SwiperMinSize() {
       * @tc.desc  : set minSize to 20 and change component dimensions
       * @tc.level : Level 3
       */
-    it('SwiperMinSize_004', 0, async function (done) {
+    it('SwiperMinSize_004', 0, async (done: Function) => {
 
       console.info('[SwiperMinSize_004] START');
       await CommonFunc.sleep(200);
@@ -243,7 +243,7 @@ export default function SwiperMinSize() {
       * @tc.desc  : set minSize to 20 and paddingTop marginTop to 10
       * @tc.level : Level 3
       */
-    it('SwiperMinSize_005', 0, async function (done) {
+    it('SwiperMinSize_005', 0, async (done: Function) => {
 
       console.info('[SwiperMinSize_005] START');
       await CommonFunc.sleep(200);
@@ -267,7 +267,7 @@ export default function SwiperMinSize() {
       * @tc.desc  : set minSize to 20 and itemSpace to 10
       * @tc.level : Level 3
       */
-    it('SwiperMinSize_006', 0, async function (done) {
+    it('SwiperMinSize_006', 0, async (done: Function) => {
 
       console.info('[SwiperMinSize_006] START');
       await CommonFunc.sleep(200);
@@ -292,7 +292,7 @@ export default function SwiperMinSize() {
       * @tc.desc  : set minSize to 20 and itemSpace to 10
       * @tc.level : Level 3
       */
-    it('SwiperMinSize_007', 0, async function (done) {
+    it('SwiperMinSize_007', 0, async (done: Function) => {
 
       console.info('[SwiperMinSize_007] START');
       await CommonFunc.sleep(200);

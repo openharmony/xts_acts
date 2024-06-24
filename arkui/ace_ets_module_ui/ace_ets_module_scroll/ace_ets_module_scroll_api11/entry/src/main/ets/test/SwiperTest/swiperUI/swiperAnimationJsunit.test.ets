@@ -15,13 +15,14 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import ohosrouter from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../../MainAbility/utils/Common1';
-import {MessageManager,Callback} from '../../../MainAbility/utils/MessageManager1';
+import CommonFunc from '../../../MainAbility/common/Common';
+import {MessageManager, Callback} from '../../../MainAbility/utils/MessageManager';
+import { BusinessError } from '@ohos.base';
 const waitUiReadyMs = 1000;
 
 export default function swiperAnimationJsunit() {
-  describe('swiperAnimationJsunit', function () {
-    beforeEach(async function (done) {
+  describe('swiperAnimationJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("swiperAnimationJsunit beforeEach start");
       done();
       try {
@@ -40,7 +41,7 @@ export default function swiperAnimationJsunit() {
           }).then(() => {
               // success
             })
-            .catch(err => {
+            .catch((err: BusinessError) => {
               console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
             })
          await CommonFunc.sleep(2000);
@@ -57,7 +58,7 @@ export default function swiperAnimationJsunit() {
     * @tc.level : Level 2
     */
 
-    it('swiperAnimationJsunit_0024', 0, async function (done) {
+    it('swiperAnimationJsunit_0024', 0, async (done: Function) => {
       console.info('swiperAnimationJsunit_0024');
       try {
          ohosrouter.back({url:'MainAbility/pages/index/second'});
@@ -77,7 +78,7 @@ export default function swiperAnimationJsunit() {
           }).then(() => {
               // success
             })
-            .catch(err => {
+            .catch((err: BusinessError) => {
               console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
             })
          await CommonFunc.sleep(2000);
@@ -101,7 +102,7 @@ export default function swiperAnimationJsunit() {
       await CommonFunc.sleep(1000);
       // check the onAnimation triggers
       let strJson = getInspectorByKey('animationEnd');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[swiperAnimationJsunit_0024'] component obj is: " + obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('End2-->');
       done();
@@ -115,7 +116,7 @@ export default function swiperAnimationJsunit() {
     * @tc.level : Level 2
     */
 
-   it('swiperAnimationJsunit_0012', 0, async function (done) {
+   it('swiperAnimationJsunit_0012', 0, async (done: Function) => {
       console.info('swiperAnimationJsunit_0012 START');
       await CommonFunc.sleep(1000);
       try {
@@ -136,7 +137,7 @@ export default function swiperAnimationJsunit() {
           }).then(() => {
               // success
             })
-            .catch(err => {
+            .catch((err: BusinessError) => {
               console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
             })
          await CommonFunc.sleep(2000);
@@ -162,7 +163,7 @@ export default function swiperAnimationJsunit() {
       await CommonFunc.sleep(500);
        // check the onAnimation triggers
       let strJson = getInspectorByKey('animationStart');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[swiperAnimationJsunit_0012'] component obj is: " + obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('Start2-->3');
       done();
@@ -175,7 +176,7 @@ export default function swiperAnimationJsunit() {
     * @tc.level : Level 2
     */
 
-   it('swiperAnimationJsunit_0027', 0, async function (done) {
+   it('swiperAnimationJsunit_0027', 0, async (done: Function) => {
       console.info('swiperAnimationJsunit_0027 START');
       await CommonFunc.sleep(1000);
       try {
@@ -196,7 +197,7 @@ export default function swiperAnimationJsunit() {
           }).then(() => {
               // success
         })
-          .catch(err => {
+          .catch((err: BusinessError) => {
             console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
           })
         await CommonFunc.sleep(2000);
@@ -225,7 +226,7 @@ export default function swiperAnimationJsunit() {
       await CommonFunc.sleep(500);
        // check the onAnimation triggers
       let strJson = getInspectorByKey('animationEnd');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[swiperAnimationJsunit_0027'] component obj is: " + obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('End2-->');
       done();
@@ -238,7 +239,7 @@ export default function swiperAnimationJsunit() {
     * @tc.level : Level 2
     */
 
-   it('swiperAnimationJsunit_0019', 0, async function (done) {
+   it('swiperAnimationJsunit_0019', 0, async (done: Function) => {
       console.info('swiperAnimationJsunit_0019 START');
       await CommonFunc.sleep(1000);
       try {
@@ -260,7 +261,7 @@ export default function swiperAnimationJsunit() {
           }).then(() => {
               // success
             })
-            .catch(err => {
+            .catch((err: BusinessError) => {
               console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
             })
          await CommonFunc.sleep(2000);
@@ -294,7 +295,7 @@ export default function swiperAnimationJsunit() {
 
        // check the onAnimation triggers
       let strJson = getInspectorByKey('animationStart');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[swiperAnimationJsunit_0019'] component obj is: " + obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('Start2-->3');
       done();
@@ -307,7 +308,7 @@ export default function swiperAnimationJsunit() {
     * @tc.level : Level 2
     */
 
-   it('swiperAnimationJsunit_0022', 0, async function (done) {
+   it('swiperAnimationJsunit_0022', 0, async (done: Function) => {
       console.info('swiperAnimationJsunit_0019 START');
       await CommonFunc.sleep(1000);
       try {
@@ -328,7 +329,7 @@ export default function swiperAnimationJsunit() {
           }).then(() => {
               // success
             })
-            .catch(err => {
+            .catch((err: BusinessError) => {
               console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
             })
          await CommonFunc.sleep(2000);
@@ -350,7 +351,7 @@ export default function swiperAnimationJsunit() {
       await CommonFunc.sleep(5000);
        // check the onAnimation triggers
       let strJson = getInspectorByKey('animationStart');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[swiperAnimationJsunit_0022'] component obj is: " + obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('Start1-->2');
       done();
@@ -363,7 +364,7 @@ export default function swiperAnimationJsunit() {
     * @tc.level : Level 2
     */
 
-   it('swiperAnimationJsunit_0023', 0, async function (done) {
+   it('swiperAnimationJsunit_0023', 0, async (done: Function) => {
       console.info('swiperAnimationJsunit_0023 START');
       await CommonFunc.sleep(1000);
       try {
@@ -385,7 +386,7 @@ export default function swiperAnimationJsunit() {
           }).then(() => {
               // success
             })
-            .catch(err => {
+            .catch((err: BusinessError) => {
               console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
             })
          await CommonFunc.sleep(2000);
@@ -416,7 +417,7 @@ export default function swiperAnimationJsunit() {
      
        // check the onAnimation triggers
       let strJson = getInspectorByKey('animationEnd');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[swiperAnimationJsunit_0023'] component obj is: " + obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('End1-->');
       done();
@@ -429,7 +430,7 @@ export default function swiperAnimationJsunit() {
     * @tc.level : Level 2
     */
 
-   it('swiperAnimationJsunit_0011', 0, async function (done) {
+   it('swiperAnimationJsunit_0011', 0, async (done: Function) => {
       console.info('swiperAnimationJsunit_0011 START');
       await CommonFunc.sleep(1000);
       try {
@@ -450,7 +451,7 @@ export default function swiperAnimationJsunit() {
           }).then(() => {
               // success
             })
-            .catch(err => {
+            .catch((err: BusinessError) => {
               console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
             })
          await CommonFunc.sleep(2000);
@@ -484,7 +485,7 @@ export default function swiperAnimationJsunit() {
        
        // check the onAnimation triggers
       let strJson = getInspectorByKey('animationStart');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[swiperAnimationJsunit_0011'] component obj is: " + obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('Start1-->2');
       done();
@@ -497,7 +498,7 @@ export default function swiperAnimationJsunit() {
     * @tc.level : Level 2
     */
 
-   it('swiperAnimationJsunit_0028', 0, async function (done) {
+   it('swiperAnimationJsunit_0028', 0, async (done: Function) => {
       console.info('swiperAnimationJsunit_0011 START');
       await CommonFunc.sleep(1000);
       try {
@@ -516,7 +517,7 @@ export default function swiperAnimationJsunit() {
           }).then(() => {
               // success
             })
-            .catch(err => {
+            .catch((err: BusinessError) => {
               console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
             })
          await CommonFunc.sleep(2000);
@@ -555,7 +556,7 @@ export default function swiperAnimationJsunit() {
 
        // check the onAnimation triggers
       let strJson = getInspectorByKey('animationEnd');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[swiperAnimationJsunit_0028'] component obj is: " + obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('End3-->');
              
@@ -569,7 +570,7 @@ export default function swiperAnimationJsunit() {
     * @tc.level : Level 2
     */
 
-   it('swiperAnimationJsunit_0020', 0, async function (done) {
+   it('swiperAnimationJsunit_0020', 0, async (done: Function) => {
       console.info('swiperAnimationJsunit_0011 START');
       await CommonFunc.sleep(1000);
       try {
@@ -591,7 +592,7 @@ export default function swiperAnimationJsunit() {
           }).then(() => {
               // success
           })
-          .catch(err => {
+          .catch((err: BusinessError) => {
             console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
           })
          await CommonFunc.sleep(2000);
@@ -632,7 +633,7 @@ export default function swiperAnimationJsunit() {
 
        // check the onAnimation triggers
       let strJson = getInspectorByKey('animationStart');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[swiperAnimationJsunit_0020'] component obj is: " + obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('Start2-->3');
 
@@ -646,7 +647,7 @@ export default function swiperAnimationJsunit() {
     * @tc.level : Level 2
     */
 
-   it('swiperAnimationGestureJsunit_0016', 0, async function (done) {
+   it('swiperAnimationGestureJsunit_0016', 0, async (done: Function) => {
       console.info('swiperAnimationGestureJsunit_0016 START');
       await CommonFunc.sleep(1000);
       try {
@@ -668,7 +669,7 @@ export default function swiperAnimationJsunit() {
           }).then(() => {
               // success
             })
-            .catch(err => {
+            .catch((err: BusinessError) => {
               console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
             })
          await CommonFunc.sleep(2000);
@@ -695,7 +696,7 @@ export default function swiperAnimationJsunit() {
       await CommonFunc.sleep(1000);
        // check the onAnimation triggers
       let strJson = getInspectorByKey('GestureSwipe');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[swiperAnimationGestureJsunit_0016] component obj is: " + obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('GestureSwipe index: 1');
       done();
@@ -708,7 +709,7 @@ export default function swiperAnimationJsunit() {
     * @tc.level : Level 2
     */
 
-   it('swiperAnimationGestureJsunit_0017', 0, async function (done) {
+   it('swiperAnimationGestureJsunit_0017', 0, async (done: Function) => {
       console.info('swiperAnimationGestureJsunit_0017 START');
       await CommonFunc.sleep(1000);
       try {
@@ -730,7 +731,7 @@ export default function swiperAnimationJsunit() {
           }).then(() => {
               // success
             })
-            .catch(err => {
+            .catch((err: BusinessError) => {
               console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
             })
          await CommonFunc.sleep(2000);
@@ -754,13 +755,13 @@ export default function swiperAnimationJsunit() {
       await CommonFunc.sleep(500);
        // check the onAnimation triggers
       let strJson = getInspectorByKey('GestureSwipe');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[swiperAnimationJsunit_0017'] component obj2 is: " + obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('GestureSwipe index: 1');
       await driver.swipe(Math.round(left + width*0.1), Math.round(bottom + height/2),Math.round(left + width*0.1),Math.round(bottom + height/2));
       await CommonFunc.sleep(500);
       let strJson2 = getInspectorByKey('GestureSwipe');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[swiperAnimationJsunit_0012'] component obj3 is: " + obj2.$attrs.content);
       expect(obj2.$attrs.content).assertEqual('GestureSwipe index: 1');
       done();
@@ -773,7 +774,7 @@ export default function swiperAnimationJsunit() {
     * @tc.level : Level 2
     */
 
-   it('swiperAnimationGestureJsunit_0019', 0, async function (done) {
+   it('swiperAnimationGestureJsunit_0019', 0, async (done: Function) => {
       console.info('swiperAnimationGestureJsunit_0019 START');
       await CommonFunc.sleep(1000);
       try {
@@ -795,7 +796,7 @@ export default function swiperAnimationJsunit() {
           }).then(() => {
               // success
             })
-            .catch(err => {
+            .catch((err: BusinessError) => {
               console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
             })
          await CommonFunc.sleep(2000);
@@ -822,13 +823,13 @@ export default function swiperAnimationJsunit() {
       await CommonFunc.sleep(500);
        // check the onAnimation triggers
       let strJson = getInspectorByKey('GestureSwipe');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[swiperAnimationJsunit_0019'] component obj2 is: " + obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('GestureSwipe index: 1');
       await driver.swipe(Math.round(left + width*0.1), Math.round(bottom + height/2),Math.round(left + width*0.1),Math.round(bottom + height/2));
       await CommonFunc.sleep(500);
       let strJson2 = getInspectorByKey('GestureSwipe');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[swiperAnimationJsunit_0019'] component obj3 is: " + obj2.$attrs.content);
       expect(obj2.$attrs.content).assertEqual('GestureSwipe index: 1');
       done();
@@ -841,7 +842,7 @@ export default function swiperAnimationJsunit() {
     * @tc.level : Level 2
     */
 
-   it('swiperAnimationGestureJsunit_0020', 0, async function (done) {
+   it('swiperAnimationGestureJsunit_0020', 0, async (done: Function) => {
       console.info('swiperAnimationGestureJsunit_0020 START');
       await CommonFunc.sleep(1000);
       try {
@@ -863,7 +864,7 @@ export default function swiperAnimationJsunit() {
           } ).then(() => {
               // success
             })
-            .catch(err => {
+            .catch((err: BusinessError) => {
               console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
             })
          await CommonFunc.sleep(2000);
@@ -899,13 +900,13 @@ export default function swiperAnimationJsunit() {
       await CommonFunc.sleep(3000);
        //check the onAnimation triggers
       let strJson = getInspectorByKey('GestureSwipe');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[swiperAnimationJsunit_0020'] component obj2 is: " + obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('GestureSwipe index: 2');
       await driver.swipe(Math.round(left + width*0.1), Math.round(bottom + height/2),Math.round(left + width*0.1),Math.round(bottom + height/2));
       await CommonFunc.sleep(500);
       let strJson2 = getInspectorByKey('GestureSwipe');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[swiperAnimationJsunit_0020'] component obj3 is: " + obj2.$attrs.content);
       expect(obj2.$attrs.content).assertEqual('GestureSwipe index: 2');
       done();

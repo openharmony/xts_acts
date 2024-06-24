@@ -33,8 +33,8 @@ struct RefreshCreateComponent {
     console.info("[stateChangCallBack] stateChangCallBack");
     if (eventData != null) {
       console.info("[stateChangCallBack] state change called:" + JSON.stringify(eventData));
-      if (eventData.data.isRefreshing != null) {
-        this.isRefreshing = eventData.data.isRefreshing;
+      if (eventData.data?.isRefreshing != null) {
+        this.isRefreshing = eventData.data?.isRefreshing;
       }
     }
   }

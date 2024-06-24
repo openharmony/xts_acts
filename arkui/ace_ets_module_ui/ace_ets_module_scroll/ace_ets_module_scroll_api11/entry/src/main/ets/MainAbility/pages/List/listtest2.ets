@@ -101,7 +101,7 @@ struct ListIdle {
           .divider({ strokeWidth: 2, color: 0xFFFFFF, startMargin: 20, endMargin: 20 }) // 每行之间的分界线
           .edgeEffect(EdgeEffect.None) // 滑动到边缘无效果
           .chainAnimation(false) // 联动特效关闭
-          .onScroll((scrollOffset: 5, scrollState: ScrollState) => {
+          .onScroll((scrollOffset: number, scrollState: ScrollState) => {
             console.info('scrollOffset' + scrollOffset)
             console.info('scrollState   ' + ScrollState.Scroll)
             console.info('scrollState   ' + ScrollState.Idle)

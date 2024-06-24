@@ -124,7 +124,7 @@ struct Index {
               let rect: Rectangle = event.getPreviewRect();
               this.imageWidth = Number(rect.width);
               this.imageHeight = Number(rect.height);
-              this.targetImage = (<udmf.Image>(records[0])).imageUri;
+              this.targetImage = (records[0] as udmf.Image).imageUri;
               event.useCustomDropAnimation = false;
               animateTo({duration: 1000}, ()=>{
                 this.imageWidth = 100;
@@ -152,7 +152,12 @@ struct Index {
             console.info("the getVelocity " + dragEvent.getVelocity());
             this.getDataFromUdmfRetry(dragEvent, event => {
               let records:Array<udmf.UnifiedRecord> = event.getData().getRecords();
-              this.targetText = (<udmf.Text>(records[0])).details['value'];
+              if (records[0]) {
+                let record = (records[0] as udmf.Text)
+                if (record.details) {
+                  this.targetText = record.details['value'] ?? ""
+                }
+              }
             })
           })
 
@@ -170,8 +175,8 @@ struct Index {
         .onDrop((dragEvent)=>{
           this.getDataFromUdmfRetry(dragEvent, event=>{
             let records: Array<udmf.UnifiedRecord> = event.getData().getRecords();
-            let plainText: udmf.PlainText = <udmf.PlainText>(records[0]);
-            this.abstractContent = plainText.abstract;
+            let plainText: udmf.PlainText = records[0] as udmf.PlainText;
+            this.abstractContent = plainText.abstract ?? "";
             this.textContent = plainText.textContent;
           })
         })

@@ -24,7 +24,7 @@ struct ScrollExample {
     Stack({ alignContent: Alignment.TopStart }) {
       Scroll(this.scroller) {
         Column() {
-          ForEach(this.arr, (item) => {
+          ForEach(this.arr, (item: number) => {
             Text(item.toString())
               .width('90%')
               .height(150)
@@ -34,7 +34,7 @@ struct ScrollExample {
               .key(item.toString())
               .textAlign(TextAlign.Center)
               .margin({ top: 10 })
-          }, item => item)
+          }, (item: string) => item)
         }.width('100%')
       }
       .scrollable(ScrollDirection.Vertical)  // 滚动方向纵向

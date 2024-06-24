@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- import {MessageManager,Callback} from '../../../utils/MessageManager1';
+ import {MessageManager,Callback} from '../../../utils/MessageManager';
 
 class MyDataSourceA implements IDataSource {
   private list: number[] = []
@@ -60,7 +60,7 @@ struct SwiperAnimationExample {
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback:Callback = (message: ESObject) => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'autoPlay') {
         this.autoPlay = message.value

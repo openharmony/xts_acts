@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 
-// @ts-nocheck
 import Curves from '@ohos.curves';
 
 @Entry
@@ -68,7 +67,7 @@ struct listUx{
             }
             .key("ArkUXII_List_style_0500")
 
-            ListItem({ style: "" }) {
+            ListItem({ style: ListItemStyle.NONE }) {
               Text("ListItemGroupStyle.CARD与\"\"")
                 .fontSize(10)
                 .width('100%')
@@ -116,7 +115,7 @@ struct listUx{
           }
           .key("ArkUXII_List_style_1000")
 
-          ListItemGroup({ style: "" }) {
+          ListItemGroup({ style: ListItemGroupStyle.NONE }) {
             ListItem({ style: ListItemStyle.CARD }) {
               Text("\"\"与ListItemStyle.CARD")
                 .fontSize(10)
@@ -136,8 +135,8 @@ struct listUx{
           }
           .key("ArkUXII_List_style_1200")
 
-          ListItemGroup({ style: "", style: ListItemGroupStyle.CARD }) {
-            ListItem({ style: "", style: ListItemStyle.CARD }) {
+          ListItemGroup({ style: ListItemGroupStyle.CARD }) {
+            ListItem({ style: ListItemStyle.CARD }) {
               Text("\"\"之后再ListItemStyle.CARD与\"\"之后再ListItemGroupStyle.CARD")
                 .fontSize(10)
                 .width('100%')
@@ -194,7 +193,7 @@ struct listUx{
         List() {
         }
         .key("ArkUX_Stage_List_LimitAnimation_0600")
-        .scrollSnapAlign("")
+        .scrollSnapAlign(ScrollSnapAlign[""])
 
         List() {
         }
@@ -208,7 +207,7 @@ struct listUx{
         List() {
         }
         .key("ArkUX_Stage_List_LimitAnimation_0900")
-        .scrollSnapAlign("ScrollSnapAlign.START")
+        .scrollSnapAlign(ScrollSnapAlign[""])
 
         List() {
         }
@@ -226,12 +225,12 @@ struct listUx{
         }
         .key("ArkUX_Stage_List_LimitAnimation_1200")
         .scrollSnapAlign(ScrollSnapAlign.START)
-        .scrollSnapAlign("")
+        .scrollSnapAlign(ScrollSnapAlign[""])
 
         List() {
         }
         .key("ArkUX_Stage_List_LimitAnimation_1300")
-        .scrollSnapAlign("")
+        .scrollSnapAlign(ScrollSnapAlign[""])
         .scrollSnapAlign(ScrollSnapAlign.START)
 
         List() {
