@@ -16,16 +16,16 @@
 import { TabTitleBar } from '@ohos.arkui.advanced.TabTitleBar';
 import promptAction from '@ohos.promptAction';
 
-class tabItem {
-  title: ResourceStr;
-  icon?: ResourceStr;
+class TabItem {
+  public title: ResourceStr;
+  public icon?: ResourceStr;
   constructor(title: ResourceStr,icon?: ResourceStr) {
     this.title = title;
     this.icon = icon;
   }
 }
 
-interface menuItem {
+interface MenuItem {
   value: ResourceStr;
   isEnabled?: boolean;
   action?: () => void;
@@ -73,8 +73,8 @@ struct TabTitleBarPageTest {
       .backgroundColor('#3498DB')
   }
 
-  private readonly tabItems: Array<tabItem> = [new tabItem('tab1'),new tabItem('tab2'),new tabItem('tab3'),new tabItem('Happy'),new tabItem('tab4')];
-  private  readonly menuItems: Array<menuItem> = [
+  private readonly tabItems: Array<TabItem> = [new TabItem('tab1'),new TabItem('tab2'),new TabItem('tab3'),new TabItem('Happy'),new TabItem('tab4')];
+  private  readonly menuItems: Array<MenuItem> = [
     {
       value: $r('app.media.icon'),
       isEnabled: true,
