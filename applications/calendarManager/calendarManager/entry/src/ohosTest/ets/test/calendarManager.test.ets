@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import calendarManager from '@ohos.calendarManager';
-import { describe, beforeAll, it, expect, MockKit, when, ArgumentMatchers } from '@ohos/hypium';
+import { describe, beforeAll, it, expect } from '@ohos/hypium';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import uitest from '@ohos.UiTest';
 import systemDateTime from '@ohos.systemDateTime';
@@ -1510,25 +1510,6 @@ export default function CalendarManagerTest() {
         TimeZone = data;
       });
 
-      let calendarMgrMock: calendarManager.CalendarManager = {
-        createCalendar: (): Promise<calendarManager.Calendar> => {
-          throw new Error('Function not implemented.');
-        },
-        deleteCalendar: (): Promise<void> => {
-          throw new Error('Function not implemented.');
-        },
-
-        getAllCalendars: (): Promise<calendarManager.Calendar[]> => {
-          throw new Error('Function not implemented.');
-        },
-        editEvent: (event: calendarManager.Event): Promise<number> => {
-          throw new Error('Function not implemented.');
-        },
-        getCalendar: (): Promise<calendarManager.Calendar> => {
-          throw new Error('Function not implemented.');
-        }
-      };
-
       const date = new Date();
       let Schedule: calendarManager.Event = {
         type: calendarManager.EventType.NORMAL,
@@ -1544,12 +1525,26 @@ export default function CalendarManagerTest() {
         },
       }
 
-      let mocker = new MockKit();
-      let mockedOn: Function = mocker.mockFunc(calendarMgrMock, calendarMgrMock.editEvent);
-      when(mockedOn)(ArgumentMatchers.any).afterReturn(1);
       try {
-        let eventId = await calendarMgrMock.editEvent(Schedule);
-        expect(eventId !== 0).assertTrue();
+        let drive: Driver = Driver.create();
+        sleep(2000);
+        console.info(`editEvent begin`);
+        let eventId = calendarMgr?.editEvent(Schedule);
+        console.info(`editEvent done id=${eventId}`);
+
+        calendarMgr?.editEvent(Schedule).then((data) => {
+          expect(data != -1).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(CaseName + "Failed to editEvent" + JSON.stringify(err));
+          done();
+        })
+
+        let saveButton = await drive.findComponent(ON.id('component_id_edit_save_button'));
+        if (saveButton) {
+          saveButton.click();
+          sleep(2000);
+        }
       } catch (err) {
         console.info(CaseName + "Failed to editEvent" + JSON.stringify(err));
       }
