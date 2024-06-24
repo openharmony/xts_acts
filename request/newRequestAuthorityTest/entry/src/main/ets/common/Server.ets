@@ -52,7 +52,6 @@ let on_message_callback = (value: SocketInfo) => {
   subInfo = subInfo.replace(/[\']/g, "'");
   subInfo = subInfo.replace(/[\"]/g, "'");
   subInfo = subInfo.replace(/[\\]/g, '\\');
-  console.info(TAG + '====>subInfo:' + subInfo);
   if(subInfo.indexOf('content-length')>0){
     let nextSpaceIndex = subInfo.substring(subInfo.indexOf('content-length'), subInfo.length-1).indexOf(' ');
     contentLength = parseInt(subInfo.slice(subInfo.indexOf('content-length') + 'content-length:'.length, subInfo.indexOf('content-length') + nextSpaceIndex))
