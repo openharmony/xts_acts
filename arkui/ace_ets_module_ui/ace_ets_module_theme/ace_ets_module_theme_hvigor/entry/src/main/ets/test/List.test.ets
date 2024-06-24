@@ -25,6 +25,14 @@ import checkboxGroupThemeTest from './components/CheckboxGroup.test';
 import counterThemeTest from './components/Counter.test';
 import datePickerThemeTest from './components/DatePicker.test';
 import dividerThemeTest from './components/Divider.test';
+import forEachTest from './components/ForEach.test';
+import ifThemeTest from './components/If.test';
+import lazyForEachTest from './components/LazyForEach.test';
+import loadingProgressThemeTest from './components/LoadingProgress.test';
+import menuThemeTest from './components/Menu.test';
+import menuItemThemeTest from './components/MenuItem.test';
+import patternLockThemeTest from './components/PatternLock.test';
+import qrCodeThemeTest from './components/QRCode.test';
 
 export default function testsuite() {
   // global tests
@@ -40,4 +48,12 @@ export default function testsuite() {
   counterThemeTest();
   datePickerThemeTest();
   dividerThemeTest();
+  forEachTest();
+  ifThemeTest();
+  lazyForEachTest();
+  loadingProgressThemeTest();
+  menuThemeTest();
+  menuItemThemeTest();
+  patternLockThemeTest();
+  qrCodeThemeTest();
 }
