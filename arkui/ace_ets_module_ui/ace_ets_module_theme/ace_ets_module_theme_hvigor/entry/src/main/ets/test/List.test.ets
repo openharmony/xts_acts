@@ -33,6 +33,7 @@ import menuThemeTest from './components/Menu.test';
 import menuItemThemeTest from './components/MenuItem.test';
 import patternLockThemeTest from './components/PatternLock.test';
 import qrCodeThemeTest from './components/QRCode.test';
+import sliderThemeTest from './components/Slider.test';
 
 export default function testsuite() {
   // global tests
@@ -56,4 +57,5 @@ export default function testsuite() {
   menuItemThemeTest();
   patternLockThemeTest();
   qrCodeThemeTest();
+  sliderThemeTest();
 }
