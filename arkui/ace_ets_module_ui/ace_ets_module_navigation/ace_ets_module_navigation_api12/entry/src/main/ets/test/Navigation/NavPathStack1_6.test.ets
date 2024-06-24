@@ -18,55 +18,52 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
-export default function NavPathStack2() {
-  describe('NavPathStack2', () => {
+export default function NavPathStack1_6() {
+  describe('NavPathStack1_6', () => {
     beforeEach(async (done: Function) => {
-      console.info("NavPathStack2 beforeEach start");
+      console.info("NavPathStack1_6 beforeEach start");
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/Navigation/NavPathStack2',
+        url: 'MainAbility/pages/Navigation/NavPathStack1_6',
       }
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get NavPathStack2 state pages:" + JSON.stringify(pages));
+        console.info("get NavPathStack1_6 state pages:" + JSON.stringify(pages));
         if (!("List_SpaceChange" == pages.name)) {
-          console.info("get NavPathStack2 pages.name:" + JSON.stringify(pages.name));
+          console.info("get NavPathStack1_6 pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
-          console.info("push NavPathStack2 page result:" + JSON.stringify(result));
+          console.info("push NavPathStack1_6 page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push NavPathStack2 page error:" + err);
+        console.error("push NavPathStack1_6 page error:" + err);
       }
-      console.info("NavPathStack2 beforeEach end");
+      console.info("NavPathStack1_6 beforeEach end");
       done();
     });
     afterEach(async () => {
     });
 
     /**
-     * @tc.number NavPathStack2_0100
+     * @tc.number NavPathStack1_6_0100
      * @tc.name testNavigation
      * @tc.desc
      */
-    it('NavPathStack2_0100', 0, async (done: Function) => {
-      console.info('NavPathStack2_0100 START');
+    it('NavPathStack1_6_0100', 0, async (done: Function) => {
+      console.info('NavPathStack1_6_0100 START');
       await CommonFunc.sleep(1000);
 
-      sendEventByKey('NavPathStack2_btn1',10,"")
+      sendEventByKey('NavPathStack1_6_btn6',10,"")
       await CommonFunc.sleep(500);
-      sendEventByKey('NavPathStack2_btn2',10,"")
-      await CommonFunc.sleep(500);
-      sendEventByKey('NavPathStack2_btn9',10,"")
-      await CommonFunc.sleep(500);
-
-      let pageOne_text1 = getInspectorByKey('NavPathStack2_pageOne_text1');
-      expect(String(JSON.parse(pageOne_text1).$attrs.content)).assertEqual('pageOne');
+      let pageOne_text6 = getInspectorByKey('NavPathStack1_6_pageOne_text1');
+      expect(String(JSON.parse(pageOne_text6).$attrs.content)).assertEqual('pageOne');
       await CommonFunc.sleep(500);
 
-      console.info('NavPathStack2_0100 END');
+      console.info('NavPathStack1_6_0100 END');
       done();
     });
+
+
 
   })
 }
