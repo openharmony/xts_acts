@@ -34,4 +34,25 @@ static napi_value TestDatePickerEnd002(napi_env env, napi_callback_info info)
     NAPI_END;
 }
 
+static napi_value TestDatePickerEnd003(napi_env env, napi_callback_info info)
+{
+    NAPI_START(datePicker, ARKUI_NODE_DATE_PICKER);
+
+    ArkUI_AttributeItem value_item = {.string = "1111-1-1"};
+    auto ret = nodeAPI->setAttribute(datePicker, NODE_DATE_PICKER_END, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_STRNE(nodeAPI->getAttribute(datePicker, NODE_DATE_PICKER_END)->string, "1111-1-1");
+    NAPI_END;
+}
+
+static napi_value TestDatePickerEnd004(napi_env env, napi_callback_info info)
+{
+    NAPI_START(datePicker, ARKUI_NODE_DATE_PICKER);
+
+    ArkUI_AttributeItem value_item = {.string = "9999-1-1"};
+    auto ret = nodeAPI->setAttribute(datePicker, NODE_DATE_PICKER_END, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_STRNE(nodeAPI->getAttribute(datePicker, NODE_DATE_PICKER_END)->string, "9999-1-1");
+    NAPI_END;
+}
 } // namespace ArkUICapiTest

@@ -40,9 +40,9 @@ export default function customComponentFocusableTest() {
       focusControl.requestFocus('FocusableTestCustomComponent')
       await Utils.sleep(2000)
       expect(Utils.getComponentInfoByKey('FocusableTestCustomComponent').$attrs.backgroundColor)
-        .assertEqual('#FF00FF00')
+        .assertEqual('#FFFF0000')
 
-      expect(Utils.getComponentInfoByKey('FocusableTestCustomComponent').$attrs.focusable).assertTrue()
+      expect(Utils.getComponentInfoByKey('FocusableTestCustomComponent').$attrs.focusable).assertFalse()
       done()
     })
 

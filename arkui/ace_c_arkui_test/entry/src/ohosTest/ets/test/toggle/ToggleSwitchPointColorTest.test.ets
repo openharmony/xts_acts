@@ -65,5 +65,30 @@ export default function toggleSwitchPointColorTest() {
       done()
     })
 
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_TOGGLE_SWITCHPOINTCOLOR_0400
+     * @tc.name       : testToggleSwitchPointColor004
+     * @tc.desc       : testing switchPointColor for toggle with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testToggleSwitchPointColor004', 0, async (done: Function) => {
+      expect(nativeFunc.testToggleSwitchPointColor004()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_TOGGLE_SWITCHPOINTCOLOR_0500
+     * @tc.name       : testToggleSwitchPointColor005
+     * @tc.desc       : testing switchPointColor for toggle with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testToggleSwitchPointColor005', 0, async (done: Function) => {
+      expect(nativeFunc.testToggleSwitchPointColor005()).assertEqual(0)
+      done()
+    })
   })
 }

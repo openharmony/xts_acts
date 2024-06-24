@@ -47,4 +47,18 @@ static napi_value TestStackPosition002(napi_env env, napi_callback_info info)
     NAPI_END;
 }
 
+static napi_value TestStackPosition003(napi_env env, napi_callback_info info)
+{
+    NAPI_START(stack, ARKUI_NODE_STACK);
+    float positionX = PARAM_0;
+    float positionY = PARAM_0;
+
+    ArkUI_NumberValue value[] = {{.f32 = positionX}, {.f32 = positionY}};
+    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(stack, NODE_POSITION, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_POSITION)->value[PARAM_0].f32, positionX);
+    ASSERT_EQ(nodeAPI->getAttribute(stack, NODE_POSITION)->value[PARAM_1].f32, positionY);
+    NAPI_END;
+}
 } // namespace ArkUICapiTest

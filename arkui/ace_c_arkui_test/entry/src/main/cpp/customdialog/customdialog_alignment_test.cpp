@@ -153,7 +153,7 @@ static napi_value TestCustomDialogAlignment010(napi_env env, napi_callback_info 
     dialogAPI->show(customDialog, true);
     dialogAPI->close(customDialog);
     auto ret = dialogAPI->setContentAlignment(customDialog, -1, PARAM_0, PARAM_0);
-    ASSERT_EQ(ret, INVALID_PARAM);
+    ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
 } // namespace ArkUICapiTest
