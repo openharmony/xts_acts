@@ -1488,7 +1488,7 @@ export default function CalendarManagerTest() {
           done();
         })
 
-        let saveButton = await drive.findComponent(ON.id('component_id_edit_save_button'));
+        let saveButton = await drive.findComponent(uitest.ON.id('component_id_edit_save_button'));
         if (saveButton) {
           saveButton.click();
           sleep(2000);
