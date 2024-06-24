@@ -1,0 +1,8 @@
+{
+    "src": [
+        "MainAbility/pages/Index",
+        "MainAbility/pages/webViewSdkTestFrameUrl",
+        "MainAbility/pages/webViewWebResourceTypeProps2"
+    ]
+}
+

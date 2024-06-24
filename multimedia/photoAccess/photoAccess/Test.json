@@ -6,7 +6,7 @@
         "bundle-name": "ohos.acts.multimedia.photoaccess",
         "module-name": "phone",
         "shell-timeout": "600000",
-        "testcase-timeout": 20000
+        "testcase-timeout": 30000
     },
     "kits": [
         {

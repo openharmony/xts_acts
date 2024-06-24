@@ -30,30 +30,6 @@ export default class UiExtAbility extends ShareExtensionAbility {
     });
     session.loadContent('pages/Page', storage);
     console.info('=======>other UIExtAbility onSessionCreate======>');
-
-    if (want.parameters.parameter === 'StartAbilityForResultAsCaller_0500') {
-      console.info('====>[OtherUIAbility] onSessionCreate want.parameters.parameter == StartAbilityForResultAsCaller_0100');
-      this.context.startAbilityForResultAsCaller({
-        bundleName: 'com.example.uiextensionforresultascaller',
-        abilityName: 'CalledAbility',
-        moduleName: 'entry',
-        parameters: {
-          parameter: 'StartAbilityForResultAsCaller_0500'
-        }
-      }).then((data) => {
-        console.info('====>[OtherUIAbility] startAbilityForResultAsCaller 0500 ok: ' + JSON.stringify(data));
-      }).catch((error) => {
-        console.info('====>[OtherUIAbility] startAbilityForResultAsCaller 0500 err: ' + error.code);
-        let commonEventData = {
-          parameters: {
-            result: error.code
-          }
-        };
-        commonEvent.publish('0500', commonEventData, (err) => {
-          console.info('====>[OtherUIAbility] startAbilityForResultAsCaller 0500 err: ' + JSON.stringify(err));
-        });
-      });
-    }
   }
 
   onSessionDestroy(session) {

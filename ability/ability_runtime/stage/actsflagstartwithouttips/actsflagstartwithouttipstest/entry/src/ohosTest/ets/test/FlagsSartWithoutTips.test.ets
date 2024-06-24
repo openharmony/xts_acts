@@ -77,7 +77,7 @@ export default function flagstartwithouttipstest() {
         hilog.info(0x0000, TAG, '%{public}s startAbility error', JSON.stringify(error));
       }
       // Wait for the popup to open
-      await sleep(10000);
+      await sleep(5000);
       try {
         await driver.findComponent(ON.text('知道了')).then(async (data) => {
           hilog.info(0x0000, TAG, ' %{public}s', 'findComponent success');
@@ -120,7 +120,7 @@ export default function flagstartwithouttipstest() {
       }
 
       if (deviceType === '2in1') {
-        await sleep(10000);
+        await sleep(5000);
         let popupCorrect = false;
         let getCloseBtn = false;
         try {
@@ -171,7 +171,7 @@ export default function flagstartwithouttipstest() {
         hilog.info(0x0000, TAG, '%{public}s startAbility error', JSON.stringify(error));
       }
       // Wait for the popup to open
-      await sleep(10000);
+      await sleep(5000);
       try {
         try {
           await driver.assertComponentExist(ON.text('使用以下方式打开')).then((data) => {
@@ -229,7 +229,7 @@ export default function flagstartwithouttipstest() {
         hilog.info(0x0000, TAG, '%{public}s startAbility error', JSON.stringify(error));
       }
       // Wait for the popup to open
-      await sleep(10000);
+      await sleep(5000);
       try {
         try {
           await driver.assertComponentExist(ON.text('使用以下方式打开')).then((data) => {

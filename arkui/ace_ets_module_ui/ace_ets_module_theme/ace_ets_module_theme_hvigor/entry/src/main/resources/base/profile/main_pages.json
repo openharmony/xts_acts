@@ -10,6 +10,13 @@
           "MainAbility/pages/components/CheckboxPage",
           "MainAbility/pages/components/CounterPage",
           "MainAbility/pages/components/DatePickerPage",
-          "MainAbility/pages/components/DividerPage"
+          "MainAbility/pages/components/DividerPage",
+          "MainAbility/pages/components/IfPage",
+          "MainAbility/pages/components/ForEachPage",
+          "MainAbility/pages/components/LazyForEachPage",
+          "MainAbility/pages/components/LoadingProgressPage",
+          "MainAbility/pages/components/MenuPage",
+          "MainAbility/pages/components/PatternLockPage",
+          "MainAbility/pages/components/QRCodePage"
     ]
 }

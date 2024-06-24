@@ -30,6 +30,7 @@ group("communication") {
       "dsoftbus/capi_ipc:ActsCAPIIPCTest",
       "dsoftbus/rpc:ActsRpcJsTest",
       "dsoftbus/rpc_request:ActsRpcRequestJsTest",
+      "netstack_http_nop:ActsHttpNopStageTest",
       "netstack_websocket:ActsWebSocketNdkTest",
       "nfc_Controller:ActsNFCJSTest",
       "nfc_ErrorCode:ActsNFCErrorJSTest",
