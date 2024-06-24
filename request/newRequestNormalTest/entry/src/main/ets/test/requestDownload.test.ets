@@ -83,6 +83,46 @@ export default function requestDownloadNormalJSUnit() {
     });
 
     /**
+     * @tc.number SUB_Misc_Request_DownloadManagement_Callback_0001
+     * @tc.name SUB_Misc_Request_DownloadManagement_Callback_0001
+     * @tc.desc Get mimetype of the download task
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Misc_Request_DownloadManagement_Callback_0001', 0, async function (done) {
+      console.info("====>---------------------SUB_Misc_Request_DownloadManagement_Callback_0001 is starting---------------------");
+      let downloadFileConfig = {
+        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        header: {
+          headers: 'http'
+        },
+        enableMetered: false,
+        enableRoaming: false,
+        description: 'XTS download test!',
+        filePath: "downloadFilePath1",
+        title: 'XTS download test!',
+      }
+      try {
+        request.downloadFile(globalThis.abilityContext, downloadFileConfig, (err, downloadTask) => {
+          if (err) {
+            console.info("====>SUB_Misc_Request_DownloadManagement_Callback_0001 create err: " + JSON.stringify(err));
+            expect(err.code).assertEqual(201);
+            done();
+          } else {
+            expect().assertFail();
+            console.info("====>SUB_Misc_Request_DownloadManagement_Callback_0001 create success: " + task);
+            done();
+          }
+        });
+      } catch (err) {
+        console.info("====>SUB_Misc_Request_DownloadManagement_Callback_0001 error: " + JSON.stringify(err));
+        expect(err.code).assertEqual(201);
+        done();
+      }
+    });
+
+    /**
      * @tc.number SUB_Misc_REQUEST_Create_Promise_Download_Callback_0010
      * @tc.name SUB_Misc_REQUEST_Create_Promise_Download_Callback_0010
      * @tc.desc Starts a download session.

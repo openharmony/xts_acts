@@ -154,5 +154,104 @@ export default function requestUploadNormalJSUnit() {
       }
     });
 
+    /**
+     * @tc.number SUB_Misc_Request_UploadManagement_0001
+     * @tc.name SUB_Misc_Request_UploadManagement_0001
+     * @tc.desc Starts a download session.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Misc_Request_UploadManagement_0001', 0, async function (done) {
+      console.info("-----------------------SUB_Misc_Request_UploadManagement_0001 is starting-----------------------");
+      let attachments = [{
+        name: "uploadTest",
+        value: {
+          path: "./test.txt",
+          filename: "test.txt",
+          mimetype: "application/octet-stream"
+        }
+      }];
+
+      let config = {
+        action: request.agent.Action.UPLOAD,
+        url: 'http://192.168.217.58',
+        title: 'uploadTest',
+        description: 'Sample code for event listening',
+        mode: request.agent.Mode.FOREGROUND,
+        overwrite: true,
+        method: "POST",
+        data: attachments,
+      };
+
+      try {
+        request.uploadFile(context, config)
+          .then((uploadTask: request.UploadTask) => {
+            console.info("====>SUB_Misc_Request_UploadManagement_0001 create success: " + task);
+            expect().assertFail();
+            done();
+          })
+          .catch((err: BusinessError) => {
+            console.info("====>SUB_Misc_Request_UploadManagement_0001 create err: " + JSON.stringify(err));
+            expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
+            done();
+          })
+      } catch (err) {
+        console.info("====>SUB_Misc_Request_UploadManagement_0001 create err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Misc_Request_UploadManagement_Callback_0001
+     * @tc.name SUB_Misc_Request_UploadManagement_Callback_0001
+     * @tc.desc Starts a download session.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Misc_Request_UploadManagement_Callback_0001', 0, async function (done) {
+      console.info("-----------------------SUB_Misc_Request_UploadManagement_Callback_0001 is starting-----------------------");
+      let attachments = [{
+        name: "uploadTest",
+        value: {
+          path: "./test.txt",
+          filename: "test.txt",
+          mimetype: "application/octet-stream"
+        }
+      }];
+
+      let config = {
+        action: request.agent.Action.UPLOAD,
+        url: 'http://192.168.217.58',
+        title: 'uploadTest',
+        description: 'Sample code for event listening',
+        mode: request.agent.Mode.FOREGROUND,
+        overwrite: true,
+        method: "POST",
+        data: attachments,
+      };
+
+      try {
+        request.uploadFile(globalThis.abilityContext, config, (err, uploadTask) => {
+          if (err) {
+            console.info("====>SUB_Misc_Request_DownloadManagement_Callback_0001 create err: " + JSON.stringify(err));
+            expect(err.code).assertEqual(201);
+            done();
+          } else {
+            expect().assertFail();
+            console.info("====>SUB_Misc_Request_UploadManagement_Callback_0001 create success: " + task);
+            done();
+          }
+        });
+      } catch (err) {
+        console.info("====>SUB_Misc_Request_UploadManagement_Callback_0001 error: " + JSON.stringify(err));
+        expect(err.code).assertEqual(201);
+        done();
+      }
+    });
+
+
   })
 }
