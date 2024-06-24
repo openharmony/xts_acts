@@ -15,7 +15,7 @@
 
 #include "gtest/gtest.h"
 
-#include "DrawingNativeCanvasTest.h"
+#include "DrawingNativeCanvasCommon.h"
 #include "drawing_bitmap.h"
 #include "drawing_brush.h"
 #include "drawing_canvas.h"

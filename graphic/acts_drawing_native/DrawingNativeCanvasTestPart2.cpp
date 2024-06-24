@@ -14,7 +14,6 @@
  */
 
 #include "DrawingNativeCanvasCommon.h"
-#include "DrawingNativeCanvasTest.h"
 #include "drawing_bitmap.h"
 #include "drawing_brush.h"
 #include "drawing_canvas.h"

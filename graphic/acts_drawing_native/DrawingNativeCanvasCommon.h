@@ -15,9 +15,19 @@
 #ifndef DRAWING_NATIVE_CANVAS_COMMON_H
 #define DRAWING_NATIVE_CANVAS_COMMON_H
 
+#include "gtest/gtest.h"
 #include "image/pixelmap_native.h"
 
-OH_PixelmapNative *GET_OH_PixelmapNative()
+namespace OHOS {
+namespace Rosen {
+namespace Drawing {
+class DrawingNativeCanvasTest : public testing::Test {};
+
+} // namespace Drawing
+} // namespace Rosen
+} // namespace OHOS
+
+inline OH_PixelmapNative *GET_OH_PixelmapNative()
 {
     OH_Pixelmap_InitializationOptions *options = nullptr;
     OH_PixelmapNative *pixelMap = nullptr;

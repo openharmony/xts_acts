@@ -12,8 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef DRAWING_NATIVE_PATH_TEST_H
-#define DRAWING_NATIVE_PATH_TEST_H
+#ifndef DRAWING_NATIVE_PATH_COMMON_H
+#define DRAWING_NATIVE_PATH_COMMON_H
 
 #include "gtest/gtest.h"
 
@@ -26,4 +26,4 @@ class DrawingNativePathTest : public testing::Test {};
 } // namespace Rosen
 } // namespace OHOS
 
-#endif // DRAWING_NATIVE_PATH_TEST_H
+#endif // DRAWING_NATIVE_PATH_COMMON_H
