@@ -54,6 +54,7 @@ import commonEventTest1 from './FrameNodeTest/commonEventTest1.test';
 import CornerTest from './GraphicsTest/GraphicsApiTest/CornerTest.test';
 import LengthMetricsUnitTest from './GraphicsTest/GraphicsApiTest/LengthMetricsUnitTest.test';
 import PercentReferenceTest from './GraphicsTest/GraphicsApiTest/PercentReferenceTest.test';
+import RELOAD from './FrameNodeTest/RELOAD.test';
 
 export default function testsuite() {
   borderRadiuses();
@@ -95,4 +96,5 @@ export default function testsuite() {
   PercentReferenceTest();
   setCircleShapeTest();
   graphicGetInterfaceTest();
+  RELOAD()
 }

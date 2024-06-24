@@ -103,6 +103,7 @@
     "MainAbility/pages/RichEditor/RichEditorApi7",
     "MainAbility/pages/TextArea/TextAreaApi4",
     "MainAbility/pages/TextArea/TextAreaAPI/TextArea",
-    "MainAbility/pages/Marquee/MarqueeMirroring"
+    "MainAbility/pages/Marquee/MarqueeMirroring",
+    "MainAbility/pages/SymbolGlyph/symbolEffect"
   ]
 }
