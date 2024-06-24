@@ -88,7 +88,11 @@ import TextTimerApiTest from './TextTimerTest/TextTimerApiTest/TextTimerApiTest.
 import AttributeUpdaterTest from './TextTest/TextAPITest/AttributeUpdaterTest.test'
 import UnitTest from './TextTest/TextAPITest/Unit.test'
 import APIClipMaskShape from './ImageTest/APIClipMaskShape.test'
-import TextInputAddApi from './TextInput/TextInputAddApi.test'.
+import TextInputAddApi from './TextInput/TextInputAddApi.test'
+import TextInputEvent from './TextInput/TextInputEvent.test'
+import TextInputEvent2 from './TextInput/TextInputEvent2.test'
+import SearchEvent from './Search/SearchEvent.test'
+import SearchEvent2 from './Search/SearchEvent2.test'
 
 import EffectFillStyle from './SymbolGlyphTest/EffectFillStyle.test'
 import EffectScope from './SymbolGlyphTest/EffectScope.test'
@@ -110,6 +114,10 @@ export default function testsuite() {
   APIContentTypeTest();
   APIUnderlineColorTest();
   TextInputAddApi();
+  TextInputEvent()
+  TextInputEvent2()
+  SearchEvent()
+  SearchEvent2()
   onSelectionChange1();
   onSelectionChange2();
   onSelectionChange3();
