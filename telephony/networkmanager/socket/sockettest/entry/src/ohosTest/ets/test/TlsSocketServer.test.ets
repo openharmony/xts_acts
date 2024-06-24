@@ -164,6 +164,7 @@ export default function TLSSocketServerTest() {
             expectFail(false);
           }
           expectFail(true);
+          done();
         });
         tlsServer.off('connect');
         done();
@@ -1361,6 +1362,7 @@ export default function TLSSocketServerTest() {
             done();
           }
           expect(true).assertTrue();
+          done();
         })
         try {
           await tlsServer.getState().then((data: socket.SocketStateBase) => {
@@ -1675,6 +1677,7 @@ export default function TLSSocketServerTest() {
         })
       } catch (err) {
         expectFail(false);
+        done();
       }
       console.info(`${caseName} test end `);
     })
@@ -1828,7 +1831,6 @@ export default function TLSSocketServerTest() {
         tlsServer.off('connect');
         tlsServer.getCertificate().then((data: socket.X509CertRawData) => {
           expectFail(true);
-
           done();
         }).catch((err: BusinessError) => {
           expectFail(false);
@@ -1940,8 +1942,8 @@ export default function TLSSocketServerTest() {
             expectFail(false);
           } else {
             expectFail(true);
-            done();
           }
+          done();
         });
       } catch (err) {
         expectFail(false);
@@ -1992,8 +1994,8 @@ export default function TLSSocketServerTest() {
             expectFail(false);
           } else {
             expectFail(true);
-            done();
           }
+          done();
         });
       } catch (err) {
         expectFail(false);
@@ -2044,8 +2046,8 @@ export default function TLSSocketServerTest() {
             expectFail(false);
           } else {
             expectFail(true);
-            done();
           }
+          done();
         });
       } catch (err) {
         expectFail(false);
@@ -2066,8 +2068,6 @@ export default function TLSSocketServerTest() {
       let caseName: string = 'testNetworkMgrSocketTLSSocketServerOn0100';
       console.info(`${caseName} test start `);
       try {
-        tlsClient.bind(addr);
-        tlsClient.connect(connOpt);
         await tlsClient.bind(addr);
         await tlsClient.connect(connOpt);
         try {
@@ -2079,6 +2079,7 @@ export default function TLSSocketServerTest() {
               done();
             }
             expectFail(true);
+            tlsClient.close();
             done();
           });
         } catch (err) {
@@ -2132,7 +2133,7 @@ export default function TLSSocketServerTest() {
             expectFail(true);
             done();
           })
-        })
+        });
       } catch (err) {
         expectFail(false);
         done();
@@ -2159,6 +2160,7 @@ export default function TLSSocketServerTest() {
         };
         tlsClient.bind(addr2);
         let callback: Callback<socket.TLSSocketConnection> = (data: socket.TLSSocketConnection) => {
+          tlsClient.close();
           expectFail(false);
           done();
         };
@@ -2194,6 +2196,7 @@ export default function TLSSocketServerTest() {
         tlsClient.bind(addr2);
         let callback: Callback<socket.TLSSocketConnection> = (data: socket.TLSSocketConnection) => {
           expectFail(false);
+          tlsClient.close();
           done();
         };
         tlsServer.on('connect', callback);
@@ -2228,6 +2231,7 @@ export default function TLSSocketServerTest() {
         tlsClient.bind(addr3);
         let callback: Callback<socket.TLSSocketConnection> = (data: socket.TLSSocketConnection) => {
           expectFail(false);
+          tlsClient.close();
           done();
         };
         tlsServer.on('connect', callback);
@@ -2267,6 +2271,8 @@ export default function TLSSocketServerTest() {
           done();
         } catch (err) {
           expectFail(false);
+          tlsClient.close();
+          done();
         }
       } catch (err) {
         expectFail(false);
@@ -2314,6 +2320,8 @@ export default function TLSSocketServerTest() {
           done();
         } catch (err) {
           expectFail(false);
+          await tlsClient.close();
+          done();
         }
       } catch (err) {
         expectFail(false);
@@ -2360,7 +2368,9 @@ export default function TLSSocketServerTest() {
           expectFail(true);
           done();
         } catch (err) {
+          tlsClient.close();
           expectFail(false);
+          done();
         }
       } catch (err) {
         expectFail(false);
@@ -2391,6 +2401,8 @@ export default function TLSSocketServerTest() {
           done();
         } catch (err) {
           expectFail(false);
+          await tlsClient.close();
+          done();
         }
       } catch (err) {
         expectFail(false);
@@ -2422,6 +2434,8 @@ export default function TLSSocketServerTest() {
           done();
         } catch (err) {
           expectFail(false);
+          await tlsClient.close();
+          done();
         }
       } catch (err) {
         expectFail(false);
@@ -2450,7 +2464,9 @@ export default function TLSSocketServerTest() {
           expectFail(true);
           done();
         } catch (err) {
+          await tlsClient.close();
           expectFail(false);
+          done();
         }
       } catch (err) {
         expectFail(false);
@@ -2458,6 +2474,5 @@ export default function TLSSocketServerTest() {
       }
       console.info(`${caseName} test end `);
     })
-
   })
 }
