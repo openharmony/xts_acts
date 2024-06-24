@@ -44,6 +44,14 @@
 	"MainAbility/pages/Graphics/GraphicsApi/LengthMetricsUnit",
 	"MainAbility/pages/Graphics/GraphicsApi/PercentReference",
         "MainAbility/pages/Graphics/setCircleShape",
-        "MainAbility/pages/FrameNode/commonEventTest1"
+        "MainAbility/pages/FrameNode/commonEventTest1",
+        "MainAbility/pages/typeNode/Blank",
+        "MainAbility/pages/typeNode/Divider",
+        "MainAbility/pages/typeNode/GridCol",
+        "MainAbility/pages/typeNode/List",
+        "MainAbility/pages/typeNode/LoadingProgress",
+        "MainAbility/pages/typeNode/Progress",
+        "MainAbility/pages/typeNode/RelativeContainer",
+        "MainAbility/pages/typeNode/Swiper"
     ]
 }
