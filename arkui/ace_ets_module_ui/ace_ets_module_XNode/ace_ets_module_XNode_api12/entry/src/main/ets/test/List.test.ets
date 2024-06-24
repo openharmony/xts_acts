@@ -55,7 +55,20 @@ import CornerTest from './GraphicsTest/GraphicsApiTest/CornerTest.test';
 import LengthMetricsUnitTest from './GraphicsTest/GraphicsApiTest/LengthMetricsUnitTest.test';
 import PercentReferenceTest from './GraphicsTest/GraphicsApiTest/PercentReferenceTest.test';
 
+import BuilderNodeApiRecycleTest from './FrameNodeTest/BuilderNodeApiRecycleTest.test';
+import BuilderNodeApiReuseTest from './FrameNodeTest/BuilderNodeApiReuseTest.test';
+import ComponentContentAPIRecycleTest from './FrameNodeTest/ComponentContentAPIRecycleTest.test';
+import ComponentContentAPIReuseTest from './FrameNodeTest/ComponentContentAPIReuseTest.test';
+import APImarkNodeGroupTest from './FrameNodeTest/APImarkNodeGroupTest.test';
+import APINodeContentTest from './FrameNodeTest/APINodeContentTest.test';
+
 export default function testsuite() {
+  BuilderNodeApiRecycleTest();
+  BuilderNodeApiReuseTest();
+  ComponentContentAPIRecycleTest();
+  ComponentContentAPIReuseTest();
+  APImarkNodeGroupTest();
+  APINodeContentTest();
   borderRadiuses();
   borderStyles();
   edgeColors();
