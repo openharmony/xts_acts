@@ -28,8 +28,8 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-export default function kvManagerCallbackTest(){
-  describe('kvManagerCallbackTest', function () {
+export default function kvManagerCallbackStageTest(){
+  describe('kvManagerCallbackStageTest', function () {
     const options = {
       createIfMissing : true,
       encrypt : false,
@@ -75,11 +75,11 @@ export default function kvManagerCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_4600
+     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreEtsApiTest_4600
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 101
      */
-    it('testKVManagerGetKVStore101', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore101', 0, async function (done) {
       console.info('testKVManagerGetKVStore101');
       try {
         await kvManager.getKVStore(TEST_STORE_ID).then((store) => {
@@ -96,11 +96,11 @@ export default function kvManagerCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_3800
+     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreEtsApiTest_3800
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 102
      */
-    it('testKVManagerGetKVStore102', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore102', 0, async function (done) {
       console.info('testKVManagerGetKVStore102');
       try {
         await kvManager.getKVStore(options, function (err, store) {
@@ -118,11 +118,11 @@ export default function kvManagerCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_3900
+     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreEtsApiTest_3900
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 103
      */
-    it('testKVManagerGetKVStore103', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore103', 0, async function (done) {
       console.info('testKVManagerGetKVStore103');
       const optionsInfo = {
         createIfMissing : true,
@@ -150,11 +150,11 @@ export default function kvManagerCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_4000
+     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreEtsApiTest_4000
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 104
      */
-    it('testKVManagerGetKVStore104', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore104', 0, async function (done) {
       console.info('testKVManagerGetKVStore104');
       const optionsInfo = {
         createIfMissing : false,
@@ -181,11 +181,11 @@ export default function kvManagerCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_4100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreEtsApiTest_4100
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 105
      */
-    it('testKVManagerGetKVStore105', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore105', 0, async function (done) {
       console.info('testKVManagerGetKVStore105');
       const optionsInfo = {
         createIfMissing : true,
@@ -211,11 +211,11 @@ export default function kvManagerCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_4200
+     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreEtsApiTest_4200
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 106
      */
-    it('testKVManagerGetKVStore106', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore106', 0, async function (done) {
       console.info('testKVManagerGetKVStore106');
       const optionsInfo = {
         createIfMissing : true,
@@ -241,11 +241,11 @@ export default function kvManagerCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_4300
+     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreEtsApiTest_4300
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 107
      */
-    it('testKVManagerGetKVStore107', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore107', 0, async function (done) {
       console.info('testKVManagerGetKVStore107');
       const optionsInfo = {
         createIfMissing : true,
@@ -271,11 +271,11 @@ export default function kvManagerCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_4400
+     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreEtsApiTest_4400
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 108
      */
-    it('testKVManagerGetKVStore108', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore108', 0, async function (done) {
       console.info('testKVManagerGetKVStore108');
       const optionsInfo = {
         createIfMissing : true,
@@ -301,11 +301,11 @@ export default function kvManagerCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_4500
+     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreEtsApiTest_4500
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 109
      */
-    it('testKVManagerGetKVStore109', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore109', 0, async function (done) {
       console.info('testKVManagerGetKVStore109');
       const optionsInfo = {
         createIfMissing : true,
@@ -331,11 +331,11 @@ export default function kvManagerCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_3700
+     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreEtsApiTest_3700
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 110
      */
-    it('testKVManagerGetKVStore110', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore110', 0, async function (done) {
       console.info('testKVManagerGetKVStore110');
       const optionsInfo = {
         createIfMissing : true,
@@ -361,11 +361,11 @@ export default function kvManagerCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_4700
+     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreEtsApiTest_4700
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 111
      */
-    it('testKVManagerGetKVStore111', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore111', 0, async function (done) {
       console.info('testKVManagerGetKVStore111');
       const optionsInfo = {
         createIfMissing : true,
@@ -391,11 +391,11 @@ export default function kvManagerCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_4800
+     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreEtsApiTest_4800
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 112
      */
-    it('testKVManagerGetKVStore112', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore112', 0, async function (done) {
       console.info('testKVManagerGetKVStore112');
       const optionsInfo = {
         createIfMissing : true,
@@ -421,11 +421,11 @@ export default function kvManagerCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_4900
+     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreEtsApiTest_4900
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 113
      */
-    it('testKVManagerGetKVStore113', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore113', 0, async function (done) {
       console.info('testKVManagerGetKVStore113');
       const optionsInfo = {
         createIfMissing : true,
@@ -454,11 +454,11 @@ export default function kvManagerCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_5000
+     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreEtsApiTest_5000
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 114
      */
-    it('testKVManagerGetKVStore114', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore114', 0, async function (done) {
       console.info('testKVManagerGetKVStore114');
       const optionsInfo = {
         createIfMissing : true,
@@ -484,11 +484,11 @@ export default function kvManagerCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_5100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreEtsApiTest_5100
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 115
      */
-    it('testKVManagerGetKVStore115', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore115', 0, async function (done) {
       console.info('testKVManagerGetKVStore115');
       const optionsInfo = {
         createIfMissing : true,
@@ -513,11 +513,11 @@ export default function kvManagerCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_5200
+     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreEtsApiTest_5200
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 116
      */
-    it('testKVManagerGetKVStore116', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore116', 0, async function (done) {
       console.info('testKVManagerGetKVStore116');
       const optionsInfo = {
         createIfMissing : true,
@@ -542,11 +542,11 @@ export default function kvManagerCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_5300
+     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreEtsApiTest_5300
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 117
      */
-    it('testKVManagerGetKVStore117', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore117', 0, async function (done) {
       console.info('testKVManagerGetKVStore117');
       const optionsInfo = {
         createIfMissing : true,
@@ -571,11 +571,11 @@ export default function kvManagerCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_5400
+     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreEtsApiTest_5400
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 118
      */
-    it('testKVManagerGetKVStore118', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore118', 0, async function (done) {
       console.info('testKVManagerGetKVStore118');
       const optionsInfo = {
         createIfMissing : true,
@@ -600,11 +600,11 @@ export default function kvManagerCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_5500
+     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreEtsApiTest_5500
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 119
      */
-    it('testKVManagerGetKVStore119', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore119', 0, async function (done) {
       console.info('testKVManagerGetKVStore119');
       const optionsInfo = {
         createIfMissing : true,
@@ -629,11 +629,11 @@ export default function kvManagerCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_6400
+     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreEtsApiTest_6400
      * @tc.name [JS-API8]KVManager.GetKVStore.
      * @tc.desc Test Js Api KVManager.GetKVStore testcase 120
      */
-    it('testKVManagerGetKVStore120', 0, async function (done) {
+    it('testEtsKVManagerGetKVStore120', 0, async function (done) {
       console.info('testKVManagerGetKVStore120');
       const optionsInfo = {
         createIfMissing : true,
@@ -658,11 +658,11 @@ export default function kvManagerCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_0500
+     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreEtsApiTest_0500
      * @tc.name [JS-API8]KVManager.CloseKVStore.
      * @tc.desc Test Js Api KVManager.CloseKVStore testcase 101
      */
-    it('testKVManagerCloseKVStore101', 0, async function (done) {
+    it('testEtsKVManagerCloseKVStore101', 0, async function (done) {
       console.info('testKVManagerCloseKVStore101');
       try {
         await kvManager.getKVStore(TEST_STORE_ID, options, async function (err, store) {
@@ -682,11 +682,11 @@ export default function kvManagerCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_0600
+     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreEtsApiTest_0600
      * @tc.name [JS-API8]KVManager.CloseKVStore.
      * @tc.desc Test Js Api KVManager.CloseKVStore testcase 102
      */
-    it('testKVManagerCloseKVStore102', 0, async function (done) {
+    it('testEtsKVManagerCloseKVStore102', 0, async function (done) {
       console.info('testKVManagerCloseKVStore102');
       try {
         await kvManager.getKVStore(TEST_STORE_ID, options, async function (err, store) {
@@ -715,11 +715,11 @@ export default function kvManagerCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_0700
+     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreEtsApiTest_0700
      * @tc.name [JS-API8]KVManager.CloseKVStore.
      * @tc.desc Test Js Api KVManager.CloseKVStore testcase 103
      */
-    it('testKVManagerCloseKVStore103', 0, async function (done) {
+    it('testEtsKVManagerCloseKVStore103', 0, async function (done) {
       console.info('testKVManagerCloseKVStore103');
       try {
         await kvManager.getKVStore(TEST_STORE_ID, options, async function (err, store) {
@@ -744,11 +744,11 @@ export default function kvManagerCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_0800
+     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreEtsApiTest_0800
      * @tc.name [JS-API8]KVManager.CloseKVStore.
      * @tc.desc Test Js Api KVManager.CloseKVStore testcase 104
      */
-    it('testKVManagerCloseKVStore104', 0, async function (done) {
+    it('testEtsKVManagerCloseKVStore104', 0, async function (done) {
       console.info('testKVManagerCloseKVStore104');
       try {
         await kvManager.getKVStore(TEST_STORE_ID, options, async function (err, store) {
@@ -769,11 +769,11 @@ export default function kvManagerCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_1100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreEtsApiTest_1100
      * @tc.name [JS-API8]KVManager.DeleteKVStore.
      * @tc.desc Test Js Api KVManager.DeleteKVStore testcase 101
      */
-    it('testKVManagerDeleteKVStore101', 0, async function (done) {
+    it('testEtsKVManagerDeleteKVStore101', 0, async function (done) {
       console.info('testKVManagerDeleteKVStore101');
       try {
         await kvManager.getKVStore(TEST_STORE_ID, options, async function (err, store) {
@@ -793,11 +793,11 @@ export default function kvManagerCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_1200
+     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreEtsApiTest_1200
      * @tc.name [JS-API8]KVManager.DeleteKVStore.
      * @tc.desc Test Js Api KVManager.DeleteKVStore testcase 102
      */
-    it('testKVManagerDeleteKVStore102', 0, async function (done) {
+    it('testEtsKVManagerDeleteKVStore102', 0, async function (done) {
       console.info('testKVManagerDeleteKVStore102');
       try {
         await kvManager.getKVStore(TEST_STORE_ID, options, async function (err, store) {
@@ -826,11 +826,11 @@ export default function kvManagerCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_1300
+     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreEtsApiTest_1300
      * @tc.name [JS-API8]KVManager.DeleteKVStore.
      * @tc.desc Test Js Api KVManager.DeleteKVStore testcase 103
      */
-    it('testKVManagerDeleteKVStore103', 0, async function (done) {
+    it('testEtsKVManagerDeleteKVStore103', 0, async function (done) {
       console.info('testKVManagerDeleteKVStore103');
       try {
         await kvManager.deleteKVStore(TEST_BUNDLE_NAME, TEST_STORE_ID, function (err, data) {
@@ -849,11 +849,11 @@ export default function kvManagerCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_1600
+     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreEtsApiTest_1600
      * @tc.name [JS-API8]KVManager.GetAllKVStoreId.
      * @tc.desc Test Js Api KVManager.GetAllKVStoreId testcase 101
      */
-    it('testKVManagerGetAllKVStoreId101', 0, async function (done) {
+    it('testEtsKVManagerGetAllKVStoreId101', 0, async function (done) {
       console.info('testKVManagerGetAllKVStoreId101');
       try {
         await kvManager.getAllKVStoreId(TEST_BUNDLE_NAME, function (err, data: string[]) {
@@ -870,11 +870,11 @@ export default function kvManagerCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_1700
+     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreEtsApiTest_1700
      * @tc.name [JS-API8]KVManager.GetAllKVStoreId.
      * @tc.desc Test Js Api KVManager.GetAllKVStoreId testcase 102
      */
-    it('testKVManagerGetAllKVStoreId102', 0, async function (done) {
+    it('testEtsKVManagerGetAllKVStoreId102', 0, async function (done) {
       console.info('testKVManagerGetAllKVStoreId102');
       try {
         await kvManager.getKVStore(TEST_STORE_ID, options, async function (err, store) {
@@ -903,11 +903,11 @@ export default function kvManagerCallbackTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreJsApiTest_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KVStoreEtsApiTest_0100
      * @tc.name [JS-API8]KVStore.Put
      * @tc.desc Test Js Api KVManager.Put testcase 100
      */
-    it('testKVStorePut100', 0, async function (done) {
+    it('testEtsKVStorePut100', 0, async function (done) {
       console.info('testKVStorePut100');
       try {
         await kvManager.getKVStore(TEST_STORE_ID, options, async function (err, store) {
