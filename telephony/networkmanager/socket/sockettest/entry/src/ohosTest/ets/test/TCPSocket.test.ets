@@ -7210,36 +7210,41 @@ export default function TCPSocketTest() {
      */
     it('testNetworkMgrSocketTCPSocketOnMessage0100', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketTCPSocketOnMessage0100';
-      try {
+       try {
         console.info(`${caseName} test start`);
         let tcp: socket.TCPSocket = socket.constructTCPSocketInstance();
         expect(tcp).assertInstanceOf('Object');
-        let bindAddress: socket.NetAddress = {
+        let tcpServer: socket.TCPSocketServer = socket.constructTCPSocketServerInstance();
+        expect(tcpServer).assertInstanceOf('Object');
+        let listenAddress: socket.NetAddress = {
           address: '127.0.0.1',
           port: 4092
         };
-        await tcp.bind(bindAddress);
+        await tcpServer.listen(listenAddress);
         let tcpConnectOptions: socket.TCPConnectOptions = {
-          address: bindAddress,
+          address: listenAddress,
         };
-        await tcp.connect(tcpConnectOptions);
-        let tcpSendOptions: socket.TCPSendOptions = {
-          data: 'Hello, client!',
+        let clientSendOptions: socket.TCPSendOptions = {
+          data: 'Hello, server!',
           encoding: 'UTF-8'
         };
+        tcpServer.on('connect', async (client: socket.TCPSocketConnection) => {
+          await client.send(clientSendOptions);
+        });
+        await tcp.connect(tcpConnectOptions);
         class SocketInfo {
           message: ArrayBuffer = new ArrayBuffer(1);
           remoteInfo: socket.SocketRemoteInfo = {} as socket.SocketRemoteInfo;
         };
         const callback: Callback<socket.SocketMessageInfo> = async (value: SocketInfo) => {
           console.info(`${caseName} value:${ArrayBufferToString(value.message)}`);
-          expectTrue(ArrayBufferToString(value.message) === 'Hello, client!');
+          expectTrue(ArrayBufferToString(value.message) === 'Hello, server!');
+          tcpServer.off('connect');
           await tcp.close();
           console.info(`${caseName} test end`);
           done();
         };
         tcp.on('message', callback);
-        await tcp.send(tcpSendOptions);
       } catch (err) {
         console.info(`${caseName}_catch fail err:${JSON.stringify(err)}`);
         expectFail();
