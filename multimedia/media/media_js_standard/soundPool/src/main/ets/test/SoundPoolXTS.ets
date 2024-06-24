@@ -32,12 +32,15 @@ export default function soundPoolTest() {
     let uri1: string = "";
     let uri2: string = "";
     let uri3: string = "";
+    let uri4: string = "";
     let fd1 = -1;
     let fd2 = -1;
     let fd3 = -1;
+    let fd4 = -1;
     let length1 = -1;
     let length2 = -1;
     let length3 = -1;
+    let length4 = -1;
     let audioRendererInfo = {
       content: audio.ContentType.CONTENT_TYPE_SPEECH,
       usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
@@ -98,6 +101,11 @@ export default function soundPoolTest() {
             fd3 = file.fd;
             length3 = stat.size;
             break;
+          case uri4:
+            uri4 = 'fd://' + (file.fd).toString()
+            fd4 = file.fd;
+            length4 = stat.size;
+            break;
         }
       }).catch((err) => {
         console.info(`${TAG}: open file failed with error message: ${err.message}, error code: ${err.code}`);
@@ -133,8 +141,9 @@ export default function soundPoolTest() {
       await getFileUrl('/test_01.mp3', uri1);
       await getFileUrl('/test_02.mp3', uri2);
       await getFileUrl('/test_03.mp3', uri3);
-      console.info(`${TAG}: uri1 is: ${uri1}; uri2 is: ${uri2}; uri3 is: ${uri3}`);
-      console.info(`${TAG}: fd1 is: ${fd1}; fd2 is: ${fd2}; fd3 is: ${fd3}`);
+      await getFileUrl('/test_04.mp3', uri4);
+      console.info(`${TAG}: uri1 is: ${uri1}; uri2 is: ${uri2}; uri3 is: ${uri3}; uri4 is: ${uri4}`);
+      console.info(`${TAG}: fd1 is: ${fd1}; fd2 is: ${fd2}; fd3 is: ${fd3}; fd4 is: ${fd4}`);
     });
     beforeEach(async function () {
       console.info(`${TAG}: beforeEach in`);
@@ -4560,7 +4569,7 @@ export default function soundPoolTest() {
         soundId_[0] = await soundPool.load(fd1, 0, length1);
         soundId_[1] = await soundPool.load(fd2, length2 / 3, length2);
         soundId_[2] = await soundPool.load(uri3);
-        soundId_[3] = await soundPool.load(fd3, length3 / 3, length3);
+        soundId_[3] = await soundPool.load(fd4, length4 / 3, length4);
         while(loadCount != 4) {
           sleepTotalTime++;
           if(sleepTotalTime > 15){
