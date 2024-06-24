@@ -35,15 +35,6 @@ export default class EntryAbility extends UIAbility {
         console.info('====> [UIExtensionForResultAsCallerCalledAbility] [StartAbilityForResultAsCaller_0200]' +
         'terminateSelf: ' + JSON.stringify(err));
       });
-    } else if (want.parameters.parameter == 'StartAbilityForResultAsCaller_0500') {
-      AppStorage.SetOrCreate('want', {
-        bundleName: 'com.example.uiextensionforresultascallerother',
-        abilityName: 'UIExtAbility',
-        parameters: {
-          'ability.want.params.uiExtensionType': 'share',
-          parameter: 'StartAbilityForResultAsCaller_0500'
-        }
-      });
     } else if (want.parameters.parameter === 'StartAbilityForResultAsCaller_0700_2') {
       let commonEventData = {
         code: 0
