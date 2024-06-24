@@ -1528,10 +1528,6 @@ export default function CalendarManagerTest() {
       try {
         let driver = await uitest.Driver.create();
         sleep(2000);
-        console.info(`editEvent begin`);
-        let eventId = calendarMgr?.editEvent(Schedule);
-        console.info(`editEvent done id=${eventId}`);
-
         calendarMgr?.editEvent(Schedule).then((data) => {
           expect(data != -1).assertTrue();
           done();
