@@ -1266,10 +1266,10 @@ describe("VibratorJsTest_misc_3", function () {
                         console.info(TAG + ' vibrator success');
                         expect(true).assertTrue();
                     }
-                });
-                setTimeout(() => {
-                    done();
-                }, 500);            
+                    setTimeout(() => {
+                        done();
+                    }, 500);
+                });                          
             } else {
                 console.info(TAG + 'This device is not supportEffect haptic.effect.sharp');
                 expect(true).assertTrue();
@@ -1335,7 +1335,7 @@ describe("VibratorJsTest_misc_3", function () {
     /*
     * @tc.name:VibratorJsTest046
     * @tc.desc:Verification results of the incorrect parameters of the test interface.
-    * @tc.number:SUB_SensorSystem_Vibrator_JsTest_1210
+    * @tc.number:SUB_SensorSystem_Vibrator_JsTest_1220
     * @tc.level:Level 3
     * @tc.type:Function
     * @tc.size:MediumTest
