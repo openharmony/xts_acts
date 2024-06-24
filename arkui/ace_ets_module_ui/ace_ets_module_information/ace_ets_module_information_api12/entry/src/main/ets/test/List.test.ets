@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import ProgressMask from './progressTest/ProgressMask.test';
+import PatternLockActivateCircleStyle1 from './PatternLockTest/PatternLockActivateCircleStyle1.test';
 
 export default function testsuite() {
     ProgressMask()
+    PatternLockActivateCircleStyle1()
 }

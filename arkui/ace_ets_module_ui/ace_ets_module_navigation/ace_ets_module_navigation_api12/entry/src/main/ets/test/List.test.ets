@@ -89,6 +89,9 @@ import Navigation_SingleInstanceJump39 from './Navigation/Navigation_SingleInsta
 import Navigation_SingleInstanceJump40 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump40.test'
 import Navigation_SingleInstanceJump41 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump41.test'
 import Navigation_SingleInstanceJump42 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump42.test'
+
+import ignoreLayoutSafeArea from './NavDestinationTest/ignoreLayoutSafeArea.test'
+import ignoreLayoutSafeArea2 from './Navigation/ignoreLayoutSafeArea2.test'
 export default function testsuite() {
   NavigationApi1();
   NavigationApi2();
@@ -167,4 +170,6 @@ export default function testsuite() {
   Navigation_SingleInstanceJump40()
   Navigation_SingleInstanceJump41()
   Navigation_SingleInstanceJump42()
+  ignoreLayoutSafeArea();
+  ignoreLayoutSafeArea2();
 }

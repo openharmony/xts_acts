@@ -1,6 +1,7 @@
 {
     "src": [
         "MainAbility/pages/index/index",
-        "MainAbility/pages/progress/ProgressMask"
+        "MainAbility/pages/progress/ProgressMask",
+        "MainAbility/pages/PatternLock/PatternLockActivateCircleStyle1"
     ]
 }
