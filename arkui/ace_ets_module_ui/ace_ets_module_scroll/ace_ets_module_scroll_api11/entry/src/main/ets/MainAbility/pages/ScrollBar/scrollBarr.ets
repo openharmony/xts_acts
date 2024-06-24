@@ -27,7 +27,7 @@ struct ScrollBarExampler {
     console.info("scrollBar page state change called:" + JSON.stringify(eventData));
     if (eventData != null) {
       if (eventData.data?.directionValue != null) {
-        let directionObject: ESObject = JSON.parse(eventData.data?.directionObject);
+        let directionObject: Record<string, Object> = JSON.parse(eventData.data?.directionObject);
         this.directionValue = directionObject.directionValue;
       }
       if (eventData.data?.stateValue != null) {
