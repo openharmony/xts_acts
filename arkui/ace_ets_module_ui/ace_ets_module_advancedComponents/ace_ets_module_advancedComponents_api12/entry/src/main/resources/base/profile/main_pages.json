@@ -1,0 +1,9 @@
+{
+  "src": [
+    "MainAbility/pages/index/Index",
+    "MainAbility/pages/composeListItem/composeListItemPageTest",
+    "MainAbility/pages/swipeRefresher/swipeRefresherPageTest",
+    "MainAbility/pages/tabTitleBar/tabTitleBarPageTest",
+    "MainAbility/pages/toolBar/toolBarPageTest"
+  ]
+}
