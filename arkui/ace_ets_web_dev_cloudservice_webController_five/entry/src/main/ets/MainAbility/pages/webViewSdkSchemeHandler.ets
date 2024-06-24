@@ -151,6 +151,13 @@ struct webViewSdkSchemeHandler {
                       }
                       break;
                     }
+                    case 'emitWebViewSdkSchemeHandler_constructor': {
+                      await Utils.sleep(2000)
+                      if(this.requests.length>0){
+                        Utils.emitEvent(true,1513)
+                      }
+                      break;
+                    }
                   }
               })
           }
@@ -167,6 +174,7 @@ struct webViewSdkSchemeHandler {
                   (request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
                     console.log('[schemeHandler] onRequestStart')
                     Utils.emitEvent(true, 1533)
+                    Utils.emitEvent(true, 1513)
                     this.requests.push(request)
                     if(request.getRequestUrl().toLowerCase().indexOf('custom') > -1){
                       if(this.httpBodyStream == null || this.httpBodyStream == undefined) {
