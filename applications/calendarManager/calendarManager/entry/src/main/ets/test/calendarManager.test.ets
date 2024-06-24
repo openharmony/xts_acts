@@ -1478,7 +1478,7 @@ export default function CalendarManagerTest() {
       }
 
       try {
-        let drive: Driver = Driver.create();
+        let driver = await uitest.Driver.create();
         sleep(2000);
         console.info(`editEvent begin`);
         let eventId = calendarMgr?.editEvent(Schedule);
