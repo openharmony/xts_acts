@@ -50,7 +50,7 @@ struct Tabs3Example {
             console.info("tabContent1 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("tabContent1 emit action state err: " + JSON.stringify(err.message))
+            console.info("tabContent1 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
 

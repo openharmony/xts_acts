@@ -79,7 +79,7 @@ struct AlphabetIndexerOnSelect {
             console.info("onSelect start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("onSelect emit action state err: " + JSON.stringify(err.message))
+            console.info("onSelect emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
         .onPopupSelect((index: number) => {
@@ -103,7 +103,7 @@ struct AlphabetIndexerOnSelect {
             console.info("onRequestPopupData start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("onRequestPopupData emit action state err: " + JSON.stringify(err.message))
+            console.info("onRequestPopupData emit action state err: " + JSON.stringify((err as Error)?.message))
           }
           return ['1', '2', '3', '4', '5']
 

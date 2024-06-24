@@ -121,13 +121,13 @@ struct ListIdle {
               console.info("Scroll start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("Scroll emit action state err: " + JSON.stringify(err.message))
+              console.info("Scroll emit action state err: " + JSON.stringify((err as Error)?.message))
             }
             try {
               this.scroller.scrollPage({ next: true })
               this.onScroll = true
             } catch (err) {
-              console.info("Scroll emit action state err: " + JSON.stringify(err.message))
+              console.info("Scroll emit action state err: " + JSON.stringify((err as Error)?.message))
             }
           })
         }

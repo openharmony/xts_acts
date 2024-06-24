@@ -42,7 +42,7 @@ struct FormComponentPage {
         .onRouter(() => {
           console.log('onRouter : ')
         })
-        .onError((error) => {
+        .onError((error: ESObject) => {
           console.log('error code :' + error.errcode);
           console.log('error msg :' + error.msg);
         })

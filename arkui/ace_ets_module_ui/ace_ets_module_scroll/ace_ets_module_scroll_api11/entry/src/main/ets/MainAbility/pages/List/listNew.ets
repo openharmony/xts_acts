@@ -140,7 +140,7 @@ struct ListLanes {
               console.info("onScrollBegin onClick start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("onScrollBegin onClick emit action state err: " + JSON.stringify(err.message))
+              console.info("onScrollBegin onClick emit action state err: " + JSON.stringify((err as Error)?.message))
             }
           })
         }
