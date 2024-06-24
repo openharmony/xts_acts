@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 
+#include "DrawingNativeMatrixCommon.h"
 #include "drawing_error_code.h"
 #include "drawing_matrix.h"
 #include "drawing_rect.h"
@@ -27,7 +28,6 @@ using namespace testing::ext;
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class DrawingNativeMatrixTest : public testing::Test {};
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_0100
@@ -94,7 +94,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateDestroyMultipleCalls, TestSize
  * @tc.level : Level 0
  */
 HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateRotationNormal, TestSize.Level0) {
-    // 1. OH_Drawing_MatrixCreateRotation, rotate angles deg traverse 0 degrees, 180 degrees, 360 degrees, -90 degrees, -180 degrees, -360 degrees, 45.5 degrees, x\y cover decimals and integers
+    // 1. OH_Drawing_MatrixCreateRotation, rotate angles deg traverse 0 degrees, 180 degrees, 360 degrees, -90 degrees,
+    // -180 degrees, -360 degrees, 45.5 degrees, x\y cover decimals and integers
     float degs[] = {0, 180, 360, -90, -180, -360, 45.5};
     float x[] = {0, 10, 10.0f, 20, 20.0f, 30, 30.0f};
     float y[] = {0, 10, 10.0f, 20, 20.0f, 30, 30.0f};
@@ -294,12 +295,14 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixMatrixSetGetMatrixNormal, TestSize.L
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
     EXPECT_NE(matrix, nullptr);
-    // 2. OH_Drawing_MatrixSetMatrix with integer parameters, calling OH_Drawing_MatrixGetAll and OH_Drawing_MatrixGetValue interfaces
+    // 2. OH_Drawing_MatrixSetMatrix with integer parameters, calling OH_Drawing_MatrixGetAll and
+    // OH_Drawing_MatrixGetValue interfaces
     OH_Drawing_MatrixSetMatrix(matrix, 1, 0, 0, 0, -1, 0, 0, 0, 1);
     float value[9];
     OH_Drawing_ErrorCode code = OH_Drawing_MatrixGetAll(matrix, value);
     EXPECT_EQ(code, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
-    // 3. OH_Drawing_MatrixSetMatrix with floating-point parameters, calling OH_Drawing_MatrixGetAll and OH_Drawing_MatrixGetValue interfaces
+    // 3. OH_Drawing_MatrixSetMatrix with floating-point parameters, calling OH_Drawing_MatrixGetAll and
+    // OH_Drawing_MatrixGetValue interfaces
     OH_Drawing_MatrixSetMatrix(matrix, 1.1, 0, 0, 0, -1.1, 0, 0, 0, 1.1);
     OH_Drawing_ErrorCode code2 = OH_Drawing_MatrixGetAll(matrix, value);
     EXPECT_EQ(code2, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
@@ -336,7 +339,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixMatrixSetGetMatrixNull, TestSize.Lev
     float value[9];
     OH_Drawing_ErrorCode code = OH_Drawing_MatrixGetAll(nullptr, value);
     EXPECT_EQ(code, OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-    // 5. OH_Drawing_MatrixGetAll with the second parameter as an empty array, check the error code with OH_Drawing_ErrorCodeGet
+    // 5. OH_Drawing_MatrixGetAll with the second parameter as an empty array, check the error code with
+    // OH_Drawing_ErrorCodeGet
     float value2[0];
     OH_Drawing_ErrorCode code2 = OH_Drawing_MatrixGetAll(matrix, value2);
     EXPECT_EQ(code2, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
@@ -426,7 +430,8 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixMatrixSetGetMatrixMaximum, TestSize.
 HWTEST_F(DrawingNativeMatrixTest, testMatrixMatrixSetGetMatrixMultipleCalls, TestSize.Level3) {
     // 1. OH_Drawing_MatrixCreate
     OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
-    // 2. OH_Drawing_MatrixSetMatrix with random parameters, calling the interface 10 times, corresponding to calling OH_Drawing_MatrixGetAll and OH_Drawing_MatrixGetValue interfaces
+    // 2. OH_Drawing_MatrixSetMatrix with random parameters, calling the interface 10 times, corresponding to calling
+    // OH_Drawing_MatrixGetAll and OH_Drawing_MatrixGetValue interfaces
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_real_distribution<float> dis(0.0, 100.0);
@@ -561,6 +566,1014 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixTranslateMultipleCalls, TestSize.Lev
         float dx = dis(gen);
         float dy = dis(gen);
         OH_Drawing_MatrixTranslate(matrix, dx, dy);
+    }
+    // 3. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_0600
+ * @tc.name: testMatrixRotateNormal
+ * @tc.desc: test for testMatrixRotateNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixRotateNormal, TestSize.Level0) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    EXPECT_NE(matrix, nullptr);
+    // 2. OH_Drawing_MatrixRotate, rotate angles include 0 degrees, 180 degrees, 360 degrees, -90 degrees, -180 degrees,
+    // -360 degrees, and 45.5 degrees, px and py cover both decimals and integers
+    OH_Drawing_MatrixRotate(matrix, 0, 0, 0);
+    OH_Drawing_MatrixRotate(matrix, 180, 10, 10);
+    OH_Drawing_MatrixRotate(matrix, 360, 10.0f, 10.0f);
+    OH_Drawing_MatrixRotate(matrix, -90, 20, 20);
+    OH_Drawing_MatrixRotate(matrix, -180, 20.0f, 20.0f);
+    OH_Drawing_MatrixRotate(matrix, -360, 30, 30);
+    OH_Drawing_MatrixRotate(matrix, 45.5, 30.0f, 30.0f);
+    // 3. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_0601
+ * @tc.name: testMatrixRotateNull
+ * @tc.desc: test for testMatrixRotateNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixRotateNull, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    EXPECT_NE(matrix, nullptr);
+    // 2. OH_Drawing_MatrixRotate with the first parameter as null, check the error code with OH_Drawing_ErrorCodeGet
+    OH_Drawing_MatrixRotate(nullptr, 180, 10, 10);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 3. OH_Drawing_MatrixRotate with the second parameter as null
+    OH_Drawing_MatrixRotate(matrix, 0, 10, 10);
+    // 4. OH_Drawing_MatrixRotate with the third parameter as null
+    OH_Drawing_MatrixRotate(matrix, 180, 0, 10);
+    // 5. OH_Drawing_MatrixRotate with the fourth parameter as null
+    OH_Drawing_MatrixRotate(matrix, 180, 10, 0);
+    // 6. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_0602
+ * @tc.name: testMatrixRotateAbnormal
+ * @tc.desc: test for testMatrixRotateAbnormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixRotateAbnormal, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixRotate with the third parameter as a negative number
+    OH_Drawing_MatrixRotate(matrix, 180, -10, 10);
+    // 3. OH_Drawing_MatrixRotate with the fourth parameter as a negative number
+    OH_Drawing_MatrixRotate(matrix, 180, 10, -10);
+    // 4. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_0603
+ * @tc.name: testMatrixRotateMaximum
+ * @tc.desc: test for testMatrixRotateMaximum.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixRotateMaximum, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixRotate with the second parameter as the maximum value
+    OH_Drawing_MatrixRotate(matrix, FLT_MAX, 10.0f, 10.0f);
+    // 3. OH_Drawing_MatrixRotate with the third parameter as the maximum value
+    OH_Drawing_MatrixRotate(matrix, 180, FLT_MAX, 10.0f);
+    // 4. OH_Drawing_MatrixRotate with the fourth parameter as the maximum value
+    OH_Drawing_MatrixRotate(matrix, 180, 10.0f, FLT_MAX);
+    // 5. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_0604
+ * @tc.name: testMatrixRotateMultipleCalls
+ * @tc.desc: test for testMatrixRotateMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixRotateMultipleCalls, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixRotate, passing in random numbers for degree, px, and py
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_real_distribution<float> dis(0.0, 100.0);
+    for (int i = 0; i < 10; i++) {
+        float degree = dis(gen);
+        float px = dis(gen);
+        float py = dis(gen);
+        OH_Drawing_MatrixRotate(matrix, degree, px, py);
+    }
+    // 3. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_0700
+ * @tc.name: testMatrixCreateScaleNormal
+ * @tc.desc: test for testMatrixCreateScaleNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateScaleNormal, TestSize.Level0) {
+    // 1. OH_Drawing_MatrixCreateScale, passing in decimals
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateScale(10.0f, 10.0f, 10.0f, 10.0f);
+    EXPECT_NE(matrix, nullptr);
+    // 2. OH_Drawing_MatrixCreateScale, passing in integers
+    OH_Drawing_Matrix *matrix2 = OH_Drawing_MatrixCreateScale(20, 20, 20, 20);
+    EXPECT_NE(matrix2, nullptr);
+    // 3. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+    OH_Drawing_MatrixDestroy(matrix2);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_0701
+ * @tc.name: testMatrixCreateScaleNull
+ * @tc.desc: test for testMatrixCreateScaleNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateScaleNull, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreateScale with the first parameter as null
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateScale(0, 10.0f, 10.0f, 10.0f);
+    // 2. OH_Drawing_MatrixCreateScale with the second parameter as null
+    OH_Drawing_Matrix *matrix2 = OH_Drawing_MatrixCreateScale(10.0f, 0, 10.0f, 10.0f);
+    // 3. OH_Drawing_MatrixCreateScale with the third parameter as null
+    OH_Drawing_Matrix *matrix3 = OH_Drawing_MatrixCreateScale(10.0f, 10.0f, 0, 10.0f);
+    // 4. OH_Drawing_MatrixCreateScale with the fourth parameter as null
+    OH_Drawing_Matrix *matrix4 = OH_Drawing_MatrixCreateScale(10.0f, 10.0f, 10.0f, 0);
+    // 5. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+    OH_Drawing_MatrixDestroy(matrix2);
+    OH_Drawing_MatrixDestroy(matrix3);
+    OH_Drawing_MatrixDestroy(matrix4);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_0702
+ * @tc.name: testMatrixCreateScaleAbnormal
+ * @tc.desc: test for testMatrixCreateScaleAbnormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateScaleAbnormal, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreateScale with the first parameter as a negative number
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateScale(-10.0f, 10.0f, 10.0f, 10.0f);
+    // 2. OH_Drawing_MatrixCreateScale with the second parameter as a negative number
+    OH_Drawing_Matrix *matrix2 = OH_Drawing_MatrixCreateScale(10.0f, -10.0f, 10.0f, 10.0f);
+    // 3. OH_Drawing_MatrixCreateScale with the third parameter as a negative number
+    OH_Drawing_Matrix *matrix3 = OH_Drawing_MatrixCreateScale(10.0f, 10.0f, -10.0f, 10.0f);
+    // 4. OH_Drawing_MatrixCreateScale with the fourth parameter as a negative number
+    OH_Drawing_Matrix *matrix4 = OH_Drawing_MatrixCreateScale(10.0f, 10.0f, 10.0f, -10.0f);
+    // 5. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+    OH_Drawing_MatrixDestroy(matrix2);
+    OH_Drawing_MatrixDestroy(matrix3);
+    OH_Drawing_MatrixDestroy(matrix4);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_0703
+ * @tc.name: testMatrixCreateScaleMaximum
+ * @tc.desc: test for testMatrixCreateScaleMaximum.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateScaleMaximum, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreateScale with the first parameter as the maximum value
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateScale(FLT_MAX, 10.0f, 10.0f, 10.0f);
+    // 2. OH_Drawing_MatrixCreateScale with the second parameter as the maximum value
+    OH_Drawing_Matrix *matrix2 = OH_Drawing_MatrixCreateScale(10.0f, FLT_MAX, 10.0f, 10.0f);
+    // 3. OH_Drawing_MatrixCreateScale with the third parameter as the maximum value
+    OH_Drawing_Matrix *matrix3 = OH_Drawing_MatrixCreateScale(10.0f, 10.0f, FLT_MAX, 10.0f);
+    // 4. OH_Drawing_MatrixCreateScale with the fourth parameter as the maximum value
+    OH_Drawing_Matrix *matrix4 = OH_Drawing_MatrixCreateScale(10.0f, 10.0f, 10.0f, FLT_MAX);
+    // 5. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+    OH_Drawing_MatrixDestroy(matrix2);
+    OH_Drawing_MatrixDestroy(matrix3);
+    OH_Drawing_MatrixDestroy(matrix4);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_0704
+ * @tc.name: testMatrixCreateScaleMultipleCalls
+ * @tc.desc: test for testMatrixCreateScaleMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixCreateScaleMultipleCalls, TestSize.Level3) {
+    // 1. Call OH_Drawing_MatrixCreateScale 10 times with random numbers for sx, sy, px, and py, and ensure successful
+    // execution
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_real_distribution<float> dis(0.0, 100.0);
+    for (int i = 0; i < 10; i++) {
+        float sx = dis(gen);
+        float sy = dis(gen);
+        float px = dis(gen);
+        float py = dis(gen);
+        OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreateScale(sx, sy, px, py);
+        EXPECT_NE(matrix, nullptr);
+        OH_Drawing_MatrixDestroy(matrix);
+    }
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_0800
+ * @tc.name: testMatrixScaleNormal
+ * @tc.desc: test for testMatrixScaleNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixScaleNormal, TestSize.Level0) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixScale, passing in decimals
+    OH_Drawing_MatrixScale(matrix, 10.0f, 10.0f, 10.0f, 10.0f);
+    // 3. OH_Drawing_MatrixScale, passing in integers
+    OH_Drawing_MatrixScale(matrix, 20, 20, 20, 20);
+    // 4. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_0801
+ * @tc.name: testMatrixScaleNull
+ * @tc.desc: test for testMatrixScaleNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixScaleNull, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixScale with the first parameter as null, check the error code using OH_Drawing_ErrorCodeGet
+    OH_Drawing_MatrixScale(nullptr, 10.0f, 10.0f, 10.0f, 10.0f);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 3. OH_Drawing_MatrixScale with the second parameter as null
+    OH_Drawing_MatrixScale(matrix, 0, 10.0f, 10.0f, 10.0f);
+    // 4. OH_Drawing_MatrixScale with the third parameter as null
+    OH_Drawing_MatrixScale(matrix, 10.0f, 0, 10.0f, 10.0f);
+    // 5. OH_Drawing_MatrixScale with the fourth parameter as null
+    OH_Drawing_MatrixScale(matrix, 10.0f, 10.0f, 0, 10.0f);
+    // 6. OH_Drawing_MatrixScale with the fifth parameter as null
+    OH_Drawing_MatrixScale(matrix, 10.0f, 10.0f, 10.0f, 0);
+    // 7. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_0802
+ * @tc.name: testMatrixScaleAbnormal
+ * @tc.desc: test for testMatrixScaleAbnormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixScaleAbnormal, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixScale with the second parameter as a negative number
+    OH_Drawing_MatrixScale(matrix, -10.0f, 10.0f, 10.0f, 10.0f);
+    // 3. OH_Drawing_MatrixScale with the third parameter as a negative number
+    OH_Drawing_MatrixScale(matrix, 10.0f, -10.0f, 10.0f, 10.0f);
+    // 4. OH_Drawing_MatrixScale with the fourth parameter as a negative number
+    OH_Drawing_MatrixScale(matrix, 10.0f, 10.0f, -10.0f, 10.0f);
+    // 5. OH_Drawing_MatrixScale with the fifth parameter as a negative number
+    OH_Drawing_MatrixScale(matrix, 10.0f, 10.0f, 10.0f, -10.0f);
+    // 6. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_0803
+ * @tc.name: testMatrixScaleMaximum
+ * @tc.desc: test for testMatrixScaleMaximum.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixScaleMaximum, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixScale with the second parameter as the maximum value
+    OH_Drawing_MatrixScale(matrix, FLT_MAX, 10.0f, 10.0f, 10.0f);
+    // 3. OH_Drawing_MatrixScale with the third parameter as the maximum value
+    OH_Drawing_MatrixScale(matrix, 10.0f, FLT_MAX, 10.0f, 10.0f);
+    // 4. OH_Drawing_MatrixScale with the fourth parameter as the maximum value
+    OH_Drawing_MatrixScale(matrix, 10.0f, 10.0f, FLT_MAX, 10.0f);
+    // 5. OH_Drawing_MatrixScale with the fifth parameter as the maximum value
+    OH_Drawing_MatrixScale(matrix, 10.0f, 10.0f, 10.0f, FLT_MAX);
+    // 6. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_0804
+ * @tc.name: testMatrixScaleMultipleCalls
+ * @tc.desc: test for testMatrixScaleMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixScaleMultipleCalls, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. Call OH_Drawing_MatrixCreateScale 10 times with random numbers for sx, sy, px, and py
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_real_distribution<float> dis(0.0, 100.0);
+    for (int i = 0; i < 10; i++) {
+        float sx = dis(gen);
+        float sy = dis(gen);
+        float px = dis(gen);
+        float py = dis(gen);
+        OH_Drawing_MatrixScale(matrix, sx, sy, px, py);
+    }
+    // 3. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_0900
+ * @tc.name: testMatrixSetRectToRectNormal
+ * @tc.desc: test for testMatrixSetRectToRectNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixSetRectToRectNormal, TestSize.Level0) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. Enumerate OH_Drawing_ScaleToFit values in OH_Drawing_MatrixSetRectToRect
+    OH_Drawing_Rect *rectSrc = OH_Drawing_RectCreate(0, 0, 100, 100);
+    OH_Drawing_Rect *rectDst = OH_Drawing_RectCreate(0, 0, 200, 200);
+    OH_Drawing_ScaleToFit fitList[] = {
+        SCALE_TO_FIT_FILL,
+        SCALE_TO_FIT_START,
+        SCALE_TO_FIT_CENTER,
+        SCALE_TO_FIT_END,
+    };
+    for (OH_Drawing_ScaleToFit fit : fitList) {
+        bool isSuccess = OH_Drawing_MatrixSetRectToRect(matrix, rectSrc, rectDst, fit);
+        EXPECT_EQ(isSuccess, true);
+    }
+    // 3. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+    OH_Drawing_RectDestroy(rectSrc);
+    OH_Drawing_RectDestroy(rectDst);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_0901
+ * @tc.name: testMatrixSetRectToRectNull
+ * @tc.desc: test for testMatrixSetRectToRectNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixSetRectToRectNull, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    OH_Drawing_Rect *rectSrc = OH_Drawing_RectCreate(0, 0, 0, 0);
+    OH_Drawing_Rect *rectDst = OH_Drawing_RectCreate(0, 0, 0, 0);
+    // 2. OH_Drawing_MatrixSetRectToRect, the first parameter is null, check the error code using
+    // OH_Drawing_ErrorCodeGet
+    OH_Drawing_MatrixSetRectToRect(nullptr, rectSrc, rectDst, SCALE_TO_FIT_FILL);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 3. OH_Drawing_MatrixSetRectToRect, the second parameter is null, check the error code using
+    // OH_Drawing_ErrorCodeGet
+    OH_Drawing_MatrixSetRectToRect(matrix, nullptr, rectDst, SCALE_TO_FIT_FILL);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 4. OH_Drawing_MatrixSetRectToRect, the third parameter is null, check the error code using
+    // OH_Drawing_ErrorCodeGet
+    OH_Drawing_MatrixSetRectToRect(matrix, rectSrc, nullptr, SCALE_TO_FIT_FILL);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 5. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+    OH_Drawing_RectDestroy(rectSrc);
+    OH_Drawing_RectDestroy(rectDst);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_0902
+ * @tc.name: testMatrixSetRectToRectMultipleCalls
+ * @tc.desc: test for testMatrixSetRectToRectMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixSetRectToRectMultipleCalls, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. Call OH_Drawing_MatrixSetRectToRect 10 times with random enum values and different rect sizes
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_real_distribution<float> dis(0.0, 100.0);
+    OH_Drawing_ScaleToFit fitList[] = {
+        SCALE_TO_FIT_FILL,
+        SCALE_TO_FIT_START,
+        SCALE_TO_FIT_CENTER,
+        SCALE_TO_FIT_END,
+    };
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_Rect *rectSrc = OH_Drawing_RectCreate(dis(gen), dis(gen), dis(gen) + 100, dis(gen) + 100);
+        OH_Drawing_Rect *rectDst = OH_Drawing_RectCreate(dis(gen), dis(gen), dis(gen) + 200, dis(gen) + 200);
+        OH_Drawing_ScaleToFit fit = fitList[i % 4];
+        bool isSuccess = OH_Drawing_MatrixSetRectToRect(matrix, rectSrc, rectDst, fit);
+        EXPECT_EQ(isSuccess, true);
+        OH_Drawing_RectDestroy(rectSrc);
+        OH_Drawing_RectDestroy(rectDst);
+    }
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_1000
+ * @tc.name: testMatrixPreRotateNormal
+ * @tc.desc: test for testMatrixPreRotateNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixPreRotateNormal, TestSize.Level0) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixPreRotate, rotate angles include 0 degrees, 180 degrees, 360 degrees, -90 degrees, -180
+    // degrees, -360 degrees, and 45.5 degrees, px and py cover both decimals and integers
+    OH_Drawing_MatrixPreRotate(matrix, 0, 0, 0);
+    OH_Drawing_MatrixPreRotate(matrix, 180, 10, 10);
+    OH_Drawing_MatrixPreRotate(matrix, 360, 10.0f, 10.0f);
+    OH_Drawing_MatrixPreRotate(matrix, -90, 20, 20);
+    OH_Drawing_MatrixPreRotate(matrix, -180, 20.0f, 20.0f);
+    OH_Drawing_MatrixPreRotate(matrix, -360, 30, 30);
+    OH_Drawing_MatrixPreRotate(matrix, 45.5, 30.0f, 30.0f);
+    // 3. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_1001
+ * @tc.name: testMatrixPreRotateNull
+ * @tc.desc: test for testMatrixPreRotateNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixPreRotateNull, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixPreRotate with the first parameter as null, check the error code using
+    // OH_Drawing_ErrorCodeGet, no crash, error code returns OH_DRAWING_ERROR_INVALID_PARAMETER
+    OH_Drawing_MatrixPreRotate(nullptr, 180, 10, 10);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 3. OH_Drawing_MatrixPreRotate with the second parameter as null
+    OH_Drawing_MatrixPreRotate(matrix, 0, 10, 10);
+    // 4. OH_Drawing_MatrixPreRotate with the third parameter as null
+    OH_Drawing_MatrixPreRotate(matrix, 180, 0, 10);
+    // 5. OH_Drawing_MatrixPreRotate with the fourth parameter as null
+    OH_Drawing_MatrixPreRotate(matrix, 180, 10, 0);
+    // 6. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_1002
+ * @tc.name: testMatrixPreRotateAbnormal
+ * @tc.desc: test for testMatrixPreRotateAbnormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixPreRotateAbnormal, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixPreRotate with a negative value for the third parameter
+    OH_Drawing_MatrixPreRotate(matrix, 180, -10, 10);
+    // 3. OH_Drawing_MatrixPreRotate with a negative value for the fourth parameter
+    OH_Drawing_MatrixPreRotate(matrix, 180, 10, -10);
+    // 4. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_1003
+ * @tc.name: testMatrixPreRotateMaximum
+ * @tc.desc: test for testMatrixPreRotateMaximum.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixPreRotateMaximum, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixPreRotate with the second parameter as the maximum value
+    OH_Drawing_MatrixPreRotate(matrix, FLT_MAX, 10.0f, 10.0f);
+    // 3. OH_Drawing_MatrixPreRotate with the third parameter as the maximum value
+    OH_Drawing_MatrixPreRotate(matrix, 180, FLT_MAX, 10.0f);
+    // 4. OH_Drawing_MatrixPreRotate with the fourth parameter as the maximum value
+    OH_Drawing_MatrixPreRotate(matrix, 180, 10.0f, FLT_MAX);
+    // 5. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_1004
+ * @tc.name: testMatrixPreRotateMultipleCalls
+ * @tc.desc: test for testMatrixPreRotateMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixPreRotateMultipleCalls, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixPreRotate, pass in random numbers for degree, px, and py
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_real_distribution<float> dis(0.0, 100.0);
+    for (int i = 0; i < 10; i++) {
+        float degree = dis(gen);
+        float px = dis(gen);
+        float py = dis(gen);
+        OH_Drawing_MatrixPreRotate(matrix, degree, px, py);
+    }
+    // 3. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_1100
+ * @tc.name: testMatrixPreScaleNormal
+ * @tc.desc: test for testMatrixPreScaleNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixPreScaleNormal, TestSize.Level0) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixPreScale, pass in decimals
+    OH_Drawing_MatrixPreScale(matrix, 10.0f, 10.0f, 10.0f, 10.0f);
+    // 3. OH_Drawing_MatrixPreScale, pass in integers
+    OH_Drawing_MatrixPreScale(matrix, 20, 20, 20, 20);
+    // 4. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_1101
+ * @tc.name: testMatrixPreScaleNull
+ * @tc.desc: test for testMatrixPreScaleNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixPreScaleNull, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixPreScale, the first parameter is null, check the error code using OH_Drawing_ErrorCodeGet, no
+    // crash, error code returns OH_DRAWING_ERROR_INVALID_PARAMETER
+    OH_Drawing_MatrixPreScale(nullptr, 10.0f, 10.0f, 10.0f, 10.0f);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 3. OH_Drawing_MatrixPreScale, the second parameter is null
+    OH_Drawing_MatrixPreScale(matrix, 0, 10.0f, 10.0f, 10.0f);
+    // 4. OH_Drawing_MatrixPreScale, the third parameter is null
+    OH_Drawing_MatrixPreScale(matrix, 10.0f, 0, 10.0f, 10.0f);
+    // 5. OH_Drawing_MatrixPreScale, the fourth parameter is null
+    OH_Drawing_MatrixPreScale(matrix, 10.0f, 10.0f, 0, 10.0f);
+    // 6. OH_Drawing_MatrixPreScale, the fifth parameter is null
+    OH_Drawing_MatrixPreScale(matrix, 10.0f, 10.0f, 10.0f, 0);
+    // 7. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_1102
+ * @tc.name: testMatrixPreScaleAbnormal
+ * @tc.desc: test for testMatrixPreScaleAbnormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixPreScaleAbnormal, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixPreScale, the second parameter is negative
+    OH_Drawing_MatrixPreScale(matrix, -10.0f, 10.0f, 10.0f, 10.0f);
+    // 3. OH_Drawing_MatrixPreScale, the third parameter is negative
+    OH_Drawing_MatrixPreScale(matrix, 10.0f, -10.0f, 10.0f, 10.0f);
+    // 4. OH_Drawing_MatrixPreScale, the fourth parameter is negative
+    OH_Drawing_MatrixPreScale(matrix, 10.0f, 10.0f, -10.0f, 10.0f);
+    // 5. OH_Drawing_MatrixPreScale, the fifth parameter is negative
+    OH_Drawing_MatrixPreScale(matrix, 10.0f, 10.0f, 10.0f, -10.0f);
+    // 6. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_1103
+ * @tc.name: testMatrixPreScaleMaximum
+ * @tc.desc: test for testMatrixPreScaleMaximum.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixPreScaleMaximum, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixPreScale with the second parameter as the maximum value
+    OH_Drawing_MatrixPreScale(matrix, FLT_MAX, 10.0f, 10.0f, 10.0f);
+    // 3. OH_Drawing_MatrixPreScale with the third parameter as the maximum value
+    OH_Drawing_MatrixPreScale(matrix, 10.0f, FLT_MAX, 10.0f, 10.0f);
+    // 4. OH_Drawing_MatrixPreScale with the fourth parameter as the maximum value
+    OH_Drawing_MatrixPreScale(matrix, 10.0f, 10.0f, FLT_MAX, 10.0f);
+    // 5. OH_Drawing_MatrixPreScale with the fifth parameter as the maximum value
+    OH_Drawing_MatrixPreScale(matrix, 10.0f, 10.0f, 10.0f, FLT_MAX);
+    // 6. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_1104
+ * @tc.name: testMatrixPreScaleMultipleCalls
+ * @tc.desc: test for testMatrixPreScaleMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixPreScaleMultipleCalls, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. Call OH_Drawing_MatrixCreateScale 10 times, passing in random numbers for sx, sy, px, and py
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_real_distribution<float> dis(0.0, 100.0);
+    for (int i = 0; i < 10; i++) {
+        float sx = dis(gen);
+        float sy = dis(gen);
+        float px = dis(gen);
+        float py = dis(gen);
+        OH_Drawing_MatrixPreScale(matrix, sx, sy, px, py);
+    }
+    // 3. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_1200
+ * @tc.name: testMatrixPreTranslateNormal
+ * @tc.desc: test for testMatrixPreTranslateNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixPreTranslateNormal, TestSize.Level0) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixPreTranslate, pass in decimals
+    OH_Drawing_MatrixPreTranslate(matrix, 10.0f, 10.0f);
+    // 3. OH_Drawing_MatrixPreTranslate, pass in integers
+    OH_Drawing_MatrixPreTranslate(matrix, 20, 20);
+    // 4. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_1201
+ * @tc.name: testMatrixPreTranslateNull
+ * @tc.desc: test for testMatrixPreTranslateNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixPreTranslateNull, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixPreTranslate, the first parameter is null, check the error code using OH_Drawing_ErrorCodeGet
+    OH_Drawing_MatrixPreTranslate(nullptr, 10.0f, 10.0f);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 3. OH_Drawing_MatrixPreTranslate, the second parameter is null
+    OH_Drawing_MatrixPreTranslate(matrix, 0, 10.0f);
+    // 4. OH_Drawing_MatrixPreTranslate, the third parameter is null
+    OH_Drawing_MatrixPreTranslate(matrix, 10.0f, 0);
+    // 5. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_1202
+ * @tc.name: testMatrixPreTranslateAbnormal
+ * @tc.desc: test for testMatrixPreTranslateAbnormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixPreTranslateAbnormal, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixPreTranslate, the second parameter is negative
+    OH_Drawing_MatrixPreTranslate(matrix, -10.0f, 10.0f);
+    // 3. OH_Drawing_MatrixPreTranslate, the third parameter is negative
+    OH_Drawing_MatrixPreTranslate(matrix, 10.0f, -10.0f);
+    // 4. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_1203
+ * @tc.name: testMatrixPreTranslateMaximum
+ * @tc.desc: test for testMatrixPreTranslateMaximum.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixPreTranslateMaximum, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixPreTranslate with the second parameter as the maximum value
+    OH_Drawing_MatrixPreTranslate(matrix, FLT_MAX, 10.0f);
+    // 3. OH_Drawing_MatrixPreTranslate with the third parameter as the maximum value
+    OH_Drawing_MatrixPreTranslate(matrix, 10.0f, FLT_MAX);
+    // 4. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_1204
+ * @tc.name: testMatrixPreTranslateMultipleCalls
+ * @tc.desc: test for testMatrixPreTranslateMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixPreTranslateMultipleCalls, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixPreTranslate, pass in random numbers for dx and dy
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_real_distribution<float> dis(0.0, 100.0);
+    for (int i = 0; i < 10; i++) {
+        float dx = dis(gen);
+        float dy = dis(gen);
+        OH_Drawing_MatrixPreTranslate(matrix, dx, dy);
+    }
+    // 3. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_1300
+ * @tc.name: testMatrixPostRotateNormal
+ * @tc.desc: test for testMatrixPostRotateNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixPostRotateNormal, TestSize.Level0) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixPostRotate, rotate angles include 0 degrees, 180 degrees, 360 degrees, -90 degrees, -180
+    // degrees, -360 degrees, and 45.5 degrees, px and py cover decimals and integers
+    OH_Drawing_MatrixPostRotate(matrix, 0, 0, 0);
+    OH_Drawing_MatrixPostRotate(matrix, 180, 10, 10);
+    OH_Drawing_MatrixPostRotate(matrix, 360, 10.0f, 10.0f);
+    OH_Drawing_MatrixPostRotate(matrix, -90, 20, 20);
+    OH_Drawing_MatrixPostRotate(matrix, -180, 20.0f, 20.0f);
+    OH_Drawing_MatrixPostRotate(matrix, -360, 30, 30);
+    OH_Drawing_MatrixPostRotate(matrix, 45.5, 30.0f, 30.0f);
+    // 3. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_1301
+ * @tc.name: testMatrixPostRotateNull
+ * @tc.desc: test for testMatrixPostRotateNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixPostRotateNull, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixPostRotate with the first parameter as null, check the error code using
+    // OH_Drawing_ErrorCodeGet
+    OH_Drawing_MatrixPostRotate(nullptr, 180, 10, 10);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 3. OH_Drawing_MatrixPostRotate with the second parameter as null
+    OH_Drawing_MatrixPostRotate(matrix, 0, 10, 10);
+    // 4. OH_Drawing_MatrixPostRotate with the third parameter as null
+    OH_Drawing_MatrixPostRotate(matrix, 180, 0, 10);
+    // 5. OH_Drawing_MatrixPostRotate with the fourth parameter as null
+    OH_Drawing_MatrixPostRotate(matrix, 180, 10, 0);
+    // 6. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_1302
+ * @tc.name: testMatrixPostRotateAbnormal
+ * @tc.desc: test for testMatrixPostRotateAbnormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixPostRotateAbnormal, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixPostRotate, the third parameter is negative
+    OH_Drawing_MatrixPostRotate(matrix, 180, -10, 10);
+    // 3. OH_Drawing_MatrixPostRotate, the fourth parameter is negative
+    OH_Drawing_MatrixPostRotate(matrix, 180, 10, -10);
+    // 4. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_1303
+ * @tc.name: testMatrixPostRotateMaximum
+ * @tc.desc: test for testMatrixPostRotateMaximum.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixPostRotateMaximum, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixPostRotate with the second parameter as the maximum value
+    OH_Drawing_MatrixPostRotate(matrix, FLT_MAX, 10.0f, 10.0f);
+    // 3. OH_Drawing_MatrixPostRotate with the third parameter as the maximum value
+    OH_Drawing_MatrixPostRotate(matrix, 180, FLT_MAX, 10.0f);
+    // 4. OH_Drawing_MatrixPostRotate with the fourth parameter as the maximum value
+    OH_Drawing_MatrixPostRotate(matrix, 180, 10.0f, FLT_MAX);
+    // 5. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_1304
+ * @tc.name: testMatrixPostRotateMultipleCalls
+ * @tc.desc: test for testMatrixPostRotateMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixPostRotateMultipleCalls, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixPostRotate, pass in random numbers for degree, px, and py
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_real_distribution<float> dis(0.0, 100.0);
+    for (int i = 0; i < 10; i++) {
+        float degree = dis(gen);
+        float px = dis(gen);
+        float py = dis(gen);
+        OH_Drawing_MatrixPostRotate(matrix, degree, px, py);
+    }
+    // 3. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_1400
+ * @tc.name: testMatrixPostScaleNormal
+ * @tc.desc: test for testMatrixPostScaleNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixPostScaleNormal, TestSize.Level0) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixPostScale, pass in decimals
+    OH_Drawing_MatrixPostScale(matrix, 10.0f, 10.0f, 10.0f, 10.0f);
+    // 3. OH_Drawing_MatrixPostScale, pass in integers
+    OH_Drawing_MatrixPostScale(matrix, 20, 20, 20, 20);
+    // 4. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_1401
+ * @tc.name: testMatrixPostScaleNull
+ * @tc.desc: test for testMatrixPostScaleNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixPostScaleNull, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixPostScale, the first parameter is null, check the error code using OH_Drawing_ErrorCodeGet
+    OH_Drawing_MatrixPostScale(nullptr, 10.0f, 10.0f, 10.0f, 10.0f);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 3. OH_Drawing_MatrixPostScale, the second parameter is null
+    OH_Drawing_MatrixPostScale(matrix, 0, 10.0f, 10.0f, 10.0f);
+    // 4. OH_Drawing_MatrixPostScale, the third parameter is null
+    OH_Drawing_MatrixPostScale(matrix, 10.0f, 0, 10.0f, 10.0f);
+    // 5. OH_Drawing_MatrixPostScale, the fourth parameter is null
+    OH_Drawing_MatrixPostScale(matrix, 10.0f, 10.0f, 0, 10.0f);
+    // 6. OH_Drawing_MatrixPostScale, the fifth parameter is null
+    OH_Drawing_MatrixPostScale(matrix, 10.0f, 10.0f, 10.0f, 0);
+    // 7. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_1402
+ * @tc.name: testMatrixPostScaleAbnormal
+ * @tc.desc: test for testMatrixPostScaleAbnormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixPostScaleAbnormal, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixPostScale, the second parameter is negative
+    OH_Drawing_MatrixPostScale(matrix, -10.0f, 10.0f, 10.0f, 10.0f);
+    // 3. OH_Drawing_MatrixPostScale, the third parameter is negative
+    OH_Drawing_MatrixPostScale(matrix, 10.0f, -10.0f, 10.0f, 10.0f);
+    // 4. OH_Drawing_MatrixPostScale, the fourth parameter is negative
+    OH_Drawing_MatrixPostScale(matrix, 10.0f, 10.0f, -10.0f, 10.0f);
+    // 5. OH_Drawing_MatrixPostScale, the fifth parameter is negative
+    OH_Drawing_MatrixPostScale(matrix, 10.0f, 10.0f, 10.0f, -10.0f);
+    // 6. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_1403
+ * @tc.name: testMatrixPostScaleMaximum
+ * @tc.desc: test for testMatrixPostScaleMaximum.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixPostScaleMaximum, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixPostScale, the second parameter is the maximum value
+    OH_Drawing_MatrixPostScale(matrix, FLT_MAX, 10.0f, 10.0f, 10.0f);
+    // 3. OH_Drawing_MatrixPostScale, the third parameter is the maximum value
+    OH_Drawing_MatrixPostScale(matrix, 10.0f, FLT_MAX, 10.0f, 10.0f);
+    // 4. OH_Drawing_MatrixPostScale, the fourth parameter is the maximum value
+    OH_Drawing_MatrixPostScale(matrix, 10.0f, 10.0f, FLT_MAX, 10.0f);
+    // 5. OH_Drawing_MatrixPostScale, the fifth parameter is the maximum value
+    OH_Drawing_MatrixPostScale(matrix, 10.0f, 10.0f, 10.0f, FLT_MAX);
+    // 6. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_1404
+ * @tc.name: testMatrixPostScaleMultipleCalls
+ * @tc.desc: test for testMatrixPostScaleMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixPostScaleMultipleCalls, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. Call OH_Drawing_MatrixCreateScale 10 times, passing in random numbers for sx, sy, px, and py
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_real_distribution<float> dis(0.0, 100.0);
+    for (int i = 0; i < 10; i++) {
+        float sx = dis(gen);
+        float sy = dis(gen);
+        float px = dis(gen);
+        float py = dis(gen);
+        OH_Drawing_MatrixPostScale(matrix, sx, sy, px, py);
     }
     // 3. Free memory
     OH_Drawing_MatrixDestroy(matrix);
