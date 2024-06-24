@@ -36,7 +36,7 @@ export default class CommonFunc {
     let strJson = getInspectorByKey(key);
     let obj: Record<string, Object> = JSON.parse(strJson);
     console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(obj));
-    let rectInfo: Array<string> = JSON.parse('[' + obj.$rect + ']')
+    let rectInfo: string[] = JSON.parse('[' + obj.$rect + ']')
     console.info("[getInspectorByKey] rectInfo is: " + rectInfo);
     this.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0]
     this.rect_top = JSON.parse('[' + rectInfo[0] + ']')[1]
@@ -51,7 +51,7 @@ export default class CommonFunc {
     let strJson = getInspectorByKey(key);
     let obj: Record<string, Object> = JSON.parse(strJson);
     console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(obj));
-    let rectInfo: Array<string> = JSON.parse('[' + obj.$rect + ']');
+    let rectInfo: string[] = JSON.parse('[' + obj.$rect + ']');
     console.info("[getInspectorByKey] rectInfo is: " + rectInfo);
     console.info("windowRect Left: " + globalThis.winLeft + ',' + "windowRect Top: " + globalThis.winTop );
     this.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0] + globalThis.winLeft;

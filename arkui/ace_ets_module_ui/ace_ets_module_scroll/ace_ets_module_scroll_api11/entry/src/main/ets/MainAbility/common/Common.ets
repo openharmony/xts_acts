@@ -41,8 +41,8 @@ export default class CommonFunc {
 
   static getComponentRect(key: string): RectValue {
     let strJson: string = getInspectorByKey(key);
-    let obj: ESObject = JSON.parse(strJson);
-    let rectInfo: Array<string> = JSON.parse('[' + obj.$rect + ']');
+    let obj: Record<string, Object> = JSON.parse(strJson);
+    let rectInfo: string[] = JSON.parse('[' + obj.$rect + ']');
     console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(obj));
     console.info("[getInspectorByKey] rectInfo is: " + rectInfo);
     CommonFunc.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0];
@@ -58,9 +58,9 @@ export default class CommonFunc {
 
   static getComponentRectOnScreen(key: string): RectValue {
     let strJson = getInspectorByKey(key);
-    let obj: ESObject = JSON.parse(strJson);
+    let obj: Record<string, Object> = JSON.parse(strJson);
     console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(obj));
-    let rectInfo: Array<string> = JSON.parse('[' + obj.$rect + ']');
+    let rectInfo: string[] = JSON.parse('[' + obj.$rect + ']');
     console.info("[getInspectorByKey] rectInfo is: " + rectInfo);
     console.info("windowRect Left: " + globalThis.winLeft + ',' + "windowRect Top: " + globalThis.winTop );
     CommonFunc.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0] + globalThis.winLeft;
