@@ -49,7 +49,7 @@ struct NavRouter_onStateChange2 {
       .title('NavRouter')
       .backgroundColor("#F2F3F5")
       .titleMode(NavigationTitleMode.Free)
-      .mode(NavigationMode.Auto)
+      .mode(NavigationMode.Stack)
 
       Text('' + this.isActiveWLAN).key('NavRouter_onStateChange2_text1')
     }
