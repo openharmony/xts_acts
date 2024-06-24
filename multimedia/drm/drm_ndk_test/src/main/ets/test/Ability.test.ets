@@ -2574,5 +2574,36 @@ export default function abilityTest() {
       }
       done();
     })
+    /* *
+    * @tc.number    : SUB_MULTIMEDIA_DRM_C_API_177
+    * @tc.name      : Test_MediaKeySystem_SetCallback
+    * @tc.desc      : system_set 回调
+    * @tc.size      : MediumTest
+    * @tc.type      : Function test
+    * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_DRM_C_API_177', 0, function (done) {
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySystem_SetCallback("ptr", "ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
+      done();
+    })
+    /* *
+    * @tc.number    : SUB_MULTIMEDIA_DRM_C_API_180
+    * @tc.name      : Test_MediaKeySession_SetCallback
+    * @tc.desc      : system_set 回调
+    * @tc.size      : MediumTest
+    * @tc.type      : Function test
+    * @tc.level     : Level0
+    */
+    it('SUB_MULTIMEDIA_DRM_C_API_180', 0, function (done) {
+      if(blueArea ==1 ) {
+        let c = testNapi.Test_MediaKeySession_SetCallback("ptr", "ptr");
+        expect(c).assertEqual(Drm_ErrorCode.DRM_ERR_OK);
+      }
+      done();
+    })
+
   })
 }

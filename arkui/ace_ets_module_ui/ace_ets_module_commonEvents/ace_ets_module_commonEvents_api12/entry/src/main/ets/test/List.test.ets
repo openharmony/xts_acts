@@ -49,14 +49,19 @@ import RotationGestureBasic01Test from './RotationGesture/RotationGestureBasic01
 import RotationGestureBasic02Test from './RotationGesture/RotationGestureBasic02Test.test';
 import PinchGestureBasic01Test from './PinchGesture/PinchGestureBasic01Test.test';
 import PinchGestureBasic02Test from './PinchGesture/PinchGestureBasic02Test.test';
-// 测试时间戳 带update
+
 import PanGestureExampleTemplateTest from './PanGesture/PanGestureExampleTemplateTest.test';
 import PinchGestureTemplateTest from './PinchGesture/PinchGestureTemplateTest.test';
 import RotationGestureTemplateTest from './RotationGesture/RotationGestureTemplateTest.test';
-// 测试时间戳 不带update
+
 import TapGestureTemplateTest from './TapGesture/TapGestureTemplateTest.test';
 import LongPressGestureTemplateTest from './LongPressGesture/LongPressGestureTemplateTest.test';
 import SwipeGestureTemplateTest from './SwipeGesture/SwipeGestureTemplateTest.test';
+
+
+import PanGestureUpdateTest from './PanGesture/PanGestureUpdateTest.test';
+import PinchGestureUpdateTest from './PinchGesture/PinchGestureUpdateTest.test';
+import RotationGestureUpdateTest from './RotationGesture/RotationGestureUpdateTest.test';
 
 export default function testsuite() {
   APIPreDragStatusTest();
@@ -101,4 +106,7 @@ export default function testsuite() {
   TapGestureTemplateTest();
   LongPressGestureTemplateTest();
   SwipeGestureTemplateTest();
+  PanGestureUpdateTest();
+  PinchGestureUpdateTest();
+  RotationGestureUpdateTest();
 }

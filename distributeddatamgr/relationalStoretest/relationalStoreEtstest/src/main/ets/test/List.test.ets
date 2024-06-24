@@ -35,6 +35,7 @@ import rdbStoreCorruptJSunitTest from './RdbStoreCorruptJsunit.test';
 import rdbstoreLockRowJsunitTest from './RdbstoreLockRowJsunit.test';
 import RdbStoreDataChangeTest from './RdbStoreDataChange.test';
 import SqlExecutionTimeTest from './RelationStoreSqlExecTimeTest.test';
+import RdbStoreReadOnlyTest from './RelationalStoreReadOnlyJsunit.test';
 export default function testsuite() {
   relationalStoreEncryptTest()
   relationalStoreUpdateTest()
@@ -59,5 +60,6 @@ export default function testsuite() {
   rdbstoreLockRowJsunitTest()
   RdbStoreDataChangeTest()
   SqlExecutionTimeTest()
+  RdbStoreReadOnlyTest()
 }
 

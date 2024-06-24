@@ -15,6 +15,9 @@ import("//test/xts/tools/build/suite.gni")
 group("cellular_data") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "cellular_data_abnormal:ActsCellularDataAbnormalTest" ]
+    deps = [
+      "cellular_data_abnormal:ActsCellularDataAbnormalTest",
+      "cellular_data_abnormal_nop:ActsCellularDataAbnormalNopTest",
+    ]
   }
 }

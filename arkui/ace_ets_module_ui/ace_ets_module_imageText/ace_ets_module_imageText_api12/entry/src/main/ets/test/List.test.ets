@@ -104,6 +104,8 @@ import RichEditorApi6 from './RichEditor/RichEditorApi6.test'
 import RichEditorApi7 from './RichEditor/RichEditorApi7.test'
 import TextAreaApi4 from './TextArea/TextAreaApi4.test'
 import TextAreaTest from './TextAreaTest/TextAreaAPITest/TextAreaTest.test'
+import MarqueeMirroringTest from './Marquee/MarqueeMirroring.test';
+
 export default function testsuite() {
   APIContentTypeTest();
   APIUnderlineColorTest();
@@ -194,4 +196,5 @@ export default function testsuite() {
   RichEditorApi7();
   TextAreaApi4()
   TextAreaTest()
+  MarqueeMirroringTest()
 }

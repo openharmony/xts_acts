@@ -24,6 +24,8 @@
         "MainAbility/pages/webviewTerminateRenderProcess",
         "MainAbility/pages/webviewSelectionMenuOptions",
         "MainAbility/pages/DNSHostIP",
-        "MainAbility/pages/WebZoomAccessTest"
+        "MainAbility/pages/WebZoomAccessTest",
+        "MainAbility/pages/wholeWebPageDrawing",
+        "MainAbility/pages/getSurfaceId"
     ]
 }
