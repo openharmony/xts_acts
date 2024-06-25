@@ -104,6 +104,13 @@
     "MainAbility/pages/TextArea/TextAreaApi4",
     "MainAbility/pages/TextArea/TextAreaAPI/TextArea",
     "MainAbility/pages/Marquee/MarqueeMirroring",
-    "MainAbility/pages/SymbolGlyph/symbolEffect"
+    "MainAbility/pages/SymbolGlyph/symbolEffect",
+
+    "MainAbility/pages/RichEditor/RichEditorApi8",
+    "MainAbility/pages/RichEditor/RichEditorApi9",
+    "MainAbility/pages/RichEditor/RichEditorApi10",
+    "MainAbility/pages/RichEditor/RichEditorApi11",
+    "MainAbility/pages/RichEditor/RichEditorApi12",
+    "MainAbility/pages/Search/SearchApi1"
   ]
 }

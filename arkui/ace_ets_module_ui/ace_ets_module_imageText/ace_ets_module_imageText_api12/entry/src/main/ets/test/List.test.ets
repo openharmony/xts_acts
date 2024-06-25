@@ -111,6 +111,13 @@ import TextAreaTest from './TextAreaTest/TextAreaAPITest/TextAreaTest.test'
 import MarqueeMirroringTest from './Marquee/MarqueeMirroring.test';
 import symbolEffect from './SymbolGlyphTest/symbolEffect.test'
 
+import RichEditorApi8 from './RichEditor/RichEditorApi8.test'
+import RichEditorApi9 from './RichEditor/RichEditorApi9.test'
+import RichEditorApi10 from './RichEditor/RichEditorApi10.test'
+import RichEditorApi11 from './RichEditor/RichEditorApi11.test'
+import RichEditorApi12 from './RichEditor/RichEditorApi12.test'
+import SearchApi1 from './Search/SearchApi1.test'
+
 export default function testsuite() {
   APIContentTypeTest();
   APIUnderlineColorTest();
@@ -207,4 +214,11 @@ export default function testsuite() {
   TextAreaTest()
   MarqueeMirroringTest()
   symbolEffect()
+
+  RichEditorApi8()
+  RichEditorApi9()
+  RichEditorApi10()
+  RichEditorApi11()
+  RichEditorApi12()
+  SearchApi1()
 }
