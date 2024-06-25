@@ -15,12 +15,12 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import hilog from "@ohos.hilog";
 export default function HilogJsTest() {
-  describe("HilogJsTest", function () {
-    beforeAll(function () {
+  describe("HilogJsTest", () => {
+    beforeAll(() => {
       console.info("beforeAll called");
     });
 
-    afterAll(function () {
+    afterAll(() => {
       console.info("afterAll called");
     });
 
@@ -32,7 +32,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogDebug001", 2, function () {
+    it("testHilogDebug001", 2, () => {
       console.info("testHilogDebug001 start");
       try {
         hilog.debug(0x3200, "HILOGTEST", "%{public}s", "hilogJs1800");
@@ -52,7 +52,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogDebug002", 2, function () {
+    it("testHilogDebug002", 2, () => {
       console.info("testHilogDebug002 start");
       try {
         hilog.debug(0x3200, "HILOGTEST", "%{public}d", 2.1);
@@ -72,7 +72,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogDebug003", 2, function () {
+    it("testHilogDebug003", 2, () => {
       console.info("testHilogDebug003 start");
       try {
         hilog.debug(0x3200, "HILOGTEST", "%{public}d", 65535);
@@ -92,7 +92,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogDebug004", 2, function () {
+    it("testHilogDebug004", 2, () => {
       console.info("testHilogDebug004 start");
       try {
         hilog.debug(0x3200, "HILOGTEST", "%{public}s", "hilog info");
@@ -112,7 +112,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogDebug005", 2, function () {
+    it("testHilogDebug005", 2, () => {
       console.info("testHilogDebug005 start");
       try {
         hilog.debug(0x3200, "HILOGTEST", "%{public}d", 2147483647);
@@ -132,7 +132,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogDebug006", 2, function () {
+    it("testHilogDebug006", 2, () => {
       console.info("testHilogDebug006 start");
       try {
         hilog.debug(0x3200, "HILOGTEST", "%{public}s", "100%s%d%x%f");
@@ -152,7 +152,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogDebug007", 2, function () {
+    it("testHilogDebug007", 2, () => {
       console.info("testHilogDebug007 start");
       try {
         hilog.debug(0x3200, "HILOGTEST", "%{public}s", "65536");
@@ -172,7 +172,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogDebug008", 2, function () {
+    it("testHilogDebug008", 2, () => {
       console.info("testHilogDebug008 start");
       try {
         hilog.debug(0x3200, "HILOGTEST", "username:%{public}s, password:%{private}s.", "username", "password");
@@ -194,7 +194,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogDebug009", 2, function () {
+    it("testHilogDebug009", 2, () => {
       console.info("testHilogDebug009 start");
       try {
         hilog.debug(0x3200, "HILOGTEST", "%{public}s", "hilog public");
@@ -214,7 +214,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogDebug010", 2, function () {
+    it("testHilogDebug010", 2, () => {
       console.info("testHilogDebug010 start");
       try {
         hilog.debug(0x3200, "HILOGTEST", "%{nopublic}s", "Hilogtest");
@@ -234,7 +234,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogInfo001", 2, function () {
+    it("testHilogInfo001", 2, () => {
       console.info("testHilogInfo001 start");
       try {
         hilog.info(0x3200, "HILOGTEST", "%{public}s", "hilogJs0400");
@@ -254,7 +254,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogInfo002", 2, function () {
+    it("testHilogInfo002", 2, () => {
       console.info("testHilogInfo002 start");
       try {
         hilog.info(0x3200, "HILOGTEST", "username:%{public}s, password:%{private}s.", "username", "password");
@@ -276,7 +276,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogInfo003", 2, function () {
+    it("testHilogInfo003", 2, () => {
       console.info("testHilogInfo003 start");
       try {
         hilog.info(0xffff, "HILOGTEST", "username:%{public}s, password:%{public}s.", "username", "password");
@@ -296,7 +296,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogInfo004", 2, function () {
+    it("testHilogInfo004", 2, () => {
       console.info("testHilogInfo004 start");
       try {
         hilog.info(0xfffe, "HILOGTEST", "username:%{public}s, password:%{public}s.", "username", "password");
@@ -316,7 +316,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogInfo005", 2, function () {
+    it("testHilogInfo005", 2, () => {
       console.info("testHilogInfo005 start");
       try {
         hilog.info(0xfffff, "HILOGTEST", "username:%{public}s, password:%{public}s.", "username", "password");
@@ -336,7 +336,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogInfo006", 2, function () {
+    it("testHilogInfo006", 2, () => {
       console.info("testHilogInfo006 start");
       try {
         hilog.info(0xffffe, "HILOGTEST", "username:%{public}s, password:%{public}s.", "username", "password");
@@ -356,7 +356,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogInfo007", 2, function () {
+    it("testHilogInfo007", 2, () => {
       console.info("testHilogInfo007 start");
       try {
         hilog.info(100, "HILOGTEST", "username:%{public}s, password:%{public}s.", "username", "password");
@@ -376,7 +376,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogInfo008", 2, function () {
+    it("testHilogInfo008", 2, () => {
       console.info("testHilogInfo008 start");
       try {
         hilog.info(0x3200, "HILOGTEST", "username:%{public}s.", null);
@@ -396,7 +396,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogInfo009", 2, function () {
+    it("testHilogInfo009", 2, () => {
       console.info("testHilogInfo009 start");
       try {
         hilog.info(0x3200, "HILOGTEST", "username:%{public}s.", undefined);
@@ -416,7 +416,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogInfo010", 2, function () {
+    it("testHilogInfo010", 2, () => {
       console.info("testHilogInfo010 start");
       try {
         hilog.info(0x3200, "HILOGTEST", "MAX Number:%{public}d, MIN Number:%{public}d", Number.MAX_VALUE, Number.MIN_VALUE);
@@ -436,7 +436,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogInfo011", 2, function () {
+    it("testHilogInfo011", 2, () => {
       console.info("testHilogInfo011 start");
       try {
         hilog.info(0x3200, "HILOGTEST", "���Ĳ���:%{public}s, ��ϴ�ӡ:%{public}s", "���Ĵ�ӡ����", "for����test,.;:*_-=^(%)?#$/|\\");
@@ -456,7 +456,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogInfo012", 2, function () {
+    it("testHilogInfo012", 2, () => {
       console.info("testHilogInfo012 start");
       try {
         hilog.info(0x3200, "HILOGTEST", "boolean1:%{public}s, boolean2:%{public}s", true, false);
@@ -476,7 +476,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogWarn001", 2, function () {
+    it("testHilogWarn001", 2, () => {
       console.info("testHilogWarn001 start");
       try {
         hilog.warn(0x3200, "HILOGTEST", "%{public}s", "hilogJs0500");
@@ -496,7 +496,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogError001", 2, function () {
+    it("testHilogError001", 2, () => {
       console.info("testHilogError001 start");
       try {
         hilog.error(0x3200, "HILOGTEST", "%{public}s", "hilogJs0200");
@@ -516,7 +516,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogError002", 2, function () {
+    it("testHilogError002", 2, () => {
       console.info("testHilogError002 start");
       try {
         hilog.error(0xffff, "HILOGTEST", "%{public}s", ["hilogJs0100"]);
@@ -536,7 +536,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogError003", 2, function () {
+    it("testHilogError003", 2, () => {
       console.info("testHilogError003 start");
       try {
         hilog.error(0xd003200, "HILOGTEST", "%{public}s", ["hilogJs0200"]);
@@ -556,7 +556,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogError004", 2, function () {
+    it("testHilogError004", 2, () => {
       console.info("testHilogError004 start");
       try {
         hilog.error(0xffff, "HILOGTEST", "%{public}s", ["hilogJs0100"]);
@@ -576,7 +576,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogError005", 2, function () {
+    it("testHilogError005", 2, () => {
       console.info("testHilogError005 start");
       try {
         hilog.error(0xd003200, "HILOGTEST", "%{public}s", ["hilogJs0200"]);
@@ -596,7 +596,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogFatal001", 2, function () {
+    it("testHilogFatal001", 2, () => {
       console.info("testHilogFatal001 start");
       try {
         hilog.fatal(0x3200, "HILOGTEST", "%{public}s", "hilogJs0300");
@@ -616,7 +616,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogIsLoggable001", 2, function () {
+    it("testHilogIsLoggable001", 2, () => {
       console.info("testHilogIsLoggable001 start");
       const res = hilog.isLoggable(0x123456789, "HILOGTEST", 3);
       expect(res).assertEqual(false);
@@ -631,7 +631,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogIsLoggable002", 2, function () {
+    it("testHilogIsLoggable002", 2, () => {
       console.info("testHilogIsLoggable002 start");
       const res = hilog.isLoggable(0x3200, "HILOGTEST", 6);
       expect(res).assertEqual(true);
@@ -646,7 +646,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogIsLoggable003", 2, function () {
+    it("testHilogIsLoggable003", 2, () => {
       console.info("testHilogIsLoggable003 start");
       const res = hilog.isLoggable(0x3200, "HILOGTEST", 7);
       expect(res).assertEqual(true);
@@ -661,7 +661,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogIsLoggable004", 2, function () {
+    it("testHilogIsLoggable004", 2, () => {
       console.info("testHilogIsLoggable004 start");
       const res = hilog.isLoggable(0x3200, "HILOGTEST", 4);
       expect(res).assertEqual(true);
@@ -676,7 +676,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogIsLoggable005", 2, function () {
+    it("testHilogIsLoggable005", 2, () => {
       console.info("testHilogIsLoggable005 start");
       const res = hilog.isLoggable(0x3200, "HILOGTEST", 5);
       expect(res).assertEqual(true);
@@ -691,7 +691,7 @@ export default function HilogJsTest() {
      * @tc.type  : Method
      * @tc.level : Level 2
      */
-    it("testHilogIsLoggable006", 2, function () {
+    it("testHilogIsLoggable006", 2, () => {
       console.info("testHilogIsLoggable006 start");
       const res = hilog.isLoggable(0x3200, "HILOGTEST", 100);
       expect(res).assertEqual(false);
