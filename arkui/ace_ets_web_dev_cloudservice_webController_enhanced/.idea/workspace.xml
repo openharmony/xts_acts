@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0503a44f-6a04-4484-9092-212a553ddd07" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2i0O28R7NmbL1lXfM18rl4vvthV" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "D:/xts_cover/ace_ets_web_dev_cloudservice_webController_enhanced"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\xts_cover\ace_ets_web_dev_cloudservice_webController_enhanced" />
+      <recent name="D:\xts_cover\ace_ets_web_dev_cloudservice_webController_enhanced\signature" />
+      <recent name="D:\xts_cover\ace_ets_web_dev_cloudservice_webController_five_local\entry\src\main\ets\MainAbility\pages" />
+      <recent name="D:\xts_cover\ace_ets_web_dev_cloudservice_webController_five_local\entry\src\main\ets\test" />
+      <recent name="D:\xts_cover\ace_ets_web_dev_cloudservice_webController_five_local\entry\src\main\resources\rawfile" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\xts_cover\ace_ets_web_dev_cloudservice_webController_five_local\entry\src\main\resources\rawfile" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+</project>
