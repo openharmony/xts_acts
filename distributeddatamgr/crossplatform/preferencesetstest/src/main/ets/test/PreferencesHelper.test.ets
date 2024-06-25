@@ -315,7 +315,7 @@ export default function preferencesHelperTest() {
      * @tc.name    : testMaxKeyLength001
      * @tc.desc    : Test key length
      * @tc.size    : MediumTest
-     * @tc.type    : Constant
+     * @tc.type    : Function
      * @tc.level   : Level 0
      */
     it("testMaxKeyLength001", 0, () => {
@@ -327,7 +327,7 @@ export default function preferencesHelperTest() {
      * @tc.name    : testMaxValueLength001
      * @tc.desc    : Test value length
      * @tc.size    : MediumTest
-     * @tc.type    : Constant
+     * @tc.type    : Function
      * @tc.level   : Level 0
      */
     it("testMaxValueLength001", 0, () => {
@@ -339,7 +339,7 @@ export default function preferencesHelperTest() {
      * @tc.name    : testPreferencesOn001
      * @tc.desc    : Test on interface
      * @tc.size    : MediumTest
-     * @tc.type    : Constant
+     * @tc.type    : Function
      * @tc.level   : Level 2
      */
     it("testPreferencesOn001", 0, async () => {
@@ -363,7 +363,7 @@ export default function preferencesHelperTest() {
      * @tc.name    : testPreferencesOn002
      * @tc.desc    : Test on interface
      * @tc.size    : MediumTest
-     * @tc.type    : Constant
+     * @tc.type    : Function
      * @tc.level   : Level 2
      */
     it("testPreferencesOn002", 0, async () => {
@@ -386,7 +386,7 @@ export default function preferencesHelperTest() {
      * @tc.name    : testPreferencesOn003
      * @tc.desc    : Test on interface
      * @tc.size    : MediumTest
-     * @tc.type    : Constant
+     * @tc.type    : Function
      * @tc.level   : Level 2
      */
     it("testPreferencesOn003", 0, async () => {
@@ -409,7 +409,7 @@ export default function preferencesHelperTest() {
      * @tc.name    : testPreferencesOn004
      * @tc.desc    : Test on interface
      * @tc.size    : MediumTest
-     * @tc.type    : Constant
+     * @tc.type    : Function
      * @tc.level   : Level 2
      */
     it("testPreferencesOn004", 0, async () => {
@@ -432,7 +432,7 @@ export default function preferencesHelperTest() {
      * @tc.name    : testPreferencesOff001
      * @tc.desc    : Test off interface
      * @tc.size    : MediumTest
-     * @tc.type    : Constant
+     * @tc.type    : Function
      * @tc.level   : Level 2
      */
     it("testPreferencesOff001", 0, async () => {
@@ -460,7 +460,7 @@ export default function preferencesHelperTest() {
      * @tc.name    : testPreferencesOff002
      * @tc.desc    : Test off interface
      * @tc.size    : MediumTest
-     * @tc.type    : Constant
+     * @tc.type    : Function
      * @tc.level   : Level 2
      */
     it("testPreferencesOff002", 0, async () => {
@@ -488,7 +488,7 @@ export default function preferencesHelperTest() {
      * @tc.name    : testPreferencesOff003
      * @tc.desc    : Test off interface
      * @tc.size    : MediumTest
-     * @tc.type    : Constant
+     * @tc.type    : Function
      * @tc.level   : Level 2
      */
     it("testPreferencesOff003", 0, async () => {
@@ -513,7 +513,7 @@ export default function preferencesHelperTest() {
      * @tc.name    : testPreferencesOff004
      * @tc.desc    : Test off interface
      * @tc.size    : MediumTest
-     * @tc.type    : Constant
+     * @tc.type    : Function
      * @tc.level   : Level 2
      */
     it("testPreferencesOff004", 0, async () => {

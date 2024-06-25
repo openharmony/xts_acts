@@ -576,7 +576,7 @@ export default function preferencesCallBackTest() {
      * @tc.name   : testPreferencesGetDefaultValue0001
      * @tc.desc   : Get defaultValue callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesGetDefaultValue0001", 0, async (done: Function) => {
@@ -592,7 +592,7 @@ export default function preferencesCallBackTest() {
      * @tc.name   : testPreferencesGetFloat0001
      * @tc.desc   : Get float callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesGetFloat0001", 0, async (done: Function) => {
@@ -609,7 +609,7 @@ export default function preferencesCallBackTest() {
      * @tc.name   : testPreferencesGetInt0001
      * @tc.desc   : Get int callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesGetInt0001", 0, async (done: Function) => {
@@ -626,7 +626,7 @@ export default function preferencesCallBackTest() {
      * @tc.name   : testPreferencesGetLong0001
      * @tc.desc   : Get long callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesGetLong0001", 0, async (done: Function) => {
@@ -644,7 +644,7 @@ export default function preferencesCallBackTest() {
      * @tc.name   : testPreferencesGetString001
      * @tc.desc   : Get String callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesGetString001", 0, async (done: Function) => {
@@ -663,7 +663,7 @@ export default function preferencesCallBackTest() {
      * @tc.name   : testPreferencesGetBoolean0001
      * @tc.desc   : Get Boolean callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesGetBoolean0001", 0, async (done: Function) => {
@@ -680,7 +680,7 @@ export default function preferencesCallBackTest() {
      * @tc.name   : testPreferencesGetStringArray001
      * @tc.desc   : Get StringArray callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesGetStringArray001", 0, async (done: Function) => {
@@ -701,7 +701,7 @@ export default function preferencesCallBackTest() {
      * @tc.name   : testPreferencesGetNumArray001
      * @tc.desc   : Get NumArray callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesGetNumArray001", 0, async (done: Function) => {
@@ -721,7 +721,7 @@ export default function preferencesCallBackTest() {
      * @tc.name   : testPreferencesGetBoolArray0001
      * @tc.desc   : Get BoolArray callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesGetBoolArray0001", 0, async (done: Function) => {
@@ -741,7 +741,7 @@ export default function preferencesCallBackTest() {
      * @tc.name   : testPreferencesGetAll0001
      * @tc.desc   : GetAll callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesGetAll0001", 0, async (done: Function) => {
@@ -787,7 +787,7 @@ export default function preferencesCallBackTest() {
      * @tc.name   : testPreferencesPutFloat0001
      * @tc.desc   : Put float callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesPutFloat0001", 0, async (done: Function) => {
@@ -807,7 +807,7 @@ export default function preferencesCallBackTest() {
      * @tc.name   : testPreferencesPutInt0001
      * @tc.desc   : Put int callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesPutInt0001", 0, async (done: Function) => {
@@ -827,7 +827,7 @@ export default function preferencesCallBackTest() {
      * @tc.name   : testPreferencesPutLong0001
      * @tc.desc   : Put long callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesPutLong0001", 0, async (done: Function) => {
@@ -848,7 +848,7 @@ export default function preferencesCallBackTest() {
      * @tc.name   : testPreferencesPutString0001
      * @tc.desc   : Put String callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesPutString0001", 0, async (done: Function) => {
@@ -868,7 +868,7 @@ export default function preferencesCallBackTest() {
      * @tc.name   : testPreferencesPutBoolean0001
      * @tc.desc   : Put Boolean callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesPutBoolean0001", 0, async (done: Function) => {
@@ -888,7 +888,7 @@ export default function preferencesCallBackTest() {
      * @tc.name   : testPreferencesPutStringArray0001
      * @tc.desc   : Put StringArray callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesPutStringArray0001", 0, async (done: Function) => {
@@ -909,7 +909,7 @@ export default function preferencesCallBackTest() {
      * @tc.name   : testPreferencesPutNumArray0001
      * @tc.desc   : Put NumberArray callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesPutNumArray0001", 0, async (done: Function) => {
@@ -930,7 +930,7 @@ export default function preferencesCallBackTest() {
      * @tc.name   : testPreferencesPutBoolArray0001
      * @tc.desc   : Put BoolArray callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesPutBoolArray0001", 0, async (done: Function) => {
@@ -951,7 +951,7 @@ export default function preferencesCallBackTest() {
      * @tc.name   : testPreferencesHasKey0005
      * @tc.desc   : Has float callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesHasKey0005", 0, async (done: Function) => {
@@ -967,7 +967,7 @@ export default function preferencesCallBackTest() {
      * @tc.name   : testPreferencesHasKey0001
      * @tc.desc   : Has int callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesHasKey0001", 0, async (done: Function) => {
@@ -983,7 +983,7 @@ export default function preferencesCallBackTest() {
      * @tc.name   : testPreferencesHasKey0002
      * @tc.desc   : Has long callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesHasKey0002", 0, async (done: Function) => {
@@ -999,7 +999,7 @@ export default function preferencesCallBackTest() {
      * @tc.name   : testPreferencesHasKey0003
      * @tc.desc   : Has string callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesHasKey0003", 0, async (done: Function) => {
@@ -1015,7 +1015,7 @@ export default function preferencesCallBackTest() {
      * @tc.name   : testPreferencesHasKey0004
      * @tc.desc   : Has boolean callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesHasKey0004", 0, async (done: Function) => {
@@ -1031,7 +1031,7 @@ export default function preferencesCallBackTest() {
      * @tc.name   : testPreferencesClear0001
      * @tc.desc   : Clear callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesClear0001", 0, async (done: Function) => {
@@ -1086,7 +1086,7 @@ export default function preferencesCallBackTest() {
      * @tc.name   : testPreferencesDelete0010
      * @tc.desc   : Delete callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesDelete0010", 0, async (done: Function) => {
@@ -1111,7 +1111,7 @@ export default function preferencesCallBackTest() {
      * @tc.name   : testPreferenceCB001
      * @tc.desc   : Flush callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferenceCB001", 0, async (done: Function) => {
@@ -1136,7 +1136,7 @@ export default function preferencesCallBackTest() {
      * @tc.name   : testPreferencesCallback001
      * @tc.desc   : Clear、Put、Get、Flush String callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesCallback001", 0, (done: Function) => {

@@ -214,7 +214,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesGetDefValuePromise0001
      * @tc.desc   : Get defaultValue promise interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesGetDefValuePromise0001", 0, async (done: Function) => {
@@ -235,7 +235,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesGetFloatPromise0001
      * @tc.desc   : Get float promise interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesGetFloatPromise0001", 0, async (done: Function) => {
@@ -257,7 +257,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesGetIntPromise0001
      * @tc.desc   : Get int promise interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesGetIntPromise0001", 0, async (done: Function) => {
@@ -279,7 +279,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesGetLongPromise0001
      * @tc.desc   : Get long promise interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesGetLongPromise0001", 0, async (done: Function) => {
@@ -301,7 +301,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesGetStringPromise0001
      * @tc.desc   : Get string promise interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesGetStringPromise0001", 0, async (done: Function) => {
@@ -324,7 +324,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesGetBooleanPromise0001
      * @tc.desc   : Get boolean promise interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesGetBooleanPromise0001", 0, async (done: Function) => {
@@ -346,7 +346,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesGetStringArrayPromise0001
      * @tc.desc   : Get StringArray promise interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesGetStringArrayPromise0001", 0, async (done: Function) => {
@@ -371,7 +371,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesGetNumArrayPromise0001
      * @tc.desc   : Get NumArray promise interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesGetNumArrayPromise0001", 0, async (done: Function) => {
@@ -396,7 +396,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesGetBoolArrayPromise0001
      * @tc.desc   : Get BoolArray promise interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesGetBoolArrayPromise0001", 0, async (done: Function) => {
@@ -421,7 +421,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesGetSyncDefaultValue0001
      * @tc.desc   : GetSync defaultValue interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesGetSyncDefaultValue0001", 0, async (done: Function) => {
@@ -436,7 +436,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesGetSyncFloat0001
      * @tc.desc   : GetSync float interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesGetSyncFloat0001", 0, async (done: Function) => {
@@ -452,7 +452,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesGetSyncInt0001
      * @tc.desc   : GetSync int interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesGetSyncInt0001", 0, async (done: Function) => {
@@ -469,7 +469,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesGetSyncLong0001
      * @tc.desc   : GetSync long interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesGetSyncLong0001", 0, async (done: Function) => {
@@ -485,7 +485,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesGetSyncString0001
      * @tc.desc   : GetSync string interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesGetSyncString0001", 0, async (done: Function) => {
@@ -501,7 +501,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesGetSyncBoolean0001
      * @tc.desc   : GetSync string interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesGetSyncBoolean0001", 0, async (done: Function) => {
@@ -517,7 +517,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesGetSyncStringArray0001
      * @tc.desc   : GetSync stringArray interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesGetSyncStringArray0001", 0, async (done: Function) => {
@@ -537,7 +537,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesGetSyncNumArray0001
      * @tc.desc   : GetSync numArray interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesGetSyncNumArray0001", 0, async (done: Function) => {
@@ -556,7 +556,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesGetSyncBoolArray0001
      * @tc.desc   : GetSync boolArray interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesGetSyncBoolArray0001", 0, async (done: Function) => {
@@ -575,7 +575,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesGetAllPromise0001
      * @tc.desc   : GetAll promise interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesGetAllPromise0001", 0, async (done: Function) => {
@@ -626,7 +626,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesGetAllSync0001
      * @tc.desc   : GetAllSync interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesGetAllSync0001", 0, async (done: Function) => {
@@ -669,7 +669,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesPutFloatPromise0001
      * @tc.desc   : Put float promise interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesPutFloatPromise0001", 0, async (done: Function) => {
@@ -688,7 +688,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesPutIntPromise0001
      * @tc.desc   : Put int promise interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesPutIntPromise0001", 0, async (done: Function) => {
@@ -707,7 +707,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesPutLongPromise0001
      * @tc.desc   : Put long promise interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesPutLongPromise0001", 0, async (done: Function) => {
@@ -725,7 +725,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesPutStringPromise0001
      * @tc.desc   : Put string promise interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesPutStringPromise0001", 0, async (done: Function) => {
@@ -743,7 +743,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesPutBooleanPromise0001
      * @tc.desc   : Put boolean promise interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesPutBooleanPromise0001", 0, async (done: Function) => {
@@ -762,7 +762,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesPutStringArrayPromise0001
      * @tc.desc   : Put StringArray promise interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesPutStringArrayPromise0001", 0, async (done: Function) => {
@@ -787,7 +787,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesPutNumArrayPromise0001
      * @tc.desc   : Put NumberArray promise interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesPutNumArrayPromise0001", 0, async (done: Function) => {
@@ -812,7 +812,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesPutBoolArrayPromise0001
      * @tc.desc   : Put BoolArray promise interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesPutBoolArrayPromise0001", 0, async (done: Function) => {
@@ -837,7 +837,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesPutSyncFloat0001
      * @tc.desc   : PutSync float interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesPutSyncFloat0001", 0, async (done: Function) => {
@@ -856,7 +856,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesPutSyncInt0001
      * @tc.desc   : PutSync int interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesPutSyncInt0001", 0, async (done: Function) => {
@@ -875,7 +875,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesPutSyncLong0001
      * @tc.desc   : PutSync long interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesPutSyncLong0001", 0, async (done: Function) => {
@@ -893,7 +893,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesPutSyncString0001
      * @tc.desc   : PutSync string interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesPutSyncString0001", 0, async (done: Function) => {
@@ -911,7 +911,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesPutSyncBoolean0001
      * @tc.desc   : PutSync boolean interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesPutSyncBoolean0001", 0, async (done: Function) => {
@@ -930,7 +930,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesPutSyncStringArray0001
      * @tc.desc   : PutSync StringArray interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesPutSyncStringArray0001", 0, async (done: Function) => {
@@ -956,7 +956,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesPutSyncNumArray0001
      * @tc.desc   : PutSync NumberArray interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesPutSyncNumArray0001", 0, async (done: Function) => {
@@ -982,7 +982,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesPutSyncBoolArray0001
      * @tc.desc   : PutSync BoolArray interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesPutSyncBoolArray0001", 0, async (done: Function) => {
@@ -1008,7 +1008,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesHasKeyPromise0001
      * @tc.desc   : Has float promise interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesHasKeyPromise0001", 0, async (done: Function) => {
@@ -1029,7 +1029,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesHasKeyPromise0002
      * @tc.desc   : Has int promise interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesHasKeyPromise0002", 0, async (done: Function) => {
@@ -1050,7 +1050,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesHasKeyPromise0003
      * @tc.desc   : Has long promise interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesHasKeyPromise0003", 0, async (done: Function) => {
@@ -1071,7 +1071,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesHasKeyPromise0004
      * @tc.desc   : Has string promise interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesHasKeyPromise0004", 0, async (done: Function) => {
@@ -1092,7 +1092,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesHasKeyPromise0005
      * @tc.desc   : Has boolean promise interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesHasKeyPromise0005", 0, async (done: Function) => {
@@ -1113,7 +1113,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesHasSync0001
      * @tc.desc   : HasSync float interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesHasSync0001", 0, async (done: Function) => {
@@ -1128,7 +1128,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesHasSync0002
      * @tc.desc   : HasSync int interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesHasSync0002", 0, async (done: Function) => {
@@ -1143,7 +1143,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesHasSync0003
      * @tc.desc   : HasSync long interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesHasSync0003", 0, async (done: Function) => {
@@ -1158,7 +1158,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesHasSync0004
      * @tc.desc   : HasSync string interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesHasSync0004", 0, async (done: Function) => {
@@ -1173,7 +1173,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesHasSync0005
      * @tc.desc   : HasSync boolean interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesHasSync0005", 0, async (done: Function) => {
@@ -1188,7 +1188,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesClearPromise0001
      * @tc.desc   : Clear promise interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesClearPromise0001", 0, async (done: Function) => {
@@ -1247,7 +1247,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesClearSync0001
      * @tc.desc   : ClearSync interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesClearSync0001", 0, async (done: Function) => {
@@ -1300,7 +1300,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesDeletePromise0001
      * @tc.desc   : Delete promise interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesDeletePromise0001", 0, async (done: Function) => {
@@ -1325,7 +1325,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesDeleteSync0001
      * @tc.desc   : DeleteSync interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesDeleteSync0001", 0, async (done: Function) => {
@@ -1344,7 +1344,7 @@ export default function preferencesPromiseTest() {
      * @tc.name   : testPreferencesFlushPromise0001
      * @tc.desc   : Flush promise interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesFlushPromise0001", 0, async (done: Function) => {
