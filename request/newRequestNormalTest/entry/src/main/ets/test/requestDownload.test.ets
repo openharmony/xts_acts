@@ -90,34 +90,35 @@ export default function requestDownloadNormalJSUnit() {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('SUB_Misc_Request_DownloadManagement_Callback_0001', 0, async function (done) {
+    it('SUB_Misc_Request_DownloadManagement_Callback_0001', 0, async (done: Function) => {
       console.info("====>---------------------SUB_Misc_Request_DownloadManagement_Callback_0001 is starting---------------------");
-      let downloadFileConfig = {
-        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
-        header: {
-          headers: 'http'
-        },
-        enableMetered: false,
-        enableRoaming: false,
-        description: 'XTS download test!',
-        filePath: "downloadFilePath1",
-        title: 'XTS download test!',
-      }
       try {
-        request.downloadFile(globalThis.abilityContext, downloadFileConfig, (err, downloadTask) => {
+        let context : common.UIAbilityContext = globalThis.ablityContext;
+        let downloadFileConfig : request.DownloadConfig = {
+          url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+          header: {
+            headers: 'http'
+          },
+          enableMetered: false,
+          enableRoaming: false,
+          description: 'XTS download test!',
+          filePath: "downloadFilePath1",
+          title: 'XTS download test!',
+        }
+
+        request.downloadFile(context, downloadFileConfig, (err, downloadTask)=>{
           if (err) {
             console.info("====>SUB_Misc_Request_DownloadManagement_Callback_0001 create err: " + JSON.stringify(err));
             expect(err.code).assertEqual(201);
             done();
-          } else {
-            expect().assertFail();
-            console.info("====>SUB_Misc_Request_DownloadManagement_Callback_0001 create success: " + task);
-            done();
           }
+          console.error("====>SUB_Misc_Request_DownloadManagement_Callback_0001 create success without permission");
+          expect().assertFail();
+          done();
         });
       } catch (err) {
-        console.info("====>SUB_Misc_Request_DownloadManagement_Callback_0001 error: " + JSON.stringify(err));
-        expect(err.code).assertEqual(201);
+        console.error("====>SUB_Misc_Request_DownloadManagement_Callback_0001 create err: " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     });
