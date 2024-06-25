@@ -575,7 +575,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPointsAbnormal, TestSize.Level3)
     }
 
     // 3. Pass a floating-point value for the count parameter in OH_Drawing_CanvasDrawPoints.
-    // can not pass float number, cpp compile error.
+    OH_Drawing_CanvasDrawPoints(canvas, POINT_MODE_LINES, 1.0f, points);
 
     // 4. Set the x-coordinate of the point in OH_Drawing_Point2D parameter to a negative number in
     // OH_Drawing_CanvasDrawPoints.
