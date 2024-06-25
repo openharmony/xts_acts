@@ -17,7 +17,6 @@
 #include <arkui/native_node_napi.h>
 #define NUM__1 (-1)
 #define NUM_1 1
-#define RESULT 106101
 
 namespace ArkUICapiTest {
 
@@ -33,32 +32,40 @@ static napi_value TestNodeContent001(napi_env env, napi_callback_info info)
 
 static napi_value TestNodeContent002(napi_env env, napi_callback_info info)
 {
+    auto nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
+        OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
     auto ret = OH_ArkUI_NodeContent_AddNode(nullptr, nullptr);
-    ASSERT_EQ(ret, RESULT);
+    ASSERT_EQ(ret, INVALID_PARAM);
     
     NAPI_END;
 }
 
 static napi_value TestNodeContent003(napi_env env, napi_callback_info info)
 {
+    auto nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
+        OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
     auto ret = OH_ArkUI_NodeContent_InsertNode(nullptr, nullptr, NUM_1);
-    ASSERT_EQ(ret, RESULT);
+    ASSERT_EQ(ret, INVALID_PARAM);
     
     NAPI_END;
 }
 
 static napi_value TestNodeContent004(napi_env env, napi_callback_info info)
 {
+    auto nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
+        OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
     auto ret = OH_ArkUI_NodeContent_RemoveNode(nullptr, nullptr);
-    ASSERT_EQ(ret, RESULT);
+    ASSERT_EQ(ret, INVALID_PARAM);
     
     NAPI_END;
 }
 
 static napi_value TestNodeContent005(napi_env env, napi_callback_info info)
 {
+    auto nodeAPI = reinterpret_cast<ArkUI_NativeNodeAPI_1 *>(
+        OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1"));
     auto ret = OH_ArkUI_NodeContent_RegisterCallback(nullptr, nullptr);
-    ASSERT_EQ(ret, RESULT);
+    ASSERT_EQ(ret, INVALID_PARAM);
     
     NAPI_END;
 }
