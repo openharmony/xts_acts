@@ -22,7 +22,7 @@ import getOverlayManager from './UIContextTest/getOverlayManager.test'
 import getContextMenuController from './UIContextTest/getContextMenuController.test'
 import customPropertyTest from './customPropertyTest/customProperty.test'
 import callbackTest from './callbackTest/callbackTest.test'
-
+import Role_APITest from './ButtonTest/Button_APITest/Role_APITest';
 export default function testsuite() {
   OverlayManagerTest_001()
   OverlayManagerTest_002()
@@ -34,4 +34,5 @@ export default function testsuite() {
   getContextMenuController()
   customPropertyTest()
   callbackTest()
+  Role_APITest();
 }

@@ -10,6 +10,7 @@
         "MainAbility/pages/UIContext/OverlayManager_006",
         "MainAbility/pages/UIContext/getContextMenuController",
         "MainAbility/pages/customProperty/customProperty",
-        "MainAbility/pages/callback/callback"
+        "MainAbility/pages/callback/callback",
+        "MainAbility/pages/Button/Button_API/Role"
     ]
 }
