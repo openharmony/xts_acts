@@ -93,7 +93,6 @@ export default function requestDownloadNormalJSUnit() {
     it('SUB_Misc_Request_DownloadManagement_Callback_0001', 0, async (done: Function) => {
       console.info("====>---------------------SUB_Misc_Request_DownloadManagement_Callback_0001 is starting---------------------");
       try {
-        console.error("====>SUB_Misc_Request_DownloadManagement_Callback_0001 create 1");
         let downloadConfig = {
           url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
           header: {
@@ -105,8 +104,7 @@ export default function requestDownloadNormalJSUnit() {
           filePath: "SUB_Misc_Request_DownloadManagement_Callback_0001",
           title: 'XTS download test!',
         }
-        console.error("====>SUB_Misc_Request_DownloadManagement_Callback_0001 create 2");
-        await request.downloadFile(globalThis.abilityContext, downloadConfig, (err, downloadTask) => {
+        request.downloadFile(globalThis.abilityContext, downloadConfig, (err, downloadTask) => {
           if (err) {
             console.info("====>SUB_Misc_Request_DownloadManagement_Callback_0001 create err: " + JSON.stringify(err));
             expect(err.code).assertEqual(201);

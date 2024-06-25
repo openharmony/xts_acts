@@ -43,6 +43,26 @@ export default function requestUploadNormalJSUnit() {
       }
     });
 
+    let RequestData = {
+      name: 'name',
+      value: '123'
+    }
+    let File = {
+      filename: 'test',
+      name: 'test',
+      uri: 'internal://cache/test.txt',
+      type: 'txt'
+    }
+    let uploadConfig = {
+      url: 'http://127.0.0.1',
+      header: {
+        headers: 'http'
+      },
+      method: 'POST',
+      files: [File],
+      data: [RequestData]
+    };
+
     /**
      * beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.
      */
@@ -165,28 +185,6 @@ export default function requestUploadNormalJSUnit() {
     it('SUB_Misc_Request_UploadManagement_0001', 0, async (done: Function) => {
       console.info("-----------------------SUB_Misc_Request_UploadManagement_0001 is starting-----------------------");
       try {
-        let RequestData = {
-          name: 'name',
-          value: '123'
-        }
-        console.error("====>SUB_Misc_Request_UploadManagement_0001 create 1");
-        let File = {
-          filename: 'test',
-          name: 'test',
-          uri: 'internal://cache/test.txt',
-          type: 'txt'
-        }
-        console.error("====>SUB_Misc_Request_UploadManagement_0001 create 2");
-        let uploadConfig = {
-          url: 'http://127.0.0.1',
-          header: {
-            headers: 'http'
-          },
-          method: 'POST',
-          files: [File],
-          data: [RequestData]
-        };
-        console.error("====>SUB_Misc_Request_UploadManagement_0001 create 3");
         await request.uploadFile(globalThis.abilityContext, uploadConfig);
         expect().assertFail();
         console.info("====>SUB_Misc_Request_UploadManagement_0001 uploadFile success");
@@ -209,28 +207,6 @@ export default function requestUploadNormalJSUnit() {
     it('SUB_Misc_Request_UploadManagement_Callback_0001', 0, async (done: Function) => {
       console.info("-----------------------SUB_Misc_Request_UploadManagement_Callback_0001 is starting-----------------------");
       try {
-        let RequestData = {
-          name: 'name',
-          value: '123'
-        }
-        console.error("====>SUB_Misc_Request_UploadManagement_Callback_0001 create 1");
-        let File = {
-          filename: 'test',
-          name: 'test',
-          uri: 'internal://cache/test.txt',
-          type: 'txt'
-        }
-        console.error("====>SUB_Misc_Request_UploadManagement_Callback_0001 create 2");
-        let uploadConfig = {
-          url: 'http://127.0.0.1',
-          header: {
-            headers: 'http'
-          },
-          method: 'POST',
-          files: [File],
-          data: [RequestData]
-        };
-        console.error("====>SUB_Misc_Request_UploadManagement_Callback_0001 create 3");
         request.uploadFile(globalThis.abilityContext, uploadConfig, (err, uploadTask)=>{
           if (err) {
             console.info("====>SUB_Misc_Request_UploadManagement_Callback_0001 create err: " + JSON.stringify(err));
