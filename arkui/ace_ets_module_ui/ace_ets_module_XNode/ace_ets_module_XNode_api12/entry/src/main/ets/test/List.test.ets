@@ -54,6 +54,14 @@ import expectedUpdateInterval from './FrameNodeTest/expectedUpdateInterval.test'
 import CornerTest from './GraphicsTest/GraphicsApiTest/CornerTest.test';
 import LengthMetricsUnitTest from './GraphicsTest/GraphicsApiTest/LengthMetricsUnitTest.test';
 import PercentReferenceTest from './GraphicsTest/GraphicsApiTest/PercentReferenceTest.test';
+import typeNodeBlankTest from './typeNodeTest/Blank.test';
+import typeNodeDividerTest from './typeNodeTest/Divider.test';
+import typeNodeGridColTest from './typeNodeTest/GridCol.test';
+import typeNodeListTest from './typeNodeTest/List.test';
+import typeNodeLoadingProgressTest from './typeNodeTest/LoadingProgress.test';
+import typeNodeProgressTest from './typeNodeTest/Progress.test';
+import typeNodeRelativeContainerTest from './typeNodeTest/RelativeContainer.test';
+import typeNodeSwiperTest from './typeNodeTest/Swiper.test';
 import RELOAD from './FrameNodeTest/RELOAD.test';
 
 import BuilderNodeApiRecycleTest from './FrameNodeTest/BuilderNodeApiRecycleTest.test';
@@ -109,6 +117,14 @@ export default function testsuite() {
   PercentReferenceTest();
   setCircleShapeTest();
   graphicGetInterfaceTest();
+  typeNodeBlankTest();
+  typeNodeDividerTest();
+  typeNodeGridColTest();
+  typeNodeListTest();
+  typeNodeLoadingProgressTest();
+  typeNodeProgressTest();
+  typeNodeRelativeContainerTest();
+  typeNodeSwiperTest();
   RELOAD()
   expectedUpdateInterval()
 }
