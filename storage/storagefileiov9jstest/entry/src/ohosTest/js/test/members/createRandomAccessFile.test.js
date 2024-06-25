@@ -17,6 +17,23 @@ import {
     fileIO, prepareFile, nextFileName, isIntNum, FILE_CONTENT,
     describe, it, expect
 } from '../Common';
+import fs from '@ohos.file.fs';
+
+const wpath = 'data/storage/el2/base/write.txt';
+export function initReadfile(fpath) {
+  const file = fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE | fileIO.OpenMode.TRUNC);
+  const buffer = new Array(16 * 1024);
+  for (let times = 0; times < 1; times++){
+    let charCode = 'a'.charCodeAt(0);
+    for(let i = 0; i < 26; i++){
+      buffer.fill(String.fromCharCode(charCode));
+      fileIO.writeSync(file.fd, buffer.join(''));
+      charCode++;
+    }
+  }
+  const writefile = fileIO.openSync(wpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE | fileIO.OpenMode.TRUNC);
+  fileIO.closeSync(writefile);
+}
 
 export default function fileIOCreateRandomAccessFile() {
 describe('fileIO_create_randomAccessFile', function () {
@@ -410,6 +427,115 @@ describe('fileIO_create_randomAccessFile', function () {
            expect(err.code == 13900019 && err.message == "Is a directory").assertTrue();
            fileIO.rmdirSync(dpath);
        }
+    });
+
+    /**
+     * @tc.number SUB_STORAGE_FILEIO_CREATE_RANDOMACCESSFILE_SYNC_1600
+     * @tc.name fileIO_create_randomaccessfile_sync_016
+     * @tc.desc Test createRandomAccessFileSync() interface. RandomAccessFileOptions
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
+    it('fileIO_create_randomaccessfile_sync_016', 0, async function () {
+        let fpath = await nextFileName('fileIO_create_randomaccessfile_sync_016');
+        initReadfile(fpath);
+        const readfile = fileIO.openSync(fpath, fs.OpenMode.READ_ONLY);
+        const writefile = fileIO.openSync(wpath, fs.OpenMode.WRITE_ONLY);
+
+        try {
+            let rs = fs.createRandomAccessFileSync(readfile).getReadStream();
+            let ws = fs.createRandomAccessFileSync(writefile).getWriteStream();
+            rs.on('data', (emitData) => {
+                let data = emitData?.data;
+                ws.write(data);
+                console.log('fileIO_create_randomaccessfile_sync_016 content ' + data.slice(0, 10) + ', data.length: ' + data?.length);
+              });
+              rs.on('close', async() =>{
+                let readhash = await Hash.hash(fpath, 'sha256');
+                let writehash = await Hash.hash(wpath, 'sha256');
+                console.log('fileIO_create_randomaccessfile_sync_016 readhash ' + readhash + ', writehash: ' + writehash);
+                expect(readhash == writehash).assertTrue();
+              });
+        } catch (err) {
+            console.info('fileIO_create_randomaccessfile_sync_016 has failed for ' + err);
+            expect(false).assertTrue();
+        }
+    });
+
+    /**
+     * @tc.number SUB_STORAGE_FILEIO_CREATE_RANDOMACCESSFILE_SYNC_1700
+     * @tc.name fileIO_create_randomaccessfile_sync_017
+     * @tc.desc Test createRandomAccessFileSync() interface. RandomAccessFileOptions
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
+    it('fileIO_create_randomaccessfile_sync_017', 0, async function () {
+        let fpath = await nextFileName('fileIO_create_randomaccessfile_sync_017');
+        initReadfile(fpath);
+        let size = fs.lstatSync(fpath).size;
+
+        try {
+            let randomaccessfile1 = fs.createRandomAccessFileSync(fpath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE, {start:0, end:size/4});
+            let rs = randomaccessfile1.getReadStream();
+            let randomaccessfile2 = fs.createRandomAccessFileSync(wpath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE, {start:0});
+            let ws = randomaccessfile2.getWriteStream();
+            rs.on('data', (emitData) => {
+                let data = emitData?.data;
+                ws.write(data);
+                console.log('fileIO_create_randomaccessfile_sync_017 content ' + data.slice(0, 10) + ', data.length: ' + data?.length);
+              });
+              rs.on('close', async() =>{
+                let readhash = await Hash.hash(fpath, 'sha256');
+                let writehash = await Hash.hash(wpath, 'sha256');
+                console.log('fileIO_create_randomaccessfile_sync_017 readhash ' + readhash + ', writehash: ' + writehash);
+                expect(readhash == writehash).assertTrue();
+              });
+            fileIO.unlinkSync(fpath);
+        } catch (err) {
+            console.info('fileIO_create_randomaccessfile_sync_017 has failed for ' + err);
+            expect(false).assertTrue();
+        }
+    });
+
+    /**
+     * @tc.number SUB_STORAGE_FILEIO_CREATE_RANDOMACCESSFILE_SYNC_1800
+     * @tc.name fileIO_create_randomaccessfile_sync_018
+     * @tc.desc Test createRandomAccessFileSync() interface. RandomAccessFileOptions
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
+    it('fileIO_create_randomaccessfile_sync_018', 0, async function () {
+        let fpath = await nextFileName('fileIO_create_randomaccessfile_sync_018');
+        initReadfile(fpath);
+        let size = fs.lstatSync(fpath).size;
+
+        try {
+            let randomaccessfile1 = fs.createRandomAccessFileSync(fpath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE, {start:size/4, end:size/2});
+            let rs = randomaccessfile1.getReadStream();
+            let randomaccessfile2 = fs.createRandomAccessFileSync(wpath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE, {start:size/4});
+            let ws = randomaccessfile2.getWriteStream();
+            rs.on('data', (emitData) => {
+                let data = emitData?.data;
+                ws.write(data);
+                console.log('fileIO_create_randomaccessfile_sync_018 content ' + data.slice(0, 10) + ', data.length: ' + data?.length);
+              });
+              rs.on('close', async() =>{
+                let readhash = await Hash.hash(fpath, 'sha256');
+                let writehash = await Hash.hash(wpath, 'sha256');
+                console.log('fileIO_create_randomaccessfile_sync_018 readhash ' + readhash + ', writehash: ' + writehash);
+                expect(readhash == writehash).assertTrue();
+              });
+            fileIO.unlinkSync(fpath);
+        } catch (err) {
+            console.info('fileIO_create_randomaccessfile_sync_018 has failed for ' + err);
+            expect(false).assertTrue();
+        }
     });
 
     /**
@@ -825,6 +951,80 @@ describe('fileIO_create_randomAccessFile', function () {
            done();
        }
    });
+
+     /**
+     * @tc.number SUB_STORAGE_FILEIO_CREATE_RANDOMACCESSFILE_ASYNC_1600
+     * @tc.name fileIO_create_randomaccessfile_async_016
+     * @tc.desc Test createRandomAccessFileSync() interface. RandomAccessFileOptions
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
+     it('fileIO_create_randomaccessfile_async_016', 0, async function () {
+        let fpath = await nextFileName('fileIO_create_randomaccessfile_async_016');
+        initReadfile(fpath);
+        let size = fs.lstatSync(fpath).size;
+
+        try {
+            let randomaccessfile1 = await fs.createRandomAccessFile(fpath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE, {start:size/4*3, end:size});
+            let rs = randomaccessfile1.getReadStream();
+            let randomaccessfile2 = await fs.createRandomAccessFile(wpath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE, {start:0});
+            let ws = randomaccessfile2.getWriteStream();
+            rs.on('data', (emitData) => {
+                let data = emitData?.data;
+                ws.write(data);
+                console.log('fileIO_create_randomaccessfile_async_016 content ' + data.slice(0, 10) + ', data.length: ' + data?.length);
+              });
+              rs.on('close', async() =>{
+                let readhash = await Hash.hash(fpath, 'sha256');
+                let writehash = await Hash.hash(wpath, 'sha256');
+                console.log('fileIO_create_randomaccessfile_async_016 readhash ' + readhash + ', writehash: ' + writehash);
+                expect(readhash == writehash).assertTrue();
+              });
+            fileIO.unlinkSync(fpath);
+        } catch (err) {
+            console.info('fileIO_create_randomaccessfile_async_016 has failed for ' + err);
+            expect(false).assertTrue();
+        }
+    });
+
+    /**
+     * @tc.number SUB_STORAGE_FILEIO_CREATE_RANDOMACCESSFILE_ASYNC_1800
+     * @tc.name fileIO_create_randomaccessfile_async_018
+     * @tc.desc Test createRandomAccessFileSync() interface. RandomAccessFileOptions
+     * @tc.size MEDIUM
+     * @tc.type Function
+     * @tc.level Level 3
+     * @tc.require
+     */
+    it('fileIO_create_randomaccessfile_async_018', 0, async function () {
+        let fpath = await nextFileName('fileIO_create_randomaccessfile_async_018');
+        initReadfile(fpath);
+        let size = fs.lstatSync(fpath).size;
+
+        try {
+            let randomaccessfile1 = await fs.createRandomAccessFile(fpath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE, {start:size/2, end:size});
+            let rs = randomaccessfile1.getReadStream();
+            let randomaccessfile2 = await fs.createRandomAccessFile(wpath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE, {start:size/4*3});
+            let ws = randomaccessfile2.getWriteStream();
+            rs.on('data', (emitData) => {
+                let data = emitData?.data;
+                ws.write(data);
+                console.log('fileIO_create_randomaccessfile_async_018 content ' + data.slice(0, 10) + ', data.length: ' + data?.length);
+              });
+              rs.on('close', async() =>{
+                let readhash = await Hash.hash(fpath, 'sha256');
+                let writehash = await Hash.hash(wpath, 'sha256');
+                console.log('fileIO_create_randomaccessfile_async_018 readhash ' + readhash + ', writehash: ' + writehash);
+                expect(readhash == writehash).assertTrue();
+              });
+            fileIO.unlinkSync(fpath);
+        } catch (err) {
+            console.info('fileIO_create_randomaccessfile_async_018 has failed for ' + err);
+            expect(false).assertTrue();
+        }
+    });
 
     /**
      * @tc.number SUB_STORAGE_FILEIO_RANDOMACCESSFILE_MULTITHREADED_REPLICATION_0000
