@@ -48,6 +48,7 @@ ohos_moduletest_suite("ActsDrawingNativeTest") {
      "DrawingNativePenTest.cpp",
      "DrawingNativeRectTest.cpp",
      "DrawingNativeShaderEffectTest.cpp",
+     "DrawingNativeShadowLayerTest.cpp",
   ]
 
   cflags = [
