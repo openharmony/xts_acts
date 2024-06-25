@@ -6,6 +6,8 @@
     "MainAbility/pages/component/searchDecoration",
     "MainAbility/pages/component/searchLetterSpacing",
     "MainAbility/pages/component/searchLineHeight",
-    "MainAbility/pages/component/APISearchExample"
+    "MainAbility/pages/component/APISearchExample",
+    "MainAbility/pages/Common/Search/Search_API/MenuPolicy_HIDE",
+    "MainAbility/pages/Common/Search/Search_API/MenuPolicy_SHOW"
   ]
 }
