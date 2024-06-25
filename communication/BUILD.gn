@@ -21,6 +21,7 @@ group("communication") {
       "bluetooth_br:ActsBluetoothBrJsTest",
       "bluetooth_gatt:ActsBluetoothGattJsTest",
       "bluetooth_location:ActsBluetoothLocationJsTest",
+      "bluetooth_nop:ActsBlutoothNopTest",
       "bluetooth_profile:ActsBluetoothProFileJsTest",
       "bluetooth_scanpairing:ActsBluetoothScanPairingJsTest",
       "bluetooth_standard:ActsBluetoothJsTest",
