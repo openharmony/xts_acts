@@ -17,7 +17,7 @@ import { check } from './utils';
 import { createUint32Array, indexSetter, indexSetterWithTimeout } from './TaskPoolTestImport';
 import { taskpoolExecuteChained } from './TaskPoolTestImport2';
 
-/// TESTS IMPLEMENTATION ///
+// TESTS IMPLEMENTATION //
 
 export function testHappyPath(): Promise<string> {
   let p = taskpool.execute(testHappyPathImpl)
