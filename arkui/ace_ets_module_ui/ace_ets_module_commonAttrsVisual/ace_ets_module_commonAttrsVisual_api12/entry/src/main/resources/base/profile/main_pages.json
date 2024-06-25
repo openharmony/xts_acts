@@ -4,6 +4,8 @@
         "MainAbility/pages/backgroundImage/backgroundImageResizable",
         "MainAbility/pages/foregroundEffect",
         "MainAbility/pages/ImageEffect/systemBarEffect",
-        "MainAbility/pages/ImageEffect/freeze"
+        "MainAbility/pages/ImageEffect/freeze",
+        "MainAbility/pages/ImageEffect/fractionStops",
+        "MainAbility/pages/backgroundImage/backgroundBrightness"
     ]
 }

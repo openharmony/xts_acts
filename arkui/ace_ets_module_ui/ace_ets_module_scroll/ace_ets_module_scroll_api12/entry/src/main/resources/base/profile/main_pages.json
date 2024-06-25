@@ -13,6 +13,8 @@
         "MainAbility/pages/ListFadeOut/ListFadeOutEx",
         "MainAbility/pages/ListFadeOut/ListFadeOutEx1",
         "MainAbility/pages/List/listSwipeActionApi12",
-        "MainAbility/pages/Scroll/ScrollSourceOther"
+        "MainAbility/pages/Scroll/ScrollSourceOther",
+        "MainAbility/pages/Scroll/ScrollSource",
+        "MainAbility/pages/Scroll/offsetRemain"
     ]
 }

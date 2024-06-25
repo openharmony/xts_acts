@@ -16,7 +16,6 @@
 import { afterAll, afterEach, beforeAll, beforeEach, describe, expect, it } from '@ohos/hypium';
 import image from '@ohos.multimedia.image';
 import drawing from '@ohos.graphics.drawing';
-import { getEnumCount } from './utils';
 import common2D from '@ohos.graphics.common2D';
 
 export default function drawingTsCanvasPart2Test() {

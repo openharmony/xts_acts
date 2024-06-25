@@ -570,5 +570,19 @@ describe('BatteryInfoTest', function () {
             + batteryInfo.CommonEventBatteryChangedKey.EXTRA_CAPACITY_LEVEL);
         expect(batteryInfo.CommonEventBatteryChangedKey.EXTRA_CAPACITY_LEVEL == 'capacityLevel').assertTrue();
     })
+
+    /**
+     * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0400
+     * @tc.name nowCurrent_JSTest
+     * @tc.desc Battery nowCurrent Interface Test
+     * @tc.level: Level 3
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('nowCurrent_JSTest', 0, function () {
+        let nowCurrent = batteryInfo.nowCurrent;
+        console.info('nowCurrent = ' + nowCurrent);
+        expect(nowCurrent >= -10000 && nowCurrent <= 10000).assertTrue();
+    })
 })
 }

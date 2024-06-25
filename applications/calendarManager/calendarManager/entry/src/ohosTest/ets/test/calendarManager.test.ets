@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import calendarManager from '@ohos.calendarManager';
-import { beforeAll, describe, expect, it } from '@ohos/hypium';
+import { describe, beforeAll, it, expect } from '@ohos/hypium';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import uitest from '@ohos.UiTest';
 import systemDateTime from '@ohos.systemDateTime';
@@ -1524,9 +1524,23 @@ export default function CalendarManagerTest() {
           excludedDates: [date.getTime() + 60 * 60 * 1000 * 2]
         },
       }
+
       try {
-        let eventId = await calendarMgr.editEvent(Schedule);
-        expect(eventId != null).assertTrue();
+        let driver = await uitest.Driver.create();
+        sleep(2000);
+        calendarMgr?.editEvent(Schedule).then((data) => {
+          expect(data != -1).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          console.info(CaseName + "Failed to editEvent" + JSON.stringify(err));
+          done();
+        })
+
+        let saveButton = await driver.findComponent(uitest.ON.text('component_id_edit_save_button'));
+        if (saveButton) {
+          saveButton.click();
+          sleep(2000);
+        }
       } catch (err) {
         console.info(CaseName + "Failed to editEvent" + JSON.stringify(err));
       }

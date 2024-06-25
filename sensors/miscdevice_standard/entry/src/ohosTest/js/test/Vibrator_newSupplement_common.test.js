@@ -1017,4 +1017,344 @@ describe("VibratorJsTest_misc_3", function () {
             done();
         }
     })
+
+    /*
+    * @tc.name:VibratorJsTest039
+    * @tc.desc:Verification results of the incorrect parameters of the test interface.
+    * @tc.number:SUB_SensorSystem_Vibrator_JsTest_1150
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
+    */
+    it("VibratorJsTest039", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'VibratorJsTest039'
+        if(isAvailable){
+            let ret = vibrator.isSupportEffectSync("haptic.effect.soft");
+            if (ret) {
+                vibrator.startVibration({
+                    type: "preset",
+                    effectId: "haptic.effect.soft",
+                    count: 1,
+                    intensity: 50,
+                }, {
+                    usage: "unknown"
+                }, (error) => {
+                    if (error) {
+                        console.info(TAG + ' vibrator error');
+                        expect(false).assertTrue();
+                    } else {
+                        console.info(TAG + ' vibrator success');
+                    }
+                    setTimeout(() => {
+                        done();
+                    }, 500);
+                });
+            } else {
+                console.info(TAG + ' This device is not supportEffect haptic.effect.soft');
+                done();
+            }            
+        } else {
+            console.info(TAG + ' This device is not supportEffect');
+            done();
+        }
+    })
+
+    /*
+    * @tc.name:VibratorJsTest040
+    * @tc.desc:Verification results of the incorrect parameters of the test interface.
+    * @tc.number:SUB_SensorSystem_Vibrator_JsTest_1160
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
+    */
+    it("VibratorJsTest040", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'VibratorJsTest040'
+        if(isAvailable){        
+            let ret = vibrator.isSupportEffectSync("haptic.effect.hard");
+            if (ret) {
+                vibrator.startVibration({
+                    type: "preset",
+                    effectId: "haptic.effect.hard",
+                    count: 1,
+                    intensity: 50,
+                }, {
+                    usage: "unknown"
+                }, (error) => {
+                    if (error) {
+                        console.info(TAG + ' vibrator error');
+                        expect(false).assertTrue();
+                    } else {
+                        console.info(TAG + ' vibrator success');
+                    }
+                    setTimeout(() => {
+                        done();
+                    }, 500);
+                });
+            } else {
+                console.info(TAG + ' This device is not supportEffect haptic.effect.hard');
+                done();
+            }            
+        } else {
+            console.info(TAG + ' This device is not supportEffect');
+            done();
+        }
+    })
+
+    /*
+    * @tc.name:VibratorJsTest041
+    * @tc.desc:Verification results of the incorrect parameters of the test interface.
+    * @tc.number:SUB_SensorSystem_Vibrator_JsTest_1170
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
+    */
+    it("VibratorJsTest041", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'VibratorJsTest041'
+        if(isAvailable){        
+            let ret = vibrator.isSupportEffectSync("haptic.effect.sharp");
+            if (ret) {
+                vibrator.startVibration({
+                    type: "preset",
+                    effectId: "haptic.effect.sharp",
+                    count: 1,
+                    intensity: 50,
+                }, {
+                    usage: "unknown"
+                }, (error) => {
+                    if (error) {
+                        console.info(TAG + ' vibrator error');
+                        expect(false).assertTrue();
+                    } else {
+                        console.info(TAG + ' vibrator success');
+                    }
+                    setTimeout(() => {
+                        done();
+                    }, 500);
+                });
+            } else {
+                console.info(TAG + ' This device is not supportEffect haptic.effect.sharp');
+                done();
+            }            
+        } else {
+            console.info(TAG + ' This device is not supportEffect');
+            done();
+        }
+    })
+
+    /*
+    * @tc.name:VibratorJsTest042
+    * @tc.desc:Verification results of the incorrect parameters of the test interface.
+    * @tc.number:SUB_SensorSystem_Vibrator_JsTest_1180
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
+    */
+    it("VibratorJsTest042", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'VibratorJsTest042'
+        if(isAvailable){        
+            let ret = vibrator.isSupportEffectSync("haptic.effect.soft");
+            if (ret) {
+                vibrator.startVibration({
+                    type: "preset",
+                    effectId: "haptic.effect.soft",
+                    count: 3,
+                    intensity: 100,
+                }, {
+                    usage: "unknown"
+                }, (error) => {
+                    if (error) {
+                        console.info(TAG + ' vibrator error');
+                        expect(false).assertTrue();
+                    } else {
+                        console.info(TAG + 'vibrator success');
+                    }
+                    setTimeout(() => {
+                        done();
+                    }, 500);                    
+                });            
+            } else {
+                console.info(TAG + ' This device is not supportEffect haptic.effect.soft');
+                done();
+            }            
+        } else {
+            console.info(TAG + ' This device is not supportEffect');
+            done();
+        }
+    })
+
+    /*
+    * @tc.name:VibratorJsTest043
+    * @tc.desc:Verification results of the incorrect parameters of the test interface.
+    * @tc.number:SUB_SensorSystem_Vibrator_JsTest_1190
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
+    */
+    it("VibratorJsTest043", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'VibratorJsTest043'
+        if(isAvailable){        
+            let ret = vibrator.isSupportEffectSync("haptic.effect.hard");
+            if (ret) {
+                vibrator.startVibration({
+                    type: "preset",
+                    effectId: "haptic.effect.hard",
+                    count: 3,
+                    intensity: 1,
+                }, {
+                    usage: "unknown"
+                }, (error) => {
+                    if (error) {
+                        console.info(TAG + ' vibrator error');
+                        expect(false).assertTrue();
+                    } else {
+                        console.info(TAG + ' vibrator success');
+                    }
+                    setTimeout(() => {
+                        done();
+                    }, 500);
+                });
+            } else {
+                console.info(TAG + ' This device is not supportEffect haptic.effect.hard');
+                done();
+            }            
+        } else {
+            console.info(TAG + ' This device is not supportEffect');
+            done();
+        }
+    })
+
+    /*
+    * @tc.name:VibratorJsTest044
+    * @tc.desc:Verification results of the incorrect parameters of the test interface.
+    * @tc.number:SUB_SensorSystem_Vibrator_JsTest_1200
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
+    */
+    it("VibratorJsTest044", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'VibratorJsTest044'
+        if(isAvailable){        
+            let ret = vibrator.isSupportEffectSync("haptic.effect.sharp");
+            if (ret) {
+                vibrator.startVibration({
+                    type: "preset",
+                    effectId: "haptic.effect.sharp",
+                    count: 3,
+                    intensity: "1",
+                }, {
+                    usage: "unknown"
+                }, (error) => {
+                    if (error) {
+                        console.info(TAG + ' vibrator error');
+                        expect(false).assertTrue();
+                    } else {
+                        console.info(TAG + ' vibrator success');
+                    }
+                    setTimeout(() => {
+                        done();
+                    }, 500);
+                });                          
+            } else {
+                console.info(TAG + ' This device is not supportEffect haptic.effect.sharp');
+                done();
+            }            
+        } else {
+            console.info(TAG + ' This device is not supportEffect');
+            done();
+        }
+    })
+    
+    /*
+    * @tc.name:VibratorJsTest045
+    * @tc.desc:Verification results of the incorrect parameters of the test interface.
+    * @tc.number:SUB_SensorSystem_Vibrator_JsTest_1210
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
+    */
+    it("VibratorJsTest045", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'VibratorJsTest045'
+        if(isAvailable){        
+            let ret = vibrator.isSupportEffectSync("haptic.effect.sharp");
+            if (ret) {
+                try {
+                    vibrator.startVibration({
+                        type: "preset",
+                        effectId: "haptic.effect.sharp",
+                        count: 1,
+                        intensity: 0,
+                    }, {
+                        usage: "unknown"
+                    }, (error) => {
+                        if (error) {
+                            console.info(TAG + ' vibrator error');
+                        } else {
+                            console.info(TAG + 'vibrator success');
+                            expect(false).assertTrue();
+                        }
+                        setTimeout(() => {
+                            done();
+                        }, 500);                        
+                    });
+                } catch (error) {
+                    console.info(TAG + " intensity error: " + JSON.stringify(error));
+                    expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+                    done()
+                }                      
+            } else {
+                console.info(TAG + ' This device is not supportEffect haptic.effect.sharp');
+                done();
+            }            
+        } else {
+            console.info(TAG + ' This device is not supportEffect');
+            done();
+        }
+    }) 
+    
+    /*
+    * @tc.name:VibratorJsTest046
+    * @tc.desc:Verification results of the incorrect parameters of the test interface.
+    * @tc.number:SUB_SensorSystem_Vibrator_JsTest_1220
+    * @tc.level:Level 3
+    * @tc.type:Function
+    * @tc.size:MediumTest
+    */
+    it("VibratorJsTest046", TestType.FUNCTION | Size.MEDIUMTEST | Level.LEVEL3, async function (done) {
+        TAG = 'VibratorJsTest046'
+        if(isAvailable){        
+            let ret = vibrator.isSupportEffectSync("haptic.effect.sharp");
+            if (ret) {
+                try {
+                    vibrator.startVibration({
+                        type: "preset",
+                        effectId: "haptic.effect.sharp",
+                        count: 3,
+                        intensity: 101,
+                    }, {
+                        usage: "unknown"
+                    }, (error) => {
+                        if (error) {
+                            console.info(TAG + ' vibrator error');
+                        } else {
+                            console.info(TAG + 'vibrator success');
+                            expect(false).assertTrue();
+                        }
+                        setTimeout(() => {
+                            done();
+                        }, 500);                           
+                    });
+                } catch (error) {
+                    console.info(TAG + " intensity error: " + JSON.stringify(error));
+                    expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
+                    done()
+                }                      
+            } else {
+                console.info(TAG + ' This device is not supportEffect haptic.effect.sharp');
+                done();
+            }            
+        } else {
+            console.info(TAG + ' This device is not supportEffect');
+            done();
+        }
+    })    
     })}
