@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2023-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -46,7 +46,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetPreferencesJSAPITest_0500
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetPreferencesJSAPITest_0500
      * @tc.name   : testPreferencesGetPreferencesPromise001
      * @tc.desc   : GetPreferences promise interface test
      * @tc.size   : MediumTest
@@ -69,7 +69,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetPreferencesJSAPITest_0100
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetPreferencesJSAPITest_0100
      * @tc.name   : testPreferencesGetPreferencesPromise002
      * @tc.desc   : GetPreferences promise interface test
      * @tc.size   : MediumTest
@@ -96,7 +96,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetPreferencesJSAPITest_0200
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetPreferencesJSAPITest_0200
      * @tc.name   : testPreferencesGetPreferencesPromise003
      * @tc.desc   : GetPreferences promise interface test
      * @tc.size   : MediumTest
@@ -121,7 +121,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetPreferencesJSAPITest_0300
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetPreferencesJSAPITest_0300
      * @tc.name   : testPreferencesGetPreferencesPromise004
      * @tc.desc   : GetPreferences promise interface test
      * @tc.size   : MediumTest
@@ -149,7 +149,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_1100
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_1100
      * @tc.name   : testPreferencesDeletePreferencesPromise001
      * @tc.desc   : DeletePreferences promise interface test
      * @tc.size   : MediumTest
@@ -176,7 +176,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_1000
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_1000
      * @tc.name   : testPreferencesDeletePreferencesPromise002
      * @tc.desc   : DeletePreferences promise interface test
      * @tc.size   : MediumTest
@@ -210,7 +210,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_0200
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetJSAPITest_0200
      * @tc.name   : testPreferencesGetDefValuePromise0001
      * @tc.desc   : Get defaultValue promise interface test
      * @tc.size   : MediumTest
@@ -231,7 +231,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_0500
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetJSAPITest_0500
      * @tc.name   : testPreferencesGetFloatPromise0001
      * @tc.desc   : Get float promise interface test
      * @tc.size   : MediumTest
@@ -253,7 +253,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_0600
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetJSAPITest_0600
      * @tc.name   : testPreferencesGetIntPromise0001
      * @tc.desc   : Get int promise interface test
      * @tc.size   : MediumTest
@@ -275,7 +275,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number :  SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_0700
+     * @tc.number :  SUB_DistributedData_CrossPlatform_SDK_Preferences_GetJSAPITest_0700
      * @tc.name   : testPreferencesGetLongPromise0001
      * @tc.desc   : Get long promise interface test
      * @tc.size   : MediumTest
@@ -297,7 +297,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_1000
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetJSAPITest_1000
      * @tc.name   : testPreferencesGetStringPromise0001
      * @tc.desc   : Get string promise interface test
      * @tc.size   : MediumTest
@@ -320,7 +320,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_0400
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetJSAPITest_0400
      * @tc.name   : testPreferencesGetBooleanPromise0001
      * @tc.desc   : Get boolean promise interface test
      * @tc.size   : MediumTest
@@ -342,7 +342,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_0800
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetJSAPITest_0800
      * @tc.name   : testPreferencesGetStringArrayPromise0001
      * @tc.desc   : Get StringArray promise interface test
      * @tc.size   : MediumTest
@@ -367,7 +367,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_0800
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetJSAPITest_0900
      * @tc.name   : testPreferencesGetNumArrayPromise0001
      * @tc.desc   : Get NumArray promise interface test
      * @tc.size   : MediumTest
@@ -392,7 +392,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_0300
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetJSAPITest_0300
      * @tc.name   : testPreferencesGetBoolArrayPromise0001
      * @tc.desc   : Get BoolArray promise interface test
      * @tc.size   : MediumTest
@@ -417,7 +417,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_2000
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetJSAPITest_2000
      * @tc.name   : testPreferencesGetSyncDefaultValue0001
      * @tc.desc   : GetSync defaultValue interface test
      * @tc.size   : MediumTest
@@ -432,7 +432,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_2300
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetJSAPITest_2300
      * @tc.name   : testPreferencesGetSyncFloat0001
      * @tc.desc   : GetSync float interface test
      * @tc.size   : MediumTest
@@ -448,7 +448,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_2400
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetJSAPITest_2400
      * @tc.name   : testPreferencesGetSyncInt0001
      * @tc.desc   : GetSync int interface test
      * @tc.size   : MediumTest
@@ -464,7 +464,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_2500
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetJSAPITest_2500
 
      * @tc.name   : testPreferencesGetSyncLong0001
      * @tc.desc   : GetSync long interface test
@@ -481,7 +481,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_2800
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetJSAPITest_2800
      * @tc.name   : testPreferencesGetSyncString0001
      * @tc.desc   : GetSync string interface test
      * @tc.size   : MediumTest
@@ -497,7 +497,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_2200
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetJSAPITest_2200
      * @tc.name   : testPreferencesGetSyncBoolean0001
      * @tc.desc   : GetSync string interface test
      * @tc.size   : MediumTest
@@ -513,7 +513,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_2700
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetJSAPITest_2700
      * @tc.name   : testPreferencesGetSyncStringArray0001
      * @tc.desc   : GetSync stringArray interface test
      * @tc.size   : MediumTest
@@ -532,7 +532,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_2600
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetJSAPITest_2600
 
      * @tc.name   : testPreferencesGetSyncNumArray0001
      * @tc.desc   : GetSync numArray interface test
@@ -552,7 +552,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_2100
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetJSAPITest_2100
      * @tc.name   : testPreferencesGetSyncBoolArray0001
      * @tc.desc   : GetSync boolArray interface test
      * @tc.size   : MediumTest
@@ -571,7 +571,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_1400
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetJSAPITest_1400
      * @tc.name   : testPreferencesGetAllPromise0001
      * @tc.desc   : GetAll promise interface test
      * @tc.size   : MediumTest
@@ -621,7 +621,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_1500
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetJSAPITest_1500
 
      * @tc.name   : testPreferencesGetAllSync0001
      * @tc.desc   : GetAllSync interface test
@@ -665,7 +665,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_0800
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_PutJSAPITest_0800
      * @tc.name   : testPreferencesPutFloatPromise0001
      * @tc.desc   : Put float promise interface test
      * @tc.size   : MediumTest
@@ -684,7 +684,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_0900
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_PutJSAPITest_0900
      * @tc.name   : testPreferencesPutIntPromise0001
      * @tc.desc   : Put int promise interface test
      * @tc.size   : MediumTest
@@ -703,7 +703,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_1000
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_PutJSAPITest_1000
      * @tc.name   : testPreferencesPutLongPromise0001
      * @tc.desc   : Put long promise interface test
      * @tc.size   : MediumTest
@@ -721,7 +721,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_1300
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_PutJSAPITest_1300
      * @tc.name   : testPreferencesPutStringPromise0001
      * @tc.desc   : Put string promise interface test
      * @tc.size   : MediumTest
@@ -739,7 +739,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_0700
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_PutJSAPITest_0700
      * @tc.name   : testPreferencesPutBooleanPromise0001
      * @tc.desc   : Put boolean promise interface test
      * @tc.size   : MediumTest
@@ -758,7 +758,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_1200
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_PutJSAPITest_1200
      * @tc.name   : testPreferencesPutStringArrayPromise0001
      * @tc.desc   : Put StringArray promise interface test
      * @tc.size   : MediumTest
@@ -783,7 +783,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_1100
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_PutJSAPITest_1100
      * @tc.name   : testPreferencesPutNumArrayPromise0001
      * @tc.desc   : Put NumberArray promise interface test
      * @tc.size   : MediumTest
@@ -808,7 +808,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_0600
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_PutJSAPITest_0600
      * @tc.name   : testPreferencesPutBoolArrayPromise0001
      * @tc.desc   : Put BoolArray promise interface test
      * @tc.size   : MediumTest
@@ -833,7 +833,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_2000
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_PutJSAPITest_2100
      * @tc.name   : testPreferencesPutSyncFloat0001
      * @tc.desc   : PutSync float interface test
      * @tc.size   : MediumTest
@@ -852,7 +852,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_2200
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_PutJSAPITest_2200
      * @tc.name   : testPreferencesPutSyncInt0001
      * @tc.desc   : PutSync int interface test
      * @tc.size   : MediumTest
@@ -871,7 +871,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_2300
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_PutJSAPITest_2300
      * @tc.name   : testPreferencesPutSyncLong0001
      * @tc.desc   : PutSync long interface test
      * @tc.size   : MediumTest
@@ -889,7 +889,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_2600
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_PutJSAPITest_2600
      * @tc.name   : testPreferencesPutSyncString0001
      * @tc.desc   : PutSync string interface test
      * @tc.size   : MediumTest
@@ -907,7 +907,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_2000
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_PutJSAPITest_2000
      * @tc.name   : testPreferencesPutSyncBoolean0001
      * @tc.desc   : PutSync boolean interface test
      * @tc.size   : MediumTest
@@ -926,7 +926,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_2500
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_PutJSAPITest_2500
      * @tc.name   : testPreferencesPutSyncStringArray0001
      * @tc.desc   : PutSync StringArray interface test
      * @tc.size   : MediumTest
@@ -952,7 +952,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_2400
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_PutJSAPITest_2400
      * @tc.name   : testPreferencesPutSyncNumArray0001
      * @tc.desc   : PutSync NumberArray interface test
      * @tc.size   : MediumTest
@@ -978,7 +978,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_1900
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_PutJSAPITest_1900
      * @tc.name   : testPreferencesPutSyncBoolArray0001
      * @tc.desc   : PutSync BoolArray interface test
      * @tc.size   : MediumTest
@@ -1004,7 +1004,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_HasJSAPITest_0200
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_HasJSAPITest_0200
      * @tc.name   : testPreferencesHasKeyPromise0001
      * @tc.desc   : Has float promise interface test
      * @tc.size   : MediumTest
@@ -1025,7 +1025,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_HasJSAPITest_0300
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_HasJSAPITest_0300
      * @tc.name   : testPreferencesHasKeyPromise0002
      * @tc.desc   : Has int promise interface test
      * @tc.size   : MediumTest
@@ -1046,7 +1046,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_HasJSAPITest_0400
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_HasJSAPITest_0400
      * @tc.name   : testPreferencesHasKeyPromise0003
      * @tc.desc   : Has long promise interface test
      * @tc.size   : MediumTest
@@ -1067,7 +1067,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_HasJSAPITest_0500
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_HasJSAPITest_0500
      * @tc.name   : testPreferencesHasKeyPromise0004
      * @tc.desc   : Has string promise interface test
      * @tc.size   : MediumTest
@@ -1088,7 +1088,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_HasJSAPITest_0100
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_HasJSAPITest_0100
      * @tc.name   : testPreferencesHasKeyPromise0005
      * @tc.desc   : Has boolean promise interface test
      * @tc.size   : MediumTest
@@ -1109,7 +1109,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_HasJSAPITest_0900
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_HasJSAPITest_0900
      * @tc.name   : testPreferencesHasSync0001
      * @tc.desc   : HasSync float interface test
      * @tc.size   : MediumTest
@@ -1124,7 +1124,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_HasJSAPITest_1000
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_HasJSAPITest_1000
      * @tc.name   : testPreferencesHasSync0002
      * @tc.desc   : HasSync int interface test
      * @tc.size   : MediumTest
@@ -1139,7 +1139,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_HasJSAPITest_1100
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_HasJSAPITest_1100
      * @tc.name   : testPreferencesHasSync0003
      * @tc.desc   : HasSync long interface test
      * @tc.size   : MediumTest
@@ -1154,7 +1154,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_HasJSAPITest_1200
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_HasJSAPITest_1200
      * @tc.name   : testPreferencesHasSync0004
      * @tc.desc   : HasSync string interface test
      * @tc.size   : MediumTest
@@ -1169,7 +1169,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_HasJSAPITest_0800
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_HasJSAPITest_0800
      * @tc.name   : testPreferencesHasSync0005
      * @tc.desc   : HasSync boolean interface test
      * @tc.size   : MediumTest
@@ -1184,7 +1184,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_ClearJSAPITest_0200
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_ClearJSAPITest_0200
      * @tc.name   : testPreferencesClearPromise0001
      * @tc.desc   : Clear promise interface test
      * @tc.size   : MediumTest
@@ -1243,7 +1243,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_ClearJSAPITest_0300
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_ClearJSAPITest_0300
      * @tc.name   : testPreferencesClearSync0001
      * @tc.desc   : ClearSync interface test
      * @tc.size   : MediumTest
@@ -1296,7 +1296,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_0300
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_0300
      * @tc.name   : testPreferencesDeletePromise0001
      * @tc.desc   : Delete promise interface test
      * @tc.size   : MediumTest
@@ -1321,7 +1321,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_1900
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_1900
      * @tc.name   : testPreferencesDeleteSync0001
      * @tc.desc   : DeleteSync interface test
      * @tc.size   : MediumTest
@@ -1340,7 +1340,7 @@ export default function preferencesPromiseTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_FlushJSAPITest_0200
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_FlushJSAPITest_0200
      * @tc.name   : testPreferencesFlushPromise0001
      * @tc.desc   : Flush promise interface test
      * @tc.size   : MediumTest

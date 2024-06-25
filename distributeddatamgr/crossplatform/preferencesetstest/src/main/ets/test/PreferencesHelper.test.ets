@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2023-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -42,7 +42,7 @@ export default function preferencesHelperTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetPreferencesJSAPITest_1300
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetPreferencesJSAPITest_1300
      * @tc.name   : testGetPreferencesHelper0001
      * @tc.desc   : GetPreferencesSync interface test
      * @tc.size   : MediumTest
@@ -58,7 +58,7 @@ export default function preferencesHelperTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetPreferencesJSAPITest_1200
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetPreferencesJSAPITest_1200
      * @tc.name   : testGetPreferencesHelper0002
      * @tc.desc   : GetPreferences interface test
      * @tc.size   : MediumTest
@@ -85,7 +85,7 @@ export default function preferencesHelperTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_RemoveJSAPITest_1300
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_RemoveJSAPITest_1300
      * @tc.name   : testRemovePreferencesFromCacheHelper0001
      * @tc.desc   : RemovePreferencesFromCache interface test
      * @tc.size   : MediumTest
@@ -107,7 +107,7 @@ export default function preferencesHelperTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_RemoveJSAPITest_0600
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_RemoveJSAPITest_0600
      * @tc.name   : testRemovePreferencesFromCacheHelper0004
      * @tc.desc   : RemovePreferencesFromCache interface test
      * @tc.size   : MediumTest
@@ -137,7 +137,7 @@ export default function preferencesHelperTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_RemoveJSAPITest_0800
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_RemoveJSAPITest_0800
      * @tc.name   : testRemovePreferencesFromCacheHelper0005
      * @tc.desc   : RemovePreferencesFromCache interface test
      * @tc.size   : MediumTest
@@ -163,7 +163,7 @@ export default function preferencesHelperTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_RemoveJSAPITest_0700
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_RemoveJSAPITest_0700
      * @tc.name   : testRemovePreferencesFromCacheHelper0006
      * @tc.desc   : RemovePreferencesFromCache interface test
      * @tc.size   : MediumTest
@@ -197,7 +197,7 @@ export default function preferencesHelperTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_1800
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_1800
      * @tc.name   : testPreferencesDeleteHelper0001
      * @tc.desc   : DeletePreferences interface test
      * @tc.size   : MediumTest
@@ -220,7 +220,7 @@ export default function preferencesHelperTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_0700
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_0700
      * @tc.name   : testPreferencesDeleteHelper0004
      * @tc.desc   : DeletePreferences interface test
      * @tc.size   : MediumTest
@@ -250,7 +250,7 @@ export default function preferencesHelperTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_0900
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_0900
      * @tc.name   : testPreferencesDeleteHelper0005
      * @tc.desc   : DeletePreferences interface test
      * @tc.size   : MediumTest
@@ -277,7 +277,7 @@ export default function preferencesHelperTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_0800
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_0800
      * @tc.name   : testPreferencesDeleteHelper0006
      * @tc.desc   : DeletePreferences interface test
      * @tc.size   : MediumTest
@@ -311,7 +311,7 @@ export default function preferencesHelperTest() {
     });
 
     /**
-     * @tc.number  : SUB_DistributeData_CrossPlatform_SDK_Preferences_JSAPITest_0400
+     * @tc.number  : SUB_DistributedData_CrossPlatform_SDK_Preferences_JSAPITest_0400
      * @tc.name    : testMaxKeyLength001
      * @tc.desc    : Test key length
      * @tc.size    : MediumTest
@@ -323,7 +323,7 @@ export default function preferencesHelperTest() {
     });
 
     /**
-     * @tc.number  : SUB_DistributeData_CrossPlatform_SDK_Preferences_JSAPITest_0500
+     * @tc.number  : SUB_DistributedData_CrossPlatform_SDK_Preferences_JSAPITest_0500
      * @tc.name    : testMaxValueLength001
      * @tc.desc    : Test value length
      * @tc.size    : MediumTest
@@ -335,7 +335,7 @@ export default function preferencesHelperTest() {
     });
 
     /**
-     * @tc.number  : SUB_DistributeData_CrossPlatform_SDK_Preferences_OnOFFJSAPITest_0800
+     * @tc.number  : SUB_DistributedData_CrossPlatform_SDK_Preferences_OnOFFJSAPITest_0800
      * @tc.name    : testPreferencesOn001
      * @tc.desc    : Test on interface
      * @tc.size    : MediumTest
@@ -359,7 +359,7 @@ export default function preferencesHelperTest() {
     });
 
     /**
-     * @tc.number  : SUB_DistributeData_CrossPlatform_SDK_Preferences_OnOFFJSAPITest_0600
+     * @tc.number  : SUB_DistributedData_CrossPlatform_SDK_Preferences_OnOFFJSAPITest_0600
      * @tc.name    : testPreferencesOn002
      * @tc.desc    : Test on interface
      * @tc.size    : MediumTest
@@ -382,7 +382,7 @@ export default function preferencesHelperTest() {
     });
 
     /**
-     * @tc.number  : SUB_DistributeData_CrossPlatform_SDK_Preferences_OnOFFJSAPITest_0400
+     * @tc.number  : SUB_DistributedData_CrossPlatform_SDK_Preferences_OnOFFJSAPITest_0400
      * @tc.name    : testPreferencesOn003
      * @tc.desc    : Test on interface
      * @tc.size    : MediumTest
@@ -405,7 +405,7 @@ export default function preferencesHelperTest() {
     });
 
     /**
-     * @tc.number  : SUB_DistributeData_CrossPlatform_SDK_Preferences_OnOFFJSAPITest_0300
+     * @tc.number  : SUB_DistributedData_CrossPlatform_SDK_Preferences_OnOFFJSAPITest_0300
      * @tc.name    : testPreferencesOn004
      * @tc.desc    : Test on interface
      * @tc.size    : MediumTest
@@ -428,7 +428,7 @@ export default function preferencesHelperTest() {
     });
 
     /**
-     * @tc.number  : SUB_DistributeData_CrossPlatform_SDK_Preferences_OnOFFJSAPITest_0200
+     * @tc.number  : SUB_DistributedData_CrossPlatform_SDK_Preferences_OnOFFJSAPITest_0200
      * @tc.name    : testPreferencesOff001
      * @tc.desc    : Test off interface
      * @tc.size    : MediumTest
@@ -456,7 +456,7 @@ export default function preferencesHelperTest() {
     });
 
     /**
-     * @tc.number  : SUB_DistributeData_CrossPlatform_SDK_Preferences_OnOFFJSAPITest_0100
+     * @tc.number  : SUB_DistributedData_CrossPlatform_SDK_Preferences_OnOFFJSAPITest_0100
      * @tc.name    : testPreferencesOff002
      * @tc.desc    : Test off interface
      * @tc.size    : MediumTest
@@ -484,7 +484,7 @@ export default function preferencesHelperTest() {
     });
 
     /**
-     * @tc.number  : SUB_DistributeData_CrossPlatform_SDK_Preferences_OnOFFJSAPITest_0700
+     * @tc.number  : SUB_DistributedData_CrossPlatform_SDK_Preferences_OnOFFJSAPITest_0700
      * @tc.name    : testPreferencesOff003
      * @tc.desc    : Test off interface
      * @tc.size    : MediumTest
@@ -509,7 +509,7 @@ export default function preferencesHelperTest() {
     });
 
     /**
-     * @tc.number  : SUB_DistributeData_CrossPlatform_SDK_Preferences_OnOFFJSAPITest_0500
+     * @tc.number  : SUB_DistributedData_CrossPlatform_SDK_Preferences_OnOFFJSAPITest_0500
      * @tc.name    : testPreferencesOff004
      * @tc.desc    : Test off interface
      * @tc.size    : MediumTest
