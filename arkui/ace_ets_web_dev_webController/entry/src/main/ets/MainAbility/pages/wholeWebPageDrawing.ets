@@ -28,13 +28,13 @@ struct wholeWebPageDrawing {
   @State str: string = "wholeWebPageDrawing0100";
   controller: web_webview.WebviewController = new web_webview.WebviewController();
 
-  //aboutToAppear(): void {
-  //  try {
-  //    web_webview.WebviewController.enableWholeWebPageDrawing();
-  //  } catch (error) {
-  //    console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
-  //  }
-  //}
+  aboutToAppear(): void {
+    try {
+      web_webview.WebviewController.enableWholeWebPageDrawing();
+    } catch (error) {
+      console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+    }
+  }
 
   onPageShow(){
     let valueChangeEvent: events_emitter.InnerEvent = {
