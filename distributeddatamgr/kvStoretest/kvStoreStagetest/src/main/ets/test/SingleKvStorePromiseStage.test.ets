@@ -2071,28 +2071,6 @@ export default function singleKvStorePromiseStageTest(){
     })
 
     /**
-     * @tc.number SUB_DISTRIBUTEDDATAMGR_SINGLEKVSTORE_GETSECURITYLEVELETSTEST_0100
-     * @tc.name [JS-API8]SingleKvStoreGetSecurityLevel.
-     * @tc.desc Test Js Api SingleKvStoreGetSecurityLevel testcase 001
-     */
-    // it('testEtsSingleKvStoreGetSecurityLevel001', 0, async function (done) {
-    //     console.info('testSingleKvStoreGetSecurityLevel001');
-    //     try {
-    //         await kvStore.getSecurityLevel().then((data) => {
-    //             console.info('testSingleKvStoreGetSecurityLevel001 getSecurityLevel success');
-    //             expect(data == factory.SecurityLevel.S2).assertTrue();
-    //         }).catch((err) => {
-    //             console.info('testSingleKvStoreGetSecurityLevel001 getSecurityLevel fail ' + err);
-    //             expect(null).assertFail();
-    //         });
-    //     }catch(e) {
-    //         console.info('testSingleKvStoreGetSecurityLevel001 e ' + e);
-    //         expect(null).assertFail();
-    //     }
-    //     done();
-    // })
-
-    /**
      * @tc.number SUB_DistributedData_KVStore_SDK_SingleKvStoreEtsApiTest_0360
      * @tc.name [JS-API8]SingleKvStoreGetSecurityLevel.
      * @tc.desc Test Js Api SingleKvStoreGetSecurityLevel testcase 002
