@@ -59,6 +59,7 @@ export default function samplingOptionsTest() {
       }
       try {
         new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST);
+        new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_LINEAR);
         console.info(msg + ' SamplingOptions successed');
       } catch (e) {
         console.info(msg + ` SamplingOptions errorCode is:  ${e.code} + errormsg is: ${e.message}`);
