@@ -54,6 +54,7 @@ import expectedUpdateInterval from './FrameNodeTest/expectedUpdateInterval.test'
 import CornerTest from './GraphicsTest/GraphicsApiTest/CornerTest.test';
 import LengthMetricsUnitTest from './GraphicsTest/GraphicsApiTest/LengthMetricsUnitTest.test';
 import PercentReferenceTest from './GraphicsTest/GraphicsApiTest/PercentReferenceTest.test';
+import RELOAD from './FrameNodeTest/RELOAD.test';
 
 import BuilderNodeApiRecycleTest from './FrameNodeTest/BuilderNodeApiRecycleTest.test';
 import BuilderNodeApiReuseTest from './FrameNodeTest/BuilderNodeApiReuseTest.test';
@@ -108,5 +109,6 @@ export default function testsuite() {
   PercentReferenceTest();
   setCircleShapeTest();
   graphicGetInterfaceTest();
+  RELOAD()
   expectedUpdateInterval()
 }
