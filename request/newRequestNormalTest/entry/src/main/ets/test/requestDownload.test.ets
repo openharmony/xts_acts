@@ -93,8 +93,8 @@ export default function requestDownloadNormalJSUnit() {
     it('SUB_Misc_Request_DownloadManagement_Callback_0001', 0, async (done: Function) => {
       console.info("====>---------------------SUB_Misc_Request_DownloadManagement_Callback_0001 is starting---------------------");
       try {
-        let context : common.UIAbilityContext = globalThis.ablityContext;
-        let downloadFileConfig : request.DownloadConfig = {
+        console.error("====>SUB_Misc_Request_DownloadManagement_Callback_0001 create 1");
+        let downloadConfig = {
           url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
           header: {
             headers: 'http'
@@ -102,19 +102,21 @@ export default function requestDownloadNormalJSUnit() {
           enableMetered: false,
           enableRoaming: false,
           description: 'XTS download test!',
-          filePath: "downloadFilePath1",
+          filePath: "SUB_Misc_Request_DownloadManagement_Callback_0001",
           title: 'XTS download test!',
         }
-
-        request.downloadFile(context, downloadFileConfig, (err, downloadTask)=>{
+        console.error("====>SUB_Misc_Request_DownloadManagement_Callback_0001 create 2");
+        await request.downloadFile(globalThis.abilityContext, downloadConfig, (err, downloadTask) => {
           if (err) {
             console.info("====>SUB_Misc_Request_DownloadManagement_Callback_0001 create err: " + JSON.stringify(err));
             expect(err.code).assertEqual(201);
             done();
+          }else {
+            console.error("====>SUB_Misc_Request_DownloadManagement_Callback_0001 create success without permission");
+            expect().assertFail();
+            done();
           }
-          console.error("====>SUB_Misc_Request_DownloadManagement_Callback_0001 create success without permission");
-          expect().assertFail();
-          done();
+
         });
       } catch (err) {
         console.error("====>SUB_Misc_Request_DownloadManagement_Callback_0001 create err: " + JSON.stringify(err));

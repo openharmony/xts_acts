@@ -13,7 +13,8 @@
  * limitations under the License.
  */
 
-import fileio from '@ohos.fileio'
+import fileio from '@ohos.fileio';
+import fs from '@ohos.file.fs';
 import request from "@ohos.request";
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
@@ -165,49 +166,35 @@ export default function requestUploadNormalJSUnit() {
     it('SUB_Misc_Request_UploadManagement_0001', 0, async (done: Function) => {
       console.info("-----------------------SUB_Misc_Request_UploadManagement_0001 is starting-----------------------");
       try {
-        let context : common.UIAbilityContext = globalThis.ablityContext;
-        let cacheDir : string = context.cacheDir;
-
-        // 新建一个本地应用文件
-        let file = fs.openSync(cacheDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-        fs.writeSync(file.fd, 'upload file test');
-        fs.closeSync(file);
-
-        // 上传任务配置项
-        let header = new Map<Object, string>();
-        header.set('key1', 'value1');
-        header.set('key2', 'value2');
-        let files: Array<request.File> = [
-        //uri前缀internal://cache 对应cacheDir目录
-          {
-            filename: 'test.txt', name: 'test', uri: 'internal://cache/test.txt', type: 'txt'
-          }
-        ]
-        let data: Array<request.RequestData> = [{
-          name: 'name', value: 'value'
-        }];
-        let uploadConfig : request.UploadConfig = {
-          url: 'https://xxx',
-          header: header,
-          method: 'POST',
-          files: files,
-          data: data
+        let RequestData = {
+          name: 'name',
+          value: '123'
         }
-
-        request.uploadFile(context, uploadConfig)
-          .then((uploadTask: request.UploadTask) => {
-            console.error("====>SUB_Misc_Request_UploadManagement_0001 create success without permission");
-            expect().assertFail();
-            done();
-          })
-          .catch((err: BusinessError) => {
-            console.info("====>SUB_Misc_Request_UploadManagement_0001 create err: " + JSON.stringify(err));
-            expect(err.code).assertEqual(201);
-            done();
-          })
-      } catch (err) {
-        console.error("====>SUB_Misc_Request_UploadManagement_0001 create err: " + JSON.stringify(err));
+        console.error("====>SUB_Misc_Request_UploadManagement_0001 create 1");
+        let File = {
+          filename: 'test',
+          name: 'test',
+          uri: 'internal://cache/test.txt',
+          type: 'txt'
+        }
+        console.error("====>SUB_Misc_Request_UploadManagement_0001 create 2");
+        let uploadConfig = {
+          url: 'http://127.0.0.1',
+          header: {
+            headers: 'http'
+          },
+          method: 'POST',
+          files: [File],
+          data: [RequestData]
+        };
+        console.error("====>SUB_Misc_Request_UploadManagement_0001 create 3");
+        await request.uploadFile(globalThis.abilityContext, uploadConfig);
         expect().assertFail();
+        console.info("====>SUB_Misc_Request_UploadManagement_0001 uploadFile success");
+        done();
+      } catch (err) {
+        console.info("====>SUB_Misc_Request_UploadManagement_0001 create err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(201);
         done();
       }
     });
@@ -223,43 +210,38 @@ export default function requestUploadNormalJSUnit() {
     it('SUB_Misc_Request_UploadManagement_Callback_0001', 0, async (done: Function) => {
       console.info("-----------------------SUB_Misc_Request_UploadManagement_Callback_0001 is starting-----------------------");
       try {
-        let context : common.UIAbilityContext = globalThis.ablityContext;
-        let cacheDir : string = context.cacheDir;
-
-        // 新建一个本地应用文件
-        let file = fs.openSync(cacheDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-        fs.writeSync(file.fd, 'upload file test');
-        fs.closeSync(file);
-
-        // 上传任务配置项
-        let header = new Map<Object, string>();
-        header.set('key1', 'value1');
-        header.set('key2', 'value2');
-        let files: Array<request.File> = [
-        //uri前缀internal://cache 对应cacheDir目录
-          {
-            filename: 'test.txt', name: 'test', uri: 'internal://cache/test.txt', type: 'txt'
-          }
-        ]
-        let data: Array<request.RequestData> = [{
-          name: 'name', value: 'value'
-        }];
-        let uploadConfig : request.UploadConfig = {
-          url: 'https://xxx',
-          header: header,
-          method: 'POST',
-          files: files,
-          data: data
+        let RequestData = {
+          name: 'name',
+          value: '123'
         }
-        request.uploadFile(context, uploadConfig, (err, uploadTask)=>{
+        console.error("====>SUB_Misc_Request_UploadManagement_Callback_0001 create 1");
+        let File = {
+          filename: 'test',
+          name: 'test',
+          uri: 'internal://cache/test.txt',
+          type: 'txt'
+        }
+        console.error("====>SUB_Misc_Request_UploadManagement_Callback_0001 create 2");
+        let uploadConfig = {
+          url: 'http://127.0.0.1',
+          header: {
+            headers: 'http'
+          },
+          method: 'POST',
+          files: [File],
+          data: [RequestData]
+        };
+        console.error("====>SUB_Misc_Request_UploadManagement_Callback_0001 create 3");
+        request.uploadFile(globalThis.abilityContext, uploadConfig, (err, uploadTask)=>{
           if (err) {
             console.info("====>SUB_Misc_Request_UploadManagement_Callback_0001 create err: " + JSON.stringify(err));
             expect(err.code).assertEqual(201);
             done();
+          } else {
+            console.error("====>SUB_Misc_Request_UploadManagement_Callback_0001 create success without permission");
+            expect().assertFail();
+            done();
           }
-          console.error("====>SUB_Misc_Request_UploadManagement_Callback_0001 create success without permission");
-          expect().assertFail();
-          done();
         })
       } catch (err) {
         console.error("====>SUB_Misc_Request_UploadManagement_Callback_0001 create err: " + JSON.stringify(err));
