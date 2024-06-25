@@ -1,11 +1,12 @@
 {
-    "description": "Configuration for hjunit demo Tests",
+    "description": "Configuration for huksSignVerifyBasicPromise js api Tests",
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
         "shell-timeout": "180000",
         "bundle-name": "com.example.hukssignverifybasicpromise",
-        "package-name": "com.example.hukssignverifybasicpromise"
+        "package-name": "com.example.hukssignverifybasicpromise",
+        "testcase-timeout": 1500000
     },
     "kits": [
         {

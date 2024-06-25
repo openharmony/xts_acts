@@ -48,7 +48,7 @@ export default function AssetOthers() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testAsUseridNoRight800', 0, async (done: Function) => {
+    it('SUB_Security_DataSecurity_Asset_AsUserId_Func_0800', 0, async (done: Function) => {
       await aw.assetAddEasy(aw.aliasNameList[0], aw.secretList[0]);
       expect(await awUserid.assetAddEasy(aw.aliasNameList[1], aw.secretList[0]))
         .assertEqual(asset.ErrorCode.PERMISSION_DENIED);
@@ -62,19 +62,19 @@ export default function AssetOthers() {
         .assertEqual(asset.ErrorCode.PERMISSION_DENIED);
       expect(await awUserid.assetPreQuery(attr))
         .assertEqual(asset.ErrorCode.PERMISSION_DENIED);
-      expect(await awUserid.assetPostQuery(aw.StringToArray(aw.aliasNameList[0])))
+      expect(await awUserid.assetPostQuery(aw.StringToArray(aw.fakeChallenge)))
         .assertEqual(asset.ErrorCode.PERMISSION_DENIED);
       done();
     });
     /**
-     * @tc.number     : SUB_Security_DataSecurity_Asset_Database_Func_0200
-     * @tc.name       : testDatabase0200
+     * @tc.number     : SUB_Security_DataSecurity_Asset_Database_Func_0500
+     * @tc.name       : testDatabase0500
      * @tc.desc       : 新asset数据，所有label都能写入2k数据，并且查询成功
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testDatabase0200', 0, async (done: Function) => {
+    it('SUB_Security_DataSecurity_Asset_Database_Func_0500', 0, async (done: Function) => {
       let attr: asset.AssetMap = new Map();
       attr.set(asset.Tag.ALIAS, aw.StringToArray(aw.aliasNameList[0]));
       attr.set(asset.Tag.SECRET, aw.StringToArray(aw.secretList[0]));
@@ -116,14 +116,14 @@ export default function AssetOthers() {
     });
 
     /**
-     * @tc.number     : SUB_Security_DataSecurity_Asset_Database_Func_0500
+     * @tc.number     : SUB_Security_DataSecurity_Asset_Database_Func_0400
      * @tc.name       : testDatabase0500
      * @tc.desc       : 新增和更新asset数据后，查询返回新增/更新时间
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testDatabase0500', 0, async (done: Function) => {
+    it('SUB_Security_DataSecurity_Asset_Database_Func_0400', 0, async (done: Function) => {
       await aw.assetAddEasy(aw.aliasNameList[0], aw.secretList[0]);
       let attr: asset.AssetMap = new Map();
       attr.set(asset.Tag.ALIAS, aw.StringToArray(aw.aliasNameList[0]));
@@ -142,14 +142,14 @@ export default function AssetOthers() {
     });
 
     /**
-     * @tc.number     : SUB_Security_DataSecurity_Asset_Database_Func_0600
+     * @tc.number     : SUB_Security_DataSecurity_Asset_Database_Func_0200
      * @tc.name       : testDatabase0600
      * @tc.desc       : 新增的仅本地存储字段能写入、更新、查询
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testDatabase0600', 0, async (done: Function) => {
+    it('SUB_Security_DataSecurity_Asset_Database_Func_0200', 0, async (done: Function) => {
       let attr: asset.AssetMap = new Map();
       attr.set(asset.Tag.ALIAS, aw.StringToArray(aw.aliasNameList[0]));
       attr.set(asset.Tag.SECRET, aw.StringToArray(aw.secretList[0]));
@@ -188,7 +188,7 @@ export default function AssetOthers() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('testJSFunc0100', 0, async (done: Function) => {
+    it('SUB_Security_DataSecurity_Asset_JS_Func_0100', 0, async (done: Function) => {
       let attr: asset.AssetMap = new Map();
       let valueType: asset.Value = asset.SyncType.NEVER;
       expect(valueType).assertEqual(0);

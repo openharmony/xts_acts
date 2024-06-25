@@ -29,6 +29,8 @@ export const commonEventOnBlurTest: (a: string) => void;
 
 export const commonEventOnTouchTest: (a: string) => void;
 
+export const pointEventOnTouchTest: (a: string) => void;
+
 export const commonEventOnFocusTest: (a: string) => void;
 
 export const commonEventOnClickTest: (a: string) => void;
@@ -221,8 +223,6 @@ export const textInputKeyTest: (a: string) => void;
 
 export const textAreaOnChangeTest: (a: string) => void;
 
-export const textAreaOnChangeTypeTest: (a: number) => void;
-
 export const sliderOnChangeTest: (a: string) => void;
 
 export const textInputOnBlurTest: (a: string) => void;
@@ -234,3 +234,5 @@ export const textInputOnSubmitTest: (a: string) => void;
 export const textInputOnCutTest: (a: string) => void;
 
 export const textInputOnPasteTest: (a: string) => void;
+
+export const gestureTest: (a: string) => void;

@@ -73,7 +73,7 @@ struct DragExample {
         .fontColor(0xCCCCCC).width('90%')
         .textAlign(TextAlign.Start).margin(15)
       List({ space: 20, initialIndex: 0 }) {
-        ForEach(this.numbers, (item) => {
+        ForEach(this.numbers, (item:string) => {
           ListItem() {
             Text('' + item)
               .width('100%').height(80).fontSize(16).borderRadius(10)
@@ -81,13 +81,13 @@ struct DragExample {
           }
           .onDragStart((event: DragEvent, extraParams: string) => {
             console.log('ListItem onDragStarts, ' + extraParams)
-            var jsonString = JSON.parse(extraParams)
+            let jsonString:Record<string, number> = JSON.parse(extraParams)
             this.bool1 = true
             this.text = this.numbers[jsonString.selectedIndex]
             this.select = jsonString.selectedIndex
             return this.pixelMapBuilder
           })
-        }, item => item)
+        }, (item:string) => item)
       }
       .editMode(true)
       .height('50%').width('90%').border({ width: 1 })
@@ -102,7 +102,7 @@ struct DragExample {
         console.log('List onDragLeave, ' + extraParams)
       })
       .onDrop((event: DragEvent, extraParams: string) => {
-        var jsonString = JSON.parse(extraParams)
+        let jsonString:Record<string, number> = JSON.parse(extraParams)
         if (this.bool) {
           this.numbers.splice(jsonString.insertIndex, 0, this.text)
           this.bool = false

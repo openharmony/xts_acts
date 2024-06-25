@@ -25,6 +25,7 @@ export default class MyAbilityStage extends AbilityStage {
     globalThis.stageContext = this.context;
 
     globalThis.mainAbilityStageListKey = []
+    globalThis.willAbilityStageListKey = []
     var abilityName = "";
     let AbilityLifecycleCallback = {
       onAbilityCreate(ability) {
@@ -69,6 +70,46 @@ export default class MyAbilityStage extends AbilityStage {
         abilityName = ability.context.abilityInfo.name;
         globalThis.mainAbilityStageListKey.push(abilityName + " onAbilityContinue");
         hilog.info(0x0000, TEST_TAG, `AbilityLifecycleCallback ${abilityName} onAbilityContinue`);
+      },
+      onAbilityWillCreate(ability) {
+        abilityName = ability.context.abilityInfo.name;
+        globalThis.willAbilityStageListKey.push(abilityName + " onAbilityWillCreate");
+        hilog.info(0x0000, TEST_TAG, `AbilityLifecycleCallback ${abilityName} onAbilityWillCreate`);
+      },
+      onWindowStageWillCreate(ability, windowStage) {
+        abilityName = ability.context.abilityInfo.name;
+        globalThis.willAbilityStageListKey.push(abilityName + " onWindowStageWillCreate");
+        hilog.info(0x0000, TEST_TAG, `AbilityLifecycleCallback ${abilityName} onWindowStageWillCreate`);
+      },
+      onWindowStageWillDestroy(ability, windowStage) {
+        abilityName = ability.context.abilityInfo.name;
+        globalThis.willAbilityStageListKey.push(abilityName + " onWindowStageWillDestroy");
+        hilog.info(0x0000, TEST_TAG, `AbilityLifecycleCallback ${abilityName} onWindowStageWillDestroy`);
+      },
+      onAbilityWillDestroy(ability) {
+        abilityName = ability.context.abilityInfo.name;
+        globalThis.willAbilityStageListKey.push(abilityName + " onAbilityWillDestroy");
+        hilog.info(0x0000, TEST_TAG, `AbilityLifecycleCallback ${abilityName} onAbilityWillDestroy`);
+      },
+      onAbilityWillForeground(ability) {
+        abilityName = ability.context.abilityInfo.name;
+        globalThis.willAbilityStageListKey.push(abilityName + " onAbilityWillForeground");
+        hilog.info(0x0000, TEST_TAG, `AbilityLifecycleCallback ${abilityName} onAbilityWillForeground`);
+      },
+      onAbilityWillBackground(ability) {
+        abilityName = ability.context.abilityInfo.name;
+        globalThis.willAbilityStageListKey.push(abilityName + " onAbilityWillBackground");
+        hilog.info(0x0000, TEST_TAG, `AbilityLifecycleCallback ${abilityName} onAbilityWillBackground`);
+      },
+      onWillNewWant(ability) {
+        abilityName = ability.context.abilityInfo.name;
+        globalThis.willAbilityStageListKey.push(abilityName + " onWillNewWant");
+        hilog.info(0x0000, TEST_TAG, `AbilityLifecycleCallback ${abilityName} onWillNewWant`);
+      },
+      onNewWant(ability) {
+        abilityName = ability.context.abilityInfo.name;
+        globalThis.willAbilityStageListKey.push(abilityName + " onNewWant");
+        hilog.info(0x0000, TEST_TAG, `AbilityLifecycleCallback ${abilityName} onNewWant`);
       }
     }
 

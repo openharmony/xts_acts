@@ -59,6 +59,10 @@ int IpcStub::OnRemoteRequest(uint32_t code, const OHIPCParcel *data, OHIPCParcel
             ret = thiz->HandleAdd(data, reply);
             break;
         
+        case IPC_ID_START_NATIVE_CHILD_PROCESS:
+            ret = thiz->HandleStartNativeChildProcess(data, reply);
+            break;
+        
         default:
             ret = OH_IPC_CODE_OUT_OF_RANGE;
             break;
@@ -117,4 +121,10 @@ int32_t IpcStub::HandleAdd(const OHIPCParcel *data, OHIPCParcel *reply)
     }
     
     return OH_IPC_SUCCESS;
+}
+
+int IpcStub::HandleStartNativeChildProcess(const OHIPCParcel *data, OHIPCParcel *reply)
+{
+    int32_t ret = StartNativeChildProcess();
+    return OH_IPCParcel_WriteInt32(reply, ret);
 }

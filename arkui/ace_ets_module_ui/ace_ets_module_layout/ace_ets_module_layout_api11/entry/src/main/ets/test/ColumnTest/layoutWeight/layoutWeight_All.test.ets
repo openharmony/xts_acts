@@ -16,6 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
+import GlobalContext from '../../../MainAbility/common/GlobalContext'
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 
 export default function layoutWeight_All() {
@@ -52,13 +53,13 @@ export default function layoutWeight_All() {
      */
     it('SUB_ACE_layoutWeight_All_TEST_0100', 0, async () => {
       console.info('[SUB_ACE_layoutWeight_All_TEST_0100] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'layoutWeight1', value: '3'
       });
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'layoutWeight2', value: '3'
       });
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'layoutWeight3', value: '3'
       });
       await CommonFunc.sleep(3000);
@@ -109,13 +110,13 @@ export default function layoutWeight_All() {
      */
     it('SUB_ACE_layoutWeight_All_TEST_0200', 0, async () => {
       console.info('[SUB_ACE_layoutWeight_All_TEST_0200] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'layoutWeight1', value: '3'
       });
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'layoutWeight2', value: '2'
       });
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'layoutWeight3', value: '1'
       });
       await CommonFunc.sleep(3000);

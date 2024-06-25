@@ -12,7 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../utilsUI/MessageManager';
+import GlobalContext from './../../common/GlobalContext';
+import { Value } from './../../common/Value';
+import { MessageManager, Callback } from './../../common/MessageManager';
+
+type MessageData = string | number | boolean | BarState | Color | GridDirection
 
 @Entry
 @Component
@@ -49,59 +53,60 @@ struct GridPage {
   @State onScrollFrameBeginText: string = 'onScrollFrameBegin'
   @State myKey: number = 0
   scroller: Scroller = new Scroller()
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager<MessageData> = new MessageManager()
 
   onPageShow() {
     console.info('GridPage onPageShow')
-    globalThis.value = {
-      name:'messageManager',message:this.messageManager
+    let value: Value<MessageData> = {
+      name: 'messageManager', message: this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    GlobalContext.getContext().setObject('value', value);
+    let callback: Callback<MessageData> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'columnsTemplate') {
-        this.columnsTemplate = message.value
+        this.columnsTemplate = message.value as string
       }
       if (message.name == 'rowsTemplate') {
-        this.rowsTemplate = message.value
+        this.rowsTemplate = message.value as string
       }
       if (message.name == 'columnsGap') {
-        this.columnsGap = message.value
+        this.columnsGap = message.value as number
       }
       if (message.name == 'rowsGap') {
-        this.rowsGap = message.value
+        this.rowsGap = message.value as number
       }
       if (message.name == 'scrollBar') {
-        this.scrollBar = message.value
+        this.scrollBar = message.value as BarState
       }
       if (message.name == 'scrollBarColor') {
-        this.scrollBarColor = message.value
+        this.scrollBarColor = message.value as Color
       }
       if (message.name == 'scrollBarWidth') {
-        this.scrollBarWidth = message.value
+        this.scrollBarWidth = message.value as number
       }
       if (message.name == 'cachedCount') {
-        this.cachedCount = message.value
+        this.cachedCount = message.value as number
       }
       if (message.name == 'editMode') {
-        this.editMode = message.value
+        this.editMode = message.value as boolean
       }
       if (message.name == 'layoutDirection') {
-        this.layoutDirection = message.value
+        this.layoutDirection = message.value as GridDirection
       }
       if (message.name == 'maxCount') {
-        this.maxCount = message.value
+        this.maxCount = message.value as number
       }
       if (message.name == 'minCount') {
-        this.minCount = message.value
+        this.minCount = message.value as number
       }
       if (message.name == 'cellLength') {
-        this.cellLength = message.value
+        this.cellLength = message.value as number
       }
       if (message.name == 'multiSelectable') {
-        this.multiSelectable = message.value
+        this.multiSelectable = message.value as boolean
       }
       if (message.name == 'supportAnimation') {
-        this.supportAnimation = message.value
+        this.supportAnimation = message.value as boolean
       }
     }
     this.messageManager.registerCallback(callback)
@@ -132,8 +137,8 @@ struct GridPage {
                 .textAlign(TextAlign.Center)
                 .key(day)
             }
-          }, day => day)
-        }, day => day)
+          }, (day: string) => day)
+        }, (day: string) => day)
       }
       .columnsTemplate(this.columnsTemplate)
       .rowsTemplate(this.rowsTemplate)
@@ -187,8 +192,8 @@ struct GridPage {
                 .height(80)
                 .textAlign(TextAlign.Center)
             }
-          }, day => day)
-        }, day => day)
+          }, (day: string) => day)
+        }, (day: string) => day)
       }
       .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
       .columnsGap(10)

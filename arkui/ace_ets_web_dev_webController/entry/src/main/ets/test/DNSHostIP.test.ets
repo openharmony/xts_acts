@@ -46,42 +46,87 @@ export default function DNSHostIP() {
       console.info("web beforeEach start");
       done();
     })
+    afterEach(async (done: Function) => {
+      await Utils.sleep(60000);
+      console.info("web afterEach finish");
+      done();
+    })
+
+
     /*
-    * @tc.number     : Acts_setHostIP_0100
-    * @tc.name       : testSetHostIP001
-    * @tc.desc       : test DNSHostIP
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 2
-    */
+     * @tc.number     : Acts_setHostIP_0100
+     * @tc.name       : testSetHostIP001
+     * @tc.desc       : test DNSHostIP
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
     it('setHostIP0100', 0, async (done: Function) => {
       Utils.emitEvent("setHostIP0100", 10)
-      await Utils.sleep(2000);
+      await Utils.sleep(5000);
       Utils.registerEvent("setHostIP0100", true, 8770, done);
       let driver = Driver.create();
       await driver.delayMs(1000);
       let StartModel = await driver.findComponent(ON.id("DNSHostIP"));
       await StartModel.click();
-      await driver.delayMs(1000);
+      await driver.delayMs(5000);
     })
 
     /*
-    * @tc.number     : Acts_clearHostIP_0800
-    * @tc.name       : testClearHostIP080
-    * @tc.desc       : test DNSHostIP
-    * @tc.size       : MediumTest
-    * @tc.type       : Function
-    * @tc.level      : Level 2
-    */
-    it('setHostIP0800', 0, async (done: Function) => {
-      Utils.emitEvent("setHostIP0800", 10)
-      await Utils.sleep(2000);
-      Utils.registerEvent("setHostIP0800", true, 8772, done);
+     * @tc.number     : Acts_clearHostIP_1200
+     * @tc.name       : testClearHostIP012
+     * @tc.desc       : test DNSHostIP
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('setHostIP1200', 0, async (done: Function) => {
+      Utils.emitEvent("setHostIP1200", 10)
+      await Utils.sleep(5000);
+      Utils.registerEvent("setHostIP1200", true, 8771, done);
       let driver = Driver.create();
       await driver.delayMs(1000);
       let StartModel = await driver.findComponent(ON.id("DNSHostIP"));
       await StartModel.click();
+      await driver.delayMs(5000);
+    })
+
+
+    /*
+     * @tc.number     : Acts_clearHostIP_1300
+     * @tc.name       : testClearHostIP013
+     * @tc.desc       : test DNSHostIP
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('setHostIP1300', 0, async (done: Function) => {
+      Utils.emitEvent("setHostIP1300", 10)
+      await Utils.sleep(5000);
+      Utils.registerEvent("setHostIP1300", true, 8772, done);
+      let driver = Driver.create();
       await driver.delayMs(1000);
+      let StartModel = await driver.findComponent(ON.id("DNSHostIP"));
+      await StartModel.click();
+      await driver.delayMs(5000);
+    })
+    /*
+     * @tc.number     : Acts_clearHostIP_0800
+     * @tc.name       : testClearHostIP008
+     * @tc.desc       : test DNSHostIP
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('setHostIP1500', 0, async (done: Function) => {
+      Utils.emitEvent("setHostIP1500", 10)
+      await Utils.sleep(5000);
+      Utils.registerEvent("setHostIP1500", true, 8773, done);
+      let driver = Driver.create();
+      await driver.delayMs(1000);
+      let StartModel = await driver.findComponent(ON.id("DNSHostIP"));
+      await StartModel.click();
+      await driver.delayMs(5000);
     })
   })
 }

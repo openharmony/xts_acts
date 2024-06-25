@@ -16,6 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
+import GlobalContext from '../../../MainAbility/common/GlobalContext'
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 
 export default function layoutWeight_Default() {
@@ -51,7 +52,7 @@ export default function layoutWeight_Default() {
      */
     it('SUB_ACE_layoutWeight_Default_TEST_0100', 0, async () => {
       console.info('[SUB_ACE_layoutWeight_Default_TEST_0100] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<undefined>('value').message.notify({
         name: 'layoutWeight1', value: undefined
       });
       await CommonFunc.sleep(3000);
@@ -103,7 +104,7 @@ export default function layoutWeight_Default() {
      */
     it('SUB_ACE_layoutWeight_Default_TEST_0200', 0, async () => {
       console.info('[SUB_ACE_layoutWeight_Default_TEST_0200] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<null>('value').message.notify({
         name: 'layoutWeight1', value: null
       });
       await CommonFunc.sleep(3000);
@@ -156,7 +157,7 @@ export default function layoutWeight_Default() {
      */
     it('SUB_ACE_layoutWeight_Default_TEST_0300', 0, async () => {
       console.info('[SUB_ACE_layoutWeight_Default_TEST_0300] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'layoutWeight1', value: -10
       });
       await CommonFunc.sleep(3000);
@@ -208,7 +209,7 @@ export default function layoutWeight_Default() {
      */
     it('SUB_ACE_layoutWeight_Default_TEST_0400', 0, async () => {
       console.info('[SUB_ACE_layoutWeight_Default_TEST_0400] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'layoutWeight2', value: 'aaa'
       });
       await CommonFunc.sleep(3000);

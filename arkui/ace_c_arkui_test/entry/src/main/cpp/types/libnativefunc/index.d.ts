@@ -64,6 +64,7 @@ export const testButtonFontWeight014: () => number;
 export const testButtonFontWeight015: () => number;
 
 export const testButtonFontWeight016: () => number;
+export const textTextStyleGraphic001: () => number;
 
 export const testCheckboxMark001: () => number;
 
@@ -1177,6 +1178,14 @@ export const testSwiperIndicator002: () => number;
 
 export const testSwiperIndicator003: () => number;
 
+export const testSwiperIndicator004: () => number;
+
+export const testSwiperIndicator005: () => number;
+
+export const testSwiperIndicator006: () => number;
+
+export const testSwiperIndicator007: () => number;
+
 export const testSwiperInterval001: () => number;
 
 export const testSwiperInterval002: () => number;
@@ -1561,6 +1570,18 @@ export const testListBlur001: () => number;
 
 export const testListBlur002: () => number;
 
+export const testListSwipeActionCreate: () => number;
+
+export const testListSwipeActionSetActionAreaDistance001: () => number;
+
+export const testListSwipeActionOptionCreate: () => number;
+
+export const testListSwipeActionItem006: () => number;
+
+export const testListSwipeActionItem007: () => number;
+
+export const testListSwipeActionOptionEdgeEffect: () => number;
+
 export const testListBorderColor001: () => number;
 
 export const testListBorderColor002: () => number;
@@ -1749,6 +1770,14 @@ export const testListWidth002: () => number;
 
 export const testListWidth003: () => number;
 
+export const testListNodeAdapter001: () => number;
+
+export const testListNodeAdapter002: () => number;
+
+export const testListNodeAdapter003: () => number;
+
+export const testListNodeAdapterEvent001: () => number;
+
 export const testListItemBackgroundColor001: () => number;
 
 export const testListItemBlur001: () => number;
@@ -1900,6 +1929,56 @@ export const testListItemWidth001: () => number;
 export const testListItemWidth002: () => number;
 
 export const testListItemWidth003: () => number;
+
+export const testListChildMainSize001: () => number;
+
+export const testListChildMainSize002: () => number;
+
+export const testListChildMainSize003: () => number;
+
+export const testListChildMainSize004: () => number;
+
+export const testListChildMainSize005: () => number;
+
+export const testListSwipeOption007: () => number;
+
+export const testListChildMainSize006: () => number;
+
+export const testNodeUtils010: ()=> number;
+
+export const testNodeUtils020: ()=> number;
+
+export const testNodeUtils030: ()=> number;
+
+export const testNodeUtils040: ()=> number;
+
+export const testNodeUtils050: ()=> number;
+
+export const testNodeUtils060: ()=> number;
+
+export const testAccessibility070: ()=> number;
+
+export const testAccessibility080: ()=> number;
+
+export const testAccessibility090: ()=> number;
+
+export const testAccessibility010: ()=> number;
+
+export const testAccessibility011: ()=> number;
+
+export const testImageAniMator009: () => number;
+
+export const testImageAniMator010: () => number;
+
+export const testImageAniMator011: () => number;
+
+export const testListSwipeActionItem008: ()=> number;
+
+export const testListSwipeActionItem009: ()=> number;
+
+export const textTextStyleGraphic002: () => number;
+
+export const testListSwipeOption008: () => number;
 
 export const testCommonAttrsClip001: () => number;
 
@@ -3018,30 +3097,6 @@ export const testTextAccessibilityLevel004: () => number;
 export const testTextAccessibilityText001: () => number;
 
 export const testTextAccessibilityText002: () => number;
-
-export const testSpanAccessibilityDescription001: () => number;
-
-export const testSpanAccessibilityDescription002: () => number;
-
-export const testSpanAccessibilityGroup001: () => number;
-
-export const testSpanAccessibilityGroup002: () => number;
-
-export const testSpanAccessibilityGroup003: () => number;
-
-export const testSpanAccessibilityGroup004: () => number;
-
-export const testSpanAccessibilityLevel001: () => number;
-
-export const testSpanAccessibilityLevel002: () => number;
-
-export const testSpanAccessibilityLevel003: () => number;
-
-export const testSpanAccessibilityLevel004: () => number;
-
-export const testSpanAccessibilityText001: () => number;
-
-export const testSpanAccessibilityText002: () => number;
 
 export const testRefreshAccessibilityDescription001: () => number;
 
@@ -4696,10 +4751,6 @@ export const testTextAccessibilityLevel005: () => number;
 
 export const testTextAccessibilityLevel006: () => number;
 
-export const testSpanAccessibilityLevel005: () => number;
-
-export const testSpanAccessibilityLevel006: () => number;
-
 export const testRefreshAccessibilityLevel005: () => number;
 
 export const testRefreshAccessibilityLevel006: () => number;
@@ -4741,3 +4792,143 @@ export const testTextInputStopEditing003: () => number;
 export const testTextInputStopEditing004: () => number;
 
 export const testTextInputStopEditing005: () => number;
+
+export const TestArkUIAddApi001: () => number;
+
+export const TestArkUIAddApi002: () => number;
+
+export const TestArkUIAddApi003: () => number;
+
+export const TestArkUIAddApi004: () => number;
+
+export const TestArkUIAddApi005: () => number;
+
+export const TestArkUIAddApi006: () => number;
+
+export const TestArkUIAddApi007: () => number;
+
+export const TestArkUIAddApi008: () => number;
+
+export const TestArkUIAddApi009: () => number;
+
+export const TestArkUIAddApi010: () => number;
+
+export const TestArkUIAddApi011: () => number;
+
+export const TestArkUIAddApi012: () => number;
+
+export const TestArkUIAddApi013: () => number;
+
+export const TestArkUIAddApi014: () => number;
+
+export const TestArkUIAddApi015: () => number;
+
+export const TestArkUIAddApi016: () => number;
+
+export const TestArkUIAddApi017: () => number;
+
+export const TestArkUIAddApi018: () => number;
+
+export const TestArkUIAddApi019: () => number;
+
+export const TestArkUIAddApi020: () => number;
+
+export const TestArkUIAddApi021: () => number;
+
+export const TestArkUIAddApi022: () => number;
+
+export const TestArkUIAddApi023: () => number;
+
+export const testAnimation_001: () => number;
+export const testAnimation_002: () => number;
+export const testAnimation_003: () => number;
+export const testAnimation_004: () => number;
+export const testAnimation_005: () => number;
+export const testWaterFlower_001: () => number;
+export const testWaterFlower_002: () => number;
+export const testWaterFlower_003: () => number;
+export const testWaterFlower_004: () => number;
+export const testWaterFlower_005: () => number;
+export const accessibilityState_001: () => number;
+export const accessibilityState_002: () => number;
+export const accessibilityState_003: () => number;
+export const testArkUI001: () => number;
+
+export const testArkUI002: () => number;
+
+export const testArkUI003: () => number;
+
+export const testArkUI004: () => number;
+
+export const testArkUI005: () => number;
+
+export const testArkUI006: () => number;
+
+export const testArkUI007: () => number;
+
+export const testArkUI008: () => number;
+
+export const testArkUI009: () => number;
+
+export const testArkUI010: () => number;
+
+export const testArkUI011: () => number;
+
+export const testArkUI012: () => number;
+
+export const testArkUI013: () => number;
+
+export const testArkUI014: () => number;
+
+export const testArkUI015: () => number;
+
+export const testRelativeContaineAlignmentRuleOption001: () => number;
+
+export const testRelativeContaineAlignmentRuleOption002: () => number;
+
+export const testRelativeContaineAlignmentRuleOption003: () => number;
+
+export const testRelativeContaineBarrierOption001: () => number;
+
+export const testRelativeContaineBarrierOption002: () => number;
+
+export const testRelativeContaineBarrierOption003: () => number;
+export const customComponentEventNullTest001: () => number;
+
+export const customComponentEventNullTest002: () => number;
+
+export const testCommonAttrsAnimate001: () => number;
+
+export const testCommonAttrsAnimate002: () => number;
+
+export const testCommonAttrsAnimate003: () => number;
+
+export const testCommonAttrsAnimate004: () => number;
+
+export const testDrawableDescriptorCreate001: () => number;
+
+export const testDrawableDescriptorCreate002: () => number;
+
+export const testDrawableDescriptorCreate003: () => number;
+
+export const testNodeContent001: () => number;
+
+export const testNodeContent002: () => number;
+
+export const testNodeContent003: () => number;
+
+export const testNodeContent004: () => number;
+
+export const testNodeContent005: () => number;
+
+export const testNodeContent006: () => number;
+
+export const testNodeContent007: () => number;
+
+export const testNativeXComponent001: () => number;
+
+export const testMouseEvent001: () => number;
+
+export const testMouseEvent002: () => number;
+
+export const testPointerEvent001: () => number;

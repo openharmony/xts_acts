@@ -16,6 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
+import GlobalContext from '../../../MainAbility/common/GlobalContext'
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 
 export default function layoutWeight_flexGrow() {
@@ -51,7 +52,7 @@ export default function layoutWeight_flexGrow() {
      */
     it('SUB_ACE_layoutWeight_flexGrow_TEST_0100', 0, async () => {
       console.info('[SUB_ACE_layoutWeight_flexGrow_TEST_0100] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'addLayoutWeight', value: 1
       });
       await CommonFunc.sleep(3000);
@@ -103,7 +104,7 @@ export default function layoutWeight_flexGrow() {
      */
     it('SUB_ACE_layoutWeight_flexGrow_TEST_0200', 0, async () => {
       console.info('[SUB_ACE_layoutWeight_flexGrow_TEST_0200] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'addLayoutWeight', value: 2
       });
       await CommonFunc.sleep(3000);
@@ -155,7 +156,7 @@ export default function layoutWeight_flexGrow() {
      */
     it('SUB_ACE_layoutWeight_flexGrow_TEST_0300', 0, async () => {
       console.info('[SUB_ACE_layoutWeight_flexGrow_TEST_0300] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'addLayoutWeight', value: 3
       });
       await CommonFunc.sleep(3000);

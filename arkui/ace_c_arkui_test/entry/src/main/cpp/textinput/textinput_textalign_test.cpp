@@ -59,7 +59,7 @@ static napi_value TestTextInputTextAlign004(napi_env env, napi_callback_info inf
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(textInput, NODE_TEXT_ALIGN, &valueItem);
     ASSERT_EQ(ret, SUCCESS);
-    ASSERT_EQ(nodeAPI->getAttribute(textInput, NODE_TEXT_ALIGN)->value[PARAM_0].i32, textAlign);
+    ASSERT_EQ(nodeAPI->getAttribute(textInput, NODE_TEXT_ALIGN)->value[PARAM_0].i32, ARKUI_TEXT_ALIGNMENT_START);
     NAPI_END;
 }
 

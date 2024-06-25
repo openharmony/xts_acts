@@ -17,6 +17,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
+import GlobalContext from '../../../MainAbility/common/GlobalContext'
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 
 export default function column_MarPad_ChangeParent() {
@@ -56,15 +57,15 @@ export default function column_MarPad_ChangeParent() {
      */
     it('testColumnMarPadChangeParentInRange', 0, async () => {
       console.info('new testColumnMarPadChangeParentInRange START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 5
       })
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 20
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('ColumnMarPadChange1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Column');
       let locationText1 : RectValue = CommonFunc.getComponentRect('MarPad_Test1');
       let locationText2 : RectValue = CommonFunc.getComponentRect('MarPad_Test2');
@@ -111,15 +112,15 @@ export default function column_MarPad_ChangeParent() {
      */
     it('testColumnMarPadChangeParentOutRange', 0, async () => {
       console.info('new testColumnMarPadChangeParentOutRange START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'margin', value: 5
       })
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'padding', value: 50
       })
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('ColumnMarPadChange1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Column');
       let locationText1 : RectValue = CommonFunc.getComponentRect('MarPad_Test1');
       let locationText2 : RectValue = CommonFunc.getComponentRect('MarPad_Test2');

@@ -43,6 +43,7 @@
     "MainAbility/pages/Menu/MenuApi/IconApi",
     "MainAbility/pages/Popup/DismissReason",
     "MainAbility/pages/Menu/MenuApi/SubMenuExpandingMode_SIDE",
-    "MainAbility/pages/Menu/MenuApi/SubMenuExpandingMode_EMBEDDED"
+    "MainAbility/pages/Menu/MenuApi/SubMenuExpandingMode_EMBEDDED",
+    "MainAbility/pages/TimePickerDialog/DateTimeOptions"
   ]
 }

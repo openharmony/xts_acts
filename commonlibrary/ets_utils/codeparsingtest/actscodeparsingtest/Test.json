@@ -3,9 +3,9 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
-        "bundle-name": "com.acts.test.actscodeparsingtest",
-        "module-name": "entry",
         "shell-timeout": "600000",
+        "bundle-name": "com.acts.test.actscodeparsingtest",
+        "module-name": "entry_test",
         "testcase-timeout": 70000
     },
     "kits": [
@@ -16,5 +16,5 @@
             "type": "AppInstallKit",
             "cleanup-apps": true
         }
-    ] 
+    ]
 }

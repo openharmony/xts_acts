@@ -61,11 +61,11 @@ export default function NavigationSymbolIcon() {
       let obj1 = JSON.parse(JSON.stringify(getInspectorTree()));
       await CommonFunc.sleep(1000);
 
-      expect(obj1.$children[0].$children[0].$children[0].$children[0].$children[1].$children[0].$children[0].$children[0].$type).assertEqual('SymbolGlyph');
+      expect(obj1.$children[0].$children[0].$children[0].$children[1].$children[0].$children[0].$children[0].$type).assertEqual('SymbolGlyph');
       console.info('NavigationSymbolIcon_0100 syb1');
-      expect(obj1.$children[0].$children[0].$children[0].$children[2].$children[0].$children[0].$children[0].$children[1].$type).assertEqual('SymbolGlyph');
+      expect(obj1.$children[0].$children[0].$children[2].$children[0].$children[0].$children[0].$children[1].$type).assertEqual('SymbolGlyph');
       console.info('NavigationSymbolIcon_0100 syb2');
-      expect(obj1.$children[0].$children[0].$children[0].$children[2].$children[0].$children[1].$children[0].$children[1].$type).assertEqual('SymbolGlyph');
+      expect(obj1.$children[0].$children[0].$children[2].$children[0].$children[1].$children[0].$children[1].$type).assertEqual('SymbolGlyph');
       console.info('NavigationSymbolIcon_0100 END');
       done();
     });

@@ -6,14 +6,13 @@
         "bundle-name": "com.example.myapplication",
         "module-name": "phone",
         "shell-timeout": "600000",
-        "testcase-timeout": 70000
+        "testcase-timeout": "70000"
     },
     "kits": [
         {
             "type": "ShellKit",
             "run-command": [
                 "param set persist.ace.testmode.enabled 1",
-                "reboot",
                 "wait 5",
                 "power-shell wakeup",
                 "uinput -T -m 300 2700 280 200",

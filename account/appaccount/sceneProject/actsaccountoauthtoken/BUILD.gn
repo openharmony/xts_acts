@@ -10,13 +10,24 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
 import("//test/xts/tools/build/suite.gni")
 
-ohos_app_assist_suite("ActsAccountOauthtoken") {
-  testonly = true
-  certificate_profile = "./signature/openharmony_sx.p7b"
+ohos_hap_assist_suite("ActsAccountOauthtoken") {
+  hap_profile = "./entry/src/main/config.json"
   hap_name = "ActsAccountOauthtoken"
-  part_name = "os_account"
   subsystem_name = "account"
+  part_name = "os_account"
+  testonly = true
+  deps = [
+    ":hjs_demo_js_assets",
+    ":hjs_demo_resources",
+  ]
+  certificate_profile = "./signature/openharmony_sx.p7b"
+}
+ohos_js_assets("hjs_demo_js_assets") {
+  source_dir = "./entry/src/main/js/default"
+}
+ohos_resources("hjs_demo_resources") {
+  sources = [ "./entry/src/main/js/resources" ]
+  hap_profile = "./entry/src/main/config.json"
 }

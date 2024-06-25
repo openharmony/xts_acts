@@ -20,7 +20,7 @@ import abilityAccessCtrl, { Permissions } from '@ohos.abilityAccessCtrl';
 import { Driver, ON } from '@ohos.UiTest';
 import bundleManager from '@ohos.bundle.bundleManager';
 import Want from '@ohos.app.ability.Want';
-import identifier from '@ohos.identifier.oaid';
+import contact from '@ohos.contact';
 import cryptoFramework from '@ohos.security.cryptoFramework';
 import buffer from '@ohos.buffer';
 import huks from '@ohos.security.huks';
@@ -39,6 +39,9 @@ export default function securityTest() {
     beforeAll(async (done: Function) => {
       abilityContext = AppStorage.get<common.UIAbilityContext>('TestAbilityContext') as common.UIAbilityContext
       applicationContext = abilityContext.getApplicationContext()
+      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
+      let driver = Driver.create()
+      await driver.delayMs(2000)
       done()
     })
 
@@ -76,6 +79,12 @@ export default function securityTest() {
      */
     it('testBackgroundCameraBanned0100', 0, async (done: Function) => {
       expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
+      if(camera.getCameraManager(applicationContext).getSupportedCameras().length == 0) {
+        console.log(`No Supported usb camera`)
+        expect(true).assertTrue()
+        done()
+        return
+      }
       let driver = Driver.create()
       await driver.delayMs(1000)
       let permissions: Array<Permissions> = ['ohos.permission.CAMERA']
@@ -124,30 +133,34 @@ export default function securityTest() {
       let bundleFlag = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION
       let applicationInfo = await bundleManager.getBundleInfoForSelf(bundleFlag)
       let tokenId = applicationInfo.appInfo.accessTokenId
-      let grantStatus = atManager.verifyAccessTokenSync(tokenId, 'ohos.permission.APP_TRACKING_CONSENT')
+      let contactInfo: contact.Contact = {
+        name: {fullName: 'pcstest'},
+        phoneNumbers: [{phoneNumber: '10000000000'}]
+      }
+      let grantStatus = atManager.verifyAccessTokenSync(tokenId, 'ohos.permission.WRITE_CONTACTS')
       expect(grantStatus).assertEqual(abilityAccessCtrl.GrantStatus.PERMISSION_DENIED)
       try {
-        let oaid = await identifier.getOAID()
-        let expectResult = "00000000-0000-0000-0000-000000000000"
-        expect(oaid).assertEqual(expectResult)
+        let id = await contact.addContact(abilityContext, contactInfo)
+        expect(false).assertTrue()
       } catch (error) {
         let err = error as BusinessError;
-        console.info(`Failed to get oaid. error: ${JSON.stringify(err)}`)
+        console.info(`Failed to add contact. error: ${JSON.stringify(err)}`)
+        expect(err.code == 201).assertTrue()
       }
-      let permissions: Array<Permissions> = ['ohos.permission.APP_TRACKING_CONSENT']
+      let permissions: Array<Permissions> = ['ohos.permission.WRITE_CONTACTS']
       await PermissionUtils.getPermission(abilityContext, permissions)
       await PermissionUtils.grantPermission()
       let driver = Driver.create();
       await driver.delayMs(1000)
-      grantStatus = atManager.verifyAccessTokenSync(tokenId, 'ohos.permission.APP_TRACKING_CONSENT')
+      grantStatus = atManager.verifyAccessTokenSync(tokenId, 'ohos.permission.WRITE_CONTACTS')
       expect(grantStatus).assertEqual(abilityAccessCtrl.GrantStatus.PERMISSION_GRANTED)
       try {
-        let oaid = await identifier.getOAID()
-        expect(oaid != undefined).assertTrue()
+        let id = await contact.addContact(abilityContext, contactInfo)
+        expect(id != undefined).assertTrue()
       } catch (error) {
         let err = error as BusinessError;
-        console.info(`Failed to get oaid. error: ${JSON.stringify(err)}`)
-        expect(false).assertEqual(true)
+        console.info(`Failed to add contact. error: ${JSON.stringify(err)}`)
+        expect(err.code != 201).assertTrue()
       }
       done()
     })

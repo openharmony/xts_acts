@@ -12,7 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../utilsUI/MessageManager';
+import GlobalContext from './../../common/GlobalContext';
+import { Value } from './../../common/Value';
+import { MessageManager, Callback } from './../../common/MessageManager';
+
+type MessageData = string
 
 @Entry
 @Component
@@ -20,14 +24,15 @@ struct GridRowCol {
   @State Number: String[] = ['0', '1', '2', '3', '4']
   scroller: Scroller = new Scroller()
   @State columnsTemplate: string = '1fr 1fr 1fr'
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager<MessageData> = new MessageManager()
 
   onPageShow() {
     console.info('navigationPosition  onPageShow');
-    globalThis.value = {
-      name:'messageManager',message:this.messageManager
+    let value: Value<MessageData> = {
+      name: 'messageManager', message: this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    GlobalContext.getContext().setObject('value', value);
+    let callback: Callback<MessageData> = message => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'columnsTemplate') {
         this.columnsTemplate = message.value;

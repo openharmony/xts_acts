@@ -73,7 +73,7 @@ export default function webViewContWebMessageExtReturnError() {
     it('testWebMessageExtGetStringError', 0, async (done: Function) => {
       emitKey = "emitWebMessageExtGetNumberError";
       Utils.registerEvent("testWebMessageExtGetStringError", "17100014", 826, done);
-      Utils.registerEvent("testWebMessageExtGetStringError", "The type does not match with the value of the message", 827, done);
+      Utils.registerEvent("testWebMessageExtGetStringError", "The type and value of the message do not match.", 827, done);
       sendEventByKey('webViewContWebMessageExtReturnError', 10, '');
     })
     /*
@@ -84,7 +84,7 @@ export default function webViewContWebMessageExtReturnError() {
     it('testWebMessageExtGetNumberError', 0, async (done: Function) => {
       emitKey = "emitWebMessageExtGetBooleanError";
       Utils.registerEvent("testWebMessageExtGetNumberError", "17100014", 828, done);
-      Utils.registerEvent("testWebMessageExtGetNumberError", "The type does not match with the value of the message", 829, done);
+      Utils.registerEvent("testWebMessageExtGetNumberError", "The type and value of the message do not match.", 829, done);
       sendEventByKey('webViewContWebMessageExtReturnError', 10, '');
     })
     /*
@@ -95,7 +95,7 @@ export default function webViewContWebMessageExtReturnError() {
     it('testWebMessageExtGetBooleanError', 0, async (done: Function) => {
       emitKey = "emitWebMessageExtGetArrayBufferError";
       Utils.registerEvent("testWebMessageExtGetBooleanError", "17100014", 830, done);
-      Utils.registerEvent("testWebMessageExtGetBooleanError", "The type does not match with the value of the message", 831, done);
+      Utils.registerEvent("testWebMessageExtGetBooleanError", "The type and value of the message do not match.", 831, done);
       sendEventByKey('webViewContWebMessageExtReturnError', 10, '');
     })
     /*
@@ -106,7 +106,7 @@ export default function webViewContWebMessageExtReturnError() {
     it('testWebMessageExtGetArrayBufferError', 0, async (done: Function) => {
       emitKey = "emitWebMessageExtGetArrayError";
       Utils.registerEvent("testWebMessageExtGetArrayBufferError", "17100014", 832, done);
-      Utils.registerEvent("testWebMessageExtGetArrayBufferError", "The type does not match with the value of the message", 833, done);
+      Utils.registerEvent("testWebMessageExtGetArrayBufferError", "The type and value of the message do not match.", 833, done);
       sendEventByKey('webViewContWebMessageExtReturnError', 10, '');
     })
     /*
@@ -117,7 +117,7 @@ export default function webViewContWebMessageExtReturnError() {
     it('testWebMessageExtGetArrayError', 0, async (done: Function) => {
       emitKey = "emitWebMessageExtGetErrorError";
       Utils.registerEvent("testWebMessageExtGetArrayError", "17100014", 834, done);
-      Utils.registerEvent("testWebMessageExtGetArrayError", "The type does not match with the value of the message", 835, done);
+      Utils.registerEvent("testWebMessageExtGetArrayError", "The type and value of the message do not match.", 835, done);
       sendEventByKey('webViewContWebMessageExtReturnError', 10, '');
     })
     /*
@@ -128,7 +128,7 @@ export default function webViewContWebMessageExtReturnError() {
     it('testWebMessageExtGetErrorError', 0, async (done: Function) => {
       emitKey = "emitWebMessageExtGetErrorError";
       Utils.registerEvent("testWebMessageExtGetErrorError", "17100014", 836, done);
-      Utils.registerEvent("testWebMessageExtGetErrorError", "The type does not match with the value of the message", 837, done);
+      Utils.registerEvent("testWebMessageExtGetErrorError", "The type and value of the message do not match.", 837, done);
       sendEventByKey('webViewContWebMessageExtReturnError', 10, '');
     })
   })

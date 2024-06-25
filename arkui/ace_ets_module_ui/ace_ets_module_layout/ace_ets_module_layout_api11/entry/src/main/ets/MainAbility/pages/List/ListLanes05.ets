@@ -12,8 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../utilsUI/MessageManager';
-
 @Entry
 @Component
 struct ListLanes05 {
@@ -23,7 +21,6 @@ struct ListLanes05 {
   @State listSpace: string = '20'
   @State alignListItem: ListItemAlign = ListItemAlign.Start
   @State initialIndex: number = 0
-  messageManager:MessageManager = new MessageManager()
 
 
   build() {
@@ -34,7 +31,7 @@ struct ListLanes05 {
             Text('' + item)
               .width(100).height('100%').fontSize(16)
               .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
-          }.key('ListItem01_' + item)
+          }.key('ListItem0501_' + item)
         }, (item: string) => item)
       }
       .key('ListLanesKey05_1')

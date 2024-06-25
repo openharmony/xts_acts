@@ -59,6 +59,7 @@ import fileIOUtimes from './members/utimes.test.js'
 import fileIOMkdir11 from './members/mkdir11.test.js'
 import fileIOCopy from './members/copy.test.js'
 import fileIODfsConnect from './members/dfsconnect.test.js'
+import fscreateReadStream from './class_stream/createReadStream.test.js'
 export default function testsuite() {
     fileIOAccess()
     fileIOClose()
@@ -106,4 +107,5 @@ export default function testsuite() {
     fileIOMkdir11()
     fileIOCopy()
     fileIODfsConnect()
+    fscreateReadStream()
 }

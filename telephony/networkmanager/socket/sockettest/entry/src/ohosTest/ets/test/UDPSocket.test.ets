@@ -86,8 +86,8 @@ export default function UDPSocketTest() {
           }
           expectTrue(true);
           console.info(`${caseName} test end`);
-          done();
           udp.close();
+          done();
         });
       } catch (err) {
         console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -123,6 +123,7 @@ export default function UDPSocketTest() {
             expectFail();
           }
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -156,6 +157,7 @@ export default function UDPSocketTest() {
           } else {
             expectTrue(true);
           }
+          udp.close();
           console.info(`${caseName} test end`);
           done();
         });
@@ -192,6 +194,7 @@ export default function UDPSocketTest() {
           } else {
             expectTrue(true);
           }
+          udp.close();
           console.info(`${caseName} test end`);
           done();
         });
@@ -228,6 +231,7 @@ export default function UDPSocketTest() {
           } else {
             expectTrue(true);
           }
+          udp.close();
           console.info(`${caseName} test end`);
           done();
         });
@@ -264,6 +268,7 @@ export default function UDPSocketTest() {
           } else {
             expectTrue(true);
           }
+          udp.close();
           console.info(`${caseName} test end`);
           done();
         });
@@ -300,6 +305,7 @@ export default function UDPSocketTest() {
           } else {
             expectTrue(true);
           }
+          udp.close();
           console.info(`${caseName} test end`);
           done();
         });
@@ -331,6 +337,7 @@ export default function UDPSocketTest() {
           } else {
             expectFail();
           }
+          udp.close();
           console.info(`${caseName} test end`);
           done();
         });
@@ -362,6 +369,7 @@ export default function UDPSocketTest() {
           } else {
             expectFail();
           }
+          udp.close();
           console.info(`${caseName} test end`);
           done();
         });
@@ -388,11 +396,13 @@ export default function UDPSocketTest() {
         let udp: socket.UDPSocket = socket.constructUDPSocketInstance();
         udp.bind(UDPAddr1).then(() => {
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
           expectFail();
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -424,11 +434,13 @@ export default function UDPSocketTest() {
         udp.bind(addr).then(() => {
           expectFail();
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
           expectEqual(err.code, 2301099);
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -458,11 +470,13 @@ export default function UDPSocketTest() {
         udp.bind(addr).then(() => {
           expectTrue(true);
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
           expectFail();
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -494,11 +508,13 @@ export default function UDPSocketTest() {
         udp.bind(addr).then(() => {
           expectTrue(true);
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
           expectFail();
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -530,11 +546,13 @@ export default function UDPSocketTest() {
         udp.bind(addr).then(() => {
           expectTrue(true);
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
           expectFail();
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -566,11 +584,13 @@ export default function UDPSocketTest() {
         udp.bind(addr).then(() => {
           expectTrue(true);
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
           expectFail();
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -602,11 +622,13 @@ export default function UDPSocketTest() {
         udp.bind(addr).then(() => {
           expectTrue(true);
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
           expectFail();
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -638,11 +660,13 @@ export default function UDPSocketTest() {
         udp.bind(addr).then(() => {
           expectFail();
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
           expectEqual(err.code, 401);
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -669,11 +693,13 @@ export default function UDPSocketTest() {
         udp.bind(null).then(() => {
           expectFail();
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
           expectEqual(err.code, 401);
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -700,11 +726,13 @@ export default function UDPSocketTest() {
         udp.bind(undefined).then(() => {
           expectFail();
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
           expectEqual(err.code, 401);
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -740,6 +768,7 @@ export default function UDPSocketTest() {
           } else {
             expectTrue(true);
           }
+          udp.close();
           console.info(`${caseName} test end`);
           done();
         });
@@ -776,6 +805,7 @@ export default function UDPSocketTest() {
           } else {
             expectTrue(true);
           }
+          udp.close();
           console.info(`${caseName} test end`);
           done();
         });
@@ -816,6 +846,7 @@ export default function UDPSocketTest() {
           } else {
             expectFail();
           }
+          udp.close();
           console.info(`${caseName} test end`);
           done();
         });
@@ -856,6 +887,7 @@ export default function UDPSocketTest() {
           } else {
             expectTrue(true);
           }
+          udp.close();
           console.info(`${caseName} test end`);
           done();
         });
@@ -896,6 +928,7 @@ export default function UDPSocketTest() {
           } else {
             expectTrue(true);
           }
+          udp.close();
           console.info(`${caseName} test end`);
           done();
         });
@@ -936,6 +969,7 @@ export default function UDPSocketTest() {
           } else {
             expectTrue(false, caseName);
           }
+          udp.close();
           console.info(`${caseName} test end`);
           done();
         });
@@ -968,6 +1002,7 @@ export default function UDPSocketTest() {
           } else {
             expectFail();
           }
+          udp.close();
           console.info(`${caseName} test end`);
           done();
         });
@@ -1000,6 +1035,7 @@ export default function UDPSocketTest() {
           } else {
             expectFail();
           }
+          udp.close();
           console.info(`${caseName} test end`);
           done();
         });
@@ -1032,11 +1068,13 @@ export default function UDPSocketTest() {
         udp.send(sendOptions).then(() => {
           expectTrue(true);
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
           expectFail();
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -1068,11 +1106,13 @@ export default function UDPSocketTest() {
         udp.send(sendOptions).then(() => {
           expectTrue(true);
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
           expectFail();
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -1104,11 +1144,13 @@ export default function UDPSocketTest() {
         udp.send(sendOptions).then(() => {
           expectFail();
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
           expectEqual(err.code, 401);
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -1140,11 +1182,13 @@ export default function UDPSocketTest() {
         udp.send(sendOptions).then(() => {
           expectFail();
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
           expectEqual(err.code, 401);
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -1180,11 +1224,13 @@ export default function UDPSocketTest() {
         udp.send(sendOptions).then(() => {
           expectFail();
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
           expectEqual(err.code, 2301022);
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -1220,11 +1266,13 @@ export default function UDPSocketTest() {
         udp.send(sendOptions).then(() => {
           expectTrue(true);
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
           expectFail();
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -1260,11 +1308,13 @@ export default function UDPSocketTest() {
         udp.send(sendOptions).then(() => {
           expectTrue(true);
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
           expectFail();
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -1300,11 +1350,13 @@ export default function UDPSocketTest() {
         udp.send(sendOptions).then(() => {
           expectFail();
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
           expectEqual(err.code, 2301022);
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -1340,11 +1392,13 @@ export default function UDPSocketTest() {
         udp.send(sendOptions).then(() => {
           expectFail();
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
           expectEqual(err.code, 401);
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -1372,11 +1426,13 @@ export default function UDPSocketTest() {
         udp.send(null).then(() => {
           expectFail();
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
           expectEqual(err.code, 401);
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -1404,11 +1460,13 @@ export default function UDPSocketTest() {
         udp.send(undefined).then(() => {
           expectFail();
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
           expectEqual(err.code, 401);
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -1440,6 +1498,7 @@ export default function UDPSocketTest() {
           } else {
             expectTrue(true);
           }
+          udp.close();
           console.info(`${caseName} test end`);
           done();
         });
@@ -1499,11 +1558,13 @@ export default function UDPSocketTest() {
         udp.close().then(() => {
           expectTrue(true);
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
           expectFail();
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -1563,12 +1624,14 @@ export default function UDPSocketTest() {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
             expectFail();
+            udp.close();
           } else {
             console.info(`${caseName} data: ${JSON.stringify(data)}`);
             expectTrue(data != null);
             expectTrue(data.isBound);
             expectFalse(data.isClose);
             expectFalse(data.isConnected);
+            udp.close();
           }
           console.info(`${caseName} test end`);
           done();
@@ -1604,7 +1667,7 @@ export default function UDPSocketTest() {
             console.info(`${caseName} data: ${JSON.stringify(data)}`);
             expectTrue(data != null);
             expectFalse(data.isBound);
-            expectTrue(data.isClose);
+            expectFalse(data.isClose);
             expectFalse(data.isConnected);
           }
           console.info(`${caseName} test end`);
@@ -1639,7 +1702,7 @@ export default function UDPSocketTest() {
             console.info(`${caseName} data: ${JSON.stringify(data)}`);
             expectTrue(data != null);
             expectFalse(data.isBound);
-            expectTrue(data.isClose);
+            expectFalse(data.isClose);
             expectFalse(data.isConnected);
           }
           console.info(`${caseName} test end`);
@@ -1674,11 +1737,13 @@ export default function UDPSocketTest() {
           expectFalse(data.isClose);
           expectFalse(data.isConnected);
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
           expectFail();
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -1708,7 +1773,7 @@ export default function UDPSocketTest() {
           console.info(`${caseName} data: ${JSON.stringify(data)}`);
           expectTrue(data != null);
           expectFalse(data.isBound);
-          expectTrue(data.isClose);
+          expectFalse(data.isClose);
           expectFalse(data.isConnected);
           console.info(`${caseName} test end`);
           done();
@@ -1743,7 +1808,7 @@ export default function UDPSocketTest() {
           console.info(`${caseName} data: ${JSON.stringify(data)}`);
           expectTrue(data != null);
           expectFalse(data.isBound);
-          expectTrue(data.isClose);
+          expectFalse(data.isClose);
           expectFalse(data.isConnected);
           console.info(`${caseName} test end`);
           done();
@@ -1790,6 +1855,7 @@ export default function UDPSocketTest() {
             expectTrue(true);
           }
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -1824,6 +1890,7 @@ export default function UDPSocketTest() {
           } else {
             expectTrue(true);
           }
+          udp.close();
           console.info(`${caseName} test end`);
           done();
         });
@@ -1864,6 +1931,7 @@ export default function UDPSocketTest() {
             expectTrue(true);
           }
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -1903,6 +1971,7 @@ export default function UDPSocketTest() {
             expectTrue(true);
           }
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -1942,6 +2011,7 @@ export default function UDPSocketTest() {
             expectFail();
           }
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -1974,6 +2044,7 @@ export default function UDPSocketTest() {
             expectFail();
           }
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -2006,6 +2077,7 @@ export default function UDPSocketTest() {
             expectFail();
           }
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -2039,11 +2111,13 @@ export default function UDPSocketTest() {
         }
         udp.setExtraOptions(udpextraoptions).then(() => {
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
           expectFail();
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -2074,11 +2148,13 @@ export default function UDPSocketTest() {
         udp.setExtraOptions(udpextraoptions).then(() => {
           expectTrue(true);
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} setExtraOptions err: ${JSON.stringify(err)}`);
           expectFail();
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -2113,11 +2189,13 @@ export default function UDPSocketTest() {
         udp.setExtraOptions(udpextraoptions).then(() => {
           expectTrue(true);
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} setExtraOptions err: ${JSON.stringify(err)}`);
           expectFail();
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -2152,11 +2230,13 @@ export default function UDPSocketTest() {
         udp.setExtraOptions(udpextraoptions).then(() => {
           expectTrue(true);
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} setExtraOptions err: ${JSON.stringify(err)}`);
           expectFail();
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -2191,11 +2271,13 @@ export default function UDPSocketTest() {
         udp.setExtraOptions(udpextraoptions).then(() => {
           expectFail();
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} setExtraOptions err: ${JSON.stringify(err)}`);
           expectEqual(err.code, 2301033);
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -2223,11 +2305,13 @@ export default function UDPSocketTest() {
         udp.setExtraOptions(null).then(() => {
           expectFail();
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
           expectEqual(err.code, 401);
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -2255,11 +2339,13 @@ export default function UDPSocketTest() {
         udp.setExtraOptions(undefined).then(() => {
           expectFail();
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
           expectEqual(err.code, 401);
           console.info(`${caseName} test end`);
+          udp.close();
           done();
         });
       } catch (err) {
@@ -2296,6 +2382,8 @@ export default function UDPSocketTest() {
           console.info(`${caseName} remoteInfo: ${JSON.stringify(value.remoteInfo)}`);
           expectEqual(str, sendOptions.data as string);
           console.info(`${caseName} test end`);
+          udp1.close();
+          udp2.close();
           done();
         });
         udp1.send(sendOptions);
@@ -2333,6 +2421,8 @@ export default function UDPSocketTest() {
           console.info(`${caseName} remoteInfo: ${JSON.stringify(value.remoteInfo)}`);
           expectFail();
           console.info(`${caseName} test end`);
+          udp1.close();
+          udp2.close();
           done();
         };
         udp2.on('message', callback);
@@ -2391,6 +2481,8 @@ export default function UDPSocketTest() {
         await udp1.send(sendOptions);
         expectTrue(true);
         console.info(`${caseName} test end`);
+        udp1.close();
+        udp2.close();
         done();
       } catch (err) {
         console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -2442,6 +2534,8 @@ export default function UDPSocketTest() {
         await udp1.send(sendOptions);
         expectTrue(true);
         console.info(`${caseName} test end`);
+        udp1.close();
+        udp2.close();
         done();
       } catch (err) {
         console.info(`${caseName} err: ${JSON.stringify(err)}`);

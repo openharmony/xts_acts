@@ -17,6 +17,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from "../../../MainAbility/common/Common";
+import GlobalContext from '../../../MainAbility/common/GlobalContext'
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 
 export default function ColumnSetOffset_SubChange() {
@@ -52,10 +53,10 @@ export default function ColumnSetOffset_SubChange() {
      */
     it('testColumnSubcomponentSetOffset', 0, async () => {
       console.info('new testColumnSubcomponentSetOffset START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'offset_x', value: 10
       });
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'offset_y', value: 10
       });
       await CommonFunc.sleep(2000);

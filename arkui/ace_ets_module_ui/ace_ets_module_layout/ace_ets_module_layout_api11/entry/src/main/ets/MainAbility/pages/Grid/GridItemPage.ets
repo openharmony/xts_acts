@@ -12,14 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../utilsUI/MessageManager';
+import GlobalContext from './../../common/GlobalContext';
+import { Value } from './../../common/Value';
+import { MessageManager, Callback } from './../../common/MessageManager';
+
+type MessageData = number | boolean | string
 
 @Entry
 @Component
 struct GridItemPage {
-  @State numbers: string[] = Array.apply(null, { length: 16 }).map(function (item, i) {
-    return i.toString()
-  })
+  @State numbers: string[] = Array.from(Array(16).keys()).map(item => item.toString())
   @State rowStart: number = 1
   @State rowEnd: number = 4
   @State columnStart: number = 1
@@ -27,35 +29,36 @@ struct GridItemPage {
   @State forceRebuild: boolean = true
   @State selectable: boolean = false
   @State onSelect: string = 'a'
-  messageManager:MessageManager = new MessageManager()
+  messageManager:MessageManager<MessageData> = new MessageManager()
 
   onPageShow() {
     console.info('GridItemPage onPageShow')
-    globalThis.value = {
-      name:'messageManager',message:this.messageManager
+    let value: Value<MessageData> = {
+      name: 'messageManager', message: this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    GlobalContext.getContext().setObject('value', value);
+    let callback: Callback<MessageData> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'rowStart') {
-        this.rowStart = message.value
+        this.rowStart = message.value as number
       }
       if (message.name == 'rowEnd') {
-        this.rowEnd = message.value
+        this.rowEnd = message.value as number
       }
       if (message.name == 'columnStart') {
-        this.columnStart = message.value
+        this.columnStart = message.value as number
       }
       if (message.name == 'columnEnd') {
-        this.columnEnd = message.value
+        this.columnEnd = message.value as number
       }
       if (message.name == 'forceRebuild') {
-        this.forceRebuild = message.value
+        this.forceRebuild = message.value as boolean
       }
       if (message.name == 'selectable') {
-        this.selectable = message.value
+        this.selectable = message.value as boolean
       }
       if (message.name == 'onSelect') {
-        this.onSelect = message.value
+        this.onSelect = message.value as string
       }
     }
     this.messageManager.registerCallback(callback)
@@ -81,7 +84,7 @@ struct GridItemPage {
           console.info('isSelected: ' + isSelected)
         })
 
-        ForEach(this.numbers, (item) => {
+        ForEach(this.numbers, (item: string) => {
           GridItem() {
             Text(item)
               .fontSize(16)
@@ -92,7 +95,7 @@ struct GridItemPage {
               .key(item)
           }.forceRebuild(this.forceRebuild)
           .key("gridItem2")
-        }, item => item)
+        }, (item: string) => item)
 
         GridItem() {
           Text('b')

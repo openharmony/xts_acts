@@ -49,6 +49,20 @@ export function setSource(avPlayer, src) {
     }
 }
 
+export function setSubtitle(avPlayer, src) {
+    if (typeof(avPlayer) === 'undefined') {
+        console.error('case avPlayer is undefined');
+        return;
+    }
+    if (typeof(src) === 'string') {
+        console.info('case src test');
+        avPlayer.addSubtitleFromUrl(src);
+    } else {
+        console.info('case fdsrc test');
+        avPlayer.addSubtitleFromFd(src.fd, src.offset, src.length);
+    }
+}
+
 function checkPlayTest(avPlayer, playTest) {
     if (avPlayer == null) {
         return;

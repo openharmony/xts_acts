@@ -547,7 +547,7 @@ export default function relationalStoreCloudSyncTest() {
                     console.log(TAG + `cloud sync success:`);
                     expect(err == undefined).assertTrue();
                 });
-                await sleep(1000);
+                await sleep(500);
                 expect( syncProgressDetail["schedule"] == relationalStore.Progress.SYNC_FINISH ).assertTrue();
                 expect( syncProgressDetail["code"] != 0 ).assertTrue();
                 done();
@@ -570,7 +570,7 @@ export default function relationalStoreCloudSyncTest() {
                 await rdbStore.cloudSync(relationalStore.SyncMode.SYNC_MODE_TIME_FIRST, Progess).then(() => {
                     console.log(TAG + `cloud sync success:`);
                 });
-                await sleep(1000);
+                await sleep(500);
                 expect( syncProgressDetail["schedule"] == relationalStore.Progress.SYNC_FINISH ).assertTrue();
                 expect( syncProgressDetail["code"] != 0 ).assertTrue();
                 done();
@@ -595,7 +595,7 @@ export default function relationalStoreCloudSyncTest() {
                     console.log(TAG + `cloud sync success:` + err);
                     expect(err == undefined).assertTrue();
                 });
-                await sleep(1000);
+                await sleep(500);
                 expect( syncProgressDetail["schedule"] == relationalStore.Progress.SYNC_FINISH ).assertTrue();
                 expect( syncProgressDetail["code"] != 0 ).assertTrue();
                 done();
@@ -620,7 +620,7 @@ export default function relationalStoreCloudSyncTest() {
                     relationalStore.SyncMode.SYNC_MODE_TIME_FIRST, tableArray, Progess).then(() => {
                     console.log(TAG + `cloud sync success:`);
                 });
-                await sleep(1000);
+                await sleep(500);
                 expect( syncProgressDetail["schedule"] == relationalStore.Progress.SYNC_FINISH ).assertTrue();
                 expect( syncProgressDetail["code"] != 0 ).assertTrue();
                 done();
@@ -645,7 +645,7 @@ export default function relationalStoreCloudSyncTest() {
                     relationalStore.SyncMode.SYNC_MODE_NATIVE_FIRST, tableArray, Progess).then(() => {
                     console.log(TAG + `cloud sync success`);
                 });
-                await sleep(1000);
+                await sleep(500);
                 expect( syncProgressDetail["schedule"] == relationalStore.Progress.SYNC_FINISH ).assertTrue();
                 expect( syncProgressDetail["code"] != 0 ).assertTrue();
                 done();
@@ -670,7 +670,7 @@ export default function relationalStoreCloudSyncTest() {
                     relationalStore.SyncMode.SYNC_MODE_CLOUD_FIRST, tableArray, Progess).then(() => {
                     console.log(TAG + `cloud sync success:`);
                 });
-                await sleep(1000);
+                await sleep(500);
                 expect( syncProgressDetail["schedule"] == relationalStore.Progress.SYNC_FINISH ).assertTrue();
                 expect( syncProgressDetail["code"] != 0 ).assertTrue();
                 done();

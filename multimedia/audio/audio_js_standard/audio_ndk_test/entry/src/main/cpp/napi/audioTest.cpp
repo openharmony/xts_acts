@@ -3124,6 +3124,50 @@ static napi_value AudioAudioInternalRecordingFalse(napi_env env, napi_callback_i
     return res;
 }
 
+static OH_AudioData_Callback_Result WriteDataCallbackWithValidResult(OH_AudioRenderer* renderer,
+    void* userData,
+    void* buffer,
+    int32_t bufferLen)
+{
+    return AUDIO_DATA_CALLBACK_RESULT_VALID;
+}
+
+static OH_AudioData_Callback_Result WriteDataCallbackWithInvalidResult(OH_AudioRenderer* renderer,
+    void* userData,
+    void* buffer,
+    int32_t bufferLen)
+{
+    return AUDIO_DATA_CALLBACK_RESULT_INVALID;
+}
+
+static napi_value AudioStreamBuilderSetRendererWriteDataCallback_001(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder;
+    OH_AudioStream_Type type = AUDIOSTREAM_TYPE_RENDERER;
+    OH_AudioStreamBuilder_Create(&builder, type);
+    OH_AudioRenderer_OnWriteDataCallback onWriteDataCallback = WriteDataCallbackWithValidResult;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererWriteDataCallback(builder,
+        onWriteDataCallback, nullptr);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
+static napi_value AudioStreamBuilderSetRendererWriteDataCallback_002(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder;
+    OH_AudioStream_Type type = AUDIOSTREAM_TYPE_RENDERER;
+    OH_AudioStreamBuilder_Create(&builder, type);
+    OH_AudioRenderer_OnWriteDataCallback onWriteDataCallback = WriteDataCallbackWithInvalidResult;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_SetRendererWriteDataCallback(builder,
+        onWriteDataCallback, nullptr);
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -3398,6 +3442,10 @@ static napi_value Init(napi_env env, napi_value exports)
             AudioAudioInternalRecordingSuccess02, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"audioAudioInternalRecordingFalse", nullptr,
             AudioAudioInternalRecordingFalse, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioStreamBuilderSetRendererWriteDataCallback_001", nullptr,
+            AudioStreamBuilderSetRendererWriteDataCallback_001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioStreamBuilderSetRendererWriteDataCallback_002", nullptr,
+            AudioStreamBuilderSetRendererWriteDataCallback_002, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

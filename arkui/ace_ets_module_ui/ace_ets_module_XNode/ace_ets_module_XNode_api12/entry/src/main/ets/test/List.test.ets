@@ -20,6 +20,10 @@ import graphicGetInterfaceTest from './GraphicsTest/graphicGetInterface.test';
 import renderNodeGetInterfaceTest from './renderNode/renderNodeTestInterface.test';
 import disposeTest from './FrameNodeTest/dispose.test';
 import getAttrsTest from './FrameNodeTest/getAttrs.test';
+import getPosition from './FrameNodeTest/getPosition.test';
+import setLayout from './FrameNodeTest/setLayout.test';
+
+
 import RenderNodeAttributeTest from './renderNode/RenderNodeAttributeTest.test';
 import setRectShape from './GraphicsTest/setRectShape.test';
 import LengthUnitTest from './GraphicsTest/LengthUnit.test'
@@ -46,12 +50,34 @@ import createNodeStack from './FrameNodeTest/createNodeStack.test';
 import createNodeText from './FrameNodeTest/createNodeText.test';
 import setCircleShapeTest from './GraphicsTest/setCircleShape.test';
 import commonEventTest1 from './FrameNodeTest/commonEventTest1.test';
-
+import expectedUpdateInterval from './FrameNodeTest/expectedUpdateInterval.test';
 import CornerTest from './GraphicsTest/GraphicsApiTest/CornerTest.test';
 import LengthMetricsUnitTest from './GraphicsTest/GraphicsApiTest/LengthMetricsUnitTest.test';
 import PercentReferenceTest from './GraphicsTest/GraphicsApiTest/PercentReferenceTest.test';
+import typeNodeBlankTest from './typeNodeTest/Blank.test';
+import typeNodeDividerTest from './typeNodeTest/Divider.test';
+import typeNodeGridColTest from './typeNodeTest/GridCol.test';
+import typeNodeListTest from './typeNodeTest/List.test';
+import typeNodeLoadingProgressTest from './typeNodeTest/LoadingProgress.test';
+import typeNodeProgressTest from './typeNodeTest/Progress.test';
+import typeNodeRelativeContainerTest from './typeNodeTest/RelativeContainer.test';
+import typeNodeSwiperTest from './typeNodeTest/Swiper.test';
+import RELOAD from './FrameNodeTest/RELOAD.test';
+
+import BuilderNodeApiRecycleTest from './FrameNodeTest/BuilderNodeApiRecycleTest.test';
+import BuilderNodeApiReuseTest from './FrameNodeTest/BuilderNodeApiReuseTest.test';
+import ComponentContentAPIRecycleTest from './FrameNodeTest/ComponentContentAPIRecycleTest.test';
+import ComponentContentAPIReuseTest from './FrameNodeTest/ComponentContentAPIReuseTest.test';
+import APImarkNodeGroupTest from './FrameNodeTest/APImarkNodeGroupTest.test';
+import APINodeContentTest from './FrameNodeTest/APINodeContentTest.test';
 
 export default function testsuite() {
+  BuilderNodeApiRecycleTest();
+  BuilderNodeApiReuseTest();
+  ComponentContentAPIRecycleTest();
+  ComponentContentAPIReuseTest();
+  APImarkNodeGroupTest();
+  APINodeContentTest();
   borderRadiuses();
   borderStyles();
   edgeColors();
@@ -59,6 +85,8 @@ export default function testsuite() {
   renderNodeGetInterfaceTest();
   disposeTest();
   getAttrsTest();
+  getPosition();
+  setLayout();
   RenderNodeAttributeTest();
   setRectShape();
   LengthUnitTest();
@@ -89,4 +117,14 @@ export default function testsuite() {
   PercentReferenceTest();
   setCircleShapeTest();
   graphicGetInterfaceTest();
+  typeNodeBlankTest();
+  typeNodeDividerTest();
+  typeNodeGridColTest();
+  typeNodeListTest();
+  typeNodeLoadingProgressTest();
+  typeNodeProgressTest();
+  typeNodeRelativeContainerTest();
+  typeNodeSwiperTest();
+  RELOAD()
+  expectedUpdateInterval()
 }

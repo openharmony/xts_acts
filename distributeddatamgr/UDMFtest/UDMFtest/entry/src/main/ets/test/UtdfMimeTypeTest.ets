@@ -53,14 +53,14 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUBDistributedDataUDMFSDKUtdMimeTypeJsAPITest0030
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0030
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/mspowerpoint"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.ms-powerpoint"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0030', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0030 start');
-      let result = UTD.getUniformDataTypeByMIMEType("application/mspowerpoint");
+      let result = UTD.getUniformDataTypeByMIMEType("application/vnd.ms-powerpoint");
       console.log("typeId:" + result);
       expect(result).assertEqual(UTD.UniformDataType.PPT);
     });
@@ -763,7 +763,7 @@ export default function UtdfMimeTypeTest() {
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0960', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0960 start');
-      let result = UTD.getUniformDataTypeByMIMEType("image/x-quicktime");
+      let result = UTD.getUniformDataTypeByMIMEType("image/x-xbitmap");
       console.log("typeId:" + result);
       expect(result).assertEqual(UTD.UniformDataType.XBITMAP_IMAGE);
     });
@@ -1304,16 +1304,16 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUBDistributedDataUDMFSDKUtdMimeTypeJsAPITest0890
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0890
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/ics"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/calendar"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0890', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0890 start');
-      let result = UTD.getUniformDataTypeByMIMEType("application/ics");
+      let result = UTD.getUniformDataTypeByMIMEType("text/calendar");
       console.log("typeId:" + result);
-      expect(result).assertEqual(UTD.UniformDataType.ICS);
+      expect(result).assertEqual(UTD.UniformDataType.CALENDAR);
     });
 
     /**
@@ -1375,16 +1375,16 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUBDistributedDataUDMFSDKUtdMimeTypeJsAPITest0940
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0940
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vcs"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/calendar"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
     it('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0940', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_0940 start');
-      let result = UTD.getUniformDataTypeByMIMEType("application/vcs");
+      let result = UTD.getUniformDataTypeByMIMEType("text/calendar");
       console.log("typeId:" + result);
-      expect(result).assertEqual(UTD.UniformDataType.VCS);
+      expect(result).assertEqual(UTD.UniformDataType.CALENDAR);
     });
   });
 }

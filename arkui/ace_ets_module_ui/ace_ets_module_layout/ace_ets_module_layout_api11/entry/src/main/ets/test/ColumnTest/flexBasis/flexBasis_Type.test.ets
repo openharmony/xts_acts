@@ -16,6 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
+import GlobalContext from '../../../MainAbility/common/GlobalContext'
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 
 export default function flexBasis_Type() {
@@ -51,7 +52,7 @@ export default function flexBasis_Type() {
      */
     it('SUB_ACE_flexBasis_Type_TEST_0100', 0, async () => {
       console.info('[SUB_ACE_flexBasis_Type_TEST_0100] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'addflexBasis1', value: 100
       });
       await CommonFunc.sleep(3000);
@@ -94,7 +95,7 @@ export default function flexBasis_Type() {
      */
     it('SUB_ACE_flexBasis_Type_TEST_0200', 0, async () => {
       console.info('[SUB_ACE_flexBasis_Type_TEST_0200] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'addflexBasis1', value: 0
       });
       await CommonFunc.sleep(3000);
@@ -138,7 +139,7 @@ export default function flexBasis_Type() {
      */
     it('SUB_ACE_flexBasis_Type_TEST_0300', 0, async () => {
       console.info('[SUB_ACE_flexBasis_Type_TEST_0300] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addflexBasis2', value: 'auto'
       });
       await CommonFunc.sleep(3000);
@@ -179,7 +180,7 @@ export default function flexBasis_Type() {
      */
     it('SUB_ACE_flexBasis_Type_TEST_0400', 0, async () => {
       console.info('[SUB_ACE_flexBasis_Type_TEST_0400] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addflexBasis2', value: '200vp'
       });
       await CommonFunc.sleep(3000);
@@ -221,7 +222,7 @@ export default function flexBasis_Type() {
      */
     it('SUB_ACE_flexBasis_Type_TEST_0500', 0, async () => {
       console.info('[SUB_ACE_flexBasis_Type_TEST_0500] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addflexBasis2', value: '200px'
       });
       await CommonFunc.sleep(3000);
@@ -263,7 +264,7 @@ export default function flexBasis_Type() {
      */
     it('SUB_ACE_flexBasis_Type_TEST_0600', 0, async () => {
       console.info('[SUB_ACE_flexBasis_Type_TEST_0600] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addflexBasis2', value: '200fp'
       });
       await CommonFunc.sleep(3000);
@@ -305,7 +306,7 @@ export default function flexBasis_Type() {
      */
     it('SUB_ACE_flexBasis_Type_TEST_0700', 0, async () => {
       console.info('[SUB_ACE_flexBasis_Type_TEST_0700] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<string>('value').message.notify({
         name: 'addflexBasis2', value: '200lpx'
       });
       await CommonFunc.sleep(3000);

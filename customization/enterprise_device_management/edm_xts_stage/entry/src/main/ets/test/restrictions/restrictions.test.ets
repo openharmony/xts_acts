@@ -19,12 +19,12 @@ import { ENTINFO1, SELFWANT, SELFHAPNAME, INVALID_WANT } from '../commom';
 import adminManager from '@ohos.enterprise.adminManager';
 import restrictions from '@ohos.enterprise.restrictions';
 
-const LABEL_BLUETOOTH = "bt";
-const LABEL_MODIFY_DATETIME = "modifyTime";
+const LABEL_BLUETOOTH = "bluetooth";
+const LABEL_MODIFY_DATETIME = "modifyDateTime";
 const LABEL_PRINTER = "printer";
 const LABEL_HDC = "hdc";
-const LABEL_MIC = "mic";
-const LABEL_FINGER_PRINT = "finger";
+const LABEL_MIC = "microphone";
+const LABEL_FINGER_PRINT = "fingerprint";
 const LABEL_USB = "usb";
 const LABEL_WIFI = "wifi";
 

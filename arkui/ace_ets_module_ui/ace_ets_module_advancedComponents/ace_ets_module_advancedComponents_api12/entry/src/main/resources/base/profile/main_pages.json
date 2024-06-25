@@ -1,0 +1,12 @@
+{
+  "src": [
+    "MainAbility/pages/index/Index",
+    "MainAbility/pages/composeListItem/composeListItemPageTest",
+    "MainAbility/pages/exceptionPrompt/exceptionPromptPage",
+    "MainAbility/pages/filter/filterPage",
+    "MainAbility/pages/selectTitleBar/selectTitleBarPage",
+    "MainAbility/pages/swipeRefresher/swipeRefresherPageTest",
+    "MainAbility/pages/tabTitleBar/tabTitleBarPageTest",
+    "MainAbility/pages/toolBar/toolBarPageTest"
+  ]
+}

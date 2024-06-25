@@ -71,11 +71,11 @@ export default function richEditorApi3() {
       await CommonFunc.sleep(2000);
 
       let driver = Driver.create();
-      await CommonFunc.sleep(300);
+      await CommonFunc.sleep(1000);
       await driver.mouseClick({
         x: 300, y: 300
       }, MouseButton.MOUSE_BUTTON_LEFT)
-      await CommonFunc.sleep(1000);
+      await CommonFunc.sleep(2000);
 
       console.info("text1111");
       let text1 = getInspectorByKey('richEditorApi3_text1');

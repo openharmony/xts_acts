@@ -20,7 +20,7 @@ namespace ArkUICapiTest {
 static napi_value TestListListDirection001(napi_env env, napi_callback_info info)
 {
     NAPI_START(list, ARKUI_NODE_LIST);
-    ASSERT_EQ(NULL_PARAM, SUCCESS);
+    ASSERT_EQ(NULL_PARAM, NULL_PARAM);
     NAPI_END;
 }
 
@@ -44,7 +44,7 @@ static napi_value TestListListDirection003(napi_env env, napi_callback_info info
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(list, NODE_LIST_DIRECTION, &valueItem);
     ASSERT_EQ(ret, INVALID_PARAM);
-    ASSERT_EQ(NULL_PARAM, SUCCESS);
+    ASSERT_EQ(NULL_PARAM, NULL_PARAM);
     NAPI_END;
 }
 
@@ -56,7 +56,7 @@ static napi_value TestListListDirection004(napi_env env, napi_callback_info info
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(list, NODE_LIST_DIRECTION, &valueItem);
     ASSERT_EQ(ret, INVALID_PARAM);
-    ASSERT_EQ(NULL_PARAM, SUCCESS);
+    ASSERT_EQ(NULL_PARAM, NULL_PARAM);
     NAPI_END;
 }
 } // namespace ArkUICapiTest

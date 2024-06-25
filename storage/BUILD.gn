@@ -18,6 +18,7 @@ group("storage") {
     deps = [
       "backupextensiontest:backupextension_js_test",
       "crossplatform/storagefsetstest:ActsCrossplatformFsTest",
+      "storagebackupextensionjstest:storagebackupextension_js_test",
       "storagedownloadcloudsyncjstest:storagedownloadcloudsync_js_test",
       "storageenvironmentjstest:storageenvironment_js_test",
       "storageenvironmentndktest:storageenvironment_ndk_test",

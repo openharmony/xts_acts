@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+#
 # Copyright (c) 2024 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -28,7 +31,7 @@ class testCommandWukong(TestCase):
 
     def process(self):
         Step("Process")
-        sysCapsStr = self.device1.execute_shell_command("cat /system/etc/SystemCapability.json")
+        sysCapsStr = self.device1.execute_shell_command("cat /system/etc/param/syscap.para")
         sysCapsList = sysCapUtils.getAllSysCaps(sysCapsStr)
         if "SystemCapability.ArkUI.ArkUI.Full" in sysCapsList:
             wukongOutput = self.device1.execute_shell_command("wukong help")

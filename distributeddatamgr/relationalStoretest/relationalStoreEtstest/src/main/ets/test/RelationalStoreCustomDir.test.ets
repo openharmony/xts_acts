@@ -777,7 +777,7 @@ export default function relationalStoreCustomDirTest() {
       const STORE_CONFIG = {
         name: "rdbStore.db",
         securityLevel: data_Rdb.SecurityLevel.S1,
-        customDir: "data/app/el2/100/database/bundleName/rdb/test"
+        customDir: "data/app/el2/100/database/bundleName/test"
       }
       try {
         let rdbStore = await data_Rdb.getRdbStore(context, STORE_CONFIG);
@@ -789,7 +789,7 @@ export default function relationalStoreCustomDirTest() {
       const STORE_CONFIG1 = {
         name: "rdbStore.db",
         securityLevel: data_Rdb.SecurityLevel.S1,
-        customDir: "data/app/el2/100/database/bundleName/rdb/test"
+        customDir: "data/app/el2/100/database/bundleName/test"
       }
       try {
         await data_Rdb.getRdbStore(context, STORE_CONFIG1);
@@ -812,7 +812,7 @@ export default function relationalStoreCustomDirTest() {
       const STORE_CONFIG = {
         name: "rdbStore.db",
         securityLevel: data_Rdb.SecurityLevel.S1,
-        customDir: "data/app/el2/100/database/bundleName/rdb/test"
+        customDir: "data/app/el2/100/database/bundleName/test"
       }
       try {
         let store = await data_Rdb.getRdbStore(context, STORE_CONFIG);
@@ -830,7 +830,7 @@ export default function relationalStoreCustomDirTest() {
       const STORE_CONFIG1 = {
         name: "rdbStore.db",
         securityLevel: data_Rdb.SecurityLevel.S1,
-        customDir: "data/app/el2/100/database/bundleName/rdb/test"
+        customDir: "data/app/el2/100/database/bundleName/test"
       }
       await data_Rdb.getRdbStore(context, STORE_CONFIG).then(async (rdbStore) => {
         console.info(TAG + "getRdbStore done: " + rdbStore);
@@ -1258,6 +1258,176 @@ export default function relationalStoreCustomDirTest() {
       store = null;
       console.info(TAG + "************* CustomDirTest2800 end*************");
 
+    })
+
+    /**
+     * @tc.name RelationalStore store customDir:"/*"  getRdbStore test callback
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_GetRdbStoreEtsAPITest_4500
+     * @tc.desc RelationalStore store customDir:"/*"  getRdbStore test callback
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('CustomDirTest2900', 0, async function (done) {
+      console.info(TAG + "************* CustomDirTest2900 start *************");
+      const STORE_CONFIG = {
+        name: "rdbStore.db",
+        securityLevel: data_Rdb.SecurityLevel.S1,
+        customDir: "/data/app/el2/100/database/bundleName/rdb/testrdb/test/rdb"
+      }
+      try {
+        data_Rdb.getRdbStore(context, STORE_CONFIG, async (err, store) => {
+          if (err) {
+            console.error(TAG + "catch err: Get RdbStore failed, err: code=" + err.code + " message=" + err.message);
+            done()
+            expect().assertFail()
+          } else {
+            done()
+            expect().assertFail()
+          }
+        })
+      } catch (err) {
+        console.error(TAG + "catch err:  code=" + err.code + " message=" + err.message);
+        done()
+        expect("401").assertEqual(err.code);
+        console.info(TAG + "************* CustomDirTest2900 end *************");
+      }
+    })
+    
+    /**
+     * @tc.name RelationalStore store customDir:"/*"  getRdbStore test promise
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_GetRdbStoreEtsAPITest_4600
+     * @tc.desc RelationalStore store customDir:"/*"  getRdbStore test promise
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('CustomDirTest3000', 0, async function () {
+      console.info(TAG + "************* CustomDirTest3000 start *************");
+      const STORE_CONFIG = {
+        name: "rdbStore.db",
+        securityLevel: data_Rdb.SecurityLevel.S1,
+        customDir: "/data/app/el2/100/database/bundleName/rdb/testrdb/test/rdb"
+      }
+      try {
+        await data_Rdb.getRdbStore(context, STORE_CONFIG).then(async (rdbStore) => {
+          expect().assertFail();
+        }).catch((err) => {
+          console.info(TAG + `Get RdbStore failed, err: code= ${err.code}, message = ${err.message}`);
+          expect().assertFail()
+        })
+      } catch (err) {
+        console.info(TAG, "catch err: Get RdbStore failed, err: code=" + err.code + " message=" + err.message);
+        expect("401").assertEqual(err.code);
+        console.info(TAG + "************* CustomDirTest3000 end   *************");
+      }
+
+    })
+
+    /**
+     * @tc.name RelationalStore store customDir:"/*"  deleteRdbStore test callback
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_GetRdbStoreEtsAPITest_4700
+     * @tc.desc RelationalStore store customDir:"/*"  deleteRdbStore test callback
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('CustomDirTest3100', 0, async function (done) {
+      console.info(TAG + "************* CustomDirTest3100 start *************");
+      const STORE_CONFIG1 = {
+        name: "rdbStore.db",
+        securityLevel: data_Rdb.SecurityLevel.S1,
+        customDir: "/*"
+      }
+      try {
+        data_Rdb.deleteRdbStore(context, STORE_CONFIG1, async (err) => {
+            if (err) {
+              done();
+              console.error(TAG + `Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+              expect().assertFail()
+            }else{
+              done()
+              expect().assertFail()
+            }
+          })
+      } catch (err) {
+        console.error(TAG + `Delete RdbStore failed, code is ${err.code},message is ${err.message}`);
+        done()
+        expect("401").assertEqual(err.code);
+        console.info(TAG + "************* CustomDirTest2900 end *************");
+      }
+      console.info(TAG + "************* CustomDirTest3100 end *************");
+    })
+    /**
+     * @tc.name RelationalStore store customDir:"/*"  deleteRdbStore test promise
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_GetRdbStoreEtsAPITest_4800
+     * @tc.desc RelationalStore store customDir:"/*"  deleteRdbStore test promise
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('CustomDirTest3200', 0, async function () {
+      console.info(TAG + "************* CustomDirTest3200 start *************");
+      
+      const STORE_CONFIG1 = {
+        name: "rdbStore.db",
+        securityLevel: data_Rdb.SecurityLevel.S1,
+        customDir: "/*"
+      }
+      try {
+        await data_Rdb.deleteRdbStore(context, STORE_CONFIG1).then(() => {
+        console.info(TAG + "Delete RdbStore successfully");
+        expect().assertFail();
+      }).catch((err) => {
+        console.info(TAG + "Delete RdbStore failed" + err.code + err.message);
+        expect().assertFail()
+      })
+      } catch (err) {
+        console.info(TAG + "Delete RdbStore failed" + err.code + err.message);
+        expect("401").assertEqual(err.code);
+        console.info(TAG + "************* CustomDirTest3000 end   *************");
+      }
+      
+      console.info(TAG + "************* CustomDirTest3200 end   *************");
+    })
+
+    /**
+     * @tc.name RelationalStore store customDir is not not a file  getRdbStore test
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_GetRdbStoreEtsAPITest_4900
+     * @tc.desc RelationalStore store customDir is not not a file  getRdbStore test
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
+     */
+    it('CustomDirTest3300', 0, async function () {
+      console.info(TAG + "************* CustomDirTest3300 start *************");
+      const STORE_CONFIG = {
+        name: "abc.db",
+        securityLevel: data_Rdb.SecurityLevel.S1,
+        customDir: "data/app/el2/100/database/bundleName/rdb/abc.db"
+      }
+      try {
+        let rdbStore = await data_Rdb.getRdbStore(context, STORE_CONFIG);
+        await rdbStore.executeSql(CREATE_TABLE_TEST, null);
+        await data_Rdb.deleteRdbStore(context, STORE_CONFIG);
+      } catch (e) {
+        expect().assertFail();
+      }
+      const STORE_CONFIG1 = {
+        name: "abc.db",
+        securityLevel: data_Rdb.SecurityLevel.S1,
+        customDir: "data/app/el2/100/database/bundleName/rdb"
+      }
+      try {
+        let rdbStore = await data_Rdb.getRdbStore(context, STORE_CONFIG1);
+        await rdbStore.executeSql(CREATE_TABLE_TEST, null);
+        await data_Rdb.deleteRdbStore(context, STORE_CONFIG1);
+        expect().assertFail();
+      } catch (err) {
+        console.info(TAG + "Delete RdbStore failed" + err.code + err.message);
+        expect(14800030).assertEqual(err.code);
+      }
+      console.info(TAG + "************* CustomDirTest3300 end*************");
     })
   })
 }

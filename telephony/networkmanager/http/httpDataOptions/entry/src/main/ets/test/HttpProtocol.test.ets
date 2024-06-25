@@ -236,7 +236,7 @@ export default function HttpHttpProtocolTest() {
             }, (err: BusinessError, data: http.HttpResponse) => {
               if (err) {
                 console.info(`${caseName} httpRequest fail ${JSON.stringify(err)}`);
-                ExpectFail();
+                ExpectTrue(err.code == 2300999);//The device does not support HTTP3
                 done();
               } else {
                 console.info(`${caseName} httpRequest success ${JSON.stringify(data)}`);
@@ -285,7 +285,7 @@ export default function HttpHttpProtocolTest() {
               done();
             }).catch((err: BusinessError) => {
               console.info(`${caseName} request fail err:${JSON.stringify(err)}`);
-              ExpectFail();
+              ExpectTrue(err.code == 2300999);//The device does not support HTTP3
               done();
             });
           }
@@ -497,7 +497,7 @@ export default function HttpHttpProtocolTest() {
             }, (err: BusinessError, data: number) => {
               if (err) {
                 console.info(`${caseName} httpRequest fail ${JSON.stringify(err)}`);
-                ExpectFail();
+                ExpectTrue(err.code == 2300999);//The device does not support HTTP3
                 done();
               } else {
                 console.info(`${caseName} httpRequest success ${JSON.stringify(data)}`);
@@ -546,7 +546,7 @@ export default function HttpHttpProtocolTest() {
               done();
             }).catch((err: BusinessError) => {
               console.info(`${caseName} request fail err:${JSON.stringify(err)}`);
-              ExpectFail();
+              ExpectTrue(err.code == 2300999);//The device does not support HTTP3
               done();
             });
           }

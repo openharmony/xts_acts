@@ -34,6 +34,8 @@ export default function performanceTest() {
     beforeAll(async (done: Function) => {
       abilityContext = AppStorage.get<common.UIAbilityContext>('TestAbilityContext') as common.UIAbilityContext
       expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
+      let driver = Driver.create()
+      await driver.delayMs(2000)
       done()
     })
     /*
@@ -73,111 +75,43 @@ export default function performanceTest() {
      * @tc.level: Level 0
      */
     it('testLongtermTask0100', 0, async (done: Function) => {
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
-      let driver = Driver.create()
-      await driver.delayMs(1000)
-      let audioRenderer = await getAudioRenderer()
-      expect(audioRenderer != undefined).assertTrue()
-      expect(await startAudio(audioRenderer, abilityContext)).assertTrue()
-      await driver.delayMs(1000)
-      expect(audioRenderer.state).assertEqual(audio.AudioState.STATE_RUNNING)
-      await driver.delayMs(2000)
-      let testAssistWantInfo: Want = {
-        uri: 'http://assist.arkts.pcs.acts.com',
-        type: "pcs/test"
-      }
-      expect(await AbilityUtils.startAbilityImplicitly(testAssistWantInfo, abilityContext)).assertTrue()
-      await driver.delayMs(1000)
-      let button = await driver.findComponent(ON.text('打开'))
-      if(button != undefined) {
-        await button.click()
+      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'EntryAbility', abilityContext)).assertTrue()
+      try {
+        let driver = Driver.create()
         await driver.delayMs(2000)
+        let startAudio = await driver.findComponent(ON.id('StartAudio'))
+        await startAudio.click()
+        await driver.delayMs(2000)
+        let audioStateText = await driver.findComponent(ON.id('AudioStateText'))
+        expect(await audioStateText.getText()).assertEqual(audio.AudioState.STATE_RUNNING.toString())
+        await driver.delayMs(2000)
+        expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
+        await driver.delayMs(2000)
+        let testAssistWantInfo: Want = {
+          uri: 'http://assist.arkts.pcs.acts.com',
+          type: "pcs/test"
+        }
+        expect(await AbilityUtils.startAbilityImplicitly(testAssistWantInfo, abilityContext)).assertTrue()
+        await driver.delayMs(2000)
+        let button = await driver.findComponent(ON.text('打开'))
+        if(button != undefined) {
+          await button.click()
+          await driver.delayMs(2000)
+        }
+        expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'EntryAbility', abilityContext)).assertTrue()
+        await driver.delayMs(2000)
+        audioStateText = await driver.findComponent(ON.id('AudioStateText'))
+        expect(await audioStateText.getText()).assertEqual(audio.AudioState.STATE_RUNNING.toString())
+        await driver.delayMs(2000)
+        let stopAudio = await driver.findComponent(ON.id('StopAudio'))
+        await stopAudio.click()
+        await driver.delayMs(2000)
+      } catch (error) {
+        let err = error as BusinessError
+        console.error(`Test long term task fail. Code: ${err.code}, message: ${err.message}`);
+        expect(false).assertTrue()
       }
-      expect(await AbilityUtils.startAbility('com.acts.pcs.arktstest', 'TestAbility', abilityContext)).assertTrue()
-      expect(audioRenderer.state).assertEqual(audio.AudioState.STATE_RUNNING)
-      expect(await stopAudio(audioRenderer, abilityContext)).assertTrue()
-      await driver.delayMs(1000)
-      expect(audioRenderer.state).assertEqual(audio.AudioState.STATE_RELEASED)
-      await driver.delayMs(1000)
       done()
     })
   })
-}
-
-async function startAudio(audioRenderer: audio.AudioRenderer, abilityContext:common.UIAbilityContext) {
-  let type: AVSessionManager.AVSessionType = 'audio';
-  let session = await AVSessionManager.createAVSession(abilityContext,'AVSession', type);
-  let wantAgentInfo: wantAgent.WantAgentInfo = {
-    wants: [
-      {
-        bundleName: "com.acts.pcs.arktstest",
-        abilityName: "TestAbility"
-      } as Want
-    ],
-    requestCode: 0,
-    operationType: wantAgent.OperationType.START_ABILITIES,
-    wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
-  }
-  try {
-    let wantAgentObj = await wantAgent.getWantAgent(wantAgentInfo)
-    await backgroundTaskManager.startBackgroundRunning(abilityContext,
-      backgroundTaskManager.BackgroundMode.AUDIO_PLAYBACK, wantAgentObj)
-  } catch (error) {
-    let err: BusinessError = error as BusinessError
-    console.error(`Start BackgroundRunning Fail. Code: ${err.code}, message: ${err.message}`)
-    return false
-  }
-  await audioRenderer.start()
-  await session.activate()
-  return true
-}
-
-async function stopAudio(audioRenderer: audio.AudioRenderer, abilityContext:common.UIAbilityContext) {
-  audioRenderer.stop()
-  audioRenderer.release()
-  try {
-    await backgroundTaskManager.stopBackgroundRunning(abilityContext)
-  } catch (error) {
-    let err: BusinessError = error as BusinessError
-    console.error(`Stop BackgroundRunning Fail. Code: ${err.code}, message: ${err.message}`)
-    return false
-  }
-  return true
-}
-
-async function getAudioRenderer() {
-  let audioStreamInfo: audio.AudioStreamInfo = {
-    samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
-    channels: audio.AudioChannel.CHANNEL_2,
-    sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
-    encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
-  }
-  let audioRendererInfo: audio.AudioRendererInfo = {
-    usage: audio.StreamUsage.STREAM_USAGE_VOICE_COMMUNICATION,
-    rendererFlags: 0
-  }
-  let audioRendererOptions: audio.AudioRendererOptions = {
-    streamInfo: audioStreamInfo,
-    rendererInfo: audioRendererInfo
-  }
-  let audioRenderer: audio.AudioRenderer = await audio.createAudioRenderer(audioRendererOptions)
-
-  let bufferSize: number = 0;
-  class Options {
-    offset?: number;
-    length?: number;
-  }
-  let writeDataCallback = (buffer: ArrayBuffer) => {
-    let path = '/data/storage/el2/base/haps/entry/files/'
-    let filePath = path + '/Believer.wav';
-    let file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
-    let options: Options = {
-      offset: bufferSize,
-      length: buffer.byteLength
-    }
-    fs.readSync(file.fd, buffer, options);
-    bufferSize += buffer.byteLength;
-  }
-  audioRenderer.on('writeData', writeDataCallback);
-  return audioRenderer
 }

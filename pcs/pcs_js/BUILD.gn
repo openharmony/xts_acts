@@ -13,22 +13,8 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsPCSJsTest") {
-  hap_profile = "entry/src/main/config.json"
-  js2abc = true
-  deps = [
-    ":pcs_js_assets",
-    ":pcs_js_resources",
-  ]
+ohos_js_app_suite("ActsPCSJsTest") {
+  test_hap = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsPCSJsTest"
-}
-ohos_js_assets("pcs_js_assets") {
-  js2abc = true
-  hap_profile = "entry/src/main/config.json"
-  source_dir = "entry/src/main/js"
-}
-ohos_resources("pcs_js_resources") {
-  sources = [ "entry/src/main/resources" ]
-  hap_profile = "entry/src/main/config.json"
 }

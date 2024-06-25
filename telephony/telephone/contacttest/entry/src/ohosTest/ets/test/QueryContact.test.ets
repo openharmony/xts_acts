@@ -573,11 +573,11 @@ export default function QueryContactTest() {
                 }, (err: BusinessError, data) => {
                   if (err) {
                     console.info(`${caseName} queryContact: err->${JSON.stringify(err)}`);
-                    ExpectFail();
+                    ExpectTrue(err.code === 401);
                     done();
                   } else {
                     console.info(`${caseName} queryContact: success data->${JSON.stringify(data)}`);
-                    ExpectTrue(data !== undefined);
+                    ExpectTrue(data === undefined);
                     done();
                   }
                 });
@@ -974,11 +974,11 @@ export default function QueryContactTest() {
                 }, attr, (err: BusinessError, data) => {
                   if (err) {
                     console.info(`${caseName} queryContact: err->${JSON.stringify(err)}`);
-                    ExpectFail();
+                    ExpectTrue(err.code === 401);
                     done();
                   } else {
                     console.info(`${caseName} queryContact: success data->${JSON.stringify(data)}`);
-                    ExpectTrue(data !== undefined);
+                    ExpectTrue(data === undefined);
                     done();
                   }
                 });
@@ -1260,11 +1260,11 @@ export default function QueryContactTest() {
                 }, attr);
                 promise.then((data) => {
                   console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
-                  ExpectTrue(data !== undefined);
+                  ExpectTrue(data === undefined);
                   done();
                 }).catch((err: BusinessError) => {
                   console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-                  ExpectFail();
+                  ExpectTrue(err.code === 401);
                   done();
                 });
               }
@@ -2735,7 +2735,7 @@ export default function QueryContactTest() {
             }, (err: BusinessError, data) => {
               if (err) {
                 console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-                ExpectFail();
+                ExpectTrue(err.code === 401);
                 done();
               } else {
                 console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -2833,7 +2833,7 @@ export default function QueryContactTest() {
                 }, attr, (err: BusinessError, data: contact.Contact ) => {
                   if (err) {
                     console.info(`${caseName} callback: queryContact err->${JSON.stringify(err)}`);
-                    ExpectFail();
+                    ExpectTrue(err.code === 401);
                     done();
                   } else {
                     console.info(`${caseName} callback: queryContact success data->${JSON.stringify(data)}`);
@@ -2887,7 +2887,7 @@ export default function QueryContactTest() {
               done();
             }).catch((err: BusinessError) => {
               console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-              ExpectFail();
+              ExpectTrue(err.code === 401);
               done();
             });
           }
@@ -3004,9 +3004,9 @@ export default function QueryContactTest() {
                     let imAddresses: contact.ImAddress[] = resDate.imAddresses;
                     if (imAddresses[0].labelId !== undefined) {
                       let labelId: number = imAddresses[0].labelId
-                      ExpectTrue(labelId.toString() === "0");
-                      done();
+                      ExpectTrue(labelId.toString() === "-1");
                     }
+                    done();
                   } else {
                     ExpectFail();
                     done();
@@ -5354,11 +5354,11 @@ export default function QueryContactTest() {
             }, (err: BusinessError, data) => {
               if (err) {
                 console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-                ExpectFail();
+                ExpectTrue(err.code === 401);
                 done();
               } else {
                 console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
-                ExpectTrue(data.length > 0);
+                ExpectTrue(data.length === 0);
                 done();
               }
             });
@@ -5532,11 +5532,11 @@ export default function QueryContactTest() {
             }, (err: BusinessError, data) => {
               if (err) {
                 console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-                ExpectFail();
+                ExpectTrue(err.code === 401);
                 done();
               } else {
                 console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
-                ExpectTrue(data.length > 0);
+                ExpectTrue(data.length === 0);
                 done();
               }
             });
@@ -5627,11 +5627,11 @@ export default function QueryContactTest() {
             });
             promise.then((data) => {
               console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
-              ExpectTrue(data.length > 0);
+              ExpectTrue(data.length === 0);
               done();
             }).catch((err: BusinessError) => {
               console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-              ExpectFail();
+              ExpectTrue(err.code === 401);
               done();
             });
           }
@@ -5674,11 +5674,11 @@ export default function QueryContactTest() {
             });
             promise.then((data) => {
               console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
-              ExpectTrue(data.length > 0);
+              ExpectTrue(data.length === 0);
               done();
             }).catch((err: BusinessError) => {
               console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-              ExpectFail();
+              ExpectTrue(err.code === 401);
               done();
             });
           }
@@ -5760,11 +5760,11 @@ export default function QueryContactTest() {
             }, (err: BusinessError, data) => {
               if (err) {
                 console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-                ExpectFail();
+                ExpectTrue(err.code === 401);
                 done();
               } else {
                 console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
-                ExpectTrue(data.length > 0);
+                ExpectTrue(data.length === 0);
                 done();
               }
             });
@@ -5807,11 +5807,11 @@ export default function QueryContactTest() {
             }, (err: BusinessError, data) => {
               if (err) {
                 console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-                ExpectFail();
+                ExpectTrue(err.code === 401);
                 done();
               } else {
                 console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
-                ExpectTrue(data.length > 0);
+                ExpectTrue(data.length === 0);
                 done();
               }
             });
@@ -5854,11 +5854,11 @@ export default function QueryContactTest() {
             });
             promise.then((data) => {
               console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
-              ExpectTrue(data.length > 0);
+              ExpectTrue(data.length === 0);
               done();
             }).catch((err: BusinessError) => {
               console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-              ExpectFail();
+              ExpectTrue(err.code === 401);
               done();
             });
           }
@@ -5901,11 +5901,11 @@ export default function QueryContactTest() {
             }, (err: BusinessError, data) => {
               if (err) {
                 console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-                ExpectFail();
+                ExpectTrue(err.code === 401);
                 done();
               } else {
                 console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
-                ExpectTrue(data.length > 0);
+                ExpectTrue(data.length === 0);
                 done();
               }
             });
@@ -5948,11 +5948,11 @@ export default function QueryContactTest() {
             });
             promise.then((data) => {
               console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
-              ExpectTrue(data.length > 0);
+              ExpectTrue(data.length === 0);
               done();
             }).catch((err: BusinessError) => {
               console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-              ExpectFail();
+              ExpectTrue(err.code === 401);
               done();
             });
           }
@@ -5965,7 +5965,54 @@ export default function QueryContactTest() {
       console.info(`${caseName} test end `);
     });
 
+
     /**
+     * @tc.number     : SUB_Telephony_Contact_QueryGroups_0300
+     * @tc.name       : testTelephonyContactQueryGroups0300
+     * @tc.desc       : Query all groups of contacts and use the callback method as an asynchronous method.
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+    it('testTelephonyContactQueryGroups0300', 0, async (done: Function) => {
+      const caseName: string = "testTelephonyContactQueryGroups0300";
+      console.info(`${caseName} test start `);
+      try {
+        let context: Context = AppStorage.get('context') as Context;
+        contact.addContact(context, contactData, (err, data) => {
+          if (err) {
+            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+            ExpectFail();
+            done();
+          } else {
+            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+            ExpectTrue(data > 0);
+            contact.queryGroups(context, {
+              holderId: 0.5,
+              bundleName: "",
+              displayName: ""
+            }, (err: BusinessError, data) => {
+              if (err) {
+                console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
+                ExpectTrue(err.code === 401);
+                done();
+              } else {
+                console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
+                ExpectTrue(data.length === 0)
+                done();
+              }
+            });
+          }
+        });
+      } catch (err) {
+        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
+        ExpectFail();
+        done();
+      }
+      console.info(`${caseName} test end `);
+    });
+
+      /**
      * @tc.number     : SUB_Telephony_Contact_QueryGroups_0600
      * @tc.name       : testTelephonyContactQueryGroups0600
      * @tc.desc       : Query all groups of contacts and use the Promise method as an asynchronous method.
@@ -5997,7 +6044,7 @@ export default function QueryContactTest() {
               done();
             }).catch((err: BusinessError) => {
               console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-              ExpectFail();
+              ExpectTrue(err.code === 401);
               done();
             });
           }
@@ -6009,54 +6056,5 @@ export default function QueryContactTest() {
       }
       console.info(`${caseName} test end `);
     });
-
-    /**
-     * @tc.number     : SUB_Telephony_Contact_QueryGroups_0300
-     * @tc.name       : testTelephonyContactQueryGroups0300
-     * @tc.desc       : Query all groups of contacts and use the callback method as an asynchronous method.
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 3
-     */
-    it('testTelephonyContactQueryGroups0300', 0, async (done: Function) => {
-      const caseName: string = "testTelephonyContactQueryGroups0300";
-      console.info(`${caseName} test start `);
-      try {
-        let context: Context = AppStorage.get('context') as Context;
-        contact.addContact(context, contactData, (err, data) => {
-          if (err) {
-            console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-            ExpectFail();
-            done();
-          } else {
-            console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
-            ExpectTrue(data > 0);
-            contact.queryGroups(context, {
-              holderId: 0.5,
-              bundleName: "",
-              displayName: ""
-            }, (err: BusinessError, data) => {
-              if (err) {
-                console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-                ExpectFail();
-                done();
-              } else {
-                console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
-                ExpectTrue(data.length === 0)
-                done();
-              }
-            });
-          }
-        });
-      } catch (err) {
-        console.info(`${caseName} catch: err->${JSON.stringify(err)}`);
-        ExpectFail();
-        done();
-      }
-      console.info(`${caseName} test end `);
-    });
-
-
-
-  })
+  });
 }

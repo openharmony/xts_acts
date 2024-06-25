@@ -429,7 +429,21 @@ export default function ActsCommonEventManagerSupportTest() {
       expect(commonEventManager.Support.COMMON_EVENT_SCREEN_UNLOCKED).assertEqual('usual.event.SCREEN_UNLOCKED')
       expect(commonEventManager.Support.COMMON_EVENT_SCREEN_LOCKED).assertEqual('usual.event.SCREEN_LOCKED')
       console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2200 END`)
-    })   
+    })
+
+    /*
+     * @tc.number    : SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2400
+     * @tc.name      : SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2400
+     * @tc.desc      : STK common event
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2400', 0, async  function () {
+      console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2400 START`)
+      expect(commonEventManager.Support.COMMON_EVENT_DATA_SHARE_READY).assertEqual('usual.event.DATA_SHARE_READY')
+      console.info(`${TAG} SUB_NOTIFICATION_CES_MANAGER_SUPPORT_ENUM_TEST_2400 END`)
+    })
     
     console.info(`${TAG} SUB_NOTIFICATION_CES_SUPPORT_ENUM_TEST END`)
   })

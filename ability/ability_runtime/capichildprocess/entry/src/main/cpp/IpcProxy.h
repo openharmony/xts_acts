@@ -25,6 +25,7 @@ public:
     ~IpcProxy() override;
     bool RequestExitChildProcess() override;
     int32_t Add(int32_t a, int32_t b) override;
+    int32_t StartNativeChildProcess() override;
     
 private:
     IpcProxy(const IpcProxy&) = delete;

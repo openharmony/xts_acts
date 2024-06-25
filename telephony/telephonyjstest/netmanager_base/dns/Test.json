@@ -3,10 +3,10 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "900000",
-        "shell-timeout": "900000",
         "bundle-name": "com.ohos.dns",
         "package-name": "com.ohos.dns",
-	"testcase-timeout": "30000"
+        "shell-timeout": "900000",
+        "testcase-timeout": "30000"
     },
     "kits": [
         {
@@ -21,12 +21,6 @@
                 "power-shell wakeup",
                 "power-shell setmode 602"
             ]
-        },
-        {
-          "type": "ShellKit",
-          "run-command": [
-              "chmod 777 -R /data/local/tmp/xts-test"
-          ]
-      }
+        }
     ]
 }

@@ -974,7 +974,10 @@ export default function ActsNotificationWantAgentNewTest() {
                 myKey6: true,
               }
             },
-            permission: ''
+            permission: '',
+            extraInfos: {
+              test: 'this is a test value'
+            }
           }
           wantAgent.trigger(WantAgent, triggerInfo, (err, data) => {
             if (err) {

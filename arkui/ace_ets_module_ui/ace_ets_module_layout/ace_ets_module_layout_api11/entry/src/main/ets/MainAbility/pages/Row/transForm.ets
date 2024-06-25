@@ -32,11 +32,11 @@ struct TransformExample {
   private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("transFormExample page state change called:" + JSON.stringify(eventData));
     if (eventData != null) {
-      if (eventData.data.rotateValue != null) {
-        this.rotateValue = JSON.parse(eventData.data.rotateValue);
+      if (eventData.data?.rotateValue != null) {
+        this.rotateValue = JSON.parse(eventData.data?.rotateValue);
       }
-      if (eventData.data.scaleValue != null) {
-        this.scaleValue = JSON.parse(eventData.data.scaleValue);
+      if (eventData.data?.scaleValue != null) {
+        this.scaleValue = JSON.parse(eventData.data?.scaleValue);
       }
     }
   };

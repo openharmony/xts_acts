@@ -14,7 +14,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, MouseButton} from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../MainAbility/utils/MessageManager';
 
@@ -198,8 +198,11 @@ export default function textAreaBC1Jsunit() {
       await CommonFunc.sleep(1000);
       let driver = UiDriver.create();
       await CommonFunc.sleep(1000);
-      let text = await driver.findComponent(BY.key('textArea1'));
-      await text.longClick();
+      let driverX = await Driver.create()
+      let textAreaRect = CommonFunc.getComponentRectOnScreen('textArea1')
+      let clickX = Math.round((textAreaRect.right + textAreaRect.left)/2)
+      let clickY = Math.round((textAreaRect.bottom + textAreaRect.top)/2)
+      await driverX.mouseClick({ x: clickX, y: clickY }, MouseButton.MOUSE_BUTTON_RIGHT)
       await CommonFunc.sleep(1000);
       let allSelect = await driver.findComponent(BY.text('全选'));
       await CommonFunc.sleep(1000);
@@ -209,6 +212,8 @@ export default function textAreaBC1Jsunit() {
         await allSelect.click();
         await CommonFunc.sleep(1000);
       }
+      await driverX.mouseClick({ x: clickX, y: clickY }, MouseButton.MOUSE_BUTTON_RIGHT)
+      await CommonFunc.sleep(1000);
       let copy = await driver.findComponent(BY.text('复制'));
       await CommonFunc.sleep(1000);
       console.log('0600allSelectallSelect复制',copy)
@@ -223,7 +228,7 @@ export default function textAreaBC1Jsunit() {
       await CommonFunc.sleep(1000);
       console.info('textAreaBC1Jsunit_0600 component obj is: ' + txt);
       expect(txt).assertEqual('copy');
-      await text.longClick();
+      await driverX.mouseClick({ x: clickX, y: clickY }, MouseButton.MOUSE_BUTTON_RIGHT)
       await CommonFunc.sleep(1000);
       let paste = await driver.findComponent(BY.text('粘贴'));
       if (paste != null) {
@@ -249,7 +254,11 @@ export default function textAreaBC1Jsunit() {
       let textArea = await driver.findComponent(BY.key('textArea1'));
       await textArea.inputText('123');
       await CommonFunc.sleep(1000);
-      await textArea.longClick();
+      let driverX = await Driver.create()
+      let textAreaRect = CommonFunc.getComponentRectOnScreen('textArea1')
+      let clickX = Math.round((textAreaRect.right + textAreaRect.left)/2)
+      let clickY = Math.round((textAreaRect.bottom + textAreaRect.top)/2)
+      await driverX.mouseClick({ x: clickX, y: clickY }, MouseButton.MOUSE_BUTTON_RIGHT)
       await CommonFunc.sleep(1000);
       let allSelect = await driver.findComponent(BY.text('全选'));
       await CommonFunc.sleep(2000);
@@ -257,6 +266,8 @@ export default function textAreaBC1Jsunit() {
         await allSelect.click();
         await CommonFunc.sleep(1000);
       }
+      await driverX.mouseClick({ x: clickX, y: clickY }, MouseButton.MOUSE_BUTTON_RIGHT)
+      await CommonFunc.sleep(1000);
       let cutComponent = await driver.findComponent(BY.text('剪切'));
       await CommonFunc.sleep(2000);
       if (cutComponent != null) {

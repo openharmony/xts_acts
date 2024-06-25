@@ -45,10 +45,6 @@
 #include "accessibility/slider_accessibilitygroup_test.cpp"
 #include "accessibility/slider_accessibilitylevel_test.cpp"
 #include "accessibility/slider_accessibilitytext_test.cpp"
-#include "accessibility/span_accessibilitydescription_test.cpp"
-#include "accessibility/span_accessibilitygroup_test.cpp"
-#include "accessibility/span_accessibilitylevel_test.cpp"
-#include "accessibility/span_accessibilitytext_test.cpp"
 #include "accessibility/swiper_accessibilitydescription_test.cpp"
 #include "accessibility/swiper_accessibilitygroup_test.cpp"
 #include "accessibility/swiper_accessibilitylevel_test.cpp"
@@ -218,9 +214,13 @@
 #include "list/list_scale_test.cpp"
 #include "list/list_scrollbar_test.cpp"
 #include "list/list_shadow_test.cpp"
+#include "list/list_childMainSize_test.cpp"
 #include "list/list_sticky_test.cpp"
 #include "list/list_translate_test.cpp"
 #include "list/list_width_test.cpp"
+#include "list/list_swipeActionItem_test.cpp"
+#include "list/list_nodeadapter_test.cpp"
+#include "list/list_nodeadapterevent_test.cpp"
 #include "listitem/listitem_backgroundcolor_test.cpp"
 #include "listitem/listitem_blur_test.cpp"
 #include "listitem/listitem_bordercolor_test.cpp"
@@ -352,6 +352,7 @@
 #include "text/text_transform_test.cpp"
 #include "text/text_visibility_test.cpp"
 #include "text/text_width_test.cpp"
+#include "text/text_StyleGraphic_test.cpp"
 #include "textinput/textinput_backgroundcolor_test.cpp"
 #include "textinput/textinput_backgroundimage_test.cpp"
 #include "textinput/textinput_caretcolor_test.cpp"
@@ -476,7 +477,20 @@
 #include "textinput/textinput_stopediting_test.cpp"
 #include "textinput/textinput_lineheight_test.cpp"
 #include "textinput/textinput_defaultfocus_test.cpp"
-
+#include "arkApi/arkApi.cpp"
+#include "arkApi/arkUIAPi.cpp"
+#include "animation/animation.cpp"
+#include "waterFlower/waterFlower.cpp"
+#include "accessibilityState/accessibilityState.cpp"
+#include "relativecontaine/relativecontaine_alignmentruleoption_test.cpp"
+#include "relativecontaine/relativecontaine_barrieroption_test.cpp"
+#include "customcomponent/customcomponent_event_null_test.cpp"
+#include "commonattrs/commonattrs_animate_test.cpp"
+#include "drawabledescriptor/drawabledescriptor_create_test.cpp"
+#include "nodecontent/node_content_test.cpp"
+#include "nativexcomponent/native_xcomponent_test.cpp"
+#include "mouseevent/mouse_event_test.cpp"
+#include "pointerevent/pointer_event_test.cpp"
 namespace ArkUICapiTest {
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -619,6 +633,7 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"testCommonAttrsBorderWidth002", nullptr, TestCommonAttrsBorderWidth002, nullptr, nullptr, nullptr,
          napi_default, nullptr},
+        {"textTextStyleGraphic001", nullptr, TextTextStyleGraphic001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testCommonAttrsBorderWidth003", nullptr, TestCommonAttrsBorderWidth003, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testCommonAttrsBorderWidth004", nullptr, TestCommonAttrsBorderWidth004, nullptr, nullptr, nullptr,
@@ -1605,6 +1620,10 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testSwiperIndicator001", nullptr, TestSwiperIndicator001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperIndicator002", nullptr, TestSwiperIndicator002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperIndicator003", nullptr, TestSwiperIndicator003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSwiperIndicator004", nullptr, TestSwiperIndicator004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSwiperIndicator005", nullptr, TestSwiperIndicator005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSwiperIndicator006", nullptr, TestSwiperIndicator006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testSwiperIndicator007", nullptr, TestSwiperIndicator007, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperInterval001", nullptr, TestSwiperInterval001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperInterval002", nullptr, TestSwiperInterval002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testSwiperInterval003", nullptr, TestSwiperInterval003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -1712,6 +1731,17 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr},
         {"testListBackgroundColor001", nullptr, TestListBackgroundColor001, nullptr, nullptr, nullptr, napi_default,
          nullptr},
+        {"testListSwipeActionCreate", nullptr, listSwipeActionCreate, nullptr, nullptr, nullptr, napi_default,nullptr},
+        {"testListSwipeActionSetActionAreaDistance001", nullptr, listSwipeActionSetActionAreaDistance001, nullptr, nullptr, nullptr, napi_default,
+        nullptr},
+        {"testListSwipeActionOptionCreate", nullptr, listSwipeActionOptionCreate, nullptr, nullptr, nullptr, napi_default,
+        nullptr},
+        {"testListSwipeActionItem006", nullptr, listSwipeActionItem006, nullptr, nullptr, nullptr, napi_default,
+        nullptr},
+        {"testListSwipeActionItem007", nullptr, listSwipeActionItem007, nullptr, nullptr, nullptr, napi_default,
+        nullptr},
+        {"testListSwipeActionOptionEdgeEffect", nullptr, listSwipeActionOptionEdgeEffect, nullptr, nullptr, nullptr, napi_default,
+        nullptr},
         {"testListBlur001", nullptr, TestListBlur001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testListBlur002", nullptr, TestListBlur002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testListBorderColor001", nullptr, TestListBorderColor001, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -1752,6 +1782,17 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testListHeight001", nullptr, TestListHeight001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testListHeight002", nullptr, TestListHeight002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testListHeight003", nullptr, TestListHeight003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testListNodeAdapter001", nullptr, TestListNodeAdapter001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testListNodeAdapter002", nullptr, TestListNodeAdapter002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testListNodeAdapter003", nullptr, TestListNodeAdapter003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testListNodeAdapterEvent001",
+            nullptr,
+            TestListNodeAdapterEvent001,
+            nullptr,
+            nullptr,
+            nullptr,
+            napi_default,
+            nullptr},
         {"testListItemBackgroundColor001", nullptr, TestListItemBackgroundColor001, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testListItemBlur001", nullptr, TestListItemBlur001, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -1790,6 +1831,56 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr},
         {"testListItemBrightness004", nullptr, TestListItemBrightness004, nullptr, nullptr, nullptr, napi_default,
          nullptr},
+        {"testListChildMainSize001", nullptr, TestListChildMainSize001, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testListChildMainSize002", nullptr, TestListChildMainSize002, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testListChildMainSize003", nullptr, TestListChildMainSize003, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testListChildMainSize004", nullptr, TestListChildMainSize004, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testListChildMainSize005", nullptr, TestListChildMainSize005, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testListChildMainSize006", nullptr, TestListChildMainSize006, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testListSwipeOption007", nullptr, TestListSwipeOption007, nullptr, nullptr, nullptr, napi_default,
+         nullptr}, 
+        {"testListSwipeOption008", nullptr, TestListSwipeOption008, nullptr, nullptr, nullptr, napi_default,
+         nullptr},   
+        {"testNodeUtils010", nullptr, TestNodeUtils010, nullptr, nullptr, nullptr, napi_default,
+         nullptr},       
+        {"testNodeUtils020", nullptr,  TestNodeUtils020, nullptr, nullptr, nullptr, napi_default,
+         nullptr},      
+        {"testNodeUtils030", nullptr,  TestNodeUtils030, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testNodeUtils040", nullptr,  TestNodeUtils040, nullptr, nullptr, nullptr, napi_default,
+         nullptr},   
+        {"testNodeUtils050", nullptr,  TestNodeUtils050, nullptr, nullptr, nullptr, napi_default,
+         nullptr},   
+        {"testNodeUtils060", nullptr,  TestNodeUtils060, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testAccessibility070", nullptr,  TestAccessibility070, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testAccessibility080", nullptr,  TestAccessibility080, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testAccessibility090", nullptr,  TestAccessibility090, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testAccessibility010", nullptr,  TestAccessibility010, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testAccessibility011", nullptr,  TestAccessibility011, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        
+        {"testImageAniMator009", nullptr, TestImageAniMator009, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testImageAniMator010", nullptr, TestImageAniMator010, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testImageAniMator011", nullptr, TestImageAniMator011, nullptr, nullptr, nullptr, napi_default,
+         nullptr},
+        {"testListSwipeActionItem008", nullptr, listSwipeActionItem008, nullptr, nullptr, nullptr, napi_default,
+        nullptr},
+        {"testListSwipeActionItem009", nullptr, listSwipeActionItem009, nullptr, nullptr, nullptr, napi_default,
+        nullptr},
+        {"textTextStyleGraphic002", nullptr, TextTextStyleGraphic002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testListItemClip001", nullptr, TestListItemClip001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testListItemClip002", nullptr, TestListItemClip002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testListItemClip003", nullptr, TestListItemClip003, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -2759,30 +2850,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testTextAccessibilityText001", nullptr, TestTextAccessibilityText001, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"testTextAccessibilityText002", nullptr, TestTextAccessibilityText002, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
-        {"testSpanAccessibilityDescription001", nullptr, TestSpanAccessibilityDescription001, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testSpanAccessibilityDescription002", nullptr, TestSpanAccessibilityDescription002, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testSpanAccessibilityGroup001", nullptr, TestSpanAccessibilityGroup001, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testSpanAccessibilityGroup002", nullptr, TestSpanAccessibilityGroup002, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testSpanAccessibilityGroup003", nullptr, TestSpanAccessibilityGroup003, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testSpanAccessibilityGroup004", nullptr, TestSpanAccessibilityGroup004, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testSpanAccessibilityLevel001", nullptr, TestSpanAccessibilityLevel001, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testSpanAccessibilityLevel002", nullptr, TestSpanAccessibilityLevel002, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testSpanAccessibilityLevel003", nullptr, TestSpanAccessibilityLevel003, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testSpanAccessibilityLevel004", nullptr, TestSpanAccessibilityLevel004, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testSpanAccessibilityText001", nullptr, TestSpanAccessibilityText001, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
-        {"testSpanAccessibilityText002", nullptr, TestSpanAccessibilityText002, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"testRefreshAccessibilityDescription001", nullptr, TestRefreshAccessibilityDescription001, nullptr, nullptr,
          nullptr, napi_default, nullptr},
@@ -4213,10 +4280,6 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"testTextAccessibilityLevel006", nullptr, TestTextAccessibilityLevel006, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"testSpanAccessibilityLevel005", nullptr, TestSpanAccessibilityLevel005, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
-        {"testSpanAccessibilityLevel006", nullptr, TestSpanAccessibilityLevel006, nullptr, nullptr, nullptr,
-         napi_default, nullptr},
         {"testRefreshAccessibilityLevel005", nullptr, TestRefreshAccessibilityLevel005, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"testRefreshAccessibilityLevel006", nullptr, TestRefreshAccessibilityLevel006, nullptr, nullptr, nullptr,
@@ -4257,12 +4320,106 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"testTextPickerDefaultPickerItemHeight004", nullptr, TestTextPickerDefaultPickerItemHeight004, nullptr,
          nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi001", nullptr, TestArkUIAddApi001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi002", nullptr, TestArkUIAddApi002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi003", nullptr, TestArkUIAddApi003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi004", nullptr, TestArkUIAddApi004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi005", nullptr, TestArkUIAddApi005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi006", nullptr, TestArkUIAddApi006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi007", nullptr, TestArkUIAddApi007, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi008", nullptr, TestArkUIAddApi008, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi009", nullptr, TestArkUIAddApi009, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi010", nullptr, TestArkUIAddApi010, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi011", nullptr, TestArkUIAddApi011, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi012", nullptr, TestArkUIAddApi012, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi013", nullptr, TestArkUIAddApi013, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi014", nullptr, TestArkUIAddApi014, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi015", nullptr, TestArkUIAddApi015, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi016", nullptr, TestArkUIAddApi016, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi017", nullptr, TestArkUIAddApi017, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi018", nullptr, TestArkUIAddApi018, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi019", nullptr, TestArkUIAddApi019, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi020", nullptr, TestArkUIAddApi020, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi021", nullptr, TestArkUIAddApi021, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi022", nullptr, TestArkUIAddApi022, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi023", nullptr, TestArkUIAddApi023, nullptr, nullptr, nullptr, napi_default, nullptr},
+    
+        {"testAnimation_001", nullptr, testAnimation_001, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"testAnimation_002", nullptr, testAnimation_002, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"testAnimation_003", nullptr, testAnimation_003, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"testAnimation_004", nullptr, testAnimation_004, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"testAnimation_005", nullptr, testAnimation_005, nullptr , nullptr, nullptr, napi_default, nullptr},
+    
+        {"testWaterFlower_001", nullptr, testWaterFlower_001, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"testWaterFlower_002", nullptr, testWaterFlower_002, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"testWaterFlower_003", nullptr, testWaterFlower_003, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"testWaterFlower_004", nullptr, testWaterFlower_004, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"testWaterFlower_005", nullptr, testWaterFlower_004, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"accessibilityState_001", nullptr, accessibilityState_001, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"accessibilityState_002", nullptr, accessibilityState_002, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"accessibilityState_003", nullptr, accessibilityState_003, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"testArkUI001", nullptr, testArkUI001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testArkUI002", nullptr, testArkUI002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testArkUI003", nullptr, testArkUI003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testArkUI004", nullptr, testArkUI004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testArkUI005", nullptr, testArkUI005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testArkUI006", nullptr, testArkUI006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testArkUI007", nullptr, testArkUI007, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testArkUI008", nullptr, testArkUI008, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testArkUI009", nullptr, testArkUI009, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testArkUI010", nullptr, testArkUI010, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testArkUI011", nullptr, testArkUI011, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testArkUI012", nullptr, testArkUI012, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testArkUI013", nullptr, testArkUI013, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testArkUI014", nullptr, testArkUI014, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testArkUI015", nullptr, testArkUI015, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRelativeContaineAlignmentRuleOption001", nullptr, TestRelativeContaineAlignmentRuleOption001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRelativeContaineAlignmentRuleOption002", nullptr, TestRelativeContaineAlignmentRuleOption002,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRelativeContaineAlignmentRuleOption003", nullptr, TestRelativeContaineAlignmentRuleOption003,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRelativeContaineBarrierOption001", nullptr, TestRelativeContaineBarrierOption001,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRelativeContaineBarrierOption002", nullptr, TestRelativeContaineBarrierOption002,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testRelativeContaineBarrierOption003", nullptr, TestRelativeContaineBarrierOption003,
+         nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"customComponentEventNullTest001",
+            nullptr, CustomComponentEventNull001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"customComponentEventNullTest002",
+            nullptr, CustomComponentEventNull002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testCommonAttrsAnimate001", nullptr, TestCommonAttrsAnimate001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCommonAttrsAnimate002", nullptr, TestCommonAttrsAnimate002, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCommonAttrsAnimate003", nullptr, TestCommonAttrsAnimate003, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testCommonAttrsAnimate004", nullptr, TestCommonAttrsAnimate004, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testDrawableDescriptorCreate001", nullptr, TestDrawableDescriptorCreate001, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testDrawableDescriptorCreate002", nullptr, TestDrawableDescriptorCreate002, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testDrawableDescriptorCreate003", nullptr, TestDrawableDescriptorCreate003, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"testNodeContent001", nullptr, TestNodeContent001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeContent002", nullptr, TestNodeContent002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeContent003", nullptr, TestNodeContent003, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeContent004", nullptr, TestNodeContent004, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeContent005", nullptr, TestNodeContent005, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeContent006", nullptr, TestNodeContent006, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNodeContent007", nullptr, TestNodeContent007, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testNativeXComponent001", nullptr, TestNativeXComponent001, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"testMouseEvent001", nullptr, TestMouseEvent001, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testMouseEvent002", nullptr, TestMouseEvent002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"testPointerEvent001", nullptr, TestPointerEvent001, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");
         return nullptr;
     }
-
     return exports;
 }
 EXTERN_C_END

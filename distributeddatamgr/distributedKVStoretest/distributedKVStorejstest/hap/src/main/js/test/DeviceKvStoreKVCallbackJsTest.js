@@ -1414,7 +1414,7 @@ export default function deviceKvStoreCallbackTest(){
                             await kvStore.commit(async function (err,data) {
                                 console.info('SUB_DDM_DKV_DEVICESTORE_STARTTRANSACTION_0100 commit success');
                                 expect(err == undefined).assertTrue();
-                                await sleep(2000);
+                                await sleep(500);
                                 expect(count == 1).assertTrue();
                                 done();
                             });
@@ -1457,7 +1457,7 @@ export default function deviceKvStoreCallbackTest(){
                             await kvStore.rollback(async function (err,data) {
                                 console.info('SUB_DDM_DKV_DEVICESTORE_STARTTRANSACTION_0200 rollback success');
                                 expect(err == undefined).assertTrue();
-                                await sleep(2000);
+                                await sleep(500);
                                 expect(count == 0).assertTrue();
                                 done();
                             });

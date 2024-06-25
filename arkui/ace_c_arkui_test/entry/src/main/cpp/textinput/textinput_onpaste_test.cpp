@@ -44,6 +44,21 @@ static auto createChildNode(ArkUI_NativeNodeAPI_1 *nodeAPI)
     return nodeHandle;
 }
 
+static auto createRowNode(ArkUI_NativeNodeAPI_1 *nodeAPI)
+{
+    auto nodeHandle = nodeAPI->createNode(ARKUI_NODE_ROW);
+
+    ArkUI_NumberValue size_value[] = {{.f32 = SIZE_400}, {.f32 = SIZE_400}};
+    ArkUI_AttributeItem size_item = {size_value, sizeof(size_value) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(nodeHandle, NODE_SIZE, &size_item);
+
+    ArkUI_NumberValue align_value[] = {{.i32 = ARKUI_VERTICAL_ALIGNMENT_TOP}};
+    ArkUI_AttributeItem align_item = {align_value, sizeof(align_value) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(nodeHandle, NODE_ROW_ALIGN_ITEMS, &align_item);
+
+    return nodeHandle;
+}
+
 static void OnEventReceive(ArkUI_NodeEvent *event)
 {
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "TextInputOnPasteTest", "OnEventReceive");
@@ -92,7 +107,8 @@ napi_value TextInputOnPasteTest::CreateNativeNode(napi_env env, napi_callback_in
 
     ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
-    auto row = nodeAPI->createNode(ARKUI_NODE_ROW);
+
+    auto row = createRowNode(nodeAPI);
     auto textInput = createChildNode(nodeAPI);
     auto textInputDisable = createChildNode(nodeAPI);
 

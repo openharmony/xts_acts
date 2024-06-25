@@ -767,7 +767,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       // pc上输入框聚焦没有软键盘弹出，该用例无法测试执行
-      if(!canIUse("SyatemCapability.Sensors.Sensor")){
+      if(!canIUse("SystemCapability.Sensors.Sensor")){
         done();
         return;
       }
@@ -831,6 +831,12 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         done();
       })
       await sleep(800);
+      await buttonClick('点击按钮获取焦点', msgStr).catch(async (err: BusinessError) => {
+        console.info(msgStr + err);
+        await (tempWnd as ohosWindow.Window).destroyWindow();
+        expect().assertFail();
+        done();
+      })
       await (tempWnd as ohosWindow.Window).destroyWindow();
       if (num >= 2 && firstListenFlag === false && secondListenFlag === false) {
         done();
@@ -852,7 +858,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let msgStr: string = 'jsUnittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       // pc上输入框聚焦没有软键盘弹出，该用例无法测试执行
-      if(!canIUse("SyatemCapability.Sensors.Sensor")){
+      if(!canIUse("SystemCapability.Sensors.Sensor")){
         done();
         return;
       }
@@ -919,6 +925,12 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       })
       await sleep(800);
       (tempWnd as ohosWindow.Window).off('keyboardHeightChange');
+      await buttonClick('点击按钮获取焦点', msgStr).catch(async (err: BusinessError) => {
+        console.info(msgStr + err);
+        await (tempWnd as ohosWindow.Window).destroyWindow();
+        expect().assertFail();
+        done();
+      })
       await (tempWnd as ohosWindow.Window).destroyWindow();
       if (!firstListenFlag && secondListenFlag) {
         done();

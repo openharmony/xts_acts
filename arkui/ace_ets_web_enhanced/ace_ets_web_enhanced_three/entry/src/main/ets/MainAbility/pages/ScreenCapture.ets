@@ -16,6 +16,7 @@
 import Utils from '../../test/Utils';
 import webView from '@ohos.web.webview';
 import events_emitter from '@ohos.events.emitter';
+import { Driver, ON, On } from '@ohos.UiTest';
 
 @Entry
 @Component
@@ -57,6 +58,11 @@ struct ScreenCapture {
               this.controller.loadUrl("resource://rawfile/screenCaptureTest.html");
               await Utils.sleep(2000);
               this.controller.runJavaScript('getScreenStream()')
+              await Utils.sleep(2000);
+              let driver: Driver = Driver.create();
+              let buttonOne = await driver.findComponent(ON.text('允许'));
+              await buttonOne.click()
+              await Utils.sleep(2000);
               break;
             }
             case "emitScreenCaptureConfigGetOrigin001": {
@@ -64,6 +70,11 @@ struct ScreenCapture {
               this.controller.loadUrl("resource://rawfile/screenCaptureTest.html");
               await Utils.sleep(2000);
               this.controller.runJavaScript('getScreenStream()')
+              await Utils.sleep(2000);
+              let driver: Driver = Driver.create();
+              let buttonOne = await driver.findComponent(ON.text('允许'));
+              await buttonOne.click()
+              await Utils.sleep(2000);
               break;
             }
             case "emitScreenCaptureConfigGrant001": {
@@ -71,6 +82,11 @@ struct ScreenCapture {
               this.controller.loadUrl("resource://rawfile/screenCaptureTest.html");
               await Utils.sleep(2000);
               this.controller.runJavaScript('getScreenStream()')
+              await Utils.sleep(2000);
+              let driver: Driver = Driver.create();
+              let buttonOne = await driver.findComponent(ON.text('允许'));
+              await buttonOne.click()
+              await Utils.sleep(2000);
               break;
             }
           }

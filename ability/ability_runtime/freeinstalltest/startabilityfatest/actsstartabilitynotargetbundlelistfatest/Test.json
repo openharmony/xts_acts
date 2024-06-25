@@ -27,7 +27,7 @@
             "type": "PushKit",
             "push":[
                 "AtomizationFaEntry.hap -> /data/test/AtomizationFaEntry.hap",
-                "FaMyapplication1.hap -> /data/test/FaMyApplication1.hap",
+                "FaMyApplication1.hap -> /data/test/FaMyApplication1.hap",
                 "MockService.hap -> /data/test/MockService.hap"
             ]
         }

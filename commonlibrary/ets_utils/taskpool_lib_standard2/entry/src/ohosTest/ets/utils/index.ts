@@ -98,7 +98,7 @@ function mathMin(value1: number, value2: number): number {
 function addition(arg: number): number {
   "use concurrent"
   let start: number = new Date().getTime();
-  while (new Date().getTime() - start < 1000) {
+  while (new Date().getTime() - start < 100) {
     continue;
   }
   return arg;

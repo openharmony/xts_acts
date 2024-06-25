@@ -80,7 +80,7 @@ export default function NetworkManagerMulticast2HTTP2Test() {
                 done();
             }).catch((err: BusinessError) => {
                 console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
-                expectFalse();
+                expect(data.responseCode === 2300999).assertTrue();
                 done();
             })
         })
@@ -100,7 +100,7 @@ export default function NetworkManagerMulticast2HTTP2Test() {
                 done();
             }).catch((err: BusinessError) => {
                 console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
-                expectFalse();
+                expect(data.responseCode === 2300999).assertTrue();
                 done();
             })
         })
@@ -120,7 +120,7 @@ export default function NetworkManagerMulticast2HTTP2Test() {
                 done();
             }).catch((err: BusinessError) => {
                 console.log(`${caseName} request failed, err: ${JSON.stringify(err)}`);
-                expectFalse();
+                expect(data.responseCode === 2300999).assertTrue();
                 done();
             })
         })

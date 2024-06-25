@@ -16,6 +16,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
+import GlobalContext from '../../../MainAbility/common/GlobalContext'
 import CommonFunc from '../../../MainAbility/common/Common';
 
 export default function Column_Space() {
@@ -52,7 +53,7 @@ export default function Column_Space() {
      */
     it('testColumnSpaceToThirty', 0, async () => {
       console.info('[testColumnSpaceToThirty] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'addSpace', value: 30
       });
       await CommonFunc.sleep(3000);
@@ -87,7 +88,7 @@ export default function Column_Space() {
      */
     it('testColumnSpaceToFifty', 0, async () => {
       console.info('[testColumnSpaceToFifty] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'addSpace', value: 50
       });
       await CommonFunc.sleep(3000);
@@ -122,7 +123,7 @@ export default function Column_Space() {
      */
     it('testColumnSpaceToSeventy', 0, async () => {
       console.info('[testColumnSpaceToSeventy] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'addSpace', value: 70
       });
       await CommonFunc.sleep(3000);

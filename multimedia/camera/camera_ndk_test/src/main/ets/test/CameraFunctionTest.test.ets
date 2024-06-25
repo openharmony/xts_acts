@@ -15,7 +15,8 @@
 
 import cameraObj from 'libentry.so';
 import image from '@ohos.multimedia.image';
-import mediaLibrary from '@ohos.multimedia.mediaLibrary';
+import fs from '@ohos.file.fs';
+import featureAbility from '@ohos.ability.featureAbility'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import common from '@ohos.app.ability.common';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
@@ -76,15 +77,12 @@ async function getPhotoReceiverSurface() {
 }
 
 async function closeFd() {
-  if (fileAsset != null) {
-    await fileAsset[0].close(fdNumber).then(() => {
-      console.info('[mediaLibrary] case close fd success');
-    }).catch(() => {
-      console.info('[mediaLibrary] case close fd failed');
-    });
-  } else {
-    console.info('[mediaLibrary] case fileAsset is null');
-  }
+        console.info('case come in closeFd')
+        if (fdNumber != null) {
+            fs.closeSync(fdNumber);
+        } else {
+            console.info('[fs.closeSync] case fdNumber is null');
+        }
 }
 
 async function getCameraManagerInstance() {

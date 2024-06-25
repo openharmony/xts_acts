@@ -367,6 +367,7 @@ export default function ApiCoverTest() {
         let baseContext: common.BaseContext = stageContext;
         let context: common.Context = stageContext;
         let flag = false;
+        let el5 = contextConstant.AreaMode.EL5;
         let el1 = contextConstant.AreaMode.EL1;
         let el2 = contextConstant.AreaMode.EL2;
         let eventHub: common.EventHub = context.eventHub;
@@ -449,11 +450,19 @@ export default function ApiCoverTest() {
         console.log("createModuleContext fail");
       }
       AppStorage.get<common.UIAbilityContext>("abilityContext")!.area = 0;
+      let mccvalue = AppStorage.get<common.UIAbilityContext>("abilityContext")!.config?.mcc;
+      let mncValue = AppStorage.get<common.UIAbilityContext>("abilityContext")!.config?.mnc;
+      console.log(`Ability: getConfiguration config.mnc: ${mccvalue}`);
+      console.log(`Ability: getConfiguration config.mnc: ${mncValue}`);
       expect(0).assertEqual(AppStorage.get<common.UIAbilityContext>("abilityContext")!.area);
       AppStorage.get<common.UIAbilityContext>("abilityContext")!.resourceManager.getConfiguration((err, data) => {
         if (err == undefined) {
           console.log(`Ability: getConfiguration success: ${JSON.stringify(data)}`);
           console.log(`Ability: getConfiguration success1: ${JSON.stringify(data.direction)}`);
+          console.log(`Ability: getConfiguration success1: ${JSON.stringify(data.mcc)}`);
+          console.log(`Ability: getConfiguration success1: ${JSON.stringify(data.mnc)}`);
+          expect(0).assertEqual(data.mcc)
+          expect(0).assertEqual(data.mnc)
           if (deviceType === '2in1') {
             expect(1).assertEqual(data.direction);
           } else {
@@ -1019,6 +1028,77 @@ export default function ApiCoverTest() {
     it('SUB_Ability_AbilityRuntime_ABILITY_URI_FLAG_0100', 0, async (done: Function) => {
       expect(wantConstant.Flags.FLAG_AUTH_PERSISTABLE_URI_PERMISSION).assertEqual(0x00000040);
       done();
+    });
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_ApplicationContext_0100
+     * @tc.name   : Test AbilityLifecycleCallback by ApplicationContex.
+     * @tc.desc   : Uri Flag api cover
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : 1
+     */
+    it('SUB_Ability_AbilityRuntime_ApplicationContext_0100', 0, async (done: Function) => {
+      let tag = `SUB_Ability_AbilityRuntime_ApplicationContext_0100`;
+      console.log(`${tag}, it begin`);
+      let lifeCallback:abilityLifecycleCallback = {
+        onAbilityCreate:(ability)=>{
+         console.log(`${tag} onAbilityCreate success, ability: ${JSON.stringify(ability)}`);
+        },
+        onAbilityWillCreate:(ability)=>{
+           console.log(`${tag} onAbilityWillCreate success, ability: ${JSON.stringify(ability)}`);
+        },
+        onWindowStageCreate:(ability, window)=>{
+           console.log(`${tag} onWindowStageCreate success, ability: ${JSON.stringify(ability)}`);
+        },
+        onWindowStageWillCreate:(ability, window)=>{
+           console.log(`${tag} onWindowStageWillCreate success, ability: ${JSON.stringify(ability)}`);
+        },
+        onWillNewWant:(ability)=>{
+           console.log(`${tag} onWillNewWant success, ability: ${JSON.stringify(ability)}`);
+        },
+        onNewWant:(ability)=>{
+           console.log(`${tag} onNewWant success, ability: ${JSON.stringify(ability)}`);
+        },
+        onWindowStageActive:(ability, window)=>{
+           console.log(`${tag} onWindowStageActive success, ability: ${JSON.stringify(ability)}`);
+        },
+        onWindowStageInactive:(ability, window)=>{
+           console.log(`${tag} onWindowStageInactive success, ability: ${JSON.stringify(ability)}`);
+        },
+        onWindowStageDestroy:(ability, window)=>{
+           console.log(`${tag} onWindowStageDestroy success, ability: ${JSON.stringify(ability)}`);
+        },
+        onWindowStageWillDestroy:(ability, window)=>{
+           console.log(`${tag} onWindowStageWillDestroy success, ability: ${JSON.stringify(ability)}`);
+        },
+        onAbilityDestroy:(ability, window)=>{
+           console.log(`${tag} onAbilityDestroy success, ability: ${JSON.stringify(ability)}`);
+        },
+        onAbilityWillDestroy:(ability, window)=>{
+           console.log(`${tag} onAbilityWillDestroy success, ability: ${JSON.stringify(ability)}`);
+        },
+        onAbilityForeground:(ability)=>{
+           console.log(`${tag} onAbilityForeground success, ability: ${JSON.stringify(ability)}`);
+        },
+        onAbilityWillForeground:(ability)=>{
+           console.log(`${tag} onAbilityWillForeground success, ability: ${JSON.stringify(ability)}`);
+        },
+        onAbilityBackground:(ability)=>{
+           console.log(`${tag} onAbilityBackground success, ability: ${JSON.stringify(ability)}`);
+        },
+        onAbilityWillBackground:(ability)=>{
+           console.log(`${tag} onAbilityWillBackground success, ability: ${JSON.stringify(ability)}`);
+        },
+        onAbilityContinue:(ability)=>{
+           console.log(`${tag} onAbilityContinue success, ability: ${JSON.stringify(ability)}`);
+        }
+      }
+      let id = AppStorage.get<common.ApplicationContext>("applicationContext").on('abilityLifecycle', lifeCallback);
+      AppStorage.get<common.ApplicationContext>("applicationContext").off("abilityLifecycle", id, (err,data)=>{
+        expect(err?.code == undefined).assertTrue();
+        console.log(`${tag}, it end`);
+        done();
+      })
     });
   })
 }

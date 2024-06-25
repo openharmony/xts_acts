@@ -463,12 +463,21 @@ static napi_value OriginAVScreenCaptureTest(napi_env env, napi_callback_info inf
 
     bool isMicrophone = true;
     OH_AVScreenCapture_SetMicrophoneEnabled(screenCapture, isMicrophone);
+
+    vector<int> windowidsExclude0 = {-111};
+    struct OH_AVScreenCapture_ContentFilter *contentFilter = OH_AVScreenCapture_CreateContentFilter();
+    OH_AVScreenCapture_ContentFilter_AddAudioContent(contentFilter, OH_SCREEN_CAPTURE_NOTIFICATION_AUDIO);
+    OH_AVScreenCapture_ContentFilter_AddWindowContent(contentFilter, 
+        &windowidsExclude0[0], static_cast<int32_t>(windowidsExclude0.size()));
+    OH_AVScreenCapture_ExcludeContent(screenCapture, contentFilter);
+
     SetScreenCaptureCallback(screenCapture, screenCaptureCb);
     OH_AVSCREEN_CAPTURE_ErrCode result1 = OH_AVScreenCapture_Init(screenCapture, config_);
     OH_AVSCREEN_CAPTURE_ErrCode result2 = OH_AVScreenCapture_StartScreenCapture(screenCapture);
     sleep(g_recordTime);
     OH_AVSCREEN_CAPTURE_ErrCode result3 = OH_AVScreenCapture_StopScreenCapture(screenCapture);
     DelCallback(screenCapture);
+    OH_AVScreenCapture_ReleaseContentFilter(contentFilter);
     OH_AVScreenCapture_Release(screenCapture);
     CloseFile(audioFile, nullptr);
     screenCaptureCb = nullptr;

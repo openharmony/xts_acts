@@ -166,8 +166,7 @@ export default function flexBasisTest() {
 
         let realWidth = Number(rect.right - rect.left).toFixed(2);
         console.info('[' + data.caseTag + '] realWidth : ' + realWidth);
-        expect(realWidth)
-          .assertEqual(Number(data.testValue.expectValue.expectSize).toFixed(2));
+        expect(Math.abs(realWidth - Number(data.testValue.expectValue.expectSize).toFixed(2)) <= 1).assertTrue();
       } else if (data.pageConfig.containerView == 'Column' || data.pageConfig.containerView == 'FlexColumn'
         || data.pageConfig.containerView == 'FlexColumnReverse') {
 

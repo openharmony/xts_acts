@@ -74,10 +74,11 @@ export default function RecorderLocalTestAudioFUNC() {
     
         beforeEach(function () {
             console.info('beforeEach case');
+            fdObject = null;
         })
     
         afterEach(async function () {
-            await mediaTestBase.closeFd(fdObject.fileAsset, fdObject.fdNumber);
+            await mediaTestBase.closeFd(fdObject?.fdNumber);
             console.info('afterEach case');
         })
     
@@ -200,7 +201,7 @@ export default function RecorderLocalTestAudioFUNC() {
             * @tc.level     : Level0
         */
         it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0100', 0, async function (done) {
-            fdObject = await mediaTestBase.getAudioFd('audio_01.m4a');
+            fdObject = await mediaTestBase.getFd('audio_01.m4a');
             fdPath = "fd://" + fdObject.fdNumber.toString();
             audioConfig.uri = fdPath;
             let trackArray = videoRecorderBase.getTrackArray(ONLYAUDIO_TYPE, audioConfig);
@@ -220,7 +221,7 @@ export default function RecorderLocalTestAudioFUNC() {
             * @tc.level     : Level0
         */
         it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0200', 0, async function (done) {
-            fdObject = await mediaTestBase.getAudioFd('audio_02.m4a');
+            fdObject = await mediaTestBase.getFd('audio_02.m4a');
             fdPath = "fd://" + fdObject.fdNumber.toString();
             audioConfig.uri = fdPath;
             audioConfig.numberOfChannels = CHANNEL_ONE;
@@ -241,7 +242,7 @@ export default function RecorderLocalTestAudioFUNC() {
             * @tc.level     : Level0
         */
         it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0300', 0, async function (done) {
-            fdObject = await mediaTestBase.getAudioFd('audio_03.m4a');
+            fdObject = await mediaTestBase.getFd('audio_03.m4a');
             fdPath = "fd://" + fdObject.fdNumber.toString();
             audioConfig.uri = fdPath;
             audioConfig.numberOfChannels = CHANNEL_TWO;
@@ -262,7 +263,7 @@ export default function RecorderLocalTestAudioFUNC() {
             * @tc.level     : Level0
         */
         it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0400', 0, async function (done) {
-            fdObject = await mediaTestBase.getAudioFd('audio_04.m4a');
+            fdObject = await mediaTestBase.getFd('audio_04.m4a');
             fdPath = "fd://" + fdObject.fdNumber.toString();
             audioConfig.uri = fdPath;
             audioConfig.audioSampleRate = 8000; // samplerate 8000
@@ -284,7 +285,7 @@ export default function RecorderLocalTestAudioFUNC() {
             * @tc.level     : Level0
         */
         it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0500', 0, async function (done) {
-            fdObject = await mediaTestBase.getAudioFd('audio_05.m4a');
+            fdObject = await mediaTestBase.getFd('audio_05.m4a');
             fdPath = "fd://" + fdObject.fdNumber.toString();
             audioConfig.uri = fdPath;
             audioConfig.audioSampleRate = 32000; // samplerate 32000
@@ -307,7 +308,7 @@ export default function RecorderLocalTestAudioFUNC() {
             * @tc.level     : Level0
         */
         it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0600', 0, async function (done) {
-            fdObject = await mediaTestBase.getAudioFd('audio_06.m4a');
+            fdObject = await mediaTestBase.getFd('audio_06.m4a');
             fdPath = "fd://" + fdObject.fdNumber.toString();
             audioConfig.uri = fdPath;
             audioConfig.audioSampleRate = 44100; // samplerate 44100
@@ -330,7 +331,7 @@ export default function RecorderLocalTestAudioFUNC() {
             * @tc.level     : Level0
         */
         it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0700', 0, async function (done) {
-            fdObject = await mediaTestBase.getAudioFd('audio_07.m4a');
+            fdObject = await mediaTestBase.getFd('audio_07.m4a');
             fdPath = "fd://" + fdObject.fdNumber.toString();
             audioConfig.uri = fdPath;
             audioConfig.audioSampleRate = 64000; // samplerate 64000
@@ -353,7 +354,7 @@ export default function RecorderLocalTestAudioFUNC() {
             * @tc.level     : Level0
         */
         it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_0800', 0, async function (done) {
-            fdObject = await mediaTestBase.getAudioFd('audio_08.m4a');
+            fdObject = await mediaTestBase.getFd('audio_08.m4a');
             fdPath = "fd://" + fdObject.fdNumber.toString();
             audioConfig.uri = fdPath;
             audioConfig.audioSampleRate = 96000; // samplerate 96000
@@ -424,7 +425,7 @@ export default function RecorderLocalTestAudioFUNC() {
             * @tc.level     : Level0
         */
         it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_1100', 0, async function (done) {
-            fdObject = await mediaTestBase.getAudioFd('audio_11.m4a');
+            fdObject = await mediaTestBase.getFd('audio_11.m4a');
             fdPath = "fd://" + fdObject.fdNumber.toString();
             audioConfig.uri = fdPath;
             audioConfig.audioSampleRate = 44100; // samplerate 44100
@@ -448,7 +449,7 @@ export default function RecorderLocalTestAudioFUNC() {
             * @tc.level     : Level0
         */
         it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_1200', 0, async function (done) {
-            fdObject = await mediaTestBase.getAudioFd('audio_12.m4a');
+            fdObject = await mediaTestBase.getFd('audio_12.m4a');
             fdPath = "fd://" + fdObject.fdNumber.toString();
             audioConfig.uri = fdPath;
             audioConfig.audioSampleRate = 44100; // samplerate 44100
@@ -472,7 +473,7 @@ export default function RecorderLocalTestAudioFUNC() {
             * @tc.level     : Level0
         */
         it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_CODEC_AAC_1300', 0, async function (done) {
-            fdObject = await mediaTestBase.getAudioFd('audio_13.m4a');
+            fdObject = await mediaTestBase.getFd('audio_13.m4a');
             fdPath = "fd://" + fdObject.fdNumber.toString();
             audioConfig.uri = fdPath;
             audioConfig.audioSampleRate = 44100; // samplerate 44100
@@ -520,7 +521,7 @@ export default function RecorderLocalTestAudioFUNC() {
             * @tc.level     : Level0
         */
         it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FORMAT_M4A_0100', 0, async function (done) {
-            fdObject = await mediaTestBase.getAudioFd('audio_15.m4a');
+            fdObject = await mediaTestBase.getFd('audio_15.m4a');
             fdPath = "fd://" + fdObject.fdNumber.toString();
             audioConfig.uri = fdPath;
             audioConfig.audioEncodeBitRate = 22050; // samplerate 22050
@@ -544,7 +545,7 @@ export default function RecorderLocalTestAudioFUNC() {
             * @tc.level     : Level0
         */
         it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0100', 0, async function (done) {
-            fdObject = await mediaTestBase.getAudioFd('audio_16.m4a');
+            fdObject = await mediaTestBase.getFd('audio_16.m4a');
             fdPath = "fd://" + fdObject.fdNumber.toString();
             audioConfig.uri = fdPath;
             audioConfig.format = FORMAT_M4A;
@@ -565,7 +566,7 @@ export default function RecorderLocalTestAudioFUNC() {
             * @tc.level     : Level0
         */
         it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0200', 0, async function (done) {
-            fdObject = await mediaTestBase.getAudioFd('audio_17.m4a');
+            fdObject = await mediaTestBase.getFd('audio_17.m4a');
             fdPath = "fd://" + fdObject.fdNumber.toString();
             audioConfig.uri = fdPath;
             audioConfig.format = FORMAT_M4A;
@@ -586,7 +587,7 @@ export default function RecorderLocalTestAudioFUNC() {
             * @tc.level     : Level0
         */
         it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0300', 0, async function (done) {
-            fdObject = await mediaTestBase.getAudioFd('audio_18.m4a');
+            fdObject = await mediaTestBase.getFd('audio_18.m4a');
             fdPath = "fd://" + fdObject.fdNumber.toString();
             audioConfig.uri = fdPath;
             audioConfig.format = FORMAT_M4A;
@@ -607,7 +608,7 @@ export default function RecorderLocalTestAudioFUNC() {
             * @tc.level     : Level0
         */
         it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0400', 0, async function (done) {
-            fdObject = await mediaTestBase.getAudioFd('audio_19.m4a');
+            fdObject = await mediaTestBase.getFd('audio_19.m4a');
             fdPath = "fd://" + fdObject.fdNumber.toString();
             audioConfig.uri = fdPath;
             audioConfig.format = FORMAT_M4A;
@@ -628,7 +629,7 @@ export default function RecorderLocalTestAudioFUNC() {
             * @tc.level     : Level0
         */
         it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0500', 0, async function (done) {
-            fdObject = await mediaTestBase.getAudioFd('audio_20.m4a');
+            fdObject = await mediaTestBase.getFd('audio_20.m4a');
             fdPath = "fd://" + fdObject.fdNumber.toString();
             audioConfig.uri = fdPath;
             audioConfig.format = FORMAT_M4A;
@@ -649,7 +650,7 @@ export default function RecorderLocalTestAudioFUNC() {
             * @tc.level     : Level0
         */
         it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0600', 0, async function (done) {
-            fdObject = await mediaTestBase.getAudioFd('audio_21.m4a');
+            fdObject = await mediaTestBase.getFd('audio_21.m4a');
             fdPath = "fd://" + fdObject.fdNumber.toString();
             audioConfig.uri = fdPath;
             audioConfig.format = FORMAT_M4A;
@@ -670,7 +671,7 @@ export default function RecorderLocalTestAudioFUNC() {
             * @tc.level     : Level0
         */
         it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0700', 0, async function (done) {
-            fdObject = await mediaTestBase.getAudioFd('audio_22.m4a');
+            fdObject = await mediaTestBase.getFd('audio_22.m4a');
             fdPath = "fd://" + fdObject.fdNumber.toString();
             audioConfig.uri = fdPath;
             audioConfig.format = FORMAT_M4A;
@@ -691,7 +692,7 @@ export default function RecorderLocalTestAudioFUNC() {
             * @tc.level     : Level0
         */
         it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0800', 0, async function (done) {
-            fdObject = await mediaTestBase.getAudioFd('audio_23.m4a');
+            fdObject = await mediaTestBase.getFd('audio_23.m4a');
             fdPath = "fd://" + fdObject.fdNumber.toString();
             audioConfig.uri = fdPath;
             audioConfig.format = FORMAT_M4A;
@@ -713,7 +714,7 @@ export default function RecorderLocalTestAudioFUNC() {
             * @tc.level     : Level0
         */
         it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_0900', 0, async function (done) {
-            fdObject = await mediaTestBase.getAudioFd('audio_24.m4a');
+            fdObject = await mediaTestBase.getFd('audio_24.m4a');
             fdPath = "fd://" + fdObject.fdNumber.toString();
             audioConfig.uri = fdPath;
             audioConfig.format = FORMAT_M4A;
@@ -829,7 +830,7 @@ export default function RecorderLocalTestAudioFUNC() {
             * @tc.level     : Level0
         */
         it('SUB_MULTIMEDIA_MEDIA_AUDIO_RECORDER_FUNCTION_1400', 0, async function (done) {
-            fdObject = await mediaTestBase.getAudioFd('audio_29.m4a');
+            fdObject = await mediaTestBase.getFd('audio_29.m4a');
             fdPath = "fd://" + fdObject.fdNumber.toString();
             let newAudioConfig = {
                 audioEncodeBitRate : 22050,

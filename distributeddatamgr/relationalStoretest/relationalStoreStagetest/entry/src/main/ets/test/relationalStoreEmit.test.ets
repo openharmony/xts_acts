@@ -75,7 +75,7 @@ export default function relationalStoreEmitTest() {
       try {
         rdbStore.on('storeObserverInsert', false, subscribeInsert);
         rdbStore.emit('storeObserverInsert');
-        await sleep(2000);
+        await sleep(500);
         let resultSet = await rdbStore.querySql("SELECT * FROM test");
         console.info(TAG + "resultSet = " + resultSet.rowCount);
         expect(1).assertEqual(resultSet.rowCount);

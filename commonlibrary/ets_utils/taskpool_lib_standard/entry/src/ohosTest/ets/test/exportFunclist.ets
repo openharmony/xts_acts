@@ -40,3 +40,8 @@ export function printStrArgs(args: string): string {
   "use concurrent"
   return args;
 }
+
+export function printArgs(args: number): number {
+  "use concurrent"
+  return args;
+}

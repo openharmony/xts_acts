@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,16 +13,16 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
 
 export default function gradientDirectionJsunit() {
-  describe('gradientDirectionJsunit', function () {
-    beforeEach(async function (done) {
+  describe('gradientDirectionJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info('beforeEach ===================GradientDirection test beforeEach called===================');
-      let options = {
-        uri: 'MainAbility/pages/Row/gradientDirection',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Row/gradientDirection',
       }
       try {
         router.clear();
@@ -41,97 +40,97 @@ export default function gradientDirectionJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info('[ afterEach ] ===================GradientDirection test after each called===================');
     });
 
-    it('GradientDirectionTest_0100', 0, async function (done) {
+    it('GradientDirectionTest_0100', 0, async (done: Function) => {
       console.info('GradientDirectionTest_0100 START');
       let strJson = getInspectorByKey('GradientDirection');
       console.info("GradientDirectionTest_0100 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("GradientDirectionTest_0100 component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.linearGradient.direction).assertEqual('GradientDirection.LeftTop');
       console.info('GradientDirectionTest_0100 END');
       done();
     });
 
-    it('GradientDirectionTest_0200', 0, async function (done) {
+    it('GradientDirectionTest_0200', 0, async (done: Function) => {
       console.info('GradientDirectionTest_0200 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "ACTION": GradientDirection.LeftBottom
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 106,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("GradientDirectionTest_0200 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("GradientDirectionTest_0200 change component data error: " + err.message);
+        console.log("GradientDirectionTest_0200 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('GradientDirection');
       console.info("GradientDirectionTest_0200 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("GradientDirectionTest_0200 component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.linearGradient.direction).assertEqual('GradientDirection.LeftBottom');
       console.info('GradientDirectionTest_0200 END');
       done();
     });
 
-    it('GradientDirectionTest_0300', 0, async function (done) {
+    it('GradientDirectionTest_0300', 0, async (done: Function) => {
       console.info('GradientDirectionTest_0300 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "ACTION": GradientDirection.RightBottom
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 107,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("GradientDirectionTest_0300 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("GradientDirectionTest_0300 change component data error: " + err.message);
+        console.log("GradientDirectionTest_0300 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('GradientDirection');
       console.info("GradientDirectionTest_0300 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("GradientDirectionTest_0300 component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.linearGradient.direction).assertEqual('GradientDirection.RightBottom');
       console.info('GradientDirectionTest_0300 END');
       done();
     });
 
-    it('GradientDirectionTest_0400', 0, async function (done) {
+    it('GradientDirectionTest_0400', 0, async (done: Function) => {
       console.info('GradientDirectionTest_0400 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "ACTION": GradientDirection.None
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 108,
           priority: events_emitter.EventPriority.LOW
         }
         console.info("GradientDirectionTest_0400 start to publish emit");
         events_emitter.emit(indexEvent, eventData);
       } catch (err) {
-        console.log("GradientDirectionTest_0400 change component data error: " + err.message);
+        console.log("GradientDirectionTest_0400 change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('GradientDirection');
       console.info("GradientDirectionTest_0400 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("GradientDirectionTest_0400 component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.linearGradient.direction).assertEqual('GradientDirection.None');
       console.info('GradientDirectionTest_0400 END');

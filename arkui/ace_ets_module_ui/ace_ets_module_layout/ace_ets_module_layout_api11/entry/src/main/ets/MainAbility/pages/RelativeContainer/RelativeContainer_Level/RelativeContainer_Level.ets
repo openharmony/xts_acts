@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+import GlobalContext from './../../../common/GlobalContext'
+import { Value } from '../../../common/Value';
 import { MessageManager, Callback, Message } from './../../../common/MessageManager';
 
 @Entry
@@ -23,9 +25,10 @@ struct RelativeContainer_Level {
 
   onPageShow() {
     console.info('RelativeContainer_Level onPageShow');
-    globalThis.value = {
+    let value: Value<HorizontalAlign> = {
       name: 'messageManager', message: this.messageManager
-    };
+    }
+    GlobalContext.getContext().setObject('value', value);
     let callback: Callback<HorizontalAlign> = (message: Message<HorizontalAlign>) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'addalign') {

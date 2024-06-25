@@ -74,7 +74,7 @@ export default function imageModifyProperty() {
             console.info("afterAll case");
         });
 
-        async function modifyImageProperties(done, testNum, type, key, checkKey, checkResult) {
+        async function testModifyImageProperties(done, testNum, type, props, checkKey) {
             let imageSourceApi;
             if (type == "buffer") {
                 const data = modifyBuf.buffer;
@@ -89,34 +89,39 @@ export default function imageModifyProperty() {
                 done();
             } else {
                 globalImagesource = imageSourceApi;
-                imageSourceApi.modifyImageProperties(key)
+                imageSourceApi.modifyImageProperties(props)
                     .then(() => {
                         imageSourceApi
                             .getImageProperties(checkKey)
                             .then((data) => {
-                                console.info(`${testNum} ${JSON.stringify(key)} ,` + JSON.stringify(data));
-                                checkResult(data);
+                                console.info(`${testNum} newProps: ${JSON.stringify(props)} , data: ${JSON.stringify(data)}`);
+                                checkKey.forEach((item) => {
+                                    expect(data.item == props.item).assertTrue();
+                                })
                                 done();
                             })
                             .catch((err) => {
-                                const errormsg = err.toString();
                                 const errorCode = JSON.stringify(err);
-                                console.log(`${testNum} get error: ` + errormsg);
+                                console.log(`${testNum} get error: ` + err.toString());
                                 expect(errorCode.includes(ERROR_CODE3)).assertTrue();
                                 done();
                             });
                     })
                     .catch((err) => {
-                        const errormsg = err.toString();
                         const errorCode = JSON.stringify(err);
-                        console.log(`${testNum} modify error: ` + errormsg);
+                        console.log(`${testNum} modify error: ` + err.toString());
                         expect(errorCode.includes(ERROR_CODE1) || errorCode.includes(ERROR_CODE2) || errorCode.includes(ERROR_CODE3)).assertTrue();
+                        imageSourceApi
+                            .getImageProperties(checkKey)
+                            .then((data) => {
+                                console.info(`${testNum} props: ${JSON.stringify(props)} , data: ${JSON.stringify(data)}`);
+                            })
                         done();
                     });
             }
         }
 
-        async function modifyPromise(done, testNum, type, key, value, checkProps) {
+        async function testModifyImagePropertyPromise(done, testNum, type, key, value, checkProps) {
             let imageSourceApi;
             if (type == "buffer") {
                 const data = modifyBuf.buffer;
@@ -155,7 +160,7 @@ export default function imageModifyProperty() {
             }
         }
 
-        async function modifyCb(done, testNum, type, key, value, checkProps) {
+        async function testModifyImagePropertyCb(done, testNum, type, key, value, checkProps) {
             let imageSourceApi;
             if (type == "buffer") {
                 const data = modifyBuf.buffer;
@@ -192,7 +197,7 @@ export default function imageModifyProperty() {
             }
         }
 
-        async function modifyCb1(done, testNum, type, key, value, checkProps) {
+        async function testModifyImagePropertyOptCb(done, testNum, type, key, value, checkProps) {
             let imageSourceApi;
             if (type == "buffer") {
                 const data = modifyBuf.buffer;
@@ -230,7 +235,7 @@ export default function imageModifyProperty() {
             }
         }
 
-        async function modifyErrCb(done, testNum, type, key, value) {
+        async function testModifyImagePropertyCbErr(done, testNum, type, key, value) {
             let imageSourceApi;
             if (type == "buffer") {
                 const data = modifyBuf.buffer;
@@ -253,7 +258,7 @@ export default function imageModifyProperty() {
             }
         }
 
-        async function modifyErrCb1(done, testNum, type, key, value) {
+        async function testModifyImagePropertyOptCbErr(done, testNum, type, key, value) {
             let imageSourceApi;
             if (type == "buffer") {
                 const data = modifyBuf.buffer;
@@ -277,7 +282,7 @@ export default function imageModifyProperty() {
             }
         }
 
-        async function modifyImageErrPromise(done, testNum, type, key, value) {
+        async function testModifyImagePropertyPromiseError(done, testNum, type, key, value) {
             let imageSourceApi;
             try {
                 if (type == "buffer") {
@@ -312,7 +317,7 @@ export default function imageModifyProperty() {
             }
         }
 
-        async function modifyImageBuffer(done, testNum, type, key, value) {
+        async function testModifyImageBufferProperty(done, testNum, type, key, value) {
             let imageSourceApi;
             try {
                 if (type == "buffer") {
@@ -350,7 +355,7 @@ export default function imageModifyProperty() {
             }
         }
 
-        async function modifyLoopCountError(testNum, type, isBatch, done) {
+        async function testModifyLoopCountErr(testNum, type, isBatch, done) {
             let imageSourceApi;
             try {
                 if (type == "gif") {
@@ -419,7 +424,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0100", 0, async function (done) {
-            modifyImageBuffer(
+            testModifyImageBufferProperty(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0100",
                 "buffer",
@@ -439,7 +444,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0200", 0, async function (done) {
-            modifyImageBuffer(
+            testModifyImageBufferProperty(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0200",
                 "buffer",
@@ -459,7 +464,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0300", 0, async function (done) {
-            modifyImageBuffer(
+            testModifyImageBufferProperty(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0300",
                 "buffer",
@@ -479,7 +484,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0400", 0, async function (done) {
-            modifyImageBuffer(
+            testModifyImageBufferProperty(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0400",
                 "buffer",
@@ -499,7 +504,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0500", 0, async function (done) {
-            modifyImageBuffer(
+            testModifyImageBufferProperty(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0500",
                 "buffer",
@@ -522,7 +527,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "Top-right").assertTrue();
             }
-            modifyPromise(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0600", "fd", image.PropertyKey.ORIENTATION, "2", checkProps);
+            testModifyImagePropertyPromise(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0600", "fd", image.PropertyKey.ORIENTATION, "2", checkProps);
         });
 
         /**
@@ -539,7 +544,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result.search("38") != -1).assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0700",
                 "fd",
@@ -563,7 +568,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result.search("9") != -1).assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0800",
                 "fd",
@@ -587,7 +592,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "N").assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_0900",
                 "fd",
@@ -611,7 +616,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "W").assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1000",
                 "fd",
@@ -635,7 +640,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "4, 4, 4").assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1100",
                 "fd",
@@ -659,7 +664,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "800").assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1200",
                 "fd",
@@ -683,7 +688,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "500").assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1300",
                 "fd",
@@ -707,7 +712,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "2022:06:02 00:00:00").assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1400",
                 "fd",
@@ -731,7 +736,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "1/3 sec.").assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1500",
                 "fd",
@@ -755,7 +760,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "Directly photographed").assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1600",
                 "fd",
@@ -779,7 +784,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "2").assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1700",
                 "fd",
@@ -803,7 +808,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "f/0.5").assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1800",
                 "fd",
@@ -827,7 +832,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "2022:06:02 00:00:00").assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_1900",
                 "fd",
@@ -851,7 +856,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "11:37:56.00").assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_2000",
                 "fd",
@@ -875,7 +880,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "2023:10:19").assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_2100",
                 "fd",
@@ -899,7 +904,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "badPhoto").assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_2200",
                 "fd",
@@ -923,7 +928,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "XiaoMI").assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_2300",
                 "fd",
@@ -947,7 +952,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "TNY-AL00").assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_2400",
                 "fd",
@@ -971,7 +976,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "ISO speed").assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_2600",
                 "fd",
@@ -995,7 +1000,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "200").assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_2800",
                 "fd",
@@ -1019,7 +1024,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "3").assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_2900",
                 "fd",
@@ -1043,7 +1048,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "0.50 EV (f/1.2)").assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_3000",
                 "fd",
@@ -1067,7 +1072,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "0.50 EV").assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_3100",
                 "fd",
@@ -1091,7 +1096,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "Spot").assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_3200",
                 "fd",
@@ -1115,7 +1120,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "Fluorescent").assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_3300",
                 "fd",
@@ -1139,7 +1144,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "Flash fired, auto mode").assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_3400",
                 "fd",
@@ -1163,7 +1168,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "0.5 mm").assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_3500",
                 "fd",
@@ -1187,7 +1192,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "1111").assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_3600",
                 "fd",
@@ -1211,7 +1216,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "2000").assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_3700",
                 "fd",
@@ -1235,7 +1240,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "2000").assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_3800",
                 "fd",
@@ -1259,7 +1264,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "Auto white balance").assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_3900",
                 "fd",
@@ -1283,7 +1288,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "35").assertTrue();
             }
-            modifyPromise(
+            testModifyImagePropertyPromise(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_4000",
                 "fd",
@@ -1305,7 +1310,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0100", 0, async function (done) {
-            modifyImageBuffer(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0100", "buffer", "Orientation", "2");
+            testModifyImageBufferProperty(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0100", "buffer", "Orientation", "2");
         });
 
         /**
@@ -1319,7 +1324,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0200", 0, async function (done) {
-            modifyImageBuffer(
+            testModifyImageBufferProperty(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0200",
                 "buffer",
@@ -1339,7 +1344,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0300", 0, async function (done) {
-            modifyImageBuffer(
+            testModifyImageBufferProperty(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0300",
                 "buffer",
@@ -1359,7 +1364,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0400", 0, async function (done) {
-            modifyImageBuffer(
+            testModifyImageBufferProperty(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0400",
                 "buffer",
@@ -1379,7 +1384,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0500", 0, async function (done) {
-            modifyImageBuffer(
+            testModifyImageBufferProperty(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0500",
                 "buffer",
@@ -1402,7 +1407,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "Top-right").assertTrue();
             }
-            modifyCb(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0600", "fd", "Orientation", "2", checkProps);
+            testModifyImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0600", "fd", "Orientation", "2", checkProps);
         });
 
         /**
@@ -1419,7 +1424,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result.search("38") != -1).assertTrue();
             }
-            modifyCb(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0700", "fd", "GPSLatitude", "114,3", checkProps);
+            testModifyImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0700", "fd", "GPSLatitude", "114,3", checkProps);
         });
 
         /**
@@ -1436,7 +1441,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result.search("9") != -1).assertTrue();
             }
-            modifyCb(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0800", "fd", "GPSLongitude", "18,2", checkProps);
+            testModifyImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0800", "fd", "GPSLongitude", "18,2", checkProps);
         });
 
         /**
@@ -1453,7 +1458,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "N").assertTrue();
             }
-            modifyCb(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0900", "fd", "GPSLatitudeRef", "N", checkProps);
+            testModifyImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_0900", "fd", "GPSLatitudeRef", "N", checkProps);
         });
 
         /**
@@ -1470,7 +1475,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "W").assertTrue();
             }
-            modifyCb(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1000", "fd", "GPSLongitudeRef", "W", checkProps);
+            testModifyImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1000", "fd", "GPSLongitudeRef", "W", checkProps);
         });
 
         /**
@@ -1487,7 +1492,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "4, 4, 4").assertTrue();
             }
-            modifyCb(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1100", "fd", "BitsPerSample", "4, 4, 4", checkProps);
+            testModifyImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1100", "fd", "BitsPerSample", "4, 4, 4", checkProps);
         });
 
         /**
@@ -1504,7 +1509,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "800").assertTrue();
             }
-            modifyCb(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1200", "fd", "ImageLength", "800", checkProps);
+            testModifyImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1200", "fd", "ImageLength", "800", checkProps);
         });
 
         /**
@@ -1521,7 +1526,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "500").assertTrue();
             }
-            modifyCb(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1300", "fd", "ImageWidth", "500", checkProps);
+            testModifyImagePropertyCb(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1300", "fd", "ImageWidth", "500", checkProps);
         });
 
 
@@ -1539,7 +1544,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "2022:06:02 00:00:00").assertTrue();
             }
-            modifyCb(
+            testModifyImagePropertyCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1400",
                 "fd",
@@ -1563,7 +1568,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "1/3 sec.").assertTrue();
             }
-            modifyCb(
+            testModifyImagePropertyCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1500",
                 "fd",
@@ -1587,7 +1592,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "Directly photographed").assertTrue();
             }
-            modifyCb(
+            testModifyImagePropertyCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1600",
                 "fd",
@@ -1611,7 +1616,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "2").assertTrue();
             }
-            modifyCb(
+            testModifyImagePropertyCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1700",
                 "fd",
@@ -1635,7 +1640,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "f/0.5").assertTrue();
             }
-            modifyCb(
+            testModifyImagePropertyCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1800",
                 "fd",
@@ -1659,7 +1664,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "2022:06:02 00:00:00").assertTrue();
             }
-            modifyCb(
+            testModifyImagePropertyCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_1900",
                 "fd",
@@ -1683,7 +1688,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "11:37:56.00").assertTrue();
             }
-            modifyCb(
+            testModifyImagePropertyCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_2000",
                 "fd",
@@ -1707,7 +1712,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "2023:10:19").assertTrue();
             }
-            modifyCb(
+            testModifyImagePropertyCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_2100",
                 "fd",
@@ -1731,7 +1736,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "badPhoto").assertTrue();
             }
-            modifyCb(
+            testModifyImagePropertyCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_2200",
                 "fd",
@@ -1755,7 +1760,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "XiaoMI").assertTrue();
             }
-            modifyCb(
+            testModifyImagePropertyCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_2300",
                 "fd",
@@ -1779,7 +1784,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "TNY-AL00").assertTrue();
             }
-            modifyCb(
+            testModifyImagePropertyCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_2400",
                 "fd",
@@ -1803,7 +1808,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "ISO speed").assertTrue();
             }
-            modifyCb(
+            testModifyImagePropertyCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_2600",
                 "fd",
@@ -1827,7 +1832,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "200").assertTrue();
             }
-            modifyCb(
+            testModifyImagePropertyCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_2800",
                 "fd",
@@ -1851,7 +1856,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "3").assertTrue();
             }
-            modifyCb(
+            testModifyImagePropertyCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_2900",
                 "fd",
@@ -1875,7 +1880,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "0.50 EV (f/1.2)").assertTrue();
             }
-            modifyCb(
+            testModifyImagePropertyCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_3000",
                 "fd",
@@ -1899,7 +1904,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "0.50 EV").assertTrue();
             }
-            modifyCb(
+            testModifyImagePropertyCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_3100",
                 "fd",
@@ -1923,7 +1928,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "Spot").assertTrue();
             }
-            modifyCb(
+            testModifyImagePropertyCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_3200",
                 "fd",
@@ -1947,7 +1952,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "Fluorescent").assertTrue();
             }
-            modifyCb(
+            testModifyImagePropertyCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_3300",
                 "fd",
@@ -1971,7 +1976,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "Flash fired, auto mode").assertTrue();
             }
-            modifyCb(
+            testModifyImagePropertyCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_3400",
                 "fd",
@@ -1995,7 +2000,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "0.5 mm").assertTrue();
             }
-            modifyCb(
+            testModifyImagePropertyCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_3500",
                 "fd",
@@ -2019,7 +2024,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "1111").assertTrue();
             }
-            modifyCb(
+            testModifyImagePropertyCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_3600",
                 "fd",
@@ -2043,7 +2048,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "2000").assertTrue();
             }
-            modifyCb(
+            testModifyImagePropertyCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_3700",
                 "fd",
@@ -2067,7 +2072,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "2000").assertTrue();
             }
-            modifyCb(
+            testModifyImagePropertyCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_3800",
                 "fd",
@@ -2091,7 +2096,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "Auto white balance").assertTrue();
             }
-            modifyCb(
+            testModifyImagePropertyCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_3900",
                 "fd",
@@ -2115,7 +2120,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "35").assertTrue();
             }
-            modifyCb(
+            testModifyImagePropertyCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_4000",
                 "fd",
@@ -2136,7 +2141,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0100", 0, async function (done) {
-            modifyImageBuffer(
+            testModifyImageBufferProperty(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0100",
                 "buffer",
@@ -2156,7 +2161,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0200", 0, async function (done) {
-            modifyImageBuffer(
+            testModifyImageBufferProperty(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0200",
                 "buffer",
@@ -2176,7 +2181,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0300", 0, async function (done) {
-            modifyImageBuffer(
+            testModifyImageBufferProperty(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0300",
                 "buffer",
@@ -2196,7 +2201,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0400", 0, async function (done) {
-            modifyImageBuffer(
+            testModifyImageBufferProperty(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0400",
                 "buffer",
@@ -2216,7 +2221,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0500", 0, async function (done) {
-            modifyImageBuffer(
+            testModifyImageBufferProperty(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0500",
                 "buffer",
@@ -2239,7 +2244,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "Top-right").assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0600",
                 "fd",
@@ -2263,7 +2268,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result.search("38") != -1).assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0700",
                 "fd",
@@ -2287,7 +2292,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result.search("9") != -1).assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0800",
                 "fd",
@@ -2311,7 +2316,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "N").assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_0900",
                 "fd",
@@ -2335,7 +2340,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "W").assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1000",
                 "fd",
@@ -2359,7 +2364,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "4, 4, 4").assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1100",
                 "fd",
@@ -2383,7 +2388,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "800").assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1200",
                 "fd",
@@ -2407,7 +2412,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "500").assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1300",
                 "fd",
@@ -2432,7 +2437,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "2022:06:02 00:00:00").assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1400",
                 "fd",
@@ -2456,7 +2461,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "1/3 sec.").assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1500",
                 "fd",
@@ -2480,7 +2485,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "Directly photographed").assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1600",
                 "fd",
@@ -2504,7 +2509,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "2").assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1700",
                 "fd",
@@ -2528,7 +2533,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "f/0.5").assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1800",
                 "fd",
@@ -2552,7 +2557,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "2022:06:02 00:00:00").assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_1900",
                 "fd",
@@ -2576,7 +2581,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "11:37:56.00").assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_2000",
                 "fd",
@@ -2600,7 +2605,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "2023:10:19").assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_2100",
                 "fd",
@@ -2624,7 +2629,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "badPhoto").assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_2200",
                 "fd",
@@ -2648,7 +2653,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "XiaoMI").assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_2300",
                 "fd",
@@ -2672,7 +2677,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "TNY-AL00").assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_2400",
                 "fd",
@@ -2696,7 +2701,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "ISO speed").assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_2600",
                 "fd",
@@ -2720,7 +2725,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "200").assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_2800",
                 "fd",
@@ -2744,7 +2749,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "3").assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_2900",
                 "fd",
@@ -2768,7 +2773,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "0.50 EV (f/1.2)").assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_3000",
                 "fd",
@@ -2792,7 +2797,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "0.50 EV").assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_3100",
                 "fd",
@@ -2816,7 +2821,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "Spot").assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_3200",
                 "fd",
@@ -2840,7 +2845,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "Fluorescent").assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_3300",
                 "fd",
@@ -2864,7 +2869,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "Flash fired, auto mode").assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_3400",
                 "fd",
@@ -2888,7 +2893,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "0.5 mm").assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_3500",
                 "fd",
@@ -2912,7 +2917,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "1111").assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_3600",
                 "fd",
@@ -2936,7 +2941,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "2000").assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_3700",
                 "fd",
@@ -2960,7 +2965,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "2000").assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_3800",
                 "fd",
@@ -2984,7 +2989,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "Auto white balance").assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_3900",
                 "fd",
@@ -3008,7 +3013,7 @@ export default function imageModifyProperty() {
             function checkProps(result) {
                 expect(result == "35").assertTrue();
             }
-            modifyCb1(
+            testModifyImagePropertyOptCb(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_4000",
                 "fd",
@@ -3032,7 +3037,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0100", 0, async function (done) {
-            modifyImageErrPromise(
+            testModifyImagePropertyPromiseError(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0100",
                 "fd",
@@ -3052,7 +3057,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0200", 0, async function (done) {
-            modifyImageErrPromise(
+            testModifyImagePropertyPromiseError(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0200",
                 "fd",
@@ -3072,7 +3077,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0300", 0, async function (done) {
-            modifyImageErrPromise(
+            testModifyImagePropertyPromiseError(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0200",
                 "fd",
@@ -3092,7 +3097,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0400", 0, async function (done) {
-            modifyImageErrPromise(
+            testModifyImagePropertyPromiseError(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0400",
                 "fd",
@@ -3112,7 +3117,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0500", 0, async function (done) {
-            modifyImageErrPromise(
+            testModifyImagePropertyPromiseError(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0500",
                 "fd",
@@ -3132,7 +3137,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0600", 0, async function (done) {
-            modifyImageErrPromise(
+            testModifyImagePropertyPromiseError(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0600",
                 "buffer",
@@ -3152,7 +3157,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0700", 0, async function (done) {
-            modifyImageErrPromise(
+            testModifyImagePropertyPromiseError(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0700",
                 "buffer",
@@ -3172,7 +3177,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0800", 0, async function (done) {
-            modifyImageErrPromise(
+            testModifyImagePropertyPromiseError(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0800",
                 "buffer",
@@ -3192,7 +3197,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0900", 0, async function (done) {
-            modifyImageErrPromise(
+            testModifyImagePropertyPromiseError(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_0900",
                 "buffer",
@@ -3212,7 +3217,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_1000", 0, async function (done) {
-            modifyImageErrPromise(
+            testModifyImagePropertyPromiseError(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROMISE_ERROR_1000",
                 "buffer",
@@ -3232,7 +3237,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0100", 0, async function (done) {
-            modifyErrCb(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0100", "fd", "Orientation", "abcdef");
+            testModifyImagePropertyCbErr(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0100", "fd", "Orientation", "abcdef");
         });
 
         /**
@@ -3246,7 +3251,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0200", 0, async function (done) {
-            modifyErrCb(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0200", "fd", "GPSLatitude", "abc,3");
+            testModifyImagePropertyCbErr(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0200", "fd", "GPSLatitude", "abc,3");
         });
 
         /**
@@ -3260,7 +3265,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0300", 0, async function (done) {
-            modifyErrCb(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0300", "fd", "GPSLongitude", "abc,2");
+            testModifyImagePropertyCbErr(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0300", "fd", "GPSLongitude", "abc,2");
         });
 
         /**
@@ -3274,7 +3279,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0400", 0, async function (done) {
-            modifyErrCb(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0400", "fd", "GPSLongitudeRef", "1234");
+            testModifyImagePropertyCbErr(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0400", "fd", "GPSLongitudeRef", "1234");
         });
 
         /**
@@ -3288,7 +3293,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0500", 0, async function (done) {
-            modifyErrCb(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0500", "fd", "GPSLatitudeRef", "456");
+            testModifyImagePropertyCbErr(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0500", "fd", "GPSLatitudeRef", "456");
         });
 
         /**
@@ -3302,7 +3307,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0600", 0, async function (done) {
-            modifyErrCb(
+            testModifyImagePropertyCbErr(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0600",
                 "buffer",
@@ -3322,7 +3327,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0700", 0, async function (done) {
-            modifyErrCb(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0700", "buffer", "GPSLatitude", "abc,3");
+            testModifyImagePropertyCbErr(done, "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0700", "buffer", "GPSLatitude", "abc,3");
         });
 
         /**
@@ -3336,7 +3341,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0800", 0, async function (done) {
-            modifyErrCb(
+            testModifyImagePropertyCbErr(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0800",
                 "buffer",
@@ -3356,7 +3361,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0900", 0, async function (done) {
-            modifyErrCb(
+            testModifyImagePropertyCbErr(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_0900",
                 "buffer",
@@ -3376,7 +3381,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_1000", 0, async function (done) {
-            modifyErrCb(
+            testModifyImagePropertyCbErr(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_CALLBACK_ERROR_1000",
                 "buffer",
@@ -3396,7 +3401,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0100", 0, async function (done) {
-            modifyErrCb1(
+            testModifyImagePropertyOptCbErr(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0100",
                 "fd",
@@ -3416,7 +3421,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0200", 0, async function (done) {
-            modifyErrCb1(
+            testModifyImagePropertyOptCbErr(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0200",
                 "fd",
@@ -3436,7 +3441,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0300", 0, async function (done) {
-            modifyErrCb1(
+            testModifyImagePropertyOptCbErr(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0300",
                 "fd",
@@ -3456,7 +3461,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0400", 0, async function (done) {
-            modifyErrCb1(
+            testModifyImagePropertyOptCbErr(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0400",
                 "fd",
@@ -3476,7 +3481,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0500", 0, async function (done) {
-            modifyErrCb1(
+            testModifyImagePropertyOptCbErr(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0500",
                 "fd",
@@ -3496,7 +3501,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0600", 0, async function (done) {
-            modifyErrCb1(
+            testModifyImagePropertyOptCbErr(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0600",
                 "buffer",
@@ -3516,7 +3521,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0700", 0, async function (done) {
-            modifyErrCb1(
+            testModifyImagePropertyOptCbErr(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0700",
                 "buffer",
@@ -3536,7 +3541,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0800", 0, async function (done) {
-            modifyErrCb1(
+            testModifyImagePropertyOptCbErr(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0800",
                 "buffer",
@@ -3556,7 +3561,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0900", 0, async function (done) {
-            modifyErrCb1(
+            testModifyImagePropertyOptCbErr(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_0900",
                 "buffer",
@@ -3576,7 +3581,7 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_1000", 0, async function (done) {
-            modifyErrCb1(
+            testModifyImagePropertyOptCbErr(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTY_PROPERTY_CALLBACK_ERROR_1000",
                 "buffer",
@@ -3596,17 +3601,6 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0100", 0, async function (done) {
-            function checkProps(result) {
-                const keys = Object.keys(props)
-                const ret = true;
-                for (let key in keys) {
-                    if(props[keys[key]] != result[key][keys[key]]) {
-                        ret = false;
-                        break;
-                    }
-                }
-                expect(ret).assertTrue();
-            }
             let props = {
                 ImageWidth: "1024",
                 ImageLength: "2048"
@@ -3615,13 +3609,12 @@ export default function imageModifyProperty() {
                 IMAGE_WIDTH,
                 IMAGE_LENGTH
             ];
-            await modifyImageProperties(
+            await testModifyImageProperties(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0100",
                 "test_exif.jpg",
                 props,
-                checkKey,
-                checkProps
+                checkKey
             );
         });
 
@@ -3636,30 +3629,18 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0200", 0, async function (done) {
-            function checkProps(result) {
-                const keys = Object.keys(props)
-                const ret = true;
-                for (let key in keys) {
-                    if(props[keys[key]] != result[key][keys[key]]) {
-                        ret = false;
-                        break;
-                    }
-                }
-                expect(ret).assertTrue();
-            }
             let props = {
                 ImageLength: "2048"
             }
             let checkKey = [
                 IMAGE_LENGTH
             ];
-            await modifyImageProperties(
+            await testModifyImageProperties(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0200",
                 "test_exif.jpg",
                 props,
-                checkKey,
-                checkProps
+                checkKey
             );
         });
 
@@ -3674,17 +3655,6 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0300", 0, async function (done) {
-            function checkProps(result) {
-                const keys = Object.keys(props)
-                const ret = true;
-                for (let key in keys) {
-                    if(props[keys[key]] != result[key][keys[key]]) {
-                        ret = false;
-                        break;
-                    }
-                }
-                expect(ret).assertTrue();
-            }
             let props = {
                 GPSDateStamp: "2023:04:13",
                 ImageDescription: "A gray picture"
@@ -3693,13 +3663,12 @@ export default function imageModifyProperty() {
                 GPS_DATE_STAMP,
                 IMAGE_DESCRIPTION
             ];
-            await modifyImageProperties(
+            await testModifyImageProperties(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0300",
                 "test_exif.jpg",
                 props,
-                checkKey,
-                checkProps
+                checkKey
             );
         });
 
@@ -3714,17 +3683,6 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0400", 0, async function (done) {
-            function checkProps(result) {
-                const keys = Object.keys(props)
-                const ret = true;
-                for (let key in keys) {
-                    if(props[keys[key]] != result[key][keys[key]]) {
-                        ret = false;
-                        break;
-                    }
-                }
-                expect(ret).assertTrue();
-            }
             let props = {
                 GPSDateStamp: "2023:04:13",
                 ImageWidth: "1024",
@@ -3733,13 +3691,40 @@ export default function imageModifyProperty() {
                 GPS_DATE_STAMP,
                 IMAGE_WIDTH
             ];
-            await modifyImageProperties(
+            await testModifyImageProperties(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0400",
                 "test_exif.jpg",
                 props,
-                checkKey,
-                checkProps
+                checkKey
+            );
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0500
+         * @tc.name      : test modify image properties using the value obtained from getImageProperties 
+         * @tc.desc      : 1.create buffer imagesource1
+         *                 2.call imagesource1.getImageProperties(checkKey)
+         *                 3.create jpg imagesource2
+         *                 4.call imagesource2.modifyImageProperties(props)
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level 1
+         */
+        it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0500", 0, async function (done) {
+            let checkKey = [
+                IMAGE_WIDTH,
+                IMAGE_LENGTH
+            ];
+            let imageSource = image.createImageSource(modifyBuf.buffer);
+            let props = await imageSource.getImageProperties(checkKey);
+            await imageSource.release();
+            await testModifyImageProperties(
+                done,
+                "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_0500",
+                "test_exif.jpg",
+                props,
+                checkKey
             );
         });
 
@@ -3762,7 +3747,7 @@ export default function imageModifyProperty() {
                 IMAGE_WIDTH,
                 IMAGE_LENGTH
             ];
-            await modifyImageProperties(
+            await testModifyImageProperties(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0100",
                 "test_exif.jpg",
@@ -3791,7 +3776,7 @@ export default function imageModifyProperty() {
                 IMAGE_WIDTH,
                 IMAGE_LENGTH
             ];
-            await modifyImageProperties(
+            await testModifyImageProperties(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0200",
                 "test_exif.jpg",
@@ -3820,7 +3805,7 @@ export default function imageModifyProperty() {
                 "ErrorKey1",
                 "ErrorKey2"
             ];
-            await modifyImageProperties(
+            await testModifyImageProperties(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0300",
                 "test_exif.jpg",
@@ -3849,7 +3834,7 @@ export default function imageModifyProperty() {
                 IMAGE_LENGTH,
                 "ErrorKey"
             ];
-            await modifyImageProperties(
+            await testModifyImageProperties(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0400",
                 "test_exif.jpg",
@@ -3870,20 +3855,22 @@ export default function imageModifyProperty() {
          * @tc.level     : Level 1
          */
          it("SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0500", 0, async function (done) {
-            let props = {
-                ImageLength: "",
-                ImageWidth: "",
-            }
-            let checkKey = [
-                IMAGE_LENGTH,
-                IMAGE_WIDTH
-            ];
-            await modifyImageProperties(
+            let checkKeys = Object.values(image.PropertyKey).filter(item => 
+                !item.startsWith("Hw") && item != "GIFLoopCount"
+            );
+            checkKeys.push("HwMnoteCaptureMode");
+
+            let props = {};
+            checkKeys.forEach((item) => {
+                props[item] = ""
+            })
+            
+            await testModifyImageProperties(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0500",
                 "test_exif.jpg",
                 props,
-                checkKey,
+                checkKeys,
                 undefined
             );
         });
@@ -3907,7 +3894,7 @@ export default function imageModifyProperty() {
                 IMAGE_LENGTH,
                 IMAGE_WIDTH
             ];
-            await modifyImageProperties(
+            await testModifyImageProperties(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0600",
                 "test_exif.jpg",
@@ -3936,7 +3923,7 @@ export default function imageModifyProperty() {
                 IMAGE_LENGTH,
                 IMAGE_WIDTH
             ];
-            await modifyImageProperties(
+            await testModifyImageProperties(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0700",
                 "test_exif.jpg",
@@ -3965,7 +3952,7 @@ export default function imageModifyProperty() {
                 SCENE_BLUE_SKY_CONF,
                 SCENE_GREEN_PLANT_CONF
             ];
-            await modifyImageProperties(
+            await testModifyImageProperties(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0800",
                 "test_exif.jpg",
@@ -3998,7 +3985,7 @@ export default function imageModifyProperty() {
                 SCENE_BLUE_SKY_CONF,
                 SCENE_GREEN_PLANT_CONF
             ];
-            await modifyImageProperties(
+            await testModifyImageProperties(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_0900",
                 "test_exif.jpg",
@@ -4029,7 +4016,7 @@ export default function imageModifyProperty() {
                 "JPEGInterchangeFormatLength",
                 "MakerNote"
             ];
-            await modifyImageProperties(
+            await testModifyImageProperties(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_1000",
                 "test_exif.jpg",
@@ -4058,7 +4045,7 @@ export default function imageModifyProperty() {
                 IMAGE_WIDTH,
                 IMAGE_LENGTH
             ];
-            await modifyImageProperties(
+            await testModifyImageProperties(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_MODIFYPROPERTIES_PROMISE_ERROR_1100",
                 "test.tiff",
@@ -4079,7 +4066,7 @@ export default function imageModifyProperty() {
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0100", 0, async function (done) {
             console.info("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0100 start");
-            modifyLoopCountError("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0100", "gif", false, done);
+            testModifyLoopCountErr("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0100", "gif", false, done);
         });
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0200
@@ -4092,7 +4079,7 @@ export default function imageModifyProperty() {
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0200", 0, async function (done) {
             console.info("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0200 start");
-            modifyLoopCountError("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0200", "gif", true, done);
+            testModifyLoopCountErr("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0200", "gif", true, done);
         });
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0300
@@ -4105,7 +4092,7 @@ export default function imageModifyProperty() {
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0300", 0, async function (done) {
             console.info("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0300 start");
-            modifyLoopCountError("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0300", "jpg", false, done);
+            testModifyLoopCountErr("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0300", "jpg", false, done);
         });
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0400
@@ -4118,7 +4105,7 @@ export default function imageModifyProperty() {
          */
         it("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0400", 0, async function (done) {
             console.info("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0400 start");
-            modifyLoopCountError("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0400", "jpg", true, done);
+            testModifyLoopCountErr("SUB_MULTIMEDIA_IMAGE_MODIFY_LOOPCOUNT_ERROR_0400", "jpg", true, done);
         });
     });
 }

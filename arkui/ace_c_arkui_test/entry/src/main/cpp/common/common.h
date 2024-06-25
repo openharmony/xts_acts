@@ -64,6 +64,7 @@ namespace ArkUICapiTest {
 #define SIZE_30 30
 #define SIZE_40 40
 #define SIZE_50 50
+#define SIZE_56 56
 #define SIZE_60 60
 #define SIZE_80 80
 #define SIZE_90 90
@@ -168,6 +169,14 @@ const unsigned int LOG_PRINT_DOMAIN = 0xFF00;
             napi_throw_error((env), nullptr, assertChars);                                                             \
             napi_value errorResult = nullptr;                                                                          \
             napi_create_int32(env, PARAM_NEGATIVE_1, &errorResult);                                                    \
+            return errorResult;                                                                                        \
+        }                                                                                                              \
+    } while (0)
+
+#define ASSERT_OBJ(result, expect)                                                                                     \
+    do {                                                                                                               \
+        if ((result) != (expect)) {                                                                                    \
+            napi_value errorResult = nullptr;                                                                          \
             return errorResult;                                                                                        \
         }                                                                                                              \
     } while (0)

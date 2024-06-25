@@ -13,12 +13,14 @@
  * limitations under the License.
  */
 
+import PasteboardDelayCopyTest from './PasteboardDelayCopyTest.test';
 import pasteboardSyncTest from './Pasteboardsync.test';
 import pasteBoardJEtsunitTest from './PasteBoardEtsunitTest';
 import pasteBoardTest from './PasteBoard.test.ets';
 import pasteBoardRecordTest from './PasteBoardRecord.test.ets'
 import pasteBoardSystemPasteBoardTest from './PasteBoardSystemPasteBoard.test.ets'
 import PasteboardUnifiedTest from './PasteboardUnified.test';
+import PasteboartdCopyJsAPITest from './PasteboartdCopyJsAPITest.test';
 export default function testsuite() {
   pasteBoardJEtsunitTest()
   pasteBoardSystemPasteBoardTest()
@@ -26,4 +28,6 @@ export default function testsuite() {
   pasteBoardRecordTest()
   pasteboardSyncTest()
   PasteboardUnifiedTest()
+  PasteboardDelayCopyTest()
+  PasteboartdCopyJsAPITest()
 }

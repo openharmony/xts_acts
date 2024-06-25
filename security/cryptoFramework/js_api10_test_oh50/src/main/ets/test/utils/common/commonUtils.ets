@@ -97,12 +97,25 @@ async function createData(dataLen: number): Promise<cryptoFramework.DataBlob>{
   }
 }
 
+async function createFullData(dataLen: number): Promise<cryptoFramework.DataBlob>{
+  try {
+    let rand: cryptoFramework.Random = cryptoFramework.createRandom();
+    let rawData: cryptoFramework.DataBlob = await rand.generateRandom(dataLen);
+
+    return rawData;
+  } catch (error) {
+    console.error('sync error, ' + error.code + " errorMsg " + error.message);
+    throw error as Error;
+  }
+}
+
 export {
   stringToUint8Array,
   decToHexString,
   convertToUint8Array,
   compareDataBlob,
   createData,
+  createFullData,
   compareNumber,
   compareString
 }

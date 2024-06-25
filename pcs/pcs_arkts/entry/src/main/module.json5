@@ -21,7 +21,10 @@
     "mainElement": "EntryAbility",
     "deviceTypes": [
       "phone",
-      "tablet"
+      "tablet",
+      "2in1",
+      "default",
+      "tv"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
@@ -45,7 +48,22 @@
               "action.system.home"
             ]
           }
+        ],
+        "backgroundModes": [
+          "audioPlayback"
         ]
+      }
+    ],
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.KEEP_BACKGROUND_RUNNING",
+        "reason": "$string:reason",
+        "usedScene": {
+          "abilities": [
+            "FormAbility"
+          ],
+          "when": "inuse"
+        }
       }
     ]
   }

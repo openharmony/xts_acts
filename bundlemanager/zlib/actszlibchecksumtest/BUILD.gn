@@ -13,29 +13,13 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsChecksumTest") {
-  hap_profile = "src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":arkui_web_enhanced_four_js_assets",
-    ":arkui_web_enhanced_four_resources",
-  ]
-  ets2abc = true
-  certificate_profile = "signature/openharmony_sx.p7b"
+ohos_js_app_suite("ActsChecksumTest") {
+  test_hap = true
+  testonly = true
+  certificate_profile = "./signature/openharmony_sx.p7b"
   hap_name = "ActsChecksumTest"
-}
 
-ohos_app_scope("arkui_web_enhanced_four_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
+  # 部件名称，真实数据，需要子系统对应
 
-ohos_js_assets("arkui_web_enhanced_four_js_assets") {
-  source_dir = "src/main/ets"
-}
-
-ohos_resources("arkui_web_enhanced_four_resources") {
-  sources = [ "src/main/resources" ]
-  deps = [ ":arkui_web_enhanced_four_profile" ]
-  hap_profile = "src/main/module.json"
+  # 子系统名称，真实数据，需要部件对应
 }

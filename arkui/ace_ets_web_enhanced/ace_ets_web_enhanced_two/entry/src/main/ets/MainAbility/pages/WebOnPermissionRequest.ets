@@ -103,7 +103,7 @@ struct WebOnPermissionRequest {
                       console.info('getMedia() return error: ' + error)
                     }
                   })
-                  await Utils.sleep(2000)
+                  await Utils.sleep(8000)
                   PermissionsUtils.reqPermissionCamera(getContext(this) as common.UIAbilityContext,
                     (success: boolean) => {
                       if (success) {
@@ -115,11 +115,11 @@ struct WebOnPermissionRequest {
                         }
                       }
                     })
-                  await Utils.sleep(3000);
+                  await Utils.sleep(8000);
                   let driver = Driver.create();
                   let component = await driver.findComponent(ON.text('允许'));
                   await component.click();
-                  await Utils.sleep(3000);
+                  await Utils.sleep(8000);
                   this.controller.runJavaScript("getResult()", (error, result) => {
                     if (error) {
                       console.info('getResult() return error: ' + error)

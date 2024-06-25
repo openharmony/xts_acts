@@ -30,7 +30,7 @@ export default function textAreaJsunit3() {
         router.clear();
         let pages = router.getState();
         console.info("get textArea state pages:" + JSON.stringify(pages));
-        if (!("textArea3" == pages.name)) {
+        if (!("textArea" == pages.name)) {
           console.info("get textArea state pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
           await Utils.sleep(2000);

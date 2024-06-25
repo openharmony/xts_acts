@@ -22,6 +22,8 @@
 #include "external_window.h"
 #include "surface_utils.h"
 #include "sync_fence.h"
+#include "ipc_inner_object.h"
+#include "ipc_cparcel.h"
 
 using namespace std;
 using namespace testing;
@@ -401,7 +403,112 @@ HWTEST_F(NativeWindowTest, HandleOpt009, Function | MediumTest | Level1)
     ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, &queueSize), OHOS::GSERROR_OK);
     ASSERT_EQ(queueSize, 5);
 }
+/*
+ * @tc.name  HandleOpt010
+ * @tc.desc  call OH_NativeWindow_NativeWindowHandleOpt by different param
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+ */
+HWTEST_F(NativeWindowTest, HandleOpt010, Function | MediumTest | Level2)
+{
+    int code = SET_USAGE;
+    uint64_t usageSet = NATIVEBUFFER_USAGE_HW_RENDER | NATIVEBUFFER_USAGE_HW_TEXTURE |
+    NATIVEBUFFER_USAGE_CPU_READ_OFTEN | NATIVEBUFFER_USAGE_ALIGNMENT_512;
+    ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, usageSet), OHOS::GSERROR_OK);
 
+    code = GET_USAGE;
+    uint64_t usageGet = usageSet;
+    ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, &usageGet), OHOS::GSERROR_OK);
+    ASSERT_EQ(usageSet, usageGet);
+
+    code = SET_FORMAT;
+    int32_t formatSet = NATIVEBUFFER_PIXEL_FMT_YCBCR_P010;
+    ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, formatSet), OHOS::GSERROR_OK);
+
+    code = GET_FORMAT;
+    int32_t formatGet = NATIVEBUFFER_PIXEL_FMT_YCBCR_P010;
+    ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, &formatGet), OHOS::GSERROR_OK);
+    ASSERT_EQ(formatSet, formatGet);
+}
+/*
+ * @tc.name  HandleOpt011
+ * @tc.desc  call OH_NativeWindow_NativeWindowHandleOpt by different param
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+HWTEST_F(NativeWindowTest, HandleOpt011, Function | MediumTest | Level1)
+{
+    int code = SET_SOURCE_TYPE;
+    OHSurfaceSource typeSet = OHSurfaceSource::OH_SURFACE_SOURCE_GAME;
+    ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, typeSet), OHOS::GSERROR_OK);
+
+    code = GET_SOURCE_TYPE;
+    OHSurfaceSource typeGet = OHSurfaceSource::OH_SURFACE_SOURCE_DEFAULT;
+    ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, &typeGet), OHOS::GSERROR_OK);
+    ASSERT_EQ(typeSet, typeGet);
+}
+/*
+ * @tc.name  HandleOpt012
+ * @tc.desc  call OH_NativeWindow_NativeWindowHandleOpt by different param
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+HWTEST_F(NativeWindowTest, HandleOpt012, Function | MediumTest | Level1)
+{
+    int code = SET_APP_FRAMEWORK_TYPE;
+    const char* typeSet = "test";
+    ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, typeSet), OHOS::GSERROR_OK);
+
+    code = GET_APP_FRAMEWORK_TYPE;
+    const char* typeGet;
+    ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, &typeGet), OHOS::GSERROR_OK);
+    ASSERT_EQ(0, strcmp(typeSet, typeGet));
+}
+/*
+ * @tc.name  HandleOpt013
+ * @tc.desc  call OH_NativeWindow_NativeWindowHandleOpt by different param
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+HWTEST_F(NativeWindowTest, HandleOpt013, Function | MediumTest | Level1)
+{
+    int code = SET_HDR_WHITE_POINT_BRIGHTNESS;
+    float brightness = 0.8;
+    ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, brightness), OHOS::GSERROR_OK);
+
+    code = SET_SDR_WHITE_POINT_BRIGHTNESS;
+    brightness = 0.5;
+    ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, brightness), OHOS::GSERROR_OK);
+
+    ASSERT_EQ(fabs(cSurface->GetHdrWhitePointBrightness() - 0.8) < 1e-6, true);
+    ASSERT_EQ(fabs(cSurface->GetSdrWhitePointBrightness() - 0.5) < 1e-6, true);
+
+    code = SET_HDR_WHITE_POINT_BRIGHTNESS;
+    brightness = 1.8;
+    ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, brightness), OHOS::GSERROR_OK);
+    ASSERT_EQ(fabs(cSurface->GetHdrWhitePointBrightness() - 0.8) < 1e-6, true);
+    brightness = -0.5;
+    ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, brightness), OHOS::GSERROR_OK);
+    ASSERT_EQ(fabs(cSurface->GetHdrWhitePointBrightness() - 0.8) < 1e-6, true);
+    brightness = 0.5;
+    ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, brightness), OHOS::GSERROR_OK);
+    ASSERT_EQ(fabs(cSurface->GetHdrWhitePointBrightness() - 0.5) < 1e-6, true);
+
+    code = SET_SDR_WHITE_POINT_BRIGHTNESS;
+    brightness = 1.5;
+    ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, brightness), OHOS::GSERROR_OK);
+    ASSERT_EQ(fabs(cSurface->GetSdrWhitePointBrightness() - 0.5) < 1e-6, true);
+    brightness = -0.1;
+    ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, brightness), OHOS::GSERROR_OK);
+    ASSERT_EQ(fabs(cSurface->GetSdrWhitePointBrightness() - 0.5) < 1e-6, true);
+    brightness = 0.8;
+    ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, brightness), OHOS::GSERROR_OK);
+    ASSERT_EQ(fabs(cSurface->GetSdrWhitePointBrightness() - 0.8) < 1e-6, true);
+}
 /*
  * @tc.name  NativeWindowAttachBuffer001
  * @tc.desc  call OH_NativeWindow_NativeWindowAttachBuffer by abnormal input 
@@ -865,8 +972,7 @@ HWTEST_F(NativeWindowTest, FlushBuffer003, Function | MediumTest | Level2)
     rect->h = 0x100;
     region->rects = rect;
     ASSERT_EQ(OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow, nativeWindowBuffer, fenceFd, *region),
-              OHOS::SURFACE_ERROR_BUFFER_STATE_INVALID); 
-    
+              OHOS::SURFACE_ERROR_BUFFER_STATE_INVALID);
     delete rect;
     delete region;
 }
@@ -880,6 +986,14 @@ HWTEST_F(NativeWindowTest, FlushBuffer003, Function | MediumTest | Level2)
  */
 HWTEST_F(NativeWindowTest, GetLastFlushedBuffer001, Function | MediumTest | Level2)
 {
+    int code = SET_TRANSFORM;
+    int32_t transform = GraphicTransformType::GRAPHIC_ROTATE_90;
+    ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, transform), OHOS::GSERROR_OK);
+
+    code = SET_FORMAT;
+    int32_t format = GRAPHIC_PIXEL_FMT_RGBA_8888;
+    ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, code, format), OHOS::GSERROR_OK);
+
     NativeWindowBuffer *nativeWindowBuffer = nullptr;
     int fenceFd = -1;
     int32_t ret = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow, &nativeWindowBuffer, &fenceFd);
@@ -902,6 +1016,9 @@ HWTEST_F(NativeWindowTest, GetLastFlushedBuffer001, Function | MediumTest | Leve
         OHOS::GSERROR_OK);
     BufferHandle *lastFlushedHanlde = OH_NativeWindow_GetBufferHandleFromNative(lastFlushedBuffer);
     ASSERT_EQ(bufferHanlde->virAddr, lastFlushedHanlde->virAddr);
+
+    ASSERT_EQ(OH_NativeWindow_GetLastFlushedBufferV2(nativeWindow, &lastFlushedBuffer, &lastFlushedFenceFd, matrix),
+        OHOS::GSERROR_OK);
 }
 
 /*
@@ -1079,7 +1196,18 @@ HWTEST_F(NativeWindowTest, SetScalingMode003, Function | MediumTest | Level2)
                                          static_cast<OHScalingMode>(OHScalingMode::OH_SCALING_MODE_NO_SCALE_CROP + 1)),
                                          OHOS::GSERROR_INVALID_ARGUMENTS);
 }
-
+/*
+ * @tc.name  : SetScalingMode005
+ * @tc.desc  : call OH_NativeWindow_NativeWindowSetScalingModeV2 with abnormal parameters and check ret
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+HWTEST_F(NativeWindowTest, SetScalingMode005, Function | MediumTest | Level1)
+{
+    OHScalingModeV2 scalingMode = OHScalingModeV2::OH_SCALING_MODE_SCALE_TO_WINDOW_V2;
+    ASSERT_EQ(OH_NativeWindow_NativeWindowSetScalingModeV2(nativeWindow, scalingMode), OHOS::GSERROR_OK);
+}
 /*
  * @tc.name  SetMetaData001
  * @tc.desc  call OH_NativeWindow_NativeWindowSetMetaData with abnormal parameters and check ret 
@@ -1297,5 +1425,125 @@ HWTEST_F(NativeWindowTest, NativeWindowGetDefaultWidthAndHeight001, Function | M
     ASSERT_EQ(NativeWindowGetDefaultWidthAndHeight(nativeWindow, &width, &height), OHOS::GSERROR_OK);
     ASSERT_EQ(width, 300);
     ASSERT_EQ(height, 400);
+}
+/*
+ * @tc.name  : NativeWindowSetBufferHold001
+ * @tc.desc  : call NativeWindowSetBufferHold and no ret
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+HWTEST_F(NativeWindowTest, NativeWindowSetBufferHold001, Function | MediumTest | Level1)
+{
+    NativeWindowSetBufferHold(nativeWindow);
+    int fenceFd = -1;
+    struct Region *region = new Region();
+    region->rectNumber = 0;
+    region->rects = nullptr;
+    ASSERT_EQ(OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow, nativeWindowBuffer, fenceFd, *region),
+              OHOS::SURFACE_ERROR_INVALID_PARAM);
+    region->rectNumber = 1;
+    struct Region::Rect * rect = new Region::Rect();
+    rect->x = 0x100;
+    rect->y = 0x100;
+    rect->w = 0x100;
+    rect->h = 0x100;
+    region->rects = rect;
+    ASSERT_EQ(OH_NativeWindow_NativeWindowFlushBuffer(nativeWindow, nativeWindowBuffer, fenceFd, *region),
+              OHOS::SURFACE_ERROR_INVALID_PARAM);
+    delete rect;
+    delete region;
+    cSurface->SetBufferHold(false);
+}
+/*
+ * @tc.name  : NativeWindowReadWriteWindow001
+ * @tc.desc  : call OH_NativeWindow_WriteToParcel and OH_NativeWindow_ReadFromParcel
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+HWTEST_F(NativeWindowTest, NativeWindowReadWriteWindow001, Function | MediumTest | Level1)
+{
+    using namespace OHOS;
+    sptr<OHOS::IConsumerSurface> cSurface = IConsumerSurface::Create();
+    sptr<IBufferConsumerListener> listener = new BufferConsumerListener();
+    cSurface->RegisterConsumerListener(listener);
+    sptr<OHOS::IBufferProducer> producer = cSurface->GetProducer();
+    sptr<OHOS::Surface> pSurface = Surface::CreateSurfaceAsProducer(producer);
+    OHNativeWindow* nativeWindow = CreateNativeWindowFromSurface(&pSurface);
+    auto uniqueId = nativeWindow->surface->GetUniqueId();
+    ASSERT_NE(nativeWindow, nullptr);
+    OHIPCParcel *parcel1 = OH_IPCParcel_Create();
+    OHIPCParcel *parcel2 = OH_IPCParcel_Create();
+    ASSERT_NE(parcel1, nullptr);
+    ASSERT_NE(parcel2, nullptr);
+    ASSERT_EQ(OH_NativeWindow_WriteToParcel(nullptr, parcel1), SURFACE_ERROR_INVALID_PARAM);
+    ASSERT_EQ(OH_NativeWindow_WriteToParcel(nativeWindow, nullptr), SURFACE_ERROR_INVALID_PARAM);
+    auto innerParcel = parcel1->msgParcel;
+    parcel1->msgParcel = nullptr;
+    ASSERT_EQ(OH_NativeWindow_WriteToParcel(nativeWindow, parcel1), SURFACE_ERROR_INVALID_PARAM);
+    parcel1->msgParcel = innerParcel;
+    ASSERT_EQ(OH_NativeWindow_WriteToParcel(nativeWindow, parcel1), GSERROR_OK);
+    ASSERT_EQ(OH_NativeWindow_WriteToParcel(nativeWindow, parcel2), GSERROR_OK);
+    // test read
+    OHNativeWindow *readWindow = nullptr;
+    ASSERT_EQ(OH_NativeWindow_ReadFromParcel(nullptr, &readWindow), SURFACE_ERROR_INVALID_PARAM);
+    ASSERT_EQ(OH_NativeWindow_ReadFromParcel(parcel1, &readWindow), GSERROR_OK);
+    ASSERT_NE(readWindow, nullptr);
+    // test read twice
+    OHNativeWindow *tempWindow = nullptr;
+    ASSERT_EQ(OH_NativeWindow_ReadFromParcel(parcel1, &tempWindow), SURFACE_ERROR_INVALID_PARAM);
+    cout << "test read write window, write window is " << nativeWindow << ", read windows is " << readWindow << endl;
+    auto readId = readWindow->surface->GetUniqueId();
+    ASSERT_EQ(uniqueId, readId);
+    OHNativeWindow *readWindow1 = nullptr;
+    SurfaceUtils::GetInstance()->RemoveNativeWindow(uniqueId);
+    ASSERT_EQ(OH_NativeWindow_ReadFromParcel(parcel2, &readWindow1), GSERROR_OK);
+    ASSERT_NE(readWindow1, nativeWindow);
+    auto readId1 = readWindow1->surface->GetUniqueId();
+    ASSERT_EQ(uniqueId, readId1);
+    cout << "write uniqueId is " << uniqueId << ", parcel1 read id is " << readId <<
+        ", parcel2 read id is " << readId1 << endl;
+    OH_NativeWindow_DestroyNativeWindow(readWindow1);
+    OH_NativeWindow_DestroyNativeWindow(nativeWindow);
+    OH_IPCParcel_Destroy(parcel1);
+    OH_IPCParcel_Destroy(parcel2);
+}
+
+/*
+ * @tc.name  : NativeWindowReadWriteWindow002
+ * @tc.desc  : call OH_NativeWindow_WriteToParcel and OH_NativeWindow_ReadFromParcel
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 1
+ */
+HWTEST_F(NativeWindowTest, NativeWindowReadWriteWindow002, Function | MediumTest | Level1)
+{
+    using namespace OHOS;
+    // test for no surface->GetUniqueId
+    OHNativeWindow* nativeWindow1 = new OHNativeWindow();
+    ASSERT_NE(nativeWindow1, nullptr);
+    OHIPCParcel *parcel1 = OH_IPCParcel_Create();
+    ASSERT_NE(parcel1, nullptr);
+    ASSERT_EQ(OH_NativeWindow_WriteToParcel(nativeWindow1, parcel1), SURFACE_ERROR_INVALID_PARAM);
+    OHNativeWindow *readWindow = nullptr;
+    ASSERT_EQ(OH_NativeWindow_ReadFromParcel(parcel1, nullptr), SURFACE_ERROR_INVALID_PARAM);
+    ASSERT_EQ(OH_NativeWindow_ReadFromParcel(parcel1, &readWindow), SURFACE_ERROR_INVALID_PARAM);
+    OH_IPCParcel_Destroy(parcel1);
+    delete nativeWindow1;
+}
+/*
+ * @tc.name  GetNativeObjectMagic001
+ * @tc.desc  call OH_NativeWindow_GetNativeObjectMagic
+ * @tc.size  : MediumTest
+ * @tc.type  : Function
+ * @tc.level : Level 2
+ */
+HWTEST_F(NativeWindowTest, GetNativeObjectMagic001, Function | MediumTest | Level2)
+{
+    struct NativeWindowBuffer *buffer = new NativeWindowBuffer();
+    buffer->sfbuffer = sBuffer;
+    OH_NativeWindow_GetNativeObjectMagic(reinterpret_cast<void *>(buffer));
+    delete buffer;
 }
 }

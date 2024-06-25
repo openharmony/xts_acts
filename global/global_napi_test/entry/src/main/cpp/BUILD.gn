@@ -39,10 +39,13 @@ ohos_shared_library("resmgrndk") {
   testonly = true
   deps = [
     "${global_resmgr_path}/frameworks/resmgr:librawfile",
+    "${global_resmgr_path}/frameworks/resmgr:ohresmgr",
     "//interface/sdk_c/global/resource_management:librawfile_ndk",
+    "//interface/sdk_c/global/resource_management:native_resmgr_ndk",
   ]
 
   external_deps = [
+    "ace_engine:ace_ndk",
     "hilog:libhilog",
     "napi:ace_napi",
   ]

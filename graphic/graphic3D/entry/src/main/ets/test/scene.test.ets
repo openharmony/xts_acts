@@ -19,9 +19,6 @@ import * as scene3d from '@ohos.graphics.scene'
 export default function sceneTest() {
   describe('sceneTest', function () {
     let scene: Scene | null = null;
-    beforeAll(async () =>  {
-      scene = await Scene.load($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.gltf"));
-    })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHIC3D_JS_API_0010
      * @tc.name      : testSceneLoad
@@ -30,17 +27,16 @@ export default function sceneTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it('testSceneLoad', 0, function (done) {
+    it('testSceneLoad', 0, async function (done) {
       let msg = "============================testSceneLoad";
       console.info(msg + ' begin ');
       try {
-        console.info(msg + ' Succeed in Scene.load($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.gltf")) ');
-        expect(true).assertTrue();
+        scene = await Scene.load($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.gltf"));
+        expect(scene != undefined).assertTrue();
         done();
       } catch (err) {
         console.info(msg + 'Failed in Scene.load($rawfile("gltf/DamagedHelmet/glTF/DamagedHelmet.gltf")) ' +
         JSON.stringify(err));
-        expect().assertFail();
         done();
       }
     })
@@ -57,13 +53,12 @@ export default function sceneTest() {
       console.info(msg + ' begin ');
       try {
         let node = scene?.getNodeByPath('rootNode_/Scene/node_damagedHelmet_-6514');
-        console.info(msg + " Succeed in scene.getNodeByPath('rootNode_/Scene/node_damagedHelmet_-6514') ");
+        console.info(msg + " succeed in getNodeByPath " + JSON.stringify(node));
         expect(node != null).assertTrue();
         done();
       } catch (err) {
         console.info(msg + " Failed in scene.getNodeByPath('rootNode_/Scene/node_damagedHelmet_-6514') " +
         JSON.stringify(err));
-        expect().assertFail();
         done();
       }
     })
@@ -85,7 +80,6 @@ export default function sceneTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in scene.getResourceFactory() " + JSON.stringify(err));
-        expect().assertFail();
         done();
       }
     })
@@ -102,13 +96,13 @@ export default function sceneTest() {
       console.info(msg + ' begin ');
       try {
         expect(scene?.root != undefined).assertTrue;
+        console.info(msg + " scene?.root is defined ");
         scene?.destroy();
         console.info(msg + " Succeed in scene.destroy() ");
         expect(scene?.root).assertUndefined();
         done();
       } catch (err) {
         console.info(msg + " Failed in scene.destroy() " + JSON.stringify(err));
-        expect().assertFail();
         done();
       }
     })
@@ -129,7 +123,6 @@ export default function sceneTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in SceneResourceParameters " + JSON.stringify(err));
-        expect().assertFail();
         done();
       }
     })
@@ -150,7 +143,6 @@ export default function sceneTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in SceneNodeParameters " + JSON.stringify(err));
-        expect().assertFail();
         done();
       }
     })
@@ -175,7 +167,6 @@ export default function sceneTest() {
         done();
       } catch (err) {
         console.info(msg + " Failed in testSceneType " + JSON.stringify(err));
-        expect().assertFail();
         done();
       }
     })

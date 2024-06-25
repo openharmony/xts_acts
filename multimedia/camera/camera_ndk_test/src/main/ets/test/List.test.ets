@@ -24,17 +24,22 @@ import CameraSessionVideoStabilizationTest from './CameraSessionVideoStabilizati
 import CameraImageProcessingTest from './CameraImageProcessingTest.test';
 import CameraErrorCodeUsecaseTest from './CameraErrorCodeUsecaseTest.test';
 import cameraJSUnitOutput from './CameraJSUnitOutput.test';
+import call from  '@ohos.telephony.call'
+let voice = call.hasVoiceCapability()
 
 export default function testsuite() {
-  CameraFunctionTest();
-  CameraInputTest();
-  CameraSessionExposureTest();
-  CameraSessionBaseTest();
-  CameraSessionFlashTest();
-  CameraSessionFocusTest();
-  CameraSessionZoomRatioTest();
-  CameraSessionVideoStabilizationTest();
-  CameraImageProcessingTest();
-  CameraErrorCodeUsecaseTest();
-  cameraJSUnitOutput();
+    if (voice){
+          CameraSessionExposureTest();
+          CameraSessionBaseTest();
+          CameraSessionFlashTest();
+          CameraSessionFocusTest();
+          CameraSessionZoomRatioTest();
+          CameraSessionVideoStabilizationTest();
+          CameraImageProcessingTest();
+          CameraErrorCodeUsecaseTest();
+          cameraJSUnitOutput();
+    }else{
+          CameraFunctionTest();
+          CameraInputTest();
+    }
 }

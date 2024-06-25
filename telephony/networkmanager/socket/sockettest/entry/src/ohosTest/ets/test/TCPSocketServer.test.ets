@@ -929,7 +929,7 @@ export default function TCPSocketServerTest() {
           } else {
             console.info(`${caseName} success data:${JSON.stringify(data)}`);
             expectEqual(data.isBound, false);
-            expectEqual(data.isClose, true);
+            expectEqual(data.isClose, false);
             expectEqual(data.isConnected, false);
             done();
           }
@@ -1010,7 +1010,7 @@ export default function TCPSocketServerTest() {
         tcpServer.getState().then((data: socket.SocketStateBase) => {
           console.info(`${caseName} success data:${JSON.stringify(data)}`);
           expectEqual(data.isBound, false);
-          expectEqual(data.isClose, true);
+          expectEqual(data.isClose, false);
           expectEqual(data.isConnected, false);
           done();
         }).catch((err: BusinessError) => {
@@ -3510,7 +3510,5 @@ export default function TCPSocketServerTest() {
         done();
       }
     });
-
-
   })
 }

@@ -245,7 +245,9 @@ class NativeMediaPlayerHandlerImpl implements webview.NativeMediaPlayerHandler{
     
     handleNetworkStateChanged(state: webview.NetworkState): void {
         console.log("handleNetworkStateChanged:" + state)
-        console.log("handleNetworkStateChangedNETWORK_ERROR:" + webview.NetworkState.NETWORK_ERROR.toString())
+        console.log('mediaPlayerProps:' + webview.NetworkState.EMPTY)
+        console.log('mediaPlayerProps:' + webview.NetworkState.IDLE)
+        console.log('mediaPlayerProps:' + webview.NetworkState.NETWORK_ERROR)
         if(webview.NetworkState.EMPTY.toString() == '0') {
             Utils.emitEvent(true,1304)
         } else {
@@ -268,6 +270,11 @@ class NativeMediaPlayerHandlerImpl implements webview.NativeMediaPlayerHandler{
     
     handleReadyStateChanged(state: webview.ReadyState): void {
         console.log("handleReadyStateChanged :" + state)
+        console.log('mediaPlayerProps:' + webview.ReadyState.HAVE_NOTHING)
+        console.log('mediaPlayerProps:' + webview.ReadyState.HAVE_METADATA)
+        console.log('mediaPlayerProps:' + webview.ReadyState.HAVE_CURRENT_DATA)
+        console.log('mediaPlayerProps:' + webview.ReadyState.HAVE_FUTURE_DATA)
+        console.log('mediaPlayerProps:' + webview.ReadyState.HAVE_ENOUGH_DATA)
         if(webview.ReadyState.HAVE_NOTHING.toString() == '0') {
             Utils.emitEvent(true, 1308)
         }
@@ -397,6 +404,7 @@ class AVPlayerListenerImpl implements AVPlayerListener {
     }
     onPlaying() {
         console.log('[BrowserShell] onPlaying, handler[' + this.handler + ']')
+        console.log('mediaPlayerProps:' + webview.PlaybackStatus.PLAYING)
         if(webview.PlaybackStatus.PLAYING.toString() == '1') {
             Utils.emitEvent(true, 1307)
         } else {
@@ -448,6 +456,9 @@ class AVPlayerListenerImpl implements AVPlayerListener {
     onError() {
         console.log('[BrowserShell] onError(), handler[' + this.handler + ']')
         console.log('MediaError' + webview.MediaError.NETWORK_ERROR.toString())
+        console.log('mediaPlayerProps:' + webview.MediaError.NETWORK_ERROR)
+        console.log('mediaPlayerProps:' + webview.MediaError.FORMAT_ERROR)
+        console.log('mediaPlayerProps:' + webview.MediaError.DECODE_ERROR)
         if(webview.MediaError.NETWORK_ERROR.toString() == '1') {
             Utils.emitEvent(true, 1300)
         } else {

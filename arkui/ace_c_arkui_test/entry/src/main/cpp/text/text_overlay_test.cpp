@@ -20,6 +20,10 @@ namespace ArkUICapiTest {
 static napi_value TestTextOverlay001(napi_env env, napi_callback_info info)
 {
     NAPI_START(text, ARKUI_NODE_TEXT);
+    ArkUI_AttributeItem valueItem = {};
+    valueItem.string = "A";
+    auto ret = nodeAPI->setAttribute(text, NODE_OVERLAY, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_OVERLAY)->value[PARAM_0].i32, ARKUI_ALIGNMENT_TOP_START);
     NAPI_END;
 }

@@ -35,7 +35,7 @@ export default function scrollCurrentOffsetTest() {
      */
     it('testScrollCurrentOffset001', 0, async (done: Function) => {
       let PAGE_TAG = 'ScrollCurrentOffsetLinearTest';
-      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('CurrentOffset').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
@@ -50,7 +50,7 @@ export default function scrollCurrentOffsetTest() {
      */
     it('testScrollCurrentOffset002', 0, async (done: Function) => {
       let PAGE_TAG = 'ScrollCurrentOffsetEaseTest';
-      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('CurrentOffset').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
@@ -65,7 +65,7 @@ export default function scrollCurrentOffsetTest() {
      */
     it('testScrollCurrentOffset003', 0, async (done: Function) => {
       let PAGE_TAG = 'ScrollCurrentOffsetEaseInTest';
-      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('CurrentOffset').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
@@ -80,7 +80,7 @@ export default function scrollCurrentOffsetTest() {
      */
     it('testScrollCurrentOffset004', 0, async (done: Function) => {
       let PAGE_TAG = 'ScrollCurrentOffsetEaseOutTest';
-      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('CurrentOffset').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
@@ -95,7 +95,7 @@ export default function scrollCurrentOffsetTest() {
      */
     it('testScrollCurrentOffset005', 0, async (done: Function) => {
       let PAGE_TAG = 'ScrollCurrentOffsetEaseInOutTest';
-      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('CurrentOffset').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
@@ -110,7 +110,7 @@ export default function scrollCurrentOffsetTest() {
      */
     it('testScrollCurrentOffset006', 0, async (done: Function) => {
       let PAGE_TAG = 'ScrollCurrentOffsetFastOutSlowInTest';
-      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('CurrentOffset').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
@@ -125,7 +125,7 @@ export default function scrollCurrentOffsetTest() {
      */
     it('testScrollCurrentOffset007', 0, async (done: Function) => {
       let PAGE_TAG = 'ScrollCurrentOffsetLinearOutSlowInTest';
-      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('CurrentOffset').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
@@ -140,7 +140,7 @@ export default function scrollCurrentOffsetTest() {
      */
     it('testScrollCurrentOffset008', 0, async (done: Function) => {
       let PAGE_TAG = 'ScrollCurrentOffsetFastOutLinearInTest';
-      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('CurrentOffset').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
@@ -155,7 +155,7 @@ export default function scrollCurrentOffsetTest() {
      */
     it('testScrollCurrentOffset009', 0, async (done: Function) => {
       let PAGE_TAG = 'ScrollCurrentOffsetExtremeDecelerationTest';
-      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('CurrentOffset').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
@@ -170,7 +170,7 @@ export default function scrollCurrentOffsetTest() {
      */
     it('testScrollCurrentOffset010', 0, async (done: Function) => {
       let PAGE_TAG = 'ScrollCurrentOffsetSharpTest';
-      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('CurrentOffset').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
@@ -185,7 +185,7 @@ export default function scrollCurrentOffsetTest() {
      */
     it('testScrollCurrentOffset011', 0, async (done: Function) => {
       let PAGE_TAG = 'ScrollCurrentOffsetRhythmTest';
-      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('CurrentOffset').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
@@ -200,7 +200,7 @@ export default function scrollCurrentOffsetTest() {
      */
     it('testScrollCurrentOffset012', 0, async (done: Function) => {
       let PAGE_TAG = 'ScrollCurrentOffsetSmoothTest';
-      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('CurrentOffset').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });
@@ -215,7 +215,7 @@ export default function scrollCurrentOffsetTest() {
      */
     it('testScrollCurrentOffset013', 0, async (done: Function) => {
       let PAGE_TAG = 'ScrollCurrentOffsetFrictionTest';
-      await Utils.pushPage(`scroll/${PAGE_TAG}`, done);
+      await Utils.pushPage(`scroll/${PAGE_TAG}`);
       expect(Utils.getComponentInfoByKey('CurrentOffset').$attrs.backgroundColor).assertEqual('#FF00FF00')
       done();
     });

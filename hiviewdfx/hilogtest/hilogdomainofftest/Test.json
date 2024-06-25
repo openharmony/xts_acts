@@ -18,6 +18,8 @@
         {
             "type": "ShellKit",
             "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602",
                 "param set persist.sys.hilog.debug.on true",
                 "service_control stop hilogd",
                 "service_control start hilogd"

@@ -24,7 +24,8 @@ import {
   Camera_VideoStabilizationMode,
   GlobalThis
 } from './Constants';
-import mediaLibrary from '@ohos.multimedia.mediaLibrary';
+import fs from '@ohos.file.fs';
+import featureAbility from '@ohos.ability.featureAbility'
 
 const TAG = "CameraXts CameraErrorCodeUsecaseTest: ";
 let mCameraSession: number;
@@ -147,15 +148,12 @@ async function getPhotoReceiverSurface() {
 }
 
 async function closeFd() {
-  if (fileAsset != null) {
-    await fileAsset[0].close(fdNumber).then(() => {
-      console.info('[mediaLibrary] case close fd success');
-    }).catch(() => {
-      console.info('[mediaLibrary] case close fd failed');
-    });
-  } else {
-    console.info('[mediaLibrary] case fileAsset is null');
-  }
+        console.info('case come in closeFd')
+        if (fdNumber != null) {
+            fs.closeSync(fdNumber);
+        } else {
+            console.info('[fs.closeSync] case fdNumber is null');
+        }
 }
 
 async function releaseVideoReceiveSurface() {

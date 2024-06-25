@@ -169,6 +169,11 @@ ArkUI_NodeHandle CustomComponentHitTestBehaviorTest::CreateSubCustomComponentNod
     ArkUI_AttributeItem columnHeightItem = {columnHeightValue, sizeof(columnHeightValue) / sizeof(ArkUI_NumberValue)};
     node_api->setAttribute(column, NODE_HEIGHT, &columnHeightItem);
 
+    ArkUI_NumberValue columnHittestbehaviorValue[] = {{.i32 = ARKUI_HIT_TEST_MODE_TRANSPARENT}};
+    ArkUI_AttributeItem columnHittestbehaviorItem = {columnHittestbehaviorValue,
+                                                     sizeof(columnHittestbehaviorValue) / sizeof(ArkUI_NumberValue)};
+    node_api->setAttribute(column, NODE_HIT_TEST_BEHAVIOR, &columnHittestbehaviorItem);
+
     ArkUI_NumberValue columnBackgroundColorValue[] = {{.u32 = columnBackgroundColor}};
     ArkUI_AttributeItem columnBackgroundColorItem = {columnBackgroundColorValue,
                                                      sizeof(columnBackgroundColorValue) / sizeof(ArkUI_NumberValue)};

@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -55,19 +54,19 @@ struct PlacementExample {
         .onClick(() => {
           this.customPopup = !this.customPopup
           try{
-            var backData = {
+            let backData: events_emitter.EventData = {
               data:{
                 "placement":this.placement
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 157,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("PlacementExample button start to emit action state")
             events_emitter.emit(backEvent, backData)
           }catch(err){
-            console.info("button emit action state err: " + JSON.stringify(err.message))
+            console.info("button emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
         .bindPopup(this.customPopup, {
@@ -89,19 +88,19 @@ struct PlacementExample {
         .onClick(() => {
           this.customPopupOne = !this.customPopupOne
           try{
-            var backDataOne = {
+            let backDataOne: events_emitter.EventData = {
               data:{
                 "placement":this.placementOne
               }
             }
-            var backEventOne = {
+            let backEventOne: events_emitter.InnerEvent = {
               eventId: 158,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("custom popupOne button1 start to emit action state")
             events_emitter.emit(backEventOne, backDataOne)
           }catch(err){
-            console.info("button1 emit action state err: " + JSON.stringify(err.message))
+            console.info("button1 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
         .bindPopup(this.customPopupOne, {
@@ -123,19 +122,19 @@ struct PlacementExample {
         .onClick(() => {
           this.customPopupTwo = !this.customPopupTwo
           try{
-            var backDataTwo = {
+            let backDataTwo: events_emitter.EventData = {
               data:{
                 "placement":this.placementTwo
               }
             }
-            var backEventTwo = {
+            let backEventTwo: events_emitter.InnerEvent = {
               eventId: 159,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("button2 start to emit action state")
             events_emitter.emit(backEventTwo, backDataTwo)
           }catch(err){
-            console.info("button2 emit action state err: " + JSON.stringify(err.message))
+            console.info("button2 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
         .bindPopup(this.customPopupTwo, {
@@ -157,19 +156,19 @@ struct PlacementExample {
         .onClick(() => {
           this.customPopupThree = !this.customPopupThree
           try{
-            var backDataThree = {
+            let backDataThree: events_emitter.EventData = {
               data:{
                 "placement":this.placementThree
               }
             }
-            var backEventThree = {
+            let backEventThree: events_emitter.InnerEvent = {
               eventId: 160,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("button3 start to emit action state")
             events_emitter.emit(backEventThree, backDataThree)
           }catch(err){
-            console.info("button3 emit action state err: " + JSON.stringify(err.message))
+            console.info("button3 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
         .bindPopup(this.customPopupThree, {

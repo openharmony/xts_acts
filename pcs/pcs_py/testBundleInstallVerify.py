@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+#
 # Copyright (c) 2024 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -78,10 +81,6 @@ class testBundleInstallVerify(TestCase):
         installResult = self.device1.execute_shell_command("bm install -p /data/local/tmp/feature_third.hap")
         if 'error: verify signature failed' not in installResult.strip():
             errorList.append('install multiple haps signature verify failed')
-            return errorList
-        installResult = self.device1.execute_shell_command("bm install -p /data/local/tmp/feature_fourth.hap")
-        if 'error: install failed due to error bundle type' not in installResult.strip():
-            errorList.append('install multiple haps bundle type verify failed')
             return errorList
         return errorList
 

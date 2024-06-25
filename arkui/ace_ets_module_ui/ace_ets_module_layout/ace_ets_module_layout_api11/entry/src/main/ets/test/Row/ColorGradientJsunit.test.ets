@@ -18,25 +18,25 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
 
 class SweepGradientValue {
-  center: [number, number];
-  start: number;
-  colors: Array<[ResourceColor, number]>;
-  end: number;
-  repeating: boolean;
+  center!: [number, number];
+  start!: number;
+  colors!: Array<[ResourceColor, number]>;
+  end!: number;
+  repeating!: boolean;
 }
 
 class RadialGradientValue {
-  center: [number, number];
-  radius: number | string;
-  colors: Array<[ResourceColor, number]>;
-  repeating: boolean;
+  center!: [number, number];
+  radius!: number | string;
+  colors!: Array<[ResourceColor, number]>;
+  repeating!: boolean;
 }
 
 class LinearGradientValue {
-  angle: number;
-  direction: GradientDirection;
-  colors: Array<[ResourceColor, number]>;
-  repeating: boolean;
+  angle!: number;
+  direction!: GradientDirection;
+  colors!: Array<[ResourceColor, number]>;
+  repeating!: boolean;
 }
 
 export default function colorGradientJsunit() {
@@ -103,7 +103,7 @@ export default function colorGradientJsunit() {
         console.info("[testColorGradient002] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testColorGradient002] change component data error: " + err.message);
+        console.log("[testColorGradient002] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('linearGradient');
@@ -152,7 +152,7 @@ export default function colorGradientJsunit() {
         console.info("[testColorGradient004] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testColorGradient004] change component data error: " + err.message);
+        console.log("[testColorGradient004] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('sweepGradient');
@@ -201,7 +201,7 @@ export default function colorGradientJsunit() {
         console.info("[testColorGradient006] start to publish emit");
         events_emitter.emit(innerEvent, eventData);
       } catch (err) {
-        console.log("[testColorGradient006] change component data error: " + err.message);
+        console.log("[testColorGradient006] change component data error: " + (err as Error)?.message);
       }
       await Utils.sleep(2000);
       let strJsonNew = getInspectorByKey('radialGradient');

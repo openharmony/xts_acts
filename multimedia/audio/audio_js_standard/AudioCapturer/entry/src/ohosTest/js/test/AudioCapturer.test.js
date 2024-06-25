@@ -3267,7 +3267,7 @@ export default function audioCapturer() {
             let audioCapPromise;
             try {
                 audioCapPromise = await audio.createAudioCapturer(AudioCapturerOptions);
-                await audioCapPromise.getAudioStreamId((err, data) => {
+                audioCapPromise.getAudioStreamId((err, data) => {
                     if (err) {
                         console.info(`${Tag}: getAudioStreamId : ERROR : code: ${err.code}, mesage: ${err.message}`);
                         expect(false).assertTrue();
@@ -3275,8 +3275,8 @@ export default function audioCapturer() {
                         expect(true).assertTrue();
                         console.info(`${Tag}: getAudioStreamId : Converted: ${data}`);
                     }
+                    audioCapPromise.release();
                 });
-                await audioCapPromise.release();
             } catch (err) {
                 console.log(`${Tag} err: ${JSON.stringify(err)}`);
                 expect(false).assertTrue();
@@ -3310,15 +3310,15 @@ export default function audioCapturer() {
             }
             try {
                 let audioCapPromise = await audio.createAudioCapturer(AudioCapturerOptions);
-                await audioCapPromise.getAudioStreamId().then((data) => {
+                audioCapPromise.getAudioStreamId().then((data) => {
                     expect(true).assertTrue();
+                    audioCapPromise.release();
                     console.info(`${Tag}: getAudioStreamId : Converted: ${data}`);
                 }).catch((err) => {
                     expect(true).assertTrue();
+                    audioCapPromise.release();
                     console.error(`${Tag}: getAudioStreamId : ERROR : ${err}`);
                 });
-
-                await audioCapPromise.release();
             } catch (err) {
                 console.log(`${Tag} error code: ${err.code} ,message:${err.message}`);
                 expect(false).assertTrue();
@@ -3361,7 +3361,6 @@ export default function audioCapturer() {
                     console.error(`AudioCapturer Created : ERROR : ${err}`);
                     expect(false).assertTrue();
                 });
-
             } catch (err) {
                 console.log(`${Tag} error code: ${err.code} ,message:${err.message}`);
                 expect(false).assertTrue();

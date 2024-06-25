@@ -14,7 +14,8 @@
  */
 
 // @ts-nocheck
-import mediaLibrary from '@ohos.multimedia.mediaLibrary';
+import fs from '@ohos.file.fs';
+import featureAbility from '@ohos.ability.featureAbility'
 import DateTimeUtil from './DateTimeUtil';
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
 import fs from '@ohos.file.fs';

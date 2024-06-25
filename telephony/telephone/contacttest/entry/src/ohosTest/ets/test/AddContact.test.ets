@@ -19,7 +19,6 @@ import contact from '@ohos.contact';
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl';
 import bundleManager from '@ohos.bundle.bundleManager';
 import account from '@ohos.account.osAccount';
-import { Driver } from '@ohos.UiTest';
 
 const ExpectTrue = (n: boolean) => {
   try {
@@ -190,6 +189,25 @@ export default function AddContactTest() {
       contact.Attribute.ATTR_WEBSITE
       ]
     };
+
+    /**
+     * @tc.number abnormal_contactsApi_insert_test_2800
+     * @tc.name contactsApi_insert error
+     * @tc.desc Function test
+     */
+    it("abnormal_contactsApi_insert_test_2800", 0,  async (done: Function) => {
+      let contactDataError: contact.Contact = {};
+      try {
+        let rawContactId = await contact.addContact(contactDataError);
+        console.info("abnormal_contactsApi_insert_test_2800 : rawContactId = " + rawContactId);
+        expect(rawContactId === -1).assertTrue();
+        done();
+      } catch (error) {
+        console.info("contactsApi_insert_test_100 : raw_contact insert error = " + error);
+        done();
+      }
+    });
+
     /**
      * @tc.number     : SUB_Telephony_Contact_AddContact_0100
      * @tc.name       : testTelephonyContactAddContact0100
@@ -2610,7 +2628,7 @@ export default function AddContactTest() {
         contact.isLocalContact(context, -1, (err: BusinessError<void>, data: boolean) => {
           if (err) {
             console.log(`${caseName} err>${JSON.stringify(err)}`);
-            ExpectFail();
+            ExpectTrue(err.code === 401);
             done();
           } else {
             console.log(`${caseName} success data>${JSON.stringify(data)}`);
@@ -2674,7 +2692,7 @@ export default function AddContactTest() {
         contact.isLocalContact(context, -10000, (err: BusinessError<void>, data: boolean) => {
           if (err) {
             console.log(`${caseName} callback: err>${JSON.stringify(err)}`);
-            ExpectFail();
+            ExpectTrue(err.code === 401);
             done();
           } else {
             console.log(`${caseName} callback: success data>${JSON.stringify(data)}`);
@@ -2819,7 +2837,7 @@ export default function AddContactTest() {
           done();
         }).catch((err: BusinessError) => {
           console.error(`${caseName} fail: err>${JSON.stringify(err)}`);
-          ExpectFail();
+          ExpectTrue(err.code === 401);
           done();
         });
       } catch (err) {
@@ -2880,7 +2898,7 @@ export default function AddContactTest() {
           done();
         }).catch((err: BusinessError) => {
           console.error(`${caseName} fail: err>${JSON.stringify(err)}`);
-          ExpectFail();
+          ExpectTrue(err.code === 401);
           done();
         });
       } catch (err) {
@@ -2982,7 +3000,7 @@ export default function AddContactTest() {
         contact.deleteContact(context, '', (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} deleteContacts:err->${JSON.stringify(err)}`);
-            ExpectFail();
+            ExpectTrue(err.code === 401);
             done();
           } else {
             console.info(`${caseName} deleteContacts:success`);
@@ -3062,7 +3080,7 @@ export default function AddContactTest() {
           done();
         }).catch((err: BusinessError) => {
           console.error(`${caseName} deleteContacts:fail->${JSON.stringify(err)}`);
-          ExpectFail();
+          ExpectTrue(err.code === 401);
           done();
         });
       } catch (err) {
@@ -3136,6 +3154,8 @@ export default function AddContactTest() {
       }
       console.info(`${caseName} test end `);
     });
+
+
   })
 }
 
