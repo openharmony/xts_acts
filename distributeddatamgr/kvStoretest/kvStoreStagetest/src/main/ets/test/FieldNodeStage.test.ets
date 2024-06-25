@@ -15,15 +15,15 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import ddm from '@ohos.data.distributedKVStore';
 
-export default function fieldNodeTest(){
-  describe('fieldNodeTest', function() {
+export default function fieldNodeStageTest(){
+  describe('fieldNodeStageTest', function() {
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_0400
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaEtsApiTest_0400
      * @tc.name [JS-API8]FieldNode.AppendChild().
      * @tc.desc Test Js Api FieldNode.AppendChild() testcase 001
      */
-    it('testAppendChild001', 0, async function(done) {
+    it('testEtsAppendChild001', 0, async function(done) {
       try {
         let node = new ddm.FieldNode("root");
         let child1 = new ddm.FieldNode("child1");
@@ -44,11 +44,11 @@ export default function fieldNodeTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaEtsApiTest_0100
      * @tc.name [JS-API8]FieldNode.AppendChild().
      * @tc.desc Test Js Api FieldNode.AppendChild() testcase 002
      */
-    it('testAppendChild002', 0, async function(done) {
+    it('testEtsAppendChild002', 0, async function(done) {
       try {
         let node = new ddm.FieldNode("root");
         let child = new ddm.FieldNode("child");
@@ -63,11 +63,11 @@ export default function fieldNodeTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_0600
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaEtsApiTest_0600
      * @tc.name [JS-API8]FieldNode.AppendChild().
      * @tc.desc Test Js Api FieldNode.AppendChild() testcase 003
      */
-    it('testAppendChild003', 0, async function(done) {
+    it('testEtsAppendChild003', 0, async function(done) {
       try {
         let node = new ddm.FieldNode("root");
         let child = new ddm.FieldNode("");
@@ -80,11 +80,11 @@ export default function fieldNodeTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_0500
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaEtsApiTest_0500
      * @tc.name [JS-API8]FieldNode.ToJson().
      * @tc.desc Test Js Api FieldNode.ToJson() testcase 001
      */
-    it('testToJson001', 0, async function(done) {
+    it('testEtsToJson001', 0, async function(done) {
       try {
         let node = new ddm.FieldNode("root");
         let child = new ddm.FieldNode("child");
@@ -96,11 +96,11 @@ export default function fieldNodeTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_0200
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaEtsApiTest_0200
      * @tc.name [JS-API8]FieldNode.ToJson().
      * @tc.desc Test Js Api FieldNode.ToJson() testcase 002
      */
-    it('testToJson002', 0, async function(done) {
+    it('testEtsToJson002', 0, async function(done) {
       try {
         let node = new ddm.FieldNode("root");
         let child = new ddm.FieldNode("child");
@@ -112,11 +112,11 @@ export default function fieldNodeTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_0300
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaEtsApiTest_0300
      * @tc.name [JS-API8]FieldNode.ToJson().
      * @tc.desc Test Js Api FieldNode.ToJson() testcase 003
      */
-    it('testToJson003', 0, async function(done) {
+    it('testEtsToJson003', 0, async function(done) {
       try {
         let node = new ddm.FieldNode("");
         let child = new ddm.FieldNode("");
@@ -129,11 +129,11 @@ export default function fieldNodeTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_0700
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaEtsApiTest_0700
      * @tc.name [JS-API8]FieldNode.default.
      * @tc.desc Test Js Api FieldNode.default testcase 001
      */
-    it('testdefault001', 0, async function(done) {
+    it('testEtsdefault001', 0, async function(done) {
       try {
         let node = new ddm.FieldNode('first');
         node.default = 'first name';
@@ -146,11 +146,11 @@ export default function fieldNodeTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_0800
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaEtsApiTest_0800
      * @tc.name [JS-API8]FieldNode.nullable.
      * @tc.desc Test Js Api FieldNode.nullable testcase 001
      */
-    it('testnullable001', 0, async function(done) {
+    it('testEtsnullable001', 0, async function(done) {
       try {
         let node = new ddm.FieldNode('first');
         node.nullable = false;
@@ -163,11 +163,11 @@ export default function fieldNodeTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_1400
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaEtsApiTest_1400
      * @tc.name [JS-API8]FieldNode.type.STRING
      * @tc.desc Test Js Api FieldNode.type testcase 001
      */
-    it('testtype001', 0, async function(done) {
+    it('testEtstype001', 0, async function(done) {
       try {
         let node = new ddm.FieldNode('first');
         node.type = ddm.ValueType.STRING;
@@ -181,11 +181,11 @@ export default function fieldNodeTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_1300
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaEtsApiTest_1300
      * @tc.name [JS-API8]FieldNode.type.INTEGER
      * @tc.desc Test Js Api FieldNode.type testcase 002
      */
-    it('testtype002', 0, async function(done) {
+    it('testEtstype002', 0, async function(done) {
       try {
         let node = new ddm.FieldNode('first');
         node.type = ddm.ValueType.INTEGER;
@@ -199,11 +199,11 @@ export default function fieldNodeTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_1200
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaEtsApiTest_1200
      * @tc.name [JS-API8]FieldNode.type.FLOAT
      * @tc.desc Test Js Api FieldNode.type testcase 003
      */
-    it('testtype003', 0, async function(done) {
+    it('testEtstype003', 0, async function(done) {
       try {
         let node = new ddm.FieldNode('first');
         node.type = ddm.ValueType.FLOAT;
@@ -217,11 +217,11 @@ export default function fieldNodeTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_1000
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaEtsApiTest_1000
      * @tc.name [JS-API8]FieldNode.type.BYTE_ARRAY
      * @tc.desc Test Js Api FieldNode.type testcase 004
      */
-    it('testtype004', 0, async function(done) {
+    it('testEtstype004', 0, async function(done) {
       try {
         let node = new ddm.FieldNode('first');
         node.type = ddm.ValueType.BYTE_ARRAY;
@@ -235,11 +235,11 @@ export default function fieldNodeTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_0900
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaEtsApiTest_0900
      * @tc.name [JS-API8]FieldNode.type.BOOLEAN
      * @tc.desc Test Js Api FieldNode.type testcase 005
      */
-    it('testtype005', 0, async function(done) {
+    it('testEtstype005', 0, async function(done) {
       try {
         let node = new ddm.FieldNode('first');
         node.type = ddm.ValueType.BOOLEAN;
@@ -254,11 +254,11 @@ export default function fieldNodeTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaJsApiTest_1100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreSchemaEtsApiTest_1100
      * @tc.name [JS-API8]FieldNode.type.DOUBLE
      * @tc.desc Test Js Api FieldNode.type testcase 006
      */
-    it('testtype006', 0, async function(done) {
+    it('testEtstype006', 0, async function(done) {
       try {
         let node = new ddm.FieldNode('first');
         node.type = ddm.ValueType.DOUBLE;

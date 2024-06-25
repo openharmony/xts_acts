@@ -54,15 +54,15 @@ export default function textBlobTest() {
 
       let font = new drawing.Font();
 
-      let enumCount = getEnumCount(drawing.TextEncoding);
-      for (let i = 0; i < enumCount; i++) {
-        try {
-          drawing.TextBlob.makeFromString("drawing", font, i);
-          console.info(msg + ' makeFromString succeeded for encoding ' + i);
-        } catch (e) {
-          console.info(msg + ` makeFromString failed for encoding ${i}, errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
-          expect().assertFail();
-        }
+      try {
+        drawing.TextBlob.makeFromString("drawing", font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
+        drawing.TextBlob.makeFromString("drawing", font, drawing.TextEncoding.TEXT_ENCODING_UTF16);
+        drawing.TextBlob.makeFromString("drawing", font, drawing.TextEncoding.TEXT_ENCODING_UTF32);
+        drawing.TextBlob.makeFromString("drawing", font, drawing.TextEncoding.TEXT_ENCODING_GLYPH_ID);
+        console.info(msg + ' makeFromString succeeded for encoding');
+      } catch (e) {
+        console.info(msg + ` makeFromString failed for encoding, errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect().assertFail();
       }
 
       try {

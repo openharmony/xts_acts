@@ -50,7 +50,7 @@ import createNodeStack from './FrameNodeTest/createNodeStack.test';
 import createNodeText from './FrameNodeTest/createNodeText.test';
 import setCircleShapeTest from './GraphicsTest/setCircleShape.test';
 import commonEventTest1 from './FrameNodeTest/commonEventTest1.test';
-
+import expectedUpdateInterval from './FrameNodeTest/expectedUpdateInterval.test';
 import CornerTest from './GraphicsTest/GraphicsApiTest/CornerTest.test';
 import LengthMetricsUnitTest from './GraphicsTest/GraphicsApiTest/LengthMetricsUnitTest.test';
 import PercentReferenceTest from './GraphicsTest/GraphicsApiTest/PercentReferenceTest.test';
@@ -63,7 +63,20 @@ import typeNodeProgressTest from './typeNodeTest/Progress.test';
 import typeNodeRelativeContainerTest from './typeNodeTest/RelativeContainer.test';
 import typeNodeSwiperTest from './typeNodeTest/Swiper.test';
 
+import BuilderNodeApiRecycleTest from './FrameNodeTest/BuilderNodeApiRecycleTest.test';
+import BuilderNodeApiReuseTest from './FrameNodeTest/BuilderNodeApiReuseTest.test';
+import ComponentContentAPIRecycleTest from './FrameNodeTest/ComponentContentAPIRecycleTest.test';
+import ComponentContentAPIReuseTest from './FrameNodeTest/ComponentContentAPIReuseTest.test';
+import APImarkNodeGroupTest from './FrameNodeTest/APImarkNodeGroupTest.test';
+import APINodeContentTest from './FrameNodeTest/APINodeContentTest.test';
+
 export default function testsuite() {
+  BuilderNodeApiRecycleTest();
+  BuilderNodeApiReuseTest();
+  ComponentContentAPIRecycleTest();
+  ComponentContentAPIReuseTest();
+  APImarkNodeGroupTest();
+  APINodeContentTest();
   borderRadiuses();
   borderStyles();
   edgeColors();
@@ -111,4 +124,5 @@ export default function testsuite() {
   typeNodeProgressTest();
   typeNodeRelativeContainerTest();
   typeNodeSwiperTest();
+  expectedUpdateInterval()
 }

@@ -729,32 +729,27 @@ export default function fontTest() {
       const msg = 'testFontMeasureTextNormal';
 
       let font = new drawing.Font();
+      try {
+        font.measureText("drawing", drawing.TextEncoding.TEXT_ENCODING_UTF8);
+        font.measureText("drawing", drawing.TextEncoding.TEXT_ENCODING_UTF16);
+        font.measureText("drawing", drawing.TextEncoding.TEXT_ENCODING_UTF32);
+        font.measureText("drawing", drawing.TextEncoding.TEXT_ENCODING_GLYPH_ID);
+        console.info(msg + ' measureText successed');
+      } catch (e) {
+        console.info(msg + ` measureText errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
 
-      Object.values(drawing.TextEncoding).forEach((encoding) => {
-        if (typeof encoding === 'string') {
-          try {
-            font.measureText("drawing", drawing.TextEncoding[encoding]);
-            console.info(msg + ' measureText successed');
-          } catch (e) {
-            console.info(msg + ` measureText errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-            expect().assertFail();
-          }
-        }
-      });
-
-
-      // 3、font.measureText("中文魑認識", drawing.TextEncoding.TEXT_ENCODING_UTF8);遍历枚举值TextEncoding
-      Object.values(drawing.TextEncoding).forEach((encoding) => {
-        if (typeof encoding === 'string') {
-          try {
-            font.measureText("中文魑認識", drawing.TextEncoding[encoding]);
-            console.info(msg + ' measureText successed');
-          } catch (e) {
-            console.info(msg + ` measureText errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-            expect().assertFail();
-          }
-        }
-      });
+      try {
+        font.measureText("中文魑認識", drawing.TextEncoding.TEXT_ENCODING_UTF8);
+        font.measureText("中文魑認識", drawing.TextEncoding.TEXT_ENCODING_UTF16);
+        font.measureText("中文魑認識", drawing.TextEncoding.TEXT_ENCODING_UTF32);
+        font.measureText("中文魑認識", drawing.TextEncoding.TEXT_ENCODING_GLYPH_ID);
+        console.info(msg + ' measureText successed');
+      } catch (e) {
+        console.info(msg + ` measureText errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
 
       try {
         font.measureText("", drawing.TextEncoding.TEXT_ENCODING_UTF8);

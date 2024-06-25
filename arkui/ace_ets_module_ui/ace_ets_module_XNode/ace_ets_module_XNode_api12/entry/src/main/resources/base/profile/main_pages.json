@@ -1,6 +1,12 @@
 {
     "src": [
         "MainAbility/pages/index/index",
+        "MainAbility/pages/FrameNode/BuilderNodeApiRecycle",
+        "MainAbility/pages/FrameNode/BuilderNodeApiReuse",
+        "MainAbility/pages/FrameNode/ComponentContentAPIRecycle",
+        "MainAbility/pages/FrameNode/ComponentContentAPIReuse",
+        "MainAbility/pages/FrameNode/APImarkNodeGroup",
+        "MainAbility/pages/FrameNode/APINodeContent",
         "MainAbility/pages/renderNode/RenderNodeAttribute",
         "MainAbility/pages/Graphics/borderRadiuses",
         "MainAbility/pages/Graphics/borderStyles",
@@ -9,7 +15,7 @@
         "MainAbility/pages/Graphics/graphicTestInterface",
         "MainAbility/pages/renderNode/renderNodeSetGetInterface",
         "MainAbility/pages/FrameNode/dispose",
-	    "MainAbility/pages/FrameNode/getAttrs",
+	"MainAbility/pages/FrameNode/getAttrs",
         "MainAbility/pages/FrameNode/getPosition",
         "MainAbility/pages/FrameNode/setLayout",
 	"MainAbility/pages/FrameNode/getAttrs",
@@ -23,7 +29,7 @@
         "MainAbility/pages/Graphics/getRed",
         "MainAbility/pages/Graphics/getGreen",
         "MainAbility/pages/FrameNode/onAppear",
-	    "MainAbility/pages/FrameNode/setMeasureSize",
+	"MainAbility/pages/FrameNode/setMeasureSize",
         "MainAbility/pages/FrameNode/createNodeBlank",
         "MainAbility/pages/FrameNode/createNodeColumn",
         "MainAbility/pages/FrameNode/createNodeDivider",
@@ -36,9 +42,9 @@
         "MainAbility/pages/FrameNode/createNodeSearch",
         "MainAbility/pages/FrameNode/createNodeStack",
         "MainAbility/pages/FrameNode/createNodeText",
-	    "MainAbility/pages/Graphics/GraphicsApi/Corner",
-	    "MainAbility/pages/Graphics/GraphicsApi/LengthMetricsUnit",
-	    "MainAbility/pages/Graphics/GraphicsApi/PercentReference",
+	"MainAbility/pages/Graphics/GraphicsApi/Corner",
+	"MainAbility/pages/Graphics/GraphicsApi/LengthMetricsUnit",
+	"MainAbility/pages/Graphics/GraphicsApi/PercentReference",
 	"MainAbility/pages/FrameNode/setMeasureSize",
 	"MainAbility/pages/Graphics/GraphicsApi/Corner",
 	"MainAbility/pages/Graphics/GraphicsApi/LengthMetricsUnit",
@@ -52,6 +58,7 @@
         "MainAbility/pages/typeNode/LoadingProgress",
         "MainAbility/pages/typeNode/Progress",
         "MainAbility/pages/typeNode/RelativeContainer",
-        "MainAbility/pages/typeNode/Swiper"
+        "MainAbility/pages/typeNode/Swiper",
+        "MainAbility/pages/FrameNode/expectedUpdateInterval"
     ]
 }
