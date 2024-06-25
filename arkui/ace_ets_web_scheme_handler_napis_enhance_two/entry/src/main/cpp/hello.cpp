@@ -65,27 +65,25 @@ void OnURLRequestStart(const ArkWeb_SchemeHandler *schemeHandler, ArkWeb_Resourc
     std::string frameUrl1(frameUrl);
     OH_LOG_INFO(LOG_APP, "OH_ArkWebResourceRequest_GetFrameUrl %{public}s.", frameUrl1.c_str());
     
-    if(reType == MAIN_FRAME && frameUrl1 == "") {
+    if (reType == MAIN_FRAME && frameUrl1 == "") {
         OH_LOG_INFO(LOG_APP, "resourceType == MAIN_FRAME && frameUrl1 is blank");
         testFrameUrl = 0;
     }
     
-    if(reType == SERVICE_WORKER || frameUrl1.find("iqiyi.com") != std::string::npos) {
+    if (reType == SERVICE_WORKER || frameUrl1.find("iqiyi.com") != std::string::npos) {
         OH_LOG_INFO(LOG_APP, "resourceType == SERVICE_WORKER || frameUrl1.find is blank");
         testServiceWorkerFrameUrl = 0;
     }
     
-    if(url1.find("schemeHandler_loader") != std::string::npos && frameUrl1 == "") {
+    if (url1.find("schemeHandler_loader") != std::string::npos && frameUrl1 == "") {
         OH_LOG_INFO(LOG_APP, "schemeHandler_loader isLoadFrameUrl");
         testLoadUrlFrameUrl = 0;
     }
     
-    if(frameUrl1.find("sdkSchemeHandler") != std::string::npos) {
+    if (frameUrl1.find("sdkSchemeHandler") != std::string::npos) {
         OH_LOG_INFO(LOG_APP, "sdkSchemeHandler isLoadFrameUrl");
         testSubFrameUrl = 0;
     }
-    
-    
 }
 
 // 请求结束的回调，在该函数中我们需要标记RawfileRequest已经结束了，内部不应该再使用ResourceHandler。
@@ -351,7 +349,7 @@ static napi_value GetResourceType_PRELOAD_SUB(napi_env env, napi_callback_info i
 static napi_value GetFrameUrl(napi_env env, napi_callback_info info)
 {
     napi_value result;
-    if(testFrameUrl == 0) {
+    if (testFrameUrl == 0) {
         napi_create_int32(env, 0, &result);
     } else {
         napi_create_int32(env, -1, &result);
@@ -362,7 +360,7 @@ static napi_value GetFrameUrl(napi_env env, napi_callback_info info)
 static napi_value GetServiceWorkerFrameUrl(napi_env env, napi_callback_info info)
 {
     napi_value result;
-    if(testServiceWorkerFrameUrl == 0) {
+    if (testServiceWorkerFrameUrl == 0) {
         napi_create_int32(env, 0, &result);
     } else {
         napi_create_int32(env, -1, &result);
@@ -373,7 +371,7 @@ static napi_value GetServiceWorkerFrameUrl(napi_env env, napi_callback_info info
 static napi_value GetLoadUrlFrameUrl(napi_env env, napi_callback_info info)
 {
     napi_value result;
-    if(testLoadUrlFrameUrl == 0) {
+    if (testLoadUrlFrameUrl == 0) {
         napi_create_int32(env, 0, &result);
     } else {
         napi_create_int32(env, -1, &result);
@@ -384,7 +382,7 @@ static napi_value GetLoadUrlFrameUrl(napi_env env, napi_callback_info info)
 static napi_value GetSubFrameUrl(napi_env env, napi_callback_info info)
 {
     napi_value result;
-    if(testSubFrameUrl == 0) {
+    if (testSubFrameUrl == 0) {
         napi_create_int32(env, 0, &result);
     } else {
         napi_create_int32(env, -1, &result);
