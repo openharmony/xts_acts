@@ -163,7 +163,6 @@
         "MainAbility/pages/Scroll/navigation_add",
         "MainAbility/pages/Scroll/navrouteradd",
         "MainAbility/pages/Scroll/navition3",
-	"MainAbility/pages/List/list_ux",
         "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChange",
         "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex3",
         "MainAbility/pages/Tabs/tabs_api12/tabs_onContentWillChangeIndex03",

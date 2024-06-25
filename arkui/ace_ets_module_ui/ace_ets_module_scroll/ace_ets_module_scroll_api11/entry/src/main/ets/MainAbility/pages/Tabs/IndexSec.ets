@@ -28,18 +28,18 @@ struct TabsExampleSec {
     @State barBackgroundColorNumber: number = 0
     @State barBackgroundColorString: string = "#00000000"
 
-    private stateChangCallBack = (eventData) => {
+    private stateChangCallBack = (eventData: events_emitter.EventData) => {
         console.info("tabs page state change called:" + JSON.stringify(eventData));
         if (eventData != null) {
-            this.barOverlap = eventData.data.barOverlap;
-            this.barBackgroundColorColor = eventData.data.barBackgroundColorColor;
-            this.barBackgroundColorNumber = eventData.data.barBackgroundColorNumber;
-            this.barBackgroundColorString = eventData.data.barBackgroundColorString;
+            this.barOverlap = eventData.data?.barOverlap;
+            this.barBackgroundColorColor = eventData.data?.barBackgroundColorColor;
+            this.barBackgroundColorNumber = eventData.data?.barBackgroundColorNumber;
+            this.barBackgroundColorString = eventData.data?.barBackgroundColorString;
         }
     }
 
     aboutToAppear(){
-        var stateChangeEvent = {
+        let stateChangeEvent: events_emitter.InnerEvent = {
             eventId: 183,
             priority: events_emitter.EventPriority.LOW
         }

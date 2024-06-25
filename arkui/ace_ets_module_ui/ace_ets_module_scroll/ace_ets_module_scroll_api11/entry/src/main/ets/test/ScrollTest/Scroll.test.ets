@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from "../../MainAbility/common/Common";
 
 export default function ScrollTest() {
-  describe('ScrollTest', function () {
-    beforeEach(async function (done) {
+  describe('ScrollTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("ScrollTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Scroll/Scroll',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Scroll/Scroll',
       }
       try {
         router.clear();
@@ -47,7 +47,7 @@ export default function ScrollTest() {
       * @tc.desc  : set enablePaging to true
       * @tc.level : Level 2
       */
-    it('ScrollTest_001', 0, async function (done) {
+    it('ScrollTest_001', 0, async (done: Function) => {
 
       console.info('[ScrollTest_001] START');
       await CommonFunc.sleep(1000);
@@ -58,7 +58,7 @@ export default function ScrollTest() {
       await CommonFunc.sleep(1000);
       console.info("[ScrollTest_001] swipe success");
       let strJson1 = getInspectorByKey('scrollText');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
       console.info("[ScrollTest_001] component obj is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);

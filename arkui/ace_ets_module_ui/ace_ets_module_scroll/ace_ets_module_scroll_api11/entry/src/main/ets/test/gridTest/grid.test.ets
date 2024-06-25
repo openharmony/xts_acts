@@ -14,12 +14,12 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function gridIndexTest() {
-  describe('gridIndexTest', function () {
-    beforeEach(async function (done) {
+  describe('gridIndexTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("gridIndexTest beforeEach start");
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function gridIndexTest() {
       console.info("gridIndexTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("gridIndexTest after each called");
     });
@@ -49,7 +49,7 @@ export default function gridIndexTest() {
      * @tc.type
      * @tc.size
      */
-    it('gridIndexTest_0100', 0, async function (done) {
+    it('gridIndexTest_0100', 0, async (done: Function) => {
       console.info('[gridIndexTest_0100] START');
       await CommonFunc.sleep(2000);
       let btRight = CommonFunc.getComponentRect('index2');

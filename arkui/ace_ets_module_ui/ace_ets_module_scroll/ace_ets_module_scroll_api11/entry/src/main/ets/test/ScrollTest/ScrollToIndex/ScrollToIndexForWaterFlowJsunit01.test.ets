@@ -13,15 +13,15 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function ScrollToIndexForWaterFlowJsunit01() {
   describe('ScrollToIndexForWaterFlowJsunit01', () => {
-    beforeEach(async function (done) {
+    beforeEach(async (done: Function) => {
       console.info("ScrollToIndexForWaterFlow01 beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Scroll/ScrollToIndex/ScrollToIndexForWaterFlow01',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Scroll/ScrollToIndex/ScrollToIndexForWaterFlow01',
       }
       try {
         router.clear();
@@ -48,7 +48,7 @@ export default function ScrollToIndexForWaterFlowJsunit01() {
      * @tc.type: Function
      * @tc.level   2
      */
-    it('ScrollToIndexForWaterFlow01_0100', 0, async (done) => {
+    it('ScrollToIndexForWaterFlow01_0100', 0, async (done: Function) => {
       console.info('[ScrollToIndexForWaterFlow01_0100] START');
       let driver = Driver.create();
       await driver.delayMs(1000);
@@ -71,7 +71,7 @@ export default function ScrollToIndexForWaterFlowJsunit01() {
      * @tc.type: Function
      * @tc.level   2
      */
-    it('ScrollToIndexForWaterFlow02_0100', 0, async (done) => {
+    it('ScrollToIndexForWaterFlow02_0100', 0, async (done: Function) => {
       console.info('[ScrollToIndexForWaterFlow02_0100] START');
       let driver = Driver.create();
       await driver.delayMs(1000);
@@ -101,7 +101,7 @@ export default function ScrollToIndexForWaterFlowJsunit01() {
      * @tc.type: Function
      * @tc.level   2
      */
-    it('ScrollToIndexForWaterFlow02_0300', 0, async (done) => {
+    it('ScrollToIndexForWaterFlow02_0300', 0, async (done: Function) => {
       console.info('[ScrollToIndexForGridJsunit01_0100] START');
       let driver = Driver.create();
 

@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 export default function APITabsBarBackgroundBlurStyleJsunit() {
-  describe('APITabsBarBackgroundBlurStyleJsunit', function () {
-    beforeEach(async function (done) {
+  describe('APITabsBarBackgroundBlurStyleJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("APITabsBarBackgroundBlurStyleJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Tabs/APITabsBarBackgroundBlurStyle',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Tabs/APITabsBarBackgroundBlurStyle',
       }
       try {
         router.clear();
@@ -40,11 +40,11 @@ export default function APITabsBarBackgroundBlurStyleJsunit() {
       }
       done();
     });
-    it('APITabsBarBackgroundBlurStyleJsunit_0100', 0, async function (done) {
+    it('APITabsBarBackgroundBlurStyleJsunit_0100', 0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       console.info('APITabsBarBackgroundBlurStyleJsunit_0100 START');
       let strcontent = getInspectorByKey('APITabsBarBackgroundBlurStyle01');
-      let obj = JSON.parse(strcontent);
+      let obj: ESObject = JSON.parse(strcontent);
       await CommonFunc.sleep(1000);
       console.info('APITabsBarBackgroundBlurStyleJsunit_0100 component obj is: ' + obj);
       console.info('APITabsBarBackgroundBlurStyleJsunit_0100 component obj.$attrs.flingSpeedLimit is: ' + obj.$attrs.barBackgroundBlurStyle);

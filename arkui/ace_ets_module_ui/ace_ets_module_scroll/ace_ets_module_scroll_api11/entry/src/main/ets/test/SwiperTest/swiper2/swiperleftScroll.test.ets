@@ -14,12 +14,12 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/utils/Common';
+import CommonFunc from '../../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function swipeleftScrollTest() {
-  describe('swipeleftScrollTest', function () {
-    beforeEach(async function (done) {
+  describe('swipeleftScrollTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("swipeleftScrollTest beforeEach start");
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function swipeleftScrollTest() {
       console.info("swipeleftScrollTest foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("swipeleftScrollTest after each called");
     });
@@ -50,7 +50,7 @@ export default function swipeleftScrollTest() {
      * @tc.size
      */
 
-    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0310', 0, async function (done) {
+    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0310', 0, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0310] START');
       await CommonFunc.sleep(2000);
       let bt = CommonFunc.getComponentRect('swiperTestWidth8');

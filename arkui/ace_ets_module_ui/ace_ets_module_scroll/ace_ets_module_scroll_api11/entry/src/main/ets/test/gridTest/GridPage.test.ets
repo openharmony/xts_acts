@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiDriver, UiComponent, BY, Driver, Component, ON} from '@ohos.UiTest'
 
 export default function GridTest() {
   const SUITE = 'GridTest'
 
-  describe('GridPageTest', function () {
+  describe('GridPageTest', () => {
 
-    beforeEach(async function (done) {
-      let options = {
-        uri: "MainAbility/pages/grid/GridTestPage",
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/grid/GridTestPage",
       }
       try {
         router.clear();
@@ -45,11 +45,11 @@ export default function GridTest() {
      *tc.name   Test Grid with GridItemStyle.NONE
      *tc.desc   Test Grid with GridItemStyle.NONE
      */
-    it('ArkUX_Grid_api_0001', 0, async function (done) {
+    it('ArkUX_Grid_api_0001', 0, async (done: Function) => {
       let CASE = 'ArkUX_Grid_api_0001'
       console.info(`${SUITE} ${CASE} START`);
       let strJson = getInspectorByKey('Grid_GridItemStyle_NONE');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Grid')
       strJson = getInspectorByKey('GridItemStyle_NONE_11');
       obj = JSON.parse(strJson);
@@ -64,11 +64,11 @@ export default function GridTest() {
      *tc.name   Test Grid with GridItemStyle.PLAIN
      *tc.desc   Test Grid with GridItemStyle.PLAIN
      */
-    it('ArkUX_Grid_api_0002', 0, async function (done) {
+    it('ArkUX_Grid_api_0002', 0, async (done: Function) => {
       let CASE = 'ArkUX_Grid_api_0002'
       console.info(`${SUITE} ${CASE} START`);
       let strJson = getInspectorByKey('Grid_GridItemStyle_PLAIN');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Grid')
       strJson = getInspectorByKey('GridItemStyle_PLAIN_11');
       obj = JSON.parse(strJson);
@@ -83,11 +83,11 @@ export default function GridTest() {
      *tc.name   Test Grid with exceptional value
      *tc.desc   Test Grid with exceptional value
      */
-    it('ArkUX_Grid_api_0003', 0, async function (done) {
+    it('ArkUX_Grid_api_0003', 0, async (done: Function) => {
       let CASE = 'ArkUX_Grid_api_0003'
       console.info(`${SUITE} ${CASE} START`);
       let strJson = getInspectorByKey('Grid_GridItemStyle_EXCEPTION');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Grid')
       strJson = getInspectorByKey('GridItemStyle_EXCEPTION_NULL');
       obj = JSON.parse(strJson);
@@ -111,11 +111,11 @@ export default function GridTest() {
      *tc.name   Test Grid with value not set
      *tc.desc   Test Grid with value not set
      */
-     it('ArkUX_Grid_api_0004', 0, async function (done) {
+     it('ArkUX_Grid_api_0004', 0, async (done: Function) => {
       let CASE = 'ArkUX_Grid_api_0004'
       console.info(`${SUITE} ${CASE} START`);
       let strJson = getInspectorByKey('Grid_GridItem_VALUE_NOT_SET');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Grid')
       strJson = getInspectorByKey('GridItem_VALUE_NOT_SET_11');
       obj = JSON.parse(strJson);
@@ -130,11 +130,11 @@ export default function GridTest() {
      *tc.name   Test Grid with exceptional value
      *tc.desc   Test Grid with exceptional value
      */
-     it('ArkUX_Grid_api_0005', 0, async function (done) {
+     it('ArkUX_Grid_api_0005', 0, async (done: Function) => {
       let CASE = 'ArkUX_Grid_api_0005'
       console.info(`${SUITE} ${CASE} START`);
       let strJson = getInspectorByKey('Grid_GridItemStyle_VALUE');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$type).assertEqual('Grid')
       strJson = getInspectorByKey('GridItem_value_empty');
       obj = JSON.parse(strJson);

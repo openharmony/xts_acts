@@ -12,16 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// @ts-nocheck
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../../MainAbility/common/Utils'
 export default function tabs() {
-  describe('ActsAceTabsTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri:  "MainAbility/pages/Tabs/Index3",
+  describe('ActsAceTabsTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/Tabs/Index3",
       }
       try {
         router.clear();
@@ -41,10 +40,10 @@ export default function tabs() {
       done();
     })
 
-    afterEach(async function (done) {
+    afterEach(async (done: Function) => {
       console.info("tabs afterEach start");
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "strokeWidthStr": '10px',
             "dividerColorStr": 'red',
@@ -82,7 +81,7 @@ export default function tabs() {
             "selfMarginTopStr": "10vp",
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -100,10 +99,10 @@ export default function tabs() {
      * @tc.name      Tests the divier property of the tabs component
      * @tc.desc      the default divier parameter is {}
      */
-    it('ArkUI_Tabs_Divider_0100', 0, async function (done) {
+    it('ArkUI_Tabs_Divider_0100', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_Divider_0100 start");
       let strJson = getInspectorByKey('tabsTest5');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_Divider_0100] divider:" + obj.$attrs.divider);
       if(!obj.$attrs.divider.strokeWidth) {
         expect(true).assertTrue();
@@ -118,13 +117,13 @@ export default function tabs() {
      * @tc.name      Tests the divier property of the tabs component
      * @tc.desc      set divier parameter to type number
      */
-    it('ArkUI_Tabs_Divider_0200', 0, async function (done) {
+    it('ArkUI_Tabs_Divider_0200', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_Divider_0200 start");
       let strJson = getInspectorByKey('tabsTest');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       
       console.info("[ArkUI_Tabs_Divider_0200] divider:" + JSON.stringify(obj.$attrs.divider));
-      let dividerObject = obj.$attrs.divider;
+      let dividerObject: ESObject = obj.$attrs.divider;
       expect(dividerObject.strokeWidth).assertEqual("10.00px");
       expect(dividerObject.color).assertEqual("#FFFF0000");
       expect(dividerObject.startMargin).assertEqual("5.00px");
@@ -137,12 +136,12 @@ export default function tabs() {
      * @tc.name      Tests the divier property of the tabs component
      * @tc.desc      set divier parameter to type string
      */
-    it('ArkUI_Tabs_Divider_0300', 0, async function (done) {
+    it('ArkUI_Tabs_Divider_0300', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_Divider_0300 start");
       let strJson = getInspectorByKey('tabsTest2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_Divider_0300] divider:" + JSON.stringify(obj.$attrs.divider));
-      let dividerObject = obj.$attrs.divider;
+      let dividerObject: ESObject = obj.$attrs.divider;
       expect(dividerObject.strokeWidth).assertEqual("10.00vp");
       expect(dividerObject.color).assertEqual('#FFFF0000');
       expect(dividerObject.startMargin).assertEqual("5.00vp");
@@ -155,13 +154,13 @@ export default function tabs() {
      * @tc.name      Tests the divier property of the tabs component
      * @tc.desc      set divier parameter to type Resource
      */
-    it('ArkUI_Tabs_Divider_0400', 0, async function (done) {
+    it('ArkUI_Tabs_Divider_0400', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_Divider_0400 start");
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('tabsTest3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_Divider_0400] divider:" + JSON.stringify(obj.$attrs.divider));
-      let dividerObject = obj.$attrs.divider;
+      let dividerObject: ESObject = obj.$attrs.divider;
       expect(dividerObject.strokeWidth).assertEqual("10.00px");
       expect(dividerObject.color).assertEqual('#FF121212');
       expect(dividerObject.startMargin).assertEqual("5.00px");
@@ -174,13 +173,13 @@ export default function tabs() {
      * @tc.name      Tests the divier property of the tabs component
      * @tc.desc      set divier parameter to type Color
      */
-    it('ArkUI_Tabs_Divider_0500', 0, async function (done) {
+    it('ArkUI_Tabs_Divider_0500', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_Divider_0500 start");
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('tabsTest4');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_Divider_0500] divider:" + JSON.stringify(obj.$attrs.divider));
-      let dividerObject = obj.$attrs.divider;
+      let dividerObject: ESObject = obj.$attrs.divider;
       expect(dividerObject.strokeWidth).assertEqual("10.00px");
       expect(dividerObject.color).assertEqual("#FFFF0000");
       expect(dividerObject.startMargin).assertEqual("5.00px");
@@ -193,16 +192,16 @@ export default function tabs() {
      * @tc.name      Tests the divier property of the tabs component
      * @tc.desc      set divier parameter to null
      */
-    it('ArkUI_Tabs_Divider_0600', 0, async function (done) {
+    it('ArkUI_Tabs_Divider_0600', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_Divider_0600 start");
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "nullFlag": true,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -213,15 +212,15 @@ export default function tabs() {
       }
       await Utils.sleep(2000);
       let defaultStrJson = getInspectorByKey('defaultTabs');
-      let defaultObj = JSON.parse(defaultStrJson);
+      let defaultObj: ESObject = JSON.parse(defaultStrJson);
       console.info("[ArkUI_Tabs_Divider_0600] defaultDivider:" + JSON.stringify(defaultObj.$attrs.divider));
-      let defaultDividerObject = defaultObj.$attrs.divider;
-      let defaultDividerColor = defaultDividerObject.color;
+      let defaultDividerObject: ESObject = defaultObj.$attrs.divider;
+      let defaultDividerColor: string = defaultDividerObject.color;
 
       let strJson = getInspectorByKey('tabsTest');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_Divider_0600] divider:" + JSON.stringify(obj.$attrs.divider));
-      let dividerObject = obj.$attrs.divider;
+      let dividerObject: ESObject = obj.$attrs.divider;
       expect(dividerObject.strokeWidth).assertEqual("0.00px");
       expect(dividerObject.color).assertEqual(defaultDividerColor);
       expect(dividerObject.startMargin).assertEqual('0.00px');
@@ -234,11 +233,11 @@ export default function tabs() {
      * @tc.name      Tests the divier property of the tabs component
      * @tc.desc      set divier parameter to abnormol color value
      */
-    it('ArkUI_Tabs_Divider_0700', 0, async function (done) {
+    it('ArkUI_Tabs_Divider_0700', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_Divider_0700 start");
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "strokeWidthStr": '10px',
             "dividerColorStr": 'xxxxxxxx',
@@ -246,7 +245,7 @@ export default function tabs() {
             "endMarginStr": '5px',
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -257,15 +256,15 @@ export default function tabs() {
       }
       await Utils.sleep(2000);
       let defaultStrJson = getInspectorByKey('defaultTabs');
-      let defaultObj = JSON.parse(defaultStrJson);
+      let defaultObj: ESObject = JSON.parse(defaultStrJson);
       console.info("[ArkUI_Tabs_Divider_0700] defaultDivider:" + JSON.stringify(defaultObj.$attrs.divider));
-      let defaultDividerObject = defaultObj.$attrs.divider;
-      let defaultDividerColor = defaultDividerObject.color;
+      let defaultDividerObject: ESObject = defaultObj.$attrs.divider;
+      let defaultDividerColor: string = defaultDividerObject.color;
 
       let strJson = getInspectorByKey('tabsTest');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_Divider_0700] divider:" + JSON.stringify(obj.$attrs.divider));
-      let dividerObject = obj.$attrs.divider;
+      let dividerObject: ESObject = obj.$attrs.divider;
       expect(dividerObject.strokeWidth).assertEqual("10.00px");
       expect(dividerObject.color).assertEqual(defaultDividerColor);
       expect(dividerObject.startMargin).assertEqual("5.00px");
@@ -278,11 +277,11 @@ export default function tabs() {
      * @tc.name      Tests the divier property of the tabs component
      * @tc.desc      set divier parameter to abnormol strokeWidthStr value
      */
-    it('ArkUI_Tabs_Divider_0800', 0, async function (done) {
+    it('ArkUI_Tabs_Divider_0800', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_Divider_0800 start");
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "strokeWidthStr": 'xxxxxxxx',
             "dividerColorStr": 'red',
@@ -290,7 +289,7 @@ export default function tabs() {
             "endMarginStr": '5px',
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -301,9 +300,9 @@ export default function tabs() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('tabsTest');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_Divider_0800] divider:" + JSON.stringify(obj.$attrs.divider));
-      let dividerObject = obj.$attrs.divider;
+      let dividerObject: ESObject = obj.$attrs.divider;
       expect(dividerObject.strokeWidth).assertEqual('0.00vp');
       done();
     });
@@ -313,11 +312,11 @@ export default function tabs() {
      * @tc.name      Tests the divier property of the tabs component
      * @tc.desc      set divier parameter to abnormol startMarginStr value
      */
-    it('ArkUI_Tabs_Divider_0900', 0, async function (done) {
+    it('ArkUI_Tabs_Divider_0900', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_Divider_0900 start");
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "strokeWidthStr": '10px',
             "dividerColorStr": 'red',
@@ -325,7 +324,7 @@ export default function tabs() {
             "endMarginStr": '5px',
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -336,9 +335,9 @@ export default function tabs() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('tabsTest');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_Divider_0900] divider:" + JSON.stringify(obj.$attrs.divider));
-      let dividerObject = obj.$attrs.divider;
+      let dividerObject: ESObject = obj.$attrs.divider;
       expect(dividerObject.startMargin).assertEqual('0.00vp');
       done();
     });
@@ -348,11 +347,11 @@ export default function tabs() {
      * @tc.name      Tests the divier property of the tabs component
      * @tc.desc      set divier parameter to abnormol endMarginStr value
      */
-    it('ArkUI_Tabs_Divider_1000', 0, async function (done) {
+    it('ArkUI_Tabs_Divider_1000', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_Divider_1000 start");
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "strokeWidthStr": '10px',
             "dividerColorStr": 'red',
@@ -360,7 +359,7 @@ export default function tabs() {
             "endMarginStr": 'xxxxxxxx',
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -371,9 +370,9 @@ export default function tabs() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('tabsTest');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_Divider_1000] divider:" + JSON.stringify(obj.$attrs.divider));
-      let dividerObject = obj.$attrs.divider;
+      let dividerObject: ESObject = obj.$attrs.divider;
       expect(dividerObject.endMargin).assertEqual('0.00vp');
       done();
     });
@@ -383,11 +382,11 @@ export default function tabs() {
      * @tc.name      Tests the divider and indicator.selectedMode property of the tabs component
      * @tc.desc      set divider and indicator.selectedMode test
      */
-    it('ArkUI_Tabs_Divider_1100', 0, async function (done) {
+    it('ArkUI_Tabs_Divider_1100', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_Divider_1100 start");
       
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "strokeWidthStr": '10px',
             "dividerColorStr": 'red',
@@ -396,7 +395,7 @@ export default function tabs() {
             "selfSelectedMode": SelectedMode.BOARD,
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -408,11 +407,11 @@ export default function tabs() {
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('tabsTest');
       let strJson2 = getInspectorByKey('indicatorTest1');
-      let obj = JSON.parse(strJson);
-      let obj2 = JSON.parse(strJson2);
+      let obj: ESObject = JSON.parse(strJson);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[ArkUI_Tabs_Divider_1100] divider:" + JSON.stringify(obj.$attrs.divider));
       console.info("[ArkUI_Tabs_Divider_1100] selectedMode:" + obj2.$attrs.tabBar.selectedMode);
-      let dividerObject = obj.$attrs.divider;
+      let dividerObject: ESObject = obj.$attrs.divider;
       expect(dividerObject.strokeWidth).assertEqual("10.00px");
       expect(dividerObject.color).assertEqual("#FFFF0000");
       expect(dividerObject.startMargin).assertEqual("5.00px");
@@ -426,18 +425,18 @@ export default function tabs() {
      * @tc.name      Tests the divier property of the tabs component
      * @tc.desc      set divier parameter to abnormol endMarginStr value
      */
-    it('ArkUI_Tabs_Divider_1200', 0, async function (done) {
+    it('ArkUI_Tabs_Divider_1200', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_Divider_1200 start");
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "strokeWidthStr": '10vp',
             "startMarginStr": '10vp',
             "endMarginStr": '10vp',
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -448,22 +447,22 @@ export default function tabs() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('tabsTest');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_Divider_1200] divider:" + JSON.stringify(obj.$attrs.divider));
-      let dividerObject = obj.$attrs.divider;
+      let dividerObject: ESObject = obj.$attrs.divider;
       expect(dividerObject.strokeWidth).assertEqual('10.00vp');
       expect(dividerObject.startMargin).assertEqual('10.00vp');
       expect(dividerObject.endMargin).assertEqual('10.00vp');
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "strokeWidthStr": '10px',
             "startMarginStr": '10px',
             "endMarginStr": '10px',
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -482,14 +481,14 @@ export default function tabs() {
       expect(dividerObject.endMargin).assertEqual('10.00px');
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "strokeWidthStr": '10fp',
             "startMarginStr": '10fp',
             "endMarginStr": '10fp',
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -508,14 +507,14 @@ export default function tabs() {
       expect(dividerObject.endMargin).assertEqual('10.00fp');
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "strokeWidthStr": '10lpx',
             "startMarginStr": '10lpx',
             "endMarginStr": '10lpx',
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -540,17 +539,17 @@ export default function tabs() {
      * @tc.name      Tests the labelStyle default
      * @tc.desc      the default labelStyle parameter is true
      */
-    it('ArkUI_Tabs_LabelStyle_0100', 0, async function (done) {
+    it('ArkUI_Tabs_LabelStyle_0100', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_LabelStyle_0100 start");
 
       let defaultStrJson = getInspectorByKey('defaultSubTab');
-      let defaultObj = JSON.parse(defaultStrJson);
+      let defaultObj: ESObject = JSON.parse(defaultStrJson);
       console.info("[ArkUI_Tabs_LabelStyle_0100] labelStyle:" +  JSON.stringify(defaultObj.$attrs.tabBar.labelStyle));
-      let defaultLabelStyleObject = defaultObj.$attrs.tabBar.labelStyle;
-      let defaultFontSize = defaultLabelStyleObject.font.size;
+      let defaultLabelStyleObject: ESObject = defaultObj.$attrs.tabBar.labelStyle;
+      let defaultFontSize: ESObject = defaultLabelStyleObject.font.size;
 
       let strJson = getInspectorByKey('indicatorTest5');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_LabelStyle_0100] labelStyle:" +  JSON.stringify(obj.$attrs.tabBar.labelStyle));
 
       expect(obj.$attrs.tabBar.labelStyle.overflow).assertEqual('TextOverflow.Ellipsis');
@@ -570,10 +569,10 @@ export default function tabs() {
      * @tc.name      Tests the labelStyle when single line truncation with ellipsis
      * @tc.desc      set labelStyle to Single line truncation with ellipsis
      */
-    it('ArkUI_Tabs_LabelStyle_0200', 0, async function (done) {
+    it('ArkUI_Tabs_LabelStyle_0200', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_LabelStyle_0200 start");
       let strJson = getInspectorByKey('indicatorTest1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_LabelStyle_0200] labelStyle:" +  JSON.stringify(obj.$attrs.tabBar.labelStyle));
 
       expect(obj.$attrs.tabBar.labelStyle.overflow).assertEqual('TextOverflow.Ellipsis');
@@ -589,11 +588,11 @@ export default function tabs() {
      * @tc.name      Tests the labelStyle when Reduce and then truncate
      * @tc.desc      set labelStyle to Reduce and then truncate
      */
-    it('ArkUI_Tabs_LabelStyle_0300', 0, async function (done) {
+    it('ArkUI_Tabs_LabelStyle_0300', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_LabelStyle_0300 start");
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('indicatorTest2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_LabelStyle_0300] labelStyle:" + JSON.stringify(obj.$attrs.tabBar.labelStyle));
       expect(obj.$attrs.tabBar.labelStyle.overflow).assertEqual('TextOverflow.Clip');
       expect(obj.$attrs.tabBar.labelStyle.maxLines).assertEqual('1');
@@ -609,11 +608,11 @@ export default function tabs() {
      * @tc.name      Tests the labelStyle when shrink, wrap, and truncate
      * @tc.desc      set labelStyle to shrink, wrap, and truncate
      */
-    it('ArkUI_Tabs_LabelStyle_0400', 0, async function (done) {
+    it('ArkUI_Tabs_LabelStyle_0400', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_LabelStyle_0400 start");
 
       let strJson = getInspectorByKey('indicatorTest3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_LabelStyle_0400] labelStyle:" + JSON.stringify(obj.$attrs.tabBar.labelStyle));
       expect(obj.$attrs.tabBar.labelStyle.overflow).assertEqual('TextOverflow.None');
       expect(obj.$attrs.tabBar.labelStyle.maxLines).assertEqual('2');
@@ -629,11 +628,11 @@ export default function tabs() {
      * @tc.name      Tests the labelStyle when line feed
      * @tc.desc      set labelStyle to line feed
      */
-    it('ArkUI_Tabs_LabelStyle_0500', 0, async function (done) {
+    it('ArkUI_Tabs_LabelStyle_0500', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_LabelStyle_0500 start");
 
       let strJson = getInspectorByKey('indicatorTest4');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_LabelStyle_0500] labelStyle:" + JSON.stringify(obj.$attrs.tabBar.labelStyle));
       expect(obj.$attrs.tabBar.labelStyle.overflow).assertEqual('TextOverflow.None');
       expect(obj.$attrs.tabBar.labelStyle.maxLines).assertEqual('10');
@@ -649,17 +648,17 @@ export default function tabs() {
      * @tc.name      Tests the labelStyle when null
      * @tc.desc      set labelStyle to when null
      */
-    it('ArkUI_Tabs_LabelStyle_0600', 0, async function (done) {
+    it('ArkUI_Tabs_LabelStyle_0600', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_LabelStyle_0600 start");
 
       let defaultStrJson = getInspectorByKey('defaultSubTab');
-      let defaultObj = JSON.parse(defaultStrJson);
+      let defaultObj: ESObject = JSON.parse(defaultStrJson);
       console.info("[ArkUI_Tabs_LabelStyle_0600] default labelStyle:" +  JSON.stringify(defaultObj.$attrs.tabBar.labelStyle));
-      let defaultLabelStyleObject = defaultObj.$attrs.tabBar.labelStyle;
-      let defaultFontSize = defaultLabelStyleObject.font.size;
+      let defaultLabelStyleObject: ESObject = defaultObj.$attrs.tabBar.labelStyle;
+      let defaultFontSize: ESObject = defaultLabelStyleObject.font.size;
 
       let strJson = getInspectorByKey('indicatorTest6');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_LabelStyle_0600] labelStyle:" + JSON.stringify(obj.$attrs.tabBar.labelStyle));
       expect(obj.$attrs.tabBar.labelStyle.overflow).assertEqual('TextOverflow.Ellipsis');
       expect(obj.$attrs.tabBar.labelStyle.maxLines).assertEqual('1');
@@ -678,10 +677,10 @@ export default function tabs() {
      * @tc.name      Tests the fadingEdge property of the tabs component
      * @tc.desc      the default fadingEdge parameter is true
      */
-    it('ArkUI_Tabs_FadingEdge_0100', 0, async function (done) {
+    it('ArkUI_Tabs_FadingEdge_0100', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_FadingEdge_0100 start");      
       let strJson = getInspectorByKey('tabsTest2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_FadingEdge_0100] fadingEdge:" + obj.$attrs.fadingEdge);
       expect(obj.$attrs.fadingEdge).assertEqual('true');
       done();
@@ -692,16 +691,16 @@ export default function tabs() {
      * @tc.name      Tests the fadingEdge property of the tabs component
      * @tc.desc      set fadingEdge to true
      */
-    it('ArkUI_Tabs_FadingEdge_0200', 0, async function (done) {
+    it('ArkUI_Tabs_FadingEdge_0200', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_FadingEdge_0200 start");
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "overflowFlag": true
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -712,7 +711,7 @@ export default function tabs() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('tabsTest');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_FadingEdge_0200] fadingEdge:" + obj.$attrs.fadingEdge);
       expect(obj.$attrs.fadingEdge).assertEqual('true');
       done();
@@ -723,16 +722,16 @@ export default function tabs() {
      * @tc.name      Tests the fadingEdge property of the tabs component
      * @tc.desc      set fadingEdge to false
      */
-    it('ArkUI_Tabs_FadingEdge_0300', 0, async function (done) {
+    it('ArkUI_Tabs_FadingEdge_0300', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_FadingEdge_0300 start");
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "overflowFlag": false
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -743,7 +742,7 @@ export default function tabs() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('tabsTest');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_FadingEdge_0300] fadingEdge:" + obj.$attrs.fadingEdge);
       expect(obj.$attrs.fadingEdge).assertEqual('false');
       done();
@@ -754,19 +753,19 @@ export default function tabs() {
      * @tc.name      Tests the indicator.color property of the tabs component
      * @tc.desc      the default indicator.color parameter is "#FF007DFF"
      */
-    it('ArkUI_Tabs_IndicatorColor_0100', 0, async function (done) {
+    it('ArkUI_Tabs_IndicatorColor_0100', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorColor_0100 start");
 
       await Utils.sleep(2000);
       let defaultStrJson = getInspectorByKey('defaultSubTab');
-      let defaultObj = JSON.parse(defaultStrJson);
+      let defaultObj: ESObject = JSON.parse(defaultStrJson);
       console.info("[ArkUI_Tabs_IndicatorColor_0100] default indicator:" + defaultObj.$attrs.tabBar.indicator);
-      let defaultIndicatorColor = defaultObj.$attrs.tabBar.indicator.color;
+      let defaultIndicatorColor: string = defaultObj.$attrs.tabBar.indicator.color;
 
       let strJson = getInspectorByKey('indicatorTest5');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorColor_0100] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorColor = obj.$attrs.tabBar.indicator.color;
+      let indicatorColor: string = obj.$attrs.tabBar.indicator.color;
       expect(indicatorColor).assertEqual(defaultIndicatorColor);
       done();
     });
@@ -776,12 +775,12 @@ export default function tabs() {
      * @tc.name      Tests the indicator.color property of the tabs component
      * @tc.desc      set indicator.color to number type
      */
-    it('ArkUI_Tabs_IndicatorColor_0200', 0, async function (done) {
+    it('ArkUI_Tabs_IndicatorColor_0200', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorColor_0200 start");
       let strJson = getInspectorByKey('indicatorTest1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorColor_0200] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorColor = obj.$attrs.tabBar.indicator.color;
+      let indicatorColor: string = obj.$attrs.tabBar.indicator.color;
       expect(indicatorColor).assertEqual("#FFFF0000");
       done();
     });
@@ -791,12 +790,12 @@ export default function tabs() {
      * @tc.name      Tests the indicator.color property of the tabs component
      * @tc.desc      set indicator.color to string type
      */
-    it('ArkUI_Tabs_IndicatorColor_0300', 0, async function (done) {
+    it('ArkUI_Tabs_IndicatorColor_0300', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorColor_0300 start");
       let strJson = getInspectorByKey('indicatorTest2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorColor_0300] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorColor = obj.$attrs.tabBar.indicator.color;
+      let indicatorColor: string = obj.$attrs.tabBar.indicator.color;
       expect(indicatorColor).assertEqual("#FFFF0000");
       done();
     });
@@ -806,12 +805,12 @@ export default function tabs() {
      * @tc.name      Tests the indicator.color property of the tabs component
      * @tc.desc      set indicator.color to Resource type
      */
-    it('ArkUI_Tabs_IndicatorColor_0400', 0, async function (done) {
+    it('ArkUI_Tabs_IndicatorColor_0400', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorColor_0400 start");
       let strJson = getInspectorByKey('indicatorTest3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorColor_0400] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorColor = obj.$attrs.tabBar.indicator.color;
+      let indicatorColor: string = obj.$attrs.tabBar.indicator.color;
       expect(indicatorColor).assertEqual("#FFFF0000");
       done();
     });
@@ -821,12 +820,12 @@ export default function tabs() {
      * @tc.name      Tests the indicator.color property of the tabs component
      * @tc.desc      set indicator.color to Color type
      */
-    it('ArkUI_Tabs_IndicatorColor_0500', 0, async function (done) {
+    it('ArkUI_Tabs_IndicatorColor_0500', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorColor_0500 start");
       let strJson = getInspectorByKey('indicatorTest4');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorColor_0500] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorColor = obj.$attrs.tabBar.indicator.color;
+      let indicatorColor: string = obj.$attrs.tabBar.indicator.color;
       expect(indicatorColor).assertEqual("#FFFF0000");
       done();
     });
@@ -836,16 +835,16 @@ export default function tabs() {
      * @tc.name      Tests the indicator.color property of the tabs component
      * @tc.desc      set indicator.color to abnormol value "xxxxxxxx" then get the default value "#FF007DFF"
      */
-    it('ArkUI_Tabs_IndicatorColor_0600', 0, async function (done) {
+    it('ArkUI_Tabs_IndicatorColor_0600', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorColor_0600 start");
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "selfIndicatorColor": "xxxxxxxx"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -856,14 +855,14 @@ export default function tabs() {
       }
       await Utils.sleep(2000);
       let defaultStrJson = getInspectorByKey('defaultSubTab');
-      let defaultObj = JSON.parse(defaultStrJson);
+      let defaultObj: ESObject = JSON.parse(defaultStrJson);
       console.info("[ArkUI_Tabs_IndicatorColor_0600] default indicator:" + defaultObj.$attrs.tabBar.indicator);
-      let defaultIndicatorColor = defaultObj.$attrs.tabBar.indicator.color;
+      let defaultIndicatorColor: string = defaultObj.$attrs.tabBar.indicator.color;
 
       let strJson = getInspectorByKey('indicatorTest1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorColor_0600] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorColor = obj.$attrs.tabBar.indicator.color;
+      let indicatorColor: string = obj.$attrs.tabBar.indicator.color;
       expect(indicatorColor).assertEqual(defaultIndicatorColor);
       done();
     });
@@ -873,11 +872,11 @@ export default function tabs() {
      * @tc.name      Tests the indicator property of the tabs component
      * @tc.desc      set indicator property
      */
-    it('ArkUI_Tabs_IndicatorColor_0700', 0, async function (done) {
+    it('ArkUI_Tabs_IndicatorColor_0700', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorColor_0700 start");
       
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "selfIndicatorColor": Color.Red,
             "selfIndicatorHeight": 5,
@@ -886,7 +885,7 @@ export default function tabs() {
             "selfMarginTop": 10
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -897,13 +896,13 @@ export default function tabs() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('indicatorTest1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorColor_0700] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorColor = obj.$attrs.tabBar.indicator.color;
-      let indicatorHeight = obj.$attrs.tabBar.indicator.height;
-      let indicatorWidth = obj.$attrs.tabBar.indicator.width;
-      let indicatorBorderRadius = obj.$attrs.tabBar.indicator.borderRadius;
-      let IndicatorMarginTop = obj.$attrs.tabBar.indicator.marginTop;
+      let indicatorColor: string = obj.$attrs.tabBar.indicator.color;
+      let indicatorHeight: string = obj.$attrs.tabBar.indicator.height;
+      let indicatorWidth: string = obj.$attrs.tabBar.indicator.width;
+      let indicatorBorderRadius: string = obj.$attrs.tabBar.indicator.borderRadius;
+      let IndicatorMarginTop: string = obj.$attrs.tabBar.indicator.marginTop;
       expect(indicatorColor).assertEqual("#FFFF0000");
       expect(indicatorHeight).assertEqual("5.00vp");
       expect(indicatorWidth).assertEqual("20.00vp");
@@ -917,17 +916,17 @@ export default function tabs() {
      * @tc.name      Tests the indicator.height property of the tabs component
      * @tc.desc      the default indicator.height parameter is "2.00vp".
      */
-    it('ArkUI_Tabs_IndicatorHeight_0100', 0, async function (done) {
+    it('ArkUI_Tabs_IndicatorHeight_0100', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorHeight_0100 start ")
       let defaultStrJson = getInspectorByKey('defaultSubTab');
-      let defaultObj = JSON.parse(defaultStrJson);
+      let defaultObj: ESObject = JSON.parse(defaultStrJson);
       console.info("[ArkUI_Tabs_IndicatorHeight_0100] default indicator:" + defaultObj.$attrs.tabBar.indicator);
-      let defaultIndicatorHeight = defaultObj.$attrs.tabBar.indicator.height;
+      let defaultIndicatorHeight: string = defaultObj.$attrs.tabBar.indicator.height;
 
       let strJson = getInspectorByKey('indicatorTest5');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorHeight_0100] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorHeight = obj.$attrs.tabBar.indicator.height;
+      let indicatorHeight: string = obj.$attrs.tabBar.indicator.height;
       expect(indicatorHeight).assertEqual(defaultIndicatorHeight);
       done();
     });
@@ -937,12 +936,12 @@ export default function tabs() {
      * @tc.name      Tests the indicator.height property of the tabs component
      * @tc.desc      set indicator.height to number type
      */
-    it('ArkUI_Tabs_IndicatorHeight_0200', 0, async function (done) {
+    it('ArkUI_Tabs_IndicatorHeight_0200', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorHeight_0200 start ")
       let strJson = getInspectorByKey('indicatorTest1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorHeight_0200] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorHeight = obj.$attrs.tabBar.indicator.height;
+      let indicatorHeight: string = obj.$attrs.tabBar.indicator.height;
       expect(indicatorHeight).assertEqual("10.00vp");
       done();
     });
@@ -952,12 +951,12 @@ export default function tabs() {
      * @tc.name      Tests the indicator.height property of the tabs component
      * @tc.desc      set indicator.height to string type
      */
-    it('ArkUI_Tabs_IndicatorHeight_0300', 0, async function (done) {
+    it('ArkUI_Tabs_IndicatorHeight_0300', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorHeight_0300 start ")
       let strJson = getInspectorByKey('indicatorTest2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorHeight_0300] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorHeight = obj.$attrs.tabBar.indicator.height;
+      let indicatorHeight: string = obj.$attrs.tabBar.indicator.height;
       expect(indicatorHeight).assertEqual("10.00vp");
       done();
     });
@@ -967,12 +966,12 @@ export default function tabs() {
      * @tc.name      Tests the indicator.height property of the tabs component
      * @tc.desc      set indicator.height to resource type
      */
-    it('ArkUI_Tabs_IndicatorHeight_0400', 0, async function (done) {
+    it('ArkUI_Tabs_IndicatorHeight_0400', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorHeight_0400 start ")
       let strJson = getInspectorByKey('indicatorTest3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorHeight_0400] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorHeight = obj.$attrs.tabBar.indicator.height;
+      let indicatorHeight: string = obj.$attrs.tabBar.indicator.height;
       expect(indicatorHeight).assertEqual("10.00vp");
       done();
     });
@@ -982,16 +981,16 @@ export default function tabs() {
      * @tc.name      Tests the indicator.height property of the tabs component
      * @tc.desc      set indicator.height to abnormol value -1 then get the default value "2.00vp"
      */
-    it('ArkUI_Tabs_IndicatorHeight_0500', 0, async function (done) {
+    it('ArkUI_Tabs_IndicatorHeight_0500', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorHeight_0300 start");
       
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "selfIndicatorHeight": -1
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1002,14 +1001,14 @@ export default function tabs() {
       }
       await Utils.sleep(2000);
       let defaultStrJson = getInspectorByKey('defaultSubTab');
-      let defaultObj = JSON.parse(defaultStrJson);
+      let defaultObj: ESObject = JSON.parse(defaultStrJson);
       console.info("[ArkUI_Tabs_IndicatorHeight_0500] default indicator:" + defaultObj.$attrs.tabBar.indicator);
-      let defaultIndicatorHeight = defaultObj.$attrs.tabBar.indicator.height;
+      let defaultIndicatorHeight: string = defaultObj.$attrs.tabBar.indicator.height;
 
       let strJson = getInspectorByKey('indicatorTest1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorHeight_0500] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorHeight = obj.$attrs.tabBar.indicator.height;
+      let indicatorHeight: string = obj.$attrs.tabBar.indicator.height;
       expect(indicatorHeight).assertEqual(defaultIndicatorHeight);
       done();
     });
@@ -1019,16 +1018,16 @@ export default function tabs() {
      * @tc.name      Tests the indicator.height property of the tabs component
      * @tc.desc      set indicator.height with different length's unit
      */
-    it('ArkUI_Tabs_IndicatorHeight_0600', 0, async function (done) {
+    it('ArkUI_Tabs_IndicatorHeight_0600', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorHeight_0300 start");
       
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "selfIndicatorHeightStr": "10px"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1039,18 +1038,18 @@ export default function tabs() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('indicatorTest2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorHeight_0600] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorHeight = obj.$attrs.tabBar.indicator.height;
+      let indicatorHeight: string = obj.$attrs.tabBar.indicator.height;
       expect(indicatorHeight).assertEqual("10.00px");
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "selfIndicatorHeightStr": "10fp"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1067,12 +1066,12 @@ export default function tabs() {
       expect(indicatorHeight).assertEqual("10.00fp");
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "selfIndicatorHeightStr": "10lpx"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1095,12 +1094,12 @@ export default function tabs() {
      * @tc.name      Tests the indicator.width property of the tabs component
      * @tc.desc      the default indicator.width parameter is "0.00vp".
      */
-    it('ArkUI_Tabs_IndicatorWidth_0100', 0, async function (done) {
+    it('ArkUI_Tabs_IndicatorWidth_0100', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorWidth_0100 start");
       let strJson = getInspectorByKey('indicatorTest5');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorWidth_0100] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorWidth = obj.$attrs.tabBar.indicator.width;
+      let indicatorWidth: string = obj.$attrs.tabBar.indicator.width;
       expect(indicatorWidth).assertEqual("0.00vp");
       done();
     });
@@ -1110,12 +1109,12 @@ export default function tabs() {
      * @tc.name      Tests the indicator.width property of the tabs component
      * @tc.desc      set indicator.width to number type
      */
-    it('ArkUI_Tabs_IndicatorWidth_0200', 0, async function (done) {
+    it('ArkUI_Tabs_IndicatorWidth_0200', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorWidth_0200 start");
       let strJson = getInspectorByKey('indicatorTest1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorWidth_0200] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorWidth = obj.$attrs.tabBar.indicator.width;
+      let indicatorWidth: string = obj.$attrs.tabBar.indicator.width;
       expect(indicatorWidth).assertEqual("30.00vp");
       done();
     });
@@ -1125,12 +1124,12 @@ export default function tabs() {
      * @tc.name      Tests the indicator.width property of the tabs component
      * @tc.desc      set indicator.width to string type
      */
-    it('ArkUI_Tabs_IndicatorWidth_0300', 0, async function (done) {
+    it('ArkUI_Tabs_IndicatorWidth_0300', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorWidth_0300 start");
       let strJson = getInspectorByKey('indicatorTest2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorWidth_0300] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorWidth = obj.$attrs.tabBar.indicator.width;
+      let indicatorWidth: string = obj.$attrs.tabBar.indicator.width;
       expect(indicatorWidth).assertEqual("30.00vp");
       done();
     });
@@ -1140,12 +1139,12 @@ export default function tabs() {
      * @tc.name      Tests the indicator.width property of the tabs component
      * @tc.desc      set indicator.width to Resource type
      */
-    it('ArkUI_Tabs_IndicatorWidth_0400', 0, async function (done) {
+    it('ArkUI_Tabs_IndicatorWidth_0400', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorWidth_0400 start");
       let strJson = getInspectorByKey('indicatorTest3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorWidth_0400] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorWidth = obj.$attrs.tabBar.indicator.width;
+      let indicatorWidth: string = obj.$attrs.tabBar.indicator.width;
       expect(indicatorWidth).assertEqual("30.00vp");
       done();
     });
@@ -1156,16 +1155,16 @@ export default function tabs() {
      * @tc.name      Tests the indicator.width property of the tabs component
      * @tc.desc      set indicator.color to abnormol value -1 then get the default value "0.00vp"
      */
-    it('ArkUI_Tabs_IndicatorWidth_0500', 0, async function (done) {
+    it('ArkUI_Tabs_IndicatorWidth_0500', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorWidth_0500 start");
       
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "selfIndicatorWidth": -1
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1176,9 +1175,9 @@ export default function tabs() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('indicatorTest1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorWidth_0300] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorWidth = obj.$attrs.tabBar.indicator.width;
+      let indicatorWidth: string = obj.$attrs.tabBar.indicator.width;
       expect(indicatorWidth).assertEqual("0.00vp");
       done();
     });
@@ -1188,16 +1187,16 @@ export default function tabs() {
      * @tc.name      Tests the indicator.width property of the tabs component
      * @tc.desc      set indicator.width with different length's unit
      */
-    it('ArkUI_Tabs_IndicatorWidth_0600', 0, async function (done) {
+    it('ArkUI_Tabs_IndicatorWidth_0600', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorHeight_0300 start");
       
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "selfIndicatorWidthStr": "10px"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1208,18 +1207,18 @@ export default function tabs() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('indicatorTest2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorWidth_0600] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorWidth = obj.$attrs.tabBar.indicator.width;
+      let indicatorWidth: string = obj.$attrs.tabBar.indicator.width;
       expect(indicatorWidth).assertEqual("10.00px");
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "selfIndicatorWidthStr": "10fp"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1236,12 +1235,12 @@ export default function tabs() {
       expect(indicatorWidth).assertEqual("10.00fp");
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "selfIndicatorWidthStr": "10lpx"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1264,12 +1263,12 @@ export default function tabs() {
      * @tc.name      Tests the indicator.borderRadius property of the tabs component
      * @tc.desc      the default indicator.borderRadius parameter is "0.00vp".
      */
-    it('ArkUI_Tabs_IndicatorBorderRadius_0100', 0, async function (done) {
+    it('ArkUI_Tabs_IndicatorBorderRadius_0100', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorBorderRadius_0100 start");
       let strJson = getInspectorByKey('indicatorTest5');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorBorderRadius_0100] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorBorderRadius = obj.$attrs.tabBar.indicator.borderRadius
+      let indicatorBorderRadius: string = obj.$attrs.tabBar.indicator.borderRadius
       expect(indicatorBorderRadius).assertEqual("0.00vp");
       done();
     });
@@ -1279,12 +1278,12 @@ export default function tabs() {
      * @tc.name      Tests the indicator.borderRadius property of the tabs component
      * @tc.desc      set indicator.borderRadius to number type
      */
-    it('ArkUI_Tabs_IndicatorBorderRadius_0200', 0, async function (done) {
+    it('ArkUI_Tabs_IndicatorBorderRadius_0200', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorBorderRadius_0200 start");
       let strJson = getInspectorByKey('indicatorTest1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorBorderRadius_0200] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorBorderRadius = obj.$attrs.tabBar.indicator.borderRadius
+      let indicatorBorderRadius: string = obj.$attrs.tabBar.indicator.borderRadius
       expect(indicatorBorderRadius).assertEqual("5.00vp");
       done();
     });
@@ -1294,12 +1293,12 @@ export default function tabs() {
      * @tc.name      Tests the indicator.borderRadius property of the tabs component
      * @tc.desc      set indicator.borderRadius to string type
      */
-    it('ArkUI_Tabs_IndicatorBorderRadius_0300', 0, async function (done) {
+    it('ArkUI_Tabs_IndicatorBorderRadius_0300', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorBorderRadius_0300 start");
       let strJson = getInspectorByKey('indicatorTest2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorBorderRadius_0300] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorBorderRadius = obj.$attrs.tabBar.indicator.borderRadius
+      let indicatorBorderRadius: string = obj.$attrs.tabBar.indicator.borderRadius
       expect(indicatorBorderRadius).assertEqual("5.00vp");
       done();
     });
@@ -1309,12 +1308,12 @@ export default function tabs() {
      * @tc.name      Tests the indicator.borderRadius property of the tabs component
      * @tc.desc      set indicator.borderRadius to Resource type
      */
-    it('ArkUI_Tabs_IndicatorBorderRadius_0400', 0, async function (done) {
+    it('ArkUI_Tabs_IndicatorBorderRadius_0400', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorBorderRadius_0400 start");
       let strJson = getInspectorByKey('indicatorTest3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorBorderRadius_0400] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorBorderRadius = obj.$attrs.tabBar.indicator.borderRadius
+      let indicatorBorderRadius: string = obj.$attrs.tabBar.indicator.borderRadius
       expect(indicatorBorderRadius).assertEqual("5.00vp");
       done();
     });
@@ -1324,16 +1323,16 @@ export default function tabs() {
      * @tc.name      Tests the indicator.borderRadius property of the tabs component
      * @tc.desc      set indicator.borderRadius to abnormol value -1 then get the default value "0.00vp"
      */
-    it('ArkUI_Tabs_IndicatorBorderRadius_0500', 0, async function (done) {
+    it('ArkUI_Tabs_IndicatorBorderRadius_0500', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorBorderRadius_0500 start");
       
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "selfIndicatorBorderRadius": -1
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1344,9 +1343,9 @@ export default function tabs() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('indicatorTest1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorBorderRadius_0500] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorBorderRadius = obj.$attrs.tabBar.indicator.borderRadius;
+      let indicatorBorderRadius: string = obj.$attrs.tabBar.indicator.borderRadius;
       expect(indicatorBorderRadius).assertEqual("0.00vp");
       done();
     });
@@ -1356,16 +1355,16 @@ export default function tabs() {
      * @tc.name      Tests the indicator.borderRadius property of the tabs component
      * @tc.desc      set indicator.borderRadius with different length's unit
      */
-    it('ArkUI_Tabs_IndicatorBorderRadius_0600', 0, async function (done) {
+    it('ArkUI_Tabs_IndicatorBorderRadius_0600', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorHeight_0300 start");
       
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "selfIndicatorBorderRadiusStr": "10px"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1376,18 +1375,18 @@ export default function tabs() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('indicatorTest2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorBorderRadius_0600] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorBorderRadius = obj.$attrs.tabBar.indicator.borderRadius;
+      let indicatorBorderRadius: string = obj.$attrs.tabBar.indicator.borderRadius;
       expect(indicatorBorderRadius).assertEqual("10.00px");
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "selfIndicatorBorderRadiusStr": "10fp"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1404,12 +1403,12 @@ export default function tabs() {
       expect(indicatorBorderRadius).assertEqual("10.00fp");
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "selfIndicatorBorderRadiusStr": "10lpx"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1432,15 +1431,15 @@ export default function tabs() {
      * @tc.name      Tests the indicator.board.borderRadius property of the tabs component
      * @tc.desc      the default indicator.height parameter is "8.00vp".
      */
-    it('ArkUI_Tabs_SubTabBorderRadius_0100', 0, async function (done) {
+    it('ArkUI_Tabs_SubTabBorderRadius_0100', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_SubTabBorderRadius_0100 start");
       let defaultStrJson = getInspectorByKey('defaultSubTab');
-      let defaultObj = JSON.parse(defaultStrJson);
+      let defaultObj: ESObject = JSON.parse(defaultStrJson);
       console.info("[ArkUI_Tabs_SubTabBorderRadius_0100] default subTabBorderRadius:" + defaultObj.$attrs.tabBar.board.borderRadius);
-      let defaultSubTabBorderRadius = defaultObj.$attrs.tabBar.board.borderRadius;
+      let defaultSubTabBorderRadius: string = defaultObj.$attrs.tabBar.board.borderRadius;
 
       let strJson = getInspectorByKey('indicatorTest5');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_SubTabBorderRadius_0100] subTabBorderRadius:" + obj.$attrs.tabBar.board.borderRadius);
       expect(obj.$attrs.tabBar.board.borderRadius).assertEqual(defaultSubTabBorderRadius);
       done();
@@ -1451,10 +1450,10 @@ export default function tabs() {
      * @tc.name      Tests the indicator.board.borderRadius property of the tabs component
      * @tc.desc      set indicator.board.borderRadius to number type
      */
-    it('ArkUI_Tabs_SubTabBorderRadius_0200', 0, async function (done) {
+    it('ArkUI_Tabs_SubTabBorderRadius_0200', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_SubTabBorderRadius_0200 start");
       let strJson = getInspectorByKey('indicatorTest1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_SubTabBorderRadius_0200] subTabBorderRadius:" + obj.$attrs.tabBar.board.borderRadius);
       expect(obj.$attrs.tabBar.board.borderRadius).assertEqual("20.00vp");
       done();
@@ -1465,10 +1464,10 @@ export default function tabs() {
      * @tc.name      Tests the indicator.board.borderRadius property of the tabs component
      * @tc.desc      set indicator.board.borderRadius to string type
      */
-    it('ArkUI_Tabs_SubTabBorderRadius_0300', 0, async function (done) {
+    it('ArkUI_Tabs_SubTabBorderRadius_0300', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_SubTabBorderRadius_0300 start");
       let strJson = getInspectorByKey('indicatorTest2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_SubTabBorderRadius_0300] subTabBorderRadius:" + obj.$attrs.tabBar.board.borderRadius);
       expect(obj.$attrs.tabBar.board.borderRadius).assertEqual("20.00vp");
       done();
@@ -1479,10 +1478,10 @@ export default function tabs() {
      * @tc.name      Tests the indicator.board.borderRadius property of the tabs component
      * @tc.desc      set indicator.board.borderRadius to Resource type
      */
-    it('ArkUI_Tabs_SubTabBorderRadius_0400', 0, async function (done) {
+    it('ArkUI_Tabs_SubTabBorderRadius_0400', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_SubTabBorderRadius_0400 start");
       let strJson = getInspectorByKey('indicatorTest3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_SubTabBorderRadius_0400] subTabBorderRadius:" + obj.$attrs.tabBar.board.borderRadius);
       expect(obj.$attrs.tabBar.board.borderRadius).assertEqual("20.00vp");
       done();
@@ -1493,16 +1492,16 @@ export default function tabs() {
      * @tc.name      Tests the indicator.board.borderRadius property of the tabs component
      * @tc.desc      set indicator.board.borderRadius to abnormol value -1 then get the default value "8.00vp"
      */
-    it('ArkUI_Tabs_SubTabBorderRadius_0500', 0, async function (done) {
+    it('ArkUI_Tabs_SubTabBorderRadius_0500', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_SubTabBorderRadius_0500 start");
       
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "selfSubTabBorderRadius": -1
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1513,12 +1512,12 @@ export default function tabs() {
       }
       await Utils.sleep(2000);
       let defaultStrJson = getInspectorByKey('defaultSubTab');
-      let defaultObj = JSON.parse(defaultStrJson);
+      let defaultObj: ESObject = JSON.parse(defaultStrJson);
       console.info("[ArkUI_Tabs_SubTabBorderRadius_0500] default subTabBorderRadius:" + defaultObj.$attrs.tabBar.board.borderRadius);
-      let defaultSubTabBorderRadius = defaultObj.$attrs.tabBar.board.borderRadius;
+      let defaultSubTabBorderRadius: string = defaultObj.$attrs.tabBar.board.borderRadius;
 
       let strJson = getInspectorByKey('indicatorTest1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_SubTabBorderRadius_0500] subTabBorderRadius:" + obj.$attrs.tabBar.board.borderRadius);
       expect(obj.$attrs.tabBar.board.borderRadius).assertEqual(defaultSubTabBorderRadius);
       done();
@@ -1529,16 +1528,16 @@ export default function tabs() {
      * @tc.name      Tests the indicator.border.borderRadius property of the tabs component
      * @tc.desc      set indicator.border.borderRadius with different length's unit
      */
-    it('ArkUI_Tabs_SubTabBorderRadius_0600', 0, async function (done) {
+    it('ArkUI_Tabs_SubTabBorderRadius_0600', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorHeight_0300 start");
       
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "selfSubTabBorderRadiusStr": "10px"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1549,17 +1548,17 @@ export default function tabs() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('indicatorTest2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_SubTabBorderRadius_0600] indicator:" + obj.$attrs.tabBar.board.borderRadius);
       expect(obj.$attrs.tabBar.board.borderRadius).assertEqual("10.00px");
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "selfSubTabBorderRadiusStr": "10fp"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1575,12 +1574,12 @@ export default function tabs() {
       expect(obj.$attrs.tabBar.board.borderRadius).assertEqual("10.00fp");
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "selfSubTabBorderRadiusStr": "10lpx"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1602,16 +1601,16 @@ export default function tabs() {
      * @tc.name      Tests the indicator SelectedMode.BOARD property of the tabs component
      * @tc.desc      set indicator property with SelectedMode.BOARD
      */
-    it('ArkUI_Tabs_SubTabBorderRadius_0700', 0, async function (done) {
+    it('ArkUI_Tabs_SubTabBorderRadius_0700', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_SubTabBorderRadius_0700 start");
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "selfSubTabBorderRadius": 20,
             "selfSelectedMode": SelectedMode.BOARD
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1622,7 +1621,7 @@ export default function tabs() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('indicatorTest1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_SubTabBorderRadius_0700] subTabBorderRadius:" + obj.$attrs.tabBar.board.borderRadius);
       expect(obj.$attrs.tabBar.board.borderRadius).assertEqual("20.00vp");
       expect(obj.$attrs.tabBar.selectedMode).assertEqual("SelectedMode.BOARD");
@@ -1634,10 +1633,10 @@ export default function tabs() {
      * @tc.name      Tests the indicator.selectedMode property of the tabs component
      * @tc.desc      the default indicator.selectedMode parameter is "SelectedMode.INDICATOR".
      */
-    it('ArkUI_Tabs_SelectedMode_0100', 0, async function (done) {
+    it('ArkUI_Tabs_SelectedMode_0100', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_SelectedMode_0100 start");
       let strJson = getInspectorByKey('indicatorTest5');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_SelectedMode_0100] selectedMode:" + obj.$attrs.tabBar.selectedMode);
       expect(obj.$attrs.tabBar.selectedMode).assertEqual("SelectedMode.INDICATOR");
       done();
@@ -1648,11 +1647,11 @@ export default function tabs() {
      * @tc.name      Tests the indicator.selectedMode property of the tabs component
      * @tc.desc      set indicator.selectedMode to SelectedMode.INDICATOR
      */
-    it('ArkUI_Tabs_SelectedMode_0200', 0, async function (done) {
+    it('ArkUI_Tabs_SelectedMode_0200', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_SelectedMode_0200 start");
       
       let strJson = getInspectorByKey('indicatorTest1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_SelectedMode_0200] selectedMode:" + obj.$attrs.tabBar.selectedMode);
       expect(obj.$attrs.tabBar.selectedMode).assertEqual("SelectedMode.INDICATOR");
       done();
@@ -1663,17 +1662,17 @@ export default function tabs() {
      * @tc.name      Tests the indicator.selectedMode property of the tabs component
      * @tc.desc      set indicator.selectedMode to SelectedMode.BOARD
      */
-    it('ArkUI_Tabs_SelectedMode_0300', 0, async function (done) {
+    it('ArkUI_Tabs_SelectedMode_0300', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_SelectedMode_0300 start");
       
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "selfIndicatorHeight": 10,
             "selfSelectedMode": SelectedMode.BOARD
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1684,7 +1683,7 @@ export default function tabs() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('indicatorTest1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_SelectedMode_0300] selectedMode:" + obj.$attrs.tabBar.selectedMode);
       expect(obj.$attrs.tabBar.selectedMode).assertEqual("SelectedMode.BOARD");
       done();
@@ -1695,17 +1694,17 @@ export default function tabs() {
      * @tc.name      Tests the indicator.marginTop property of the tabs component
      * @tc.desc      the default indicator.marginTop parameter is "8.00vp".
      */
-    it('ArkUI_Tabs_IndicatorMarginTop_0100', 0, async function (done) {
+    it('ArkUI_Tabs_IndicatorMarginTop_0100', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorMarginTop_0100 start");
       let defaultStrJson = getInspectorByKey('defaultSubTab');
-      let defaultObj = JSON.parse(defaultStrJson);
+      let defaultObj: ESObject = JSON.parse(defaultStrJson);
       console.info("[ArkUI_Tabs_IndicatorMarginTop_0100] default indicator:" + defaultObj.$attrs.tabBar.indicator);
-      let defaultIndicatorMarginTop = defaultObj.$attrs.tabBar.indicator.marginTop;
+      let defaultIndicatorMarginTop: string = defaultObj.$attrs.tabBar.indicator.marginTop;
 
       let strJson = getInspectorByKey('indicatorTest4');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorMarginTop_0100] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorMarginTop = obj.$attrs.tabBar.indicator.marginTop;
+      let indicatorMarginTop: string = obj.$attrs.tabBar.indicator.marginTop;
       expect(indicatorMarginTop).assertEqual(defaultIndicatorMarginTop);
       done();
     });
@@ -1715,12 +1714,12 @@ export default function tabs() {
      * @tc.name      Tests the indicator.marginTop property of the tabs component
      * @tc.desc      set indicator.marginTop to number type.
      */
-    it('ArkUI_Tabs_IndicatorMarginTop_0200', 0, async function (done) {
+    it('ArkUI_Tabs_IndicatorMarginTop_0200', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorMarginTop_0200 start");
       let strJson = getInspectorByKey('indicatorTest1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorMarginTop_0200] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorMarginTop = obj.$attrs.tabBar.indicator.marginTop;
+      let indicatorMarginTop: string = obj.$attrs.tabBar.indicator.marginTop;
       expect(indicatorMarginTop).assertEqual("10.00vp");
       done();
     });
@@ -1730,12 +1729,12 @@ export default function tabs() {
      * @tc.name      Tests the indicator.marginTop property of the tabs component
      * @tc.desc      set indicator.width to string type.
      */
-    it('ArkUI_Tabs_IndicatorMarginTop_0300', 0, async function (done) {
+    it('ArkUI_Tabs_IndicatorMarginTop_0300', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorMarginTop_0300 start");
       let strJson = getInspectorByKey('indicatorTest2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorMarginTop_0300] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorMarginTop = obj.$attrs.tabBar.indicator.marginTop;
+      let indicatorMarginTop: string = obj.$attrs.tabBar.indicator.marginTop;
       expect(indicatorMarginTop).assertEqual("10.00vp");
       done();
     });
@@ -1745,12 +1744,12 @@ export default function tabs() {
      * @tc.name      Tests the indicator.marginTop property of the tabs component
      * @tc.desc      set indicator.width to Resource type.
      */
-    it('ArkUI_Tabs_IndicatorMarginTop_0400', 0, async function (done) {
+    it('ArkUI_Tabs_IndicatorMarginTop_0400', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorMarginTop_0400 start");
       let strJson = getInspectorByKey('indicatorTest3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorMarginTop_0400] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorMarginTop = obj.$attrs.tabBar.indicator.marginTop;
+      let indicatorMarginTop: string = obj.$attrs.tabBar.indicator.marginTop;
       expect(indicatorMarginTop).assertEqual("10.00vp");
       done();
     });
@@ -1760,17 +1759,17 @@ export default function tabs() {
      * @tc.name      Tests the indicator.marginTop property of the tabs component
      * @tc.desc      set indicator.marginTop to abnormol value -1 then get the default value "8.00vp"
      */
-    it('ArkUI_Tabs_IndicatorMarginTop_0500', 0, async function (done) {
+    it('ArkUI_Tabs_IndicatorMarginTop_0500', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorMarginTop_0500 start");
       
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "selfIndicatorHeight": 10,
             "selfMarginTop": -1
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1781,14 +1780,14 @@ export default function tabs() {
       }
       await Utils.sleep(2000);
       let defaultStrJson = getInspectorByKey('defaultSubTab');
-      let defaultObj = JSON.parse(defaultStrJson);
+      let defaultObj: ESObject = JSON.parse(defaultStrJson);
       console.info("[ArkUI_Tabs_IndicatorMarginTop_0500] default indicator:" + defaultObj.$attrs.tabBar.indicator);
-      let defaultIndicatorMarginTop = defaultObj.$attrs.tabBar.indicator.marginTop;
+      let defaultIndicatorMarginTop: string = defaultObj.$attrs.tabBar.indicator.marginTop;
 
       let strJson = getInspectorByKey('indicatorTest1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorMarginTop_0500] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorMarginTop = obj.$attrs.tabBar.indicator.marginTop;
+      let indicatorMarginTop: string = obj.$attrs.tabBar.indicator.marginTop;
       expect(indicatorMarginTop).assertEqual(defaultIndicatorMarginTop);
       done();
     });
@@ -1798,16 +1797,16 @@ export default function tabs() {
      * @tc.name      Tests the indicator.marginTop property of the tabs component
      * @tc.desc      set indicator.marginTop with different length's unit
      */
-    it('ArkUI_Tabs_IndicatorMarginTop_0600', 0, async function (done) {
+    it('ArkUI_Tabs_IndicatorMarginTop_0600', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_IndicatorMarginTop_0600 start");
       
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "selfMarginTopStr": "10px"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1818,18 +1817,18 @@ export default function tabs() {
       }
       await Utils.sleep(2000);
       let strJson = getInspectorByKey('indicatorTest2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ArkUI_Tabs_IndicatorMarginTop_0600] indicator:" + obj.$attrs.tabBar.indicator);
-      let indicatorMarginTop = obj.$attrs.tabBar.indicator.marginTop;
+      let indicatorMarginTop: string = obj.$attrs.tabBar.indicator.marginTop;
       expect(indicatorMarginTop).assertEqual("10.00px");
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "selfMarginTopStr": "10fp"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }
@@ -1846,12 +1845,12 @@ export default function tabs() {
       expect(indicatorMarginTop).assertEqual("10.00fp");
 
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "selfMarginTopStr": "10lpx"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 183,
           priority: events_emitter.EventPriority.LOW
         }

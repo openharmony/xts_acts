@@ -36,13 +36,13 @@ struct FormComponentPage {
         .dimension(this.dimension)
         .allowUpdate(true)
         .visibility(Visibility.Visible)
-        .onAcquired((e) => {
+        .onAcquired((e: FormCallbackInfo) => {
           console.log('onAcquired id : ' + e.id)
         })
         .onRouter(() => {
           console.log('onRouter : ')
         })
-        .onError((error) => {
+        .onError((error: ESObject) => {
           console.log('error code :' + error.errcode);
           console.log('error msg :' + error.msg);
         })

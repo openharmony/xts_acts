@@ -13,15 +13,15 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function ScrollToIndexForWaterFlowJsunit02() {
   describe('ScrollToIndexForWaterFlowJsunit02', () => {
-    beforeEach(async function (done) {
+    beforeEach(async (done: Function) => {
       console.info("ScrollToIndexForWaterFlow02 beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Scroll/ScrollToIndex/ScrollToIndexForWaterFlow02',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Scroll/ScrollToIndex/ScrollToIndexForWaterFlow02',
       }
       try {
         router.clear();
@@ -49,7 +49,7 @@ export default function ScrollToIndexForWaterFlowJsunit02() {
      * @tc.type: Function
      * @tc.level   2
      */
-    it('ScrollToIndexForWaterFlow02_0100', 0, async (done)=> {
+    it('ScrollToIndexForWaterFlow02_0100', 0, async (done: Function) => {
       console.info('[ScrollToIndexForWaterFlow02_0100] START');
       let driver = Driver.create();
 
@@ -81,7 +81,7 @@ export default function ScrollToIndexForWaterFlowJsunit02() {
      * @tc.type: Function
      * @tc.level   2
      */
-    it('ScrollToIndexForWaterFlow02_0200', 0, async (done)=> {
+    it('ScrollToIndexForWaterFlow02_0200', 0, async (done: Function) => {
       console.info('[ScrollToIndexForWaterFlow02_0200] START');
       let driver = Driver.create();
 

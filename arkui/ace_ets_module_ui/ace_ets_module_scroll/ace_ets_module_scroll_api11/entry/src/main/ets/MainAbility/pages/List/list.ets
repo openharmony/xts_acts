@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,7 +24,7 @@ struct ListExample {
   @State edgeEffect: EdgeEffect = EdgeEffect.None;
   @State chainAnimation: boolean = false;
   @State strokeWidth: number = 2.000000;
-  @State color: string = 0xFFFFFF;
+  @State color: string = '#FFFFFF';
   @State startMargin: number = 20.000000;
   @State endMargin: number = 20.000000;
 
@@ -66,17 +65,17 @@ struct ListExample {
     console.info("[stateChangCallBack] stateChangCallBack");
     if (eventData != null) {
       console.info("[stateChangCallBack] state change called:" + JSON.stringify(eventData));
-      if (eventData.data.listDirection != null) {
-        this.listDirection = eventData.data.listDirection;
+      if (eventData.data?.listDirection != null) {
+        this.listDirection = eventData.data?.listDirection;
       }
-      if (eventData.data.editMode != null) {
-        this.editMode = eventData.data.editMode;
+      if (eventData.data?.editMode != null) {
+        this.editMode = eventData.data?.editMode;
       }
-      if (eventData.data.edgeEffect != null) {
-        this.edgeEffect = eventData.data.edgeEffect;
+      if (eventData.data?.edgeEffect != null) {
+        this.edgeEffect = eventData.data?.edgeEffect;
       }
-      if (eventData.data.chainAnimation != null) {
-        this.chainAnimation = eventData.data.chainAnimation;
+      if (eventData.data?.chainAnimation != null) {
+        this.chainAnimation = eventData.data?.chainAnimation;
       }
     }
   }
@@ -84,17 +83,17 @@ struct ListExample {
     console.info("[stateChangCallBackTwo] stateChangCallBack");
     if (eventData != null) {
       console.info("[stateChangCallBackTwo] state change called:" + JSON.stringify(eventData));
-      if (eventData.data.strokeWidth != null) {
-        this.strokeWidth = eventData.data.strokeWidth;
+      if (eventData.data?.strokeWidth != null) {
+        this.strokeWidth = eventData.data?.strokeWidth;
       }
-      if (eventData.data.color != null) {
-        this.color = eventData.data.color;
+      if (eventData.data?.color != null) {
+        this.color = eventData.data?.color;
       }
-      if (eventData.data.startMargin != null) {
-        this.startMargin = eventData.data.startMargin;
+      if (eventData.data?.startMargin != null) {
+        this.startMargin = eventData.data?.startMargin;
       }
-      if (eventData.data.endMargin != null) {
-        this.endMargin = eventData.data.endMargin;
+      if (eventData.data?.endMargin != null) {
+        this.endMargin = eventData.data?.endMargin;
       }
     }
   }
@@ -139,7 +138,6 @@ struct ListExample {
           console.info(this.arr[index] + 'Delete')
           this.arr.splice(index, 1)
           console.info(JSON.stringify(this.arr))
-          this.editFlag = false
           return true
         })
         .width('90%')

@@ -19,8 +19,8 @@ import CommonFunc from '../../../MainAbility/common/Common';
 import { Driver, ON } from '@ohos.UiTest';
 
 export default function tabsOnContentWillChangeIndex14JsunitTest() {
-  describe('tabsOnContentWillChangeIndex14JsunitTest', function () {
-    beforeEach(async function (done) {
+  describe('tabsOnContentWillChangeIndex14JsunitTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("tabsOnContentWillChangeIndex14JsunitTest beforeEach start");
       try {
         router.clear();
@@ -38,7 +38,7 @@ export default function tabsOnContentWillChangeIndex14JsunitTest() {
       console.info("tabsOnContentWillChangeIndex14JsunitTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("tabsOnContentWillChangeIndex14JsunitTest after each called");
     });
@@ -50,7 +50,7 @@ export default function tabsOnContentWillChangeIndex14JsunitTest() {
      * @tc.level  3
      */
 
-    it('tabsOnContentWillChangeJsunitTest_0140', 0, async function (done) {
+    it('tabsOnContentWillChangeJsunitTest_0140', 0, async (done: Function) => {
       console.info('tabsOnContentWillChangeIndex14JsunitTest START');
 
       let driver = Driver.create();
@@ -59,12 +59,12 @@ export default function tabsOnContentWillChangeIndex14JsunitTest() {
       await CommonFunc.sleep(2000);
 
       let strJson1 = getInspectorByKey('currentIndex14x');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[tabsOnContentWillChangeJsunitTest_0140] component obj is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('0');
 
       let strJson2 = getInspectorByKey('onTabBarClick14x');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[tabsOnContentWillChangeJsunitTest_0140] component obj is: " + JSON.stringify(obj2));
       expect(obj2.$attrs.content).assertEqual('3');
 

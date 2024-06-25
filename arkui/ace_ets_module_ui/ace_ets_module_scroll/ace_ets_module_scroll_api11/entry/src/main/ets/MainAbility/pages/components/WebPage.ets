@@ -55,8 +55,8 @@ struct WebComponent {
   @State getHitTest: HitTestType = HitTestType.Unknown
   controller: WebController = new WebController();
   cookie: WebCookie = new WebCookie()
-  testObj = {
-    test: (data1, data2, data3) => {
+  testObj: ESObject = {
+    test: (data1: ESObject, data2: ESObject, data3: ESObject) => {
       console.log('ets test web  : ' + data1)
       console.log('ets test web  : ' + data2)
       console.log('ets test web  : ' + data3)
@@ -367,21 +367,21 @@ struct WebComponent {
           controller: this.controller,
         })
         .password(this.password)
-        .onPageBegin((e) => {
+        .onPageBegin((e: ESObject) => {
           console.log("webTest : onPageBegin: " + e.url);
         })
-        .onPageEnd((e) => {
+        .onPageEnd((e: ESObject) => {
           console.log("webTest : onPageEnd: " + e.url);
           // this.controller.runJavaScript('test()')
 
         })
-        .onProgressChange((e) => {
+        .onProgressChange((e: ESObject) => {
           console.log("webTest : onProgressChange: " + e.newProgress);
         })
-        .onTitleReceive((e) => {
+        .onTitleReceive((e: ESObject) => {
           console.log("webTest : onProgressChange: " + e.title);
         })
-        .onDownloadStart((event) => {
+        .onDownloadStart((event: ESObject) => {
           console.log("webTest : onDownloadStart url : " + event.url);
           console.log("webTest : onDownloadStart userAgent : " + event.userAgent);
           console.log("webTest : onDownloadStart contentDisposition : " + event.contentDisposition);
@@ -391,7 +391,7 @@ struct WebComponent {
         .onGeolocationHide(() => {
           console.log("webTest : onGeolocationHide: ");
         })
-        .onGeolocationShow((e) => {
+        .onGeolocationShow((e: ESObject) => {
           console.log("webTest : onDownloadStart origin : " + e.origin);
           e.geolocation.invoke(e.origin, true, true)
           console.log("webTest : onDownloadStart origin : " + e.geolocation.invoke);
@@ -399,7 +399,7 @@ struct WebComponent {
         .onRequestSelected(() => {
           console.log("webTest : onRequestSelected: ");
         })
-        .onAlert((event) => {
+        .onAlert((event: ESObject) => {
           console.log("webTest : onAlert: " + event.url);
           console.log("webTest : onAlert: " + event.message);
           console.log("webTest : onAlert .result : " + event.result);
@@ -407,14 +407,14 @@ struct WebComponent {
           console.log("webTest : onAlert .result : " + event.result.handleConfirm());
           return true;
         })
-        .onBeforeUnload((event) => {
+        .onBeforeUnload((event: ESObject) => {
           console.log("webTest : onBeforeUnload: " + event.message);
           console.log("webTest : onBeforeUnload .result : " + event.result);
           console.log("webTest : onBeforeUnload .result : " + event.result.handleCancel());
           console.log("webTest : onBeforeUnload .result : " + event.result.handleConfirm());
           return true;
         })
-        .onConfirm((event) => {
+        .onConfirm((event: ESObject) => {
           console.log("webTest : onConfirm: " + event.url);
           console.log("webTest : onConfirm: " + event.message);
           console.log("webTest : onConfirm .result : " + event.result);
@@ -422,12 +422,12 @@ struct WebComponent {
           console.log("webTest : onConfirm .result : " + event.result.handleConfirm());
           return true;
         })
-        .onConsole((event) => {
+        .onConsole((event: ESObject) => {
           console.log("webTest : onConsole .message : " + event.message);
           console.log("webTest : onConsole .message : " + event.message.getMessage());
           console.log("webTest : onConsole .message : " + event.message.getSourceId());
           console.log("webTest : onConsole .message : " + event.message.getLineNumber());
-          let level = event.message.getMessageLevel()
+          let level: MessageLevel = event.message.getMessageLevel()
           if (level == MessageLevel.Debug) {
             console.log("webTest : onConsole: level Debug");
           } else if (level == MessageLevel.Error) {
@@ -442,7 +442,7 @@ struct WebComponent {
           }
           return true;
         })
-        .onErrorReceive((e) => {
+        .onErrorReceive((e: ESObject) => {
           console.log("webTest : onErrorReceive .request : " + e.request);
           console.log("webTest : onErrorReceive .request : " + e.request.getRequestHeader());
           console.log("webTest : onErrorReceive .request : " + e.request.getRequestUrl());
@@ -454,7 +454,7 @@ struct WebComponent {
           console.log("webTest : onErrorReceive .error : " + e.error.getErrorInfo());
           console.log("webTest : onErrorReceive .error : " + e.error.getErrorCode());
         })
-        .onHttpErrorReceive((e) => {
+        .onHttpErrorReceive((e: ESObject) => {
           console.log("webTest : onHttpErrorReceive .request : " + e.request);
           console.log("webTest : onHttpErrorReceive .request : " + e.request.getRequestHeader());
           console.log("webTest : onHttpErrorReceive .request : " + e.request.getRequestUrl());
@@ -469,29 +469,29 @@ struct WebComponent {
           // console.log("webTest : onHttpErrorReceive .error : " + e.error.getErrorInfo());
           // console.log("webTest : onHttpErrorReceive .error : " + e.error.getErrorCode());
         })
-        .onRefreshAccessedHistory((e) => {
+        .onRefreshAccessedHistory((e: ESObject) => {
           console.log("webTest : onRefreshAccessedHistory .url : " + e.url);
           console.log("webTest : onRefreshAccessedHistory .refreshed : " + 'e.refreshed');
-        })// .onUrlLoadIntercept((e) => {
+        })// .onUrlLoadIntercept((e: ESObject) => {
           //   console.log("webTest : onUrlLoadIntercept .data : " + e.data);
           // })
-        .onLoadIntercept((event) => {
+        .onLoadIntercept((event: ESObject) => {
           console.log('url:' + event.data.getRequestUrl())
           console.log('isMainFrame:' + event.data.isMainFrame())
           console.log('isRedirect:' + event.data.isRedirect())
           console.log('isRequestGesture:' + event.data.isRequestGesture())
           return true
         })
-        .onSslErrorEventReceive((e) => {
+        .onSslErrorEventReceive((e: ESObject) => {
           console.log("webTest : onSslErrorReceive .handle : " + e.handler.handleConfirm());
           console.log("webTest : onSslErrorReceive .error : " + e.error);
         })
-        .onRenderExited((e) => {
+        .onRenderExited((e: ESObject) => {
           console.log("webTest : onRenderExited .renderExitReason : " + JSON.stringify(e.renderExitReason));
         })
-        .onFileSelectorShow((e) => {
-          console.log("webTest : onFileSelectorShow .callback : " + e.callback);
-          console.log("webTest : onFileSelectorShow .fileSelector : " + e.fileSelector);
+        .onFileSelectorShow((e: ESObject) => {
+          console.log("webTest : onFileSelectorShow .callback : " + e?.callback);
+          console.log("webTest : onFileSelectorShow .fileSelector : " + e?.fileSelector);
         })
 
     }
