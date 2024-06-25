@@ -562,6 +562,232 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixMapPointsMultipleCalls, TestSize.Lev
     OH_Drawing_MatrixDestroy(matrix);
 }
 
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_2100
+ * @tc.name: testMatrixMapRectNormal
+ * @tc.desc: test for testMatrixMapRectNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixMapRectNormal, TestSize.Level0) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixMapRect, src and dst are the same
+    OH_Drawing_Rect *src = OH_Drawing_RectCreate(0, 0, 100, 100);
+    OH_Drawing_Rect *dst = OH_Drawing_RectCreate(0, 0, 100, 100);
+    OH_Drawing_MatrixMapRect(matrix, src, dst);
+    // 3. OH_Drawing_MatrixMapRect, src and dst are different
+    OH_Drawing_Rect *src2 = OH_Drawing_RectCreate(0, 0, 100, 100);
+    OH_Drawing_Rect *dst2 = OH_Drawing_RectCreate(0, 0, 200, 200);
+    OH_Drawing_MatrixMapRect(matrix, src2, dst2);
+    // 4. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+    OH_Drawing_RectDestroy(src);
+    OH_Drawing_RectDestroy(dst);
+    OH_Drawing_RectDestroy(src2);
+    OH_Drawing_RectDestroy(dst2);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_2101
+ * @tc.name: testMatrixMapRectNull
+ * @tc.desc: test for testMatrixMapRectNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixMapRectNull, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixMapRect, the first parameter is nullptr, check the error code with OH_Drawing_ErrorCodeGet
+    OH_Drawing_Rect *src = OH_Drawing_RectCreate(0, 0, 100, 100);
+    OH_Drawing_Rect *dst = OH_Drawing_RectCreate(0, 0, 100, 100);
+    OH_Drawing_MatrixMapRect(nullptr, src, dst);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 3. OH_Drawing_MatrixMapRect, the second parameter is nullptr, check the error code with OH_Drawing_ErrorCodeGet
+    OH_Drawing_MatrixMapRect(matrix, nullptr, dst);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 4. OH_Drawing_MatrixMapRect, the third parameter is nullptr, check the error code with OH_Drawing_ErrorCodeGet
+    OH_Drawing_MatrixMapRect(matrix, src, nullptr);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 5. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+    OH_Drawing_RectDestroy(src);
+    OH_Drawing_RectDestroy(dst);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_2103
+ * @tc.name: testMatrixMapRectMultipleCalls
+ * @tc.desc: test for testMatrixMapRectMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixMapRectMultipleCalls, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. Call OH_Drawing_MatrixMapRect 10 times with different src and dst
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_real_distribution<float> dis(100, 200);
+    for (int i = 0; i < 10; i++) {
+        OH_Drawing_Rect *src = OH_Drawing_RectCreate(0, 0, dis(gen), dis(gen));
+        OH_Drawing_Rect *dst = OH_Drawing_RectCreate(0, 0, dis(gen), dis(gen));
+        OH_Drawing_MatrixMapRect(matrix, src, dst);
+        OH_Drawing_RectDestroy(src);
+        OH_Drawing_RectDestroy(dst);
+    }
+    // 3. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_2200
+ * @tc.name: testMatrixIsEqualNormal
+ * @tc.desc: test for testMatrixIsEqualNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixIsEqualNormal, TestSize.Level0) {
+    // 1. OH_Drawing_MatrixIsEqual with the same matrix
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    OH_Drawing_MatrixSetMatrix(matrix, 1, 2, 3, 4, 5, 6, 7, 8, 9);
+    OH_Drawing_Matrix *matrix2 = OH_Drawing_MatrixCreate();
+    OH_Drawing_MatrixSetMatrix(matrix2, 1, 2, 3, 4, 5, 6, 7, 8, 9);
+    bool ret = OH_Drawing_MatrixIsEqual(matrix, matrix2);
+    EXPECT_EQ(ret, true);
+    // 2. OH_Drawing_MatrixIsEqual with different matrices
+    OH_Drawing_Matrix *matrix3 = OH_Drawing_MatrixCreate();
+    OH_Drawing_MatrixSetMatrix(matrix3, 2, 2, 3, 4, 5, 6, 7, 8, 9);
+    ret = OH_Drawing_MatrixIsEqual(matrix, matrix3);
+    EXPECT_EQ(ret, false);
+    // 3. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+    OH_Drawing_MatrixDestroy(matrix2);
+    OH_Drawing_MatrixDestroy(matrix3);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_2201
+ * @tc.name: testMatrixIsEqualNull
+ * @tc.desc: test for testMatrixIsEqualNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixIsEqualNull, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    OH_Drawing_MatrixSetMatrix(matrix, 1, 2, 3, 4, 5, 6, 7, 8, 9);
+    // 2. OH_Drawing_MatrixIsEqual, the first parameter is nullptr, check the error code with OH_Drawing_ErrorCodeGet
+    OH_Drawing_MatrixIsEqual(nullptr, matrix);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 3. OH_Drawing_MatrixIsEqual, the second parameter is nullptr, check the error code with OH_Drawing_ErrorCodeGet
+    OH_Drawing_MatrixIsEqual(matrix, nullptr);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 4. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_2202
+ * @tc.name: testMatrixIsEqualMultipleCalls
+ * @tc.desc: test for testMatrixIsEqualMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixIsEqualMultipleCalls, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    OH_Drawing_Matrix *matrix2 = OH_Drawing_MatrixCreate();
+    // 2. Call OH_Drawing_MatrixIsEqual 10 times with alternating different or same matrices
+    for (int i = 0; i < 10; i++) {
+        if (i % 2 == 0) {
+            OH_Drawing_MatrixSetMatrix(matrix, 1, 2, 3, 4, 5, 6, 7, 8, 9);
+            OH_Drawing_MatrixSetMatrix(matrix2, 1, 2, 3, 4, 5, 6, 7, 8, 9);
+            bool ret = OH_Drawing_MatrixIsEqual(matrix, matrix2);
+            EXPECT_EQ(ret, true);
+        } else {
+            OH_Drawing_MatrixSetMatrix(matrix, 1, 2, 3, 4, 5, 6, 7, 8, 9);
+            OH_Drawing_MatrixSetMatrix(matrix2, 2, 2, 3, 4, 5, 6, 7, 8, 9);
+            bool ret = OH_Drawing_MatrixIsEqual(matrix, matrix2);
+            EXPECT_EQ(ret, false);
+        }
+    }
+    // 3. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+    OH_Drawing_MatrixDestroy(matrix2);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_2300
+ * @tc.name: testMatrixIsIdentityNormal
+ * @tc.desc: test for testMatrixIsIdentityNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixIsIdentityNormal, TestSize.Level0) {
+    // 1. OH_Drawing_MatrixIsIdentity with an identity matrix
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    bool ret = OH_Drawing_MatrixIsIdentity(matrix);
+    EXPECT_EQ(ret, true);
+    // 2. OH_Drawing_MatrixIsIdentity with a non-identity matrix
+    OH_Drawing_MatrixSetMatrix(matrix, 1, 2, 3, 4, 5, 6, 7, 8, 9);
+    ret = OH_Drawing_MatrixIsIdentity(matrix);
+    EXPECT_EQ(ret, false);
+    // 3. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_2301
+ * @tc.name: testMatrixIsIdentityNull
+ * @tc.desc: test for testMatrixIsIdentityNull.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixIsIdentityNull, TestSize.Level3) {
+    // 1. OH_Drawing_MatrixCreate
+    OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+    // 2. OH_Drawing_MatrixIsIdentity with nullptr as parameter, check the error code with OH_Drawing_ErrorCodeGet
+    OH_Drawing_MatrixIsIdentity(nullptr);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 3. Free memory
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MATRIX_2302
+ * @tc.name: testMatrixIsIdentityMultipleCalls
+ * @tc.desc: test for testMatrixIsIdentityMultipleCalls.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMatrixTest, testMatrixIsIdentityMultipleCalls, TestSize.Level3) {
+    // Call OH_Drawing_MatrixIsIdentity 10 times with alternating identity or non-identity matrices
+    for (int i = 0; i < 10; i++) {
+        if (i % 2 == 0) {
+            OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+            bool ret = OH_Drawing_MatrixIsIdentity(matrix);
+            EXPECT_EQ(ret, true);
+            OH_Drawing_MatrixDestroy(matrix);
+        } else {
+            OH_Drawing_Matrix *matrix = OH_Drawing_MatrixCreate();
+            OH_Drawing_MatrixSetMatrix(matrix, 1, 2, 3, 4, 5, 6, 7, 8, 9);
+            bool ret = OH_Drawing_MatrixIsIdentity(matrix);
+            EXPECT_EQ(ret, false);
+            OH_Drawing_MatrixDestroy(matrix);
+        }
+    }
+}
+
 } // namespace Drawing
 } // namespace Rosen
 } // namespace OHOS
