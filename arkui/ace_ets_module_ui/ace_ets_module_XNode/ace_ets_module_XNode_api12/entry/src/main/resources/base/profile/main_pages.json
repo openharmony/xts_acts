@@ -59,6 +59,7 @@
         "MainAbility/pages/typeNode/Progress",
         "MainAbility/pages/typeNode/RelativeContainer",
         "MainAbility/pages/typeNode/Swiper",
+        "MainAbility/pages/FrameNode/RELOAD",
         "MainAbility/pages/FrameNode/expectedUpdateInterval"
     ]
 }

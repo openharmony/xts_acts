@@ -109,6 +109,7 @@ import RichEditorApi7 from './RichEditor/RichEditorApi7.test'
 import TextAreaApi4 from './TextArea/TextAreaApi4.test'
 import TextAreaTest from './TextAreaTest/TextAreaAPITest/TextAreaTest.test'
 import MarqueeMirroringTest from './Marquee/MarqueeMirroring.test';
+import symbolEffect from './SymbolGlyphTest/symbolEffect.test'
 
 export default function testsuite() {
   APIContentTypeTest();
@@ -205,4 +206,5 @@ export default function testsuite() {
   TextAreaApi4()
   TextAreaTest()
   MarqueeMirroringTest()
+  symbolEffect()
 }

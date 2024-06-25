@@ -62,6 +62,7 @@ import typeNodeLoadingProgressTest from './typeNodeTest/LoadingProgress.test';
 import typeNodeProgressTest from './typeNodeTest/Progress.test';
 import typeNodeRelativeContainerTest from './typeNodeTest/RelativeContainer.test';
 import typeNodeSwiperTest from './typeNodeTest/Swiper.test';
+import RELOAD from './FrameNodeTest/RELOAD.test';
 
 import BuilderNodeApiRecycleTest from './FrameNodeTest/BuilderNodeApiRecycleTest.test';
 import BuilderNodeApiReuseTest from './FrameNodeTest/BuilderNodeApiReuseTest.test';
@@ -124,5 +125,6 @@ export default function testsuite() {
   typeNodeProgressTest();
   typeNodeRelativeContainerTest();
   typeNodeSwiperTest();
+  RELOAD()
   expectedUpdateInterval()
 }
