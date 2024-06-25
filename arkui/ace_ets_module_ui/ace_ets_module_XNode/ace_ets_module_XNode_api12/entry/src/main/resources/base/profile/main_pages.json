@@ -44,6 +44,7 @@
 	"MainAbility/pages/Graphics/GraphicsApi/LengthMetricsUnit",
 	"MainAbility/pages/Graphics/GraphicsApi/PercentReference",
         "MainAbility/pages/Graphics/setCircleShape",
-        "MainAbility/pages/FrameNode/commonEventTest1"
+        "MainAbility/pages/FrameNode/commonEventTest1",
+        "MainAbility/pages/FrameNode/expectedUpdateInterval"
     ]
 }

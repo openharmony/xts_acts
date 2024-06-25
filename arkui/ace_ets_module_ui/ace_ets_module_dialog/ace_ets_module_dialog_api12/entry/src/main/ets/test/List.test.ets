@@ -55,6 +55,7 @@ import menuItemGroupDivider from './Menu/menuItemGroupDivider.test.ets';
 import DismissReasonTest from './PopupTest/DismissReason.test'
 import SubMenuExpandingModeTest_SIDE from './MenuTest/MenuApiTest/SubMenuExpandingModeTest_SIDE.test'
 import SubMenuExpandingModeTest_EMBEDDED from './MenuTest/MenuApiTest/SubMenuExpandingModeTest_EMBEDDED.test'
+import DateTimeOptions from './TimePickerDialogTest/DateTimeOptions.test'
 
 export default function testsuite() {
   dialogApi()
@@ -99,4 +100,5 @@ export default function testsuite() {
   DismissReasonTest();
   SubMenuExpandingModeTest_SIDE();
   SubMenuExpandingModeTest_EMBEDDED();
+  DateTimeOptions()
 }
