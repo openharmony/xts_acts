@@ -14,18 +14,17 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
 
 export default function SelectTitleBarTest() {
-  describe('SelectTitleBarTest', function () {
-    beforeEach(async function (done) {
+  describe('SelectTitleBarTest', () => {
+    beforeEach(async (done: Function) => {
       console.info('SelectTitleBarTest beforeEach start');
-      let options = {
-        uri: 'MainAbility/pages/selectTitleBar/selectTitleBarPage',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/composeListItem/composeListItemPageTest',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
@@ -45,20 +44,20 @@ export default function SelectTitleBarTest() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info('SelectTitleBarTest after each called');
     })
 
     /**
      * @tc.number SelectTitleBarTest
-     * @tc.name   SelectTitleBarTest_0100
-     * @tc.desc   Test SelectTitleBar
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name SelectTitleBarTest_0100
+     * @tc.desc Test SelectTitleBar
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('selectTitleBarTest_0100', 0, async function (done) {
+    it('selectTitleBarTest_0100', 0, async (done: Function) => {
       console.info('[selectTitleBarTest_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);

@@ -16,12 +16,12 @@ struct Index {
       name: '节气',
       options: ['全部', '立春', '雨水', '惊蛰', '春分', '清明', '谷雨', '立夏', '小满', '芒种', '夏至', '小暑', '大暑', '立秋',
         '处暑', '白露', '秋分', '寒露', '霜降', '立冬', '小雪', '大雪', '冬至', '小寒', '大寒']
-    }]
+    }];
   private additionParam: FilterParams = {
     name: '您还可以搜',
     options: ['运营栏目1', '运营栏目2', '运营栏目3', '运营栏目4', '运营栏目5', '运营栏目6'],
-  }
-  private arr: number[] = [1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10];
+  };
+  private arr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   build() {
     Column() {
@@ -35,9 +35,9 @@ struct Index {
             console.log('name:' + filter.name + ',index:' + filter.index + ',value:' + filter.value)
           }
         }
-      }){
+      }) {
         List({ initialIndex: 0 }) {
-          ForEach(this.arr, (item:string, index: number) => {
+          ForEach(this.arr, (item: string, index: number) => {
             ListItem() {
               Text(item.toString())
                 .width('100%')
@@ -46,7 +46,7 @@ struct Index {
                 .textAlign(TextAlign.Center)
                 .borderRadius(10)
                 .backgroundColor(Color.White)
-                .margin({ top:10, bottom: 10 })
+                .margin({ top: 10, bottom: 10 })
             }
           })
         }.backgroundColor(Color.Gray)

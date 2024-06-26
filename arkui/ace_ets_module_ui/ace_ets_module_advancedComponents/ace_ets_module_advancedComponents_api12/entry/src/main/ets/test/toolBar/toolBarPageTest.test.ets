@@ -14,27 +14,25 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
 
 export default function toolBarPageTest() {
-  describe('toolBarPageTest', function () {
-    beforeEach(async function (done) {
+  describe('toolBarPageTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("toolBarPageTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/toolBar/toolBarPageTest',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/toolBar/toolBarPageTest',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get toolBarPageTest state pages: " + JSON.stringify(pages));
         if (!('toolBarPageTest' == pages.name)) {
           console.info("get toolBarPageTest pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push toolBarPageTest page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push toolBarPageTest page error: " + err);
@@ -45,20 +43,20 @@ export default function toolBarPageTest() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info('toolBarPageTest after each called');
     })
 
     /**
      * @tc.number toolBarPageTest
-     * @tc.name   toolBarPageTest_0100
-     * @tc.desc   Test toolBarPage
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name toolBarPageTest_0100
+     * @tc.desc Test toolBarPage
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('toolBarPageTest_0100', 0, async function (done) {
+    it('toolBarPageTest_0100', 0, async (done: Function) => {
       console.info('[toolBarPageTest_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);
@@ -77,13 +75,13 @@ export default function toolBarPageTest() {
 
     /**
      * @tc.number toolBarPageTest_0200
-     * @tc.name   Test the properties of components
-     * @tc.desc   Click toolBar item
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Click toolBar item
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('toolBarPageTest_0200', 0, async function (done) {
+    it('toolBarPageTest_0200', 0, async (done: Function) => {
       console.info('[toolBarPageTest_0200] START');
       let driver = await Driver.create();
       await Utils.sleep(2000);

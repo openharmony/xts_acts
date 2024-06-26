@@ -14,27 +14,26 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
 
 export default function ExceptionPromptTest() {
-  describe('ExceptionPromptTest', function () {
-    beforeEach(async function (done) {
+  describe('ExceptionPromptTest', () => {
+    beforeEach(async (done: Function) => {
       console.info('ExceptionPromptTest beforeEach start');
-      let options = {
-        uri: 'MainAbility/pages/exceptionPrompt/exceptionPromptPage',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/exceptionPrompt/exceptionPromptPage',
       }
-      let result;
+
       try {
         router.clear();
         let pages = router.getState();
         console.info('get ExceptionPromptTest state pages: ' + JSON.stringify(pages));
         if (!('exceptionPromptPage' == pages.name)) {
           console.info('get ExceptionPromptTest pages.name: ' + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.push(options);
           await Utils.sleep(2000);
-          console.info('push ExceptionPromptTest page result: ' + JSON.stringify(result));
         }
       } catch (err) {
         console.error('push ExceptionPromptTest page error: ' + err);
@@ -45,20 +44,20 @@ export default function ExceptionPromptTest() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info('ExceptionPromptTest after each called');
     })
 
     /**
      * @tc.number ExceptionPromptTest
-     * @tc.name   ExceptionPromptTest_0100
-     * @tc.desc   Test ExceptionPrompt
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name ExceptionPromptTest_0100
+     * @tc.desc Test ExceptionPrompt
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('exceptionPromptTest_0100', 0, async function (done) {
+    it('exceptionPromptTest_0100', 0, async (done: Function) => {
       console.info('[exceptionPromptTest_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);

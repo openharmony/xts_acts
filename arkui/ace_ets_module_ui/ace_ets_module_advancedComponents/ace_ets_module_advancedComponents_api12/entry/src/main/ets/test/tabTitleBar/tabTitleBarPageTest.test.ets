@@ -14,27 +14,26 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import { Driver, ON } from '@ohos.UiTest';
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
 
 export default function tabTitleBarPageTest() {
-  describe('tabTitleBarPageTest', function () {
-    beforeEach(async function (done) {
+  describe('tabTitleBarPageTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("tabTitleBarPageTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/tabTitleBar/tabTitleBarPageTest',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/composeListItem/composeListItemPageTest',
       }
-      let result;
+
       try {
         router.clear();
         let pages = router.getState();
         console.info("get tabTitleBarPageTest state pages: " + JSON.stringify(pages));
         if (!("tabTitleBarPageTest" == pages.name)) {
           console.info("get tabTitleBarPageTest pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push tabTitleBarPageTest page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push tabTitleBarPageTest page error: " + err);
@@ -45,20 +44,20 @@ export default function tabTitleBarPageTest() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("tabTitleBarPageTest after each called");
     })
 
     /**
      * @tc.number tabTitleBarPageTest
-     * @tc.name   tabTitleBarPageTest_0100
-     * @tc.desc   Test tabTitleBarPage
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name tabTitleBarPageTest_0100
+     * @tc.desc Test tabTitleBarPage
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('tabTitleBarPageTest_0100', 0, async function (done) {
+    it('tabTitleBarPageTest_0100', 0, async (done: Function) => {
       console.info('[tabTitleBarPageTest_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);
