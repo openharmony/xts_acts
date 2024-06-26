@@ -45,11 +45,6 @@ export default function ActsAccountOnOff() {
             )
         }
 
-        afterEach(async function (done) {
-            await sleep(1000)
-            done()
-        });
-
         /*
         * @tc.number    : ActsAccountOnOff_0300
         * @tc.name      : Subscribe/unsubscribe to the change event of application
