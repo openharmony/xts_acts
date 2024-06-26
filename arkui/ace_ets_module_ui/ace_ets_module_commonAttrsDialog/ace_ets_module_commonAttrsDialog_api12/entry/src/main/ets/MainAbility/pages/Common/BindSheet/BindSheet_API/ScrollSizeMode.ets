@@ -14,7 +14,7 @@
  */
 @Entry
 @Component
-struct SheetTransitionExample {
+struct ScrollSizeModeExample {
   @State isShow:boolean = false
   @State isShow2:boolean = false
   @State sheetHeight:number = 300;
