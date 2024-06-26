@@ -14,12 +14,6 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },{
-            "type": "ShellKit",
-            "run-command": [
-                "power-shell wakeup",
-                "power-shell setmode 602"
-            ]
         }
     ]
 }

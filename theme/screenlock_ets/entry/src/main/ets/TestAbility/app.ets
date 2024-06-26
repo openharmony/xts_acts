@@ -30,5 +30,4 @@ class App {
     console.info('Application onDestroy');
   }
 }
-
 export default new App();

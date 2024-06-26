@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,25 +13,10 @@
  * limitations under the License.
  */
 
-@Entry
-@Component
-struct MyComponent {
-  aboutToAppear() {
-  }
+import screenLockJSUnit from './screenLockTest.test';
+import ScreenLockPromiseTest from './screenLockPromiseTest.test';
 
-
-  build() {
-    Flex({
-      direction: FlexDirection.Column,
-      alignItems: ItemAlign.Center,
-      justifyContent: FlexAlign.Center
-    }) {
-      Text('SCREENLOCK ETS TEST')
-        .fontSize(50)
-        .fontWeight(FontWeight.Bold)
-    }
-    .width('100%')
-    .height('100%')
-  }
+export default function testsuite() {
+  screenLockJSUnit();
+  ScreenLockPromiseTest()
 }
-
