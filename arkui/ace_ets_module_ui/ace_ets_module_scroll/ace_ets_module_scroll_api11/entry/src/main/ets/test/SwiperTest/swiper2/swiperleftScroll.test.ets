@@ -61,7 +61,7 @@ export default function swipeleftScrollTest() {
       console.info("[SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0310] swiper width " + btWidth);
       // left scroll
       let driver = await Driver.create();
-      driver.swipe(Math.round(btRight), Math.round(btBottom/2), Math.round(btLeft) + 40, Math.round(btBottom/2));
+      await driver.swipe(Math.round(btRight), Math.round(btBottom/2), Math.round(btLeft) + 40, Math.round(btBottom/2));
       await CommonFunc.sleep(3000);
 
       // get the component of text_1

@@ -67,7 +67,7 @@ export default function swiperDelAddTest() {
       let btWidth = Math.round(btRight - btLeft);
       console.info("[SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0700] swiper width " + btWidth);
      
-      driver.swipe(Math.round(btLeft) + 40,Math.round(btBottom/2), Math.round(btRight), Math.round(btBottom/2));
+      await driver.swipe(Math.round(btLeft) + 40,Math.round(btBottom/2), Math.round(btRight), Math.round(btBottom/2));
       await CommonFunc.sleep(3000);
 
 
@@ -110,7 +110,7 @@ export default function swiperDelAddTest() {
       let btWidth = Math.round(btRight - btLeft);
       console.info("[SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0700] swiper width " + btWidth);
       // right scroll
-      driver.swipe( Math.round(btRight),Math.round(btBottom/2), Math.round(btLeft) + 40, Math.round(btBottom/2));
+      await driver.swipe( Math.round(btRight),Math.round(btBottom/2), Math.round(btLeft) + 40, Math.round(btBottom/2));
       await CommonFunc.sleep(3000);
 
       // click the next button
