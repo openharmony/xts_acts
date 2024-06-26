@@ -14,31 +14,31 @@
 import("//build/ohos.gni")
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("image_packe_exif_hap") {
+ohos_js_hap_suite("image_packer_exif_hap") {
   hap_profile = "entry/src/main/module.json"
   js_build_mode = "debug"
   deps = [
-    ":actsImagePackeExifTest_js_assets",
-    ":actsImagePackeExifTest_resources",
+    ":actsImagePackerExifTest_js_assets",
+    ":actsImagePackerExifTest_resources",
   ]
   ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
-  hap_name = "ActsImagePackeExifTest"
+  hap_name = "ActsImagePackerExifTest"
   subsystem_name = "multimedia"
   part_name = "image_framework"
 }
 
-ohos_app_scope("actsImagePackeExifTest_app_profile") {
+ohos_app_scope("actsImagePackerExifTest_app_profile") {
   app_profile = "AppScope/app.json"
   sources = [ "AppScope/resources" ]
 }
 
-ohos_js_assets("actsImagePackeExifTest_js_assets") {
+ohos_js_assets("actsImagePackerExifTest_js_assets") {
   source_dir = "entry/src/main/ets"
 }
 
-ohos_resources("actsImagePackeExifTest_resources") {
+ohos_resources("actsImagePackerExifTest_resources") {
   sources = [ "entry/src/main/resources" ]
-  deps = [ ":actsImagePackeExifTest_app_profile" ]
+  deps = [ ":actsImagePackerExifTest_app_profile" ]
   hap_profile = "entry/src/main/module.json"
 }
