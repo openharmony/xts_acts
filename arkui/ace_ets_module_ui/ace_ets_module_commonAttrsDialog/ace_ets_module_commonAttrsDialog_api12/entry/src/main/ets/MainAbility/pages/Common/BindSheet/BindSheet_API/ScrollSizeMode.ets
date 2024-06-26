@@ -45,7 +45,7 @@ struct ScrollSizeModeExample {
           this.mScrollSizeMode2 = this.scrollSizeModeStatus + ''
         }).id('change2')
 
-      Button("close modal")
+      Button('close modal')
         .margin(10)
         .fontSize(20)
         .onClick(()=>{
@@ -62,7 +62,7 @@ struct ScrollSizeModeExample {
         .id('ScrollSizeMode_1')
       Text(this.mScrollSizeMode2)
         .id('ScrollSizeMode_2')
-      Button("transition modal 1")
+      Button('transition modal 1')
         .onClick(() => {
           this.isShow = true
         })
