@@ -62,6 +62,7 @@ import SwipeGestureTemplateTest from './SwipeGesture/SwipeGestureTemplateTest.te
 import PanGestureUpdateTest from './PanGesture/PanGestureUpdateTest.test';
 import PinchGestureUpdateTest from './PinchGesture/PinchGestureUpdateTest.test';
 import RotationGestureUpdateTest from './RotationGesture/RotationGestureUpdateTest.test';
+import onAttachTest from './onAttachTest/onAttach.test';
 
 export default function testsuite() {
   APIPreDragStatusTest();
@@ -109,4 +110,5 @@ export default function testsuite() {
   PanGestureUpdateTest();
   PinchGestureUpdateTest();
   RotationGestureUpdateTest();
+  onAttachTest();
 }
