@@ -2515,7 +2515,7 @@ export default function UtdfileNameTest() {
     });
 
     /**
-     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1760
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1790
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1790
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".ppm"
      * @tc.size      : MediumTest
@@ -2796,8 +2796,8 @@ export default function UtdfileNameTest() {
       expect(result).assertEqual("general.rich-text");
     });
     /**
-     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2000
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2000
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2010
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2010
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".rtx"
      * @tc.size      : MediumTest
      * @tc.type      : Function
@@ -3203,7 +3203,7 @@ export default function UtdfileNameTest() {
       expect(result).assertEqual("org.oasis-open.opendocument.database");
     });
     /**
-     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2300
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2310
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2310
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".odi"
      * @tc.size      : MediumTest
