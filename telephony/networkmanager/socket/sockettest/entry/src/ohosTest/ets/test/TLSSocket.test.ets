@@ -724,6 +724,7 @@ export default function TLSSocketTest() {
             expectFail();
           } else {
             expectTrue(true);
+            tlsSocket.close();
           }
           console.info(`${caseName} test end`);
           done();
@@ -766,6 +767,7 @@ export default function TLSSocketTest() {
             expectFail();
           } else {
             expectTrue(true);
+            tlsSocket.close();
           }
           console.info(`${caseName} test end`);
           done();
@@ -801,6 +803,7 @@ export default function TLSSocketTest() {
             expectFail();
           } else {
             expectTrue(true);
+            tlsSocket.close();
           }
           console.info(`${caseName} test end`);
           done();
@@ -843,6 +846,7 @@ export default function TLSSocketTest() {
             expectFail();
           } else {
             expectTrue(true);
+            tlsSocket.close();
           }
           console.info(`${caseName} test end`);
           done();
@@ -885,6 +889,7 @@ export default function TLSSocketTest() {
             expectFail();
           } else {
             expectTrue(true);
+            tlsSocket.close();
           }
           console.info(`${caseName} test end`);
           done();
@@ -927,6 +932,7 @@ export default function TLSSocketTest() {
             expectFail();
           } else {
             expectTrue(true);
+            tlsSocket.close();
           }
           console.info(`${caseName} test end`);
           done();
@@ -969,6 +975,7 @@ export default function TLSSocketTest() {
             expectFail();
           } else {
             expectTrue(true);
+            tlsSocket.close();
           }
           console.info(`${caseName} test end`);
           done();
@@ -1011,6 +1018,7 @@ export default function TLSSocketTest() {
             expectFail();
           } else {
             expectTrue(true);
+            tlsSocket.close();
           }
           console.info(`${caseName} test end`);
           done();
@@ -1050,6 +1058,7 @@ export default function TLSSocketTest() {
         tlsSocket.setExtraOptions(tcpExtraOptions).then(() => {
           expectTrue(true);
           console.info(`${caseName} test end`);
+          tlsSocket.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -1092,6 +1101,7 @@ export default function TLSSocketTest() {
         tlsSocket.setExtraOptions(tcpExtraOptions).then(() => {
           expectTrue(true);
           console.info(`${caseName} test end`);
+          tlsSocket.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -1127,6 +1137,7 @@ export default function TLSSocketTest() {
         tlsSocket.setExtraOptions(tcpExtraOptions).then(() => {
           expectTrue(true);
           console.info(`${caseName} test end`);
+          tlsSocket.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -1169,6 +1180,7 @@ export default function TLSSocketTest() {
         tlsSocket.setExtraOptions(tcpExtraOptions).then(() => {
           expectTrue(true);
           console.info(`${caseName} test end`);
+          tlsSocket.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -1211,6 +1223,7 @@ export default function TLSSocketTest() {
         tlsSocket.setExtraOptions(tcpExtraOptions).then(() => {
           expectTrue(true);
           console.info(`${caseName} test end`);
+          tlsSocket.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -1253,6 +1266,7 @@ export default function TLSSocketTest() {
         tlsSocket.setExtraOptions(tcpExtraOptions).then(() => {
           expectTrue(true);
           console.info(`${caseName} test end`);
+          tlsSocket.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -1295,6 +1309,7 @@ export default function TLSSocketTest() {
         tlsSocket.setExtraOptions(tcpExtraOptions).then(() => {
           expectTrue(true);
           console.info(`${caseName} test end`);
+          tlsSocket.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
@@ -1337,6 +1352,7 @@ export default function TLSSocketTest() {
         tlsSocket.setExtraOptions(tcpExtraOptions).then(() => {
           expectTrue(true);
           console.info(`${caseName} test end`);
+          tlsSocket.close();
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} err: ${JSON.stringify(err)}`);
