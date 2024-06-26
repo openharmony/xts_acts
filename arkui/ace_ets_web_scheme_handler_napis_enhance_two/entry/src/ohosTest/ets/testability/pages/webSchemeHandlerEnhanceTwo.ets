@@ -422,6 +422,72 @@ struct webRegisterCustomsComponent {
               break;
             }
 
+            case "emitWebViewFrameUrl": {
+              await Utils.sleep(1000);
+              console.log("emitWebViewFrameUrl ==>");
+
+              await Utils.sleep(1000);
+              let result:number = testNapi.getFrameUrl();
+              console.log("emitWebViewFrameUrl ==>" + result);
+
+              if (result == 0) {
+                Utils.emitEvent(true, 1021);
+              } else {
+                Utils.emitEvent(false, 1021);
+              }
+              break;
+            }
+
+            case "emitWebViewServiceWorkerFrameUrl": {
+              await Utils.sleep(1000);
+              console.log("emitWebViewServiceWorkerFrameUrl ==>");
+              this.controller.loadUrl("https://m.iqiyi.com/");
+
+              await Utils.sleep(3000);
+              let result:number = testNapi.getServiceWorkerFrameUrl();
+              console.log("emitWebViewServiceWorkerFrameUrl ==>" + result);
+
+              if (result == 0) {
+                Utils.emitEvent(true, 1022);
+              } else {
+                Utils.emitEvent(false, 1022);
+              }
+              break;
+            }
+
+            case "emitWebViewLoadUrlFrameUrl": {
+              await Utils.sleep(1000);
+              console.log("emitWebViewLoadUrlFrameUrl ==>");
+              this.controller.loadUrl($rawfile('schemeHandler_loader.html'));
+
+              await Utils.sleep(3000);
+              let result:number = testNapi.getLoadUrlFrameUrl();
+              console.log("emitWebViewLoadUrlFrameUrl ==>" + result);
+
+              if (result == 0) {
+                Utils.emitEvent(true, 1023);
+              } else {
+                Utils.emitEvent(false, 1023);
+              }
+              break;
+            }
+            case "emitWebViewSubFrameUrl": {
+              await Utils.sleep(1000);
+              console.log("emitWebViewSubFrameUrl ==>");
+              this.controller.loadUrl($rawfile('sdkSchemeHandler.html'));
+
+              await Utils.sleep(3000);
+              let result:number = testNapi.getSubFrameUrl();
+              console.log("emitWebViewSubFrameUrl ==>" + result);
+
+              if (result == 0) {
+                Utils.emitEvent(true, 1024);
+              } else {
+                Utils.emitEvent(false, 1024);
+              }
+              break;
+            }
+
 
           }
         })
