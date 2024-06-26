@@ -63,7 +63,7 @@ export default function storageHelperTest() {
          */
         it('testGetStorageHelper002', 0, async function (done) {
             const promise = storage.getStorage(PATH);
-            promise.then((pref) => {
+            await promise.then((pref) => {
                 pref.putSync('test', 2);
                 pref.flushSync();
                 var value = mPref.getSync('test', 0);
@@ -71,7 +71,6 @@ export default function storageHelperTest() {
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
             done();
         })
 
@@ -125,11 +124,10 @@ export default function storageHelperTest() {
             let perf = storage.getStorageSync('/data/test_storage2');
             perf = null;
             const promise = storage.removeStorageFromCache('/data/test_storage2');
-            promise.then((pref) => {
+            await promise.then((pref) => {
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
             done();
         })
 
@@ -184,11 +182,10 @@ export default function storageHelperTest() {
             let perf = storage.getStorageSync('/data/test_storage4');
             perf = null;
             const promise = storage.deleteStorage('/data/test_storage4');
-            promise.then((pref) => {
+            await promise.then((pref) => {
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
             done();
         })
 
