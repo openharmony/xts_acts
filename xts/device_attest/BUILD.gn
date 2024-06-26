@@ -13,31 +13,12 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("deviceAttest_hap_test") {
-  hap_profile = "entry/src/main/module.json"
+ohos_js_app_suite("deviceAttest_hap_test") {
+  test_hap = true
+  testonly = true
   js_build_mode = "debug"
-  deps = [
-    ":graphicColorSpace_js_assets",
-    ":graphicColorSpace_resources",
-  ]
-  ets2abc = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsDeviceAttestTest"
   subsystem_name = "xts"
   part_name = "device_attest"
-}
-
-ohos_app_scope("graphicColorSpace_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-
-ohos_js_assets("graphicColorSpace_js_assets") {
-  source_dir = "entry/src/main/ets"
-}
-
-ohos_resources("graphicColorSpace_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":graphicColorSpace_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
 }

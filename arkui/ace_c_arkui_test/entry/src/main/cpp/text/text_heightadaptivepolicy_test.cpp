@@ -23,9 +23,9 @@ static napi_value TestTextHeightAdaptivePolicy001(napi_env env, napi_callback_in
     ArkUI_NumberValue value[] = {{.i32 = ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MAX_LINES_FIRST}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_HEIGHT_ADAPTIVE_POLICY, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_HEIGHT_ADAPTIVE_POLICY)->value[PARAM_0].i32,
               ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MAX_LINES_FIRST);
-    ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
 
@@ -35,9 +35,9 @@ static napi_value TestTextHeightAdaptivePolicy002(napi_env env, napi_callback_in
     ArkUI_NumberValue value[] = {{.i32 = ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MIN_FONT_SIZE_FIRST}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_HEIGHT_ADAPTIVE_POLICY, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_HEIGHT_ADAPTIVE_POLICY)->value[PARAM_0].i32,
               ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MIN_FONT_SIZE_FIRST);
-    ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
 
@@ -47,9 +47,9 @@ static napi_value TestTextHeightAdaptivePolicy003(napi_env env, napi_callback_in
     ArkUI_NumberValue value[] = {{.i32 = ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_LAYOUT_CONSTRAINT_FIRST}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_HEIGHT_ADAPTIVE_POLICY, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_HEIGHT_ADAPTIVE_POLICY)->value[PARAM_0].i32,
               ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_LAYOUT_CONSTRAINT_FIRST);
-    ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
 
@@ -60,11 +60,10 @@ static napi_value TestTextHeightAdaptivePolicy004(napi_env env, napi_callback_in
     ArkUI_NumberValue value[] = {{.i32 = exception}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_HEIGHT_ADAPTIVE_POLICY, &valueItem);
+    ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(text, NODE_TEXT_HEIGHT_ADAPTIVE_POLICY) != nullptr) {
         ASSERT_NE(nodeAPI->getAttribute(text, NODE_TEXT_HEIGHT_ADAPTIVE_POLICY)->value[PARAM_0].i32, exception);
     };
-
-    ASSERT_EQ(ret, INVALID_PARAM);
     NAPI_END;
 }
 

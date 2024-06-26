@@ -14,7 +14,9 @@
  */
 import events_emitter from '@ohos.events.emitter';
 import { expect } from '@ohos/hypium';
-import { Driver, ON } from '@ohos.UiTest';
+import { Driver, ON, PointerMatrix, Component } from '@ohos.UiTest';
+import { ComponentInfo, RectInfo } from './Interfaces';
+import systemDateTime from '@ohos.systemDateTime';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import fs from '@ohos.file.fs';
 
@@ -47,15 +49,76 @@ export default class Utils {
     return rawFilePath
   }
 
+  static getSystemTime() {
+    return systemDateTime.getTime(true) / 1000
+  }
+
   static getSandboxFileDir() {
     let sandboxFileDir = AbilityDelegatorRegistry.getAbilityDelegator().getAppContext().filesDir + "/"
     console.log(`[getSandboxFileDir] return ${sandboxFileDir}`);
     return sandboxFileDir;
   }
 
-  static stressingLog(functionName: string, current: number, total: number) {
-    if ((current % 50) == 0) {
-      console.log(`${functionName} ==> stressing:${current}/${total}`)
+  static getSandboxCacheDir() {
+    let sandboxCacheDir = AbilityDelegatorRegistry.getAbilityDelegator().getAppContext().cacheDir + "/"
+    console.log(`[getSandboxCacheDir] return ${sandboxCacheDir}`);
+    return sandboxCacheDir;
+  }
+
+  static createFileToSandboxSync(filePath: string, fileName: string, mode?: number) {
+    try {
+      if (!Utils.isFileExist(filePath)) {
+        fs.mkdirSync(filePath);
+      }
+      fs.openSync(filePath + fileName, mode);
+      console.log("[createFileToSandboxSync] success, sandbox path:" + filePath + fileName);
+    } catch (error) {
+      console.info("[createFileToSandboxSync] api run failed " + error);
+      console.info("[createFileToSandboxSync] api run failed path:" + filePath + fileName);
+    }
+  }
+
+  static deleteFile(filePath: string) {
+    console.info("[deleteFile] filePath:" + filePath);
+    try {
+      fs.unlinkSync(filePath)
+    } catch (error) {
+      console.info("[deleteFile] error:" + error);
+    }
+  }
+
+  static deleteDir(dirPath: string) {
+    console.info("[deleteDir] dirPath:" + dirPath);
+    try {
+      fs.rmdirSync(dirPath)
+    } catch (error) {
+      console.info("[deleteDir] error:" + error);
+    }
+  }
+
+  static listFile(dirPath: string): string[] {
+    console.info("[listFile] dirPath:" + dirPath);
+    try {
+      let files = fs.listFileSync(dirPath)
+      for (let i = 0; i < files.length; i++) {
+        console.info(`The name of file: ${files[i]}`);
+      }
+      return files;
+    } catch (error) {
+      console.info("[listFile] error:" + error);
+      return [];
+    }
+  }
+
+  static isFileExist(filePath: string): boolean {
+    console.info("[isFileExist] filePath:" + filePath);
+    try {
+      let fileExist = fs.accessSync(filePath)
+      console.info("[isFileExist] return:" + fileExist);
+      return fileExist
+    } catch (error) {
+      console.info("[isFileExist] error:" + error);
+      return false
     }
   }
 
@@ -65,9 +128,44 @@ export default class Utils {
     await component.click();
   }
 
+  static async pinchInComponent(id: string) {
+    let driver: Driver = Driver.create();
+    let image: Component = await driver.findComponent(ON.id(id));
+    await image.pinchIn(0.5);
+  }
+
   static async triggerKey(id: number) {
     let driver = Driver.create();
     await driver.triggerKey(id);
+  }
+
+  static async fingerZoom(key: string, isOut: boolean) {
+    let rect = Utils.getComponentRect(key);
+    let centerX = Utils.getRectHorizontalCenterX(rect)
+    let centerY = Utils.getRectVerticalCenterY(rect)
+    let fingerUpCenterY = centerY - 100;
+    let fingerDownCenterY = centerY + 100;
+    let driver: Driver = Driver.create();
+    let pointers: PointerMatrix = PointerMatrix.create(2, 3);
+    pointers.setPoint(0, 0, {
+      x: centerX, y: fingerUpCenterY - (isOut ? 40 : 120)
+    });
+    pointers.setPoint(0, 1, {
+      x: centerX, y: fingerUpCenterY - 80
+    });
+    pointers.setPoint(0, 2, {
+      x: centerX, y: fingerUpCenterY - (isOut ? 120 : 40)
+    });
+    pointers.setPoint(1, 0, {
+      x: centerX, y: fingerDownCenterY + (isOut ? 40 : 120)
+    });
+    pointers.setPoint(1, 1, {
+      x: centerX, y: fingerDownCenterY + 80
+    });
+    pointers.setPoint(1, 2, {
+      x: centerX, y: fingerDownCenterY + (isOut ? 120 : 40)
+    });
+    await driver.injectMultiPointerAction(pointers);
   }
 
   static registerBaseEvent(testCaseName: string, expected: Object, eventId: number,
@@ -95,17 +193,15 @@ export default class Utils {
   }
 
   static registerEvent(testCaseName: string, expectedValue: Object, eventId: number, done: Function) {
-    Utils.registerBaseEvent(testCaseName, expectedValue, eventId, done,
-      (backData: events_emitter.EventData, expected: Object) => {
-        expect(backData?.data?.ACTION).assertEqual(expected);
-      });
+    Utils.registerBaseEvent(testCaseName, expectedValue, eventId, done, (backData: events_emitter.EventData, expected: Object) => {
+      expect(backData?.data?.ACTION).assertEqual(expected);
+    });
   }
 
   static registerContainEvent(testCaseName: string, expectedValue: Object, eventId: number, done: Function) {
-    Utils.registerBaseEvent(testCaseName, expectedValue, eventId, done,
-      (backData: events_emitter.EventData, expected: Object) => {
-        expect(backData?.data?.ACTION).assertContain(expected);
-      });
+    Utils.registerBaseEvent(testCaseName, expectedValue, eventId, done, (backData: events_emitter.EventData, expected: Object) => {
+      expect(backData?.data?.ACTION).assertContain(expected);
+    });
   }
 
   static emitEvent(actualValue: boolean | string | number | object, eventId: number) {
@@ -126,49 +222,36 @@ export default class Utils {
     }
   }
 
-  static registerEventPage(callBack: Function) {
-    events_emitter.on({
-      eventId: 10,
-      priority: events_emitter.EventPriority.LOW
-    }, (eventData: events_emitter.EventData) => {
-      console.info("web page valueChangeCallBack");
-      if (eventData != null) {
-        console.info("valueChangeCallBack:" + JSON.stringify(eventData));
-        callBack(eventData)
-      }
-    })
+  static getComponentRect(key: string): RectInfo {
+    let strJson = getInspectorByKey(key);
+    let obj: ComponentInfo = JSON.parse(strJson);
+    console.info('[getInspectorByKey] key is: ' + key);
+    return Utils.getComponentRectByObj(obj);
   }
 
-  static unRegisterEventPage() {
-    events_emitter.off(10)
+  static getComponentRectByObj(obj: ComponentInfo): RectInfo {
+    console.info('[getInspectorByKey] current component is: ' + obj.$type);
+    let rectInfo: Object[] = JSON.parse('[' + obj.$rect + ']');
+    let rect_value: RectInfo = {
+      left: JSON.parse('[' + rectInfo[0] + ']')[0],
+      top: JSON.parse('[' + rectInfo[0] + ']')[1],
+      right: JSON.parse('[' + rectInfo[1] + ']')[0],
+      bottom: JSON.parse('[' + rectInfo[1] + ']')[1]
+    };
+    console.info(JSON.stringify(rect_value));
+    return rect_value;
+  }
+  static async buttonClick() {
+    let driver:Driver = Driver.create();
+    let button: Component = await driver.findComponent(ON.text('myButton'));
+    await button.click();
   }
 
-  static emitEventPage(testCaseName: string, callBackId: number, stressTimes: number, testButtonKey: string) {
-    try {
-      let backData: events_emitter.EventData = {
-        data: {
-          "CASE_NAME": testCaseName,
-          "CALL_BACK_ID": callBackId,
-          "STRESS_TIMES": stressTimes,
-          "BUTTON_KEY": testButtonKey
-        }
-      }
-      let backEvent: events_emitter.InnerEvent = {
-        eventId: 10,
-        priority: events_emitter.EventPriority.LOW
-      }
-      console.info("webFlag start to emit page state");
-      events_emitter.emit(backEvent, backData);
-    } catch (err) {
-      console.info("webFlag emit page state err: " + JSON.stringify(err));
-    }
+  static getRectHorizontalCenterX(rect: RectInfo): number {
+    return Number.parseInt(Number((rect.right - rect.left) / 2 + rect.left).toFixed(0));
   }
 
-  static async doIt(testCaseName: string, callBackId: number, stressTimes: number,
-                    testButtonKey: string, registerEvents: Function) {
-    Utils.emitEventPage(testCaseName, callBackId, stressTimes, testButtonKey)
-    await Utils.sleep(2000);
-    registerEvents(testCaseName, callBackId)
-    sendEventByKey(testButtonKey, 10, '');
+  static getRectVerticalCenterY(rect: RectInfo): number {
+    return Number.parseInt(Number((rect.bottom - rect.top) / 2 + rect.top).toFixed(0));
   }
 }

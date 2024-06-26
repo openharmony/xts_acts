@@ -187,6 +187,10 @@ ArkUI_NodeHandle ListHitTestBehaviorTest::CreateSubListNode(ArkUI_NativeNodeAPI_
                                               sizeof(listItemHeightValue) / sizeof(ArkUI_NumberValue)};
     nodeAPI->setAttribute(listItem, NODE_HEIGHT, &listItemHeightItem);
 
+    ArkUI_NumberValue listItemHittestbehaviorValue[] = {{.i32 = ARKUI_HIT_TEST_MODE_TRANSPARENT}};
+    ArkUI_AttributeItem listItemHittestbehaviorItem = {
+        listItemHittestbehaviorValue, sizeof(listItemHittestbehaviorValue) / sizeof(ArkUI_NumberValue)};
+    nodeAPI->setAttribute(listItem, NODE_HIT_TEST_BEHAVIOR, &listItemHittestbehaviorItem);
     // Set the background color of the listItem component
     ArkUI_NumberValue listItemBackgroundColorValue[] = {{.u32 = listItemBackgroundColor}};
     ArkUI_AttributeItem listItemBackgroundColorItem = {

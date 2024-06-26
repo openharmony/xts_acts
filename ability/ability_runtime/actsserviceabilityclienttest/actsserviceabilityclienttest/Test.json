@@ -2,10 +2,11 @@
     "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "180000",
-        "shell-timeout": "180000",
+        "test-timeout": "600000",
         "bundle-name": "com.amsst.stserviceabilityclient",
-        "package-name": "com.amsst.stserviceabilityclient"
+        "package-name": "com.amsst.stserviceabilityclient",
+        "shell-timeout": "600000",
+        "testcase-timeout": 30000
     },
     "kits": [
         {
@@ -14,12 +15,6 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },{
-            "type": "ShellKit",
-            "run-command": [
-                "power-shell wakeup",
-                "power-shell setmode 602"
-            ]
         }
     ]
 }

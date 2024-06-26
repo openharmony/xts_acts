@@ -253,7 +253,7 @@ export default function relationalStoreTest() {
         done();
         console.info(TAG + "************* testRdbStore0008 end   *************");
       });
-      await sleep(1000);
+      await sleep(500);
     })
 
     /**
@@ -274,7 +274,7 @@ export default function relationalStoreTest() {
         done();
         console.info(TAG + "************* testRdbStore0009 end   *************");
       })
-      await sleep(1000);
+      await sleep(500);
     })
 
     /**

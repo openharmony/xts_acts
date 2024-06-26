@@ -19,10 +19,13 @@ import smsUiJsunit from './SmsMmsJsunit.test';
 import callJsunit from './CallJsunit.test';
 import dataJsunit from './DataJsunit.test';
 import telSyncTest from './TelSyncTest.test';
+import sim from '@ohos.telephony.sim';
+
 let voiceCapablity = call.hasVoiceCapability();
+let hasSimCard: Boolean = sim.hasSimCardSync(0);
 
 export default function testsuite() {
-  if(voiceCapablity){
+  if(voiceCapablity && hasSimCard){
     dataJsunit();
     smsUiJsunit();
     radioJsunit();

@@ -131,7 +131,7 @@ struct ScrollExample {
               .fontSize(40)
               .enabled(true)
               .margin({ top: 20 })
-            ForEach(this.arr, (item) => {
+            ForEach(this.arr, (item:number) => {
               Text(item.toString())
                 .width('100%')
                 .height('30%')
@@ -140,7 +140,7 @@ struct ScrollExample {
                 .fontSize(80)
                 .textAlign(TextAlign.Center)
                 .margin({ top: 10 })
-            }, item => item)
+            }, (item:string) => item)
             Button() {
               Text('bottom')
                 .fontSize(25)

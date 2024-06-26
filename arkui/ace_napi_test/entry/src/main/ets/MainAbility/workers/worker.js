@@ -50,4 +50,13 @@ parentPort.onmessage = (e) => {
       parentPort.postMessage("failure");
     }
   }
+  if (data === "call napi_define_sendable_class") {
+    let result = napitest.NapiDefineSendableClass();
+    console.info("worker:: worker thread NapiDefineSendableClass result is " + result)
+    if (result === 0) {
+      parentPort.postMessage("success");
+    } else {
+      parentPort.postMessage("failure");
+    }
+  }
 }

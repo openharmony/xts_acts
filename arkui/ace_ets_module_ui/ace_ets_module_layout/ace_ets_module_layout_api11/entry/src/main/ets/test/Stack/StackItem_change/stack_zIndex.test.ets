@@ -57,7 +57,7 @@ async function imageComparisonAssert(left: number, top: number) {
     "displayId": 0
   };
   try {
-    screenshot.save(screenshotOptions, (err, pixelMap) => {
+    screenshot.save(screenshotOptions, (err: BusinessError, pixelMap: image.PixelMap) => {
       if (err) {
         console.log('Failed to save screenshot. Code: ' + JSON.stringify(err));
         isTrue = false;
@@ -82,6 +82,7 @@ async function imageComparisonAssert(left: number, top: number) {
         }
       })
       pixelMap.release();
+      return isTrue;
     });
   } catch (exception) {
     console.error('Failed to save screenshot. Code: ' + JSON.stringify(exception));

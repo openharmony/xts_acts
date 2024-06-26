@@ -10,9 +10,9 @@
 @rem WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 @rem See the License for the specific language governing permissions and
 @rem limitations under the License.
-@echo off
 
-@if "%DEBUG%" == "" @echo off
+@echo off
+@if NOT "%DEBUG%" == "" @echo on
 @rem ##########################################################################
 @rem
 @rem  Hvigor startup script for Windows

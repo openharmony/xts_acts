@@ -23,11 +23,13 @@ public:
     virtual ~IpcInterface() = default;
     virtual bool RequestExitChildProcess() = 0;
     virtual int32_t Add(int32_t a, int32_t b) = 0;
+    virtual int32_t StartNativeChildProcess() = 0;
     
 protected:
     enum IpcId {
         IPC_ID_REQUEST_EXIT_PROCESS = 1,
         IPC_ID_ADD,
+        IPC_ID_START_NATIVE_CHILD_PROCESS
     };
     
     inline static constexpr char interfaceToken_[] = "NativeChildIpcTest";

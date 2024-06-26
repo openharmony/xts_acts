@@ -16,6 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from '../../../MainAbility/common/Common';
+import GlobalContext from '../../../MainAbility/common/GlobalContext'
 import {MessageManager,Callback} from '../../../MainAbility/common/MessageManager';
 export default function flexShrink_Part() {
   describe('flexShrink_Part',  () =>{
@@ -51,7 +52,7 @@ export default function flexShrink_Part() {
      */
     it('SUB_ACE_flexShrink_Part_TEST_0100', 0, async () => {
       console.info('[SUB_ACE_flexShrink_Part_TEST_0100] START');
-      globalThis.value.message.notify({name:'addflexShrink', value:1});
+      GlobalContext.getContext().getObject<number>('value').message.notify({name:'addflexShrink', value:1});
       await CommonFunc.sleep(3000);
       console.log('get Initial value')
       let Column_flexShrink_011: RectValue = CommonFunc.getComponentRect('Column_flexShrink_011');
@@ -90,7 +91,7 @@ export default function flexShrink_Part() {
      */
     it('SUB_ACE_flexShrink_Part_TEST_0200', 0, async () => {
       console.info('[SUB_ACE_flexShrink_Part_TEST_0200] START');
-      globalThis.value.message.notify({name:'addflexShrink', value:2});
+      GlobalContext.getContext().getObject<number>('value').message.notify({name:'addflexShrink', value:2});
       await CommonFunc.sleep(3000);
       console.log('get Initial value')
       let Column_flexShrink_011: RectValue = CommonFunc.getComponentRect('Column_flexShrink_011');

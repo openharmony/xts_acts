@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsAceEtsComponentBasicTextInputApi12Test.hap"
+                "ActsAceEtsModuleTextInputApi12Test.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

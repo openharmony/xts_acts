@@ -24,8 +24,8 @@ static napi_value TestTextLetterSpacing001(napi_env env, napi_callback_info info
     ArkUI_NumberValue value[] = {{.f32 = letterSpacingValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_LETTER_SPACING, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_LETTER_SPACING)->value[PARAM_0].f32, letterSpacingValue);
     ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_LETTER_SPACING)->value[PARAM_0].f32, letterSpacingValue);
     NAPI_END;
 }
 
@@ -36,8 +36,8 @@ static napi_value TestTextLetterSpacing002(napi_env env, napi_callback_info info
     ArkUI_NumberValue value[] = {{.f32 = largeValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_LETTER_SPACING, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_LETTER_SPACING)->value[PARAM_0].f32, largeValue);
     ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_LETTER_SPACING)->value[PARAM_0].f32, largeValue);
     NAPI_END;
 }
 
@@ -48,8 +48,8 @@ static napi_value TestTextLetterSpacing003(napi_env env, napi_callback_info info
     ArkUI_NumberValue value[] = {{.f32 = exceptionValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_TEXT_LETTER_SPACING, &valueItem);
-    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_LETTER_SPACING)->value[PARAM_0].f32, exceptionValue);
     ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_LETTER_SPACING)->value[PARAM_0].f32, exceptionValue);
     NAPI_END;
 }
 

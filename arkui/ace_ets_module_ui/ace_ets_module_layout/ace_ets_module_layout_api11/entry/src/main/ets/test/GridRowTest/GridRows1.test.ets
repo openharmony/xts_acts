@@ -18,8 +18,8 @@ import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function GridRows1() {
-  describe('GridRows1', function () {
-    beforeEach(async function (done) {
+  describe('GridRows1', () => {
+    beforeEach(async (done: Function) => {
       console.info("GridRows1 beforeEach start");
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function GridRows1() {
       console.info("GridRows1 foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("GridRows1 after each called");
     });
@@ -50,7 +50,7 @@ export default function GridRows1() {
     * @tc.size
      */
 
-    it('GridRows1_001', 0, async function (done) {
+    it('GridRows1_001', 0, async (done: Function) => {
       console.info('[GridRows1_001] START');
 
       await CommonFunc.sleep(1000);
@@ -72,7 +72,7 @@ export default function GridRows1() {
      * @tc.type
      */
 
-    it('GridRows1_002', 0, async function (done) {
+    it('GridRows1_002', 0, async (done: Function) => {
       console.info('[GridRows1_002] START');
 
       await CommonFunc.sleep(1000);
@@ -101,7 +101,7 @@ export default function GridRows1() {
      * @tc.type
      */
 
-    it('GridRows1_003', 0, async function (done) {
+    it('GridRows1_003', 0, async (done: Function) => {
       console.info('[GridRows1_003] START');
 
       await CommonFunc.sleep(1000);
@@ -130,7 +130,7 @@ export default function GridRows1() {
      * @tc.type
      */
 
-    it('GridRows1_004', 0, async function (done) {
+    it('GridRows1_004', 0, async (done: Function) => {
       console.info('[GridRows1_004] START');
 
       await CommonFunc.sleep(1000);

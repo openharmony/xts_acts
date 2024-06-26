@@ -100,6 +100,30 @@ function createSymKeySync(algName: string): cryptoFramework.SymKey {
   }
 }
 
+async function convertSymKeyPromise(algName: string, symKeyBlob: cryptoFramework.DataBlob): Promise<cryptoFramework.SymKey> {
+  try {
+    let symKeyGenerator: cryptoFramework.SymKeyGenerator = cryptoFramework.createSymKeyGenerator(algName);
+    let syncSymKey: cryptoFramework.SymKey = await symKeyGenerator.convertKey(symKeyBlob);
+
+    return syncSymKey;
+  } catch (error) {
+    console.error('sync error, ' + error.code + " errorMsg " + error.message);
+    throw error as Error;
+  }
+}
+
+async function createSymKeyPromise(algName: string): Promise<cryptoFramework.SymKey> {
+  try {
+    let symKeyGenerator: cryptoFramework.SymKeyGenerator = cryptoFramework.createSymKeyGenerator(algName);
+    let syncSymKey: cryptoFramework.SymKey = await symKeyGenerator.generateSymKey();
+
+    return syncSymKey;
+  } catch (error) {
+    console.error('sync error, ' + error.code + " errorMsg " + error.message);
+    throw error as Error;
+  }
+}
+
 async function createAsymKeySync(algName: string): Promise<cryptoFramework.KeyPair> {
   try {
     let generator: cryptoFramework.AsyKeyGenerator = cryptoFramework.createAsyKeyGenerator(algName)
@@ -148,6 +172,104 @@ function encryptDecryptAsymOAaepMessageSync(algName: string, keyPair: cryptoFram
   }
 }
 
+function gcmEncOrDecMessageSync(algName: string, isEnc: boolean, symKey: cryptoFramework.SymKey, blockSize: number, dataLen: number,
+                                data: cryptoFramework.DataBlob, paramSpec: cryptoFramework.GcmParamsSpec): dataGcmOrCCMSpec {
+  try {
+    let cipherText1 = new Uint8Array();
+    let cipher = cryptoFramework.createCipher(algName);
+    if (isEnc) {
+      cipher.initSync(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, paramSpec);
+    } else {
+      cipher.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, paramSpec);
+    }
+    for(let dataSize = 0; dataSize < dataLen / blockSize; dataSize++) {
+      let tmp = data.data.subarray(blockSize * dataSize, blockSize * (dataSize + 1));
+      let doFinalText: cryptoFramework.DataBlob = { data:tmp };
+      let encryptCipher: cryptoFramework.DataBlob = cipher.updateSync(doFinalText);
+      let mergeText = new Uint8Array(cipherText1.length + encryptCipher.data.length);
+      mergeText.set(cipherText1);
+      mergeText.set(encryptCipher.data, cipherText1.length);
+      cipherText1 = mergeText;
+    }
+    let authTag1 = cipher.doFinalSync(null);
+    paramSpec.authTag = authTag1;
+
+    return {data:{data: cipherText1}, paramSpec}
+  } catch (error) {
+    console.error('sync error, ' + error.code + " errorMsg " + error.message);
+    throw error as Error;
+  }
+}
+
+async function gcmEncOrDecMessagePromise(algName: string, isEnc: boolean, symKey: cryptoFramework.SymKey, blockSize: number, dataLen: number,
+                                data: cryptoFramework.DataBlob, paramSpec: cryptoFramework.GcmParamsSpec): Promise<dataGcmOrCCMSpec> {
+  try {
+    let cipherText1 = new Uint8Array();
+    let cipher = cryptoFramework.createCipher(algName);
+    if (isEnc) {
+      await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, paramSpec);
+    } else {
+      await cipher.init(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, paramSpec);
+    }
+    for(let dataSize = 0; dataSize < dataLen / blockSize; dataSize++) {
+      let tmp = data.data.subarray(blockSize * dataSize, blockSize * (dataSize + 1));
+      let doFinalText: cryptoFramework.DataBlob = { data:tmp };
+      let encryptCipher: cryptoFramework.DataBlob = await cipher.update(doFinalText);
+      let mergeText = new Uint8Array(cipherText1.length + encryptCipher.data.length);
+      mergeText.set(cipherText1);
+      mergeText.set(encryptCipher.data, cipherText1.length);
+      cipherText1 = mergeText;
+    }
+    let authTag1 = await cipher.doFinal(null);
+    paramSpec.authTag = authTag1;
+
+    return {data:{data: cipherText1}, paramSpec}
+  } catch (error) {
+    console.error('sync error, ' + error.code + " errorMsg " + error.message);
+    throw error as Error;
+  }
+}
+
+function gcmEncOrDecNullSync(algName: string, isEnc: boolean, symKey: cryptoFramework.SymKey,
+                         paramsSpec: cryptoFramework.GcmParamsSpec): cryptoFramework.GcmParamsSpec {
+  try {
+    let cipher = cryptoFramework.createCipher(algName);
+    if (isEnc) {
+      cipher.initSync(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, paramsSpec);
+    } else {
+      cipher.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, paramsSpec);
+    }
+    if (isEnc) {
+      let authTag = cipher.doFinalSync(null);
+      paramsSpec.authTag = authTag;
+    }
+    return paramsSpec;
+  } catch (error) {
+    console.error(`“${error}“, error code: ${error.code}`);
+    throw error as Error;
+  }
+}
+
+async function gcmEncOrDecNullPromise(algName: string, isEnc: boolean, symKey: cryptoFramework.SymKey,
+                             paramsSpec: cryptoFramework.GcmParamsSpec): Promise<cryptoFramework.GcmParamsSpec> {
+  try {
+    let cipher = cryptoFramework.createCipher(algName);
+    if (isEnc) {
+      await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, paramsSpec);
+    } else {
+      await cipher.init(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, paramsSpec);
+    }
+    if (isEnc) {
+      let authTag = await cipher.doFinal(null);
+      paramsSpec.authTag = authTag;
+    }
+    return paramsSpec;
+  } catch (error) {
+    console.error(`“${error}“, error code: ${error.code}`);
+    throw error as Error;
+  }
+}
+
 let STREAM_CIPHER_SPEC = [
   [["AES"], ["ECB", "CBC"], ["0", "128", "192", "256"], ["NoPadding"]],
   [["3DES"], ["ECB", "CBC"], ["0", "192"], ["NoPadding"]],
@@ -162,6 +284,7 @@ let MODE_OFB_CIPHER_SEPC = [
 
 let MODE_GCM_CIPHER_SEPC = [
   [["AES"], ["0", "128", "192", "256"], ["PKCS5", "PKCS7", "NoPadding"]],
+  [["SM4"], ["0", "128"], ["PKCS5", "PKCS7", "NoPadding"]],
 ]
 
 let MODE_CCM_CIPHER_SEPC = [
@@ -278,10 +401,55 @@ let ASY_SM2_CIPHER_OAEP_SPEC = [
   [["SM2"], ["MD5", "SHA1", "SHA224", "SHA256", "SHA384", "SHA512", "SM3"]]
 ]
 
+interface sm4GcmVector {
+  index: number;
+  key: number[];
+  iv: number[];
+  aad: number[];
+  plainText: number[];
+  authTag: number[];
+  cipherText: number[]
+}
+
+let SM4_GCM_VECTOR: sm4GcmVector[] = [
+  {
+    index: 0,
+    key: [
+      0x01, 0x23, 0x45, 0x67, 0x89, 0xAB, 0xCD, 0xEF, 0xFE, 0xDC, 0xBA, 0x98, 0x76, 0x54, 0x32, 0x10
+    ],
+    iv: [
+      0x00, 0x00, 0x12, 0x34, 0x56, 0x78, 0x00, 0x00, 0x00, 0x00, 0xAB, 0xCD
+    ],
+    aad: [
+      0xFE, 0xED, 0xFA, 0xCE, 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED, 0xFA, 0xCE, 0xDE, 0xAD, 0xBE, 0xEF,
+      0xAB, 0xAD, 0xDA, 0xD2
+    ],
+    plainText: [
+      0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xBB, 0xBB, 0xBB, 0xBB, 0xBB, 0xBB, 0xBB, 0xBB,
+      0xCC, 0xCC, 0xCC, 0xCC, 0xCC, 0xCC, 0xCC, 0xCC, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD, 0xDD,
+      0xEE, 0xEE, 0xEE, 0xEE, 0xEE, 0xEE, 0xEE, 0xEE, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+      0xEE, 0xEE, 0xEE, 0xEE, 0xEE, 0xEE, 0xEE, 0xEE, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA
+    ],
+    authTag: [
+      0x83, 0xDE, 0x35, 0x41, 0xE4, 0xC2, 0xB5, 0x81, 0x77, 0xE0, 0x65, 0xA9, 0xBF, 0x7B, 0x62, 0xEC
+    ],
+    cipherText: [
+      0x17, 0xF3, 0x99, 0xF0, 0x8C, 0x67, 0xD5, 0xEE, 0x19, 0xD0, 0xDC, 0x99, 0x69, 0xC4, 0xBB, 0x7D,
+      0x5F, 0xD4, 0x6F, 0xD3, 0x75, 0x64, 0x89, 0x06, 0x91, 0x57, 0xB2, 0x82, 0xBB, 0x20, 0x07, 0x35,
+      0xD8, 0x27, 0x10, 0xCA, 0x5C, 0x22, 0xF0, 0xCC, 0xFA, 0x7C, 0xBF, 0x93, 0xD4, 0x96, 0xAC, 0x15,
+      0xA5, 0x68, 0x34, 0xCB, 0xCF, 0x98, 0xC3, 0x97, 0xB4, 0x02, 0x4A, 0x26, 0x91, 0x23, 0x3B, 0x8D,
+    ]
+  },
+];
+
 export {
   genGcmOrCcmParamsSpec,
   genIvParamsSpec,
   createSymKeySync,
+  createSymKeyPromise,
+  convertSymKeyPromise,
+  gcmEncOrDecNullPromise,
+  gcmEncOrDecNullSync,
   createAsymKeySync,
   encryptDecryptMessageSync,
   tagEncryptDecryptMessageSync,
@@ -289,6 +457,8 @@ export {
   dataGcmOrCCMSpec,
   encryptDecryptAsymMessageSync,
   encryptDecryptAsymOAaepMessageSync,
+  gcmEncOrDecMessageSync,
+  gcmEncOrDecMessagePromise,
   ASY_CIPHER_SPEC,
   ASY_CIPHER_OAEP_SPEC,
   ASY_RSA3072_CIPHER_OAEP_SPEC,
@@ -308,5 +478,6 @@ export {
   MODE_CFB_CIPHER_SEPC,
   MODE_CFB128_CIPHER_SEPC,
   MODE_GCM_CIPHER_SEPC,
-  MODE_CCM_CIPHER_SEPC
+  MODE_CCM_CIPHER_SEPC,
+  SM4_GCM_VECTOR,
 }

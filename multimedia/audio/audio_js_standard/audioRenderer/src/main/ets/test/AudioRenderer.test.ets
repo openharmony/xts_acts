@@ -2081,6 +2081,215 @@ export default function audioRendererTest() {
 
     }
 
+    async function playbackWriteDataCallback_001(AudioRendererOptions, pathName, done) {
+      console.info(`${TagFrmwkRender}: Callback : Audio Play Function`);
+      let audioRen;
+      let speed = 0;
+      await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
+        audioRen = data;
+        console.info(`${TagFrmwkRender}: AudioRender Created : Success : Stream Type: SUCCESS data state: ${Object.keys(data)}`);
+        console.info(`${TagFrmwkRender}: AudioRender Created : Success : Stream Type: SUCCESS data value: ${JSON.stringify(data)}`);
+        expect(true).assertTrue();
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: AudioRender Created : ERROR : ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      });
+      console.info(`${TagFrmwkRender}: AudioRenderer : Path : ${pathName}`);
+      console.info(`${TagFrmwkRender}: AudioRenderer : STATE : ${audioRen.state}`);
+
+      let bufferSize;
+      await audioRen.getBufferSize().then((data) => {
+        console.info(`${TagFrmwkRender}: getBufferSize :SUCCESS ${data}`);
+        bufferSize = data;
+        expect(true).assertTrue();
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: getBufferSize :ERROR : ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      });
+
+      await audioRen.on('writeData', (buffer: ArrayBuffer) => {
+        console.info(`${TagFrmwkRender}: writeDataCallback : ${buffer.byteLength}`);
+      });
+
+      await audioRen.start().then(async () => {
+        console.info(`${TagFrmwkRender}: renderInstant started :SUCCESS`);
+        speed = audioRen.getSpeed();
+        console.info(`${TagFrmwkRender}: Renderer getSpeed:${speed}`);
+        expect(speed).assertEqual(1);
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: renderInstant start :ERROR : ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      });
+      await sleep(1000);
+
+      console.info(`${TagFrmwkRender}: AudioRenderer : STATE : ${audioRen.state}`);
+
+      await audioRen.stop().then(() => {
+        console.info(`${TagFrmwkRender}: Renderer stopped : SUCCESS`);
+        expect(true).assertTrue();
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: Renderer stop:ERROR : ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      });
+      
+      console.info(`${TagFrmwkRender}: AudioRenderer : STATE : ${audioRen.state}`);
+
+      await audioRen.release().then(() => {
+        console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        expect(true).assertTrue();
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      });
+      console.info(`${TagFrmwkRender}: AudioRenderer : STATE : ${audioRen.state}`);
+      done();
+    }
+
+    async function playbackWriteDataCallback_002(AudioRendererOptions, pathName, done) {
+      console.info(`${TagFrmwkRender}: Callback : Audio Play Function`);
+      let audioRen;
+      let speed = 0;
+      await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
+        audioRen = data;
+        console.info(`${TagFrmwkRender}: AudioRender Created : Success : Stream Type: SUCCESS data state: ${Object.keys(data)}`);
+        console.info(`${TagFrmwkRender}: AudioRender Created : Success : Stream Type: SUCCESS data value: ${JSON.stringify(data)}`);
+        expect(true).assertTrue();
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: AudioRender Created : ERROR : ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      });
+      console.info(`${TagFrmwkRender}: AudioRenderer : Path : ${pathName}`);
+      console.info(`${TagFrmwkRender}: AudioRenderer : STATE : ${audioRen.state}`);
+
+      let bufferSize;
+      await audioRen.getBufferSize().then((data) => {
+        console.info(`${TagFrmwkRender}: getBufferSize :SUCCESS ${data}`);
+        bufferSize = data;
+        expect(true).assertTrue();
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: getBufferSize :ERROR : ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      });
+
+      await audioRen.on('writeData', (buffer: ArrayBuffer) => {
+        console.info(`${TagFrmwkRender}: writeDataCallback : ${buffer.byteLength}`);
+        return audio.AudioDataCallbackResult.VALID;
+      });
+
+      await audioRen.start().then(async () => {
+        console.info(`${TagFrmwkRender}: renderInstant started :SUCCESS`);
+        speed = audioRen.getSpeed();
+        console.info(`${TagFrmwkRender}: Renderer getSpeed:${speed}`);
+        expect(speed).assertEqual(1);
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: renderInstant start :ERROR : ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      });
+      await sleep(1000);
+
+      console.info(`${TagFrmwkRender}: AudioRenderer : STATE : ${audioRen.state}`);
+
+      await audioRen.stop().then(() => {
+        console.info(`${TagFrmwkRender}: Renderer stopped : SUCCESS`);
+        expect(true).assertTrue();
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: Renderer stop:ERROR : ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      });
+      
+      console.info(`${TagFrmwkRender}: AudioRenderer : STATE : ${audioRen.state}`);
+
+      await audioRen.release().then(() => {
+        console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        expect(true).assertTrue();
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      });
+      console.info(`${TagFrmwkRender}: AudioRenderer : STATE : ${audioRen.state}`);
+      done();
+    }
+
+    async function playbackWriteDataCallback_003(AudioRendererOptions, pathName, done) {
+      console.info(`${TagFrmwkRender}: Callback : Audio Play Function`);
+      let audioRen;
+      let speed = 0;
+      await audio.createAudioRenderer(AudioRendererOptions).then(function (data) {
+        audioRen = data;
+        console.info(`${TagFrmwkRender}: AudioRender Created : Success : Stream Type: SUCCESS data state: ${Object.keys(data)}`);
+        console.info(`${TagFrmwkRender}: AudioRender Created : Success : Stream Type: SUCCESS data value: ${JSON.stringify(data)}`);
+        expect(true).assertTrue();
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: AudioRender Created : ERROR : ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      });
+      console.info(`${TagFrmwkRender}: AudioRenderer : Path : ${pathName}`);
+      console.info(`${TagFrmwkRender}: AudioRenderer : STATE : ${audioRen.state}`);
+
+      let bufferSize;
+      await audioRen.getBufferSize().then((data) => {
+        console.info(`${TagFrmwkRender}: getBufferSize :SUCCESS ${data}`);
+        bufferSize = data;
+        expect(true).assertTrue();
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: getBufferSize :ERROR : ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      });
+
+      await audioRen.on('writeData', (buffer: ArrayBuffer) => {
+        console.info(`${TagFrmwkRender}: writeDataCallback : ${buffer.byteLength}`);
+        return audio.AudioDataCallbackResult.INVALID;
+      });
+
+      await audioRen.start().then(async () => {
+        console.info(`${TagFrmwkRender}: renderInstant started :SUCCESS`);
+        speed = audioRen.getSpeed();
+        console.info(`${TagFrmwkRender}: Renderer getSpeed:${speed}`);
+        expect(speed).assertEqual(1);
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: renderInstant start :ERROR : ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      });
+      await sleep(1000);
+
+      console.info(`${TagFrmwkRender}: AudioRenderer : STATE : ${audioRen.state}`);
+
+      await audioRen.stop().then(() => {
+        console.info(`${TagFrmwkRender}: Renderer stopped : SUCCESS`);
+        expect(true).assertTrue();
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: Renderer stop:ERROR : ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      });
+      
+      console.info(`${TagFrmwkRender}: AudioRenderer : STATE : ${audioRen.state}`);
+
+      await audioRen.release().then(() => {
+        console.info(`${TagFrmwkRender}: Renderer release : SUCCESS`);
+        expect(true).assertTrue();
+      }).catch((err) => {
+        console.info(`${TagFrmwkRender}: Renderer release :ERROR : ${err.message}`);
+        expect(false).assertTrue();
+        done();
+      });
+      console.info(`${TagFrmwkRender}: AudioRenderer : STATE : ${audioRen.state}`);
+      done();
+    }
+
     /**
       *@tc.number    : SUB_MULTIMEDIA_AUDIO_ON_OUTPUTDEVICECHANGEWITHINFO_0100
       *@tc.name      : test[on_outputDeviceChangeWithInfo]
@@ -12608,6 +12817,111 @@ export default function audioRendererTest() {
 
       done();
 
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_WRITE_DATA_TEST_0100
+     *@tc.name      : AudioRenderer_writeData_on
+     *@tc.desc      : Test AudioRenderer writeData callback with on interface
+     *@tc.size      : MediumTest
+     *@tc.type      : Function
+     *@tc.level     : Level2
+     */
+    it("SUB_MULTIMEDIA_AUDIO_RENDERER_WRITE_DATA_TEST_0100", 2, async function (done) {
+      let audioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_16000,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+
+      let audioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
+        rendererFlags: 0
+      }
+
+      let audioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo
+      }
+      let resultFlag = true;
+      let readPath = 'StarWars10s-1C-16000-2SW.wav'
+      await getFdRead(readPath, done);
+      await playbackWriteDataCallback_001(audioRendererOptions, filePath, done);
+      await sleep(100);
+      expect(resultFlag).assertTrue();
+      await closeFileDescriptor(readPath);
+      done();
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_WRITE_DATA_TEST_0200
+     *@tc.name      : AudioRenderer_writeData_on
+     *@tc.desc      : Test AudioRenderer writeData callback with VALID result
+     *@tc.size      : MediumTest
+     *@tc.type      : Function
+     *@tc.level     : Level2
+     */
+    it("SUB_MULTIMEDIA_AUDIO_RENDERER_WRITE_DATA_TEST_0200", 2, async function (done) {
+      let audioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_16000,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+
+      let audioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
+        rendererFlags: 0
+      }
+
+      let audioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo
+      }
+      let resultFlag = true;
+      let readPath = 'StarWars10s-1C-16000-2SW.wav'
+      await getFdRead(readPath, done);
+      await playbackWriteDataCallback_002(audioRendererOptions, filePath, done);
+      await sleep(100);
+      expect(resultFlag).assertTrue();
+      await closeFileDescriptor(readPath);
+      done();
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_RENDERER_WRITE_DATA_TEST_0300
+     *@tc.name      : AudioRenderer_writeData_on
+     *@tc.desc      : Test AudioRenderer writeData callback with INVALID result
+     *@tc.size      : MediumTest
+     *@tc.type      : Function
+     *@tc.level     : Level2
+     */
+    it("SUB_MULTIMEDIA_AUDIO_RENDERER_WRITE_DATA_TEST_0300", 2, async function (done) {
+      let audioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_16000,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+
+      let audioRendererInfo = {
+        usage: audio.StreamUsage.STREAM_USAGE_MUSIC,
+        rendererFlags: 0
+      }
+
+      let audioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo
+      }
+      let resultFlag = true;
+      let readPath = 'StarWars10s-1C-16000-2SW.wav'
+      await getFdRead(readPath, done);
+      await playbackWriteDataCallback_003(audioRendererOptions, filePath, done);
+      await sleep(100);
+      expect(resultFlag).assertTrue();
+      await closeFileDescriptor(readPath);
+      done();
     })
   })
 }

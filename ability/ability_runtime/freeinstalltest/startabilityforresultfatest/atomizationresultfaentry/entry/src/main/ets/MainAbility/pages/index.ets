@@ -15,12 +15,11 @@
 import router from '@system.router';
 import featureAbility from '@ohos.ability.featureAbility'
 
-async function routePage(uri) {
-  let options = {
-    uri: uri
-  }
+async function routePage(uri:string) {
   try {
-    await router.push(options)
+    await router.push({
+      uri: uri
+    })
   } catch (err) {
     console.error(`fail callback, code: ${err.code}, msg: ${err.msg}`)
   }
@@ -94,7 +93,7 @@ struct Index {
   }
 
   async aboutToAppear() {
-    var permissions = ["ohos.permission.DISTRIBUTED_DATASYNC"];
+    let permissions = ["ohos.permission.DISTRIBUTED_DATASYNC"];
     featureAbility.getContext().requestPermissionsFromUser(permissions, 0, (data) => {
       console.info("start requestPermissionsFromUser!!!!")
     })

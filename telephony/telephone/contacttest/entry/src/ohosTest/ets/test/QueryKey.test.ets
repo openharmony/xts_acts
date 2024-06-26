@@ -249,7 +249,7 @@ export default function QueryKeyTest() {
         contact.queryKey(context, -1, (err: BusinessError, data) => {
           if (err) {
             console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-            ExpectFail();
+            ExpectTrue(err.code === 401);
             done();
           } else {
             console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -311,7 +311,7 @@ export default function QueryKeyTest() {
         contact.queryKey(context, 999999999999999999999999999999999999999, (err: BusinessError, data) => {
           if (err) {
             console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-            ExpectFail();
+            ExpectTrue(err.code === 401);
             done();
           } else {
             console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -440,7 +440,7 @@ export default function QueryKeyTest() {
             }, (err: BusinessError, data) => {
               if (err) {
                 console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-                ExpectFail();
+                ExpectTrue(err.code === 401);
                 done();
               } else {
                 console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -473,7 +473,7 @@ export default function QueryKeyTest() {
         contact.queryKey(context, 56987151545665656565656565, holder, (err: BusinessError, data) => {
           if (err) {
             console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-            ExpectFail();
+            ExpectTrue(err.code === 401);
             done();
           } else {
             console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -504,7 +504,7 @@ export default function QueryKeyTest() {
         contact.queryKey(context, -1, holder, (err: BusinessError, data) => {
           if (err) {
             console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-            ExpectFail();
+            ExpectTrue(err.code === 401);
             done();
           } else {
             console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -570,7 +570,7 @@ export default function QueryKeyTest() {
         }, (err: BusinessError, data) => {
           if (err) {
             console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-            ExpectFail();
+            ExpectTrue(err.code === 401);
             done();
           } else {
             console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -601,7 +601,7 @@ export default function QueryKeyTest() {
         contact.queryKey(context, Number.MAX_VALUE, holder, (err: BusinessError, data) => {
           if (err) {
             console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-            ExpectFail();
+            ExpectTrue(err.code === 401);
             done();
           } else {
             console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -644,7 +644,7 @@ export default function QueryKeyTest() {
             }, (err: BusinessError, data) => {
               if (err) {
                 console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-                ExpectFail();
+                ExpectTrue(err.code === 401);
                 done();
               } else {
                 console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -729,11 +729,11 @@ export default function QueryKeyTest() {
             });
             promise.then((data) => {
               console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
-              ExpectTrue(data.length > 0);
+              ExpectTrue(data === undefined);
               done();
             }).catch((err: BusinessError) => {
               console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-              ExpectFail();
+              ExpectTrue(err.code === 401);
               done();
             });
           }
@@ -777,7 +777,7 @@ export default function QueryKeyTest() {
               done();
             }).catch((err: BusinessError) => {
               console.info(`${caseName} queryKey: err->${JSON.stringify(err)}`);
-              ExpectFail();
+              ExpectTrue(err.code === 401);
               done();
             });
           }
@@ -809,7 +809,7 @@ export default function QueryKeyTest() {
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-          ExpectFail();
+          ExpectTrue(err.code === 401);
           done();
         });
       } catch (err) {
@@ -839,7 +839,7 @@ export default function QueryKeyTest() {
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-          ExpectFail();
+          ExpectTrue(err.code === 401);
           done();
         });
       } catch (err) {
@@ -899,7 +899,7 @@ export default function QueryKeyTest() {
         }, (err: BusinessError, data) => {
           if (err) {
             console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-            ExpectFail();
+            ExpectTrue(err.code === 401);
             done();
           } else {
             console.info(`${caseName} callback: success data->${JSON.stringify(data)}`);
@@ -934,7 +934,7 @@ export default function QueryKeyTest() {
           done();
         }).catch((err: BusinessError) => {
           console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-          ExpectFail();
+          ExpectTrue(err.code === 401);
           done();
         });
       } catch (err) {
@@ -976,7 +976,7 @@ export default function QueryKeyTest() {
               done();
             }).catch((err: BusinessError) => {
               console.info(`${caseName} callback: err->${JSON.stringify(err)}`);
-              ExpectFail();
+              ExpectTrue(err.code === 401);
               done();
             });
           }

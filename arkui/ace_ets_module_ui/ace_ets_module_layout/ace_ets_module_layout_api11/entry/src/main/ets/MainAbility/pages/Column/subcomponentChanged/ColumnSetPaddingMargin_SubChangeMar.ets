@@ -12,11 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { MessageManager,Callback } from '../../../common/MessageManager1';
 @Entry
 @Component
-struct ColumnSetPaddingMarginTest {
-  messageManager:MessageManager = new MessageManager()
+struct ColumnSetPaddingMarginMarTest {
   private content: string = "SetPaddingMargin Page";
   onPageShow() {
     console.info('SetPaddingMargin onPageShow');

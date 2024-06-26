@@ -17,6 +17,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import RectValue from '../../../MainAbility/common/Rect';
 import CommonFunc from "../../../MainAbility/common/Common";
+import GlobalContext from '../../../MainAbility/common/GlobalContext'
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 
 export default function ColumnSetDisplayPriority_SubChange() {
@@ -52,13 +53,13 @@ export default function ColumnSetDisplayPriority_SubChange() {
      */
     it('testColumnSetDisplayPriorityWithRateOneTwoThree', 0, async () => {
       console.info('new testColumnSetDisplayPriorityWithRateOneTwoThree START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'testpriority1', value: 1
       });
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'testpriority2', value: 2
       });
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'testpriority3', value: 3
       });
       await CommonFunc.sleep(2000);
@@ -87,13 +88,13 @@ export default function ColumnSetDisplayPriority_SubChange() {
      */
     it('testColumnSetDisplayPriorityWithRateTwoOneTwo', 0, async () => {
       console.info('new testColumnSetDisplayPriorityWithRateTwoOneTwo START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'testpriority1', value: 1
       });
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'testpriority2', value: 0.5
       });
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<number>('value').message.notify({
         name: 'testpriority3', value: 1
       });
       await CommonFunc.sleep(2000);

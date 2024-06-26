@@ -20,10 +20,13 @@ export default function ActsNotificationManagerDistributedTest() {
     let TAG = 'SUB_NOTIFICATION_ANS_MANAGER_IS_DISTRIBUTED_ENABLED_TEST ===>'
     console.info(TAG + 'SUB_NOTIFICATION_ANS_MANAGER_IS_DISTRIBUTED_ENABLED_TEST START')
 
-    /*
+    /* *
     * @tc.number    : Sub_Notification_Ans_Distributed_Enable_4100
-    * @tc.name      : function isDistributedEnabled(callback: AsyncCallback<boolean>): void
+    * @tc.name      : isDistributedEnabled
     * @tc.desc      : Obtains whether the device supports distributed notification
+    * @tc.size      : MediumTest
+    * @tc.type      : Function test
+    * @tc.level     : Level0
     */
     it('Sub_Notification_Ans_Distributed_Enable_4100', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_Distributed_Enable_4100 START`)
@@ -47,10 +50,13 @@ export default function ActsNotificationManagerDistributedTest() {
       console.info(`${TAG} Sub_Notification_Ans_Distributed_Enable_4100 END`)
     })
 
-    /*
+    /* *
     * @tc.number    : Sub_Notification_Ans_Distributed_Enable_4200
-    * @tc.name      : function isDistributedEnabled(): Promise<boolean>
+    * @tc.name      : isDistributedEnabled
     * @tc.desc      : Obtains whether the device supports distributed notification
+    * @tc.size      : MediumTest
+    * @tc.type      : Function test
+    * @tc.level     : Level0
     */
     it('Sub_Notification_Ans_Distributed_Enable_4200', 0, async function (done) {
       console.info(`${TAG} Sub_Notification_Ans_Distributed_Enable_4200 START`)
@@ -66,11 +72,14 @@ export default function ActsNotificationManagerDistributedTest() {
       console.info(`${TAG} Sub_Notification_Ans_Distributed_Enable_4200 END`)
     })
 
-    /*
+    /* *
     * @tc.number    : SUB_NOTIFICATION_ANS_MANAGER_IS_DISTRIBUTED_ENABLED_TEST_0300
-    * @tc.name      : function isDistributedEnabled(undefined): Promise<boolean>
+    * @tc.name      : isDistributedEnabled
     * @tc.desc      : Obtains whether the device supports distributed notification
-    */
+    * @tc.size      : MediumTest
+    * @tc.type      : Function test
+    * @tc.level     : Level0
+    */   
     it('SUB_NOTIFICATION_ANS_MANAGER_IS_DISTRIBUTED_ENABLED_TEST_0300', 0, async function (done) {
       console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_IS_DISTRIBUTED_ENABLED_TEST_0300 START`)
       notificationManager.isDistributedEnabled(undefined).then((data) => {
@@ -84,6 +93,24 @@ export default function ActsNotificationManagerDistributedTest() {
       })
       console.info(`${TAG} SUB_NOTIFICATION_ANS_MANAGER_IS_DISTRIBUTED_ENABLED_TEST_0300 END`)
     })
+
+    /* *
+    * @tc.number    : Sub_Notification_Ans_Is_Notification_Enable_0100
+    * @tc.name      : isNotificationEnabledSync
+    * @tc.desc      : test function isNotificationEnabledSync
+    * @tc.size      : MediumTest
+    * @tc.type      : Function test
+    * @tc.level     : Level0
+    */
+    it('Sub_Notification_Ans_Is_Notification_Enable_0100', 0, async (done: Function) => {
+      console.info(`${TAG} Sub_Notification_Ans_Is_Notification_Enable_0100 START`);
+
+      notificationManager.isNotificationEnabledSync()
+      expect(true).assertTrue()
+      done()
+
+      console.info(`${TAG} Sub_Notification_Ans_Is_Notification_Enable_0100 END`);
+    });
 
     console.info(TAG + 'SUB_NOTIFICATION_IS_DISTRIBUTED_ENABLED_TEST END')
   })

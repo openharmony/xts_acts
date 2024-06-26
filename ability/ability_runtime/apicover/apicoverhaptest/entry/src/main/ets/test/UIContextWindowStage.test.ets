@@ -48,7 +48,7 @@ export default function UIContextWindowStageTest() {
      */
     it('ACTS_GetWindowStage_0100', 0, function (done) {
       TAG = 'ACTS_GetWindowStage_0100';
-      console.log(TAG + ' start.')
+      console.log(TAG + ' start.');
       let events = ['ACTS_GetWindowStage']
       commonEventManager.createSubscriber({
         events: events
@@ -59,7 +59,7 @@ export default function UIContextWindowStageTest() {
       })
       let subscribeCallBack = (err, data) => {
         console.info(TAG + ' subscribeCallBack , data = ' + JSON.stringify(data));
-        let parameters = data['parameters']
+        let parameters = data['parameters'];
         if (parameters) {
           console.info(TAG + ' subscribeCallBack , parameters = ' + JSON.stringify(parameters));
           expect(parameters['onCreateResult']).assertFalse();
@@ -88,7 +88,7 @@ export default function UIContextWindowStageTest() {
      */
     it('ACTS_GetWindowStage_0200', 0, function (done) {
       TAG = 'ACTS_GetWindowStage_0200';
-      console.log(TAG + ' start.')
+      console.log(TAG + ' start.');
       let events = ['ACTS_GetWindowStage']
       let twoStart: boolean = false;
       commonEventManager.createSubscriber({
@@ -100,7 +100,7 @@ export default function UIContextWindowStageTest() {
       })
       let subscribeCallBack = (err, data) => {
         console.info(TAG + ' subscribeCallBack , data = ' + JSON.stringify(data));
-        let parameters = data['parameters']
+        let parameters = data['parameters'];
         if (parameters) {
           console.info(TAG + ' subscribeCallBack , parameters = ' + JSON.stringify(parameters));
           expect(parameters['onCreateResult']).assertFalse();
@@ -140,7 +140,7 @@ export default function UIContextWindowStageTest() {
      */
     it('ACTS_GetWindowStage_onForeground_0100', 0, function (done) {
       TAG = 'ACTS_GetWindowStage_onForeground_0100';
-      console.log(TAG + ' start.')
+      console.log(TAG + ' start.');
       let events = ['ACTS_GetWindowStage', 'ACTS_GetWindowStage_onForeground', 'ACTS_GetWindowStage_onBackground']
       commonEventManager.createSubscriber({
         events: events
@@ -207,7 +207,7 @@ export default function UIContextWindowStageTest() {
         done();
         return;
       }
-      console.log(TAG + ' start.')
+      console.log(TAG + ' start.');
       let events = ['ACTS_GetWindowStage', 'ACTS_GetWindowStage_onForeground', 'ACTS_GetWindowStage_onBackground']
       commonEventManager.createSubscriber({
         events: events
@@ -267,8 +267,8 @@ export default function UIContextWindowStageTest() {
      */
     it('ACTS_GetWindowStage_onWindowStageRestore_0100', 0, function (done) {
       TAG = 'ACTS_GetWindowStage_onWindowStageRestore_0100';
-      console.log(TAG + ' start.')
-      let events = ['ACTS_GetWindowStage']
+      console.log(TAG + ' start.');
+      let events = ['ACTS_GetWindowStage'];
       commonEventManager.createSubscriber({
         events: events
       }).then((data) => {

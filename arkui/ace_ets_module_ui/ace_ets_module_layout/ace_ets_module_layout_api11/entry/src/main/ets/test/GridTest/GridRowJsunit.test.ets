@@ -13,18 +13,19 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
+import GlobalContext from '../../MainAbility/common/GlobalContext'
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
 export default function GridRowJsunit() {
-  describe('GridRowJsunit', function () {
-    beforeEach(async function (done) {
+  describe('GridRowJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("GridRowJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Grid/GridRowPage',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Grid/GridRowPage',
       }
       try {
         router.clear();
@@ -43,12 +44,12 @@ export default function GridRowJsunit() {
       done();
     });
 
-    it('GridRowJsunit_0100', 0, async function (done) {
+    it('GridRowJsunit_0100', 0, async (done: Function) => {
       // Get the information of the GridRow component
       console.info('[GridRowJsunit_0100] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('gridRow');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[GridRowJsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[GridRowJsunit_0100] columns: " + JSON.stringify(obj.$attrs.columns));
       console.info("[GridRowJsunit_0100] breakpoints: " + JSON.stringify(obj.$attrs.breakpoints));
@@ -66,23 +67,23 @@ export default function GridRowJsunit() {
       done();
     });
 
-    it('GridRowJsunit_0200', 0, async function (done) {
+    it('GridRowJsunit_0200', 0, async (done: Function) => {
       // Modify the properties of component GridRow
       console.info('[GridRowJsunit_0200] START');
-      globalThis.value.message.notify({name:'columns',value:'12'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'columns',value:'12'})
       await CommonFunc.sleep(2000);
-      globalThis.value.message.notify({name:'gutter',value:'x: 7.5, y: 15'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'gutter',value:'x: 7.5, y: 15'})
       await CommonFunc.sleep(2000);
-      globalThis.value.message.notify({name:'breakpoints',value:'12'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'breakpoints',value:'12'})
       await CommonFunc.sleep(2000);
-      globalThis.value.message.notify({name:'grDirection',value:'12'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'grDirection',value:'12'})
       await CommonFunc.sleep(2000);
-      globalThis.value.message.notify({name:'currentBp',value:'sm'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'currentBp',value:'sm'})
       await CommonFunc.sleep(2000);
 
       // Get the propoties value of the GridRow component
       let strJson = getInspectorByKey('gridRow');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[GridRowJsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[GridRowJsunit_0200] columns: " + JSON.stringify(obj.$attrs.columns));
       console.info("[GridRowJsunit_0200] breakpoints: " + JSON.stringify(obj.$attrs.breakpoints));
@@ -99,23 +100,23 @@ export default function GridRowJsunit() {
       done();
     });
 
-    it('GridRowJsunit_0300', 0, async function (done) {
+    it('GridRowJsunit_0300', 0, async (done: Function) => {
       // Illegal modification of properties of component GridRow
       console.info('[GridRowJsunit_0300] START');
-      globalThis.value.message.notify({name:'gutter',value:'-10'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'gutter',value:'-10'})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'columns',value:'-5'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'columns',value:'-5'})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'breakpoints',value:'test'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'breakpoints',value:'test'})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'grDirection',value:'test'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'grDirection',value:'test'})
       await CommonFunc.sleep(200);
-      globalThis.value.message.notify({name:'currentBp',value:'110'})
+      GlobalContext.getContext().getObject<string>('value').message.notify({name:'currentBp',value:'110'})
       await CommonFunc.sleep(200);
 
       // Get the propoties value of the GridRow component
       let strJson = getInspectorByKey('gridRow');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[GridRowJsunit_0300] component obj is: " + JSON.stringify(obj));
       console.info("[GridRowJsunit_0300] columns: " + JSON.stringify(obj.$attrs.columns));
       console.info("[GridRowJsunit_0300] breakpoints: " + JSON.stringify(obj.$attrs.breakpoints));
@@ -132,11 +133,11 @@ export default function GridRowJsunit() {
       done();
     });
 
-    it('GridRowJsunit_0400', 0, async function (done) {
+    it('GridRowJsunit_0400', 0, async (done: Function) => {
       // Verify default value of the GridRow component
       console.info('[GridRowJsunit_0400] START');
       let strJson = getInspectorByKey('gridRow_default');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[GridRowJsunit_0400] component obj is: " + JSON.stringify(obj));
       console.info("[GridRowJsunit_0400] columns: " + JSON.stringify(obj.$attrs.columns));
       console.info("[GridRowJsunit_0400] breakpoints: " + JSON.stringify(obj.$attrs.breakpoints));

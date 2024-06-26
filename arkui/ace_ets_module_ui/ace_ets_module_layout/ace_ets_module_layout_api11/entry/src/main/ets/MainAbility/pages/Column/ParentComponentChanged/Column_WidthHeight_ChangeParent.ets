@@ -12,22 +12,27 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from './../../../common/MessageManager1';
+import GlobalContext from './../../../common/GlobalContext';
+import { Value } from './../../../common/Value';
+import { MessageManager, Callback } from './../../../common/MessageManager';
+
+type MessageData = number
 
 @Entry
 @Component
 struct Column_WidthHeight_ChangeParent {
   @State testHeight: number = 150
   @State testWidth: number = 450
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager<MessageData> = new MessageManager()
   private content: string = "Column_WidthHeight_ChangeParent Page"
   
   onPageShow() {
     console.info('Column_WidthHeight_ChangeParent page show called');
-    globalThis.value = {
-      name:'messageManager',message:this.messageManager
+    let value: Value<MessageData> = {
+      name: 'messageManager', message: this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    GlobalContext.getContext().setObject('value', value);
+    let callback: Callback<MessageData> = message => {
       console.log('message = ' + message.name + "--" + message.value);
       if (message.name == 'height') {
         this.testHeight = message.value;

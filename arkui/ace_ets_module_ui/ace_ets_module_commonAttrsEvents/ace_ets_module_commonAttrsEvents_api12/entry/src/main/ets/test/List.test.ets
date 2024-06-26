@@ -43,6 +43,26 @@ import onTouchIntercept from './onTouchIntercept/onTouchIntercept.test'
 import onWillApplyTheme from './onWillApplyTheme/onWillApplyTheme.test'
 import FocusApi1 from './Focus/FocusApi1.test'
 
+import FocusScopeId1 from './Focus/focusScopeId/FocusScopeId1.test'
+import FocusScopeId2 from './Focus/focusScopeId/FocusScopeId2.test'
+import FocusScopeId3 from './Focus/focusScopeId/FocusScopeId3.test'
+import FocusScopeId4 from './Focus/focusScopeId/FocusScopeId4.test'
+import FocusScopeId5 from './Focus/focusScopeId/FocusScopeId5.test'
+import FocusScopeId6 from './Focus/focusScopeId/FocusScopeId6.test'
+import FocusScopeId7 from './Focus/focusScopeId/FocusScopeId7.test'
+import FocusScopeId8 from './Focus/focusScopeId/FocusScopeId8.test'
+import FocusScopeId9 from './Focus/focusScopeId/FocusScopeId9.test'
+import FocusScopeId10 from './Focus/focusScopeId/FocusScopeId10.test'
+import FocusScopeId11 from './Focus/focusScopeId/FocusScopeId11.test'
+import FocusScopeId12 from './Focus/focusScopeId/FocusScopeId12.test'
+import FocusScopeId13 from './Focus/focusScopeId/FocusScopeId13.test'
+import FocusScopeId14 from './Focus/focusScopeId/FocusScopeId14.test'
+import FocusScopeId15 from './Focus/focusScopeId/FocusScopeId15.test'
+import FocusScopeId16 from './Focus/focusScopeId/FocusScopeId16.test'
+import FocusScopeId17 from './Focus/focusScopeId/FocusScopeId17.test'
+import FocusScopeId18 from './Focus/focusScopeId/FocusScopeId18.test'
+import FocusScopeId19 from './Focus/focusScopeId/FocusScopeId19.test'
+
 export default function testsuite() {
   requestFocus1();
   requestFocus2();
@@ -73,5 +93,23 @@ export default function testsuite() {
   onTouchIntercept()
   onWillApplyTheme()
   FocusApi1();
-
+  FocusScopeId1();
+  FocusScopeId2();
+  FocusScopeId3();
+  FocusScopeId5();
+  FocusScopeId6();
+  FocusScopeId7();
+  FocusScopeId8();
+  FocusScopeId9();
+  FocusScopeId10();
+  FocusScopeId11();
+  FocusScopeId12();
+  FocusScopeId13();
+  FocusScopeId14();
+  FocusScopeId15();
+  FocusScopeId17();
+  FocusScopeId18();
+  FocusScopeId19();
+  FocusScopeId16();
+  FocusScopeId4();
 }

@@ -40,6 +40,7 @@ private:
     
     int HandleRequestExitChildProcess(const OHIPCParcel *data, OHIPCParcel *reply);
     int HandleAdd(const OHIPCParcel *data, OHIPCParcel *reply);
+    int HandleStartNativeChildProcess(const OHIPCParcel *data, OHIPCParcel *reply);
     
     OHIPCRemoteStub *ipcStub_ = nullptr;
 };

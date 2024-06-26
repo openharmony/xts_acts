@@ -29,7 +29,7 @@ static void OnEventReceive(ArkUI_NodeEvent *event)
 {
     uint32_t background_color = COLOR_YELLOW;
     int32_t eventId = OH_ArkUI_NodeEvent_GetTargetId(event);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "TextAreaOnFocusTest", "OnEventReceive eventId: %{public}d",
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "TextAreaOnChangeTest", "OnEventReceive eventId: %{public}d",
                  eventId);
     ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
     OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
@@ -61,6 +61,10 @@ static void BasicSet()
     ArkUI_AttributeItem idItem = {};
     idItem.string = "TextAreaOnChange";
     nodeAPI->setAttribute(textArea, NODE_ID, &idItem);
+
+    ArkUI_AttributeItem place_holder_item;
+    place_holder_item.string = "NODE_TEXT_AREA_TEXT_ON_CHANGE";
+    nodeAPI->setAttribute(textArea, NODE_TEXT_AREA_TEXT, &place_holder_item);
 }
 
 napi_value TextAreaOnChangeTest::CreateNativeNode(napi_env env, napi_callback_info info)
@@ -90,30 +94,6 @@ napi_value TextAreaOnChangeTest::CreateNativeNode(napi_env env, napi_callback_in
 
     napi_value exports;
     napi_create_object(env, &exports);
-
-    return exports;
-}
-
-napi_value TextAreaOnChangeTest::ChangeType(napi_env env, napi_callback_info info)
-{
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "CommonAttrsAlignItemsTest", "ChangeTestType");
-
-    size_t argc = PARAM_1;
-    napi_value args[PARAM_1] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-    napi_get_value_int32(env, args[PARAM_0], &testType);
-    ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
-    OH_ArkUI_GetModuleInterface(ARKUI_NATIVE_NODE, ArkUI_NativeNodeAPI_1, nodeAPI);
-
-    ArkUI_AttributeItem place_holder_item;
-    place_holder_item.string = "NODE_TEXT_AREA_TEXT_ON_CHANGE";
-    nodeAPI->setAttribute(textArea, NODE_TEXT_AREA_TEXT, &place_holder_item);
-
-    napi_value exports;
-    if (napi_create_object(env, &exports) != napi_ok) {
-        napi_throw_type_error(env, nullptr, "napi_create_object failed");
-        return nullptr;
-    }
 
     return exports;
 }

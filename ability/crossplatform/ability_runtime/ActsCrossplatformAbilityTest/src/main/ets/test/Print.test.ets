@@ -30,6 +30,7 @@ export default function PrintTest() {
      * @tc.level Level 2
      */
     it("ACTS_PRINT_CALLBACK_0001", 0, async (done: Function) => {
+      console.log("ACTS_PRINT_CALLBACK_0001 :start");
       let msg = "print_Callback normal message: hello print callback.";
       abilityDelegator.print(msg, (err: BusinessError) => {
         abilityDelegator.printSync(
@@ -49,6 +50,7 @@ export default function PrintTest() {
      * @tc.level Level 3
      */
     it("ACTS_PRINT_CALLBACK_ERROR_0002", 0, async (done: Function) => {
+      console.log("ACTS_PRINT_CALLBACK_ERROR_0002 :start");
       var msg = 123;
       try {
         abilityDelegator.print(msg, (err: BusinessError) => {
@@ -87,6 +89,7 @@ export default function PrintTest() {
      * @tc.level Level 2
      */
     it("ACTS_PRINT_CALLBACK_0003", 0, async (done: Function) => {
+      console.log("ACTS_PRINT_CALLBACK_0003 :start");
       let msg = "print_Callback escape character: \n";
 
       abilityDelegator.print(msg, (err: BusinessError) => {
@@ -105,6 +108,7 @@ export default function PrintTest() {
      * @tc.level Level 2
      */
     it("ACTS_PRINT_CALLBACK_0004", 0, async (done: Function) => {
+      console.log("ACTS_PRINT_CALLBACK_0004 :start");
       let msg: string = "print_Callback special character: © ® ℃ ℉ ™ ↵";
 
       abilityDelegator.print(msg, (err: BusinessError) => {
@@ -123,6 +127,7 @@ export default function PrintTest() {
      * @tc.level Level 2
      */
     it("ACTS_PRINT_CALLBACK_0005", 0, async (done: Function) => {
+      console.log("ACTS_PRINT_CALLBACK_0005 :start");
       let msg: string = "print_Callback language: 中文 English  Русский язык Français";
 
       abilityDelegator.print(msg, (err: BusinessError) => {
@@ -141,6 +146,7 @@ export default function PrintTest() {
      * @tc.level Level 2
      */
     it("ACTS_PRINT_CALLBACK_0006", 0, async (done: Function) => {
+      console.log("ACTS_PRINT_CALLBACK_0006 :start");
       let msg: string =
         "0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
           "aaaaaaaaaa" +
@@ -172,6 +178,7 @@ export default function PrintTest() {
      * @tc.level Level 2
      */
     it("ACTS_PRINT_PROMISE_0001", 0, async (done: Function) => {
+      console.log("ACTS_PRINT_PROMISE_0001 :start");
       let msg = "print_Promise normal message: hello print promise.";
       abilityDelegator
         .print(msg)
@@ -198,6 +205,7 @@ export default function PrintTest() {
      * @tc.level Level 3
      */
     it("ACTS_PRINT_PROMISE_ERROR_0002", 0, async (done: Function) => {
+      console.log("ACTS_PRINT_PROMISE_ERROR_0002 :start");
       let msg: number = 123;
       try {
         abilityDelegator
@@ -242,6 +250,7 @@ export default function PrintTest() {
      * @tc.level Level 2
      */
     it("ACTS_PRINT_PROMISE_0003", 0, async (done: Function) => {
+      console.log("ACTS_PRINT_PROMISE_0003 :start");
       let msg = "print_Promise escape character: \n";
       abilityDelegator
         .print(msg)
@@ -268,6 +277,7 @@ export default function PrintTest() {
      * @tc.level Level 2
      */
     it("ACTS_PRINT_PROMISE_0004", 0, async (done: Function) => {
+      console.log("ACTS_PRINT_PROMISE_0004 :start");
       let msg = "print_Promise special character: © ® ℃ ℉ ™ ↵";
       abilityDelegator
         .print(msg)
@@ -294,6 +304,7 @@ export default function PrintTest() {
      * @tc.level Level 2
      */
     it("ACTS_PRINT_PROMISE_0005", 0, async (done: Function) => {
+      console.log("ACTS_PRINT_PROMISE_0005 :start");
       let msg = "print_Promise language: 中文 English  Русский язык Français";
       abilityDelegator
         .print(msg)
@@ -320,6 +331,7 @@ export default function PrintTest() {
      * @tc.level Level 2
      */
     it("ACTS_PRINT_PROMISE_0006", 0, async (done: Function) => {
+      console.log("ACTS_PRINT_PROMISE_0006 :start");
       let msg: string =
         "0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
           "aaaaaaaaaa" +
@@ -355,6 +367,7 @@ export default function PrintTest() {
      * @tc.level Level 2
      */
     it("ACTS_PRINT_SYNC_0001", 0, async (done: Function) => {
+      console.log("ACTS_PRINT_SYNC_0001 :start");
       let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator;
       let msg = "printSync msg";
       abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
@@ -373,6 +386,7 @@ export default function PrintTest() {
      * @tc.level Level 2
      */
     it("ACTS_PRINT_SYNC_ERROR_0002", 0, async (done: Function) => {
+      console.log("ACTS_PRINT_SYNC_ERROR_0002 :start");
       let msg: number = 123;
       try {
         abilityDelegator.printSync(msg);
@@ -398,6 +412,7 @@ export default function PrintTest() {
      * @tc.level Level 2
      */
     it("ACTS_PRINT_SYNC_0003", 0, async (done: Function) => {
+      console.log("ACTS_PRINT_SYNC_0003 :start");
       let msg: string = "printSync escape character: \n";
       abilityDelegator.printSync(msg);
       abilityDelegator.printSync("ACTS_PRINT_SYNC_0003 printSync");
@@ -414,6 +429,7 @@ export default function PrintTest() {
      * @tc.level Level 2
      */
     it("ACTS_PRINT_SYNC_0004", 0, async (done: Function) => {
+      console.log("ACTS_PRINT_SYNC_0004 :start");
       let msg: string = "printSync special character: © ® ℃ ℉ ™ ↵";
       abilityDelegator.printSync(msg);
       abilityDelegator.printSync("ACTS_PRINT_SYNC_0004 printSync");
@@ -430,6 +446,7 @@ export default function PrintTest() {
      * @tc.level Level 2
      */
     it("ACTS_PRINT_SYNC_0005", 0, async (done: Function) => {
+      console.log("ACTS_PRINT_SYNC_0005 :start");
       let msg: string = "printSync language: 中文 English  Русский язык Français";
       abilityDelegator.printSync(msg);
       abilityDelegator.printSync("ACTS_PRINT_SYNC_0005 printSync");
@@ -446,6 +463,7 @@ export default function PrintTest() {
      * @tc.level Level 2
      */
     it("ACTS_PRINT_SYNC_0006", 0, async (done: Function) => {
+      console.log("ACTS_PRINT_SYNC_0006 :start");
       let msg: string =
         "0callbackaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
           "aaaaaaaaaa" +

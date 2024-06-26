@@ -12,7 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../utilsUI/MessageManager';
+import GlobalContext from './../../common/GlobalContext';
+import { Value } from './../../common/Value';
+import { MessageManager, Callback } from './../../common/MessageManager';
+
+type MessageData = boolean | string | number | LineCapStyle
+
 @Entry
 @Component
 struct DividerExample {
@@ -21,28 +26,29 @@ struct DividerExample {
   @State strokeWidth:number = 20
   @State lineCapStyle:LineCapStyle = LineCapStyle.Butt
   @State widthK:number = 0
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager<MessageData> = new MessageManager()
    onPageShow() {
     console.info('divider onPageShow')
-    globalThis.value = {
-      name:'messageManager',message:this.messageManager
+    let value: Value<MessageData> = {
+      name: 'messageManager', message: this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    GlobalContext.getContext().setObject('value', value);
+    let callback: Callback<MessageData> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'vertical') {
-          this.vertical = message.value
+          this.vertical = message.value as boolean
       }
       if (message.name == 'color') {
-          this.color = message.value
+          this.color = message.value as string
       }
       if (message.name == 'strokeWidth') {
-          this.strokeWidth = message.value
+          this.strokeWidth = message.value as number
       }
       if (message.name == 'lineCapStyle') {
-          this.lineCapStyle = message.value
+          this.lineCapStyle = message.value as LineCapStyle
       }
       if (message.name == 'widthK') {
-          this.widthK = message.value
+          this.widthK = message.value as number
          
       }
     }
@@ -55,20 +61,20 @@ struct DividerExample {
       // 使用横向分割线场景
       Text('Horizontal divider').fontSize(9).fontColor(0xCCCCCC)
       List() {
-        ForEach([1, 2, 3], (item) => {
+        ForEach([1, 2, 3], (item: number) => {
           ListItem() {
-            Text('list' + item).width('100%').fontSize(14).fontColor('#182431').textAlign(TextAlign.Start)
+            Text('list' + item.toString()).width('100%').fontSize(14).fontColor('#182431').textAlign(TextAlign.Start)
           }.width(244).height(48)
-        }, item => item.toString())
+        }, (item: number) => item.toString())
       }.padding({ left: 24, bottom: 8 })
 
       Divider().strokeWidth(8).color('#F1F3F5')
       List() {
-        ForEach([4, 5], (item) => {
+        ForEach([4, 5], (item: number) => {
           ListItem() {
-            Text('list' + item).width('100%').fontSize(14).fontColor('#182431').textAlign(TextAlign.Start)
+            Text('list' + item.toString()).width('100%').fontSize(14).fontColor('#182431').textAlign(TextAlign.Start)
           }.width(244).height(48)
-        }, item => item.toString())
+        }, (item: number) => item.toString())
       }.padding({ left: 24, top: 8 })
 
       // 使用纵向分割线场景

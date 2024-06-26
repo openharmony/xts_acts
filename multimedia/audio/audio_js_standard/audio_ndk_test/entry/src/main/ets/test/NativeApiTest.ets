@@ -1267,21 +1267,6 @@ export default function audioNDK() {
     })
 
     /*
-        * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0600
-        * @tc.name      : set markPosition with AUDIOSTREAM_TYPE_RENDERER
-        * @tc.desc      : test OH_AudioRenderer_SetMarkPosition
-        * @tc.size      : MediumTest
-        * @tc.type      : Function
-        * @tc.level     : Level0
-    */
-    it('SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0600', 0, async function (done) {
-        let a = myaudioNdk.audioRendererSetOnMarkReached_06();
-        console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0600 audioRendererSetOnMarkReached: ${a}`);
-        expect(a).assertEqual(0)
-        done()
-    })
-
-    /*
         * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_RENDERER_SETONMARKREACHED_0700
         * @tc.name      : set markPosition with AUDIOSTREAM_TYPE_RENDERER
         * @tc.desc      : test OH_AudioRenderer_SetMarkPosition
@@ -2197,32 +2182,34 @@ export default function audioNDK() {
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_APPLICATION_INTERNAL_RECORDING_0004
-     * @tc.name      : Set Renderer Privacy with Internal Recording
-     * @tc.desc      : test Renderer Privacy with Internal Recording
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_WRITE_DATA_CALLBACK_0100
+     * @tc.name      : set rendererWriteDataCallback with VALID result after create audioStreamBuilder
+     * @tc.desc      : test OH_AudioStreamBuilder_SetRendererWriteDataCallback
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AUDIO_APPLICATION_INTERNAL_RECORDING_0004', 0, async function (done) {
-      let a = myaudioNdk.audioAudioInternalRecordingSuccess02();
-      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_APPLICATION_INTERNAL_RECORDING_0004 audioAudioInternalRecordingSuccess: ${a}`);
+    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_WRITE_DATA_CALLBACK_0100', 0, async (done: Function) => {
+      let a = myaudioNdk.audioStreamBuilderSetRendererWriteDataCallback_001();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_WRITE_DATA_CALLBACK_0100`,
+        `audioStreamBuilderSetRendererWriteDataCallback_001: ${a}`);
       expect(a).assertEqual(0)
       done()
     })
 
     /**
-     * @tc.number    : SUB_MULTIMEDIA_AUDIO_APPLICATION_INTERNAL_RECORDING_0005
-     * @tc.name      : Set Renderer Privacy with Internal Recording
-     * @tc.desc      : test Renderer Privacy with Internal Recording
+     * @tc.number    : SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_WRITE_DATA_CALLBACK_0200
+     * @tc.name      : set rendererWriteDataCallback with INVALID result after create audioStreamBuilder
+     * @tc.desc      : test OH_AudioStreamBuilder_SetRendererWriteDataCallback
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level0
+     * @tc.level     : Level2
      */
-    it('SUB_MULTIMEDIA_AUDIO_APPLICATION_INTERNAL_RECORDING_0005', 0, async function (done) {
-      let a = myaudioNdk.audioAudioInternalRecordingFalse();
-      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_APPLICATION_INTERNAL_RECORDING_0005 audioAudioInternalRecordingFalse: ${a}`);
-      expect(a).assertEqual(1)
+    it('SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_WRITE_DATA_CALLBACK_0200', 0, async (done: Function) => {
+      let a = myaudioNdk.audioStreamBuilderSetRendererWriteDataCallback_002();
+      console.info(`Tag: SUB_MULTIMEDIA_AUDIO_NDK_STREAM_BUILDER_SET_RENDERER_WRITE_DATA_CALLBACK_0200`,
+        `audioStreamBuilderSetRendererWriteDataCallback_002: ${a}`);
+      expect(a).assertEqual(0)
       done()
     })
   })

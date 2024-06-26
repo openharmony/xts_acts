@@ -17,11 +17,13 @@ group("location") {
   if (is_standard_system) {
     deps = [
       "geolocation_errorCode:ActslocationErrorCodeTest",
+      "geolocation_nop:ActslocationNopTest",
       "geolocation_standard:ActslocationJsTest",
     ]
   } else {
     deps = [
       "geolocation_errorCode:ActslocationErrorCodeTest",
+      "geolocation_nop:ActslocationNopTest",
       "geolocation_standard:ActslocationJsTest",
     ]
   }

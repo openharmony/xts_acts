@@ -16,6 +16,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc, { RectValue } from '../../../MainAbility/common/Common';
+import GlobalContext from '../../../MainAbility/common/GlobalContext'
 import { MessageManager, Callback } from '../../../MainAbility/common/MessageManager';
 
 export default function RelativeContainer_Level() {
@@ -52,7 +53,7 @@ export default function RelativeContainer_Level() {
      */
     it('SUB_ACE_RelativeContainer_Level_TEST_0100', 0, async (done: Function) => {
       console.info('[SUB_ACE_RelativeContainer_Level_TEST_0100] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<HorizontalAlign>('value').message.notify({
         name: 'addalign', value: HorizontalAlign.Start
       });
 
@@ -77,7 +78,7 @@ export default function RelativeContainer_Level() {
      */
     it('SUB_ACE_RelativeContainer_Level_TEST_0200', 0, async (done: Function) => {
       console.info('[SUB_ACE_RelativeContainer_Level_TEST_0200] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<HorizontalAlign>('value').message.notify({
         name: 'addalign', value: HorizontalAlign.Center
       });
 
@@ -104,7 +105,7 @@ export default function RelativeContainer_Level() {
      */
     it('SUB_ACE_RelativeContainer_Level_TEST_0300', 0, async (done: Function) => {
       console.info('[SUB_ACE_RelativeContainer_Level_TEST_0300] START');
-      globalThis.value.message.notify({
+      GlobalContext.getContext().getObject<HorizontalAlign>('value').message.notify({
         name: 'addalign', value: HorizontalAlign.End
       });
 

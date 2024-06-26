@@ -450,5 +450,237 @@ describe('HidebugToDevJsTest', function () {
         }
     })
 
+    /**
+     * @tc.number SUB_DFX_DFT_Trace_Collect_Js_1100
+     * @tc.name testHiDebugJs18
+     * @tc.desc getVMRuntimeStat正常测试
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testHiDebugJs18', 1, async function (done) {
+        console.info('testHiDebugJs18 start');
+        try {
+            let runtimeStats = hidebug.getVMRuntimeStats();
+            expect(runtimeStats["ark.gc.gc-count"] >= 0).assertTrue();
+            expect(runtimeStats["ark.gc.gc-time"] >= 0).assertTrue();
+            expect(runtimeStats["ark.gc.gc-bytes-allocated"] >= 0).assertTrue();
+            expect(runtimeStats["ark.gc.gc-bytes-freed"] >= 0).assertTrue();
+            expect(runtimeStats["ark.gc.fullgc-longtime-count"] >= 0).assertTrue();
+            expect(runtimeStats["others"] === undefined).assertTrue();
+        }catch (err) {
+            console.error(`SUB_DFX_DFT_Trace_Collect_Js_1100 > error code: ${err.code}, error msg: ${err.message}`);
+            expect(false).assertTrue();
+        }
+        console.info('testHiDebugJs18 end');
+        done();
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFT_Trace_Collect_Js_1200
+     * @tc.name testHiDebugJs19
+     * @tc.desc getVMRuntimeStats正常测试
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testHiDebugJs19', 1, async function (done) {
+        console.info('testHiDebugJs19 start');
+        try {
+            let gcCount = hidebug.getVMRuntimeStat("ark.gc.gc-count");
+            let gcTime = hidebug.getVMRuntimeStat("ark.gc.gc-time");
+            let gcBytesAllocated = hidebug.getVMRuntimeStat("ark.gc.gc-bytes-allocated");
+            let gcBytesFreed = hidebug.getVMRuntimeStat("ark.gc.gc-bytes-freed");
+            let fullGcLongTimeCount = hidebug.getVMRuntimeStat("ark.gc.fullgc-longtime-count");
+            expect(gcCount >= 0).assertTrue();
+            expect(gcTime >= 0).assertTrue();
+            expect(gcBytesAllocated >= 0).assertTrue();
+            expect(gcBytesFreed >= 0).assertTrue();
+            expect(fullGcLongTimeCount >= 0).assertTrue();
+        } catch (error) {
+            console.error(`SUB_DFX_DFT_Trace_Collect_Js_1200 > error code: ${err.code}, error msg: ${err.message}`);
+            expect(false).assertTrue();
+        }
+        console.info('testHiDebugJs19 end');
+        done();
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFT_Trace_Collect_Js_1300
+     * @tc.name testHiDebugJs20
+     * @tc.desc getVMRuntimeStat参数异常测试
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testHiDebugJs20', 1, async function (done) {
+        console.info('testHiDebugJs20 start');
+        try {
+            hidebug.getVMRuntimeStat("others");
+            expect(false).assertTrue();
+        }catch (err) {
+            console.error(`SUB_DFX_DFT_Trace_Collect_Js_1300 > error code: ${err.code}, error msg: ${err.message}`);
+            expect(err.code === "401").assertTrue();
+            expect(err.message === "Invalid parameter, unknown property.").assertTrue();
+        }
+        console.info('testHiDebugJs20 end');
+        done();
+    })
+
+    /*
+    * @tc.number SUB_DFX_DFT_Trace_Collect_Js_1400
+    * @tc.name testHiDebugJs21
+    * @tc.desc getAppMemoryLimit
+    * @tc.size MediumTest
+    * @tc.type Function
+    * @tc.level Level3
+    */
+    it('testHiDebugJs21', 1, async function (done) {
+        console.info('testHiDebugJs21 start');
+        try {
+            let temp = hidebug.getAppMemoryLimit();
+            expect(temp.rssLimit >= BigInt(0)).assertTrue();
+            expect(temp.vssLimit >= BigInt(0)).assertTrue();
+            expect(temp.vmHeapLimit >= BigInt(0)).assertTrue();
+            expect(temp.vmTotalHeapSize >= BigInt(0)).assertTrue();
+        } catch (error) {
+            expect().assertFail();
+        }
+        console.info('testHiDebugJs21 end');
+        done();
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFT_Trace_Collect_Js_1500
+     * @tc.name testHiDebugJs22
+     * @tc.desc 验证应用内设置资源限制值setAppResourceLimit
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testHiDebugJs22', 1, async function (done) {
+        console.info('testHiDebugJs22 start');
+        try {
+            let type = 'js_heap';
+            let value = 85;
+            let enabledDebugLog = true;
+            hidebug.setAppResourceLimit(type, value, enabledDebugLog);
+            type = 'pss_memory';
+            value = 1024;
+            enabledDebugLog = true;
+            hidebug.setAppResourceLimit(type, value, enabledDebugLog);
+            type = 'fd';
+            value = 10;
+            enabledDebugLog = true;
+            hidebug.setAppResourceLimit(type, value, enabledDebugLog);
+            type = 'thread';
+            value = 10;
+            enabledDebugLog = true;
+            hidebug.setAppResourceLimit(type, value, enabledDebugLog);
+            done();
+        } catch (err) {
+            console.error(`SUB_DFX_DFT_Trace_Collect_Js_1500 > error code: ${err.code}, error msg: ${err.message}`);
+            expect().assertFail();
+        }
+        console.info('testHiDebugJs22 end');
+        done();
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFT_Trace_Collect_Js_1600
+     * @tc.name testHiDebugJs23
+     * @tc.desc 验证应用内设置资源限制值, type无效
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testHiDebugJs23', 1, async function (done) {
+        console.info('testHiDebugJs23 start');
+        try {
+            let type = 'testHiDebugJs23';
+            let value = 85;
+            let enabledDebugLog = true;
+            hidebug.setAppResourceLimit(type, value, enabledDebugLog);
+            done();
+        } catch (err) {
+            console.error(`SUB_DFX_DFT_Trace_Collect_Js_1600 > error code: ${err.code}, error msg: ${err.message}`);
+            expect(err.code == 401).assertTrue();
+        }
+        console.info('testHiDebugJs23 end');
+        done();
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFT_Trace_Collect_Js_1700
+     * @tc.name testHiDebugJs24
+     * @tc.desc 验证应用内设置资源限制值, value为undefined
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testHiDebugJs24', 1, async function (done) {
+        console.info('testHiDebugJs24 start');
+        try {
+            let type = 'js_heap';
+            let value = undefined;
+            let enabledDebugLog = true;
+            hidebug.setAppResourceLimit(type, value, enabledDebugLog);
+            done();
+        } catch (err) {
+            console.error(`SUB_DFX_DFT_Trace_Collect_Js_1700 > error code: ${err.code}, error msg: ${err.message}`);
+            expect(err.code == 401).assertTrue();
+        }
+        console.info('testHiDebugJs24 end');
+        done();
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFT_Trace_Collect_Js_1800
+     * @tc.name testHiDebugJs25
+     * @tc.desc 验证应用内设置资源限制值, enabledDebugLog为undefined
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testHiDebugJs25', 1, async function (done) {
+        console.info('testHiDebugJs25 start');
+        try {
+            let type = 'js_heap';
+            let value = 85;
+            let enabledDebugLog = undefined;
+            hidebug.setAppResourceLimit(type, value, enabledDebugLog);
+            done();
+        } catch (err) {
+            console.error(`SUB_DFX_DFT_Trace_Collect_Js_1800 > error code: ${err.code}, error msg: ${err.message}`);
+            expect(err.code == 401).assertTrue();
+        }
+        console.info('testHiDebugJs25 end');
+        done();
+    })
+
+    /**
+     * @tc.number SUB_DFX_DFT_Trace_Collect_Js_1900
+     * @tc.name testHiDebugJs26
+     * @tc.desc 验证应用内设置资源限制值, value不在范围内
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level3
+     */
+    it('testHiDebugJs26', 1, async function (done) {
+        console.info('testHiDebugJs26 start');
+        try {
+            let type = 'js_heap';
+            let value = 15;
+            let enabledDebugLog = true;
+            hidebug.setAppResourceLimit(type, value, enabledDebugLog);
+            done();
+        } catch (err) {
+            console.error(`SUB_DFX_DFT_Trace_Collect_Js_1900 > error code: ${err.code}, error msg: ${err.message}`);
+            expect(err.code == 401).assertTrue();
+        }
+        console.info('testHiDebugJs26 end');
+        done();
+    })
+
 })
 }

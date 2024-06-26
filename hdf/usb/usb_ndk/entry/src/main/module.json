@@ -37,8 +37,18 @@
     ],
     "requestPermissions": [
       {
-        "name": "ohos.permission.ACCESS_DDK_USB,ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER",
+        "name": "ohos.permission.ACCESS_DDK_USB",
         "reason": "$string:reason_usb_ddk",
+        "usedScene": {
+          "abilities": [
+            "EntryAbility"
+          ],
+          "when": "inuse"
+        }
+      },
+      {
+        "name": "ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER",
+        "reason": "$string:reason_device_driver",
         "usedScene": {
           "abilities": [
             "EntryAbility"

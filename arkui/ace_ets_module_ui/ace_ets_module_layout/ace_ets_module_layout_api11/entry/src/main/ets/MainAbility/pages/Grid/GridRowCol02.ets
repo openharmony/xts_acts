@@ -12,7 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../utilsUI/MessageManager';
+import GlobalContext from './../../common/GlobalContext';
+import { Value } from './../../common/Value';
+import { MessageManager, Callback } from './../../common/MessageManager';
+
+type MessageData = string | GridDirection
 
 @Entry
 @Component
@@ -20,23 +24,24 @@ struct GridRowCol02 {
   @State Number: String[] = ['0', '1', '2', '3', '4']
   scroller: Scroller = new Scroller()
   @State rowsTemplate: string = '1fr 1fr 1fr'
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager<MessageData> = new MessageManager()
   @State layoutDirection: GridDirection = GridDirection.Row
 
   @State text: string = ''
 
   onPageShow() {
     console.info('navigationPosition  onPageShow');
-    globalThis.value = {
-      name:'messageManager',message:this.messageManager
+    let value: Value<MessageData> = {
+      name: 'messageManager', message: this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    GlobalContext.getContext().setObject('value', value);
+    let callback: Callback<MessageData> = message => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'rowsTemplate') {
-        this.rowsTemplate = message.value;
+        this.rowsTemplate = message.value as string
       }
       if (message.name == 'layoutDirection') {
-        this.layoutDirection = message.value;
+        this.layoutDirection = message.value as GridDirection
       }
 
     }

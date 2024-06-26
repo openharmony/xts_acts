@@ -16,6 +16,7 @@
                 "power-shell setmode 602",
                 "uinput -T -m 300 2700 280 200",
                 "uinput -T -m 300 2700 280 200",
+                "uinput -T -d  1070 1070 -u 1070 1070",
                 "mkdir -p /data/app/el2/100/base/com.acts.pcs.arktstest/haps/entry/files"
             ]
         },

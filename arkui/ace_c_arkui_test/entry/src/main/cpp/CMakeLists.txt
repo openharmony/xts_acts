@@ -21,6 +21,7 @@ add_library(nativerender SHARED
     commonevent/commonevent_onareachange_test.cpp
     commonevent/commonevent_onblur_test.cpp
     commonevent/commonevent_ontouch_test.cpp
+    commonevent/pointevent_ontouch_test.cpp
     commonevent/commonevent_onfocus_test.cpp
     commonevent/commonevent_onclick_test.cpp
     commonattrs/commonattrs_hittestbehavior_test.cpp
@@ -33,6 +34,8 @@ add_library(nativerender SHARED
     image/image_oncomplete_test.cpp
     image/image_onerror_test.cpp
     list/list_hittestbehavior_test.cpp
+    list/list_nodeadapter_test.cpp
+    list/list_nodeadapterevent_test.cpp
     listitem/listitem_hittestbehavior_test.cpp
     toggle/toggle_onchange_test.cpp
     toggle/toggle_enabled_test.cpp
@@ -85,6 +88,9 @@ add_library(nativerender SHARED
     textinput/textinput_onsubmit_test.cpp
     textinput/textinput_oncut_test.cpp
     textinput/textinput_onpaste_test.cpp
+    arkApi/arkApi.cpp
+    gesture/gesture_test.cpp
+    customcomponent/customcomponent_event_test.cpp
 )
 
 add_library(nativefunc SHARED
@@ -124,6 +130,6 @@ find_library(
 )
 
 target_link_libraries(nativerender PUBLIC
-    libnative_drawing.so ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib})
+    libnative_drawing.so libace_napi.z.so ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib})
 target_link_libraries(nativefunc PUBLIC
-    ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib})
+libnative_drawing.so libpixelmap.so libace_napi.z.so ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib})

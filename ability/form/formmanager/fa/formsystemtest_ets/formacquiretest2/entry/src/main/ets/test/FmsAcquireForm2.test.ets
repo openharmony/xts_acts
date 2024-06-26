@@ -85,7 +85,8 @@ export default function test() {
             function onErrorCallBack(_, data) {
                 console.info("!!!====>FMS_acquireForm_3800 onErrorCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnError_commonEvent");
-                expect(data.data).assertEqual("Parameter error.");
+                expect(data.data).assertEqual("Parameter error. Possible causes: " +
+                    "1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.");
                 commonEvent.unsubscribe(subscriberOnError, () => {
                     console.info(`FMS_acquireForm_3800 unsubscribe callback`);
                     done();
@@ -127,7 +128,8 @@ export default function test() {
             function onErrorCallBack(_, data) {
                 console.info("!!!====>FMS_acquireForm_3900 onErrorCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnError_commonEvent");
-                expect(data.data).assertEqual("Parameter error.");
+                expect(data.data).assertEqual("Parameter error. Possible causes: " +
+                    "1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.");
                 commonEvent.unsubscribe(subscriberOnError, () => {
                     console.info(`FMS_acquireForm_3900 unsubscribe callback`);
                     done();
@@ -373,7 +375,8 @@ export default function test() {
             function onErrorCallBack(_, data) {
                 console.info("!!!====>FMS_acquireForm_4400 onErrorCallBack data:====>" + JSON.stringify(data));
                 expect(data.event).assertEqual("FMS_FormOnError_commonEvent");
-                expect(data.data).assertEqual("Parameter error.");
+                expect(data.data).assertEqual("Parameter error. Possible causes: " +
+                    "1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed.");
                 commonEvent.unsubscribe(subscriberOnError, () => {
                     console.info(`FMS_acquireForm_4400 unsubscribe callback`);
                     done();

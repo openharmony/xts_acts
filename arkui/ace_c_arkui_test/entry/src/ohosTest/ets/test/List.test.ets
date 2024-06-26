@@ -46,6 +46,7 @@ import commonEventOnBlurTest from './commonevent/CommonEventOnBlurTest.test'
 import commonEventOnAppearTest from './commonevent/CommonEventOnAppearTest.test'
 import commonEventOnAreaChangeTest from './commonevent/CommonEventOnAreaChangeTest.test'
 import commonEventOnTouchTest from './commonevent/CommonEventOnTouchTest.test'
+import PointEventOnTouchTest from './commonevent/PointEventOnTouchTest.test'
 import commonAttrsEnabledTest from './commonattrs/CommonAttrsEnabledTest.test'
 import commonAttrsFocusableTest from './commonattrs/CommonAttrsFocusableTest.test'
 import commonAttrsHitTestBehaviorTest from './commonattrs/CommonAttrsHitTestBehaviorTest.test'
@@ -166,6 +167,7 @@ import swiperCachedCountTest from './swiper/SwiperCachedCountTest.test'
 import textWidthTest from './text/TextWidthTest.test'
 import textHeightTest from './text/TextHeightTest.test'
 import textPositionTest from './text/TextPositionTest.test'
+import TextStyleGraphicTest from './text/TextStyleGraphicTest.test'
 import scrollWidthTest from './scroll/ScrollWidthTest.test'
 import scrollHeightTest from './scroll/ScrollHeightTest.test'
 import scrollPositionTest from './scroll/ScrollPositionTest.test'
@@ -187,6 +189,8 @@ import listRotateTest from './list/ListRotateTest.test'
 import listSaturateTest from './list/ListSaturateTest.test'
 import listBlurTest from './list/ListBlurTest.test'
 import listShadowTest from './list/ListShadowTest.test'
+import ListNodeAdapterTest from './list/ListNodeAdapterTest.test'
+import ListNodeAdapterEventTest from './list/ListNodeAdapterEventTest.test'
 import listItemLinearGradientTest from './listitem/ListItemLinearGradientTest.test'
 import listItemShadowTest from './listitem/ListItemShadowTest.test'
 import listItemBlurTest from './listitem/ListItemBlurTest.test'
@@ -204,6 +208,7 @@ import listItemBackgroundColorTest from './listitem/ListItemBackgroundColorTest.
 import listItemWidthTest from './listitem/ListItemWidthTest.test'
 import listItemHeightTest from './listitem/ListItemHeightTest.test'
 import listEnableScrollInteractionTest from './list/ListEnableScrollInteractionTest.test'
+import ListSwipeChildMinSizeTest from  './list/ListSwipeChildMinSizeTest.test.ets'
 import listCachedCountTest from './list/ListCachedCountTest.test'
 import listFrictionTest from './list/ListFrictionTest.test'
 import listStickyTest from './list/ListStickyTest.test'
@@ -211,6 +216,7 @@ import listListDirectionTest from './list/ListListDirectionTest.test'
 import listLinearGradientTest from './list/ListLinearGradientTest.test'
 import listScrollBarTest from './list/ListScrollBarTest.test'
 import listEdgeEffectTest from './list/ListEdgeEffectTest.test'
+import ListSwipeActionItemTest from './list/ListSwipeActionItemTest.test'
 import commonAttrsClipTest from './commonattrs/CommonAttrsClipTest.test'
 import commonAttrsLinearGradientTest from './commonattrs/CommonAttrsLinearGradientTest.test'
 import commonAttrsShadowTest from './commonattrs/CommonAttrsShadowTest.test'
@@ -348,10 +354,6 @@ import textAccessibilityDescriptionTest from './accessibility/TextAccessibilityD
 import textAccessibilityGroupTest from './accessibility/TextAccessibilityGroupTest.test'
 import textAccessibilityLevelTest from './accessibility/TextAccessibilityLevelTest.test'
 import textAccessibilityTextTest from './accessibility/TextAccessibilityTextTest.test'
-import spanAccessibilityDescriptionTest from './accessibility/SpanAccessibilityDescriptionTest.test'
-import spanAccessibilityGroupTest from './accessibility/SpanAccessibilityGroupTest.test'
-import spanAccessibilityLevelTest from './accessibility/SpanAccessibilityLevelTest.test'
-import spanAccessibilityTextTest from './accessibility/SpanAccessibilityTextTest.test'
 import refreshAccessibilityDescriptionTest from './accessibility/RefreshAccessibilityDescriptionTest.test'
 import refreshAccessibilityGroupTest from './accessibility/RefreshAccessibilityGroupTest.test'
 import refreshAccessibilityLevelTest from './accessibility/RefreshAccessibilityLevelTest.test'
@@ -545,6 +547,21 @@ import textInputOnSubmitTest from './textinput/TextInputOnSubmitTest.test'
 import textInputOnCutTest from './textinput/TextInputOnCutTest.test'
 import textInputOnPasteTest from './textinput/TextInputOnPasteTest.test'
 import textInputDefaultFocusTest from './textinput/TextInputDefaultFocusTest'
+import TestArkUIAddApi from './arkApi/arkApi.test'
+import testArkUI from './arkApi/arkUIApiTest.test'
+import testAnimationTest from './animation/animationTest.test'
+import testWaterFlower from './waterFlower/waterFlowerTest.test'
+import accessibilityStateTest from './accessibilityState/accessibilityStateTest.test'
+import relativecontaineAlignmentRuleOptionTest from './relativecontaine/RelativeContaineAlignmentRuleOptionTest.test'
+import relativecontaineBarrierOptionTest from './relativecontaine/RelativeContaineBarrierOptionTest.test'
+import testGesture from './gesture/GestureTest.test'
+import customComponentEventTest from './customcomponent/CustomComponentEventTest.test'
+import commonAttrsAnimateTest from './commonattrs/CommonAttrsAnimateTest.test'
+import drawableDescriptorCreateTest from './drawabledescriptor/DrawableDescriptorCreateTest.test'
+import nodeContentTest from './nodecontent/NodeContentTest.test'
+import nativeXComponentTest from './nativexcomponent/NativeXComponentTest.test'
+import mouseEventTest from './mouseevent/MouseEventTest.test'
+import pointerEventTest from './pointerevent/PointerEventTest.test'
 
 export default function testsuite() {
   datePickerAccessibilityDescriptionTest()
@@ -671,10 +688,6 @@ export default function testsuite() {
   textAccessibilityGroupTest()
   textAccessibilityLevelTest()
   textAccessibilityTextTest()
-  spanAccessibilityDescriptionTest()
-  spanAccessibilityGroupTest()
-  spanAccessibilityLevelTest()
-  spanAccessibilityTextTest()
   refreshAccessibilityDescriptionTest()
   refreshAccessibilityGroupTest()
   refreshAccessibilityLevelTest()
@@ -792,6 +805,7 @@ export default function testsuite() {
   imageTranslateTest()
   listHeightTest()
   listWidthTest()
+  ListSwipeChildMinSizeTest()
   listBackgroundColorTest()
   listBorderWidthTest()
   listBorderColorTest()
@@ -813,6 +827,8 @@ export default function testsuite() {
   listCachedCountTest()
   listEdgeEffectTest()
   listEnableScrollInteractionTest()
+  ListNodeAdapterTest()
+  ListNodeAdapterEventTest()
   listItemHeightTest()
   listItemWidthTest()
   listItemBackgroundColorTest()
@@ -855,6 +871,7 @@ export default function testsuite() {
   stackTransitionTest()
   stackTranslateTest()
   stackWidthTest()
+  TextStyleGraphicTest()
   toggleBackgroundColorTest()
   toggleClipTest()
   toggleFocusableTest()
@@ -912,8 +929,6 @@ export default function testsuite() {
   scrollEdgeEffectTest()
   scrollFrictionTest()
   scrollScrollSnapTest()
-  scrollCurrentOffsetTest()
-  scrollScrollToTest()
   scrollOverlayTest()
   scrollLinearGradientTest()
   scrollSaturateTest()
@@ -1013,6 +1028,7 @@ export default function testsuite() {
   commonEventOnBlurTest()
   commonEventOnFocusTest()
   commonEventOnTouchTest()
+  PointEventOnTouchTest()
   commonEventOnClickTest()
   commonAttrsHitTestBehaviorTest()
   commonAttrsIdTest()
@@ -1022,6 +1038,7 @@ export default function testsuite() {
   imageOnErrorTest()
   listHitTestBehaviorTest()
   listItemHitTestBehaviorTest()
+  ListSwipeActionItemTest()
   toggleOnChangeTest()
   toggleEnabledTest()
   scrollNestedScrollTest()
@@ -1080,4 +1097,21 @@ export default function testsuite() {
   customComponentOnMeasureTest()
   customComponentOnLayoutTest()
   customComponentOnDrawTest()
+  scrollCurrentOffsetTest()
+  scrollScrollToTest()
+  TestArkUIAddApi()
+  testArkUI()
+  testAnimationTest()
+  testWaterFlower()
+  accessibilityStateTest()
+  relativecontaineAlignmentRuleOptionTest()
+  relativecontaineBarrierOptionTest()
+  testGesture()
+  customComponentEventTest()
+  commonAttrsAnimateTest()
+  drawableDescriptorCreateTest()
+  nodeContentTest()
+  nativeXComponentTest()
+  mouseEventTest()
+  pointerEventTest()
 }

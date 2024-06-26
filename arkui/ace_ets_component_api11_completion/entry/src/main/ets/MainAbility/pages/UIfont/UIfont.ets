@@ -18,26 +18,26 @@ import font from '@ohos.font';
 @Component
 struct UIfont {
   @State types: TextDataDetectorType[] = [];
-  @State text: string = '';
-  @State text1: string = '';
-  private selectedTime: Date = new Date('2022-07-22T08:00:00');
+  @State text: string = ''
+  @State text1: string = ''
+  private selectedTime: Date = new Date('2022-07-22T08:00:00')
 
   build() {
     Column() {
 
-      Text(this.text)
-        .margin(70)
-        .id('UIfont_Text')
+      Text(this.text).margin(70).id('UIfont_Text')
 
       Button("fontDir")
         .width('60%')
         .height('6%')
         .margin(10)
         .id('UIfont_fontDir')
-        .onClick(() => {
+        .onClick(()=>{
           let fontConfig = font.getUIFontConfig();
           console.log("font-dir -----------" + String(fontConfig.fontDir.length));
-          this.text = fontConfig.fontDir.length + ''
+          if (fontConfig.fontDir.length) {
+            this.text = '1'
+          }
         })
 
       Button("generic")
@@ -45,9 +45,11 @@ struct UIfont {
         .height('6%')
         .margin(10)
         .id('UIfont_generic')
-        .onClick(() => {
+        .onClick(()=>{
           let fontConfig = font.getUIFontConfig();
-          this.text = fontConfig.generic.length + ''
+          if (fontConfig.generic.length) {
+            this.text = '3'
+          }
         })
 
       Button("fallbackGroups")
@@ -55,10 +57,12 @@ struct UIfont {
         .height('6%')
         .margin(10)
         .id('UIfont_fallbackGroups')
-        .onClick(() => {
+        .onClick(()=>{
           let fontConfig = font.getUIFontConfig();
           console.log("fallback------------" + String(fontConfig.fallbackGroups.length));
-          this.text = fontConfig.fallbackGroups.length + ''
+          if (fontConfig.fallbackGroups.length) {
+            this.text = '1'
+          }
         })
 
       Button("alias")
@@ -66,14 +70,21 @@ struct UIfont {
         .height('6%')
         .margin(10)
         .id('UIfont_alias')
-        .onClick(() => {
+        .onClick(()=>{
           let fontConfig = font.getUIFontConfig();
-          for (let i = 0; i < fontConfig.generic.length; i++) {
+          for (let i = 0; i < fontConfig.generic.length; i ++){
             console.log("family:" + fontConfig.generic[i].family);
-            this.text = fontConfig.generic[0].alias.length + ''
+            if (fontConfig.generic[i].alias.length) {
+              this.text = '5'
+            }
 
           }
         })
+
+
+
+
+
     }
   }
 }

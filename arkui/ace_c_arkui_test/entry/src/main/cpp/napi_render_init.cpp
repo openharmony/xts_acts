@@ -20,6 +20,7 @@
 #include "commonattrs/commonattrs_focusable_test.h"
 #include "commonevent/commonevent_onappear_test.h"
 #include "commonevent/commonevent_ontouch_test.h"
+#include "commonevent/pointevent_ontouch_test.h"
 #include "commonevent/commonevent_onareachange_test.h"
 #include "commonevent/commonevent_onblur_test.h"
 #include "commonevent/commonevent_onfocus_test.h"
@@ -88,6 +89,8 @@
 #include "textinput/textinput_onsubmit_test.h"
 #include "textinput/textinput_oncut_test.h"
 #include "textinput/textinput_onpaste_test.h"
+#include "gesture/gesture_test.h"
+#include "customcomponent/customcomponent_event_test.h"
 
 namespace ArkUICapiTest {
 EXTERN_C_START
@@ -114,6 +117,8 @@ static napi_value Init(napi_env env, napi_value exports)
         {"commonEventOnAreaChangeTest", nullptr, CommonEventOnAreaChangeTest::CreateNativeNode, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"commonEventOnTouchTest", nullptr, CommonEventOnTouchTest::CreateNativeNode, nullptr, nullptr, nullptr,
+         napi_default, nullptr},
+        {"pointEventOnTouchTest", nullptr, PointEventOnTouchTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
         {"commonEventOnBlurTest", nullptr, CommonEventOnBlurTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
@@ -248,8 +253,6 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr},
         {"textAreaOnChangeTest", nullptr, TextAreaOnChangeTest::CreateNativeNode, nullptr, nullptr, nullptr,
          napi_default, nullptr},
-        {"textAreaOnChangeTypeTest", nullptr, TextAreaOnChangeTest::ChangeType, nullptr, nullptr, nullptr, napi_default,
-         nullptr},
         {"sliderOnChangeTest", nullptr, SliderOnChangeTest::CreateNativeNode, nullptr, nullptr, nullptr, napi_default,
          nullptr},
         {"textInputOnFocusTest", nullptr, TextInputOnFocusTest::CreateNativeNode, nullptr, nullptr, nullptr,
@@ -315,7 +318,20 @@ static napi_value Init(napi_env env, napi_value exports)
          nullptr, napi_default, nullptr},
         {"scrollCurrentOffsetSmoothTest", nullptr, ScrollCurrentOffsetTest::CreateNativeNodeSmooth, nullptr, nullptr,
          nullptr, napi_default, nullptr},
-
+        {"longPressGestureTest", nullptr, GestureTest::CreateLongPressNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"swipeGestureTest", nullptr, GestureTest::CreateSwipeNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"panGestureTest", nullptr, GestureTest::CreatePanNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"rotateGestureTest", nullptr, GestureTest::CreateRotateNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"pinchGestureTest", nullptr, GestureTest::CreatePinchNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"customComponentEventTest", nullptr, CustomComponentEventTest::CreateNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"interruptGestureTest", nullptr, GestureTest::CreateInterruptNativeNode, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

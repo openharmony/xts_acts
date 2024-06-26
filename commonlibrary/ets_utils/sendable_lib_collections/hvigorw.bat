@@ -11,14 +11,7 @@
 @rem See the License for the specific language governing permissions and
 @rem limitations under the License.
 @echo off
-@if "%DEBUG%" == "" @echo off
-@rem ##########################################################################
-@rem
-@rem  Hvigor startup script for Windows
-@rem
-@rem ##########################################################################
-
-@if "%DEBUG%" == "" @echo off
+@if NOT "%DEBUG%" == "" @echo on
 @rem ##########################################################################
 @rem
 @rem  Hvigor startup script for Windows

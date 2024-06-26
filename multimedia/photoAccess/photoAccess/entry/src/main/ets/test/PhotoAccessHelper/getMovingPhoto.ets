@@ -27,9 +27,17 @@ import {
 
 export default function getMovingPhotoTest() {
   describe("getMovingPhotoTest", function () {
+     beforeAll(async function () {
+        console.info('beforeAll case');
+        await getPermission();
+        await sleep()
+     });
+
     const context = globalThis.abilityContext;
     const phAccessHelper = photoAccessHelper.getPhotoAccessHelper(globalThis.abilityContext);
     const sandboxPath = "/data/storage/el2/base/haps/phone/photos/";
+    let imageFileName = "ImageFile.jpg";
+    let videoFileName = "VideoFile.mp4"
 
     async function createMovingPhoto(done, testNum) {
         try {
@@ -65,11 +73,21 @@ export default function getMovingPhotoTest() {
             fetchColumns: [],
             predicates: predicates
         };
-        let assetResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
-        if (assetResult.getCount() <= 0) {
-            console.error(`${testNum}::pullMovingPhotoImgToSandbox::failed to get moving photo::have no moving photo !`);
-            expect(false).assertTrue();
-            done();
+        let assetResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset>;
+        let flag = 2;
+        while (flag > 0) {
+           assetResult = await phAccessHelper.getAssets(fetchOptions);
+           if (assetResult.getCount() <= 0) {
+                await createMovingPhoto(done, testNum);
+                flag--;
+                continue;
+           }
+           break;
+        }
+        if (flag <= 0) {
+             console.error(`${testNum}::create moving photo failed !`);
+             expect(false).assertTrue();
+             done();
         }
         let asset: photoAccessHelper.PhotoAsset = await assetResult.getFirstObject();
         let requestOptions: photoAccessHelper.RequestOptions = {
@@ -152,6 +170,22 @@ export default function getMovingPhotoTest() {
         }
     }
 
+    async function checkMovingPhotoLoadByResource(done: Function, testNum: string, imageFileUri: string, videoFileUri: string) {
+      try {
+        let movingPhoto: photoAccessHelper.MovingPhoto = await photoAccessHelper.MediaAssetManager.loadMovingPhoto(context, imageFileUri, videoFileUri);
+        if (movingPhoto == undefined || movingPhoto == null) {
+          console.error(`${testNum} :: loadMovingPhoto failed , movingPhoto is null !`);
+          expect(false).assertTrue();
+          done();
+        }
+        console.log(`${testNum} :: load moving photo success`);
+        done();
+      } catch(error: BusinessError) {
+        console.error(`${testNum} :: loadMovingPhoto failed , message = ${error}`);
+        expect(false).assertTrue();
+        done();
+      }
+    }
 
 	/**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_CREATE_MOVING_PHOTO_0001
@@ -255,12 +289,34 @@ export default function getMovingPhotoTest() {
       await checkFileExist(done, testNum, sandboxPath, fileList, expectFlag);
     });
 
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_LOAD_MOVING_PHOTO_001
+     * @tc.name      : load_moving_photo_from_sandbox_001
+     * @tc.desc      : load moving photo from sandbox
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('load_moving_photo_from_sandbox_001', 0, async function (done) {
+       imageFileName = "testImage.jpg";
+       videoFileName = "testVideo.mp4";
+       const testNum = 'load_moving_photo_from_sandbox_001';
+       const fileList: Array<string> = ["testImage.jpg", "testVideo.mp4"];
+       let imageFileUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/phone/photos/testImage.jpg";
+       let videoFileUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/phone/photos/testVideo.mp4";
+       await requestMovingPhotoContent(done, testNum, 0, false);
+       await sleep(3000);
+       await checkFileExist(done, testNum, sandboxPath, fileList, true);
+       checkMovingPhotoLoadByResource(done, testNum, imageFileUri, videoFileUri);
+     });
+
 
        // export moving photo:: video and photo
       class MovingPhotoHandler implements photoAccessHelper.MediaAssetDataHandler<photoAccessHelper.MovingPhoto> {
         async onDataPrepared(movingPhoto: photoAccessHelper.MovingPhoto) {
-            let imageFileUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/phone/photos/ImageFile.jpg";
-            let videoFileUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/phone/photos/VideoFile.mp4";
+            console.log("MovingPhotoHandler::movingPhoto onDataPrepared");
+            let imageFileUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/phone/photos/" + imageFileName;
+            let videoFileUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/phone/photos/" + videoFileName;
             await movingPhoto.requestContent(imageFileUri, videoFileUri);
             let photoUri = await movingPhoto.getUri();
             console.log(`photoUri =====> ${photoUri}`);
@@ -275,6 +331,7 @@ export default function getMovingPhotoTest() {
       // export moving photo:: only photo
       class PhotoHandler implements photoAccessHelper.MediaAssetDataHandler<photoAccessHelper.MovingPhoto> {
         async onDataPrepared(movingPhoto: photoAccessHelper.MovingPhoto) {
+          console.log("PhotoHandler::movingPhoto onDataPrepared");
           let imageFileUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/phone/photos/test_picture.jpg";
           await movingPhoto.requestContent(photoAccessHelper.ResourceType.IMAGE_RESOURCE, imageFileUri);
           console.log("moving photo image content retrieved successfully");
@@ -284,6 +341,7 @@ export default function getMovingPhotoTest() {
       // export moving photo:: only video
       class VideoHandler implements photoAccessHelper.MediaAssetDataHandler<photoAccessHelper.MovingPhoto> {
         async onDataPrepared(movingPhoto: photoAccessHelper.MovingPhoto) {
+          console.log("VideoHandler::movingPhoto onDataPrepared");
           let videoFileUri: string = "file://ohos.acts.multimedia.photoaccess/data/storage/el2/base/haps/phone/photos/test_video.mp4";
           await movingPhoto.requestContent(photoAccessHelper.ResourceType.VIDEO_RESOURCE, videoFileUri);
           console.log("moving photo video content retrieved successfully");
@@ -292,6 +350,7 @@ export default function getMovingPhotoTest() {
       // export moving photo:: ArrayBuffer
       class ArrayBufferHandler implements photoAccessHelper.MediaAssetDataHandler<photoAccessHelper.MovingPhoto> {
         async onDataPrepared(movingPhoto: photoAccessHelper.MovingPhoto) {
+          console.log("ArrayBufferHandler::movingPhoto onDataPrepared");
           let buffer: ArrayBuffer = await movingPhoto.requestContent(photoAccessHelper.ResourceType.IMAGE_RESOURCE);
           if (buffer == undefined || buffer.byteLength <= 0) {
             console.error(`ArrayBufferHandler :: failed to request content ArrayBuffer !`);

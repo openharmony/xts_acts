@@ -36,8 +36,14 @@ import webOnAudioStateChanged from './webOnAudioStateChanged.test';
 import webviewTerminateRenderProcess from './webviewTerminateRenderProcess.test';
 import webviewSelectionMenuOptions from './webviewSelectionMenuOptions.test';
 import DNSHostIP from './DNSHostIP.test';
+import webZoomAccessTest from './WebZoomAccessTest.test'
+import wholeWebPageDrawing from './wholeWebPageDrawing.test'
+import getSurfaceId from './getSurfaceId.test'
 
 export default function testsuite() {
+  DNSHostIP();
+  getSurfaceId();
+  wholeWebPageDrawing();
   //webOnBeforeUnload()
   webOnInterceptReqOne();
   webOnInterceptReqTwo();
@@ -59,8 +65,9 @@ export default function testsuite() {
   webONHttpErrorRecvExampleIsReady();
   webONHttpErrorReceiveIframe();
   //webOnAudioStateChanged()
-  DNSHostIP();
   webviewSelectionMenuOptions();
   webviewTerminateRenderProcess();
+  webZoomAccessTest()
+  
   
 }

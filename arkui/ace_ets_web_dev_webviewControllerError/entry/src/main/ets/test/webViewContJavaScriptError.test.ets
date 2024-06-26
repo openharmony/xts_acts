@@ -139,7 +139,7 @@ export default function webViewContJavaScriptError() {
     it('testDeleteJavaScriptRegisterNameErr', 0, async (done: Function) => {
       emitKey = "emitDeleteJavaScriptRegisterNameErr";
       Utils.registerEvent("testDeleteJavaScriptRegisterNameErr", "17100008", 662, done);
-      Utils.registerEvent("testDeleteJavaScriptRegisterNameErr", "Cannot delete JavaScriptProxy.", 663, done);
+      Utils.registerEvent("testDeleteJavaScriptRegisterNameErr", "Failed to delete JavaScriptProxy because it does not exist.", 663, done);
       sendEventByKey('webViewContJavaScriptError', 10, '');
     })
   })

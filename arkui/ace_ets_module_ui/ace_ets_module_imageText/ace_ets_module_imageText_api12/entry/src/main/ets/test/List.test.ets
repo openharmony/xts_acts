@@ -88,7 +88,11 @@ import TextTimerApiTest from './TextTimerTest/TextTimerApiTest/TextTimerApiTest.
 import AttributeUpdaterTest from './TextTest/TextAPITest/AttributeUpdaterTest.test'
 import UnitTest from './TextTest/TextAPITest/Unit.test'
 import APIClipMaskShape from './ImageTest/APIClipMaskShape.test'
-import TextInputAddApi from './TextInput/TextInputAddApi.test'.
+import TextInputAddApi from './TextInput/TextInputAddApi.test'
+import TextInputEvent from './TextInput/TextInputEvent.test'
+import TextInputEvent2 from './TextInput/TextInputEvent2.test'
+import SearchEvent from './Search/SearchEvent.test'
+import SearchEvent2 from './Search/SearchEvent2.test'
 
 import EffectFillStyle from './SymbolGlyphTest/EffectFillStyle.test'
 import EffectScope from './SymbolGlyphTest/EffectScope.test'
@@ -104,10 +108,17 @@ import RichEditorApi6 from './RichEditor/RichEditorApi6.test'
 import RichEditorApi7 from './RichEditor/RichEditorApi7.test'
 import TextAreaApi4 from './TextArea/TextAreaApi4.test'
 import TextAreaTest from './TextAreaTest/TextAreaAPITest/TextAreaTest.test'
+import MarqueeMirroringTest from './Marquee/MarqueeMirroring.test';
+import symbolEffect from './SymbolGlyphTest/symbolEffect.test'
+
 export default function testsuite() {
   APIContentTypeTest();
   APIUnderlineColorTest();
   TextInputAddApi();
+  TextInputEvent()
+  TextInputEvent2()
+  SearchEvent()
+  SearchEvent2()
   onSelectionChange1();
   onSelectionChange2();
   onSelectionChange3();
@@ -194,4 +205,6 @@ export default function testsuite() {
   RichEditorApi7();
   TextAreaApi4()
   TextAreaTest()
+  MarqueeMirroringTest()
+  symbolEffect()
 }

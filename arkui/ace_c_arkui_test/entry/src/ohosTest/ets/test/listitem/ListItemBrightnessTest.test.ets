@@ -55,7 +55,7 @@ export default function listItemBrightnessTest() {
     /*
      * @tc.number     : SUB_ARKUI_CAPI_LISTITEM_BRIGHTNESS_0300
      * @tc.name       : testListItemBrightness003
-     * @tc.desc       : testing brightness for listItem with small value
+     * @tc.desc       : testing brightness for listItem with abnormal value
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 1

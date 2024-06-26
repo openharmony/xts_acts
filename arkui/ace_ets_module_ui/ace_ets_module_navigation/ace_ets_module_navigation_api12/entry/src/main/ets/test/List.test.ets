@@ -22,6 +22,81 @@ import NavDestinationEvents from './NavDestinationTest/NavDestinationEvents.test
 import NavDestinationRouterMap from './NavDestinationTest/NavDestinationRouterMap.test'
 import NavigationSymbolIcon from './Navigation/NavigationSymbolIcon.test'
 
+import NavPathStack1 from './Navigation/NavPathStack1.test'
+import NavPathStack1_2 from './Navigation/NavPathStack1_2.test'
+import NavPathStack1_3 from './Navigation/NavPathStack1_3.test'
+import NavPathStack1_4 from './Navigation/NavPathStack1_4.test'
+import NavPathStack1_5 from './Navigation/NavPathStack1_5.test'
+import NavPathStack1_6 from './Navigation/NavPathStack1_6.test'
+import NavPathStack2 from './Navigation/NavPathStack2.test'
+import NavPathStack2_2 from './Navigation/NavPathStack2_2.test'
+import NavPathStack2_3 from './Navigation/NavPathStack2_3.test'
+import NavPathStack2_4 from './Navigation/NavPathStack2_4.test'
+import NavPathStack3 from './Navigation/NavPathStack3.test'
+import NavPathStack4 from './Navigation/NavPathStack4.test'
+import NavPathStack5 from './Navigation/NavPathStack5.test'
+import NavPathStack6 from './Navigation/NavPathStack6.test'
+import NavPathStack7 from './Navigation/NavPathStack7.test'
+import NavPathStack8 from './Navigation/NavPathStack8.test'
+import NavPathStack9 from './Navigation/NavPathStack9.test'
+import NavPathStack10 from './Navigation/NavPathStack10.test'
+import NavPathStack11 from './Navigation/NavPathStack11.test'
+import NavPathStack12 from './Navigation/NavPathStack12.test'
+import NavPathStack13 from './Navigation/NavPathStack13.test'
+import NavPathStack14 from './Navigation/NavPathStack14.test'
+import NavPathStack15 from './Navigation/NavPathStack15.test'
+import NavPathStack16 from './Navigation/NavPathStack16.test'
+import NavPathStack17 from './Navigation/NavPathStack17.test'
+import NavPathStack18 from './Navigation/NavPathStack18.test'
+import NavPathStack19 from './Navigation/NavPathStack19.test'
+import NavPathStack20 from './Navigation/NavPathStack20.test'
+import NavPathStack21 from './Navigation/NavPathStack21.test'
+import NavPathStack22 from './Navigation/NavPathStack22.test'
+import NavPathStack23 from './Navigation/NavPathStack23.test'
+import NavPathStack24 from './Navigation/NavPathStack24.test'
+
+import Navigation_SingleInstanceJump1 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump1.test'
+import Navigation_SingleInstanceJump2 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump2.test'
+import Navigation_SingleInstanceJump3 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump3.test'
+import Navigation_SingleInstanceJump4 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump4.test'
+import Navigation_SingleInstanceJump5 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump5.test'
+import Navigation_SingleInstanceJump6 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump6.test'
+import Navigation_SingleInstanceJump7 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump7.test'
+import Navigation_SingleInstanceJump8 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump8.test'
+import Navigation_SingleInstanceJump9 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump9.test'
+import Navigation_SingleInstanceJump10 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump10.test'
+import Navigation_SingleInstanceJump11 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump11.test'
+import Navigation_SingleInstanceJump12 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump12.test'
+import Navigation_SingleInstanceJump13 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump13.test'
+import Navigation_SingleInstanceJump14 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump14.test'
+import Navigation_SingleInstanceJump15 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump15.test'
+import Navigation_SingleInstanceJump16 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump16.test'
+import Navigation_SingleInstanceJump17 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump17.test'
+import Navigation_SingleInstanceJump18 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump18.test'
+import Navigation_SingleInstanceJump19 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump19.test'
+import Navigation_SingleInstanceJump20 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump20.test'
+import Navigation_SingleInstanceJump21 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump21.test'
+import Navigation_SingleInstanceJump22 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump22.test'
+import Navigation_SingleInstanceJump23 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump23.test'
+import Navigation_SingleInstanceJump24 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump24.test'
+import Navigation_SingleInstanceJump25 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump25.test'
+import Navigation_SingleInstanceJump26 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump26.test'
+import Navigation_SingleInstanceJump27 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump27.test'
+import Navigation_SingleInstanceJump28 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump28.test'
+import Navigation_SingleInstanceJump29 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump29.test'
+import Navigation_SingleInstanceJump30 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump30.test'
+import Navigation_SingleInstanceJump31 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump31.test'
+import Navigation_SingleInstanceJump32 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump32.test'
+import Navigation_SingleInstanceJump33 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump33.test'
+import Navigation_SingleInstanceJump34 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump34.test'
+import Navigation_SingleInstanceJump35 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump35.test'
+import Navigation_SingleInstanceJump36 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump36.test'
+import Navigation_SingleInstanceJump37 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump37.test'
+import Navigation_SingleInstanceJump38 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump38.test'
+import Navigation_SingleInstanceJump39 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump39.test'
+import Navigation_SingleInstanceJump40 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump40.test'
+import Navigation_SingleInstanceJump41 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump41.test'
+import Navigation_SingleInstanceJump42 from './Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump42.test'
 export default function testsuite() {
   NavigationApi1();
   NavigationApi2();
@@ -32,4 +107,80 @@ export default function testsuite() {
   NavDestinationEvents();
   NavDestinationRouterMap();
   NavigationSymbolIcon();
+
+  NavPathStack1()
+  NavPathStack1_2()
+  NavPathStack1_3()
+  NavPathStack1_4()
+  NavPathStack1_5()
+  NavPathStack1_6()
+  NavPathStack2()
+  NavPathStack2_2()
+  NavPathStack2_3()
+  NavPathStack2_4()
+  NavPathStack3()
+  NavPathStack4()
+  NavPathStack5()
+  NavPathStack6()
+  NavPathStack7()
+  NavPathStack8()
+  NavPathStack9()
+  NavPathStack10()
+  NavPathStack11()
+  NavPathStack12()
+  NavPathStack13()
+  NavPathStack14()
+  NavPathStack15()
+  NavPathStack16()
+  NavPathStack17()
+  NavPathStack18()
+  NavPathStack19()
+  NavPathStack20()
+  NavPathStack21()
+  NavPathStack22()
+  NavPathStack23()
+  NavPathStack24()
+
+  Navigation_SingleInstanceJump1()
+  Navigation_SingleInstanceJump2()
+  Navigation_SingleInstanceJump3()
+  Navigation_SingleInstanceJump4()
+  Navigation_SingleInstanceJump5()
+  Navigation_SingleInstanceJump6()
+  Navigation_SingleInstanceJump7()
+  Navigation_SingleInstanceJump8()
+  Navigation_SingleInstanceJump9()
+  Navigation_SingleInstanceJump10()
+  Navigation_SingleInstanceJump11()
+  Navigation_SingleInstanceJump12()
+  Navigation_SingleInstanceJump13()
+  Navigation_SingleInstanceJump14()
+  Navigation_SingleInstanceJump15()
+  Navigation_SingleInstanceJump16()
+  Navigation_SingleInstanceJump17()
+  Navigation_SingleInstanceJump18()
+  Navigation_SingleInstanceJump19()
+  Navigation_SingleInstanceJump20()
+  Navigation_SingleInstanceJump21()
+  Navigation_SingleInstanceJump22()
+  Navigation_SingleInstanceJump23()
+  Navigation_SingleInstanceJump24()
+  Navigation_SingleInstanceJump25()
+  Navigation_SingleInstanceJump26()
+  Navigation_SingleInstanceJump27()
+  Navigation_SingleInstanceJump28()
+  Navigation_SingleInstanceJump29()
+  Navigation_SingleInstanceJump30()
+  Navigation_SingleInstanceJump31()
+  Navigation_SingleInstanceJump32()
+  Navigation_SingleInstanceJump33()
+  Navigation_SingleInstanceJump34()
+  Navigation_SingleInstanceJump35()
+  Navigation_SingleInstanceJump36()
+  Navigation_SingleInstanceJump37()
+  Navigation_SingleInstanceJump38()
+  Navigation_SingleInstanceJump39()
+  Navigation_SingleInstanceJump40()
+  Navigation_SingleInstanceJump41()
+  Navigation_SingleInstanceJump42()
 }

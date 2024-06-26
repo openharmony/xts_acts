@@ -36,8 +36,6 @@ export default function textAreaOnChangeTest() {
     it('testTextAreaOnChange001', 0, async (done: Function) => {
       let PAGE_TAG = 'TextAreaOnChangeTest';
       await Utils.pushPage(`textarea/${PAGE_TAG}`);
-      await Utils.emitEvent(PAGE_TAG, 1, 1234);
-      await Utils.sleep(3000);
       expect(Utils.getComponentInfoByKey('TextAreaOnChange').$attrs.backgroundColor).assertEqual('#FFFF0000');
       done();
     })

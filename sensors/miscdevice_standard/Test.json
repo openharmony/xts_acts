@@ -1,9 +1,9 @@
 {
-    "description": "Configuration for hjunit demo Tests",
+    "description": "Configuration for miscdevice js api Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "180000",
-        "shell-timeout": "180000",
+        "test-timeout": "160000",
+        "shell-timeout": "160000",
         "bundle-name": "ohos.acts.sensors.miscdevice.function",
         "package-name": "ohos.acts.sensors.miscdevice.function"
     },
@@ -14,7 +14,7 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },        
+        },
         {
             "type": "ShellKit",
             "run-command": [

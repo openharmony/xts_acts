@@ -68,7 +68,7 @@ export default function rdbStoreCorruptJSunitTest() {
             dbPathShm = context.databaseDir + "/rdb/" + dbName + "-shm";
             console.log(TAG, `filepath is${dir},databaseDir is${context.databaseDir},dbpath is${dbPath}`)
             rdbStore = await data_relationalStore.getRdbStore(context, STORE_CONFIG);
-            rdbStore.executeSql(CREATE_TABLE_TEST, null);
+            await rdbStore.executeSql(CREATE_TABLE_TEST, null);
             await createTest();
             let u8 = new Uint8Array([1, 2, 3]);
             const valueBucket = {
@@ -342,6 +342,27 @@ export default function rdbStoreCorruptJSunitTest() {
             }
             done();
             console.log(TAG + "************* rebuiltExecuteSqlTest0001 end *************");
+        })
+
+        /**
+         * @tc.name the Repaired function
+         * @tc.number SUB_DistributedData_RelationalStore_SDK_RebuildEtsAPITest_0100
+         * @tc.desc Repaired the database while corrupt
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 3
+         */
+        it('RepairedTest001', 0, async function (done) {
+            console.log(TAG + "************* RepairedTest001 start *************");
+            try{
+                console.log(TAG + "data_relationalStore.RebuildType.REPAIRED" + data_relationalStore.RebuildType.REPAIRED);
+                expect(data_relationalStore.RebuildType.REPAIRED).assertEqual(2);
+            } catch (err) {
+                expect(null).assertFail();
+                console.log(TAG + err.code + err.message);
+            }
+            done();
+            console.log(TAG + "************* RepairedTest001 end *************");
         })
 
         console.log(TAG + "*************Unit Test End*************");

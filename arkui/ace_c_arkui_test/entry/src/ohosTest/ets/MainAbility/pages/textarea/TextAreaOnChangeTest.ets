@@ -23,16 +23,6 @@ import events_emitter from '@ohos.events.emitter';
 struct TextAreaOnChangeTest {
   PAGE_TAG: string = 'TextAreaOnChangeTest';
 
-  aboutToAppear() {
-    Utils.registerEvent(this.PAGE_TAG, 1234, (data: number) => {
-      render.textAreaOnChangeTypeTest(data);
-    })
-  }
-
-  aboutToDisappear() {
-    events_emitter.off(1234)
-  }
-
   build() {
     Column() {
       CommonView({

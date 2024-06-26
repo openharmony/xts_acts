@@ -1645,7 +1645,7 @@ describe('deviceKvStorePromiseTest', function () {
                 console.error('SUB_DDM_DKV_DEVICEKVSTORE_STARTTRANSACTION_PROMISE_0100 commit fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
             });
-            await sleep(2000);
+            await sleep(500);
             expect(count == 1).assertTrue();
         }catch(e) {
             console.error('SUB_DDM_DKV_DEVICEKVSTORE_STARTTRANSACTION_PROMISE_0100 e ' + `, error code is ${e.code}, message is ${e.message}`);
@@ -1699,7 +1699,7 @@ describe('deviceKvStorePromiseTest', function () {
                 console.error('SUB_DDM_DKV_DEVICEKVSTORE_STARTTRANSACTION_PROMISE_0200 rollback fail ' + `, error code is ${err.code}, message is ${err.message}`);
                 expect(null).assertFail();
             });
-            await sleep(2000);
+            await sleep(500);
             expect(count == 0).assertTrue();
         }catch(e) {
             console.error('SUB_DDM_DKV_DEVICEKVSTORE_STARTTRANSACTION_PROMISE_0200 e ' + `, error code is ${e.code}, message is ${e.message}`);

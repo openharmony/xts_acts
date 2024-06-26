@@ -51,7 +51,7 @@ struct Grid_Row_Breakpoints_Negative {
           reference: BreakpointsReference.ComponentSize },
         direction: GridRowDirection.Row
       }) {
-        ForEach(this.bgColors, (color: Color, index: number) => {
+        ForEach(this.bgColors, (color: Color, index?: number) => {
           GridCol({ span: 1 }) {
             Row().width("100%").height("20vp")
           }.borderColor(color).borderWidth(2).key('Grid_Row_Breakpoints_Negative' + index)

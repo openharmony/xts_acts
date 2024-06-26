@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 Huawei Device Co., Ltd.
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -17,6 +17,8 @@ import fileHash from '@ohos.file.hash';
 import {
   fileIO, FILE_CONTENT, prepareFile, nextFileName, describe, it, expect,
 } from '../Common';
+import fs from '@ohos.file.fs';
+import Hash from '@ohos.file.hash';
 
 export default function fileIOHash() {
 describe('fileIO_fs_hash', function () {
@@ -240,6 +242,132 @@ describe('fileIO_fs_hash', function () {
       console.log('fileIO_test_hash_async_007 has failed for ' + e.message + ', code: ' + e.code);
       expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
       done();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_HASH_ASYNC_0800
+   * @tc.name fileIO_test_hash_createHash_008
+   * @tc.desc Test createHash() interface.
+   * Calculate file summary using HashStream (MD5)
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_hash_createHash_008', 0, async function () {
+    let fpath = await nextFileName('fileIO_test_hash_createHash_008');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let rs = fs.createReadStream(fpath);
+      let hsMd5 = Hash.createHash('md5');
+      rs.on('data', (emitData) => {
+        const data = emitData?.data;
+        hsMd5.update(new Uint8Array(data?.split('').map((x) => x.charCodeAt(0))).buffer);
+        console.log('fileIO_test_hash_createHash_008 readlen ' + data?.length + ', content: ' + data?.slice(0, 10));
+      });
+      rs.on('close', async () => {
+        const fileHash = await Hash.hash(fpath, 'md5');
+        const streamHash = hsMd5.digest();
+        console.info(`hashResult: ${streamHash}, fileHash: ${fileHash}`);
+        expect(streamHash == fileHash).assertTrue();
+      });
+    } catch (e) {
+      console.log('fileIO_test_hash_createHash_008 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_HASH_ASYNC_0900
+   * @tc.name fileIO_test_hash_createHash_009
+   * @tc.desc Test createHash() interface.
+   * Calculate file summary using HashStream (SHA1)
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_hash_createHash_009', 0, async function () {
+    let fpath = await nextFileName('fileIO_test_hash_createHash_009');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let rs = fs.createReadStream(fpath);
+      let hsSha1 = Hash.createHash('sha1');
+      rs.on('data', (emitData) => {
+        const data = emitData?.data;
+        hsSha1.update(new Uint8Array(data?.split('').map((x) => x.charCodeAt(0))).buffer);
+        console.log('fileIO_test_hash_createHash_009 readlen ' + data?.length + ', content: ' + data?.slice(0, 10));
+      });
+      rs.on('close', async () => {
+        const fileHash = await Hash.hash(fpath, 'sha1');
+        const streamHash = hsSha1.digest();
+        console.info(`hashResult: ${streamHash}, fileHash: ${fileHash}`);
+        expect(streamHash == fileHash).assertTrue();
+      });
+    } catch (e) {
+      console.log('fileIO_test_hash_createHash_009 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_HASH_ASYNC_1000
+   * @tc.name fileIO_test_hash_createHash_010
+   * @tc.desc Test createHash() interface.
+   * Calculate file summary using HashStream (SHA256)
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_hash_createHash_010', 0, async function () {
+    let fpath = await nextFileName('fileIO_test_hash_createHash_010');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let rs = fs.createReadStream(fpath);
+      let hsSha256 = Hash.createHash('sha256');
+      rs.on('data', (emitData) => {
+        const data = emitData?.data;
+        hsSha256.update(new Uint8Array(data?.split('').map((x) => x.charCodeAt(0))).buffer);
+        console.log('fileIO_test_hash_createHash_010 readlen ' + data?.length + ', content: ' + data?.slice(0, 10));
+      });
+      rs.on('close', async () => {
+        const fileHash = await Hash.hash(fpath, 'sha256');
+        const streamHash = hsSha256.digest();
+        console.info(`fileIO_test_hash_createHash_010 hashResult: ${streamHash}, fileHash: ${fileHash}`);
+        expect(streamHash == fileHash).assertTrue();
+      });
+    } catch (e) {
+      console.log('fileIO_test_hash_createHash_010 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_DF_FILEIO_HASH_ASYNC_1100
+   * @tc.name fileIO_test_hash_createHash_011
+   * @tc.desc Test createHash() interface.
+   * Invalid mode.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+  it('fileIO_test_hash_createHash_011', 0, async function () {
+    let fpath = await nextFileName('fileIO_test_hash_createHash_011');
+    expect(prepareFile(fpath, FILE_CONTENT)).assertTrue();
+
+    try {
+      let rs = fs.createReadStream(fpath);
+      let hsSha256 = Hash.createHash('123');
+      expect(false).assertTrue();
+    } catch (e) {
+      console.log('fileIO_test_hash_createHash_011 has failed for ' + e.message + ', code: ' + e.code);
+      expect(e.code == 13900020 && e.message == 'Invalid argument').assertTrue();
     }
   });
 })

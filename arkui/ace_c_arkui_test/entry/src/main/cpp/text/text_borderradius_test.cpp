@@ -24,11 +24,11 @@ static napi_value TestTextBorderRadius001(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.f32 = radius}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_BORDER_RADIUS, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_RADIUS)->value[PARAM_0].f32, radius);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_RADIUS)->value[PARAM_1].f32, radius);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_RADIUS)->value[PARAM_2].f32, radius);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_RADIUS)->value[PARAM_3].f32, radius);
-    ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
 
@@ -39,11 +39,11 @@ static napi_value TestTextBorderRadius002(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.f32 = maxValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_BORDER_RADIUS, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_RADIUS)->value[PARAM_0].f32, maxValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_RADIUS)->value[PARAM_1].f32, maxValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_RADIUS)->value[PARAM_2].f32, maxValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_RADIUS)->value[PARAM_3].f32, maxValue);
-    ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
 
@@ -54,11 +54,11 @@ static napi_value TestTextBorderRadius003(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.f32 = minimumValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_BORDER_RADIUS, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_RADIUS)->value[PARAM_0].f32, minimumValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_RADIUS)->value[PARAM_1].f32, minimumValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_RADIUS)->value[PARAM_2].f32, minimumValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_RADIUS)->value[PARAM_3].f32, minimumValue);
-    ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
 
@@ -72,11 +72,11 @@ static napi_value TestTextBorderRadius004(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.f32 = topValue}, {.f32 = rightValue}, {.f32 = bottomValue}, {.f32 = leftValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_BORDER_RADIUS, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_RADIUS)->value[PARAM_0].f32, topValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_RADIUS)->value[PARAM_1].f32, rightValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_RADIUS)->value[PARAM_2].f32, bottomValue);
     ASSERT_EQ(nodeAPI->getAttribute(text, NODE_BORDER_RADIUS)->value[PARAM_3].f32, leftValue);
-    ASSERT_EQ(ret, SUCCESS);
     NAPI_END;
 }
 
@@ -87,10 +87,10 @@ static napi_value TestTextBorderRadius005(napi_env env, napi_callback_info info)
     ArkUI_NumberValue value[] = {{.f32 = exceptionValue}};
     ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(text, NODE_BORDER_RADIUS, &valueItem);
+    ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(text, NODE_BORDER_RADIUS) != nullptr) {
         ASSERT_NE(nodeAPI->getAttribute(text, NODE_BORDER_RADIUS)->value[PARAM_0].f32, exceptionValue);
     }
-    ASSERT_EQ(ret, INVALID_PARAM);
     NAPI_END;
 }
 

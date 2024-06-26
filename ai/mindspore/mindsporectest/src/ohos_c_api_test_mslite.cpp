@@ -3224,6 +3224,10 @@ HWTEST(MSLiteTest, OHOS_NNRT_0005, Function | MediumTest | Level1) {
 
 // 正常场景：通过OH_AI_ModelGetInputs和OH_AI_ModelGetOutputs获取，实现数据免拷贝
 HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0001, Function | MediumTest | Level1) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     AddContextDeviceNNRT(context);
@@ -3302,6 +3306,10 @@ void RunMSLiteModel(OH_AI_ModelHandle model, string model_name, bool is_transpos
 
 // 正常场景：通过OH_AI_TensorCreate创建输入输出tensor，实现数据免拷贝
 HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0002, Function | MediumTest | Level1) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     AddContextDeviceNNRT(context);
@@ -3316,6 +3324,10 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0002, Function | MediumTest |
 
 // 异常场景：OH_AI_TensorSetAllocator设置空指针
 HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0003, Function | MediumTest | Level1) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
     printf("==========Init Context==========\n");
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     AddContextDeviceNNRT(context);

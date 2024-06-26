@@ -48,6 +48,7 @@ export default function AbilityStageMonitorTest() {
       async (done: Function) => {
         let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
         let monitor = null;
+        console.log("ACTS_ADD_ABILITY_STAGE_MONITOR_CALLBACK_0100 :start");
         try {
           abilityDelegator.addAbilityStageMonitor(
             monitor,
@@ -93,7 +94,7 @@ export default function AbilityStageMonitorTest() {
           "MainAbility",
           "featureassist"
         );
-
+        console.log("ACTS_ADD_ABILITY_STAGE_MONITOR_CALLBACK_0200 :start");
         abilityDelegator.addAbilityStageMonitor({
           moduleName: "featureassist",
           srcEntrance: "./ets/Application/AbilityStage.ts",
@@ -138,6 +139,7 @@ export default function AbilityStageMonitorTest() {
     it("ACTS_ADD_ABILITY_STAGE_MONITOR_PROMISE_0100", 0, async (done: Function) => {
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       let monitor = null;
+      console.log("ACTS_ADD_ABILITY_STAGE_MONITOR_PROMISE_0100 :start");
       try {
         await abilityDelegator.addAbilityStageMonitor(monitor);
         abilityDelegator.printSync(
@@ -175,7 +177,7 @@ export default function AbilityStageMonitorTest() {
         "MainAbility",
         "featureassist"
       );
-
+      console.log("ACTS_ADD_ABILITY_STAGE_MONITOR_PROMISE_0200 :start");
       abilityDelegator
         .addAbilityStageMonitor({
           moduleName: "featureassist",
@@ -245,6 +247,7 @@ export default function AbilityStageMonitorTest() {
       0,
       async (done: Function) => {
         let monitor = null;
+        console.log("ACTS_REMOVE_ABILITY_STAGE_MONITOR_CALLBACK_0100 :start");
         try {
           abilityDelegator.removeAbilityStageMonitor(monitor, (err: BusinessError) => {
             expect().assertFail();
@@ -294,7 +297,7 @@ export default function AbilityStageMonitorTest() {
           "MainAbility",
           "featureassist"
         );
-
+        console.log("ACTS_REMOVE_ABILITY_STAGE_MONITOR_CALLBACK_0200 :start");
         abilityDelegator.waitAbilityStageMonitor({
           moduleName: "featureassist",
           srcEntrance: "./ets/Application/AbilityStage.ts",
@@ -335,7 +338,7 @@ export default function AbilityStageMonitorTest() {
           "MainAbility",
           "featureassist"
         );
-
+        console.log("ACTS_REMOVE_ABILITY_STAGE_MONITOR_CALLBACK_0300 :start");
         abilityDelegator.waitAbilityStageMonitor({
           moduleName: "featureassist",
           srcEntrance: "./ets/Application/AbilityStage.ts",
@@ -372,6 +375,7 @@ export default function AbilityStageMonitorTest() {
       0,
       async (done: Function) => {
         let monitor = null;
+        console.log("ACTS_REMOVE_ABILITY_STAGE_MONITOR_PROMISE_0100 :start");
         try {
           await abilityDelegator.removeAbilityStageMonitor(monitor);
           abilityDelegator.printSync(
@@ -417,7 +421,7 @@ export default function AbilityStageMonitorTest() {
           "MainAbility",
           "featureassist"
         );
-
+        console.log("ACTS_REMOVE_ABILITY_STAGE_MONITOR_PROMISE_0200 :start 1");
         abilityDelegator
           .waitAbilityStageMonitor({
             moduleName: "featureassist",
@@ -435,7 +439,7 @@ export default function AbilityStageMonitorTest() {
                 error
             );
           });
-
+          console.log("ACTS_REMOVE_ABILITY_STAGE_MONITOR_PROMISE_0200 :start 2");
         abilityDelegator
           .removeAbilityStageMonitor({
             moduleName: "featureassist",
@@ -470,6 +474,7 @@ export default function AbilityStageMonitorTest() {
       0,
       async (done: Function) => {
         let monitor = null;
+        console.log("ACTS_WAIT_ABILITY_STAGE_MONITOR_CALLBACK_0100 :start");
         try {
           abilityDelegator.waitAbilityStageMonitor(monitor, (err: BusinessError) => {
             expect().assertFail();
@@ -508,6 +513,7 @@ export default function AbilityStageMonitorTest() {
       0,
       async (done: Function) => {
         let monitor = null;
+        console.log("ACTS_WAIT_ABILITY_STAGE_MONITOR_CALLBACK_0200 :start");
         try {
           abilityDelegator.waitAbilityStageMonitor(
             monitor,
@@ -560,6 +566,7 @@ export default function AbilityStageMonitorTest() {
           "MainAbility",
           "featureassist"
         );
+        console.log("ACTS_WAIT_ABILITY_STAGE_MONITOR_CALLBACK_0300 :start");
         abilityDelegator.waitAbilityStageMonitor({
           moduleName: "featureassist",
           srcEntrance: "./ets/Application/AbilityStage.ts",
@@ -594,6 +601,7 @@ export default function AbilityStageMonitorTest() {
           "MainAbility",
           "featureassist"
         );
+        console.log("ACTS_WAIT_ABILITY_STAGE_MONITOR_CALLBACK_0400 :start");
         abilityDelegator.waitAbilityStageMonitor({
           moduleName: "featureassist",
           srcEntrance: "./ets/Application/AbilityStage.ts",
@@ -623,6 +631,7 @@ export default function AbilityStageMonitorTest() {
       0,
       async (done: Function) => {
         let monitor = null;
+        console.log("ACTS_WAIT_ABILITY_STAGE_MONITOR_PROMISE_0100 :start");
         try {
           await abilityDelegator.waitAbilityStageMonitor(monitor);
           expect().assertFail();
@@ -664,6 +673,7 @@ export default function AbilityStageMonitorTest() {
           "MainAbility",
           "featureassist"
         );
+        console.log("ACTS_WAIT_ABILITY_STAGE_MONITOR_PROMISE_0200 :start");
         abilityDelegator
           .waitAbilityStageMonitor({
             moduleName: "featureassist",

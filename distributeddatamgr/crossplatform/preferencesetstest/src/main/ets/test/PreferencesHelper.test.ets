@@ -447,7 +447,7 @@ export default function preferencesHelperTest() {
         mPreferences.off("change", observer);
         await mPreferences.put(KEY_TEST_STRING_ELEMENT, "abc");
         await mPreferences.flush();
-        await sleep(1000);
+        await sleep(500);
         expect(isTrigger === false).assertTrue();
       } catch (err) {
         console.info("Failed to testPreferencesOff001. code =" + err.code + ", message =" + err.message);
@@ -475,7 +475,7 @@ export default function preferencesHelperTest() {
         mPreferences.off("change");
         await mPreferences.put(KEY_TEST_STRING_ELEMENT, "abc");
         await mPreferences.flush();
-        await sleep(1000);
+        await sleep(500);
         expect(isTrigger === false).assertTrue();
       } catch (err) {
         console.info("Failed to testPreferencesOff001. code =" + err.code + ", message =" + err.message);

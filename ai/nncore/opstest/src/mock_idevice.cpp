@@ -17,6 +17,7 @@
 
 #include "nncore_const.h"
 #include "mock_idevice.h"
+
 #include "hdi_device_v2_1.h"
 #include "hdi_returncode_utils_v2_1.h"
 #include "common/log.h"
