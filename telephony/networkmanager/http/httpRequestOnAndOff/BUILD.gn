@@ -13,29 +13,11 @@
 
 import("//test/xts/tools/build/suite.gni")
 
-ohos_js_hap_suite("ActsNetworkManagerHttpRequestOnAndOffTest") {
-  hap_profile = "entry/src/main/module.json"
-  js_build_mode = "debug"
-  deps = [
-    ":httprequestonandoff_demo_resources",
-    ":httprequestonandoff_resources",
-  ]
-  ets2abc = true
+ohos_js_app_suite("ActsNetworkManagerHttpRequestOnAndOffTest") {
+  test_hap = true
+  testonly = true
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsNetworkManagerHttpRequestOnAndOffTest"
-
   part_name = "sms_mms"
   subsystem_name = "telephony"
-}
-ohos_app_scope("httprequestonandoff_app_profile") {
-  app_profile = "AppScope/app.json"
-  sources = [ "AppScope/resources" ]
-}
-ohos_js_assets("httprequestonandoff_resources") {
-  source_dir = "entry/src/main/ets"
-}
-ohos_resources("httprequestonandoff_demo_resources") {
-  sources = [ "entry/src/main/resources" ]
-  deps = [ ":httprequestonandoff_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
 }
