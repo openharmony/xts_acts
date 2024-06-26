@@ -18,7 +18,6 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import Want from '@ohos.app.ability.Want';
 import commonEvent from '@ohos.commonEvent';
-import CommonEventManager from '@ohos.commonEventManager';
 
 const domain = 0x0000;
 const TAG = 'ActsFAAbilityDisplayOrientationTest';
@@ -43,11 +42,11 @@ const Data_LifeCircle = ['onCreate', 'onActive'];
 
 export default function actsFAAbilityDisplayOrientationTest() {
 
-  let sleep = (time:number):Promise<void> => {
+  function sleep(time) {
     return new Promise((resolve) => setTimeout(resolve, time))
   }
 
-  describe('ActsAbilityTest', () => {
+  describe('ActsAbilityTest', function () {
 
     /**
      * @tc.number    : SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0200
@@ -58,19 +57,16 @@ export default function actsFAAbilityDisplayOrientationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0200", 3, async (done:Function) => {
+    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0200", 3, async function (done) {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0200';
       try {
-        let commonEventSubscribeInfo:CommonEventManager.CommonEventSubscribeInfo = {
+        let commonEventSubscribeInfo = {
           events: [Event_FA_DisplayOrientation_0200]
         }
         await commonEvent.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
           commonEvent.subscribe(subscriber, (err, commonEventData) => {
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe sunccess : ${JSON.stringify(commonEventData)},err: ${JSON.stringify(err)}`);
-            let result = false;
-            if (commonEventData.parameters) {
-              result = commonEventData.parameters.data;
-            }
+            let result = commonEventData.parameters.data;
             expect(result).assertTrue()
             commonEvent.unsubscribe(subscriber, (err, data) => {
               done();
@@ -105,19 +101,16 @@ export default function actsFAAbilityDisplayOrientationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0400", 3, async (done:Function) => {
+    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0400", 3, async function (done) {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0400';
       try {
-        let commonEventSubscribeInfo:CommonEventManager.CommonEventSubscribeInfo = {
+        let commonEventSubscribeInfo = {
           events: [Event_FA_DisplayOrientation_0400]
         }
         await commonEvent.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
           commonEvent.subscribe(subscriber, (err, commonEventData) => {
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe sunccess : ${JSON.stringify(commonEventData)},err: ${JSON.stringify(err)}`);
-            let result = false;
-            if (commonEventData.parameters) {
-              result = commonEventData.parameters.data;
-            }
+            let result = commonEventData.parameters.data;
             expect(result).assertTrue()
             commonEvent.unsubscribe(subscriber, (err, data) => {
               done();
@@ -152,20 +145,17 @@ export default function actsFAAbilityDisplayOrientationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0500", 3, async (done:Function) => {
+    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0500", 3, async function (done) {
       await sleep(1000);
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0500';
       try {
-        let commonEventSubscribeInfo:CommonEventManager.CommonEventSubscribeInfo = {
+        let commonEventSubscribeInfo = {
           events: [Event_FA_DisplayOrientation_0500]
         }
         await commonEvent.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
           commonEvent.subscribe(subscriber, (err, commonEventData) => {
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe sunccess : ${JSON.stringify(commonEventData)},err: ${JSON.stringify(err)}`);
-            let result = false;
-            if (commonEventData.parameters) {
-              result = commonEventData.parameters.data;
-            }
+            let result = commonEventData.parameters.data;
             expect(result).assertTrue()
             commonEvent.unsubscribe(subscriber, (err, data) => {
               done();
@@ -199,20 +189,17 @@ export default function actsFAAbilityDisplayOrientationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0100", 3, async (done:Function) => {
+    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0100", 3, async function (done) {
       await sleep(1000);
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0100';
       try {
-        let commonEventSubscribeInfo:CommonEventManager.CommonEventSubscribeInfo = {
+        let commonEventSubscribeInfo = {
           events: [Event_FA_DisplayOrientation_0100]
         }
         await commonEvent.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
           commonEvent.subscribe(subscriber, (err, commonEventData) => {
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe sunccess : ${JSON.stringify(commonEventData)},err: ${JSON.stringify(err)}`);
-            let result = false;
-            if (commonEventData.parameters) {
-              result = commonEventData.parameters.data;
-            }
+            let result = commonEventData.parameters.data;
             expect(result).assertTrue()
             commonEvent.unsubscribe(subscriber, (err, data) => {
               done();
@@ -247,21 +234,18 @@ export default function actsFAAbilityDisplayOrientationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0300", 3, async (done:Function) => {
+    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0300", 3, async function (done) {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0300';
       try {
         await sleep(1000);
-        let commonEventSubscribeInfo:CommonEventManager.CommonEventSubscribeInfo = {
+        let commonEventSubscribeInfo = {
           events: [Event_FA_DisplayOrientation_0300]
         }
         await commonEvent.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
           commonEvent.subscribe(subscriber, (err, commonEventData) => {
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe sunccess : ${JSON.stringify(commonEventData)},err: ${JSON.stringify(err)}`);
-            let result:boolean = false;
-            if (commonEventData.parameters) {
-              result = commonEventData.parameters.data;
-            }
-            expect(result).assertTrue();
+            let result = commonEventData.parameters.data;
+            expect(result).assertTrue()
             commonEvent.unsubscribe(subscriber, (err, data) => {
               done();
             });
@@ -295,20 +279,17 @@ export default function actsFAAbilityDisplayOrientationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0600", 3, async (done:Function) => {
+    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0600", 3, async function (done) {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0600';
       try {
         await sleep(1000);
-        let commonEventSubscribeInfo: CommonEventManager.CommonEventSubscribeInfo= {
+        let commonEventSubscribeInfo = {
           events: [Event_FA_DisplayOrientation_0600]
         }
         await commonEvent.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
           commonEvent.subscribe(subscriber, (err, commonEventData) => {
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe sunccess : ${JSON.stringify(commonEventData)},err: ${JSON.stringify(err)}`);
-            let result = false;
-            if (commonEventData.parameters) {
-              result = commonEventData.parameters.data;
-            }
+            let result = commonEventData.parameters.data;
             expect(result).assertTrue()
             commonEvent.unsubscribe(subscriber, (err, data) => {
               done();
@@ -341,20 +322,17 @@ export default function actsFAAbilityDisplayOrientationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0700", 3, async (done:Function) => {
+    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0700", 3, async function (done) {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0700';
       try {
         await sleep(1000);
-        let commonEventSubscribeInfo:CommonEventManager.CommonEventSubscribeInfo = {
+        let commonEventSubscribeInfo = {
           events: [Event_FA_DisplayOrientation_0700]
         }
         await commonEvent.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
           commonEvent.subscribe(subscriber, (err, commonEventData) => {
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe sunccess : ${JSON.stringify(commonEventData)},err: ${JSON.stringify(err)}`);
-            let result = false;
-            if (commonEventData.parameters) {
-              result = commonEventData.parameters.data;
-            }
+            let result = commonEventData.parameters.data;
             expect(result).assertTrue()
             commonEvent.unsubscribe(subscriber, (err, data) => {
               done();
@@ -387,20 +365,17 @@ export default function actsFAAbilityDisplayOrientationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0800", 3, async (done:Function) => {
+    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0800", 3, async function (done) {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0700';
       try {
         await sleep(1000);
-        let commonEventSubscribeInfo:CommonEventManager.CommonEventSubscribeInfo = {
+        let commonEventSubscribeInfo = {
           events: [Event_FA_DisplayOrientation_0800]
         }
         await commonEvent.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
           commonEvent.subscribe(subscriber, (err, commonEventData) => {
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe sunccess : ${JSON.stringify(commonEventData)},err: ${JSON.stringify(err)}`);
-            let result = false;
-            if (commonEventData.parameters) {
-              result = commonEventData.parameters.data;
-            }
+            let result = commonEventData.parameters.data;
             expect(result).assertTrue()
             commonEvent.unsubscribe(subscriber, (err, data) => {
               done();
@@ -433,20 +408,17 @@ export default function actsFAAbilityDisplayOrientationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0900", 3, async (done:Function) => {
+    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0900", 3, async function (done) {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_0900';
       try {
         await sleep(1000);
-        let commonEventSubscribeInfo:CommonEventManager.CommonEventSubscribeInfo = {
+        let commonEventSubscribeInfo = {
           events: [Event_FA_DisplayOrientation_0900]
         }
         await commonEvent.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
           commonEvent.subscribe(subscriber, (err, commonEventData) => {
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe sunccess : ${JSON.stringify(commonEventData)},err: ${JSON.stringify(err)}`);
-            let result = false;
-            if (commonEventData.parameters) {
-              result = commonEventData.parameters.data;
-            }
+            let result = commonEventData.parameters.data;
             expect(result).assertTrue()
             commonEvent.unsubscribe(subscriber, (err, data) => {
               done();
@@ -479,20 +451,17 @@ export default function actsFAAbilityDisplayOrientationTest() {
      * @tc.type      : Function
      * @tc.level     : Level 3
      */
-    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_1000", 3, async (done:Function) => {
+    it("SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_1000", 3, async function (done) {
       const TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_StartAndTerminate_FA_DisplayOrientation_1000';
       try {
         await sleep(1000);
-        let commonEventSubscribeInfo:CommonEventManager.CommonEventSubscribeInfo = {
+        let commonEventSubscribeInfo = {
           events: [Event_FA_DisplayOrientation_1000]
         }
         await commonEvent.createSubscriber(commonEventSubscribeInfo).then((subscriber) => {
           commonEvent.subscribe(subscriber, (err, commonEventData) => {
             console.info(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} subscribe sunccess : ${JSON.stringify(commonEventData)},err: ${JSON.stringify(err)}`);
-            let result = false;
-            if (commonEventData.parameters) {
-              result = commonEventData.parameters.data;
-            }
+            let result = commonEventData.parameters.data;
             expect(result).assertTrue()
             commonEvent.unsubscribe(subscriber, (err, data) => {
               done();
