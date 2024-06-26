@@ -50,7 +50,8 @@
         "MainAbility/pages/Focus/focusScopeId/FocusScopeId16",
         "MainAbility/pages/Focus/focusScopeId/FocusScopeId17",
         "MainAbility/pages/Focus/focusScopeId/FocusScopeId18",
-        "MainAbility/pages/Focus/focusScopeId/FocusScopeId19"
+        "MainAbility/pages/Focus/focusScopeId/FocusScopeId19",
+        "MainAbility/pages/Common/OnPreDrag/OnpreDrag_API/ACTION_CANCELED_BEFORE_DRAG"
 
     ]
 }

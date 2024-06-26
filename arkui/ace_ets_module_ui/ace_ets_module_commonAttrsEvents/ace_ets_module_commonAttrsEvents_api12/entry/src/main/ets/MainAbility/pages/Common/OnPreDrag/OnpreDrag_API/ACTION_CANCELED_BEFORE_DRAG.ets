@@ -14,21 +14,32 @@
  */
 @Entry
 @Component
-struct backgroundBlurStyle_inactiveColorTest {
+struct ACTION_CANCELED_BEFORE_DRAG_test {
   @State message: string = 'Hello World';
-  @State mInactiveColor: ResourceColor = '#21a1dd'
+  @State text: string = 'init';
 
   build() {
     Row() {
       Column() {
-        Text(this.message)
-          .id('inactiveColor')
+        Text(this.text)
           .fontSize(30)
-          .width(100)
-          .height(100)
+          .margin(30)
+          .id('ACTION_CANCELED_BEFORE_DRAG')
+        Text(this.message)
+          .id('btn')
+          .width('100')
+          .height('100')
           .backgroundColor(Color.Green)
+          .onPreDrag((value: PreDragStatus) => {
+            if (value == PreDragStatus.ACTION_DETECTING_STATUS) {
+              this.text  = 'ACTION_CANCELED_BEFORE_DRAG'
+            }
+          })
           .fontWeight(FontWeight.Bold)
-          .backgroundBlurStyle(BlurStyle.Thin, { colorMode: ThemeColorMode.SYSTEM, policy: BlurStyleActivePolicy.FOLLOWS_WINDOW_ACTIVE_STATE, inactiveColor: this.mInactiveColor, type: BlurType.WITHIN_WINDOW })
+          .draggable(true)
+          .onDragStart(() => {
+
+          })
       }
       .width('100%')
     }
