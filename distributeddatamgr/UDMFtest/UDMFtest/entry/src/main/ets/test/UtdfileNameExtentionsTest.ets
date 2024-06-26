@@ -2278,7 +2278,7 @@ export default function UtdfileNameTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1610
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1610
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".mid"
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".mpga"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -2362,7 +2362,7 @@ export default function UtdfileNameTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1670
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1670
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".sid"
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".psid"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -2629,7 +2629,7 @@ export default function UtdfileNameTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1870
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1870
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".heif"
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".heic"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -2741,7 +2741,7 @@ export default function UtdfileNameTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1950
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1950
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".hs"
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".lhs"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -2812,7 +2812,7 @@ export default function UtdfileNameTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2020
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2020
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".rtx"
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".csv"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -2826,7 +2826,7 @@ export default function UtdfileNameTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2030
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2030
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".rtx"
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".diff"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -2840,7 +2840,7 @@ export default function UtdfileNameTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2040
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2040
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".rtx"
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".etx"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -2854,7 +2854,7 @@ export default function UtdfileNameTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2050
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2050
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".rtx"
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".gcd"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -2865,24 +2865,11 @@ export default function UtdfileNameTest() {
       console.log("typeId:" + result);
       expect(result).assertEqual("general.gcd");
     });
-    /**
-     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2060
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2060
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".rtx"
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 2
-     */
-    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2060', 0,  () => {
-      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2060 start');
-      let result = UTD.getUniformDataTypeByFilenameExtension(".gcd");
-      console.log("typeId:" + result);
-      expect(result).assertEqual("general.gcd");
-    });
+
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2070
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2070
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".rtx"
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".tsv"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -2896,7 +2883,7 @@ export default function UtdfileNameTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2080
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2080
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".rtx"
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".p7r"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -2910,7 +2897,7 @@ export default function UtdfileNameTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2090
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2090
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".rtx"
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".pem"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -2924,7 +2911,7 @@ export default function UtdfileNameTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2100
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2100
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".rtx"
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".pgn"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -2966,7 +2953,7 @@ export default function UtdfileNameTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2130
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2130
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".xhtml"
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".rss"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -3148,7 +3135,7 @@ export default function UtdfileNameTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2260
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2260
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".dvi"
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".prn"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
