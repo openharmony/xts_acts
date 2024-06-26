@@ -31,6 +31,7 @@ group("communication") {
       "dsoftbus/rpc:ActsRpcJsTest",
       "dsoftbus/rpc_request:ActsRpcRequestJsTest",
       "netstack_http_nop:ActsHttpNopStageTest",
+      "netstack_socket_nop:ActsSocketNopStageOhosTest",
       "netstack_websocket:ActsWebSocketNdkTest",
       "nfc_Controller:ActsNFCJSTest",
       "nfc_ErrorCode:ActsNFCErrorJSTest",
