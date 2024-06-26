@@ -15,7 +15,6 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, Level, Size, TestType } from '@ohos/hypium';
 import { BusinessError } from '@ohos.base';
 import contact from '@ohos.contact';
-import sim from '@ohos.telephony.sim';
 
 const PERMISSION_DENIED_CODE = 201
 const PARAMETER_ERROR_CODE = 401
