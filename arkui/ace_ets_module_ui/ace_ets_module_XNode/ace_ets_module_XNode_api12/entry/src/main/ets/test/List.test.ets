@@ -71,7 +71,21 @@ import ComponentContentAPIReuseTest from './FrameNodeTest/ComponentContentAPIReu
 import APImarkNodeGroupTest from './FrameNodeTest/APImarkNodeGroupTest.test';
 import APINodeContentTest from './FrameNodeTest/APINodeContentTest.test';
 
+import RenderNodeDemo01Test from './renderNode/RenderNodeDemo/RenderNodeDemo01Test.test';
+import RenderNodeDemo02Test from './renderNode/RenderNodeDemo/RenderNodeDemo02Test.test';
+import RenderNodeDemo03Test from './renderNode/RenderNodeDemo/RenderNodeDemo03Test.test';
+import RenderNodeDemo04Test from './renderNode/RenderNodeDemo/RenderNodeDemo04Test.test';
+import RenderNodeDemo05Test from './renderNode/RenderNodeDemo/RenderNodeDemo05Test.test';
+import RenderNodeDemo06Test from './renderNode/RenderNodeDemo/RenderNodeDemo06Test.test';
+
+
 export default function testsuite() {
+  RenderNodeDemo01Test();
+  RenderNodeDemo02Test();
+  RenderNodeDemo03Test();
+  RenderNodeDemo04Test();
+  RenderNodeDemo05Test();
+  RenderNodeDemo06Test();
   BuilderNodeApiRecycleTest();
   BuilderNodeApiReuseTest();
   ComponentContentAPIRecycleTest();
