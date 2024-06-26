@@ -13,8 +13,8 @@
  * limitations under the License.
 */
 
-import imagePackeExifTest from './ImagePackeExif.test';
+import imagePackerExifTest from './ImagePackerExif.test';
 
 export default function testsuite() {
-  imagePackeExifTest();
+  imagePackerExifTest();
 }
