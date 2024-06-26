@@ -1,5 +1,6 @@
 import hilog from '@ohos.hilog';
 import wifiManager from '@ohos.wifiManager';
+import wifiManagerExt from '@ohos.wifiManagerExt';
 import { BusinessError } from '@ohos.base'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 
@@ -595,6 +596,118 @@ export default function wifiManagerTest() {
         done();
       } catch (error) {
         hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_RemoveGroup_Nop failed ' + JSON.stringify(error));
+        expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+        done();
+      }
+    });
+
+    /*
+     * @tc.number:SUB_Communication_WiFi_GetSupportedPowerMode_Callback_Nop
+     * @tc.name: WiFi_getSupportedPowerMode_Callback_Nop
+     * @tc.desc:Using the on method without permission
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('SUB_Communication_WiFi_GetSupportedPowerMode_Callback_Nop', 0, async (done: Function) => {
+      hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetSupportedPowerMode_Callback_Nop begin');
+      try {
+        wifiManagerExt.getSupportedPowerMode((err, data) => {
+          if (err) {
+            hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetSupportedPowerMode_Callback_Nop failed ' + JSON.stringify(err));
+            expect(Number(err.code)).assertEqual(NOT_PERMISSION);
+            done();
+          } else {
+            hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetSupportedPowerMode_Callback_Nop success ');
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (error) {
+        hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetSupportedPowerMode_Callback_Nop failed ' + JSON.stringify(error));
+        expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+        done();
+      }
+    });
+
+    /*
+     * @tc.number:SUB_Communication_WiFi_GetSupportedPowerMode_Promise_Nop
+     * @tc.name: WiFi_getSupportedPowerMode_Promise_Nop
+     * @tc.desc:Using the on method without permission
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('SUB_Communication_WiFi_GetSupportedPowerMode_Promise_Nop', 0, async (done: Function) => {
+      hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetSupportedPowerMode_Promise_Nop begin');
+      try {
+        wifiManagerExt.getSupportedPowerMode().then(data => {
+          expect().assertFail();
+          done();
+        }).catch((error:BusinessError) => {
+          hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetSupportedPowerMode_Promise_Nop failed ' + JSON.stringify(error));
+          expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+          done();
+        });
+      } catch (error) {
+        hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetSupportedPowerMode_Promise_Nop failed ' + JSON.stringify(error));
+        expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+        done();
+      }
+    });
+
+    /*
+     * @tc.number:SUB_Communication_WiFi_GetPowerMode_Promise_Nop
+     * @tc.name: WiFi_GetPowerMode_Promise_Nop
+     * @tc.desc:Using the on method without permission
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('SUB_Communication_WiFi_GetPowerMode_Promise_Nop', 0, async (done: Function) => {
+      hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetPowerMode_Promise_Nop begin');
+      try {
+        wifiManagerExt.getPowerMode().then(data => {
+          expect().assertFail();
+          done();
+        }).catch((error:BusinessError) => {
+          hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetPowerMode_Promise_Nop failed ' + JSON.stringify(error));
+          expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+          done();
+        });
+
+      } catch (error) {
+        hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetPowerMode_Promise_Nop failed ' + JSON.stringify(error));
+        expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+        done();
+      }
+    });
+
+    /*
+     * @tc.number:SUB_Communication_WiFi_GetPowerMode_Callback_Nop
+     * @tc.name: WiFi_GetPowerMode_Callback_Nop
+     * @tc.desc:Using the on method without permission
+     * @tc.level:Level 3
+     * @tc.type:Function
+     * @tc.size:MediumTest
+     */
+    it('SUB_Communication_WiFi_GetPowerMode_Callback_Nop', 0, async (done: Function) => {
+      hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetPowerMode_Callback_Nop begin');
+      try {
+
+        wifiManagerExt.getPowerMode((err, data) => {
+          if (err) {
+            hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetPowerMode_Callback_Nop failed ' + JSON.stringify(err));
+            expect(Number(err.code)).assertEqual(NOT_PERMISSION);
+            done();
+          } else {
+            hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetPowerMode_Callback_Nop success ');
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (error) {
+        hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetPowerMode_Callback_Nop failed ' + JSON.stringify(error));
         expect(Number(error.code)).assertEqual(NOT_PERMISSION);
         done();
       }
