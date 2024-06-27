@@ -15,10 +15,10 @@
 @Entry
 @Component
 struct getLineMetricsText {
-  @State lineCount: string = ""
-  @State glyphPositionAtCoordinate: string = ""
-  @State startIndex: string = ""
-  @State lineMetrics: string = ""
+  @State lineCount: string = ''
+  @State glyphPositionAtCoordinate: string = ''
+  @State startIndex: string = ''
+  @State lineMetrics: string = ''
   controller: TextController = new TextController()
   @State textStr: string =
     'Hello World! 您好，世界！'
@@ -36,7 +36,7 @@ struct getLineMetricsText {
           .borderWidth(1)
           .onAreaChange(() => {
             let layoutManager: LayoutManager = this.controller.getLayoutManager()
-            this.lineCount = "LineCount: " + layoutManager.getLineCount()
+            this.lineCount = 'LineCount: ' + layoutManager.getLineCount()
           })
 
         Text('GlyphPositionAtCoordinate').fontSize(9).fontColor(0xCCCCCC).width('90%').padding(10)
@@ -45,7 +45,7 @@ struct getLineMetricsText {
             let layoutManager: LayoutManager = this.controller.getLayoutManager()
             let position: PositionWithAffinity = layoutManager.getGlyphPositionAtCoordinate(150, 50)
             this.glyphPositionAtCoordinate =
-            "position: " + position.position + " affinity: " +
+            'position: ' + position.position + ' affinity: ' +
             position.affinity
           })
           .margin({ bottom: 20, top: 10 })
@@ -55,11 +55,11 @@ struct getLineMetricsText {
           .onClick(() => {
             let layoutManager: LayoutManager = this.controller.getLayoutManager()
             let lineMetrics: LineMetrics = layoutManager.getLineMetrics(0)
-            this.startIndex = "startIndex: " + JSON.stringify(lineMetrics.startIndex)
-            this.lineMetrics = "lineMetrics is " + JSON.stringify(lineMetrics) + '\n\n'
+            this.startIndex = 'startIndex: ' + JSON.stringify(lineMetrics.startIndex)
+            this.lineMetrics = 'lineMetrics is ' + JSON.stringify(lineMetrics) + '\n\n'
             let runMetrics = lineMetrics.runMetrics
             runMetrics.forEach((value, key) => {
-              this.lineMetrics += "runMetrics key is " + key + " " + JSON.stringify(value) + "\n\n"
+              this.lineMetrics += 'runMetrics key is ' + key + ' ' + JSON.stringify(value) + '\n\n'
             });
           })
           .margin({ bottom: 20, top: 10 })
