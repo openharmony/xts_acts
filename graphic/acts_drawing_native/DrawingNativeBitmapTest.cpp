@@ -107,28 +107,24 @@ HWTEST_F(DrawingNativeBitmapTest, testBitmapCreateFromPixelsNormal, TestSize.Lev
                 // 2. OH_Drawing_BitmapCreateFromPixels
                 // Initialize the Bitmap with matching image information and call OH_Drawing_BitmapGet related
                 // interfaces Verify that the parameters match the initialization parameters
-                if (bitmap != nullptr) {
-                    uint32_t height_ = OH_Drawing_BitmapGetHeight(bitmap);
-                    uint32_t width_ = OH_Drawing_BitmapGetWidth(bitmap);
-                    OH_Drawing_ColorFormat colorFormat_ = OH_Drawing_BitmapGetColorFormat(bitmap);
-                    OH_Drawing_AlphaFormat alphaFormat_ = OH_Drawing_BitmapGetAlphaFormat(bitmap);
-                    EXPECT_TRUE(height_ == height || height_ == 0);
-                    EXPECT_TRUE(width_ == width || width_ == 0);
-                    EXPECT_TRUE(colorFormat_ == format || colorFormat_ == 0);
-                    EXPECT_TRUE(alphaFormat_ == alphaFormat || alphaFormat_ == 0);
-                }
+                uint32_t height_ = OH_Drawing_BitmapGetHeight(bitmap);
+                uint32_t width_ = OH_Drawing_BitmapGetWidth(bitmap);
+                OH_Drawing_ColorFormat colorFormat_ = OH_Drawing_BitmapGetColorFormat(bitmap);
+                OH_Drawing_AlphaFormat alphaFormat_ = OH_Drawing_BitmapGetAlphaFormat(bitmap);
+                EXPECT_TRUE(height_ == height || height_ == 0);
+                EXPECT_TRUE(width_ == width || width_ == 0);
+                EXPECT_TRUE(colorFormat_ == format || colorFormat_ == 0);
+                EXPECT_TRUE(alphaFormat_ == alphaFormat || alphaFormat_ == 0);
                 // 3. OH_Drawing_BitmapCreateFromPixels
                 // Initialize the Bitmap with rowBytes larger than the image, call OH_Drawing_BitmapGet related
                 // interfaces (OH_Drawing_BitmapGetHeight, OH_Drawing_BitmapGetWidth), Verify that the parameters match
                 // the initialization parameters
                 int rowBytes2 = width * 4 + 1;
                 bitmap = OH_Drawing_BitmapCreateFromPixels(&imageInfo, pixels, rowBytes2);
-                if (bitmap != nullptr) {
-                    uint32_t height_ = OH_Drawing_BitmapGetHeight(bitmap);
-                    uint32_t width_ = OH_Drawing_BitmapGetWidth(bitmap);
-                    EXPECT_TRUE(height_ == height || height_ == 0);
-                    EXPECT_TRUE(width_ == width || width_ == 0);
-                }
+                height_ = OH_Drawing_BitmapGetHeight(bitmap);
+                width_ = OH_Drawing_BitmapGetWidth(bitmap);
+                EXPECT_TRUE(height_ == height || height_ == 0);
+                EXPECT_TRUE(width_ == width || width_ == 0);
                 // 4. Free memory
                 OH_Drawing_BitmapDestroy(bitmap);
             }
