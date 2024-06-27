@@ -13,6 +13,7 @@
         "MainAbility/pages/FrameNode/ComponentContentAPIReuse",
         "MainAbility/pages/FrameNode/APImarkNodeGroup",
         "MainAbility/pages/FrameNode/APINodeContent",
+        "MainAbility/pages/FrameNode/APIPanGestureisisBegin",
         "MainAbility/pages/renderNode/RenderNodeAttribute",
         "MainAbility/pages/Graphics/borderRadiuses",
         "MainAbility/pages/Graphics/borderStyles",

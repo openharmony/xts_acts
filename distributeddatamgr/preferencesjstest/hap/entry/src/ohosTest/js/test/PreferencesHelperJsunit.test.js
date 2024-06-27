@@ -66,7 +66,7 @@ export default function preferencesHelperTest(){
          */
         it('testGetPreferencesHelper002', 0, async function (done) {
             const promise = dataPreferences.getPreferences(context, NAME);
-            promise.then(async (pref) => {
+            await promise.then(async (pref) => {
                 await pref.put('test', 2);
                 await pref.flush();
                 var value = await mPreferences.get('test', 0);
@@ -74,7 +74,6 @@ export default function preferencesHelperTest(){
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
             done();
         })
 
@@ -90,11 +89,10 @@ export default function preferencesHelperTest(){
             let perf = await dataPreferences.getPreferences(context, NAME);
             perf = null;
             const promise = dataPreferences.removePreferencesFromCache(context, NAME);
-            promise.then((pref) => {
+            await promise.then((pref) => {
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
             done();
         })
 
@@ -110,11 +108,10 @@ export default function preferencesHelperTest(){
             let perf = await dataPreferences.getPreferences(context, NAME);
             perf = null;
             const promise = dataPreferences.deletePreferences(context, NAME);
-            promise.then((pref) => {
+            await promise.then((pref) => {
             }).catch((err) => {
                 expect(null).assertFail();
             });
-            await promise;
             done();
         })
 

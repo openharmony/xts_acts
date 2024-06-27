@@ -86,7 +86,8 @@
         "MainAbility/pages/Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump40",
         "MainAbility/pages/Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump41",
         "MainAbility/pages/Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump42",
-
+        "MainAbility/pages/NavDestination/ignoreLayoutSafeArea",
+        "MainAbility/pages/Navigation/ignoreLayoutSafeArea2",
         "MainAbility/pages/Navigation/NavigationApi5",
 
         "MainAbility/pages/MultiNavigation/MultiNavigation1",
