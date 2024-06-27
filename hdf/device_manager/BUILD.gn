@@ -16,6 +16,9 @@ import("//build/ohos_var.gni")
 group("device_manager_ndk") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "device_manager_ndk:device_manager_js_test" ]
+    deps = [
+      "device_manager_ndk:device_manager_js_test",
+      "devman_nopermission_ndk:device_manager_nopermission_js_test",
+      ]
   }
 }
