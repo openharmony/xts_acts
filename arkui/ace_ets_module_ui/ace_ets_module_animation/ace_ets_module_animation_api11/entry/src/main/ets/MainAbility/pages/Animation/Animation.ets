@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 
-import animator,{ AnimatorResult,AnimatorOptions } from '@ohos.animator';
+import animator, { AnimatorResult, AnimatorOptions } from '@ohos.animator';
 
 @Entry
 @Component
-struct AnimatorInterpolatingSpringTest{
-  private TAG: string = '[AnimatorTest]'
-  private backAnimator: AnimatorResult | undefined = undefined
-  private flag: boolean = false
-  @State wid: number = 100
-  @State hei: number = 100
+struct AnimatorInterpolatingSpringTest {
+  private TAG: string = '[AnimatorTest]';
+  private backAnimator: AnimatorResult | undefined = undefined;
+  private flag: boolean = false;
+  @State wid: number = 100;
+  @State hei: number = 100;
   @State velocity: number = 0;
   @State stiffnes: number = 1;
   @State damping: number = 1;
@@ -31,18 +31,17 @@ struct AnimatorInterpolatingSpringTest{
   @State fill: "none" | "forwards" | "backwards" | "both" = 'forwards';
   @State myDirection: "normal" | "reverse" | "alternate" | "alternate-reverse" = 'normal';
   @State iteration: number = 1;
-  @State duration:number = 1000
-  @State onframenum:number = 0
-  @State onframeflag: boolean = false
-  @State numflag:string = 'null'
-  useInterpolating:boolean =false
+  @State duration: number = 1000;
+  @State onframenum: number = 0;
+  @State onframeflag: boolean = false;
+  @State numflag: string = 'null';
+  useInterpolating: boolean = false;
   private animatorOption: AnimatorOptions | undefined = undefined;
 
-
-  create(){
-    if (this.useInterpolating==true) {
+  create() {
+    if (this.useInterpolating == true) {
       this.curve = `interpolating-spring(${this.velocity},1,${this.stiffnes},${this.damping})`;
-    }else {
+    } else {
       this.curve = 'linear'
     }
     this.animatorOption = {
@@ -55,47 +54,45 @@ struct AnimatorInterpolatingSpringTest{
       begin: 100,
       end: 200
     };
-    console.info(this.TAG, "animator create, option:"+JSON.stringify(this.animatorOption));
+    console.info(this.TAG, "animator create, option:" + JSON.stringify(this.animatorOption));
     this.backAnimator = animator.create(this.animatorOption);
-    this.backAnimator.onfinish = () =>{
+    this.backAnimator.onfinish = () => {
       this.flag = true
       this.numflag = 'onfinish'
-      console.info(this.TAG,'backAnimator onfinish')
+      console.info(this.TAG, 'backAnimator onfinish')
     }
-    this.backAnimator.onrepeat = () =>{
+    this.backAnimator.onrepeat = () => {
       this.numflag = 'onrepeat'
-      console.info(this.TAG,'backAnimator repeat')
+      console.info(this.TAG, 'backAnimator repeat')
     }
-    this.backAnimator.oncancel = ()=>{
+    this.backAnimator.oncancel = () => {
       this.numflag = 'oncancel'
-      console.info(this.TAG,'backAnimator oncancel')
+      console.info(this.TAG, 'backAnimator oncancel')
     }
-    this.backAnimator.onframe = (value:number)=>{
+    this.backAnimator.onframe = (value: number) => {
       this.onframenum = value
       this.onframeflag = true
-      console.info(this.TAG,'onframe value:'+value)
+      console.info(this.TAG, 'onframe value:' + value)
       this.wid = value
       this.hei = value
     }
   }
 
-  aboutToDisappear(){
+  aboutToDisappear() {
     this.backAnimator = undefined;
+  }
 
+  aboutToAppear() {
 
   }
 
-  aboutToAppear(){
-
-  }
-
-  build(){
-    Scroll(){
-      Column(){
-        Column(){
-          Text('onframe:'+this.onframeflag).key('onframe').fontSize(10)
+  build() {
+    Scroll() {
+      Column() {
+        Column() {
+          Text('onframe:' + this.onframeflag).key('onframe').fontSize(10)
           Text(String(this.onframenum)).key('onframe-value').fontSize(10)
-          Text('backAnimator-onback:'+this.numflag).key('backAnimator-onback').fontSize(10)
+          Text('backAnimator-onback:' + this.numflag).key('backAnimator-onback').fontSize(10)
           Column()
             .width(this.wid)
             .height(this.hei)
@@ -103,23 +100,24 @@ struct AnimatorInterpolatingSpringTest{
         }
         .width('100%')
         .height(210)
-        Column(){
-          Row(){
+
+        Column() {
+          Row() {
             Button('create')
               .key('create')
               .fontSize(10)
               .fontColor(Color.Black)
-              .onClick(()=>{
+              .onClick(() => {
                 this.create()
               })
             Button('play')
               .key('play')
               .fontSize(10)
               .fontColor(Color.Black)
-              .onClick(()=>{
+              .onClick(() => {
                 this.flag = false;
                 if (this.backAnimator) {
-                  console.info(this.TAG,'animator play')
+                  console.info(this.TAG, 'animator play')
                   this.backAnimator.play()
                 }
               })
@@ -127,9 +125,9 @@ struct AnimatorInterpolatingSpringTest{
               .key('pause')
               .fontSize(10)
               .fontColor(Color.Black)
-              .onClick(()=>{
+              .onClick(() => {
                 if (this.backAnimator) {
-                  console.info(this.TAG,'animator pause')
+                  console.info(this.TAG, 'animator pause')
                   this.backAnimator.pause()
                 }
               })
@@ -137,7 +135,7 @@ struct AnimatorInterpolatingSpringTest{
               .key('finish')
               .fontSize(10)
               .fontColor(Color.Black)
-              .onClick(()=>{
+              .onClick(() => {
                 this.flag = true;
                 if (this.backAnimator) {
                   this.backAnimator.finish()
@@ -147,7 +145,7 @@ struct AnimatorInterpolatingSpringTest{
               .key('reverse')
               .fontSize(10)
               .fontColor(Color.Black)
-              .onClick(()=>{
+              .onClick(() => {
                 this.flag = false;
                 if (this.backAnimator) {
                   this.backAnimator.reverse()
@@ -157,18 +155,19 @@ struct AnimatorInterpolatingSpringTest{
               .key('cancel')
               .fontSize(10)
               .fontColor(Color.Black)
-              .onClick(()=>{
+              .onClick(() => {
                 if (this.backAnimator) {
                   this.backAnimator.cancel()
                 }
               })
           }
-          Row(){
+
+          Row() {
             Button('reset')
               .key('reset')
               .fontSize(10)
               .fontColor(Color.Black)
-              .onClick(()=>{
+              .onClick(() => {
                 if (this.flag) {
                   if (this.backAnimator) {
                     if (this.useInterpolating == true) {
@@ -187,172 +186,179 @@ struct AnimatorInterpolatingSpringTest{
                       end: 200
                     };
                     this.backAnimator.reset(this.animatorOption);
-                    console.info(this.TAG, "animator create, option:"+JSON.stringify(this.animatorOption));
+                    console.info(this.TAG, "animator create, option:" + JSON.stringify(this.animatorOption));
                   }
-                }else {
+                } else {
                   console.info(this.TAG, "animator not ended");
                 }
               })
-            Column(){
+            Column() {
               Text(`curve:${this.curve}`).key('curve')
-              Row(){
+              Row() {
                 Button('interpolating-springn')
                   .key('interpolating-springn')
-                  .onClick(()=>{
+                  .onClick(() => {
                     this.useInterpolating = true;
                     this.curve = `interpolating-spring(${this.velocity},1,${this.stiffnes},${this.damping})`;
                   })
                 Button('linear')
                   .key('linear')
-                  .onClick(()=>{
+                  .onClick(() => {
                     this.useInterpolating = false
                     this.curve = 'linear'
                   })
               }
             }
           }
-          Column(){
+
+          Column() {
             Text(`velocity:${this.velocity}`)
-            Row(){
+            Row() {
               Button('-10')
-                .onClick(()=>{
+                .onClick(() => {
                   this.velocity = -10;
                 })
               Button('0')
-                .onClick(()=>{
+                .onClick(() => {
                   this.velocity = 0;
                 })
               Button('10')
-			    .key('velocity')
-                .onClick(()=>{
+                .key('velocity')
+                .onClick(() => {
                   this.velocity = 10;
                 })
             }
           }
-          Column(){
+
+          Column() {
             Text(`stiffness:${this.stiffnes}`)
-            Row(){
+            Row() {
               Button('-1')
-                .onClick(()=>{
+                .onClick(() => {
                   this.stiffnes = -1
                 })
               Button('1')
-			    .key('stiffness')
-                .onClick(()=>{
+                .key('stiffness')
+                .onClick(() => {
                   this.stiffnes = 1
                 })
               Button('228')
-                .onClick(()=>{
+                .onClick(() => {
                   this.stiffnes = 228
                 })
             }
           }
-          Column(){
+
+          Column() {
             Text(`damping:${this.damping}`)
-            Row(){
+            Row() {
               Button('-1')
-                .onClick(()=>{
+                .onClick(() => {
                   this.damping = -1;
                 })
               Button('1')
-                .onClick(()=>{
+                .onClick(() => {
                   this.damping = 1;
                 })
               Button('15')
-			    .key('damping')
-                .onClick(()=>{
+                .key('damping')
+                .onClick(() => {
                   this.damping = 15;
                 })
               Button('30')
-                .onClick(()=>{
+                .onClick(() => {
                   this.damping = 30;
                 })
               Button('40')
-                .onClick(()=>{
+                .onClick(() => {
                   this.damping = 40;
                 })
             }
           }
-          Column(){
+
+          Column() {
             Text(`delay:${this.delay}`)
-            Row(){
+            Row() {
               Button('-500')
-                .onClick(()=>{
+                .onClick(() => {
                   this.delay = -500
                 })
               Button('0')
-                .onClick(()=>{
+                .onClick(() => {
                   this.delay = 0
                 })
               Button('500')
-                .onClick(()=>{
+                .onClick(() => {
                   this.delay = 500
                 })
             }
           }
-          Column(){
+
+          Column() {
             Text(`fill:${this.fill}`)
-            Row(){
+            Row() {
               Button('none')
-                .onClick(()=>{
+                .onClick(() => {
                   this.fill = 'none'
                 })
               Button('forwards')
-                .onClick(()=>{
+                .onClick(() => {
                   this.fill = 'forwards'
                 })
               Button('backwards')
-                .onClick(()=>{
+                .onClick(() => {
                   this.fill = 'backwards'
                 })
               Button('both')
-                .onClick(()=>{
+                .onClick(() => {
                   this.fill = 'both'
                 })
             }
           }
-          Column(){
+
+          Column() {
             Text(`direction:${this.myDirection}`)
-            Row(){
+            Row() {
               Button('normal').fontSize(10)
-                .onClick(()=>{
+                .onClick(() => {
                   this.myDirection = 'normal'
                 })
               Button('reverse').fontSize(10)
-                .onClick(()=>{
+                .onClick(() => {
                   this.myDirection = 'reverse'
                 })
               Button('alternate').fontSize(10)
-                .onClick(()=>{
+                .onClick(() => {
                   this.myDirection = 'alternate'
                 })
               Button('alternate-reverse').fontSize(10)
-                .onClick(()=>{
+                .onClick(() => {
                   this.myDirection = 'alternate-reverse'
                 })
             }
           }
-          Column(){
+
+          Column() {
             Text(`iteration:${this.iteration}`)
-            Row(){
+            Row() {
               Button('1')
-                .onClick(()=>{
+                .onClick(() => {
                   this.iteration = 1;
                 })
               Button('2')
-                .onClick(()=>{
+                .onClick(() => {
                   this.iteration = 2;
                 })
               Button('-1')
-                .onClick(()=>{
+                .onClick(() => {
                   this.iteration = -1;
                 })
               Button('0')
-                .onClick(()=>{
+                .onClick(() => {
                   this.iteration = 0;
                 })
               Button('-2')
-                .onClick(()=>{
+                .onClick(() => {
                   this.iteration = -2;
                 })
             }

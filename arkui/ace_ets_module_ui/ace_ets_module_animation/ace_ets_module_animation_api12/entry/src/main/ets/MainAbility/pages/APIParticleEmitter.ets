@@ -26,11 +26,16 @@ struct APIParticleEmitter {
   @State text: string = 'start'
 
   build() {
-    Column({space:10}) {
-      Text(this.text).fontSize(30).fontWeight(700).key('APIParticleEmitter_Text01')
-      Stack(){
+    Column({ space: 10 }) {
+      Text(this.text)
+        .fontSize(30)
+        .fontWeight(700)
+        .key('APIParticleEmitter_Text01')
+      Stack() {
         Text()
-          .width(300).height(300).backgroundColor(Color.Black)
+          .width(300)
+          .height(300)
+          .backgroundColor(Color.Black)
         Stack()
         Particle({ particles: [
           {
@@ -88,12 +93,16 @@ struct APIParticleEmitter {
       Button('get content').id('APIParticleEmitter_Button')
         .onClick(() => {
           let strJson = getInspectorByKey('APIParticleEmitter_Particle');
-          if(JSON.parse(JSON.stringify(JSON.parse(strJson).$attrs))?.emitter && JSON.parse(JSON.stringify(JSON.parse(strJson).$attrs))?.emitter?.length > 0) {
+          if (JSON.parse(JSON.stringify(JSON.parse(strJson)
+            .$attrs))?.emitter && JSON.parse(JSON.stringify(JSON.parse(strJson).$attrs))?.emitter?.length > 0) {
             this.text = JSON.parse(JSON.stringify(JSON.parse(strJson).$attrs))?.emitter[0]?.index + ''
           } else {
             this.text = 'does not exist'
           }
         })
-    }.width("100%").height("100%").align(Alignment.Center)
+    }
+    .width("100%")
+    .height("100%")
+    .align(Alignment.Center)
   }
 }

@@ -15,13 +15,26 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from "@ohos.router";
 import CommonFunc from '../../MainAbility/utils/Common';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from "@ohos.UiTest";
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from "@ohos.UiTest";
 
 export default function SymbolGlyphTest() {
-  describe("SymbolGlyphTest", function () {
-    beforeEach(async function (done) {
+  describe("SymbolGlyphTest", () => {
+    beforeEach(async (done: Function) => {
       console.info("SymbolGlyphTest beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/SymbolGlyph/SymbolGlyph",
       }
       try {
@@ -30,7 +43,7 @@ export default function SymbolGlyphTest() {
         console.info("get SymbolGlyphTest state pages:" + JSON.stringify(pages));
         if (!("SymbolGlyph" == pages.name)) {
           console.info("get SymbolGlyphTest pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push SymbolGlyphTest page result:" + JSON.stringify(result));
         }
@@ -40,20 +53,20 @@ export default function SymbolGlyphTest() {
       console.info("SymbolGlyphTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("SymbolGlyphTest after each called");
     });
 
     /**
-     * @tc.number    SymbolGlyphTest
-     * @tc.name      testBack
-     * @tc.desc      Return specified page by index value
-     * @tc.level     Level 3
+     * @tc.number SymbolGlyphTest
+     * @tc.name testBack
+     * @tc.desc Return specified page by index value
+     * @tc.level Level 3
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it("SymbolGlyphTest_001", 0, async function (done) {
+    it("SymbolGlyphTest_001", 0, async (done: Function) => {
       console.info("[SymbolGlyphTest_001] START");
       await CommonFunc.sleep(1000);
       let AppearSymbolEffect = getInspectorByKey("AppearSymbolEffect");
@@ -64,7 +77,7 @@ export default function SymbolGlyphTest() {
       done();
     });
 
-    it("SymbolGlyphTest_002", 0, async function (done) {
+    it("SymbolGlyphTest_002", 0, async (done: Function) => {
       console.info("[SymbolGlyphTest_002] START");
       await CommonFunc.sleep(1000);
       let DisappearSymbolEffect = getInspectorByKey("DisappearSymbolEffect");
@@ -75,7 +88,7 @@ export default function SymbolGlyphTest() {
       done();
     });
 
-    it("SymbolGlyphTest_003", 0, async function (done) {
+    it("SymbolGlyphTest_003", 0, async (done: Function) => {
       console.info("[SymbolGlyphTest_003] START");
       await CommonFunc.sleep(1000);
       let ReplaceSymbolEffect = getInspectorByKey("ReplaceSymbolEffect");
@@ -86,7 +99,7 @@ export default function SymbolGlyphTest() {
       done();
     });
 
-    it("SymbolGlyphTest_004", 0, async function (done) {
+    it("SymbolGlyphTest_004", 0, async (done: Function) => {
       console.info("[SymbolGlyphTest_004] START");
       await CommonFunc.sleep(1000);
       let BounceSymbolEffect = getInspectorByKey("BounceSymbolEffect");

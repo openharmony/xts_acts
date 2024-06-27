@@ -13,8 +13,6 @@
  * limitations under the License.
  */
 
-import Log from '../../common/Log.ets';
-
 const TAG = 'ets_apiLack_add';
 
 @Entry

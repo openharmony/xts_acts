@@ -13,17 +13,30 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
+import router from '@ohos.router';
 import CommonFunc from '../MainAbility/utils/Common';
 
 export default function setPolyToPoly() {
 
-  describe('setPolyToPoly', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/setPolyToPoly',
+  describe('setPolyToPoly', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/setPolyToPoly',
       }
       try {
         router.clear();
@@ -31,7 +44,7 @@ export default function setPolyToPoly() {
         console.info("get setPolyToPoly state pages: " + JSON.stringify(pages));
         if (!("setPolyToPoly" == pages.name)) {
           console.info("get setPolyToPoly state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push setPolyToPoly success: " + JSON.stringify(result));
         }
@@ -42,39 +55,33 @@ export default function setPolyToPoly() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("setPolyToPoly after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_BASIC_ETS_API_0100
-     * @tc.name      testGetImageAttr010
-     * @tc.desc      api
-     * @tc.level:    Level 2
+     * @tc.number SUB_ACE_BASIC_ETS_API_0100
+     * @tc.name testGetImageAttr010
+     * @tc.desc api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
 
 
-    it('setPolyToPoly_0100', 0, async function (done) {
+    it('setPolyToPoly_0100', 0, async (done: Function) => {
       console.info('setPolyToPoly_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let button1 = await driver.findComponent(ON.id('ImageSetPoly'));
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ImageSetPoly');
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.width).assertEqual('150.00vp');
+      expect(JSON.parse(strJson).$attrs.width).assertEqual('150.00vp');
       await CommonFunc.sleep(1000);
 
       console.info('[setPolyToPoly_0100] END');
       done();
     });
-
-
-
-
-
   })
 }
