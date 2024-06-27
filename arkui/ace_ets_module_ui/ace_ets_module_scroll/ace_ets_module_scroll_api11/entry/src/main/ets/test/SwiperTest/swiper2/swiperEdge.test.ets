@@ -63,7 +63,7 @@ export default function swiperEdgeTest() {
       //[180.00, 87.00],[540.00,327.00]
       let driver = await Driver.create();
       
-      driver.swipe(Math.round(btRight), Math.round(btBottom/2), Math.round(btRight) -30, Math.round(btBottom/2));
+      await driver.swipe(Math.round(btRight), Math.round(btBottom/2), Math.round(btRight) -30, Math.round(btBottom/2));
       await CommonFunc.sleep(3000);
 
       // get the component of text_10, scroll distance is to short can not slow

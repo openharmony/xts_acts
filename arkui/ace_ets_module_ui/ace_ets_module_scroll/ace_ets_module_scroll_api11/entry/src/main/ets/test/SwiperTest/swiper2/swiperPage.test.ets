@@ -65,14 +65,14 @@ export default function swiperPageTest() {
 
       // swipe the component of swiper to right
       let driver = await Driver.create();
-      driver.swipe(Math.round(btRight), Math.round(btBottom/2), Math.round(btLeft) + 40, Math.round(btBottom/2));
+      await driver.swipe(Math.round(btRight), Math.round(btBottom/2), Math.round(btLeft) + 40, Math.round(btBottom/2));
       await CommonFunc.sleep(3500);
       // get the component of text_3
       let text3:Component = await driver.findComponent(ON.text('5'));
       let ttContent = await text3.getText();
       expect(ttContent).assertEqual("5")
       // swipe again
-      driver.swipe(Math.round(btRight), Math.round(btBottom/2), Math.round(btLeft) + 40, Math.round(btBottom/2));
+      await driver.swipe(Math.round(btRight), Math.round(btBottom/2), Math.round(btLeft) + 40, Math.round(btBottom/2));
       await CommonFunc.sleep(3500);
       let text7:Component = await driver.findComponent(ON.text('8'));
       let ttContent7 = await text7.getText();
