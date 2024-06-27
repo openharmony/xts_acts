@@ -19,15 +19,6 @@ struct VideoTest2 {
   @State videoSrc: Resource = $rawfile('sucai2.mp4')
   @State showControls: boolean = true
   controller: VideoController = new VideoController()
-  config: ImageAnalyzerConfig = {
-    types: [ImageAnalyzerType.SUBJECT, ImageAnalyzerType.TEXT]
-  }
-  private aiController: ImageAnalyzerController = new ImageAnalyzerController()
-  private options: ImageAIOptions = {
-    types: [ImageAnalyzerType.SUBJECT, ImageAnalyzerType.TEXT],
-    aiController: this.aiController
-  }
-
   @State text: string = ''
 
   build() {
@@ -35,12 +26,13 @@ struct VideoTest2 {
       Video({
         src: this.videoSrc,
         controller: this.controller,
-        imageAIOptions: this.options
+        imageAIOptions: {
+          types: [ImageAnalyzerType.SUBJECT, ImageAnalyzerType.TEXT],
+        }
       })
         .width('300vp')
         .height('200vp')
         .enableAnalyzer(true)
-        .analyzerConfig(this.config)
         .onStart(() => {
           console.info('onStart')
           this.text = 'onStart'
@@ -60,9 +52,6 @@ struct VideoTest2 {
           this.controller.pause()
         }).margin(5)
 
-        Button('getTypes').onClick(() => {
-          this.aiController.getImageAnalyzerSupportTypes()
-        }).margin(5)
 
       }
     }.width('100%')
