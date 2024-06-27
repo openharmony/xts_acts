@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../../MainAbility/utils/MessageManager';
 
 export default function preview() {
-  describe('preview', function () {
-    beforeEach(async function (done) {
+  describe('preview',  () =>{
+    beforeEach(async (done:Function) =>{
       console.info("preview beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/menuControl/bindContextMenu/preview',
+      let options:router.RouterOptions = {
+        url: 'MainAbility/pages/menuControl/bindContextMenu/preview',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function preview() {
         console.info("get preview state pages: " + JSON.stringify(pages));
         if (!("preview" == pages.name)) {
           console.info("get preview state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push preview success: " + JSON.stringify(result));
         }
@@ -47,7 +47,7 @@ export default function preview() {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('preview_0100', 0, async function (done) {
+    it('preview_0100', 0, async (done:Function) =>{
       console.info('preview_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -63,16 +63,13 @@ export default function preview() {
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('preview');
-      console.info("[preview_0100] preview obj is: " + JSON.stringify(strJson));
-      let obj = JSON.parse(strJson);
-      console.info("[preview_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[preview_0100] title: " + JSON.stringify(obj.$attrs.label));
-      expect(obj.$attrs.label).assertEqual("true");
+      console.info("[preview_0100] preview JSON.parse(strJson) is: " + JSON.stringify(strJson));
+      console.info("[preview_0100] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[preview_0100] title: " + JSON.stringify(JSON.parse(strJson).$attrs.label));
+      expect(JSON.parse(strJson).$attrs.label).assertEqual("true");
       console.info('[preview_0100] END');
       done();
     });
-
-
   })
 }
 

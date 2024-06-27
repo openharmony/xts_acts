@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
@@ -21,14 +21,12 @@ import window from '@ohos.window';
 import UIAbility from '@ohos.app.ability.UIAbility';
 import { BusinessError } from '@ohos.base';
 
-
-
 export default function PopupOptionsTrue() {
-  describe('PopupOptionsTrue', function () {
-    beforeEach(async function (done) {
+  describe('PopupOptionsTrue',  () =>{
+    beforeEach(async (done:Function) =>{
       console.info("PopupOptionsTrue beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/popupControl/PopupOptionsTrue',
+      let options:router.RouterOptions = {
+        url: 'MainAbility/pages/popupControl/PopupOptionsTrue',
       }
       try {
         router.clear();
@@ -36,7 +34,7 @@ export default function PopupOptionsTrue() {
         console.info("get PopupOptionsTrue state pages: " + JSON.stringify(pages));
         if (!("PopupOptionsTrue" == pages.name)) {
           console.info("get PopupOptionsTrue state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push PopupOptionsTrue success: " + JSON.stringify(result));
         }
@@ -55,7 +53,7 @@ export default function PopupOptionsTrue() {
      * @tc.type :
      * @tc.size :
      */
-    it('PopupOptionsTrue_0100', 0, async function (done) {
+    it('PopupOptionsTrue_0100', 0, async (done:Function) =>{
       console.info('PopupOptionsTrue_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -75,8 +73,6 @@ export default function PopupOptionsTrue() {
       console.info('[PopupOptionsTrue_0100] END');
       done();
     });
-
-
   })
 }
 

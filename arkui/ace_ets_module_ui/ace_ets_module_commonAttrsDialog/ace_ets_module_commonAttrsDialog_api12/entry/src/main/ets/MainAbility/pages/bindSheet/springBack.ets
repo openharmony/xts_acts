@@ -17,7 +17,7 @@
 struct springBackExample {
   @State isShow: Boolean = false;
   @State springBack: string = "springBack";
-  @State message: string = 'text'
+  @State message: string = 'text';
 
   @Builder
   myBuilder() {
@@ -48,7 +48,7 @@ struct springBackExample {
 
 
           onWillDismiss: ((DismissSheetAction: DismissSheetAction) => {
-            this.message = 'reason: '+ JSON.stringify(DismissSheetAction.reason)
+            this.message = 'reason: ' + JSON.stringify(DismissSheetAction.reason)
             if (DismissSheetAction.reason == DismissReason.SLIDE_DOWN) {
               DismissSheetAction.dismiss() //注册dismiss行为
             }

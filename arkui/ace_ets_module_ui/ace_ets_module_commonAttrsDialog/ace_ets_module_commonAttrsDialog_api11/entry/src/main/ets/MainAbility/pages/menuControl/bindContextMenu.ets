@@ -15,12 +15,19 @@
 @Entry
 @Component
 struct bindContextMenuExample {
-  @Builder MenuBuilder() {
+  @Builder
+  MenuBuilder() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Button('Test ContextMenu1')
-      Divider().strokeWidth(2).margin(5).color(Color.Black)
+      Divider()
+        .strokeWidth(2)
+        .margin(5)
+        .color(Color.Black)
       Button('Test ContextMenu2')
-      Divider().strokeWidth(2).margin(5).color(Color.Black)
+      Divider()
+        .strokeWidth(2)
+        .margin(5)
+        .color(Color.Black)
       Button('Test ContextMenu3')
     }
     .width(200)
@@ -35,11 +42,10 @@ struct bindContextMenuExample {
           .margin(100)
           .backgroundColor(0xAFEEEE)
           .bindContextMenu(this.MenuBuilder, ResponseType.LongPress)
-          .onDragStart(()=>{
+          .onDragStart(() => {
             ContextMenu.close()
           })
       }
-
     }
     .width('100%')
     .height('100%')
