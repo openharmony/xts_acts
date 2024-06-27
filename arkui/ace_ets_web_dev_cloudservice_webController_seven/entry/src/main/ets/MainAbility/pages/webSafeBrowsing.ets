@@ -22,7 +22,7 @@ import { WebNetErrorList } from '@ohos.web.netErrorList'
 @Component
 struct webSafeBrowsing {
   controller: webview.WebviewController = new webview.WebviewController();
-  src_url: string = 'https://m.iqiyi.com/';
+  srcUrl: string = 'https://m.iqiyi.com/';
 
   @State emitKey: string = '';
 
