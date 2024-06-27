@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 export default function ScrollSourceOther() {
-  describe('ScrollSourceOther', function () {
-    beforeEach(async function (done) {
+  describe('ScrollSourceOther', () => {
+    beforeEach(async (done: Function) => {
       console.info("ScrollSourceOther beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/Scroll/ScrollSourceOther",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/Scroll/ScrollSourceOther",
       }
       try {
         router.clear();
@@ -57,7 +57,7 @@ export default function ScrollSourceOther() {
      * @tc.type :
      * @tc.size :
      */
-    it('ScrollSourceOther_0100', 0, async function (done) {
+    it('ScrollSourceOther_0100', 0, async (done: Function) => {
       console.info('ScrollSourceOther_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -68,7 +68,7 @@ export default function ScrollSourceOther() {
       await button2.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('SCROLLER_ANIMATION');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ScrollSourceOther_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ScrollSourceOther_0100] content obj is: " + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual('scrollSource: 2'); //EDGE_EFFECT
@@ -84,7 +84,7 @@ export default function ScrollSourceOther() {
      * @tc.type :
      * @tc.size :
      */
-    it('ScrollSourceOther_0200', 0, async function (done) {
+    it('ScrollSourceOther_0200', 0, async (done: Function) => {
       console.info('ScrollSourceOther_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -92,7 +92,7 @@ export default function ScrollSourceOther() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('SCROLL_BAR');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.label).assertEqual('scrollSource: 4'); //SCROLL_BAR
       console.info('[ScrollSourceOther_0200] END');
       done();
@@ -106,7 +106,7 @@ export default function ScrollSourceOther() {
      * @tc.type :
      * @tc.size :
      */
-    it('ScrollSourceOther_0300', 0, async function (done) {
+    it('ScrollSourceOther_0300', 0, async (done: Function) => {
       console.info('ScrollSourceOther_0300 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -114,7 +114,7 @@ export default function ScrollSourceOther() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('SCROLL_BAR_FLING');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.label).assertEqual('scrollSource: 5'); //SCROLL_BAR_FLING
       console.info('[ScrollSourceOther_0300] END');
       done();
@@ -128,7 +128,7 @@ export default function ScrollSourceOther() {
      * @tc.type :
      * @tc.size :
      */
-    it('ScrollSourceOther_0400', 0, async function (done) {
+    it('ScrollSourceOther_0400', 0, async (done: Function) => {
       console.info('ScrollSourceOther_0400 START');
       let driver = Driver.create();
       let size = await driver.getDisplaySize();
@@ -143,7 +143,7 @@ export default function ScrollSourceOther() {
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('EDGE_EFFECT');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ScrollSourceOther_0400] component obj is: " + JSON.stringify(obj));
       console.info("[ScrollSourceOther_0400] content obj is: " + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual('scrollSource: 1'); //FLING
@@ -159,7 +159,7 @@ export default function ScrollSourceOther() {
      * @tc.type :
      * @tc.size :
      */
-    it('ScrollSourceOther_0500', 0, async function (done) {
+    it('ScrollSourceOther_0500', 0, async (done: Function) => {
       console.info('ScrollSourceOther_0500 START');
       let driver = Driver.create();
       let size = await driver.getDisplaySize();
@@ -173,7 +173,7 @@ export default function ScrollSourceOther() {
       await driver.mouseScroll({x:sizeX * 1/2, y: sizeY * 1/2}, true ,20)
 
       let strJson = getInspectorByKey('SCROLLER_ANIMATION');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ScrollSourceOther_0500] component obj is: " + JSON.stringify(obj));
       console.info("[ScrollSourceOther_0500] content obj is: " + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual('scrollSource: 3'); //OTHER_USER_INPUT

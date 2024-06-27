@@ -19,8 +19,8 @@ import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 export default function refreshOffsetJsunit() {
-  describe('refreshOffsetJsunit', function () {
-    beforeEach(async function (done) {
+  describe('refreshOffsetJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("refreshOffsetJsunit beforeEach start");
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/Refresh/refreshOffset',
@@ -42,7 +42,7 @@ export default function refreshOffsetJsunit() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info(" refreshOffsetJsunit after each called");
     });
@@ -55,11 +55,11 @@ export default function refreshOffsetJsunit() {
     * @tc.type :
     * @tc.size :
     */
-    it('refreshOffsetJsunit_0100', 0, async function (done) {
+    it('refreshOffsetJsunit_0100', 0, async (done: Function) => {
       console.info('refreshOffsetJsunit_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Refresh_Offset');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[scrollOffsetJsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[scrollOffsetJsunit_0100] refreshOffset: " + JSON.stringify(obj.$attrs.refreshOffset));
       console.info("[scrollOffsetJsunit_0100] pullToRefresh: " + JSON.stringify(obj.$attrs.pullToRefresh));
@@ -78,7 +78,7 @@ export default function refreshOffsetJsunit() {
     * @tc.type :
     * @tc.size :
     */
-    it('refreshOffsetJsunit_0200', 0, async function (done) {
+    it('refreshOffsetJsunit_0200', 0, async (done: Function) => {
       console.info('refreshOffsetJsunit_0200 START');
       let swiperOffset = CommonFunc.getComponentRectOnScreen('Refresh_Offset');
       let top = swiperOffset.top;
@@ -93,7 +93,7 @@ export default function refreshOffsetJsunit() {
       await driver.swipe(Math.round(left + width*0.2),Math.round(bottom - height/2),Math.round(left + width*0.2),Math.round(bottom - height/4));
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('refresh_mess');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[scrollOffsetJsunit_0200] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('onOffsetChange');
       console.info('[refreshOffsetJsunit_0200] END');

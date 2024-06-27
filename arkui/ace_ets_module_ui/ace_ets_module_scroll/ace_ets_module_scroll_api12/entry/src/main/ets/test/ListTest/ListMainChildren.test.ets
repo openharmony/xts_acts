@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 export default function ListMainChildrenTest() {
-  describe('ListMainChildrenTest', function () {
-    beforeEach(async function (done) {
+  describe('ListMainChildrenTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("ListMainChildrenTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/List/ListMainChildren',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/List/ListMainChildren',
       }
       try {
         router.clear();
@@ -48,7 +48,7 @@ export default function ListMainChildrenTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('ListMainChildrenTest_0100', 0, async function (done) {
+    it('ListMainChildrenTest_0100', 0, async (done: Function) => {
       console.info('ListMainChildrenTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -56,7 +56,7 @@ export default function ListMainChildrenTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ListMainChildren_1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ListMainChildrenTest_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('ListChild:20');
       console.info('[ListMainChildrenTest_0100] END');
@@ -70,7 +70,7 @@ export default function ListMainChildrenTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('ListMainChildrenTest_0200', 0, async function (done) {
+    it('ListMainChildrenTest_0200', 0, async (done: Function) => {
       console.info('ListMainChildrenTest_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -78,7 +78,7 @@ export default function ListMainChildrenTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ListMainChildren_2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ListMainChildrenTest_0200] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('ListItemGroupChild:10');
       console.info('[ListMainChildrenTest_0100] END');
