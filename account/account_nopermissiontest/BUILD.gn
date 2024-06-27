@@ -1,4 +1,4 @@
-# Copyright (C) 2021 Huawei Device Co., Ltd.
+# Copyright (c) 2024 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -11,18 +11,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//build/ohos_var.gni")
-group("account") {
+import("//test/xts/tools/build/suite.gni")
+
+ohos_js_app_suite("ActsAccountNoPermissionTest") {
+  test_hap = true
   testonly = true
-  if (is_standard_system) {
-    deps = [
-      "OsAccountTest_js:ActsOsAccountJSApiTest",
-      "account_ndk:account_ndk_test",
-      "account_nopermissiontest:ActsAccountNoPermissionTest",
-      "appaccount:appaccount_hap",
-      "osaccount:osaccount_hap",
-    ]
-  } else {
-    deps = []
-  }
+  certificate_profile = "./signature/openharmony_sx.p7b"
+  hap_name = "ActsAccountNoPermissionTest"
+  part_name = "os_account"
+  subsystem_name = "account"
 }
