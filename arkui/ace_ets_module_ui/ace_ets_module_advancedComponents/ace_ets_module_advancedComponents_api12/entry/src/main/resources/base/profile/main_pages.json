@@ -7,6 +7,7 @@
     "MainAbility/pages/selectTitleBar/selectTitleBarPage",
     "MainAbility/pages/swipeRefresher/swipeRefresherPageTest",
     "MainAbility/pages/tabTitleBar/tabTitleBarPageTest",
-    "MainAbility/pages/toolBar/toolBarPageTest"
+    "MainAbility/pages/toolBar/toolBarPageTest",
+    "MainAbility/pages/treeView/treeViewPageTest"
   ]
 }
