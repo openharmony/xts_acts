@@ -158,19 +158,11 @@ struct getPositionExample {
   @State getPositionToScreenWithTransform : string | undefined = 'getPositionToScreenWithTransform';
 
   build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceBetween }) {
-      Column(){
-        Row()
-        {
-          Button("ADD")
-            .onClick(()=>{this.index++;})
-          Button("DEC")
-            .onClick(()=>{this.index--;})
-        }
-        Text("Current index is " + this.index)
-          .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
-          .width('100%').fontSize(16)
-      }
+    Column(){
+      NodeContainer(this.myNodeController)
+        .backgroundColor(Color.Orange)
+        .width("100%")
+        .height(100)
 
       Button("getPositionToScreen")
         .id("getPositionToScreen")
@@ -201,36 +193,26 @@ struct getPositionExample {
           this.getPositionToScreenWithTransform = this.myNodeController.frameNode?.getPositionToScreenWithTransform().x.toString()
         })
 
-      Column(){
+      Text(this.getPositionToScreen)
+        .id("getPositionToScreenValue")
+        .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
+        .width('100%').fontSize(16)
 
-        Text(this.getPositionToScreen) 
-          .id("getPositionToScreenValue")
-          .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
-          .width('100%').fontSize(16)
+      Text(this.getPositionToParentWithTransform)
+        .id("getPositionToParentWithTransformValue")
+        .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
+        .width('100%').fontSize(16)
 
-        Text(this.getPositionToParentWithTransform) 
-          .id("getPositionToParentWithTransformValue")
-          .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
-          .width('100%').fontSize(16)
+      Text(this.getPositionToWindowWithTransform)
+        .id("getPositionToWindowWithTransformValue")
+        .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
+        .width('100%').fontSize(16)
 
-        Text(this.getPositionToWindowWithTransform) 
-          .id("getPositionToWindowWithTransformValue")
-          .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
-          .width('100%').fontSize(16)
-
-        Text(this.getPositionToScreenWithTransform) 
-          .id("getPositionToScreenWithTransformValue")
-          .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
-          .width('100%').fontSize(16)
-
-        NodeContainer(this.myNodeController)
-          .borderWidth(1)
-          .width(300)
-          .height(100)
-      }
+      Text(this.getPositionToScreenWithTransform)
+        .id("getPositionToScreenWithTransformValue")
+        .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
+        .width('100%').fontSize(16)
     }
-    .padding({ left: 35, right: 35, top: 35, bottom: 35 })
-    .width("100%")
-    .height("100%")
+
   }
 }
