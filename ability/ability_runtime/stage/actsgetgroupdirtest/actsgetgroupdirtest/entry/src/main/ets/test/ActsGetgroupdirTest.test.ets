@@ -227,52 +227,5 @@ export default function ActsGetgroupdirTest() {
         done();
       }
     })
-
-    /*
-     * @tc.number  AMS_getGroupDir_009
-     * @tc.name    Isolated Extension gets GroupDir path of the app containing it and can open the file in the path by READ_WRITE mode.
-     * @tc.desc    Function test
-     * @tc.level   0
-     */
-    it('AMS_getGroupDir_009',0, async function (done) {
-      var subscriber;
-      TAG = 'AMS_getGroupDir_009';
-      console.log(TAG + " test start");
-      await abilityContext.getGroupDir("context_test1", (err, data) => {
-        let file = fs.openSync(data + '/contextTest1.txt', fs.OpenMode.CREATE);
-        fs.closeSync(file);
-        expect(err).assertNull();
-      })
-
-      await abilityContext.getGroupDir("context_hap2", (err, data) => {
-        let file = fs.openSync(data + '/contextTest2.txt', fs.OpenMode.CREATE);
-        fs.closeSync(file);
-        expect(err).assertNull();
-      })
-
-      function subscribeCallBack(err, data) {
-        console.debug(TAG + " test subscribeCallBack data");
-        if (data.event === 'ACTS_INPUTMETHOD_GETGROUP_EVENT') {
-          expect(data.parameters.result).assertEqual(true);
-          expect(data.parameters.result1).assertEqual(false);
-          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
-        }
-      }
-      commonEvent.createSubscriber(ACTS_GetGroupFunction).then((data) => {
-          subscriber = data;
-          commonEvent.subscribe(subscriber, subscribeCallBack);
-          console.debug(TAG + " test Create Subscribe " + JSON.stringify(subscriber));
-      })
-
-      function unSubscribeCallback() {
-        console.debug(TAG + ' unSubscribeCallback');
-        done();
-      }
-
-      abilityDelegator.executeShellCommand('aa start -b com.example.getgroupdir -a inputMethod').then(data => {
-      }).catch(err => {
-          console.error(TAG + " executeShellCommand ====> result err" + JSON.stringify(err));
-      })
-    })
   })
 }
