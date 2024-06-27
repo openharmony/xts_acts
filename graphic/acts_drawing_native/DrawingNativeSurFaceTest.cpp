@@ -46,7 +46,8 @@ class DrawingNativeSurFaceTest : public testing::Test {
 
 void DrawingNativeSurFaceTest::SetUpTestCase() {}
 void DrawingNativeSurFaceTest::TearDownTestCase() {}
-void DrawingNativeSurFaceTest::SetUp() {
+void DrawingNativeSurFaceTest::SetUp()
+{
     eglDisplay_ = eglGetDisplay(EGL_DEFAULT_DISPLAY);
     EXPECT_NE(eglDisplay_, EGL_NO_DISPLAY);
 
@@ -87,7 +88,8 @@ void DrawingNativeSurFaceTest::SetUp() {
     EXPECT_EQ(ret, EGL_TRUE);
 }
 
-void DrawingNativeSurFaceTest::TearDown() {
+void DrawingNativeSurFaceTest::TearDown()
+{
     EGLBoolean ret = eglDestroySurface(eglDisplay_, eglSurface_);
     EXPECT_EQ(ret, EGL_TRUE);
 

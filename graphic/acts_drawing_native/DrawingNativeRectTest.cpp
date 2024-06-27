@@ -791,26 +791,32 @@ HWTEST_F(DrawingNativeRectTest, testRectCopyNormal, TestSize.Level0) {
     OH_Drawing_RectSetBottom(src, 300);
     // 7. Call OH_Drawing_RectCopy to copy the source rectangle object src to the destination rectangle object dst
     OH_Drawing_RectCopy(src, dst);
-    // 8. Call OH_Drawing_RectGetLeft to get the x-coordinate of the top-left corner of dst, which should be the same as the value set in src
+    // 8. Call OH_Drawing_RectGetLeft to get the x-coordinate of the top-left corner of dst, which should be the same as
+    // the value set in src
     float left = OH_Drawing_RectGetLeft(dst);
     EXPECT_TRUE(IsScalarAlmostEqual(left, 100));
-    // 9. Call OH_Drawing_RectGetTop to get the y-coordinate of the top-left corner of dst, which should be the same as the value set in src
+    // 9. Call OH_Drawing_RectGetTop to get the y-coordinate of the top-left corner of dst, which should be the same as
+    // the value set in src
     float top = OH_Drawing_RectGetTop(dst);
     EXPECT_TRUE(IsScalarAlmostEqual(top, 100));
-    // 10. Call OH_Drawing_RectGetRight to get the x-coordinate of the bottom-right corner of dst, which should be the same as the value set in src
+    // 10. Call OH_Drawing_RectGetRight to get the x-coordinate of the bottom-right corner of dst, which should be the
+    // same as the value set in src
     float right = OH_Drawing_RectGetRight(dst);
     EXPECT_TRUE(IsScalarAlmostEqual(right, 300));
-    // 11. Call OH_Drawing_RectGetBottom to get the y-coordinate of the bottom-right corner of dst, which should be the same as the value set in src
+    // 11. Call OH_Drawing_RectGetBottom to get the y-coordinate of the bottom-right corner of dst, which should be the
+    // same as the value set in src
     float bottom = OH_Drawing_RectGetBottom(dst);
     EXPECT_TRUE(IsScalarAlmostEqual(bottom, 300));
     // 12. Call OH_Drawing_RectSetLeft to modify the x-coordinate of the top-left corner of src
     OH_Drawing_RectSetLeft(src, 200);
     // 13. Call OH_Drawing_RectSetTop to modify the y-coordinate of the top-left corner of src
     OH_Drawing_RectSetTop(src, 200);
-    // 14. Call OH_Drawing_RectGetLeft to get the x-coordinate of the top-left corner of dst, which should be the same as the previous value (indicating that the modification in src does not affect the result in dst)
+    // 14. Call OH_Drawing_RectGetLeft to get the x-coordinate of the top-left corner of dst, which should be the same
+    // as the previous value (indicating that the modification in src does not affect the result in dst)
     left = OH_Drawing_RectGetLeft(dst);
     EXPECT_TRUE(IsScalarAlmostEqual(left, 100));
-    // 15. Call OH_Drawing_RectGetTop to get the y-coordinate of the top-left corner of dst, which should be the same as the previous value (indicating that the modification in src does not affect the result in dst)
+    // 15. Call OH_Drawing_RectGetTop to get the y-coordinate of the top-left corner of dst, which should be the same as
+    // the previous value (indicating that the modification in src does not affect the result in dst)
     top = OH_Drawing_RectGetTop(dst);
     EXPECT_TRUE(IsScalarAlmostEqual(top, 100));
     // 16. Free memory
@@ -831,10 +837,12 @@ HWTEST_F(DrawingNativeRectTest, testRectCopyNull, TestSize.Level3) {
     OH_Drawing_Rect *src = OH_Drawing_RectCreate(0, 0, 200, 200);
     // 2. Call OH_Drawing_RectCreate to create a rectangle object dst
     OH_Drawing_Rect *dst = OH_Drawing_RectCreate(0, 0, 0, 0);
-    // 3. Call OH_Drawing_RectCopy with nullptr as the first parameter, returns error code OH_DRAWING_ERROR_INVALID_PARAMETER
+    // 3. Call OH_Drawing_RectCopy with nullptr as the first parameter, returns error code
+    // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_RectCopy(nullptr, dst);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
-    // 4. Call OH_Drawing_RectCopy with nullptr as the second parameter, returns error code OH_DRAWING_ERROR_INVALID_PARAMETER
+    // 4. Call OH_Drawing_RectCopy with nullptr as the second parameter, returns error code
+    // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_RectCopy(src, nullptr);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
     // 5. Free memory
@@ -868,7 +876,8 @@ HWTEST_F(DrawingNativeRectTest, testRectDestroyNormal, TestSize.Level0) {
 HWTEST_F(DrawingNativeRectTest, testRectDestroyNull, TestSize.Level3) {
     // 1. Call OH_Drawing_RectCreate to create a rectangle object
     OH_Drawing_Rect *rect = OH_Drawing_RectCreate(0, 0, 200, 200);
-    // 2. Call OH_Drawing_RectDestroy with nullptr as the parameter, returns error code OH_DRAWING_ERROR_INVALID_PARAMETER
+    // 2. Call OH_Drawing_RectDestroy with nullptr as the parameter, returns error code
+    // OH_DRAWING_ERROR_INVALID_PARAMETER
     OH_Drawing_RectDestroy(nullptr);
     // 3. Call OH_Drawing_RectDestroy to destroy the rectangle object
     OH_Drawing_RectDestroy(rect);

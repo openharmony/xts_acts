@@ -26,19 +26,19 @@ namespace OHOS {
 namespace Rosen {
 namespace Drawing {
 class DrawingNativeGpuContextTest : public testing::Test {
-public:
+  public:
     static void SetUpTestCase();
     static void TearDownTestCase();
     void SetUp() override;
     void TearDown() override;
-protected:
+
+  protected:
     EGLDisplay eglDisplay_ = EGL_NO_DISPLAY;
     EGLConfig eglConfig_ = EGL_NO_CONFIG_KHR;
     EGLContext eglContext_ = EGL_NO_CONTEXT;
     EGLSurface eglSurface_ = EGL_NO_SURFACE;
-    OH_Drawing_GpuContext* gpuContext_ = nullptr;
+    OH_Drawing_GpuContext *gpuContext_ = nullptr;
 };
-
 
 void DrawingNativeGpuContextTest::SetUpTestCase() {}
 void DrawingNativeGpuContextTest::TearDownTestCase() {}
@@ -53,14 +53,26 @@ void DrawingNativeGpuContextTest::SetUp()
     EXPECT_EQ(ret, EGL_TRUE);
 
     EGLint count;
-    EGLint configAttribs[] = { EGL_SURFACE_TYPE, EGL_WINDOW_BIT, EGL_RED_SIZE, 8,
-                              EGL_GREEN_SIZE, 8, EGL_BLUE_SIZE, 8,
-                              EGL_ALPHA_SIZE, 8, EGL_RENDERABLE_TYPE, EGL_OPENGL_ES3_BIT, EGL_NONE };
+    EGLint configAttribs[] = {
+        EGL_SURFACE_TYPE,
+        EGL_WINDOW_BIT,
+        EGL_RED_SIZE,
+        8,
+        EGL_GREEN_SIZE,
+        8,
+        EGL_BLUE_SIZE,
+        8,
+        EGL_ALPHA_SIZE,
+        8,
+        EGL_RENDERABLE_TYPE,
+        EGL_OPENGL_ES3_BIT,
+        EGL_NONE,
+    };
     ret = eglChooseConfig(eglDisplay_, configAttribs, &eglConfig_, 1, &count);
     EXPECT_EQ(ret, EGL_TRUE);
     EXPECT_GE(count, 1);
 
-    const EGLint contextAttribs[] = { EGL_CONTEXT_CLIENT_VERSION, 2, EGL_NONE };
+    const EGLint contextAttribs[] = {EGL_CONTEXT_CLIENT_VERSION, 2, EGL_NONE};
     eglContext_ = eglCreateContext(eglDisplay_, eglConfig_, EGL_NO_CONTEXT, contextAttribs);
     EXPECT_NE(eglContext_, EGL_NO_CONTEXT);
 
@@ -87,7 +99,6 @@ void DrawingNativeGpuContextTest::TearDown()
     eglContext_ = EGL_NO_CONTEXT;
     eglDisplay_ = EGL_NO_DISPLAY;
 }
-
 
 /*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_GPU_CONTEXT_0100
@@ -142,6 +153,6 @@ HWTEST_F(DrawingNativeGpuContextTest, testGpuContextCreateFromGLDestroyMultipleC
     OH_Drawing_GpuContextDestroy(gpuContext_);
 }
 
-}  // namespace Drawing
-}  // namespace Rosen
-}  // namespace OHOS
+} // namespace Drawing
+} // namespace Rosen
+} // namespace OHOS

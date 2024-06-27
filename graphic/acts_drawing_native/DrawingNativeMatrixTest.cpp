@@ -437,27 +437,27 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixMatrixSetGetMatrixMultipleCalls, Tes
     std::uniform_real_distribution<float> dis(0.0, 100.0);
     for (int i = 0; i < 10; i++) {
         float value[9];
-        float v0 = dis(gen);
-        float v1 = dis(gen);
-        float v2 = dis(gen);
-        float v3 = dis(gen);
-        float v4 = dis(gen);
-        float v5 = dis(gen);
-        float v6 = dis(gen);
-        float v7 = dis(gen);
-        float v8 = dis(gen);
-        OH_Drawing_MatrixSetMatrix(matrix, v0, v1, v2, v3, v4, v5, v6, v7, v8);
+        float val0 = dis(gen);
+        float val1 = dis(gen);
+        float val2 = dis(gen);
+        float val3 = dis(gen);
+        float val4 = dis(gen);
+        float val5 = dis(gen);
+        float val6 = dis(gen);
+        float val7 = dis(gen);
+        float val8 = dis(gen);
+        OH_Drawing_MatrixSetMatrix(matrix, val0, val1, val2, val3, val4, val5, val6, val7, val8);
         OH_Drawing_ErrorCode code = OH_Drawing_MatrixGetAll(matrix, value);
         EXPECT_EQ(code, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
-        EXPECT_EQ(OH_Drawing_MatrixGetValue(matrix, 0), v0);
-        EXPECT_EQ(OH_Drawing_MatrixGetValue(matrix, 1), v1);
-        EXPECT_EQ(OH_Drawing_MatrixGetValue(matrix, 2), v2);
-        EXPECT_EQ(OH_Drawing_MatrixGetValue(matrix, 3), v3);
-        EXPECT_EQ(OH_Drawing_MatrixGetValue(matrix, 4), v4);
-        EXPECT_EQ(OH_Drawing_MatrixGetValue(matrix, 5), v5);
-        EXPECT_EQ(OH_Drawing_MatrixGetValue(matrix, 6), v6);
-        EXPECT_EQ(OH_Drawing_MatrixGetValue(matrix, 7), v7);
-        EXPECT_EQ(OH_Drawing_MatrixGetValue(matrix, 8), v8);
+        EXPECT_EQ(OH_Drawing_MatrixGetValue(matrix, 0), val0);
+        EXPECT_EQ(OH_Drawing_MatrixGetValue(matrix, 1), val1);
+        EXPECT_EQ(OH_Drawing_MatrixGetValue(matrix, 2), val2);
+        EXPECT_EQ(OH_Drawing_MatrixGetValue(matrix, 3), val3);
+        EXPECT_EQ(OH_Drawing_MatrixGetValue(matrix, 4), val4);
+        EXPECT_EQ(OH_Drawing_MatrixGetValue(matrix, 5), val5);
+        EXPECT_EQ(OH_Drawing_MatrixGetValue(matrix, 6), val6);
+        EXPECT_EQ(OH_Drawing_MatrixGetValue(matrix, 7), val7);
+        EXPECT_EQ(OH_Drawing_MatrixGetValue(matrix, 8), val8);
     }
     // 3. Free memory
     OH_Drawing_MatrixDestroy(matrix);

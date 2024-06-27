@@ -101,17 +101,13 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPixelMapRectNull, TestSize.Level
     // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     EXPECT_NE(canvas, nullptr);
-
     OH_PixelmapNative *pixelMap = GET_OH_PixelmapNative();
-
     OH_Drawing_PixelMap *drPixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(pixelMap);
     EXPECT_NE(drPixelMap, nullptr);
-
     OH_Drawing_Rect *src = OH_Drawing_RectCreate(0, 0, 100, 100);
     EXPECT_NE(src, nullptr);
     OH_Drawing_Rect *dst = OH_Drawing_RectCreate(0, 0, 100, 100);
     EXPECT_NE(dst, nullptr);
-
     OH_Drawing_SamplingOptions *sampleOptions =
         OH_Drawing_SamplingOptionsCreate(FILTER_MODE_NEAREST, MIPMAP_MODE_NEAREST);
 
@@ -170,79 +166,49 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPixelMapRectNull, TestSize.Level
  * @tc.level : Level 3
  */
 HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawPixelMapRectAbnormal, TestSize.Level3) {
-    // 1. OH_Drawing_CanvasCreate
     OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
-    EXPECT_NE(canvas, nullptr);
-
     OH_PixelmapNative *pixelMap = GET_OH_PixelmapNative();
     OH_Drawing_PixelMap *drPixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(pixelMap);
     EXPECT_NE(drPixelMap, nullptr);
-
     OH_Drawing_Rect *src = OH_Drawing_RectCreate(0, 0, 100, 100);
     EXPECT_NE(src, nullptr);
     OH_Drawing_Rect *dst = OH_Drawing_RectCreate(0, 0, 100, 100);
     EXPECT_NE(dst, nullptr);
-
     OH_Drawing_SamplingOptions *sampleOptions =
         OH_Drawing_SamplingOptionsCreate(FILTER_MODE_NEAREST, MIPMAP_MODE_NEAREST);
-
     OH_Drawing_CanvasDrawPixelMapRect(nullptr, drPixelMap, src, dst, sampleOptions);
     OH_Drawing_CanvasDrawPixelMapRect(canvas, nullptr, src, dst, sampleOptions);
     OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, nullptr, dst, sampleOptions);
     OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, nullptr, sampleOptions);
     OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, nullptr);
     OH_Drawing_PixelMapGetFromNativePixelMap(nullptr);
-    // 2
-    src = OH_Drawing_RectCreate(-1, 1, 1, 1);
-    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
     OH_Drawing_RectDestroy(src);
-
-    src = OH_Drawing_RectCreate(1, -1, 1, 1);
-    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
-    OH_Drawing_RectDestroy(src);
-
-    src = OH_Drawing_RectCreate(1, 1, -1, 1);
-    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
-    OH_Drawing_RectDestroy(src);
-    
-    src = OH_Drawing_RectCreate(1, 1, 1, -1);
-    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
-    OH_Drawing_RectDestroy(src);
-    // 3
-    src = OH_Drawing_RectCreate(100, 100, 100, 200);
-    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
-    OH_Drawing_RectDestroy(src);
-
-    src = OH_Drawing_RectCreate(100, 200, 200, 200);
-    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
-    OH_Drawing_RectDestroy(src);
-    // 4
-    src = OH_Drawing_RectCreate(100, 100, 100, 100);
-    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
-    OH_Drawing_RectDestroy(src);
-    // 5
-    src = OH_Drawing_RectCreate(200, 200, 100, 100);
-    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
-    OH_Drawing_RectDestroy(src);
-    // 6
+    OH_Drawing_RectDestroy(dst);
+    // Define parameter arrays for source and destination rectangles
+    int srcRects[][4] = {
+        {-1, 1, 1, 1},        {1, -1, 1, 1},        {1, 1, -1, 1},        {1, 1, 1, -1},    {100, 100, 100, 200},
+        {100, 200, 200, 200}, {100, 100, 100, 100}, {200, 200, 100, 100}, {0, 0, 100, 100},
+    };
+    // Loop to draw the first 7 src rectangles
+    for (int i = 0; i < 8; i++) {
+        src = OH_Drawing_RectCreate(srcRects[i][0], srcRects[i][1], srcRects[i][2], srcRects[i][3]);
+        OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
+        OH_Drawing_RectDestroy(src);
+    }
     src = OH_Drawing_RectCreate(0, 0, 100, 100);
-    dst = OH_Drawing_RectCreate(100, 100, 100, 200);
-    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
-
-    OH_Drawing_RectDestroy(dst);
-    dst = OH_Drawing_RectCreate(100, 200, 200, 200);
-    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
-    OH_Drawing_RectDestroy(dst);
-    // 7
-    dst = OH_Drawing_RectCreate(100, 100, 100, 100);
-    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
-    OH_Drawing_RectDestroy(dst);
-    // 8
-    dst = OH_Drawing_RectCreate(200, 200, 100, 100);
-    OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
-    // 9
+    int dstRects[][4] = {
+        {100, 100, 100, 200},
+        {100, 200, 200, 200},
+        {100, 100, 100, 100},
+        {200, 200, 100, 100},
+    };
+    // Loop to draw all dst rectangles using the last src rectangle
+    for (int i = 0; i < 4; i++) {
+        dst = OH_Drawing_RectCreate(dstRects[i][0], dstRects[i][1], dstRects[i][2], dstRects[i][3]);
+        OH_Drawing_CanvasDrawPixelMapRect(canvas, drPixelMap, src, dst, sampleOptions);
+        OH_Drawing_RectDestroy(dst);
+    }
     OH_Drawing_RectDestroy(src);
-    OH_Drawing_RectDestroy(dst);
     OH_Drawing_SamplingOptionsDestroy(sampleOptions);
     OH_Drawing_PixelMapDissolve(drPixelMap);
     OH_Drawing_CanvasDestroy(canvas);
