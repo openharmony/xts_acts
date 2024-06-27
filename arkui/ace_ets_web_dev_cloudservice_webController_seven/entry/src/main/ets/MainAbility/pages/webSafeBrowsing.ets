@@ -88,7 +88,7 @@ struct webSafeBrowsing {
                   }
               })
           }
-          Web({ src: this.src_url, controller: this.controller })
+          Web({ src: this.srcUrl, controller: this.controller })
       }
   }
 }
