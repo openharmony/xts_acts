@@ -6260,34 +6260,33 @@ export default function UDMFApiDescriptorTest() {
       }
       console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_1130 end");
     });
+	
+ 
     /**
-     * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest8300
-     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8300
-     * @tc.desc      : Verify the properties of the navigation data type
+     * @tc.name      : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0830
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0830
+     * @tc.desc      : getUniformDataTypeByMIMEType --Fuzzy queries parameter --text/*
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8300', 0, () => {
-      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8300 start');
-      expect(UTD.UniformDataType.NAVIGATION).assertEqual("general.navigation");
-      let typeObj = UTD.getTypeDescriptor(UTD.UniformDataType.NAVIGATION);
-      console.log("typeId:" + typeObj.typeId);
-      console.log("belongingToTypes:" + typeObj.belongingToTypes);
-      console.log("description:" + typeObj.description);
-      console.log("referenceURL:" + typeObj.referenceURL);
-      console.log("iconFile:" + typeObj.iconFile);
-      console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
-      console.log("mimeTypes:" + typeObj.mimeTypes.toString());
-      expect(typeObj.typeId).assertEqual("general.navigation");
-      expect(typeObj.belongingToTypes[0]).assertEqual("general.object");
-      expect(typeObj.description).assertEqual("Base type for navigation.");
-      expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
-      expect(typeObj.iconFile).assertEqual("");
-      expect(typeObj.filenameExtensions.toString()).assertEqual("");
-      expect(typeObj.mimeTypes.toString()).assertEqual("");
-      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_8300 end");
+    it('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0830', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0830 start');
+      try {
+        let result = UTD.getUniformDataTypeByMIMEType("text/*");
+											  
+        console.log("result=====>" + result);
+        expect(result).assertEqual(UTD.UniformDataType.TEXT);
+      }
+      catch (err) {
+        console.log("err message:" + err.message + ";err code:" + err.code);
+        expect().assertFail();
+      }
+	  
+      console.log("SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_0810 end");
     });
+ 
+  
     /**
      * @tc.name      : testSUBDistributedDataUDMFSDKUniformTypeDescriptorJsAPITest2410
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UniformTypeDescriptorJsAPITest_2410

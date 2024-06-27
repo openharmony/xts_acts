@@ -67,13 +67,68 @@ export default function wholeWebPageDrawing() {
       done();
     })
     /*
-     *tc.number SUB_ACE_BASIC_ETS_TERMINATERENDERPROCESS_API_0100
-     *tc.name testTerminateRenderProcess
-     *tc.desc terminateRenderProcess
+     *tc.number SUB_ACE_BASIC_ETS_WHOLEWEBPAGEDRAWING_API_0100
+     *tc.name testWholeWebPageDrawing
+     *tc.desc wholeWebPageDrawing
      */
     it('wholeWebPageDrawing0100', 0, async (done: Function) => {
-      emitKey = "wholeWebPageDrawing0100";
+      emitKey = "wholeWebPageDrawing0200";
       Utils.registerEvent("wholeWebPageDrawing0100", "hello", 2793, done);
+      sendEventByKey('wholeWebPageDrawingButton', 10, '');
+    })
+
+    /*
+     *tc.number SUB_ACE_BASIC_ETS_WHOLEWEBPAGEDRAWING_API_0200
+     *tc.name testWholeWebPageDrawing
+     *tc.desc wholeWebPageDrawing
+     */
+    it('wholeWebPageDrawing0200', 0, async (done: Function) => {
+      emitKey = "wholeWebPageDrawing0300";
+      Utils.registerEvent("wholeWebPageDrawing0200", true, 2794, done);
+      sendEventByKey('wholeWebPageDrawingButton', 10, '');
+    })
+
+    /*
+     *tc.number SUB_ACE_BASIC_ETS_WHOLEWEBPAGEDRAWING_API_0300
+     *tc.name testWholeWebPageDrawing
+     *tc.desc wholeWebPageDrawing
+     */
+    it('wholeWebPageDrawing0300', 0, async (done: Function) => {
+      emitKey = "wholeWebPageDrawing0400";
+      Utils.registerEvent("wholeWebPageDrawing0300", 100, 2795, done);
+      sendEventByKey('wholeWebPageDrawingButton', 10, '');
+    })
+
+    /*
+     *tc.number SUB_ACE_BASIC_ETS_WHOLEWEBPAGEDRAWING_API_0400
+     *tc.name testWholeWebPageDrawing
+     *tc.desc wholeWebPageDrawing
+     */
+    it('wholeWebPageDrawing0400', 0, async (done: Function) => {
+      emitKey = "wholeWebPageDrawing0500";
+      Utils.registerEvent("wholeWebPageDrawing0400", 100, 2796, done);
+      sendEventByKey('wholeWebPageDrawingButton', 10, '');
+    })
+
+    /*
+     *tc.number SUB_ACE_BASIC_ETS_WHOLEWEBPAGEDRAWING_API_0500
+     *tc.name testWholeWebPageDrawing
+     *tc.desc wholeWebPageDrawing
+     */
+    it('wholeWebPageDrawing0500', 0, async (done: Function) => {
+      emitKey = "wholeWebPageDrawing0600";
+      Utils.registerEvent("wholeWebPageDrawing0500", true, 2797, done);
+      sendEventByKey('wholeWebPageDrawingButton', 10, '');
+    })
+
+    /*
+     *tc.number SUB_ACE_BASIC_ETS_WHOLEWEBPAGEDRAWING_API_0600
+     *tc.name testWholeWebPageDrawing
+     *tc.desc wholeWebPageDrawing
+     */
+    it('wholeWebPageDrawing0600', 0, async (done: Function) => {
+      emitKey = "wholeWebPageDrawing0600";
+      Utils.registerEvent("wholeWebPageDrawing0600", false, 2798, done);
       sendEventByKey('wholeWebPageDrawingButton', 10, '');
     })
   })

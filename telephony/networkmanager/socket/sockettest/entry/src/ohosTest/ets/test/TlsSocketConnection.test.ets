@@ -137,6 +137,7 @@ export default function TLSSocketConnectionTest() {
               done();
             } catch (err) {
               expectFail(false);
+              tlsClient.close();
               done();
             }
           }).catch((err: Object) => {
@@ -216,6 +217,7 @@ export default function TLSSocketConnectionTest() {
             tlsClient.send('Hello, client!', (err: BusinessError) => {
               if (err) {
                 expectFail(false);
+                tlsClient.close();
                 done();
               }
             })
@@ -305,6 +307,7 @@ export default function TLSSocketConnectionTest() {
             })
           }).catch((err: Object) => {
             expectFail(true);
+            tlsClient.close();
             done();
           });
           tlsClient.on('message', (value) => {
@@ -399,7 +402,9 @@ export default function TLSSocketConnectionTest() {
         tlsClient.bind(addr).then(() => {
           tlsClient.connect(connOpt).then(() => {
             let sendBuf: string = 'client send to server...';
-            tlsClient.send(sendBuf).then(() => {}).catch((err: Object) => {})
+            tlsClient.send(sendBuf).then(() => {}).catch((err: Object) => {
+              tlsClient.close();
+            })
           }).catch((err: Object) => {
             expectFail(true);
             done();
@@ -410,7 +415,7 @@ export default function TLSSocketConnectionTest() {
               str += String.fromCharCode(new Uint8Array(value.message)[i]);
             }
           })
-        }).catch((err: Object) => {})
+        }).catch((err: Object) => {});
       } catch (err) {
         expectFail(false);
         done();
@@ -497,7 +502,9 @@ export default function TLSSocketConnectionTest() {
         tlsClient.bind(addr).then(() => {
           tlsClient.connect(connOpt).then(() => {
             let sendBuf: string = 'client send to server...';
-            tlsClient.send(sendBuf).then(() => {}).catch((err: Object) => {})
+            tlsClient.send(sendBuf).then(() => {}).catch((err: Object) => {
+              tlsClient.close();
+            })
           }).catch((err: Object) => {
             expectFail(true);
             done();
@@ -694,7 +701,9 @@ export default function TLSSocketConnectionTest() {
           tlsClient.bind(addr).then(() => {
             tlsClient.connect(connOpt).then(() => {
               let sendBuf: string = 'client send to server...';
-              tlsClient.send(sendBuf).then(() => {}).catch((err: Object) => {})
+              tlsClient.send(sendBuf).then(() => {}).catch((err: Object) => {
+                tlsClient.close();
+              })
             }).catch((err: Object) => {
               expectFail(true);
               done();
@@ -807,7 +816,9 @@ export default function TLSSocketConnectionTest() {
               for (let i: number = 0; i < new Uint8Array(value.message).length; ++i) {
                 str += String.fromCharCode(new Uint8Array(value.message)[i]);
               }
-            })
+            });
+            tlsClient.close();
+            done();
           }).catch((err: Object) => {
             expectFail(true);
             done();

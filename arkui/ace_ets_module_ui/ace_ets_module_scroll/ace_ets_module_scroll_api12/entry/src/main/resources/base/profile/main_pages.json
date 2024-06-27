@@ -12,6 +12,12 @@
         "MainAbility/pages/ListFadeOut/ListFadeOut",
         "MainAbility/pages/ListFadeOut/ListFadeOutEx",
         "MainAbility/pages/ListFadeOut/ListFadeOutEx1",
-        "MainAbility/pages/List/listSwipeActionApi12"
+        "MainAbility/pages/List/listSwipeActionApi12",
+        "MainAbility/pages/Scroll/ScrollSourceOther",
+        "MainAbility/pages/Scroll/ScrollSource",
+        "MainAbility/pages/Scroll/offsetRemain",
+
+        "MainAbility/pages/Tabs/TabsAp1",
+        "MainAbility/pages/Scroll/ScrollApi1"
     ]
 }

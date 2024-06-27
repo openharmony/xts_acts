@@ -18,7 +18,7 @@ import events_emitter from '@ohos.events.emitter';
 @Component
 struct ListScroll {
   @State listPosition: number = 0;
-  private arr: number[] = Array.apply(this, { length: 60 }).map((item, i) => i)
+  private arr: number[] = Array.from(Array(60).keys()).map(item => item)
   private scrollerForList: Scroller = new Scroller()
 
   build() {

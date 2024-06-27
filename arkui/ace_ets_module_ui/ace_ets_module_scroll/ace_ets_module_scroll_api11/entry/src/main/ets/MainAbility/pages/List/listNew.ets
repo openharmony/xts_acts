@@ -12,11 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+import events_emitter from '@ohos.events.emitter';
 import Log from '../../common/Log';
 
 const TAG = 'ets_apiLack_add';
-import events_emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
@@ -35,11 +34,11 @@ struct ListLanes {
     Log.showInfo(TAG, `aboutToDisAppear ListLanes end`)
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("list page state change called:" + JSON.stringify(eventData));
     if (eventData != null) {
-      if (eventData.data.alwaysEnabled != null) {
-        this.alwaysEnabled = eventData.data.alwaysEnabled;
+      if (eventData.data?.alwaysEnabled != null) {
+        this.alwaysEnabled = eventData.data?.alwaysEnabled;
       }
     }
   }
@@ -101,7 +100,7 @@ struct ListLanes {
       Stack({ alignContent: Alignment.TopStart }) {
         Scroll(this.scroller) {
           List({ space: 20, initialIndex: 0 }) {
-            ForEach(this.arr, (item) => {
+            ForEach(this.arr, (item: number) => {
               ListItem() {
                 Text('' + item)
                   .width('100%')
@@ -110,7 +109,7 @@ struct ListLanes {
 
               }
               .border({ width: 2, color: Color.Green })
-            }, item => item)
+            }, (item: string) => item)
           }
           .key("list1")
           .height(300)
@@ -134,14 +133,14 @@ struct ListLanes {
                   "result": "success"
                 }
               }
-              let backEvent = {
+              let backEvent: events_emitter.InnerEvent = {
                 eventId: 60216,
                 priority: events_emitter.EventPriority.LOW
               }
               console.info("onScrollBegin onClick start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("onScrollBegin onClick emit action state err: " + JSON.stringify(err.message))
+              console.info("onScrollBegin onClick emit action state err: " + JSON.stringify((err as Error)?.message))
             }
           })
         }

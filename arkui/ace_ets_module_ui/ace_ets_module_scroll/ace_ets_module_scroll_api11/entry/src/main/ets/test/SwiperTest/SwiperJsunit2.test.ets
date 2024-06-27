@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 
 function sleep(time: number) {
   return new Promise((resolve: (value: string) => void) => {
@@ -32,7 +32,7 @@ async function backToIndex() {
     console.info('afterEach backToIndexPromise ...');
     setTimeout(() => {
       router.back({
-        uri: 'MainAbility/pages/index'
+        url: 'MainAbility/pages/index'
       });
       resolve("ok")
     }, 500);
@@ -56,8 +56,8 @@ export default function swiperJsunit2() {
   describe('swiper2Test', () => {
 
     beforeEach(async () => {
-      let options = {
-        uri: 'MainAbility/pages/Swiper/Swiper2',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Swiper/Swiper2',
       }
       try {
         router.clear();

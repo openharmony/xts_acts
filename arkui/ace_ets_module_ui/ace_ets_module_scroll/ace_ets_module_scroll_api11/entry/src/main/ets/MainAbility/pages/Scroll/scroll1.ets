@@ -33,18 +33,18 @@ struct ScrollOnScrollBegin {
     Log.showInfo(TAG, `aboutToDisAppear ScrollOnScrollBegin end`)
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("scroll page state change called:" + JSON.stringify(eventData));
     if (eventData != null) {
-      if (eventData.data.alwaysEnabled != null) {
-        this.alwaysEnabled = eventData.data.alwaysEnabled;
+      if (eventData.data?.alwaysEnabled != null) {
+        this.alwaysEnabled = eventData.data?.alwaysEnabled;
       }
     }
   }
 
   onPageShow() {
     console.info('scroll page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 323,
       priority: events_emitter.EventPriority.LOW
     }
@@ -69,7 +69,7 @@ struct ScrollOnScrollBegin {
         .key("onScrollBeginText")
       Scroll(this.scroller) {
         Column() {
-          ForEach(this.arr, (item) => {
+          ForEach(this.arr, (item: number) => {
             Text(item.toString())
               .width('90%')
               .height(150)
@@ -78,7 +78,7 @@ struct ScrollOnScrollBegin {
               .fontSize(16)
               .textAlign(TextAlign.Center)
               .margin({ top: 10 })
-          }, item => item)
+          }, (item: string) => item)
         }.width('100%')
       }
       .scrollable(ScrollDirection.Vertical)

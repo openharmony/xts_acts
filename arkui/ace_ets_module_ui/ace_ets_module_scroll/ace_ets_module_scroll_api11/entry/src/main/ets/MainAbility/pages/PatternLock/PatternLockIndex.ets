@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//@ts-nocheck
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import { Hypium } from '@ohos/hypium';
 import hilog from '@ohos.hilog';
@@ -27,10 +26,8 @@ struct PatternLockExample {
   @State bgColor: Color = Color.Transparent
   private patternLockController: PatternLockController = new PatternLockController()
 aboutToAppear(){
-    var abilityDelegator: any
-    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    var abilityDelegatorArguments: any
-    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+    // let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+    // let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
     hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
     // Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
   }
@@ -98,7 +95,7 @@ aboutToAppear(){
       Row() {
         Button('更改背板颜色')
           .onClick(() => {
-            this.bgColor = '#FEDDCC'
+            this.bgColor = Color['Pink']
           }).width('40%')
 
         Button('文本超级长').onClick(() => {

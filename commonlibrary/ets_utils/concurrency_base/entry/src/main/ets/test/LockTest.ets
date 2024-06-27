@@ -21,7 +21,7 @@ import { check, check_negative } from './utils';
 
 let globalWorker: worker.ThreadWorker = new worker.ThreadWorker("entry/ets/workers/worker.ets");;
 
-/// TESTS IMPLEMENTATION ///
+// TESTS IMPLEMENTATION //
 
 function createInt(): Uint32Array {
   let sab = new SharedArrayBuffer(4);
@@ -35,7 +35,7 @@ function exchange(buf: Uint32Array, oldVal: number, newVal: number) {
   buf[0] = newVal;
 }
 
-/// test entry point
+// test entry point
 export function exclusiveSingleTest() {
   let flagBuf = createInt();
   flagBuf[0] = 0;
@@ -71,7 +71,7 @@ async function exclusiveMultiJob(lockName: string, timeout: number, tidBuf: Uint
   }, utils.locks.AsyncLockMode.EXCLUSIVE);
 }
 
-/// test entry point
+// test entry point
 export function exclusiveMultiTest() {
   let lockName = "exclusiveMultiLock";
   let tidBuf = createInt();
@@ -81,7 +81,7 @@ export function exclusiveMultiTest() {
   return check("exclusiveMultiTest", Promise.all([p1, p2]));
 }
 
-/// test entry point
+// test entry point
 export function exclusiveMultiWorkerTest() {
   let lockName = "exclusiveMultiWorkerLock";
   let tidBuf = createInt();
@@ -101,7 +101,7 @@ export function exclusiveMultiWorkerTest() {
   return check("exclusiveMultiWorkerTest", Promise.all([p1, p2]));
 }
 
-/// test entry point
+// test entry point
 export function sharedSingleTest() {
   let flagBuf = createInt();
   flagBuf[0] = 0;
@@ -135,7 +135,7 @@ function sharedMultiJob(lockName: string, timeout: number, idBuf: Uint32Array, i
   }, utils.locks.AsyncLockMode.SHARED);
 }
 
-/// test entry point
+// test entry point
 export function sharedMultiTest() {
   let lockName = "sharedMultiLock";
   let idBuf = createInt();
@@ -145,7 +145,7 @@ export function sharedMultiTest() {
   return check("sharedMultiTest", Promise.all([p1, p2]));
 }
 
-/// test entry point
+// test entry point
 export function sharedMultiWorkerTest() {
   let lockName = "sharedMultiWorkerLock";
   let idBuf = createInt();
@@ -179,7 +179,7 @@ export function isAvailableTrueJob(lockName: string) {
   });
 }
 
-/// test entry point
+// test entry point
 export function isAvailableTest() {
   let lockName = "isAvailableLock";
   let lock = utils.locks.AsyncLock.request(lockName);
@@ -204,7 +204,7 @@ function isAvailableFalseJob(lockName: string) {
   });
 }
 
-/// test entry point
+// test entry point
 export function isNotAvailableTest() {
   let lockName = "isNotAvailableLock";
   let lock = utils.locks.AsyncLock.request(lockName);
@@ -215,7 +215,7 @@ export function isNotAvailableTest() {
   return check("isNotAvailableTest", p);
 }
 
-/// test entry point
+// test entry point
 export function queryTest() {
   let lockName = "queryTestLock"
   let lock = utils.locks.AsyncLock.request(lockName);
@@ -248,7 +248,7 @@ export function queryTest() {
   return check("queryTest", p);
 }
 
-/// test entry point
+// test entry point
 export function abortTest() {
   let lock = new utils.locks.AsyncLock();
   let s: utils.locks.AbortSignal<string> = {aborted: false, reason: "Aborted"};
@@ -272,7 +272,7 @@ export function abortTest() {
   return check("abortTest", p1);
 }
 
-/// test entry point
+// test entry point
 export function deadlockTest() {
   let lock = new utils.locks.AsyncLock();
   let options = new utils.locks.AsyncLockOptions<string>();
@@ -288,7 +288,7 @@ export function deadlockTest() {
   return check_negative("deadlockTest", p);
 }
 
-/// test entry point
+// test entry point
 export function nestedDeadlockTest() {
   let options = new utils.locks.AsyncLockOptions<void>();
   options.timeout = 1000;
@@ -321,7 +321,7 @@ function twoThreadedDeadlockT2(lockNameL1: string, lockNameL2: string, flagBuf: 
   }, utils.locks.AsyncLockMode.EXCLUSIVE);
 }
 
-/// test entry point
+// test entry point
 export function twoThreadedDeadlockTest() {
   hilog.info(0x0000, 'ActsConcurrencyBaseJSTest', '>twoThreadedDeadlockTest');
   let lockNameL1 = "twoThreadedDeadlockTestL1";
@@ -358,7 +358,7 @@ export function twoThreadedDeadlockTest() {
   return check_negative("twoThreadedDeadlockTest", p);
 }
 
-/// test entry point
+// test entry point
 export function twoThreadedDeadlockWorkerTest() {
   hilog.info(0x0000, 'ActsConcurrencyBaseJSTest', '>twoThreadedDeadlockWorkerTest');
   let lockNameL1 = "twoThreadedDeadlockWorkerLockL1";
@@ -396,7 +396,7 @@ export function twoThreadedDeadlockWorkerTest() {
   return check_negative("twoThreadedDeadlockWorkerTest", p);
 }
 
-/// test entry point
+// test entry point
 export function twoLocksSingleTest() {
   let flagBuf = createInt();
   flagBuf[0] = 0;
@@ -423,7 +423,7 @@ async function exclusiveLockAcquireJob(): Promise<void> {
   }, utils.locks.AsyncLockMode.EXCLUSIVE);
 }
 
-/// test entry point
+// test entry point
 export function twoThreadsAcquireOwnLocks() {
   let p1: Promise<Object> = taskpool.execute(exclusiveLockAcquireJob) as Promise<Object>;
   let p2: Promise<Object> = taskpool.execute(exclusiveLockAcquireJob) as Promise<Object>;
@@ -440,7 +440,7 @@ async function lockJob(lockName: string, flagBuf: Uint32Array): Promise<void> {
   }, utils.locks.AsyncLockMode.SHARED);
 }
 
-/// test entry point
+// test entry point
 export async function multipleWakeupTest() {
   let lockName = "multipleWakeupLock";
   let flagBuf = createInt();
@@ -474,12 +474,12 @@ async function waitForLockBody() {
   hilog.info(0x0000, 'ActsConcurrencyBaseJSTest', 'Test passed');
 }
 
-/// test entry point
+// test entry point
 export function waitForLock() {
   return check("waitForLock", waitForLockBody());
 }
 
-/// test entry point
+// test entry point
 export function dontWaitForLock() {
   let flagBuf = createInt();
   flagBuf[0] = 0;
@@ -493,7 +493,7 @@ export function dontWaitForLock() {
   return check("dontWaitForLock", p);
 }
 
-/// test entry point
+// test entry point
 export function queryWithDeadlockTest() {
   let options = new utils.locks.AsyncLockOptions<string>();
   options.timeout = 1000;
@@ -523,7 +523,7 @@ async function lockHolderJob(lockName: string, timeout: number, flagBuf: Uint32A
   }, utils.locks.AsyncLockMode.EXCLUSIVE);
 }
 
-/// test entry point
+// test entry point
 export function sequentialLock() {
   let lockNameB = "sequentialLockB";
   let flagBuf = createInt();
@@ -555,7 +555,7 @@ export function sequentialLock() {
   return check("sequentialLock", p);
 }
 
-/// test entry point
+// test entry point
 export function sequentialLockWorkerTest() {
   let lockNameB = "sequentialLockWorkerB";
   let flagBuf = createInt();
@@ -592,7 +592,7 @@ export function sequentialLockWorkerTest() {
   return check("sequentialLockWorkerTest", Promise.all([p1, p]));
 }
 
-/// test entry point
+// test entry point
 export function sequentialLockInf() {
   let lockNameB = "sequentialLockInfB";
   let flagBuf = createInt();
@@ -622,7 +622,7 @@ export function sequentialLockInf() {
   return check("sequentialLockInf", p);
 }
 
-/// test entry point
+// test entry point
 export function sequentialLockUnlocked() {
   let flagBuf = createInt();
   flagBuf[0] = 0;
@@ -638,7 +638,7 @@ export function sequentialLockUnlocked() {
   return check("sequentialLockUnlocked", p);
 }
 
-/// test entry point
+// test entry point
 export function sequentialLockUnlocked1() {
   let p = new Promise<void>((resolve, reject) => {
     let lockA = new utils.locks.AsyncLock();
@@ -659,7 +659,7 @@ export function sequentialLockUnlocked1() {
   return check("sequentialLockUnlocked1", p);
 }
 
-/// test entry point
+// test entry point
 export function sequentialLockUnlocked3() {
   let p = new Promise<void>((resolve, reject) => {
     let lockA = new utils.locks.AsyncLock();
@@ -682,7 +682,7 @@ export function sequentialLockUnlocked3() {
   return check("sequentialLockUnlocked3", p);
 }
 
-/// test entry point
+// test entry point
 export function disarmTimeoutTest() {
   let lock = new utils.locks.AsyncLock();
   hilog.info(0x0000, 'ActsConcurrencyBaseJSTest', '>lockAsync');
@@ -696,7 +696,7 @@ export function disarmTimeoutTest() {
   return check("disarmTimeoutTest", p);
 }
 
-/// test entry point
+// test entry point
 export function disarmTimeoutLongAwaitTest() {
   /*
   * Create an exclusive lock and set the timeout period to 1 second.
@@ -747,12 +747,12 @@ function fourThreadsApplyForSameLockImpl(mode: utils.locks.AsyncLockMode) {
   return Promise.all(promises);
 }
 
-/// test entry point
+// test entry point
 export function fourThreadsApplyForSameLockExclusive() {
   return check("fourThreadsApplyForSameLockExclusive", fourThreadsApplyForSameLockImpl(utils.locks.AsyncLockMode.EXCLUSIVE));
 }
 
-/// test entry point
+// test entry point
 export function fourThreadsApplyForSameLockShared() {
   return check("fourThreadsApplyForSameLockShared", fourThreadsApplyForSameLockImpl(utils.locks.AsyncLockMode.SHARED));
 }
@@ -771,13 +771,13 @@ function acquireLockTwiceSuccess(outerMode: utils.locks.AsyncLockMode, innerMode
   });
 }
 
-/// test entry point
+// test entry point
 export function acquireLockTwiceSharedSharedAvailable() {
   return check("acquireLockTwiceSharedSharedAvailable",
     acquireLockTwiceSuccess(utils.locks.AsyncLockMode.SHARED, utils.locks.AsyncLockMode.SHARED, true));
 }
 
-/// test entry point
+// test entry point
 export function acquireLockTwiceSharedSharedNotAvailable() {
   return check("acquireLockTwiceSharedSharedNotAvailable",
     acquireLockTwiceSuccess(utils.locks.AsyncLockMode.SHARED, utils.locks.AsyncLockMode.SHARED, false));
@@ -800,37 +800,37 @@ function acquireLockTwiceReject(outerMode: utils.locks.AsyncLockMode, innerMode:
   });
 }
 
-/// test entry point
+// test entry point
 export function acquireLockTwiceSharedExclusiveAvailable() {
   return check("acquireLockTwiceSharedExclusiveAvailable",
     acquireLockTwiceReject(utils.locks.AsyncLockMode.SHARED, utils.locks.AsyncLockMode.EXCLUSIVE, true));
 }
 
-/// test entry point
+// test entry point
 export function acquireLockTwiceSharedExclusiveNotAvailable() {
   return check("acquireLockTwiceSharedExclusiveNotAvailable",
     acquireLockTwiceSuccess(utils.locks.AsyncLockMode.SHARED, utils.locks.AsyncLockMode.EXCLUSIVE, false));
 }
 
-/// test entry point
+// test entry point
 export function acquireLockTwiceExclusiveSharedAvailable() {
   return check("acquireLockTwiceReject",
     acquireLockTwiceReject(utils.locks.AsyncLockMode.EXCLUSIVE, utils.locks.AsyncLockMode.SHARED, true));
 }
 
-/// test entry point
+// test entry point
 export function acquireLockTwiceExclusiveSharedNotAvailable() {
   return check("acquireLockTwiceExclusiveSharedNotAvailable",
     acquireLockTwiceSuccess(utils.locks.AsyncLockMode.EXCLUSIVE, utils.locks.AsyncLockMode.SHARED, false));
 }
 
-/// test entry point
+// test entry point
 export function acquireLockTwiceExclusiveExclusiveAvailable() {
   return check("acquireLockTwiceExclusiveSharedNotAvailable",
     acquireLockTwiceReject(utils.locks.AsyncLockMode.EXCLUSIVE, utils.locks.AsyncLockMode.EXCLUSIVE, true));
 }
 
-/// test entry point
+// test entry point
 export function acquireLockTwiceExclusiveExclusiveNotAvailable() {
   return check("acquireLockTwiceExclusiveExclusiveNotAvailable",
     acquireLockTwiceSuccess(utils.locks.AsyncLockMode.EXCLUSIVE, utils.locks.AsyncLockMode.EXCLUSIVE, false));
@@ -863,7 +863,7 @@ async function pressureWorker(lockName: string, timeout: number, taskBuf: Uint32
   });
 }
 
-/// test entry point
+// test entry point
 export function pressureTest() {
   let sab = new SharedArrayBuffer(4 * 100);
   let taskBuf = new Uint32Array(sab);

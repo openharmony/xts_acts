@@ -844,8 +844,73 @@ export default function drawingTsRegionTest() {
      */
     it('testRegionOpNormal', DEFAULT, () => {
       const msg = 'testRegionOpNormal';
+      const canvas = new drawing.Canvas(pixel);
       try {
-        const canvas = new drawing.Canvas(pixel);
+        let region = new drawing.Region();
+        region.setRect(200, 200, 400, 400);
+        let othregion = new drawing.Region();
+        othregion.setRect(110, 110, 240, 240);
+        let flag: boolean = region.op(othregion,drawing.RegionOp.DIFFERENCE);
+        expect(flag).assertTrue();
+        canvas.drawRegion(region);
+        console.info(msg + `op successed`);
+      } catch (e) {
+        console.info(msg + `op failed. Error code is: ${e.code}. Error message is: ${e.message}`);
+        expect().assertFail();
+      }
+      try {
+        let region = new drawing.Region();
+        region.setRect(200, 200, 400, 400);
+        let othregion = new drawing.Region();
+        othregion.setRect(110, 110, 240, 240);
+        let flag: boolean = region.op(othregion,drawing.RegionOp.INTERSECT);
+        expect(flag).assertTrue();
+        canvas.drawRegion(region);
+        console.info(msg + `op successed`);
+      } catch (e) {
+        console.info(msg + `op failed. Error code is: ${e.code}. Error message is: ${e.message}`);
+        expect().assertFail();
+      }
+      try {
+        let region = new drawing.Region();
+        region.setRect(200, 200, 400, 400);
+        let othregion = new drawing.Region();
+        othregion.setRect(110, 110, 240, 240);
+        let flag: boolean = region.op(othregion,drawing.RegionOp.UNION);
+        expect(flag).assertTrue();
+        canvas.drawRegion(region);
+        console.info(msg + `op successed`);
+      } catch (e) {
+        console.info(msg + `op failed. Error code is: ${e.code}. Error message is: ${e.message}`);
+        expect().assertFail();
+      }
+      try {
+        let region = new drawing.Region();
+        region.setRect(200, 200, 400, 400);
+        let othregion = new drawing.Region();
+        othregion.setRect(110, 110, 240, 240);
+        let flag: boolean = region.op(othregion,drawing.RegionOp.XOR);
+        expect(flag).assertTrue();
+        canvas.drawRegion(region);
+        console.info(msg + `op successed`);
+      } catch (e) {
+        console.info(msg + `op failed. Error code is: ${e.code}. Error message is: ${e.message}`);
+        expect().assertFail();
+      }
+      try {
+        let region = new drawing.Region();
+        region.setRect(200, 200, 400, 400);
+        let othregion = new drawing.Region();
+        othregion.setRect(110, 110, 240, 240);
+        let flag: boolean = region.op(othregion,drawing.RegionOp.REVERSE_DIFFERENCE);
+        expect(flag).assertTrue();
+        canvas.drawRegion(region);
+        console.info(msg + `op successed`);
+      } catch (e) {
+        console.info(msg + `op failed. Error code is: ${e.code}. Error message is: ${e.message}`);
+        expect().assertFail();
+      }
+      try {
         let region = new drawing.Region();
         region.setRect(200, 200, 400, 400);
         let othregion = new drawing.Region();

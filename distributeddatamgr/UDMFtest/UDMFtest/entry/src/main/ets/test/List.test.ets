@@ -24,6 +24,7 @@ import UDMFApiDataStructTest from './UDMFApiDataStruct.test'
 import UDMFSupportClipboardApiTest from './UDMFSupportClipboardApi.test'
 
 export default function testsuite() {
+  UDMFDragBigDataJsApiTest()
   UDMFApiCallback()
   UDMFApiDescriptorTest()
   UDMFApiPromise()
@@ -32,5 +33,5 @@ export default function testsuite() {
   UtdfileNameTest()
   UDMFApiDataStructTest()
   UDMFSupportClipboardApiTest()
-  UDMFDragBigDataJsApiTest()
+  
 }

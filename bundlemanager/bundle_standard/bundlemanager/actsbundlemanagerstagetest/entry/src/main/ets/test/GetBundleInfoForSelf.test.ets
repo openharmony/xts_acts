@@ -130,6 +130,7 @@ export default function getBundleInfoForSelf() {
         expect(data.reqPermissionDetails.length).assertEqual(0);
         expect(data.permissionGrantStates.length).assertEqual(0);
         expect(data.signatureInfo).assertEqual(null);
+        expect(data.appInfo.installSource).assertEqual("unknown");
         done();
       }).catch(err => {
         console.info("getBundleInfoForSelf fail" + JSON.stringify(err));

@@ -15,7 +15,7 @@
 import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function gridJsunit() {
   describe('grid3Test', () => {
@@ -31,7 +31,7 @@ export default function gridJsunit() {
         if (!('gridPage' == pages.name)) {
           console.info('beforeEach get prompt state pages.name:' + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info('beforeEach push prompt page result:' + JSON.stringify(result));
         }
       } catch (err) {
@@ -41,13 +41,13 @@ export default function gridJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info('[ afterEach ] ===================grid test after each called===================');
     });
 
     it('gridTest01', 0, async (done: Function) => {
       console.info('gridTest01==================== start');
-      await Utils.sleep(1000)
+      await CommonFunc.sleep(1000)
       let strJson = getInspectorByKey('grid');
 
       console.info('gridTest01 all attribute before change is: ' + JSON.stringify(JSON.parse(strJson)
@@ -69,7 +69,7 @@ export default function gridJsunit() {
       } catch (err) {
         console.log('gridTest01 change component data error: ' + err.message)
       }
-      await Utils.sleep(1000)
+      await CommonFunc.sleep(1000)
       let strJsonAfterChange = getInspectorByKey('grid');
       console.info('gridTest01 columnsGap attribute after change is: ' + JSON.stringify(JSON.parse(strJsonAfterChange)
         .$attrs
@@ -81,7 +81,7 @@ export default function gridJsunit() {
 
     it('gridTest02', 0, async (done: Function) => {
       console.info('[ gridTest02 ] ==================== start');
-      await Utils.sleep(1000)
+      await CommonFunc.sleep(1000)
       let strJson = getInspectorByKey('grid');
 
       console.info('[ gridTest02 ] attribute rowsGap before change is: ' + JSON.stringify(JSON.parse(strJson)
@@ -103,7 +103,7 @@ export default function gridJsunit() {
       } catch (err) {
         console.log('[ gridTest02 ] change component data error: ' + err.message)
       }
-      await Utils.sleep(1000)
+      await CommonFunc.sleep(1000)
       let strJsonAfterChange = getInspectorByKey('grid');
       console.info('[ gridTest02 ] attribute rowsGap after change is: ' + JSON.stringify(JSON.parse(strJsonAfterChange)
         .$attrs
@@ -115,7 +115,7 @@ export default function gridJsunit() {
 
     it('gridTest03', 0, async (done: Function) => {
       console.info('[ gridTest03 ] ==================== start');
-      await Utils.sleep(1000)
+      await CommonFunc.sleep(1000)
       let strJson = getInspectorByKey('grid');
 
       console.info('[ gridTest03 ] attribute columnsTemplate before change is: ' + JSON.stringify(JSON.parse(strJson)
@@ -137,7 +137,7 @@ export default function gridJsunit() {
       } catch (err) {
         console.log('[ gridTest03 ] change component data error: ' + err.message)
       }
-      await Utils.sleep(1000)
+      await CommonFunc.sleep(1000)
       let strJsonAfterChange = getInspectorByKey('grid');
       console.info('[ gridTest03 ] attribute columnsTemplate after change is: ' + JSON.stringify(JSON.parse(strJsonAfterChange)
         .$attrs
@@ -149,7 +149,7 @@ export default function gridJsunit() {
 
     it('gridTest04', 0, async (done: Function) => {
       console.info('[ gridTest04 ] ==================== start');
-      await Utils.sleep(1000)
+      await CommonFunc.sleep(1000)
       let strJson = getInspectorByKey('grid');
 
       console.info('[ gridTest04 ] attribute rowsTemplate before change is: ' + JSON.stringify(JSON.parse(strJson)
@@ -171,7 +171,7 @@ export default function gridJsunit() {
       } catch (err) {
         console.log('[ gridTest04 ] change component data error: ' + err.message)
       }
-      await Utils.sleep(1000)
+      await CommonFunc.sleep(1000)
       let strJsonAfterChange = getInspectorByKey('grid');
       console.info('[ gridTest04 ] attribute rowsTemplate after change is: ' + JSON.stringify(JSON.parse(strJsonAfterChange)
         .$attrs

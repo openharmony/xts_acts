@@ -101,7 +101,7 @@ struct RefreshDrag {
           console.info("Refresh start to emit action state")
           events_emitter.emit(backEventTwo, backDataTwo)
         } catch (err) {
-          console.info("Refresh emit action state err: " + JSON.stringify(err.message))
+          console.info("Refresh emit action state err: " + JSON.stringify((err as Error)?.message))
         }
       })
       .onRefreshing(() => {
@@ -123,7 +123,7 @@ struct RefreshDrag {
           console.info("Drag start to emit action state")
           events_emitter.emit(backEvent, backData)
         } catch (err) {
-          console.info("Drag emit action state err: " + JSON.stringify(err.message))
+          console.info("Drag emit action state err: " + JSON.stringify((err as Error)?.message))
         }
       })
     }.width("100%").height("100%")

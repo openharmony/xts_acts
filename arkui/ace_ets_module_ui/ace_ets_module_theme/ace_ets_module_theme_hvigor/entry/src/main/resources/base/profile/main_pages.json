@@ -17,6 +17,7 @@
           "MainAbility/pages/components/LoadingProgressPage",
           "MainAbility/pages/components/MenuPage",
           "MainAbility/pages/components/PatternLockPage",
-          "MainAbility/pages/components/QRCodePage"
+          "MainAbility/pages/components/QRCodePage",
+          "MainAbility/pages/components/SliderPage"
     ]
 }

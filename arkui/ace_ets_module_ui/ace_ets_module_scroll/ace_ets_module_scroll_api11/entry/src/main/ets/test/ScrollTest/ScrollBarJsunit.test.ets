@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
 export default function ScrollBarJsunit() {
-  describe('ScrollBarJsunit', function () {
-    beforeEach(async function (done) {
+  describe('ScrollBarJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("ScrollBarJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Scroll/ScrollBarPage',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Scroll/ScrollBarPage',
       }
       try {
         router.clear();
@@ -43,11 +43,11 @@ export default function ScrollBarJsunit() {
       done();
     });
 
-    it('ScrollBarJsunit_0100', 0, async function (done) {
+    it('ScrollBarJsunit_0100', 0, async (done: Function) => {
       // Get the information of the ScrollBar component
       console.info('[ScrollBarJsunit_0100] START');
       let strJson = getInspectorByKey('scrollBar');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ScrollBarJsunit_0100] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.direction).assertEqual('ScrollBarDirection.Vertical');
@@ -57,49 +57,49 @@ export default function ScrollBarJsunit() {
       done();
     });
 
-    it('ScrollBarJsunit_0200', 0, async function (done) {
+    it('ScrollBarJsunit_0200', 0, async (done: Function) => {
       // Modify the direction of the ScrollBar component
       console.info('[ScrollBarJsunit_0200] START');
       globalThis.value.message.notify({name:'scrollBarDirection',value:'ScrollBarDirection.Horizontal'})
       await CommonFunc.sleep(2000);
       // Get the direction of the ScrollBar component
       let strJson = getInspectorByKey('scrollBar');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ScrollBarJsunit_0200] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.direction).assertEqual('ScrollBarDirection.Vertical');
       console.info('[ScrollBarJsunit_0200] END');
       done();
     });
 
-    it('ScrollBarJsunit_0300', 0, async function (done) {
+    it('ScrollBarJsunit_0300', 0, async (done: Function) => {
       // Modify the state of the ScrollBar component
       console.info('[ScrollBarJsunit_0300] START');
       globalThis.value.message.notify({name:'state',value:BarState.Auto})
       await CommonFunc.sleep(1500);
       // Get the state value of the ScrollBar component
       let strJson = getInspectorByKey('scrollBar');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ScrollBarJsunit_0300] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.state).assertEqual('BarState.Auto');
       console.info('[ScrollBarJsunit_0300] END');
       done();
     });
 
-    it('ScrollBarJsunit_0400', 0, async function (done) {
+    it('ScrollBarJsunit_0400', 0, async (done: Function) => {
       // Modify the backgroundColor of the ScrollBar component
       console.info('[ScrollBarJsunit_0400] START');
       globalThis.value.message.notify({name:'backColor',value:'Color.Blue'})
       await CommonFunc.sleep(2000);
       // Get the backgroundColor of the ScrollBar component
       let strJson = getInspectorByKey('scrollBar');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ScrollBarJsunit_0400] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.backgroundColor).assertEqual('#FF808080');
       console.info('[ScrollBarJsunit_0400] END');
       done();
     });
 
-    it('ScrollBarJsunit_0500', 0, async function (done) {
+    it('ScrollBarJsunit_0500', 0, async (done: Function) => {
       // Illegal modification of attribute value of the ScrollBar component
       console.info('[ScrollBarJsunit_0500] START');
       globalThis.value.message.notify({name:'scrollBarDirection',value:'1'})
@@ -110,7 +110,7 @@ export default function ScrollBarJsunit() {
       await CommonFunc.sleep(800);
       // Get the attribute value of the ScrollBar component
       let strJson = getInspectorByKey('scrollBar');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ScrollBarJsunit_0500] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.direction).assertEqual('ScrollBarDirection.Vertical');
       expect(obj.$attrs.state).assertEqual('BarState.Auto');
@@ -119,7 +119,7 @@ export default function ScrollBarJsunit() {
       done();
     });
 
-    it('ScrollBarJsunit_0600', 0, async function (done) {
+    it('ScrollBarJsunit_0600', 0, async (done: Function) => {
       // Modify the direction of the Scroll component and ScrollBar component
       console.info('[ScrollBarJsunit_0600] START');
       globalThis.value.message.notify({name:'ScrollDirection',value:'ScrollDirection.Horizontal'})
@@ -128,7 +128,7 @@ export default function ScrollBarJsunit() {
       await CommonFunc.sleep(2000);
       // Get the direction of the ScrollBar component
       let strJson = getInspectorByKey('scrollBar');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ScrollBarJsunit_0600] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.direction).assertEqual('ScrollBarDirection.Vertical');
       console.info('[ScrollBarJsunit_0600] END');

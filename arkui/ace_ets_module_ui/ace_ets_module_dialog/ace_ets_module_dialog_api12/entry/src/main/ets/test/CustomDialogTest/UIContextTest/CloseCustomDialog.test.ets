@@ -64,6 +64,9 @@ export default function CloseCustomDialogTest() {
       let CloseCustomDialog = getInspectorByKey('CloseCustomDialog');
       console.info('return log-----' + JSON.parse(CloseCustomDialog).$attrs.content);
       expect(JSON.parse(CloseCustomDialog).$attrs.content).assertEqual('CloseCustomDialog');
+      await CommonFunc.sleep(1000);
+      await driver.triggerKey(2070);
+      await CommonFunc.sleep(1000);
       console.info('[CloseCustomDialogTest_001] END');
       done();
     });

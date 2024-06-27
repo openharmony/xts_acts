@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,28 +23,28 @@ struct ScrollBarExampler {
   @State directionValue: ScrollBarDirection = ScrollBarDirection.Vertical;
   @State stateValue: BarState= BarState.Off;
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("scrollBar page state change called:" + JSON.stringify(eventData));
     if (eventData != null) {
-      if (eventData.data.directionValue != null) {
-        let directionObject = JSON.parse(eventData.data.directionObject);
-        this.directionValue = directionObject.directionValue;
+      if (eventData.data?.directionValue != null) {
+        let directionObject: Record<string, Object> = JSON.parse(eventData.data?.directionObject);
+        this.directionValue = directionObject.directionValue as ScrollBarDirection;
       }
-      if (eventData.data.stateValue != null) {
-        this.stateValue = eventData.data.stateValue;
+      if (eventData.data?.stateValue != null) {
+        this.stateValue = eventData.data?.stateValue;
       }
     }
   }
 
   onPageShow() {
     console.info('scrollBar page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 183,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
 
-    var stateChangeEvent2 = {
+    let stateChangeEvent2: events_emitter.InnerEvent = {
       eventId: 184,
       priority: events_emitter.EventPriority.LOW
     }
@@ -57,7 +56,7 @@ struct ScrollBarExampler {
       Stack({ alignContent: Alignment.End }) {
         Scroll(this.scroller) {
           Flex({ direction: FlexDirection.Column }) {
-            ForEach(this.arr, (item) => {
+            ForEach(this.arr, (item: number) => {
               Row() {
                 Text(item.toString())
                   .width('90%')
@@ -68,7 +67,7 @@ struct ScrollBarExampler {
                   .textAlign(TextAlign.Center)
                   .margin({ top: 5 })
               }
-            }, item => item)
+            }, (item: string) => item)
           }.margin({ left: 52 })
         }
         .scrollBar(BarState.Off)

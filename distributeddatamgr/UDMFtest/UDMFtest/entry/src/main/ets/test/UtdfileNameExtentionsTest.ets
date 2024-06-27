@@ -26,7 +26,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .bmp
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0010', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0010 start');
@@ -41,7 +41,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .ico
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0020', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0020 start');
@@ -56,7 +56,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .doc
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1290', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1290 start');
@@ -71,7 +71,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .xls
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0030', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0030 start');
@@ -86,7 +86,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .ppt
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0040', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0040 start');
@@ -101,7 +101,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .wav
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0050', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0050 start');
@@ -116,7 +116,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .wave
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0060', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0060 start');
@@ -131,7 +131,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .wm
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0070', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0070 start');
@@ -145,7 +145,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .wmv
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0080', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0080 start');
@@ -159,7 +159,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".wmp"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0090', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0090 start');
@@ -173,7 +173,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .wma
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0100', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0100 start');
@@ -188,7 +188,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .wmx
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0110', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0110 start');
@@ -202,7 +202,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .wvx
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0120', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0120 start');
@@ -217,7 +217,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .wax
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0130', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0130 start');
@@ -232,7 +232,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .pdf
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0140', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0140 start');
@@ -246,7 +246,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .ps
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0150', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0150 start');
@@ -261,7 +261,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .eps
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0160', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0160 start');
@@ -276,7 +276,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .psd
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0170', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0170 start');
@@ -291,7 +291,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .ai
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0180', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0180 start');
@@ -306,7 +306,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .pfb
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0190', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0190 start');
@@ -321,7 +321,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .pfa
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0200', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0200 start');
@@ -336,7 +336,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .exe
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0210', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0210 start');
@@ -350,7 +350,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .dll
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0220', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0220 start');
@@ -364,7 +364,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .class
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0230', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0230 start');
@@ -380,7 +380,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .jar
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0240', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0240 start');
@@ -395,7 +395,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .gtar
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0250', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0250 start');
@@ -410,7 +410,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .gz
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0260', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0260 start');
@@ -425,7 +425,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .gzip
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0270', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0270 start');
@@ -440,7 +440,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .tgz
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0280', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0280 start');
@@ -454,7 +454,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .mobi
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0290', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0290 start');
@@ -468,7 +468,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .azw
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0300', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0300 start');
@@ -482,7 +482,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .azw3
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1300', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1300 start');
@@ -496,7 +496,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .kfx
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0310', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0310 start');
@@ -510,7 +510,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .tga
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0320', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0320 start');
@@ -524,7 +524,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .sgi
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0330', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0330 start');
@@ -538,7 +538,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .exr
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0340', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0340 start');
@@ -552,7 +552,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .fpx
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0350', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0350 start');
@@ -566,7 +566,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .jfx
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0360', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0360 start');
@@ -580,7 +580,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .efx
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0370', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0370 start');
@@ -594,7 +594,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .sd2
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0380', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0380 start');
@@ -608,7 +608,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .rm
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0390', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0390 start');
@@ -622,7 +622,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .ra
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0400', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0400 start');
@@ -636,7 +636,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .ram
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0410', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0410 start');
@@ -650,7 +650,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .smil
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0420', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0420 start');
@@ -664,7 +664,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .sitx
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0430', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0430 start');
@@ -678,7 +678,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .sit
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0440', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0440 start');
@@ -693,7 +693,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .docx
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0450', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0450 start');
@@ -707,7 +707,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .docm
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0460', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0460 start');
@@ -721,7 +721,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .xlsx
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0470', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0470 start');
@@ -735,7 +735,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .xlsm
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0480', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0480 start');
@@ -749,7 +749,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .pptx
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0490', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0490 start');
@@ -763,7 +763,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .pptx
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0500', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0500 start');
@@ -778,7 +778,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .odt
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0510', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0510 start');
@@ -792,7 +792,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .fodt
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0520', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0520 start');
@@ -806,7 +806,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .ods
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0530', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0530 start');
@@ -820,7 +820,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .fods
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0540', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0540 start');
@@ -834,7 +834,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .odp
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0550', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0550 start');
@@ -848,7 +848,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .fodp
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0560', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0560 start');
@@ -862,7 +862,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .odg
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0570', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0570 start');
@@ -876,7 +876,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .fodg
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0580', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0580 start');
@@ -890,7 +890,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .odf
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0590', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0590 start');
@@ -904,7 +904,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .hap
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0600', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0600 start');
@@ -918,7 +918,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .hdoc
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0610', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0610 start');
@@ -932,7 +932,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .hinote
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0620', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0620 start');
@@ -947,7 +947,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .png
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0630', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0630 start');
@@ -961,7 +961,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .jpg
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0640', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0640 start');
@@ -975,7 +975,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .jpeg
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0650', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0650 start');
@@ -989,7 +989,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .tif
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0660', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0660 start');
@@ -1003,7 +1003,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .tiff
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0670', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0670 start');
@@ -1017,7 +1017,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .xbm
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0680', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0680 start');
@@ -1031,7 +1031,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .avi
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0690', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0690 start');
@@ -1045,7 +1045,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .vfw
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1310', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1310 start');
@@ -1059,7 +1059,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .mpg
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1320', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1320 start');
@@ -1073,7 +1073,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .mpeg
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1330', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1330 start');
@@ -1087,7 +1087,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .m75
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0700', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0700 start');
@@ -1101,7 +1101,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .m15
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0710', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0710 start');
@@ -1116,7 +1116,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .mp4
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1340', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1340 start');
@@ -1130,7 +1130,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .3gp
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0720', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0720 start');
@@ -1144,7 +1144,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .3gpp
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0730', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0730 start');
@@ -1158,7 +1158,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .3g2
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0740', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0740 start');
@@ -1172,7 +1172,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .3gp2
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0750', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0750 start');
@@ -1186,7 +1186,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .ogg
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0760', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0760 start');
@@ -1200,7 +1200,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .aiff
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0770', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0770 start');
@@ -1214,7 +1214,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .pcm
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0780', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0780 start');
@@ -1228,7 +1228,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .flac
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0790', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0790 start');
@@ -1242,7 +1242,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .alac
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0800', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0800 start');
@@ -1256,7 +1256,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .mp3
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0810', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0810 start');
@@ -1270,7 +1270,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .aac
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0820', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0820 start');
@@ -1284,7 +1284,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .au
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0830', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0830 start');
@@ -1298,7 +1298,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .snd
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0840', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0840 start');
@@ -1312,7 +1312,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .aifc
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0850', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0850 start');
@@ -1326,7 +1326,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .aif
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0870', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0870 start');
@@ -1340,7 +1340,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .tar
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0880', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0880 start');
@@ -1354,7 +1354,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .zip
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0890', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0890 start');
@@ -1368,7 +1368,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .bz2
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0900', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0900 start');
@@ -1382,7 +1382,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .txt
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1350', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1350 start');
@@ -1396,7 +1396,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .html
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0910', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0910 start');
@@ -1410,7 +1410,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .htm
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0920', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0920 start');
@@ -1424,7 +1424,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .xml
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0930', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0930 start');
@@ -1438,7 +1438,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .md
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0940', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0940 start');
@@ -1452,7 +1452,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .sh
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0950', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0950 start');
@@ -1466,7 +1466,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .command
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0960', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0960 start');
@@ -1480,7 +1480,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .csh
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0970', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0970 start');
@@ -1494,7 +1494,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .pl
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0980', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0980 start');
@@ -1508,7 +1508,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .pm
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0990', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_0990 start');
@@ -1522,7 +1522,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .py
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1000', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1000 start');
@@ -1536,7 +1536,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .rb
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1010', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1010 start');
@@ -1550,7 +1550,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .rbw
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1020', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1020 start');
@@ -1564,7 +1564,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .php
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1030', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1030 start');
@@ -1578,7 +1578,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .php3
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1040', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1040 start');
@@ -1592,7 +1592,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .php4
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1050', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1050 start');
@@ -1606,7 +1606,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .ph3
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1060', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1060 start');
@@ -1620,7 +1620,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .ph4
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1070', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1070 start');
@@ -1634,7 +1634,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .phtml
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1080', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1080 start');
@@ -1648,7 +1648,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .ts
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1090', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1090 start');
@@ -1662,7 +1662,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .js
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1100', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1100 start');
@@ -1676,7 +1676,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .jscript
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1110', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1110 start');
@@ -1690,7 +1690,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .javascript
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1120', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1120 start');
@@ -1704,7 +1704,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .c
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1130', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1130 start');
@@ -1718,7 +1718,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .h
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1140', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1140 start');
@@ -1732,7 +1732,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .cp
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1360', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1360 start');
@@ -1746,7 +1746,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is .cpp
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1150', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1150 start');
@@ -1760,7 +1760,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".c++"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1370', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1370 start');
@@ -1774,7 +1774,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".cc"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1160', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1160 start');
@@ -1788,7 +1788,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".cxx"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1170', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1170 start');
@@ -1802,7 +1802,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".hpp"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1180', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1180 start');
@@ -1816,7 +1816,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".h++"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1190', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1190 start');
@@ -1830,7 +1830,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".hxx"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1200', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1200 start');
@@ -1844,7 +1844,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".java"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1210', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1210 start');
@@ -1858,7 +1858,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".jav"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1220', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1220 start');
@@ -1872,7 +1872,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".epub"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1230', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1230 start');
@@ -1886,7 +1886,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".vcs"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1240', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1240 start');
@@ -1900,7 +1900,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".ics"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1250', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1250 start');
@@ -1914,7 +1914,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".ttf"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1260', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1260 start');
@@ -1928,7 +1928,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".ttc"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1270', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1270 start');
@@ -1942,7 +1942,7 @@ export default function UtdfileNameTest() {
      * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".otf"
      * @tc.size      : MediumTest
      * @tc.type      : Function
-     * @tc.level     : Level 1
+     * @tc.level     : Level 2
      */
     it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1280', 0,  () => {
       console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1280 start');
@@ -1950,5 +1950,1664 @@ export default function UtdfileNameTest() {
       console.log("typeId:" + result);
       expect(result).assertEqual(UTD.UniformDataType.OPENTYPE_FONT);
     });
+
+
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1380
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1380
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".dmg"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1380', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1380 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".dmg");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("macos.dmg");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1390
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1390
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".deb"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1390', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1390 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".deb");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("debian.deb");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1400
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1400
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".udeb"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1400', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1400 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".udeb");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("debian.deb");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1410
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1410
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".ofd"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1410', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1410 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".ofd");
+      console.log("typeId:" + result);
+      expect(result).assertEqual(UTD.UniformDataType.OFD);
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1420
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1420
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".opg"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1420', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1420 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".opg");
+      console.log("typeId:" + result);
+      expect(result).assertEqual(UTD.UniformDataType.OPG);
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1430
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1430
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".css"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1430', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1430 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".css");
+      console.log("typeId:" + result);
+      expect(result).assertEqual(UTD.UniformDataType.CSS);
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1440
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1440
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".vob"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1440', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1440 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".vob");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.vob");
+    });
+
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1450
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1450
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".dif"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1450', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1450 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".dif");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.dif-video");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1460
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1460
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".dv"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1460', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1460 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".dv");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.dv-video");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1470
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1470
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".fli"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1470', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1470 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".fli");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.flc-animation");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1480
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1480
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".flc"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1480', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1480 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".flc");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.flc-animation");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1490
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".mxu"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1490', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1490 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".mxu");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.mpegurl-video");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1500
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1500
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".m4u"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1500', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1500 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".m4u");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.mpegurl-video");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1510
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1510
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".ts"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1510', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1510 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".ts");
+      console.log("typeId:" + result);
+      expect(result).assertEqual(UTD.UniformDataType.TYPE_SCRIPT);
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1520
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1520
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".amr"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1520', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1520 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".amr");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.amr");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1520
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1530
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".awb"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1530', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1530 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".awb");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.amr-wb");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1540
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1540
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".gsm"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1540', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1540 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".gsm");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.gsm");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1530
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1550
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".imy"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1550', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1550 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".imy");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.imy");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1560
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1560
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".kar"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1560', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1560 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".kar");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.kar");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1570
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1570
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".m3u"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1570', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1570 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".m3u");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.mpegurl-audio");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1580
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1580
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".m4a"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1580', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1580 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".m4a");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.mpeg-4-audio");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1590
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1590
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".mid"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1590', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1590 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".mid");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.midi-audio");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1600
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1600
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".mp2"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1600', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1600 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".mp2");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.mp2");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1610
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1610
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".mpga"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1610', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1610 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".mpga");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.mpeg-audio");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1620
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1620
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".mxmf"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1620', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1620 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".mxmf");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.mxmf");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1630
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1630
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".ota"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1630', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1630 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".ota");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.ota");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1640
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1640
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".pls"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1640', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1640 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".pls");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.pls");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1650
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1650
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".rtttl"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1650', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1650 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".rtttl");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.rtttl");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1660
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1660
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".sid"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1660', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1660 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".sid");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.psid");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1670
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1670
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".psid"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1670', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1670 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".psid");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.psid");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1680
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1680
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".au"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1680', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1680 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".au");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.au-audio");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1690
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1690
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".ulw"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1690', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1690 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".ulw");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.ulaw-audio");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1700
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1700
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".snd"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1700', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1700 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".snd");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.au-audio");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1710
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1710
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".xmf"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1710', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1710 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".xmf");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.xmf");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1720
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1720
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".gif"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1720', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1720 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".gif");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.gif");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1730
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1730
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".djv"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1730', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1730 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".djv");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.djvu-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1740
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1740
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".djvU"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1740', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1740 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".djvU");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.djvu-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1750
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1750
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".jng"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1750', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1750 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".jng");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.jng-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1760
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1760
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".pcx"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1760', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1760 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".pcx");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.pcx-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1770
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1770
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".pbm"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1770', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1770 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".pbm");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.pbm-image");
+    });
+
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1790
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1790
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".ppm"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1790', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1790 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".ppm");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.ppm-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_17800
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1800
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".rgb"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1800', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1800 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".rgb");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.rgb-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1810
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1810
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".svg"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1810', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1810 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".svg");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.svg-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1820
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1820
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".svgz"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1820', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1820 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".svgz");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.svg-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1830
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1830
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".wbmp"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1830', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1830 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".wbmp");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.wbmp-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1840
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1840
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".xpm"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1840', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1840 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".xpm");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.xpixmap-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1850
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1850
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".xwd"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1850', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1850 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".xwd");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.xwindowdump-image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1860
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1860
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".heif"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1860', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1860 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".heif");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.heif");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1870
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1870
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".heic"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1870', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1870 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".heic");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.heic");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1880
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1880
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".vcd"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1880', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1880 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".vcd");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.virtual-cd");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1890
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1890
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".boo"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1890', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1890 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".boo");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.boo-source");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1900
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1900
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".d"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1900', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1900 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".d");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.d-source");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1910
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1910
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".htc"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1910', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1910 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".htc");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.html-component");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1920
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1920
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".p"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1920', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1920 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".p");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.pascal-source");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1930
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1930
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".pas"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1930', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1930 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".pas");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.pascal-source");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1940
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1940
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".hs"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1940', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1940 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".hs");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.haskell-script");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1950
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1950
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".lhs"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1950', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1950 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".lhs");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.literate-haskell-script");
+    });
+
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1970
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1970
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".asc"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1970', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1970 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".asc");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.asc-text");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1980
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1980
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".po"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1980', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1980 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".po");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.portable-object");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1990
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1990
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".rtf"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1990', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_1990 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".rtf");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.rich-text");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2010
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2010
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".rtx"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2010', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2010 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".rtx");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.rich-text");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2020
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2020
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".csv"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2020', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2020 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".csv");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.comma-separated-values-text");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2030
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2030
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".diff"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2030', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2030 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".diff");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.diff");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2040
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2040
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".etx"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2040', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2040 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".etx");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.setext");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2050
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2050
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".gcd"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2050', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2050 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".gcd");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.gcd");
+    });
+
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2070
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2070
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".tsv"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2070', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2070 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".tsv");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.tab-separated-values-text");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2080
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2080
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".p7r"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2080', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2080 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".p7r");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.p7r");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2090
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2090
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".pem"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2090', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2090 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".pem");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.pem");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2100
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2100
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".pgn"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2100', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2100 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".pgn");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.chess-pgn");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2110
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2110
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".mml"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2110', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2110 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".mml");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.mathml");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2120
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2120
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".xhtml"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2120', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2120 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".xhtml");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.xhtml");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2130
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2130
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".rss"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2130', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2130 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".rss");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.rss");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2140
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2140
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".rdf"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2140', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2140 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".rdf");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.rdf");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2150
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2150
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".iges"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2150', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2150 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".iges");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.iges");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2160
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2160
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".igs"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2160', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2160 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".igs");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.iges");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2170
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2170
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".iso"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2170', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2170 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".iso");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.iso");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2180
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2180
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".msh"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2180', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2180 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".msh");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.mesh-model");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2190
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2190
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".mesh"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2190', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2190 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".mesh");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.mesh-model");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2200
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2200
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".silo"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2200', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2200 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".silo");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.mesh-model");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2210
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2210
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".o"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2210', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2210 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".o");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.c-object");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2220
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2220
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".dvi"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2220', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2220 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".dvi");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.dvi");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2230
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2230
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".cer"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2230', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2230 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".cer");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.cer-certificate");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2240
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2240
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".crt"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2240', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2240 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".crt");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.crt-certificate");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2250
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2250
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".crl"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2250', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2250 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".crl");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.crl-certificate");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2260
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2260
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".prn"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2260', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2260 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".prn");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.prn");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2270
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2270
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".odc"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2270', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2270 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".odc");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.oasis-open.opendocument.chart");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2200
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2280
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".odm"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2280', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2280 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".odm");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.oasis-open.opendocument.text-master");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2290
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2290
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".oth"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2290', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2290 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".oth");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.oasis-open.opendocument.text-web");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2300
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2300
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".odb"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2300', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2300 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".odb");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.oasis-open.opendocument.database");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2310
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2310
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".odi"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2310', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2310 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".odi");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.oasis-open.opendocument.image");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2320
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2320
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".otf"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2320', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2320 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".otf");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("general.opentype-font");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2330
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2330
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".otc"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2330', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2330 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".otc");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.oasis-open.opendocument.chart-template");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2340
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2340
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".otp"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2340', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2340 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".otp");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.oasis-open.opendocument.presentation-template");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2350
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2350
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".oti"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2350', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2350 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".oti");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.oasis-open.opendocument.image-template");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2360
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2360
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".otg"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2360', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2360 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".otg");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.oasis-open.opendocument.graphics-template");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2370
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2370
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".ots"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2370', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2370 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".ots");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.oasis-open.opendocument.spreadsheet-template");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2380
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2380
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".ott"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2380', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2380 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".ott");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.oasis-open.opendocument.text-template");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2390
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2390
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".dot"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2390', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2390 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".dot");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.microsoft.word.dot");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2400
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2400
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".pps"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2400', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2400 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".pps");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.microsoft.powerpoint.pps");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2410
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2410
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".pot"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2410', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2410 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".pot");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.microsoft.powerpoint.pot");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2420
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2420
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".xlt"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2420', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2420 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".xlt");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.microsoft.excel.xlt");
+    });
+    /**
+     * @tc.name      : tetsSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2430
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2430
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".vsd"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2430', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2430 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".vsd");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("com.microsoft.visio.vsd");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2440
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2440
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".vsdx"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2440', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2440 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".vsdx");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.openxmlformats.drawingml.visio");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2450
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2450
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".vstx"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2450', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2450 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".vstx");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.openxmlformats.drawingml.template");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2460
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2460
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".vsdm"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2460', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2460 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".vsdm");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.openxmlformats.drawingml.visio.macroenabled");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2470
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2470
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".vstm"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2470', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2470 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".vstm");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.openxmlformats.drawingml.template.macroenabled");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2480
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2480
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".dotx"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2480', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2480 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".dotx");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.openxmlformats.wordprocessingml.template");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2490
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2490
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".potx"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2490', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2490 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".potx");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.openxmlformats.presentationml.template");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2500
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2500
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".ppsx"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2500', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2500 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".ppsx");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.openxmlformats.presentationml.slideshow");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2510
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2510
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".xltx"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2510', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2510 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".xltx");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.openxmlformats.spreadsheetml.template");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2520
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2520
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".sxc"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2520', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2520 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".sxc");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.openoffice.calc");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2530
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2530
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".sxd"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2530', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2530 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".sxd");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.openoffice.draw");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2540
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2540
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".sxg"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2540', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2540 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".sxg");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.openoffice.writer-global");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2550
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2550
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".sxi"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2550', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2550 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".sxi");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.openoffice.impress");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2560
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2560
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".sxm"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2560', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2560 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".sxm");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.openoffice.math");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2570
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2570
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".sxw"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2570', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2570 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".sxw");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.openoffice.writer");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2580
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2580
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".stc"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2580', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2580 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".stc");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.openoffice.calc.template");
+    });
+    /**
+     * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2590
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2590
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".std"
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2590', 0,  () => {
+      console.log('SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_2590 start');
+      let result = UTD.getUniformDataTypeByFilenameExtension(".std");
+      console.log("typeId:" + result);
+      expect(result).assertEqual("org.openoffice.draw.template");
+    });
+
   });
 }

@@ -632,7 +632,7 @@ export default function GaugeUxTest() {
 
             expect(JSON.parse(JSON.parse(strJson).$attrs.colors)[0][0]).assertEqual("#FFFF0000");
             expect((JSON.parse(JSON.parse(strJson).$attrs.colors)[0][1]).substr(0, 3)).assertEqual("0.1");
-            expect(JSON.parse(JSON.parse(strJson).$attrs.colors)[1][0]).assertEqual("#FFFFC0CB");
+            expect(JSON.parse(JSON.parse(strJson).$attrs.colors)[1][0]).assertEqual("#FF008000");
             expect((JSON.parse(JSON.parse(strJson).$attrs.colors)[1][1]).substr(0, 3)).assertEqual("1.0");
           }
           console.info('ArkUX_Gauge_Colors_InterfaceName_1900 END ');

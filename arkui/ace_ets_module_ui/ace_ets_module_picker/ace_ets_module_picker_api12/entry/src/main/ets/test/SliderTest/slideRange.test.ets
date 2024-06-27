@@ -55,15 +55,11 @@ export default function slideRange() {
     */
     it('slideRange_001', 0, async (done: Function) => {
       console.info('[slideRange_001] START');
-      let driver = await Driver.create()
-      await Utils.sleep(1000);
-      let button = await driver.findComponent(ON.id('getInspectorByKey'));
-      await button.click();
-
-      let strJson = getInspectorByKey('getSlideRangeValue');
+      let strJson = getInspectorByKey('slideRangeValue');
       let obj = JSON.parse(strJson);
       console.info("[slideRange_001] obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('{"from":"20.000000","to":"80.000000"}');
+      console.info("[slideRange_001] slideRange is: " + JSON.stringify(obj.$attrs.slideRange));
+      expect(JSON.stringify(obj.$attrs.slideRange)).assertEqual('{"from":"20.000000","to":"80.000000"}');
       console.info('[slideRange_001] END');
       done();
     });

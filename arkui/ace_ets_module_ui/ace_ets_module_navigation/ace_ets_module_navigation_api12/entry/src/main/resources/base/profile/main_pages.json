@@ -12,7 +12,15 @@
         "MainAbility/pages/Navigation/NavigationSymbolIcon",
 
         "MainAbility/pages/Navigation/NavPathStack1",
+        "MainAbility/pages/Navigation/NavPathStack1_2",
+        "MainAbility/pages/Navigation/NavPathStack1_3",
+        "MainAbility/pages/Navigation/NavPathStack1_4",
+        "MainAbility/pages/Navigation/NavPathStack1_5",
+        "MainAbility/pages/Navigation/NavPathStack1_6",
         "MainAbility/pages/Navigation/NavPathStack2",
+        "MainAbility/pages/Navigation/NavPathStack2_2",
+        "MainAbility/pages/Navigation/NavPathStack2_3",
+        "MainAbility/pages/Navigation/NavPathStack2_4",
         "MainAbility/pages/Navigation/NavPathStack3",
         "MainAbility/pages/Navigation/NavPathStack4",
         "MainAbility/pages/Navigation/NavPathStack5",
@@ -79,6 +87,7 @@
         "MainAbility/pages/Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump41",
         "MainAbility/pages/Navigation/Navigation_SingleInstanceJump/Navigation_SingleInstanceJump42",
         "MainAbility/pages/NavDestination/ignoreLayoutSafeArea",
-        "MainAbility/pages/Navigation/ignoreLayoutSafeArea2"
+        "MainAbility/pages/Navigation/ignoreLayoutSafeArea2",
+        "MainAbility/pages/Navigation/NavigationApi5"
     ]
 }

@@ -388,5 +388,78 @@ export default function webviewApi() {
       sendEventByKey('webHostingButton', 10, '');
     })
 
+    /*
+    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0021
+    * @tc.name       : testWebViewFrameUrl
+    * @tc.desc       : testWebViewFrameUrl
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testWebViewFrameUrl', 0, async (done: Function) => {
+
+      hilog.info(0x0000, 'testTag', '%{public}s', 'testWebViewFrameUrl PASS');
+
+      Utils.emitEvent("emitWebViewFrameUrl", 10)
+      await Utils.sleep(1000);
+      Utils.registerEvent("testWebViewFrameUrl", true, 1021, done);
+      sendEventByKey('webHostingButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0022
+    * @tc.name       : testWebViewServiceWorkerFrameUrl
+    * @tc.desc       : testWebViewServiceWorkerFrameUrl
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testWebViewServiceWorkerFrameUrl', 0, async (done: Function) => {
+
+      hilog.info(0x0000, 'testTag', '%{public}s', 'testWebViewServiceWorkerFrameUrl PASS');
+
+      Utils.emitEvent("emitWebViewServiceWorkerFrameUrl", 10)
+      await Utils.sleep(1000);
+      Utils.registerEvent("testWebViewServiceWorkerFrameUrl", true, 1022, done);
+      sendEventByKey('webHostingButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0023
+    * @tc.name       : testWebViewLoadUrlFrameUrl
+    * @tc.desc       : testWebViewLoadUrlFrameUrl
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testWebViewLoadUrlFrameUrl', 0, async (done: Function) => {
+
+      hilog.info(0x0000, 'testTag', '%{public}s', 'testWebViewLoadUrlFrameUrl PASS');
+
+      Utils.emitEvent("emitWebViewLoadUrlFrameUrl", 10)
+      await Utils.sleep(1000);
+      Utils.registerEvent("testWebViewLoadUrlFrameUrl", true, 1023, done);
+      sendEventByKey('webHostingButton', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_ACE_WEB_SCHEME_HANDLER_NAPI_0024
+    * @tc.name       : testWebViewSubFrameUrl
+    * @tc.desc       : testWebViewSubFrameUrl
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('testWebViewSubFrameUrl', 0, async (done: Function) => {
+
+      hilog.info(0x0000, 'testTag', '%{public}s', 'testWebViewSubFrameUrl PASS');
+
+      Utils.emitEvent("emitWebViewSubFrameUrl", 10)
+      await Utils.sleep(1000);
+      Utils.registerEvent("testWebViewSubFrameUrl", true, 1024, done);
+      sendEventByKey('webHostingButton', 10, '');
+    })
+
+
   })
 }

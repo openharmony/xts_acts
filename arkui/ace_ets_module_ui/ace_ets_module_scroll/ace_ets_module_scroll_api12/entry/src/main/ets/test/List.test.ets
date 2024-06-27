@@ -24,8 +24,11 @@ import ListFadeOut from './ListFadeOut/ListFadeOut.test';
 import ListFadeOutEx from './ListFadeOut/ListFadeOutEx.test';
 import ListFadeOutEx1 from './ListFadeOut/ListFadeOutEx1.test';
 import listSwipeActionApi12Test from './ListTest/listSwipeActionApi12.test';
-
-
+import ScrollSourceOther from './ScrollTest/ScrollSourceOther.test';
+import ScrollSource from './ScrollTest/ScrollSource.test';
+import offsetRemain from './ScrollTest/offsetRemain.test';
+import TabsAp1 from './TabsTest/TabsAp1.test'
+import ScrollApi1 from './ScrollTest/ScrollApi1.test'
 export default function testsuite() {
   ListScrollTest1()
   PopupAlphaTest()
@@ -39,4 +42,9 @@ export default function testsuite() {
   ListFadeOutEx();
   ListFadeOutEx1();
   listSwipeActionApi12Test();
+  ScrollSourceOther()
+  ScrollSource();
+  offsetRemain()
+  TabsAp1()
+  ScrollApi1()
 }

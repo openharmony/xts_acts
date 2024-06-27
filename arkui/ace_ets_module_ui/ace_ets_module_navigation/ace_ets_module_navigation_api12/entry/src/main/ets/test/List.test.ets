@@ -23,7 +23,15 @@ import NavDestinationRouterMap from './NavDestinationTest/NavDestinationRouterMa
 import NavigationSymbolIcon from './Navigation/NavigationSymbolIcon.test'
 
 import NavPathStack1 from './Navigation/NavPathStack1.test'
+import NavPathStack1_2 from './Navigation/NavPathStack1_2.test'
+import NavPathStack1_3 from './Navigation/NavPathStack1_3.test'
+import NavPathStack1_4 from './Navigation/NavPathStack1_4.test'
+import NavPathStack1_5 from './Navigation/NavPathStack1_5.test'
+import NavPathStack1_6 from './Navigation/NavPathStack1_6.test'
 import NavPathStack2 from './Navigation/NavPathStack2.test'
+import NavPathStack2_2 from './Navigation/NavPathStack2_2.test'
+import NavPathStack2_3 from './Navigation/NavPathStack2_3.test'
+import NavPathStack2_4 from './Navigation/NavPathStack2_4.test'
 import NavPathStack3 from './Navigation/NavPathStack3.test'
 import NavPathStack4 from './Navigation/NavPathStack4.test'
 import NavPathStack5 from './Navigation/NavPathStack5.test'
@@ -92,6 +100,8 @@ import Navigation_SingleInstanceJump42 from './Navigation/Navigation_SingleInsta
 
 import ignoreLayoutSafeArea from './NavDestinationTest/ignoreLayoutSafeArea.test'
 import ignoreLayoutSafeArea2 from './Navigation/ignoreLayoutSafeArea2.test'
+import NavigationApi5 from './Navigation/NavigationApi5.test'
+
 export default function testsuite() {
   NavigationApi1();
   NavigationApi2();
@@ -104,7 +114,15 @@ export default function testsuite() {
   NavigationSymbolIcon();
 
   NavPathStack1()
+  NavPathStack1_2()
+  NavPathStack1_3()
+  NavPathStack1_4()
+  NavPathStack1_5()
+  NavPathStack1_6()
   NavPathStack2()
+  NavPathStack2_2()
+  NavPathStack2_3()
+  NavPathStack2_4()
   NavPathStack3()
   NavPathStack4()
   NavPathStack5()
@@ -172,4 +190,6 @@ export default function testsuite() {
   Navigation_SingleInstanceJump42()
   ignoreLayoutSafeArea();
   ignoreLayoutSafeArea2();
+  NavigationApi5()
+
 }

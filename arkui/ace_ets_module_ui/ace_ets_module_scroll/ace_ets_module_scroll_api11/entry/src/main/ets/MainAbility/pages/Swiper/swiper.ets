@@ -17,7 +17,7 @@ import events_emitter from '@ohos.events.emitter'
 
 class MyDataSource implements IDataSource {
   private list: string[] = []
-  private listener: DataChangeListener
+  private listener?: DataChangeListener = undefined
 
   constructor(list: string[]) {
     this.list = list
@@ -110,7 +110,7 @@ struct SwiperExample {
           console.info("onChange start to emit action state")
           events_emitter.emit(backEvent, backData)
         } catch (err) {
-          console.info("onChange emit action state err: " + JSON.stringify(err.message))
+          console.info("onChange emit action state err: " + JSON.stringify((err as Error)?.message))
         }
       })
 
@@ -134,7 +134,7 @@ struct SwiperExample {
               console.info("button1 start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("button1 emit action state err: " + JSON.stringify(err.message))
+              console.info("button1 emit action state err: " + JSON.stringify((err as Error)?.message))
             }
           })
         Button('preview')
@@ -156,7 +156,7 @@ struct SwiperExample {
               console.info("button2 start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("button2 emit action state err: " + JSON.stringify(err.message))
+              console.info("button2 emit action state err: " + JSON.stringify((err as Error)?.message))
             }
           })
       }
@@ -193,29 +193,29 @@ struct SwiperExample {
   private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("swiper page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.index != null) {
-        this.index = eventData.data.index;
+      if (eventData.data?.index != null) {
+        this.index = eventData.data?.index;
       }
-      if (eventData.data.autoPlay != null) {
-        this.autoPlay = eventData.data.autoPlay;
+      if (eventData.data?.autoPlay != null) {
+        this.autoPlay = eventData.data?.autoPlay;
       }
-      if (eventData.data.interval != null) {
-        this.interval = eventData.data.interval;
+      if (eventData.data?.interval != null) {
+        this.interval = eventData.data?.interval;
       }
-      if (eventData.data.indicator != null) {
-        this.indicator = eventData.data.indicator;
+      if (eventData.data?.indicator != null) {
+        this.indicator = eventData.data?.indicator;
       }
-      if (eventData.data.loop != null) {
-        this.loop = eventData.data.loop;
+      if (eventData.data?.loop != null) {
+        this.loop = eventData.data?.loop;
       }
-      if (eventData.data.duration != null) {
-        this.duration = eventData.data.duration;
+      if (eventData.data?.duration != null) {
+        this.duration = eventData.data?.duration;
       }
-      if (eventData.data.vertical != null) {
-        this.vertical = eventData.data.vertical;
+      if (eventData.data?.vertical != null) {
+        this.vertical = eventData.data?.vertical;
       }
-      if (eventData.data.itemSpace != null) {
-        this.itemSpace = eventData.data.itemSpace;
+      if (eventData.data?.itemSpace != null) {
+        this.itemSpace = eventData.data?.itemSpace;
       }
     }
   }

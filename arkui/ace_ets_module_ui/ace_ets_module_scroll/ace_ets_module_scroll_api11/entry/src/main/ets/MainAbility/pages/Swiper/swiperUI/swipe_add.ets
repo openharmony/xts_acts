@@ -14,7 +14,7 @@
  */
 class MyDataSourceSwiperAdd implements IDataSource {
   private list: number[] = []
-  private listener: DataChangeListener
+  private listener?: DataChangeListener = undefined
 
   constructor(list: number[]) {
     this.list = list
@@ -24,7 +24,7 @@ class MyDataSourceSwiperAdd implements IDataSource {
     return this.list.length
   }
 
-  getData(index: number): any {
+  getData(index: number): number {
     return this.list[index]
   }
 
@@ -43,9 +43,9 @@ struct SwiperAddExample {
   private data: MyDataSourceSwiperAdd = new MyDataSourceSwiperAdd([])
   @State  stringValue : string = "hello"
   aboutToAppear(): void {
-    let list = []
-    for (var i = 1; i <= 10; i++) {
-      list.push(i.toString());
+    let list: number[] = []
+    for (let i = 1; i <= 10; i++) {
+      list.push(i);
     }
     this.data = new MyDataSourceSwiperAdd(list)
   }
@@ -55,7 +55,7 @@ struct SwiperAddExample {
       Swiper(this.swiperController) {
         LazyForEach(this.data, (item: string) => {
           Text(item).width('90%').height(160).backgroundColor(0xAFEEEE).textAlign(TextAlign.Center).fontSize(30)
-        }, item => item)
+        }, (item: string) => item)
       }
       .cachedCount(2)
       .index(1)
