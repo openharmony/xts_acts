@@ -59,6 +59,10 @@ export default {
             });
         }
 
+        function publishOnSuccessCallback(err){
+            console.info("====>publish on success call back err:" + JSON.stringify(err));
+        }
+
         // Subscribe to the callback of account information changes, verify the received account information, and send
         // an event with the verification result to the test application
         function changeOnExtra(data){
@@ -364,58 +368,87 @@ export default {
         function subscriberCallback(err, data){
             console.info("====>receive event err:" + JSON.stringify(err));
             console.info("====>receive event data:" + JSON.stringify(data));
+            let commonEventPublishData = {
+                data: "ON_SUCCESS"
+            }
             switch(data.code){
                 case ACCOUNT_TEST_ONOFF_EXTRA:
                     console.info("====>receive event 0100 event:" + data.event);
                     appAccountManager.on('change', ["com.example.actsaccounttest"], changeOnExtra);
+                    console.info("====>scene start publish on success");
+                    commonevent.publish("account_on_change_extra", commonEventPublishData, publishOnSuccessCallback);
                     break;
                 case ACCOUNT_TEST_ONOFF_ASSOCIATEDDATA:
                     console.info("====>receive event 0200 event:" + data.event);
                     appAccountManager.on('change', ["com.example.actsaccounttest"], changeOnAssociateData);
+                    console.info("====>scene start publish on success");
+                    commonevent.publish("account_on_change_associatedata", commonEventPublishData, publishOnSuccessCallback);
                     break;
                 case ACCOUNT_TEST_ONOFF_CREDENTIAL:
                     console.info("====>receive event 0300 event:" + data.event);
                     appAccountManager.on('change', ["com.example.actsaccounttest"], changeOnCredential);
+                    console.info("====>scene start publish on success");
+                    commonevent.publish("account_on_change_credential", commonEventPublishData, publishOnSuccessCallback);
                     break;
                 case ACCOUNT_TEST_ONOFF_DELETE:
                     console.info("====>receive event 0400 event:" + data.event);
                     appAccountManager.on('change', ["com.example.actsaccounttest"], changeOnDeleteAnother);
+                    console.info("====>scene start publish on success");
+                    commonevent.publish("account_on_delete_another", commonEventPublishData, publishOnSuccessCallback);
                     break;
                 case ACCOUNT_TEST_ONOFF_DELETEONLY:
                     console.info("====>receive event 0500 event:" + data.event);
                     appAccountManager.on('change', ["com.example.actsaccounttest"], changeOnDelete);
+                    console.info("====>scene start publish on success");
+                    commonevent.publish("account_on_change_delete", commonEventPublishData, publishOnSuccessCallback);
                     break;
                 case ACCOUNT_TEST_ONOFF_DISABLE:
                     console.info("====>receive event 0600 event:" + data.event);
                     appAccountManager.on('change', ["com.example.actsaccounttest"], changeOnDisableAnother);
+                    console.info("====>scene start publish on success");
+                    commonevent.publish("account_on_disable_another", commonEventPublishData, publishOnSuccessCallback);
                     break;
                 case ACCOUNT_TEST_ONOFF_DISABLEONLY:
                     console.info("====>receive event 0700 event:" + data.event);
                     appAccountManager.on('change', ["com.example.actsaccounttest"], changeOnDisable);
+                    console.info("====>scene start publish on success");
+                    commonevent.publish("account_on_change_disable", commonEventPublishData, publishOnSuccessCallback);
                     break;
                 case ACCOUNT_TEST_ONOFF_CUSTOMDATA:
                     console.info("====>receive event 0800 event:" + data.event);
                     appAccountManager.on('accountChange', ["com.example.actsaccountoperatetest"], changeOnCustomData);
+                    console.info("====>scene start publish on success");
+                    commonevent.publish("account_on_change_cuntomdata", commonEventPublishData, publishOnSuccessCallback);
                     break;
                 case ACCOUNT_TEST_ONOFF_SETCREDENTIAL:
                     console.info("====>receive event 0900 event:" + data.event);
                     appAccountManager.on('accountChange', ["com.example.actsaccountoperatetest"], changeOnSetCredential);
+                    console.info("====>scene start publish on success");
+                    commonevent.publish("account_on_change_setcredential", commonEventPublishData, publishOnSuccessCallback);
                     break;
                 case ACCOUNT_TEST_ONOFF_REMOVE:
                     console.info("====>receive event 1000 event:" + data.event);
                     appAccountManager.on('accountChange', ["com.example.actsaccountoperatetest"], changeOnRemoverAnother);
+                    console.info("====>scene start publish on success");
+                    commonevent.publish("account_on_remove_another", commonEventPublishData, publishOnSuccessCallback);
                     break;
                 case ACCOUNT_TEST_ONOFF_REMOVEONLY:
                     console.info("====>receive event 1100 event:" + data.event);
                     appAccountManager.on('accountChange', ["com.example.actsaccountoperatetest"], changeOnRemove);
+                    console.info("====>scene start publish on success");
+                    commonevent.publish("account_on_change_remove", commonEventPublishData, publishOnSuccessCallback);
                     break;
                 case ACCOUNT_TEST_ONOFF_SETDISABLE:
                     console.info("====>receive event 1200 event:" + data.event);
                     appAccountManager.on('accountChange', ["com.example.actsaccountoperatetest"], changeOnSetAnotherDisable);
+                    console.info("====>scene start publish on success");
+                    commonevent.publish("account_on_set_another_disable", commonEventPublishData, publishOnSuccessCallback);
                     break;
                 case ACCOUNT_TEST_ONOFF_SETDISABLEONLY:
                     console.info("====>receive event 1300 event:" + data.event);
                     appAccountManager.on('accountChange', ["com.example.actsaccountoperatetest"], changeOnSetDisable);
+                    console.info("====>scene start publish on success");
+                    commonevent.publish("account_on_set_disable", commonEventPublishData, publishOnSuccessCallback);
                     break;
                 default:
                     console.info("====>receive event enter default====");
