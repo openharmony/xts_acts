@@ -4258,7 +4258,7 @@ export default function UtdfileNameTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_3060
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_3060
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".stl"
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".abw"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -4426,7 +4426,7 @@ export default function UtdfileNameTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_3180
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_3180
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".hdf"
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".hqx"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -5406,7 +5406,7 @@ export default function UtdfileNameTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_3880
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_3880
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".hs"
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".tcl"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
