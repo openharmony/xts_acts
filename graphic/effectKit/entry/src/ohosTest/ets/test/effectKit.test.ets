@@ -17,8 +17,11 @@ import image from '@ohos.multimedia.image';
 import effectKit from '@ohos.effectKit';
 import { testPng, testJpg } from '../model/testImg';
 import { BusinessError } from '@ohos.base';
+import common from '@ohos.app.ability.common';
+import ohosWindow from '@ohos.window';
 
-export default function effectKitTest(context, windowStage, abilityStorage) {
+
+export default function effectKitTest(context: common.UIAbilityContext, windowStage: ohosWindow.WindowStage, abilityStorage: LocalStorage) {
   describe('effectKitTest', () => {
     console.log('describe effectKitTest start!!!');
 

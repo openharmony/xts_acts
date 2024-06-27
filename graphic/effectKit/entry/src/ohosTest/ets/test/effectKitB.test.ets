@@ -18,7 +18,7 @@ import effectKit from '@ohos.effectKit';
 import { testPng, testJpg } from '../model/testImg';
 import { BusinessError } from '@ohos.base';
 
-export default function effectKitBTest(context, windowStage, abilityStorage) {
+export default function effectKitBTest(context, windowStage) {
   describe('effectKitBTest', () => {
     console.log('describe effectKitBTest start!!!');
 
