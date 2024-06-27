@@ -32,7 +32,7 @@ export default function ExceptionPromptTest() {
         console.info('get ExceptionPromptTest state pages: ' + JSON.stringify(pages));
         if (!('exceptionPromptPage' == pages.name)) {
           console.info('get ExceptionPromptTest pages.name: ' + JSON.stringify(pages.name));
-          await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
         }
       } catch (err) {

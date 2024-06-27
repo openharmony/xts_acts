@@ -23,7 +23,7 @@ export default function SelectTitleBarTest() {
     beforeEach(async (done: Function) => {
       console.info('SelectTitleBarTest beforeEach start');
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/composeListItem/composeListItemPageTest',
+        url: 'MainAbility/pages/selectTitleBar/selectTitleBarPage',
       }
       try {
         router.clear();

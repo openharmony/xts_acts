@@ -23,7 +23,7 @@ export default function tabTitleBarPageTest() {
     beforeEach(async (done: Function) => {
       console.info("tabTitleBarPageTest beforeEach start");
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/composeListItem/composeListItemPageTest',
+        url: 'MainAbility/pages/tabTitleBar/tabTitleBarPageTest',
       }
 
       try {

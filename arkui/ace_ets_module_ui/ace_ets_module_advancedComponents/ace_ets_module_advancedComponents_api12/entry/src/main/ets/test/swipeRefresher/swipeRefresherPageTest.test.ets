@@ -23,7 +23,7 @@ export default function swipeRefresherPageTest() {
     beforeEach(async (done: Function) => {
       console.info('swipeRefresherPageTest beforeEach start');
       let options: router.RouterOptions = {
-        url: 'MainAbility/pages/composeListItem/composeListItemPageTest',
+        url: 'MainAbility/pages/swipeRefresher/swipeRefresherPageTest',
       }
       try {
         router.clear();
