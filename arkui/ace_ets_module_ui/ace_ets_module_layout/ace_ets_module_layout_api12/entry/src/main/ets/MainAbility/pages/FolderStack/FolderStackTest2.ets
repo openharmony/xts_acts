@@ -17,36 +17,36 @@
 @Entry
 @Component
 struct FolderStackTest2 {
-  @State len_wid: number = 480
-  @State text: string = "AppRotation"
+  @State lenWid: number = 480
+  @State text: string = 'AppRotation'
   build() {
     Column() {
       Text(this.text).id('FolderStackTest2_text')
       // upperItems将所需要的悬停到上半屏的id放入upperItems传入，其余组件会堆叠在下半屏区域
-      FolderStack({ upperItems: ["upperitemsId"] }) {
+      FolderStack({ upperItems: ['upperitemsId'] }) {
         // 此Column会自动上移到上半屏
         Column() {
-          Text("video zone").height("100%").width("100%").textAlign(TextAlign.Center).fontSize(25)
-        }.backgroundColor(Color.Pink).width("100%").height("100%").id("upperitemsId")
+          Text('video zone').height('100%').width('100%').textAlign(TextAlign.Center).fontSize(25)
+        }.backgroundColor(Color.Pink).width('100%').height('100%').id('upperitemsId')
 
         // 下列两个Column堆叠在下半屏区域
         Column() {
-          Text("video title")
-            .width("100%")
+          Text('video title')
+            .width('100%')
             .height(50)
             .textAlign(TextAlign.Center)
             .backgroundColor(Color.Red)
             .fontSize(25)
-        }.width("100%").height("100%").justifyContent(FlexAlign.Start)
+        }.width('100%').height('100%').justifyContent(FlexAlign.Start)
 
         Column() {
-          Text("video bar ")
-            .width("100%")
+          Text('video bar ')
+            .width('100%')
             .height(50)
             .textAlign(TextAlign.Center)
             .backgroundColor(Color.Red)
             .fontSize(25)
-        }.width("100%").height("100%").justifyContent(FlexAlign.End)
+        }.width('100%').height('100%').justifyContent(FlexAlign.End)
       }
       .backgroundColor(Color.Yellow)
       // 是否启动动效
@@ -56,9 +56,9 @@ struct FolderStackTest2 {
       // folderStack回调 当折叠状态改变时回调
       .onFolderStateChange((msg) => {
         if (msg.foldStatus === FoldStatus.FOLD_STATUS_EXPANDED) {
-          console.info("The device is currently in the expanded state")
+          console.info('The device is currently in the expanded state')
         } else if (msg.foldStatus === FoldStatus.FOLD_STATUS_HALF_FOLDED) {
-          console.info("The device is currently in the half folded state")
+          console.info('The device is currently in the half folded state')
         } else {
           // .............
         }
@@ -76,14 +76,14 @@ struct FolderStackTest2 {
       })
       // folderStack如果不撑满页面全屏，作为普通Stack使用
       .alignContent(Alignment.Bottom)
-      .height("100%")
-      .width("200vp")
+      .height('100%')
+      .width('200vp')
       .borderWidth(1)
       .backgroundColor(Color.Yellow)
 
     }
-    .height("100%")
-    .width("100%")
+    .height('100%')
+    .width('100%')
     .borderWidth(1)
     .backgroundColor(Color.Pink)
     .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.BOTTOM])

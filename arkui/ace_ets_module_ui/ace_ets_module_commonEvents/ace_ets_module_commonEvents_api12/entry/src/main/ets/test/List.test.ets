@@ -63,6 +63,8 @@ import PanGestureUpdateTest from './PanGesture/PanGestureUpdateTest.test';
 import PinchGestureUpdateTest from './PinchGesture/PinchGestureUpdateTest.test';
 import RotationGestureUpdateTest from './RotationGesture/RotationGestureUpdateTest.test';
 
+import GestureRecognizerState from './GestureRecognizer/GestureRecognizerState.test';
+
 export default function testsuite() {
   APIPreDragStatusTest();
   addGestureApplyGesture();
@@ -109,4 +111,5 @@ export default function testsuite() {
   PanGestureUpdateTest();
   PinchGestureUpdateTest();
   RotationGestureUpdateTest();
+  GestureRecognizerState();
 }
