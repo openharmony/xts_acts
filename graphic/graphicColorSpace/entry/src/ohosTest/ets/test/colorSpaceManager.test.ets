@@ -14,8 +14,11 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import colorSpaceManager from '@ohos.graphics.colorSpaceManager';
+import common from '@ohos.app.ability.common';
+import ohosWindow from '@ohos.window';
 
-export default function colorSpaceManagerTest(context, windowStage, abilityStorage) {
+
+export default function colorSpaceManagerTest(context: common.UIAbilityContext, windowStage: ohosWindow.WindowStage, abilityStorage: LocalStorage) {
   describe('colorSpaceManagerTest', () => {
     console.info('describe colorSpaceManagerTest start!!!');
     beforeAll(() => {
