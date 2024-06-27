@@ -1230,6 +1230,29 @@ HWTEST_F(DrawingNativePathTest, testPathGetBoundsNull, TestSize.Level3) {
 }
 
 /*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_3400
+ * @tc.name: testPathCloseNormal
+ * @tc.desc: test for testPathCloseNormal.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 0
+ */
+HWTEST_F(DrawingNativePathTest, testPathCloseNormal, TestSize.Level0) {
+    // 1. Create a path object using OH_Drawing_PathCreate.
+    OH_Drawing_Path *path = OH_Drawing_PathCreate();
+    // 2. Set the starting point of the path using OH_Drawing_PathMoveTo.
+    OH_Drawing_PathMoveTo(path, 0, 0);
+    // 3. Add a line segment from the starting point to the target point using OH_Drawing_PathLineTo.
+    OH_Drawing_PathLineTo(path, 100, 100);
+    // 4. Add a line segment from the last point of the path to the target point using OH_Drawing_PathLineTo.
+    OH_Drawing_PathLineTo(path, 100, 0);
+    // 5. Close the path by adding a line segment from the last point of the path to the starting point.
+    OH_Drawing_PathClose(path);
+    // 6. Free the memory.
+    OH_Drawing_PathDestroy(path);
+}
+
+/*
  * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_PATH_3401
  * @tc.name: testPathCloseNull
  * @tc.desc: Test for closing a path using NULL or invalid parameters.
