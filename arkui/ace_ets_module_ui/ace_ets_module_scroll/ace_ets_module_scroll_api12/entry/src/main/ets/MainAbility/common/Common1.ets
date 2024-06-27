@@ -54,7 +54,7 @@ export default class CommonFunc {
 
   static getComponentRectOnScreen(key) {
     let strJson = getInspectorByKey(key);
-    let obj: ESObject = JSON.parse(strJson);
+    let obj: Record<string, Object> = JSON.parse(strJson);
     console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(obj));
     let rectInfo: string[] = JSON.parse('[' + obj.$rect + ']');
     console.info("[getInspectorByKey] rectInfo is: " + rectInfo);
