@@ -18,9 +18,9 @@ group("hdf") {
   if (is_standard_system) {
     deps = [
       "device_manager:device_manager_ndk",
-      # "base:base_ndk",
-      # "hid:emit_event_test",
-      # "usb:usb_ndk",
+      "base:base_ndk",
+      "hid:emit_event_test",
+      "usb:usb_ndk",
     ]
   }
 }
