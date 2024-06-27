@@ -18,6 +18,8 @@ import ReplaceSymbolEffect_APITest from './SymbolGlyphTest/SymbolGlyph_APITest/R
 import ACTION_FIRST_APITest from './TabsTest/AnimationMode_APITest/ACTION_FIRST_APITest'
 import CONTENT_FIRST_APITest from './TabsTest/AnimationMode_APITest/CONTENT_FIRST_APITest'
 import NO_ANIMATION_APITest from './TabsTest/AnimationMode_APITest/NO_ANIMATION_APITest'
+import PatternLockActivateCircleStyle1 from './PatternLockTest/PatternLockActivateCircleStyle1.test';
+
 export default function testsuite() {
     ProgressMask()
     BounceSymbolEffect_APITest();
@@ -25,4 +27,5 @@ export default function testsuite() {
     ACTION_FIRST_APITest();
     CONTENT_FIRST_APITest();
     NO_ANIMATION_APITest();
+    PatternLockActivateCircleStyle1();
 }

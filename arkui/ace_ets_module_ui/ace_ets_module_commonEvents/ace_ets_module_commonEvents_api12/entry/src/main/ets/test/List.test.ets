@@ -32,7 +32,6 @@ import addParallelGestureTest1 from './GestureHandler/addParallelGestureTest1.te
 import onKeyPreImeTest from './onKeyEventTest/onKeyPreIme.test';
 import getModifierKeyStateTest from './onKeyEventTest/getModifierKeyState.test';
 import clearGestureTest from './GestureHandler/clearGesture.test';
-
 import TapGestureBasicClickTest from './TapGesture/TapGestureBasicClickTest.test';
 import TapGestureBasicDoubleClickTest from './TapGesture/TapGestureBasicDoubleClickTest.test';
 import LongPressGestureLongClickTest from './LongPressGesture/LongPressGestureLongClickTest.test';
@@ -49,20 +48,18 @@ import RotationGestureBasic01Test from './RotationGesture/RotationGestureBasic01
 import RotationGestureBasic02Test from './RotationGesture/RotationGestureBasic02Test.test';
 import PinchGestureBasic01Test from './PinchGesture/PinchGestureBasic01Test.test';
 import PinchGestureBasic02Test from './PinchGesture/PinchGestureBasic02Test.test';
-
 import PanGestureExampleTemplateTest from './PanGesture/PanGestureExampleTemplateTest.test';
 import PinchGestureTemplateTest from './PinchGesture/PinchGestureTemplateTest.test';
 import RotationGestureTemplateTest from './RotationGesture/RotationGestureTemplateTest.test';
-
 import TapGestureTemplateTest from './TapGesture/TapGestureTemplateTest.test';
 import LongPressGestureTemplateTest from './LongPressGesture/LongPressGestureTemplateTest.test';
 import SwipeGestureTemplateTest from './SwipeGesture/SwipeGestureTemplateTest.test';
-
-
 import PanGestureUpdateTest from './PanGesture/PanGestureUpdateTest.test';
 import PinchGestureUpdateTest from './PinchGesture/PinchGestureUpdateTest.test';
 import RotationGestureUpdateTest from './RotationGesture/RotationGestureUpdateTest.test';
 import onAttachTest from './onAttachTest/onAttach.test';
+import GestureRecognizerState from './GestureRecognizer/GestureRecognizerState.test';
+
 
 export default function testsuite() {
   APIPreDragStatusTest();
@@ -111,4 +108,5 @@ export default function testsuite() {
   PinchGestureUpdateTest();
   RotationGestureUpdateTest();
   onAttachTest();
+  GestureRecognizerState();
 }

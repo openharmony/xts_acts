@@ -46,7 +46,7 @@ struct onDetentsDidChangeExample {
           blurStyle:BlurStyle.Thick,
           showClose:true,
           title:{title:"title", subtitle:"subtitle"},
-          preferType: SheetType.CENTER,
+          preferType: SheetType.BOTTOM,
           shouldDismiss:((sheetDismiss: SheetDismiss)=> {
             console.log("bind sheet shouldDismiss")
             sheetDismiss.dismiss()

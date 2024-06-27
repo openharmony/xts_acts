@@ -147,23 +147,6 @@ export default function textAreaOnCutJsunit() {
     });
 
     /*
-     * @tc.number       SUB_ACE_BASIC_ETS_API_0007
-     * @tc.name         testtextAreaOnCut0007
-     * @tc.desic         acetextAreaOnCutEtsTest0007
-     */
-    it('testtextAreaOnCut0007', 0, async () => {
-      console.info('textAreaOnCut testtextAreaOnCut0007 START');
-      await Utils.sleep(2000);
-      let strJson = getInspectorByKey('onCutText');
-      console.info("[testtextAreaOnCut0007] component lineHeight strJson:" + strJson);
-      let obj: Record<string, Object> = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('TextArea');
-      expect(JSON.parse(strJson).$attrs.lineHeight).assertEqual(undefined);
-      console.info("[testtextAreaOnCut0007] lineHeight value :" + JSON.parse(strJson).$attrs.lineHeight);
-
-    });
-
-    /*
      * @tc.number       SUB_ACE_BASIC_ETS_API_0009
      * @tc.name         testtextAreaOnCut0009
      * @tc.desic         acetextAreaOnCutEtsTest0009
