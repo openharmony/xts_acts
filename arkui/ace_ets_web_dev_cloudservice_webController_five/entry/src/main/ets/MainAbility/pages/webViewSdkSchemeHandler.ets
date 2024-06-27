@@ -327,7 +327,7 @@ struct webViewSdkSchemeHandler {
                       resourceHandler.didFinish();
                       Utils.emitEvent(true, 1531)
                     } catch (e) {
-                      console.log("error")
+                      console.log('error')
                     }
 
                     return false;
