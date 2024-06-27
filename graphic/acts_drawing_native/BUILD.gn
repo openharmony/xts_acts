@@ -42,16 +42,22 @@ ohos_moduletest_suite("ActsDrawingNativeTest") {
      "DrawingNativeMatrixTest.cpp",
      "DrawingNativeMatrixTestPart2.cpp",
      "DrawingNativeMemoryStreamTest.cpp",
+     "DrawingNativePathEffectTest.cpp",
      "DrawingNativePathTest.cpp",
      "DrawingNativePathTestPart2.cpp",
      "DrawingNativePathTestPart3.cpp",
      "DrawingNativePenTest.cpp",
+     "DrawingNativePixelMapTest.cpp",
+     "DrawingNativePointTest.cpp",
      "DrawingNativeRectTest.cpp",
      "DrawingNativeRegionTest.cpp",
      "DrawingNativeRoundRectTest.cpp",
      "DrawingNativeSamplingOptionsTest.cpp",
      "DrawingNativeShaderEffectTest.cpp",
      "DrawingNativeShadowLayerTest.cpp",
+     "DrawingNativeSurFaceTest.cpp",
+     "DrawingNativeTextBlobTest.cpp",
+     "DrawingNativeTypeFaceTest.cpp",
   ]
 
   cflags = [
