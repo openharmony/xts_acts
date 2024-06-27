@@ -117,6 +117,8 @@ import RichEditorApi10 from './RichEditor/RichEditorApi10.test'
 import RichEditorApi11 from './RichEditor/RichEditorApi11.test'
 import RichEditorApi12 from './RichEditor/RichEditorApi12.test'
 import SearchApi1 from './Search/SearchApi1.test'
+import getLineMetrics from './TextTest/getLineMetrics.test'
+import textSelectableJsunit from './TextTest/textSelectableJsunit.test'
 
 export default function testsuite() {
   APIContentTypeTest();
@@ -221,4 +223,6 @@ export default function testsuite() {
   RichEditorApi11()
   RichEditorApi12()
   SearchApi1()
+  getLineMetrics();
+  textSelectableJsunit();
 }
