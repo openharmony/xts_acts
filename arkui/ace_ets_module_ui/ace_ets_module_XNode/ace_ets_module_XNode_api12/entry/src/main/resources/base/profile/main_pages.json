@@ -1,6 +1,7 @@
 {
     "src": [
         "MainAbility/pages/index/index",
+        "MainAbility/pages/FrameNode/APIdisposeTree",
         "MainAbility/pages/renderNode/RenderNodeDemo/RenderNodeDemo01",
         "MainAbility/pages/renderNode/RenderNodeDemo/RenderNodeDemo02",
         "MainAbility/pages/renderNode/RenderNodeDemo/RenderNodeDemo03",

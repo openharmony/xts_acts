@@ -64,8 +64,9 @@ import PinchGestureUpdateTest from './PinchGesture/PinchGestureUpdateTest.test';
 import RotationGestureUpdateTest from './RotationGesture/RotationGestureUpdateTest.test';
 
 import GestureRecognizerState from './GestureRecognizer/GestureRecognizerState.test';
-
+import APIshouldBuiltInRecognizerParallelWith from './APIshouldBuiltInRecognizerParallelWith.test';
 export default function testsuite() {
+  APIshouldBuiltInRecognizerParallelWith();
   APIPreDragStatusTest();
   addGestureApplyGesture();
   ShortcutKeyTABTest();
