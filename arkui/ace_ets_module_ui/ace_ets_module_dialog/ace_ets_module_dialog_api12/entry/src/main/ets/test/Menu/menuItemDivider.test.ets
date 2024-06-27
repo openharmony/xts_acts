@@ -40,7 +40,7 @@ export default function menuItemDivider() {
     });
     afterEach(async function () {
       await CommonFunc.sleep(1000);
-      console.info("menuItemDivi after each called");
+      console.info("menuItemDivider after each called");
     });
 
     /**
@@ -116,8 +116,8 @@ export default function menuItemDivider() {
      * @tc.type
      */
 
-    it('menuItemDivider_003', 0, async function (done) {
-      console.info('[menuItemDivider_003] START');
+    it('menuItemDivider_004', 0, async function (done) {
+      console.info('[menuItemDivider_004] START');
 
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('menuItemDividerText');

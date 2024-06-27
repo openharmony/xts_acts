@@ -27,10 +27,6 @@
     {
       "name": "app_name",
       "value": "Demo"
-    },
-    {
-      "name": "EntryAbility_label",
-      "value": "label"
     }
   ]
 }
