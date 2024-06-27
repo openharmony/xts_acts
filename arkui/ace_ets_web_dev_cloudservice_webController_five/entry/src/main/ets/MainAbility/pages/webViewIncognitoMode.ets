@@ -308,9 +308,9 @@ struct webViewIncognitoMode {
                   await Utils.sleep(2000);
                   webview.GeolocationPermissions.getStoredGeolocation(true)
                     .then(origins => {
-                      let origins_str: string = origins.join();
-                      console.log('getStoredGeolocationPromise origins: ' + origins_str);
-                      if (origins_str == 'https://m.baidu.com') {
+                      let originsStr: string = origins.join();
+                      console.log('getStoredGeolocationPromise origins: ' + originsStr);
+                      if (originsStr == 'https://m.baidu.com') {
                         Utils.emitEvent('success', 8031);
                       } else {
                         Utils.emitEvent('fail', 8031);
@@ -334,13 +334,13 @@ struct webViewIncognitoMode {
                     if (error) {
                       return;
                     }
-                    let origins_str: string = origins.join();
-                    if (origins_str == 'https://m.baidu.com') {
+                    let originsStr: string = origins.join();
+                    if (originsStr == 'https://m.baidu.com') {
                       Utils.emitEvent('success', 8032);
                     } else {
                       Utils.emitEvent('fail', 8032);
                     }
-                    console.log('getStoredGeolocationAsync origins: ' + origins_str);
+                    console.log('getStoredGeolocationAsync origins: ' + originsStr);
                   },true);
                 } catch (error) {
                   let e:business_error.BusinessError = error as business_error.BusinessError;
@@ -357,9 +357,9 @@ struct webViewIncognitoMode {
                   await Utils.sleep(2000);
                   webview.GeolocationPermissions.getStoredGeolocation()
                     .then(origins => {
-                      let origins_str: string = origins.join();
-                      console.log('getStoredGeolocationPromise origins: ' + origins_str);
-                      if (origins_str == 'https://m.baidu.com') {
+                      let originsStr: string = origins.join();
+                      console.log('getStoredGeolocationPromise origins: ' + originsStr);
+                      if (originsStr == 'https://m.baidu.com') {
                         Utils.emitEvent('success', 8033);
                       } else {
                         Utils.emitEvent('fail', 8033);
@@ -383,13 +383,13 @@ struct webViewIncognitoMode {
                     if (error) {
                       return;
                     }
-                    let origins_str: string = origins.join();
-                    if (origins_str == 'https://m.baidu.com') {
+                    let originsStr: string = origins.join();
+                    if (originsStr == 'https://m.baidu.com') {
                       Utils.emitEvent('success', 8034);
                     } else {
                       Utils.emitEvent('fail', 8034);
                     }
-                    console.log('getStoredGeolocationAsync origins: ' + origins_str);
+                    console.log('getStoredGeolocationAsync origins: ' + originsStr);
                   });
                 } catch (error) {
                   let e:business_error.BusinessError = error as business_error.BusinessError;
@@ -463,13 +463,13 @@ struct webViewIncognitoMode {
                     if (error) {
                       return;
                     }
-                    let origins_str: string = origins.join();
-                    if (!origins_str) {
+                    let originsStr: string = origins.join();
+                    if (!originsStr) {
                       Utils.emitEvent('success', 8037);
                     } else {
                       Utils.emitEvent('fail', 8037);
                     }
-                    console.log('getStoredGeolocationAsync origins: ' + origins_str);
+                    console.log('getStoredGeolocationAsync origins: ' + originsStr);
                   },true);
                 } catch (error) {
                   let e:business_error.BusinessError = error as business_error.BusinessError;
@@ -493,13 +493,13 @@ struct webViewIncognitoMode {
                     if (error) {
                       return;
                     }
-                    let origins_str: string = origins.join();
-                    if (!origins_str) {
+                    let originsStr: string = origins.join();
+                    if (!originsStr) {
                       Utils.emitEvent('success', 8038);
                     } else {
                       Utils.emitEvent('fail', 8038);
                     }
-                    console.log('getStoredGeolocationAsync origins: ' + origins_str);
+                    console.log('getStoredGeolocationAsync origins: ' + originsStr);
                   },true);
                 } catch (error) {
                   let e:business_error.BusinessError = error as business_error.BusinessError;

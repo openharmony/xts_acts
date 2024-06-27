@@ -121,7 +121,8 @@ struct webViewSdkSchemeHandler {
                     case 'emitWebViewSdkSchemeHandler_getSize': {
                       this.controller.loadUrl($rawfile('chunked_post_stream.html'))
                       await Utils.sleep(2000)
-                      if(this.httpBodyStream?.getSize() != undefined || this.existHttpBodyStream?.getSize() != undefined){
+                      let isGetSize = ( this.existHttpBodyStream?.getSize() != undefined )
+                      if(this.httpBodyStream?.getSize() != undefined || isGetSize){
                         Utils.emitEvent(true,1508)
                       }
                       break;
@@ -129,7 +130,8 @@ struct webViewSdkSchemeHandler {
                     case 'emitWebViewSdkSchemeHandler_getPosition': {
                       this.controller.loadUrl($rawfile('chunked_post_stream.html'))
                       await Utils.sleep(2000)
-                      if(this.httpBodyStream?.getPosition() !== undefined || this.existHttpBodyStream?.getPosition() !== undefined){
+                      let isExistPosition = ( this.existHttpBodyStream?.getPosition() !== undefined )
+                      if(this.httpBodyStream?.getPosition() !== undefined || isExistPosition){
                         Utils.emitEvent(true,1509)
                       }
                       break;
@@ -137,25 +139,18 @@ struct webViewSdkSchemeHandler {
                     case 'emitWebViewSdkSchemeHandler_isChunked': {
                       this.controller.loadUrl($rawfile('chunked_post_stream.html'))
                       await Utils.sleep(2000)
-                      if(this.httpBodyStream?.isChunked() !== undefined || this.existHttpBodyStream?.isChunked() !== undefined){
+                      let isExistChunked = ( this.existHttpBodyStream?.isChunked() !== undefined )
+                      if(this.httpBodyStream?.isChunked() !== undefined || isExistChunked){
                         Utils.emitEvent(true,1510)
                       }
                       break;
                     }
 
-
-                    case 'emitWebViewSdkSchemeHandler_isChunked': {
-                      this.controller.loadUrl($rawfile('chunked_post_stream.html'))
-                      await Utils.sleep(2000)
-                      if(this.httpBodyStream?.isChunked() !== undefined || this.existHttpBodyStream?.isChunked() !== undefined){
-                        Utils.emitEvent(true,1510)
-                      }
-                      break;
-                    }
                     case 'emitWebViewSdkSchemeHandler_isEof': {
                       this.controller.loadUrl($rawfile('chunked_post_stream.html'))
                       await Utils.sleep(2000)
-                      if(this.httpBodyStream?.isEof() !== undefined || this.existHttpBodyStream?.isEof() !== undefined){
+                      let isExistEof =  ( this.existHttpBodyStream?.isEof() !== undefined )
+                      if(this.httpBodyStream?.isEof() !== undefined || isExistEof){
                         Utils.emitEvent(true,1511)
                       }
                       break;
@@ -164,7 +159,8 @@ struct webViewSdkSchemeHandler {
                     case 'emitWebViewSdkSchemeHandler_isInMemory': {
                       this.controller.loadUrl($rawfile('chunked_post_stream.html'))
                       await Utils.sleep(2000)
-                      if(this.httpBodyStream?.isInMemory() !== undefined || this.existHttpBodyStream?.isInMemory() !== undefined){
+                      let isInMemory =  ( this.existHttpBodyStream?.isInMemory() !== undefined )
+                      if(this.httpBodyStream?.isInMemory() !== undefined || isInMemory){
                         Utils.emitEvent(true,1512)
                       }
                       break;
