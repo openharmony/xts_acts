@@ -100,10 +100,9 @@ export default function RichEditorMenuPolicyJsunit() {
       await driver.delayMs(2000)
 
       let RichEditorMenuPolicyCon = await driver.findComponent(ON.id("RichEditorMenuPolicyCon"));
-      await RichEditorMenuPolicyCon.click()
       await driver.delayMs(2000)
 
-      await driver.longClick(100, 100);
+      await RichEditorMenuPolicyCon.longClick();
       await driver.delayMs(2000)
       let RichEditorCon = await driver.findComponent(ON.text("剪切", MatchPattern.CONTAINS));
       expect(RichEditorCon != null).assertTrue()

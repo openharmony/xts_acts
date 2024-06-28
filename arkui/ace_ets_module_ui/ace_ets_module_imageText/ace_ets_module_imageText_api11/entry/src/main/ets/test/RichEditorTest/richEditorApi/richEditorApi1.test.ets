@@ -16,6 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import CommonFunc from "../../../MainAbility/common/Common";
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 
 export default function richEditorApi1() {
   describe('richEditorApi1', function () {
@@ -59,17 +60,20 @@ export default function richEditorApi1() {
       let driver = Driver.create();
       await CommonFunc.sleep(2000);
 
-      let RichEditor1 = CommonFunc.getComponentRect('RichEditor1')
-      await driver.doubleClick(Math.round((RichEditor1.right-RichEditor1.left)*0.5+RichEditor1.left),
-        Math.round((RichEditor1.bottom-RichEditor1.top)*0.5+RichEditor1.top))
+      let richEditor1 = await driver.findComponent(ON.id('RichEditor1'));
+      // doubleClick
+      let centerPoint = await richEditor1.getBoundsCenter();
+      let point = `${centerPoint.x} ${centerPoint.y}`;
+      let cmd = `uinput -T -d ${point} -u ${point} -i 50 -d ${point} -u ${point}`;
+      let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+      abilityDelegator.executeShellCommand(cmd);
       await CommonFunc.sleep(2000);
 
       let button1: Component = await driver.findComponent(ON.text('复制'));
       button1.click()
       await CommonFunc.sleep(1000);
 
-      await driver.click(Math.round((RichEditor1.right-RichEditor1.left)*0.5+RichEditor1.left),
-        Math.round((RichEditor1.bottom-RichEditor1.top)*0.5+RichEditor1.top))
+      await driver.click(centerPoint.x, centerPoint.y);
       await CommonFunc.sleep(2000);
 
       let button2: Component = await driver.findComponent(ON.text('粘贴'));
