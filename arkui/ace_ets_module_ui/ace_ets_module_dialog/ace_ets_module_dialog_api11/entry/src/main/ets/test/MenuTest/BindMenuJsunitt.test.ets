@@ -48,6 +48,7 @@ export default function bindMenuTesttt() {
 
     it('bindMenuTest_0100', 0, async function (done) {
       console.info('bindMenuTest_0100 START');
+      await CommonFunc.sleep(1000);
       console.info("bindMenuTest_0100 text click result is: " + JSON.stringify(sendEventByKey('text',10,"")));
       await CommonFunc.sleep(1500);
       let callback = (indexEvent) => {
@@ -67,6 +68,7 @@ export default function bindMenuTesttt() {
       console.info("bindMenuTest_0100 button click result is: " + JSON.stringify(sendEventByKey('button',10,"")));
       await CommonFunc.sleep(1000);
       console.info('bindMenuTest_0100 END');
+      done();
     });
   })
 }

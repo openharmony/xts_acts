@@ -70,7 +70,7 @@ export default function CustomDialog() {
       expect(properties.type).assertEqual(1)//1表示系统告警窗口TYPE_SYSTEM_ALERT
 
       await CommonFunc.sleep(1000);
-      await driver.click(200,200);
+      await driver.click(Math.round(globalThis.winLeft + vp2px(100)),Math.round(globalThis.winTop + vp2px(100)));
       await CommonFunc.sleep(1000);
       console.info('[CustomDialog_0100] END');
       done();
