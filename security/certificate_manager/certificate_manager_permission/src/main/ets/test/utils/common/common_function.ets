@@ -47,11 +47,9 @@ async function installPrivateCertificates(): Promise<void> {
 }
 
 function isOpenHarmonyDevice(): Boolean {
-  let deviceType: string = deviceInfo.deviceType.toLowerCase();
   let displayVersion: string = deviceInfo.displayVersion.toLowerCase();
-  console.warn(`device info deviceType is : ${deviceType}`);
   console.warn(`device info displayVersion is : ${displayVersion}`);
-  if ((deviceType == "default") && (displayVersion.indexOf("openharmony") !== -1) ){
+  if (displayVersion.indexOf("openharmony") !== -1){
     return true;
   } else {
     return false;
