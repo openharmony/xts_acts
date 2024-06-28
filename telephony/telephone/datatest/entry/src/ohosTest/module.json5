@@ -58,6 +58,21 @@
       },
       {
         "name": "ohos.permission.INTERNET"
+      },
+      {
+        "name": "ohos.permission.GET_TELEPHONY_STATE",
+      },
+      {
+        "name": "ohos.permission.MANAGE_SECURE_SETTINGS",
+      },
+      {
+        "name": "ohos.permission.MANAGE_SETTINGS",
+      },
+      {
+        "name": "ohos.permission.GET_BUNDLE_INFO",
+      },
+      {
+        "name": "ohos.permission.GET_BUNDLE_RESOURCES",
       }
     ]
   }
