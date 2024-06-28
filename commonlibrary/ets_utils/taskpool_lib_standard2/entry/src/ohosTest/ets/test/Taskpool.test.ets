@@ -2582,7 +2582,7 @@ export default function TaskpoolTest() {
         console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
         expect(error.code).assertEqual(10200014);
         expect(error.message)
-          .assertContain('The function is not mark as concurrent, taskpool: failed to serialize function.');
+          .assertContain('The function is not marked as concurrent, taskpool: failed to serialize function.');
       }
       console.info(`${caseName} test end`);
       done();
@@ -2625,7 +2625,7 @@ export default function TaskpoolTest() {
         console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
         expect(error.code).assertEqual(10200014);
         expect(error.message)
-          .assertContain("The function is not mark as concurrent, taskpool: failed to serialize function.");
+          .assertContain("The function is not marked as concurrent, taskpool: failed to serialize function.");
       }
       console.info(`${caseName} test end`);
       done();
@@ -2654,7 +2654,7 @@ export default function TaskpoolTest() {
       } catch (error) {
         console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
         expect(error.code).assertEqual(10200015);
-        expect(error.message).assertContain("The task does not exist when it is canceled");
+        expect(error.message).assertContain("The task to cancel does not exist");
       }
       console.info(`${caseName} test end`);
       done();
@@ -2703,7 +2703,7 @@ export default function TaskpoolTest() {
       } catch (error) {
         console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
         expect(error.code).assertEqual(10200015);
-        expect(error.message).assertContain('The task does not exist when it is canceled');
+        expect(error.message).assertContain('The task to cancel does not exist');
       }
       console.info(`${caseName} test end`);
       done();
@@ -2775,7 +2775,7 @@ export default function TaskpoolTest() {
       } catch (error) {
         console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
         expect(error.code).assertEqual(10200029);
-        expect(error.message).assertContain("Can not set an arraybuffer to both transferList and cloneList");
+        expect(error.message).assertContain("An ArrayBuffer cannot be set as both a transfer list and a clone list");
       }
       console.info(`${caseName} test end`);
       done();

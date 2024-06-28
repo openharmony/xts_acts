@@ -553,7 +553,7 @@ describe('threadWorkerTest', function () {
             ss.postMessage("hello world")
             await promiseCase()
         } catch (error) {
-            let msg = "Worker instance is not running, maybe worker is terminated when PostMessage"
+            let msg = "The Worker instance is not running, maybe worker is terminated when PostMessage"
             expect(error.name).assertEqual("BusinessError")
             expect(error.message).assertEqual(msg)
             done()
@@ -782,7 +782,7 @@ describe('threadWorkerTest', function () {
             })
         } catch (error) {
             expect(error.name).assertEqual("BusinessError")
-            expect(error.message).assertEqual("Worker instance is not running, maybe worker is terminated")
+            expect(error.message).assertEqual("The Worker instance is not running, maybe worker is terminated")
 
             done()
         }
@@ -993,7 +993,7 @@ describe('threadWorkerTest', function () {
             })
         } catch (error) {
             expect(error.name).assertEqual("BusinessError")
-            expect(error.message).assertEqual("Worker instance is not running, maybe worker is terminated")
+            expect(error.message).assertEqual("The Worker instance is not running, maybe worker is terminated")
 
             done()
         }
@@ -1209,7 +1209,7 @@ describe('threadWorkerTest', function () {
 
         } catch (error) {
             expect(error.name).assertEqual("BusinessError")
-            expect(error.message).assertEqual("Worker instance is not running, maybe worker is terminated")
+            expect(error.message).assertEqual("The Worker instance is not running, maybe worker is terminated")
             done()
         }
     })
@@ -1242,7 +1242,7 @@ describe('threadWorkerTest', function () {
             ss.dispatchEvent({type: "zhangsan", timeStamp: 0})
         } catch (error) {
             expect(error.name).assertEqual("BusinessError")
-            expect(error.message).assertEqual("Worker instance is not running, maybe worker has been terminated")
+            expect(error.message).assertEqual("The Worker instance is not running, maybe worker has been terminated")
             done()
         }
     })
@@ -1346,7 +1346,7 @@ describe('threadWorkerTest', function () {
             ss.off("zhangsan")
         } catch (error) {
             expect(error.name).assertEqual("BusinessError")
-            expect(error.message).assertEqual("Worker instance is not running, maybe worker is terminated")
+            expect(error.message).assertEqual("The Worker instance is not running, maybe worker is terminated")
             done()
         }
     })
@@ -1557,7 +1557,7 @@ describe('threadWorkerTest', function () {
             ss.removeAllListener()
         } catch (error) {
             expect(error.name).assertEqual("BusinessError")
-            expect(error.message).assertEqual("Worker instance is not running, maybe worker is terminated")
+            expect(error.message).assertEqual("The Worker instance is not running, maybe worker is terminated")
             done()
         }
     })
@@ -1587,7 +1587,7 @@ describe('threadWorkerTest', function () {
             ss.removeEventListener("zhangsan")
         } catch (error) {
             expect(error.name).assertEqual("BusinessError")
-            expect(error.message).assertEqual("Worker instance is not running, maybe worker is terminated")
+            expect(error.message).assertEqual("The Worker instance is not running, maybe worker is terminated")
             done()
         }
     })
@@ -1704,7 +1704,7 @@ describe('threadWorkerTest', function () {
         } catch (error) {
             expect(res).assertEqual(0)
             expect(error.name).assertEqual("BusinessError")
-            let msg = "Worker instance is not running, maybe worker is terminated when PostMessage"
+            let msg = "The Worker instance is not running, maybe worker is terminated when PostMessage"
             expect(error.message).assertEqual(msg)
 
             done()
@@ -3105,7 +3105,7 @@ describe('threadWorkerTest', function () {
             }
         } catch (error) {
             expect(error.name == "BusinessError").assertTrue()
-            let msg = "Worker initialization failure, the number of workers exceeds the maximum."
+            let msg = "Worker initialization failed, the number of workers exceeds the maximum."
             expect(error.message).assertEqual(msg)
             done()
         }
