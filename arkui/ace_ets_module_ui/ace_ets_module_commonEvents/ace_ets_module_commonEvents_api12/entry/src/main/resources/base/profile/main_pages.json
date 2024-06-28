@@ -1,6 +1,7 @@
 {
     "src": [
         "MainAbility/pages/index/index",
+        "MainAbility/pages/APIshouldBuiltInRecognizerParallelWith",
         "MainAbility/pages/PanGesture/PanGestureExampleTemplate",
         "MainAbility/pages/PinchGesture/PinchGestureTemplate",
         "MainAbility/pages/RotationGesture/RotationGestureTemplate",

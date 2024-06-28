@@ -79,8 +79,9 @@ import RenderNodeDemo04Test from './renderNode/RenderNodeDemo/RenderNodeDemo04Te
 import RenderNodeDemo05Test from './renderNode/RenderNodeDemo/RenderNodeDemo05Test.test';
 import RenderNodeDemo06Test from './renderNode/RenderNodeDemo/RenderNodeDemo06Test.test';
 
-
+import APIdisposeTreeTest from './FrameNodeTest/APIdisposeTreeTest.test';
 export default function testsuite() {
+  APIdisposeTreeTest();
   RenderNodeDemo01Test();
   RenderNodeDemo02Test();
   RenderNodeDemo03Test();
