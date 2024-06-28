@@ -62,6 +62,10 @@ import RichEditor4 from './RichEditorEnhance/RichEditor4.test'
 import RichEditor5 from './RichEditorEnhance/RichEditor5.test'
 import RichEditor6 from './RichEditorEnhance/RichEditor6.test'
 import RichEditor7 from './RichEditorEnhance/RichEditor7.test'
+import RichEditor8 from './RichEditorEnhance/RichEditor8.test'
+import RichEditor9 from './RichEditorEnhance/RichEditor9.test'
+import RichEditor10 from './RichEditorEnhance/RichEditor10.test'
+import RichEditor11 from './RichEditorEnhance/RichEditor11.test'
 import TextInputTextAreaSearch from './RichEditorEnhance/TextInputTextAreaSearch.test'
 import TextAreaApi1 from './TextArea/TextAreaApi1.test'
 import TextAreaApi2 from './TextArea/TextAreaApi2.test'
@@ -173,6 +177,10 @@ export default function testsuite() {
   RichEditor5();
   RichEditor6();
   RichEditor7();
+  RichEditor8();
+  RichEditor9();
+  RichEditor10();
+  RichEditor11();
   TextInputTextAreaSearch();
   TextAreaApi1();
   TextAreaApi2();
