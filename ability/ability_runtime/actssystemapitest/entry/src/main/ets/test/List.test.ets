@@ -21,6 +21,7 @@ import formHostTest from './FormHost.test'
 import formProviderTest from './FormProvider.test'
 import abilityContextTest from './AbilityContext.test'
 import contextTest from './Context.test'
+import RequestModalUIExtension from './RequestModalUIExtension.test'
 
 export default function testsuite() {
   abilityManagerTest();
@@ -31,4 +32,5 @@ export default function testsuite() {
   formProviderTest();
   abilityContextTest();
   contextTest();
+  RequestModalUIExtension();
 }
