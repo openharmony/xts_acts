@@ -13,16 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import router from '@ohos.router';
 import CommonFunc from '../MainAbility/utils/Common';
 
 export default function curvesJsunit() {
-  describe('curvesJsunit', function () {
-    beforeEach(async function (done) {
+  describe('curvesJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("curves beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/curves',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/curves',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function curvesJsunit() {
         console.info("get curves state pages:" + JSON.stringify(pages));
         if (!("curves" == pages.name)) {
           console.info("get curves state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push curves page result:" + JSON.stringify(result));
         }
@@ -40,7 +40,7 @@ export default function curvesJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("curves after each called");
     });

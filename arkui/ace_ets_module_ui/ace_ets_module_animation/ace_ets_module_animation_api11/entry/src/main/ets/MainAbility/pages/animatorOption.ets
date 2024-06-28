@@ -58,20 +58,34 @@ struct ColumnExample {
     Column() {
       Column() {
         Column() {
-          Column().width(this.divWidth).height(this.divHeight).backgroundColor(0xAFEEEE)
-        }.width('100%')
-      }.width('100%').padding({ top: 5 })
+          Column()
+            .width(this.divWidth)
+            .height(this.divHeight)
+            .backgroundColor(0xAFEEEE)
+        }
+        .width('100%')
+      }
+      .width('100%')
+      .padding({ top: 5 })
 
       Column() {
         Row() {
-          Button('play').borderRadius(8).backgroundColor(0x317aff).width(90).onClick(() => {
+          Button('play')
+            .borderRadius(8)
+            .backgroundColor(0x317aff)
+            .width(90)
+            .onClick(() => {
             this.animation.onframe((value: ESObject) => {
               this.divWidth = value
               this.divHeight = value
             });
             this.animation.play();
           });
-          Button('update').borderRadius(8).backgroundColor(0x317aff).width(90).onClick(() => {
+          Button('update')
+            .borderRadius(8)
+            .backgroundColor(0x317aff)
+            .width(90)
+            .onClick(() => {
             let newoptions: Options = {
               duration: 5000,
               iterations: 2,
@@ -84,10 +98,18 @@ struct ColumnExample {
         }.margin({ top: 5 })
 
         Row() {
-          Button('pause').borderRadius(8).backgroundColor(0x317aff).width(90).onClick(() => {
+          Button('pause')
+            .borderRadius(8)
+            .backgroundColor(0x317aff)
+            .width(90)
+            .onClick(() => {
             this.animation.pause();
           });
-          Button('finish').borderRadius(8).backgroundColor(0x317aff).width(90).onClick(() => {
+          Button('finish')
+            .borderRadius(8)
+            .backgroundColor(0x317aff)
+            .width(90)
+            .onClick(() => {
             this.animation.onfinish(() => {
               prompt.showToast({
                 message: 'finish'
@@ -98,10 +120,18 @@ struct ColumnExample {
         }.margin({ top: 5 })
 
         Row() {
-          Button('cancel').borderRadius(8).backgroundColor(0x317aff).width(90).onClick(() => {
+          Button('cancel')
+            .borderRadius(8)
+            .backgroundColor(0x317aff)
+            .width(90)
+            .onClick(() => {
             this.animation.cancel();
           });
-          Button('reverse').borderRadius(8).backgroundColor(0x317aff).width(90).onClick(() => {
+          Button('reverse')
+            .borderRadius(8)
+            .backgroundColor(0x317aff)
+            .width(90)
+            .onClick(() => {
             this.animation.reverse();
           });
         }.margin({ top: 5 })

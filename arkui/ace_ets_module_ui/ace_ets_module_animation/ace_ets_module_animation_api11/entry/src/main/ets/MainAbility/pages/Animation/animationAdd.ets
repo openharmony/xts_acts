@@ -20,15 +20,19 @@ class Point {
     this.x = x
     this.y = y
   }
+
   plus(rhs: Point): Point {
     return new Point(this.x + rhs.x, this.y + rhs.y)
   }
+
   subtract(rhs: Point): Point {
     return new Point(this.x - rhs.x, this.y - rhs.y)
   }
+
   multiply(scale: number): Point {
     return new Point(this.x * scale, this.y * scale)
   }
+
   equals(rhs: Point): boolean {
     return this.x === rhs.x && this.y === rhs.y
   }
@@ -39,6 +43,7 @@ class PointVector extends Array<Point> implements AnimatableArithmetic<PointVect
     super();
     value.forEach(p => this.push(p))
   }
+
   plus(rhs: PointVector): PointVector {
     let result = new PointVector([])
     const len = Math.min(this.length, rhs.length)
@@ -47,6 +52,7 @@ class PointVector extends Array<Point> implements AnimatableArithmetic<PointVect
     }
     return result
   }
+
   subtract(rhs: PointVector): PointVector {
     let result = new PointVector([])
     const len = Math.min(this.length, rhs.length)
@@ -55,6 +61,7 @@ class PointVector extends Array<Point> implements AnimatableArithmetic<PointVect
     }
     return result
   }
+
   multiply(scale: number): PointVector {
     let result = new PointVector([])
     for (let i = 0; i < this.length; i++) {
@@ -62,6 +69,7 @@ class PointVector extends Array<Point> implements AnimatableArithmetic<PointVect
     }
     return result
   }
+
   equals(rhs: PointVector): boolean {
     if (this.length != rhs.length) {
       return false
@@ -73,14 +81,16 @@ class PointVector extends Array<Point> implements AnimatableArithmetic<PointVect
     }
     return true
   }
-  get():Array<[x: number, y: number]> {
-    let result = []
+
+  get(): Array<[x: number, y: number]> {
+    let result: Array<[x: number, y: number]> = []
     this.forEach(p => result.push([p.x, p.y]))
     return result
   }
 }
 
-@AnimatableExtend(Polyline) function animatablePoints(points: PointVector) {
+@AnimatableExtend(Polyline)
+function animatablePoints(points: PointVector) {
   .points(points.get())
 }
 
@@ -94,12 +104,13 @@ struct AnimatablePropertyExample {
     new Point(200, Math.random() * 200),
     new Point(250, Math.random() * 200),
   ])
+
   build() {
     Column() {
       Polyline()
         .animatablePoints(this.points)
-        .animation({duration: 1000, curve: "ease"})
-        .size({height:220, width:300})
+        .animation({ duration: 1000, curve: "ease" })
+        .size({ height: 220, width: 300 })
         .fill(Color.Green)
         .stroke(Color.Red)
         .backgroundColor('#eeaacc')

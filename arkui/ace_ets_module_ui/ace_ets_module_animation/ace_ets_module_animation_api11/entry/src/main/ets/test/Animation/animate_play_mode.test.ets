@@ -14,8 +14,8 @@
  */
 
 import router from '@ohos.router';
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from '../../MainAbility/common/Utils.ets'
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import Utils from '../../MainAbility/common/Utils';
 
 export default function playModeReverseJsunit() {
   describe('playModeReverseTest', () => {

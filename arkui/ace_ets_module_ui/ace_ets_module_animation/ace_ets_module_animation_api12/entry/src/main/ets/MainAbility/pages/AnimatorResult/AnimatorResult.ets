@@ -17,13 +17,14 @@ import animator, { AnimatorResult } from '@ohos.animator';
 @Entry
 @Component
 struct AnimatorTest1 {
-  private TAG: string = '[AnimatorTest]'
-  private backAnimator: AnimatorResult | undefined = undefined
-  private flag: boolean = false
-  @State wid: number = 100
-  @State hei: number = 100
-  @State onFrameText: string = ''
-  @State onRepeatText: string = ''
+  private TAG: string = '[AnimatorTest]';
+  private backAnimator: AnimatorResult | undefined = undefined;
+  private flag: boolean = false;
+  @State wid: number = 100;
+  @State hei: number = 100;
+  @State onFrameText: string = '';
+  @State onRepeatText: string = '';
+
   create() {
     let _this = this
     this.backAnimator = animator.create({
@@ -36,24 +37,23 @@ struct AnimatorTest1 {
       begin: 100,
       end: 200
     })
-    this.backAnimator.onFinish = ()=> {
+    this.backAnimator.onFinish = () => {
       _this.flag = true
       console.info(_this.TAG, 'backAnimator onfinish')
     }
-    this.backAnimator.onRepeat = ()=> {
+    this.backAnimator.onRepeat = () => {
       console.info(_this.TAG, 'backAnimator repeat')
       _this.onRepeatText = 'onRepeat'
     }
-    this.backAnimator.onCancel = ()=> {
+    this.backAnimator.onCancel = () => {
       console.info(_this.TAG, 'backAnimator cancel')
     }
-    this.backAnimator.onFrame = (value)=> {
+    this.backAnimator.onFrame = (value) => {
       _this.wid = value
       _this.hei = value
       _this.onFrameText = 'onFrame'
     }
   }
-
 
   aboutToDisappear() {
     // 由于backAnimator在onframe中引用了this, this中保存了backAnimator，
@@ -97,14 +97,13 @@ struct AnimatorTest1 {
             .fontColor(Color.Black)
             .onClick(() => {
               this.flag = false
-              if(this.backAnimator){
+              if (this.backAnimator) {
                 this.backAnimator.play()
               }
             })
             .id('play')
         }
         .padding(10)
-
       }
     }
   }
