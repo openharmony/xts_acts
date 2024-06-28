@@ -19954,5 +19954,129 @@ export default function imageExifGetModifyTest() {
         done();
       }
     })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_014800
+     * @tc.name      : modifyImageProperty('ExposureTime')_promise
+     * @tc.desc      : 1.create imageSource
+     *                 2.modifyImageProperty('ExposureTime', `16/10`)_promise
+     *                 3.getImageProperty_promise value is the expected value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_014800', 0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_014800';
+      const key = image.PropertyKey.EXPOSURE_TIME
+      const modifyData: string = `16/10`;
+      const compareData: string = `1.6 sec.`;
+      try {
+        let result: boolean = true
+        for(let i=0; i<modfiyFileSuffixs.length; i++){
+          const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
+            `test_exif_empty.${modfiyFileSuffixs[i]}`,"fd");
+          result = result && checkResult
+        }
+        expect(result).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `modifyImageProperty promise error ExposureTime ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_014900
+     * @tc.name      : modifyImageProperty('ExposureTime')_promise
+     * @tc.desc      : 1.create imageSource
+     *                 2.modifyImageProperty('ExposureTime', `12/2`)_promise
+     *                 3.getImageProperty_promise value is the expected value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_014900', 0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_EMPTYIMAGE_PROMISE_014900';
+      const key = image.PropertyKey.EXPOSURE_TIME
+      const modifyData: string = `12/2`;
+      const compareData: string = `6 sec.`;
+      try {
+        let result: boolean = true
+        for(let i=0; i<modfiyFileSuffixs.length; i++){
+          const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
+            `test_exif_empty.${modfiyFileSuffixs[i]}`,"uri");
+          result = result && checkResult
+        }
+        expect(result).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `modifyImageProperty promise error ExposureTime ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_014600
+     * @tc.name      : modifyImageProperty('ExposureTime')_promise
+     * @tc.desc      : 1.create imageSource
+     *                 2.modifyImageProperty('ExposureTime', `1696000/1000000000`)_promise
+     *                 3.getImageProperty_promise value is the expected value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_014600', 0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_014600';
+      const key = image.PropertyKey.EXPOSURE_TIME
+      const modifyData: string = `1696000/1000000000`;
+      const compareData: string = `1/590 sec.`;
+      try {
+        let result: boolean = true
+        for(let i=0; i<modfiyFileSuffixs.length; i++){
+          const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
+            `test_exif_v2.${modfiyFileSuffixs[i]}`,"fd")
+          result = result && checkResult
+        }
+        expect(result).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `modifyImageProperty error ExposureTime ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_014700
+     * @tc.name      : modifyImageProperty('ExposureTime')_promise
+     * @tc.desc      : 1.create imageSource
+     *                 2.modifyImageProperty('ExposureTime', `4000000000/1000000000`)_promise
+     *                 3.getImageProperty_promise value is the expected value
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_014700', 0, async (done: Function) => {
+      const testTag = 'SUB_MULTIMEDIA_EXIF_MODIFYIMAGEPROPERTY_IMAGECONTAINSEXIF_PROMISE_014700';
+      const key = image.PropertyKey.EXPOSURE_TIME
+      const modifyData: string = `4000000000/1000000000`;
+      const compareData: string = `4 sec.`;
+      try {
+        let result: boolean = true
+        for(let i=0; i<modfiyFileSuffixs.length; i++){
+          const checkResult = await testModifyPromise(testTag, key, modifyData, compareData,
+            `test_exif_v2.${modfiyFileSuffixs[i]}`,"uri")
+          result = result && checkResult
+        }
+        expect(result).assertTrue()
+        done()
+      } catch (e) {
+        hilog.info(0x0000, testTag, `modifyImageProperty error ExposureTime ` + e);
+        expect().assertFail();
+        done();
+      }
+    })
   })
 }
