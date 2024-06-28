@@ -65,6 +65,9 @@ export default function CustomDialogRouter() {
       // api 11, dialog is closed, confirmButton is not exist
       let confirmButton = await driver.findComponent(ON.id('CustomDialogConfirm'));
       expect(confirmButton).assertNull();
+      await driver.click(Math.round(globalThis.winLeft + vp2px(200)),Math.round(globalThis.winTop + vp2px(200)));
+      await CommonFunc.sleep(1000);
+        console.info('CustomDialogRouter_0100 END');
       done();
     });
 

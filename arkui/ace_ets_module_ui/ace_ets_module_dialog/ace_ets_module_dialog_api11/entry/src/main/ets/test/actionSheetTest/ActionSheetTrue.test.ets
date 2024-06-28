@@ -70,7 +70,7 @@ export default function ActionSheetTrue() {
       expect(properties.type).assertEqual(0)//0表示应用子窗口TYPE_APP
 
       await CommonFunc.sleep(1000);
-      await driver.click(200,200);
+      await driver.click(Math.round(globalThis.winLeft + vp2px(200)),Math.round(globalThis.winTop + vp2px(200)));
       await CommonFunc.sleep(1000);
       console.info('[ActionSheetTrue_0100] END');
       done();
