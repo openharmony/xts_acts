@@ -4,13 +4,14 @@
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
         "bundle-name": "com.arkui.ace.scroll12",
-        "module-name": "phone",
+        "module-name": "entry_test",
         "shell-timeout": "600000",
         "testcase-timeout": "180000"
     },
     "kits": [{
         "test-file-name": [
-            "ActsAceEtsModuleScrollApi12Test.hap"
+            "ActsAceEtsModuleScrollApi12Test.hap",
+            "ActsAceEtsModuleScrollApi12TestMain.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true
@@ -19,7 +20,8 @@
         "run-command": [
             "power-shell wakeup",
             "uinput -T -m 300 2700 280 200",
-            "power-shell setmode 602"
+            "power-shell setmode 602",
+            "power-shell timeout -o 864000000"
         ]
     }]
 }

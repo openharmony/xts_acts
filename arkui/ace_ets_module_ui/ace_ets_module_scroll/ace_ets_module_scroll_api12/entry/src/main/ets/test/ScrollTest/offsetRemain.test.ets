@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 export default function offsetRemain() {
-  describe('offsetRemain', function () {
-    beforeEach(async function (done) {
+  describe('offsetRemain', () => {
+    beforeEach(async (done: Function) => {
       console.info("offsetRemain beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/Scroll/offsetRemain",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/Scroll/offsetRemain",
       }
       try {
         router.clear();
@@ -49,7 +49,7 @@ export default function offsetRemain() {
      * @tc.type :
      * @tc.size :
      */
-    it('offsetRemain_0100', 0, async function (done) {
+    it('offsetRemain_0100', 0, async (done: Function) => {
       console.info('offsetRemain_0100 START');
       let driver = Driver.create();
       let size = await driver.getDisplaySize();
@@ -64,7 +64,7 @@ export default function offsetRemain() {
       
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('offsetRemain');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[offsetRemain_0100] component obj is: " + JSON.stringify(obj));
       console.info("[offsetRemain_0100] content obj is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content > 0).assertEqual(true);  

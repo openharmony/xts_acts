@@ -19,8 +19,8 @@ import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 export default function tabIconJsunit() {
-  describe('tabIconJsunit', function () {
-    beforeEach(async function (done) {
+  describe('tabIconJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("tabIconJsunit beforeEach start");
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/Tabs/tabIcon',
@@ -50,11 +50,11 @@ export default function tabIconJsunit() {
     * @tc.type:
     * @tc.size:
     */
-    it('tabIconJsunit_0100', 0, async function (done) {
+    it('tabIconJsunit_0100', 0, async (done: Function) => {
       console.info('tabIconJsunit_0100 START');
 
       let strJson = getInspectorByKey('tabBar_iconStyle');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[tabIconJsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[tabIconJsunit_0100] iconStyle: " + JSON.stringify(obj.$attrs.iconStyle));
       expect(obj.$attrs.tabBar.iconStyle.unselectedColor).assertEqual("#FFFF0000");
@@ -70,7 +70,7 @@ export default function tabIconJsunit() {
      * @tc.type:
      * @tc.size:
      */
-    it('tabIconJsunit_0200', 0, async function (done) {
+    it('tabIconJsunit_0200', 0, async (done: Function) => {
       console.info('tabIconJsunit_0200 START');
       let swiperTabs = CommonFunc.getComponentRectOnScreen('tabs_iconStyle');
       let top = swiperTabs.top;
@@ -86,8 +86,8 @@ export default function tabIconJsunit() {
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('tabIcon_mess1');
       let strJson1 = getInspectorByKey('tabIcon_mess2');
-      let obj = JSON.parse(strJson);
-      let obj1 = JSON.parse(strJson1);
+      let obj: ESObject = JSON.parse(strJson);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[tabIconJsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[tabIconJsunit_0200] component obj1 is: " + JSON.stringify(obj1));
       expect(obj.$attrs.content).assertEqual('onWillHide');

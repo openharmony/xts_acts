@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 export default function ListScrollTest1() {
-  describe('ListScrollTest1', function () {
-    beforeEach(async function (done) {
+  describe('ListScrollTest1', () => {
+    beforeEach(async (done: Function) => {
       console.info("ListScrollTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Scroll/ListScroll',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Scroll/ListScroll',
       }
       try {
         router.clear();
@@ -48,7 +48,7 @@ export default function ListScrollTest1() {
      * @tc.type :
      * @tc.size :
      */
-    it('ListScrollTest1_0100', 0, async function (done) {
+    it('ListScrollTest1_0100', 0, async (done: Function) => {
       console.info('ListScrollTest_0100 START');
       let swiperAnimation = CommonFunc.getComponentRectOnScreen('listScroll_4');
       let top = swiperAnimation.top;
@@ -65,9 +65,9 @@ export default function ListScrollTest1() {
       let strJson = getInspectorByKey('listScroll_1');
       let strJson1 = getInspectorByKey('listScroll_2');
       let strJson2 = getInspectorByKey('listScroll_3');
-      let obj = JSON.parse(strJson);
-      let obj1 = JSON.parse(strJson1);
-      let obj2 = JSON.parse(strJson2);
+      let obj: ESObject = JSON.parse(strJson);
+      let obj1: ESObject = JSON.parse(strJson1);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[ListScrollTest_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ListScrollTest_0100] component obj1 is: " + JSON.stringify(obj1));
       console.info("[ListScrollTest_0100] component obj2 is: " + JSON.stringify(obj2));
