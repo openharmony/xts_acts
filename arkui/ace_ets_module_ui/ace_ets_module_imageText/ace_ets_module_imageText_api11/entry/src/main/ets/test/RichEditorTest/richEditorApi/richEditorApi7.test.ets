@@ -72,9 +72,12 @@ export default function richEditorApi7() {
 
       let driver = Driver.create();
       await CommonFunc.sleep(300);
+      let richEditor = CommonFunc.getComponentRectOnScreen('RichEditor7');
+
       await driver.mouseLongClick({
-        x: 300, y: 300
+        x:Math.round(richEditor.left) + 300, y: Math.round(richEditor.top) + 300
       }, MouseButton.MOUSE_BUTTON_LEFT)
+      await CommonFunc.sleep(2000);
       let text1 = getInspectorByKey('richEditorApi7_text1');
       let Obj1: ESObject = JSON.parse(text1);
       expect(Obj1.$attrs.content).assertEqual('333');

@@ -59,7 +59,7 @@ export default function richEditorApi1() {
       let driver = Driver.create();
       await CommonFunc.sleep(2000);
 
-      let RichEditor1 = CommonFunc.getComponentRect('RichEditor1')
+      let RichEditor1 = CommonFunc.getComponentRectOnScreen('RichEditor1')
       await driver.doubleClick(Math.round((RichEditor1.right-RichEditor1.left)*0.5+RichEditor1.left),
         Math.round((RichEditor1.bottom-RichEditor1.top)*0.5+RichEditor1.top))
       await CommonFunc.sleep(2000);
