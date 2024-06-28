@@ -32,7 +32,13 @@
             "push": [
                 "./resource/image/test_exif_v2.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.imagePackerExif/haps/entry/files",
                 "./resource/image/test_exif_v2.png ->/data/app/el2/100/base/ohos.acts.multimedia.image.imagePackerExif/haps/entry/files",
-                "./resource/image/test_exif_v2.webp ->/data/app/el2/100/base/ohos.acts.multimedia.image.imagePackerExif/haps/entry/files"
+                "./resource/image/test_exif_v2.webp ->/data/app/el2/100/base/ohos.acts.multimedia.image.imagePackerExif/haps/entry/files",
+                "./resource/image/test_exif_empty.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.imagePackerExif/haps/entry/files",
+                "./resource/image/test_exif_empty.png ->/data/app/el2/100/base/ohos.acts.multimedia.image.imagePackerExif/haps/entry/files",
+                "./resource/image/test_exif_empty.webp ->/data/app/el2/100/base/ohos.acts.multimedia.image.imagePackerExif/haps/entry/files",
+                "./resource/image/test_exif_v3.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.imagePackerExif/haps/entry/files",
+                "./resource/image/test_exif_v3.png ->/data/app/el2/100/base/ohos.acts.multimedia.image.imagePackerExif/haps/entry/files",
+                "./resource/image/test_exif_v3.webp ->/data/app/el2/100/base/ohos.acts.multimedia.image.imagePackerExif/haps/entry/files"
             ]
         }
     ]
