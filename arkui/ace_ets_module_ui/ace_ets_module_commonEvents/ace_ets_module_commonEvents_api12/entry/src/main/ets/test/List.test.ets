@@ -62,6 +62,9 @@ import GestureRecognizerState from './GestureRecognizer/GestureRecognizerState.t
 import APIshouldBuiltInRecognizerParallelWith from './APIshouldBuiltInRecognizerParallelWith.test';
 
 
+
+import typeNodeGestureTest from './PanGesture/Gesture.test';
+
 export default function testsuite() {
   APIshouldBuiltInRecognizerParallelWith();
   APIPreDragStatusTest();
@@ -111,4 +114,5 @@ export default function testsuite() {
   RotationGestureUpdateTest();
   onAttachTest();
   GestureRecognizerState();
+  typeNodeGestureTest();
 }

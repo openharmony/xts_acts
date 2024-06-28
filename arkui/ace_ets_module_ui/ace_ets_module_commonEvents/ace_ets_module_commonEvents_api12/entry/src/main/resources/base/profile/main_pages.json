@@ -48,6 +48,7 @@
         "MainAbility/pages/onKeyEvent/OnKeyPreIme",
         "MainAbility/pages/onKeyEvent/getModifierKeyState",
         "MainAbility/pages/onAttach/onAttach",
-        "MainAbility/pages/GestureRecognizer/GestureRecognizerState"
+        "MainAbility/pages/GestureRecognizer/GestureRecognizerState",
+	"MainAbility/pages/PanGesture/Gesture"
     ]
 }

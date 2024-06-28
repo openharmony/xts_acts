@@ -117,6 +117,10 @@
     "MainAbility/pages/RichEditor/RichEditorApi12",
     "MainAbility/pages/Search/SearchApi1",
     "MainAbility/pages/Text/getLineMetrics",
-    "MainAbility/pages/Text/textSelectable"
+    "MainAbility/pages/Text/textSelectable",
+    "MainAbility/pages/Text/TextDecorationStyle",
+    "MainAbility/pages/Text/TextSelectableMode1",
+    "MainAbility/pages/Text/TextSelectableMode2",
+    "MainAbility/pages/Text/TextSelectableMode3"
   ]
 }

@@ -68,6 +68,9 @@
         "MainAbility/pages/typeNode/RelativeContainer",
         "MainAbility/pages/typeNode/Swiper",
         "MainAbility/pages/FrameNode/RELOAD",
-        "MainAbility/pages/FrameNode/expectedUpdateInterval"
+        "MainAbility/pages/FrameNode/expectedUpdateInterval",
+	"MainAbility/pages/typeNode/ListItem",
+        "MainAbility/pages/typeNode/TextInput",
+        "MainAbility/pages/typeNode/ChildrenMainSize"
     ]
 }
