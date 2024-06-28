@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import usb from '@ohos.usbManager'
+import usbManager from '@ohos.usbManager'
 import deviceManager from '@ohos.driver.deviceManager'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'deccjsunit/index'
 
@@ -44,7 +44,7 @@ describe("NoPermissionJsTest", function () {
     beforeAll(function () {
         console.info('beforeAll called');
         try {
-            const devicesList = usb.getDevices();
+            const devicesList = usbManager.getDevices();
             if (Array.isArray(devicesList)) {
                 deviceNum = devicesList.length;
             }
@@ -66,9 +66,12 @@ describe("NoPermissionJsTest", function () {
     })
 
     /*
-     * @tc.name:Permission_queryDevices_001
-     * @tc.desc:verify permission of queryDevices
-     * @tc.type: FUNC
+     * @tc.number     : Permission_queryDevices_001
+     * @tc.name       : Permission_queryDevices_001
+     * @tc.desc       : verify permission of queryDevices
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
      */
     it("Permission_queryDevices_001", 0, done => {
         console.info('----------------------Permission_queryDevices_001---------------------------');
@@ -86,9 +89,12 @@ describe("NoPermissionJsTest", function () {
     });
 
     /*
-     * @tc.name:Permission_bindDevice_001
-     * @tc.desc:verify permission of bindDevice
-     * @tc.type: FUNC
+     * @tc.number     : Permission_bindDevice_001
+     * @tc.name       : Permission_bindDevice_001
+     * @tc.desc       : verify permission of bindDevice
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
      */
     it("Permission_bindDevice_001", 0, done => {
         console.info('----------------------Permission_bindDevice_001---------------------------');
@@ -106,9 +112,12 @@ describe("NoPermissionJsTest", function () {
     });
 
     /*
-     * @tc.name:Permission_bindDevice_002
-     * @tc.desc:verify permission of bindDevice
-     * @tc.type: FUNC
+     * @tc.number     : Permission_bindDevice_002
+     * @tc.name       : Permission_bindDevice_002
+     * @tc.desc       : verify permission of bindDevice
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
      */
     it("Permission_bindDevice_002", 0, async done => {
         console.info('----------------------Permission_bindDevice_002---------------------------');
@@ -126,9 +135,12 @@ describe("NoPermissionJsTest", function () {
     });
 
     /*
-     * @tc.name:Permission_bindDeviceDriver_001
-     * @tc.desc:verify permission of bindDeviceDriver
-     * @tc.type: FUNC
+     * @tc.number     : Permission_bindDeviceDriver_001
+     * @tc.name       : Permission_bindDeviceDriver_001
+     * @tc.desc       : verify permission of bindDeviceDriver
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
      */
     it("Permission_bindDeviceDriver_001", 0, done => {
         console.info('----------------------Permission_bindDeviceDriver_001---------------------------');
@@ -146,9 +158,12 @@ describe("NoPermissionJsTest", function () {
     });
 
     /*
-     * @tc.name:Permission_bindDeviceDriver_002
-     * @tc.desc:verify permission of bindDeviceDriver
-     * @tc.type: FUNC
+     * @tc.number     : Permission_bindDeviceDriver_002
+     * @tc.name       : Permission_bindDeviceDriver_002
+     * @tc.desc       : verify permission of bindDeviceDriver
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
      */
     it("Permission_bindDeviceDriver_002", 0, async done => {
         console.info('----------------------Permission_bindDeviceDriver_002---------------------------');
@@ -166,9 +181,12 @@ describe("NoPermissionJsTest", function () {
     });
 
     /*
-     * @tc.name:Permission_unbindDevice_001
-     * @tc.desc:verify permission of unbindDevice
-     * @tc.type: FUNC
+     * @tc.number     : Permission_unbindDevice_001
+     * @tc.name       : Permission_unbindDevice_001
+     * @tc.desc       : verify permission of unbindDevice
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
      */
     it("Permission_unbindDevice_001", 0, done => {
         console.info('----------------------Permission_unbindDevice_001---------------------------');
@@ -186,9 +204,12 @@ describe("NoPermissionJsTest", function () {
     });
 
     /*
-     * @tc.name:Permission_unbindDevice_002
-     * @tc.desc:verify permission of unbindDevice
-     * @tc.type: FUNC
+     * @tc.number     : Permission_unbindDevice_002
+     * @tc.name       : Permission_unbindDevice_002
+     * @tc.desc       : verify permission of unbindDevice
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
      */
     it("Permission_unbindDevice_002", 0, async done => {
         console.info('----------------------Permission_unbindDevice_002---------------------------');
