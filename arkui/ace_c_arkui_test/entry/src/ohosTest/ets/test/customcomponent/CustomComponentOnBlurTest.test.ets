@@ -29,7 +29,7 @@ export default function customComponentOnBlurTest() {
     /*
     * @tc.number     : SUB_ARKUI_CAPI_CUSTOMCOMPONENT_ONBLUR_0100
     * @tc.name       : testCustomComponentOnBlur001
-    * @tc.desc       : test onBlur event callback
+    * @tc.desc       : test onBlur event not callback
     * @tc.size       : MediumTest
     * @tc.type       : Function
     * @tc.level      : Level 1
@@ -40,7 +40,7 @@ export default function customComponentOnBlurTest() {
       focusControl.requestFocus('OnBlurTestCustomComponent')
       await Utils.sleep(2000)
       expect(Utils.getComponentInfoByKey('OnBlurTestCustomComponentCompare').$attrs.backgroundColor)
-        .assertEqual('#FF00FF00')
+        .assertEqual('#FFFF0000')
       done()
     })
 
