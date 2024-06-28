@@ -13,18 +13,29 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  Driver,
+  Component,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../../MainAbility/utils/MessageManager';
-
+import { MessageManager, Callback } from '../../../MainAbility/utils/MessageManager';
 
 export default function aboutToDisappearFalse() {
-  describe('aboutToDisappearFalse', function () {
-    beforeEach(async function (done) {
+  describe('aboutToDisappearFalse', () => {
+    beforeEach(async (done:Function) =>{
       console.info("aboutToDisappearFalse beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/menuControl/bindContextMenu/aboutToDisappearFalse',
+      let options:router.RouterOptions = {
+        url: 'MainAbility/pages/menuControl/bindContextMenu/aboutToDisappearFalse',
       }
       try {
         router.clear();
@@ -32,7 +43,7 @@ export default function aboutToDisappearFalse() {
         console.info("get aboutToDisappearFalse state pages: " + JSON.stringify(pages));
         if (!("aboutToDisappearFalse" == pages.name)) {
           console.info("get aboutToDisappearFalse state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push aboutToDisappearFalse success: " + JSON.stringify(result));
         }
@@ -48,7 +59,7 @@ export default function aboutToDisappearFalse() {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('aboutToDisappearFalse_0100', 0, async function (done) {
+    it('aboutToDisappearFalse_0100', 0, async (done:Function) =>{
       console.info('aboutToDisappearFalse_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -56,20 +67,17 @@ export default function aboutToDisappearFalse() {
       await button.click();
       await CommonFunc.sleep(1000);
 
-      await driver.click(200,200);
+      await driver.click(200, 200);
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('aboutToDisappearFalseText');
-      let obj = JSON.parse(strJson);
-      console.info("[aboutToDisappearFalse_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[aboutToDisappearFalse_0100] title: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual("aboutToDisappear,onDisappear");
+      console.info("[aboutToDisappearFalse_0100] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[aboutToDisappearFalse_0100] title: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual("aboutToDisappear,onDisappear");
       await CommonFunc.sleep(1000);
       console.info('[aboutToDisappearFalse_0100] END');
       done();
     });
-
-
   })
 }
 

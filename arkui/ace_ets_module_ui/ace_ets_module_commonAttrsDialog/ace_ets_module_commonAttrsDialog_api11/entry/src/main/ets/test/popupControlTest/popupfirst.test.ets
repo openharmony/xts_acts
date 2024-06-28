@@ -14,13 +14,13 @@
  */
 import hilog from '@ohos.hilog';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import router from '@system.router';
+import router from '@ohos.router';
 
 export default function abilityTest() {
-  describe('ActsAbilityTest', function () {
-    beforeAll(async function (done) {
-      let options = {
-        uri: "MainAbility/pages/popupControl/popupfirst",
+  describe('ActsAbilityTest',  () =>{
+    beforeAll(async (done:Function) =>{
+      let options:router.RouterOptions = {
+        url: "MainAbility/pages/popupControl/popupfirst",
       }
       try {
         router.clear();
@@ -28,7 +28,7 @@ export default function abilityTest() {
         console.info("get popupfirst state success " + JSON.stringify(pages));
         if (!("popupfirst" == pages.name)) {
           console.info("get popupfirst state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push popupfirst page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -41,13 +41,12 @@ export default function abilityTest() {
      * @tc.name      Popup added enableArrow and placement interface coverage
      * @tc.desc      Popup added enableArrow and placement interface coverage
      */
-    it('ArkUX_Stage_Popup_0100', 0, async function (done) {
+    it('ArkUX_Stage_Popup_0100', 0, async (done:Function) =>{
       console.info('ArkUX_Stage_Popup_0100 START');
       setTimeout(() => {
         try {
-          let obj = JSON.parse(getInspectorByKey('forPopup'));
-          console.info("ArkUX_Stage_Popup_0100 component obj is: " + JSON.stringify(obj));
-          expect(obj.$attrs.bindPopup).assertEqual(undefined);
+          console.info("ArkUX_Stage_Popup_0100 component obj is: " + JSON.stringify(JSON.parse(getInspectorByKey('forPopup'))));
+          expect(JSON.parse(getInspectorByKey('forPopup')).$attrs.bindPopup).assertEqual(undefined);
           console.info('ArkUX_Stage_Popup_0100 END ');
           done();
         } catch (err) {

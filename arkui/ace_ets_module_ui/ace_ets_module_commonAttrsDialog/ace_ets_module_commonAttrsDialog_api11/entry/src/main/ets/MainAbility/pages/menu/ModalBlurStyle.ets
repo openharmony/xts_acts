@@ -15,13 +15,14 @@
 @Entry
 @Component
 struct SheetTransitionExample {
-  @State isShow1:boolean = false
-  @State isShow2:boolean = false
-  @State isShow3:boolean = false
-  @State isShow4:boolean = false
-  @State isShow5:boolean = false
+  @State isShow1: boolean = false;
+  @State isShow2: boolean = false;
+  @State isShow3: boolean = false;
+  @State isShow4: boolean = false;
+  @State isShow5: boolean = false;
 
-  @Builder myBuilder() {
+  @Builder
+  myBuilder() {
     Column() {
       Button("content1")
         .margin(10)
@@ -37,91 +38,96 @@ struct SheetTransitionExample {
   build() {
     Column() {
       Button('init').margin(20).key("blurStyle_init")
-      Button("BlurStyle 1").key("blurStyle_1")
+      Button("BlurStyle 1")
+        .key("blurStyle_1")
         .onClick(() => {
           this.isShow1 = true
         })
         .fontSize(20)
         .margin(10)
-        .bindSheet($$this.isShow1, this.myBuilder(),{
-          height:300,
-          backgroundColor:Color.Gray,
-          blurStyle:BlurStyle.COMPONENT_ULTRA_THIN,
-          showClose:true,
-          title:{title:"title", subtitle:"subtitle"},
-          shouldDismiss:((sheetDismiss: SheetDismiss)=> {
+        .bindSheet($$this.isShow1, this.myBuilder(), {
+          height: 300,
+          backgroundColor: Color.Gray,
+          blurStyle: BlurStyle.COMPONENT_ULTRA_THIN,
+          showClose: true,
+          title: { title: "title", subtitle: "subtitle" },
+          shouldDismiss: ((sheetDismiss: SheetDismiss) => {
             console.log("bind sheet shouldDismiss")
             sheetDismiss.dismiss()
           })
         })
 
-      Button("BlurStyle 2").key("blurStyle_2")
+      Button("BlurStyle 2")
+        .key("blurStyle_2")
         .onClick(() => {
           this.isShow2 = true
         })
         .fontSize(20)
         .margin(10)
-        .bindSheet($$this.isShow2, this.myBuilder(),{
-          height:300,
-          backgroundColor:Color.Gray,
-          blurStyle:BlurStyle.COMPONENT_THIN,
-          showClose:true,
-          title:{title:"title", subtitle:"subtitle"},
-          shouldDismiss:((sheetDismiss: SheetDismiss)=> {
+        .bindSheet($$this.isShow2, this.myBuilder(), {
+          height: 300,
+          backgroundColor: Color.Gray,
+          blurStyle: BlurStyle.COMPONENT_THIN,
+          showClose: true,
+          title: { title: "title", subtitle: "subtitle" },
+          shouldDismiss: ((sheetDismiss: SheetDismiss) => {
             console.log("bind sheet shouldDismiss")
             sheetDismiss.dismiss()
           })
         })
 
-      Button("BlurStyle 3").key("blurStyle_3")
+      Button("BlurStyle 3")
+        .key("blurStyle_3")
         .onClick(() => {
           this.isShow3 = true
         })
         .fontSize(20)
         .margin(10)
-        .bindSheet($$this.isShow3, this.myBuilder(),{
-          height:300,
-          backgroundColor:Color.Gray,
-          blurStyle:BlurStyle.COMPONENT_REGULAR,
-          showClose:true,
-          title:{title:"title", subtitle:"subtitle"},
-          shouldDismiss:((sheetDismiss: SheetDismiss)=> {
+        .bindSheet($$this.isShow3, this.myBuilder(), {
+          height: 300,
+          backgroundColor: Color.Gray,
+          blurStyle: BlurStyle.COMPONENT_REGULAR,
+          showClose: true,
+          title: { title: "title", subtitle: "subtitle" },
+          shouldDismiss: ((sheetDismiss: SheetDismiss) => {
             console.log("bind sheet shouldDismiss")
             sheetDismiss.dismiss()
           })
         })
 
-      Button("BlurStyle 4").key("blurStyle_4")
+      Button("BlurStyle 4")
+        .key("blurStyle_4")
         .onClick(() => {
           this.isShow4 = true
         })
         .fontSize(20)
         .margin(10)
-        .bindSheet($$this.isShow4, this.myBuilder(),{
-          height:300,
-          backgroundColor:Color.Gray,
-          blurStyle:BlurStyle.COMPONENT_THICK,
-          showClose:true,
-          title:{title:"title", subtitle:"subtitle"},
-          shouldDismiss:((sheetDismiss: SheetDismiss)=> {
+        .bindSheet($$this.isShow4, this.myBuilder(), {
+          height: 300,
+          backgroundColor: Color.Gray,
+          blurStyle: BlurStyle.COMPONENT_THICK,
+          showClose: true,
+          title: { title: "title", subtitle: "subtitle" },
+          shouldDismiss: ((sheetDismiss: SheetDismiss) => {
             console.log("bind sheet shouldDismiss")
             sheetDismiss.dismiss()
           })
         })
 
-      Button("BlurStyle 5").key("blurStyle_5")
+      Button("BlurStyle 5")
+        .key("blurStyle_5")
         .onClick(() => {
           this.isShow5 = true
         })
         .fontSize(20)
         .margin(10)
-        .bindSheet($$this.isShow5, this.myBuilder(),{
-          height:300,
-          backgroundColor:Color.Gray,
-          blurStyle:BlurStyle.COMPONENT_ULTRA_THICK,
-          showClose:true,
-          title:{title:"title", subtitle:"subtitle"},
-          shouldDismiss:((sheetDismiss: SheetDismiss)=> {
+        .bindSheet($$this.isShow5, this.myBuilder(), {
+          height: 300,
+          backgroundColor: Color.Gray,
+          blurStyle: BlurStyle.COMPONENT_ULTRA_THICK,
+          showClose: true,
+          title: { title: "title", subtitle: "subtitle" },
+          shouldDismiss: ((sheetDismiss: SheetDismiss) => {
             console.log("bind sheet shouldDismiss")
             sheetDismiss.dismiss()
           })

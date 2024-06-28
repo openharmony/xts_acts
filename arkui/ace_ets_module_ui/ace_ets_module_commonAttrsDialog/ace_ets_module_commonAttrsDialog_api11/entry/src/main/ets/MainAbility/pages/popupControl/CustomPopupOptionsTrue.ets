@@ -15,13 +15,21 @@
 @Entry
 @Component
 struct CustomPopupOptionsTrueExample {
-  @State customPopup: boolean = false
+  @State customPopup: boolean = false;
 
-  @Builder popupBuilder() {
+  @Builder
+  popupBuilder() {
     Row({ space: 2 }) {
-      Image($r("app.media.icon")).width(24).height(24).margin({ left: -5 })
-      Text('Custom Popup').fontSize(10)
-    }.width(100).height(50).padding(5)
+      Image($r("app.media.icon"))
+        .width(24)
+        .height(24)
+        .margin({ left: -5 })
+      Text('Custom Popup')
+        .fontSize(10)
+    }
+    .width(100)
+    .height(50)
+    .padding(5)
   }
 
   build() {
@@ -34,7 +42,7 @@ struct CustomPopupOptionsTrueExample {
         .bindPopup(this.customPopup, {
           builder: this.popupBuilder,
           placement: Placement.Top,
-          mask: {color:'#33000000'},
+          mask: { color: '#33000000' },
           popupColor: Color.Yellow,
           enableArrow: true,
           showInSubWindow: true,
@@ -45,6 +53,8 @@ struct CustomPopupOptionsTrueExample {
           }
         })
         .position({ x: 80, y: 300 })
-    }.width('100%').padding({ top: 5 })
+    }
+    .width('100%')
+    .padding({ top: 5 })
   }
 }

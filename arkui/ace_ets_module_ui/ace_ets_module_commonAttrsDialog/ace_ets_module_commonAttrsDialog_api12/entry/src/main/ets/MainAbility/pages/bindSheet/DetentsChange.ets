@@ -15,9 +15,11 @@
 @Entry
 @Component
 struct onDetentsDidChangeExample {
-  @State isShow:boolean = false
-  @State DetentsChange:string = "DetentsChange"
-  @Builder myBuilder() {
+  @State isShow: boolean = false
+  @State DetentsChange: string = "DetentsChange"
+
+  @Builder
+  myBuilder() {
     Column() {
       Button("content1")
         .margin(10)
@@ -40,14 +42,14 @@ struct onDetentsDidChangeExample {
         })
         .fontSize(20)
         .margin(10)
-        .bindSheet($$this.isShow, this.myBuilder(),{
-          detents:[SheetSize.MEDIUM,SheetSize.LARGE,200],
-          backgroundColor:Color.Gray,
-          blurStyle:BlurStyle.Thick,
-          showClose:true,
-          title:{title:"title", subtitle:"subtitle"},
+        .bindSheet($$this.isShow, this.myBuilder(), {
+          detents: [SheetSize.MEDIUM, SheetSize.LARGE, 200],
+          backgroundColor: Color.Gray,
+          blurStyle: BlurStyle.Thick,
+          showClose: true,
+          title: { title: "title", subtitle: "subtitle" },
           preferType: SheetType.BOTTOM,
-          shouldDismiss:((sheetDismiss: SheetDismiss)=> {
+          shouldDismiss: ((sheetDismiss: SheetDismiss) => {
             console.log("bind sheet shouldDismiss")
             sheetDismiss.dismiss()
           }),

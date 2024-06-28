@@ -15,40 +15,41 @@
 @Entry
 @Component
 struct ScrollSizeModeExample {
-  @State isShow:boolean = false
-  @State isShow2:boolean = false
-  @State sheetHeight:number = 300;
-  @State scrollSizeModeStatus: ScrollSizeMode = ScrollSizeMode.FOLLOW_DETENT
-  @State mScrollSizeMode1: string = ''
-  @State mScrollSizeMode2: string = ''
+  @State isShow: boolean = false;
+  @State isShow2: boolean = false;
+  @State sheetHeight: number = 300;
+  @State scrollSizeModeStatus: ScrollSizeMode = ScrollSizeMode.FOLLOW_DETENT;
+  @State mScrollSizeMode1: string = '';
+  @State mScrollSizeMode2: string = '';
 
-  @Builder myBuilder() {
+  @Builder
+  myBuilder() {
     Column() {
       Button("change")
         .margin(10)
         .fontSize(20)
-        .onClick(()=>{
+        .onClick(() => {
           this.scrollSizeModeStatus = ScrollSizeMode.CONTINUOUS;
         }).id('change')
 
       Button("FOLLOW_DETENT")
         .margin(10)
         .fontSize(20)
-        .onClick(()=>{
+        .onClick(() => {
           this.mScrollSizeMode1 = this.scrollSizeModeStatus + ''
         }).id('change1')
 
       Button("CONTINUOUS")
         .margin(10)
         .fontSize(20)
-        .onClick(()=>{
+        .onClick(() => {
           this.mScrollSizeMode2 = this.scrollSizeModeStatus + ''
         }).id('change2')
 
       Button('close modal')
         .margin(10)
         .fontSize(20)
-        .onClick(()=>{
+        .onClick(() => {
           this.isShow = false;
         }).id('close')
     }

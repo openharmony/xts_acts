@@ -15,12 +15,13 @@
 @Entry
 @Component
 struct SheetTransitionExample {
-  @State isShow:boolean = false
+  @State isShow: boolean = false
   @State SheetType: SheetType = SheetType.BOTTOM;
   @State SheetTypeValue: string = "value SheetType:";
   @State WidthValue: string = "value Width:";
 
-  @Builder myBuilder() {
+  @Builder
+  myBuilder() {
     Column() {
       Text("This is Model Sheet(bindSheet)").fontSize(20).margin(10)
       Text(this.SheetTypeValue).fontSize(20).id("SheetTypeValue").margin(10)
@@ -28,7 +29,7 @@ struct SheetTransitionExample {
       Button("Close Model Sheet")
         .margin(10)
         .fontSize(20)
-        .onClick(()=>{
+        .onClick(() => {
           this.isShow = false;
         })
     }
@@ -58,10 +59,18 @@ struct SheetTransitionExample {
             this.WidthValue = (`value Width:${value}`)
             console.info(`value Width:${value}`)
           },
-          onWillAppear: () => {console.log("BindSheet onWillAppear.")},
-          onAppear: () => {console.log("BindSheet onAppear.")},
-          onWillDisappear: () => {console.log("BindSheet onWillDisappear.")},
-          onDisappear: () => {console.log("BindSheet onDisappear.")}
+          onWillAppear: () => {
+            console.log("BindSheet onWillAppear.")
+          },
+          onAppear: () => {
+            console.log("BindSheet onAppear.")
+          },
+          onWillDisappear: () => {
+            console.log("BindSheet onWillDisappear.")
+          },
+          onDisappear: () => {
+            console.log("BindSheet onDisappear.")
+          }
         })
     }
     .justifyContent(FlexAlign.Center)
