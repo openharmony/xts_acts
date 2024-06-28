@@ -109,62 +109,6 @@ struct webViewSdkSchemeHandler {
                       }
                       break;
                     }
-                    case 'emitWebViewSdkSchemeHandler_getHttpBodyStream': {
-                      this.controller.loadUrl($rawfile('chunked_post_stream.html'))
-                      await Utils.sleep(2000)
-                      if(this.httpBodyStream){
-                        Utils.emitEvent(true,1507)
-                      }
-                      break;
-                    }
-
-                    case 'emitWebViewSdkSchemeHandler_getSize': {
-                      this.controller.loadUrl($rawfile('chunked_post_stream.html'))
-                      await Utils.sleep(2000)
-                      let isGetSize = ( this.existHttpBodyStream?.getSize() != undefined )
-                      if(this.httpBodyStream?.getSize() != undefined || isGetSize){
-                        Utils.emitEvent(true,1508)
-                      }
-                      break;
-                    }
-                    case 'emitWebViewSdkSchemeHandler_getPosition': {
-                      this.controller.loadUrl($rawfile('chunked_post_stream.html'))
-                      await Utils.sleep(2000)
-                      let isExistPosition = ( this.existHttpBodyStream?.getPosition() !== undefined )
-                      if(this.httpBodyStream?.getPosition() !== undefined || isExistPosition){
-                        Utils.emitEvent(true,1509)
-                      }
-                      break;
-                    }
-                    case 'emitWebViewSdkSchemeHandler_isChunked': {
-                      this.controller.loadUrl($rawfile('chunked_post_stream.html'))
-                      await Utils.sleep(2000)
-                      let isExistChunked = ( this.existHttpBodyStream?.isChunked() !== undefined )
-                      if(this.httpBodyStream?.isChunked() !== undefined || isExistChunked){
-                        Utils.emitEvent(true,1510)
-                      }
-                      break;
-                    }
-
-                    case 'emitWebViewSdkSchemeHandler_isEof': {
-                      this.controller.loadUrl($rawfile('chunked_post_stream.html'))
-                      await Utils.sleep(2000)
-                      let isExistEof =  ( this.existHttpBodyStream?.isEof() !== undefined )
-                      if(this.httpBodyStream?.isEof() !== undefined || isExistEof){
-                        Utils.emitEvent(true,1511)
-                      }
-                      break;
-                    }
-
-                    case 'emitWebViewSdkSchemeHandler_isInMemory': {
-                      this.controller.loadUrl($rawfile('chunked_post_stream.html'))
-                      await Utils.sleep(2000)
-                      let isInMemory =  ( this.existHttpBodyStream?.isInMemory() !== undefined )
-                      if(this.httpBodyStream?.isInMemory() !== undefined || isInMemory){
-                        Utils.emitEvent(true,1512)
-                      }
-                      break;
-                    }
 
                     case 'emitWebViewSdkSchemeHandler_onRequestStart': {
                       await Utils.sleep(2000)
@@ -183,9 +127,18 @@ struct webViewSdkSchemeHandler {
                     }
                     case 'emitWebViewSdkSchemeHandler_constructor': {
                       await Utils.sleep(2000)
+                      this.controller.loadUrl($rawfile('sdkSchemeHandler.html'))
+                      await Utils.sleep(2000)
                       if(this.requests.length>0){
                         Utils.emitEvent(true,1513)
                       }
+                      break;
+                    }
+                    case 'emitWebViewSdkSchemeHandler_didFinish':
+                    case 'emitWebViewSdkSchemeHandler_didReceiveResponse':
+                    case 'testWebViewSdkSchemeHandler_didReceiveResponseBody': {
+                      await Utils.sleep(2000)
+                      this.controller.loadUrl($rawfile('chunked_post_stream.html'))
                       break;
                     }
                   }
@@ -203,10 +156,10 @@ struct webViewSdkSchemeHandler {
                 this.schemeHandler.onRequestStart(
                   (request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
                     console.log('[schemeHandler] onRequestStart')
+                    this.requests.push(request)
                     Utils.emitEvent(true, 1533)
                     Utils.emitEvent(true, 1513)
-                    this.requests.push(request)
-                    if(request.getRequestUrl().toLowerCase().indexOf('custom') > -1){
+                    if(request.getRequestUrl().toLowerCase().indexOf('custom') > -1 ){
                       if(this.httpBodyStream == null || this.httpBodyStream == undefined) {
                         this.httpBodyStream = request.getHttpBodyStream()
                       }
@@ -251,6 +204,7 @@ struct webViewSdkSchemeHandler {
                     if(this.httpBodyStream !== undefined) {
                       this.existHttpBodyStream = this.httpBodyStream
                       Utils.emitEvent(true,1507)
+
                     }
 
                     if(this.httpBodyStream?.getSize() !== undefined) {
@@ -320,14 +274,20 @@ struct webViewSdkSchemeHandler {
                       Utils.emitEvent(true,1527)
                       Utils.emitEvent(true,1528)
                     }
-
+                    let newResponse = new webview.WebSchemeHandlerResponse();
+                    resourceHandler.didReceiveResponse(newResponse);
+                    Utils.emitEvent(true, 1529)
+                    let buf = buffer.from(this.htmlData)
+                    resourceHandler.didReceiveResponseBody(buf.buffer);
+                    Utils.emitEvent(true, 1530)
                     resourceHandler.didFail(WebNetErrorList.ERR_FAILED)
+                    Utils.emitEvent(true, 1531)
                     Utils.emitEvent(true,1532)
                     try {
                       resourceHandler.didFinish();
                       Utils.emitEvent(true, 1531)
                     } catch (e) {
-                      console.log('error')
+                      console.log('finish error')
                     }
 
                     return false;

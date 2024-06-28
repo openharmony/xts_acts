@@ -18,7 +18,7 @@ import Utils from './Utils';
 import router from '@ohos.router';
 import emitter from '@ohos.events.emitter';
 // @ts-nocheck
-let emitKey = ""
+let emitKey = ''
 
 export default function ActsAceWebViewSdkSchemeHandler() {
   describe('ActsAceWebViewSdkSchemeHandler', () => {
@@ -159,93 +159,6 @@ export default function ActsAceWebViewSdkSchemeHandler() {
       sendEventByKey('webViewSdkSchemeHandler', 10, '');
     })
     /*
-     *@tc.number SUB_ACE_WEB_SdkSchemeHandler_getHttpBodyStream_API_0001
-     *@tc.name testWebViewSdkSchemeHandler_SdkSchemeHandler_getHttpBodyStream
-     *@tc.desc test SdkSchemeHandler_getHttpBodyStream
-     *@tc.size MediumTest
-     *@tc.type Function
-     *@tc.level 1
-     */
-    it('testWebViewSdkSchemeHandler_getHttpBodyStream', 0, async (done: Function) => {
-      emitKey = "emitWebViewSdkSchemeHandler_getHttpBodyStream"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewSdkSchemeHandler_getHttpBodyStream", true, 1507, done);
-      sendEventByKey('webViewSdkSchemeHandler', 10, '');
-    })
-    /*
-     *@tc.number SUB_ACE_WEB_SchemeHandler_getSize_API_0001
-     *@tc.name testWebViewSdkSchemeHandler_getSize
-     *@tc.desc test SdkSchemeHandler_getSize
-     *@tc.size MediumTest
-     *@tc.type Function
-     *@tc.level 1
-     */
-    it('testWebViewSdkSchemeHandler_getSize', 0, async (done: Function) => {
-      emitKey = "emitWebViewSdkSchemeHandler_getSize"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewSdkSchemeHandler_getSize", true, 1508, done);
-      sendEventByKey('webViewSdkSchemeHandler', 10, '');
-    })
-    /*
-     *@tc.number SUB_ACE_WEB_SdkSchemeHandler_getPosition_API_0001
-     *@tc.name testWebViewSdkSchemeHandler_SdkSchemeHandler_getPosition
-     *@tc.desc test SdkSchemeHandler_getPosition
-     *@tc.size MediumTest
-     *@tc.type Function
-     *@tc.level 1
-     */
-    it('testWebViewSdkSchemeHandler_getPosition', 0, async (done: Function) => {
-      emitKey = "emitWebViewSdkSchemeHandler_getPosition"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewSdkSchemeHandler_getPosition", true, 1509, done);
-      sendEventByKey('webViewSdkSchemeHandler', 10, '');
-    })
-
-    /*
-     *@tc.number SUB_ACE_WEB_SdkSchemeHandler_isChunked_API_0001
-     *@tc.name testWebViewSdkSchemeHandler_SdkSchemeHandler_isChunked
-     *@tc.desc test SdkSchemeHandler_isChunked
-     *@tc.size MediumTest
-     *@tc.type Function
-     *@tc.level 1
-     */
-    it('testWebViewSdkSchemeHandler_isChunked', 0, async (done: Function) => {
-      emitKey = "emitWebViewSdkSchemeHandler_isChunked"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewSdkSchemeHandler_isChunked", true, 1510, done);
-      sendEventByKey('webViewSdkSchemeHandler', 10, '');
-    })
-
-
-    /*
-     *@tc.number SUB_ACE_WEB_SdkSchemeHandler_isEof_API_0001
-     *@tc.name testWebViewSdkSchemeHandler_SdkSchemeHandler_isEof
-     *@tc.desc test SdkSchemeHandler_isEof
-     *@tc.size MediumTest
-     *@tc.type Function
-     *@tc.level 1
-     */
-    it('testWebViewSdkSchemeHandler_isEof', 0, async (done: Function) => {
-      emitKey = "emitWebViewSdkSchemeHandler_isEof"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewSdkSchemeHandler_isEof", true, 1511, done);
-      sendEventByKey('webViewSdkSchemeHandler', 10, '');
-    })
-    /*
-     *@tc.number SUB_ACE_WEB_SdkSchemeHandler_isInMemory_API_0001
-     *@tc.name testWebViewSdkSchemeHandler_SdkSchemeHandler_isInMemory
-     *@tc.desc test SdkSchemeHandler_isInMemory
-     *@tc.size MediumTest
-     *@tc.type Function
-     *@tc.level 1
-     */
-    it('testWebViewSdkSchemeHandler_isInMemory', 0, async (done: Function) => {
-      emitKey = "emitWebViewSdkSchemeHandler_isInMemory"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewSdkSchemeHandler_isInMemory", true, 1512, done);
-      sendEventByKey('webViewSdkSchemeHandler', 10, '');
-    })
-    /*
      *@tc.number SUB_ACE_WEB_SdkSchemeHandler_constructor_API_0001
      *@tc.name testWebViewSdkSchemeHandler_SdkSchemeHandler_constructor
      *@tc.desc test SdkSchemeHandler_constructor
@@ -256,7 +169,7 @@ export default function ActsAceWebViewSdkSchemeHandler() {
     it('testWebViewSdkSchemeHandler_constructor', 0, async (done: Function) => {
       emitKey = "emitWebViewSdkSchemeHandler_constructor"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewSdkSchemeHandler_constructor", true, 1512, done);
+      Utils.registerEvent("testWebViewSdkSchemeHandler_constructor", true, 1513, done);
       sendEventByKey('webViewSdkSchemeHandler', 10, '');
     })
     /*
