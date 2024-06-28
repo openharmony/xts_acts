@@ -4,7 +4,7 @@
         "module-name": "ActsComputeTestSuite0001",
         "native-test-timeout": "130000",
         "native-test-device-path": "/data/local/tmp",
-        "runtime-hint": "100s",
+        "runtime-hint": "101s",
         "type": "CppTest"
     },
     "kits": [
