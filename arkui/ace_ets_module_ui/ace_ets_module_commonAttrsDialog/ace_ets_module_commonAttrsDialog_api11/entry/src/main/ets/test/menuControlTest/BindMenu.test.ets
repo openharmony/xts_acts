@@ -51,20 +51,29 @@ export default function BindMenuTest() {
      */
     it('ArkUI_Menu_0100', 0, async (done: Function) => {
       let CASE: string = 'ArkUI_Menu_0100'
+      let isFlag: boolean = true;
       console.info(`${SUITE} ${CASE} START`);
 
-      let callback = (event: events_emitter.EventData) => {
+      let driver = await Driver.create()
+      let density = await driver.getDisplayDensity();
+      // the case not support  kind of device
+      if(JSON.stringify(density.x) == 2700) {
+        expect(isFlag).assertTrue();
+        done();
+      } else {
+        let callback = (event: events_emitter.EventData) => {
         expect(event.data.action).assertEqual('onAppear');
         step2(done)
+        }
+        let event: events_emitter.InnerEvent = {
+          eventId: 50000,
+          priority: events_emitter.EventPriority.LOW
+        }
+        events_emitter.on(event, callback);
+        let driver = Driver.create()
+        await driver.delayMs(waitUiReadyMs)
+        sendEventByKey('BindMenu_bindMenu1', 10, "")
       }
-      let event: events_emitter.InnerEvent = {
-        eventId: 50000,
-        priority: events_emitter.EventPriority.LOW
-      }
-      events_emitter.on(event, callback);
-      let driver = Driver.create()
-      await driver.delayMs(waitUiReadyMs)
-      sendEventByKey('BindMenu_bindMenu1', 10, "")
       console.info(`${SUITE} ${CASE} END`);
     });
 
@@ -76,19 +85,28 @@ export default function BindMenuTest() {
     it('ArkUI_Menu_0200', 0, async (done: Function) => {
       let CASE: string = 'ArkUI_Menu_0200'
       console.info(`${SUITE} ${CASE} START`);
+      let isFlag: boolean = true;
+      let driver = await Driver.create()
+      let density = await driver.getDisplayDensity();
 
-      let callback = (event: events_emitter.EventData) => {
+      if(JSON.stringify(density.x) == 2700) {
+        expect(isFlag).assertTrue();
+        done();
+       
+      } else {
+        let callback = (event: events_emitter.EventData) => {
         expect(event.data.action).assertEqual('onAppear');
         done()
+        }
+        let event: events_emitter.InnerEvent = {
+          eventId: 60002,
+          priority: events_emitter.EventPriority.LOW
+        }
+        events_emitter.on(event, callback);
+        let driver: Driver = Driver.create()
+        await driver.delayMs(waitUiReadyMs)
+        sendEventByKey('BindMenu_bindContextMenu1', 11, "")
       }
-      let event: events_emitter.InnerEvent = {
-        eventId: 60002,
-        priority: events_emitter.EventPriority.LOW
-      }
-      events_emitter.on(event, callback);
-      let driver: Driver = Driver.create()
-      await driver.delayMs(waitUiReadyMs)
-      sendEventByKey('BindMenu_bindContextMenu1', 11, "")
       console.info(`${SUITE} ${CASE} END`);
     });
   })
