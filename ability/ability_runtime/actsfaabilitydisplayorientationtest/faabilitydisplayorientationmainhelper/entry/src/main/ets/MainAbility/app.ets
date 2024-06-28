@@ -17,16 +17,14 @@ import hilog from '@ohos.hilog';
 import featureAbility from '@ohos.ability.featureAbility';
 import bundle from '@ohos.bundle';
 import commonEvent from '@ohos.commonEvent';
-import { BusinessError } from '@ohos.base';
-import CommonEventManager from '@ohos.commonEventManager';
 
 const Event_FA_DisplayOrientation_0500 = 'Event_FA_DisplayOrientation_0500';
 const Event_FA_DisplayOrientation_0500_LifeCircle = 'Event_FA_DisplayOrientation_0500_LifeCircle';
 const Event_FA_DisplayOrientation_0600 = 'Event_FA_DisplayOrientation_0600';
 const Event_FA_DisplayOrientation_0600_LifeCircle = 'Event_FA_DisplayOrientation_0600_LifeCircle';
-let lifeCircleData = [""];
+let lifeCircleData = [];
 
-function publishEvent(event: string, parameter: boolean) {
+function publishEvent(event, parameter) {
   commonEvent.publish(event,
     {
       parameters: {
@@ -37,14 +35,14 @@ function publishEvent(event: string, parameter: boolean) {
     })
 }
 
-class Test {
+export default {
   onCreate() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Application onCreate');
     lifeCircleData[0] = 'onCreate';
-  }
+  },
   onDestroy() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Application onDestroy');
-  }
+  },
   onActive() {
     try {
       hilog.info(0x0000, 'testTag', '%{public}s', 'Application onActive');
@@ -52,7 +50,7 @@ class Test {
 
       featureAbility.getWant((err, want) => {
         hilog.info(0x0000, 'testTag', '%{public}s', `get want: ${JSON.stringify(want)}`);
-        let number = want.parameters?.data;
+        let number = want.parameters.data;
         switch (number) {
           case 3:
             hilog.info(0x0000, 'testTag', '%{public}s', `case 3 ----->`);
@@ -107,5 +105,3 @@ class Test {
     }
   }
 }
-
-export default new Test()

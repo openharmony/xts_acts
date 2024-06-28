@@ -34,6 +34,7 @@ import VideoReset11 from './VideoTest/VideoReset/VideoReset11.test';
 import VideoReset12 from './VideoTest/VideoReset/VideoReset12.test';
 import VideoReset13 from './VideoTest/VideoReset/VideoReset13.test';
 import VideoReset14 from './VideoTest/VideoReset/VideoReset14.test';
+import VideoTest2 from './VideoTest/VideoTest2.test';
 
 export default function testsuite() {
   getXComponentSurfaceRectJsunit();
@@ -57,4 +58,5 @@ export default function testsuite() {
   VideoReset12();
   VideoReset13();
   VideoReset14();
+  VideoTest2();
 }

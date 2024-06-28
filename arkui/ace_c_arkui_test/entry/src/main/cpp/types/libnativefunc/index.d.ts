@@ -4932,3 +4932,251 @@ export const testMouseEvent001: () => number;
 export const testMouseEvent002: () => number;
 
 export const testPointerEvent001: () => number;
+
+export const testTextDecoration007: () => number;
+
+export const testTextDecoration008: () => number;
+
+export const testTextDecoration009: () => number;
+
+export const testTextDecoration010: () => number;
+
+export const testTextDecoration011: () => number;
+
+export const testTextDecoration012: () => number;
+
+export const testTextDecoration013: () => number;
+
+export const testSpanDecoration006: () => number;
+
+export const testSpanDecoration007: () => number;
+
+export const testSpanDecoration008: () => number;
+
+export const testSpanDecoration009: () => number;
+
+export const testSpanDecoration010: () => number;
+
+export const testSpanDecoration011: () => number;
+
+export const testSpanDecoration012: () => number;
+
+export const testDatePickerStart003: () => number;
+
+export const testDatePickerStart004: () => number;
+
+export const testDatePickerEnd003: () => number;
+
+export const testDatePickerEnd004: () => number;
+
+export const testDatePickerSelected003: () => number;
+
+export const testDatePickerSelected004: () => number;
+
+export const testDatePickerSelectedTextStyle003: () => number;
+
+export const testDatePickerSelectedTextStyle004: () => number;
+
+export const testDatePickerSelectedTextStyle005: () => number;
+
+export const testDatePickerSelectedTextStyle006: () => number;
+
+export const testDatePickerSelectedTextStyle007: () => number;
+
+export const testDatePickerSelectedTextStyle008: () => number;
+
+export const testDatePickerSelectedTextStyle009: () => number;
+
+export const testDatePickerSelectedTextStyle010: () => number;
+
+export const testDatePickerSelectedTextStyle011: () => number;
+
+export const testDatePickerSelectedTextStyle012: () => number;
+
+export const testDatePickerSelectedTextStyle013: () => number;
+
+export const testStackPosition003: () => number;
+
+export const testDatePickerDisappearTextStyle003: () => number;
+
+export const testDatePickerDisappearTextStyle004: () => number;
+
+export const testDatePickerDisappearTextStyle005: () => number;
+
+export const testDatePickerDisappearTextStyle006: () => number;
+
+export const testDatePickerDisappearTextStyle007: () => number;
+
+export const testDatePickerDisappearTextStyle008: () => number;
+
+export const testDatePickerDisappearTextStyle009: () => number;
+
+export const testDatePickerDisappearTextStyle010: () => number;
+
+export const testDatePickerDisappearTextStyle011: () => number;
+
+export const testDatePickerDisappearTextStyle012: () => number;
+
+export const testDatePickerDisappearTextStyle013: () => number;
+
+export const testDatePickerTextStyle003: () => number;
+
+export const testDatePickerTextStyle004: () => number;
+
+export const testDatePickerTextStyle005: () => number;
+
+export const testDatePickerTextStyle006: () => number;
+
+export const testDatePickerTextStyle007: () => number;
+
+export const testDatePickerTextStyle008: () => number;
+
+export const testDatePickerTextStyle009: () => number;
+
+export const testDatePickerTextStyle010: () => number;
+
+export const testDatePickerTextStyle011: () => number;
+
+export const testDatePickerTextStyle012: () => number;
+
+export const testDatePickerTextStyle013: () => number;
+
+export const testTextPickerTextStyle003: () => number;
+
+export const testTextPickerTextStyle004: () => number;
+
+export const testTextPickerTextStyle005: () => number;
+
+export const testTextPickerTextStyle006: () => number;
+
+export const testTextPickerTextStyle007: () => number;
+
+export const testTextPickerTextStyle008: () => number;
+
+export const testTextPickerTextStyle009: () => number;
+
+export const testTextPickerTextStyle010: () => number;
+
+export const testTextPickerTextStyle011: () => number;
+
+export const testTextPickerTextStyle012: () => number;
+
+export const testTextPickerTextStyle013: () => number;
+
+export const testTextPickerDisappearTextStyle003: () => number;
+
+export const testTextPickerDisappearTextStyle004: () => number;
+
+export const testTextPickerDisappearTextStyle005: () => number;
+
+export const testTextPickerDisappearTextStyle006: () => number;
+
+export const testTextPickerDisappearTextStyle007: () => number;
+
+export const testTextPickerDisappearTextStyle008: () => number;
+
+export const testTextPickerDisappearTextStyle009: () => number;
+
+export const testTextPickerDisappearTextStyle010: () => number;
+
+export const testTextPickerDisappearTextStyle011: () => number;
+
+export const testTextPickerDisappearTextStyle012: () => number;
+
+export const testTextPickerDisappearTextStyle013: () => number;
+
+export const testTextPickerSelectedTextStyle003: () => number;
+
+export const testTextPickerSelectedTextStyle004: () => number;
+
+export const testTextPickerSelectedTextStyle005: () => number;
+
+export const testTextPickerSelectedTextStyle006: () => number;
+
+export const testTextPickerSelectedTextStyle007: () => number;
+
+export const testTextPickerSelectedTextStyle008: () => number;
+
+export const testTextPickerSelectedTextStyle009: () => number;
+
+export const testTextPickerSelectedTextStyle010: () => number;
+
+export const testTextPickerSelectedTextStyle011: () => number;
+
+export const testTextPickerSelectedTextStyle012: () => number;
+
+export const testTextPickerSelectedTextStyle013: () => number;
+
+export const testTimePickerDisappearTextStyle003: () => number;
+
+export const testTimePickerDisappearTextStyle004: () => number;
+
+export const testTimePickerDisappearTextStyle005: () => number;
+
+export const testTimePickerDisappearTextStyle006: () => number;
+
+export const testTimePickerDisappearTextStyle007: () => number;
+
+export const testTimePickerDisappearTextStyle008: () => number;
+
+export const testTimePickerDisappearTextStyle009: () => number;
+
+export const testTimePickerDisappearTextStyle010: () => number;
+
+export const testTimePickerDisappearTextStyle011: () => number;
+
+export const testTimePickerDisappearTextStyle012: () => number;
+
+export const testTimePickerDisappearTextStyle013: () => number;
+
+export const testTimePickerSelectedTextStyle003: () => number;
+
+export const testTimePickerSelectedTextStyle004: () => number;
+
+export const testTimePickerSelectedTextStyle005: () => number;
+
+export const testTimePickerSelectedTextStyle006: () => number;
+
+export const testTimePickerSelectedTextStyle007: () => number;
+
+export const testTimePickerSelectedTextStyle008: () => number;
+
+export const testTimePickerSelectedTextStyle009: () => number;
+
+export const testTimePickerSelectedTextStyle010: () => number;
+
+export const testTimePickerSelectedTextStyle011: () => number;
+
+export const testTimePickerSelectedTextStyle012: () => number;
+
+export const testTimePickerSelectedTextStyle013: () => number;
+
+export const testTimePickerTextStyle003: () => number;
+
+export const testTimePickerTextStyle004: () => number;
+
+export const testTimePickerTextStyle005: () => number;
+
+export const testTimePickerTextStyle006: () => number;
+
+export const testTimePickerTextStyle007: () => number;
+
+export const testTimePickerTextStyle008: () => number;
+
+export const testTimePickerTextStyle009: () => number;
+
+export const testTimePickerTextStyle010: () => number;
+
+export const testTimePickerTextStyle011: () => number;
+
+export const testTimePickerTextStyle012: () => number;
+
+export const testTimePickerTextStyle013: () => number;
+
+export const testToggleSelectedColor004: () => number;
+
+export const testToggleSelectedColor005: () => number;
+
+export const testToggleSwitchPointColor004: () => number;
+
+export const testToggleSwitchPointColor005: () => number;

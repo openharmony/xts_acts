@@ -94,4 +94,101 @@ static napi_value TestTextDecoration006(napi_env env, napi_callback_info info)
     NAPI_END;
 }
 
+static napi_value TestTextDecoration007(napi_env env, napi_callback_info info)
+{
+    NAPI_START(text, ARKUI_NODE_TEXT);
+    int32_t decorationType = ARKUI_TEXT_DECORATION_TYPE_UNDERLINE;
+    int32_t decorationStyle = ARKUI_TEXT_DECORATION_STYLE_SOLID;
+    ArkUI_NumberValue value[] = {{.i32 = decorationType}, {}, {.i32 = decorationStyle}};
+    ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(text, NODE_TEXT_DECORATION, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_DECORATION)->value[PARAM_0].i32, decorationType);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_DECORATION)->value[PARAM_2].i32, decorationStyle);
+    NAPI_END;
+}
+
+static napi_value TestTextDecoration008(napi_env env, napi_callback_info info)
+{
+    NAPI_START(text, ARKUI_NODE_TEXT);
+    int32_t decorationType = ARKUI_TEXT_DECORATION_TYPE_UNDERLINE;
+    int32_t decorationStyle = ARKUI_TEXT_DECORATION_STYLE_DOUBLE;
+    ArkUI_NumberValue value[] = {{.i32 = decorationType}, {}, {.i32 = decorationStyle}};
+    ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(text, NODE_TEXT_DECORATION, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_DECORATION)->value[PARAM_0].i32, decorationType);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_DECORATION)->value[PARAM_2].i32, decorationStyle);
+    NAPI_END;
+}
+
+static napi_value TestTextDecoration009(napi_env env, napi_callback_info info)
+{
+    NAPI_START(text, ARKUI_NODE_TEXT);
+    int32_t decorationType = ARKUI_TEXT_DECORATION_TYPE_UNDERLINE;
+    int32_t decorationStyle = ARKUI_TEXT_DECORATION_STYLE_DOTTED;
+    ArkUI_NumberValue value[] = {{.i32 = decorationType}, {}, {.i32 = decorationStyle}};
+    ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(text, NODE_TEXT_DECORATION, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_DECORATION)->value[PARAM_0].i32, decorationType);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_DECORATION)->value[PARAM_2].i32, decorationStyle);
+    NAPI_END;
+}
+
+static napi_value TestTextDecoration010(napi_env env, napi_callback_info info)
+{
+    NAPI_START(text, ARKUI_NODE_TEXT);
+    int32_t decorationType = ARKUI_TEXT_DECORATION_TYPE_UNDERLINE;
+    int32_t decorationStyle = ARKUI_TEXT_DECORATION_STYLE_DASHED;
+    ArkUI_NumberValue value[] = {{.i32 = decorationType}, {}, {.i32 = decorationStyle}};
+    ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(text, NODE_TEXT_DECORATION, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_DECORATION)->value[PARAM_0].i32, decorationType);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_DECORATION)->value[PARAM_2].i32, decorationStyle);
+    NAPI_END;
+}
+
+static napi_value TestTextDecoration011(napi_env env, napi_callback_info info)
+{
+    NAPI_START(text, ARKUI_NODE_TEXT);
+    int32_t decorationType = ARKUI_TEXT_DECORATION_TYPE_UNDERLINE;
+    int32_t decorationStyle = ARKUI_TEXT_DECORATION_STYLE_WAVY;
+    ArkUI_NumberValue value[] = {{.i32 = decorationType}, {}, {.i32 = decorationStyle}};
+    ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(text, NODE_TEXT_DECORATION, &valueItem);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_DECORATION)->value[PARAM_0].i32, decorationType);
+    ASSERT_EQ(nodeAPI->getAttribute(text, NODE_TEXT_DECORATION)->value[PARAM_2].i32, decorationStyle);
+    NAPI_END;
+}
+
+static napi_value TestTextDecoration012(napi_env env, napi_callback_info info)
+{
+    NAPI_START(text, ARKUI_NODE_TEXT);
+    int32_t decorationType = ARKUI_TEXT_DECORATION_TYPE_UNDERLINE;
+    int32_t decorationStyle = PARAM_NEGATIVE_10;
+    ArkUI_NumberValue value[] = {{.i32 = decorationType}, {}, {.i32 = decorationStyle}};
+    ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(text, NODE_TEXT_DECORATION, &valueItem);
+    ASSERT_EQ(ret, INVALID_PARAM);
+    ASSERT_NE(nodeAPI->getAttribute(text, NODE_TEXT_DECORATION)->value[PARAM_0].i32, decorationType);
+    ASSERT_NE(nodeAPI->getAttribute(text, NODE_TEXT_DECORATION)->value[PARAM_2].i32, decorationStyle);
+    NAPI_END;
+}
+
+static napi_value TestTextDecoration013(napi_env env, napi_callback_info info)
+{
+    NAPI_START(text, ARKUI_NODE_TEXT);
+    int32_t decorationType = ARKUI_TEXT_DECORATION_TYPE_UNDERLINE;
+    int32_t decorationStyle = SIZE_100;
+    ArkUI_NumberValue value[] = {{.i32 = decorationType}, {}, {.i32 = decorationStyle}};
+    ArkUI_AttributeItem valueItem = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(text, NODE_TEXT_DECORATION, &valueItem);
+    ASSERT_EQ(ret, INVALID_PARAM);
+    ASSERT_NE(nodeAPI->getAttribute(text, NODE_TEXT_DECORATION)->value[PARAM_0].i32, decorationType);
+    ASSERT_NE(nodeAPI->getAttribute(text, NODE_TEXT_DECORATION)->value[PARAM_2].i32, decorationStyle);
+    NAPI_END;
+}
 } // namespace ArkUICapiTest

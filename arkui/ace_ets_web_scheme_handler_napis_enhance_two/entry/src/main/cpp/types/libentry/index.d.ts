@@ -38,3 +38,8 @@ export const getResourceType_CSP_REPORT: () => number;
 export const getResourceType_PLUGIN_RESOURCE: () => number;
 export const getResourceType_PRELOAD_MAIN: () => number;
 export const getResourceType_PRELOAD_SUB: () => number;
+
+export const getFrameUrl: () => number;
+export const getServiceWorkerFrameUrl: () => number;
+export const getLoadUrlFrameUrl: () => number;
+export const getSubFrameUrl: () => number;

@@ -2460,6 +2460,21 @@ export default function TaskpoolTest() {
         expect(error.message)
           .assertContain("An exception occurred during serialization, taskpool: failed to serialize arguments.");
       }
+      console.info(`${caseName} test end`);
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_Runtime_Language_Backend_TaskpoolConcurrency_4500
+     * @tc.name      : testTaskpoolError002
+     * @tc.desc      : Perform serial tasks
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testTaskpoolError002', 0, async (done: Function) => {
+      const caseName: string = 'testTaskpoolError002';
+      console.info(`${caseName} test start`);
       try {
         let task1: taskpool.Task = new taskpool.Task(printArgs, test1);
         taskpool.execute(task1).then((res: Object) => {
@@ -2471,6 +2486,21 @@ export default function TaskpoolTest() {
         expect(error.message)
           .assertContain("An exception occurred during serialization, taskpool: failed to serialize arguments.");
       }
+      console.info(`${caseName} test end`);
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_Runtime_Language_Backend_TaskpoolConcurrency_4600
+     * @tc.name      : testTaskpoolError003
+     * @tc.desc      : Perform serial tasks
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testTaskpoolError003', 0, async (done: Function) => {
+      const caseName: string = 'testTaskpoolError003';
+      console.info(`${caseName} test start`);
       try {
         let isTerminate1: boolean = false;
         let isTerminate2: boolean = false;
@@ -2501,6 +2531,21 @@ export default function TaskpoolTest() {
         expect(error.message)
           .assertContain("An exception occurred during serialization, taskpool: failed to serialize arguments.");
       }
+      console.info(`${caseName} test end`);
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_Runtime_Language_Backend_TaskpoolConcurrency_4700
+     * @tc.name      : testTaskpoolError004
+     * @tc.desc      : Perform serial tasks
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testTaskpoolError004', 0, async (done: Function) => {
+      const caseName: string = 'testTaskpoolError004';
+      console.info(`${caseName} test start`);
       try {
         let taskConstructor1: taskpool.Task = new taskpool.Task(printArgs, test1);
         taskpool.execute(taskConstructor1).then((res: Object) => {
@@ -2513,6 +2558,21 @@ export default function TaskpoolTest() {
         expect(error.message)
           .assertContain("An exception occurred during serialization, taskpool: failed to serialize arguments.");
       }
+      console.info(`${caseName} test end`);
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_Runtime_Language_Backend_TaskpoolConcurrency_4800
+     * @tc.name      : testTaskpoolError005
+     * @tc.desc      : Perform serial tasks
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testTaskpoolError005', 0, async (done: Function) => {
+      const caseName: string = 'testTaskpoolError005';
+      console.info(`${caseName} test start`);
       try {
         let task1: taskpool.Task = new taskpool.Task(noConcurrent, 200);
         taskpool.execute(task1).then((res: Object) => {
@@ -2524,6 +2584,21 @@ export default function TaskpoolTest() {
         expect(error.message)
           .assertContain('The function is not mark as concurrent, taskpool: failed to serialize function.');
       }
+      console.info(`${caseName} test end`);
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_Runtime_Language_Backend_TaskpoolConcurrency_4900
+     * @tc.name      : testTaskpoolError006
+     * @tc.desc      : Perform serial tasks
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testTaskpoolError006', 0, async (done: Function) => {
+      const caseName: string = 'testTaskpoolError006';
+      console.info(`${caseName} test start`);
       try {
         let isTerminate1: boolean = false;
         let isTerminate2: boolean = false;
@@ -2552,6 +2627,21 @@ export default function TaskpoolTest() {
         expect(error.message)
           .assertContain("The function is not mark as concurrent, taskpool: failed to serialize function.");
       }
+      console.info(`${caseName} test end`);
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_Runtime_Language_Backend_TaskpoolConcurrency_5000
+     * @tc.name      : testTaskpoolError007
+     * @tc.desc      : Perform serial tasks
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testTaskpoolError007', 0, async (done: Function) => {
+      const caseName: string = 'testTaskpoolError007';
+      console.info(`${caseName} test start`);
       try {
         let task1: taskpool.Task = new taskpool.Task(printArgs, 100);
         let task2: taskpool.Task = new taskpool.Task(printArgs, 200);
@@ -2566,6 +2656,21 @@ export default function TaskpoolTest() {
         expect(error.code).assertEqual(10200015);
         expect(error.message).assertContain("The task does not exist when it is canceled");
       }
+      console.info(`${caseName} test end`);
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_Runtime_Language_Backend_TaskpoolConcurrency_5100
+     * @tc.name      : testTaskpoolError008
+     * @tc.desc      : Perform serial tasks
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testTaskpoolError008', 0, async (done: Function) => {
+      const caseName: string = 'testTaskpoolError008';
+      console.info(`${caseName} test start`);
       try {
         let isTerminate1: boolean = false;
         let isTerminate2: boolean = false;
@@ -2600,6 +2705,21 @@ export default function TaskpoolTest() {
         expect(error.code).assertEqual(10200015);
         expect(error.message).assertContain('The task does not exist when it is canceled');
       }
+      console.info(`${caseName} test end`);
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_Runtime_Language_Backend_TaskpoolConcurrency_5200
+     * @tc.name      : testTaskpoolError009
+     * @tc.desc      : Perform serial tasks
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testTaskpoolError009', 0, async (done: Function) => {
+      const caseName: string = 'testTaskpoolError009';
+      console.info(`${caseName} test start`);
       try {
         let task1: taskpool.Task = new taskpool.Task(mathRound, 10.5);
         let task2: taskpool.Task = new taskpool.Task(mathRound, 20.8);
@@ -2619,6 +2739,21 @@ export default function TaskpoolTest() {
         expect(error.code).assertEqual(10200028);
         expect(error.message).assertContain("The delayTime is less than zero");
       }
+      console.info(`${caseName} test end`);
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_Runtime_Language_Backend_TaskpoolConcurrency_5300
+     * @tc.name      : testTaskpoolError010
+     * @tc.desc      : Perform serial tasks
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testTaskpoolError010', 0, async (done: Function) => {
+      const caseName: string = 'testTaskpoolError010';
+      console.info(`${caseName} test start`);
       try {
         let isTerminate1: boolean = false;
         let buffer: ArrayBuffer = new ArrayBuffer(8);
@@ -2642,6 +2777,21 @@ export default function TaskpoolTest() {
         expect(error.code).assertEqual(10200029);
         expect(error.message).assertContain("Can not set an arraybuffer to both transferList and cloneList");
       }
+      console.info(`${caseName} test end`);
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_Runtime_Language_Backend_TaskpoolConcurrency_5400
+     * @tc.name      : testTaskpoolError011
+     * @tc.desc      : Perform serial tasks
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testTaskpoolError011', 0, async (done: Function) => {
+      const caseName: string = 'testTaskpoolError011';
+      console.info(`${caseName} test start`);
       try {
         let isTerminate1: boolean = false;
         let isTerminate2: boolean = false;
@@ -2670,6 +2820,21 @@ export default function TaskpoolTest() {
         expect(error.code).assertEqual(10200027);
         expect(error.message).assertContain("The dependency does not exist");
       }
+      console.info(`${caseName} test end`);
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_Runtime_Language_Backend_TaskpoolConcurrency_5500
+     * @tc.name      : testTaskpoolError012
+     * @tc.desc      : Perform serial tasks
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testTaskpoolError012', 0, async (done: Function) => {
+      const caseName: string = 'testTaskpoolError012';
+      console.info(`${caseName} test start`);
       try {
         let result1: number | string = 0;
         let result2: number | string = '';
@@ -2694,6 +2859,21 @@ export default function TaskpoolTest() {
         expect(error.code).assertEqual(10200024);
         expect(error.message).assertContain("The callback is not registered on the host side");
       }
+      console.info(`${caseName} test end`);
+      done();
+    });
+
+    /**
+     * @tc.number    : SUB_Runtime_Language_Backend_TaskpoolConcurrency_5600
+     * @tc.name      : testTaskpoolError013
+     * @tc.desc      : Perform serial tasks
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testTaskpoolError013', 0, async (done: Function) => {
+      const caseName: string = 'testTaskpoolError013';
+      console.info(`${caseName} test start`);
       try {
         let isTerminate1: boolean = false;
         let taskConstructor1: taskpool.Task = new taskpool.Task(sendDataFun, 5);
@@ -2715,6 +2895,7 @@ export default function TaskpoolTest() {
         done();
       }
       console.info(`${caseName} test end`);
+      done();
     });
 
     /**

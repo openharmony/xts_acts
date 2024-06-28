@@ -19,7 +19,8 @@ import searchDecoration from "./component/searchDecoration.test.ets";
 import searchLetterSpacing from "./component/searchLetterSpacing.test.ets";
 import searchLineHeight from "./component/searchLineHeight.test.ets";
 import APISearchExample from "./component/APISearchExample.test.ets";
-
+import MenuPolicy_HIDE_APITest from './CommonTest/SearchTest/Search_APITest/MenuPolicy_HIDE_APITest';
+import MenuPolicy_SHOW_APITest from './CommonTest/SearchTest/Search_APITest/MenuPolicy_SHOW_APITest';
 export default function testsuite() {
   searchMaxFontSize();
   searchMinFontSize();
@@ -27,4 +28,6 @@ export default function testsuite() {
   searchLetterSpacing();
   searchLineHeight();
   APISearchExample();
+  MenuPolicy_HIDE_APITest();
+  MenuPolicy_SHOW_APITest();
 }

@@ -45,6 +45,8 @@
         "MainAbility/pages/GestureHandler/clearGesture",
         "MainAbility/pages/GestureHandler/addParallelGestureTest1",
         "MainAbility/pages/onKeyEvent/OnKeyPreIme",
-        "MainAbility/pages/onKeyEvent/getModifierKeyState"
+        "MainAbility/pages/onKeyEvent/getModifierKeyState",
+        "MainAbility/pages/onAttach/onAttach",
+        "MainAbility/pages/GestureRecognizer/GestureRecognizerState"
     ]
 }

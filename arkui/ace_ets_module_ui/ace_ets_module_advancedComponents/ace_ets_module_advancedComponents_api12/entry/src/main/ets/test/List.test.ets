@@ -13,13 +13,14 @@
  * limitations under the License.
  */
 
-import composeListItemPageTest from './composeListItem/composeListItemPageTest.test';
-import exceptionPromptTest from './exceptionPrompt/exceptionPromptTest.test';
-import filterTest from './filter/filterTest.test';
-import selectTitleBarTest from './selectTitleBar/selectTitleBarTest.test';
-import swipeRefresherPageTest from './swipeRefresher/swipeRefresherPageTest.test';
-import tabTitleBarPageTest from './tabTitleBar/tabTitleBarPageTest.test';
-import toolBarPageTest from './toolBar/toolBarPageTest.test';
+import composeListItemPageTest from './composeListItem/composeListItemPageTest.test.ets';
+import exceptionPromptTest from './exceptionPrompt/exceptionPromptTest.test.ets';
+import filterTest from './filter/filterTest.test.ets';
+import selectTitleBarTest from './selectTitleBar/selectTitleBarTest.test.ets';
+import swipeRefresherPageTest from './swipeRefresher/swipeRefresherPageTest.test.ets';
+import tabTitleBarPageTest from './tabTitleBar/tabTitleBarPageTest.test.ets';
+import toolBarPageTest from './toolBar/toolBarPageTest.test.ets';
+import treeViewPageTest from './treeView/treeViewPageTest.test.ets';
 
 export default function testsuite() {
   composeListItemPageTest();
@@ -29,4 +30,5 @@ export default function testsuite() {
   swipeRefresherPageTest();
   tabTitleBarPageTest();
   toolBarPageTest();
+  treeViewPageTest();
 }

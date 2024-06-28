@@ -24,6 +24,7 @@ function sleep(time: number): Promise<number> {
 export default class UiExtAbility extends ShareExtensionAbility {
   private StartAbilityForResultAsCaller_0700 = () => {
     setTimeout(() => {
+      console.info('====>[backGroundAbility] onSessionCreate want.parameters.parameter == StartAbilityForResultAsCaller_0700');
       this.context.startAbilityForResultAsCaller({
         moduleName: 'entry',
         bundleName: 'com.example.uiextensionforresultascallerother',

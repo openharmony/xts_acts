@@ -3,24 +3,18 @@
     "bundleName": "com.amsst.stdataability",
     "vendor": "test",
     "version": {
-      "code": 1000110,
-      "name": "1.1.1"
-    },
-    "apiVersion": {
-      "compatible": 8,
-      "target": 9
+      "code": 1000000,
+      "name": "1.0.0"
     }
   },
   "deviceConfig": {},
   "module": {
     "package": "com.amsst.stdataability",
-    "name": ".MyApplication",
+    "name": ".entry",
     "mainAbility": ".MainAbility",
-    "srcPath": "",
     "deviceType": [
-        "default",
-        "tablet",
-        "2in1"
+      "default",
+      "tablet"
     ],
     "distro": {
       "deliveryWithInstall": true,
@@ -41,15 +35,15 @@
           }
         ],
         "orientation": "unspecified",
-        "visible": true,
-        "srcPath": "MainAbility",
+        "formsEnabled": false,
         "name": ".MainAbility",
         "srcLanguage": "ets",
+        "srcPath": "MainAbility",
         "icon": "$media:icon",
-        "description": "$string:description_mainability",
-        "formsEnabled": false,
-        "label": "$string:entry_MainAbility",
+        "description": "$string:MainAbility_desc",
+        "label": "$string:MainAbility_label",
         "type": "page",
+        "visible": true,
         "launchType": "standard"
       },
       {
@@ -92,8 +86,7 @@
           "type": "pageAbility"
         },
         "pages": [
-          "pages/index",
-          "pages/second"
+          "pages/index"
         ],
         "name": ".MainAbility",
         "window": {

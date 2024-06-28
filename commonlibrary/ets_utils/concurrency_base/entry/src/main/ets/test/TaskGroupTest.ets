@@ -16,7 +16,7 @@ import taskpool from '@ohos.taskpool'
 import { check } from './utils';
 import { createUint32Array, indexSetter } from './TaskPoolTestImport';
 
-/// TESTS IMPLEMENTATION ///
+// TESTS IMPLEMENTATION //
 
 export function testHappyPath(): Promise<string> {
   let p = taskpool.execute(testHappyPathImpl)

@@ -3,9 +3,10 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
-        "shell-timeout": "600000",
         "bundle-name": "com.ohos.actsfaabilitydisplayorientationtest",
-        "package-name": "com.ohos.actsfaabilitydisplayorientationtest",
+        "package-name": "com.ohos.actsfaabilitydisplayorientationtest_test",
+        "moduleName": "entry_test",
+        "shell-timeout": "600000",
         "testcase-timeout": "30000"
     },
     "kits": [
@@ -18,12 +19,6 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },{
-            "type": "ShellKit",
-            "run-command": [
-                "power-shell wakeup",
-                "power-shell setmode 602"
-            ]
         }
     ]
 }

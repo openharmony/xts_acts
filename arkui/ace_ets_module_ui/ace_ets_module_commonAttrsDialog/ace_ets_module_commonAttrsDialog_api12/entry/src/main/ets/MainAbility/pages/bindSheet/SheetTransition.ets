@@ -49,6 +49,7 @@ struct SheetTransitionExample {
         .bindSheet($$this.isShow, this.myBuilder(), {
           height: SheetSize.MEDIUM,
           backgroundColor: Color.Green,
+          preferType: SheetType.BOTTOM,
           onTypeDidChange: (value: SheetType) => {
             this.SheetTypeValue = (`value SheetType:${this.SheetType = value}`)
             console.info(`value SheetType:${this.SheetType = value}`)

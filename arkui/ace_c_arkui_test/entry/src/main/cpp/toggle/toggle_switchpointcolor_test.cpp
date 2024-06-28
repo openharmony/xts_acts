@@ -53,4 +53,27 @@ static napi_value TestToggleSwitchPointColor003(napi_env env, napi_callback_info
     NAPI_END;
 }
 
+static napi_value TestToggleSwitchPointColor004(napi_env env, napi_callback_info info)
+{
+    NAPI_START(toggle, ARKUI_NODE_TOGGLE);
+    uint32_t switchPointColor = napi_null;
+    ArkUI_NumberValue value[] = {{.u32 = switchPointColor}};
+    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(toggle, NODE_TOGGLE_SWITCH_POINT_COLOR, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_TOGGLE_SWITCH_POINT_COLOR)->value[PARAM_0].u32, switchPointColor);
+    NAPI_END;
+}
+
+static napi_value TestToggleSwitchPointColor005(napi_env env, napi_callback_info info)
+{
+    NAPI_START(toggle, ARKUI_NODE_TOGGLE);
+    uint32_t switchPointColor = napi_undefined;
+    ArkUI_NumberValue value[] = {{.u32 = switchPointColor}};
+    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(toggle, NODE_TOGGLE_SWITCH_POINT_COLOR, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_TOGGLE_SWITCH_POINT_COLOR)->value[PARAM_0].u32, switchPointColor);
+    NAPI_END;
+}
 } // namespace ArkUICapiTest

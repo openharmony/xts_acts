@@ -29,7 +29,7 @@ export default function SystemStorageJsunit(){
 
         afterEach(async function (done) {
             console.info(TAG + 'afterEach')
-            let promise = storage.clear({
+            let promise = await storage.clear({
                 success: function (data) {
                     console.info("Succeeded in clearing.");
                     expect(data!=undefined).assertTrue();
@@ -41,7 +41,6 @@ export default function SystemStorageJsunit(){
                     done();
                 }
             });
-            await promise;
             done();
         })
 
@@ -61,7 +60,7 @@ export default function SystemStorageJsunit(){
             console.info(TAG + '************* testSet001 start *************');
             let completeRet = false;
             let successRet = false;
-            let promise1 = storage.set({
+            let promise1 = await storage.set({
                 key: 'storageKey',
                 value: 'testVal',
                 success: async function () {
@@ -73,14 +72,12 @@ export default function SystemStorageJsunit(){
                     await expect(completeRet).assertTrue();
                 }
             });
-            await promise1;
-            let promise2 = storage.get({
+            let promise2 = await storage.get({
                 key: 'storageKey',
                 success: async function (data) {
                     await expect(data).assertEqual('testVal');
                 }
             })
-            await promise2;
 
             await expect(successRet).assertTrue();
             await expect(completeRet).assertTrue();
@@ -102,7 +99,7 @@ export default function SystemStorageJsunit(){
             let testData = undefined;
             let testErrCode = undefined;
             let compelteRet = false;
-            let promise = storage.set({
+            let promise = await storage.set({
                 key: '',
                 value: 'testValue',
                 success: async function () {
@@ -117,7 +114,6 @@ export default function SystemStorageJsunit(){
                     await expect(compelteRet).assertTrue();
                 }
             })
-            await promise;
             await expect("The key string is null or empty.").assertEqual(testData);
             await expect(-1006).assertEqual(testErrCode);
             await expect(compelteRet).assertTrue();
@@ -140,7 +136,7 @@ export default function SystemStorageJsunit(){
             let testData = undefined;
             let testErrCode = undefined;
             let compelteRet = false;
-            let promise = storage.set({
+            let promise = await storage.set({
                 key: 'x'.repeat(33),
                 value: 'testValue',
                 success: async function () {
@@ -155,7 +151,6 @@ export default function SystemStorageJsunit(){
                     await expect(compelteRet).assertTrue();
                 }
             })
-            await promise;
             await expect("The key string length should shorter than 32.").assertEqual(testData);
             await expect(-1016).assertEqual(testErrCode);
             await expect(compelteRet).assertTrue();
@@ -179,7 +174,7 @@ export default function SystemStorageJsunit(){
             let testData = undefined;
             let testErrCode = undefined;
             let compelteRet = false;
-            let promise = storage.set({
+            let promise = await storage.set({
                 key: 'testKey',
                 value: 'x'.repeat(129),
                 success: async function () {
@@ -193,7 +188,6 @@ export default function SystemStorageJsunit(){
                     compelteRet = true;
                 }
             })
-            await promise;
             await expect("The value string length should shorter than 128.").assertEqual(testData);
             await expect(-1017).assertEqual(testErrCode);
             await expect(compelteRet).assertTrue();
@@ -214,7 +208,7 @@ export default function SystemStorageJsunit(){
         it('testGet001', 0, async function (done) {
             console.info(TAG + '************* testGet001 start *************');
             let completeRet = false;
-            let promise1 = storage.set({
+            let promise1 = await storage.set({
                 key: 'storageKey',
                 value: 'storageVal',
                 success:async function (data) {
@@ -225,8 +219,8 @@ export default function SystemStorageJsunit(){
                     await expect(false).assertTrue();
                 },
             });
-            await promise1;
-            let promise2 = storage.get({
+
+            let promise2 = await storage.get({
                 key: 'storageKey',
                 success: async function (data) {
                     await expect('storageVal').assertEqual(data);
@@ -236,7 +230,7 @@ export default function SystemStorageJsunit(){
                     await expect(completeRet).assertTrue();
                 }
             });
-            await promise2;
+
             await expect(completeRet).assertTrue();
 
             done();
@@ -255,7 +249,7 @@ export default function SystemStorageJsunit(){
         it('testGet002', 0, async function (done) {
             console.info(TAG + '************* testGet002 start *************');
             let completeRet = false;
-            let promise = storage.get({
+            let promise = await storage.get({
                 key: 'storageKey',
                 default: '123',
                 success: async function (data) {
@@ -269,7 +263,7 @@ export default function SystemStorageJsunit(){
                     await expect(completeRet).assertTrue();
                 }
             })
-            await promise;
+
             await expect(completeRet).assertTrue();
 
             done();
@@ -293,7 +287,7 @@ export default function SystemStorageJsunit(){
             let testErrCode = undefined;
             let completeRet = false;
             let failRet = false;
-            let promise = storage.get({
+            let promise = await storage.get({
                 key: 'storageKey',
                 default: 'x'.repeat(129),
                 success: async function (data) {
@@ -309,7 +303,7 @@ export default function SystemStorageJsunit(){
                     await expect(completeRet).assertTrue();
                 }
             })
-            await promise;
+
             expect(failRet).assertTrue();
             expect(completeRet).assertTrue();
             expect(-1018).assertEqual(testErrCode);
@@ -333,7 +327,7 @@ export default function SystemStorageJsunit(){
             console.info(TAG + '************* testGet004 start *************');
             let testVal = undefined;
             let completeRet = false;
-            let promise = storage.get({
+            let promise = await storage.get({
                 key: '',
                 default: 'storageVal',
                 success: async function (data) {
@@ -347,7 +341,7 @@ export default function SystemStorageJsunit(){
                     await expect(completeRet).assertTrue();
                 }
             })
-            await promise;
+
             await expect(completeRet).assertTrue();
 
             done();
@@ -367,7 +361,7 @@ export default function SystemStorageJsunit(){
             console.info(TAG + '************* testDelete001 start *************');
             let completeRet = false;
             let successRet = false;
-            let promise1 = storage.set({
+            let promise1 = await storage.set({
                 key: 'storageKey',
                 value: 'storageVal',
                 success:async function (data) {
@@ -378,8 +372,8 @@ export default function SystemStorageJsunit(){
                     await expect(false).assertTrue();
                 },
             })
-            await promise1;
-            let promise2 = storage.delete({
+
+            let promise2 = await storage.delete({
                 key: "storageKey",
                 success: async function () {
                     successRet = true;
@@ -390,15 +384,15 @@ export default function SystemStorageJsunit(){
                     await expect(completeRet).assertTrue();
                 }
             });
-            await promise2;
-            let promise3 = storage.get({
+
+            let promise3 = await storage.get({
                 key: 'storageKey',
                 default: 'testVal',
                 success: async function (data) {
                     await expect(data).assertEqual('testVal');
                 }
             })
-            await promise3;
+
             await expect(completeRet).assertTrue();
             await expect(successRet).assertTrue();
 
@@ -421,7 +415,7 @@ export default function SystemStorageJsunit(){
             let testErrCode = undefined;
             let completeRet = false;
             let failRet = false;
-            let promise1 = storage.set({
+            let promise1 = await storage.set({
                 key: 'storageKey',
                 value: 'storageVal',
                 success:async function (data) {
@@ -432,8 +426,8 @@ export default function SystemStorageJsunit(){
                     await expect(false).assertTrue();
                 },
             })
-            await promise1;
-            let promise2 = storage.delete({
+
+            let promise2 = await storage.delete({
                 key: '',
                 success: async function () {
                     await expect(false).assertTrue();
@@ -448,7 +442,7 @@ export default function SystemStorageJsunit(){
                     await expect(completeRet).assertTrue();
                 }
             })
-            await promise2;
+
             await expect(completeRet).assertTrue();
             await expect("The key string is null or empty.").assertEqual(testData);
             await expect(-1006).assertEqual(testErrCode);
@@ -470,7 +464,7 @@ export default function SystemStorageJsunit(){
         it('testDelete003', 0, async function (done) {
             console.info(TAG + '************* testDelete003 start *************');
             let completeRet = false;
-            let promise1 = storage.set({
+            let promise1 = await storage.set({
                 key: 'storageKey',
                 value: 'test',
                 success:async function (data) {
@@ -481,8 +475,8 @@ export default function SystemStorageJsunit(){
                     await expect(false).assertTrue();
                 },
             });
-            await promise1;
-            let promise2 = storage.delete({
+
+            let promise2 = await storage.delete({
                 key: '123',
                 success: async function (data) {
                     console.info("delete is success.");
@@ -496,8 +490,8 @@ export default function SystemStorageJsunit(){
                     expect(completeRet).assertTrue();
                 }
             });
-            await promise2;
-            let promise3 = storage.get({
+
+            let promise3 = await storage.get({
                 key: 'storageKey',
                 success: async function (data) {
                     await expect(data).assertEqual('test');
@@ -506,7 +500,7 @@ export default function SystemStorageJsunit(){
                     await expect(false).assertTrue();
                 }
             })
-            await promise3;
+
             await expect(completeRet).assertTrue();
 
             done();
@@ -526,7 +520,7 @@ export default function SystemStorageJsunit(){
             console.info(TAG + '************* testClear001 start *************');
             let successRet = false;
             let compelteRet = false;
-            let promise1 = storage.set({
+            let promise1 = await storage.set({
                 key: 'storageKey1',
                 value: 'storageVal1',
                 success:async function (data) {
@@ -537,8 +531,8 @@ export default function SystemStorageJsunit(){
                     await expect(false).assertTrue();
                 },
             });
-            await promise1;
-            let promise2 = storage.set({
+
+            let promise2 = await storage.set({
                 key: 'storageKey2',
                 value: 'storageVal2',
                 success:async function (data) {
@@ -549,8 +543,8 @@ export default function SystemStorageJsunit(){
                     await expect(false).assertTrue();
                 },
             });
-            await promise2;
-            let promise3 = storage.clear({
+
+            let promise3 = await storage.clear({
                 success:async function() {
                     successRet = true;
                     await expect(successRet).assertTrue();
@@ -563,7 +557,7 @@ export default function SystemStorageJsunit(){
                     await expect(compelteRet).assertTrue();
                 }
             });
-            await promise3;
+
             await expect(successRet).assertTrue();
 
             done();

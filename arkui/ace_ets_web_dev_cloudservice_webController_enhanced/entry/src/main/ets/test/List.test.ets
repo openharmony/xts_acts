@@ -13,8 +13,12 @@
  * limitations under the License.
  */
 import webViewSdkTestFrameUrl from './webViewSdkTestFrameUrl.test';
+import webViewNativeMediaPlayerEnableFalse from './webViewNativeMediaPlayerEnableFalse.test';
+import webViewNativeMediaPlayerHandlerEnhanced from './webViewNativeMediaPlayerHandlerEnhanced.test';
 import webViewWebResourceTypeProps2 from './webViewWebResourceTypeProps2.test';
 export default function testsuite() {
   webViewSdkTestFrameUrl()
   webViewWebResourceTypeProps2()
+  webViewNativeMediaPlayerEnableFalse()
+  webViewNativeMediaPlayerHandlerEnhanced()
 }
