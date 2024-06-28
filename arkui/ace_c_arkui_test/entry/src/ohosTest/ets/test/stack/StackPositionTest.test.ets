@@ -52,5 +52,17 @@ export default function stackPositionTest() {
       done()
     })
 
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_STACK_POSITION_0300
+     * @tc.name       : testStackPosition003
+     * @tc.desc       : testing position for stack with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testStackPosition003', 0, async (done: Function) => {
+      expect(nativeFunc.testStackPosition003()).assertEqual(0)
+      done()
+    })
   })
 }

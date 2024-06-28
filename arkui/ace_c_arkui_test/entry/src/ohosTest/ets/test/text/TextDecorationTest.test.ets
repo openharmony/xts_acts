@@ -103,5 +103,98 @@ export default function textDecorationTest() {
       expect(nativeFunc.testTextDecoration006()).assertEqual(0)
       done()
     })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_TEXT_DECORATION_0700
+     * @tc.name       : testTextDecoration007
+     * @tc.desc       : testing decoration for text with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTextDecoration007', 0, async (done: Function) => {
+      expect(nativeFunc.testTextDecoration007()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_TEXT_DECORATION_0800
+     * @tc.name       : testTextDecoration008
+     * @tc.desc       : testing decoration for text with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTextDecoration008', 0, async (done: Function) => {
+      expect(nativeFunc.testTextDecoration008()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_TEXT_DECORATION_0900
+     * @tc.name       : testTextDecoration009
+     * @tc.desc       : testing decoration for text with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTextDecoration009', 0, async (done: Function) => {
+      expect(nativeFunc.testTextDecoration009()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_TEXT_DECORATION_1000
+     * @tc.name       : testTextDecoration010
+     * @tc.desc       : testing decoration for text with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTextDecoration010', 0, async (done: Function) => {
+      expect(nativeFunc.testTextDecoration010()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_TEXT_DECORATION_1100
+     * @tc.name       : testTextDecoration011
+     * @tc.desc       : testing decoration for text with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTextDecoration011', 0, async (done: Function) => {
+      expect(nativeFunc.testTextDecoration011()).assertEqual(0)
+      done()
+    })
+
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_TEXT_DECORATION_1200
+     * @tc.name       : testTextDecoration012
+     * @tc.desc       : testing decoration for text with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTextDecoration012', 0, async (done: Function) => {
+      expect(nativeFunc.testTextDecoration012()).assertEqual(0)
+      done()
+    })
+
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_TEXT_DECORATION_1300
+     * @tc.name       : testTextDecoration013
+     * @tc.desc       : testing decoration for text with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testTextDecoration013', 0, async (done: Function) => {
+      expect(nativeFunc.testTextDecoration013()).assertEqual(0)
+      done()
+    })
   })
 }

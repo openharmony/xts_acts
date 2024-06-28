@@ -54,7 +54,7 @@ export default function HoverScale_APITest() {
       let btn: Component = await driver.findComponent(ON.id('btn'));
       let row: Component = await driver.findComponent(ON.id('row'));
       let point = await row.getBoundsCenter();
-      await btn.longClick();
+      await btn.click();
       await CommonFunc.sleep(5000);
       await driver.click(point.x/2, point.y/4);
       await CommonFunc.sleep(1000);

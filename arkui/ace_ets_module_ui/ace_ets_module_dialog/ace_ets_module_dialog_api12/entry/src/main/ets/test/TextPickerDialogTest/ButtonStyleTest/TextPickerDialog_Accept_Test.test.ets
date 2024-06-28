@@ -61,9 +61,8 @@ export default function TextPickerDialog_Accept_Test() {
       let btn: Component = await driver.findComponent(ON.id('btn'));
       await btn.click();
       await CommonFunc.sleep(1000);
-      let row: Component = await driver.findComponent(ON.id('row'))
-      let rect = await row.getBoundsCenter()
-      await driver.click(Math.floor(rect.x), Math.floor(rect.y/4))
+      let row: Component = await driver.findComponent(ON.text('È·¶¨'))
+      await row.click();
       await CommonFunc.sleep(2000);
       let acceptButtonStyle_Text = getInspectorByKey('acceptButtonStyle_Text');
       console.info('acceptButtonStyle_Text attrs-----' + JSON.parse(acceptButtonStyle_Text).$attrs);

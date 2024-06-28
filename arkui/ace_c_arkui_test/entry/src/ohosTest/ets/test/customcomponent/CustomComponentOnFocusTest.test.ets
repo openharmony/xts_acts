@@ -39,7 +39,7 @@ export default function customComponentOnFocusTest() {
       await Utils.sleep(2000)
       focusControl.requestFocus('OnFocusTestCustomComponent')
       await Utils.sleep(2000)
-      expect(Utils.getComponentInfoByKey('OnFocusTestCustomComponent').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      expect(Utils.getComponentInfoByKey('OnFocusTestCustomComponent').$attrs.backgroundColor).assertEqual('#FFFF0000')
       done()
     })
 

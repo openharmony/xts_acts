@@ -20,11 +20,11 @@ static napi_value TestDatePickerDisappearTextStyle001(napi_env env, napi_callbac
 {
     NAPI_START(datePicker, ARKUI_NODE_DATE_PICKER);
     ArkUI_AttributeItem value_item = {};
-    value_item.string = "#ff182431;14;normal;Arial,HarmonyOS Sans;normal";
+    value_item.string = "#FF182431;14;normal;Arial,HarmonyOS Sans;normal";
     auto ret = nodeAPI->setAttribute(datePicker, NODE_DATE_PICKER_DISAPPEAR_TEXT_STYLE, &value_item);
     ASSERT_EQ(ret, SUCCESS);
     ASSERT_STREQ(nodeAPI->getAttribute(datePicker, NODE_DATE_PICKER_DISAPPEAR_TEXT_STYLE)->string,
-                 "#ff182431;14;normal;Arial,HarmonyOS Sans;normal");
+                 "#FF182431;14;normal;Arial,HarmonyOS Sans;normal");
     NAPI_END;
 }
 
@@ -36,6 +36,138 @@ static napi_value TestDatePickerDisappearTextStyle002(napi_env env, napi_callbac
     auto ret = nodeAPI->setAttribute(datePicker, NODE_DATE_PICKER_DISAPPEAR_TEXT_STYLE, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     ASSERT_STRNE(nodeAPI->getAttribute(datePicker, NODE_DATE_PICKER_DISAPPEAR_TEXT_STYLE)->string, "abnormal");
+    NAPI_END;
+}
+
+static napi_value TestDatePickerDisappearTextStyle003(napi_env env, napi_callback_info info)
+{
+    NAPI_START(datePicker, ARKUI_NODE_DATE_PICKER);
+    ArkUI_AttributeItem value_item = {};
+    value_item.string = "#FF182431;14;bold;Arial,HarmonyOS Sans;normal";
+    auto ret = nodeAPI->setAttribute(datePicker, NODE_DATE_PICKER_DISAPPEAR_TEXT_STYLE, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_STREQ(nodeAPI->getAttribute(datePicker, NODE_DATE_PICKER_DISAPPEAR_TEXT_STYLE)->string,
+                 "#FF182431;14;bold;Arial,HarmonyOS Sans;normal");
+    NAPI_END;
+}
+
+static napi_value TestDatePickerDisappearTextStyle004(napi_env env, napi_callback_info info)
+{
+    NAPI_START(datePicker, ARKUI_NODE_DATE_PICKER);
+    ArkUI_AttributeItem value_item = {};
+    value_item.string = "#FF182431;14;bolder;Arial,HarmonyOS Sans;normal";
+    auto ret = nodeAPI->setAttribute(datePicker, NODE_DATE_PICKER_DISAPPEAR_TEXT_STYLE, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_STREQ(nodeAPI->getAttribute(datePicker, NODE_DATE_PICKER_DISAPPEAR_TEXT_STYLE)->string,
+                 "#FF182431;14;bolder;Arial,HarmonyOS Sans;normal");
+    NAPI_END;
+}
+
+static napi_value TestDatePickerDisappearTextStyle005(napi_env env, napi_callback_info info)
+{
+    NAPI_START(datePicker, ARKUI_NODE_DATE_PICKER);
+    ArkUI_AttributeItem value_item = {};
+    value_item.string = "#FF182431;14;lighter;Arial,HarmonyOS Sans;normal";
+    auto ret = nodeAPI->setAttribute(datePicker, NODE_DATE_PICKER_DISAPPEAR_TEXT_STYLE, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_STREQ(nodeAPI->getAttribute(datePicker, NODE_DATE_PICKER_DISAPPEAR_TEXT_STYLE)->string,
+                 "#FF182431;14;lighter;Arial,HarmonyOS Sans;normal");
+    NAPI_END;
+}
+
+static napi_value TestDatePickerDisappearTextStyle006(napi_env env, napi_callback_info info)
+{
+    NAPI_START(datePicker, ARKUI_NODE_DATE_PICKER);
+    ArkUI_AttributeItem value_item = {};
+    value_item.string = "#FF182431;14;medium;Arial,HarmonyOS Sans;normal";
+    auto ret = nodeAPI->setAttribute(datePicker, NODE_DATE_PICKER_DISAPPEAR_TEXT_STYLE, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_STREQ(nodeAPI->getAttribute(datePicker, NODE_DATE_PICKER_DISAPPEAR_TEXT_STYLE)->string,
+                 "#FF182431;14;medium;Arial,HarmonyOS Sans;normal");
+    NAPI_END;
+}
+
+static napi_value TestDatePickerDisappearTextStyle007(napi_env env, napi_callback_info info)
+{
+    NAPI_START(datePicker, ARKUI_NODE_DATE_PICKER);
+    ArkUI_AttributeItem value_item = {};
+    value_item.string = "#FF182431;14;regular;Arial,HarmonyOS Sans;normal";
+    auto ret = nodeAPI->setAttribute(datePicker, NODE_DATE_PICKER_DISAPPEAR_TEXT_STYLE, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_STREQ(nodeAPI->getAttribute(datePicker, NODE_DATE_PICKER_DISAPPEAR_TEXT_STYLE)->string,
+                 "#FF182431;14;regular;Arial,HarmonyOS Sans;normal");
+    NAPI_END;
+}
+
+static napi_value TestDatePickerDisappearTextStyle008(napi_env env, napi_callback_info info)
+{
+    NAPI_START(datePicker, ARKUI_NODE_DATE_PICKER);
+    ArkUI_AttributeItem value_item = {};
+    value_item.string = "#FF182431;14;bold;Arial,HarmonyOS Sans;italic";
+    auto ret = nodeAPI->setAttribute(datePicker, NODE_DATE_PICKER_DISAPPEAR_TEXT_STYLE, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_STREQ(nodeAPI->getAttribute(datePicker, NODE_DATE_PICKER_DISAPPEAR_TEXT_STYLE)->string,
+                 "#FF182431;14;bold;Arial,HarmonyOS Sans;italic");
+    NAPI_END;
+}
+
+static napi_value TestDatePickerDisappearTextStyle009(napi_env env, napi_callback_info info)
+{
+    NAPI_START(datePicker, ARKUI_NODE_DATE_PICKER);
+    ArkUI_AttributeItem value_item = {};
+    value_item.string = "#FF182431;14;normal;Arial,HarmonyOS Sans;italic";
+    auto ret = nodeAPI->setAttribute(datePicker, NODE_DATE_PICKER_DISAPPEAR_TEXT_STYLE, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_STREQ(nodeAPI->getAttribute(datePicker, NODE_DATE_PICKER_DISAPPEAR_TEXT_STYLE)->string,
+                 "#FF182431;14;normal;Arial,HarmonyOS Sans;italic");
+    NAPI_END;
+}
+
+static napi_value TestDatePickerDisappearTextStyle010(napi_env env, napi_callback_info info)
+{
+    NAPI_START(datePicker, ARKUI_NODE_DATE_PICKER);
+    ArkUI_AttributeItem value_item = {};
+    value_item.string = "#FF182431;14;bolder;Arial,HarmonyOS Sans;italic";
+    auto ret = nodeAPI->setAttribute(datePicker, NODE_DATE_PICKER_DISAPPEAR_TEXT_STYLE, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_STREQ(nodeAPI->getAttribute(datePicker, NODE_DATE_PICKER_DISAPPEAR_TEXT_STYLE)->string,
+                 "#FF182431;14;bolder;Arial,HarmonyOS Sans;italic");
+    NAPI_END;
+}
+
+static napi_value TestDatePickerDisappearTextStyle011(napi_env env, napi_callback_info info)
+{
+    NAPI_START(datePicker, ARKUI_NODE_DATE_PICKER);
+    ArkUI_AttributeItem value_item = {};
+    value_item.string = "#FF182431;14;lighter;Arial,HarmonyOS Sans;italic";
+    auto ret = nodeAPI->setAttribute(datePicker, NODE_DATE_PICKER_DISAPPEAR_TEXT_STYLE, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_STREQ(nodeAPI->getAttribute(datePicker, NODE_DATE_PICKER_DISAPPEAR_TEXT_STYLE)->string,
+                 "#FF182431;14;lighter;Arial,HarmonyOS Sans;italic");
+    NAPI_END;
+}
+
+static napi_value TestDatePickerDisappearTextStyle012(napi_env env, napi_callback_info info)
+{
+    NAPI_START(datePicker, ARKUI_NODE_DATE_PICKER);
+    ArkUI_AttributeItem value_item = {};
+    value_item.string = "#FF182431;14;medium;Arial,HarmonyOS Sans;italic";
+    auto ret = nodeAPI->setAttribute(datePicker, NODE_DATE_PICKER_DISAPPEAR_TEXT_STYLE, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_STREQ(nodeAPI->getAttribute(datePicker, NODE_DATE_PICKER_DISAPPEAR_TEXT_STYLE)->string,
+                 "#FF182431;14;medium;Arial,HarmonyOS Sans;italic");
+    NAPI_END;
+}
+
+static napi_value TestDatePickerDisappearTextStyle013(napi_env env, napi_callback_info info)
+{
+    NAPI_START(datePicker, ARKUI_NODE_DATE_PICKER);
+    ArkUI_AttributeItem value_item = {};
+    value_item.string = "#FF182431;14;regular;Arial,HarmonyOS Sans;italic";
+    auto ret = nodeAPI->setAttribute(datePicker, NODE_DATE_PICKER_DISAPPEAR_TEXT_STYLE, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_STREQ(nodeAPI->getAttribute(datePicker, NODE_DATE_PICKER_DISAPPEAR_TEXT_STYLE)->string,
+                 "#FF182431;14;regular;Arial,HarmonyOS Sans;italic");
     NAPI_END;
 }
 } // namespace ArkUICapiTest
