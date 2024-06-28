@@ -61,7 +61,7 @@ export default function TimePickerDialog_Cancel_Test() {
       let btn: Component = await driver.findComponent(ON.id('btn'));
       await btn.click();
       await CommonFunc.sleep(1000);
-      let row: Component = await driver.findComponent(ON.text('È·¶¨'))
+      let row: Component = await driver.findComponent(ON.text('ç¡®å®š'))
       await row.click();
       await CommonFunc.sleep(2000);
       let cancelButtonStyle_Text = getInspectorByKey('cancelButtonStyle_Text');
