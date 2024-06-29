@@ -1,13 +1,13 @@
 /**
  * Copyright (c) 2024 Huawei Device Co., Ltd.
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
+ * distributed under the License is distributed on an 'AS IS' BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -55,7 +55,7 @@ class MyCustomSpan extends CustomSpan {
   }
 
   width: number = 160;
-  word: string = "drawing";
+  word: string = 'drawing';
   height: number = 10;
 }
 
@@ -64,12 +64,12 @@ class MyCustomSpan extends CustomSpan {
 struct styled_string_demo1 {
   @State text: string = ''
   @State text2: string = ''
-  customSpan2: MyCustomSpan = new MyCustomSpan("change", 130, 10);
-  customSpan1: MyCustomSpan = new MyCustomSpan("Hello", 80, 10);
-  customSpan3: MyCustomSpan = new MyCustomSpan("World", 80, 40);
+  customSpan2: MyCustomSpan = new MyCustomSpan('change', 130, 10);
+  customSpan1: MyCustomSpan = new MyCustomSpan('Hello', 80, 10);
+  customSpan3: MyCustomSpan = new MyCustomSpan('World', 80, 40);
   style2: MutableStyledString = new MutableStyledString(this.customSpan2);
   style1: MutableStyledString = new MutableStyledString(this.customSpan1);
-  textStyle: MutableStyledString = new MutableStyledString("123");
+  textStyle: MutableStyledString = new MutableStyledString('123');
   textController: TextController = new TextController();
   imagePixelMap: image.PixelMap | undefined = undefined;
   isPageShow: boolean = true;
@@ -78,7 +78,7 @@ struct styled_string_demo1 {
   @State areaType: TextAreaType = TextAreaType.NORMAL
 
   async aboutToAppear() {
-    console.info("aboutToAppear initial imagePixelMap")
+    console.info('aboutToAppear initial imagePixelMap')
     this.imagePixelMap = await this.getPixmapFromMedia($r('app.media.icon'))
   }
 
@@ -103,7 +103,7 @@ struct styled_string_demo1 {
     }
     this.isPageShow = false;
 
-    this.style1.appendStyledString(new MutableStyledString("文本绘制 示例代码 CustomSpan文本绘制 示例代码 CustomSpan文本绘制 示例代码 CustomSpan", [
+    this.style1.appendStyledString(new MutableStyledString('文本绘制 示例代码 CustomSpan文本绘制 示例代码 CustomSpan文本绘制 示例代码 CustomSpan', [
       {
         start: 0,
         length: 5,
@@ -122,7 +122,7 @@ struct styled_string_demo1 {
     }
     ]))
     this.style1.appendStyledString(new StyledString(this.customSpan3))
-    this.style1.appendStyledString(new StyledString("自定义绘制", [{
+    this.style1.appendStyledString(new StyledString('自定义绘制', [{
       start: 0,
       length: 5,
       styledKey: StyledStringKey.FONT,
