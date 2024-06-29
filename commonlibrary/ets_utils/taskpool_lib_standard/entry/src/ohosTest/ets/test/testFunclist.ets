@@ -302,3 +302,27 @@ export async function sequenceRunnerPriorityTest(): Promise<string> {
   }
   return finalString;
 }
+
+export class CancelAndExecuteDelayed{
+  private task: taskpool.Task;
+  public res:number = 0;
+  public i:number = 0;
+  public isTerminate:boolean = false;
+  constructor(num: number) {
+    this.task = new taskpool.Task(printArgs, num);
+  }
+
+  postRequest() {
+    try {
+      taskpool.cancel(this.task);
+    } catch (e) {
+    }
+
+    taskpool.executeDelayed(1000, this.task).then((value: Object) => {
+      this.i++;
+      this.res += value as number;
+      this.isTerminate = true;
+    }).catch((e: BusinessError) => {
+    })
+  }
+}
