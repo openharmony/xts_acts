@@ -69,7 +69,7 @@ export default function listSwipeAction13EndJsunit() {
       console.info("[SUB_ACE_UI_COMPONENT_LISTANDGRID_LIST_STATECHAGE_0130] current component obj is: " + JSON.stringify(JSON.parse(strJson)));
       // swipe the listItem
       await driver.swipe(
-        Math.round(vp2px(300)), Math.round(vp2px(108)), Math.round(vp2px(200)), Math.round(vp2px(108))
+        Math.round(vp2px(300)), Math.round(vp2px(108)), Math.round(vp2px(250)), Math.round(vp2px(108))
       );
       await CommonFunc.sleep(4000);
       // judge the swipeActionState
