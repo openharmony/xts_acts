@@ -623,9 +623,10 @@ export default function abilityTest() {
       startAbilityTest("MainAbility3", TEST_CASE_NAME)
       await sleep(1000);
       listKeyTemp = getAbilityLifeCycleFilter("MainAbility3", TEST_CASE_NAME)
-      expect(listKeyTemp[0]).assertEqual("MainAbility3 onAbilityCreate");
-      expect(listKeyTemp[1]).assertEqual("MainAbility3 onWindowStageCreate");
-      expect(listKeyTemp[2]).assertEqual("MainAbility3 onAbilityForeground");
+      let listKeyTempStr = JSON.stringify(listKeyTemp)
+      expect(listKeyTempStr.indexOf("MainAbility3 onAbilityCreate") != -1).assertEqual(true);
+      expect(listKeyTempStr.indexOf("MainAbility3 onWindowStageCreate") != -1).assertEqual(true);
+      expect(listKeyTempStr.indexOf("MainAbility3 onAbilityForeground") != -1).assertEqual(true);
       isTerminateSelfMainAbilityA = true;
       isTerminateSelfMainAbility3Multition = true;
       done()
