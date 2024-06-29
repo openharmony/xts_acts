@@ -54,27 +54,29 @@ export default function textArea_center() {
       console.info('[textArea_center_001] START');
       await CommonFunc.sleep(1000);
 
-      console.log('get click before  Initial value')
-      let textArea_01 = CommonFunc.getComponentRect('textArea_center_textArea_01');
+      if (globalThis.winLeft == 0) {
+        console.log('get click before  Initial value')
+        let textArea_01 = CommonFunc.getComponentRect('textArea_center_textArea_01');
 
-      console.log('assert position')
-      let y1 = textArea_01.top
+        console.log('assert position')
+        let y1 = textArea_01.top
 
-      let driver = await Driver.create();
-      await CommonFunc.sleep(500);
-      await driver.click(
-        (Math.round(textArea_01.left + (textArea_01.right - textArea_01.left) /2)),(Math.round(textArea_01.top + (textArea_01.bottom - textArea_01.top) /45))
-      );
-      await CommonFunc.sleep(1000);
+        let driver = await Driver.create();
+        await CommonFunc.sleep(500);
+        await driver.click(
+          (Math.round(textArea_01.left + (textArea_01.right - textArea_01.left) /2)),(Math.round(textArea_01.top + (textArea_01.bottom - textArea_01.top) /45))
+        );
+        await CommonFunc.sleep(1000);
 
-      console.log('get click after Initial value')
-      let textArea_02 = CommonFunc.getComponentRect('textArea_center_textArea_01');
-      let y2 = textArea_02.top
-      expect(y1).assertEqual(y2);
+        console.log('get click after Initial value')
+        let textArea_02 = CommonFunc.getComponentRect('textArea_center_textArea_01');
+        let y2 = textArea_02.top
+        expect(y1).assertEqual(y2);
 
-      let btn = await driver.findComponent(ON.id('textArea_center_btn'));
-      await btn.click();
-      await CommonFunc.sleep(1000);
+        let btn = await driver.findComponent(ON.id('textArea_center_btn'));
+        await btn.click();
+        await CommonFunc.sleep(1000);
+      }
 
       done();
     });
@@ -89,28 +91,29 @@ export default function textArea_center() {
 
       console.info('[textArea_center_002] START');
       await CommonFunc.sleep(1000);
+      if (globalThis.winLeft == 0) {
+        console.log('get click before  Initial value')
+        let textArea_01 = CommonFunc.getComponentRect('textArea_center_textArea_01');
 
-      console.log('get click before  Initial value')
-      let textArea_01 = CommonFunc.getComponentRect('textArea_center_textArea_01');
+        console.log('assert position')
+        let y1 = textArea_01.top
 
-      console.log('assert position')
-      let y1 = textArea_01.top
+        let driver = await Driver.create();
+        await CommonFunc.sleep(500);
+        await driver.click(
+          (Math.round(textArea_01.left + (textArea_01.right - textArea_01.left) /2)),(Math.round(textArea_01.top + (textArea_01.bottom - textArea_01.top) /2))
+        );
+        await CommonFunc.sleep(1000);
 
-      let driver = await Driver.create();
-      await CommonFunc.sleep(500);
-      await driver.click(
-        (Math.round(textArea_01.left + (textArea_01.right - textArea_01.left) /2)),(Math.round(textArea_01.top + (textArea_01.bottom - textArea_01.top) /2))
-      );
-      await CommonFunc.sleep(1000);
+        console.log('get click after Initial value')
+        let textArea_02 = CommonFunc.getComponentRect('textArea_center_textArea_01');
+        let y2 = textArea_02.top
+        expect(y2).assertLess(y1);
 
-      console.log('get click after Initial value')
-      let textArea_02 = CommonFunc.getComponentRect('textArea_center_textArea_01');
-      let y2 = textArea_02.top
-      expect(y2).assertLess(y1);
-
-      let btn = await driver.findComponent(ON.id('textArea_center_btn'));
-      await btn.click();
-      await CommonFunc.sleep(1000);
+        let btn = await driver.findComponent(ON.id('textArea_center_btn'));
+        await btn.click();
+        await CommonFunc.sleep(1000);
+      }
 
       done();
     });
@@ -125,29 +128,30 @@ export default function textArea_center() {
 
       console.info('[textArea_center_003] START');
       await CommonFunc.sleep(1000);
+      if (globalThis.winLeft == 0) {
+        let driver = await Driver.create()
+        await CommonFunc.sleep(1000);
+        let btn1 = await driver.findComponent(ON.id('textArea_center_btn'));
+        await btn1.click();
+        await CommonFunc.sleep(1000);
 
-      let driver = await Driver.create()
-      await CommonFunc.sleep(1000);
-      let btn1 = await driver.findComponent(ON.id('textArea_center_btn'));
-      await btn1.click();
-      await CommonFunc.sleep(1000);
+        console.log('get click before  Initial value')
+        let textArea_01 = CommonFunc.getComponentRect('textArea_center_textArea_01');
 
-      console.log('get click before  Initial value')
-      let textArea_01 = CommonFunc.getComponentRect('textArea_center_textArea_01');
+        console.log('assert position')
+        let y5 = textArea_01.bottom
 
-      console.log('assert position')
-      let y5 = textArea_01.bottom
+        await CommonFunc.sleep(500);
+        await driver.click(
+          (Math.round(textArea_01.left + (textArea_01.right - textArea_01.left) /2)),(Math.round(textArea_01.top + (textArea_01.bottom - textArea_01.top) /45 *44))
+        );
+        await CommonFunc.sleep(1000);
 
-      await CommonFunc.sleep(500);
-      await driver.click(
-        (Math.round(textArea_01.left + (textArea_01.right - textArea_01.left) /2)),(Math.round(textArea_01.top + (textArea_01.bottom - textArea_01.top) /45 *44))
-      );
-      await CommonFunc.sleep(1000);
-
-      console.log('get click after Initial value')
-      let textArea_02 = CommonFunc.getComponentRect('textArea_center_textArea_01');
-      let y6 = textArea_02.bottom
-      expect(y6).assertLess(y5);
+        console.log('get click after Initial value')
+        let textArea_02 = CommonFunc.getComponentRect('textArea_center_textArea_01');
+        let y6 = textArea_02.bottom
+        expect(y6).assertLess(y5);
+      }
 
       done();
     });

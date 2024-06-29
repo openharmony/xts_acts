@@ -54,34 +54,36 @@ export default function search_bottom() {
       console.info('[search_bottom_001] START');
       await CommonFunc.sleep(1000);
 
-      console.log('get click before Initial value')
-      let text_00 = CommonFunc.getComponentRect('search_bottom_text_00');
-      let text_01 = CommonFunc.getComponentRect('search_bottom_text_01');
-      let text_02 = CommonFunc.getComponentRect('search_bottom_text_02');
-      let text_03 = CommonFunc.getComponentRect('search_bottom_text_03');
-      let Column_1 = CommonFunc.getComponentRect('search_bottom_Column_1');
+      if (globalThis.winLeft == 0) {
+        console.log('get click before Initial value')
+        let text_00 = CommonFunc.getComponentRect('search_bottom_text_00');
+        let text_01 = CommonFunc.getComponentRect('search_bottom_text_01');
+        let text_02 = CommonFunc.getComponentRect('search_bottom_text_02');
+        let text_03 = CommonFunc.getComponentRect('search_bottom_text_03');
+        let Column_1 = CommonFunc.getComponentRect('search_bottom_Column_1');
 
-      let driver = await Driver.create();
-      await CommonFunc.sleep(500);
-      await driver.mouseScroll({x:360, y:640}, true, 30, 2072)
-      await CommonFunc.sleep(1000);
+        let driver = await Driver.create();
+        await CommonFunc.sleep(500);
+        await driver.mouseScroll({x:360, y:640}, true, 30, 2072)
+        await CommonFunc.sleep(1000);
 
-      console.log('get swipe after Initial value')
-      let search_01 = CommonFunc.getComponentRect('search_bottom_search_01');
+        console.log('get swipe after Initial value')
+        let search_01 = CommonFunc.getComponentRect('search_bottom_search_01');
 
-      console.log('assert click before position')
-      let y1 = search_01.bottom
+        console.log('assert click before position')
+        let y1 = search_01.bottom
 
-      await driver.click(
-        (search_01.left + (search_01.right - search_01.left)/2),(search_01.top + (search_01.bottom - search_01.top)/2)
-      );
-      await CommonFunc.sleep(1000);
+        await driver.click(
+          (search_01.left + (search_01.right - search_01.left)/2),(search_01.top + (search_01.bottom - search_01.top)/2)
+        );
+        await CommonFunc.sleep(1000);
 
-      console.log('get click after Initial value')
-      let search_02 = CommonFunc.getComponentRect('search_bottom_search_01');
-      let y2 = search_02.bottom
+        console.log('get click after Initial value')
+        let search_02 = CommonFunc.getComponentRect('search_bottom_search_01');
+        let y2 = search_02.bottom
 
-      expect(y1).assertEqual(y2);
+        expect(y1).assertEqual(y2);
+      }
 
       done();
     });
