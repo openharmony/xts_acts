@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import AbilityStage from "@ohos.app.ability.AbilityStage";
+import commonEvent from '@ohos.commonEvent';
 
 export default class MyAbilityStage extends AbilityStage {
     onCreate() {
@@ -67,6 +68,11 @@ export default class MyAbilityStage extends AbilityStage {
                 console.log("[Demo] " + abilityname + " onAbilityDestroy");
                 listKey.push(abilityname + " onAbilityDestroy");
                 console.log("[Demo] 4listKey:" + JSON.stringify(listKey));
+                if (abilityname === 'MainAbility2') {
+                  commonEvent.publish('MainAbility2_onAbilityDestroy', (err, data) => {
+                    console.log('MainAbility2_onAbilityDestroy publish succeed' + JSON.stringify(err) + JSON.stringify(data));
+                  })
+                }
             },
             onAbilityForeground(ability) {
                 console.log("[Demo] AbilityLifecycleCallback onAbilityForeground ability:"
