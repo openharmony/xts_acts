@@ -34,6 +34,7 @@
   "MainAbility/pages/Text/clearStyles",
   "MainAbility/pages/Text/removeStyles",
   "MainAbility/pages/Text/StyledString",
+    "MainAbility/pages/Text/styledStringChange",
   "MainAbility/pages/Text/TextStyle",
   "MainAbility/pages/Text/textPageWavy",
   "MainAbility/pages/Marquee/MarqueeApi",
