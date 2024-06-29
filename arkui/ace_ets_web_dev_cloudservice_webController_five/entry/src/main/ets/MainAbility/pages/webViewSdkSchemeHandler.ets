@@ -159,7 +159,8 @@ struct webViewSdkSchemeHandler {
                     this.requests.push(request)
                     Utils.emitEvent(true, 1533)
                     Utils.emitEvent(true, 1513)
-                    if(request.getRequestUrl().toLowerCase().indexOf('custom') > -1 ){
+                    if(request.getRequestUrl().toLowerCase().indexOf('custom') > -1 ||
+                    request.getRequestUrl().indexOf('www.example.com') > -1) {
                       if(this.httpBodyStream == null || this.httpBodyStream == undefined) {
                         this.httpBodyStream = request.getHttpBodyStream()
                       }

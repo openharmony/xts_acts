@@ -121,7 +121,7 @@ struct webViewSdkSchemeHandler2 {
                       }
                       break;
                     }
-                 }
+                  }
               })
           }
           Web({ src: '', controller: this.controller })
@@ -137,11 +137,11 @@ struct webViewSdkSchemeHandler2 {
                   (request: webview.WebSchemeHandlerRequest, resourceHandler: webview.WebResourceHandler) => {
                     console.log('[schemeHandler] onRequestStart')
                     this.requests.push(request)
-                    console.log("request.getRequestUrl() start")
-                    console.log("request.getRequestUrl() url" + request.getRequestUrl() )
+                    console.log('request.getRequestUrl() start')
+                    console.log('request.getRequestUrl() url' + request.getRequestUrl() )
                     if(request.getRequestUrl().toLowerCase().indexOf('custom') > -1 ||
-                    request.getRequestUrl().indexOf('www.example.com') > -1){
-                      console.log("request.getRequestUrl()"+request.getRequestUrl())
+                    request.getRequestUrl().indexOf('www.example.com') > -1) {
+                      console.log('request.getRequestUrl()'+request.getRequestUrl())
                       if(this.httpBodyStream == null || this.httpBodyStream == undefined) {
                         this.httpBodyStream = request.getHttpBodyStream()
                         console.log('this.httpBodyStream:' + this.httpBodyStream)
