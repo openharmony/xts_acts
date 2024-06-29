@@ -13,22 +13,40 @@
  * limitations under the License.
  */
 
+import composeListItemIconType from './composeListItem/composeListItemIconType.test.ets';
+import composeListItemOperateItemArrow from './composeListItem/composeListItemOperateItemArrow.test.ets';
+import composeListItemOperateItemButton from './composeListItem/composeListItemOperateItemButton.test.ets';
+import composeListItemOperateItemCheckbox from './composeListItem/composeListItemOperateItemCheckbox.test.ets';
+import composeListItemOperateItemImage from './composeListItem/composeListItemOperateItemImage.test.ets';
+import composeListItemOperateItemRadio from './composeListItem/composeListItemOperateItemRadio.test.ets';
+import composeListItemOperateItemSubIcon from './composeListItem/composeListItemOperateItemSubIcon.test.ets';
+import composeListItemOperateItemSwitch from './composeListItem/composeListItemOperateItemSwitch.test.ets';
 import composeListItemPageTest from './composeListItem/composeListItemPageTest.test.ets';
 import exceptionPromptTest from './exceptionPrompt/exceptionPromptTest.test.ets';
 import filterTest from './filter/filterTest.test.ets';
 import selectTitleBarTest from './selectTitleBar/selectTitleBarTest.test.ets';
 import swipeRefresherPageTest from './swipeRefresher/swipeRefresherPageTest.test.ets';
 import tabTitleBarPageTest from './tabTitleBar/tabTitleBarPageTest.test.ets';
+import toolBarItemState from './toolBar/toolBarItemState.test.ets';
 import toolBarPageTest from './toolBar/toolBarPageTest.test.ets';
 import treeViewPageTest from './treeView/treeViewPageTest.test.ets';
 
 export default function testsuite() {
+  composeListItemIconType();
+  composeListItemOperateItemArrow();
+  composeListItemOperateItemButton();
+  composeListItemOperateItemCheckbox();
+  composeListItemOperateItemImage();
+  composeListItemOperateItemRadio();
+  composeListItemOperateItemSubIcon();
+  composeListItemOperateItemSwitch();
   composeListItemPageTest();
   exceptionPromptTest();
   filterTest();
   selectTitleBarTest();
   swipeRefresherPageTest();
   tabTitleBarPageTest();
+  toolBarItemState();
   toolBarPageTest();
   treeViewPageTest();
 }
