@@ -4272,7 +4272,7 @@ export default function UtdfileNameTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_3070
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_3070
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".stl"
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".book"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -4440,7 +4440,7 @@ export default function UtdfileNameTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_3190
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_3190
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".hdf"
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".hta"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
