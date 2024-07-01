@@ -25,6 +25,7 @@ enum ItemState {
 @Component
 struct ToolBarPageTest {
   @State toolbarList: ToolBarOptions = new ToolBarOptions()
+
   aboutToAppear() {
     this.toolbarList.push({
       content: '剪贴我是超超超超超超超超超长样式',
@@ -37,14 +38,14 @@ struct ToolBarPageTest {
       icon: $r('sys.media.ohos_ic_public_copy'),
       action: () => {
       },
-      state:ItemState.DISABLE,
+      state: ItemState.DISABLE,
     })
     this.toolbarList.push({
       content: '粘贴',
       icon: $r('sys.media.ohos_ic_public_paste'),
       action: () => {
       },
-      state:ItemState.ACTIVATE,
+      state: ItemState.ACTIVATE,
     })
     this.toolbarList.push({
       content: '全选',
@@ -65,6 +66,7 @@ struct ToolBarPageTest {
       },
     })
   }
+
   build() {
     Row() {
       Stack() {

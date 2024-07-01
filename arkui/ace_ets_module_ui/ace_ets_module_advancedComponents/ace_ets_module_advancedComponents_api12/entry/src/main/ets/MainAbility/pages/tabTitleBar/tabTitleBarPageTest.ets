@@ -19,7 +19,8 @@ import promptAction from '@ohos.promptAction';
 class TabItem {
   public title: ResourceStr;
   public icon?: ResourceStr;
-  constructor(title: ResourceStr,icon?: ResourceStr) {
+
+  constructor(title: ResourceStr, icon?: ResourceStr) {
     this.title = title;
     this.icon = icon;
   }
@@ -73,8 +74,8 @@ struct TabTitleBarPageTest {
       .backgroundColor('#3498DB')
   }
 
-  private readonly tabItems: Array<TabItem> = [new TabItem('tab1'),new TabItem('tab2'),new TabItem('tab3'),new TabItem('Happy'),new TabItem('tab4')];
-  private  readonly menuItems: Array<MenuItem> = [
+  private readonly tabItems: Array<TabItem> = [new TabItem('tab1'), new TabItem('tab2'), new TabItem('tab3'), new TabItem('Happy'), new TabItem('tab4')];
+  private readonly menuItems: Array<MenuItem> = [
     {
       value: $r('app.media.icon'),
       isEnabled: true,
