@@ -39,13 +39,14 @@ export default function abilityTest() {
       // Presets a clear action, which is performed after all test cases of the test suite end.
       // This API supports only one parameter: clear action function.
     });
+
     /**
-     * @tc.number Security_DataSecurity_Asset_Remove_Func_1000
-     * @tc.name 删除接口传入异常数据
-     * @tc.desc test error cases
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
+     * @tc.number     : Security_DataSecurity_Asset_Remove_Func_1000
+     * @tc.name       : testDelete1000
+     * @tc.desc       : 删除接口传入异常数据
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
      */
     it('Security_DataSecurity_Asset_Remove_Func_1000', 0, async () => {
       let attr: asset.AssetMap = new Map();
@@ -68,13 +69,14 @@ export default function abilityTest() {
       expect(await aw.assetRemoveAttr(attr2))
         .assertEqual(asset.ErrorCode.INVALID_ARGUMENT);
     });
+
     /**
-     * @tc.number SUB_Security_DataSecurity_Asset_Remove_Func_1300
-     * @tc.name 申请权限后，增删改查卸载后不删除的数据
-     * @tc.desc test error cases
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
+     * @tc.number     : SUB_Security_DataSecurity_Asset_Remove_Func_1300
+     * @tc.name       : testDelete1300
+     * @tc.desc       :申请权限后，增删改查卸载后不删除的数据
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
      */
     it('SUB_Security_DataSecurity_Asset_Remove_Func_1300', 0, async () => {
       let attr: asset.AssetMap = new Map();
@@ -83,13 +85,14 @@ export default function abilityTest() {
       expect(await aw.basicCRUD(attr))
         .assertEqual(0);
     });
+
     /**
-     * @tc.number SUB_Security_DataSecurity_Asset_Remove_Func_1400
-     * @tc.name 批量查询卸载后不删除的数据
-     * @tc.desc test error cases
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
+     * @tc.number     : SUB_Security_DataSecurity_Asset_Remove_Func_1400
+     * @tc.name       : testDelete1400
+     * @tc.desc       : 批量查询卸载后不删除的数据
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
      */
     it('SUB_Security_DataSecurity_Asset_Remove_Func_1400', 0, async () => {
       let attr: asset.AssetMap = new Map();
@@ -107,13 +110,14 @@ export default function abilityTest() {
       attr2.set(asset.Tag.IS_PERSISTENT, false);
       expect(await aw.assetQueryNum(attr2)).assertEqual(1);
     });
+
     /**
-     * @tc.number SUB_Security_DataSecurity_Asset_Remove_Func_1500
-     * @tc.name 通过更新接口修改卸载后不删除的参数
-     * @tc.desc test error cases
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
+     * @tc.number     : SUB_Security_DataSecurity_Asset_Remove_Func_1500
+     * @tc.name       : testDelete1500
+     * @tc.desc       : 通过更新接口修改卸载后不删除的参数
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
      */
     it('SUB_Security_DataSecurity_Asset_Remove_Func_1500', 0, async () => {
       let attr: asset.AssetMap = new Map();

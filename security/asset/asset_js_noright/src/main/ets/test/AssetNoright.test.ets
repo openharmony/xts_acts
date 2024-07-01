@@ -42,12 +42,12 @@ export default function abilityTest() {
     });
 
     /**
-     * @tc.number :Security_DataSecurity_Asset_Remove_Func_0200
-     * @tc.name :testDeleteNoRight0200
-     * @tc.desc :使用接口销毁数据后，数据被删除
-     * @tc.size :MediumTest
-     * @tc.type :Function
-     * @tc.level :Level 3
+     * @tc.number     : Security_DataSecurity_Asset_Remove_Func_0200
+     * @tc.name       : testDeleteNoRight0200
+     * @tc.desc       : 使用接口销毁数据后，数据被删除
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
      */
     it('Security_DataSecurity_Asset_Remove_Func_0200', 0, async () => {
       let attr: asset.AssetMap = new Map();
@@ -70,12 +70,12 @@ export default function abilityTest() {
     });
 
     /**
-     * @tc.number :Security_DataSecurity_Asset_Remove_Func_0900
-     * @tc.name :testDeleteNoRight0900
-     * @tc.desc :数据删除后，相同数据能再次写入
-     * @tc.size :MediumTest
-     * @tc.type :Function
-     * @tc.level :Level 3
+     * @tc.number     : Security_DataSecurity_Asset_Remove_Func_0900
+     * @tc.name       : testDeleteNoRight0900
+     * @tc.desc       : 数据删除后，相同数据能再次写入
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
      */
     it('Security_DataSecurity_Asset_Remove_Func_0900', 0, async () => {
       let attr: asset.AssetMap = new Map();
@@ -86,18 +86,18 @@ export default function abilityTest() {
     });
 
     /**
-     * @tc.number :SUB_Security_DataSecurity_Asset_Remove_Func_1200
-     * @tc.name :testDeleteNoRight1200
-     * @tc.desc :未申请权限时，增删改查卸载后不删除的数据
-     * @tc.size : MediumTest
-     * @tc.type :Function
-     * @tc.level: Level 3
+     * @tc.number     : SUB_Security_DataSecurity_Asset_Remove_Func_1200
+     * @tc.name       : testDeleteNoRight1200
+     * @tc.desc       : 未申请权限时，增删改查卸载后不删除的数据
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
      */
     it('SUB_Security_DataSecurity_Asset_Remove_Func_1200', 0, async () => {
       let attr: asset.AssetMap = new Map();
+      attr.set(asset.Tag.ALIAS, aw.StringToArray(aw.aliasNameList[0]));
       attr.set(asset.Tag.IS_PERSISTENT, true);
-      attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_POWERED_ON);
-      expect(await aw.assetAddAttr(attr))
+      expect(await aw.assetAddFull(attr))
         .assertEqual(asset.ErrorCode.PERMISSION_DENIED);
     });
 
