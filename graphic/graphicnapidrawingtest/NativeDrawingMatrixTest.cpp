@@ -15,6 +15,7 @@
 
 #include "gtest/gtest.h"
 
+#include "drawing_error_code.h"
 #include "drawing_matrix.h"
 #include "drawing_rect.h"
 #include "utils/scalar.h"
@@ -32,6 +33,9 @@ public:
     void SetUp() override;
     void TearDown() override;
 };
+
+constexpr uint32_t MAPPOINTS_SIZE = 5;
+constexpr uint32_t MAPPOINTS_COUNT = 2;
 
 void NativeDrawingMatrixTest::SetUpTestCase() {}
 void NativeDrawingMatrixTest::TearDownTestCase() {}
@@ -737,6 +741,123 @@ HWTEST_F(NativeDrawingMatrixTest, NativeDrawingMatrixTest_SetPolyToPoly021, Test
     OH_Drawing_Point2D src[] = {{0, 0}, {100, 0}, {100, 100}, {0, 100}, {0, 100}};
     OH_Drawing_Point2D dst[] = {{0, 0}, {100, 30}, {100, 70}, {0, 100}, {0, 100}};
     EXPECT_FALSE(OH_Drawing_MatrixSetPolyToPoly(matrix, src, dst, 5));
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/**
+ * @tc.name: NativeDrawingMatrixTest_GetAll022
+ * @tc.desc: test for Copies nine scalar values contained by Matrix into buffer.
+ * @tc.type: FUNC
+ * @tc.require: AR20240104201189
+ */
+HWTEST_F(NativeDrawingMatrixTest, NativeDrawingMatrixTest_GetAll022, TestSize.Level1)
+{
+    OH_Drawing_Matrix* matrix = OH_Drawing_MatrixCreate();
+    ASSERT_TRUE(matrix != nullptr);
+    float buffer[9];
+    float emptyBuffer[9] = {1, 2, 3, 3, 2, 1, 4, 5, 6};
+    OH_Drawing_MatrixSetMatrix(matrix, 1, 2, 3, 3, 2, 1, 4, 5, 6);
+    EXPECT_EQ(OH_Drawing_MatrixGetAll(matrix, buffer), OH_DRAWING_SUCCESS);
+    for (int i = 0; i < 9; ++i) {
+        EXPECT_TRUE(IsScalarAlmostEqual(buffer[i], emptyBuffer[i]));
+    }
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/*
+ * @tc.name: NativeDrawingMatrixTest_IsEqualAndConcat023
+ * @tc.desc: test for IsEqual and Concat.
+ * @tc.type: FUNC
+ * @tc.require: SR000S9F0C
+ */
+HWTEST_F(NativeDrawingMatrixTest, NativeDrawingMatrixTest_IsEqualAndConcat023, TestSize.Level1)
+{
+    OH_Drawing_Matrix* matrixA = OH_Drawing_MatrixCreate();
+    OH_Drawing_Matrix* matrixB = OH_Drawing_MatrixCreate();
+    OH_Drawing_Matrix* matrix = OH_Drawing_MatrixCreate();
+    OH_Drawing_MatrixIsEqual(nullptr, matrixB);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_MatrixIsEqual(matrixA, nullptr);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+
+    OH_Drawing_MatrixConcat(nullptr, matrixA, matrixB);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_MatrixConcat(matrix, nullptr, matrixB);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_MatrixConcat(matrix, matrixA, nullptr);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+
+    OH_Drawing_MatrixDestroy(matrix);
+    OH_Drawing_MatrixDestroy(matrixA);
+    OH_Drawing_MatrixDestroy(matrixB);
+}
+
+/*
+ * @tc.name: NativeDrawingMatrixTest_SetRectToRect024
+ * @tc.desc: test for SetRectToRect.
+ * @tc.type: FUNC
+ * @tc.require: SR000S9F0C
+ */
+HWTEST_F(NativeDrawingMatrixTest, NativeDrawingMatrixTest_SetRectToRect024, TestSize.Level1)
+{
+    OH_Drawing_Rect *rectSrcOne = OH_Drawing_RectCreate(0, 0, 0, 0);
+    OH_Drawing_Rect *rectDstOne = OH_Drawing_RectCreate(0, 0, 0, 0);
+    OH_Drawing_Matrix *matrixOne = OH_Drawing_MatrixCreate();
+    OH_Drawing_MatrixSetRectToRect(nullptr, rectSrcOne, rectDstOne, OH_Drawing_ScaleToFit::SCALE_TO_FIT_FILL);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_MatrixSetRectToRect(matrixOne, nullptr, rectDstOne, OH_Drawing_ScaleToFit::SCALE_TO_FIT_FILL);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    OH_Drawing_MatrixSetRectToRect(matrixOne, rectSrcOne, nullptr, OH_Drawing_ScaleToFit::SCALE_TO_FIT_FILL);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_DRAWING_ERROR_INVALID_PARAMETER);
+
+    OH_Drawing_MatrixDestroy(matrixOne);
+    OH_Drawing_RectDestroy(rectSrcOne);
+    OH_Drawing_RectDestroy(rectDstOne);
+}
+
+/**
+ * @tc.name: NativeDrawingMatrixTest_MapPoints025
+ * @tc.desc: test for maps the src point array to the dst point array by matrix transformation.
+ * @tc.type: FUNC
+ * @tc.require: AR20240104201189
+ */
+HWTEST_F(NativeDrawingMatrixTest, NativeDrawingMatrixTest_MapPoints025, TestSize.Level1)
+{
+    OH_Drawing_Matrix* matrix = OH_Drawing_MatrixCreate();
+    ASSERT_TRUE(matrix != nullptr);
+    OH_Drawing_Point2D src[] = {{0, 0}, {100, 0}, {100, 100}, {0, 100}, {0, 100}};
+    OH_Drawing_Point2D dst[MAPPOINTS_SIZE];
+
+    OH_Drawing_MatrixMapPoints(nullptr, src, dst, MAPPOINTS_COUNT);
+    OH_Drawing_MatrixTranslate(matrix, 100, 200);
+    OH_Drawing_MatrixMapPoints(matrix, src, dst, MAPPOINTS_COUNT);
+
+    EXPECT_EQ(dst[0].x, 100);
+    EXPECT_EQ(dst[0].y, 200);
+    OH_Drawing_MatrixDestroy(matrix);
+}
+
+/**
+ * @tc.name: NativeDrawingMatrixTest_MapRect026
+ * @tc.desc: test for sets dst to bounds of src corners mapped by matrix transformation.
+ * @tc.type: FUNC
+ * @tc.require: AR20240104201189
+ */
+HWTEST_F(NativeDrawingMatrixTest, NativeDrawingMatrixTest_MapRect026, TestSize.Level1)
+{
+    OH_Drawing_Matrix* matrix = OH_Drawing_MatrixCreate();
+    ASSERT_TRUE(matrix != nullptr);
+    OH_Drawing_Rect* src = OH_Drawing_RectCreate(0, 100, 200, 200);
+    OH_Drawing_Rect* dst = OH_Drawing_RectCreate(0, 0, 0, 0);
+
+    EXPECT_FALSE(OH_Drawing_MatrixMapRect(nullptr, src, dst));
+    OH_Drawing_MatrixTranslate(matrix, 100, 200);
+    EXPECT_TRUE(OH_Drawing_MatrixMapRect(matrix, src, dst));
+
+    EXPECT_TRUE(IsScalarAlmostEqual(OH_Drawing_RectGetHeight(dst), 100.f));
+    EXPECT_TRUE(IsScalarAlmostEqual(OH_Drawing_RectGetLeft(dst), 100.f));
+    OH_Drawing_RectDestroy(src);
+    OH_Drawing_RectDestroy(dst);
     OH_Drawing_MatrixDestroy(matrix);
 }
 } // namespace Drawing
