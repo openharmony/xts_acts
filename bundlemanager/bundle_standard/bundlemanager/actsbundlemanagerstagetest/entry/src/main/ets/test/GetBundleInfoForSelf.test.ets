@@ -1743,7 +1743,14 @@ export default function getBundleInfoForSelf() {
       expect(data[1].name).assertEqual("DynamicPage2");
       expect(data[1].pageSourceFile).assertEqual("entry/src/index");
       expect(data[1].buildFunction).assertEqual("myBuilder");
-      expect(data[1].data.length).assertEqual(31);
+      expect(data[1].data.length).assertEqual(2);
+      let dataTest: bundle.DataItem = data[1].data[0];
+      expect(typeof (dataTest.key)).assertEqual('string');
+      expect(data[1].data[0].key).assertEqual("key1");
+      expect(data[1].data[0].value).assertEqual("data1");
+      expect(data[1].data[1].key).assertEqual("key2");
+      expect(data[1].data[1].value).assertEqual("data2");
+      expect(data[1].customData.length).assertEqual(128);
       console.info("checkRouterMapInfo end");
     }
   })

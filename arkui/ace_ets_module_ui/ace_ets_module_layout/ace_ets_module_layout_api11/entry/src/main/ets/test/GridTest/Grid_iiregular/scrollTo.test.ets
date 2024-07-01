@@ -196,12 +196,12 @@ export default function scrollByJsunit() {
       await btn.click();
       await CommonFunc.sleep(100);
 
-      let strJson2 = getInspectorByKey('scrollTo_text1');
+      let strJson2 = getInspectorByKey('scrollTo_text0');
 
-      expect(JSON.parse(strJson2).$attrs.content).assertEqual('1');
+      expect(JSON.parse(strJson2).$attrs.content).assertEqual('0');
 
       let ScrollBarItem: RectValue = CommonFunc.getComponentRect('scrollToPages');
-      let scrollTextItem: RectValue = CommonFunc.getComponentRect('scrollTo_text1');
+      let scrollTextItem: RectValue = CommonFunc.getComponentRect('scrollTo_text0');
       await CommonFunc.sleep(1000);
       expect(Math.abs(Math.round(ScrollBarItem.top) - Math.round(scrollTextItem.top)) <= 1).assertTrue();
 
@@ -211,7 +211,7 @@ export default function scrollByJsunit() {
     /* *
      * @tc.number: SUB_ACE_TS_COMPONENT_SR000IFDKV_0006
      * @tc.name  : scrollToJsunit_0006
-     * @tc.desc  : Slide 270px on the Y-axis
+     * @tc.desc  : Slide 270 on the Y-axis
      * @tc.level : Level 2
      */
 
@@ -225,12 +225,12 @@ export default function scrollByJsunit() {
       await CommonFunc.sleep(100);
 
 
-      let strJson2 = getInspectorByKey('scrollTo_text1');
+      let strJson2 = getInspectorByKey('scrollTo_text3');
 
-      expect(JSON.parse(strJson2).$attrs.content).assertEqual('1');
+      expect(JSON.parse(strJson2).$attrs.content).assertEqual('3');
 
       let ScrollBarItem: RectValue = CommonFunc.getComponentRect('scrollToPages');
-      let scrollTextItem: RectValue = CommonFunc.getComponentRect('scrollTo_text1');
+      let scrollTextItem: RectValue = CommonFunc.getComponentRect('scrollTo_text3');
       await CommonFunc.sleep(1000);
       expect(Math.abs(Math.round(ScrollBarItem.top) - Math.round(scrollTextItem.top)) <= 1).assertTrue();
 

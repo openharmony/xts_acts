@@ -47,7 +47,7 @@ struct Index {
         isEnabled:true,
         action:() => promptAction.showToast({ message: 'show toast index 4' })
       },
-    ]
+    ];
 
   build() {
     Row() {
