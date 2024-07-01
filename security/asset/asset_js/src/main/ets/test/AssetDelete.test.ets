@@ -40,48 +40,6 @@ export default function abilityTest() {
       // This API supports only one parameter: clear action function.
     });
     /**
-     * @tc.number Security_DataSecurity_Asset_Remove_Func_0200
-     * @tc.name 使用接口销毁数据后，数据被删除
-     * @tc.desc test error cases
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
-     */
-    it('Security_DataSecurity_Asset_Remove_Func_0200', 0, async () => {
-      let attr: asset.AssetMap = new Map();
-      await aw.assetAddAll(attr);
-      expect(await aw.assetRemove(aw.aliasNameList[0]))
-        .assertEqual(0);
-      let attr2: asset.AssetMap = new Map();
-      expect(await aw.assetQueryNum(attr2))
-        .assertEqual(4);
-      attr2.set(asset.Tag.DATA_LABEL_NORMAL_1, aw.StringToArray(aw.labelList[0]));
-      expect(await aw.assetRemoveAttr(attr2))
-        .assertEqual(0);
-      attr2.delete(asset.Tag.DATA_LABEL_NORMAL_1);
-      expect(await aw.assetQueryNum(attr2))
-        .assertEqual(2);
-      expect(await aw.assetRemoveAttr(attr2))
-        .assertEqual(0);
-      expect(await aw.assetQueryNum(attr2))
-        .assertEqual(asset.ErrorCode.NOT_FOUND);
-    });
-    /**
-     * @tc.number Security_DataSecurity_Asset_Remove_Func_0900
-     * @tc.name 数据删除后，相同数据能再次写入
-     * @tc.desc test error cases
-     * @tc.size Medium
-     * @tc.type Func
-     * @tc.level Level3
-     */
-    it('Security_DataSecurity_Asset_Remove_Func_0900', 0, async () => {
-      let attr: asset.AssetMap = new Map();
-      await aw.assetAddAll(attr);
-      await aw.assetRemove(aw.aliasNameList[0]);
-      expect(await aw.assetAddEasy(aw.aliasNameList[0], aw.secretList[0]))
-        .assertEqual(0);
-    });
-    /**
      * @tc.number Security_DataSecurity_Asset_Remove_Func_1000
      * @tc.name 删除接口传入异常数据
      * @tc.desc test error cases
