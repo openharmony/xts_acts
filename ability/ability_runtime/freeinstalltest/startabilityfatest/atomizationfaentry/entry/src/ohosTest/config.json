@@ -12,9 +12,10 @@
     "package": "com.example.qianyiyingyong",
     "name": ".entry_test",
     "mainAbility": ".TestAbility",
-    "deviceType": [
+   "deviceType": [
       "default",
-      "tablet"
+      "tablet",
+      "2in1"
     ],
     "distro": {
       "deliveryWithInstall": true,
