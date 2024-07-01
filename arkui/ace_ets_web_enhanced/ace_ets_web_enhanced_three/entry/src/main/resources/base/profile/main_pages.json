@@ -21,7 +21,8 @@
     "MainAbility/pages/WebNestedScrollOptionsScrollForwardHorizontalTest",
     "MainAbility/pages/WebViewControllerPostUrlTest",
     "MainAbility/pages/WebViewControllerSetConnectionTimeoutTest",
-    "MainAbility/pages/WebJavaScriptOnDocumentStartTest"
+    "MainAbility/pages/WebJavaScriptOnDocumentStartTest",
+    "MainAbility/pages/setPathAllowingUniversalAccess"
   ]
 }
 
