@@ -2,6 +2,7 @@ import image from '@ohos.multimedia.image'
 import { UIContext } from '@ohos.arkui.UIContext';
 import hilog from '@ohos.hilog';
 import componentSnapshot from '@ohos.arkui.componentSnapshot'
+
 @Entry
 @Component
 struct UIContextCreateFromBuilder {
@@ -11,7 +12,7 @@ struct UIContextCreateFromBuilder {
   uiContext: UIContext = this.getUIContext();
 
   @Builder
-  GaugeBuilder(){
+  GaugeBuilder() {
     Gauge({ value: 30, min: 0, max: 100 })
       .startAngle(210)
       .endAngle(150)
@@ -21,7 +22,7 @@ struct UIContextCreateFromBuilder {
       .height(200)
   }
 
-  build(){
+  build() {
     Column() {
       Row() {
         Column({ space: 5 }) {
@@ -42,9 +43,10 @@ struct UIContextCreateFromBuilder {
             }).width('90%').margin(10).id('getComponentSnapshot_03')
           Button('新增：Gauge图片')
             .onClick(() => {
-              this.uiContext.getComponentSnapshot().createFromBuilder(() => {
-                this.GaugeBuilder()
-              })
+              this.uiContext.getComponentSnapshot()
+                .createFromBuilder(() => {
+                  this.GaugeBuilder()
+                })
                 .then((pixmap: image.PixelMap) => {
                   this.pixmap_2 = pixmap
                   console.info('UIContextComponentSnapshot pixmap_text_4 start')
