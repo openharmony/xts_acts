@@ -27,8 +27,8 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 import window from '@ohos.window';
 import UIAbility from '@ohos.app.ability.UIAbility';
 import { BusinessError } from '@ohos.base';
@@ -81,7 +81,7 @@ export default function bindMenu() {
       let density = await driver.getDisplayDensity();
       console.log("[bindMenu_0100] density: " + JSON.stringify(density))
       console.log("[bindMenu_0100] density.x: " + JSON.stringify(density.x))
-      if (JSON.stringify(density.x) == 2700) {
+      if (JSON.stringify(density.x) == '2700') {
         expect(properties.type).assertEqual(0)
       } else {
         expect(properties.type).assertEqual(1)

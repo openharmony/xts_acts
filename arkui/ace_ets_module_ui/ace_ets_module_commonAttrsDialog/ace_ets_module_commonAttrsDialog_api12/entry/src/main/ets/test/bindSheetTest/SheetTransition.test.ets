@@ -13,22 +13,21 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 import window from '@ohos.window';
 import UIAbility from '@ohos.app.ability.UIAbility';
-import { Component, Driver, ON } from '@ohos.UiTest';
 import { BusinessError } from '@ohos.base';
 
 
 export default function SheetTransition() {
-  describe('SheetTransition', function () {
-    beforeEach(async function (done) {
+  describe('SheetTransition', () => {
+    beforeEach(async (done: Function) => {
       console.info("SheetTransition beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/bindSheet/SheetTransition',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/bindSheet/SheetTransition',
       }
       try {
         router.clear();
@@ -52,7 +51,7 @@ export default function SheetTransition() {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('SheetTransition_0100', 0, async function (done) {
+    it('SheetTransition_0100', 0, async (done: Function) => {
       console.info('SheetTransition_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -61,7 +60,7 @@ export default function SheetTransition() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('SheetTypeValue');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[SheetTransition_0100] component obj1 is: " + JSON.stringify(obj1));
       console.info("[SheetTransition_0100] title: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("value SheetType:0");
@@ -76,12 +75,12 @@ export default function SheetTransition() {
       console.info("[SheetTransition_0100] density.x: " + JSON.stringify(density.x));
 
       let strJson2 = getInspectorByKey('WidthValue');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[SheetTransition_0100] component obj2 is: " + JSON.stringify(obj2));
       console.info("[SheetTransition_0100] title: " + JSON.stringify(obj2.$attrs.content));
       
 
-      if(JSON.stringify(density.x) == 2700) {
+      if(JSON.stringify(density.x) == '2700') {
         expect(obj2.$attrs.content).assertEqual("value Width:1436");
       } else {
         expect(obj2.$attrs.content).assertEqual("value Width:" + sizeX);

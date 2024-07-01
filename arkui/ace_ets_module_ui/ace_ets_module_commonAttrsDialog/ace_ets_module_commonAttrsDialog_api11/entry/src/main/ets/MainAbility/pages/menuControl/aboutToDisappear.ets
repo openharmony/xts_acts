@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -79,7 +78,7 @@ struct TimerComponent {
         console.info("button1 start to emit action state")
         events_emitter.emit(backEvent, backData)
       } catch (err) {
-        console.info("button1 emit action state err: " + JSON.stringify(err.message))
+        console.info("button1 emit action state err: " + JSON.stringify((err as Error)?.message))
       }
       this.timerId = -1
     }

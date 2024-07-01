@@ -57,12 +57,12 @@ export default function BindMenuTest() {
       let driver = await Driver.create()
       let density = await driver.getDisplayDensity();
       // the case not support  kind of device
-      if(JSON.stringify(density.x) == 2700) {
+      if(JSON.stringify(density.x) == '2700') {
         expect(isFlag).assertTrue();
         done();
       } else {
         let callback = (event: events_emitter.EventData) => {
-        expect(event.data.action).assertEqual('onAppear');
+        expect(event.data?.action).assertEqual('onAppear');
         step2(done)
         }
         let event: events_emitter.InnerEvent = {
@@ -89,13 +89,13 @@ export default function BindMenuTest() {
       let driver = await Driver.create()
       let density = await driver.getDisplayDensity();
 
-      if(JSON.stringify(density.x) == 2700) {
+      if(JSON.stringify(density.x) == '2700') {
         expect(isFlag).assertTrue();
         done();
        
       } else {
         let callback = (event: events_emitter.EventData) => {
-        expect(event.data.action).assertEqual('onAppear');
+        expect(event.data?.action).assertEqual('onAppear');
         done()
         }
         let event: events_emitter.InnerEvent = {
@@ -114,7 +114,7 @@ export default function BindMenuTest() {
 
 async function step2(done: Function) {
   let callback = (event: events_emitter.EventData) => {
-    expect(event.data.action).assertEqual('onDisappear');
+    expect(event.data?.action).assertEqual('onDisappear');
     done()
   }
   let event: events_emitter.InnerEvent = {
