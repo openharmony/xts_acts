@@ -45,6 +45,8 @@
                 "mv /data/local/tmp/libc-test-lib/libldso_cfi_test_lib.so /data/tests/libc-test/src",
                 "mv /data/local/tmp/libc-test-lib/libdlopen_ext_relro_dso.so /data/tests/libc-test/src",
                 "mv /data/local/tmp/libc-test-lib/libdlopen_fill_random.so /data/tests/libc-test/src",
+                "cp /data/local/tmp/libc-test-lib/libcfi_cross_dso_dtor_test_use.so /data/local/tmp/libc-test/",
+                "cp /data/local/tmp/libc-test-lib/libcfi_cross_dso_dtor_test_base.so /data/local/tmp/libc-test/",
                 "cp /data/local/tmp/libc-test-lib/libdlopen_hash_sysv.so /data/tests/libc-test/src",
                 "cp /data/local/tmp/libc-test-lib/libdlopen_ns_dso.so /data/tests/libc-test/src",
                 "cp /data/local/tmp/libc-test-lib/libdlopen_ns_dso.so /system/lib",
