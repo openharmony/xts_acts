@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import events_emitter from '@ohos.events.emitter';
+
 // xxx.ets
 @Entry
 @Component
@@ -37,12 +38,12 @@ struct videoCallbackTest {
         .autoPlay(this.isAutoPlay)
         .controls(this.showControls)
         .onStart(() => {
-          var eventData = {
+          let eventData: events_emitter.EventData = {
             data: {
               "action": 'onStart'
             }
           }
-          let event = {
+          let event: events_emitter.InnerEvent = {
             eventId: 50101,
             priority: events_emitter.EventPriority.LOW
           }
@@ -58,12 +59,12 @@ struct videoCallbackTest {
         })
         .onStop(() => {
           console.info(' ETS  onStop')
-          var eventData2 = {
+          let eventData2: events_emitter.EventData = {
             data: {
               "action": 'onStop'
             }
           }
-          let event2 = {
+          let event2: events_emitter.InnerEvent = {
             eventId: 50102,
             priority: events_emitter.EventPriority.LOW
           }

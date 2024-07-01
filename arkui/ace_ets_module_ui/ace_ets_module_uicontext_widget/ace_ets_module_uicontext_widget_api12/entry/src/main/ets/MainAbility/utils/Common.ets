@@ -15,39 +15,39 @@
 import screen from '@ohos.screen';
 import { BusinessError } from '@ohos.base';
 
+import RectValue from './Rect';
+
 export default class CommonFunc {
-  public static rectLeft;
-  public static rectTop;
-  public static rectRight;
-  public static rectBottom;
-  public static rectValue;
-  
-  static sleep(time){
-        return new Promise((resolve,reject)=>{
-            setTimeout(()=>{
-                resolve('ok')
-            },time)
-        }).then(()=>{
-            console.info(`sleep ${time} over...`)
-        })
+  static rect_left: number;
+  static rect_top: number;
+  static rect_right: number;
+  static rect_bottom: number;
+  static rect_value: RectValue;
+
+  static sleep(time: number) {
+    return new Promise((resolve: (value: string) => void) => {
+      setTimeout(() => {
+        resolve("ok")
+      }, time)
+    }).then(() => {
+      console.info(`sleep ${time} over...`)
+    })
   }
-  
- static getComponentRect(key){
-    let strJson = getInspectorByKey(key);
-    let obj = JSON.parse(strJson);
-    console.info('[getInspectorByKey] current component obj is: ' + JSON.stringify(obj));
-    let rectInfo = JSON.parse('[' + obj.$rect + ']')
-    console.info('[getInspectorByKey] rectInfo is: ' + rectInfo);
-    this.rectLeft = JSON.parse('[' + rectInfo[0] + ']')[0]
-    this.rectTop = JSON.parse('[' + rectInfo[0] + ']')[1]
-    this.rectRight = JSON.parse('[' + rectInfo[1] + ']')[0]
-    this.rectBottom = JSON.parse('[' + rectInfo[1] + ']')[1]
-    return this.rectValue = {
-      'left': this.rectLeft, 'top': this.rectTop, 'right': this.rectRight, 'bottom': this.rectBottom
+
+  static getComponentRect(key: string) {
+    let strJson: string = getInspectorByKey(key);
+    console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(JSON.parse(strJson)));
+    console.info("[getInspectorByKey] rectInfo is: " + JSON.parse('[' + JSON.parse(strJson).$rect + ']'));
+    CommonFunc.rect_left = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[0] + ']')[0]
+    CommonFunc.rect_top = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[0] + ']')[1]
+    CommonFunc.rect_right = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[1] + ']')[0]
+    CommonFunc.rect_bottom = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[1] + ']')[1]
+    return CommonFunc.rect_value = {
+      left: CommonFunc.rect_left, top: CommonFunc.rect_top, right: CommonFunc.rect_right, bottom: CommonFunc.rect_bottom
     }
   }
 
-  static setScreenOrientation(orientation){
+  static setScreenOrientation(orientation: number){
       // 1 -- 2 |
        let screenClass: screen.Screen | null = null;
        screen.getAllScreens().then(data => {

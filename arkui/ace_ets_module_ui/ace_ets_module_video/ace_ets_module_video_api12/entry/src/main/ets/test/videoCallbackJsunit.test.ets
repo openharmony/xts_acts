@@ -13,19 +13,32 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
-import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix } from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import { MessageManager, Callback } from '../MainAbility/utils/MessageManager';
 import events_emitter from '@ohos.events.emitter';
-import CommonFunc from 'MainAbility/utils/Common';
+import CommonFunc from '../MainAbility/utils/Common';
 
 export default function videoCallbackJsunit() {
-  describe('videoCallbackJsunit', function () {
-    beforeEach(async function (done) {
+  describe('videoCallbackJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("videoCallbackJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/videoCallback',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/videoCallback',
       }
       try {
         router.clear();
@@ -33,7 +46,7 @@ export default function videoCallbackJsunit() {
         console.info("get videoCallbackJsunit state pages: " + JSON.stringify(pages));
         if (!("VideoCallback" == pages.name)) {
           console.info("get VideoCallbackJsunit state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push VideoCallbackJsunit page success " + JSON.stringify(result));
         }
@@ -52,13 +65,13 @@ export default function videoCallbackJsunit() {
      * @tc.type      : Function
      * @tc.level     : level 0
      */
-    it('videoCallbackJsunit_0500', 0, async (done) => {
+    it('videoCallbackJsunit_0500', 0, async (done: Function) => {
       let driver = Driver.create();
-      let callback = (event) => {
+      let callback = (event: events_emitter.EventData) => {
         expect(event.data.action).assertEqual('onStart');
         console.info('videoCallbackJsunit_0500 event: ' + event.data.action);
       }
-      let event = {
+      let event: events_emitter.InnerEvent = {
         eventId: 50101,
         priority: events_emitter.EventPriority.LOW
       }
@@ -66,12 +79,12 @@ export default function videoCallbackJsunit() {
       let button = await driver.findComponent(ON.id('start'));
       await button.click();
       await new Promise((res, rej) => setTimeout(res, 5000, '1'))
-      
-      let callback2 = (event) => {
+
+      let callback2 = (event: events_emitter.EventData) => {
         expect(event.data.action).assertEqual('onStop');
         console.info('videoCallbackJsunit_0500 event: ' + event.data.action);
       }
-      let event2 = {
+      let event2: events_emitter.InnerEvent = {
         eventId: 50102,
         priority: events_emitter.EventPriority.LOW
       }
@@ -91,13 +104,13 @@ export default function videoCallbackJsunit() {
      * @tc.type      : Function
      * @tc.level     : level 0
      */
-    it('videoCallbackJsunit_0501', 0, async (done) => {
+    it('videoCallbackJsunit_0501', 0, async (done: Function) => {
       let driver = Driver.create();
-      let callback = (event) => {
+      let callback = (event: events_emitter.EventData) => {
         expect(event.data.action).assertEqual('onStart');
         console.info('videoCallbackJsunit_0501 event: ' + event.data.action);
       }
-      let event = {
+      let event: events_emitter.InnerEvent = {
         eventId: 50101,
         priority: events_emitter.EventPriority.LOW
       }
@@ -110,11 +123,11 @@ export default function videoCallbackJsunit() {
       await button3.click();
       await new Promise((res, rej) => setTimeout(res, 5000, '1'))
 
-      let callback2 = (event) => {
+      let callback2 = (event: events_emitter.EventData) => {
         expect(event.data.action).assertEqual('onStop');
         console.info('videoCallbackJsunit_0501 event: ' + event.data.action);
       }
-      let event2 = {
+      let event2: events_emitter.InnerEvent = {
         eventId: 50102,
         priority: events_emitter.EventPriority.LOW
       }

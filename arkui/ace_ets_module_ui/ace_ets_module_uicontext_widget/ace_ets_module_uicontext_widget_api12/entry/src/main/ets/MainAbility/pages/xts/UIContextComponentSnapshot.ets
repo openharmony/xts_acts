@@ -13,7 +13,7 @@ struct UIContextComponentSnapshot {
   @State pixmap_text_2: string = ''
   private scroller: Scroller = new Scroller()
 
-  build(){
+  build() {
     Column({ space: 5 }) {
       Text('Component Snapshot').fontColor(0x000000).fontSize(16).width('90%')
       Scroll(this.scroller) {
