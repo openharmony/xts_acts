@@ -18,7 +18,7 @@ import display from '@ohos.display';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
 import deviceInfo from '@ohos.deviceInfo';
-import { Driver } from '@ohos.UiTest';
+import { Driver, ON } from '@ohos.UiTest';
 
 async function sleep(time) {
   let timeoutId = null;
@@ -217,7 +217,223 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         }
       })
     })
+/**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_SUBWINDOW_MODEL_0100
+     * @tc.name      : test_SubWindow_IsModal_true
+     * @tc.desc      : test_SubWindow_IsModal_true
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("test_SubWindow_IsModal_true", 0, async function (done) {
+      let msgStr = "test_SubWindow_IsModal_true";
+      console.log(msgStr + "begin");
+      let driver: Driver = Driver.create();
+      let num = 0;
+      let subWindowClass: ohosWindow.Window;
+      let windowClass = await windowStage.getMainWindow();
+      try {
+        let promise = windowStage.createSubWindow('test_SubWindow_IsModal_true');
+        promise.then(async (data) => {
+          subWindowClass = data;
+          console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          await subWindowClass.resize(1000, 500);
+          await subWindowClass.setUIContent('MainAbility/pages/index/index2');
+          await subWindowClass.showWindow();
+          try {
+            await subWindowClass.setSubWindowModal(true).then(async () => {
+              console.info(msgStr + 'Succeeded in setting subwindow modal');
+              windowClass.on('noInteractionDetected', 4, () => {
+                num++;
+                console.log(msgStr + 'The num1 is :' + num);
+                windowClass.off('noInteractionDetected');
+                expect(true).assertTrue();
+              });
+              subWindowClass.on('noInteractionDetected', 5, () => {
+                num--;
+                console.log(msgStr + 'The num2 is :' + num);
+                subWindowClass.off('noInteractionDetected');
+                expect(false).assertTrue();
+              });
+              let buttonOne = await driver.findComponent(ON.text('这是子窗'));
+              await buttonOne.click();
+              let buttonTwo = await driver.findComponent(ON.text('Hello World'));
+              await buttonTwo.click();
+              await sleep(3000);
+              console.log(msgStr + 'The num is :' + num);
+              expect(num).assertEqual(1);
+              windowClass.off('noInteractionDetected');
+              subWindowClass.off('noInteractionDetected');
+              subWindowClass.destroyWindow();
+              done();
+            }).catch((err: BusinessError) => {
+              console.error(msgStr + `Failed to set subwindow modal. Cause code: ${err.code}, message: ${err.message}`);
+              if (err.code == 801) {
+                console.log(msgStr + 'The device not support setSubWindowModal');
+                expect(true).assertTrue();
+                done();
+              } else {
+                expect(false).assertTrue();
+                done();
+              }
+            });
+          } catch (error) {
+            console.error(msgStr + `Failed to setSubWindowModal. Cause code: ${error.code}, message: ${error.message}`);
+            expect(false).assertTrue();
+            done();
+          }
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          expect(false).assertTrue();
+          done();
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed to register callback. Cause code:' + JSON.stringify(error.code) + error.message);
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_SUBWINDOW_MODEL_0200
+     * @tc.name      : test_SubWindow_IsModal_false
+     * @tc.desc      : test_SubWindow_IsModal_false
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("test_SubWindow_IsModal_false", 0, async function (done) {
+      let msgStr = "test_SubWindow_IsModal_false";
+      console.log(msgStr + "begin");
+      let driver: Driver = Driver.create();
+      let num = 0;
+      let subWindowClass: ohosWindow.Window;
+      let windowClass = await windowStage.getMainWindow();
+      try {
+        let promise = windowStage.createSubWindow('test_SubWindow_IsModal_false');
+        promise.then(async (data) => {
+          subWindowClass = data;
+          console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          await subWindowClass.resize(1000, 500);
+          await subWindowClass.setUIContent('MainAbility/pages/index/index2');
+          await subWindowClass.showWindow();
+          try {
+            await subWindowClass.setSubWindowModal(false).then(async () => {
+              console.info(msgStr + 'Succeeded in setting subwindow modal');
+              windowClass.on('noInteractionDetected', 4, () => {
+                num++;
+                console.log(msgStr + 'The num1 is :' + num);
+                windowClass.off('noInteractionDetected');
+                expect(false).assertTrue();
+              });
+              subWindowClass.on('noInteractionDetected', 5, () => {
+                num++;
+                console.log(msgStr + 'The num2 is :' + num);
+                subWindowClass.off('noInteractionDetected');
+                expect(false).assertTrue();
+              });
+              let buttonOne = await driver.findComponent(ON.text('这是子窗'));
+              await buttonOne.click();
+              let buttonTwo = await driver.findComponent(ON.text('Hello World'));
+              await buttonTwo.click();
+              await sleep(3000);
+              console.log(msgStr + 'The num is :' + num);
+              expect(num).assertEqual(0);
+              windowClass.off('noInteractionDetected');
+              subWindowClass.off('noInteractionDetected');
+              subWindowClass.destroyWindow();
+              done();
+            }).catch((err: BusinessError) => {
+              console.error(msgStr + `Failed to set subwindow modal. Cause code: ${err.code}, message: ${err.message}`);
+              if (err.code == 801) {
+                console.log(msgStr + 'The device not support setSubWindowModal');
+                expect(true).assertTrue();
+                done();
+              } else {
+                expect(false).assertTrue();
+                done();
+              }
+            });
+          } catch (error) {
+            console.error(msgStr + `Failed to setSubWindowModal. Cause code: ${error.code}, message: ${error.message}`);
+            expect(false).assertTrue();
+            done();
+          }
 
+
+
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          expect(false).assertTrue();
+          done();
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed to register callback. Cause code:' + JSON.stringify(error.code) + error.message);
+        done();
+      }
+    })
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_SET_SUBWINDOW_MODEL_0300
+     * @tc.name      : test_SubWindow_hide_IsModal_true
+     * @tc.desc      : test_SubWindow_hide_IsModal_true
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it("test_SubWindow_hide_IsModal_true", 0, async function (done) {
+      let msgStr = "test_SubWindow_hide_IsModal_true";
+      console.log(msgStr + "begin");
+      let driver: Driver = Driver.create();
+      let num = 0;
+      let subWindowClass: ohosWindow.Window;
+      let windowClass = await windowStage.getMainWindow();
+      try {
+        let promise = windowStage.createSubWindow('test_SubWindow_hide_IsModal_true');
+        promise.then(async (data) => {
+          subWindowClass = data;
+          console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+          try {
+            await subWindowClass.setSubWindowModal(true).then(async () => {
+              console.info(msgStr + 'Succeeded in setting subwindow modal');
+              windowClass.on('noInteractionDetected', 4, () => {
+                num++;
+                console.log(msgStr + 'The num is :' + num);
+                expect(num).assertEqual(1);
+                windowClass.off('noInteractionDetected');
+                subWindowClass.destroyWindow();
+                done();
+              });
+              let buttonTwo = await driver.findComponent(ON.text('Hello World'));
+              await buttonTwo.click();
+              await sleep(3000);
+
+            }).catch((err: BusinessError) => {
+              console.error(msgStr + `Failed to set subwindow modal. Cause code: ${err.code}, message: ${err.message}`);
+              if (err.code == 801) {
+                console.log(msgStr + 'The device not support setSubWindowModal');
+                expect(true).assertTrue();
+                done();
+              } else {
+                expect(false).assertTrue();
+                done();
+              }
+            });
+          } catch (error) {
+            console.error(msgStr + `Failed to setSubWindowModal. Cause code: ${error.code}, message: ${error.message}`);
+            expect(false).assertTrue();
+            done();
+          }
+
+
+
+        }).catch((err: BusinessError) => {
+          console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          expect(false).assertTrue();
+          done();
+        });
+      } catch (error) {
+        console.log(msgStr + 'Failed to register callback. Cause code:' + JSON.stringify(error.code) + error.message);
+        done();
+      }
+    })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGETWO_JS_API_0010
      * @tc.name      : testSetDefaultDensityEnabled_true
