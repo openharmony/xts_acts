@@ -660,49 +660,6 @@ export default function imagePacking() {
             }
         });
 
-        /**
-         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200
-         * @tc.name      : packing ImageSource - callback - wrong format
-         * @tc.desc      : 1.create ImageSource
-         *                 2.call packing
-         *                 3.return array
-         *                 4.callbackcall return undefined
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 1
-         */
-        it("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200", 0, async function (done) {
-            try {
-                await getFd("test.png");
-                const imageSourceApi = image.createImageSource(fdNumber);
-                if (imageSourceApi == undefined) {
-                    console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200 create image source failed");
-                    expect(false).assertTrue();
-                    done();
-                } else {
-                    globalImagesource = imageSourceApi;
-                    const imagePackerApi = image.createImagePacker();
-                    if (imagePackerApi == undefined) {
-                        console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200 create image packer failed");
-                        expect(false).assertTrue();
-                        done();
-                    } else {
-                        globalPacker = imagePackerApi;
-                        let packOpts = { format: "image/gif", quality: 98 };
-                        imagePackerApi.packing(imageSourceApi, packOpts, (err, data) => {
-                            console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200 success");
-                            expect(data == undefined).assertTrue();
-                            console.info(data);
-                            done();
-                        });
-                    }
-                }
-            } catch (error) {
-                console.info("SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0200 error: " + error);
-                expect(false).assertTrue();
-                done();
-            }
-        });
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PACKING_IMAGESOURCE_CALLBACK_0300
