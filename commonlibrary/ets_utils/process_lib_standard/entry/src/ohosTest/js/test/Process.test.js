@@ -879,7 +879,7 @@ describe('ProcessManager', function () {
             let pro = new process.ProcessManager()
             let mag = pro.isAppUid("asdad")
         } catch (e) {
-            expect(e.toString()).assertEqual("BuisnessError: The type of v must be number.")
+            expect(e.toString()).assertEqual("BuisnessError: Parameter error. The type of code must be number.")
         }
     })
     /**
@@ -944,7 +944,8 @@ describe('ProcessManager', function () {
             let pro = new process.ProcessManager()
             let result = pro.kill("asd", 123)
         } catch (e) {
-            expect(e.toString()).assertEqual("BuisnessError: The type of v must be number.")
+            expect(e.toString()).assertEqual("BuisnessError: Parameter error. The type of signal or pid must be " +
+                "number.")
         }
     })
 
@@ -993,7 +994,7 @@ describe('ProcessManager', function () {
             let pro = new process.ProcessManager()
             let pres = pro.getUidForName(12)
         } catch (e) {
-            expect(e.toString()).assertEqual("BuisnessError: The type of v must be string.")
+            expect(e.toString()).assertEqual("BuisnessError: Parameter error. The type of code must be string.")
         }
     })
 
@@ -1052,7 +1053,7 @@ describe('ProcessManager', function () {
             let pro = new process.ProcessManager()
             let pri = pro.getThreadPriority("asdad")
         } catch (e) {
-            expect(e.toString()).assertEqual("BuisnessError: The type of v must be number.")
+            expect(e.toString()).assertEqual("BuisnessError: Parameter error. The type of code must be number.")
         }
     })
 
@@ -1139,7 +1140,7 @@ describe('ProcessManager', function () {
             let pro = new process.ProcessManager()
             let pri = pro.getSystemConfig("asdad")
         } catch (e) {
-            expect(e.toString()).assertEqual("BuisnessError: The type of v must be number.")
+            expect(e.toString()).assertEqual("BuisnessError: Parameter error. The type of name must be number.")
         }
     })
 
@@ -1195,7 +1196,7 @@ describe('ProcessManager', function () {
             let pro = new process.ProcessManager()
             let pri = pro.getEnvironmentVar(123)
         } catch (e) {
-            expect(e.toString()).assertEqual("BuisnessError: The type of v must be string.")
+            expect(e.toString()).assertEqual("BuisnessError: Parameter error. The type of name must be string.")
         }
     })
 })

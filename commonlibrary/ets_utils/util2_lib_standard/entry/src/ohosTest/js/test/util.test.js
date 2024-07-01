@@ -2100,7 +2100,7 @@ describe('ScopeHelperTest', function () {
         try {
             var range = new util.ScopeHelper(1, 2);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 1 must be object");
+            expect(e.toString()).assertEqual("BusinessError: Parameter error. The type of 1 must be object");
         }
     })
 
@@ -2117,7 +2117,8 @@ describe('ScopeHelperTest', function () {
             var result = rangeHp.intersect("str")
             expect(result.toString()).assertEqual('[35, 39]')
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of str must be ScopeHelper or ScopeType");
+            expect(e.toString()).assertEqual("BusinessError: Parameter error. The type of str must be ScopeHelper " +
+                                             "or ScopeType");
         }
     })
 
@@ -2135,7 +2136,7 @@ describe('ScopeHelperTest', function () {
             var result = rangeHp.intersect(tempMiDF, 123)
             expect(result.toString()).assertEqual('[35, 39]')
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 123 must be ScopeType");
+            expect(e.toString()).assertEqual("BusinessError: Parameter error. The type of 123 must be ScopeType");
         }
     })
 
@@ -2152,7 +2153,7 @@ describe('ScopeHelperTest', function () {
             var result = rangeHp.expand(tempMiDF, "123")
             expect(result.toString()).assertEqual('[30, 40]')
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 123 must be ScopeType");
+            expect(e.toString()).assertEqual("BusinessError: Parameter error. The type of 123 must be ScopeType");
         }
     })
 
@@ -2169,7 +2170,8 @@ describe('ScopeHelperTest', function () {
             var result = rangeHp.expand(123)
             expect(result.toString()).assertEqual('[30, 40]')
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 123 must be ScopeHelper or ScopeType");
+            expect(e.toString()).assertEqual("BusinessError: Parameter error. The type of 123 must be ScopeHelper " +
+                                             "or ScopeType");
         }
     })
 
@@ -2186,7 +2188,8 @@ describe('ScopeHelperTest', function () {
             var result = rangeHp.contains("str")
             expect(result).assertEqual(true)
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of str must be object or ScopeHelper");
+            expect(e.toString()).assertEqual("BusinessError: Parameter error. The type of str must be object or " +
+                                             "ScopeHelper");
         }
     })
 
@@ -2203,7 +2206,7 @@ describe('ScopeHelperTest', function () {
              var result = rangeHp.clamp(123)
              expect(result.toString()).assertEqual('30')
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 123 must be object");
+            expect(e.toString()).assertEqual("BusinessError: Parameter error. The type of 123 must be object");
         }
     })
 })
@@ -2297,9 +2300,9 @@ describe('LRUCacheTest', function () {
         try {
             that.updateCapacity('a');
         } catch(e) {
-            expect(e.toString()).assertEqual('BusinessError: Parameter error.The type of a must be number');
+            expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of a must be number');
             expect(e.code).assertEqual(401)
-            expect(e.message).assertEqual("Parameter error.The type of a must be number");
+            expect(e.message).assertEqual("Parameter error. The type of a must be number");
         }
     })
 
@@ -2416,9 +2419,9 @@ describe('LRUCacheTest', function () {
         try {
             var result1 = that.get(un);
         } catch(e) {
-            expect(e.toString()).assertEqual('BusinessError: Parameter error.The type of undefined must be Object');
+            expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of undefined must be Object');
             expect(e.code).assertEqual(401)
-            expect(e.message).assertEqual("Parameter error.The type of undefined must be Object");
+            expect(e.message).assertEqual("Parameter error. The type of undefined must be Object");
         }
     })
 
@@ -2533,9 +2536,9 @@ describe('LRUCacheTest', function () {
         try {
             that.put(un,'bcjdshc')
           } catch(e) {
-            expect(e.toString()).assertEqual('BusinessError: Parameter error.The type of undefined must be Object');
+            expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of undefined must be Object');
             expect(e.code).assertEqual(401)
-            expect(e.message).assertEqual("Parameter error.The type of undefined must be Object");
+            expect(e.message).assertEqual("Parameter error. The type of undefined must be Object");
           }
     })
 
@@ -3505,9 +3508,9 @@ describe('LRUCacheTest', function () {
         try {
             that.contains(un)
         } catch(e) {
-            expect(e.toString()).assertEqual('BusinessError: Parameter error.The type of undefined must be Object');
+            expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of undefined must be Object');
             expect(e.code).assertEqual(401)
-            expect(e.message).assertEqual("Parameter error.The type of undefined must be Object");
+            expect(e.message).assertEqual("Parameter error. The type of undefined must be Object");
         }
     })
 
@@ -3615,9 +3618,9 @@ describe('LRUCacheTest', function () {
         try {
             that.remove(un)
         } catch(e) {
-            expect(e.toString()).assertEqual('BusinessError: Parameter error.The type of undefined must be Object');
+            expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of undefined must be Object');
             expect(e.code).assertEqual(401)
-            expect(e.message).assertEqual("Parameter error.The type of undefined must be Object");
+            expect(e.message).assertEqual("Parameter error. The type of undefined must be Object");
         }
     })
 
@@ -3707,9 +3710,9 @@ describe('LRUCacheTest', function () {
         try {
             that.createDefault(un);
         } catch(e) {
-            expect(e.toString()).assertEqual('BusinessError: Parameter error.The type of undefined must be Object');
+            expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of undefined must be Object');
             expect(e.code).assertEqual(401)
-            expect(e.message).assertEqual("Parameter error.The type of undefined must be Object");
+            expect(e.message).assertEqual("Parameter error. The type of undefined must be Object");
         }
     })
 
@@ -4667,7 +4670,8 @@ describe('FunctionTest', function () {
             var result = util.format(format, value1, value2, value3);
             expect(result).assertEqual("1,qwer 15");
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 123 must be string or array");
+            expect(e.toString()).assertEqual("BusinessError: Parameter error. The type of 123 must be string or " +
+                                             "array");
         }
     })
 
@@ -4755,7 +4759,7 @@ describe('FunctionTest', function () {
             var result = util.errnoToString(errnum);
             expect(result).assertEqual('Unknown system error 10');
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of str must be number");
+            expect(e.toString()).assertEqual("BusinessError: Parameter error. The type of str must be number");
         }
     })
 
@@ -4794,7 +4798,7 @@ describe('FunctionTest', function () {
             var result = util.randomUUID(123);
             expect(result.length).assertEqual(36);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 123 must be boolean");
+            expect(e.toString()).assertEqual("BusinessError: Parameter error. The type of 123 must be boolean");
         }
     })
 
@@ -4811,7 +4815,7 @@ describe('FunctionTest', function () {
             var result = util.randomBinaryUUID(123);
             expect(result.length).assertEqual(16);
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 123 must be boolean");
+            expect(e.toString()).assertEqual("BusinessError: Parameter error. The type of 123 must be boolean");
         }
     })
 
@@ -4862,7 +4866,7 @@ describe('RationalNumberTest', function () {
             var result = res.valueOf()
             expect(result).assertEqual(2)
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of str must be number");
+            expect(e.toString()).assertEqual("BusinessError: Parameter error. The type of str must be number");
         }
     })
 
@@ -4950,7 +4954,7 @@ describe('RationalNumberTest', function () {
             var result = res.valueOf()
             expect(result).assertEqual(-0.5)
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of 123 must be string");
+            expect(e.toString()).assertEqual("BusinessError: Parameter error. The type of 123 must be string");
         }
     })
 
@@ -5044,7 +5048,7 @@ describe('RationalNumberTest', function () {
             var res = pro.compare(proc)
             expect(res).assertEqual(1)
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of str must be RationalNumber");
+            expect(e.toString()).assertEqual("BusinessError: Parameter error. The type of str must be RationalNumber");
         }
     })
 
@@ -5126,7 +5130,7 @@ describe('RationalNumberTest', function () {
             var res = util.RationalNumber.getCommonFactor('str', 8)
             expect(res).assertEqual(4)
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: Parameter error.The type of str must be number");
+            expect(e.toString()).assertEqual("BusinessError: Parameter error. The type of str must be number");
         }
     })
 
@@ -5347,7 +5351,8 @@ describe('Base64HelperTest', function () {
             var array = new Uint32Array([66, 97, 115, 101, 54, 52]);
             var result = that.encodeSync(array);
         } catch (e) {
-            expect(e.toString()).assertEqual("Error: The type of Parameter must be Uint8Array and the length greater than zero")
+            expect(e.toString()).assertEqual("Error: Parameter error. The type of Parameter must be Uint8Array and " +
+                                             "the length greater than zero.")
         }
     })
 
@@ -5441,7 +5446,8 @@ describe('Base64HelperTest', function () {
             var array = new Uint32Array([66, 97, 115, 101, 54, 52]);
             var result = that.encodeToStringSync(array);
         } catch (e) {
-            expect(e.toString()).assertEqual("Error: The type of Parameter must be Uint8Array and the length greater than zero")
+            expect(e.toString()).assertEqual("Error: Parameter error. The type of Parameter must be Uint8Array and " +
+                                             "the length greater than zero.")
         }
     })
 
@@ -5556,7 +5562,8 @@ describe('Base64HelperTest', function () {
             var array = new Uint32Array([99,122,69,122]);
             var result = that.decodeSync(array);
         } catch (e) {
-            expect(e.toString()).assertEqual("Error: The type of Parameter must be Uint8Array or string and the length greater than zero")
+            expect(e.toString()).assertEqual("Error: Parameter error. The type of Parameter must be Uint8Array or " +
+                                             "string and the length greater than 0.")
         }
     })
 
@@ -5756,7 +5763,8 @@ describe('Base64HelperTest', function () {
             var array = new Uint32Array([66, 97, 115, 101, 54, 52]);
             that.encode(array)
         } catch (e) {
-            expect(e.toString()).assertEqual("Error: The type of Parameter must be Uint8Array and the length greater than zero")
+            expect(e.toString()).assertEqual("Error: Parameter error. The type of Parameter must be Uint8Array and " +
+                                             "the length greater than zero.")
         }
 
     })
@@ -5856,7 +5864,8 @@ describe('Base64HelperTest', function () {
             var array = new Uint32Array([66, 97, 115, 101, 54, 52]);
             that.encodeToString(array)
         } catch (e) {
-            expect(e.toString()).assertEqual("Error: The type of Parameter must be Uint8Array and the length greater than zero")
+            expect(e.toString()).assertEqual("Error: Parameter error. The type of Parameter must be Uint8Array and " +
+                                             "the length greater than zero.")
         }
     })
 
@@ -6077,7 +6086,8 @@ describe('Base64HelperTest', function () {
             var array = new Uint16Array([99,122,69,122]);
             that.decode(array)
         } catch (e) {
-            expect(e.toString()).assertEqual("Error: The type of Parameter must be Uint8Array or string and the length greater than zero")
+            expect(e.toString()).assertEqual("Error: Parameter error. The type of Parameter must be Uint8Array or " +
+                                             "string and the length greater than 0.")
         }
     })
 
@@ -6924,7 +6934,7 @@ describe('Base64HelperTest', function () {
             that.encodeSync(array, 5);
         } catch (e) {
             expect(e.toString()).assertEqual('BusinessError: Parameter error.' +
-                'The target encoding type option nust be BASIC or BASIC_URL_SAFE.');
+                ' The target encoding type option must be BASIC or BASIC_URL_SAFE.');
         }
     })
 
@@ -6943,7 +6953,7 @@ describe('Base64HelperTest', function () {
             that.encodeSync(array, util.Type.MIME);
         } catch (e) {
             expect(e.toString()).assertEqual('BusinessError: Parameter error.' +
-                'The target encoding type option nust be BASIC or BASIC_URL_SAFE.');
+                ' The target encoding type option must be BASIC or BASIC_URL_SAFE.');
         }
     })
 
@@ -6962,7 +6972,7 @@ describe('Base64HelperTest', function () {
             that.encodeSync(array, util.Type.MIME_URL_SAFE);
         } catch (e) {
             expect(e.toString()).assertEqual('BusinessError: Parameter error.' +
-                'The target encoding type option nust be BASIC or BASIC_URL_SAFE.');
+                ' The target encoding type option must be BASIC or BASIC_URL_SAFE.');
         }
     })
 
@@ -6981,7 +6991,7 @@ describe('Base64HelperTest', function () {
             that.encodeToStringSync(array, 4);
         } catch (e) {
             expect(e.toString()).assertEqual('BusinessError: Parameter error.' +
-                'The target encoding type option nust be one of the Type enumerations.');
+                ' The target encoding type option must be one of the Type enumerations.');
         }
     })
 
@@ -6999,8 +7009,8 @@ describe('Base64HelperTest', function () {
             let array = new Uint8Array([115,49,51]);
             that.encode(array, 6);
         } catch (e) {
-            expect(e.toString()).assertEqual('BusinessError: Parameter error.' +
-                'The target encoding type option nust be BASIC or BASIC_URL_SAFE.');
+            expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of 6 must be BASIC or ' +
+                                             'BASIC_URL_SAFE');
         }
     })
 
@@ -7018,8 +7028,8 @@ describe('Base64HelperTest', function () {
             let array = new Uint8Array([115,49,51]);
             that.encode(array, util.Type.MIME);
         } catch (e) {
-            expect(e.toString()).assertEqual('BusinessError: Parameter error.' +
-                'The target encoding type option nust be BASIC or BASIC_URL_SAFE.');
+            expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of 1 must be BASIC or ' +
+                                             'BASIC_URL_SAFE');
         }
     })
 
@@ -7037,8 +7047,8 @@ describe('Base64HelperTest', function () {
             let array = new Uint8Array([115,49,51]);
             that.encode(array, util.Type.MIME_URL_SAFE);
         } catch (e) {
-            expect(e.toString()).assertEqual('BusinessError: Parameter error.' +
-                'The target encoding type option nust be BASIC or BASIC_URL_SAFE.');
+            expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of 3 must be BASIC or ' +
+                                             'BASIC_URL_SAFE');
         }
     })
 
@@ -7056,8 +7066,8 @@ describe('Base64HelperTest', function () {
             let array = new Uint8Array([115,49,51]);
             that.encodeToString(array, 5);
         } catch (e) {
-            expect(e.toString()).assertEqual('BusinessError: Parameter error.' +
-                'The target encoding type option nust be one of the Type enumerations.');
+            expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of 5 must be one of the type ' +
+                                             'enumerations');
         }
     })
 
@@ -7076,7 +7086,8 @@ describe('Base64HelperTest', function () {
             var array = new Uint8Array([]);
             var result = that.encodeSync(array);
         } catch (e) {
-            expect(e.toString()).assertEqual("Error: The type of Parameter must be Uint8Array and the length greater than zero");
+            expect(e.toString()).assertEqual("Error: Parameter error. The type of Parameter must be Uint8Array and " +
+                                             "the length greater than zero.");
         }
     })
 
@@ -7094,7 +7105,8 @@ describe('Base64HelperTest', function () {
             var array = new Uint8Array([]);
             var result = that.encodeToStringSync(array);
         } catch (e) {
-            expect(e.toString()).assertEqual("Error: The type of Parameter must be Uint8Array and the length greater than zero");
+            expect(e.toString()).assertEqual("Error: Parameter error. The type of Parameter must be Uint8Array and " +
+                                             "the length greater than zero.");
         }
     })
 
@@ -7113,7 +7125,8 @@ describe('Base64HelperTest', function () {
             var array = new Uint8Array([]);
             var result = that.decodeSync(array);
         } catch (e) {
-            expect(e.toString()).assertEqual("Error: The type of Parameter must be Uint8Array or string and the length greater than zero");
+            expect(e.toString()).assertEqual("Error: Parameter error. The type of Parameter must be Uint8Array or " +
+                                             "string and the length greater than 0.");
         }
     })
 
@@ -7132,7 +7145,8 @@ describe('Base64HelperTest', function () {
             var array = new Uint8Array([]);
             that.encode(array)
         } catch (e) {
-            expect(e.toString()).assertEqual("Error: The type of Parameter must be Uint8Array and the length greater than zero");
+            expect(e.toString()).assertEqual("Error: Parameter error. The type of Parameter must be Uint8Array and " +
+                                             "the length greater than zero.");
         }
     })
 
@@ -7150,7 +7164,8 @@ describe('Base64HelperTest', function () {
             var array = new Uint8Array([]);
             that.encodeToString(array)
         } catch (e) {
-            expect(e.toString()).assertEqual("Error: The type of Parameter must be Uint8Array and the length greater than zero");
+            expect(e.toString()).assertEqual("Error: Parameter error. The type of Parameter must be Uint8Array and " +
+                                             "the length greater than zero.");
         }
     })
 
@@ -7169,7 +7184,8 @@ describe('Base64HelperTest', function () {
             var array = new Uint8Array([]);
             that.decode(array)
         } catch (e) {
-            expect(e.toString()).assertEqual("Error: The type of Parameter must be Uint8Array or string and the length greater than zero");
+            expect(e.toString()).assertEqual("Error: Parameter error. The type of Parameter must be Uint8Array or " +
+                                             "string and the length greater than 0.");
         }
     })
 })
@@ -7371,7 +7387,7 @@ describe('DecodeEncodeTest', function () {
             var encodingStr = that.encoding
             expect(encodingStr).assertEqual('utf-16be')
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: The type of Parameter must be string.")
+            expect(e.toString()).assertEqual("BusinessError: Parameter error. The type of 123 must be string")
         }
     })
 
@@ -7389,7 +7405,7 @@ describe('DecodeEncodeTest', function () {
             var encodingStr = that.encoding
             expect(encodingStr).assertEqual('utf-16be')
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: The type of Parameter must be object.")
+            expect(e.toString()).assertEqual("BusinessError: Parameter error. The type of ignoreBOM must be object")
         }
     })
 
@@ -7407,7 +7423,7 @@ describe('DecodeEncodeTest', function () {
             var encodingStr = that.encoding
             expect(encodingStr).assertEqual('utf-16be')
         } catch (e) {
-            expect(e.toString()).assertEqual("BusinessError: The type of Parameter must be object.")
+            expect(e.toString()).assertEqual("BusinessError: Parameter error. The type of 123 must be object")
         }
     })
 
@@ -7641,8 +7657,9 @@ describe('DecodeEncodeTest', function () {
             result = that.encodeInto(123)
             expect(result[0]).assertEqual(0x61)
         } catch (e) {
-                expect(e.toString()).assertEqual("BusinessError: The type of Parameter must be string.")
-            }
+            expect(e.toString()).assertEqual("BusinessError: Parameter error. The type of Parameter must be " +
+                                             "string.")
+        }
     })
 
     /**
@@ -7661,8 +7678,9 @@ describe('DecodeEncodeTest', function () {
             result = that.encodeInto({ ignoreBOM : true })
             expect(result[0]).assertEqual(0x61)
         } catch (e) {
-                expect(e.toString()).assertEqual("BusinessError: The type of Parameter must be string.")
-            }
+            expect(e.toString()).assertEqual("BusinessError: Parameter error. The type of Parameter must be " +
+                                             "string.")
+        }
     })
 
     /**
