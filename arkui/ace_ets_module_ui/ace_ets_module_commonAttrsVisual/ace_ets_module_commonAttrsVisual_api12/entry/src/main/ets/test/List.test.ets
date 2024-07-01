@@ -20,6 +20,7 @@ import fractionStops from './ImageEffectTest/fractionStops.test'
 import backgroundBrightness from './backgroundImageTest/backgroundBrightness.test';
 import visualEffectTest from './visualEffectTest/visualEffect.test'
 import motionBlurTest from './visualEffectTest/motionBlur.test'
+import MovingPhotoViewTest from './MovingPhotoViewTest/MovingPhotoView.test'
 export default function testsuite() {
   backgroundImageResizableTest();
   foregroundEffect();
@@ -29,4 +30,5 @@ export default function testsuite() {
   backgroundBrightness()
   visualEffectTest();
   motionBlurTest();
+  MovingPhotoViewTest();
 }
