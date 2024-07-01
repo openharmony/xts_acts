@@ -4286,7 +4286,7 @@ export default function UtdfileNameTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_3080
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_3080
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".stl"
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".fm"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -4300,7 +4300,7 @@ export default function UtdfileNameTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_3090
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_3090
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".stl"
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".frame"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -4314,7 +4314,7 @@ export default function UtdfileNameTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_3100
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_3100
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".stl"
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".maker"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -4454,7 +4454,7 @@ export default function UtdfileNameTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_3200
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_3200
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".hdf"
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".ins"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -4468,7 +4468,7 @@ export default function UtdfileNameTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_3210
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdfileNameExtentionsJsAPITest_3210
-     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".hdf"
+     * @tc.desc      : getUniformDataTypeByFilenameExtension  parmater is ".isp"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
