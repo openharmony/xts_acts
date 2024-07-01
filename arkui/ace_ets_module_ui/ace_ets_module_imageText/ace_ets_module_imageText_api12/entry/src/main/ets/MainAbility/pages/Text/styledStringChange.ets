@@ -54,9 +54,9 @@ class MyCustomSpan extends CustomSpan {
     this.word = word;
   }
 
-  width: number = 160;
-  word: string = 'drawing';
-  height: number = 10;
+  public width: number = 160;
+  public word: string = 'drawing';
+  public height: number = 10;
 }
 
 @Entry
