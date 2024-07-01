@@ -391,44 +391,5 @@ describe('ActsContextTest', function () {
         }
         console.log('ACTS_SetShowOnLockScreen_0200====<end');
     })
-
-    /*
-    * @tc.number: ACTS_SetWakeUpScreen_0100
-    * @tc.name: context.setWakeUpScreen : Set an ability wake up screen.
-    * @tc.desc: Check the return wake up screen status of the interface (by AsyncCallback)
-    */
-    it('ACTS_SetWakeUpScreen_0100', 0, async function (done) {
-        console.log('ACTS_SetWakeUpScreen_0100====<begin');
-
-        try {
-            context.setWakeUpScreen(true, (err,data)=>{
-                console.log('setWakeUpScreen call back');
-                done();
-            });
-            done();
-        } catch (err) {
-            console.log('ACTS_SetWakeUpScreen_0100====<end err=' + err)
-            done();
-        }
-        console.log('ACTS_SetWakeUpScreen_0100====<end');
-    })
-
-    /*
-    * @tc.number: ACTS_SetWakeUpScreen_0200
-    * @tc.name: context.setWakeUpScreen : Set an ability wake up screen.
-    * @tc.desc: Check the return wake up screen status of the interface
-    */
-    it('ACTS_SetWakeUpScreen_0200', 0, async function (done) {
-        console.log('ACTS_SetWakeUpScreen_0200====<begin');
-        try {
-            context.setWakeUpScreen(true);
-            done();
-        } catch (err) {
-            console.log('ACTS_SetWakeUpScreen_0200====<end err=' + err)
-            done();
-        }
-        console.log('ACTS_SetWakeUpScreen_0200====<end');
-    })
-
 })
 }

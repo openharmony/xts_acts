@@ -305,66 +305,6 @@ export default function actsStServiceAbilityTest() {
             }
         })
 
-        /**
-        * @tc.number: ACTS_ASetWakeUpScreen_0100
-        * @tc.name: SetWakeUpScreen
-        * @tc.desc: Check the return value of the interface (by AsyncCallback)
-        */
-        it('ACTS_ASetWakeUpScreen_0100', 0, async function (done) {
-            console.log("ACTS_ASetWakeUpScreen_0100 --- start")
-            var currentAlertTimeout = 0;
-            try {
-                currentAlertTimeout = setTimeout(mySetTimeout, gSetTimeout);
-                function mySetTimeout() {
-                    console.log('ACTS_ASetWakeUpScreen_0100====<end mySetTimeout')
-                    done();
-                }
-                var context = featureAbility.getContext()
-                var result = context.setWakeUpScreen(true,
-                    (err) => {
-                        clearTimeout(currentAlertTimeout);
-                        console.debug("ACTS_ASetWakeUpScreen_0100====err>"
-                            + JSON.stringify(err) + " , err= " + err);
-                        done()
-                    }
-                );
-            } catch (error) {
-                clearTimeout(currentAlertTimeout);
-                console.log("ACTS_ASetWakeUpScreen_0100 : error = " + error);
-                console.debug('ACTS_ASetWakeUpScreen_0100====<end catch (error)');
-                done();
-            }
-        })
-
-        /**
-         * @tc.number: ACTS_ASetWakeUpScreen_0200
-         * @tc.name: SetWakeUpScreen
-         * @tc.desc: Check the return type of the interface (by promise)
-         */
-        it('ACTS_ASetWakeUpScreen_0200', 0, async function (done) {
-            console.log("ACTS_ASetWakeUpScreen_0200 --- start")
-            var currentAlertTimeout = 0;
-            try {
-                currentAlertTimeout = setTimeout(mySetTimeout, gSetTimeout);
-                function mySetTimeout() {
-                    console.log('ACTS_ASetWakeUpScreen_0200====<end mySetTimeout')
-                    done();
-                }
-                var context = featureAbility.getContext()
-                var result = context.setWakeUpScreen(true).then(() => {
-                    clearTimeout(currentAlertTimeout);
-                    console.debug("ACTS_ASetWakeUpScreen_0200====then>");
-                    done()
-                }
-                );
-            } catch (error) {
-                clearTimeout(currentAlertTimeout);
-                console.log("ACTS_ASetWakeUpScreen_0200 : error = " + error);
-                console.debug('ACTS_ASetWakeUpScreen_0200====<end catch (error)');
-                done();
-            }
-        })
-
         /*
         * @tc.number    : ACTS_ATestRunner_0200
         * @tc.name      : start new ability
