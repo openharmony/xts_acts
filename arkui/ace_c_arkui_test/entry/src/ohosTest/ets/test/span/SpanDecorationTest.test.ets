@@ -91,5 +91,95 @@ export default function spanDecorationTest() {
       done()
     })
 
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_SPAN_DECORATION_0600
+     * @tc.name       : testSpanDecoration006
+     * @tc.desc       : testing decoration for span with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSpanDecoration006', 0, async (done: Function) => {
+      expect(nativeFunc.testSpanDecoration006()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_SPAN_DECORATION_0700
+     * @tc.name       : testSpanDecoration007
+     * @tc.desc       : testing decoration for span with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSpanDecoration007', 0, async (done: Function) => {
+      expect(nativeFunc.testSpanDecoration007()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_SPAN_DECORATION_0800
+     * @tc.name       : testSpanDecoration008
+     * @tc.desc       : testing decoration for span with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSpanDecoration008', 0, async (done: Function) => {
+      expect(nativeFunc.testSpanDecoration008()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_SPAN_DECORATION_0900
+     * @tc.name       : testSpanDecoration009
+     * @tc.desc       : testing decoration for span with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSpanDecoration009', 0, async (done: Function) => {
+      expect(nativeFunc.testSpanDecoration009()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_SPAN_DECORATION_1000
+     * @tc.name       : testSpanDecoration010
+     * @tc.desc       : testing decoration for span with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSpanDecoration010', 0, async (done: Function) => {
+      expect(nativeFunc.testSpanDecoration010()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_SPAN_DECORATION_1100
+     * @tc.name       : testSpanDecoration011
+     * @tc.desc       : testing decoration for span with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSpanDecoration011', 0, async (done: Function) => {
+      expect(nativeFunc.testSpanDecoration011()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_SPAN_DECORATION_1200
+     * @tc.name       : testSpanDecoration012
+     * @tc.desc       : testing decoration for span with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testSpanDecoration012', 0, async (done: Function) => {
+      expect(nativeFunc.testSpanDecoration012()).assertEqual(0)
+      done()
+    })
   })
 }

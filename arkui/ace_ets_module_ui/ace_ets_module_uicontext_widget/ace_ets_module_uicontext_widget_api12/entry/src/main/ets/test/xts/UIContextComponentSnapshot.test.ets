@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium';
-import router from '@system.router';
+import router from '@ohos.router';
 import { Driver, ON } from '@ohos.UiTest';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function UIContextComponentSnapshotJsunit() {
-  describe('UIContextComponentSnapshotTest', function () {
-    beforeEach(async function (done) {
+  describe('UIContextComponentSnapshotTest', () => {
+    beforeEach(async (done: Function) => {
       console.info('text beforeEach start');
-      let options = {
-        uri: 'MainAbility/pages/xts/UIContextComponentSnapshot',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/xts/UIContextComponentSnapshot',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function UIContextComponentSnapshotJsunit() {
         console.info('get UIContextComponentSnapshot state pages:' + JSON.stringify(pages));
         if (!('UIContextComponentSnapshot' == pages.name)) {
           console.info('get UIContextComponentSnapshot state pages.name:' + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info('push UIContextComponentSnapshot page result:' + JSON.stringify(result));
         }
@@ -41,7 +41,7 @@ export default function UIContextComponentSnapshotJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info('UIContextComponentSnapshot after each called');
     });
@@ -54,15 +54,14 @@ export default function UIContextComponentSnapshotJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('UIContextComponentSnapshotTest_0100', 0, async function (done) {
+    it('UIContextComponentSnapshotTest_0100', 0, async (done: Function) => {
       console.info('UIContextComponentSnapshotTest_0100 START');
       let driver1 = Driver.create();
       let button = await driver1.findComponent(ON.id('getComponentSnapshot_01'));
       await button.click();
       await Utils.sleep(1000);
       let text = getInspectorByKey('key_getComponentSnapshot_text_01');
-      let obj = JSON.parse(text);
-      expect(obj.$attrs.content).assertEqual('snapshot');
+      expect(JSON.parse(text).$attrs.content).assertEqual('snapshot');
       console.info('UIContextComponentSnapshotTest_0100 END');
       done();
     });
@@ -75,19 +74,16 @@ export default function UIContextComponentSnapshotJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('UIContextComponentSnapshotTest_0200', 0, async function (done) {
+    it('UIContextComponentSnapshotTest_0200', 0, async (done: Function) => {
       console.info('UIContextComponentSnapshotTest_0200 START');
       let driver1 = Driver.create();
       let button = await driver1.findComponent(ON.id('getComponentSnapshot_02'));
       await button.click();
       await Utils.sleep(1000);
       let text = getInspectorByKey('key_getComponentSnapshot_text_02');
-      let obj = JSON.parse(text);
-      expect(obj.$attrs.content).assertEqual('snapshot');
+      expect(JSON.parse(text).$attrs.content).assertEqual('snapshot');
       console.info('UIContextComponentSnapshotTest_0200 END');
       done();
     });
-
-
   })
 }

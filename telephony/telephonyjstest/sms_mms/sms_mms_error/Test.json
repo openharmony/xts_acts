@@ -1,11 +1,11 @@
 {
     "description": "Configuration for hjunit demo Tests",
     "driver": {
-        "type": "OHJSUnitTest",
-        "test-timeout": "180000",
-        "shell-timeout": "180000",
-        "bundle-name": "com.ohos.smsmms",
-        "package-name": "com.ohos.smsmms"
+      "type": "OHJSUnitTest",
+      "test-timeout": "1800000",
+      "bundle-name": "com.ohos.smsmms",
+      "package-name": "com.ohos.smsmms",  
+      "shell-timeout": "1800000"
     },
     "kits": [
         {

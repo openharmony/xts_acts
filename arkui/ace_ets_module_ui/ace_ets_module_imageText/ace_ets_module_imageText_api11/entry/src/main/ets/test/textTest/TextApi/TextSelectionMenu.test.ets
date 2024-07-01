@@ -16,6 +16,7 @@ import router from '@system.router';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from '../Utils'
 import { Driver, ON ,MouseButton} from '@ohos.UiTest';
+import CommonFunc from "../../../MainAbility/common/Common";
 
 export default function TextSelectionMenu() {
   describe('TextSelectionMenu', function () {
@@ -57,7 +58,7 @@ export default function TextSelectionMenu() {
 
       let driver= Driver.create();
       await Utils.sleep(1000);
-      let text3 = Utils.getComponentRect('Text_bindSelectionMenu_test')
+      let text3 = CommonFunc.getComponentRectOnScreen('Text_bindSelectionMenu_test')
       await driver.mouseClick({
         x:parseInt((text3.right-text3.left)*0.5+text3.left),
         y:parseInt((text3.bottom-text3.top)*0.5+text3.top)}, MouseButton.MOUSE_BUTTON_RIGHT)
@@ -86,7 +87,7 @@ export default function TextSelectionMenu() {
 
       let driver= Driver.create();
       await Utils.sleep(1000);
-      let test4 = Utils.getComponentRect('text_TextResponseType')
+      let test4 = CommonFunc.getComponentRectOnScreen('text_TextResponseType')
       await driver.longClick(parseInt((test4.right-test4.left)*0.2+test4.left),
         parseInt((test4.bottom-test4.top)*0.5+test4.top))
       await Utils.sleep(2000);

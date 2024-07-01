@@ -55,7 +55,7 @@ struct NavRouterExample {
                 console.info("the mode is " + NavRouteMode.REPLACE);
               }).mode(NavRouteMode.PUSH)
             }
-          }, item => item)
+          }, (item: string) => item)
         }
         .height('100%')
         .margin({ top: 12, left: 12 })

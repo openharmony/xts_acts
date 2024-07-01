@@ -1,6 +1,10 @@
 {
     "string":  [
         {
+            "name": "module_desc",
+            "value": "module description"
+        },
+        {
             "name": "phone_entry_dsc",
             "value": "i am an entry for phone"
         },

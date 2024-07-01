@@ -2,7 +2,7 @@
     "description": "Configuration for ActsMindSporeNdkTest Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "600000",
+        "test-timeout": "180000",
         "shell-timeout": "600000",
         "bundle-name": "com.huawei.printxtstest",
         "module-name": "entry_test"

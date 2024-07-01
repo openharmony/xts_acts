@@ -12,16 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import imageExifJpegGetModifyTest from './ImageExifJpegGetModify.test';
-import imageExifPngGetModifyTest from './ImageExifPngGetModify.test';
-import imageExifWebpGetModifyTest from './ImageExifWebpGetModify.test';
-import imageExifDngGetModifyTest from './ImageExifDngGetModify.test';
-import imageExifHeifGetModifyTest from './ImageExifHeifGetModify.test';
+import imageExifGetModifyTest from './ImageExifGetModify.test';
 
 export default function testsuite() {
-  imageExifJpegGetModifyTest();
-  imageExifPngGetModifyTest();
-  imageExifWebpGetModifyTest();
-  imageExifDngGetModifyTest();
-  imageExifHeifGetModifyTest();
+  imageExifGetModifyTest();
 }

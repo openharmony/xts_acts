@@ -14,7 +14,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 import events_emitter from '@ohos.events.emitter';
 
 export default function edgeEffectJsunit() {
@@ -30,7 +30,7 @@ export default function edgeEffectJsunit() {
         if (!("edgeEffect" == pages.name)) {
           console.info("get edgeEffect state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(1000);
+          await CommonFunc.sleep(1000);
           console.info("push edgeEffect page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -40,7 +40,7 @@ export default function edgeEffectJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("edgeEffect after each called");
     });
 
@@ -70,7 +70,7 @@ export default function edgeEffectJsunit() {
       } catch (err) {
         console.log("edgeEffectTest_0200 change component data error: " + err.message);
       }
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJsonNew: string = getInspectorByKey('list');
       console.info("edgeEffectTest_0200 component objNew is: " + JSON.stringify(JSON.parse(strJsonNew)));
       expect(JSON.parse(strJsonNew).$attrs.edgeEffect).assertEqual('EdgeEffect.Spring');

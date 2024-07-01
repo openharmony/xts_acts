@@ -16,9 +16,7 @@
 @Entry
 @Component
 struct gridItem_testcasee {
-  @State numbers: string[] = Array.apply(null, { length: 16 }).map(function (item, i) {
-    return i.toString()
-  })
+  @State numbers: string[] = Array.from(Array(16).keys()).map(item => item.toString())
   @State active: boolean = false
 
   build() {

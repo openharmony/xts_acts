@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import fileio from '@ohos.fileio'
+import fileio from '@ohos.fileio';
 import request from "@ohos.request";
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
@@ -42,6 +42,26 @@ export default function requestUploadNormalJSUnit() {
         done();
       }
     });
+
+    let RequestData = {
+      name: 'name',
+      value: '123'
+    }
+    let File = {
+      filename: 'test',
+      name: 'test',
+      uri: 'internal://cache/test.txt',
+      type: 'txt'
+    }
+    let uploadConfig = {
+      url: 'http://127.0.0.1',
+      header: {
+        headers: 'http'
+      },
+      method: 'POST',
+      files: [File],
+      data: [RequestData]
+    };
 
     /**
      * beforeEach: Prerequisites at the test case level, which are executed before each test case is executed.
@@ -150,6 +170,57 @@ export default function requestUploadNormalJSUnit() {
       } catch (err) {
         console.info("====>SUB_Misc_REQUEST_Create_Promise_Upload_Promise_0010 catch error: " + JSON.stringify(err));
         expect(err.code).assertEqual(201);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Misc_Request_UploadManagement_0001
+     * @tc.name SUB_Misc_Request_UploadManagement_0001
+     * @tc.desc Starts a download session.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Misc_Request_UploadManagement_0001', 0, async (done: Function) => {
+      console.info("-----------------------SUB_Misc_Request_UploadManagement_0001 is starting-----------------------");
+      try {
+        await request.uploadFile(globalThis.abilityContext, uploadConfig);
+        expect().assertFail();
+        console.info("====>SUB_Misc_Request_UploadManagement_0001 uploadFile success");
+        done();
+      } catch (err) {
+        console.info("====>SUB_Misc_Request_UploadManagement_0001 create err: " + JSON.stringify(err));
+        expect(err.code).assertEqual(201);
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Misc_Request_UploadManagement_Callback_0001
+     * @tc.name SUB_Misc_Request_UploadManagement_Callback_0001
+     * @tc.desc Starts a download session.
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Misc_Request_UploadManagement_Callback_0001', 0, async (done: Function) => {
+      console.info("-----------------------SUB_Misc_Request_UploadManagement_Callback_0001 is starting-----------------------");
+      try {
+        request.uploadFile(globalThis.abilityContext, uploadConfig, (err, uploadTask)=>{
+          if (err) {
+            console.info("====>SUB_Misc_Request_UploadManagement_Callback_0001 create err: " + JSON.stringify(err));
+            expect(err.code).assertEqual(201);
+            done();
+          } else {
+            console.error("====>SUB_Misc_Request_UploadManagement_Callback_0001 create success without permission");
+            expect().assertFail();
+            done();
+          }
+        })
+      } catch (err) {
+        console.error("====>SUB_Misc_Request_UploadManagement_Callback_0001 create err: " + JSON.stringify(err));
+        expect().assertFail();
         done();
       }
     });

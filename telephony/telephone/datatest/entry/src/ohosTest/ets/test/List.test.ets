@@ -17,12 +17,14 @@
 import dataManagerHasCartTest from './DataManagerHasCard.test';
 import dataManagerEmptyTest from './DataManagerEmpty.test';
 import sim from '@ohos.telephony.sim';
+import CallUXUsabilityOptimizationTest from './CallSettingSyncCheck.test';
 
 let hasSimCard: Boolean = sim.hasSimCardSync(0);
 
 export default function testsuite() {
   if(hasSimCard){
     dataManagerHasCartTest();
+    CallUXUsabilityOptimizationTest();
   }else{
     dataManagerEmptyTest();
   }

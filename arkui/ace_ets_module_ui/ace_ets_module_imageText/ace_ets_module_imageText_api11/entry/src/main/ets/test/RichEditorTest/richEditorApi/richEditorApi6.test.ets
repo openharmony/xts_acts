@@ -72,8 +72,10 @@ export default function richEditorApi6() {
 
       let driver = Driver.create();
       await CommonFunc.sleep(300);
+      let richEditor = CommonFunc.getComponentRectOnScreen('RichEditor6');
+
       await driver.mouseClick({
-        x: 300, y: 300
+        x:Math.round(richEditor.left) + 300, y: Math.round(richEditor.top) + 300
       }, MouseButton.MOUSE_BUTTON_LEFT)
       await CommonFunc.sleep(1000);
 

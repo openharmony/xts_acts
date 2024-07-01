@@ -1,11 +1,11 @@
 {
     "description": "Configuration for hjunit demo Tests",
     "driver": {
-        "type": "OHJSUnitTest",
-        "test-timeout": "180000",
-        "shell-timeout": "180000",
-        "bundle-name": "ohos.acts.usb.usb.function",
-        "package-name": "ohos.acts.usb.usb.function"
+      "type": "OHJSUnitTest",
+      "test-timeout": "160000",
+      "shell-timeout": "160000",
+      "bundle-name": "ohos.acts.usb.usb.function",
+      "package-name": "ohos.acts.usb.usb.function"
     },
     "kits": [
         {

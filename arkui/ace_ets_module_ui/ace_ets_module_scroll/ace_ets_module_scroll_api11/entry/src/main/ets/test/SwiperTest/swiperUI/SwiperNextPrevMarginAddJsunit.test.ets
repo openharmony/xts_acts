@@ -15,13 +15,14 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import ohosrouter from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../../MainAbility/utils/Common';
+import CommonFunc from '../../../MainAbility/common/Common';
 import {MessageManager,Callback} from '../../../MainAbility/utils/MessageManager';
+import { BusinessError } from '@ohos.base';
 const waitUiReadyMs = 1000;
 
 export default function SwiperNextPrevMarginAddJsunit() {
-  describe('SwiperNextPrevMarginAddJsunit', function () {
-    beforeEach(async function (done) {
+  describe('SwiperNextPrevMarginAddJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("SwiperNextPrevMarginAddJsunit beforeEach start");
       try {
         ohosrouter.clear();
@@ -40,7 +41,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
           }).then(() => {
             // success
           })
-            .catch(err => {
+            .catch((err: BusinessError) => {
               console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
             })
           await CommonFunc.sleep(2000);
@@ -53,11 +54,11 @@ export default function SwiperNextPrevMarginAddJsunit() {
 
     });
 
-    it('SwiperNextPrevMarginAddJsunit_0100', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0100', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('swiperNextPrevMargin');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[apiCommponentAddJsunit_0100'] component obj is: " + obj.$attrs.nextMargin);
       expect(obj.$attrs.nextMargin).assertEqual('0.00vp');
       expect(obj.$attrs.prevMargin).assertEqual('0.00vp');
@@ -70,13 +71,13 @@ export default function SwiperNextPrevMarginAddJsunit() {
     * @tc.desc  : test swiper width = padding + subcomponentwidth
     * @tc.level : Level 2
     */
-    it('SwiperNextPrevMarginAddJsunit_0036', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0036', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0036 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
       globalThis.value.message.notify({name:'nextMargin',value: null })
       let strJson = getInspectorByKey('swiperNextPrevMargin');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SwiperNextPrevMarginAddJsunit_0036'] component obj is: " + obj.$attrs.nextMargin);
       expect(obj.$attrs.nextMargin).assertEqual('0.00vp');
       expect(obj.$attrs.prevMargin).assertEqual('0.00vp');
@@ -89,13 +90,13 @@ export default function SwiperNextPrevMarginAddJsunit() {
     * @tc.desc  : test swiper width = padding + subcomponentwidth
     * @tc.level : Level 2
     */
-    it('SwiperNextPrevMarginAddJsunit_0300', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0300', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0300 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
       globalThis.value.message.notify({name:'nextMargin',value: -30 })
       let strJson = getInspectorByKey('swiperNextPrevMargin');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[apiCommponentAddJsunit_0300'] component obj is: " + obj.$attrs.nextMargin);
       expect(obj.$attrs.nextMargin).assertEqual('0.00px');
       expect(obj.$attrs.prevMargin).assertEqual('0.00vp');
@@ -118,14 +119,14 @@ export default function SwiperNextPrevMarginAddJsunit() {
    * @tc.desc  : test swiper width = padding + subcomponentwidth
    * @tc.level : Level 2
    */
-    it('SwiperNextPrevMarginAddJsunit_0400', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0400', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0400 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
       globalThis.value.message.notify({name:'nextMargin',value: 30})
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('swiperNextPrevMargin');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[apiCommponentAddJsunit_0400'] component obj is: " + obj.$attrs.nextMargin);
       expect(obj.$attrs.nextMargin).assertEqual('30.00vp');
       expect(obj.$attrs.prevMargin).assertEqual('0.00vp');
@@ -148,14 +149,14 @@ export default function SwiperNextPrevMarginAddJsunit() {
     * @tc.desc  : test swiper width = padding + subcomponentwidth
     * @tc.level : Level 2
     */
-    it('SwiperNextPrevMarginAddJsunit_022', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_022', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_022 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
       globalThis.value.message.notify({name:'nextMargin',value: 0})
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('swiperNextPrevMargin');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SwiperNextPrevMarginAddJsunit_022'] component obj is: " + obj.$attrs.nextMargin);
       expect(obj.$attrs.nextMargin).assertEqual('0.00vp');
       expect(obj.$attrs.prevMargin).assertEqual('0.00vp');
@@ -172,14 +173,14 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_0500', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0500', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0500 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
       globalThis.value.message.notify({name:'nextMargin',value: undefined });
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('swiperNextPrevMargin');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[apiCommponentAddJsunit_0500'] component obj is: " + obj.$attrs.nextMargin);
       expect(obj.$attrs.nextMargin).assertEqual('0.00px');
       expect(obj.$attrs.prevMargin).assertEqual('0.00vp');
@@ -196,14 +197,14 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_0600', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0600', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0600 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
       globalThis.value.message.notify({name:'nextMargin',value: $r("app.string.nextMargin")});
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('swiperNextPrevMargin');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[apiCommponentAddJsunit_0600'] component obj is: " + obj.$attrs.nextMargin);
       expect(obj.$attrs.nextMargin).assertEqual('20.00vp');
       expect(obj.$attrs.prevMargin).assertEqual('0.00vp');
@@ -220,7 +221,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_0700', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0700', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0700 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -229,21 +230,21 @@ export default function SwiperNextPrevMarginAddJsunit() {
       globalThis.value.message.notify({name:'nextMargin',value: 0 });
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('swiperNextPrevMargin');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[apiCommponentAddJsunit_0700'] component obj is: " + obj.$attrs.nextMargin);
       expect(obj.$attrs.nextMargin).assertEqual('0.00vp');
       expect(obj.$attrs.prevMargin).assertEqual('0.00px');
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_0800', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0800', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0800 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
       globalThis.value.message.notify({name:'prevMargin',value: -30 });
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('swiperNextPrevMargin');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[apiCommponentAddJsunit_0800'] component obj is: " + obj.$attrs.nextMargin);
       expect(obj.$attrs.nextMargin).assertEqual('0.00vp');
       expect(obj.$attrs.prevMargin).assertEqual('0.00vp');
@@ -260,14 +261,14 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_0900', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0900', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0900 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
       globalThis.value.message.notify({name:'prevMargin',value: 30 });
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('swiperNextPrevMargin');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[apiCommponentAddJsunit_0900'] component obj is: " + obj.$attrs.nextMargin);
       expect(obj.$attrs.nextMargin).assertEqual('0.00vp');
       expect(obj.$attrs.prevMargin).assertEqual('30.00vp');
@@ -284,14 +285,14 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_1000', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_1000', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_1000 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
       globalThis.value.message.notify({name:'prevMargin',value: undefined });
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('swiperNextPrevMargin');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[apiCommponentAddJsunit_1000'] component obj is: " + obj.$attrs.nextMargin);
       expect(obj.$attrs.nextMargin).assertEqual('0.00vp');
       expect(obj.$attrs.prevMargin).assertEqual('0.00px');
@@ -308,7 +309,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_1100', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_1100', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_1100 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -317,7 +318,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       globalThis.value.message.notify({name:'prevMargin',value: $r("app.string.nextMargin")});
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('swiperNextPrevMargin');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[apiCommponentAddJsunit_1100'] component obj is: " + obj.$attrs.nextMargin);
       expect(obj.$attrs.nextMargin).assertEqual('20.00vp');
       expect(obj.$attrs.prevMargin).assertEqual('20.00vp');
@@ -334,7 +335,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_1200', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_1200', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_1100 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -343,7 +344,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       globalThis.value.message.notify({name:'prevMargin',value: 40});
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('swiperNextPrevMargin');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[apiCommponentAddJsunit_1200'] component obj is: " + obj.$attrs.nextMargin);
       expect(obj.$attrs.nextMargin).assertEqual('30.00vp');
       expect(obj.$attrs.prevMargin).assertEqual('40.00vp');
@@ -360,7 +361,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_1300', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_1300', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_1300 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -369,7 +370,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       globalThis.value.message.notify({name:'prevMargin',value: -40});
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('swiperNextPrevMargin');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[apiCommponentAddJsunit_1300'] component obj is: " + obj.$attrs.nextMargin);
       expect(obj.$attrs.nextMargin).assertEqual('0.00vp');
       expect(obj.$attrs.prevMargin).assertEqual('0.00vp');
@@ -386,7 +387,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_1400', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_1400', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_1400 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -395,7 +396,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       globalThis.value.message.notify({name:'prevMargin',value: 1000});
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('swiperNextPrevMargin');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[apiCommponentAddJsunit_1400'] component obj is: " + obj.$attrs.nextMargin);
       expect(obj.$attrs.nextMargin).assertEqual('0.00px');
       expect(obj.$attrs.prevMargin).assertEqual('0.00px');
@@ -412,7 +413,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_1500', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_1500', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_1500 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -428,12 +429,12 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('swiperNextPrevMarginDuplicate');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[apiCommponentAddJsunit_1500'] component obj is: " + obj.$attrs.nextMargin);
       expect(obj.$attrs.nextMargin).assertEqual('4.00vp');
       expect(obj.$attrs.prevMargin).assertEqual('4.00vp');
@@ -450,7 +451,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_1600', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_1600', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_1600 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -466,12 +467,12 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('swiperNextPrevMarginString');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[apiCommponentAddJsunit_1600'] component obj is: " + obj.$attrs.nextMargin);
       expect(obj.$attrs.nextMargin).assertEqual('30.00%');
       expect(obj.$attrs.prevMargin).assertEqual('30.00%');
@@ -488,7 +489,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_1700', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_1700', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_1700 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -504,7 +505,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -513,7 +514,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       globalThis.value.message.notify({name:'prevMargin',value: '10000%'});
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('swiperNextPrevMarginString');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[apiCommponentAddJsunit_1700'] component obj is: " + obj.$attrs.nextMargin);
       expect(obj.$attrs.nextMargin).assertEqual('10000.00%');
       expect(obj.$attrs.prevMargin).assertEqual('10000.00%');
@@ -530,7 +531,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_1800', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_1800', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_1800 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -546,7 +547,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -556,7 +557,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       globalThis.value.message.notify({name:'prevMargin',value: '20%'});
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('swiperNextPrevMarginString');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[apiCommponentAddJsunit_1800'] component obj is: " + obj.$attrs.nextMargin);
       expect(obj.$attrs.nextMargin).assertEqual('20.00%');
       expect(obj.$attrs.prevMargin).assertEqual('20.00%');
@@ -573,7 +574,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_1900', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_1900', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_1900 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -589,7 +590,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -599,7 +600,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       globalThis.value.message.notify({name:'prevMargin',value: 'abc'});
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('swiperNextPrevMarginString');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[apiCommponentAddJsunit_1900'] component obj is: " + obj.$attrs.nextMargin);
       expect(obj.$attrs.nextMargin).assertEqual('0.00vp');
       expect(obj.$attrs.prevMargin).assertEqual('0.00vp');
@@ -616,7 +617,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_2000', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_2000', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_2000 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -632,7 +633,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -642,7 +643,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       globalThis.value.message.notify({name:'prevMargin',value: '30px'});
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('swiperNextPrevMarginString');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[apiCommponentAddJsunit_2000'] component obj is: " + obj.$attrs.nextMargin);
       expect(obj.$attrs.nextMargin).assertEqual('30.00px');
       expect(obj.$attrs.prevMargin).assertEqual('30.00px');
@@ -659,7 +660,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_2100', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_2100', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_2100 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -675,7 +676,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -685,7 +686,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       globalThis.value.message.notify({name:'prevMargin',value: '30fp'});
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('swiperNextPrevMarginString');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[apiCommponentAddJsunit_2100'] component obj is: " + obj.$attrs.nextMargin);
       expect(obj.$attrs.nextMargin).assertEqual('30.00fp');
       expect(obj.$attrs.prevMargin).assertEqual('30.00fp');
@@ -702,7 +703,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_2200', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_2200', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_2200 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -718,7 +719,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -728,7 +729,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       globalThis.value.message.notify({name:'prevMargin',value: '30lpx'});
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('swiperNextPrevMarginString');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[apiCommponentAddJsunit_2200'] component obj is: " + obj.$attrs.nextMargin);
       expect(obj.$attrs.nextMargin).assertEqual('30.00lpx');
       expect(obj.$attrs.prevMargin).assertEqual('30.00lpx');
@@ -745,7 +746,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_2300', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_2300', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_2300 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -761,7 +762,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -771,7 +772,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       globalThis.value.message.notify({name:'prevMargin',value: $r("app.string.prevMarginString")});
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('swiperNextPrevMarginString');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[apiCommponentAddJsunit_2300'] component obj is: " + obj.$attrs.nextMargin);
       expect(obj.$attrs.nextMargin).assertEqual('20.00px');
       expect(obj.$attrs.prevMargin).assertEqual('20.00px');
@@ -794,7 +795,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_020', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_020', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_2400 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -810,13 +811,13 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('swiperNextPrevMarginNo');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[apiCommponentAddJsunit_2200'] component obj is: " + obj.$attrs.nextMargin);
       expect(obj.$attrs.nextMargin).assertEqual('0.00vp');
       expect(obj.$attrs.prevMargin).assertEqual('0.00vp');
@@ -833,7 +834,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       done();
     });
 
-    it('SwiperNextPrevMarginAddJsunit_2500', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_2500', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_2500 START');
       await CommonFunc.sleep(1000);
       // dymanic chage the value
@@ -849,7 +850,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -859,7 +860,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       globalThis.value.message.notify({name:'prevMargin',value: $r("app.float.prevMargin")});
       await CommonFunc.sleep(500);
       let strJson = getInspectorByKey('swiperNextPrevMarginString');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[apiCommponentAddJsunit_2300'] component obj is: " + obj.$attrs.nextMargin);
       expect(obj.$attrs.nextMargin).assertEqual('30.00vp');
       expect(obj.$attrs.prevMargin).assertEqual('30.00vp');
@@ -883,7 +884,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.level : Level 2
      */
 
-    it('SwiperNextPrevMarginAddJsunit_0076', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0076', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0076 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -898,7 +899,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -908,11 +909,11 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let swiperLeft = swiperMargin.left;
 
       let strJson = getInspectorByKey('swiperNextPrevMargin76');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[wiperNextPrevMarginAddJsunit_0076] component obj is: " + obj.$attrs.padding);
       expect(obj.$attrs.padding).assertEqual('10.00vp');
-      let nextMargin =  obj.$attrs.nextMargin;
-      let prevMargin =   obj.$attrs.prevMargin;
+      let nextMargin: string =  obj.$attrs.nextMargin;
+      let prevMargin: string =   obj.$attrs.prevMargin;
       expect(nextMargin).assertEqual("4.00vp");
       expect(prevMargin).assertEqual("2.00vp");
       // calculate the gap
@@ -931,7 +932,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
     * @tc.level : Level 2
     */
 
-    it('SwiperNextPrevMarginAddJsunit_0078', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0078', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0078 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -946,7 +947,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -956,11 +957,11 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let swiperLeft = swiperMargin.left;
 
       let strJson = getInspectorByKey('swiperNextPrevMargin78');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[wiperNextPrevMarginAddJsunit_0078] component obj is: " + obj.$attrs.padding);
       expect(obj.$attrs.padding).assertEqual('10.00vp');
-      let nextMargin =  obj.$attrs.nextMargin;
-      let prevMargin =   obj.$attrs.prevMargin;
+      let nextMargin: string =  obj.$attrs.nextMargin;
+      let prevMargin: string =   obj.$attrs.prevMargin;
       expect(nextMargin).assertEqual("4.00vp");
       expect(prevMargin).assertEqual("2.00vp");
 
@@ -980,7 +981,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
     * @tc.level : Level 2
     */
 
-    it('SwiperNextPrevMarginAddJsunit_0077', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0077', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0077 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -995,7 +996,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -1008,11 +1009,11 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let swiperLeft = swiperMargin.left;
 
       let strJson = getInspectorByKey('swiperNextPrevMargin78');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[wiperNextPrevMarginAddJsunit_0077] component obj is: " + obj.$attrs.padding);
       expect(obj.$attrs.padding).assertEqual('10.00vp');
-      let nextMargin =  obj.$attrs.nextMargin;
-      let prevMargin =   obj.$attrs.prevMargin;
+      let nextMargin: string =  obj.$attrs.nextMargin;
+      let prevMargin: string =   obj.$attrs.prevMargin;
       expect(nextMargin).assertEqual("4.00vp");
       expect(prevMargin).assertEqual("2.00vp");
 
@@ -1032,7 +1033,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
     * @tc.level : Level 2
     */
 
-    it('SwiperNextPrevMarginAddJsunit_0081', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0081', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0081 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1047,18 +1048,18 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
 
       // calculate
       let strJson = getInspectorByKey('swiperNextPrevMargin81');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[wiperNextPrevMarginAddJsunit_0081] component obj is: " + obj.$attrs.padding);
       expect(obj.$attrs.padding).assertEqual('10.00vp');
-      let nextMargin =  obj.$attrs.nextMargin;
-      let prevMargin =   obj.$attrs.prevMargin;
+      let nextMargin: string =  obj.$attrs.nextMargin;
+      let prevMargin: string =   obj.$attrs.prevMargin;
       expect(nextMargin).assertEqual("4.00vp");
       expect(prevMargin).assertEqual("2.00vp");
 
@@ -1081,7 +1082,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.level : Level 2
      */
 
-    it('SwiperNextPrevMarginAddJsunit_0080', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0080', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0080 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1096,7 +1097,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -1105,11 +1106,9 @@ export default function SwiperNextPrevMarginAddJsunit() {
       await CommonFunc.sleep(500);
       // calculate
       let strJson = getInspectorByKey('swiperNextPrevMargin81');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[wiperNextPrevMarginAddJsunit_0081] component obj is: " + obj.$attrs.padding);
       expect(obj.$attrs.padding).assertEqual('10.00vp');
-      let swiperWidth = obj.$attrs.width;
-      let padding = obj.$attrs.padding;
 
       // calculate the gap
       let subcomponment = CommonFunc.getComponentRect('1');
@@ -1119,8 +1118,8 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let swiperMargin = CommonFunc.getComponentRect('swiperNextPrevMargin81');
       let swiperRight = swiperMargin.right;
       let swiperLeft = swiperMargin.left;
-      let nextMargin =  obj.$attrs.nextMargin;
-      let prevMargin =   obj.$attrs.prevMargin;
+      let nextMargin: string =  obj.$attrs.nextMargin;
+      let prevMargin: string =   obj.$attrs.prevMargin;
       expect(nextMargin).assertEqual("4.00vp");
       expect(prevMargin).assertEqual("2.00vp");
 
@@ -1135,7 +1134,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.level : Level 2
      */
 
-    it('SwiperNextPrevMarginAddJsunit_0079', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0079', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0079 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1150,17 +1149,16 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
 
       // calculate
       let strJson = getInspectorByKey('swiperNextPrevMargin79');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[wiperNextPrevMarginAddJsunit_0079] component obj is: " + obj.$attrs.padding);
 
-      let swiperWidth = obj.$attrs.width;
       expect(obj.$attrs.padding).assertEqual('10.00vp');
 
       // calculate the gap
@@ -1171,8 +1169,8 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let subcomponment = CommonFunc.getComponentRect('1');
       let right =  subcomponment.right;
       let left  =  subcomponment.left;
-      let nextMargin =  obj.$attrs.nextMargin;
-      let prevMargin =   obj.$attrs.prevMargin;
+      let nextMargin: string =  obj.$attrs.nextMargin;
+      let prevMargin: string =   obj.$attrs.prevMargin;
       expect(nextMargin).assertEqual("4.00vp");
       expect(prevMargin).assertEqual("2.00vp");
 
@@ -1187,7 +1185,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
    * @tc.level : Level 2
    */
 
-    it('SwiperNextPrevMarginAddJsunit_0082', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0082', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0082 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1202,7 +1200,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -1220,10 +1218,10 @@ export default function SwiperNextPrevMarginAddJsunit() {
 
       // calculate
       let strJson = getInspectorByKey('1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[wiperNextPrevMarginAddJsunit_0082] component obj is: " + obj.$attrs.padding);
 
-      let padding = obj.$attrs.padding;
+      let padding: string = obj.$attrs.padding;
 
 
       expect(padding).assertEqual('100.00vp');
@@ -1238,7 +1236,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
     * @tc.level : Level 2
     */
 
-    it('SwiperNextPrevMarginAddJsunit_0083', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0083', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0083 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1253,7 +1251,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -1270,11 +1268,11 @@ export default function SwiperNextPrevMarginAddJsunit() {
       // calculate
 
       let strJson = getInspectorByKey('swiperNextPrevMargin83');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[wiperNextPrevMarginAddJsunit_0083] component obj is: " + obj.$attrs.padding);
       expect(obj.$attrs.padding).assertEqual('3.00vp');
-      let nextMargin =  obj.$attrs.nextMargin;
-      let prevMargin =   obj.$attrs.prevMargin;
+      let nextMargin: string =  obj.$attrs.nextMargin;
+      let prevMargin: string =   obj.$attrs.prevMargin;
       expect(nextMargin).assertEqual("100.00vp");
       expect(prevMargin).assertEqual("100.00vp");
 
@@ -1289,7 +1287,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
    * @tc.level : Level 2
    */
 
-    it('SwiperNextPrevMarginAddJsunit_0084', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0084', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0084 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1304,7 +1302,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -1321,10 +1319,10 @@ export default function SwiperNextPrevMarginAddJsunit() {
 
       // calculate
       let strJson = getInspectorByKey('1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[wiperNextPrevMarginAddJsunit_0084] component obj is: " + obj.$attrs.padding);
 
-      let padding = obj.$attrs.padding;
+      let padding: string = obj.$attrs.padding;
 
       expect(Math.abs(Math.round((swiperRight - swiperLeft)- (right - left))) <= 1).assertTrue();
       done();
@@ -1336,7 +1334,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
     * @tc.desc  : test swiper width = padding + subcomponentwidth
     * @tc.level : Level 2
     */
-    it('SwiperNextPrevMarginAddJsunit_0085', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0085', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0085 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1351,7 +1349,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -1368,10 +1366,10 @@ export default function SwiperNextPrevMarginAddJsunit() {
 
       // calculate
       let strJson = getInspectorByKey('1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[wiperNextPrevMarginAddJsunit_0085] component obj is: " + obj.$attrs.padding);
 
-      let padding = obj.$attrs.padding;
+      let padding: string = obj.$attrs.padding;
 
       expect(Math.abs(Math.round((swiperRight - swiperLeft)- (right - left))) <= 1).assertTrue();
       done();
@@ -1383,7 +1381,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0063', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0063', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0063 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1398,7 +1396,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -1416,9 +1414,9 @@ export default function SwiperNextPrevMarginAddJsunit() {
       // calculate
 
       let strJson = getInspectorByKey('swiperNextPrevMargin63');
-      let obj = JSON.parse(strJson);
-      let nextMargin =  obj.$attrs.nextMargin;
-      let prevMargin =   obj.$attrs.prevMargin;
+      let obj: ESObject = JSON.parse(strJson);
+      let nextMargin: string =  obj.$attrs.nextMargin;
+      let prevMargin: string =   obj.$attrs.prevMargin;
 
       expect(nextMargin).assertEqual("15.00vp");
       expect(prevMargin).assertEqual("6.00vp");
@@ -1432,7 +1430,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0062', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0062', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0062 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1447,7 +1445,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -1463,12 +1461,12 @@ export default function SwiperNextPrevMarginAddJsunit() {
 
       // calculate
       let strJson = getInspectorByKey('swiperNextPrevMargin62');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[wiperNextPrevMarginAddJsunit_0062] component obj is: " + obj.$attrs.padding);
 
 
-      let nextMargin =  obj.$attrs.nextMargin;
-      let prevMargin =   obj.$attrs.prevMargin;
+      let nextMargin: string =  obj.$attrs.nextMargin;
+      let prevMargin: string =   obj.$attrs.prevMargin;
       expect(nextMargin).assertEqual("15.00vp");
       expect(prevMargin).assertEqual("6.00vp");
       expect(Math.abs(Math.round((swiperTop - swiperbottom)- (top - bottom -vp2px(15 + 6)))) <= 1).assertTrue();
@@ -1481,7 +1479,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0061', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0061', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0061 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1496,7 +1494,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -1513,10 +1511,10 @@ export default function SwiperNextPrevMarginAddJsunit() {
 
       // calculate
       let strJson = getInspectorByKey('swiperNextPrevMargin61');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
 
-      let nextMargin =  obj.$attrs.nextMargin;
-      let prevMargin =   obj.$attrs.prevMargin;
+      let nextMargin: string =  obj.$attrs.nextMargin;
+      let prevMargin: string =   obj.$attrs.prevMargin;
       expect(nextMargin).assertEqual("15.00vp");
       expect(prevMargin).assertEqual("6.00vp");
       expect(Math.abs(Math.round((swiperRight - swiperLeft)- (3 *(right - left) + vp2px(15 + 6)))) <= 1).assertTrue();
@@ -1529,7 +1527,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0060', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0060', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0060 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1544,16 +1542,16 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
       // calculate
       let strJson = getInspectorByKey('swiperNextPrevMargin60');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
 
-      let nextMargin =  obj.$attrs.nextMargin;
-      let prevMargin =   obj.$attrs.prevMargin;
+      let nextMargin: string =  obj.$attrs.nextMargin;
+      let prevMargin: string =   obj.$attrs.prevMargin;
       expect(nextMargin).assertEqual("15.00vp");
       expect(prevMargin).assertEqual("6.00vp");
 
@@ -1575,7 +1573,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0067', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0067', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0061 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1590,7 +1588,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -1607,13 +1605,13 @@ export default function SwiperNextPrevMarginAddJsunit() {
 
       // calculate
       let strJson = getInspectorByKey('swiperNextPrevMargin67');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[wiperNextPrevMarginAddJsunit_0067] component obj is: " + obj.$attrs.padding);
 
-      let padding = obj.$attrs.padding;
-      let nextMargin =  obj.$attrs.nextMargin;
-      let prevMargin =  obj.$attrs.prevMargin;
-      let itemspace =   obj.$attrs.itemSpace;
+      let padding: string = obj.$attrs.padding;
+      let nextMargin: string =  obj.$attrs.nextMargin;
+      let prevMargin: string = obj.$attrs.prevMargin;
+      let itemspace: string = obj.$attrs.itemSpace;
 
       expect(nextMargin).assertEqual("15.00vp");
       expect(prevMargin).assertEqual("6.00vp");
@@ -1629,7 +1627,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0066', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0066', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0066 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1644,7 +1642,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -1660,13 +1658,13 @@ export default function SwiperNextPrevMarginAddJsunit() {
 
       // calculate
       let strJson = getInspectorByKey('swiperNextPrevMargin66');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[wiperNextPrevMarginAddJsunit_0066] component obj is: " + obj.$attrs.padding);
 
-      let padding = obj.$attrs.padding;
-      let nextMargin = obj.$attrs.nextMargin;
-      let prevMargin = obj.$attrs.prevMargin;
-      let itemspace = obj.$attrs.itemSpace;
+      let padding: string = obj.$attrs.padding;
+      let nextMargin: string = obj.$attrs.nextMargin;
+      let prevMargin: string = obj.$attrs.prevMargin;
+      let itemspace: string = obj.$attrs.itemSpace;
 
       expect(nextMargin).assertEqual("15.00vp");
       expect(prevMargin).assertEqual("6.00vp");
@@ -1682,7 +1680,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0065', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0065', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0065 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1697,7 +1695,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -1714,13 +1712,13 @@ export default function SwiperNextPrevMarginAddJsunit() {
 
       // calculate
       let strJson = getInspectorByKey('swiperNextPrevMargin65');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[wiperNextPrevMarginAddJsunit_0065] component obj is: " + obj.$attrs.padding);
 
-      let padding = obj.$attrs.padding;
-      let nextMargin =  obj.$attrs.nextMargin;
-      let prevMargin =  obj.$attrs.prevMargin;
-      let itemspace =    obj.$attrs.itemSpace;
+      let padding: string = obj.$attrs.padding;
+      let nextMargin: string =  obj.$attrs.nextMargin;
+      let prevMargin: string = obj.$attrs.prevMargin;
+      let itemspace: string = obj.$attrs.itemSpace;
 
       expect(nextMargin).assertEqual("15.00vp");
       expect(prevMargin).assertEqual("6.00vp");
@@ -1736,7 +1734,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0064', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0064', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0064 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1751,7 +1749,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -1767,13 +1765,13 @@ export default function SwiperNextPrevMarginAddJsunit() {
 
       // calculate
       let strJson = getInspectorByKey('swiperNextPrevMargin64');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[wiperNextPrevMarginAddJsunit_0064] component obj is: " + obj.$attrs.padding);
 
-      let padding = obj.$attrs.padding;
-      let nextMargin = obj.$attrs.nextMargin;
-      let prevMargin = obj.$attrs.prevMargin;
-      let itemspace = obj.$attrs.itemSpace;
+      let padding: string = obj.$attrs.padding;
+      let nextMargin: string = obj.$attrs.nextMargin;
+      let prevMargin: string = obj.$attrs.prevMargin;
+      let itemspace: string = obj.$attrs.itemSpace;
 
       expect(nextMargin).assertEqual("15.00vp");
       expect(prevMargin).assertEqual("6.00vp");
@@ -1789,7 +1787,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0055', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0055', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0055 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1804,7 +1802,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -1820,13 +1818,13 @@ export default function SwiperNextPrevMarginAddJsunit() {
 
       // calculate
       let strJson = getInspectorByKey('swiperNextPrevMargin55');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[wiperNextPrevMarginAddJsunit_0055] component obj is: " + obj.$attrs.padding);
 
-      let padding = obj.$attrs.padding;
-      let nextMargin = obj.$attrs.nextMargin;
-      let prevMargin = obj.$attrs.prevMargin;
-      let itemspace = obj.$attrs.itemSpace;
+      let padding: string = obj.$attrs.padding;
+      let nextMargin: string = obj.$attrs.nextMargin;
+      let prevMargin: string = obj.$attrs.prevMargin;
+      let itemspace: string = obj.$attrs.itemSpace;
 
       expect(nextMargin).assertEqual("15.00vp");
       expect(prevMargin).assertEqual("6.00vp");
@@ -1842,7 +1840,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0054', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0054', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0054 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1857,7 +1855,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -1873,12 +1871,12 @@ export default function SwiperNextPrevMarginAddJsunit() {
 
       // calculate
       let strJson = getInspectorByKey('swiperNextPrevMargin54');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[wiperNextPrevMarginAddJsunit_0054] component obj is: " + obj.$attrs.padding);
 
-      let padding = obj.$attrs.padding;
-      let nextMargin =  obj.$attrs.nextMargin;
-      let prevMargin =   obj.$attrs.prevMargin;
+      let padding: string = obj.$attrs.padding;
+      let nextMargin: string =  obj.$attrs.nextMargin;
+      let prevMargin: string =   obj.$attrs.prevMargin;
 
       expect(nextMargin).assertEqual("15.00vp");
       expect(prevMargin).assertEqual("6.00vp");
@@ -1893,7 +1891,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0053', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0053', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0053 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1908,7 +1906,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -1924,12 +1922,12 @@ export default function SwiperNextPrevMarginAddJsunit() {
 
       // calculate
       let strJson = getInspectorByKey('swiperNextPrevMargin53');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[wiperNextPrevMarginAddJsunit_0053] component obj is: " + obj.$attrs.padding);
 
-      let padding = obj.$attrs.padding;
-      let nextMargin = obj.$attrs.nextMargin;
-      let prevMargin = obj.$attrs.prevMargin;
+      let padding: string = obj.$attrs.padding;
+      let nextMargin: string = obj.$attrs.nextMargin;
+      let prevMargin: string = obj.$attrs.prevMargin;
 
       expect(nextMargin).assertEqual("15.00vp");
       expect(prevMargin).assertEqual("6.00vp");
@@ -1944,7 +1942,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0052', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0052', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0052 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -1959,7 +1957,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -1975,12 +1973,12 @@ export default function SwiperNextPrevMarginAddJsunit() {
 
       // calculate
       let strJson = getInspectorByKey('swiperNextPrevMargin52');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[wiperNextPrevMarginAddJsunit_0052] component obj is: " + obj.$attrs.padding);
 
-      let padding = obj.$attrs.padding;
-      let nextMargin =  obj.$attrs.nextMargin;
-      let prevMargin =   obj.$attrs.prevMargin;
+      let padding: string = obj.$attrs.padding;
+      let nextMargin: string =  obj.$attrs.nextMargin;
+      let prevMargin: string =   obj.$attrs.prevMargin;
       expect(nextMargin).assertEqual("15.00vp");
       expect(prevMargin).assertEqual("6.00vp");
 
@@ -1994,7 +1992,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0059', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0059', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0059 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2009,7 +2007,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -2026,13 +2024,13 @@ export default function SwiperNextPrevMarginAddJsunit() {
 
       // calculate
       let strJson = getInspectorByKey('swiperNextPrevMargin59');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[wiperNextPrevMarginAddJsunit_0059] component obj is: " + obj.$attrs.padding);
 
-      let padding = obj.$attrs.padding;
-      let nextMargin = obj.$attrs.nextMargin;
-      let prevMargin = obj.$attrs.prevMargin;
-      let itemspace = obj.$attrs.itemSpace;
+      let padding: string = obj.$attrs.padding;
+      let nextMargin: string = obj.$attrs.nextMargin;
+      let prevMargin: string = obj.$attrs.prevMargin;
+      let itemspace: string = obj.$attrs.itemSpace;
 
       expect(nextMargin).assertEqual("15.00vp");
       expect(prevMargin).assertEqual("6.00vp");
@@ -2048,7 +2046,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0058', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0058', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0058 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2063,7 +2061,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -2079,13 +2077,13 @@ export default function SwiperNextPrevMarginAddJsunit() {
 
       // calculate
       let strJson = getInspectorByKey('swiperNextPrevMargin58');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[wiperNextPrevMarginAddJsunit_0058] component obj is: " + obj.$attrs.padding);
 
-      let padding = obj.$attrs.padding;
-      let nextMargin =  obj.$attrs.nextMargin;
-      let prevMargin =   obj.$attrs.prevMargin;
-      let itemspace =    obj.$attrs.itemSpace;
+      let padding: string = obj.$attrs.padding;
+      let nextMargin: string =  obj.$attrs.nextMargin;
+      let prevMargin: string =   obj.$attrs.prevMargin;
+      let itemspace: string = obj.$attrs.itemSpace;
 
       expect(nextMargin).assertEqual("15.00vp");
       expect(prevMargin).assertEqual("6.00vp");
@@ -2101,7 +2099,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0057', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0057', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0057 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2116,7 +2114,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -2133,13 +2131,13 @@ export default function SwiperNextPrevMarginAddJsunit() {
 
       // calculate
       let strJson = getInspectorByKey('swiperNextPrevMargin57');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[wiperNextPrevMarginAddJsunit_0057] component obj is: " + obj.$attrs.padding);
 
-      let padding = obj.$attrs.padding;
-      let nextMargin =  obj.$attrs.nextMargin;
-      let prevMargin = obj.$attrs.prevMargin;
-      let itemspace = obj.$attrs.itemSpace;
+      let padding: string = obj.$attrs.padding;
+      let nextMargin: string =  obj.$attrs.nextMargin;
+      let prevMargin: string = obj.$attrs.prevMargin;
+      let itemspace: string = obj.$attrs.itemSpace;
 
       expect(nextMargin).assertEqual("15.00vp");
       expect(prevMargin).assertEqual("6.00vp");
@@ -2155,7 +2153,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0056', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0056', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0058 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2170,7 +2168,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -2186,13 +2184,13 @@ export default function SwiperNextPrevMarginAddJsunit() {
 
       // calculate
       let strJson = getInspectorByKey('swiperNextPrevMargin56');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[wiperNextPrevMarginAddJsunit_0056] component obj is: " + obj.$attrs.padding);
 
-      let padding = obj.$attrs.padding;
-      let nextMargin = obj.$attrs.nextMargin;
-      let prevMargin = obj.$attrs.prevMargin;
-      let itemspace =  obj.$attrs.itemSpace;
+      let padding: string = obj.$attrs.padding;
+      let nextMargin: string = obj.$attrs.nextMargin;
+      let prevMargin: string = obj.$attrs.prevMargin;
+      let itemspace: string = obj.$attrs.itemSpace;
 
       expect(nextMargin).assertEqual("15.00vp");
       expect(prevMargin).assertEqual("6.00vp");
@@ -2209,7 +2207,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0050', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0050', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0050 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2224,7 +2222,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -2243,10 +2241,10 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let left  =  subcomponment.left;
 
       let strJson = getInspectorByKey('swiperNextPrevMargin50');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[wiperNextPrevMarginAddJsunit_0050] component obj is: " + obj.$attrs.padding);
 
-      let borderWidth = obj.$attrs.borderWidth;
+      let borderWidth: string = obj.$attrs.borderWidth;
       expect(borderWidth).assertEqual('0.00vp');
 
       expect(Math.abs(Math.round((swiperRight- swiperLeft)- (right - left))) <= 1).assertTrue();
@@ -2259,7 +2257,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0051', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0051', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0051 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2274,7 +2272,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -2296,8 +2294,8 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let bottom  =  subcomponment.bottom;
 
       let strJson = getInspectorByKey('swiperNextPrevMargin50');
-      let obj = JSON.parse(strJson);
-      let borderWidth = obj.$attrs.borderWidth;
+      let obj: ESObject = JSON.parse(strJson);
+      let borderWidth: string = obj.$attrs.borderWidth;
       expect(borderWidth).assertEqual('0.00vp');
 
       expect(Math.abs(Math.round((swiperTop - swiperbottom)- (top - bottom))) <= 1).assertTrue();
@@ -2310,7 +2308,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0042', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0042', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0051 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2325,7 +2323,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -2351,8 +2349,8 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let left  =  subcomponment.left;
 
       let strJson = getInspectorByKey('swiperNextPrevMargin50');
-      let obj = JSON.parse(strJson);
-      let borderWidth = obj.$attrs.borderWidth;
+      let obj: ESObject = JSON.parse(strJson);
+      let borderWidth: string = obj.$attrs.borderWidth;
       expect(borderWidth).assertEqual('0.00vp');
 
       expect(Math.abs(Math.round((swiperRight - swiperLeft)- (right - left))) <= 1).assertTrue();
@@ -2365,7 +2363,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0043', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0043', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0043 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2380,7 +2378,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -2406,8 +2404,8 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let bottom  =  subcomponment.bottom;
 
       let strJson = getInspectorByKey('swiperNextPrevMargin50');
-      let obj = JSON.parse(strJson);
-      let borderWidth = obj.$attrs.borderWidth;
+      let obj: ESObject = JSON.parse(strJson);
+      let borderWidth: string = obj.$attrs.borderWidth;
       expect(borderWidth).assertEqual('0.00vp');
 
       expect(Math.abs(Math.round((swiperTop - swiperbottom)- (top - bottom))) <= 1).assertTrue();
@@ -2420,7 +2418,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0044', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0044', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0051 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2435,7 +2433,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -2461,8 +2459,8 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let left  =  subcomponment.left;
       let strJson = getInspectorByKey('swiperNextPrevMargin50');
 
-      let obj = JSON.parse(strJson);
-      let borderWidth = obj.$attrs.borderWidth;
+      let obj: ESObject = JSON.parse(strJson);
+      let borderWidth: string = obj.$attrs.borderWidth;
       expect(borderWidth).assertEqual('0.00vp');
 
       expect(Math.abs(Math.round((swiperRight - swiperLeft)- (right - left))) <= 1).assertTrue();
@@ -2475,7 +2473,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0045', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0045', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0045 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2490,7 +2488,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -2516,8 +2514,8 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let bottom  =  subcomponment.bottom;
 
       let strJson = getInspectorByKey('swiperNextPrevMargin50');
-      let obj = JSON.parse(strJson);
-      let borderWidth = obj.$attrs.borderWidth;
+      let obj: ESObject = JSON.parse(strJson);
+      let borderWidth: string = obj.$attrs.borderWidth;
       expect(borderWidth).assertEqual('0.00vp');
 
       expect(Math.abs(Math.round((swiperTop - swiperbottom)- (top - bottom))) <= 1).assertTrue();
@@ -2530,7 +2528,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0046', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0046', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0046 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2545,7 +2543,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -2573,8 +2571,8 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let left  =  subcomponment.left;
 
       let strJson = getInspectorByKey('swiperNextPrevMargin50');
-      let obj = JSON.parse(strJson);
-      let borderWidth = obj.$attrs.borderWidth;
+      let obj: ESObject = JSON.parse(strJson);
+      let borderWidth: string = obj.$attrs.borderWidth;
       expect(borderWidth).assertEqual('0.00vp');
 
       expect(Math.abs(Math.round((swiperRight - swiperLeft)- (3*(right - left)))) <= 1).assertTrue();
@@ -2587,7 +2585,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0047', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0047', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0047 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2602,7 +2600,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -2630,8 +2628,8 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let bottom  =  subcomponment.bottom;
 
       let strJson = getInspectorByKey('swiperNextPrevMargin50');
-      let obj = JSON.parse(strJson);
-      let borderWidth = obj.$attrs.borderWidth;
+      let obj: ESObject = JSON.parse(strJson);
+      let borderWidth: string = obj.$attrs.borderWidth;
       expect(borderWidth).assertEqual('0.00vp');
 
       expect(Math.abs(Math.round((swiperTop - swiperbottom)- (3*(top - bottom)))) <= 1).assertTrue();
@@ -2644,7 +2642,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0048', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0048', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0048 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2659,7 +2657,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -2687,8 +2685,8 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let left  =  subcomponment.left;
 
       let strJson = getInspectorByKey('swiperNextPrevMargin50');
-      let obj = JSON.parse(strJson);
-      let itemspace =  obj.$attrs.itemSpace;
+      let obj: ESObject = JSON.parse(strJson);
+      let itemspace: string = obj.$attrs.itemSpace;
       expect(itemspace).assertEqual('10.00vp');
 
       expect(Math.abs(Math.round((swiperRight - swiperLeft)- (3*(right - left) + vp2px(2 * 10)))) <= 1).assertTrue();
@@ -2702,7 +2700,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0049', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0049', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0049 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2717,7 +2715,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -2745,8 +2743,8 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let bottom  =  subcomponment.bottom;
 
       let strJson = getInspectorByKey('swiperNextPrevMargin50');
-      let obj = JSON.parse(strJson);
-      let itemspace =  obj.$attrs.itemSpace;
+      let obj: ESObject = JSON.parse(strJson);
+      let itemspace: string = obj.$attrs.itemSpace;
       expect(itemspace).assertEqual('0.00vp');
 
       expect(Math.abs(Math.round((swiperTop - swiperbottom)- (3*(top - bottom)))) <= 1).assertTrue();
@@ -2759,7 +2757,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0072', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0072', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0072 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2774,7 +2772,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -2804,8 +2802,8 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let left  =  subcomponment.left;
 
       let strJson = getInspectorByKey('swiperNextPrevMargin50');
-      let obj = JSON.parse(strJson);
-      let nextMargin =  obj.$attrs.nextMargin;
+      let obj: ESObject = JSON.parse(strJson);
+      let nextMargin: string =  obj.$attrs.nextMargin;
       expect(nextMargin).assertEqual('5.00vp');
 
       expect(Math.abs(Math.round((swiperRight - swiperLeft)- (right - left + vp2px(5)))) <= 1).assertTrue();
@@ -2818,7 +2816,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0073', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0073', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0073 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2833,7 +2831,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -2863,8 +2861,8 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let bottom  =  subcomponment.bottom;
 
       let strJson = getInspectorByKey('swiperNextPrevMargin50');
-      let obj = JSON.parse(strJson);
-      let nextMargin =  obj.$attrs.nextMargin;
+      let obj: ESObject = JSON.parse(strJson);
+      let nextMargin: string =  obj.$attrs.nextMargin;
       expect(nextMargin).assertEqual('5.00vp');
       expect(Math.abs(Math.round((swiperTop - swiperbottom)- (top - bottom -vp2px(5)))) <= 1).assertTrue();
       done();
@@ -2876,7 +2874,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0074', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0074', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0074 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2891,7 +2889,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -2921,8 +2919,8 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let left  =  subcomponment.left;
 
       let strJson = getInspectorByKey('swiperNextPrevMargin50');
-      let obj = JSON.parse(strJson);
-      let nextMargin =  obj.$attrs.nextMargin;
+      let obj: ESObject = JSON.parse(strJson);
+      let nextMargin: string =  obj.$attrs.nextMargin;
       expect(nextMargin).assertEqual('5.00vp');
       expect(Math.abs(Math.round((swiperRight - swiperLeft)- (right - left + vp2px(5)))) <= 1).assertTrue();
       done();
@@ -2934,7 +2932,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0075', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0075', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0075 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -2949,7 +2947,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -2979,8 +2977,8 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let bottom  =  subcomponment.bottom;
 
       let strJson = getInspectorByKey('swiperNextPrevMargin50');
-      let obj = JSON.parse(strJson);
-      let nextMargin =  obj.$attrs.nextMargin;
+      let obj: ESObject = JSON.parse(strJson);
+      let nextMargin: string =  obj.$attrs.nextMargin;
       expect(nextMargin).assertEqual('5.00vp');
 
       expect(Math.abs(Math.round((swiperTop - swiperbottom)- (top - bottom - vp2px(5)))) <= 1).assertTrue();
@@ -2993,7 +2991,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0068', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0068', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0068 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -3008,7 +3006,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -3038,8 +3036,8 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let left  =  subcomponment.left;
 
       let strJson = getInspectorByKey('swiperNextPrevMargin50');
-      let obj = JSON.parse(strJson);
-      let nextMargin =  obj.$attrs.nextMargin;
+      let obj: ESObject = JSON.parse(strJson);
+      let nextMargin: string =  obj.$attrs.nextMargin;
       expect(nextMargin).assertEqual('5.00vp');
 
       expect(Math.abs(Math.round((swiperRight - swiperLeft)- (3*(right - left) + vp2px(5)))) <= 1).assertTrue();
@@ -3052,7 +3050,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0069', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0069', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0069 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -3067,7 +3065,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -3097,8 +3095,8 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let bottom  =  subcomponment.bottom;
 
       let strJson = getInspectorByKey('swiperNextPrevMargin50');
-      let obj = JSON.parse(strJson);
-      let nextMargin =  obj.$attrs.nextMargin;
+      let obj: ESObject = JSON.parse(strJson);
+      let nextMargin: string =  obj.$attrs.nextMargin;
       expect(nextMargin).assertEqual('5.00vp');
 
       expect(Math.abs(Math.round((swiperTop - swiperbottom)- (3*(top - bottom) -vp2px(5)))) <= 1).assertTrue();
@@ -3111,7 +3109,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0070', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0070', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0070 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -3126,7 +3124,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -3156,8 +3154,8 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let left  =  subcomponment.left;
 
       let strJson = getInspectorByKey('swiperNextPrevMargin50');
-      let obj = JSON.parse(strJson);
-      let nextMargin =  obj.$attrs.nextMargin;
+      let obj: ESObject = JSON.parse(strJson);
+      let nextMargin: string =  obj.$attrs.nextMargin;
       expect(nextMargin).assertEqual('5.00vp');
 
       expect(Math.abs(Math.round((swiperRight - swiperLeft)- (3*(right - left) + vp2px(5)))) <= 1).assertTrue();
@@ -3170,7 +3168,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0071', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0071', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0071 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -3185,7 +3183,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -3215,8 +3213,8 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let bottom  =  subcomponment.bottom;
 
       let strJson = getInspectorByKey('swiperNextPrevMargin50');
-      let obj = JSON.parse(strJson);
-      let nextMargin =  obj.$attrs.nextMargin;
+      let obj: ESObject = JSON.parse(strJson);
+      let nextMargin: string =  obj.$attrs.nextMargin;
       expect(nextMargin).assertEqual('5.00vp');
 
       expect(Math.abs(Math.round((swiperTop - swiperbottom)- (3*(top - bottom) - vp2px(5)))) <= 1).assertTrue();
@@ -3229,7 +3227,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0041', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0041', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0041 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -3244,7 +3242,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -3274,8 +3272,8 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let bottom  =  subcomponment.bottom;
 
       let strJson = getInspectorByKey('swiperNextPrevMargin50');
-      let obj = JSON.parse(strJson);
-      let nextMargin =  obj.$attrs.nextMargin;
+      let obj: ESObject = JSON.parse(strJson);
+      let nextMargin: string =  obj.$attrs.nextMargin;
       expect(nextMargin).assertEqual('5.00vp');
       expect(Math.abs(Math.round((swiperTop - swiperbottom)- (3*(top - bottom) -vp2px(5)))) <= 1).assertTrue();
 
@@ -3292,7 +3290,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
      * @tc.desc  : test swiper width = padding + subcomponentwidth
      * @tc.level : Level 2
      */
-    it('SwiperNextPrevMarginAddJsunit_0040', 0, async function (done) {
+    it('SwiperNextPrevMarginAddJsunit_0040', 0, async (done: Function) => {
       console.info('SwiperNextPrevMarginAddJsunit_0040 START');
       await CommonFunc.sleep(1000);
       ohosrouter.clear();
@@ -3307,7 +3305,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       }).then(() => {
         // success
       })
-        .catch(err => {
+        .catch((err: BusinessError) => {
           console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
         })
       await CommonFunc.sleep(1000);
@@ -3337,8 +3335,8 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let bottom  =  subcomponment.bottom;
 
       let strJson = getInspectorByKey('swiperNextPrevMargin50');
-      let obj = JSON.parse(strJson);
-      let nextMargin =  obj.$attrs.nextMargin;
+      let obj: ESObject = JSON.parse(strJson);
+      let nextMargin: string =  obj.$attrs.nextMargin;
       expect(nextMargin).assertEqual('5.00vp');
       expect(Math.abs(Math.round((swiperTop - swiperbottom)- (3*(top - bottom) -vp2px(5)))) <= 1).assertTrue();
 

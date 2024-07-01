@@ -67,7 +67,7 @@ export default function themePageSliderTest() {
       expect(obj.$attrs.backgroundColor).assertEqual('#00000000');
       expect(obj.$attrs.blockBorderColor).assertEqual('#00000000');
       expect(obj.$attrs.trackColor).assertEqual('#1111FF11');
-      expect(obj.$attrs.selectedColor).assertEqual('#FF007DFF');
+      expect(obj.$attrs.selectedColor).assertEqual('#EEFF00FF');
       console.info('[themeInterfaceIsValidTest_0100] END');
       done();
     });

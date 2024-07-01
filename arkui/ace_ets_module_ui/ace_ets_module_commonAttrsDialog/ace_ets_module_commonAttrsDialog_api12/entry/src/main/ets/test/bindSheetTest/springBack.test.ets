@@ -60,16 +60,15 @@ export default function springBack() {
       await button.click();
       await CommonFunc.sleep(1000);
 
-      let bindSheetButton = CommonFunc.getComponentRect('springBackButton');
-      console.log('bindSheetButton.top: ' + bindSheetButton.top + ' bindSheetButton.bottom: ' + bindSheetButton.bottom 
-      + ' bindSheetButton.right: ' + bindSheetButton.right + ' bindSheetButton.left: ' + bindSheetButton.left )
-      let bindSheetButtonOne = bindSheetButton.right - (bindSheetButton.right - bindSheetButton.left) / 2;
-      let bindSheetButtonTwo = bindSheetButton.bottom - (bindSheetButton.bottom - bindSheetButton.top) / 2;
-      console.log("bindSheetButtonOne " + bindSheetButtonOne + " bindSheetButtonTwo " + bindSheetButtonTwo)
-      await driver.swipe(
-        Math.round(bindSheetButtonOne), Math.round(bindSheetButtonTwo), Math.round(bindSheetButtonOne), Math.round(bindSheetButtonTwo + 800)
-      );
-      await CommonFunc.sleep(1000);
+      let bindSheetButton: Component = await driver.findComponent(ON.id('springBackButton'));
+      let point = await bindSheetButton.getBoundsCenter();
+      console.log("bindSheetButton-X " + point.x + " bindSheetButton-Y " + point.y)
+      let x1 = Math.round(point.x)
+      let y1 = Math.round(point.y)
+      let y2 = Math.round(point.y + vp2px(150))
+      let stepLen = Math.round(vp2px(30))
+      await driver.fling({x: x1, y: y1},{x: x1, y: y2}, stepLen, 3000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('onWillSpringBackWhenDismiss');
       let obj = JSON.parse(strJson);
@@ -90,4 +89,3 @@ export default function springBack() {
 
   })
 }
-

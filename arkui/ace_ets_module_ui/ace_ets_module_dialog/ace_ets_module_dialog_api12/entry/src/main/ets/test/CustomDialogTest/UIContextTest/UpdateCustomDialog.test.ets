@@ -64,6 +64,9 @@ export default function UpdateCustomDialogTest() {
       let UpdateCustomDialog = getInspectorByKey('UpdateCustomDialog');
       console.info('return log-----' + JSON.parse(UpdateCustomDialog).$attrs.content);
       expect(JSON.parse(UpdateCustomDialog).$attrs.content).assertEqual('7');
+      await CommonFunc.sleep(1000);
+      await driver.triggerKey(2070);
+      await CommonFunc.sleep(1000);
       console.info('[UpdateCustomDialogTest_001] END');
       done();
     });

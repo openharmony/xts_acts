@@ -15,9 +15,9 @@
 @Entry
 @Component
 struct bindMenuExample {
-  @State select: boolean = true
-  private iconStr: ResourceStr = $r("app.media.view_list_filled")
-  private iconStr2: ResourceStr = $r("app.media.view_list_filled")
+  @State select: boolean = true;
+  private iconStr: ResourceStr = $r("app.media.view_list_filled");
+  private iconStr2: ResourceStr = $r("app.media.view_list_filled");
 
   @Builder
   SubMenu() {
@@ -28,7 +28,7 @@ struct bindMenuExample {
   }
 
   @Builder
-  MyMenu(){
+  MyMenu() {
     Menu() {
       MenuItem({ startIcon: $r("app.media.icon"), content: "菜单选项" })
       MenuItem({ startIcon: $r("app.media.icon"), content: "菜单选项" })
@@ -37,7 +37,7 @@ struct bindMenuExample {
         startIcon: this.iconStr,
         content: "菜单选项",
         endIcon: $r("app.media.arrow_right_filled"),
-        builder: ():void=>this.SubMenu()
+        builder: (): void => this.SubMenu()
       })
       MenuItemGroup({ header: '小标题' }) {
         MenuItem({ content: "菜单选项" })
@@ -51,9 +51,10 @@ struct bindMenuExample {
           startIcon: $r("app.media.view_list_filled"),
           content: "菜单选项",
           endIcon: $r("app.media.arrow_right_filled"),
-          builder: ():void=>this.SubMenu()
+          builder: (): void => this.SubMenu()
         })
       }
+
       MenuItem({
         startIcon: this.iconStr2,
         content: "菜单选项",

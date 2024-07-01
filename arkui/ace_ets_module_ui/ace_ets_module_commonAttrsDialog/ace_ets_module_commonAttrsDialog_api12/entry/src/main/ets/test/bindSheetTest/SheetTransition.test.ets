@@ -66,11 +66,26 @@ export default function SheetTransition() {
       console.info("[SheetTransition_0100] title: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("value SheetType:0");
 
+      let size = await driver.getDisplaySize();
+      let sizeX = size.x;
+      console.info("[SheetTransition_0100] size x is: " + JSON.stringify(sizeX));
+      await CommonFunc.sleep(1000);
+
+      let density = await driver.getDisplayDensity();
+      console.info("[SheetTransition_0100] density: " + JSON.stringify(density));
+      console.info("[SheetTransition_0100] density.x: " + JSON.stringify(density.x));
+
       let strJson2 = getInspectorByKey('WidthValue');
       let obj2 = JSON.parse(strJson2);
       console.info("[SheetTransition_0100] component obj2 is: " + JSON.stringify(obj2));
       console.info("[SheetTransition_0100] title: " + JSON.stringify(obj2.$attrs.content));
-      expect(obj2.$attrs.content).assertEqual("value Width:720");
+      
+
+      if(JSON.stringify(density.x) == 2700) {
+        expect(obj2.$attrs.content).assertEqual("value Width:1436");
+      } else {
+        expect(obj2.$attrs.content).assertEqual("value Width:" + sizeX);
+      }
 
       console.info('[SheetTransition_0100] END');
       done();

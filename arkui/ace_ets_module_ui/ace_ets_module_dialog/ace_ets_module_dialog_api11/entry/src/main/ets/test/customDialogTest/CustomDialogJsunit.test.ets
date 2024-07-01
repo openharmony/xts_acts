@@ -56,7 +56,8 @@ export default function CustomDialogJsunit() {
       console.info("[CustomDialogJsunit_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual("click me");
       console.info('[CustomDialogJsunit_0100] END');
-	  await driver.pressBack();
+	    await driver.pressBack();
+      await CommonFunc.sleep(3000);
       done();
     });
 

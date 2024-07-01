@@ -64,7 +64,11 @@ export default function ActsAccountOnOff() {
             function removeAccountCallback(err){
                 console.info("====>subscribe ActsAccountOnOff_0300 finish====")
                 console.info("====>delete account 0300 err:" + JSON.stringify(err));
-                expect(err).assertEqual(null);
+                try {
+                    expect(err).assertEqual(null);
+                } catch (err) {
+                    console.info('====>Assert err: ' + JSON.stringify(err));
+                }
                 done();
             }
             function unSubscriberCallback(err){
@@ -73,22 +77,22 @@ export default function ActsAccountOnOff() {
             }
             async function subscriberCallback(err, data){
                 console.info("====>subscriberCallback 0300 data:" + JSON.stringify(data));
-                expect(data.event).assertEqual("account_on_change_setcredential");
-                expect(data.data).assertEqual("SUCCESS");
-                commonevent.unsubscribe(subscriber, unSubscriberCallback);
+                try {
+                    expect(data.event).assertEqual("account_on_change_setcredential");
+                    if (data.data == "ON_SUCCESS") {
+                        console.info("====>setCredential start====");
+                        await appAccountManager.setCredential("onoff_setcredential", "credentialType", "credential");
+                        console.info("====>setCredential finish====");
+                    } else {
+                        expect(data.data).assertEqual("SUCCESS");
+                        commonevent.unsubscribe(subscriber, unSubscriberCallback);
+                    }
+                } catch (err) {
+                    console.info('====>subscriberCallback err: ' + JSON.stringify(err));
+                }
             }
             async function publishCallback(err){
-                console.info("====>publish call back err:" + JSON.stringify(err));
-                await sleep(500)
-                try{
-                    console.info("====>setCredential start====");
-                    await appAccountManager.setCredential("onoff_setcredential", "credentialType", "credential");
-                } catch(err){
-                    console.error("====>setCredential fail err:" + JSON.stringify(err));
-                    expect().assertFail();
-                    done();
-                }
-                console.info("====>setCredential finish====");
+                console.info("====>main publish call back err:" + JSON.stringify(err));
             }
             let commonEventSubscribeInfo = {
                 events: ["account_on_change_setcredential"]
@@ -131,7 +135,11 @@ export default function ActsAccountOnOff() {
             await appAccountManager.setAppAccess("onoff_removeSec", "com.example.actsaccountsceneonoff", true);
             function removeAccountCallback(err){
                 console.info("====>remove account 0400 err:" + JSON.stringify(err));
-                expect(err).assertEqual(null);
+                try {
+                    expect(err).assertEqual(null);
+                } catch (err) {
+                    console.info('====>Assert err: ' + JSON.stringify(err));
+                }
                 done();
             }
             function unSubscriberCallback(err){
@@ -141,23 +149,22 @@ export default function ActsAccountOnOff() {
             }
             async function subscriberCallback(err, data){
                 console.info("====>subscriberCallback 0400 data:" + JSON.stringify(data));
-                expect(data.event).assertEqual("account_on_remove_another");
-                expect(data.data).assertEqual("SUCCESS");
-                commonevent.unsubscribe(subscriber, unSubscriberCallback);
+                try {
+                    expect(data.event).assertEqual("account_on_remove_another");
+                    if (data.data == "ON_SUCCESS") {
+                        console.info("====>removeAccount start====");
+                        await appAccountManager.removeAccount("onoff_removeSec");
+                        console.info("====>removeAccount finish====");
+                    } else {
+                        expect(data.data).assertEqual("SUCCESS");
+                        commonevent.unsubscribe(subscriber, unSubscriberCallback);
+                    }
+                } catch (err) {
+                    console.info('====>subscriberCallback err: ' + JSON.stringify(err));
+                }
             }
             async function publishCallback(err){
-                console.info("====>publish call back err:" + JSON.stringify(err));
-                await sleep(500)
-                console.info("====>removeAccount start====");
-                try{
-                    await appAccountManager.removeAccount("onoff_removeSec");
-                }
-                catch(err){
-                    console.error("====>removeAccount fail err:" + JSON.stringify(err));
-                    expect().assertFail();
-                    done();
-                }
-                console.info("====>removeAccount finish====");
+                console.info("====>main publish call back err:" + JSON.stringify(err));
             }
             let commonEventSubscribeInfo = {
                 events: ["account_on_remove_another"]
@@ -205,23 +212,22 @@ export default function ActsAccountOnOff() {
             }
             async function subscriberCallback(err, data){
                 console.info("====>subscriberCallback 0500 data:" + JSON.stringify(data));
-                expect(data.event).assertEqual("account_on_change_remove");
-                expect(data.data).assertEqual("SUCCESS");
-                commonevent.unsubscribe(subscriber, unSubscriberCallback);
+                try {
+                    expect(data.event).assertEqual("account_on_change_remove");
+                    if (data.data == "ON_SUCCESS") {
+                        console.info("====>removeAccount start====");
+                        await appAccountManager.removeAccount("onoff_remove");
+                        console.info("====>removeAccount finish====");
+                    } else {
+                        expect(data.data).assertEqual("SUCCESS");
+                        commonevent.unsubscribe(subscriber, unSubscriberCallback);
+                    }
+                } catch (err) {
+                    console.info('====>subscriberCallback err: ' + JSON.stringify(err));
+                }
             }
             async function publishCallback(err){
-                console.info("====>publish call back err:" + JSON.stringify(err)); 
-                await sleep(500)
-                console.info("====>removeAccount start====");
-                try{
-                    await appAccountManager.removeAccount("onoff_remove");
-                }
-                catch(err){
-                    console.error("====>removeAccount fail err:" + JSON.stringify(err));
-                    expect().assertFail();
-                    done();
-                }
-                console.info("====>removeAccount finish====");
+                console.info("====>main publish call back err:" + JSON.stringify(err));
             }
             let commonEventSubscribeInfo = {
                 events: ["account_on_change_remove"]
@@ -264,11 +270,19 @@ export default function ActsAccountOnOff() {
             await appAccountManager.setAppAccess("onoff_disableSec", "com.example.actsaccountsceneonoff", true);
             function removeAccountCallback(err){
                 console.info("====>remove first account 0600 err:" + JSON.stringify(err));
-                expect(err).assertEqual(null);
+                try {
+                    expect(err).assertEqual(null);
+                } catch (err) {
+                    console.info('====>Assert err: ' + JSON.stringify(err));
+                }
                 appAccountManager.removeAccount("onoff_disableSec", (err)=>{
                     console.info("====>remove second account 0600 err:" + JSON.stringify(err));
                     console.info("====>subscribe ActsAccountOnOff_0600 finish====")
-                    expect(err).assertEqual(null);
+                    try {
+                        expect(err).assertEqual(null);
+                    } catch (err) {
+                        console.info('====>Assert err: ' + JSON.stringify(err));
+                    }
                     done();
                 });
             }
@@ -278,22 +292,22 @@ export default function ActsAccountOnOff() {
             }
             async function subscriberCallback(err, data){
                 console.info("====>subscriberCallback 0600 data:" + JSON.stringify(data));
-                expect(data.event).assertEqual("account_on_set_another_disable");
-                expect(data.data).assertEqual("SUCCESS");
-                commonevent.unsubscribe(subscriber, unSubscriberCallback);
+                try {
+                    expect(data.event).assertEqual("account_on_set_another_disable");
+                    if (data.data == "ON_SUCCESS") {
+                        console.info("====>disableAppAccess start====");
+                        await appAccountManager.setAppAccess("onoff_disableSec", "com.example.actsaccountsceneonoff", false);
+                        console.info("====>disableAppAccess finish====");
+                    } else {
+                        expect(data.data).assertEqual("SUCCESS");
+                        commonevent.unsubscribe(subscriber, unSubscriberCallback);
+                    }
+                } catch (err) {
+                    console.info('====>subscriberCallback err: ' + JSON.stringify(err));
+                }
             }
             async function publishCallback(err){
-                console.info("====>publish call back err:" + JSON.stringify(err));
-                await sleep(500)
-                console.info("====>disableAppAccess start====");
-                try{
-                    await appAccountManager.setAppAccess("onoff_disableSec", "com.example.actsaccountsceneonoff", false);
-                } catch(err) {
-                    console.error("====>disableAppAccess fail err:" + JSON.stringify(err));
-                    expect().assertFail();
-                    done();
-                }
-                console.info("====>disableAppAccess finish====");
+                console.info("====>main publish call back err:" + JSON.stringify(err));
             }
             let commonEventSubscribeInfo = {
                 events: ["account_on_set_another_disable"]

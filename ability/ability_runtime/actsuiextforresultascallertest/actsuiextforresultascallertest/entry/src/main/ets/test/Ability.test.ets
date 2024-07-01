@@ -18,7 +18,9 @@ import commonEvent from '@ohos.commonEventManager';
 import { BusinessError, Callback } from '@ohos.base';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { getContext } from '../common/getContext';
+import systemParameterEnhance from '@ohos.systemParameterEnhance';
 
+let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 let ACTS_CallFunction: commonEvent.CommonEventSubscribeInfo = {
   events: ['0100', '0200', '0300', '0400', '0500', '0600', '0700', '0800', '0900', '1000', '1100', '1200', '1300',
@@ -203,6 +205,60 @@ export default function abilityTest() {
     })
 
     /*
+     * @tc.number: SUB_Ability_AbilityRuntime_UIExtensionStartAbilityForResultAsCaller_0500
+     * @tc.name: SUB_Ability_AbilityRuntime_UIExtensionStartAbilityForResultAsCaller_0500
+     * @tc.desc: In non-system application, calling the startAbilityForResultAsCaller interface of UIExtensionAbility,
+     * the parameters are valid (want and callback parameters), and the call fails.
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level1
+     */
+    it('SUB_Ability_AbilityRuntime_UIExtensionStartAbilityForResultAsCaller_0500', 0, async (done: Function) => {
+      await sleep(500);
+      let subscriber: commonEvent.CommonEventSubscriber;
+      commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
+        subscriber = data;
+        commonEvent.subscribe(data, subscribeCallBack);
+        abilityDelegator.startAbility({
+          bundleName: 'com.example.uiextensionforresultascallersyspicker',
+          abilityName: 'EntryAbility',
+          parameters: {
+            parameter: 'StartAbilityForResultAsCaller_0500'
+          }
+        }, (err: BusinessError) => {
+          console.info('====>[UIExtensionForResultAsCallerTest] 0500 startAbility err:' + JSON.stringify(err));
+        });
+      });
+
+      let clear = setTimeout(() => {
+        console.info(`====>[UIExtensionForResultAsCallerTest] 0500 setTimeout`);
+        expect().assertFail();
+        done();
+      }, 10000);
+
+      let subscribeCallBack = (err: BusinessError, data: commonEvent.CommonEventData) => {
+        console.info(`====>[UIExtensionForResultAsCallerTest] 0500 subscribeCallBack ACTS_CallFunction  ${data}`);
+        if (data.event == '0500') {
+          console.info(`====>[UIExtensionForResultAsCallerTest] 0500 subscribeCallBack` + JSON.stringify(data))
+          expect(data.parameters?.result).assertEqual(202);
+          commonEvent.unsubscribe(subscriber, unSubscribeCallback);
+        }
+      };
+
+      let unSubscribeCallback = async () => {
+        console.info(`====>[UIExtensionForResultAsCallerTest] 0500 unSubscribeCallback 'ACTS_CALL_EVENT'`);
+        clearTimeout(clear);
+        await abilityDelegator.executeShellCommand('aa force-stop com.example.uiextensionforresultascallerother')
+        .then((result: AbilityDelegatorRegistry.ShellCmdResult) => {
+          console.info('====>[UIExtensionForResultAsCallerUIAbility] 0500 ok' + JSON.stringify(result));
+        }).catch((err: BusinessError) => {
+          console.info('====>[UIExtensionForResultAsCallerUIAbility] 0500 ng' + JSON.stringify(err));
+        })
+        done();
+      };
+    })
+
+    /*
      * @tc.number: SUB_Ability_AbilityRuntime_UIExtensionStartAbilityForResultAsCaller_0600
      * @tc.name: SUB_Ability_AbilityRuntime_UIExtensionStartAbilityForResultAsCaller_0600
      * @tc.desc: The method of implicit startup is used to call the startAbilityForResultAsCaller interface of
@@ -264,6 +320,10 @@ export default function abilityTest() {
      */
     it('SUB_Ability_AbilityRuntime_UIExtensionStartAbilityForResultAsCaller_0700', 0, async (done: Function) => {
       await sleep(500);
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let subscriber: commonEvent.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         subscriber = data;

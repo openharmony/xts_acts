@@ -41,7 +41,7 @@ static auto createChildNode(ArkUI_NativeNodeAPI_1 *nodeAPI, bool enabled)
                                                  sizeof(background_color_value) / sizeof(ArkUI_NumberValue)};
     nodeAPI->setAttribute(nodeHandle, NODE_BACKGROUND_COLOR, &background_color_item);
 
-    nodeAPI->registerNodeEvent(nodeHandle, NODE_ON_FOCUS, ON_BLUR_EVENT_ID, nullptr);
+    nodeAPI->registerNodeEvent(nodeHandle, NODE_ON_BLUR, ON_BLUR_EVENT_ID, nullptr);
     nodeAPI->registerNodeEvent(nodeHandle, NODE_ON_CLICK, ON_CLICK_EVENT_ID, nullptr);
 
     return nodeHandle;

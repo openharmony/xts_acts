@@ -13,21 +13,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.events.emitter'
+import events_emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
 struct ParentComp {
-  @State isCountDown: boolean = true
+  @State isCountDown: boolean = true;
 
   build() {
     Column() {
       Text(this.isCountDown ? 'Count Down' : 'Stopwatch')
       if (this.isCountDown) {
-        Image($rawfile('ic_health_heart.png')).width(50).height(50)
+        Image($rawfile('ic_health_heart.png'))
+          .width(50)
+          .height(50)
         TimerComponent({ counter: 10, changePerSec: -1, showInColor: Color.Red })
       } else {
-        Image($rawfile('ic_health_heart.png')).width(150).height(150)
+        Image($rawfile('ic_health_heart.png'))
+          .width(150)
+          .height(150)
         TimerComponent({ counter: 0, changePerSec: +1, showInColor: Color.Black })
       }
       Button(this.isCountDown ? 'Swtich to Stopwatch' : 'Switch to Count Down')
@@ -41,11 +45,11 @@ struct ParentComp {
 
 @Component
 struct TimerComponent {
-  @State counter: number = 0
-  private changePerSec: number = -1
-  private showInColor: Color = Color.Black
-  private timerId: number = -1
-  @State onActionCalled: boolean = false
+  @State counter: number = 0;
+  private changePerSec: number = -1;
+  private showInColor: Color = Color.Black;
+  private timerId: number = -1;
+  @State onActionCalled: boolean = false;
 
   build() {
     Text(`${this.counter}sec`)
@@ -63,12 +67,12 @@ struct TimerComponent {
       clearTimeout(this.timerId)
       console.info('ting--1');
       try {
-        var backData = {
+        let backData:events_emitter.EventData = {
           data: {
             "ACTION": this.onActionCalled,
           }
         }
-        var backEvent = {
+        let backEvent:events_emitter.InnerEvent = {
           eventId: 49,
           priority: events_emitter.EventPriority.LOW
         }

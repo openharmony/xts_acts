@@ -51,6 +51,148 @@ export default function datePickerTextStyleTest() {
       expect(nativeFunc.testDatePickerTextStyle002()).assertEqual(0)
       done()
     })
-    
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_DATEPICKER_TEXTSTYLE_0300
+     * @tc.name       : testDatePickerTextStyle003
+     * @tc.desc       : testing textStyle for DatePicker with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testDatePickerTextStyle003', 0, async (done: Function) => {
+      expect(nativeFunc.testDatePickerTextStyle003()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_DATEPICKER_TEXTSTYLE_0400
+     * @tc.name       : testDatePickerTextStyle004
+     * @tc.desc       : testing textStyle for DatePicker with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testDatePickerTextStyle004', 0, async (done: Function) => {
+      expect(nativeFunc.testDatePickerTextStyle004()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_DATEPICKER_TEXTSTYLE_0500
+     * @tc.name       : testDatePickerTextStyle005
+     * @tc.desc       : testing textStyle for DatePicker with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testDatePickerTextStyle005', 0, async (done: Function) => {
+      expect(nativeFunc.testDatePickerTextStyle005()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_DATEPICKER_TEXTSTYLE_0600
+     * @tc.name       : testDatePickerTextStyle006
+     * @tc.desc       : testing textStyle for DatePicker with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testDatePickerTextStyle006', 0, async (done: Function) => {
+      expect(nativeFunc.testDatePickerTextStyle006()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_DATEPICKER_TEXTSTYLE_0700
+     * @tc.name       : testDatePickerTextStyle007
+     * @tc.desc       : testing textStyle for DatePicker with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testDatePickerTextStyle007', 0, async (done: Function) => {
+      expect(nativeFunc.testDatePickerTextStyle007()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_DATEPICKER_TEXTSTYLE_0800
+     * @tc.name       : testDatePickerTextStyle008
+     * @tc.desc       : testing textStyle for DatePicker with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testDatePickerTextStyle008', 0, async (done: Function) => {
+      expect(nativeFunc.testDatePickerTextStyle008()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_DATEPICKER_TEXTSTYLE_0900
+     * @tc.name       : testDatePickerTextStyle009
+     * @tc.desc       : testing textStyle for DatePicker with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testDatePickerTextStyle009', 0, async (done: Function) => {
+      expect(nativeFunc.testDatePickerTextStyle009()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_DATEPICKER_TEXTSTYLE_1000
+     * @tc.name       : testDatePickerTextStyle010
+     * @tc.desc       : testing textStyle for DatePicker with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testDatePickerTextStyle010', 0, async (done: Function) => {
+      expect(nativeFunc.testDatePickerTextStyle010()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_DATEPICKER_TEXTSTYLE_1100
+     * @tc.name       : testDatePickerTextStyle011
+     * @tc.desc       : testing textStyle for DatePicker with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testDatePickerTextStyle011', 0, async (done: Function) => {
+      expect(nativeFunc.testDatePickerTextStyle011()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_DATEPICKER_TEXTSTYLE_1200
+     * @tc.name       : testDatePickerTextStyle012
+     * @tc.desc       : testing textStyle for DatePicker with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testDatePickerTextStyle012', 0, async (done: Function) => {
+      expect(nativeFunc.testDatePickerTextStyle012()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_DATEPICKER_TEXTSTYLE_1300
+     * @tc.name       : testDatePickerTextStyle013
+     * @tc.desc       : testing textStyle for DatePicker with normal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 1
+     */
+    it('testDatePickerTextStyle013', 0, async (done: Function) => {
+      expect(nativeFunc.testDatePickerTextStyle013()).assertEqual(0)
+      done()
+    })
   })
 }

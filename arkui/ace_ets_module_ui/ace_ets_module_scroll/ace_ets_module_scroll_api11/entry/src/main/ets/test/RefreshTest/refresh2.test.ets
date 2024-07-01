@@ -61,7 +61,7 @@ export default function refreshDragJsunit() {
         }
         let callback = (eventData: events_emitter.EventData) => {
           console.info("testrefreshDrag0011 get event data is: " + JSON.stringify(eventData));
-          expect(eventData.data.Result).assertEqual(true);
+          expect(eventData.data?.Result).assertEqual(true);
           done();
         }
         console.info("testrefreshDrag0011 click result is: " + JSON.stringify(sendEventByKey('Refresh', 10, "")));
@@ -87,7 +87,7 @@ export default function refreshDragJsunit() {
         }
         let callbackTwo = (eventData: events_emitter.EventData) => {
           console.info("testrefreshRefresh0001 get event data is: " + JSON.stringify(eventData));
-          expect(eventData.data.Result).assertEqual(true);
+          expect(eventData.data?.Result).assertEqual(true);
           done();
         }
         console.info("testrefreshRefresh0001 click result is: " + JSON.stringify(sendEventByKey('Refresh', 10, "")));

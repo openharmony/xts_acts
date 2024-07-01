@@ -23,6 +23,7 @@ import FolderStackTest1 from './FolderStack/FolderStackTest1.test.ets';
 
 import APIremoveGestureByTag from './Column/APIremoveGestureByTag.test'
 import APIaccessibilityTextHint from './Column/APIaccessibilityTextHint.test'
+import FolderStackTest2 from './FolderStack/FolderStackTest2.test.ets';
 
 export default function testsuite() {
   SpaceMainNumberJsunit();
@@ -34,4 +35,5 @@ export default function testsuite() {
   FolderStackTest1();
   APIremoveGestureByTag();
   APIaccessibilityTextHint();
+  FolderStackTest2();
 }

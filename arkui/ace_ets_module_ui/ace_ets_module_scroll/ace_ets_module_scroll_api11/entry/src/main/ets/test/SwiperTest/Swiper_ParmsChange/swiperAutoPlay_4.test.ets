@@ -15,7 +15,7 @@
 
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@ohos.router';
-import CommonFunc, {RectValue} from "../../../MainAbility/common/Common1";
+import CommonFunc, {RectValue} from "../../../MainAbility/common/Common";
 import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton } from '@ohos.UiTest';
 export default function swiperAutoPlay_4() {
   describe('swiperAutoPlayTest',  ()=> {

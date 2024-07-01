@@ -75,65 +75,65 @@ struct TabsExampleThird {
     @State bottomTabBarStyleLabelStyleFontFamilyString: string = '0.00vp'
     @State bottomTabBarStyleLabelStyleFontStyle: FontStyle = FontStyle.Normal
 
-    private stateChangCallBack = (eventData) => {
+    private stateChangCallBack = (eventData: events_emitter.EventData) => {
         console.info("tabs page state change called:" + JSON.stringify(eventData));
         if (eventData != null) {
-            this.barGridAlignMarginNumber = eventData.data.barGridAlignMarginNumber;
-            this.barGridAlignMarginString = eventData.data.barGridAlignMarginString;
-            this.barGridAlignGutterNumber = eventData.data.barGridAlignGutterNumber;
-            this.barGridAlignGutterString = eventData.data.barGridAlignGutterString;
-            this.barGridAlignSmNumber = eventData.data.barGridAlignSmNumber;
-            this.barGridAlignMdNumber = eventData.data.barGridAlignMdNumber;
-            this.barGridAlignLgNumber = eventData.data.barGridAlignLgNumber;
-//            this.barHeightNumber = eventData.data.barHeightNumber;
-            this.barHeightString = eventData.data.barHeightString;
-            this.barModeMode = eventData.data.barModeMode;
-            this.barModeMarginString = eventData.data.barModeMarginString;
-            this.barModeMarginNumber = eventData.data.barModeMarginNumber;
-            this.barModeNonScrollableLayoutStyle = eventData.data.barModeNonScrollableLayoutStyle;
-            this.subTabBarStylePaddingNumber = eventData.data.subTabBarStylePaddingNumber;
-            this.subTabBarStylePaddingString = eventData.data.subTabBarStylePaddingString;
-            this.bottomTabBarStylePaddingNumber = eventData.data.bottomTabBarStylePaddingNumber;
-            this.bottomTabBarStylePaddingString = eventData.data.bottomTabBarStylePaddingString;
-            this.subTabBarStylePaddingTopNumber = eventData.data.subTabBarStylePaddingTopNumber;
-            this.subTabBarStylePaddingBottomNumber = eventData.data.subTabBarStylePaddingBottomNumber;
-            this.subTabBarStylePaddingLeftNumber = eventData.data.subTabBarStylePaddingLeftNumber;
-            this.subTabBarStylePaddingRightNumber = eventData.data.subTabBarStylePaddingRightNumber;
-            this.subTabBarStylePaddingTopString = eventData.data.subTabBarStylePaddingTopString;
-            this.subTabBarStylePaddingBottomString = eventData.data.subTabBarStylePaddingBottomString;
-            this.subTabBarStylePaddingLeftString = eventData.data.subTabBarStylePaddingLeftString;
-            this.subTabBarStylePaddingRightString = eventData.data.subTabBarStylePaddingRightString;
-            this.bottomTabBarStylePaddingTopNumber = eventData.data.bottomTabBarStylePaddingTopNumber;
-            this.bottomTabBarStylePaddingBottomNumber = eventData.data.bottomTabBarStylePaddingBottomNumber;
-            this.bottomTabBarStylePaddingLeftNumber = eventData.data.bottomTabBarStylePaddingLeftNumber;
-            this.bottomTabBarStylePaddingRightNumber = eventData.data.bottomTabBarStylePaddingRightNumber;
-            this.bottomTabBarStylePaddingTopString = eventData.data.bottomTabBarStylePaddingTopString;
-            this.bottomTabBarStylePaddingBottomString = eventData.data.bottomTabBarStylePaddingBottomString;
-            this.bottomTabBarStylePaddingLeftString = eventData.data.bottomTabBarStylePaddingLeftString;
-            this.bottomTabBarStylePaddingRightString = eventData.data.bottomTabBarStylePaddingRightString;
-            this.bottomTabBarStyleVerticalAlign = eventData.data.bottomTabBarStyleVerticalAlign;
-            this.bottomTabBarStyleLayoutMode = eventData.data.bottomTabBarStyleLayoutMode;
-            this.bottomTabBarStyleSymmetricExtensible = eventData.data.bottomTabBarStyleSymmetricExtensible;
+            this.barGridAlignMarginNumber = eventData.data?.barGridAlignMarginNumber;
+            this.barGridAlignMarginString = eventData.data?.barGridAlignMarginString;
+            this.barGridAlignGutterNumber = eventData.data?.barGridAlignGutterNumber;
+            this.barGridAlignGutterString = eventData.data?.barGridAlignGutterString;
+            this.barGridAlignSmNumber = eventData.data?.barGridAlignSmNumber;
+            this.barGridAlignMdNumber = eventData.data?.barGridAlignMdNumber;
+            this.barGridAlignLgNumber = eventData.data?.barGridAlignLgNumber;
+//            this.barHeightNumber = eventData.data?.barHeightNumber;
+            this.barHeightString = eventData.data?.barHeightString;
+            this.barModeMode = eventData.data?.barModeMode;
+            this.barModeMarginString = eventData.data?.barModeMarginString;
+            this.barModeMarginNumber = eventData.data?.barModeMarginNumber;
+            this.barModeNonScrollableLayoutStyle = eventData.data?.barModeNonScrollableLayoutStyle;
+            this.subTabBarStylePaddingNumber = eventData.data?.subTabBarStylePaddingNumber;
+            this.subTabBarStylePaddingString = eventData.data?.subTabBarStylePaddingString;
+            this.bottomTabBarStylePaddingNumber = eventData.data?.bottomTabBarStylePaddingNumber;
+            this.bottomTabBarStylePaddingString = eventData.data?.bottomTabBarStylePaddingString;
+            this.subTabBarStylePaddingTopNumber = eventData.data?.subTabBarStylePaddingTopNumber;
+            this.subTabBarStylePaddingBottomNumber = eventData.data?.subTabBarStylePaddingBottomNumber;
+            this.subTabBarStylePaddingLeftNumber = eventData.data?.subTabBarStylePaddingLeftNumber;
+            this.subTabBarStylePaddingRightNumber = eventData.data?.subTabBarStylePaddingRightNumber;
+            this.subTabBarStylePaddingTopString = eventData.data?.subTabBarStylePaddingTopString;
+            this.subTabBarStylePaddingBottomString = eventData.data?.subTabBarStylePaddingBottomString;
+            this.subTabBarStylePaddingLeftString = eventData.data?.subTabBarStylePaddingLeftString;
+            this.subTabBarStylePaddingRightString = eventData.data?.subTabBarStylePaddingRightString;
+            this.bottomTabBarStylePaddingTopNumber = eventData.data?.bottomTabBarStylePaddingTopNumber;
+            this.bottomTabBarStylePaddingBottomNumber = eventData.data?.bottomTabBarStylePaddingBottomNumber;
+            this.bottomTabBarStylePaddingLeftNumber = eventData.data?.bottomTabBarStylePaddingLeftNumber;
+            this.bottomTabBarStylePaddingRightNumber = eventData.data?.bottomTabBarStylePaddingRightNumber;
+            this.bottomTabBarStylePaddingTopString = eventData.data?.bottomTabBarStylePaddingTopString;
+            this.bottomTabBarStylePaddingBottomString = eventData.data?.bottomTabBarStylePaddingBottomString;
+            this.bottomTabBarStylePaddingLeftString = eventData.data?.bottomTabBarStylePaddingLeftString;
+            this.bottomTabBarStylePaddingRightString = eventData.data?.bottomTabBarStylePaddingRightString;
+            this.bottomTabBarStyleVerticalAlign = eventData.data?.bottomTabBarStyleVerticalAlign;
+            this.bottomTabBarStyleLayoutMode = eventData.data?.bottomTabBarStyleLayoutMode;
+            this.bottomTabBarStyleSymmetricExtensible = eventData.data?.bottomTabBarStyleSymmetricExtensible;
 
-            this.bottomTabBarStyleLabelStyleOverflow = eventData.data.bottomTabBarStyleLabelStyleOverflow;
-            this.bottomTabBarStyleLabelStyleMaxLines = eventData.data.bottomTabBarStyleLabelStyleMaxLines;
-            this.bottomTabBarStyleLabelStyleMinFontSizeNumber = eventData.data.bottomTabBarStyleLabelStyleMinFontSizeNumber;
-            this.bottomTabBarStyleLabelStyleMinFontSizeString = eventData.data.bottomTabBarStyleLabelStyleMinFontSizeString;
-            this.bottomTabBarStyleLabelStyleMaxFontSizeNumber = eventData.data.bottomTabBarStyleLabelStyleMaxFontSizeNumber;
-            this.bottomTabBarStyleLabelStyleMaxFontSizeString = eventData.data.bottomTabBarStyleLabelStyleMaxFontSizeString;
-            this.bottomTabBarStyleLabelStyleHeightAdaptivePolicy = eventData.data.bottomTabBarStyleLabelStyleHeightAdaptivePolicy;
-            this.bottomTabBarStyleLabelStyleFontSizeNumber = eventData.data.bottomTabBarStyleLabelStyleFontSizeNumber;
-            this.bottomTabBarStyleLabelStyleFontSizeString = eventData.data.bottomTabBarStyleLabelStyleFontSizeString;
-            this.bottomTabBarStyleLabelStyleFontWeight = eventData.data.bottomTabBarStyleLabelStyleFontWeight;
-            this.bottomTabBarStyleLabelStyleFontWeightNumber = eventData.data.bottomTabBarStyleLabelStyleFontWeightNumber;
-            this.bottomTabBarStyleLabelStyleFontWeightString = eventData.data.bottomTabBarStyleLabelStyleFontWeightString;
-            this.bottomTabBarStyleLabelStyleFontFamilyString = eventData.data.bottomTabBarStyleLabelStyleFontFamilyString;
-            this.bottomTabBarStyleLabelStyleFontStyle = eventData.data.bottomTabBarStyleLabelStyleFontStyle
+            this.bottomTabBarStyleLabelStyleOverflow = eventData.data?.bottomTabBarStyleLabelStyleOverflow;
+            this.bottomTabBarStyleLabelStyleMaxLines = eventData.data?.bottomTabBarStyleLabelStyleMaxLines;
+            this.bottomTabBarStyleLabelStyleMinFontSizeNumber = eventData.data?.bottomTabBarStyleLabelStyleMinFontSizeNumber;
+            this.bottomTabBarStyleLabelStyleMinFontSizeString = eventData.data?.bottomTabBarStyleLabelStyleMinFontSizeString;
+            this.bottomTabBarStyleLabelStyleMaxFontSizeNumber = eventData.data?.bottomTabBarStyleLabelStyleMaxFontSizeNumber;
+            this.bottomTabBarStyleLabelStyleMaxFontSizeString = eventData.data?.bottomTabBarStyleLabelStyleMaxFontSizeString;
+            this.bottomTabBarStyleLabelStyleHeightAdaptivePolicy = eventData.data?.bottomTabBarStyleLabelStyleHeightAdaptivePolicy;
+            this.bottomTabBarStyleLabelStyleFontSizeNumber = eventData.data?.bottomTabBarStyleLabelStyleFontSizeNumber;
+            this.bottomTabBarStyleLabelStyleFontSizeString = eventData.data?.bottomTabBarStyleLabelStyleFontSizeString;
+            this.bottomTabBarStyleLabelStyleFontWeight = eventData.data?.bottomTabBarStyleLabelStyleFontWeight;
+            this.bottomTabBarStyleLabelStyleFontWeightNumber = eventData.data?.bottomTabBarStyleLabelStyleFontWeightNumber;
+            this.bottomTabBarStyleLabelStyleFontWeightString = eventData.data?.bottomTabBarStyleLabelStyleFontWeightString;
+            this.bottomTabBarStyleLabelStyleFontFamilyString = eventData.data?.bottomTabBarStyleLabelStyleFontFamilyString;
+            this.bottomTabBarStyleLabelStyleFontStyle = eventData.data?.bottomTabBarStyleLabelStyleFontStyle
         }
     }
 
     aboutToAppear(){
-        var stateChangeEvent = {
+        let stateChangeEvent: events_emitter.InnerEvent = {
             eventId: 183,
             priority: events_emitter.EventPriority.LOW
         }

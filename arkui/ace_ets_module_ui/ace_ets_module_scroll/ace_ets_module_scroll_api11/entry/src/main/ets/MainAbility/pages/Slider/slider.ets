@@ -47,7 +47,7 @@ struct SliderExample {
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback:Callback = (message: ESObject) => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'vInSetValueOne') {
           this.vInSetValueOne = message.value

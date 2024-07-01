@@ -16,9 +16,11 @@ import webViewSdkSchemeHandler from './webViewSdkSchemeHandler.test';
 import webViewSetConnectionTimeout from './webViewSetConnectionTimeout.test';
 import webViewGetAndSetRenderProcessMode from './webViewGetAndSetRenderProcessMode.test';
 import webViewOnNavigationEntryCommitted from './webViewOnNavigationEntryCommitted.test';
+import webViewIncognitoMode from './webViewIncognitoMode.test';
 export default function testsuite() {
   webViewSdkSchemeHandler()
   webViewSetConnectionTimeout()
   webViewGetAndSetRenderProcessMode()
   webViewOnNavigationEntryCommitted()
+  webViewIncognitoMode()
 }

@@ -65,6 +65,9 @@ export default function openCustomDialogTest() {
       await CommonFunc.sleep(1000);
       console.info('return log-----' + JSON.parse(OpenCustomDialog).$attrs.content);
       expect(JSON.parse(OpenCustomDialog).$attrs.content).assertEqual('OpenCustomDialog');
+      await CommonFunc.sleep(1000);
+      await driver.triggerKey(2070);
+      await CommonFunc.sleep(1000);
       console.info('[openCustomDialogTest_001] END');
       done();
     });

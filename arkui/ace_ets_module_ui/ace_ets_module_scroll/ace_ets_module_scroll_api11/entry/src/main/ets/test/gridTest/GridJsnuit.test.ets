@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 
 function sleep(time: number) {
   return new Promise((resolve: (value: string) => void) => {
@@ -30,8 +30,8 @@ export default function gridJsunit1() {
 
   describe('gridTest', () => {
     beforeEach(async () => {
-      let options = {
-        uri: 'MainAbility/pages/grid/Grid',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/grid/Grid',
       }
       try {
         router.clear();

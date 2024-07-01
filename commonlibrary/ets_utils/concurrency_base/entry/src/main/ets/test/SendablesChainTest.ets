@@ -17,7 +17,7 @@ import { check } from './utils';
 import { DataChainedPath0, DataChainedPath1, DataChainedPath2 } from './SendablesChainTestImport3';
 import { extractDataJob, taskDataFunction0, taskDataFunction2 } from './SendablesChainTestImport2';
 
-/// TESTS IMPLEMENTATION ///
+// TESTS IMPLEMENTATION //
 
 export function testChainedPath0(): Promise<string> {
   let p = testChainedPath0Impl();

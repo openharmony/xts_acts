@@ -12,13 +12,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-// @ts-nocheck
 import events_emitter from '@ohos.events.emitter';
+
+class MyDataSourceSwiper implements IDataSource {
+  private list: number[] = []
+
+  constructor(list: number[]) {
+    this.list = list
+  }
+
+  totalCount(): number {
+    return this.list.length
+  }
+
+  getData(index: number): number {
+    return this.list[index]
+  }
+
+  registerDataChangeListener(listener: DataChangeListener): void {
+  }
+
+  unregisterDataChangeListener() {
+  }
+}
 
 @Entry
 @Component
 struct SwiperExample3 {
   private swiperController: SwiperController = new SwiperController()
+  private data: MyDataSourceSwiper = new MyDataSourceSwiper([])
   @State isHoverShow: boolean = false
   @State isTrue: boolean = true
   @State isArrow: boolean = true
@@ -30,6 +52,7 @@ struct SwiperExample3 {
   @State boolIsNull: boolean = false
   @State boolNum: number = 2
   @State boolStr: string = ''
+  @State indicator: boolean = true
   private colorList: ESObject = [
     { cardId: 1, color: Color.White },
     { cardId: 2, color: Color.Yellow },
@@ -44,43 +67,43 @@ struct SwiperExample3 {
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
     console.info("key==> page valueChangeCallBack");
     console.info("valueChangeCallBack eventData:" + JSON.stringify(eventData));
-    console.info("valueChangeCallBack eventData.data.type:" + JSON.stringify(eventData.data.type));
+    console.info("valueChangeCallBack eventData.data?.type:" + JSON.stringify(eventData.data?.type));
     if (eventData != null) {
-      if (eventData.data.type == undefined) {
-        this.arrowStyle = JSON.parse(eventData.data.arrowStyle)
+      if (eventData.data?.type == undefined) {
+        this.arrowStyle = JSON.parse(eventData.data?.arrowStyle)
       }
-      if (eventData.data.type == "BoolTrue") {
+      if (eventData.data?.type == "BoolTrue") {
         console.info("valueChangeCallBack BoolTrue:" + JSON.stringify(eventData));
         this.boolFlag = true
         this.bool = true
         console.info("valueChangeCallBack this.bool:" + JSON.stringify(this.bool));
       }
-      if (eventData.data.type == "BoolFalse") {
+      if (eventData.data?.type == "BoolFalse") {
         console.info("valueChangeCallBack BoolFalse:" + JSON.stringify(eventData));
         this.boolFlag = true
         this.bool = false
       }
-      if (eventData.data.type == "BoolErrNum") {
+      if (eventData.data?.type == "BoolErrNum") {
         console.info("valueChangeCallBack BoolErrNum:" + JSON.stringify(eventData));
         this.boolFlag = false
         this.boolIsNum = true
-        this.boolNum = Number(eventData.data.displayArrow)
+        this.boolNum = Number(eventData.data?.displayArrow)
       }
-      if (eventData.data.type == "BoolErrStr") {
+      if (eventData.data?.type == "BoolErrStr") {
         console.info("valueChangeCallBack BoolErrStr:" + JSON.stringify(eventData));
         this.boolFlag = false
         this.boolIsNum = false
         this.boolIsStr = true
-        this.boolStr = eventData.data.displayArrow
+        this.boolStr = eventData.data?.displayArrow
       }
-      if (eventData.data.type == "BoolErrNull") {
+      if (eventData.data?.type == "BoolErrNull") {
         console.info("valueChangeCallBack BoolErrNull:" + JSON.stringify(eventData));
         this.boolFlag = false
         this.boolIsNum = false
         this.boolIsStr = false
         this.boolIsNull = true
       }
-      if (eventData.data.type == "BoolErrUndefined") {
+      if (eventData.data?.type == "BoolErrUndefined") {
         console.info("valueChangeCallBack BoolErrUndefined:" + JSON.stringify(eventData));
         this.boolFlag = false
         this.boolIsNum = false
@@ -128,7 +151,7 @@ struct SwiperExample3 {
 
       Column() {
         Swiper(this.swiperController) {
-          ForEach(this.colorList, (item, index) => {
+          ForEach(this.colorList, (item: ESObject, index) => {
             Text("第" + (item.cardId).toString() + "页")
               .width('90%')
               .height(160)
@@ -147,13 +170,13 @@ struct SwiperExample3 {
         .onChange((index: number) => {
           console.info(index.toString())
         })
-        .displayArrow((this.boolFlag ? this.bool : (this.boolIsNum ? this.boolNum :
-          (this.boolIsStr ? this.boolStr : (this.boolIsNull ? null : undefined)))), true)
+        .displayArrow((this.boolFlag ? this.bool : (this.boolIsNum ? !!this.boolNum :
+          (this.boolIsStr ? (this.boolStr == "true") : (this.boolIsNull ? null : undefined)))), true)
       }
 
       Column() {
         Swiper(this.swiperController) {
-          ForEach(this.colorList, (item, index) => {
+          ForEach(this.colorList, (item: ESObject, index) => {
             Text("第" + (item.cardId).toString() + "页")
               .width('90%')
               .height(160)
@@ -172,13 +195,13 @@ struct SwiperExample3 {
         .onChange((index: number) => {
           console.info(index.toString())
         })
-        .displayArrow(true, (this.boolFlag ? this.bool : (this.boolIsNum ? this.boolNum :
-          (this.boolIsStr ? this.boolStr : (this.boolIsNull ? null : undefined)))))
+        .displayArrow(true, (this.boolFlag ? this.bool : (this.boolIsNum ? !!this.boolNum :
+          (this.boolIsStr ? (this.boolStr == "true") : (this.boolIsNull ? null : undefined)))))
       }
 
       Column() {
         Swiper(this.swiperController) {
-          ForEach(this.colorList, (item, index) => {
+          ForEach(this.colorList, (item: ESObject, index) => {
             Text("第" + (item.cardId).toString() + "页")
               .width('90%')
               .height(160)
@@ -197,8 +220,8 @@ struct SwiperExample3 {
         .onChange((index: number) => {
           console.info(index.toString())
         })
-        .displayArrow(true, (this.boolFlag ? this.bool : (this.boolIsNum ? this.boolNum :
-          (this.boolIsStr ? this.boolStr : (this.boolIsNull ? null : undefined)))))
+        .displayArrow(true, (this.boolFlag ? this.bool : (this.boolIsNum ? !!this.boolNum :
+          (this.boolIsStr ? (this.boolStr == "true") : (this.boolIsNull ? null : undefined)))))
 
       }
 

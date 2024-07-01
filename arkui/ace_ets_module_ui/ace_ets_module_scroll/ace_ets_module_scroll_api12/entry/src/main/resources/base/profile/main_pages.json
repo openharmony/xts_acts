@@ -15,6 +15,9 @@
         "MainAbility/pages/List/listSwipeActionApi12",
         "MainAbility/pages/Scroll/ScrollSourceOther",
         "MainAbility/pages/Scroll/ScrollSource",
-        "MainAbility/pages/Scroll/offsetRemain"
+        "MainAbility/pages/Scroll/offsetRemain",
+
+        "MainAbility/pages/Tabs/TabsAp1",
+        "MainAbility/pages/Scroll/ScrollApi1"
     ]
 }

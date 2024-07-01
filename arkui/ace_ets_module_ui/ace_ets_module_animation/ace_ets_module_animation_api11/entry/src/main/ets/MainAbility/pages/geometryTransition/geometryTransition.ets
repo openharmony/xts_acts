@@ -13,11 +13,10 @@
  * limitations under the License.
  */
 
-
 @Entry
 @Component
 struct geometryTransitionExample {
-  @State isShow: boolean = false
+  @State isShow: boolean = false;
 
   build() {
     Stack({ alignContent: Alignment.Center }) {
@@ -30,14 +29,18 @@ struct geometryTransitionExample {
           .offset({ y: 100 })
           .geometryTransition("picture", {
             follow: true
-          }).key('geometry_follow_2')
+          })
+          .key('geometry_follow_2')
           .transition(TransitionEffect.OPACITY)
       } else {
         Column() {
           Column() {
             Image($r('app.media.icon'))
-              .width('100%').height('100%')
-          }.width('100%').height('100%')
+              .width('100%')
+              .height('100%')
+          }
+          .width('100%')
+          .height('100%')
         }
         .width(80)
         .height(80)
@@ -45,7 +48,8 @@ struct geometryTransitionExample {
         .clip(true)
         .geometryTransition("picture", {
           follow: true
-        }).key('geometry_follow_1')
+        })
+        .key('geometry_follow_1')
         .transition(TransitionEffect.OPACITY)
       }
     }

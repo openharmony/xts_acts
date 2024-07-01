@@ -14,8 +14,10 @@
  */
 import graphicDrawingFontInterfaceTest from './graphicDrawingFontInterface.test'
 import RunMetricsTest from './RunMetricsTest.test'
+import drawingCodeTest from './drawingCodeTest.test'
 
 export default function testsuite() {
   graphicDrawingFontInterfaceTest()
   RunMetricsTest()
+  drawingCodeTest()
 }

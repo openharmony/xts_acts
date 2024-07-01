@@ -65,5 +65,30 @@ export default function toggleSelectedColorTest() {
       done()
     })
 
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_TOGGLE_SELECTEDCOLOR_0400
+     * @tc.name       : testToggleSelectedColor004
+     * @tc.desc       : testing selectedColor for toggle with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testToggleSelectedColor004', 0, async (done: Function) => {
+      expect(nativeFunc.testToggleSelectedColor004()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_TOGGLE_SELECTEDCOLOR_0500
+     * @tc.name       : testToggleSelectedColor005
+     * @tc.desc       : testing selectedColor for toggle with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testToggleSelectedColor005', 0, async (done: Function) => {
+      expect(nativeFunc.testToggleSelectedColor005()).assertEqual(0)
+      done()
+    })
   })
 }

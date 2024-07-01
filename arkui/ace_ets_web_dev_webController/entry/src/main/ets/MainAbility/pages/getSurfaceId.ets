@@ -30,6 +30,12 @@ struct getSurfaceId {
   controller: web_webview.WebviewController = new web_webview.WebviewController();
   @State imagePixelMap: image.PixelMap | undefined = undefined;
   urltrustList: string = "{\"UrlPermissionList\":[{\"host\":\"www.example.com\"}]}"
+  urltrustListTwo: string = "{\"UrlPermissionList\":[{\"scheme\":\"http\", \"host\":\"www.test.com\", \"port\":80, \"path\":\"test\"}]}"
+  urltrustListThree: string = "{\"UrlPermissionList\":[{\"scheme\":\"https\", \"host\":\"www.163.com\", \"port\":443, \"path\":\"test\"}]}"
+  urltrustListFour: string = "{\"UrlPermissionList\":[{\"scheme\":\"https\", \"host\":\"www.163.com\", \"port\":443, \"path\":\"test\"},{\"scheme\":\"http\", \"host\":\"www.163.com\", \"port\":80, \"path\":\"test\"}]}"
+
+
+  
 
 
   onPageShow(){
@@ -61,12 +67,13 @@ struct getSurfaceId {
                 let surfaceId = this.controller.getSurfaceId();
                 console.log("surfaceId: " + surfaceId);
                 if(surfaceId.length != 0) {
-                  let region:image.Region = { x: 0, y: 0, size: { height: 800, width: 1000}}
-                  this.imagePixelMap = image.createPixelMapFromSurfaceSync(surfaceId, region) 
                   Utils.emitEvent(true, 28930)
+                } else{
+                  Utils.emitEvent(false, 28930)
                 }
               } catch (error) {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                Utils.emitEvent(false, 28930)
               }
               break;
             }
@@ -103,6 +110,81 @@ struct getSurfaceId {
               }
               break;
             }
+            case "emitSetUrlTrustList0300": {
+              try {
+                this.controller.clearMatches();
+                this.controller.setUrlTrustList(this.urltrustListTwo);
+                await Utils.sleep(2000);
+                this.controller.loadUrl('https://www.test.com/test');
+                await Utils.sleep(2000);
+                this.checkResult = 3;
+                await Utils.sleep(2000);
+                this.controller.searchAllAsync('返回');
+              } catch (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+              break;
+            }
+            case "emitSetUrlTrustList0400": {
+              try {
+                this.controller.clearMatches();
+                this.controller.setUrlTrustList(this.urltrustListThree);
+                await Utils.sleep(2000);
+                this.controller.loadUrl('http://www.163.com/test');
+                await Utils.sleep(2000);
+                this.checkResult = 4;
+                await Utils.sleep(2000);
+                this.controller.searchAllAsync('返回');
+              } catch (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+              break;
+            }
+            case "emitSetUrlTrustList0500": {
+              try {
+                this.controller.clearMatches();
+                this.controller.setUrlTrustList(this.urltrustListFour);
+                await Utils.sleep(2000);
+                this.controller.loadUrl('http://www.163.com/test');
+                await Utils.sleep(2000);
+                this.checkResult = 5;
+                await Utils.sleep(2000);
+                this.controller.searchAllAsync('网易首页');
+              } catch (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+              break;
+            }
+            case "emitSetUrlTrustList0600": {
+              try {
+                this.controller.clearMatches();
+                this.controller.setUrlTrustList(this.urltrustListFour);
+                await Utils.sleep(2000);
+                this.controller.loadUrl('https://www.163.com/test');
+                await Utils.sleep(2000);
+                this.checkResult = 6;
+                await Utils.sleep(2000);
+                this.controller.searchAllAsync('网易首页');
+              } catch (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+              break;
+            }
+            case "emitSetUrlTrustList0700": {
+              try {
+                this.controller.clearMatches();
+                this.controller.setUrlTrustList(this.urltrustListThree);
+                await Utils.sleep(2000);
+                this.controller.loadUrl('https://163.com/test');
+                await Utils.sleep(2000);
+                this.checkResult = 7;
+                await Utils.sleep(2000);
+                this.controller.searchAllAsync('返回');
+              } catch (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+              break;
+            }
           }
         })
         Image(this.imagePixelMap)
@@ -115,13 +197,38 @@ struct getSurfaceId {
             console.log("on search result receive:" + "[cur]" + ret.activeMatchOrdinal +
               "[total]" + ret.numberOfMatches + "[isDone]" + ret.isDoneCounting);
             if(this.checkResult == 1) {
-              console.log('checkone')
+              console.log('check1')
               Utils.emitEvent(ret.numberOfMatches, 28931)
               this.checkResult = 0;
             }
             if(this.checkResult == 2) {
-              console.log('checktwo')
+              console.log('check2')
               Utils.emitEvent(ret.numberOfMatches, 28932)
+              this.checkResult = 0;
+            }
+            if(this.checkResult == 3) {
+              console.log('check3')
+              Utils.emitEvent(ret.numberOfMatches, 28933)
+              this.checkResult = 0;
+            }
+            if(this.checkResult == 4) {
+              console.log('check4')
+              Utils.emitEvent(ret.numberOfMatches, 28934)
+              this.checkResult = 0;
+            }
+            if(this.checkResult == 5) {
+              console.log('check5')
+              Utils.emitEvent(ret.numberOfMatches, 28935)
+              this.checkResult = 0;
+            }
+            if(this.checkResult == 6) {
+              console.log('check6')
+              Utils.emitEvent(ret.numberOfMatches, 28936)
+              this.checkResult = 0;
+            }
+            if(this.checkResult == 7) {
+              console.log('check7')
+              Utils.emitEvent(ret.numberOfMatches, 28937)
               this.checkResult = 0;
             }
           }

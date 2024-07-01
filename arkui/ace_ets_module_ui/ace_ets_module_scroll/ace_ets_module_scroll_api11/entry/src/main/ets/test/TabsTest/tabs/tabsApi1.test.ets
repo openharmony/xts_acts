@@ -14,14 +14,14 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/utils/Common';
+import CommonFunc from '../../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function tabsApi1() {
-  describe('tabsApi1', function () {
-    beforeEach(async function (done) {
+  describe('tabsApi1', () => {
+    beforeEach(async (done: Function) => {
       console.info("tabsApi1 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Tabs/tabs/tabsApi1',
       }
       try {
@@ -40,7 +40,7 @@ export default function tabsApi1() {
       console.info("tabsApi1 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("tabsApi1 after each called");
     });
@@ -50,9 +50,9 @@ export default function tabsApi1() {
      * @tc.desc      set api
      * @tc.level     Level 2
      * @tc.type
-    * @tc.size
+    * @tc.sizeace_ets_module_scroll/ace_ets_module_scroll_api11/entry/src/main/ets/test/ScrollTest/Scroll.test.ets:61:11
      */
-    it('tabsApi1_0100', 0, async function (done) {
+    it('tabsApi1_0100', 0, async (done: Function) => {
       console.info('[tabsApi1_0100] START');
       await CommonFunc.sleep(2000);
 
@@ -64,7 +64,7 @@ export default function tabsApi1() {
       await CommonFunc.sleep(1000);
 
       let text1 = getInspectorByKey('tabsApi1_text1');
-      let Obj1 = JSON.parse(text1);
+      let Obj1: ESObject = JSON.parse(text1);
       expect(Obj1.$attrs.content).assertEqual('222');
 
       console.info('[testRichEditor_0100] END');

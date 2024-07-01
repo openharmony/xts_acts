@@ -22,6 +22,13 @@ struct getContextMenuControllerExample {
 
   @Builder MenuBuilder() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Button("启动定时器").id("getContextClose").onClick(()=>
+      {
+        this.state = 'getContextMenuController close success'
+        setTimeout(() => {
+          this.menu.close();
+        }, 10000);
+      })
       Button('Test ContextMenu1 Close')
       Divider().strokeWidth(2).margin(5).color(Color.Black)
       Button('Test ContextMenu2')
@@ -35,13 +42,6 @@ struct getContextMenuControllerExample {
   build() {
     Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Text(this.state).margin(30).id("getContext")
-      Button("启动定时器").id("getContextClose").onClick(()=>
-      {
-        this.state = 'getContextMenuController close success'
-        setTimeout(() => {
-          this.menu.close();
-        }, 10000);
-      })
 
       Column() {
         Text("Test ContextMenu close")

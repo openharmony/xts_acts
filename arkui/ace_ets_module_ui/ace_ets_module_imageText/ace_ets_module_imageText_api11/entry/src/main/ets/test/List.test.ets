@@ -361,7 +361,6 @@ export default function testsuite() {
   textAreaUIJsunit();
   textArea_top();
   textArea_center();
-  textArea_bottom();
   textAreaBC1Jsunit();
   textAenEnabledJsunit();
   imageOneJsunit();
@@ -424,4 +423,5 @@ export default function testsuite() {
   textInputJsunit3();
   textObscuredTest();
   textSpanFontTest();
+  textArea_bottom();
 }

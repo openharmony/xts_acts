@@ -109,6 +109,7 @@ struct themeSliderPage {
           Divider()
           Text('track').fontSize(9).fontColor(0xCCCCCC).margin(15).width('90%')
           Slider({ style: SliderStyle.InSet, value: 40 })
+            .selectedColor("#EEFF00FF")
             .trackBorderRadius(2).key('sliderBg')
           Divider()
         }

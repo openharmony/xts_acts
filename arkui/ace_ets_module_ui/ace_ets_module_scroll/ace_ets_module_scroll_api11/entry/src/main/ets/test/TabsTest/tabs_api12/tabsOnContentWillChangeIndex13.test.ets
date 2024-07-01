@@ -19,8 +19,8 @@ import CommonFunc from '../../../MainAbility/common/Common';
 import { Driver, ON } from '@ohos.UiTest';
 
 export default function tabsOnContentWillChangeIndex13JsunitTest() {
-  describe('tabsOnContentWillChangeIndex13JsunitTest', function () {
-    beforeEach(async function (done) {
+  describe('tabsOnContentWillChangeIndex13JsunitTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("tabsOnContentWillChangeIndex13JsunitTest beforeEach start");
       try {
         router.clear();
@@ -38,7 +38,7 @@ export default function tabsOnContentWillChangeIndex13JsunitTest() {
       console.info("tabsOnContentWillChangeIndex13JsunitTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("tabsOnContentWillChangeIndex13JsunitTest after each called");
     });
@@ -51,7 +51,7 @@ export default function tabsOnContentWillChangeIndex13JsunitTest() {
      * @tc.level  3
      */
 
-    it('tabsOnContentWillChangeJsunitTest_0130', 0, async function (done) {
+    it('tabsOnContentWillChangeJsunitTest_0130', 0, async (done: Function) => {
       console.info('tabsOnContentWillChangeJsunitTest_0130 START');
       let driver = Driver.create();
       // get the content rect value

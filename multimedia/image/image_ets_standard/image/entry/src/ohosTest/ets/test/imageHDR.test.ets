@@ -75,6 +75,8 @@ export default function imageHDR() {
           };
           imageSourceApi.createPixelMap(decodingOption).then(pixelmap => {
             globalpixelmap = pixelmap;
+            let tempPixelmap = pixelmap
+            tempPixelmap.toSdr();
             console.info('case01 success');
             expect(pixelmap != undefined).assertTrue();
             pixelmap.getImageInfo().then(async(info) =>{
@@ -111,8 +113,8 @@ export default function imageHDR() {
           };
           imageSourceApi.createPixelMap(decodingOption).then(pixelmap => {
             globalpixelmap = pixelmap;
-            // let tempPixelmap = pixelmap
-            // tempPixelmap.toSdr();
+            let tempPixelmap = pixelmap
+            tempPixelmap.toSdr();
             console.info('case02 success');
             expect(pixelmap != undefined).assertTrue();
             pixelmap.getImageInfo().then(async(info) =>{

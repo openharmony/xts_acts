@@ -34,11 +34,11 @@ struct GridMaxCount {
     Log.showInfo(TAG, `aboutToDisAppear GridMaxCount end`)
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("grid page state change called:" + JSON.stringify(eventData));
     if (eventData != null) {
-      if (eventData.data.alwaysEnabled != null) {
-        this.alwaysEnabled = eventData.data.alwaysEnabled;
+      if (eventData.data?.alwaysEnabled != null) {
+        this.alwaysEnabled = eventData.data?.alwaysEnabled;
       }
     }
   }

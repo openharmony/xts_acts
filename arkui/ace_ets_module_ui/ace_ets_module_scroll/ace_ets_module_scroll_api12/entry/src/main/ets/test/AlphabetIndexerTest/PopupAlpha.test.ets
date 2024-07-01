@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 export default function PopupAlphaTest() {
-  describe('PopupAlphaTest', function () {
-    beforeEach(async function (done) {
+  describe('PopupAlphaTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("PopupAlphaTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/AlphabetIndexer/PopupAlpha',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/AlphabetIndexer/PopupAlpha',
       }
       try {
         router.clear();
@@ -48,11 +48,11 @@ export default function PopupAlphaTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('PopupAlphaTest_0100', 0, async function (done) {
+    it('PopupAlphaTest_0100', 0, async (done: Function) => {
       console.info('PopupAlphaTest_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('PopupAlpha_1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PopupAlphaTest_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.popupItemBorderRadius).assertEqual('24.00vp');
       console.info('[PopupAlphaTest_0100] END');
@@ -66,11 +66,11 @@ export default function PopupAlphaTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('PopupAlphaTest_0200', 0, async function (done) {
+    it('PopupAlphaTest_0200', 0, async (done: Function) => {
       console.info('PopupAlphaTest_0200 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('PopupAlpha_1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PopupAlphaTest_0200] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.itemBorderRadius).assertEqual('14.00vp');
       console.info('[PopupAlphaTest_0200] END');
@@ -84,11 +84,11 @@ export default function PopupAlphaTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('PopupAlphaTest_0300', 0, async function (done) {
+    it('PopupAlphaTest_0300', 0, async (done: Function) => {
       console.info('PopupAlphaTest_0300 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('PopupAlpha_1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PopupAlphaTest_0300] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.popupBackgroundBlurStyle).assertEqual('BlurStyle.NONE');
       console.info('[PopupAlphaTest_0300] END');
@@ -102,11 +102,11 @@ export default function PopupAlphaTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('PopupAlphaTest_0400', 0, async function (done) {
+    it('PopupAlphaTest_0400', 0, async (done: Function) => {
       console.info('PopupAlphaTest_0400 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('PopupAlpha_1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PopupAlphaTest_0300] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.popupTitleBackground).assertEqual('#FFCCCCCC');
       console.info('[PopupAlphaTest_0300] END');

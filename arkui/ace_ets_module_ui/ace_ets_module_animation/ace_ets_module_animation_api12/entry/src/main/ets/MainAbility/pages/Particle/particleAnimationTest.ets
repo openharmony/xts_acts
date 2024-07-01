@@ -1,4 +1,3 @@
-
 /*
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +19,9 @@ struct ParticleExample {
   build() {
     Stack() {
       Text()
-        .width(300).height(300).backgroundColor(Color.Black)
+        .width(300)
+        .height(300)
+        .backgroundColor(Color.Black)
       Particle({ particles: [
         {
           emitter: {
@@ -38,7 +39,7 @@ struct ParticleExample {
           },
           color: {
             range: [Color.Red, Color.Yellow], //初始颜色范围
-            distributionType:DistributionType.UNIFORM,
+            distributionType: DistributionType.UNIFORM,
             updater: {
               type: ParticleUpdater.CURVE, //变化方式为曲线变化
               config: [
@@ -148,7 +149,7 @@ struct ParticleExample {
           },
           color: {
             range: [Color.Red, Color.Yellow], //初始颜色范围
-            distributionType:DistributionType.GAUSSIAN,
+            distributionType: DistributionType.GAUSSIAN,
             updater: {
               type: ParticleUpdater.CURVE, //变化方式为曲线变化
               config: [
@@ -240,7 +241,6 @@ struct ParticleExample {
         noiseFrequency: 15,
         noiseAmplitude: 5,
       }]).margin(10)
-
 
 
     }.width("100%").height("100%").align(Alignment.Center)

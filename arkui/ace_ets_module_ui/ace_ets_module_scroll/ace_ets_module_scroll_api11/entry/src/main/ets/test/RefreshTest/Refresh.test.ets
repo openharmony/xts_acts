@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from "../../MainAbility/common/Common";
 
 export default function RefreshTest() {
   describe('RefreshTest', () => {
-    beforeEach(async function (done) {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Refresh/refreshux',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Refresh/refreshux',
       }
       try {
         router.clear();
@@ -46,14 +46,14 @@ export default function RefreshTest() {
       *@tc.name   Support modifying the refresh promptText change of refresh component
       *@tc.desc   Sets the promptText property parameter to different text
       */
-    it('ArkUX_Refresh_Visual_0010', 0, async function (done) {
+    it('ArkUX_Refresh_Visual_0010', 0, async (done: Function) => {
       console.info('ArkUX_Refresh_Visual_0010 START');
       try {
         let strJson = getInspectorByKey('ArkUX_Refresh_Visual_0010');
         console.info('ArkUX_Refresh_Visual_0010 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
+        let obj: ESObject = JSON.parse(strJson);
         console.info("ArkUX_Refresh_Visual_0010 obj is: " + JSON.stringify(obj));
-        let promptText = obj.$attrs.promptText
+        let promptText: string = obj.$attrs.promptText
         expect(promptText).assertEqual("pull down and refresh : 0");
         console.info('ArkUX_Refresh_Visual_0010 END ');
       } catch (err) {
@@ -68,14 +68,14 @@ export default function RefreshTest() {
       *@tc.name   Support modifying the refresh promptText change of refresh component
       *@tc.desc   Sets the promptText property parameter to different text
       */
-    it('ArkUX_Refresh_Visual_0020', 0, async function (done) {
+    it('ArkUX_Refresh_Visual_0020', 0, async (done: Function) => {
       console.info('ArkUX_Refresh_Visual_0020 START');
       try {
         let strJson = getInspectorByKey('ArkUX_Refresh_Visual_0020');
         console.info('ArkUX_Refresh_Visual_0020 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
+        let obj: ESObject = JSON.parse(strJson);
         console.info("ArkUX_Refresh_Visual_0020 obj is: " + JSON.stringify(obj));
-        let promptText = obj.$attrs.promptText
+        let promptText: string = obj.$attrs.promptText
         expect(promptText).assertEqual("*************************");
         console.info('ArkUX_Refresh_Visual_0020 END ');
       } catch (err) {
@@ -90,14 +90,14 @@ export default function RefreshTest() {
       *@tc.name   Support modifying the refresh promptText change of refresh component
       *@tc.desc   Sets the promptText property parameter to different text
       */
-    it('ArkUX_Refresh_Visual_0030', 0, async function (done) {
+    it('ArkUX_Refresh_Visual_0030', 0, async (done: Function) => {
       console.info('ArkUX_Refresh_Visual_0030 START');
       try {
         let strJson = getInspectorByKey('ArkUX_Refresh_Visual_0030');
         console.info('ArkUX_Refresh_Visual_0030 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
+        let obj: ESObject = JSON.parse(strJson);
         console.info("ArkUX_Refresh_Visual_0030 obj is: " + JSON.stringify(obj));
-        let promptText = obj.$attrs.promptText
+        let promptText: string = obj.$attrs.promptText
         expect(promptText).assertEqual("1234567890987654321");
         console.info('ArkUX_Refresh_Visual_0030 END ');
       } catch (err) {
@@ -112,14 +112,14 @@ export default function RefreshTest() {
       *@tc.name   Support modifying the refresh promptText change of refresh component
       *@tc.desc   Sets the promptText property parameter to different text
       */
-    it('ArkUX_Refresh_Visual_0040', 0, async function (done) {
+    it('ArkUX_Refresh_Visual_0040', 0, async (done: Function) => {
       console.info('ArkUX_Refresh_Visual_0040 START');
       try {
         let strJson = getInspectorByKey('ArkUX_Refresh_Visual_0040');
         console.info('ArkUX_Refresh_Visual_0040 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
+        let obj: ESObject = JSON.parse(strJson);
         console.info("ArkUX_Refresh_Visual_0040 obj is: " + JSON.stringify(obj));
-        let promptText = obj.$attrs.promptText
+        let promptText: string = obj.$attrs.promptText
         expect(promptText).assertEqual("");
         console.info('ArkUX_Refresh_Visual_0040 END ');
       } catch (err) {
@@ -134,14 +134,14 @@ export default function RefreshTest() {
      *@tc.name   Support modifying the refresh promptText change of refresh component
      *@tc.desc   Sets the promptText property parameter to different text
      */
-    it('ArkUX_Refresh_Visual_0050', 0, async function (done) {
+    it('ArkUX_Refresh_Visual_0050', 0, async (done: Function) => {
       console.info('ArkUX_Refresh_Visual_0050 START');
       try {
         let strJson = getInspectorByKey('ArkUX_Refresh_Visual_0050');
         console.info('ArkUX_Refresh_Visual_0050 START  :' + JSON.stringify(strJson));
-        let obj = JSON.parse(strJson);
+        let obj: ESObject = JSON.parse(strJson);
         console.info("ArkUX_Refresh_Visual_0050 obj is: " + JSON.stringify(obj));
-        let promptText = obj.$attrs.promptText
+        let promptText: string = obj.$attrs.promptText
         expect(promptText).assertEqual("测试是否可以显示汉字");
         console.info('ArkUX_Refresh_Visual_0050 END ');
       } catch (err) {

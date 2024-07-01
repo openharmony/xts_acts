@@ -19,6 +19,7 @@ group("multimodalinput") {
     deps = [
       "input_cpp_standard:ActsInputNativeTest",
       "input_js_standard:multimodalinput_js_test",
+      "multimodalinput_ets/InputDeviceEts:ActsMMIInputDeviceEtsTest",
       "multimodalinput_ets_standard:ActsMultimodalInputEtsTest",
       "multimodalinput_ndk:ActsMultimodalInputNdkTest",
     ]

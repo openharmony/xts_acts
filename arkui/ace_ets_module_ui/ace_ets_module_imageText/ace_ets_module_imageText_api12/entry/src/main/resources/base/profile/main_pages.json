@@ -54,6 +54,10 @@
   "MainAbility/pages/RichEditorEnhance/RichEditor5",
   "MainAbility/pages/RichEditorEnhance/RichEditor6",
   "MainAbility/pages/RichEditorEnhance/RichEditor7",
+  "MainAbility/pages/RichEditorEnhance/RichEditor8",
+  "MainAbility/pages/RichEditorEnhance/RichEditor9",
+  "MainAbility/pages/RichEditorEnhance/RichEditor10",
+  "MainAbility/pages/RichEditorEnhance/RichEditor11",
   "MainAbility/pages/RichEditorEnhance/TextInputTextAreaSearch",
   "MainAbility/pages/TextArea/TextAreaApi1",
   "MainAbility/pages/TextArea/TextAreaApi2",
@@ -104,6 +108,15 @@
     "MainAbility/pages/TextArea/TextAreaApi4",
     "MainAbility/pages/TextArea/TextAreaAPI/TextArea",
     "MainAbility/pages/Marquee/MarqueeMirroring",
-    "MainAbility/pages/SymbolGlyph/symbolEffect"
+    "MainAbility/pages/SymbolGlyph/symbolEffect",
+
+    "MainAbility/pages/RichEditor/RichEditorApi8",
+    "MainAbility/pages/RichEditor/RichEditorApi9",
+    "MainAbility/pages/RichEditor/RichEditorApi10",
+    "MainAbility/pages/RichEditor/RichEditorApi11",
+    "MainAbility/pages/RichEditor/RichEditorApi12",
+    "MainAbility/pages/Search/SearchApi1",
+    "MainAbility/pages/Text/getLineMetrics",
+    "MainAbility/pages/Text/textSelectable"
   ]
 }

@@ -55,7 +55,6 @@ struct FormComponentFormDimension {
           .width(px2vp(this.target?.windowBounds.width))
           .height(px2vp(this.target?.windowBounds.height))
           .key('remoteWindow')
-
       }
       .width('100%')
     }

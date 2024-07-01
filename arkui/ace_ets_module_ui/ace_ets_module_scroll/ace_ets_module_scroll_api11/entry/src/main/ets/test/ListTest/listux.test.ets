@@ -14,7 +14,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import router from '@ohos.router';
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 export default function listUxTest() {
   /**
    * @tc.number ArkUX_Stage_List_Style_0100
@@ -38,7 +38,7 @@ export default function listUxTest() {
           await router.pushUrl(options).then(() => {
             console.info(`${SUITE} router.pushUrl success`);
           })
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
         }
       } catch (err) {
         console.error(`${SUITE} beforeEach error:` + JSON.stringify(err));

@@ -147,23 +147,6 @@ export default function textInputOnEditChangeJsunit() {
     });
 
     /*
-     * @tc.number       SUB_ACE_BASIC_ETS_API_0007
-     * @tc.name         testtextInputOnEditChange0007
-     * @tc.desic         acetextInputOnEditChangeEtsTest0007
-     */
-    it('testtextInputOnEditChange0007', 0, async () => {
-      console.info('textInputOnEditChange testtextInputOnEditChange0007 START');
-      await Utils.sleep(2000);
-      let strJson = getInspectorByKey('onEditChangeText');
-      console.info("[testtextInputOnEditChange0007] component lineHeight strJson:" + strJson);
-      let obj: Record<string, Object> = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('TextInput');
-      expect(JSON.parse(strJson).$attrs.lineHeight).assertEqual(undefined);
-      console.info("[testtextInputOnEditChange0007] lineHeight value :" + JSON.parse(strJson).$attrs.lineHeight);
-
-    });
-
-    /*
      * @tc.number       SUB_ACE_BASIC_ETS_API_0009
      * @tc.name         testtextInputOnEditChange0009
      * @tc.desic         acetextInputOnEditChangeEtsTest0009

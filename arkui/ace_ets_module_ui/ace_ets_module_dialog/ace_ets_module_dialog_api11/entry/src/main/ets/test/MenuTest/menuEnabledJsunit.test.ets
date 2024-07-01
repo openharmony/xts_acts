@@ -47,8 +47,6 @@ export default function menuEnabledJsunit() {
 
       console.info('menuEnabledJsunit_0100 START');
       let driver = await UiDriver.create()
-      let button = await driver.findComponent(BY.key('bindMenuEnd'));
-      await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('bindMenuEnd');
       let obj = JSON.parse(strJson);
@@ -66,11 +64,19 @@ export default function menuEnabledJsunit() {
       let button = await driver.findComponent(BY.key('cmEnd'));
       await button.click();
       await CommonFunc.sleep(1000);
-      let strJson = getInspectorByKey('menuEnabled');
+      let menuEnabled = await driver.findComponent(BY.key('menuEnabled'));
+      await menuEnabled.click();
+      await CommonFunc.sleep(1000);
+      await driver.click(Math.round(globalThis.winLeft + vp2px(100)),Math.round(globalThis.winTop + vp2px(100)));
+      await CommonFunc.sleep(1000);
+      let change = await driver.findComponent(BY.key('change'));
+      await change.click();
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('text');
       let obj = JSON.parse(strJson);
       console.info("[menuEnabledJsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[menuEnabledJsunit_0200] enabled: " + JSON.stringify(obj.$attrs.enabled));
-      expect(obj.$attrs.enabled).assertEqual(false);
+      expect(obj.$attrs.content).assertEqual('enabled');
       console.info('[menuEnabledJsunit_0200] END');
       done();
     });

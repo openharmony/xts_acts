@@ -19,14 +19,6 @@ struct SliderExample {
             .slideRange({from:20, to:80})
         }
         .width('80%')
-
-        Text(this.message).margin(20).id("getSlideRangeValue")
-
-        Button("get slideRange").id("getInspectorByKey").onClick(() => {
-          let strJson = getInspectorByKey('slideRangeValue');
-          this.message = JSON.stringify(JSON.parse(strJson).$attrs.slideRange)
-          console.info("[slideRange_001] obj is: " + JSON.stringify(JSON.parse(strJson).$attrs.slideRange));
-        })
       }.width('100%')
     }
 

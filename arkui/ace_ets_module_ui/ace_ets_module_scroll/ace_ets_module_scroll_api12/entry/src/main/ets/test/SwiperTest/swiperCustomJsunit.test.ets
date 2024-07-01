@@ -19,8 +19,8 @@ import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 export default function swiperCustomJsunit() {
-  describe('swiperCustomJsunit', function () {
-    beforeEach(async function (done) {
+  describe('swiperCustomJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("swiperCustomJsunit beforeEach start");
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/Swiper/swiperCustom',
@@ -42,7 +42,7 @@ export default function swiperCustomJsunit() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info(" swiperCustomJsunit after each called");
     });
@@ -55,7 +55,7 @@ export default function swiperCustomJsunit() {
     * @tc.type :
     * @tc.size :
     */
-    it('swiperCustomJsunit_0100', 0, async function (done) {
+    it('swiperCustomJsunit_0100', 0, async (done: Function) => {
       console.info('swiperCustomJsunit_0100 START');
       let swiperOffset = CommonFunc.getComponentRectOnScreen('Swiper_Length');
       let top = swiperOffset.top;
@@ -72,9 +72,9 @@ export default function swiperCustomJsunit() {
       let strJson = getInspectorByKey('Swiper_Length');
       let strJson1 = getInspectorByKey('swiper_mess');
       let strJson2 = getInspectorByKey('swiper_texts');
-      let obj = JSON.parse(strJson);
-      let obj1 = JSON.parse(strJson1);
-      let obj2 = JSON.parse(strJson2);
+      let obj: ESObject = JSON.parse(strJson);
+      let obj1: ESObject = JSON.parse(strJson1);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[swiperCustomJsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[swiperCustomJsunit_0100] component obj1 is: " + JSON.stringify(obj1));
       console.info("[swiperCustomJsunit_0100] component obj2 is: " + JSON.stringify(obj2));

@@ -49,34 +49,26 @@ export default function comSizeAbilityTest_07 () {
     it('comSizeAbilityTestJsunit_20', 0, async  function (done) {
       console.info('comSizeAbilityTestJsunit_20 START')
       await CommonFunc.sleep(1000);
-      let driver = await Driver.create();
-      let button1 = await driver.findComponent(ON.id('btn_MenuItemGroup'))
-      await button1.click()
-      await CommonFunc.sleep(2000)
-      let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById("MenuItemGroup_Size");
-      let modePosition1:componentUtils.ComponentInfo = componentUtils.getRectangleById("MenuItemGroup_Father");
-      let LocalOffset = modePosition1.localOffset
-      let WindowOffset = modePosition.windowOffset
-      let ScreenOffset = modePosition.screenOffset
-      let Translate = modePosition.translate
-      let Transform = modePosition.transform
-      let Scale = modePosition.scale
-      let Rotate = modePosition.rotate
-      let button = await driver.findComponent(ON.id('MenuItemGroup_Size'));
-      let rect = await button.getBounds();
-      console.info("[comSizeAbilityTestJsunit_20] component rect is: " + JSON.stringify(rect))
-      console.info("[comSizeAbilityTestJsunit_20] component LocalOffset is: " + JSON.stringify(LocalOffset))
-      console.info("[comSizeAbilityTestJsunit_20] component WindowOffset is: " + JSON.stringify(WindowOffset))
-      console.info("[comSizeAbilityTestJsunit_20] component ScreenOffset is: " + JSON.stringify(ScreenOffset))
-      console.info("[comSizeAbilityTestJsunit_20] component Translate is: " + JSON.stringify(Translate))
-      console.info("[comSizeAbilityTestJsunit_20] component Transform is: " + JSON.stringify(Transform))
-      console.info("[comSizeAbilityTestJsunit_20] component Scale is: " + JSON.stringify(Scale))
-      console.info("[comSizeAbilityTestJsunit_20] component Rotate is: " + JSON.stringify(Rotate))
-      await CommonFunc.sleep(1000);
-      expect(JSON.stringify(Translate)).assertEqual('{"x":1,"y":1,"z":1}');
-      expect(JSON.stringify(Scale)).assertEqual('{"x":1,"y":1,"z":1,"centerX":1,"centerY":1}');
-      expect(JSON.stringify(Rotate)).assertEqual('{"x":1,"y":1,"z":1,"angle":0,"centerX":1,"centerY":1}');
-      expect(JSON.stringify(Transform)).assertEqual('[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]');
+      if (globalThis.winLeft == 0) {
+        let driver = await Driver.create();
+        let button1 = await driver.findComponent(ON.id('btn_MenuItemGroup'))
+        await button1.click()
+        await CommonFunc.sleep(2000)
+        let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById("MenuItemGroup_Size");
+        let Translate = modePosition.translate
+        let Transform = modePosition.transform
+        let Scale = modePosition.scale
+        let Rotate = modePosition.rotate
+        console.info("[comSizeAbilityTestJsunit_20] component Translate is: " + JSON.stringify(Translate))
+        console.info("[comSizeAbilityTestJsunit_20] component Transform is: " + JSON.stringify(Transform))
+        console.info("[comSizeAbilityTestJsunit_20] component Scale is: " + JSON.stringify(Scale))
+        console.info("[comSizeAbilityTestJsunit_20] component Rotate is: " + JSON.stringify(Rotate))
+        await CommonFunc.sleep(1000);
+        expect(JSON.stringify(Translate)).assertEqual('{"x":1,"y":1,"z":1}');
+        expect(JSON.stringify(Scale)).assertEqual('{"x":1,"y":1,"z":1,"centerX":1,"centerY":1}');
+        expect(JSON.stringify(Rotate)).assertEqual('{"x":1,"y":1,"z":1,"angle":0,"centerX":1,"centerY":1}');
+        expect(JSON.stringify(Transform)).assertEqual('[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]');
+      }
       console.info('[comSizeAbilityTestJsunit_20] END')
       await CommonFunc.sleep(1000);
       done()
@@ -90,40 +82,32 @@ export default function comSizeAbilityTest_07 () {
     it('comSizeAbilityTestJsunit_21', 0, async  function (done) {
       console.info('comSizeAbilityTestJsunit_21 START')
       await CommonFunc.sleep(1000);
-      let driver = await Driver.create();
-      let button1 = await driver.findComponent(ON.id('btn_MenuItem'))
-      await button1.click()
-      await CommonFunc.sleep(2000);
-      let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById("MenuItem_Size");
-      let modePosition1:componentUtils.ComponentInfo = componentUtils.getRectangleById("MenuItem_Father");
-      let Size = modePosition.size
-      let SizeWidth = Size.width
-      let SizeHeight = Size.height
-      let LocalOffset = modePosition1.localOffset
-      let WindowOffset = modePosition.windowOffset
-      let ScreenOffset = modePosition.screenOffset
-      let Translate = modePosition.translate
-      let Transform = modePosition.transform
-      let Scale = modePosition.scale
-      let Rotate = modePosition.rotate
-      let button = await driver.findComponent(ON.id('MenuItem_Size'));
-      let rect = await button.getBounds();
-      console.info("[comSizeAbilityTestJsunit_21] component rect is: " + JSON.stringify(rect))
-      console.info("[comSizeAbilityTestJsunit_21] component Size is: " + JSON.stringify(Size))
-      console.info("[comSizeAbilityTestJsunit_21] component LocalOffset is: " + JSON.stringify(LocalOffset))
-      console.info("[comSizeAbilityTestJsunit_21] component WindowOffset is: " + JSON.stringify(WindowOffset))
-      console.info("[comSizeAbilityTestJsunit_21] component ScreenOffset is: " + JSON.stringify(ScreenOffset))
-      console.info("[comSizeAbilityTestJsunit_21] component Translate is: " + JSON.stringify(Translate))
-      console.info("[comSizeAbilityTestJsunit_21] component Transform is: " + JSON.stringify(Transform))
-      console.info("[comSizeAbilityTestJsunit_21] component Scale is: " + JSON.stringify(Scale))
-      console.info("[comSizeAbilityTestJsunit_21] component Rotate is: " + JSON.stringify(Rotate))
-      await CommonFunc.sleep(1000);
-      expect(Math.round(SizeWidth)).assertEqual(Math.round(vp2px(90)));
-      expect(Math.round(SizeHeight)).assertEqual(Math.round(vp2px(90)));
-      expect(JSON.stringify(Translate)).assertEqual('{"x":1,"y":1,"z":1}');
-      expect(JSON.stringify(Scale)).assertEqual('{"x":1,"y":1,"z":1,"centerX":1,"centerY":1}');
-      expect(JSON.stringify(Rotate)).assertEqual('{"x":1,"y":1,"z":1,"angle":0,"centerX":1,"centerY":1}');
-      expect(JSON.stringify(Transform)).assertEqual('[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]');
+      if (globalThis.winLeft == 0) {
+        let driver = await Driver.create();
+        let button1 = await driver.findComponent(ON.id('btn_MenuItem'))
+        await button1.click()
+        await CommonFunc.sleep(2000);
+        let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById("MenuItem_Size");
+        let Size = modePosition.size
+        let SizeWidth = Size.width
+        let SizeHeight = Size.height
+        let Translate = modePosition.translate
+        let Transform = modePosition.transform
+        let Scale = modePosition.scale
+        let Rotate = modePosition.rotate
+        console.info("[comSizeAbilityTestJsunit_21] component Size is: " + JSON.stringify(Size))
+        console.info("[comSizeAbilityTestJsunit_21] component Translate is: " + JSON.stringify(Translate))
+        console.info("[comSizeAbilityTestJsunit_21] component Transform is: " + JSON.stringify(Transform))
+        console.info("[comSizeAbilityTestJsunit_21] component Scale is: " + JSON.stringify(Scale))
+        console.info("[comSizeAbilityTestJsunit_21] component Rotate is: " + JSON.stringify(Rotate))
+        await CommonFunc.sleep(1000);
+        expect(Math.round(SizeWidth)).assertEqual(Math.round(vp2px(90)));
+        expect(Math.round(SizeHeight)).assertEqual(Math.round(vp2px(90)));
+        expect(JSON.stringify(Translate)).assertEqual('{"x":1,"y":1,"z":1}');
+        expect(JSON.stringify(Scale)).assertEqual('{"x":1,"y":1,"z":1,"centerX":1,"centerY":1}');
+        expect(JSON.stringify(Rotate)).assertEqual('{"x":1,"y":1,"z":1,"angle":0,"centerX":1,"centerY":1}');
+        expect(JSON.stringify(Transform)).assertEqual('[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]');
+      }
       console.info('[comSizeAbilityTestJsunit_21] END')
       await CommonFunc.sleep(1000);
       done()
@@ -137,40 +121,35 @@ export default function comSizeAbilityTest_07 () {
     it('comSizeAbilityTestJsunit_22', 0, async  function (done) {
       console.info('comSizeAbilityTestJsunit_22 START')
       await CommonFunc.sleep(1000);
-      let driver = await Driver.create()
-      let button1 = await driver.findComponent(ON.id('btn_Menu'))
-      await button1.click()
-      await CommonFunc.sleep(2000);
-      let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById("Menu_Size");
-      let modePosition1:componentUtils.ComponentInfo = componentUtils.getRectangleById("Menu_Father");
-      let Size = modePosition.size
-      let SizeWidth = Size.width
-      let SizeHeight = Size.height
-      let LocalOffset = modePosition1.localOffset
-      let WindowOffset = modePosition.windowOffset
-      let ScreenOffset = modePosition.screenOffset
-      let Translate = modePosition.translate
-      let Transform = modePosition.transform
-      let Scale = modePosition.scale
-      let Rotate = modePosition.rotate
-      let button = await driver.findComponent(ON.id('Menu_Size'));
-      let rect = await button.getBounds();
-      console.info("[comSizeAbilityTestJsunit_22] component rect is: " + JSON.stringify(rect))
-      console.info("[comSizeAbilityTestJsunit_22] component Size is: " + JSON.stringify(Size))
-      console.info("[comSizeAbilityTestJsunit_22] component LocalOffset is: " + JSON.stringify(LocalOffset))
-      console.info("[comSizeAbilityTestJsunit_22] component WindowOffset is: " + JSON.stringify(WindowOffset))
-      console.info("[comSizeAbilityTestJsunit_22] component ScreenOffset is: " + JSON.stringify(ScreenOffset))
-      console.info("[comSizeAbilityTestJsunit_22] component Translate is: " + JSON.stringify(Translate))
-      console.info("[comSizeAbilityTestJsunit_22] component Transform is: " + JSON.stringify(Transform))
-      console.info("[comSizeAbilityTestJsunit_22] component Scale is: " + JSON.stringify(Scale))
-      console.info("[comSizeAbilityTestJsunit_22] component Rotate is: " + JSON.stringify(Rotate))
-      await CommonFunc.sleep(1000);
-      expect(Math.round(SizeWidth)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(SizeHeight)).assertEqual(Math.round(vp2px(100)));
-      expect(JSON.stringify(Translate)).assertEqual('{"x":1,"y":1,"z":1}');
-      expect(JSON.stringify(Scale)).assertEqual('{"x":1,"y":1,"z":1,"centerX":1,"centerY":1}');
-      expect(JSON.stringify(Rotate)).assertEqual('{"x":1,"y":1,"z":1,"angle":0,"centerX":1,"centerY":1}');
-      expect(JSON.stringify(Transform)).assertEqual('[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]');
+      if (globalThis.winLeft == 0) {
+        let driver = await Driver.create()
+        let button1 = await driver.findComponent(ON.id('btn_Menu'))
+        await button1.click()
+        await CommonFunc.sleep(2000);
+        let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById("Menu_Size");
+        let Size = modePosition.size
+        let SizeWidth = Size.width
+        let SizeHeight = Size.height
+        let Translate = modePosition.translate
+        let Transform = modePosition.transform
+        let Scale = modePosition.scale
+        let Rotate = modePosition.rotate
+        console.info("[comSizeAbilityTestJsunit_22] component Size is: " + JSON.stringify(Size))
+        console.info("[comSizeAbilityTestJsunit_22] component Translate is: " + JSON.stringify(Translate))
+        console.info("[comSizeAbilityTestJsunit_22] component Transform is: " + JSON.stringify(Transform))
+        console.info("[comSizeAbilityTestJsunit_22] component Scale is: " + JSON.stringify(Scale))
+        console.info("[comSizeAbilityTestJsunit_22] component Rotate is: " + JSON.stringify(Rotate))
+        await CommonFunc.sleep(1000);
+        expect(Math.round(SizeWidth)).assertEqual(Math.round(vp2px(100)));
+        expect(Math.round(SizeHeight)).assertEqual(Math.round(vp2px(100)));
+        expect(JSON.stringify(Translate)).assertEqual('{"x":1,"y":1,"z":1}');
+        expect(JSON.stringify(Scale)).assertEqual('{"x":1,"y":1,"z":1,"centerX":1,"centerY":1}');
+        expect(JSON.stringify(Rotate)).assertEqual('{"x":1,"y":1,"z":1,"angle":0,"centerX":1,"centerY":1}');
+        expect(JSON.stringify(Transform)).assertEqual('[1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]');
+        await CommonFunc.sleep(1000);
+        await driver.click(Math.round(globalThis.winLeft + vp2px(200)),Math.round(globalThis.winTop + vp2px(200)));
+        await CommonFunc.sleep(1000);
+      }
       console.info('[comSizeAbilityTestJsunit_22] END')
       await CommonFunc.sleep(1000);
       done()

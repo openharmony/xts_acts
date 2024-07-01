@@ -1,11 +1,12 @@
 {
     "description": "Configuration for hjunit demo Tests",
     "driver": {
-        "type": "OHJSUnitTest",
-        "test-timeout": "180000",
-        "shell-timeout": "180000",
-        "bundle-name": "com.ohos.register",
-        "package-name": "com.ohos.register"
+      "type": "OHJSUnitTest",
+      "test-timeout": "1800000",
+      "bundle-name": "com.ohos.register",
+      "package-name": "com.ohos.register",
+      "shell-timeout": "1800000",
+      "testcase-timeout": "30000"
     },
     "kits": [
         {

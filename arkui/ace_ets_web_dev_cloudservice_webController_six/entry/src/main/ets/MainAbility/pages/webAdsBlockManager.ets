@@ -111,7 +111,7 @@ struct webAdsBlockManager {
                         let rulePath: string = Utils.copyRawFileToSandbox('custom_easylist.txt');
                         await Utils.sleep(1000)
                         webview.AdsBlockManager.setAdsBlockRules(rulePath, true);
-                        await Utils.sleep(1000)
+                        await Utils.sleep(15000)
                         Utils.deleteFile(rulePath);
                         this.controller.refresh()
 
@@ -139,7 +139,7 @@ struct webAdsBlockManager {
                         let rulePath: string = Utils.copyRawFileToSandbox('custom_easylist.txt');
                         await Utils.sleep(1000)
                         webview.AdsBlockManager.setAdsBlockRules(rulePath, false);
-                        await Utils.sleep(1000)
+                        await Utils.sleep(15000)
                         Utils.deleteFile(rulePath);
                         this.controller.refresh()
 

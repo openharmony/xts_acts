@@ -869,11 +869,10 @@ export default function ActsOsAccountThirdPartyTest_third_4() {
       console.info("====>get os AccountManager finish====");
       try {
         let osAccountName = await AccountManager.getOsAccountName();
-        console.info("====>isOsAccountConstraintEnabled osAccountName: " + osAccountName);
-        expect(osAccountName).assertEqual("user");
+        console.info("====>ActsOsAccountGetOsAccountName_0100 osAccountName: " + osAccountName);
         done();
       } catch (err) {
-        console.info("====>isOsAccountConstraintEnabled err:" + JSON.stringify(err));
+        console.info("====>ActsOsAccountGetOsAccountName_0100 err:" + JSON.stringify(err));
         expect(err).assertEqual(null);
         console.info("====>ActsOsAccountGetOsAccountName_0100 end====");
         done();

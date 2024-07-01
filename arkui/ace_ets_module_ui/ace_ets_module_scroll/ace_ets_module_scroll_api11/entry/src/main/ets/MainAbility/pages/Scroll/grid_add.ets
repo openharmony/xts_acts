@@ -31,8 +31,8 @@ struct GridExampleAdd {
                 .height('100%')
                 .textAlign(TextAlign.Center)
             }
-          }, day => day)
-        }, day => day)
+          }, (day: string) => day)
+        }, (day: string) => day)
       }
       .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
       .rowsTemplate('1fr 1fr 1fr 1fr 1fr')
@@ -58,7 +58,7 @@ struct GridExampleAdd {
                 .key(''+(index+1)*(index+1))
                 .textAlign(TextAlign.Center)
             }
-          }, day => day)
+          }, (day: string) => day)
         })
       }
       .columnsTemplate('1fr 1fr 1fr 1fr 1fr')

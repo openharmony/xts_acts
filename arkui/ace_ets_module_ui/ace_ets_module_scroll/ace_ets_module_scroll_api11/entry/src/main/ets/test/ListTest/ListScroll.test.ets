@@ -55,7 +55,7 @@ export default function ListScrollTest() {
       let CASE: string = 'ArkUI_List_Scroll_0100'
       console.info(`${SUITE} ${CASE} START`)
       let callback = (event: events_emitter.EventData) => {
-        expect(event.data.start).assertEqual(14);
+        expect(event.data?.start).assertEqual(14);
         done();
       }
       let event: events_emitter.InnerEvent = {
@@ -78,7 +78,7 @@ export default function ListScrollTest() {
       let CASE: string = 'ArkUI_List_Scroll_0200'
       console.info(`${SUITE} ${CASE} START`)
       let callback = (event: events_emitter.EventData) => {
-        expect(event.data.start).assertEqual(15);
+        expect(event.data?.start).assertEqual(15);
         done();
       }
       let event: events_emitter.InnerEvent = {
@@ -101,7 +101,7 @@ export default function ListScrollTest() {
       let CASE: string = 'ArkUI_List_Scroll_0300'
       console.info(`${SUITE} ${CASE} START`)
       let callback = (event: events_emitter.EventData) => {
-        expect(event.data.start).assertEqual(0);
+        expect(event.data?.start).assertEqual(0);
         done();
       }
       let event: events_emitter.InnerEvent = {
@@ -124,7 +124,7 @@ export default function ListScrollTest() {
       let CASE: string = 'ArkUI_List_Scroll_0400'
       console.info(`${SUITE} ${CASE} START`)
       let callback = (event: events_emitter.EventData) => {
-        expect(event.data.end).assertEqual(59);
+        expect(event.data?.end).assertEqual(59);
         done();
       }
       let event: events_emitter.InnerEvent = {

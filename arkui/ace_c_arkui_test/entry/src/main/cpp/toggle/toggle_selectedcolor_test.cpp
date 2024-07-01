@@ -53,4 +53,28 @@ static napi_value TestToggleSelectedColor003(napi_env env, napi_callback_info in
     NAPI_END;
 }
 
+static napi_value TestToggleSelectedColor004(napi_env env, napi_callback_info info)
+{
+    NAPI_START(toggle, ARKUI_NODE_TOGGLE);
+    uint32_t selectedColor = napi_null;
+    ArkUI_NumberValue value[] = {{.u32 = selectedColor}};
+    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(toggle, NODE_TOGGLE_SELECTED_COLOR, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_TOGGLE_SELECTED_COLOR)->value[PARAM_0].u32, selectedColor);
+    NAPI_END;
+}
+
+static napi_value TestToggleSelectedColor005(napi_env env, napi_callback_info info)
+{
+    NAPI_START(toggle, ARKUI_NODE_TOGGLE);
+    uint32_t selectedColor = napi_undefined;
+    ArkUI_NumberValue value[] = {{.u32 = selectedColor}};
+    ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
+    auto ret = nodeAPI->setAttribute(toggle, NODE_TOGGLE_SELECTED_COLOR, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_EQ(nodeAPI->getAttribute(toggle, NODE_TOGGLE_SELECTED_COLOR)->value[PARAM_0].u32, selectedColor);
+    NAPI_END;
+}
+
 } // namespace ArkUICapiTest

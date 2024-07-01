@@ -62,7 +62,7 @@ import FocusScopeId16 from './Focus/focusScopeId/FocusScopeId16.test'
 import FocusScopeId17 from './Focus/focusScopeId/FocusScopeId17.test'
 import FocusScopeId18 from './Focus/focusScopeId/FocusScopeId18.test'
 import FocusScopeId19 from './Focus/focusScopeId/FocusScopeId19.test'
-
+import ACTION_CANCELED_BEFORE_DRAG_APITest from './CommonTest/OnPreDragTest/OnPreDrag_APITest/ACTION_CANCELED_BEFORE_DRAG_APITest'
 export default function testsuite() {
   requestFocus1();
   requestFocus2();
@@ -112,4 +112,5 @@ export default function testsuite() {
   FocusScopeId19();
   FocusScopeId16();
   FocusScopeId4();
+  ACTION_CANCELED_BEFORE_DRAG_APITest();  
 }

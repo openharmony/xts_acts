@@ -13,16 +13,17 @@
  * limitations under the License.
  */
 import animator, { AnimatorResult } from '@ohos.animator';
+
 @Entry
 @Component
 struct expectedFrameRateExample {
-  private TAG: string = '[AnimatorTest]'
-  private backAnimator: AnimatorResult | undefined = undefined
-  private flag: boolean = false
-  @State wid: number = 100
-  @State hei: number = 100
-  @State minText: string = ''
-  @State maxText: string = ''
+  private TAG: string = '[AnimatorTest]';
+  private backAnimator: AnimatorResult | undefined = undefined;
+  private flag: boolean = false;
+  @State wid: number = 100;
+  @State hei: number = 100;
+  @State minText: string = '';
+  @State maxText: string = '';
   private expectedFrameRate: ExpectedFrameRateRange = {
     min: 0,
     max: 120,
@@ -42,17 +43,17 @@ struct expectedFrameRateExample {
       end: 200
     })
     this.backAnimator.setExpectedFrameRateRange(_this.expectedFrameRate);
-    this.backAnimator.onFinish = ()=> {
+    this.backAnimator.onFinish = () => {
       _this.flag = true
       console.info(_this.TAG, 'backAnimator onfinish')
     }
-    this.backAnimator.onRepeat = ()=> {
+    this.backAnimator.onRepeat = () => {
       console.info(_this.TAG, 'backAnimator repeat')
     }
-    this.backAnimator.onCancel = ()=> {
+    this.backAnimator.onCancel = () => {
       console.info(_this.TAG, 'backAnimator cancel')
     }
-    this.backAnimator.onFrame = (value:number)=> {
+    this.backAnimator.onFrame = (value: number) => {
       _this.wid = value
       _this.hei = value
       this.minText = _this.expectedFrameRate.min + ''
@@ -65,6 +66,7 @@ struct expectedFrameRateExample {
     // 在自定义组件消失时应该将保存在组件中的backAnimator置空，避免内存泄漏
     this.backAnimator = undefined;
   }
+
   @State text: string = ''
 
   build() {
@@ -102,7 +104,7 @@ struct expectedFrameRateExample {
             .fontColor(Color.Black)
             .onClick(() => {
               this.flag = false
-              if(this.backAnimator){
+              if (this.backAnimator) {
                 this.backAnimator.play()
               }
             })
@@ -114,7 +116,7 @@ struct expectedFrameRateExample {
             .fontSize(30)
             .fontColor(Color.Black)
             .onClick(() => {
-              if(this.backAnimator){
+              if (this.backAnimator) {
                 this.backAnimator.pause()
               }
             })
@@ -127,14 +129,12 @@ struct expectedFrameRateExample {
             .fontColor(Color.Black)
             .onClick(() => {
               this.flag = true
-              if(this.backAnimator){
+              if (this.backAnimator) {
                 this.backAnimator.finish()
               }
             })
         }
         .padding(10)
-
-
       }
     }
   }

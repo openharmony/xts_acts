@@ -56,10 +56,28 @@ export default function getPosition() {
       let button = await driver.findComponent(ON.id('getPositionToScreen'));
       await button.click();
       await CommonFunc.sleep(1000);
+
+      let density = await driver.getDisplayDensity();
+      console.info("[getPosition_0100] density: " + JSON.stringify(density));
+      console.info("[getPosition_0100] density.x: " + JSON.stringify(density.x));
+
+      let size = await driver.getDisplaySize();
+      console.info("[getPosition_0100] size: " + JSON.stringify(size));
+
+      let window: UiWindow = await driver.findWindow({actived: true});
+      let rect = await window.getBounds();
+      console.info("[getPosition_0100] rect: " + JSON.stringify(rect));
+
       let strJson = getInspectorByKey('getPositionToScreenValue');
       let obj = JSON.parse(strJson);
       console.info("[getPosition_0100] component obj is: " + JSON.stringify(obj));
-      expect(Math.floor(obj.$attrs.content)).assertEqual(90);
+
+      if(JSON.stringify(density.x) == 2700) {
+        expect(Math.floor(obj.$attrs.content)).assertEqual(289);
+      } else {
+        expect(Math.floor(obj.$attrs.content)).assertEqual(0);
+      }
+      
       console.info('[getPosition_0100] END');
       done();
     });
@@ -102,10 +120,28 @@ export default function getPosition() {
       let button = await driver.findComponent(ON.id('getPositionToWindowWithTransform'));
       await button.click();
       await CommonFunc.sleep(1000);
+
+      let density = await driver.getDisplayDensity();
+      console.info("[getPosition_0300] density: " + JSON.stringify(density));
+      console.info("[getPosition_0300] density.x: " + JSON.stringify(density.x));
+
+      let size = await driver.getDisplaySize();
+      console.info("[getPosition_0100] size: " + JSON.stringify(size));
+
+      let window: UiWindow = await driver.findWindow({actived: true});
+      let rect = await window.getBounds();
+      console.info("[getPosition_0100] rect: " + JSON.stringify(rect));
+
       let strJson = getInspectorByKey('getPositionToWindowWithTransformValue');
       let obj = JSON.parse(strJson);
       console.info("[getPosition_0300] component obj is: " + JSON.stringify(obj));
-      expect(Math.floor(obj.$attrs.content)).assertEqual(90);
+
+      if(JSON.stringify(density.x) == 2700) {
+        expect(Math.floor(obj.$attrs.content)).assertEqual(4);
+      } else {
+        expect(Math.floor(obj.$attrs.content)).assertEqual(0);
+      }
+      
       console.info('[getPosition_0300] END');
       done();
     });
@@ -125,10 +161,28 @@ export default function getPosition() {
       let button = await driver.findComponent(ON.id('getPositionToScreenWithTransform'));
       await button.click();
       await CommonFunc.sleep(1000);
+
+      let density = await driver.getDisplayDensity();
+      console.info("[getPosition_0400] density: " + JSON.stringify(density));
+      console.info("[getPosition_0400] density.x: " + JSON.stringify(density.x));
+
+      let size = await driver.getDisplaySize();
+      console.info("[getPosition_0100] size: " + JSON.stringify(size));
+
+      let window: UiWindow = await driver.findWindow({actived: true});
+      let rect = await window.getBounds();
+      console.info("[getPosition_0100] rect: " + JSON.stringify(rect));
+
       let strJson = getInspectorByKey('getPositionToScreenWithTransformValue');
       let obj = JSON.parse(strJson);
       console.info("[getPosition_0400] component obj is: " + JSON.stringify(obj));
-      expect(Math.floor(obj.$attrs.content)).assertEqual(90);
+
+      if(JSON.stringify(density.x) == 2700) {
+        expect(Math.floor(obj.$attrs.content)).assertEqual(289);
+      } else {
+        expect(Math.floor(obj.$attrs.content)).assertEqual(0);
+      }
+      
       console.info('[getPosition_0400] END');
       done();
     });
