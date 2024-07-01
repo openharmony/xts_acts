@@ -15,7 +15,7 @@
 import { redCustomTheme } from '../../themes/CustomTheme';
 import { CustomTheme } from '@ohos.arkui.theme';
 
-export const alphabetIndexerThemeProperty : string = `AlphabetIndexerThemeProperty`;
+export const alphabetIndexerThemeProperty: string = `AlphabetIndexerThemeProperty`;
 
 export class AlphabetIndexerKeys {
   public static readonly alphabetIndexerSystem = `AlphabetIndexer_System`;

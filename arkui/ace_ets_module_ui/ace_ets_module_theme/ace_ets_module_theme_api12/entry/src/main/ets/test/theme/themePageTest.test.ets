@@ -14,13 +14,27 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import Utils from '../Utils';
+
 export default function themePageTest() {
-  describe('themePageTest', function () {
-    beforeEach(async function (done) {
+  describe('themePageTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("themePageTest beforeEach start");
-      let options : router.RouterOptions = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/theme/themePageTest",
       }
       try {
@@ -40,14 +54,14 @@ export default function themePageTest() {
       done();
     });
     /**
-     * @tc.number    themeColorTest
-     * @tc.name      themeInterfaceTest_0100
-     * @tc.desc      theme Test
-     * @tc.level:    Level 2
+     * @tc.number themeColorTest
+     * @tc.name themeInterfaceTest_0100
+     * @tc.desc theme Test
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('themeInterfaceTest_0100', 0, async function (done) {
+    it('themeInterfaceTest_0100', 0, async (done: Function) => {
       console.info('frameNodeGetInterfaceTest_0100 START');
       let driver = await Driver.create()
       await Utils.sleep(1000);
@@ -57,11 +71,10 @@ export default function themePageTest() {
       await Utils.sleep(2000);
       // test the color whether change
       let strJson = getInspectorByKey('bt');
-      let obj = JSON.parse(strJson);
-      console.info("[themeInterfaceTest_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[themeInterfaceTest_0100] component obj is: " + obj.$attrs.backgroundColor);
-      console.info("[themeInterfaceTest_0100] component obj is: " + obj.$attrs.fontColor);
-      expect(obj.$attrs.fontColor).assertEqual('#FF00541F');
+      console.info("[themeInterfaceTest_0100] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[themeInterfaceTest_0100] component JSON.parse(strJson) is: " + JSON.parse(strJson).$attrs.backgroundColor);
+      console.info("[themeInterfaceTest_0100] component JSON.parse(strJson) is: " + JSON.parse(strJson).$attrs.fontColor);
+      expect(JSON.parse(strJson).$attrs.fontColor).assertEqual('#FF00541F');
       console.info('[themeInterfaceTest_0100] END');
       done();
     });
