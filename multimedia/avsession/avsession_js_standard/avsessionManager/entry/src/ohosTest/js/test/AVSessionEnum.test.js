@@ -162,5 +162,43 @@ export default function AVSessionEnum() {
             expect(AVCastPickerState.STATE_DISAPPEARING).assertEqual(1);
             done();
         })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERSTYLE_ENUM_0100
+         * @tc.name      : compare all value in AVCastPickerStyle to number value
+         * @tc.desc      : Testing enum of AVCastPickerStyle
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERSTYLE_ENUM_0100', 2, async function (done) {
+            console.info(`AVCastPickerStyle STATE_PANEL is ${AVCastPickerStyle.STATE_PANEL}`);
+            expect(AVCastPickerStyle.STATE_PANEL).assertEqual(0);
+
+            console.info(`AVCastPickerStyle STATE_MENU is ${AVCastPickerStyle.STATE_MENU}`);
+            expect(AVCastPickerStyle.STATE_MENU).assertEqual(1);
+            done();
+        })
+
+        /* *
+         * @tc.number    : SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERCOLORMODE_ENUM_0100
+         * @tc.name      : compare all value in AVCastPickerColorMode to number value
+         * @tc.desc      : Testing enum of AVCastPickerColorMode
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level2
+         */
+        it('SUB_MULTIMEDIA_AVSESSION_AVCASTPICKERCOLORMODE_ENUM_0100', 2, async function (done) {
+            console.info(`AVCastPickerColorMode AUTO is ${AVCastPickerColorMode.AUTO}`);
+            expect(AVCastPickerColorMode.AUTO).assertEqual(0);
+
+            console.info(`AVCastPickerColorMode DARK is ${AVCastPickerColorMode.DARK}`);
+            expect(AVCastPickerColorMode.DARK).assertEqual(1);
+
+            console.info(`AVCastPickerColorMode LIGHT is ${AVCastPickerColorMode.LIGHT}`);
+            expect(AVCastPickerColorMode.LIGHT).assertEqual(2);
+            done();
+        })
+
     })
 }
