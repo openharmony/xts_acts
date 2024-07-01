@@ -15,11 +15,25 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {UiComponent, UiDriver, Component, Driver, MouseButton, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  MouseButton,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 
 export default function onHoverStatusChange() {
-  describe('onHoverStatusChange', function () {
-    beforeEach(async function (done) {
+  describe('onHoverStatusChange', () => {
+    beforeEach(async (done: Function) => {
       console.info("onHoverStatusChange beforeEach start");
       try {
         router.clear();
@@ -27,7 +41,9 @@ export default function onHoverStatusChange() {
         console.info("get onHoverStatusChange state pages:" + JSON.stringify(pages));
         if (!("onHoverStatusChange" == pages.name)) {
           console.info("get  onHoverStatusChange pages.name:" + JSON.stringify(pages.name));
-          let result = await router.pushUrl({url:"MainAbility/pages/onHoverStatusChange/onHoverStatusChange"})
+          let result = await router.pushUrl({
+            url: "MainAbility/pages/onHoverStatusChange/onHoverStatusChange"
+          })
           await CommonFunc.sleep(2000);
           console.info("push onHoverStatusChange page result:" + JSON.stringify(result));
         }
@@ -37,34 +53,31 @@ export default function onHoverStatusChange() {
       console.info("onHoverStatusChange foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("onHoverStatusChange after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_UI_COMPONENT_Common_onHoverStatusChange_001
-     * @tc.desc      onHoverStatusChange test
-     * @tc.level     Level 3
+     * @tc.number SUB_ACE_UI_COMPONENT_Common_onHoverStatusChange_001
+     * @tc.desc onHoverStatusChange test
+     * @tc.level Level 3
      * @tc.type
      */
 
-    it('onHoverStatusChange_001', 0, async function (done) {
+    it('onHoverStatusChange_001', 0, async (done: Function) => {
       console.info('[onHoverStatusChange_001] START');
 
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('onHoverStatusChangeText');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
-      console.info("[onHoverStatusChange_001] component obj is: " + JSON.stringify(obj));
+      console.info("[onHoverStatusChange_001] component obj is: " + JSON.stringify(JSON.parse(strJson)));
       await CommonFunc.sleep(1000);
 
-      expect(obj.$attrs.content).assertEqual('');
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('');
       console.info('[onHoverStatusChange_001] END');
       done();
     });
-
-
 
 
   })

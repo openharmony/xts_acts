@@ -53,7 +53,7 @@ export default function FocusScopeId19() {
      * @tc.desc      Test support for directional key focus group penetration ability
      * @tc.level     Level 2
      */
-    it('FocusScopeId19_0100', 0, async function (done) {
+    it('FocusScopeId19_0100', 0, async (done: Function) => {
       console.info('[FocusScopeId19_0100] START');
       await CommonFunc.sleep(1000);
 

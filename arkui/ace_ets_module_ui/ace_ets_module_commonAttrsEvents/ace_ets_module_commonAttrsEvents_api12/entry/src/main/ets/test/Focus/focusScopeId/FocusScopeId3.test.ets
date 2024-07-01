@@ -48,12 +48,12 @@ export default function FocusScopeId3() {
     });
 
     /**
-     * @tc.number    FocusScopeId3_0100
-     * @tc.name      FocusScopeId3_0100
-     * @tc.desc      Test support for directional key focus group penetration ability
-     * @tc.level     Level 2
+     * @tc.number FocusScopeId3_0100
+     * @tc.name FocusScopeId3_0100
+     * @tc.desc Test support for directional key focus group penetration ability
+     * @tc.level Level 2
      */
-    it('FocusScopeId3_0100', 0, async function (done) {
+    it('FocusScopeId3_0100', 0, async (done: Function) => {
       console.info('[FocusScopeId3_0100] START');
       await CommonFunc.sleep(1000);
 

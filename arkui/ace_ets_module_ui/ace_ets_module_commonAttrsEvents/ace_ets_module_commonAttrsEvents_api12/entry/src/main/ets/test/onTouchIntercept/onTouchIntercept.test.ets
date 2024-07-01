@@ -15,11 +15,25 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {UiComponent, UiDriver, Component, Driver, MouseButton, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  MouseButton,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 
 export default function onTouchIntercept() {
-  describe('onTouchIntercept', function () {
-    beforeEach(async function (done) {
+  describe('onTouchIntercept', () => {
+    beforeEach(async (done: Function) => {
       console.info("onTouchIntercept beforeEach start");
       try {
         router.clear();
@@ -27,7 +41,9 @@ export default function onTouchIntercept() {
         console.info("get onTouchIntercept state pages:" + JSON.stringify(pages));
         if (!("onTouchIntercept" == pages.name)) {
           console.info("get  onTouchIntercept pages.name:" + JSON.stringify(pages.name));
-          let result = await router.pushUrl({url:"MainAbility/pages/onTouchIntercept/onTouchIntercept"})
+          let result = await router.pushUrl({
+            url: "MainAbility/pages/onTouchIntercept/onTouchIntercept"
+          })
           await CommonFunc.sleep(2000);
           console.info("push onTouchIntercept page result:" + JSON.stringify(result));
         }
@@ -37,19 +53,19 @@ export default function onTouchIntercept() {
       console.info("onTouchIntercept foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("onTouchIntercept after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_UI_COMPONENT_Common_onTouchIntercept_001
-     * @tc.desc      onTouchIntercept test
-     * @tc.level     Level 3
+     * @tc.number SUB_ACE_UI_COMPONENT_Common_onTouchIntercept_001
+     * @tc.desc onTouchIntercept test
+     * @tc.level Level 3
      * @tc.type
      */
 
-    it('onTouchIntercept_001', 0, async function (done) {
+    it('onTouchIntercept_001', 0, async (done: Function) => {
       console.info('[onTouchIntercept_001] START');
 
       await CommonFunc.sleep(1000);
@@ -59,16 +75,13 @@ export default function onTouchIntercept() {
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('onTouchInterceptText');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
-      console.info("[onTouchIntercept_001] component obj is: " + JSON.stringify(obj));
+      console.info("[onTouchIntercept_001] component obj is: " + JSON.stringify(JSON.parse(strJson)));
       await CommonFunc.sleep(1000);
 
-      expect(obj.$attrs.content != '').assertTrue();
+      expect(JSON.parse(strJson).$attrs.content != '').assertTrue();
       console.info('[onTouchIntercept_001] END');
       done();
     });
-
-
 
 
   })

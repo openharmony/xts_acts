@@ -48,12 +48,12 @@ export default function FocusScopeId6() {
     });
 
     /**
-     * @tc.number    FocusScopeId6_0100
-     * @tc.name      FocusScopeId6_0100
-     * @tc.desc      Support for mixed focusing of focus groups and ordinary components
-     * @tc.level     Level 2
+     * @tc.number FocusScopeId6_0100
+     * @tc.name FocusScopeId6_0100
+     * @tc.desc Support for mixed focusing of focus groups and ordinary components
+     * @tc.level Level 2
      */
-    it('FocusScopeId6_0100', 0, async function (done) {
+    it('FocusScopeId6_0100', 0, async (done: Function) => {
       console.info('[FocusScopeId6_0100] START');
       await CommonFunc.sleep(1000);
 
