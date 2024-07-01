@@ -15,7 +15,7 @@
 
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-
+import deviceinfo from '@ohos.deviceInfo'
 export default function SystemCapabilityTest() {
 describe('SystemCapabilityTest', function () {
 
@@ -42,5 +42,27 @@ describe('SystemCapabilityTest', function () {
             console.info("testSysCaps01 canIUse isAccessToken error: " + e);
         }
         console.info('testSysCaps01 end');
+    })
+    
+    /**
+     * @tc.number    SUB_STARTUP_JS_DEVCEINFO_0400
+     * @tc.name     testGetMarketName01
+     * @tc.desc      Get the external product family name represented by a string and the return value is not null.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('device_info_test_004', 0, function () {
+        console.info('testGetMarketName01 start')
+        let ret = false;
+        let marketNameInfo = deviceinfo.marketName;
+        console.info('111 the value of the deviceinfo marketName is :' + marketNameInfo);
+
+        expect(marketNameInfo).assertInstanceOf('String');
+        if (marketNameInfo != "" && marketNameInfo != null && marketNameInfo != undefined) {
+            ret = true;
+        }
+        expect(ret).assertTrue();
+        console.info('testGetMarketName01 ：end');
     })
 })}
