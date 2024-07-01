@@ -25,6 +25,9 @@ describe('SystemCapabilityTest', function () {
      * @tc.number    SUB_STARTUP_JS_SYSTEM_CAPABILITY_001
      * @tc.name      testSysCaps01
      * @tc.desc      Verify the availability of SystemCapability AccessToken.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
      */
     it('testSysCaps01', 0, async function (done) {
         console.info('testSysCaps01 start');
