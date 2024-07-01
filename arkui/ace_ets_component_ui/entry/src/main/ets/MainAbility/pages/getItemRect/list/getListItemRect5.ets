@@ -14,6 +14,8 @@
  */
 import {MessageManager,Callback} from '../../../utils/MessageManager';
 
+type Message = string|number|Axis
+
 @Entry
 @Component
 struct getListItemRect5 {
@@ -28,22 +30,22 @@ struct getListItemRect5 {
   @State width1: number = 0
   @State height1: number = 0
 
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
   onPageShow() {
     console.info('getListItemRect5 onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'index') {
-        this.index = message.value;
+        this.index = message.value as number;
       }else if (message.name == 'width2') {
-        this.width2 = message.value;
+        this.width2 = message.value as string;
       }else if (message.name == 'height2') {
-        this.height2 = message.value;
+        this.height2 = message.value as string;
       }else if (message.name == 'listDirection1') {
-        this.listDirection1 = message.value;
+        this.listDirection1 = message.value as Axis;
       }
     }
     this.messageManager.registerCallback(callback);

@@ -14,6 +14,8 @@
  */
 import {MessageManager,Callback} from '../utils/MessageManager';
 
+type Message = boolean|string|number
+
 @Entry
 @Component
 struct RatingPage {
@@ -25,38 +27,38 @@ struct RatingPage {
   @State backgroundUri: string = 'resources/base/media/star_1.png'
   @State foregroundUri: string = 'resources/base/media/star_2.png'
   @State secondaryUri: string = 'resources/base/media/star_3.png'
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
 
   onPageShow() {
     console.info('RatingPage onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'rating') {
-        this.rating = message.value
+        this.rating = message.value as number
       }
       if (message.name == 'indicator') {
-        this.indicator = message.value
+        this.indicator = message.value as boolean
       }
       if (message.name == 'stars') {
-        this.stars = message.value
+        this.stars = message.value as number
       }
       if (message.name == 'stepSize') {
-        this.stepSize = message.value
+        this.stepSize = message.value as number
       }
       if (message.name == 'backgroundUri') {
-        this.backgroundUri = message.value
+        this.backgroundUri = message.value as string
       }
       if (message.name == 'foregroundUri') {
-        this.foregroundUri = message.value
+        this.foregroundUri = message.value as string
       }
       if (message.name == 'secondaryUri') {
-        this.secondaryUri = message.value
+        this.secondaryUri = message.value as string
       }
       if (message.name == 'text') {
-        this.text = message.value
+        this.text = message.value as string
       }
     }
     this.messageManager.registerCallback(callback)

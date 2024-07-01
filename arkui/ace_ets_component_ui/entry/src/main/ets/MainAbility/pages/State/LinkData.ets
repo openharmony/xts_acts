@@ -21,15 +21,15 @@ class LinkModel {
   }
 }
 
-enum KFC{A=1,B,C}
+enum KFCLinkData{A=1,B,C}
 @Entry
 @Component
 struct parData_Link {
   @State numA:number = 0
   @State text:string = 'hello'
   @State flag:boolean = true
-  @State enum: KFC = KFC.A
-  @State class: LinkModel = { value: 'Hello World' }
+  @State enum: KFCLinkData = KFCLinkData.A
+  @State class: LinkModel = new LinkModel('Hello World')
   @State strArray : Array<string> = ['First','Second','Third']
 
 
@@ -48,7 +48,7 @@ struct sonData_Link{
   @Link numB: number
   @Link message: string
   @Link boolean: boolean
-  @Link enu: KFC
+  @Link enu: KFCLinkData
   @Link class: LinkModel
   @Link strArray : Array<string>
 
@@ -84,7 +84,7 @@ struct sonData_Link{
       Button('Click to change enum')
         .key(("enumBtn_link"))
         .onClick(()=>{
-          this.enu = KFC.B
+          this.enu = KFCLinkData.B
         })
 
       Text('class: ' + this.class.value).key(("link_cla"))

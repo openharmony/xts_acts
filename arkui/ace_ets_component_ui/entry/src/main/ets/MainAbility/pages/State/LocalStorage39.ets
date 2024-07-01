@@ -13,7 +13,10 @@
  * limitations under the License.
  */
 AppStorage.clear()
-let storage1 = new LocalStorage({"PropA":47})
+interface LocalStorage39Type {
+  PropA: number
+}
+let storage1 = new LocalStorage({"PropA":47} as LocalStorage39Type)
 let storage39 = new LocalStorage();
 storage39['PropA'] = 47;
 storage39['PropB'] = 1;
@@ -24,8 +27,8 @@ struct LocalStorage39 {
   @LocalStorageProp('PropA') storProp1: number = 1
   @LocalStorageProp('PropB') storProp2: number = 2
   @State sizenum: number = 0;
-  @State value1: string = 'Init'
-  @State value2: string = 'Init'
+  @State value1: string|undefined = 'Init'
+  @State value2: string|undefined = 'Init'
   @State keys1: string = 'Init'
 
 

@@ -13,7 +13,11 @@
  * limitations under the License.
  */
 AppStorage.clear()
-let storage224 = new LocalStorage({"PropA":1,"PropB":2})
+interface LocalStorageLinkOne {
+  PropA: number
+  PropB: number
+}
+let storage224 = new LocalStorage({"PropA":1,"PropB":2} as LocalStorageLinkOne)
 
 
 @Entry(storage224)
@@ -25,7 +29,7 @@ struct LocalStoageLinkOne {
   @State text2: string = ''
   @State text3: string = ''
 
-  @State vae : number = storage224.get('PropB')
+  @State vae : number|undefined = storage224.get('PropB')
   build(){
     Column({space:15}){
       Button(`Has ${this.text1}`).onClick(()=>{

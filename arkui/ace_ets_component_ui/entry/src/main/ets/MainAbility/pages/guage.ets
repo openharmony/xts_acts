@@ -15,6 +15,8 @@
  */
 import {MessageManager,Callback} from '../utils/MessageManager';
 
+type Message = number|Array<[number,number]>
+
 @Entry
 @Component
 struct GaugeExample {
@@ -27,37 +29,37 @@ struct GaugeExample {
   @State max:number = 100;
   @State wth:number = 100;
 
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
   onPageShow() {
     console.info('Gauge onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'startAngle') {
-          this.startAngle = message.value
+          this.startAngle = message.value as number
       }
       if (message.name == 'endAngle') {
-          this.endAngle = message.value
+          this.endAngle = message.value as number
       }
       if (message.name == 'colors') {
-          this.colors = message.value
+          this.colors = message.value as Array<[number,number]>
       }
       if (message.name == 'strokeWidth') {
-          this.strokeWidth = message.value
+          this.strokeWidth = message.value as number
       }
       if (message.name == 'value') {
-          this.value = message.value
+          this.value = message.value as number
       }
       if (message.name == 'min') {
-          this.min = message.value
+          this.min = message.value as number
       }
       if (message.name == 'max') {
-          this.max = message.value
+          this.max = message.value as number
       }
       if (message.name == 'wth') {
-          this.wth = message.value
+          this.wth = message.value as number
       }
     }
     this.messageManager.registerCallback(callback)

@@ -14,13 +14,16 @@
  * limitations under the License.
  */
 import {MessageManager,Callback} from '../utils/MessageManager';
+
+type Message = ButtonType|boolean|string|Color|FontStyle|FontWeight
+
 @Entry
 @Component
 struct ButtonExample {
   @State bttype:ButtonType = ButtonType.Normal
   @State stateEffect:boolean = true
   @State str:string = "Disable1"
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
   
   
   @State fontColor:Color = Color.Red
@@ -34,29 +37,29 @@ struct ButtonExample {
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'bttype') {
-          this.bttype = message.value
+          this.bttype = message.value as ButtonType
       }
       if (message.name == 'stateEffect') {
-          this.stateEffect = message.value
+          this.stateEffect = message.value as boolean
       }
 
       if (message.name == 'fontSize') {
-          this.fontSize = message.value
+          this.fontSize = message.value as string
       }
       if (message.name == 'fontColor') {
-          this.fontColor = message.value
+          this.fontColor = message.value as Color
       }
       if (message.name == 'fontFamily') {
-          this.fontFamily = message.value
+          this.fontFamily = message.value as string
       }
       if (message.name == 'fontStyle') {
-          this.fontStyle = message.value
+          this.fontStyle = message.value as FontStyle
       }
       if (message.name == 'fontWeight') {
-          this.fontWeight = message.value
+          this.fontWeight = message.value as FontWeight
       }
       
     }

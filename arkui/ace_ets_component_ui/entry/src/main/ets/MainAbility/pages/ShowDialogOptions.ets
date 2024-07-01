@@ -14,6 +14,7 @@
  */
 
 import promptAction from '@ohos.promptAction'
+import { BusinessError } from '@ohos.base';
 
 @Entry
 @Component
@@ -43,7 +44,7 @@ struct PromptActionOptions {
           })
             .then(data=>{
              console.info('showDialog success,click button:'+ data.index);
-          }).catch(error=>{
+          }).catch((error: BusinessError) => {
              console.info('showDialog error:'+ error);
           })
         })

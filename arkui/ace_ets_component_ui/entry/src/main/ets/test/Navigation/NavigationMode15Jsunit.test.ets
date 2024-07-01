@@ -13,15 +13,15 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 export default function NavigationMode15Jsunit() {
-  describe('NavigationMode15Jsunit', function () {
-    beforeEach(async function (done) {
+  describe('NavigationMode15Jsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("NavigationMode15Jsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Navigation/NavigationModel15',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Navigation/NavigationModel15',
       }
       try {
         router.clear();
@@ -45,7 +45,7 @@ export default function NavigationMode15Jsunit() {
     * @tc.desc  : When NavigationMode is set to Auto, a single column is displayed in Auto, and the mode is dynamically switched to the stack mode.
     * @tc.level : Level 3
     */
-    it('NavigationMode15Jsunit_0100', 0, async function (done) {
+    it('NavigationMode15Jsunit_0100', 0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       let driver = await UiDriver.create()
       await CommonFunc.sleep(500);
@@ -53,7 +53,7 @@ export default function NavigationMode15Jsunit() {
       await CZbutton.click();
       await CommonFunc.sleep(2000);
       let strcontent = getInspectorByKey('NavigationModel15Txt');
-      let obj = JSON.parse(strcontent);
+      let obj: ESObject = JSON.parse(strcontent);
       await CommonFunc.sleep(1000);
       console.info('NavigationMode15Jsunit_0100 component obj is: ' + obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('doing1');

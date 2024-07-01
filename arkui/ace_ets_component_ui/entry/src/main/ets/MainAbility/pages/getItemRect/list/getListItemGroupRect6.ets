@@ -51,13 +51,13 @@ struct getListItemGroupRect6 {
     }.padding("4vp").justifyContent(FlexAlign.SpaceEvenly).width(0).height(0)
   }
 
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<number>()
   onPageShow() {
     console.info('getListItemGroupRect6 onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<number> = message => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'index') {
         this.index = message.value;

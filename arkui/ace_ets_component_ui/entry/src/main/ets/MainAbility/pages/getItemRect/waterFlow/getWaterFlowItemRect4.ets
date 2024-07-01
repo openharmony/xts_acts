@@ -15,6 +15,7 @@
 import {MessageManager,Callback} from '../../../utils/MessageManager';
 import { WaterFlowDataSource } from './WaterFlowDataSource'
 
+type Message = number|Visibility
 
 @Entry
 @Component
@@ -35,18 +36,18 @@ struct getWaterFlowItemRect4 {
   @State width1: number = 0
   @State height1: number = 0
 
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
   onPageShow() {
     console.info('getWaterFlowItemRect4 onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value);
       if(message.name == 'index') {
-        this.index = message.value;
+        this.index = message.value as number;
       }else if (message.name == 'visibility1') {
-        this.visibility1 = message.value;
+        this.visibility1 = message.value as Visibility;
       }
     }
     this.messageManager.registerCallback(callback);

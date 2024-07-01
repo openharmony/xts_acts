@@ -41,7 +41,7 @@ class MyDataSource81 implements IDataSource {
 struct SwiperNextPrevMarginExample81 {
   private swiperController: SwiperController = new SwiperController()
   private data: MyDataSource81 = new MyDataSource81([])
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<number>()
   @State  displayCount : number = 1;
   aboutToAppear(): void {
     let list: number[] = []
@@ -55,7 +55,7 @@ struct SwiperNextPrevMarginExample81 {
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<number> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'displayCount') {
           this.displayCount = message.value

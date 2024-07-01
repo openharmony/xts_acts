@@ -13,10 +13,10 @@
  * limitations under the License.
  */
 class MyDataSource implements IDataSource {
-  private list: number[] = []
-  private listener: DataChangeListener
+  private list: string[] = []
+  private listener?: DataChangeListener
 
-  constructor(list: number[]) {
+  constructor(list: string[]) {
     this.list = list
   }
 
@@ -24,7 +24,7 @@ class MyDataSource implements IDataSource {
     return this.list.length
   }
 
-  getData(index: number): any {
+  getData(index: number): string {
     return this.list[index]
   }
 
@@ -43,8 +43,8 @@ struct SwiperExample {
   private data: MyDataSource = new MyDataSource([])
   @State  stringValue : string = "hello"
   aboutToAppear(): void {
-    let list = []
-    for (var i = 1; i <= 10; i++) {
+    let list: string[] = []
+    for (let i = 1; i <= 10; i++) {
       list.push(i.toString());
     }
     this.data = new MyDataSource(list)
@@ -55,7 +55,7 @@ struct SwiperExample {
       Swiper(this.swiperController) {
         LazyForEach(this.data, (item: string) => {
           Text(item).width('90%').height(160).backgroundColor(0xAFEEEE).textAlign(TextAlign.Center).fontSize(30)
-        }, item => item)
+        }, (item: string) => item)
       }
       .cachedCount(2)
       .index(1)

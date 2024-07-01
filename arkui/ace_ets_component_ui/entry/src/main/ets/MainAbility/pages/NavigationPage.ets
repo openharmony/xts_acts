@@ -14,6 +14,13 @@
  */
 import {MessageManager,Callback} from '../utils/MessageManager';
 
+type Message = boolean|string|number|NavigationTitleMode|NavBarPosition|NavigationMode
+
+interface BuildType {
+  text: string,
+  num: number
+}
+
 @Entry
 @Component
 struct NavigationPage {
@@ -32,7 +39,7 @@ struct NavigationPage {
   @State titleModeChange: string = ''
   @State navBarStateChange: string = ''
   @State currentIndex: number = 0
-  @State Build: Array<Object> = [
+  @State Build: BuildType[] = [
     {
       text: 'add',
       num: 0
@@ -46,47 +53,47 @@ struct NavigationPage {
       num: 2
     }
   ]
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
 
   onPageShow() {
     console.info('NavDestination onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'mainTitleName') {
-        this.mainTitleName = message.value
+        this.mainTitleName = message.value as string
       }
       if (message.name == 'subTitleName') {
-        this.subTitleName = message.value
+        this.subTitleName = message.value as string
       }
       if (message.name == 'titleMode') {
-        this.titleMode = message.value
+        this.titleMode = message.value as NavigationTitleMode
       }
       if (message.name == 'hideToolBar') {
-        this.hideToolBar = message.value
+        this.hideToolBar = message.value as boolean
       }
       if (message.name == 'hideTitleBar') {
-        this.hideTitleBar = message.value
+        this.hideTitleBar = message.value as boolean
       }
       if (message.name == 'hideBackButton') {
-        this.hideBackButton = message.value
+        this.hideBackButton = message.value as boolean
       }
       if (message.name == 'navBarWidth') {
-        this.navBarWidth = message.value
+        this.navBarWidth = message.value as number
       }
       if (message.name == 'navBarPosition') {
-        this.navBarPosition = message.value
+        this.navBarPosition = message.value as NavBarPosition
       }
       if (message.name == 'mode') {
-        this.mode = message.value
+        this.mode = message.value as NavigationMode
       }
       if (message.name == 'backButtonIcon') {
-        this.backButtonIcon = message.value
+        this.backButtonIcon = message.value as string
       }
       if (message.name == 'hideNavBar') {
-        this.hideNavBar = message.value
+        this.hideNavBar = message.value as boolean
       }
     }
     this.messageManager.registerCallback(callback)
@@ -124,7 +131,7 @@ struct NavigationPage {
 
   @Builder NavigationToolbar() {
     Row() {
-      ForEach(this.Build, item => {
+      ForEach(this.Build, (item: BuildType) => {
         Column() {
           Image(this.currentIndex == item.num ? 'resources/base/media/icon_selected.svg' : 'resources/base/media/icon_tv.svg')
             .width(24)
@@ -153,7 +160,7 @@ struct NavigationPage {
           .margin({ top: 8, left: 12 })
 
         List({ space: 12, initialIndex: 0 }) {
-          ForEach(this.arr, (item) => {
+          ForEach(this.arr, (item: number) => {
             ListItem() {
               Text('' + item)
                 .width('90%')
@@ -164,7 +171,7 @@ struct NavigationPage {
                 .fontWeight(500)
                 .textAlign(TextAlign.Center)
             }.editable(true)
-          }, item => item)
+          }, (item: string) => item)
         }
         .height(324)
         .width('100%')

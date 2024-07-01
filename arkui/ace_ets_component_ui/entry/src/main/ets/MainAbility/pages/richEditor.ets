@@ -70,11 +70,12 @@ struct richeditor2 {
             start: this.start,
             end: this.end
           }).forEach(item => {
-            if ("imageStyle" in item) {
-              this.content += item.valueResourceStr;
+            const itemObj: ESObject = item;
+            if (itemObj.imageStyle) {
+              this.content += itemObj.valueResourceStr;
               this.content += "\n"
             } else {
-              this.content += item.value;
+              this.content += itemObj.value;
               this.content += "\n"
             }
           })
@@ -127,7 +128,8 @@ struct richeditor2 {
           .bindSelectionMenu(RichEditorSpanType.IMAGE,this.SubMenu(),ResponseType.RightClick)
           .bindSelectionMenu(RichEditorSpanType.MIXED,this.SubMenu(),ResponseType.RightClick)
           .onSelect((value: RichEditorSelection) => {
-            [this.start, this.end] = value.selection;
+            this.start = value.selection[0];
+            this.end = value.selection[1];
             this.message = "[" + this.start + ", " + this.end + "]"
           })
           .aboutToIMEInput((value: RichEditorInsertValue) => {
@@ -153,10 +155,11 @@ struct richeditor2 {
               console.log("spanIndex:" + item.spanPosition.spanIndex)
               console.log("spanRange:[" + item.spanPosition.spanRange[0] + "," + item.spanPosition.spanRange[1] + "]")
               console.log("offsetInSpan:[" + item.offsetInSpan[0] + "," + item.offsetInSpan[1] + "]")
-              if ("imageStyle" in item) {
-                console.log("image:" + item.valueResourceStr)
+              const itemObj: ESObject = item;
+              if (itemObj.imageStyle) {
+                console.log("image:" + itemObj.valueResourceStr)
               } else {
-                console.log("text:" + item.value)
+                console.log("text:" + itemObj.value)
               }
             })
             return true;

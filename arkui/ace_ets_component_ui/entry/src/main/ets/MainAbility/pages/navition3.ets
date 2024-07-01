@@ -38,7 +38,7 @@ struct navigationType {
           .backgroundColor('#FFFFFF')
 
         List({ space: 12 }) {
-          ForEach(this.arr, (item) => {
+          ForEach(this.arr, (item: number) => {
             ListItem() {
               NavRouter() {
                 Text("NavRouter" + item)
@@ -56,7 +56,7 @@ struct navigationType {
               }
 
             }
-          }, item => item)
+          }, (item: string) => item)
         }
         .width("90%")
         .margin({ top: 12 })

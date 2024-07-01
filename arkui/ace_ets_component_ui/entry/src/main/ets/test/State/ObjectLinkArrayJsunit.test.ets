@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
 export default function ObjectLinkArrayJsunit() {
-  describe('ObjectLinkArrayJsunit', function () {
-    beforeEach(async function (done) {
+  describe('ObjectLinkArrayJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("ObjectLinkArrayJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/ObjectLinkArray',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/ObjectLinkArray',
       }
       try {
         router.clear();
@@ -42,7 +42,7 @@ export default function ObjectLinkArrayJsunit() {
       }
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       let driver = Driver.create();
       await CommonFunc.sleep(500);      
       let button = await driver.findComponent(ON.id('arrViewB_reset'));
@@ -51,11 +51,11 @@ export default function ObjectLinkArrayJsunit() {
       await CommonFunc.sleep(1000);
     });
 
-    it('ObjectLinkArrayJsunit_0100', 0, async function (done) {
+    it('ObjectLinkArrayJsunit_0100', 0, async (done: Function) => {
 
       console.info('ObjectLinkArrayJsunit_0100 START');
       let strJson = getInspectorByKey('view_arrObl');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ObjectLinkArrayJsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ObjectLinkArrayJsunit_0100] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('hello: [{"num":5,"id":0},{"num":6,"id":1}]');
@@ -63,7 +63,7 @@ export default function ObjectLinkArrayJsunit() {
       done();
     });
 
-    it('ObjectLinkArrayJsunit_0200', 0, async function (done) {
+    it('ObjectLinkArrayJsunit_0200', 0, async (done: Function) => {
 
       console.info('ObjectLinkArrayJsunit_0200 START');
       let driver = await Driver.create()
@@ -72,7 +72,7 @@ export default function ObjectLinkArrayJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('view_arrObl');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ObjectLinkArrayJsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[ObjectLinkArrayJsunit_0200] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('hello: [{"num":8,"id":2},{"num":6,"id":1}]');
@@ -80,7 +80,7 @@ export default function ObjectLinkArrayJsunit() {
       done();
     });
 
-    it('ObjectLinkArrayJsunit_0300', 0, async function (done) {
+    it('ObjectLinkArrayJsunit_0300', 0, async (done: Function) => {
 
       console.info('ObjectLinkArrayJsunit_0300 START');
       let driver = await Driver.create()
@@ -89,7 +89,7 @@ export default function ObjectLinkArrayJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('view_arrObl');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ObjectLinkArrayJsunit_0300] component obj is: " + JSON.stringify(obj));
       console.info("[ObjectLinkArrayJsunit_0300] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('hello: [{"num":5,"id":0},{"num":6,"id":1},{"num":7,"id":2}]');
@@ -97,7 +97,7 @@ export default function ObjectLinkArrayJsunit() {
       done();
     });
 
-    it('ObjectLinkArrayJsunit_0400', 0, async function (done) {
+    it('ObjectLinkArrayJsunit_0400', 0, async (done: Function) => {
 
       console.info('ObjectLinkArrayJsunit_0400 START');
       let driver = await Driver.create()
@@ -106,7 +106,7 @@ export default function ObjectLinkArrayJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('view_arrObl');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ObjectLinkArrayJsunit_0400] component obj is: " + JSON.stringify(obj));
       console.info("[ObjectLinkArrayJsunit_0400] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('hello: [{"num":6,"id":1}]');
@@ -114,7 +114,7 @@ export default function ObjectLinkArrayJsunit() {
       done();
     });
 
-    it('ObjectLinkArrayJsunit_0500', 0, async function (done) {
+    it('ObjectLinkArrayJsunit_0500', 0, async (done: Function) => {
 
       console.info('ObjectLinkArrayJsunit_0500 START');
       let driver = await Driver.create()
@@ -123,7 +123,7 @@ export default function ObjectLinkArrayJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('view_arrObl');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ObjectLinkArrayJsunit_0500] component obj is: " + JSON.stringify(obj));
       console.info("[ObjectLinkArrayJsunit_0500] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('hello: [{"num":5,"id":0}]');
@@ -131,7 +131,7 @@ export default function ObjectLinkArrayJsunit() {
       done();
     });
 
-    it('ObjectLinkArrayJsunit_0600', 0, async function (done) {
+    it('ObjectLinkArrayJsunit_0600', 0, async (done: Function) => {
 
       console.info('ObjectLinkArrayJsunit_0600 START');
       let driver = await Driver.create()
@@ -140,7 +140,7 @@ export default function ObjectLinkArrayJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('view_arrObl');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ObjectLinkArrayJsunit_0600] component obj is: " + JSON.stringify(obj));
       console.info("[ObjectLinkArrayJsunit_0600] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('hello: [{"num":5,"id":2},{"num":6,"id":3}]');

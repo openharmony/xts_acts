@@ -13,25 +13,28 @@
  * limitations under the License.
  */
 import {MessageManager,Callback} from '../utils/MessageManager';
+
+type Message = boolean|string
+
 @Entry
 @Component
 struct CheckboxExample {
   @State  select:boolean = true;
   @State  selectedColor:string = "#ed6f21"
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
   
   onPageShow() {
     console.info('Checkbox onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'select') {
-          this.select = message.value
+          this.select = message.value as boolean
       }
       if (message.name == 'selectedColor') {
-          this.selectedColor = message.value
+          this.selectedColor = message.value as string
       }
       
     }

@@ -14,6 +14,7 @@
  */
 
 import {MessageManager,Callback} from '../utils/MessageManager';
+
 @Entry
 @Component
 struct DialogPage {
@@ -23,7 +24,7 @@ struct DialogPage {
   @State buttonName: string = 'ButtonHORIZONTAL'
   @State buttonName1: string = 'ButtonVERTICAL'
   @State buttonName2: string = 'ButtonAuto'
-  messageManager: MessageManager = new MessageManager()
+  messageManager = new MessageManager<boolean>()
 
   onPageShow() {
     console.info('DialogPage onPageShow')
@@ -31,7 +32,7 @@ struct DialogPage {
       name: 'messageManager', message: this.messageManager
     }
 
-    let callback: Callback = (message: any) => {
+    let callback: Callback<boolean> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'autoCancel') {
         this.autoCancel = message.value

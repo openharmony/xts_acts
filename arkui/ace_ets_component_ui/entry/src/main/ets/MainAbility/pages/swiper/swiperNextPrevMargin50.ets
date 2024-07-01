@@ -36,6 +36,8 @@ class MyDataSource50 implements IDataSource {
   }
 }
 
+type Message = boolean|number
+
 @Entry
 @Component
 struct SwiperNextPrevMarginExample50 {
@@ -55,31 +57,31 @@ struct SwiperNextPrevMarginExample50 {
     this.data = new MyDataSource50(list)
   }
   
- messageManager:MessageManager = new MessageManager()
+ messageManager = new MessageManager<Message>()
   onPageShow() {
     console.info('SwiperNextPrevMargin onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'prevMargin') {
-          this.prevMargin = message.value
+          this.prevMargin = message.value as number
       }
       if (message.name == 'nextMargin') {
-          this.nextMargin = message.value
+          this.nextMargin = message.value as number
       }
       if (message.name == 'vertical') {
-          this.vertical = message.value
+          this.vertical = message.value as boolean
       }
       if (message.name == 'itemSpace') {
-          this.itemSpace = message.value
+          this.itemSpace = message.value as number
       }
       if (message.name == 'displayCount') {
-          this.displayCount = message.value
+          this.displayCount = message.value as number
       }
       if (message.name == 'loop') {
-          this.loop = message.value
+          this.loop = message.value as boolean
       }
       
       

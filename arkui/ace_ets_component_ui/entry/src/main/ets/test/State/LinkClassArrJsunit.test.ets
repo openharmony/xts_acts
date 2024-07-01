@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
 export default function LinkClassArrJsunit() {
-  describe('LinkClassArrJsunit', function () {
-    beforeEach(async function (done) {
+  describe('LinkClassArrJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("LinkClassArrJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/LinkClassArr',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/LinkClassArr',
       }
       try {
         router.clear();
@@ -42,7 +42,7 @@ export default function LinkClassArrJsunit() {
       }
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       let driver = Driver.create();
       await CommonFunc.sleep(500);      
       let button = await driver.findComponent(ON.id('ParentLinkAC_reset'));
@@ -51,7 +51,7 @@ export default function LinkClassArrJsunit() {
       await CommonFunc.sleep(1000);
     });
 
-    it('LinkClassArrJsunit_0100', 0, async function (done) {
+    it('LinkClassArrJsunit_0100', 0, async (done: Function) => {
 
       console.info('LinkClassArrJsunit_0100 START');
       let driver = await UiDriver.create()
@@ -59,13 +59,13 @@ export default function LinkClassArrJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('arr_ParentAC');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[LinkClassArrJsunit_0100] component obj1 is: " + JSON.stringify(obj1));
       console.info("[LinkClassArrJsunit_0100] text: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("arrPar: 3,2,1");
 
       let strJson2 = getInspectorByKey('arr_SonAC');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[LinkClassArrJsunit_0100] component obj2 is: " + JSON.stringify(obj2));
       console.info("[LinkClassArrJsunit_0100] text: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("arrSon: 3,2,1");
@@ -74,7 +74,7 @@ export default function LinkClassArrJsunit() {
       done();
     });
 
-    it('LinkClassArrJsunit_0200', 0, async function (done) {
+    it('LinkClassArrJsunit_0200', 0, async (done: Function) => {
 
       console.info('LinkClassArrJsunit_0200 START');
       let driver = await UiDriver.create()
@@ -82,13 +82,13 @@ export default function LinkClassArrJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('arr_SonAC');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[LinkClassArrJsunit_0200] component obj1 is: " + JSON.stringify(obj1));
       console.info("[LinkClassArrJsunit_0200] text: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("arrSon: 3,2,1");
 
       let strJson2 = getInspectorByKey('arr_ParentAC');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[LinkClassArrJsunit_0200] component obj2 is: " + JSON.stringify(obj2));
       console.info("[LinkClassArrJsunit_0200] text: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("arrPar: 3,2,1");
@@ -97,7 +97,7 @@ export default function LinkClassArrJsunit() {
       done();
     });
 
-    it('LinkClassArrJsunit_0300', 0, async function (done) {
+    it('LinkClassArrJsunit_0300', 0, async (done: Function) => {
 
       console.info('LinkClassArrJsunit_0300 START');
       let driver = await UiDriver.create()
@@ -105,13 +105,13 @@ export default function LinkClassArrJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('class_ParentAC');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[LinkClassArrJsunit_0300] component obj1 is: " + JSON.stringify(obj1));
       console.info("[LinkClassArrJsunit_0300] text: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("classPar: 3");
 
       let strJson2 = getInspectorByKey('class_SonAC');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[LinkClassArrJsunit_0300] component obj2 is: " + JSON.stringify(obj2));
       console.info("[LinkClassArrJsunit_0300] text: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("classSon: 3");
@@ -120,7 +120,7 @@ export default function LinkClassArrJsunit() {
       done();
     });
 
-    it('LinkClassArrJsunit_0400', 0, async function (done) {
+    it('LinkClassArrJsunit_0400', 0, async (done: Function) => {
 
       console.info('LinkClassArrJsunit_0400 START');
       let driver = await UiDriver.create()
@@ -128,13 +128,13 @@ export default function LinkClassArrJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('class_SonAC');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[LinkClassArrJsunit_0400] component obj1 is: " + JSON.stringify(obj1));
       console.info("[LinkClassArrJsunit_0400] text: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("classSon: 2");
 
       let strJson2 = getInspectorByKey('class_ParentAC');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[LinkClassArrJsunit_0400] component obj2 is: " + JSON.stringify(obj2));
       console.info("[LinkClassArrJsunit_0400] text: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("classPar: 2");
@@ -143,7 +143,7 @@ export default function LinkClassArrJsunit() {
       done();
     });
 
-    it('LinkClassArrJsunit_0500', 0, async function (done) {
+    it('LinkClassArrJsunit_0500', 0, async (done: Function) => {
 
       console.info('LinkClassArrJsunit_0500 START');
       let driver = await UiDriver.create()
@@ -151,13 +151,13 @@ export default function LinkClassArrJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('classArr_ParentAC');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[LinkClassArrJsunit_0500] component obj1 is: " + JSON.stringify(obj1));
       console.info("[LinkClassArrJsunit_0500] text: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("classArrPar: 1");
 
       let strJson2 = getInspectorByKey('classArr_SonAC');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[LinkClassArrJsunit_0500] component obj2 is: " + JSON.stringify(obj2));
       console.info("[LinkClassArrJsunit_0500] text: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("classArrSon: 1");
@@ -166,7 +166,7 @@ export default function LinkClassArrJsunit() {
       done();
     });
 
-    it('LinkClassArrJsunit_0600', 0, async function (done) {
+    it('LinkClassArrJsunit_0600', 0, async (done: Function) => {
 
       console.info('LinkClassArrJsunit_0600 START');
       let driver = await UiDriver.create()
@@ -174,13 +174,13 @@ export default function LinkClassArrJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('classArr_SonAC');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[LinkClassArrJsunit_0600] component obj1 is: " + JSON.stringify(obj1));
       console.info("[LinkClassArrJsunit_0600] text: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("classArrSon: 1");
 
       let strJson2 = getInspectorByKey('classArr_ParentAC');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[LinkClassArrJsunit_0600] component obj2 is: " + JSON.stringify(obj2));
       console.info("[LinkClassArrJsunit_0600] text: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("classArrPar: 1");

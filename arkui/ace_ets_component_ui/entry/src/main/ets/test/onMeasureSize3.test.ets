@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../MainAbility/utils/MessageManager';
 
 
 export default function onMeasureSize3() {
-  describe('onMeasureSize3', function () {
-    beforeEach(async function (done) {
+  describe('onMeasureSize3', () => {
+    beforeEach(async (done: Function) => {
       console.info("onMeasureSize3 beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/onMeasureSize3',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/onMeasureSize3',
       }
       try {
         router.clear();
@@ -49,7 +49,7 @@ export default function onMeasureSize3() {
         * @tc.desc  : Set margin and padding when calling onMeasureSize and onPlaceChildren interfaces normally
         * @tc.level : Level 2
         */
-    it('onMeasureSize3_001', 0, async function (done) {
+    it('onMeasureSize3_001', 0, async (done: Function) => {
       console.info('[onMeasureSize3_001] START');
       await CommonFunc.sleep(1000);
 

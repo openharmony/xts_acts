@@ -14,15 +14,15 @@
  */
 import componentUtils from '@ohos.arkui.componentUtils';
 import { expect, it, afterEach, afterAll, beforeEach, beforeAll, describe } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 export default function comSizeAbilityTest_01 () {
-  describe('comSizeAbilityTestJsunit', function () {
-    beforeEach(async function (done) {
+  describe('comSizeAbilityTestJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("comSizeAbilityTestJsunit beforeEach start")
-      let options = {
-        uri: 'MainAbility/pages/comSizeAbility/comSizeAbilityTest_01'
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/comSizeAbility/comSizeAbilityTest_01'
       }
       try {
         router.clear()
@@ -45,7 +45,7 @@ export default function comSizeAbilityTest_01 () {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_02', 0, async  function (done) {
+    it('comSizeAbilityTestJsunit_02', 0, async  (done: Function) => {
       console.info('comSizeAbilityTestJsunit_02 START')
       await CommonFunc.sleep(1000);
       let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById("Badge_Size");
@@ -88,7 +88,7 @@ export default function comSizeAbilityTest_01 () {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_03', 0, async  function (done) {
+    it('comSizeAbilityTestJsunit_03', 0, async  (done: Function) => {
       console.info('comSizeAbilityTestJsunit_03 START')
       await CommonFunc.sleep(1000);
       let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById("Button_Size");
@@ -131,7 +131,7 @@ export default function comSizeAbilityTest_01 () {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_04', 0, async  function (done) {
+    it('comSizeAbilityTestJsunit_04', 0, async  (done: Function) => {
       console.info('comSizeAbilityTestJsunit_04 START')
       await CommonFunc.sleep(1000);
       let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById("Canvas_Size");

@@ -30,6 +30,8 @@ import {MessageManager,Callback} from '../utils/MessageManager';
   .margin({ top: 82, bottom: 40 })
 }
 
+type Message = string|number|ItemState
+
 @Entry
 @Component
 struct StepperExample {
@@ -41,26 +43,26 @@ struct StepperExample {
   @State prevLabel:string = "返回"
   @State testState:ItemState = ItemState.Normal
   
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
 
   onPageShow() {
     console.info('stepper onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'nextLabel') {
-          this.nextLabel = message.value
+          this.nextLabel = message.value as string
       }
       if (message.name == 'prevLabel') {
-          this.prevLabel = message.value
+          this.prevLabel = message.value as string
       }
       if (message.name == 'testState') {
-          this.testState = message.value
+          this.testState = message.value as ItemState
       }
       if (message.name == 'index') {
-          this.currentIndex = message.value
+          this.currentIndex = message.value as number
       }
     }
     this.messageManager.registerCallback(callback)

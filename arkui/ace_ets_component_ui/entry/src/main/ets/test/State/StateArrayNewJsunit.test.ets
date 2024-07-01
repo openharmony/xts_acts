@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 
 
 export default function StateArrayNewJsunit() {
-  describe('StateArrayNewJsunit', function () {
-    beforeEach(async function (done) {
+  describe('StateArrayNewJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("StateArrayNewJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/StateArrayNew',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/StateArrayNew',
       }
       try {
         router.clear();
@@ -43,7 +43,7 @@ export default function StateArrayNewJsunit() {
     });
 
 
-    it('StateArrayNewJsunit_0200', 0, async function (done) {
+    it('StateArrayNewJsunit_0200', 0, async (done: Function) => {
 
       console.info('StateArrayNewJsunit_0200 START');
       let driver = await Driver.create()
@@ -51,7 +51,7 @@ export default function StateArrayNewJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('every_Array');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateArrayNewJsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[StateArrayNewJsunit_0200] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('Click to every value to the array false');
@@ -59,7 +59,7 @@ export default function StateArrayNewJsunit() {
       done();
     });
 
-    it('StateArrayNewJsunit_0400', 0, async function (done) {
+    it('StateArrayNewJsunit_0400', 0, async (done: Function) => {
 
       console.info('StateArrayNewJsunit_0400 START');
       let driver = await Driver.create()
@@ -67,7 +67,7 @@ export default function StateArrayNewJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('some_Array');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateArrayNewJsunit_0400] component obj is: " + JSON.stringify(obj));
       console.info("[StateArrayNewJsunit_0400] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('Click to some value to the array false');
@@ -76,7 +76,7 @@ export default function StateArrayNewJsunit() {
     });
 
 
-    it('StateArrayNewJsunit_0600', 0, async function (done) {
+    it('StateArrayNewJsunit_0600', 0, async (done: Function) => {
 
       console.info('StateArrayNewJsunit_0600 START');
       let driver = await Driver.create()
@@ -84,7 +84,7 @@ export default function StateArrayNewJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('filter_Array');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateArrayNewJsunit_0600] component obj is: " + JSON.stringify(obj));
       console.info("[StateArrayNewJsunit_0600] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("Click to filter value to the array exuberant,destruction,present");
@@ -93,7 +93,7 @@ export default function StateArrayNewJsunit() {
     });
 
 
-    it('StateArrayNewJsunit_0800', 0, async function (done) {
+    it('StateArrayNewJsunit_0800', 0, async (done: Function) => {
 
       console.info('StateArrayNewJsunit_0800 START');
       let driver = await Driver.create()
@@ -101,7 +101,7 @@ export default function StateArrayNewJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('reduce_Array');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateArrayNewJsunit_0800] component obj is: " + JSON.stringify(obj));
       console.info("[StateArrayNewJsunit_0800] ClassA: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('Click to reduce value to the array 10');
@@ -109,7 +109,7 @@ export default function StateArrayNewJsunit() {
       done();
     });
 
-    it('StateArrayNewJsunit_1000', 0, async function (done) {
+    it('StateArrayNewJsunit_1000', 0, async (done: Function) => {
 
       console.info('StateArrayNewJsunit_1000 START');
       let driver = await Driver.create()
@@ -117,7 +117,7 @@ export default function StateArrayNewJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('reduceRight_Array');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateArrayNewJsunit_1000] component obj is: " + JSON.stringify(obj));
       console.info("[StateArrayNewJsunit_1000] ClassA: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('Click to reduceRight value to the array 4,5,2,3,0,1');

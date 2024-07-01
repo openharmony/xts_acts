@@ -24,7 +24,7 @@ struct CountDownComponent {
       Column({ space: 20 }) {
         Text("Prop子组件颜色undefined-->Pink")
         Button('button')
-          .backgroundColor(this.color1)
+          .backgroundColor(this.color1!)
           .onClick(() => {
             this.color1 = Color.Pink
           })
@@ -32,7 +32,7 @@ struct CountDownComponent {
 
         Text("Prop子组件颜色null-->Pink")
         Button('button')
-          .backgroundColor(this.color2)
+          .backgroundColor(this.color2!)
           .onClick(() => {
             this.color2 = Color.Pink
           })
@@ -40,7 +40,7 @@ struct CountDownComponent {
 
         Text("Prop子组件文本undefined-->100")
         Button('button')
-          .fontSize(this.number1)
+          .fontSize(this.number1!)
           .onClick(() => {
             this.number1 = 100
           })
@@ -48,7 +48,7 @@ struct CountDownComponent {
 
         Text("Prop子组件文本null-->100")
         Button('button')
-          .fontSize(this.number2)
+          .fontSize(this.number2!)
           .onClick(() => {
             this.number2 = 100
           })
@@ -77,7 +77,7 @@ struct ParentComponent {
           Column({ space: 20 }) {
             Text("Prop父组件颜色undefined-->Pink")
             Button('button')
-              .backgroundColor(this.color1)
+              .backgroundColor(this.color1!)
               .onClick(() => {
                 this.color1 = Color.Pink
               })
@@ -85,7 +85,7 @@ struct ParentComponent {
 
             Text("Prop父组件颜色null-->Pink")
             Button('button')
-              .backgroundColor(this.color2)
+              .backgroundColor(this.color2!)
               .onClick(() => {
                 this.color2 = Color.Pink
               })
@@ -93,7 +93,7 @@ struct ParentComponent {
 
             Text("Prop父组件文本undefined-->100")
             Button('button')
-              .fontSize(this.number1)
+              .fontSize(this.number1!)
               .onClick(() => {
                 this.number1 = 100
               })
@@ -101,7 +101,7 @@ struct ParentComponent {
 
             Text("Prop父组件文本null-->100")
             Button('button')
-              .fontSize(this.number2)
+              .fontSize(this.number2!)
               .onClick(() => {
                 this.number2 = 100
               })

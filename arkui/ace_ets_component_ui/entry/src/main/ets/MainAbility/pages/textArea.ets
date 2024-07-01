@@ -13,7 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- import {MessageManager,Callback} from '../utils/MessageManager';
+import {MessageManager,Callback} from '../utils/MessageManager';
+
+type Message = string|number|TextAlign|CopyOptions
+
 @Entry
 @Component
 struct TextAreaExample {
@@ -33,56 +36,56 @@ struct TextAreaExample {
   @State message3:string = 'text'
   @State message4:string = 'text'
 
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
 
   onPageShow() {
     console.info('TextArea onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'text') {
-          this.text = message.value
+          this.text = message.value as string
       }
       if (message.name == 'message1') {
-          this.message1 = message.value
+          this.message1 = message.value as string
       }
       if (message.name == 'sizeT') {
-          this.sizeT = message.value
+          this.sizeT = message.value as number
       }
       if (message.name == 'weightT') {
-          this.weightT = message.value
+          this.weightT = message.value as number
       }
       if (message.name == 'placeholderFont') {
-          this.placeholderFont = message.value
+          this.placeholderFont = message.value as string
       }
       if (message.name == 'placeholderColor') {
-          this.placeholderColor = message.value
+          this.placeholderColor = message.value as string
       }
       if (message.name == 'textAlign') {
-          this.textAlign = message.value
+          this.textAlign = message.value as TextAlign
       }
       if (message.name == 'caretColor') {
-          this.caretColor = message.value
+          this.caretColor = message.value as string
       }
       if (message.name == 'fontSize') {
-          this.fontSize = message.value
+          this.fontSize = message.value as number
       }
       if (message.name == 'copyOption') {
-          this.copyOption = message.value
+          this.copyOption = message.value as CopyOptions
       }
       if (message.name == 'placeholder') {
-          this.placeholder = message.value
+          this.placeholder = message.value as string
       }
       if (message.name == 'message2') {
-          this.message2 = message.value
+          this.message2 = message.value as string
       }
       if (message.name == 'message3') {
-          this.message3 = message.value
+          this.message3 = message.value as string
       }
       if (message.name == 'message4') {
-          this.message4 = message.value
+          this.message4 = message.value as string
       }
     }
     this.messageManager.registerCallback(callback)

@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 
 
 export default function provide1() {
-  describe('provide1', function () {
-    beforeEach(async function (done) {
+  describe('provide1', () => {
+    beforeEach(async (done: Function) => {
       console.info("provide1 beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Zhuang/provide1',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Zhuang/provide1',
       }
       try {
         router.clear();
@@ -41,19 +41,19 @@ export default function provide1() {
       }
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       router.back()
     });
 
-    it('provide1_0100', 0, async function (done) {
+    it('provide1_0100', 0, async (done: Function) => {
       console.info('provide1_0100 START');
       let driver = await UiDriver.create()
       let button = await driver.findComponent(BY.key('pBtn1'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('pBtn1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[provide1_0100] component obj is: " + JSON.stringify(obj));
       console.info("[provide1_0100] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual('#FFFFC0CB');
@@ -62,14 +62,14 @@ export default function provide1() {
 
     });
 
-    it('provide1_0200', 0, async function (done) {
+    it('provide1_0200', 0, async (done: Function) => {
       console.info('provide1_0200 START');
       let driver = await UiDriver.create()
       let button = await driver.findComponent(BY.key('pBtn2'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('pBtn2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[provide1_0200] component obj is: " + JSON.stringify(obj));
       console.info("[provide1_0200] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual('#FFFFC0CB');
@@ -79,14 +79,14 @@ export default function provide1() {
     });
 
 
-    it('provide1_0300', 0, async function (done) {
+    it('provide1_0300', 0, async (done: Function) => {
       console.info('provide1_0300 START');
       let driver = await UiDriver.create()
       let button = await driver.findComponent(BY.key('pBtn3'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('pBtn3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[provide1_0300] component obj is: " + JSON.stringify(obj));
       console.info("[provide1_0300] title: " + JSON.stringify(obj.$attrs.fontSize));
       expect(obj.$attrs.fontSize).assertEqual('100.00fp');
@@ -95,14 +95,14 @@ export default function provide1() {
 
     });
 
-    it('provide1_0400', 0, async function (done) {
+    it('provide1_0400', 0, async (done: Function) => {
       console.info('provide1_0400 START');
       let driver = await UiDriver.create()
       let button = await driver.findComponent(BY.key('pBtn4'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('pBtn4');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[provide1_0400] component obj is: " + JSON.stringify(obj));
       console.info("[provide1_0400] title: " + JSON.stringify(obj.$attrs.fontSize));
       expect(obj.$attrs.fontSize).assertEqual('100.00fp');
@@ -112,14 +112,14 @@ export default function provide1() {
     });
 
 
-    it('provide1_0500', 0, async function (done) {
+    it('provide1_0500', 0, async (done: Function) => {
       console.info('provide1_0500 START');
       let driver = await UiDriver.create()
       let button = await driver.findComponent(BY.key('cBtn1'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('cBtn1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[provide1_0500] component obj is: " + JSON.stringify(obj));
       console.info("[provide1_0500] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual('#FFFFC0CB');
@@ -128,7 +128,7 @@ export default function provide1() {
 
     });
 
-    it('provide1_0600', 0, async function (done) {
+    it('provide1_0600', 0, async (done: Function) => {
       console.info('provide1_0600 START');
       let driver = await UiDriver.create()
       await driver.swipe(100,500,100,100)
@@ -137,7 +137,7 @@ export default function provide1() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('cBtn2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[provide1_0600] component obj is: " + JSON.stringify(obj));
       console.info("[provide1_0600] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual('#FFFFC0CB');
@@ -147,7 +147,7 @@ export default function provide1() {
     });
 
 
-    it('provide1_0700', 0, async function (done) {
+    it('provide1_0700', 0, async (done: Function) => {
       console.info('provide1_0700 START');
       let driver = await UiDriver.create()
       await driver.swipe(100,500,100,100)
@@ -156,7 +156,7 @@ export default function provide1() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('cBtn3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[provide1_0700] component obj is: " + JSON.stringify(obj));
       console.info("[provide1_0700] title: " + JSON.stringify(obj.$attrs.fontSize));
       expect(obj.$attrs.fontSize).assertEqual('100.00fp');
@@ -165,7 +165,7 @@ export default function provide1() {
 
     });
 
-    it('provide1_0800', 0, async function (done) {
+    it('provide1_0800', 0, async (done: Function) => {
       console.info('provide1_0800 START');
       let driver = await UiDriver.create()
       await driver.swipe(100,500,100,100)
@@ -174,7 +174,7 @@ export default function provide1() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('cBtn4');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[provide1_0800] component obj is: " + JSON.stringify(obj));
       console.info("[provide1_0800] title: " + JSON.stringify(obj.$attrs.fontSize));
       expect(obj.$attrs.fontSize).assertEqual('100.00fp');

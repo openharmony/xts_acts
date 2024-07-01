@@ -24,7 +24,7 @@ struct state2 {
     Column({ space: 20 }) {
       Text("State:type-->undefined")
       Button('button')
-        .type(this.type1)
+        .type(this.type1!)
         .onClick(() => {
           this.type1 = undefined
         })
@@ -32,7 +32,7 @@ struct state2 {
 
       Text("State:type-->null")
       Button('button')
-        .type(this.type2)
+        .type(this.type2!)
         .onClick(() => {
           this.type2 = null
         })
@@ -40,7 +40,7 @@ struct state2 {
 
       Text("State文本10-->undefined")
       Button('button')
-        .fontSize(this.number1)
+        .fontSize(this.number1!)
         .onClick(() => {
           this.number1 = undefined
         })
@@ -48,7 +48,7 @@ struct state2 {
 
       Text("State文本10-->null")
       Button('button')
-        .fontSize(this.number2)
+        .fontSize(this.number2!)
         .onClick(() => {
           this.number2 = null
         })

@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 export default function PropNumber() {
-  describe('PropNumber', function () {
-    beforeEach(async function (done) {
+  describe('PropNumber', () => {
+    beforeEach(async (done: Function) => {
       console.info("PropNumber beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/@state/PropNumber',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/@state/PropNumber',
       }
       try {
         router.clear();
@@ -47,7 +47,7 @@ export default function PropNumber() {
     * @tc.desc  : To test that the Prop decorator supports union types.
     * @tc.level : Level 2
     */
-    it('PropNumber_0100', 0, async function (done) {
+    it('PropNumber_0100', 0, async (done: Function) => {
       console.info('PropNumber_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -55,7 +55,7 @@ export default function PropNumber() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('PropNumber');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropNumber_0100] component obj is: " + JSON.stringify(obj));
       console.info("[PropNumber_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Number]" number is 10');
@@ -68,7 +68,7 @@ export default function PropNumber() {
     * @tc.desc  : To test that the Prop decorator supports union types.
     * @tc.level : Level 2
     */
-    it('PropNumber_0200', 0, async function (done) {
+    it('PropNumber_0200', 0, async (done: Function) => {
       console.info('PropNumber_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -76,7 +76,7 @@ export default function PropNumber() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('PropNumber');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropNumber_0100] component obj is: " + JSON.stringify(obj));
       console.info("[PropNumber_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Object]" number is {"pages":20}');
@@ -89,7 +89,7 @@ export default function PropNumber() {
     * @tc.desc  : To test that the Prop decorator supports union types.
     * @tc.level : Level 2
     */
-    it('PropNumber_0300', 0, async function (done) {
+    it('PropNumber_0300', 0, async (done: Function) => {
       console.info('PropNumber_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -97,7 +97,7 @@ export default function PropNumber() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('PropNumber');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropNumber_0100] component obj is: " + JSON.stringify(obj));
       console.info("[PropNumber_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Object]" number is {"number":"30"}');
@@ -110,7 +110,7 @@ export default function PropNumber() {
     * @tc.desc  : To test that the Prop decorator supports union types.
     * @tc.level : Level 2
     */
-    it('PropNumber_0400', 0, async function (done) {
+    it('PropNumber_0400', 0, async (done: Function) => {
       console.info('PropNumber_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -118,7 +118,7 @@ export default function PropNumber() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('PropNumber');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropNumber_0100] component obj is: " + JSON.stringify(obj));
       console.info("[PropNumber_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Date]" number is "2021-08-08T00:00:00.000Z"');
@@ -131,7 +131,7 @@ export default function PropNumber() {
     * @tc.desc  : To test that the Prop decorator supports union types.
     * @tc.level : Level 2
     */
-    it('PropNumber_0500', 0, async function (done) {
+    it('PropNumber_0500', 0, async (done: Function) => {
       console.info('PropNumber_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -139,7 +139,7 @@ export default function PropNumber() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('PropNumber');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropNumber_0100] component obj is: " + JSON.stringify(obj));
       console.info("[PropNumber_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Boolean]" number is true');

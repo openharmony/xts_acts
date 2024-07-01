@@ -14,17 +14,17 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 
 
 export default function StorageProp22Jsunit() {
-  describe('StorageProp22Jsunit', function () {
-    beforeEach(async function (done) {
+  describe('StorageProp22Jsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("StorageProp22Jsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/StorageProp22',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/StorageProp22',
       }
       try {
         router.clear();
@@ -43,10 +43,10 @@ export default function StorageProp22Jsunit() {
       done();
     });
 
-    it('StorageProp22Jsunit_0100', 0, async function (done) {
+    it('StorageProp22Jsunit_0100', 0, async (done: Function) => {
       console.info('StorageProp22Jsunit_0100 START');
       let strJson = getInspectorByKey('lse1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StorageProp22Jsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[StorageProp22Jsunit_0100] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("LocalStorage值为47");
@@ -54,10 +54,10 @@ export default function StorageProp22Jsunit() {
       done();
     });
 
-    it('StorageProp22Jsunit_0200', 0, async function (done) {
+    it('StorageProp22Jsunit_0200', 0, async (done: Function) => {
       console.info('StorageProp22Jsunit_0200 START');
       let strJson = getInspectorByKey('text_sp');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StorageProp22Jsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[StorageProp22Jsunit_0200] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("当前值为47");
@@ -65,11 +65,11 @@ export default function StorageProp22Jsunit() {
       done();
     });
 
-    it('StorageProp22Jsunit_0300', 0, async function (done) {
+    it('StorageProp22Jsunit_0300', 0, async (done: Function) => {
 
       console.info('StorageProp22Jsunit_0300 START');
       let strJson = getInspectorByKey('lse2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StorageProp22Jsunit_0300] component obj is: " + JSON.stringify(obj));
       console.info("[StorageProp22Jsunit_0300] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("LocalStorage值为4");
@@ -77,11 +77,11 @@ export default function StorageProp22Jsunit() {
       done();
     });
 
-    it('StorageProp22Jsunit_0400', 0, async function (done) {
+    it('StorageProp22Jsunit_0400', 0, async (done: Function) => {
 
       console.info('StorageProp22Jsunit_0400 START');
       let strJson = getInspectorByKey('text_spb');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StorageProp22Jsunit_0400] component obj is: " + JSON.stringify(obj));
       console.info("[StorageProp22Jsunit_0400] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("当前值为4");
@@ -89,7 +89,7 @@ export default function StorageProp22Jsunit() {
       done();
     });
 
-    it('StorageProp22Jsunit_0500', 0, async function (done) {
+    it('StorageProp22Jsunit_0500', 0, async (done: Function) => {
 
       console.info('StorageProp22Jsunit_0500 START');
       let driver = await UiDriver.create()
@@ -98,13 +98,13 @@ export default function StorageProp22Jsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('lse1');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[StorageProp22Jsunit_0500] component obj1 is: " + JSON.stringify(obj1));
       console.info("[StorageProp22Jsunit_0500] text: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("LocalStorage值为47");
 
       let strJson2 = getInspectorByKey('text_sp');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[StorageProp22Jsunit_0500] component obj2 is: " + JSON.stringify(obj2));
       console.info("[StorageProp22Jsunit_0500] text: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("当前值为48");
@@ -112,7 +112,7 @@ export default function StorageProp22Jsunit() {
       done();
     });
 
-    it('StorageProp22Jsunit_0600', 0, async function (done) {
+    it('StorageProp22Jsunit_0600', 0, async (done: Function) => {
       console.info('StorageProp22Jsunit_0600 START');
       let driver = await UiDriver.create()
       let button = await driver.findComponent(BY.key('btn_lse1'));
@@ -120,13 +120,13 @@ export default function StorageProp22Jsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('lse1');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[StorageProp22Jsunit_0600] component obj1 is: " + JSON.stringify(obj1));
       console.info("[StorageProp22Jsunit_0600] text: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("LocalStorage值为47");
 
       let strJson2 = getInspectorByKey('text_sp');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[StorageProp22Jsunit_0600] component obj2 is: " + JSON.stringify(obj2));
       console.info("[StorageProp22Jsunit_0600] text: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("当前值为49");
@@ -134,7 +134,7 @@ export default function StorageProp22Jsunit() {
       done();
     });
 
-    it('StorageProp22Jsunit_0700', 0, async function (done) {
+    it('StorageProp22Jsunit_0700', 0, async (done: Function) => {
 
       console.info('StorageProp22Jsunit_0700 START');
       let driver = await UiDriver.create()
@@ -143,13 +143,13 @@ export default function StorageProp22Jsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('lse2');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[StorageProp22Jsunit_0700] component obj1 is: " + JSON.stringify(obj1));
       console.info("[StorageProp22Jsunit_0700] text: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("LocalStorage值为4");
 
       let strJson2 = getInspectorByKey('text_spb');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[StorageProp22Jsunit_0700] component obj2 is: " + JSON.stringify(obj2));
       console.info("[StorageProp22Jsunit_0700] text: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("当前值为5");
@@ -157,7 +157,7 @@ export default function StorageProp22Jsunit() {
       done();
     });
 
-    it('StorageProp22Jsunit_0800', 0, async function (done) {
+    it('StorageProp22Jsunit_0800', 0, async (done: Function) => {
 
       console.info('StorageProp22Jsunit_0800 START');
       let driver = await UiDriver.create()
@@ -166,13 +166,13 @@ export default function StorageProp22Jsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('lse2');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[StorageProp22Jsunit_0800] component obj1 is: " + JSON.stringify(obj1));
       console.info("[StorageProp22Jsunit_0800] text: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("LocalStorage值为4");
 
       let strJson2 = getInspectorByKey('text_spb');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[StorageProp22Jsunit_0800] component obj2 is: " + JSON.stringify(obj2));
       console.info("[StorageProp22Jsunit_0800] text: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("当前值为6");

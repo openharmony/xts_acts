@@ -17,10 +17,10 @@ import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver} from '@ohos.UiTest';
 export default function aboutToAppearRouterTest() {
-  describe('aboutToAppearRouterTest', function () {
-    beforeEach(async function (done) {
+  describe('aboutToAppearRouterTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("aboutToAppearRouterTest beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/back_router/init_page',
       }
       try {
@@ -39,7 +39,7 @@ export default function aboutToAppearRouterTest() {
       console.info("aboutToAppearRouterTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("aboutToAppearRouterTest after each called");
     });
@@ -51,16 +51,16 @@ export default function aboutToAppearRouterTest() {
      * @tc.type
     * @tc.size
      */
-    it('aboutToAppearRouterTest_0100', 0, async function (done) {
+    it('aboutToAppearRouterTest_0100', 0, async (done: Function) => {
       console.info('[aboutToAppearRouterTest_0100] START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('Router1_A'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('text_amount');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       let strJson = getInspectorByKey('text_page');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj1.$attrs.content).assertEqual("3");
       expect(obj.$attrs.content).assertEqual("3");
       let button2 = await driver.findComponent(ON.id('RouterA1'));
@@ -68,9 +68,9 @@ export default function aboutToAppearRouterTest() {
       await CommonFunc.sleep(1000);
       //B页面
       let strJson2 = getInspectorByKey('amount1');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       let strJson3 = getInspectorByKey('page1');
-      let obj3 = JSON.parse(strJson3);
+      let obj3: ESObject = JSON.parse(strJson3);
       expect(obj2.$attrs.content).assertEqual("4");
       expect(obj3.$attrs.content).assertEqual("4");
       let button3 = await driver.findComponent(ON.id('RouterB1'));
@@ -78,9 +78,9 @@ export default function aboutToAppearRouterTest() {
       await CommonFunc.sleep(1000);
       //c页面
       let strJson4 = getInspectorByKey('amountC');
-      let obj4 = JSON.parse(strJson4);
+      let obj4: ESObject = JSON.parse(strJson4);
       let strJson5 = getInspectorByKey('pageC');
-      let obj5 = JSON.parse(strJson5);
+      let obj5: ESObject = JSON.parse(strJson5);
       expect(obj4.$attrs.content).assertEqual("5");
       expect(obj5.$attrs.content).assertEqual("5");
       let button4 = await driver.findComponent(ON.id('RouteC2'));
@@ -100,9 +100,9 @@ export default function aboutToAppearRouterTest() {
       await CommonFunc.sleep(1000);
       //返回初始页
       let strJson6 = getInspectorByKey('amountIndex');
-      let obj6 = JSON.parse(strJson6);
+      let obj6: ESObject = JSON.parse(strJson6);
       let strJson7 = getInspectorByKey('pageIndex');
-      let obj7 = JSON.parse(strJson7);
+      let obj7: ESObject = JSON.parse(strJson7);
       expect(obj6.$attrs.content).assertEqual("2");
       expect(obj7.$attrs.content).assertEqual("2");
       await CommonFunc.sleep(1000);
@@ -117,34 +117,34 @@ export default function aboutToAppearRouterTest() {
      * @tc.type
     * @tc.size
      */
-    it('aboutToAppearRouterTest_0200', 0, async function (done) {
+    it('aboutToAppearRouterTest_0200', 0, async (done: Function) => {
       console.info('[aboutToAppearRouterTest_0200] START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('Router1_A'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('text_amount');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       let strJson = getInspectorByKey('text_page');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj1.$attrs.content).assertEqual("3");
       expect(obj.$attrs.content).assertEqual("3");
       let button2 = await driver.findComponent(ON.id('RouterA1'));
       await button2.click();
       await CommonFunc.sleep(1000);
       let strJson2 = getInspectorByKey('amount1');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       let strJson3 = getInspectorByKey('page1');
-      let obj3 = JSON.parse(strJson3);
+      let obj3: ESObject = JSON.parse(strJson3);
       expect(obj2.$attrs.content).assertEqual("4");
       expect(obj3.$attrs.content).assertEqual("4");
       let button3 = await driver.findComponent(ON.id('RouterB1'));
       await button3.click();
       await CommonFunc.sleep(1000);
       let strJson4 = getInspectorByKey('amountC');
-      let obj4 = JSON.parse(strJson4);
+      let obj4: ESObject = JSON.parse(strJson4);
       let strJson5 = getInspectorByKey('pageC');
-      let obj5 = JSON.parse(strJson5);
+      let obj5: ESObject = JSON.parse(strJson5);
       expect(obj4.$attrs.content).assertEqual("5");
       expect(obj5.$attrs.content).assertEqual("5");
       let button4 = await driver.findComponent(ON.id('RouteC2_A'));

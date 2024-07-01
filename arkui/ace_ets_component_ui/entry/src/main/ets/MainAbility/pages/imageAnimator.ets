@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 import {MessageManager,Callback} from '../utils/MessageManager';
+
+type Message = boolean|number|AnimationStatus|FillMode
+
 @Entry
 @Component
 struct ImageAnimatorExample {
@@ -35,32 +38,32 @@ struct ImageAnimatorExample {
   @State message4:string = "ani"
   @State message5:string = "ani"
 
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
 
   onPageShow() {
     console.info('imageAnimator onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'state') {
-          this.state = message.value
+          this.state = message.value as AnimationStatus
       }
       if (message.name == 'reverse') {
-          this.reverse = message.value
+          this.reverse = message.value as boolean
       }
       if (message.name == 'iterations') {
-          this.iterations = message.value
+          this.iterations = message.value as number
       }
       if (message.name == 'fixedSize') {
-          this.fixedSize = message.value
+          this.fixedSize = message.value as boolean
       }
       if (message.name == 'fillMode') {
-          this.fillMode = message.value
+          this.fillMode = message.value as FillMode
       }
       if (message.name == 'duration') {
-          this.duration = message.value
+          this.duration = message.value as number
       }
     }
     this.messageManager.registerCallback(callback)

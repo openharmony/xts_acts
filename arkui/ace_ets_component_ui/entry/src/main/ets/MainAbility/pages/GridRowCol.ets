@@ -20,14 +20,14 @@ struct GridRowCol {
   @State Number: String[] = ['0', '1', '2', '3', '4']
   scroller: Scroller = new Scroller()
   @State columnsTemplate: string = '1fr 1fr 1fr'
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<string>()
 
   onPageShow() {
     console.info('navigationPosition  onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<string> = message => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'columnsTemplate') {
         this.columnsTemplate = message.value;

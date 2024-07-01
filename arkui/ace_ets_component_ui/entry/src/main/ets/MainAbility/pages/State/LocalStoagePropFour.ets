@@ -20,7 +20,7 @@ let storage111 = new LocalStorage()
 @Component
 struct LocalStoagePropFour {
   @LocalStorageProp('PropA') storProp1: number = 1
-  @State vae: string = storage111.get('PropA') + ""
+  @State vae: string|undefined = storage111.get('PropA') + ""
 
   build(){
     Column({space:15}){

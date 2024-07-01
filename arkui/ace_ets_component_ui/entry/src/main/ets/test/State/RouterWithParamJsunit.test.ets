@@ -19,10 +19,10 @@ import CommonFunc from '../../MainAbility/utils/Common';
 const waitUiReadyMs = 1000;
 
 export default function RouterWithParamJsunit() {
-  describe('RouterWithParamJsunit', function () {
-    beforeEach(async function (done) {
+  describe('RouterWithParamJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("RouterWithParamJsunit beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/State/RouterPushThree',
       }
       try {
@@ -41,7 +41,7 @@ export default function RouterWithParamJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       router.clear()
     });
@@ -54,7 +54,7 @@ export default function RouterWithParamJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('RouterWithParamJsunit_001', 0, async function (done) {
+    it('RouterWithParamJsunit_001', 0, async (done: Function) => {
       console.info('[RouterWithParamJsunit_001] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -63,7 +63,7 @@ export default function RouterWithParamJsunit() {
       await btn.click();
       await driver.delayMs(waitUiReadyMs);
       let strJson = getInspectorByKey('Text_RouterPushThree_Params');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RouterWithParamJsunit_001] obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual("RouterPushThree undefined");
       console.info('[RouterWithParamJsunit_001] END');
@@ -78,7 +78,7 @@ export default function RouterWithParamJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('RouterWithParamJsunit_002', 0, async function (done) {
+    it('RouterWithParamJsunit_002', 0, async (done: Function) => {
       console.info('[RouterWithParamJsunit_002] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -87,7 +87,7 @@ export default function RouterWithParamJsunit() {
       await btn.click();
       await driver.delayMs(waitUiReadyMs);
       let strJson = getInspectorByKey('Text_RouterPushThree_Params');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RouterWithParamJsunit_002] obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('RouterPushThree {"data1":{"data2":"message","data3":12345}}')
       console.info('[RouterWithParamJsunit_002] END');
@@ -102,7 +102,7 @@ export default function RouterWithParamJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('RouterWithParamJsunit_003', 0, async function (done) {
+    it('RouterWithParamJsunit_003', 0, async (done: Function) => {
       console.info('[RouterWithParamJsunit_003] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);      
@@ -111,7 +111,7 @@ export default function RouterWithParamJsunit() {
       await btn1.click();
       await driver.delayMs(waitUiReadyMs);
       let strJson = getInspectorByKey('Text_RouterPushThree_Params');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RouterWithParamJsunit_003] obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('RouterPushThree {"data1":{"data2":["message","message1"]}}')
       console.info('[RouterWithParamJsunit_003] END');
@@ -126,7 +126,7 @@ export default function RouterWithParamJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('RouterWithParamJsunit_004', 0, async function (done) {
+    it('RouterWithParamJsunit_004', 0, async (done: Function) => {
       console.info('[RouterWithParamJsunit_004] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -135,7 +135,7 @@ export default function RouterWithParamJsunit() {
       await btn.click();
       await driver.delayMs(waitUiReadyMs);
       let strJson = getInspectorByKey('Text_RouterPushThree_Params');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RouterWithParamJsunit_004] obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('RouterPushThree {"data1":"message","data2":12345}')
       console.info('[RouterWithParamJsunit_004] END');
@@ -150,7 +150,7 @@ export default function RouterWithParamJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('RouterWithParamJsunit_005', 0, async function (done) {
+    it('RouterWithParamJsunit_005', 0, async (done: Function) => {
       console.info('[RouterWithParamJsunit_005] START');
       let driver = Driver.create();
       let btn = await driver.findComponent(ON.id('turn_RouterPushUrlOne_string_numArray'));
@@ -158,7 +158,7 @@ export default function RouterWithParamJsunit() {
       await btn.click();
       await driver.delayMs(waitUiReadyMs);
       let strJson = getInspectorByKey('Text_RouterPushThree_Params');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RouterWithParamJsunit_005] obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('RouterPushThree {"data1":"message","data2":[1,2,3,4,5]}')
       console.info('[RouterWithParamJsunit_005] END');
@@ -173,7 +173,7 @@ export default function RouterWithParamJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('RouterWithParamJsunit_006', 0, async function (done) {
+    it('RouterWithParamJsunit_006', 0, async (done: Function) => {
       console.info('[RouterWithParamJsunit_006] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -182,7 +182,7 @@ export default function RouterWithParamJsunit() {
       await btn.click();
       await driver.delayMs(waitUiReadyMs);
       let strJson = getInspectorByKey('Text_RouterPushThree_Params');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RouterWithParamJsunit_006] obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('RouterPushThree {"data1":{"data2":"message","data3":12345}}')
       console.info('[RouterWithParamJsunit_006] END');
@@ -197,7 +197,7 @@ export default function RouterWithParamJsunit() {
      * @tc.type :
      * @tc.size :
      */
-    it('RouterWithParamJsunit_007', 0, async function (done) {
+    it('RouterWithParamJsunit_007', 0, async (done: Function) => {
       console.info('[RouterWithParamJsunit_007] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -206,7 +206,7 @@ export default function RouterWithParamJsunit() {
       await btn.click();
       await driver.delayMs(waitUiReadyMs);
       let strJson = getInspectorByKey('Text_RouterPushThree_Params');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RouterWithParamJsunit_007] obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('RouterPushThree undefined')
       console.info('[RouterWithParamJsunit_007] END');

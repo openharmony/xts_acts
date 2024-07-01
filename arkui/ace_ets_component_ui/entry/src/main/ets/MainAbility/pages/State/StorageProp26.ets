@@ -13,14 +13,17 @@
  * limitations under the License.
  */
 AppStorage.clear()
-let storage26 = new LocalStorage({"PropA":1})
+interface LocalStorageProp26 {
+  PropA: number
+}
+let storage26 = new LocalStorage({"PropA":1} as LocalStorageProp26)
 
 @Entry(storage26)
 @Component
 struct StorageProp26 {
   @LocalStorageProp('') storProp1: number = 1
   @State num: number = 0;
-  @State a: number = storage26.get("PropA");
+  @State a: number|undefined = storage26.get("PropA");
 
   build() {
     Column({ space: 15 }) {

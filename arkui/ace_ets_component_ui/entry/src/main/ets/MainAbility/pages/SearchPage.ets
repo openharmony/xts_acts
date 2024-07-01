@@ -14,6 +14,8 @@
  */
 import {MessageManager,Callback} from '../utils/MessageManager';
 
+type Message = string|number|Color|Font|TextAlign|CopyOptions
+
 @Entry
 @Component
 struct SearchPage {
@@ -32,56 +34,56 @@ struct SearchPage {
   @State textAlign: TextAlign = TextAlign.Start
   @State copyOption: CopyOptions = CopyOptions.InApp
   controller: SearchController = new SearchController()
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
 
   onPageShow() {
     console.info('SearchPage onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'changeValue') {
-        this.changeValue = message.value
+        this.changeValue = message.value as string
       }
       if (message.name == 'submitValue') {
-        this.submitValue = message.value
+        this.submitValue = message.value as string
       }
       if (message.name == 'copyValue') {
-        this.copyValue = message.value
+        this.copyValue = message.value as string
       }
       if (message.name == 'cutValue') {
-        this.cutValue = message.value
+        this.cutValue = message.value as string
       }
       if (message.name == 'pasteValue') {
-        this.pasteValue = message.value
+        this.pasteValue = message.value as string
       }
       if (message.name == 'positionValue') {
-        this.positionValue = message.value
+        this.positionValue = message.value as number
       }
       if (message.name == 'placeHolder') {
-        this.placeholder = message.value
+        this.placeholder = message.value as string
       }
       if (message.name == 'icon') {
-        this.icon = message.value
+        this.icon = message.value as string
       }
       if (message.name == 'searchButton') {
-        this.searchButton = message.value
+        this.searchButton = message.value as string
       }
       if (message.name == 'placeholderColor') {
-        this.placeholderColor = message.value
+        this.placeholderColor = message.value as Color
       }
       if (message.name == 'placeholderFont') {
-        this.placeholderFont = message.value
+        this.placeholderFont = message.value as Font
       }
       if (message.name == 'textFont') {
-        this.textFont = message.value
+        this.textFont = message.value as Font
       }
       if (message.name == 'textAlign') {
-        this.textAlign = message.value
+        this.textAlign = message.value as TextAlign
       }
       if (message.name == 'copyOption') {
-        this.copyOption = message.value
+        this.copyOption = message.value as CopyOptions
       }
     }
     this.messageManager.registerCallback(callback)

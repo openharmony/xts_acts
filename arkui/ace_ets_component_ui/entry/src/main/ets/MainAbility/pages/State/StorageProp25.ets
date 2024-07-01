@@ -13,7 +13,10 @@
  * limitations under the License.
  */
 AppStorage.clear()
-let storage25 = new LocalStorage({"PropA":47})
+interface LocalStorageProp25 {
+  PropA: number
+}
+let storage25 = new LocalStorage({"PropA": 47} as LocalStorageProp25)
 storage25.setOrCreate('PropB',9)
 
 @Entry(storage25)
@@ -22,8 +25,8 @@ struct StorageProp25 {
   @LocalStorageProp('PropA') storPropA: number = 1;
   @LocalStorageProp('PropB') storPropB: number = 1;
 
-  @State kuA: number = storage25.get('PropA')
-  @State kuB: number = storage25.get('PropB')
+  @State kuA: number|undefined = storage25.get('PropA')
+  @State kuB: number|undefined = storage25.get('PropB')
 
 
   build() {
@@ -55,7 +58,7 @@ struct StorageProp25 {
 @Component
 struct Child1 {
   @LocalStorageProp('PropC') c1: number = 11;
-  @State kuC: number = 0;
+  @State kuC: number|undefined = 0;
   build() {
     Column({space: 20}) {
       Text(`LocalStorage值PropB为${this.kuC}`).key("lsePropB")
@@ -82,7 +85,7 @@ struct Child1 {
 @Component
 struct Child2 {
   @LocalStorageProp('PropD') d1: number = 22;
-  @State kuD: number = storage25.get('PropD');
+  @State kuD: number|undefined = storage25.get('PropD');
   build() {
     Column({space: 20}) {
       Text(`子组件PropC: ${storage25.get('PropC')}`).fontColor(Color.Red)

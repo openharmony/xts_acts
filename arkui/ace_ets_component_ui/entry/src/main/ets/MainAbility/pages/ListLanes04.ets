@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../utils/MessageManager';
 
 @Entry
 @Component
@@ -23,8 +22,6 @@ struct ListLanes04 {
   @State listSpace: string = '20'
   @State alignListItem: ListItemAlign = ListItemAlign.Start
   @State initialIndex: number = 0
-  messageManager:MessageManager = new MessageManager()
-
 
   build() {
     Column() {

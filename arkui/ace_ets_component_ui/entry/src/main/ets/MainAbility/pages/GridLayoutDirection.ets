@@ -14,6 +14,8 @@
  */
 import {MessageManager,Callback} from '../utils/MessageManager';
 
+type Message = GridDirection|number
+
 @Entry
 @Component
 struct GridLayoutDirection {
@@ -23,23 +25,23 @@ struct GridLayoutDirection {
   @State layoutDirection: GridDirection = GridDirection.Row
   @State gridPadding: number = 0
   @State gridMargin: number = 0
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
 
   onPageShow() {
     console.info('navigationPosition  onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'layoutDirection') {
-        this.layoutDirection = message.value;
+        this.layoutDirection = message.value as GridDirection;
       }
       if (message.name == 'gridPadding') {
-        this.gridPadding = message.value;
+        this.gridPadding = message.value as number;
       }
       if (message.name == 'gridMargin') {
-        this.gridMargin = message.value;
+        this.gridMargin = message.value as number;
       }
 
     }

@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
 export default function ObjectLinkFarJsunit() {
-  describe('ObjectLinkFarJsunit', function () {
-    beforeEach(async function (done) {
+  describe('ObjectLinkFarJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("ObjectLinkFarJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/ObjectLinkFar',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/ObjectLinkFar',
       }
       try {
         router.clear();
@@ -42,7 +42,7 @@ export default function ObjectLinkFarJsunit() {
       }
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       let driver = Driver.create();
       await CommonFunc.sleep(500);      
       let button = await driver.findComponent(ON.id('ObjectLinkFarClassAAA_reset'));
@@ -51,7 +51,7 @@ export default function ObjectLinkFarJsunit() {
       await CommonFunc.sleep(1000);
     });
 
-    it('ObjectLinkFarJsunit_0100', 0, async function (done) {
+    it('ObjectLinkFarJsunit_0100', 0, async (done: Function) => {
 
       console.info('ObjectLinkFarJsunit_0100 START');
       let driver = await UiDriver.create()
@@ -59,13 +59,13 @@ export default function ObjectLinkFarJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('farClassAAA');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[ObjectLinkFarJsunit_0100] component obj1 is: " + JSON.stringify(obj1));
       console.info("[ObjectLinkFarJsunit_0100] text: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("ClassAAA的numA值: 1");
 
       let strJson2 = getInspectorByKey('sonClassBBB');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[ObjectLinkFarJsunit_0100] component obj2 is: " + JSON.stringify(obj2));
       console.info("[ObjectLinkFarJsunit_0100] text: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("ClassBBB的numB值: 5");
@@ -74,7 +74,7 @@ export default function ObjectLinkFarJsunit() {
       done();
     });
 
-    it('ObjectLinkFarJsunit_0200', 0, async function (done) {
+    it('ObjectLinkFarJsunit_0200', 0, async (done: Function) => {
 
       console.info('ObjectLinkFarJsunit_0200 START');
       let driver = await UiDriver.create()
@@ -82,13 +82,13 @@ export default function ObjectLinkFarJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('farClassBBB');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[ObjectLinkFarJsunit_0200] component obj1 is: " + JSON.stringify(obj1));
       console.info("[ObjectLinkFarJsunit_0200] text: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("ClassAAA的classBBB: 5");
 
       let strJson2 = getInspectorByKey('sonClassBBB');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[ObjectLinkFarJsunit_0200] component obj2 is: " + JSON.stringify(obj2));
       console.info("[ObjectLinkFarJsunit_0200] text: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("ClassBBB的numB值: 6");
@@ -97,7 +97,7 @@ export default function ObjectLinkFarJsunit() {
       done();
     });
 
-    it('ObjectLinkFarJsunit_0300', 0, async function (done) {
+    it('ObjectLinkFarJsunit_0300', 0, async (done: Function) => {
 
       console.info('ObjectLinkFarJsunit_0300 START');
       let driver = await UiDriver.create()
@@ -105,19 +105,19 @@ export default function ObjectLinkFarJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('sonClassBBB');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[ObjectLinkFarJsunit_0300] component obj1 is: " + JSON.stringify(obj1));
       console.info("[ObjectLinkFarJsunit_0300] text: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("ClassBBB的numB值: 6");
 
       let strJson2 = getInspectorByKey('farClassAAA');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[ObjectLinkFarJsunit_0300] component obj2 is: " + JSON.stringify(obj2));
       console.info("[ObjectLinkFarJsunit_0300] text: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("ClassAAA的numA值: 0");
 
       let strJson3 = getInspectorByKey('farClassBBB');
-      let obj3 = JSON.parse(strJson3);
+      let obj3: ESObject = JSON.parse(strJson3);
       console.info("[ObjectLinkFarJsunit_0300] component obj3 is: " + JSON.stringify(obj3));
       console.info("[ObjectLinkFarJsunit_0300] text: " + JSON.stringify(obj3.$attrs.content));
       expect(obj3.$attrs.content).assertEqual("ClassAAA的classBBB: 5");

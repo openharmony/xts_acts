@@ -20,10 +20,10 @@ import { Driver, ON } from '@ohos.UiTest';
 
 
 export default function Router1() {
-  describe('Router1', function () {
-    beforeEach(async function (done) {
+  describe('Router1', () => {
+    beforeEach(async (done: Function) => {
       console.info("GridFrictionPage beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Router/Router1',
       }
       try {
@@ -43,7 +43,7 @@ export default function Router1() {
       console.info("Router1 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       router.back()
       console.info("Router1 after each called");
@@ -57,7 +57,7 @@ export default function Router1() {
      * @tc.size :
      */
 
-    it('Router1_0100', 0, async function (done) {
+    it('Router1_0100', 0, async (done: Function) => {
       console.info('[Router1_0100] START');
       console.info('[scrollToJsunit_0100] START');
       await CommonFunc.sleep(1000);
@@ -69,12 +69,12 @@ export default function Router1() {
 
 
       let strJson1 = getInspectorByKey('data1String');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       expect(obj1.$attrs.content).assertEqual('message');
       console.info('data1String' + obj1.$attrs.content)
 
       let strJson2 = getInspectorByKey('data2String');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       expect(obj2.$attrs.content).assertEqual('12345');
       console.info('data2String' + obj1.$attrs.content)
 

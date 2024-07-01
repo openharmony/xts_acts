@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 import {MessageManager,Callback} from '../utils/MessageManager';
+
+type Message = number|TextAlign|TextOverflow
+
 @Entry
 @Component
 struct TextExample1 {
@@ -21,26 +24,26 @@ struct TextExample1 {
   @State maxLines:number = 2
   @State lineHeight:number = 30
 
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
 
   onPageShow() {
     console.info('text onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'textAlign') {
-          this.textAlign = message.value
+          this.textAlign = message.value as TextAlign
       }
       if (message.name == 'textOverflow') {
-          this.textOverflow = message.value
+          this.textOverflow = message.value as TextOverflow
       }
       if (message.name == 'maxLines') {
-          this.maxLines = message.value
+          this.maxLines = message.value as number
       }
       if (message.name == 'lineHeight') {
-          this.lineHeight = message.value
+          this.lineHeight = message.value as number
       }
 
     }
