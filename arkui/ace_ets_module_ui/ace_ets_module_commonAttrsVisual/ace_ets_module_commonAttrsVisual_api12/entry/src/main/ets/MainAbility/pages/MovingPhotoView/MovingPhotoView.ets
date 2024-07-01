@@ -22,10 +22,6 @@ let data: photoAccessHelper.MovingPhoto
 @Component
 struct MovingPhotoView1 {
   controller: MovingPhotoViewController = new MovingPhotoViewController()
-  @State MovingPhotoViewOptions1: MovingPhotoViewOptions = {
-    movingPhoto: data,
-    controller: this.controller
-  }
   @State src: photoAccessHelper.MovingPhoto | undefined = undefined
   @State ImageFit: ImageFit | undefined | null = ImageFit.Contain
   @State start: string = "Init";
@@ -40,7 +36,10 @@ struct MovingPhotoView1 {
     NavDestination() {
       Column() {
         Stack({ alignContent: Alignment.BottomStart }) {
-          MovingPhotoView(this.MovingPhotoViewOptions1)
+          MovingPhotoView({
+            movingPhoto: data,
+            controller: this.controller
+          })
             .id('MovingPhotoView')
             .width(200)
             .height(200)
