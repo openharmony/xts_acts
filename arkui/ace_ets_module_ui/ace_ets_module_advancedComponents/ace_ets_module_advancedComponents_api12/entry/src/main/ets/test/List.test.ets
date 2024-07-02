@@ -23,7 +23,9 @@ import composeListItemOperateItemSubIcon from './composeListItem/composeListItem
 import composeListItemOperateItemSwitch from './composeListItem/composeListItemOperateItemSwitch.test.ets';
 import composeListItemPageTest from './composeListItem/composeListItemPageTest.test.ets';
 import exceptionPromptTest from './exceptionPrompt/exceptionPromptTest.test.ets';
+import exceptionPromptTestTwo from './exceptionPrompt/exceptionPromptTestTwo.test.ets';
 import filterTest from './filter/filterTest.test.ets';
+import filterTestTwo from './filter/filterTestTwo.test.ets';
 import gridObjectSortComponentTest from './gridObjectSortComponent/gridObjectSortComponentTest.test.ets';
 import progressButtonTest from './progressButton/progressButtonTest.test.ets';
 import selectTitleBarTest from './selectTitleBar/selectTitleBarTest.test.ets';
@@ -44,7 +46,9 @@ export default function testsuite() {
   composeListItemOperateItemSwitch();
   composeListItemPageTest();
   exceptionPromptTest();
+  exceptionPromptTestTwo();
   filterTest();
+  filterTestTwo();
   gridObjectSortComponentTest();
   progressButtonTest();
   selectTitleBarTest();
