@@ -20,7 +20,7 @@ import { currentFun, transferArrayBuffer, transferAtomics, setCloneListTest, set
   testString, testTime, testNumber, testTaskPool, promiseCase, asyncSum,
   printArgsFunc, Sum, delaySum, Add, funcStrCat, arraySum, objectSum, Multi, AdditionDelay, WaitforRunner,
   errorTest, testCancelDelayed, dependend, hashMapTest, delay, randomTest, outerTaskFunc,
-  isConcurrentTest1, isConcurrentTest2, sequenceRunnerTest, sequenceRunnerPriorityTest } from './testFunclist'
+  isConcurrentTest1, isConcurrentTest2, sequenceRunnerTest, sequenceRunnerPriorityTest, CancelAndExecuteDelayed } from './testFunclist'
 import { A, B, StrCat, printArgs } from './exportFunclist'
 
 export default function TaskPoolTest() {
@@ -3943,6 +3943,35 @@ export default function TaskPoolTest() {
       } catch (e) {
         expect(e.toString()).assertEqual("BusinessError: The concurrent task has been executed and cannot be executed periodically.");
       }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0174
+     * @tc.name      : TaskPoolTestClass174
+     * @tc.desc      : taskpool repeatedly calling Cancel and ExecuteDelayed, only last task can execute
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass174', 0, async (done: Function) => {
+      let num = 100;
+      let base1:CancelAndExecuteDelayed = new CancelAndExecuteDelayed(num);
+      base1.postRequest();
+      let i = 0;
+      let time = setInterval(() => {
+        base1.postRequest();
+        i++;
+        console.log(i + "秒后又触发成功");
+      }, 500);
+      setTimeout(() => {
+        clearInterval(time);
+      }, 2000);
+      while (!base1.isTerminate) {
+        await promiseCase()
+      }
+      expect(base1.i).assertEqual(1);
+      expect(base1.res).assertEqual(num);
       done();
     })
   })
