@@ -12,18 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-#ifndef DRAWING_NATIVE_CANVAS_TEST_H
-#define DRAWING_NATIVE_CANVAS_TEST_H
+#ifndef DRAWING_NATIVE_PATH_COMMON_H
+#define DRAWING_NATIVE_PATH_COMMON_H
 
 #include "gtest/gtest.h"
 
 namespace OHOS {
 namespace Rosen {
 namespace Drawing {
-class DrawingNativeCanvasTest : public testing::Test {};
+class DrawingNativePathTest : public testing::Test {};
 
 } // namespace Drawing
 } // namespace Rosen
 } // namespace OHOS
 
-#endif // DRAWING_NATIVE_CANVAS_TEST_H
+#endif // DRAWING_NATIVE_PATH_COMMON_H
