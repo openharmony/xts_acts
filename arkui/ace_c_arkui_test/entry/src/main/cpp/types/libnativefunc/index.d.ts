@@ -2926,10 +2926,6 @@ export const testTextPickerRange003: () => number;
 
 export const testTextPickerRange004: () => number;
 
-export const testTextPickerRange005: () => number;
-
-export const testTextPickerRange006: () => number;
-
 export const testTextInputAccessibilityDescription001: () => number;
 
 export const testTextInputAccessibilityDescription002: () => number;

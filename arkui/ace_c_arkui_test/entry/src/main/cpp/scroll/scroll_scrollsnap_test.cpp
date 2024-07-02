@@ -21,7 +21,9 @@ static napi_value TestScrollScrollSnap001(napi_env env, napi_callback_info info)
 {
     NAPI_START(scroll, ARKUI_NODE_SCROLL);
     float param = 1.0;
-    ArkUI_NumberValue value[] = {{.i32 = ARKUI_SCROLL_SNAP_ALIGN_NONE}, {.i32 = true}, {.i32 = true}, {.f32 = param}};
+    float paramSecond = SIZE_100;
+    ArkUI_NumberValue value[] = {
+        {.i32 = ARKUI_SCROLL_SNAP_ALIGN_NONE}, {.i32 = true}, {.i32 = true}, {.f32 = param}, {.f32 = paramSecond}};
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_SCROLL_SNAP, &value_item);
     ASSERT_EQ(ret, SUCCESS);
@@ -29,6 +31,7 @@ static napi_value TestScrollScrollSnap001(napi_env env, napi_callback_info info)
     ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_SNAP)->value[PARAM_1].i32, true);
     ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_SNAP)->value[PARAM_2].i32, true);
     ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_SNAP)->value[PARAM_3].f32, param);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_SNAP)->value[PARAM_4].f32, paramSecond);
     NAPI_END;
 }
 
@@ -36,7 +39,9 @@ static napi_value TestScrollScrollSnap002(napi_env env, napi_callback_info info)
 {
     NAPI_START(scroll, ARKUI_NODE_SCROLL);
     float param = 1.0;
-    ArkUI_NumberValue value[] = {{.i32 = ARKUI_SCROLL_SNAP_ALIGN_START}, {.i32 = true}, {.i32 = true}, {.f32 = param}};
+    float paramSecond = SIZE_100;
+    ArkUI_NumberValue value[] = {
+        {.i32 = ARKUI_SCROLL_SNAP_ALIGN_START}, {.i32 = true}, {.i32 = true}, {.f32 = param}, {.f32 = paramSecond}};
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_SCROLL_SNAP, &value_item);
     ASSERT_EQ(ret, SUCCESS);
@@ -44,6 +49,7 @@ static napi_value TestScrollScrollSnap002(napi_env env, napi_callback_info info)
     ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_SNAP)->value[PARAM_1].i32, true);
     ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_SNAP)->value[PARAM_2].i32, true);
     ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_SNAP)->value[PARAM_3].f32, param);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_SNAP)->value[PARAM_4].f32, paramSecond);
     NAPI_END;
 }
 
@@ -51,7 +57,9 @@ static napi_value TestScrollScrollSnap003(napi_env env, napi_callback_info info)
 {
     NAPI_START(scroll, ARKUI_NODE_SCROLL);
     float param = 1.0;
-    ArkUI_NumberValue value[] = {{.i32 = ARKUI_SCROLL_SNAP_ALIGN_CENTER}, {.i32 = true}, {.i32 = true}, {.f32 = param}};
+    float paramSecond = SIZE_100;
+    ArkUI_NumberValue value[] = {
+        {.i32 = ARKUI_SCROLL_SNAP_ALIGN_CENTER}, {.i32 = true}, {.i32 = true}, {.f32 = param}, {.f32 = paramSecond}};
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_SCROLL_SNAP, &value_item);
     ASSERT_EQ(ret, SUCCESS);
@@ -59,6 +67,7 @@ static napi_value TestScrollScrollSnap003(napi_env env, napi_callback_info info)
     ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_SNAP)->value[PARAM_1].i32, true);
     ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_SNAP)->value[PARAM_2].i32, true);
     ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_SNAP)->value[PARAM_3].f32, param);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_SNAP)->value[PARAM_4].f32, paramSecond);
     NAPI_END;
 }
 
@@ -66,7 +75,9 @@ static napi_value TestScrollScrollSnap004(napi_env env, napi_callback_info info)
 {
     NAPI_START(scroll, ARKUI_NODE_SCROLL);
     float param = 1.0;
-    ArkUI_NumberValue value[] = {{.i32 = ARKUI_SCROLL_SNAP_ALIGN_END}, {.i32 = true}, {.i32 = true}, {.f32 = param}};
+    float paramSecond = SIZE_100;
+    ArkUI_NumberValue value[] = {
+        {.i32 = ARKUI_SCROLL_SNAP_ALIGN_END}, {.i32 = true}, {.i32 = true}, {.f32 = param}, {.f32 = paramSecond}};
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(scroll, NODE_SCROLL_SNAP, &value_item);
     ASSERT_EQ(ret, SUCCESS);
@@ -74,6 +85,7 @@ static napi_value TestScrollScrollSnap004(napi_env env, napi_callback_info info)
     ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_SNAP)->value[PARAM_1].i32, true);
     ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_SNAP)->value[PARAM_2].i32, true);
     ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_SNAP)->value[PARAM_3].f32, param);
+    ASSERT_EQ(nodeAPI->getAttribute(scroll, NODE_SCROLL_SNAP)->value[PARAM_4].f32, paramSecond);
     NAPI_END;
 }
 } // namespace ArkUICapiTest
