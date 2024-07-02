@@ -56,7 +56,7 @@ export default function LoadingProgressContentModifier() {
     it('LoadingProgressContentModifier_001', 0, async (done: Function) => {
       console.info('[LoadingProgressContentModifier_001] START');
       let strJson2 = getInspectorByKey('loadingProgressContentModifierKey01');
-      let obj1 = JSON.parse(strJson2);
+      let obj1: ESObject = JSON.parse(strJson2);
       await Utils.sleep(1000);
       console.info('[LoadingProgressContentModifier_001] obj1 is: ' + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('config.enableLoading是：true');
