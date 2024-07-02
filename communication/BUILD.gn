@@ -24,7 +24,6 @@ group("communication") {
       "bluetooth_profile:ActsBluetoothProFileJsTest",
       "bluetooth_scanpairing:ActsBluetoothScanPairingJsTest",
       "bluetooth_standard:ActsBluetoothJsTest",
-      "btmanager_errorcode202:ActsBtManagerErrorCode202JsTest",
       "btmanager_errorcode401:ActsBtManagerErrorCode401JsTest",
       "btmanager_switchoff:ActsBtManagerSwitchOff003JsTest",
       "dsoftbus/capi_ipc:ActsCAPIIPCTest",
