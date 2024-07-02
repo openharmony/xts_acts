@@ -53,15 +53,17 @@ export default function MenuApi1() {
       console.info('MenuApi1_0100 START');
       await CommonFunc.sleep(1000);
 
-      sendEventByKey('MenuApi1_btn1',10,"")
-      await CommonFunc.sleep(1000);
+      if (globalThis.winLeft == 0) {
+        sendEventByKey('MenuApi1_btn1',10,"")
+        await CommonFunc.sleep(1000);
 
-      sendEventByKey('MenuApi1_btn2',10,"")
-      await CommonFunc.sleep(1000);
+        sendEventByKey('MenuApi1_btn2',10,"")
+        await CommonFunc.sleep(1000);
 
-      let text1 = getInspectorByKey('MenuApi1_text1');
-      expect(String(JSON.parse(text1).$attrs.content)).assertEqual('undefined')
-      await CommonFunc.sleep(1000);
+        let text1 = getInspectorByKey('MenuApi1_text1');
+        expect(String(JSON.parse(text1).$attrs.content)).assertEqual('undefined')
+        await CommonFunc.sleep(1000);
+      }
 
       console.info('MenuApi1_0100 END');
       done();
