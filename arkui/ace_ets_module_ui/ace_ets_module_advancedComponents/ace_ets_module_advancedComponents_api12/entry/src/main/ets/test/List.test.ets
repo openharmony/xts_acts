@@ -38,7 +38,7 @@ import alertDialogTest from './dialog/alertDialogTest.test.ets';
 import confirmDialogTest from './dialog/confirmDialogTest.test.ets';
 import customContentDialogTest from './dialog/customContentDialogTest.test.ets';
 import selectDialogTest from './dialog/selectDialogTest.test.ets';
-import tipsDialogTest from './dialog/tipsDialog.test.ets';
+import tipsDialogTest from './dialog/tipsDialogTest.test.ets';
 import editableTitleBarSafeAreaEdges from './editableTitleBar/editableTitleBarSafeAreaEdges.test.ets';
 import editableTitleBarSafeAreaTypes from './editableTitleBar/editableTitleBarSafeAreaTypes.test.ets';
 import subHeaderButton from './subHeader/subHeaderButton.test.ets';
