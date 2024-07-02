@@ -16,6 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 
 export default function onSelectionChange5() {
   describe('onSelectionChange5', function () {
@@ -60,7 +61,7 @@ export default function onSelectionChange5() {
       await CommonFunc.sleep(300);
 
       let richEditor = await driver.findComponent(ON.id('onSelectionChange5_RichEditor'));
-      await richEditor.doubleClick();
+      await richEditor.longClick();
       await CommonFunc.sleep(1000);
       let Select  = await driver.findComponent(ON.text('全选'))
       await Select .click()
@@ -90,7 +91,14 @@ export default function onSelectionChange5() {
       await CommonFunc.sleep(2500);
 
       let richEditor2 = await driver.findComponent(ON.id('onSelectionChange5_RichEditor'));
-      await richEditor2.doubleClick();
+      // doubleClick
+      let centerPoint = await richEditor2.getBoundsCenter();
+      let point = `${centerPoint.x} ${centerPoint.y}`;
+      let cmd = `uinput -T -d ${point} -u ${point} -i 50 -d ${point} -u ${point}`;
+      let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+      abilityDelegator.executeShellCommand(cmd);
+      await CommonFunc.sleep(2000);
+
       await CommonFunc.sleep(1000);
       let paste = await driver.findComponent(ON.text('粘贴'))
       await paste.click()
