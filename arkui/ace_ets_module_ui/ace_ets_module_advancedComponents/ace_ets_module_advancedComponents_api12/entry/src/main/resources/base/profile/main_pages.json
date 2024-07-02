@@ -21,6 +21,16 @@
     "MainAbility/pages/tabTitleBar/tabTitleBarPageTest",
     "MainAbility/pages/toolBar/toolBarItemState",
     "MainAbility/pages/toolBar/toolBarPageTest",
-    "MainAbility/pages/treeView/treeViewPageTest"
+    "MainAbility/pages/treeView/treeViewPageTest",
+    "MainAbility/pages/dialog/alertDialogTest",
+    "MainAbility/pages/dialog/confirmDialogTest",
+    "MainAbility/pages/dialog/customContentDialogTest",
+    "MainAbility/pages/dialog/selectDialogTest",
+    "MainAbility/pages/dialog/tipsDialogTest",
+    "MainAbility/pages/editableTitleBar/editableTitleBarSafeAreaEdges",
+    "MainAbility/pages/editableTitleBar/editableTitleBarSafeAreaTypes",
+    "MainAbility/pages/subHeader/subHeaderButton",
+    "MainAbility/pages/subHeader/subHeaderIconGroup",
+    "MainAbility/pages/subHeader/subHeaderTextArrow"
   ]
 }
