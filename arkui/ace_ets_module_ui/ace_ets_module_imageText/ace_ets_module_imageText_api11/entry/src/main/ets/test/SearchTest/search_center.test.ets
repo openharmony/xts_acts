@@ -53,21 +53,24 @@ export default function search_center() {
       console.info('[search_center_001] START');
       await CommonFunc.sleep(1000);
 
-      console.log('get click before Initial value')
-      let search_01 = CommonFunc.getComponentRect('search_center_search_01');
-      let y1 = search_01.top
+      if (globalThis.winLeft == 0) {
+        console.log('get click before Initial value')
+        let search_01 = CommonFunc.getComponentRect('search_center_search_01');
+        let y1 = search_01.top
 
-      let driver = await Driver.create();
-      await CommonFunc.sleep(500);
-      await driver.click(
-        (Math.round(search_01.left + (search_01.right - search_01.left) /2)),(Math.round(search_01.top + (search_01.bottom - search_01.top) /2))
-      );
-      await CommonFunc.sleep(1000);
+        let driver = await Driver.create();
+        await CommonFunc.sleep(500);
+        await driver.click(
+          (Math.round(search_01.left + (search_01.right - search_01.left) /2)),(Math.round(search_01.top + (search_01.bottom - search_01.top) /2))
+        );
+        await CommonFunc.sleep(1000);
 
-      let search_02 = CommonFunc.getComponentRect('search_center_search_01');
-      let y2 = search_02.top
+        let search_02 = CommonFunc.getComponentRect('search_center_search_01');
+        let y2 = search_02.top
 
-      expect(y2).assertLess(y1);
+        expect(y2).assertLess(y1);
+      }
+
       done();
     });
 

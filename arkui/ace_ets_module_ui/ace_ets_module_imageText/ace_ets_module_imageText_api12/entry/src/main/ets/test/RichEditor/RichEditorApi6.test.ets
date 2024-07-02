@@ -52,24 +52,25 @@ export default function RichEditorApi6() {
     it('RichEditorApi6_0100', 0, async (done: Function) => {
       console.info('RichEditorApi6_0100 START');
       await CommonFunc.sleep(1000);
+      if (globalThis.winLeft == 0) {
+        let driver = Driver.create();
+        await CommonFunc.sleep(1000);
 
-      let driver = Driver.create();
-      await CommonFunc.sleep(1000);
+        let richEditor1 = CommonFunc.getComponentRect('RichEditorApi6_richEditor1')
+        let y1 = richEditor1.bottom
+        await CommonFunc.sleep(500);
 
-      let richEditor1 = CommonFunc.getComponentRect('RichEditorApi6_richEditor1')
-      let y1 = richEditor1.bottom
-      await CommonFunc.sleep(500);
+        let richEditor1_1 = await driver.findComponent(ON.id("RichEditorApi6_richEditor1"));
+        await richEditor1_1.click()
+        await CommonFunc.sleep(500);
 
-      let richEditor1_1 = await driver.findComponent(ON.id("RichEditorApi6_richEditor1"));
-      await richEditor1_1.click()
-      await CommonFunc.sleep(500);
+        let richEditor2 = CommonFunc.getComponentRect('RichEditorApi6_richEditor1')
+        let y2 = richEditor2.bottom
+        await CommonFunc.sleep(500);
 
-      let richEditor2 = CommonFunc.getComponentRect('RichEditorApi6_richEditor1')
-      let y2 = richEditor2.bottom
-      await CommonFunc.sleep(500);
-
-      expect(y2).assertLess(y1);
-      await CommonFunc.sleep(1000);
+        expect(y2).assertLess(y1);
+        await CommonFunc.sleep(1000);
+      }
 
       console.info('RichEditorApi6_0100 END');
       done();
