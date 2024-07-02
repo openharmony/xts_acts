@@ -97,7 +97,7 @@ export default class CommonFunc {
     } else {
         const o: ObjectWithToString = Object(value);
         const origin = o.toObjectString;
-        o.toObjectString = (new Object()).toString;
+        o.toObjectString = (new BaseObject()).toString;
         result = o.toObjectString();
         o.toObjectString = origin;
     }
@@ -115,3 +115,5 @@ class RectValue {
 interface ObjectWithToString {
   toObjectString?: () => string
 }
+
+class BaseObject {}

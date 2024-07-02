@@ -70,12 +70,11 @@ struct richeditor2 {
             start: this.start,
             end: this.end
           }).forEach(item => {
-            const itemObj: ESObject = item;
-            if (itemObj.imageStyle) {
-              this.content += itemObj.valueResourceStr;
+            if ((item as RichEditorImageSpanResult).imageStyle) {
+              this.content += (item as RichEditorImageSpanResult).valueResourceStr;
               this.content += "\n"
             } else {
-              this.content += itemObj.value;
+              this.content += (item as RichEditorTextSpanResult).value;
               this.content += "\n"
             }
           })
