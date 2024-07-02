@@ -56,7 +56,7 @@ export default function HoverScale_APITest() {
       let point = await row.getBoundsCenter();
       await btn.click();
       await CommonFunc.sleep(5000);
-      await driver.click(point.x/2, point.y/4);
+      await driver.click(Math.round(point.x/2), Math.round(point.y/4));
       await CommonFunc.sleep(1000);
       let hoverScale = getInspectorByKey('hoverScale');
       console.info("[HoverScale_APITest_0100] hoverScale attrs is: " + JSON.stringify(JSON.parse(hoverScale).$attrs));
