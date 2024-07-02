@@ -12,7 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Ability from '@ohos.app.ability.UIAbility'
+import Ability from '@ohos.app.ability.UIAbility';
+import commonEvent from '@ohos.commonEvent';
 
 export default class MainAbility2 extends Ability {
     onCreate(want, launchParam) {
@@ -21,7 +22,7 @@ export default class MainAbility2 extends Ability {
     }
 
     onDestroy() {
-        console.log("[Demo] MainAbility2 onDestroy")
+        console.log("[Demo] MainAbility2 onDestroy");
     }
 
     onWindowStageCreate(windowStage) {
@@ -38,8 +39,11 @@ export default class MainAbility2 extends Ability {
 
     onForeground() {
         // Ability has brought to foreground
-        console.log("[Demo] MainAbility2 onForeground")
+        console.log("[Demo] MainAbility2 onForeground");
         setTimeout(function () {
+          commonEvent.publish('MainAbility2_onForground', (err, data) => {
+            console.log('MainAbility2 onForeground publish succeed' + JSON.stringify(err) + JSON.stringify(data));
+          })
             globalThis.ability2.terminateSelf()
                 .then((data) => {
                     console.info('[Demo] MainAbility2 terminateself succeeded: ' + data);
