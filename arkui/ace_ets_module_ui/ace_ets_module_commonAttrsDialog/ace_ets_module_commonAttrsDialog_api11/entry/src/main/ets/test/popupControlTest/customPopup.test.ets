@@ -55,7 +55,7 @@ export default function customPopup() {
       await Utils.sleep(1500);
       let callback = (indexEvent:events_emitter.EventData) => {
         console.info("customPopup_0100 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.arrowPointPosition).assertEqual('Start');
+        expect(indexEvent.data?.arrowPointPosition).assertEqual('Start');
         done();
       }
       let indexEvent:events_emitter.InnerEvent = {

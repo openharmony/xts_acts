@@ -18,6 +18,8 @@ import { Hypium } from '@ohos/hypium';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import emitter from '@ohos.events.emitter';
 
+interface TheTitle { title: string; subtitle: string; }
+
 @Entry
 @Component
 struct Index {
@@ -27,42 +29,42 @@ struct Index {
   @State detents1: Object = [SheetSize.LARGE, SheetSize.MEDIUM, SheetSize.MEDIUM];
   @State blurStyle1: Object = BlurStyle.Thin;
   @State showClose1: Object = false;
-  @State title1: Object = { title: "323", subtitle: "156" };
+  @State title1: Object = { title: "323", subtitle: "156" } as TheTitle;
   @State preferType1: Object = SheetType.POPUP;
   @State detents2: Object = [SheetSize.MEDIUM, SheetSize.LARGE, 100];
   @State blurStyle2: Object = BlurStyle.Thick;
   @State showClose2: Object = true;
-  @State title2: Object = { title: "title", subtitle: "subtitle" };
+  @State title2: Object = { title: "title", subtitle: "subtitle" } as TheTitle;
   @State preferType2: Object = SheetType.CENTER;
   @State detents3: Object = [100, 100, SheetSize.LARGE];
   @State blurStyle3: Object = BlurStyle.Regular;
   @State showClose3: Object = false;
-  @State title3: Object = { title: "asdasd", subtitle: "1232561" };
+  @State title3: Object = { title: "asdasd", subtitle: "1232561" } as TheTitle;
   @State preferType3: Object = SheetType.POPUP;
   @State detents4: Object = [0, 0, 0];
   @State blurStyle4: Object = BlurStyle.BACKGROUND_REGULAR;
   @State showClose4: Object = true;
-  @State title4: Object = { title: " ", subtitle: " " };
+  @State title4: Object = { title: " ", subtitle: " " } as TheTitle;
   @State preferType4: Object = SheetType.CENTER;
   @State detents5: Object = [, ,];
   @State blurStyle5: Object = " ";
   @State showClose5: Object = " ";
-  @State title5: Object = { title: " ", subtitle: " " };
+  @State title5: Object = { title: " ", subtitle: " " } as TheTitle;
   @State preferType5: Object = " ";
   @State detents6: Object = [SheetSize.LARGE, 10000, SheetSize.MEDIUM];
   @State blurStyle6: Object = BlurStyle.BACKGROUND_THIN;
   @State showClose6: Object = false;
-  @State title6: Object = { title: "标题", subtitle: "文字" };
+  @State title6: Object = { title: "标题", subtitle: "文字" } as TheTitle;
   @State preferType6: Object = SheetType.POPUP;
   @State detents7: Object = [0, 100, 12345];
   @State blurStyle7: Object = BlurStyle.BACKGROUND_ULTRA_THICK;
   @State showClose7: Object = false;
-  @State title7: Object = { title: "@@@", subtitle: "+++" };
+  @State title7: Object = { title: "@@@", subtitle: "+++" } as TheTitle;
   @State preferType7: Object = SheetType.POPUP;
   @State detents8: Object = [54321, 11111, 123456];
   @State blurStyle8: Object = BlurStyle.NONE;
   @State showClose8: Object = true;
-  @State title8: Object = { title: "。。。", subtitle: "，，，" };
+  @State title8: Object = { title: "。。。", subtitle: "，，，" } as TheTitle;
   @State preferType8: Object = SheetType.CENTER;
   @State shouldDismiss: Object = true;
   @State enableOutsideInteractive: boolean = false;
@@ -128,7 +130,7 @@ struct Index {
             console.info("ArkUX_Model_Visual_0150 start to emit action state");
             emitter.emit(backEvent, backData);
           } catch (err) {
-            console.info("ArkUX_Model_Visual_0150 emit action state err: " + JSON.stringify(err.message));
+            console.info("ArkUX_Model_Visual_0150 emit action state err: " + JSON.stringify((err as Error)?.message));
           }
         })
         .bindSheet(true, this.myBuilder(), {
@@ -169,7 +171,7 @@ struct Index {
             console.info("ArkUX_Model_Visual_0160 start to emit action state");
             emitter.emit(backEvent, backData);
           } catch (err) {
-            console.info("ArkUX_Model_Visual_0160 emit action state err: " + JSON.stringify(err.message));
+            console.info("ArkUX_Model_Visual_0160 emit action state err: " + JSON.stringify((err as Error)?.message));
           }
         })
         .bindSheet(true, this.myBuilder(), {
@@ -209,7 +211,7 @@ struct Index {
             console.info("ArkUX_Model_Visual_0170 start to emit action state");
             emitter.emit(backEvent, backData);
           } catch (err) {
-            console.info("ArkUX_Model_Visual_0170 emit action state err: " + JSON.stringify(err.message));
+            console.info("ArkUX_Model_Visual_0170 emit action state err: " + JSON.stringify((err as Error)?.message));
           }
         })
         .bindSheet(true, this.myBuilder(), {
@@ -249,7 +251,7 @@ struct Index {
             console.info("ArkUX_Model_Visual_0180 start to emit action state");
             emitter.emit(backEvent, backData);
           } catch (err) {
-            console.info("ArkUX_Model_Visual_0180 emit action state err: " + JSON.stringify(err.message));
+            console.info("ArkUX_Model_Visual_0180 emit action state err: " + JSON.stringify((err as Error)?.message));
           }
         })
         .bindSheet(true, this.myBuilder(), {
@@ -288,7 +290,7 @@ struct Index {
             console.info("ArkUX_Model_Visual_0190 start to emit action state");
             emitter.emit(backEvent, backData);
           } catch (err) {
-            console.info("ArkUX_Model_Visual_0190 emit action state err: " + JSON.stringify(err.message));
+            console.info("ArkUX_Model_Visual_0190 emit action state err: " + JSON.stringify((err as Error)?.message));
           }
         })
         .bindSheet(true, this.myBuilder(), {
@@ -324,7 +326,7 @@ struct Index {
             console.info("ArkUX_Model_Visual_0200 start to emit action state");
             emitter.emit(backEvent, backData);
           } catch (err) {
-            console.info("ArkUX_Model_Visual_0200 emit action state err: " + JSON.stringify(err.message));
+            console.info("ArkUX_Model_Visual_0200 emit action state err: " + JSON.stringify((err as Error)?.message));
           }
         })
         .bindSheet(true, this.myBuilder(), {
@@ -363,7 +365,7 @@ struct Index {
             console.info("ArkUX_Model_Visual_0210 start to emit action state");
             emitter.emit(backEvent, backData);
           } catch (err) {
-            console.info("ArkUX_Model_Visual_0210 emit action state err: " + JSON.stringify(err.message));
+            console.info("ArkUX_Model_Visual_0210 emit action state err: " + JSON.stringify((err as Error)?.message));
           }
         })
         .bindSheet(true, this.myBuilder(), {
@@ -402,7 +404,7 @@ struct Index {
             console.info("ArkUX_Model_Visual_0220 start to emit action state");
             emitter.emit(backEvent, backData);
           } catch (err) {
-            console.info("ArkUX_Model_Visual_0220 emit action state err: " + JSON.stringify(err.message));
+            console.info("ArkUX_Model_Visual_0220 emit action state err: " + JSON.stringify((err as Error)?.message));
           }
         })
         .bindSheet(true, this.myBuilder(), {
