@@ -1868,12 +1868,12 @@ export default function WebSocketApiTest() {
               ws.close((err: BusinessError,value: boolean) => {
                 if (err) {
                   console.info(`${caseName} close2 fail ${JSON.stringify(err)}`);
-                  expectFail(`${caseName} close2 success`);
+                  expect(err.code == 2302999).assertTrue();
                   done();
                   console.info(`${caseName} test end`);
                 } else {
                   console.info(`${caseName} close2 success and value is ${value}`);
-                  expectTrue(value);
+                  expectFail(`${caseName} close2 success`);
                   done();
                   console.info(`${caseName} test end`);
                 }
