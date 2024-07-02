@@ -155,11 +155,10 @@ struct richeditor2 {
               console.log("spanIndex:" + item.spanPosition.spanIndex)
               console.log("spanRange:[" + item.spanPosition.spanRange[0] + "," + item.spanPosition.spanRange[1] + "]")
               console.log("offsetInSpan:[" + item.offsetInSpan[0] + "," + item.offsetInSpan[1] + "]")
-              const itemObj: ESObject = item;
-              if (itemObj.imageStyle) {
-                console.log("image:" + itemObj.valueResourceStr)
+              if ((item as RichEditorImageSpanResult).imageStyle) {
+                console.log("image:" + (item as RichEditorImageSpanResult).valueResourceStr)
               } else {
-                console.log("text:" + itemObj.value)
+                console.log("text:" + (item as RichEditorTextSpanResult).value)
               }
             })
             return true;

@@ -16,7 +16,7 @@ AppStorage.clear()
 interface LocalStorageProp25 {
   PropA: number
 }
-let storage25 = new LocalStorage({"PropA": 47} as LocalStorageProp25)
+let storage25 = new LocalStorage({'PropA': 47} as LocalStorageProp25)
 storage25.setOrCreate('PropB',9)
 
 @Entry(storage25)
@@ -31,14 +31,14 @@ struct StorageProp25 {
 
   build() {
     Column({space: 10}) {
-      Text(`LocalStorage值为${this.kuA}`).key("lseA")
+      Text(`LocalStorage值为${this.kuA}`).key('lseA')
       Text(`当前PropA值为${this.storPropA}`).margin(10)
         .key("sPropA")
-      Text(`LocalStorage值为${this.kuB}`).key("lseB")
+      Text(`LocalStorage值为${this.kuB}`).key('lseB')
       Text(`当前PropB值为${this.storPropB}`).margin(10)
         .key("sPropB")
 
-      Button(`button1`).margin(10).width("100%")
+      Button(`button1`).margin(10).width('100%')
         .key('btn1_sto')
         .onClick(() => {
           this.storPropA += 1
@@ -49,7 +49,7 @@ struct StorageProp25 {
 
       Child1()
       Text(`父组件ProC: ${storage25.get('PropC')}`).fontColor(Color.Green)
-        .key("sPropC")
+        .key('sPropC')
 
     }
   }
@@ -61,16 +61,16 @@ struct Child1 {
   @State kuC: number|undefined = 0;
   build() {
     Column({space: 20}) {
-      Text(`LocalStorage值PropB为${this.kuC}`).key("lsePropB")
+      Text(`LocalStorage值PropB为${this.kuC}`).key('lsePropB')
       Text(`子组件当前PropB值为${this.c1}`).margin(10)
         .key("sonPropB")
-      Button(`Child1_button1`).margin(10).width("100%")
+      Button(`Child1_button1`).margin(10).width('100%')
         .key('Child1_btn1')
         .onClick(() => {
           this.c1 += 1
 
         })
-      Button(`点击LocalStorage能修改未被@Entry修饰的属性`).margin(10).width("100%")
+      Button(`点击LocalStorage能修改未被@Entry修饰的属性`).margin(10).width('100%')
         .key('Child1_btn2')
         .onClick(() => {
           storage25.set('PropC',123)
@@ -89,7 +89,7 @@ struct Child2 {
   build() {
     Column({space: 20}) {
       Text(`子组件PropC: ${storage25.get('PropC')}`).fontColor(Color.Red)
-        .key("sonPropC")
+        .key('sonPropC')
 
       // Text(`孩子当前PropD值为${this.d1}LocalStorage值PropD为${this.kuD}`).margin(10)
       // Button(`Child2_button1`).margin(10).width("100%")

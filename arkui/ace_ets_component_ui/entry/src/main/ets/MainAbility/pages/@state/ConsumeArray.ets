@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Common from "../../utils/Common"
+import Common from '../../utils/Common'
 
 @Component
 struct Child_CA {

@@ -91,9 +91,9 @@ export default class CommonFunc {
   static getType<T>(value: T): string {
     let result: string;
     if (value === undefined) {
-        result = "[object Undefined]";
+        result = '[object Undefined]';
     } else if (value === null) {
-        result = "[object Null]";
+        result = '[object Null]';
     } else {
         const o: ObjectWithToString = Object(value);
         const origin = o.toObjectString;

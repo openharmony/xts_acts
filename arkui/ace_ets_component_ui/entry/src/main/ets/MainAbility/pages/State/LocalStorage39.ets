@@ -16,7 +16,7 @@ AppStorage.clear()
 interface LocalStorage39Type {
   PropA: number
 }
-let storage1 = new LocalStorage({"PropA":47} as LocalStorage39Type)
+let storage1 = new LocalStorage({'PropA':47} as LocalStorage39Type)
 let storage39 = new LocalStorage();
 storage39['PropA'] = 47;
 storage39['PropB'] = 1;
@@ -39,7 +39,7 @@ struct LocalStorage39 {
       Button('获取键值对的keys')
         .key('button1')
         .onClick(() => {
-          this.keys1 = JSON.stringify(Object.keys(storage39)) + ""
+          this.keys1 = JSON.stringify(Object.keys(storage39)) + ''
         })
 
       Text(`get PropA：${this.value1}`).key('getText1')
@@ -47,14 +47,14 @@ struct LocalStorage39 {
       Button('get PropA')
         .key('button2')
         .onClick(() => {
-          this.value1 = storage39.get("PropA")+""
+          this.value1 = storage39.get('PropA')+''
         })
 
       Text(`get PropE：${this.value2}`).key('getText2')
       Button('get PropE')
         .key('button3')
         .onClick(() => {
-          this.value2 = storage39.get("PropE")+""
+          this.value2 = storage39.get('PropE')+''
         })
 
       //Size获取LocalStorage中存在键值对的个数

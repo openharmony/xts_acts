@@ -18,8 +18,8 @@ interface LocalStorageProp22 {
   PropA?: number
   PropB?: number
 }
-let storage22 = new LocalStorage({"PropA":47} as LocalStorageProp22)
-let s = new LocalStorage({"PropB":32} as LocalStorageProp22)
+let storage22 = new LocalStorage({'PropA':47} as LocalStorageProp22)
+let s = new LocalStorage({'PropB':32} as LocalStorageProp22)
 
 @Entry(storage22)
 @Component
@@ -38,7 +38,7 @@ struct StorageProp22 {
       Text(`当前值为${this.storProp}`).margin(10)
         .key('text_sp')
 
-      Button(`button1`).margin(10).width("100%")
+      Button(`button1`).margin(10).width('100%')
         .key('btn_lse1')
         .onClick(() => {
           this.storProp += 1
@@ -51,7 +51,7 @@ struct StorageProp22 {
       Text(`当前值为${this.storPropB}`).margin(10)
         .key('text_spb')
 
-      Button(`button2`).margin(10).width("100%")
+      Button(`button2`).margin(10).width('100%')
         .key('btn_lse2')
         .onClick(() => {
           this.storPropB += 1

@@ -17,7 +17,7 @@ interface LocalStorageLinkOne {
   PropA: number
   PropB: number
 }
-let storage224 = new LocalStorage({"PropA":1,"PropB":2} as LocalStorageLinkOne)
+let storage224 = new LocalStorage({'PropA':1,'PropB':2} as LocalStorageLinkOne)
 
 
 @Entry(storage224)
