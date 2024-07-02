@@ -1684,7 +1684,7 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1190
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1190
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "audio/x-mpegurl"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "audio/mpeg"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -1824,7 +1824,7 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1350
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1350
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-jng"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/vnd.zbrush.pcx"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -1838,7 +1838,7 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1360
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1360
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-jng"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-portable-bitmap"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -1992,7 +1992,7 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1480
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1480
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "image/x-xwindowdump"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-cdlink"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -2076,7 +2076,7 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1550
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1550
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/rtf"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/richtext"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -2118,7 +2118,7 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1600
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1600
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/plain"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/x-pcs-gcd"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -2132,7 +2132,7 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1610
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1610
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/plain"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "text/tab-separated-values"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -2510,7 +2510,7 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1880
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_1880
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-x509-user-cert"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/x-pkix-crl"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -2763,7 +2763,7 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2070
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2070
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.openxmlfomats-officedocument.wordprocessingml.template"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.openxmlformats-officedocument.wordprocessingml.template"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -2777,7 +2777,7 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2080
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2080
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is"application/vnd.openxmlfomats-officedocument.presenttationml.template"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.openxmlformats-officedocument.presentationml.template"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -2791,7 +2791,7 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2090
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2090
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.openxmlfomats-officedocument.presenttationml.slideshow"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.openxmlformats-officedocument.presentationml.slideshow"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -2805,7 +2805,7 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2100
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2100
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.openxmlfomats-officedocument.presenttationml.slideshow"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.openxmlformats-officedocument.spreadsheetml.template"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -2833,7 +2833,7 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2120
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2120
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.sun.xml.calc"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.sun.xml.draw"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -2861,7 +2861,7 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2140
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2140
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.sun.xml.writer.global"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.sun.xml.math"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -2903,7 +2903,7 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2170
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2170
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.sun.xml.calc.template"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.sun.xml.draw.template"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -2917,7 +2917,7 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2180
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2180
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.sun.xml.calc.template"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.sun.xml.impress.template"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
@@ -2931,7 +2931,7 @@ export default function UtdfMimeTypeTest() {
     /**
      * @tc.name      : testSUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2190
      * @tc.number    : SUB_DistributedData_UDMF_SDK_UtdMimeTypeJsAPITest_2190
-     * @tc.desc      : getUniformDataTypeByMIMEType paramter is "application/vnd.sun.xml.calc.template"
+     * @tc.desc      : getUniformDataTypeByMIMEType paramter is application/vnd.sun.xml.impress.template"
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 2
