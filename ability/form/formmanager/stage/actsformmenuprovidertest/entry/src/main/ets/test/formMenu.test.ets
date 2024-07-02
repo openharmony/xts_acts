@@ -18,13 +18,14 @@ import { describe, it, expect, beforeEach, beforeAll } from '@ohos/hypium'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { Driver, ON } from '@ohos.UiTest'
 import { BusinessError } from '@ohos.base';
-let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-const TAG = '[Sample_Subscribe]';
+
+const TAG = 'AddFormMenuItem';
 const DOMAIN = 0xF811;
 const PUBLISH_BUNDLE_NAME = 'com.example.menuprovider';
 const cmd = 'hilog -x | grep AddFormMenuItemSuccessAndFormId';
 const driver: Driver = Driver.create();
 const resourceManager = AbilityDelegatorRegistry?.getAbilityDelegator()?.getAppContext()?.resourceManager;
+let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 let sleep = async (delay: number = 1000): Promise<void> => {
   return new Promise((resolve, _) => {
     setTimeout(async () => {
@@ -38,6 +39,7 @@ export default function abilityTest() {
     beforeAll(async () => {
       await sleep(1000);
     })
+
     beforeEach(async () => {
       await abilityDelegator.executeShellCommand("hilog -r");
       await sleep(500);
@@ -47,40 +49,32 @@ export default function abilityTest() {
       })
       await sleep(1000);
       hilog.info(DOMAIN, TAG, '%{public}s', 'test start');
-
     })
+
     /**
-     * @tc.number: SUB_AA_ADD_FORM_MENU_ITEM_NORMAL_CASE_0100
-     * @tc.name: testAddFormMenuItemNormalCase0100
+     * @tc.number: SUB_AA_ADD_FORM_MENU_ITEM_0100
+     * @tc.name: testAddFormMenuItem0100
      * @tc.desc: add form component to desktop, judge the FormId is not null. Zh-CN OS only;
      * @tc.size: MediumTest
      * @tc.type: Function
      * @tc.level Level 3
      */
-    it('testAddFormMenuItemNormalCase0100', 0, async (done: Function) => {
-      console.log("TestLog-step1: click form component A");
+    it('testAddFormMenuItem0100', 0, async (done: Function) => {
       const descButton = await driver.findComponent(ON.text(await resourceManager.getStringValue($r('app.string.EntryAbility_desc'))));
       await sleep(200);
       await descButton?.click();
       await sleep(200);
-      console.log("TestLog-step2: click Add Form to Desktop button");
       const labelButton =  await driver.findComponent(ON.text(await resourceManager.getStringValue($r('app.string.EntryAbility_label'))));
       await sleep(200);
       await labelButton?.click();
       await sleep(1000);
-      console.log("TestLog-step3: use callback to inquiry the FormId");
       await abilityDelegator.executeShellCommand(cmd)
         .then((data) => {
-          console.log("TestLog-step4:" + JSON.stringify(data));
-          console.log("TestLog-step5:" + JSON.stringify(data.stdResult));
-          let j = JSON.stringify(data.stdResult).split("JSAPP: AddFormMenuItemSuccessAndFormId", 2)
-          console.log("TestLog-step6:" + j[1]);
-          let i = JSON.stringify(j[1]).split("\FormID  ");
-          console.log("TestLog-step7:" + i[0]);
-          let myFormId: string = i[0];
-          console.log("TestLog-step8: print FormId" + myFormId);
+          hilog.info(DOMAIN, TAG, JSON.stringify(data));
+          let firstFilter = JSON.stringify(data.stdResult).split("JSAPP: AddFormMenuItemSuccessAndFormId", 2)
+          let secondFilter = JSON.stringify(firstFilter[1]).split("\FormID  ");
+          let myFormId: string = secondFilter[0];
           expect(myFormId.length > 0).assertTrue();
-          console.log("TestLog-step9: judge the FormId is not null, return Pass");
           done();
         })
         .catch((error: BusinessError) => {

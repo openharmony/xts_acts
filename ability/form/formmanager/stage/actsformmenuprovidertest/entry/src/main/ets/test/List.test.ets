@@ -13,8 +13,8 @@
  * limitations under the License.
  */
 
-import abilityTest from './Ability.test';
+import formMenuTest from './formMenu.test';
 
 export default function testsuite() {
-  abilityTest();
+  formMenuTest();
 }
