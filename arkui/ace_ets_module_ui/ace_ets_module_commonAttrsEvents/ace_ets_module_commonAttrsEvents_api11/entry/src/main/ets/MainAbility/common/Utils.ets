@@ -30,7 +30,10 @@ export default class Utils {
     Utils.rect_right = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[1] + ']')[0]
     Utils.rect_bottom = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[1] + ']')[1]
     return Utils.rect_value = {
-      left: Utils.rect_left, top: Utils.rect_top, right: Utils.rect_right, bottom: Utils.rect_bottom
+      left: Utils.rect_left,
+      top: Utils.rect_top,
+      right: Utils.rect_right,
+      bottom: Utils.rect_bottom
     }
   }
 

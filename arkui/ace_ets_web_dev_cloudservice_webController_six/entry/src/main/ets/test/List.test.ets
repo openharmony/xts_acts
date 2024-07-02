@@ -13,6 +13,11 @@
  * limitations under the License.
  */
 import ActsAceWebAdsBlockManager from './webAdsBlockManager.test'
+import webViewObjectPositionReport from './webViewObjectPositionReport.test';
+import webViewAvoidArea from './webViewAvoidArea.test';
+
 export default function testsuite() {
+  webViewAvoidArea()
+  webViewObjectPositionReport()
   ActsAceWebAdsBlockManager()
 }

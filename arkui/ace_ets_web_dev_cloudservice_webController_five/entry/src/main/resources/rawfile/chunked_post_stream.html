@@ -15,11 +15,13 @@
          }
      });
       function test() {
-            fetch('custom://www.example.com/xhr', {
+            console.log('execute test')
+            fetch('https://www.example.com/xhr', {
                   method: 'POST',
                   body: rs,
                   duplex: 'half'
-            }).then(r => JSON.stringify(r.json()) ).then(console.log);
+            }).then(r => JSON.stringify(r.json()) ).then(console.log).catch();
+            console.log('execute end')
       }
        function testError() {
             fetch('custom://www.example.com/xhrError', {
@@ -28,7 +30,6 @@
                 duplex: 'half'
             }).then(r => JSON.stringify(r.json()) ).then(console.log);
        }
-       test()
 </script>
 <body>
 <div onclick="test()">test post chunked http body.</div>

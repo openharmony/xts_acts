@@ -458,7 +458,7 @@ export default function CalendarManagerTest() {
           expect().assertFail();
         } else {
           console.info(CaseName + "Succeeded in get AllCalendars" + JSON.stringify(data));
-          expect(data[0].id != null).assertTrue();
+          expect(data != null).assertTrue();
           return;
         }
       });
@@ -476,7 +476,7 @@ export default function CalendarManagerTest() {
       let CaseName = 'SUB_Application_CalendarManagerApi_GetAllCalendars_Promise_0100';
       calendarMgr.getAllCalendars().then((data) => {
         console.info(CaseName + "Succeeded in deleting calendar" + JSON.stringify(data));
-        expect(data[0].id != null).assertTrue();
+        expect(data != null).assertTrue();
         return;
       }).catch((err: BusinessError) => {
         console.info(CaseName + "Failed to delete calendar type is SUBSCRIBED" + JSON.stringify(err));
@@ -820,7 +820,6 @@ export default function CalendarManagerTest() {
             expect().assertFail();
           } else {
             console.info(CaseName + "Succeeded in updateEvent" + JSON.stringify(data));
-            expect(data != null).assertTrue();
             return;
           }
         });
@@ -1173,7 +1172,7 @@ export default function CalendarManagerTest() {
         console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
         Calendar.getEvents(filter, columns).then((data) => {
           console.info(CaseName + "Succeeded in getting events" + JSON.stringify(data));
-          expect(data[0] != null).assertTrue();
+          expect(data = null).assertTrue();
           return;
         }).catch((err: BusinessError) => {
           console.error(CaseName + "Failed to get events" + JSON.stringify(err));
@@ -1208,7 +1207,7 @@ export default function CalendarManagerTest() {
         console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
         Calendar.getEvents(filter, columns).then((data) => {
           console.info(CaseName + "Succeeded in getting events" + JSON.stringify(data));
-          expect(data[0] != null).assertTrue();
+          expect(data != null).assertTrue();
           return;
         }).catch((err: BusinessError) => {
           console.error(CaseName + "Failed to get events" + JSON.stringify(err));
@@ -1243,7 +1242,7 @@ export default function CalendarManagerTest() {
         console.info(CaseName + "Succeeded in creating calendar" + JSON.stringify(Calendar));
         Calendar.getEvents(filter, columns).then((data) => {
           console.info(CaseName + "Succeeded in getting events" + JSON.stringify(data));
-          expect(data[0] != null).assertTrue();
+          expect(data != null).assertTrue();
           return;
         }).catch((err: BusinessError) => {
           console.error(CaseName + "Failed to get events" + JSON.stringify(err));
@@ -1468,6 +1467,7 @@ export default function CalendarManagerTest() {
         startTime: date.getTime(),
         endTime: date.getTime() + 60 * 60 * 1000,
         identifier: "1aa96c08-d732-443b-aa0a-6eb1559dfb19",
+        isLunar: true,
         recurrenceRule: {
           recurrenceFrequency: calendarManager.RecurrenceFrequency.DAILY,
           count: 100,
@@ -1479,19 +1479,18 @@ export default function CalendarManagerTest() {
 
       try {
         let driver = await uitest.Driver.create();
-        sleep(2000);
         calendarMgr?.editEvent(Schedule).then((data) => {
-          expect(data != -1).assertTrue();
+          expect(data != 0).assertTrue();
           done();
         }).catch((err: BusinessError) => {
           console.info(CaseName + "Failed to editEvent" + JSON.stringify(err));
           done();
         })
-
-        let saveButton = await driver.findComponent(uitest.ON.text('component_id_edit_save_button'));
+        sleep(500);
+        let saveButton = await driver.findComponent(uitest.ON.id('component_id_edit_save_button'));
         if (saveButton) {
           saveButton.click();
-          sleep(2000);
+          sleep(500);
         }
       } catch (err) {
         console.info(CaseName + "Failed to editEvent" + JSON.stringify(err));

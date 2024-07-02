@@ -94,12 +94,12 @@ struct scrollTo {
           this.scroller.scrollTo({ xOffset: 0, yOffset: 900 })
         })
 
-      Button('scrollTo 300')
+      Button('scrollTo 270')
         .height('5%')
         .id('scrollTo6')
         .onClick(() => {
           const yOffset: number = this.scroller.currentOffset().yOffset;
-          this.scroller.scrollTo({ xOffset: 0, yOffset: 300 })
+          this.scroller.scrollTo({ xOffset: 0, yOffset: 270 })
         })
 
 

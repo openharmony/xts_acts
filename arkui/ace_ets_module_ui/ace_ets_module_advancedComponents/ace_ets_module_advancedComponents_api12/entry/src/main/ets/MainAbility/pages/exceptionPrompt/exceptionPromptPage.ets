@@ -24,7 +24,7 @@ struct Index {
     marginType: MarginType.DEFAULT_MARGIN,
     actionText: '设置网络',
     marginTop: 80,
-    isShown:true,
+    isShown: true,
   }
 
   build() {

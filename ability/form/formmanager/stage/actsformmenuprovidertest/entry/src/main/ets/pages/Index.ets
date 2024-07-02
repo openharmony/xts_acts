@@ -15,6 +15,7 @@
 
 import formBindingData from '@ohos.app.form.formBindingData';
 import { AddFormMenuItem } from '@ohos.arkui.advanced.FormMenu';
+import hilog from '@ohos.hilog';
 
 @Entry
 @Component
@@ -51,7 +52,7 @@ struct Index {
            }),
            callback:
              (code, formId) => {
-               console.log("AddFormMenuItem success and formId = " + formId + "FormID  " + code + "ReturnCode");
+               hilog.info(0xF811, "JSAPP", "AddFormMenuItemSuccessAndFormId " +formId +"FormID  " +code +"ReturnCode");
              },
            style: {
              options: {

@@ -14,27 +14,25 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
 
 export default function FilterTest() {
-  describe('FilterTest', function () {
-    beforeEach(async function (done) {
+  describe('FilterTest', () => {
+    beforeEach(async (done: Function) => {
       console.info('FilterTest beforeEach start');
-      let options = {
-        uri: 'MainAbility/pages/filter/filterPage',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/filter/filterPage',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info('get FilterTest state pages: ' + JSON.stringify(pages));
         if (!('filterPage' == pages.name)) {
           console.info('get FilterTest pages.name: ' + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.push(options);
           await Utils.sleep(2000);
-          console.info('push FilterTest page result: ' + JSON.stringify(result));
         }
       } catch (err) {
         console.error('push FilterTest page error: ' + err);
@@ -45,20 +43,20 @@ export default function FilterTest() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info('FilterTest after each called');
     })
 
     /**
      * @tc.number FilterTest
-     * @tc.name   FilterTest_0100
-     * @tc.desc   Test Filter
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name FilterTest_0100
+     * @tc.desc Test Filter
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('filterTest_0100', 0, async function (done) {
+    it('filterTest_0100', 0, async (done: Function) => {
       console.info('[filterTest_0100] START');
       let driver = await Driver.create();
       await driver.delayMs(2000);

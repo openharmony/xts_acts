@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import videoCallbackJsunit from './videoCallbackJsunit.test.ets';
+import videoCallbackJsunit from './videoCallbackJsunit.test';
 
 export default function testsuite() {
   videoCallbackJsunit();

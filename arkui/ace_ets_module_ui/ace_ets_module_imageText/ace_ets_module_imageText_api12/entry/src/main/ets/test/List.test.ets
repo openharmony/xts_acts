@@ -123,6 +123,7 @@ import RichEditorApi12 from './RichEditor/RichEditorApi12.test'
 import SearchApi1 from './Search/SearchApi1.test'
 import getLineMetrics from './TextTest/getLineMetrics.test'
 import textSelectableJsunit from './TextTest/textSelectableJsunit.test'
+import styledStringChange from './Text/styledStringChange.test'
 
 export default function testsuite() {
   APIContentTypeTest();
@@ -185,6 +186,7 @@ export default function testsuite() {
   TextAreaApi1();
   TextAreaApi2();
   TextAreaApi3();
+  styledStringChange();
   textApi1();
 
   TextArea_lineBreakStrategyTest();
