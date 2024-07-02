@@ -81,7 +81,6 @@ export default function AbilityMonitorTest() {
       done()
     });
 
-
     /**
      * @tc.number ACTS_ADD_ABILITY_MONITOR_CALLBACK_0100
      * @tc.name actsAddAbilityMonitorCallback0100
@@ -370,7 +369,7 @@ export default function AbilityMonitorTest() {
      * @tc.level Level 2
      */
     it("ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0200", 0, async (done: Function) => {
-      TAG = "ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0200";  
+      TAG = "ACTS_REMOVE_ABILITY_MONITOR_CALLBACK_0200";
       console.log(LABLE + TAG + "start");
       const want = factoryWant(
         "com.example.delegatortest",
@@ -378,9 +377,6 @@ export default function AbilityMonitorTest() {
         "entry"
       );
       let result = 0;
-
-
-
       monitor = {
         abilityName: "Main2Ability",
         onAbilityCreate: () => {
@@ -390,6 +386,7 @@ export default function AbilityMonitorTest() {
       };
       console.log(LABLE + TAG + "addAbilityMonitor");
       abilityDelegator.addAbilityMonitor(monitor);
+      await sleep(200);
       console.log(LABLE + TAG + "removeAbilityMonitor");
       abilityDelegator.removeAbilityMonitor(monitor, (err: BusinessError) => {
         monitor = undefined;
@@ -477,6 +474,7 @@ export default function AbilityMonitorTest() {
       };
       console.log(LABLE + TAG + "waitAbilityMonitor");
       abilityDelegator.waitAbilityMonitor(monitor);
+      await sleep(100);
       console.log(LABLE + TAG + "removeAbilityMonitor");
       abilityDelegator.removeAbilityMonitor(monitor, (err: BusinessError) => {
         console.log(LABLE + TAG + "removeAbilityMonitor callback");
@@ -520,12 +518,13 @@ export default function AbilityMonitorTest() {
         },
       };
       console.log(LABLE + TAG + "addAbilityMonitor");
-      abilityDelegator.addAbilityMonitor(monitor);
+      await abilityDelegator.addAbilityMonitor(monitor);
       console.log(LABLE + TAG + "removeAbilityMonitor");
       abilityDelegator.removeAbilityMonitor(monitor, (err: BusinessError) => {
         console.log(LABLE + TAG + "removeAbilityMonitor callback" + JSON.stringify(err));
         monitor = undefined;
       });
+      await sleep(200)
       console.log(LABLE + TAG + "startAbility");
       await abilityDelegator.startAbility(want);
       setTimeout(() => {
@@ -598,16 +597,16 @@ export default function AbilityMonitorTest() {
       monitor = {
         abilityName: "Main2Ability",
         onAbilityCreate: (err) =>{
-        console.log(LABLE + TAG + "onAbilityCreateCallback err = " + JSON.stringify(err));
-        abilityDelegator.printSync(
-        "AbilityMonitorTest ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0200 onAbilityCreateCallback "
-        );
-        result = 1;
-      },
+          console.log(LABLE + TAG + "onAbilityCreateCallback err = " + JSON.stringify(err));
+          abilityDelegator.printSync(
+            "AbilityMonitorTest ACTS_REMOVE_ABILITY_MONITOR_PROMISE_0200 onAbilityCreateCallback "
+          );
+          result = 1;
+        },
       };
       console.log(LABLE + TAG + "addAbilityMonitor");
       await abilityDelegator.addAbilityMonitor(monitor);
-      abilityDelegator
+      await abilityDelegator
         .removeAbilityMonitor(monitor)
         .then(() => {
           console.log(LABLE + TAG + "removeAbilityMonitor promise success");
@@ -721,7 +720,8 @@ export default function AbilityMonitorTest() {
         },
       };
       abilityDelegator.waitAbilityMonitor(monitor);
-      abilityDelegator
+      await sleep(100)
+      await abilityDelegator
         .removeAbilityMonitor(monitor)
         .then(() => {
           console.log(LABLE + TAG + "removeAbilityMonitor promise success");

@@ -74,6 +74,7 @@ export default function AVPlayerLocalTest() {
             await mediaTestBase.closeFileDescriptor(VIDEO_SOURCE);
             await mediaTestBase.closeFileDescriptor(AUDIO_SOURCE);
             await mediaTestBase.closeFileDescriptor(VIDEO_NOAUDIO);
+            await mediaTestBase.closeFileDescriptor(SUBTITLE);
         })
 
         function setAVPlayerTrackCb(avPlayer, descriptionKey, descriptionValue, done) {
@@ -362,7 +363,6 @@ export default function AVPlayerLocalTest() {
                     setOnCallback(avPlayer, done)
                     setSource(avPlayer, src);
                     setSubtitle(avPlayer, subtitleSrc)
-                    done()
                 }
                 if (err != null) {
                     console.error(`case createAVPlayer error, errMessage is ${err.message}`);
@@ -464,28 +464,27 @@ export default function AVPlayerLocalTest() {
         })
 
         /* *
-            * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SUBTITILE_0100
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SUBTILE_0100
             * @tc.name      : 001.test subtitle Function
             * @tc.desc      : Local Video subtitle control test
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_MEDIA_VIDEO_SUBTITILE_0100', 0, async function (done) {
+        it('SUB_MULTIMEDIA_MEDIA_VIDEO_SUBTILE_0100', 0, async function (done) {
             testSubtitle(fileDescriptor, subtitleFdSrc, avPlayer, done);
         })
 
         /* *
-            * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SUBTITILE_0200
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_VIDEO_SUBTILE_0200
             * @tc.name      : 002.test subtitle Function
             * @tc.desc      : Local Video subtitle control test
             * @tc.size      : MediumTest
             * @tc.type      : Function test
             * @tc.level     : Level1
         */
-        it('SUB_MULTIMEDIA_MEDIA_VIDEO_SUBTITILE_0200', 0, async function (done) {
-            testSubtitle(fileDescriptor,
-                `fd://${subtitleFdSrc.fd}?offset=${subtitleFdSrc.offset}&size=${subtitleFdSrc.length}`, avPlayer, done);
+        it('SUB_MULTIMEDIA_MEDIA_VIDEO_SUBTILE_0200', 0, async function (done) {
+            testSubtitle(fileDescriptor, `fd://${subtitleFdSrc.fd}`, avPlayer, done);
         })
     })
 }
