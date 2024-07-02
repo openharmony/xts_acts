@@ -31,6 +31,7 @@ struct MovingPhotoView1 {
   @State error: string = "Init";
   @State play: string = "Init";
   @State stopPlay: string = "Init";
+  @State flag: boolean = false;
 
   build() {
     NavDestination() {
@@ -43,7 +44,7 @@ struct MovingPhotoView1 {
             .id('MovingPhotoView')
             .width(200)
             .height(200)
-            .muted(false)
+            .muted(this.flag)
             .objectFit(this.ImageFit)
             .onStart(() => {
               this.start = "onStart succ"
@@ -71,6 +72,10 @@ struct MovingPhotoView1 {
           .onClick(() => {
             this.controller.stopPlayback()
             this.stopPlay = "stopPlayback succ"
+          })
+        Button('true').id('MovingPhotoView_true')
+          .onClick(() => {
+            this.flag = true
           })
         Text(this.start).id('MovingPhotoView_start')
         Text(this.stop).id('MovingPhotoView_stop')

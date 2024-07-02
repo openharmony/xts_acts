@@ -214,7 +214,7 @@ export default function MovingPhotoViewTest() {
       console.info('MovingPhotoViewTest_0080 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
-      let button1 = await driver.findComponent(ON.id('MovingPhotoView_play'));
+      let button1 = await driver.findComponent(ON.id('MovingPhotoView_playButton'));
       await button1.click();
       await CommonFunc.sleep(13000);
       let strJson = getInspectorByKey('MovingPhotoView_finish');
@@ -237,7 +237,7 @@ export default function MovingPhotoViewTest() {
       console.info('MovingPhotoViewTest_0090 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
-      let button1 = await driver.findComponent(ON.id('MovingPhotoView_play'));
+      let button1 = await driver.findComponent(ON.id('MovingPhotoView_playButton'));
       await button1.click();
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('MovingPhotoView_error');
@@ -245,6 +245,29 @@ export default function MovingPhotoViewTest() {
       console.log('MovingPhotoViewTest_0090',obj.$attrs)
       expect(obj.$attrs.content).assertEqual("onError succ");
       console.info('MovingPhotoViewTest_0090 END');
+      done();
+    });
+
+    /**
+     * @tc.number    MovingPhotoViewTest_0100
+     * @tc.name      MovingPhotoViewTest_0100
+     * @tc.desc      test the api of MovingPhotoView: muted
+     * @tc.level:    Level 2
+     * @tc.type :
+     * @tc.size :
+     */
+    it('MovingPhotoViewTest_0100', 0, async function (done) {
+      console.info('MovingPhotoViewTest_0100 START');
+      let driver = await Driver.create()
+      await CommonFunc.sleep(500);
+      let button1 = await driver.findComponent(ON.id('MovingPhotoView_true'));
+      await button1.click();
+      await CommonFunc.sleep(2000);
+      let strJson = getInspectorByKey('MovingPhotoView');
+      let obj = JSON.parse(strJson);
+      console.log('MovingPhotoViewTest_0100',obj.$attrs)
+      expect(obj.$attrs.muted).assertEqual(true);
+      console.info('MovingPhotoViewTest_0100 END');
       done();
     });
   })
