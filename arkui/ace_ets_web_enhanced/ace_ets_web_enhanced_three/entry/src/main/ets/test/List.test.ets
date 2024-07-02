@@ -35,9 +35,11 @@ import webNestedScrollOptionsScrollForwardHorizontalTest from './WebNestedScroll
 import webViewControllerPostUrlTest from './WebViewControllerPostUrlTest.test'
 import webViewControllerSetConnectionTimeoutTest from './WebViewControllerSetConnectionTimeoutTest.test'
 import webJavaScriptOnDocumentStartTest from './WebJavaScriptOnDocumentStartTest.test'
+import setPathAllowingUniversalAccess from './setPathAllowingUniversalAccess.test'
 
 export default function testsuite() {
   webResourceResponseGet()
+  setPathAllowingUniversalAccess()
   webResourceResponseSet()
   webResourceError()
   webViewControllerPart2()
