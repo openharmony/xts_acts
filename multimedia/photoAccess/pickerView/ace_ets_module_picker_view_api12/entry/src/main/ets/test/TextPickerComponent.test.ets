@@ -30,7 +30,9 @@ import {
   ItemInfo,
   ReminderMode,
   SelectMode,
-  PickerOrientation
+  PickerOrientation,
+  PhotoBrowserInfo,
+  ClickType
 } from '@ohos.file.PhotoPickerComponent';
 import { AlbumPickerComponent, AlbumPickerOptions, AlbumInfo } from '@ohos.file.AlbumPickerComponent';
 import photoAccessHelper from '@ohos.file.photoAccessHelper';
@@ -46,8 +48,7 @@ async function routeToUrl(options: router.RouterOptions) {
       let result = await router.pushUrl(options);
       await CommonFunc.sleep(2000);
     }
-  }
-  catch (err) {
+  } catch (err) {
     console.error("testPicker page error:" + err);
   }
 }
@@ -76,14 +77,22 @@ async function clickResultButton(driver: Driver) {
 }
 
 async function clickAlbumButton(driver: Driver) {
-  console.info("testpicer create");
+  console.info("testpicker create");
   let btn = await driver.findComponent(ON.id('albumButton'));
   await btn.click();
   console.info('testPicker btn click finish');
   await CommonFunc.sleep(1000);
   let albumItem = await driver.findComponent((ON.type('ListItem')));
-  console.info("testPicer findComponent ListItem success");
+  console.info("testPicker findComponent ListItem success");
   await albumItem.click();
+}
+
+async function clickBigPicture(driver: Driver) {
+  console.info("testpicker create");
+  let btn = await driver.findComponent(ON.type('Image'));
+  await btn.click();
+  console.info('testPicker btn click finish');
+  await CommonFunc.sleep(1000);
 }
 
 export default function TextPicker() {
@@ -227,14 +236,14 @@ export default function TextPicker() {
       done();
     });
 
-      /* *
-     * @tc.number    : testPicker04
-     * @tc.name      : testPicker04
-     * @tc.desc      : Testing Change PhotoPickerComponent pickerOptions's checkboxTextColor property
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level1
-     */
+    /* *
+   * @tc.number    : testPicker04
+   * @tc.name      : testPicker04
+   * @tc.desc      : Testing Change PhotoPickerComponent pickerOptions's checkboxTextColor property
+   * @tc.size      : MediumTest
+   * @tc.type      : Function
+   * @tc.level     : Level1
+   */
     it('testPicker04', 0, async (done: Function) => {
       let code: number = EventType.PHOTO_PICKER_INFO;
       let pickerOptions: PickerOptions = getDefaultPickerOptions();
@@ -660,7 +669,7 @@ export default function TextPicker() {
       let pickerOptions: PickerOptions = getDefaultPickerOptions();
       let callback = (event: events_emitter.EventData) => {
         let result: ItemInfo = event?.data?.msg;
-        console.info('testpicker14 select ItemInfo=:' + JSON.stringify(result));
+        console.info('testPicker14 select ItemInfo=:' + JSON.stringify(result));
         expect(result.itemType).not().assertUndefined();
         expect(result.uri).not().assertUndefined();
         expect(result.mimeType).not().assertUndefined();
@@ -743,7 +752,7 @@ export default function TextPicker() {
       } else {
         console.info("testPicker15 findComponent checkbox success");
         let selectNum = Math.min(checkBoxs.length, 3);
-        for (let index = 0;index < selectNum; index++) {
+        for (let index = 0; index < selectNum; index++) {
           await checkBoxs[index].click();
         }
         await CommonFunc.sleep(1000);
@@ -758,13 +767,13 @@ export default function TextPicker() {
     });
 
     /**
-   * @tc.number    : testPicker16
-   * @tc.name      : testPicker16
-   * @tc.desc      : Testing Album
-   * @tc.size      : MediumTest
-   * @tc.type      : Function
-   * @tc.level     : Level1
-   */
+     * @tc.number    : testPicker16
+     * @tc.name      : testPicker16
+     * @tc.desc      : Testing Album
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level1
+     */
     it('testPicker16', 0, async (done: Function) => {
       let code: number = EventType.ALBUM_INFO;
       let pickerOptions: PickerOptions = getDefaultPickerOptions();
@@ -799,6 +808,103 @@ export default function TextPicker() {
 
       router.back();
       console.info("testPicer15 finish");
+      events_emitter.off(event.eventId);
+      done();
+    });
+
+    /**
+     * @tc.number    : testPicker17
+     * @tc.name      : testPicker17
+     * @tc.desc      : Testing PhotoBrowerInfo
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level1
+     */
+    it('testPicker17', 0, async (done: Function) => {
+      let code: number = EventType.PHOTO_PICKER_INFO;
+      let pickerOptions: PickerOptions = getDefaultPickerOptions();
+      let callback = (event: events_emitter.EventData) => {
+        let result: PhotoBrowserInfo = event?.data?.msg;
+        console.info('testPicker17 select PhotoBrowerInfo=:' + JSON.stringify(result));
+        expect(result.animatorParams).not().assertUndefined();
+      }
+      let event: events_emitter.InnerEvent = {
+        eventId: code,
+        priority: events_emitter.EventPriority.LOW
+      }
+      events_emitter.on(event, callback);
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/PickerComponent',
+        params: {
+          eventId: code,
+          pickerOptions: pickerOptions,
+        }
+      }
+      await routeToUrl(options);
+
+      console.info('testPicker17 create');
+      await clickBigPicture(driver);
+
+      let strJson: string = getInspectorByKey('PhotoPickerComponent');
+      console.info("testPicker17 JSON.parse(strJson) is" + strJson);
+      expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
+
+      router.back();
+      console.info("testPicer17 finish");
+      events_emitter.off(event.eventId);
+      done();
+    });
+
+    /**
+     * @tc.number    : testPicker18
+     * @tc.name      : testPicker18
+     * @tc.desc      : Testing PhotoBrowerInfo
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level1
+     */
+    it('testPicker18', 0, async (done: Function) => {
+      let code: number = EventType.SELECT_CLICKTYPE;
+      let pickerOptions: PickerOptions = getDefaultPickerOptions();
+      let clicked: boolean = false;
+      let callback = (event: events_emitter.EventData) => {
+        let result: number = event?.data?.msg;
+        console.info('testPicker18 select number =:' + JSON.stringify(result));
+        if (clicked) {
+          expect(result).assertEqual(1);
+        } else {
+          expect(result).assertEqual(0);
+        }
+      }
+      let event: events_emitter.InnerEvent = {
+        eventId: code,
+        priority: events_emitter.EventPriority.LOW
+      }
+      events_emitter.on(event, callback);
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/PickerComponent',
+        params: {
+          eventId: code,
+          pickerOptions: pickerOptions,
+        }
+      }
+      await routeToUrl(options);
+
+      console.info('testPicker18 create');
+      let btn: Component = await driver.findComponent(ON.type('GridItem'));
+      await btn.click();
+      await CommonFunc.sleep(1000);
+      clicked = !clicked;
+      await CommonFunc.sleep(1000);
+      await btn.click();
+      await CommonFunc.sleep(1000);
+
+      let strJson: string = getInspectorByKey('PhotoPickerComponent');
+      console.info("testPicker18 JSON.parse(strJson) is" + strJson);
+      expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
+
+      router.back();
+      console.info("testPicer18 finish");
       events_emitter.off(event.eventId);
       done();
     });
