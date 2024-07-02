@@ -70,7 +70,7 @@ export default function LocalStorage39Jsunit() {
       let obj1: ESObject = JSON.parse(strJson1);
       console.info("[LocalStorage39Jsunit_0400] obj1 is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
-      expect(obj1.$attrs.content).assertEqual('Keys：["storage_","PropA","PropB"]');
+      expect(obj1.$attrs.content).assertEqual('Keys：["storage_","propA","propB"]');
       console.info('[LocalStorage39Jsunit_0400] END');
       done();
     });
@@ -86,7 +86,7 @@ export default function LocalStorage39Jsunit() {
       let obj1: ESObject = JSON.parse(strJson1);
       console.info("[LocalStorage39Jsunit_0600] obj1 is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
-      expect(obj1.$attrs.content).assertEqual('get PropA：1');
+      expect(obj1.$attrs.content).assertEqual('get propA：1');
       console.info('[LocalStorage39Jsunit_0600] END');
       done();
     });
@@ -102,7 +102,7 @@ export default function LocalStorage39Jsunit() {
       let obj1: ESObject = JSON.parse(strJson1);
       console.info("[LocalStorage39Jsunit_0800] obj1 is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
-      expect(obj1.$attrs.content).assertEqual('get PropE：undefined');
+      expect(obj1.$attrs.content).assertEqual('get propE：undefined');
       console.info('[LocalStorage39Jsunit_0800] END');
       done();
     });

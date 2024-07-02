@@ -42,16 +42,16 @@ struct LocalStorage39 {
           this.keys1 = JSON.stringify(Object.keys(storage39)) + ''
         })
 
-      Text(`get PropA：${this.value1}`).key('getText1')
+      Text(`get propA：${this.value1}`).key('getText1')
       //get获取LocalStorage中存在键值对的个数
-      Button('get PropA')
+      Button('get propA')
         .key('button2')
         .onClick(() => {
           this.value1 = storage39.get('propA')+''
         })
 
-      Text(`get PropE：${this.value2}`).key('getText2')
-      Button('get PropE')
+      Text(`get propE：${this.value2}`).key('getText2')
+      Button('get propE')
         .key('button3')
         .onClick(() => {
           this.value2 = storage39.get('propE')+''
