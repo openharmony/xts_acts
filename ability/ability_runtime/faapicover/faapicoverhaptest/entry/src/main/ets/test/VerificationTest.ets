@@ -19,30 +19,23 @@ import commonEvent from '@ohos.commonEvent';
 import appManager from "@ohos.application.appManager";
 import wantConstant from '@ohos.ability.wantConstant';
 import rpc from "@ohos.rpc";
-import CommonEventManager from '@ohos.commonEventManager';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
-import { BusinessError } from '@ohos.base';
-import Want from '@ohos.app.ability.Want';
-import ability from '@ohos.ability.ability';
-import common from '@ohos.app.ability.common';
-import bundleManager from '@ohos.bundle.bundleManager';
 
-let TAG = ''
-
+var TAG
 export default function verificationTest(){
 
-  describe('VerificationTestTest', () => {
+  describe('VerificationTestTest', function() {
 
     let sleepTimeOne = 1000;
     let TAG1 = "SUB_AA_OpenHarmony == ";
     let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-    afterEach(async (done: Function) => {
+    afterEach(async (done) => {
       console.log(TAG1 + "afterEach called");
       let cmd = "aa force-stop ohos.acts.aafwk.test.faauxiliary";
       await abilityDelegator.executeShellCommand(cmd).then((data) => {
         console.log(TAG1 + "executeShellCommand : data : " + data.stdResult);
         console.log(TAG1 + "executeShellCommand : data : " + data.exitCode);
-      }).catch((error:BusinessError) => {
+      }).catch((error) => {
         console.log(TAG1 + "executeShellCommand error : " + JSON.stringify(error));
       })
 
@@ -58,41 +51,36 @@ export default function verificationTest(){
          * @tc.desc    Function test
          * @tc.level   3
          */
-    it('SUB_AA_OpenHarmony_Test_HasWindowFocus_0100', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_Test_HasWindowFocus_0100', 0, async function(done) {
       TAG = 'SUB_AA_OpenHarmony_Test_HasWindowFocus_0100 ==>';
 
       try {
         let flags = false
-        let subscriber:CommonEventManager.CommonEventSubscriber;
-        let subscribeInfo : CommonEventManager.CommonEventSubscribeInfo = {
+        let subscriber = null
+        let subscribeInfo = {
           events: ["Fa_Auxiliary_MainAbility_HasWindowFocus", "Fa_Auxiliary_MainAbility_onDestroy"]
         }
-        let scb = (err:BusinessError, data:CommonEventManager.CommonEventData) => {
+        function SubscribeInfoCallback(err, data) {
           console.info(TAG + "===SubscribeInfoCallback===" + JSON.stringify(data))
           if (data.event == "Fa_Auxiliary_MainAbility_HasWindowFocus") {
-            flags = data.parameters?.hasWindowFocus
+            flags = data.parameters.hasWindowFocus
           }
           if (data.event == "Fa_Auxiliary_MainAbility_onDestroy") {
             expect(flags).assertTrue();
-            commonEvent.unsubscribe(subscriber, uscb)
+            commonEvent.unsubscribe(subscriber, UnSubscribeInfoCallback)
           }
         }
-        let uscb = (err:BusinessError) => {
-          if (err.code) {
-            console.info(TAG + "===UnSubscribeInfoCallback===err",err.code);
-          } else {
-            console.info(TAG + "===UnSubscribeInfoCallback===")
-          }
+        function UnSubscribeInfoCallback(err, data) {
+          console.info(TAG + "===UnSubscribeInfoCallback===")
           done()
         }
-        commonEvent.createSubscriber(subscribeInfo, 
-          (err:BusinessError, data:CommonEventManager.CommonEventSubscriber) => {
-            console.info(TAG + "===CreateSubscriberCallback===")
-            subscriber = data
-            commonEvent.subscribe(subscriber, scb)
+        commonEvent.createSubscriber(subscribeInfo, (err, data) => {
+          console.info(TAG + "===CreateSubscriberCallback===")
+          subscriber = data
+          commonEvent.subscribe(subscriber, SubscribeInfoCallback)
         })
 
-        let wantNum: ability.StartAbilityParameter = {
+        let wantNum = {
           want: {
             bundleName: 'ohos.acts.aafwk.test.faauxiliary',
             abilityName: 'ohos.acts.aafwk.test.faauxiliary.MainAbility'
@@ -100,7 +88,7 @@ export default function verificationTest(){
         }
         await ability_featureAbility.startAbility(wantNum).then((data) => {
           console.info(TAG + "startAbility data = " + JSON.stringify(data));
-        }).catch((err: BusinessError) => {
+        }).catch((err) => {
           console.info(TAG + "startAbility err = " + JSON.stringify(err));
           expect().assertFail();
           done();
@@ -118,7 +106,7 @@ export default function verificationTest(){
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_OpenHarmony_Test_AppManagerTest_0100', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_Test_AppManagerTest_0100', 0, async function(done) {
       TAG = 'SUB_AA_OpenHarmony_Test_AppManagerTest_0100 ==>';
       try {
         appManager.isRunningInStabilityTest((err, data) => {
@@ -141,24 +129,24 @@ export default function verificationTest(){
     * @tc.desc    Function test
     * @tc.level   3
     */
-    it('SUB_AA_OpenHarmony_Test_StartAbilityFlags_0100', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_Test_StartAbilityFlags_0100', 0, async function(done) {
       TAG = 'SUB_AA_OpenHarmony_Test_StartAbilityFlags_0100 ==>';
 
       try {
-        let list1: string[] = []
-        let list2: string[] = ["Fa_Auxiliary_MainAbility4_onDestroy"]
-        let number1 = 0
-        let number3 = 0
+        let list1 = []
+        let list2 = ["Fa_Auxiliary_MainAbility4_onDestroy"]
+        let number1 = undefined
+        let number3 = undefined
         let code1 = 536870912
         let code2 = 2048
-        let subscriber:CommonEventManager.CommonEventSubscriber;
-        let subscribeInfo : CommonEventManager.CommonEventSubscribeInfo = {
+        let subscriber = null
+        let subscribeInfo = {
           events: ["Fa_Auxiliary_MainAbility4_onCreate", "Fa_Auxiliary_MainAbility4_onDestroy"]
         }
-        let scb = (err:BusinessError, data:CommonEventManager.CommonEventData) => {
+        function SubscribeInfoCallback(err, data) {
           console.info(TAG + "===SubscribeInfoCallback===" + JSON.stringify(data))
           if (data.event == "Fa_Auxiliary_MainAbility4_onCreate") {
-            number1 = data.parameters?.flags
+            number1 = data.parameters.flags
           }
           if (data.event == "Fa_Auxiliary_MainAbility4_onDestroy") {
             list1[0] = "Fa_Auxiliary_MainAbility4_onDestroy"
@@ -166,25 +154,20 @@ export default function verificationTest(){
           if (JSON.stringify(list1) == JSON.stringify(list2)) {
             expect(number3).assertEqual(1);
             expect(number1).assertEqual(code1);
-            commonEvent.unsubscribe(subscriber, usicb)
+            commonEvent.unsubscribe(subscriber, UnSubscribeInfoCallback)
           }
         }
-        let usicb = (err:BusinessError) => {
-          if (err.code) {
-            console.info(TAG + "===UnSubscribeInfoCallback=== err "+err.code)  
-          } else {
-            console.info(TAG + "===UnSubscribeInfoCallback===")
-          }
+        function UnSubscribeInfoCallback(err, data) {
+          console.info(TAG + "===UnSubscribeInfoCallback===")
           done()
         }
-        commonEvent.createSubscriber(subscribeInfo, 
-          (err:BusinessError, data:CommonEventManager.CommonEventSubscriber) => {
-            console.info(TAG + "===CreateSubscriberCallback===")
-            subscriber = data
-            commonEvent.subscribe(subscriber, scb)
+        commonEvent.createSubscriber(subscribeInfo, (err, data) => {
+          console.info(TAG + "===CreateSubscriberCallback===")
+          subscriber = data
+          commonEvent.subscribe(subscriber, SubscribeInfoCallback)
         })
 
-        let wantNum1: ability.StartAbilityParameter = {
+        let wantNum1 = {
           want: {
             bundleName: 'ohos.acts.aafwk.test.faauxiliary',
             abilityName: 'ohos.acts.aafwk.test.faauxiliary.MainAbility3',
@@ -193,12 +176,12 @@ export default function verificationTest(){
         }
         await ability_featureAbility.startAbility(wantNum1).then((data) => {
           console.info(TAG + "startAbility data = " + JSON.stringify(data));
-        }).catch((err: BusinessError) => {
+        }).catch((err) => {
           number3 = err.code
           console.info(TAG + "startAbility err = " + JSON.stringify(err));
         });
 
-        let wantNum2: ability.StartAbilityParameter = {
+        let wantNum2 = {
           want: {
             bundleName: 'ohos.acts.aafwk.test.faauxiliary',
             abilityName: 'ohos.acts.aafwk.test.faauxiliary.MainAbility4',
@@ -207,7 +190,7 @@ export default function verificationTest(){
         }
         await ability_featureAbility.startAbility(wantNum2).then((data) => {
           console.info(TAG + "startAbility data = " + JSON.stringify(data));
-        }).catch((err: BusinessError) => {
+        }).catch((err) => {
           console.info(TAG + "startAbility err = " + JSON.stringify(err));
           expect().assertFail();
           done();
@@ -225,7 +208,7 @@ export default function verificationTest(){
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_OpenHarmony_Test_GetWindow_0100', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_Test_GetWindow_0100', 0, async function(done) {
       TAG = 'SUB_AA_OpenHarmony_Test_GetWindow_0100 ==>';
       try {
         ability_featureAbility.getWindow((err, data) => {
@@ -245,40 +228,34 @@ export default function verificationTest(){
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_OpenHarmony_Test_TerminateSelfWithResult_0100', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_Test_TerminateSelfWithResult_0100', 0, async function(done) {
       TAG = 'SUB_AA_OpenHarmony_Test_TerminateSelfWithResult_0100 ==>';
       try {
-        let resultCode:number = 0;
-        let subscriber:CommonEventManager.CommonEventSubscriber;
-        let subscribeInfo : CommonEventManager.CommonEventSubscribeInfo = {
+        let resultCode = undefined
+        let subscriber = null
+        let subscribeInfo = {
           events: ["Fa_Auxiliary_MainAbility6_onDestroy"]
         }
-        
-        let usicb = (err:BusinessError) => {
-          if (err.code) {
-            console.info(TAG + "===UnSubscribeInfoCallback=== err "+err.code)  
-          } else {
-            console.info(TAG + "===UnSubscribeInfoCallback===")
+        function SubscribeInfoCallback(err, data) {
+          console.info(TAG + "===SubscribeInfoCallback===" + JSON.stringify(data))
+          if (data.event == "Fa_Auxiliary_MainAbility6_onDestroy") {
+            setTimeout(()=>{
+              expect(resultCode).assertEqual(661);
+              commonEvent.unsubscribe(subscriber, UnSubscribeInfoCallback)
+            }, 1000)
           }
+        }
+        function UnSubscribeInfoCallback(err, data) {
+          console.info(TAG + "===UnSubscribeInfoCallback===")
           done()
         }
-        commonEvent.createSubscriber(subscribeInfo,
-          (err:BusinessError, data:CommonEventManager.CommonEventSubscriber) => {
-            console.info(TAG + "===CreateSubscriberCallback===")
-            subscriber = data
-            commonEvent.subscribe(subscriber, 
-              (err:BusinessError, data:CommonEventManager.CommonEventData) => {
-                console.info(TAG + "===SubscribeInfoCallback===" + JSON.stringify(data))
-                if (data.event == "Fa_Auxiliary_MainAbility6_onDestroy") {
-                  setTimeout(()=>{
-                    expect(resultCode).assertEqual(661);
-                    commonEvent.unsubscribe(subscriber, usicb)
-                  }, 1000)
-                }
-            })
+        commonEvent.createSubscriber(subscribeInfo, (err, data) => {
+          console.info(TAG + "===CreateSubscriberCallback===")
+          subscriber = data
+          commonEvent.subscribe(subscriber, SubscribeInfoCallback)
         })
 
-        let wantNum: ability.StartAbilityParameter = {
+        let wantNum = {
           want: {
             bundleName: 'ohos.acts.aafwk.test.faauxiliary',
             abilityName: 'ohos.acts.aafwk.test.faauxiliary.MainAbility6'
@@ -287,7 +264,7 @@ export default function verificationTest(){
         await ability_featureAbility.startAbilityForResult(wantNum).then((data) => {
           console.info(TAG + "startAbilityForResult data = " + JSON.stringify(data));
           resultCode = data.resultCode
-        }).catch((err: BusinessError) => {
+        }).catch((err) => {
           console.info(TAG + "startAbilityForResult err = " + JSON.stringify(err));
           expect().assertFail();
           done();
@@ -304,35 +281,31 @@ export default function verificationTest(){
    * @tc.desc    Function test
    * @tc.level   3
    */
-    it('SUB_AA_OpenHarmony_Test_ServiceAbility_0100', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_Test_ServiceAbility_0100', 0, async function(done) {
       TAG = 'SUB_AA_OpenHarmony_Test_ServiceAbility_0100 ==>';
 
       try {
-        let subscriber:CommonEventManager.CommonEventSubscriber;
-        let subscribeInfo: CommonEventManager.CommonEventSubscribeInfo = {
+        let subscriber = null
+        let subscribeInfo = {
           events: ["Fa_Auxiliary_ServiceAbility_onCommand"]
         }
-        let scb = (err:BusinessError, data:CommonEventManager.CommonEventData) => {
+        function SubscribeInfoCallback(err, data) {
           console.info(TAG + "===SubscribeInfoCallback===" + JSON.stringify(data))
           if (data.event == "Fa_Auxiliary_ServiceAbility_onCommand") {
-            commonEvent.unsubscribe(subscriber, usicb);
+            commonEvent.unsubscribe(subscriber, UnSubscribeInfoCallback);
           }
         }
-        let usicb = (err:BusinessError) => {
-          if (err.code) {
-            console.info(TAG + "===UnSubscribeInfoCallback=== err "+err.code)  
-          } else {
-            console.info(TAG + "===UnSubscribeInfoCallback===")
-          }
+        function UnSubscribeInfoCallback(err, data) {
+          console.info(TAG + "===UnSubscribeInfoCallback===")
           done()
         }
         commonEvent.createSubscriber(subscribeInfo, (err, data) => {
           console.info(TAG + "===CreateSubscriberCallback===")
           subscriber = data
-          commonEvent.subscribe(subscriber, scb)
+          commonEvent.subscribe(subscriber, SubscribeInfoCallback)
         })
 
-        let wantNum: ability.StartAbilityParameter = {
+        let wantNum = {
           want: {
             bundleName: 'com.example.faapicoverhaptest',
             abilityName: 'com.example.faapicoverhaptest.ServiceAbility'
@@ -340,7 +313,7 @@ export default function verificationTest(){
         }
         await ability_featureAbility.startAbility(wantNum).then((data) => {
           console.info(TAG + "startAbility data = " + JSON.stringify(data));
-        }).catch((err: BusinessError) => {
+        }).catch((err) => {
           console.info(TAG + "startAbility err = " + JSON.stringify(err));
           expect().assertFail();
           done();
@@ -358,26 +331,26 @@ export default function verificationTest(){
    * @tc.desc    Function test
    * @tc.level   3
    */
-    it('SUB_AA_OpenHarmony_Test_ServiceAbility_0200', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_Test_ServiceAbility_0200', 0, async function(done) {
       TAG = 'SUB_AA_OpenHarmony_Test_ServiceAbility_0200 ==>';
 
       try {
-        let liseList: string[] = []
-        let liseListCheck: string[] = ["onConnect","onDisconnect"]
+        let liseList = []
+        let liseListCheck = ["onConnect","onDisconnect"]
         let flag1 = false
         let flag2 = false
         let flag3 = false
-        let subscriber : CommonEventManager.CommonEventSubscriber;
-        let subscribeInfo : CommonEventManager.CommonEventSubscribeInfo = {
+        let subscriber = null
+        let subscribeInfo = {
           events: ["Fa_Auxiliary_ServiceAbility2_onConnect", "Fa_Auxiliary_ServiceAbility2_onDisconnect"]
         }
-        let scb = (err:BusinessError, data:CommonEventManager.CommonEventData) => {
+        async function SubscribeInfoCallback(err, data) {
           console.info(TAG + "===SubscribeInfoCallback===" + JSON.stringify(data))
           if (data.event == "Fa_Auxiliary_ServiceAbility2_onConnect") {
             liseList.push("onConnect")
-            ability_featureAbility.disconnectAbility(num).then((data) => {
+            await ability_featureAbility.disconnectAbility(num).then((data) => {
               console.info(TAG + "disconnectAbility data = " + JSON.stringify(data));
-            }).catch((err: BusinessError) => {
+            }).catch((err) => {
               console.info(TAG + "disconnectAbility err = " + JSON.stringify(err));
               expect().assertFail();
               done();
@@ -391,27 +364,22 @@ export default function verificationTest(){
               expect(flag1).assertTrue();
               expect(flag2).assertTrue();
               expect(flag3).assertFalse();
-              commonEvent.unsubscribe(subscriber, usicb);
+              commonEvent.unsubscribe(subscriber, UnSubscribeInfoCallback);
             }, 1000)
           }
         }
-        let usicb = (err:BusinessError) => {
-          if (err.code) {
-            console.info(TAG + "===UnSubscribeInfoCallback=== err "+err.code)  
-          } else {
-            console.info(TAG + "===UnSubscribeInfoCallback===")
-          }
+        function UnSubscribeInfoCallback(err, data) {
+          console.info(TAG + "===UnSubscribeInfoCallback===")
           done()
         }
-        commonEvent.createSubscriber(subscribeInfo, 
-          (err:BusinessError, data:CommonEventManager.CommonEventSubscriber) => {
-            console.info(TAG + "===CreateSubscriberCallback===")
-            subscriber = data
-            commonEvent.subscribe(subscriber, scb)
+        commonEvent.createSubscriber(subscribeInfo, (err, data) => {
+          console.info(TAG + "===CreateSubscriberCallback===")
+          subscriber = data
+          commonEvent.subscribe(subscriber, SubscribeInfoCallback)
         })
 
-        let options: common.ConnectOptions = {
-          onConnect: (elementName:bundleManager.ElementName, proxy:rpc.IRemoteObject) => {
+        let options = {
+          onConnect: function (elementName, proxy) {
             flag1 = true
             console.info(TAG + 'Ext onConnect SUCCESS, elementName = ' + JSON.stringify(elementName));
             if (proxy == null) {
@@ -423,25 +391,21 @@ export default function verificationTest(){
             let reply = new rpc.MessageParcel();
             data.writeInt(1);
             data.writeInt(99);
-            proxy.sendRequest(1, data, reply, option, (err:BusinessError, result:rpc.SendRequestResult) => {
-              if (err.code) {
-                console.info(TAG + 'Ext connect, err = ');
-              } else {
-                let msg = result.reply.readInt();
-                console.info(TAG + 'Ext connect, msg = ' + msg);
-              }
+            proxy.sendRequest(1, data, reply, option, (result) => {
+              let msg = result.reply.readInt();
+              console.info(TAG + 'Ext connect, msg = ' + msg);
             });
           },
-          onDisconnect: (elementName:bundleManager.ElementName) => {
+          onDisconnect: function (elementName) {
             flag2 = true
             console.info(TAG + 'Ext onDisconnect, elementName = ' + JSON.stringify(elementName));
           },
-          onFailed: (number:number) => {
+          onFailed: function (number) {
             flag3 = true
             console.info(TAG + 'Ext onFailed, number = ' + number);
           }
         };
-        let wantNum: Want = {
+        let wantNum = {
           bundleName: 'com.example.faapicoverhaptest',
           abilityName: 'com.example.faapicoverhaptest.ServiceAbility2'
         }

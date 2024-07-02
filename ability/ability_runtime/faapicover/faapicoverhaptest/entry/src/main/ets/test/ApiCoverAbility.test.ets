@@ -17,10 +17,8 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "
 import FormInfo from '@ohos.application.formInfo';
 import formError from '@ohos.application.formError';
 import featureAbility from '@ohos.ability.featureAbility'
-import { BusinessError } from '@ohos.base';
-
 export default function ApiCoverTest() {
-  describe('ApiCoverTestTest', () => {
+  describe('ApiCoverTestTest', function () {
 
     /*
      * @tc.number  SUB_AA_Form_Provider_Test_FormErr_0100
@@ -28,7 +26,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_Form_Provider_Test_FormErr_0100', 0, async (done: Function) => {
+    it('SUB_AA_Form_Provider_Test_FormErr_0100', 0, async function (done) {
       console.info("SUB_AA_Form_Provider_Test_FormErr_0100");
       expect(7).assertEqual(formError.FormError.ERR_ADD_INVALID_PARAM)
       expect(10).assertEqual(formError.FormError.ERR_BIND_PROVIDER_FAILED)
@@ -61,7 +59,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   3
      */
-    it('SUB_AA_Form_Provider_Test_FormInfo_0100', 0, async (done: Function) => {
+    it('SUB_AA_Form_Provider_Test_FormInfo_0100', 0, async function (done) {
       console.info("SUB_AA_Form_Provider_Test_FormInfo_0100");
       expect("ohos.extra.param.key.form_dimension").assertEqual(FormInfo.FormParam.DIMENSION_KEY)
       expect("ohos.extra.param.key.form_name").assertEqual(FormInfo.FormParam.NAME_KEY)
@@ -84,7 +82,7 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('SUB_AA_OpenHarmony_CoverApiContext_0100', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_CoverApiContext_0100', 0, async function (done) {
         console.log("------------start SUB_AA_OpenHarmony_CoverApi_0500-------------");
         let appContext = featureAbility.getContext()
         appContext.getExternalCacheDir((err, data) => {
@@ -100,14 +98,14 @@ export default function ApiCoverTest() {
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it('SUB_AA_OpenHarmony_CoverApiContext_0200', 0, async (done: Function) => {
+    it('SUB_AA_OpenHarmony_CoverApiContext_0200', 0, async function (done) {
         console.log("------------start SUB_AA_OpenHarmony_CoverApi_0500-------------");
         let appContext = featureAbility.getContext()
         appContext.getExternalCacheDir().then((data)=>{
           console.info('SUB_AA_OpenHarmony_CoverApiContext_0200 successful. data: ' + JSON.stringify(data));
           expect(true).assertTrue()
           done()
-        }).catch((err: BusinessError)=>{
+        }).catch((err)=>{
             expect().assertFalse();
             done()
         })
