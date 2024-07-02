@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import router from '@system.router';
+import router from '@ohos.router';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from '../../MainAbility/utils/Common';
 import { Driver, ON } from '@ohos.UiTest';
@@ -20,11 +20,11 @@ import { Driver, ON } from '@ohos.UiTest';
 
 
 export default function ObserverApi() {
-  describe('ObserverApi', function () {
-    beforeEach(async function (done) {
+  describe('ObserverApi', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/observer/ObserverApi',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/observer/ObserverApi',
       }
       try {
         router.clear();
@@ -42,7 +42,7 @@ export default function ObserverApi() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("ObserverApi after each called");
     });
@@ -53,7 +53,7 @@ export default function ObserverApi() {
      * @tc.desc        Navigation RouterPageState test
      * @tc.level       Level 2
      */
-    it('ObserverApi_001', 0, async function (done) {
+    it('ObserverApi_001', 0, async (done: Function) => {
       console.info('[ObserverApi_001] START');
       await Utils.sleep(1000);
 
@@ -75,7 +75,7 @@ export default function ObserverApi() {
       console.info("[ObserverApi_001] btn3")
 
       let strJson = getInspectorByKey('ObserverApi2_text');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       await Utils.sleep(1000);
       console.info("[ObserverApi_001] obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('HideAppearShow');
@@ -91,7 +91,7 @@ export default function ObserverApi() {
       console.info("[ObserverApi_001] btn5")
 
       let strJson2 = getInspectorByKey('ObserverApi_text1');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       await Utils.sleep(1000);
       console.info("[ObserverApi_001] obj2 is: " + JSON.stringify(obj2));
       expect(obj2.$attrs.content).assertEqual('Disappear');
@@ -112,7 +112,7 @@ export default function ObserverApi() {
      * @tc.desc        Navigation RouterPageState2 test
      * @tc.level       Level 2
      */
-    it('ObserverApi_002', 0, async function (done) {
+    it('ObserverApi_002', 0, async (done: Function) => {
       console.info('[ObserverApi_002] START');
       await Utils.sleep(1000);
 
@@ -138,7 +138,7 @@ export default function ObserverApi() {
       console.info("[ObserverApi_002] btn4")
 
       let strJson = getInspectorByKey('ObserverApi_text2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       await Utils.sleep(1000);
       console.info("[ObserverApi_001] obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('Back');
