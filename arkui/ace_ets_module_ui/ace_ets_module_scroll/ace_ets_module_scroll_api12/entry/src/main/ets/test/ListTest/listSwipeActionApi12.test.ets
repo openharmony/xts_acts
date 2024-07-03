@@ -57,7 +57,7 @@ export default function listSwipeActionApi12Test() {
       await CommonFunc.sleep(500);
       // swipe the listItem to right
       await driver.swipe(
-        Math.round(globalThis.winLeft + vp2px(50)), Math.round(globalThis.winTop + vp2px(108)), Math.round(globalThis.winLeft + vp2px(300)), Math.round(globalThis.winTop + vp2px(108))
+        Math.round(globalThis.winLeft + vp2px(50)), Math.round(globalThis.winTop + vp2px(108)), Math.round(globalThis.winLeft + vp2px(200)), Math.round(globalThis.winTop + vp2px(108))
       );
       await CommonFunc.sleep(5000);
       let strJson1 = getInspectorByKey('ListTestApi12_2');
