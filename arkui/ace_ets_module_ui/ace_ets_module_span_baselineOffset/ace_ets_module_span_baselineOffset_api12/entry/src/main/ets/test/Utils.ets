@@ -15,35 +15,6 @@
 import RectValue from './Rect';
 
 export default class Utils {
-  static rect_left: number;
-  static rect_top: number;
-  static rect_right: number;
-  static rect_bottom: number;
-  static rect_value: RectValue;
-
-  static sleep(time: number) {
-    return new Promise((resolve: (value: string) => void) => {
-      setTimeout(() => {
-        resolve("ok")
-      }, time)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
-
-  static getComponentRect(key: string) {
-    let strJson: string = getInspectorByKey(key);
-    console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(JSON.parse(strJson)));
-    console.info("[getInspectorByKey] rectInfo is: " + JSON.parse('[' + JSON.parse(strJson).$rect + ']'));
-    Utils.rect_left = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[0] + ']')[0]
-    Utils.rect_top = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[0] + ']')[1]
-    Utils.rect_right = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[1] + ']')[0]
-    Utils.rect_bottom = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[1] + ']')[1]
-    return Utils.rect_value = {
-      left: Utils.rect_left, top: Utils.rect_top, right: Utils.rect_right, bottom: Utils.rect_bottom
-    }
-  }
-
   static async swipe(downX: number, downY: number, upX: number, upY: number, steps: number) {
     console.info('start to swipe')
     Utils.drags(downX, downY, upX, upY, steps, false)
