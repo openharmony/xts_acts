@@ -1087,10 +1087,11 @@ struct webSetNetErrorCode {
                     case 'emitWebSetNetErrorCode_ERR_CACHED_IP_ADDRESS_SPACE_BLOCKED_BY_LOCAL_NETWORK_ACCESS_POLICY': {
                       let response: webview.WebSchemeHandlerResponse = new webview.WebSchemeHandlerResponse();
                       try {
-                        response.setNetErrorCode(WebNetErrorList.ERR_CACHED_IP_ADDRESS_SPACE_BLOCKED_BY_LOCAL_NETWORK_ACCESS_POLICY);
+                        let lnErr = WebNetErrorList.ERR_CACHED_IP_ADDRESS_SPACE_BLOCKED_BY_LOCAL_NETWORK_ACCESS_POLICY
+                        response.setNetErrorCode(lnErr);
                         let errorCode:number = response.getNetErrorCode();
-                        console.log(`ERR_CACHED_IP_ADDRESS_SPACE_BLOCKED_BY_LOCAL_NETWORK_ACCESS_POLICY : ${errorCode}`)
-                        if (errorCode == WebNetErrorList.ERR_CACHED_IP_ADDRESS_SPACE_BLOCKED_BY_LOCAL_NETWORK_ACCESS_POLICY) {
+                        console.log(`SPACE_BLOCKED_BY_LOCAL_NETWORK_ACCESS_POLICY : ${errorCode}`)
+                        if (errorCode == lnErr) {
                           Utils.emitEvent(true, 1055)
                         } else {
                           Utils.emitEvent(false, 1055)

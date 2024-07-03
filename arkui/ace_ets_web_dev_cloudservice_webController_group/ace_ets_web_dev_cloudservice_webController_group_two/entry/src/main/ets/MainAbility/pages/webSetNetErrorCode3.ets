@@ -151,10 +151,11 @@ struct webSetNetErrorCode {
                     case 'emitWebSetNetErrorCode_ERR_TRUST_TOKEN_OPERATION_SUCCESS_WITHOUT_SENDING_REQUEST': {
                       let response: webview.WebSchemeHandlerResponse = new webview.WebSchemeHandlerResponse();
                       try {
-                        response.setNetErrorCode(WebNetErrorList.ERR_TRUST_TOKEN_OPERATION_SUCCESS_WITHOUT_SENDING_REQUEST);
+                        let lnErr = WebNetErrorList.ERR_TRUST_TOKEN_OPERATION_SUCCESS_WITHOUT_SENDING_REQUEST
+                        response.setNetErrorCode(lnErr);
                         let errorCode:number = response.getNetErrorCode();
                         console.log(`ERR_TRUST_TOKEN_OPERATION_SUCCESS_WITHOUT_SENDING_REQUEST : ${errorCode}`)
-                        if (errorCode == WebNetErrorList.ERR_TRUST_TOKEN_OPERATION_SUCCESS_WITHOUT_SENDING_REQUEST) {
+                        if (errorCode == lnErr) {
                           Utils.emitEvent(true, 1006)
                         } else {
                           Utils.emitEvent(false, 1006)
