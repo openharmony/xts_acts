@@ -30,7 +30,7 @@
     "pages": "$profile:main_pages",
     "abilities": [
       {
-        "name": "your_bundle_name.EntryAbility",
+        "name": "com.arkui.ace.observer12.EntryAbility",
         "srcEntry": "./ets/entryability/EntryAbility.ets",
         "description": "$string:description_application",
         "icon": "$media:icon",

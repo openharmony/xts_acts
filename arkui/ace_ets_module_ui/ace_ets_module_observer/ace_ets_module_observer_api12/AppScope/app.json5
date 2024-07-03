@@ -15,7 +15,7 @@
 
 {
   "app": {
-    "bundleName": "your_bundle_name",
+    "bundleName": "com.arkui.ace.observer12",
     "vendor": "huawei",
     "versionCode": 1000000,
     "versionName": "1.0.0",
