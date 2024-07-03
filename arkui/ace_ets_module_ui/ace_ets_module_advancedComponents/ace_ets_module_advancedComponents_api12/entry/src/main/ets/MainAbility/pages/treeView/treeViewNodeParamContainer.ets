@@ -35,7 +35,6 @@ struct TreeViewDemo {
     this.treeListener.off(TreeListenType.NODE_ADD, undefined);
     this.treeListener.off(TreeListenType.NODE_DELETE, undefined);
     this.treeListener.off(TreeListenType.NODE_MOVE, undefined);
-    this.treeListener.off(TreeListenType.NODE_MODIFY, undefined);
   }
 
   @Builder
@@ -83,9 +82,6 @@ struct TreeViewDemo {
     this.treeListener.once(TreeListenType.NODE_MOVE, (callbackParam: CallbackParam) => {
       this.clickNodeId = callbackParam.currentNodeId;
     })
-    this.treeListener.on(TreeListenType.NODE_MODIFY, (callbackParam: CallbackParam) => {
-      this.clickNodeId = callbackParam.currentNodeId;
-    })
 
     let normalResource: Resource = $r('app.media.app_icon');
     let selectedResource: Resource = $r('app.media.app_icon');
@@ -98,7 +94,8 @@ struct TreeViewDemo {
       selectedIcon: selectedResource,
       editIcon: editResource,
       primaryTitle: '目录1验证悬浮框自适应效果是否OK',
-      secondaryTitle: '6'
+      secondaryTitle: '6',
+      container: this.menuBuilder1
     };
     this.treeController
       .addNode(nodeParam)
@@ -111,7 +108,8 @@ struct TreeViewDemo {
         icon: normalResource,
         selectedIcon: selectedResource,
         editIcon: editResource,
-        primaryTitle: '目录3'
+        primaryTitle: '目录3',
+        container: this.menuBuilder1
       })
       .addNode({ parentNodeId: -1, currentNodeId: 24, isFolder: false, primaryTitle: '项目4' })
       .addNode({
@@ -122,7 +120,8 @@ struct TreeViewDemo {
         selectedIcon: selectedResource,
         editIcon: editResource,
         primaryTitle: '目录5',
-        secondaryTitle: '0'
+        secondaryTitle: '0',
+        container: this.menuBuilder1
       })
       .addNode({
         parentNodeId: -1,
@@ -132,7 +131,8 @@ struct TreeViewDemo {
         selectedIcon: selectedResource,
         editIcon: editResource,
         primaryTitle: '目录6',
-        secondaryTitle: '0'
+        secondaryTitle: '0',
+        container: this.menuBuilder1
       })
       .addNode({
         parentNodeId: 32,
@@ -142,7 +142,8 @@ struct TreeViewDemo {
         selectedIcon: selectedResource,
         editIcon: editResource,
         primaryTitle: '目录6-1',
-        secondaryTitle: '0'
+        secondaryTitle: '0',
+        container: this.menuBuilder1
       })
       .addNode({
         parentNodeId: -1,
@@ -152,7 +153,8 @@ struct TreeViewDemo {
         selectedIcon: selectedResource,
         editIcon: editResource,
         primaryTitle: '目录7',
-        secondaryTitle: '0'
+        secondaryTitle: '0',
+        container: this.menuBuilder1
       })
       .addNode({ parentNodeId: 33, currentNodeId: 34, isFolder: false, primaryTitle: '项目8' })
       .addNode({ parentNodeId: -1, currentNodeId: 36, isFolder: false, primaryTitle: '项目9' })
@@ -172,6 +174,7 @@ struct TreeViewDemo {
               .borderRadius(8).backgroundColor(0x317aff).width(90)
               .onClick((event: ClickEvent) => {
                 this.treeController.addNode();
+
               })
             Button('Modify', { type: ButtonType.Normal, stateEffect: true })
               .borderRadius(8).backgroundColor(0x317aff).width(90)

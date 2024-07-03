@@ -21,6 +21,8 @@
     "MainAbility/pages/tabTitleBar/tabTitleBarPageTest",
     "MainAbility/pages/toolBar/toolBarItemState",
     "MainAbility/pages/toolBar/toolBarPageTest",
-    "MainAbility/pages/treeView/treeViewPageTest"
+    "MainAbility/pages/treeView/treeViewPageTest",
+    "MainAbility/pages/treeView/treeViewNodeParamContainer",
+    "MainAbility/pages/treeView/treeViewCallbackParamChildIndex"
   ]
 }
