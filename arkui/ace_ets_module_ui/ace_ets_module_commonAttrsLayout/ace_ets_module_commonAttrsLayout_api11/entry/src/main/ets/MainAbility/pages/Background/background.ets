@@ -21,16 +21,6 @@ struct Background3Example {
   @State width: string = "200px";
   @State height: string = "200px";
   @State color: Array = [[0x080808], [0xEEEE00], [0xFF0000]];
-  private backgroundColor: string;
-  private backgroundImage: string;
-  private backgroundImageSize: string;
-  private backgroundImagePosition: string;
-
-  constructor() {
-    this.stateChangCallBack = this.stateChangCallBack.bind(this);
-    this.stateChangCallBackTwo = this.stateChangCallBackTwo.bind(this);
-  }
-
   private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("gauge page state change called:" + JSON.stringify(eventData));
