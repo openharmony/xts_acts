@@ -26,6 +26,7 @@ const KEY_TEST_STRING_ELEMENT = 'key_test_string';
 const KEY_TEST_NUMBER_ARRAY_ELEMENT = 'key_test_number_array';
 const KEY_TEST_STRING_ARRAY_ELEMENT = 'key_test_string_array';
 const KEY_TEST_BOOL_ARRAY_ELEMENT = 'key_test_bool_array';
+const KEY_TEST_BIGINT = 'key_test_bigint';
 let mPreferences;
 
 export default function PreferencesSyncTest() {
@@ -481,5 +482,28 @@ export default function PreferencesSyncTest() {
                 console.log("PreferencesRemovePreferencesFromCacheSync0100 end.");
             });
         })
+
+
+        /**
+         * @tc.name testPreferencesPutBigIntSync0100
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceHelperEtsTest_3100
+         * @tc.desc put BigInt sync interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('testPreferencesPutBigIntSync0100', 0, async function () {
+            let bigint = BigInt(Number.MIN_SAFE_INTEGER);
+            mPreferences.putSync(KEY_TEST_BIGINT, bigint);
+            let pre = mPreferences.getSync(KEY_TEST_BIGINT, BigInt(0));
+            expect(bigint === pre).assertTrue();
+            await mPreferences.flush();
+            await data_preferences.removePreferencesFromCacheSync(context, NAME);
+            mPreferences = null;
+            mPreferences = await data_preferences.getPreferencesSync(context, NAME);
+            let pre2 = await mPreferences.getSync(KEY_TEST_BIGINT, BigInt(0));
+            expect(bigint === pre2).assertTrue();
+        })
+
     })
 }
