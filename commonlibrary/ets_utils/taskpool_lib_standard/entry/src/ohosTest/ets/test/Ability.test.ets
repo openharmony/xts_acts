@@ -1282,7 +1282,7 @@ export default function TaskPoolTest() {
       try {
         taskpool.Task.sendData(4);
       } catch(e) {
-        expect((e as BusinessError).toString()).assertEqual("BusinessError: The function is not called in the taskpool thread");
+        expect((e as BusinessError).toString()).assertEqual("BusinessError: The function is not called in the TaskPool thread");
       }
       done();
     })
@@ -1382,7 +1382,7 @@ export default function TaskPoolTest() {
         taskpool.execute(task1);
         taskpool.cancel(task1);
       } catch(e) {
-        expect(e).assertEqual("BusinessError: The task does not exist when it is canceled, taskpool:: task is not executed or has been executed");
+        expect(e).assertEqual("BusinessError: The task to cancel does not exist, taskpool:: task is not executed or has been executed");
       }
       expect(taskpool.Task.isCanceled() == false);
       done();
@@ -1414,7 +1414,7 @@ export default function TaskPoolTest() {
         taskpool.cancel(task1);
       }
       catch(e) {
-        expect((e as BusinessError).toString()).assertEqual("BusinessError: The task does not exist when it is canceled, taskpool:: task is not executed or has been executed");
+        expect((e as BusinessError).toString()).assertEqual("BusinessError: The task to cancel does not exist, taskpool:: task is not executed or has been executed");
       }
       done();
     })
@@ -1439,7 +1439,7 @@ export default function TaskPoolTest() {
         taskpool.cancel(task3);
       }
       catch(e) {
-        expect((e as BusinessError).toString()).assertEqual("BusinessError: The task does not exist when it is canceled, taskpool:: task is not executed or has been executed");
+        expect((e as BusinessError).toString()).assertEqual("BusinessError: The task to cancel does not exist, taskpool:: task is not executed or has been executed");
       }
       done();
     })
@@ -1471,7 +1471,7 @@ export default function TaskPoolTest() {
         taskpool.cancel(task3);
       }
       catch(e) {
-        expect((e as BusinessError).toString()).assertEqual("BusinessError: The task does not exist when it is canceled, taskpool:: task is not executed or has been executed");
+        expect((e as BusinessError).toString()).assertEqual("BusinessError: The task to cancel does not exist, taskpool:: task is not executed or has been executed");
       }
       done();
     })
@@ -1512,7 +1512,7 @@ export default function TaskPoolTest() {
         taskpool.cancel(task2);
       }
       catch(e) {
-        expect((e as BusinessError).toString()).assertEqual("BusinessError: The task does not exist when it is canceled, taskpool:: task is not executed or has been executed");
+        expect((e as BusinessError).toString()).assertEqual("BusinessError: The task to cancel does not exist, taskpool:: task is not executed or has been executed");
       }
       done();
     })
@@ -1594,7 +1594,7 @@ export default function TaskPoolTest() {
         let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
         taskpool.cancel(taskGroup);
       } catch(e) {
-        expect((e as BusinessError).toString()).assertEqual("BusinessError: The task group does not exist when it is canceled, taskpool:: taskGroup is not executed or has been executed");
+        expect((e as BusinessError).toString()).assertEqual("BusinessError: The task group to cancel does not exist, taskpool:: taskGroup is not executed or has been executed");
       }
       done();
     })
@@ -1635,7 +1635,7 @@ export default function TaskPoolTest() {
       try {
         taskpool.cancel(taskGroup1);
       } catch(e) {
-        expect((e as BusinessError).toString()).assertEqual("BusinessError: The task group does not exist when it is canceled, taskpool:: taskGroup is not executed or has been executed");
+        expect((e as BusinessError).toString()).assertEqual("BusinessError: The task group to cancel does not exist, taskpool:: taskGroup is not executed or has been executed");
       }
       done();
     })
@@ -2392,7 +2392,7 @@ export default function TaskPoolTest() {
       try {
         taskpool.cancel(task1);
       } catch (e) {
-        expect((e as BusinessError).toString()).assertEqual("BusinessError: The task does not exist when it is canceled, taskpool:: task is not executed or has been executed");
+        expect((e as BusinessError).toString()).assertEqual("BusinessError: The task to cancel does not exist, taskpool:: task is not executed or has been executed");
       }
 
       taskpool.execute(task2).then(()=>{
@@ -2414,7 +2414,7 @@ export default function TaskPoolTest() {
       try {
         taskpool.cancel(task2);
       } catch (e) {
-        expect((e as BusinessError).toString()).assertEqual("BusinessError: The task does not exist when it is canceled, taskpool:: task is not executed or has been executed");
+        expect((e as BusinessError).toString()).assertEqual("BusinessError: The task to cancel does not exist, taskpool:: task is not executed or has been executed");
       }
       done();
     })
@@ -3381,7 +3381,7 @@ export default function TaskPoolTest() {
         try {
           taskpool.cancel(taskGroup1);
         } catch(e) {
-          expect((e as BusinessError).toString()).assertEqual("BusinessError: The task group does not exist when it is canceled, taskpool:: taskGroup is not executed or has been executed");
+          expect((e as BusinessError).toString()).assertEqual("BusinessError: The task group to cancel does not exist, taskpool:: taskGroup is not executed or has been executed");
         }
       }, 3000);
       done();

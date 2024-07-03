@@ -93,7 +93,7 @@ export default function workerTest() {
           console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
           flag = true;
           expectAssertEqual(error.code, 10200003);
-          expectAssertContain(error.message, 'Worker initialization failure');
+          expectAssertContain(error.message, 'Worker initialization failed');
         }
         for (let i: number = 0; i < workerInstances.length; i++) {
           workerInstances[i].terminate();
@@ -798,7 +798,7 @@ export default function workerTest() {
           console.info(`${caseName}: workerInstance.onmessage: ${JSON.stringify(e)}`);
           flag = true;
           expectAssertEqual(e.data.code, 10200021);
-          expectAssertContain(e.data.message, 'The global call exceeds the timeout');
+          expectAssertContain(e.data.message, 'Waiting for a global call timed out');
         }
 
         class TestTimeoutFuncObj {
@@ -855,7 +855,7 @@ export default function workerTest() {
           console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
           flag = true;
           expectAssertEqual(error.code, 10200003);
-          expectAssertContain(error.message, 'Worker initialization failure');
+          expectAssertContain(error.message, 'Worker initialization failed');
         }
         for (let i: number = 0; i < workerInstances.length; i++) {
           workerInstances[i].terminate();
@@ -1034,7 +1034,7 @@ export default function workerTest() {
       } catch (error) {
         console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
         expectAssertEqual(error.code, 10200007);
-        expectAssertContain(error.message, 'The worker file path is invalid path');
+        expectAssertContain(error.message, 'The worker file path is invalid');
         done();
       }
       console.info(`${caseName} test end`);
@@ -6661,7 +6661,7 @@ export default function workerTest() {
       } catch (error) {
         console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
         expectAssertEqual(error.code, 10200007);
-        expectAssertContain(error.message, 'The worker file path is invalid path');
+        expectAssertContain(error.message, 'The worker file path is invalid');
         done();
       }
       console.info(`${caseName} test end`);
