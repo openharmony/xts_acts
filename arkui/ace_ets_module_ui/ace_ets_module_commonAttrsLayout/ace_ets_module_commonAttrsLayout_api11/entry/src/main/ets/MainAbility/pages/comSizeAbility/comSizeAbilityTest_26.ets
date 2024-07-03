@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import matrix4 from '@ohos.matrix4'
+
 let matrix = matrix4.init([1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0])
+
 @Entry
 @Component
 struct comSizeAbilityTest_26 {
@@ -25,6 +27,7 @@ struct comSizeAbilityTest_26 {
   @State message: string = "[-1, -1]"
   @State content: string = ""
   @State span: string = "文本组件"
+
   build() {
     Scroll() {
       Column() {
@@ -40,13 +43,27 @@ struct comSizeAbilityTest_26 {
             })
           })
         }
+
         Column() {
           RichEditor(this.options)
             .size({ width: 100, height: 100 })
             .offset({ x: 1, y: 1 })
             .translate({ x: 1, y: 1, z: 1 })
-            .scale({ x: 1, y: 1, z: 1, centerX: 1, centerY: 1 })
-            .rotate({ x: 1, y: 1, z: 1, angle: 0, centerX: 1, centerY: 1 })
+            .scale({
+              x: 1,
+              y: 1,
+              z: 1,
+              centerX: 1,
+              centerY: 1
+            })
+            .rotate({
+              x: 1,
+              y: 1,
+              z: 1,
+              angle: 0,
+              centerX: 1,
+              centerY: 1
+            })
             .transform(matrix)
             .backgroundColor('blue')
             .onReady(() => {
@@ -88,12 +105,12 @@ struct comSizeAbilityTest_26 {
                 console.log("spanIndex:" + item.spanPosition.spanIndex)
                 console.log("spanRange:[" + item.spanPosition.spanRange[0] + "," + item.spanPosition.spanRange[1] + "]")
                 console.log("offsetInSpan:[" + item.offsetInSpan[0] + "," + item.offsetInSpan[1] + "]")
-                if (typeof(item as RichEditorImageSpanResult)['imageStyle'] != 'undefined') {
+                if (typeof (item as RichEditorImageSpanResult)['imageStyle'] != 'undefined') {
                   console.log("image:" + (item as RichEditorImageSpanResult).valueResourceStr)
                 } else {
                   console.log("text:" + (item as RichEditorTextSpanResult).value)
                 }
-                if (typeof(item as RichEditorImageSpanResult)['imageStyle'] != 'undefined') {
+                if (typeof (item as RichEditorImageSpanResult)['imageStyle'] != 'undefined') {
                   console.log("image:" + (item as RichEditorImageSpanResult).valueResourceStr)
                 } else {
                   console.log("text:" + (item as RichEditorTextSpanResult).value)

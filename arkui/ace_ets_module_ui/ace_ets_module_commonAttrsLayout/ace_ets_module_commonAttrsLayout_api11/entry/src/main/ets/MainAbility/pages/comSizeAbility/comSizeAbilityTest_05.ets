@@ -13,37 +13,66 @@
  * limitations under the License.
  */
 import matrix4 from '@ohos.matrix4'
+
 let matrix = matrix4.init([1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0])
+
 @Entry
 @Component
 struct comSizeAbilityTest_05 {
-  @State bgColors: Color[] = [Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink, Color.Grey, Color.Blue, Color.Brown, Color.Black]
+  @State bgColors: Color[] =
+    [Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.Pink, Color.Grey, Color.Blue, Color.Brown, Color.Black]
   @State currentBp: string = 'unknown'
   @State Number: String[] = ['0', '1', '2', '3', '4']
+
   build() {
-    Scroll(){
+    Scroll() {
       Column({ space: 20 }) {
-        Column(){
-          Gauge({ value: 60}).colors([[0x317AF7, 1], [0x5BA854, 1], [0xE08C3A, 1], [0x9C554B, 1]])
+        Column() {
+          Gauge({ value: 60 })
+            .colors([[0x317AF7, 1], [0x5BA854, 1], [0xE08C3A, 1], [0x9C554B, 1]])
             .key("Gauge_Size")
             .size({ width: 140, height: 140 })
-            
+
             .translate({ x: 1, y: 1, z: 1 })
-            .scale({ x: 1, y: 1, z: 1, centerX: 1, centerY: 1 })
-            .rotate({ x: 1, y: 1, z: 1, angle: 0, centerX: 1, centerY: 1 })
+            .scale({
+              x: 1,
+              y: 1,
+              z: 1,
+              centerX: 1,
+              centerY: 1
+            })
+            .rotate({
+              x: 1,
+              y: 1,
+              z: 1,
+              angle: 0,
+              centerX: 1,
+              centerY: 1
+            })
             .transform(matrix)
         }
-        Column(){
+
+        Column() {
           GridRow({
             columns: 3,
             gutter: { x: 5, y: 5 },
             breakpoints: {
               value: ["400vp", "400vp", "400vp"],
-              reference: BreakpointsReference.WindowSize },
+              reference: BreakpointsReference.WindowSize
+            },
             direction: GridRowDirection.Row
           }) {
             ForEach(this.bgColors, (color: Color) => {
-              GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 }, offset: 0, order: 0 }) {
+              GridCol({
+                span: {
+                  xs: 1,
+                  sm: 2,
+                  md: 3,
+                  lg: 4
+                },
+                offset: 0,
+                order: 0
+              }) {
                 Row().width("100%").height("20vp")
               }.borderColor(color).borderWidth(2)
             })
@@ -52,11 +81,25 @@ struct comSizeAbilityTest_05 {
           .key("GridRow_Size")
           .size({ width: 140, height: 140 })
           .translate({ x: 1, y: 1, z: 1 })
-          .scale({ x: 1, y: 1, z: 1, centerX: 1, centerY: 1 })
-          .rotate({ x: 1, y: 1, z: 1, angle: 0, centerX: 1, centerY: 1 })
+          .scale({
+            x: 1,
+            y: 1,
+            z: 1,
+            centerX: 1,
+            centerY: 1
+          })
+          .rotate({
+            x: 1,
+            y: 1,
+            z: 1,
+            angle: 0,
+            centerX: 1,
+            centerY: 1
+          })
           .transform(matrix)
         }
-        Column(){
+
+        Column() {
           Grid() {
             ForEach(this.Number, (day: string) => {
               ForEach(this.Number, (day: string) => {
@@ -78,8 +121,21 @@ struct comSizeAbilityTest_05 {
           .key("Grid_Size")
           .size({ width: 360, height: 240 })
           .translate({ x: 1, y: 1, z: 1 })
-          .scale({ x: 1, y: 1, z: 1, centerX: 1, centerY: 1 })
-          .rotate({ x: 1, y: 1, z: 1, angle: 0, centerX: 1, centerY: 1 })
+          .scale({
+            x: 1,
+            y: 1,
+            z: 1,
+            centerX: 1,
+            centerY: 1
+          })
+          .rotate({
+            x: 1,
+            y: 1,
+            z: 1,
+            angle: 0,
+            centerX: 1,
+            centerY: 1
+          })
           .transform(matrix)
         }
       }.width('100%')

@@ -13,16 +13,30 @@
  * limitations under the License.
  */
 import { expect, it, afterEach, afterAll, beforeEach, beforeAll, describe } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import componentUtils from '@ohos.arkui.componentUtils';
-export default function comSizeAbilityTest_18 () {
-  describe('comSizeAbilityTest_18', function () {
-    beforeEach(async function (done) {
+
+export default function comSizeAbilityTest_18() {
+  describe('comSizeAbilityTest_18', () => {
+    beforeEach(async (done: Function) => {
       console.info("comSizeAbilityTest_18 beforeEach start")
-      let options = {
-        uri: 'MainAbility/pages/comSizeAbility/comSizeAbilityTest_18'
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/comSizeAbility/comSizeAbilityTest_18'
       }
       try {
         router.clear()
@@ -30,12 +44,12 @@ export default function comSizeAbilityTest_18 () {
         console.info("get comSizeAbilityTest_18 state pages: " + JSON.stringify(pages))
         if (!("comSizeAbilityTest" == pages.name)) {
           console.info("get comSizeAbilityTest_18 state pages.name: " + JSON.stringify(pages.name))
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           await CommonFunc.sleep(1000);
           console.info("push comSizeAbilityTest_18 success: " + JSON.stringify(result))
         }
       } catch (err) {
-        console.error ("push comSizeAbilityTest_18 page error: " + err)
+        console.error("push comSizeAbilityTest_18 page error: " + err)
         expect().assertFail()
       }
       done()
@@ -46,11 +60,11 @@ export default function comSizeAbilityTest_18 () {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_47', 0, async  function (done) {
+    it('comSizeAbilityTestJsunit_47', 0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_47 START')
       await CommonFunc.sleep(1000);
-      let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById("TimePicker_Size");
-      let modePosition1:componentUtils.ComponentInfo = componentUtils.getRectangleById("TimePicker_Father");
+      let modePosition: componentUtils.ComponentInfo = componentUtils.getRectangleById("TimePicker_Size");
+      let modePosition1: componentUtils.ComponentInfo = componentUtils.getRectangleById("TimePicker_Father");
       let Size = modePosition.size
       let SizeWidth = Size.width
       let SizeHeight = Size.height
@@ -90,11 +104,11 @@ export default function comSizeAbilityTest_18 () {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_48', 0, async  function (done) {
+    it('comSizeAbilityTestJsunit_48', 0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_48 START')
       await CommonFunc.sleep(1000);
-      let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById("Toggle_Size");
-      let modePosition1:componentUtils.ComponentInfo = componentUtils.getRectangleById("Toggle_Father");
+      let modePosition: componentUtils.ComponentInfo = componentUtils.getRectangleById("Toggle_Size");
+      let modePosition1: componentUtils.ComponentInfo = componentUtils.getRectangleById("Toggle_Father");
       let Size = modePosition.size
       let SizeWidth = Size.width
       let SizeHeight = Size.height
@@ -134,11 +148,11 @@ export default function comSizeAbilityTest_18 () {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_49', 0, async  function (done) {
+    it('comSizeAbilityTestJsunit_49', 0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_49 START')
       await CommonFunc.sleep(1000);
-      let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById("Video_Size");
-      let modePosition1:componentUtils.ComponentInfo = componentUtils.getRectangleById("Video_Father");
+      let modePosition: componentUtils.ComponentInfo = componentUtils.getRectangleById("Video_Size");
+      let modePosition1: componentUtils.ComponentInfo = componentUtils.getRectangleById("Video_Father");
       let Size = modePosition.size
       let SizeWidth = Size.width
       let SizeHeight = Size.height
@@ -178,11 +192,11 @@ export default function comSizeAbilityTest_18 () {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_50', 0, async  function (done) {
+    it('comSizeAbilityTestJsunit_50', 0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_50 START')
       await CommonFunc.sleep(1000);
-      let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById("WaterFlow_Size");
-      let modePosition1:componentUtils.ComponentInfo = componentUtils.getRectangleById("WaterFlow_Father");
+      let modePosition: componentUtils.ComponentInfo = componentUtils.getRectangleById("WaterFlow_Size");
+      let modePosition1: componentUtils.ComponentInfo = componentUtils.getRectangleById("WaterFlow_Father");
       let Size = modePosition.size
       let SizeWidth = Size.width
       let SizeHeight = Size.height

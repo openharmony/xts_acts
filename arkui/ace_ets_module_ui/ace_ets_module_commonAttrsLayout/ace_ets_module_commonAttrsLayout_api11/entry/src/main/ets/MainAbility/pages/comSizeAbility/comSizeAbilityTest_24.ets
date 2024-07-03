@@ -13,31 +13,47 @@
  * limitations under the License.
  */
 import matrix4 from '@ohos.matrix4'
+
 let matrix = matrix4.init([1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0])
+
 @Entry
 @Component
 struct comSizeAbilityTest_24 {
   @State isLunar: boolean = false
   private selectedDate: Date = new Date('2021-08-08')
+
   build() {
-    Scroll(){
+    Scroll() {
       Column({ space: 20 }) {
-        Column(){
+        Column() {
           DatePicker({
             start: new Date('1970-1-1'),
             end: new Date('2100-1-1'),
             selected: this.selectedDate
           })
-            .disappearTextStyle({color: Color.Gray, font: {size: '14fp', weight: FontWeight.Bold}})
-            .textStyle({color: '#ff182431', font: {size: '12fp', weight: FontWeight.Normal}})
-            .selectedTextStyle({color: '#ff0000FF', font: {size: '14fp', weight: FontWeight.Regular}})
+            .disappearTextStyle({ color: Color.Gray, font: { size: '14fp', weight: FontWeight.Bold } })
+            .textStyle({ color: '#ff182431', font: { size: '12fp', weight: FontWeight.Normal } })
+            .selectedTextStyle({ color: '#ff0000FF', font: { size: '14fp', weight: FontWeight.Regular } })
             .lunar(this.isLunar)
             .backgroundColor(0XBDDB69)
             .key("DatePicker_Size")
             .size({ width: 120, height: 100 })
             .translate({ x: 1, y: 1, z: 1 })
-            .scale({ x: 1, y: 1, z: 1, centerX: 1, centerY: 1 })
-            .rotate({ x: 1, y: 1, z: 1, angle: 0, centerX: 1, centerY: 1 })
+            .scale({
+              x: 1,
+              y: 1,
+              z: 1,
+              centerX: 1,
+              centerY: 1
+            })
+            .rotate({
+              x: 1,
+              y: 1,
+              z: 1,
+              angle: 0,
+              centerX: 1,
+              centerY: 1
+            })
             .transform(matrix)
         }.key('DatePicker_Father')
       }.width('100%')

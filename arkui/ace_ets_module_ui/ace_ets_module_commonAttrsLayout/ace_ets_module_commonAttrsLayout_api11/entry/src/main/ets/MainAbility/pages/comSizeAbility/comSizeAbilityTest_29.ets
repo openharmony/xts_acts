@@ -13,16 +13,19 @@
  * limitations under the License.
  */
 import matrix4 from '@ohos.matrix4'
+
 let matrix = matrix4.init([1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0])
+
 @Entry
 @Component
 struct comSizeAbilityTest_29 {
   @State text1: string = "Select下拉框"
   @State index: number = 2
+
   build() {
-    Scroll(){
+    Scroll() {
       Column({ space: 20 }) {
-        Column(){
+        Column() {
           Line()
             .startPoint([0, 0])
             .endPoint([50, 100])
@@ -31,18 +34,45 @@ struct comSizeAbilityTest_29 {
             .key("Line_Size")
             .size({ width: 220, height: 140 })
             .translate({ x: 1, y: 1, z: 1 })
-            .scale({ x: 1, y: 1, z: 1, centerX: 1, centerY: 1 })
-            .rotate({ x: 1, y: 1, z: 1, angle: 0, centerX: 1, centerY: 1 })
+            .scale({
+              x: 1,
+              y: 1,
+              z: 1,
+              centerX: 1,
+              centerY: 1
+            })
+            .rotate({
+              x: 1,
+              y: 1,
+              z: 1,
+              angle: 0,
+              centerX: 1,
+              centerY: 1
+            })
             .transform(matrix)
         }.key('Line_Father')
-        Column(){
+
+        Column() {
           Select([
             { value: '选项1' }
           ])
             .size({ width: 165, height: 120 })
             .translate({ x: 1, y: 1, z: 1 })
-            .scale({ x: 1, y: 1, z: 1, centerX: 1, centerY: 1 })
-            .rotate({ x: 1, y: 1, z: 1, angle: 0, centerX: 1, centerY: 1 })
+            .scale({
+              x: 1,
+              y: 1,
+              z: 1,
+              centerX: 1,
+              centerY: 1
+            })
+            .rotate({
+              x: 1,
+              y: 1,
+              z: 1,
+              angle: 0,
+              centerX: 1,
+              centerY: 1
+            })
             .transform(matrix)
             .key("Select_Size")
             .backgroundColor(0XBDDB69)
@@ -51,22 +81,36 @@ struct comSizeAbilityTest_29 {
             .font({ size: 16, weight: 500 })
             .selectedOptionFont({ size: 16, weight: 400 })
             .optionFont({ size: 16, weight: 400 })
-            .onSelect((index:number, text?: string | undefined)=>{
+            .onSelect((index: number, text?: string | undefined) => {
               console.info('Select:' + index)
               this.index = index;
-              if(text){
+              if (text) {
                 this.text1 = text;
               }
             })
         }.key('Select_Father')
-        Column(){
+
+        Column() {
           Image($r('app.media.icon'))
             .key("Image_Size")
             .backgroundColor('red')
             .size({ width: 90, height: 90 })
             .translate({ x: 1, y: 1, z: 1 })
-            .scale({ x: 1, y: 1, z: 1, centerX: 1, centerY: 1 })
-            .rotate({ x: 1, y: 1, z: 1, angle: 0, centerX: 1, centerY: 1 })
+            .scale({
+              x: 1,
+              y: 1,
+              z: 1,
+              centerX: 1,
+              centerY: 1
+            })
+            .rotate({
+              x: 1,
+              y: 1,
+              z: 1,
+              angle: 0,
+              centerX: 1,
+              centerY: 1
+            })
             .transform(matrix)
         }.key('Image_Father')
       }.width('100%')

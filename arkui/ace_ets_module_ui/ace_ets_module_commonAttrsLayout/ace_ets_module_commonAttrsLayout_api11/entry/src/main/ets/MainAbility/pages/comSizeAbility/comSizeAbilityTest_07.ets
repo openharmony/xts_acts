@@ -13,16 +13,19 @@
  * limitations under the License.
  */
 import matrix4 from '@ohos.matrix4'
+
 let matrix = matrix4.init([1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0])
+
 @Entry
 @Component
 struct comSizeAbilityTest_07 {
   @State select: boolean = true
-  public  iconStr: ResourceStr = $r("app.media.icon")
-  public  iconStr2: ResourceStr = $r("app.media.icon")
+  public iconStr: ResourceStr = $r("app.media.icon")
+  public iconStr2: ResourceStr = $r("app.media.icon")
+
   @Builder
-  MyMenu1(){
-    Column(){
+  MyMenu1() {
+    Column() {
       Menu() {
         MenuItemGroup() {
           MenuItem({ content: "菜单选项" })
@@ -31,15 +34,29 @@ struct comSizeAbilityTest_07 {
         .key("MenuItemGroup_Size")
         .size({ width: 90, height: 90 })
         .translate({ x: 1, y: 1, z: 1 })
-        .scale({ x: 1, y: 1, z: 1, centerX: 1, centerY: 1 })
-        .rotate({ x: 1, y: 1, z: 1, angle: 0, centerX: 1, centerY: 1 })
+        .scale({
+          x: 1,
+          y: 1,
+          z: 1,
+          centerX: 1,
+          centerY: 1
+        })
+        .rotate({
+          x: 1,
+          y: 1,
+          z: 1,
+          angle: 0,
+          centerX: 1,
+          centerY: 1
+        })
         .transform(matrix)
       }.height(90).width(90)
     }
   }
+
   @Builder
-  MyMenu2(){
-    Column(){
+  MyMenu2() {
+    Column() {
       Menu() {
         MenuItem({
           content: "Item",
@@ -48,15 +65,29 @@ struct comSizeAbilityTest_07 {
           .key("MenuItem_Size")
           .size({ width: 90, height: 90 })
           .translate({ x: 1, y: 1, z: 1 })
-          .scale({ x: 1, y: 1, z: 1, centerX: 1, centerY: 1 })
-          .rotate({ x: 1, y: 1, z: 1, angle: 0, centerX: 1, centerY: 1 })
+          .scale({
+            x: 1,
+            y: 1,
+            z: 1,
+            centerX: 1,
+            centerY: 1
+          })
+          .rotate({
+            x: 1,
+            y: 1,
+            z: 1,
+            angle: 0,
+            centerX: 1,
+            centerY: 1
+          })
           .transform(matrix)
       }
     }
   }
+
   @Builder
-  MyMenu3(){
-    Column(){
+  MyMenu3() {
+    Column() {
       Menu() {
         MenuItem({
           startIcon: $r("app.media.icon"),
@@ -68,25 +99,44 @@ struct comSizeAbilityTest_07 {
       .key("Menu_Size")
       .size({ width: 100, height: 100 })
       .translate({ x: 1, y: 1, z: 1 })
-      .scale({ x: 1, y: 1, z: 1, centerX: 1, centerY: 1 })
-      .rotate({ x: 1, y: 1, z: 1, angle: 0, centerX: 1, centerY: 1 })
+      .scale({
+        x: 1,
+        y: 1,
+        z: 1,
+        centerX: 1,
+        centerY: 1
+      })
+      .rotate({
+        x: 1,
+        y: 1,
+        z: 1,
+        angle: 0,
+        centerX: 1,
+        centerY: 1
+      })
       .transform(matrix)
     }
   }
+
   build() {
-    Scroll(){
+    Scroll() {
       Column({ space: 20 }) {
-        Column(){
-          Button(`ShowSize： MenuItemGroup`).fontSize(16).margin(5).bindMenu(this.MyMenu1)
+        Column() {
+          Button(`ShowSize： MenuItemGroup`)
+            .fontSize(16)
+            .margin(5)
+            .bindMenu(this.MyMenu1)
             .key('btn_MenuItemGroup')
             .bindMenu(this.MyMenu1)
         }
-        Column(){
+
+        Column() {
           Button(`ShowSize: MenuItem`).fontSize(16).margin(5)
             .key('btn_MenuItem')
             .bindMenu(this.MyMenu2)
         }
-        Column(){
+
+        Column() {
           Button(`ShowSize: Menu`).fontSize(16).margin(5)
             .key('btn_Menu')
             .bindMenu(this.MyMenu3)

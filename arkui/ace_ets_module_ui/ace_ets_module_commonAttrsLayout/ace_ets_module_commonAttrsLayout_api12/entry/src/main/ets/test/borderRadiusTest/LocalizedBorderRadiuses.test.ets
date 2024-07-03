@@ -59,13 +59,12 @@ export default function LocalizedBorderRadiuses() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('LocalizedBorderRadiuses_col');
-      let obj1 = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
-      console.info("[ObserverNavDestinationId_0100] obj1 is: " + JSON.stringify(obj1));
-      expect(obj1.$attrs.borderRadius.topLeft).assertEqual('20.00vp')
-      expect(obj1.$attrs.borderRadius.topRight).assertEqual('10.00vp')
-      expect(obj1.$attrs.borderRadius.bottomLeft).assertEqual('15.00vp')
-      expect(obj1.$attrs.borderRadius.bottomRight).assertEqual('25.00vp')
+      console.info("[ObserverNavDestinationId_0100] obj1 is: " + JSON.stringify(JSON.parse(strJson1)));
+      expect(JSON.parse(strJson1).$attrs.borderRadius.topLeft).assertEqual('20.00vp')
+      expect(JSON.parse(strJson1).$attrs.borderRadius.topRight).assertEqual('10.00vp')
+      expect(JSON.parse(strJson1).$attrs.borderRadius.bottomLeft).assertEqual('15.00vp')
+      expect(JSON.parse(strJson1).$attrs.borderRadius.bottomRight).assertEqual('25.00vp')
       console.info('LocalizedBorderRadiuses_0100 END');
       done();
     });

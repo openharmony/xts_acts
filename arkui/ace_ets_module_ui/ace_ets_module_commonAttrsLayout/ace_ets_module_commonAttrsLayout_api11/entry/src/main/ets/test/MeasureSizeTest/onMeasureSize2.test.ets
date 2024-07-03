@@ -13,18 +13,31 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
 
 
 export default function onMeasureSize2() {
-  describe('onMeasureSize2', function () {
-    beforeEach(async function (done) {
+  describe('onMeasureSize2', () => {
+    beforeEach(async (done: Function) => {
       console.info("onMeasureSize2 beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/MeasureSize/onMeasureSize2',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/MeasureSize/onMeasureSize2',
       }
       try {
         router.clear();
@@ -32,7 +45,7 @@ export default function onMeasureSize2() {
         console.info("get onMeasureSize2 state pages: " + JSON.stringify(pages));
         if (!("onMeasureSize2" == pages.name)) {
           console.info("get onMeasureSize2 state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push onMeasureSize2 page result: " + JSON.stringify(result));
         }
@@ -49,7 +62,7 @@ export default function onMeasureSize2() {
     * @tc.desc  : Partial calls to the onMeasureSize interface and onPlaceChildren interface
     * @tc.level : Level 2
     */
-    it('onMeasureSize2_001', 0, async function (done) {
+    it('onMeasureSize2_001', 0, async (done: Function) => {
       console.info('[onMeasureSize2_001] START');
       await CommonFunc.sleep(1000);
 
@@ -85,7 +98,6 @@ export default function onMeasureSize2() {
 
       done();
     });
-
 
 
   })

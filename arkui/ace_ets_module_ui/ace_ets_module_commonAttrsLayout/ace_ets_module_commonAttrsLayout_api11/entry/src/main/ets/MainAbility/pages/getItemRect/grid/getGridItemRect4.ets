@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../../utils/MessageManager';
+import { MessageManager, Callback } from '../../../utils/MessageManager';
 
 @Entry
 @Component
@@ -22,26 +22,25 @@ struct getGridItemRect4 {
   @State rowsGap1: number = 0
   @State x1: number = 0
   @State y1: number = 0
-
   @State index: number = 0
   @State x: number = 0
   @State y: number = 0
   @State width1: number = 0
   @State height1: number = 0
+  messageManager: MessageManager = new MessageManager()
 
-  messageManager:MessageManager = new MessageManager()
   onPageShow() {
     console.info('getGridItemRect4 onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
+      name: 'messageManager', message: this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback = (message: ESObject) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'index') {
         this.index = message.value;
-      }else if(message.name == 'x1') {
+      } else if (message.name == 'x1') {
         this.x1 = message.value;
-      }else if(message.name == 'y1') {
+      } else if (message.name == 'y1') {
         this.y1 = message.value;
       }
     }
@@ -61,8 +60,8 @@ struct getGridItemRect4 {
         }
         .rowStart(0)
         .rowEnd(1)
-        .border({width:1})
-        .position({x:this.x1,y:this.y1})
+        .border({ width: 1 })
+        .position({ x: this.x1, y: this.y1 })
         .key('getGridItemRect4_gridItem_0')
 
         GridItem() {
@@ -75,7 +74,7 @@ struct getGridItemRect4 {
         }
         .columnStart(0)
         .columnEnd(1)
-        .border({width:1})
+        .border({ width: 1 })
         .key('getGridItemRect4_gridItem_1')
 
 
@@ -87,7 +86,7 @@ struct getGridItemRect4 {
             .height('100%')
             .textAlign(TextAlign.Center)
         }
-        .border({width:1})
+        .border({ width: 1 })
         .key('getGridItemRect4_gridItem_2')
 
         GridItem() {
@@ -98,7 +97,7 @@ struct getGridItemRect4 {
             .height('100%')
             .textAlign(TextAlign.Center)
         }
-        .border({width:1})
+        .border({ width: 1 })
         .key('getGridItemRect4_gridItem_3')
 
         GridItem() {
@@ -109,7 +108,7 @@ struct getGridItemRect4 {
             .height('100%')
             .textAlign(TextAlign.Center)
         }
-        .border({width:1})
+        .border({ width: 1 })
 
         GridItem() {
           Text('5')
@@ -119,7 +118,7 @@ struct getGridItemRect4 {
             .height('100%')
             .textAlign(TextAlign.Center)
         }
-        .border({width:1})
+        .border({ width: 1 })
 
         GridItem() {
           Text('6')
@@ -129,7 +128,7 @@ struct getGridItemRect4 {
             .height('100%')
             .textAlign(TextAlign.Center)
         }
-        .border({width:1})
+        .border({ width: 1 })
 
         GridItem() {
           Text('7')
@@ -139,7 +138,7 @@ struct getGridItemRect4 {
             .height('100%')
             .textAlign(TextAlign.Center)
         }
-        .border({width:1})
+        .border({ width: 1 })
 
         GridItem() {
           Text('8')
@@ -149,7 +148,7 @@ struct getGridItemRect4 {
             .height('100%')
             .textAlign(TextAlign.Center)
         }
-        .border({width:1})
+        .border({ width: 1 })
 
         GridItem() {
           Text('9')
@@ -159,7 +158,7 @@ struct getGridItemRect4 {
             .height('100%')
             .textAlign(TextAlign.Center)
         }
-        .border({width:1})
+        .border({ width: 1 })
 
       }
       .columnsTemplate('1fr 1fr 1fr 1fr 1fr')

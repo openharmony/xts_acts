@@ -13,28 +13,37 @@
  * limitations under the License.
  */
 import matrix4 from '@ohos.matrix4'
+
 let matrix = matrix4.init([1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0])
+
 class MyDataSource1 implements IDataSource {
   private list: number[] = []
+
   constructor(list: number[]) {
     this.list = list
   }
+
   totalCount(): number {
     return this.list.length
   }
+
   getData(index: number): number {
     return this.list[index]
   }
+
   registerDataChangeListener(listener: DataChangeListener): void {
   }
+
   unregisterDataChangeListener() {
   }
 }
+
 @Entry
 @Component
 struct comSizeAbilityTest_28 {
   private swiperController: SwiperController = new SwiperController()
   private data: MyDataSource1 = new MyDataSource1([])
+
   aboutToAppear(): void {
     let list: number[] = []
     for (let i = 1; i <= 10; i++) {
@@ -42,8 +51,9 @@ struct comSizeAbilityTest_28 {
     }
     this.data = new MyDataSource1(list)
   }
+
   build() {
-    Scroll(){
+    Scroll() {
       Column({ space: 5 }) {
         Swiper(this.swiperController) {
           LazyForEach(this.data, (item: string) => {
@@ -57,8 +67,21 @@ struct comSizeAbilityTest_28 {
         }
         .size({ width: 250, height: 100 })
         .translate({ x: 1, y: 1, z: 1 })
-        .scale({ x: 1, y: 1, z: 1, centerX: 1, centerY: 1 })
-        .rotate({ x: 1, y: 1, z: 1, angle: 0, centerX: 1, centerY: 1 })
+        .scale({
+          x: 1,
+          y: 1,
+          z: 1,
+          centerX: 1,
+          centerY: 1
+        })
+        .rotate({
+          x: 1,
+          y: 1,
+          z: 1,
+          angle: 0,
+          centerX: 1,
+          centerY: 1
+        })
         .transform(matrix)
         .key("Swiper_Size")
         .cachedCount(2)

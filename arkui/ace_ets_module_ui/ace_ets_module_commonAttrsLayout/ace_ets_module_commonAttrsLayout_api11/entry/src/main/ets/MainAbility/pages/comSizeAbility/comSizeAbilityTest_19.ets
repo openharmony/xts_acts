@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import matrix4 from '@ohos.matrix4'
+
 let matrix = matrix4.init([1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0])
+
 @Entry
 @Component
 struct comSizeAbilityTest_19 {
@@ -21,6 +23,7 @@ struct comSizeAbilityTest_19 {
   private arrayB: string[] = ['卜', '白', '包', '毕', '丙']
   private arrayC: string[] = ['曹', '成', '陈', '催']
   private value: string[] = ['#', 'A', 'B', 'C']
+
   build() {
     Column() {
       Stack({ alignContent: Alignment.Start }) {
@@ -56,23 +59,37 @@ struct comSizeAbilityTest_19 {
           }
           .width('30%')
           .backgroundColor('green')
+
           AlphabetIndexer({ arrayValue: this.value, selected: 0 })
             .size({ width: 80, height: 80 })
             .translate({ x: 1, y: 1, z: 1 })
-            .scale({ x: 1, y: 1, z: 1, centerX: 1, centerY: 1 })
-            .rotate({ x: 1, y: 1, z: 1, angle: 0, centerX: 1, centerY: 1 })
+            .scale({
+              x: 1,
+              y: 1,
+              z: 1,
+              centerX: 1,
+              centerY: 1
+            })
+            .rotate({
+              x: 1,
+              y: 1,
+              z: 1,
+              angle: 0,
+              centerX: 1,
+              centerY: 1
+            })
             .transform(matrix)
             .key("AlphabetIndexer_Size")
             .backgroundColor('red')
-            .selectedColor(0xFFFFFF) // 选中项文本颜色
-            .popupColor(0xFFFAF0) // 弹出框文本颜色
-            .selectedBackgroundColor(0xCCCCCC) // 选中项背景颜色
-            .popupBackground(0xD2B48C) // 弹出框背景颜色
-            .usingPopup(true) // 是否显示弹出框
-            .selectedFont({ size: 16, weight: FontWeight.Bolder }) // 选中项字体样式
-            .popupFont({ size: 30, weight: FontWeight.Bolder }) // 弹出框内容的字体样式
-            .itemSize(28) // 每一项的尺寸大小
-            .alignStyle(IndexerAlign.Left) // 弹出框在索引条右侧弹出
+            .selectedColor(0xFFFFFF)// 选中项文本颜色
+            .popupColor(0xFFFAF0)// 弹出框文本颜色
+            .selectedBackgroundColor(0xCCCCCC)// 选中项背景颜色
+            .popupBackground(0xD2B48C)// 弹出框背景颜色
+            .usingPopup(true)// 是否显示弹出框
+            .selectedFont({ size: 16, weight: FontWeight.Bolder })// 选中项字体样式
+            .popupFont({ size: 30, weight: FontWeight.Bolder })// 弹出框内容的字体样式
+            .itemSize(28)// 每一项的尺寸大小
+            .alignStyle(IndexerAlign.Left)// 弹出框在索引条右侧弹出
             .onSelect((index: number) => {
               console.info(this.value[index] + ' Selected!')
             })
