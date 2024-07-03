@@ -12,23 +12,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Ability from '@ohos.app.ability.UIAbility'
+import Ability from '@ohos.app.ability.UIAbility';
+import commonEvent from '@ohos.commonEvent';
 
 export default class Hap1MainAbility1 extends Ability {
     onCreate(want, launchParam) {
         console.log("[Demo] Hap1MainAbility1 onCreate")
         globalThis.ability1Hap1Want = want;
-        setTimeout(() => {
-            this.context.terminateSelf().then((data) => {
-                console.log("Hap1MainAbility1 EventTest terminateSelf data: " + JSON.stringify(data));
-            }).catch((error) => {
-                console.log("Hap1MainAbility1 EventTest terminateSelf error: " + JSON.stringify(error));
-            })
-        }, 2000)
+        globalThis.ability1Hap1 = this.context;
     }
 
     onDestroy() {
-        console.log("[Demo] Hap1MainAbility1 onDestroy")
+        console.log("[Demo] Hap1MainAbility1 onDestroy");
+        setTimeout(function () {
+          commonEvent.publish('Hap1MainAbility1_onDestroy', (err, data) => {
+            console.log(' Hap1MainAbility1 onDestroy publish succeed' + JSON.stringify(err) + JSON.stringify(data));
+          })
+        }, 500);
     }
 
     onWindowStageCreate(windowStage) {
@@ -45,7 +45,17 @@ export default class Hap1MainAbility1 extends Ability {
 
     onForeground() {
         // Ability has brought to foreground
-        console.log("[Demo] Hap1MainAbility1 onForeground")
+        console.log("[Demo] Hap1MainAbility1 onForeground");
+        setTimeout(function () {
+          globalThis.ability1Hap1.terminateSelf().then((data) => {
+            console.log("Hap1MainAbility1 EventTest terminateSelf data: " + JSON.stringify(data));
+        }).catch((error) => {
+            console.log("Hap1MainAbility1 EventTest terminateSelf error: " + JSON.stringify(error));
+        })
+          commonEvent.publish('Hap1MainAbility1_onForground', (err, data) => {
+            console.log('Hap1MainAbility1 onForeground publish succeed' + JSON.stringify(err) + JSON.stringify(data));
+          })
+        }, 500);
     }
 
     onBackground() {

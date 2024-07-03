@@ -66,6 +66,11 @@ export default class MainAbility1 extends Ability {
                 console.log("[Demo] " + abilityname + " onAbilityDestroy");
                 listKey1.push(abilityname + " onAbilityDestroy");
                 console.log("[Demo] 4listKey1:" + JSON.stringify(listKey1));
+                if (abilityname === 'MainAbility2') {
+                  commonEvent.publish('MainAbility2_onAbilityDestroy', (err, data) => {
+                    console.log('MainAbility2_onAbilityDestroy publish succeed' + JSON.stringify(err) + JSON.stringify(data));
+                  })
+                }
             },
             onAbilityForeground(ability) {
                 console.log("[Demo] AbilityLifecycleCallback1 onAbilityForeground ability:"
@@ -101,15 +106,18 @@ export default class MainAbility1 extends Ability {
         globalThis.applicationContext1 = this.context.getApplicationContext();
         let lifecycleid = globalThis.applicationContext1.registerAbilityLifecycleCallback(AbilityLifecycleCallback);
         console.log("[Demo] registerAbilityLifecycleCallback1 number: " + JSON.stringify(lifecycleid));
-        setTimeout(function () {
             console.log("[Demo] registerAbilityLifecycleCallback1 listKey: " + JSON.stringify(listKey1));
             globalThis.list1 = listKey1;
             globalThis.callbackid1 = lifecycleid;
-        }, 2500);
     }
 
     onDestroy() {
-        console.log("[Demo] MainAbility1 onDestroy")
+        console.log("[Demo] MainAbility1 onDestroy");
+        setTimeout(function () {
+          commonEvent.publish('MainAbility1_onDestroy', (err, data) => {
+            console.log('MainAbility1 onDestroy publish succeed' + JSON.stringify(err) + JSON.stringify(data));
+          })
+        }, 500);
     }
 
     onWindowStageCreate(windowStage) {
