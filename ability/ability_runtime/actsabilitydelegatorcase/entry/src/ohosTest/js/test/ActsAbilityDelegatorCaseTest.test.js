@@ -305,7 +305,7 @@ export default function actsStServiceAbilityTest() {
             }
         })
 
-       /**
+        /**
         * @tc.number: ACTS_ASetWakeUpScreen_0100
         * @tc.name: SetWakeUpScreen
         * @tc.desc: Check the return value of the interface (by AsyncCallback)
