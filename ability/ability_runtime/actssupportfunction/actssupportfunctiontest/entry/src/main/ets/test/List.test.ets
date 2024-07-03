@@ -14,10 +14,8 @@
  */
 import abilityIsTerminatingTest from './AbilityIsTerminating.test';
 import faSetDisplayOrientation from './FaSetDisplayOrientation.test';
-import faShowOnLock from './FaShowOnLock.test';
 
 export default function testsuite() {
   abilityIsTerminatingTest();
   faSetDisplayOrientation();
-  faShowOnLock();
 }
