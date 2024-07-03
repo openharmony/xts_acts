@@ -15,7 +15,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function textAreaMaxFontSize() {
   describe('textAreaMaxFontSize', () => {
@@ -31,19 +31,19 @@ export default function textAreaMaxFontSize() {
         if (!("textAreaMaxFontSize" == pages.name)) {
           console.info("get textAreaMaxFontSize pages.name: " + JSON.stringify(pages.name));
           await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
         }
       } catch (err) {
         console.error("push textAreaMaxFontSize page error: " + err);
       }
 
-      await Utils.sleep(1000)
+      await CommonFunc.sleep(1000)
       console.info("textAreaMaxFontSize beforeEach end");
       done()
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("textAreaMaxFontSize after each called");
     })
 
