@@ -82,11 +82,9 @@ export default class MainAbility12 extends Ability {
         globalThis.applicationContext12 = this.context.getApplicationContext();
         let lifecycleid = globalThis.applicationContext12.registerAbilityLifecycleCallback(AbilityLifecycleCallback);
         console.log("[Demo] registerAbilityLifecycleCallback12 number: " + JSON.stringify(lifecycleid));
-        setTimeout(function () {
-            console.log("[Demo] registerAbilityLifecycleCallback12 listKey: " + JSON.stringify(listKey12));
-            globalThis.list12 = listKey12;
-            globalThis.callbackid12 = lifecycleid;
-        }, 1700);
+        console.log("[Demo] registerAbilityLifecycleCallback12 listKey: " + JSON.stringify(listKey12));
+        globalThis.list12 = listKey12;
+        globalThis.callbackid12 = lifecycleid;
     }
 
     onDestroy() {

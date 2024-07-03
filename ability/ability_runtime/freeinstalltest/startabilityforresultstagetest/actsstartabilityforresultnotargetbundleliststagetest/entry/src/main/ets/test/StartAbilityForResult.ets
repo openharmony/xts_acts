@@ -22,51 +22,9 @@ import Prompt from '@system.prompt';
 
 
 export default function StartAbilityForResult(abilityContext) {
-    var TAG = "";
-
-    function sleep(time) {
-        return new Promise((resolve) => setTimeout(resolve, time))
-    }
+    let TAG = "";
 
     describe('StartAbilityForResult', function () {
-        beforeAll(async function (done) {
-            console.info("StartAbilityForResult before all called");
-            var cmd = "bm install -p data/test/MockService.hap";
-            console.info("cmd : "+cmd)
-            globalThis.delegator.executeShellCommand(cmd, (err: any, d: any) => {
-                console.info("executeShellCommand : err : " + JSON.stringify(err)," data : " + JSON.stringify(d));})
-            await sleep(500);
-            var cmd1 = "mkdir /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry";
-            globalThis.delegator.executeShellCommand(cmd1, (err: any, d: any) => {
-                console.info("executeShellCommand1 : err : " + JSON.stringify(err)," data : " + JSON.stringify(d));})
-            await sleep(500);
-            var cmd2 = "mkdir /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/files";
-            globalThis.delegator.executeShellCommand(cmd2, (err: any, d: any) => {
-                console.info("executeShellCommand2 : err : " + JSON.stringify(err)," data : " + JSON.stringify(d));})
-            await sleep(500);
-            var cmd3 ="cp data/test/AtomizationResultStageEntry.hap /data/app/el2/100/base/com.ohos.hag.famanager/haps/entry/files";
-            globalThis.delegator.executeShellCommand(cmd3, (err: any, d: any) => {
-                console.info("executeShellCommand3 : err : " + JSON.stringify(err)," data : " + JSON.stringify(d));
-                done();
-            })
-        });
-
-        afterEach(async function (done) {
-            console.info("StartAbilityForResult after each called");
-            if ("FreeInstall_Stage_StartAbilityForResult_2500") {
-                var cmd4 = "bm uninstall -n com.example.qianyiyingyong.hmservice";
-                globalThis.delegator.executeShellCommand(cmd4, (err: any, d: any) => {
-                    console.info("executeShellCommand4 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
-                })
-                await sleep(500);
-            }
-            var cmd5 = "bm uninstall -n com.ohos.hag.famanager";
-            globalThis.delegator.executeShellCommand(cmd5, (err: any, d: any) => {
-                console.info("executeShellCommand5 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
-            })
-            await sleep(500);
-            done();
-        });
 
         /*
          * @tc.number: FreeInstall_Stage_StartAbilityForResult_2500
@@ -77,13 +35,7 @@ export default function StartAbilityForResult(abilityContext) {
         it("FreeInstall_Stage_StartAbilityForResult_2500", 0, async function (done) {
             console.log("------------start FreeInstall_Stage_StartAbilityForResult_2500-------------");
             TAG = "FreeInstall_Stage_StartAbilityForResult_2500";
-            var cmd6 = "bm install -p data/test/AtomizationResultStageEntry.hap";
-            globalThis.delegator.executeShellCommand(cmd6, (err: any, d: any) => {
-                console.info("executeShellCommand6: err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
-            })
-            await sleep(500);
-            let details;
-            var str = {
+            let str = {
                 "bundleName": "com.example.qianyiyingyong.hmservice",
                 "abilityName": "com.example.qianyiyingyong.MainAbility",
                 "moduleName": "entry",
@@ -91,15 +43,14 @@ export default function StartAbilityForResult(abilityContext) {
             }
             await globalThis.abilityContext.startAbilityForResult(str)
                 .then((data) => {
-                    details = data;
                     console.info(TAG + ' StartAbilityForResultPromise successful. Data: ' + JSON.stringify(data))
+                    expect(data.resultCode).assertEqual(1);
+                    done();
                 }).catch((error) => {
                     console.info(TAG + ' StartAbilityForResultPromise failed. Cause: ' + JSON.stringify(error));
+                    expect().assertFail();
+                    done();
                 })
-            await sleep(2000);
-            console.log(TAG + " resultCode: " + details.resultCode);
-            expect(details.resultCode).assertEqual(1);
-            done();
         });
     })
 }

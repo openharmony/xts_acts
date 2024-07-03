@@ -1,44 +1,30 @@
 {
-    "description": "Configuration for startabilityforresultnotargetbundleliststagetest Tests",
-    "driver": {
-        "type": "OHJSUnitTest",
-        "test-timeout": "600000",
-		"bundle-name": "com.example.startAbilityForResult.hmservice",
-        "module-name": "entry",
-        "shell-timeout": "600000",
-        "testcase-timeout": "50000"
-    },
-    "kits": [
-        {
-            "test-file-name": [
-                "ActsStartAbilityForResultNoTargetBundleListStageTest.hap"
-            ],
-            "type": "AppInstallKit",
-            "cleanup-apps": true
-        },
-        {
-            "type": "ShellKit",
-            "run-command": [
-                "remount",
-                "mkdir /data/test/",
-                "power-shell wakeup",
-                "power-shell setmode 602",
-                "uinput -T -m 300 2700 280 200"
-            ]
-        },
-        {
-            "type": "PushKit",
-            "push":[
-                "AtomizationResultStageEntry.hap -> /data/test/AtomizationResultStageEntry.hap",
-                "MockService.hap -> /data/test/MockService.hap"
-            ]
-        },
-        {
-            "type": "ShellKit",
-            "run-command": [
-                "bm install -p /data/test/AtomizationResultStageEntry.hap",
-                "bm install -p /data/test/MockService.hap"
-            ]
-        }
-    ]
+  "description": "Configuration for startabilityforresultnotargetbundleliststagetest Tests",
+  "driver": {
+      "type": "OHJSUnitTest",
+      "test-timeout": "600000",
+      "bundle-name": "com.example.startAbilityForResult.hmservice",
+      "module-name": "entry",
+      "shell-timeout": "600000",
+      "testcase-timeout": "50000"
+  },
+  "kits": [
+      {
+          "test-file-name": [
+              "ActsStartAbilityForResultNoTargetBundleListStageTest.hap",
+              "AtomizationResultStageEntry.hap"
+          ],
+          "type": "AppInstallKit",
+          "cleanup-apps": true
+      },
+      {
+          "type": "ShellKit",
+          "run-command": [
+              "remount",
+              "power-shell wakeup",
+              "power-shell setmode 602",
+              "uinput -T -m 300 2700 280 200"
+          ]
+      }
+  ]
 }
