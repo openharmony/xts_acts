@@ -28,6 +28,7 @@ struct getSurfaceId {
   @State str: string = "emitGetSurfaceId0100";
   @State checkResult: number = 0;
   controller: web_webview.WebviewController = new web_webview.WebviewController();
+  controllerOne: web_webview.WebviewController = new web_webview.WebviewController();
   @State imagePixelMap: image.PixelMap | undefined = undefined;
   urltrustList: string = "{\"UrlPermissionList\":[{\"host\":\"www.example.com\"}]}"
   urltrustListTwo: string = "{\"UrlPermissionList\":[{\"scheme\":\"http\", \"host\":\"www.test.com\", \"port\":80, \"path\":\"test\"}]}"
@@ -182,6 +183,44 @@ struct getSurfaceId {
                 this.controller.searchAllAsync('返回');
               } catch (error) {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+              break;
+            }
+            case "emitGetSurfaceId0200": {
+              try {
+                let surfaceId = this.controllerOne.getSurfaceId();
+                console.log("surfaceId: " + surfaceId);
+              } catch (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                Utils.emitEvent(error.code, 28938)
+              }
+              break;
+            }
+            case "emitGetSurfaceId0300": {
+              try {
+                let surfaceId = this.controllerOne.getSurfaceId();
+                console.log("surfaceId: " + surfaceId);
+              } catch (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                Utils.emitEvent(error.message, 28939)
+              }
+              break;
+            }
+            case "emitSetUrlTrustList0800": {
+              try {
+                this.controllerOne.setUrlTrustList(this.urltrustListThree);
+              } catch (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                Utils.emitEvent(error.code, 28940)
+              }
+              break;
+            }
+            case "emitSetUrlTrustList0900": {
+              try {
+                this.controllerOne.setUrlTrustList(this.urltrustListThree);
+              } catch (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                Utils.emitEvent(error.message, 28941)
               }
               break;
             }
