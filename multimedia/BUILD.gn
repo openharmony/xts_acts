@@ -45,6 +45,7 @@ group("multimedia") {
       "av_codec/vcodec/hdrcodec:ActsHdrcodecTest",
       "av_codec/vcodec/hwdecoder:ActsHwdecoderTest",
       "av_codec/vcodec/swdecoder:ActsSwDecodeTest",
+      "avcodec/AVCodecDrmNdk:AVcodecDrm_NDK_test",
       "avcodec/avcodecNdk:AVcodec_NDK_test",
       "avsession/avsession_js_standard/avsessionManager:avsession_framework_js_hap",
       "avsession/avsession_js_standard/avsessionVoiceCall:avsession_voicecall_js_hap",
