@@ -39,7 +39,7 @@ struct getListItemGroupRect6 {
 
   @Builder
   itemFoot(num: number) {
-    Text('共' + num + "个")
+    Text('共' + num + '个')
       .fontSize(20)
       .backgroundColor(0xAABBCC)
       .width('100%')
@@ -49,9 +49,9 @@ struct getListItemGroupRect6 {
   @Builder
   itemEnd() {
     Row() {
-      Button("Delete").margin("4vp")
-      Button("Set").margin("4vp")
-    }.padding("4vp").justifyContent(FlexAlign.SpaceEvenly).width(0).height(0)
+      Button('Delete').margin('4vp')
+      Button('Set').margin('4vp')
+    }.padding('4vp').justifyContent(FlexAlign.SpaceEvenly).width(0).height(0)
   }
 
   messageManager: MessageManager = new MessageManager()

@@ -40,7 +40,7 @@ struct getListItemGroupRect4 {
 
   @Builder
   itemFoot(num: number) {
-    Text('共' + num + "个")
+    Text('共' + num + '个')
       .fontSize(20)
       .backgroundColor(0xAABBCC)
       .width('100%')
