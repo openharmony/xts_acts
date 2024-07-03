@@ -20,6 +20,7 @@ import testsuite from '../test/List.test';
 import window from '@ohos.window';
 import Want from '@ohos.app.ability.Want';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import common from '@ohos.app.ability.common';
 
 export default class TestAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
@@ -28,6 +29,7 @@ export default class TestAbility extends UIAbility {
     hilog.info(0x0000, 'testTag', '%{public}s', 'launchParam:' + JSON.stringify(launchParam) ?? '');
     let pathDir: string = this.context.filesDir;
     AppStorage.setOrCreate<string>('pathDir', pathDir);
+    AppStorage.setOrCreate<common.UIAbilityContext>('testContext', this.context);
     let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator;
     abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
     let abilityDelegatorArguments: AbilityDelegatorRegistry.AbilityDelegatorArgs;
