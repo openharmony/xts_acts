@@ -29,9 +29,9 @@ struct getListItemRect6 {
   @Builder
   itemEnd() {
     Row() {
-      Button("Delete").margin("4vp")
-      Button("Set").margin("4vp")
-    }.padding("4vp").justifyContent(FlexAlign.SpaceEvenly).width(0).height(0)
+      Button('Delete').margin('4vp')
+      Button('Set').margin('4vp')
+    }.padding('4vp').justifyContent(FlexAlign.SpaceEvenly).width(0).height(0)
   }
 
   messageManager: MessageManager = new MessageManager()
