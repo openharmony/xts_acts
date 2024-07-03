@@ -51,7 +51,7 @@ export default function tabsAnimationMode() {
     * @tc.number: SUB_ACE_Tabs_ANIMATIONMODE_0100
     * @tc.name  : tabsAnimationMode_0100
     * @tc.desc  : Set animation mode for tabs switch animation
-    * @tc.level : Level 1
+    * @tc.level : Level 2
     * @tc.type :
     * @tc.size :
     */
@@ -59,17 +59,19 @@ export default function tabsAnimationMode() {
       console.info('tabsAnimationMode_0100 START');
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('animationMode_1');
-      let strJson2 = getInspectorByKey('animationMode_2');
-      let strJson3 = getInspectorByKey('animationMode_3');
       let obj1 = JSON.parse(strJson1);
-      let obj2 = JSON.parse(strJson2);
-      let obj3 = JSON.parse(strJson3);
       console.info("[tabsAnimationMode_0100] component obj1 is: " + JSON.stringify(obj1));
-      console.info("[tabsAnimationMode_0100] component obj2 is: " + JSON.stringify(obj2));
-      console.info("[tabsAnimationMode_0100] component obj3 is: " + JSON.stringify(obj3));
-      console.info("[tabsAnimationMode_0100] animationMode: " + JSON.stringify(obj1.$attrs.animationMode));
+      console.info("[tabsAnimationMode_0100] animationMode1: " + JSON.stringify(obj1.$attrs.animationMode));
       expect(obj1.$attrs.animationMode).assertEqual('AnimationMode.CONTENT_FIRST');
+
+      let strJson2 = getInspectorByKey('animationMode_2');
+      let obj2 = JSON.parse(strJson2);
+      console.info("[tabsAnimationMode_0100] component obj2 is: " + JSON.stringify(obj2));
       expect(obj2.$attrs.animationMode).assertEqual('AnimationMode.ACTION_FIRST');
+
+      let strJson3 = getInspectorByKey('animationMode_3');
+      let obj3 = JSON.parse(strJson3);
+      console.info("[tabsAnimationMode_0100] component obj3 is: " + JSON.stringify(obj3));
       expect(obj3.$attrs.animationMode).assertEqual('AnimationMode.NO_ANIMATION');
       console.info('[tabsAnimationMode_0100] END');
       done();
