@@ -30,6 +30,8 @@ import tabTitleBarPageTest from './tabTitleBar/tabTitleBarPageTest.test.ets';
 import toolBarItemState from './toolBar/toolBarItemState.test.ets';
 import toolBarPageTest from './toolBar/toolBarPageTest.test.ets';
 import treeViewPageTest from './treeView/treeViewPageTest.test.ets';
+import treeViewNodeParamContainer from './treeView/treeViewNodeParamContainer.test.ets';
+import treeViewCallbackParamChildIndex from './treeView/treeViewCallbackParamChildIndex.test.ets';
 
 export default function testsuite() {
   composeListItemIconType();
@@ -49,4 +51,6 @@ export default function testsuite() {
   toolBarItemState();
   toolBarPageTest();
   treeViewPageTest();
+  treeViewNodeParamContainer();
+  treeViewCallbackParamChildIndex();
 }
