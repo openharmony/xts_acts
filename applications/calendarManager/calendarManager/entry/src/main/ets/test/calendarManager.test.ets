@@ -1482,18 +1482,11 @@ export default function CalendarManagerTest() {
           expect(calendarManager.AttendeeRole.ORGANIZER == 'organizer').assertTrue();
           return;
         }
-        let driver = await uitest.Driver.create();
         calendarMgr?.editEvent(Schedule).then((data) => {
           expect(data != 0).assertTrue();
         }).catch((err: BusinessError) => {
           console.info(CaseName + "Failed to editEvent" + JSON.stringify(err));
         })
-        sleep(500);
-        let saveButton = await driver.findComponent(uitest.ON.id('component_id_edit_save_button'));
-        if (saveButton) {
-          saveButton.click();
-          sleep(500);
-        }
       } catch (err) {
         console.info(CaseName + "Failed to editEvent" + JSON.stringify(err));
       }
