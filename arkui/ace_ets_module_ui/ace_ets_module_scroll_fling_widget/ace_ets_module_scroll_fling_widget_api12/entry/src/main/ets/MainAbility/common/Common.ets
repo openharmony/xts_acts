@@ -29,14 +29,14 @@ export default class CommonFunc {
   public static rectBottom: number;
   public static rectValue: RectValue;
   
-  static sleep(time){
-        return new Promise((resolve,reject)=>{
-            setTimeout(()=>{
-                resolve('ok')
-            },time)
-        }).then(()=>{
-            console.info(`sleep ${time} over...`)
-        })
+  static sleep(time: number) {
+    return new Promise((resolve: (value: string) => void) => {
+      setTimeout(() => {
+        resolve("ok")
+      }, time)
+    }).then(() => {
+      console.info(`sleep ${time} over...`)
+    })
   }
   
  static getComponentRect(key: string): RectValue {
@@ -56,7 +56,7 @@ export default class CommonFunc {
 
   static setScreenOrientation(orientation: number) {
     screen.getAllScreens().then(data => {
-        console.table('Succeeded in getting all screens. Data:', data);
+        console.log('Succeeded in getting all screens. Data:'+ JSON.stringify(data));
         return data[0];
     }).then(screenClass => {
         return screenClass.setOrientation(orientation);

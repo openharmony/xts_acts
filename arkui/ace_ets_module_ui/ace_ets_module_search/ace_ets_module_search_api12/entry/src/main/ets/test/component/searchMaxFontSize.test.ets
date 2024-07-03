@@ -13,39 +13,38 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function searchMaxFontSize() {
-  describe('searchMaxFontSize', function () {
-    beforeEach(async function (done) {
+  describe('searchMaxFontSize', () => {
+    beforeEach(async (done: Function) => {
       console.info("searchMaxFontSizeTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/searchMaxFontSize',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/searchMaxFontSize',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get searchMaxFontSize state pages: " + JSON.stringify(pages));
         if (!("searchMaxFontSize" == pages.name)) {
           console.info("get searchMaxFontSize pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
-          await Utils.sleep(2000);
+          let result = await router.push(options);
+          await CommonFunc.sleep(2000);
           console.info("push searchMaxFontSize page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push searchMaxFontSize page error: " + err);
       }
 
-      await Utils.sleep(1000)
+      await CommonFunc.sleep(1000)
       console.info("searchMaxFontSize beforeEach end");
       done()
     });
 
-    afterEach(async function () {
-      await Utils.sleep(1000);
+    afterEach(async () => {
+      await CommonFunc.sleep(1000);
       console.info("searchMaxFontSize after each called");
     })
 
@@ -57,12 +56,12 @@ export default function searchMaxFontSize() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('searchMaxFontSize0100', 0, async function (done) {
-      var tagName = 'searchMaxFontSize0100';
+    it('searchMaxFontSize0100', 0, async (done: Function) => {
+      let tagName = 'searchMaxFontSize0100';
       console.info('[' + tagName + '] START============================');
 
       let strJsonNew = getInspectorByKey('key_search_maxFontSize_001');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Search maxFontSize is: ' + JSON.stringify(obj.$attrs.maxFontSize));
 
 

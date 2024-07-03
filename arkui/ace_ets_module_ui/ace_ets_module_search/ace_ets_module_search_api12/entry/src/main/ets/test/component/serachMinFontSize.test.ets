@@ -13,39 +13,38 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function searchMinFontSize() {
-  describe('searchMinFontSize', function () {
-    beforeEach(async function (done) {
+  describe('searchMinFontSize', () => {
+    beforeEach(async (done: Function) => {
       console.info("searchMinFontSize beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/searchMinFontSize',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/searchMinFontSize',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get searchMinFontSize state pages: " + JSON.stringify(pages));
         if (!("searchMinFontSize" == pages.name)) {
           console.info("get searchMinFontSize pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
-          await Utils.sleep(2000);
+          let result = await router.push(options);
+          await CommonFunc.sleep(2000);
           console.info("push searchMinFontSize page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push searchMinFontSize page error: " + err);
       }
 
-      await Utils.sleep(1000)
+      await CommonFunc.sleep(1000)
       console.info("searchMinFontSize beforeEach end");
       done()
     });
 
-    afterEach(async function () {
-      await Utils.sleep(1000);
+    afterEach(async () => {
+      await CommonFunc.sleep(1000);
       console.info("searchMinFontSize after each called");
     })
 
@@ -57,12 +56,12 @@ export default function searchMinFontSize() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('searchMinFontSize0100', 0, async function (done) {
-      var tagName = 'searchMinFontSize0100';
+    it('searchMinFontSize0100', 0, async (done: Function) => {
+      let tagName = 'searchMinFontSize0100';
       console.info('[' + tagName + '] START============================');
 
       let strJsonNew = getInspectorByKey('key_search_minFontSize_001');
-      let obj = JSON.parse(strJsonNew);
+      let obj: ESObject = JSON.parse(strJsonNew);
       console.info('[' + tagName + '] Search minFontSize is: ' + JSON.stringify(obj.$attrs.minFontSize));
 
       expect(obj.$attrs.minFontSize).assertEqual('16.00fp');

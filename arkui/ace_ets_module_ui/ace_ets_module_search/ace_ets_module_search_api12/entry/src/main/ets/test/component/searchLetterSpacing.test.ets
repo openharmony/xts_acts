@@ -13,39 +13,38 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function searchLetterSpacing() {
-  describe('searchLetterSpacing', function () {
-    beforeEach(async function (done) {
+  describe('searchLetterSpacing', () => {
+    beforeEach(async (done: Function) => {
       console.info("searchLetterSpacingTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/searchLetterSpacing',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/searchLetterSpacing',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get searchLetterSpacing state pages: " + JSON.stringify(pages));
         if (!("searchLetterSpacing" == pages.name)) {
           console.info("get searchLetterSpacing pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
-          await Utils.sleep(2000);
+          let result = await router.push(options);
+          await CommonFunc.sleep(2000);
           console.info("push searchLetterSpacing page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push searchLetterSpacing page error: " + err);
       }
 
-      await Utils.sleep(1000)
+      await CommonFunc.sleep(1000)
       console.info("searchLetterSpacing beforeEach end");
       done()
     });
 
-    afterEach(async function () {
-      await Utils.sleep(1000);
+    afterEach(async () => {
+      await CommonFunc.sleep(1000);
       console.info("searchLetterSpacing after each called");
     })
 
@@ -57,10 +56,10 @@ export default function searchLetterSpacing() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('searchLetterSpacing_0100', 0, async function (done) {
+    it('searchLetterSpacing_0100', 0, async (done: Function) => {
       console.info('[searchLetterSpacing_0100] START');
       let strJson = getInspectorByKey('key_search_letterSpacing_001');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[searchLetterSpacing_0100] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.letterSpacing).assertEqual('5.00fp');
       console.info('[searchLetterSpacing_0100] END');
