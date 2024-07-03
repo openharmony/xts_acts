@@ -65,7 +65,7 @@ describe('relationalStorePredicatesComplexFiledTest', function () {
 
     /**
      * @tc.name RelationalStorePredicatesComplexFiled0001
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesJsAPITest_1250
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesEtsAPITest_1250
      * @tc.desc resultSet Update test
      * @tc.size MediumTest
      * @tc.type Function
@@ -94,7 +94,7 @@ describe('relationalStorePredicatesComplexFiledTest', function () {
 
     /**
      * @tc.name RelationalStorePredicatesComplexFiled0002
-     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesJsAPITest_1260
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PredicatesEtsAPITest_1260
      * @tc.desc resultSet Update test
      * @tc.size MediumTest
      * @tc.type Function
