@@ -6551,5 +6551,539 @@ export default function imageJsTest() {
             console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_CALLBACK_0700 success');
             done();
         });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0100
+         * @tc.name      : create pixlelmap of RGB_565
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0100', 0, async function (done) {
+            const RGB_565 = image.PixelMapFormat.RGB_565;
+            const RGBA_8888 = image.PixelMapFormat.RGBA_8888;
+            const BGRA_8888 = image.PixelMapFormat.BGRA_8888;
+            const RGB_888 = image.PixelMapFormat.RGB_888;
+            const ALPHA_8 = image.PixelMapFormat.ALPHA_8;
+            const RGBA_F16 = image.PixelMapFormat.RGBA_F16;
+            const NV21 = image.PixelMapFormat.NV21;
+            const NV12 = image.PixelMapFormat.NV12;
+        
+            const gPixelFormat = new Map([
+                [RGB_565, "PixelFormat::RGB_565"],
+                [RGBA_8888, "PixelFormat::RGBA_8888"],
+                [BGRA_8888, "PixelFormat::BGRA_8888"],
+                [RGB_888, "PixelFormat::RGB_888"],
+                [ALPHA_8, "PixelFormat::ALPHA_8"],
+                [RGBA_F16, "PixelFormat::RGBA_F16"],
+                [NV21, "PixelFormat::NV21"],
+                [NV12, "PixelFormat::NV12"]
+            ]);
+
+            let options = {
+                editable: true,
+                srcPixelFormat : image.PixelMapFormat.UNKNOWN,
+                pixelFormat: image.PixelMapFormat.UNKNOWN,
+                alphaType :image.AlphaType.OPAQUE,
+                size: {
+                    height: 3,
+                    width: 2
+                }
+            };
+
+            // RGB_565 to others
+            options.srcPixelFormat = RGB_565;
+            for (let item of gPixelFormat.keys()) {
+                let colorlength = 12;
+                const color = new ArrayBuffer(colorlength);
+                let buffer = new Uint8Array(color);
+                for (let i = 0; i < colorlength; i += 6) {
+                    buffer[i] = 0xEA;
+                    buffer[i + 1] = 0x8E;
+                    buffer[i + 2] = 0x0A;
+                    buffer[i + 3] = 0x87;
+                    buffer[i + 4] = 0x0B;
+                    buffer[i + 5] = 0x87;
+                }
+                options.pixelFormat = item;
+                let pixelMap1 = image.createPixelMap(color,options);
+                if (pixelMap1 != undefined) {
+                    expect(pixelMap1 != undefined).assertTrue();
+                    console.info("SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0100 success");
+                    done();
+                }
+            }
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0200
+         * @tc.name      : create pixlelmap of RGBA_8888
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0200', 0, async function (done) {
+            const RGB_565 = image.PixelMapFormat.RGB_565;
+            const RGBA_8888 = image.PixelMapFormat.RGBA_8888;
+            const BGRA_8888 = image.PixelMapFormat.BGRA_8888;
+            const RGB_888 = image.PixelMapFormat.RGB_888;
+            const ALPHA_8 = image.PixelMapFormat.ALPHA_8;
+            const RGBA_F16 = image.PixelMapFormat.RGBA_F16;
+            const NV21 = image.PixelMapFormat.NV21;
+            const NV12 = image.PixelMapFormat.NV12;
+        
+            const gPixelFormat = new Map([
+                [RGB_565, "PixelFormat::RGB_565"],
+                [RGBA_8888, "PixelFormat::RGBA_8888"],
+                [BGRA_8888, "PixelFormat::BGRA_8888"],
+                [RGB_888, "PixelFormat::RGB_888"],
+                [ALPHA_8, "PixelFormat::ALPHA_8"],
+                [RGBA_F16, "PixelFormat::RGBA_F16"],
+                [NV21, "PixelFormat::NV21"],
+                [NV12, "PixelFormat::NV12"]
+            ]);
+
+            let options = {
+                editable: true,
+                srcPixelFormat : image.PixelMapFormat.UNKNOWN,
+                pixelFormat: image.PixelMapFormat.UNKNOWN,
+                alphaType :image.AlphaType.OPAQUE,
+                size: {
+                    height: 3,
+                    width: 2
+                }
+            };
+
+            // RGBA_8888 to others
+            options.srcPixelFormat = RGBA_8888;
+            for (let item of gPixelFormat.keys()) {
+                let colorlength = 24;
+                const color = new ArrayBuffer(colorlength);
+                let buffer = new Uint8Array(color);
+                for (let i = 0; i < colorlength; i += 4) {
+                    buffer[i] = 0x83;
+                    buffer[i + 1] = 0xDF;
+                    buffer[i + 2] = 0x52;
+                    buffer[i + 3] = 0x78;
+                }
+                options.pixelFormat = item;
+                let pixelMap1 = image.createPixelMap(color,options);
+                if (pixelMap1 != undefined) {
+                    expect(pixelMap1 != undefined).assertTrue();
+                    console.info("SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0200 success");
+                    done();
+                }
+            }
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0300
+         * @tc.name      : create pixlelmap of BGRA_8888
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0300', 0, async function (done) {
+            const RGB_565 = image.PixelMapFormat.RGB_565;
+            const RGBA_8888 = image.PixelMapFormat.RGBA_8888;
+            const BGRA_8888 = image.PixelMapFormat.BGRA_8888;
+            const RGB_888 = image.PixelMapFormat.RGB_888;
+            const ALPHA_8 = image.PixelMapFormat.ALPHA_8;
+            const RGBA_F16 = image.PixelMapFormat.RGBA_F16;
+            const NV21 = image.PixelMapFormat.NV21;
+            const NV12 = image.PixelMapFormat.NV12;
+        
+            const gPixelFormat = new Map([
+                [RGB_565, "PixelFormat::RGB_565"],
+                [RGBA_8888, "PixelFormat::RGBA_8888"],
+                [BGRA_8888, "PixelFormat::BGRA_8888"],
+                [RGB_888, "PixelFormat::RGB_888"],
+                [ALPHA_8, "PixelFormat::ALPHA_8"],
+                [RGBA_F16, "PixelFormat::RGBA_F16"],
+                [NV21, "PixelFormat::NV21"],
+                [NV12, "PixelFormat::NV12"]
+            ]);
+
+            let options = {
+                editable: true,
+                srcPixelFormat : image.PixelMapFormat.UNKNOWN,
+                pixelFormat: image.PixelMapFormat.UNKNOWN,
+                alphaType :image.AlphaType.OPAQUE,
+                size: {
+                    height: 3,
+                    width: 2
+                }
+            };
+
+            // BGRA_8888 to others
+            options.srcPixelFormat = BGRA_8888 ;
+            for (let item of gPixelFormat.keys()) {
+                let colorlength = 24;
+                const color = new ArrayBuffer(colorlength);
+                let buffer = new Uint8Array(color);
+                for (let i = 0; i < colorlength; i += 4) {
+                    buffer[i] = 0x83;
+                    buffer[i + 1] = 0xDF;
+                    buffer[i + 2] = 0x52;
+                    buffer[i + 3] = 0x78;
+                }
+                options.pixelFormat = item;
+                let pixelMap1 = image.createPixelMap(color,options);
+                if (pixelMap1 != undefined) {
+                    expect(pixelMap1 != undefined).assertTrue();
+                    console.info("SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0300 success");
+                    done();
+                }
+            }
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0400
+         * @tc.name      : create pixlelmap of RGB_888
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0400', 0, async function (done) {
+            const RGB_565 = image.PixelMapFormat.RGB_565;
+            const RGBA_8888 = image.PixelMapFormat.RGBA_8888;
+            const BGRA_8888 = image.PixelMapFormat.BGRA_8888;
+            const RGB_888 = image.PixelMapFormat.RGB_888;
+            const ALPHA_8 = image.PixelMapFormat.ALPHA_8;
+            const RGBA_F16 = image.PixelMapFormat.RGBA_F16;
+            const NV21 = image.PixelMapFormat.NV21;
+            const NV12 = image.PixelMapFormat.NV12;
+        
+            const gPixelFormat = new Map([
+                [RGB_565, "PixelFormat::RGB_565"],
+                [RGBA_8888, "PixelFormat::RGBA_8888"],
+                [BGRA_8888, "PixelFormat::BGRA_8888"],
+                [RGB_888, "PixelFormat::RGB_888"],
+                [ALPHA_8, "PixelFormat::ALPHA_8"],
+                [RGBA_F16, "PixelFormat::RGBA_F16"],
+                [NV21, "PixelFormat::NV21"],
+                [NV12, "PixelFormat::NV12"]
+            ]);
+
+            let options = {
+                editable: true,
+                srcPixelFormat : image.PixelMapFormat.UNKNOWN,
+                pixelFormat: image.PixelMapFormat.UNKNOWN,
+                alphaType :image.AlphaType.OPAQUE,
+                size: {
+                    height: 3,
+                    width: 2
+                }
+            };
+
+            // RGB_888 to others
+            options.srcPixelFormat = RGB_888 ;
+            for (let item of gPixelFormat.keys()) {
+                let colorlength = 18;
+                const color = new ArrayBuffer(colorlength);
+                let buffer = new Uint8Array(20);
+                for (let i = 0; i < colorlength; i += 3) {
+                    buffer[i] = 0x83;
+                    buffer[i + 1] = 0xDF;
+                    buffer[i + 2] = 0x52;
+                }
+                options.pixelFormat = item;
+                let pixelMap1 = image.createPixelMap(color,options);
+                if (pixelMap1 != undefined) {
+                    expect(pixelMap1 != undefined).assertTrue();
+                    console.info("SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0400 success");
+                    done();
+                }
+            }
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0500
+         * @tc.name      : create pixlelmap of ALPHA_8
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0500', 0, async function (done) {
+            const RGB_565 = image.PixelMapFormat.RGB_565;
+            const RGBA_8888 = image.PixelMapFormat.RGBA_8888;
+            const BGRA_8888 = image.PixelMapFormat.BGRA_8888;
+            const RGB_888 = image.PixelMapFormat.RGB_888;
+            const ALPHA_8 = image.PixelMapFormat.ALPHA_8;
+            const RGBA_F16 = image.PixelMapFormat.RGBA_F16;
+            const NV21 = image.PixelMapFormat.NV21;
+            const NV12 = image.PixelMapFormat.NV12;
+        
+            const gPixelFormat = new Map([
+                [RGB_565, "PixelFormat::RGB_565"],
+                [RGBA_8888, "PixelFormat::RGBA_8888"],
+                [BGRA_8888, "PixelFormat::BGRA_8888"],
+                [RGB_888, "PixelFormat::RGB_888"],
+                [ALPHA_8, "PixelFormat::ALPHA_8"],
+                [RGBA_F16, "PixelFormat::RGBA_F16"],
+                [NV21, "PixelFormat::NV21"],
+                [NV12, "PixelFormat::NV12"]
+            ]);
+
+            let options = {
+                editable: true,
+                srcPixelFormat : image.PixelMapFormat.UNKNOWN,
+                pixelFormat: image.PixelMapFormat.UNKNOWN,
+                alphaType :image.AlphaType.OPAQUE,
+                size: {
+                    height: 3,
+                    width: 2
+                }
+            };
+
+            // ALPHA_8 to others
+            options.srcPixelFormat = ALPHA_8;
+            for (let item of gPixelFormat.keys()) {
+                let colorlength = 6;
+                const color = new ArrayBuffer(6);
+                let buffer = new Uint8Array(8);
+                for (let i = 0; i < colorlength; i++) {
+                    buffer[i] = 0x78;
+                }
+                options.pixelFormat = item;
+                let pixelMap1 = image.createPixelMap(color,options);
+                if (pixelMap1 != undefined) {
+                    expect(pixelMap1 != undefined).assertTrue();
+                    console.info("SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0500 success");
+                    done();
+                }
+            }
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0600
+         * @tc.name      : create pixlelmap of RGBA_F16
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0600', 0, async function (done) {
+            const RGB_565 = image.PixelMapFormat.RGB_565;
+            const RGBA_8888 = image.PixelMapFormat.RGBA_8888;
+            const BGRA_8888 = image.PixelMapFormat.BGRA_8888;
+            const RGB_888 = image.PixelMapFormat.RGB_888;
+            const ALPHA_8 = image.PixelMapFormat.ALPHA_8;
+            const RGBA_F16 = image.PixelMapFormat.RGBA_F16;
+            const NV21 = image.PixelMapFormat.NV21;
+            const NV12 = image.PixelMapFormat.NV12;
+        
+            const gPixelFormat = new Map([
+                [RGB_565, "PixelFormat::RGB_565"],
+                [RGBA_8888, "PixelFormat::RGBA_8888"],
+                [BGRA_8888, "PixelFormat::BGRA_8888"],
+                [RGB_888, "PixelFormat::RGB_888"],
+                [ALPHA_8, "PixelFormat::ALPHA_8"],
+                [RGBA_F16, "PixelFormat::RGBA_F16"],
+                [NV21, "PixelFormat::NV21"],
+                [NV12, "PixelFormat::NV12"]
+            ]);
+
+            let options = {
+                editable: true,
+                srcPixelFormat : image.PixelMapFormat.UNKNOWN,
+                pixelFormat: image.PixelMapFormat.UNKNOWN,
+                alphaType :image.AlphaType.OPAQUE,
+                size: {
+                    height: 3,
+                    width: 2
+                }
+            };
+
+            // RGBA_F16 to others
+            options.srcPixelFormat = RGBA_F16;
+            for (let item of gPixelFormat.keys()) {
+                let colorlength = 48;
+                const color = new ArrayBuffer(colorlength);
+                let buffer = new Uint8Array(color);
+                for (let i = 0; i < colorlength; i += 8) {
+                    buffer[i] = 0xEF;
+                    buffer[i + 1] = 0x82;
+                    buffer[i + 2] = 0x05;
+                    buffer[i + 3] = 0xDF;
+                    buffer[i + 4] = 0x05;
+                    buffer[i + 5] = 0x52;
+                    buffer[i + 6] = 0x78;
+                    buffer[i + 7] = 0x78;
+                }
+                options.pixelFormat = item;
+                let pixelMap1 = image.createPixelMap(color,options);
+                if (pixelMap1 != undefined) {
+                    expect(pixelMap1 != undefined).assertTrue();
+                    console.info("SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0600 success");
+                    done();
+                }
+            }
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0700
+         * @tc.name      : create pixlelmap of NV21
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0700', 0, async function (done) {
+            const RGB_565 = image.PixelMapFormat.RGB_565;
+            const RGBA_8888 = image.PixelMapFormat.RGBA_8888;
+            const BGRA_8888 = image.PixelMapFormat.BGRA_8888;
+            const RGB_888 = image.PixelMapFormat.RGB_888;
+            const ALPHA_8 = image.PixelMapFormat.ALPHA_8;
+            const RGBA_F16 = image.PixelMapFormat.RGBA_F16;
+            const NV21 = image.PixelMapFormat.NV21;
+            const NV12 = image.PixelMapFormat.NV12;
+        
+            const gPixelFormat = new Map([
+                [RGB_565, "PixelFormat::RGB_565"],
+                [RGBA_8888, "PixelFormat::RGBA_8888"],
+                [BGRA_8888, "PixelFormat::BGRA_8888"],
+                [RGB_888, "PixelFormat::RGB_888"],
+                [ALPHA_8, "PixelFormat::ALPHA_8"],
+                [RGBA_F16, "PixelFormat::RGBA_F16"],
+                [NV21, "PixelFormat::NV21"],
+                [NV12, "PixelFormat::NV12"]
+            ]);
+
+            let options = {
+                editable: true,
+                srcPixelFormat : image.PixelMapFormat.UNKNOWN,
+                pixelFormat: image.PixelMapFormat.UNKNOWN,
+                alphaType :image.AlphaType.OPAQUE,
+                size: {
+                    height: 3,
+                    width: 2
+                }
+            };
+
+            // NV21 to others
+            options.srcPixelFormat = NV21;
+            for (let item of gPixelFormat.keys()) {
+                let buffer = new Uint8Array(12);
+                let yLen = options.size.width * options.size.height;  // yLen is 6
+                let w = (options.size.width % 2 == 0) ? (options.size.width) : (options.size.width + 1);
+                let h = (options.size.height % 2 == 0) ? (options.size.height) : (options.size.height + 1);
+                let uvLen = w * h / 2;    // uvLen is 4
+                for (let i = 0; i < yLen; i++) {
+                    buffer[i] = 0xAA;
+                }
+                for (let i = yLen; i < yLen + uvLen; i += 2) {
+                    buffer[i] = 0x62;
+                    buffer[i + 1] = 0x50;
+                }
+                let colorlength = yLen + uvLen;
+                const color = new ArrayBuffer(colorlength);
+                buffer = new Uint8Array(color);
+                options.pixelFormat = item;
+                let pixelMap1 = image.createPixelMap(color,options);
+                if (pixelMap1 != undefined) {
+                    expect(pixelMap1 != undefined).assertTrue();
+                    console.info("SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0700 success");
+                    done();
+                }
+            }
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0800
+         * @tc.name      : create pixlelmap of NV12
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0800', 0, async function (done) {
+            const RGB_565 = image.PixelMapFormat.RGB_565;
+            const RGBA_8888 = image.PixelMapFormat.RGBA_8888;
+            const BGRA_8888 = image.PixelMapFormat.BGRA_8888;
+            const RGB_888 = image.PixelMapFormat.RGB_888;
+            const ALPHA_8 = image.PixelMapFormat.ALPHA_8;
+            const RGBA_F16 = image.PixelMapFormat.RGBA_F16;
+            const NV21 = image.PixelMapFormat.NV21;
+            const NV12 = image.PixelMapFormat.NV12;
+        
+            const gPixelFormat = new Map([
+                [RGB_565, "PixelFormat::RGB_565"],
+                [RGBA_8888, "PixelFormat::RGBA_8888"],
+                [BGRA_8888, "PixelFormat::BGRA_8888"],
+                [RGB_888, "PixelFormat::RGB_888"],
+                [ALPHA_8, "PixelFormat::ALPHA_8"],
+                [RGBA_F16, "PixelFormat::RGBA_F16"],
+                [NV21, "PixelFormat::NV21"],
+                [NV12, "PixelFormat::NV12"]
+            ]);
+
+            let options = {
+                editable: true,
+                srcPixelFormat : image.PixelMapFormat.UNKNOWN,
+                pixelFormat: image.PixelMapFormat.UNKNOWN,
+                alphaType :image.AlphaType.OPAQUE,
+                size: {
+                    height: 3,
+                    width: 2
+                }
+            };
+
+            // NV12 to others
+            options.srcPixelFormat = NV12;
+            for (let item of gPixelFormat.keys()) {
+                let buffer = new Uint8Array(12);
+                let yLen = options.size.width * options.size.height;  // yLen is 6
+                let w = (options.size.width % 2 == 0) ? (options.size.width) : (options.size.width + 1);
+                let h = (options.size.height % 2 == 0) ? (options.size.height) : (options.size.height + 1);
+                let uvLen = w * h / 2;    // uvLen is 4
+                for (let i = 0; i < yLen; i++) {
+                    buffer[i] = 0xAA;
+                }
+                for (let i = yLen; i < yLen + uvLen; i += 2) {
+                    buffer[i] = 0x50;
+                    buffer[i + 1] = 0x62;
+                }
+                let colorlength = yLen + uvLen;
+                const color = new ArrayBuffer(colorlength);
+                buffer = new Uint8Array(color);
+                options.pixelFormat = item;
+                let pixelMap1 = image.createPixelMap(color,options);
+                if (pixelMap1 != undefined) {
+                    expect(pixelMap1 != undefined).assertTrue();
+                    console.info("SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0800 success");
+                    done();
+                }
+            }
+        })
     })
 }
