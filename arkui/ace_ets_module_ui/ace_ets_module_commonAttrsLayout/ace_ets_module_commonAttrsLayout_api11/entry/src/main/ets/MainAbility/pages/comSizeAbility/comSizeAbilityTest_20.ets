@@ -12,6 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import windowAnimationManager from '@ohos.animation.windowAnimationManager';
 import WindowAnimationControllerImpl from './WindowAnimationControllerImpl';
 import matrix4 from '@ohos.matrix4'
