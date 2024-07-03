@@ -14,13 +14,27 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import Utils from '../Utils';
+
 export default function themePageListTest() {
-  describe('themePageListTest', function () {
-    beforeEach(async function (done) {
+  describe('themePageListTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("themePageListTest beforeEach start");
-      let options : router.RouterOptions = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/theme/themePageListTest",
       }
       try {
@@ -40,14 +54,14 @@ export default function themePageListTest() {
       done();
     });
     /**
-     * @tc.number    themeColorTest
-     * @tc.name      themeListInterfaceTest_0100
-     * @tc.desc      theme Test
-     * @tc.level:    Level 2
+     * @tc.number themeColorTest
+     * @tc.name themeListInterfaceTest_0100
+     * @tc.desc theme Test
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('themeListInterfaceTest_0100', 0, async function (done) {
+    it('themeListInterfaceTest_0100', 0, async (done: Function) => {
       console.info('frameNodeGetInterfaceTest_0100 START');
       let driver = await Driver.create()
       await Utils.sleep(1000);
@@ -57,21 +71,18 @@ export default function themePageListTest() {
       await Utils.sleep(2000);
       // test the color whether change
       let strJson = getInspectorByKey('1bg');
-      let obj = JSON.parse(strJson);
-      console.info("[frameNodeGetInterfaceTest_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[frameNodeGetInterfaceTest_0100] component obj is: " + obj.$attrs.backgroundColor);
-      expect( obj.$attrs.backgroundColor).assertEqual('#00000000');
+      console.info("[frameNodeGetInterfaceTest_0100] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[frameNodeGetInterfaceTest_0100] component obj is: " + JSON.parse(strJson).$attrs.backgroundColor);
+      expect(JSON.parse(strJson).$attrs.backgroundColor).assertEqual('#00000000');
       // simulate the longClick
       let listItem: Component = await driver.findComponent(ON.id('1bg'));
       listItem.longClick();
       // test the theme color whether change
       let strJson2 = getInspectorByKey('1bg');
-      let obj2 = JSON.parse(strJson2);
-      expect(obj2.$attrs.backgroundColor).assertEqual('#00000000');
+      expect(JSON.parse(strJson2).$attrs.backgroundColor).assertEqual('#00000000');
       console.info('themeListInterfaceTest_0100 END');
       done();
     });
-
   })
 }
 

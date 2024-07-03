@@ -1,4 +1,3 @@
-
 /**
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +23,6 @@ class GreenColors implements CustomColors {
   interactiveHover = "#ffa2272b"
   interactivePressed = "#ff2b692b"
   interactiveFocus = "#ffa45454"
-
 }
 
 class RedColors implements CustomColors {
@@ -34,8 +32,6 @@ class RedColors implements CustomColors {
   compBackgroundTertiary = '#44FF2222';
   backgroundEmphasize = '#FFD00000';
   compEmphasizeSecondary = '#33FF1111';
-
-
 }
 
 class PageCustomTheme implements CustomTheme {

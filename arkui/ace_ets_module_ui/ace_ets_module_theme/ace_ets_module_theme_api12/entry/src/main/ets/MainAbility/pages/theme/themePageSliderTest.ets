@@ -16,7 +16,7 @@
 import { CustomTheme, CustomColors } from '@ohos.arkui.theme';
 
 class GreenColors implements CustomColors {
-  compBackgroundPrimary	 = '#ff049404';
+  compBackgroundPrimary = '#ff049404';
   ompBackgroundPrimaryTran = '#FF00541F';
   compBackgroundPrimaryContrary = '#FFFFFFFF';
   compBackgroundSecondary = '#1111FF11';
@@ -25,7 +25,6 @@ class GreenColors implements CustomColors {
   compBackgroundNeutral = '#FFFFFFFF'
   compEmphasizeSecondary = '#44FF2222'
   compEmphasizeTertiary = '#33FF1111'
-
 }
 
 class RedColors implements CustomColors {
@@ -35,8 +34,6 @@ class RedColors implements CustomColors {
   compBackgroundTertiary = '#44FF2222';
   backgroundEmphasize = '#FFD00000';
   compEmphasizeSecondary = '#33FF1111';
-
-
 }
 
 class PageCustomTheme implements CustomTheme {

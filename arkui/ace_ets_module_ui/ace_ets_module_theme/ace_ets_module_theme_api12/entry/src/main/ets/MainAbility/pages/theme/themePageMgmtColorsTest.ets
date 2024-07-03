@@ -16,7 +16,6 @@
 import { CustomTheme, CustomColors } from '@ohos.arkui.theme';
 
 
-
 class ToggleColors implements CustomColors {
   iconPrimary = '#FFFFFFFF';
   iconOnPrimary = '#FFD53032'
@@ -26,13 +25,12 @@ class ToggleColors implements CustomColors {
   iconEmphasize = '#44FF2222' //高亮图标颜色
   iconSubEmphasize = '#7efca7b1' //高亮辅助图标颜色
   iconOnSecondary = '#FFD00000' //二级图标反转颜色
-  iconOnTertiary = 	'#33FF1111'  //三级图标反转颜色，用于彩色背景。
+  iconOnTertiary = '#33FF1111' //三级图标反转颜色，用于彩色背景。
   iconOnFourth = '#ffa9cfa8'
   backgroundPrimary = '#ff5f66a9'
   backgroundSecondary = '#ff6b146a'
   backgroundTertiary = '#ffc396c2'
   backgroundFourth = '#609d9370'
-
 }
 
 class PageCustomTheme implements CustomTheme {
@@ -65,7 +63,7 @@ struct themeTogglePage {
           }).key('themeToggleClick')
 
         // 系统默认按钮配色
-        Toggle({type:ToggleType.Switch,isOn:false})
+        Toggle({ type: ToggleType.Switch, isOn: false })
       }
       .margin({
         top: '50vp'
@@ -74,7 +72,7 @@ struct themeTogglePage {
       WithTheme({ theme: this.themeArray[this.themeIndex] }) {
         // WithTheme作用域
         Column({ space: '8vp' }) {
-           Toggle({type:ToggleType.Switch,isOn:true}).key('toggleBg')
+          Toggle({ type: ToggleType.Switch, isOn: true }).key('toggleBg')
         }
         .width('100%')
       }

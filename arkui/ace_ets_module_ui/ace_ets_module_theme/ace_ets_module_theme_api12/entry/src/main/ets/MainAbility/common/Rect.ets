@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2023 iSoftStone Information Technology (Group) Co.,Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,16 +13,9 @@
  * limitations under the License.
  */
 
-import themePageTest from "./theme/themePageTest.test";
-import themePageToggleTest from "./theme/themePageToggleTest.test";
-import themePageSliderTest from "./theme/themePageSliderTest.test";
-
-import APIFontPrimaryTest from "./theme/APIFontPrimaryTest.test";
-import themePageListTest from "./theme/themePageListTest.test";
-export default function testsuite() {
-  APIFontPrimaryTest();
-  themePageTest();
-  themePageToggleTest();
-  themePageSliderTest();
-  themePageListTest();
+export default class RectValue {
+  left: number = 0;
+  top: number = 0;
+  right: number = 0;
+  bottom: number = 0;
 }

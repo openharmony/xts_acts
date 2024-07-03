@@ -19,16 +19,11 @@ import { AttrsManager } from './AttrsManager';
 export default class Utils {
   public static instance;
 
-  static sleep(time) {
-    return new Promise((resolve, reject) => {
-      try {
-        setTimeout(() => {
-          resolve(0)
-        }, time)
-      } catch (err) {
-        console.error('sleep error:' + err);
-        reject()
-      }
+  static sleep(time: number) {
+    return new Promise((resolve: (value: string) => void) => {
+      setTimeout(() => {
+        resolve("ok")
+      }, time)
     }).then(() => {
       console.info(`sleep ${time} over...`)
     })
