@@ -13,27 +13,25 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textInputMaxFontSize() {
-  describe('textInputMaxFontSize', function () {
-    beforeEach(async function (done) {
+  describe('textInputMaxFontSize', () => {
+    beforeEach(async (done: Function) => {
       console.info("textInputMaxFontSize beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textInputMaxFontSize',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textInputMaxFontSize',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get textInputMaxFontSize state pages: " + JSON.stringify(pages));
         if (!("textInputMaxFontSize" == pages.name)) {
           console.info("get textInputMaxFontSize pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textInputMaxFontSize page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push textInputMaxFontSize page error: " + err);
@@ -44,29 +42,30 @@ export default function textInputMaxFontSize() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("textInputMaxFontSize after each called");
     })
 
     /**
      * @tc.number textInputMaxFontSize0100
-     * @tc.name   Test the maxFontSize property of the textInput component
-     * @tc.desc   set the maxFontSize property value is  21
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the maxFontSize property of the textInput component
+     * @tc.desc set the maxFontSize property value is  21
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textInputMaxFontSize0100', 0, async function (done) {
-      var tagName = 'textInputMaxFontSize0100';
+    it('textInputMaxFontSize0100', 0, async (done: Function) => {
+      let tagName = 'textInputMaxFontSize0100';
       console.info('[' + tagName + '] START============================');
 
       let strJsonNew = getInspectorByKey('key_textInput_maxFontSize_001');
-      let obj = JSON.parse(strJsonNew);
-      console.info('[' + tagName + '] TextInput maxFontSize is: ' + JSON.stringify(obj.$attrs.maxFontSize));
+      console.info('[' + tagName + '] TextInput maxFontSize is: ' + JSON.stringify(JSON.parse(strJsonNew)
+        .$attrs
+        .maxFontSize));
 
 
-      expect(obj.$attrs.maxFontSize).assertEqual('21.00fp');
+      expect(JSON.parse(strJsonNew).$attrs.maxFontSize).assertEqual('21.00fp');
 
       console.info('[' + tagName + '] END ===========================');
       done();

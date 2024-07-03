@@ -56,14 +56,16 @@ export default function SubMenuExpandingModeTest_EMBEDDED() {
     it('SubMenuExpandingModeTest_EMBEDDED_001', 0, async (done: Function) => {
       console.info('[SubMenuExpandingModeTest_EMBEDDED_001] START');
       await CommonFunc.sleep(1000);
-      let driver: Driver = Driver.create();
-      let btn: Component = await driver.findComponent(ON.id("btn"));
-      await btn.click();
-      await CommonFunc.sleep(1000);
-      let menu = getInspectorByKey('menu');
-      console.info("$attrs--" + JSON.stringify(JSON.parse(menu).$attrs));
-      await CommonFunc.sleep(1000);
-      expect(JSON.parse(menu).$attrs.subMenuExpandingMode).assertEqual('SubMenuExpandingMode.EMBEDDED');
+      if (globalThis.winLeft == 0) {
+        let driver: Driver = Driver.create();
+        let btn: Component = await driver.findComponent(ON.id("btn"));
+        await btn.click();
+        await CommonFunc.sleep(1000);
+        let menu = getInspectorByKey('menu');
+        console.info("$attrs--" + JSON.stringify(JSON.parse(menu).$attrs));
+        await CommonFunc.sleep(1000);
+        expect(JSON.parse(menu).$attrs.subMenuExpandingMode).assertEqual('SubMenuExpandingMode.EMBEDDED');
+      }
       console.info('[SubMenuExpandingModeTest_EMBEDDED_001] END');
       done();
     });

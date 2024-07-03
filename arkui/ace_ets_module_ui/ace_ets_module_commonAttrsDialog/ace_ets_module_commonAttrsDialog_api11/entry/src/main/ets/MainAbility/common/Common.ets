@@ -12,6 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import screen from '@ohos.screen';
+import { BusinessError } from '@ohos.base';
 import RectValue from './Rect';
 
 export default class CommonFunc {
@@ -56,6 +58,22 @@ export default class CommonFunc {
     return CommonFunc.rect_value = {
       left: CommonFunc.rect_left, top: CommonFunc.rect_top, right: CommonFunc.rect_right, bottom: CommonFunc.rect_bottom
     }
+  }
+
+  static setScreenOrientation(orientation: number) {
+    screen.getAllScreens().then(data => {
+      const screenClass = data[0];
+      console.log('Succeeded in getting all screens. Data:', data);
+      screenClass.setOrientation(orientation, (err: BusinessError) => {
+        if (err) {
+          console.error('Failed to set the vertical orientation. Code:', err);
+          return;
+        }
+        console.info('Succeeded in setting the vertical orientation.');
+      });
+    }).catch((err: BusinessError) => {
+      console.log('Failed to get all screens. Cause:', err);
+    });
   }
 }
 

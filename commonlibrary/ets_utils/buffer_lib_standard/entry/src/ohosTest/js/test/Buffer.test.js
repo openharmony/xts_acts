@@ -1894,7 +1894,7 @@ describe('BufferTest', function () {
       buf1.swap16();
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('Buffer size must be a multiple of 16-bits');
+      expect(err.message).assertEqual('The buffer size must be a multiple of 16-bits');
     }
   });
 
@@ -1927,7 +1927,7 @@ describe('BufferTest', function () {
       buf1.swap32();
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('Buffer size must be a multiple of 32-bits');
+      expect(err.message).assertEqual('The buffer size must be a multiple of 32-bits');
     }
   });
 
@@ -1960,7 +1960,7 @@ describe('BufferTest', function () {
       buf1.swap64();
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('Buffer size must be a multiple of 64-bits');
+      expect(err.message).assertEqual('The buffer size must be a multiple of 64-bits');
     }
   });
 
@@ -4390,7 +4390,7 @@ describe('BufferTest', function () {
       buf.length = 10;
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('Cannot set property length of Buffer which has only a getter');
+      expect(err.message).assertEqual('length cannot be set for the buffer that has only a getter');
     }
   });
 
@@ -4407,7 +4407,7 @@ describe('BufferTest', function () {
     let len = buf.length;
     expect(len).assertEqual(22);
   });
-  
+
   /**
    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_26000
    * @tc.name: testBufferByteOffset0755
@@ -4478,7 +4478,7 @@ describe('BufferTest', function () {
       buf.byteOffset = 3;
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('Cannot set property byteOffset of Buffer which has only a getter');
+      expect(err.message).assertEqual('byteOffset cannot be set for the buffer that has only a getter');
     }
   });
 
@@ -4628,7 +4628,7 @@ describe('BufferTest', function () {
       buf.buffer = buf1;
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('Cannot set property buffer of Buffer which has only a getter');
+      expect(err.message).assertEqual('buffer cannot be set for the buffer that has only a getter');
     }
   });
 

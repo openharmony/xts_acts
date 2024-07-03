@@ -53,15 +53,15 @@ export default function ModelSheetTest() {
         }
         let callback = (indexData: emitter.EventData) => {
           console.info("ArkUX_Model_Visual_0150 get state result is: " + JSON.stringify(indexData));
-          expect(indexData.data.detents).assertEqual([SheetSize.LARGE, SheetSize.MEDIUM, SheetSize.MEDIUM]);
-          expect(indexData.data.blurStyle).assertEqual(BlurStyle.Thin);
-          expect(indexData.data.showClose).assertEqual(false);
-          expect(indexData.data.title).assertEqual({
+          expect(indexData.data?.detents).assertEqual([SheetSize.LARGE, SheetSize.MEDIUM, SheetSize.MEDIUM]);
+          expect(indexData.data?.blurStyle).assertEqual(BlurStyle.Thin);
+          expect(indexData.data?.showClose).assertEqual(false);
+          expect(indexData.data?.title).assertEqual({
             title: "323", subtitle: "156"
           });
-          expect(indexData.data.preferType).assertEqual(SheetType.POPUP);
-          expect(indexData.data.shouldDismiss).assertEqual(true);
-          expect(indexData.data.enableOutsideInteractive).assertEqual(false)
+          expect(indexData.data?.preferType).assertEqual(SheetType.POPUP);
+          expect(indexData.data?.shouldDismiss).assertEqual(true);
+          expect(indexData.data?.enableOutsideInteractive).assertEqual(false)
           done();
         }
         try {
@@ -93,15 +93,15 @@ export default function ModelSheetTest() {
         }
         let callback = (indexData: emitter.EventData) => {
           console.info("ArkUX_Model_Visual_0160 get state result is: " + JSON.stringify(indexData));
-          expect(indexData.data.detents).assertEqual([SheetSize.MEDIUM, SheetSize.LARGE, 100]);
-          expect(indexData.data.blurStyle).assertEqual(BlurStyle.Thick);
-          expect(indexData.data.showClose).assertEqual(true);
-          expect(indexData.data.title).assertEqual({
+          expect(indexData.data?.detents).assertEqual([SheetSize.MEDIUM, SheetSize.LARGE, 100]);
+          expect(indexData.data?.blurStyle).assertEqual(BlurStyle.Thick);
+          expect(indexData.data?.showClose).assertEqual(true);
+          expect(indexData.data?.title).assertEqual({
             title: "title", subtitle: "subtitle"
           });
-          expect(indexData.data.preferType).assertEqual(SheetType.CENTER);
-          expect(indexData.data.shouldDismiss).assertEqual(true);
-          expect(indexData.data.enableOutsideInteractive).assertEqual(true)
+          expect(indexData.data?.preferType).assertEqual(SheetType.CENTER);
+          expect(indexData.data?.shouldDismiss).assertEqual(true);
+          expect(indexData.data?.enableOutsideInteractive).assertEqual(true)
           done();
         }
         try {
@@ -133,15 +133,15 @@ export default function ModelSheetTest() {
         }
         let callback = (indexData: emitter.EventData) => {
           console.info("ArkUX_Model_Visual_0170 get state result is: " + JSON.stringify(indexData));
-          expect(indexData.data.detents).assertEqual([100, 100, SheetSize.LARGE]);
-          expect(indexData.data.blurStyle).assertEqual(BlurStyle.Regular);
-          expect(indexData.data.showClose).assertEqual(false);
-          expect(indexData.data.title).assertEqual({
+          expect(indexData.data?.detents).assertEqual([100, 100, SheetSize.LARGE]);
+          expect(indexData.data?.blurStyle).assertEqual(BlurStyle.Regular);
+          expect(indexData.data?.showClose).assertEqual(false);
+          expect(indexData.data?.title).assertEqual({
             title: "asdasd", subtitle: "1232561"
           });
-          expect(indexData.data.preferType).assertEqual(SheetType.POPUP);
-          expect(indexData.data.shouldDismiss).assertEqual(true);
-          expect(indexData.data.enableOutsideInteractive).assertEqual(false)
+          expect(indexData.data?.preferType).assertEqual(SheetType.POPUP);
+          expect(indexData.data?.shouldDismiss).assertEqual(true);
+          expect(indexData.data?.enableOutsideInteractive).assertEqual(false)
           done();
         }
         try {
@@ -173,14 +173,14 @@ export default function ModelSheetTest() {
         }
         let callback = (indexData: emitter.EventData) => {
           console.info("ArkUX_Model_Visual_0180 get state result is: " + JSON.stringify(indexData));
-          expect(indexData.data.detents).assertEqual([0, 0, 0]);
-          expect(indexData.data.blurStyle).assertEqual(BlurStyle.BACKGROUND_REGULAR);
-          expect(indexData.data.showClose).assertEqual(true);
-          expect(indexData.data.title).assertEqual({
+          expect(indexData.data?.detents).assertEqual([0, 0, 0]);
+          expect(indexData.data?.blurStyle).assertEqual(BlurStyle.BACKGROUND_REGULAR);
+          expect(indexData.data?.showClose).assertEqual(true);
+          expect(indexData.data?.title).assertEqual({
             title: " ", subtitle: " "
           });
-          expect(indexData.data.preferType).assertEqual(SheetType.CENTER);
-          expect(indexData.data.shouldDismiss).assertEqual(true);
+          expect(indexData.data?.preferType).assertEqual(SheetType.CENTER);
+          expect(indexData.data?.shouldDismiss).assertEqual(true);
           done();
         }
         try {
@@ -212,14 +212,14 @@ export default function ModelSheetTest() {
         }
         let callback = (indexData: emitter.EventData) => {
           console.info("ArkUX_Model_Visual_0190 get state result is: " + JSON.stringify(indexData));
-          expect(indexData.data.detents).assertEqual([, ,]);
-          expect(indexData.data.blurStyle).assertEqual(" ");
-          expect(indexData.data.showClose).assertEqual(" ");
-          expect(indexData.data.title).assertEqual({
+          expect(indexData.data?.detents).assertEqual([, ,]);
+          expect(indexData.data?.blurStyle).assertEqual(" ");
+          expect(indexData.data?.showClose).assertEqual(" ");
+          expect(indexData.data?.title).assertEqual({
             title: " ", subtitle: " "
           });
-          expect(indexData.data.preferType).assertEqual(" ");
-          expect(indexData.data.shouldDismiss).assertEqual(true);
+          expect(indexData.data?.preferType).assertEqual(" ");
+          expect(indexData.data?.shouldDismiss).assertEqual(true);
           done();
         }
         try {
@@ -251,14 +251,14 @@ export default function ModelSheetTest() {
         }
         let callback = (indexData: emitter.EventData) => {
           console.info("ArkUX_Model_Visual_0200 get state result is: " + JSON.stringify(indexData));
-          expect(indexData.data.detents).assertEqual([SheetSize.LARGE, 10000, SheetSize.MEDIUM]);
-          expect(indexData.data.blurStyle).assertEqual(BlurStyle.BACKGROUND_THIN);
-          expect(indexData.data.showClose).assertEqual(false);
-          expect(indexData.data.title).assertEqual({
+          expect(indexData.data?.detents).assertEqual([SheetSize.LARGE, 10000, SheetSize.MEDIUM]);
+          expect(indexData.data?.blurStyle).assertEqual(BlurStyle.BACKGROUND_THIN);
+          expect(indexData.data?.showClose).assertEqual(false);
+          expect(indexData.data?.title).assertEqual({
             title: "标题", subtitle: "文字"
           });
-          expect(indexData.data.preferType).assertEqual(SheetType.POPUP);
-          expect(indexData.data.shouldDismiss).assertEqual(true);
+          expect(indexData.data?.preferType).assertEqual(SheetType.POPUP);
+          expect(indexData.data?.shouldDismiss).assertEqual(true);
           done();
         }
         try {
@@ -290,14 +290,14 @@ export default function ModelSheetTest() {
         }
         let callback = (indexData: emitter.EventData) => {
           console.info("ArkUX_Model_Visual_0210 get state result is: " + JSON.stringify(indexData));
-          expect(indexData.data.detents).assertEqual([0, 100, 12345]);
-          expect(indexData.data.blurStyle).assertEqual(BlurStyle.BACKGROUND_ULTRA_THICK);
-          expect(indexData.data.showClose).assertEqual(false);
-          expect(indexData.data.title).assertEqual({
+          expect(indexData.data?.detents).assertEqual([0, 100, 12345]);
+          expect(indexData.data?.blurStyle).assertEqual(BlurStyle.BACKGROUND_ULTRA_THICK);
+          expect(indexData.data?.showClose).assertEqual(false);
+          expect(indexData.data?.title).assertEqual({
             title: "@@@", subtitle: "+++"
           });
-          expect(indexData.data.preferType).assertEqual(SheetType.POPUP);
-          expect(indexData.data.shouldDismiss).assertEqual(true);
+          expect(indexData.data?.preferType).assertEqual(SheetType.POPUP);
+          expect(indexData.data?.shouldDismiss).assertEqual(true);
           done();
         }
         try {
@@ -329,14 +329,14 @@ export default function ModelSheetTest() {
         }
         let callback = (indexData: emitter.EventData) => {
           console.info("ArkUX_Model_Visual_0220 get state result is: " + JSON.stringify(indexData));
-          expect(indexData.data.detents).assertEqual([54321, 11111, 123456]);
-          expect(indexData.data.blurStyle).assertEqual(BlurStyle.NONE);
-          expect(indexData.data.showClose).assertEqual(true);
-          expect(indexData.data.title).assertEqual({
+          expect(indexData.data?.detents).assertEqual([54321, 11111, 123456]);
+          expect(indexData.data?.blurStyle).assertEqual(BlurStyle.NONE);
+          expect(indexData.data?.showClose).assertEqual(true);
+          expect(indexData.data?.title).assertEqual({
             title: "。。。", subtitle: "，，，"
           });
-          expect(indexData.data.preferType).assertEqual(SheetType.CENTER);
-          expect(indexData.data.shouldDismiss).assertEqual(true);
+          expect(indexData.data?.preferType).assertEqual(SheetType.CENTER);
+          expect(indexData.data?.shouldDismiss).assertEqual(true);
           done();
         }
         try {

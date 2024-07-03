@@ -16,6 +16,8 @@
 import power from '@ohos.power';
 import { describe, it, expect } from '@ohos/hypium'
 
+const ERROR_CODE = 202;
+
 export default function PowerManagerPowerTest() {
 describe('PowerManagerPowerTest', function () {
     console.log("*************Power Unit Test Begin*************");
@@ -161,6 +163,246 @@ describe('PowerManagerPowerTest', function () {
         let isStandby = power.isStandby();
         console.info('power_Device_IsStandby_Test ' + isStandby);
         expect(isStandby).assertFalse();
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0070
+     * @tc.name testSystem_API_Test_power_Manager_0100
+     * @tc.desc Test the third-party application call shutdown will be blocked
+     * @tc.level: Level 3
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('System_API_Test_power_Manager_0100', 0, async function (done) {
+        let TAG = 'System_API_Test_power_Manager_0100';
+        try {
+            power.shutdown("System_API_Test_power_Manager_0100");
+        } catch (error) {
+            console.info(TAG + ` shutdown err: ${error.code}  ${error.message}`);
+            expect(error.code).assertEqual(ERROR_CODE);
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0080
+     * @tc.name testSystem_API_Test_power_Manager_0200
+     * @tc.desc Test the third-party application call reboot will be blocked
+     * @tc.level: Level 3
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('System_API_Test_power_Manager_0200', 0, async function (done) {
+        let TAG = 'System_API_Test_power_Manager_0200';
+        try {
+            power.reboot("System_API_Test_power_Manager_0200");
+        } catch (error) {
+            console.info(TAG + ` reboot err: ${error.code}  ${error.message}`);
+            expect(error.code).assertEqual(ERROR_CODE);
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0090
+     * @tc.name testSystem_API_Test_power_Manager_0300
+     * @tc.desc Test the third-party application call wakeup will be blocked
+     * @tc.level: Level 3
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('System_API_Test_power_Manager_0300', 0, async function (done) {
+        let TAG = 'System_API_Test_power_Manager_0300';
+        try {
+            power.wakeup("System_API_Test_power_Manager_0300");
+        } catch (error) {
+            console.info(TAG + ` wakeup err: ${error.code}  ${error.message}`);
+            expect(error.code).assertEqual(ERROR_CODE);
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0100
+     * @tc.name testSystem_API_Test_power_Manager_0400
+     * @tc.desc Test the third-party application call suspend will be blocked
+     * @tc.level: Level 3
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('System_API_Test_power_Manager_0400', 0, async function (done) {
+        let TAG = 'System_API_Test_power_Manager_0400';
+        try {
+            power.suspend(true);
+            console.info(TAG + ' suspend end');
+        } catch (error) {
+            console.info(TAG + ` suspend err: ${error.code}  ${error.message}`);
+            expect(error.code).assertEqual(ERROR_CODE);
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0110
+     * @tc.name testSystem_API_Test_power_Manager_0500
+     * @tc.desc Test the third-party application call suspend will be blocked
+     * @tc.level: Level 3
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('System_API_Test_power_Manager_0500', 0, async function (done) {
+        let TAG = 'System_API_Test_power_Manager_0500';
+        try {
+            power.suspend(false);
+            console.info(TAG + ' suspend end');
+        } catch (error) {
+            console.info(TAG + ` suspend err: ${error.code}  ${error.message}`);
+            expect(error.code).assertEqual(ERROR_CODE);
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0120
+     * @tc.name testSystem_API_Test_power_Manager_0600
+     * @tc.desc Test the third-party application call setPowerMode will be blocked
+     * @tc.level: Level 3
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('System_API_Test_power_Manager_0600', 0, async function (done) {
+        let TAG = 'System_API_Test_power_Manager_0600';
+        try {
+            power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE, (error) => {
+                if (typeof error === 'undefined') {
+                    console.info('set power mode to MODE_PERFORMANCE');
+                    expect().assertFail();
+                } else {
+                    console.info(TAG + ` setPowerMode err: ${error.code}  ${error.message}`);
+                    expect(error.code).assertEqual(ERROR_CODE);
+                }
+                done();
+            });
+        } catch (error) {
+            console.info(TAG + ` setPowerMode err: ${error.code}  ${error.message}`);
+            expect(error.code).assertEqual(ERROR_CODE);
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0130
+     * @tc.name testSystem_API_Test_power_Manager_0700
+     * @tc.desc Test the third-party application call setPowerMode will be blocked
+     * @tc.level: Level 3
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('System_API_Test_power_Manager_0700', 0, async function (done) {
+        let TAG = 'System_API_Test_power_Manager_0700';
+        try {
+            power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE)
+                .then(() => {
+                    console.info('set power mode to MODE_PERFORMANCE');
+                    expect().assertFail();
+                    done();
+                })
+                .catch((error)=> {
+                    console.info(TAG + ` setPowerMode err: ${error.code}  ${error.message}`);
+                    expect(error.code).assertEqual(ERROR_CODE);
+                    done();
+                });
+        } catch (error) {
+            console.info(TAG + ` setPowerMode err: ${error.code}  ${error.message}`);
+            expect(error.code).assertEqual(ERROR_CODE);
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0140
+     * @tc.name testSystem_API_Test_power_Manager_0800
+     * @tc.desc Test the third-party application call setPowerMode will be blocked
+     * @tc.level: Level 3
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('System_API_Test_power_Manager_0800', 0, async function (done) {
+        let TAG = 'System_API_Test_power_Manager_0800';
+        try {
+            power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE)
+                .then(() => {
+                    console.info('set power mode to MODE_PERFORMANCE');
+                    expect().assertFail();
+                    done();
+                })
+                .catch((error)=> {
+                    console.info(TAG + ` setPowerMode err: ${error.code}  ${error.message}`);
+                    expect(error.code).assertEqual(ERROR_CODE);
+                    done();
+                });
+        } catch (error) {
+            console.info(TAG + ` setPowerMode err: ${error.code}  ${error.message}`);
+            expect(error.code).assertEqual(ERROR_CODE);
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0150
+     * @tc.name testSystem_API_Test_power_Manager_0900
+     * @tc.desc Test the third-party application call setScreenOffTime will be blocked
+     * @tc.level: Level 3
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('System_API_Test_power_Manager_0900', 0, async function (done) {
+        let TAG = 'System_API_Test_power_Manager_0900';
+        try {
+            power.setScreenOffTime(3000);
+        } catch(error) {
+            console.info(TAG + ` setScreenOffTime err: ${error.code}  ${error.message}`);
+            expect(error.code).assertEqual(ERROR_CODE);
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0160
+     * @tc.name testSystem_API_Test_power_Manager_1000
+     * @tc.desc Test the third-party application call setScreenOffTime will be blocked
+     * @tc.level: Level 3
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('System_API_Test_power_Manager_1000', 0, async function (done) {
+        let TAG = 'System_API_Test_power_Manager_1000';
+        try {
+            power.hibernate(true);
+        } catch(error) {
+            console.info(TAG + ` hibernate err: ${error.code}  ${error.message}`);
+            expect(error.code).assertEqual(ERROR_CODE);
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0170
+     * @tc.name testSystem_API_Test_power_Manager_1100
+     * @tc.desc Test the third-party application call setScreenOffTime will be blocked
+     * @tc.level: Level 3
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('System_API_Test_power_Manager_1100', 0, async function (done) {
+        let TAG = 'System_API_Test_power_Manager_1100';
+        try {
+            power.hibernate(false);
+        } catch(error) {
+            console.info(TAG + ` hibernate err: ${error.code}  ${error.message}`);
+            expect(error.code).assertEqual(ERROR_CODE);
+            done();
+        }
     })
 })
 }

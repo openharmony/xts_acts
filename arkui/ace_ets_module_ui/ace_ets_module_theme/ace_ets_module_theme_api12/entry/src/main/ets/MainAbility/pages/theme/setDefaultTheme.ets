@@ -15,6 +15,7 @@
 
 
 import { CustomTheme, CustomColors, ThemeControl } from '@ohos.arkui.theme';
+
 // 自定义主题颜色
 class BlueColors implements CustomColors {
   fontPrimary = Color.White;
@@ -28,6 +29,7 @@ class PageCustomTheme implements CustomTheme {
     this.colors = colors;
   }
 }
+
 // 创建实例
 const BlueColorsTheme = new PageCustomTheme(new BlueColors());
 // 在页面build之前执行ThemeControl.setDefaultTheme，设置App默认样式风格为BlueColorsTheme。
@@ -44,7 +46,7 @@ struct setDefaultTheme1 {
   aboutToAppear() {
     console.info('TestAbility index aboutToAppear')
   }
- 
+
   build() {
     Row() {
       Column() {
@@ -60,5 +62,5 @@ struct setDefaultTheme1 {
         .backgroundColor('#0D9FFB')
       }.width('100%')
     }.height('100%')
-   }
- }
+  }
+}

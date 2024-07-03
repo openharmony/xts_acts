@@ -66,6 +66,66 @@ export default function actsWifiErrorCode401Test() {
         })
         afterEach(function () {
         })
+        /**
+        * @tc.number SUB_Communication_WiFi_XTS_ErrorCode_0005
+        * @tc.name testRemoveCandidateConfig
+        * @tc.desc Test RemoveCandidateConfig API ErrorCode 401.
+        * @tc.type Function
+        * @tc.level Level 0
+        */
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0005', 0, async function(done) {
+            try{
+                await wifiMg.addCandidateConfig(null)
+                    .then(netWorkId => {
+                        console.info("[wifi_test]add OPEN CandidateConfig promise : " + JSON.stringify(netWorkId));
+                        expect().assertFail();
+                    }).catch((error) => {
+                        console.error('[wifi_test]add OPEN CandidateConfig promise failed -> ' + JSON.stringify(error));
+                        expect(true).assertEqual( (JSON.stringify(error)) !=null);
+                    });
+            }catch(err){
+                console.error('[wifi_test]add OPEN CandidateConfig permission failed -> ' + JSON.stringify(err));
+                expect(err.code).assertEqual("401");
+            }
+            done();
+	    })
+        /**
+        * @tc.number SUB_Communication_WiFi_XTS_ErrorCode_0006
+        * @tc.name testRemoveCandidateConfig
+        * @tc.desc Test RemoveCandidateConfig API ErrorCode 401.
+        * @tc.type Function
+        * @tc.level Level 0
+        */
+        it('SUB_Communication_WiFi_XTS_ErrorCode_0006', 0, async function(done) {
+            try{
+                let wifiDeviceConfig2  = {
+                       "ssid": "TEST_connect",
+                       "bssid": "22:9b:e6:48:1f:5c",
+                       "preSharedKey": "12345678",
+                       "isHiddenSsid": false,
+                       "securityType": wifiMg.WifiSecurityType.WIFI_SEC_TYPE_PSK,
+                }
+                function addCandidate() {
+                   return new Promise((resolve, reject) => {
+                       wifiMg.addCandidateConfig(null,
+                           (err, netWorkId) => {
+                               if (err) {
+                                   console.info("[wifi_test]add CandidateConfig callback failed2 : " + JSON.stringify(err));
+                                   return;
+                               }
+                               console.info("[wifi_test]addCandidateConfig callback result: " + JSON.stringify(netWorkId));
+                               expect().assertFail();
+                               resolve();
+                           });
+                   });
+               }
+               await addCandidate();
+           }catch(error){
+               console.error('[wifi_test]add OPEN CandidateConfig permission failed -> ' + JSON.stringify(error));
+               expect(error.code).assertEqual("401");
+           }
+           done();
+        })
 
         /**
         * @tc.number SUB_Communication_WiFi_XTS_ErrorCode_0007
@@ -75,18 +135,15 @@ export default function actsWifiErrorCode401Test() {
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0007', 0, async function(done) {
-            (async () => {
-                try {
-                    let result = await wifiMg.removeCandidateConfig(null);
-                    console.info("[wifi_test] removeCandidateConfig  promise successful ");
-                } catch(error) {
-                    console.error(`removeCandidate promise failed, code ${error.code}, message ${error.message}`);
-                    expect(error.code).assertEqual("401")
-                }
-            })();
-            let configs = wifiMg.getCandidateConfigs();
-            console.info("[wifi_test] wifi getDeviceConfigs result : " + JSON.stringify(configs));
-            done();
+            try {
+                let result = await wifiMg.removeCandidateConfig(null);
+                console.info("[wifi_test] removeCandidateConfig  promise successful ");
+                expect().assertFail();
+            } catch(error) {
+                console.error(`removeCandidate promise failed, code ${error.code}, message ${error.message}`);
+                expect(error.code).assertEqual("401")
+            }
+           done();
         })
 
         /**
@@ -106,6 +163,7 @@ export default function actsWifiErrorCode401Test() {
                             return;
                         }
                         console.info("[wifi_test] removeCandidateConfig callback successful" );
+                        expect().assertFail();
                     });
             } catch (error) {
                 console.error(`removeCandidateConfig failed, code ${error.code}, message ${error.message}`);
@@ -125,6 +183,7 @@ export default function actsWifiErrorCode401Test() {
             try {
                 wifiMg.connectToCandidateConfig("null");
                 console.info("[wifi_test] connectToCandidateConfig successful " );
+                expect().assertFail();
             } catch(error) {
                 console.error(`connectToCandidateConfig failed, code ${error.code}, message ${error.message}`);
                 expect(error.code).assertEqual("401")
@@ -142,6 +201,7 @@ export default function actsWifiErrorCode401Test() {
         it('SUB_Communication_WiFi_XTS_ErrorCode_0014', 0, async function(done) {
             try {
                 console.info("[wifi_test] getSignalLevel " + wifiMg.getSignalLevel('abc','bcd'));
+                expect().assertFail();
             } catch(error) {
                 console.error(`getSignalLevel failed, code ${error.code}, message ${error.message}`);
                 expect(error.code).assertEqual("401")
@@ -160,6 +220,7 @@ export default function actsWifiErrorCode401Test() {
             try {
                 let isSupport1 = wifiMg.isFeatureSupported('123');
                 console.info("[wifi_test] isFeatureSupported -> " + isSupport1);
+                expect().assertFail();
             } catch(error) {
                 console.error(`isFeatureSupported failed, code ${error.code}, message ${error.message}`);
                 expect(error.code).assertEqual("401")
@@ -177,6 +238,7 @@ export default function actsWifiErrorCode401Test() {
         it('SUB_Communication_WiFi_XTS_ErrorCode_0026', 0, async function (done) {
             try {
                 let createGroup = wifiMg.createP2pGroup(null);
+                expect().assertFail();
             } catch (error) {
                 console.error(`createGroup failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("401")
@@ -194,12 +256,11 @@ export default function actsWifiErrorCode401Test() {
         it('SUB_Communication_WiFi_XTS_ErrorCode_0020', 0, async function(done) {
             try {
                 let p2pConnectResult = wifiMg.p2pConnect(null);
+                expect().assertFail();
             } catch(error) {
                 console.error(`p2pConnect failed, code ${error.code}, message ${error.message}`);
                 expect(error.code).assertEqual("401")
             }
-            let p2pCancelResult = wifiMg.p2pCancelConnect();
-            await sleep(2000);
             done();
         })
 
@@ -217,12 +278,14 @@ export default function actsWifiErrorCode401Test() {
             }
             try {
                 wifiMg.on(1,wifiState, wifiStateChangeCallback);
+                expect().assertFail();
             } catch (error) {
                 console.error(`wifiStateChange on failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("401")
             }
             try {
                 wifiMg.off(1,wifiState, wifiStateChangeCallback);
+                expect().assertFail();
             } catch (error) {
                 console.error(`wifiStateChange off failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("401")
@@ -244,12 +307,14 @@ export default function actsWifiErrorCode401Test() {
             }
             try {
                 wifiMg.on(1,wifiState, wifiStateChangeCallback);
+                expect().assertFail();
             } catch (error) {
                 console.error(`wifiConnectionChange on failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("401")
             }
             try {
                 wifiMg.off(1,wifiState, wifiStateChangeCallback);
+                expect().assertFail();
             } catch (error) {
                 console.error(`wifiConnectionChange off failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("401")
@@ -271,12 +336,14 @@ export default function actsWifiErrorCode401Test() {
             }
             try {
                 wifiMg.on(1,wifiState, wifiStateChangeCallback);
+                expect().assertFail();
             } catch (error) {
                 console.error(`wifiScanStateChange on failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("401")
             }
             try {
                 wifiMg.off(1,wifiState, wifiStateChangeCallback);
+                expect().assertFail();
             } catch (error) {
                 console.error(`wifiScanStateChange off failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("401")
@@ -298,12 +365,14 @@ export default function actsWifiErrorCode401Test() {
             }
             try {
                 wifiMg.on(1,wifiState, wifiStateChangeCallback);
+                expect().assertFail();
             } catch (error) {
                 console.error(`wifiRssiChange on failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("401")
             }
             try {
                 wifiMg.off(1,wifiState, wifiStateChangeCallback);
+                expect().assertFail();
             } catch (error) {
                 console.error(`wifiRssiChange off failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("401")
@@ -325,12 +394,14 @@ export default function actsWifiErrorCode401Test() {
             }
             try {
                 wifiMg.on(1,wifiState, wifiStateChangeCallback);
+                expect().assertFail();
             } catch (error) {
                 console.error(`hotspotStateChange on failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("401")
             }
             try {
                 wifiMg.off(1,wifiState, wifiStateChangeCallback);
+                expect().assertFail();
             } catch (error) {
                 console.error(`hotspotStateChange off failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("401")
@@ -352,12 +423,14 @@ export default function actsWifiErrorCode401Test() {
             }
             try {
                 wifiMg.on(1,wifiState, wifiStateChangeCallback);
+                expect().assertFail();
             } catch (error) {
                 console.error(`p2pStateChange on failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("401")
             }
             try {
                 wifiMg.off(1,wifiState, wifiStateChangeCallback);
+                expect().assertFail();
             } catch (error) {
                 console.error(`p2pStateChange off failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("401")
@@ -379,12 +452,14 @@ export default function actsWifiErrorCode401Test() {
             }
             try {
                 wifiMg.on(1,wifiState, wifiStateChangeCallback);
+                expect().assertFail();
             } catch (error) {
                 console.error(`p2pConnectionChange on failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("401")
             }
             try {
                 wifiMg.off(1,wifiState, wifiStateChangeCallback);
+                expect().assertFail();
             } catch (error) {
                 console.error(`p2pConnectionChange off failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("401")
@@ -406,12 +481,14 @@ export default function actsWifiErrorCode401Test() {
             }
             try {
                 wifiMg.on(1,wifiState, wifiStateChangeCallback);
+                expect().assertFail();
             } catch (error) {
                 console.error(`p2pDeviceChange on failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("401")
             }
             try {
                 wifiMg.off(1,wifiState, wifiStateChangeCallback);
+                expect().assertFail();
             } catch (error) {
                 console.error(`p2pDeviceChange off failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("401")
@@ -433,12 +510,14 @@ export default function actsWifiErrorCode401Test() {
             }
             try {
                 wifiMg.on(1,wifiState, wifiStateChangeCallback);
+                expect().assertFail();
             } catch (error) {
                 console.error(`p2pPeerDeviceChange on failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("401")
             }
             try {
                 wifiMg.off(1,wifiState, wifiStateChangeCallback);
+                expect().assertFail();
             } catch (error) {
                 console.error(`p2pPeerDeviceChange off failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("401")
@@ -460,12 +539,14 @@ export default function actsWifiErrorCode401Test() {
             }
             try {
                 wifiMg.on(1,wifiState, wifiStateChangeCallback);
+                expect().assertFail();
             } catch (error) {
                 console.error(`p2pPersistentGroupChange on failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("401")
             }
             try {
                 wifiMg.off(1,wifiState, wifiStateChangeCallback);
+                expect().assertFail();
             } catch (error) {
                 console.error(`p2pPersistentGroupChange off failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("401")
@@ -487,12 +568,14 @@ export default function actsWifiErrorCode401Test() {
             }
             try {
                 wifiMg.on(1,wifiState, wifiStateChangeCallback);
+                expect().assertFail();
             } catch (error) {
                 console.error(`p2pDiscoveryChange on failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("401")
             }
             try {
                 wifiMg.off(1,wifiState, wifiStateChangeCallback);
+                expect().assertFail();
             } catch (error) {
                 console.error(`p2pDiscoveryChange off failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("401")

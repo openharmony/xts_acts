@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12,36 +12,25 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import TestRunner from '@ohos.application.testRunner'
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+import TestRunner from '@ohos.application.testRunner';
+import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
-var abilityDelegator = undefined
-var abilityDelegatorArguments = undefined
-
-
-function sleep(time){
-    return new Promise((resolve,reject)=>{
-        setTimeout(()=>{
-            resolve("ok")
-        },time)
-    }).then(()=>{
-        console.info(`sleep ${time} over...`)
-    })
-}
+let abilityDelegator = undefined;
+let abilityDelegatorArguments = undefined;
 
 function translateParamsToString(parameters) {
     const keySet = new Set([
         '-s class', '-s notClass', '-s suite', '-s it',
         '-s level', '-s testType', '-s size', '-s timeout',
         '-s dryRun'
-    ])
+    ]);
     let targetParams = '';
     for (const key in parameters) {
         if (keySet.has(key)) {
-            targetParams = `${targetParams} ${key} ${parameters[key]}`
+            targetParams = `${targetParams} ${key} ${parameters[key]}`;
         }
     }
-    return targetParams.trim()
+    return targetParams.trim();
 }
 
 async function onAbilityCreateCallback() {
@@ -49,7 +38,7 @@ async function onAbilityCreateCallback() {
 }
 
 async function addAbilityMonitorCallback(err: any) {
-    console.info("addAbilityMonitorCallback : " + JSON.stringify(err))
+    console.info("addAbilityMonitorCallback : " + JSON.stringify(err));
 }
 
 export default class OpenHarmonyTestRunner implements TestRunner {
@@ -57,41 +46,32 @@ export default class OpenHarmonyTestRunner implements TestRunner {
     }
 
     onPrepare() {
-        console.info("OpenHarmonyTestRunner OnPrepare ")
+        console.info("OpenHarmonyTestRunner OnPrepare ");
     }
 
     async onRun() {
-        console.log('OpenHarmonyTestRunner onRun run')
-        abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-        abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        var testAbilityName = abilityDelegatorArguments.bundleName + '.MainAbility'
+        console.log('OpenHarmonyTestRunner onRun run');
+        abilityDelegatorArguments = abilityDelegatorRegistry.getArguments();
+        abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+        var testAbilityName = abilityDelegatorArguments.bundleName + '.MainAbility';
         let lMonitor = {
             abilityName: testAbilityName,
             onAbilityCreate: onAbilityCreateCallback,
         };
-        abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback)
-        var cmd = 'aa start -d 0 -a com.example.myapplication.MainAbility' + ' -b ' + abilityDelegatorArguments.bundleName
-        cmd += ' '+translateParamsToString(abilityDelegatorArguments.parameters)
-        var debug = abilityDelegatorArguments.parameters["-D"]
-        if (debug == 'true')
-        {
-            cmd += ' -D'
+        abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback);
+        var cmd = 'aa start -d 0 -a com.arkui.ace.scroll.MainAbility' + ' -b ' + abilityDelegatorArguments.bundleName;
+        cmd += ' ' + translateParamsToString(abilityDelegatorArguments.parameters);
+        var debug = abilityDelegatorArguments.parameters["-D"];
+        if (debug == 'true') {
+            cmd += ' -D';
         }
-        console.info('cmd : '+cmd)
-        var cmdIn = "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100"
-        abilityDelegator.executeShellCommand(cmdIn,
-            (err: any, d: any) => {
-                console.info('executeShellCommand : err : ' + JSON.stringify(err));
-                console.info('executeShellCommand : data : ' + d.stdResult);
-                console.info('executeShellCommand : data : ' + d.exitCode);
-            })
-        await sleep(500)
+        console.info('cmd : ' + cmd);
         abilityDelegator.executeShellCommand(cmd,
             (err: any, d: any) => {
                 console.info('executeShellCommand : err : ' + JSON.stringify(err));
                 console.info('executeShellCommand : data : ' + d.stdResult);
                 console.info('executeShellCommand : data : ' + d.exitCode);
-            })
-        console.info('OpenHarmonyTestRunner onRun end')
+            });
+        console.info('OpenHarmonyTestRunner onRun end');
     }
 };

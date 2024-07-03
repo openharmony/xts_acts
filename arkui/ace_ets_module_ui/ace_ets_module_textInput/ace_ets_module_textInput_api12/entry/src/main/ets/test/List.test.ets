@@ -13,13 +13,13 @@
  * limitations under the License.
  */
 
-import textInputUnderlineColorTest from "./component/textInputUnderlineColor.test.ets";
-import textInputMaxFontSize from "./component/textInputMaxFontSize.test.ets";
-import textInputMinFontSize from "./component/textInputMinFontSize.test.ets";
-import textInputHeightAdaptivePolicy from "./component/textInputHeightAdaptivePolicy.test.ets";
-import textInputDecoration from "./component/textInputDecoration.test.ets";
-import textInputLetterSpacing from "./component/textInputLetterSpacing.test.ets";
-import textInputLineHeight from "./component/textInputLineHeight.test.ets";
+import textInputUnderlineColorTest from "./component/textInputUnderlineColor.test";
+import textInputMaxFontSize from "./component/textInputMaxFontSize.test";
+import textInputMinFontSize from "./component/textInputMinFontSize.test";
+import textInputHeightAdaptivePolicy from "./component/textInputHeightAdaptivePolicy.test";
+import textInputDecoration from "./component/textInputDecoration.test";
+import textInputLetterSpacing from "./component/textInputLetterSpacing.test";
+import textInputLineHeight from "./component/textInputLineHeight.test";
 
 export default function testsuite() {
   textInputUnderlineColorTest();

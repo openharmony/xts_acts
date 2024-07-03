@@ -13,27 +13,25 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textInputUnderlineColorTest() {
-  describe('textInputUnderlineColorTest', function () {
-    beforeEach(async function (done) {
+  describe('textInputUnderlineColorTest', () =>{
+    beforeEach(async  (done:Function) =>{
       console.info("TextInputUnderlineColorTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textInputUnderlineColor',
+      let options:router.RouterOptions = {
+        url: 'MainAbility/pages/component/textInputUnderlineColor',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get TextInputUnderlineColor state pages: " + JSON.stringify(pages));
         if (!("TextInputUnderlineColor" == pages.name)) {
           console.info("get TextInputUnderlineColor pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push TextInputUnderlineColor page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push TextInputUnderlineColor page error: " + err);
@@ -44,7 +42,7 @@ export default function textInputUnderlineColorTest() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () =>{
       await Utils.sleep(1000);
       console.info("TextInputUnderlineColor after each called");
     })
@@ -57,15 +55,14 @@ export default function textInputUnderlineColorTest() {
     * @tc.type : Function
     * @tc.size : MediumTest
     */
-    it('textInputUnderlineColor_0100', 0, async function (done) {
-      var tagName = 'textInputUnderlineColor_0100';
+    it('textInputUnderlineColor_0100', 0, async  (done:Function) =>{
+      let tagName = 'textInputUnderlineColor_0100';
       console.info('[' + tagName + '] START============================');
 
       let strJsonNew = getInspectorByKey('key_TextInput_UnderlineColor_001');
-      let obj = JSON.parse(strJsonNew);
-      console.info('[' + tagName + '] TextInput underlineColor is: ' + JSON.stringify(obj.$attrs.normalUnderlineColor));
+      console.info('[' + tagName + '] TextInput underlineColor is: ' + JSON.stringify(JSON.parse(strJsonNew).$attrs.normalUnderlineColor));
 
-      expect(obj.$attrs.normalUnderlineColor).assertEqual('#FF0000FF');
+      expect(JSON.parse(strJsonNew).$attrs.normalUnderlineColor).assertEqual('#FF0000FF');
 
       console.info('[' + tagName + '] END ===========================');
       done();
@@ -79,16 +76,14 @@ export default function textInputUnderlineColorTest() {
     * @tc.type : Function
     * @tc.size : MediumTest
     */
-    it('textInputUnderlineColor_0200', 0, async function (done) {
-      var tagName = 'textInputUnderlineColor_0200';
+    it('textInputUnderlineColor_0200', 0, async  (done:Function) =>{
+      let tagName = 'textInputUnderlineColor_0200';
       console.info('[' + tagName + '] START============================');
 
       let strJsonNew = getInspectorByKey('key_TextInput_UnderlineColor_002');
-      let obj = JSON.parse(strJsonNew);
-      console.info('[' + tagName + '] TextInput underlineColor is: ' + JSON.stringify(obj.$attrs.disableUnderlineColor));
-
-
-      expect(obj.$attrs.disableUnderlineColor).assertEqual('#FFFF0000');
+      
+      console.info('[' + tagName + '] TextInput underlineColor is: ' + JSON.stringify(JSON.parse(strJsonNew).$attrs.disableUnderlineColor));
+      expect(JSON.parse(strJsonNew).$attrs.disableUnderlineColor).assertEqual('#FFFF0000');
 
       console.info('[' + tagName + '] END ===========================');
       done();
@@ -102,16 +97,13 @@ export default function textInputUnderlineColorTest() {
     * @tc.type : Function
     * @tc.size : MediumTest
     */
-    it('textInputUnderlineColor_0300', 0, async function (done) {
-      var tagName = 'textInputUnderlineColor_0300';
+    it('textInputUnderlineColor_0300', 0, async  (done:Function) =>{
+      let tagName = 'textInputUnderlineColor_0300';
       console.info('[' + tagName + '] START============================');
 
       let strJsonNew = getInspectorByKey('key_TextInput_UnderlineColor_003');
-      let obj = JSON.parse(strJsonNew);
-      console.info('[' + tagName + '] TextInput underlineColor is: ' + JSON.stringify(obj.$attrs.typingUnderlineColor));
-
-      expect(obj.$attrs.typingUnderlineColor).assertEqual('#FFFF0000');
-
+      console.info('[' + tagName + '] TextInput underlineColor is: ' + JSON.stringify(JSON.parse(strJsonNew).$attrs.typingUnderlineColor));
+      expect(JSON.parse(strJsonNew).$attrs.typingUnderlineColor).assertEqual('#FFFF0000');
       console.info('[' + tagName + '] END ===========================');
       done();
     });
@@ -124,16 +116,13 @@ export default function textInputUnderlineColorTest() {
     * @tc.type : Function
     * @tc.size : MediumTest
     */
-    it('textInputUnderlineColor_0400', 0, async function (done) {
-      var tagName = 'ArkUI_textInputUnderlineColor_0400';
+    it('textInputUnderlineColor_0400', 0, async  (done:Function) =>{
+      let tagName = 'ArkUI_textInputUnderlineColor_0400';
       console.info('[' + tagName + '] START============================');
 
       let strJsonNew = getInspectorByKey('key_TextInput_UnderlineColor_004');
-      let obj = JSON.parse(strJsonNew);
-      console.info('[' + tagName + '] TextInput underlineColor is: ' + JSON.stringify(obj.$attrs.errorUnderlineColor));
-
-      expect(obj.$attrs.errorUnderlineColor).assertEqual('#FFFF0000');
-
+      console.info('[' + tagName + '] TextInput underlineColor is: ' + JSON.stringify(JSON.parse(strJsonNew).$attrs.errorUnderlineColor));
+      expect(JSON.parse(strJsonNew).$attrs.errorUnderlineColor).assertEqual('#FFFF0000');
       console.info('[' + tagName + '] END ===========================');
       done();
     });

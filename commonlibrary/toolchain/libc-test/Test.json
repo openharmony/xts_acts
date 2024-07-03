@@ -23,7 +23,7 @@
                 "chmod a+x -R /data/local/tmp/libc-test-lib",
                 "chmod a+x -R /data/local/tmp/libc-test",
                 "mount -o rw,remount /",
-                "mv /data/local/tmp/libc-test/zh_CN /tmp/zh_CN",
+                "mv /data/local/tmp/libc-test/zh_CN /data/local/tmp/zh_CN",
                 "mkdir /data/tests",
                 "mkdir /data/tests/libc-test",
                 "mkdir /data/tests/libc-test/src",

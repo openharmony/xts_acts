@@ -40,6 +40,7 @@ struct testSubscribeCommonEvent {
   @State startEnable: boolean = true;
   @State result: string = "FLASE";
   scroller: Scroller = new Scroller();
+  subscriber: CommonEventManager.CommonEventSubscriber;
 
   async aboutToAppear() {
     await FirstDialog.ChooseDialog(this.stepTips, this.name);
@@ -78,13 +79,12 @@ struct testSubscribeCommonEvent {
                   .enabled(this.startEnable)
                   .opacity(this.startEnable ? 1 : 0.4)
                   .onClick(async () => {
-                    let subscriber: CommonEventManager.CommonEventSubscriber;
                     let subscribeInfo: CommonEventManager.CommonEventSubscribeInfo = {
                       events: ["usual.event.SCREEN_OFF"]
                     };
                     try {
-                      subscriber = CommonEventManager.createSubscriberSync(subscribeInfo);
-                      CommonEventManager.subscribe(subscriber, (err: BusinessError, data: CommonEventManager.CommonEventData) => {
+                      this.subscriber = CommonEventManager.createSubscriberSync(subscribeInfo);
+                      CommonEventManager.subscribe(this.subscriber, (err: BusinessError, data: CommonEventManager.CommonEventData) => {
                         if (err) {
                           console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
                         } else {

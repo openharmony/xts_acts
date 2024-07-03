@@ -14,11 +14,11 @@
  */
 import batteryCommonEventTest from './battery_common_event.test.js'
 import batteryInfoTest from './batteryInfo.test.js'
-import batteryManagerPerformanceTest from './batterymanager_performance.test.js'
+import BatteryStatisticsTest from './batteryStatistics.test.js'
 import systemBatteryTest from './system_battery.test.js'
 export default function testsuite() {
     batteryCommonEventTest()
     batteryInfoTest()
-    //batteryManagerPerformanceTest()
+    BatteryStatisticsTest()
     systemBatteryTest()
 }
