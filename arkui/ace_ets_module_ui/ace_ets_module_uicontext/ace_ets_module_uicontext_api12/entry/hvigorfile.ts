@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12,25 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { UIContext } from '@ohos.arkui.UIContext';
-import { FrameNode } from '@ohos.arkui.node';
-@Entry
-@Component
-struct APIgetFrameNodeByUniqueId {
-  aboutToAppear() {
-    let uniqueId: number = this.getUniqueId();
-    let uiContext: UIContext = this.getUIContext();
-    if (uiContext) {
-      let node: FrameNode | null = uiContext.getFrameNodeByUniqueId(uniqueId);
-    }
-  }
-  build(){
-    Row() {
-      Column() {
-        Text('APIgetFrameNodeByUniqueId').key('APIgetFrameNodeByUniqueId_Text01')
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
+
+// Script for compiling build behavior. It is built in the build plug-in and cannot be modified currently.
+export { hapTasks } from '@ohos/hvigor-ohos-plugin';
