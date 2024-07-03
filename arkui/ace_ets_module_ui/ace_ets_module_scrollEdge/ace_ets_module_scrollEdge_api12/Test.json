@@ -3,7 +3,7 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
-        "bundle-name": "com.example.myapplication",
+        "bundle-name": "com.arkui.ace.scroll12",
         "module-name": "phone",
         "shell-timeout": "600000",
         "testcase-timeout": "300000"
