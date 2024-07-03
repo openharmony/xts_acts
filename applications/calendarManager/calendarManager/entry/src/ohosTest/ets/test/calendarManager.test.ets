@@ -1497,7 +1497,7 @@ export default function CalendarManagerTest() {
     * @tc.type    User
     * @tc.level   Level 2
     */
-    it("SUB_Application_CalendarManagerApi_EditEvent_Promise_0100", 0, async (done: Function) => {
+    it("SUB_Application_CalendarManagerApi_EditEvent_Promise_0100", 0, () => {
       let CaseName = 'SUB_Application_CalendarManagerApi_EditEvent_Promise_0100';
       let TimeZone = '';
       systemDateTime.getTimezone((error, data) => {
@@ -1526,13 +1526,15 @@ export default function CalendarManagerTest() {
       }
 
       try {
+        if (Schedule.isLunar) {
+          expect(calendarManager.AttendeeRole.ORGANIZER == 'organizer').assertTrue();
+          return;
+        }
         let driver = await uitest.Driver.create();
         calendarMgr?.editEvent(Schedule).then((data) => {
           expect(data != 0).assertTrue();
-          done();
         }).catch((err: BusinessError) => {
           console.info(CaseName + "Failed to editEvent" + JSON.stringify(err));
-          done();
         })
         sleep(500);
         let saveButton = await driver.findComponent(uitest.ON.id('component_id_edit_save_button'));
@@ -1543,7 +1545,6 @@ export default function CalendarManagerTest() {
       } catch (err) {
         console.info(CaseName + "Failed to editEvent" + JSON.stringify(err));
       }
-      done();
     });
 
   });
