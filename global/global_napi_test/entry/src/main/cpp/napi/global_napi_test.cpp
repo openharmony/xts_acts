@@ -406,7 +406,8 @@ static napi_value GetMediaByName(napi_env env, napi_callback_info info){
     return value;
 }
 
-static napi_value GetSymbolByName(napi_env env, napi_callback_info info) {
+static napi_value GetSymbolByName(napi_env env, napi_callback_info info)
+{
     size_t argc = 2;
     napi_value argv[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
@@ -421,7 +422,8 @@ static napi_value GetSymbolByName(napi_env env, napi_callback_info info) {
     return value;
 }
 
-static napi_value GetSymbol(napi_env env, napi_callback_info info) {
+static napi_value GetSymbol(napi_env env, napi_callback_info info)
+{
     size_t argc = 2;
     napi_value argv[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
@@ -437,7 +439,8 @@ static napi_value GetSymbol(napi_env env, napi_callback_info info) {
     return value;
 }
 
-static napi_value GetBoolByName(napi_env env, napi_callback_info info) {
+static napi_value GetBoolByName(napi_env env, napi_callback_info info)
+{
     size_t argc = 2;
     napi_value argv[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
@@ -454,7 +457,8 @@ static napi_value GetBoolByName(napi_env env, napi_callback_info info) {
     return value;
 }
 
-static napi_value GetBool(napi_env env, napi_callback_info info) {
+static napi_value GetBool(napi_env env, napi_callback_info info)
+{
     size_t argc = 2;
     napi_value argv[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
@@ -470,7 +474,8 @@ static napi_value GetBool(napi_env env, napi_callback_info info) {
     return value;
 }
 
-static napi_value GetPluralStringByName(napi_env env, napi_callback_info info) {
+static napi_value GetPluralStringByName(napi_env env, napi_callback_info info)
+{
     size_t argc = 3;
     napi_value argv[3] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
@@ -488,7 +493,8 @@ static napi_value GetPluralStringByName(napi_env env, napi_callback_info info) {
     return value;
 }
 
-static napi_value GetPluralString(napi_env env, napi_callback_info info) {
+static napi_value GetPluralString(napi_env env, napi_callback_info info)
+{
     size_t argc = 3;
     napi_value argv[3] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
@@ -507,7 +513,8 @@ static napi_value GetPluralString(napi_env env, napi_callback_info info) {
     return value;
 }
 
-static napi_value GetColorByName(napi_env env, napi_callback_info info) {
+static napi_value GetColorByName(napi_env env, napi_callback_info info)
+{
     size_t argc = 2;
     napi_value argv[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
@@ -521,7 +528,8 @@ static napi_value GetColorByName(napi_env env, napi_callback_info info) {
     return jsValue;
 }
 
-static napi_value GetColor(napi_env env, napi_callback_info info) {
+static napi_value GetColor(napi_env env, napi_callback_info info)
+{
     size_t argc = 2;
     napi_value argv[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
@@ -536,7 +544,8 @@ static napi_value GetColor(napi_env env, napi_callback_info info) {
     return jsValue;
 }
 
-static napi_value GetIntByName(napi_env env, napi_callback_info info) {
+static napi_value GetIntByName(napi_env env, napi_callback_info info)
+{
     size_t argc = 2;
     napi_value argv[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
@@ -551,7 +560,8 @@ static napi_value GetIntByName(napi_env env, napi_callback_info info) {
     return value;
 }
 
-static napi_value GetInt(napi_env env, napi_callback_info info) {
+static napi_value GetInt(napi_env env, napi_callback_info info)
+{
     size_t argc = 2;
     napi_value argv[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
@@ -567,7 +577,8 @@ static napi_value GetInt(napi_env env, napi_callback_info info) {
     return value;
 }
 
-static napi_value GetFloatByName(napi_env env, napi_callback_info info) {
+static napi_value GetFloatByName(napi_env env, napi_callback_info info)
+{
     size_t argc = 2;
     napi_value argv[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
@@ -582,7 +593,8 @@ static napi_value GetFloatByName(napi_env env, napi_callback_info info) {
     return value;
 }
 
-static napi_value GetFloat(napi_env env, napi_callback_info info) {
+static napi_value GetFloat(napi_env env, napi_callback_info info)
+{
     size_t argc = 2;
     napi_value argv[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
@@ -598,7 +610,8 @@ static napi_value GetFloat(napi_env env, napi_callback_info info) {
     return value;
 }
 
-static napi_value GetLocales(napi_env env, napi_callback_info info) {
+static napi_value GetLocales(napi_env env, napi_callback_info info)
+{
     size_t argc = 3;
     napi_value argv[3] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
@@ -623,7 +636,8 @@ static napi_value GetLocales(napi_env env, napi_callback_info info) {
     return jsStringArray;
 }
 
-static napi_value GetConfiguration(napi_env env, napi_callback_info info) {
+static napi_value GetConfiguration(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value argv[1] = {nullptr};
     ResourceManager_Configuration config;
@@ -632,13 +646,14 @@ static napi_value GetConfiguration(napi_env env, napi_callback_info info) {
     ResourceManager_ErrorCode code = OH_ResourceManager_GetConfiguration(mNativeResMgr, &config);
 
     bool flag = (code == 0 && config.direction == 0 && config.deviceType == 0 && config.screenDensity == 3 &&
-                 config.colorMode == 1 && config.mcc == 0 && config.mnc == 0 && strcmp(config.locale, "zh_Hans_CN") == 0);
+    config.colorMode == 1 && config.mcc == 0 && config.mnc == 0 && strcmp(config.locale, "zh_Hans_CN") == 0);
     napi_value value = nullptr;
     napi_get_boolean(env, flag, &value);
     return value;
 }
 
-static napi_value GetStringArray(napi_env env, napi_callback_info info) {
+static napi_value GetStringArray(napi_env env, napi_callback_info info)
+{
     size_t argc = 2;
     napi_value argv[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
@@ -663,7 +678,8 @@ static napi_value GetStringArray(napi_env env, napi_callback_info info) {
     return jsStringArray;
 }
 
-static napi_value GetStringArrayByName(napi_env env, napi_callback_info info) {
+static napi_value GetStringArrayByName(napi_env env, napi_callback_info info)
+{
     size_t argc = 2;
     napi_value argv[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
@@ -687,7 +703,8 @@ static napi_value GetStringArrayByName(napi_env env, napi_callback_info info) {
     return jsStringArray;
 }
 
-static napi_value ReleaseStringArray(napi_env env, napi_callback_info info) {
+static napi_value ReleaseStringArray(napi_env env, napi_callback_info info)
+{
     size_t argc = 2;
     napi_value argv[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
@@ -707,7 +724,8 @@ static napi_value ReleaseStringArray(napi_env env, napi_callback_info info) {
     return value;
 }
 
-static napi_value ReleaseConfiguration(napi_env env, napi_callback_info info) {
+static napi_value ReleaseConfiguration(napi_env env, napi_callback_info info)
+{
     size_t argc = 1;
     napi_value argv[1] = {nullptr};
     ResourceManager_Configuration config;
@@ -724,7 +742,8 @@ static napi_value ReleaseConfiguration(napi_env env, napi_callback_info info) {
     return value;
 }
 
-static napi_value GetStringByName(napi_env env, napi_callback_info info) {
+static napi_value GetStringByName(napi_env env, napi_callback_info info)
+{
     size_t argc = 2;
     napi_value argv[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
@@ -738,7 +757,8 @@ static napi_value GetStringByName(napi_env env, napi_callback_info info) {
     return value;
 }
 
-static napi_value GetString(napi_env env, napi_callback_info info) {
+static napi_value GetString(napi_env env, napi_callback_info info)
+{
     size_t argc = 2;
     napi_value argv[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
