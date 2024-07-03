@@ -139,13 +139,10 @@ export default function MeasureJsunit() {
 
       strJsonMaxLine2 = getInspectorByKey('textSizeMaxLine2');
       strJsonMaxLine3 = getInspectorByKey('textSizeMaxLine3');
-      strJsonMaxLine2Obj = JSON.parse(strJsonMaxLine2);
-      strJsonMaxLine3Obj = JSON.parse(strJsonMaxLine3);
 
-      console.log('[ArkUI_Stage_Measure_0300] component strJsonMaxLine2 is: ' + JSON.stringify(strJsonMaxLine2Obj));
-      console.log('[ArkUI_Stage_Measure_0300] component strJsonMaxLine3 is: ' + JSON.stringify(strJsonMaxLine3Obj));
-      expect(Number.parseInt(strJsonMaxLine3Obj.$attrs.content))
-        .assertLarger(Number.parseInt(strJsonMaxLine2Obj.$attrs.content));
+      console.log('[ArkUI_Stage_Measure_0300] component strJsonMaxLine2 is: ' + JSON.stringify(JSON.parse(strJsonMaxLine2)));
+      console.log('[ArkUI_Stage_Measure_0300] component strJsonMaxLine3 is: ' + JSON.stringify(JSON.parse(strJsonMaxLine3)));
+      expect(Number.parseInt(JSON.parse(strJsonMaxLine3).$attrs.content)).assertLarger(Number.parseInt(JSON.parse(strJsonMaxLine2).$attrs.content));
       done();
     });
 
