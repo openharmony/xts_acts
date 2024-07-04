@@ -21,9 +21,10 @@ import { LengthUnit } from '@ohos.arkui.node';
 @Component
 struct menuItemDividerTest {
   @State text: string = ''
-  private iconStr: ResourceStr = $r("app.media.icon")
-  private iconStr2: ResourceStr = $r("app.media.icon")
+  private iconStr: ResourceStr = $r('app.media.icon')
+  private iconStr2: ResourceStr = $r('app.media.icon')
   @State select: boolean = true;
+
 
   build() {
     Column() {
@@ -31,34 +32,34 @@ struct menuItemDividerTest {
         MenuItemGroup({ header: '头标' , footer: '尾标' }){
           MenuItem({
             startIcon: this.iconStr,
-            content: "菜单选项1",
+            content: '菜单选项1',
             endIcon: this.iconStr2
           })
           MenuItem({
             startIcon: this.iconStr,
-            content: "菜单选项2",
+            content: '菜单选项2',
             endIcon: this.iconStr2
           })
           MenuItem({
             startIcon: this.iconStr,
-            content: "菜单选项3",
+            content: '菜单选项3',
             endIcon: this.iconStr2
           })
         }
         MenuItemGroup({header: 'MenuItemGroup标题' }){
           MenuItem({
             startIcon: this.iconStr,
-            content: "菜单选项一",
+            content: '菜单选项一',
             endIcon: this.iconStr2,
           })
           MenuItem({
             startIcon: this.iconStr,
-            content: "菜单选项二",
+            content: '菜单选项二',
             endIcon: this.iconStr2,
           })
           MenuItem({
             startIcon: this.iconStr,
-            content: "菜单选项三",
+            content: '菜单选项三',
             endIcon: this.iconStr2,
           })
         }
