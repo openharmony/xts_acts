@@ -150,10 +150,10 @@ struct LayoutConstraints {
       if (eventData.data.aspectRatio) {
         this.aspectRatio = eventData.data.aspectRatio;
       } else if (eventData.data.displayPriority) {
-        JSON.parse(JSON.stringify(this.priorityChildren))[0].priority =
-          eventData.data.displayPriority;
+        let priority:PriorityChild[]= JSON.parse(JSON.stringify(this.priorityChildren));
+        priority[0].priority=eventData.data.displayPriority;
         this.priorityChildren = [];
-        this.priorityChildren = JSON.parse(JSON.stringify(this.priorityChildren));
+        this.priorityChildren = priority;
       }
     }
   }
