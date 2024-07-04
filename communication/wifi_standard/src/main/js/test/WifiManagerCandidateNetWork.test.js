@@ -227,7 +227,7 @@ export default function actsWifiManagerCandidateNetWorkTest() {
                     console.info("[wifi_test]wifi  getconfig.length result : " + JSON.stringify(getCandidate.length));
                     expect(true).assertEqual(getCandidate.length == 0);
                 }).catch((error) => {
-                    console.error('[wifi_test]remove CandidateConfig promise failed ï¼?' + JSON.stringify(error));
+                    console.error('[wifi_test]remove CandidateConfig promise failed ?' + JSON.stringify(error));
                     expect().assertFail();
                 });
             done();
@@ -344,12 +344,22 @@ export default function actsWifiManagerCandidateNetWorkTest() {
          * @tc.level Level 2
          */
         it('SUB_Communication_WiFi_XTS_CandidateNetWork_0005', 0, async function (done) {
+            let wapiPskType={
+                "WAPI_PSK_ASCII":0,
+                "WAPI_PSK_HEX":1,
+            }
+            let WifiWapiConfig ={
+                wapiPskType:wapiPskType.WAPI_PSK_ASCII,
+                wapiAsCert:"abc",
+                wapiUserCert:"1",
+            }
             let wifiDeviceConfig = {
                 "ssid": "TEST_connect",
                 "bssid": "22:9b:e6:48:1f:5c",
                 "preSharedKey": "12345678",
                 "isHiddenSsid": false,
                 "securityType": wifiMg.WifiSecurityType.WIFI_SEC_TYPE_PSK,
+                "wapiConfig":wifiMg.WifiWapiConfig,
             }
             function addCandidate() {
                 return new Promise((resolve, reject) => {

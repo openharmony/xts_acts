@@ -154,7 +154,7 @@ describe('btManagerGattAdvertTest', function() {
           }catch(error) {
                console.error(`[bluetooth_js]startAdvertising1 failed, code is ${error.code},
               message is ${error.message}`);
-              expect(error.code).assertEqual('2900099');
+              expect(error.code).assertEqual(2900099);
           }
           done();
     })
@@ -210,7 +210,7 @@ describe('btManagerGattAdvertTest', function() {
           }catch(error) {
                console.error(`[bluetooth_js]startAdvertising2 failed, code is ${error.code},
                    message is ${error.message}`);
-               expect(error.code).assertEqual('2900099');
+               expect(error.code).assertEqual(2900099);
           }
           done();
     })
@@ -266,7 +266,7 @@ describe('btManagerGattAdvertTest', function() {
           }catch(error) {
                console.error(`[bluetooth_js]startAdvertising3 failed, code is ${error.code},
                   message is ${error.message}`);
-               expect(error.code).assertEqual('2900099');
+               expect(error.code).assertEqual(2900099);
           }
           done();
     })
@@ -322,7 +322,7 @@ describe('btManagerGattAdvertTest', function() {
           }catch(error) {
                console.error(`[bluetooth_js]startAdvertising4 failed, code is ${error.code},
                     message is ${error.message}`);
-               expect(error.code).assertEqual('2900099');
+               expect(error.code).assertEqual(2900099);
           }
           done();
     })
@@ -378,7 +378,7 @@ describe('btManagerGattAdvertTest', function() {
           }catch(error) {
                console.error(`[bluetooth_js]startAdvertising5 failed, code is ${error.code},
                    message is ${error.message}`);
-               expect(error.code).assertEqual('2900099');
+               expect(error.code).assertEqual(2900099);
           }
           done();
     })
@@ -432,7 +432,7 @@ describe('btManagerGattAdvertTest', function() {
                gattServer.startAdvertising(setting,advData,advResponse);
                gattServer.stopAdvertising();
           }catch(error) {
-               expect(error.code).assertEqual('2900099');
+               expect(error.code).assertEqual(2900099);
           }
           done();
     })
@@ -488,7 +488,7 @@ describe('btManagerGattAdvertTest', function() {
           }catch(error) {
                console.error(`[bluetooth_js]startAdvertising9 failed, code is ${error.code},
                     message is ${error.message}`);
-               expect(error.code).assertEqual('2900099');
+               expect(error.code).assertEqual(2900099);
           }
           done();
     })
@@ -542,7 +542,7 @@ describe('btManagerGattAdvertTest', function() {
                gattServer.startAdvertising(setting,advData,advResponse);
                gattServer.stopAdvertising();
           }catch(error) {
-               expect(error.code).assertEqual('2900099');
+               expect(error.code).assertEqual(2900099);
           }
           done();
     })
@@ -598,7 +598,7 @@ describe('btManagerGattAdvertTest', function() {
           }catch(error) {
                console.error('[bluetooth_js]startAdvertising11 error.code:'+JSON.stringify(error.code)+
                    'error.message:'+JSON.stringify(error.message));
-               expect(error.code).assertEqual('401');
+               expect(error.code).assertEqual(401);
           }
           done();
     })
@@ -654,7 +654,7 @@ describe('btManagerGattAdvertTest', function() {
           }catch(error) {
               console.error('[bluetooth_js]startAdvertising12 error.code:'+JSON.stringify(error.code)+
               'error.message:'+JSON.stringify(error.message));
-               expect(error.code).assertEqual('401');
+               expect(error.code).assertEqual(401);
           }
           done();
     })
@@ -708,7 +708,7 @@ describe('btManagerGattAdvertTest', function() {
                gattServer.startAdvertising(setting,advData,advResponse);
                gattServer.stopAdvertising();
           }catch(error) {
-               expect(error.code).assertEqual('2900099');
+               expect(error.code).assertEqual(2900099);
           }
           done();
     })
@@ -764,7 +764,7 @@ describe('btManagerGattAdvertTest', function() {
           }catch(error) {
                console.error(`[bluetooth_js]startAdvertising15 failed, code is ${error.code},
                     message is ${error.message}`);
-               expect(error.code).assertEqual('2900099');
+               expect(error.code).assertEqual(2900099);
           }
           done();
     })
@@ -820,7 +820,7 @@ describe('btManagerGattAdvertTest', function() {
           }catch(error) {
                console.error(`[bluetooth_js]startAdvertising18 failed, code is ${error.code},
                   message is ${error.message}`);
-               expect(error.code).assertEqual('401');
+               expect(error.code).assertEqual(401);
           }
           done();
     })
@@ -870,7 +870,7 @@ describe('btManagerGattAdvertTest', function() {
           }catch(error) {
                console.error(`[bluetooth_js]startAdvertising19 failed, code is ${error.code},
               message is ${error.message}`);
-              expect(error.code).assertEqual('2900099');
+              expect(error.code).assertEqual(2900099);
           }
           done();
     })
@@ -921,7 +921,7 @@ describe('btManagerGattAdvertTest', function() {
           }catch(error) {
                console.error(`[bluetooth_js]startAdvertising21 failed, code is ${error.code},
                  message is ${error.message}`);
-              expect(error.code).assertEqual('2900099');
+              expect(error.code).assertEqual(2900099);
           }
           done();
     })

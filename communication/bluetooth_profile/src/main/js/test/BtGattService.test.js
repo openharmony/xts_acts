@@ -127,7 +127,7 @@ describe('btGattServiceTest', function() {
             gattClient.connect();
         } catch (error) {
             console.error(`[bluetooth_js]code is ${error.code},message is ${error.message}`);
-            expect(error.code).assertEqual('2900099');
+            expect(error.code).assertEqual(2900099);
         }
         await gattServer.off("connectStateChange");
         done();
@@ -193,7 +193,7 @@ describe('btGattServiceTest', function() {
             console.info('[bluetooth_js] bluetooth addService a characteristics result : ' + ret);
         } catch (error) {
             console.error(`[bluetooth_js] failed, code is ${error.code},message is ${error.message}`);
-            expect(error.code).assertEqual('401');
+            expect(error.code).assertEqual(401);
         }
         done();
     })
