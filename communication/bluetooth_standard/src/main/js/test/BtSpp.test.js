@@ -111,7 +111,6 @@ describe('btSppTest', function() {
             }else{
                 console.log('bluetooth serverSocket Number:' + JSON.stringify(number));
                 serverNumber = number;
-                // expect(true).assertEqual(number!=null);
             }
             done();
         }
@@ -224,7 +223,6 @@ describe('btSppTest', function() {
             console.log('bluetooth error code05: ' + code.code);
             if (code.code == 0) {
                 console.log('bluetooth clientSocket Number05: ' + number);
-                // expect(true).assertEqual(number != null);
             }
         }
         try {
