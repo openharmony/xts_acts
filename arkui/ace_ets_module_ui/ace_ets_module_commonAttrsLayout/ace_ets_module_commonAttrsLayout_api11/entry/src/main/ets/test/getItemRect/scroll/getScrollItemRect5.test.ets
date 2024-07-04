@@ -32,11 +32,7 @@ import CommonFunc from '../../../MainAbility/utils/Common';
 import { MessageManager, Callback } from '../../../MainAbility/utils/MessageManager';
 import ohosrouter from '@ohos.router';
 
-interface Error {
-  code: string;
-  message: string;
 
-}
 
 export default function getScrollItemRect5() {
   describe('getScrollItemRect5', () => {
@@ -153,7 +149,7 @@ export default function getScrollItemRect5() {
         }).then(() => {
           // success
         })
-          .catch((err: Error) => {
+          .catch(err => {
             console.error(`pushUrl failed, code is ${err.code}, message is ${err.message}`);
           })
         await CommonFunc.sleep(2000);
