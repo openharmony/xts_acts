@@ -4593,6 +4593,22 @@ static napi_value ThreadSafePriorityWithInvalidParam(napi_env env, napi_callback
     return value;
 }
 
+static napi_value CheckUnwrapFunc(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value argv[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+    const char *testStr = "test";
+    napi_wrap(
+        env, argv[0], (void*)testStr, [](napi_env env, void* data, void* hint) {}, nullptr, nullptr);
+
+    char *tmpTestStr = nullptr;
+    napi_unwrap(env, argv[0], (void **)&tmpTestStr);
+    napi_value value = 0;
+    NAPI_CALL(env, napi_create_int32(env, strcmp(tmpTestStr, testStr), &value));
+    return value;
+}
+
 EXTERN_C_START
 
 static napi_value Init(napi_env env, napi_value exports)
@@ -4770,6 +4786,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"threadSafePriority", nullptr, ThreadSafePriority, nullptr, nullptr, nullptr, napi_default, callbackData},
         {"threadSafePriorityWithInvalidParam", nullptr, ThreadSafePriorityWithInvalidParam, nullptr, nullptr, nullptr,
             napi_default, nullptr},
+        DECLARE_NAPI_FUNCTION("checkUnwrapFunc", CheckUnwrapFunc),
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
 
