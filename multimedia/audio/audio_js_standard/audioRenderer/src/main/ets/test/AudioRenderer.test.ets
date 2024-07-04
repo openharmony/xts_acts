@@ -12923,5 +12923,93 @@ export default function audioRendererTest() {
       await closeFileDescriptor(readPath);
       done();
     })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MEDIA_MUTE_PLAY_0008
+     *@tc.name      : AudioRenderer_setSilentMode_true
+     *@tc.desc      : setSilentModeAndMixWithOthers and getSilentModeAndMixWithOthers success
+     *@tc.size      : MediumTest
+     *@tc.type      : Function
+     *@tc.level     : Level2
+     */
+     it("SUB_MULTIMEDIA_AUDIO_MEDIA_MUTE_PLAY_0008", 2, async function (done) {
+      let audioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let audioRendererInfo = {
+        content: audio.ContentType.CONTENT_TYPE_MUSIC,
+        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+        rendererFlags: 0
+      }
+      let audioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo
+      }
+      let audioRenderer;
+      try {
+        audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
+      } catch (err) {
+      }
+      try {
+        audioRenderer.setSilentModeAndMixWithOthers(true);
+        let data = audioRenderer.getSilentModeAndMixWithOthers();
+        expect(data).assertEqual(true);
+      } catch (err) {
+      }
+      audioRenderer.release().then(() => {
+        console.info(`AudioRenderer release : SUCCESS`);
+      }).catch((err) => {
+        console.info(`AudioRenderer release :ERROR : ${err.message}`);
+      });
+      console.info('afterAll called')
+      done();
+    })
+
+    /**
+     *@tc.number    : SUB_MULTIMEDIA_AUDIO_MEDIA_MUTE_PLAY_0009
+     *@tc.name      : AudioRenderer_setSilentMode_false
+     *@tc.desc      : setSilentModeAndMixWithOthers and getSilentModeAndMixWithOthers success
+     *@tc.size      : MediumTest
+     *@tc.type      : Function
+     *@tc.level     : Level2
+     */
+     it("SUB_MULTIMEDIA_AUDIO_MEDIA_MUTE_PLAY_0009", 2, async function (done) {
+      let audioStreamInfo = {
+        samplingRate: audio.AudioSamplingRate.SAMPLE_RATE_48000,
+        channels: audio.AudioChannel.CHANNEL_1,
+        sampleFormat: audio.AudioSampleFormat.SAMPLE_FORMAT_S16LE,
+        encodingType: audio.AudioEncodingType.ENCODING_TYPE_RAW
+      }
+      let audioRendererInfo = {
+        content: audio.ContentType.CONTENT_TYPE_MUSIC,
+        usage: audio.StreamUsage.STREAM_USAGE_MEDIA,
+        rendererFlags: 0
+      }
+      let audioRendererOptions = {
+        streamInfo: audioStreamInfo,
+        rendererInfo: audioRendererInfo
+      }
+      let audioRenderer;
+      try {
+        audioRenderer = await audio.createAudioRenderer(audioRendererOptions);
+      } catch (err) {
+      }
+      try {
+        audioRenderer.setSilentModeAndMixWithOthers(false);
+        let data = audioRenderer.getSilentModeAndMixWithOthers();
+        expect(data).assertEqual(false);
+      } catch (err) {
+      }
+      audioRenderer.release().then(() => {
+        console.info(`AudioRenderer release : SUCCESS`);
+      }).catch((err) => {
+        console.info(`AudioRenderer release :ERROR : ${err.message}`);
+      });
+      console.info('afterAll called')
+      done();
+    })
   })
 }
