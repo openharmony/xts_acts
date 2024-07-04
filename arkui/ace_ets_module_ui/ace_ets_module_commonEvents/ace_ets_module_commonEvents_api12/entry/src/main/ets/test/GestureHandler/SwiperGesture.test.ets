@@ -64,8 +64,8 @@ export default function SwiperGestureHandlerTest() {
       let bottom = colum.bottom
       let left = colum.left
       let right = colum.right
-      await driver.swipe(Math.round(left + 20), Math.round((top + bottom) / 2),
-        Math.round(right - 20), Math.round((top + bottom) / 2));
+      await driver.swipe(Math.round(left + 100), Math.round((top + bottom) / 2),
+        Math.round(right - 100), Math.round((top + bottom) / 2));
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('SwiperGestureHandler1');
       let obj = JSON.parse(strJson);
