@@ -19,8 +19,8 @@ import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 export default function textInputPreview() {
-  describe('textInputPreview', function () {
-    beforeEach(async function (done) {
+  describe('textInputPreview', () => {
+    beforeEach(async (done: Function) => {
       console.info("textInputPreview beforeEach start");
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/TextInput/textInputPreview',
@@ -42,20 +42,15 @@ export default function textInputPreview() {
       done();
     });
 
-    afterEach(async function () {
-      await CommonFunc.sleep(1000);
-      console.info(" textInputPreview after each called");
-    });
-
     /* *
     * @tc.number: SUB_ACE_TextInput_Preview_0100
     * @tc.name  : textInputPreview_0100
     * @tc.desc  : Define the preview text mode of the text input.
-    * @tc.level : Level 1
+    * @tc.level : Level 2
     * @tc.type :
     * @tc.size :
     */
-    it('textInputPreview_0100', 0, async function (done) {
+    it('textInputPreview_0100', 0, async (done: Function) => {
       console.info('textInputPreview_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('enablePreview_textInput');
