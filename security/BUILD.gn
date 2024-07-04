@@ -33,6 +33,7 @@ group("security") {
       "security_component:ActsSecComponentTest",
       "security_huks_basic",
       "security_huks_reformed_test",
+      "security_guard",
     ]
   }
 }
