@@ -19,8 +19,8 @@ import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 export default function tabsAnimationMode() {
-  describe('tabsAnimationMode', function () {
-    beforeEach(async function (done) {
+  describe('tabsAnimationMode', () => {
+    beforeEach(async (done: Function) => {
       console.info("tabsAnimationMode beforeEach start");
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/Tabs/tabsAnimationMode',
@@ -42,11 +42,6 @@ export default function tabsAnimationMode() {
       done();
     });
 
-    afterEach(async function () {
-      await CommonFunc.sleep(1000);
-      console.info(" tabsAnimationMode after each called");
-    });
-
     /* *
     * @tc.number: SUB_ACE_Tabs_ANIMATIONMODE_0100
     * @tc.name  : tabsAnimationMode_0100
@@ -55,7 +50,7 @@ export default function tabsAnimationMode() {
     * @tc.type :
     * @tc.size :
     */
-    it('tabsAnimationMode_0100', 0, async function (done) {
+    it('tabsAnimationMode_0100', 0, async (done: Function) => {
       console.info('tabsAnimationMode_0100 START');
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('animationMode_1');
