@@ -136,7 +136,6 @@ describe('btSppTest', function() {
              }else{
                 console.log('[bluetooth_js] serverSocket Number: ' + JSON.stringify(number));
                 serverNumber = number;
-                // expect(true).assertEqual(number!=null);
              }
              done();
         }
@@ -161,7 +160,6 @@ describe('btSppTest', function() {
             }else{
                 console.log('[bluetooth_js] serverSocket Number: '+JSON.stringify(number));
                 serverNumber = number;
-                // expect(true).assertEqual(serverNumber!=null);
             }
         }
         await bluetooth.sppListen('server1', sppOption, serverSocket);
@@ -186,7 +184,6 @@ describe('btSppTest', function() {
              }else{
                 console.log('[bluetooth_js] serverSocket Number:'+ JSON.stringify(number));
                 serverNumber = number;
-                // expect(true).assertEqual(serverNumber!=null);
              }
              done();
         }
@@ -213,7 +210,6 @@ describe('btSppTest', function() {
                     if (err == null) {
                         console.log('bluetooth serverSocket Number05:' + JSON.stringify(number));
                         serverNumber = number;
-                        // expect(true).assertEqual(serverNumber != -1);
                         resolve(null);
                     } else {
                         console.log('bluetooth error code05: ' + err.code);
@@ -254,7 +250,6 @@ describe('btSppTest', function() {
             } else {
                 console.log('[bluetooth_js]sppAccept Number:' 
                             + JSON.stringify(clientSocketNumber));
-                // expect(true).assertEqual(clientSocketNumber!=null);
             }
         });
         done();
@@ -276,7 +271,6 @@ describe('btSppTest', function() {
             } else {
                 console.log('[bluetooth_js]sppConnect Number:'
                     + JSON.stringify(number));
-                // expect(true).assertEqual(number!=null);
             }
         });
         done();
@@ -298,7 +292,6 @@ describe('btSppTest', function() {
             } else {
                 console.log('[bluetooth_js]sppConnect Number' 
                     + JSON.stringify(clientSocketNumber));
-                // expect(true).assertEqual(clientSocketNumber!=null);
             }
         });
         done();
@@ -320,7 +313,6 @@ describe('btSppTest', function() {
             } else {
                 console.log('[bluetooth_js]sppConnect Number' 
                     + JSON.stringify(clientSocketNumber));
-                // expect(true).assertEqual(clientSocketNumber!=null);
             }
         });
         done();
@@ -341,7 +333,6 @@ describe('btSppTest', function() {
             }else{
                 console.log('bluetooth serverSocket Number:'+ JSON.stringify(number));
                 serverNumber = number;
-                // expect(true).assertEqual(serverNumber!=null);
             }
 
         }
@@ -368,7 +359,6 @@ describe('btSppTest', function() {
                 console.log('[bluetooth_js]sppAccept Number:' 
                     + JSON.stringify(clientSocketNumber));
                 clientNumber =clientSocketNumber;
-                // expect(true).assertEqual(clientSocketNumber!=null);
             }
         });
         bluetooth.sppCloseClientSocket(clientNumber);
@@ -391,7 +381,6 @@ describe('btSppTest', function() {
                 console.log('[bluetooth_js]sppAccept Number:' 
                     + JSON.stringify(clientSocketNumber));
                 clientNumber =clientSocketNumber;
-                // expect(true).assertEqual(clientSocketNumber!=null);
             }
         });
         let arrayBuffer = new ArrayBuffer(8);
@@ -418,7 +407,6 @@ describe('btSppTest', function() {
             }else{
                 console.log('[bluetooth_js]clientSocke Number:' + JSON.stringify(number));
                 clientNumber = number;
-                // expect(true).assertEqual(number!=null);
             }
         }
         await bluetooth.sppAccept(0, acceptClientSocket);
