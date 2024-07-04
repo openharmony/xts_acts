@@ -30,7 +30,7 @@ export default function SecurityGuardPermissionTest() {
     })
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0103
-     * @tc.name Test reportSecurityEvent
+     * @tc.name test reportSecurityEvent
      * @tc.desc No permission expected 201.
      * @tc.size MediumTest
      * @tc.type Function
@@ -57,7 +57,7 @@ export default function SecurityGuardPermissionTest() {
 
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0203
-     * @tc.name Test querySecurityEvent
+     * @tc.name test querySecurityEvent
      * @tc.desc No permission expected 201.
      * @tc.size MediumTest
      * @tc.type Function
@@ -99,7 +99,7 @@ export default function SecurityGuardPermissionTest() {
 
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0302
-     * @tc.name Test startSecurityEventCollector
+     * @tc.name test startSecurityEventCollector
      * @tc.desc No permission expected 201.
      * @tc.size MediumTest
      * @tc.type Function
@@ -123,7 +123,7 @@ export default function SecurityGuardPermissionTest() {
 
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0402
-     * @tc.name Test stopSecurityEventCollector
+     * @tc.name test stopSecurityEventCollector
      * @tc.desc No permission expected 201.
      * @tc.size MediumTest
      * @tc.type Function
@@ -147,7 +147,7 @@ export default function SecurityGuardPermissionTest() {
 
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0502
-     * @tc.name Test getModelResult
+     * @tc.name test getModelResult
      * @tc.desc No permission expected 201.
      * @tc.size MediumTest
      * @tc.type Function
@@ -172,7 +172,7 @@ export default function SecurityGuardPermissionTest() {
 
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0604
-     * @tc.name Test on
+     * @tc.name test on
      * @tc.desc No permission expected 201.
      * @tc.size MediumTest
      * @tc.type Function

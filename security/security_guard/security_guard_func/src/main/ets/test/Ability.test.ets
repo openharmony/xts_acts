@@ -43,7 +43,7 @@ export default function SecurityGuardFunctionTest() {
     });
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0100
-     * @tc.name Test reportSecurityEvent
+     * @tc.name test reportSecurityEvent
      * @tc.desc A normal response is expected.
      * @tc.size MediumTest
      * @tc.type Function
@@ -70,7 +70,7 @@ export default function SecurityGuardFunctionTest() {
 
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0101
-     * @tc.name Test reportSecurityEvent
+     * @tc.name test reportSecurityEvent
      * @tc.desc Version passes in extra large characters.
      * @tc.size MediumTest
      * @tc.type Function
@@ -100,7 +100,7 @@ export default function SecurityGuardFunctionTest() {
 
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0102
-     * @tc.name Test reportSecurityEvent
+     * @tc.name test reportSecurityEvent
      * @tc.desc securityEvent is null expected 401.
      * @tc.size MediumTest
      * @tc.type Function
@@ -120,7 +120,7 @@ export default function SecurityGuardFunctionTest() {
 
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0200
-     * @tc.name Test querySecurityEvent
+     * @tc.name test querySecurityEvent
      * @tc.desc A normal response is expected.
      * @tc.size MediumTest
      * @tc.type Function
@@ -160,7 +160,7 @@ export default function SecurityGuardFunctionTest() {
     });
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0201
-     * @tc.name Test querySecurityEvent
+     * @tc.name test querySecurityEvent
      * @tc.desc rules is null expected 401.
      * @tc.size MediumTest
      * @tc.type Function
@@ -201,7 +201,7 @@ export default function SecurityGuardFunctionTest() {
     });
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0202
-     * @tc.name Test querySecurityEvent
+     * @tc.name test querySecurityEvent
      * @tc.desc querier is null expected 401.
      * @tc.size MediumTest
      * @tc.type Function
@@ -243,7 +243,7 @@ export default function SecurityGuardFunctionTest() {
 
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0301
-     * @tc.name Test startSecurityEventCollector
+     * @tc.name test startSecurityEventCollector
      * @tc.desc rule is null expected 401.
      * @tc.size MediumTest
      * @tc.type Function
@@ -268,7 +268,7 @@ export default function SecurityGuardFunctionTest() {
 
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0401
-     * @tc.name Test stopSecurityEventCollector
+     * @tc.name test stopSecurityEventCollector
      * @tc.desc rule is null expected 401.
      * @tc.size MediumTest
      * @tc.type Function
@@ -292,7 +292,7 @@ export default function SecurityGuardFunctionTest() {
 
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0500
-     * @tc.name Test getModelResult
+     * @tc.name test getModelResult
      * @tc.desc A normal response is expected.
      * @tc.size MediumTest
      * @tc.type Function
@@ -316,7 +316,7 @@ export default function SecurityGuardFunctionTest() {
 
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0501
-     * @tc.name Test getModelResult
+     * @tc.name test getModelResult
      * @tc.desc rule is null expected 401.
      * @tc.size MediumTest
      * @tc.type Function
@@ -341,7 +341,7 @@ export default function SecurityGuardFunctionTest() {
 
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0504
-     * @tc.name Test getModelResult
+     * @tc.name test getModelResult
      * @tc.desc rule.modelName is error expected 401.
      * @tc.size MediumTest
      * @tc.type Function
@@ -366,7 +366,7 @@ export default function SecurityGuardFunctionTest() {
 
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0600
-     * @tc.name Test on/off
+     * @tc.name test on/off
      * @tc.desc A normal response is expected.
      * @tc.size MediumTest
      * @tc.type Function
@@ -391,7 +391,7 @@ export default function SecurityGuardFunctionTest() {
 
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0601
-     * @tc.name Test on
+     * @tc.name test on
      * @tc.desc input auditEventInfo is null except 401.
      * @tc.size MediumTest
      * @tc.type Function
@@ -415,7 +415,7 @@ export default function SecurityGuardFunctionTest() {
 
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0602
-     * @tc.name Test on
+     * @tc.name test on
      * @tc.desc input auditEventInfo eventid does not exist except 401.
      * @tc.size MediumTest
      * @tc.type Function
@@ -439,7 +439,7 @@ export default function SecurityGuardFunctionTest() {
 
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0603
-     * @tc.name Test on
+     * @tc.name test on
      * @tc.desc input callback is null except 401.
      * @tc.size MediumTest
      * @tc.type Function
@@ -463,7 +463,7 @@ export default function SecurityGuardFunctionTest() {
 
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0606
-     * @tc.name Test on
+     * @tc.name test on
      * @tc.desc input auditEventInfo is null except 401.
      * @tc.size MediumTest
      * @tc.type Function
@@ -487,7 +487,7 @@ export default function SecurityGuardFunctionTest() {
 
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0700
-     * @tc.name Test off
+     * @tc.name test off
      * @tc.desc input callback is null except 401.
      * @tc.size MediumTest
      * @tc.type Function
@@ -510,7 +510,7 @@ export default function SecurityGuardFunctionTest() {
 
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0701
-     * @tc.name Test off
+     * @tc.name test off
      * @tc.desc input auditEventInfo is null except 401.
      * @tc.size MediumTest
      * @tc.type Function
@@ -534,7 +534,7 @@ export default function SecurityGuardFunctionTest() {
 
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0702
-     * @tc.name Test off
+     * @tc.name test off
      * @tc.desc input auditEventInfo is null except 401.
      * @tc.size MediumTest
      * @tc.type Function
@@ -558,7 +558,7 @@ export default function SecurityGuardFunctionTest() {
 
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0703
-     * @tc.name Test off
+     * @tc.name test off
      * @tc.desc input callback is null except 401.
      * @tc.size MediumTest
      * @tc.type Function
@@ -582,7 +582,7 @@ export default function SecurityGuardFunctionTest() {
 
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0704
-     * @tc.name Test off
+     * @tc.name test off
      * @tc.desc input auditEventInfo eventid does not exist except 401.
      * @tc.size MediumTest
      * @tc.type Function
