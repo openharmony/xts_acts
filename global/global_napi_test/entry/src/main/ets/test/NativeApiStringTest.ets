@@ -190,5 +190,204 @@ export default function abilityTest() {
       expect(value).assertTrue()
     })
 
+    /* *
+    * @tc.number  SUB_GLOBAL_getSymbolByName_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getSymbolByName_ndktest_0100', 0, function () {
+      let value = ndk.getSymbolByName(resManager.getResourceManager())
+      expect(value).assertTrue()
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_getSymbol_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getSymbol_ndktest_0100', 0, function () {
+      let value = ndk.getSymbol(resManager.getResourceManager(), $r('app.symbol.symbol_test').id)
+      expect(value).assertTrue()
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_getBoolByName_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getBoolByName_ndktest_0100', 0, function () {
+      let value = ndk.getBoolByName(resManager.getResourceManager())
+      expect(value).assertTrue()
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_getBool_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getBool_ndktest_0100', 0, function () {
+      let value = ndk.getBool(resManager.getResourceManager(), $r('app.boolean.boolean_1').id)
+      expect(value).assertTrue()
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_getPluralStringByName_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getPluralStringByName_ndktest_0100', 0, function () {
+      let value = ndk.getPluralStringByName(resManager.getResourceManager())
+      expect(value).assertTrue()
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_getPluralString_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getPluralString_ndktest_0100', 0, function () {
+      let value = ndk.getPluralString(resManager.getResourceManager(), $r('app.plural.eat_apple').id, 1)
+      expect(value).assertTrue()
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_getColorByName_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getColorByName_ndktest_0100', 0, function () {
+      let value = ndk.getColorByName(resManager.getResourceManager())
+      expect(value).assertEqual(4294967210)
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_getColor_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getColor_ndktest_0100', 0, function () {
+      let value = ndk.getColor(resManager.getResourceManager(), $r('app.color.start_window_background_jjq').id)
+      expect(value).assertEqual(4294967210)
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_getIntByName_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getIntByName_ndktest_0100', 0, function () {
+      let value = ndk.getIntByName(resManager.getResourceManager())
+      expect(value).assertTrue()
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_getInt_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getInt_ndktest_0100', 0, function () {
+      let value = ndk.getInt(resManager.getResourceManager(), $r('app.integer.integer_1').id)
+      expect(value).assertTrue()
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_getFloatByName_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getFloatByName_ndktest_0100', 0, function () {
+      let value = ndk.getFloatByName(resManager.getResourceManager())
+      expect(value).assertTrue()
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_getFloat_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getFloat_ndktest_0100', 0, function () {
+      let value = ndk.getFloat(resManager.getResourceManager(), $r('app.float.float_1').id)
+      expect(value).assertTrue()
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_getLocales_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getLocales_ndktest_0100', 0, function () {
+      let value = ndk.getLocales(resManager.getResourceManager())
+      expect('' + value).assertEqual('en-US,zh-CN')
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_getConfiguration_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getConfiguration_ndktest_0100', 0, function () {
+      let value = ndk.getConfiguration(resManager.getResourceManager())
+      expect(value).assertTrue()
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_getStringArray_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getStringArray_ndktest_0100', 0, function () {
+      let value = ndk.getStringArray(resManager.getResourceManager(), $r('app.strarray.size').id)
+      expect('' + value).assertEqual('small,big')
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_getStringArrayByName_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getStringArrayByName_ndktest_0100', 0, function () {
+      let value = ndk.getStringArrayByName(resManager.getResourceManager())
+      expect('' + value).assertEqual('small,big')
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_releaseStringArray_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('releaseStringArray_ndktest_0100', 0, function () {
+      let value = ndk.releaseStringArray(resManager.getResourceManager())
+      expect(value).assertTrue()
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_releaseConfiguration_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('releaseConfiguration_ndktest_0100', 0, function () {
+      let value = ndk.releaseConfiguration(resManager.getResourceManager())
+      expect(value).assertTrue()
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_getStringByName_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getStringByName_ndktest_0100', 0, function () {
+      let value = ndk.getStringByName(resManager.getResourceManager())
+      expect(value).assertTrue()
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_getString_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getString_ndktest_0100', 0, function () {
+      let value = ndk.getString(resManager.getResourceManager(), $r('app.string.entry_MainAbility').id)
+      expect(value).assertTrue()
+    })
   })
 }
