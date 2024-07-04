@@ -19,8 +19,8 @@ import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 export default function textAreaPreview() {
-  describe('textAreaPreview', function () {
-    beforeEach(async function (done) {
+  describe('textAreaPreview', () => {
+    beforeEach(async (done: Function) => {
       console.info("textAreaPreview beforeEach start");
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/TextArea/textAreaPreview',
@@ -42,20 +42,15 @@ export default function textAreaPreview() {
       done();
     });
 
-    afterEach(async function () {
-      await CommonFunc.sleep(1000);
-      console.info(" textAreaPreview after each called");
-    });
-
     /* *
     * @tc.number: SUB_ACE_TextArea_Preview_0100
     * @tc.name  : textAreaPreview_0100
     * @tc.desc  : Define the preview text mode of the text input.
-    * @tc.level : Level 1
+    * @tc.level : Level 2
     * @tc.type :
     * @tc.size :
     */
-    it('textAreaPreview_0100', 0, async function (done) {
+    it('textAreaPreview_0100', 0, async (done: Function) => {
       console.info('textAreaPreview_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('enablePreview_textArea');
