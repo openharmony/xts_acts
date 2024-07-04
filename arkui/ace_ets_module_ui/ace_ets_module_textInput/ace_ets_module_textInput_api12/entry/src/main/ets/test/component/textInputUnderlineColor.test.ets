@@ -60,9 +60,11 @@ export default function textInputUnderlineColorTest() {
       console.info('[' + tagName + '] START============================');
 
       let strJsonNew = getInspectorByKey('key_TextInput_UnderlineColor_001');
-      console.info('[' + tagName + '] TextInput underlineColor is: ' + JSON.stringify(JSON.parse(strJsonNew).$attrs.normalUnderlineColor));
+      let obj = JSON.parse(strJsonNew);
+      console.info('[' + tagName + '] TextInput underlineColor is: ' + JSON.stringify(obj.$attrs.underlineColor));
+      let underlineColorObj = JSON.parse(obj.$attrs.underlineColor);
 
-      expect(JSON.parse(strJsonNew).$attrs.normalUnderlineColor).assertEqual('#FF0000FF');
+      expect(underlineColorObj.normal).assertEqual('#FF0000FF');
 
       console.info('[' + tagName + '] END ===========================');
       done();
@@ -81,9 +83,11 @@ export default function textInputUnderlineColorTest() {
       console.info('[' + tagName + '] START============================');
 
       let strJsonNew = getInspectorByKey('key_TextInput_UnderlineColor_002');
-      
-      console.info('[' + tagName + '] TextInput underlineColor is: ' + JSON.stringify(JSON.parse(strJsonNew).$attrs.disableUnderlineColor));
-      expect(JSON.parse(strJsonNew).$attrs.disableUnderlineColor).assertEqual('#FFFF0000');
+      let obj = JSON.parse(strJsonNew);
+      console.info('[' + tagName + '] TextInput underlineColor is: ' + JSON.stringify(obj.$attrs.underlineColor));
+      let underlineColorObj = JSON.parse(obj.$attrs.underlineColor);
+
+      expect(underlineColorObj.disable).assertEqual('#FFFF0000');
 
       console.info('[' + tagName + '] END ===========================');
       done();
@@ -102,8 +106,12 @@ export default function textInputUnderlineColorTest() {
       console.info('[' + tagName + '] START============================');
 
       let strJsonNew = getInspectorByKey('key_TextInput_UnderlineColor_003');
-      console.info('[' + tagName + '] TextInput underlineColor is: ' + JSON.stringify(JSON.parse(strJsonNew).$attrs.typingUnderlineColor));
-      expect(JSON.parse(strJsonNew).$attrs.typingUnderlineColor).assertEqual('#FFFF0000');
+      let obj = JSON.parse(strJsonNew);
+      console.info('[' + tagName + '] TextInput underlineColor is: ' + JSON.stringify(obj.$attrs.underlineColor));
+      let underlineColorObj = JSON.parse(obj.$attrs.underlineColor);
+
+      expect(underlineColorObj.typing).assertEqual('#FFFF0000');
+
       console.info('[' + tagName + '] END ===========================');
       done();
     });
@@ -121,8 +129,12 @@ export default function textInputUnderlineColorTest() {
       console.info('[' + tagName + '] START============================');
 
       let strJsonNew = getInspectorByKey('key_TextInput_UnderlineColor_004');
-      console.info('[' + tagName + '] TextInput underlineColor is: ' + JSON.stringify(JSON.parse(strJsonNew).$attrs.errorUnderlineColor));
-      expect(JSON.parse(strJsonNew).$attrs.errorUnderlineColor).assertEqual('#FFFF0000');
+      let obj = JSON.parse(strJsonNew);
+      console.info('[' + tagName + '] TextInput underlineColor is: ' + JSON.stringify(obj.$attrs.underlineColor));
+      let underlineColorObj = JSON.parse(obj.$attrs.underlineColor);
+
+      expect(underlineColorObj.error).assertEqual('#FFFF0000');
+
       console.info('[' + tagName + '] END ===========================');
       done();
     });
