@@ -60,8 +60,8 @@ export default function tabsOnContentWillChangeIndex3JsunitTest() {
       tabsRect.top + "," + tabsRect.bottom );
       // swipe index 3 to index 2  left swipe to right
 
-      await driver.swipe(Math.round((tabsRect.right-tabsRect.left)*0.1 + tabsRect.left),Math.round((tabsRect.bottom-tabsRect.top)/2 + tabsRect.top),Math.round((tabsRect.right-tabsRect.left)*0.8 + tabsRect.left),
-        Math.round((tabsRect.bottom-tabsRect.top)/2 + tabsRect.top));
+      await driver.swipe(Math.round(globalThis.winLeft + (tabsRect.right-tabsRect.left)*0.1 + tabsRect.left),Math.round(globalThis.winTop + (tabsRect.bottom-tabsRect.top)/2 + tabsRect.top),Math.round(globalThis.winLeft + (tabsRect.right-tabsRect.left)*0.8 + tabsRect.left),
+        Math.round(globalThis.winTop + (tabsRect.bottom-tabsRect.top)/2 + tabsRect.top));
       await CommonFunc.sleep(2000);
 
       let strJson1 = getInspectorByKey('currentIndex2');
@@ -75,8 +75,8 @@ export default function tabsOnContentWillChangeIndex3JsunitTest() {
 
       // swipe index 2 to index 3 right swipe to left
 
-      await driver.swipe(Math.round((tabsRect.right-tabsRect.left)*0.8 + tabsRect.left),Math.round((tabsRect.bottom-tabsRect.top)/2 + tabsRect.top),Math.round((tabsRect.right-tabsRect.left)*0.1 + tabsRect.left),
-        Math.round((tabsRect.bottom-tabsRect.top)/2 + tabsRect.top));
+      await driver.swipe(Math.round(globalThis.winLeft + (tabsRect.right-tabsRect.left)*0.8 + tabsRect.left),Math.round(globalThis.winTop + (tabsRect.bottom-tabsRect.top)/2 + tabsRect.top),Math.round(globalThis.winLeft + (tabsRect.right-tabsRect.left)*0.1 + tabsRect.left),
+        Math.round(globalThis.winTop + (tabsRect.bottom-tabsRect.top)/2 + tabsRect.top));
       await CommonFunc.sleep(2000);
 
       let strJson2 = getInspectorByKey('currentIndex2');

@@ -58,8 +58,8 @@ export default function tabsOnContentWillChangeIndex12JsunitTest() {
       console.info("tabsOnContentWillChangeJsunitTest_0120  test rect value " + tabsRect.left + "," + tabsRect.right + "," +
       tabsRect.top + "," + tabsRect.bottom );
       // swipe index 0 -1  right swipe to left
-      await driver.swipe(Math.round((tabsRect.right-tabsRect.left)*0.2 + tabsRect.left),Math.round((tabsRect.bottom-tabsRect.top)/2 + tabsRect.top),Math.round((tabsRect.right-tabsRect.left)*0.1 + tabsRect.left),
-        Math.round((tabsRect.bottom-tabsRect.top)/2 + tabsRect.top));
+      await driver.swipe(Math.round(globalThis.winLeft + (tabsRect.right-tabsRect.left)*0.2 + tabsRect.left),Math.round(globalThis.winTop + (tabsRect.bottom-tabsRect.top)/2 + tabsRect.top),Math.round(globalThis.winLeft + (tabsRect.right-tabsRect.left)*0.1 + tabsRect.left),
+        Math.round(globalThis.winTop + (tabsRect.bottom-tabsRect.top)/2 + tabsRect.top));
       await CommonFunc.sleep(2000);
 
       let text01 = await driver.findComponent(ON.text("首页的内容"))
