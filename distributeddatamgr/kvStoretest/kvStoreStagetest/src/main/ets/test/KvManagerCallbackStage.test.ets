@@ -141,12 +141,13 @@ export default function kvManagerCallbackStageTest(){
           }
           console.info("testKVManagerGetKVStore103 Succeeded in getting KVStore");
           kvStore = store;
+          done();
         });
       } catch (e) {
         console.info('testKVManagerGetKVStore103 getKVStore e ' + e);
         expect(e != null).assertTrue();
+        done();
       }
-      done();
     })
 
     /**
