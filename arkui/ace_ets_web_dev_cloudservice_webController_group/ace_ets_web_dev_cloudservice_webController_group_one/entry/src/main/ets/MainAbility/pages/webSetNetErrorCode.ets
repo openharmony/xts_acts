@@ -1389,7 +1389,36 @@ struct webSetNetErrorCode {
                       break;
                     }
 
-
+                    case 'emitWebSetNetErrorCode_null': {
+                      let response: webview.WebSchemeHandlerResponse = new webview.WebSchemeHandlerResponse();
+                      try {
+                        response.setNetErrorCode(null);
+                        let errorCode:number = response.getNetErrorCode();
+                        console.log(`null : ${errorCode}`)
+                      } catch (error) {
+                        let e:business_error.BusinessError = error as business_error.BusinessError;
+                        if (e.code.toString() === '401') {
+                          Utils.emitEvent(true, 1071)
+                        } else {
+                          Utils.emitEvent(false, 1071)
+                        }
+                        console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                      }
+                      break;
+                    }
+                    case 'emitWebSetNetErrorCode_1000': {
+                      let response: webview.WebSchemeHandlerResponse = new webview.WebSchemeHandlerResponse();
+                      try {
+                        response.setNetErrorCode(-1000);
+                        let errorCode:number = response.getNetErrorCode();
+                        console.log(`null : ${errorCode}`)
+                        Utils.emitEvent(true, 1072)
+                      } catch (error) {
+                        let e:business_error.BusinessError = error as business_error.BusinessError;
+                        console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                      }
+                      break;
+                    }
                   }
               })
           }

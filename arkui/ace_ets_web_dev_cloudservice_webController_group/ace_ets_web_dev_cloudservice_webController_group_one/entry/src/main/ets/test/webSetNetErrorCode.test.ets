@@ -1120,6 +1120,35 @@ export default function ActsAceWebSetNetErrorCode() {
       sendEventByKey('webSetNetErrorCode', 10, '');
     })
 
+    /*
+     *@tc.number SUB_ACE_WEB_SET_null_API_0071
+     *@tc.name testWebSetNetErrorCode_null
+     *@tc.desc test WebSetNetErrorCode_null (null)
+     *@tc.size MediumTest
+     *@tc.type Function
+     *@tc.level 1
+     */
+    it('testWebSetNetErrorCode_null', 0, async (done: Function) => {
+      emitKey = "emitWebSetNetErrorCode_null"
+      Utils.emitEvent(emitKey, 10);
+      Utils.registerEvent("testWebSetNetErrorCode_null", true, 1071, done);
+      sendEventByKey('webSetNetErrorCode', 10, '');
+    })
+    /*
+     *@tc.number SUB_ACE_WEB_SET_1000_API_0071
+     *@tc.name testWebSetNetErrorCode_1000
+     *@tc.desc test WebSetNetErrorCode_1000 (-1000)
+     *@tc.size MediumTest
+     *@tc.type Function
+     *@tc.level 1
+     */
+    it('testWebSetNetErrorCode_1000', 0, async (done: Function) => {
+      emitKey = "emitWebSetNetErrorCode_1000"
+      Utils.emitEvent(emitKey, 10);
+      Utils.registerEvent("testWebSetNetErrorCode_1000", true, 1072, done);
+      sendEventByKey('webSetNetErrorCode', 10, '');
+    })
+
 
   })
 }

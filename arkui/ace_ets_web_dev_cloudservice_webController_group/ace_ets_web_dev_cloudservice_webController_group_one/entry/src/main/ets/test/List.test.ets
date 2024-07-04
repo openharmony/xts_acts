@@ -14,8 +14,10 @@
  */
 import webSetNetErrorCode from './webSetNetErrorCode.test'
 import webSetNetErrorCodeChen1 from './webSetNetErrorCodeChen1.test'
+import webSetNetErrorCodeFly from './webSetNetErrorCodeFly.test'
 
 export default function testsuite() {
   webSetNetErrorCodeChen1()
   webSetNetErrorCode()
+  webSetNetErrorCodeFly()
 }

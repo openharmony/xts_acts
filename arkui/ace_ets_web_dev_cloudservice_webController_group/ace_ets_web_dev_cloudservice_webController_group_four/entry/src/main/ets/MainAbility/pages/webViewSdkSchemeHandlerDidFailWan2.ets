@@ -162,6 +162,58 @@ struct webViewSdkSchemeHandler {
                           resourceHandler.didFail(WebNetErrorList.ERR_DNS_CACHE_MISS)
                           Utils.emitEvent('success',11804)
                         }
+                        if (this.emitKey == 'emitWebViewSdkSchemeHandlerDidFailNegative805') {
+                          resourceHandler.didFail(WebNetErrorList.ERR_DNS_SEARCH_EMPTY)
+                          Utils.emitEvent('success',11805)
+                        }
+                        if (this.emitKey == 'emitWebViewSdkSchemeHandlerDidFailNegative806') {
+                          resourceHandler.didFail(WebNetErrorList.ERR_DNS_SORT_ERROR)
+                          Utils.emitEvent('success',11806)
+                        }
+                        if (this.emitKey == 'emitWebViewSdkSchemeHandlerDidFailNegative808') {
+                          resourceHandler.didFail(WebNetErrorList.ERR_DNS_SECURE_RESOLVER_HOSTNAME_RESOLUTION_FAILED)
+                          Utils.emitEvent('success',11808)
+                        }
+                        if (this.emitKey == 'emitWebViewSdkSchemeHandlerDidFailNegative809') {
+                          resourceHandler.didFail(WebNetErrorList.ERR_DNS_NAME_HTTPS_ONLY)
+                          Utils.emitEvent('success',11809)
+                        }
+                        if (this.emitKey == 'emitWebViewSdkSchemeHandlerDidFailNegative810') {
+                          resourceHandler.didFail(WebNetErrorList.ERR_DNS_REQUEST_CANCELED)
+                          Utils.emitEvent('success',11810)
+                        }
+                        if (this.emitKey == 'emitWebViewSdkSchemeHandlerDidFailNegative811') {
+                          resourceHandler.didFail(WebNetErrorList.ERR_DNS_NO_MATCHING_SUPPORTED_ALPN)
+                          Utils.emitEvent('success',11811)
+                        }
+                        if (this.emitKey == 'emitWebViewSdkSchemeHandlerDidFailNegativeNull') {
+                          try {
+                            resourceHandler.didFail(null)
+                          } catch(error) {
+                            let e: business_error.BusinessError = error as business_error.BusinessError;
+                            console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                            if(e.code.toString() === '401' ) {
+                              Utils.emitEvent('success',11812)
+                            } else {
+                              Utils.emitEvent('error code error',11812)
+                            }
+                          }
+                        }
+                        if (this.emitKey == 'emitWebViewSdkSchemeHandlerDidFailMore') {
+                            resourceHandler.didFail(5)
+                            Utils.emitEvent('success',11813)
+                        }
+
+                        if (this.emitKey == 'emitWebViewSdkSchemeHandlerDidFailResourceInvalid') {
+                          try {
+                            resourceHandler = new webview.WebResourceHandler()
+                            resourceHandler.didFail(WebNetErrorList.ERR_DNS_REQUEST_CANCELED)
+                          } catch(error) {
+                            let e: business_error.BusinessError = error as business_error.BusinessError;
+                            console.error(`emitWebViewSdkSchemeHandlerDidFailResourceInvalid ErrorCode: ${e.code},  Message: ${e.message}`);
+                            Utils.emitEvent('success',11814)
+                          }
+                        }
                         return false;
                     })
 
