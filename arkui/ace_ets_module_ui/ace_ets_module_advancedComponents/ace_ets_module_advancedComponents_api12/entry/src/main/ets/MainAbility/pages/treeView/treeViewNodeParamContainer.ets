@@ -35,6 +35,7 @@ struct TreeViewDemo {
     this.treeListener.off(TreeListenType.NODE_ADD, undefined);
     this.treeListener.off(TreeListenType.NODE_DELETE, undefined);
     this.treeListener.off(TreeListenType.NODE_MOVE, undefined);
+    this.treeListener.off(TreeListenType.NODE_MODIFY, undefined);
   }
 
   @Builder
@@ -80,6 +81,9 @@ struct TreeViewDemo {
       this.clickNodeId = callbackParam.currentNodeId;
     })
     this.treeListener.once(TreeListenType.NODE_MOVE, (callbackParam: CallbackParam) => {
+      this.clickNodeId = callbackParam.currentNodeId;
+    })
+    this.treeListener.on(TreeListenType.NODE_MODIFY, (callbackParam: CallbackParam) => {
       this.clickNodeId = callbackParam.currentNodeId;
     })
 
