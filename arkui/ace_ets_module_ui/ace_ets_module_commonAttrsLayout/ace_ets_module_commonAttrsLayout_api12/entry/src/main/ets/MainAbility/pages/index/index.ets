@@ -23,8 +23,10 @@ import testsuite from '../../../test/List.test'
 struct Index {
   aboutToAppear() {
     console.info("start run testcase!!!!")
-    let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+    let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator
+    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+    let abilityDelegatorArguments: AbilityDelegatorRegistry.AbilityDelegatorArgs
+    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
     console.info('start run testcase!!!')
     Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
   }
