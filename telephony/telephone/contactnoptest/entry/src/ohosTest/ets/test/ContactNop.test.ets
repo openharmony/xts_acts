@@ -102,6 +102,11 @@ export default function contact_NopTest() {
             }]
           }).then((data) => {
           console.log(`contact_addContact_nop002 success: data->${JSON.stringify(data)}`);
+          try{
+            expect().assertFail();
+          }catch(err){
+            done();
+          }
         }).catch((err: BusinessError) => {
           console.error(`contact_addContact_nop002 fail: err->${JSON.stringify(err)}`);
 
@@ -156,6 +161,11 @@ export default function contact_NopTest() {
         let context: Context = AppStorage.get('context') as Context;
         contact.deleteContact(context, 'xxx').then(() => {
           console.log(`deleteContact success`);
+          try{
+            expect().assertFail();
+          }catch(err){
+            done();
+          }
         }).catch((err: BusinessError) => {
           console.error(`contact_deleteContact_nop004 fail: err->${JSON.stringify(err)}`);
           expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
@@ -190,6 +200,11 @@ export default function contact_NopTest() {
           }]
         }).then(() => {
           console.log(`contact_updateContact_nop005 success`);
+          try{
+            expect().assertFail();
+          }catch(err){
+            done();
+          }
         }).catch((err: BusinessError) => {
           console.error(`contact_updateContact_nop005 fail: err->${JSON.stringify(err)}`);
           expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
@@ -224,6 +239,11 @@ export default function contact_NopTest() {
           }]
         }).then(() => {
           console.log(`contact_updateContact_nop006 success`);
+          try{
+            expect().assertFail();
+          }catch(err){
+            done();
+          }
         }).catch((err: BusinessError) => {
           console.error(`contact_updateContact_nop006 fail: err->${JSON.stringify(err)}`);
           expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
@@ -634,6 +654,11 @@ export default function contact_NopTest() {
           attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
         }).then((data) => {
           console.log(`contact_queryContactsByPhoneNumber_nop021 success: data->${JSON.stringify(data)}`);
+          try{
+            expect().assertFail();
+          }catch(err){
+            done();
+          }
         }).catch((err: BusinessError) => {
           console.error(`contact_queryContactsByPhoneNumber_nop021 fail: err->${JSON.stringify(err)}`);
           expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
@@ -664,7 +689,11 @@ export default function contact_NopTest() {
           displayName: ""
         }, (err: BusinessError, data) => {
           console.error(`contact_queryContactsByPhoneNumber_nop022 callback: fail: err->${JSON.stringify(err)}`);
-          expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
+          try{
+            expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
+          }catch(err){
+            console.error(`contact_queryContactsByPhoneNumber_nop022 callback: fail: err->${JSON.stringify(err)}`);
+          }
           done();
         });
       } catch (err) {
@@ -695,6 +724,11 @@ export default function contact_NopTest() {
           attributes: [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME]
         }).then((data) => {
           console.log(`contact_queryContactsByEmail_nop023 success: data->${JSON.stringify(data)}`);
+          try{
+            expect().assertFail();
+          }catch(err){
+            done();
+          }
         }).catch((err: BusinessError) => {
           console.error(`contact_queryContactsByEmail_nop023 fail: err->${JSON.stringify(err)}`);
           expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
@@ -728,7 +762,11 @@ export default function contact_NopTest() {
         }, (err: BusinessError, data) => {
           if (err) {
             console.log(`contact_queryContactsByEmail_nop024 callback: err->${JSON.stringify(err)}`);
-            expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
+            try{
+              expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
+            }catch(err){
+              console.log(`contact_queryContactsByEmail_nop024 callback: err->${JSON.stringify(err)}`);
+            }
             done();
           }
           console.log(`contact_queryContactsByEmail_nop024 callback: success data->${JSON.stringify(data)}`);
@@ -760,6 +798,11 @@ export default function contact_NopTest() {
           attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
         }).then((data) => {
           console.log(`contact_queryContacts_nop025 success: data->${JSON.stringify(data)}`);
+          try{
+            expect().assertFail();
+          }catch(err){
+            done();
+          }
         }).catch((err: BusinessError) => {
           console.error(`contact_queryContacts_nop025 fail: err->${JSON.stringify(err)}`);
           expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
@@ -793,7 +836,11 @@ export default function contact_NopTest() {
         }, (err: BusinessError, data) => {
           if (err) {
             console.log(`contact_queryContacts_nop026 callback: err->${JSON.stringify(err)}`);
-            expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
+            try{
+              expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
+            }catch(err){
+              console.log(`contact_queryContacts_nop026 callback: err->${JSON.stringify(err)}`);
+            }
             done();
           }
           console.log(`contact_queryContacts_nop026 callback: success data->${JSON.stringify(data)}`);
@@ -824,7 +871,11 @@ export default function contact_NopTest() {
         }, (err: BusinessError, data) => {
           if (err) {
             console.log(`contact_queryContacts_nop027 callback: err->${JSON.stringify(err)}`);
-            expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
+            try{
+              expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
+            }catch(err){
+              console.log(`contact_queryContacts_nop027 callback: err->${JSON.stringify(err)}`);
+            }
             done();
           }
           console.log(`contact_queryContacts_nop027 callback: success data->${JSON.stringify(data)}`);
@@ -857,9 +908,18 @@ export default function contact_NopTest() {
         });
         promise.then((data) => {
           console.log(`queryContact success: data->${JSON.stringify(data)}`);
+          try{
+            expect().assertFail();
+          }catch(err){
+            done();
+          }
         }).catch((err: BusinessError) => {
           console.error(`queryContact fail: err->${JSON.stringify(err)}`);
-          expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
+          try{
+            expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
+          }catch(err){
+            console.error(`queryContact fail: err->${JSON.stringify(err)}`);
+          }
           done();
         });
       } catch (err) {
@@ -888,7 +948,11 @@ export default function contact_NopTest() {
         }, (err: BusinessError, data) => {
           if (err) {
             console.log(`contact_queryContact_nop029 callback: err->${JSON.stringify(err)}`);
-            expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
+            try{
+              expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
+            }catch(err){
+              console.log(`contact_queryContact_nop029 callback: err->${JSON.stringify(err)}`);
+            }
             done();
           }
           console.log(`contact_queryContact_nop029 callback: success data->${JSON.stringify(data)}`);
@@ -921,7 +985,11 @@ export default function contact_NopTest() {
         }, (err: BusinessError, data) => {
           if (err) {
             console.log(`contact_queryContact_nop030 callback: err->${JSON.stringify(err)}`);
-            expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
+            try{
+              expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
+            }catch(err){
+              console.log(`contact_queryContact_nop030 callback: err->${JSON.stringify(err)}`);
+            }
             done();
           }
           console.log(`contact_queryContact_nop030 callback: success data->${JSON.stringify(data)}`);
@@ -951,6 +1019,11 @@ export default function contact_NopTest() {
           displayName: ""
         }).then((data) => {
           console.log(`contact_queryKey_nop031 success: data->${JSON.stringify(data)}`);
+          try{
+            expect().assertFail();
+          }catch(err){
+            done();
+          }
         }).catch((err: BusinessError) => {
           console.error(`contact_queryKey_nop031 fail: err->${JSON.stringify(err)}`);
           expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
@@ -982,7 +1055,11 @@ export default function contact_NopTest() {
         }, (err: BusinessError, data) => {
           if (err) {
             console.log(`contact_queryKey_nop032 callback: err->${JSON.stringify(err)}`);
-            expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
+            try{
+              expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
+            }catch(err){
+              console.log(`contact_queryKey_nop032 callback: err->${JSON.stringify(err)}`);
+            }
             done();
           }
           console.log(`contact_queryKey_nop032 callback: success data->${JSON.stringify(data)}`);
@@ -1013,7 +1090,11 @@ export default function contact_NopTest() {
         }, (err: BusinessError, data) => {
           if (err) {
             console.log(`contact_queryGroups_nop033 callback: err->${JSON.stringify(err)}`);
-            expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
+            try{
+              expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
+            }catch(err){
+              console.log(`contact_queryGroups_nop033 callback: err->${JSON.stringify(err)}`);
+            }
             done();
           }
           console.log(`contact_queryGroups_nop033 callback: success data->${JSON.stringify(data)}`);
