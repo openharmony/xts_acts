@@ -59,13 +59,11 @@ export default function SwiperGestureHandlerTest() {
       console.info('SwiperGestureHandler_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
-      let colum = CommonFunc.getComponentRect('SwiperGestureHandlerColumn');
+      let colum = CommonFunc.getComponentRectOnScreen('SwiperGestureHandlerColumn');
       let top = colum.top
       let bottom = colum.bottom
       let left = colum.left
       let right = colum.right
-      await driver.swipe(Math.round(left + 20), Math.round((top + bottom) / 2),
-        Math.round(right - 20), Math.round((top + bottom) / 2));
       await driver.swipe(Math.round(left + 20), Math.round((top + bottom) / 2),
         Math.round(right - 20), Math.round((top + bottom) / 2));
       await CommonFunc.sleep(1000);

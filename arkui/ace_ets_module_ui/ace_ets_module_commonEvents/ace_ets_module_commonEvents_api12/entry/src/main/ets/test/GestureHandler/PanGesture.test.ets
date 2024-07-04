@@ -59,7 +59,7 @@ export default function PanGestureHandlerTest() {
       console.info('PanGestureHandler_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
-      let colum = CommonFunc.getComponentRect('PanGestureHandlerColumn');
+      let colum = CommonFunc.getComponentRectOnScreen('PanGestureHandlerColumn');
       let top = colum.top
       let bottom = colum.bottom
       let left = colum.left
