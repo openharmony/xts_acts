@@ -24,20 +24,6 @@ import colorSpaceManager from '@ohos.graphics.colorSpaceManager';
 let filesDir: string | undefined;
 let testContext: common.UIAbilityContext;
 
-interface newImageInfoSize {
-  width?: number,
-  height?: number,
-}
-
-interface newImageInfo {
-  size?: newImageInfoSize,
-  pixelFormat?: number,
-  colorSpace?: number,
-  alphaType?: number,
-  density?: number,
-  stride?: number,
-}
-
 let sleep = async (delay: number): Promise<void> => {
   return new Promise((resolve, _) => {
     setTimeout(async () => {
@@ -110,13 +96,13 @@ export default function imageDecodeOptionsYuvTest() {
         };
         switch (serviceName){
           case 'promiseCreate':
-            await promiseCreate(TAG, imageSourceApi, decodingOptions, desiredPixelFormat);
+            await promiseCreate(TAG, imageSourceApi, decodingOptions);
             break
           case 'callBackCreate':
-            await callBackCreate(TAG, imageSourceApi, decodingOptions, desiredPixelFormat);
+            await callBackCreate(TAG, imageSourceApi, decodingOptions);
             break
           case 'syncCreate':
-            await syncCreate(TAG, imageSourceApi, decodingOptions, desiredPixelFormat);
+            await syncCreate(TAG, imageSourceApi, decodingOptions);
             break
         }
         await sleep(100);
@@ -124,16 +110,22 @@ export default function imageDecodeOptionsYuvTest() {
     }
 
     const promiseCreate = async (TAG: string, imageSourceApi: image.ImageSource,
-                                         decodingOptions: image.DecodingOptions, desiredPixelFormat: number) => {
+                                         decodingOptions: image.DecodingOptions) => {
       await imageSourceApi.createPixelMap(decodingOptions)
         .then(async (pixelMap) => {
           globalPixelMap = pixelMap;
           await pixelMap.getImageInfo().then((imageInfo) => {
-            let imageInfoStr = JSON.stringify(imageInfo) ;
-            let zheImageInfo : newImageInfo = JSON.parse(imageInfoStr) as newImageInfo ;
-            let pixelFormat = zheImageInfo?.pixelFormat
             hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' imageInfo:' + JSON.stringify(imageInfo));
-            pixelFormat === desiredPixelFormat && (result = true);
+            let colorSpaceManager = decodingOptions.desiredColorSpace as colorSpaceManager.ColorSpaceManager
+            let desiredPixelFormat = decodingOptions.desiredPixelFormat
+            let desiredSize = decodingOptions.desiredSize as Size
+            let fitDensity = decodingOptions.fitDensity
+            imageInfo.pixelFormat === desiredPixelFormat &&
+            imageInfo.size.width === desiredSize.width &&
+            imageInfo.size.height === desiredSize.height &&
+            imageInfo.density === fitDensity &&
+            pixelMap.getColorSpace().getColorSpaceName() === colorSpaceManager.getColorSpaceName() &&
+            (result = true);
           })
         }).catch((err: BusinessError) => {
           hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' getImageInfo err ' + JSON.stringify(err));
@@ -141,16 +133,22 @@ export default function imageDecodeOptionsYuvTest() {
     }
 
     const callBackCreate = async (TAG: string, imageSourceApi: image.ImageSource,
-                                  decodingOptions: image.DecodingOptions, desiredPixelFormat: number) => {
+                                  decodingOptions: image.DecodingOptions) => {
     imageSourceApi.createPixelMap(decodingOptions, async (err : BusinessError, pixelMap : image.PixelMap) => {
         if (!err) {
           globalPixelMap = pixelMap;
           await pixelMap.getImageInfo().then((imageInfo) => {
-            let imageInfoStr = JSON.stringify(imageInfo) ;
-            let zheImageInfo : newImageInfo = JSON.parse(imageInfoStr) as newImageInfo ;
-            let pixelFormat = zheImageInfo?.pixelFormat
             hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' imageInfo:' + JSON.stringify(imageInfo));
-            pixelFormat === desiredPixelFormat && (result = true);
+            let colorSpaceManager = decodingOptions.desiredColorSpace as colorSpaceManager.ColorSpaceManager
+            let desiredPixelFormat = decodingOptions.desiredPixelFormat
+            let desiredSize = decodingOptions.desiredSize as Size
+            let fitDensity = decodingOptions.fitDensity
+            imageInfo.pixelFormat === desiredPixelFormat &&
+            imageInfo.size.width === desiredSize.width &&
+            imageInfo.size.height === desiredSize.height &&
+            imageInfo.density === fitDensity &&
+            pixelMap.getColorSpace().getColorSpaceName() === colorSpaceManager.getColorSpaceName() &&
+            (result = true);
           })
         } else {
           hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' getImageInfo err ' + JSON.stringify(err));
@@ -159,14 +157,20 @@ export default function imageDecodeOptionsYuvTest() {
     }
 
     const syncCreate = async (TAG: string, imageSourceApi: image.ImageSource,
-                                 decodingOptions: image.DecodingOptions, desiredPixelFormat: number) => {
+                                 decodingOptions: image.DecodingOptions) => {
       globalPixelMap = imageSourceApi.createPixelMapSync(decodingOptions)
       await globalPixelMap.getImageInfo().then((imageInfo) => {
-        let imageInfoStr = JSON.stringify(imageInfo) ;
-        let zheImageInfo : newImageInfo = JSON.parse(imageInfoStr) as newImageInfo ;
-        let pixelFormat = zheImageInfo?.pixelFormat
         hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' imageInfo:' + JSON.stringify(imageInfo));
-        pixelFormat === desiredPixelFormat && (result = true);
+        let colorSpaceManager = decodingOptions.desiredColorSpace as colorSpaceManager.ColorSpaceManager
+        let desiredPixelFormat = decodingOptions.desiredPixelFormat
+        let desiredSize = decodingOptions.desiredSize as Size
+        let fitDensity = decodingOptions.fitDensity
+        imageInfo.pixelFormat === desiredPixelFormat &&
+        imageInfo.size.width === desiredSize.width &&
+        imageInfo.size.height === desiredSize.height &&
+        imageInfo.density === fitDensity &&
+        globalPixelMap.getColorSpace().getColorSpaceName() === colorSpaceManager.getColorSpaceName() &&
+        (result = true);
       })
     }
 
@@ -236,7 +240,7 @@ export default function imageDecodeOptionsYuvTest() {
     it("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0200", 0, async (done: Function) => {
       try{
         await getResult("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0200",
-          240, 180, 8, 'promiseCreate', "test_treeodd_440.jpg", "uri",
+          241, 181, 8, 'promiseCreate', "test_treeodd_440.jpg", "uri",
           colorSpaceManager.create(colorSpaceManager.ColorSpace.DCI_P3));
         expect(result).assertTrue();
         done();
@@ -262,7 +266,7 @@ export default function imageDecodeOptionsYuvTest() {
     it("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0300", 0, async (done: Function) => {
       try{
         await getResult("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0300",
-          240, 180, 8, 'syncCreate', "test_tree_422.jpg", "rawfile",
+          240, 150, 8, 'syncCreate', "test_tree_422.jpg", "rawfile",
           colorSpaceManager.create(colorSpaceManager.ColorSpace.DISPLAY_P3));
         expect(result).assertTrue();
         done();
@@ -288,7 +292,7 @@ export default function imageDecodeOptionsYuvTest() {
     it("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0400", 0, async (done: Function) => {
       try{
         await getResult("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0400",
-          240, 180, 8, 'callBackCreate', "test_treeodd_420.jpg", "buffer",
+          241, 151, 8, 'callBackCreate', "test_treeodd_420.jpg", "buffer",
           colorSpaceManager.create(colorSpaceManager.ColorSpace.ADOBE_RGB_1998));
         expect(result).assertTrue();
         done();
@@ -314,7 +318,7 @@ export default function imageDecodeOptionsYuvTest() {
     it("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0500", 0, async (done: Function) => {
       try{
         await getResult("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0500",
-          240, 180, 8, 'callBackCreate', "test_tree_411.jpg", "fd",
+          241, 181, 8, 'callBackCreate', "test_tree_411.jpg", "fd",
           colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB));
         expect(result).assertTrue();
         done();
@@ -366,7 +370,7 @@ export default function imageDecodeOptionsYuvTest() {
     it("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0700", 0, async (done: Function) => {
       try{
         await getResult("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0700",
-          480, 180, 9, 'syncCreate', "test_tree_444.jpg", "buffer",
+          481, 181, 9, 'syncCreate', "test_tree_444.jpg", "buffer",
           colorSpaceManager.create(colorSpaceManager.ColorSpace.DISPLAY_P3));
         expect(result).assertTrue();
         done();
@@ -418,7 +422,7 @@ export default function imageDecodeOptionsYuvTest() {
     it("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0900", 0, async (done: Function) => {
       try{
         await getResult("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_0900",
-          480, 180, 9, 'promiseCreate', "test_tree_422.jpg", "rawfile",
+          480, 150, 9, 'promiseCreate', "test_tree_422.jpg", "rawfile",
           colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB));
         expect(result).assertTrue();
         done();
@@ -445,7 +449,7 @@ export default function imageDecodeOptionsYuvTest() {
       try{
         //TODO incremental创建ImageSource目前功能有问题用buffer替代后续替换
         await getResult("SUB_DECODEOPTIONS_WITH_YUV_CREATEPIXELMAP_PIXELFORMAT_1000",
-          480, 180, 9, 'syncCreate', "test_treeodd_420.jpg", "buffer",
+          481, 151, 9, 'syncCreate', "test_treeodd_420.jpg", "buffer",
           colorSpaceManager.create(colorSpaceManager.ColorSpace.DCI_P3));
         expect(result).assertTrue();
         done();
