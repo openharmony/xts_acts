@@ -13,27 +13,25 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textAreaMaxFontSize() {
-  describe('textAreaMaxFontSize', function () {
-    beforeEach(async function (done) {
+  describe('textAreaMaxFontSize', () => {
+    beforeEach(async (done: Function) => {
       console.info("searchMaxFontSizeTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textAreaMaxFontSize',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textAreaMaxFontSize',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get textAreaMaxFontSize state pages: " + JSON.stringify(pages));
         if (!("textAreaMaxFontSize" == pages.name)) {
           console.info("get textAreaMaxFontSize pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textAreaMaxFontSize page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push textAreaMaxFontSize page error: " + err);
@@ -44,30 +42,27 @@ export default function textAreaMaxFontSize() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("textAreaMaxFontSize after each called");
     })
 
     /**
      * @tc.number textAreaMaxFontSize0100
-     * @tc.name   Test the maxFontSize property of the textArea component
-     * @tc.desc   set the maxFontSize property value is  21
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the maxFontSize property of the textArea component
+     * @tc.desc set the maxFontSize property value is  21
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textAreaMaxFontSize0100', 0, async function (done) {
-      var tagName = 'textAreaMaxFontSize0100';
+    it('textAreaMaxFontSize0100', 0, async (done: Function) => {
+      let tagName = 'textAreaMaxFontSize0100';
       console.info('[' + tagName + '] START============================');
-
       let strJsonNew = getInspectorByKey('key_textArea_maxFontSize_001');
-      let obj = JSON.parse(strJsonNew);
-      console.info('[' + tagName + '] Search maxFontSize is: ' + JSON.stringify(obj.$attrs.maxFontSize));
-
-
-      expect(obj.$attrs.maxFontSize).assertEqual('21.00fp');
-
+      console.info('[' + tagName + '] Search maxFontSize is: ' + JSON.stringify(JSON.parse(strJsonNew)
+        .$attrs
+        .maxFontSize));
+      expect(JSON.parse(strJsonNew).$attrs.maxFontSize).assertEqual('21.00fp');
       console.info('[' + tagName + '] END ===========================');
       done();
     });

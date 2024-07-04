@@ -16,7 +16,7 @@
 @Entry
 @Component
 struct TextAreaLineHeightTest {
-  build(){
+  build() {
     Row() {
       Column() {
         TextArea({ placeholder: 'placeholder(TextArea)' })

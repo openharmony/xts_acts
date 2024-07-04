@@ -13,27 +13,25 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textAreaMinFontSize() {
-  describe('textAreaMinFontSize', function () {
-    beforeEach(async function (done) {
+  describe('textAreaMinFontSize', () => {
+    beforeEach(async (done: Function) => {
       console.info("textAreaMinFontSize beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textAreaMinFontSize',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textAreaMinFontSize',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get textAreaMinFontSize state pages: " + JSON.stringify(pages));
         if (!("textAreaMinFontSize" == pages.name)) {
           console.info("get textAreaMinFontSize pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textAreaMinFontSize page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push textAreaMinFontSize page error: " + err);
@@ -44,29 +42,27 @@ export default function textAreaMinFontSize() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("textAreaMinFontSize after each called");
     })
 
     /**
      * @tc.number textAreaMinFontSize0100
-     * @tc.name   Test the minFontSize property of the textArea component
-     * @tc.desc   set the minFontSize property value is  16
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the minFontSize property of the textArea component
+     * @tc.desc set the minFontSize property value is  16
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textAreaMinFontSize0100', 0, async function (done) {
-      var tagName = 'textAreaMinFontSize0100';
+    it('textAreaMinFontSize0100', 0, async (done: Function) => {
+      let tagName = 'textAreaMinFontSize0100';
       console.info('[' + tagName + '] START============================');
-
       let strJsonNew = getInspectorByKey('key_textArea_minFontSize_001');
-      let obj = JSON.parse(strJsonNew);
-      console.info('[' + tagName + '] Search minFontSize is: ' + JSON.stringify(obj.$attrs.minFontSize));
-
-      expect(obj.$attrs.minFontSize).assertEqual('16.00fp');
-
+      console.info('[' + tagName + '] Search minFontSize is: ' + JSON.stringify(JSON.parse(strJsonNew)
+        .$attrs
+        .minFontSize));
+      expect(JSON.parse(strJsonNew).$attrs.minFontSize).assertEqual('16.00fp');
       console.info('[' + tagName + '] END ===========================');
       done();
     });
