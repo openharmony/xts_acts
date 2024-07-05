@@ -17,7 +17,7 @@
 // import textInputMaxFontSizeTest from "./component/textInputMaxFontSize.test.ets";
 // import textInputMinFontSizeTest from "./component/textInputMinFontSize.test.ets";
 // import textInputHeightAdaptivePolicyTest from "./component/textInputHeightAdaptivePolicy.ets";
-import spanBaselineOffsetJsunit from "./component/spanBaselineOffsetJsunit.test.ets"
+import spanBaselineOffsetJsunit from "./component/spanBaselineOffsetJsunit.test"
 export default function testsuite() {
   // textInputUnderlineColorTest();
   // textInputMaxFontSizeTest();
