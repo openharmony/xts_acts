@@ -57,7 +57,7 @@ export default function touchAbleJsunit() {
       await Utils.sleep(1000);
       let callbackTwo = (eventData: events_emitter.EventData) => {
         console.info("[testTouchAble002] get event state result is: " + JSON.stringify(eventData));
-        expect(eventData.data.ACTION).assertEqual('Ellipse Clicked')
+        expect(eventData.data?.ACTION).assertEqual('Ellipse Clicked')
         console.info('[testTouchAble002] END');
         done()
       }
