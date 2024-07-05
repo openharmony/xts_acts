@@ -48,7 +48,7 @@ export default function RotationGestureTemplateTest() {
 
     /**
      * @tc.number
-     * @tc.name      RotationGestureTemplateTest_0010
+    * @tc.name      RotationGestureTemplateTest_0010
      * @tc.desc      api test RotationGesture
      * @tc.level:    Level
      * @tc.type :
@@ -74,14 +74,12 @@ export default function RotationGestureTemplateTest() {
       pointers.setPoint(1,1,{x: Math.round(areaObj1.left),y: Math.round(areaObj1.bottom) });
       await driver.injectMultiPointerAction(pointers);
       await CommonFunc.sleep(4000);
-
       let button = await driver.findComponent(ON.id('RotationGestureTemplate_template'));
       await button.click();
-      await CommonFunc.sleep(1000);
-
+      await CommonFunc.sleep(3000);
       let text1 = getInspectorByKey('RotationGestureTemplate_Text');
       let obj1 = JSON.parse(text1);
-      console.log('PanGestureExampleTemplateTest_0010 obj1 $attrs content',obj1.$attrs.content,obj1)
+      console.log('RotationGestureTemplateTest_0010 obj1 $attrs content',obj1.$attrs.content,obj1)
       expect(obj1.$attrs.content).assertEqual('templateFlag:true');
 
       console.info('RotationGestureTemplateTest_0010 END');

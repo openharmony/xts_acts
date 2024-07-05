@@ -108,21 +108,19 @@ export default function PinchGestureBasic01Test() {
       console.log('PinchGestureBasic01Test_0010 obj4 $attrs content',obj4.$attrs.content,obj4)
       expect(obj4.$attrs.content).assertEqual('angle:0');
 
-      // fail
       await CommonFunc.sleep(200);
       let text6 = getInspectorByKey('PinchGestureBasic01_pinchCenterX');
       let obj6 = JSON.parse(text6);
-      console.log('PinchGestureBasic01Test_0010 obj6 $attrs content',vp2px(Number(obj6.$attrs.content)),Math.round(areaObj1.left + areaWidth1 * 0.3) + (Math.round(areaObj1.right - areaWidth1 * 0.3) - Math.round(areaObj1.left + areaWidth1 * 0.3))/2)
+      console.log('PinchGestureBasic01Test_0010 obj6 $attrs content',vp2px(Number(obj6.$attrs.content)),(vp2px(Number(obj6.$attrs.content)))- ((Math.round(areaObj1.left + areaWidth1 * 0.3) + (Math.round(areaObj1.right - areaWidth1 * 0.3) - Math.round(areaObj1.left + areaWidth1 * 0.3))/2) - areaObj1.left))
       console.log('PinchGestureBasic01Test_0010 obj6 $attrs pinchCenterX',obj6.$attrs.content, Number(obj6.$attrs.content), vp2px(Number(obj6.$attrs.content)))
-      expect(Math.abs(Math.round((vp2px(Number(obj6.$attrs.content)))- (Math.round(areaObj1.left + areaWidth1 * 0.3) + (Math.round(areaObj1.right - areaWidth1 * 0.3) - Math.round(areaObj1.left + areaWidth1 * 0.3))/2))) <= 1).assertTrue();
+      expect(Math.abs(Math.round((vp2px(Number(obj6.$attrs.content)))- ((Math.round(areaObj1.left + areaWidth1 * 0.3) + (Math.round(areaObj1.right - areaWidth1 * 0.3) - Math.round(areaObj1.left + areaWidth1 * 0.3))/2) - areaObj1.left))) <= 1).assertTrue();
 
-      // fail
       await CommonFunc.sleep(200);
       let text7 = getInspectorByKey('PinchGestureBasic01_pinchCenterY');
       let obj7 = JSON.parse(text7);
-      console.log('PinchGestureBasic01Test_0010 obj7 $attrs content',vp2px(Number(obj6.$attrs.content)),Math.round(areaObj1.top + areaHeight1 * 0.5))
+      console.log('PinchGestureBasic01Test_0010 obj7 $attrs content',vp2px(Number(obj6.$attrs.content)),vp2px(Number(obj7.$attrs.content)) - (Math.round(areaObj1.top + areaHeight1 * 0.5) - areaObj1.top))
       console.log('PinchGestureBasic01Test_0010 obj7 $attrs pinchCenterY',obj7.$attrs.content, Number(obj7.$attrs.content), vp2px(Number(obj7.$attrs.content)))
-      expect(Math.abs(Math.round(vp2px(Number(obj7.$attrs.content))- Math.round(areaObj1.top + areaHeight1 * 0.5))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(vp2px(Number(obj7.$attrs.content)) - (Math.round(areaObj1.top + areaHeight1 * 0.5) - areaObj1.top))) <= 1).assertTrue();
 
       // fingerList[0]
       await CommonFunc.sleep(200);
@@ -214,37 +212,33 @@ export default function PinchGestureBasic01Test() {
       console.log('PinchGestureBasic01Test_0010 obj17 $attrs content',obj17.$attrs.content,obj17)
       expect(obj17.$attrs.content).assertEqual('target_area_height:160');
 
-      // fail
       await CommonFunc.sleep(200);
       let text18 = getInspectorByKey('PinchGestureBasic01_target_area_position_x');
       let obj18 = JSON.parse(text18);
-      console.log('PinchGestureBasic01Test_0010 obj18 $attrs content',vp2px(Number(obj18.$attrs.content)),areaObj.left-FatherObj.left)
+      console.log('PinchGestureBasic01Test_0010 obj18 $attrs content',vp2px(Number(obj18.$attrs.content)),areaObj1.left-FatherObj.left)
       console.log('PinchGestureBasic01Test_0010 obj18 $attrs position_x',obj18.$attrs.content, Number(obj18.$attrs.content), vp2px(Number(obj18.$attrs.content)))
-      expect(Math.abs(Math.round((vp2px(Number(obj18.$attrs.content)))- (areaObj.left-FatherObj.left))) <= 1).assertTrue();
+      expect(Math.abs(Math.round((vp2px(Number(obj18.$attrs.content)))- (areaObj1.left-FatherObj.left))) <= 1).assertTrue();
 
-      // fail
       await CommonFunc.sleep(200);
       let text19 = getInspectorByKey('PinchGestureBasic01_target_area_position_y');
       let obj19 = JSON.parse(text19);
-      console.log('PinchGestureBasic01Test_0010 obj19 $attrs content',vp2px(Number(obj19.$attrs.content)),areaObj.top-FatherObj.top)
+      console.log('PinchGestureBasic01Test_0010 obj19 $attrs content',vp2px(Number(obj19.$attrs.content)),areaObj1.top-FatherObj.top)
       console.log('PinchGestureBasic01Test_0010 obj19 $attrs position_y',obj19.$attrs.content, Number(obj19.$attrs.content), vp2px(Number(obj19.$attrs.content)))
-      expect(Math.abs(Math.round((vp2px(Number(obj19.$attrs.content)))- (areaObj.top-FatherObj.top))) <= 1).assertTrue();
+      expect(Math.abs(Math.round((vp2px(Number(obj19.$attrs.content)))- (areaObj1.top-FatherObj.top))) <= 1).assertTrue();
 
-      // fail
       await CommonFunc.sleep(200);
       let text20 = getInspectorByKey('PinchGestureBasic01_target_area_globalPosition_x');
       let obj20 = JSON.parse(text20);
-      console.log('PinchGestureBasic01Test_0010 obj20 $attrs content',vp2px(Number(obj20.$attrs.content)),areaObj.left)
+      console.log('PinchGestureBasic01Test_0010 obj20 $attrs content',vp2px(Number(obj20.$attrs.content)),areaObj1.left)
       console.log('PinchGestureBasic01Test_0010 obj20 $attrs area_globalPosition_x',obj20.$attrs.content, Number(obj20.$attrs.content), vp2px(Number(obj20.$attrs.content)))
-      expect(Math.abs(Math.round((vp2px(Number(obj20.$attrs.content)))- (areaObj.left))) <= 1).assertTrue();
+      expect(Math.abs(Math.round((vp2px(Number(obj20.$attrs.content)))- (areaObj1.left))) <= 1).assertTrue();
 
-      // fail
       await CommonFunc.sleep(200);
       let text21 = getInspectorByKey('PinchGestureBasic01_target_area_globalPosition_y');
       let obj21 = JSON.parse(text21);
-      console.log('PinchGestureBasic01Test_0010 obj21 $attrs content',vp2px(Number(obj21.$attrs.content)),areaObj.top)
+      console.log('PinchGestureBasic01Test_0010 obj21 $attrs content',vp2px(Number(obj21.$attrs.content)),areaObj1.top)
       console.log('PinchGestureBasic01Test_0010 obj21 $attrs area_globalPosition_y',obj21.$attrs.content, Number(obj21.$attrs.content), vp2px(Number(obj21.$attrs.content)))
-      expect(Math.abs(Math.round((vp2px(Number(obj21.$attrs.content)))- (areaObj.top))) <= 1).assertTrue();
+      expect(Math.abs(Math.round((vp2px(Number(obj21.$attrs.content)))- (areaObj1.top))) <= 1).assertTrue();
 
       await CommonFunc.sleep(200);
       let text22 = getInspectorByKey('PinchGestureBasic01_source');

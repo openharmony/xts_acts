@@ -67,7 +67,7 @@ struct PanGestureExampleTemplate {
             let y: number = Math.abs(this.template_arr[this.template_arr.length - mid + 1] - this.template_arr[this.template_arr.length - mid])
             let z: number = Math.abs(this.template_arr[this.template_arr.length - 1] - this.template_arr[this.template_arr.length - 2])
 
-            if(x <= 16 && y <= 16 && z <= 16) {
+            if(x <= (16 * 1000000) && y <= (16 * 1000000) && z <= (16 * 1000000)) {
               this.template_flag = true
             }
 

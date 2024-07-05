@@ -48,7 +48,7 @@ export default function LongPressGestureTemplateTest() {
 
     /**
      * @tc.number
-     * @tc.name      LongPressGestureTemplateTest_0010
+    * @tc.name      LongPressGestureTemplateTest_0010
      * @tc.desc      api test TapGesture
      * @tc.level:    Level
      * @tc.type :
@@ -67,27 +67,38 @@ export default function LongPressGestureTemplateTest() {
       let areaWidth = areaObj.right - areaObj.left
       console.log('LongPressGestureTemplateTest_0010 areaObj',areaObj.left,areaObj.top,areaObj.right,areaObj.bottom)
       console.log('LongPressGestureTemplateTest_0010 areaObj clicked',Math.round(areaObj.left + areaWidth/2),Math.round(areaObj.top + areaHeight/2))
-
       let timeSpace:number = 3000
-      let driver = Driver.create();
       await CommonFunc.sleep(1000);
-      await driver.longClick(Math.round(areaObj.left + areaWidth/2),Math.round(areaObj.top + areaHeight/2));
-      await CommonFunc.sleep(timeSpace);
-      let text1 = getInspectorByKey('LongPressGestureTemplate_Text');
+      let driver: Driver = Driver.create();
+      await CommonFunc.sleep(1000);
+      let quyu: Component = await driver.findComponent(ON.id('LongPressGestureTemplate_Click'));
+      await CommonFunc.sleep(1000);
+      let timeA:number = Date.now();
+      await quyu.longClick();
+      let timeB:number = Date.now();
+      await CommonFunc.sleep(3000);
+      let timeC:number = Date.now();
+      await quyu.longClick();
+      let timeD:number = Date.now();
+      await CommonFunc.sleep(4000);
+      let text1 = getInspectorByKey('LongPressGestureTemplate_Text01');
       let obj1 = JSON.parse(text1);
       let time1:number = Number(obj1.$attrs.content)
       console.log('LongPressGestureTemplateTest_0010 obj1 $attrs content',obj1.$attrs.content,time1)
-
-      await driver.longClick(Math.round(areaObj.left + areaWidth/2),Math.round(areaObj.top + areaHeight/2));
-      await CommonFunc.sleep(3000);
-      let text2 = getInspectorByKey('LongPressGestureTemplate_Text');
+      let text2 = getInspectorByKey('LongPressGestureTemplate_Text02');
       let obj2 = JSON.parse(text2);
       let time2:number = Number(obj2.$attrs.content)
       console.log('LongPressGestureTemplateTest_0010 obj2 $attrs content',obj2.$attrs.content,time2)
-      let flag:number = time2 - time1 - timeSpace
+      console.log('LongPressGestureTemplateTest_0010 obj2 time $attrs content',time1,time2);
+      console.log('LongPressGestureTemplateTest_0010 obj2 timeA timeB',timeA,timeB);
+      console.log('LongPressGestureTemplateTest_0010 obj2 timeC timeD',timeC,timeD);
+      console.log('LongPressGestureTemplateTest_0010 obj2 timeD-timeC',timeD - timeC);
+      console.log('LongPressGestureTemplateTest_0010 obj2 timeB-timeA',timeB - timeA);
+      console.log('LongPressGestureTemplateTest_0010 obj2 time time2-time1',time2 - time1);
+      console.log('LongPressGestureTemplateTest_0010 obj2 time timeSpace',timeSpace);
+      let flag:number = time2 - time1 - timeSpace * 1000000
       console.log('LongPressGestureTemplateTest_0010 flag',flag)
-      expect( flag <= 16).assertTrue();
-
+      expect( flag <= (16 * 1000000)).assertTrue();
       console.info('LongPressGestureTemplateTest_0010 END');
       done();
     });

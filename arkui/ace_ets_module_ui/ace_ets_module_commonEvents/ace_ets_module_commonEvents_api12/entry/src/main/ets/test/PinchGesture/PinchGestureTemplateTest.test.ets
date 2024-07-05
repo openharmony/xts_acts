@@ -48,7 +48,7 @@ export default function PinchGestureTemplateTest() {
 
     /**
      * @tc.number
-     * @tc.name      PinchGestureTemplateTest_0010
+    * @tc.name      PinchGestureTemplateTest_0010
      * @tc.desc      api test PinchGesture
      * @tc.level:    Level
      * @tc.type :
@@ -74,16 +74,13 @@ export default function PinchGestureTemplateTest() {
       pointers.setPoint(1,1,{x: Math.round(areaObj1.right - areaWidth1 * 0.3),y: Math.round(areaObj1.top + areaHeight1 * 0.5) });
       await driver.injectMultiPointerAction(pointers);
       await CommonFunc.sleep(4000);
-
       let button = await driver.findComponent(ON.id('PinchGestureTemplate_template'));
       await button.click();
-      await CommonFunc.sleep(1000);
-
+      await CommonFunc.sleep(3000);
       let text1 = getInspectorByKey('PinchGestureTemplate_Text');
       let obj1 = JSON.parse(text1);
       console.log('PanGestureExampleTemplateTest_0010 obj1 $attrs content',obj1.$attrs.content,obj1)
       expect(obj1.$attrs.content).assertEqual('templateFlag:true');
-
       console.info('PinchGestureTemplateTest_0010 END');
       done();
     });
