@@ -54,7 +54,7 @@ export default function textInputPreview() {
       console.info('textInputPreview_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('enablePreview_textInput');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textInputPreview_0100] component obj is: " + JSON.stringify(obj));
       console.info("[textInputPreview_0100] enablePreviewText: " + JSON.stringify(obj.$attrs.enablePreviewText));
       expect(obj.$attrs.enablePreviewText).assertEqual(true);
