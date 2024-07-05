@@ -118,6 +118,8 @@
     "MainAbility/pages/RichEditor/RichEditorApi12",
     "MainAbility/pages/Search/SearchApi1",
     "MainAbility/pages/Text/getLineMetrics",
-    "MainAbility/pages/Text/textSelectable"
+    "MainAbility/pages/Text/textSelectable",
+    "MainAbility/pages/TextArea/textAreaPreview",
+    "MainAbility/pages/TextInput/textInputPreview"
   ]
 }

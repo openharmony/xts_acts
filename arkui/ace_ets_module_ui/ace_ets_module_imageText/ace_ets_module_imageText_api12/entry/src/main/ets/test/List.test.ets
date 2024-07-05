@@ -124,6 +124,8 @@ import SearchApi1 from './Search/SearchApi1.test'
 import getLineMetrics from './TextTest/getLineMetrics.test'
 import textSelectableJsunit from './TextTest/textSelectableJsunit.test'
 import styledStringChange from './Text/styledStringChange.test'
+import textAreaPreview from './TextArea/textAreaPreview.test'
+import textInputPreview from './TextInput/textInputPreview.test'
 
 export default function testsuite() {
   APIContentTypeTest();
@@ -235,4 +237,6 @@ export default function testsuite() {
   SearchApi1()
   getLineMetrics();
   textSelectableJsunit();
+  textAreaPreview();
+  textInputPreview();
 }

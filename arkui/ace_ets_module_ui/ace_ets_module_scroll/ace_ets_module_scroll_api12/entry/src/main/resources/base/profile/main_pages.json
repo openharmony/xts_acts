@@ -18,6 +18,7 @@
         "MainAbility/pages/Scroll/offsetRemain",
 
         "MainAbility/pages/Tabs/TabsAp1",
-        "MainAbility/pages/Scroll/ScrollApi1"
+        "MainAbility/pages/Scroll/ScrollApi1",
+        "MainAbility/pages/Tabs/tabsAnimationMode"
     ]
 }
