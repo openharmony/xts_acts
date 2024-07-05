@@ -98,7 +98,7 @@ do_make() {
     cd $BASE_HOME
     ACTS_ROOT="$BASE_HOME/test/xts/acts"
 
-    ${BASE_HOME}/prebuilts/python/linux-x86/3.10.2/bin/python3 -B ${ACTS_ROOT}/check_hvigor.py
+    ${BASE_HOME}/prebuilts/python/linux-x86/current/bin/python3 -B ${ACTS_ROOT}/check_hvigor.py
     if [ "$?" != 0 ]; then
         exit 1
     fi
