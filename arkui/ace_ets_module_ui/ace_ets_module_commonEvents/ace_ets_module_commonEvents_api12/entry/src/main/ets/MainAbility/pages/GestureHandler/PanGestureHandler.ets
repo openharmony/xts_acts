@@ -52,8 +52,8 @@ struct PanGestureHandler1 {
         Column()
           .id('PanGestureHandlerColumn')
           .gestureModifier(this.modifier)
-          .width(400)
-          .height(400)
+          .width("90%")
+          .height("80%")
           .backgroundColor(Color.Blue)
       }
       .width('100%')

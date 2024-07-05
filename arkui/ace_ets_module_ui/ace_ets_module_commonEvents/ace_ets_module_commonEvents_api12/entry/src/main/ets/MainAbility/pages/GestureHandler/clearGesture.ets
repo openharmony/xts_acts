@@ -14,12 +14,12 @@
  */
 class MyClearModifier implements GestureModifier {
   supportDoubleTap: boolean = true
-  value: string = '666'
+  value: string = 'clearGesture succ'
 
   applyGesture(event: UIGestureEvent): string {
     if (this.supportDoubleTap) {
       event.clearGestures()
-      return "clearGesture succ"
+      return this.value
     } else {
       event.addGesture(
         new PanGestureHandler()
