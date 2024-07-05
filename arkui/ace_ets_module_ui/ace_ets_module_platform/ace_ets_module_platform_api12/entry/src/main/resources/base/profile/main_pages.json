@@ -10,6 +10,7 @@
         "MainAbility/pages/InputMethodList/inputMethodListTest",
         "MainAbility/pages/EmbeddedComponent/extension",
         "MainAbility/pages/EmbeddedComponent/onTerminated",
+        "MainAbility/pages/MovingPhotoView/MovingPhotoView",
         "MainAbility/pages/Video/VideoReset/VideoReset1",
         "MainAbility/pages/Video/VideoReset/VideoReset2",
         "MainAbility/pages/Video/VideoReset/VideoReset3",

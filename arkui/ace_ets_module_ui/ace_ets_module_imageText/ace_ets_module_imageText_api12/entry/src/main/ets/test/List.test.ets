@@ -124,6 +124,9 @@ import SearchApi1 from './Search/SearchApi1.test'
 import getLineMetrics from './TextTest/getLineMetrics.test'
 import textSelectableJsunit from './TextTest/textSelectableJsunit.test'
 import styledStringChange from './Text/styledStringChange.test'
+import searchTest from './Search/searchTest.test'
+import imageAddApi2 from './ImageTest/imageAddApi2.test'
+import styledStringAddApi from './Text/styledStringAddApi.test'
 
 export default function testsuite() {
   APIContentTypeTest();
@@ -226,6 +229,9 @@ export default function testsuite() {
   TextAreaTest()
   MarqueeMirroringTest()
   symbolEffect()
+  searchTest()
+  imageAddApi2()
+  styledStringAddApi()
 
   RichEditorApi8()
   RichEditorApi9()
