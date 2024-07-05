@@ -1,12 +1,12 @@
 {
-    "description": "Configuration for ActsAceJsApiTest Tests",
+    "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "1000000",
         "shell-timeout": "1000000",
+        "testcase-timeout":"10000",
         "bundle-name": "com.example.acejsapi",
-        "package-name": "com.example.acejsapi",
-        "testcase-timeout":"10000"
+        "package-name": "com.example.acejsapi"
     },
     "kits": [
         {
@@ -15,6 +15,12 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
+        },{
+            "type": "ShellKit",
+            "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602"
+            ]
         }
     ]
 }
