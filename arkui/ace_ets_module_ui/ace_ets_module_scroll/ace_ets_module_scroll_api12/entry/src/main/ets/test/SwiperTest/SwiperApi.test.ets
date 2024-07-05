@@ -19,8 +19,8 @@ import {UiComponent, UiDriver, Component, Driver, MouseButton, UiWindow, ON, BY,
 import text from "@ohos.graphics.text"
 
 export default function SwiperApi() {
-  describe('SwiperApi', function () {
-    beforeEach(async function (done) {
+  describe('SwiperApi', () => {
+    beforeEach(async (done: Function) => {
       console.info("SwiperApi beforeEach start");
       try {
         router.clear();
@@ -38,7 +38,7 @@ export default function SwiperApi() {
       console.info("SwiperApi foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("SwiperApi after each called");
     });
@@ -52,13 +52,13 @@ export default function SwiperApi() {
      * @tc.level      : Level 3
      */
 
-    it('SwiperApi_001', 0, async function (done) {
+    it('SwiperApi_001', 0, async (done: Function) => {
       console.info('[SwiperApi_001] START');
 
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('SwiperApi');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SwiperApi_001] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
 
@@ -66,10 +66,6 @@ export default function SwiperApi() {
       console.info('[SwiperApi_001] END');
       done();
     });
-
-
-
-
 
   })
 }
