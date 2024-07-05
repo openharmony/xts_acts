@@ -127,6 +127,8 @@ import styledStringChange from './Text/styledStringChange.test'
 import searchTest from './Search/searchTest.test'
 import imageAddApi2 from './ImageTest/imageAddApi2.test'
 import styledStringAddApi from './Text/styledStringAddApi.test'
+import textAreaPreview from './TextArea/textAreaPreview.test'
+import textInputPreview from './TextInput/textInputPreview.test'
 
 export default function testsuite() {
   APIContentTypeTest();
@@ -241,4 +243,6 @@ export default function testsuite() {
   SearchApi1()
   getLineMetrics();
   textSelectableJsunit();
+  textAreaPreview();
+  textInputPreview();
 }

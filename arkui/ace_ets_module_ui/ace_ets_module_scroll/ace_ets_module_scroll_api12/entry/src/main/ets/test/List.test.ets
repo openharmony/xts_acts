@@ -30,6 +30,7 @@ import offsetRemain from './ScrollTest/offsetRemain.test';
 import TabsAp1 from './TabsTest/TabsAp1.test'
 import ScrollApi1 from './ScrollTest/ScrollApi1.test'
 import SwiperApi from './SwiperTest/SwiperApi.test';
+import tabsAnimationMode from './TabsTest/tabsAnimationMode.test'
 export default function testsuite() {
   ListScrollTest1()
   PopupAlphaTest()
@@ -49,4 +50,5 @@ export default function testsuite() {
   TabsAp1()
   ScrollApi1()
   SwiperApi()
+  tabsAnimationMode()
 }

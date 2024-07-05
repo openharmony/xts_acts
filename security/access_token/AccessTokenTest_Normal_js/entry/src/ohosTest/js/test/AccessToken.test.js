@@ -649,5 +649,87 @@ describe('AccessTokenTest', function () {
         done();
     })
     
+
+    /**
+     * @tc.number Test_requestPermissionOnSetting_0100
+     * @tc.name Test_requestPermissionOnSetting_001.
+     * @tc.desc requestPermissionOnSetting Permissions.
+     */
+    it('Test_requestPermissionOnSetting_001', 0, async function (done) {
+        console.info("Test_requestPermissionOnSetting_001 start ");
+        let atManager = abilityAccessCtrl.createAtManager();
+        let permissionList = 'ohos.permission.CAMERA';
+        try {
+            atManager.requestPermissionOnSetting(0, permissionList).then((data) => {
+            console.info('Test_requestPermissionOnSetting_001 data is:' + JSON.stringify(data));
+        }).catch((err) => {
+            console.info('Test_requestPermissionOnSetting_001 err.code:' + err.code + JSON.stringify(err));
+        });
+        } catch (error) {
+            console.info('Test_requestPermissionOnSetting_001 error.code: ' + error.code);
+            expect(error.code).assertEqual(401);
+            done();
+        }
+    })
+
+    /**
+     * @tc.number Test_requestGlobalSwitch_0100
+     * @tc.name Test_requestGlobalSwitch_001.
+     * @tc.desc requestGlobalSwitch Permissions.
+     */
+    it('Test_requestGlobalSwitch_001', 0, async function (done) {
+        console.info("Test_requestGlobalSwitch_001 start ");
+        let atManager = abilityAccessCtrl.createAtManager();
+        try {
+            atManager.requestGlobalSwitch('', null).then((data) => {
+                console.info('Test_requestGlobalSwitch_001 data:' + data);
+            }).catch((err) => {
+                console.error('Test_requestGlobalSwitch_001 err.code:' + err.code + JSON.stringify(err));
+            });
+        } catch (error) {
+            console.info('Test_requestGlobalSwitch_001 error.code: ' + error.code);
+            expect(error.code).assertEqual(401);
+            done();
+        }
+    })
+
+    /*
+     * @tc.number:Test_SwitchType_0100
+     * @tc.name: Test_SwitchType_001
+     * @tc.desc: abilityAccessCtrl SwitchType CAMERA
+     */
+    it("Test_SwitchType_001", 0, function (done) {
+        console.info('----------------------Test_SwitchType_001---------------------------');
+        let value = abilityAccessCtrl.SwitchType.CAMERA;
+        console.info('Test_SwitchType_001 value is: ' + value);
+        expect(value).assertEqual(0);
+        done();
+    })
+
+    /*
+     * @tc.number:Test_SwitchType_0200
+     * @tc.name: Test_SwitchType_002
+     * @tc.desc: abilityAccessCtrl SwitchType MICROPHONE
+     */
+    it("Test_SwitchType_002", 0, function (done) {
+        console.info('----------------------Test_SwitchType_002---------------------------');
+        let value = abilityAccessCtrl.SwitchType.MICROPHONE;
+        console.info('Test_SwitchType_002 value is: ' + value);
+        expect(value).assertEqual(1);
+        done();
+    })
+
+    /*
+     * @tc.number:Test_SwitchType_0300
+     * @tc.name: Test_SwitchType_003
+     * @tc.desc: abilityAccessCtrl SwitchType LOCATION
+     */
+    it("Test_SwitchType_003", 0, function (done) {
+        console.info('----------------------Test_SwitchType_003---------------------------');
+        let value = abilityAccessCtrl.SwitchType.LOCATION;
+        console.info('Test_SwitchType_003 value is: ' + value);
+        expect(value).assertEqual(2);
+        done();
+    })
 })
 }

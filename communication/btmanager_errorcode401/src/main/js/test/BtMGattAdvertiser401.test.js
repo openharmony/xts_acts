@@ -146,7 +146,7 @@ describe('btManagerAdvertError401Test', function() {
           }catch(error) {
                console.error('[bluetooth_js]startAdvertising30 error.code:'+JSON.stringify(error.code)+
                    'error.message:'+JSON.stringify(error.message));
-               expect(error.code).assertEqual('401');
+               expect(error.code).assertEqual(401);
           }
           done();
      })
@@ -198,7 +198,7 @@ describe('btManagerAdvertError401Test', function() {
           }catch(error) {
                console.error('[bluetooth_js]startAdvertising31 error.code:'+JSON.stringify(error.code)+
                    'error.message:'+JSON.stringify(error.message));
-               expect(error.code).assertEqual('401');
+               expect(error.code).assertEqual(401);
           }
           done();
      })
@@ -244,7 +244,7 @@ describe('btManagerAdvertError401Test', function() {
           }catch(error) {
                console.error(`[bluetooth_js]startAdvertising32 failed, code is ${error.code},
                    message is ${error.message}`);
-               expect(error.code).assertEqual('401');
+               expect(error.code).assertEqual(401);
           }
           done();
      })
@@ -290,7 +290,7 @@ describe('btManagerAdvertError401Test', function() {
           }catch(error) {
                console.error(`[bluetooth_js]startAdvertising33 failed, code is ${error.code},
                    message is ${error.message}`);
-               expect(error.code).assertEqual('401');
+               expect(error.code).assertEqual(401);
           }
           done();
      })
@@ -336,7 +336,7 @@ describe('btManagerAdvertError401Test', function() {
           }catch(error) {
                console.error(`[bluetooth_js]startAdvertising34 failed, code is ${error.code},
                    message is ${error.message}`);
-               expect(error.code).assertEqual('401');
+               expect(error.code).assertEqual(401);
           }
           done();
      })
@@ -371,7 +371,7 @@ describe('btManagerAdvertError401Test', function() {
           }catch(error) {
                console.error(`[bluetooth_js]startAdvertising35 failed, code is ${error.code},
                   message is ${error.message}`);
-               expect(error.code).assertEqual('401');
+               expect(error.code).assertEqual(401);
           }
           done();
      })
@@ -416,7 +416,7 @@ describe('btManagerAdvertError401Test', function() {
           }catch(error) {
                console.error(`[bluetooth_js]startAdvertising36 failed, code is ${error.code},
                   message is ${error.message}`);
-               expect(error.code).assertEqual('401');
+               expect(error.code).assertEqual(401);
           }
           done();
      })
@@ -458,7 +458,7 @@ describe('btManagerAdvertError401Test', function() {
           }catch(error) {
                console.error(`[bluetooth_js]startAdvertising37 failed, code is ${error.code},
                   message is ${error.message}`);
-               expect(error.code).assertEqual('401');
+               expect(error.code).assertEqual(401);
           }
           done();
      })
@@ -500,7 +500,7 @@ describe('btManagerAdvertError401Test', function() {
           }catch(error) {
                console.error(`[bluetooth_js]startAdvertising38 failed, code is ${error.code},
                   message is ${error.message}`);
-               expect(error.code).assertEqual('401');
+               expect(error.code).assertEqual(401);
           }
           done();
      })
@@ -541,7 +541,7 @@ describe('btManagerAdvertError401Test', function() {
           }catch(error) {
                console.error(`[bluetooth_js]startAdvertising39 failed, code is ${error.code},
                   message is ${error.message}`);
-               expect(error.code).assertEqual('401');
+               expect(error.code).assertEqual(401);
           }
           done();
      })
@@ -582,7 +582,7 @@ describe('btManagerAdvertError401Test', function() {
           }catch(error) {
                console.error(`[bluetooth_js]startAdvertising40 failed, code is ${error.code},
                   message is ${error.message}`);
-               expect(error.code).assertEqual('401');
+               expect(error.code).assertEqual(401);
           }
           done();
      })

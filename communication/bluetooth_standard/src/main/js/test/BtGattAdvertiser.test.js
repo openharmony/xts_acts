@@ -96,7 +96,7 @@ describe('btGattAdvertTest', function() {
     afterEach(function () {
         console.info('afterEach called')
     })
-    afterAll(function () {
+    afterAll(async function (done) {
         console.info('afterAll called')
         gattServer.close();
         console.info('bluetooth gattServer close success');
