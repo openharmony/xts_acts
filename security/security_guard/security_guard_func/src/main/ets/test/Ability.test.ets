@@ -596,7 +596,7 @@ export default function SecurityGuardFunctionTest() {
 
       try {
         await securityGuard.off('securityEventOccur', auditEventInfo, callback);
-        // expect(null).assertFail();
+        expect(null).assertFail();
       } catch (err) {
         console.info('SUB_Security_SecurityGuard_JsApi_Func_0704 errcode = ' + err.code + ' errmsg = ' + err.message);
         expect(err.code).assertEqual(401);
