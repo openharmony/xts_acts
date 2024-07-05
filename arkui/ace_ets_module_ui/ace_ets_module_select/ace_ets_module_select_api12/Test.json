@@ -10,7 +10,7 @@
     },
     "kits": [{
         "test-file-name": [
-            "run .hap"
+            "ActsAceBasicSelectTest.hap"
         ],
         "type": "AppInstallKit",
         "cleanup-apps": true
