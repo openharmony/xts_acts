@@ -15,7 +15,7 @@
 
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect } from 'deccjsunit/index'
+import { describe, it, expect } from '@ohos/hypium'
 import {
   albumKeys,
   albumType,
@@ -27,19 +27,19 @@ import {
 } from '../../../../../../../common'
 
 export default function getAlbumsTest () {
-  describe('getAlbumsTest', function () {
-    const helper = photoAccessHelper.getPhotoAccessHelper(globalThis.abilityContext)
+  describe('getAlbumsTest', () => {
 
+    const helper = photoAccessHelper.getPhotoAccessHelper(globalThis.abilityContext);
     //callback
     /**
-      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_GET_ALBUMS_0000
-      * @tc.name      : getAlbums_callback_000
-      * @tc.desc      : get an user album
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('getAlbums_callback_000', 0, async function (done) {
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_GET_ALBUMS_0000
+     * @tc.name      : getAlbums_callback_000
+     * @tc.desc      : get an user album
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('getAlbums_callback_000', 0, async (done: Function) => {
       const testNum = 'getAlbums_callback_000';
       try {
         let albumNames = [
@@ -49,16 +49,13 @@ export default function getAlbumsTest () {
           'getAlbums_callback_000_04',
           'getAlbums_callback_000_05'
         ];
-
         const beforeResult = await helper.getAlbums(albumType.USER, albumSubtype.USER_GENERIC);
         const count = beforeResult.getCount();
         beforeResult.close();
-
         // Firstly, create some albums
         for (let i = 0; i < albumNames.length; i++) {
           await helper.createAlbum(albumNames[i]);
         }
-
         // Secondly, get albums and check
         helper.getAlbums(albumType.USER, albumSubtype.USER_GENERIC, async (err, fetchResult) => {
           try {
@@ -77,31 +74,29 @@ export default function getAlbumsTest () {
           } catch (error) {
             console.info(`${testNum} getAlbums failed, error: ${error}`);
           }
-          done()
-        })
+          done();
+        });
       } catch (error) {
         console.info(`${testNum} failed, error: ${JSON.stringify(error)}`);
         expect(false).assertTrue();
         done();
       }
     });
-
     /**
-      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_GET_ALBUMS_0100
-      * @tc.name      : getAlbums_callback_001
-      * @tc.desc      : get user albums by albumName
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 2
-    */
-    it('getAlbums_callback_001', 2, async function (done) {
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_GET_ALBUMS_0100
+     * @tc.name      : getAlbums_callback_001
+     * @tc.desc      : get user albums by albumName
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('getAlbums_callback_001', 2, async (done: Function) => {
       const testNum = 'getAlbums_callback_001';
       try {
         // Firstly, create an album
         let albumName = testNum;
         const album = await helper.createAlbum(albumName);
         checkUserAlbum(expect, testNum, album, albumName, '');
-
         // Secondly, query the newly created album by albumName, the fetch count should be 1
         const fetchOps = fetchOption(testNum, albumKeys.ALBUM_NAME, albumName);
         helper.getAlbums(albumType.USER, albumSubtype.USER_GENERIC, fetchOps, async (err, fetchResult) => {
@@ -118,26 +113,25 @@ export default function getAlbumsTest () {
             console.info(`${testNum} getAlbums failed, error: ${error}`);
           }
           done();
-        })
+        });
       } catch (error) {
         console.info(`${testNum} failed, error: ${error}`);
         expect(false).assertTrue();
         done();
       }
     });
-
     /**
-      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_GET_ALBUMS_0200
-      * @tc.name      : getAlbums_callback_002
-      * @tc.desc      : get system albums by albumType
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('getAlbums_callback_002', 0, async function (done) {
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_GET_ALBUMS_0200
+     * @tc.name      : getAlbums_callback_002
+     * @tc.desc      : get system albums by albumType
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('getAlbums_callback_002', 0, async (done: Function) => {
       const testNum = 'getAlbums_callback_002';
       try {
-        let subTypes : Array<photoAccessHelper.AlbumSubtype> = [
+        let subTypes: Array<photoAccessHelper.AlbumSubtype> = [
           albumSubtype.VIDEO,
           albumSubtype.FAVORITE,
         ];
@@ -150,7 +144,7 @@ export default function getAlbumsTest () {
                 expect(false).assertTrue();
               } else {
                 const album = await fetchResult.getFirstObject();
-                fetchResult.close()
+                fetchResult.close();
                 checkSystemAlbum(expect, testNum, album, subTypes[i]);
                 count++;
               }
@@ -161,7 +155,7 @@ export default function getAlbumsTest () {
               expect(count === subTypes.length);
               done();
             }
-          })
+          });
           await sleep(50);
         }
       } catch (error) {
@@ -170,17 +164,16 @@ export default function getAlbumsTest () {
         done();
       }
     });
-
     //promise
     /**
-      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_GET_ALBUMS_0000
-      * @tc.name      : getAlbums_promise_000
-      * @tc.desc      : get an user album
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('getAlbums_promise_000', 0, async function (done) {
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_GET_ALBUMS_0000
+     * @tc.name      : getAlbums_promise_000
+     * @tc.desc      : get an user album
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('getAlbums_promise_000', 0, async (done: Function) => {
       const testNum = 'getAlbums_promise_000';
       try {
         let albumNames = [
@@ -190,16 +183,13 @@ export default function getAlbumsTest () {
           'getAlbums_promise_000_04',
           'getAlbums_promise_000_05'
         ];
-
         const beforeResult = await helper.getAlbums(albumType.USER, albumSubtype.USER_GENERIC);
         const count = beforeResult.getCount();
         beforeResult.close();
-
         // Firstly, create some albums
         for (let i = 0; i < albumNames.length; i++) {
           await helper.createAlbum(albumNames[i]);
         }
-
         // Secondly, get albums and check
         const fetchResult = await helper.getAlbums(albumType.USER, albumSubtype.USER_GENERIC);
         const totalCount = fetchResult.getCount();
@@ -216,23 +206,21 @@ export default function getAlbumsTest () {
         done();
       }
     });
-
     /**
-      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_GET_ALBUMS_0100
-      * @tc.name      : getAlbums_promise_001
-      * @tc.desc      : get user albums by albumName
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 2
-    */
-    it('getAlbums_promise_001', 2, async function (done) {
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_GET_ALBUMS_0100
+     * @tc.name      : getAlbums_promise_001
+     * @tc.desc      : get user albums by albumName
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('getAlbums_promise_001', 2, async (done: Function) => {
       const testNum = 'getAlbums_promise_001';
       try {
         // Firstly, create an album
         let albumName = testNum;
         const album = await helper.createAlbum(albumName);
         checkUserAlbum(expect, testNum, album, albumName, '');
-
         // Secondly, query the newly created album by albumName, the fetch count should be 1
         const fetchOps = fetchOption(testNum, albumKeys.ALBUM_NAME, albumName);
         const fetchResult = await helper.getAlbums(albumType.USER, albumSubtype.USER_GENERIC, fetchOps);
@@ -245,31 +233,32 @@ export default function getAlbumsTest () {
         done();
       }
     });
-
     /**
-      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_GET_ALBUMS_0200
-      * @tc.name      : getAlbums_promise_002
-      * @tc.desc      : get system albums by albumType
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 0
-    */
-    it('getAlbums_promise_002', 0, async function (done) {
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_GET_ALBUMS_0200
+     * @tc.name      : getAlbums_promise_002
+     * @tc.desc      : get system albums by albumType
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('getAlbums_promise_002', 0, async (done: Function) => {
       const testNum = 'getAlbums_promise_002';
       try {
-        let subTypes : Array<photoAccessHelper.AlbumSubtype> = [
+        let subTypes: Array<photoAccessHelper.AlbumSubtype> = [
           albumSubtype.VIDEO,
           albumSubtype.FAVORITE,
         ];
         let count = 0;
-        let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album>;
+        let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.Album> | undefined = undefined;
         for (let i = 0; i < subTypes.length; i++) {
           fetchResult = await helper.getAlbums(albumType.SYSTEM, subTypes[i]);
           const album = await fetchResult.getFirstObject();
           checkSystemAlbum(expect, testNum, album, subTypes[i]);
           count++;
         }
-        fetchResult.close();
+        if (fetchResult != undefined) {
+          fetchResult.close();
+        }
         expect(count === subTypes.length);
         done();
       } catch (error) {
@@ -278,26 +267,24 @@ export default function getAlbumsTest () {
         done();
       }
     });
-
     /**
-      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_GET_ALBUMS_0300
-      * @tc.name      : getAlbums_promise_003
-      * @tc.desc      : get user albums by orderByAsc
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 2
-    */
-    it('getAlbums_promise_003', 2, async function (done) {
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_GET_ALBUMS_0300
+     * @tc.name      : getAlbums_promise_003
+     * @tc.desc      : get user albums by orderByAsc
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('getAlbums_promise_003', 2, async (done: Function) => {
       const testNum = 'getAlbums_promise_003';
       try {
         const albumNames = ['b', 'a', 'c'];
         for (let i = 0; i < albumNames.length; i++) {
           await helper.createAlbum(albumNames[i]);
         }
-
         const predicates = new dataSharePredicates.DataSharePredicates();
         predicates.in(albumKeys.ALBUM_NAME, albumNames).orderByAsc(albumKeys.ALBUM_NAME);
-        const fetchOps : photoAccessHelper.FetchOptions = {
+        const fetchOps: photoAccessHelper.FetchOptions = {
           fetchColumns: [],
           predicates: predicates
         };
@@ -316,26 +303,24 @@ export default function getAlbumsTest () {
         done();
       }
     });
-
     /**
-      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_GET_ALBUMS_0400
-      * @tc.name      : getAlbums_promise_004
-      * @tc.desc      : get user albums by orderByDesc
-      * @tc.size      : MEDIUM
-      * @tc.type      : Function
-      * @tc.level     : Level 2
-    */
-    it('getAlbums_promise_004', 2, async function (done) {
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_GET_ALBUMS_0400
+     * @tc.name      : getAlbums_promise_004
+     * @tc.desc      : get user albums by orderByDesc
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('getAlbums_promise_004', 2, async (done: Function) => {
       const testNum = 'getAlbums_promise_004';
       try {
         const albumNames = ['x', 'y', 'z'];
         for (let i = 0; i < albumNames.length; i++) {
           await helper.createAlbum(albumNames[i]);
         }
-
         const predicates = new dataSharePredicates.DataSharePredicates();
         predicates.in(albumKeys.ALBUM_NAME, albumNames).orderByDesc(albumKeys.ALBUM_NAME);
-        const fetchOps : photoAccessHelper.FetchOptions = {
+        const fetchOps: photoAccessHelper.FetchOptions = {
           fetchColumns: [],
           predicates: predicates
         };
