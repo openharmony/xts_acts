@@ -145,13 +145,17 @@ struct getSurfaceId {
             case "emitSetUrlTrustList0500": {
               try {
                 this.controller.clearMatches();
+                await Utils.sleep(2000);
                 this.controller.setUrlTrustList(this.urltrustListFour);
-                await Utils.sleep(2000);
+                await Utils.sleep(4000);
                 this.controller.loadUrl('http://www.163.com/test');
-                await Utils.sleep(2000);
+                await Utils.sleep(5000);
                 this.checkResult = 5;
-                await Utils.sleep(2000);
+                await Utils.sleep(3000);
                 this.controller.searchAllAsync('网易首页');
+                await Utils.sleep(2000);
+                this.controller.loadUrl('https://www.baidu.com');
+                await Utils.sleep(2000);
               } catch (error) {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
@@ -159,14 +163,18 @@ struct getSurfaceId {
             }
             case "emitSetUrlTrustList0600": {
               try {
+                this.controller.removeCache(true);
+                await Utils.sleep(2000);
                 this.controller.clearMatches();
+                await Utils.sleep(2000);
                 this.controller.setUrlTrustList(this.urltrustListFour);
-                await Utils.sleep(2000);
+                await Utils.sleep(4000);
                 this.controller.loadUrl('https://www.163.com/test');
-                await Utils.sleep(2000);
+                await Utils.sleep(5000);
                 this.checkResult = 6;
-                await Utils.sleep(2000);
+                await Utils.sleep(3000);
                 this.controller.searchAllAsync('网易首页');
+                await Utils.sleep(2000);
               } catch (error) {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
