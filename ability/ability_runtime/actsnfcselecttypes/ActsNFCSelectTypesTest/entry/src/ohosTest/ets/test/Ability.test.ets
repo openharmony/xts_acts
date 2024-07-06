@@ -88,7 +88,7 @@ export default function abilityTest() {
     afterEach(async (done:Function) => {
       let cmd = 'aa force-stop ' + selectorBundleName;
       await abilityDelegator.executeShellCommand(cmd).catch((error : BusinessError) => {
-        console.log("====>Acts_ActionExtensionAbility_0300 executeShellCommand error : " + JSON.stringify(error));
+        console.log("====>aa force stop executeShellCommand error : " + JSON.stringify(error));
       });
     })
 
