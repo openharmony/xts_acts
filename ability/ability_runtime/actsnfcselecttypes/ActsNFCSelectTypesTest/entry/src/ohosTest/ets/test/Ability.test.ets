@@ -25,7 +25,7 @@ let ACTS_CrossCallFunction:commonEvent.CommonEventSubscribeInfo = {
   events: ['ACTS_CROSS_CALL_EVENT']
 };
 
-let selectorBundleName = "";
+let selectorBundleName = '';
 
 const CASE_TIME_OUT = 5000;
 let driver = Driver.create();
@@ -47,7 +47,7 @@ async function judgeDialog() {
     console.info('====>aa dump : data : ' + JSON.stringify(data.stdResult));
     if (data.stdResult.includes("/uiextension/AppSelectorExtensionAbility")) {
       let firstString = data.stdResult.split("/uiextension/AppSelectorExtensionAbility");
-      selectorBundleName = "com.hua" + "wei.hmsapp.appgallery";
+      selectorBundleName = 'com.hua' + 'wei.hmsapp.appgallery';
       let result = firstString[1].split("uri");
       console.info('====>aa dump result aa string: ' + JSON.stringify(result[0]));
       try {
@@ -61,7 +61,7 @@ async function judgeDialog() {
     } else if (data.stdResult.includes("com.ohos.amsdialog/entry/")) {
       let firstString = data.stdResult.split("com.ohos.amsdialog/entry/");
       let result = firstString[1].split("uri");
-      selectorBundleName = "com.ohos.amsdialog";
+      selectorBundleName = 'com.ohos.amsdialog';
       console.info('====>aa dump result aa string: ' + JSON.stringify(result[0]));
       try {
         expect(result[0]).assertContain("bundle name [com.ohos.amsdialog]");
