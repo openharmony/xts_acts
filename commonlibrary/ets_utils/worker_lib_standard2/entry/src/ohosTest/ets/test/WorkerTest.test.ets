@@ -133,7 +133,8 @@ export default function workerTest() {
       } catch (error) {
         console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
         expectAssertEqual(error.code, 401);
-        expectAssertContain(error.message, 'the type must be classic, unsupport others now.');
+        expectAssertContain(error.message, 'Parameter error. The input parameters are invalid, the type must be ' +
+            'classic, unsupport others now.');
         done();
       }
       console.info(`${caseName} test end`);
@@ -895,7 +896,8 @@ export default function workerTest() {
       } catch (error) {
         console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
         expectAssertEqual(error.code, 401);
-        expectAssertContain(error.message, 'the type must be classic, unsupport others now.');
+        expectAssertContain(error.message, 'Parameter error. The input parameters are invalid, the type must be ' +
+            'classic, unsupport others now.');
         done();
       }
       console.info(`${caseName} test end`);

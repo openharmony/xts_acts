@@ -622,7 +622,7 @@ describe('TextEncoderTest', function () {
       try {
         util.callbackWrapper(promiseFn);
       } catch(e) {
-        expect(e.toString()).assertEqual('BusinessError: Parameter error.The type of 1,2 must be function');
+        expect(e.toString()).assertEqual('BusinessError: Parameter error. The type of 1,2 must be function');
       }
     })
 
@@ -8449,7 +8449,7 @@ describe('TextEncoderTest', function () {
         let asp = new MyClass();
         let result = asp.func('111');
       } catch(e) {
-        expect(e.message).assertEqual(`Parameter error. printFunc must be a method of targetClass, but it is undefined`);
+        expect(e.message).assertEqual(`Parameter error. The type of printFunc must be a method of targetClass`);
       }
     })
 
@@ -8470,7 +8470,7 @@ describe('TextEncoderTest', function () {
         let asp = new MyClass();
         let result = asp.func('111');
       } catch(e) {
-        expect(e.message).assertEqual(`Parameter error. The type of methodName should be string, but it is 123`);
+        expect(e.message).assertEqual(`Parameter error. The type of 123 must be string`);
       }
     })
 
@@ -8771,7 +8771,7 @@ describe('TextEncoderTest', function () {
         let asp = new AfterClass();
         let result = asp.func('111');
       } catch(e) {
-        expect(e.message).assertEqual(`Parameter error. printFunc must be a method of targetClass, but it is undefined`);
+        expect(e.message).assertEqual(`Parameter error. The type of printFunc must be a method of targetClass`);
       }
     })
 
@@ -8792,7 +8792,7 @@ describe('TextEncoderTest', function () {
         let asp = new AfterClass();
         let result = asp.func('111');
       } catch(e) {
-        expect(e.message).assertEqual(`Parameter error. The type of isStatic should be boolean, but it is 123`);
+        expect(e.message).assertEqual(`Parameter error. The type of 123 must be boolean`);
       }
     })
 
@@ -9157,7 +9157,7 @@ describe('TextEncoderTest', function () {
         let asp = new ReplaceClass();
         let result = asp.func('111');
       } catch(e) {
-        expect(e.message).assertEqual(`Parameter error. printFunc must be a method of targetClass, but it is undefined`);
+        expect(e.message).assertEqual(`Parameter error. The type of printFunc must be a method of targetClass`);
       }
     })
 
@@ -9177,7 +9177,7 @@ describe('TextEncoderTest', function () {
         let asp = new ReplaceClass();
         let result = asp.func('111');
       } catch(e) {
-        expect(e.message).assertEqual(`Parameter error. The type of isStatic should be boolean, but it is 123`);
+        expect(e.message).assertEqual(`Parameter error. The type of 123 must be boolean`);
       }
     })
 
