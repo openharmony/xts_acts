@@ -2222,8 +2222,16 @@ export default function singleKvStorePromiseStageTest(){
         let resultSet;
         await kvStore.getResultSet().then((result) => {
           console.info('testSingleKvStoreGetResultSet003 getResultSet success');
+          resultSet = result;
         }).catch((err) => {
           console.info('testSingleKvStoreGetResultSet003 getResultSet fail ' + err);
+        });
+        await kvStore.closeResultSet(resultSet).then((err) => {
+          console.info('testEtsSingleKvStoreGetResultSet003 closeResultSet success');
+          expect(err == undefined).assertTrue();
+        }).catch((err) => {
+          console.info('testEtsSingleKvStoreGetResultSet003 closeResultSet fail ' + err);
+          expect(err != null).assertTrue();
         });
       }catch(e) {
         console.info('testSingleKvStoreGetResultSet003 e ' + e);
@@ -2243,8 +2251,16 @@ export default function singleKvStorePromiseStageTest(){
         let resultSet;
         await kvStore.getResultSet('test_key_string', 123).then((result) => {
           console.info('testSingleKvStoreGetResultSet004 getResultSet success');
+          resultSet = result;
         }).catch((err) => {
           console.info('testSingleKvStoreGetResultSet004 getResultSet fail ' + err);
+        });
+        await kvStore.closeResultSet(resultSet).then((err) => {
+          console.info('testEtsSingleKvStoreGetResultSet004 closeResultSet success');
+          expect(err == undefined).assertTrue();
+        }).catch((err) => {
+          console.info('testEtsSingleKvStoreGetResultSet004 closeResultSet fail ' + err);
+          expect(err != null).assertTrue();
         });
       }catch(e) {
         console.info('testSingleKvStoreGetResultSet004 e ' + e);
