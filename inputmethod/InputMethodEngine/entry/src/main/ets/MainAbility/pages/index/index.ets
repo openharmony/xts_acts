@@ -36,6 +36,7 @@ struct Index {
       Column() {
         TextArea({ text: this.inputValue })
           .height('90%')
+          .enablePreviewText(true)
           .onChange((value: string) => {
             this.inputValue = value;
           })
