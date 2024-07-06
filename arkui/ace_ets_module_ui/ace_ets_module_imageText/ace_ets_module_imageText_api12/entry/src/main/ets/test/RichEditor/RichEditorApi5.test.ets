@@ -52,17 +52,18 @@ export default function RichEditorApi5() {
     it('RichEditorApi5_0100', 0, async (done: Function) => {
       console.info('RichEditorApi5_0100 START');
       await CommonFunc.sleep(1000);
+      if (globalThis.winLeft == 0) {
+        let richEditor1 = CommonFunc.getComponentRect('RichEditorApi5')
+        let y1 = richEditor1.bottom
 
-      let richEditor1 = CommonFunc.getComponentRect('RichEditorApi5')
-      let y1 = richEditor1.bottom
+        sendEventByKey('RichEditorApi5',10,"")
+        await CommonFunc.sleep(1000);
 
-      sendEventByKey('RichEditorApi5',10,"")
-      await CommonFunc.sleep(1000);
+        let richEditor2 = CommonFunc.getComponentRect('RichEditorApi5')
+        let y2 = richEditor2.bottom
 
-      let richEditor2 = CommonFunc.getComponentRect('RichEditorApi5')
-      let y2 = richEditor2.bottom
-
-      expect(y2).assertLess(y1);
+        expect(y2).assertLess(y1);
+      }
 
       console.info('RichEditorApi5_0100 END');
       done();

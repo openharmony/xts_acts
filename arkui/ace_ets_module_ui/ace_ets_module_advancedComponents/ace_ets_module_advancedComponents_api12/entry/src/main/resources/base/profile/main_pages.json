@@ -11,7 +11,9 @@
     "MainAbility/pages/composeListItem/composeListItemOperateItemSwitch",
     "MainAbility/pages/composeListItem/composeListItemPageTest",
     "MainAbility/pages/exceptionPrompt/exceptionPromptPage",
+    "MainAbility/pages/exceptionPrompt/exceptionPromptPageTwo",
     "MainAbility/pages/filter/filterPage",
+    "MainAbility/pages/filter/filterPageTwo",
     "MainAbility/pages/gridObjectSortComponent/gridObjectSortComponentTest",
     "MainAbility/pages/progressButton/progressButtonTest",
     "MainAbility/pages/selectTitleBar/selectTitleBarPage",
@@ -19,6 +21,18 @@
     "MainAbility/pages/tabTitleBar/tabTitleBarPageTest",
     "MainAbility/pages/toolBar/toolBarItemState",
     "MainAbility/pages/toolBar/toolBarPageTest",
-    "MainAbility/pages/treeView/treeViewPageTest"
+    "MainAbility/pages/treeView/treeViewPageTest",
+    "MainAbility/pages/treeView/treeViewNodeParamContainer",
+    "MainAbility/pages/treeView/treeViewCallbackParamChildIndex",
+    "MainAbility/pages/dialog/alertDialogTest",
+    "MainAbility/pages/dialog/confirmDialogTest",
+    "MainAbility/pages/dialog/customContentDialogTest",
+    "MainAbility/pages/dialog/selectDialogTest",
+    "MainAbility/pages/dialog/tipsDialogTest",
+    "MainAbility/pages/editableTitleBar/editableTitleBarSafeAreaEdges",
+    "MainAbility/pages/editableTitleBar/editableTitleBarSafeAreaTypes",
+    "MainAbility/pages/subHeader/subHeaderButton",
+    "MainAbility/pages/subHeader/subHeaderIconGroup",
+    "MainAbility/pages/subHeader/subHeaderTextArrow"
   ]
 }

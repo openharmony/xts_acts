@@ -27,8 +27,6 @@ export default class EntryFormAbility extends FormExtensionAbility {
     });
   }
 
-
-
   onCastToNormalForm(formId: string) {
   }
 

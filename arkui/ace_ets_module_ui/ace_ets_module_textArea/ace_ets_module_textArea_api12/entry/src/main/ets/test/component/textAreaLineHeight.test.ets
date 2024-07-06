@@ -13,27 +13,25 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textAreaLineHeight() {
-  describe('textAreaLineHeight', function () {
-    beforeEach(async function (done) {
+  describe('textAreaLineHeight',  () =>{
+    beforeEach(async  (done:Function) =>{
       console.info("textAreaLineHeightTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textAreaLineHeight',
+      let options:router.RouterOptions = {
+        url: 'MainAbility/pages/component/textAreaLineHeight',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get textAreaLineHeight state pages: " + JSON.stringify(pages));
         if (!("searchLineHeight" == pages.name)) {
           console.info("get textAreaLineHeight pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textAreaLineHeight page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push textAreaLineHeight page error: " + err);
@@ -44,7 +42,7 @@ export default function textAreaLineHeight() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async  () =>{
       await Utils.sleep(1000);
       console.info("textAreaLineHeight after each called");
     })
@@ -57,12 +55,11 @@ export default function textAreaLineHeight() {
        * @tc.type   Function
        * @tc.level  0
        */
-    it('textAreaLineHeight_0100', 0, async function (done) {
+    it('textAreaLineHeight_0100', 0, async  (done:Function) =>{
       console.info('[textAreaLineHeight_0100] START');
       let strJson = getInspectorByKey('key_textArea_lineHeight_001');
-      let obj = JSON.parse(strJson);
-      console.info("[textAreaLineHeight_0100] obj is: " + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.lineHeight).assertEqual('30.00fp');
+      console.info("[textAreaLineHeight_0100] obj is: " + JSON.stringify(JSON.parse(strJson).$attrs));
+      expect(JSON.parse(strJson).$attrs.lineHeight).assertEqual('30.00fp');
       console.info('[textAreaLineHeight_0100] END');
       done();
     });

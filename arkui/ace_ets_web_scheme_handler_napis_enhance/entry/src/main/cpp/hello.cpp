@@ -18,6 +18,7 @@
 #include "rawfile_request.h"
 #include "rawfile/raw_file_manager.h"
 #include "web/arkweb_scheme_handler.h"
+#include "web/arkweb_net_error_list.h"
 #include <bits/alltypes.h>
 #include <web/arkweb_interface.h>
 
@@ -40,12 +41,13 @@ int32_t testRequestHeaderList = -1;
 int32_t testHttpBodyStream = -1;
 int32_t testHttpBodyStreamInitCallback = -1;
 int32_t testHttpBodyStreamReadCallback = -1;
+int32_t testRegisterCustom = -1;
 
 // 注册三方协议的配置，需要在Web内核初始化之前调用，否则会注册失败。
 static napi_value RegisterCustomSchemes(napi_env env, napi_callback_info info) 
 {
     OH_LOG_INFO(LOG_APP, "register custom schemes");
-    OH_ArkWeb_RegisterCustomSchemes("custom",  ARKWEB_SCHEME_OPTION_DISPLAY_ISOLATED
+    testRegisterCustom = OH_ArkWeb_RegisterCustomSchemes("custom",  ARKWEB_SCHEME_OPTION_DISPLAY_ISOLATED
     | ARKWEB_SCHEME_OPTION_FETCH_ENABLED | ARKWEB_SCHEME_OPTION_CORS_ENABLED | ARKWEB_SCHEME_OPTION_CSP_BYPASSING);
 
     return nullptr;
@@ -283,6 +285,338 @@ static napi_value HttpBodyStreamReadCallback(napi_env env, napi_callback_info in
     return result;
 }
 
+static napi_value GetNativeApiFalse(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    ArkWeb_AnyNativeAPI* api = OH_ArkWeb_GetNativeAPI(ArkWeb_NativeAPIVariantKind(5));
+    if (!api) {
+        OH_LOG_INFO(LOG_APP, "OH_ArkWeb_GetNativeAPI nullptr");
+        napi_create_int32(env, 0, &result);
+    } else {
+        napi_create_int32(env, -1, &result);
+    }
+    return result;
+}
+
+static napi_value RequestHeaderListFalse(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    int32_t headerSize = OH_ArkWebRequestHeaderList_GetSize(nullptr);
+    napi_create_int32(env, headerSize, &result);
+    return result;
+}
+
+static napi_value HttpBodyStreamSetUserDataFalse(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    int32_t isTest = OH_ArkWebHttpBodyStream_SetUserData(nullptr, nullptr);
+    napi_create_int32(env, isTest, &result);
+    return result;
+}
+
+static napi_value HttpBodyStreamSetReadCallbackFalse(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    int32_t isTest = OH_ArkWebHttpBodyStream_SetReadCallback(nullptr, nullptr);
+    napi_create_int32(env, isTest, &result);
+    return result;
+}
+
+static napi_value HttpBodyStreamInitFalse(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    int32_t isTest = OH_ArkWebHttpBodyStream_Init(nullptr, nullptr);
+    napi_create_int32(env, isTest, &result);
+    return result;
+}
+
+
+static napi_value HttpBodyStreamIsChunkedFalse(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    
+    bool isTestChunked = OH_ArkWebHttpBodyStream_IsChunked(nullptr);
+    if (!isTestChunked) {
+        napi_create_int32(env, 0, &result);
+    } else {
+        napi_create_int32(env, -1, &result);
+    }
+    return result;
+}
+
+static napi_value HttpBodyStreamIsEofFalse(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    
+    bool isTestEof = OH_ArkWebHttpBodyStream_IsEof(nullptr);
+    if (!isTestEof) {
+        napi_create_int32(env, 0, &result);
+    } else {
+        napi_create_int32(env, -1, &result);
+    }
+    return result;
+}
+
+static napi_value HttpBodyStreamIsInMemoryFalse(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    
+    bool isTestInMemory = OH_ArkWebHttpBodyStream_IsInMemory(nullptr);
+    if (!isTestInMemory) {
+        napi_create_int32(env, 0, &result);
+    } else {
+        napi_create_int32(env, -1, &result);
+    }
+    return result;
+}
+
+static napi_value ResourceRequestIsRedirectFalse(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    
+    bool isTestIsRedirect = OH_ArkWebResourceRequest_IsRedirect(nullptr);
+    if (!isTestIsRedirect) {
+        napi_create_int32(env, 0, &result);
+    } else {
+        napi_create_int32(env, -1, &result);
+    }
+    return result;
+}
+
+static napi_value ResourceRequestIsMainFrameFalse(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    
+    bool isTestIsMainFrame = OH_ArkWebResourceRequest_IsMainFrame(nullptr);
+    if (!isTestIsMainFrame) {
+        napi_create_int32(env, 0, &result);
+    } else {
+        napi_create_int32(env, -1, &result);
+    }
+    return result;
+}
+
+static napi_value ResourceRequestHasGestureFalse(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    
+    bool isTestHasGesture = OH_ArkWebResourceRequest_HasGesture(nullptr);
+    if (!isTestHasGesture) {
+        napi_create_int32(env, 0, &result);
+    } else {
+        napi_create_int32(env, -1, &result);
+    }
+    return result;
+}
+
+static napi_value RegisterCustomSchemesTrue(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    napi_create_int32(env, testRegisterCustom, &result);
+    return result;
+}
+
+static napi_value RegisterCustomSchemesInvalid(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    int32_t isTest = OH_ArkWeb_RegisterCustomSchemes(nullptr, -2);
+    napi_create_int32(env, isTest, &result);
+    return result;
+}
+
+static napi_value RegisterCustomSchemesError(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    int32_t isTest = OH_ArkWeb_RegisterCustomSchemes("test", -2);
+    napi_create_int32(env, isTest, &result);
+    return result;
+}
+
+static napi_value ServiceWorkerSetSchemeHandlerFalse(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    bool isTest = OH_ArkWebServiceWorker_SetSchemeHandler(nullptr, nullptr);
+    if (!isTest) {
+        napi_create_int32(env, 0, &result);
+    } else {
+        napi_create_int32(env, -1, &result);
+    }
+    return result;
+}
+
+static napi_value SetSchemeHandlerFalse(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    bool isTest = OH_ArkWeb_SetSchemeHandler(nullptr, nullptr, nullptr);
+    if (!isTest) {
+        napi_create_int32(env, 0, &result);
+    } else {
+        napi_create_int32(env, -1, &result);
+    }
+    return result;
+}
+
+static napi_value ClearSchemeHandlersFalse(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    int32_t isTest = OH_ArkWeb_ClearSchemeHandlers(nullptr);
+    napi_create_int32(env, isTest, &result);
+    return result;
+}
+
+static napi_value SchemeHandlerSetUserDataFalse(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    int32_t isTest = OH_ArkWebSchemeHandler_SetUserData(nullptr, nullptr);
+    napi_create_int32(env, isTest, &result);
+    return result;
+}
+
+static napi_value SetOnRequestStartFalse(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    int32_t isTest = OH_ArkWebSchemeHandler_SetOnRequestStart(nullptr, nullptr);
+    napi_create_int32(env, isTest, &result);
+    return result;
+}
+
+static napi_value SetOnRequestStopFalse(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    int32_t isTest = OH_ArkWebSchemeHandler_SetOnRequestStop(nullptr, nullptr);
+    napi_create_int32(env, isTest, &result);
+    return result;
+}
+
+static napi_value ResponseSetUrlFalse(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    int32_t isTestSetUrl = OH_ArkWebResponse_SetUrl(nullptr, "test");
+    napi_create_int32(env, isTestSetUrl, &result);
+    return result;
+}
+
+static napi_value ResponseSetErrorFalse(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    int32_t isTestSetCode = OH_ArkWebResponse_SetError(nullptr, ARKWEB_ERR_CACHE_READ_FAILURE);
+    napi_create_int32(env, isTestSetCode, &result);
+    return result;
+}
+
+
+static napi_value ResponseSetStatusFalse(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    int32_t isTestSetCode = OH_ArkWebResponse_SetStatus(nullptr, 0);
+    napi_create_int32(env, isTestSetCode, &result);
+    return result;
+}
+
+static napi_value ResponseGetStatusFalse(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    int32_t isTestGetStatus = OH_ArkWebResponse_GetStatus(nullptr);
+    napi_create_int32(env, isTestGetStatus, &result);
+    return result;
+}
+
+static napi_value ResponseSetStatusTextFalse(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    int32_t isTestSetStatusText = OH_ArkWebResponse_SetStatusText(nullptr, "test");
+    napi_create_int32(env, isTestSetStatusText, &result);
+    return result;
+}
+
+static napi_value ResponseSetMimeTypeFalse(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    int32_t isTestSetMimeType = OH_ArkWebResponse_SetMimeType(nullptr, "test");
+    napi_create_int32(env, isTestSetMimeType, &result);
+    return result;
+}
+
+static napi_value ResponseSetCharsetFalse(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    int32_t isTestSetCharset = OH_ArkWebResponse_SetCharset(nullptr, "test");
+    napi_create_int32(env, isTestSetCharset, &result);
+    return result;
+}
+
+static napi_value SetHeaderByNameNameNull(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    ArkWeb_Response* testResponse;
+    OH_ArkWeb_CreateResponse(&testResponse);
+    int32_t isSetHeader = OH_ArkWebResponse_SetHeaderByName(testResponse, nullptr, "test", true);
+    napi_create_int32(env, isSetHeader, &result);
+    return result;
+}
+
+static napi_value SetHeaderByNameValueNull(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    ArkWeb_Response* testResponse;
+    OH_ArkWeb_CreateResponse(&testResponse);
+    int32_t isSetHeader = OH_ArkWebResponse_SetHeaderByName(testResponse, "test", nullptr, true);
+    napi_create_int32(env, isSetHeader, &result);
+    return result;
+}
+
+static napi_value SetHeaderByNameOverwriteNull(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    ArkWeb_Response* testResponse;
+    OH_ArkWeb_CreateResponse(&testResponse);
+    int32_t isSetHeader = OH_ArkWebResponse_SetHeaderByName(testResponse, "test", "test", 3);
+    napi_create_int32(env, isSetHeader, &result);
+    return result;
+}
+
+static napi_value ResourceHandlerDestroyFalse(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    int32_t isDestroy = OH_ArkWebResourceHandler_Destroy(nullptr);
+    napi_create_int32(env, isDestroy, &result);
+    return result;
+}
+
+static napi_value DidReceiveResponseFalse(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    int32_t isResponse = OH_ArkWebResourceHandler_DidReceiveResponse(nullptr, nullptr);
+    napi_create_int32(env, isResponse, &result);
+    return result;
+}
+
+static napi_value DidReceiveDataFalse(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    int32_t isResponse = OH_ArkWebResourceHandler_DidReceiveData(nullptr, nullptr, 200);
+    napi_create_int32(env, isResponse, &result);
+    return result;
+}
+
+static napi_value DidFinishFalse(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    int32_t isResponse = OH_ArkWebResourceHandler_DidFinish(nullptr);
+    napi_create_int32(env, isResponse, &result);
+    return result;
+}
+
+static napi_value DidFailWithErrorFalse(napi_env env, napi_callback_info info)
+{
+    napi_value result;
+    int32_t isResponse = OH_ArkWebResourceHandler_DidFailWithError(nullptr, ARKWEB_ERR_CACHE_READ_FAILURE);
+    napi_create_int32(env, isResponse, &result);
+    return result;
+}
+
+
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports) {
     napi_property_descriptor desc[] = {
@@ -303,6 +637,41 @@ static napi_value Init(napi_env env, napi_value exports) {
     nullptr},
         {"httpBodyStreamReadCallback", nullptr, HttpBodyStreamReadCallback, nullptr, nullptr, nullptr, napi_default, 
     nullptr},
+        {"getNativeApiFalse", nullptr, GetNativeApiFalse, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"requestHeaderListFalse", nullptr, RequestHeaderListFalse, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"httpBodyStreamSetUserDataFalse", nullptr, HttpBodyStreamSetUserDataFalse, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"httpBodyStreamSetReadCallbackFalse", nullptr, HttpBodyStreamSetReadCallbackFalse, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"httpBodyStreamInitFalse", nullptr, HttpBodyStreamInitFalse, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"httpBodyStreamIsChunkedFalse", nullptr, HttpBodyStreamIsChunkedFalse, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"httpBodyStreamIsEofFalse", nullptr, HttpBodyStreamIsEofFalse, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"httpBodyStreamIsInMemoryFalse", nullptr, HttpBodyStreamIsInMemoryFalse, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"resourceRequestIsRedirectFalse", nullptr, ResourceRequestIsRedirectFalse, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"resourceRequestIsMainFrameFalse", nullptr, ResourceRequestIsMainFrameFalse, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"resourceRequestHasGestureFalse", nullptr, ResourceRequestHasGestureFalse, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"registerCustomSchemesTrue", nullptr, RegisterCustomSchemesTrue, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"registerCustomSchemesInvalid", nullptr, RegisterCustomSchemesInvalid, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"registerCustomSchemesError", nullptr, RegisterCustomSchemesError, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"serviceWorkerSetSchemeHandlerFalse", nullptr, ServiceWorkerSetSchemeHandlerFalse, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"setSchemeHandlerFalse", nullptr, SetSchemeHandlerFalse, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"clearSchemeHandlersFalse", nullptr, ClearSchemeHandlersFalse, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"schemeHandlerSetUserDataFalse", nullptr, SchemeHandlerSetUserDataFalse, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"setOnRequestStartFalse", nullptr, SetOnRequestStartFalse, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"setOnRequestStopFalse", nullptr, SetOnRequestStopFalse, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"responseSetUrlFalse", nullptr, ResponseSetUrlFalse, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"responseSetErrorFalse", nullptr, ResponseSetErrorFalse, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"responseSetStatusFalse", nullptr, ResponseSetStatusFalse, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"responseGetStatusFalse", nullptr, ResponseGetStatusFalse, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"responseSetStatusTextFalse", nullptr, ResponseSetStatusTextFalse, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"responseSetMimeTypeFalse", nullptr, ResponseSetMimeTypeFalse, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"responseSetCharsetFalse", nullptr, ResponseSetCharsetFalse, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"setHeaderByNameNameNull", nullptr, SetHeaderByNameNameNull, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"setHeaderByNameValueNull", nullptr, SetHeaderByNameValueNull, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"setHeaderByNameOverwriteNull", nullptr, SetHeaderByNameOverwriteNull, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"resourceHandlerDestroyFalse", nullptr, ResourceHandlerDestroyFalse, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"didReceiveResponseFalse", nullptr, DidReceiveResponseFalse, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"didReceiveDataFalse", nullptr, DidReceiveDataFalse, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"didFinishFalse", nullptr, DidFinishFalse, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"didFailWithErrorFalse", nullptr, DidFailWithErrorFalse, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
 
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);

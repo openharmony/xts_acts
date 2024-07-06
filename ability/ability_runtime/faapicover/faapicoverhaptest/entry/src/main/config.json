@@ -1,27 +1,24 @@
 {
   "app": {
-    "bundleName": "com.example.faapicoverhaptest",
     "vendor": "example",
+    "bundleName": "com.example.faapicoverhaptest",
     "version": {
       "code": 1000000,
       "name": "1.0.0"
+    },
+    "apiVersion": {
+      "compatible": 8,
+      "target": 9
     }
   },
   "deviceConfig": {},
   "module": {
-    "package": "com.example.faapicoverhaptest",
-    "name": ".entry",
     "mainAbility": ".MainAbility",
     "deviceType": [
       "default",
-      "tablet"
+      "tablet",
+      "2in1"
     ],
-    "distro": {
-      "deliveryWithInstall": true,
-      "moduleName": "entry",
-      "moduleType": "entry",
-      "installationFree": false
-    },
     "abilities": [
       {
         "skills": [
@@ -35,16 +32,29 @@
           }
         ],
         "orientation": "unspecified",
-        "formsEnabled": false,
+        "visible": true,
+        "srcPath": "MainAbility",
         "name": ".MainAbility",
         "srcLanguage": "ets",
-        "srcPath": "MainAbility",
         "icon": "$media:icon",
         "description": "$string:MainAbility_desc",
+        "formsEnabled": false,
         "label": "$string:MainAbility_label",
         "type": "page",
-        "visible": true,
-        "launchType": "standard"
+        "launchType": "singleton"
+      },
+      {
+          "orientation": "unspecified",
+          "formsEnabled": false,
+          "name": ".TestAbility",
+          "srcLanguage": "ets",
+          "srcPath": "TestAbility",
+          "icon": "$media:icon",
+          "description": "$string:TestAbility_desc",
+          "label": "$string:TestAbility_label",
+          "type": "page",
+          "visible": true,
+          "launchType": "singleton"
       },
       {
         "srcPath": "ServiceAbility",
@@ -65,6 +75,15 @@
         "visible": true
       }
     ],
+    "distro": {
+      "moduleType": "entry",
+      "installationFree": false,
+      "deliveryWithInstall": true,
+      "moduleName": "entry"
+    },
+    "package": "com.example.faapicoverhaptest",
+    "srcPath": "",
+    "name": ".entry",
     "js": [
       {
         "mode": {
@@ -75,6 +94,20 @@
           "pages/index"
         ],
         "name": ".MainAbility",
+        "window": {
+          "designWidth": 720,
+          "autoDesignWidth": false
+        }
+      },
+      {
+        "mode": {
+          "syntax": "ets",
+          "type": "pageAbility"
+        },
+        "pages": [
+          "pages/index"
+        ],
+        "name": ".TestAbility",
         "window": {
           "designWidth": 720,
           "autoDesignWidth": false

@@ -47,11 +47,11 @@ export default class MainAbility extends Ability {
       windowClass = data;
       console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
       try {
-        let properties : window.WindowProperties = windowClass.getWindowProperties();
-        let wRect : window.Rect =  properties.windowRect;
+        let properties: window.WindowProperties = windowClass.getWindowProperties();
+        let wRect: window.Rect = properties.windowRect;
         globalThis.winLeft = wRect.left;
         globalThis.winTop = wRect.top;
-        console.info('Succeeded get winLeft:' + globalThis.winLeft + ',winTop:' + globalThis.winTop );
+        console.info('Succeeded get winLeft:' + globalThis.winLeft + ',winTop:' + globalThis.winTop);
       } catch (exception) {
         console.error('Failed to obtain the window properties. Cause: ' + JSON.stringify(exception));
       }

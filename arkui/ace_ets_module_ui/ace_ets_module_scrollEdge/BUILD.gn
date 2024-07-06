@@ -13,7 +13,5 @@
 
 group("ActsAceEtsModuleScrollEdgeTest") {
   testonly = true
-  if (is_standard_system) {
-    deps = [ "ace_ets_module_scrollEdge_api12:ActsAceEtsComponentBasicScrollEdgeApi12Test" ]
-  }
+  deps = [ "ace_ets_module_scrollEdge_api12:ActsAceEtsComponentBasicScrollEdgeApi12Test" ]
 }

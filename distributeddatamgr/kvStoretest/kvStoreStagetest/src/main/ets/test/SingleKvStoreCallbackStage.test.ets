@@ -177,18 +177,14 @@ export default function singleKvStoreCallbackStageTest(){
     it('testEtsSingleKvStoreGetString101', 0, async function (done) {
       console.info('testSingleKvStoreGetString101');
       try{
-        await kvStore.get(KEY_TEST_STRING_ELEMENT, function (err,data) {
-          if (err == undefined) {
-            console.info('testSingleKvStoreGetString101 get success');
-            expect(null).assertFail();
-          } else {
-            console.info('testSingleKvStoreGetString101 get fail');
-          }
+        await kvStore.get(KEY_TEST_STRING_ELEMENT + "notin", function (err,data) {
+          console.info('testSingleKvStoreGetString101 get Failed err.code' + err.code + "err.message" + err.message);
+          expect(err.code === 15100004).assertTrue();
           done();
         });
       }catch(e) {
-        console.info('testSingleKvStoreGetString101 get e' + e);
-        expect(e != null).assertTrue();
+        console.info('testSingleKvStoreGetString101 get e' + JSON.stringify(e));
+        expect().assertFail();
         done();
       }
     })

@@ -2490,5 +2490,20 @@ export default function nativeApiStringJsunit() {
       expect(res).assertEqual("success")
       done();
     });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_NAPI_0164
+     * @tc.name aceNapiTest0164
+     * @tc.desc aceNapiEtsTest
+     */
+    it('aceNapiTest0164', 0, async function (done) {
+      console.info('aceNapiTest0164 START');
+      let proxyHandler = {};
+      let proxyobj = new Proxy(promiseCase, proxyHandler);
+      let value = napitest.checkUnwrapFunc(proxyobj);
+      console.info('aceNapiTest0164 testString result is: ' + value);
+      expect(value).assertEqual(0);
+      done();
+    });
   })
 }

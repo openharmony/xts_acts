@@ -14,13 +14,27 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import Utils from '../Utils';
+
 export default function themePageToggleTest() {
-  describe('themePageToggleTest', function () {
-    beforeEach(async function (done) {
+  describe('themePageToggleTest', () => {
+    beforeEach(async (done:Function) =>{
       console.info("themePageTest beforeEach start");
-      let options : router.RouterOptions = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/theme/themePageMgmtColorsTest",
       }
       try {
@@ -41,14 +55,14 @@ export default function themePageToggleTest() {
     });
 
     /**
-     * @tc.number    themeColorTest
-     * @tc.name      themeInterfaceIsValidTest_0100
-     * @tc.desc      theme Test
-     * @tc.level:    Level 2
+     * @tc.number themeColorTest
+     * @tc.name themeInterfaceIsValidTest_0100
+     * @tc.desc theme Test
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('themeInterfaceIsValidTest_0100', 0, async function (done) {
+    it('themeInterfaceIsValidTest_0100', 0, async (done:Function) =>{
       console.info('themeInterfaceIsValidTest_0100 START');
       let driver = await Driver.create()
       await Utils.sleep(1000);
@@ -58,14 +72,12 @@ export default function themePageToggleTest() {
       await Utils.sleep(2000);
       // test the color whether change
       let strJson = getInspectorByKey('toggleBg');
-      let obj = JSON.parse(strJson);
-      console.info("[themeInterfaceIsValidTest_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[themeInterfaceIsValidTest_0100] component obj is: " + obj.$attrs.backgroundColor);
-      expect(obj.$attrs.backgroundColor).assertEqual('#00000000');
+      console.info("[themeInterfaceIsValidTest_0100] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[themeInterfaceIsValidTest_0100] component JSON.parse(strJson) is: " + JSON.parse(strJson).$attrs.backgroundColor);
+      expect(JSON.parse(strJson).$attrs.backgroundColor).assertEqual('#00000000');
       console.info('[themeInterfaceIsValidTest_0100] END');
       done();
     });
-
   })
 }
 

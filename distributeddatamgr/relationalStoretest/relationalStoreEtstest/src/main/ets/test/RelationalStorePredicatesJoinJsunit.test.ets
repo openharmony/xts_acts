@@ -119,7 +119,7 @@ describe('relationalStorePredicatesJoinTest', function () {
 
     /**
      * @tc.name: testRdbJoin001
-     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesJsAPITest_1270
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesJsEtsTest_1270
      * @tc.desc: sql query inner join test
      * @tc.size MediumTest
      * @tc.type Function
@@ -145,7 +145,7 @@ describe('relationalStorePredicatesJoinTest', function () {
 
     /**
      * @tc.name: testRdbJoin002
-     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesJsAPITest_1280
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesEtsAPITest_1280
      * @tc.desc: sql query cross join test
      * @tc.size MediumTest
      * @tc.type Function
@@ -173,7 +173,7 @@ describe('relationalStorePredicatesJoinTest', function () {
 
     /**
      * @tc.name: testRdbJoin003
-     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesJsAPITest_1290
+     * @tc.number: SUB_DistributedData_RelationalStore_SDK_PredicatesEtsAPITest_1290
      * @tc.desc: sql query left outer join test
      * @tc.size MediumTest
      * @tc.type Function

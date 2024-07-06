@@ -23,7 +23,7 @@ export default class CommonFunc {
   public static rectBottom: number;
   public static rectValue: RectValue;
 
-  static sleep(time: number){
+  static sleep(time: number) {
     return new Promise((resolve: (value: string) => void) => {
       setTimeout(() => {
         resolve('ok')
@@ -33,7 +33,7 @@ export default class CommonFunc {
     })
   }
 
-  static getComponentRect(key: string){
+  static getComponentRect(key: string) {
     let strJson: string = getInspectorByKey(key);
     console.info('[getInspectorByKey] current component obj is: ' + JSON.stringify(JSON.parse(strJson)));
     console.info('[getInspectorByKey] rectInfo is: ' + JSON.parse('[' + JSON.parse(strJson).$rect + ']'));
@@ -46,23 +46,25 @@ export default class CommonFunc {
     }
   }
 
-  static getComponentRectOnScreen(key: string){
+  static getComponentRectOnScreen(key: string): RectValue {
     let strJson = getInspectorByKey(key);
-    let obj = JSON.parse(strJson);
-    console.info('[getInspectorByKey] current component obj is: ' + JSON.stringify(obj));
-    let rectInfo = JSON.parse('[' + obj.$rect + ']');
-    console.info('[getInspectorByKey] rectInfo is: ' + rectInfo);
-    console.info('windowRect Left: ' + globalThis.winLeft + ',' + 'windowRect Top: ' + globalThis.winTop );
-    this.rectLeft = JSON.parse('[' + rectInfo[0] + ']')[0] + globalThis.winLeft;
-    this.rectTop = JSON.parse('[' + rectInfo[0] + ']')[1] + globalThis.winTop;
-    this.rectRight = JSON.parse('[' + rectInfo[1] + ']')[0] + globalThis.winLeft;
-    this.rectBottom = JSON.parse('[' + rectInfo[1] + ']')[1] + globalThis.winTop;
-    return this.rectValue = {
-      'left': this.rectLeft, 'top': this.rectTop, 'right': this.rectRight, 'bottom': this.rectBottom
+    console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(JSON.parse(strJson)));
+    console.info("[getInspectorByKey] rectInfo is: " + JSON.parse('[' + JSON.parse(strJson).$rect + ']'));
+    console.info("windowRect Left: " + globalThis.winLeft + ',' + "windowRect Top: " + globalThis.winTop);
+    CommonFunc.rectLeft = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson)
+      .$rect + ']')[0] + ']')[0] + globalThis.winLeft;
+    CommonFunc.rectTop = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson)
+      .$rect + ']')[0] + ']')[1] + globalThis.winTop;
+    CommonFunc.rectRight = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson)
+      .$rect + ']')[1] + ']')[0] + globalThis.winLeft;
+    CommonFunc.rectBottom = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson)
+      .$rect + ']')[1] + ']')[1] + globalThis.winTop;
+    return CommonFunc.rectValue = {
+      left: CommonFunc.rectLeft, top: CommonFunc.rectTop, right: CommonFunc.rectRight, bottom: CommonFunc.rectBottom
     }
   }
 
-  static setScreenOrientation(orientation: number){
+  static setScreenOrientation(orientation: number) {
     // 1 -- 2 |
     let screenClass: screen.Screen | null = null;
     screen.getAllScreens().then(data => {

@@ -18,6 +18,7 @@
 #include "drawing_bitmap.h"
 #include "drawing_color.h"
 #include "drawing_color_filter.h"
+#include "drawing_error_code.h"
 #include "drawing_image.h"
 #include "drawing_image_filter.h"
 #include "drawing_mask_filter.h"
@@ -32,31 +33,75 @@ namespace Drawing {
 class DrawingNativeMemoryStreamTest : public testing::Test {};
 
 /*
- * @tc.name: OH_Drawing_MemoryStreamCreate
- * @tc.desc: test for OH_Drawing_MemoryStreamCreate.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MEMORY_STREAM_0100
+ * @tc.name: testMemoryStreamCreateNormal
+ * @tc.desc: Test for creating memory stream with normal parameters.
  * @tc.size  : SmallTest
  * @tc.type  : Function
- * @tc.level : Level 1
+ * @tc.level : Level 0
  */
-HWTEST_F(DrawingNativeMemoryStreamTest, OH_Drawing_MemoryStreamCreate, TestSize.Level1) {
-    size_t length = 1;
-    OH_Drawing_MemoryStream *memoryStream = OH_Drawing_MemoryStreamCreate(nullptr, length, false);
-    OH_Drawing_MemoryStreamDestroy(memoryStream);
-    EXPECT_TRUE(true);
+HWTEST_F(DrawingNativeMemoryStreamTest, testMemoryStreamCreateNormal, TestSize.Level0) {
+    // 1. Call OH_Drawing_MemoryStreamCreate with copyData set to true
+    char data[10] = {0};
+    OH_Drawing_MemoryStream *stream = OH_Drawing_MemoryStreamCreate(data, 10, true);
+    OH_Drawing_MemoryStreamDestroy(stream);
+    // 2. Call OH_Drawing_MemoryStreamCreate with copyData set to false
+    stream = OH_Drawing_MemoryStreamCreate(data, 10, false);
+    OH_Drawing_MemoryStreamDestroy(stream);
 }
 
 /*
- * @tc.name: OH_Drawing_MemoryStreamDestroy
- * @tc.desc: test for OH_Drawing_MemoryStreamDestroy.
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MEMORY_STREAM_0101
+ * @tc.name: testMemoryStreamCreateNull
+ * @tc.desc: Test for creating memory stream with NULL or invalid parameters.
  * @tc.size  : SmallTest
  * @tc.type  : Function
- * @tc.level : Level 1
+ * @tc.level : Level 3
  */
-HWTEST_F(DrawingNativeMemoryStreamTest, OH_Drawing_MemoryStreamDestroy, TestSize.Level1) {
-    size_t length = 1;
-    OH_Drawing_MemoryStream *memoryStream = OH_Drawing_MemoryStreamCreate(nullptr, length, false);
-    OH_Drawing_MemoryStreamDestroy(memoryStream);
-    EXPECT_TRUE(true);
+HWTEST_F(DrawingNativeMemoryStreamTest, testMemoryStreamCreateNull, TestSize.Level3) {
+    char data[10] = {0};
+    // 1. OH_Drawing_MemoryStreamCreate with the first parameter set to nullptr, check the error code using
+    // OH_Drawing_ErrorCodeGet
+    OH_Drawing_MemoryStream *stream = OH_Drawing_MemoryStreamCreate(nullptr, 10, true);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 2. OH_Drawing_MemoryStreamCreate with the second parameter set to 0, check the error code using
+    // OH_Drawing_ErrorCodeGet
+    stream = OH_Drawing_MemoryStreamCreate(data, 0, true);
+    EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_INVALID_PARAMETER);
+    // 3. Free memory
+    OH_Drawing_MemoryStreamDestroy(stream);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MEMORY_STREAM_0102
+ * @tc.name: testMemoryStreamCreateAbnormal
+ * @tc.desc: Test for creating memory stream with abnormal parameters (negative values).
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMemoryStreamTest, testMemoryStreamCreateAbnormal, TestSize.Level3) {
+    // 1. OH_Drawing_MemoryStreamCreate with a negative value as the second parameter
+    OH_Drawing_MemoryStream *stream = OH_Drawing_MemoryStreamCreate(nullptr, -10, true);
+    // 2. Free memory
+    OH_Drawing_MemoryStreamDestroy(stream);
+}
+
+/*
+ * @tc.number: SUB_BASIC_GRAPHICS_SPECIAL_API_C_DRAWING_MEMORY_STREAM_0103
+ * @tc.name: testMemoryStreamCreateMultipleCalls
+ * @tc.desc: Test for creating memory stream with multiple calls using different data segments.
+ * @tc.size  : SmallTest
+ * @tc.type  : Function
+ * @tc.level : Level 3
+ */
+HWTEST_F(DrawingNativeMemoryStreamTest, testMemoryStreamCreateMultipleCalls, TestSize.Level3) {
+    // 1. Call OH_Drawing_MemoryStreamCreate 10 times, passing different data segments
+    for (int i = 0; i < 10; i++) {
+        char data[10] = {i};
+        OH_Drawing_MemoryStream *stream = OH_Drawing_MemoryStreamCreate(data, 10, true);
+        OH_Drawing_MemoryStreamDestroy(stream);
+    }
 }
 
 } // namespace Drawing

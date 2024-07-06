@@ -23,7 +23,9 @@ import composeListItemOperateItemSubIcon from './composeListItem/composeListItem
 import composeListItemOperateItemSwitch from './composeListItem/composeListItemOperateItemSwitch.test.ets';
 import composeListItemPageTest from './composeListItem/composeListItemPageTest.test.ets';
 import exceptionPromptTest from './exceptionPrompt/exceptionPromptTest.test.ets';
+import exceptionPromptTestTwo from './exceptionPrompt/exceptionPromptTestTwo.test.ets';
 import filterTest from './filter/filterTest.test.ets';
+import filterTestTwo from './filter/filterTestTwo.test.ets';
 import gridObjectSortComponentTest from './gridObjectSortComponent/gridObjectSortComponentTest.test.ets';
 import progressButtonTest from './progressButton/progressButtonTest.test.ets';
 import selectTitleBarTest from './selectTitleBar/selectTitleBarTest.test.ets';
@@ -32,6 +34,18 @@ import tabTitleBarPageTest from './tabTitleBar/tabTitleBarPageTest.test.ets';
 import toolBarItemState from './toolBar/toolBarItemState.test.ets';
 import toolBarPageTest from './toolBar/toolBarPageTest.test.ets';
 import treeViewPageTest from './treeView/treeViewPageTest.test.ets';
+import treeViewNodeParamContainer from './treeView/treeViewNodeParamContainer.test.ets';
+import treeViewCallbackParamChildIndex from './treeView/treeViewCallbackParamChildIndex.test.ets';
+import alertDialogTest from './dialog/alertDialogTest.test.ets';
+import confirmDialogTest from './dialog/confirmDialogTest.test.ets';
+import customContentDialogTest from './dialog/customContentDialogTest.test.ets';
+import selectDialogTest from './dialog/selectDialogTest.test.ets';
+import tipsDialogTest from './dialog/tipsDialogTest.test.ets';
+import editableTitleBarSafeAreaEdges from './editableTitleBar/editableTitleBarSafeAreaEdges.test.ets';
+import editableTitleBarSafeAreaTypes from './editableTitleBar/editableTitleBarSafeAreaTypes.test.ets';
+import subHeaderButton from './subHeader/subHeaderButton.test.ets';
+import subHeaderIconGroup from './subHeader/subHeaderIconGroup.test.ets';
+import subHeaderTextArrow from './subHeader/subHeaderTextArrow.test.ets';
 
 export default function testsuite() {
   composeListItemIconType();
@@ -44,7 +58,9 @@ export default function testsuite() {
   composeListItemOperateItemSwitch();
   composeListItemPageTest();
   exceptionPromptTest();
+  exceptionPromptTestTwo();
   filterTest();
+  filterTestTwo();
   gridObjectSortComponentTest();
   progressButtonTest();
   selectTitleBarTest();
@@ -53,4 +69,16 @@ export default function testsuite() {
   toolBarItemState();
   toolBarPageTest();
   treeViewPageTest();
+  treeViewNodeParamContainer();
+  treeViewCallbackParamChildIndex();
+  alertDialogTest();
+  confirmDialogTest();
+  customContentDialogTest();
+  selectDialogTest();
+  tipsDialogTest();
+  editableTitleBarSafeAreaEdges();
+  editableTitleBarSafeAreaTypes();
+  subHeaderButton();
+  subHeaderIconGroup();
+  subHeaderTextArrow();
 }

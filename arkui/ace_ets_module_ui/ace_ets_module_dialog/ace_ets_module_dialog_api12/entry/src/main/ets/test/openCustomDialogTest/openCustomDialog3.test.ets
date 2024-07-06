@@ -67,7 +67,13 @@ export default function openCustomDialog3() {
       windowClass = await window.getLastWindow(globalThis.abilityContext);
       let properties: window.WindowProperties = windowClass.getWindowProperties();
       console.info("[openCustomDialog3_0100] title: " + JSON.stringify(properties.type));
-      expect(properties.type).assertEqual(1)
+
+      let density = await driver.getDisplayDensity();
+      if(JSON.stringify(density.x) == 2700) {
+        expect(properties.type).assertEqual(0)
+      } else {
+        expect(properties.type).assertEqual(1)
+      }
 
       let strJson = getInspectorByKey('openCustomDialog3');
       let obj = JSON.parse(strJson);

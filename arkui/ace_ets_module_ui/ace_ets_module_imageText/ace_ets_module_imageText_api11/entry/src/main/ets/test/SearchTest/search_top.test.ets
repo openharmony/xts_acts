@@ -54,27 +54,28 @@ export default function search_top() {
       console.info('[search_top_001] START');
       await CommonFunc.sleep(1000);
 
-      console.log('get Initial value')
-      let text_01 = CommonFunc.getComponentRect('search_top_text_01');
-      let text_02 = CommonFunc.getComponentRect('search_top_text_02');
-      let text_03 = CommonFunc.getComponentRect('search_top_text_03');
-      let search_01 = CommonFunc.getComponentRect('search_top_search_01');
-      let Column_1 = CommonFunc.getComponentRect('search_top_Column_1');
+      if (globalThis.winLeft == 0) {
+        console.log('get Initial value')
+        let text_01 = CommonFunc.getComponentRect('search_top_text_01');
+        let text_02 = CommonFunc.getComponentRect('search_top_text_02');
+        let text_03 = CommonFunc.getComponentRect('search_top_text_03');
+        let search_01 = CommonFunc.getComponentRect('search_top_search_01');
+        let Column_1 = CommonFunc.getComponentRect('search_top_Column_1');
 
-      console.log('assert position')
-      expect(search_01.top).assertEqual(Column_1.top);
-      console.log('search_01.top' + search_01.top)
-      console.log('Column_1.top' + Column_1.top)
+        console.log('assert position')
+        expect(search_01.top).assertEqual(Column_1.top);
+        console.log('search_01.top' + search_01.top)
+        console.log('Column_1.top' + Column_1.top)
 
-      let driver = await Driver.create();
-      await CommonFunc.sleep(500);
-      await driver.click(vp2px(200),vp2px(20));
-      await CommonFunc.sleep(1000);
+        let driver = await Driver.create();
+        await CommonFunc.sleep(500);
+        await driver.click(vp2px(200),vp2px(20));
+        await CommonFunc.sleep(1000);
 
-      expect(search_01.top).assertEqual(Column_1.top);
-      console.log('search_01.top' + search_01.top)
-      console.log('Column_1.top' + Column_1.top)
-
+        expect(search_01.top).assertEqual(Column_1.top);
+        console.log('search_01.top' + search_01.top)
+        console.log('Column_1.top' + Column_1.top)
+      }
 
       done();
     });

@@ -112,9 +112,9 @@ describe('UrlFunTest', function () {
             params.append(123,"456")
             expect(0).assertEqual(1)
         } catch (err) {
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of 123 must be string`)
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of 123 must be string`)
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual("Parameter error.The type of 123 must be string");
+            expect(err.message).assertEqual("Parameter error. The type of 123 must be string");
         }
     })
 
@@ -135,9 +135,9 @@ describe('UrlFunTest', function () {
             params.append(a, b)
             expect(0).assertEqual(1)
         } catch (err) {
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${b} must be string`)
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of ${b} must be string`)
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual(`Parameter error.The type of ${b} must be string`);
+            expect(err.message).assertEqual(`Parameter error. The type of ${b} must be string`);
         }
     })
 
@@ -236,9 +236,9 @@ describe('UrlFunTest', function () {
             params.delete();
             expect(0).assertEqual(1)
         } catch (err) {
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${arguments[0]} must be string`)
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of ${arguments[0]} must be string`)
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual(`Parameter error.The type of ${arguments[0]} must be string`);
+            expect(err.message).assertEqual(`Parameter error. The type of ${arguments[0]} must be string`);
         }
     })
 
@@ -257,9 +257,9 @@ describe('UrlFunTest', function () {
             params.delete(4);
             expect(0).assertEqual(1)
         } catch (err) {
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of 4 must be string`)
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of 4 must be string`)
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual(`Parameter error.The type of 4 must be string`);
+            expect(err.message).assertEqual(`Parameter error. The type of 4 must be string`);
         }
     })
 
@@ -619,9 +619,9 @@ describe('UrlFunTest', function () {
             params.forEach(func);
             expect(0).assertEqual(1)
         } catch(err) {
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${func} must be function`)
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of ${func} must be function`)
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual(`Parameter error.The type of ${func} must be function`);
+            expect(err.message).assertEqual(`Parameter error. The type of ${func} must be function`);
         }
     })
 
@@ -738,9 +738,9 @@ describe('UrlFunTest', function () {
             var result =  params.get(a)
             expect(0).assertEqual(1)
         }catch(err){
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${a} must be string`)
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of ${a} must be string`)
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual(`Parameter error.The type of ${a} must be string`);
+            expect(err.message).assertEqual(`Parameter error. The type of ${a} must be string`);
         }
     })
 
@@ -835,9 +835,9 @@ describe('UrlFunTest', function () {
             var result =  params.getAll(b)
             expect(0).assertEqual(1)
         } catch(err) {
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${b} must be string`)
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of ${b} must be string`)
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual(`Parameter error.The type of ${b} must be string`);
+            expect(err.message).assertEqual(`Parameter error. The type of ${b} must be string`);
         }
     })
 
@@ -927,9 +927,9 @@ describe('UrlFunTest', function () {
             var a = 1;
             params.has(a);
         } catch(e) {
-            expect(e.toString()).assertEqual(`BusinessError: Parameter error.The type of ${a} must be string`);
+            expect(e.toString()).assertEqual(`BusinessError: Parameter error. The type of ${a} must be string`);
             expect(e.code).assertEqual(401)
-            expect(e.message).assertEqual(`Parameter error.The type of ${a} must be string`);
+            expect(e.message).assertEqual(`Parameter error. The type of ${a} must be string`);
         }
     })
 
@@ -1150,9 +1150,9 @@ describe('UrlFunTest', function () {
             var res = params.toString();
             expect(0).assertEqual(1);
         } catch(err) {
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${a} must be string`)
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of ${a} must be string`)
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual(`Parameter error.The type of ${a} must be string`);
+            expect(err.message).assertEqual(`Parameter error. The type of ${a} must be string`);
         }
     })
 
@@ -1174,9 +1174,9 @@ describe('UrlFunTest', function () {
             var res = params.toString();
             expect(0).assertEqual(1);
         } catch(err) {
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${b} must be string`)
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of ${b} must be string`)
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual(`Parameter error.The type of ${b} must be string`);
+            expect(err.message).assertEqual(`Parameter error. The type of ${b} must be string`);
         }
     })
 
@@ -1554,9 +1554,9 @@ describe('UrlFunTest', function () {
             var param = 123456789;
             let params = new Url.URLParams(param)
         } catch(err) {
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${param} must be string`)
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of ${param} must be string`)
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual(`Parameter error.The type of ${param} must be string`);
+            expect(err.message).assertEqual(`Parameter error. The type of ${param} must be string`);
         }
     })
 
@@ -1575,9 +1575,9 @@ describe('UrlFunTest', function () {
               ];
             let params = new Url.URLParams(param);
         } catch(err) {
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${param} must be string[][]`)
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of ${param} must be string[][]`)
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual(`Parameter error.The type of ${param} must be string[][]`);
+            expect(err.message).assertEqual(`Parameter error. The type of ${param} must be string[][]`);
         }
     })
 
@@ -1693,9 +1693,9 @@ describe('UrlFunTest', function () {
             var a = 1;
             params.append(a, "123")
         } catch(e) {
-            expect(e.toString()).assertEqual(`BusinessError: Parameter error.The type of ${a} must be string`);
+            expect(e.toString()).assertEqual(`BusinessError: Parameter error. The type of ${a} must be string`);
             expect(e.code).assertEqual(401)
-            expect(e.message).assertEqual(`Parameter error.The type of ${a} must be string`);
+            expect(e.message).assertEqual(`Parameter error. The type of ${a} must be string`);
         }
     })
 
@@ -2360,9 +2360,9 @@ describe('UrlFunTest', function () {
             var a = 1;
             params.has(a);
         } catch(e) {
-            expect(e.toString()).assertEqual(`BusinessError: Parameter error.The type of ${a} must be string`);
+            expect(e.toString()).assertEqual(`BusinessError: Parameter error. The type of ${a} must be string`);
             expect(e.code).assertEqual(401)
-            expect(e.message).assertEqual(`Parameter error.The type of ${a} must be string`);
+            expect(e.message).assertEqual(`Parameter error. The type of ${a} must be string`);
         }
     })
 
@@ -2564,9 +2564,9 @@ describe('UrlFunTest', function () {
             var a = 12;
             params.set(a, 'BBB');
         } catch(err) {
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${a} must be string`)
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of ${a} must be string`)
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual(`Parameter error.The type of ${a} must be string`);
+            expect(err.message).assertEqual(`Parameter error. The type of ${a} must be string`);
         }
     })
 
@@ -4515,9 +4515,9 @@ describe('UrlFunTest', function () {
             Url.URL.parseURL(a)
             expect(0).assertEqual(1)
         } catch(err) {
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${a} must be string`)
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of ${a} must be string`)
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual(`Parameter error.The type of ${a} must be string`);
+            expect(err.message).assertEqual(`Parameter error. The type of ${a} must be string`);
         }
     })
 
@@ -4538,9 +4538,9 @@ describe('UrlFunTest', function () {
             Url.URL.parseURL(a, b)
             expect(0).assertEqual(1)
         } catch(err) {
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${a} must be string`)
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of ${a} must be string`)
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual(`Parameter error.The type of ${a} must be string`);
+            expect(err.message).assertEqual(`Parameter error. The type of ${a} must be string`);
         }
     })
 
@@ -4561,9 +4561,9 @@ describe('UrlFunTest', function () {
             Url.URL.parseURL(a, b)
             expect(0).assertEqual(1)
         } catch(err) {
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${b} must be string or URL`);
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of ${b} must be string or URL`);
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual(`Parameter error.The type of ${b} must be string or URL`);
+            expect(err.message).assertEqual(`Parameter error. The type of ${b} must be string or URL`);
         }
     })
 

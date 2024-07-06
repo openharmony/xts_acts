@@ -13,27 +13,25 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textInputHeightAdaptivePolicy() {
-  describe('textInputHeightAdaptivePolicy', function () {
-    beforeEach(async function (done) {
+  describe('textInputHeightAdaptivePolicy', () => {
+    beforeEach(async (done: Function) => {
       console.info("textInputHeightAdaptivePolicy beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textInputHeightAdaptivePolicy',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textInputHeightAdaptivePolicy',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get textInputHeightAdaptivePolicy state pages: " + JSON.stringify(pages));
         if (!("textInputHeightAdaptivePolicy" == pages.name)) {
           console.info("get textInputHeightAdaptivePolicy pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textInputHeightAdaptivePolicy page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push textInputHeightAdaptivePolicy page error: " + err);
@@ -44,21 +42,21 @@ export default function textInputHeightAdaptivePolicy() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("textInputHeightAdaptivePolicy after each called");
     })
 
     /**
      * @tc.number textInputHeightAdaptivePolicy0100
-     * @tc.name   Test the TextInputHeightAdaptivePolicy property of the textInput component
-     * @tc.desc   set the textOverflow property value is TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the TextInputHeightAdaptivePolicy property of the textInput component
+     * @tc.desc set the textOverflow property value is TextHeightAdaptivePolicy.LAYOUT_CONSTRAINT_FIRST
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textInputHeightAdaptivePolicy0100', 0, async function (done) {
-      var tagName = 'textInputHeightAdaptivePolicy0100';
+    it('textInputHeightAdaptivePolicy0100', 0, async (done: Function) => {
+      let tagName = 'textInputHeightAdaptivePolicy0100';
       console.info('[' + tagName + '] START============================');
 
       let strJsonNew = getInspectorByKey('key_textInput_heightAdaptivePolicy_001');
@@ -74,43 +72,41 @@ export default function textInputHeightAdaptivePolicy() {
 
     /**
      * @tc.number textInputHeightAdaptivePolicy0200
-     * @tc.name   Test the textOverflow property of the textInput component
-     * @tc.desc   set the textOverflow property value is TextHeightAdaptivePolicy.MAX_LINES_FIRST
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the textOverflow property of the textInput component
+     * @tc.desc set the textOverflow property value is TextHeightAdaptivePolicy.MAX_LINES_FIRST
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textInputHeightAdaptivePolicy0200', 0, async function (done) {
-      var tagName = 'textInputHeightAdaptivePolicy0200';
+    it('textInputHeightAdaptivePolicy0200', 0, async (done: Function) => {
+      let tagName = 'textInputHeightAdaptivePolicy0200';
       console.info('[' + tagName + '] START============================');
 
       let strJsonNew = getInspectorByKey('key_textInput_heightAdaptivePolicy_002');
-      let obj = JSON.parse(strJsonNew);
-      console.info('[' + tagName + '] TextInput heightAdaptivePolicy is: ' + JSON.stringify(obj.$attrs.heightAdaptivePolicy));
+      console.info('[' + tagName + '] TextInput heightAdaptivePolicy is: ' + JSON.stringify(JSON.parse(strJsonNew).$attrs.heightAdaptivePolicy));
 
-      expect(obj.$attrs.heightAdaptivePolicy).assertEqual("TextHeightAdaptivePolicy.MAX_LINES_FIRST")
+      expect(JSON.parse(strJsonNew).$attrs.heightAdaptivePolicy).assertEqual("TextHeightAdaptivePolicy.MAX_LINES_FIRST")
 
       console.info('[' + tagName + '] END ===========================');
       done();
     });
 
     /**
-    * @tc.number textInputHeightAdaptivePolicy0300
-    * @tc.name   Test the textOverflow property of the textInput component
-    * @tc.desc   set the textOverflow property value is TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST
-    * @tc.size   MediumTest
-    * @tc.type   Function
-    * @tc.level  0
-    */
-    it('textInputHeightAdaptivePolicy0300', 0, async function (done) {
-      var tagName = 'textInputHeightAdaptivePolicy0300';
+     * @tc.number textInputHeightAdaptivePolicy0300
+     * @tc.name Test the textOverflow property of the textInput component
+     * @tc.desc set the textOverflow property value is TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
+     */
+    it('textInputHeightAdaptivePolicy0300', 0, async (done: Function) => {
+      let tagName = 'textInputHeightAdaptivePolicy0300';
       console.info('[' + tagName + '] START============================');
 
       let strJsonNew = getInspectorByKey('key_textInput_heightAdaptivePolicy_003');
-      let obj = JSON.parse(strJsonNew);
-      console.info('[' + tagName + '] TextArea heightAdaptivePolicy is: ' + JSON.stringify(obj.$attrs.heightAdaptivePolicy));
+      console.info('[' + tagName + '] TextArea heightAdaptivePolicy is: ' + JSON.stringify(JSON.parse(strJsonNew).$attrs.heightAdaptivePolicy));
 
-      expect(obj.$attrs.heightAdaptivePolicy).assertEqual("TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST")
+      expect(JSON.parse(strJsonNew).$attrs.heightAdaptivePolicy).assertEqual("TextHeightAdaptivePolicy.MIN_FONT_SIZE_FIRST")
 
       console.info('[' + tagName + '] END ===========================');
       done();

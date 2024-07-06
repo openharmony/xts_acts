@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 
-import themePageTest from "./theme/themePageTest.test.ets";
-import themePageToggleTest from "./theme/themePageToggleTest.test.ets";
-import themePageSliderTest from "./theme/themePageSliderTest.test.ets";
+import themePageTest from "./theme/themePageTest.test";
+import themePageToggleTest from "./theme/themePageToggleTest.test";
+import themePageSliderTest from "./theme/themePageSliderTest.test";
 
-import APIFontPrimaryTest from "./theme/APIFontPrimaryTest.test.ets";
-import themePageListTest from "./theme/themePageListTest.test.ets";
+import APIFontPrimaryTest from "./theme/APIFontPrimaryTest.test";
+import themePageListTest from "./theme/themePageListTest.test";
 export default function testsuite() {
   APIFontPrimaryTest();
   themePageTest();

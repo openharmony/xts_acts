@@ -56,7 +56,7 @@ struct RichEditorMenuPolicy {
           .borderWidth(1)
           .borderColor(Color.Green)
           .width(400)
-          .height(200)
+          .height(100)
           .borderRadius(this.radius)
       }
       .borderWidth(1)

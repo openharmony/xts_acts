@@ -13,22 +13,21 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 import window from '@ohos.window';
 import UIAbility from '@ohos.app.ability.UIAbility';
-import { Component, Driver, ON } from '@ohos.UiTest';
 import { BusinessError } from '@ohos.base';
 
 
 export default function DetentsChange() {
-  describe('DetentsChange', function () {
-    beforeEach(async function (done) {
+  describe('DetentsChange', () => {
+    beforeEach(async (done: Function) => {
       console.info("DetentsChange beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/bindSheet/DetentsChange',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/bindSheet/DetentsChange',
       }
       try {
         router.clear();
@@ -52,7 +51,7 @@ export default function DetentsChange() {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('DetentsChange_0100', 0, async function (done) {
+    it('DetentsChange_0100', 0, async (done: Function) => {
       console.info('DetentsChange_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -61,7 +60,7 @@ export default function DetentsChange() {
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('DetentsChangeValue');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[DetentsChange_0100] component obj is: " + JSON.stringify(obj));
       console.info("[DetentsChange_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("DetentsChange success");

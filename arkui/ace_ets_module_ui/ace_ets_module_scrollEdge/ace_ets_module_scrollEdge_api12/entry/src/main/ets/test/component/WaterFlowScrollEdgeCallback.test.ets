@@ -30,7 +30,7 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function WaterFlowScrollEdgeCallbackJsunit() {
-  describe('WaterFlowScrollEdgeCallbackTest', function () {
+  describe('WaterFlowScrollEdgeCallbackJsunit', function () {
     beforeEach(async function (done) {
       console.info('text beforeEach start');
       let options = {

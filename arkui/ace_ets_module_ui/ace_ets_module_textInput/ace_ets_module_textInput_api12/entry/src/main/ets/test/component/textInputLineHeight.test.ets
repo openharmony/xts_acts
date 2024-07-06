@@ -13,27 +13,25 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../Utils';
 
 export default function textInputLineHeight() {
-  describe('textInputLineHeight', function () {
-    beforeEach(async function (done) {
+  describe('textInputLineHeight', () => {
+    beforeEach(async (done: Function) => {
       console.info("textInputLineHeightTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textInputLineHeight',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textInputLineHeight',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get textInputLineHeight state pages: " + JSON.stringify(pages));
         if (!("textInputLineHeight" == pages.name)) {
           console.info("get textInputLineHeight pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textInputLineHeight page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push textInputLineHeight page error: " + err);
@@ -44,25 +42,24 @@ export default function textInputLineHeight() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("textInputLineHeight after each called");
     })
 
     /**
-       * @tc.number textInputLineHeight_0100
-       * @tc.name   Test the properties of components
-       * @tc.desc   Set attribute values
-       * @tc.size   MediumTest
-       * @tc.type   Function
-       * @tc.level  0
-       */
-    it('textInputLineHeight_0100', 0, async function (done) {
+     * @tc.number textInputLineHeight_0100
+     * @tc.name Test the properties of components
+     * @tc.desc Set attribute values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
+     */
+    it('textInputLineHeight_0100', 0, async (done: Function) => {
       console.info('[textInputLineHeight_0100] START');
       let strJson = getInspectorByKey('key_textInput_lineHeight_001');
-      let obj = JSON.parse(strJson);
-      console.info("[textInputLineHeight_0100] obj is: " + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.lineHeight).assertEqual('30.00fp');
+      console.info("[textInputLineHeight_0100] obj is: " + JSON.stringify(JSON.parse(strJson).$attrs));
+      expect(JSON.parse(strJson).$attrs.lineHeight).assertEqual('30.00fp');
       console.info('[textInputLineHeight_0100] END');
       done();
     });
