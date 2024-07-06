@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -22,32 +22,38 @@ export default {
     data: {
     },
     onInit() {
-        this.title = "scene getAllAccounts";
-    },
-    onShow() {
-        console.info('====>scene getAllAccounts start====');
-        var appAccountManager = account.createAppAccountManager();
-        console.info("====>creat scene manager finish====");
-        var enableBundle = "com.example.actsgetallaccounts";
-        var enableBundle2 = "com.example.actsgetaccountsbyowner";
-        console.info("====>add account scene start====");
-        appAccountManager.createAccount("account_name_scene_single", (err)=>{
-            console.info("====>add account scene err:" + JSON.stringify(err));
-            appAccountManager.setAppAccess("account_name_scene_single", enableBundle, true, (err)=>{
-                console.info("====>enableAppAccess scene err:" + JSON.stringify(err));
-                appAccountManager.setAppAccess("account_name_scene_single", enableBundle2, true, async (err)=>{
-                    console.info("====>enableAppAccess scene err:" + JSON.stringify(err));
-                    featureAbility.terminateSelfWithResult({
-                        resultCode: 1,
-                        want:
-                        {
-                            bundleName: "com.example.actsscenegetallaccounts",
-                            abilityName: "com.example.actsscenegetallaccounts.MainAbility"
-                        }
-                    })
-                })                
+        let enableBundle = 'com.example.actsgetallaccounts';
+        let enableBundle2 = 'com.example.actsgetaccountsbyowner';
+        this.title = 'scene getAllAccounts';
+        console.info('====>scene accessible account start====');
+        console.info('====>scene add account start====');
+        let appAccountManager = account.createAppAccountManager();
+        console.info('====>scene create scene manager finish====');
+        appAccountManager.createAccount('account_name_scene_single', async (err)=>{
+            console.info('====>add account scene err:' + JSON.stringify(err));
+            console.info('====>scene setAppAccess start====');
+            try {
+                await appAccountManager.setAppAccess('account_name_scene_single', enableBundle, true);
+            } catch (err) {
+                console.info('====>setAppAccess enableBundle err:' + JSON.stringify(err));
+            }
+            try {
+                await appAccountManager.setAppAccess('account_name_scene_single', enableBundle2, true);
+            } catch (err) {
+                console.info('====>setAppAccess enableBundle2 err:' + JSON.stringify(err));
+            }
+            console.info('====>scene terminateSelfWithResult start====');
+            featureAbility.terminateSelfWithResult({
+                resultCode: 1,
+                want:
+                {
+                    bundleName: 'com.example.actsscenegetallaccounts',
+                    abilityName: 'com.example.actsscenegetallaccounts.MainAbility'
+                }
             });
         });
+    },
+    onShow() {
     },
     onReady() {
     },
