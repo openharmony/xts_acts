@@ -42,7 +42,7 @@ function sleep(time:number) {
   });
 }
 
-async function judgeDialog() {
+async function judgeDialog(done: function) {
   await abilityDelegator.executeShellCommand('aa dump -a').then((data) => {
     console.info('====>aa dump : data : ' + JSON.stringify(data.stdResult));
     if (data.stdResult.includes("/uiextension/AppSelectorExtensionAbility")) {
@@ -55,8 +55,10 @@ async function judgeDialog() {
         expect(result[0]).assertContain("main name [AppSelectorExtensionAbility]");
         expect(result[0]).assertContain("ability type [UIEXTENSION]");
         expect(result[0]).assertContain("app state #FOREGROUND");
+        done();
       } catch {
         expect().assertFail();
+        done();
       }
     } else if (data.stdResult.includes("com.ohos.amsdialog/entry/")) {
       let firstString = data.stdResult.split("com.ohos.amsdialog/entry/");
@@ -67,11 +69,14 @@ async function judgeDialog() {
         expect(result[0]).assertContain("bundle name [com.ohos.amsdialog]");
         expect(result[0]).assertContain("ability type [SERVICE]");
         expect(result[0]).assertContain("app state #FOREGROUND");
+        done();
       } catch {
         expect().assertFail();
+        done();
       }
     } else {
       expect().assertFail();
+      done();
     }
     });
 }
@@ -120,9 +125,8 @@ export default function abilityTest() {
       }
       );
       await driver.delayMs(2000);
-      await judgeDialog();
+      await judgeDialog(done);
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0100 end');
-      done();
     })
 
     /*
@@ -151,9 +155,8 @@ export default function abilityTest() {
       }
       );
       await driver.delayMs(2000);
-      await judgeDialog();
+      await judgeDialog(done);
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0200 end');
-      done();
     })
 
     /*
@@ -182,9 +185,8 @@ export default function abilityTest() {
       }
       );
       await driver.delayMs(2000);
-      await judgeDialog();
+      await judgeDialog(done);
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0300 end');
-      done();
     })
 
     /*
@@ -213,9 +215,8 @@ export default function abilityTest() {
       }
       );
       await driver.delayMs(2000);
-      await judgeDialog();
+      await judgeDialog(done);
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0400 end');
-      done();
     })
 
     /*
@@ -246,9 +247,8 @@ export default function abilityTest() {
       }
       );
       await driver.delayMs(2000);
-      await judgeDialog();
+      await judgeDialog(done);
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0500 end');
-      done();
     })
 
     /*
@@ -278,9 +278,8 @@ export default function abilityTest() {
       );
       await driver.delayMs(2000);
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0600: apptest1,apptest2,apptest3,apptest4 notExist');
-      await judgeDialog();
+      await judgeDialog(done);
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0600 end');
-      done();
     })
 
     /*
@@ -311,9 +310,8 @@ export default function abilityTest() {
       }
       );
       await driver.delayMs(2000);
-      await judgeDialog();
+      await judgeDialog(done);
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0700 end');
-      done();
     })
 
     /*
@@ -344,9 +342,8 @@ export default function abilityTest() {
       }
       );
       await driver.delayMs(2000);
-      await judgeDialog();
+      await judgeDialog(done);
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0800 end');
-      done();
     })
 
     /*
