@@ -17,7 +17,7 @@ import thermal from "@ohos.thermal"
 import { describe, it, expect } from '@ohos/hypium'
 const MSEC_1000 = 1000;
 
-export default function ThermalUnitTest() {
+export default function ThermalTest() {
     describe('ThermalTest', function () {
         console.log("*************Thermal API Test Begin*************");
 
