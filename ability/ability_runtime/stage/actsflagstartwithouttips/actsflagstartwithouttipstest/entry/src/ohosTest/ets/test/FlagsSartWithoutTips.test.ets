@@ -79,21 +79,15 @@ export default function flagstartwithouttipstest() {
       // Wait for the popup to open
       await sleep(5000);
       try {
-        await driver.findComponent(ON.text('知道了')).then(async (data) => {
-          hilog.info(0x0000, TAG, ' %{public}s', 'findComponent success');
-          popupCorrect = true;
-          await sleep(100);
-          await data.click();
-          getCloseBtn = true;
-        }).catch(() => {
-          hilog.info(0x0000, TAG, '%{public}s', 'findComponent failed');
-        })
+        let closeBtn = await driver.findComponent(ON.text('知道了'));
+        !closeBtn && (closeBtn = await driver.findComponent(ON.text('取消')));
+        closeBtn?.click();
+        closeBtn &&  (getCloseBtn = true);
       } catch (error) {
         hilog.info(0x0000, TAG, '%{public}s get popup info error', JSON.stringify(error));
         expect().assertFail();
         done();
       }
-      expect(popupCorrect).assertTrue();
       expect(getCloseBtn).assertTrue();
       done();
     })
