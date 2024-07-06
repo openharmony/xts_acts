@@ -42,7 +42,7 @@ function sleep(time:number) {
   });
 }
 
-async function judgeDialog(done: function) {
+async function judgeDialog(done: Function) {
   await abilityDelegator.executeShellCommand('aa dump -a').then((data) => {
     console.info('====>aa dump : data : ' + JSON.stringify(data.stdResult));
     if (data.stdResult.includes("/uiextension/AppSelectorExtensionAbility")) {
