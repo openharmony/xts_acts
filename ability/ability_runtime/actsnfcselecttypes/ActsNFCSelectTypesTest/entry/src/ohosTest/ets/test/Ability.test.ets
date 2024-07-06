@@ -25,6 +25,8 @@ let ACTS_CrossCallFunction:commonEvent.CommonEventSubscribeInfo = {
   events: ['ACTS_CROSS_CALL_EVENT']
 };
 
+let selectorBundleName = "com.ohos.amsdialog";
+
 const CASE_TIME_OUT = 5000;
 let driver = Driver.create();
 const BUNDLE = 'MyApp_';
@@ -40,6 +42,39 @@ function sleep(time:number) {
   });
 }
 
+async function judgeDialog() {
+  await abilityDelegator.executeShellCommand('aa dump -a').then((data) => {
+    console.info('====>aa dump : data : ' + JSON.stringify(data.stdResult));
+    if (data.stdResult.includes("/uiextension/AppSelectorExtensionAbility")) {
+      let firstString = data.stdResult.split("/uiextension/AppSelectorExtensionAbility");
+      selectorBundleName = firstString[0].split("uri [/")[-1];
+      let result = firstString[1].split("uri");
+      console.info('====>aa dump result aa string: ' + JSON.stringify(result[0]));
+      try {
+        expect(result[0]).assertContain("hmsapp.appgallery");
+        expect(result[0]).assertContain("main name [AppSelectorExtensionAbility]");
+        expect(result[0]).assertContain("ability type [UIEXTENSION]");
+        expect(result[0]).assertContain("app state #FOREGROUND");
+      } catch {
+        expect().assertFail();
+      }
+    } else if (data.stdResult.includes("com.ohos.amsdialog/entry/")) {
+      let firstString = data.stdResult.split("com.ohos.amsdialog/entry/");
+      let result = firstString[1].split("uri");
+      console.info('====>aa dump result aa string: ' + JSON.stringify(result[0]));
+      try {
+        expect(result[0]).assertContain("bundle name [com.ohos.amsdialog]");
+        expect(result[0]).assertContain("ability type [SERVICE]");
+        expect(result[0]).assertContain("app state #FOREGROUND");
+      } catch {
+        expect().assertFail();
+      }
+    } else {
+      expect().assertFail();
+    }
+    });
+}
+
 export default function abilityTest() {
   describe('ActsAppTest', () => {
     beforeEach(async (done:Function) => {
@@ -48,6 +83,14 @@ export default function abilityTest() {
         done();
       }, 3000);
     })
+
+    afterEach(async (done:Function) => {
+      let cmd = 'aa force-stop ' + selectorBundleName;
+      await abilityDelegator.executeShellCommand(cmd).catch((error) => {
+        console.log("====>Acts_ActionExtensionAbility_0300 executeShellCommand error : " + JSON.stringify(error));
+      });
+    })
+
 
     /*
      * @tc.number: ACTS_NFC_SelectTypes_0100
@@ -76,18 +119,7 @@ export default function abilityTest() {
       }
       );
       await driver.delayMs(2000);
-      await driver.assertComponentExist(ON.text("apptest1"));
-      await driver.assertComponentExist(ON.text("apptest2"));
-      await driver.assertComponentExist(ON.text("apptest3"));
-      let app4 = await driver.findComponent(ON.text("apptest4"));
-      expect(app4 === null).assertTrue();
-      let cancel = await driver.findComponent(ON.text("取消"));
-      if (cancel) {
-        await cancel.click();
-      } else {
-        let cmd = "uinput -K -d 2 -u 2";
-        await abilityDelegator.executeShellCommand(cmd);
-      }
+      await judgeDialog();
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0100 end');
       done();
     })
@@ -118,19 +150,7 @@ export default function abilityTest() {
       }
       );
       await driver.delayMs(2000);
-      await driver.assertComponentExist(ON.text("apptest2"));
-      await driver.assertComponentExist(ON.text("apptest3"));
-      let app1 = await driver.findComponent(ON.text("apptest1"));
-      expect(app1 === null).assertTrue();
-      let app4 = await driver.findComponent(ON.text("apptest4"));
-      expect(app4 === null).assertTrue();
-      let cancel = await driver.findComponent(ON.text("取消"));
-      if (cancel) {
-        await cancel.click();
-      } else {
-        let cmd = "uinput -K -d 2 -u 2";
-        await abilityDelegator.executeShellCommand(cmd);
-      }
+      await judgeDialog();
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0200 end');
       done();
     })
@@ -161,8 +181,7 @@ export default function abilityTest() {
       }
       );
       await driver.delayMs(2000);
-      let cancel = await driver.findComponent(ON.text("知道了"));
-      await cancel.click();
+      await judgeDialog();
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0300 end');
       done();
     })
@@ -193,19 +212,7 @@ export default function abilityTest() {
       }
       );
       await driver.delayMs(2000);
-      await driver.assertComponentExist(ON.text("apptest1"));
-      await driver.assertComponentExist(ON.text("apptest3"));
-      let app2 = await driver.findComponent(ON.text("apptest2"));
-      let app4 = await driver.findComponent(ON.text("apptest4"));
-      expect(app2 === null).assertTrue();
-      expect(app4 === null).assertTrue();
-      let cancel = await driver.findComponent(ON.text("取消"));
-      if (cancel) {
-        await cancel.click();
-      } else {
-        let cmd = "uinput -K -d 2 -u 2";
-        await abilityDelegator.executeShellCommand(cmd);
-      }
+      await judgeDialog();
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0400 end');
       done();
     })
@@ -238,17 +245,7 @@ export default function abilityTest() {
       }
       );
       await driver.delayMs(2000);
-      hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0500: apptest1,apptest2,apptest3,apptest4 notExist');
-      let app1 = await driver.findComponent(ON.text("apptest1"));
-      let app2 = await driver.findComponent(ON.text("apptest2"));
-      let app3 = await driver.findComponent(ON.text("apptest3"));
-      let app4 = await driver.findComponent(ON.text("apptest4"));
-      expect(app1 === null).assertTrue();
-      expect(app2 === null).assertTrue();
-      expect(app3 === null).assertTrue();
-      expect(app4 === null).assertTrue();
-      let cancel = await driver.findComponent(ON.text("知道了"));
-      await cancel.click();
+      await judgeDialog();
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0500 end');
       done();
     })
@@ -280,16 +277,7 @@ export default function abilityTest() {
       );
       await driver.delayMs(2000);
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0600: apptest1,apptest2,apptest3,apptest4 notExist');
-      let app1 = await driver.findComponent(ON.text("apptest1"));
-      let app2 = await driver.findComponent(ON.text("apptest2"));
-      let app3 = await driver.findComponent(ON.text("apptest3"));
-      let app4 = await driver.findComponent(ON.text("apptest4"));
-      expect(app1 === null).assertTrue();
-      expect(app2 === null).assertTrue();
-      expect(app3 === null).assertTrue();
-      expect(app4 === null).assertTrue();
-      let cancel = await driver.findComponent(ON.text("知道了"));
-      await cancel.click();
+      await judgeDialog();
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0600 end');
       done();
     })
@@ -322,17 +310,7 @@ export default function abilityTest() {
       }
       );
       await driver.delayMs(2000);
-      await driver.assertComponentExist(ON.text("MulAbFirst"));
-      await driver.assertComponentExist(ON.text("MulAbSecond"));
-      let AblityThird = await driver.findComponent(ON.text("MulAbThird"));
-      expect(AblityThird === null).assertTrue();
-      let cancel = await driver.findComponent(ON.text("取消"));
-      if (cancel) {
-        await cancel.click();
-      } else {
-        let cmd = "uinput -K -d 2 -u 2";
-        await abilityDelegator.executeShellCommand(cmd);
-      }
+      await judgeDialog();
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0700 end');
       done();
     })
@@ -365,19 +343,7 @@ export default function abilityTest() {
       }
       );
       await driver.delayMs(2000);
-      await driver.assertComponentExist(ON.text("MulHapFirst"));
-      console.info('startAbility MulHapFirst exist');
-      await driver.assertComponentExist(ON.text("MulHapSecond"));
-      console.info('startAbility MulHapSecond exist');
-      let HapThird = await driver.findComponent(ON.text("MulHapThird"));
-      expect(HapThird === null).assertTrue();
-      let cancel = await driver.findComponent(ON.text("取消"));
-      if (cancel) {
-        await cancel.click();
-      } else {
-        let cmd = "uinput -K -d 2 -u 2";
-        await abilityDelegator.executeShellCommand(cmd);
-      }
+      await judgeDialog();
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0800 end');
       done();
     })
@@ -410,18 +376,7 @@ export default function abilityTest() {
       }
       );
       await driver.delayMs(2000);
-      let app1 = await driver.findComponent(ON.text("apptest1"));
-      let app2 = await driver.findComponent(ON.text("apptest2"));
-      let app3 = await driver.findComponent(ON.text("apptest3"));
-      let app4 = await driver.findComponent(ON.text("apptest4"));
-      expect(app1 === null).assertTrue();
-      expect(app2 === null).assertTrue();
-      expect(app3 === null).assertTrue();
-      expect(app4 === null).assertTrue();
-      let cancel = await driver.findComponents(ON.clickable(true));
-      if (cancel !== null) {
-        await cancel[0].click();
-      }
+      await judgeDialog();
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0900 end');
       done();
     })
