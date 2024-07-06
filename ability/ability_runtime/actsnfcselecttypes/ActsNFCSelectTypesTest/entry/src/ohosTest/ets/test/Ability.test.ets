@@ -47,8 +47,8 @@ async function judgeDialog(done: function) {
     console.info('====>aa dump : data : ' + JSON.stringify(data.stdResult));
     if (data.stdResult.includes("/uiextension/AppSelectorExtensionAbility")) {
       let firstString = data.stdResult.split("/uiextension/AppSelectorExtensionAbility");
-      selectorBundleName = 'com.hua' + 'wei.hmsapp.appgallery';
       let result = firstString[1].split("uri");
+      selectorBundleName = 'com.hua' + 'wei.hmsapp.appgallery';
       console.info('====>aa dump result aa string: ' + JSON.stringify(result[0]));
       try {
         expect(result[0]).assertContain("hmsapp.appgallery");
