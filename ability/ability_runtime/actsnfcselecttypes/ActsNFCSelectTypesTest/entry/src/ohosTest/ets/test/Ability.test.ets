@@ -25,7 +25,7 @@ let ACTS_CrossCallFunction:commonEvent.CommonEventSubscribeInfo = {
   events: ['ACTS_CROSS_CALL_EVENT']
 };
 
-let selectorBundleName = "com.ohos.amsdialog";
+let selectorBundleName = "";
 
 const CASE_TIME_OUT = 5000;
 let driver = Driver.create();
@@ -47,7 +47,7 @@ async function judgeDialog() {
     console.info('====>aa dump : data : ' + JSON.stringify(data.stdResult));
     if (data.stdResult.includes("/uiextension/AppSelectorExtensionAbility")) {
       let firstString = data.stdResult.split("/uiextension/AppSelectorExtensionAbility");
-      selectorBundleName = firstString[0].split("uri [/")[-1];
+      selectorBundleName = "com.hua" + "wei.hmsapp.appgallery";
       let result = firstString[1].split("uri");
       console.info('====>aa dump result aa string: ' + JSON.stringify(result[0]));
       try {
@@ -61,6 +61,7 @@ async function judgeDialog() {
     } else if (data.stdResult.includes("com.ohos.amsdialog/entry/")) {
       let firstString = data.stdResult.split("com.ohos.amsdialog/entry/");
       let result = firstString[1].split("uri");
+      selectorBundleName = "com.ohos.amsdialog";
       console.info('====>aa dump result aa string: ' + JSON.stringify(result[0]));
       try {
         expect(result[0]).assertContain("bundle name [com.ohos.amsdialog]");
@@ -86,7 +87,7 @@ export default function abilityTest() {
 
     afterEach(async (done:Function) => {
       let cmd = 'aa force-stop ' + selectorBundleName;
-      await abilityDelegator.executeShellCommand(cmd).catch((error) => {
+      await abilityDelegator.executeShellCommand(cmd).catch((error : BusinessError) => {
         console.log("====>Acts_ActionExtensionAbility_0300 executeShellCommand error : " + JSON.stringify(error));
       });
     })
@@ -376,7 +377,18 @@ export default function abilityTest() {
       }
       );
       await driver.delayMs(2000);
-      await judgeDialog();
+      let app1 = await driver.findComponent(ON.text("apptest1"));
+      let app2 = await driver.findComponent(ON.text("apptest2"));
+      let app3 = await driver.findComponent(ON.text("apptest3"));
+      let app4 = await driver.findComponent(ON.text("apptest4"));
+      expect(app1 === null).assertTrue();
+      expect(app2 === null).assertTrue();
+      expect(app3 === null).assertTrue();
+      expect(app4 === null).assertTrue();
+      let cancel = await driver.findComponents(ON.clickable(true));
+      if (cancel !== null) {
+        await cancel[0].click();
+      }
       hilog.info(DOMAIN, TAG, '%{public}s', 'ACTS_NFC_SelectTypes_0900 end');
       done();
     })
