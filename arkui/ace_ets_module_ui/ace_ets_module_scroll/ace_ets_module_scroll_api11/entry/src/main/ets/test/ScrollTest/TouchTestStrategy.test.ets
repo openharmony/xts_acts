@@ -58,8 +58,8 @@ export default function TouchTestStrategy() {
       let gridBottom = CommonFunc.getComponentRect('border_TouchStrategy');
       let bottom = gridBottom.bottom
       let driver = await UiDriver.create()
-      await driver.swipe(150,Math.round(bottom - 10), 200, Math.round(top + 50));
-      await CommonFunc.sleep(1000);
+      await driver.swipe(Math.round(globalThis.winLeft + vp2px(100)),Math.round(globalThis.winTop + bottom - vp2px(6)), Math.round(globalThis.winLeft + vp2px(100)), Math.round(globalThis.winTop + top + vp2px(33)));
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('listText_TouchStrategy');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[TouchTestStrategy_0100] component obj is: " + JSON.stringify(obj));

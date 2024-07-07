@@ -442,7 +442,7 @@ export default function SwiperNextPrevMarginAddJsunit() {
       let columnSwiper = CommonFunc.getComponentRect('ColumnSwiperDuplicate');
       let right = columnSwiper.right;
       let left  = columnSwiper.left;
-      let swiperMargin = CommonFunc.getComponentRect('swiperNextPrevMargin');
+      let swiperMargin = CommonFunc.getComponentRect('ColumnSwiperDuplicate');
       let swiperRight = swiperMargin.right;
       let swiperLeft = swiperMargin.left;
       console.info("[apiCommponentAddJsunit_1500'] component value is: " + right + "," + left + ","

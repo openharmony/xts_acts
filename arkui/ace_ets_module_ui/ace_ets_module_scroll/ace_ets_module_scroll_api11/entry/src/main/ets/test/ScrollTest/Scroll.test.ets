@@ -54,7 +54,7 @@ export default function ScrollTest() {
 
       let driver = await Driver.create();
       await CommonFunc.sleep(1000);
-      await driver.swipe(100, 300, 100, 200);
+      await driver.swipe(globalThis.winLeft + Math.round(vp2px(67)), Math.round( globalThis.winTop + vp2px(200)), Math.round(globalThis.winLeft + vp2px(67)), Math.round( globalThis.winTop + vp2px(133)));
       await CommonFunc.sleep(1000);
       console.info("[ScrollTest_001] swipe success");
       let strJson1 = getInspectorByKey('scrollText');

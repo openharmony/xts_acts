@@ -67,7 +67,7 @@ export default function swiperDelAddTest() {
       let btWidth = Math.round(btRight - btLeft);
       console.info("[SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0700] swiper width " + btWidth);
      
-      await driver.swipe(Math.round(btLeft) + 40,Math.round(btBottom/2), Math.round(btRight), Math.round(btBottom/2));
+      await driver.swipe(globalThis.winLeft + Math.round(btLeft) + Math.round(vp2px(27)), globalThis.winTop + Math.round(btBottom/2), globalThis.winLeft + Math.round(btRight), globalThis.winTop + Math.round(btBottom/2));
       await CommonFunc.sleep(3000);
 
 
@@ -110,8 +110,8 @@ export default function swiperDelAddTest() {
       let btWidth = Math.round(btRight - btLeft);
       console.info("[SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0700] swiper width " + btWidth);
       // right scroll
-      await driver.swipe( Math.round(btRight),Math.round(btBottom/2), Math.round(btLeft) + 40, Math.round(btBottom/2));
-      await CommonFunc.sleep(3000);
+      await driver.swipe(Math.round(globalThis.winLeft + Math.round(btRight) - vp2px(10)), Math.round(globalThis.winTop + Math.round(btBottom/2)),  Math.round(globalThis.winLeft + Math.round(btLeft) + Math.round(vp2px(27))),  Math.round(globalThis.winTop + Math.round(btBottom/2)));
+      await CommonFunc.sleep(5000);
 
       // click the next button
       let buttonNext :Component = await driver.findComponent(ON.id('showNextTT'));

@@ -65,8 +65,8 @@ export default function swiperWidthTest() {
     
       // swipe the component of swiper to right
       let driver = await Driver.create();
-      await driver.swipe(Math.round(btRight), Math.round(btBottom/2), Math.round(btLeft) + 40, Math.round(btBottom/2));
-      await CommonFunc.sleep(3500);
+      await driver.swipe( globalThis.winLeft + Math.round(btRight) - Math.round(vp2px(10)), Math.round(btBottom/2) + globalThis.winTop,  globalThis.winLeft + Math.round(btLeft) +  Math.round(vp2px(10)), Math.round(btBottom/2) + globalThis.winTop);
+      await CommonFunc.sleep(5000);
       // get the component of text_3
       let text3:Component = await driver.findComponent(ON.text('3'));
       let ttContent = await text3.getText();
