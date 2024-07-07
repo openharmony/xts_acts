@@ -62,7 +62,6 @@ struct PinchGestureTemplate {
               this.pinchX = event.pinchCenterX
               this.pinchY = event.pinchCenterY
               console.log("PinchGestureTemplateTest_0010 timestamp:" + event.timestamp);
-              // this.template_arr.push(event.timestamp)
               this.time = Date.now()
               this.timestamp = event.timestamp
               this.offsetX = event.offsetX + ''
