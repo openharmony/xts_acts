@@ -48,7 +48,7 @@ export default function PinchGestureTemplateTest() {
 
     /**
      * @tc.number
-     * @tc.name      PinchGestureTemplateTest_0010
+    * @tc.name      PinchGestureTemplateTest_0010
      * @tc.desc      api test PinchGesture
      * @tc.level:    Level
      * @tc.type :
@@ -67,23 +67,23 @@ export default function PinchGestureTemplateTest() {
       console.log('PinchGestureTemplateTest_0010 areaObj1 clicked finger[1] end',Math.round(areaObj1.left),Math.round(areaObj1.bottom))
       let driver: Driver = Driver.create();
       await CommonFunc.sleep(1000);
-      let pointers: PointerMatrix = PointerMatrix.create(2,2);
-      pointers.setPoint(0,0,{x: Math.round(areaObj1.left + areaWidth1 * 0.1),y: Math.round(areaObj1.top + areaHeight1 * 0.5) });
-      pointers.setPoint(0,1,{x: Math.round(areaObj1.left + areaWidth1 * 0.3),y: Math.round(areaObj1.top + areaHeight1 * 0.5) });
-      pointers.setPoint(1,0,{x: Math.round(areaObj1.right - areaWidth1 * 0.1),y: Math.round(areaObj1.top + areaHeight1 * 0.5) });
-      pointers.setPoint(1,1,{x: Math.round(areaObj1.right - areaWidth1 * 0.3),y: Math.round(areaObj1.top + areaHeight1 * 0.5) });
+      let pointersSize = 120;
+      let pointers = PointerMatrix.create(2, pointersSize);
+      for (let step = 0; step < pointersSize; step++) {
+        pointers.setPoint(0, step, {x: Math.round(areaObj1.left + areaWidth1 * 0.3 / pointersSize * step), y: Math.round(areaObj1.top + areaHeight1 * 0.5) })
+      }
+      for (let step = 0; step < pointersSize; step++) {
+        pointers.setPoint(1, step, {x: Math.round(areaObj1.right - areaWidth1 * 0.3 / pointersSize * step), y: Math.round(areaObj1.top + areaHeight1 * 0.5) })
+      }
       await driver.injectMultiPointerAction(pointers);
       await CommonFunc.sleep(4000);
-
       let button = await driver.findComponent(ON.id('PinchGestureTemplate_template'));
       await button.click();
-      await CommonFunc.sleep(1000);
-
+      await CommonFunc.sleep(3000);
       let text1 = getInspectorByKey('PinchGestureTemplate_Text');
       let obj1 = JSON.parse(text1);
       console.log('PanGestureExampleTemplateTest_0010 obj1 $attrs content',obj1.$attrs.content,obj1)
       expect(obj1.$attrs.content).assertEqual('templateFlag:true');
-
       console.info('PinchGestureTemplateTest_0010 END');
       done();
     });

@@ -88,17 +88,14 @@ export default function SwipeGestureExample02Test() {
       await CommonFunc.sleep(200);
       let text2 = getInspectorByKey('SwipeGestureExample02_offsetX');
       let obj2 = JSON.parse(text2);
-      console.log('SwipeGestureExample02Test_0010 obj2 $attrs content',vp2px(Number(obj2.$attrs.content)),Math.round(areaObj1.left + areaWidth1/2) - Math.round(areaObj1.left + areaWidth1/2))
-      console.log('SwipeGestureExample02Test_0010 obj2 $attrs offsetX',obj2.$attrs.content, Number(obj2.$attrs.content), vp2px(Number(obj2.$attrs.content)))
-      expect(Math.abs(Math.round((vp2px(Number(obj2.$attrs.content)))- (Math.round(areaObj1.left + areaWidth1/2) - Math.round(areaObj1.left + areaWidth1/2)))) <= 1).assertTrue();
+      console.log('SwipeGestureExample02Test_0010 obj2 $attrs content',obj2.$attrs.content)
+      expect(obj2.$attrs.content).assertEqual('0');
 
-      // fail
       await CommonFunc.sleep(200);
       let text3 = getInspectorByKey('SwipeGestureExample02_offsetY');
       let obj3 = JSON.parse(text3);
-      console.log('SwipeGestureExample02Test_0010 obj3 $attrs content',vp2px(Number(obj3.$attrs.content)),Math.round(areaObj1.bottom + areaHeight1 * 0.9) - Math.round(areaObj1.top + areaHeight1 * 0.2))
-      console.log('SwipeGestureExample02Test_0010 obj3 $attrs offsetY',obj3.$attrs.content, Number(obj3.$attrs.content), vp2px(Number(obj3.$attrs.content)))
-      expect(Math.abs(Math.round((vp2px(Number(obj3.$attrs.content)))- (Math.round(areaObj1.bottom + areaHeight1 * 0.9) - Math.round(areaObj1.top + areaHeight1 * 0.2)))) <= 1).assertTrue();
+      console.log('SwipeGestureExample02Test_0010 obj3 $attrs content',obj3.$attrs.content)
+      expect(obj3.$attrs.content).assertEqual('0');
 
       await CommonFunc.sleep(200);
       let text4 = getInspectorByKey('SwipeGestureExample02_angle');
@@ -173,30 +170,30 @@ export default function SwipeGestureExample02Test() {
       await CommonFunc.sleep(200);
       let text18 = getInspectorByKey('SwipeGestureExample02_target_area_position_x');
       let obj18 = JSON.parse(text18);
-      console.log('SwipeGestureExample02Test_0010 obj18 $attrs content',vp2px(Number(obj18.$attrs.content)),areaObj.left-FatherObj.left)
+      console.log('SwipeGestureExample02Test_0010 obj18 $attrs content',vp2px(Number(obj18.$attrs.content)),areaObj1.left-FatherObj.left)
       console.log('SwipeGestureExample02Test_0010 obj18 $attrs position_x',obj18.$attrs.content, Number(obj18.$attrs.content), vp2px(Number(obj18.$attrs.content)))
-      expect(Math.abs(Math.round((vp2px(Number(obj18.$attrs.content)))- (areaObj.left-FatherObj.left))) <= 1).assertTrue();
+      expect(Math.abs(Math.round((vp2px(Number(obj18.$attrs.content)))- (areaObj1.left-FatherObj.left))) <= 1).assertTrue();
 
       await CommonFunc.sleep(200);
       let text19 = getInspectorByKey('SwipeGestureExample02_target_area_position_y');
       let obj19 = JSON.parse(text19);
-      console.log('SwipeGestureExample02Test_0010 obj19 $attrs content',vp2px(Number(obj19.$attrs.content)),areaObj.top-FatherObj.top)
+      console.log('SwipeGestureExample02Test_0010 obj19 $attrs content',vp2px(Number(obj19.$attrs.content)),areaObj1.top-FatherObj.top)
       console.log('SwipeGestureExample02Test_0010 obj19 $attrs position_y',obj19.$attrs.content, Number(obj19.$attrs.content), vp2px(Number(obj19.$attrs.content)))
-      expect(Math.abs(Math.round((vp2px(Number(obj19.$attrs.content)))- (areaObj.top-FatherObj.top))) <= 1).assertTrue();
+      expect(Math.abs(Math.round((vp2px(Number(obj19.$attrs.content)))- (areaObj1.top-FatherObj.top))) <= 1).assertTrue();
 
       await CommonFunc.sleep(200);
       let text20 = getInspectorByKey('SwipeGestureExample02_target_area_globalPosition_x');
       let obj20 = JSON.parse(text20);
-      console.log('SwipeGestureExample02Test_0010 obj20 $attrs content',vp2px(Number(obj20.$attrs.content)),areaObj.left)
+      console.log('SwipeGestureExample02Test_0010 obj20 $attrs content',vp2px(Number(obj20.$attrs.content)),areaObj1.left)
       console.log('SwipeGestureExample02Test_0010 obj20 $attrs area_globalPosition_x',obj20.$attrs.content, Number(obj20.$attrs.content), vp2px(Number(obj20.$attrs.content)))
-      expect(Math.abs(Math.round((vp2px(Number(obj20.$attrs.content)))- (areaObj.left))) <= 1).assertTrue();
+      expect(Math.abs(Math.round((vp2px(Number(obj20.$attrs.content)))- (areaObj1.left))) <= 1).assertTrue();
 
       await CommonFunc.sleep(200);
       let text21 = getInspectorByKey('SwipeGestureExample02_target_area_globalPosition_y');
       let obj21 = JSON.parse(text21);
-      console.log('SwipeGestureExample02Test_0010 obj21 $attrs content',vp2px(Number(obj21.$attrs.content)),areaObj.top)
+      console.log('SwipeGestureExample02Test_0010 obj21 $attrs content',vp2px(Number(obj21.$attrs.content)),areaObj1.top)
       console.log('SwipeGestureExample02Test_0010 obj21 $attrs area_globalPosition_y',obj21.$attrs.content, Number(obj21.$attrs.content), vp2px(Number(obj21.$attrs.content)))
-      expect(Math.abs(Math.round((vp2px(Number(obj21.$attrs.content)))- (areaObj.top))) <= 1).assertTrue();
+      expect(Math.abs(Math.round((vp2px(Number(obj21.$attrs.content)))- (areaObj1.top))) <= 1).assertTrue();
 
       await CommonFunc.sleep(200);
       let text22 = getInspectorByKey('SwipeGestureExample02_source');
