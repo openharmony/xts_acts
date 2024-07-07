@@ -98,7 +98,7 @@ struct PinchGestureTemplate {
             let mid: number = Math.ceil(this.template_arr.length / 2)
             let x: number = Math.abs(this.template_arr[1] - this.template_arr[0])
             let y: number = Math.abs(this.template_arr[this.template_arr.length - mid + 1] - this.template_arr[this.template_arr.length - mid])
-            let z: number = Math.abs(this.template_arr[this.template_arr.length - 1] - this.template_arr[this.template_arr.length - 2])
+            let z: number = Math.abs(this.template_arr[this.template_arr.length - 2] - this.template_arr[this.template_arr.length - 3])
             console.log("PinchGestureTemplateTest_0010 : x " + x + ", y " + y + ", z " + z);
             if(x <= (16 * 1000000) && y <= (16 * 1000000) && z <= (16 * 1000000)) {
               this.template_flag = true
