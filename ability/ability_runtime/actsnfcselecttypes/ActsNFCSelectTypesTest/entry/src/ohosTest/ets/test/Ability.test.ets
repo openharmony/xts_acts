@@ -96,7 +96,7 @@ export default function abilityTest() {
         console.log("====>aa force stop executeShellCommand error : " + JSON.stringify(error));
       });
       setTimeout(() => {
-        console.info('====>beforeEach called');
+        console.info('====>afterEach called');
         done();
       }, 1000);
     })
