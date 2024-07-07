@@ -87,7 +87,7 @@ export default function abilityTest() {
       setTimeout(() => {
         console.info('====>beforeEach called');
         done();
-      }, 3000);
+      }, 1000);
     })
 
     afterEach(async (done:Function) => {
@@ -95,6 +95,10 @@ export default function abilityTest() {
       await abilityDelegator.executeShellCommand(cmd).catch((error : BusinessError) => {
         console.log("====>aa force stop executeShellCommand error : " + JSON.stringify(error));
       });
+      setTimeout(() => {
+        console.info('====>beforeEach called');
+        done();
+      }, 1000);
     })
 
 
