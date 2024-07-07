@@ -123,6 +123,10 @@ import RichEditorApi12 from './RichEditor/RichEditorApi12.test'
 import SearchApi1 from './Search/SearchApi1.test'
 import getLineMetrics from './TextTest/getLineMetrics.test'
 import textSelectableJsunit from './TextTest/textSelectableJsunit.test'
+import typeNodeTextDecorationStyleTest from './Text/TextDecorationStyle.test';
+import typeNodeTextSelectableMode1Test from './Text/TextSelectableMode1.test';
+import typeNodeTextSelectableMode2Test from './Text/TextSelectableMode2.test';
+import typeNodeTextSelectableMode3Test from './Text/TextSelectableMode3.test';
 import styledStringChange from './Text/styledStringChange.test'
 import textAreaPreview from './TextArea/textAreaPreview.test'
 import textInputPreview from './TextInput/textInputPreview.test'
@@ -237,6 +241,11 @@ export default function testsuite() {
   SearchApi1()
   getLineMetrics();
   textSelectableJsunit();
+  typeNodeTextDecorationStyleTest();
+  typeNodeTextSelectableMode1Test();
+  typeNodeTextSelectableMode2Test();
+  typeNodeTextSelectableMode3Test();
+
   textAreaPreview();
   textInputPreview();
 }
