@@ -52,7 +52,7 @@ import RichEditorApi3 from './RichEditor/RichEditorApi3.test'
 import RichEditorApi5 from './RichEditor/RichEditorApi5.test'
 import RichEditorChangeCallback from './RichEditor/RichEditorChangeCallback.test'
 import RichEditorWordBreakJsunitTest from './RichEditorEnhance01/RichEditorWordBreakJsunitTest.test'
-// import RichEditorMenuPolicyJsunit from './RichEditorEnhance01/RichEditorMenuPolicyJsunit.test'
+import RichEditorMenuPolicyJsunit from './RichEditorEnhance01/RichEditorMenuPolicyJsunit.test'
 import RichEditorTextStyleJsunit from './RichEditorEnhance01/RichEditorTextStyleJsunit.test'
 import RichEditorFontFeatureJsunit from './RichEditorEnhance01/RichEditorFontFeatureJsunit.test'
 import RichEditor1 from './RichEditorEnhance/RichEditor1.test'
@@ -170,7 +170,7 @@ export default function testsuite() {
   RichEditorApi5();
   RichEditorChangeCallback();
   RichEditorWordBreakJsunitTest();
-  // RichEditorMenuPolicyJsunit();
+  RichEditorMenuPolicyJsunit();
   RichEditorTextStyleJsunit();
   RichEditorFontFeatureJsunit();
   RichEditor1();
