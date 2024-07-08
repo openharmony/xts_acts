@@ -34,6 +34,7 @@ struct TapGestureTemplate {
   @State target_area_globalPosition_y: string = 'init'
   @State time: number = 0
   @State timestamp: number = 0
+  @State timestampArr: number[] = [0,0]
   build() {
     Column({space:10}) {
       Text('TapGesture').fontSize(20).width(240).height(80).margin({left:0,top:0}).padding({left:0,top:0}).backgroundColor(Color.Yellow).key('TapGestureTemplate_Click')
@@ -41,6 +42,11 @@ struct TapGestureTemplate {
           TapGesture({ count: 1 })
             .onAction((event: GestureEvent) => {
               if (event) {
+                if (this.timestampArr[0] == 0) {
+                  this.timestampArr[0] = event.timestamp
+                } else {
+                  this.timestampArr[1] = event.timestamp
+                }
                 this.time = Date.now()
                 this.timestamp = event.timestamp
                 this.offsetX = event.offsetX + ''
@@ -64,7 +70,8 @@ struct TapGestureTemplate {
             })
         )
 
-      Text(`${this.timestamp}`).key('TapGestureTemplate_Text')
+      Text(`${this.timestampArr[0]}`).key('TapGestureTemplate_Text01')
+      Text(`${this.timestampArr[1]}`).key('TapGestureTemplate_Text02')
 
     }.alignItems(HorizontalAlign.Start).width('100%').height('100%').backgroundColor('#ffbebaba').key('TapGestureTemplate_Father')
   }

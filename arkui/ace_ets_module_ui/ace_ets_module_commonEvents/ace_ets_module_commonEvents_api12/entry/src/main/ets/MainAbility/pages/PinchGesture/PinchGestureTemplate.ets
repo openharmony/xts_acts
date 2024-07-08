@@ -43,6 +43,9 @@ struct PinchGestureTemplate {
 
   @State template_arr: number[] = []
   @State template_flag: boolean = false
+  @State x: number = 0
+  @State y: number = 0
+  @State z: number = 0
   build() {
     Column({space:10}) {
       Column() {
@@ -58,8 +61,7 @@ struct PinchGestureTemplate {
               this.scaleValue = this.pinchValue * event.scale
               this.pinchX = event.pinchCenterX
               this.pinchY = event.pinchCenterY
-
-              this.template_arr.push(event.timestamp)
+              console.log("PinchGestureTemplateTest_0010 timestamp:" + event.timestamp);
               this.time = Date.now()
               this.timestamp = event.timestamp
               this.offsetX = event.offsetX + ''
@@ -69,6 +71,7 @@ struct PinchGestureTemplate {
               // 测试fingerList
               // 第一根手指的
               if (event.fingerList[0] && event.fingerList[0] !== undefined) {
+                this.template_arr.push(event.timestamp)
                 this.fingerList_globalX = event.fingerList[0].globalX + ''
                 this.fingerList_globalY = event.fingerList[0].globalY + ''
                 this.fingerList_localX = event.fingerList[0].localX + ''
@@ -91,13 +94,13 @@ struct PinchGestureTemplate {
 
       Button('template').id('PinchGestureTemplate_template')
         .onClick(()=>{
-          if(this.template_arr.length > 2) {
+          if(this.template_arr.length > 3) {
             let mid: number = Math.ceil(this.template_arr.length / 2)
             let x: number = Math.abs(this.template_arr[1] - this.template_arr[0])
             let y: number = Math.abs(this.template_arr[this.template_arr.length - mid + 1] - this.template_arr[this.template_arr.length - mid])
-            let z: number = Math.abs(this.template_arr[this.template_arr.length - 1] - this.template_arr[this.template_arr.length - 2])
-
-            if(x <= 16 && y <= 16 && z <= 16) {
+            let z: number = Math.abs(this.template_arr[this.template_arr.length - 2] - this.template_arr[this.template_arr.length - 3])
+            console.log("PinchGestureTemplateTest_0010 : x " + x + ", y " + y + ", z " + z);
+            if(x <= (16 * 1000000) && y <= (16 * 1000000) && z <= (16 * 1000000)) {
               this.template_flag = true
             }
 

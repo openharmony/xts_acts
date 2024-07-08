@@ -80,6 +80,9 @@ import RenderNodeDemo05Test from './renderNode/RenderNodeDemo/RenderNodeDemo05Te
 import RenderNodeDemo06Test from './renderNode/RenderNodeDemo/RenderNodeDemo06Test.test';
 
 import APIdisposeTreeTest from './FrameNodeTest/APIdisposeTreeTest.test';
+import typeNodeTextInputTest from './typeNodeTest/TextInput.test';
+import typeNodeListItemTest from './typeNodeTest/ListItem.test';
+import typeNodechildrenMainSizeTest from './typeNodeTest/ChildrenMainSize.test';
 export default function testsuite() {
   APIdisposeTreeTest();
   RenderNodeDemo01Test();
@@ -134,4 +137,7 @@ export default function testsuite() {
   PercentReferenceTest();
   setCircleShapeTest();
   graphicGetInterfaceTest();
+  typeNodeTextInputTest();
+  typeNodeListItemTest();
+  typeNodechildrenMainSizeTest();
 }

@@ -32,14 +32,23 @@ struct LongPressGestureTemplate {
   @State target_area_globalPosition_y: string = 'init'
   @State time: number = 0
   @State timestamp: number = 0
-
+  @State timestampArr: number[] = [0,0]
   build() {
     Column({space:10}) {
-      Text('LongPressGesture').fontSize(20).width(240).height(80).margin({left:0,top:0}).padding({left:0,top:0}).backgroundColor(Color.Yellow).key('LongPressGestureTemplate_Click')
+      Text('LongPressGesture').fontSize(20).width(240).height(80).margin({left:0,top:0}).padding({left:0,top:0}).backgroundColor(Color.Yellow).id('LongPressGestureTemplate_Click')
         .gesture(
-          LongPressGesture({ repeat: true })
+          LongPressGesture({ repeat: false })
             .onAction((event: GestureEvent) => {
+              console.log('LongPressGesture page in one')
               if (event) {
+                console.log('LongPressGesture page in two')
+                if (this.timestampArr[0] == 0) {
+                  console.log('LongPressGesture page in three')
+                  this.timestampArr[0] = event.timestamp
+                } else {
+                  console.log('LongPressGesture page in four')
+                  this.timestampArr[1] = event.timestamp
+                }
                 this.time = Date.now()
                 this.timestamp = event.timestamp
                 this.offsetX = event.offsetX + ''
@@ -57,11 +66,16 @@ struct LongPressGestureTemplate {
                 this.target_area_position_y = event.target.area.position.y + ''
                 this.target_area_globalPosition_x = event.target.area.globalPosition.x + ''
                 this.target_area_globalPosition_y = event.target.area.globalPosition.y + ''
+
+                console.log('LongPressGesture page in five')
+
               }
+              console.log('LongPressGesture page in six')
             })
         )
 
-      Text(`${this.timestamp}`).key('LongPressGestureTemplate_Text')
+      Text(`${this.timestampArr[0]}`).key('LongPressGestureTemplate_Text01')
+      Text(`${this.timestampArr[1]}`).key('LongPressGestureTemplate_Text02')
 
     }.alignItems(HorizontalAlign.Start).width('100%').height('100%').backgroundColor('#ffbebaba').key('LongPressGestureTemplate_Father')
   }

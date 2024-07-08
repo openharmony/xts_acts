@@ -33,6 +33,8 @@ struct SwipeGestureTemplate {
   @State offsetY: number = 0
   @State time: number = 0
   @State timestamp: number = 0
+  @State timestampArr: number[] = [0,0]
+
   build() {
     Column({space:10}) {
       Text('SwipeGesture').fontSize(20).width(240).height(80).margin({left:0,top:0}).padding({left:0,top:0}).backgroundColor(Color.Yellow).key('SwipeGestureTemplate_Click')
@@ -41,6 +43,11 @@ struct SwipeGestureTemplate {
           SwipeGesture({ direction: SwipeDirection.All | SwipeDirection.Vertical | SwipeDirection.Horizontal })
             .onAction((event: GestureEvent) => {
               if (event) {
+                if (this.timestampArr[0] == 0) {
+                  this.timestampArr[0] = event.timestamp
+                } else {
+                  this.timestampArr[1] = event.timestamp
+                }
                 this.time = Date.now()
                 this.timestamp = event.timestamp
                 this.offsetX = event.offsetX
@@ -63,7 +70,8 @@ struct SwipeGestureTemplate {
             })
         )
 
-      Text(`${this.timestamp}`).key('SwipeGestureTemplate_Text')
+      Text(`${this.timestampArr[0]}`).key('SwipeGestureTemplate_Text01')
+      Text(`${this.timestampArr[1]}`).key('SwipeGestureTemplate_Text02')
 
     }.alignItems(HorizontalAlign.Start).width('100%').height('100%').backgroundColor('#ffbebaba').key('SwipeGestureTemplate_Father')
   }
