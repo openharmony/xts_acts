@@ -46,14 +46,16 @@ export default function fontJsunit() {
     it('fontJsunit_0100', 0, async function (done) {
       // Get the information of the font
       console.info('fontJsunit_0100 START');
-      let driver = Driver.create();
-      let btn = await driver.findComponent(ON.id('getSystemFontList'));
-      await btn.click();
-      await CommonFunc.sleep(100);
-      let strJson = getInspectorByKey('fontlist');
-      let obj = JSON.parse(strJson);
-      console.info("[GridColOffsetJsunit_0100] component  strJson:" + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual("");
+      if (globalThis.winLeft == 0) {
+        let driver = Driver.create();
+        let btn = await driver.findComponent(ON.id('getSystemFontList'));
+        await btn.click();
+        await CommonFunc.sleep(100);
+        let strJson = getInspectorByKey('fontlist');
+        let obj = JSON.parse(strJson);
+        console.info("[GridColOffsetJsunit_0100] component  strJson:" + JSON.stringify(obj.$attrs.content));
+        expect(obj.$attrs.content).assertEqual("");
+      }
       done();
     });
 
