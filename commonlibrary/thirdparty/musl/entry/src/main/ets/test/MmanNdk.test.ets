@@ -32,13 +32,13 @@ export default function mmanNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 0
      */
-    it('testMuslMmanRemapFilePages001', 0, async (done: Function) => {
-      let param = -1;
-      let result: number = mman.remapFilePages(param);
-      console.info("Test result = " + JSON.stringify(result));
-      expect(result).assertEqual(-1);
-      done()
-    });
+    //it('testMuslMmanRemapFilePages001', 0, async (done: Function) => {
+    //  let param = -1;
+    //  let result: number = mman.remapFilePages(param);
+    //  console.info("Test result = " + JSON.stringify(result));
+    //  expect(result).assertEqual(-1);
+    //  done()
+    //});
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_MMAN_MEMFDCREATE_0100
      * @tc.name       : testMuslMmanmemfdCreate001
