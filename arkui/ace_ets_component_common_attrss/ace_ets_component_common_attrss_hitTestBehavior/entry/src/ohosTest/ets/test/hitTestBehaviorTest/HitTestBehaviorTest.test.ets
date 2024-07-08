@@ -44,6 +44,8 @@ async function executeTouch(data: ESObject, hitTestBehavior: string, referenceTa
   let touchResult: ESObject = Utils.performTouchComponentCenter(data.pageConfig.componentKey, TouchType.Down);
   expect(touchResult).assertEqual(true);
   await Utils.sleep(1000);
+  
+  Utils.performTouchComponentCenter(data.pageConfig.componentKey, TouchType.Up);
 
   //Determine whether the target component responds to touch test control.
   let referenceTargetComponent: ESObject = Utils.getComponentByKey(data.pageConfig.referenceTargetComponentKey);
