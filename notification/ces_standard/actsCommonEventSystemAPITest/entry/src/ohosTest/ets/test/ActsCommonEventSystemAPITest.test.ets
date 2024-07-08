@@ -14,9 +14,11 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import commonEventManager from '@ohos.commonEventManager'
+import { BusinessError } from '@ohos.base'
+
 
 export default function ActsCommonEventSystemAPITest() {
-describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', function () {
+describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', () => {
     let TAG = 'SUB_NOTIFICATION_CES_SYSTEM_API_TEST ===>'
     console.info(TAG + 'SUB_NOTIFICATION_CES_SYSTEM_API_TEST START')
 
@@ -25,7 +27,7 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', function () {
      * @tc.name: publishAsUser 
      * @tc.desc: test function publishAsBundle
      */
-    it('Sub_Notification_Ans_Publish_Publish_5000', 0, async function (done) {
+    it('Sub_Notification_Ans_Publish_Publish_5000', 0, async (done: Function) => {
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_5000 START`);
 
         commonEventManager.publishAsUser("event.test", 0, (err) => {
@@ -48,11 +50,11 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', function () {
      * @tc.name: publishAsUser
      * @tc.desc: test function publishAsUser
      */
-    it('Sub_Notification_Ans_Publish_Publish_5100', 0, async function (done) {
+    it('Sub_Notification_Ans_Publish_Publish_5100', 0, async (done: Function) => {
         console.info(`${TAG} Sub_Notification_Ans_Publish_Publish_5100 START`);
 
-        let publishData = {
-            bundleNames: "example.bundleName",
+        let publishData: commonEventManager.CommonEventPublishData = {
+            bundleName: "example.bundleName",
             code: 1
         }
 
@@ -76,7 +78,7 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', function () {
      * @tc.name: removeStickyCommonEvent
      * @tc.desc: test function removeStickyCommonEvent
      */
-    it('Sub_Notification_Ces_StaticEvent_Config_1200', 0, async function (done) {
+    it('Sub_Notification_Ces_StaticEvent_Config_1200', 0, async (done: Function) => {
         console.info(`${TAG} Sub_Notification_Ces_StaticEvent_Config_1200 START`);
 
         commonEventManager.removeStickyCommonEvent("sticky_event", (err) => {
@@ -99,14 +101,14 @@ describe('SUB_NOTIFICATION_CES_SYSTEM_API_TEST', function () {
      * @tc.name: removeStickyCommonEvent
      * @tc.desc: test function removeStickyCommonEvent
      */
-    it('Sub_Notification_Ces_StaticEvent_Config_1300', 0, async function (done) {
+    it('Sub_Notification_Ces_StaticEvent_Config_1300', 0, async (done: Function) => {
         console.info(`${TAG} Sub_Notification_Ces_StaticEvent_Config_1300 START`);
 
         commonEventManager.removeStickyCommonEvent("sticky_event").then(() => {
             console.info("${TAG} remove sticky event AsyncCallback success");
             expect(false).assertTrue()
             done()
-        }).catch ((err) => {
+        }).catch ((err: BusinessError) => {
             console.info(`${TAG} remove sticky event AsyncCallback errCode: ${err.code}, errMes: ${err.message}`)
             expect(err.code).assertEqual(202);
             done()
