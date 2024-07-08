@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -23,30 +23,32 @@ export default {
     data: {
     },
     onInit() {
-        this.title = "scene AppAccess";
+        this.title = 'scene AppAccess';
+        console.info('====>scene application start====');
+        let appAccountManager = account.createAppAccountManager();
+        console.info('====>creat scene manager finish====');
+        let enableBundle = 'com.example.actsaccountpressure';
+        console.info('====>add first account start====');
+        appAccountManager.createAccount('account_name_scene_first', async (err)=>{
+            console.info('====>add first account err:' + JSON.stringify(err));
+            try {
+                await appAccountManager.setAppAccess('account_name_scene_first', enableBundle, true);
+            } catch (err) {
+                console.info('====>setAppAccess account_name_scene_first err:' + JSON.stringify(err));
+            }
+            await appAccountManager.createAccount('account_name_scene_second');
+            try {
+                await appAccountManager.setAppAccess('account_name_scene_second', enableBundle, true);
+            } catch (err) {
+                console.info('====>setAppAccess account_name_scene_second err:' + JSON.stringify(err));
+            }
+            featureAbility.terminateSelf(
+                (err, data)=>{
+                    console.info('====>Terminate Ability Success====');
+            });
+        });
     },
     onShow() {
-        console.info('====>scene application start====');
-        var appAccountManager = account.createAppAccountManager();
-        console.info("====>creat scene manager finish====");
-        var enableBundle = "com.example.actsaccountpressure";
-        console.info("====>add first account start====");
-        appAccountManager.createAccount("account_name_scene_first", (err)=>{
-            console.info("====>add first account err:" + JSON.stringify(err));
-            appAccountManager.setAppAccess("account_name_scene_first", enableBundle, true, (err)=>{
-                console.info("====>enableAppAccess first account err:" + JSON.stringify(err));
-                appAccountManager.createAccount("account_name_scene_second", (err)=>{
-                    console.info("====>add second account err:" + JSON.stringify(err));
-                    appAccountManager.setAppAccess("account_name_scene_second", enableBundle, true, (err)=>{
-                        console.info("====>enableAppAccess second account err:" + JSON.stringify(err));
-                        featureAbility.terminateSelf(
-                            (err, data)=>{
-                                console.info('====>Terminate Ability Success====')
-                        });
-                    })
-                })
-            })
-        })
     },
     onReady() {
     },

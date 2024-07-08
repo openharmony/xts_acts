@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021-2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2021-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -22,57 +22,64 @@ export default {
     data: {
     },
     onInit() {
-        this.title = "scene accessible first application";
-    },
-    onShow() {
+        this.title = 'scene accessible first application';
         console.info('====>scene accessible first application start====');
         let appAccountManager = account.createAppAccountManager();
-        console.info("====>creat first scene manager finish====");
-        let enableBundle = "com.example.actsgetallaccessiblemultiple";
-        let enableBundle_2 = "com.example.getmultipleaccountstest"
-        console.info("====>add first account start====");
-        appAccountManager.createAccount("account_name_scene_first_first", (err)=>{
-            console.info("====>add first account err:" + JSON.stringify(err));
-            appAccountManager.setAppAccess("account_name_scene_first_first", enableBundle, true, (err)=>{
-                console.info("====>enableAppAccess first account err:" + JSON.stringify(err));
-                appAccountManager.setAppAccess("account_name_scene_first_first", enableBundle_2, true, (err) => {
-                    console.info("====>enableAppAccess first account for enableBundle_2 err:" + JSON.stringify(err));
-                    appAccountManager.createAccount("account_name_scene_first_second", (err)=>{
-                        console.info("====>add second account err:" + JSON.stringify(err));
-                        appAccountManager.setAppAccess("account_name_scene_first_second", enableBundle, true, (err)=>{
-                            appAccountManager.setAppAccess("account_name_scene_first_second", enableBundle_2, true, (err)=>{
-                                console.info("====>enableAppAccess second account err:" + JSON.stringify(err));
-                                console.info("====>startAbility second start====");
-                                featureAbility.startAbilityForResult(
-                                    {
-                                        want:
-                                        {
-                                            deviceId: "",
-                                            bundleName: "com.example.actsaccountaccessiblesecond",
-                                            abilityName: "com.example.actsaccountaccessiblesecond.MainAbility",
-                                            action: "action1",
-                                            parameters:
-                                            {},
-                                        },
-                                    }, async (err, data) => {
-                                        console.info("====>startAbility second err:" + JSON.stringify(err));
-                                        console.info("====>start terminateSelfWithResult first");
-                                        featureAbility.terminateSelfWithResult({
-                                            resultCode: 1,
-                                            want:
-                                            {
-                                                bundleName: "com.example.actsaccountaccessiblefirst",
-                                                abilityName: "com.example.actsaccountaccessiblefirst.MainAbility"
-                                            }
-                                        })
-                                    }
-                                );
-                            })
-                        })
-                    })
-                })
-            })  
-        })
+        console.info('====>create first scene manager finish====');
+        appAccountManager.createAccount('account_name_scene_first_first', async (err)=>{
+            console.info('====>add first account err:' + JSON.stringify(err));
+            try {
+                await appAccountManager.setAppAccess('account_name_scene_first_first', enableBundle, true);
+            } catch (err) {
+                console.info('====>enableAppAccess first account err:' + JSON.stringify(err));
+            }
+            try {
+                await appAccountManager.setAppAccess('account_name_scene_first_first', enableBundle2, true);
+            } catch (err) {
+                console.info('====>enableAppAccess first account for enableBundle2 err:' + JSON.stringify(err));
+            }
+            await appAccountManager.createAccount('account_name_scene_first_second');
+            try {
+                await appAccountManager.setAppAccess('account_name_scene_first_second', enableBundle, true);
+            } catch (err) {
+                console.info('====>enableAppAccess second enableBundle err:' + JSON.stringify(err));
+            }
+            try {
+                await appAccountManager.setAppAccess('account_name_scene_first_second', enableBundle2, true);
+            } catch (err) {
+                console.info('====>enableAppAccess second enableBundle2 err:' + JSON.stringify(err));
+            }
+            this.startA();
+        });
+    },
+    startA() {
+        console.info('====>startAbility second start====');
+        featureAbility.startAbilityForResult(
+            {
+                want:
+                {
+                    deviceId: '',
+                    bundleName: 'com.example.actsaccountaccessiblesecond',
+                    abilityName: 'com.example.actsaccountaccessiblesecond.MainAbility',
+                    action: 'action1',
+                    parameters:
+                    {},
+                },
+            }, async (err, data) => {
+                console.info('====>startAbility second err:' + JSON.stringify(err));
+                console.info('====>start terminateSelfWithResult first');
+                featureAbility.terminateSelfWithResult({
+                    resultCode: 1,
+                    want:
+                    {
+                        bundleName: 'com.example.actsaccountaccessiblefirst',
+                        abilityName: 'com.example.actsaccountaccessiblefirst.MainAbility'
+                    }
+                });
+            }
+        );
+    },
+    onShow() {
     },
     onReady() {
     },

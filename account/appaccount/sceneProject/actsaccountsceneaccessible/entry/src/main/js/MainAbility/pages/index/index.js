@@ -22,32 +22,38 @@ export default {
     data: {
     },
     onInit() {
-        this.title = "scene accessible account";
-    },
-    onShow() {
+        let enableBundle = 'com.example.actsgetallaccessibleaccounts';
+        let enableBundle2 = 'com.example.getallaccountsnoparameter';
+        this.title = 'scene accessible account';
         console.info('====>scene accessible account start====');
-        var appAccountManager = account.createAppAccountManager();
-        console.info("====>creat scene manager finish====");
-        var enableBundle = "com.example.actsgetallaccessibleaccounts";
-        var enableBundle2 = "com.example.getallaccountsnoparameter";
-        console.info("====>add account scene start====");
-        appAccountManager.createAccount("account_name_scene_single", (err)=>{
-            console.info("====>add account scene err:" + JSON.stringify(err));
-            appAccountManager.setAppAccess("account_name_scene_single", enableBundle, true, (err)=>{
-                console.info("====>enableAppAccess scene err:" + JSON.stringify(err));
-                appAccountManager.setAppAccess("account_name_scene_single", enableBundle2, true, (err)=>{
-                    console.info("====>enableAppAccess scene err:" + JSON.stringify(err));
-                    featureAbility.terminateSelfWithResult({
-                        resultCode: 1,
-                        want:
-                        {
-                            bundleName: "com.example.actsaccountsceneaccessible",
-                            abilityName: "com.example.actsaccountsceneaccessible.MainAbility"
-                        }
-                    })
-                });
+        console.info('====>scene add account start====');
+        let appAccountManager = account.createAppAccountManager();
+        console.info('====>scene create scene manager finish====');
+        appAccountManager.createAccount('account_name_scene_single', async (err)=>{
+            console.info('====>add account scene err:' + JSON.stringify(err));
+            console.info('====>scene setAppAccess start====');
+            try {
+                await appAccountManager.setAppAccess('account_name_scene_single', enableBundle, true);
+            } catch (err) {
+                console.info('====>setAppAccess enableBundle err:' + JSON.stringify(err));
+            }
+            try {
+                await appAccountManager.setAppAccess('account_name_scene_single', enableBundle2, true);
+            } catch (err) {
+                console.info('====>setAppAccess enableBundle2 err:' + JSON.stringify(err));
+            }
+            console.info('====>scene terminateSelfWithResult start====');
+            featureAbility.terminateSelfWithResult({
+                resultCode: 1,
+                want:
+                {
+                    bundleName: 'com.example.actsaccountsceneaccessible',
+                    abilityName: 'com.example.actsaccountsceneaccessible.MainAbility'
+                }
             });
         });
+    },
+    onShow() {
     },
     onReady() {
     },

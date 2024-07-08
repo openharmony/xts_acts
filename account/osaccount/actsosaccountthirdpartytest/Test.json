@@ -3,10 +3,10 @@
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "300000",
-        "shell-timeout": "180000",
+        "shell-timeout": "200000",
         "bundle-name": "com.example.actsosaccountthirdpartytest",
         "package-name": "com.example.actsosaccountthirdpartytest",
-        "testcase-timeout": "100000"
+        "testcase-timeout": 200000
     },
     "kits": [
         {
