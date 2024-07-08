@@ -15,13 +15,13 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function textAreaLineHeight() {
-  describe('textAreaLineHeight',  () =>{
-    beforeEach(async  (done:Function) =>{
+  describe('textAreaLineHeight', () => {
+    beforeEach(async (done: Function) => {
       console.info("textAreaLineHeightTest beforeEach start");
-      let options:router.RouterOptions = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/component/textAreaLineHeight',
       }
       try {
@@ -31,19 +31,19 @@ export default function textAreaLineHeight() {
         if (!("searchLineHeight" == pages.name)) {
           console.info("get textAreaLineHeight pages.name: " + JSON.stringify(pages.name));
           await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
         }
       } catch (err) {
         console.error("push textAreaLineHeight page error: " + err);
       }
 
-      await Utils.sleep(1000)
+      await CommonFunc.sleep(1000)
       console.info("textAreaLineHeight beforeEach end");
       done()
     });
 
-    afterEach(async  () =>{
-      await Utils.sleep(1000);
+    afterEach(async () => {
+      await CommonFunc.sleep(1000);
       console.info("textAreaLineHeight after each called");
     })
 
@@ -55,7 +55,7 @@ export default function textAreaLineHeight() {
        * @tc.type   Function
        * @tc.level  0
        */
-    it('textAreaLineHeight_0100', 0, async  (done:Function) =>{
+    it('textAreaLineHeight_0100', 0, async  (done: Function) => {
       console.info('[textAreaLineHeight_0100] START');
       let strJson = getInspectorByKey('key_textArea_lineHeight_001');
       console.info("[textAreaLineHeight_0100] obj is: " + JSON.stringify(JSON.parse(strJson).$attrs));

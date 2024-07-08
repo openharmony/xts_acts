@@ -90,7 +90,7 @@ export default class Utils {
 
   static getComponentRect(key: string) {
     let strJson = getInspectorByKey(key);
-    let obj = JSON.parse(strJson);
+    let obj: ESObject = JSON.parse(strJson);
     console.info('[getInspectorByKey] key is: ' + key);
     return Utils.getComponentRectByObj(obj);
   }
@@ -110,7 +110,7 @@ export default class Utils {
 
   static getComponentByKey(componentKey) {
     let strJson = getInspectorByKey(componentKey);
-    let obj = JSON.parse(strJson);
+    let obj: ESObject = JSON.parse(strJson);
     console.info('[' + componentKey + '] obj is: ' + JSON.stringify(obj));
     return obj;
   }

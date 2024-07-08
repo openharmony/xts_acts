@@ -28,8 +28,8 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 import UIAbility from '@ohos.app.ability.UIAbility';
 import window from '@ohos.window';
 import { UIContext } from '@ohos.arkui.UIContext';
@@ -41,7 +41,6 @@ export default function APIgetFrameNodeByUniqueId() {
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/MeasureSize/APIgetFrameNodeByUniqueId',
       }
-
       try {
         router.clear();
         let pages = router.getState();

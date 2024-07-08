@@ -14,7 +14,7 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@ohos.router';
-import Utils from './Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 import {
   UiComponent,
   UiDriver,
@@ -44,7 +44,7 @@ export default function SpanBaselineOffsetJsunit() {
         if (!("spanBaselineOffset" == pages.name)) {
           console.info("get spanBaselineOffset state pages.name: " + JSON.stringify(pages.name));
           await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
         }
       } catch (err) {
         console.error("push spanBaselineOffset page error: " + err);

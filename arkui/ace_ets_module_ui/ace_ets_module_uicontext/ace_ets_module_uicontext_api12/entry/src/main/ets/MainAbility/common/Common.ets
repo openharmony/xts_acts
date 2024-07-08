@@ -12,6 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import screen from '@ohos.screen';
+import { BusinessError } from '@ohos.base';
 import RectValue from './Rect';
 
 export default class CommonFunc {
@@ -49,13 +51,26 @@ export default class CommonFunc {
     console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(JSON.parse(strJson)));
     console.info("[getInspectorByKey] rectInfo is: " + JSON.parse('[' + JSON.parse(strJson).$rect + ']'));
     console.info("windowRect Left: " + globalThis.winLeft + ',' + "windowRect Top: " + globalThis.winTop );
-    CommonFunc.rect_left = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[0] + ']')[0] + globalThis.winLeft;
-    CommonFunc.rect_top = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[0] + ']')[1] + globalThis.winTop;
-    CommonFunc.rect_right = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[1] + ']')[0] + globalThis.winLeft;
-    CommonFunc.rect_bottom = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[1] + ']')[1] + globalThis.winTop;
-    return CommonFunc.rect_value = {
-      left: CommonFunc.rect_left, top: CommonFunc.rect_top, right: CommonFunc.rect_right, bottom: CommonFunc.rect_bottom
+    CommonFunc.rectLeft = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[0] + ']')[0] + globalThis.winLeft;
+    CommonFunc.rectTop = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[0] + ']')[1] + globalThis.winTop;
+    CommonFunc.rectRight = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[1] + ']')[0] + globalThis.winLeft;
+    CommonFunc.rectBottom = JSON.parse('[' + JSON.parse('[' + JSON.parse(strJson).$rect + ']')[1] + ']')[1] + globalThis.winTop;
+    return CommonFunc.rectValue = {
+      left: CommonFunc.rectLeft, top: CommonFunc.rectTop, right: CommonFunc.rectRight, bottom: CommonFunc.rectBottom
     }
+  }
+
+  static setScreenOrientation(orientation: number) {
+    screen.getAllScreens().then(data => {
+        console.log('Succeeded in getting all screens. Data:'+ JSON.stringify(data));
+        return data[0];
+    }).then(screenClass => {
+        return screenClass.setOrientation(orientation);
+    }).then(() => {
+        console.log('Succeeded in setting the vertical orientation.');
+    }).catch((err: BusinessError) => {
+        console.error('Failed to set the vertical orientation. Cause: ' + err.toString());
+    });
   }
 }
 

@@ -66,12 +66,12 @@ export default function ObserverPageId() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('ObserverPageId_text1');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
       console.info("[ObserverPageId_0100] obj1 is: " + JSON.stringify(obj1));
 
       let strJson2 = getInspectorByKey('ObserverPageId_text2');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       await CommonFunc.sleep(1000);
       console.info("[ObserverPageId_0100] obj2 is: " + JSON.stringify(obj2));
 

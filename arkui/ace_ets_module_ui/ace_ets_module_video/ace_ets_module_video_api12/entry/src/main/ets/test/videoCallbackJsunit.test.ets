@@ -68,8 +68,8 @@ export default function videoCallbackJsunit() {
     it('videoCallbackJsunit_0500', 0, async (done: Function) => {
       let driver = Driver.create();
       let callback = (event: events_emitter.EventData) => {
-        expect(event.data.action).assertEqual('onStart');
-        console.info('videoCallbackJsunit_0500 event: ' + event.data.action);
+        expect(event.data?.action).assertEqual('onStart');
+        console.info('videoCallbackJsunit_0500 event: ' + event.data?.action);
       }
       let event: events_emitter.InnerEvent = {
         eventId: 50101,
@@ -78,11 +78,11 @@ export default function videoCallbackJsunit() {
       events_emitter.on(event, callback);
       let button = await driver.findComponent(ON.id('start'));
       await button.click();
-      await new Promise((res, rej) => setTimeout(res, 5000, '1'))
+      await CommonFunc.sleep(5000);
 
       let callback2 = (event: events_emitter.EventData) => {
-        expect(event.data.action).assertEqual('onStop');
-        console.info('videoCallbackJsunit_0500 event: ' + event.data.action);
+        expect(event.data?.action).assertEqual('onStop');
+        console.info('videoCallbackJsunit_0500 event: ' + event.data?.action);
       }
       let event2: events_emitter.InnerEvent = {
         eventId: 50102,
@@ -91,7 +91,7 @@ export default function videoCallbackJsunit() {
       events_emitter.on(event2, callback2);
       let button2 = await driver.findComponent(ON.id('stop'));
       await button2.click();
-      await new Promise((res, rej) => setTimeout(res, 5000, '1'))
+      await CommonFunc.sleep(5000);
       await driver.pressBack();
       done();
     });
@@ -107,8 +107,8 @@ export default function videoCallbackJsunit() {
     it('videoCallbackJsunit_0501', 0, async (done: Function) => {
       let driver = Driver.create();
       let callback = (event: events_emitter.EventData) => {
-        expect(event.data.action).assertEqual('onStart');
-        console.info('videoCallbackJsunit_0501 event: ' + event.data.action);
+        expect(event.data?.action).assertEqual('onStart');
+        console.info('videoCallbackJsunit_0501 event: ' + event.data?.action);
       }
       let event: events_emitter.InnerEvent = {
         eventId: 50101,
@@ -117,15 +117,15 @@ export default function videoCallbackJsunit() {
       events_emitter.on(event, callback);
       let button = await driver.findComponent(ON.id('start'));
       await button.click();
-      await new Promise((res, rej) => setTimeout(res, 5000, '1'))
+      await CommonFunc.sleep(5000);
 
       let button3 = await driver.findComponent(ON.id('pause'));
       await button3.click();
-      await new Promise((res, rej) => setTimeout(res, 5000, '1'))
+      await CommonFunc.sleep(5000);
 
       let callback2 = (event: events_emitter.EventData) => {
-        expect(event.data.action).assertEqual('onStop');
-        console.info('videoCallbackJsunit_0501 event: ' + event.data.action);
+        expect(event.data?.action).assertEqual('onStop');
+        console.info('videoCallbackJsunit_0501 event: ' + event.data?.action);
       }
       let event2: events_emitter.InnerEvent = {
         eventId: 50102,
@@ -134,7 +134,7 @@ export default function videoCallbackJsunit() {
       events_emitter.on(event2, callback2);
       let button2 = await driver.findComponent(ON.id('stop'));
       await button2.click();
-      await new Promise((res, rej) => setTimeout(res, 5000, '1'))
+      await CommonFunc.sleep(5000);
       await driver.pressBack();
       done();
     });
