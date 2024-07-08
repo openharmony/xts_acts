@@ -50,8 +50,8 @@ export default function onSelectionChange10() {
      * @tc.name      testRichEditor
      * @tc.desc      Determine whether the cursor change triggers onSelectionChange
      * @tc.level     Level 2
-     * @tc.type
-    * @tc.size
+     * @tc.type      Function
+     * @tc.size      MediumTest
      */
     it('onSelectionChange10_0100', 0, async function (done) {
       console.info('[onSelectionChange10_0100] START');
@@ -63,12 +63,7 @@ export default function onSelectionChange10() {
       let richEditor = await driver.findComponent(ON.id('onSelectionChange10_RichEditor'));
       await richEditor.click();
       await CommonFunc.sleep(1000);
-      // doubleClick
-      let centerPoint = await richEditor.getBoundsCenter();
-      let point = `${centerPoint.x} ${centerPoint.y}`;
-      let cmd = `uinput -T -d ${point} -u ${point} -i 50 -d ${point} -u ${point}`;
-      let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-      abilityDelegator.executeShellCommand(cmd);
+      await richEditor.longClick();
       await CommonFunc.sleep(2000);
 
       let text1 = getInspectorByKey('onSelectionChange10_text1');
