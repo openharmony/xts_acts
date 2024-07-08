@@ -67,7 +67,7 @@ describe("NoPermissionJsTest", function () {
 
     /*
      * @tc.number     : SUB_Driver_Ext_DevManNoPermission_0100
-     * @tc.name       : Permission_queryDevices_001
+     * @tc.name       : NoPermission_queryDevices_001
      * @tc.desc       : verify permission of queryDevices
      * @tc.size       : MediumTest
      * @tc.type       : Function
@@ -90,7 +90,7 @@ describe("NoPermissionJsTest", function () {
 
     /*
      * @tc.number     : SUB_Driver_Ext_DevManNoPermission_0200
-     * @tc.name       : Permission_bindDevice_001
+     * @tc.name       : NoPermission_bindDevice_001
      * @tc.desc       : verify permission of bindDevice
      * @tc.size       : MediumTest
      * @tc.type       : Function
@@ -113,7 +113,7 @@ describe("NoPermissionJsTest", function () {
 
     /*
      * @tc.number     : SUB_Driver_Ext_DevManNoPermission_0300
-     * @tc.name       : Permission_bindDevice_002
+     * @tc.name       : NoPermission_bindDevice_002
      * @tc.desc       : verify permission of bindDevice
      * @tc.size       : MediumTest
      * @tc.type       : Function
@@ -136,7 +136,7 @@ describe("NoPermissionJsTest", function () {
 
     /*
      * @tc.number     : SUB_Driver_Ext_DevManNoPermission_0400
-     * @tc.name       : Permission_bindDeviceDriver_001
+     * @tc.name       : NoPermission_bindDeviceDriver_001
      * @tc.desc       : verify permission of bindDeviceDriver
      * @tc.size       : MediumTest
      * @tc.type       : Function
@@ -159,7 +159,7 @@ describe("NoPermissionJsTest", function () {
 
     /*
      * @tc.number     : SUB_Driver_Ext_DevManNoPermission_0500
-     * @tc.name       : Permission_bindDeviceDriver_002
+     * @tc.name       : NoPermission_bindDeviceDriver_002
      * @tc.desc       : verify permission of bindDeviceDriver
      * @tc.size       : MediumTest
      * @tc.type       : Function
@@ -182,7 +182,7 @@ describe("NoPermissionJsTest", function () {
 
     /*
      * @tc.number     : SUB_Driver_Ext_DevManNoPermission_0600
-     * @tc.name       : Permission_unbindDevice_001
+     * @tc.name       : NoPermission_unbindDevice_001
      * @tc.desc       : verify permission of unbindDevice
      * @tc.size       : MediumTest
      * @tc.type       : Function
@@ -205,7 +205,7 @@ describe("NoPermissionJsTest", function () {
 
     /*
      * @tc.number     : SUB_Driver_Ext_DevManNoPermission_0700
-     * @tc.name       : Permission_unbindDevice_002
+     * @tc.name       : NoPermission_unbindDevice_002
      * @tc.desc       : verify permission of unbindDevice
      * @tc.size       : MediumTest
      * @tc.type       : Function
