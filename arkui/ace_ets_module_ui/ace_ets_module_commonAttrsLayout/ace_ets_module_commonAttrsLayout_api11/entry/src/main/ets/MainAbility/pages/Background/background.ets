@@ -21,7 +21,7 @@ struct Background3Example {
   @State width: string = "200px";
   @State height: string = "200px";
   @State color: Array = [[0x080808], [0xEEEE00], [0xFF0000]];
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("gauge page state change called:" + JSON.stringify(eventData));
       if (eventData.data.colorValues != null) {
@@ -38,7 +38,7 @@ struct Background3Example {
       }
     }
   }
-  private stateChangCallBackTwo = (eventData) => {
+  private stateChangCallBackTwo = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("Background page state change called:" + JSON.stringify(eventData));
       if (eventData.data.backgroundColor != null) {
@@ -58,13 +58,13 @@ struct Background3Example {
 
   onPageShow() {
     console.info('background page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 1,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
 
-    var stateChangeEventTwo = {
+    let stateChangeEventTwo: events_emitter.InnerEvent = {
       eventId: 2,
       priority: events_emitter.EventPriority.LOW
     }

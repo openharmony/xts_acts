@@ -13,51 +13,108 @@
  * limitations under the License.
  */
 import matrix4 from '@ohos.matrix4'
+
 let matrix = matrix4.init([1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0])
+
 @Entry
 @Component
 struct comSizeAbilityTest_03 {
   build() {
-    Scroll(){
+    Scroll() {
       Column({ space: 20 }) {
-        Column(){
+        Column() {
           Circle()
             .backgroundColor('red')
             .key("Circle_Size")
             .size({ width: 310, height: 140 })
-            
+
             .translate({ x: 1, y: 1, z: 1 })
-            .scale({ x: 1, y: 1, z: 1, centerX: 1, centerY: 1 })
-            .rotate({ x: 1, y: 1, z: 1, angle: 0, centerX: 1, centerY: 1 })
+            .scale({
+              x: 1,
+              y: 1,
+              z: 1,
+              centerX: 1,
+              centerY: 1
+            })
+            .rotate({
+              x: 1,
+              y: 1,
+              z: 1,
+              angle: 0,
+              centerX: 1,
+              centerY: 1
+            })
             .transform(matrix)
         }
-        Column(){
+
+        Column() {
           Column()
             .backgroundColor('red')
             .key("Column_Size")
             .size({ width: 160, height: 100 })
             .translate({ x: 1, y: 1, z: 1 })
-            .scale({ x: 1, y: 1, z: 1, centerX: 1, centerY: 1 })
-            .rotate({ x: 1, y: 1, z: 1, angle: 0, centerX: 1, centerY: 1 })
+            .scale({
+              x: 1,
+              y: 1,
+              z: 1,
+              centerX: 1,
+              centerY: 1
+            })
+            .rotate({
+              x: 1,
+              y: 1,
+              z: 1,
+              angle: 0,
+              centerX: 1,
+              centerY: 1
+            })
             .transform(matrix)
         }
-        Column(){
+
+        Column() {
           Counter()
             .key("Counter_Size")
             .size({ width: 150, height: 100 })
             .translate({ x: 1, y: 1, z: 1 })
-            .scale({ x: 1, y: 1, z: 1, centerX: 1, centerY: 1 })
-            .rotate({ x: 1, y: 1, z: 1, angle: 0, centerX: 1, centerY: 1 })
+            .scale({
+              x: 1,
+              y: 1,
+              z: 1,
+              centerX: 1,
+              centerY: 1
+            })
+            .rotate({
+              x: 1,
+              y: 1,
+              z: 1,
+              angle: 0,
+              centerX: 1,
+              centerY: 1
+            })
             .transform(matrix)
         }
-        Column(){
+
+        Column() {
           Divider()
             .backgroundColor('red')
             .key("Divider_Size")
             .size({ width: 130, height: 100 })
             .translate({ x: 1, y: 1, z: 1 })
-            .scale({ x: 1, y: 1, z: 1, centerX: 1, centerY: 1 })
-            .rotate({ x: 1, y: 1, z: 1, angle: 0, centerX: 1, centerY: 1 })
+            .scale({
+              x: 1,
+              y: 1,
+              z: 1,
+              centerX: 1,
+              centerY: 1
+            })
+            .rotate({
+              x: 1,
+              y: 1,
+              z: 1,
+              angle: 0,
+              centerX: 1,
+              centerY: 1
+            })
             .transform(matrix)
         }
       }.width('100%')

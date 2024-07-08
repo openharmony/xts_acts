@@ -13,18 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  Driver,
+  Component,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
-import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 import window from '@ohos.window';
 
 export default function onSizeChange() {
-  describe('onSizeChange', function () {
-    beforeEach(async function (done) {
+  describe('onSizeChange', () => {
+    beforeEach(async (done: Function) => {
       console.info("onSizeChange beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/onSizeChange/onSizeChange',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/onSizeChange/onSizeChange',
       }
       try {
         router.clear();
@@ -32,7 +44,7 @@ export default function onSizeChange() {
         console.info("get onSizeChange state pages: " + JSON.stringify(pages));
         if (!("onSizeChange" == pages.name)) {
           console.info("get onSizeChange state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push onSizeChange success: " + JSON.stringify(result));
         }
@@ -48,17 +60,16 @@ export default function onSizeChange() {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('onSizeChange_0100', 0, async function (done) {
+    it('onSizeChange_0100', 0, async (done: Function) => {
       console.info('onSizeChange_0100 START');
       let driver = await Driver.create()
       let button = await driver.findComponent(ON.id('onSizeChangeXTS'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('onSizeChangeMessage');
-      let obj = JSON.parse(strJson);
-      console.info("[onSizeChange_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[onSizeChange_0100] title: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual("onSizeChange success");
+      console.info("[onSizeChange_0100] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[onSizeChange_0100] title: " + JSON.stringify(JSON.parse(strJson).$attrs.content));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual("onSizeChange success");
       console.info('[onSizeChange_0100] END');
       done();
     });

@@ -13,15 +13,18 @@
  * limitations under the License.
  */
 import matrix4 from '@ohos.matrix4'
+
 let matrix = matrix4.init([1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0])
+
 @Entry
 @Component
 struct comSizeAbilityTest_01 {
   private settings: RenderingContextSettings = new RenderingContextSettings(true)
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
   @State text1: string = ''
+
   build() {
-    Scroll(){
+    Scroll() {
       Column({ space: 20 }) {
         Column() {
           Badge({
@@ -34,20 +37,48 @@ struct comSizeAbilityTest_01 {
           .key("Badge_Size")
           .size({ width: 170, height: 120 })
           .translate({ x: 1, y: 1, z: 1 })
-          .scale({ x: 1, y: 1, z: 1, centerX: 1, centerY: 1 })
-          .rotate({ x: 1, y: 1, z: 1, angle: 0, centerX: 1, centerY: 1 })
+          .scale({
+            x: 1,
+            y: 1,
+            z: 1,
+            centerX: 1,
+            centerY: 1
+          })
+          .rotate({
+            x: 1,
+            y: 1,
+            z: 1,
+            angle: 0,
+            centerX: 1,
+            centerY: 1
+          })
           .transform(matrix)
         }
-        Column(){
+
+        Column() {
           Button()
             .key("Button_Size")
-            .size({ width: 90, height: 90})
+            .size({ width: 90, height: 90 })
             .translate({ x: 1, y: 1, z: 1 })
-            .scale({ x: 1, y: 1, z: 1, centerX: 1, centerY: 1 })
-            .rotate({ x: 1, y: 1, z: 1, angle: 0, centerX: 1, centerY: 1 })
+            .scale({
+              x: 1,
+              y: 1,
+              z: 1,
+              centerX: 1,
+              centerY: 1
+            })
+            .rotate({
+              x: 1,
+              y: 1,
+              z: 1,
+              angle: 0,
+              centerX: 1,
+              centerY: 1
+            })
             .transform(matrix)
         }
-        Column(){
+
+        Column() {
           Canvas(this.context)
             .width('100%')
             .height('100%')
@@ -58,8 +89,21 @@ struct comSizeAbilityTest_01 {
             .key("Canvas_Size")
             .size({ width: 211, height: 140 })
             .translate({ x: 1, y: 1, z: 1 })
-            .scale({ x: 1, y: 1, z: 1, centerX: 1, centerY: 1 })
-            .rotate({ x: 1, y: 1, z: 1, angle: 0, centerX: 1, centerY: 1 })
+            .scale({
+              x: 1,
+              y: 1,
+              z: 1,
+              centerX: 1,
+              centerY: 1
+            })
+            .rotate({
+              x: 1,
+              y: 1,
+              z: 1,
+              angle: 0,
+              centerX: 1,
+              centerY: 1
+            })
             .transform(matrix)
         }
       }.width('100%')

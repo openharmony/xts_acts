@@ -13,18 +13,32 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, MouseButton , WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  MouseButton,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
 
 
 export default function ChipAction() {
-  describe('ChipAction', function () {
-    beforeEach(async function (done) {
+  describe('ChipAction', () => {
+    beforeEach(async (done: Function) => {
       console.info("search_caret beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Chip/ChipAction',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Chip/ChipAction',
       }
       try {
         router.clear();
@@ -32,7 +46,7 @@ export default function ChipAction() {
         console.info("get ChipAction state pages: " + JSON.stringify(pages));
         if (!("ChipAction" == pages.name)) {
           console.info("get ChipAction state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push ChipAction page result: " + JSON.stringify(result));
         }
@@ -49,25 +63,26 @@ export default function ChipAction() {
       * @tc.desc  : action event test
       * @tc.level : Level 3
       */
-    it('ChipAction_001', 0, async (done:Function)=> {
+    it('ChipAction_001', 0, async (done: Function) => {
 
       console.info('ChipAction_001 START');
       let ChipActionCol = CommonFunc.getComponentRect('ChipActionCol');
       await CommonFunc.sleep(200);
-      let right = ChipActionCol.right - vp2px(22) + globalThis.winLeft;
-      let top = ChipActionCol.top + vp2px(18)  + globalThis.winTop;
+      let right: number = ChipActionCol.right - vp2px(22) + globalThis.winLeft;
+      let top: number = ChipActionCol.top + vp2px(18) + globalThis.winTop;
       await CommonFunc.sleep(200);
       console.info('ChipAction_001 right：' + right + 'top:' + top);
       let driver = Driver.create();
-      await driver.mouseClick({ x: Math.round(right) , y: Math.round(top) }, MouseButton.MOUSE_BUTTON_LEFT);
+      await driver.mouseClick({
+        x: Math.round(right), y: Math.round(top)
+      }, MouseButton.MOUSE_BUTTON_LEFT);
       await CommonFunc.sleep(1000);
       console.info('ChipAction_001 click success');
 
       let strJson1 = getInspectorByKey('ChipAction');
-      let obj2 = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
       console.info("[ChipAction_001] component obj is: " + JSON.stringify(JSON.parse(strJson1)));
-      expect(obj2.$attrs.content).assertEqual('action');
+      expect(JSON.parse(strJson1).$attrs.content).assertEqual('action');
       console.info('[ChipAction_001] END');
 
       done();

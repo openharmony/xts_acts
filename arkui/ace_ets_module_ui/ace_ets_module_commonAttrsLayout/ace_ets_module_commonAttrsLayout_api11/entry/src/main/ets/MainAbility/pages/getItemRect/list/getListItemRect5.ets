@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../../utils/MessageManager';
+import { MessageManager, Callback } from '../../../utils/MessageManager';
 
 @Entry
 @Component
@@ -27,22 +27,22 @@ struct getListItemRect5 {
   @State y: number = 0
   @State width1: number = 0
   @State height1: number = 0
+  messageManager: MessageManager = new MessageManager()
 
-  messageManager:MessageManager = new MessageManager()
   onPageShow() {
     console.info('getListItemRect5 onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
+      name: 'messageManager', message: this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback = (message: ESObject) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'index') {
         this.index = message.value;
-      }else if (message.name == 'width2') {
+      } else if (message.name == 'width2') {
         this.width2 = message.value;
-      }else if (message.name == 'height2') {
+      } else if (message.name == 'height2') {
         this.height2 = message.value;
-      }else if (message.name == 'listDirection1') {
+      } else if (message.name == 'listDirection1') {
         this.listDirection1 = message.value;
       }
     }
@@ -51,21 +51,29 @@ struct getListItemRect5 {
 
   build() {
     Column() {
-      List({ space: 20, initialIndex: 0 ,scroller:this.listScroller}) {
+      List({ space: 20, initialIndex: 0, scroller: this.listScroller }) {
 
         ListItem() {
-          Text('0' )
-            .width('100%').height('100%').fontSize(16)
-            .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
+          Text('0')
+            .width('100%')
+            .height('100%')
+            .fontSize(16)
+            .textAlign(TextAlign.Center)
+            .borderRadius(10)
+            .backgroundColor(0xFFFFFF)
             .key('getListItemRect5_listItem_0')
         }.width(this.width2).height(this.height2)
 
         ForEach(this.arr, (item: number) => {
           ListItem() {
             Text('' + item)
-              .width('100%').height('100%').fontSize(16)
-              .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
-              .key('getListItemRect5_listItem_' +  item)
+              .width('100%')
+              .height('100%')
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+              .key('getListItemRect5_listItem_' + item)
           }.width(this.width2).height(this.height2)
         }, (item: string) => item)
 

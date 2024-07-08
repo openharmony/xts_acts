@@ -12,18 +12,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import windowAnimationManager from '@ohos.animation.windowAnimationManager';
 import WindowAnimationControllerImpl from './WindowAnimationControllerImpl';
 import matrix4 from '@ohos.matrix4'
+
 let matrix = matrix4.init([1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0])
+
 @Entry
 @Component
 struct comSizeAbilityTest_20 {
-  @State formId:number = 0;
-build() {
-    Scroll(){
+  @State formId: number = 0;
+
+  build() {
+    Scroll() {
       Column({ space: 20 }) {
-        Column(){
+        Column() {
           FormLink({
             action: "router",
             abilityName: "EntryAbility",
@@ -35,10 +39,23 @@ build() {
           }
           .key("FormLink_Size")
           .backgroundColor(0XBDDB69)
-          .size({ width: 200, height: 100})
+          .size({ width: 200, height: 100 })
           .translate({ x: 1, y: 1, z: 1 })
-          .scale({ x: 1, y: 1, z: 1, centerX: 1, centerY: 1 })
-          .rotate({ x: 1, y: 1, z: 1, angle: 0, centerX: 1, centerY: 1 })
+          .scale({
+            x: 1,
+            y: 1,
+            z: 1,
+            centerX: 1,
+            centerY: 1
+          })
+          .rotate({
+            x: 1,
+            y: 1,
+            z: 1,
+            angle: 0,
+            centerX: 1,
+            centerY: 1
+          })
           .transform(matrix)
         }.key('FormLink_Father')
       }.width('100%')

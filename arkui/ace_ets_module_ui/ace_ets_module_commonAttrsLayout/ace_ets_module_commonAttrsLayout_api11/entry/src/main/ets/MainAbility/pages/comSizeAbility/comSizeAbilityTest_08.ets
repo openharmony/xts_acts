@@ -13,17 +13,20 @@
  * limitations under the License.
  */
 import matrix4 from '@ohos.matrix4'
+
 let matrix = matrix4.init([1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0])
+
 @Entry
 @Component
 struct comSizeAbilityTest_08 {
   private NavRouterArr: number[] = [0]
   @State isActive: boolean = false
   @State dex: number = 0
+
   build() {
-    Scroll(){
+    Scroll() {
       Column({ space: 20 }) {
-        Column(){
+        Column() {
           Navigation() {
             List({ space: 0, initialIndex: 0 }) {
               ForEach(this.NavRouterArr, (item: number, index: number = 0) => {
@@ -36,6 +39,7 @@ struct comSizeAbilityTest_08 {
                         .textAlign(TextAlign.Center)
                     }
                     .height(50)
+
                     NavDestination() {
                       Text(`我是第${item + 1}页内容`).fontSize(50)
                       Row() {
@@ -48,37 +52,64 @@ struct comSizeAbilityTest_08 {
                     this.dex = index
                   })
                 }
-              }, (item:number) => item.toString())
+              }, (item: number) => item.toString())
             }
           }
-            .backgroundColor('red')
-            .key("Navigation_Size")
-            .size({ width: 100, height: 100 })
-            .translate({ x: 1, y: 1, z: 1 })
-            .scale({ x: 1, y: 1, z: 1, centerX: 1, centerY: 1 })
-            .rotate({ x: 1, y: 1, z: 1, angle: 0, centerX: 1, centerY: 1 })
-            .transform(matrix)
+          .backgroundColor('red')
+          .key("Navigation_Size")
+          .size({ width: 100, height: 100 })
+          .translate({ x: 1, y: 1, z: 1 })
+          .scale({
+            x: 1,
+            y: 1,
+            z: 1,
+            centerX: 1,
+            centerY: 1
+          })
+          .rotate({
+            x: 1,
+            y: 1,
+            z: 1,
+            angle: 0,
+            centerX: 1,
+            centerY: 1
+          })
+          .transform(matrix)
         }
-        Column(){
+
+        Column() {
           Navigation() {
-              ForEach(this.NavRouterArr, (item: number, index: number = 0) => {
-                  NavRouter() {
-                    Row() {
-                      Text(`NavRouter${item + 1}`)
-                        .fontSize(22)
-                        .textAlign(TextAlign.Center)
-                    }
-                    .height(50)
-                    .backgroundColor(this.dex === index ? '#ccc' : '#fff')
-                  }
-                  .backgroundColor('red')
-                  .key("NavRouter_Size")
-                  .size({ width: 100, height: 100 })
-                  .translate({ x: 1, y: 1, z: 1 })
-                  .scale({ x: 1, y: 1, z: 1, centerX: 1, centerY: 1 })
-                  .rotate({ x: 1, y: 1, z: 1, angle: 0, centerX: 1, centerY: 1 })
-                  .transform(matrix)
-              }, (item:number) => item.toString())
+            ForEach(this.NavRouterArr, (item: number, index: number = 0) => {
+              NavRouter() {
+                Row() {
+                  Text(`NavRouter${item + 1}`)
+                    .fontSize(22)
+                    .textAlign(TextAlign.Center)
+                }
+                .height(50)
+                .backgroundColor(this.dex === index ? '#ccc' : '#fff')
+              }
+              .backgroundColor('red')
+              .key("NavRouter_Size")
+              .size({ width: 100, height: 100 })
+              .translate({ x: 1, y: 1, z: 1 })
+              .scale({
+                x: 1,
+                y: 1,
+                z: 1,
+                centerX: 1,
+                centerY: 1
+              })
+              .rotate({
+                x: 1,
+                y: 1,
+                z: 1,
+                angle: 0,
+                centerX: 1,
+                centerY: 1
+              })
+              .transform(matrix)
+            }, (item: number) => item.toString())
           }
         }
         .backgroundColor('blue')

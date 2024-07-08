@@ -12,12 +12,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../../utils/MessageManager';
+import { MessageManager, Callback } from '../../../utils/MessageManager';
 
 @Entry
 @Component
 struct getListItemGroupRect5 {
-  private arr: number[] = [0,1, 2, 3, 4, 5, 6, 7]
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7]
   private listScroller: ListScroller = new ListScroller()
   @State space1: number = 20
   @State space2: number = 0
@@ -26,44 +26,47 @@ struct getListItemGroupRect5 {
   @State listDirection1: Axis = Axis.Vertical
   @State width2: string = '100%'
   @State height2: string = '100'
-
   @State x: number = 0
   @State y: number = 0
   @State width1: number = 0
   @State height1: number = 0
 
-  @Builder itemHead(text:string){
+  @Builder
+  itemHead(text: string) {
     Text(text)
       .fontSize(20)
       .backgroundColor(0xAABBCC)
       .width(this.width2)
       .height(this.height2)
   }
-  @Builder itemFoot(num:number){
-    Text('共' + num + "个")
+
+  @Builder
+  itemFoot(num: number) {
+    Text('共' + num + '个')
       .fontSize(20)
       .backgroundColor(0xAABBCC)
       .width(this.width2)
       .height(this.height2)
   }
 
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager = new MessageManager()
+
   onPageShow() {
     console.info('getListItemGroupRect5 onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
+      name: 'messageManager', message: this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback = (message: ESObject) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'index') {
         this.index = message.value;
-      }else if (message.name == 'indexInGroup') {
+      } else if (message.name == 'indexInGroup') {
         this.indexInGroup = message.value;
-      }else if (message.name == 'listDirection1') {
+      } else if (message.name == 'listDirection1') {
         this.listDirection1 = message.value;
-      }else if (message.name == 'width2') {
+      } else if (message.name == 'width2') {
         this.width2 = message.value;
-      }else if (message.name == 'height2') {
+      } else if (message.name == 'height2') {
         this.height2 = message.value;
       }
     }
@@ -72,11 +75,11 @@ struct getListItemGroupRect5 {
 
   build() {
     Column() {
-      List({ space: this.space1, initialIndex: 0 ,scroller:this.listScroller}) {
-        ListItemGroup({header:this.itemHead('0'),footer:this.itemFoot(this.arr.length),space:this.space2}){
-          ForEach(this.arr,(item:number) => {
-            ListItem(){
-              Text('listItemGroup'+ item)
+      List({ space: this.space1, initialIndex: 0, scroller: this.listScroller }) {
+        ListItemGroup({ header: this.itemHead('0'), footer: this.itemFoot(this.arr.length), space: this.space2 }) {
+          ForEach(this.arr, (item: number) => {
+            ListItem() {
+              Text('listItemGroup' + item)
                 .width('100%')
                 .height("100%")
                 .fontSize(16)
@@ -98,10 +101,10 @@ struct getListItemGroupRect5 {
       .height(500)
 
       Button('点击获取信息').onClick((event: ClickEvent) => {
-        this.x = this.listScroller.getItemRectInGroup(this.index,this.indexInGroup).x
-        this.y = this.listScroller.getItemRectInGroup(this.index,this.indexInGroup).y
-        this.width1 = this.listScroller.getItemRectInGroup(this.index,this.indexInGroup).width
-        this.height1 = this.listScroller.getItemRectInGroup(this.index,this.indexInGroup).height
+        this.x = this.listScroller.getItemRectInGroup(this.index, this.indexInGroup).x
+        this.y = this.listScroller.getItemRectInGroup(this.index, this.indexInGroup).y
+        this.width1 = this.listScroller.getItemRectInGroup(this.index, this.indexInGroup).width
+        this.height1 = this.listScroller.getItemRectInGroup(this.index, this.indexInGroup).height
       }).id('getListItemGroupRect5_button')
       Text('' + this.x).key('getListItemGroupRect5_text1')
       Text('' + this.y).key('getListItemGroupRect5_text2')

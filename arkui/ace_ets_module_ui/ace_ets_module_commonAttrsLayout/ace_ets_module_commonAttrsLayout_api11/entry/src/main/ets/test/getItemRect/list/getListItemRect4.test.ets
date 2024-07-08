@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../../MainAbility/utils/MessageManager';
 
 
 export default function getListItemRect4() {
-  describe('getListItemRect4', function () {
-    beforeEach(async function (done) {
+  describe('getListItemRect4', () =>{
+    beforeEach(async (done:Function)=>{
       console.info("getListItemRect4 beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/getItemRect/list/getListItemRect4',
+      let options :router.RouterOptions ={
+        url:  'MainAbility/pages/getItemRect/list/getListItemRect4',
       }
       try {
         router.clear();
@@ -32,7 +32,7 @@ export default function getListItemRect4() {
         console.info("get getListItemRect4 state pages: " + JSON.stringify(pages));
         if (!("getListItemRect4" == pages.name)) {
           console.info("get getListItemRect4 state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push getListItemRect4 page result: " + JSON.stringify(result));
         }
@@ -42,9 +42,9 @@ export default function getListItemRect4() {
       }
       done();
     });
-    afterEach(async function () {
+    afterEach(async () =>{
       await CommonFunc.sleep(1000);
-      router.back({uri: 'MainAbility/pages/index/index'})
+      router.back({url: 'MainAbility/pages/index/index'})
       console.info("BadgeFocus after each called");
     });
 
@@ -54,7 +54,7 @@ export default function getListItemRect4() {
     * @tc.desc  : set index to 0,set the visibility of listItem0 to Visible
     * @tc.level : Level 2
     */
-    it('getListItemRect4_0100', 0, async function (done) {
+    it('getListItemRect4_0100', 0, async (done:Function)=> {
 
       console.info('[getListItemRect4_0100] START');
       globalThis.value.message.notify({name:'index', value:0});
@@ -80,23 +80,19 @@ export default function getListItemRect4() {
 
       console.log('get text message')
       let strJson1 = getInspectorByKey('getListItemRect4_text1')
-      let obj1 = JSON.parse(strJson1)
-      let x = Number(obj1.$attrs.content)
+      let x = Number(JSON.parse(strJson1).$attrs.content)
       console.log('x' + x)
 
       let strJson2 = getInspectorByKey('getListItemRect4_text2')
-      let obj2 = JSON.parse(strJson2)
-      let y = Number(obj2.$attrs.content)
+      let y = Number(JSON.parse(strJson2).$attrs.content)
       console.log('y' + y)
 
       let strJson3 = getInspectorByKey('getListItemRect4_text3')
-      let obj3 = JSON.parse(strJson3)
-      let width = Number(obj3.$attrs.content)
+      let width = Number(JSON.parse(strJson3).$attrs.content)
       console.log('width' + width)
 
       let strJson4 = getInspectorByKey('getListItemRect4_text4')
-      let obj4 = JSON.parse(strJson4)
-      let height = Number(obj4.$attrs.content)
+      let height = Number(JSON.parse(strJson4).$attrs.content)
       console.log('height' + height)
 
       console.log('assert position')
@@ -119,7 +115,7 @@ export default function getListItemRect4() {
     * @tc.desc  : set index to 0,set the visibility of listItem0 to Hidden
     * @tc.level : Level 2
     */
-    it('getListItemRect4_0200', 0, async function (done) {
+    it('getListItemRect4_0200', 0, async (done:Function)=> {
 
       console.info('[getListItemRect4_0200] START');
       globalThis.value.message.notify({name:'index', value:0});
@@ -145,23 +141,19 @@ export default function getListItemRect4() {
 
       console.log('get text message')
       let strJson1 = getInspectorByKey('getListItemRect4_text1')
-      let obj1 = JSON.parse(strJson1)
-      let x = Number(obj1.$attrs.content)
+      let x = Number(JSON.parse(strJson1).$attrs.content)
       console.log('x' + x)
 
       let strJson2 = getInspectorByKey('getListItemRect4_text2')
-      let obj2 = JSON.parse(strJson2)
-      let y = Number(obj2.$attrs.content)
+      let y = Number(JSON.parse(strJson2).$attrs.content)
       console.log('y' + y)
 
       let strJson3 = getInspectorByKey('getListItemRect4_text3')
-      let obj3 = JSON.parse(strJson3)
-      let width = Number(obj3.$attrs.content)
+      let width = Number(JSON.parse(strJson3).$attrs.content)
       console.log('width' + width)
 
       let strJson4 = getInspectorByKey('getListItemRect4_text4')
-      let obj4 = JSON.parse(strJson4)
-      let height = Number(obj4.$attrs.content)
+      let height = Number(JSON.parse(strJson4).$attrs.content)
       console.log('height' + height)
 
       console.log('assert position')
@@ -185,7 +177,7 @@ export default function getListItemRect4() {
     * @tc.desc  : set index to 0,set the visibility of listItem0 to None
     * @tc.level : Level 2
     */
-    it('getListItemRect4_0300', 0, async function (done) {
+    it('getListItemRect4_0300', 0, async (done:Function)=> {
 
       console.info('[getListItemRect4_0300] START');
       globalThis.value.message.notify({name:'index', value:0});
@@ -211,23 +203,19 @@ export default function getListItemRect4() {
 
       console.log('get text message')
       let strJson1 = getInspectorByKey('getListItemRect4_text1')
-      let obj1 = JSON.parse(strJson1)
-      let x = Number(obj1.$attrs.content)
+      let x = Number(JSON.parse(strJson1).$attrs.content)
       console.log('x' + x)
 
       let strJson2 = getInspectorByKey('getListItemRect4_text2')
-      let obj2 = JSON.parse(strJson2)
-      let y = Number(obj2.$attrs.content)
+      let y = Number(JSON.parse(strJson2).$attrs.content)
       console.log('y' + y)
 
       let strJson3 = getInspectorByKey('getListItemRect4_text3')
-      let obj3 = JSON.parse(strJson3)
-      let width = Number(obj3.$attrs.content)
+      let width = Number(JSON.parse(strJson3).$attrs.content)
       console.log('width' + width)
 
       let strJson4 = getInspectorByKey('getListItemRect4_text4')
-      let obj4 = JSON.parse(strJson4)
-      let height = Number(obj4.$attrs.content)
+      let height = Number(JSON.parse(strJson4).$attrs.content)
       console.log('height' + height)
 
       console.log('assert position')

@@ -13,11 +13,14 @@
  * limitations under the License.
  */
 import matrix4 from '@ohos.matrix4'
+
 let matrix = matrix4.init([1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0])
+
 interface TimeTable {
   title: string;
   projects: string[];
 }
+
 @Entry
 @Component
 struct comSizeAbilityTest_06 {
@@ -33,6 +36,7 @@ struct comSizeAbilityTest_06 {
   ]
   private arr_list: number[] = [0, 1, 2, 3, 4, 5]
   private arr: number[] = [0]
+
   @Builder
   itemHead(text: string) {
     Text(text)
@@ -41,6 +45,7 @@ struct comSizeAbilityTest_06 {
       .width("100%")
       .padding(10)
   }
+
   @Builder
   itemFoot(num: number) {
     Text('共' + num + "节课")
@@ -49,6 +54,7 @@ struct comSizeAbilityTest_06 {
       .width("100%")
       .padding(5)
   }
+
   build() {
     Scroll() {
       Column({ space: 20 }) {
@@ -58,7 +64,12 @@ struct comSizeAbilityTest_06 {
               ListItemGroup({ header: this.itemHead(item.title), footer: this.itemFoot(item.projects.length) }) {
                 ForEach(item.projects, (project: string) => {
                   ListItem() {
-                    Text(project).width("100%").height(100).fontSize(20).textAlign(TextAlign.Center).backgroundColor(0xFFFFFF)
+                    Text(project)
+                      .width("100%")
+                      .height(100)
+                      .fontSize(20)
+                      .textAlign(TextAlign.Center)
+                      .backgroundColor(0xFFFFFF)
                   }
                 }, (item: string) => item)
               }
@@ -67,12 +78,26 @@ struct comSizeAbilityTest_06 {
               .divider({ strokeWidth: 1, color: Color.Blue }) // 每行之间的分界线
               .size({ width: 160, height: 100 })
               .translate({ x: 1, y: 1, z: 1 })
-              .scale({ x: 1, y: 1, z: 1, centerX: 1, centerY: 1 })
-              .rotate({ x: 1, y: 1, z: 1, angle: 0, centerX: 1, centerY: 1 })
+              .scale({
+                x: 1,
+                y: 1,
+                z: 1,
+                centerX: 1,
+                centerY: 1
+              })
+              .rotate({
+                x: 1,
+                y: 1,
+                z: 1,
+                angle: 0,
+                centerX: 1,
+                centerY: 1
+              })
               .transform(matrix)
             })
           }.backgroundColor('red').height(200)
         }
+
         Column() {
           List({ space: 20, initialIndex: 0 }) {
             ForEach(this.arr, (item: number) => {
@@ -81,30 +106,63 @@ struct comSizeAbilityTest_06 {
               .key("ListItem_Size")
               .size({ width: 200, height: 240 })
               .translate({ x: 1, y: 1, z: 1 })
-              .scale({ x: 1, y: 1, z: 1, centerX: 1, centerY: 1 })
-              .rotate({ x: 1, y: 1, z: 1, angle: 0, centerX: 1, centerY: 1 })
+              .scale({
+                x: 1,
+                y: 1,
+                z: 1,
+                centerX: 1,
+                centerY: 1
+              })
+              .rotate({
+                x: 1,
+                y: 1,
+                z: 1,
+                angle: 0,
+                centerX: 1,
+                centerY: 1
+              })
               .transform(matrix)
               .backgroundColor('gray')
             }, (item: string) => item)
           }.backgroundColor('blue')
         }
-          Column() {
-            List({ space: 20, initialIndex: 0 }) {
-              ForEach(this.arr_list, (item: number) => {
-                ListItem() {
-                  Text('' + item).width('100%').height(50).fontSize(16).textAlign(TextAlign.Center).borderRadius(10).backgroundColor('gray')
-                }
-              }, (item: string) => item)
-            }
-            .backgroundColor('black')
-            .key("List_Size")
-            .size({ width: 200, height: 200 })
-            .translate({ x: 1, y: 1, z: 1 })
-            .scale({ x: 1, y: 1, z: 1, centerX: 1, centerY: 1 })
-            .rotate({ x: 1, y: 1, z: 1, angle: 0, centerX: 1, centerY: 1 })
-            .transform(matrix)
+
+        Column() {
+          List({ space: 20, initialIndex: 0 }) {
+            ForEach(this.arr_list, (item: number) => {
+              ListItem() {
+                Text('' + item)
+                  .width('100%')
+                  .height(50)
+                  .fontSize(16)
+                  .textAlign(TextAlign.Center)
+                  .borderRadius(10)
+                  .backgroundColor('gray')
+              }
+            }, (item: string) => item)
           }
-        }.width('100%')
-      }.height('100%')
-    }
+          .backgroundColor('black')
+          .key("List_Size")
+          .size({ width: 200, height: 200 })
+          .translate({ x: 1, y: 1, z: 1 })
+          .scale({
+            x: 1,
+            y: 1,
+            z: 1,
+            centerX: 1,
+            centerY: 1
+          })
+          .rotate({
+            x: 1,
+            y: 1,
+            z: 1,
+            angle: 0,
+            centerX: 1,
+            centerY: 1
+          })
+          .transform(matrix)
+        }
+      }.width('100%')
+    }.height('100%')
   }
+}
