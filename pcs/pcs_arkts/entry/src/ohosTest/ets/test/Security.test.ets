@@ -31,6 +31,7 @@ import PermissionUtils from './PermissionUtils';
 import securityLabel from '@ohos.file.securityLabel';
 import distributedKVStore from '@ohos.data.distributedKVStore';
 import camera from '@ohos.multimedia.camera';
+import appManager from '@ohos.app.ability.appManager';
 
 export default function securityTest() {
   describe('SecurityTest', () => {
@@ -101,6 +102,13 @@ export default function securityTest() {
       if(openButton != undefined) {
         await openButton.click()
         await driver.delayMs(2000)
+      }
+      let processInformations = await applicationContext.getRunningProcessInformation()
+      let processInformation = processInformations[0]
+      if (processInformation.state != appManager.ProcessState.STATE_BACKGROUND) {
+        console.log(`The device do not have state STATE_BACKGROUND.`)
+        done()
+        return
       }
       let cameraManager = camera.getCameraManager(applicationContext)
       let supportedCameras = cameraManager.getSupportedCameras()
