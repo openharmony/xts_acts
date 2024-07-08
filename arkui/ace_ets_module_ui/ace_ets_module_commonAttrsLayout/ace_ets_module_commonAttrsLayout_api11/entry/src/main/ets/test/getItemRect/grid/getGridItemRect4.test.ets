@@ -15,15 +15,15 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../../MainAbility/common/MessageManager';
 
 
 export default function getGridItemRect4() {
-  describe('getGridItemRect4', ()=> {
-    beforeEach(async (done:Function)=> {
+  describe('getGridItemRect4', () => {
+    beforeEach(async (done: Function) => {
       console.info("getGridItemRect4 beforeEach start");
-      let options :router.RouterOptions ={
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/getItemRect/grid/getGridItemRect4',
       }
       try {
@@ -42,7 +42,7 @@ export default function getGridItemRect4() {
       }
       done();
     });
-    afterEach(async  ()=>{
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       router.back({url: 'MainAbility/pages/index/index'})
       console.info("BadgeFocus after each called");
@@ -54,7 +54,7 @@ export default function getGridItemRect4() {
     * @tc.desc  : set index to 0,set the position of GridItem0 to {x:20,y:0}
     * @tc.level : Level 2
     */
-    it('getGridItemRect4_0100', 0, async (done:Function)=> {
+    it('getGridItemRect4_0100', 0, async (done: Function) => {
 
       console.info('[getGridItemRect4_0100] START');
       globalThis.value.message.notify({name:'index', value:0});
@@ -114,7 +114,7 @@ export default function getGridItemRect4() {
     * @tc.desc  : set index to 0,set the position of GridItem0 to {x:0,y:20}
     * @tc.level : Level 2
     */
-    it('getGridItemRect4_0200', 0, async (done:Function)=> {
+    it('getGridItemRect4_0200', 0, async (done: Function) => {
 
       console.info('[getGridItemRect4_0200] START');
       globalThis.value.message.notify({name:'index', value:0});

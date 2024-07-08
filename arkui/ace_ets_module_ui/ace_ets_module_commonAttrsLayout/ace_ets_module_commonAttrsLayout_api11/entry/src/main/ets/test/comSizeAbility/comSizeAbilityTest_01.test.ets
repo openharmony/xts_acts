@@ -29,7 +29,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function comSizeAbilityTest_01() {
   describe('comSizeAbilityTest_01', () => {

@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,8 +20,8 @@ import events_emitter from '@ohos.events.emitter'
 struct GridSetting {
   @State smSpan: number = 2;
   @State smOffset: number = 1;
-  @State gridSpan: number = 1;
-  @State gridOffset: number = 0;
+  @State gridSpanValue: number = 1;
+  @State gridOffsetValue: number = 0;
 
   build() {
     GridContainer({ sizeType: SizeType.SM }) {
@@ -30,7 +29,7 @@ struct GridSetting {
         Row() {
           Text('Left').fontSize(25)
         }
-        .gridOffset(this.gridOffset)
+        .gridOffset(this.gridOffsetValue)
         .height("100%")
         .backgroundColor(0x66bbb2cb)
         .key('gridOffset')
@@ -49,7 +48,7 @@ struct GridSetting {
         Row() {
           Text('Right').fontSize(25)
         }
-        .gridSpan(this.gridSpan)
+        .gridSpan(this.gridSpanValue)
         .height("100%")
         .backgroundColor(0x66bbb2cb)
         .key('gridSpan')
@@ -82,13 +81,13 @@ struct GridSetting {
   stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("GridSetting page stateChangCallBack" + JSON.stringify(eventData));
     if (eventData && eventData.data) {
-      if (eventData.data.span) {
-        this.smSpan = eventData.data.span;
-        this.smOffset = eventData.data.offset;
-      } else if (eventData.data.gridOffset) {
-        this.gridOffset = eventData.data.gridOffset;
-      } else if (eventData.data.gridSpan) {
-        this.gridSpan = eventData.data.gridSpan;
+      if (eventData.data?.span) {
+        this.smSpan = eventData.data?.span;
+        this.smOffset = eventData.data?.offset;
+      } else if (eventData.data?.gridOffset) {
+        this.gridOffsetValue = eventData.data?.gridOffset;
+      } else if (eventData.data?.gridSpan) {
+        this.gridSpanValue = eventData.data?.gridSpan;
       }
     }
   }

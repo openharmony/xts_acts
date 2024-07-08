@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +17,7 @@ export default class Utils {
   static sleep(time: number) {
     return new Promise((resolve: (value: string) => void) => {
       setTimeout(() => {
-        resolve()
+        resolve('ok')
       }, time)
     }).then(() => {
       console.info(`sleep ${time} over...`)
