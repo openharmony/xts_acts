@@ -73,7 +73,7 @@ describe("NoPermissionJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("Permission_queryDevices_001", 0, done => {
+    it("NoPermission_queryDevices_001", 0, done => {
         console.info('----------------------Permission_queryDevices_001---------------------------');
         if (!isDeviceConnected(done)) {
             return;
@@ -96,7 +96,7 @@ describe("NoPermissionJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("Permission_bindDevice_001", 0, done => {
+    it("NoPermission_bindDevice_001", 0, done => {
         console.info('----------------------Permission_bindDevice_001---------------------------');
         if (!isDeviceConnected(done)) {
             return;
@@ -119,7 +119,7 @@ describe("NoPermissionJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("Permission_bindDevice_002", 0, async done => {
+    it("NoPermission_bindDevice_002", 0, async done => {
         console.info('----------------------Permission_bindDevice_002---------------------------');
         if (!isDeviceConnected(done)) {
             return;
@@ -142,7 +142,7 @@ describe("NoPermissionJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("Permission_bindDeviceDriver_001", 0, done => {
+    it("NoPermission_bindDeviceDriver_001", 0, done => {
         console.info('----------------------Permission_bindDeviceDriver_001---------------------------');
         if (!isDeviceConnected(done)) {
             return;
@@ -165,7 +165,7 @@ describe("NoPermissionJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("Permission_bindDeviceDriver_002", 0, async done => {
+    it("NoPermission_bindDeviceDriver_002", 0, async done => {
         console.info('----------------------Permission_bindDeviceDriver_002---------------------------');
         if (!isDeviceConnected(done)) {
             return;
@@ -188,7 +188,7 @@ describe("NoPermissionJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("Permission_unbindDevice_001", 0, done => {
+    it("NoPermission_unbindDevice_001", 0, done => {
         console.info('----------------------Permission_unbindDevice_001---------------------------');
         if (!isDeviceConnected(done)) {
             return;
@@ -211,7 +211,7 @@ describe("NoPermissionJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("Permission_unbindDevice_002", 0, async done => {
+    it("NoPermission_unbindDevice_002", 0, async done => {
         console.info('----------------------Permission_unbindDevice_002---------------------------');
         if (!isDeviceConnected(done)) {
             return;
