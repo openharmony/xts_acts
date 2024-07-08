@@ -19,3 +19,4 @@ multimedia/media/media_js_standard/avPlayer/entry/src/main/resources/rawfile/H26
 multimedia/media/media_js_standard/avPlayer/entry/src/main/resources/rawfile/H264_AAC_Matedata.mp4 filter=lfs diff=lfs merge=lfs -text
 multimedia/media/media_js_standard/avPlayer/entry/src/main/resources/rawfile/No_Support_Format.mov filter=lfs diff=lfs merge=lfs -text
 multimedia/media/media_js_standard/avPlayer/entry/src/main/resources/rawfile/mjpeg_mp3.mp3 filter=lfs diff=lfs merge=lfs -text
+video.mp4 filter=lfs diff=lfs merge=lfs -text
