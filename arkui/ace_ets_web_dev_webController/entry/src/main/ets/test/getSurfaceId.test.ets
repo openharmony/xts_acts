@@ -193,8 +193,63 @@ export default function getSurfaceId() {
      *tc.desc SetUrlTrustList
      */
     it('emitSetUrlTrustList0900', 0, async (done: Function) => {
-      emitKey = "emitSetUrlTrustList0900";
+      emitKey = "emitSetUrlTrustList1000";
       Utils.registerEvent("emitSetUrlTrustList0900", "Init error. The WebviewController must be associated with a Web component", 28941, done);
+      sendEventByKey('getSurfaceIdButton', 10, '');
+    })
+
+    /*
+     *tc.number SUB_ACE_BASIC_ETS_SETURLTRUSTLIST_API_1000
+     *tc.name testSetUrlTrustList
+     *tc.desc SetUrlTrustList
+     */
+    it('emitSetUrlTrustList1000', 0, async (done: Function) => {
+      emitKey = "emitSetUrlTrustList1100";
+      Utils.registerEvent("emitSetUrlTrustList1000", "401", 28942, done);
+      sendEventByKey('getSurfaceIdButton', 10, '');
+    })
+
+    /*
+     *tc.number SUB_ACE_BASIC_ETS_SETURLTRUSTLIST_API_1100
+     *tc.name testSetUrlTrustList
+     *tc.desc SetUrlTrustList
+     */
+    it('emitSetUrlTrustList1100', 0, async (done: Function) => {
+      emitKey = "emitSetUrlTrustList1200";
+      Utils.registerEvent("emitSetUrlTrustList1100", 1, 28943, done);
+      sendEventByKey('getSurfaceIdButton', 10, '');
+    })
+
+    /*
+     *tc.number SUB_ACE_BASIC_ETS_SETURLTRUSTLIST_API_1200
+     *tc.name testSetUrlTrustList
+     *tc.desc SetUrlTrustList
+     */
+    it('emitSetUrlTrustList1200', 0, async (done: Function) => {
+      emitKey = "emitSetUrlTrustList1300";
+      Utils.registerEvent("emitSetUrlTrustList1200", 1, 28944, done);
+      sendEventByKey('getSurfaceIdButton', 10, '');
+    })
+
+    /*
+     *tc.number SUB_ACE_BASIC_ETS_SETURLTRUSTLIST_API_1300
+     *tc.name testSetUrlTrustList
+     *tc.desc SetUrlTrustList
+     */
+    it('emitSetUrlTrustList1300', 0, async (done: Function) => {
+      emitKey = "emitSetUrlTrustList1400";
+      Utils.registerEvent("emitSetUrlTrustList1300", 3, 28945, done);
+      sendEventByKey('getSurfaceIdButton', 10, '');
+    })
+
+    /*
+     *tc.number SUB_ACE_BASIC_ETS_SETURLTRUSTLIST_API_1400
+     *tc.name testSetUrlTrustList
+     *tc.desc SetUrlTrustList
+     */
+    it('emitSetUrlTrustList1400', 0, async (done: Function) => {
+      emitKey = "emitSetUrlTrustList1400";
+      Utils.registerEvent("emitSetUrlTrustList1400", 3, 28946, done);
       sendEventByKey('getSurfaceIdButton', 10, '');
     })
   })

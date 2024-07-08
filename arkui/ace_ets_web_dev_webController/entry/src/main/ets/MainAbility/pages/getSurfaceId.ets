@@ -34,7 +34,8 @@ struct getSurfaceId {
   urltrustListTwo: string = "{\"UrlPermissionList\":[{\"scheme\":\"http\", \"host\":\"www.test.com\", \"port\":80, \"path\":\"test\"}]}"
   urltrustListThree: string = "{\"UrlPermissionList\":[{\"scheme\":\"https\", \"host\":\"www.163.com\", \"port\":443, \"path\":\"test\"}]}"
   urltrustListFour: string = "{\"UrlPermissionList\":[{\"scheme\":\"https\", \"host\":\"www.163.com\", \"port\":443, \"path\":\"test\"},{\"scheme\":\"http\", \"host\":\"www.163.com\", \"port\":80, \"path\":\"test\"}]}"
-
+  urltrustListFive: string = "{\"UrlPermissionList\":[{\"scheme\":\"http\", \"port\":80, \"path\":\"test\"}]}"
+  urltrustListSix: string = "{\"UrlPermissionList\":[{\"host\":\"www.baidu.com\"},{\"host\":\"www.163.com\", \"port\":80, \"path\":\"test\"}]}"
 
   
 
@@ -144,13 +145,17 @@ struct getSurfaceId {
             case "emitSetUrlTrustList0500": {
               try {
                 this.controller.clearMatches();
+                await Utils.sleep(2000);
                 this.controller.setUrlTrustList(this.urltrustListFour);
-                await Utils.sleep(2000);
+                await Utils.sleep(4000);
                 this.controller.loadUrl('http://www.163.com/test');
-                await Utils.sleep(2000);
+                await Utils.sleep(5000);
                 this.checkResult = 5;
-                await Utils.sleep(2000);
+                await Utils.sleep(3000);
                 this.controller.searchAllAsync('网易首页');
+                await Utils.sleep(2000);
+                this.controller.loadUrl('https://www.baidu.com');
+                await Utils.sleep(2000);
               } catch (error) {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
@@ -158,14 +163,18 @@ struct getSurfaceId {
             }
             case "emitSetUrlTrustList0600": {
               try {
+                this.controller.removeCache(true);
+                await Utils.sleep(2000);
                 this.controller.clearMatches();
+                await Utils.sleep(2000);
                 this.controller.setUrlTrustList(this.urltrustListFour);
-                await Utils.sleep(2000);
+                await Utils.sleep(4000);
                 this.controller.loadUrl('https://www.163.com/test');
-                await Utils.sleep(2000);
+                await Utils.sleep(5000);
                 this.checkResult = 6;
-                await Utils.sleep(2000);
+                await Utils.sleep(3000);
                 this.controller.searchAllAsync('网易首页');
+                await Utils.sleep(2000);
               } catch (error) {
                 console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
               }
@@ -224,6 +233,77 @@ struct getSurfaceId {
               }
               break;
             }
+            case "emitSetUrlTrustList1000": {
+              try {
+                this.controller.clearMatches();
+                this.controller.setUrlTrustList(this.urltrustListFive);
+              } catch (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                Utils.emitEvent(error.code, 28942)
+              }
+              break;
+            }
+            case "emitSetUrlTrustList1100": {
+              try {
+                this.controller.clearMatches();
+                this.controller.setUrlTrustList(this.urltrustListSix);
+                await Utils.sleep(2000);
+                this.controller.loadUrl('www.baidu.com');
+                await Utils.sleep(2000);
+                this.checkResult = 9;
+                await Utils.sleep(3000);
+                this.controller.searchAllAsync('百度一下');
+              } catch (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+              break;
+            }
+            case "emitSetUrlTrustList1200": {
+              try {
+                this.controller.clearMatches();
+                this.controller.setUrlTrustList(this.urltrustListSix);
+                await Utils.sleep(2000);
+                this.controller.loadUrl('www.163.com:80/test');
+                await Utils.sleep(2000);
+                this.checkResult = 10;
+                await Utils.sleep(3000);
+                this.controller.searchAllAsync('网易首页');
+              } catch (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+              break;
+            }
+            case "emitSetUrlTrustList1300": {
+              try {
+                this.controller.clearMatches();
+                this.controller.setUrlTrustList(this.urltrustList);
+                await Utils.sleep(2000);
+                this.controller.loadUrl('www.example.com');
+                await Utils.sleep(2000);
+                this.checkResult = 11;
+                await Utils.sleep(3000);
+                this.controller.searchAllAsync('Domain');
+              } catch (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+              break;
+            }
+            case "emitSetUrlTrustList1400": {
+              try {
+                this.controller.clearMatches();
+                this.controller.setUrlTrustList(this.urltrustListSix);
+                this.controller.setUrlTrustList(this.urltrustList);
+                await Utils.sleep(2000);
+                this.controller.loadUrl('www.example.com');
+                await Utils.sleep(2000);
+                this.checkResult = 12;
+                await Utils.sleep(3000);
+                this.controller.searchAllAsync('Domain');
+              } catch (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+              break;
+            }
           }
         })
         Image(this.imagePixelMap)
@@ -268,6 +348,26 @@ struct getSurfaceId {
             if(this.checkResult == 7) {
               console.log('check7')
               Utils.emitEvent(ret.numberOfMatches, 28937)
+              this.checkResult = 0;
+            }
+            if(this.checkResult == 9) {
+              console.log('check9')
+              Utils.emitEvent(ret.numberOfMatches, 28943)
+              this.checkResult = 0;
+            }
+            if(this.checkResult == 10) {
+              console.log('check10')
+              Utils.emitEvent(ret.numberOfMatches, 28944)
+              this.checkResult = 0;
+            }
+            if(this.checkResult == 11) {
+              console.log('check11')
+              Utils.emitEvent(ret.numberOfMatches, 28945)
+              this.checkResult = 0;
+            }
+            if(this.checkResult == 12) {
+              console.log('check12')
+              Utils.emitEvent(ret.numberOfMatches, 28946)
               this.checkResult = 0;
             }
           }
