@@ -18,9 +18,9 @@ import { describe, it, expect } from '@ohos/hypium'
 
 const ERROR_CODE = 202;
 
-export default function PowerManagerPowerTest() {
-describe('PowerManagerPowerTest', function () {
-    console.log("*************Power Unit Test Begin*************");
+export default function PowerTest() {
+describe('PowerTest', function () {
+    console.log("*************Power Test Begin*************");
 
     /**
      * @tc.number SUB_PowerSystem_PowerTest_JSTest_0010

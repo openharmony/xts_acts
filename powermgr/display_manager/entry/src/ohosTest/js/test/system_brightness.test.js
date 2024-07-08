@@ -19,9 +19,9 @@ const INPUT_ERROR_CODE_CODE = 202;
 const SET_VALUE_MSG = "value is not an available number";
 const SET_MODE_MSG = "value is not an available number";
 
-export default async function SystemDisplayTest() {
-    describe('SystemDisplayTest', async function () {
-        console.log("System SystemDisplay Unit Test Begin");
+export default async function SystemBrightnessTest() {
+    describe('SystemBrightnessTest', async function () {
+        console.log("System SystemBrightness Test Begin");
 
         /**
          * @tc.number SUB_PowerSystem_SystemDisplay_JSTest_0010
