@@ -27,7 +27,7 @@ struct SetDefaultThemePage {
   aboutToAppear() {
     ThemeControl.setDefaultTheme(redCustomTheme);
   }
-  aboutToDisappear() {
+  onPageHide() {
     ThemeControl.setDefaultTheme(undefined);
   }
   onWillApplyTheme(theme: Theme) {
