@@ -20,7 +20,8 @@ import { currentFun, transferArrayBuffer, transferAtomics, setCloneListTest, set
   testString, testTime, testNumber, testTaskPool, promiseCase, asyncSum,
   printArgsFunc, Sum, delaySum, Add, funcStrCat, arraySum, objectSum, Multi, AdditionDelay, WaitforRunner,
   errorTest, testCancelDelayed, dependend, hashMapTest, delay, randomTest, outerTaskFunc,
-  isConcurrentTest1, isConcurrentTest2, sequenceRunnerTest, sequenceRunnerPriorityTest, CancelAndExecuteDelayed } from './testFunclist'
+  isConcurrentTest1, isConcurrentTest2, sequenceRunnerTest, sequenceRunnerPriorityTest, CancelAndExecuteDelayed,
+  errorManageTest } from './testFunclist'
 import { A, B, StrCat, printArgs } from './exportFunclist'
 
 export default function TaskPoolTest() {
@@ -4016,6 +4017,21 @@ export default function TaskPoolTest() {
       }
       expect(base1.i).assertEqual(1);
       expect(base1.res).assertEqual(num);
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0175
+     * @tc.name      : TaskPoolTestClass175
+     * @tc.desc      : taskpool calling callback which have errorManage
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+     it('TaskPoolTestClass175', 0, async (done: Function) => {
+      taskpool.execute(errorManageTest).then(() => {
+        console.log("execute errorManageTest");
+      })
       done();
     })
   })
