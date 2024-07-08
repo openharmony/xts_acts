@@ -16,7 +16,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function visibilityJsunit() {
   describe('visibilityTest', () => {
@@ -32,7 +32,7 @@ export default function visibilityJsunit() {
         if (!("visibility" == pages.name)) {
           console.info("get visibility state pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push visibility page result:" + JSON.stringify(result));
         }
       } catch (err) {
@@ -41,13 +41,13 @@ export default function visibilityJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("visibility after each called");
     });
 
     it('testVisibility01', 0, async () => {
       console.info('[testVisibility01] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('box');
       
       console.info("[testVisibility01] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -73,7 +73,7 @@ export default function visibilityJsunit() {
       } catch (err) {
         console.log("[testVisibility02] change component data error: " + err.message);
       }
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('box');
       
       console.info("[testVisibility02] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -99,7 +99,7 @@ export default function visibilityJsunit() {
       } catch (err) {
         console.log("[testVisibility03] change component data error: " + err.message);
       }
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('box');
       
       console.info("[testVisibility03] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -125,7 +125,7 @@ export default function visibilityJsunit() {
       } catch (err) {
         console.log("[testVisibility04] change component data error: " + err.message);
       }
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('box');
       
       console.info("[testVisibility04] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -150,7 +150,7 @@ export default function visibilityJsunit() {
       } catch (err) {
         console.log("[testVisibility05] change component data error: " + err.message);
       }
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('box');
       console.info("[testVisibility05] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$attrs.visibility).assertEqual('Visibility.Visible');
