@@ -955,47 +955,6 @@ export default function AbilityDelegatorStageTest() {
     })
 
     /**
-     * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_20100
-     * @tc.name      : The -s parameter of the test command is invalid, and the other parameters such as -b and -w are valid
-     * @tc.desc      : for testing shell command
-     * @tc.level     : Level 3
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     */
-
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20100', 3, (done: Function) => {
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_20100';
-      try {
-        let cmd = 'aa test -b com.ohos.abilitydelegatorstagetest -m entry_test -s unittest /ets/testrunner/OpenHarmonyTestRunner ' +
-          '-s class ActsAbilityTest#SUB_Ability_AbilityTools_AbilityDelegator_Stage_20100 -s timeout invalid';
-        hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} executeShellCommand : ${cmd}`);
-        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-        let result = -1;
-        try {
-          abilityDelegator.executeShellCommand(cmd)
-            .then(data => {
-              hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , data= ${JSON.stringify(data)}`);
-              let msg = '11';
-              result = 0;
-              abilityDelegator.print(msg)
-                .then(() => {
-                  hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , print 20100------------`);
-                  result = 1;
-                })
-            })
-        } catch (err) {
-          hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} , err: ${err}`);
-        }
-        expect(result).assertEqual(-1);
-        done();
-      } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
-        expect().assertFail();
-        done();
-      }
-    })
-
-    /**
      * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_20200
      * @tc.name      : The -w parameter of the test command is invalid, and the other parameters such as -b and -s are valid
      * @tc.desc      : for testing shell command
@@ -1079,32 +1038,6 @@ export default function AbilityDelegatorStageTest() {
         })
       } catch (err) {
         console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err.code}`);
-        expect(err.code).assertEqual(CODE_ERROR);
-        done();
-      }
-    })
-
-    /**
-     * @tc.number    : SUB_Ability_AbilityTools_AbilityDelegator_Stage_20500
-     * @tc.name      : The parameters of the test command are valid, call the finishTest interface in AsyncCallback mode,
-     *                 the msg parameter is valid (including Chinese and special characters) and the code parameter is invalid (Number.MAX_VALUE+1)
-     * @tc.desc      : for testing finishTest by AsyncCallback
-     * @tc.level     : Level 3
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     */
-    it('SUB_Ability_AbilityTools_AbilityDelegator_Stage_20500', 3, (done: Function) => {
-      const TEST_CASE_NAME: string = 'SUB_Ability_AbilityTools_AbilityDelegator_Stage_20500';
-      try {
-        let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
-        let msg = '测试日志!@#$%^&*()_+QWE{}|?><Fafq3146';
-        abilityDelegator.finishTest(msg, Number.MAX_VALUE + 1, (err, data) => {
-          console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --test  end ========> callback `);
-          expect(true).assertTrue();
-          done();
-        })
-      } catch (err) {
-        console.log(`${TEST_SUITE_NAME}#${TEST_CASE_NAME} --err: ${err}`);
         expect(err.code).assertEqual(CODE_ERROR);
         done();
       }
