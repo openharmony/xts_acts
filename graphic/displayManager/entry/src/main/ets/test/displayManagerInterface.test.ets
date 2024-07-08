@@ -73,6 +73,7 @@ export default function displayManagerInterfaceTest() {
       }
       try {
         display.off("foldAngleChange");
+        done();
       } catch (exception) {
         console.error(msgStr + 'Failed to unregister callback. Code: ' + JSON.stringify(exception));
         expect().assertFail();
@@ -115,6 +116,7 @@ export default function displayManagerInterfaceTest() {
       }
       try {
         display.off("foldAngleChange");
+        done();
       } catch (exception) {
         console.error(msgStr + 'Failed to unregister callback. Code: ' + JSON.stringify(exception));
         expect().assertFail();
