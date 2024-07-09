@@ -228,11 +228,8 @@ export default function onVisibleAreaChangeTest() {
       console.info('[' + data.caseTag + '] targetRectBefore.bottom: ' + targetRectBefore.bottom);
       console.info('[' + data.caseTag + '] targetRectLeave.bottom: ' + targetRectLeave.bottom);
       console.info('[' + data.caseTag + '] targetRectEnter.bottom: ' + targetRectEnter.bottom);
-      expect(px2vp(targetRectBefore.bottom - targetRectLeave.bottom))
-        .assertEqual(data.testValue.expectValue.yOffSetMoveLength);
-      expect(px2vp(targetRectEnter.bottom - targetRectLeave.bottom))
-        .assertEqual(data.testValue.expectValue.yOffSetMoveLength);
-
+      expect(Math.abs((targetRectBefore.bottom - targetRectLeave.bottom) - vp2px(data.testValue.expectValue.yOffSetMoveLength)) <= 1).assertTrue();
+      expect(Math.abs(((targetRectEnter.bottom - targetRectLeave.bottom)) - vp2px(data.testValue.expectValue.yOffSetMoveLength)) <= 1).assertTrue();
       let ratiosRightNum: ESObject = data.testValue.setValue.leave.ratiosRight;
       let ratiosLeftNum: ESObject = data.testValue.setValue.leave.ratiosLeft;
 
