@@ -613,7 +613,7 @@ export default function GaugeUxTest() {
     /*
      *tc.number ArkUX_Gauge_Colors_InterfaceName_1900
      *tc.name   Supports modifying the color of gauge components and supports segmented color settings
-     *tc.desc   Set the colors property parameter to new LinearGradient([{ color: "#FFFFC0CB", offset: "2px"},
+     *tc.desc   Set the colors property parameter to new LinearGradient([{ color: "#FFFFC0CB", offset: "1px"},
                 {color: "#FF008000", offset: "10vp" }, {color: "#FFFF0000", offset: "10%" }])
      */
     it('ArkUX_Gauge_Colors_InterfaceName_1900', 0, async (done: Function) => {
@@ -632,7 +632,7 @@ export default function GaugeUxTest() {
 
             expect(JSON.parse(JSON.parse(strJson).$attrs.colors)[0][0]).assertEqual("#FFFF0000");
             expect((JSON.parse(JSON.parse(strJson).$attrs.colors)[0][1]).substr(0, 3)).assertEqual("0.1");
-            expect(JSON.parse(JSON.parse(strJson).$attrs.colors)[1][0]).assertEqual("#FF008000");
+            expect(JSON.parse(JSON.parse(strJson).$attrs.colors)[1][0]).assertEqual("#FFFFC0CB");
             expect((JSON.parse(JSON.parse(strJson).$attrs.colors)[1][1]).substr(0, 3)).assertEqual("1.0");
           }
           console.info('ArkUX_Gauge_Colors_InterfaceName_1900 END ');
