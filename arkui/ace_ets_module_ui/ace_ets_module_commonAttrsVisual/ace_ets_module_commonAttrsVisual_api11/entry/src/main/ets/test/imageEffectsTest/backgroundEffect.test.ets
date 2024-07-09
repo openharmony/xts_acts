@@ -28,7 +28,7 @@ import {
   WindowMode,
   PointerMatrix
 } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import bundle from '@ohos.bundle.bundleManager';
 
 export default function backgroundEffectJsunit() {

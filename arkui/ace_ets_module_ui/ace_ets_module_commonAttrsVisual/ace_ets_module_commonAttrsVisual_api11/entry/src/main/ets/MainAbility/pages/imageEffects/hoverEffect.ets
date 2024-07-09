@@ -1,4 +1,3 @@
-//@ts-nocheck
 /**
  * Copyright (c) 2022 Shenzhen Kaihong Digital Industry Development Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -41,7 +40,7 @@ struct HoverEffect {
         .lineHeight(25)
         .border({ width: 1 })
         .padding(10)
-        .hoverEffect(HoverEffect.Scale)
+        .hoverEffect(1/*HoverEffect.Scale*/)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
         .key("ScaleText")
@@ -61,7 +60,7 @@ struct HoverEffect {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .hoverEffect(HoverEffect.Highlight)
+        .hoverEffect(2/*HoverEffect.Highlight*/)
         .key("HighlightText")
         .copyOption(0)
     }

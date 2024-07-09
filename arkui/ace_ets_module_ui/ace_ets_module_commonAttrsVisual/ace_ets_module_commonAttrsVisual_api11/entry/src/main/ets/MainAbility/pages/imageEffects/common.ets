@@ -193,7 +193,7 @@ struct CommonColorMode {
             console.info("areaValue start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("areaValue emit action state err: " + JSON.stringify(err.message))
+            console.info("areaValue emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
       Text("common-Repeat")
@@ -359,7 +359,7 @@ struct CommonColorMode {
             console.info("touchesValue start to emit action state")
             events_emitter.emit(backEvent1, backData1)
           } catch (err) {
-            console.info("touchesValue emit action state err: " + JSON.stringify(err.message))
+            console.info("touchesValue emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
 
@@ -394,7 +394,7 @@ struct CommonColorMode {
             console.info("touchesValue start to emit action state")
             events_emitter.emit(backEvent2, backData2)
           } catch (err) {
-            console.info("touchesValue emit action state err: " + JSON.stringify(err.message))
+            console.info("touchesValue emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
 

@@ -61,7 +61,7 @@ export default function common_ts_ets_apiStaticClearJsunit() {
         }
         let callback = (eventData: events_emitter.EventData) => {
           console.info("common_ts_ets_apiPersistProp0001 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.Score).assertEqual("Score");
+          expect(eventData.data?.Score).assertEqual("Score");
         }
         console.info("PersistProp0001 click result is: " + JSON.stringify(sendEventByKey('PersistPropText', 10, "")));
         events_emitter.on(innerEvent, callback);
@@ -85,7 +85,7 @@ export default function common_ts_ets_apiStaticClearJsunit() {
         }
         let callback = (eventData: events_emitter.EventData) => {
           console.info("common_ts_ets_apiEnvProp0001 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.Result).assertEqual(false);
+          expect(eventData.data?.Result).assertEqual(false);
         }
         console.info("EnvProp0001 click result is: " + JSON.stringify(sendEventByKey('EnvPropText', 10, "")));
         events_emitter.on(innerEvent, callback);
