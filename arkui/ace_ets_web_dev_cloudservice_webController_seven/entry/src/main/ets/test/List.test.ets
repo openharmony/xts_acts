@@ -14,7 +14,9 @@
  */
 
 import ActsAceWebSafeBrowsing from './webSafeBrowsing.test'
+import webViewObjectEmbedEnhance from './webViewObjectEmbedEnhance.test'
 
 export default function testsuite() {
+  webViewObjectEmbedEnhance()
   ActsAceWebSafeBrowsing()
 }

@@ -1,7 +1,8 @@
 {
     "src": [
         "MainAbility/pages/Index",
-        "MainAbility/pages/webSafeBrowsing"
+        "MainAbility/pages/webSafeBrowsing",
+        "MainAbility/pages/webViewObjectEmbedEnhance"
     ]
 }
 
