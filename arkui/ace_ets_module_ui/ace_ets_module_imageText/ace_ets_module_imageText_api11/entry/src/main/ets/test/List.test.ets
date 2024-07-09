@@ -219,6 +219,7 @@ import textObscuredTest from './textTest/textObscuredTest.test';
 import textSpanFontTest from './textTest/textSpanFont.test';
 
 export default function testsuite() {
+  ToggleJsunit();
   stageFontTest();
   stageMediaquery();
   RichEditorApi222();
@@ -382,7 +383,6 @@ export default function testsuite() {
   loadingProgressJsunit();
   ProgressJsunit();
   TextTimerJsunit();
-  ToggleJsunit();
   marqueeUIJsunit();
   PatternLockJsunit();
   SelectJsunit();
