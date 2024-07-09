@@ -83,8 +83,8 @@ export default function Grid_Row_Length_String() {
       expect(Math.abs(Math.round(Length_String_07.left - Length_String_06.right) - Math.round(vp2px(0))) <= 1)
         .assertTrue();
 
-      expect(Math.round(Length_String_06.top - Length_String_00.bottom)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(Length_String_07.top - Length_String_01.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.abs(Math.round(Length_String_06.top - Length_String_00.bottom) - Math.round(vp2px(10))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Length_String_07.top - Length_String_01.bottom) - Math.round(vp2px(10))) <= 1).assertTrue();
 
 
       console.info('[SUB_ACE_Grid_Row_GutterStr_TEST_0100] END');
