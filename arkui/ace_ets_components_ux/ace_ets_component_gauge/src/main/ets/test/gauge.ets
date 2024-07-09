@@ -583,7 +583,7 @@ export default function GaugeTest() {
     /*
      *tc.number ArkUX_Gauge_Colors_InterfaceName_1900
      *tc.name   Supports modifying the color of gauge components and supports segmented color settings
-     *tc.desc   Set the colors property parameter to new LinearGradient([{ color: "#FFFFC0CB", offset: "2px"},
+     *tc.desc   Set the colors property parameter to new LinearGradient([{ color: "#FFFFC0CB", offset: "1px"},
                 {color: "#FF008000", offset: "10vp" }, {color: "#FFFF0000", offset: "10%" }])
      */
     it('ArkUX_Gauge_Colors_InterfaceName_1900', 0, async (done: Function) => {

@@ -213,7 +213,7 @@ struct gaugeTest {
         .key("ArkUX_Gauge_Colors_InterfaceName_1900")
         .startAngle(210)
         .endAngle(150)
-        .colors(new LinearGradient([{ color: "#FFFFC0CB", offset: "2px" }, { color: "#FF008000", offset: "10vp" },
+        .colors(new LinearGradient([{ color: "#FFFFC0CB", offset: "1px" }, { color: "#FF008000", offset: "10vp" },
           { color: "#FFFF0000", offset: "10%" }]))
         .width(200)
         .height(200)
