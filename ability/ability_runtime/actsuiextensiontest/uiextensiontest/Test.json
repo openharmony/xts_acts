@@ -12,7 +12,7 @@
         {
             "test-file-name": [
                 "ActsUIExtensionTest.hap",
-				"UIExtensionProvider.hap",
+                "UIExtensionProvider.hap",
                 "StartAbilityByUIContentSession.hap",
                 "UIExtensionProvider2.hap",
                 "UIExtensionProvider3.hap",
