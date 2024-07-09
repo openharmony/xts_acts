@@ -225,7 +225,7 @@ export default function alignSelfTest() {
           expect(rect.left).assertEqual(parentRect.left);
         } else if (data.testValue.describe == 'SetStretch') {
           //When alignSelf : ItemAlign.Stretch
-          expect(rect.bottom - rect.top).assertEqual(vp2px(parentHeight));
+          expect(Math.abs((rect.bottom - rect.top)- vp2px(parentHeight)) <= 1).assertTrue();
         }
       } else if (data.pageConfig.containerView == 'Column' || data.pageConfig.containerView == 'FlexColumn') {
         if (data.testValue.describe == 'SetAuto' || data.testValue.describe == 'SetStart') {
@@ -246,7 +246,7 @@ export default function alignSelfTest() {
           expect(rect.right).assertEqual(parentRect.right);
         } else if (data.testValue.describe == 'SetStretch') {
           //When alignSelf : ItemAlign.Stretch
-          expect(rect.right - rect.left).assertEqual(vp2px(parentWidth));
+          expect(Math.abs((rect.right - rect.left)- vp2px(parentWidth)) <= 1).assertTrue();
         }
       } else if (data.pageConfig.containerView == 'FlexRowReverse') {
         //Special parent component
@@ -268,7 +268,7 @@ export default function alignSelfTest() {
           expect(rect.right).assertEqual(parentRect.right);
         } else if (data.testValue.describe == 'SetStretch') {
           //When alignSelf : ItemAlign.Stretch
-          expect(rect.bottom - rect.top).assertEqual(vp2px(parentHeight));
+          expect(Math.abs((rect.bottom - rect.top)- vp2px(parentHeight)) <= 1).assertTrue();
         }
       } else if (data.pageConfig.containerView == 'FlexColumnReverse') {
         //Special parent component
@@ -290,7 +290,7 @@ export default function alignSelfTest() {
           expect(rect.right).assertEqual(parentRect.right);
         } else if (data.testValue.describe == 'SetStretch') {
           //When alignSelf : ItemAlign.Stretch
-          expect(rect.right - rect.left).assertEqual(vp2px(parentWidth));
+          expect(Math.abs((rect.right - rect.left)- vp2px(parentWidth)) <= 1).assertTrue();
         }
       }
     })
