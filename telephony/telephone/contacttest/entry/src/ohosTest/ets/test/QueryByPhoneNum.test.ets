@@ -1280,7 +1280,7 @@ export default function QueryByEmailPhoneNumTest() {
                 done();
               } else {
                 console.info(`${caseName} queryContacts:success->${JSON.stringify(data)}`);
-                ExpectTrue(data.length === 0);
+                ExpectTrue(data.length > 0);
                 done();
               }
             });

@@ -13,7 +13,12 @@
  * limitations under the License.
  */
 import contact_NopTest from './ContactNop.test';
+import EmptyTest from './Empty.test'
 
 export default function testsuite() {
-  contact_NopTest()
+  if (canIUse("SystemCapability.Applications.Contacts")){
+    contact_NopTest()
+  }else{
+    EmptyTest()
+  }
 }
