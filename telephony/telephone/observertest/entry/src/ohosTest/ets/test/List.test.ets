@@ -1,6 +1,5 @@
-
 /*
- * Copyright (C) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -17,17 +16,19 @@
 import observerManagerTest from './ObserverManager.test';
 import observerManagerCallStateTest from './ObserverManagerCallState.test';
 import observerManagerSimStateTest1 from './ObserverManagerSimState1.test';
-
+import EmptyTest from './Empty.test';
 import sim from '@ohos.telephony.sim';
 
-let hasSimCard: Boolean = sim.hasSimCardSync(0);
-
 export default function testsuite() {
-  if(hasSimCard){
-    observerManagerCallStateTest();
-    observerManagerSimStateTest1();
-    observerManagerTest();
-  } else {
-    observerManagerSimStateTest1();
+  if (canIUse("SystemCapability.Telephony.StateRegistry")){
+    if(sim.hasSimCardSync(0)){
+      observerManagerCallStateTest();
+      observerManagerSimStateTest1();
+      observerManagerTest();
+    } else {
+      observerManagerSimStateTest1();
+    }
+  }else{
+    EmptyTest()
   }
 }

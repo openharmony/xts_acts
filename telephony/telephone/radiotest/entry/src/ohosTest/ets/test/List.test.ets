@@ -15,17 +15,18 @@
 
 import telephonyRadioPublicTest from './TelephonyRadioPublic.test';
 import telephonyRadioPublicNeedCardTest from './TelephonyRadioPublic1.test';
-
+import EmptyTest from './Empty.test';
 import sim from '@ohos.telephony.sim';
 
-let hasSimCard: Boolean = sim.hasSimCardSync(0);
-
 export default function testsuite() {
-
-  if(hasSimCard){
-    telephonyRadioPublicTest();
-    telephonyRadioPublicNeedCardTest();
+  if (canIUse("SystemCapability.Telephony.CoreService")){
+    if(sim.hasSimCardSync(0)){
+      telephonyRadioPublicTest();
+      telephonyRadioPublicNeedCardTest();
+    } else {
+      telephonyRadioPublicTest();
+    }
   }else{
-    telephonyRadioPublicTest();
+    EmptyTest()
   }
 }

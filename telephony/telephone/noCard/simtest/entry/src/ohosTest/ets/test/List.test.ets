@@ -12,8 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 import SimNoCardPublic from './SimNoCardPublic.test';
+import EmptyTest from './Empty.test';
 
 export default function testsuite() {
-  SimNoCardPublic();
+  if (canIUse("SystemCapability.Telephony.CoreService")){
+    SimNoCardPublic();
+  }else{
+    EmptyTest()
+  }
 }
