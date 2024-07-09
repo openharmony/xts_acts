@@ -7,9 +7,7 @@
 <body>
 <div>
     <div id="bodyId">
-        <object id="cameraTest" type = "application/view" width="800" height = "800" src = "test" style = "background-color:red">
-            <param name="type" value="video">
-        </object>
+        <embed id="cameraTest"  type="test" width="800" height = "800"  style = "background-color:red">
     </div>
 </div>
 
@@ -17,7 +15,7 @@
 let nativeEmbed = {
     //判断设备是否支持touch事件
     touch:('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch,
-    nativeEmbed : document.getElementById('objectTest'),
+    nativeEmbed : document.getElementById('cameraTest'),
 
     //事件
     events:{
@@ -25,19 +23,19 @@ let nativeEmbed = {
         handleEvent:function (event){
             console.log('object event')
             var self = this;
-            if (event.type === 'touchstart'){
+            if(event.type === 'touchstart'){
                 self.start(event);
-            }else if (event.type === 'touchmove'){
+            }else if(event.type === 'touchmove'){
                 self.move(event);
-            }else if (event.type === 'touchend'){
+            }else if(event.type === 'touchend'){
                 self.end(event);
             }
         },
         //滑动开始
         start:function (event){
             console.log('object start slide');
-            this.nativeEmbed.removeEventListener('touchmove', this, false);
-            this.nativeEmbed.removeEventListener('touchend', this, false);
+            this.nativeEmbed.removeEventListener('touchmove',this,false);
+            this.nativeEmbed.removeEventListener('touchend',this,false);
         },
         move:function (event){
             console.log('object start move');
@@ -48,8 +46,8 @@ let nativeEmbed = {
         end:function (event){
             //解绑事件
             console.log('object end slide');
-            this.nativeEmbed.removeEventListener('touchmove', this, false);
-            this.nativeEmbed.removeEventListener('touchend', this, false);
+            this.nativeEmbed.removeEventListener('touchmove',this,false);
+            this.nativeEmbed.removeEventListener('touchend',this,false);
         }
 
     },

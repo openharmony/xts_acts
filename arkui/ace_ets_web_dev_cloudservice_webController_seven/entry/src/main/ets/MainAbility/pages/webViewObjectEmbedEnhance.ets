@@ -93,8 +93,7 @@ struct MyComponent {
           this.index =! this.index
           if (this.index) {
             this.bkColor = Color.Blue
-          }
-          else {
+          } else {
             this.bkColor = Color.Red
           }
         })
