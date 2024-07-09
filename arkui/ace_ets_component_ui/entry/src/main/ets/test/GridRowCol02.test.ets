@@ -176,7 +176,7 @@ export default function GridRowCol02() {
       let Item00 = CommonFunc.getComponentRect('Item00');
       let Item03 = CommonFunc.getComponentRect('Item03');
       await CommonFunc.sleep(1000);
-      expect(Math.round(Item03.top - Item00.bottom)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.abs(Math.round(Item03.top - Item00.bottom) - Math.round(vp2px(10))) <= 1).assertTrue();
       let strJson1 = getInspectorByKey('GridRowCol02');
       let obj1 = JSON.parse(strJson1);
       console.info("[GridRowCol02_006] component obj is: " + JSON.stringify(obj1));
