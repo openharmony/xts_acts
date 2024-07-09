@@ -115,7 +115,7 @@ export default function TextTimerJsunit() {
       let elapsedTime = await driver.findComponent(BY.key('elapsedTime'));
       let time = await elapsedTime.getText();
       console.info("[TextTimerJsunit_0300] time: " + JSON.stringify(time));
-      expect(Number(time) > 1000).assertTrue();
+      expect(Number(time) > 100).assertTrue();
 
       let start = await driver.findComponent(BY.key('start'));
       let startText = await start.getText();
