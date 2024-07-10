@@ -38,11 +38,11 @@ ohos_shared_library("huksndk") {
   sources = [ "./huksndk.cpp" ]
   libs = [ rebase_path(libcxx_ndk_shared_file) ]
   include_dirs =
-      [ "../../../../../../$BASE_PATH/security/huks/interfaces/kits/c/include" ]
+      [ "../../../../../../../$BASE_PATH/security/huks/interfaces/kits/c/include" ]
 
   configs = [ ":config" ]
   deps = [
-    "../../../../../../$BASE_PATH/security/huks/interfaces/kits/c:huks_ndk",
+    "../../../../../../../$BASE_PATH/security/huks/interfaces/kits/c:huks_ndk",
   ]
 
   external_deps = [ "napi:ace_napi" ]

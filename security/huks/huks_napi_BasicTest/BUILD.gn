@@ -11,7 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-base_root = "../../../../../"
+base_root = "../../../../../../"
 import("$base_root/base/security/huks/build/config.gni")
 import("$base_root/base/security/huks/huks.gni")
 import("$base_root/test/xts/tools/build/suite.gni")
