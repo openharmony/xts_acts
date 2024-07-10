@@ -120,7 +120,7 @@ export default function Tabs_barPosition() {
 
       console.info(`[TabsBarPositionStartWithVerticalFalse]Tabs_barPosition_011.left equal Tabs_barPosition_001.left
         ${Tabs_barPosition_011.left} === ${Tabs_barPosition_001.left}`);
-     ¡¢
+     
       expect(Math.abs(Tabs_barPosition_011.left-Tabs_barPosition_001.left) <=1).assertTrue();
       expect(Math.abs(Tabs_barPosition_012.left-Tabs_barPosition_002.left) <=1).assertTrue();
       expect(Math.abs(Tabs_barPosition_013.left-Tabs_barPosition_003.left) <=1).assertTrue();

@@ -118,7 +118,7 @@ export default function Tabs_scrollable() {
       expect(Math.abs(Tabs_scrollable_012.top - Tabs_scrollable_002.top) <=1 ).assertTrue();
       expect(Math.abs(Tabs_scrollable_013.top - Tabs_scrollable_003.top) <=1 ).assertTrue();
 
-     /
+     
 
       console.info(`[testTabsScrollableToTrue]Tabs_scrollable_011.left equal Tabs_scrollable_01.left
         ${Tabs_scrollable_011.left} === ${Tabs_scrollable_01.left}`);
