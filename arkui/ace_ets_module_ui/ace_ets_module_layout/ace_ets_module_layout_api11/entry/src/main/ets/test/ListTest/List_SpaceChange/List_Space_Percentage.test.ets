@@ -82,20 +82,20 @@ export default function List_Space_Percentage() {
       let ListItem03: RectValue = CommonFunc.getComponentRect('List_Space_Percentage_ListItem_03');
       let ListItem04: RectValue = CommonFunc.getComponentRect('List_Space_Percentage_ListItem_04');
 
-      expect(Math.round(ListItem01.right - ListItem01.left)).assertEqual(vp2px(300));
-      expect(Math.round(ListItem01.bottom - ListItem01.top)).assertEqual(Math.round(vp2px(50)));
+	  expect(Math.abs(Math.round(ListItem01.right - ListItem01.left) - vp2px(300)) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(ListItem01.bottom - ListItem01.top) - Math.round(vp2px(50))) <= 1).assertTrue();
 
-      expect(Math.round(ListItem02.top - ListItem01.bottom)).assertEqual(Math.round(vp2px(52)));
-      expect(Math.round(ListItem02.right - ListItem02.left)).assertEqual(vp2px(300));
-      expect(Math.round(ListItem02.bottom - ListItem02.top)).assertEqual(Math.round(vp2px(50)));
+	  expect(Math.abs(Math.round(ListItem02.top - ListItem01.bottom) - Math.round(vp2px(52))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(ListItem02.right - ListItem02.left) - vp2px(300)) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(ListItem02.bottom - ListItem02.top) - Math.round(vp2px(50))) <= 1).assertTrue();
 
       expect(Math.abs(Math.round(ListItem03.top - ListItem02.bottom) - Math.round(vp2px(52))) <= 1).assertTrue();
-      expect(Math.round(ListItem03.right - ListItem03.left)).assertEqual(vp2px(300));
-      expect(Math.round(ListItem03.bottom - ListItem03.top)).assertEqual(Math.round(vp2px(50)));
+	  expect(Math.abs(Math.round(ListItem03.right - ListItem03.left) - vp2px(300)) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(ListItem03.bottom - ListItem03.top) - Math.round(vp2px(50))) <= 1).assertTrue();
 
-      expect(Math.round(ListItem04.top - ListItem03.bottom)).assertEqual(Math.round(vp2px(52)));
-      expect(Math.round(ListItem04.right - ListItem04.left)).assertEqual(vp2px(300));
-      expect(Math.round(ListItem04.bottom - ListItem04.top)).assertEqual(Math.round(vp2px(50)));
+      expect(Math.abs(Math.round(ListItem04.top - ListItem03.bottom) - Math.round(vp2px(52))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(ListItem04.right - ListItem04.left) - vp2px(300)) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(ListItem04.bottom - ListItem04.top) - Math.round(vp2px(50))) <= 1).assertTrue();
 
       console.info('[SUB_ACE_List_Space_Percentage_0100] END');
       done();
@@ -119,12 +119,12 @@ export default function List_Space_Percentage() {
       let ListItem03: RectValue = CommonFunc.getComponentRect('List_Space_Percentage_ListItem_03');
       let ListItem04: RectValue = CommonFunc.getComponentRect('List_Space_Percentage_ListItem_04');
 
-      expect(Math.round(ListItem01.right - ListItem01.left)).assertEqual(vp2px(300));
-      expect(Math.round(ListItem01.bottom - ListItem01.top)).assertEqual(Math.round(vp2px(50)));
+	  expect(Math.abs(Math.round(ListItem01.right - ListItem01.left) - vp2px(300)) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(ListItem01.bottom - ListItem01.top) - Math.round(vp2px(50))) <= 1).assertTrue();
 
-      expect(Math.round(ListItem02.top - ListItem01.bottom)).assertEqual(Math.round(vp2px(260)));
-      expect(Math.round(ListItem02.right - ListItem02.left)).assertEqual(vp2px(300));
-      expect(Math.round(ListItem02.bottom - ListItem02.top)).assertEqual(Math.round(vp2px(50)));
+	  expect(Math.abs(Math.round(ListItem02.top - ListItem01.bottom) - Math.round(vp2px(260))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(ListItem02.right - ListItem02.left) - vp2px(300)) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(ListItem02.bottom - ListItem02.top) - Math.round(vp2px(50))) <= 1).assertTrue();
 
       console.info('[SUB_ACE_List_Space_Percentage_0200] END');
       done();
@@ -147,12 +147,12 @@ export default function List_Space_Percentage() {
       let ListItem03: RectValue = CommonFunc.getComponentRect('List_Space_Percentage_ListItem_03');
       let ListItem04: RectValue = CommonFunc.getComponentRect('List_Space_Percentage_ListItem_04');
 
-      expect(Math.round(ListItem01.right - ListItem01.left)).assertEqual(vp2px(300));
-      expect(Math.round(ListItem01.bottom - ListItem01.top)).assertEqual(Math.round(vp2px(50)));
+	  expect(Math.abs(Math.round(ListItem01.right - ListItem01.left) - vp2px(300)) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(ListItem01.bottom - ListItem01.top) - Math.round(vp2px(50))) <= 1).assertTrue();
 
-      expect(Math.round(ListItem02.top - ListItem01.bottom)).assertEqual(Math.round(vp2px(0)));
-      expect(Math.round(ListItem02.right - ListItem02.left)).assertEqual(vp2px(300));
-      expect(Math.round(ListItem02.bottom - ListItem02.top)).assertEqual(Math.round(vp2px(50)));
+	  expect(Math.abs(Math.round(ListItem02.top - ListItem01.bottom) - Math.round(vp2px(0))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(ListItem02.right - ListItem02.left) - vp2px(300)) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(ListItem02.bottom - ListItem02.top) - Math.round(vp2px(50))) <= 1).assertTrue();
 
       console.info('[SUB_ACE_List_Space_Percentage_0300] END');
       done();

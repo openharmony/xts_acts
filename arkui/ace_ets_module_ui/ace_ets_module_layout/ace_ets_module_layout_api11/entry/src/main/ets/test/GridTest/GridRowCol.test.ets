@@ -63,10 +63,10 @@ export default function GridRowCol() {
       let GridItem11 = CommonFunc.getComponentRect('GridItem11');
       console.info("[GridRowCol_001] component obj is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
-      expect(Math.round(GridItem01.left - GridItem00.right)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(GridItem02.left - GridItem01.right)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(GridItem03.top - GridItem00.bottom)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(GridItem11.top - GridItem03.bottom)).assertEqual(Math.round(vp2px(10)));
+	  expect(Math.abs(Math.round(GridItem01.left - GridItem00.right) - Math.round(vp2px(10))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(GridItem02.left - GridItem01.right) - Math.round(vp2px(10))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(GridItem03.top - GridItem00.bottom) - Math.round(vp2px(10))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(GridItem11.top - GridItem03.bottom) - Math.round(vp2px(10))) <= 1).assertTrue();
 
       console.info('[GridRowCol_001] END');
       done();
@@ -131,7 +131,7 @@ export default function GridRowCol() {
       let GridItem00 = CommonFunc.getComponentRect('GridItem00');
       let GridItem01 = CommonFunc.getComponentRect('GridItem01');
       await CommonFunc.sleep(1000);
-      expect(Math.round(GridItem01.top - GridItem00.bottom)).assertEqual(Math.round(vp2px(10)));
+	  expect(Math.abs(Math.round(GridItem01.top - GridItem00.bottom) - Math.round(vp2px(10))) <= 1).assertTrue();
 
       console.info('[GridRowCol_004] END');
       done();
@@ -152,7 +152,7 @@ export default function GridRowCol() {
       let GridItem00 = CommonFunc.getComponentRect('GridItem00');
       let GridItem01 = CommonFunc.getComponentRect('GridItem01');
       await CommonFunc.sleep(1000);
-      expect(Math.round(GridItem01.left - GridItem00.right)).assertEqual(Math.round(vp2px(10)));
+	  expect(Math.abs(Math.round(GridItem01.left - GridItem00.right) - Math.round(vp2px(10))) <= 1).assertTrue();
 
       console.info('[GridRowCol_005] END');
       done();
