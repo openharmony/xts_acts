@@ -31,7 +31,7 @@ let module1FormInfo: formInfo.FormInfo = {
     colorMode: -1,
     isDefault: true,
     updateEnabled: true,
-    formVisibleNotify: false,
+    formVisibleNotify: true,
     scheduledUpdateTime: "10:30",
     formConfigAbility: "ability://xxxxx",
     updateDuration: 1,
@@ -57,7 +57,7 @@ let module2FormInfo: formInfo.FormInfo = {
     colorMode: -1,
     isDefault: true,
     updateEnabled: true,
-    formVisibleNotify: false,
+    formVisibleNotify: true,
     scheduledUpdateTime: "10:30",
     formConfigAbility: "ability://xxxxx",
     updateDuration: 1,
@@ -77,9 +77,12 @@ expectResult.push(module2FormInfo);
 export default function abilityTest() {
     describe('ProviderGetFormsInfoTest', function () {
         /**
-         * @tc.number: SUB_AA_OpenHarmony_ProviderGetForsInfo_0100
-         * @tc.name: SUB_AA_OpenHarmony_ProviderGetForsInfo_0100
-         * @tc.desc: #1: getFormsInfo(callback)
+         * @tc.number    : SUB_AA_OpenHarmony_ProviderGetForsInfo_0100
+         * @tc.name      : testProviderGetForsInfo0100
+         * @tc.desc      : getFormsInfo(callback).
+         * @tc.level     : Level 1
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
          */
         it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0100', 0, async function (done) {
             console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0100");
@@ -94,9 +97,12 @@ export default function abilityTest() {
         });
 
         /**
-         * @tc.number: SUB_AA_OpenHarmony_ProviderGetForsInfo_0200
-         * @tc.name: SUB_AA_OpenHarmony_ProviderGetForsInfo_0200
-         * @tc.desc: #2 getFormsInfo(filter, undefined) # Have no idea how to test it.
+         * @tc.number    : SUB_AA_OpenHarmony_ProviderGetForsInfo_0200
+         * @tc.name      : testProviderGetForsInfo0200
+         * @tc.desc      : getFormsInfo(filter, undefined) # Have no idea how to test it.
+         * @tc.level     : Level 1
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
          */
         it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0200', 0, async function (done) {
             console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0200");
@@ -112,9 +118,12 @@ export default function abilityTest() {
         });
 
         /**
-         * @tc.number: SUB_AA_OpenHarmony_ProviderGetForsInfo_0300
-         * @tc.name: SUB_AA_OpenHarmony_ProviderGetForsInfo_0300
-         * @tc.desc: #3 getFormsInfo()
+         * @tc.number    : SUB_AA_OpenHarmony_ProviderGetForsInfo_0300
+         * @tc.name      : testProviderGetForsInfo0300
+         * @tc.desc      : getFormsInfo().
+         * @tc.level     : Level 3
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
          */
         it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0300', 0, async function (done) {
             console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0300");
@@ -129,9 +138,12 @@ export default function abilityTest() {
         });
 
         /**
-         * @tc.number: SUB_AA_OpenHarmony_ProviderGetForsInfo_0500
-         * @tc.name: SUB_AA_OpenHarmony_ProviderGetForsInfo_0500
-         * @tc.desc: #5 getFormsInfo(filter, callback) where filter = {}
+         * @tc.number    : SUB_AA_OpenHarmony_ProviderGetForsInfo_0500
+         * @tc.name      : testProviderGetForsInfo0500
+         * @tc.desc      : getFormsInfo(filter, callback) where filter = {}.
+         * @tc.level     : Level 3
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
          */
         it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0500', 0, async function (done) {
             console.info("SUB_AA_OpenHarmony_getFormsInfo_0105");
@@ -147,9 +159,12 @@ export default function abilityTest() {
         });
 
         /**
-         * @tc.number: SUB_AA_OpenHarmony_ProviderGetForsInfo_0600
-         * @tc.name: SUB_AA_OpenHarmony_ProviderGetForsInfo_0600
-         * @tc.desc: #6 getFormsInfo(filter, callback) where moduleName = ""
+         * @tc.number    : SUB_AA_OpenHarmony_ProviderGetForsInfo_0600
+         * @tc.name      : testProviderGetForsInfo0600
+         * @tc.desc      : getFormsInfo(filter, callback) where moduleName = "".
+         * @tc.level     : Level 3
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
          */
         it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0600', 0, async function (done) {
             console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0600");
@@ -167,9 +182,12 @@ export default function abilityTest() {
         });
 
         /**
-         * @tc.number: SUB_AA_OpenHarmony_ProviderGetForsInfo_0700
-         * @tc.name: SUB_AA_OpenHarmony_ProviderGetForsInfo_0700
-         * @tc.desc: #7 getFormsInfo(filter, callback) where moduleName = undefined
+         * @tc.number    : SUB_AA_OpenHarmony_ProviderGetForsInfo_0700
+         * @tc.name      : testProviderGetForsInfo0700
+         * @tc.desc      : getFormsInfo(filter, callback) where moduleName = undefined.
+         * @tc.level     : Level 3
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
          */
         it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0700', 0, async function (done) {
             console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0700");
@@ -187,9 +205,12 @@ export default function abilityTest() {
         });
 
         /**
-         * @tc.number: SUB_AA_OpenHarmony_ProviderGetForsInfo_0800
-         * @tc.name: SUB_AA_OpenHarmony_ProviderGetForsInfo_0800
-         * @tc.desc: #8 getFormsInfo(filter, callback) where moduleName = "HelloWorld" which doesn't exist
+         * @tc.number    : SUB_AA_OpenHarmony_ProviderGetForsInfo_0800
+         * @tc.name      : testProviderGetForsInfo0800
+         * @tc.desc      : getFormsInfo(filter, callback) where moduleName = "HelloWorld" which doesn't exist.
+         * @tc.level     : Level 3
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
          */
         it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0800', 0, async function (done) {
             console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0800");
@@ -206,9 +227,12 @@ export default function abilityTest() {
         });
 
         /**
-         * @tc.number: SUB_AA_OpenHarmony_ProviderGetForsInfo_0900
-         * @tc.name: SUB_AA_OpenHarmony_ProviderGetForsInfo_0900
-         * @tc.desc: #9 getFormsInfo(filter, callback) where moduleName = "module1" which does exist
+         * @tc.number    : SUB_AA_OpenHarmony_ProviderGetForsInfo_0900
+         * @tc.name      : testProviderGetForsInfo0900
+         * @tc.desc      : getFormsInfo(filter, callback) where moduleName = "module1" which does exist.
+         * @tc.level     : Level 3
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
          */
         it('SUB_AA_OpenHarmony_ProviderGetForsInfo_0900', 0, async function (done) {
             console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_0900");
@@ -224,10 +248,14 @@ export default function abilityTest() {
                 done();
             });
         });
+
         /**
-         * @tc.number: SUB_AA_OpenHarmony_ProviderGetForsInfo_1000
-         * @tc.name: SUB_AA_OpenHarmony_ProviderGetForsInfo_1000
-         * @tc.desc: #10 getFormsInfo(filter, callback) where moduleName = "entry" exists but has no forms.
+         * @tc.number    : SUB_AA_OpenHarmony_ProviderGetForsInfo_1000
+         * @tc.name      : testProviderGetForsInfo1000
+         * @tc.desc      : getFormsInfo(filter, callback) where moduleName = "entry" exists but has no forms.
+         * @tc.level     : Level 3
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
          */
         it('SUB_AA_OpenHarmony_ProviderGetForsInfo_1000', 0, async function (done) {
             console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_1000");
@@ -244,9 +272,12 @@ export default function abilityTest() {
         });
 
         /**
-         * @tc.number: SUB_AA_OpenHarmony_ProviderGetForsInfo_1200
-         * @tc.name: SUB_AA_OpenHarmony_ProviderGetForsInfo_1200
-         * @tc.desc: #12 getFormsInfo(filter) where filter = {}
+         * @tc.number    : SUB_AA_OpenHarmony_ProviderGetForsInfo_1200
+         * @tc.name      : testProviderGetForsInfo1200
+         * @tc.desc      : getFormsInfo(filter) where filter = {}.
+         * @tc.level     : Level 3
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
          */
         it('SUB_AA_OpenHarmony_ProviderGetForsInfo_1200', 0, async function (done) {
             console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_1200");
@@ -262,9 +293,12 @@ export default function abilityTest() {
         });
 
         /**
-         * @tc.number: SUB_AA_OpenHarmony_ProviderGetForsInfo_1300
-         * @tc.name: SUB_AA_OpenHarmony_ProviderGetForsInfo_1300
-         * @tc.desc: #13 getFormsInfo(filter) where moduleName = ""
+         * @tc.number    : SUB_AA_OpenHarmony_ProviderGetForsInfo_1300
+         * @tc.name      : testProviderGetForsInfo1300
+         * @tc.desc      : getFormsInfo(filter) where moduleName = "".
+         * @tc.level     : Level 3
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
          */
         it('SUB_AA_OpenHarmony_ProviderGetForsInfo_1300', 0, async function (done) {
             console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_1300");
@@ -282,9 +316,12 @@ export default function abilityTest() {
         });
 
         /**
-         * @tc.number: SUB_AA_OpenHarmony_ProviderGetForsInfo_1400
-         * @tc.name: SUB_AA_OpenHarmony_ProviderGetForsInfo_1400
-         * @tc.desc: #14 getFormsInfo(filter) where moduleName = undefined
+         * @tc.number    : SUB_AA_OpenHarmony_ProviderGetForsInfo_1400
+         * @tc.name      : testProviderGetForsInfo1400
+         * @tc.desc      : getFormsInfo(filter) where moduleName = undefined.
+         * @tc.level     : Level 3
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
          */
         it('SUB_AA_OpenHarmony_ProviderGetForsInfo_1400', 0, async function (done) {
             console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_1400");
@@ -302,9 +339,12 @@ export default function abilityTest() {
         });
 
         /**
-         * @tc.number: SUB_AA_OpenHarmony_ProviderGetForsInfo_1500
-         * @tc.name: SUB_AA_OpenHarmony_ProviderGetForsInfo_1500
-         * @tc.desc: #15 getFormsInfo(filter) where moduleName = "HelloWorld" which doesn't exist
+         * @tc.number    : SUB_AA_OpenHarmony_ProviderGetForsInfo_1500
+         * @tc.name      : testProviderGetForsInfo1500
+         * @tc.desc      : getFormsInfo(filter) where moduleName = "HelloWorld" which doesn't exist.
+         * @tc.level     : Level 3
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
          */
         it('SUB_AA_OpenHarmony_ProviderGetForsInfo_1500', 0, async function (done) {
             console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_1500");
@@ -319,10 +359,14 @@ export default function abilityTest() {
             })
             done();
         });
+
         /**
-         * @tc.number: SUB_AA_OpenHarmony_ProviderGetForsInfo_1600
-         * @tc.name: SUB_AA_OpenHarmony_ProviderGetForsInfo_1600
-         * @tc.desc: #16 getFormsInfo(filter) where moduleName = "module1" which does exist
+         * @tc.number    : SUB_AA_OpenHarmony_ProviderGetForsInfo_1600
+         * @tc.name      : testProviderGetForsInfo1600
+         * @tc.desc      : getFormsInfo(filter) where moduleName = "module1" which does exist.
+         * @tc.level     : Level 3
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
          */
         it('SUB_AA_OpenHarmony_ProviderGetForsInfo_1600', 0, async function (done) {
             console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_1600");
@@ -338,10 +382,14 @@ export default function abilityTest() {
             })
             done();
         });
+
         /**
-         * @tc.number: SUB_AA_OpenHarmony_ProviderGetForsInfo_1700
-         * @tc.name: SUB_AA_OpenHarmony_ProviderGetForsInfo_1700
-         * @tc.desc: #17 getFormsInfo(filter) where moduleName = "entry" which exists but has no forms
+         * @tc.number    : SUB_AA_OpenHarmony_ProviderGetForsInfo_1700
+         * @tc.name      : testProviderGetForsInfo1700
+         * @tc.desc      : getFormsInfo(filter) where moduleName = "entry" which exists but has no forms.
+         * @tc.level     : Level 3
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
          */
         it('SUB_AA_OpenHarmony_ProviderGetForsInfo_1700', 0, async function (done) {
             console.info("SUB_AA_OpenHarmony_ProviderGetForsInfo_1700");
