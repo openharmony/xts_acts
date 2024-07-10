@@ -56,20 +56,21 @@ struct PickerComponent {
 
   getPhotoPickerResult(): PhotoPickerResult {
     let result: PhotoPickerResult = new PhotoPickerResult();
-    result.checkBoxColor = this.pickerOptions.checkBoxColor??'';
-    result.backgroundColor = this.pickerOptions.backgroundColor ??'';
-    result.isRepeatSelectSupported = this.pickerOptions.isRepeatSelectSupported??false;
-    result.photoBrowserBackgroundColorMode = this.pickerOptions.photoBrowserBackgroundColorMode??0;
-    result.maxSelectedReminderMode = this.pickerOptions.maxSelectedReminderMode??0;
+    result.checkBoxColor = this.pickerOptions.checkBoxColor ?? '';
+    result.backgroundColor = this.pickerOptions.backgroundColor ?? '';
+    result.isRepeatSelectSupported = this.pickerOptions.isRepeatSelectSupported ?? false;
+    result.photoBrowserBackgroundColorMode = this.pickerOptions.photoBrowserBackgroundColorMode ?? 0;
+    result.maxSelectedReminderMode = this.pickerOptions.maxSelectedReminderMode ?? 0;
     result.checkboxTextColor = this.pickerOptions.checkboxTextColor ?? '';
     result.selectMode = this.pickerOptions.selectMode ?? 0;
     result.maxSelectCount = this.pickerOptions.maxSelectNumber ?? 500;
-    result.maxPhotoSelectNumber = this.pickerOptions.maxPhotoSelectNumber??500;
-    result.maxVideoSelectNumber = this.pickerOptions.maxVideoSelectNumber??500;
+    result.maxPhotoSelectNumber = this.pickerOptions.maxPhotoSelectNumber ?? 500;
+    result.maxVideoSelectNumber = this.pickerOptions.maxVideoSelectNumber ?? 500;
     return result;
   }
 
   private onEnterPhotoBrowser(photoBrowserInfo: PhotoBrowserInfo): boolean {
+    this.sendEvent(photoBrowserInfo, this.eventId);
     console.info('onEnterPhotoBrowser' + JSON.stringify(photoBrowserInfo));
     return false;
   }
@@ -118,6 +119,7 @@ struct PickerComponent {
     }
 
     this.sendEvent(itemInfo, EventType.SELECT_ITEM_INFO);
+    this.sendEvent(clickType, EventType.SELECT_CLICKTYPE);
     let type: ItemType | undefined = itemInfo.itemType;
     let uri: string | undefined = itemInfo.uri;
     if (type === ItemType.CAMERA) {
@@ -181,77 +183,89 @@ struct PickerComponent {
     }.width('100%')
   }
 
+  @Builder
+  ButtonBar() {
+    Row() {
+      Button('视频和图片').width('50%').height('10%')
+        .onClick(() => {
+          this.isShowAll = true;
+          this.isShowVideo = false;
+          this.isShowPhoto = false;
+          this.pickerController.setData(DataType.SET_SELECTED_URIS, this.selectedUris);
+        })
+      Button('全部相册').width('50%').height('10%')
+        .onClick(() => {
+          this.isShowAlbum = true;
+        }).id('albumButton')
+    }
+
+    Row() {
+      Button('返回测试结果').width('50%').height('8%').onClick(() => {
+        console.info('testPicker setData');
+        let result: PhotoPickerResult = this.getPhotoPickerResult();
+        this.sendEvent(result, EventType.PHOTO_PICKER_INFO);
+      }).id('resultButton')
+      Button('选择修改数量').width('50%').height('8%').onClick(() => {
+        let maxSelect: MaxSelected = new MaxSelected();
+        maxSelect.data = new Map<MaxCountType, number>([[MaxCountType.TOTAL_MAX_COUNT, 1],
+          [MaxCountType.PHOTO_MAX_COUNT, 1], [MaxCountType.VIDEO_MAX_COUNT, 1]]);
+        this.pickerController.setMaxSelected(maxSelect);
+      }).id('changeNumButton')
+    }
+  }
+
+  @Builder
+  buildPhotoPickerComponent() {
+    Stack() {
+      PhotoPickerComponent({
+        pickerOptions: this.pickerOptions,
+        onSelect: (uri: string): void => this.onSelect(uri),
+        onDeselect: (uri: string): void => this.onDeselect(uri),
+        onItemClicked: (itemInfo: ItemInfo, clickType: ClickType): boolean =>
+        this.onItemClicked(itemInfo, clickType),
+        onEnterPhotoBrowser: (photoBrowserInfo: PhotoBrowserInfo): boolean =>
+        this.onEnterPhotoBrowser(photoBrowserInfo),
+        onExitPhotoBrowser: (photoBrowserInfo: PhotoBrowserInfo): boolean =>
+        this.onExitPhotoBrowser(photoBrowserInfo),
+        onPickerControllerReady: (): void => this.onPickerControllerReady(),
+        pickerController: this.pickerController,
+      })
+        .height('82%')
+        .width('100%')
+        .visibility(this.isShowAll ? Visibility.Visible : Visibility.Hidden)
+        .id('PhotoPickerComponent')
+    }
+  }
+
+  @Builder
+  buildAlbumPickerComponent() {
+    Row() {
+      ForEach(this.selectedUris, (uri: string) => {
+        Image(uri).height('10%').width('20%').onClick(() => {
+          this.selectedUris = this.selectedUris.filter((item: string) => {
+            return uri != item;
+          })
+          this.pickerController.setData(DataType.SET_SELECTED_URIS, this.selectedUris);
+        })
+      }, (uri: string) => JSON.stringify(uri))
+    }
+
+    if (this.isShowAlbum) {
+      AlbumPickerComponent({
+        albumPickerOptions: this.albumOptions,
+        onAlbumClick: (albumInfo: AlbumInfo): boolean => this.onAlbumClick(albumInfo),
+      }).height('100%').width('100%').id('AlbumPickerComponent')
+    }
+  }
+
   build() {
     Stack() {
       Column() {
-        Row() {
-          Button('视频和图片').width('50%').height('10%')
-            .onClick(() => {
-              this.isShowAll = true;
-              this.isShowVideo = false;
-              this.isShowPhoto = false;
-              this.pickerController.setData(DataType.SET_SELECTED_URIS, this.selectedUris);
-            })
-          Button('全部相册').width('50%').height('10%')
-            .onClick(() => {
-              this.isShowAlbum = true;
-            }).id('albumButton')
-        }
-
-        Row() {
-          Button('返回测试结果').width('50%').height('8%').onClick(() => {
-            console.info('testPicker setData');
-            let result: PhotoPickerResult = this.getPhotoPickerResult();
-            this.sendEvent(result, EventType.PHOTO_PICKER_INFO);
-          }).id('resultButton')
-          Button('选择修改数量').width('50%').height('8%').onClick(() => {
-            let maxSelect: MaxSelected = new MaxSelected();
-            maxSelect.data = new Map<MaxCountType, number>([[MaxCountType.TOTAL_MAX_COUNT, 1], 
-            [MaxCountType.PHOTO_MAX_COUNT, 1], [MaxCountType.VIDEO_MAX_COUNT, 1]]);
-            this.pickerController.setMaxSelected(maxSelect);
-          }).id('changeNumButton')
-        }
-
-        Stack() {
-          PhotoPickerComponent({
-            pickerOptions: this.pickerOptions,
-            onSelect: (uri: string): void => this.onSelect(uri),
-            onDeselect: (uri: string): void => this.onDeselect(uri),
-            onItemClicked: (itemInfo: ItemInfo, clickType: ClickType): boolean => 
-            this.onItemClicked(itemInfo, clickType),
-            onEnterPhotoBrowser: (photoBrowserInfo: PhotoBrowserInfo): boolean => 
-            this.onEnterPhotoBrowser(photoBrowserInfo),
-            onExitPhotoBrowser: (photoBrowserInfo: PhotoBrowserInfo): boolean => 
-            this.onExitPhotoBrowser(photoBrowserInfo),
-            onPickerControllerReady: (): void => this.onPickerControllerReady(),
-            pickerController: this.pickerController,
-          })
-            .height('82%')
-            .width('100%')
-            .visibility(this.isShowAll ? Visibility.Visible : Visibility.Hidden)
-            .id('PhotoPickerComponent')
-        }
+        this.ButtonBar();
+        this.buildPhotoPickerComponent();
       }
 
-      Row() {
-        ForEach(this.selectedUris, (uri: string) => {
-          Image(uri).height('10%').width('20%').onClick(() => {
-            this.selectedUris = this.selectedUris.filter((item: string) => {
-              return uri != item;
-            })
-            this.pickerController.setData(DataType.SET_SELECTED_URIS, this.selectedUris);
-          })
-        }, (uri: string) => JSON.stringify(uri))
-      }
-
-      if (this.isShowAlbum) {
-        AlbumPickerComponent({
-          albumPickerOptions: this.albumOptions,
-          onAlbumClick: (albumInfo: AlbumInfo): boolean => this.onAlbumClick(albumInfo),
-        }).height('100%').width('100%').id('AlbumPickerComponent')
-      }
+      this.buildAlbumPickerComponent();
     }
-
   }
 }
-

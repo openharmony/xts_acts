@@ -5175,4 +5175,298 @@ describe('UrlFunTest', function () {
         expect(u2.params.toString()).assertEqual('phone=%2B86+9')
         expect(phone2.toString()).assertEqual('+86 9')
     })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_30900
+   * @tc.name: testUrlparseURL0043
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0043', 0, function () {
+        let uu = Url.URL.parseURL('http://www.baidu.com/sajd中文测试/aa?xx=%26');
+        let res = 'http://www.baidu.com/sajd%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/aa?xx=%26';
+        expect(uu.toString()).assertEqual(res);
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_31000
+   * @tc.name: testUrlparseURL0044
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0044', 0, function () {
+        let uu = Url.URL.parseURL('http://www.baidu.com/sajd中文测试/aa?xx=%26%7D');
+        let res = 'http://www.baidu.com/sajd%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/aa?xx=%26%7D';
+        let uu2 = Url.URL.parseURL(uu.toString());
+        expect(uu2.toString()).assertEqual(res);
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_31100
+   * @tc.name: testUrlparseURL0045
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0045', 0, function () {
+      let uu = Url.URL.parseURL('http://www.baidu.com/sajd中文测试/aa?xx=%26优优');
+      let uu2 = Url.URL.parseURL(uu.toString());
+      let res = 'http://www.baidu.com/sajd%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/aa?xx=%26优优';
+      expect(uu2.toString()).assertEqual(res);
+      expect(uu2.pathname).assertEqual('/sajd%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/aa');
+      expect(uu2.params.get('xx')).assertEqual('&优优');
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_31200
+   * @tc.name: testUrlparseURL0046
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0046', 0, function () {
+      let uu = Url.URL.parseURL('http://www.baidu.com/sajd%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/aa?xx=%26优优');
+      let uu2 = Url.URL.parseURL(uu.toString());
+      let res = 'http://www.baidu.com/sajd%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/aa?xx=%26优优';
+      expect(uu2.toString()).assertEqual(res);
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_31300
+   * @tc.name: testUrlparseURL0047
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0047', 0, function () {
+      let uu = Url.URL.parseURL('http://www.baidu.com/sajd/aa#xx=%26优优');
+      let res = 'http://www.baidu.com/sajd/aa#xx=%26%E4%BC%98%E4%BC%98';
+      expect(uu.toString()).assertEqual(res);
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_31400
+   * @tc.name: testUrlparseURL0048
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0048', 0, function () {
+        let uu = Url.URL.parseURL('http://www.baidu.com/sajd中文测试/aa?xx=%26优优');
+      let uu2 = Url.URL.parseURL(uu.toString());
+      let res = 'http://www.baidu.com/sajd%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/aa?xx=%26优优';
+      expect(uu2.toString()).assertEqual(res);
+      expect(uu2.pathname).assertEqual('/sajd%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/aa');
+      expect(uu2.params.get('xx')).assertEqual('&优优');
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_31500
+   * @tc.name: testUrlparseURL0049
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0049', 0, function () {
+      let uu = Url.URL.parseURL('http://k中%:ss8@www.baidu.com/s#a%jd中文测试q/aa?xx=%26%E4%B8%AD');
+      let res = 'http://k%E4%B8%AD%:ss8@www.baidu.com/s#a%jd%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95q/aa?xx=%26%E4%B8%AD';
+      expect(uu.toString()).assertEqual(res);
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_31600
+   * @tc.name: testUrlparseURL0050
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0050', 0, function () {
+      let uu = Url.URL.parseURL('http://k中%:ss8@www.baidu.com/s#a%jd中文测试q/aa?xx=%26%E4%B8%AD');
+      expect(uu.params.get('xx')).assertEqual(undefined);
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_31700
+   * @tc.name: testUrlparseURL0051
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0051', 0, function () {
+      let uu = Url.URL.parseURL('http://k中%:ss8@www.baidu.com/s#a%jd中文测试q/aa?xx=%26%E4%B8%AD');
+      let uu2 = Url.URL.parseURL(uu.toString());
+      let res = 'http://www.baidu.com/sajd%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/aa?xx=%26优优';
+      expect(uu2.pathname).assertEqual('/s');
+      uu2.pathname = '/sa%jd%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95q/aa优'
+      expect(uu2.pathname).assertEqual('/sa%jd%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95q/aa%E4%BC%98');
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_31800
+   * @tc.name: testUrlparseURL0052
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0052', 0, function () {
+      let uu = Url.URL.parseURL('http://k中%:ss8@www.baidu.com/s#a%jd中文测试q/aa?xx=%26%E4%B8%AD');
+      let yy = uu.toString();
+      let uu2 = Url.URL.parseURL(yy);
+      expect(uu2.username).assertEqual('k%E4%B8%AD%');
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_31900
+   * @tc.name: testUrlparseURL0053
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0053', 0, function () {
+      let uu = Url.URL.parseURL('http://www.baidu.com/sajd中文测试/aa?xx=%26优优');
+      let uu2 = Url.URL.parseURL(uu.toString());
+      let res = 'http://www.baidu.com/sajd%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/aa?xx=%26优优';
+      expect(uu2.toString()).assertEqual(res);
+      expect(uu2.pathname).assertEqual('/sajd%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/aa');
+      expect(uu2.params.get('xx')).assertEqual('&优优');
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_32000
+   * @tc.name: testUrlparseURL0054
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0054', 0, function () {
+      let objectParams = new Url.URLParams("?a%20b=a&a%2Bb=a1");
+      let objectParams1 = new Url.URLParams(objectParams);
+      let str = objectParams1.toString();
+      let res = 'a+b=a&a%2Bb=a1';
+      expect(str).assertEqual(res);
+      objectParams1.append('a+b', 'b2');
+      objectParams1.append('a b', 'b2');
+      expect(objectParams1.toString()).assertEqual('a+b=a&a%2Bb=a1&a%2Bb=b2&a+b=b2');
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_32100
+   * @tc.name: testUrlparseURL0055
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0055', 0, function () {
+      let objectParams = new Url.URLParams();
+      objectParams.set('a b', 'c3');
+      objectParams.set('a+b', 'c3');
+      expect(objectParams.toString()).assertEqual('a+b=c3&a%2Bb=c3');
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_32200
+   * @tc.name: testUrlparseURL0056
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0056', 0, function () {
+      let objectParams = new Url.URLParams('1=3&1=6');
+      objectParams.append('a b', 'abc1');
+      objectParams.append('a&b', 'abc2');
+      objectParams.append('a+b', 'abc3');
+      objectParams.append('a+b', 'abc4');
+      objectParams.sort();
+      expect(objectParams.toString()).assertEqual('1=3&1=6&a+b=abc1&a%26b=abc2&a%2Bb=abc3&a%2Bb=abc4');
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_32300
+   * @tc.name: testUrlparseURL0057
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0057', 0, function () {
+      let objectParams = new Url.URLParams('?key=first2');
+      objectParams.append('a&b', 'abc大2');
+      objectParams.append('a+b', 'abc大2');
+      objectParams.append('a b', 'abc大2');
+      let res = 'key=first2&a%26b=abc%E5%A4%A72&a%2Bb=abc%E5%A4%A72&a+b=abc%E5%A4%A72';
+      expect(objectParams.has('a&b')).assertTrue();
+      expect(objectParams.has('a%26b')).assertFalse();
+      expect(objectParams.toString()).assertEqual(res);
+      expect(objectParams.get('a&b')).assertEqual('abc大2');
+      expect(objectParams.get('a%26b')).assertEqual(undefined);
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_32400
+   * @tc.name: testUrlparseURL0058
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0058', 0, function () {
+      const objectParams = new Url.URLParams('key=a   b   c');
+      expect(objectParams.toString()).assertEqual('key=a+++b+++c');
+      objectParams.append('key1', 'd   e   f');
+      expect(objectParams.toString()).assertEqual('key=a+++b+++c&key1=d+++e+++f');
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_32500
+   * @tc.name: testUrlparseURL0059
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0059', 0, function () {
+      const objectParams = new Url.URLParams('key=a%20b %3D%2Bc++=p%26p%25%E5%A4%A7');
+      expect(objectParams.toString()).assertEqual('key=a+b+%3D%2Bc++%3Dp%26p%25%E5%A4%A7');
+      expect(objectParams.get('key')).assertEqual('a b =+c  =p&p%大');
+      objectParams.append('key1', 'a%20b%3D%2Bc+=%');
+      let res = 'key=a+b+%3D%2Bc++%3Dp%26p%25%E5%A4%A7&key1=a%2520b%253D%252Bc%2B%3D%25';
+      expect(objectParams.toString()).assertEqual(res);
+      expect(objectParams.get('key1')).assertEqual('a%20b%3D%2Bc+=%');
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_32600
+   * @tc.name: testUrlparseURL0060
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0060', 0, function () {
+      const object = Url.URL.parseURL('https://sssw.dasf?key=a%20b %3D%2Bc++=p%26p%25%E5%A4%A7!()~{}[]%大');
+      let res = 'key=a+b+%3D%2Bc++%3Dp%26p%25%E5%A4%A7%21%28%29%7E%7B%7D%5B%5D%25%E5%A4%A7';
+      expect(object.params.toString()).assertEqual(res);
+      expect(object.params.get('key')).assertEqual('a b =+c  =p&p%大!()~{}[]%大');
+      object.params.delete('');
+      for(let tiem of object.params.entries()){
+        expect(tiem[0]).assertEqual('key');
+        expect(tiem[1]).assertEqual('a b =+c  =p&p%大!()~{}[]%大');
+      }
+    })
 })}

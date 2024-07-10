@@ -16,18 +16,20 @@
 import HasCard1PublicTest from './TelephonyCallHasCard1Public.test';
 import HasCard2PublicTest from './TelephonyCallHasCard2Public.test';
 import HasCard2PublicNeedCardTest from './TelephonyCallHasCard3Public.test';
-
+import EmptyTest from './Empty.test'
 import sim from '@ohos.telephony.sim';
 
-let hasSimCard: Boolean = sim.hasSimCardSync(0);
-
 export default function testsuite() {
-  if(hasSimCard){
-    HasCard2PublicNeedCardTest();
-    HasCard1PublicTest();
-    HasCard2PublicTest();
-  } else {
-    HasCard1PublicTest();
-    HasCard2PublicTest();
+  if (canIUse("SystemCapability.Telephony.CallManager")){
+    if(sim.hasSimCardSync(0)){
+      HasCard2PublicNeedCardTest();
+      HasCard1PublicTest();
+      HasCard2PublicTest();
+    } else {
+      HasCard1PublicTest();
+      HasCard2PublicTest();
+    }
+  }else{
+    EmptyTest()
   }
 }

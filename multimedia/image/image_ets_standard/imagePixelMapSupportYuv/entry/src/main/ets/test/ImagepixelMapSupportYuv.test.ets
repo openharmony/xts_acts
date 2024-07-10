@@ -94,6 +94,58 @@ export default function imagepixelMapSupportYuv() {
       return pixelMap_NV21
     }
 
+    //使用解码参数sourceDensity创建imagesource,并使用解码参数fitDensity创建pixelmap
+    //imageSourceType:创建imageSource的方式，取值: uri、fd、buffer,rawfile,incremental 默认fd
+    //fileName: 文件名,例: yuv_test_oto.jpeg
+    //desiredPixelFormat:解码像素格式 例：8、9
+    //sourceDensity:ImageSource的初始化选项。
+    //fitDensity:pixelMap解码参数，图像像素密度
+    //setDensityOption: 是否使用解码参数 sourceDensity/fitDensity
+    const getDensityOptionPixelMap = async(fileName:string, desiredPixelFormat:number, sourceDensity:number,
+                                           fitDensity:number, setDensityOption:boolean)=>{
+      await getFd(fileName)
+      if(setDensityOption){
+        const sourceOption: image.SourceOptions = {sourceDensity: sourceDensity};
+        const imageSource = image.createImageSource(fdNumber, sourceOption);
+        let decodingOptions: image.DecodingOptions = {
+          editable: true,
+          desiredPixelFormat: desiredPixelFormat,
+          fitDensity: fitDensity
+        };
+        let pixelMap: image.PixelMap = await imageSource.createPixelMap(decodingOptions);
+        return pixelMap
+      }else{
+        const imageSource = image.createImageSource(fdNumber)
+        let decodingOptions: image.DecodingOptions = {
+          editable: true,
+          desiredPixelFormat: desiredPixelFormat,
+        };
+        let pixelMap: image.PixelMap = await imageSource.createPixelMap(decodingOptions);
+        return pixelMap
+      }
+    }
+
+    //校验pxielmap宽高是否与计算公式计算出的宽高一致。
+    //testNum 用例编号  
+    //pixelMap 需要校验的pixelMap对象
+    //sourceDensity:ImageSource的初始化选项。
+    //fitDensity:pixelMap解码参数，图像像素密度
+    //width: 图片原始宽度
+    //height: 图片原始高度
+    const checkNzDensity = async (testNum:string, pixelMap: image.PixelMap, sourceDensity:number,
+                                  fitDensity:number, width:number, height:number) =>{
+      let widthResult = width
+      let heightResult = height
+      if(fitDensity !== 0 && sourceDensity !== 0 ){
+        const halfSourceDensity = sourceDensity >> 1;
+        widthResult = Math.floor((width * fitDensity + halfSourceDensity) / sourceDensity);
+        heightResult = Math.floor((height * fitDensity + halfSourceDensity) / sourceDensity);
+      }
+      const imageInfo = await pixelMap.getImageInfo();
+      hilog.info(0x0000, '${testNum}', '%{public}s', `${testNum}:imageInfo: ${JSON.stringify(imageInfo)}`)
+      return widthResult === imageInfo.size.width && heightResult === imageInfo.size.height
+    }
+
     //检查 ArrayBuffer 中的内容是否包含 0
     const checkArrayBuffer =  (arrayBuffer:ArrayBuffer) =>{
       const bufferArr = new Uint8Array(arrayBuffer)
@@ -3155,6 +3207,150 @@ export default function imagepixelMapSupportYuv() {
         let pixelMap_NV21: image.PixelMap = await getPixMap_NV12("yuv_test_ote.jpg", "fd", true);
         const result = await testWriteBufferToPixels(testTag, pixelMap_NV21, 'sync')
         expect(result).assertTrue()
+        done()
+      }catch(error){
+        hilog.info(0x0000, testTag, `${testTag} Test exception  ` + error);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NV21_DENSITYOPTION_0100
+     * @tc.name      : sourceDensity_fitDensity
+     * @tc.desc      : 1.createImageSource
+     *                 2.createPixelMap
+     *                 3.PixelMap.getImageInfo
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 3
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NV21_DENSITYOPTION_0100', 0, async (done:Function) => {
+      const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_DENSITYOPTION_0100"
+      try{
+        const pixelMap = await getDensityOptionPixelMap("yuv_test_ete.jpg", 9, 0, 0, false)
+        const checkResult = await checkNzDensity(testTag, pixelMap, 0, 0, 480, 360)
+        expect(checkResult).assertTrue()
+        done()
+      }catch(error){
+        hilog.info(0x0000, testTag, `${testTag} Test exception  ` + error);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NV21_DENSITYOPTION_0200
+     * @tc.name      : sourceDensity_fitDensity
+     * @tc.desc      : 1.createImageSource
+     *                 2.createPixelMap
+     *                 3.PixelMap.getImageInfo
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 3
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NV21_DENSITYOPTION_0200', 0, async (done:Function) => {
+      const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_DENSITYOPTION_0200"
+      try{
+        const pixelMap = await getDensityOptionPixelMap("yuv_test_eto.jpg", 9, 120, 240, true)
+        const checkResult = await checkNzDensity(testTag, pixelMap, 120, 240, 800, 501)
+        expect(checkResult).assertTrue()
+        done()
+      }catch(error){
+        hilog.info(0x0000, testTag, `${testTag} Test exception  ` + error);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NV21_DENSITYOPTION_0300
+     * @tc.name      : sourceDensity_fitDensity
+     * @tc.desc      : 1.createImageSource
+     *                 2.createPixelMap
+     *                 3.PixelMap.getImageInfo
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 3
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NV21_DENSITYOPTION_0300', 0, async (done:Function) => {
+      const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_DENSITYOPTION_0300"
+      try{
+        const pixelMap = await getDensityOptionPixelMap("yuv_test_oto.jpeg", 9, 0, 0, true)
+        const checkResult = await checkNzDensity(testTag, pixelMap, 0, 0, 481, 361)
+        expect(checkResult).assertTrue()
+        done()
+      }catch(error){
+        hilog.info(0x0000, testTag, `${testTag} Test exception  ` + error);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NV12_DENSITYOPTION_0100
+     * @tc.name      : sourceDensity_fitDensity
+     * @tc.desc      : 1.createImageSource
+     *                 2.createPixelMap
+     *                 3.PixelMap.getImageInfo
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 3
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NV12_DENSITYOPTION_0100', 0, async (done:Function) => {
+      const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_DENSITYOPTION_0100"
+      try{
+        const pixelMap = await getDensityOptionPixelMap("yuv_test_ote.jpg", 8, 0, 0, false)
+        const checkResult = await checkNzDensity(testTag, pixelMap, 0, 0, 801, 500)
+        expect(checkResult).assertTrue()
+        done()
+      }catch(error){
+        hilog.info(0x0000, testTag, `${testTag} Test exception  ` + error);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NV12_DENSITYOPTION_0200
+     * @tc.name      : sourceDensity_fitDensity
+     * @tc.desc      : 1.createImageSource
+     *                 2.createPixelMap
+     *                 3.PixelMap.getImageInfo
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 3
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NV12_DENSITYOPTION_0200', 0, async (done:Function) => {
+      const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_DENSITYOPTION_0200"
+      try{
+        const pixelMap = await getDensityOptionPixelMap("yuv_test_ete.jpg", 8, 120, 240, true)
+        const checkResult = await checkNzDensity(testTag, pixelMap, 120, 240, 480, 360)
+        expect(checkResult).assertTrue()
+        done()
+      }catch(error){
+        hilog.info(0x0000, testTag, `${testTag} Test exception  ` + error);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NV12_DENSITYOPTION_0300
+     * @tc.name      : sourceDensity_fitDensity
+     * @tc.desc      : 1.createImageSource
+     *                 2.createPixelMap
+     *                 3.PixelMap.getImageInfo
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 3
+     */
+    it('SUB_MULTIMEDIA_IMAGE_NV12_DENSITYOPTION_0300', 0, async (done:Function) => {
+      const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_DENSITYOPTION_0300"
+      try{
+        const pixelMap = await getDensityOptionPixelMap("yuv_test_oto.jpeg", 8, 0, 0, true)
+        const checkResult = await checkNzDensity(testTag, pixelMap, 0, 0, 481, 361)
+        expect(checkResult).assertTrue()
         done()
       }catch(error){
         hilog.info(0x0000, testTag, `${testTag} Test exception  ` + error);

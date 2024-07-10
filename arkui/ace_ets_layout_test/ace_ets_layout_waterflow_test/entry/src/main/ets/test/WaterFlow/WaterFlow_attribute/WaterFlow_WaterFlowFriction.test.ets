@@ -55,7 +55,7 @@ export default function waterFlow_WaterFlowFrictionTest() {
       await CommonFunc.sleep(2000);
       let scrollContainerStrJson = getInspectorByKey('WaterFlow_WaterFlowFriction');
       expect(JSON.parse(scrollContainerStrJson).$type).assertEqual('WaterFlow');
-      expect(JSON.parse(scrollContainerStrJson).$attrs.friction).assertEqual(0.7);
+      expect(JSON.parse(scrollContainerStrJson).$attrs.friction).assertEqual(0.75);
       console.info('[testWaterFlowFriction] END');
       done();
     });

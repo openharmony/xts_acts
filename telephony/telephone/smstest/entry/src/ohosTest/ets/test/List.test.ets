@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,15 +15,18 @@
 
 import smsTextPublic from './smsTextPublic.test';
 import smsTextNoCardPublic from './smsTextPublic1.test';
+import EmptyTest from './Empty.test';
 import sim from '@ohos.telephony.sim';
 
-let hasSimCard: Boolean = sim.hasSimCardSync(0);
-
 export default function testsuite() {
-  if(hasSimCard){
-    smsTextPublic();
-    smsTextNoCardPublic();
-  } else {
-    smsTextNoCardPublic();
+  if (canIUse("SystemCapability.Telephony.SmsMms")){
+    if(sim.hasSimCardSync(0)){
+      smsTextPublic();
+      smsTextNoCardPublic();
+    } else {
+      smsTextNoCardPublic();
+    }
+  }else{
+    EmptyTest()
   }
 }

@@ -1,6 +1,5 @@
-
 /*
- * Copyright (C) 2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -16,16 +15,19 @@
 
 import dataManagerHasCartTest from './DataManagerHasCard.test';
 import dataManagerEmptyTest from './DataManagerEmpty.test';
-import sim from '@ohos.telephony.sim';
 import CallUXUsabilityOptimizationTest from './CallSettingSyncCheck.test';
-
-let hasSimCard: Boolean = sim.hasSimCardSync(0);
+import EmptyTest from './Empty.test';
+import sim from '@ohos.telephony.sim';
 
 export default function testsuite() {
-  if(hasSimCard){
-    dataManagerHasCartTest();
-    CallUXUsabilityOptimizationTest();
+  if (canIUse("SystemCapability.Telephony.CellularData")){
+    if(sim.hasSimCardSync(0)){
+      dataManagerHasCartTest();
+      CallUXUsabilityOptimizationTest();
+    } else {
+      dataManagerEmptyTest();
+    }
   }else{
-    dataManagerEmptyTest();
+    EmptyTest()
   }
 }

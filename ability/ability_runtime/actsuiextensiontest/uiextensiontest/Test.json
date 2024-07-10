@@ -12,7 +12,7 @@
         {
             "test-file-name": [
                 "ActsUIExtensionTest.hap",
-				"UIExtensionProvider.hap",
+                "UIExtensionProvider.hap",
                 "StartAbilityByUIContentSession.hap",
                 "UIExtensionProvider2.hap",
                 "UIExtensionProvider3.hap",
@@ -26,7 +26,8 @@
             "run-command": [
                 "power-shell wakeup",
                 "power-shell setmode 602",
-                "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100"
+                "uinput -T -d 300 600 -m 300 600 300 100 -u 300 100",
+                "setenforce 0"
             ]
         }
     ]
