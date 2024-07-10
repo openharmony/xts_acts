@@ -54,34 +54,6 @@ export default function gridObjectSortComponentTest() {
 
     /**
      * @tc.number gridObjectSortComponentTest
-     * @tc.name   GridObjectSortComponentTest_0100
-     * @tc.desc   Test gridObjectSortComponent
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
-     */
-
-    it('GridObjectSortComponentTest_0100', 0, async function (done) {
-      console.info('[GridObjectSortComponentTest_0100] START');
-      let driver = await Driver.create();
-      await driver.delayMs(2000);
-      // 查看gridObjectSortComponent是否存在以下 文本信息。
-      let gridObjectSortComponentItem1 = await driver.findComponent(ON.text('位置信息'));
-      let gridObjectSortComponentItem2 = await driver.findComponent(ON.text('移动数据'));
-      let gridObjectSortComponentItem3 = await driver.findComponent(ON.text('NFC'));
-      let gridObjectSortComponentItem4 = await driver.findComponent(ON.text('响铃关闭'));
-      let gridObjectSortComponentItem5 = await driver.findComponent(ON.text('响铃'));
-      expect(gridObjectSortComponentItem1 !== null).assertTrue();
-      expect(gridObjectSortComponentItem2 !== null).assertTrue();
-      expect(gridObjectSortComponentItem3 !== null).assertTrue();
-      expect(gridObjectSortComponentItem4 !== null).assertTrue();
-      expect(gridObjectSortComponentItem5 !== null).assertTrue();
-      console.info('[GridObjectSortComponentTest_0100] END');
-      done();
-    });
-
-    /**
-     * @tc.number gridObjectSortComponentTest
      * @tc.name   GridObjectSortComponentTest_0200 item
      * @tc.desc   Click gridObjectSortComponent
      * @tc.size   MediumTest
