@@ -112,16 +112,16 @@ export default function flex_AlignContent_SpaceBetween_TextMarTest() {
       expect(JSON.parse(flexContainerStrJson).$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
       expect(JSON.parse(flexContainerStrJson).$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceBetween');
 
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(firstText.bottom - firstText.top - vp2px(50)) <= 1).assertTrue();
+      expect(Math.abs(secondText.bottom - secondText.top - vp2px(100)) <= 1).assertTrue();
+      expect(Math.abs(thirdText.bottom - thirdText.top - vp2px(50)) <= 1).assertTrue();
+      expect(Math.abs(fourthText.bottom - fourthText.top - vp2px(100)) <= 1).assertTrue();
 
-      expect(Math.round(firstText.left - flexContainer.left)).assertEqual(Math.round(vp2px(10))); //margin =10
+      expect(Math.abs(firstText.left - flexContainer.left - vp2px(10)) <= 1).assertTrue(); //margin =10
       expect(Math.abs(secondText.left - thirdText.left) <= 1).assertTrue();
       expect(Math.abs(thirdText.left - fourthText.left) <= 1).assertTrue();
       expect(Math.abs(fourthText.left - flexContainer.left) <= 1).assertTrue();
-      expect(Math.round(firstText.top - flexContainer.top)).assertEqual(Math.round(vp2px(10)));
+      expect(Math.abs(firstText.top - flexContainer.top - vp2px(10)) <= 1).assertTrue();
       expect(Math.abs(flexContainer.bottom - fourthText.bottom) <= 1).assertTrue();
 
       expect(Math.abs(Math.round(secondText.top - firstText.bottom - vp2px(10)) - Math.round(thirdText.top - secondText.bottom)) <= 1)

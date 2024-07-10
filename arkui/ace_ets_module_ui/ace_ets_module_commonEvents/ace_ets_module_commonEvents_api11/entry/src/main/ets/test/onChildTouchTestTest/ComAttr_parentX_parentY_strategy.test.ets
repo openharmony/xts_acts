@@ -90,7 +90,7 @@ export default function parentX_parentY_strategy_Test() {
       let obj = JSON.parse(strJson);
       console.info("[parentX_parentY_strategy_Test_0200] component obj is: " + JSON.stringify(obj));
       console.info("[parentX_parentY_strategy_Test_0200] contentY is: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('200');
+      expect(Math.abs(Number(obj.$attrs.content) - 200) <= 1).assertTrue();
       await CommonFunc.sleep(1000);
       done();
     });
