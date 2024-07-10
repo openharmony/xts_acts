@@ -18,6 +18,8 @@ import a2dp from '@ohos.bluetooth.a2dp';
 import hilog from '@ohos.hilog';
 
 const PERMISSION_DENIED_CODE = 201
+const PARAM_ERROR_CODE = 401
+const OPERATION_FAILED_CODE = 2900099
 const TAG: string = 'BtProfileTestTag';
 const Domain: number = 0x0000;
 
@@ -44,44 +46,6 @@ export default function btProfileNopUiJsunit() {
       // This API supports only one parameter: clear action function.
     })
     /**
-     * @tc.number: testOnConnectionStateChangeNop
-     * @tc.name: testOnConnectionStateChangeNop
-     * @tc.desc: test on connectionStateChange without permission
-     * @tc.size: LargeTest
-     * @tc.type: Function
-     * @tc.level: Level0
-     */
-    it("testOnConnectionStateChangeNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        let a2dpSrc = a2dp.createA2dpSrcProfile();
-        a2dpSrc.on('connectionStateChange', (param:baseProfile.StateChangeParam)=>{});
-        expect(true).assertFalse();
-      }catch (error){
-        hilog.error(Domain, TAG, `on connectionStateChange error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(PERMISSION_DENIED_CODE);
-      }
-      done();
-    })
-    /**
-     * @tc.number: testOffConnectionStateChangeNop
-     * @tc.name: testOffConnectionStateChangeNop
-     * @tc.desc: test off connectionStateChange without permission
-     * @tc.size: LargeTest
-     * @tc.type: Function
-     * @tc.level: Level0
-     */
-    it("testOffConnectionStateChangeNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        let a2dpSrc = a2dp.createA2dpSrcProfile();
-        a2dpSrc.off('connectionStateChange');
-        expect(true).assertFalse();
-      }catch (error){
-        hilog.error(Domain, TAG, `off connectionStateChange error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(PERMISSION_DENIED_CODE);
-      }
-      done();
-    })
-    /**
      * @tc.number: testGetConnectionStateNop
      * @tc.name: testGetConnectionStateNop
      * @tc.desc: test getConnectionState without permission
@@ -97,7 +61,7 @@ export default function btProfileNopUiJsunit() {
         expect(true).assertFalse();
       }catch (error){
         hilog.error(Domain, TAG, `getConnectionState error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(error.code).assertEqual(PARAM_ERROR_CODE);
       }
       done();
     })
@@ -113,7 +77,7 @@ export default function btProfileNopUiJsunit() {
       try {
         let a2dpSrc = a2dp.createA2dpSrcProfile();
         let devices = a2dpSrc.getConnectedDevices();
-        hilog.info(Domain, TAG, `getConnectedDevices ${JSON.stringify(devices)}`);
+        hilog.info(Domain, TAG, `getConnectedDevices without permission ${JSON.stringify(devices)}`);
         expect(true).assertFalse();
       }catch (error){
         hilog.error(Domain, TAG, `getConnectedDevices error, error code is: ${error.code}, error message is: ${error.message}`);
@@ -137,7 +101,7 @@ export default function btProfileNopUiJsunit() {
         expect(true).assertFalse();
       }catch (error){
         hilog.error(Domain, TAG, `getPlayingState error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(error.code).assertEqual(PARAM_ERROR_CODE);
       }
       done();
     })

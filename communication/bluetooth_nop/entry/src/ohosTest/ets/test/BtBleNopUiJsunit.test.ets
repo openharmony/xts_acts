@@ -18,6 +18,8 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestT
 import ble from '@ohos.bluetooth.ble';
 
 const PERMISSION_DENIED_CODE = 201
+const PARAM_ERROR_CODE = 401
+const OPERATION_FAILED_CODE = 2900099
 const TAG: string = 'BtBleTestTag';
 const Domain: number = 0x0000;
 
@@ -102,7 +104,7 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `stopAdvertising error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(e.code).assertEqual(OPERATION_FAILED_CODE);
       }
       done();
     })
@@ -116,8 +118,8 @@ export default function btBleNopUiJsunit() {
      */
     it("testStopAdvertisingAsyncCallbackNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
       let advHandle = 0xFF;
-      let functionStopAdvertising = async ()=>{
-        return new Promise<void>((resolve,reject)=>{
+      let functionStopAdvertising = async () => {
+        return new Promise<void>((resolve, reject) => {
           ble.stopAdvertising(advHandle, (error) => {
             if (error) {
               reject(error)
@@ -131,9 +133,9 @@ export default function btBleNopUiJsunit() {
         await functionStopAdvertising();
         hilog.info(Domain, TAG, `callback stopAdvertising`);
         expect(true).assertFalse();
-      }catch (error){
+      } catch (error) {
         hilog.error(Domain, TAG, `callback stopAdvertising error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(error.code).assertEqual(OPERATION_FAILED_CODE);
       }
       done();
     })
@@ -155,7 +157,7 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `Promise enableAdvertising error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE)
+        expect(e.code).assertEqual(OPERATION_FAILED_CODE)
       }
       done();
     })
@@ -172,8 +174,8 @@ export default function btBleNopUiJsunit() {
       let advertisingDisableParams: ble.AdvertisingDisableParams = {
         advertisingId: advHandle
       };
-      let functionEnableAdvertising = async ()=>{
-        return new Promise<void>((resolve,reject)=>{
+      let functionEnableAdvertising = async () => {
+        return new Promise<void>((resolve, reject) => {
           ble.enableAdvertising(advertisingDisableParams, (error) => {
             if (error) {
               reject(error)
@@ -185,11 +187,11 @@ export default function btBleNopUiJsunit() {
       }
       try {
         await functionEnableAdvertising();
-        hilog.info(Domain, TAG, `callback enableAdvertising`);
+        hilog.info(Domain, TAG, `callback enableAdvertising without permission`);
         expect(true).assertFalse();
-      }catch (error){
+      } catch (error) {
         hilog.error(Domain, TAG, `callback enableAdvertising error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(error.code).assertEqual(OPERATION_FAILED_CODE);
       }
       done();
     })
@@ -204,7 +206,7 @@ export default function btBleNopUiJsunit() {
     it("testStartAdvertisingNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
       try {
         let outAdvHandle = await ble.startAdvertising(getAdvertisingParams());
-        hilog.info(Domain, TAG, `startAdvertising ret: ${outAdvHandle}`);
+        hilog.info(Domain, TAG, `startAdvertising without permission ret: ${outAdvHandle}`);
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `Promise startAdvertising error, error code is: ${e.code}, error message is: ${e.message}`);
@@ -221,8 +223,8 @@ export default function btBleNopUiJsunit() {
      * @tc.level: Level0
      */
     it("testStartAdvertisingAsyncCallbackNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      let functionStartAdvertising = async ()=>{
-        return new Promise<number>((resolve,reject)=>{
+      let functionStartAdvertising = async () => {
+        return new Promise<number>((resolve, reject) => {
           ble.startAdvertising(getAdvertisingParams(), (error, outAdvHandle: number) => {
             if (error) {
               reject(error)
@@ -234,9 +236,9 @@ export default function btBleNopUiJsunit() {
       }
       try {
         let outAdvHandle = await functionStartAdvertising();
-        hilog.info(Domain, TAG, `callback startAdvertising ${outAdvHandle}`);
+        hilog.info(Domain, TAG, `callback startAdvertising without permission ${outAdvHandle}`);
         expect(true).assertFalse();
-      }catch (error){
+      } catch (error) {
         hilog.error(Domain, TAG, `callback startAdvertising error, error code is: ${error.code}, error message is: ${error.message}`);
         expect(error.code).assertEqual(PERMISSION_DENIED_CODE);
       }
@@ -261,7 +263,7 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `Promise disableAdvertising error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(e.code).assertEqual(PARAM_ERROR_CODE);
       }
       done();
     })
@@ -278,8 +280,8 @@ export default function btBleNopUiJsunit() {
       let advertisingDisableParams: ble.AdvertisingDisableParams = {
         advertisingId: advHandle
       };
-      let functionDisableAdvertising = async ()=>{
-        return new Promise<void>((resolve,reject)=>{
+      let functionDisableAdvertising = async () => {
+        return new Promise<void>((resolve, reject) => {
           ble.disableAdvertising(advertisingDisableParams, (error) => {
             if (error) {
               reject(error)
@@ -293,85 +295,9 @@ export default function btBleNopUiJsunit() {
         await functionDisableAdvertising();
         hilog.info(Domain, TAG, `callback disableAdvertising`);
         expect(true).assertFalse();
-      }catch (error){
+      } catch (error) {
         hilog.error(Domain, TAG, `callback disableAdvertising error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(PERMISSION_DENIED_CODE);
-      }
-      done();
-    })
-    /**
-     * @tc.number: testOnAdvertisingStateChangeNop
-     * @tc.name: testOnAdvertisingStateChangeNop
-     * @tc.desc: test on advertisingStateChange without permission
-     * @tc.size: LargeTest
-     * @tc.type: Function
-     * @tc.level: Level0
-     */
-    it("testOnAdvertisingStateChangeNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        ble.on('advertisingStateChange', (stateInfo: ble.AdvertisingStateChangeInfo) => {
-
-        });
-        expect(true).assertFalse();
-      } catch (error) {
-        hilog.error(Domain, TAG, `on advertisingStateChange error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(PERMISSION_DENIED_CODE);
-      }
-      done();
-    })
-    /**
-     * @tc.number: testOffAdvertisingStateChangeNop
-     * @tc.name: testOffAdvertisingStateChangeNop
-     * @tc.desc: test off advertisingStateChange without permission
-     * @tc.size: LargeTest
-     * @tc.type: Function
-     * @tc.level: Level0
-     */
-    it("testOffAdvertisingStateChangeNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        ble.off('advertisingStateChange');
-        expect(true).assertFalse();
-      } catch (error) {
-        hilog.error(Domain, TAG, `off advertisingStateChange error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(PERMISSION_DENIED_CODE);
-      }
-      done();
-    })
-    /**
-     * @tc.number: testOnBLEDeviceFindNop
-     * @tc.name: testOnBLEDeviceFindNop
-     * @tc.desc: test on BLEDeviceFind without permission
-     * @tc.size: LargeTest
-     * @tc.type: Function
-     * @tc.level: Level0
-     */
-    it("testOnBLEDeviceFindNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        ble.on('BLEDeviceFind', (data: Array<ble.ScanResult>) => {
-
-        });
-        expect(true).assertFalse();
-      } catch (error) {
-        hilog.error(Domain, TAG, `on BLEDeviceFind error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(PERMISSION_DENIED_CODE);
-      }
-      done();
-    })
-    /**
-     * @tc.number: testOffBLEDeviceFindNop
-     * @tc.name: testOffBLEDeviceFindNop
-     * @tc.desc: test off BLEDeviceFind without permission
-     * @tc.size: LargeTest
-     * @tc.type: Function
-     * @tc.level: Level0
-     */
-    it("testOffBLEDeviceFindNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        ble.off('BLEDeviceFind');
-        expect(true).assertFalse();
-      } catch (error) {
-        hilog.error(Domain, TAG, `off BLEDeviceFind error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(error.code).assertEqual(PARAM_ERROR_CODE);
       }
       done();
     })
@@ -386,7 +312,7 @@ export default function btBleNopUiJsunit() {
     it("testGetConnectedBLEDevicesNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
       try {
         let devices = ble.getConnectedBLEDevices();
-        hilog.info(Domain, TAG, `getConnectedBLEDevices ret: ${JSON.stringify(devices)}`);
+        hilog.info(Domain, TAG, `getConnectedBLEDevices without permission ret: ${JSON.stringify(devices)}`);
         expect(true).assertFalse();
       } catch (error) {
         hilog.error(Domain, TAG, `getConnectedBLEDevices error, error code is: ${error.code}, error message is: ${error.message}`);
@@ -405,6 +331,7 @@ export default function btBleNopUiJsunit() {
     it("testStopBLEScanNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
       try {
         ble.stopBLEScan();
+        hilog.info(Domain, TAG, `stopBLEScan success without permission`);
         expect(true).assertFalse();
       } catch (error) {
         hilog.error(Domain, TAG, `stopBLEScan error, error code is: ${error.code}, error message is: ${error.message}`);

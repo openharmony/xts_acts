@@ -17,6 +17,8 @@ import socket from '@ohos.bluetooth.socket';
 import hilog from '@ohos.hilog';
 
 const PERMISSION_DENIED_CODE = 201
+const PARAM_ERROR_CODE = 401
+const OPERATION_FAILED_CODE = 2900099
 const TAG: string = 'BtSocketTestTag';
 const Domain: number = 0x0000;
 
@@ -67,7 +69,7 @@ export default function btSocketNopUiJsunit() {
           })
         }
         let number = await functionSppListen();
-        hilog.info(Domain, TAG, `sppListen ${number}`);
+        hilog.info(Domain, TAG, `sppListen without permission ret = ${number}`);
         expect(true).assertFalse();
       }catch (error){
         hilog.error(Domain, TAG, `sppListen error, error code is: ${error.code}, error message is: ${error.message}`);

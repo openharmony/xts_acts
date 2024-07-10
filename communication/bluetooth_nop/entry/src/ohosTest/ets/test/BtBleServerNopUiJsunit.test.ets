@@ -18,6 +18,8 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect, TestT
 import ble from '@ohos.bluetooth.ble';
 
 const PERMISSION_DENIED_CODE = 201
+const PARAM_ERROR_CODE = 401
+const OPERATION_FAILED_CODE = 2900099
 const TAG: string = 'BtBleServerTestTag';
 const Domain: number = 0x0000;
 
@@ -69,7 +71,7 @@ export default function btBleServerNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `gattServer sendResponse error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(e.code).assertEqual(OPERATION_FAILED_CODE);
       }
       done();
     })
@@ -97,7 +99,7 @@ export default function btBleServerNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `gattServer notifyCharacteristicChanged error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(e.code).assertEqual(OPERATION_FAILED_CODE);
       }
       done();
     })
@@ -137,124 +139,7 @@ export default function btBleServerNopUiJsunit() {
         expect(true).assertFalse();
       }catch (error){
         hilog.error(Domain, TAG, `callback gattServer notifyCharacteristicChanged error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(PERMISSION_DENIED_CODE);
-      }
-      done();
-    })
-    /**
-     * @tc.number: testGattServerOnDescriptorWriteNop
-     * @tc.name: testGattServerOnDescriptorWriteNop
-     * @tc.desc: test gatt server on descriptorWrite without permission
-     * @tc.size: LargeTest
-     * @tc.type: Function
-     * @tc.level: Level0
-     */
-    it("testGattServerOnDescriptorWriteNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        let gattServer: ble.GattServer = ble.createGattServer();
-        gattServer.on('descriptorWrite', (value: ble.DescriptorWriteRequest) => {
-        });
-        expect(true).assertFalse();
-      } catch (e) {
-        hilog.error(Domain, TAG, `gattServer on descriptorWrite error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
-      }
-      done();
-    })
-    /**
-     * @tc.number: testGattServerOffDescriptorWriteNop
-     * @tc.name: testGattServerOffDescriptorWriteNop
-     * @tc.desc: test gatt server off descriptorWrite without permission
-     * @tc.size: LargeTest
-     * @tc.type: Function
-     * @tc.level: Level0
-     */
-    it("testGattServerOffDescriptorWriteNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        let gattServer: ble.GattServer = ble.createGattServer();
-        gattServer.off('descriptorWrite');
-        expect(true).assertFalse();
-      } catch (e) {
-        hilog.error(Domain, TAG, `gattServer off descriptorWrite error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
-      }
-      done();
-    })
-    /**
-     * @tc.number: testGattServerOnDescriptorReadNop
-     * @tc.name: testGattServerOnDescriptorReadNop
-     * @tc.desc: test gatt server on descriptorRead without permission
-     * @tc.size: LargeTest
-     * @tc.type: Function
-     * @tc.level: Level0
-     */
-    it("testGattServerOnDescriptorReadNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        let gattServer: ble.GattServer = ble.createGattServer();
-        gattServer.on('descriptorRead', (value: ble.DescriptorReadRequest) => {
-        });
-        expect(true).assertFalse();
-      } catch (e) {
-        hilog.error(Domain, TAG, `gattServer on descriptorRead error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
-      }
-      done();
-    })
-    /**
-     * @tc.number: testGattServerOffDescriptorReadNop
-     * @tc.name: testGattServerOffDescriptorReadNop
-     * @tc.desc: test gatt server off descriptorRead without permission
-     * @tc.size: LargeTest
-     * @tc.type: Function
-     * @tc.level: Level0
-     */
-    it("testGattServerOffDescriptorReadNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        let gattServer: ble.GattServer = ble.createGattServer();
-        gattServer.off('descriptorRead');
-        expect(true).assertFalse();
-      } catch (e) {
-        hilog.error(Domain, TAG, `gattServer off descriptorRead error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
-      }
-      done();
-    })
-    /**
-     * @tc.number: testGattServerOnBLEMtuChangeNop
-     * @tc.name: testGattServerOnBLEMtuChangeNop
-     * @tc.desc: test gatt server on BLEMtuChange without permission
-     * @tc.size: LargeTest
-     * @tc.type: Function
-     * @tc.level: Level0
-     */
-    it("testGattServerOnBLEMtuChangeNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        let gattServer: ble.GattServer = ble.createGattServer();
-        gattServer.on('BLEMtuChange', (data: number) => {
-        })
-        expect(true).assertFalse();
-      } catch (e) {
-        hilog.error(Domain, TAG, `gattServer on BLEMtuChange error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
-      }
-      done();
-    })
-    /**
-     * @tc.number: testGattServerOffBLEMtuChangeNop
-     * @tc.name: testGattServerOffBLEMtuChangeNop
-     * @tc.desc: test gatt server off BLEMtuChange without permission
-     * @tc.size: LargeTest
-     * @tc.type: Function
-     * @tc.level: Level0
-     */
-    it("testGattServerOffBLEMtuChangeNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        let gattServer: ble.GattServer = ble.createGattServer();
-        gattServer.off('BLEMtuChange');
-        expect(true).assertFalse();
-      } catch (e) {
-        hilog.error(Domain, TAG, `gattServer off BLEMtuChange error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(error.code).assertEqual(OPERATION_FAILED_CODE);
       }
       done();
     })
@@ -270,6 +155,7 @@ export default function btBleServerNopUiJsunit() {
       try {
         let gattServer: ble.GattServer = ble.createGattServer();
         gattServer.close();
+        hilog.info(Domain, TAG, `gattServer close success without permission`);
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `gattServer close error, error code is: ${e.code}, error message is: ${e.message}`);

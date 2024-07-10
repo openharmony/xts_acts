@@ -17,6 +17,8 @@ import access from '@ohos.bluetooth.access';
 import hilog from '@ohos.hilog';
 
 const PERMISSION_DENIED_CODE = 201
+const PARAM_ERROR_CODE = 401
+const OPERATION_FAILED_CODE = 2900099
 const TAG: string = 'BtAccessTestTag';
 const Domain: number = 0x0000;
 
@@ -53,7 +55,7 @@ export default function btAccessNopUiJsunit() {
     it("testGetStateNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
       try {
         let state =  access.getState()
-        hilog.info(Domain, TAG, `getState ret = ${state}`);
+        hilog.info(Domain, TAG, `getState without permission ret = ${state}`);
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `getState error, error code is: ${e.code}, error message is: ${e.message}`);

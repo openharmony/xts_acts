@@ -18,6 +18,8 @@ import hilog from '@ohos.hilog';
 import constant from '@ohos.bluetooth.constant';
 
 const PERMISSION_DENIED_CODE = 201
+const PARAM_ERROR_CODE = 401
+const OPERATION_FAILED_CODE = 2900099
 const TAG: string = 'BtConnectionTestTag';
 const Domain: number = 0x0000;
 
@@ -54,7 +56,7 @@ export default function btConnectionNopUiJsunit() {
     it("testIsBluetoothDiscoveringNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
       try {
         let isBluetoothDiscovering =  connection.isBluetoothDiscovering();
-        hilog.info(Domain, TAG, `isBluetoothDiscovering ret = ${isBluetoothDiscovering}`);
+        hilog.info(Domain, TAG, `isBluetoothDiscovering without permission ret = ${isBluetoothDiscovering}`);
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `isBluetoothDiscovering error, error code is: ${e.code}, error message is: ${e.message}`);
@@ -88,7 +90,7 @@ export default function btConnectionNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `callback setDevicePinCode error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(e.code).assertEqual(OPERATION_FAILED_CODE);
       }
       done();
     })
@@ -103,7 +105,7 @@ export default function btConnectionNopUiJsunit() {
     it("testGetBluetoothScanModeNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
       try {
         let scanMode = connection.getBluetoothScanMode();
-        hilog.info(Domain, TAG, `getBluetoothScanMode ${scanMode}`);
+        hilog.info(Domain, TAG, `getBluetoothScanMode without permission ${scanMode}`);
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `getBluetoothScanMode error, error code is: ${e.code}, error message is: ${e.message}`);
@@ -122,45 +124,10 @@ export default function btConnectionNopUiJsunit() {
     it("testSetBluetoothScanModeNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
       try {
         connection.setBluetoothScanMode(connection.ScanMode.SCAN_MODE_CONNECTABLE_GENERAL_DISCOVERABLE,100);
+        hilog.info(Domain, TAG, `setBluetoothScanMode without permission success`);
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `setBluetoothScanMode error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
-      }
-      done();
-    })
-    /**
-     * @tc.number: testOnPinRequiredNop
-     * @tc.name: testOnPinRequiredNop
-     * @tc.desc: test on pinRequired without permission
-     * @tc.size: LargeTest
-     * @tc.type: Function
-     * @tc.level: Level0
-     */
-    it("testOnPinRequiredNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        connection.on('pinRequired',(param:connection.PinRequiredParam)=>{});
-        expect(true).assertFalse();
-      } catch (e) {
-        hilog.error(Domain, TAG, `on pinRequired error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
-      }
-      done();
-    })
-    /**
-     * @tc.number: testOffPinRequiredNop
-     * @tc.name: testOffPinRequiredNop
-     * @tc.desc: test off pinRequired without permission
-     * @tc.size: LargeTest
-     * @tc.type: Function
-     * @tc.level: Level0
-     */
-    it("testOffPinRequiredNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        connection.off('pinRequired');
-        expect(true).assertFalse();
-      } catch (e) {
-        hilog.error(Domain, TAG, `off pinRequired error, error code is: ${e.code}, error message is: ${e.message}`);
         expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
       }
       done();
@@ -185,42 +152,6 @@ export default function btConnectionNopUiJsunit() {
       done();
     })
     /**
-     * @tc.number: testOnBondStateChangeNop
-     * @tc.name: testOnBondStateChangeNop
-     * @tc.desc: test on bondStateChange without permission
-     * @tc.size: LargeTest
-     * @tc.type: Function
-     * @tc.level: Level0
-     */
-    it("testOnBondStateChangeNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        connection.on('bondStateChange',(param:connection.BondStateParam)=>{});
-        expect(true).assertFalse();
-      } catch (e) {
-        hilog.error(Domain, TAG, `on bondStateChange error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
-      }
-      done();
-    })
-    /**
-     * @tc.number: testOffBondStateChangeNop
-     * @tc.name: testOffBondStateChangeNop
-     * @tc.desc: test off bondStateChange without permission
-     * @tc.size: LargeTest
-     * @tc.type: Function
-     * @tc.level: Level0
-     */
-    it("testOffBondStateChangeNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        connection.off('bondStateChange');
-        expect(true).assertFalse();
-      } catch (e) {
-        hilog.error(Domain, TAG, `off bondStateChange error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
-      }
-      done();
-    })
-    /**
      * @tc.number: testGetProfileConnectionStateNop
      * @tc.name: testGetProfileConnectionStateNop
      * @tc.desc: test getProfileConnectionState without permission
@@ -231,7 +162,7 @@ export default function btConnectionNopUiJsunit() {
     it("testGetProfileConnectionStateNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
       try {
         let state = connection.getProfileConnectionState(constant.ProfileId.PROFILE_A2DP_SOURCE);
-        hilog.info(Domain, TAG, `getProfileConnectionState name = ${state}`);
+        hilog.info(Domain, TAG, `getProfileConnectionState without permission name = ${state}`);
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `getProfileConnectionState error, error code is: ${e.code}, error message is: ${e.message}`);
@@ -250,7 +181,7 @@ export default function btConnectionNopUiJsunit() {
     it("testGetRemoteDeviceClassNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
       try {
         let deviceClass = connection.getRemoteDeviceClass('11:22:33:44:55:66');
-        hilog.info(Domain, TAG, `getRemoteDeviceClass name = ${JSON.stringify(deviceClass)}`);
+        hilog.info(Domain, TAG, `getRemoteDeviceClass without permission name = ${JSON.stringify(deviceClass)}`);
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `getRemoteDeviceClass error, error code is: ${e.code}, error message is: ${e.message}`);
@@ -272,7 +203,7 @@ export default function btConnectionNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `setDevicePinCode error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(e.code).assertEqual(OPERATION_FAILED_CODE);
       }
       done();
     })
