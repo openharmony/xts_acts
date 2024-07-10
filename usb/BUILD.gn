@@ -16,6 +16,9 @@ import("//build/ohos_var.gni")
 group("usb") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "usb_standard:ActsUsbJSApiTest" ]
+    deps = [
+      "usb_normal:ActsUsbNormalAPPJSApiTest",
+      "usb_standard:ActsUsbJSApiTest",
+    ]
   }
 }
