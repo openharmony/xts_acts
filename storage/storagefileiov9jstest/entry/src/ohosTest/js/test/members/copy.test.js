@@ -14,10 +14,11 @@
  */
 
 import {
-    fileIO, FILE_CONTENT, prepareFile, nextFileName, describe, it, expect
+    fileIO, FILE_CONTENT, prepareFile, nextFileName, describe, it, expect, prepare200MFile
   } from '../Common';
 import fileUri from '@ohos.file.fileuri';
 import featureAbility from '@ohos.ability.featureAbility';
+import fs from '@ohos.file.fs';
 const CONTENT = 'hello!!!';
 
 export default function fileIOCopy() {
@@ -513,6 +514,98 @@ describe('fileIO_fs_copy', function () {
       done();
     } catch (e) {
       console.log('fileIO_copy_async_014 has failed for ' + e.message + ', code: ' + e.code);
+      expect(false).assertTrue();
+    }
+  });
+
+  /**
+   * @tc.number SUB_BASIC_FM_FileAPI_FileIO_Copy_ASYNC_1500
+   * @tc.name fileIO_copy_async_015
+   * @tc.desc Test copy() interfaces.
+   * Test file copied successfully by path.Promise without CopyOptions, TaskSignal.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileIO_copy_async_015', 0, async function (done) {
+   let fpath = await featureAbility.getContext().getFilesDir() + '/fileIO_copy_async_015';
+   let destpath = fpath + 'dest';
+   expect(prepare200MFile(fpath)).assertTrue();
+   let srcDirUri = fileUri.getUriFromPath(fpath);
+   let dstDirUri = fileUri.getUriFromPath(destpath);
+   let copySignal = new fs.TaskSignal;
+   let stat1 = fileIO.statSync(fpath);
+   console.log('fileIO_copy_async_015 stat1: ' + stat1.size);
+   let progressListener = (progress) => {
+     console.info(`progressSize15: ${progress.processedSize}, totalSize15: ${progress.totalSize}`);
+     if (progress.processedSize / progress.totalSize > 0.5) {
+       copySignal.cancel();
+     }
+   }; 
+
+   let options = {
+     "progressListener" : progressListener,
+     "copySignal" : copySignal,
+   };
+   try {
+     await fs.copy(srcDirUri, dstDirUri, options);
+     expect(false).assertTrue();
+     
+   } catch (e) {
+     console.log('fileIO_copy_async_015 has failed for ' + e.message + ', code: ' + e.code);
+     let stat2 = fileIO.statSync(destpath);
+     console.log('fileIO_copy_async_015 stat2: ' + stat2.size);
+     expect(stat2.size < stat1.size).assertTrue();
+     expect(e.code == 13900049 && e.message == 'Operation canceled').assertTrue();
+     done();
+   }
+  }); 
+
+  /**
+   * @tc.number SUB_BASIC_FM_FileAPI_FileIO_Copy_ASYNC_1600
+   * @tc.name fileIO_copy_async_016
+   * @tc.desc Test copy() interfaces.
+   * Test file copied successfully by path.callback without CopyOptions, TaskSignal.
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 0
+   * @tc.require
+   */
+  it('fileIO_copy_async_016', 0, async function (done) {
+    let fpath = await featureAbility.getContext().getFilesDir() + '/fileIO_copy_async_016';
+    let destpath = fpath + 'dest';
+    expect(prepare200MFile(fpath)).assertTrue();
+    let srcDirUri = fileUri.getUriFromPath(fpath);
+    let dstDirUri = fileUri.getUriFromPath(destpath);
+    let copySignal = new fs.TaskSignal;
+    copySignal.onCancel();
+    let stat1 = fileIO.statSync(fpath);
+    console.log('fileIO_copy_async_016 stat1: ' + stat1.size);
+    let progressListener = (progress) => {
+      console.info(`progressSize16: ${progress.processedSize}, totalSize16: ${progress.totalSize}`);
+      if (progress.processedSize / progress.totalSize > 0.5) {
+        copySignal.cancel();
+      }
+    }; 
+ 
+    let options = {
+      "progressListener" : progressListener,
+      "copySignal" : copySignal,
+    };
+    try {
+      fs.copy(srcDirUri, dstDirUri, options, (err) => {
+        if (err) {
+          console.log('fileIO_copy_async_016 error package: ' + JSON.stringify(err));
+          let stat2 = fileIO.statSync(destpath);
+          console.log('fileIO_copy_async_016 stat2: ' + stat2.size);
+          expect(err.code == 13900049 && err.message == 'Operation canceled').assertTrue();
+          expect(stat2.size < stat1.size).assertTrue();
+        }
+        done();
+      });
+    } catch (e) {
+      console.log('fileIO_copy_async_016 has failed for ' + e.message + ', code: ' + e.code);
       expect(false).assertTrue();
     }
   });
