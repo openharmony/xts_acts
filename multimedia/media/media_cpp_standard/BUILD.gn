@@ -32,6 +32,7 @@ ohos_moduletest_suite("ActsAvcodecNdkTest") {
     "audioDecEncNdk/include",
     "videoDecEncNdk/include",
     "../../../../../../foundation/multimedia/audio_framework/interfaces/inner_api/native/audiocommon/include",
+    "../../../../../../foundation/multimedia/drm_framework/services/drm_service/ipc/",
     "../../../../../../foundation/graphic/graphic_2d/interfaces/inner_api/surface",
     "../../../../../../foundation/graphic/graphic_2d/interfaces/inner_api/common",
     "../../../../../../foundation/window/window_manager/interfaces/innerkits/wm",
