@@ -25,7 +25,7 @@ struct richEditorApi1 {
     Column() {
       RichEditor(this.options)
         .onReady(() => {
-          this.controller.addTextSpan('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+          this.controller.addTextSpan('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
             {
               style:
               {
