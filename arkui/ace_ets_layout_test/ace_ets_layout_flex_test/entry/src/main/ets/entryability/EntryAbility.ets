@@ -38,40 +38,6 @@ export default class EntryAbility extends UIAbility {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;
       }
-      let windowClass: window.Window | undefined = undefined;
-      windowStage.getMainWindow((err: BusinessError, data) => {
-        let errCode: number = err.code;
-        if (errCode) {
-          console.error('Failed to obtain the main window. Cause: ' + JSON.stringify(err));
-          return;
-        }
-        windowClass = data;
-
-        let isLayoutFullScreen = false;
-        try {
-          windowClass.setWindowLayoutFullScreen(isLayoutFullScreen, (err: BusinessError) => {
-            const errCode: number = err.code;
-            if (errCode) {
-              console.error(`Failed to set the window layout to full-screen mode. Cause code: ${err.code}, message: ${err.message}`);
-              return;
-            }
-            console.info('Succeeded in setting the window layout to full-screen mode.');
-          });
-        } catch (exception) {
-          console.error(`Failed to set the window layout to full-screen mode. Cause code: ${exception.code}, message: ${exception.message}`);
-        }
-
-        hilog.info(0x0000, 'testTag', 'Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
-        try {
-          let properties : window.WindowProperties = windowClass.getWindowProperties();
-          let wRect : window.Rect =  properties.windowRect;
-          globalThis.winLeft = wRect.left;
-          globalThis.winTop = wRect.top;
-          hilog.info(0x0000, 'testTag', 'Succeeded get winLeft:' + globalThis.winLeft + ',winTop:' + globalThis.winTop );
-        } catch (exception) {
-          hilog.error(0x0000, 'testTag', 'Failed to obtain the window properties. Cause: ' + JSON.stringify(exception));
-        }
-      })
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content.');
     });
   }
