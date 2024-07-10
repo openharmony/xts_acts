@@ -40,7 +40,7 @@ struct HoverEffect {
         .lineHeight(25)
         .border({ width: 1 })
         .padding(10)
-        .hoverEffect(1/*HoverEffect.Scale*/)
+        .hoverEffect(2/*HoverEffect.Scale*/)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
         .key("ScaleText")
@@ -60,7 +60,7 @@ struct HoverEffect {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .hoverEffect(2/*HoverEffect.Highlight*/)
+        .hoverEffect(3/*HoverEffect.Highlight*/)
         .key("HighlightText")
         .copyOption(0)
     }
