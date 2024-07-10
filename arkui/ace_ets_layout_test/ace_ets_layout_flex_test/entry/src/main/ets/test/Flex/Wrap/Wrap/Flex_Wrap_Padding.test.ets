@@ -210,13 +210,13 @@ export default function flex_Wrap_PaddingTest() {
       expect(Math.abs(Math.round(thirdText.top) - Math.round(secondText.bottom)) <= 1).assertTrue();
       expect(Math.abs(Math.round(thirdText.left) - Math.round(firstText.left)) <= 1).assertTrue();
 
-      expect(Math.abs(Math.round(firstText.bottom - firstText.top) - b) <= Math.round(vp2px(50))).assertTrue();
-      expect(Math.abs(Math.round(secondText.bottom - secondText.top) - b) <= Math.round(vp2px(100))).assertTrue();
-      expect(Math.abs(Math.round(thirdText.bottom - thirdText.top) - b) <= Math.round(vp2px(150))).assertTrue();
-      expect(Math.abs(Math.round(firstText.right - firstText.left) - b) <= Math.round(vp2px(150))).assertTrue();
+      expect(Math.abs(Math.round(firstText.bottom - firstText.top) - Math.round(vp2px(50))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(secondText.bottom - secondText.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(thirdText.bottom - thirdText.top) - Math.round(vp2px(150))) <= 1).assertTrue();
 
-      expect(Math.round(firstText.right - firstText.left)).assertEqual(Math.round(secondText.right - secondText.left));
-      expect(Math.round(firstText.right - firstText.left)).assertEqual(Math.round(thirdText.right - thirdText.left));
+      expect(Math.abs(Math.round(firstText.right - firstText.left) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.absMath.round(firstText.right - firstText.left) - Math.round(secondText.right - secondText.left)) <= 1).assertTrue();
+      expect(Math.absMath.round(firstText.right - firstText.left) - Math.round(thirdText.right - thirdText.left)) <= 1).assertTrue();
 
       expect(Math.abs(Math.round(flexContainer.bottom - thirdText.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
       expect(Math.abs(Math.round(flexContainer.right - secondText.right) - Math.round(vp2px(170))) <= 1).assertTrue();
