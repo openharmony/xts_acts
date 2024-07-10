@@ -71,7 +71,9 @@ export default function PanGesture3() {
       console.info('PanGesture3_0200 START');
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
-      await driver.swipe(vp2px(100),vp2px(100),vp2px(500),vp2px(500),600);
+      let colum = CommonFunc.getComponentRectOnScreen('PanGesture3');
+      let top = colum.top
+      await driver.swipe(Math.round(globalThis.winLeft + 50), Math.round(top + 50), Math.round(globalThis.winLeft + 450), Math.round(top + 450))
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('PanGesture3_1');
       let obj = JSON.parse(strJson);

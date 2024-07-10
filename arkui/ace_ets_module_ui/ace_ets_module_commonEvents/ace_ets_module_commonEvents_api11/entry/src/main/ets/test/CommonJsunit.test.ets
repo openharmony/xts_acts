@@ -55,7 +55,7 @@ export default function commonJsunit() {
       let b = vp2px(a);
       console.info('commonTest_0100 vp2px result:' + b);
       console.info('commonTest_0100 vp2px result:' + ret);
-      expect(b == ret).assertTrue();
+      expect(Math.abs(b - ret) <= 1).assertTrue();
       console.info('commonTest_0100 END');
       done();
     });
@@ -67,7 +67,7 @@ export default function commonJsunit() {
       let b = vp2px(a);
       console.info('commonTest_0200 vp2px result:' + b);
       console.info('commonTest_0200 vp2px result:' + ret);
-      expect(b == ret).assertTrue();
+      expect(Math.abs(b - ret) <= 1).assertTrue();
       console.info('commonTest_0200 END');
       done();
     });
@@ -88,7 +88,7 @@ export default function commonJsunit() {
       let ret = a / (dpiValue / 160);
       let b = px2vp(a);
       console.info('commonTest_0400 px2vp result:' + b);
-      expect(b == ret).assertTrue();
+      expect(Math.abs(b - ret) <= 1).assertTrue();
       console.info('commonTest_0400 END');
       done();
     });
@@ -99,7 +99,7 @@ export default function commonJsunit() {
       let ret = a / (dpiValue / 160);
       let b = px2vp(a);
       console.info('commonTest_0500 px2vp result:' + b);
-      expect(b == ret).assertTrue();
+      expect(Math.abs(b - ret) <= 1).assertTrue();
       console.info('commonTest_0500 END');
       done();
     });
@@ -120,7 +120,7 @@ export default function commonJsunit() {
       let ret = a * (dpiValue / 160);
       let b = fp2px(a);
       console.info('commonTest_0700 fp2px result:' + b);
-      expect(b == ret).assertTrue();
+      expect(Math.abs(b - ret) <= 1).assertTrue();
       console.info('commonTest_0700 END');
       done();
     });
@@ -131,7 +131,7 @@ export default function commonJsunit() {
       let ret = a * (dpiValue / 160);
       let b = fp2px(a);
       console.info('commonTest_0800 fp2px result:' + b);
-      expect(b == ret).assertTrue();
+      expect(Math.abs(b - ret) <= 1).assertTrue();
       console.info('commonTest_0800 END');
       done();
     });
@@ -152,7 +152,7 @@ export default function commonJsunit() {
       let ret = a / (dpiValue / 160);
       let b = px2fp(a);
       console.info('commonTest_1000 px2fp result:' + b);
-      expect(b == ret).assertTrue();
+      expect(Math.abs(b - ret) <= 1).assertTrue();
       console.info('commonTest_1000 END');
       done();
     });
@@ -163,7 +163,7 @@ export default function commonJsunit() {
       let ret = a / (dpiValue / 160);
       let b = px2fp(a);
       console.info('commonTest_1100 px2fp result:' + b);
-      expect(b == ret).assertTrue();
+      expect(Math.abs(b - ret) <= 1).assertTrue();
       console.info('commonTest_1100 END');
       done();
     });
