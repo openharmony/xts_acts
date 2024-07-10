@@ -215,8 +215,8 @@ export default function flex_Wrap_PaddingTest() {
       expect(Math.abs(Math.round(thirdText.bottom - thirdText.top) - Math.round(vp2px(150))) <= 1).assertTrue();
 
       expect(Math.abs(Math.round(firstText.right - firstText.left) - Math.round(vp2px(150))) <= 1).assertTrue();
-      expect(Math.absMath.round(firstText.right - firstText.left) - Math.round(secondText.right - secondText.left)) <= 1).assertTrue();
-      expect(Math.absMath.round(firstText.right - firstText.left) - Math.round(thirdText.right - thirdText.left)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(firstText.right - firstText.left) - Math.round(secondText.right - secondText.left)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(firstText.right - firstText.left) - Math.round(thirdText.right - thirdText.left)) <= 1).assertTrue();
 
       expect(Math.abs(Math.round(flexContainer.bottom - thirdText.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
       expect(Math.abs(Math.round(flexContainer.right - secondText.right) - Math.round(vp2px(170))) <= 1).assertTrue();
