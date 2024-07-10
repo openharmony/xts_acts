@@ -81,7 +81,7 @@ export default function bindMenu() {
       let density = await driver.getDisplayDensity();
       console.log("[bindMenu_0100] density: " + JSON.stringify(density))
       console.log("[bindMenu_0100] density.x: " + JSON.stringify(density.x))
-      if (JSON.stringify(density.x) == '2700') {
+      if (JSON.stringify(density.x) == '2700' || JSON.stringify(density.x) == '4752') {
         expect(properties.type).assertEqual(0)
       } else {
         expect(properties.type).assertEqual(1)
