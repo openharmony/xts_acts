@@ -753,7 +753,8 @@ void *ClientTask(void *arg)
     return nullptr;
 }
 
-void *ClientTask4(void *arg) {
+void *ClientTask4(void *arg)
+{
     int sock = socket(AF_INET, SOCK_STREAM, PARAM_0);
     pthread_barrier_wait(&g_barrier);
     if (sock >= PARAM_0) {
@@ -771,7 +772,7 @@ static napi_value Accept(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
     int ret = PARAM_1;
-    int rets = pthread_barrier_init(&g_barrier, 0, 2);
+    int rets = pthread_barrier_init(&g_barrier, nullptr, PARAM_2);
     if (rets != 0) {
         napi_create_int32(env, PARAM_5, &result);
         return result;
@@ -802,13 +803,12 @@ static napi_value Accept(napi_env env, napi_callback_info info)
                 pthread_barrier_wait(&g_barrier);
                 struct sockaddr_in clnAddr = {PARAM_0};
                 socklen_t clnAddrLen = sizeof(clnAddr);
-                int sClient = accept(sockfd, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&clnAddr)), &clnAddrLen);
-                if (sClient > 0) {
-                    ret = PARAM_0;
-                }
+                int sClient = accept(sockfd,
+                    reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&clnAddr)), &clnAddrLen);
+                ret = (sClient > 0) ? PARAM_0 : PARAM_1;
                 close(sClient);
                 close(sockfd);
-                pthread_join(cli, NULL);
+                pthread_join(cli, nullptr);
                 pthread_barrier_destroy(&g_barrier);
                 napi_create_int32(env, ret, &result);
                 return result;
@@ -817,7 +817,7 @@ static napi_value Accept(napi_env env, napi_callback_info info)
     }
     close(sockfd);
     pthread_barrier_wait(&g_barrier);
-    pthread_join(cli, NULL);
+    pthread_join(cli, nullptr);
     pthread_barrier_destroy(&g_barrier);
     napi_create_int32(env, ret, &result);
     return result;
@@ -827,7 +827,7 @@ static napi_value Accept4(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
     int ret = PARAM_1;
-    int rets = pthread_barrier_init(&g_barrier, 0, 2);
+    int rets = pthread_barrier_init(&g_barrier, nullptr, PARAM_2);
     if (rets != 0) {
         napi_create_int32(env, PARAM_5, &result);
         return result;
@@ -851,7 +851,8 @@ static napi_value Accept4(napi_env env, napi_callback_info info)
             srvAddr.sin_family = AF_INET;
             srvAddr.sin_addr.s_addr = inet_addr(gLocalHost);
             srvAddr.sin_port = htons(PORT_2);
-            rets = bind(sListen, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&srvAddr)),sizeof(srvAddr));
+            rets = bind(sListen,
+                reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&srvAddr)), sizeof(srvAddr));
             if (rets != PARAM_0) {
                 ret = PARAM_3;
             } else {
@@ -863,13 +864,14 @@ static napi_value Accept4(napi_env env, napi_callback_info info)
                     struct sockaddr_in clnAddr = {0};
                     socklen_t clnAddrLen = sizeof(clnAddr);
                     int sClient = -PARAM_1;
-                    sClient = accept4(sListen, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&clnAddr)),&clnAddrLen, PARAM_0);
+                    sClient = accept4(sListen,
+                        reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&clnAddr)), &clnAddrLen, PARAM_0);
                     if (sClient > 0) {
                         ret = PARAM_0;
                     }
                     close(sClient);
                     close(sListen);
-                    pthread_join(cli, NULL);
+                    pthread_join(cli, nullptr);
                     pthread_barrier_destroy(&g_barrier);
                     napi_create_int32(env, ret, &result);
                     return result;
@@ -879,7 +881,7 @@ static napi_value Accept4(napi_env env, napi_callback_info info)
     }
     close(sListen);
     pthread_barrier_wait(&g_barrier);
-    pthread_join(cli, NULL);
+    pthread_join(cli, nullptr);
     pthread_barrier_destroy(&g_barrier);
     napi_create_int32(env, ret, &result);
     return result;
