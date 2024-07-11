@@ -53,7 +53,7 @@ export default function CONTENT_FIRST_APITest() {
       let CONTENT_FIRST = getInspectorByKey('CONTENT_FIRST');
       console.info("[CONTENT_FIRST_APITest_0100] Tabs animationMode attrs is: " + JSON.stringify(JSON.parse(CONTENT_FIRST).$attrs));
       console.info("[CONTENT_FIRST_APITest_0100] Tabs animationMode attrs2 is: " + JSON.stringify(JSON.parse(CONTENT_FIRST)));
-      expect(JSON.parse(CONTENT_FIRST).$attrs.animationMode).assertEqual('CONTENT_FIRST');
+      expect(JSON.parse(CONTENT_FIRST).$attrs.animationMode).assertEqual('AnimationMode.CONTENT_FIRST');
       console.info('[CONTENT_FIRST_APITest_0100] END');
       done();
     });

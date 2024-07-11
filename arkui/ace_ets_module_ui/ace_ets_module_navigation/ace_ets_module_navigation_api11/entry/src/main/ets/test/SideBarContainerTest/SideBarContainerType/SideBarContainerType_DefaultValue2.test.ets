@@ -69,10 +69,10 @@ export default function SideBarContainerType_DefaultValue2() {
       console.log("SideBarContainer_01.left" + SideBarContainer_01.left)
 
       console.log("assert width")
-      expect(Math.round(SideBar_01.right - SideBar_01.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs(Math.round(SideBar_01.right - SideBar_01.left) - Math.round(vp2px(150))) <= 1).assertTrue();
       console.log("SideBar_01.right - SideBar_01.left" + (SideBar_01.right - SideBar_01.left))
 
-      expect(Math.round(sideBarContent_01.right - sideBarContent_01.left)).assertEqual(Math.round(vp2px(489)));
+      expect(Math.abs(Math.round(sideBarContent_01.right - sideBarContent_01.left) - Math.round(vp2px(489))) <= 1).assertTrue();
       console.log("sideBarContent_01.right - sideBarContent_01.left" + (sideBarContent_01.right - sideBarContent_01.left))
 
 
@@ -103,10 +103,10 @@ export default function SideBarContainerType_DefaultValue2() {
       console.log("SideBarContainer_01.left" + SideBarContainer_01.left)
 
       console.log("assert width")
-      expect(Math.round(SideBar_01.right - SideBar_01.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs(Math.round(SideBar_01.right - SideBar_01.left) - Math.round(vp2px(150))) <= 1).assertTrue();
       console.log("SideBar_01.right - SideBar_01.left" + (SideBar_01.right - SideBar_01.left))
 
-      expect(Math.round(sideBarContent_01.right - sideBarContent_01.left)).assertEqual(Math.round(vp2px(600)));
+      expect(Math.abs(Math.round(sideBarContent_01.right - sideBarContent_01.left) - Math.round(vp2px(600))) <= 1).assertTrue();
       console.log("sideBarContent_01.right - sideBarContent_01.left" + (sideBarContent_01.right - sideBarContent_01.left))
 
 

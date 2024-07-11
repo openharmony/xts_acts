@@ -52,7 +52,7 @@ export default function NO_ANIMATION_APITest() {
       await CommonFunc.sleep(1000);
       let NO_ANIMATION = getInspectorByKey('NO_ANIMATION');
       console.info("[NO_ANIMATION_APITest_0100] Tabs animationMode attrs is: " + JSON.stringify(JSON.parse(NO_ANIMATION).$attrs));
-      expect(JSON.parse(NO_ANIMATION).$attrs.animationMode).assertEqual('NO_ANIMATION');
+      expect(JSON.parse(NO_ANIMATION).$attrs.animationMode).assertEqual('AnimationMode.NO_ANIMATION');
       console.info('[NO_ANIMATION_APITest_0100] END');
       done();
     });

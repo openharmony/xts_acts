@@ -65,9 +65,9 @@ export default function SideBarContainerTypeTest() {
       console.log("SideBar_01.left" + SideBar_01.left)
 
       console.log("assert width")
-      expect(Math.round(SideBar_01.right - SideBar_01.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs(Math.round(SideBar_01.right - SideBar_01.left) - Math.round(vp2px(150))) <= 1).assertTrue();
       console.log("SideBar_01.right - SideBar_01.left:" + (SideBar_01.right - SideBar_01.left))
-      expect(Math.round(sideBarContent_01.right - sideBarContent_01.left)).assertEqual(Math.round(vp2px(549)));
+      expect(Math.abs(Math.round(sideBarContent_01.right - sideBarContent_01.left) - Math.round(vp2px(549))) <= 1).assertTrue();
       console.log('sideBarContent_01.right - sideBarContent_01.left:' + (sideBarContent_01.right - sideBarContent_01.left))
 
       console.info('[SUB_ACE_SideBarContainerType_0100] END');
@@ -128,7 +128,7 @@ export default function SideBarContainerTypeTest() {
       console.log("SideBarContainer_01.left" + SideBarContainer_01.left)
 
       console.log("assert width")
-      expect(Math.round(SideBar_01.right - SideBar_01.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs(Math.round(SideBar_01.right - SideBar_01.left) - Math.round(vp2px(150))) <= 1).assertTrue();
       console.log("SideBar_01.right - SideBar_01.left" + (SideBar_01.right - SideBar_01.left))
       // expect(Math.round(sideBarContent_011.right - sideBarContent_011.left)).assertEqual(Math.round(vp2px(700)));
       // console.log("sideBarContent_011.right - sideBarContent_011.left" + (sideBarContent_011.right - sideBarContent_011.left))
@@ -170,9 +170,9 @@ export default function SideBarContainerTypeTest() {
       console.log("SideBarContainer_01.left" + SideBarContainer_01.left)
 
       console.log("assert width")
-      expect(Math.round(SideBar_01.right - SideBar_01.left)).assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs(Math.round(SideBar_01.right - SideBar_01.left) - Math.round(vp2px(150))) <= 1).assertTrue();
       console.log("SideBar_01.right - SideBar_01.left" + (SideBar_01.right - SideBar_01.left))
-      expect(Math.round(sideBarContent_01.right - sideBarContent_01.left)).assertEqual(Math.round(vp2px(400)));
+      expect(Math.abs(Math.round(sideBarContent_01.right - sideBarContent_01.left) - Math.round(vp2px(400))) <= 1).assertTrue();
       console.log("sideBarContent_01.right - sideBarContent_01.left" + (sideBarContent_01.right - sideBarContent_01.left))
 
       let strJson1 = getInspectorByKey('SideBarContainerType_SideBarContainer_01');

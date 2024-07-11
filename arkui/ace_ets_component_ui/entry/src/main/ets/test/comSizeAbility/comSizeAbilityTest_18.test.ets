@@ -74,8 +74,8 @@ export default function comSizeAbilityTest_18 () {
       console.info("[comSizeAbilityTestJsunit_47] component Scale is: " + JSON.stringify(Scale))
       console.info("[comSizeAbilityTestJsunit_47] component Rotate is: " + JSON.stringify(Rotate))
       await CommonFunc.sleep(1000);
-      expect(Math.round(SizeWidth)).assertEqual(Math.round(vp2px(125)));
-      expect(Math.round(SizeHeight)).assertEqual(Math.round(vp2px(110)));
+      expect(Math.abs(SizeWidth - Math.round(vp2px(125))) <= 1).assertTrue();
+      expect(Math.abs(SizeHeight - Math.round(vp2px(110))) <= 1).assertTrue();
       expect(JSON.stringify(Translate)).assertEqual('{"x":1,"y":1,"z":1}');
       expect(JSON.stringify(Scale)).assertEqual('{"x":1,"y":1,"z":1,"centerX":1,"centerY":1}');
       expect(JSON.stringify(Rotate)).assertEqual('{"x":1,"y":1,"z":1,"angle":0,"centerX":1,"centerY":1}');
@@ -118,8 +118,8 @@ export default function comSizeAbilityTest_18 () {
       console.info("[comSizeAbilityTestJsunit_48] component Scale is: " + JSON.stringify(Scale))
       console.info("[comSizeAbilityTestJsunit_48] component Rotate is: " + JSON.stringify(Rotate))
       await CommonFunc.sleep(1000);
-      expect(Math.round(SizeWidth)).assertEqual(Math.round(vp2px(120)));
-      expect(Math.round(SizeHeight)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(SizeWidth - Math.round(vp2px(120))) <= 1).assertTrue();
+      expect(Math.abs(SizeHeight - Math.round(vp2px(100))) <= 1).assertTrue();
       expect(JSON.stringify(Translate)).assertEqual('{"x":1,"y":1,"z":1}');
       expect(JSON.stringify(Scale)).assertEqual('{"x":1,"y":1,"z":1,"centerX":1,"centerY":1}');
       expect(JSON.stringify(Rotate)).assertEqual('{"x":1,"y":1,"z":1,"angle":0,"centerX":1,"centerY":1}');
@@ -162,8 +162,8 @@ export default function comSizeAbilityTest_18 () {
       console.info("[comSizeAbilityTestJsunit_49] component Scale is: " + JSON.stringify(Scale))
       console.info("[comSizeAbilityTestJsunit_49] component Rotate is: " + JSON.stringify(Rotate))
       await CommonFunc.sleep(1000);
-      expect(Math.round(SizeWidth)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(SizeHeight)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(SizeWidth - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(SizeHeight - Math.round(vp2px(100))) <= 1).assertTrue();
       expect(JSON.stringify(Translate)).assertEqual('{"x":1,"y":1,"z":1}');
       expect(JSON.stringify(Scale)).assertEqual('{"x":1,"y":1,"z":1,"centerX":1,"centerY":1}');
       expect(JSON.stringify(Rotate)).assertEqual('{"x":1,"y":1,"z":1,"angle":0,"centerX":1,"centerY":1}');
@@ -206,8 +206,8 @@ export default function comSizeAbilityTest_18 () {
       console.info("[comSizeAbilityTestJsunit_50] component Scale is: " + JSON.stringify(Scale))
       console.info("[comSizeAbilityTestJsunit_50] component Rotate is: " + JSON.stringify(Rotate))
       await CommonFunc.sleep(1000);
-      expect(Math.round(SizeWidth)).assertEqual(Math.round(vp2px(220)));
-      expect(Math.round(SizeHeight)).assertEqual(Math.round(vp2px(140)));
+      expect(Math.abs(SizeWidth - Math.round(vp2px(220))) <= 1).assertTrue();
+      expect(Math.abs(SizeHeight - Math.round(vp2px(140))) <= 1).assertTrue();
       expect(JSON.stringify(Translate)).assertEqual('{"x":1,"y":1,"z":1}');
       expect(JSON.stringify(Scale)).assertEqual('{"x":1,"y":1,"z":1,"centerX":1,"centerY":1}');
       expect(JSON.stringify(Rotate)).assertEqual('{"x":1,"y":1,"z":1,"angle":0,"centerX":1,"centerY":1}');

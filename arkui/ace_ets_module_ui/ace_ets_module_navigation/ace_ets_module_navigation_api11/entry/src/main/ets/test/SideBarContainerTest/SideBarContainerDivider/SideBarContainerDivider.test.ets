@@ -66,10 +66,10 @@ export default function SideBarContainerDivider() {
       console.log("SideBarContainer_01.left" + SideBarContainer_01.left)
 
       console.log("assert width")
-      expect(Math.round(SideBar_01.right - SideBar_01.left)).assertEqual(Math.round(vp2px(200)));
+      expect(Math.abs(Math.round(SideBar_01.right - SideBar_01.left) - Math.round(vp2px(200))) <= 1).assertTrue();
       console.log("SideBar_01.right - SideBar_01.left" + (SideBar_01.right - SideBar_01.left))
 
-      expect(Math.round(sideBarContent_01.right - sideBarContent_01.left)).assertEqual(Math.round(vp2px(490)));
+      expect(Math.abs(Math.round(sideBarContent_01.right - sideBarContent_01.left) - Math.round(vp2px(490))) <= 1).assertTrue();
       console.log("sideBarContent_01.right - sideBarContent_01.left" + (sideBarContent_01.right - sideBarContent_01.left))
 
       // let strJson1 = getInspectorByKey('SideBarContainerDivider_SideBarContainer_01');

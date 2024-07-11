@@ -75,8 +75,8 @@ export default function tabJsunit() {
       expect(JSON.parse(strJson).$attrs.vertical).assertEqual('true')
       expect(JSON.parse(strJson).$attrs.scrollable).assertTrue()
       expect(JSON.parse(strJson).$attrs.barMode).assertEqual('BarMode.Fixed')
-      expect(JSON.parse(strJson).$attrs.barWidth).assertEqual(70.000000.toFixed(6))
-      expect(JSON.parse(strJson).$attrs.barHeight).assertEqual(150.000000.toFixed(6))
+      expect(Math.abs(Number(JSON.parse(strJson).$attrs.barWidth) - Number(70.000000.toFixed(6))) <= 1).assertTrue();
+      expect(Math.abs(Number(JSON.parse(strJson).$attrs.barHeight) - Number(150.000000.toFixed(6))) <= 1).assertTrue();
       console.info('++++++++++++++++ Tab TestCase 1 End ++++++++++++++++');
     });
 

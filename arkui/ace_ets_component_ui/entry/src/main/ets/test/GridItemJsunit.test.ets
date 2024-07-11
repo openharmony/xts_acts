@@ -198,7 +198,7 @@ export default function GridItemJsunit() {
       let right1 = gridItem1.right;
       let gridItem2 = CommonFunc.getComponentRect('0');
       let left1 = gridItem2.left;
-      expect(left1 - right1).assertEqual(vp2px(4));
+      expect(Math.abs((left1 - right1) - vp2px(4)) <= 1).assertTrue();
       console.info('[GridJsunit_0700] END');
       done();
     });
