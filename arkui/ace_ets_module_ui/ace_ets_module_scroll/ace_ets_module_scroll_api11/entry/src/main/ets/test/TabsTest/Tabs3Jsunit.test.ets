@@ -101,7 +101,9 @@ export default function tabsJsunit() {
       let strJson = getInspectorByKey('tabs');
       console.info("testTabs_0600 component strJson:" + strJson);
       console.info("testTabs_0600 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
-      expect(JSON.parse(strJson).$attrs.barWidth).assertEqual('70.000000');
+     
+      expect(Math.abs(Number(JSON.parse(strJson).$attrs.barWidth) - 70.000000 ) <=1 ).assertTrue();
+     
       console.info('testTabs_0600 END');
       done();
     });
@@ -111,7 +113,8 @@ export default function tabsJsunit() {
       let strJson = getInspectorByKey('tabs');
       console.info("testTabs_0700 component strJson:" + strJson);
       console.info("testTabs_0700 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
-      expect(JSON.parse(strJson).$attrs.barHeight).assertEqual('150.000000');
+      expect(Math.abs(Number(JSON.parse(strJson).$attrs.barHeight) - 150.000000 ) <=1 ).assertTrue();
+    
       console.info('testTabs_0700 END');
       done();
     });

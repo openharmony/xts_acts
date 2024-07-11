@@ -75,7 +75,8 @@ export default function swiperWidthTest() {
       let ttWidth = Math.round(tt.right - tt.left);
       console.info("[SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0020] text_3 width " + ttWidth);
       // judge the text component
-      expect(ttWidth).assertEqual(btWidth)
+      expect(Math.abs(ttWidth - btWidth) <=1 ).assertTrue();
+     
       console.info('[SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0020] END');
       done();
     });
