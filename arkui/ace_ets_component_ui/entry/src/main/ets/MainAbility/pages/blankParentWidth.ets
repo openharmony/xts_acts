@@ -19,14 +19,14 @@ import {MessageManager,Callback} from '../utils/MessageManager';
 struct BlankParentWidth {
   @State colorString : string = "#fc7fae53"
   @State minWith: string = '120'
-  messageManager:MessageManager = new MessageManager()
+  messageManager:MessageManager<string> = new MessageManager()
 
   onPageShow() {
     console.info('blankParentWidth onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<string> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'blankColor') {
           this.colorString = message.value

@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { expect, it, afterEach, afterAll, beforeEach, beforeAll, describe } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import componentUtils from '@ohos.arkui.componentUtils';
 export default function comSizeAbilityTest_03 () {
-  describe('comSizeAbilityTestJsunit', function () {
-    beforeEach(async function (done) {
+  describe('comSizeAbilityTestJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("comSizeAbilityTestJsunit beforeEach start")
-      let options = {
-        uri: 'MainAbility/pages/comSizeAbility/comSizeAbilityTest_03'
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/comSizeAbility/comSizeAbilityTest_03'
       }
       try {
         router.clear()
@@ -46,7 +46,7 @@ export default function comSizeAbilityTest_03 () {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_07', 0, async  function (done) {
+    it('comSizeAbilityTestJsunit_07', 0, async  (done: Function) => {
       console.info('comSizeAbilityTestJsunit_07 START')
       await CommonFunc.sleep(1000);
       let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById("Circle_Size");
@@ -90,7 +90,7 @@ export default function comSizeAbilityTest_03 () {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_08', 0, async  function (done) {
+    it('comSizeAbilityTestJsunit_08', 0, async  (done: Function) => {
       console.info('comSizeAbilityTestJsunit_08 START')
       await CommonFunc.sleep(1000);
       let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById("Column_Size");
@@ -134,7 +134,7 @@ export default function comSizeAbilityTest_03 () {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_09', 0, async  function (done) {
+    it('comSizeAbilityTestJsunit_09', 0, async  (done: Function) => {
       console.info('comSizeAbilityTestJsunit_09 START')
       await CommonFunc.sleep(1000);
       let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById("Counter_Size");
@@ -178,7 +178,7 @@ export default function comSizeAbilityTest_03 () {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_10', 0, async  function (done) {
+    it('comSizeAbilityTestJsunit_10', 0, async  (done: Function) => {
       console.info('comSizeAbilityTestJsunit_10 START')
       await CommonFunc.sleep(1000);
       let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById("Divider_Size");

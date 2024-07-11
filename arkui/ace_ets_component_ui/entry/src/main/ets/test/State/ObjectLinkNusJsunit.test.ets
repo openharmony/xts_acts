@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
 export default function ObjectLinkNusJsunit() {
-  describe('ObjectLinkNusJsunit', function () {
-    beforeEach(async function (done) {
+  describe('ObjectLinkNusJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("ObjectLinkNusJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/ObjectLinkNus',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/ObjectLinkNus',
       }
       try {
         router.clear();
@@ -42,16 +42,16 @@ export default function ObjectLinkNusJsunit() {
       }
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
-      router.back({uri:"MainAbility/pages/index/index"});
+      router.back({url:"MainAbility/pages/index/index"});
     });
 
-    it('ObjectLinkNusJsunit_0100', 0, async function (done) {
+    it('ObjectLinkNusJsunit_0100', 0, async (done: Function) => {
 
       console.info('ObjectLinkNusJsunit_0100 START');
       let strJson = getInspectorByKey('str_obl');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ObjectLinkNusJsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ObjectLinkNusJsunit_0100] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("hello");
@@ -59,7 +59,7 @@ export default function ObjectLinkNusJsunit() {
       done();
     });
 
-    it('ObjectLinkNusJsunit_0200', 0, async function (done) {
+    it('ObjectLinkNusJsunit_0200', 0, async (done: Function) => {
 
       console.info('ObjectLinkNusJsunit_0200 START');
       let driver = await UiDriver.create()
@@ -67,7 +67,7 @@ export default function ObjectLinkNusJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('str_obl');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ObjectLinkNusJsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[ObjectLinkNusJsunit_0200] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("harmony");
@@ -75,11 +75,11 @@ export default function ObjectLinkNusJsunit() {
       done();
     });
 
-    it('ObjectLinkNusJsunit_0300', 0, async function (done) {
+    it('ObjectLinkNusJsunit_0300', 0, async (done: Function) => {
 
       console.info('ObjectLinkNusJsunit_0300 START');
       let strJson = getInspectorByKey('num_obl');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ObjectLinkNusJsunit_0300] component obj is: " + JSON.stringify(obj));
       console.info("[ObjectLinkNusJsunit_0300] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("0");
@@ -87,7 +87,7 @@ export default function ObjectLinkNusJsunit() {
       done();
     });
 
-    it('ObjectLinkNusJsunit_0400', 0, async function (done) {
+    it('ObjectLinkNusJsunit_0400', 0, async (done: Function) => {
 
       console.info('ObjectLinkNusJsunit_0400 START');
       let driver = await UiDriver.create()
@@ -95,7 +95,7 @@ export default function ObjectLinkNusJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('num_obl');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ObjectLinkNusJsunit_0400] component obj is: " + JSON.stringify(obj));
       console.info("[ObjectLinkNusJsunit_0400] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("3");
@@ -103,11 +103,11 @@ export default function ObjectLinkNusJsunit() {
       done();
     });
 
-    it('ObjectLinkNusJsunit_0500', 0, async function (done) {
+    it('ObjectLinkNusJsunit_0500', 0, async (done: Function) => {
 
       console.info('ObjectLinkNusJsunit_0500 START');
       let strJson = getInspectorByKey('bon_obl');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ObjectLinkNusJsunit_0500] component obj is: " + JSON.stringify(obj));
       console.info("[ObjectLinkNusJsunit_0500] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("true");
@@ -115,7 +115,7 @@ export default function ObjectLinkNusJsunit() {
       done();
     });
 
-    it('ObjectLinkNusJsunit_0600', 0, async function (done) {
+    it('ObjectLinkNusJsunit_0600', 0, async (done: Function) => {
 
       console.info('ObjectLinkNusJsunit_0600 START');
       let driver = await UiDriver.create()
@@ -123,7 +123,7 @@ export default function ObjectLinkNusJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('bon_obl');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ObjectLinkNusJsunit_0600] component obj is: " + JSON.stringify(obj));
       console.info("[ObjectLinkNusJsunit_0600] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("false");
@@ -131,11 +131,11 @@ export default function ObjectLinkNusJsunit() {
       done();
     });
 
-    it('ObjectLinkNusJsunit_0700', 0, async function (done) {
+    it('ObjectLinkNusJsunit_0700', 0, async (done: Function) => {
 
       console.info('ObjectLinkNusJsunit_0700 START');
       let strJson = getInspectorByKey('cor_obl');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ObjectLinkNusJsunit_0700] component obj is: " + JSON.stringify(obj));
       console.info("[ObjectLinkNusJsunit_0700] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("#ff0000ff");
@@ -143,7 +143,7 @@ export default function ObjectLinkNusJsunit() {
       done();
     });
 
-    it('ObjectLinkNusJsunit_0800', 0, async function (done) {
+    it('ObjectLinkNusJsunit_0800', 0, async (done: Function) => {
 
       console.info('ObjectLinkNusJsunit_0800 START');
       let driver = await UiDriver.create()
@@ -151,7 +151,7 @@ export default function ObjectLinkNusJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('cor_obl');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[ObjectLinkNusJsunit_0800] component obj is: " + JSON.stringify(obj));
       console.info("[ObjectLinkNusJsunit_0800] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("#ffff0000");

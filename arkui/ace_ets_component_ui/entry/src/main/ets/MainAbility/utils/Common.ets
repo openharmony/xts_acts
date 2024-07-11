@@ -16,54 +16,52 @@ import screen from '@ohos.screen';
 import { BusinessError } from '@ohos.base';
 
 export default class CommonFunc {
-  static rect_left;
-  static rect_top;
-  static rect_right;
-  static rect_bottom;
-  static rect_value;
+  static rect_left: number;
+  static rect_top: number;
+  static rect_right: number;
+  static rect_bottom: number;
+  static rect_value: RectValue;
   
-  static sleep(time){
-        return new Promise((resolve,reject)=>{
-            setTimeout(()=>{
-                resolve("ok")
-            },time)
-        }).then(()=>{
-            console.info(`sleep ${time} over...`)
-        })
+  static sleep(time: number) {
+    return new Promise<string>(resolve => {
+      setTimeout(() => {
+        resolve("ok")
+      }, time)
+    }).then(() => {
+      console.info(`sleep ${time} over...`)
+    })
   }
   
- static getComponentRect(key) {
+  static getComponentRect(key: string) {
     let strJson = getInspectorByKey(key);
-    let obj = JSON.parse(strJson);
-    console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(obj));
-    let rectInfo = JSON.parse('[' + obj.$rect + ']')
-    console.info("[getInspectorByKey] rectInfo is: " + rectInfo);
-    this.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0]
-    this.rect_top = JSON.parse('[' + rectInfo[0] + ']')[1]
-    this.rect_right = JSON.parse('[' + rectInfo[1] + ']')[0]
-    this.rect_bottom = JSON.parse('[' + rectInfo[1] + ']')[1]
-    return this.rect_value = {
-      "left": this.rect_left, "top": this.rect_top, "right": this.rect_right, "bottom": this.rect_bottom
+    let obj: Record<string, Object> = JSON.parse(strJson);
+    let rectInfo: string[] = JSON.parse('[' + obj.$rect + ']');
+    CommonFunc.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0];
+    CommonFunc.rect_top = JSON.parse('[' + rectInfo[0] + ']')[1];
+    CommonFunc.rect_right = JSON.parse('[' + rectInfo[1] + ']')[0];
+    CommonFunc.rect_bottom = JSON.parse('[' + rectInfo[1] + ']')[1];
+    return CommonFunc.rect_value = {
+      left: CommonFunc.rect_left, top: CommonFunc.rect_top, right: CommonFunc.rect_right, bottom: CommonFunc.rect_bottom
     }
   }
 
- static getComponentRectOnScreen(key) {
+ static getComponentRectOnScreen(key: string) {
     let strJson = getInspectorByKey(key);
-    let obj = JSON.parse(strJson);
+    let obj: Record<string, Object> = JSON.parse(strJson);
     console.info("[getInspectorByKey] current component obj is: " + JSON.stringify(obj));
-    let rectInfo = JSON.parse('[' + obj.$rect + ']');
+    let rectInfo: string[] = JSON.parse('[' + obj.$rect + ']');
     console.info("[getInspectorByKey] rectInfo is: " + rectInfo);
     console.info("windowRect Left: " + globalThis.winLeft + ',' + "windowRect Top: " + globalThis.winTop );
-    this.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0] + globalThis.winLeft;
-    this.rect_top = JSON.parse('[' + rectInfo[0] + ']')[1] + globalThis.winTop;
-    this.rect_right = JSON.parse('[' + rectInfo[1] + ']')[0] + globalThis.winLeft;
-    this.rect_bottom = JSON.parse('[' + rectInfo[1] + ']')[1] + globalThis.winTop;
-    return this.rect_value = {
-      "left": this.rect_left, "top": this.rect_top, "right": this.rect_right, "bottom": this.rect_bottom
+    CommonFunc.rect_left = JSON.parse('[' + rectInfo[0] + ']')[0] + globalThis.winLeft;
+    CommonFunc.rect_top = JSON.parse('[' + rectInfo[0] + ']')[1] + globalThis.winTop;
+    CommonFunc.rect_right = JSON.parse('[' + rectInfo[1] + ']')[0] + globalThis.winLeft;
+    CommonFunc.rect_bottom = JSON.parse('[' + rectInfo[1] + ']')[1] + globalThis.winTop;
+    return CommonFunc.rect_value = {
+      left: CommonFunc.rect_left, top: CommonFunc.rect_top, right: CommonFunc.rect_right, bottom: CommonFunc.rect_bottom
     }
   }
 
-  static setScreenOrientation(orientation) {
+  static setScreenOrientation(orientation: number) {
       // 1 -- 2 |
        let screenClass: screen.Screen | null = null;
        screen.getAllScreens().then(data => {
@@ -74,7 +72,7 @@ export default class CommonFunc {
              console.log('Failed to get all screens. Cause: ' + JSON.stringify(err));
        }); 
        try {
-          screenClass.setOrientation(orientation, (err: BusinessError) => {
+          screenClass!.setOrientation(orientation, (err: BusinessError) => {
            const errCode: number = err.code;
            if (errCode) {
                console.error('Failed to set the vertical orientation. Code: ' + JSON.stringify(err));
@@ -86,8 +84,36 @@ export default class CommonFunc {
         console.error('Failed to set the vertical orientation. Code: ' + JSON.stringify(exception));
      };
   }
+
+  // Instead of Object.prototype.toString.call
+  // Function.call is not supported (arkts-no-func-apply-call)
+  // Prototype assignment is not supported (arkts-no-prototype-assignment)
+  static getType<T>(value: T): string {
+    let result: string;
+    if (value === undefined) {
+        result = '[object Undefined]';
+    } else if (value === null) {
+        result = '[object Null]';
+    } else {
+        const o: ObjectWithToString = Object(value);
+        const origin = o.toObjectString;
+        o.toObjectString = (new BaseObject()).toString;
+        result = o.toObjectString();
+        o.toObjectString = origin;
+    }
+    return result;
+  }
 }
 
+class RectValue {
+  left: number = 0;
+  top: number = 0;
+  right: number = 0;
+  bottom: number = 0;
+}
 
+interface ObjectWithToString {
+  toObjectString?: () => string
+}
 
-
+class BaseObject {}

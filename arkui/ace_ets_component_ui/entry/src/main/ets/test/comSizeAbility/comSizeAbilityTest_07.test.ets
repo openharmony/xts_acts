@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { expect, it, afterEach, afterAll, beforeEach, beforeAll, describe } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import { PointerMatrix, WindowMode, ResizeDirection, DisplayRotation, MatchPattern, BY, ON, UiWindow, Driver, Component, UiComponent, UiDriver } from '@ohos.UiTest'
 import CommonFunc from '../../MainAbility/utils/Common';
 import componentUtils from '@ohos.arkui.componentUtils';
 export default function comSizeAbilityTest_07 () {
-  describe('comSizeAbilityTestJsunit', function () {
-    beforeEach(async function (done) {
+  describe('comSizeAbilityTestJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("comSizeAbilityTestJsunit beforeEach start")
-      let options = {
-        uri: 'MainAbility/pages/comSizeAbility/comSizeAbilityTest_07'
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/comSizeAbility/comSizeAbilityTest_07'
       }
       try {
         router.clear()
@@ -46,7 +46,7 @@ export default function comSizeAbilityTest_07 () {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_20', 0, async  function (done) {
+    it('comSizeAbilityTestJsunit_20', 0, async  (done: Function) => {
       console.info('comSizeAbilityTestJsunit_20 START')
       await CommonFunc.sleep(1000);
       let driver = await Driver.create();
@@ -87,7 +87,7 @@ export default function comSizeAbilityTest_07 () {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_21', 0, async  function (done) {
+    it('comSizeAbilityTestJsunit_21', 0, async  (done: Function) => {
       console.info('comSizeAbilityTestJsunit_21 START')
       await CommonFunc.sleep(1000);
       let driver = await Driver.create();
@@ -134,7 +134,7 @@ export default function comSizeAbilityTest_07 () {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_22', 0, async  function (done) {
+    it('comSizeAbilityTestJsunit_22', 0, async  (done: Function) => {
       console.info('comSizeAbilityTestJsunit_22 START')
       await CommonFunc.sleep(1000);
       let driver = await Driver.create()

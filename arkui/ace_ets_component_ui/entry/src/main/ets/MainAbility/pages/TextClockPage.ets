@@ -14,6 +14,8 @@
  */
 import {MessageManager,Callback} from '../utils/MessageManager';
 
+type Message = string|number
+
 @Entry
 @Component
 struct TextClockPage {
@@ -24,26 +26,26 @@ struct TextClockPage {
   @State change: string = 'no change'
   // 导入对象
   controller: TextClockController = new TextClockController()
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
 
   onPageShow() {
     console.info('NavDestination onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'accumulateTime') {
-        this.accumulateTime = message.value
+        this.accumulateTime = message.value as number
       }
       if (message.name == 'timeZoneOffset') {
-        this.timeZoneOffset = message.value
+        this.timeZoneOffset = message.value as number
       }
       if (message.name == 'format') {
-        this.format = message.value
+        this.format = message.value as string
       }
       if (message.name == 'status') {
-        this.status = message.value
+        this.status = message.value as string
       }
     }
     this.messageManager.registerCallback(callback)

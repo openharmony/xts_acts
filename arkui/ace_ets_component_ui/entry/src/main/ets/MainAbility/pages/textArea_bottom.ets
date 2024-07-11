@@ -23,7 +23,7 @@ struct textArea_bottom {
   @State fontWeight1:number = 400
 
   scroll: Scroller = new Scroller()
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<string>()
 
 
   onPageShow() {

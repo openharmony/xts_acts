@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 
 
 export default function state1() {
-  describe('state1', function () {
-    beforeEach(async function (done) {
+  describe('state1', () => {
+    beforeEach(async (done: Function) => {
       console.info("state1 beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Zhuang/state1',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Zhuang/state1',
       }
       try {
         router.clear();
@@ -41,18 +41,18 @@ export default function state1() {
       }
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       router.back()
     });
-    it('state1_0100', 0, async function (done) {
+    it('state1_0100', 0, async (done: Function) => {
       console.info('state1_0100 START');
       let driver = await UiDriver.create()
       let button = await driver.findComponent(BY.key('sBtn1'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('sBtn1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[state1_0100] component obj is: " + JSON.stringify(obj));
       console.info("[state1_0100] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual('#FFFFC0CB');
@@ -61,14 +61,14 @@ export default function state1() {
 
     });
 
-    it('state1_0200', 0, async function (done) {
+    it('state1_0200', 0, async (done: Function) => {
       console.info('state1_0200 START');
       let driver = await UiDriver.create()
       let button = await driver.findComponent(BY.key('sBtn2'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('sBtn2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[state1_0200] component obj is: " + JSON.stringify(obj));
       console.info("[state1_0200] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual('#FFFFC0CB');
@@ -78,14 +78,14 @@ export default function state1() {
     });
 
 
-    it('state1_0300', 0, async function (done) {
+    it('state1_0300', 0, async (done: Function) => {
       console.info('state1_0300 START');
       let driver = await UiDriver.create()
       let button = await driver.findComponent(BY.key('sBtn3'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('sBtn3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[state1_0300] component obj is: " + JSON.stringify(obj));
       console.info("[state1_0300] title: " + JSON.stringify(obj.$attrs.fontSize));
       expect(obj.$attrs.fontSize).assertEqual('100.00fp');
@@ -94,14 +94,14 @@ export default function state1() {
 
     });
 
-    it('state1_0400', 0, async function (done) {
+    it('state1_0400', 0, async (done: Function) => {
       console.info('state1_0400 START');
       let driver = await UiDriver.create()
       let button = await driver.findComponent(BY.key('sBtn4'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('sBtn4');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[state1_0400] component obj is: " + JSON.stringify(obj));
       console.info("[state1_0400] title: " + JSON.stringify(obj.$attrs.fontSize));
       expect(obj.$attrs.fontSize).assertEqual('100.00fp');

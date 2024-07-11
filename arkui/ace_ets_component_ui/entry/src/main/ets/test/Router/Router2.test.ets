@@ -19,10 +19,10 @@ import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 import { Driver, ON } from '@ohos.UiTest';
 
 export default function Router2() {
-  describe('Router2', function () {
-    beforeEach(async function (done) {
+  describe('Router2', () => {
+    beforeEach(async (done: Function) => {
       console.info("GridFrictionPage beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
 
         url: 'MainAbility/pages/Router/Router3',
       }
@@ -43,7 +43,7 @@ export default function Router2() {
       console.info("Router2 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       router.back()
       console.info("Router2 after each called");
@@ -57,7 +57,7 @@ export default function Router2() {
      * @tc.size :
      */
 
-    it('Router2_0100', 0, async function (done) {
+    it('Router2_0100', 0, async (done: Function) => {
       console.info('[Router2_0100] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -69,14 +69,14 @@ export default function Router2() {
 
 
       let strJson1 = getInspectorByKey('arrayData1');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       expect(obj1.$attrs.content).assertEqual('message');
       console.info('arrayData1' + obj1.$attrs.content)
       await CommonFunc.sleep(500);
 
 
       let strJson2 = getInspectorByKey('arrayData2');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       expect(obj2.$attrs.content).assertEqual('1');
       console.info('arrayData2' + obj1.$attrs.content)
 

@@ -19,10 +19,10 @@ import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 import { Driver, ON } from '@ohos.UiTest';
 
 export default function Router4() {
-  describe('Router4', function () {
-    beforeEach(async function (done) {
+  describe('Router4', () => {
+    beforeEach(async (done: Function) => {
       console.info("GridFrictionPage beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Router/pageA',
 
       }
@@ -43,7 +43,7 @@ export default function Router4() {
       console.info("Router4 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       router.back()
       console.info("Router4 after each called");
@@ -57,7 +57,7 @@ export default function Router4() {
      * @tc.size :
      */
 
-    it('Router4_0100', 0, async function (done) {
+    it('Router4_0100', 0, async (done: Function) => {
       console.info('[Router4_0100] START');
 
 
@@ -66,14 +66,14 @@ export default function Router4() {
       await CommonFunc.sleep(500);
 
       let strJson1 = getInspectorByKey('pageA_name');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       expect(obj1.$attrs.content).assertEqual('pageA');
       await CommonFunc.sleep(500);
 
       console.info('obj111111' + obj1.$attrs.content);
 
       let strJson2 = getInspectorByKey('pageA_length');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       expect(obj2.$attrs.content).assertEqual('2');
       await CommonFunc.sleep(500);
 
@@ -86,14 +86,14 @@ export default function Router4() {
 
 
       let strJson3 = getInspectorByKey('name_B');
-      let obj3 = JSON.parse(strJson3);
+      let obj3: ESObject = JSON.parse(strJson3);
       expect(obj3.$attrs.content).assertEqual('pageB');
 
       console.info('obj3333333' + obj3.$attrs.content);
       await CommonFunc.sleep(500);
 
       let strJson4 = getInspectorByKey('name_length');
-      let obj4 = JSON.parse(strJson4);
+      let obj4: ESObject = JSON.parse(strJson4);
       expect(obj4.$attrs.content).assertEqual('3');
 
       console.info('obj444444' + obj4.$attrs.content);
@@ -106,13 +106,13 @@ export default function Router4() {
       await CommonFunc.sleep(1000);
 
       let strJson5 = getInspectorByKey('name_B');
-      let obj5 = JSON.parse(strJson1);
+      let obj5: ESObject = JSON.parse(strJson1);
       expect(obj5.$attrs.content).assertEqual('pageA');
       console.info('obj555555' + obj5.$attrs.content)
       await CommonFunc.sleep(500);
 
       let strJson6 = getInspectorByKey('name_length');
-      let obj6 = JSON.parse(strJson6);
+      let obj6: ESObject = JSON.parse(strJson6);
       expect(obj6.$attrs.content).assertEqual('3');
       console.info('obj66666' + obj6.$attrs.content)
       await CommonFunc.sleep(500);
@@ -125,14 +125,14 @@ export default function Router4() {
 
 
       let strJson7 = getInspectorByKey('name_C');
-      let obj7 = JSON.parse(strJson7);
+      let obj7: ESObject = JSON.parse(strJson7);
       expect(obj7.$attrs.content).assertEqual('pageC');
 
       console.info('obj7777777' + obj7.$attrs.content)
       await CommonFunc.sleep(500);
 
       let strJson8 = getInspectorByKey('length_C');
-      let obj8 = JSON.parse(strJson8);
+      let obj8: ESObject = JSON.parse(strJson8);
       expect(obj8.$attrs.content).assertEqual('2');
 
       console.info('obj88888' + obj8.$attrs.content)

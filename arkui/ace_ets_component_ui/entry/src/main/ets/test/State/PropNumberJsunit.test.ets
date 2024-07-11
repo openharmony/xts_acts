@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import  CommonFunc from '../../MainAbility/utils/Common'
 
 
 export default function PropNumberJsunit() {
-  describe('PropNumberJsunit', function () {
-    beforeEach(async function (done) {
+  describe('PropNumberJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("PropNumberJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/PropNumber',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/PropNumber',
       }
       try {
         router.clear();
@@ -42,13 +42,13 @@ export default function PropNumberJsunit() {
       done();
     });
 
-    // afterEach(async function () {
+    // afterEach(async () => {
     //   await CommonFunc.sleep(1000);
     //   let driver = await UiDriver.create()
     //   await driver.pressBack();
     // });
 
-    it('PropNumberJsunit_0200', 0, async function (done) {
+    it('PropNumberJsunit_0200', 0, async (done: Function) => {
 
       console.info('PropNumberJsunit_0200 START');
       let driver = await UiDriver.create()
@@ -56,13 +56,13 @@ export default function PropNumberJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('PropNumber_A');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropNumberJsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[PropNumberJsunit_0200] content: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("Father State:11");
 
       let strJson1 = getInspectorByKey('ChildPropNumber_A');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[PropNumberJsunit_0200] component obj is: " + JSON.stringify(obj1));
       console.info("[PropNumberJsunit_0200] content: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("Child Prop:11");
@@ -70,20 +70,20 @@ export default function PropNumberJsunit() {
       done();
     });
 
-    it('PropNumberJsunit_0300', 0, async function (done) {
+    it('PropNumberJsunit_0300', 0, async (done: Function) => {
       console.info('PropNumberJsunit_0300 START');
       let driver = await UiDriver.create()
       let button = await driver.findComponent(BY.key('ChildPropNumber_A'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ChildPropNumber_A');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropNumberJsunit_0300] component obj is: " + JSON.stringify(obj));
       console.info("[PropNumberJsunit_0300] content: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("Child Prop:12");
 
       let strJson1 = getInspectorByKey('PropNumber_A');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[PropNumberJsunit_0300] component obj1 is: " + JSON.stringify(obj1));
       console.info("[PropNumberJsunit_0300] content: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("Father State:11");

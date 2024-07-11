@@ -30,8 +30,8 @@ struct RouterPushTwo {
     this.routerUI = routerUI
   }
 
-  @State params: string = router.getParams() ? router.getParams()["view"] : ""
-  @State routerUI: Router = undefined
+  @State params: string = router.getParams() ? (router.getParams() as RouterParams).view : ""
+  @State routerUI: Router|undefined = undefined
 
   build() {
     Row() {
@@ -77,7 +77,7 @@ struct RouterPushTwo {
           })
           .id("turn_UIRouterPushUrlOne_RouterMode_Standard")
           .onClick(() => {
-            this.routerUI.pushUrl({
+            this.routerUI?.pushUrl({
               url: 'MainAbility/pages/State/RouterPushOne',
             }, router.RouterMode.Standard)
           })
@@ -89,7 +89,7 @@ struct RouterPushTwo {
           })
           .id("turn_UIRouterPushUrlOne_RouterMode_Single")
           .onClick(() => {
-            this.routerUI.pushUrl({
+            this.routerUI?.pushUrl({
               url: 'MainAbility/pages/State/RouterPushOne',
             }, router.RouterMode.Single)
           })
@@ -97,4 +97,8 @@ struct RouterPushTwo {
       .height('100%')
     }
   }
+}
+
+interface RouterParams {
+  view: string
 }

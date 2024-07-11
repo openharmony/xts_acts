@@ -13,6 +13,9 @@
  * limitations under the License.
  */
 import {MessageManager,Callback} from '../utils/MessageManager';
+
+type Message = boolean|DatePickerOptions
+
 @Entry
 @Component
 struct DatePickerExample {
@@ -24,19 +27,19 @@ struct DatePickerExample {
       end: new Date('2100-1-1'),
       selected: this.selectedDate
   }
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
    onPageShow() {
     console.info('Checkbox onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'isLunar') {
-          this.isLunar = message.value
+          this.isLunar = message.value as boolean
       }
       if (message.name == 'options') {
-          this.options = message.value
+          this.options = message.value as DatePickerOptions
       }
       
     }
@@ -55,7 +58,7 @@ struct DatePickerExample {
       DatePicker(this.options)
         .lunar(this.isLunar)
         .onChange((value: DatePickerResult) => {
-          this.selectedDate.setFullYear(value.year, value.month, value.day)
+          this.selectedDate.setFullYear(value.year!, value.month, value.day)
           console.info('select current date is: ' + JSON.stringify(value))
           this.message = JSON.stringify(value.year)
         }).key('dataPicker')

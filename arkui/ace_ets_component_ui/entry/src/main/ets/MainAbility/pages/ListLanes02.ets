@@ -14,6 +14,8 @@
  */
 import {MessageManager,Callback} from '../utils/MessageManager';
 
+type Message = string|number|Dimension|Axis
+
 @Entry
 @Component
 struct ListLanes02 {
@@ -23,26 +25,26 @@ struct ListLanes02 {
   @State listSpace: string = '20'
   @State alignListItem: ListItemAlign = ListItemAlign.Start
   @State initialIndex: number = 0
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
 
   onPageShow() {
     console.info('ListLanes  onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'listGutter') {
-        this.listGutter = message.value;
+        this.listGutter = message.value as Dimension;
       }
       if (message.name == 'listDirection') {
-        this.listDirection = message.value;
+        this.listDirection = message.value as Axis;
       }
       if (message.name == 'listSpace') {
-        this.listSpace = message.value;
+        this.listSpace = message.value as string;
       }
       if (message.name == 'initialIndex') {
-        this.initialIndex = message.value;
+        this.initialIndex = message.value as number;
       }
 
     }

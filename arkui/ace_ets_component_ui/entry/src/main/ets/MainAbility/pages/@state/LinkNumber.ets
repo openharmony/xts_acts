@@ -12,6 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import Common from '../../utils/Common'
+
 class Num4 {
   public pages:number;
   constructor(pages: number) {
@@ -37,7 +39,7 @@ struct Child_CP {
       Text("切换变量赋值Object")
       Button('change')
         .onClick(() => {
-          this.count = { pages: 20 };
+          this.count = new Num4(20);
         })
         .key('state2')
 
@@ -73,7 +75,7 @@ struct Index_CP {
 
   build() {
     Column() {
-      Text("count type of " + JSON.stringify(Object.prototype.toString.call(this.count)) + " number is " + JSON.stringify(this.count))
+      Text("count type of " + JSON.stringify(Common.getType(this.count)) + " number is " + JSON.stringify(this.count))
         .fontSize(20).margin(30).key('LinkNumber')
       Child_CP({count: this.count})
 

@@ -14,6 +14,8 @@
  */
 import {MessageManager,Callback} from '../utils/MessageManager';
 
+type Message = string|ImageFit|ImageRepeat
+
 @Entry
 @Component
 struct ImageExample1 {
@@ -22,23 +24,23 @@ struct ImageExample1 {
   @State imageNamePng:string = 'test3.png'
   @State objectFit:ImageFit = ImageFit.None
   @State objectRepeat:ImageRepeat = ImageRepeat.NoRepeat
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
 
   onPageShow() {
     console.info('Image onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'imageNamePng') {
-          this.imageNamePng = message.value
+          this.imageNamePng = message.value as string
       }
       if (message.name == 'objectFit') {
-          this.objectFit = message.value
+          this.objectFit = message.value as ImageFit
       }
       if (message.name == 'objectRepeat') {
-          this.objectRepeat = message.value
+          this.objectRepeat = message.value as ImageRepeat
       }   
     }
     this.messageManager.registerCallback(callback)

@@ -14,13 +14,15 @@
  */
 import {MessageManager,Callback} from '../utils/MessageManager';
 
+type Message = string|GridDirection
+
 @Entry
 @Component
 struct GridRowCol02 {
   @State Number: String[] = ['0', '1', '2', '3', '4']
   scroller: Scroller = new Scroller()
   @State rowsTemplate: string = '1fr 1fr 1fr'
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
   @State layoutDirection: GridDirection = GridDirection.Row
 
   @State text: string = ''
@@ -30,13 +32,13 @@ struct GridRowCol02 {
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'rowsTemplate') {
-        this.rowsTemplate = message.value;
+        this.rowsTemplate = message.value as string;
       }
       if (message.name == 'layoutDirection') {
-        this.layoutDirection = message.value;
+        this.layoutDirection = message.value as GridDirection;
       }
 
     }

@@ -23,14 +23,14 @@ struct ForegroundBlurStyleDemo {
         .height(350)
         .key('commonAdd')
         .foregroundBlurStyle(BlurStyle.Thin, { colorMode: ThemeColorMode.LIGHT, adaptiveColor: AdaptiveColor.DEFAULT, scale: 1.0 })
-        .mouseResponseRegion(null)
-        .background(null)
+        .mouseResponseRegion(null!)
+        .background(null!)
         .renderGroup(false)
         .renderFit(RenderFit.BOTTOM)
         .sphericalEffect(0.5)
         .lightUpEffect(0.6)
         .pixelStretchEffect({top:10,left:10,right:10,bottom:10 })
-        .reuseId(null)
+        .reuseId(null!)
 
     }
     .height('100%')

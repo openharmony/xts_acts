@@ -14,6 +14,8 @@
  */
 import {MessageManager,Callback} from '../utils/MessageManager';
 
+type Message = string|Color
+
 @Entry
 @Component
 struct QRCodePage {
@@ -21,23 +23,23 @@ struct QRCodePage {
   @State color : Color = Color.Black
   @State backColor : Color = Color.White
   @State text : string = 'unclick'
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
 
   onPageShow() {
     console.info('QRCodePage onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'QRCodeValue') {
-        this.value = message.value
+        this.value = message.value as string
       }
       if (message.name == 'QRCodeColor') {
-        this.color = message.value
+        this.color = message.value as Color
       }
       if (message.name == 'backgroundColor') {
-        this.backColor = message.value
+        this.backColor = message.value as Color
       }
     }
     this.messageManager.registerCallback(callback)

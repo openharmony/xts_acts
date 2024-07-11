@@ -18,10 +18,10 @@ import CommonFunc from '../../MainAbility/utils/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function router_back1() {
-  describe('router_back1', function () {
-    beforeEach(async function (done) {
+  describe('router_back1', () => {
+    beforeEach(async (done: Function) => {
       console.info("router_back1 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/router10/router_back1',
       }
       try {
@@ -40,7 +40,7 @@ export default function router_back1() {
       console.info("router_back1 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("router_back1 after each called");
     });
@@ -53,7 +53,7 @@ export default function router_back1() {
      * @tc.type
     * @tc.size
      */
-    it('router_back1_0100', 0, async function (done) {
+    it('router_back1_0100', 0, async (done: Function) => {
       console.info('[router_back1_0100] START');
       await CommonFunc.sleep(1000);
 
@@ -65,7 +65,7 @@ export default function router_back1() {
       await CommonFunc.sleep(2000);
 
       let text1 = getInspectorByKey('router_back_text1');
-      let Obj1 = JSON.parse(text1);
+      let Obj1: ESObject = JSON.parse(text1);
       expect(Obj1.$attrs.content).assertEqual('back fail');
 
       console.info('[router_back1_0100] END');

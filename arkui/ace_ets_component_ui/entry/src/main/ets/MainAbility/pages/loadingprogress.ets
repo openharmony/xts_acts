@@ -18,13 +18,13 @@ import {MessageManager,Callback} from '../utils/MessageManager';
 @Component
 struct LoadingProgressExample {
   @State color:Color = Color.Blue
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Color>()
   onPageShow() {
     console.info('Gauge onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Color> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'color') {
           this.color = message.value

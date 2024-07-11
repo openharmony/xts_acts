@@ -14,6 +14,8 @@
  */
 import {MessageManager,Callback} from '../utils/MessageManager';
 
+type Message = string|number|Font|Color
+
 @Entry
 @Component
 struct SelectPage {
@@ -30,50 +32,50 @@ struct SelectPage {
   @State optionFont: Font = { size: 16, weight: 400 }
   @State optionFontColor: Color = Color.Green
   @State indexValue: number = 0
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
 
   onPageShow() {
     console.info('SelectPage onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'optionValue') {
-        this.optionValue = message.value
+        this.optionValue = message.value as string
       }
       if (message.name == 'icon') {
-        this.icon = message.value
+        this.icon = message.value as string
       }
       if (message.name == 'selected') {
-        this.selected = message.value
+        this.selected = message.value as number
       }
       if (message.name == 'selectValue') {
-        this.selectValue = message.value
+        this.selectValue = message.value as string
       }
       if (message.name == 'selectFont') {
-        this.selectFont = message.value
+        this.selectFont = message.value as Font
       }
       if (message.name == 'fontColor') {
-        this.fontColor = message.value
+        this.fontColor = message.value as Color
       }
       if (message.name == 'selectedOptionBgColor') {
-        this.selectedOptionBgColor = message.value
+        this.selectedOptionBgColor = message.value as Color
       }
       if (message.name == 'selectedOptionFont') {
-        this.selectedOptionFont = message.value
+        this.selectedOptionFont = message.value as Font
       }
       if (message.name == 'selectedOptionFontColor') {
-        this.selectedOptionFontColor = message.value
+        this.selectedOptionFontColor = message.value as Color
       }
       if (message.name == 'optionBgColor') {
-        this.optionBgColor = message.value
+        this.optionBgColor = message.value as Color
       }
       if (message.name == 'optionFont') {
-        this.optionFont = message.value
+        this.optionFont = message.value as Font
       }
       if (message.name == 'optionFontColor') {
-        this.optionFontColor = message.value
+        this.optionFontColor = message.value as Color
       }
     }
     this.messageManager.registerCallback(callback)

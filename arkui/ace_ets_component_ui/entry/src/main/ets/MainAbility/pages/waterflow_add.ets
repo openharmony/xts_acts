@@ -54,7 +54,7 @@ struct WaterflowDemo {
           .width('100%')
           .height(20)
           .backgroundColor(this.colors[item % 5])
-        }, item => item)
+        }, (item: string) => item)
       }
       .columnsTemplate("1fr 1fr 1fr 1fr")
       .key('waterflowAdd')

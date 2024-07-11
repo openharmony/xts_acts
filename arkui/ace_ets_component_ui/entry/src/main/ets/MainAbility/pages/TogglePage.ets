@@ -14,6 +14,8 @@
  */
 import {MessageManager,Callback} from '../utils/MessageManager';
 
+type Message = boolean|string|ToggleType
+
 @Entry
 @Component
 struct TogglePage {
@@ -22,26 +24,26 @@ struct TogglePage {
   @State selectedColor: string = '#FFFF0000'
   @State switchPointColor: string = '#FF008000'
   @State text: string = 'no change'
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
 
   onPageShow() {
     console.info('Toggle onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'type') {
-        this.type = message.value
+        this.type = message.value as ToggleType
       }
       if (message.name == 'isOn') {
-        this.isOn = message.value
+        this.isOn = message.value as boolean
       }
       if (message.name == 'selectedColor') {
-        this.selectedColor = message.value
+        this.selectedColor = message.value as string
       }
       if (message.name == 'switchPointColor') {
-        this.switchPointColor = message.value
+        this.switchPointColor = message.value as string
       }
     }
     this.messageManager.registerCallback(callback)

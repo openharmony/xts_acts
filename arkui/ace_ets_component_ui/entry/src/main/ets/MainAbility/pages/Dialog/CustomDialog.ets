@@ -40,7 +40,7 @@ struct CustomDialogExampleA {
 @Component
 struct CustomDialogUserA {
   @State inputValue: string = 'CustomDialog按esc弹窗逐层退出'
-  dialogController: CustomDialogController | null = new CustomDialogController({
+  dialogController = new CustomDialogController({
     builder: CustomDialogExampleA({
       inputValue: $inputValue
     }),

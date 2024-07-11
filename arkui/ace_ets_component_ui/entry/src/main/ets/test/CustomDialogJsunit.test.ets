@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../MainAbility/utils/MessageManager';
 
 
 export default function CustomDialogJsunit() {
-  describe('CustomDialogJsunit', function () {
-    beforeEach(async function (done) {
+  describe('CustomDialogJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("CustomDialogJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/CustomDialogControllerOptions',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/CustomDialogControllerOptions',
       }
       try {
         router.clear();
@@ -44,7 +44,7 @@ export default function CustomDialogJsunit() {
     });
 
 
-    it('CustomDialogJsunit_0100', 0, async function (done) {
+    it('CustomDialogJsunit_0100', 0, async (done: Function) => {
 
       console.info('CustomDialogJsunit_0100 START');
 	  let driver = await UiDriver.create()
@@ -52,7 +52,7 @@ export default function CustomDialogJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('CustomDialog');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[CustomDialogJsunit_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual("click me");
       console.info('[CustomDialogJsunit_0100] END');

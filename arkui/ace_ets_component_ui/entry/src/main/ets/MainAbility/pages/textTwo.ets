@@ -14,6 +14,8 @@
  */
 import {MessageManager,Callback} from '../utils/MessageManager';
 
+type Message = string|number|TextDecorationType|TextCase
+
 @Entry
 @Component
 struct TextExample2 {
@@ -22,29 +24,29 @@ struct TextExample2 {
   @State baselineOffset: number = 0
   @State letterSpacing: number = 0
   @State textCase: TextCase = TextCase.Normal
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
 
   onPageShow() {
     console.info('text onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'type') {
-          this.type = message.value
+          this.type = message.value as TextDecorationType
       }
       if (message.name == 'color') {
-          this.color = message.value
+          this.color = message.value as string
       }
       if (message.name == 'baselineOffset') {
-          this.baselineOffset = message.value
+          this.baselineOffset = message.value as number
       }
       if (message.name == 'letterSpacing') {
-          this.letterSpacing = message.value
+          this.letterSpacing = message.value as number
       }
       if (message.name == 'textCase') {
-          this.textCase = message.value
+          this.textCase = message.value as TextCase
       }
     }
     this.messageManager.registerCallback(callback)

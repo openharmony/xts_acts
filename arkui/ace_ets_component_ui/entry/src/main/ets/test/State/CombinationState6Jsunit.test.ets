@@ -1,4 +1,4 @@
-``/**
+/**
  * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 
 
 export default function CombinationState6Jsunit() {
-  describe('CombinationState6Jsunit', function () {
-    beforeEach(async function (done) {
+  describe('CombinationState6Jsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("CombinationState6Jsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/CombinationState6',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/CombinationState6',
       }
       try {
         router.clear();
@@ -42,11 +42,11 @@ export default function CombinationState6Jsunit() {
       done();
     });
 
-    it('CombinationState6Jsunit_0100', 0, async function (done) {
+    it('CombinationState6Jsunit_0100', 0, async (done: Function) => {
       // Get the information of the State component
       console.info('[CombinationState6Jsunit_0100] START');
       let strJson = getInspectorByKey('PropObjectLink1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[CombinationState6Jsunit_0100] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.content).assertEqual('PropObjectLink:1');
@@ -54,11 +54,11 @@ export default function CombinationState6Jsunit() {
       done();
     });
 
-    it('CombinationState6Jsunit_0200', 0, async function (done) {
+    it('CombinationState6Jsunit_0200', 0, async (done: Function) => {
       // Get the information of the State component
       console.info('[CombinationState6Jsunit_0200] START');
       let strJson1 = getInspectorByKey('PropObjectLink2');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[CombinationState6Jsunit_0200] component obj1 is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
       expect(obj1.$attrs.content).assertEqual('PropObjectLink:2');
@@ -66,11 +66,11 @@ export default function CombinationState6Jsunit() {
       done();
     });
 
-    it('CombinationState6Jsunit_0300', 0, async function (done) {
+    it('CombinationState6Jsunit_0300', 0, async (done: Function) => {
       // Get the information of the State component
       console.info('[CombinationState6Jsunit_0300] START');
       let strJson2 = getInspectorByKey('PropObjectLink3');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[CombinationState6Jsunit_0100] component obj2 is: " + JSON.stringify(obj2));
       await CommonFunc.sleep(1000);
       expect(obj2.$attrs.content).assertEqual('PropObjectLink:3');
@@ -78,11 +78,11 @@ export default function CombinationState6Jsunit() {
       done();
     });
 
-    it('CombinationState6Jsunit_0500', 0, async function (done) {
+    it('CombinationState6Jsunit_0500', 0, async (done: Function) => {
       // Get the information of the State component
       console.info('[CombinationState6Jsunit_0500] START');
       let strJson4 = getInspectorByKey('PropObjectLink5');
-      let obj4 = JSON.parse(strJson4);
+      let obj4: ESObject = JSON.parse(strJson4);
       console.info("[CombinationState6Jsunit_0500] component obj4 is: " + JSON.stringify(obj4));
       await CommonFunc.sleep(1000);
       expect(obj4.$attrs.content).assertEqual('PropObjectLink:5');

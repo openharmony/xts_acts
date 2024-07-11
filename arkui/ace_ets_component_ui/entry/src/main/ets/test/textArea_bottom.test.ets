@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../MainAbility/utils/MessageManager';
 
 
 export default function textArea_bottom() {
-  describe('textArea_bottom', function () {
-    beforeEach(async function (done) {
+  describe('textArea_bottom', () => {
+    beforeEach(async (done: Function) => {
       console.info("textArea_bottom beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/textArea_bottom',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/textArea_bottom',
       }
       try {
         router.clear();
@@ -49,7 +49,7 @@ export default function textArea_bottom() {
     * @tc.desc  : When textArea is in the bottom, clicking on the top of the input box triggers the keyboard
     * @tc.level : Level 2
     */
-    it('textArea_bottom_001', 0, async function (done) {
+    it('textArea_bottom_001', 0, async (done: Function) => {
 
       console.info('[textArea_bottom_001] START');
       await CommonFunc.sleep(1000);
@@ -89,7 +89,7 @@ export default function textArea_bottom() {
     * @tc.desc  : When textArea is in the bottom, clicking on the middle of the input box triggers the keyboard
     * @tc.level : Level 2
     */
-    it('textArea_bottom_002', 0, async function (done) {
+    it('textArea_bottom_002', 0, async (done: Function) => {
 
       console.info('[textArea_bottom_002] START');
       await CommonFunc.sleep(1000);
@@ -128,7 +128,7 @@ export default function textArea_bottom() {
     * @tc.desc  : When textArea is in the bottom, clicking on the bottom of the input box triggers the keyboard
     * @tc.level : Level 2
     */
-    it('textArea_bottom_003', 0, async function (done) {
+    it('textArea_bottom_003', 0, async (done: Function) => {
 
       console.info('[textArea_bottom_003] START');
       await CommonFunc.sleep(1000);

@@ -14,17 +14,17 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 
 
 export default function StorageProp26Jsunit() {
-  describe('StorageProp26Jsunit', function () {
-    beforeEach(async function (done) {
+  describe('StorageProp26Jsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("StorageProp26Jsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/StorageProp26',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/StorageProp26',
       }
       try {
         router.clear();
@@ -43,7 +43,7 @@ export default function StorageProp26Jsunit() {
       done();
     });
 
-    it('StorageProp26Jsunit_0100', 0, async function (done) {
+    it('StorageProp26Jsunit_0100', 0, async (done: Function) => {
       console.info('[StorageProp26Jsunit_0100] START');
       let driver = await UiDriver.create()
       let button_son1 = await driver.findComponent(BY.key('son1PropA'));
@@ -52,13 +52,13 @@ export default function StorageProp26Jsunit() {
       await button_son1.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('childPropA');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[StorageProp26Jsunit_0200] obj1 is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
       expect(obj1.$attrs.content).assertEqual('childPropA: 3');
 
       let strJson2 = getInspectorByKey('fatherPropA');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[StorageProp26Jsunit_0200] obj2 is: " + JSON.stringify(obj2));
       await CommonFunc.sleep(1000);
       expect(obj2.$attrs.content).assertEqual('fatherPropA: 1');
@@ -66,7 +66,7 @@ export default function StorageProp26Jsunit() {
       done();
     });
 
-    it('StorageProp26Jsunit_0300', 0, async function (done) {
+    it('StorageProp26Jsunit_0300', 0, async (done: Function) => {
       console.info('[StorageProp26Jsunit_0300] START');
       let driver = await UiDriver.create()
       let button_son1 = await driver.findComponent(BY.key('button221'));
@@ -74,13 +74,13 @@ export default function StorageProp26Jsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('childPropA');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[StorageProp26Jsunit_0300] obj1 is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
       expect(obj1.$attrs.content).assertEqual('childPropA: 3');
 
       let strJson2 = getInspectorByKey('fatherPropA');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[StorageProp26Jsunit_0300] obj2 is: " + JSON.stringify(obj2));
       await CommonFunc.sleep(1000);
       expect(obj2.$attrs.content).assertEqual('fatherPropA: 34');

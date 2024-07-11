@@ -22,6 +22,10 @@ class Model{
     this.value = value
   }
 }
+interface ObjectLink1 {
+  name: string
+  age?: number
+}
 
 AppStorage.setOrCreate('Prop1', 47);
 AppStorage.setOrCreate('Prop2', 'aaa');
@@ -43,27 +47,27 @@ struct StorageLink1 {
   @StorageLink('Prop2') son2: string = 'aaa';
   @StorageLink('Prop3') son3: Boolean = false;
   @StorageLink('Prop4') son4: ABC = ABC.A;
-  @StorageLink('Prop5') son5: Model = {value:'Title:Hello World'}
-  @StorageLink('Prop6') son6: Object = { name: 'zs',age:12  }
+  @StorageLink('Prop5') son5: Model = new Model('Title:Hello World')
+  @StorageLink('Prop6') son6: Object = { name: 'zs',age:12  } as ObjectLink1
   @StorageLink('Prop7') son7: Array<string> = ['zs','ls']
   @StorageLink('Prop8') son8: Array<number> = [1,2]
   @StorageLink('Prop9') son9: Array<boolean> = [true,false]
-  @StorageLink('Prop10') son10: Array<Model> = [{value:'hello world'},{value:'hello music'}]
-  @StorageLink('Prop11') son11: Array<Object> = [{name:'zs'},{name:'ls'}]
+  @StorageLink('Prop10') son10: Array<Model> = [new Model('hello world'), new Model('hello music')]
+  @StorageLink('Prop11') son11: Array<Object> = [{name:'zs'},{name:'ls'}] as ObjectLink1[]
   @StorageLink('Prop12') son12: Array<ABC> = [ABC.A,ABC.B]
 
-  @State num: number = 0
-  @State string: string = 'aaa'
-  @State boolean: boolean = false
-  @State enu: ABC = ABC.B
-  @State class: Model = { value: 'Title:Hello World' }
-  @State obj: Object = { name: 'zs',age:12 }
-  @State strArray: Array<string> = ['zs','ls']
-  @State numArray: Array<number> = [1,2]
-  @State boolArray: Array<boolean> = [true,false]
-  @State classArray: Array<Model> = [{value:'hello world'},{value:'hello music'}]
-  @State objArray: Array<Object> = [{name:'zs'},{name:'ls'}]
-  @State menuArray: Array<ABC> = [ABC.A,ABC.B]
+  @State num: number|undefined = 0
+  @State string: string|undefined = 'aaa'
+  @State boolean: boolean|undefined = false
+  @State enu: ABC|undefined = ABC.B
+  @State class: Model|undefined = new Model('Title:Hello World')
+  @State obj: Object|undefined = { name: 'zs',age:12 } as ObjectLink1
+  @State strArray: Array<string>|undefined = ['zs','ls']
+  @State numArray: Array<number>|undefined = [1,2]
+  @State boolArray: Array<boolean>|undefined = [true,false]
+  @State classArray: Array<Model>|undefined = [new Model('hello world'), new Model('hello music')]
+  @State objArray: Array<Object>|undefined = [{name:'zs'},{name:'ls'}] as ObjectLink1[]
+  @State menuArray: Array<ABC>|undefined = [ABC.A,ABC.B]
 
 
   build() {
@@ -97,17 +101,17 @@ struct StorageLink1 {
           this.enu = AppStorage.get<ABC>('Prop4');
         })
 
-      Button(`class: ${this.class.value}`).margin(3).width("100%")
+      Button(`class: ${this.class?.value}`).margin(3).width("100%")
         .key("button_son5")
         .onClick(() => {
-          this.son5 = {value:'Title:Hello C'}
+          this.son5 = new Model('Title:Hello C')
           this.class = AppStorage.get<Model>('Prop5');
         })
 
       Button(`obj: ${JSON.stringify(this.obj)}`).margin(3).width("100%")
         .key("button_son6")
         .onClick(() => {
-          this.son6 ={name:'ls',age:13}
+          this.son6 ={name:'ls',age:13} as ObjectLink1
           this.obj = AppStorage.get<Object>('Prop6')
         })
 
@@ -135,14 +139,14 @@ struct StorageLink1 {
       Button(`classArray: ${JSON.stringify(this.classArray)}`).margin(3).width("100%")
         .key("button_son10")
         .onClick(() => {
-          this.son10 = [{value:'hello world'},{value:'hello C'}]
+          this.son10 = [new Model('hello world'), new Model('hello C')]
           this.classArray = AppStorage.get<Array<Model>>('Prop10')
         })
 
       Button(`objArray: ${JSON.stringify(this.objArray)}`).margin(3).width("100%")
         .key("button_son11")
         .onClick(() => {
-          this.son11 = [{name:'ls'},{name:'zs'}]
+          this.son11 = [{name:'ls'},{name:'zs'}] as ObjectLink1[]
           this.objArray = AppStorage.get<Array<Object>>('Prop11')
         })
 

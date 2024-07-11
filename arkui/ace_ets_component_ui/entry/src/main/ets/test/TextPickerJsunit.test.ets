@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../MainAbility/utils/MessageManager';
 
 
 export default function TextPickerJsunit() {
-  describe('TextPickerJsunit', function () {
-    beforeEach(async function (done) {
+  describe('TextPickerJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("TextPicker beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/TextPickerPage',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/TextPickerPage',
       }
       try {
         router.clear();
@@ -43,11 +43,11 @@ export default function TextPickerJsunit() {
       done();
     });
 
-    it('TextPickerJsunit_0100', 0, async function (done) {
+    it('TextPickerJsunit_0100', 0, async (done: Function) => {
       // Get the information of TextPicker component
       console.info('[TextPickerJsunit_0100] START');
       let strJson = getInspectorByKey('textPicker');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextPickerJsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[TextPickerJsunit_0100] range: " + JSON.stringify(obj.$attrs.range));
       console.info("[TextPickerJsunit_0100] selected: " + JSON.stringify(obj.$attrs.selected));
@@ -62,14 +62,14 @@ export default function TextPickerJsunit() {
       // Get the content of Initial value
       let driver = await UiDriver.create()
       let strJson1 = getInspectorByKey('textContent1');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[TextPickerJsunit_0100] obj1: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('value: 0');
       console.info('[TextPickerJsunit_0100] END');
       done();
     });
 
-    it('TextPickerJsunit_0200', 0, async function (done) {
+    it('TextPickerJsunit_0200', 0, async (done: Function) => {
       // Modify the attribute of TextPicker component
       console.info('[TextPickerJsunit_0200] START');
       globalThis.value.message.notify({name:'fruits',value:['banana1', 'orange2', 'peach3', 'grape4']})
@@ -83,7 +83,7 @@ export default function TextPickerJsunit() {
 
       // Get the attribute of TextPicker component
       let strJson = getInspectorByKey('textPicker');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextPickerJsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[TextPickerJsunit_0200] range: " + JSON.stringify(obj.$attrs.range));
       console.info("[TextPickerJsunit_0200] selected: " + JSON.stringify(obj.$attrs.selected));
@@ -98,7 +98,7 @@ export default function TextPickerJsunit() {
       done();
     });
 
-    it('TextPickerJsunit_0300', 0, async function (done) {
+    it('TextPickerJsunit_0300', 0, async (done: Function) => {
       // Verify the functions of TextPicker component
       await CommonFunc.sleep(500);
       console.info('[TextPickerJsunit_0300] START');
@@ -114,13 +114,13 @@ export default function TextPickerJsunit() {
       await driver.swipe(Math.round(right / 2), Math.round(middle + 50), Math.round(right / 2), Math.round(middle - 50));
       await CommonFunc.sleep(6000);
       let strJson = getInspectorByKey('textContent1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextPickerJsunit_0300] obj: " + JSON.stringify(obj));
       expect(obj.$attrs.content == 'value: 0').assertFalse();
       done();
     });
 
-    it('TextPickerJsunit_0400', 0, async function (done) {
+    it('TextPickerJsunit_0400', 0, async (done: Function) => {
       // Illegal modification of properties of TextPicker component
       console.info('[TextPickerJsunit_0400] START');
       globalThis.value.message.notify({name:'fruits',value:'abc'})
@@ -134,7 +134,7 @@ export default function TextPickerJsunit() {
 
       // Get the attribute of TextPicker component
       let strJson = getInspectorByKey('textPicker');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextPickerJsunit_0400] component obj is: " + JSON.stringify(obj));
       console.info("[TextPickerJsunit_0400] range: " + JSON.stringify(obj.$attrs.range));
       console.info("[TextPickerJsunit_0400] selected: " + JSON.stringify(obj.$attrs.selected));

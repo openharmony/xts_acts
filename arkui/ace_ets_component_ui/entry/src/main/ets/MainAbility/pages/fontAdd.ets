@@ -18,8 +18,8 @@ import font from '@ohos.font';
 @Entry
 @Component
 struct FontExample {
-  fontList: Array<string>;
-  fontInfo: font.FontInfo;
+  fontList?: Array<string>;
+  fontInfo?: font.FontInfo;
   @State value:string=''
   @State value1:string=''
 
@@ -45,7 +45,7 @@ struct FontExample {
         .key("getgetFontByName")
         .onClick(()=>{
           this.fontInfo = font.getFontByName('HarmonyOS Sans Italic')
-          if(this.fontInfo ! =null) {
+          if(this.fontInfo != null) {
              this.value1 = this.fontInfo.fullName
              console.log("getFontByName(): path = " + this.fontInfo.path)
              console.log("getFontByName(): postScriptName = " + this.fontInfo.postScriptName)

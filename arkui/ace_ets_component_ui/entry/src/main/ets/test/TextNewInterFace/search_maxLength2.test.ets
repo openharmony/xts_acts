@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
 export default function search_maxLength2() {
-  describe('search_maxLength2', function () {
-    beforeEach(async function (done) {
+  describe('search_maxLength2', () => {
+    beforeEach(async (done: Function) => {
       console.info("search_caret beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/TextNewInterFace/search_maxLength2',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/TextNewInterFace/search_maxLength2',
       }
       try {
         router.clear();
@@ -62,7 +62,7 @@ export default function search_maxLength2() {
       console.info('SearchMaxLength2_001 click success');
 
       let strJson1 = getInspectorByKey('SearchMaxLength2');
-      let obj2 = JSON.parse(strJson1);
+      let obj2: ESObject = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
       console.info("[SearchMaxLength2_001] component obj is: " + JSON.stringify(JSON.parse(strJson1)));
       expect(obj2.$attrs.value).assertEqual('123456789');
@@ -90,7 +90,7 @@ export default function search_maxLength2() {
       console.info('SearchMaxLength2_002 click success');
 
       let strJson1 = getInspectorByKey('SearchMaxLength2');
-      let obj4 = JSON.parse(strJson1);
+      let obj4: ESObject = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
       console.info("[SearchMaxLength2_002] component obj is: " + JSON.stringify(JSON.parse(strJson1)));
       expect(obj4.$attrs.value).assertEqual('12345');

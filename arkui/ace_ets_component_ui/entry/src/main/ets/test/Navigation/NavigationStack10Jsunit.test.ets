@@ -13,15 +13,15 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 export default function NavigationStack10Jsunit() {
-  describe('NavigationStack10Jsunit', function () {
-    beforeEach(async function (done) {
+  describe('NavigationStack10Jsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("NavigationStack10Jsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Navigation/NavigationStack10',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Navigation/NavigationStack10',
       }
       try {
         router.clear();
@@ -45,7 +45,7 @@ export default function NavigationStack10Jsunit() {
     * @tc.desc  : Use NavPathStack but empty content
     * @tc.level : Level 3
     */
-    it('NavigationStack10Jsunit_0100', 0, async function (done) {
+    it('NavigationStack10Jsunit_0100', 0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('NavigationStack10pushPathbut'));
@@ -58,7 +58,7 @@ export default function NavigationStack10Jsunit() {
       await buttonClear.click();
       await CommonFunc.sleep(2000);
       let strfocus = getInspectorByKey('NavigationStack10getText');
-      let focusobj = JSON.parse(strfocus);
+      let focusobj: ESObject = JSON.parse(strfocus);
       console.info('NavigationStack10Jsunit_0100 component focusobj is: ' + focusobj.$attrs.content);
       expect(focusobj.$attrs.content).assertEqual('1');
       console.info('NavigationStack10Jsunit_0100 END')

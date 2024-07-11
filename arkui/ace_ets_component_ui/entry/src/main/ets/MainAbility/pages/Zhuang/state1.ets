@@ -24,7 +24,7 @@ struct state1 {
     Column({ space: 20 }) {
       Text("State颜色undefined-->Pink")
       Button('button')
-        .backgroundColor(this.color1)
+        .backgroundColor(this.color1!)
         .onClick(() => {
           this.color1 = Color.Pink
         })
@@ -32,7 +32,7 @@ struct state1 {
 
       Text("State颜色null-->Pink")
       Button('button')
-        .backgroundColor(this.color2)
+        .backgroundColor(this.color2!)
         .onClick(() => {
           this.color2 = Color.Pink
         })
@@ -40,7 +40,7 @@ struct state1 {
 
       Text("State文本undefined-->100")
       Button('button')
-        .fontSize(this.number1)
+        .fontSize(this.number1!)
         .onClick(() => {
           this.number1 = 100
         })
@@ -48,7 +48,7 @@ struct state1 {
 
       Text("State文本null-->100")
       Button('button')
-        .fontSize(this.number2)
+        .fontSize(this.number2!)
         .onClick(() => {
           this.number2 = 100
         })

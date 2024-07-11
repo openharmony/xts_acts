@@ -46,7 +46,7 @@ struct SwiperAnimationExample {
   @State onAnimationGesture:string = "GestureSwipe";
   @State autoPlay:boolean = false;
 
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<boolean>()
   aboutToAppear(): void {
     let list: number[] = []
     for (let i = 1; i <= 10; i++) {
@@ -60,7 +60,7 @@ struct SwiperAnimationExample {
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<boolean> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'autoPlay') {
         this.autoPlay = message.value

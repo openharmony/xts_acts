@@ -14,6 +14,8 @@
  */
 import {MessageManager,Callback} from '../utils/MessageManager';
 
+type Message = boolean|string|number
+
 @Entry
 @Component
 struct TextTimerPage {
@@ -26,32 +28,32 @@ struct TextTimerPage {
   @State utc: number = 0
   @State elapsedTime: number = 0
   textTimerController: TextTimerController = new TextTimerController()
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
 
   onPageShow() {
     console.info('TextTimer onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'isCountDown') {
-        this.isCountDown = message.value
+        this.isCountDown = message.value as boolean
       }
       if (message.name == 'count') {
-        this.count = message.value
+        this.count = message.value as number
       }
       if (message.name == 'format') {
-        this.format = message.value
+        this.format = message.value as string
       }      
       if (message.name == 'start') {
-        this.start = message.value
+        this.start = message.value as string
       }
       if (message.name == 'pause') {
-        this.pause = message.value
+        this.pause = message.value as string
       }
       if (message.name == 'reset') {
-        this.reset = message.value
+        this.reset = message.value as string
       }
     }
     this.messageManager.registerCallback(callback)
