@@ -19,7 +19,7 @@ const TAG = 'ets_apiLack_add';
 
 @Entry
 @Component
-struct HoverEffect {
+struct HoverEffectPage {
   aboutToAppear() {
     Log.showInfo(TAG, `aboutToAppear HoverEffect start`)
   }
@@ -40,7 +40,7 @@ struct HoverEffect {
         .lineHeight(25)
         .border({ width: 1 })
         .padding(10)
-        .hoverEffect(2/*HoverEffect.Scale*/)
+        .hoverEffect(HoverEffect.Scale)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
         .key("ScaleText")
@@ -60,7 +60,7 @@ struct HoverEffect {
         .padding(10)
         .textAlign(TextAlign.Center)
         .textOverflow({ overflow: TextOverflow.None })
-        .hoverEffect(3/*HoverEffect.Highlight*/)
+        .hoverEffect(HoverEffect.Highlight)
         .key("HighlightText")
         .copyOption(0)
     }
