@@ -65,7 +65,7 @@ export default function UsbSystemApiNormalJsTest() {
 
             let rightResult = usbManager.addDeviceAccessRight(tokenId, deviceList[0].name);
             console.log(TAG, 'addDeviceAccessRight failed result: ' + rightResult);
-            expect(rightResult == null).assertTrue();
+            expect(rightResult === null).assertTrue();
         })
       } catch (err) {
         console.info(TAG, 'usb testUsbAddDeviceAccessRightNormalApp001 catch err code: ',
@@ -88,7 +88,7 @@ export default function UsbSystemApiNormalJsTest() {
       try {
         let nMaskCode = usbManager.getFunctionsFromString(strMaskCode);
         console.info(TAG, 'Test USB getFunctionsFromString nMaskCode: ' + nMaskCode);
-        expect(nMaskCode == null).assertTrue();
+        expect(nMaskCode === null).assertTrue();
       } catch(err) {
         console.info(TAG, 'usb testGetFunctionsFromStringNormalApp001 catch err code: ',
           err.code, ', message: ', err.message);
@@ -110,7 +110,7 @@ export default function UsbSystemApiNormalJsTest() {
       try {
         let maskCode = usbManager.getStringFromFunctions(funcs);
         console.info(TAG, 'Test USB getStringFromFunctions maskCode: ' + maskCode);
-        expect(maskCode == null).assertTrue();
+        expect(maskCode === null).assertTrue();
       } catch(err) {
         console.info(TAG, 'usb testGetStringFromFunctionsNormalApp001 catch err code: ',
           err.code, ', message: ', err.message);
@@ -132,7 +132,7 @@ export default function UsbSystemApiNormalJsTest() {
       try {
         await usbManager.setDeviceFunctions(funcs).then((data) => {
           console.info(TAG, 'Test USB setDeviceFunctions nMaskCode: ' + data);
-          expect(data == null).assertTrue();
+          expect(data === null).assertTrue();
         })
       } catch(err) {
         console.info(TAG, 'usb testSetDeviceFunctionsNormalApp001 catch err code: ',
@@ -154,7 +154,7 @@ export default function UsbSystemApiNormalJsTest() {
       try {
         let maskCode = usbManager.getDeviceFunctions();
         console.info(TAG, 'Test USB getDeviceFunctions maskCode: ' + maskCode);
-        expect(maskCode == null).assertTrue();
+        expect(maskCode === null).assertTrue();
       } catch(err) {
         console.info(TAG, 'usb testGetDeviceFunctionsNormalApp001 catch err code: ',
           err.code, ', message: ', err.message);
@@ -175,7 +175,7 @@ export default function UsbSystemApiNormalJsTest() {
       try {
         let portList = usbManager.getPortList();
         console.info(TAG, 'Test USB getPortList maskCode: ' + JSON.stringify(portList));
-        expect(portList == null).assertTrue();
+        expect(portList === null).assertTrue();
       } catch(err) {
         console.info(TAG, 'usb testGetPortListNormalApp001 catch err code: ', err.code, ', message: ', err.message);
         expect(err.code).assertEqual(PERMISSION_NORMAL_CODE);
@@ -196,7 +196,7 @@ export default function UsbSystemApiNormalJsTest() {
       try {
         let portMode = usbManager.getPortSupportModes(portId);
         console.info(TAG, 'Test USB getPortSupportModes maskCode: ' + JSON.stringify(portMode));
-        expect(portMode == null).assertTrue();
+        expect(portMode === null).assertTrue();
       } catch(err) {
         console.info(TAG, 'usb testGetPortSupportModesNormalApp001 catch err code: ',
           err.code, ', message: ', err.message);
@@ -219,7 +219,7 @@ export default function UsbSystemApiNormalJsTest() {
         await usbManager.setPortRoleTypes(portId, usbManager.SINK, usbManager.DEVICE)
           .then((data) => {
             console.info(TAG, 'Test USB setPortRoleTypes nMaskCode: ' + data);
-            expect(data == null).assertTrue();
+            expect(data === null).assertTrue();
         })
       } catch(err) {
         console.info(TAG, 'usb testSetPortRoleTypesNormalApp001 catch err code: ',

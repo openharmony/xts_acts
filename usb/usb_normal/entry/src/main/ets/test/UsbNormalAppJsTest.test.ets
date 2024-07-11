@@ -60,7 +60,7 @@ export default function UsbNormalAppJsTest() {
           if (!right) {
             let devicepipe = usbManager.connectDevice(device);
             console.log(TAG, 'connectDevice failed result: ' + devicepipe);
-            expect(devicepipe == null).assertTrue();
+            expect(devicepipe === null).assertTrue();
           }
       } catch (err) {
         console.info(TAG, 'usb testConnectDeviceNormalApp001 catch err code: ', err.code, ', message: ', err.message);
