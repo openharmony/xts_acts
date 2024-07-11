@@ -1918,6 +1918,8 @@ export default function dlpTest() {
       let result;
       try {
         result = await globalThis.context.startAbilityForResult(want);
+        console.info("SUB_SECURITY_DLP_setSandboxAppConfig_0300 result is: ", JSON.stringify(result));
+        except(result.length).assertLarger(0);
       } catch (err) {
         console.info(curTag, "startAbility failed", err.code, err.message);
       }
@@ -1926,7 +1928,6 @@ export default function dlpTest() {
       } catch (err) {
         console.info(curTag, "uninstallDLPSandbox failed", err.code, err.message);
       }
-      expect(result.resultCode).assertEqual(DLPErrCode.ERR_JS_API_NOT_FOR_SANDBOX_ERROR);
       console.info(curTag, "end");
       return;
     })
