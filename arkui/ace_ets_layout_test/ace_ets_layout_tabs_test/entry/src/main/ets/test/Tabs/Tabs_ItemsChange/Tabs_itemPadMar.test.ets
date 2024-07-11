@@ -374,7 +374,7 @@ export default function Tabs_itemPadMar() {
         ${Math.round(Tabs_itemPadMar_001.bottom - Tabs_itemPadMar_001.top)}`);
 
       expect(Math.abs(Math.round(Tabs_itemPadMar_001.bottom - Tabs_itemPadMar_001.top) - Math.round(vp2px(164))) <=1 ).assertTrue();  
-      expect(Math.abs(Math.round(Tabs_itemPadMar_001.bottom - Tabs_itemPadMar_001.top) - Math.round(vp2px(244))) <=1 ).assertTrue();
+      expect(Math.abs(Math.round(Tabs_itemPadMar_002.bottom - Tabs_itemPadMar_002.top) - Math.round(vp2px(244))) <=1 ).assertTrue();
       expect(Math.abs(Math.round(Tabs_itemPadMar_003.bottom - Tabs_itemPadMar_003.top) - Math.round(vp2px(244))) <=1 ).assertTrue();
 
       
