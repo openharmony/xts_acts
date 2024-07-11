@@ -74,13 +74,13 @@ export default function SwipeGesture3() {
       let colum = CommonFunc.getComponentRectOnScreen('SwipeGesture3');
       let top = colum.top
       let left = colum.left
-      await driver.swipe(Math.round(globalThis.winLeft + 50), Math.round(top + 50), Math.round(globalThis.winLeft + 450), Math.round(top + 450))
+      await driver.swipe(Math.round(globalThis.winLeft + 100), Math.round(top + 50), Math.round(globalThis.winLeft + 500), Math.round(top + 450))
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Swipe6');
       let obj = JSON.parse(strJson);
       console.info("[SwipeGesture3_0200] component obj is: " + JSON.stringify(obj));
       console.info("[SwipeGesture3_0200] title: " + JSON.stringify(obj.$attrs.content));
-      expect(Math.abs(Number(obj.$attrs.content) - 93) <= 10).assertEqual(true);
+      expect(Math.abs(Number(obj.$attrs.content)) - 93) < 10).assertEqual(true);
       console.info('[SwipeGesture3_0200] END');
       done();
     });
