@@ -2260,6 +2260,61 @@ static napi_value PackingOptionsGetDesiredDynamicRange(napi_env env, napi_callba
     return result;
 }
 
+static napi_value PackingOptionsSetNeedsPackProperties(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+
+    napi_value argValue[NUM_2] = {0};
+    size_t argCount = NUM_2;
+
+    napi_get_undefined(env, &result);
+
+    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_2) {
+        OH_LOG_ERROR(LOG_APP, "PackingOptionsSetNeedsPackProperties napi_get_cb_info failed");
+        return result;
+    }
+
+    void *ptr = nullptr;
+    napi_get_value_external(env, argValue[NUM_0], &ptr);
+    OH_PackingOptions *packingOptions = reinterpret_cast<OH_PackingOptions *>(ptr);
+
+    int needsPackProperties;
+    napi_get_value_int32(env, argValue[NUM_1], &needsPackProperties);
+
+    Image_ErrorCode errCode = OH_PackingOptions_SetNeedsPackProperties(packingOptions,
+        static_cast<bool>(needsPackProperties));
+    napi_create_int32(env, errCode, &result);
+    return result;
+}
+
+static napi_value PackingOptionsGetNeedsPackProperties(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+
+    napi_value argValue[NUM_1] = {0};
+    size_t argCount = NUM_1;
+
+    napi_get_undefined(env, &result);
+
+    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_1) {
+        OH_LOG_ERROR(LOG_APP, "PackingOptionsGetNeedsPackProperties napi_get_cb_info failed");
+        return result;
+    }
+
+    void *ptr = nullptr;
+    napi_get_value_external(env, argValue[NUM_0], &ptr);
+    OH_PackingOptions *packingOptions = reinterpret_cast<OH_PackingOptions *>(ptr);
+
+    bool needsPackProperties;
+    Image_ErrorCode errCode = OH_PackingOptions_GetNeedsPackProperties(packingOptions, &needsPackProperties);
+    if (errCode != IMAGE_SUCCESS) {
+        napi_create_int32(env, errCode, &result);
+        return result;
+    }
+    napi_create_int32(env, needsPackProperties, &result);
+    return result;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports) {
     napi_property_descriptor desc[] = {
@@ -2347,7 +2402,12 @@ static napi_value Init(napi_env env, napi_value exports) {
         {"PackingOptionsSetDesiredDynamicRange", nullptr, PackingOptionsSetDesiredDynamicRange, nullptr, nullptr,
          nullptr, napi_default, nullptr},
         {"PixelMapToSdr", nullptr, PixelMapToSdr, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"CheckHasHdr", nullptr, CheckHasHdr, nullptr, nullptr, nullptr, napi_default, nullptr}};
+        {"CheckHasHdr", nullptr, CheckHasHdr, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"PackingOptionsSetNeedsPackProperties", nullptr, PackingOptionsSetNeedsPackProperties, nullptr, nullptr,
+         nullptr, napi_default, nullptr},
+        {"PackingOptionsGetNeedsPackProperties", nullptr, PackingOptionsGetNeedsPackProperties, nullptr, nullptr,
+         nullptr, napi_default, nullptr}
+    };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;
 }
