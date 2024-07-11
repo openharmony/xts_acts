@@ -41,14 +41,14 @@ export default function SettingNopTest() {
       // This API supports only one parameter: clear action function.
     })
     /*
-     * @tc.number:SUB_SettingNopTest_0100
-     * @tc.name: SettingNopTest_0100
+     * @tc.number:SUB_Setting_nop_test_0100
+     * @tc.name: Setting_nop_test_0100
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SettingNopTest_0100', 0, async (done : Function) => {
+    it('Setting_nop_test_0100', 0, async (done : Function) => {
       try {
         let name = 'settings.screen.brightness10';
         let ret  = settings.setValueSync(globalThis.abilityContext, name, "test getValueSync",settings.domainName.DEVICE_SHARED);
@@ -73,14 +73,14 @@ export default function SettingNopTest() {
       done();
     })
     /*
-     * @tc.number:SUB_SettingNopTest_0200
-     * @tc.name: SettingNopTest_0200
+     * @tc.number:SUB_Setting_nop_test_0200
+     * @tc.name: Setting_nop_test_0200
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SettingNopTest_0200', 0, async (done : Function) => {
+    it('Setting_nop_test_0200', 0, async (done : Function) => {
       try {
         settings.setValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100', (status) => {
           console.log('Callback return whether value is set.');
@@ -95,14 +95,14 @@ export default function SettingNopTest() {
       done();
     })
     /*
-     * @tc.number:SUB_SettingNopTest_0300
-     * @tc.name: SettingNopTest_0300
+     * @tc.number:SUB_Setting_nop_test_0300
+     * @tc.name: Setting_nop_test_0300
      * @tc.desc:Using the on method without permission
      * @tc.level:Level 3
      * @tc.type:Function
      * @tc.size:MediumTest
      */
-    it('SettingNopTest_0300', 0, async (done : Function) => {
+    it('Setting_nop_test_0300', 0, async (done : Function) => {
       try {
         settings.setValue(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100', settings.domainName.DEVICE_SHARED).then((status) => {
           console.log(`callback:return whether value is set.`)
