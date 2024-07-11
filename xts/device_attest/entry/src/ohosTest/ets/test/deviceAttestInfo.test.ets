@@ -50,13 +50,14 @@ export default function deviceAttestInfoTest(context: Context, windowStage:windo
           expect(JSON.stringify(attestResultInfo.softwareResultDetail)).assertEqual(JSON.stringify([-2,-2,-2,-2,-2]));
           expect(attestResultInfo.ticket).assertEqual("");
           done();
-        }).catch((error: base.BusinessError) => {
-          console.info("error code:" + error.code + " message:" + error.message);
-          expect(error.code).assertEqual(202)
+        },(err: base.BusinessError) => {
+          console.info("!!!====>[FormComponent]1:error_1====>" + JSON.stringify(err));
+          expect(err.code == 202).assertTrue();
           done();
-        });
+        })
       } catch(err) {
         console.info("!!!====>[FormComponent]1:error_2====>" + JSON.stringify(err));
+        expect(err.code == 202).assertTrue();
         done();
       }
     })
@@ -69,10 +70,10 @@ export default function deviceAttestInfoTest(context: Context, windowStage:windo
     it('SUB_GRAPHIC_ENUMCOLORSPACE_JSAPI_002', 0, async (done:Function) => {
       console.info('test the enum value of attestResultInfo begin');
       try{
-        deviceAttest.getAttestStatus(async (err: Error, attestResultInfo: deviceAttest.AttestResultInfo) => {
+        deviceAttest.getAttestStatus(async (err:base.BusinessError, attestResultInfo: deviceAttest.AttestResultInfo) => {
           if (err) {
             console.info("!!!====>[FormComponent]2:error_1====>" + JSON.stringify(err));
-            // expect(err.code == 202).assertTrue();
+            expect(err.code == 202).assertTrue();
           } else {
             console.info("!!!====>[FormComponent]2:data====>" + JSON.stringify(attestResultInfo));
             expect(attestResultInfo.authResult).assertEqual(-2);
@@ -84,6 +85,7 @@ export default function deviceAttestInfoTest(context: Context, windowStage:windo
         });
       } catch(err) {
         console.info("!!!====>[FormComponent]2:error_2====>" + JSON.stringify(err));
+        expect(err.code == 202).assertTrue();
         done();
       }
     })
