@@ -528,7 +528,7 @@ export default function wifiManagerTest() {
      */
     it('SUB_Communication_WiFi_GetCurrentGroup_Promise_Nop', 0, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetCurrentGroup_Promise_Nop begin');
-      wifiManager.getCurrentGroup().then(()=>{
+      wifiManager.getCurrentGroup().then(() => {
         hilog.info(0x0000, 'socketTag', '%{public}s', 'SUB_Communication_WiFi_GetCurrentGroup_Promise_Nop success');
         expect().assertFail();
         done();
@@ -613,22 +613,23 @@ export default function wifiManagerTest() {
     it('SUB_Communication_WiFi_GetSupportedPowerMode_Callback_Nop', 0, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetSupportedPowerMode_Callback_Nop begin');
       try {
-        if(!wifiManagerExtAvailable()) {
+        if (!wifiManagerExtAvailable()) {
           hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SystemCapability.Communication.wifiMg.AP.Extension not available');
-          expect().assertTrue();
+          expect(true).assertTrue();
           done();
+        } else {
+          wifiManagerExt.getSupportedPowerMode((err: BusinessError, data) => {
+            if (err) {
+              hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetSupportedPowerMode_Callback_Nop fail ' + JSON.stringify(err));
+              expect(Number(err.code)).assertEqual(NOT_PERMISSION);
+              done();
+            } else {
+              hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetSupportedPowerMode_Callback_Nop success ');
+              expect().assertFail();
+              done();
+            }
+          });
         }
-        wifiManagerExt.getSupportedPowerMode((err: BusinessError, data) => {
-          if (err) {
-            hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetSupportedPowerMode_Callback_Nop fail ' + JSON.stringify(err));
-            expect(Number(err.code)).assertEqual(NOT_PERMISSION);
-            done();
-          } else {
-            hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetSupportedPowerMode_Callback_Nop success ');
-            expect().assertFail();
-            done();
-          }
-        });
       } catch (error) {
         hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetSupportedPowerMode_Callback_Nop failed ' + JSON.stringify(error));
         expect(Number(error.code)).assertEqual(NOT_PERMISSION);
@@ -647,19 +648,20 @@ export default function wifiManagerTest() {
     it('SUB_Communication_WiFi_GetSupportedPowerMode_Promise_Nop', 0, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetSupportedPowerMode_Promise_Nop begin');
       try {
-        if(!wifiManagerExtAvailable()) {
+        if (!wifiManagerExtAvailable()) {
           hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SystemCapability.Communication.wifiMg.AP.Extension not available');
-          expect().assertTrue();
+          expect(true).assertTrue();
           done();
+        } else {
+          wifiManagerExt.getSupportedPowerMode().then(data => {
+            expect().assertFail();
+            done();
+          }).catch((error: BusinessError) => {
+            hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetSupportedPowerMode_Promise_Nop failed ' + JSON.stringify(error));
+            expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+            done();
+          });
         }
-        wifiManagerExt.getSupportedPowerMode().then(data => {
-          expect().assertFail();
-          done();
-        }).catch((error:BusinessError) => {
-          hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetSupportedPowerMode_Promise_Nop failed ' + JSON.stringify(error));
-          expect(Number(error.code)).assertEqual(NOT_PERMISSION);
-          done();
-        });
       } catch (error) {
         hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetSupportedPowerMode_Promise_Nop failed ' + JSON.stringify(error));
         expect(Number(error.code)).assertEqual(NOT_PERMISSION);
@@ -678,20 +680,20 @@ export default function wifiManagerTest() {
     it('SUB_Communication_WiFi_GetPowerMode_Promise_Nop', 0, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetPowerMode_Promise_Nop begin');
       try {
-        if(!wifiManagerExtAvailable()) {
+        if (!wifiManagerExtAvailable()) {
           hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SystemCapability.Communication.wifiMg.AP.Extension not available');
-          expect().assertTrue();
+          expect(true).assertTrue();
           done();
+        } else {
+          wifiManagerExt.getPowerMode().then(data => {
+            expect().assertFail();
+            done();
+          }).catch((error: BusinessError) => {
+            hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetPowerMode_Promise_Nop failed ' + JSON.stringify(error));
+            expect(Number(error.code)).assertEqual(NOT_PERMISSION);
+            done();
+          });
         }
-        wifiManagerExt.getPowerMode().then(data => {
-          expect().assertFail();
-          done();
-        }).catch((error:BusinessError) => {
-          hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetPowerMode_Promise_Nop failed ' + JSON.stringify(error));
-          expect(Number(error.code)).assertEqual(NOT_PERMISSION);
-          done();
-        });
-
       } catch (error) {
         hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetPowerMode_Promise_Nop failed ' + JSON.stringify(error));
         expect(Number(error.code)).assertEqual(NOT_PERMISSION);
@@ -710,22 +712,23 @@ export default function wifiManagerTest() {
     it('SUB_Communication_WiFi_GetPowerMode_Callback_Nop', 0, async (done: Function) => {
       hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetPowerMode_Callback_Nop begin');
       try {
-        if(!wifiManagerExtAvailable()) {
+        if (!wifiManagerExtAvailable()) {
           hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SystemCapability.Communication.wifiMg.AP.Extension not available');
-          expect().assertTrue();
+          expect(true).assertTrue();
           done();
+        } else {
+          wifiManagerExt.getPowerMode((err, data) => {
+            if (err) {
+              hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetPowerMode_Callback_Nop failed ' + JSON.stringify(err));
+              expect(Number(err.code)).assertEqual(NOT_PERMISSION);
+              done();
+            } else {
+              hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetPowerMode_Callback_Nop success ');
+              expect().assertFail();
+              done();
+            }
+          });
         }
-        wifiManagerExt.getPowerMode((err, data) => {
-          if (err) {
-            hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetPowerMode_Callback_Nop failed ' + JSON.stringify(err));
-            expect(Number(err.code)).assertEqual(NOT_PERMISSION);
-            done();
-          } else {
-            hilog.info(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetPowerMode_Callback_Nop success ');
-            expect().assertFail();
-            done();
-          }
-        });
       } catch (error) {
         hilog.error(0x0000, 'wifiManagerTag', '%{public}s', 'SUB_Communication_WiFi_GetPowerMode_Callback_Nop failed ' + JSON.stringify(error));
         expect(Number(error.code)).assertEqual(NOT_PERMISSION);
