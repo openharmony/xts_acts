@@ -36,6 +36,10 @@
             {
                 "name": "ohos.permission.MANAGE_SECURE_SETTINGS",
                 "reason": "need permission to write settingsdata"
+            },
+            {
+                "name": "ohos.permission.MANAGE_SETTINGS",
+                "reason": "need new permission to write settingsdata"
             }
         ]
     }
