@@ -1820,8 +1820,9 @@ void type_test(JSVM_Env env, JSVM_Value value)
     OH_JSVM_IsFunction(env, value, &isValue);
     OH_JSVM_IsObject(env, value, &isValue);
     OH_JSVM_IsBigInt(env, value, &isValue);
+    OH_JSVM_IsConstructor(env, value, &isValue);
 }
-void type_test_1(JSVM_Env env)
+void type_test_Undefined(JSVM_Env env)
 {
     JSVM_HandleScope handleScope;
     OH_JSVM_OpenHandleScope(env, &handleScope);
@@ -1832,7 +1833,7 @@ void type_test_1(JSVM_Env env)
 
     OH_JSVM_CloseHandleScope(env, handleScope);
 }
-void type_test_2(JSVM_Env env)
+void type_test_Null(JSVM_Env env)
 {
     JSVM_HandleScope handleScope;
     OH_JSVM_OpenHandleScope(env, &handleScope);
@@ -1843,7 +1844,7 @@ void type_test_2(JSVM_Env env)
 
     OH_JSVM_CloseHandleScope(env, handleScope);
 }
-void type_test_3(JSVM_Env env)
+void type_test_Boolean(JSVM_Env env)
 {
     JSVM_HandleScope handleScope;
     OH_JSVM_OpenHandleScope(env, &handleScope);
@@ -1855,7 +1856,7 @@ void type_test_3(JSVM_Env env)
 
     OH_JSVM_CloseHandleScope(env, handleScope);
 }
-void type_test_4(JSVM_Env env)
+void type_test_Int32(JSVM_Env env)
 {
     JSVM_HandleScope handleScope;
     OH_JSVM_OpenHandleScope(env, &handleScope);
@@ -1866,7 +1867,7 @@ void type_test_4(JSVM_Env env)
 
     OH_JSVM_CloseHandleScope(env, handleScope);
 }
-void type_test_5(JSVM_Env env)
+void type_test_String(JSVM_Env env)
 {
     JSVM_HandleScope handleScope;
     OH_JSVM_OpenHandleScope(env, &handleScope);
@@ -1878,7 +1879,7 @@ void type_test_5(JSVM_Env env)
 
     OH_JSVM_CloseHandleScope(env, handleScope);
 }
-void type_test_6(JSVM_Env env)
+void type_test_Symbol(JSVM_Env env)
 {
     JSVM_HandleScope handleScope;
     OH_JSVM_OpenHandleScope(env, &handleScope);
@@ -1892,7 +1893,7 @@ void type_test_6(JSVM_Env env)
 
     OH_JSVM_CloseHandleScope(env, handleScope);
 }
-void type_test_7(JSVM_Env env)
+void type_test_Function(JSVM_Env env)
 {
     JSVM_HandleScope handleScope;
     OH_JSVM_OpenHandleScope(env, &handleScope);
@@ -1904,7 +1905,7 @@ void type_test_7(JSVM_Env env)
 
     OH_JSVM_CloseHandleScope(env, handleScope);
 }
-void type_test_8(JSVM_Env env)
+void type_test_Object(JSVM_Env env)
 {
     JSVM_HandleScope handleScope;
     OH_JSVM_OpenHandleScope(env, &handleScope);
@@ -1915,7 +1916,7 @@ void type_test_8(JSVM_Env env)
 
     OH_JSVM_CloseHandleScope(env, handleScope);
 }
-void type_test_9(JSVM_Env env)
+void type_test_Bigint(JSVM_Env env)
 {
     JSVM_HandleScope handleScope;
     OH_JSVM_OpenHandleScope(env, &handleScope);
@@ -1959,15 +1960,364 @@ static napi_value testValueOperation5(napi_env env1, napi_callback_info info)
     JSVM_EnvScope envScope;
     OH_JSVM_OpenEnvScope(env, &envScope);
 
-    type_test_1(env);
-    type_test_2(env);
-    type_test_3(env);
-    type_test_4(env);
-    type_test_5(env);
-    type_test_6(env);
-    type_test_7(env);
-    type_test_8(env);
-    type_test_9(env);
+    type_test_Undefined(env);
+    type_test_Null(env);
+    type_test_Boolean(env);
+    type_test_Int32(env);
+    type_test_String(env);
+    type_test_Symbol(env);
+    type_test_Function(env);
+    type_test_Object(env);
+    type_test_Bigint(env);
+
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+void type_test_RegExp_UNICODE(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value value = nullptr;
+    const char testStr[] = "ab+c";
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &value);
+    JSVM_Value result = nullptr;
+    OH_JSVM_CreateRegExp(env, value, JSVM_RegExpFlags::JSVM_REGEXP_UNICODE, &result);
+    type_test(env, result);
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+void type_test_RegExp_GLOBAL(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value value = nullptr;
+    const char testStr[] = "ab+c";
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &value);
+    JSVM_Value result = nullptr;
+    OH_JSVM_CreateRegExp(env, value, JSVM_RegExpFlags::JSVM_REGEXP_GLOBAL, &result);
+    type_test(env, result);
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+void type_test_RegExp_IGNORE_CASE(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value value = nullptr;
+    const char testStr[] = "ab+c";
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &value);
+    JSVM_Value result = nullptr;
+    OH_JSVM_CreateRegExp(env, value, JSVM_RegExpFlags::JSVM_REGEXP_IGNORE_CASE, &result);
+    type_test(env, result);
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+void type_test_RegExp_MULTILINE(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value value = nullptr;
+    const char testStr[] = "ab+c";
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &value);
+    JSVM_Value result = nullptr;
+    OH_JSVM_CreateRegExp(env, value, JSVM_RegExpFlags::JSVM_REGEXP_MULTILINE, &result);
+    type_test(env, result);
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+void type_test_RegExp_STICKY(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value value = nullptr;
+    const char testStr[] = "ab+c";
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &value);
+    JSVM_Value result = nullptr;
+    OH_JSVM_CreateRegExp(env, value, JSVM_RegExpFlags::JSVM_REGEXP_STICKY, &result);
+    type_test(env, result);
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+void type_test_RegExp_DOT_ALL(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value value = nullptr;
+    const char testStr[] = "ab+c";
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &value);
+    JSVM_Value result = nullptr;
+    OH_JSVM_CreateRegExp(env, value, JSVM_RegExpFlags::JSVM_REGEXP_DOT_ALL, &result);
+    type_test(env, result);
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+void type_test_RegExp_LINEAR(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value value = nullptr;
+    const char testStr[] = "ab+c";
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &value);
+    JSVM_Value result = nullptr;
+    OH_JSVM_CreateRegExp(env, value, JSVM_RegExpFlags::JSVM_REGEXP_LINEAR, &result);
+    type_test(env, result);
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+void type_test_RegExp_HAS_INDICES(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value value = nullptr;
+    const char testStr[] = "ab+c";
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &value);
+    JSVM_Value result = nullptr;
+    OH_JSVM_CreateRegExp(env, value, JSVM_RegExpFlags::JSVM_REGEXP_HAS_INDICES, &result);
+    type_test(env, result);
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+void type_test_RegExp_UNICODE_SETS(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value value = nullptr;
+    const char testStr[] = "ab+c";
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &value);
+    JSVM_Value result = nullptr;
+    OH_JSVM_CreateRegExp(env, value, JSVM_RegExpFlags::JSVM_REGEXP_UNICODE_SETS, &result);
+    type_test(env, result);
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+static napi_value testValueOperation6(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+    JSVM_CallbackStruct param[1];
+    param[0].data = nullptr;
+    param[0].callback = assertEqual;
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"assertEqual", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+
+    type_test_RegExp_UNICODE(env);
+    type_test_RegExp_GLOBAL(env);
+    type_test_RegExp_IGNORE_CASE(env);
+    type_test_RegExp_MULTILINE(env);
+    type_test_RegExp_STICKY(env);
+    type_test_RegExp_DOT_ALL(env);
+    type_test_RegExp_LINEAR(env);
+    type_test_RegExp_HAS_INDICES(env);
+    type_test_RegExp_UNICODE_SETS(env);
+
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+void type_test_RegExp_Undefined(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value value = nullptr;
+    OH_JSVM_GetUndefined(env, &value);
+    JSVM_Value result = nullptr;
+    OH_JSVM_CreateRegExp(env, value, JSVM_RegExpFlags::JSVM_REGEXP_UNICODE, &result);
+    type_test(env, result);
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+void type_test_RegExp_Null(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value value = nullptr;
+    OH_JSVM_GetNull(env, &value);
+    JSVM_Value result = nullptr;
+    OH_JSVM_CreateRegExp(env, value, JSVM_RegExpFlags::JSVM_REGEXP_UNICODE, &result);
+    type_test(env, result);
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+void type_test_RegExp_Boolean(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value value = nullptr;
+    bool x = true;
+    OH_JSVM_GetBoolean(env, x, &value);
+    JSVM_Value result = nullptr;
+    OH_JSVM_CreateRegExp(env, value, JSVM_RegExpFlags::JSVM_REGEXP_UNICODE, &result);
+    type_test(env, result);
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+void type_test_RegExp_Int32(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value value;
+    OH_JSVM_CreateInt32(env, 1, &value);
+    JSVM_Value result = nullptr;
+    OH_JSVM_CreateRegExp(env, value, JSVM_RegExpFlags::JSVM_REGEXP_UNICODE, &result);
+    type_test(env, result);
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+void type_test_RegExp_Symbol(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value value = nullptr;
+    JSVM_Value description;
+    const char testStr[] = "1234567";
+    OH_JSVM_CreateStringUtf8(env, testStr, strlen(testStr), &description);
+    OH_JSVM_CreateSymbol(env, description, &value);
+    JSVM_Value result = nullptr;
+    OH_JSVM_CreateRegExp(env, value, JSVM_RegExpFlags::JSVM_REGEXP_UNICODE, &result);
+    type_test(env, result);
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+void type_test_RegExp_Function(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value value = nullptr;
+    JSVM_CallbackStruct param;
+    OH_JSVM_CreateFunction(env, "func", JSVM_AUTO_LENGTH, &param, &value);
+    JSVM_Value result = nullptr;
+    OH_JSVM_CreateRegExp(env, value, JSVM_RegExpFlags::JSVM_REGEXP_UNICODE, &result);
+    type_test(env, result);
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+void type_test_RegExp_Object(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value value = nullptr;
+    OH_JSVM_CreateObject(env, &value);
+    JSVM_Value result = nullptr;
+    OH_JSVM_CreateRegExp(env, value, JSVM_RegExpFlags::JSVM_REGEXP_UNICODE, &result);
+    type_test(env, result);
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+void type_test_RegExp_BigintInt64(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value value = nullptr;
+    int64_t testValue = INT64_MAX;
+    OH_JSVM_CreateBigintInt64(env, testValue, &value);
+    JSVM_Value result = nullptr;
+    OH_JSVM_CreateRegExp(env, value, JSVM_RegExpFlags::JSVM_REGEXP_UNICODE, &result);
+    type_test(env, result);
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+void type_test_RegExp_Map(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value value = nullptr;
+    OH_JSVM_CreateMap(env, &value);
+    JSVM_Value result = nullptr;
+    OH_JSVM_CreateRegExp(env, value, JSVM_RegExpFlags::JSVM_REGEXP_UNICODE, &result);
+    type_test(env, result);
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+static napi_value testValueOperation7(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+    JSVM_CallbackStruct param[1];
+    param[0].data = nullptr;
+    param[0].callback = assertEqual;
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"assertEqual", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+
+    type_test_RegExp_Undefined(env);
+    type_test_RegExp_Null(env);
+    type_test_RegExp_Boolean(env);
+    type_test_RegExp_Int32(env);
+    type_test_RegExp_Symbol(env);
+    type_test_RegExp_Function(env);
+    type_test_RegExp_Object(env);
+    type_test_RegExp_BigintInt64(env);
+    type_test_RegExp_Map(env);
 
     OH_JSVM_CloseEnvScope(env, envScope);
     OH_JSVM_DestroyEnv(env);
@@ -7970,6 +8320,97 @@ static napi_value testJswmInterface(napi_env env1, napi_callback_info info)
     return result11;
 }
 
+static JSVM_Value IsConstructor(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    size_t argc = 1;
+    JSVM_Value args[1] = {nullptr};
+    OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
+
+    bool result = false;
+    OH_JSVM_IsConstructor(env, args[0], &result);
+
+    JSVM_Value isConstructor = nullptr;
+    OH_JSVM_GetBoolean(env, result, &isConstructor);
+    return isConstructor;
+}
+static JSVM_Value CreateRegExp1(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    size_t argc = 1;
+    JSVM_Value args[1] = {nullptr};
+    OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
+
+    JSVM_Value returnValue = nullptr;
+    JSVM_Status status = OH_JSVM_CreateRegExp(env, args[0], JSVM_RegExpFlags::JSVM_REGEXP_IGNORE_CASE, &returnValue);
+    if (status != JSVM_OK) {
+        OH_JSVM_ThrowError(env, nullptr, "Failed to create regexp");
+    }
+    return returnValue;
+}
+static JSVM_Value CreateRegExp2(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    size_t argc = 1;
+    JSVM_Value args[1] = {nullptr};
+    OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
+
+    JSVM_Value returnValue = nullptr;
+    JSVM_Status status = OH_JSVM_CreateRegExp(env, args[0], JSVM_RegExpFlags::JSVM_REGEXP_GLOBAL, &returnValue);
+    if (status != JSVM_OK) {
+        OH_JSVM_ThrowError(env, nullptr, "Failed to create regexp");
+    }
+    return returnValue;
+}
+static JSVM_Value CreateRegExp3(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    size_t argc = 1;
+    JSVM_Value args[1] = {nullptr};
+    OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
+
+    JSVM_Value returnValue = nullptr;
+    JSVM_Status status = OH_JSVM_CreateRegExp(env, args[0], JSVM_RegExpFlags::JSVM_REGEXP_MULTILINE, &returnValue);
+    if (status != JSVM_OK) {
+        OH_JSVM_ThrowError(env, nullptr, "Failed to create regexp");
+    }
+    return returnValue;
+}
+static JSVM_Value CreateRegExp4(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    size_t argc = 1;
+    JSVM_Value args[1] = {nullptr};
+    OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
+
+    JSVM_Value returnValue = nullptr;
+    JSVM_Status status = OH_JSVM_CreateRegExp(env, args[0], JSVM_RegExpFlags::JSVM_REGEXP_STICKY, &returnValue);
+    if (status != JSVM_OK) {
+        OH_JSVM_ThrowError(env, nullptr, "Failed to create regexp");
+    }
+    return returnValue;
+}
+static JSVM_Value CreateRegExp5(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    size_t argc = 1;
+    JSVM_Value args[1] = {nullptr};
+    OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
+
+    JSVM_Value returnValue = nullptr;
+    JSVM_Status status = OH_JSVM_CreateRegExp(env, args[0], JSVM_RegExpFlags::JSVM_REGEXP_DOT_ALL, &returnValue);
+    if (status != JSVM_OK) {
+        OH_JSVM_ThrowError(env, nullptr, "Failed to create regexp");
+    }
+    return returnValue;
+}
+static JSVM_Value CreateRegExpEnvNullptr(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    size_t argc = 1;
+    JSVM_Value args[1] = {nullptr};
+    OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
+
+    JSVM_Value returnValue = nullptr;
+    JSVM_Status status = OH_JSVM_CreateRegExp(nullptr, args[0], JSVM_RegExpFlags::JSVM_REGEXP_DOT_ALL, &returnValue);
+    JSVM_Value value = nullptr;
+    OH_JSVM_CreateInt32(env, static_cast<int32_t>(status), &value);
+    return value;
+}
+
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = CreateStringUtf8},
     {.data = nullptr, .callback = GetValueStringUtf8},
@@ -8122,6 +8563,13 @@ static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = WaitForDebuggerFailed},
     {.data = nullptr, .callback = SetInstanceData},
     {.data = nullptr, .callback = GetInstanceData},
+    {.data = nullptr, .callback = IsConstructor},
+    {.data = nullptr, .callback = CreateRegExp1},
+    {.data = nullptr, .callback = CreateRegExp2},
+    {.data = nullptr, .callback = CreateRegExp3},
+    {.data = nullptr, .callback = CreateRegExp4},
+    {.data = nullptr, .callback = CreateRegExp5},
+    {.data = nullptr, .callback = CreateRegExpEnvNullptr},
 };
 static JSVM_PropertyDescriptor jsDescriptor[] = {
     {"createStringUtf8", nullptr, &param[0], nullptr, nullptr, nullptr, JSVM_DEFAULT},
@@ -8275,6 +8723,13 @@ static JSVM_PropertyDescriptor jsDescriptor[] = {
     {"waitForDebuggerFailed", nullptr, &param[148], nullptr, nullptr, nullptr, JSVM_DEFAULT},
     {"setInstanceData", nullptr, &param[149], nullptr, nullptr, nullptr, JSVM_DEFAULT},
     {"getInstanceData", nullptr, &param[150], nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"isConstructor", nullptr, &param[151], nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"createRegExp1", nullptr, &param[152], nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"createRegExp2", nullptr, &param[153], nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"createRegExp3", nullptr, &param[154], nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"createRegExp4", nullptr, &param[155], nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"createRegExp5", nullptr, &param[156], nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"createRegExpEnvNullptr", nullptr, &param[157], nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 
 napi_typedarray_type GetArrayType(JSVM_TypedarrayType typeNum)
@@ -8794,6 +9249,8 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("testValueOperation3", testValueOperation3),
         DECLARE_NAPI_FUNCTION("testValueOperation4", testValueOperation4),
         DECLARE_NAPI_FUNCTION("testValueOperation5", testValueOperation5),
+        DECLARE_NAPI_FUNCTION("testValueOperation6", testValueOperation6),
+        DECLARE_NAPI_FUNCTION("testValueOperation7", testValueOperation7),
         DECLARE_NAPI_FUNCTION("testGetPropertyNames",testGetPropertyNames),
         DECLARE_NAPI_FUNCTION("testGetAllPropertyNames",testGetAllPropertyNames),
         DECLARE_NAPI_FUNCTION("testProperty",testProperty),
