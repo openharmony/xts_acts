@@ -116,7 +116,9 @@ export default function statNdkTest() {
       expect(result).assertEqual(resultTrue);
       done()
     });
-
+    /**
+     *  The case related to mkNodAt is missing. It will be added after the kernel specifications are determined.
+     */
     /**
      * @tc.number     : SUB_THIRDPARTY_MUSL_STAT_MKDIR_0100
      * @tc.name       : testMuslStatMkDir001
