@@ -525,10 +525,10 @@ describe('fileIO_fs_copy', function () {
    * Test file copied successfully by path.Promise without CopyOptions, TaskSignal.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_async_015', 0, async function (done) {
+  it('fileIO_copy_async_015', 3, async function (done) {
    let fpath = await featureAbility.getContext().getFilesDir() + '/fileIO_copy_async_015';
    let destpath = fpath + 'dest';
    expect(prepare200MFile(fpath)).assertTrue();
@@ -549,7 +549,7 @@ describe('fileIO_fs_copy', function () {
      "copySignal" : copySignal,
    };
    try {
-     await fs.copy(srcDirUri, dstDirUri, options);
+     await fileIO.copy(srcDirUri, dstDirUri, options);
      expect(false).assertTrue();
      
    } catch (e) {
@@ -569,10 +569,10 @@ describe('fileIO_fs_copy', function () {
    * Test file copied successfully by path.callback without CopyOptions, TaskSignal.
    * @tc.size MEDIUM
    * @tc.type Function
-   * @tc.level Level 0
+   * @tc.level Level 3
    * @tc.require
    */
-  it('fileIO_copy_async_016', 0, async function (done) {
+  it('fileIO_copy_async_016', 3, async function (done) {
     let fpath = await featureAbility.getContext().getFilesDir() + '/fileIO_copy_async_016';
     let destpath = fpath + 'dest';
     expect(prepare200MFile(fpath)).assertTrue();
@@ -594,7 +594,7 @@ describe('fileIO_fs_copy', function () {
       "copySignal" : copySignal,
     };
     try {
-      fs.copy(srcDirUri, dstDirUri, options, (err) => {
+      fileIO.copy(srcDirUri, dstDirUri, options, (err) => {
         if (err) {
           console.log('fileIO_copy_async_016 error package: ' + JSON.stringify(err));
           let stat2 = fileIO.statSync(destpath);
