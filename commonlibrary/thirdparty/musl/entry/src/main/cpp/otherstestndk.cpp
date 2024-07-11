@@ -864,7 +864,8 @@ static napi_value Accept4(napi_env env, napi_callback_info info)
                     struct sockaddr_in clnAddr = {0};
                     socklen_t clnAddrLen = sizeof(clnAddr);
                     int sClient = -PARAM_1;
-                    sClient = accept4(sListen, reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&clnAddr)),
+                    sClient = accept4(sListen,
+                        reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&clnAddr)),
                         &clnAddrLen, PARAM_0);
                     if (sClient > 0) {
                         ret = PARAM_0;
