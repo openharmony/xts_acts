@@ -30,7 +30,7 @@ struct PreImeEventExample1 {
         .height("40vp")
         .border({ radius:"20vp" })
         .onKeyPreIme((event:KeyEvent) => {
-          this.buttonState = event.getModifierKeyState(["onKeyPreIme_id"])
+          this.buttonState = event.getModifierKeyState?.(["onKeyPreIme_id"]) || false
           if (event.keyCode == KeyCode.KEYCODE_DPAD_LEFT) {       
             this.buttonText = 'onKeyPreIme succ';     
             return true;

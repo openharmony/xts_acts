@@ -13,28 +13,34 @@
  * limitations under the License.
  */
 
-import events_emitter from '@ohos.events.emitter';
+{
+  "app": {
+    "signingConfigs": [
 
-export default class Utils {
-  static sleep(time: number) {
-    return new Promise((resolve: (value: string) => void) => {
-      setTimeout(() => {
-        resolve("ok")
-      }, time)
-    }).then(() => {
-      console.info(`sleep ${time} over...`)
-    })
-  }
-  static sendEvent(message: string, eventId: number) {
-    let eventData: events_emitter.EventData = {
-      data: {
-        "msg": message
+    ],
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+        "compileSdkVersion": 12,
+        "compatibleSdkVersion": 12,
+        "targetSdkVersion": 12,
+        "runtimeOS": "OpenHarmony"
       }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
     }
-    let event: events_emitter.InnerEvent = {
-      eventId: eventId,
-      priority: events_emitter.EventPriority.LOW
-    }
-    events_emitter.emit(event, eventData)
-  }
+  ]
 }

@@ -16,13 +16,13 @@
 import {describe, beforeAll, beforeEach, afterEach, it, expect} from "@ohos/hypium"
 import {UiComponent, UiDriver, Component, Driver, ON, BY, } from '@ohos.UiTest';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function SwiperGestureHandlerTest() {
 
-  describe('SwiperGestureHandlerTest', function () {
-    beforeEach(async function (done) {
-      let options = {
+  describe('SwiperGestureHandlerTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/GestureHandler/SwiperGestureHandler',
       }
       try {
@@ -42,7 +42,7 @@ export default function SwiperGestureHandlerTest() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("SwiperGestureHandler after each called");
     });
@@ -55,7 +55,7 @@ export default function SwiperGestureHandlerTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('SwiperGestureHandler_0010', 0, async function (done) {
+    it('SwiperGestureHandler_0010', 0, async (done: Function) => {
       console.info('SwiperGestureHandler_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -68,7 +68,7 @@ export default function SwiperGestureHandlerTest() {
         Math.round(right - 100), Math.round((top + bottom) / 2));
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('SwiperGestureHandler1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.label).assertEqual('swiper succ');
       console.info('[SwiperGestureHandler_0010] END');
       done();

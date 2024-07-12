@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
@@ -71,7 +71,7 @@ export default function addParallelGestureTest1() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('addParallelGestureTest1_text');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
       console.info("[addParallelGestureTest1_0100] obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('columnTap');

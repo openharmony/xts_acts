@@ -29,6 +29,7 @@ class MyClearModifier implements GestureModifier {
           })
       )
     }
+    return this.value
   }
 }
 
