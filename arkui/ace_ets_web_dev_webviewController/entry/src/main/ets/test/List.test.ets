@@ -60,7 +60,6 @@ import webViewMediaOption from './webViewMediaOption.test'
 export default function testsuite() {
        webViewControllerJsunit()
        webViewOnErrorReceive02Jsunit()
-       webViewOnErrorReceive03Jsunit()
        webViewHasImageJsunit()
        webViewSetPrintBackgroundJsunit()
        webViewSrollToJsunit()
@@ -103,4 +102,5 @@ export default function testsuite() {
        //webViewOnAudioStateChanged()
        //webViewMediaOption()
        webViewOnWindowNewJsunit()
+       webViewOnErrorReceive03Jsunit()
 }
