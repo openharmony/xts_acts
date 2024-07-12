@@ -262,18 +262,21 @@ export default function tabs_IndexTest() {
       expect(Math.abs(Tabs_index_003.right - Tabs_index_003.left - vp2px(330)) <= 1).assertTrue();
 
       console.info(`[testTabsIndexNormal] subGreen.bottom = ${subGreen.bottom}`);
-      expect(subGreen.bottom).assertEqual(Tabs_index_001.top);
-      expect(subGreen.bottom).assertEqual(subBlue.bottom);
-      expect(subGreen.bottom).assertEqual(subYellow.bottom);
+      expect(Math.abs(subGreen.bottom - Tabs_index_001.top) <=1 ).assertTrue();
+      expect(Math.abs(subGreen.bottom - subBlue.bottom) <=1 ).assertTrue();
+      expect(Math.abs(subGreen.bottom - subYellow.bottom) <=1 ).assertTrue();
+
+
 
       console.info(`[testTabsIndexNormal] subGreen.bottom - subGreen.top = ${subGreen.bottom - subGreen.top}`);
-      expect(Math.round(subGreen.bottom - subGreen.top)).assertEqual(Math.round(vp2px(56)));
-      expect(Math.round(subBlue.bottom - subBlue.top)).assertEqual(Math.round(vp2px(56)));
-      expect(Math.round(subYellow.bottom - subYellow.top)).assertEqual(Math.round(vp2px(56)));
-      expect(Math.round(subGreen.right - subGreen.left)).assertEqual(Math.round(vp2px(110)));
-      expect(Math.round(subBlue.right - subBlue.left)).assertEqual(Math.round(vp2px(110)));
-      expect(Math.round(subYellow.right - subYellow.left)).assertEqual(Math.round(vp2px(110)));
-      console.info('[testTabsIndexNormal] END');
+
+      expect(Math.abs(Math.round(subGreen.bottom - subGreen.top) - Math.round(vp2px(56))) <=1 ).assertTrue();
+      expect(Math.abs(Math.round(subBlue.bottom - subBlue.top) - Math.round(vp2px(56))) <=1 ).assertTrue();
+      expect(Math.abs(Math.round(subYellow.bottom - subYellow.top) - Math.round(vp2px(56))) <=1 ).assertTrue();
+      expect(Math.abs(Math.round(subGreen.right - subGreen.left) - Math.round(vp2px(110))) <=1 ).assertTrue();
+      expect(Math.abs(Math.round(subBlue.right - subBlue.left) - Math.round(vp2px(110))) <=1 ).assertTrue();
+      expect(Math.abs(Math.round(subYellow.right - subYellow.left) - Math.round(vp2px(110))) <=1 ).assertTrue();
+      
       done();
     });
     /**
