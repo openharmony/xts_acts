@@ -46,6 +46,21 @@ export default class EntryAbility extends UIAbility {
           return;
         }
         windowClass = data;
+
+        let isLayoutFullScreen = false;
+        try {
+          windowClass.setWindowLayoutFullScreen(isLayoutFullScreen, (err: BusinessError) => {
+            const errCode: number = err.code;
+            if (errCode) {
+              console.error(`Failed to set the window layout to full-screen mode. Cause code: ${err.code}, message: ${err.message}`);
+              return;
+            }
+            console.info('Succeeded in setting the window layout to full-screen mode.');
+          });
+        } catch (exception) {
+          console.error(`Failed to set the window layout to full-screen mode. Cause code: ${exception.code}, message: ${exception.message}`);
+        }
+
         hilog.info(0x0000, 'testTag', 'Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
         try {
           let properties : window.WindowProperties = windowClass.getWindowProperties();
