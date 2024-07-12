@@ -21,6 +21,25 @@ import featureAbility from '@ohos.ability.featureAbility';
 import fs from '@ohos.file.fs';
 const CONTENT = 'hello!!!';
 
+export function prepare2GFile(fpath) {
+  try {
+    let file = fileIO.openSync(fpath, fileIO.OpenMode.CREATE | fileIO.OpenMode.READ_WRITE)
+    fileIO.truncateSync(file.fd)
+    let bf = new ArrayBuffer(1024 * 1024 * 20);
+    for (let i = 0; i < 100; i++) {
+      let offset = bf.byteLength * i;
+      let writeLen = fileIO.writeSync(file.fd, bf, { offset: offset, length: bf.byteLength, encoding: 'utf-8' });
+    }
+    fileIO.fsyncSync(file.fd)
+    fileIO.closeSync(file)
+    return true
+  }
+  catch (e) {
+    console.log('Failed to prepare200MFile for ' + e)
+    return false
+  }
+}
+
 export default function fileIOCopy() {
 describe('fileIO_fs_copy', function () {
 
@@ -531,10 +550,11 @@ describe('fileIO_fs_copy', function () {
   it('fileIO_copy_async_015', 3, async function (done) {
    let fpath = await featureAbility.getContext().getFilesDir() + '/fileIO_copy_async_015';
    let destpath = fpath + 'dest';
-   expect(prepare200MFile(fpath)).assertTrue();
+   expect(prepare2GFile(fpath)).assertTrue();
    let srcDirUri = fileUri.getUriFromPath(fpath);
    let dstDirUri = fileUri.getUriFromPath(destpath);
    let copySignal = new fs.TaskSignal;
+   copySignal.onCancel();
    let stat1 = fileIO.statSync(fpath);
    console.log('fileIO_copy_async_015 stat1: ' + stat1.size);
    let progressListener = (progress) => {
@@ -549,7 +569,7 @@ describe('fileIO_fs_copy', function () {
      "copySignal" : copySignal,
    };
    try {
-     await fileIO.copy(srcDirUri, dstDirUri, options);
+     await fs.copy(srcDirUri, dstDirUri, options);
      expect(false).assertTrue();
      
    } catch (e) {
@@ -575,7 +595,7 @@ describe('fileIO_fs_copy', function () {
   it('fileIO_copy_async_016', 3, async function (done) {
     let fpath = await featureAbility.getContext().getFilesDir() + '/fileIO_copy_async_016';
     let destpath = fpath + 'dest';
-    expect(prepare200MFile(fpath)).assertTrue();
+    expect(prepare2GFile(fpath)).assertTrue();
     let srcDirUri = fileUri.getUriFromPath(fpath);
     let dstDirUri = fileUri.getUriFromPath(destpath);
     let copySignal = new fs.TaskSignal;
