@@ -19,7 +19,7 @@ import events_emitter from '@ohos.events.emitter';
 @Component
 struct ClickExample {
   @State text: string = '';
-  SourceType: string = '';
+  sourceType: string = '';
   eventType?: string;
 
   build() {
@@ -40,13 +40,13 @@ struct ClickExample {
             this.eventType = 'Move'
           }
           if (event.source === SourceType.Unknown) {
-            this.SourceType = 'Unknown'
+            this.sourceType = 'Unknown'
           }
           if (event.source === SourceType.Mouse) {
-            this.SourceType = 'Mouse'
+            this.sourceType = 'Mouse'
           }
           if (event.source === SourceType.TouchScreen) {
-            this.SourceType = 'TouchScreen'
+            this.sourceType = 'TouchScreen'
           }
           console.info(this.text = 'source：' + event.source);
           try {

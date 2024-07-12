@@ -91,7 +91,7 @@ struct Common_ts_ets_apiStaticClear {
         .textOverflow({ overflow: TextOverflow.None })
         .key("EnvPropText")
         .onClick(() => {
-          let enable: ESObject = AppStorage.Get("accessibilityEnabled");
+          let enable: boolean | null | undefined = AppStorage.Get("accessibilityEnabled");
           try {
             let backData: events_emitter.EventData = {
               data: {
