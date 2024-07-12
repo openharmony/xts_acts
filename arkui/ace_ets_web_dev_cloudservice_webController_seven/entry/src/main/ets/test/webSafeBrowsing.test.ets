@@ -100,5 +100,35 @@ export default function ActsAceWebSafeBrowsing() {
       sendEventByKey('webViewSdkSchemeHandler', 10, '');
     })
 
+    /*
+     *@tc.number SUB_ACE_WEB_SAFEBROWSING_API_0003
+     *@tc.name testIsSafeBrowsingEnabledTrue
+     *@tc.desc test IsSafeBrowsingEnabledTrue
+     *@tc.size MediumTest
+     *@tc.type Function
+     *@tc.level 1
+     */
+    it('testIsSafeBrowsingEnabledTrue', 0, async (done: Function) => {
+      emitKey = "emitIsSafeBrowsingEnabledTrue"
+      Utils.emitEvent(emitKey, 10);
+      Utils.registerEvent("testIsSafeBrowsingEnabledTrue", true, 2003, done);
+      sendEventByKey('webViewSdkSchemeHandler', 10, '');
+    })
+
+    /*
+     *@tc.number SUB_ACE_WEB_SAFEBROWSING_API_0004
+     *@tc.name testIsSafeBrowsingEnabledFalse
+     *@tc.desc test IsSafeBrowsingEnabledFalse
+     *@tc.size MediumTest
+     *@tc.type Function
+     *@tc.level 1
+     */
+    it('testIsSafeBrowsingEnabledFalse', 0, async (done: Function) => {
+      emitKey = "emitIsSafeBrowsingEnabledFalse"
+      Utils.emitEvent(emitKey, 10);
+      Utils.registerEvent("testIsSafeBrowsingEnabledFalse", true, 2004, done);
+      sendEventByKey('webViewSdkSchemeHandler', 10, '');
+    })
+
   })
 }

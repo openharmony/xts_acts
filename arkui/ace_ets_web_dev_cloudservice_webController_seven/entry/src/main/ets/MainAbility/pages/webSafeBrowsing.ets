@@ -85,6 +85,40 @@ struct webSafeBrowsing {
                       }
                       break;
                     }
+
+                    case 'emitIsSafeBrowsingEnabledTrue': {
+                      try {
+                        this.controller.enableSafeBrowsing(true);
+                        let result:boolean = this.controller.isSafeBrowsingEnabled();
+                        console.log(' emitIsSafeBrowsingEnabledTrue:  ', result);
+
+                        await Utils.sleep(1000)
+                        Utils.emitEvent(result, 2003)
+                      } catch (error) {
+                        let e:business_error.BusinessError = error as business_error.BusinessError;
+                        console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                        await Utils.sleep(1000)
+                        Utils.emitEvent(false, 2003)
+                      }
+                      break;
+                    }
+
+                    case 'emitIsSafeBrowsingEnabledFalse': {
+                      try {
+                        this.controller.enableSafeBrowsing(false);
+                        let result:boolean = this.controller.isSafeBrowsingEnabled();
+                        console.log(' emitIsSafeBrowsingEnabledFalse:  ', result);
+
+                        await Utils.sleep(1000)
+                        Utils.emitEvent(!result, 2004)
+                      } catch (error) {
+                        let e:business_error.BusinessError = error as business_error.BusinessError;
+                        console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                        await Utils.sleep(1000)
+                        Utils.emitEvent(false, 2004)
+                      }
+                      break;
+                    }
                   }
               })
           }

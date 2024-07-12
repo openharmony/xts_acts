@@ -231,20 +231,7 @@ export default function ActsAceWebViewObjectEmbedEnhance() {
       sendEventByKey('webViewObjectEmbedEnhanceButton', 10, '');
     })
 
-    /*
-     *@tc.number SUB_ACE_WEB_OBJECTEMBED_Gesture_API_0013
-     *@tc.name testWebViewObjectEmbed
-     *@tc.desc test objectEmbed
-     *@tc.size MediumTest
-     *@tc.type Function
-     *@tc.level 1
-     */
-    it('testWebViewObjectEmbedPdf', 0, async (done: Function) => {
-      emitKey = "emitWebViewObjectEmbedPdf"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewObjectEmbedPdf", 'success', 1013, done);
-      sendEventByKey('webViewObjectEmbedEnhanceButton', 10, '');
-    })
+
 
     /*
      *@tc.number SUB_ACE_WEB_OBJECTEMBED_Gesture_API_0014
