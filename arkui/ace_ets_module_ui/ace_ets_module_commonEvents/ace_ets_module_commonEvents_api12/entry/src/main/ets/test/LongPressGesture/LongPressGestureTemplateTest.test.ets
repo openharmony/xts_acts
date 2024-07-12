@@ -82,11 +82,11 @@ export default function LongPressGestureTemplateTest() {
       let timeD:number = Date.now();
       await CommonFunc.sleep(4000);
       let text1 = getInspectorByKey('LongPressGestureTemplate_Text01');
-      let obj1 = JSON.parse(text1);
+      let obj1: ESObject = JSON.parse(text1);
       let time1:number = Number(obj1.$attrs.content)
       console.log('LongPressGestureTemplateTest_0010 obj1 $attrs content',obj1.$attrs.content,time1)
       let text2 = getInspectorByKey('LongPressGestureTemplate_Text02');
-      let obj2 = JSON.parse(text2);
+      let obj2: ESObject = JSON.parse(text2);
       let time2:number = Number(obj2.$attrs.content)
       console.log('LongPressGestureTemplateTest_0010 obj2 $attrs content',obj2.$attrs.content,time2)
       console.log('LongPressGestureTemplateTest_0010 obj2 time $attrs content',time1,time2);
