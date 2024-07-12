@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import events_emitter from '@ohos.events.emitter'
 
 export default function GestureTagJsSuit() {
-  describe('GestureTagJsSuit', function () {
-    beforeEach(async function (done) {
+  describe('GestureTagJsSuit', () => {
+    beforeEach(async (done: Function) => {
       console.info("GestureTagJsSuit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/TapGesture/GestureTag',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/TapGesture/GestureTag',
       }
       try {
         router.clear();
@@ -41,7 +41,7 @@ export default function GestureTagJsSuit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("overlay after each called");
     });
@@ -53,7 +53,7 @@ export default function GestureTagJsSuit() {
 	 * @tc.level     Level 2
      */
 
-    it('GestureTagJsSuit_0100', 0, async function (done) {
+    it('GestureTagJsSuit_0100', 0, async (done: Function) => {
       console.info('[GestureTagJsSuit_0100] START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -61,7 +61,7 @@ export default function GestureTagJsSuit() {
       await button_Bottom.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('TapGestureclick');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[GestureTagJsSuit_0100] obj is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content=='Click twice').assertTrue();
       console.info('[GestureTagJsSuit_0100] END');

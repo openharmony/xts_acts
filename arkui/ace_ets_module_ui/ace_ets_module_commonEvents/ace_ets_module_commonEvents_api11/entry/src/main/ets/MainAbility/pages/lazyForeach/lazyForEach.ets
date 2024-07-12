@@ -21,7 +21,7 @@ class BasicDataSource implements IDataSource {
     return 0
   }
 
-  public getData(index: number): string {
+  public getData(index: number): string | undefined {
     return undefined
   }
 
