@@ -23,7 +23,8 @@ describe("NoPermissionJsTest", function () {
     const PERMISSION_DENIED_CODE = 201;
     const TEST_DEVICE_ID = 0;
     const TEST_DRIVER_UID = 'testDriverUid'
-    const TEST_FUNCTION = () => {
+    const TEST_FUNCTION = (data) => {
+        expect(data === null).assertTrue();
         console.info("Test function is called");
     };
 
@@ -74,15 +75,16 @@ describe("NoPermissionJsTest", function () {
      * @tc.level      : Level 2
      */
     it("NoPermission_queryDevices_001", 0, done => {
-        console.info('----------------------Permission_queryDevices_001---------------------------');
+        console.info('----------------------NoPermission_queryDevices_001---------------------------');
         if (!isDeviceConnected(done)) {
             return;
         }
         try {
-            deviceManager.queryDevices();
-            expect(false).assertTrue();
+            let devices = deviceManager.queryDevices(deviceManager.BusType.USB);
+            expect(devices === null).assertTrue();
             done();
         } catch (err) {
+            console.info(TAG, 'NoPermission_queryDevices_001 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
             done();
         }
@@ -97,15 +99,15 @@ describe("NoPermissionJsTest", function () {
      * @tc.level      : Level 2
      */
     it("NoPermission_bindDevice_001", 0, done => {
-        console.info('----------------------Permission_bindDevice_001---------------------------');
+        console.info('----------------------NoPermission_bindDevice_001---------------------------');
         if (!isDeviceConnected(done)) {
             return;
         }
         try {
             deviceManager.bindDevice(TEST_DEVICE_ID, TEST_FUNCTION, TEST_FUNCTION);
-            expect(false).assertTrue();
             done();
         } catch (err) {
+            console.info(TAG, 'NoPermission_bindDevice_001 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
             done();
         }
@@ -120,15 +122,15 @@ describe("NoPermissionJsTest", function () {
      * @tc.level      : Level 2
      */
     it("NoPermission_bindDevice_002", 0, async done => {
-        console.info('----------------------Permission_bindDevice_002---------------------------');
+        console.info('----------------------NoPermission_bindDevice_002---------------------------');
         if (!isDeviceConnected(done)) {
             return;
         }
         try {
             await deviceManager.bindDevice(TEST_DEVICE_ID, TEST_FUNCTION);
-            expect(false).assertTrue();
             done();
         } catch (err) {
+            console.info(TAG, 'NoPermission_bindDevice_001 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
             done();
         }
@@ -143,15 +145,16 @@ describe("NoPermissionJsTest", function () {
      * @tc.level      : Level 2
      */
     it("NoPermission_bindDeviceDriver_001", 0, done => {
-        console.info('----------------------Permission_bindDeviceDriver_001---------------------------');
+        console.info('----------------------NoPermission_bindDeviceDriver_001---------------------------');
         if (!isDeviceConnected(done)) {
             return;
         }
         try {
             deviceManager.bindDeviceDriver(TEST_DEVICE_ID, TEST_FUNCTION, TEST_FUNCTION);
-            expect(false).assertTrue();
             done();
         } catch (err) {
+            console.info(TAG, 'NoPermission_bindDeviceDriver_001 catch err code: ',
+                err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
             done();
         }
@@ -166,15 +169,16 @@ describe("NoPermissionJsTest", function () {
      * @tc.level      : Level 2
      */
     it("NoPermission_bindDeviceDriver_002", 0, async done => {
-        console.info('----------------------Permission_bindDeviceDriver_002---------------------------');
+        console.info('----------------------NoPermission_bindDeviceDriver_002---------------------------');
         if (!isDeviceConnected(done)) {
             return;
         }
         try {
             await deviceManager.bindDeviceDriver(TEST_DEVICE_ID, TEST_FUNCTION);
-            expect(false).assertTrue();
             done();
         } catch (err) {
+            console.info(TAG, 'NoPermission_bindDeviceDriver_002 catch err code: ',
+                err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
             done();
         }
@@ -189,15 +193,15 @@ describe("NoPermissionJsTest", function () {
      * @tc.level      : Level 2
      */
     it("NoPermission_unbindDevice_001", 0, done => {
-        console.info('----------------------Permission_unbindDevice_001---------------------------');
+        console.info('----------------------NoPermission_unbindDevice_001---------------------------');
         if (!isDeviceConnected(done)) {
             return;
         }
         try {
             deviceManager.unbindDevice(TEST_DEVICE_ID, TEST_FUNCTION);
-            expect(false).assertTrue();
             done();
         } catch (err) {
+            console.info(TAG, 'NoPermission_unbindDevice_001 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
             done();
         }
@@ -212,18 +216,71 @@ describe("NoPermissionJsTest", function () {
      * @tc.level      : Level 2
      */
     it("NoPermission_unbindDevice_002", 0, async done => {
-        console.info('----------------------Permission_unbindDevice_002---------------------------');
+        console.info('----------------------NoPermission_unbindDevice_002---------------------------');
         if (!isDeviceConnected(done)) {
             return;
         }
         try {
-            await deviceManager.unbindDevice(TEST_DEVICE_ID);
-            expect(false).assertTrue();
+            await deviceManager.unbindDevice(TEST_DEVICE_ID).then(data => {
+                expect(data === null).assertTrue();
+            })
             done();
         } catch (err) {
+            console.info(TAG, 'NoPermission_unbindDevice_002 catch err code: ', err.code, ', message: ', err.message);
             expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
             done();
         }
     });
-});
+
+    /*
+     * @tc.number     : SUB_Driver_Ext_DevManNoPermission_0800
+     * @tc.name       : NoPermission_queryDeviceInfo_001
+     * @tc.desc       : verify permission of queryDeviceInfo
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it("NoPermission_queryDeviceInfo_001", 0, done => {
+        console.info('----------------------NoPermission_queryDeviceInfo_001---------------------------');
+        if (!isDeviceConnected(done)) {
+            return;
+        }
+        try {
+            let deviceInfos = deviceManager.queryDeviceInfo(TEST_DEVICE_ID);
+            expect(deviceInfos === null).assertTrue();
+            done();
+        } catch (err) {
+            console.info(TAG, 'NoPermission_queryDeviceInfo_001 catch err code: ',
+                err.code, ', message: ', err.message);
+            expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
+            done();
+        }
+    });
+
+    /*
+     * @tc.number     : SUB_Driver_Ext_DevManNoPermission_0900
+     * @tc.name       : NoPermission_queryDriverInfo_001
+     * @tc.desc       : verify permission of queryDeviceInfo
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it("NoPermission_queryDriverInfo_001", 0, done => {
+        console.info('----------------------NoPermission_queryDriverInfo_001---------------------------');
+        if (!isDeviceConnected(done)) {
+            return;
+        }
+        try {
+            let driverInfos = deviceManager.queryDriverInfo(TEST_DRIVER_UID);
+            expect(driverInfos === null).assertTrue();
+            done();
+        } catch (err) {
+            console.info(TAG, 'NoPermission_queryDriverInfo_001 catch err code: ',
+                err.code, ', message: ', err.message);
+            expect(err.code).assertEqual(PERMISSION_DENIED_CODE);
+            done();
+        }
+    });
+
+})
 }

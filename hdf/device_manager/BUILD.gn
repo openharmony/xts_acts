@@ -19,6 +19,7 @@ group("device_manager_ndk") {
     deps = [
       # "device_manager_ndk:device_manager_js_test",
       "devman_nopermission_ndk:device_manager_nopermission_js_test",
+      "devman_normal_ndk:ActsDeviceManagerNormalAPPJSApiNdkTest",
     ]
   }
 }
