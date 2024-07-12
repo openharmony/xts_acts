@@ -106,7 +106,7 @@ export default function btSocketNopUiJsunit() {
         expect(true).assertFalse();
       }catch (error){
         hilog.error(Domain, TAG, `sppConnect error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(PERMISSION_DENIED_CODE);
+        expect(error.code).assertEqual(OPERATION_FAILED_CODE);
       }
       done();
     })

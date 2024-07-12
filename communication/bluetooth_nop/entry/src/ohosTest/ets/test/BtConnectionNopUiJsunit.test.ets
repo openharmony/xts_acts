@@ -90,7 +90,7 @@ export default function btConnectionNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `callback setDevicePinCode error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(OPERATION_FAILED_CODE);
+        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
       }
       done();
     })
@@ -203,7 +203,7 @@ export default function btConnectionNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `setDevicePinCode error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(OPERATION_FAILED_CODE);
+        expect(e.code).assertEqual(PERMISSION_DENIED_CODE);
       }
       done();
     })

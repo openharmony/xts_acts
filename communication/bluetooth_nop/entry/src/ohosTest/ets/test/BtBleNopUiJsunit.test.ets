@@ -263,7 +263,7 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (e) {
         hilog.error(Domain, TAG, `Promise disableAdvertising error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(PARAM_ERROR_CODE);
+        expect(e.code).assertEqual(OPERATION_FAILED_CODE);
       }
       done();
     })
@@ -297,7 +297,7 @@ export default function btBleNopUiJsunit() {
         expect(true).assertFalse();
       } catch (error) {
         hilog.error(Domain, TAG, `callback disableAdvertising error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(PARAM_ERROR_CODE);
+        expect(error.code).assertEqual(OPERATION_FAILED_CODE);
       }
       done();
     })
