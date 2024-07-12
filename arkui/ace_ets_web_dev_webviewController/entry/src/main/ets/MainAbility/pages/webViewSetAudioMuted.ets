@@ -65,18 +65,16 @@ struct webViewSetAudioMuted {
                 this.controller.runJavaScript("enableMute()", (error, result) => {
                   this.mutedResult = result
                   console.log(`The controller.enableMute() return value is: ${result}`);
+                  Utils.emitEvent(this.mutedResult, 405)
                 })
                 this.controller.runJavaScript("checkMute()", (error, result) => {
                   this.checkResult = result
                   console.log(`The controller.checkMute() return value is: ${result}`);
+                  Utils.emitEvent(this.checkResult, 406)
                 })
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
               }
-              this.controller.runJavaScript("test()", (res) => {
-                Utils.emitEvent(this.mutedResult, 405)
-                Utils.emitEvent(this.checkResult, 406)
-              })
               break;
             }
             case "emitSetAudioDisMuted": {
@@ -84,18 +82,16 @@ struct webViewSetAudioMuted {
                 this.controller.runJavaScript("disableMute()", (error, result) => {
                   this.mutedResult = result
                   console.log(`The controller.disableMute() return value is: ${result}`);
+                  Utils.emitEvent(this.mutedResult, 407)
                 })
                 this.controller.runJavaScript("checkMute()", (error, result) => {
                   this.checkResult = result
                   console.log(`The controller.checkMute() return value is: ${result}`);
+                  Utils.emitEvent(this.checkResult, 408)
                 })
               } catch (error) {
                 console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
               }
-              this.controller.runJavaScript("test()", (res) => {
-                Utils.emitEvent(this.mutedResult, 407)
-                Utils.emitEvent(this.checkResult, 408)
-              })
               break;
             }
           }
