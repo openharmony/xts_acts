@@ -261,5 +261,56 @@ export default function displayManagerInterfaceTest() {
         done();
       }
     })
+
+    /**
+     * @tc.number : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5170
+     * @tc.name   : testGetAllDisplayPhysicalResolution
+     * @tc.desc   : get display physical resolution
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 3
+     */
+    it('testGetAllDisplayPhysicalResolution', 0, async (done) => {
+      console.log('jsunittest testGetAllDisplayPhysicalResolution begin');
+      let promise = display.getAllDisplayPhysicalResolution();
+      promise.then((data) => {
+        let displaySize = data.length;
+        for (let i = 0; i < displaySize; i++) {
+          console.info("physicalResolution[" + i + "].foldDisplayMode:" + data[i].foldDisplayMode);
+          console.info("physicalResolution[" + i + "].physicalWidth:" + data[i].physicalWidth);
+          console.info("physicalResolution[" + i + "].physicalHeight:" + data[i].physicalHeight);
+        }
+        expect(displaySize).assertlarger(0);
+        done();
+      }).catch((err: BusinessError) => {
+        console.error(msgStr + 'Failed to get display physical resolution. ErrCode: ' + err);
+        expect().assertFail();
+        done();
+      });
+    })
+
+    /**
+     * @tc.number : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_5180
+     * @tc.name   : testGetAvailableWidthAndHeight
+     * @tc.desc   : get display available width and height
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 3
+     */
+    it('testGetAvailableWidthAndHeight', 0, async (done) => {
+      console.log('jsunittest testGetAvailableWidthAndHeight begin');
+      try {
+        let displayInfo = display.getDefaultDisplaySync();
+        console.info("availableWidth:" + displayInfo.availableWidth);
+        console.info("availableHeight:" + displayInfo.availableHeight);
+        expect(displayInfo.availableWidth).assertlarger(0);
+        expect(displayInfo.availableHeight).assertlarger(0);
+        done();
+      } catch (exception) {
+        console.error(msgStr + 'Failed to unregister callback. Code: ' + JSON.stringify(exception));
+        expect().assertFail();
+        done();
+      }
+    })
   })
 }
