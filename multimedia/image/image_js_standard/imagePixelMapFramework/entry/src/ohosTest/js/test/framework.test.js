@@ -2447,7 +2447,7 @@ export default function imagePixelMapFramework() {
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1500
-         * @tc.name      : test convert pixelformat RGBA_1010102 to NV21
+         * @tc.name      : test convert pixelformat NV21 to RGBA_1010102
          * @tc.desc      : 1.create RGBA_1010102 pixelmap
          *                 2.call convertPixelFormat(NV21)
          *                 3.get pixelformat
@@ -2466,7 +2466,7 @@ export default function imagePixelMapFramework() {
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1600
-         * @tc.name      : test convert pixelformat RGBA_1010102 to NV12
+         * @tc.name      : test convert pixelformat NV12 to RGBA_1010102
          * @tc.desc      : 1.create RGBA_1010102 pixelmap
          *                 2.call convertPixelFormat(NV12)
          *                 3.get pixelformat
@@ -2485,7 +2485,7 @@ export default function imagePixelMapFramework() {
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1700
-         * @tc.name      : test convert pixelformat RGBA_1010102 to YCRCB_P010
+         * @tc.name      : test convert pixelformat YCRCB_P010 to RGBA_1010102
          * @tc.desc      : 1.create RGBA_1010102 pixelmap
          *                 2.call convertPixelFormat(YCRCB_P010)
          *                 3.get pixelformat
@@ -2504,7 +2504,7 @@ export default function imagePixelMapFramework() {
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1800
-         * @tc.name      : test convert pixelformat RGBA_1010102 to YCBCR_P010
+         * @tc.name      : test convert pixelformat YCBCR_P010 to RGBA_1010102
          * @tc.desc      : 1.create RGBA_1010102 pixelmap
          *                 2.call convertPixelFormat(YCBCR_P010)
          *                 3.get pixelformat
@@ -2523,7 +2523,7 @@ export default function imagePixelMapFramework() {
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_1900
-         * @tc.name      : test convert pixelformat YCBCR_P010 to RGB_565
+         * @tc.name      : test convert pixelformat RGB_565 to YCBCR_P010
          * @tc.desc      : 1.create YCBCR_P010 pixelmap
          *                 2.call convertPixelFormat(RGB_565)
          *                 3.get pixelformat
@@ -2542,7 +2542,7 @@ export default function imagePixelMapFramework() {
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2000
-         * @tc.name      : test convert pixelformat YCBCR_P010 to RGBA_8888
+         * @tc.name      : test convert pixelformat RGBA_8888 to YCBCR_P010
          * @tc.desc      : 1.create YCBCR_P010 pixelmap
          *                 2.call convertPixelFormat(RGBA_8888)
          *                 3.get pixelformat
@@ -2561,7 +2561,7 @@ export default function imagePixelMapFramework() {
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2100
-         * @tc.name      : test convert pixelformat YCBCR_P010 to BGRA_8888
+         * @tc.name      : test convert pixelformat BGRA_8888 to YCBCR_P010
          * @tc.desc      : 1.create YCBCR_P010 pixelmap
          *                 2.call convertPixelFormat(BGRA_8888)
          *                 3.get pixelformat
@@ -2580,7 +2580,7 @@ export default function imagePixelMapFramework() {
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2200
-         * @tc.name      : test convert pixelformat YCBCR_P010 to RGB_888
+         * @tc.name      : test convert pixelformat RGB_888 to YCBCR_P010
          * @tc.desc      : 1.create YCBCR_P010 pixelmap
          *                 2.call convertPixelFormat(RGB_888)
          *                 3.get pixelformat
@@ -2599,7 +2599,7 @@ export default function imagePixelMapFramework() {
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2300
-         * @tc.name      : test convert pixelformat YCBCR_P010 to RGBA_F16
+         * @tc.name      : test convert pixelformat RGBA_F16 to YCBCR_P010
          * @tc.desc      : 1.create YCBCR_P010 pixelmap
          *                 2.call convertPixelFormat(RGBA_F16)
          *                 3.get pixelformat
@@ -2618,7 +2618,7 @@ export default function imagePixelMapFramework() {
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2400
-         * @tc.name      : test convert pixelformat YCRCB_P010 to RGB_565
+         * @tc.name      : test convert pixelformat RGB_565 to YCRCB_P010
          * @tc.desc      : 1.create YCRCB_P010 pixelmap
          *                 2.call convertPixelFormat(RGB_565)
          *                 3.get pixelformat
@@ -2637,7 +2637,7 @@ export default function imagePixelMapFramework() {
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2500
-         * @tc.name      : test convert pixelformat YCRCB_P010 to RGBA_8888
+         * @tc.name      : test convert pixelformat RGBA_8888 to YCRCB_P010
          * @tc.desc      : 1.create YCRCB_P010 pixelmap
          *                 2.call convertPixelFormat(RGBA_8888)
          *                 3.get pixelformat
@@ -2656,7 +2656,7 @@ export default function imagePixelMapFramework() {
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2600
-         * @tc.name      : test convert pixelformat YCRCB_P010 to BGRA_8888
+         * @tc.name      : test convert pixelformat BGRA_8888 to YCRCB_P010
          * @tc.desc      : 1.create YCRCB_P010 pixelmap
          *                 2.call convertPixelFormat(BGRA_8888)
          *                 3.get pixelformat
@@ -2675,7 +2675,7 @@ export default function imagePixelMapFramework() {
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2700
-         * @tc.name      : test convert pixelformat YCRCB_P010 to RGB_888
+         * @tc.name      : test convert pixelformat RGB_888 to YCRCB_P010
          * @tc.desc      : 1.create YCRCB_P010 pixelmap
          *                 2.call convertPixelFormat(RGB_888)
          *                 3.get pixelformat
@@ -2694,7 +2694,7 @@ export default function imagePixelMapFramework() {
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_FUNC_2800
-         * @tc.name      : test convert pixelformat YCRCB_P010 to RGBA_F16
+         * @tc.name      : test convert pixelformat RGBA_F16 to YCRCB_P010
          * @tc.desc      : 1.create YCRCB_P010 pixelmap
          *                 2.call convertPixelFormat(RGBA_F16)
          *                 3.get pixelformat
@@ -2875,9 +2875,9 @@ export default function imagePixelMapFramework() {
         });
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1000
-         * @tc.name      : test convert pixelformat RGBA_1010102 to ALPHA_8
-         * @tc.desc      : 1.create RGBA_1010102 pixelmap
-         *                 2.call convertPixelFormat(ALPHA_8)
+         * @tc.name      : test convert pixelformat YCRCB_P010 to YCBCR_P010
+         * @tc.desc      : 1.create YCRCB_P010 pixelmap
+         *                 2.call convertPixelFormat(YCBCR_P010)
          *                 3.check error code
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
@@ -2887,14 +2887,14 @@ export default function imagePixelMapFramework() {
             await testConvertPixelFormatErr(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1000",
-                RGBA_1010102,
-                ALPHA_8
+                YCRCB_P010,
+                YCBCR_P010
             );
         });
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1100
-         * @tc.name      : test convert pixelformat YCBCR_P010 to ALPHA_8
-         * @tc.desc      : 1.create YCBCR_P010 pixelmap
+         * @tc.name      : test convert pixelformat RGBA_1010102 to ALPHA_8
+         * @tc.desc      : 1.create RGBA_1010102 pixelmap
          *                 2.call convertPixelFormat(ALPHA_8)
          *                 3.check error code
          * @tc.size      : MEDIUM
@@ -2905,14 +2905,14 @@ export default function imagePixelMapFramework() {
             await testConvertPixelFormatErr(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1100",
-                YCBCR_P010,
+                RGBA_1010102,
                 ALPHA_8
             );
         });
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1200
-         * @tc.name      : test convert pixelformat YCRCB_P010 to ALPHA_8
-         * @tc.desc      : 1.create YCRCB_P010 pixelmap
+         * @tc.name      : test convert pixelformat YCBCR_P010 to ALPHA_8
+         * @tc.desc      : 1.create YCBCR_P010 pixelmap
          *                 2.call convertPixelFormat(ALPHA_8)
          *                 3.check error code
          * @tc.size      : MEDIUM
@@ -2923,6 +2923,24 @@ export default function imagePixelMapFramework() {
             await testConvertPixelFormatErr(
                 done,
                 "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1200",
+                YCBCR_P010,
+                ALPHA_8
+            );
+        });
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1300
+         * @tc.name      : test convert pixelformat YCRCB_P010 to ALPHA_8
+         * @tc.desc      : 1.create YCRCB_P010 pixelmap
+         *                 2.call convertPixelFormat(ALPHA_8)
+         *                 3.check error code
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1300', 0, async function (done) {
+            await testConvertPixelFormatErr(
+                done,
+                "SUB_MULTIMEDIA_IMAGE_PIXELMAP_CONVERTPIXELFORMAT_ERROR_1300",
                 YCRCB_P010,
                 ALPHA_8
             );
