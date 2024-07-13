@@ -15,9 +15,11 @@
 import webViewSdkSchemeHandlerDidFail from './webViewSdkSchemeHandlerDidFail.test'
 import webViewSdkSchemeHandlerDidFailWan2 from './webViewSdkSchemeHandlerDidFailWan2.test'
 import webViewSdkSchemeHandlerDidFail3 from './webViewSdkSchemeHandlerDidFail3.test'
+import webViewSdkSchemeHandlerDidFail3_2 from './webViewSdkSchemeHandlerDidFail3_2.test'
 
 export default function testsuite() {
   webViewSdkSchemeHandlerDidFail()
   webViewSdkSchemeHandlerDidFailWan2()
   webViewSdkSchemeHandlerDidFail3()
+  webViewSdkSchemeHandlerDidFail3_2()
 }
