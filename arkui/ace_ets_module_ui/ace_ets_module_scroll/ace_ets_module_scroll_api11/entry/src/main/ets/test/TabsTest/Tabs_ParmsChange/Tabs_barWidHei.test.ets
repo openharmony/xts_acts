@@ -362,7 +362,7 @@ export default function Tabs_barWidHei() {
       expect(Math.abs(Math.round(subGreen.bottom - subGreen.top) - Math.round(vp2px(56))) <=1 ).assertTrue();
       expect(Math.abs(Math.round(subBlue.bottom - subBlue.top) - Math.round(vp2px(56))) <=1 ).assertTrue();
       expect(Math.abs(Math.round(subYellow.bottom - subYellow.top) - Math.round(vp2px(56))) <=1 ).assertTrue();
-      expect(Math.abs(Math.round(subGreen.right - subGreen.left) - Math.round(vp2px(56))) <=1 ).assertTrue();
+      expect(Math.abs(Math.round(subGreen.right - subGreen.left) - Math.round(vp2px(100))) <=1 ).assertTrue();
       expect(Math.abs(Math.round(subBlue.right - subBlue.left) - Math.round(vp2px(100))) <=1 ).assertTrue();
       expect(Math.abs(Math.round(subYellow.right - subYellow.left) - Math.round(vp2px(100))) <=1 ).assertTrue();
 
