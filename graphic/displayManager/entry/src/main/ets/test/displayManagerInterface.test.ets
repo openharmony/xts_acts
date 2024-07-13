@@ -280,10 +280,10 @@ export default function displayManagerInterfaceTest() {
           console.info("physicalResolution[" + i + "].physicalWidth:" + data[i].physicalWidth);
           console.info("physicalResolution[" + i + "].physicalHeight:" + data[i].physicalHeight);
         }
-        expect(displaySize).assertlarger(0);
+        expect(displaySize).assertLarger(0);
         done();
       }).catch((err: BusinessError) => {
-        console.error(msgStr + 'Failed to get display physical resolution. ErrCode: ' + err);
+        console.error('Failed to get display physical resolution. ErrCode: ' + err);
         expect().assertFail();
         done();
       });
@@ -303,11 +303,11 @@ export default function displayManagerInterfaceTest() {
         let displayInfo = display.getDefaultDisplaySync();
         console.info("availableWidth:" + displayInfo.availableWidth);
         console.info("availableHeight:" + displayInfo.availableHeight);
-        expect(displayInfo.availableWidth).assertlarger(0);
-        expect(displayInfo.availableHeight).assertlarger(0);
+        expect(displayInfo.availableWidth).assertLarger(0);
+        expect(displayInfo.availableHeight).assertLarger(0);
         done();
       } catch (exception) {
-        console.error(msgStr + 'Failed to unregister callback. Code: ' + JSON.stringify(exception));
+        console.error('Failed to get display available Info: ' + JSON.stringify(exception));
         expect().assertFail();
         done();
       }
