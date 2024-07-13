@@ -52,6 +52,21 @@ export default function ActsAceWebViewObjectEmbedEnhance() {
 
 
     /*
+     *@tc.number SUB_ACE_WEB_OBJECTEMBED_Gesture_API_0014
+     *@tc.name testWebViewObjectEmbed
+     *@tc.desc test objectEmbed
+     *@tc.size MediumTest
+     *@tc.type Function
+     *@tc.level 1
+     */
+    it('testWebViewObjectEmbedAbc', 0, async (done: Function) => {
+      emitKey = "emitWebViewObjectEmbedAbc"
+      Utils.emitEvent(emitKey, 10);
+      Utils.registerEvent("testWebViewObjectEmbedAbc", 'success', 1014, done);
+      sendEventByKey('webViewObjectEmbedEnhanceButton', 10, '');
+    })
+
+    /*
      *@tc.number SUB_ACE_WEB_OBJECTEMBED_API_0001
      *@tc.name testWebViewObjectEmbed
      *@tc.desc test objectEmbedId
@@ -233,19 +248,5 @@ export default function ActsAceWebViewObjectEmbedEnhance() {
 
 
 
-    /*
-     *@tc.number SUB_ACE_WEB_OBJECTEMBED_Gesture_API_0014
-     *@tc.name testWebViewObjectEmbed
-     *@tc.desc test objectEmbed
-     *@tc.size MediumTest
-     *@tc.type Function
-     *@tc.level 1
-     */
-    it('testWebViewObjectEmbedAbc', 0, async (done: Function) => {
-      emitKey = "emitWebViewObjectEmbedAbc"
-      Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewObjectEmbedAbc", 'success', 1014, done);
-      sendEventByKey('webViewObjectEmbedEnhanceButton', 10, '');
-    })
   })
 }
