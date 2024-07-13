@@ -15,13 +15,13 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 
 export default function abilityTest() {
-    describe('ActsAbilityTest', () => {
-        it('assertContain',0, () => {
-            console.info("it begin")
-            let a = 'abc'
-            let b = 'b'
-            expect(a).assertContain(b)
-            expect(a).assertEqual(a)
-        })
+  describe('ActsAbilityTest', () => {
+    it('assertContain', 0, () => {
+      console.info("it begin")
+      let a = 'abc'
+      let b = 'b'
+      expect(a).assertContain(b)
+      expect(a).assertEqual(a)
     })
+  })
 }
