@@ -440,7 +440,7 @@ bool CheckMatricIsSame(float matrixOld[MATRIX_SIZE], float matrixNew[MATRIX_SIZE
     return true;
 }
 
-int32_t testType[] = {
+int32_t g_testType[] = {
     GraphicTransformType::GRAPHIC_ROTATE_NONE, GraphicTransformType::GRAPHIC_ROTATE_90,
     GraphicTransformType::GRAPHIC_ROTATE_180, GraphicTransformType::GRAPHIC_ROTATE_270,
     GraphicTransformType::GRAPHIC_FLIP_H, GraphicTransformType::GRAPHIC_FLIP_V,
@@ -448,7 +448,7 @@ int32_t testType[] = {
     GraphicTransformType::GRAPHIC_FLIP_H_ROT180, GraphicTransformType::GRAPHIC_FLIP_V_ROT180,
     GraphicTransformType::GRAPHIC_FLIP_H_ROT270, GraphicTransformType::GRAPHIC_FLIP_V_ROT270,
 };
-float matrixArr[][MATRIX_SIZE] = {
+float g_matrixArr[][MATRIX_SIZE] = {
     {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1},
     {0, -1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1},
     {-1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1},
@@ -493,9 +493,9 @@ HWTEST_F(NativeImageTest, OHNativeImageGetTransformMatrix003, Function | MediumT
     struct Region *region = new Region();
     struct Region::Rect *rect = new Region::Rect();
     
-    for (int32_t i = 0; i < sizeof(testType) / sizeof(int32_t); i++) {
+    for (int32_t i = 0; i < sizeof(g_testType) / sizeof(int32_t); i++) {
         int code = SET_TRANSFORM;
-        ret = NativeWindowHandleOpt(nativeWindow, code, testType[i]);
+        ret = NativeWindowHandleOpt(nativeWindow, code, g_testType[i]);
         ret = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow, &nativeWindowBuffer, &fenceFd);
         ASSERT_EQ(ret, NATIVE_ERROR_OK);
 
@@ -514,13 +514,13 @@ HWTEST_F(NativeImageTest, OHNativeImageGetTransformMatrix003, Function | MediumT
         int32_t ret = OH_NativeImage_GetTransformMatrix(image, matrix);
         ASSERT_EQ(ret, NATIVE_ERROR_OK);
 
-        bool bRet = CheckMatricIsSame(matrix, matrixArr[i]);
+        bool bRet = CheckMatricIsSame(matrix, g_matrixArr[i]);
         ASSERT_EQ(bRet, true);
     }
     delete region;
 }
 
-float matrixArrV2[][MATRIX_SIZE] = {
+float g_matrixArrV2[][MATRIX_SIZE] = {
     {1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1},   // 单位矩阵
     {0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1},    // 90度矩阵
     {-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1},   // 180度矩阵
@@ -567,9 +567,9 @@ HWTEST_F(NativeImageTest, OHNativeImageGetTransformMatrix004, Function | MediumT
     struct Region *region = new Region();
     struct Region::Rect *rect = new Region::Rect();
 
-    for (int32_t i = 0; i < sizeof(testType) / sizeof(int32_t); i++) {
+    for (int32_t i = 0; i < sizeof(g_testType) / sizeof(int32_t); i++) {
         int code = SET_TRANSFORM;
-        ret = NativeWindowHandleOpt(nativeWindow, code, testType[i]);
+        ret = NativeWindowHandleOpt(nativeWindow, code, g_testType[i]);
         ret = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow, &nativeWindowBuffer, &fenceFd);
         ASSERT_EQ(ret, NATIVE_ERROR_OK);
 
@@ -588,7 +588,7 @@ HWTEST_F(NativeImageTest, OHNativeImageGetTransformMatrix004, Function | MediumT
         int32_t ret = OH_NativeImage_GetTransformMatrixV2(image, matrix);
         ASSERT_EQ(ret, NATIVE_ERROR_OK);
 
-        bool bRet = CheckMatricIsSame(matrix, matrixArrV2[i]);
+        bool bRet = CheckMatricIsSame(matrix, g_matrixArrV2[i]);
         ASSERT_EQ(bRet, true);
     }
     delete region;

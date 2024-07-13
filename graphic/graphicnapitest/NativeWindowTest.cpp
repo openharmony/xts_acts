@@ -756,14 +756,14 @@ HWTEST_F(NativeWindowTest, NativeWindowAttachBuffer005, Function | MediumTest | 
     int32_t ret = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindowTmp, &nativeWindowBuffer, &fenceFd);
     ASSERT_EQ(ret, NATIVE_ERROR_OK);
 
-    ASSERT_EQ(cSurface->AttachBufferToQueue(nativeWindowBuffer->sfbuffer), GSER1ROR_OK);
+    ASSERT_EQ(cSurface->AttachBufferToQueue(nativeWindowBuffer->sfbuffer), GSERROR_OK);
 
-    ASSERT_EQ(cSurface->DetachBufferFromQueue(nativeWindowBuffer->sfbuffer), GSE1RROR_OK);
+    ASSERT_EQ(cSurface->DetachBufferFromQueue(nativeWindowBuffer->sfbuffer), GSERROR_OK);
 
-    ASSERT_EQ(cSurface->AttachBufferToQueue(nativeWindowBuffer->sfbuffer), GSERR1OR_OK);
+    ASSERT_EQ(cSurface->AttachBufferToQueue(nativeWindowBuffer->sfbuffer), GSERROR_OK);
 
     sptr<SyncFence> fence = SyncFence::INVALID_FENCE;
-    ASSERT_EQ(cSurface->ReleaseBuffer(nativeWindowBuffer->sfbuffer, fence), GSERR1OR_OK);
+    ASSERT_EQ(cSurface->ReleaseBuffer(nativeWindowBuffer->sfbuffer, fence), GSERROR_OK);
 
     OH_NativeWindow_DestroyNativeWindow(nativeWindowTmp);
 }
@@ -1099,8 +1099,8 @@ HWTEST_F(NativeWindowTest, OH_NativeWindow_SetMetadataValue001, Function | Mediu
     if (ret != NATIVE_ERROR_UNSUPPORTED) { // some device not support set colorspace
         ASSERT_NE(ret, NATIVE_ERROR_OK);
     }
-    int32_t max_size = -1;
-    ret = OH_NativeWindow_SetMetadataValue(nativeWindow, OH_HDR_STATIC_METADATA, (int32_t)max_size, buff);
+    int32_t maxSize = -1;
+    ret = OH_NativeWindow_SetMetadataValue(nativeWindow, OH_HDR_STATIC_METADATA, (int32_t)maxSize, buff);
     if (ret != NATIVE_ERROR_UNSUPPORTED) { // some device not support set colorspace
         ASSERT_NE(ret, NATIVE_ERROR_OK);
     }

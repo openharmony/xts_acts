@@ -351,10 +351,10 @@ HWTEST_F(NativeBufferTest, OH_NativeBuffer_SetMetadataValue002, Function | Mediu
 */
 HWTEST_F(NativeBufferTest, OH_NativeBuffer_SetMetadataValue003, Function | MediumTest | Level2)
 {
-    int32_t max_size = -1;
+    int32_t maxSize = -1;
     int32_t size = 60;
     uint8_t buff[size];
-    int32_t ret = OH_NativeBuffer_SetMetadataValue(nullptr, OH_HDR_STATIC_METADATA, max_size, buff);
+    int32_t ret = OH_NativeBuffer_SetMetadataValue(nullptr, OH_HDR_STATIC_METADATA, maxSize, buff);
     if (ret != NATIVE_ERROR_UNSUPPORTED) { // some device not support set colorspace
         ASSERT_NE(ret, NATIVE_ERROR_OK);
     }
