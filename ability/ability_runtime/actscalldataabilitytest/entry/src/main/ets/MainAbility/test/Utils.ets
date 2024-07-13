@@ -14,8 +14,8 @@
  */
 
 export default class Utils {
-  static sleep(time) {
-    return new Promise((resolve, reject) => {
+  static sleep(time: number) {
+    return new Promise<ESObject>((resolve, reject) => {
       setTimeout(() => {
         resolve(reject)
       }, time)
@@ -33,10 +33,10 @@ export default class Utils {
    * @param startTime 接口调用开始时间
    * @param endTime 接口调用结束时间
    */
-  static getDurationTime(msg, startTime, endTime) {
+  static getDurationTime(msg: string, startTime: number, endTime: number) {
     console.info(msg + 'Get Interface startTime: ' + startTime);
     console.info(msg + 'Get Interface endTime: ' + endTime);
-    var duration = (endTime - startTime)
+    let duration = (endTime - startTime)
     console.info(msg + 'Get Interface Duration: ' + duration);
     return duration;
   }
