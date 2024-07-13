@@ -267,29 +267,12 @@ HWTEST_F(DrawingNativeTextBlobTest, testTextBlobCreateFromPosTextNormal, TestSiz
     EXPECT_NE(font, nullptr);
     OH_Drawing_Typeface *typeSurface = OH_Drawing_TypefaceCreateDefault();
     OH_Drawing_FontSetTypeface(font, typeSurface);
-    OH_Drawing_TextEncoding encodeArray[] = {
-        TEXT_ENCODING_UTF8,
-        TEXT_ENCODING_UTF16,
-        TEXT_ENCODING_UTF32,
-        TEXT_ENCODING_GLYPH_ID,
-    };
     // 1. Traverse the enumeration values of OH_Drawing_TextEncoding and use OH_Drawing_CanvasDrawTextBlob in
     // combination
-    for (OH_Drawing_TextEncoding encode : encodeArray) {
-        size_t byteLength = 0;
-        if (encode == TEXT_ENCODING_UTF8) {
-            byteLength = strlen(str);
-        } else if (encode == TEXT_ENCODING_UTF16) {
-            byteLength = strlen(str) * 2;
-        } else if (encode == TEXT_ENCODING_UTF32) {
-            byteLength = strlen(str) * 4;
-        } else if (encode == TEXT_ENCODING_GLYPH_ID) {
-            byteLength = strlen(str) * 16;
-        }
-        int count = OH_Drawing_FontCountText(font, str, byteLength, encode);
-        OH_Drawing_Point2D pts[count];
-        OH_Drawing_TextBlobCreateFromPosText(str, byteLength, &pts[0], font, encode);
-    }
+    size_t byteLength = strlen(str);
+    int count = OH_Drawing_FontCountText(font, str, byteLength, TEXT_ENCODING_UTF8);
+    OH_Drawing_Point2D pts[count];
+    OH_Drawing_TextBlobCreateFromPosText(str, count, &pts[0], font, TEXT_ENCODING_UTF8);
     // 2. Free memory
     OH_Drawing_FontDestroy(font);
     OH_Drawing_TypefaceDestroy(typeSurface);

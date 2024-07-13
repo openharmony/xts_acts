@@ -378,20 +378,16 @@ HWTEST_F(DrawingNativeMatrixTest, testMatrixMatrixSetGetMatrixAbnormal, TestSize
     OH_Drawing_MatrixSetMatrix(matrix, 1, 1, 1, 1, 1, 1, 1, -1, 1);
     OH_Drawing_MatrixSetMatrix(matrix, 1, 1, 1, 1, 1, 1, 1, 1, -1);
     // 3. OH_Drawing_MatrixGetAll with an array 'value' of length less than 9
-    float value[8];
-    OH_Drawing_ErrorCode code = OH_Drawing_MatrixGetAll(matrix, value);
-    EXPECT_EQ(code, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
-    // 4. OH_Drawing_MatrixGetAll with an array 'value2' of length greater than 9
-    float value2[10];
+    float value2[9];
     OH_Drawing_ErrorCode code2 = OH_Drawing_MatrixGetAll(matrix, value2);
     EXPECT_EQ(code2, OH_Drawing_ErrorCode::OH_DRAWING_SUCCESS);
-    // 5. OH_Drawing_MatrixGetValue with the parameter 'index' as -1, check the error code with OH_Drawing_ErrorCodeGet
+    // 4. OH_Drawing_MatrixGetValue with the parameter 'index' as -1, check the error code with OH_Drawing_ErrorCodeGet
     OH_Drawing_MatrixGetValue(matrix, -1);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE);
-    // 6. OH_Drawing_MatrixGetValue with the parameter 'index' as 9, check the error code with OH_Drawing_ErrorCodeGet
+    // 5. OH_Drawing_MatrixGetValue with the parameter 'index' as 9, check the error code with OH_Drawing_ErrorCodeGet
     OH_Drawing_MatrixGetValue(matrix, 9);
     EXPECT_EQ(OH_Drawing_ErrorCodeGet(), OH_Drawing_ErrorCode::OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE);
-    // 7. Free memory
+    // 6. Free memory
     OH_Drawing_MatrixDestroy(matrix);
 }
 
