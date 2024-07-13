@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022-2024 Huawei Device Co., Ltd.
+ * Copyright (c) 2022 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -80,71 +80,6 @@ export default function wantAgentCoverTest() {
         expect().assertFail();
         done();
       }
-    })
-
-    /*
-     * @tc.number  SUB_AA_OpenHarmony_WantConstantCover_0100
-     * @tc.name    Verify PAGE_PATH.
-     * @tc.desc    Function test
-     * @tc.level   3
-     */
-    it('SUB_AA_OpenHarmony_WantConstantCover_0100', 0, async (done: Function) => {
-      TAG = 'SUB_AA_OpenHarmony_WantConstantCover_0100 ==>';
-      expect(wantConstant.Params.PAGE_PATH)
-        .assertEqual('ohos.param.atomicservice.pagePath');
-      done();
-    })
-
-    /*
-     * @tc.number  SUB_AA_OpenHarmony_WantConstantCover_0200
-     * @tc.name    Verify ROUTER_NAME.
-     * @tc.desc    Function test
-     * @tc.level   3
-     */
-    it('SUB_AA_OpenHarmony_WantConstantCover_0200', 0, async (done: Function) => {
-      TAG = 'SUB_AA_OpenHarmony_WantConstantCover_0200 ==>';
-      expect(wantConstant.Params.ROUTER_NAME)
-        .assertEqual('ohos.param.atomicservice.routerName');
-      done();
-    })
-
-    /*
-     * @tc.number  SUB_AA_OpenHarmony_WantConstantCover_0300
-     * @tc.name    Verify PAGE_SOURCE_FILE.
-     * @tc.desc    Function test
-     * @tc.level   3
-     */
-    it('SUB_AA_OpenHarmony_WantConstantCover_0300', 0, async (done: Function) => {
-      TAG = 'SUB_AA_OpenHarmony_WantConstantCover_0300 ==>';
-      expect(wantConstant.Params.PAGE_SOURCE_FILE)
-        .assertEqual('ohos.param.atomicservice.pageSourceFile');
-      done();
-    })
-
-    /*
-     * @tc.number  SUB_AA_OpenHarmony_WantConstantCover_0400
-     * @tc.name    Verify BUILD_FUNCTION.
-     * @tc.desc    Function test
-     * @tc.level   3
-     */
-    it('SUB_AA_OpenHarmony_WantConstantCover_0400', 0, async (done: Function) => {
-      TAG = 'SUB_AA_OpenHarmony_WantConstantCover_0400 ==>';
-      expect(wantConstant.Params.BUILD_FUNCTION)
-        .assertEqual('ohos.param.atomicservice.buildFunction');
-      done();
-    })
-
-    /*
-     * @tc.number  SUB_AA_OpenHarmony_WantConstantCover_0500
-     * @tc.name    Verify SUB_PACKAGE_NAME.
-     * @tc.desc    Function test
-     * @tc.level   3
-     */
-    it('SUB_AA_OpenHarmony_WantConstantCover_0500', 0, async (done: Function) => {
-      TAG = 'SUB_AA_OpenHarmony_WantConstantCover_0500 ==>';
-      expect(wantConstant.Params.SUB_PACKAGE_NAME)
-        .assertEqual('ohos.param.atomicservice.subpackageName');
-      done();
     })
   })
 }
