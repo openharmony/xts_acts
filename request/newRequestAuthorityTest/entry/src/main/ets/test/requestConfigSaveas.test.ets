@@ -18,6 +18,7 @@ import request from '@ohos.request';
 import { BusinessError } from '@ohos.base';
 import common from '@ohos.app.ability.common';
 import fs from  '@ohos.file.fs';
+import statistics from '@ohos.net.statistics';
 
 export default function requestConfigSavesTest() {
   describe('requestConfigSavesTest', () => {
@@ -1154,6 +1155,301 @@ export default function requestConfigSavesTest() {
         expect(err.code).assertEqual(401);
         done();
       }
+    });
+
+    /*
+    * @tc.number: SUB_Request_Agent_proxy_0400
+    * @tc.name: SUB_Request_Agent_proxy_0400
+    * @tc.desc: incorrect parameters of the download proxy
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 2
+    */
+    it('SUB_Request_Agent_proxy_0400', 0, async (done: Function) => {
+      console.info('====>-----------------------SUB_Request_Agent_proxy_0400 is starting-----------------------');
+      let config:request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        title: 'createTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Agent_proxy_0400',
+        network: request.agent.Network.ANY,
+        overwrite: true,
+        proxy: 'https://192.168.249.58:808'
+      };
+      try {
+        console.info('====>SUB_Request_Agent_proxy_0400 create task');
+        let task: request.agent.Task = await request.agent.create(baseContext, config);
+        console.info('====>SUB_Request_Agent_proxy_0400 create success');
+        expect().assertFail();
+        done();
+      } catch (err) {
+        console.info('====>SUB_Request_Agent_proxy_0400 create catch err: ' + JSON.stringify(err));
+        expect(err.code).assertEqual(401);
+        done();
+      }
+    });
+
+    /*
+     * @tc.number: SUB_Request_Agent_ErrorDetailed_0500
+     * @tc.name: SUB_Request_Agent_ErrorDetailed_0500
+     * @tc.desc: incorrect error of DNS
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('SUB_Request_Agent_ErrorDetailed_0500', 0, async (done: Function) => {
+      console.info('====>-----------------------SUB_Request_Agent_ErrorDetailed_0500 is starting-----------------------');
+      let config:request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://singnn.com',
+        title: 'createTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Agent_ErrorDetailed_0500',
+        network: request.agent.Network.ANY,
+        overwrite: true
+      };
+      try {
+        let task: request.agent.Task = await request.agent.create(baseContext, config);
+        task.on('failed', async (pro: request.agent.Progress) => {
+          try {
+            task.off('failed');
+            console.info('====>SUB_Request_Agent_ErrorDetailed_0500 failed pro: ' + JSON.stringify(pro));
+            let info:request.agent.TaskInfo = await request.agent.show(task.tid);
+            console.info('====>SUB_Request_Agent_ErrorDetailed_0500 info: ' + JSON.stringify(info));
+            expect(info.faults).assertEqual(80);
+            done();
+          } catch (err) {
+            console.info('====>SUB_Request_Agent_ErrorDetailed_0500 err: ' + JSON.stringify(err));
+          }
+        })
+        await task.start();
+        console.info('====>SUB_Request_Agent_ErrorDetailed_0500 create success');
+      } catch (err) {
+        console.info('====>SUB_Request_Agent_ErrorDetailed_0500 create catch err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /*
+     * @tc.number: SUB_Request_Agent_ErrorDetailed_0100
+     * @tc.name: SUB_Request_Agent_ErrorDetailed_0100
+     * @tc.desc: incorrect error of PARAM
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('SUB_Request_Agent_ErrorDetailed_0100', 0, async (done: Function) => {
+      console.info('====>-----------------------SUB_Request_Agent_ErrorDetailed_0100 is starting-----------------------');
+      let config:request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://?PARAM.com',
+        title: 'createTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Agent_ErrorDetailed_0100',
+        network: request.agent.Network.ANY,
+        overwrite: true
+      };
+      try {
+        let task: request.agent.Task = await request.agent.create(baseContext, config);
+        task.on('failed', async (pro: request.agent.Progress) => {
+          try {
+            task.off('failed');
+            console.info('====>SUB_Request_Agent_ErrorDetailed_0100 failed pro: ' + JSON.stringify(pro));
+            let info:request.agent.TaskInfo = await request.agent.show(task.tid);
+            console.info('====>SUB_Request_Agent_ErrorDetailed_0100 info: ' + JSON.stringify(info));
+            expect(info.faults).assertEqual(48);
+            done();
+          } catch (err) {
+            console.info('====>SUB_Request_Agent_ErrorDetailed_0100 err: ' + JSON.stringify(err));
+          }
+        })
+        await task.start();
+        console.info('====>SUB_Request_Agent_ErrorDetailed_0100 create success');
+      } catch (err) {
+        console.info('====>> create catch err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /*
+     * @tc.number: SUB_Request_Agent_TrafficStatistics_0200
+     * @tc.name: SUB_Request_Agent_TrafficStatistics_0200
+     * @tc.desc: incorrect error of PARAM
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('SUB_Request_Agent_TrafficStatistics_0200', 0, async (done: Function) => {
+      console.info('====>-----------------------SUB_Request_Agent_TrafficStatistics_0200 is starting-----------------------');
+      let config:request.agent.Config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://sf3-cn.feishucdn.com/obj/ee-appcenter/47273f95/Feishu-win32_ia32-7.9.7-signed.exe',
+        title: 'createTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Agent_TrafficStatistics_0200',
+        network: request.agent.Network.ANY,
+        overwrite: true
+      };
+      try {
+        let task: request.agent.Task = await request.agent.create(baseContext, config);
+        console.info('====>SUB_Request_Agent_TrafficStatistics_0200 create success');
+        try {
+          let times = 0;
+          let rx1: number;
+          let tx1: number;
+          let rx2: number;
+          let tx2: number;
+          let t = setInterval(async () => {
+            console.info('====>SUB_Request_Agent_TrafficStatistics_0200 for: ' + times + ' times');
+            times += 1;
+            try {
+              if( times % 2 !== 0) {
+                rx1 = await statistics.getUidRxBytes(getContext().applicationInfo.uid);
+                tx1 = await statistics.getUidTxBytes(getContext().applicationInfo.uid);
+                console.info('====>SUB_Request_Agent_TrafficStatistics_0200 rx1: ' + rx1 +' tx1: ' + tx1);
+              } else {
+                rx2 = await statistics.getUidRxBytes(getContext().applicationInfo.uid)
+                tx2 = await statistics.getUidTxBytes(getContext().applicationInfo.uid)
+                console.info('====>SUB_Request_Agent_TrafficStatistics_0200 rx2: ' + rx2 +' tx2: ' + tx2);
+              }
+              if(times !== 1){
+                expect(rx1 !== rx2).assertTrue();
+                expect(tx1 !== tx2).assertTrue();
+              }
+              if(times === 4){
+                clearInterval(t);
+                await removeTask(task);
+                console.info('====>SUB_Request_Agent_TrafficStatistics_0200 statistics complete');
+                done();
+              }
+            } catch (err) {
+              clearInterval(t)
+              await removeTask(task);
+              console.info('====>SUB_Request_Agent_TrafficStatistics_0200 expect err: ' + JSON.stringify(err));
+              done();
+            }
+          }, 1500)
+        } catch (err) {
+          console.info('====>SUB_Request_Agent_TrafficStatistics_0200 err: ' + JSON.stringify(err));
+          done();
+        }
+        await task.start();
+        console.info('====>SUB_Request_Agent_TrafficStatistics_0200 task.start');
+      } catch (err) {
+        console.info('====>SUB_Request_Agent_TrafficStatistics_0200 create catch err: ' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number SUB_Request_Agent_ContinueDown_0300
+     * @tc.name SUB_Request_Agent_ContinueDown_0300
+     * @tc.desc  After the download is completed, resume the breakpoint transmission
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Agent_ContinueDown_0300', 0, async function (done) {
+      console.info("====>-----------------------SUB_Request_Agent_ContinueDown_0300 is starting-----------------------");
+      let config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        title: 'createTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Agent_ContinueDown_0300.txt',
+        network: request.agent.Network.WIFI,
+        overwrite: true,
+        mode:request.agent.Mode.FOREGROUND
+      };
+      request.agent.create(globalThis.abilityContext, config, async (err, task) => {
+        let on_completedCallback = async (pro: request.agent.Progress) => {
+          task.off('completed', on_completedCallback);
+          try {
+            await task.start();
+            console.info("====>SUB_Request_Agent_ContinueDown_0300 task.start success ");
+            expect().assertFail();
+          } catch (err) {
+            try {
+              console.info("====>SUB_Request_Agent_ContinueDown_0300 start err: " + JSON.stringify(err));
+              expect(err.code).assertEqual(21900007);
+              done();
+            } catch (e) {
+              console.info("====>SUB_Request_Agent_ContinueDown_0300 code err: " + JSON.stringify(e));
+              done();
+            }
+          }
+        }
+        try {
+          if(err){
+            console.info("====>SUB_Request_Agent_ContinueDown_0300 create err: " + JSON.stringify(err));
+            expect().assertFail();
+          }
+          task.on('completed', on_completedCallback);
+          await task.start();
+        } catch (err) {
+          console.info("====>SUB_Request_Agent_ContinueDown_0300 catch err: " + JSON.stringify(err));
+          await removeTask(task);
+          done();
+        }
+      });
+    });
+
+    /**
+     * @tc.number SUB_Request_Agent_ContinueDown_0500
+     * @tc.name SUB_Request_Agent_ContinueDown_0500
+     * @tc.desc  download task
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 2
+     */
+    it('SUB_Request_Agent_ContinueDown_0500', 0, async function (done) {
+      console.info("====>-----------------------SUB_Request_Agent_ContinueDown_0500 is starting-----------------------");
+      let config = {
+        action: request.agent.Action.DOWNLOAD,
+        url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
+        title: 'createTest',
+        description: 'XTS download test!',
+        saveas: './SUB_Request_Agent_ContinueDown_0500.txt',
+        network: request.agent.Network.WIFI,
+        overwrite: true,
+        mode:request.agent.Mode.FOREGROUND
+      };
+      request.agent.create(globalThis.abilityContext, config, async (err, task) => {
+        let on_completedCallback = async (pro: request.agent.Progress) => {
+          task.off('pause', on_completedCallback);
+          try {
+            await task.start();
+            console.info("====>SUB_Request_Agent_ContinueDown_0500 task.start success ");
+            expect().assertFail();
+          } catch (err) {
+            try {
+              console.info("====>SUB_Request_Agent_ContinueDown_0500 start err: " + JSON.stringify(err));
+              expect(err.code).assertEqual(21900007);
+              done();
+            } catch (e) {
+              console.info("====>SUB_Request_Agent_ContinueDown_0500 code err: " + JSON.stringify(e));
+              done();
+            }
+          }
+        }
+        try {
+          if(err){
+            console.info("====>SUB_Request_Agent_ContinueDown_0500 create err: " + JSON.stringify(err));
+            expect().assertFail();
+          }
+          task.on('pause', on_completedCallback);
+          await task.start();
+          await task.pause();
+        } catch (err) {
+          console.info("====>SUB_Request_Agent_ContinueDown_0500 catch err: " + JSON.stringify(err));
+          await removeTask(task);
+          done();
+        }
+      });
     });
 
   });
