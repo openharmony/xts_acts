@@ -28,14 +28,16 @@ struct Index {
             Text('MainAbility2_setWakeUpScreen')
               .fontSize(20)
               .fontWeight(FontWeight.Bold)
-          }.type(ButtonType.Capsule)
+          }
+          .type(ButtonType.Capsule)
           .margin({
             top: 20
           })
           .backgroundColor('#0D9FFB')
           .width('30%')
           .height('5%')
-          .onClick(()=>{})
+          .onClick(() => {
+          })
         }
       }
       .width('100%')

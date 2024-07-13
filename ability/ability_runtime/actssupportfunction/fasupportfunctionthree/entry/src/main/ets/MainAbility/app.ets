@@ -16,9 +16,10 @@ import ability_featureAbility from '@ohos.ability.featureAbility';
 import commonEvent from '@ohos.commonEvent';
 import bundle from '@ohos.bundle';
 
-var TAG1 = "Fa:SupportFunctionThree:MainAbility:";
-var listPush1 = "Fa_SupportFunctionThree_MainAbility_";
-var lifeList = [];
+const TAG1 = "Fa:SupportFunctionThree:MainAbility:";
+const listPush1 = "Fa_SupportFunctionThree_MainAbility_";
+let lifeList: string[] = [];
+
 export default {
   onCreate() {
     console.log(TAG1 + 'onCreate');

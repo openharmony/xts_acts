@@ -15,9 +15,10 @@
 import ability_featureAbility from '@ohos.ability.featureAbility';
 import commonEvent from '@ohos.commonEvent';
 
-var TAG1 = "Fa:SupportFunction:MainAbility6:";
-var listPush1 = "Fa_SupportFunction_MainAbility6_";
-var lifeList = [];
+const TAG1 = "Fa:SupportFunction:MainAbility6:";
+const listPush1 = "Fa_SupportFunction_MainAbility6_";
+let lifeList: string[] = [];
+
 export default {
   onCreate() {
     console.log(TAG1 + 'onCreate');
@@ -26,23 +27,25 @@ export default {
     ability_featureAbility.getWant().then((data) => {
       console.log(TAG1 + "getWant data = " + JSON.stringify(data));
 
-      if(data.parameters.number == 1) {
+      if (data.parameters.number == 1) {
         setDisplayOrientationP(ability_featureAbility, undefined)
       }
-      if(data.parameters.number == 2) {
+      if (data.parameters.number == 2) {
         setDisplayOrientationP(ability_featureAbility, -1)
       }
-      if(data.parameters.number == 3) {
+      if (data.parameters.number == 3) {
         setDisplayOrientationP(ability_featureAbility, 4)
       }
-      if(data.parameters.number == 4) {
+      if (data.parameters.number == 4) {
         setDisplayOrientationP(ability_featureAbility, "1")
       }
-      if(data.parameters.number == 5) {
+      if (data.parameters.number == 5) {
         setDisplayOrientationP(ability_featureAbility, [1, 2])
       }
-      if(data.parameters.number == 6) {
-        setDisplayOrientationP(ability_featureAbility, {number1: 1, number2: 2})
+      if (data.parameters.number == 6) {
+        setDisplayOrientationP(ability_featureAbility, {
+          number1: 1, number2: 2
+        })
       }
     }).catch((error) => {
       console.log(TAG1 + "getWant error = " + JSON.stringify(error));
@@ -83,7 +86,7 @@ function setDisplayOrientationP(featureAbility, displayOrientationErr) {
     }).catch((error) => {
       console.log(TAG1 + "setDisplayOrientation error = " + JSON.stringify(error));
     })
-  } catch(error) {
+  } catch (error) {
     console.log(TAG1 + "setDisplayOrientation catch error = " + JSON.stringify(error));
 
     commonEvent.publish(listPush1 + "displayOrientationErr", (err) => {
