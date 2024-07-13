@@ -588,7 +588,7 @@ HWTEST_F(NativeWindowTest, NativeWindowAttachBuffer002, Function | MediumTest | 
     ASSERT_EQ(OH_NativeWindow_NativeWindowAttachBuffer(nativeWindowTmp, nativeWindowBuffer), NATIVE_ERROR_OK);
     ASSERT_EQ(OH_NativeWindow_NativeWindowHandleOpt(nativeWindowTmp, code, &queueSize), NATIVE_ERROR_OK);
     ASSERT_EQ(queueSize, 3);
-    ASSERT_EQ(OH_NativeWindow_NativeWindowAttachBuffer(nativeWindowTmp, nativeWindowBuffer), NATIVE_ERROR_BUFFER_NOT_IN_CACHE);
+    ASSERT_EQ(OH_NativeWindow_NativeWindowAttachBuffer(nativeWindowTmp, nativeWindowBuffer), NATIVE_ERROR_BUFFER_IN_CACHE);
 
     struct Region *region = new Region();
     struct Region::Rect *rect = new Region::Rect();
