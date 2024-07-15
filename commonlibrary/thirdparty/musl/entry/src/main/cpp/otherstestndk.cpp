@@ -768,6 +768,21 @@ void *ClientTask4(void *arg)
     return nullptr;
 }
 
+int ServerTask(int sockfd,pthread_t cli)
+{
+    pthread_barrier_wait(&g_barrier);
+    struct sockaddr_in clnAddr = {PARAM_0};
+    socklen_t clnAddrLen = sizeof(clnAddr);
+    int sClient = accept(sockfd,
+        reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&clnAddr)), &clnAddrLen);
+    int rets = (sClient > 0) ? PARAM_0 : PARAM_1;
+    close(sClient);
+    close(sockfd);
+    pthread_join(cli, nullptr);
+    pthread_barrier_destroy(&g_barrier);
+    return rets;
+}
+
 static napi_value Accept(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
@@ -800,16 +815,7 @@ static napi_value Accept(napi_env env, napi_callback_info info)
             if (rets != PARAM_0) {
                 ret = PARAM_4;
             } else {
-                pthread_barrier_wait(&g_barrier);
-                struct sockaddr_in clnAddr = {PARAM_0};
-                socklen_t clnAddrLen = sizeof(clnAddr);
-                int sClient = accept(sockfd,
-                    reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&clnAddr)), &clnAddrLen);
-                ret = (sClient > 0) ? PARAM_0 : PARAM_1;
-                close(sClient);
-                close(sockfd);
-                pthread_join(cli, nullptr);
-                pthread_barrier_destroy(&g_barrier);
+                ret = ServerTask(sockfd,cli);
                 napi_create_int32(env, ret, &result);
                 return result;
             }
@@ -860,20 +866,7 @@ static napi_value Accept4(napi_env env, napi_callback_info info)
                 if (rets != PARAM_0) {
                     ret = PARAM_2;
                 } else {
-                    pthread_barrier_wait(&g_barrier);
-                    struct sockaddr_in clnAddr = {0};
-                    socklen_t clnAddrLen = sizeof(clnAddr);
-                    int sClient = -PARAM_1;
-                    sClient = accept4(sListen,
-                        reinterpret_cast<sockaddr *>(static_cast<struct sockaddr_in *>(&clnAddr)),
-                        &clnAddrLen, PARAM_0);
-                    if (sClient > 0) {
-                        ret = PARAM_0;
-                    }
-                    close(sClient);
-                    close(sListen);
-                    pthread_join(cli, nullptr);
-                    pthread_barrier_destroy(&g_barrier);
+                    ret = ServerTask(sListen,cli);
                     napi_create_int32(env, ret, &result);
                     return result;
                 }
