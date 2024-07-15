@@ -18,10 +18,16 @@ import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
 
+class ShadowValue {
+  radius: number
+  color: Color
+  offsetX: number
+  offsetY: number
+}
 
 export default function imageEffectsJsunit() {
   describe('imageEffectsTest', () => {
-    beforeEach(async (done:Function) => {
+    beforeEach(async (done: Function) => {
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/imageEffects/imageEffects',
       }
@@ -46,7 +52,7 @@ export default function imageEffectsJsunit() {
       console.info("imageEffects after each called");
     });
 
-    it('testImageEffects001', 0, async (done:Function) => {
+    it('testImageEffects001', 0, async (done: Function) => {
       console.info('[testSizeSetting001] START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('centerRow');
@@ -56,7 +62,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects002', 0, async (done:Function) => {
+    it('testImageEffects002', 0, async (done: Function) => {
       console.info('[testImageEffects002] START');
       await Utils.sleep(1000);
       try {
@@ -82,7 +88,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects003', 0, async (done:Function) => {
+    it('testImageEffects003', 0, async (done: Function) => {
       console.info('[testImageEffects003] START');
       await Utils.sleep(1000);
       try {
@@ -108,7 +114,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects004', 0, async (done:Function) => {
+    it('testImageEffects004', 0, async (done: Function) => {
       console.info('[testImageEffects004] START');
       await Utils.sleep(1000);
       try {
@@ -134,7 +140,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects005', 0, async (done:Function) => {
+    it('testImageEffects005', 0, async (done: Function) => {
       console.info('[testImageEffects005] START');
       await Utils.sleep(1000);
       try {
@@ -160,7 +166,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects006', 0, async (done:Function) => {
+    it('testImageEffects006', 0, async (done: Function) => {
       console.info('[testImageEffects006] START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('centerRow3');
@@ -172,10 +178,10 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects007', 0, async (done:Function) => {
+    it('testImageEffects007', 0, async (done: Function) => {
       console.info('[testImageEffects007] START');
       await Utils.sleep(1000);
-      let shadowValue = {
+      let shadowValue: ShadowValue = {
         radius: 20, color: Color.Gray, offsetX: 10, offsetY: 10
       };
       try {
@@ -205,10 +211,10 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects008', 0, async (done:Function) => {
+    it('testImageEffects008', 0, async (done: Function) => {
       console.info('[testImageEffects008] START');
       await Utils.sleep(1000);
-      let shadowValue = {
+      let shadowValue: ShadowValue = {
         radius: 0x80000000, color: 0x80000000, offsetX: 0x80000000, offsetY: 0x80000000
       };
       try {
@@ -237,10 +243,10 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects009', 0, async (done:Function) => {
+    it('testImageEffects009', 0, async (done: Function) => {
       console.info('[testImageEffects009] START');
       await Utils.sleep(1000);
-      let shadowValue = {
+      let shadowValue: ShadowValue = {
         radius: 0x7FFFFFFF, color: 0x7FFFFFFF, offsetX: 0x7FFFFFFF, offsetY: 0x7FFFFFFF
       };
       try {
@@ -269,7 +275,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects010', 0, async (done:Function) => {
+    it('testImageEffects010', 0, async (done: Function) => {
       console.info('[testImageEffects010] START');
       await Utils.sleep(1000);
       let shadowValue = {
@@ -301,7 +307,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects011', 0, async (done:Function) => {
+    it('testImageEffects011', 0, async (done: Function) => {
       console.info('[testSizeSetting011] START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('centerRow5');
@@ -310,7 +316,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects012', 0, async (done:Function) => {
+    it('testImageEffects012', 0, async (done: Function) => {
       console.info('[testImageEffects012] START');
       await Utils.sleep(1000);
       try {
@@ -336,7 +342,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects013', 0, async (done:Function) => {
+    it('testImageEffects013', 0, async (done: Function) => {
       console.info('[testImageEffects012] START');
       await Utils.sleep(1000);
       try {
@@ -362,7 +368,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects014', 0, async (done:Function) => {
+    it('testImageEffects014', 0, async (done: Function) => {
       console.info('[testImageEffects014] START');
       await Utils.sleep(1000);
       try {
@@ -388,7 +394,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects015', 0, async (done:Function) => {
+    it('testImageEffects015', 0, async (done: Function) => {
       console.info('[testImageEffects015] START');
       await Utils.sleep(1000);
       try {
@@ -414,17 +420,17 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects016', 0, async (done:Function) => {
+    it('testImageEffects016', 0, async (done: Function) => {
       console.info('[testImageEffects016] START');
       await Utils.sleep(2000);
-      let strJson:  string = getInspectorByKey('centerRow6');
+      let strJson: string = getInspectorByKey('centerRow6');
       console.info("[testImageEffects016] component strJson:" + strJson);
       console.info("[testImageEffects016] component strJson:" + JSON.parse(strJson).$attrs.saturate);
       expect(JSON.parse(strJson).$attrs.saturate).assertEqual(50);
       done()
     });
 
-    it('testImageEffects017', 0, async (done:Function) => {
+    it('testImageEffects017', 0, async (done: Function) => {
       console.info('[testImageEffects017] START');
       await Utils.sleep(1000);
       try {
@@ -450,7 +456,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects018', 0, async (done:Function) => {
+    it('testImageEffects018', 0, async (done: Function) => {
       console.info('[testImageEffects018] START');
       await Utils.sleep(1000);
       try {
@@ -476,7 +482,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects019', 0, async (done:Function) => {
+    it('testImageEffects019', 0, async (done: Function) => {
       console.info('[testImageEffects019] START');
       await Utils.sleep(1000);
       try {
@@ -502,7 +508,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects020', 0, async (done:Function) => {
+    it('testImageEffects020', 0, async (done: Function) => {
       console.info('[testImageEffects020] START');
       await Utils.sleep(1000);
       try {
@@ -528,7 +534,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects021', 0, async (done:Function) => {
+    it('testImageEffects021', 0, async (done: Function) => {
       console.info('[testSizeSetting021] START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('centerRow7');
@@ -537,7 +543,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects022', 0, async (done:Function) => {
+    it('testImageEffects022', 0, async (done: Function) => {
       console.info('[testImageEffects022] START');
       await Utils.sleep(1000);
       try {
@@ -563,7 +569,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects023', 0, async (done:Function) => {
+    it('testImageEffects023', 0, async (done: Function) => {
       console.info('[testImageEffects023] START');
       await Utils.sleep(1000);
       try {
@@ -589,7 +595,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects024', 0, async (done:Function) => {
+    it('testImageEffects024', 0, async (done: Function) => {
       console.info('[testImageEffects024] START');
       await Utils.sleep(1000);
       try {
@@ -615,7 +621,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects025', 0, async (done:Function) => {
+    it('testImageEffects025', 0, async (done: Function) => {
       console.info('[testImageEffects025] START');
       await Utils.sleep(1000);
       try {
@@ -641,7 +647,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects026', 0, async (done:Function) => {
+    it('testImageEffects026', 0, async (done: Function) => {
       console.info('[testSizeSetting0026] START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('centerRow8');
@@ -650,7 +656,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects027', 0, async (done:Function) => {
+    it('testImageEffects027', 0, async (done: Function) => {
       console.info('[testImageEffects027] START');
       await Utils.sleep(1000);
       try {
@@ -676,7 +682,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects028', 0, async (done:Function) => {
+    it('testImageEffects028', 0, async (done: Function) => {
       console.info('[testImageEffects028] START');
       await Utils.sleep(1000);
       try {
@@ -702,7 +708,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects029', 0, async (done:Function) => {
+    it('testImageEffects029', 0, async (done: Function) => {
       console.info('[testImageEffects029] START');
       await Utils.sleep(1000);
       try {
@@ -728,7 +734,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects030', 0, async (done:Function) => {
+    it('testImageEffects030', 0, async (done: Function) => {
       console.info('[testImageEffects030] START');
       await Utils.sleep(1000);
       try {
@@ -754,7 +760,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects031', 0, async (done:Function) => {
+    it('testImageEffects031', 0, async (done: Function) => {
       console.info('[testImageEffects031] START');
       await Utils.sleep(2000);
       let strJson: string = getInspectorByKey('centerRow9');
@@ -764,7 +770,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects032', 0, async (done:Function) => {
+    it('testImageEffects032', 0, async (done: Function) => {
       console.info('[testImageEffects032] START');
       await Utils.sleep(1000);
       try {
@@ -790,7 +796,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects033', 0, async (done:Function) => {
+    it('testImageEffects033', 0, async (done: Function) => {
       console.info('[testImageEffects033] START');
       await Utils.sleep(1000);
       try {
@@ -816,7 +822,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects034', 0, async (done:Function) => {
+    it('testImageEffects034', 0, async (done: Function) => {
       console.info('[testImageEffects034] START');
       await Utils.sleep(1000);
       try {
@@ -842,7 +848,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects035', 0, async (done:Function) => {
+    it('testImageEffects035', 0, async (done: Function) => {
       console.info('[testImageEffects035] START');
       await Utils.sleep(1000);
       try {
@@ -868,7 +874,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects036', 0, async (done:Function) => {
+    it('testImageEffects036', 0, async (done: Function) => {
       console.info('[testImageEffects036] START');
       await Utils.sleep(1000);
       try {
@@ -894,7 +900,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects037', 0, async (done:Function) => {
+    it('testImageEffects037', 0, async (done: Function) => {
       console.info('[testImageEffects037] START');
       await Utils.sleep(1000);
       try {
@@ -921,7 +927,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects038', 0, async (done:Function) => {
+    it('testImageEffects038', 0, async (done: Function) => {
       console.info('[testImageEffects038] START');
       await Utils.sleep(1000);
       try {
@@ -948,7 +954,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects039', 0, async (done:Function) => {
+    it('testImageEffects039', 0, async (done: Function) => {
       console.info('[testImageEffects039] START');
       await Utils.sleep(1000);
       try {
@@ -975,7 +981,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects040', 0, async (done:Function) => {
+    it('testImageEffects040', 0, async (done: Function) => {
       console.info('[testImageEffects040] START');
       await Utils.sleep(1000);
       try {
@@ -1002,7 +1008,7 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects041', 0, async (done:Function) => {
+    it('testImageEffects041', 0, async (done: Function) => {
       console.info('[testImageEffects041] START');
       await Utils.sleep(1000);
       try {
@@ -1029,10 +1035,10 @@ export default function imageEffectsJsunit() {
       done()
     });
 
-    it('testImageEffects042', 0, async (done:Function) => {
+    it('testImageEffects042', 0, async (done: Function) => {
       console.info('[testImageEffects042] START');
       await Utils.sleep(1000);
-      let shadowValue = {
+      let shadowValue: ShadowValue = {
         radius: 20, color: ColoringStrategy.AVERAGE, offsetX: 10, offsetY: 10
       };
       try {
