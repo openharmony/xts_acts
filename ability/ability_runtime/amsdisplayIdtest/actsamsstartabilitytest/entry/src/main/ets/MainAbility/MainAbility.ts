@@ -13,7 +13,6 @@
  * limitations under the License.
  */
 import Ability from '@ohos.app.ability.UIAbility'
-import common from '@ohos.app.ability.common';
 
 export default class MainAbility extends Ability {
     onCreate(want,launchParam){
@@ -30,7 +29,7 @@ export default class MainAbility extends Ability {
     onWindowStageCreate(windowStage) {
         // Main window is created, set main page for this ability
         console.log("MainAbility onWindowStageCreate")
-        AppStorage.setOrCreate<common.UIAbilityContext>("abilityContext", this.context);
+        globalThis.abilityContext = this.context
         windowStage.setUIContent(this.context, "pages/index/index", null)
     }
 
