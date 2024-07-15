@@ -704,7 +704,7 @@ it("testRectChangeOptions_on_TwoCallback", 0, async function (done) {
     let reason: ohosWindow.RectChangeReason;
     windowClass.on('windowRectChange', callback1);
     windowClass.on('windowRectChange', callback2);
-    await windowClass.resize(1000,1000).then(async () => {
+    await windowClass.resize(800,1000).then(async () => {
       console.info(msgStr +'Succeeded in changing the window size.');
       await sleep(500);
       expect(num).assertEqual(2);
@@ -762,7 +762,7 @@ it("testRectChangeOptions_off_callback1", 0, async function (done) {
     windowClass.on('windowRectChange', callback1);
     windowClass.on('windowRectChange', callback2);
     windowClass.off('windowRectChange', callback1);
-    await windowClass.resize(1000,1000).then(async () => {
+    await windowClass.resize(1100,1000).then(async () => {
       console.info(msgStr +'Succeeded in changing the window size.');
       await sleep(500);
       expect(num).assertEqual(-1);
@@ -820,7 +820,7 @@ it("testRectChangeOptions_off_all_callback", 0, async function (done) {
     windowClass.on('windowRectChange', callback1);
     windowClass.on('windowRectChange', callback2);
     windowClass.off('windowRectChange');
-    await windowClass.resize(1000,1000).then(async () => {
+    await windowClass.resize(1200,1000).then(async () => {
       console.info(msgStr +'Succeeded in changing the window size.');
       await sleep(500);
       expect(num).assertEqual(0);
