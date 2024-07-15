@@ -73,7 +73,7 @@ export default function PanGesture2() {
       await CommonFunc.sleep(1000);
       let colum = CommonFunc.getComponentRectOnScreen('PanGesture2');
       let top = colum.top
-      await driver.swipe(Math.round(globalThis.winLeft + 100), Math.round(top + 50), Math.round(globalThis.winLeft + 500), Math.round(top + 450))
+      await driver.swipe(Math.round(globalThis.winLeft + 100), Math.round(top + 100), Math.round(globalThis.winLeft + 500), Math.round(top + 500))
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('PanGesture2_1');
       let obj = JSON.parse(strJson);
