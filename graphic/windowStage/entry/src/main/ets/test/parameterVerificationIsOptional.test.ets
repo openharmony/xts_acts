@@ -1008,7 +1008,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       await (subWindow as ohosWindow.Window).destroyWindow();
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2750
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4490
      * @tc.name      : testGetLastWindow_CreateDialogWindow
      * @tc.desc      : Gets the last window displayed in the current app.
      * @tc.size      : MediumTest
@@ -1060,7 +1060,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       await (tempWnd as ohosWindow.Window).destroyWindow();
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2760
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4500
      * @tc.name      : testLoadContent_NotExistPage_Callback
      * @tc.desc      : The page does not exist
      * @tc.size      : MediumTest
@@ -1097,7 +1097,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       });
     })
     /**
-     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_2770
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_4510
      * @tc.name      : testLoadContent_NotExistPage_Promise
      * @tc.desc      : The page does not exist
      * @tc.size      : MediumTest
