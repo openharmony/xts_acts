@@ -21,34 +21,34 @@ import Want from '@ohos.app.ability.Want';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 
 export default class TestAbility extends Ability {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-    console.log('TestAbility onCreate')
-    let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-    console.info('start run testcase!!!')
-    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
-  }
+    onCreate(want:Want, launchParam:AbilityConstant.LaunchParam) {
+        console.log('TestAbility onCreate')
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+        let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+        console.info('start run testcase!!!')
+        Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+    }
 
-  onDestroy() {
-    console.log('TestAbility onDestroy')
-  }
+    onDestroy() {
+        console.log('TestAbility onDestroy')
+    }
 
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    console.log('TestAbility onWindowStageCreate')
-    windowStage.loadContent('TestAbility/pages/index', null)
+    onWindowStageCreate(windowStage:window.WindowStage) {
+        console.log('TestAbility onWindowStageCreate')
+        windowStage.loadContent('TestAbility/pages/index', null)
 
-    globalThis.abilityContext = this.context;
-  }
+        globalThis.abilityContext = this.context;
+    }
 
-  onWindowStageDestroy() {
-    console.log('TestAbility onWindowStageDestroy')
-  }
+    onWindowStageDestroy() {
+        console.log('TestAbility onWindowStageDestroy')
+    }
 
-  onForeground() {
-    console.log('TestAbility onForeground')
-  }
+    onForeground() {
+        console.log('TestAbility onForeground')
+    }
 
-  onBackground() {
-    console.log('TestAbility onBackground')
-  }
+    onBackground() {
+        console.log('TestAbility onBackground')
+    }
 };
