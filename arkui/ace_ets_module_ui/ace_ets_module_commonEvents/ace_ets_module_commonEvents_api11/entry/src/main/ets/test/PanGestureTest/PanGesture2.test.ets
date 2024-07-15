@@ -79,7 +79,7 @@ export default function PanGesture2() {
       let obj = JSON.parse(strJson);
       console.info("[PanGesture2_0200] component obj is: " + JSON.stringify(obj));
       console.info("[PanGesture2_0200] title: " + JSON.stringify(obj.$attrs.content));
-      expect(Math.abs(Number(obj.$attrs.content)) - 379) < 20).assertEqual(true);
+      expect((Math.abs(Number(obj.$attrs.content)) - 379) < 20).assertEqual(true);
       console.info('[PanGesture2_0200] END');
       done();
     });
