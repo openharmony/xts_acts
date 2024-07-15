@@ -32,7 +32,7 @@ let ACTS_Register: commonEvent.CommonEventSubscribeInfo = {
 };
 
 export default function abilityTest() {
-  describe('ActsCleanTempFilesTest', () =>  {
+  describe('ActsCleanTempFilesTest', () => {
 
     /*
      * @tc.number: SUB_Ability_AbilityRuntime_AppManager_CleanCacheFiles_0100
@@ -42,12 +42,14 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 1
      */
-    it('SUB_Ability_AbilityRuntime_AppManager_CleanCacheFiles_0100', 0, async (done:Function) =>  {
+    it('SUB_Ability_AbilityRuntime_AppManager_CleanCacheFiles_0100', 0, async (done: Function) => {
       let subscriber: commonEvent.CommonEventSubscriber;
       console.info('Acts_CleanTempFiles_0100 start');
-      
-      let msg:Record<string, boolean> = {
-        'ACTS_RegisterEvent_First': false, 'ACTS_RegisterEvent_Second': false, 'ACTS_RegisterEvent_Third': false,
+
+      let msg: Record<string, boolean> = {
+        'ACTS_RegisterEvent_First': false,
+        'ACTS_RegisterEvent_Second': false,
+        'ACTS_RegisterEvent_Third': false,
         'ACTS_RegisterEvent_Fourth': false
       }
 
@@ -79,7 +81,7 @@ export default function abilityTest() {
             msg['ACTS_RegisterEvent_Fourth'] = true;
           }
           if (msg['ACTS_RegisterEvent_First'] == true && msg['ACTS_RegisterEvent_Second'] == true &&
-          msg['ACTS_RegisterEvent_Third'] == true && msg['ACTS_RegisterEvent_Fourth'] == true) {
+            msg['ACTS_RegisterEvent_Third'] == true && msg['ACTS_RegisterEvent_Fourth'] == true) {
             commonEvent.unsubscribe(subscriber, async () => {
               console.log('Acts_CleanTempFiles_0100 unSubscribeCallback');
               await sleep(500);
@@ -126,12 +128,14 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 1
      */
-    it('SUB_Ability_AbilityRuntime_AppManager_CleanCacheFiles_0200', 0, async (done:Function) =>  {
-      let subscriber:commonEvent.CommonEventSubscriber;
+    it('SUB_Ability_AbilityRuntime_AppManager_CleanCacheFiles_0200', 0, async (done: Function) => {
+      let subscriber: commonEvent.CommonEventSubscriber;
       console.info('Acts_CleanTempFiles_0200 start');
 
-      let msg:Record<string, boolean> = {
-        'ACTS_RegisterEvent_First': false, 'ACTS_RegisterEvent_Second': false, 'ACTS_RegisterEvent_Third': false,
+      let msg: Record<string, boolean> = {
+        'ACTS_RegisterEvent_First': false,
+        'ACTS_RegisterEvent_Second': false,
+        'ACTS_RegisterEvent_Third': false,
         'ACTS_RegisterEvent_Fourth': false
       }
 
@@ -156,7 +160,8 @@ export default function abilityTest() {
             msg['ACTS_RegisterEvent_Third'] = true;
             let stop = 'aa force-stop com.acts.cleancachefilesreply';
             abilityDelegator.executeShellCommand(stop, (err, res) => {
-              console.log('Acts_CleanTempFiles_0200 pkill err: ' + JSON.stringify(err) + ' data: ' + JSON.stringify(res));
+              console.log('Acts_CleanTempFiles_0200 pkill err: ' + JSON.stringify(err) + ' data: ' +
+              JSON.stringify(res));
             })
           } else if (data.event == 'Acts_CleanTempFiles_0204') {
             console.log('Acts_CleanTempFiles_0204 call');
@@ -164,13 +169,13 @@ export default function abilityTest() {
             msg['ACTS_RegisterEvent_Fourth'] = true;
           }
           if (msg['ACTS_RegisterEvent_First'] == true && msg['ACTS_RegisterEvent_Second'] == true &&
-          msg['ACTS_RegisterEvent_Third'] == true && msg['ACTS_RegisterEvent_Fourth'] == true) {
+            msg['ACTS_RegisterEvent_Third'] == true && msg['ACTS_RegisterEvent_Fourth'] == true) {
             commonEvent.unsubscribe(subscriber, async () => {
               console.log('Acts_CleanTempFiles_0200 unSubscribeCallback');
               await sleep(500);
-              done();            
+              done();
             });
-          }          
+          }
         });
         await sleep(200);
         console.info('Acts_CleanTempFiles_0200 startAbility one');
@@ -210,11 +215,11 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 1
      */
-    it('SUB_Ability_AbilityRuntime_AppManager_CleanCacheFiles_0300', 0, async (done:Function) =>  {
-      let subscriber:commonEvent.CommonEventSubscriber;
+    it('SUB_Ability_AbilityRuntime_AppManager_CleanCacheFiles_0300', 0, async (done: Function) => {
+      let subscriber: commonEvent.CommonEventSubscriber;
       console.info('Acts_CleanTempFiles_0300 start');
 
-      let msg:Record<string, boolean> = {
+      let msg: Record<string, boolean> = {
         'ACTS_RegisterEvent_First': false, 'ACTS_RegisterEvent_Second': false
       }
 
@@ -238,7 +243,7 @@ export default function abilityTest() {
               await sleep(500);
               done();
             });
-          }          
+          }
         });
         await sleep(200);
         console.info('Acts_CleanTempFiles_0300 startAbility one');
@@ -277,11 +282,11 @@ export default function abilityTest() {
      * @tc.type: Function
      * @tc.level Level 1
      */
-    it('SUB_Ability_AbilityRuntime_AppManager_CleanCacheFiles_0400', 0, async (done:Function) =>  {
+    it('SUB_Ability_AbilityRuntime_AppManager_CleanCacheFiles_0400', 0, async (done: Function) => {
       console.info('Acts_CleanTempFiles_0400 start');
-      let subscriber:commonEvent.CommonEventSubscriber;
-      let connectionId:number;
-      let options:common.ConnectOptions = {
+      let subscriber: commonEvent.CommonEventSubscriber;
+      let connectionId: number;
+      let options: common.ConnectOptions = {
         onConnect: async (element, proxy) => {
           console.info('service onConnect element: ' + JSON.stringify(element) + 'proxy' + JSON.stringify(proxy));
         },
@@ -293,7 +298,7 @@ export default function abilityTest() {
         }
       }
 
-      let msg:Record<string, boolean> = {
+      let msg: Record<string, boolean> = {
         'ACTS_RegisterEvent_First': false, 'ACTS_RegisterEvent_Second': false
       }
 
@@ -318,9 +323,9 @@ export default function abilityTest() {
             commonEvent.unsubscribe(subscriber, async () => {
               console.log('Acts_CleanTempFiles_0400 unSubscribeCallback');
               await sleep(500);
-              done();            
+              done();
             });
-          }          
+          }
         });
         await sleep(200);
         console.info('Acts_CleanTempFiles_0400 startAbility one');
