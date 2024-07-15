@@ -21,14 +21,6 @@ import fs from '@ohos.file.fs';
 import common from '@ohos.app.ability.common';
 import Want from '@ohos.app.ability.Want';
 import base from '@ohos.base';
-import {
-  checkAbilityContextDir,
-  checkAbilityStageContextDir,
-  checkApplicationContextDir,
-  checkContextDirEqualA,
-  checkContextDirEqualB,
-  checkContextDirEqualC
-} from './Utils';
 
 let driver = Driver.create();
 let TAG: string = '';
@@ -620,4 +612,75 @@ export default function stageContextPropertiesTest(abilityContext: common.UIAbil
       console.log(TAG + "--- end");
     });
   })
+}
+
+function checkApplicationContextDir(applicationContext) {
+  expect(applicationContext.cacheDir).assertEqual("/data/storage/el2/base/cache");
+  expect(applicationContext.tempDir).assertEqual("/data/storage/el2/base/temp");
+  expect(applicationContext.filesDir).assertEqual("/data/storage/el2/base/files");
+  expect(applicationContext.distributedFilesDir).assertEqual("/data/storage/el2/distributedfiles");
+  expect(applicationContext.databaseDir).assertEqual("/data/storage/el2/database");
+  expect(applicationContext.preferencesDir).assertEqual("/data/storage/el2/base/preferences");
+  expect(applicationContext.bundleCodeDir).assertEqual("/data/storage/el1/bundle");
+}
+
+function checkAbilityContextDir(abilityContext) {
+  expect(abilityContext.cacheDir).assertEqual("/data/storage/el2/base/haps/entry_test/cache");
+  expect(abilityContext.tempDir).assertEqual("/data/storage/el2/base/haps/entry_test/temp");
+  expect(abilityContext.filesDir).assertEqual("/data/storage/el2/base/haps/entry_test/files");
+  expect(abilityContext.distributedFilesDir).assertEqual("/data/storage/el2/distributedfiles");
+  expect(abilityContext.databaseDir).assertEqual("/data/storage/el2/database/entry_test");
+  expect(abilityContext.preferencesDir).assertEqual("/data/storage/el2/base/haps/entry_test/preferences");
+  expect(abilityContext.bundleCodeDir).assertEqual("/data/storage/el1/bundle");
+}
+
+function checkContextDirEqualA(abilityContext, abilityContext2) {
+  expect(abilityContext.cacheDir).assertEqual(abilityContext2.cacheDir);
+  expect(abilityContext.tempDir).assertEqual(abilityContext2.tempDir);
+  expect(abilityContext.filesDir).assertEqual(abilityContext2.filesDir);
+  expect(abilityContext.distributedFilesDir).assertEqual(abilityContext2.distributedFilesDir);
+  expect(abilityContext.databaseDir).assertEqual(abilityContext2.databaseDir);
+  expect(abilityContext.storageDir).assertEqual(abilityContext2.storageDir);
+  expect(abilityContext.bundleCodeDir).assertEqual(abilityContext2.bundleCodeDir);
+}
+
+function checkContextDirEqualB(abilityContext, abilityContext2) {
+  expect(abilityContext2.cacheDir == "/data/storage/el2/base/haps/feature_assistone/cache" &&
+    abilityContext2.cacheDir != abilityContext.cacheDir).assertTrue();
+  expect(abilityContext2.databaseDir == "/data/storage/el2/database/feature_assistone" &&
+    abilityContext2.databaseDir != abilityContext.databaseDir).assertTrue();
+  expect(abilityContext2.filesDir == "/data/storage/el2/base/haps/feature_assistone/files" &&
+    abilityContext2.filesDir != abilityContext.filesDir).assertTrue();
+  expect(abilityContext2.preferencesDir == "/data/storage/el2/base/haps/feature_assistone/preferences" &&
+    abilityContext2.preferencesDir != abilityContext.preferencesDir).assertTrue();
+  expect(abilityContext2.tempDir == "/data/storage/el2/base/haps/feature_assistone/temp" &&
+    abilityContext2.tempDir != abilityContext.tempDir).assertTrue();
+  expect(abilityContext.distributedFilesDir).assertEqual(abilityContext2.distributedFilesDir);
+  expect(abilityContext.bundleCodeDir).assertEqual(abilityContext2.bundleCodeDir);
+}
+
+function checkContextDirEqualC(abilityContext, abilityContext2) {
+  expect(abilityContext2.cacheDir == "/data/storage/el2/base/haps/entry_assisttow/cache" &&
+    abilityContext2.cacheDir != abilityContext.cacheDir).assertTrue();
+  expect(abilityContext2.databaseDir == "/data/storage/el2/database/entry_assisttow" &&
+    abilityContext2.databaseDir != abilityContext.databaseDir).assertTrue();
+  expect(abilityContext2.filesDir == "/data/storage/el2/base/haps/entry_assisttow/files" &&
+    abilityContext2.filesDir != abilityContext.filesDir).assertTrue();
+  expect(abilityContext2.preferencesDir == "/data/storage/el2/base/haps/entry_assisttow/preferences" &&
+    abilityContext2.preferencesDir != abilityContext.preferencesDir).assertTrue();
+  expect(abilityContext2.tempDir == "/data/storage/el2/base/haps/entry_assisttow/temp" &&
+    abilityContext2.tempDir != abilityContext.tempDir).assertTrue();
+  expect(abilityContext.distributedFilesDir).assertEqual(abilityContext2.distributedFilesDir);
+  expect(abilityContext.bundleCodeDir).assertEqual(abilityContext2.bundleCodeDir);
+}
+
+function checkAbilityStageContextDir() {
+  expect(globalThis.abilityStageContext.cacheDir).assertEqual("/data/storage/el2/base/haps/entry_test/cache");
+  expect(globalThis.abilityStageContext.tempDir).assertEqual("/data/storage/el2/base/haps/entry_test/temp");
+  expect(globalThis.abilityStageContext.filesDir).assertEqual("/data/storage/el2/base/haps/entry_test/files");
+  expect(globalThis.abilityStageContext.distributedFilesDir).assertEqual("/data/storage/el2/distributedfiles");
+  expect(globalThis.abilityStageContext.databaseDir).assertEqual("/data/storage/el2/database/entry_test");
+  expect(globalThis.abilityStageContext.preferencesDir)
+    .assertEqual("/data/storage/el2/base/haps/entry_test/preferences");
+  expect(globalThis.abilityStageContext.bundleCodeDir).assertEqual("/data/storage/el1/bundle");
 }
