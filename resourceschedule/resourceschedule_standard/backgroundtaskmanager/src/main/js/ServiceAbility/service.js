@@ -21,7 +21,7 @@ import resBackgroundTaskManager from '@ohos.resourceschedule.backgroundTaskManag
 import particleAbility from '@ohos.ability.particleAbility';
 import commonEvent from '@ohos.commonEvent';
 
-const TAG = "BGMODE_TEST ";
+const TAG = 'BGMODE_TEST ';
 
 let event;
 
@@ -29,8 +29,8 @@ let request = {
     content: {
         contentType: notification.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
         normal: {
-            title: "title",
-            text: "text"
+            title: 'title',
+            text: 'text'
         }
     },
     id: 1
@@ -39,8 +39,8 @@ let request = {
 let wantAgentInfo = {
     wants: [
         {
-            bundleName: "ohos.acts.resourceschedule.taskmgr.js.function",
-            abilityName: "ohos.acts.resourceschedule.taskmgr.js.function.MainAbility"
+            bundleName: 'ohos.acts.resourceschedule.taskmgr.js.function',
+            abilityName: 'ohos.acts.resourceschedule.taskmgr.js.function.MainAbility'
         }
     ],
     operationType: wantAgent.OperationType.START_ABILITY,
@@ -50,33 +50,33 @@ let wantAgentInfo = {
 
 function callback(err, data) {
     if (err) {
-        console.error(TAG + " Operation failed");
+        console.error(TAG + ' Operation failed');
     } else {
-        console.info(TAG + " Operation succeed");
+        console.info(TAG + ' Operation succeed');
         commonEvent.publish(event, (err) => {
             if (err.code) {
-                console.error(TAG + "PublishCallBack failed");
+                console.error(TAG + 'PublishCallBack failed');
             } else {
-                console.info(TAG + "Publish succeed");
+                console.info(TAG + 'Publish succeed');
             }
-        })
+        });
     }
 }
 
 function startContinuousTaskUseApi7Callback() {
-    event = "startTaskUseApi7Callback";
+    event = 'startTaskUseApi7Callback';
     particleAbility.startBackgroundRunning(1, request, callback);
 }
 
 function stopContinuousTaskUseApi7Callback() {
-    event = "stopTaskUseApi7Callback";
+    event = 'stopTaskUseApi7Callback';
     particleAbility.startBackgroundRunning(1, request).then(() => {
         particleAbility.cancelBackgroundRunning(callback);
     });
 }
 
 function startContinuousTaskUseApi8Callback() {
-    event = "startTaskUseApi8Callback";
+    event = 'startTaskUseApi8Callback';
     wantAgent.getWantAgent(wantAgentInfo).then((data) => {
         backgroundTaskManager.startBackgroundRunning(featureAbility.getContext(),
             backgroundTaskManager.BackgroundMode.LOCATION, data, callback);
@@ -84,7 +84,7 @@ function startContinuousTaskUseApi8Callback() {
 }
 
 function stopContinuousTaskUseApi8Callback() {
-    event = "stopTaskUseApi8Callback";
+    event = 'stopTaskUseApi8Callback';
     wantAgent.getWantAgent(wantAgentInfo).then((data) => {
         return backgroundTaskManager.startBackgroundRunning(featureAbility.getContext(),
             backgroundTaskManager.BackgroundMode.LOCATION, data);
@@ -95,11 +95,11 @@ function stopContinuousTaskUseApi8Callback() {
 
 function startContinuousTaskUseApi7Promise() {
     particleAbility.startBackgroundRunning(1, request).then(() => {
-        commonEvent.publish("startTaskUseApi7Promise", (err) => {
+        commonEvent.publish('startTaskUseApi7Promise', (err) => {
             if (err.code) {
-                console.error(TAG + "PublishCallBack failed");
+                console.error(TAG + 'PublishCallBack failed');
             } else {
-                console.info(TAG + "Publish succeed");
+                console.info(TAG + 'Publish succeed');
             }
         });
     });
@@ -109,11 +109,11 @@ function stopContinuousTaskUseApi7Promise() {
     particleAbility.startBackgroundRunning(1, request).then(() => {
         return particleAbility.cancelBackgroundRunning();
     }).then(() => {
-        commonEvent.publish("stopTaskUseApi7Promise", (err) => {
+        commonEvent.publish('stopTaskUseApi7Promise', (err) => {
             if (err.code) {
-                console.error(TAG + "PublishCallBack failed");
+                console.error(TAG + 'PublishCallBack failed');
             } else {
-                console.info(TAG + "Publish succeed");
+                console.info(TAG + 'Publish succeed');
             }
         });
     });
@@ -124,11 +124,11 @@ function startContinuousTaskUseApi8Promise() {
         return backgroundTaskManager.startBackgroundRunning(featureAbility.getContext(),
             backgroundTaskManager.BackgroundMode.LOCATION, data);
     }).then(() => {
-        commonEvent.publish("startTaskUseApi8Promise", (err) => {
+        commonEvent.publish('startTaskUseApi8Promise', (err) => {
             if (err.code) {
-                console.error(TAG + "PublishCallBack failed");
+                console.error(TAG + 'PublishCallBack failed');
             } else {
-                console.info(TAG + "Publish succeed");
+                console.info(TAG + 'Publish succeed');
             }
         });
     });
@@ -141,14 +141,14 @@ function stopContinuousTaskUseApi8Promise() {
     }).then(() => {
         return backgroundTaskManager.stopBackgroundRunning(featureAbility.getContext());
     }).then(() => {
-        commonEvent.publish("stopTaskUseApi8Promise", (err) => {
+        commonEvent.publish('stopTaskUseApi8Promise', (err) => {
             if (err.code) {
-                console.error(TAG + "PublishCallBack failed");
+                console.error(TAG + 'PublishCallBack failed');
             } else {
-                console.info(TAG + "Publish succeed");
+                console.info(TAG + 'Publish succeed');
             }
         })
-    })
+    });
 }
 
 function startContinuousTaskInvalidBgmode() {
@@ -156,27 +156,27 @@ function startContinuousTaskInvalidBgmode() {
         return backgroundTaskManager.startBackgroundRunning(featureAbility.getContext(),
             backgroundTaskManager.BackgroundMode.BLUETOOTH_INTERACTION, data);
     }).catch(() => {
-        commonEvent.publish("startTaskInvalidBgmode", (err) => {
+        commonEvent.publish('startTaskInvalidBgmode', (err) => {
             if (err.code) {
-                console.error(TAG + "PublishCallBack failed");
+                console.error(TAG + 'PublishCallBack failed');
             } else {
-                console.info(TAG + "Publish succeed");
+                console.info(TAG + 'Publish succeed');
             }
         });
     });
 }
 
 function updateContinuousTaskUseApi12Promise() {
-    let list = ["audioPlayback","location"]
+    let list = ['audioPlayback', 'location'];
     wantAgent.getWantAgent(wantAgentInfo).then((data) => {
         return resBackgroundTaskManager.updateBackgroundRunning(featureAbility.getContext(),
             list, data);
     }).catch(() => {
-        commonEvent.publish("updateTaskUseApi12Promise", (err) => {
+        commonEvent.publish('updateTaskUseApi12Promise', (err) => {
             if (err.code) {
-                console.error(TAG + "PublishCallBack failed");
+                console.error(TAG + 'PublishCallBack failed');
             } else {
-                console.info(TAG + "Publish succeed");
+                console.info(TAG + 'Publish succeed');
             }
         });
     });
@@ -184,34 +184,34 @@ function updateContinuousTaskUseApi12Promise() {
 
 function handleOption(want) {
     switch (want.parameters.option) {
-        case "testcase1":
+        case 'testcase1':
             startContinuousTaskUseApi7Callback();
             break;
-        case "testcase2":
+        case 'testcase2':
             stopContinuousTaskUseApi7Callback();
             break;
-        case "testcase3":
+        case 'testcase3':
             startContinuousTaskUseApi8Callback();
             break;
-        case "testcase4":
+        case 'testcase4':
             stopContinuousTaskUseApi8Callback();
             break;
-        case "testcase5":
+        case 'testcase5':
             startContinuousTaskUseApi7Promise();
             break;
-        case "testcase6":
+        case 'testcase6':
             stopContinuousTaskUseApi7Promise();
             break;
-        case "testcase7":
+        case 'testcase7':
             startContinuousTaskUseApi8Promise();
             break;
-        case "testcase8":
+        case 'testcase8':
             stopContinuousTaskUseApi8Promise();
             break;
-        case "testcase9":
+        case 'testcase9':
             startContinuousTaskInvalidBgmode();
             break;
-        case "testcase10":
+        case 'testcase10':
             updateContinuousTaskUseApi12Promise();
             break;
         default:
@@ -229,7 +229,7 @@ export default {
     },
     onCommand(want, startId) {
         console.info(TAG + 'ServiceAbility onCommand');
-        console.info(TAG + "Get onCommand want: " + JSON.stringify(want));
+        console.info(TAG + 'Get onCommand want: ' + JSON.stringify(want));
         particleAbility.cancelBackgroundRunning();
         backgroundTaskManager.stopBackgroundRunning(featureAbility.getContext());
         handleOption(want);
