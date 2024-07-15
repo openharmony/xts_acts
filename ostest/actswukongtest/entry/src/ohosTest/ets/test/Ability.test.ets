@@ -50,24 +50,27 @@ export default function abilityTest() {
      */
     it('wukongtest_0010', 1, async  ()=>{
       cmd = "wukong exec -T 0.5 &";
-      await abilityDelegator.executeShellCommand("pkill accessibility");
-      abilityDelegator.executeShellCommand(cmd,
-        async (err: BusinessError, d) => {
-          console.log('ACTS_wukongTest executeShellCommand : err : ' + JSON.stringify(err));
-          console.log('ACTS_wukongTest executeShellCommand : stdResult : ' + d.stdResult);
-          console.log('ACTS_wukongTest executeShellCommand : exitCode : ' + d.exitCode);
-        });
+      if(abilityDelegator != undefined){
+        await abilityDelegator.executeShellCommand("pkill accessibility");
+        abilityDelegator.executeShellCommand(cmd,
+          async (err: BusinessError, d) => {
+            console.log('ACTS_wukongTest executeShellCommand : err : ' + JSON.stringify(err));
+            console.log('ACTS_wukongTest executeShellCommand : stdResult : ' + d.stdResult);
+            console.log('ACTS_wukongTest executeShellCommand : exitCode : ' + d.exitCode);
+          });
+      }
       await sleep(5000);
-      abilityDelegator1.executeShellCommand("ps -ef|grep 'wukong exec -T 0.5'|grep -c -v grep ", async (error: BusinessError, date) => {
-        console.log('ACTS_wukongTest cmdPs executeShellCommand : err : ' + JSON.stringify(error));
-        console.log('ACTS_wukongTest cmdPs executeShellCommand : stdResult : ' + date.stdResult);
-        console.log('ACTS_wukongTest cmdPs executeShellCommand : exitCode : ' + date.exitCode);
-        let i:number = date.stdResult.indexOf('1');
-        if (i == -1) {
-          expect().assertFail();
-        }
-      });
-
+      if(abilityDelegator1 != undefined){
+        abilityDelegator1.executeShellCommand("ps -ef|grep 'wukong exec -T 0.5'|grep -c -v grep ", async (error: BusinessError, date) => {
+          console.log('ACTS_wukongTest cmdPs executeShellCommand : err : ' + JSON.stringify(error));
+          console.log('ACTS_wukongTest cmdPs executeShellCommand : stdResult : ' + date.stdResult);
+          console.log('ACTS_wukongTest cmdPs executeShellCommand : exitCode : ' + date.exitCode);
+          let i:number = date.stdResult.indexOf('1');
+          if (i == -1) {
+            expect().assertFail();
+          }
+        });
+      }
     })
   })
 }

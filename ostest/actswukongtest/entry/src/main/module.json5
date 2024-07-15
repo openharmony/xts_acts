@@ -1,15 +1,28 @@
+/*
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 {
   "module": {
-    "name": "phone",
+    "name": "entry",
     "type": "entry",
-    "srcEntrance": "./ets/Application/AbilityStage.ts",
     "description": "$string:entry_desc",
     "mainElement": "MainAbility",
     "deviceTypes": [
       "tablet",
       "default",
       "phone",
-      "tablet",
       "2in1"
     ],
     "deliveryWithInstall": true,
@@ -19,7 +32,7 @@
     "abilities": [
       {
         "name": "com.example.ActsWukongTest.MainAbility",
-        "srcEntrance": "./ets/MainAbility/MainAbility.ts",
+        "srcEntry": "./ets/entryability/EntryAbility.ts",
         "description": "$string:MainAbility_desc",
         "icon": "$media:icon",
         "label": "$string:MainAbility_label",
@@ -38,16 +51,13 @@
     ],
     "requestPermissions": [
       {
-        "name": "ohos.permission.SET_ABILITY_CONTROLLER",
-        "reason": "need use ohos.permission.SET_ABILITY_CONTROLLER"
+        "name": "ohos.permission.SET_ABILITY_CONTROLLER"
       },
       {
-        "name": "ohos.permission.CAPTURE_SCREEN",
-        "reason": "need use ohos.permission.CAPTURE_SCREEN"
+        "name": "ohos.permission.CAPTURE_SCREEN"
       },
       {
-        "name": "ohos.permission.INPUT_MONITORING",
-        "reason": "need use ohos.permission.INPUT_MONITORING"
+        "name": "ohos.permission.INPUT_MONITORING"
       }
     ]
   }
