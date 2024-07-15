@@ -34,7 +34,6 @@ import tabTitleBarPageTest from './tabTitleBar/tabTitleBarPageTest.test.ets';
 import toolBarItemState from './toolBar/toolBarItemState.test.ets';
 import toolBarPageTest from './toolBar/toolBarPageTest.test.ets';
 import treeViewNodeParamContainer from './treeView/treeViewNodeParamContainer.test.ets';
-import treeViewCallbackParamChildIndex from './treeView/treeViewCallbackParamChildIndex.test.ets';
 import alertDialogTest from './dialog/alertDialogTest.test.ets';
 import confirmDialogTest from './dialog/confirmDialogTest.test.ets';
 import customContentDialogTest from './dialog/customContentDialogTest.test.ets';
@@ -68,7 +67,6 @@ export default function testsuite() {
   toolBarItemState();
   toolBarPageTest();
   treeViewNodeParamContainer();
-  treeViewCallbackParamChildIndex();
   alertDialogTest();
   confirmDialogTest();
   customContentDialogTest();

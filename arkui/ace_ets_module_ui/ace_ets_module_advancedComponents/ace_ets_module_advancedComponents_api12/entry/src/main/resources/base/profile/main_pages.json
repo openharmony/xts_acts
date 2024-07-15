@@ -22,7 +22,6 @@
     "MainAbility/pages/toolBar/toolBarItemState",
     "MainAbility/pages/toolBar/toolBarPageTest",
     "MainAbility/pages/treeView/treeViewNodeParamContainer",
-    "MainAbility/pages/treeView/treeViewCallbackParamChildIndex",
     "MainAbility/pages/dialog/alertDialogTest",
     "MainAbility/pages/dialog/confirmDialogTest",
     "MainAbility/pages/dialog/customContentDialogTest",

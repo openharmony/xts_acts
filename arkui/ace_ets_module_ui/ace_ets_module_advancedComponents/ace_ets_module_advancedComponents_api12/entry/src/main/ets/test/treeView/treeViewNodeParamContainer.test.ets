@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
@@ -20,8 +20,8 @@ import Utils from '../Utils';
 
 export default function treeViewNodeParamContainer() {
   describe('treeViewNodeParamContainer', function () {
-    beforeEach(async function (done) {
-      console.info("treeViewNodeParamContainer beforeEach start");
+    beforeEach(async function (done: Function) {
+      console.info('treeViewNodeParamContainer beforeEach start');
       let options = {
         uri: 'MainAbility/pages/treeView/treeViewNodeParamContainer',
       }
@@ -29,25 +29,25 @@ export default function treeViewNodeParamContainer() {
       try {
         router.clear();
         let pages = router.getState();
-        console.info("get treeViewNodeParamContainer state pages: " + JSON.stringify(pages));
-        if (!("treeViewNodeParamContainer" == pages.name)) {
-          console.info("get treeViewNodeParamContainer pages.name: " + JSON.stringify(pages.name));
+        console.info('get treeViewNodeParamContainer state pages: ' + JSON.stringify(pages));
+        if (!('treeViewNodeParamContainer' == pages.name)) {
+          console.info('get treeViewNodeParamContainer pages.name: ' + JSON.stringify(pages.name));
           result = await router.push(options);
           await Utils.sleep(2000);
-          console.info("push treeViewNodeParamContainer page result: " + JSON.stringify(result));
+          console.info('push treeViewNodeParamContainer page result: ' + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push treeViewNodeParamContainer page error: " + err);
+        console.error('push treeViewNodeParamContainer page error: ' + err);
       }
 
       await Utils.sleep(1000)
-      console.info("treeViewNodeParamContainer beforeEach end");
+      console.info('treeViewNodeParamContainer beforeEach end');
       done()
     });
 
     afterEach(async function () {
       await Utils.sleep(1000);
-      console.info("treeViewNodeParamContainer after each called");
+      console.info('treeViewNodeParamContainer after each called');
     })
 
     /**
@@ -63,12 +63,13 @@ export default function treeViewNodeParamContainer() {
       let driver = await Driver.create();
       await driver.delayMs(2000);
       // 查看treeViewNodeParamContainer是否存在以下入口。
-      let button1 = await driver.findComponent(ON.text("Add"));
-      await button1.click();
-      let button2 = await driver.findComponent(ON.text("Modify"));
-      await button2.click();
-      let button3 = await driver.findComponent(ON.text("Remove"));
-      await button3.click();
+      let addButton = await driver.findComponent(ON.text('Add'));
+      let modifyButton = await driver.findComponent(ON.text('Modify'));
+      let RemoveButton = await driver.findComponent(ON.text('Remove'));
+      expect(addButton !== null).assertTrue();
+      expect(modifyButton !== null).assertTrue();
+      expect(RemoveButton !== null).assertTrue();
+      await driver.delayMs(2000);
       console.info('[treeViewNodeParamContainer_0100] END');
       done();
     });
