@@ -14,19 +14,19 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import commonEvent from '@ohos.commonEventManager';
-import {BusinessError} from "@ohos.base";
+import { BusinessError } from "@ohos.base";
 
 const CASE_TIME_OUT = 5000;
 const EXIT_TWO_CALLEE = 2;
 const KILL_TWO = 2;
 const CALLEE_BACK = 2;
-let ACTS_CallFunction:commonEvent.CommonEventSubscribeInfo = {
+let ACTS_CallFunction: commonEvent.CommonEventSubscribeInfo = {
   events: ['ACTS_CALL_EVENT', 'ACTS_RELEASE_EVENT', 'ACTS_SECOND_CALL_EVENT']
 };
 
 export default function abilityTest() {
   describe('ActsAbilityTest', () => {
-    afterEach(async (done:Function) => {
+    afterEach(async (done: Function) => {
       setTimeout(() => {
         console.debug('====>afterEach called');
         done();
@@ -38,8 +38,8 @@ export default function abilityTest() {
      * @tc.name: Local multi-instance Ability supports call calls
      * @tc.desc: Caller application can call other application Ability by Call (single instance).
      */
-    it('Acts_SingleInstanceCallFunction_0100', 0, async (done:Function) => {
-      let subscriber:commonEvent.CommonEventSubscriber;
+    it('Acts_SingleInstanceCallFunction_0100', 0, async (done: Function) => {
+      let subscriber: commonEvent.CommonEventSubscriber;
       console.debug('====>Acts_SingleInstanceCallFunction_0100 start');
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.debug('====>Acts_SingleInstanceCallFunction_0100 Create Subscribe');
@@ -60,7 +60,7 @@ export default function abilityTest() {
           bundleName: 'com.acts.actscallfunction',
           abilityName: 'EntryAbility',
           action: 'Acts_SingleInstanceCallFunction_0100'
-        }, (err:BusinessError) => {
+        }, (err: BusinessError) => {
           console.debug('====>Acts_SingleInstanceCallFunction_0100 startAbility err:' + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
@@ -72,8 +72,8 @@ export default function abilityTest() {
      * @tc.name: Local multi-instance Ability supports call calls
      * @tc.desc: Caller application cannot call its own Ability by Call (single instance).
      */
-    it('Acts_SingleInstanceCallFunction_0200', 0, async (done:Function) => {
-      let subscriber:commonEvent.CommonEventSubscriber;
+    it('Acts_SingleInstanceCallFunction_0200', 0, async (done: Function) => {
+      let subscriber: commonEvent.CommonEventSubscriber;
       console.debug('====>Acts_SingleInstanceCallFunction_0200 start');
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.debug('====>Acts_SingleInstanceCallFunction_0200 Create Subscribe');
@@ -93,7 +93,7 @@ export default function abilityTest() {
             bundleName: 'com.acts.actscallfunction',
             abilityName: 'EntryAbility',
             action: 'Acts_SingleInstanceCallFunction_0200'
-          }, (err:BusinessError) => {
+          }, (err: BusinessError) => {
           console.debug('====>Acts_SingleInstanceCallFunction_0200 startAbility err:' + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
@@ -105,8 +105,8 @@ export default function abilityTest() {
      * @tc.name: Local multi-instance Ability supports call calls
      * @tc.desc: Caller applications can actively release AbilityCaller (single instance).
      */
-    it('Acts_SingleInstanceCallFunction_0300', 0, async (done:Function) => {
-      let subscriber:commonEvent.CommonEventSubscriber;
+    it('Acts_SingleInstanceCallFunction_0300', 0, async (done: Function) => {
+      let subscriber: commonEvent.CommonEventSubscriber;
       let eventCount = 0;
       console.debug('====>Acts_SingleInstanceCallFunction_0300 start');
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
@@ -136,7 +136,7 @@ export default function abilityTest() {
           bundleName: 'com.acts.actscallfunction',
           abilityName: 'EntryAbility',
           action: 'Acts_SingleInstanceCallFunction_0300'
-        }, (err:BusinessError) => {
+        }, (err: BusinessError) => {
           console.debug('====>Acts_SingleInstanceCallFunction_0300 startAbility err:' + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
@@ -149,8 +149,8 @@ export default function abilityTest() {
      * @tc.desc: The caller application can passively perceive the callee death notification of the called
      *           server (single instance).
      */
-    it('Acts_SingleInstanceCallFunction_0400', 0, async (done:Function) => {
-      let subscriber:commonEvent.CommonEventSubscriber;
+    it('Acts_SingleInstanceCallFunction_0400', 0, async (done: Function) => {
+      let subscriber: commonEvent.CommonEventSubscriber;
       let eventCount = 0;
       console.debug('====>Acts_SingleInstanceCallFunction_0400 start');
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
@@ -180,7 +180,7 @@ export default function abilityTest() {
           bundleName: 'com.acts.actscallfunction',
           abilityName: 'EntryAbility',
           action: 'Acts_SingleInstanceCallFunction_0400'
-        }, (err:BusinessError) => {
+        }, (err: BusinessError) => {
           console.debug('====>Acts_SingleInstanceCallFunction_0400 startAbility err:' + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
@@ -192,8 +192,8 @@ export default function abilityTest() {
      * @tc.name: Acts_SingleInstanceCallFunction_0500
      * @tc.desc: The Calling application can call the multi-instance Ability of other applications.
      */
-    it('Acts_SingleInstanceCallFunction_0500', 0, async (done:Function) => {
-      let subscriber:commonEvent.CommonEventSubscriber;
+    it('Acts_SingleInstanceCallFunction_0500', 0, async (done: Function) => {
+      let subscriber: commonEvent.CommonEventSubscriber;
       console.info('====>Acts_SingleInstanceCallFunction_0500 start');
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info('====>Acts_SingleInstanceCallFunction_0500 Create Subscribe');
@@ -213,7 +213,7 @@ export default function abilityTest() {
             bundleName: 'com.acts.actscallfunction',
             abilityName: 'EntryAbility',
             action: 'Acts_SingleInstanceCallFunction_0500'
-          }, (err:BusinessError) => {
+          }, (err: BusinessError) => {
           console.info('====>Acts_SingleInstanceCallFunction_0500 startAbility err:' + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
@@ -225,8 +225,8 @@ export default function abilityTest() {
      * @tc.name: Acts_SingleInstanceCallFunction_0600
      * @tc.desc: The Calling application cannot call its own multi-instance Ability.
      */
-    it('Acts_SingleInstanceCallFunction_0600', 0, async (done:Function) => {
-      let subscriber:commonEvent.CommonEventSubscriber;
+    it('Acts_SingleInstanceCallFunction_0600', 0, async (done: Function) => {
+      let subscriber: commonEvent.CommonEventSubscriber;
       console.info('====>Acts_SingleInstanceCallFunction_0600 start');
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info('====>Acts_SingleInstanceCallFunction_0600 Create Subscribe');
@@ -246,7 +246,7 @@ export default function abilityTest() {
             bundleName: 'com.acts.thirdpartyapprely',
             abilityName: 'EntryAbility',
             action: 'Acts_SingleInstanceCallFunction_0600'
-          }, (err:BusinessError) => {
+          }, (err: BusinessError) => {
           console.info('====>Acts_SingleInstanceCallFunction_0600 startAbility err:' + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
@@ -258,8 +258,8 @@ export default function abilityTest() {
     * @tc.name: Acts_SingleInstanceCallFunction_0700
     * @tc.desc: The caller application can actively release the multi-instance AbilityCaller.
     */
-    it('Acts_SingleInstanceCallFunction_0700', 0, async (done:Function) => {
-      let subscriber:commonEvent.CommonEventSubscriber;
+    it('Acts_SingleInstanceCallFunction_0700', 0, async (done: Function) => {
+      let subscriber: commonEvent.CommonEventSubscriber;
       let flag = false;
       console.info('====>Acts_SingleInstanceCallFunction_0700 start');
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
@@ -282,7 +282,7 @@ export default function abilityTest() {
             bundleName: 'com.acts.actscallfunction',
             abilityName: 'EntryAbility',
             action: 'Acts_SingleInstanceCallFunction_0700'
-          }, (err:BusinessError) => {
+          }, (err: BusinessError) => {
           console.info('====>Acts_SingleInstanceCallFunction_0700 startAbility err:' + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
@@ -295,8 +295,8 @@ export default function abilityTest() {
     * @tc.desc: The caller application can passively perceive the service provider multi-instance callee death
     *           notification.
     */
-    it('Acts_SingleInstanceCallFunction_0800', 0, async (done:Function) => {
-      let subscriber:commonEvent.CommonEventSubscriber;
+    it('Acts_SingleInstanceCallFunction_0800', 0, async (done: Function) => {
+      let subscriber: commonEvent.CommonEventSubscriber;
       console.info('====>Acts_SingleInstanceCallFunction_0800 start');
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.info('====>Acts_SingleInstanceCallFunction_0800 Create Subscribe');
@@ -316,7 +316,7 @@ export default function abilityTest() {
             bundleName: 'com.acts.actscallfunction',
             abilityName: 'EntryAbility',
             action: 'Acts_SingleInstanceCallFunction_0800'
-          }, (err:BusinessError) => {
+          }, (err: BusinessError) => {
           console.info('====>Acts_SingleInstanceCallFunction_0800 startAbility err:' + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
@@ -328,8 +328,8 @@ export default function abilityTest() {
      * @tc.name: Local multi-instance Ability supports call calls
      * @tc.desc: Caller application can call other application Ability by Call (multiple instance and single instance).
      */
-    it('Acts_SingleInstanceCallFunction_0900', 0, async (done:Function) => {
-      let subscriber:commonEvent.CommonEventSubscriber;
+    it('Acts_SingleInstanceCallFunction_0900', 0, async (done: Function) => {
+      let subscriber: commonEvent.CommonEventSubscriber;
       let eventCount = 0;
       console.debug('====>Acts_SingleInstanceCallFunction_0900 start');
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
@@ -359,7 +359,7 @@ export default function abilityTest() {
           bundleName: 'com.acts.actscallfunction',
           abilityName: 'EntryAbility',
           action: 'Acts_SingleInstanceCallFunction_0900'
-        }, (err:BusinessError) => {
+        }, (err: BusinessError) => {
           console.debug('====>Acts_SingleInstanceCallFunction_0900 startAbility err:' +
           JSON.stringify(err));
           expect(err.code).assertEqual(0);
@@ -373,23 +373,26 @@ export default function abilityTest() {
      * @tc.desc: Multiple Callers Call multiple instances of the same application at the same time, which does not
      *           affect the call communication function.
      */
-    it('Acts_SingleInstanceCallFunction_1000', 0, async (done:Function) => {
-      let subscriber:commonEvent.CommonEventSubscriber;
+    it('Acts_SingleInstanceCallFunction_1000', 0, async (done: Function) => {
+      let subscriber: commonEvent.CommonEventSubscriber;
       let eventCount = 0;
       console.debug('====>Acts_SingleInstanceCallFunction_1000 start');
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         console.debug('====>Acts_SingleInstanceCallFunction_1000 Create Subscribe');
         subscriber = data;
         commonEvent.subscribe(subscriber, (err, data) => {
-          console.debug('====>Acts_SingleInstanceCallFunction_1000 multiple subscribeCallBack data:' + JSON.stringify(data));
+          console.debug('====>Acts_SingleInstanceCallFunction_1000 multiple subscribeCallBack data:' +
+          JSON.stringify(data));
           if (data.event === 'ACTS_CALL_EVENT') {
             eventCount++;
-            console.debug('====>Acts_SingleInstanceCallFunction_1000 ACTS_CALL_EVENT data:' + JSON.stringify(data.parameters!.num));
+            console.debug('====>Acts_SingleInstanceCallFunction_1000 ACTS_CALL_EVENT data:' +
+            JSON.stringify(data.parameters!.num));
             expect(data.parameters!.num).assertEqual(1);
           }
           if (data.event === 'ACTS_RELEASE_EVENT') {
             eventCount++;
-            console.debug('====>Acts_SingleInstanceCallFunction_1000 ACTS_RELEASE_EVENT data:' + JSON.stringify(data.parameters!.num));
+            console.debug('====>Acts_SingleInstanceCallFunction_1000 ACTS_RELEASE_EVENT data:' +
+            JSON.stringify(data.parameters!.num));
             expect(data.parameters!.num).assertEqual(1);
 
           }
@@ -404,7 +407,7 @@ export default function abilityTest() {
           bundleName: 'com.acts.actscallfunction',
           abilityName: 'EntryAbility',
           action: 'Acts_SingleInstanceCallFunction_1000'
-        }, (err:BusinessError) => {
+        }, (err: BusinessError) => {
           console.debug('====>Acts_SingleInstanceCallFunction_1000 single startAbility err:' + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
@@ -413,7 +416,7 @@ export default function abilityTest() {
           bundleName: 'com.acts.callapprely',
           abilityName: 'SecondAbility',
           action: 'Acts_SingleInstanceCallFunction_1000'
-        }, (err:BusinessError) => {
+        }, (err: BusinessError) => {
           console.debug('====>Acts_SingleInstanceCallFunction_1000 startAbility err:' + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
@@ -425,8 +428,8 @@ export default function abilityTest() {
      * @tc.name: Local multi-instance Ability supports call calls
      * @tc.desc: Indirect Call Calls multi-instance Ability, which does not affect the call communication function.
      */
-    it('Acts_SingleInstanceCallFunction_1100', 0, async (done:Function) => {
-      let subscriber:commonEvent.CommonEventSubscriber;
+    it('Acts_SingleInstanceCallFunction_1100', 0, async (done: Function) => {
+      let subscriber: commonEvent.CommonEventSubscriber;
       let eventCount = 0;
       console.debug('====>Acts_SingleInstanceCallFunction_1100 start');
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
@@ -436,7 +439,8 @@ export default function abilityTest() {
           console.debug('====>Acts_SingleInstanceCallFunction_1100 subscribeCallBack data:' + JSON.stringify(data));
           if (data.event === 'ACTS_CALL_EVENT') {
             eventCount++;
-            console.debug('====>Acts_SingleInstanceCallFunction_1100 ACTS_CALL_EVENT data:' + JSON.stringify(data.parameters!.num));
+            console.debug('====>Acts_SingleInstanceCallFunction_1100 ACTS_CALL_EVENT data:' +
+            JSON.stringify(data.parameters!.num));
             expect(data.parameters!.num).assertEqual(1);
           }
           if (data.event === 'ACTS_SECOND_CALL_EVENT') {
@@ -454,7 +458,7 @@ export default function abilityTest() {
           bundleName: 'com.acts.actscallfunction',
           abilityName: 'EntryAbility',
           action: 'Acts_SingleInstanceCallFunction_1100'
-        }, (err:BusinessError) => {
+        }, (err: BusinessError) => {
           console.debug('====>Acts_SingleInstanceCallFunction_1100 startAbility err:' + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
@@ -466,8 +470,8 @@ export default function abilityTest() {
      * @tc.name: Local multi-instance Ability supports call calls
      * @tc.desc: Call calls the SPECIFIED type Ability, which can return an error message.
      */
-    it('Acts_SingleInstanceCallFunction_1200', 0, async (done:Function) => {
-      let subscriber:commonEvent.CommonEventSubscriber;
+    it('Acts_SingleInstanceCallFunction_1200', 0, async (done: Function) => {
+      let subscriber: commonEvent.CommonEventSubscriber;
       let eventCount = 0;
       console.debug('====>Acts_SingleInstanceCallFunction_1200 start');
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
@@ -476,7 +480,8 @@ export default function abilityTest() {
         commonEvent.subscribe(subscriber, (err, data) => {
           console.debug('====>Acts_SingleInstanceCallFunction_1200 subscribeCallBack data:' + JSON.stringify(data));
           if (data.event === 'ACTS_CALL_EVENT') {
-            console.debug('====>Acts_SingleInstanceCallFunction_1200 ACTS_CALL_EVENT data:' + JSON.stringify(data.parameters!.num));
+            console.debug('====>Acts_SingleInstanceCallFunction_1200 ACTS_CALL_EVENT data:' +
+            JSON.stringify(data.parameters!.num));
             expect(data.parameters!.num.code).assertEqual(16000002);
             commonEvent.unsubscribe(subscriber, () => {
               console.debug('====>Acts_SingleInstanceCallFunction_1200 unSubscribeCallback');
@@ -488,7 +493,7 @@ export default function abilityTest() {
           bundleName: 'com.acts.actscallfunction',
           abilityName: 'EntryAbility',
           action: 'Acts_SingleInstanceCallFunction_1200'
-        }, (err:BusinessError) => {
+        }, (err: BusinessError) => {
           console.debug('====>Acts_SingleInstanceCallFunction_1200 startAbility err:' + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
