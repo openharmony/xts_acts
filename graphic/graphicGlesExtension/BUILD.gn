@@ -47,6 +47,7 @@ ohos_moduletest_suite("ActsGraphicGlesExtensionTest") {
     "access_token:libtoken_setproc",
     "graphic_2d:2d_graphics",
     "graphic_2d:libgraphic_utils",
+    "graphic_surface:buffer_handle",
     "graphic_surface:surface",
     "hilog:hilog_ndk",
     "hilog:libhilog",
@@ -61,6 +62,5 @@ ohos_moduletest_suite("ActsGraphicGlesExtensionTest") {
     "$comPath/frameworks/opengl_wrapper:GLESv3",
     "$comPath/rosen/modules/composer/native_vsync:libnative_vsync",
     "$comPath/rosen/modules/composer/vsync:libvsync",
-    "$comPath/utils:buffer_handle",
   ]
 }

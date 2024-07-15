@@ -52,6 +52,7 @@ ohos_moduletest_suite("ActsGraphicNapiTest") {
     "access_token:libnativetoken",
     "access_token:libtoken_setproc",
     "graphic_2d:libgraphic_utils",
+    "graphic_surface:buffer_handle",
     "graphic_surface:surface",
     "graphic_surface:sync_fence",
     "hilog:libhilog",
@@ -66,7 +67,6 @@ ohos_moduletest_suite("ActsGraphicNapiTest") {
     "$comPath/frameworks/opengl_wrapper:GLESv3",
     "$comPath/rosen/modules/composer/native_vsync:libnative_vsync",
     "$comPath/rosen/modules/composer/vsync:libvsync",
-    "$comPath/utils:buffer_handle",
     "//third_party/googletest:gmock_main",
     "//third_party/googletest:gtest_main",
   ]
