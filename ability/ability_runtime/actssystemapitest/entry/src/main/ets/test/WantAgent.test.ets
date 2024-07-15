@@ -19,21 +19,21 @@ import WantAgent from '@ohos.app.ability.wantAgent'
 let ERROR_CODE = 202;
 
 export default function wantAgentTest() {
-  describe('wantAgentTest', function () {
+  describe('wantAgentTest', () => {
 
     /**
      * @tc.number: SUB_AA_OpenHarmony_Context_0100
      * @tc.name: callback form getWant system interface interception test
-     * @tc.desc:  Test the third-party application call getWant will be blocked
-     * @tc.level   3
+     * @tc.desc: Test the third-party application call getWant will be blocked
+     * @tc.level 3
      */
-    it('System_API_Test_WantAgent_Manager_0100',0, async function (done) {
+    it('System_API_Test_WantAgent_Manager_0100', 0, async (done: Function) => {
       let TAG = 'System_API_Test_WantAgent_Manager_0100';
       let wantAgent;
       try {
         WantAgent.getWant(wantAgent, (error, data) => {
           console.info(TAG + " ==========================>getWantCallback=======================>");
-        })  
+        })
       } catch (error) {
         console.info(TAG + ` getWantCallback err: + ${error.code} + ${error.message}`);
         expect(error.code).assertEqual(ERROR_CODE);
@@ -44,10 +44,10 @@ export default function wantAgentTest() {
     /**
      * @tc.number: SUB_AA_OpenHarmony_Context_0100
      * @tc.name: promise form getWant system interface interception test
-     * @tc.desc:  Test the third-party application call getWant will be blocked
-     * @tc.level   3
+     * @tc.desc: Test the third-party application call getWant will be blocked
+     * @tc.level 3
      */
-    it('System_API_Test_QuickFix_Manager_0200',0, async function (done) {
+    it('System_API_Test_QuickFix_Manager_0200', 0, async (done: Function) => {
       let TAG = 'System_API_Test_QuickFix_Manager_0200';
       let wantAgent;
       try {
