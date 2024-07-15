@@ -22,7 +22,7 @@ struct RichEditorExample {
   @Builder CustomKeyboardBuilder() {
     Column() {
       Grid() {
-        ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item) => {
+        ForEach([1, 2, 3, 4, 5, 6, 7, 8, 9, '*', 0, '#'], (item: number|string) => {
           GridItem() {
             Button(item + "")
               .width(110).onClick(() => {

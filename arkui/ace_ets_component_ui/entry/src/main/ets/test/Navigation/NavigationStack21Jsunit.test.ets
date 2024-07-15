@@ -13,15 +13,15 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 export default function NavigationStack21Jsunit() {
-  describe('NavigationStack21Jsunit', function () {
-    beforeEach(async function (done) {
+  describe('NavigationStack21Jsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("NavigationStack21Jsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Navigation/NavigationStack21',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Navigation/NavigationStack21',
       }
       try {
         router.clear();
@@ -45,7 +45,7 @@ export default function NavigationStack21Jsunit() {
     * @tc.desc  : When NavigationMode is set to auto, hideNavBar is dynamically changed to false, and the content area is empty.
     * @tc.level : Level 3
     */
-    it('NavigationStack21Jsunit_0100', 0, async function (done) {
+    it('NavigationStack21Jsunit_0100', 0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       let driver = await UiDriver.create()
       await CommonFunc.sleep(500);
@@ -62,7 +62,7 @@ export default function NavigationStack21Jsunit() {
       await buttoncontent.click();
       await CommonFunc.sleep(2000);
       let textcontent = getInspectorByKey('NavigationStack21getText');
-      let textobj = JSON.parse(textcontent);
+      let textobj: ESObject = JSON.parse(textcontent);
       console.info('NavigationStack21Jsunit_0100 component textobj is: ' + textobj.$attrs.content);
       expect(textobj.$attrs.content).assertEqual('0');
       console.info('NavigationStack21Jsunit_0100 END')

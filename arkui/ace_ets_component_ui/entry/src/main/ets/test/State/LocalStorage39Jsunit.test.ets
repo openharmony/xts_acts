@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 
 
 export default function LocalStorage39Jsunit() {
-  describe('LocalStorage39Jsunit', function () {
-    beforeEach(async function (done) {
+  describe('LocalStorage39Jsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("LocalStorage39Jsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/LocalStorage39',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/LocalStorage39',
       }
       try {
         router.clear();
@@ -42,7 +42,7 @@ export default function LocalStorage39Jsunit() {
       done();
     });
 
-    it('LocalStorage39Jsunit_0200', 0, async function (done) {
+    it('LocalStorage39Jsunit_0200', 0, async (done: Function) => {
       //Size获取AppStorage中存在键值对的个数
       console.info('[LocalStorage39Jsunit_0200] START');
       let driver = await UiDriver.create()
@@ -51,7 +51,7 @@ export default function LocalStorage39Jsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('sizeText');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[LocalStorage39Jsunit_0200] obj1 is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
       expect(obj1.$attrs.content).assertEqual('size是：2');
@@ -60,22 +60,22 @@ export default function LocalStorage39Jsunit() {
       done();
     });
 
-    it('LocalStorage39Jsunit_0400', 0, async function (done) {
+    it('LocalStorage39Jsunit_0400', 0, async (done: Function) => {
       console.info('[LocalStorage39Jsunit_0400] START');
       let driver = await UiDriver.create()
       let Storage12Button1 = await driver.findComponent(BY.key('button1'));
       await Storage12Button1.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('keysText1');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[LocalStorage39Jsunit_0400] obj1 is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
-      expect(obj1.$attrs.content).assertEqual('Keys：["storage_","PropA","PropB"]');
+      expect(obj1.$attrs.content).assertEqual('Keys：["storage_","propA","propB"]');
       console.info('[LocalStorage39Jsunit_0400] END');
       done();
     });
 
-    it('LocalStorage39Jsunit_0600', 0, async function (done) {
+    it('LocalStorage39Jsunit_0600', 0, async (done: Function) => {
       console.info('[LocalStorage39Jsunit_0600] START');
       let driver = await UiDriver.create()
       let Storage12Button1 = await driver.findComponent(BY.key('button2'));
@@ -83,15 +83,15 @@ export default function LocalStorage39Jsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('getText1');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[LocalStorage39Jsunit_0600] obj1 is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
-      expect(obj1.$attrs.content).assertEqual('get PropA：1');
+      expect(obj1.$attrs.content).assertEqual('get propA：1');
       console.info('[LocalStorage39Jsunit_0600] END');
       done();
     });
 
-    it('LocalStorage39Jsunit_0800', 0, async function (done) {
+    it('LocalStorage39Jsunit_0800', 0, async (done: Function) => {
       console.info('[LocalStorage39Jsunit_0800] START');
       let driver = await UiDriver.create()
       let Storage12Button1 = await driver.findComponent(BY.key('button3'));
@@ -99,10 +99,10 @@ export default function LocalStorage39Jsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('getText2');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[LocalStorage39Jsunit_0800] obj1 is: " + JSON.stringify(obj1));
       await CommonFunc.sleep(1000);
-      expect(obj1.$attrs.content).assertEqual('get PropE：undefined');
+      expect(obj1.$attrs.content).assertEqual('get propE：undefined');
       console.info('[LocalStorage39Jsunit_0800] END');
       done();
     });

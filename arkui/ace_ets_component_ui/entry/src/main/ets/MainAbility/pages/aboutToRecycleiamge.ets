@@ -20,7 +20,7 @@ class BasicDataSource implements IDataSource {
     return 0;
   }
 
-  public getData(index:number): unknown {
+  public getData(index:number): String|undefined {
     return undefined;
   }
 
@@ -77,7 +77,7 @@ class MyDataSourceImag extends  BasicDataSource {
     return this.dataArray.length
   }
 
-  public getData(index: number): unknown {
+  public getData(index: number): String {
     return this.dataArray[index];
   }
 
@@ -104,7 +104,7 @@ struct MyComponentImag{
         ListItem(){
           ReusableChildComponent({item: item})
         }
-      }, item => item)
+      }, (item: string) => item)
     }
     .width('100%')
     .height('100%')
@@ -116,7 +116,7 @@ struct MyComponentImag{
 struct ReusableChildComponent {
   @State item: string = ''
 
-  aboutToReuse(params) {
+  aboutToReuse(params: ESObject) {
     this.item = params.item;
   }
 

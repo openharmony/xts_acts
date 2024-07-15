@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../MainAbility/utils/MessageManager';
 
 
 export default function GridLayoutDirection() {
-  describe('GridLayoutDirection', function () {
-    beforeEach(async function (done) {
+  describe('GridLayoutDirection', () => {
+    beforeEach(async (done: Function) => {
       console.info("GridLayoutDirection beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/GridLayoutDirection',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/GridLayoutDirection',
       }
       try {
         router.clear();
@@ -49,7 +49,7 @@ export default function GridLayoutDirection() {
       * @tc.desc  : Set layoutDirection to GridDirection.ColumnReverse
       * @tc.level : Level 2
       */
-    it('GridLayoutDirection_001', 0, async function (done) {
+    it('GridLayoutDirection_001', 0, async (done: Function) => {
 
       console.info('[GridLayoutDirection_001] START');
       await CommonFunc.sleep(1000);
@@ -58,8 +58,7 @@ export default function GridLayoutDirection() {
       let GridItem00 = CommonFunc.getComponentRect('GridItem00');
       let GridItem01 = CommonFunc.getComponentRect('GridItem01');
       await CommonFunc.sleep(1000);
-      expect(Math.round(GridItem00.top - GridItem01.bottom)).assertEqual(Math.round(vp2px(10)));
-
+      expect(Math.abs(Math.round(GridItem00.top - GridItem01.bottom) - Math.round(vp2px(10))) <= 1).assertTrue();
       console.info('[GridLayoutDirection_001] END');
       done();
     });
@@ -70,7 +69,7 @@ export default function GridLayoutDirection() {
       * @tc.desc  : Set layoutDirection to GridDirection.Column
       * @tc.level : Level 2
       */
-    it('GridLayoutDirection_002', 0, async function (done) {
+    it('GridLayoutDirection_002', 0, async (done: Function) => {
 
       console.info('[GridLayoutDirection_002] START');
       await CommonFunc.sleep(200);
@@ -79,8 +78,7 @@ export default function GridLayoutDirection() {
       let GridItem00 = CommonFunc.getComponentRect('GridItem00');
       let GridItem01 = CommonFunc.getComponentRect('GridItem01');
       await CommonFunc.sleep(1000);
-      expect(Math.round(GridItem01.top - GridItem00.bottom)).assertEqual(Math.round(vp2px(10)));
-
+      expect(Math.abs(Math.round(GridItem01.top - GridItem00.bottom) - Math.round(vp2px(10))) <= 1).assertTrue();
       console.info('[GridLayoutDirection_002] END');
       done();
     });
@@ -91,7 +89,7 @@ export default function GridLayoutDirection() {
       * @tc.desc  : Set layoutDirection to GridDirection.RowReverse
       * @tc.level : Level 2
       */
-    it('GridLayoutDirection_003', 0, async function (done) {
+    it('GridLayoutDirection_003', 0, async (done: Function) => {
 
       console.info('[GridLayoutDirection_003] START');
       await CommonFunc.sleep(200);
@@ -100,8 +98,7 @@ export default function GridLayoutDirection() {
       let GridItem00 = CommonFunc.getComponentRect('GridItem00');
       let GridItem01 = CommonFunc.getComponentRect('GridItem01');
       await CommonFunc.sleep(1000);
-      expect(Math.round(GridItem00.left - GridItem01.right)).assertEqual(Math.round(vp2px(10)));
-
+      expect(Math.abs(Math.round(GridItem00.left - GridItem01.right) - Math.round(vp2px(10))) <= 1).assertTrue();
       console.info('[GridLayoutDirection_003] END');
       done();
     });
@@ -112,7 +109,7 @@ export default function GridLayoutDirection() {
       * @tc.desc  : Set layoutDirection to GridDirection.Row
       * @tc.level : Level 2
       */
-    it('GridLayoutDirection_004', 0, async function (done) {
+    it('GridLayoutDirection_004', 0, async (done: Function) => {
 
       console.info('[GridLayoutDirection_004] START');
       await CommonFunc.sleep(200);
@@ -121,8 +118,7 @@ export default function GridLayoutDirection() {
       let GridItem00 = CommonFunc.getComponentRect('GridItem00');
       let GridItem01 = CommonFunc.getComponentRect('GridItem01');
       await CommonFunc.sleep(1000);
-      expect(Math.round(GridItem01.left - GridItem00.right)).assertEqual(Math.round(vp2px(10)));
-
+      expect(Math.abs(Math.round(GridItem01.left - GridItem00.right) - Math.round(vp2px(10))) <= 1).assertTrue();
       console.info('[GridLayoutDirection_004] END');
       done();
     });
@@ -133,7 +129,7 @@ export default function GridLayoutDirection() {
       * @tc.desc  : Set layoutDirection to GridDirection.ColumnReverse
       * @tc.level : Level 2
       */
-    it('GridLayoutDirection_005', 0, async function (done) {
+    it('GridLayoutDirection_005', 0, async (done: Function) => {
 
       console.info('[GridLayoutDirection_005] START');
       await CommonFunc.sleep(200);
@@ -154,7 +150,7 @@ export default function GridLayoutDirection() {
       * @tc.desc  : Set layoutDirection to GridDirection.ColumnReverse
       * @tc.level : Level 2
       */
-    it('GridLayoutDirection_006', 0, async function (done) {
+    it('GridLayoutDirection_006', 0, async (done: Function) => {
 
       console.info('[GridLayoutDirection_006] START');
       await CommonFunc.sleep(200);

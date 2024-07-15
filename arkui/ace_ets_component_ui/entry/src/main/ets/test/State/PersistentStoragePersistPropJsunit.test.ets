@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import events_emitter from '@ohos.events.emitter'
 
 
 export default function PersistentStoragePersistPropJsunit() {
-  describe('PersistentStoragePersistPropJsunit', function () {
-    beforeEach(async function (done) {
+  describe('PersistentStoragePersistPropJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("PersistentStoragePersistPropJsunit beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/State/PersistentStoragePersistProp",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/State/PersistentStoragePersistProp",
       }
       try {
         router.clear();
@@ -44,7 +44,7 @@ export default function PersistentStoragePersistPropJsunit() {
     });
 
 
-    it('PersistentStoragePersistPropJsunit_0100', 0, async function (done) {
+    it('PersistentStoragePersistPropJsunit_0100', 0, async (done: Function) => {
       console.info('[PersistentStoragePersistPropJsunit_0100] START');
       let driver = await UiDriver.create()
       let button_PersistProp = await driver.findComponent(BY.key('button_PersistProp'));
@@ -59,7 +59,7 @@ export default function PersistentStoragePersistPropJsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('text_button_Keys');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[PersistentStoragePersistPropJsunit_0100] obj1 is: " + JSON.stringify(obj1));
 
       expect(obj1.$attrs.content).assertEqual('Keys:["aPropA","aPropB"]');
@@ -70,7 +70,7 @@ export default function PersistentStoragePersistPropJsunit() {
       await button_Keys2.click();
       await CommonFunc.sleep(1000);
 	    let strJson2 = getInspectorByKey('text_button_Keys');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[PersistentStoragePersistPropJsunit_0102] obj2 is: " + JSON.stringify(obj2));
 	    console.info(obj2.$attrs.content);
       expect(obj2.$attrs.content).assertEqual('Keys:["aPropA"]');
@@ -78,7 +78,7 @@ export default function PersistentStoragePersistPropJsunit() {
       done();
     });
 
-	  it('PersistentStoragePersistPropJsunit_0200', 0, async function (done) {
+	  it('PersistentStoragePersistPropJsunit_0200', 0, async (done: Function) => {
 
       console.info('[PersistentStoragePersistPropJsunit_0200] START');
       let driver = await UiDriver.create()
@@ -91,7 +91,7 @@ export default function PersistentStoragePersistPropJsunit() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('text_button_Keys');
-      let obj3 = JSON.parse(strJson1);
+      let obj3: ESObject = JSON.parse(strJson1);
       console.info("[PersistentStoragePersistPropJsunit_0200] obj3 is: " + JSON.stringify(obj3));
 
       expect(obj3.$attrs.content).assertEqual('Keys:["aPropA"]');
@@ -99,7 +99,7 @@ export default function PersistentStoragePersistPropJsunit() {
       done();
     });
 
-    it('PersistentStoragePersistPropJsunit_0300', 0, async function (done) {
+    it('PersistentStoragePersistPropJsunit_0300', 0, async (done: Function) => {
       console.info('[PersistentStoragePersistPropJsunit_0300] START');
       let driver = await UiDriver.create()
       let button_PersistProp_default = await driver.findComponent(BY.key('button_PersistProp_default'));

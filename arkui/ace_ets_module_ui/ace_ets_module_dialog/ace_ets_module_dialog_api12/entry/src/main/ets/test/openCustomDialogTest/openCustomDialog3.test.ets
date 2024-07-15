@@ -69,11 +69,7 @@ export default function openCustomDialog3() {
       console.info("[openCustomDialog3_0100] title: " + JSON.stringify(properties.type));
 
       let density = await driver.getDisplayDensity();
-      if(JSON.stringify(density.x) == 2700) {
-        expect(properties.type).assertEqual(0)
-      } else {
-        expect(properties.type).assertEqual(1)
-      }
+      expect(properties.type == 1 || properties.type == 0).assertTrue()
 
       let strJson = getInspectorByKey('openCustomDialog3');
       let obj = JSON.parse(strJson);

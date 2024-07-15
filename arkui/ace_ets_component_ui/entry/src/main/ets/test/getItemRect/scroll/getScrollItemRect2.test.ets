@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../../MainAbility/utils/MessageManager';
 
 
 export default function getScrollItemRect2() {
-  describe('getScrollItemRect2', function () {
-    beforeEach(async function (done) {
+  describe('getScrollItemRect2', () => {
+    beforeEach(async (done: Function) => {
       console.info("getScrollItemRect2 beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/getItemRect/scroll/getScrollItemRect2',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/getItemRect/scroll/getScrollItemRect2',
       }
       try {
         router.clear();
@@ -42,9 +42,9 @@ export default function getScrollItemRect2() {
       }
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
-      router.back({uri: 'MainAbility/pages/index/index'})
+      router.back({url: 'MainAbility/pages/index/index'})
       console.info("BadgeFocus after each called");
     });
 
@@ -54,7 +54,7 @@ export default function getScrollItemRect2() {
     * @tc.desc  : set index to 0,set offset of column to {x:20,y:0}
     * @tc.level : Level 2
     */
-    it('getScrollItemRect2_0100', 0, async function (done) {
+    it('getScrollItemRect2_0100', 0, async (done: Function) => {
 
       console.info('[getScrollItemRect2_0100] START');
       globalThis.value.message.notify({name:'index', value:0});
@@ -77,22 +77,22 @@ export default function getScrollItemRect2() {
 
       console.log('get text message')
       let strJson1 = getInspectorByKey('getScrollItemRect2_text1')
-      let obj1 = JSON.parse(strJson1)
+      let obj1: ESObject = JSON.parse(strJson1)
       let x = Number(obj1.$attrs.content)
       console.log('x' + x)
 
       let strJson2 = getInspectorByKey('getScrollItemRect2_text2')
-      let obj2 = JSON.parse(strJson2)
+      let obj2: ESObject = JSON.parse(strJson2)
       let y = Number(obj2.$attrs.content)
       console.log('y' + y)
 
       let strJson3 = getInspectorByKey('getScrollItemRect2_text3')
-      let obj3 = JSON.parse(strJson3)
+      let obj3: ESObject = JSON.parse(strJson3)
       let width = Number(obj3.$attrs.content)
       console.log('width' + width)
 
       let strJson4 = getInspectorByKey('getScrollItemRect2_text4')
-      let obj4 = JSON.parse(strJson4)
+      let obj4: ESObject = JSON.parse(strJson4)
       let height = Number(obj4.$attrs.content)
       console.log('height' + height)
 
@@ -114,7 +114,7 @@ export default function getScrollItemRect2() {
     * @tc.desc  : set index to 0,set offset of column to {x:0,y:20}
     * @tc.level : Level 2
     */
-    it('getScrollItemRect2_0200', 0, async function (done) {
+    it('getScrollItemRect2_0200', 0, async (done: Function) => {
 
       console.info('[getScrollItemRect2_0200] START');
       globalThis.value.message.notify({name:'index', value:0});
@@ -137,22 +137,22 @@ export default function getScrollItemRect2() {
 
       console.log('get text message')
       let strJson1 = getInspectorByKey('getScrollItemRect2_text1')
-      let obj1 = JSON.parse(strJson1)
+      let obj1: ESObject = JSON.parse(strJson1)
       let x = Number(obj1.$attrs.content)
       console.log('x' + x)
 
       let strJson2 = getInspectorByKey('getScrollItemRect2_text2')
-      let obj2 = JSON.parse(strJson2)
+      let obj2: ESObject = JSON.parse(strJson2)
       let y = Number(obj2.$attrs.content)
       console.log('y' + y)
 
       let strJson3 = getInspectorByKey('getScrollItemRect2_text3')
-      let obj3 = JSON.parse(strJson3)
+      let obj3: ESObject = JSON.parse(strJson3)
       let width = Number(obj3.$attrs.content)
       console.log('width' + width)
 
       let strJson4 = getInspectorByKey('getScrollItemRect2_text4')
-      let obj4 = JSON.parse(strJson4)
+      let obj4: ESObject = JSON.parse(strJson4)
       let height = Number(obj4.$attrs.content)
       console.log('height' + height)
 

@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import  CommonFunc from '../../MainAbility/utils/Common'
 
 
 export default function PropEnumJsunit() {
-  describe('PropEnumJsunit', function () {
-    beforeEach(async function (done) {
+  describe('PropEnumJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("PropEnumJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/PropEnum',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/PropEnum',
       }
       try {
         router.clear();
@@ -42,7 +42,7 @@ export default function PropEnumJsunit() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       let driver = Driver.create();
       await CommonFunc.sleep(500);      
       let button = await driver.findComponent(ON.id('PropEnum_reset'));
@@ -51,7 +51,7 @@ export default function PropEnumJsunit() {
       await CommonFunc.sleep(1000);
     });
 
-    it('PropEnumJsunit_0200', 0, async function (done) {
+    it('PropEnumJsunit_0200', 0, async (done: Function) => {
 
       console.info('PropEnumJsunit_0200 START');
       let driver = await UiDriver.create()
@@ -59,14 +59,14 @@ export default function PropEnumJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('PropEnum');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropEnumJsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[PropEnumJsunit_0200] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("Father State: 2");
       console.info('[PropEnumJsunit_0200] END');
 
       let strJson1 = getInspectorByKey('ChildPropEnum');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[PropEnumJsunit_0200] component obj is: " + JSON.stringify(obj1));
       console.info("[PropEnumJsunit_0200] title: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("Child Prop: 2");
@@ -74,7 +74,7 @@ export default function PropEnumJsunit() {
       done();
     });
 
-    it('PropEnumJsunit_0400', 0, async function (done) {
+    it('PropEnumJsunit_0400', 0, async (done: Function) => {
 
       console.info('PropEnumJsunit_0400 START');
       let driver = await UiDriver.create()
@@ -82,13 +82,13 @@ export default function PropEnumJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ChildPropEnum');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[PropEnumJsunit_0400] component obj is: " + JSON.stringify(obj));
       console.info("[PropEnumJsunit_0400] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("Child Prop: 3");
 
       let strJson1 = getInspectorByKey('PropEnum');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[PropEnumJsunit_0200] component obj is: " + JSON.stringify(obj1));
       console.info("[PropEnumJsunit_0200] title: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("Father State: 1");

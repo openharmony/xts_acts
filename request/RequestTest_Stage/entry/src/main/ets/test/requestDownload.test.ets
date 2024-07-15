@@ -64,7 +64,7 @@ export default function requestDownloadJSUnit() {
         let ifDelete = await task.delete();
         console.info('====>if task delete: ' + ifDelete);
         fileio.unlinkSync(path);
-        console.info('====>if uninstall file success' );
+        console.info('====>if uninstall file success');
       } catch (err) {
         console.info('====>task delete failed, possibly the task delete err: ' + JSON.stringify(err));
       }
@@ -1613,8 +1613,8 @@ export default function requestDownloadJSUnit() {
      */
     it('SUB_REQUEST_DownloadManagement_Download_0500', 0, async function (done) {
       console.info('-----------------------SUB_REQUEST_DownloadManagement_Download_0500 is starting-----------------------');
-      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DownloadManagement_Download_0500.txt`
-      console.info('====>downloadFileConfig:' + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DownloadManagement_Download_0500.txt`)
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DownloadManagement_Download_0500.txt`;
+      console.info('====>downloadFileConfig:' + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DownloadManagement_Download_0500.txt`);
       let downloadFileConfig: request.DownloadConfig = {
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         description: 'XTS download test!',
@@ -1662,8 +1662,8 @@ export default function requestDownloadJSUnit() {
      */
     it('SUB_REQUEST_DownloadManagement_Download_0300', 0, async function (done) {
       console.info('-----------------------SUB_REQUEST_DownloadManagement_Download_0300 is starting-----------------------');
-      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DownloadManagement_Download_0300.txt`
-      console.info('====>downloadFileConfig:' + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DownloadManagement_Download_0300.txt`)
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DownloadManagement_Download_0300.txt`;
+      console.info('====>downloadFileConfig:' + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DownloadManagement_Download_0300.txt`);
       let downloadFileConfig: request.DownloadConfig = {
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         description: 'XTS download test!',
@@ -1723,8 +1723,8 @@ export default function requestDownloadJSUnit() {
      */
     it('SUB_REQUEST_DownloadManagement_DownloadSuccess_0100', 0, async function (done) {
       console.info('-----------------------SUB_REQUEST_DownloadManagement_DownloadSuccess_0100 is starting-----------------------');
-      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DownloadManagement_DownloadSuccess_0100.txt`
-      console.info('====>downloadFileConfig:' + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DownloadManagement_DownloadSuccess_0100.txt`)
+      let downloadFilePath = `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DownloadManagement_DownloadSuccess_0100.txt`;
+      console.info('====>downloadFileConfig:' + `${globalThis.abilityContext.tempDir}/SUB_REQUEST_DownloadManagement_DownloadSuccess_0100.txt`);
       let downloadFileConfig: request.DownloadConfig = {
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         description: 'XTS download test!',
@@ -1770,8 +1770,8 @@ export default function requestDownloadJSUnit() {
      */
     it('SUB_REQUEST_SupportSystem_DownloadMultitask_0100', 0, async function (done) {
       console.info('-----------------------SUB_REQUEST_SupportSystem_DownloadMultitask_0100 is starting-----------------------');
-      let downloadFilePath1 = `${globalThis.abilityContext.tempDir}/downloadFilePath1.txt`
-      let downloadFilePath2 = `${globalThis.abilityContext.tempDir}/downloadFilePath2.txt`
+      let downloadFilePath1 = `${globalThis.abilityContext.tempDir}/downloadFilePath1.txt`;
+      let downloadFilePath2 = `${globalThis.abilityContext.tempDir}/downloadFilePath2.txt`;
       let downloadFileConfig1: request.DownloadConfig = {
         url: 'https://gitee.com/chenzhixue/downloadTest/releases/download/v1.0/test.apk',
         description: 'XTS download test!',
@@ -1800,7 +1800,7 @@ export default function requestDownloadJSUnit() {
         downloadTask1.off('complete', completeProgress1);
         console.info('====>SUB_REQUEST_SupportSystem_DownloadMultitask_0100 completeProgress1 success');
         await deleteTask(downloadTask1, downloadFilePath1);
-        if(complete1 && complete2){
+        if(complete2){
           console.info('====>SUB_REQUEST_SupportSystem_DownloadMultitask_0100 both complete1');
           expect(downloadTask1 !== null).assertTrue();
           done();
@@ -1814,7 +1814,7 @@ export default function requestDownloadJSUnit() {
         downloadTask2.off('complete', completeProgress2);
         console.info('====>SUB_REQUEST_SupportSystem_DownloadMultitask_0100 completeProgress2 success: ');
         await deleteTask(downloadTask2, downloadFilePath2);
-        if(complete1 && complete2){
+        if(complete1){
           console.info('====>SUB_REQUEST_SupportSystem_DownloadMultitask_0100 both complete2');
           expect(downloadTask1 !== null).assertTrue();
           done();

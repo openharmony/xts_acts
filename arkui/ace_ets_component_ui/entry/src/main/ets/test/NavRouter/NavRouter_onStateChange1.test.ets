@@ -18,10 +18,10 @@ import CommonFunc from '../../MainAbility/utils/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function NavRouter_onStateChange1() {
-  describe('NavRouter_onStateChange1', function () {
-    beforeEach(async function (done) {
+  describe('NavRouter_onStateChange1', () => {
+    beforeEach(async (done: Function) => {
       console.info("NavRouter_onStateChange1 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/NavRouter/NavRouter_onStateChange1',
       }
       try {
@@ -40,7 +40,7 @@ export default function NavRouter_onStateChange1() {
       console.info("NavRouter_onStateChange1 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("NavRouter_onStateChange1 after each called");
     });
@@ -52,7 +52,7 @@ export default function NavRouter_onStateChange1() {
      * @tc.type
     * @tc.size
      */
-    it('NavRouter_onStateChange1_0100', 0, async function (done) {
+    it('NavRouter_onStateChange1_0100', 0, async (done: Function) => {
       console.info('[NavRouter_onStateChange1_0100] START');
       await CommonFunc.sleep(1000);
 
@@ -64,7 +64,7 @@ export default function NavRouter_onStateChange1() {
       await CommonFunc.sleep(1000);
 
       let text1 = getInspectorByKey('NavRouter_onStateChange1_text1');
-      let Obj1 = JSON.parse(text1);
+      let Obj1: ESObject = JSON.parse(text1);
       expect(Obj1.$attrs.content).assertEqual('true');
 
 

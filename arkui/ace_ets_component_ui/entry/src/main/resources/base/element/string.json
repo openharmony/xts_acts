@@ -63,6 +63,10 @@
         {
             "name": "color",
             "value": "#FF008000"
+        },
+        {
+            "name": "module_desc",
+            "value": "module description"
         }
     ]
 }

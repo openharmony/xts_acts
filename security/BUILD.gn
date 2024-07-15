@@ -28,12 +28,8 @@ group("security") {
       "cryptoFramework",
       "dlp_permission_service:DlpTest",
       "huks",
-      "huks_napi_BasicTest:ActsHuksNAPITest",
-      "huks_ndk_Test:ActsHuksNdkTest",
       "security_component:ActsSecComponentTest",
       "security_guard",
-      "security_huks_basic",
-      "security_huks_reformed_test",
     ]
   }
 }

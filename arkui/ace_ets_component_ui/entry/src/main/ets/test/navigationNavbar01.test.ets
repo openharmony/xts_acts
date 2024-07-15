@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../MainAbility/utils/MessageManager';
 
 
 export default function navigationNavbar01() {
-  describe('navigationNavbar01', function () {
-    beforeEach(async function (done) {
+  describe('navigationNavbar01', () => {
+    beforeEach(async (done: Function) => {
       console.info("navigationNavbar01 beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/navigationNavbar01',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/navigationNavbar01',
       }
       try {
         router.clear();
@@ -49,7 +49,7 @@ export default function navigationNavbar01() {
       * @tc.desc  : Set NavigationWidth to 300
       * @tc.level : Level 2
       */
-    it('navigationNavbar01_001', 0, async function (done) {
+    it('navigationNavbar01_001', 0, async (done: Function) => {
 
       console.info('[navigationNavbar01_001] START');
       globalThis.value.message.notify({name:'NavigationWidth', value: 300 });
@@ -71,7 +71,7 @@ export default function navigationNavbar01() {
       * @tc.desc  : Set NavigationWidth to 200
       * @tc.level : Level 2
       */
-    it('navigationNavbar01_002', 0, async function (done) {
+    it('navigationNavbar01_002', 0, async (done: Function) => {
 
       console.info('[navigationNavbar01_002] START');
       globalThis.value.message.notify({name:'NavigationWidth', value: 200 });

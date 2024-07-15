@@ -13,24 +13,24 @@
  * limitations under the License.
  */
 
-enum KFC{A11=1,B11=2,C11=3}
+enum KFCPropEnum{A11=1,B11=2,C11=3}
 
 @Entry
 @Component
 struct PropEnum {
-  @State enumA: KFC = KFC.A11
+  @State enumA: KFCPropEnum = KFCPropEnum.A11
 
   build() {
     Column({space:5}) {
       Button("Reset").id("PropEnum_reset")
         .onClick(() => {
-          this.enumA = KFC.A11
+          this.enumA = KFCPropEnum.A11
         })
       Text('@Prop 支持数据类型：enum').fontSize(18)
       Text('Father State: ' + this.enumA).margin(10).width("100%")
         .key("PropEnum").backgroundColor(this.enumA)
         .onClick(() => {
-          this.enumA = KFC.B11
+          this.enumA = KFCPropEnum.B11
         })
       Text('父组件: ' + this.enumA).fontSize(30)
       ChildPropEnum({ enumB: this.enumA })
@@ -41,7 +41,7 @@ struct PropEnum {
 
 @Component
 struct ChildPropEnum {
-  @Prop enumB: KFC = KFC.A11;
+  @Prop enumB: KFCPropEnum = KFCPropEnum.A11;
 
   build() {
     Column({space:5}) {
@@ -50,7 +50,7 @@ struct ChildPropEnum {
       Text('Child Prop: ' + this.enumB).margin(10).width("100%")
         .key("ChildPropEnum").backgroundColor(this.enumB)
         .onClick(() => {
-          this.enumB = KFC.C11
+          this.enumB = KFCPropEnum.C11
         })
     }.width('100%')
     .margin({ top: 50 })

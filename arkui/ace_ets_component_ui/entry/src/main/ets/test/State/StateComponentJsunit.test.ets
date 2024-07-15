@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
 export default function StateComponentJsunit() {
-  describe('StateComponentJsunit', function () {
-    beforeEach(async function (done) {
+  describe('StateComponentJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("StateComponentJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/StateComponent',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/StateComponent',
       }
       try {
         router.clear();
@@ -42,22 +42,22 @@ export default function StateComponentJsunit() {
       }
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
-      router.back({uri:"MainAbility/pages/index/index"});
+      router.back({url:"MainAbility/pages/index/index"});
     });
 
-    it('StateComponentJsunit_0100', 0, async function (done) {
+    it('StateComponentJsunit_0100', 0, async (done: Function) => {
       // get the value of title1
       console.info('StateComponentJsunit_0100 START');
       let strJson1 = getInspectorByKey('text_component1');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[StateComponentJsunit_0100] component obj1 is: " + JSON.stringify(obj1));
       console.info("[StateComponentJsunit_0100] title: " + JSON.stringify(obj1.$attrs.content));
       expect(obj1.$attrs.content).assertEqual("Hello World");
 
       let strJson2 = getInspectorByKey('text_component7');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[StateComponentJsunit_0100] component obj2 is: " + JSON.stringify(obj2));
       console.info("[StateComponentJsunit_0100] title: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("Hello, World 2");
@@ -66,7 +66,7 @@ export default function StateComponentJsunit() {
       done();
     });
 
-    it('StateComponentJsunit_0200', 0, async function (done) {
+    it('StateComponentJsunit_0200', 0, async (done: Function) => {
 
       console.info('StateComponentJsunit_0200 START');
       let driver = await UiDriver.create()
@@ -74,7 +74,7 @@ export default function StateComponentJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text_component1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateComponentJsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[StateComponentJsunit_0200] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("Hello ArkUI");
@@ -82,7 +82,7 @@ export default function StateComponentJsunit() {
       done();
     });
 
-    it('StateComponentJsunit_0300', 0, async function (done) {
+    it('StateComponentJsunit_0300', 0, async (done: Function) => {
 
       console.info('StateComponentJsunit_0300 START');
       let driver = await UiDriver.create()
@@ -90,7 +90,7 @@ export default function StateComponentJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('increase_component3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateComponentJsunit_0300] component obj is: " + JSON.stringify(obj));
       console.info("[StateComponentJsunit_0300] label: " + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual("Click to increase count=3");
@@ -98,7 +98,7 @@ export default function StateComponentJsunit() {
       done();
     });
 
-    it('StateComponentJsunit_0400', 0, async function (done) {
+    it('StateComponentJsunit_0400', 0, async (done: Function) => {
 
       console.info('StateComponentJsunit_0400 START');
       let driver = await UiDriver.create()
@@ -106,7 +106,7 @@ export default function StateComponentJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('text_component7');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateComponentJsunit_0400] component obj is: " + JSON.stringify(obj));
       console.info("[StateComponentJsunit_0400] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("Hello ArkUI");
@@ -114,7 +114,7 @@ export default function StateComponentJsunit() {
       done();
     });
 
-    it('StateComponentJsunit_0500', 0, async function (done) {
+    it('StateComponentJsunit_0500', 0, async (done: Function) => {
 
       console.info('StateComponentJsunit_0500 START');
       let driver = await UiDriver.create()
@@ -122,7 +122,7 @@ export default function StateComponentJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('increase_component8');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateComponentJsunit_0500] component obj is: " + JSON.stringify(obj));
       console.info("[StateComponentJsunit_0500] label: " + JSON.stringify(obj.$attrs.label));
       expect(obj.$attrs.label).assertEqual("Click to increase count=8");

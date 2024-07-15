@@ -14,6 +14,8 @@
  */
 import {MessageManager,Callback} from '../utils/MessageManager';
 
+type Message = number|ProgressType|Color
+
 @Entry
 @Component
 struct ProgressPage {
@@ -25,38 +27,38 @@ struct ProgressPage {
   @State strokeWidth: number = 15
   @State scaleCount: number = 15
   @State scaleWidth: number = 5
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
 
   onPageShow() {
     console.info('ProgressPage onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'progressValue') {
-        this.value = message.value
+        this.value = message.value as number
       }
       if (message.name == 'progressTotal') {
-        this.total = message.value
+        this.total = message.value as number
       }
       if (message.name == 'ProgressType') {
-        this.type = message.value
+        this.type = message.value as ProgressType
       }
       if (message.name == 'progressColor') {
-        this.color = message.value
+        this.color = message.value as Color
       }
       if (message.name == 'backgroundColor') {
-        this.backColor = message.value
+        this.backColor = message.value as Color
       }
       if (message.name == 'strokeWidth') {
-        this.strokeWidth = message.value
+        this.strokeWidth = message.value as number
       }
       if (message.name == 'scaleCount') {
-        this.scaleCount = message.value
+        this.scaleCount = message.value as number
       }
       if (message.name == 'scaleWidth') {
-        this.scaleWidth = message.value
+        this.scaleWidth = message.value as number
       }
     }
     this.messageManager.registerCallback(callback)

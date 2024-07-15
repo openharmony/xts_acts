@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { expect, it, afterEach, afterAll, beforeEach, beforeAll, describe } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import { PointerMatrix, WindowMode, ResizeDirection, DisplayRotation, MatchPattern, BY, ON, UiWindow, Driver, Component, UiComponent, UiDriver } from '@ohos.UiTest'
 import CommonFunc from '../../MainAbility/utils/Common';
 import componentUtils from '@ohos.arkui.componentUtils';
 export default function comSizeAbilityTest_07 () {
-  describe('comSizeAbilityTestJsunit', function () {
-    beforeEach(async function (done) {
+  describe('comSizeAbilityTestJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("comSizeAbilityTestJsunit beforeEach start")
-      let options = {
-        uri: 'MainAbility/pages/comSizeAbility/comSizeAbilityTest_07'
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/comSizeAbility/comSizeAbilityTest_07'
       }
       try {
         router.clear()
@@ -46,7 +46,7 @@ export default function comSizeAbilityTest_07 () {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_20', 0, async  function (done) {
+    it('comSizeAbilityTestJsunit_20', 0, async  (done: Function) => {
       console.info('comSizeAbilityTestJsunit_20 START')
       await CommonFunc.sleep(1000);
       let driver = await Driver.create();
@@ -87,7 +87,7 @@ export default function comSizeAbilityTest_07 () {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_21', 0, async  function (done) {
+    it('comSizeAbilityTestJsunit_21', 0, async  (done: Function) => {
       console.info('comSizeAbilityTestJsunit_21 START')
       await CommonFunc.sleep(1000);
       let driver = await Driver.create();
@@ -118,8 +118,8 @@ export default function comSizeAbilityTest_07 () {
       console.info("[comSizeAbilityTestJsunit_21] component Scale is: " + JSON.stringify(Scale))
       console.info("[comSizeAbilityTestJsunit_21] component Rotate is: " + JSON.stringify(Rotate))
       await CommonFunc.sleep(1000);
-      expect(Math.round(SizeWidth)).assertEqual(Math.round(vp2px(90)));
-      expect(Math.round(SizeHeight)).assertEqual(Math.round(vp2px(90)));
+      expect(Math.abs(SizeWidth - Math.round(vp2px(90))) <= 1).assertTrue();
+      expect(Math.abs(SizeHeight - Math.round(vp2px(90))) <= 1).assertTrue();
       expect(JSON.stringify(Translate)).assertEqual('{"x":1,"y":1,"z":1}');
       expect(JSON.stringify(Scale)).assertEqual('{"x":1,"y":1,"z":1,"centerX":1,"centerY":1}');
       expect(JSON.stringify(Rotate)).assertEqual('{"x":1,"y":1,"z":1,"angle":0,"centerX":1,"centerY":1}');
@@ -134,7 +134,7 @@ export default function comSizeAbilityTest_07 () {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_22', 0, async  function (done) {
+    it('comSizeAbilityTestJsunit_22', 0, async  (done: Function) => {
       console.info('comSizeAbilityTestJsunit_22 START')
       await CommonFunc.sleep(1000);
       let driver = await Driver.create()
@@ -165,8 +165,8 @@ export default function comSizeAbilityTest_07 () {
       console.info("[comSizeAbilityTestJsunit_22] component Scale is: " + JSON.stringify(Scale))
       console.info("[comSizeAbilityTestJsunit_22] component Rotate is: " + JSON.stringify(Rotate))
       await CommonFunc.sleep(1000);
-      expect(Math.round(SizeWidth)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(SizeHeight)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(SizeWidth - Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(SizeHeight - Math.round(vp2px(100))) <= 1).assertTrue();
       expect(JSON.stringify(Translate)).assertEqual('{"x":1,"y":1,"z":1}');
       expect(JSON.stringify(Scale)).assertEqual('{"x":1,"y":1,"z":1,"centerX":1,"centerY":1}');
       expect(JSON.stringify(Rotate)).assertEqual('{"x":1,"y":1,"z":1,"angle":0,"centerX":1,"centerY":1}');

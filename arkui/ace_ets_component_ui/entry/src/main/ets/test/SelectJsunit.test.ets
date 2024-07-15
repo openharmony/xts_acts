@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../MainAbility/utils/MessageManager';
 
 
 export default function SelectJsunit() {
-  describe('SelectJsunit', function () {
-    beforeEach(async function (done) {
+  describe('SelectJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("SelectJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/SelectPage',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/SelectPage',
       }
       try {
         router.clear();
@@ -43,12 +43,12 @@ export default function SelectJsunit() {
       done();
     });
 
-    it('SelectJsunit_0100', 0, async function (done) {
+    it('SelectJsunit_0100', 0, async (done: Function) => {
       // Get the information of the Select component
       console.info('[SelectJsunit_0100] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('select');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SelectJsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[SelectJsunit_0100] selected: " + JSON.stringify(obj.$attrs.selected));
       console.info("[SelectJsunit_0100] value: " + JSON.stringify(obj.$attrs.value));
@@ -72,14 +72,14 @@ export default function SelectJsunit() {
       expect(obj.$attrs.optionFontColor).assertEqual('#FFFF0000');
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('indexValue');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[SelectJsunit_0300] component obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('indexValue:0');
       console.info('[SelectJsunit_0100] END');
       done();
     });
 
-    it('SelectJsunit_0200', 0, async function (done) {
+    it('SelectJsunit_0200', 0, async (done: Function) => {
       // Modify the properties of component select
       console.info('[SelectJsunit_0200] START');
       globalThis.value.message.notify({name:'selected',value:2})
@@ -105,7 +105,7 @@ export default function SelectJsunit() {
 
       // Get the propoties value of the select component
       let strJson = getInspectorByKey('select');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SelectJsunit_0200] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.selected).assertEqual('2');
       expect(obj.$attrs.value).assertEqual('testButton');
@@ -122,7 +122,7 @@ export default function SelectJsunit() {
       done();
     });
 
-    it('SelectJsunit_0300', 0, async function (done) {
+    it('SelectJsunit_0300', 0, async (done: Function) => {
       // Verify the functions of the select component
       console.info('[SelectJsunit_0300] START');
 
@@ -137,12 +137,12 @@ export default function SelectJsunit() {
       await textMenuComponent.click()
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('indexValue');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[SelectJsunit_0300] component obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('indexValue:1');
 
       let strJson = getInspectorByKey('select');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SelectJsunit_0300] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.value).assertEqual('bbb');
       expect(obj.$attrs.selected).assertEqual('1');
@@ -150,7 +150,7 @@ export default function SelectJsunit() {
       done();
     });
 
-    it('SelectJsunit_0400', 0, async function (done) {
+    it('SelectJsunit_0400', 0, async (done: Function) => {
       // Illegal modification of properties of component select
       console.info('[SelectJsunit_0400] START');
       globalThis.value.message.notify({name:'optionValue',value:'-20'})
@@ -182,7 +182,7 @@ export default function SelectJsunit() {
 
       // Get the propoties value of the select component
       let strJson = getInspectorByKey('select');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SelectJsunit_0400] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.selected).assertEqual('0');
       expect(obj.$attrs.value).assertEqual('10');
@@ -196,7 +196,7 @@ export default function SelectJsunit() {
       expect(obj.$attrs.optionFontColor).assertEqual('#FFFFFF00');
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('indexValue');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[SelectJsunit_0400] component obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('indexValue:1');
       console.info('[SelectJsunit_0400] END');

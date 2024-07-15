@@ -4,9 +4,9 @@
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
         "bundle-name": "ohos.acts.storage.backupextention",
-        "module-name": "phone",
+        "module-name": "entry_test",
         "shell-timeout": "600000",
-        "testcase-timeout": 100000
+        "testcase-timeout": "100000"
     },
     "kits": [
         {

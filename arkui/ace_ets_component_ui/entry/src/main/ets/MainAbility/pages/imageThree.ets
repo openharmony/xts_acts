@@ -14,6 +14,12 @@
  * limitations under the License.
  */
 import {MessageManager,Callback} from '../utils/MessageManager';
+
+interface OnCompleteEvent {
+  width: number
+  height: number
+}
+
 @Entry
 @Component
 struct ImageExample3 {
@@ -30,14 +36,14 @@ struct ImageExample3 {
   @State m4:string = "init"
   @State imageName:string = "img1.png"
 
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<string>()
 
   onPageShow() {
     console.info('ImageThree onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<string> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'imageName') {
           this.imageName = message.value
@@ -62,9 +68,9 @@ struct ImageExample3 {
             .objectFit(ImageFit.Cover)
             .height(180).width(180)
             // 图片加载完成后，获取图片尺寸。
-            .onComplete((msg: { width: number,height: number }) => {
-              this.widthValue = msg.width
-              this.heightValue = msg.height
+            .onComplete((msg?: OnCompleteEvent) => {
+              this.widthValue = msg?.width ?? 0
+              this.heightValue = msg?.height ?? 0
               this.m1 = "complete"
             })
             .onError(() => {

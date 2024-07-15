@@ -22,10 +22,10 @@ struct CustomDialogExample {
   @State widthSize: number = 250
   @State heightSize: number = 100
   private flag: boolean = true
-  controller: CustomDialogController
+  controller?: CustomDialogController
   // 若尝试在CustomDialog中传入多个其他的Controller，以实现在CustomDialog中打开另一个或另一些CustomDialog，那么此处需要将指向自己的controller放在最后
-  cancel: () => void
-  confirm: () => void
+  cancel?: () => void
+  confirm?: () => void
 
   build() {
     Column() {
@@ -47,14 +47,14 @@ struct CustomDialogExample {
       Flex({ justifyContent: FlexAlign.SpaceAround }) {
         Button('cancel')
           .onClick(() => {
-            this.controller.close()
-            this.cancel()
+            this.controller?.close()
+            this.cancel?.()
           }).backgroundColor(0xffffff).fontColor(Color.Black)
         Button('confirm')
           .onClick(() => {
             this.inputValue = this.textValue
-            this.controller.close()
-            this.confirm()
+            this.controller?.close()
+            this.confirm?.()
           }).backgroundColor(0xffffff).fontColor(Color.Red)
       }.margin({ bottom: 10 })
     }
@@ -67,7 +67,7 @@ struct CustomDialogExample {
 struct CustomDialogUser {
   @State textValue: string = ''
   @State inputValue: string = 'click me'
-  dialogController: CustomDialogController = new CustomDialogController({
+  dialogController?: CustomDialogController = new CustomDialogController({
     builder: CustomDialogExample({
       cancel: this.onCancel,
       confirm: this.onAccept,
@@ -99,7 +99,6 @@ struct CustomDialogUser {
 
   // 在自定义组件即将析构销毁时将dialogControlle删除和置空
   aboutToDisappear() {
-    delete this.dialogController, // 删除dialogController
     this.dialogController = undefined // 将dialogController置空
   }
 
@@ -120,7 +119,7 @@ struct CustomDialogUser {
       Button(this.inputValue).key('CustomDialog')
         .onClick(() => {
           if (this.dialogController != undefined) {
-            this.dialogController.open()
+            this.dialogController?.open()
           }
         })
 		.backgroundColor(0x317aff)

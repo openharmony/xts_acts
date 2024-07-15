@@ -12,6 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import Common from '../../utils/Common'
+
 @Component
 struct Child_CC {
   // @Consume装饰的变量通过相同的属性名绑定其祖先组件Ancestors内的@Provide装饰的变量
@@ -22,7 +24,7 @@ struct Child_CC {
     Column() {
       Text("设置变量color类型pink-->Orange")
       Button('change')
-        .backgroundColor(this.color)
+        .backgroundColor(this.color!)
         .onClick(() => {
           this.color = Color.Orange;
         })
@@ -30,7 +32,7 @@ struct Child_CC {
 
       Text("设置变量number类型Orange-->008000")
       Button('change')
-        .backgroundColor(this.color)
+        .backgroundColor(this.color!)
         .onClick(() => {
           this.color = 0x0000ff;
         })
@@ -38,7 +40,7 @@ struct Child_CC {
 
       Text("设置变量undefined类型pink-->undefined")
       Button('change')
-        .backgroundColor(this.color)
+        .backgroundColor(this.color!)
         .onClick(() => {
           this.color = undefined
         })
@@ -46,7 +48,7 @@ struct Child_CC {
 
       Text("设置变量string类型pink-->'008000'")
       Button('change')
-        .backgroundColor(this.color)
+        .backgroundColor(this.color!)
         .onClick(() => {
           this.color = '#FFA52A2A'
         })
@@ -54,7 +56,7 @@ struct Child_CC {
 
       Text("设置变量string类型pink-->null")
       Button('change')
-        .backgroundColor(this.color)
+        .backgroundColor(this.color!)
         .onClick(() => {
           this.color = null
         })
@@ -62,7 +64,7 @@ struct Child_CC {
 
       Text("设置变量Resource类型pink-->Resource")
       Button('change')
-        .backgroundColor(this.color)
+        .backgroundColor(this.color!)
         .onClick(() => {
           this.color = $r('app.string.color')
         })
@@ -81,7 +83,7 @@ struct Ancestors_CC {
   @Provide color: undefined | null | ResourceColor = Color.Pink;
   build() {
     Column({ space: 20 }) {
-      Text("count type of " + JSON.stringify(Object.prototype.toString.call(this.color)) + " number is " + JSON.stringify(this.color))
+      Text("count type of " + JSON.stringify(Common.getType(this.color)) + " number is " + JSON.stringify(this.color))
         .fontSize(20).margin(30).key('ConsumeColor')
 
       Child_CC()

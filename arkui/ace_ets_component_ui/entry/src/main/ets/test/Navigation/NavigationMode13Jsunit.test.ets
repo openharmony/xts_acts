@@ -13,15 +13,15 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 export default function NavigationMode13Jsunit() {
-  describe('NavigationMode13Jsunit', function () {
-    beforeEach(async function (done) {
+  describe('NavigationMode13Jsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("NavigationMode13Jsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Navigation/NavigationModel13',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Navigation/NavigationModel13',
       }
       try {
         router.clear();
@@ -45,7 +45,7 @@ export default function NavigationMode13Jsunit() {
     * @tc.desc  : If NavigationMode is set to Auto, a single column is displayed for Auto. The mode is dynamically switched to split mode
     * @tc.level : Level 3
     */
-    it('NavigationMode13Jsunit_0100', 0, async function (done) {
+    it('NavigationMode13Jsunit_0100', 0, async (done: Function) => {
       console.info('NavigationMode13Jsunit_0100 START')
       await CommonFunc.sleep(1000);
       let driver = await UiDriver.create()
@@ -54,7 +54,7 @@ export default function NavigationMode13Jsunit() {
       await CZbutton.click();
       await CommonFunc.sleep(2000);
       let strcontent = getInspectorByKey('NavigationModel13Txt');
-      let obj = JSON.parse(strcontent);
+      let obj: ESObject = JSON.parse(strcontent);
       await CommonFunc.sleep(1000);
       console.info('NavigationMode13Jsunit_0100 component obj is: ' + obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('doing2');

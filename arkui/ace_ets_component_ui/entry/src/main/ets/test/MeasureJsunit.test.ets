@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../MainAbility/utils/MessageManager';
 
 
 export default function MeasureJsunit() {
-  describe('MeasureJsunit', function () {
-    beforeEach(async function (done) {
+  describe('MeasureJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("measureJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/measureSize',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/measureSize',
       }
       try {
         router.clear();
@@ -48,14 +48,14 @@ export default function MeasureJsunit() {
     * @tc.name  : Test measureJsunit_0100
     * @tc.desc  : Test measureTextSize function
     */
-    it('measureJsunit_0100', 0, async function (done) {
+    it('measureJsunit_0100', 0, async (done: Function) => {
       console.info('measureJsunit_0100 START');
       await CommonFunc.sleep(2000);
 
       let strJsonMaxLine2 = getInspectorByKey('textSizeMaxLine2');
       let strJsonMaxLine3 = getInspectorByKey('textSizeMaxLine3');
-      let strJsonMaxLine2Obj = JSON.parse(strJsonMaxLine2);
-      let strJsonMaxLine3Obj = JSON.parse(strJsonMaxLine3);
+      let strJsonMaxLine2Obj: ESObject = JSON.parse(strJsonMaxLine2);
+      let strJsonMaxLine3Obj: ESObject = JSON.parse(strJsonMaxLine3);
       
       console.log("[measureJsunit_0100] component strJsonMaxLine2 is: " + JSON.stringify(strJsonMaxLine2Obj));
       console.log("[measureJsunit_0100] component strJsonMaxLine3 is: " + JSON.stringify(strJsonMaxLine3Obj));
@@ -68,7 +68,7 @@ export default function MeasureJsunit() {
     * @tc.name  : Test measureJsunit_0200
     * @tc.desc  : Test measureTextSize function
     */
-    it('measureJsunit_0200', 0, async function (done) {
+    it('measureJsunit_0200', 0, async (done: Function) => {
       console.info('measureJsunit_0200 START');
       await CommonFunc.sleep(2000);
       
@@ -81,8 +81,8 @@ export default function MeasureJsunit() {
 
       let strJsonMaxLine2 = getInspectorByKey('textSizeMaxLine2');
       let strJsonMaxLine3 = getInspectorByKey('textSizeMaxLine3');
-      let strJsonMaxLine2Obj = JSON.parse(strJsonMaxLine2);
-      let strJsonMaxLine3Obj = JSON.parse(strJsonMaxLine3);
+      let strJsonMaxLine2Obj: ESObject = JSON.parse(strJsonMaxLine2);
+      let strJsonMaxLine3Obj: ESObject = JSON.parse(strJsonMaxLine3);
       
       console.log("[measureJsunit_0200] component strJsonMaxLine2 is: " + JSON.stringify(strJsonMaxLine2Obj));
       console.log("[measureJsunit_0200] component strJsonMaxLine3 is: " + JSON.stringify(strJsonMaxLine3Obj));
@@ -95,7 +95,7 @@ export default function MeasureJsunit() {
     * @tc.name  : Test measureJsunit_0300
     * @tc.desc  : Test measureTextSize function
     */
-    it('measureJsunit_0300', 0, async function (done) {
+    it('measureJsunit_0300', 0, async (done: Function) => {
       console.info('measureJsunit_0300 START');
       await CommonFunc.sleep(2000);      
       let driver = await Driver.create();
@@ -107,8 +107,8 @@ export default function MeasureJsunit() {
 
       let strJsonMaxLine2 = getInspectorByKey('textSizeMaxLine2');
       let strJsonMaxLine3 = getInspectorByKey('textSizeMaxLine3');
-      let strJsonMaxLine2Obj = JSON.parse(strJsonMaxLine2);
-      let strJsonMaxLine3Obj = JSON.parse(strJsonMaxLine3);
+      let strJsonMaxLine2Obj: ESObject = JSON.parse(strJsonMaxLine2);
+      let strJsonMaxLine3Obj: ESObject = JSON.parse(strJsonMaxLine3);
       
       console.log("[measureJsunit_0300] component strJsonMaxLine2 is: " + JSON.stringify(strJsonMaxLine2Obj));
       console.log("[measureJsunit_0300] component strJsonMaxLine3 is: " + JSON.stringify(strJsonMaxLine3Obj));
@@ -135,7 +135,7 @@ export default function MeasureJsunit() {
     * @tc.name  : Test measureJsunit_0400
     * @tc.desc  : Test measureTextSize function
     */
-    it('measureJsunit_0400', 0, async function (done) {
+    it('measureJsunit_0400', 0, async (done: Function) => {
       console.info('measureJsunit_0400 START');
       await CommonFunc.sleep(2000);      
       let driver = await Driver.create();
@@ -147,8 +147,8 @@ export default function MeasureJsunit() {
 
       let strJsonMaxLine2 = getInspectorByKey('textSizeMaxLine2');
       let strJsonMaxLine3 = getInspectorByKey('textSizeMaxLine3');
-      let strJsonMaxLine2Obj = JSON.parse(strJsonMaxLine2);
-      let strJsonMaxLine3Obj = JSON.parse(strJsonMaxLine3);
+      let strJsonMaxLine2Obj: ESObject = JSON.parse(strJsonMaxLine2);
+      let strJsonMaxLine3Obj: ESObject = JSON.parse(strJsonMaxLine3);
       
       console.log("[measureJsunit_0400] component strJsonMaxLine2 is: " + JSON.stringify(strJsonMaxLine2Obj));
       console.log("[measureJsunit_0400] component strJsonMaxLine3 is: " + JSON.stringify(strJsonMaxLine3Obj));
@@ -161,7 +161,7 @@ export default function MeasureJsunit() {
     * @tc.name  : Test measureJsunit_0500
     * @tc.desc  : Test measureTextSize function
     */
-    it('measureJsunit_0500', 0, async function (done) {
+    it('measureJsunit_0500', 0, async (done: Function) => {
       console.info('measureJsunit_0500 START');
       await CommonFunc.sleep(2000);      
       let driver = await Driver.create();
@@ -178,8 +178,8 @@ export default function MeasureJsunit() {
 
       let strJsonMaxLine2 = getInspectorByKey('textSizeMaxLine2');
       let strJsonMaxLine3 = getInspectorByKey('textSizeMaxLine3');
-      let strJsonMaxLine2Obj = JSON.parse(strJsonMaxLine2);
-      let strJsonMaxLine3Obj = JSON.parse(strJsonMaxLine3);
+      let strJsonMaxLine2Obj: ESObject = JSON.parse(strJsonMaxLine2);
+      let strJsonMaxLine3Obj: ESObject = JSON.parse(strJsonMaxLine3);
       
       console.log("[measureJsunit_0500] component strJsonMaxLine2 is: " + JSON.stringify(strJsonMaxLine2Obj));
       console.log("[measureJsunit_0500] component strJsonMaxLine3 is: " + JSON.stringify(strJsonMaxLine3Obj));

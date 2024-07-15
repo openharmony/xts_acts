@@ -142,7 +142,7 @@ export default function SwiperLoop() {
       let button_Bottom = await driver.findComponent(ON.id('swiperLoopButton3'));
       await button_Bottom.click();
       await CommonFunc.sleep(1000);
-      driver.swipe(Math.round(globalThis.winLeft + btRight), Math.round(globalThis.winTop + btBottom/2), Math.round(globalThis.winLeft + btLeft) + Math.round(vp2px(27)), Math.round(globalThis.winTop + btBottom/2));
+      driver.swipe(Math.round(globalThis.winLeft + btRight - vp2px(50)), Math.round(globalThis.winTop + btBottom/2), Math.round(globalThis.winLeft + btLeft + Math.round(vp2px(27))), Math.round(globalThis.winTop + btBottom/2));
       await CommonFunc.sleep(3500);
 
       let strJson = getInspectorByKey('SwiperLoopText6');

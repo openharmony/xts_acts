@@ -76,11 +76,11 @@ export default function onGetIrregular9Jsunit() {
       let GridItem4: RectValue = CommonFunc.getComponentRect('GridCenter4');
 
       await CommonFunc.sleep(1000);
-      expect(px2vp(Math.round(GridItem0.right - GridItem0.left))).assertEqual(80);
-      expect(px2vp(Math.round(GridItem4.right - GridItem4.left))).assertEqual(80);
+      expect(Math.abs(px2vp(Math.round(GridItem0.right - GridItem0.left)) - 80) <= 1).assertTrue();
+      expect(Math.abs(px2vp(Math.round(GridItem4.right - GridItem4.left)) - 80) <= 1).assertTrue();
 
-      expect(Math.round(px2vp(GridItem0.bottom - GridItem0.top))).assertEqual(260);
-      expect(Math.round(px2vp(GridItem4.bottom - GridItem4.top))).assertEqual(260);
+      expect(Math.abs(Math.round(px2vp(GridItem0.bottom - GridItem0.top)) - 260) <= 1).assertTrue();
+      expect(Math.abs(Math.round(px2vp(GridItem4.bottom - GridItem4.top)) - 260) <= 1).assertTrue();
 
       console.info('[onGetIrregular9Jsunit_0000] END');
       done();

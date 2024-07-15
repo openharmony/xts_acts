@@ -23,27 +23,27 @@ struct Index2 {
 
   build() {
       Column() {
-        Image((<LayeredDrawableDescriptor> (this.resManager.getDrawableDescriptor($r('app.media.icon').id))))
-        Image(((<LayeredDrawableDescriptor> (this.resManager.getDrawableDescriptor($r('app.media.app_icon')
-          .id))).getForeground()).getPixelMap())
+        Image(this.resManager.getDrawableDescriptor($r('app.media.icon').id) as LayeredDrawableDescriptor)
+        Image((this.resManager.getDrawableDescriptor($r('app.media.app_icon').id) as LayeredDrawableDescriptor)
+          .getForeground().getPixelMap())
         Image($r('app.media.icon'))
           .width('200px').height('200px')
           .clip(new Path({commands:LayeredDrawableDescriptor.getMaskClipPath()}))
 
         Button("getBackground()").margin({top:20})
           .onClick(() => {
-             let drawable = (<LayeredDrawableDescriptor> (this.resManager.getDrawableDescriptor($r('app.media.icon')
-              .id))).getBackground();
+             let drawable = (this.resManager.getDrawableDescriptor($r('app.media.icon')
+              .id) as LayeredDrawableDescriptor).getBackground();
           })
         Button("getMask()").margin({top:20})
           .onClick(() => {
-            let drawable = (<LayeredDrawableDescriptor> (this.resManager.getDrawableDescriptor($r('app.media.icon')
-              .id))).getMask();
+            let drawable = (this.resManager.getDrawableDescriptor($r('app.media.icon')
+              .id) as LayeredDrawableDescriptor).getMask();
           })
         Button("getMashClipPath").margin({top:20})
           .onClick(() => {
-            let drawable = (<LayeredDrawableDescriptor> (this.resManager.getDrawableDescriptor($r('app.media.icon')
-              .id))).getMask();
+            let drawable = (this.resManager.getDrawableDescriptor($r('app.media.icon')
+              .id) as LayeredDrawableDescriptor).getMask();
           })
 
         Button("interpolatingSpring").margin({top:20}).key('drawleAdd')

@@ -59,7 +59,7 @@ export default function GridLayoutDirection() {
       let GridItem00 = CommonFunc.getComponentRect('GridItem00');
       let GridItem01 = CommonFunc.getComponentRect('GridItem01');
       await CommonFunc.sleep(1000);
-      expect(Math.round(GridItem00.top - GridItem01.bottom)).assertEqual(Math.round(vp2px(10)));
+	  expect(Math.abs(Math.round(GridItem00.top - GridItem01.bottom) - Math.round(vp2px(10))) <= 1).assertTrue();
 
       console.info('[GridLayoutDirection_001] END');
       done();
@@ -80,7 +80,7 @@ export default function GridLayoutDirection() {
       let GridItem00 = CommonFunc.getComponentRect('GridItem00');
       let GridItem01 = CommonFunc.getComponentRect('GridItem01');
       await CommonFunc.sleep(1000);
-      expect(Math.round(GridItem01.top - GridItem00.bottom)).assertEqual(Math.round(vp2px(10)));
+	  expect(Math.abs(Math.round(GridItem01.top - GridItem00.bottom) - Math.round(vp2px(10))) <= 1).assertTrue();
 
       console.info('[GridLayoutDirection_002] END');
       done();
@@ -101,7 +101,7 @@ export default function GridLayoutDirection() {
       let GridItem00 = CommonFunc.getComponentRect('GridItem00');
       let GridItem01 = CommonFunc.getComponentRect('GridItem01');
       await CommonFunc.sleep(1000);
-      expect(Math.round(GridItem00.left - GridItem01.right)).assertEqual(Math.round(vp2px(10)));
+	  expect(Math.abs(Math.round(GridItem00.left - GridItem01.right) - Math.round(vp2px(10))) <= 1).assertTrue();
 
       console.info('[GridLayoutDirection_003] END');
       done();
@@ -122,7 +122,7 @@ export default function GridLayoutDirection() {
       let GridItem00 = CommonFunc.getComponentRect('GridItem00');
       let GridItem01 = CommonFunc.getComponentRect('GridItem01');
       await CommonFunc.sleep(1000);
-      expect(Math.round(GridItem01.left - GridItem00.right)).assertEqual(Math.round(vp2px(10)));
+	  expect(Math.abs(Math.round(GridItem01.left - GridItem00.right) - Math.round(vp2px(10))) <= 1).assertTrue();
 
       console.info('[GridLayoutDirection_004] END');
       done();

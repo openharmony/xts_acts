@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../MainAbility/utils/MessageManager';
 
 
 export default function NavDestinationJsunit() {
-  describe('navDestinationJsunit', function () {
-    beforeEach(async function (done) {
+  describe('navDestinationJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("NavDestination beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/NavDestinationPage',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/NavDestinationPage',
       }
       try {
         router.clear();
@@ -43,7 +43,7 @@ export default function NavDestinationJsunit() {
       done();
     });
 
-    it('NavDestinationJsunit_0100', 0, async function (done) {
+    it('NavDestinationJsunit_0100', 0, async (done: Function) => {
       // Get title name of NavDestination component
       console.info('[NavDestinationJsunit_0100] START');
       await CommonFunc.sleep(1000);
@@ -59,12 +59,12 @@ export default function NavDestinationJsunit() {
       done();
     });
 
-    it('NavDestinationJsunit_0200', 0, async function (done) {
+    it('NavDestinationJsunit_0200', 0, async (done: Function) => {
       // Get backgroundColor of NavDestination component
       console.info('[NavDestinationJsunit_0200] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('NavDestination1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[NavDestinationJsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[NavDestinationJsunit_0200] backgroundColor: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual('#FF808080');
@@ -72,7 +72,7 @@ export default function NavDestinationJsunit() {
       done();
     });
 
-    it('NavDestinationJsunit_0300', 0, async function (done) {
+    it('NavDestinationJsunit_0300', 0, async (done: Function) => {
       // Modify title name of NavDestination component
       console.info('[NavDestinationJsunit_0300] START');
       globalThis.value.message.notify({name:'title',value:'NavDestinationTitle'})
@@ -87,13 +87,13 @@ export default function NavDestinationJsunit() {
       done();
     });
 
-    it('NavDestinationJsunit_0400', 0, async function (done) {
+    it('NavDestinationJsunit_0400', 0, async (done: Function) => {
       // Modify backgroundColor of NavDestination component
       console.info('[NavDestinationJsunit_0400] START');
       globalThis.value.message.notify({name:'backColor',value:Color.Green})
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('NavDestination1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[NavDestinationJsunit_0400] component obj is: " + JSON.stringify(obj));
       console.info("[NavDestinationJsunit_0400] backgroundColor: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual('#FF008000');
@@ -101,7 +101,7 @@ export default function NavDestinationJsunit() {
       done();
     });
 
-    it('NavDestinationJsunit_0500', 0, async function (done) {
+    it('NavDestinationJsunit_0500', 0, async (done: Function) => {
       // illegal modify title name of NavDestination component
       console.info('[NavDestinationJsunit_0500] START');
       globalThis.value.message.notify({name:'title',value:123})
@@ -116,13 +116,13 @@ export default function NavDestinationJsunit() {
       done();
     });
 
-    it('NavDestinationJsunit_0600', 0, async function (done) {
+    it('NavDestinationJsunit_0600', 0, async (done: Function) => {
       // illegal modify backgroundColor of NavDestination component
       console.info('[NavDestinationJsunit_0600] START');
       globalThis.value.message.notify({name:'backColor',value:123})
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('NavDestination1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[NavDestinationJsunit_0600] component obj is: " + JSON.stringify(obj));
       console.info("[NavDestinationJsunit_0600] backgroundColor: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual('#FF00007B');
@@ -130,12 +130,12 @@ export default function NavDestinationJsunit() {
       done();
     });
 
-    it('NavDestinationJsunit_0700', 0, async function (done) {
+    it('NavDestinationJsunit_0700', 0, async (done: Function) => {
       // Get hideTitleBar value of NavDestination component
       console.info('[NavDestinationJsunit_0700] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('NavDestination1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[NavDestinationJsunit_0700] component obj is: " + JSON.stringify(obj));
       console.info("[NavDestinationJsunit_0700] hideTitleBar: " + JSON.stringify(obj.$attrs.hideTitleBar));
       //expect(obj.$attrs.hideTitleBar).assertTrue();
@@ -143,13 +143,13 @@ export default function NavDestinationJsunit() {
       done();
     });
 
-    it('NavDestinationJsunit_0800', 0, async function (done) {
+    it('NavDestinationJsunit_0800', 0, async (done: Function) => {
       // Modify hideTitleBar value of NavDestination component 
       console.info('[NavDestinationJsunit_0700] START');
       globalThis.value.message.notify({name:'hideTitleBar',value:true})
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('NavDestination1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[NavDestinationJsunit_0700] component obj is: " + JSON.stringify(obj));
       console.info("[NavDestinationJsunit_0700] hideTitleBar: " + JSON.stringify(obj.$attrs.hideTitleBar));
       //expect(obj.$attrs.hideTitleBar).assertTrue();
@@ -157,13 +157,13 @@ export default function NavDestinationJsunit() {
       done();
     });
 
-    it('NavDestinationJsunit_0900', 0, async function (done) {
+    it('NavDestinationJsunit_0900', 0, async (done: Function) => {
       // illegal modify hideTitleBar value of NavDestination component 
       console.info('[NavDestinationJsunit_0900] START');
       globalThis.value.message.notify({name:'hideTitleBar',value:123})
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('NavDestination1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[NavDestinationJsunit_0900] component obj is: " + JSON.stringify(obj));
       console.info("[NavDestinationJsunit_0900] hideTitleBar: " + JSON.stringify(obj.$attrs.hideTitleBar));
       //expect(obj.$attrs.hideTitleBar).assertTrue();

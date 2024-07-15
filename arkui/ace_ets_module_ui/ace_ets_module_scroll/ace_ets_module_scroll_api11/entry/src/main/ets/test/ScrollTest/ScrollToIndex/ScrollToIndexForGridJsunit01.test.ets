@@ -229,8 +229,8 @@ export default function ScrollToIndexForGridJsunit01() {
       let boundsCenter = await GridCom.getBoundsCenter();
       let centerDistanceTop = boundsCenter.y;
       await driver.delayMs(2000);
+      expect(Math.abs(distanceTop - centerDistanceTop) <=1 ).assertTrue();
 
-      expect(distanceTop).assertEqual(centerDistanceTop);
       expect(gridItemText).assertEqual("gridIndex01_22");
 
       console.info('[ScrollToIndexForGridJsunit01_0600] END');

@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 export default function StateColor() {
-  describe('StateColor', function () {
-    beforeEach(async function (done) {
+  describe('StateColor', () => {
+    beforeEach(async (done: Function) => {
       console.info("StateColor beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/@state/StateColor',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/@state/StateColor',
       }
       try {
         router.clear();
@@ -47,7 +47,7 @@ export default function StateColor() {
     * @tc.desc  : To test that the State decorator supports union types.
     * @tc.level : Level 2
     */
-    it('StateColor_0100', 0, async function (done) {
+    it('StateColor_0100', 0, async (done: Function) => {
       console.info('StateColor_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -55,7 +55,7 @@ export default function StateColor() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('state1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateColor_0100] component obj is: " + JSON.stringify(obj));
       console.info("[StateColor_0100] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual('#FFFFA500');
@@ -68,7 +68,7 @@ export default function StateColor() {
     * @tc.desc  : To test that the State decorator supports union types.
     * @tc.level : Level 2
     */
-    it('StateColor_0200', 0, async function (done) {
+    it('StateColor_0200', 0, async (done: Function) => {
       console.info('StateColor_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -76,7 +76,7 @@ export default function StateColor() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('state2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateColor_0100] component obj is: " + JSON.stringify(obj));
       console.info("[StateColor_0100] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual('#FF0000FF');
@@ -89,7 +89,7 @@ export default function StateColor() {
     * @tc.desc  : To test that the State decorator supports union types.
     * @tc.level : Level 2
     */
-    it('StateColor_0300', 0, async function (done) {
+    it('StateColor_0300', 0, async (done: Function) => {
       console.info('StateColor_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -97,7 +97,7 @@ export default function StateColor() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('StateColor');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateColor_0100] component obj is: " + JSON.stringify(obj));
       console.info("[StateColor_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Undefined]" number is undefined');
@@ -110,7 +110,7 @@ export default function StateColor() {
     * @tc.desc  : To test that the State decorator supports union types.
     * @tc.level : Level 2
     */
-    it('StateColor_0400', 0, async function (done) {
+    it('StateColor_0400', 0, async (done: Function) => {
       console.info('StateColor_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -118,7 +118,7 @@ export default function StateColor() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('state4');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateColor_0100] component obj is: " + JSON.stringify(obj));
       console.info("[StateColor_0100] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual('#FFA52A2A');
@@ -131,7 +131,7 @@ export default function StateColor() {
     * @tc.desc  : To test that the State decorator supports union types.
     * @tc.level : Level 2
     */
-    it('StateColor_0500', 0, async function (done) {
+    it('StateColor_0500', 0, async (done: Function) => {
       console.info('StateColor_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -139,7 +139,7 @@ export default function StateColor() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('StateColor');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateColor_0100] component obj is: " + JSON.stringify(obj));
       console.info("[StateColor_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('count type of "[object Null]" number is null');
@@ -152,7 +152,7 @@ export default function StateColor() {
     * @tc.desc  : To test that the State decorator supports union types.
     * @tc.level : Level 2
     */
-    it('StateColor_0600', 0, async function (done) {
+    it('StateColor_0600', 0, async (done: Function) => {
       console.info('StateColor_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -160,7 +160,7 @@ export default function StateColor() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('state6');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[StateColor_0100] component obj is: " + JSON.stringify(obj));
       console.info("[StateColor_0100] title: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual('#FF008000');

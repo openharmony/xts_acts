@@ -19,7 +19,7 @@ import {MessageManager,Callback} from '../utils/MessageManager';
 struct search_bottom {
   private arr:number[] = [0,1,2,3,4,5]
   scroll: Scroller = new Scroller()
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<string>()
 
   onPageShow() {
     console.info('search_bottom onPageShow')

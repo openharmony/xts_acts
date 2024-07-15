@@ -14,6 +14,8 @@
  */
 import {MessageManager,Callback} from '../utils/MessageManager';
 
+type Message = string|number|GutterOption|BreakPoints|GridRowDirection
+
 @Entry
 @Component
 struct GridRowPage {
@@ -23,29 +25,29 @@ struct GridRowPage {
   @State columns: number = 4
   @State breakpoints: BreakPoints = { value: ["400vp", "600vp", "800vp"], reference: BreakpointsReference.WindowSize }
   @State grDirection: GridRowDirection = GridRowDirection.Row
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
 
   onPageShow() {
     console.info('GridRowPage onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'currentBp') {
-        this.currentBp = message.value
+        this.currentBp = message.value as string
       }
       if (message.name == 'columns') {
-        this.columns = message.value
+        this.columns = message.value as number
       }
       if (message.name == 'gutter') {
-        this.gutter = message.value
+        this.gutter = message.value as GutterOption
       }
       if (message.name == 'breakpoints') {
-        this.breakpoints = message.value
+        this.breakpoints = message.value as BreakPoints
       }
       if (message.name == 'grDirection') {
-        this.grDirection = message.value
+        this.grDirection = message.value as GridRowDirection
       }
     }
     this.messageManager.registerCallback(callback)
@@ -60,7 +62,7 @@ struct GridRowPage {
         breakpoints: this.breakpoints,
         direction: this.grDirection
       }) {
-        ForEach(this.bgColors, (color) => {
+        ForEach(this.bgColors, (color: Color) => {
           GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
             Row().width("100%").height("20vp")
           }.borderColor(color).borderWidth(2)
@@ -71,7 +73,7 @@ struct GridRowPage {
       })
       
       GridRow() {
-        ForEach(this.bgColors, (color) => {
+        ForEach(this.bgColors, (color: Color) => {
           GridCol({ span: { xs: 1, sm: 2, md: 3, lg: 4 } }) {
             Row().width("100%").height("20vp")
           }.borderColor(color).borderWidth(2)

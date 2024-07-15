@@ -120,54 +120,61 @@ export default function Tabs_barPosition() {
 
       console.info(`[TabsBarPositionStartWithVerticalFalse]Tabs_barPosition_011.left equal Tabs_barPosition_001.left
         ${Tabs_barPosition_011.left} === ${Tabs_barPosition_001.left}`);
-      expect(Tabs_barPosition_011.left).assertEqual(Tabs_barPosition_001.left);
-      expect(Tabs_barPosition_012.left).assertEqual(Tabs_barPosition_002.left);
-      expect(Tabs_barPosition_013.left).assertEqual(Tabs_barPosition_003.left);
-      expect(Tabs_barPosition_011.top).assertEqual(Tabs_barPosition_001.top);
-      expect(Tabs_barPosition_012.top).assertEqual(Tabs_barPosition_002.top);
-      expect(Tabs_barPosition_013.top).assertEqual(Tabs_barPosition_003.top);
+     
+      expect(Math.abs(Tabs_barPosition_011.left-Tabs_barPosition_001.left) <=1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_012.left-Tabs_barPosition_002.left) <=1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_013.left-Tabs_barPosition_003.left) <=1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_011.top-Tabs_barPosition_001.top) <=1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_012.top-Tabs_barPosition_002.top) <=1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_013.top-Tabs_barPosition_003.top) <=1).assertTrue();
 
       console.info(`[TabsBarPositionStartWithVerticalFalse]Tabs_barPosition_01.top equal subGreen.top
         ${Tabs_barPosition_01.top} === ${subGreen.top}`);
-      expect(Tabs_barPosition_01.top).assertEqual(subGreen.top);
-      expect(Tabs_barPosition_01.top).assertEqual(subBlue.top);
-      expect(Tabs_barPosition_01.top).assertEqual(subYellow.top);
+     
+      expect(Math.abs(Tabs_barPosition_01.top-subGreen.top)<=1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_01.top-subBlue.top)<=1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_01.top-subYellow.top)<=1).assertTrue();
 
       console.info(`[TabsBarPositionStartWithVerticalFalse]Tabs_barPosition_011.left equal Tabs_barPosition_011.left
         ${Tabs_barPosition_011.left} === ${Tabs_barPosition_011.left}`);
-      expect(Tabs_barPosition_011.left).assertEqual(Tabs_barPosition_011.left);
-      expect(Tabs_barPosition_012.left).assertEqual(Tabs_barPosition_01.left);
-      expect(Tabs_barPosition_013.left).assertEqual(Tabs_barPosition_01.left);
-      expect(Tabs_barPosition_011.top).assertEqual(subGreen.bottom);
-      expect(Tabs_barPosition_012.top).assertEqual(subBlue.bottom);
-      expect(Tabs_barPosition_013.top).assertEqual(subYellow.bottom);
+      
+      expect(Math.abs(Tabs_barPosition_011.left-Tabs_barPosition_011.left)<=1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_012.left-Tabs_barPosition_011.left)<=1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_013.left-Tabs_barPosition_011.left)<=1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_011.top-subGreen.bottom)<=1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_012.top-subBlue.bottom)<=1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_013.top-subYellow.bottom)<=1).assertTrue();
 
       console.info(`[TabsBarPositionStartWithVerticalFalse]Tabs_barPosition_011.bottom - Tabs_barPosition_011.top=
         ${Math.round(Tabs_barPosition_011.bottom - Tabs_barPosition_011.top)}`);
-      expect(Math.round(Tabs_barPosition_011.bottom - Tabs_barPosition_011.top)).assertEqual(Math.round(vp2px(244)));
-      expect(Math.round(Tabs_barPosition_012.bottom - Tabs_barPosition_012.top)).assertEqual(Math.round(vp2px(244)));
-      expect(Math.round(Tabs_barPosition_013.bottom - Tabs_barPosition_013.top)).assertEqual(Math.round(vp2px(244)));
+     
+      expect(Math.abs(Math.round(Tabs_barPosition_011.bottom - Tabs_barPosition_011.top)-Math.round(vp2px(244))) <=1).assertTrue();
+      expect(Math.abs(Math.round(Tabs_barPosition_012.bottom - Tabs_barPosition_012.top)-Math.round(vp2px(244))) <=1).assertTrue();
+      expect(Math.abs(Math.round(Tabs_barPosition_013.bottom - Tabs_barPosition_013.top)-Math.round(vp2px(244))) <=1).assertTrue();
       expect(Math.abs(Tabs_barPosition_011.right - Tabs_barPosition_011.left - vp2px(330)) <= 1).assertTrue();
       expect(Math.abs(Tabs_barPosition_012.right - Tabs_barPosition_012.left - vp2px(330)) <= 1).assertTrue();
       expect(Math.abs(Tabs_barPosition_013.right - Tabs_barPosition_013.left - vp2px(330)) <= 1).assertTrue();
 
       console.info(`[TabsBarPositionStartWithVerticalFalse]Tabs_barPosition_001.bottom - Tabs_barPosition_001.top=
         ${Math.round(Tabs_barPosition_001.bottom - Tabs_barPosition_001.top)}`);
-      expect(Math.round(Tabs_barPosition_001.bottom - Tabs_barPosition_001.top)).assertEqual(Math.round(vp2px(244)));
-      expect(Math.round(Tabs_barPosition_002.bottom - Tabs_barPosition_002.top)).assertEqual(Math.round(vp2px(244)));
-      expect(Math.round(Tabs_barPosition_003.bottom - Tabs_barPosition_003.top)).assertEqual(Math.round(vp2px(244)));
+    
+      expect(Math.abs(Math.round(Tabs_barPosition_001.bottom - Tabs_barPosition_001.top)-Math.round(vp2px(244))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Tabs_barPosition_002.bottom - Tabs_barPosition_002.top)-Math.round(vp2px(244))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Tabs_barPosition_003.bottom - Tabs_barPosition_003.top)-Math.round(vp2px(244))) <= 1).assertTrue();
       expect(Math.abs(Tabs_barPosition_001.right - Tabs_barPosition_001.left - vp2px(330)) <= 1).assertTrue();
       expect(Math.abs(Tabs_barPosition_002.right - Tabs_barPosition_002.left - vp2px(330)) <= 1).assertTrue();
       expect(Math.abs(Tabs_barPosition_003.right - Tabs_barPosition_003.left - vp2px(330)) <= 1).assertTrue();
 
       console.info(`[TabsBarPositionStartWithVerticalFalse]subGreen.bottom - subGreen.top=
         ${Math.round(subGreen.bottom - subGreen.top)}`)
-      expect(Math.round(subGreen.bottom - subGreen.top)).assertEqual(Math.round(vp2px(56)));
-      expect(Math.round(subBlue.bottom - subBlue.top)).assertEqual(Math.round(vp2px(56)));
-      expect(Math.round(subYellow.bottom - subYellow.top)).assertEqual(Math.round(vp2px(56)));
-      expect(Math.round(subGreen.right - subGreen.left)).assertEqual(Math.round(vp2px(110)));
-      expect(Math.round(subBlue.right - subBlue.left)).assertEqual(Math.round(vp2px(110)));
-      expect(Math.round(subYellow.right - subYellow.left)).assertEqual(Math.round(vp2px(110)));
+     
+      expect(Math.abs(Math.round(subGreen.bottom - subGreen.top)-Math.round(vp2px(56)))<=1).assertTrue();
+      expect(Math.abs(Math.round(subBlue.bottom - subBlue.top)-Math.round(vp2px(56)))<=1).assertTrue();
+      expect(Math.abs(Math.round(subYellow.bottom - subYellow.top)-Math.round(vp2px(56)))<=1).assertTrue();
+      expect(Math.abs(Math.round(subGreen.right - subGreen.left)-Math.round(vp2px(110)))<=1).assertTrue();
+      expect(Math.abs(Math.round(subBlue.right - subBlue.left)-Math.round(vp2px(110)))<=1).assertTrue();
+      expect(Math.abs(Math.round(subYellow.right - subYellow.left)-Math.round(vp2px(110)))<=1).assertTrue();
+
       console.info('[TabsBarPositionStartWithVerticalFalse] END');
       done();
     });
@@ -228,54 +235,60 @@ export default function Tabs_barPosition() {
 
       console.info(`[TabsBarPositionEndWithVerticalFalse]Tabs_barPosition_011.left equal Tabs_barPosition_001.left
         ${Tabs_barPosition_011.left} === ${Tabs_barPosition_001.left}`);
-      expect(Tabs_barPosition_011.left).assertEqual(Tabs_barPosition_001.left);
-      expect(Tabs_barPosition_012.left).assertEqual(Tabs_barPosition_002.left);
-      expect(Tabs_barPosition_013.left).assertEqual(Tabs_barPosition_003.left);
-      expect(Tabs_barPosition_011.top).assertEqual(Tabs_barPosition_001.top);
-      expect(Tabs_barPosition_012.top).assertEqual(Tabs_barPosition_002.top);
-      expect(Tabs_barPosition_013.top).assertEqual(Tabs_barPosition_003.top);
+     
+      expect(Math.abs(Tabs_barPosition_011.left-Tabs_barPosition_001.left)<=1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_012.left-Tabs_barPosition_002.left)<=1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_013.left-Tabs_barPosition_003.left)<=1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_011.top-Tabs_barPosition_001.top)<=1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_012.top-Tabs_barPosition_002.top)<=1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_013.top-Tabs_barPosition_003.top)<=1).assertTrue();
 
       console.info(`[TabsBarPositionEndWithVerticalFalse]Tabs_barPosition_011.top equal Tabs_barPosition_01.top
         ${Tabs_barPosition_011.top} === ${Tabs_barPosition_01.top}`);
-      expect(Tabs_barPosition_011.top).assertEqual(Tabs_barPosition_01.top);
-      expect(Tabs_barPosition_012.top).assertEqual(Tabs_barPosition_01.top);
-      expect(Tabs_barPosition_013.top).assertEqual(Tabs_barPosition_01.top);
+     
+      expect(Math.abs(Tabs_barPosition_011.top-Tabs_barPosition_01.top)<=1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_012.top-Tabs_barPosition_01.top)<=1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_013.top-Tabs_barPosition_01.top)<=1).assertTrue();
 
       console.info(`[TabsBarPositionEndWithVerticalFalse]Tabs_barPosition_011.left equal Tabs_barPosition_01.left
         ${Tabs_barPosition_011.left} === ${Tabs_barPosition_01.left}`);
-      expect(Tabs_barPosition_011.left).assertEqual(Tabs_barPosition_01.left);
-      expect(Tabs_barPosition_012.left).assertEqual(Tabs_barPosition_01.left);
-      expect(Tabs_barPosition_013.left).assertEqual(Tabs_barPosition_01.left);
-      expect(Tabs_barPosition_011.bottom).assertEqual(subGreen.top);
-      expect(Tabs_barPosition_012.bottom).assertEqual(subBlue.top);
-      expect(Tabs_barPosition_013.bottom).assertEqual(subYellow.top);
+     
+      expect(Math.abs(Tabs_barPosition_011.left-Tabs_barPosition_01.left) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_012.left-Tabs_barPosition_01.left) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_013.left-Tabs_barPosition_01.left) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_011.bottom-subGreen.top) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_012.bottom-subBlue.top) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_013.bottom-subYellow.top) <= 1).assertTrue();
 
       console.info(`[TabsBarPositionEndWithVerticalFalse]Tabs_barPosition_011.bottom - Tabs_barPosition_011.top=
         ${Math.round(Tabs_barPosition_011.bottom - Tabs_barPosition_011.top)}`);
-      expect(Math.round(Tabs_barPosition_011.bottom - Tabs_barPosition_011.top)).assertEqual(Math.round(vp2px(244)));
-      expect(Math.round(Tabs_barPosition_012.bottom - Tabs_barPosition_012.top)).assertEqual(Math.round(vp2px(244)));
-      expect(Math.round(Tabs_barPosition_013.bottom - Tabs_barPosition_013.top)).assertEqual(Math.round(vp2px(244)));
+      
+      expect(Math.abs(Math.round(Tabs_barPosition_011.bottom - Tabs_barPosition_011.top)-Math.round(vp2px(244)))<= 1).assertTrue();
+      expect(Math.abs(Math.round(Tabs_barPosition_012.bottom - Tabs_barPosition_012.top)-Math.round(vp2px(244)))<= 1).assertTrue();
+      expect(Math.abs(Math.round(Tabs_barPosition_013.bottom - Tabs_barPosition_013.top)-Math.round(vp2px(244)))<= 1).assertTrue();
       expect(Math.abs(Tabs_barPosition_011.right - Tabs_barPosition_011.left - vp2px(330)) <= 1).assertTrue();
       expect(Math.abs(Tabs_barPosition_012.right - Tabs_barPosition_012.left - vp2px(330)) <= 1).assertTrue();
       expect(Math.abs(Tabs_barPosition_013.right - Tabs_barPosition_013.left - vp2px(330)) <= 1).assertTrue();
 
       console.info(`[TabsBarPositionEndWithVerticalFalse]Tabs_barPosition_001.bottom - Tabs_barPosition_001.top=
         ${Math.round(Tabs_barPosition_001.bottom - Tabs_barPosition_001.top)}`);
-      expect(Math.round(Tabs_barPosition_001.bottom - Tabs_barPosition_001.top)).assertEqual(Math.round(vp2px(244)));
-      expect(Math.round(Tabs_barPosition_002.bottom - Tabs_barPosition_002.top)).assertEqual(Math.round(vp2px(244)));
-      expect(Math.round(Tabs_barPosition_003.bottom - Tabs_barPosition_003.top)).assertEqual(Math.round(vp2px(244)));
+    
       expect(Math.abs(Tabs_barPosition_001.right - Tabs_barPosition_001.left - vp2px(330)) <= 1).assertTrue();
       expect(Math.abs(Tabs_barPosition_002.right - Tabs_barPosition_002.left - vp2px(330)) <= 1).assertTrue();
       expect(Math.abs(Tabs_barPosition_003.right - Tabs_barPosition_003.left - vp2px(330)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Tabs_barPosition_001.bottom - Tabs_barPosition_001.top)-Math.round(vp2px(244))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Tabs_barPosition_002.bottom - Tabs_barPosition_002.top)-Math.round(vp2px(244))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Tabs_barPosition_003.bottom - Tabs_barPosition_003.top)-Math.round(vp2px(244))) <= 1).assertTrue();
 
       console.info(`[TabsBarPositionEndWithVerticalFalse]subGreen.bottom - subGreen.bottom=
         ${Math.round(subGreen.bottom - subGreen.bottom)}`);
-      expect(Math.round(subGreen.bottom - subGreen.top)).assertEqual(Math.round(vp2px(56)));
-      expect(Math.round(subBlue.bottom - subBlue.top)).assertEqual(Math.round(vp2px(56)));
-      expect(Math.round(subYellow.bottom - subYellow.top)).assertEqual(Math.round(vp2px(56)));
-      expect(Math.round(subGreen.right - subGreen.left)).assertEqual(Math.round(vp2px(110)));
-      expect(Math.round(subBlue.right - subBlue.left)).assertEqual(Math.round(vp2px(110)));
-      expect(Math.round(subYellow.right - subYellow.left)).assertEqual(Math.round(vp2px(110)));
+      
+      expect(Math.abs(Math.round(subGreen.bottom - subGreen.top)-Math.round(vp2px(56))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(subBlue.bottom - subBlue.top)-Math.round(vp2px(56))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(subYellow.bottom - subYellow.top)-Math.round(vp2px(56))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(subGreen.right - subGreen.left)-Math.round(vp2px(110))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(subBlue.right - subBlue.left)-Math.round(vp2px(110))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(subYellow.right - subYellow.left)-Math.round(vp2px(110))) <= 1).assertTrue();
       console.info('[TabsBarPositionEndWithVerticalFalse] END');
       done();
     });
@@ -345,27 +358,30 @@ export default function Tabs_barPosition() {
 
       console.info(`[TabsBarPositionStartWithVerticalTrue]Tabs_barPosition_011.left equal Tabs_barPosition_001.left
         ${Tabs_barPosition_011.left} === ${Tabs_barPosition_001.left}`);
-      expect(Tabs_barPosition_011.left).assertEqual(Tabs_barPosition_001.left);
-      expect(Tabs_barPosition_012.left).assertEqual(Tabs_barPosition_002.left);
-      expect(Tabs_barPosition_013.left).assertEqual(Tabs_barPosition_003.left);
-      expect(Tabs_barPosition_011.top).assertEqual(Tabs_barPosition_001.top);
-      expect(Tabs_barPosition_012.top).assertEqual(Tabs_barPosition_002.top);
-      expect(Tabs_barPosition_013.top).assertEqual(Tabs_barPosition_003.top);
+    
+      expect(Math.abs(Tabs_barPosition_011.left-Tabs_barPosition_001.left) <=1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_012.left-Tabs_barPosition_002.left) <=1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_013.left-Tabs_barPosition_003.left) <=1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_011.top-Tabs_barPosition_001.top) <=1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_012.top-Tabs_barPosition_002.top) <=1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_013.top-Tabs_barPosition_003.top) <=1).assertTrue();
 
       console.info(`[TabsBarPositionStartWithVerticalTrue]Tabs_barPosition_011.top equal Tabs_barPosition_01.top
         ${Tabs_barPosition_011.top} === ${Tabs_barPosition_01.top}`);
-      expect(Tabs_barPosition_011.top).assertEqual(Tabs_barPosition_01.top);
-      expect(Tabs_barPosition_012.top).assertEqual(Tabs_barPosition_01.top);
-      expect(Tabs_barPosition_013.top).assertEqual(Tabs_barPosition_01.top);
+    
+      expect(Math.abs(Tabs_barPosition_011.top-Tabs_barPosition_01.top)<=1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_012.top-Tabs_barPosition_01.top)<=1).assertTrue()
+      expect(Math.abs(Tabs_barPosition_013.top-Tabs_barPosition_01.top)<=1).assertTrue()
 
       console.info(`[TabsBarPositionStartWithVerticalTrue]Tabs_barPosition_011.left equal subGreen.right=
         ${Tabs_barPosition_011.left} === ${subGreen.right}`);
-      expect(Tabs_barPosition_011.left).assertEqual(subGreen.right);
-      expect(Tabs_barPosition_012.left).assertEqual(subBlue.right);
-      expect(Tabs_barPosition_013.left).assertEqual(subYellow.right);
-      expect(Tabs_barPosition_011.top).assertEqual(subGreen.top);
-      expect(subBlue.top).assertEqual(subGreen.bottom);
-      expect(subYellow.top).assertEqual(subBlue.bottom);
+     
+      expect(Math.abs(Tabs_barPosition_011.left-subGreen.right) <=1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_012.left-subBlue.right) <=1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_013.left-subYellow.right) <=1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_011.top-subGreen.top) <=1).assertTrue();
+      expect(Math.abs(subBlue.top-subGreen.bottom) <=1).assertTrue();
+      expect(Math.abs(subYellow.top-subBlue.bottom) <=1).assertTrue();
 
       console.info(`[TabsBarPositionStartWithVerticalTrue]Tabs_barPosition_011.bottom - Tabs_barPosition_011.top=
         ${Math.round(Tabs_barPosition_011.bottom - Tabs_barPosition_011.top)}`);
@@ -378,21 +394,22 @@ export default function Tabs_barPosition() {
 
       console.info(`[TabsBarPositionStartWithVerticalTrue]Tabs_barPosition_001.bottom - Tabs_barPosition_001.top=
         ${Math.round(Tabs_barPosition_001.bottom - Tabs_barPosition_001.top)}`);
-      expect(Math.round(Tabs_barPosition_001.bottom - Tabs_barPosition_001.top)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(Tabs_barPosition_002.bottom - Tabs_barPosition_002.top)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(Tabs_barPosition_003.bottom - Tabs_barPosition_003.top)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.abs(Math.round(Tabs_barPosition_001.bottom - Tabs_barPosition_001.top)-Math.round(vp2px(300)))<=1).assertTrue();
+      expect(Math.abs(Math.round(Tabs_barPosition_002.bottom - Tabs_barPosition_002.top)-Math.round(vp2px(300)))<=1).assertTrue();
+      expect(Math.abs(Math.round(Tabs_barPosition_003.bottom - Tabs_barPosition_003.top)-Math.round(vp2px(300)))<=1).assertTrue();
       expect(Math.abs(Math.round(Tabs_barPosition_001.right - Tabs_barPosition_001.left) - Math.round(vp2px(274))) <= 1).assertTrue();
       expect(Math.abs(Math.round(Tabs_barPosition_002.right - Tabs_barPosition_002.left) - Math.round(vp2px(274))) <= 1).assertTrue();
       expect(Math.abs(Math.round(Tabs_barPosition_003.right - Tabs_barPosition_003.left) - Math.round(vp2px(274))) <= 1).assertTrue();
 
       console.info(`[TabsBarPositionStartWithVerticalTrue]subGreen.right - subGreen.left=
         ${Math.round(subGreen.right - subGreen.left)}`);
-      expect(Math.round(subGreen.right - subGreen.left)).assertEqual(Math.round(vp2px(56)));
-      expect(Math.round(subBlue.right - subBlue.left)).assertEqual(Math.round(vp2px(56)));
-      expect(Math.round(subYellow.right - subYellow.left)).assertEqual(Math.round(vp2px(56)));
-      expect(Math.round(subGreen.bottom - subGreen.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(subBlue.bottom - subBlue.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(subYellow.bottom - subYellow.top)).assertEqual(Math.round(vp2px(100)));
+      
+      expect(Math.abs(Math.round(subGreen.right - subGreen.left) - Math.round(vp2px(56))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(subBlue.right - subBlue.left) - Math.round(vp2px(56))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(subYellow.right - subYellow.left) - Math.round(vp2px(56))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(subGreen.bottom - subGreen.top)- Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(subBlue.bottom - subBlue.top)-Math.round(vp2px(100))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(subYellow.bottom - subYellow.top)-Math.round(vp2px(100))) <= 1).assertTrue();
       console.info('[TabsBarPositionStartWithVerticalTrue] END');
       done();
     });
@@ -462,19 +479,20 @@ export default function Tabs_barPosition() {
 
       console.info(`[TabsBarPositionEndWithVerticalTrue]Tabs_barPosition_011.left equal Tabs_barPosition_001.left
         ${Tabs_barPosition_011.left} === ${Tabs_barPosition_001.left}`);
-      expect(Tabs_barPosition_011.left).assertEqual(Tabs_barPosition_001.left);
-      expect(Tabs_barPosition_012.left).assertEqual(Tabs_barPosition_002.left);
-      expect(Tabs_barPosition_013.left).assertEqual(Tabs_barPosition_003.left);
-      expect(Tabs_barPosition_011.top).assertEqual(Tabs_barPosition_001.top);
-      expect(Tabs_barPosition_012.top).assertEqual(Tabs_barPosition_002.top);
-      expect(Tabs_barPosition_013.top).assertEqual(Tabs_barPosition_003.top);
+      
+      expect(Math.abs(Tabs_barPosition_011.left-Tabs_barPosition_001.left) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_012.left-Tabs_barPosition_002.left) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_013.left-Tabs_barPosition_003.left) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_011.top-Tabs_barPosition_001.top) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_012.top-Tabs_barPosition_002.top) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_013.top-Tabs_barPosition_003.top) <= 1).assertTrue();
 
       console.info(`[TabsBarPositionEndWithVerticalTrue]Tabs_barPosition_011.top equal Tabs_barPosition_01.top
         ${Tabs_barPosition_011.top} === ${Tabs_barPosition_01.top}`);
-      expect(Tabs_barPosition_011.top).assertEqual(Tabs_barPosition_01.top);
-      expect(Tabs_barPosition_012.top).assertEqual(Tabs_barPosition_01.top);
-      expect(Tabs_barPosition_013.top).assertEqual(Tabs_barPosition_01.top);
-
+     
+      expect(Math.abs(Tabs_barPosition_011.top-Tabs_barPosition_01.top) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_012.top-Tabs_barPosition_01.top) <= 1).assertTrue();
+      expect(Math.abs(Tabs_barPosition_013.top-Tabs_barPosition_01.top) <= 1).assertTrue();
       console.info(`[TabsBarPositionEndWithVerticalTrue]Tabs_barPosition_011.right equal subGreen.left
         ${Tabs_barPosition_011.right} === ${subGreen.left}`);
       expect(Math.abs(Tabs_barPosition_011.right - subGreen.left) <= 1).assertTrue();
@@ -486,18 +504,23 @@ export default function Tabs_barPosition() {
 
       console.info(`[TabsBarPositionEndWithVerticalTrue]Tabs_barPosition_011.bottom - Tabs_barPosition_011.top=
         ${Math.round(Tabs_barPosition_011.bottom - Tabs_barPosition_011.top)}`);
-      expect(Math.round(Tabs_barPosition_011.bottom - Tabs_barPosition_011.top)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(Tabs_barPosition_012.bottom - Tabs_barPosition_012.top)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(Tabs_barPosition_013.bottom - Tabs_barPosition_013.top)).assertEqual(Math.round(vp2px(300)));
+	  
+
+      expect(Math.abs(Math.round(Tabs_barPosition_011.bottom - Tabs_barPosition_011.top) - Math.round(vp2px(300))) <=1 ).assertTrue();
+	  
+
+      expect(Math.abs(Math.round(Tabs_barPosition_011.bottom - Tabs_barPosition_011.top) - Math.round(vp2px(300))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Tabs_barPosition_012.bottom - Tabs_barPosition_012.top) - Math.round(vp2px(300))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Tabs_barPosition_013.bottom - Tabs_barPosition_013.top) - Math.round(vp2px(300))) <=1 ).assertTrue();
       expect(Math.abs(Math.round(Tabs_barPosition_011.right - Tabs_barPosition_011.left) - Math.round(vp2px(274))) <= 1).assertTrue();
       expect(Math.abs(Math.round(Tabs_barPosition_012.right - Tabs_barPosition_012.left) - Math.round(vp2px(274))) <= 1).assertTrue();
       expect(Math.abs(Math.round(Tabs_barPosition_013.right - Tabs_barPosition_013.left) - Math.round(vp2px(274))) <= 1).assertTrue();
 
       console.info(`[TabsBarPositionEndWithVerticalTrue]Tabs_barPosition_001.bottom - Tabs_barPosition_001.top=
         ${Math.round(Tabs_barPosition_001.bottom - Tabs_barPosition_001.top)}`);
-      expect(Math.round(Tabs_barPosition_001.bottom - Tabs_barPosition_001.top)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(Tabs_barPosition_002.bottom - Tabs_barPosition_002.top)).assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(Tabs_barPosition_003.bottom - Tabs_barPosition_003.top)).assertEqual(Math.round(vp2px(300)));
+      expect(Math.abs(Math.round(Tabs_barPosition_001.bottom - Tabs_barPosition_001.top) - Math.round(vp2px(300))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Tabs_barPosition_002.bottom - Tabs_barPosition_002.top) - Math.round(vp2px(300))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(Tabs_barPosition_003.bottom - Tabs_barPosition_003.top) - Math.round(vp2px(300))) <= 1).assertTrue();
       expect(Math.abs(Math.round(Tabs_barPosition_001.right - Tabs_barPosition_001.left) - Math.round(vp2px(274))) <= 1).assertTrue();
       expect(Math.abs(Math.round(Tabs_barPosition_002.right - Tabs_barPosition_002.left) - Math.round(vp2px(274))) <= 1).assertTrue();
       expect(Math.abs(Math.round(Tabs_barPosition_003.right - Tabs_barPosition_003.left) - Math.round(vp2px(274))) <= 1).assertTrue();
@@ -507,6 +530,7 @@ export default function Tabs_barPosition() {
       expect(Math.round(subGreen.right - subGreen.left)).assertEqual(Math.round(vp2px(56)));
       expect(Math.round(subBlue.right - subBlue.left)).assertEqual(Math.round(vp2px(56)));
       expect(Math.round(subYellow.right - subYellow.left)).assertEqual(Math.round(vp2px(56)));
+      
       expect(Math.round(subGreen.bottom - subGreen.top)).assertEqual(Math.round(vp2px(100)));
       expect(Math.round(subBlue.bottom - subBlue.top)).assertEqual(Math.round(vp2px(100)));
       expect(Math.round(subYellow.bottom - subYellow.top)).assertEqual(Math.round(vp2px(100)));

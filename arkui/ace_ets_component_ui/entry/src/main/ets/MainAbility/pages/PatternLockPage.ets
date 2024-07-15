@@ -15,6 +15,8 @@
 
 import {MessageManager,Callback} from '../utils/MessageManager';
 
+type Message = boolean|string|number|Number[]|PatternLockController
+
 @Entry
 @Component
 struct PatternLockPage {
@@ -29,47 +31,47 @@ struct PatternLockPage {
   @State pathStrokeWidth: number = 18
   @State autoReset: boolean = true
   private patternLockController: PatternLockController = new PatternLockController()
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
 
   onPageShow() {
     console.info('PatternLockPage onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'passwords') {
-        this.passwords = message.value
+        this.passwords = message.value as Number[]
       }
       if (message.name == 'message') {
-        this.message = message.value
+        this.message = message.value as string
       }
       if (message.name == 'controller') {
-        this.patternLockController = message.value
+        this.patternLockController = message.value as PatternLockController
       }
       if (message.name == 'sideLength') {
-        this.sideLength = message.value
+        this.sideLength = message.value as string
       }
       if (message.name == 'circleRadius') {
-        this.circleRadius = message.value
+        this.circleRadius = message.value as string
       }
       if (message.name == 'regularColor') {
-        this.regularColor = message.value
+        this.regularColor = message.value as string
       }
       if (message.name == 'selectedColor') {
-        this.selectedColor = message.value
+        this.selectedColor = message.value as string
       }
       if (message.name == 'activeColor') {
-        this.activeColor = message.value
+        this.activeColor = message.value as string
       }
       if (message.name == 'pathColor') {
-        this.pathColor = message.value
+        this.pathColor = message.value as string
       }
       if (message.name == 'pathStrokeWidth') {
-        this.pathStrokeWidth = message.value
+        this.pathStrokeWidth = message.value as number
       }
       if (message.name == 'autoReset') {
-        this.autoReset = message.value
+        this.autoReset = message.value as boolean
       }
     }
     this.messageManager.registerCallback(callback)

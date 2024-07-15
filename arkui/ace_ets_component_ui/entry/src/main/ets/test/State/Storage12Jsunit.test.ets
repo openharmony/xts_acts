@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 
 
 export default function Storage12Jsunit() {
-  describe('Storage12Jsunit', function () {
-    beforeEach(async function (done) {
+  describe('Storage12Jsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("Storage12Jsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/Storage12',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/Storage12',
       }
       try {
         router.clear();
@@ -43,38 +43,38 @@ export default function Storage12Jsunit() {
     });
 
     //Size获取AppStorage中存在键值对的个数
-    it('Storage12Jsunit_0100', 0, async function (done) {
+    it('Storage12Jsunit_0100', 0, async (done: Function) => {
       console.info('[Storage12Jsunit_0100] START');
       let driver = await UiDriver.create()
       let Storage12Button1 = await driver.findComponent(BY.key('Storage12Button111'));
       await Storage12Button1.click();
       await CommonFunc.sleep(1000);
       let Storage12ContentJson = getInspectorByKey('Storage12Content');
-      let text = JSON.parse(Storage12ContentJson);
+      let text: ESObject = JSON.parse(Storage12ContentJson);
       console.info("[Storage12Jsunit_0100] Storage12Content is: " + JSON.stringify(text));
       expect(text.$attrs.content).assertEqual('2');
       console.info('[Storage12Jsunit_0100] END');
       done();
     });
 
-    it('Storage12Jsunit_0200', 0, async function (done) {
+    it('Storage12Jsunit_0200', 0, async (done: Function) => {
       console.info('[Storage12Jsunit_0200] START');
       let driver = await UiDriver.create()
       let Storage12Button2 = await driver.findComponent(BY.key('Storage12Button2'));
       await Storage12Button2.click();
       await CommonFunc.sleep(1000);
       let Storage12ContentJson = getInspectorByKey('Storage12Content');
-      let text = JSON.parse(Storage12ContentJson);
+      let text: ESObject = JSON.parse(Storage12ContentJson);
       console.info("[Storage12Jsunit_0200] Storage12Content is: " + JSON.stringify(text));
       expect(text.$attrs.content).assertEqual('true');
       console.info('[Storage12Jsunit_0200] END');
       done();
     });
 
-    it('Storage12Jsunit_0300', 0, async function (done) {
+    it('Storage12Jsunit_0300', 0, async (done: Function) => {
       console.info('[Storage12Jsunit_0300] START');
       let Storage12ContentJson = getInspectorByKey('Storage12Text1');
-      let text = JSON.parse(Storage12ContentJson);
+      let text: ESObject = JSON.parse(Storage12ContentJson);
       console.info("[Storage12Jsunit_0300] Storage12Content is: " + JSON.stringify(text));
       expect(text.$attrs.content).assertEqual('appKeys: storage_,PropA');
       console.info('[Storage12Jsunit_0300] END');

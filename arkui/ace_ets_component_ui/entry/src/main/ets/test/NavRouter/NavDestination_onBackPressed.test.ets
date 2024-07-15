@@ -18,10 +18,10 @@ import CommonFunc from '../../MainAbility/utils/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function NavDestination_onBackPressed() {
-  describe('NavDestination_onBackPressed', function () {
-    beforeEach(async function (done) {
+  describe('NavDestination_onBackPressed', () => {
+    beforeEach(async (done: Function) => {
       console.info("NavDestination_onBackPressed beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/NavRouter/NavDestination_onBackPressed',
       }
       try {
@@ -40,7 +40,7 @@ export default function NavDestination_onBackPressed() {
       console.info("NavDestination_onBackPressed beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("NavDestination_onBackPressed after each called");
     });
@@ -52,7 +52,7 @@ export default function NavDestination_onBackPressed() {
      * @tc.type
     * @tc.size
      */
-    it('NavDestination_onBackPressed_0100', 0, async function (done) {
+    it('NavDestination_onBackPressed_0100', 0, async (done: Function) => {
       console.info('[NavDestination_onBackPressed_0100] START');
       await CommonFunc.sleep(1000);
 
@@ -66,7 +66,7 @@ export default function NavDestination_onBackPressed() {
       await driver.triggerKey(2);
       await CommonFunc.sleep(300);
       let text1 = getInspectorByKey('NavDestination_onBackPressed_text1');
-      let Obj1 = JSON.parse(text1);
+      let Obj1: ESObject = JSON.parse(text1);
       expect(Obj1.$attrs.content).assertEqual('{"number":1}');
 
       console.info('[NavDestination_onBackPressed_0100] END');

@@ -14,11 +14,14 @@
  * limitations under the License.
  */
 import {MessageManager,Callback} from '../utils/MessageManager';
+
+type Message = number|number[]|DataPanelType
+
 @Entry
 @Component
 struct DataPanelExample {
   public valueArr: number[] = [10, 10, 10, 10, 10, 10, 10, 10, 10]
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
 
   @State maxValue:number = 0
   @State dataPanelType:DataPanelType = 0
@@ -30,16 +33,16 @@ struct DataPanelExample {
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'maxValue') {
-          this.maxValue = message.value
+          this.maxValue = message.value as number
       }
       if (message.name == 'dataPanelType') {
-          this.dataPanelType = message.value
+          this.dataPanelType = message.value as DataPanelType
       }
       if (message.name == 'values') {
-          this.values = message.value
+          this.values = message.value as number[]
       }
       
     }

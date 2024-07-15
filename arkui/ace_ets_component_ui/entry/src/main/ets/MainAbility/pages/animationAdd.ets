@@ -74,7 +74,7 @@ class PointVector extends Array<Point> implements AnimatableArithmetic<PointVect
     return true
   }
   get():Array<[x: number, y: number]> {
-    let result = []
+    let result: [number, number][] = []
     this.forEach(p => result.push([p.x, p.y]))
     return result
   }

@@ -13,31 +13,35 @@
  * limitations under the License.
  */
 AppStorage.clear()
-let storage224 = new LocalStorage({"PropA":1,"PropB":2})
+interface LocalStorageLinkOne {
+  propA: number
+  propB: number
+}
+let storage224 = new LocalStorage({'propA':1,'propB':2} as LocalStorageLinkOne)
 
 
 @Entry(storage224)
 @Component
 struct LocalStoageLinkOne {
-  @LocalStorageLink('PropA') storLink1: number = 1
-  @LocalStorageLink('PropB') storLink2: number = 10
+  @LocalStorageLink('propA') storLink1: number = 1
+  @LocalStorageLink('propB') storLink2: number = 10
   @State text1: string = ''
   @State text2: string = ''
   @State text3: string = ''
 
-  @State vae : number = storage224.get('PropB')
+  @State vae : number|undefined = storage224.get('propB')
   build(){
     Column({space:15}){
       Button(`Has ${this.text1}`).onClick(()=>{
-        this.text1 = `Has1:${storage224.has('PropA')},Has2:${storage224.has('PropP')}`
+        this.text1 = `Has1:${storage224.has('propA')},Has2:${storage224.has('propP')}`
       }).key('button_has')
 
       Button(`Set ${this.text2}`).onClick(()=>{
-        this.text2 = `Set1:${storage224.set('PropA',2)},Set2:${storage224.set('PropP',2)}`
+        this.text2 = `Set1:${storage224.set('propA',2)},Set2:${storage224.set('propP',2)}`
       }).key('button_set')
 
       Button(`setOrCreate ${this.text3}`).onClick(()=>{
-        this.text3 = `setOrCreate1:${storage224.setOrCreate('PropA',50)},setOrCreate2:${storage224.setOrCreate('PropP',50)}`
+        this.text3 = `setOrCreate1:${storage224.setOrCreate('propA',50)},setOrCreate2:${storage224.setOrCreate('propP',50)}`
       }).key('button_setOrCreate')
 
 
@@ -46,12 +50,12 @@ struct LocalStoageLinkOne {
 
       Button(`点击动态更改本地初始值`).onClick(()=>{
         this.storLink2 += 10
-        this.vae = storage224.get('PropB')
+        this.vae = storage224.get('propB')
       }).key('button_changeInitialValue')
 
       Button(`点击更改localstorage值`).onClick(()=>{
-        storage224.set('PropB', 666)
-        this.vae = storage224.get('PropB')
+        storage224.set('propB', 666)
+        this.vae = storage224.get('propB')
       }).key('button_changeLocalStorageValue')
 
 

@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../MainAbility/utils/MessageManager';
 
 
 export default function ListLanes05() {
-  describe('ListLanes05', function () {
-    beforeEach(async function (done) {
+  describe('ListLanes05', () => {
+    beforeEach(async (done: Function) => {
       console.info("ListLanes05 beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/ListLanes05',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/ListLanes05',
       }
       try {
         router.clear();
@@ -49,7 +49,7 @@ export default function ListLanes05() {
       * @tc.desc  : set gutter to 10lpx and listDirection to Axis.Horizontal
       * @tc.level : Level 3
       */
-    it('ListLanes05_001', 0, async function (done) {
+    it('ListLanes05_001', 0, async (done: Function) => {
 
       console.info('[ListLanes05_001] START');
       await CommonFunc.sleep(200);
@@ -69,7 +69,7 @@ export default function ListLanes05() {
       * @tc.desc  : set gutter to 10px and listDirection to Axis.Horizontal
       * @tc.level : Level 3
       */
-    it('ListLanes05_002', 0, async function (done) {
+    it('ListLanes05_002', 0, async (done: Function) => {
 
       console.info('[ListLanes05_002] START');
       await CommonFunc.sleep(200);
@@ -90,7 +90,7 @@ export default function ListLanes05() {
       * @tc.desc  : set gutter to 10vp and listDirection to Axis.Horizontal
       * @tc.level : Level 3
       */
-    it('ListLanes05_003', 0, async function (done) {
+    it('ListLanes05_003', 0, async (done: Function) => {
 
       console.info('[ListLanes05_003] START');
       await CommonFunc.sleep(200);
@@ -110,7 +110,7 @@ export default function ListLanes05() {
       * @tc.desc  : set gutter to Resource and listDirection to Axis.Horizontal
       * @tc.level : Level 3
       */
-    it('ListLanes05_004', 0, async function (done) {
+    it('ListLanes05_004', 0, async (done: Function) => {
 
       console.info('[ListLanes05_004] START');
       await CommonFunc.sleep(200);

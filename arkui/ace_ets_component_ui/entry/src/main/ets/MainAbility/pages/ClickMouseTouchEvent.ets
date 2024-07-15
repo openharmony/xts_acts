@@ -12,9 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-function Rect1(x, y, z){
-  return {width: x, height: y, radios: z}
-}
 
 @Entry
 @Component
@@ -27,7 +24,7 @@ struct ClickExample {
 
   build() {
     Column() {
-      Rect(Rect1(200, 80, 1)).margin(10)
+      Rect({ width: 200, height: 80, radius: 1 }).margin(10)
 
       Text(this.displayX).id("displayX")
       Text(this.displayY).id("displayY")

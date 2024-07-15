@@ -13,7 +13,11 @@
  * limitations under the License.
  */
 
-let storage008 = new LocalStorage({"PropA8":1})
+interface LocalStorageState8 {
+  PropA8: number
+}
+
+let storage008 = new LocalStorage({"PropA8":1} as LocalStorageState8)
 storage008['PropA8'] = 47;
 
 

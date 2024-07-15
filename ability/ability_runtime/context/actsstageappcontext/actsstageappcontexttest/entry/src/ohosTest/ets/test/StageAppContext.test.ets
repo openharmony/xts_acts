@@ -78,7 +78,7 @@ export default function stageAppContextTest(abilityContext:common.UIAbilityConte
             let TAG = "SUB_AA_OpenHarmony_ApplicationContext_0300";
             console.log(TAG + " --- start");
             let context:Context = abilityContext.getApplicationContext();
-            let result = await context.resourceManager.getString(16777219);
+            let result = await context.resourceManager.getString(33554435);
             console.log(TAG + " result = " + JSON.stringify(result));
             expect(result).assertEqual("entry_MainAbility");
             done();
@@ -178,7 +178,7 @@ export default function stageAppContextTest(abilityContext:common.UIAbilityConte
             console.log(TAG + " --- start");
             let context:Context = abilityContext.getApplicationContext();
             let context2:Context = context.getApplicationContext();
-            let result:string = await context2.resourceManager.getString(16777219);
+            let result:string = await context2.resourceManager.getString(33554435);
             console.log(TAG + " result = " + result);
             expect(result).assertEqual("entry_MainAbility");
             done();

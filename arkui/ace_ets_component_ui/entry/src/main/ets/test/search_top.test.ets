@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../MainAbility/utils/MessageManager';
 
 
 export default function search_top() {
-  describe('search_top', function () {
-    beforeEach(async function (done) {
+  describe('search_top', () => {
+    beforeEach(async (done: Function) => {
       console.info("search_top beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/search_top',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/search_top',
       }
       try {
         router.clear();
@@ -49,7 +49,7 @@ export default function search_top() {
     * @tc.desc  : Click to trigger the keyboard when search is at the top
     * @tc.level : Level 2
     */
-    it('search_top_001', 0, async function (done) {
+    it('search_top_001', 0, async (done: Function) => {
 
       console.info('[search_top_001] START');
       await CommonFunc.sleep(1000);

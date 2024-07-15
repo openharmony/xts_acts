@@ -28,13 +28,13 @@ struct getScrollItemRect3 {
   @State width1: number = 0
   @State height1: number = 0
 
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<number>()
   onPageShow() {
     console.info('getScrollItemRect3 onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<number> = message => {
       console.error('message = ' + message.name + "--" + message.value);
       if(message.name == 'index') {
         this.index = message.value;
