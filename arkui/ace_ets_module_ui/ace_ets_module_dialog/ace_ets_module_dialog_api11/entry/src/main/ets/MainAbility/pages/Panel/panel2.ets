@@ -24,9 +24,9 @@ struct PanelExample {
   private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("rating page stateChangCallBack");
     if (eventData != null) {
-      console.info("rating page state change called:" + JSON.stringify(eventData.data.rating));
-      if (eventData.data.type != null) {
-        this.type = eventData.data.type;
+      console.info("rating page state change called:" + JSON.stringify(eventData.data?.rating));
+      if (eventData.data?.type != null) {
+        this.type = eventData.data?.type;
       }
     }
   }

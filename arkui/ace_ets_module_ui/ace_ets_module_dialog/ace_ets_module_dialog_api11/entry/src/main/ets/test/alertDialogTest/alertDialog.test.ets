@@ -62,7 +62,7 @@ export default function alertDialogCenterStartJsunit() {
         }
         let callback = (eventData: events_emitter.EventData) => {
           console.info("testalertDialogCenterStart0001 get event data is: " + JSON.stringify(eventData));
-          expect(eventData.data.Result).assertEqual(true);
+          expect(eventData.data?.Result).assertEqual(true);
           console.info('testalertDialogCenterStart0001 END');
           done();
         }

@@ -43,7 +43,7 @@ struct PromptActionOptions {
           })
             .then(data=>{
              console.info('showDialog success,click button:'+ data.index);
-          }).catch(error=>{
+          }).catch((error: Error)=>{
              console.info('showDialog error:'+ error);
           })
         })
