@@ -101,8 +101,8 @@ export default function Router4() {
       await CommonFunc.sleep(1000);
 
       let strJson5 = getInspectorByKey('name_B');
-      expect(JSON.parse(strJson5).$attrs.content).assertEqual('pageA');
-      console.info('obj555555' + JSON.parse(strJson5).$attrs.content)
+      expect(JSON.parse(strJson1).$attrs.content).assertEqual('pageA');
+      console.info('obj555555' + JSON.parse(strJson1).$attrs.content)
       await CommonFunc.sleep(500);
 
       let strJson6 = getInspectorByKey('name_length');

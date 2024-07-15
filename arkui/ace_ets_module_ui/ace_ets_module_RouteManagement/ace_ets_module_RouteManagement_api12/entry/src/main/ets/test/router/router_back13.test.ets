@@ -84,7 +84,7 @@ export default function router_back13() {
       console.info('[router_back13_0100] btn2');
 
       let text1 = getInspectorByKey('router_back13_text');
-      expect(Obj1.$attrs.content).assertEqual('back13');
+      expect(JSON.parse(text1).$attrs.content).assertEqual('back13');
       JSON.parse(text1)
       console.info('[router_back13_0100] END');
       done();
