@@ -79,7 +79,7 @@ export default function SwipeGesture2() {
       let obj = JSON.parse(strJson);
       console.info("[SwipeGesture2_0200] component obj is: " + JSON.stringify(obj));
       console.info("[SwipeGesture2_0200] title: " + JSON.stringify(obj.$attrs.content));
-      expect(Math.abs(Number(obj.$attrs.content)) - 92) < 10).assertEqual(true);
+      expect((Math.abs(Number(obj.$attrs.content)) - 92) < 10).assertEqual(true);
       console.info('[SwipeGesture2_0200] END');
       done();
     });
