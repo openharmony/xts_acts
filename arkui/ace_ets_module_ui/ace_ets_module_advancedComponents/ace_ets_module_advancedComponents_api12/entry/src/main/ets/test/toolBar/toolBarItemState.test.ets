@@ -63,11 +63,12 @@ export default function toolBarItemState() {
       let driver = await Driver.create();
       await driver.delayMs(2000);
       // 查看ToolBarPage是否存在以下入口。
-      let primaryTitle1 = await driver.findComponent(ON.text('目录5'));
-      let primaryTitle2 = await driver.findComponent(ON.text('目录3'));
-      expect(primaryTitle1 !== null).assertTrue();
-      expect(primaryTitle2 !== null).assertTrue();
-      await driver.delayMs(2000);
+      let enableItem = await driver.findComponent(ON.text('ENABLE'));
+      let disableItem = await driver.findComponent(ON.text('DISABLE'));
+      let activateItem = await driver.findComponent(ON.text('ACTIVATE'));
+      expect(enableItem !== null).assertTrue();
+      expect(disableItem !== null).assertTrue();
+      expect(activateItem !== null).assertTrue();
       console.info('[toolBarItemState_0100] END');
       done();
     });
