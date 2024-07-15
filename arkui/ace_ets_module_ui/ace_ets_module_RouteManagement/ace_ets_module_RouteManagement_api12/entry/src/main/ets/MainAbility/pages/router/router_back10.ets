@@ -17,21 +17,20 @@ import router from '@ohos.router'
 @Entry
 @Component
 struct router_back10 {
-  @State str:string = 'back10'
+  @State str: string = 'back10'
 
   build() {
-    Column({space:5}) {
+    Column({ space: 5 }) {
 
       Text(this.str).id('router_back10_text')
 
       Button('back -1')
         .id('router_back10_btn')
-        .onClick(()=>{
+        .onClick(() => {
           router.back(-1)
         })
 
     }.width('100%').height('100%')
-
 
   }
 }

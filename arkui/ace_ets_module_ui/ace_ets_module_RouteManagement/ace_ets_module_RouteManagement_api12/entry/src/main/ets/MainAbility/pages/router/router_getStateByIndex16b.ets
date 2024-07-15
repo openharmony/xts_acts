@@ -17,25 +17,25 @@ import router from '@ohos.router'
 @Entry
 @Component
 struct router_getStateByIndex16b {
-  @State str1:string = ''
-  @State str2:string = ''
+  @State str1: string = ''
+  @State str2: string = ''
 
   build() {
-    Column({space:5}) {
+    Column({ space: 5 }) {
       Text('router_getStateByIndex16b')
 
       Text(this.str1).id('router_getStateByIndex16b_text1')
 
       Button('getStateByIndex')
         .id('router_getStateByIndex16b_btn1')
-        .onClick(()=>{
-          let options:router.RouterState | undefined = router.getStateByIndex(3)
-          if(options){
+        .onClick(() => {
+          let options: router.RouterState | undefined = router.getStateByIndex(3)
+          if (options) {
             let index = 'index=' + options.index
             let name = 'name=' + options.name
             let path = 'path=' + options.path
             let params = 'params=' + JSON.stringify(options.params)
-            this.str1 = index + ';'+ name +';'+ path + ';'+params + ';'
+            this.str1 = index + ';' + name + ';' + path + ';' + params + ';'
           }
         })
 
@@ -44,21 +44,19 @@ struct router_getStateByIndex16b {
 
       Button('getStateByIndex')
         .id('router_getStateByIndex16b_btn2')
-        .onClick(()=>{
-          let options:router.RouterState | undefined = router.getStateByIndex(4)
-          if(options){
+        .onClick(() => {
+          let options: router.RouterState | undefined = router.getStateByIndex(4)
+          if (options) {
             let index = 'index=' + options.index
             let name = 'name=' + options.name
             let path = 'path=' + options.path
             let params = 'params=' + JSON.stringify(options.params)
-            this.str2 =  index + ';'+ name +';'+ path + ';'+params + ';'
+            this.str2 = index + ';' + name + ';' + path + ';' + params + ';'
           }
         })
 
 
-
     }.width('100%').height('100%')
-
 
   }
 }

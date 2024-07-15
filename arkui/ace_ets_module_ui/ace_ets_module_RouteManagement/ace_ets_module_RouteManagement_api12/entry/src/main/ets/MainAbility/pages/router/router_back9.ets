@@ -18,30 +18,28 @@ import { BusinessError } from '@ohos.base'
 @Entry
 @Component
 struct router_back9 {
-  @State str:string = '1'
+  @State str: string = '1'
 
   build() {
-    Column({space:5}) {
+    Column({ space: 5 }) {
       Text('back9')
 
       Text(this.str).id('router_back9_text')
 
       Button('getParams')
         .id('router_back9_btn1')
-        .onClick(()=>{
+        .onClick(() => {
           this.str = JSON.stringify(router.getParams()) + ''
         })
 
       Button('go to second')
         .id('router_back9_btn2')
-        .onClick(()=>{
-          router.pushUrl({url:"MainAbility/pages/router/router_back09"})
+        .onClick(() => {
+          router.pushUrl({ url: "MainAbility/pages/router/router_back09" })
         })
 
 
-
     }.width('100%').height('100%')
-
 
   }
 }

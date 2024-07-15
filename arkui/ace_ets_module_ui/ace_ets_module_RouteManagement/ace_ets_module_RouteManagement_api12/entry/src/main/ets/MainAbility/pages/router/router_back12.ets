@@ -17,22 +17,18 @@ import router from '@ohos.router'
 @Entry
 @Component
 struct router_back12 {
-  @State str:string = 'back12'
+  @State str: string = 'back12'
 
   build() {
-    Column({space:5}) {
+    Column({ space: 5 }) {
 
       Text(this.str).id('router_back12_text')
 
       Button('go to second')
         .id('router_back12_btn2')
-        .onClick(()=>{
-          router.pushUrl({url:"MainAbility/pages/router/router_back012"})
+        .onClick(() => {
+          router.pushUrl({ url: "MainAbility/pages/router/router_back012" })
         })
-
-
     }.width('100%').height('100%')
-
-
   }
 }
