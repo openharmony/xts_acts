@@ -1865,19 +1865,21 @@ export default function WebSocketApiTest() {
               console.info(`${caseName} test end`);
             } else {
               console.info(`${caseName} close1 success and value is ${value}`);
-              ws.close((err: BusinessError,value: boolean) => {
-                if (err) {
-                  console.info(`${caseName} close2 fail ${JSON.stringify(err)}`);
-                  expect(err.code == 2302999).assertTrue();
-                  done();
-                  console.info(`${caseName} test end`);
-                } else {
-                  console.info(`${caseName} close2 success and value is ${value}`);
-                  expectFail(`${caseName} close2 success`);
-                  done();
-                  console.info(`${caseName} test end`);
-                }
-              })
+              setTimeout(() => {
+                  ws.close((err: BusinessError,value: boolean) => {
+                    if (err) {
+                      console.info(`${caseName} close2 fail ${JSON.stringify(err)}`);
+                      expect(err.code == 2302999).assertTrue();
+                      done();
+                      console.info(`${caseName} test end`);
+                    } else {
+                      console.info(`${caseName} close2 success and value is ${value}`);
+                      expectFail(`${caseName} close2 success`);
+                      done();
+                      console.info(`${caseName} test end`);
+                    }
+                  })              
+              },2000)
             }
           })
         });
