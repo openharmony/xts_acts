@@ -17,6 +17,8 @@ import image from '@ohos.multimedia.image'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import { base64Image, scale2x1, translate3x1, rotate90, flipH, testBmp, testGif, crop3x3, scale1x4, setAlpha8, translate1x3 } from './testImg2'
 import { testPng, testJpg } from './testImg'
+import fs from "@ohos.file.fs";
+import featureAbility from '@ohos.ability.featureAbility'
 export default function imagePixelMapFramework() {
     describe('imagePixelMapFramework', function () {
         let globalpixelmap;
@@ -30,9 +32,12 @@ export default function imagePixelMapFramework() {
         const { RGB_565, RGBA_8888, BGRA_8888, RGB_888, ALPHA_8, RGBA_F16, NV21, NV12,
             RGBA_1010102, YCBCR_P010, YCRCB_P010 } = image.PixelMapFormat;
         const CONVERTPIXELFOMAT_ERRORCODE = 62980115;
-        
+        let context;
+        let filesDir;
         beforeAll(async function () {
             console.info('beforeAll case');
+            context = await featureAbility.getContext();
+            filesDir = await context.getFilesDir();
         })
 
         beforeEach(function () {
@@ -540,26 +545,49 @@ export default function imagePixelMapFramework() {
                     return height * width * 3;
                 case NV12:
                 case NV21:
-                    return height * width + (height + 1) / 2 * (width + 1) / 2 * 2;
+                    return height * width + ((height + 1) / 2) * ((width + 1) / 2) * 2;
                 case YCBCR_P010:
                 case YCRCB_P010:
-                    return (height * width + ((height + 1) / 2 * (width + 1) / 2 * 2)) * 2;
+                    return (height * width + (((height + 1) / 2) * ((width + 1) / 2) * 2)) * 2;
                 default:
                     return 0;
             }
         }
+
+        function getBuffer(fileName) {
+            let filePath = filesDir + '/' + fileName;
+            console.log('filePath:', filePath)
+            let file = fs.openSync(filePath);
+            const stats = fs.statSync(filePath);
+            const fileSize = stats.size;
+            const bufferRead = new ArrayBuffer(fileSize)
+            fs.readSync(file.fd, bufferRead)
+            return bufferRead;
+          }
         
         async function createPixelMapByFormat(expectFormat) {
-            var color = new ArrayBuffer(getBufferSize(4, 6, expectFormat));
-            var bufferArr = new Uint8Array(color);
-            for (var i = 0; i < bufferArr.length; i++) {
-                bufferArr[i] = i + 1;
+            let opts = {
+                editable: true,
+                srcPixelFormat: expectFormat,
+                pixelFormat: expectFormat,
+                size: { height: 1080, width: 1920 }
             }
-
-            let opts = { editable: true, pixelFormat: expectFormat, size: { height: 4, width: 6 } }
-            return image.createPixelMap(color, opts);
+            let buffer;
+            if (expectFormat == 11 || expectFormat == 12) {
+                buffer = getBuffer("nv12p010.yuv");
+            } else if (expectFormat == 10) {
+                buffer = getBuffer("1920-1080-rgba10.rgba");
+            } else {
+                buffer = new ArrayBuffer(getBufferSize(100, 100, expectFormat));
+                var bufferArr = new Uint8Array(buffer);
+                for (var i = 0; i < bufferArr.length; i++) {
+                    bufferArr[i] = i + 1;
+                }
+                opts.size.width = 100;
+                opts.size.height = 100;
+            }
+            return image.createPixelMap(buffer, opts);
         }
-
         async function testConvertPixelFormat(done, testNum, srcPixelFormat, dstPixelFormat) {
             let logger = loger(testNum);
             try {
