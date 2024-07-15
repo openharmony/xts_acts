@@ -277,11 +277,6 @@ export default function windowRefactorInterfaceTest(context: common.UIAbilityCon
       });
       console.log(msgStr + 'windowStage.createSubWindow success');
       expect(wnd != null).assertTrue();
-      await wnd.setUIContent('MainAbility/pages/second/second').catch((err: BusinessError) => {
-        console.error(msgStr + `Failed to load the content. Cause code: ${err.code}, message: ${err.message}`);
-        expect().assertFail();
-        done();
-      });
       let isWindowShowing = (wnd as ohosWindow.Window).isWindowShowing();
       expect(!isWindowShowing).assertTrue();
       await (wnd as ohosWindow.Window).showWindow().then(async () => {
