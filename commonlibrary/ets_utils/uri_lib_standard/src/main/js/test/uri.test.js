@@ -3177,5 +3177,73 @@ describe('UriTest', function () {
       expect(newUri.userInfo).assertEqual(null);
       expect(newUri.port).assertEqual("80");
     })
+    // Check the Uri Port.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_17900
+     * @tc.name: testspecialPort001
+     * @tc.desc:  URI Special Characters
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testspecialPort001', 0, function () {
+        let uriStr = "http://publickinfo:-1";
+        let newUri = new uri.URI(uriStr);
+        expect(newUri.toString()).assertEqual("http://publickinfo:-1");
+        expect(newUri.port).assertEqual("-1");
+        expect(newUri.host).assertEqual(null);
+        expect(newUri.authority).assertEqual("publickinfo:-1");
+    })
+    // Check the Uri Port.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_18000
+     * @tc.name: testspecialPort002
+     * @tc.desc:  URI Special Characters
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testspecialPort002', 0, function () {
+        let uriStr = "http://publickinfo:2147483647";
+        let newUri = new uri.URI(uriStr);
+        expect(newUri.toString()).assertEqual("http://publickinfo:2147483647");
+        expect(newUri.port).assertEqual("2147483647");
+        expect(newUri.host).assertEqual('publickinfo');
+        expect(newUri.authority).assertEqual("publickinfo:2147483647");
+    })
+    // Check the Uri Port.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_18100
+     * @tc.name: testspecialPort003
+     * @tc.desc:  URI Special Characters
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testspecialPort003', 0, function () {
+        let uriStr = "http://publickinfo:600000000332";
+        let newUri = new uri.URI(uriStr);
+        expect(newUri.toString()).assertEqual("http://publickinfo:600000000332");
+        expect(newUri.port).assertEqual("-1");
+        expect(newUri.host).assertEqual(null);
+        expect(newUri.authority).assertEqual("publickinfo:600000000332");
+    })
+    // Check the Uri Port.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_18200
+     * @tc.name: testspecialPort004
+     * @tc.desc:  URI Special Characters
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testspecialPort004', 0, function () {
+        let uriStr = "http://publickinfo:0";
+        let newUri = new uri.URI(uriStr);
+        expect(newUri.toString()).assertEqual("http://publickinfo:0");
+        expect(newUri.port).assertEqual("0");
+        expect(newUri.host).assertEqual("publickinfo");
+        expect(newUri.authority).assertEqual("publickinfo:0");
+    })
 })
 }
