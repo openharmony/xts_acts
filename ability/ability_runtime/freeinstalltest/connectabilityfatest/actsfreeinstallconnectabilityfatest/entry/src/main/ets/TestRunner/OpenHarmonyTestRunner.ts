@@ -55,11 +55,11 @@ export default class OpenHarmonyTestRunner implements TestRunner {
         abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
         abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
 
+        let testAbilityName = abilityDelegatorArguments.parameters['-p'] + '.MainAbility'
         let lMonitor = {
             abilityName: testAbilityName,
             onAbilityCreate: onAbilityCreateCallback,
         };
-        let testAbilityName = abilityDelegatorArguments.parameters['-p'] + '.MainAbility'
         abilityDelegator.addAbilityMonitor(lMonitor, addAbilityMonitorCallback)
         let cmd = 'aa start -a ' + testAbilityName + ' -b ' + abilityDelegatorArguments.bundleName
         cmd += ' '+translateParamsToString(abilityDelegatorArguments.parameters)
