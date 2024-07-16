@@ -18,14 +18,15 @@ import wantConstant from '@ohos.app.ability.wantConstant';
 import fs from '@ohos.file.fs';
 import common from '@ohos.app.ability.common';
 import fileUri from '@ohos.file.fileuri';
-import commonEvent from '@ohos.commonEvent';
+import commonEvent from '@ohos.commonEventManager';
+import base from '@ohos.base';
 
 function log(info: string) {
   console.info("[ShareAppTest]:: " + info);
 }
 
-function sleep(time: number) {
-  return new Promise((resolve) => setTimeout(resolve, time));
+function sleep(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 function createBundleNameFile(context: common.UIAbilityContext) {
@@ -45,19 +46,20 @@ function createBundleNameFile(context: common.UIAbilityContext) {
 
 let EVENT_READ_SUCCESS: string = 'Event_Read_Successfully';
 let EVENT_READ_FAILED: string = 'Event_Read_FAILED';
+let subscriber: commonEvent.CommonEventSubscriber;
 
 export default function abilityTest() {
 
-  describe('UriPermissionTest', function () {
+  describe('UriPermissionTest', () => {
     let abilityContext: common.UIAbilityContext;
 
-    beforeAll(function () {
+    beforeAll(() => {
     })
-    beforeEach(function () {
+    beforeEach(() => {
     })
-    afterEach(function () {
+    afterEach(() => {
     })
-    afterAll(function () {
+    afterAll(() => {
     })
 
     /*
@@ -68,7 +70,7 @@ export default function abilityTest() {
     * @tc.type    Function
     * @tc.level   Level 1
     */
-    it('UriPermissionTest_0100', 0, async function (done) {
+    it('UriPermissionTest_0100', 0, async (done: Function) => {
       log("========================= UriPermissionTest_0100 Begin ===================");
       log("step1. createBundleNameFile...");
       abilityContext = AppStorage.get<common.UIAbilityContext>("abilityContext");
@@ -96,22 +98,22 @@ export default function abilityTest() {
         .then(() => {
           log('Succeeded in starting ServiceExtensionAbility.');
         })
-        .catch((err) => {
+        .catch((err: base.BusinessError) => {
           log(`Failed to start ServiceExtensionAbility. Code is ${err.code}, message is ${err.message}`);
           expect().assertFail();
         });
 
       log("step3. waiting result...");
-      let subscribeInfo = {
+      let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
         events: [successEvent, failedEvent]
       }
-      let subscriber;
-      function UnSubscribeInfoCallback(err, data) {
+
+      let UnSubscribeInfoCallback = (err:base.BusinessError, data:void) => {
         log("===UnSubscribeInfoCallback_100===")
       }
 
       let flag = false;
-      function SubscribeCallBackContext(err, data) {
+      let SubscribeCallBackContext = (err:base.BusinessError, data:commonEvent.CommonEventData) => {
         log('Subscribe CallBack data:' + JSON.stringify(data));
         if (data.event === successEvent) {
           commonEvent.unsubscribe(subscriber, UnSubscribeInfoCallback);
@@ -137,7 +139,7 @@ export default function abilityTest() {
         .then(() => {
           log('Succeeded in stop serviceExtensionAbility.');
         })
-        .catch((err) => {
+        .catch((err: base.BusinessError) => {
           log(`Failed to stop ServiceExtensionAbility. Code is ${err.code}, message is ${err.message}`);
         });
       done();
@@ -152,7 +154,7 @@ export default function abilityTest() {
     * @tc.type    Function
     * @tc.level   Level 1
     */
-    it('UriPermissionTest_0200', 0, async function (done) {
+    it('UriPermissionTest_0200', 0, async (done: Function) => {
       log("========================= UriPermissionTest_0200 Begin ===================");
       log("step1. createBundleNameFile...");
       abilityContext = AppStorage.get<common.UIAbilityContext>("abilityContext");
@@ -177,7 +179,7 @@ export default function abilityTest() {
         .then(() => {
           log('Succeeded in starting ServiceExtensionAbility.');
         })
-        .catch((err) => {
+        .catch((err: base.BusinessError) => {
           log(`Failed to start ServiceExtensionAbility. Code is ${err.code}, message is ${err.message}`);
           expect().assertFail();
         });
@@ -198,23 +200,22 @@ export default function abilityTest() {
         .then(() => {
           log('Succeeded in starting ServiceExtensionAbility.');
         })
-        .catch((err) => {
+        .catch((err: base.BusinessError) => {
           log(`Failed to start ServiceExtensionAbility. Code is ${err.code}, message is ${err.message}`);
           expect().assertFail();
         })
 
       log("step4. waiting result.");
       let flag = false;
-      let subscribeInfo = {
+      let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
         events: [successEvent, failedEvent]
       }
-      let subscriber;
 
-      function UnSubscribeInfoCallback(err, data) {
+      let UnSubscribeInfoCallback = (err:base.BusinessError, data:void) => {
         log("===UnSubscribeInfoCallback_200===");
       }
 
-      function SubscribeCallBackContext(err, data) {
+      let SubscribeCallBackContext = (err:base.BusinessError, data:commonEvent.CommonEventData) => {
         log('Subscribe CallBack data:' + JSON.stringify(data));
         if (data.event === successEvent) {
           commonEvent.unsubscribe(subscriber, UnSubscribeInfoCallback);
@@ -240,7 +241,7 @@ export default function abilityTest() {
       await abilityContext.stopServiceExtensionAbility(want_0)
         .then(() => {
           log('Succeeded in stop serviceExtensionAbility.');
-        }).catch((err) => {
+        }).catch((err: base.BusinessError) => {
           log(`Failed to stop ServiceExtensionAbility. Code is ${err.code}, message is ${err.message}`);
         })
       done();
@@ -255,7 +256,7 @@ export default function abilityTest() {
     * @tc.type    Function
     * @tc.level   Level 1
     */
-    it('UriPermissionTest_0300', 0, async function (done) {
+    it('UriPermissionTest_0300', 0, async (done: Function) => {
       log("========================= UriPermissionTest_0300 Begin ===================");
       log("step1. Create bundleName file.");
       abilityContext = AppStorage.get<common.UIAbilityContext>("abilityContext");
@@ -283,7 +284,7 @@ export default function abilityTest() {
         .then(() => {
           log('Succeeded in starting ServiceExtensionAbility.');
         })
-        .catch((err) => {
+        .catch((err: base.BusinessError) => {
           log(`Failed to start ServiceExtensionAbility. Code is ${err.code}, message is ${err.message}`);
           expect().assertFail();
         });
@@ -299,7 +300,7 @@ export default function abilityTest() {
         .then(() => {
           log('Succeeded in stop serviceExtensionAbility.');
         })
-        .catch((err) => {
+        .catch((err: base.BusinessError) => {
           log(`Failed to stop ServiceExtensionAbility. Code is ${err.code}, message is ${err.message}`);
         });
       await sleep(500);
@@ -317,22 +318,21 @@ export default function abilityTest() {
       await abilityContext.startAbility(want2)
         .then(() => {
           log("StartAbility success!")
-        }).catch((err) => {
+        }).catch((err: base.BusinessError) => {
           log(`startAbility failed, code is ${err.code}, message is ${err.message}`);
         });
 
       log("step5. waiting result...");
       let flag = false;
-      let subscribeInfo = {
+      let subscribeInfo: commonEvent.CommonEventSubscribeInfo = {
         events: [successEvent, failedEvent]
       };
-      let subscriber;
 
-      function UnSubscribeInfoCallback(err, data) {
+      let UnSubscribeInfoCallback = (err:base.BusinessError, data:void) => {
         log("===UnSubscribeInfoCallback_300===");
       }
 
-      function SubscribeCallBackContext(err, data) {
+      let SubscribeCallBackContext = (err:base.BusinessError, data:commonEvent.CommonEventData) => {
         log('Subscribe CallBack data:' + JSON.stringify(data));
         if (data.event === failedEvent) {
           commonEvent.unsubscribe(subscriber, UnSubscribeInfoCallback);
@@ -357,7 +357,7 @@ export default function abilityTest() {
       await abilityContext.stopServiceExtensionAbility(want1)
         .then(() => {
           log('Succeeded in stop serviceExtensionAbility.');
-        }).catch((err) => {
+        }).catch((err: base.BusinessError) => {
           log(`Failed to stop ServiceExtensionAbility. Code is ${err.code}, message is ${err.message}`);
         });
       done();
