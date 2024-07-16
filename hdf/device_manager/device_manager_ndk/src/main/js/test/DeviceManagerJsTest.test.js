@@ -54,7 +54,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("DeviceManager_queryDevices_001", 0, function () {
+    it('DeviceManager_queryDevices_001', 0, function () {
         console.info('----------------------DeviceManager_queryDevices_001---------------------------');
         try {
             var devices = deviceManager.queryDevices(deviceManager.BusType.USB);
@@ -76,7 +76,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("DeviceManager_queryDevices_002", 0, function () {
+    it('DeviceManager_queryDevices_002', 0, function () {
         console.info('----------------------DeviceManager_queryDevices_002---------------------------');
         try {
             var devices = deviceManager.queryDevices();
@@ -94,7 +94,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("DeviceManager_bindDevices_003", 0, async function (done) {
+    it('DeviceManager_bindDevices_003', 0, async function (done) {
         console.info('----------------------DeviceManager_bindDevices_003---------------------------');
         try {
             deviceManager.bindDevice('fakeid', (error, data) => {
@@ -120,7 +120,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("DeviceManager_bindDevices_004", 0, async function (done) {
+    it('DeviceManager_bindDevices_004', 0, async function (done) {
         console.info('----------------------DeviceManager_bindDevices_004---------------------------');
         try {
             deviceManager.bindDevice(12345, (error, data) => {
@@ -146,7 +146,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("DeviceManager_bindDeviceDriver_005", 0, async function (done) {
+    it('DeviceManager_bindDeviceDriver_005', 0, async function (done) {
         console.info('----------------------DeviceManager_bindDeviceDriver_005---------------------------');
         try {
             deviceManager.bindDeviceDriver(12345, (error, data) => {
@@ -172,7 +172,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("DeviceManager_bindDevices_006", 0, async function (done) {
+    it('DeviceManager_bindDevices_006', 0, async function (done) {
         console.info('----------------------DeviceManager_bindDevices_006---------------------------');
         try {
             deviceManager.bindDevice();
@@ -192,7 +192,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("DeviceManager_bindDevices_007", 0, async function (done) {
+    it('DeviceManager_bindDevices_007', 0, async function (done) {
         console.info('----------------------DeviceManager_bindDevices_007---------------------------');
         try {
             deviceManager.bindDevice(12345);
@@ -212,7 +212,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("DeviceManager_bindDevices_008", 0, async function (done) {
+    it('DeviceManager_bindDevices_008', 0, async function (done) {
         console.info('----------------------DeviceManager_bindDevices_008---------------------------');
         try {
             deviceManager.bindDevice(12345, 23456);
@@ -232,7 +232,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("DeviceManager_bindDevices_009", 0, async function (done) {
+    it('DeviceManager_bindDevices_009', 0, async function (done) {
         console.info('----------------------DeviceManager_bindDevices_009---------------------------');
         try {
             deviceManager.bindDevice('fakeid', (error, data) => {
@@ -261,7 +261,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("DeviceManager_bindDevices_010", 0, async function (done) {
+    it('DeviceManager_bindDevices_010', 0, async function (done) {
         console.info('----------------------DeviceManager_bindDevices_010---------------------------');
         try {
             deviceManager.bindDevice(12345, (error, data) => {
@@ -290,7 +290,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-     it("DeviceManager_bindDeviceDriver_011", 0, async function (done) {
+     it('DeviceManager_bindDeviceDriver_011', 0, async function (done) {
         console.info('----------------------DeviceManager_bindDeviceDriver_011---------------------------');
         try {
             deviceManager.bindDeviceDriver(12345, (error, data) => {
@@ -322,7 +322,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-     it("DeviceManager_unbindDevices_012", 0, async function (done) {
+     it('DeviceManager_unbindDevices_012', 0, async function (done) {
         console.info('----------------------DeviceManager_unbindDevices_012---------------------------');
         try {
             deviceManager.unbindDevice('fakeid', (error, data) => {
@@ -345,7 +345,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-    it("DeviceManager_unbindDevices_013", 0, async function (done) {
+    it('DeviceManager_unbindDevices_013', 0, async function (done) {
         console.info('----------------------DeviceManager_unbindDevices_013---------------------------');
         try {
             deviceManager.unbindDevice(12345, (error, data) => {
@@ -368,7 +368,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-     it("DeviceManager_unbindDevices_014", 0, async function (done) {
+     it('DeviceManager_unbindDevices_014', 0, async function (done) {
         console.info('----------------------DeviceManager_unbindDevices_014---------------------------');
         try {
             deviceManager.unbindDevice();
@@ -388,7 +388,7 @@ describe("DeviceManagerJsTest", function () {
      * @tc.type       : Function
      * @tc.level      : Level 2
      */
-     it("DeviceManager_unbindDevices_015", 0, async function (done) {
+     it('DeviceManager_unbindDevices_015', 0, async function (done) {
         console.info('----------------------DeviceManager_unbindDevices_015---------------------------');
         try {
             deviceManager.unbindDevice(12345).then(data => {

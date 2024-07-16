@@ -64,7 +64,7 @@ export default function DeviceManagerSysApiNormalJsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it("SystemApi_queryDeviceInfo_normal_001", 0, (done: Function) => {
+    it('SystemApi_queryDeviceInfo_normal_001', 0, (done: Function) => {
       console.info('----------------------SystemApi_queryDeviceInfo_normal_001---------------------------');
       if (!isDeviceConnected(done)) {
         return;
@@ -89,7 +89,7 @@ export default function DeviceManagerSysApiNormalJsNdkTest() {
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it("SystemApi_queryDriverInfo_normal_001", 0, (done: Function) => {
+    it('SystemApi_queryDriverInfo_normal_001', 0, (done: Function) => {
       console.info('----------------------SystemApi_queryDriverInfo_normal_001---------------------------');
       if (!isDeviceConnected(done)) {
         return;
