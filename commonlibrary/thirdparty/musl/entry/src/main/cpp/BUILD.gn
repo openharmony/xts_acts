@@ -856,10 +856,16 @@ ohos_shared_library("statndk") {
   sources = [ "./statndk.cpp" ]
   libs = [ rebase_path(libcxx_ndk_shared_file) ]
 
-  include_dirs = [ "../cpp" ]
+  include_dirs = [
+    "../cpp",
+    "//base/hiviewdfx/hilog/interfaces/native/kits/include/",
+  ]
   configs = [ ":config" ]
 
-  external_deps = [ "napi:ace_napi" ]
+  external_deps = [
+    "hilog:hilog_ndk",
+    "napi:ace_napi",
+  ]
 
   output_extension = "so"
 }
