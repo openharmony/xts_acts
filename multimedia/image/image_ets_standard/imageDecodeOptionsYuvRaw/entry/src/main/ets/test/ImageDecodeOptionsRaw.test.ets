@@ -653,7 +653,7 @@ export default function imageDecodeOptionsRawTest() {
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
         await getResult('SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_1500', 0, 1, 90, true, Size, Region, 2,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'decodingOptions');
-        expect(result).assertTrue();
+        expect(result).assertFalse();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
@@ -681,7 +681,7 @@ export default function imageDecodeOptionsRawTest() {
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
         await getResult('SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_1600', 0, 1, 90, true, Size, Region, 2,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'callBackCreate');
-        expect(result).assertTrue();
+        expect(result).assertFalse();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
@@ -710,7 +710,7 @@ export default function imageDecodeOptionsRawTest() {
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
         await getResult('SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_1700', 0, 1, 90, true, Size, Region, 2,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'decodingOptions');
-        expect(result).assertTrue();
+        expect(result).assertFalse();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
@@ -738,7 +738,7 @@ export default function imageDecodeOptionsRawTest() {
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
         await getResult('SUB_DECODEOPTIONS_WITH_RGB565_CREATEPIXELMAP_1800', 0, 1, 90, true, Size, Region, 2,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'callBackCreate');
-        expect(result).assertTrue();
+        expect(result).assertFalse();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
@@ -1447,11 +1447,11 @@ export default function imageDecodeOptionsRawTest() {
     it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_1500", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
-        let Size : image.Size = { height: -5, width: -100 };
+        let Size : image.Size = { height: -548, width: 730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
         await getResult('SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_1500', 0, 1, 90, true, Size, Region, 3,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'decodingOptions');
-        expect(result).assertTrue();
+        expect(result).assertFalse();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
@@ -1475,11 +1475,11 @@ export default function imageDecodeOptionsRawTest() {
     it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_1600", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
-        let Size : image.Size = { height: -1, width: 3 };
+        let Size : image.Size = { height: -548, width: 730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
         await getResult('SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_1600', 0, 1, 90, true, Size, Region, 3,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'callBackCreate');
-        expect(result).assertTrue();
+        expect(result).assertFalse();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
@@ -1504,11 +1504,11 @@ export default function imageDecodeOptionsRawTest() {
     it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_1700", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
-        let Size : image.Size = { height: 2, width: -1 };
+        let Size : image.Size = { height: 548, width: -730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
         await getResult('SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_1700', 0, 1, 90, true, Size, Region, 3,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'decodingOptions');
-        expect(result).assertTrue();
+        expect(result).assertFalse();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
@@ -1532,11 +1532,11 @@ export default function imageDecodeOptionsRawTest() {
     it("SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_1800", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
-        let Size : image.Size = { height: 2, width: -1 };
+        let Size : image.Size = { height: 548, width: -730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
         await getResult('SUB_DECODEOPTIONS_WITH_RGBA8888_CREATEPIXELMAP_1800', 0, 1, 90, true, Size, Region, 3,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'callBackCreate');
-        expect(result).assertTrue();
+        expect(result).assertFalse();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
@@ -2245,11 +2245,11 @@ export default function imageDecodeOptionsRawTest() {
     it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_1500", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
-        let Size : image.Size = { height: -5, width: -100 };
+        let Size : image.Size = { height: -548, width: 730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
         await getResult('SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_1500', 0, 1, 90, true, Size, Region, 4,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'decodingOptions');
-        expect(result).assertTrue();
+        expect(result).assertFalse();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
@@ -2273,11 +2273,11 @@ export default function imageDecodeOptionsRawTest() {
     it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_1600", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
-        let Size : image.Size = { height: -1, width: 3 };
+        let Size : image.Size = { height: -548, width: 730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
         await getResult('SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_1600', 0, 1, 90, true, Size, Region, 4,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'callBackCreate');
-        expect(result).assertTrue();
+        expect(result).assertFalse();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
@@ -2302,11 +2302,11 @@ export default function imageDecodeOptionsRawTest() {
     it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_1700", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
-        let Size : image.Size = { height: 2, width: -1 };
+        let Size : image.Size = { height: 548, width: -730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
         await getResult('SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_1700', 0, 1, 90, true, Size, Region, 4,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'decodingOptions');
-        expect(result).assertTrue();
+        expect(result).assertFalse();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
@@ -2330,11 +2330,11 @@ export default function imageDecodeOptionsRawTest() {
     it("SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_1800", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
-        let Size : image.Size = { height: 2, width: -1 };
+        let Size : image.Size = { height: 548, width: -730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
         await getResult('SUB_DECODEOPTIONS_WITH_BGRA8888_CREATEPIXELMAP_1800', 0, 1, 90, true, Size, Region, 4,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'callBackCreate');
-        expect(result).assertTrue();
+        expect(result).assertFalse();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
@@ -3043,11 +3043,11 @@ export default function imageDecodeOptionsRawTest() {
     it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1500", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
-        let Size : image.Size = { height: -5, width: -100 };
+        let Size : image.Size = { height: -548, width: 730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
         await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1500', 0, 1, 90, true, Size, Region, 7,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'decodingOptions');
-        expect(result).assertTrue();
+        expect(result).assertFalse();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
@@ -3071,11 +3071,11 @@ export default function imageDecodeOptionsRawTest() {
     it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1600", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
-        let Size : image.Size = { height: -1, width: 3 };
+        let Size : image.Size = { height: -548, width: 730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
         await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1600', 0, 1, 90, true, Size, Region, 7,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'callBackCreate');
-        expect(result).assertTrue();
+        expect(result).assertFalse();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
@@ -3100,11 +3100,11 @@ export default function imageDecodeOptionsRawTest() {
     it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1700", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
-        let Size : image.Size = { height: 2, width: -1 };
+        let Size : image.Size = { height: 548, width: -730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
         await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1700', 0, 1, 90, true, Size, Region, 7,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'decodingOptions');
-        expect(result).assertTrue();
+        expect(result).assertFalse();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',
@@ -3128,11 +3128,11 @@ export default function imageDecodeOptionsRawTest() {
     it("SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1800", 0, async (done: Function) => {
       await getFd("test2.arw");
       try {
-        let Size : image.Size = { height: 2, width: -1 };
+        let Size : image.Size = { height: 548, width: -730 };
         let Region : image.Region = { x: 0, y: 0, size: { height: 80, width: 120 } };
         await getResult_F16('SUB_DECODEOPTIONS_WITH_RGBAF16_CREATEPIXELMAP_1800', 0, 1, 90, true, Size, Region, 7,
           120, colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB), 'callBackCreate');
-        expect(result).assertTrue();
+        expect(result).assertFalse();
         done();
       } catch (e) {
         hilog.info(0x0000, 'testTag', '%{public}s',

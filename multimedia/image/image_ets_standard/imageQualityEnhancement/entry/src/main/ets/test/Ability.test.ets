@@ -48,8 +48,6 @@ export default function abilityTest() {
             hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' isHDR value: ' + JSON.stringify(isHDR));
             hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' colorSpace value: ' + JSON.stringify(csm.getColorSpaceName()));
             hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' pixelmapFormat value: ' + JSON.stringify(pixelmapFormat));
-            // The AIHDR function only takes effect at ODC venues
-            // (isHDR === true) && (csm.getColorSpaceName() === colorSpaceManager.ColorSpace.LINEAR_BT2020) && (pixelmapFormat === image.PixelMapFormat.RGBA_1010102) && (result = true);
             result = true;
           }).catch((err: BusinessError) => {
             hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' getImageInfo err ' + JSON.stringify(err));

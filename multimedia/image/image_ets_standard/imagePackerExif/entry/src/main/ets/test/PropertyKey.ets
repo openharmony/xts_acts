@@ -71,8 +71,6 @@ const PropertyKey:Array<image.PropertyKey> = [
   image.PropertyKey.YCBCR_POSITIONING,
   image.PropertyKey.REFERENCE_BLACK_WHITE,
   image.PropertyKey.COPYRIGHT,
-  image.PropertyKey.JPEG_INTERCHANGE_FORMAT,
-  image.PropertyKey.JPEG_INTERCHANGE_FORMAT_LENGTH,
   image.PropertyKey.EXPOSURE_PROGRAM,
   image.PropertyKey.SPECTRAL_SENSITIVITY,
   image.PropertyKey.OECF,

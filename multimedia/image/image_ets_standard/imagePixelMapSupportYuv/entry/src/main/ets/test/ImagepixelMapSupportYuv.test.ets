@@ -1903,8 +1903,8 @@ export default function imagepixelMapSupportYuv() {
     it('SUB_MULTIMEDIA_IMAGE_NV12_READPIXELSTOBUFFER_0200', 0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV12_READPIXELSTOBUFFER_0200"
       try{
-        let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_oto.jpeg","uri", true);
-        const readBuffer = new ArrayBuffer(280000)
+        let pixelMap_NV12: image.PixelMap = await getPixMap_NV12("yuv_test_ete.jpg","uri", true);
+        const readBuffer = new ArrayBuffer(260000)
         const checkResult = await testReadPixelsToBuffer(testTag, pixelMap_NV12, 'callback', readBuffer)
         expect(checkResult).assertTrue()
         done()
@@ -3106,8 +3106,8 @@ export default function imagepixelMapSupportYuv() {
     it('SUB_MULTIMEDIA_IMAGE_NV21_READPIXELSTOBUFFER_0200', 0, async (done:Function) => {
       const testTag = "SUB_MULTIMEDIA_IMAGE_NV21_READPIXELSTOBUFFER_0200"
       try{
-        let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_oto.jpeg","uri", true);
-        const readBuffer = new ArrayBuffer(280000)
+        let pixelMap_NV21: image.PixelMap = await getPixMap_NV21("yuv_test_ete.jpg","uri", true);
+        const readBuffer = new ArrayBuffer(260000)
         const checkResult = await testReadPixelsToBuffer(testTag, pixelMap_NV21, 'callback', readBuffer)
         expect(checkResult).assertTrue()
         done()
