@@ -49,7 +49,7 @@ struct CustomDialogRouter {
     Column() {
       Button('Click me').key('Custom_Dialog_Router')
         .onClick(() => {
-          this.dialogController.open()
+          this.dialogController?.open()
         }).backgroundColor(0x317aff)
     }.width('100%').margin({ top: 200 })
   }

@@ -17,10 +17,10 @@ import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 export default function TimePickerDialog() {
-  describe('TimePickerDialog', function () {
-    beforeEach(async function (done) {
+  describe('TimePickerDialog', () => {
+    beforeEach(async (done: Function) => {
       console.info("TimePickerDialog beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/TimePickerDialog/TimePickerDialog",
       }
       try {
@@ -39,7 +39,7 @@ export default function TimePickerDialog() {
       console.info("TimePickerDialog beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("TimePickerDialog after each called");
     });
@@ -51,7 +51,7 @@ export default function TimePickerDialog() {
      * @tc.type
      * @tc.size
      */
-    it('TimePickerDialog_001', 0, async function (done) {
+    it('TimePickerDialog_001', 0, async (done: Function) => {
       console.info('[TimePickerDialog_001] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();

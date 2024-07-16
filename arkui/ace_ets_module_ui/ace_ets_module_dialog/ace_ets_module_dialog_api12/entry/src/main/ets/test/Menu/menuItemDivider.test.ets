@@ -14,13 +14,13 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, MouseButton, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function menuItemDivider() {
-  describe('menuItemDivider', function () {
-    beforeEach(async function (done) {
+  describe('menuItemDivider', () => {
+    beforeEach(async (done: Function) => {
       console.log('menuItemDivider beforeEach start');
       try {
         router.clear();
@@ -38,7 +38,7 @@ export default function menuItemDivider() {
       console.info('menuItemDivider forEach end');
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info('menuItemDivider after each called');
     });
@@ -51,14 +51,14 @@ export default function menuItemDivider() {
      * @tc.type
      */
 
-    it('menuItemDivider_0100', 0, async function (done) {
+    it('menuItemDivider_0100', 0, async (done: Function) => {
       console.info('[menuItemDivider_0100] START');
 
       await CommonFunc.sleep(1000);
       let myJson = getInspectorByKey('menuItemDividerText');
       console.info(`[menuItemDivider_0100] component obj1 is:${JSON.stringify(myJson)}`);
       await CommonFunc.sleep(200);
-      let obj1 = JSON.parse(myJson);
+      let obj1: ESObject = JSON.parse(myJson);
       console.info(`[menuItemDivider_0100] component obj1 is:${JSON.stringify(obj1)}`);
       await CommonFunc.sleep(1000);
 
@@ -75,13 +75,13 @@ export default function menuItemDivider() {
      * @tc.type
      */
 
-    it('menuItemDivider_0200', 0, async function (done){
+    it('menuItemDivider_0200', 0, async (done: Function) => {
       console.info('[menuItemDivider_0200] START');
 
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('menuItemDividerText');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info(`[menuItemDivider_0200] component obj is:${JSON.stringify(obj)}`);
       await CommonFunc.sleep(1000);
 
@@ -98,13 +98,13 @@ export default function menuItemDivider() {
      * @tc.type
      */
 
-    it('menuItemDivider_0300', 0, async function (done) {
+    it('menuItemDivider_0300', 0, async (done: Function) => {
       console.info('[menuItemDivider_0300] START');
 
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('menuItemDividerText');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info(`[menuItemDivider_0300] component obj is:${JSON.stringify(obj)}`);
       await CommonFunc.sleep(1000);
 
@@ -121,13 +121,13 @@ export default function menuItemDivider() {
      * @tc.type
      */
 
-    it('menuItemDivider_0400', 0, async function (done) {
+    it('menuItemDivider_0400', 0, async (done: Function) => {
       console.info('[menuItemDivider_0400] START');
 
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('menuItemDividerText');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info(`[menuItemDivider_0400] component obj is:${JSON.stringify(obj)}`);
       await CommonFunc.sleep(1000);
 
