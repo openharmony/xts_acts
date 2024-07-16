@@ -22,7 +22,7 @@ export default {
 
   onActive(){
     console.info('onActive');
-    setTimeout(function () {
+    setTimeout(()=> {
       console.info('fAStartAbilityForResultPromise terminateSelfWithResult START');
       featureAbility.terminateSelfWithResult(
         {

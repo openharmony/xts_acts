@@ -16,19 +16,19 @@
 import wantConstant from '@ohos.ability.wantConstant';
 import particleAbility from '@ohos.ability.particleAbility';
 import rpc from '@ohos.rpc';
-import commonEvent from '@ohos.commonEvent';
+import commonEvent from '@ohos.commonEventManager';
 
-var publishConnectOptions = {
+let publishConnectOptions = {
     parameters: {
         "assertData": "onConnect"
     }
 };
-var publishDisconnectOptions = {
+let publishDisconnectOptions = {
     parameters: {
         "assertData": "onDisconnect"
     }
 };
-var publishFailedOptions = {
+let publishFailedOptions = {
     parameters: {
         "assertData": "onFailed"
     }
@@ -85,7 +85,7 @@ export default {
             },
         }
         console.info('FreeInstall_FA_ConnectAbility_PA service3 connect start ');
-        var connection = particleAbility.connectAbility(request, options);
+        let connection = particleAbility.connectAbility(request, options);
         console.info('FreeInstall_FA_ConnectAbility_PA service3  request is:' + JSON.stringify(request));
         console.info('FreeInstall_FA_ConnectAbility_PA service3 options is:' + JSON.stringify(options));
         console.info('FreeInstall_FA_ConnectAbility_PA service3 connection=: ' + connection);

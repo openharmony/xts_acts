@@ -12,13 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import router from '@system.router';
+import router from '@ohos.router';
 import featureAbility from '@ohos.ability.featureAbility'
 
 async function routePage(uri:string) {
   try {
-    await router.push({
-      uri: uri
+    await router.pushUrl({
+      url: uri
     })
   } catch (err) {
     console.error(`fail callback, code: ${err.code}, msg: ${err.msg}`)
