@@ -58,14 +58,14 @@ export default function DeviceManagerSysApiNormalJsNdkTest() {
 
     /**
      * @tc.number     : SUB_Driver_Ext_DevManSysApiNormal_0100
-     * @tc.name       : SystemApi_queryDeviceInfo_normal_001
+     * @tc.name       : testSystemApiQueryDeviceInfoNormal001
      * @tc.desc       : verify SystemApi of queryDeviceInfo
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('SystemApi_queryDeviceInfo_normal_001', 0, (done: Function) => {
-      console.info('----------------------SystemApi_queryDeviceInfo_normal_001---------------------------');
+    it('testSystemApiQueryDeviceInfoNormal001', 0, (done: Function) => {
+      console.info('----------------------testSystemApiQueryDeviceInfoNormal001---------------------------');
       if (!isDeviceConnected(done)) {
         return;
       }
@@ -74,7 +74,7 @@ export default function DeviceManagerSysApiNormalJsNdkTest() {
         expect(deviceInfos === null).assertTrue();
         done();
       } catch (err) {
-        console.info(TAG, 'SystemApi_queryDeviceInfo_normal_001 catch err code: ',
+        console.info(TAG, 'testSystemApiQueryDeviceInfoNormal001 catch err code: ',
           err.code, ', message: ', err.message);
         expect(err.code).assertEqual(SYSTEMAPI_DENIED_CODE);
         done();
@@ -83,14 +83,14 @@ export default function DeviceManagerSysApiNormalJsNdkTest() {
 
     /**
      * @tc.number     : SUB_Driver_Ext_DevManSysApiNormal_0100
-     * @tc.name       : SystemApi_queryDriverInfo_normal_001
+     * @tc.name       : testSystemApiQueryDriverInfoNormal001
      * @tc.desc       : verify SystemApi of queryDriverInfo
      * @tc.size       : MediumTest
      * @tc.type       : Function
      * @tc.level      : Level 3
      */
-    it('SystemApi_queryDriverInfo_normal_001', 0, (done: Function) => {
-      console.info('----------------------SystemApi_queryDriverInfo_normal_001---------------------------');
+    it('testSystemApiQueryDriverInfoNormal001', 0, (done: Function) => {
+      console.info('----------------------testSystemApiQueryDriverInfoNormal001---------------------------');
       if (!isDeviceConnected(done)) {
         return;
       }
@@ -99,7 +99,7 @@ export default function DeviceManagerSysApiNormalJsNdkTest() {
         expect(deviceInfos === null).assertTrue();
         done();
       } catch (err) {
-        console.info(TAG, 'SystemApi_queryDriverInfo_normal_001 catch err code: ',
+        console.info(TAG, 'testSystemApiQueryDriverInfoNormal001 catch err code: ',
           err.code, ', message: ', err.message);
         expect(err.code).assertEqual(SYSTEMAPI_DENIED_CODE);
         done();
