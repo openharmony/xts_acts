@@ -768,7 +768,7 @@ void *ClientTask4(void *arg)
     return nullptr;
 }
 
-int ServerTask(int sockfd,pthread_t cli)
+int ServerTask(int sockfd, pthread_t cli)
 {
     pthread_barrier_wait(&g_barrier);
     struct sockaddr_in clnAddr = {PARAM_0};
@@ -815,7 +815,7 @@ static napi_value Accept(napi_env env, napi_callback_info info)
             if (rets != PARAM_0) {
                 ret = PARAM_4;
             } else {
-                ret = ServerTask(sockfd,cli);
+                ret = ServerTask(sockfd, cli);
                 napi_create_int32(env, ret, &result);
                 return result;
             }
@@ -866,7 +866,7 @@ static napi_value Accept4(napi_env env, napi_callback_info info)
                 if (rets != PARAM_0) {
                     ret = PARAM_2;
                 } else {
-                    ret = ServerTask(sListen,cli);
+                    ret = ServerTask(sListen, cli);
                     napi_create_int32(env, ret, &result);
                     return result;
                 }
