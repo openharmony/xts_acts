@@ -16,6 +16,5 @@
 import workerTransmitTest from './WorkerTransmitTest.test'
 
 export default function List() {
-
   workerTransmitTest()
 }

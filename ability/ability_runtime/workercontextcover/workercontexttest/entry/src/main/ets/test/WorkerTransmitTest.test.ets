@@ -15,227 +15,228 @@
 
 import worker from '@ohos.worker'
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-var TAG = ''
+
+let TAG = ''
+
+function sleep(ms: number) {
+  return new Promise<void>(resolve => setTimeout(resolve, ms));
+}
+
 export default function WorkerTransmitTest() {
-    describe('WorkerTransmitTest', function () {
-        beforeAll(() => {
-            console.info("TransContext start")
-        })
-        afterAll(()=> {
-            console.info("TransContext end")
-        })
-
-        function sleep(ms) {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
-
-
-        /*
-         * @tc.number  SUB_AA_AMS_Stage_StageContextSupportsWorker_0100
-         * @tc.name    .
-         * @tc.desc    Function test
-         * @tc.level   3
-         */
-        it('SUB_AA_AMS_Stage_StageContextSupportsWorker_0100',0, async function (done) {
-            TAG = 'SUB_AA_AMS_Stage_StageContextSupportsWorker_0100 == '
-            console.info(TAG + "start")
-            let trans = new worker.Worker('entry/ets/workers/worker_SUB_AA_AMS_Stage_StageContextSupportsWorker_0100.js')
-            let isTerminate = false
-            let flag = false
-            let expectValue = undefined
-
-            trans.onexit = function() {
-                console.info(TAG + "onexit")
-                isTerminate = true
-            }
-
-            trans.onerror = function() {
-                console.info(TAG + "onerror")
-                flag = true
-            }
-
-            trans.onmessageerror = function() {
-                console.info(TAG + "onmessageerror")
-                flag = true
-            }
-
-            trans.onmessage = function(message) {
-                console.info(TAG + "onmessage")
-                expectValue = message.data
-                flag = true
-            }
-
-            trans.postMessage(globalThis.abilityStageContext)
-            while (!flag) {
-                console.info(TAG + "await onmessage")
-                await sleep(100)
-            }
-
-            trans.terminate()
-            while (!isTerminate) {
-                console.info(TAG + "await onexit")
-                await sleep(100)
-            }
-
-            expect(expectValue).assertTrue()
-            console.info(TAG + "end")
-            done()
-        })
-
-        /*
-         * @tc.number  SUB_AA_AMS_Stage_StageContextSupportsWorker_0300
-         * @tc.name    .
-         * @tc.desc    Function test
-         * @tc.level   3
-         */
-        it('SUB_AA_AMS_Stage_StageContextSupportsWorker_0300',0, async function (done) {
-            TAG = 'SUB_AA_AMS_Stage_StageContextSupportsWorker_0300 == '
-            console.info(TAG + "start")
-            let trans = new worker.Worker('entry/ets/workers/worker_SUB_AA_AMS_Stage_StageContextSupportsWorker_0300.js')
-            let isTerminate = false
-            let flag = false
-            let expectValue = undefined
-
-            trans.onexit = function() {
-                console.info(TAG + "onexit")
-                isTerminate = true
-            }
-
-            trans.onerror = function() {
-                console.info(TAG + "onerror")
-                flag = true
-            }
-
-            trans.onmessageerror = function() {
-                console.info(TAG + "onmessageerror")
-                flag = true
-            }
-
-            trans.onmessage = function(message) {
-                console.info(TAG + "onmessage")
-                expectValue = message.data
-                flag = true
-            }
-
-            trans.postMessage(globalThis.abilityContext)
-            while (!flag) {
-                console.info(TAG + "await onmessage")
-                await sleep(100)
-            }
-
-            trans.terminate()
-            while (!isTerminate) {
-                console.info(TAG + "await onexit")
-                await sleep(100)
-            }
-
-            expect(expectValue).assertTrue()
-            console.info(TAG + "end")
-            done()
-        })
-
-        /*
-         * @tc.number  SUB_AA_AMS_Stage_StageContextSupportsWorker_0400
-         * @tc.name    .
-         * @tc.desc    Function test
-         * @tc.level   3
-         */
-        it('SUB_AA_AMS_Stage_StageContextSupportsWorker_0400',0, async function (done) {
-            TAG = 'SUB_AA_AMS_Stage_StageContextSupportsWorker_0400 == '
-            console.info(TAG + "start")
-            let trans = new worker.Worker('entry/ets/workers/worker_SUB_AA_AMS_Stage_StageContextSupportsWorker_0400.js')
-            let isTerminate = false
-            let flag = false
-            let expectValue = undefined
-
-            trans.onexit = function() {
-                console.info(TAG + "onexit")
-                isTerminate = true
-            }
-
-            trans.onerror = function() {
-                console.info(TAG + "onerror")
-                flag = true
-            }
-
-            trans.onmessageerror = function() {
-                console.info(TAG + "onmessageerror")
-                flag = true
-            }
-
-            trans.onmessage = function(message) {
-                console.info(TAG + "onmessage")
-                expectValue = message.data
-                flag = true
-            }
-
-            trans.postMessage(globalThis.abilityContext)
-            while (!flag) {
-                console.info(TAG + "await onmessage")
-                await sleep(100)
-            }
-
-            trans.terminate()
-            while (!isTerminate) {
-                console.info(TAG + "await onexit")
-                await sleep(100)
-            }
-
-            expect(expectValue).assertTrue()
-            console.info(TAG + "end")
-            done()
-        })
-
-        /*
-        * @tc.number  SUB_AA_AMS_Stage_StageContextSupportsWorker_0800
-        * @tc.name    .
-        * @tc.desc    Function test
-        * @tc.level   3
-        */
-        it('SUB_AA_AMS_Stage_StageContextSupportsWorker_0800',0, async function (done) {
-            TAG = 'SUB_AA_AMS_Stage_StageContextSupportsWorker_0800 == '
-            console.info(TAG + "start")
-            let trans = new worker.Worker('entry/ets/workers/worker_SUB_AA_AMS_Stage_StageContextSupportsWorker_0800.js')
-            let isTerminate = false
-            let flag = false
-            let expectValue = undefined
-
-            trans.onexit = function() {
-                console.info(TAG + "onexit")
-                isTerminate = true
-            }
-
-            trans.onerror = function() {
-                console.info(TAG + "onerror")
-                flag = true
-            }
-
-            trans.onmessageerror = function() {
-                console.info(TAG + "onmessageerror")
-                flag = true
-            }
-
-            trans.onmessage = function(message) {
-                console.info(TAG + "onmessage")
-                expectValue = message.data
-                flag = true
-            }
-
-            trans.postMessage(globalThis.abilityContext)
-            while (!flag) {
-                console.info(TAG + "await onmessage")
-                await sleep(100)
-            }
-
-            trans.terminate()
-            while (!isTerminate) {
-                console.info(TAG + "await onexit")
-                await sleep(100)
-            }
-
-            expect(expectValue).assertTrue()
-            console.info(TAG + "end")
-            done()
-        })
+  describe('WorkerTransmitTest', () => {
+    beforeAll(() => {
+      console.info("TransContext start")
     })
+    afterAll(() => {
+      console.info("TransContext end")
+    })
+
+    /*
+     * @tc.number  SUB_AA_AMS_Stage_StageContextSupportsWorker_0100
+     * @tc.name    .
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_AMS_Stage_StageContextSupportsWorker_0100', 0, async (done : Function) => {
+      TAG = 'SUB_AA_AMS_Stage_StageContextSupportsWorker_0100 == '
+      console.info(TAG + "start")
+      let trans = new worker.Worker('entry/ets/workers/worker_SUB_AA_AMS_Stage_StageContextSupportsWorker_0100.js')
+      let isTerminate = false
+      let flag = false
+      let expectValue = undefined
+
+      trans.onexit = () => {
+        console.info(TAG + "onexit")
+        isTerminate = true
+      }
+
+      trans.onerror = () => {
+        console.info(TAG + "onerror")
+        flag = true
+      }
+
+      trans.onmessageerror = () => {
+        console.info(TAG + "onmessageerror")
+        flag = true
+      }
+
+      trans.onmessage = (message: ESObject) => {
+        console.info(TAG + "onmessage")
+        expectValue = message.data
+        flag = true
+      }
+
+      trans.postMessage(globalThis.abilityStageContext)
+      while (!flag) {
+        console.info(TAG + "await onmessage")
+        await sleep(100)
+      }
+
+      trans.terminate()
+      while (!isTerminate) {
+        console.info(TAG + "await onexit")
+        await sleep(100)
+      }
+
+      expect(expectValue).assertTrue()
+      console.info(TAG + "end")
+      done()
+    })
+
+    /*
+     * @tc.number  SUB_AA_AMS_Stage_StageContextSupportsWorker_0300
+     * @tc.name    .
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_AMS_Stage_StageContextSupportsWorker_0300', 0, async (done : Function) => {
+      TAG = 'SUB_AA_AMS_Stage_StageContextSupportsWorker_0300 == '
+      console.info(TAG + "start")
+      let trans = new worker.Worker('entry/ets/workers/worker_SUB_AA_AMS_Stage_StageContextSupportsWorker_0300.js')
+      let isTerminate = false
+      let flag = false
+      let expectValue = undefined
+
+      trans.onexit = () => {
+        console.info(TAG + "onexit")
+        isTerminate = true
+      }
+
+      trans.onerror = () => {
+        console.info(TAG + "onerror")
+        flag = true
+      }
+
+      trans.onmessageerror = () => {
+        console.info(TAG + "onmessageerror")
+        flag = true
+      }
+
+      trans.onmessage =(message: ESObject) => {
+        console.info(TAG + "onmessage")
+        expectValue = message.data
+        flag = true
+      }
+
+      trans.postMessage(globalThis.abilityContext)
+      while (!flag) {
+        console.info(TAG + "await onmessage")
+        await sleep(100)
+      }
+
+      trans.terminate()
+      while (!isTerminate) {
+        console.info(TAG + "await onexit")
+        await sleep(100)
+      }
+
+      expect(expectValue).assertTrue()
+      console.info(TAG + "end")
+      done()
+    })
+
+    /*
+     * @tc.number  SUB_AA_AMS_Stage_StageContextSupportsWorker_0400
+     * @tc.name    .
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_AMS_Stage_StageContextSupportsWorker_0400', 0, async (done : Function) => {
+      TAG = 'SUB_AA_AMS_Stage_StageContextSupportsWorker_0400 == '
+      console.info(TAG + "start")
+      let trans = new worker.Worker('entry/ets/workers/worker_SUB_AA_AMS_Stage_StageContextSupportsWorker_0400.js')
+      let isTerminate = false
+      let flag = false
+      let expectValue = undefined
+
+      trans.onexit = () => {
+        console.info(TAG + "onexit")
+        isTerminate = true
+      }
+
+      trans.onerror = () => {
+        console.info(TAG + "onerror")
+        flag = true
+      }
+
+      trans.onmessageerror = () => {
+        console.info(TAG + "onmessageerror")
+        flag = true
+      }
+
+      trans.onmessage = (message: ESObject) => {
+        console.info(TAG + "onmessage")
+        expectValue = message.data
+        flag = true
+      }
+
+      trans.postMessage(globalThis.abilityContext)
+      while (!flag) {
+        console.info(TAG + "await onmessage")
+        await sleep(100)
+      }
+
+      trans.terminate()
+      while (!isTerminate) {
+        console.info(TAG + "await onexit")
+        await sleep(100)
+      }
+
+      expect(expectValue).assertTrue()
+      console.info(TAG + "end")
+      done()
+    })
+
+    /*
+    * @tc.number  SUB_AA_AMS_Stage_StageContextSupportsWorker_0800
+    * @tc.name    .
+    * @tc.desc    Function test
+    * @tc.level   3
+    */
+    it('SUB_AA_AMS_Stage_StageContextSupportsWorker_0800', 0, async (done : Function) => {
+      TAG = 'SUB_AA_AMS_Stage_StageContextSupportsWorker_0800 == '
+      console.info(TAG + "start")
+      let trans = new worker.Worker('entry/ets/workers/worker_SUB_AA_AMS_Stage_StageContextSupportsWorker_0800.js')
+      let isTerminate = false
+      let flag = false
+      let expectValue = undefined
+
+      trans.onexit = () => {
+        console.info(TAG + "onexit")
+        isTerminate = true
+      }
+
+      trans.onerror = () => {
+        console.info(TAG + "onerror")
+        flag = true
+      }
+
+      trans.onmessageerror = () => {
+        console.info(TAG + "onmessageerror")
+        flag = true
+      }
+
+      trans.onmessage = (message: ESObject) => {
+        console.info(TAG + "onmessage")
+        expectValue = message.data
+        flag = true
+      }
+
+      trans.postMessage(globalThis.abilityContext)
+      while (!flag) {
+        console.info(TAG + "await onmessage")
+        await sleep(100)
+      }
+
+      trans.terminate()
+      while (!isTerminate) {
+        console.info(TAG + "await onexit")
+        await sleep(100)
+      }
+
+      expect(expectValue).assertTrue()
+      console.info(TAG + "end")
+      done()
+    })
+  })
 }
