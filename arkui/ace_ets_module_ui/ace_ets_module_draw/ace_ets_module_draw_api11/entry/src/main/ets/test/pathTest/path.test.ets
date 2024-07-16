@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
 
@@ -21,8 +21,8 @@ export default function pathNewTest() {
   describe('pathNewTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/path/path2',
+     let options:router.RouterOptions = {
+        url:'MainAbility/pages/path/path2',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function pathNewTest() {
         console.info("get path state success " + JSON.stringify(pages));
         if (!("path2" == pages.name)) {
           console.info("get path state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push path page success " + JSON.stringify(result));
         }
@@ -55,7 +55,7 @@ export default function pathNewTest() {
       let strJson = getInspectorByKey('Path');
       console.info("[testpathNe0001] component width strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Path');
+      expect(JSON.parse(strJson).$type).assertEqual('Path');
       expect(JSON.parse(strJson).$attrs.width).assertEqual("100.00px");
       console.info("[testpathNe0001] width value :" + JSON.parse(strJson).$attrs.width);
 
@@ -72,7 +72,7 @@ export default function pathNewTest() {
       let strJson = getInspectorByKey('Path');
       console.info("[testpathNe0002] component height strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Path');
+      expect(JSON.parse(strJson).$type).assertEqual('Path');
       expect(JSON.parse(strJson).$attrs.height).assertEqual("100.00px");
       console.info("[testpathNe0002] height value :" + JSON.parse(strJson).$attrs.height);
 
@@ -89,7 +89,7 @@ export default function pathNewTest() {
       let strJson = getInspectorByKey('Path');
       console.info("[testpathNe0003] component fontSize strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Path');
+      expect(JSON.parse(strJson).$type).assertEqual('Path');
       expect(JSON.parse(strJson).$attrs.commands).assertEqual("M150 0 L300 300 L0 300 Z");
       console.info("[testpathNe0003] commands value :" + JSON.parse(strJson).$attrs.commands);
 

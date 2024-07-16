@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
 
@@ -21,8 +21,8 @@ export default function ellipseNeJsunit() {
   describe('ellipseNeTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Ellipse/ellipse1',
+     let options:router.RouterOptions = {
+        url:'MainAbility/pages/Ellipse/ellipse1',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function ellipseNeJsunit() {
         console.info("get ellipse state success " + JSON.stringify(pages));
         if (!("ellipse1" == pages.name)) {
           console.info("get ellipse state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push ellipse page success " + JSON.stringify(result));
         }
@@ -55,7 +55,7 @@ export default function ellipseNeJsunit() {
       let strJson = getInspectorByKey('ellipse');
       console.info("[testellipseNe0001] component width strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Ellipse');
+      expect(JSON.parse(strJson).$type).assertEqual('Ellipse');
       expect(JSON.parse(strJson).$attrs.width).assertEqual("300.00px");
       console.info("[testellipseNe0001] width value :" + JSON.parse(strJson).$attrs.width);
 
@@ -72,7 +72,7 @@ export default function ellipseNeJsunit() {
       let strJson = getInspectorByKey('ellipse');
       console.info("[testellipseNe0002] component height strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Ellipse');
+      expect(JSON.parse(strJson).$type).assertEqual('Ellipse');
       expect(JSON.parse(strJson).$attrs.height).assertEqual("300.00px");
       console.info("[testellipseNe0002] height value :" + JSON.parse(strJson).$attrs.height);
 

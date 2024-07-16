@@ -28,7 +28,7 @@ struct ShapeExample {
   @State strokeDashArray: Array<Length> = [20];
   @State fillOpacity: number = 0;
   @State strokeValue: Color = '#FF000000';
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack  = (eventData:events_emitter.EventData) => {
     if (eventData != null) {
       console.info("text page state change called:" + JSON.stringify(eventData));
       if (eventData.data.strokeDashOffset != null) {
@@ -69,7 +69,7 @@ struct ShapeExample {
 
   onPageShow() {
     console.info('qrCode page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent:events_emitter.InnerEvent = {
       eventId: 192,
       priority: events_emitter.EventPriority.LOW
     }

@@ -250,7 +250,7 @@ struct CanvasExample {
     this.resetShadow(false);
   }
 
-  resetShadow(isX) {
+  resetShadow(isX:boolean) {
     this.context.shadowBlur = 0;
     if (isX) {
       this.context.shadowOffsetX = 0;
@@ -431,7 +431,7 @@ struct CanvasExample {
 
   putImageData() {
     let imageData = this.context.createImageData(80, 80);
-    for (var i = 0; i < imageData.data.length; i += 4) {
+    for (let i = 0; i < imageData.data.length; i += 4) {
       imageData.data[i + 0] = 255;
       imageData.data[i + 1] = 0;
       imageData.data[i + 2] = 255;
@@ -510,7 +510,7 @@ struct CanvasExample {
     this.context.font = '20px sans-serif';
     this.context.fillText("Hello World!", 120, 2150);
     let obj = this.context.measureText("Hello World!");
-    console.info("[canvas] textMetrics info---" + JSON.stringify(obj));
+    console.info("[canvas] textMetrics info---" + JSON.stringify(JSON.parse(strJson)));
   }
 
   getBitImageSize() {

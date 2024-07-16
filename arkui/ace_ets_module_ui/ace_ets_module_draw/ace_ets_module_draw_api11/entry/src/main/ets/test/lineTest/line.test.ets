@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
 
@@ -21,8 +21,8 @@ export default function lineNeJsunit() {
   describe('lineNeTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/line/line',
+     let options:router.RouterOptions = {
+        url:'MainAbility/pages/line/line',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function lineNeJsunit() {
         console.info("get line state success " + JSON.stringify(pages));
         if (!("line" == pages.name)) {
           console.info("get line state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push line page success " + JSON.stringify(result));
         }
@@ -55,7 +55,7 @@ export default function lineNeJsunit() {
       let strJson = getInspectorByKey('line1');
       console.info("[testlineNe0001] component width strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Line');
+      expect(JSON.parse(strJson).$type).assertEqual('Line');
       expect(JSON.parse(strJson).$attrs.width).assertEqual("50.00vp");
       console.info("[testlineNe0001] width value :" + JSON.parse(strJson).$attrs.width);
 
@@ -72,7 +72,7 @@ export default function lineNeJsunit() {
       let strJson = getInspectorByKey('line1');
       console.info("[testlineNe0002] component height strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Line');
+      expect(JSON.parse(strJson).$type).assertEqual('Line');
       expect(JSON.parse(strJson).$attrs.height).assertEqual("100.00vp");
       console.info("[testlineNe0002] height value :" + JSON.parse(strJson).$attrs.height);
 
@@ -89,7 +89,7 @@ export default function lineNeJsunit() {
       let strJson = getInspectorByKey('line2');
       console.info("[testlineNe0005] component width strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Line');
+      expect(JSON.parse(strJson).$type).assertEqual('Line');
       expect(JSON.parse(strJson).$attrs.width).assertEqual("200.00vp");
       console.info("[testlineNe0005] width value :" + JSON.parse(strJson).$attrs.width);
 
@@ -106,7 +106,7 @@ export default function lineNeJsunit() {
       let strJson = getInspectorByKey('line2');
       console.info("[testlineNe0006] component height strJson:" + strJson);
       let obj: Record<string, Object> = JSON.parse(strJson);
-      expect(obj.$type).assertEqual('Line');
+      expect(JSON.parse(strJson).$type).assertEqual('Line');
       expect(JSON.parse(strJson).$attrs.height).assertEqual("200.00vp");
       console.info("[testlineNe0006] height value :" + JSON.parse(strJson).$attrs.height);
 
