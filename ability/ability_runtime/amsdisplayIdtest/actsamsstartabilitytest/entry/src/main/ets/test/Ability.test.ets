@@ -19,10 +19,12 @@ import { Driver, ON } from '@ohos.UiTest';
 import display from '@ohos.display';
 import base from '@ohos.base';
 import StartOptions from '@ohos.app.ability.StartOptions';
+import Want from '@ohos.app.ability.Want';
 
 let displayClassId = display.getDefaultDisplaySync().id;
 let driver = Driver.create();
 
+let subscriber: commonEvent.CommonEventSubscriber;
 let subscriberInfoMultiInstance: commonEvent.CommonEventSubscribeInfo = {
   events: ["MultiInstanceStartNext", "MultiInstanceStartFinish", "TestAppOnForeground"]
 };
@@ -55,7 +57,7 @@ export default function abilityTest() {
 
       commonEvent.createSubscriber(subscriberInfoMultiInstance).then(async (data) => {
         console.debug("====>Create0100 Subscriber====>");
-        let subscriber = data;
+        subscriber = data;
         commonEvent.subscribe(subscriber, (err, data) => {
           console.debug("====>ACTS_StartAbility_2100 Subscribe CallBack data:====>" + JSON.stringify(data));
 
@@ -99,7 +101,7 @@ export default function abilityTest() {
       let id: number = -1;
       commonEvent.createSubscriber(subscriberInfoMultiInstance).then(async (data) => {
         console.debug("====>Create0200 Subscriber====>");
-        let subscriber = data;
+        subscriber = data;
         commonEvent.subscribe(subscriber, (err, data) => {
           console.debug("====>ACTS_StartAbility_2300 Subscribe CallBack data:====>" + JSON.stringify(data));
 
@@ -125,7 +127,7 @@ export default function abilityTest() {
       console.log('Start ACTS_StartAbility_2300 timer id : ' + id);
 
       await startAbilityProcess({
-        displayId: 111
+        displayId: "abc"
       }, {
         startId: 0,
         stepNum: 1,
@@ -145,7 +147,7 @@ export default function abilityTest() {
 
       commonEvent.createSubscriber(subscriberInfoMultiInstance).then(async (data) => {
         console.debug("====>Create0300 Subscriber====>");
-        let subscriber = data;
+        subscriber = data;
         commonEvent.subscribe(subscriber, (err, data) => {
           console.debug("====>ACTS_StartAbility_2500 Subscribe CallBack data:====>" + JSON.stringify(data));
           if (data.event == "MultiInstanceStartFinish") {
@@ -190,7 +192,7 @@ export default function abilityTest() {
 
       commonEvent.createSubscriber(subscriberInfoMultiInstance).then(async (data) => {
         console.debug("====>Create0400 Subscriber====>");
-        let subscriber = data;
+        subscriber = data;
         commonEvent.subscribe(subscriber, (err, data) => {
           console.debug("====>ACTS_StartAbility_2700 Subscribe CallBack data:====>" + JSON.stringify(data));
           if (data.event == "MultiInstanceStartFinish") {
@@ -218,7 +220,7 @@ export default function abilityTest() {
         stepNum: 1,
         nextStep: 0,
         step: ["testA"]
-      });
+      },10);
     })
   })
 }
@@ -239,19 +241,33 @@ async function startAbilityProcess(options: StartOptions, parameters: WantParame
         break;
     }
     parameters.nextStep = ++idx;
-    globalThis.abilityContext.startAbility({
+
+    let mWant:Want = {
       bundleName: bundleName,
       abilityName: abilityName,
       parameters: {
         startId: parameters.startId,
         stepNum: parameters.stepNum,
         nextStep: parameters.nextStep,
-        step: parameters.step,
-        "ohos.aafwk.param.displayId": displayId ?? 0,
+        step: parameters.step
       },
-    }, options, (error: base.BusinessError) => {
+    };
+    if(displayId){
+      mWant = {
+        bundleName: bundleName,
+        abilityName: abilityName,
+        parameters: {
+          startId: parameters.startId,
+          stepNum: parameters.stepNum,
+          nextStep: parameters.nextStep,
+          step: parameters.step,
+          "ohos.aafwk.param.displayId": displayId,
+        },
+      };
+    }
+    globalThis.abilityContext.startAbility(mWant, options, (error: base.BusinessError) => {
       console.log('startAbilityProcess result: ' + JSON.stringify(error))
-    })
+    });
     await driver.delayMs(2000);
     let allowed = await driver.findComponent(ON.text("打开"));
     if (allowed) {
