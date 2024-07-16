@@ -18,24 +18,23 @@ import events_emitter from '@ohos.events.emitter'
 @Entry
 @Component
 struct SearchExample {
-  @State changevalue: string= ''
-  @State submitvalue: string= ''
-  @State textFont:Font = {
-          size: 10,
-          weight: 10,
-          family: 'serif', 
-          style: FontStyle.Normal
-        }
-  @State searchButton:string = "10"
+  @State changevalue: string = ''
+  @State submitvalue: string = ''
+  @State textFont: Font = {
+    size: 10,
+    weight: 10,
+    family: 'serif',
+    style: FontStyle.Normal
+  }
+  @State searchButton: string = "10"
   @State maxLength: nubmer = 19
-  @State copyOption:CopyOptions = CopyOptions.Local
-  controller: SearchController= new SearchController()
-  controller2: SearchController= new SearchController()
-  @State caretIndex : number = 9999
+  @State copyOption: CopyOptions = CopyOptions.Local
+  controller: SearchController = new SearchController()
+  controller2: SearchController = new SearchController()
+  @State caretIndex: number = 9999
   @State text: string = ''
   @State positionInfo: CaretOffset = { index: 9999, x: 0, y: 0 }
-
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("search page state change called:" + JSON.stringify(eventData));
     if (eventData != null) {
       if (eventData.data.textFont != null) {
@@ -58,7 +57,7 @@ struct SearchExample {
 
   onPageShow() {
     console.info('search page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 190,
       priority: events_emitter.EventPriority.LOW
     }

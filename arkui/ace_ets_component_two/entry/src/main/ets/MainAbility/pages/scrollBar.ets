@@ -22,13 +22,12 @@ struct ScrollBarExample {
   private scroller: Scroller = new Scroller()
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
   @State directionValue: ScrollBarDirection = ScrollBarDirection.Vertical;
-  @State stateValue: BarState= BarState.Off;
-
-  private stateChangCallBack = (eventData) => {
+  @State stateValue: BarState = BarState.Off;
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("scrollBar page state change called:" + JSON.stringify(eventData));
     if (eventData != null) {
       if (eventData.data.directionValue != null) {
-        let directionObject = JSON.parse(eventData.data.directionObject);
+        let directionObject: ESObject = JSON.parse(eventData.data.directionObject);
         this.directionValue = directionObject.directionValue;
       }
       if (eventData.data.stateValue != null) {
@@ -39,13 +38,13 @@ struct ScrollBarExample {
 
   onPageShow() {
     console.info('scrollBar page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 183,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
 
-    var stateChangeEvent2 = {
+    let stateChangeEvent2: events_emitter.InnerEvent = {
       eventId: 184,
       priority: events_emitter.EventPriority.LOW
     }
@@ -57,7 +56,7 @@ struct ScrollBarExample {
       Stack({ alignContent: Alignment.End }) {
         Scroll(this.scroller) {
           Flex({ direction: FlexDirection.Column }) {
-            ForEach(this.arr, (item) => {
+            ForEach(this.arr, (item: number) => {
               Row() {
                 Text(item.toString())
                   .width('90%')
@@ -68,7 +67,7 @@ struct ScrollBarExample {
                   .textAlign(TextAlign.Center)
                   .margin({ top: 5 })
               }
-            }, item => item)
+            }, (item: number) => item.toString())
           }.margin({ left: 52 })
         }
         .scrollBar(BarState.Off)

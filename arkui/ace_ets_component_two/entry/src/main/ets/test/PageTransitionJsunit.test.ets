@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 
 export default function pageTransitionJsunit() {
-  describe('pageTransitionTest', function () {
-    beforeEach(async function (done) {
+  describe('pageTransitionTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("pageTransition beforeEach start");
       let options = {
         uri: 'MainAbility/pages/pageTransition',
@@ -41,15 +41,15 @@ export default function pageTransitionJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("pageTransition after each called");
     });
 
-    it('pageTransitionTest_0100', 0, async function (done) {
+    it('pageTransitionTest_0100', 0, async (done: Function) => {
       console.info('pageTransitionTest_0100 START');
       let strJson = getInspectorByKey('Navigator');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("pageTransitionTest_0100 component obj is: " + JSON.stringify(obj));
       expect(obj.$type).assertEqual('Navigator');
       expect(obj.$attrs.target).assertEqual('pages/pageTransition2');
@@ -57,38 +57,38 @@ export default function pageTransitionJsunit() {
       done();
     });
 
-    it('pageTransitionTest_0200', 0, async function (done) {
+    it('pageTransitionTest_0200', 0, async (done: Function) => {
       console.info('pageTransitionTest_0200 START');
       let strJson = getInspectorByKey('Navigator');
       console.info("pageTransitionTest_0200 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("pageTransitionTest_0200 component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.active).assertEqual('false');
       console.info('pageTransitionTest_0200 END');
       done();
     });
 
-    it('pageTransitionTest_0300', 0, async function (done) {
+    it('pageTransitionTest_0300', 0, async (done: Function) => {
       console.info('pageTransitionTest_0300 START');
       let strJson = getInspectorByKey('Navigator');
       console.info("pageTransitionTest_0300 component strJson:" + strJson);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("pageTransitionTest_0300 component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.type).assertEqual('NavigationType.Push');
       console.info('pageTransitionTest_0300 END');
       done();
     });
 
-    it('pageTransitionTest_0400', 0, async function (done) {
+    it('pageTransitionTest_0400', 0, async (done: Function) => {
       console.info('pageTransitionTest_0400 START');
       try {
-        let eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "scale": 6,
             "opacity": 5
           }
         }
-        let indexEvent = {
+        let indexEvent: events_emitter.InnerEvent = {
           eventId: 145,
           priority: events_emitter.EventPriority.LOW
         }
@@ -98,17 +98,17 @@ export default function pageTransitionJsunit() {
         console.log("pageTransitionTest_0400 change component data error: " + err.message);
       }
       await Utils.sleep(4000);
-      let callback = (indexEventOne) => {
+      let callback = (indexEventOne: events_emitter.EventData) => {
         try {
           console.info("pageTransitionTest_0400 get state result is: " + JSON.stringify(indexEventOne));
           expect(indexEventOne.data.scale).assertEqual(6);
           expect(indexEventOne.data.opacity).assertEqual(5);
           expect(indexEventOne.data.type).assertEqual(RouteType.Push);
-        } catch(err) {
+        } catch (err) {
           console.info("pageTransitionTest_0400 get state result is err:  " + JSON.stringify(err));
         }
       }
-      let indexEventOne = {
+      let indexEventOne: events_emitter.InnerEvent = {
         eventId: 144,
         priority: events_emitter.EventPriority.LOW
       }
@@ -117,7 +117,7 @@ export default function pageTransitionJsunit() {
       } catch (err) {
         console.info("pageTransitionTest_0400 on events_emitter err : " + JSON.stringify(err));
       }
-      console.info("pageTransitionTest_0400 click result is: " + JSON.stringify(sendEventByKey('Navigator',10,"")));
+      console.info("pageTransitionTest_0400 click result is: " + JSON.stringify(sendEventByKey('Navigator', 10, "")));
       await Utils.sleep(2000);
       console.info('pageTransitionTest_0400 END');
       done();
