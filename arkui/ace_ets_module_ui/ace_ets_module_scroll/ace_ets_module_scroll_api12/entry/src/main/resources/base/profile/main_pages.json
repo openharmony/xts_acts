@@ -16,6 +16,7 @@
         "MainAbility/pages/Scroll/ScrollSourceOther",
         "MainAbility/pages/Scroll/ScrollSource",
         "MainAbility/pages/Scroll/offsetRemain",
+        "MainAbility/pages/Swiper/SwiperApi",
 
         "MainAbility/pages/Tabs/TabsAp1",
         "MainAbility/pages/Scroll/ScrollApi1",
