@@ -23,6 +23,9 @@
 #include <pthread.h>
 #include <sys/signalfd.h>
 #include <unistd.h>
+#include <ctime>
+#include <atomic>
+#include <sys/time.h>
 
 #define PARAM_0 0
 #define PARAM_1 1
@@ -40,6 +43,8 @@
 #define MINUSTWO (-2)
 #define THRVAL 3
 #define ERRON_0 0
+#define SLEEP_10_MS 10
+
 typedef void *(Func)(void *);
 struct Sig {
     int flag;
@@ -407,47 +412,65 @@ static napi_value Raise(napi_env env, napi_callback_info info)
     napi_create_int32(env, PARAM_0, &result);
     return result;
 }
-void *Sigwait(void *pro)
+
+std::atomic<bool> isSigSendReady (false);
+
+void *SigSend(void *pro)
 {
-    sigset_t set = {0};
-    sigemptyset(&set);
     int sig = SIGALRM;
-    sigaddset(&set, sig);
-    sigprocmask(SIG_BLOCK, &set, nullptr);
     union sigval sigval = {.sival_int = ONE};
+    while (!isSigSendReady) {
+        usleep(SLEEP_10_MS);
+    }
     sigqueue(getpid(), sig, sigval);
-    sig = PARAM_0;
-    sigwait(&set, &sig);
+
     return nullptr;
 }
 
 static napi_value SigMainWait(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    int resSig = SigMainNull(Sigwait);
-    napi_create_int32(env, resSig, &result);
-    return result;
-}
-
-void *Sigwaitinfo(void *pro)
-{
-    sigset_t set;
-    sigemptyset(&set);
+    isSigSendReady = false;
+    pthread_t pid;
+    sigset_t set = {0};
+    int res = sigemptyset(&set);
     int sig = SIGALRM;
-    sigaddset(&set, sig);
-    sigprocmask(SIG_BLOCK, &set, nullptr);
-    union sigval sigval = {.sival_int = ONE};
-    sigqueue(getpid(), sig, sigval);
-    siginfo_t info;
-    sigwaitinfo(&set, &info);
-    return nullptr;
+    res = sigaddset(&set, sig);
+    res = sigprocmask(SIG_BLOCK, &set, nullptr);
+    pthread_create(&pid, nullptr, SigSend, nullptr);
+    sig = PARAM_0;
+    isSigSendReady = true;
+    res = sigwait(&set, &sig);
+
+    napi_create_int32(env, res, &result);
+    return result;
 }
 
 static napi_value SigMainWaitinfo(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
-    int resSig = SigMainNull(Sigwaitinfo);
-    napi_create_int32(env, resSig, &result);
+    isSigSendReady = false;
+    pthread_t pid;
+    sigset_t set = {0};
+    int res = sigemptyset(&set);
+    int sig = SIGALRM;
+    res = sigaddset(&set, sig);
+    res = sigprocmask(SIG_BLOCK, &set, nullptr);
+    pthread_create(&pid, nullptr, SigSend, nullptr);
+    siginfo_t siginfo;
+    isSigSendReady = true;
+    res = sigwaitinfo(&set, &siginfo);
+    if (res == SIGALRM) {
+        res = PARAM_0;
+    }
+    if (siginfo.si_signo != sig) {
+        res = PARAM_1;
+    }
+    if (siginfo.si_value.sival_int != ONE) {
+        res = PARAM_2;
+    }
+
+    napi_create_int32(env, res, &result);
     return result;
 }
 
