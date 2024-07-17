@@ -19,7 +19,7 @@ import webViewSdkSchemeHandlerDidFail3_2 from './webViewSdkSchemeHandlerDidFail3
 
 export default function testsuite() {
   webViewSdkSchemeHandlerDidFail()
+  webViewSdkSchemeHandlerDidFail3_2()
   webViewSdkSchemeHandlerDidFailWan2()
   webViewSdkSchemeHandlerDidFail3()
-  webViewSdkSchemeHandlerDidFail3_2()
 }
