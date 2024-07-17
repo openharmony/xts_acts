@@ -20,7 +20,7 @@ export interface Message<T> {
 export type Callback<T> = (message: Message<T>) => void;
 
 export class MessageManager<T> {
-  callback?: Callback<T>
+  callback?: Callback<T> = undefined
   callbacks: Map<string, Callback<T>> = new Map()
 
   constructor() {

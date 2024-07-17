@@ -51,12 +51,12 @@ export default function APIaccessibilityTextHint() {
      * @tc.type :    Column
      * @tc.size :
      */
-    it('APIaccessibilityTextHint_0100', 0, async function (done) {
+    it('APIaccessibilityTextHint_0100', 0, async (done: Function) => {
       console.info('APIaccessibilityTextHint_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('APIaccessibilityTextHint');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[APIaccessibilityTextHint_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.accessibilityTextHint).assertEqual('str');
       console.info('[APIaccessibilityTextHint_0100] END');
