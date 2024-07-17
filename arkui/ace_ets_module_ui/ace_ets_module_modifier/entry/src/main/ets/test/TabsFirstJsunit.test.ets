@@ -13,27 +13,27 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import Utils from './Utils';
+
 export default function tabsFirstJsunit() {
-  describe('tabsTest', function () {
-    beforeEach(async function (done) {
+  describe('tabsTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("tabsFirst beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/tabsFirst',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/tabsFirst',
       }
-      let result;
+
       try {
         router.clear();
         let pages = router.getState();
         console.info("get tabsFirst state pages: " + JSON.stringify(pages));
         if (!("tabsFirst" == pages.name)) {
           console.info("get tabsFirst state pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push tabsFirst page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push tabsFirst page error: " + err);
@@ -43,30 +43,31 @@ export default function tabsFirstJsunit() {
 
     /**
      * @tc.number ArkUI_Tabs_Divider_0300
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set divider values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set divider values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Tabs_Divider_0300', 0, async function (done) {
+    it('ArkUI_Tabs_Divider_0300', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_Divider_0300 start");
       let strJson = getInspectorByKey('tabsTest');
       console.info("[ArkUI_Tabs_Divider_0300]:" + strJson);
       let obj = JSON.parse(strJson);
-      expect(JSON.stringify(obj.$attrs.divider)).assertEqual('{"strokeWidth":"2.00vp","startMargin":"0.00vp","endMargin":"0.00vp","color":"#FFFF0000"}');
+      expect(JSON.stringify(obj.$attrs.divider))
+        .assertEqual('{"strokeWidth":"2.00vp","startMargin":"0.00vp","endMargin":"0.00vp","color":"#FFFF0000"}');
       done();
     });
 
     /**
      * @tc.number ArkUI_Tabs_FadingEdge_0100
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set fadingEdge values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set fadingEdge values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Tabs_FadingEdge_0100', 0, async function (done) {
+    it('ArkUI_Tabs_FadingEdge_0100', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_FadingEdge_0100 start");
       let strJson = getInspectorByKey('tabsTest');
       console.info("[ArkUI_Tabs_FadingEdge_0100]:" + strJson);
@@ -77,13 +78,13 @@ export default function tabsFirstJsunit() {
 
     /**
      * @tc.number ArkUI_Tabs_BarOverlap_0200
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set barOverlap values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set barOverlap values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Tabs_BarOverlap_0200', 0, async function (done) {
+    it('ArkUI_Tabs_BarOverlap_0200', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_BarOverlap_0200 start");
       let strJson = getInspectorByKey('tabsTest');
       console.info("[ArkUI_Tabs_BarOverlap_0200]:" + strJson);
@@ -94,13 +95,13 @@ export default function tabsFirstJsunit() {
 
     /**
      * @tc.number ArkUI_Tabs_BarBackgroundColor_0100
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set barBackgroundColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set barBackgroundColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Tabs_BarBackgroundColor_0100', 0, async function (done) {
+    it('ArkUI_Tabs_BarBackgroundColor_0100', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_BarBackgroundColor start");
       let strJson = getInspectorByKey('tabsTest');
       console.info("[ArkUI_Tabs_BarBackgroundColor_0100]:" + strJson);
@@ -112,13 +113,13 @@ export default function tabsFirstJsunit() {
 
     /**
      * @tc.number ArkUI_Tabs_Attrs_0100
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set barPosition values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set barPosition values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Tabs_Attrs_0100', 0, async function (done) {
+    it('ArkUI_Tabs_Attrs_0100', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_Attrs_0100 start");
       let strJson = getInspectorByKey('tabsTest');
       console.info("[ArkUI_Tabs_Attrs_0100]: " + strJson);
@@ -129,13 +130,13 @@ export default function tabsFirstJsunit() {
 
     /**
      * @tc.number ArkUI_Tabs_Attrs_0200
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set vertical values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set vertical values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Tabs_Attrs_0200', 0, async function (done) {
+    it('ArkUI_Tabs_Attrs_0200', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_Attrs_0200 start");
       let strJson = getInspectorByKey('tabsTest');
       console.info("[ArkUI_Tabs_Attrs_0200]: " + strJson);
@@ -146,13 +147,13 @@ export default function tabsFirstJsunit() {
 
     /**
      * @tc.number ArkUI_Tabs_Attrs_0300
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set scrollable values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set scrollable values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Tabs_Attrs_0300', 0, async function (done) {
+    it('ArkUI_Tabs_Attrs_0300', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_Attrs_0300 start");
       let strJson = getInspectorByKey('tabsTest');
       console.info("[ArkUI_Tabs_Attrs_0300]: " + strJson);
@@ -163,13 +164,13 @@ export default function tabsFirstJsunit() {
 
     /**
      * @tc.number ArkUI_Tabs_Attrs_0400
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set barWidth values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set barWidth values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Tabs_Attrs_0400', 0, async function (done) {
+    it('ArkUI_Tabs_Attrs_0400', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_Attrs_0400 start");
       let strJson = getInspectorByKey('tabsTest');
       console.info("[ArkUI_Tabs_Attrs_0400]: " + strJson);
@@ -181,13 +182,13 @@ export default function tabsFirstJsunit() {
 
     /**
      * @tc.number ArkUI_Tabs_Attrs_0500
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set barHeight values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set barHeight values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Tabs_Attrs_0500', 0, async function (done) {
+    it('ArkUI_Tabs_Attrs_0500', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_Attrs_0500 start");
       let strJson = getInspectorByKey('tabsTest');
       console.info("[ArkUI_Tabs_Attrs_0500]: " + strJson);
@@ -198,13 +199,13 @@ export default function tabsFirstJsunit() {
 
     /**
      * @tc.number ArkUI_Tabs_Attrs_0600
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set animationDuration values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set animationDuration values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Tabs_Attrs_0600', 0, async function (done) {
+    it('ArkUI_Tabs_Attrs_0600', 0, async (done: Function) => {
       console.info("ArkUI_Tabs_Attrs_0600 start");
       let strJson = getInspectorByKey('tabsTest');
       console.info("[ArkUI_Tabs_Attrs_0600]: " + strJson);
@@ -215,13 +216,13 @@ export default function tabsFirstJsunit() {
 
     /**
      * @tc.number ArkUI_Tabs_BarGridAlign_0200
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set barGridAlign values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set barGridAlign values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Tabs_BarGridAlign_0200', 0, async function (done) {
+    it('ArkUI_Tabs_BarGridAlign_0200', 0, async (done: Function) => {
       console.info("[ArkUI_Tabs_BarGridAlign_0200] start");
       let strJson = getInspectorByKey('tabsTest');
       console.info("[ArkUI_Tabs_BarGridAlign_0200]: " + strJson);
@@ -238,31 +239,32 @@ export default function tabsFirstJsunit() {
 
     /**
      * @tc.number ArkUI_Tabs_BarMode_0200
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set barMode values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set barMode values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Tabs_BarMode_0200', 0, async function (done) {
+    it('ArkUI_Tabs_BarMode_0200', 0, async (done: Function) => {
       console.info("[ArkUI_Tabs_BarMode_0200] start");
       let strJson = getInspectorByKey('tabsTest');
       console.info("[ArkUI_Tabs_BarMode_0200]: " + strJson);
       let obj = JSON.parse(strJson);
-      expect(obj.$attrs.barMode).assertEqual('BarMode.Scrollable,{\"margin\":\"0.00vp\",\"nonScrollableLayoutStyle\":\"LayoutStyle.ALWAYS_CENTER\"}');
+      expect(obj.$attrs.barMode)
+        .assertEqual('BarMode.Scrollable,{\"margin\":\"0.00vp\",\"nonScrollableLayoutStyle\":\"LayoutStyle.ALWAYS_CENTER\"}');
       console.info("[ArkUI_Tabs_BarMode_0200] end");
       done();
     });
 
     /**
      * @tc.number ArkUI_Tabs_0011
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change barBackgroundColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change barBackgroundColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Tabs_0011', 0, async function (done) {
+    it('ArkUI_Tabs_0011', 0, async (done: Function) => {
       console.info('ArkUI_Tabs_0011 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

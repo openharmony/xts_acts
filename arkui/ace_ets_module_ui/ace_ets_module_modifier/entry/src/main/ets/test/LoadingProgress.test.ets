@@ -14,27 +14,26 @@
  */
 
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 
 export default function loadingProgressJsunit() {
-  describe('loadingProgressTest', function () {
-    beforeEach(async function (done) {
+  describe('loadingProgressTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("loadingProgress beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/loadingProgress',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/loadingProgress',
       }
-      let result;
+
       try {
         router.clear();
         let pages = router.getState();
         console.info("get loadingProgress state pages: " + JSON.stringify(pages));
         if (!("loadingProgress" == pages.name)) {
           console.info("get loadingProgress state pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push loadingProgress page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push loadingProgress page error: " + err);
@@ -44,13 +43,13 @@ export default function loadingProgressJsunit() {
 
     /**
      * @tc.number ArkUX_Stage_loadingProgress_attrs_0100
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set color values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set color values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUX_Stage_loadingProgress_attrs_0100', 0, async function (done) {
+    it('ArkUX_Stage_loadingProgress_attrs_0100', 0, async (done: Function) => {
       console.info('ArkUX_Stage_loadingProgress_attrs_0100 START');
       setTimeout(() => {
         try {
@@ -68,13 +67,13 @@ export default function loadingProgressJsunit() {
 
     /**
      * @tc.number ArkUX_Stage_loadingProgress_attrs_0101
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set enableLoading values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set enableLoading values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUX_Stage_loadingProgress_attrs_0101', 0, async function (done) {
+    it('ArkUX_Stage_loadingProgress_attrs_0101', 0, async (done: Function) => {
       console.info('ArkUX_Stage_loadingProgress_attrs_0101 START');
       setTimeout(() => {
         try {
@@ -91,13 +90,13 @@ export default function loadingProgressJsunit() {
     });
     /**
      * @tc.number ArkUX_Stage_loadingProgress_attrs_0102
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change enableLoading values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change enableLoading values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUX_Stage_loadingProgress_attrs_0102', 0, async function (done) {
+    it('ArkUX_Stage_loadingProgress_attrs_0102', 0, async (done: Function) => {
       console.info('ArkUX_Stage_loadingProgress_attrs_0102 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

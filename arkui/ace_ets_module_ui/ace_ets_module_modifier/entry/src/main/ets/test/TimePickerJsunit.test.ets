@@ -16,26 +16,25 @@
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
-import router from '@system.router';
+import router from '@ohos.router';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 
 export default function timepickerJsunit() {
-  describe('timePickerTest', function () {
-    beforeEach(async function (done) {
+  describe('timePickerTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("timepicker beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/timePicker',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/timePicker',
       }
-      let result;
+
       try {
         router.clear();
         let pages = router.getState();
         console.info("get timepicker state pages: " + JSON.stringify(pages));
         if (!("timePicker" == pages.name)) {
           console.info("get timepicker state pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push timepicker page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push timepicker page error: " + err);
@@ -45,13 +44,13 @@ export default function timepickerJsunit() {
 
     /**
      * @tc.number ArkUI_Stage_timepicker_1000
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set textStyle values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set textStyle values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Stage_timepicker_1000', 0, async function (done) {
+    it('ArkUI_Stage_timepicker_1000', 0, async (done: Function) => {
       let strJson = getInspectorByKey('timePickerDefault');
       let obj = JSON.parse(strJson);
       console.info("[ArkUI_Stage_timepicker_1000] obj is: " + JSON.stringify(obj.$attrs));
@@ -65,13 +64,13 @@ export default function timepickerJsunit() {
 
     /**
      * @tc.number ArkUI_Stage_timepicker_2000
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set selectedTextStyle values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set selectedTextStyle values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Stage_timepicker_2000', 0, async function (done) {
+    it('ArkUI_Stage_timepicker_2000', 0, async (done: Function) => {
       let strJson = getInspectorByKey('timePickerDefault');
       let obj = JSON.parse(strJson);
       console.info("[ArkUI_Stage_timepicker_2000] obj is: " + JSON.stringify(obj.$attrs));
@@ -84,13 +83,13 @@ export default function timepickerJsunit() {
 
     /**
      * @tc.number ArkUI_Stage_timepicker_3000
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set disappearTextStyle values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set disappearTextStyle values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Stage_timepicker_3000', 0, async function (done) {
+    it('ArkUI_Stage_timepicker_3000', 0, async (done: Function) => {
       let strJson = getInspectorByKey('timePickerDefault');
       let obj = JSON.parse(strJson);
       console.info("[ArkUI_Stage_timepicker_3000] obj is: " + JSON.stringify(obj.$attrs));
@@ -103,13 +102,13 @@ export default function timepickerJsunit() {
 
     /**
      * @tc.number ArkUI_Stage_timepicker_4000
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set useMilitaryTime values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set useMilitaryTime values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Stage_timepicker_4000', 0, async function (done) {
+    it('ArkUI_Stage_timepicker_4000', 0, async (done: Function) => {
       let strJson = getInspectorByKey('timePickerDefault');
       let obj = JSON.parse(strJson);
       console.info("[ArkUI_Stage_timepicker_4000] obj is: " + JSON.stringify(obj.$attrs));
@@ -119,13 +118,13 @@ export default function timepickerJsunit() {
 
     /**
      * @tc.number ArkUI_Stage_timepicker_5000
-     * @tc.name   Test the properties of components
-     * @tc.desc   change useMilitaryTime values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc change useMilitaryTime values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Stage_timepicker_5000', 0, async function (done) {
+    it('ArkUI_Stage_timepicker_5000', 0, async (done: Function) => {
       console.info('ArkUI_Stage_timepicker_5000 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

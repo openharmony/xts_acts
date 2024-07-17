@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
 
 export default function rowSplitJsunit() {
-  describe('rowSplitTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/rowSplit',
+  describe('rowSplitTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/rowSplit',
       }
       try {
         router.clear();
@@ -30,9 +30,8 @@ export default function rowSplitJsunit() {
         console.info("get rowSplit state success " + JSON.stringify(pages));
         if (!("rowSplit" == pages.name)) {
           console.info("get rowSplit state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(1000);
-          console.info("push rowSplit page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push rowSplit page error: " + err);
@@ -41,14 +40,14 @@ export default function rowSplitJsunit() {
     });
 
     /**
-    * @tc.number rowSplitTest_0001
-    * @tc.name   Test the properties of components
-    * @tc.desc   set resizeable values
-    * @tc.size   MediumTest
-    * @tc.type   Function
-    * @tc.level  0
-    */
-    it('rowSplitTest_0001', 0, async function (done) {
+     * @tc.number rowSplitTest_0001
+     * @tc.name Test the properties of components
+     * @tc.desc set resizeable values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
+     */
+    it('rowSplitTest_0001', 0, async (done: Function) => {
       let strJsonNew = getInspectorByKey('rowSplit');
       let objNew = JSON.parse(strJsonNew);
       console.info("rowSplitTest_0001 component is: " + JSON.stringify(objNew.$attrs));
@@ -58,14 +57,14 @@ export default function rowSplitJsunit() {
     });
 
     /**
-    * @tc.number rowSplitTest_0002
-    * @tc.name   Test the properties of components
-    * @tc.desc   Change resizeable values
-    * @tc.size   MediumTest
-    * @tc.type   Function
-    * @tc.level  0
-    */
-    it('rowSplitTest_0002', 0, async function (done) {
+     * @tc.number rowSplitTest_0002
+     * @tc.name Test the properties of components
+     * @tc.desc Change resizeable values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
+     */
+    it('rowSplitTest_0002', 0, async (done: Function) => {
       console.info('rowSplitTest_0002 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

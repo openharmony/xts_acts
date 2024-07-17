@@ -13,17 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import {MessageManager,Callback} from '../MainAbility/utils/MessageManager';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
+import { MessageManager, Callback } from '../MainAbility/utils/MessageManager';
 
 export default function TextClockJsunit() {
-  describe('textClockTest', function () {
-    beforeEach(async function (done) {
+  describe('textClockTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("TextClock beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/textClockPage',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/textClockPage',
       }
       try {
         router.clear();
@@ -31,8 +44,7 @@ export default function TextClockJsunit() {
         console.info("get TextClock state pages: " + JSON.stringify(pages));
         if (!("textClockPage" == pages.name)) {
           console.info("get TextClock state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
-          console.info("push TextClock page result: " + JSON.stringify(result));
+          await router.pushUrl(options);
         }
       } catch (err) {
         console.error("push TextClock page error: " + err);
@@ -43,13 +55,13 @@ export default function TextClockJsunit() {
 
     /**
      * @tc.number TextClock_0100
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set format values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set format values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('TextClock_0100', 0, async function (done) {
+    it('TextClock_0100', 0, async (done: Function) => {
       console.info('[TextClock_0100] START');
       let strJson = getInspectorByKey('TextClockKey1');
       let obj = JSON.parse(strJson);
@@ -61,13 +73,13 @@ export default function TextClockJsunit() {
 
     /**
      * @tc.number TextClock_0200
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set fontColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set fontColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('TextClock_0200', 0, async function (done) {
+    it('TextClock_0200', 0, async (done: Function) => {
       console.info('[TextClock_0200] START');
       let strJson = getInspectorByKey('TextClockKey1');
       let obj = JSON.parse(strJson);
@@ -79,13 +91,13 @@ export default function TextClockJsunit() {
 
     /**
      * @tc.number TextClock_0300
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set fontSize values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set fontSize values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('TextClock_0300', 0, async function (done) {
+    it('TextClock_0300', 0, async (done: Function) => {
       console.info('[TextClock_0300] START');
       let strJson = getInspectorByKey('TextClockKey1');
       let obj = JSON.parse(strJson);
@@ -97,13 +109,13 @@ export default function TextClockJsunit() {
 
     /**
      * @tc.number TextClock_0400
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set fontWeight values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set fontWeight values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('TextClock_0400', 0, async function (done) {
+    it('TextClock_0400', 0, async (done: Function) => {
       console.info('[TextClock_0400] START');
       let strJson = getInspectorByKey('TextClockKey1');
       let obj = JSON.parse(strJson);
@@ -115,13 +127,13 @@ export default function TextClockJsunit() {
 
     /**
      * @tc.number TextClock_0500
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set fontStyle values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set fontStyle values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('TextClock_0500', 0, async function (done) {
+    it('TextClock_0500', 0, async (done: Function) => {
       console.info('[TextClock_0500] START');
       let strJson = getInspectorByKey('TextClockKey1');
       let obj = JSON.parse(strJson);
@@ -133,13 +145,13 @@ export default function TextClockJsunit() {
 
     /**
      * @tc.number TextClock_0600
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set fontFamily values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set fontFamily values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('TextClock_0600', 0, async function (done) {
+    it('TextClock_0600', 0, async (done: Function) => {
       console.info('[TextClock_0600] START');
       let strJson = getInspectorByKey('TextClockKey1');
       let obj = JSON.parse(strJson);
@@ -150,13 +162,13 @@ export default function TextClockJsunit() {
     });
     /**
      * @tc.number TextClock_0601
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change fontSize values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change fontSize values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('TextClock_0601', 0, async function (done) {
+    it('TextClock_0601', 0, async (done: Function) => {
       console.info('TextClock_0601 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

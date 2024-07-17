@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import Utils from './Utils.ets'
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import Utils from './Utils'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest';
 
 export default function pathNewTest() {
-  describe('pathTest', function () {
-    beforeAll(async function (done) {
+  describe('pathTest', () => {
+    beforeAll(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/path',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/path',
       }
       try {
         router.clear();
@@ -31,9 +31,8 @@ export default function pathNewTest() {
         console.info("get path state success " + JSON.stringify(pages));
         if (!("path" == pages.name)) {
           console.info("get path state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push path page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push path page error: " + err);
@@ -43,13 +42,13 @@ export default function pathNewTest() {
 
     /**
      * @tc.number testPathNe0004
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set commands values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set commands values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testPathNe0004',0,async function (done){
+    it('testPathNe0004', 0, async function (done) {
       console.info('pathNe testPathNe0004 START');
       let strJson = getInspectorByKey('PathKey1');
       console.info("[testPathNe0004] component fontSize strJson:" + strJson);
@@ -62,13 +61,13 @@ export default function pathNewTest() {
 
     /**
      * @tc.number testPathNe0005
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change commands values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change commands values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testPathNe0005', 0, async function (done) {
+    it('testPathNe0005', 0, async (done: Function) => {
       console.info('testPathNe0005 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

@@ -16,24 +16,24 @@
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import Utils from './Utils';
-import router from '@system.router';
+import router from '@ohos.router';
+
 export default function selectJsunit() {
-  describe('selectTest', function () {
-    beforeEach(async function (done) {
+  describe('selectTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("selectJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/select',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/select',
       }
-      let result;
+
       try {
         router.clear();
         let pages = router.getState();
         console.info("get select state pages: " + JSON.stringify(pages));
         if (!("select" == pages.name)) {
           console.info("get select state pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push select page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push select page error: " + err);
@@ -43,13 +43,13 @@ export default function selectJsunit() {
 
     /**
      * @tc.number ArkUI_Stage_Select_Layout_0100
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set attribute values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set attribute values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Stage_Select_Layout_0100', 0, async function (done) {
+    it('ArkUI_Stage_Select_Layout_0100', 0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_Layout_0100 start");
       let strJson = getInspectorByKey('selectTest');
       let objNew = JSON.parse(strJson);
@@ -60,13 +60,13 @@ export default function selectJsunit() {
 
     /**
      * @tc.number ArkUI_Stage_Select_Space_0100
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set space values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set space values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Stage_Select_Space_0100', 0, async function (done) {
+    it('ArkUI_Stage_Select_Space_0100', 0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_Space_0100 start");
       let strJson = getInspectorByKey('selectTest');
       let objNew = JSON.parse(strJson);
@@ -77,13 +77,13 @@ export default function selectJsunit() {
 
     /**
      * @tc.number ArkUI_Stage_Select_selected_0100
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set selected values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set selected values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Stage_Select_selected_0100', 0, async function (done) {
+    it('ArkUI_Stage_Select_selected_0100', 0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_selected_0100 start");
       let strJson = getInspectorByKey('selectTest');
       let objNew = JSON.parse(strJson);
@@ -94,13 +94,13 @@ export default function selectJsunit() {
 
     /**
      * @tc.number ArkUI_Stage_Select_value_0100
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set value values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set value values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Stage_Select_value_0100', 0, async function (done) {
+    it('ArkUI_Stage_Select_value_0100', 0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_value_0100 start");
       let strJson = getInspectorByKey('selectTest');
       let objNew = JSON.parse(strJson);
@@ -111,13 +111,13 @@ export default function selectJsunit() {
 
     /**
      * @tc.number ArkUI_Stage_Select_font_0100
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set font values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set font values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Stage_Select_font_0100', 0, async function (done) {
+    it('ArkUI_Stage_Select_font_0100', 0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_font_0100 start");
       let strJson = getInspectorByKey('selectTest');
       let objNew = JSON.parse(strJson);
@@ -128,13 +128,13 @@ export default function selectJsunit() {
 
     /**
      * @tc.number ArkUI_Stage_Select_fontColor_0100
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set fontColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set fontColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Stage_Select_fontColor_0100', 0, async function (done) {
+    it('ArkUI_Stage_Select_fontColor_0100', 0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_fontColor_0100 start");
       let strJson = getInspectorByKey('selectTest');
       let objNew = JSON.parse(strJson);
@@ -145,13 +145,13 @@ export default function selectJsunit() {
 
     /**
      * @tc.number ArkUI_Stage_Select_selectedOptionFont_0100
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set selectedOptionFont values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set selectedOptionFont values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Stage_Select_selectedOptionFont_0100', 0, async function (done) {
+    it('ArkUI_Stage_Select_selectedOptionFont_0100', 0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_selectedOptionFont_0100 start");
       let strJson = getInspectorByKey('selectTest');
       let objNew = JSON.parse(strJson);
@@ -162,13 +162,13 @@ export default function selectJsunit() {
 
     /**
      * @tc.number ArkUI_Stage_Select_selectedOptionFontColor_0100
-     * @tc.name   Test the selectedOptionFontColor of components
-     * @tc.desc   Set attribute values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the selectedOptionFontColor of components
+     * @tc.desc Set attribute values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Stage_Select_selectedOptionFontColor_0100', 0, async function (done) {
+    it('ArkUI_Stage_Select_selectedOptionFontColor_0100', 0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_selectedOptionFontColor_0100 start");
       let strJson = getInspectorByKey('selectTest');
       let objNew = JSON.parse(strJson);
@@ -178,13 +178,13 @@ export default function selectJsunit() {
 
     /**
      * @tc.number ArkUI_Stage_Select_menuAlign_0100
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set menuAlign values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set menuAlign values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Stage_Select_menuAlign_0100', 0, async function (done) {
+    it('ArkUI_Stage_Select_menuAlign_0100', 0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_menuAlign_0100 start");
       let strJson = getInspectorByKey('selectTest');
       let objNew = JSON.parse(strJson);
@@ -194,13 +194,13 @@ export default function selectJsunit() {
 
     /**
      * @tc.number ArkUI_Stage_Select_selectedOptionBgColor_0100
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set selectedOptionBgColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set selectedOptionBgColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Stage_Select_selectedOptionBgColor_0100', 0, async function (done) {
+    it('ArkUI_Stage_Select_selectedOptionBgColor_0100', 0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_selectedOptionBgColor_0100 start");
       let strJson = getInspectorByKey('selectTest');
       let objNew = JSON.parse(strJson);
@@ -211,13 +211,13 @@ export default function selectJsunit() {
 
     /**
      * @tc.number ArkUI_Stage_Select_optionBgColor_0100
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set optionBgColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set optionBgColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Stage_Select_optionBgColor_0100', 0, async function (done) {
+    it('ArkUI_Stage_Select_optionBgColor_0100', 0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_optionBgColor_0100 start");
       let strJson = getInspectorByKey('selectTest');
       let objNew = JSON.parse(strJson);
@@ -228,13 +228,13 @@ export default function selectJsunit() {
 
     /**
      * @tc.number ArkUI_Stage_Select_optionFont_0100
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set optionFont values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set optionFont values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Stage_Select_optionFont_0100', 0, async function (done) {
+    it('ArkUI_Stage_Select_optionFont_0100', 0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_optionFont_0100 start");
       let strJson = getInspectorByKey('selectTest');
       let objNew = JSON.parse(strJson);
@@ -245,13 +245,13 @@ export default function selectJsunit() {
 
     /**
      * @tc.number ArkUI_Stage_Select_optionWidth_0100
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set optionWidth values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set optionWidth values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Stage_Select_optionWidth_0100', 0, async function (done) {
+    it('ArkUI_Stage_Select_optionWidth_0100', 0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_optionWidth_0100 start");
       let strJson = getInspectorByKey('selectTest');
       let objNew = JSON.parse(strJson);
@@ -262,13 +262,13 @@ export default function selectJsunit() {
 
     /**
      * @tc.number ArkUI_Stage_Select_optionHeight_0100
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set optionHeight values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set optionHeight values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Stage_Select_optionHeight_0100', 0, async function (done) {
+    it('ArkUI_Stage_Select_optionHeight_0100', 0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_optionHeight_0100 start");
       let strJson = getInspectorByKey('selectTest');
       let objNew = JSON.parse(strJson);
@@ -278,14 +278,14 @@ export default function selectJsunit() {
     });
 
     /**
-   * @tc.number ArkUI_Stage_Select_optionFontColor_0100
-   * @tc.name   Test the properties of components
-   * @tc.desc   Change fontColor values
-   * @tc.size   MediumTest
-   * @tc.type   Function
-   * @tc.level  0
-   */
-    it('ArkUI_Stage_Select_optionFontColor_0100', 0, async function (done) {
+     * @tc.number ArkUI_Stage_Select_optionFontColor_0100
+     * @tc.name Test the properties of components
+     * @tc.desc Change fontColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
+     */
+    it('ArkUI_Stage_Select_optionFontColor_0100', 0, async (done: Function) => {
       console.info("ArkUI_Stage_Select_optionFontColor_0100 start");
       let strJsonNew = getInspectorByKey('selectTest');
       let objNew = JSON.parse(strJsonNew);
@@ -297,13 +297,13 @@ export default function selectJsunit() {
 
     /**
      * @tc.number ArkUI_Stage_Select_change_0101
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change fontColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change fontColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Stage_Select_change_0101', 0, async function (done) {
+    it('ArkUI_Stage_Select_change_0101', 0, async (done: Function) => {
       console.info('ArkUI_Stage_Select_change_0101 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

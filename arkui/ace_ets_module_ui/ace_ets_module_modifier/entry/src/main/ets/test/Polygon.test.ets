@@ -13,28 +13,27 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest';
 
 export default function polygonJsunit() {
-  describe('polygonTest', function () {
-    beforeAll(async function (done) {
+  describe('polygonTest', () => {
+    beforeAll(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/polygon',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/polygon',
       }
-      let result;
+
       try {
         router.clear();
         let pages = router.getState();
         console.info("get Polygon state success " + JSON.stringify(pages));
         if (!("polyLine" == pages.name)) {
           console.info("get Polygon state success " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push Polygon page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push Polygon page error: " + err);
@@ -44,13 +43,13 @@ export default function polygonJsunit() {
 
     /**
      * @tc.number testpolygon_001
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change points values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change points values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testpolygon_001', 0, async function (done) {
+    it('testpolygon_001', 0, async (done: Function) => {
       console.info('testpolygon_001 START');
 
       let strJsonNew = getInspectorByKey('polygon1');
@@ -65,21 +64,21 @@ export default function polygonJsunit() {
 
     /**
      * @tc.number testpolygon_002
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change points values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change points values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testpolygon_002', 0, async function (done) {
+    it('testpolygon_002', 0, async (done: Function) => {
       console.info('testpolygon_002 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));
       await button.click();
       await Utils.sleep(2000)
-      let strJsonNew = getInspectorByKey('polygon1'); 
+      let strJsonNew = getInspectorByKey('polygon1');
       let objNew = JSON.parse(strJsonNew);
-      expect(objNew.$attrs.points).assertEqual(true); 
+      expect(objNew.$attrs.points).assertEqual(true);
       console.info('testpolygon_002 END');
       done();
     });
