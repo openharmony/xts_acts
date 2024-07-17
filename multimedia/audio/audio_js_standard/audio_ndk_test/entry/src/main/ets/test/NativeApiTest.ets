@@ -2202,7 +2202,7 @@ export default function audioNDK() {
     /**
      * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100
      * @tc.name      : set  create audioStreamBuilder
-     * @tc.desc      : test OH_AudioStreamBuilder_GenerateCapturer
+     * @tc.desc      : test OH_AudioCapturer_GetOverflowCount
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level0
