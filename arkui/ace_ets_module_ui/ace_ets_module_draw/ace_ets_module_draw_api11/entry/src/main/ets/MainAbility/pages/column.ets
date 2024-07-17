@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -34,8 +33,8 @@ struct ColumnExample {
     console.info("[column] page stateChangCallBack");
     if (eventData != null) {
       console.info("[column] page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.alignItems != null) {
-        this.alignItems = eventData.data.alignItems;
+      if (eventData.data?.alignItems != null) {
+        this.alignItems = eventData.data?.alignItems;
       }
     }
   }

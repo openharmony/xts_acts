@@ -74,11 +74,11 @@ export default function panelBackgroundMaskJsunit() {
         eventId: 10111,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback1 = (backData:events_emitter.EventData) => {
-        console.info("testpanelOnHeightChange0002 backData.data.result is: " + backData.data.result);
+      let callback1 = (backData: events_emitter.EventData) => {
+        console.info("testpanelOnHeightChange0002 backData.data.result is: " + backData.data?.result);
         try {
           console.info("testpanelOnHeightChange0002 callback1 success");
-          expect(backData.data.result).assertEqual("success");
+          expect(backData.data?.result).assertEqual("success");
 
         } catch (err) {
           console.info("testpanelOnHeightChange0002 on events_emitter err : " + JSON.stringify(err));

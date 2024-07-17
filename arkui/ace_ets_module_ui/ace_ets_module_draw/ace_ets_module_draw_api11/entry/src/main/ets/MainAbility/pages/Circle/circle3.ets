@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +17,8 @@ import events_emitter from '@ohos.events.emitter';
 @Entry
 @Component
 struct CircleExample {
-  @State width: string = "450px";
-  @State height: string = "450px";
+  @State theWidth: string = "450px";
+  @State theHeight: string = "450px";
 
   onPageShow() {
     console.info('[circle] page show called');
@@ -35,11 +34,11 @@ struct CircleExample {
     console.info("[circle] page stateChangCallBack");
     if (eventData != null) {
       console.info("[circle] page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.height != null) {
-        this.height = eventData.data.height;
+      if (eventData.data?.height != null) {
+        this.theHeight = eventData.data?.height;
       }
-      if (eventData.data.width != null) {
-        this.width = eventData.data.width;
+      if (eventData.data?.width != null) {
+        this.theWidth = eventData.data?.width;
       }
     }
   }
@@ -48,8 +47,8 @@ struct CircleExample {
     Flex({ justifyContent: FlexAlign.SpaceAround }) {
       Circle({ width: 150, height: 150 })
       Circle()
-        .width(`${this.width}`)
-        .height(`${this.height}`)
+        .width(`${this.theWidth}`)
+        .height(`${this.theHeight}`)
         .key('circle')
     }.width('100%').height('100%').margin({ top: 5 })
   }
