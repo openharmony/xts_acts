@@ -62,7 +62,7 @@ import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPatter
         switch (sta) {
             case 0:
                 btAccess.enableBluetooth();
-                await clickRequestPermission();
+                await clickRequestPermission(OPEN_BT_TEXT);
                 await sleep(10000);
                 let sta1 = btAccess.getState();
                 console.info('[bluetooth_js] bt turn off:' + JSON.stringify(sta1));
@@ -76,7 +76,7 @@ import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPatter
                 break;
             case 3:
                 btAccess.enableBluetooth();
-                await clickRequestPermission();
+                await clickRequestPermission(OPEN_BT_TEXT);
                 await sleep(10000);
                 let sta2 = btAccess.getState();
                 console.info('[bluetooth_js] bt turning off:' + JSON.stringify(sta2));
@@ -85,12 +85,16 @@ import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPatter
                 console.info('[bluetooth_js] enable success');
         }
     }
-    async function clickRequestPermission() {
+
+    let PERMISSION_TEXT:string = "允许";
+    let OPEN_BT_TEXT:string = "开启";
+
+    async function clickRequestPermission(text:string) {
         try {
             console.info('[bluetooth_js] clickRequestPermission start');
             let driver = Driver.create();
             await driver.delayMs(3000);
-            let button = await driver.findComponent(ON.text("允许"));
+            let button = await driver.findComponent(ON.text(text));
             await button.click();
             await driver.delayMs(3000);
             console.info('[bluetooth_js] clickRequestPermission end');
@@ -143,7 +147,7 @@ describe('btConnectionTest', () => {
 
     beforeAll(async (done : Function) => {
         console.info('beforeAll called')
-        await clickRequestPermission();
+        await clickRequestPermission(PERMISSION_TEXT);
         await openPhone();
         done();
     })

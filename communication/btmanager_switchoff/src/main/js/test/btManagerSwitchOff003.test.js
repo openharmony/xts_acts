@@ -69,7 +69,7 @@ describe('btManagerError003Test', function() {
             console.info('[bluetooth_js] clickRequestPermission start');
             let driver = Driver.create();
             await driver.delayMs(3000);
-            let button = await driver.findComponent(ON.text("允许"));
+            let button = await driver.findComponent(ON.text("关闭"));
             await button.click();
             await driver.delayMs(3000);
             console.info('[bluetooth_js] clickRequestPermission end');
