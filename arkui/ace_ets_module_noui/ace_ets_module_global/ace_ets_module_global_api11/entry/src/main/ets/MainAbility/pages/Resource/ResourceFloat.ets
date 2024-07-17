@@ -58,13 +58,12 @@ struct ResourceFloat {
             Column() {
               Text('float test').fontSize(20)
               Text('float').fontSize($r(`app.float.float_${item.toString()}`)).id('float')
-            }.border({ width:2 }).margin(30)
+            }.border({ width: 2 }).margin(30)
 
           }
           .justifyContent(FlexAlign.SpaceEvenly)
           .width(300)
           .height(300)
-
 
         }, (item: string) => item)
       }

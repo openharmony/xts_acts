@@ -59,14 +59,12 @@ struct ResourcePlural {
             Column() {
               Text('plural test').fontSize(20)
               Text($r(`app.plural.plural_${item.toString()}`, 100, 100)).fontSize(20).id('plural')
-            }.border({ width:2 }).margin(30)
-
+            }.border({ width: 2 }).margin(30)
 
           }
           .justifyContent(FlexAlign.SpaceEvenly)
           .width(300)
           .height(300)
-
 
         }, (item: string) => item)
       }
