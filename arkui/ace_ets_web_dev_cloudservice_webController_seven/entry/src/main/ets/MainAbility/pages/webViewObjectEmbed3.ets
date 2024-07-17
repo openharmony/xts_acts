@@ -26,11 +26,11 @@ declare class Params {
   height : number
 }
 
-declare class mapItem {
-  surfaceId : string
-  embedId : string
-  width : number
-  height : number
+declare class MapItem {
+  public surfaceId : string
+  public embedId : string
+  public  width : number
+  public height : number
 }
 
 class MyNodeController extends NodeController {
@@ -93,8 +93,7 @@ struct MyComponent {
           this.index =! this.index
           if (this.index) {
             this.bkColor = Color.Blue
-          }
-          else {
+          } else {
             this.bkColor = Color.Red
           }
         })
@@ -115,14 +114,14 @@ function ButtonBuilder(params: Params) {
 struct webViewObjectEmbed3 {
   controller: webview.WebviewController = new webview.WebviewController();
   schemeHandler: webview.WebSchemeHandler = new webview.WebSchemeHandler()
-  @State emitKey: string = "";
+  @State emitKey: string = '';
   @State javaScriptAccess: boolean = true;
   @State fileAccess: boolean = true;
   @State domStorageAccess: boolean = true;
   @State imageAccess: boolean = true;
   @State onlineImageAccess: boolean = true;
   @State databaseAccess: boolean = true;
-  private embedMap : Map<string, mapItem> = new Map();
+  private embedMap : Map<string, MapItem> = new Map();
   private nodeController: MyNodeController = new MyNodeController();
   @State nodeContainerWidth : number = 0;
   @State nodeContainerHeight : number = 0;
@@ -157,7 +156,7 @@ struct webViewObjectEmbed3 {
         Button('web click')
           .key('webViewObjectEmbedButton3')
           .onClick(async () => {
-            console.info("key==>" + this.emitKey)
+            console.info('key==>' + this.emitKey)
             this.controller.refresh();
             await Utils.sleep(2000);
             switch (this.emitKey) {
@@ -208,7 +207,7 @@ struct webViewObjectEmbed3 {
                 this.nodeController.setRenderOption(
                   this.embedMap?.get('cameraTest')?.surfaceId as string, NodeRenderType.RENDER_TYPE_TEXTURE,
                   this.embedMap?.get('cameraTest')?.embedId as string,
-                  px2vp(this.embedMap?.get("cameraTest")?.width),
+                  px2vp(this.embedMap?.get('cameraTest')?.width),
                   px2vp(this.embedMap?.get('cameraTest')?.height))
                 this.nodeController.rebuild()
                 console.log('surfaceId = ' + this.embedMap?.get('cameraTest')?.surfaceId);

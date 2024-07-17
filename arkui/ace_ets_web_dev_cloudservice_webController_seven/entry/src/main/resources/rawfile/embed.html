@@ -20,30 +20,29 @@ let nativeEmbed = {
     //事件
     events:{
         nativeEmbed:document.getElementById('objectTest'),
-        handleEvent:function (event){
-            console.log('object event')
+        handleEvent:function (event) {
             var self = this;
-            if (event.type === 'touchstart'){
+            if (event.type === 'touchstart') {
                 self.start(event);
-            }else if (event.type === 'touchmove'){
+            } else if (event.type === 'touchmove') {
                 self.move(event);
-            }else if (event.type === 'touchend'){
+            } else if (event.type === 'touchend') {
                 self.end(event);
             }
         },
         //滑动开始
-        start:function (event){
+        start:function (event) {
             console.log('object start slide');
             this.nativeEmbed.removeEventListener('touchmove', this, false);
             this.nativeEmbed.removeEventListener('touchend', this, false);
         },
-        move:function (event){
+        move:function (event) {
             console.log('object start move');
             //当屏幕有多个touch或者页面被缩放过，就不执行move操作
 
         },
         //滑动释放
-        end:function (event){
+        end:function (event) {
             //解绑事件
             console.log('object end slide');
             this.nativeEmbed.removeEventListener('touchmove', this, false);
