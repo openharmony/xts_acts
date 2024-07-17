@@ -30,6 +30,7 @@
 #define PARAM_0 0
 #define PARAM_1 1
 #define PARAM_2 2
+#define PARAM_100 100
 #define PARAM_6000 6000
 #define PARAM_99999 99999
 #define FAIL (-1)
@@ -414,13 +415,18 @@ static napi_value Raise(napi_env env, napi_callback_info info)
 }
 
 std::atomic<bool> isSigSendReady (false);
+pthread_mutex_t gMutex = PTHREAD_MUTEX_INITIALIZER;
 
 void *SigSend(void *pro)
 {
     int sig = SIGALRM;
     union sigval sigval = {.sival_int = ONE};
+    int count = 0;
     while (!isSigSendReady) {
         usleep(SLEEP_10_MS);
+        count++;
+        if (count > PARAM_100)
+            break;
     }
     sigqueue(getpid(), sig, sigval);
 
@@ -429,6 +435,7 @@ void *SigSend(void *pro)
 
 static napi_value SigMainWait(napi_env env, napi_callback_info info)
 {
+    pthread_mutex_lock(&gMutex);
     napi_value result = nullptr;
     isSigSendReady = false;
     pthread_t pid;
@@ -443,11 +450,13 @@ static napi_value SigMainWait(napi_env env, napi_callback_info info)
     res = sigwait(&set, &sig);
 
     napi_create_int32(env, res, &result);
+    pthread_mutex_unlock(&gMutex);
     return result;
 }
 
 static napi_value SigMainWaitinfo(napi_env env, napi_callback_info info)
 {
+    pthread_mutex_lock(&gMutex);
     napi_value result = nullptr;
     isSigSendReady = false;
     pthread_t pid;
@@ -471,6 +480,7 @@ static napi_value SigMainWaitinfo(napi_env env, napi_callback_info info)
     }
 
     napi_create_int32(env, res, &result);
+    pthread_mutex_unlock(&gMutex);
     return result;
 }
 
