@@ -315,6 +315,9 @@ struct getSurfaceId {
           if (ret) {
             console.log("on search result receive:" + "[cur]" + ret.activeMatchOrdinal +
               "[total]" + ret.numberOfMatches + "[isDone]" + ret.isDoneCounting);
+            if(ret.isDoneCounting == false){
+              return;
+            }
             if(this.checkResult == 1) {
               console.log('check1')
               Utils.emitEvent(ret.numberOfMatches, 28931)
