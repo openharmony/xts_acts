@@ -20,7 +20,7 @@ import Utils from '../../MainAbility/utils/Common';
 import router from '@ohos.router';
 
 export default function sidebar() {
-  describe('ActsAceSideBarTest', function () {
+  describe('ActsAceSideBarTest',  () =>{
     beforeEach(async (done: Function) => {
       console.info("sidebar beforeEach start");
       let options: router.RouterOptions = {
@@ -32,7 +32,7 @@ export default function sidebar() {
         console.info("get sidebar state success " + JSON.stringify(pages));
         if (!("SideBarContainer" == pages.name)) {
           console.info("get sidebar state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push sidebar page success " + JSON.stringify(result));
         }
@@ -42,7 +42,7 @@ export default function sidebar() {
       done()
     });
 
-    afterEach(async function (done) {
+    afterEach(async  (done:Function) =>{
       console.info("sidebar afterEach start");
       try {
         var eventData = {
@@ -85,7 +85,7 @@ export default function sidebar() {
      * @tc.name      Tests the divider property of the SideBarContainer component
      * @tc.desc      Gets the default values of divider for the SideBarContainer component
      */
-    it('ArkUI_SideBarContainer_Divider_0100', 0, async function (done) {
+    it('ArkUI_SideBarContainer_Divider_0100', 0, async  (done:Function) =>{
       console.info("ArkUI_SideBarContainer_Divider_0100 start");
       let strJson = getInspectorByKey('sideBarTest1');
       console.info("ArkUI_SideBarContainer_Divider_0100: " + JSON.stringify(strJson))
@@ -105,7 +105,7 @@ export default function sidebar() {
      * @tc.desc      Gets the values of divider for the SideBarContainer component,
      *                and the property values of the divider are of type number.
      */
-    it('ArkUI_SideBarContainer_Divider_0200', 0, async function (done) {
+    it('ArkUI_SideBarContainer_Divider_0200', 0, async  (done:Function) =>{
       console.info("ArkUI_SideBarContainer_Divider_0200 start");
       let strJson = getInspectorByKey('sideBarTest2');
       console.info("ArkUI_SideBarContainer_Divider_0200: " + JSON.stringify(strJson))
@@ -126,7 +126,7 @@ export default function sidebar() {
      *                and the property values of the divider are of type string,
      *                the units are px.
      */
-    it('ArkUI_SideBarContainer_Divider_0300', 0, async function (done) {
+    it('ArkUI_SideBarContainer_Divider_0300', 0, async  (done:Function) =>{
       console.info("ArkUI_SideBarContainer_Divider_0300 start");
       let strJson = getInspectorByKey('sideBarTest3');
       console.info("ArkUI_SideBarContainer_Divider_0300: " + JSON.stringify(strJson))
@@ -147,7 +147,7 @@ export default function sidebar() {
      *                and the property values of the divider are of type string,
      *                the units are vp.
      */
-    it('ArkUI_SideBarContainer_Divider_0400', 0, async function (done) {
+    it('ArkUI_SideBarContainer_Divider_0400', 0, async  (done:Function) =>{
       console.info("ArkUI_SideBarContainer_Divider_0400 start");
       let strJson = getInspectorByKey('sideBarTest3');
       console.info("ArkUI_SideBarContainer_Divider_0400: " + JSON.stringify(strJson))
@@ -193,7 +193,7 @@ export default function sidebar() {
      *                and the property values of the divider are of type string,
      *                the units are fp.
      */
-    it('ArkUI_SideBarContainer_Divider_0500', 0, async function (done) {
+    it('ArkUI_SideBarContainer_Divider_0500', 0, async  (done:Function) =>{
       console.info("ArkUI_SideBarContainer_Divider_0500 start");
       let strJson = getInspectorByKey('sideBarTest3');
       console.info("ArkUI_SideBarContainer_Divider_0500: " + JSON.stringify(strJson))
@@ -239,7 +239,7 @@ export default function sidebar() {
      *                and the property values of the divider are of type string,
      *                the units are lpx.
      */
-    it('ArkUI_SideBarContainer_Divider_0600', 0, async function (done) {
+    it('ArkUI_SideBarContainer_Divider_0600', 0, async  (done:Function) =>{
       console.info("ArkUI_SideBarContainer_Divider_0600 start");
       let strJson = getInspectorByKey('sideBarTest3');
       console.info("ArkUI_SideBarContainer_Divider_0600: " + JSON.stringify(strJson))
@@ -284,7 +284,7 @@ export default function sidebar() {
      * @tc.desc      Gets the values of divider for the SideBarContainer component,
      *                and the property values of the divider are of type Resource.
      */
-    it('ArkUI_SideBarContainer_Divider_0700', 0, async function (done) {
+    it('ArkUI_SideBarContainer_Divider_0700', 0, async  (done:Function) =>{
       console.info("ArkUI_SideBarContainer_Divider_0700 start");
       let strJson = getInspectorByKey('sideBarTest4');
       console.info("ArkUI_SideBarContainer_Divider_0700: " + JSON.stringify(strJson))
@@ -304,7 +304,7 @@ export default function sidebar() {
      * @tc.desc      Gets the values of divider for the SideBarContainer component,
      *                and the color value of the divider is of type Color.
      */
-    it('ArkUI_SideBarContainer_Divider_0800', 0, async function (done) {
+    it('ArkUI_SideBarContainer_Divider_0800', 0, async  (done:Function) =>{
       console.info("ArkUI_SideBarContainer_Divider_0800 start");
       let strJson = getInspectorByKey('sideBarTest5');
       console.info("ArkUI_SideBarContainer_Divider_0800: " + JSON.stringify(strJson))
@@ -324,7 +324,7 @@ export default function sidebar() {
      * @tc.desc      Gets the values of divider for the SideBarContainer component,
      *                when only the strokeWidth value of the divider is set.
      */
-    it('ArkUI_SideBarContainer_Divider_0900', 0, async function (done) {
+    it('ArkUI_SideBarContainer_Divider_0900', 0, async  (done:Function) =>{
       console.info("ArkUI_SideBarContainer_Divider_0900 start");
       let strJson = getInspectorByKey('sideBarTest6');
       console.info("ArkUI_SideBarContainer_Divider_0900: " + JSON.stringify(strJson))
@@ -344,7 +344,7 @@ export default function sidebar() {
      * @tc.desc      Gets the strokeWidth of divider for the SideBarContainer component,
      *                when the value of the divider is null.
      */
-    it('ArkUI_SideBarContainer_Divider_1000', 0, async function (done) {
+    it('ArkUI_SideBarContainer_Divider_1000', 0, async  (done:Function) =>{
       console.info("ArkUI_SideBarContainer_Divider_1000 start");
       let strJson = getInspectorByKey('sideBarTest2');
       console.info("ArkUI_SideBarContainer_Divider_1000: " + JSON.stringify(strJson))
@@ -378,7 +378,7 @@ export default function sidebar() {
      * @tc.desc      Gets the strokeWidth of divider for the SideBarContainer component,
      *                when the strokeWidth value of the divider is set incorrectly. 
      */
-    it('ArkUI_SideBarContainer_Divider_1100', 0, async function (done) {
+    it('ArkUI_SideBarContainer_Divider_1100', 0, async  (done:Function) =>{
       console.info("ArkUI_SideBarContainer_Divider_1100 start");
       let strJson = getInspectorByKey('sideBarTest2');
       console.info("ArkUI_SideBarContainer_Divider_1100: " + JSON.stringify(strJson))
@@ -420,7 +420,7 @@ export default function sidebar() {
      * @tc.desc      Gets the color of divider for the SideBarContainer component,
      *                when the color value of the divider is set incorrectly. 
      */
-    it('ArkUI_SideBarContainer_Divider_1200', 0, async function (done) {
+    it('ArkUI_SideBarContainer_Divider_1200', 0, async  (done:Function) =>{
       console.info("ArkUI_SideBarContainer_Divider_1200 start");
       let strJson = getInspectorByKey('sideBarTest3');
       console.info("ArkUI_SideBarContainer_Divider_1200: " + JSON.stringify(strJson))
@@ -462,7 +462,7 @@ export default function sidebar() {
      * @tc.desc      Gets the startMarginNum of divider for the SideBarContainer component,
      *                when the startMarginNum value of the divider is set incorrectly. 
      */
-    it('ArkUI_SideBarContainer_Divider_1300', 0, async function (done) {
+    it('ArkUI_SideBarContainer_Divider_1300', 0, async  (done:Function) =>{
       console.info("ArkUI_SideBarContainer_Divider_1300 start");
       let strJson = getInspectorByKey('sideBarTest2');
       console.info("ArkUI_SideBarContainer_Divider_1300: " + JSON.stringify(strJson))
@@ -504,7 +504,7 @@ export default function sidebar() {
      * @tc.desc      Gets the endMarginNum of divider for the SideBarContainer component,
      *                when the endMarginNum value of the divider is set incorrectly. 
      */
-    it('ArkUI_SideBarContainer_Divider_1400', 0, async function (done) {
+    it('ArkUI_SideBarContainer_Divider_1400', 0, async  (done:Function) =>{
       console.info("ArkUI_SideBarContainer_Divider_1400 start");
       let strJson = getInspectorByKey('sideBarTest2');
       console.info("ArkUI_SideBarContainer_Divider_1400: " + JSON.stringify(strJson))

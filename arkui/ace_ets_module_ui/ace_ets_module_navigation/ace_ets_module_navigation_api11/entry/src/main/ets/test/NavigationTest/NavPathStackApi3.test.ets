@@ -12,17 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import router from '@system.router';
+import router from '@ohos.router';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
 import Utils from '../../MainAbility/utils/Common';
 import { Driver, ON } from '@ohos.UiTest';
 
 export default function NavPathStackApi3() {
-  describe('NavPathStackApi3', function () {
-    beforeEach(async function (done) {
+  describe('NavPathStackApi3',  () =>{
+    beforeEach(async  (done:Function) =>{
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Navigation/NavPathStackApi3',
+      let options:router.RouterOptions = {
+        url: 'MainAbility/pages/Navigation/NavPathStackApi3',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function NavPathStackApi3() {
         console.info("get NavPathStackApi3 state success " + JSON.stringify(pages));
         if (!("NavPathStackApi3" == pages.name)) {
           console.info("get NavPathStackApi3 state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push NavPathStackApi3 page success " + JSON.stringify(result));
         }
@@ -40,7 +40,7 @@ export default function NavPathStackApi3() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async  () =>{
       await Utils.sleep(1000);
       console.info("NavPathStackApi3 after each called");
     });
@@ -51,7 +51,7 @@ export default function NavPathStackApi3() {
      * @tc.desc        Navigation pushDestinationByName test
      * @tc.level       Level 2
      */
-    it('NavPathStackApi3_001', 0, async function (done) {
+    it('NavPathStackApi3_001', 0, async  (done:Function) =>{
       console.info('[NavPathStackApi3_001] START');
       await Utils.sleep(1000);
 

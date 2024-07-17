@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
 
@@ -21,8 +21,8 @@ export default function navigatorTargetJsunit() {
   describe('navigatorTargetTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Navigation/navigator2',
+      let options:router.RouterOptions = {
+        url: 'MainAbility/pages/Navigation/navigator2',
       }
       try {
         router.clear();
@@ -30,7 +30,7 @@ export default function navigatorTargetJsunit() {
         console.info("get navigator state success " + JSON.stringify(pages));
         if (!("navigator" == pages.name)) {
           console.info("get navigator state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push navigator page success " + JSON.stringify(result));
         }
