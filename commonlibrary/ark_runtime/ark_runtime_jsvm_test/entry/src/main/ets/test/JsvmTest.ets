@@ -6121,5 +6121,17 @@ instanceOf(obj, Person);
       let result = napitest.runJsVm(script);
       expect(result).assertEqual("1");
     });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0451
+     * @tc.name      JsvmTest0451
+     * @tc.desc      JsvmTest
+     */
+    it('JsvmTest0451', 0, async function (done) {
+      console.info('JsvmTest0451 START');
+      value = napitest.testValueOperation8()
+      console.info('JsvmTest0451 testString result is:'+ value + "--" + JSON.stringify(value) );
+      expect(value).assertEqual(0);
+      done();
+    });
   });
 }

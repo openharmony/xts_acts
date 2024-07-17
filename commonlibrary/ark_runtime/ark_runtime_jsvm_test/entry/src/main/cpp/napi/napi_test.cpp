@@ -2327,6 +2327,148 @@ static napi_value testValueOperation7(napi_env env1, napi_callback_info info)
     NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
     return result11;
 }
+
+void prototypeof_test_1(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value obj;
+    OH_JSVM_CreateObject(env, &obj);
+    JSVM_Value result;
+    OH_JSVM_ObjectGetPrototypeOf(env, obj, &result);
+    JSVM_ASSERT_RETURN_VOID(env, result != nullptr, "check OH_JSVM_ObjectGetPrototype");
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+
+void prototypeof_test_2(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value obj;
+    OH_JSVM_CreateObject(env, &obj);
+    JSVM_Value mySet;
+    OH_JSVM_CreateSet(env, &mySet);
+    JSVM_Status status = OH_JSVM_ObjectSetPrototypeOf(env, obj, mySet);
+    JSVM_ASSERT_RETURN_VOID(env, status == JSVM_OK, "OH_JSVM_ObjectSetPrototypeOf check status");
+    JSVM_Value proto;
+    OH_JSVM_ObjectGetPrototypeOf(env, obj, &proto);
+    bool result = false;
+    OH_JSVM_StrictEquals(env, proto, mySet, &result);
+    JSVM_ASSERT_RETURN_VOID(env, result, "check OH_JSVM_ObjectGetPrototype");
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+
+void prototypeof_test_3(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value obj;
+    OH_JSVM_GetUndefined(env, &obj);
+    JSVM_Value proto;
+    JSVM_Status status = OH_JSVM_ObjectGetPrototypeOf(env, obj, &proto);
+    JSVM_ASSERT_RETURN_VOID(env, status != JSVM_OK, "check OH_JSVM_ObjectGetPrototype");
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+
+void prototypeof_test_4(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value obj;
+    OH_JSVM_GetUndefined(env, &obj);
+    JSVM_Value proto = nullptr;
+    JSVM_Status status = OH_JSVM_ObjectSetPrototypeOf(env, obj, proto);
+    JSVM_ASSERT_RETURN_VOID(env, status != JSVM_OK, "check OH_JSVM_ObjectSetPrototype obj not an object");
+    status = OH_JSVM_ObjectSetPrototypeOf(env, nullptr, proto);
+    JSVM_ASSERT_RETURN_VOID(env, status != JSVM_OK, "check OH_JSVM_ObjectSetPrototype obj is null");
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+
+void prototypeof_test_5(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value obj;
+    OH_JSVM_CreateObject(env, &obj);
+    JSVM_Status status = OH_JSVM_ObjectSetPrototypeOf(env, obj, nullptr);
+    JSVM_ASSERT_RETURN_VOID(env, status != JSVM_OK, "check OH_JSVM_ObjectSetPrototype prototype is null");
+    JSVM_Value proto;
+    OH_JSVM_GetUndefined(env, &proto);
+    status = OH_JSVM_ObjectSetPrototypeOf(env, obj, proto);
+    JSVM_ASSERT_RETURN_VOID(env, status != JSVM_OK, "check OH_JSVM_ObjectSetPrototype prototype is not an object");
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+
+void prototypeof_test_6(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value obj;
+    OH_JSVM_CreateObject(env, &obj);
+    JSVM_Status status = OH_JSVM_ObjectSetPrototypeOf(nullptr, obj, nullptr);
+    JSVM_ASSERT_RETURN_VOID(env, status != JSVM_OK, "check OH_JSVM_ObjectSetPrototype prototype is null");
+    JSVM_Value proto;
+    OH_JSVM_GetUndefined(env, &proto);
+    status = OH_JSVM_ObjectSetPrototypeOf(nullptr, obj, proto);
+    JSVM_ASSERT_RETURN_VOID(env, status != JSVM_OK, "check OH_JSVM_ObjectSetPrototype prototype is not an object");
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+
+static napi_value testValueOperation8(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        printf("memset_s failed");
+        return nullptr;
+    }
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+    JSVM_CallbackStruct param[1];
+    param[0].data = nullptr;
+    param[0].callback = assertEqual;
+    JSVM_PropertyDescriptor descriptor[] = {
+        {"assertEqual", NULL, &param[0], NULL, NULL, NULL, JSVM_DEFAULT},
+    };
+    OH_JSVM_CreateEnv(vm, sizeof(descriptor) / sizeof(descriptor[0]), descriptor, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+
+    prototypeof_test_1(env);
+    prototypeof_test_2(env);
+    prototypeof_test_3(env);
+    prototypeof_test_4(env);
+    prototypeof_test_5(env);
+    prototypeof_test_6(env);
+
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_create_int32(env1, 0, &result11));
+    return result11;
+}
+
 static napi_value testGetPropertyNames(napi_env env1, napi_callback_info info) {
     JSVM_InitOptions init_options;
     if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
@@ -9251,6 +9393,7 @@ static napi_value Init(napi_env env, napi_value exports)
         DECLARE_NAPI_FUNCTION("testValueOperation5", testValueOperation5),
         DECLARE_NAPI_FUNCTION("testValueOperation6", testValueOperation6),
         DECLARE_NAPI_FUNCTION("testValueOperation7", testValueOperation7),
+        DECLARE_NAPI_FUNCTION("testValueOperation8", testValueOperation8),
         DECLARE_NAPI_FUNCTION("testGetPropertyNames",testGetPropertyNames),
         DECLARE_NAPI_FUNCTION("testGetAllPropertyNames",testGetAllPropertyNames),
         DECLARE_NAPI_FUNCTION("testProperty",testProperty),
