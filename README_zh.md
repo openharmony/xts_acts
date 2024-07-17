@@ -12,6 +12,8 @@
     -   [C++语言用例执行指导（适用于小型系统、标准系统用例开发）](#section128222336544)
     -   [JS语言用例开发指导（适用于标准系统）](#section159801435165220)
     -   [JS语言用例编译打包指导（适用于标准系统）](#section445519106559)
+    -   [Python用例开发编译指导](#section281040146993)
+    -   [Python用例执行指导](#section637497153319)
 
 -   [相关仓](#section1371113476307)
 
@@ -933,6 +935,215 @@ Stage 模式适配指导请参考
 ### JS语言用例编译打包指导（适用于标准系统）<a name="section445519106559"></a>
 
 hap包编译请参考 [标准系统 JS用例源码编译Hap包指导](https://gitee.com/openharmony/xts_acts/wikis/%E6%A0%87%E5%87%86%E7%B3%BB%E7%BB%9F%20JS%E7%94%A8%E4%BE%8B%E6%BA%90%E7%A0%81%E7%BC%96%E8%AF%91Hap%E5%8C%85%E6%8C%87%E5%AF%BC%20?sort_id=4427112)。
+
+### Python用例开发编译指导 <a name="section281040146993"></a>
+
+XTS当前支持执行Python测试用例，可用于系统黑盒测试，并提供了对设备进行操作的接口，包括执行Shell命令、文件传输、应用安装卸载等。
+
+**用例开发指导**
+
+Python用例开发有两种模式，分别是测试用例模式和测试套模式。
+
+1. 测试用例模式
+
+测试用例由一个测试用例json配置文件和一个Python测试脚本py文件组成。
+
+用例目录示例：
+```
+├── BUILD.gn                     # 编译配置文件
+├── TestCase.json                # 测试用例配置文件
+├── testcase1.py                 # 测试用例Python脚本
+```
+
+json配置文件描述测试用例的配置信息，如环境设备信息、测试驱动信息、测试所需kit等。其中需指定测试用例执行驱动类型为 'DeviceTest'，并指定Python测试脚本路径（测试用例模式仅可指定一个py文件）。测试用例配置文件示例：
+```
+// TestCase.json
+
+{
+    "description": "Configuration for Openharmony device test case",
+    // environment 字段描述测试套执行所需环境信息，如设备数量、类型等
+    "environment": [
+        {
+            "type": "device",       // device 表示 OpenHarmony 设备
+            "label": "phone"
+        }
+    ],
+    // driver 字段描述测试用例执行所需驱动、测试用例文件路径等
+    "driver": {
+        "type": "DeviceTest",
+        "py_file": ["testcase1.py"]
+    },
+    // kits 字段描述测试用例需要的测试公共kit，如 pushkit 、 shellkit 等
+    "kits": [    
+    ]
+}
+```
+
+<a name="testcase"></a>
+
+Python测试用例继承'TestCase'，需重写三个生命周期函数。测试用例Python脚本示例如下：
+| 生命周期函数 | 说明 |
+| ----- | ----- |
+| setup | 测试用例前置步骤，用于执行测试用例的预置动作 |
+| process | 测试用例实际操作步骤，用于执行测试用例实际测试步骤 |
+| teardown | 测试用例清理步骤，用于执行测试用例的环境清理等操作 |
+
+```
+// testcase1.py
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+from devicetest.core.test_case import TestCase, Step
+
+class testcase1(TestCase):
+    def __init__(self, controllers):
+        self.TAG = self.__class__.__name__
+        super().__init__(self.TAG, controllers)
+
+    def setup(self):
+        Step("Setup")
+
+    def process(self):
+        Step("Process")
+        # driver1 表示 TestCase.json 中定义的环境设备
+        res = self.device1.execute_shell_command("ls -l")
+        # 使用该方式打印日志，可将输出保留在测试报告中
+        self.log.info(res)
+        # 使用断言判断测试通过与否
+        assert res != ""
+
+    def teardown(self):
+        Step("Teardown")
+```
+
+2. 测试套模式
+
+测试套由一个测试套json配置文件、一个测试套py文件、多个Python测试脚本py文件组成。
+
+用例目录示例：
+```
+├── BUILD.gn                     # 编译配置文件
+├── TestSuite.json               # 测试套json配置文件
+├── TestSuite.py                 # 测试套py文件
+├── testcase1.py                 # Python测试脚本py文件
+├── testcase2.py                 
+├── testcase3.py                 
+```
+
+json配置文件中需指定测试套执行驱动类型为 'DeviceTestSuite'，并指定测试套py文件和Python测试脚本路径。测试套配置文件示例如下：
+```
+// TestSuite.json
+
+{
+    "description": "Configuration for Openharmony device test suite",
+    // environment 字段描述测试套执行所需环境信息，如设备类型等
+    "environment": [
+        {
+            "type": "device",           // device 表示 OpenHarmony 设备
+            "label": "phone"
+        }
+    ],
+    // driver 字段描述测试套执行所需驱动、测试套py文件路径、所包含所有测试脚本路径等
+    "driver": {
+        "type": "DeviceTestSuite",
+        "testsuite": "TestSuite.py",
+        "suitecases": [
+            "./testcase1.py",
+            "./testcase2.py",
+            "./testcase3.py"
+        ]
+    },
+    // kits 字段描述测试套需要的测试公共kit，如 pushkit 、 shellkit 等
+    "kits": [    
+    ]
+}
+```
+
+> **注：**  Python测试脚本若与测试套py文件在同一目录下且以'TC_'开头，则无需在json配置文件中配置 'suitecases'，框架将自动扫描执行所有符合条件的测试用例。(若已配置 'suitecases' 且不为空，框架则不再自动扫描)
+
+测试套需继承'TestSuite'，并重写两个生命周期函数。 测试套py文件示例如下：
+
+| 生命周期函数 | 说明 |
+| ----- | ----- |
+| setup | 整个测试套的前置步骤，在测试套运行前先执行该函数 |
+| teardown | 整个测试套的清理步骤，在测试套运行后执行该函数 |
+
+```
+// TestSuite.py
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+from devicetest.core.test_case import Step
+from devicetest.core.suite.test_suite import TestSuite
+
+class TestSuite(TestSuite):
+    def setup(self):
+        Step("Setup")
+
+    def teardown(self):
+        Step("Teardown")
+```
+
+[测试套模式Python测试脚本示例，同测试用例模式](#testcase)
+
+**接口参考**
+
+| <div style="width:300px">接口定义</div> | 参数说明 | 返回值 | 接口说明 |
+| ----- | ----- | ----- | ----- |
+| execute_shell_command(command, timeout) | 1. command：必选，shell命令字符串 <br> 2. timeout：可选，命令执行超时时间，单位 ms，执行超时抛出异常 | shell命令执行输出 | 执行shell命令 |
+| reboot() | 无 | 无 | 设备重启 |
+| install_package(package_path) | package_path：必选，应用包路径 | bm安装命令执行输出 | 安装应用 |
+| uninstall_package(package_name) | package_name：必选，应用包名 | bm卸载命令执行输出 | 卸载应用 |
+| pull_file(remote, local) | 1. remote：必选，设备文件路径 <br> 2. local：必选，本地文件路径 | 无 | 设备pull文件到本地 |
+| push_file(local, remote) | 1. local：必选，本地文件路径 <br> 2. remote：必选，设备文件路径 | 无 | 本地push文件到设备 |
+
+> **注：**  ```install_package()```、```push_file()``` 等以本地路径作为参数的接口，需要将本地文件放置到 resource 目录下并通过 ```get_resource_path()``` 获取本地文件路径，示例如下：
+> ```
+> from devicetest.utils.file_util import get_resource_path
+>
+> path = get_resource_path('test.hap') // resource目录下的相对路径
+> res = self.device1.install_package(path)
+> ```
+
+**用例编译指导**
+
+编译配置文件 BUILD.gn 主要将测试用例py文件及json文件拷贝到xts输出目录下。编译配置文件示例如下（以测试用例模式为例）：
+```
+// BUILD.gn
+
+import("//build/ohos.gni")
+
+group("ActsDemoTest") {
+  testonly = true
+  deps = [ ":PyTestCase" ]
+}
+ohos_copy("PyTestCase") {
+  subsystem_name = "..."
+  part_name = "..."
+  sources = [
+    "./TestCase.json",
+    "./testcase1.py",
+  ]
+  outputs =
+      [ root_out_dir + "/suites/acts/acts/testcases/{{source_file_part}}" ]
+}
+```
+
+### Python脚本用例执行指导 <a name="section637497153319"></a>
+
+**测试用例模式：**
+
+``` run -l TestCase ```
+
+**测试套模式：**
+
+全量执行：``` run -l TestSuite ```
+
+部分执行：``` run -l TestSuite -ta class:testcase1,testcase3 ```
+
+部分不执行：``` run -l TestSuite -ta notClass:testcase1,testcase3 ```
 
 ### 全量编译指导（适用于标准系统）<a name="section159801435165220"></a>
 
