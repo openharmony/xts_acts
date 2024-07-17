@@ -24,6 +24,7 @@ import { AVCastPickerState } from '@ohos.multimedia.avCastPickerParam';
 const KEY_TEST_ELEMENT = 'TestKey';
 const VALUE_TEST_ELEMENT = 'TestValue';
 const TAG = '[ttt]'
+
 export default function UDMFSupportClipboardApiTest() {
   describe('UDMFSupportClipboardApiTest', () => {
 
@@ -48,7 +49,7 @@ export default function UDMFSupportClipboardApiTest() {
       expect(typeof properties.timestamp).assertEqual('object');
       expect(typeof properties.shareOptions).assertEqual('number');
       expect(typeof properties.getDelayData).assertEqual('undefined');
-      console.info(TAG, 'start'+ typeof properties.shareOptions);
+      console.info(TAG, 'start' + typeof properties.shareOptions);
       console.info(TAG, 'end');
     })
     /**
@@ -60,7 +61,7 @@ export default function UDMFSupportClipboardApiTest() {
      * @tc.level     : Level 0
      */
 
-    it('SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0200', 0,() => {
+    it('SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0200', 0, () => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0200';
       console.info(TAG, 'start');
       let text = new unifiedDataChannel.Text();
@@ -89,7 +90,9 @@ export default function UDMFSupportClipboardApiTest() {
       };
       expect(Object.keys(unifiedData.properties.extras).length).assertEqual(1);
       console.info(TAG, 'start' + JSON.stringify(unifiedData.properties.extras));
-      expect(JSON.stringify(unifiedData.properties.extras.person)).assertEqual(JSON.stringify({"age":25,"f_name":"John","l_name":"Doe"}));
+      expect(JSON.stringify(unifiedData.properties.extras.person)).assertEqual(JSON.stringify({
+        "age": 25, "f_name": "John", "l_name": "Doe"
+      }));
       console.info(TAG, 'end');
     });
 
@@ -118,14 +121,15 @@ export default function UDMFSupportClipboardApiTest() {
         data.properties.tag = "FileTag";
         return data;
       }
+
       unifiedData.properties.getDelayData = func;
       const data = unifiedData.properties.getDelayData('inputTest');
       let records = data.getRecords();
       expect(records.length).assertEqual(1);
-      for (let  i = 0; i < records.length; i++) {
+      for (let i = 0; i < records.length; i++) {
         if (records[i].getType() == uniformTypeDescriptor.UniformDataType.TEXT) {
           let text = records[i] as unifiedDataChannel.Text;
-          if (text.details !=undefined){
+          if (text.details != undefined) {
             expect(text.details.Key).assertEqual('inputTest' + KEY_TEST_ELEMENT);
             expect(text.details.Value).assertEqual('inputTest' + VALUE_TEST_ELEMENT);
             expect(data.properties.tag).assertEqual('FileTag');
@@ -183,8 +187,8 @@ export default function UDMFSupportClipboardApiTest() {
       let view1 = new Uint32Array(dataUri);
       view1[0] = 123456;
       let record1 = new unifiedDataChannel.UnifiedRecord('general.message', dataUri);
-      const  data1 = record1.getValue() as ArrayBuffer;
-      console.info(TAG, 'start'+ data1);
+      const data1 = record1.getValue() as ArrayBuffer;
+      console.info(TAG, 'start' + data1);
       expect(data1.byteLength).assertEqual(256);
       let view2 = new Uint32Array(data1);
       expect(view1[0]).assertEqual(view2[0]);
@@ -202,8 +206,10 @@ export default function UDMFSupportClipboardApiTest() {
       expect(data4).assertEqual(8899.7788);
 
       const buffer = new ArrayBuffer(128);
-      const opt:image.InitializationOptions = {
-        size: { height: 5, width: 5 },
+      const opt: image.InitializationOptions = {
+        size: {
+          height: 5, width: 5
+        },
         pixelFormat: 3,
         editable: true,
         alphaType: 1,
@@ -212,12 +218,12 @@ export default function UDMFSupportClipboardApiTest() {
       const pixelMap = await image.createPixelMap(buffer, opt);
       let record5 = new unifiedDataChannel.UnifiedRecord('openharmony.pixel-map', pixelMap);
       let data5 = record5.getValue() as image.PixelMap;
-      data5.getImageInfo().then((imageInfo)=>{
+      data5.getImageInfo().then((imageInfo) => {
         expect(imageInfo.size.height).assertEqual(opt.size.height);
         expect(imageInfo.pixelFormat).assertEqual(opt.pixelFormat);
       });
 
-      const wantText:Want = {
+      const wantText: Want = {
         bundleName: 'com.example.myapplication1',
         abilityName: 'com.example.myapplication1.MainAbility',
       };
@@ -235,7 +241,7 @@ export default function UDMFSupportClipboardApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0600', 0, async ()  => {
+    it('SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0600', 0, async () => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0600';
       console.info(TAG, 'start');
 
@@ -255,8 +261,10 @@ export default function UDMFSupportClipboardApiTest() {
       let record4 = new unifiedDataChannel.UnifiedRecord('general.message', 8899.7788);
       unifiedData.addRecord(record4);
       const buffer = new ArrayBuffer(128);
-      const opt:image.InitializationOptions = {
-        size: { height: 5, width: 5 },
+      const opt: image.InitializationOptions = {
+        size: {
+          height: 5, width: 5
+        },
         pixelFormat: 3,
         editable: true,
         alphaType: 1,
@@ -265,7 +273,7 @@ export default function UDMFSupportClipboardApiTest() {
       const pixelMap = await image.createPixelMap(buffer, opt);
       let record5 = new unifiedDataChannel.UnifiedRecord('openharmony.pixel-map', pixelMap);
       unifiedData.addRecord(record5);
-      const wantText:Want = {
+      const wantText: Want = {
         bundleName: 'com.example.myapplication1',
         abilityName: 'com.example.myapplication1.MainAbility',
       };
@@ -285,7 +293,7 @@ export default function UDMFSupportClipboardApiTest() {
       const data4 = records[3].getValue();
       expect(data4).assertEqual(8899.7788);
       const data5 = records[4].getValue() as image.PixelMap;
-      data5.getImageInfo().then((imageInfo)=>{
+      data5.getImageInfo().then((imageInfo) => {
         expect(imageInfo.size.height).assertEqual(opt.size.height);
         expect(imageInfo.pixelFormat).assertEqual(opt.pixelFormat);
       });
@@ -301,7 +309,7 @@ export default function UDMFSupportClipboardApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0700', 0, async ()  => {
+    it('SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0700', 0, async () => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0700';
       console.info(TAG, 'start');
 
@@ -339,7 +347,7 @@ export default function UDMFSupportClipboardApiTest() {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0800', 0, async function () {
+    it('SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0800', 0, async () => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0800';
       console.info(TAG, 'start');
 
@@ -379,7 +387,9 @@ export default function UDMFSupportClipboardApiTest() {
     it('SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0900', 0, async () => {
       const TAG = 'SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0900';
       console.info(TAG, 'start');
-      let obj:unifiedDataChannel.ValueType = { foo: "bar", baz: 42 };
+      let obj: unifiedDataChannel.ValueType = {
+        foo: "bar", baz: 42
+      };
       let record1 = new unifiedDataChannel.UnifiedRecord('otherType', false);
       let unifiedData = new unifiedDataChannel.UnifiedData(record1);
       let record2 = new unifiedDataChannel.UnifiedRecord('otherType', undefined);
@@ -398,7 +408,7 @@ export default function UDMFSupportClipboardApiTest() {
       expect(data2).assertEqual(undefined);
       const data3 = records[2].getValue();
       expect(data3).assertEqual(null);
-      const data4 = records[3].getValue() as Boolean ;
+      const data4 = records[3].getValue() as Boolean;
       expect(data4).assertEqual(true);
       const data5 = records[4].getValue() as object;
       expect(data5["foo"]).assertEqual("bar");
