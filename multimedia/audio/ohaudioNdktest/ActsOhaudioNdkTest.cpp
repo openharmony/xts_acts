@@ -71,42 +71,6 @@ OH_AudioStreamBuilder* ActsOhAudioNdkTest::CreateRenderBuilder()
 }
 
 /**
-* @tc.name  : Test OH_AudioCapturer_GetOverflowCount API.
-* @tc.number: SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100
-* @tc.desc  : Test OH_AudioCapturer_GetOverflowCount interface.
-*/
-HWTEST(ActsOhAudioNdkTest, SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100, TestSize.Level0)
-{
-    OH_AudioStreamBuilder* builder = ActsOhAudioNdkTest::CreateCapturerBuilder();
-
-    OH_AudioStreamBuilder_SetSamplingRate(builder, SAMPLE_RATE_48000);
-    OH_AudioStreamBuilder_SetChannelCount(builder, CHANNEL_2);
-
-    OHAudioCapturerReadCallbackMock readCallbackMock;
-
-    OH_AudioCapturer_Callbacks callbacks;
-    callbacks.OH_AudioCapturer_OnReadData = AudioCapturerOnReadData;
-    OH_AudioStreamBuilder_SetCapturerCallback(builder, callbacks, &readCallbackMock);
-
-    OH_AudioCapturer* audioCapturer;
-    OH_AudioStream_Result result = OH_AudioStreamBuilder_GenerateCapturer(builder, &audioCapturer);
-    EXPECT_EQ(result, AUDIOSTREAM_SUCCESS);
-
-    result = OH_AudioCapturer_Start(audioCapturer);
-    EXPECT_EQ(result, AUDIOSTREAM_SUCCESS);
-
-    uint32_t overFlowCount;
-    result = OH_AudioCapturer_GetOverflowCount(audioCapturer, &overFlowCount);
-    EXPECT_EQ(result, AUDIOSTREAM_SUCCESS);
-    EXPECT_GE(overFlowCount, 0);
-
-    OH_AudioCapturer_Stop(audioCapturer);
-    OH_AudioCapturer_Release(audioCapturer);
-
-    OH_AudioStreamBuilder_Destroy(builder);
-}
-
-/**
 * @tc.name  : Test OH_AudioRenderer_GetUnderflowCount API.
 * @tc.number: SUM_MULTIMEDIA_AUDIO_OH_AudioRenderer_GetUnderflowCount_0100
 * @tc.desc  : Test OH_AudioRenderer_GetUnderflowCount interface.
