@@ -6133,5 +6133,51 @@ instanceOf(obj, Person);
       expect(value).assertEqual(0);
       done();
     });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0452
+     * @tc.name JsvmTest0452
+     * @tc.desc JsvmTest
+     */
+    it('JsvmTest0452', 0, function () {
+      let script: string = `
+        let add1 = createFunctionWithScript(\"add\", [\"a\", \"b\"], \"return a + b\")
+        let add2 = createFunctionWithScript(\"add\", [\"a\", \"b\"], \"return (a + b) * 2\")
+        let mul = createFunctionWithScript(\"class\", [\"c\", \"d\"], \"return c * d\")
+        let res1 = add1(3, 4)
+        let res2 = add2(2, 3)
+        mul(res1, res2);
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertEqual(70);
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0453
+     * @tc.name JsvmTest0453
+     * @tc.desc JsvmTest
+     */
+    it('JsvmTest0453', 0, function () {
+      let script: string = `
+        let emptyFunc = createFunctionWithScript(\"add\", [\"a\"], \"\")
+        emptyFunc(3)
+      `;
+      let result = napitest.runJsVm(script);
+      expect(typeof result).assertEqual('undefined');
+    });
+
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0454
+     * @tc.name JsvmTest0454
+     * @tc.desc JsvmTest
+     */
+    it('JsvmTest0454', 0, function () {
+      let script: string = `
+        let func = createFunctionWithScript(\"func\", [\"a\", \"a\"], \"return a\")
+        func(3, 5)
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertEqual(5);
+    });
   });
 }
