@@ -21,7 +21,7 @@ let nativeEmbed = {
     events:{
         nativeEmbed:document.getElementById('objectTest'),
         handleEvent:function (event) {
-            console.log('object event')
+            console.log('object event');
             var self = this;
             if (event.type === 'touchstart') {
                 self.start(event);

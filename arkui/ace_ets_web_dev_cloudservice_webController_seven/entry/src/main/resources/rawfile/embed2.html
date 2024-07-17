@@ -21,13 +21,13 @@ let nativeEmbed = {
     events:{
         nativeEmbed:document.getElementById('objectTest'),
         handleEvent:function (event) {
-            console.log('object event')
+            console.log('object event');
             var self = this;
             if (event.type === 'touchstart') {
                 self.start(event);
-            } else if(event.type === 'touchmove') {
+            } else if (event.type === 'touchmove') {
                 self.move(event);
-            } else if(event.type === 'touchend') {
+            } else if (event.type === 'touchend') {
                 self.end(event);
             }
         },
@@ -53,7 +53,7 @@ let nativeEmbed = {
     },
 
     //初始化
-    init:function (){
+    init:function () {
         let self = this;
         console.log('init:function');
         self.nativeEmbed.addEventListener('touchstart', self.events, false);
