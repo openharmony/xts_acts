@@ -24,17 +24,6 @@ using namespace testing::ext;
 namespace OHOS {
 namespace AudioStandard {
 
-static int32_t AudioCapturerOnReadData(OH_AudioCapturer* capturer,
-    void* userData,
-    void* buffer,
-    int32_t bufferLen)
-{
-    OHAudioCapturerReadCallbackMock *mockPtr = static_cast<OHAudioCapturerReadCallbackMock*>(userData);
-    mockPtr->OnReadData(capturer, userData, buffer, bufferLen);
-
-    return 0;
-}
-
 static int32_t AudioRendererOnWriteData(OH_AudioRenderer* renderer,
     void* userData,
     void* buffer,
@@ -53,14 +42,6 @@ void ActsOhAudioNdkTest::TearDownTestCase(void) { }
 void ActsOhAudioNdkTest::SetUp(void) { }
 
 void ActsOhAudioNdkTest::TearDown(void) { }
-
-OH_AudioStreamBuilder* ActsOhAudioNdkTest::CreateCapturerBuilder()
-{
-    OH_AudioStreamBuilder* builder;
-    OH_AudioStream_Type type = AUDIOSTREAM_TYPE_CAPTURER;
-    OH_AudioStreamBuilder_Create(&builder, type);
-    return builder;
-}
 
 OH_AudioStreamBuilder* ActsOhAudioNdkTest::CreateRenderBuilder()
 {
