@@ -421,7 +421,7 @@ export default function startAbilityTest() {
         "bundleName": "com.example.qianyiyingyong.hmservice",
         "abilityName": "com.example.qianyiyingyong.MainAbility",
         "moduleName": "entry",
-        "flags": 94.31,
+        "flags": '94.31',
       }
       globalThis.abilityContext.startAbility(str).then((data:number) => {
         console.log(TAG + ": startAbility success. data: " + JSON.stringify(data));
@@ -455,7 +455,7 @@ export default function startAbilityTest() {
         "bundleName": "com.example.qianyiyingyong.hmservice",
         "abilityName": "com.example.qianyiyingyong.MainAbility",
         "moduleName": "entry",
-        "flags": 94.31,
+        "flags": '94.31',
       }
       globalThis.abilityContext.startAbility(str).then((data:number) => {
         console.log(TAG + ": startAbility success. data: " + JSON.stringify(data));
@@ -485,6 +485,7 @@ export default function startAbilityTest() {
         "bundleName": "com.example.qianyiyingyong.hmservice",
         "abilityName": "com.example.qianyiyingyong.MainAbility",
         "moduleName": "entry",
+        "flags": '',
       }
       globalThis.abilityContext.startAbility(str).then((data:number) => {
         console.log(TAG + ": startAbility success. data: " + JSON.stringify(data));
@@ -518,6 +519,7 @@ export default function startAbilityTest() {
         "bundleName": "com.example.qianyiyingyong.hmservice",
         "abilityName": "com.example.qianyiyingyong.MainAbility",
         "moduleName": "entry",
+        "flags": '',
       }
       globalThis.abilityContext.startAbility(str).then((data:number) => {
         console.log(TAG + ": startAbility success. data: " + JSON.stringify(data));

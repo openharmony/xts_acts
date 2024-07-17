@@ -439,7 +439,7 @@ function SubscribeCallBack(err:base.BusinessError, data:commonEvent.CommonEventD
 
 
 function CreateSubscriberCallBack(err:base.BusinessError, commonEventSubscriber:commonEvent.CommonEventSubscriber) {
-  if (err.code) {
+  if (err !=null && err.code) {
     console.error("commonEvent createSubscriber failed " + JSON.stringify(err));
   } else {
     console.info("----commonEvent createSubscriber------");
