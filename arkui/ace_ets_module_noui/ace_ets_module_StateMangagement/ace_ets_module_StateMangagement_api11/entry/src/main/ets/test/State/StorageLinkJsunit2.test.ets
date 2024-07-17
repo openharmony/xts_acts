@@ -13,17 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 
 
 export default function StorageLinkJsunit2() {
-  describe('StorageLinkJsunit2', function () {
-    beforeEach(async function (done) {
+  describe('StorageLinkJsunit2', () => {
+    beforeEach(async (done: Function) => {
       console.info("StorageLinkJsunit2 beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/StorageLink2',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/StorageLink2',
       }
       try {
         router.clear();
@@ -31,7 +44,7 @@ export default function StorageLinkJsunit2() {
         console.info("get StorageLinkJsunit2 state pages: " + JSON.stringify(pages));
         if (!("StorageProp" == pages.name)) {
           console.info("get StorageLinkJsunit2 state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push StorageLinkJsunit2 page result: " + JSON.stringify(result));
         }
@@ -42,7 +55,7 @@ export default function StorageLinkJsunit2() {
       done();
     });
 
-    it('StorageLinkJsunit2_0100', 0, async function (done) {
+    it('StorageLinkJsunit2_0100', 0, async (done: Function) => {
       // Get the init value of son1 and son2
       console.info('[StorageLinkJsunit2_0100] START');
       let driver = await UiDriver.create()
@@ -59,7 +72,7 @@ export default function StorageLinkJsunit2() {
       done();
     });
 
-    it('StorageLinkJsunit2_0200', 0, async function (done) {
+    it('StorageLinkJsunit2_0200', 0, async (done: Function) => {
       // Get the init value of son1 and son2
       console.info('[StorageLinkJsunit2_0200] START');
       let driver = await UiDriver.create()
@@ -76,7 +89,7 @@ export default function StorageLinkJsunit2() {
       done();
     });
 
-    it('StorageLinkJsunit2_0300', 0, async function (done) {
+    it('StorageLinkJsunit2_0300', 0, async (done: Function) => {
       // Get the init value of son1 and son2
       console.info('[StorageLinkJsunit2_0300] START');
       let driver = await UiDriver.create()
@@ -93,7 +106,7 @@ export default function StorageLinkJsunit2() {
       done();
     });
 
-    it('StorageLinkJsunit2_0400', 0, async function (done) {
+    it('StorageLinkJsunit2_0400', 0, async (done: Function) => {
       // Get the init value of son1 and son2
       console.info('[StorageLinkJsunit2_0400] START');
       let driver = await UiDriver.create()
@@ -110,7 +123,7 @@ export default function StorageLinkJsunit2() {
       done();
     });
 
-    it('StorageLinkJsunit2_0500', 0, async function (done) {
+    it('StorageLinkJsunit2_0500', 0, async (done: Function) => {
       // Click to change the value of Storage
       console.info('[StorageLinkJsunit2_0500] START');
       let driver = await UiDriver.create()
@@ -127,7 +140,7 @@ export default function StorageLinkJsunit2() {
       done();
     });
 
-    it('StorageLinkJsunit2_0600', 0, async function (done) {
+    it('StorageLinkJsunit2_0600', 0, async (done: Function) => {
       // Click to change the value of Storage
       console.info('[StorageLinkJsunit2_0600] START');
       let driver = await UiDriver.create()

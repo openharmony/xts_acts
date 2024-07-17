@@ -12,19 +12,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import events_emitter from '@ohos.events.emitter'
 
 
 export default function LocalStoageLinkOneJsunit() {
-  describe('LocalStoageLinkOneJsunit', function () {
-    beforeEach(async function (done) {
+  describe('LocalStoageLinkOneJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("LocalStoageLinkOneJsunit beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/State/LocalStoageLinkOne",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/State/LocalStoageLinkOne",
       }
       try {
         router.clear();
@@ -32,7 +45,7 @@ export default function LocalStoageLinkOneJsunit() {
         console.info("get LocalStoageLinkOneJsunit state pages: " + JSON.stringify(pages));
         if (!("LocalStoageLinkOne" == pages.name)) {
           console.info("get LocalStoageLinkOneJsunit state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push LocalStoageLinkOneJsunit page result: " + JSON.stringify(result));
         }
@@ -44,7 +57,7 @@ export default function LocalStoageLinkOneJsunit() {
     });
 
 
-    it('LocalStoageLinkOneJsunit_0100', 0, async function (done) {
+    it('LocalStoageLinkOneJsunit_0100', 0, async (done: Function) => {
 
       console.info('[LocalStoageLinkOneJsunit_0100] START');
       let driver = await UiDriver.create()
@@ -62,7 +75,7 @@ export default function LocalStoageLinkOneJsunit() {
     });
 
 
-    it('LocalStoageLinkOneJsunit_0200', 0, async function (done) {
+    it('LocalStoageLinkOneJsunit_0200', 0, async (done: Function) => {
 
       console.info('[LocalStoageLinkOneJsunit_0200] START');
       let driver = await UiDriver.create()
@@ -80,7 +93,7 @@ export default function LocalStoageLinkOneJsunit() {
     });
 
 
-    it('LocalStoageLinkOneJsunit_0300', 0, async function (done) {
+    it('LocalStoageLinkOneJsunit_0300', 0, async (done: Function) => {
 
       console.info('[LocalStoageLinkOneJsunit_0300] START');
       let driver = await UiDriver.create()
@@ -98,7 +111,7 @@ export default function LocalStoageLinkOneJsunit() {
     });
 
 
-    it('LocalStoageLinkOneJsunit_0400', 0, async function (done) {
+    it('LocalStoageLinkOneJsunit_0400', 0, async (done: Function) => {
       console.info('[LocalStoageLinkOneJsunit_0400] START');
       let strJson1 = getInspectorByKey('text_getValue1');
       let obj1 = JSON.parse(strJson1);

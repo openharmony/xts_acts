@@ -13,18 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  Driver,
+  Component,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
 
 
 export default function objectLinkNumber() {
-  describe('objectLinkNumber', function () {
-    beforeEach(async function (done) {
+  describe('objectLinkNumber', () => {
+    beforeEach(async (done: Function) => {
       console.info("objectLinkNumber beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/@state/objectLinkNumber',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/@state/objectLinkNumber',
       }
       try {
         router.clear();
@@ -32,7 +44,7 @@ export default function objectLinkNumber() {
         console.info("get objectLinkNumber state pages: " + JSON.stringify(pages));
         if (!("objectLinkNumber" == pages.name)) {
           console.info("get objectLinkNumber state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push objectLinkNumber success: " + JSON.stringify(result));
         }
@@ -48,7 +60,7 @@ export default function objectLinkNumber() {
     * @tc.desc  : To test that the objectLink decorator supports union types.
     * @tc.level : Level 2
     */
-    it('objectLinkNumber_0100', 0, async function (done) {
+    it('objectLinkNumber_0100', 0, async (done: Function) => {
       console.info('objectLinkNumber_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -69,7 +81,7 @@ export default function objectLinkNumber() {
     * @tc.desc  : To test that the objectLink decorator supports union types.
     * @tc.level : Level 2
     */
-    it('objectLinkNumber_0200', 0, async function (done) {
+    it('objectLinkNumber_0200', 0, async (done: Function) => {
       console.info('objectLinkNumber_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -90,7 +102,7 @@ export default function objectLinkNumber() {
     * @tc.desc  : To test that the objectLink decorator supports union types.
     * @tc.level : Level 2
     */
-    it('objectLinkNumber_0300', 0, async function (done) {
+    it('objectLinkNumber_0300', 0, async (done: Function) => {
       console.info('objectLinkNumber_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -111,7 +123,7 @@ export default function objectLinkNumber() {
     * @tc.desc  : To test that the objectLink decorator supports union types.
     * @tc.level : Level 2
     */
-    it('objectLinkNumber_0400', 0, async function (done) {
+    it('objectLinkNumber_0400', 0, async (done: Function) => {
       console.info('objectLinkNumber_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
