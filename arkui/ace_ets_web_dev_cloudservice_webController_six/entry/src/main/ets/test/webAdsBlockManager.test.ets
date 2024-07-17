@@ -250,5 +250,50 @@ export default function ActsAceWebAdsBlockManager() {
       sendEventByKey('webViewSdkSchemeHandler', 10, '');
     })
 
+    /*
+     *@tc.number SUB_ACE_WEB_AdsBlockManager_API_0013
+     *@tc.name testEnableAdsBlockFalse
+     *@tc.desc test EnableAdsBlockFalse
+     *@tc.size MediumTest
+     *@tc.type Function
+     *@tc.level 1
+     */
+    it('testEnableAdsBlockFalse', 0, async (done: Function) => {
+      emitKey = "emitEnableAdsBlockFalse"
+      Utils.emitEvent(emitKey, 10);
+      Utils.registerEvent("testEnableAdsBlockFalse", true, 1013, done);
+      sendEventByKey('webViewSdkSchemeHandler', 10, '');
+    })
+
+    /*
+     *@tc.number SUB_ACE_WEB_AdsBlockManager_API_0014
+     *@tc.name testIsAdsBlockEnabledCheck
+     *@tc.desc test IsAdsBlockEnabledCheck
+     *@tc.size MediumTest
+     *@tc.type Function
+     *@tc.level 1
+     */
+    it('testIsAdsBlockEnabledCheck', 0, async (done: Function) => {
+      emitKey = "emitIsAdsBlockEnabledCheck"
+      Utils.emitEvent(emitKey, 10);
+      Utils.registerEvent("testIsAdsBlockEnabledCheck", true, 1014, done);
+      sendEventByKey('webViewSdkSchemeHandler', 10, '');
+    })
+
+    /*
+     *@tc.number SUB_ACE_WEB_AdsBlockManager_API_0015
+     *@tc.name testOnAdsBlockedTest
+     *@tc.desc test OnAdsBlockedTest
+     *@tc.size MediumTest
+     *@tc.type Function
+     *@tc.level 1
+     */
+    it('testOnAdsBlockedTest', 0, async (done: Function) => {
+      emitKey = "emitOnAdsBlockedTest"
+      Utils.emitEvent(emitKey, 10);
+      Utils.registerEvent("testOnAdsBlockedTest", true, 1015, done);
+      sendEventByKey('webViewSdkSchemeHandler', 10, '');
+    })
+
   })
 }
