@@ -93,7 +93,7 @@ struct webViewGetAndSetRenderProcessMode {
                       }
                       break;
                     }
-                }
+                  }
               })
           }
           Web({ src: $rawfile('common_index.html'), controller: this.controller })
