@@ -14,6 +14,7 @@
  */
 import { ToolType } from '@ohos.multimodalInput.mouseEvent'
 import Intl from '@ohos.intl';
+
 @Entry
 @Component
 struct dateTimeOptionsExample {
@@ -23,19 +24,19 @@ struct dateTimeOptionsExample {
   @State indexNumber4: number = 0
   @State isMilitaryTime: boolean = false
   @State timeformat: (TimePickerFormat)[] = [
-  TimePickerFormat.HOUR_MINUTE,
-  TimePickerFormat.HOUR_MINUTE_SECOND
+    TimePickerFormat.HOUR_MINUTE,
+    TimePickerFormat.HOUR_MINUTE_SECOND
   ]
-  @State opt:(Intl.DateTimeOptions | undefined | null )[] = [
-    {hour: 'numeric', minute: 'numeric', second: 'numeric' }, //Case 1
-    {hour: 'numeric', minute: '2-digit', second: 'numeric' }, //Case 2
-    {hour: 'numeric', minute: 'numeric', second: '2-digit' }, //Case 3
-    {hour: '2-digit', minute: '2-digit', second: '2-digit' }, //Case 4
-    {hour: '2-digit', minute: 'numeric', second: '2-digit' }, //Case 5
-    {hour: '2-digit', minute: '2-digit', second: 'numeric' }, //Case 6
-    {hour: 'undefined', minute: 'numeric', second: 'numeric' }, //Case 7
-    {hour: 'undefined', minute: '2-digit', second: 'numeric' }, //Case 8
-    {hour: 'undefined', minute: 'numeric', second: '2-digit' }, //Case 7
+  @State opt: (Intl.DateTimeOptions | undefined | null)[] = [
+    { hour: 'numeric', minute: 'numeric', second: 'numeric' }, //Case 1
+    { hour: 'numeric', minute: '2-digit', second: 'numeric' }, //Case 2
+    { hour: 'numeric', minute: 'numeric', second: '2-digit' }, //Case 3
+    { hour: '2-digit', minute: '2-digit', second: '2-digit' }, //Case 4
+    { hour: '2-digit', minute: 'numeric', second: '2-digit' }, //Case 5
+    { hour: '2-digit', minute: '2-digit', second: 'numeric' }, //Case 6
+    { hour: 'undefined', minute: 'numeric', second: 'numeric' }, //Case 7
+    { hour: 'undefined', minute: '2-digit', second: 'numeric' }, //Case 8
+    { hour: 'undefined', minute: 'numeric', second: '2-digit' }, //Case 7
     undefined,
     null
   ]
@@ -85,27 +86,27 @@ struct dateTimeOptionsExample {
         .height("30%")
         .useMilitaryTime(this.isMilitaryTime)
         .onChange((value: TimePickerResult) => {
-          if(value.hour) {
+          if (value.hour) {
             this.setTime[this.indexNumber1].setHours(value.hour, value.minute)
             console.info('select current date is: ' + JSON.stringify(value))
           }
         })
-        .selectedTextStyle({color: Color.Blue, font: {size: 30, weight: FontWeight.Bolder}})
+        .selectedTextStyle({ color: Color.Blue, font: { size: 30, weight: FontWeight.Bolder } })
         .dateTimeOptions(this.opt[this.indexNumber2])
 
-      Row({space: 2}){
+      Row({ space: 2 }) {
         Button('Set TimeType ++')
           .id("dateTimeOptionsXTS")
           .margin(10)
           .onClick(() => {
             this.indexNumber2++
-            if (this.indexNumber2 > this.opt.length -1) {
+            if (this.indexNumber2 > this.opt.length - 1) {
               this.indexNumber2 = 0
             }
           })
       }
 
-      Row({space: 2}){
+      Row({ space: 2 }) {
         Button('Set TimeType --')
           .margin(10)
           .onClick(() => {
@@ -132,10 +133,10 @@ struct dateTimeOptionsExample {
         })
 
       Text("Time Format: " + this.timeformatString[this.indexNumber4]).fontSize(12).fontColor(Color.Blue).width("100%")
-      Row({space: 2}){
+      Row({ space: 2 }) {
         Button("Change Date and Time").margin(5).onClick(() => {
           this.indexNumber1++
-          if(this.indexNumber1 > this.setTime.length - 1) {
+          if (this.indexNumber1 > this.setTime.length - 1) {
             this.indexNumber1 = 0
           }
         })

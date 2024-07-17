@@ -14,13 +14,16 @@
  */
 
 class MySwitchStyle implements ContentModifier<ToggleConfiguration> {
-  constructor() {}
-  applyContent() : WrappedBuilder<[ToggleConfiguration]>
-  {
+  constructor() {
+  }
+
+  applyContent(): WrappedBuilder<[ToggleConfiguration]> {
     return wrapBuilder(buildSwitch)
   }
 }
-@Builder function buildSwitch(config: ToggleConfiguration) {
+
+@Builder
+function buildSwitch(config: ToggleConfiguration) {
   Column({ space: 10 }) {
     Text(String(config.isOn)).id('ToggleContentModifier_text')
     Row() {
@@ -43,7 +46,7 @@ class MySwitchStyle implements ContentModifier<ToggleConfiguration> {
 struct ToggleContentModifierTest {
   build() {
     Column({ space: 50 }) {
-      Toggle({ type: ToggleType.Switch, isOn: false})
+      Toggle({ type: ToggleType.Switch, isOn: false })
         .contentModifier(new MySwitchStyle())
         .onChange((isOn: boolean) => {
           console.info('Switch Log:' + isOn)

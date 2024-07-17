@@ -14,20 +14,22 @@
  */
 
 class MyRadioStyle implements ContentModifier<RadioConfiguration> {
-  constructor() {}
-  applyContent() : WrappedBuilder<[RadioConfiguration]>
-  {
+  constructor() {
+  }
+
+  applyContent(): WrappedBuilder<[RadioConfiguration]> {
     return wrapBuilder(buildRadio)
   }
 }
 
-@Builder function buildRadio(config: RadioConfiguration) {
-  Column({ space:10 }) {
+@Builder
+function buildRadio(config: RadioConfiguration) {
+  Column({ space: 10 }) {
     Text(config.value)
     Button(config.checked ? "off" : "on")
       .id('RadioContentModifier_btn')
       .backgroundColor(0xAABBCC)
-      .onClick(()=>{
+      .onClick(() => {
         if (config.checked) {
           config.triggerChange(false)
         } else {

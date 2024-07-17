@@ -15,16 +15,16 @@
 
 @Entry
 @Component
-
 struct DividerTest {
   private select: number = 1
   private fruits: string[] = ['apple1', 'orange2', 'peach3', 'grape4']
+
   build() {
     Row() {
       Column() {
         TextPicker({ range: this.fruits, selected: this.select })
           .key('dividerKey0')
-          .divider({ strokeWidth: 10,startMargin: 11, endMargin: 12,color: Color.Green })
+          .divider({ strokeWidth: 10, startMargin: 11, endMargin: 12, color: Color.Green })
           .width('100%')
       }
       .width('100%')

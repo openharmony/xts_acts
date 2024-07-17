@@ -13,12 +13,13 @@
  * limitations under the License.
  */
 import json from '@ohos.util.json'
+
 @Entry
 @Component
 struct CheckboxExample {
   @Builder
   indicatorBuilder() {
-    Column(){
+    Column() {
       Text('9')
         .textAlign(TextAlign.Center)
         .fontSize(20)
@@ -27,11 +28,14 @@ struct CheckboxExample {
         .id('text')
     }
   }
+
   build() {
     Row() {
       Column() {
-        Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center}) {
-          Checkbox({ name: 'checkbox1', group: 'checkboxGroup', indicatorBuilder:()=>{this.indicatorBuilder()}})
+        Flex({ justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
+          Checkbox({ name: 'checkbox1', group: 'checkboxGroup', indicatorBuilder: () => {
+            this.indicatorBuilder()
+          } })
             .id('btn')
           Text('Checkbox1').fontSize(20)
         }.padding(15)

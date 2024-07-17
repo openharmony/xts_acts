@@ -14,20 +14,21 @@
  */
 
 class MyRatingStyle implements ContentModifier<RatingConfiguration> {
+  constructor() {
+  }
 
-  constructor() {}
-
-  applyContent() : WrappedBuilder<[RatingConfiguration]> {
+  applyContent(): WrappedBuilder<[RatingConfiguration]> {
     return wrapBuilder(buildRating)
   }
 }
 
-@Builder function buildRating(config: RatingConfiguration) {
-  Column({space:10}) {
+@Builder
+function buildRating(config: RatingConfiguration) {
+  Column({ space: 10 }) {
     Text("Rating" + config.rating).id('RatingContentModifier_text')
     Button('triggerChange')
       .id('RatingContentModifier_btn')
-      .onClick(()=>{
+      .onClick(() => {
         config.triggerChange(2)
       })
   }
@@ -36,16 +37,15 @@ class MyRatingStyle implements ContentModifier<RatingConfiguration> {
 @Entry
 @Component
 struct RatingContentModifierTest {
-
   build() {
-    Column({space:10}) {
+    Column({ space: 10 }) {
       Rating({
         rating: 0,
       })
         .stars(5)
         .width('100%')
         .onChange((value: number) => {
-          console.info('Rating change is'+ value);
+          console.info('Rating change is' + value);
         })
         .contentModifier(new MyRatingStyle())
 

@@ -16,7 +16,7 @@
 @Entry
 @Component
 struct RadioIndicatorTypeTest {
-  @State text:string = ''
+  @State text: string = ''
 
   @Builder
   indicatorBuilder() {
@@ -24,11 +24,11 @@ struct RadioIndicatorTypeTest {
   }
 
   build() {
-    Column({space:10}) {
+    Column({ space: 10 }) {
       Column() {
         Text('Radio1')
         Radio({ value: 'Radio1', group: 'radioGroup1',
-          indicatorType:RadioIndicatorType.TICK
+          indicatorType: RadioIndicatorType.TICK
         })
           .width('80vp')
           .height('80vp')
@@ -39,7 +39,7 @@ struct RadioIndicatorTypeTest {
       Column() {
         Text('Radio2')
         Radio({ value: 'Radio2', group: 'radioGroup2',
-          indicatorType:RadioIndicatorType.DOT
+          indicatorType: RadioIndicatorType.DOT
         })
           .width('80vp')
           .height('80vp')
@@ -50,15 +50,16 @@ struct RadioIndicatorTypeTest {
       Column() {
         Text('Radio3')
         Radio({ value: 'Radio3', group: 'radioGroup3',
-          indicatorType:RadioIndicatorType.CUSTOM,
-          indicatorBuilder:()=>{this.indicatorBuilder()}
+          indicatorType: RadioIndicatorType.CUSTOM,
+          indicatorBuilder: () => {
+            this.indicatorBuilder()
+          }
         })
           .width('80vp')
           .height('80vp')
           .checked(true)
           .id('RadioIndicatorType_Radio3')
       }
-
 
     }.width('100%')
   }

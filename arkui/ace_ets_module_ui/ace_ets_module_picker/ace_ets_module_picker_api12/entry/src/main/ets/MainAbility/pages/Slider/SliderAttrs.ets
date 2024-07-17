@@ -36,7 +36,7 @@ struct SliderAttrsTest {
         .onChange((value: number, mode: SliderChangeMode) => {
           this.value2 = value
         })
-      Text((this.value2 > 0)?'true':'false').id('SliderAttrs_text2')
+      Text((this.value2 > 0) ? 'true' : 'false').id('SliderAttrs_text2')
 
 
       Slider({ style: SliderStyle.InSet, value: this.value3, min: 0, max: 100 })

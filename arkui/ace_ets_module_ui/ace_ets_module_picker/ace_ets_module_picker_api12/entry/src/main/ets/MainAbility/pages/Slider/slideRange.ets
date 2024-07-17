@@ -1,4 +1,3 @@
-
 @Entry
 @Component
 struct SliderExample {
@@ -16,7 +15,7 @@ struct SliderExample {
           })
             .id("slideRangeValue")
             .showSteps(true)
-            .slideRange({from:20, to:80})
+            .slideRange({ from: 20, to: 80 })
         }
         .width('80%')
       }.width('100%')

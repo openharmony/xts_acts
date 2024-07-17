@@ -25,9 +25,9 @@ struct gradientHeightExample {
         .onChange((value: string | string[], index: number | number[]) => {
           console.info('Picker item changed, value: ' + value + ', index: ' + index)
         })
-        .disappearTextStyle({color: Color.Red, font: {size: 15, weight: FontWeight.Lighter}})
-        .textStyle({color: Color.Black, font: {size: 20, weight: FontWeight.Normal}})
-        .selectedTextStyle({color: Color.Blue, font: {size: 30, weight: FontWeight.Bolder}})
+        .disappearTextStyle({ color: Color.Red, font: { size: 15, weight: FontWeight.Lighter } })
+        .textStyle({ color: Color.Black, font: { size: 20, weight: FontWeight.Normal } })
+        .selectedTextStyle({ color: Color.Blue, font: { size: 30, weight: FontWeight.Bolder } })
         .gradientHeight(100)
     }.width('100%').height('100%')
   }

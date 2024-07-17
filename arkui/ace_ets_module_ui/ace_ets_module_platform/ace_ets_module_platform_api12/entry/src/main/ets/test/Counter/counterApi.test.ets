@@ -15,11 +15,25 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {UiComponent, UiDriver, Component, Driver, MouseButton, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  MouseButton,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 
 export default function counterApi() {
-  describe('counterApi', function () {
-    beforeEach(async function (done) {
+  describe('counterApi', () => {
+    beforeEach(async (done: Function) => {
       console.info("counterApi beforeEach start");
       try {
         router.clear();
@@ -27,7 +41,9 @@ export default function counterApi() {
         console.info("get counterApi state pages:" + JSON.stringify(pages));
         if (!("counterApi" == pages.name)) {
           console.info("get Context pages.name:" + JSON.stringify(pages.name));
-          let result = await router.pushUrl({url:"MainAbility/pages/Counter/counterApi"})
+          let result = await router.pushUrl({
+            url: "MainAbility/pages/Counter/counterApi"
+          })
           await CommonFunc.sleep(2000);
           console.info("push counterApi page result:" + JSON.stringify(result));
         }
@@ -37,19 +53,19 @@ export default function counterApi() {
       console.info("counterApi foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("counterApi after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_UI_COMPONENT_CounterComponent_001
-     * @tc.desc      onFocusIncrease test of CounterComponent
-     * @tc.level     Level 3
+     * @tc.number SUB_ACE_UI_COMPONENT_CounterComponent_001
+     * @tc.desc onFocusIncrease test of CounterComponent
+     * @tc.level Level 3
      * @tc.type
      */
 
-    it('counterApi_001', 0, async function (done) {
+    it('counterApi_001', 0, async (done: Function) => {
       console.info('[counterApi_001] START');
 
       await CommonFunc.sleep(1000);
@@ -71,13 +87,13 @@ export default function counterApi() {
     });
 
     /**
-     * @tc.number    SUB_ACE_UI_COMPONENT_CounterComponent_002
-     * @tc.desc      onBlurIncrease and onFocusDecrease test of CounterComponent
-     * @tc.level     Level 3
+     * @tc.number SUB_ACE_UI_COMPONENT_CounterComponent_002
+     * @tc.desc onBlurIncrease and onFocusDecrease test of CounterComponent
+     * @tc.level Level 3
      * @tc.type
      */
 
-    it('counterApi_002', 0, async function (done) {
+    it('counterApi_002', 0, async (done: Function) => {
       console.info('[counterApi_002] START');
 
       await CommonFunc.sleep(1000);
@@ -89,27 +105,25 @@ export default function counterApi() {
       let strJson = getInspectorByKey('counterApiText1');
       let strJson2 = getInspectorByKey('counterApiText2');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
-      let obj2 = JSON.parse(strJson2);
-      console.info("[counterApi_002] component obj is: " + JSON.stringify(obj));
-      console.info("[counterApi_002] component obj is: " + JSON.stringify(obj2));
+      console.info("[counterApi_002] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[counterApi_002] component obj is: " + JSON.stringify(JSON.parse(strJson2)));
       await CommonFunc.sleep(1000);
 
-      expect(obj.$attrs.content).assertEqual('onFocusIncrease');
-      expect(obj2.$attrs.content).assertEqual('onBlurDecrease');
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('onFocusIncrease');
+      expect(JSON.parse(strJson2).$attrs.content).assertEqual('onBlurDecrease');
       console.info('[counterApi_002] END');
       done();
 
     });
 
     /**
-     * @tc.number    SUB_ACE_UI_COMPONENT_CounterComponent_003
-     * @tc.desc      onBlurDecrease test of CounterComponent
-     * @tc.level     Level 3
+     * @tc.number SUB_ACE_UI_COMPONENT_CounterComponent_003
+     * @tc.desc onBlurDecrease test of CounterComponent
+     * @tc.level Level 3
      * @tc.type
      */
 
-    it('counterApi_003', 0, async function (done) {
+    it('counterApi_003', 0, async (done: Function) => {
       console.info('[counterApi_003] START');
 
       await CommonFunc.sleep(1000);
@@ -120,20 +134,13 @@ export default function counterApi() {
       await CommonFunc.sleep(1000);
       let strJson2 = getInspectorByKey('counterApiText1');
       await CommonFunc.sleep(200);
-      let obj2 = JSON.parse(strJson2);
-      console.info("[counterApi_003] component obj is: " + JSON.stringify(obj2));
+      console.info("[counterApi_003] component obj is: " + JSON.stringify(JSON.parse(strJson2)));
       await CommonFunc.sleep(1000);
 
-      expect(obj2.$attrs.content).assertEqual('onBlurIncrease');
+      expect(JSON.parse(strJson2).$attrs.content).assertEqual('onBlurIncrease');
       console.info('[counterApi_003] END');
       done();
 
     });
-
-
-
-
-
-
   })
 }

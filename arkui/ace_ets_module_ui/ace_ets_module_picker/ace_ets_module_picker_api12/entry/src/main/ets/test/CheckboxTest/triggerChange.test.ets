@@ -12,16 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../../MainAbility/common/Utils';
 
 export default function triggerChange() {
-  describe('triggerChange', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/Checkbox/triggerChange',
+  describe('triggerChange', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Checkbox/triggerChange',
       }
       try {
         router.clear();
@@ -29,7 +29,7 @@ export default function triggerChange() {
         console.info("get triggerChange state success " + JSON.stringify(pages));
         if (!("triggerChange" == pages.name)) {
           console.info("get triggerChange state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(1000);
           console.info("push triggerChange page success " + JSON.stringify(result));
         }
@@ -39,12 +39,12 @@ export default function triggerChange() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("triggerChange after each called");
     });
 
-    it('triggerChangeTest_0100', 0, async function (done) {
+    it('triggerChangeTest_0100', 0, async (done: Function) => {
       console.info('triggerChangeText_0100 START');
       let strJson = getInspectorByKey('triggerChangeMessage');
       console.info("triggerChangeText_0100 component strJson:" + strJson);

@@ -14,12 +14,16 @@
  */
 
 class MyToggleStyle implements ContentModifier<ToggleConfiguration> {
-  constructor() { }
+  constructor() {
+  }
+
   applyContent(): WrappedBuilder<[ToggleConfiguration]> {
     return wrapBuilder(buildToggle)
   }
 }
-@Builder function buildToggle(config: ToggleConfiguration) {
+
+@Builder
+function buildToggle(config: ToggleConfiguration) {
   Column({ space: 10 }) {
     Text('isOn status is: ' + config.isOn)
       .id('ToggleContentModifier_isOn')

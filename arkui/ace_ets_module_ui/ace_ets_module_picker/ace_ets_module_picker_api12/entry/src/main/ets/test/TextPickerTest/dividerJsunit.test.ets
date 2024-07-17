@@ -20,8 +20,8 @@ import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPatter
 
 
 export default function dividerJsunit() {
-  describe('dividerJsunit', function () {
-    beforeEach(async function (done) {
+  describe('dividerJsunit', () =>{
+    beforeEach(async  (done:Function) =>{
       console.info("dividerJsunit beforeEach start");
       let options = {
         uri: 'MainAbility/pages/TextPicker/divider',
@@ -51,7 +51,7 @@ export default function dividerJsunit() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('ArkUI_TextPicker_DividerJsunit_1000', 0, async function (done) {
+    it('ArkUI_TextPicker_DividerJsunit_1000', 0, async  (done:Function) =>{
       console.info('[ArkUI_TextPicker_DividerJsunit_1000] START');
       let strJson = getInspectorByKey('dividerKey0');
       let obj = JSON.parse(strJson);
