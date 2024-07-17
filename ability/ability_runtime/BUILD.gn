@@ -35,6 +35,7 @@ group("ability_runtime") {
       "actsautofilltest:actsautofilltest",
       "actscalldataabilitytest:ActsCallDataAbilityTest",
       "actscalltest:actscalltest",
+      "actschildprocessmanager:actschildprocessmanagertest",
       "actscleantemptest:cleantempfiles",
       "actscrosscall:actscrosscall",
       "actsdataabilityaccessdatasharetest:dataabilityaccessdatashare",
