@@ -20,7 +20,8 @@ struct TabsExample_CONTENT_FIRST {
   @State currentIndex: number = 0
   private controller: TabsController = new TabsController()
 
-  @Builder tabBuilder(index: number, name: string) {
+  @Builder
+  tabBuilder(index: number, name: string) {
     Column() {
       Text(name)
         .fontColor(this.currentIndex === index ? this.selectedFontColor : this.fontColor)
