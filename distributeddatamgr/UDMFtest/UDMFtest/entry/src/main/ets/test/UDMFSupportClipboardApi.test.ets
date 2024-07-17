@@ -368,5 +368,41 @@ export default function UDMFSupportClipboardApiTest() {
       const data4 = records[3].getValue();
       expect(data4).assertEqual(8899.7788);
     });
+    /**
+     * @tc.number    : SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0900
+     * @tc.name      : testUnifiedDataChannelProperties
+     * @tc.desc      : unifiedDataChannel properties test
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0900', 0, async () => {
+      const TAG = 'SUB_DistributedData_UDMF_SDK_UDMFSupportClipboardApiTest_0900';
+      console.info(TAG, 'start');
+      let obj:unifiedDataChannel.ValueType = { foo: "bar", baz: 42 };
+      let record1 = new unifiedDataChannel.UnifiedRecord('otherType', false);
+      let unifiedData = new unifiedDataChannel.UnifiedData(record1);
+      let record2 = new unifiedDataChannel.UnifiedRecord('otherType', undefined);
+      unifiedData.addRecord(record2);
+      let record3 = new unifiedDataChannel.UnifiedRecord('otherType', null);
+      unifiedData.addRecord(record3);
+      let record4 = new unifiedDataChannel.UnifiedRecord('otherType', true);
+      unifiedData.addRecord(record4);
+      let record5 = new unifiedDataChannel.UnifiedRecord('otherType', obj);
+      unifiedData.addRecord(record5);
+      let records = unifiedData.getRecords();
+      expect(records.length).assertEqual(5);
+      const data1 = records[0].getValue() as Boolean;
+      expect(data1).assertEqual(false);
+      const data2 = records[1].getValue();
+      expect(data2).assertEqual(undefined);
+      const data3 = records[2].getValue();
+      expect(data3).assertEqual(null);
+      const data4 = records[3].getValue() as Boolean ;
+      expect(data4).assertEqual(true);
+      const data5 = records[4].getValue() as object;
+      expect(data5["foo"]).assertEqual("bar");
+      expect(data5["baz"]).assertEqual(42);
+    });
   })
 }
