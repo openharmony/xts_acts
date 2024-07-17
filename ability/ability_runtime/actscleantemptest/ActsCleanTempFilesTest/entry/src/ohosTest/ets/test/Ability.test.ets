@@ -35,7 +35,7 @@ let ACTS_Register: commonEvent.CommonEventSubscribeInfo = {
 };
 
 export default function abilityTest() {
-describe('ActsCleanTempFilesTest', () =>  {
+  describe('ActsCleanTempFilesTest', () =>  {
 
     /*
      * @tc.number: SUB_Ability_AbilityRuntime_AppManager_CleanCacheFiles_0100
