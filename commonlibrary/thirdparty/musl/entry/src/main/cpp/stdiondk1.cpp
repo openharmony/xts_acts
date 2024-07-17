@@ -144,7 +144,7 @@ static napi_value Snprintf_Chk_One(napi_env env, napi_callback_info info)
     char dest[100] = {0};
     char src[] = "hello";
     int ret = __snprintf_chk(dest, PARAM_50, PARAM_0, sizeof(dest), "%s", src);
-    if ( ret == PARAM_5 && strcmp(dest,src) == 0 ) {
+    if (ret == PARAM_5 && strcmp(dest,src) == 0) {
         ret = PARAM_1;
     }
     napi_value result = nullptr;
@@ -159,7 +159,7 @@ static napi_value Sprintf_Chk_One(napi_env env, napi_callback_info info)
     char dest[100] = {0};
     char src[] = "hello";
     int ret = __sprintf_chk(dest, PARAM_0, sizeof(dest), "%s", src);
-    if ( ret == PARAM_5 && strcmp(dest,src) == 0 ) {
+    if (ret == PARAM_5 && strcmp(dest,src) == 0) {
         ret = PARAM_1;
     }
     napi_value result = nullptr;
