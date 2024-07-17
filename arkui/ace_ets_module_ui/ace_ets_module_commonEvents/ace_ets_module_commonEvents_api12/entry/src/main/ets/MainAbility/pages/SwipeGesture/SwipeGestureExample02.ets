@@ -99,7 +99,7 @@ struct SwipeGestureExample02 {
       Text(`repeat:${this.repeat}`).key('SwipeGestureExample02_repeat')
       Text(`${this.offsetX}`).key('SwipeGestureExample02_offsetX')
       Text(`${this.offsetY}`).key('SwipeGestureExample02_offsetY')
-      Text(`angle:${this.angle}`).key('SwipeGestureExample02_angle')
+      Text(`${this.angle}`).key('SwipeGestureExample02_angle')
       Text(`scale:${this.scale1}`).key('SwipeGestureExample02_scale')
       Text(`pinchCenterX:${this.pinchCenterX}`).key('SwipeGestureExample02_pinchCenterX')
       Text(`pinchCenterY:${this.pinchCenterY}`).key('SwipeGestureExample02_pinchCenterY')
