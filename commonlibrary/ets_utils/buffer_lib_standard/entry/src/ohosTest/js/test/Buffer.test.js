@@ -4799,4 +4799,86 @@ describe('BufferTest', function () {
     let toStr = strbuf.toString("latin1");
     expect(toStr).assertEqual("abcdefhajksalfsdfjl12346287467823®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ");
    });
+
+   /**
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30000
+    * @tc.name: testLastIndexOf30000
+    * @tc.desc: The index of the last occurrence of value in buf.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 2
+    */
+   it("testLastIndexOf30000", 0, function () {
+    let buf1 = buffer.from("13236235");
+    let index = buf1.lastIndexOf("23", 9999999999999);
+    expect(index).assertEqual(5);
+   });
+
+   /**
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30010
+    * @tc.name: testIncludes30010
+    * @tc.desc: Returns true if value was found in buf, false otherwise.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 2
+    */
+   it("testIncludes30010", 0, function () {
+    let buf1 = buffer.from("abcdefghigk");
+    let flag = buf1.includes("f", -3);
+    expect(flag).assertEqual(false);
+   });
+
+    /**
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30020
+    * @tc.name: testIncludes30020
+    * @tc.desc: Returns true if value was found in buf, false otherwise.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 2
+    */
+   it("testIncludes30020", 0, function () {
+    let buf1 = buffer.from("abcdefghigk");
+    let flag = buf1.includes("f", 9999999999999);
+    expect(flag).assertEqual(false);
+   });
+
+    /**
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30030
+    * @tc.name: testIncludes30030
+    * @tc.desc: Returns true if value was found in buf, false otherwise.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 2
+    */
+   it("testIncludes30030", 0, function () {
+    let buf1 = buffer.from("abcdefghigk");
+    let flag = buf1.includes("f", -9999999999999);
+    expect(flag).assertEqual(true);
+   });
+
+    /**
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30040
+    * @tc.name: testAlloc30040
+    * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 2
+    */
+   it("testAlloc30040", 0, function () {
+    let buf = buffer.alloc(10, '');
+    expect(buf.length).assertEqual(10);
+   });
+
+    /**
+    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30050
+    * @tc.name: testAlloc30050
+    * @tc.desc: Allocates a new Buffer for a fixed size bytes. If fill is undefined, the Buffer will be zero-filled.
+    * @tc.size: MediumTest
+    * @tc.type: Function
+    * @tc.level: Level 2
+    */
+   it("testAlloc30050", 0, function () {
+    let buf = buffer.alloc(20).fill('');
+    expect(buf.length).assertEqual(20);
+   });
 })}
