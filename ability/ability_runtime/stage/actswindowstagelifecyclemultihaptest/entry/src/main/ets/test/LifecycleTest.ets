@@ -28,7 +28,7 @@ function handlerMessage(callback: (str: string) => void): number {
     clearInterval(intervalId);
   }
   intervalId = setInterval(() => {
-    let event: Array<string> = globalThis.testEvent;
+    let event: string[] = globalThis.testEvent;
     globalThis.testEvent = [];
     if (event && event.length > 0) {
       event.forEach(str => {
@@ -774,7 +774,7 @@ export default function abilityTest() {
     it('Multihap_WindowStageLifecycleTest_010', 0, async (done: Function) => {
       console.info("---------------Multihap_WindowStageLifecycleTest_010 is start---------------")
       TAG = "Multihap_WindowStageLifecycleTest_010";
-      let listKeyTemp:Array<string> = [];
+      let listKeyTemp:string[] = [];
       let eventCallback = (event: string) => {
         console.log(TAG + " eventCallback, event is :" + event);
         if (event === 'MainAbility2onForeground') {

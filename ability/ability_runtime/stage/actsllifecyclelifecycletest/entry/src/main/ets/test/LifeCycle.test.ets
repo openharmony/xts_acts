@@ -36,7 +36,7 @@ function startAbilityTest(abilityName: string, tag: string) {
 
 function getAbilityLifeCycleFilter(abilityName: string, TEST_CASE_NAME: string, listKey?: []) {
   hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} ${abilityName} list :${JSON.stringify(listKey)}`);
-  let listKeyTemp:Array<string> = [];
+  let listKeyTemp:string[] = [];
   let temListKey = listKey
   if (!temListKey) {
     temListKey = globalThis.mainAbilityAListKey
@@ -63,7 +63,7 @@ function clearAbilityLifeCycle(listKey?: []) {
 }
 
 function getStageLifeCycleFilter(abilityName: string, TEST_CASE_NAME: string) {
-  let listKeyTemp:Array<string> = [];
+  let listKeyTemp:string[] = [];
   for (let i = 0; i < globalThis.mainAbilityStageListKey.length; i++) {
     let item: string = globalThis.mainAbilityStageListKey[i]
     if (item.includes(abilityName)) {
@@ -234,7 +234,7 @@ export default function abilityTest() {
      */
     it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0600', 3, async (done:Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0600';
-      let listKeyTemp:Array<string> = [];
+      let listKeyTemp:string[] = [];
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
       await sleep(1000);
 
@@ -286,7 +286,7 @@ export default function abilityTest() {
      */
     it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0700', 3, async (done:Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0700';
-      let listKeyTemp:Array<string> = [];
+      let listKeyTemp:string[] = [];
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
       await sleep(1000);
       listKeyTemp = getAbilityLifeCycleFilter("MainAbilityA", TEST_CASE_NAME);
@@ -346,7 +346,7 @@ export default function abilityTest() {
      */
     it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0800', 3, async (done:Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0800';
-      let listKeyTemp:Array<string> = [];
+      let listKeyTemp:string[] = [];
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
       await sleep(1000);
       listKeyTemp = getAbilityLifeCycleFilter("MainAbilityA", TEST_CASE_NAME)
@@ -401,7 +401,7 @@ export default function abilityTest() {
      */
     it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0900', 3, async (done:Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_0900';
-      let listKeyTemp:Array<string> = [];
+      let listKeyTemp:string[] = [];
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
       await sleep(1000);
       listKeyTemp = getAbilityLifeCycleFilter("MainAbilityA", TEST_CASE_NAME)
@@ -460,7 +460,7 @@ export default function abilityTest() {
      */
     it('SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1000', 3, async (done:Function) => {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1000';
-      let listKeyTemp:Array<string> = [];
+      let listKeyTemp:string[] = [];
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
       await sleep(1000);
       listKeyTemp = getStageLifeCycleFilter("MainAbilityA", TEST_CASE_NAME)
@@ -582,7 +582,7 @@ export default function abilityTest() {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1300';
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
       await sleep(1000);
-      let listKeyTemp :Array<string> = [];
+      let listKeyTemp :string[] = [];
       startAbilityTest("MainAbilitySingle1", TEST_CASE_NAME)
       await sleep(1000);
       listKeyTemp = getAbilityLifeCycleFilter("MainAbilitySingle1", TEST_CASE_NAME)
@@ -612,7 +612,7 @@ export default function abilityTest() {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1400';
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
       await sleep(1000);
-      let listKeyTemp :Array<string> = [];
+      let listKeyTemp :string[] = [];
       startAbilityTest("MainAbility3", TEST_CASE_NAME)
       await sleep(1000);
       listKeyTemp = getAbilityLifeCycleFilter("MainAbility3", TEST_CASE_NAME)
@@ -645,7 +645,7 @@ export default function abilityTest() {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1500';
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
       await sleep(1000);
-      let listKeyTemp:Array<string> = [];
+      let listKeyTemp:string[] = [];
       let callBackId1 = globalThis.mainAbilityACallBackId
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} MainAbilityA callBackId1:${callBackId1}`);
       startAbilityTest("MainAbilityB", TEST_CASE_NAME)
@@ -692,7 +692,7 @@ export default function abilityTest() {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1600';
       startAbilityTest("MainAbilityMultitonA", TEST_CASE_NAME)
       await sleep(1000);
-      let listKeyTemp :Array<string> = [];
+      let listKeyTemp :string[] = [];
       let callBackId1 = globalThis.mainMultitonAbilityACallBackId
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} MainAbilityA callBackId1:${callBackId1}`);
       startAbilityTest("MainAbilityC", TEST_CASE_NAME)
@@ -749,7 +749,7 @@ export default function abilityTest() {
       TEST_CASE_NAME = 'SUB_Ability_AbilityRuntime_LifeCycle_LifeCycleTest_1700';
       startAbilityTest("MainAbilityA", TEST_CASE_NAME)
       await sleep(1000);
-      let listKeyTemp:Array<string> = [];
+      let listKeyTemp:string[] = [];
       let curCallBackId = globalThis.mainAbilityACallBackId
       hilog.info(0x000, `${TAG}`, `${TEST_SUITE_NAME}#${TEST_CASE_NAME} MainAbilityA callBackId:${curCallBackId}`);
       startAbilityTest("MainAbilityB", TEST_CASE_NAME)

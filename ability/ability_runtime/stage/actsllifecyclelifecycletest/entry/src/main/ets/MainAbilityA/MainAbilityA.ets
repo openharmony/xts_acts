@@ -27,7 +27,7 @@ export default class MainAbilityA extends UIAbility {
     hilog.info(0x0000, TEST_TAG, `MainAbilityA onCreate`);
     globalThis.abilityWant = want;
 
-    let listKey:Array<string> = [];
+    let listKey:string[] = [];
     let abilityName = "";
     let AbilityLifecycleCallback:AbilityLifecycleCallback = {
       onAbilityCreate(ability) {

@@ -24,14 +24,14 @@ import base from '@ohos.base';
 const TEST_TAG = "TAG_MainAbilityA"
 
 export default class MainAbilityA extends UIAbility {
-  onCreate(want:Want, launchParam:AbilityConstant.LaunchParam) {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
     hilog.info(0x0000, TEST_TAG, `MainAbilityA onCreate`);
     if (!globalThis.mainAbilityMultitionAContexts) {
       globalThis.mainAbilityMultitionAContexts = []
     }
     globalThis.mainAbilityMultitionAContexts.push(this.context)
 
-    let listKey: Array<string> = [];
+    let listKey: string[] = [];
     let abilityName = "";
     let AbilityLifecycleCallback: AbilityLifecycleCallback = {
       onAbilityCreate(ability) {
@@ -90,9 +90,10 @@ export default class MainAbilityA extends UIAbility {
   onDestroy() {
     hilog.info(0x0000, TEST_TAG, '%{public}s', 'Ability onDestroy');
     globalThis.ApplicationContextMultitonA
-      .unregisterAbilityLifecycleCallback(globalThis.mainAbilityACallBackId, (error:base.BusinessError, data:ESObject) => {
-        hilog.info(0x0000, TEST_TAG, 'unregisterAbilityLifecycleCallback err: %{public}s', JSON.stringify(error) ?? '');
-      });
+      .unregisterAbilityLifecycleCallback(globalThis.mainAbilityACallBackId,
+        (error: base.BusinessError, data: ESObject) => {
+          hilog.info(0x0000, TEST_TAG, 'unregisterAbilityLifecycleCallback err: %{public}s', JSON.stringify(error) ?? '');
+        });
   }
 
   onWindowStageCreate(windowStage: window.WindowStage) {

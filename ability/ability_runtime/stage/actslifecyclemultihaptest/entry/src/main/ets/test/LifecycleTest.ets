@@ -34,7 +34,7 @@ function handlerMessage(callback:(str:string)=>void) :number{
     clearInterval(intervalId);
   }
   intervalId = setInterval(()=>{
-    let event:Array<string> = globalThis.testEvent;
+    let event:string[] = globalThis.testEvent;
     globalThis.testEvent = [];
     if (event && event.length > 0) {
       event.forEach(str => {

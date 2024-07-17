@@ -618,7 +618,7 @@ export default function lifecycleTest() {
       let id1 = -1;
       let id2 = -1;
       let id3 = -1;
-      let listKey8: Array<string> = [];
+      let listKey8: string[] = [];
       let AbilityLifecycleCallback: AbilityLifecycleCallback = {
         onAbilityCreate(ability) {
           console.log(TAG + " onAbilityCreate ability:" + JSON.stringify(ability));
