@@ -16,6 +16,8 @@
 import batteryInfo from '@ohos.batteryInfo';
 import { describe, it, expect } from '@ohos/hypium'
 
+const ERROR_CODE = 202;
+
 export default function BatteryInfoTest() {
 describe('BatteryInfoTest', function () {
     console.log("*************Battery Unit Test Begin*************");
@@ -569,6 +571,150 @@ describe('BatteryInfoTest', function () {
         console.info('CommonEventBatteryChangedCode_CAPACITY_LEVEL = '
             + batteryInfo.CommonEventBatteryChangedKey.EXTRA_CAPACITY_LEVEL);
         expect(batteryInfo.CommonEventBatteryChangedKey.EXTRA_CAPACITY_LEVEL == 'capacityLevel').assertTrue();
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_BatteryInfo_JSTest_0400
+     * @tc.name nowCurrent_JSTest
+     * @tc.desc Battery nowCurrent Interface Test
+     * @tc.level: Level 3
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('nowCurrent_JSTest', 0, function () {
+        let nowCurrent = batteryInfo.nowCurrent;
+        console.info('nowCurrent = ' + nowCurrent);
+        expect(nowCurrent >= -10000 && nowCurrent <= 10000).assertTrue();
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0010
+     * @tc.name testSystem_API_Test_batteryInfo_Manager_0100
+     * @tc.desc Test the third-party application call setBatteryConfig will be blocked
+     * @tc.level: Level 3
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('System_API_Test_batteryInfo_Manager_0100', 0, async function (done) {
+        let TAG = 'System_API_Test_batteryInfo_Manager_0100';
+        let sceneName = 'batteryInfo';
+        let sceneValue = '1';
+        try {
+            let result = batteryInfo.setBatteryConfig(sceneName, sceneValue);
+            console.info(TAG + " result: " + result);
+        } catch (error) {
+            console.info(TAG + ` setBatteryConfig err: ${error.code}  ${error.message}`);
+            expect(error.code).assertEqual(ERROR_CODE);
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0020
+     * @tc.name testSystem_API_Test_batteryInfo_Manager_0200
+     * @tc.desc Test the third-party application call getBatteryConfig will be blocked
+     * @tc.level: Level 3
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('System_API_Test_batteryInfo_Manager_0200', 0, async function (done) {
+        let TAG = 'System_API_Test_batteryInfo_Manager_0200';
+        let sceneName = 'batteryInfo';
+        try {
+            let result = batteryInfo.getBatteryConfig(sceneName);
+            console.info(TAG + " result: " + result);
+        } catch (error) {
+            console.info(TAG + ` getBatteryConfig err: ${error.code}  ${error.message}`);
+            expect(error.code).assertEqual(ERROR_CODE);
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0030
+     * @tc.name testSystem_API_Test_batteryInfo_Manager_0300
+     * @tc.desc Test the third-party application call isBatteryConfigSupported will be blocked
+     * @tc.level: Level 3
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('System_API_Test_batteryInfo_Manager_0300', 0, async function (done) {
+        let TAG = 'System_API_Test_batteryInfo_Manager_0300';
+        let sceneName = 'batteryInfo';
+        try {
+            let result = batteryInfo.isBatteryConfigSupported(sceneName);
+            console.info(TAG + " result: " + result);
+        } catch (error) {
+            console.info(TAG + ` isBatteryConfigSupported err: ${error.code}  ${error.message}`);
+            expect(error.code).assertEqual(ERROR_CODE);
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0030
+     * @tc.name testSystem_API_Test_batteryInfo_Manager_0400
+     * @tc.desc Test the third-party application call estimatedRemainingChargeTime will be blocked
+     * @tc.level: Level 3
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('System_API_Test_batteryInfo_Manager_0400', 0, async function (done) {
+        let TAG = 'System_API_Test_batteryInfo_Manager_0400';
+        try {
+            let estimatedRemainingChargeTimeInfo = batteryInfo.estimatedRemainingChargeTime;
+            console.info(TAG + " estimatedRemainingChargeTimeInfo: " + estimatedRemainingChargeTimeInfo);
+            expect(estimatedRemainingChargeTimeInfo).assertEqual(-1);
+            done();
+        } catch (error) {
+            console.info(TAG + ` estimatedRemainingChargeTime err: ${error.code}  ${error.message}`);
+            expect(error.code).assertEqual(ERROR_CODE);
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0030
+     * @tc.name testSystem_API_Test_batteryInfo_Manager_0500
+     * @tc.desc Test the third-party application call totalEnergy will be blocked
+     * @tc.level: Level 3
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('System_API_Test_batteryInfo_Manager_0500', 0, async function (done) {
+        let TAG = 'System_API_Test_batteryInfo_Manager_0500';
+        try {
+            let totalEnergyInfo = batteryInfo.totalEnergy;
+            console.info(TAG + " totalEnergyInfo: " + totalEnergyInfo);
+            expect(totalEnergyInfo).assertEqual(-1);
+            done();
+        } catch (error) {
+            console.info(TAG + ` totalEnergy err: ${error.code}  ${error.message}`);
+            expect(error.code).assertEqual(ERROR_CODE);
+            done();
+        }
+    })
+
+    /**
+     * @tc.number SUB_PowerSystem_ErrorCodeTest_JSTest_0030
+     * @tc.name testSystem_API_Test_batteryInfo_Manager_0600
+     * @tc.desc Test the third-party application call remainingEnergy will be blocked
+     * @tc.level: Level 3
+     * @tc.type: Functiontion
+     * @tc.size: MediumTest
+     */
+    it('System_API_Test_batteryInfo_Manager_0600', 0, async function (done) {
+        let TAG = 'System_API_Test_batteryInfo_Manager_0600';
+        try {
+            let remainingEnergyInfo = batteryInfo.remainingEnergy;
+            console.info(TAG + " remainingEnergyInfo: " + remainingEnergyInfo);
+            expect(remainingEnergyInfo).assertEqual(-1);
+            done();
+        } catch (error) {
+            console.info(TAG + ` remainingEnergy err: ${error.code}  ${error.message}`);
+            expect(error.code).assertEqual(ERROR_CODE);
+            done();
+        }
     })
 })
 }

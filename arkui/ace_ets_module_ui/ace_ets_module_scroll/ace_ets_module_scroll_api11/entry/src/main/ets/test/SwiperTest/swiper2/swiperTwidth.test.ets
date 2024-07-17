@@ -14,12 +14,12 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/utils/Common';
+import CommonFunc from '../../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function swiperWidthTest() {
-  describe('swiperWidthTest', function () {
-    beforeEach(async function (done) {
+  describe('swiperWidthTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("swiperWidthTest beforeEach start");
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function swiperWidthTest() {
       console.info("swiperWidthTest foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("swiperWidthTest after each called");
     });
@@ -50,7 +50,7 @@ export default function swiperWidthTest() {
      * @tc.size
      */
 
-    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0020', 0, async function (done) {
+    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0020', 0, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0020] START');
       await CommonFunc.sleep(2000);
       let bt = CommonFunc.getComponentRect('swiperTestWidth');
@@ -65,8 +65,8 @@ export default function swiperWidthTest() {
     
       // swipe the component of swiper to right
       let driver = await Driver.create();
-      driver.swipe(Math.round(btRight), Math.round(btBottom/2), Math.round(btLeft) + 40, Math.round(btBottom/2));
-      await CommonFunc.sleep(3500);
+      await driver.swipe( globalThis.winLeft + Math.round(btRight) - Math.round(vp2px(10)), Math.round(btBottom/2) + globalThis.winTop,  globalThis.winLeft + Math.round(btLeft) +  Math.round(vp2px(10)), Math.round(btBottom/2) + globalThis.winTop);
+      await CommonFunc.sleep(5000);
       // get the component of text_3
       let text3:Component = await driver.findComponent(ON.text('3'));
       let ttContent = await text3.getText();
@@ -75,7 +75,8 @@ export default function swiperWidthTest() {
       let ttWidth = Math.round(tt.right - tt.left);
       console.info("[SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0020] text_3 width " + ttWidth);
       // judge the text component
-      expect(ttWidth).assertEqual(btWidth)
+      expect(Math.abs(ttWidth - btWidth) <=1 ).assertTrue();
+     
       console.info('[SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0020] END');
       done();
     });

@@ -43,6 +43,64 @@ import onTouchIntercept from './onTouchIntercept/onTouchIntercept.test'
 import onWillApplyTheme from './onWillApplyTheme/onWillApplyTheme.test'
 import FocusApi1 from './Focus/FocusApi1.test'
 
+import FocusScopePriority1 from './Focus/focusScopePriority/FocusScopePriority1.test'
+import FocusScopePriority2 from './Focus/focusScopePriority/FocusScopePriority2.test'
+import FocusScopePriority3 from './Focus/focusScopePriority/FocusScopePriority3.test'
+import FocusScopePriority4 from './Focus/focusScopePriority/FocusScopePriority4.test'
+import FocusScopePriority5 from './Focus/focusScopePriority/FocusScopePriority5.test'
+import FocusScopePriority6 from './Focus/focusScopePriority/FocusScopePriority6.test'
+import FocusScopePriority7 from './Focus/focusScopePriority/FocusScopePriority7.test'
+import FocusScopePriority8 from './Focus/focusScopePriority/FocusScopePriority8.test'
+import FocusScopePriority9 from './Focus/focusScopePriority/FocusScopePriority9.test'
+import FocusScopePriority10 from './Focus/focusScopePriority/FocusScopePriority10.test'
+import FocusScopePriority11 from './Focus/focusScopePriority/FocusScopePriority11.test'
+import FocusScopePriority12 from './Focus/focusScopePriority/FocusScopePriority12.test'
+import FocusScopePriority13 from './Focus/focusScopePriority/FocusScopePriority13.test'
+import FocusScopePriority14 from './Focus/focusScopePriority/FocusScopePriority14.test'
+import FocusScopePriority15 from './Focus/focusScopePriority/FocusScopePriority15.test'
+
+import FocusScopeId001 from './Focus/focusScopeId2/FocusScopeId001.test'
+import FocusScopeId002 from './Focus/focusScopeId2/FocusScopeId002.test'
+import FocusScopeId003 from './Focus/focusScopeId2/FocusScopeId003.test'
+import FocusScopeId004 from './Focus/focusScopeId2/FocusScopeId004.test'
+import FocusScopeId005 from './Focus/focusScopeId2/FocusScopeId005.test'
+import FocusScopeId006 from './Focus/focusScopeId2/FocusScopeId006.test'
+import FocusScopeId007 from './Focus/focusScopeId2/FocusScopeId007.test'
+import FocusScopeId008 from './Focus/focusScopeId2/FocusScopeId008.test'
+import FocusScopeId009 from './Focus/focusScopeId2/FocusScopeId009.test'
+import FocusScopeId010 from './Focus/focusScopeId2/FocusScopeId010.test'
+import FocusScopeId011 from './Focus/focusScopeId2/FocusScopeId011.test'
+import FocusScopeId012 from './Focus/focusScopeId2/FocusScopeId012.test'
+import FocusScopeId013 from './Focus/focusScopeId2/FocusScopeId013.test'
+import FocusScopeId014 from './Focus/focusScopeId2/FocusScopeId014.test'
+import FocusScopeId015 from './Focus/focusScopeId2/FocusScopeId015.test'
+import FocusScopeId016 from './Focus/focusScopeId2/FocusScopeId016.test'
+import FocusScopeId017 from './Focus/focusScopeId2/FocusScopeId017.test'
+import FocusScopeId018 from './Focus/focusScopeId2/FocusScopeId018.test'
+import FocusScopeId019 from './Focus/focusScopeId2/FocusScopeId019.test'
+import FocusScopeId020 from './Focus/focusScopeId2/FocusScopeId020.test'
+import FocusScopeId021 from './Focus/focusScopeId2/FocusScopeId021.test'
+
+import FocusScopeId1 from './Focus/focusScopeId/FocusScopeId1.test'
+import FocusScopeId2 from './Focus/focusScopeId/FocusScopeId2.test'
+import FocusScopeId3 from './Focus/focusScopeId/FocusScopeId3.test'
+import FocusScopeId4 from './Focus/focusScopeId/FocusScopeId4.test'
+import FocusScopeId5 from './Focus/focusScopeId/FocusScopeId5.test'
+import FocusScopeId6 from './Focus/focusScopeId/FocusScopeId6.test'
+import FocusScopeId7 from './Focus/focusScopeId/FocusScopeId7.test'
+import FocusScopeId8 from './Focus/focusScopeId/FocusScopeId8.test'
+import FocusScopeId9 from './Focus/focusScopeId/FocusScopeId9.test'
+import FocusScopeId10 from './Focus/focusScopeId/FocusScopeId10.test'
+import FocusScopeId11 from './Focus/focusScopeId/FocusScopeId11.test'
+import FocusScopeId12 from './Focus/focusScopeId/FocusScopeId12.test'
+import FocusScopeId13 from './Focus/focusScopeId/FocusScopeId13.test'
+import FocusScopeId14 from './Focus/focusScopeId/FocusScopeId14.test'
+import FocusScopeId15 from './Focus/focusScopeId/FocusScopeId15.test'
+import FocusScopeId16 from './Focus/focusScopeId/FocusScopeId16.test'
+import FocusScopeId17 from './Focus/focusScopeId/FocusScopeId17.test'
+import FocusScopeId18 from './Focus/focusScopeId/FocusScopeId18.test'
+import FocusScopeId19 from './Focus/focusScopeId/FocusScopeId19.test'
+import ACTION_CANCELED_BEFORE_DRAG_APITest from './CommonTest/OnPreDragTest/OnPreDrag_APITest/ACTION_CANCELED_BEFORE_DRAG_APITest'
 export default function testsuite() {
   requestFocus1();
   requestFocus2();
@@ -73,5 +131,60 @@ export default function testsuite() {
   onTouchIntercept()
   onWillApplyTheme()
   FocusApi1();
-
+  FocusScopePriority1();
+  FocusScopePriority2();
+  FocusScopePriority3();
+  FocusScopePriority4();
+  FocusScopePriority5();
+  FocusScopePriority6();
+  FocusScopePriority7();
+  FocusScopePriority8();
+  FocusScopePriority9();
+  FocusScopePriority10();
+  FocusScopePriority11();
+  FocusScopePriority12();
+  FocusScopePriority13();
+  FocusScopePriority14();
+  FocusScopePriority15();
+  FocusScopeId001();
+  FocusScopeId002();
+  FocusScopeId003();
+  FocusScopeId004();
+  FocusScopeId005();
+  FocusScopeId006();
+  FocusScopeId007();
+  FocusScopeId008();
+  FocusScopeId009();
+  FocusScopeId010();
+  FocusScopeId011();
+  FocusScopeId012();
+  FocusScopeId013();
+  FocusScopeId014();
+  FocusScopeId015();
+  FocusScopeId016();
+  FocusScopeId017();
+  FocusScopeId018();
+  FocusScopeId019();
+  FocusScopeId020();
+  FocusScopeId021();
+  FocusScopeId1();
+  FocusScopeId2();
+  FocusScopeId3();
+  FocusScopeId5();
+  FocusScopeId6();
+  FocusScopeId7();
+  FocusScopeId8();
+  FocusScopeId9();
+  FocusScopeId10();
+  FocusScopeId11();
+  FocusScopeId12();
+  FocusScopeId13();
+  FocusScopeId14();
+  FocusScopeId15();
+  FocusScopeId17();
+  FocusScopeId18();
+  FocusScopeId19();
+  FocusScopeId16();
+  FocusScopeId4();
+  ACTION_CANCELED_BEFORE_DRAG_APITest();  
 }

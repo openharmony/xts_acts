@@ -15,15 +15,15 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import ddm from '@ohos.data.distributedKVStore';
 
-export default function queryTest(){
-  describe('queryTest', function() {
+export default function queryStageTest(){
+  describe('queryStageTest', function() {
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0960
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0960
      * @tc.name [JS-API8]Query.Reset().
      * @tc.desc Test Js Api Query.Reset() testcase 001
      */
-    it('testReset001', 0, async function(done) {
+    it('testEtsReset001', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -43,11 +43,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0970
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0970
      * @tc.name [JS-API8]Query.Reset().
      * @tc.desc Test Js Api Query.Reset() testcase 002
      */
-    it('testReset002', 0, async function(done) {
+    it('testEtsReset002', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -72,11 +72,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0980
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0980
      * @tc.name [JS-API8]Query.Reset().
      * @tc.desc Test Js Api Query.Reset() testcase 003
      */
-    it('testReset003', 0, async function(done) {
+    it('testEtsReset003', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -96,11 +96,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0990
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0990
      * @tc.name [JS-API8]Query.Reset().
      * @tc.desc Test Js Api Query.Reset() testcase 004
      */
-    it('testReset004', 0, async function(done) {
+    it('testEtsReset004', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -118,11 +118,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0170
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0170
      * @tc.name [JS-API8]Query.EqaulTo().
      * @tc.desc Test Js Api Query.EqaulTo() testcase 001
      */
-    it('testEqaulTo001', 0, async function(done) {
+    it('testEtsEqaulTo001', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -142,11 +142,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0180
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0180
      * @tc.name [JS-API8]Query.EqualTo().
      * @tc.desc Test Js Api Query.EqualTo() testcase 002
      */
-    it('testEqualTo002', 0, async function(done) {
+    it('testEtsEqualTo002', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -163,11 +163,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0190
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0190
      * @tc.name [JS-API8]Query.EqualTo().
      * @tc.desc Test Js Api Query.EqualTo() testcase 003
      */
-    it('testEqualTo003', 0, async function(done) {
+    it('testEtsEqualTo003', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -183,11 +183,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0200
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0200
      * @tc.name [JS-API8]Query.EqualTo().
      * @tc.desc Test Js Api Query.EqualTo() testcase 004
      */
-    it('testEqualTo004', 0, async function(done) {
+    it('testEtsEqualTo004', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -204,11 +204,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0680
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0680
      * @tc.name [JS-API8]Query.NotEqualTo().
      * @tc.desc Test Js Api Query.NotEqualTo() testcase 001
      */
-    it('testNotEqualTo001', 0, async function(done) {
+    it('testEtsNotEqualTo001', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -228,11 +228,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0690
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0690
      * @tc.name [JS-API8]Query.NotEqualTo().
      * @tc.desc Test Js Api Query.NotEqualTo() testcase 002
      */
-    it('testNotEqualTo002', 0, async function(done) {
+    it('testEtsNotEqualTo002', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -251,11 +251,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0700
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0700
      * @tc.name [JS-API8]Query.NotEqualTo().
      * @tc.desc Test Js Api Query.NotEqualTo() testcase 003
      */
-    it('testNotEqualTo003', 0, async function(done) {
+    it('testEtsNotEqualTo003', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -271,11 +271,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0710
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0710
      * @tc.name [JS-API8]Query.NotEqualTo().
      * @tc.desc Test Js Api Query.NotEqualTo() testcase 004
      */
-    it('testNotEqualTo004', 0, async function(done) {
+    it('testEtsNotEqualTo004', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -290,11 +290,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0250
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0250
      * @tc.name [JS-API8]Query.GreaterThan().
      * @tc.desc Test Js Api Query.GreaterThan() testcase 001
      */
-    it('testGreaterThan001', 0, async function(done) {
+    it('testEtsGreaterThan001', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -314,11 +314,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0300
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0300
      * @tc.name [JS-API8]Query.GreatThan().
      * @tc.desc Test Js Api Query.GreatThan() testcase 002
      */
-    it('testGreatThan002', 0, async function(done) {
+    it('testEtsGreatThan002', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -337,11 +337,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0310
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0310
      * @tc.name [JS-API8]Query.GreatThan().
      * @tc.desc Test Js Api Query.GreatThan() testcase 003
      */
-    it('testGreatThan003', 0, async function(done) {
+    it('testEtsGreatThan003', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -357,11 +357,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0320
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0320
      * @tc.name [JS-API8]Query.GreatThan().
      * @tc.desc Test Js Api Query.GreatThan() testcase 004
      */
-    it('testGreatThan004', 0, async function(done) {
+    it('testEtsGreatThan004', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -377,11 +377,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0510
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0510
      * @tc.name [JS-API8]Query.LessThan().
      * @tc.desc Test Js Api Query.LessThan() testcase 001
      */
-    it('testLessThan001', 0, async function(done) {
+    it('testEtsLessThan001', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -400,11 +400,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0520
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0520
      * @tc.name [JS-API8]Query.LessThan().
      * @tc.desc Test Js Api Query.LessThan() testcase 002
      */
-    it('testLessThan002', 0, async function(done) {
+    it('testEtsLessThan002', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -423,11 +423,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0530
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0530
      * @tc.name [JS-API8]Query.LessThan().
      * @tc.desc Test Js Api Query.LessThan() testcase 003
      */
-    it('testLessThan003', 0, async function(done) {
+    it('testEtsLessThan003', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -442,11 +442,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0540
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0540
      * @tc.name [JS-API8]Query.LessThan().
      * @tc.desc Test Js Api Query.LessThan() testcase 004
      */
-    it('testLessThan004', 0, async function(done) {
+    it('testEtsLessThan004', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -462,11 +462,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0260
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0260
      * @tc.name [JS-API8]Query.GreaterThanOrEqualTo().
      * @tc.desc Test Js Api Query.GreaterThanOrEqualTo() testcase 001
      */
-    it('testGreaterThanOrEqualTo001', 0, async function(done) {
+    it('testEtsGreaterThanOrEqualTo001', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -486,11 +486,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0270
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0270
      * @tc.name [JS-API8]Query.GreaterThanOrEqualTo().
      * @tc.desc Test Js Api Query.GreaterThanOrEqualTo() testcase 002
      */
-    it('testGreaterThanOrEqualTo002', 0, async function(done) {
+    it('testEtsGreaterThanOrEqualTo002', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -511,11 +511,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0280
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0280
      * @tc.name [JS-API8]Query.GreaterThanOrEqualTo().
      * @tc.desc Test Js Api Query.GreaterThanOrEqualTo() testcase 003
      */
-    it('testGreaterThanOrEqualTo003', 0, async function(done) {
+    it('testEtsGreaterThanOrEqualTo003', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -531,11 +531,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0290
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0290
      * @tc.name [JS-API8]Query.GreaterThanOrEqualTo().
      * @tc.desc Test Js Api Query.GreaterThanOrEqualTo() testcase 004
      */
-    it('testGreaterThanOrEqualTo004', 0, async function(done) {
+    it('testEtsGreaterThanOrEqualTo004', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -551,11 +551,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0550
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0550
      * @tc.name [JS-API8]Query.LessThanOrEqualTo().
      * @tc.desc Test Js Api Query.LessThanOrEqualTo() testcase 001
      */
-    it('testLessThanOrEqualTo001', 0, async function(done) {
+    it('testEtsLessThanOrEqualTo001', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -575,11 +575,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0560
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0560
      * @tc.name [JS-API8]Query.LessThanOrEqualTo().
      * @tc.desc Test Js Api Query.LessThanOrEqualTo() testcase 002
      */
-    it('testLessThanOrEqualTo002', 0, async function(done) {
+    it('testEtsLessThanOrEqualTo002', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -598,11 +598,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0570
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0570
      * @tc.name [JS-API8]Query.LessThanOrEqualTo().
      * @tc.desc Test Js Api Query.LessThanOrEqualTo() testcase 003
      */
-    it('testLessThanOrEqualTo003', 0, async function(done) {
+    it('testEtsLessThanOrEqualTo003', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -617,11 +617,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0580
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0580
      * @tc.name [JS-API8]Query.LessThanOrEqualTo().
      * @tc.desc Test Js Api Query.LessThanOrEqualTo() testcase 004
      */
-    it('testLessThanOrEqualTo004', 0, async function(done) {
+    it('testEtsLessThanOrEqualTo004', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -637,11 +637,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0470
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0470
      * @tc.name [JS-API8]Query.IsNull().
      * @tc.desc Test Js Api Query.IsNull() testcase 001
      */
-    it('testIsNull001', 0, async function(done) {
+    it('testEtsIsNull001', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -659,11 +659,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0480
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0480
      * @tc.name [JS-API8]Query.IsNull().
      * @tc.desc Test Js Api Query.IsNull() testcase 002
      */
-    it('testIsNull002', 0, async function(done) {
+    it('testEtsIsNull002', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -680,11 +680,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0490
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0490
      * @tc.name [JS-API8]Query.IsNull().
      * @tc.desc Test Js Api Query.IsNull() testcase 003
      */
-    it('testIsNull003', 0, async function(done) {
+    it('testEtsIsNull003', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -700,11 +700,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0500
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0500
      * @tc.name [JS-API8]Query.IsNull().
      * @tc.desc Test Js Api Query.IsNull() testcase 004
      */
-    it('testIsNull004', 0, async function(done) {
+    it('testEtsIsNull004', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -720,11 +720,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0330
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0330
      * @tc.name [JS-API8]Query.InNumber().
      * @tc.desc Test Js Api Query.InNumber() testcase 001
      */
-    it('testInNumber001', 0, async function(done) {
+    it('testEtsInNumber001', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -770,11 +770,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0340
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0340
      * @tc.name [JS-API8]Query.InNumber().
      * @tc.desc Test Js Api Query.InNumber() testcase 002
      */
-    it('testInNumber002', 0, async function(done) {
+    it('testEtsInNumber002', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -794,11 +794,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0350
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0350
      * @tc.name [JS-API8]Query.InNumber().
      * @tc.desc Test Js Api Query.InNumber() testcase 003
      */
-    it('testInNumber003', 0, async function(done) {
+    it('testEtsInNumber003', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -814,11 +814,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0360
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0360
      * @tc.name [JS-API8]Query.InNumber().
      * @tc.desc Test Js Api Query.InNumber() testcase 004
      */
-    it('testInNumber004', 0, async function(done) {
+    it('testEtsInNumber004', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -834,11 +834,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0380
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0380
      * @tc.name [JS-API8]Query.InNumber().
      * @tc.desc Test Js Api Query.InNumber() testcase 006
      */
-    it('testInNumber006', 0, async function(done) {
+    it('testEtsInNumber006', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -870,11 +870,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0390
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0390
      * @tc.name [JS-API8]Query.InString().
      * @tc.desc Test Js Api Query.InString() testcase 001
      */
-    it('testInString001', 0, async function(done) {
+    it('testEtsInString001', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -892,11 +892,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0400
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0400
      * @tc.name [JS-API8]Query.InString().
      * @tc.desc Test Js Api Query.InString() testcase 002
      */
-    it('testInString002', 0, async function(done) {
+    it('testEtsInString002', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -915,11 +915,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0410
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0410
      * @tc.name [JS-API8]Query.InString().
      * @tc.desc Test Js Api Query.InString() testcase 003
      */
-    it('testInString003', 0, async function(done) {
+    it('testEtsInString003', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -935,11 +935,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0420
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0420
      * @tc.name [JS-API8]Query.InString().
      * @tc.desc Test Js Api Query.InString() testcase 004
      */
-    it('testInString004', 0, async function(done) {
+    it('testEtsInString004', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -955,11 +955,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0720
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0720
      * @tc.name [JS-API8]Query.NotInNumber().
      * @tc.desc Test Js Api Query.NotInNumber() testcase 001
      */
-    it('testNotInNumber001', 0, async function(done) {
+    it('testEtsNotInNumber001', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -977,11 +977,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0730
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0730
      * @tc.name [JS-API8]Query.NotInNumber().
      * @tc.desc Test Js Api Query.NotInNumber() testcase 002
      */
-    it('testNotInNumber002', 0, async function(done) {
+    it('testEtsNotInNumber002', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -998,11 +998,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0740
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0740
      * @tc.name [JS-API8]Query.NotInNumber().
      * @tc.desc Test Js Api Query.NotInNumber() testcase 003
      */
-    it('testNotInNumber003', 0, async function(done) {
+    it('testEtsNotInNumber003', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1018,11 +1018,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0750
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0750
      * @tc.name [JS-API8]Query.NotInNumber().
      * @tc.desc Test Js Api Query.NotInNumber() testcase 004
      */
-    it('testNotInNumber004', 0, async function(done) {
+    it('testEtsNotInNumber004', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1039,11 +1039,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0760
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0760
      * @tc.name [JS-API8]Query.NotInString().
      * @tc.desc Test Js Api Query.NotInString() testcase 001
      */
-    it('testNotInString001', 0, async function(done) {
+    it('testEtsNotInString001', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1061,11 +1061,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0770
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0770
      * @tc.name [JS-API8]Query.NotInString().
      * @tc.desc Test Js Api Query.NotInString() testcase 002
      */
-    it('testNotInString002', 0, async function(done) {
+    it('testEtsNotInString002', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1082,11 +1082,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0780
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0780
      * @tc.name [JS-API8]Query.NotInString().
      * @tc.desc Test Js Api Query.NotInString() testcase 003
      */
-    it('testNotInString003', 0, async function(done) {
+    it('testEtsNotInString003', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1102,11 +1102,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0790
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0790
      * @tc.name [JS-API8]Query.NotInString().
      * @tc.desc Test Js Api Query.NotInString() testcase 004
      */
-    it('testNotInString004', 0, async function(done) {
+    it('testEtsNotInString004', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1122,11 +1122,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0590
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0590
      * @tc.name [JS-API8]Query.Like().
      * @tc.desc Test Js Api Query.Like() testcase 001
      */
-    it('testLike001', 0, async function(done) {
+    it('testEtsLike001', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1144,11 +1144,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0600
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0600
      * @tc.name [JS-API8]Query.Like().
      * @tc.desc Test Js Api Query.Like() testcase 002
      */
-    it('testLike002', 0, async function(done) {
+    it('testEtsLike002', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1165,11 +1165,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0610
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0610
      * @tc.name [JS-API8]Query.Like().
      * @tc.desc Test Js Api Query.Like() testcase 003
      */
-    it('testLike003', 0, async function(done) {
+    it('testEtsLike003', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1185,11 +1185,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0620
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0620
      * @tc.name [JS-API8]Query.Like().
      * @tc.desc Test Js Api Query.Like() testcase 004
      */
-    it('testLike004', 0, async function(done) {
+    it('testEtsLike004', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1205,11 +1205,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_1040
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_1040
      * @tc.name [JS-API8]Query.Unlike().
      * @tc.desc Test Js Api Query.Unlike() testcase 001
      */
-    it('testUnlike001', 0, async function(done) {
+    it('testEtsUnlike001', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1226,11 +1226,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_1050
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_1050
      * @tc.name [JS-API8]Query.Unlike().
      * @tc.desc Test Js Api Query.Unlike() testcase 002
      */
-    it('testUnlike002', 0, async function(done) {
+    it('testEtsUnlike002', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1247,11 +1247,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_1060
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_1060
      * @tc.name [JS-API8]Query.Unlike().
      * @tc.desc Test Js Api Query.Unlike() testcase 003
      */
-    it('testUnlike003', 0, async function(done) {
+    it('testEtsUnlike003', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1267,11 +1267,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_1070
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_1070
      * @tc.name [JS-API8]Query.Unlike().
      * @tc.desc Test Js Api Query.Unlike() testcase 004
      */
-    it('testUnlike004', 0, async function(done) {
+    it('testEtsUnlike004', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1287,11 +1287,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0010
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0010
      * @tc.name [JS-API8]Query.And().
      * @tc.desc Test Js Api Query.And() testcase 001
      */
-    it('testAnd001', 0, async function(done) {
+    it('testEtsAnd001', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1310,11 +1310,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0020
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0020
      * @tc.name [JS-API8]Query.And().
      * @tc.desc Test Js Api Query.And() testcase 002
      */
-    it('testAnd002', 0, async function(done) {
+    it('testEtsAnd002', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1331,11 +1331,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0030
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0030
      * @tc.name [JS-API8]Query.And().
      * @tc.desc Test Js Api Query.And() testcase 003
      */
-    it('testAnd003', 0, async function(done) {
+    it('testEtsAnd003', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1352,11 +1352,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0040
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0040
      * @tc.name [JS-API8]Query.And().
      * @tc.desc Test Js Api Query.And() testcase 004
      */
-    it('testAnd004', 0, async function(done) {
+    it('testEtsAnd004', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1372,11 +1372,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0800
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0800
      * @tc.name [JS-API8]Query.Or().
      * @tc.desc Test Js Api Query.Or() testcase 001
      */
-    it('testOr001', 0, async function(done) {
+    it('testEtsOr001', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1395,11 +1395,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0810
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0810
      * @tc.name [JS-API8]Query.Or().
      * @tc.desc Test Js Api Query.Or() testcase 002
      */
-    it('testOr002', 0, async function(done) {
+    it('testEtsOr002', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1417,11 +1417,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0820
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0820
      * @tc.name [JS-API8]Query.Or().
      * @tc.desc Test Js Api Query.Or() testcase 003
      */
-    it('testOr003', 0, async function(done) {
+    it('testEtsOr003', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1440,11 +1440,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0830
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0830
      * @tc.name [JS-API8]Query.Or().
      * @tc.desc Test Js Api Query.Or() testcase 004
      */
-    it('testOr004', 0, async function(done) {
+    it('testEtsOr004', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1460,11 +1460,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0840
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0840
      * @tc.name [JS-API8]Query.OrderByAsc().
      * @tc.desc Test Js Api Query.OrderByAsc() testcase 001
      */
-    it('testOrderByAsc001', 0, async function(done) {
+    it('testEtsOrderByAsc001', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1482,11 +1482,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0850
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0850
      * @tc.name [JS-API8]Query.OrderByAsc().
      * @tc.desc Test Js Api Query.OrderByAsc() testcase 002
      */
-    it('testOrderByAsc002', 0, async function(done) {
+    it('testEtsOrderByAsc002', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1503,11 +1503,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0860
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0860
      * @tc.name [JS-API8]Query.OrderByAsc().
      * @tc.desc Test Js Api Query.OrderByAsc() testcase 003
      */
-    it('testOrderByAsc003', 0, async function(done) {
+    it('testEtsOrderByAsc003', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1523,11 +1523,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0870
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0870
      * @tc.name [JS-API8]Query.OrderByAsc().
      * @tc.desc Test Js Api Query.OrderByAsc() testcase 004
      */
-    it('testOrderByAsc004', 0, async function(done) {
+    it('testEtsOrderByAsc004', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1543,11 +1543,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0880
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0880
      * @tc.name [JS-API8]Query.OrderByDesc().
      * @tc.desc Test Js Api Query.OrderByDesc() testcase 001
      */
-    it('testOrderByDesc001', 0, async function(done) {
+    it('testEtsOrderByDesc001', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1565,11 +1565,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0890
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0890
      * @tc.name [JS-API8]Query.OrderByDesc().
      * @tc.desc Test Js Api Query.OrderByDesc() testcase 002
      */
-    it('testOrderByDesc002', 0, async function(done) {
+    it('testEtsOrderByDesc002', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1586,11 +1586,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0900
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0900
      * @tc.name [JS-API8]Query.OrderByDesc().
      * @tc.desc Test Js Api Query.OrderByDesc() testcase 003
      */
-    it('testOrderByDesc003', 0, async function(done) {
+    it('testEtsOrderByDesc003', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1606,11 +1606,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0910
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0910
      * @tc.name [JS-API8]Query.OrderByDesc().
      * @tc.desc Test Js Api Query.OrderByDesc() testcase 004
      */
-    it('testOrderByDesc004', 0, async function(done) {
+    it('testEtsOrderByDesc004', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1626,11 +1626,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0630
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0630
      * @tc.name [JS-API8]Query.Limit().
      * @tc.desc Test Js Api Query.Limit() testcase 001
      */
-    it('testLimit001', 0, async function(done) {
+    it('testEtsLimit001', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1648,11 +1648,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0640
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0640
      * @tc.name [JS-API8]Query.Limit().
      * @tc.desc Test Js Api Query.Limit() testcase 002
      */
-    it('testLimit002', 0, async function(done) {
+    it('testEtsLimit002', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1670,11 +1670,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0650
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0650
      * @tc.name [JS-API8]Query.Limit().
      * @tc.desc Test Js Api Query.Limit() testcase 003
      */
-    it('testLimit003', 0, async function(done) {
+    it('testEtsLimit003', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1691,11 +1691,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0660
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0660
      * @tc.name [JS-API8]Query.Limit().
      * @tc.desc Test Js Api Query.Limit() testcase 004
      */
-    it('testLimit004', 0, async function(done) {
+    it('testEtsLimit004', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1711,11 +1711,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0670
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0670
      * @tc.name [JS-API8]Query.Limit().
      * @tc.desc Test Js Api Query.Limit() testcase 005
      */
-    it('testLimit005', 0, async function(done) {
+    it('testEtsLimit005', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1732,11 +1732,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0430
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0430
      * @tc.name [JS-API8]Query.IsNotNull().
      * @tc.desc Test Js Api Query.IsNotNull() testcase 001
      */
-    it('testIsNotNull001', 0, async function(done) {
+    it('testEtsIsNotNull001', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1753,11 +1753,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0440
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0440
      * @tc.name [JS-API8]Query.IsNotNull().
      * @tc.desc Test Js Api Query.IsNotNull() testcase 002
      */
-    it('testIsNotNull002', 0, async function(done) {
+    it('testEtsIsNotNull002', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1774,11 +1774,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0450
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0450
      * @tc.name [JS-API8]Query.IsNotNull().
      * @tc.desc Test Js Api Query.IsNotNull() testcase 003
      */
-    it('testIsNotNull003', 0, async function(done) {
+    it('testEtsIsNotNull003', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1794,11 +1794,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0460
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0460
      * @tc.name [JS-API8]Query.IsNotNull().
      * @tc.desc Test Js Api Query.IsNotNull() testcase 004
      */
-    it('testIsNotNull004', 0, async function(done) {
+    it('testEtsIsNotNull004', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1814,11 +1814,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0050
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0050
      * @tc.name [JS-API8]Query.BeginGroup().
      * @tc.desc Test Js Api Query.BeginGroup() testcase 001
      */
-    it('testBeginGroup001', 0, async function(done) {
+    it('testEtsBeginGroup001', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1837,11 +1837,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0060
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0060
      * @tc.name [JS-API8]Query.BeginGroup().
      * @tc.desc Test Js Api Query.BeginGroup() testcase 002
      */
-    it('testBeginGroup002', 0, async function(done) {
+    it('testEtsBeginGroup002', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1862,11 +1862,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0070
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0070
      * @tc.name [JS-API8]Query.BeginGroup().
      * @tc.desc Test Js Api Query.BeginGroup() testcase 003
      */
-    it('testBeginGroup003', 0, async function(done) {
+    it('testEtsBeginGroup003', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1882,11 +1882,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0080
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0080
      * @tc.name [JS-API8]Query.BeginGroup().
      * @tc.desc Test Js Api Query.BeginGroup() testcase 004
      */
-    it('testBeginGroup004', 0, async function(done) {
+    it('testEtsBeginGroup004', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1902,11 +1902,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0130
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0130
      * @tc.name [JS-API8]Query.EndGroup().
      * @tc.desc Test Js Api Query.EndGroup() testcase 001
      */
-    it('testEndGroup001', 0, async function(done) {
+    it('testEtsEndGroup001', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1924,11 +1924,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0140
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0140
      * @tc.name [JS-API8]Query.EndGroup().
      * @tc.desc Test Js Api Query.EndGroup() testcase 002
      */
-    it('testEndGroup002', 0, async function(done) {
+    it('testEtsEndGroup002', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1947,11 +1947,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0150
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0150
      * @tc.name [JS-API8]Query.EndGroup().
      * @tc.desc Test Js Api Query.EndGroup() testcase 003
      */
-    it('testEndGroup003', 0, async function(done) {
+    it('testEtsEndGroup003', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1967,11 +1967,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0160
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0160
      * @tc.name [JS-API8]Query.EndGroup().
      * @tc.desc Test Js Api Query.EndGroup() testcase 004
      */
-    it('testEndGroup004', 0, async function(done) {
+    it('testEtsEndGroup004', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -1987,11 +1987,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0920
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0920
      * @tc.name [JS-API8]Query.PrefixKey().
      * @tc.desc Test Js Api Query.PrefixKey() testcase 001
      */
-    it('testPrefixKey001', 0, async function(done) {
+    it('testEtsPrefixKey001', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -2008,11 +2008,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0930
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0930
      * @tc.name [JS-API8]Query.PrefixKey().
      * @tc.desc Test Js Api Query.PrefixKey() testcase 002
      */
-    it('testPrefixKey002', 0, async function(done) {
+    it('testEtsPrefixKey002', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -2028,11 +2028,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0940
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0940
      * @tc.name [JS-API8]Query.PrefixKey().
      * @tc.desc Test Js Api Query.PrefixKey() testcase 003
      */
-    it('testPrefixKey003', 0, async function(done) {
+    it('testEtsPrefixKey003', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -2048,11 +2048,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0950
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0950
      * @tc.name [JS-API8]Query.PrefixKey().
      * @tc.desc Test Js Api Query.PrefixKey() testcase 004
      */
-    it('testPrefixKey004', 0, async function(done) {
+    it('testEtsPrefixKey004', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -2068,11 +2068,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_1000
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_1000
      * @tc.name [JS-API8]Query.SetSuggestIndex().
      * @tc.desc Test Js Api Query.SetSuggestIndex() testcase 001
      */
-    it('testSetSuggestIndex001', 0, async function(done) {
+    it('testEtsSetSuggestIndex001', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -2089,11 +2089,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_1010
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_1010
      * @tc.name [JS-API8]Query.SetSuggestIndex().
      * @tc.desc Test Js Api Query.SetSuggestIndex() testcase 002
      */
-    it('testSetSuggestIndex002', 0, async function(done) {
+    it('testEtsSetSuggestIndex002', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -2109,11 +2109,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_1020
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_1020
      * @tc.name [JS-API8]Query.SetSuggestIndex().
      * @tc.desc Test Js Api Query.SetSuggestIndex() testcase 003
      */
-    it('testSetSuggestIndex003', 0, async function(done) {
+    it('testEtsSetSuggestIndex003', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -2129,11 +2129,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_1030
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_1030
      * @tc.name [JS-API8]Query.SetSuggestIndex().
      * @tc.desc Test Js Api Query.SetSuggestIndex() testcase 004
      */
-    it('testSetSuggestIndex004', 0, async function(done) {
+    it('testEtsSetSuggestIndex004', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -2149,11 +2149,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0090
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0090
      * @tc.name [JS-API8]Query.DeviceId().
      * @tc.desc Test Js Api Query.DeviceId() testcase 001
      */
-    it('testDeviceId001', 0, async function(done) {
+    it('testEtsDeviceId001', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -2171,11 +2171,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0100
      * @tc.name [JS-API8]Query.DeviceId().
      * @tc.desc Test Js Api Query.DeviceId() testcase 002
      */
-    it('testDeviceId002', 0, async function(done) {
+    it('testEtsDeviceId002', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -2192,11 +2192,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0110
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0110
      * @tc.name [JS-API8]Query.DeviceId().
      * @tc.desc Test Js Api Query.DeviceId() testcase 003
      */
-    it('testDeviceId003', 0, async function(done) {
+    it('testEtsDeviceId003', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -2212,11 +2212,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0120
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0120
      * @tc.name [JS-API8]Query.DeviceId().
      * @tc.desc Test Js Api Query.DeviceId() testcase 004
      */
-    it('testDeviceId004', 0, async function(done) {
+    it('testEtsDeviceId004', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -2232,11 +2232,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0210
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0210
      * @tc.name [JS-API8]Query.GetSqlLike().
      * @tc.desc Test Js Api Query.GetSqlLike() testcase 001
      */
-    it('testGetSqlLike001', 0, async function(done) {
+    it('testEtsGetSqlLike001', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -2255,11 +2255,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0220
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0220
      * @tc.name [JS-API8]Query.GetSqlLike().
      * @tc.desc Test Js Api Query.GetSqlLike() testcase 002
      */
-    it('testGetSqlLike002', 0, async function(done) {
+    it('testEtsGetSqlLike002', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -2282,11 +2282,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0230
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0230
      * @tc.name [JS-API8]Query.GetSqlLike().
      * @tc.desc Test Js Api Query.GetSqlLike() testcase 003
      */
-    it('testGetSqlLike003', 0, async function(done) {
+    it('testEtsGetSqlLike003', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();
@@ -2303,11 +2303,11 @@ export default function queryTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryJsApiTest_0240
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreQueryEtsApiTest_0240
      * @tc.name [JS-API8]Query.GetSqlLike().
      * @tc.desc Test Js Api Query.GetSqlLike() testcase 004
      */
-    it('testGetSqlLike004', 0, async function(done) {
+    it('testEtsGetSqlLike004', 0, async function(done) {
       let query = null;
       try {
         query = new ddm.Query();

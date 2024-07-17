@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import router from '@system.router';
+import router from '@ohos.router';
 import {
   Component,
   Driver,
@@ -29,11 +29,11 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function GridScrollEdgeCallbackJsunit() {
-  describe('GridScrollEdgeCallbackTest', function () {
-    beforeEach(async function (done) {
+  describe('GridScrollEdgeCallbackJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info('text beforeEach start');
-      let options = {
-        uri: 'MainAbility/pages/component/GridScrollEdgeCallback',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/GridScrollEdgeCallback',
       }
       try {
         router.clear();
@@ -51,7 +51,7 @@ export default function GridScrollEdgeCallbackJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info('GridScrollEdgeCallback after each called');
     });
@@ -64,7 +64,7 @@ export default function GridScrollEdgeCallbackJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('GridScrollEdgeCallbackTest_1580', 0, async function (done) {
+    it('GridScrollEdgeCallbackTest_1580', 0, async (done: Function) => {
       console.info('GridScrollEdgeCallbackTest_1580 START');
       let driver1 = Driver.create();
       let button = await driver1.findComponent(ON.id('GridScrollEdgeCallback01'));

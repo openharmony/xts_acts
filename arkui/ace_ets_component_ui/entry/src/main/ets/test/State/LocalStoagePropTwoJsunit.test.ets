@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import events_emitter from '@ohos.events.emitter'
 
 
 export default function LocalStoagePropTwoJsunit() {
-  describe('LocalStoagePropTwoJsunit', function () {
-    beforeEach(async function (done) {
+  describe('LocalStoagePropTwoJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("LocalStoagePropTwoJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/LocalStoagePropTwo',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/LocalStoagePropTwo',
       }
       try {
         router.clear();
@@ -43,11 +43,11 @@ export default function LocalStoagePropTwoJsunit() {
       done();
     });
 
-    it('LocalStoagePropTwoJsunit_0100', 0, async function (done) {
+    it('LocalStoagePropTwoJsunit_0100', 0, async (done: Function) => {
 
       console.info('[LocalStoagePropTwoJsunit_0100] START');
       let strJson1 = getInspectorByKey('text_getValue4');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[LocalStoagePropTwoJsunit_0100] obj1 is: " + JSON.stringify(obj1));
 
       expect(obj1.$attrs.content).assertEqual('Prop1:{"value":6}, Prop2:1, Prop3:true, Prop4:abc, Prop5:1, Prop6:{"value":66}, Prop7:[{"value":66},{"value":67}], Prop8:[1,2], Prop9:[true,false], Prop10:["abc","efd"], Prop11:[1,2], Prop12:[{"value":66},{"value":67}]')

@@ -15,8 +15,10 @@
 @Entry
 @Component
 struct SheetModeExample {
-  @State isShow:boolean = false
-  @Builder myBuilder() {
+  @State isShow: boolean = false
+
+  @Builder
+  myBuilder() {
     Column() {
       Button("content1")
         .margin(10)
@@ -32,21 +34,21 @@ struct SheetModeExample {
   build() {
     Column() {
       Button("transition modal 1")
-      .id("SheetMode")
+        .id("SheetMode")
         .onClick(() => {
           this.isShow = true
         })
         .fontSize(20)
         .margin(10)
-        .bindSheet($$this.isShow, this.myBuilder(),{
-          detents:[SheetSize.MEDIUM,SheetSize.LARGE,200],
-          backgroundColor:Color.Gray,
-          blurStyle:BlurStyle.Thick,
-          showClose:true,
-          title:{title:"title", subtitle:"subtitle"},
+        .bindSheet($$this.isShow, this.myBuilder(), {
+          detents: [SheetSize.MEDIUM, SheetSize.LARGE, 200],
+          backgroundColor: Color.Gray,
+          blurStyle: BlurStyle.Thick,
+          showClose: true,
+          title: { title: "title", subtitle: "subtitle" },
           preferType: SheetType.CENTER,
           mode: SheetMode.EMBEDDED,
-          shouldDismiss:((sheetDismiss: SheetDismiss)=> {
+          shouldDismiss: ((sheetDismiss: SheetDismiss) => {
             console.log("bind sheet shouldDismiss")
             sheetDismiss.dismiss()
           })

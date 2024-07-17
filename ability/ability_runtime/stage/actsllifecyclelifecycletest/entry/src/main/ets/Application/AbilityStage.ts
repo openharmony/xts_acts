@@ -110,6 +110,31 @@ export default class MyAbilityStage extends AbilityStage {
         abilityName = ability.context.abilityInfo.name;
         globalThis.willAbilityStageListKey.push(abilityName + " onNewWant");
         hilog.info(0x0000, TEST_TAG, `AbilityLifecycleCallback ${abilityName} onNewWant`);
+      },
+      onAbilityWillContinue(ability) {
+        abilityName = ability.context.abilityInfo.name;
+        globalThis.willAbilityStageListKey.push(abilityName + " onAbilityWillContinue");
+        hilog.info(0x0000, TEST_TAG, `AbilityLifecycleCallback ${abilityName} onAbilityWillContinue`);
+      },
+      onWindowStageWillRestore(ability, windowStage) {
+        abilityName = ability.context.abilityInfo.name;
+        globalThis.willAbilityStageListKey.push(abilityName + " onWindowStageWillRestore");
+        hilog.info(0x0000, TEST_TAG, `AbilityLifecycleCallback ${abilityName} onWindowStageWillRestore`);
+      },
+      onWindowStageRestore(ability, windowStage) {
+        abilityName = ability.context.abilityInfo.name;
+        globalThis.willAbilityStageListKey.push(abilityName + " onWindowStageRestore");
+        hilog.info(0x0000, TEST_TAG, `AbilityLifecycleCallback ${abilityName} onWindowStageRestore`);
+      },
+      onAbilityWillSaveState(ability) {
+        abilityName = ability.context.abilityInfo.name;
+        globalThis.willAbilityStageListKey.push(abilityName + " onAbilityWillSaveState");
+        hilog.info(0x0000, TEST_TAG, `AbilityLifecycleCallback ${abilityName} onAbilityWillSaveState`);
+      },
+      onAbilitySaveState(ability) {
+        abilityName = ability.context.abilityInfo.name;
+        globalThis.willAbilityStageListKey.push(abilityName + " onAbilitySaveState");
+        hilog.info(0x0000, TEST_TAG, `AbilityLifecycleCallback ${abilityName} onAbilitySaveState`);
       }
     }
 

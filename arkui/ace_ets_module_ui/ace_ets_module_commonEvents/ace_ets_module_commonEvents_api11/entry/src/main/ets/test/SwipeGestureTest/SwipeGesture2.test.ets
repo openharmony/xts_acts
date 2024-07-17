@@ -70,14 +70,16 @@ export default function SwipeGesture2() {
     it('SwipeGesture2_0200', 0, async function (done) {
       console.info('SwipeGesture2_0200 START');
       let driver = Driver.create();
-      await CommonFunc.sleep(1000);
-      await driver.swipe(vp2px(100),vp2px(100),vp2px(500),vp2px(500),600);
+      await CommonFunc.sleep(500);
+      let colum = CommonFunc.getComponentRectOnScreen('SwipeGesture2');
+      let top = colum.top
+      await driver.swipe(Math.round(globalThis.winLeft + 100), Math.round(top + 50), Math.round(globalThis.winLeft + 500), Math.round(top + 450))
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Swipe4');
       let obj = JSON.parse(strJson);
       console.info("[SwipeGesture2_0200] component obj is: " + JSON.stringify(obj));
       console.info("[SwipeGesture2_0200] title: " + JSON.stringify(obj.$attrs.content));
-      expect((Number(obj.$attrs.content) - 92) < 10).assertEqual(true);
+      expect((Math.abs(Number(obj.$attrs.content)) - 92) < 10).assertEqual(true);
       console.info('[SwipeGesture2_0200] END');
       done();
     });

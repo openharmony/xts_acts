@@ -82,7 +82,13 @@ export default function HoverJsunit11() {
 
       console.info('HoverJsunit_0300 START');
       let driver = await Driver.create()
-      await driver.mouseMoveTo({x:800, y:300})
+      await CommonFunc.sleep(500);
+      let colum = CommonFunc.getComponentRectOnScreen('columnB11');
+      let top = colum.top
+      let bottom = colum.bottom
+      let left = colum.left
+      let right = colum.right
+      await driver.mouseMoveTo({x:Math.round((left + right) / 2), y:Math.round((top + bottom) / 2)})
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('hover11');
       let obj = JSON.parse(strJson);

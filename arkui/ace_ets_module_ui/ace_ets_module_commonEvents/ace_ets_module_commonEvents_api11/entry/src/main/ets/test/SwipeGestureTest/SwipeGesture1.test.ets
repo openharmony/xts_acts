@@ -70,8 +70,10 @@ export default function SwipeGesture1() {
     it('SwipeGesture1_0200', 0, async function (done) {
       console.info('SwipeGesture1_0200 START');
       let driver = Driver.create();
-      await CommonFunc.sleep(1000);
-      await driver.swipe(vp2px(100),vp2px(100),vp2px(500),vp2px(500),600);
+      await CommonFunc.sleep(500);
+      let colum = CommonFunc.getComponentRectOnScreen('SwipeGesture1');
+      let top = colum.top
+      await driver.swipe(Math.round(globalThis.winLeft + 100), Math.round(top + 100), Math.round(globalThis.winLeft + 500), Math.round(top + 500))
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Swipe2');
       let obj = JSON.parse(strJson);

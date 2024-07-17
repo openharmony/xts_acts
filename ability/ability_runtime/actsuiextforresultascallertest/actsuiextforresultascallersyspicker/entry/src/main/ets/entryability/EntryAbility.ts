@@ -41,6 +41,9 @@ let setWant = (want) => {
   } else if (want.parameters.parameter === 'StartAbilityForResultAsCaller_0400') {
     console.info("====>[UIExtensionForResultAsCallerRely] want.parameters.parameter == 'StartAbilityForResultAsCaller_0400':");
     setWantParameters('StartAbilityForResultAsCaller_0400', 'com.example.uiextensionforresultascaller');
+  } else if (want.parameters.parameter === 'StartAbilityForResultAsCaller_0500') {
+    console.info("====>[UIExtensionForResultAsCallerRely] want.parameters.parameter == 'StartAbilityForResultAsCaller_0500':");
+    setWantParameters('StartAbilityForResultAsCaller_0500', 'com.example.uiextensionforresultascallerother');
   } else if (want.parameters.parameter === 'StartAbilityForResultAsCaller_1400') {
     console.info("====>[UIExtensionForResultAsCallerRely] want.parameters.parameter == 'StartAbilityForResultAsCaller_1400':");
     setWantParameters('StartAbilityForResultAsCaller_1400', 'com.example.uiextensionforresultascallersyspicker');

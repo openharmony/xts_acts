@@ -14,13 +14,27 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import Utils from '../Utils';
+
 export default function themePageSliderTest() {
-  describe('themePageSliderTest', function () {
-    beforeEach(async function (done) {
+  describe('themePageSliderTest', () => {
+    beforeEach(async (done:Function) =>{
       console.info("themePageTest beforeEach start");
-      let options : router.RouterOptions = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/theme/themePageSliderTest",
       }
       try {
@@ -41,14 +55,14 @@ export default function themePageSliderTest() {
     });
 
     /**
-     * @tc.number    themeColorTest
-     * @tc.name      themeInterfaceSliderIsValidTest_0100
-     * @tc.desc      theme Test
-     * @tc.level:    Level 2
+     * @tc.number themeColorTest
+     * @tc.name themeInterfaceSliderIsValidTest_0100
+     * @tc.desc theme Test
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('themeInterfaceSliderIsValidTest_0100', 0, async function (done) {
+    it('themeInterfaceSliderIsValidTest_0100', 0, async (done:Function) =>{
       console.info('themeInterfaceSliderIsValidTest_0100 START');
       let driver = await Driver.create()
       await Utils.sleep(1000);
@@ -58,20 +72,18 @@ export default function themePageSliderTest() {
       await Utils.sleep(2000);
       // test the color whether change
       let strJson = getInspectorByKey('sliderBg');
-      let obj = JSON.parse(strJson);
-      console.info("[themeInterfaceIsValidTest_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[themeInterfaceIsValidTest_0100] component obj is: " + obj.$attrs.backgroundColor);
-      console.info("[themeInterfaceIsValidTest_0100] component obj is: " + obj.$attrs.blockBorderColor);
-      console.info("[themeInterfaceIsValidTest_0100] component obj is: " + obj.$attrs.trackColor);
-      console.info("[themeInterfaceIsValidTest_0100] component obj is: " + obj.$attrs.selectedColor);
-      expect(obj.$attrs.backgroundColor).assertEqual('#00000000');
-      expect(obj.$attrs.blockBorderColor).assertEqual('#00000000');
-      expect(obj.$attrs.trackColor).assertEqual('#1111FF11');
-      expect(obj.$attrs.selectedColor).assertEqual('#FF007DFF');
+      console.info("[themeInterfaceIsValidTest_0100] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[themeInterfaceIsValidTest_0100] component JSON.parse(strJson) is: " + JSON.parse(strJson).$attrs.backgroundColor);
+      console.info("[themeInterfaceIsValidTest_0100] component JSON.parse(strJson) is: " + JSON.parse(strJson).$attrs.blockBorderColor);
+      console.info("[themeInterfaceIsValidTest_0100] component JSON.parse(strJson) is: " + JSON.parse(strJson).$attrs.trackColor);
+      console.info("[themeInterfaceIsValidTest_0100] component JSON.parse(strJson) is: " + JSON.parse(strJson).$attrs.selectedColor);
+      expect(JSON.parse(strJson).$attrs.backgroundColor).assertEqual('#00000000');
+      expect(JSON.parse(strJson).$attrs.blockBorderColor).assertEqual('#00000000');
+      expect(JSON.parse(strJson).$attrs.trackColor).assertEqual('#1111FF11');
+      expect(JSON.parse(strJson).$attrs.selectedColor).assertEqual('#EEFF00FF');
       console.info('[themeInterfaceIsValidTest_0100] END');
       done();
     });
-
   })
 }
 

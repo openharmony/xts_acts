@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, MouseButton , WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 
 export default function ChipOnClose2() {
-  describe('ChipOnClose2', function () {
-    beforeEach(async function (done) {
+  describe('ChipOnClose2', () => {
+    beforeEach(async (done: Function) => {
       console.info("search_caret beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Chip/ChipOnClose2',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Chip/ChipOnClose2',
       }
       try {
         router.clear();
@@ -64,7 +64,7 @@ export default function ChipOnClose2() {
       console.info('ChipOnClose2_001 click success');
 
       let strJson1 = getInspectorByKey('ChipOnClose2');
-      let obj2 = JSON.parse(strJson1);
+      let obj2: ESObject = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
       console.info("[ChipOnClose2_001] component obj is: " + JSON.stringify(JSON.parse(strJson1)));
       expect(obj2.$attrs.content).assertEqual('');

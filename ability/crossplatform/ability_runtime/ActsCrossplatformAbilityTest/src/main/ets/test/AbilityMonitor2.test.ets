@@ -582,7 +582,6 @@ export default function AbilityMonitor2Test() {
         "entry"
       );
 
-
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       monitor = {
         abilityName: "Main4Ability",
@@ -644,7 +643,6 @@ export default function AbilityMonitor2Test() {
         "entry"
       );
 
-
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
       monitor = {
         abilityName: "Main3Ability",
@@ -666,6 +664,7 @@ export default function AbilityMonitor2Test() {
           done();
         });
       console.log(LABLE + TAG + " startAbility start");
+      await sleep(100);
       abilityDelegator.startAbility(want, (err) => {
         console.log(LABLE + TAG + " startAbility, err:" + JSON.stringify(err));
         setTimeout(() => {
@@ -802,7 +801,6 @@ export default function AbilityMonitor2Test() {
       let result = 0;
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
-
       monitor = {
         abilityName: "Main4Ability",
         onAbilityBackground: () => {
@@ -875,7 +873,6 @@ export default function AbilityMonitor2Test() {
       let result = 0;
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
-
       monitor = {
         abilityName: "Main4Ability",
         onAbilityDestroy: () => {
@@ -938,7 +935,6 @@ export default function AbilityMonitor2Test() {
       let result = 0;
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
-
       monitor = {
         abilityName: "Main4Ability",
         onWindowStageDestroy: () => {
@@ -996,7 +992,6 @@ export default function AbilityMonitor2Test() {
       let result = 1;
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
-
       monitor = {
         abilityName: "Main4Ability",
         onAbilityForeground: () => {
@@ -1053,7 +1048,6 @@ export default function AbilityMonitor2Test() {
       let result = 1;
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 
-
       monitor = {
         abilityName: "Main4Ability",
         onWindowStageCreate: () => {
@@ -1107,7 +1101,6 @@ export default function AbilityMonitor2Test() {
       );
       let result = 1;
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-
 
       monitor = {
         abilityName: "Main4Ability",
@@ -1177,7 +1170,6 @@ export default function AbilityMonitor2Test() {
       );
       let result = 1;
       let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-
 
       monitor = {
         abilityName: "Main4Ability",

@@ -53,7 +53,7 @@ export default function displayManagerInterfaceTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testFoldAngleChange_On_Off', 0, async () => {
+    it('testFoldAngleChange_On_Off', 0, async (done) => {
       let caseName = 'testFoldAngleChange_On_Off';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -69,12 +69,15 @@ export default function displayManagerInterfaceTest() {
       } catch (exception) {
         console.error(msgStr + 'Failed to register callback. Code: ' + JSON.stringify(exception));
         expect().assertFail();
+        done();
       }
       try {
         display.off("foldAngleChange");
+        done();
       } catch (exception) {
         console.error(msgStr + 'Failed to unregister callback. Code: ' + JSON.stringify(exception));
         expect().assertFail();
+        done();
       }
     })
 
@@ -86,7 +89,7 @@ export default function displayManagerInterfaceTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testFoldAngleChange_ON_Off_Off', 0, async () => {
+    it('testFoldAngleChange_ON_Off_Off', 0, async (done) => {
       let caseName = 'testFoldAngleChange_ON_Off_Off';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -102,18 +105,22 @@ export default function displayManagerInterfaceTest() {
       } catch (exception) {
         console.error(msgStr + 'Failed to register callback. Code: ' + JSON.stringify(exception));
         expect().assertFail();
+        done();
       }
       try {
         display.off("foldAngleChange");
       } catch (exception) {
         console.error(msgStr + 'Failed to unregister callback. Code: ' + JSON.stringify(exception));
         expect().assertFail();
+        done();
       }
       try {
         display.off("foldAngleChange");
+        done();
       } catch (exception) {
         console.error(msgStr + 'Failed to unregister callback. Code: ' + JSON.stringify(exception));
         expect().assertFail();
+        done();
       }
     })
 
@@ -125,15 +132,17 @@ export default function displayManagerInterfaceTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testFoldAngleChange_Off', 0, async () => {
+    it('testFoldAngleChange_Off', 0, async (done) => {
       let caseName = 'testFoldAngleChange_Off';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin')
       try {
         display.off("foldAngleChange");
+        done();
       } catch (exception) {
         console.error(msgStr + 'Failed to unregister callback. Code: ' + JSON.stringify(exception));
         expect().assertFail();
+        done();
       }
     })
 
@@ -145,24 +154,28 @@ export default function displayManagerInterfaceTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testCaptureStatusChange_On_Off', 0, async () => {
+    it('testCaptureStatusChange_On_Off', 0, async (done) => {
       let caseName = 'testCaptureStatusChange_On_Off';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
       let callback: Callback<boolean> = (status: boolean) => {
         console.info(msgStr + 'capture status: ' + status);
+        done();
       };
       try {
         display.on('captureStatusChange', callback);
       } catch (exception) {
         console.error(msgStr + 'Failed to register callback. Code: ' + JSON.stringify(exception));
         expect().assertFail();
+        done();
       }
       try {
         display.off("captureStatusChange");
+        done();
       } catch (exception) {
         console.error(msgStr + 'Failed to unregister callback. Code: ' + JSON.stringify(exception));
         expect().assertFail();
+        done();
       }
     })
 
@@ -174,7 +187,7 @@ export default function displayManagerInterfaceTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testCaptureStatusChange_On_Off_Off', 0, async () => {
+    it('testCaptureStatusChange_On_Off_Off', 0, async (done) => {
       let caseName = 'testCaptureStatusChange_On_Off_Off';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin');
@@ -186,18 +199,22 @@ export default function displayManagerInterfaceTest() {
       } catch (exception) {
         console.error(msgStr + 'Failed to register callback. Code: ' + JSON.stringify(exception));
         expect().assertFail();
+        done();
       }
       try {
         display.off("captureStatusChange");
       } catch (exception) {
         console.error(msgStr + 'Failed to unregister callback. Code: ' + JSON.stringify(exception));
         expect().assertFail();
+        done();
       }
       try {
         display.off("captureStatusChange");
+        done();
       } catch (exception) {
         console.error(msgStr + 'Failed to unregister callback. Code: ' + JSON.stringify(exception));
         expect().assertFail();
+        done();
       }
     })
 
@@ -209,15 +226,17 @@ export default function displayManagerInterfaceTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testCaptureStatusChange_Off', 0, async () => {
+    it('testCaptureStatusChange_Off', 0, async (done) => {
       let caseName = 'testCaptureStatusChange_Off';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin')
       try {
         display.off("captureStatusChange");
+        done();
       } catch (exception) {
         console.error(msgStr + 'Failed to unregister callback. Code: ' + JSON.stringify(exception));
         expect().assertFail();
+        done();
       }
     })
 
@@ -229,7 +248,7 @@ export default function displayManagerInterfaceTest() {
      * @tc.type   : Function
      * @tc.level  : Level 3
      */
-    it('testIsCaptured', 0, async () => {
+    it('testIsCaptured', 0, async (done) => {
       let caseName = 'testIsCaptured';
       let msgStr = 'jsunittest ' + caseName + ' ';
       console.log(msgStr + 'begin')
@@ -237,9 +256,11 @@ export default function displayManagerInterfaceTest() {
         let status = display.isCaptured();
         console.log(msgStr + 'status:' + status);	
         expect(status).assertFalse();
+        done();
       } catch (exception) {
         console.error(msgStr + 'Failed to unregister callback. Code: ' + JSON.stringify(exception));
         expect().assertFail();
+        done();
       }
     })
   })

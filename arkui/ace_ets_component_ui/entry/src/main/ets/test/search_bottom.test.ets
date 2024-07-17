@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../MainAbility/utils/MessageManager';
 
 
 export default function search_bottom() {
-  describe('search_bottom', function () {
-    beforeEach(async function (done) {
+  describe('search_bottom', () => {
+    beforeEach(async (done: Function) => {
       console.info("search_bottom beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/search_bottom',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/search_bottom',
       }
       try {
         router.clear();
@@ -49,7 +49,7 @@ export default function search_bottom() {
     * @tc.desc  : Click to trigger the keyboard when search is at the bottom
     * @tc.level : Level 2
     */
-    it('search_bottom_001', 0, async function (done) {
+    it('search_bottom_001', 0, async (done: Function) => {
 
       console.info('[search_bottom_001] START');
       await CommonFunc.sleep(1000);

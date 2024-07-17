@@ -14,12 +14,12 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/utils/Common';
+import CommonFunc from '../../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function swiperEdgeTest() {
-  describe('swiperEdgeTest', function () {
-    beforeEach(async function (done) {
+  describe('swiperEdgeTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("swiperEdgeTest beforeEach start");
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function swiperEdgeTest() {
       console.info("swiperEdgeTest foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("swiperEdgeTest after each called");
     });
@@ -50,7 +50,7 @@ export default function swiperEdgeTest() {
      * @tc.size
      */
 
-    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0290', 0, async function (done) {
+    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0290', 0, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0290] START');
       await CommonFunc.sleep(2000);
       let bt = CommonFunc.getComponentRect('swiperTestWidth6');
@@ -63,7 +63,7 @@ export default function swiperEdgeTest() {
       //[180.00, 87.00],[540.00,327.00]
       let driver = await Driver.create();
       
-      driver.swipe(Math.round(btRight), Math.round(btBottom/2), Math.round(btRight) -30, Math.round(btBottom/2));
+      await driver.swipe(globalThis.winLeft + Math.round(btRight), globalThis.winTop + Math.round(btBottom/2), globalThis.winLeft + Math.round(btRight) - Math.round(vp2px(20)), globalThis.winTop + Math.round(btBottom/2));
       await CommonFunc.sleep(3000);
 
       // get the component of text_10, scroll distance is to short can not slow

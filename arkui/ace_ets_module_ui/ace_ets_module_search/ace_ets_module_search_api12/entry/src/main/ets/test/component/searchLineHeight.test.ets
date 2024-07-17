@@ -13,39 +13,38 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function searchLineHeight() {
-  describe('searchLineHeight', function () {
-    beforeEach(async function (done) {
+  describe('searchLineHeight', () => {
+    beforeEach(async (done: Function) => {
       console.info("searchLineHeightTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/searchLineHeight',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/searchLineHeight',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get searchLineHeight state pages: " + JSON.stringify(pages));
         if (!("searchLineHeight" == pages.name)) {
           console.info("get searchLineHeight pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
-          await Utils.sleep(2000);
+          let result = await router.push(options);
+          await CommonFunc.sleep(2000);
           console.info("push searchLineHeight page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push searchLineHeight page error: " + err);
       }
 
-      await Utils.sleep(1000)
+      await CommonFunc.sleep(1000)
       console.info("searchLineHeight beforeEach end");
       done()
     });
 
-    afterEach(async function () {
-      await Utils.sleep(1000);
+    afterEach(async () => {
+      await CommonFunc.sleep(1000);
       console.info("searchLineHeight after each called");
     })
 
@@ -57,10 +56,10 @@ export default function searchLineHeight() {
        * @tc.type   Function
        * @tc.level  0
        */
-    it('searchLineHeight_0100', 0, async function (done) {
+    it('searchLineHeight_0100', 0, async (done: Function) => {
       console.info('[searchLineHeight_0100] START');
       let strJson = getInspectorByKey('key_search_lineHeight_001');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[searchLineHeight_0100] obj is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.lineHeight).assertEqual('30.00fp');
       console.info('[searchLineHeight_0100] END');

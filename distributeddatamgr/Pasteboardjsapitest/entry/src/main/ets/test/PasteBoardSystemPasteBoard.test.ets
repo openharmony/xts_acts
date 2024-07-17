@@ -22,6 +22,10 @@ let error: ESObject = undefined;
 const ARRAY_BUFFER = new ArrayBuffer(256)
 const TAG = '[TEST_PASTEBOARD_DATA]'
 
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 function clearData(systemPasteBoard: pasteboard.SystemPasteboard, callback: ESObject) {
   systemPasteBoard.clearData(callback)
 }
@@ -378,6 +382,7 @@ export default function pasteBoardSystemPasteBoardTest() {
           })
         }
       })
+      await sleep(500);
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_SETDATA_CALLBACK_0100 end")
       done();
     })
@@ -407,6 +412,7 @@ export default function pasteBoardSystemPasteBoardTest() {
         console.info("System pasteBoard set pastedata error,error: " + err)
         expect(err.code).assertEqual("401");
       }
+      await sleep(500);
       console.info("SUB_PASTEBOARD_FUNCTION_ETS_SETDATA_CALLBACK_0200 end")
       done();
     })

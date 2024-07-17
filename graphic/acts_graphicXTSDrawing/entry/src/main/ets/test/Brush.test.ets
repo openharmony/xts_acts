@@ -760,17 +760,39 @@ export default function brushTest() {
     it('testBrushSetBlendModeNormal', DEFAULT, () => {
       const msg = 'testBrushSetBlendModeNormal';
       const brush = new drawing.Brush();
-
-      for (const key of Object.keys(drawing.BlendMode)) {
-        if (typeof key === 'string') {
-          try {
-            brush.setBlendMode(drawing.BlendMode[key]);
-            console.info(msg + ' setBlendMode successed');
-          } catch (e) {
-            console.info(msg + ` setBlendMode errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-            expect().assertFail();
-          }
-        }
+      try {
+        brush.setBlendMode(drawing.BlendMode.CLEAR);
+        brush.setBlendMode(drawing.BlendMode.SRC);
+        brush.setBlendMode(drawing.BlendMode.DST);
+        brush.setBlendMode(drawing.BlendMode.SRC_OVER);
+        brush.setBlendMode(drawing.BlendMode.DST_OVER);
+        brush.setBlendMode(drawing.BlendMode.SRC_IN);
+        brush.setBlendMode(drawing.BlendMode.DST_IN);
+        brush.setBlendMode(drawing.BlendMode.SRC_OUT);
+        brush.setBlendMode(drawing.BlendMode.DST_OUT);
+        brush.setBlendMode(drawing.BlendMode.SRC_ATOP);
+        brush.setBlendMode(drawing.BlendMode.DST_ATOP);
+        brush.setBlendMode(drawing.BlendMode.XOR);
+        brush.setBlendMode(drawing.BlendMode.MODULATE);
+        brush.setBlendMode(drawing.BlendMode.SCREEN);
+        brush.setBlendMode(drawing.BlendMode.OVERLAY);
+        brush.setBlendMode(drawing.BlendMode.DARKEN);
+        brush.setBlendMode(drawing.BlendMode.LIGHTEN);
+        brush.setBlendMode(drawing.BlendMode.COLOR_DODGE);
+        brush.setBlendMode(drawing.BlendMode.COLOR_BURN);
+        brush.setBlendMode(drawing.BlendMode.HARD_LIGHT);
+        brush.setBlendMode(drawing.BlendMode.SOFT_LIGHT);
+        brush.setBlendMode(drawing.BlendMode.DIFFERENCE);
+        brush.setBlendMode(drawing.BlendMode.EXCLUSION);
+        brush.setBlendMode(drawing.BlendMode.MULTIPLY);
+        brush.setBlendMode(drawing.BlendMode.HUE);
+        brush.setBlendMode(drawing.BlendMode.SATURATION);
+        brush.setBlendMode(drawing.BlendMode.COLOR);
+        brush.setBlendMode(drawing.BlendMode.LUMINOSITY);
+        console.info(msg + ' setBlendMode successed');
+      } catch (e) {
+        console.info(msg + ` setBlendMode errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
       }
     });
 

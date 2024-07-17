@@ -51,9 +51,9 @@ describe('UriTest', function () {
             var a = {name: 'gaogao'}
             let that = new uri.URI(a);
         } catch (err) {
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${a} must be string`);
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of ${a} must be string`);
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual(`Parameter error.The type of ${a} must be string`);
+            expect(err.message).assertEqual(`Parameter error. The type of ${a} must be string`);
         }
     })
 
@@ -844,9 +844,9 @@ describe('UriTest', function () {
             var gaogao1 = 666;
             let err = gaogao.equalsTo(gaogao1);
         } catch (err) {
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${gaogao1} must be URI`);
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of ${gaogao1} must be URI`);
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual(`Parameter error.The type of ${gaogao1} must be URI`);
+            expect(err.message).assertEqual(`Parameter error. The type of ${gaogao1} must be URI`);
         }
     })
 
@@ -866,9 +866,9 @@ describe('UriTest', function () {
             var gaogao1 = {"0" : "1"};
             let err = gaogao.equalsTo(gaogao1);
         } catch (err) {
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${gaogao1} must be URI`);
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of ${gaogao1} must be URI`);
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual(`Parameter error.The type of ${gaogao1} must be URI`);
+            expect(err.message).assertEqual(`Parameter error. The type of ${gaogao1} must be URI`);
         }
     })
 
@@ -2309,16 +2309,16 @@ describe('UriTest', function () {
       try {
         uri.URI.createFromParts(null, null, null);
       } catch (err) {
-        expect(err.toString()).assertEqual("BusinessError: The input parameter scheme is invalid");
+        expect(err.toString()).assertEqual("BusinessError: Parameter error. The type of null must be string");
         expect(err.code).assertEqual(401);
-        expect(err.message).assertEqual("The input parameter scheme is invalid");
+        expect(err.message).assertEqual("Parameter error. The type of null must be string");
       }
       try {
         uri.URI.createFromParts("foo", null, "fragment");
       } catch (err) {
-        expect(err.toString()).assertEqual("BusinessError: The input parameter ssp is invalid");
+        expect(err.toString()).assertEqual("BusinessError: Parameter error. The type of null must be string");
         expect(err.code).assertEqual(401);
-        expect(err.message).assertEqual("The input parameter ssp is invalid");
+        expect(err.message).assertEqual("Parameter error. The type of null must be string");
       }
     })
 
@@ -2681,9 +2681,9 @@ describe('UriTest', function () {
         // @ts-ignore
         uri.URI.createFromParts(1, "ssp", "fragment");
       } catch (err) {
-        expect(err.toString()).assertEqual("BusinessError: The input parameter scheme is invalid");
+        expect(err.toString()).assertEqual("BusinessError: Parameter error. The type of 1 must be string");
         expect(err.code).assertEqual(401);
-        expect(err.message).assertEqual("The input parameter scheme is invalid");
+        expect(err.message).assertEqual("Parameter error. The type of 1 must be string");
       }
     })
 
@@ -2701,9 +2701,9 @@ describe('UriTest', function () {
         // @ts-ignore
         uri.URI.createFromParts("aaa", 1, "fragment");
       } catch (err) {
-        expect(err.toString()).assertEqual("BusinessError: The input parameter ssp is invalid");
+        expect(err.toString()).assertEqual("BusinessError: Parameter error. The type of 1 must be string");
         expect(err.code).assertEqual(401);
-        expect(err.message).assertEqual("The input parameter ssp is invalid");
+        expect(err.message).assertEqual("Parameter error. The type of 1 must be string");
       }
     })
 
@@ -2721,9 +2721,9 @@ describe('UriTest', function () {
         // @ts-ignore
         uri.URI.createFromParts("aaa", "bbb", 1);
       } catch (err) {
-        expect(err.toString()).assertEqual("BusinessError: The input parameter fragment is invalid");
+        expect(err.toString()).assertEqual("BusinessError: Parameter error. The type of 1 must be string");
         expect(err.code).assertEqual(401);
-        expect(err.message).assertEqual("The input parameter fragment is invalid");
+        expect(err.message).assertEqual("Parameter error. The type of 1 must be string");
       }
     })
 
@@ -2742,9 +2742,9 @@ describe('UriTest', function () {
         // @ts-ignore
         route.addQueryValue(1, "value 1");
       } catch (err) {
-        expect(err.toString()).assertEqual("BusinessError: The input parameter key is invalid");
+        expect(err.toString()).assertEqual("BusinessError: Parameter error. The type of 1 must be string");
         expect(err.code).assertEqual(401);
-        expect(err.message).assertEqual("The input parameter key is invalid");
+        expect(err.message).assertEqual("Parameter error. The type of 1 must be string");
       }
     })
 
@@ -2763,9 +2763,9 @@ describe('UriTest', function () {
         // @ts-ignore
         route.addQueryValue("1", 1);
       } catch (err) {
-        expect(err.toString()).assertEqual("BusinessError: The input parameter value is invalid");
+        expect(err.toString()).assertEqual("BusinessError: Parameter error. The type of 1 must be string");
         expect(err.code).assertEqual(401);
-        expect(err.message).assertEqual("The input parameter value is invalid");
+        expect(err.message).assertEqual("Parameter error. The type of 1 must be string");
       }
     })
 
@@ -2784,9 +2784,9 @@ describe('UriTest', function () {
         // @ts-ignore
         route.addEncodedSegment(1);
       } catch (err) {
-        expect(err.toString()).assertEqual("BusinessError: The input pathSegment value is invalid");
+        expect(err.toString()).assertEqual("BusinessError: Parameter error. The type of 1 must be string");
         expect(err.code).assertEqual(401);
-        expect(err.message).assertEqual("The input pathSegment value is invalid");
+        expect(err.message).assertEqual("Parameter error. The type of 1 must be string");
       }
     })
 
@@ -2805,9 +2805,9 @@ describe('UriTest', function () {
         // @ts-ignore
         route.addSegment(1);
       } catch (err) {
-        expect(err.toString()).assertEqual("BusinessError: The input pathSegment value is invalid");
+        expect(err.toString()).assertEqual("BusinessError: Parameter error. The type of 1 must be string");
         expect(err.code).assertEqual(401);
-        expect(err.message).assertEqual("The input pathSegment value is invalid");
+        expect(err.message).assertEqual("Parameter error. The type of 1 must be string");
       }
     })
 
@@ -2826,9 +2826,9 @@ describe('UriTest', function () {
         // @ts-ignore
         route1.getQueryValue(2);
       } catch (err) {
-        expect(err.toString()).assertEqual("BusinessError: The input parameter key is invalid");
+        expect(err.toString()).assertEqual("BusinessError: Parameter error. The type of 2 must be string");
         expect(err.code).assertEqual(401);
-        expect(err.message).assertEqual("The input parameter key is invalid");
+        expect(err.message).assertEqual("Parameter error. The type of 2 must be string");
       }
     })
 
@@ -2847,9 +2847,9 @@ describe('UriTest', function () {
         // @ts-ignore
         route1.getQueryValues(2);
       } catch (err) {
-        expect(err.toString()).assertEqual("BusinessError: The input parameter key is invalid");
+        expect(err.toString()).assertEqual("BusinessError: Parameter error. The type of 2 must be string");
         expect(err.code).assertEqual(401);
-        expect(err.message).assertEqual("The input parameter key is invalid");
+        expect(err.message).assertEqual("Parameter error. The type of 2 must be string");
       }
     })
 
@@ -2868,9 +2868,9 @@ describe('UriTest', function () {
         // @ts-ignore
         route1.getBooleanQueryValue(2, true);
       } catch (err) {
-        expect(err.toString()).assertEqual("BusinessError: The input parameter key is invalid");
+        expect(err.toString()).assertEqual("BusinessError: Parameter error. The type of 2 must be string");
         expect(err.code).assertEqual(401);
-        expect(err.message).assertEqual("The input parameter key is invalid");
+        expect(err.message).assertEqual("Parameter error. The type of 2 must be string");
       }
     })
 
@@ -2889,9 +2889,9 @@ describe('UriTest', function () {
         // @ts-ignore
         route1.getBooleanQueryValue("param_g", 2);
       } catch (err) {
-        expect(err.toString()).assertEqual("BusinessError: The input parameter defaultValue is invalid");
+        expect(err.toString()).assertEqual("BusinessError: Parameter error. The type of param_g must be boolean");
         expect(err.code).assertEqual(401);
-        expect(err.message).assertEqual("The input parameter defaultValue is invalid");
+        expect(err.message).assertEqual("Parameter error. The type of param_g must be boolean");
       }
     })
     /**
@@ -2985,23 +2985,23 @@ describe('UriTest', function () {
       try {
         uri.URI.createFromParts(null, "bbb", "ccc");
       } catch (err) {
-        expect(err.toString()).assertEqual("BusinessError: The input parameter scheme is invalid");
+        expect(err.toString()).assertEqual("BusinessError: Parameter error. The type of null must be string");
         expect(err.code).assertEqual(401);
-        expect(err.message).assertEqual("The input parameter scheme is invalid");
+        expect(err.message).assertEqual("Parameter error. The type of null must be string");
       }
       try {
         uri.URI.createFromParts("aaa", null, "ccc");
       } catch (err) {
-        expect(err.toString()).assertEqual("BusinessError: The input parameter ssp is invalid");
+        expect(err.toString()).assertEqual("BusinessError: Parameter error. The type of null must be string");
         expect(err.code).assertEqual(401);
-        expect(err.message).assertEqual("The input parameter ssp is invalid");
+        expect(err.message).assertEqual("Parameter error. The type of null must be string");
       }
       try {
         uri.URI.createFromParts("aaa", "bbb", null);
       } catch (err) {
-        expect(err.toString()).assertEqual("BusinessError: The input parameter fragment is invalid");
+        expect(err.toString()).assertEqual("BusinessError: Parameter error. The type of null must be string");
         expect(err.code).assertEqual(401);
-        expect(err.message).assertEqual("The input parameter fragment is invalid");
+        expect(err.message).assertEqual("Parameter error. The type of null must be string");
       }
     })
 
@@ -3019,17 +3019,17 @@ describe('UriTest', function () {
         let route = new uri.URI('https://www.test.com');
         route.addQueryValue("param", null);
       } catch (err) {
-        expect(err.toString()).assertEqual("BusinessError: The input parameter value is invalid");
+        expect(err.toString()).assertEqual("BusinessError: Parameter error. The type of null must be string");
         expect(err.code).assertEqual(401);
-        expect(err.message).assertEqual("The input parameter value is invalid");
+        expect(err.message).assertEqual("Parameter error. The type of null must be string");
       }
       try {
         let route = new uri.URI('https://www.test.com');
         route.addQueryValue(null, "value");
       } catch (err) {
-        expect(err.toString()).assertEqual("BusinessError: The input parameter key is invalid");
+        expect(err.toString()).assertEqual("BusinessError: Parameter error. The type of null must be string");
         expect(err.code).assertEqual(401);
-        expect(err.message).assertEqual("The input parameter key is invalid");
+        expect(err.message).assertEqual("Parameter error. The type of null must be string");
       }
     })
 
@@ -3047,9 +3047,9 @@ describe('UriTest', function () {
         let route = new uri.URI('https://www.test.com');
         route.addEncodedSegment(null);
       } catch (err) {
-        expect(err.toString()).assertEqual("BusinessError: The input pathSegment value is invalid");
+        expect(err.toString()).assertEqual("BusinessError: Parameter error. The type of null must be string");
         expect(err.code).assertEqual(401);
-        expect(err.message).assertEqual("The input pathSegment value is invalid");
+        expect(err.message).assertEqual("Parameter error. The type of null must be string");
       }
     })
 
@@ -3067,9 +3067,9 @@ describe('UriTest', function () {
         let route = new uri.URI('https://www.test.com');
         route.addSegment(null);
       } catch (err) {
-        expect(err.toString()).assertEqual("BusinessError: The input pathSegment value is invalid");
+        expect(err.toString()).assertEqual("BusinessError: Parameter error. The type of null must be string");
         expect(err.code).assertEqual(401);
-        expect(err.message).assertEqual("The input pathSegment value is invalid");
+        expect(err.message).assertEqual("Parameter error. The type of null must be string");
       }
     })
 
@@ -3087,9 +3087,9 @@ describe('UriTest', function () {
         let route1 = new uri.URI('https://www.test.com?param_g=value_1');
         route1.getQueryValue(null);
       } catch (err) {
-        expect(err.toString()).assertEqual("BusinessError: The input parameter key is invalid");
+        expect(err.toString()).assertEqual("BusinessError: Parameter error. The type of null must be string");
         expect(err.code).assertEqual(401);
-        expect(err.message).assertEqual("The input parameter key is invalid");
+        expect(err.message).assertEqual("Parameter error. The type of null must be string");
       }
     })
   
@@ -3107,9 +3107,9 @@ describe('UriTest', function () {
         let route1 = new uri.URI('https://www.test.com?param_g=value_1');
         route1.getQueryValues(null);
       } catch (err) {
-        expect(err.toString()).assertEqual("BusinessError: The input parameter key is invalid");
+        expect(err.toString()).assertEqual("BusinessError: Parameter error. The type of null must be string");
         expect(err.code).assertEqual(401);
-        expect(err.message).assertEqual("The input parameter key is invalid");
+        expect(err.message).assertEqual("Parameter error. The type of null must be string");
       }
     })
 
@@ -3127,17 +3127,17 @@ describe('UriTest', function () {
         let route1 = new uri.URI('https://www.test.com?param_g=value_1');
         route1.getBooleanQueryValue("param_g", null);
       } catch (err) {
-        expect(err.toString()).assertEqual("BusinessError: The input parameter defaultValue is invalid");
+        expect(err.toString()).assertEqual("BusinessError: Parameter error. The type of param_g must be boolean");
         expect(err.code).assertEqual(401);
-        expect(err.message).assertEqual("The input parameter defaultValue is invalid");
+        expect(err.message).assertEqual("Parameter error. The type of param_g must be boolean");
       }
       try {
         let route1 = new uri.URI('https://www.test.com?param_g=value_1');
         route1.getBooleanQueryValue(null, true);
       } catch (err) {
-        expect(err.toString()).assertEqual("BusinessError: The input parameter key is invalid");
+        expect(err.toString()).assertEqual("BusinessError: Parameter error. The type of null must be string");
         expect(err.code).assertEqual(401);
-        expect(err.message).assertEqual("The input parameter key is invalid");
+        expect(err.message).assertEqual("Parameter error. The type of null must be string");
       }
     })
     // Check the Uri constructor json.
@@ -3176,6 +3176,74 @@ describe('UriTest', function () {
       expect(newUri.host).assertEqual("www.bi an'|{}()$~,;*!_-+");
       expect(newUri.userInfo).assertEqual(null);
       expect(newUri.port).assertEqual("80");
+    })
+    // Check the Uri Port.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_17900
+     * @tc.name: testspecialPort001
+     * @tc.desc:  URI Special Characters
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testspecialPort001', 0, function () {
+        let uriStr = "http://publickinfo:-1";
+        let newUri = new uri.URI(uriStr);
+        expect(newUri.toString()).assertEqual("http://publickinfo:-1");
+        expect(newUri.port).assertEqual("-1");
+        expect(newUri.host).assertEqual(null);
+        expect(newUri.authority).assertEqual("publickinfo:-1");
+    })
+    // Check the Uri Port.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_18000
+     * @tc.name: testspecialPort002
+     * @tc.desc:  URI Special Characters
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testspecialPort002', 0, function () {
+        let uriStr = "http://publickinfo:2147483647";
+        let newUri = new uri.URI(uriStr);
+        expect(newUri.toString()).assertEqual("http://publickinfo:2147483647");
+        expect(newUri.port).assertEqual("2147483647");
+        expect(newUri.host).assertEqual('publickinfo');
+        expect(newUri.authority).assertEqual("publickinfo:2147483647");
+    })
+    // Check the Uri Port.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_18100
+     * @tc.name: testspecialPort003
+     * @tc.desc:  URI Special Characters
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testspecialPort003', 0, function () {
+        let uriStr = "http://publickinfo:600000000332";
+        let newUri = new uri.URI(uriStr);
+        expect(newUri.toString()).assertEqual("http://publickinfo:600000000332");
+        expect(newUri.port).assertEqual("-1");
+        expect(newUri.host).assertEqual(null);
+        expect(newUri.authority).assertEqual("publickinfo:600000000332");
+    })
+    // Check the Uri Port.
+    /**
+     * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URI_18200
+     * @tc.name: testspecialPort004
+     * @tc.desc:  URI Special Characters
+     * @tc.size: MediumTest
+     * @tc.type: Function
+     * @tc.level: Level 2
+     */
+    it('testspecialPort004', 0, function () {
+        let uriStr = "http://publickinfo:0";
+        let newUri = new uri.URI(uriStr);
+        expect(newUri.toString()).assertEqual("http://publickinfo:0");
+        expect(newUri.port).assertEqual("0");
+        expect(newUri.host).assertEqual("publickinfo");
+        expect(newUri.authority).assertEqual("publickinfo:0");
     })
 })
 }

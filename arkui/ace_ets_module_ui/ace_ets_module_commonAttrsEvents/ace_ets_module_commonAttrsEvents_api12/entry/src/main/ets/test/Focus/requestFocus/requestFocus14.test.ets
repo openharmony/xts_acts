@@ -53,13 +53,16 @@ export default function requestFocus14() {
       console.info('requestFocus14_0100 START');
       await CommonFunc.sleep(1000);
 
-      sendEventByKey('requestFocus14_btn1',10,"")
+      let driver = Driver.create();
       await CommonFunc.sleep(1000);
-      console.info('bindMenu click after')
 
-      sendEventByKey('requestFocus14_btn2',10,"")
-      await CommonFunc.sleep(1000);
-      console.info('Focus-textInput1 click after')
+      let bnt1 = await driver.findComponent(ON.id('requestFocus14_btn1'));
+      await bnt1.click()
+      await CommonFunc.sleep(2000);
+
+      let bnt2 = await driver.findComponent(ON.id('requestFocus14_btn2'));
+      await bnt2.click()
+      await CommonFunc.sleep(2000);
 
       let textInput1 = getInspectorByKey('requestFocus14_textInput1');
       expect(JSON.stringify(JSON.parse(textInput1).$attrs.text)).assertEqual('"TextInput_1"');

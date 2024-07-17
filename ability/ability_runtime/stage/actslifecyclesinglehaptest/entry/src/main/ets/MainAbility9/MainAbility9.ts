@@ -12,36 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import Ability from '@ohos.app.ability.UIAbility'
+import Ability from '@ohos.app.ability.UIAbility';
+import commonEvent from '@ohos.commonEvent';
 
 export default class MainAbility9 extends Ability {
     onCreate(want, launchParam) {
         console.log("[Demo] MainAbility9 onCreate")
         globalThis.abilityWant9 = want;
-    }
-
-    onDestroy() {
-        console.log("[Demo] MainAbility9 onDestroy")
-    }
-
-    onWindowStageCreate(windowStage) {
-        // Main window is created, set main page for this ability
-        console.log("[Demo] MainAbility9 onWindowStageCreate")
-
-        windowStage.setUIContent(this.context, "MainAbility/pages/index9", null)
-    }
-
-    onWindowStageDestroy() {
-        // Main window is destroyed, release UI related resources
-        console.log("[Demo] MainAbility9 onWindowStageDestroy")
-    }
-
-    onForeground() {
-        // Ability has brought to foreground
-        console.log("[Demo] MainAbility9 onForeground")
-
-        var listKey9 = [];
-        var abilityName = "";
+        let listKey9 = [];
+        let abilityName = "";
+        let count = 0;
         let AbilityLifecycleCallback = {
             onAbilityCreate(ability) {
                 abilityName = ability.context.abilityInfo.name;
@@ -80,6 +60,14 @@ export default class MainAbility9 extends Ability {
                 abilityName = ability.context.abilityInfo.name;
                 console.log(abilityName + " onAbilityDestroy")
                 listKey9.push(abilityName + " onAbilityDestroy");
+                if (abilityName === 'Hap1MainAbility2') {
+                  count++;
+                }
+                if (count === 2) {
+                  commonEvent.publish('Hap1MainAbility2_onAbilityDestroy', (err, data) => {
+                    console.log('Hap1MainAbility2 onForeground publish succeed' + JSON.stringify(err) + JSON.stringify(data));
+                  })
+                }
             },
             onAbilityContinue(ability) {
                 abilityName = ability.context.abilityInfo.name;
@@ -88,16 +76,38 @@ export default class MainAbility9 extends Ability {
             }
         }
         globalThis.applicationContext9 = this.context.getApplicationContext();
-        var callBackId = globalThis.applicationContext9
+        let callBackId = globalThis.applicationContext9
             .registerAbilityLifecycleCallback(AbilityLifecycleCallback);
+        globalThis.mainAbility9ListKey = listKey9
+        globalThis.mainAbility9CallBackId = callBackId
+        console.log("listKey is :" + listKey9);
+        console.log("callBackId is :" + callBackId);
+    }
 
-        console.log("callBackId is aaa :" + callBackId);
-        setTimeout(() => {
-            globalThis.mainAbility9ListKey = listKey9
-            globalThis.mainAbility9CallBackId = callBackId
-            console.log("listKey is :" + listKey9);
-            console.log("callBackId is :" + callBackId);
-        }, 3000)
+    onDestroy() {
+        console.log("[Demo] MainAbility9 onDestroy")
+    }
+
+    onWindowStageCreate(windowStage) {
+        // Main window is created, set main page for this ability
+        console.log("[Demo] MainAbility9 onWindowStageCreate");
+        globalThis.ability9 = this.context;
+        windowStage.setUIContent(this.context, "MainAbility/pages/index9", null);
+    }
+
+    onWindowStageDestroy() {
+        // Main window is destroyed, release UI related resources
+        console.log("[Demo] MainAbility9 onWindowStageDestroy")
+    }
+
+    onForeground() {
+        // Ability has brought to foreground
+        console.log("[Demo] MainAbility9 onForeground");
+        setTimeout(function () {
+          commonEvent.publish('MainAbility9_onForground', (err, data) => {
+            console.log('MainAbility9 onForeground publish succeed' + JSON.stringify(err) + JSON.stringify(data));
+          })
+        }, 500);
     }
 
     onBackground() {

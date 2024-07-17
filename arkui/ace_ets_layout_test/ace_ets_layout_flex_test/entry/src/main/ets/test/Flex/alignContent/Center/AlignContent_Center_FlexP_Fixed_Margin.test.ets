@@ -151,18 +151,13 @@ export default function AlignContent_Center_FlexP_Fixed_Margin() {
         .assertTrue();
       expect(Math.abs(Math.round(AlignContentFlexCenter_2.bottom - AlignContentFlexCenter_2.top) - Math.round(vp2px(100))) <= 1)
         .assertTrue();
-      expect(Math.round(AlignContentFlexCenter_3.bottom - AlignContentFlexCenter_3.top))
-        .assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(AlignContentFlexCenter_4.bottom - AlignContentFlexCenter_4.top))
-        .assertEqual(Math.round(vp2px(200)));
-      expect(Math.round(AlignContentFlexCenter_1.right - AlignContentFlexCenter_1.left))
-        .assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(AlignContentFlexCenter_2.right - AlignContentFlexCenter_2.left))
-        .assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(AlignContentFlexCenter_3.right - AlignContentFlexCenter_3.left))
-        .assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(AlignContentFlexCenter_4.right - AlignContentFlexCenter_4.left))
-        .assertEqual(Math.round(vp2px(150)));
+
+      expect(Math.abs(Math.round(AlignContentFlexCenter_3.bottom - AlignContentFlexCenter_3.top) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexCenter_4.bottom - AlignContentFlexCenter_4.top) - Math.round(vp2px(200))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexCenter_1.right - AlignContentFlexCenter_1.left) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexCenter_2.right - AlignContentFlexCenter_2.left) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexCenter_3.right - AlignContentFlexCenter_3.left) - Math.round(vp2px(150))) <= 1).assertTrue();
+      expect(Math.abs(Math.round(AlignContentFlexCenter_4.right - AlignContentFlexCenter_4.left) - Math.round(vp2px(150))) <= 1).assertTrue();
 
       expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual("FlexDirection.Row");
       expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.Center");

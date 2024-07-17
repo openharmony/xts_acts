@@ -771,6 +771,7 @@ export default function imageNdkTest() {
           hilog.info(0x0000, 'scaleTest', '%{public}s', `${TAG} createPackOpts ${imageSourceApi}`)
           const resQuality: number = ndkTest.PackingOptionsSetQuality(packOpts, quality)
           const resMimeType: number = ndkTest.PackingOptionsSetMimeType(packOpts, mimeType)
+          ndkTest.PackingOptionsSetNeedsPackProperties(packOpts, 1)
           hilog.info(0x0000, 'scaleTest', '%{public}s', ` ${TAG} res1 res2 test ${resQuality} ${resMimeType}`)
           let res: number
           if (resQuality && resMimeType) {
@@ -921,6 +922,21 @@ export default function imageNdkTest() {
         expect(true).assertTrue();
       } else {
         hilog.info(0x0000, 'scaleTest', '%{public}s', TAG + `Get desiredDynamicRange failed:${targetDynamic}`)
+        expect(false).assertTrue();
+      }
+      done();
+    }
+
+    const PackingOptionsNeedsPackProperties = async (TAG: string, needsPackProperties: number, done: Function) => {
+      let options: image.PackingOption = ndkTest.CreatePackingOptions();
+      ndkTest.PackingOptionsSetNeedsPackProperties(options, needsPackProperties);
+
+      const target: number = ndkTest.PackingOptionsGetNeedsPackProperties(options);
+      if (needsPackProperties === target) {
+        hilog.info(0x0000, 'scaleTest', '%{public}s', TAG + `Get needsPackProperties success:${target}`)
+        expect(true).assertTrue();
+      } else {
+        hilog.info(0x0000, 'scaleTest', '%{public}s', TAG + `Get needsPackProperties failed:${target}`)
         expect(false).assertTrue();
       }
       done();
@@ -4188,6 +4204,25 @@ export default function imageNdkTest() {
       const testTag = "SUB_MULTIMEDIA_IMAGE_CHECK_IMAGESOURCE_DYNAMICRANGE_0100"
       try {
         await CheckImageSourceDynamicRange(testTag, done)
+      } catch (error) {
+        hilog.info(0x0000, testTag, `Test exception  ` + error);
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_GET_PACKINGOPTIONS_NEEDSPACKPROPERTIES_0100
+     * @tc.name      : sub_multimedia_image_get_packing_needs_pack_properties_options
+     * @tc.desc      : 1.packingOptions needsPackProperties
+     * @tc.size      : MediumTest
+     * @tc.type      : Functional
+     * @tc.level     : Level 1
+     */
+    it('SUB_MULTIMEDIA_IMAGE_GET_PACKINGOPTIONS_NEEDSPACKPROPERTIES_0100', 0, async (done: Function) => {
+      const testTag = "SUB_MULTIMEDIA_IMAGE_GET_PACKINGOPTIONS_NEEDSPACKPROPERTIES_0100"
+      try {
+        await PackingOptionsNeedsPackProperties(testTag, 1, done)
       } catch (error) {
         hilog.info(0x0000, testTag, `Test exception  ` + error);
         expect().assertFail();

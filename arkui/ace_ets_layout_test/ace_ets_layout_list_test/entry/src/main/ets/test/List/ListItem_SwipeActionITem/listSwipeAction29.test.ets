@@ -121,7 +121,7 @@ export default function listSwipeAction29Jsunit() {
 
       // swipe the listItem to right
       await driver.swipe(
-        Math.round(globalThis.winLeft + vp2px(50)), Math.round(globalThis.winTop + vp2px(108)), Math.round(globalThis.winLeft + vp2px(300)), Math.round(globalThis.winTop + vp2px(108))
+        Math.round(globalThis.winLeft + vp2px(50)), Math.round(globalThis.winTop + vp2px(108)), Math.round(globalThis.winLeft + vp2px(250)), Math.round(globalThis.winTop + vp2px(108))
       );
       await CommonFunc.sleep(5000);
       // judge the swipeActionOffset

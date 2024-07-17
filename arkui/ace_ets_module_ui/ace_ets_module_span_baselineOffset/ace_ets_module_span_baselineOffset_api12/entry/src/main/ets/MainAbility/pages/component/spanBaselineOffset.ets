@@ -13,6 +13,7 @@
  * limitations under the License.
  */
 import { LengthUnit, LengthMetrics } from '@ohos.arkui.node';
+
 // xxx.ets
 @Entry
 @Component
@@ -23,18 +24,24 @@ struct SpanBaselineOffsetTest {
       Column({ space: 5 }) {
         Text() {
           Span('基准1')
-          Span('Span baselineOffset').baselineOffset(new LengthMetrics(10, LengthUnit.VP)).fontColor(0x2577e3).key('SpanBaselineOffsetKey001')
+          Span('Span baselineOffset')
+            .baselineOffset(new LengthMetrics(10, LengthUnit.VP))
+            .fontColor(0x2577e3)
+            .key('SpanBaselineOffsetKey001')
         }.fontSize(20).fontColor(0x106836)
 
         Text() {
           Span('基准2')
           ImageSpan($r("app.media.icon")).width('30vp')
             .height('30vp')
-            .baselineOffset(new LengthMetrics(5, LengthUnit.VP)).key('SpanBaselineOffsetKey002')
-        }.fontSize(20).fontColor(0x106836)
-
-
+            .baselineOffset(new LengthMetrics(5, LengthUnit.VP))
+            .key('SpanBaselineOffsetKey002')
+        }
+        .fontSize(20)
+        .fontColor(0x106836)
       }
-    }.width('100%').padding(24)
+    }
+    .width('100%')
+    .padding(24)
   }
 }

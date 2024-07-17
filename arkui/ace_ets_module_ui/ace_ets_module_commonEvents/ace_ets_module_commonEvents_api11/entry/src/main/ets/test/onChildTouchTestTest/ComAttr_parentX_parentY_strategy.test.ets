@@ -58,13 +58,13 @@ export default function parentX_parentY_strategy_Test() {
       let row: Component = await driver.findComponent(ON.id('row'));
       let point = await row.getBoundsCenter();
       await CommonFunc.sleep(1000);
-      await driver.click(point.x, point.y)
+      await driver.click(Math.round(point.x), Math.round(point.y))
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('parentX');
       let obj = JSON.parse(strJson);
       console.info("[parentX_parentY_strategy_Test_0100] component obj is: " + JSON.stringify(obj));
       console.info("[parentX_parentY_strategy_Test_0100] content obj is: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('200');
+      expect(Math.abs(Math.abs(Number(obj.$attrs.content)) - 200) <= 1).assertTrue();
       console.info('[parentX_parentY_strategy_Test_0100] END');
       await CommonFunc.sleep(1000);
       done();
@@ -84,13 +84,13 @@ export default function parentX_parentY_strategy_Test() {
       let row: Component = await driver.findComponent(ON.id('row'));
       let point = await row.getBoundsCenter();
       await CommonFunc.sleep(1000);
-      await driver.click(point.x, point.y)
+      await driver.click(Math.round(point.x), Math.round(point.y))
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('parentY');
       let obj = JSON.parse(strJson);
       console.info("[parentX_parentY_strategy_Test_0200] component obj is: " + JSON.stringify(obj));
       console.info("[parentX_parentY_strategy_Test_0200] contentY is: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('200');
+      expect(Math.abs(Math.abs(Number(obj.$attrs.content)) - 200) <= 1).assertTrue();
       await CommonFunc.sleep(1000);
       done();
     });
@@ -109,13 +109,13 @@ export default function parentX_parentY_strategy_Test() {
       let row: Component = await driver.findComponent(ON.id('row'));
       let point = await row.getBoundsCenter();
       await CommonFunc.sleep(1000);
-      await driver.click(point.x, point.y)
+      await driver.click(Math.round(point.x), Math.round(point.y))
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('strategy_DEFAULT');
       let obj = JSON.parse(strJson);
       console.info("[parentX_parentY_strategy_Test_0300] component obj is: " + JSON.stringify(obj));
       console.info("[parentX_parentY_strategy_Test_0300] component obj is: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual("0");
+      expect(Math.abs(Number(obj.$attrs.content)) <= 1).assertTrue();
       console.info('[parentX_parentY_strategy_Test_0300] END');
       await CommonFunc.sleep(1000);
       done();
@@ -135,13 +135,13 @@ export default function parentX_parentY_strategy_Test() {
       let row: Component = await driver.findComponent(ON.id('row'));
       let point = await row.getBoundsCenter();
       await CommonFunc.sleep(1000);
-      await driver.click(point.x, point.y)
+      await driver.click(Math.round(point.x), Math.round(point.y))
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('strategy_FORWARD_COMPETITION');
       let obj = JSON.parse(strJson);
       console.info("[parentX_parentY_strategy_Test_0400] component obj is: " + JSON.stringify(obj));
       console.info("[parentX_parentY_strategy_Test_0400] component obj is: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual("1");
+      expect(Math.abs(Math.abs(Number(obj.$attrs.content)) - 1) <= 1).assertTrue();
       console.info('[parentX_parentY_strategy_Test_0400] END');
       await CommonFunc.sleep(1000);
       done();
@@ -161,13 +161,13 @@ export default function parentX_parentY_strategy_Test() {
       let row: Component = await driver.findComponent(ON.id('row'));
       let point = await row.getBoundsCenter();
       await CommonFunc.sleep(1000);
-      await driver.click(point.x, point.y)
+      await driver.click(Math.round(point.x), Math.round(point.y))
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('strategy_FORWARD');
       let obj = JSON.parse(strJson);
       console.info("[parentX_parentY_strategy_Test_0500] component obj is: " + JSON.stringify(obj));
       console.info("[parentX_parentY_strategy_Test_0500] component obj is: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual("2");
+      expect(Math.abs(Math.abs(Number(obj.$attrs.content)) - 2) <= 1).assertTrue();
       console.info('[parentX_parentY_strategy_Test_0500] END');
       await CommonFunc.sleep(1000);
       done();

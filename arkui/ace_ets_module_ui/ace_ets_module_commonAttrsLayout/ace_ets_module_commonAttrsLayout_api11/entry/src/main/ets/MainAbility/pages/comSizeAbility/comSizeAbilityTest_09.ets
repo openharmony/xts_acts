@@ -13,13 +13,16 @@
  * limitations under the License.
  */
 import matrix4 from '@ohos.matrix4'
+
 let matrix = matrix4.init([1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0])
+
 @Entry
 @Component
 struct comSizeAbilityTest_09 {
   @State show: boolean = true
+
   build() {
-    Scroll(){
+    Scroll() {
       Column({ space: 20 }) {
         Column() {
           Text('点击开启滑动面板')
@@ -41,10 +44,28 @@ struct comSizeAbilityTest_09 {
           .key("Panel_Size")
           .size({ width: 261, height: 140 })
           .translate({ x: 1, y: 1, z: 1 })
-          .scale({ x: 1, y: 1, z: 1, centerX: 1, centerY: 1 })
-          .rotate({ x: 1, y: 1, z: 1, angle: 0, centerX: 1, centerY: 1 })
+          .scale({
+            x: 1,
+            y: 1,
+            z: 1,
+            centerX: 1,
+            centerY: 1
+          })
+          .rotate({
+            x: 1,
+            y: 1,
+            z: 1,
+            angle: 0,
+            centerX: 1,
+            centerY: 1
+          })
           .transform(matrix)
-        }.backgroundColor(0xDCDCDC).width('100%').height('30%').padding({ top: 5 }).key('Panel_Father')
+        }
+        .backgroundColor(0xDCDCDC)
+        .width('100%')
+        .height('30%')
+        .padding({ top: 5 })
+        .key('Panel_Father')
       }.width('100%')
     }.height('100%')
   }

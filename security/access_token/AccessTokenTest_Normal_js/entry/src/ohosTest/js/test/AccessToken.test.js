@@ -16,8 +16,7 @@
 
 import {describe, beforeAll, afterEach, it, expect} from '@ohos/hypium'
 import abilityAccessCtrl from '@ohos.abilityAccessCtrl'
-import bundle from '@ohos.bundle'
-import osAccount from '@ohos.account.osAccount'
+import bundleManager from '@ohos.bundle.bundleManager'
 
 var PermissionFlag = {
     PERMISSION_USER_SET: 1,
@@ -31,7 +30,6 @@ var GrantStatus = {
 };
 const RESULT_SUCCESS = 0;
 const RESULT_FAIL = -1;
-const TIMEOUT = 5000;
 const ERR_PARAM_INVALID = 12100001;
 
 const DEFAULT_PERMISSION_FALG = 0;
@@ -42,28 +40,23 @@ export default function AccessTokenTest() {
 describe('AccessTokenTest', function () {
     console.info('##########start AccessTokenTest');
     beforeAll(async function (done){
-        var accountManager = osAccount.getAccountManager();
-        var userId = await accountManager.getOsAccountLocalIdFromProcess();
-        var appInfo = await bundle.getApplicationInfo('ohos.acts.security.access_token.normal', 0, userId);
-        tokenID = appInfo.accessTokenId;
-        console.info("AccessTokenTest accessTokenId:" + appInfo.accessTokenId + ", name:" + appInfo.name
-            + ", bundleName:" + appInfo.bundleName)
-
-        console.info("sleep begin");
-        sleep(TIMEOUT);
-        console.info("sleep end");
-        done();
+        let bundleFlags = bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION;
+        console.info('AccessTokenTest bundleFlags is: ' + bundleFlags);
+        try {
+            bundleManager.getBundleInfoForSelf(bundleFlags).then((data) => {
+                console.info('AccessTokenTest data is: ' + JSON.stringify(data));
+                tokenID = data.appInfo.accessTokenId;
+                console.info('AccessTokenTest tokenID is: ' + data.appInfo.accessTokenId);
+                done();
+            }).catch((err) => {
+                console.info('AccessTokenTest getBundleInfoForSelf err is: ' + err.code);
+            })
+        } catch (error) {
+            console.info('AccessTokenTest getBundleInfoForSelf error is: ' + error.code)
+        }
     })
     afterEach(function () {
     })
-
-    function sleep(delay) {
-        var start = (new Date()).getTime();
-        var next = (new Date()).getTime();
-        while (next - start < delay) {
-            next = (new Date()).getTime();
-        }
-    }
 
    /**
      * @tc.number Test_verifyAccessToken_001
@@ -656,5 +649,236 @@ describe('AccessTokenTest', function () {
         done();
     })
     
+
+    /**
+     * @tc.number Test_requestPermissionOnSetting_0100
+     * @tc.name Test_requestPermissionOnSetting_001.
+     * @tc.desc requestPermissionOnSetting Permissions.
+     */
+    it('Test_requestPermissionOnSetting_001', 0, async function (done) {
+        console.info("Test_requestPermissionOnSetting_001 start ");
+        let atManager = abilityAccessCtrl.createAtManager();
+        let permissionList = 'ohos.permission.CAMERA';
+        try {
+            atManager.requestPermissionOnSetting(0, permissionList).then((data) => {
+            console.info('Test_requestPermissionOnSetting_001 data is:' + JSON.stringify(data));
+        }).catch((err) => {
+            console.info('Test_requestPermissionOnSetting_001 err.code:' + err.code + JSON.stringify(err));
+        });
+        } catch (error) {
+            console.info('Test_requestPermissionOnSetting_001 error.code: ' + error.code);
+            expect(error.code).assertEqual(401);
+            done();
+        }
+    })
+
+    /**
+     * @tc.number Test_requestPermissionOnSetting_0200
+     * @tc.name Test_requestPermissionOnSetting_002.
+     * @tc.desc requestPermissionOnSetting Permissions no context.
+     */
+    it('Test_requestPermissionOnSetting_002', 0, async function (done) {
+        console.info("Test_requestPermissionOnSetting_002 start ");
+        let atManager = abilityAccessCtrl.createAtManager();
+        let permissionList = 'ohos.permission.CAMERA';
+        try {
+            atManager.requestPermissionOnSetting(permissionList).then((data) => {
+            console.info('Test_requestPermissionOnSetting_002 data is:' + JSON.stringify(data));
+        }).catch((err) => {
+            console.info('Test_requestPermissionOnSetting_002 err.code:' + err.code + JSON.stringify(err));
+        });
+        } catch (error) {
+            console.info('Test_requestPermissionOnSetting_002 error.code: ' + error.code);
+            expect(error.code).assertEqual(401);
+            done();
+        }
+    })
+
+    /**
+     * @tc.number Test_requestPermissionOnSetting_0300
+     * @tc.name Test_requestPermissionOnSetting_003.
+     * @tc.desc requestPermissionOnSetting Permissions no permissionList.
+     */
+    it('Test_requestPermissionOnSetting_003', 0, async function (done) {
+        console.info("Test_requestPermissionOnSetting_003 start ");
+        let atManager = abilityAccessCtrl.createAtManager();
+        try {
+            atManager.requestPermissionOnSetting(0).then((data) => {
+            console.info('Test_requestPermissionOnSetting_003 data is:' + JSON.stringify(data));
+        }).catch((err) => {
+            console.info('Test_requestPermissionOnSetting_003 err.code:' + err.code + JSON.stringify(err));
+        });
+        } catch (error) {
+            console.info('Test_requestPermissionOnSetting_003 error.code: ' + error.code);
+            expect(error.code).assertEqual(401);
+            done();
+        }
+    })
+
+    /**
+     * @tc.number Test_requestPermissionOnSetting_0400
+     * @tc.name Test_requestPermissionOnSetting_004.
+     * @tc.desc requestPermissionOnSetting Permissions Abnormal parameter type.
+     */
+    it('Test_requestPermissionOnSetting_004', 0, async function (done) {
+        console.info("Test_requestPermissionOnSetting_004 start ");
+        let atManager = abilityAccessCtrl.createAtManager();
+        try {
+            atManager.requestPermissionOnSetting(0, 1).then((data) => {
+            console.info('Test_requestPermissionOnSetting_004 data is:' + JSON.stringify(data));
+        }).catch((err) => {
+            console.info('Test_requestPermissionOnSetting_004 err.code:' + err.code + JSON.stringify(err));
+        });
+        } catch (error) {
+            console.info('Test_requestPermissionOnSetting_004 error.code: ' + error.code);
+            expect(error.code).assertEqual(401);
+            done();
+        }
+    })
+
+    /**
+     * @tc.number Test_requestPermissionOnSetting_0500
+     * @tc.name Test_requestPermissionOnSetting_005.
+     * @tc.desc requestPermissionOnSetting Permissions Abnormal parameter type.
+     */
+    it('Test_requestPermissionOnSetting_005', 0, async function (done) {
+        console.info("Test_requestPermissionOnSetting_005 start ");
+        let atManager = abilityAccessCtrl.createAtManager();
+        let permissionList = 'ohos.permission.TEST';
+        try {
+            atManager.requestPermissionOnSetting(0, permissionList).then((data) => {
+            console.info('Test_requestPermissionOnSetting_005 data is:' + JSON.stringify(data));
+        }).catch((err) => {
+            console.info('Test_requestPermissionOnSetting_005 err.code:' + err.code + JSON.stringify(err));
+        });
+        } catch (error) {
+            console.info('Test_requestPermissionOnSetting_005 error.code: ' + error.code);
+            expect(error.code).assertEqual(401);
+            done();
+        }
+    })
+
+    /**
+     * @tc.number Test_requestGlobalSwitch_0100
+     * @tc.name Test_requestGlobalSwitch_001.
+     * @tc.desc requestGlobalSwitch Permissions.
+     */
+    it('Test_requestGlobalSwitch_001', 0, async function (done) {
+        console.info("Test_requestGlobalSwitch_001 start ");
+        let atManager = abilityAccessCtrl.createAtManager();
+        try {
+            atManager.requestGlobalSwitch('', null).then((data) => {
+                console.info('Test_requestGlobalSwitch_001 data:' + data);
+            }).catch((err) => {
+                console.error('Test_requestGlobalSwitch_001 err.code:' + err.code + JSON.stringify(err));
+            });
+        } catch (error) {
+            console.info('Test_requestGlobalSwitch_001 error.code: ' + error.code);
+            expect(error.code).assertEqual(401);
+            done();
+        }
+    })
+
+    /**
+     * @tc.number Test_requestGlobalSwitch_0200
+     * @tc.name Test_requestGlobalSwitch_002.
+     * @tc.desc requestGlobalSwitch Permissions Abnormal parameter type undefined.
+     */
+    it('Test_requestGlobalSwitch_002', 0, async function (done) {
+        console.info("Test_requestGlobalSwitch_002 start ");
+        let atManager = abilityAccessCtrl.createAtManager();
+        try {
+            atManager.requestGlobalSwitch('', undefined).then((data) => {
+                console.info('Test_requestGlobalSwitch_002 data:' + data);
+            }).catch((err) => {
+                console.error('Test_requestGlobalSwitch_002 err.code:' + err.code + JSON.stringify(err));
+            });
+        } catch (error) {
+            console.info('Test_requestGlobalSwitch_002 error.code: ' + error.code);
+            expect(error.code).assertEqual(401);
+            done();
+        }
+    })
+
+    /**
+     * @tc.number Test_requestGlobalSwitch_0300
+     * @tc.name Test_requestGlobalSwitch_003.
+     * @tc.desc requestGlobalSwitch Permissions Abnormal parameter type [].
+     */
+    it('Test_requestGlobalSwitch_003', 0, async function (done) {
+        console.info("Test_requestGlobalSwitch_003 start ");
+        let atManager = abilityAccessCtrl.createAtManager();
+        try {
+            atManager.requestGlobalSwitch(0, []).then((data) => {
+                console.info('Test_requestGlobalSwitch_003 data:' + data);
+            }).catch((err) => {
+                console.error('Test_requestGlobalSwitch_003 err.code:' + err.code + JSON.stringify(err));
+            });
+        } catch (error) {
+            console.info('Test_requestGlobalSwitch_003 error.code: ' + error.code);
+            expect(error.code).assertEqual(401);
+            done();
+        }
+    })
+
+    /**
+     * @tc.number Test_requestGlobalSwitch_0400
+     * @tc.name Test_requestGlobalSwitch_004.
+     * @tc.desc requestGlobalSwitch Permissions Abnormal parameter type ''.
+     */
+    it('Test_requestGlobalSwitch_004', 0, async function (done) {
+        console.info("Test_requestGlobalSwitch_004 start ");
+        let atManager = abilityAccessCtrl.createAtManager();
+        try {
+            atManager.requestGlobalSwitch('', '').then((data) => {
+                console.info('Test_requestGlobalSwitch_004 data:' + data);
+            }).catch((err) => {
+                console.error('Test_requestGlobalSwitch_004 err.code:' + err.code + JSON.stringify(err));
+            });
+        } catch (error) {
+            console.info('Test_requestGlobalSwitch_004 error.code: ' + error.code);
+            expect(error.code).assertEqual(401);
+            done();
+        }
+    })
+
+    /*
+     * @tc.number:Test_SwitchType_0100
+     * @tc.name: Test_SwitchType_001
+     * @tc.desc: abilityAccessCtrl SwitchType CAMERA
+     */
+    it("Test_SwitchType_001", 0, function (done) {
+        console.info('----------------------Test_SwitchType_001---------------------------');
+        let value = abilityAccessCtrl.SwitchType.CAMERA;
+        console.info('Test_SwitchType_001 value is: ' + value);
+        expect(value).assertEqual(0);
+        done();
+    })
+
+    /*
+     * @tc.number:Test_SwitchType_0200
+     * @tc.name: Test_SwitchType_002
+     * @tc.desc: abilityAccessCtrl SwitchType MICROPHONE
+     */
+    it("Test_SwitchType_002", 0, function (done) {
+        console.info('----------------------Test_SwitchType_002---------------------------');
+        let value = abilityAccessCtrl.SwitchType.MICROPHONE;
+        console.info('Test_SwitchType_002 value is: ' + value);
+        expect(value).assertEqual(1);
+        done();
+    })
+
+    /*
+     * @tc.number:Test_SwitchType_0300
+     * @tc.name: Test_SwitchType_003
+     * @tc.desc: abilityAccessCtrl SwitchType LOCATION
+     */
+    it("Test_SwitchType_003", 0, function (done) {
+        console.info('----------------------Test_SwitchType_003---------------------------');
+        let value = abilityAccessCtrl.SwitchType.LOCATION;
+        console.info('Test_SwitchType_003 value is: ' + value);
+        expect(value).assertEqual(2);
+        done();
+    })
 })
 }

@@ -14,6 +14,8 @@
  */
 import {MessageManager,Callback} from '../utils/MessageManager';
 
+type Message = boolean|number|Date
+
 @Entry
 @Component
 struct TimePickerPage {
@@ -22,26 +24,26 @@ struct TimePickerPage {
   @State hour: number = 8
   @State minute: number = 0
   @State mode: boolean = true
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
 
   onPageShow() {
     console.info('TimePicker onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'isMilitaryTime') {
-        this.isMilitaryTime = message.value
+        this.isMilitaryTime = message.value as boolean
       }
       if (message.name == 'selectedTime') {
-        this.selectedTime = message.value
+        this.selectedTime = message.value as Date
       }
       if (message.name == 'hour') {
-        this.hour = message.value
+        this.hour = message.value as number
       }
       if (message.name == 'minute') {
-        this.minute = message.value
+        this.minute = message.value as number
       }
     }
     this.messageManager.registerCallback(callback)

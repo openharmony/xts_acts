@@ -92,6 +92,7 @@ export default function withThemeTest() {
      */
     it('ActsWithThemeColors_0100', 0, () => {
       const CASE: string = 'ActsWithThemeColors_0100';
+      console.info(`${SUITE} ${CASE} START`);
       const checkKeys: string[] = Object.keys(greenThemeColors);
       const checkValues = (Object.values(greenThemeColors) as string[]);
       const themeKeys: string[] = themeLocal?.colors === undefined ?
@@ -102,6 +103,7 @@ export default function withThemeTest() {
       const themeMap: Map<string, string> = new Map<string, string>();
       fillMap<string>(checkMap, checkKeys, checkValues);
       fillMap<string>(themeMap, themeKeys, themeValues);
+      expect(themeMap.size).assertLarger(0);
       themeMap.forEach(((value, key) => {
         let themeToken: string;
         themeToken = value;
@@ -120,6 +122,7 @@ export default function withThemeTest() {
     */
     it('ActsWithThemeColors_0200', 0, () => {
       const CASE: string = 'ActsWithThemeColors_0200';
+      console.info(`${SUITE} ${CASE} START`);
       const checkKeys: string[] = Object.keys(brownThemeColors);
       const checkValues = (Object.values(brownThemeColors) as string[]);
       const themeKeys: string[] = themeLocalNested?.colors === undefined ?
@@ -130,6 +133,7 @@ export default function withThemeTest() {
       const themeMap: Map<string, string> = new Map<string, string>();
       fillMap<string>(checkMap, checkKeys, checkValues);
       fillMap<string>(themeMap, themeKeys, themeValues);
+      expect(themeMap.size).assertLarger(0);
       themeMap.forEach(((value, key) => {
         let themeToken: string;
         themeToken = value;
@@ -149,6 +153,7 @@ export default function withThemeTest() {
      */
     it('ActsWithThemeColors_0300', 0, async () => {
       const CASE: string = 'ActsWithThemeColors_0300';
+      console.info(`${SUITE} ${CASE} START`);
       await sleep(frameTime);
       themeLocal = customButtonTheme;
       const checkKeys: string[] = Object.keys(redThemeColors);
@@ -161,6 +166,7 @@ export default function withThemeTest() {
       const themeMap: Map<string, string> = new Map<string, string>();
       fillMap<string>(checkMap, checkKeys, checkValues);
       fillMap<string>(themeMap, themeKeys, themeValues);
+      expect(themeMap.size).assertLarger(0);
       themeMap.forEach(((value, key) => {
         let themeToken: string;
         themeToken = value;
@@ -179,6 +185,7 @@ export default function withThemeTest() {
      */
     it('ActsWithThemeColors_0400', 0, () => {
       const CASE: string = 'ActsWithThemeColors_0400';
+      console.info(`${SUITE} ${CASE} START`);
       const checkKeys: string[] = Object.keys(brownThemeColors);
       const checkValues = (Object.values(brownThemeColors) as string[]);
       const themeKeys: string[] = themeLocalNested?.colors === undefined ?
@@ -189,6 +196,7 @@ export default function withThemeTest() {
       const themeMap: Map<string, string> = new Map<string, string>();
       fillMap<string>(checkMap, checkKeys, checkValues);
       fillMap<string>(themeMap, themeKeys, themeValues);
+      expect(themeMap.size).assertLarger(0);
       themeMap.forEach(((value, key) => {
         let themeToken: string;
         themeToken = value;
@@ -208,6 +216,7 @@ export default function withThemeTest() {
      */
     it('ActsWithThemeColors_0500', 0, () => {
       let CASE: string = 'ActsWithThemeColors_0500';
+      console.info(`${SUITE} ${CASE} START`);
       let checkKeys: string[] = Object.keys(checkColorTokens);
       let checkValues = (Object.values(checkColorTokens) as string[]);
       let themeKeys: string[] = themeLocalSystem?.colors === undefined ?
@@ -218,6 +227,7 @@ export default function withThemeTest() {
       const themeMap: Map<string, Resource> = new Map<string, Resource>();
       fillMap<string>(checkMap, checkKeys, checkValues);
       fillMap<Resource>(themeMap, themeKeys, themeValues);
+      expect(themeMap.size).assertLarger(0);
       themeMap.forEach(((value, key) => {
         let themeToken: Resource;
         themeToken = (value as Resource)?.params?.[0] ?? "";
@@ -236,6 +246,7 @@ export default function withThemeTest() {
      */
     it('ActsWithThemeColors_0600', 0, () => {
       let CASE: string = 'ActsWithThemeColors_0600';
+      console.info(`${SUITE} ${CASE} START`);
       let checkKeys: string[] = Object.keys(checkColorTokens);
       let checkValues = (Object.values(checkColorTokens) as string[]);
       let themeKeys: string[] = themeLocalLight?.colors === undefined ?
@@ -246,6 +257,7 @@ export default function withThemeTest() {
       const themeMap: Map<string, Resource> = new Map<string, Resource>();
       fillMap<string>(checkMap, checkKeys, checkValues);
       fillMap<Resource>(themeMap, themeKeys, themeValues);
+      expect(themeMap.size).assertLarger(0);
       themeMap.forEach(((value, key) => {
         let themeToken: Resource;
         themeToken = (value as Resource)?.params?.[0] ?? "";
@@ -264,6 +276,7 @@ export default function withThemeTest() {
      */
     it('ActsWithThemeColors_0700', 0, () => {
       let CASE: string = 'ActsWithThemeColors_0700';
+      console.info(`${SUITE} ${CASE} START`);
       let checkKeys: string[] = Object.keys(checkColorTokens);
       let checkValues = (Object.values(checkColorTokens) as string[]);
       let themeKeys: string[] = themeLocalDark?.colors === undefined ?
@@ -274,6 +287,7 @@ export default function withThemeTest() {
       const themeMap: Map<string, Resource> = new Map<string, Resource>();
       fillMap<string>(checkMap, checkKeys, checkValues);
       fillMap<Resource>(themeMap, themeKeys, themeValues);
+      expect(themeMap.size).assertLarger(0);
       themeMap.forEach(((value, key) => {
         let themeToken: Resource;
         themeToken = (value as Resource)?.params?.[0] ?? "";
@@ -293,6 +307,7 @@ export default function withThemeTest() {
      */
     it('ActsWithThemeColors_0800', 0, () => {
       let CASE: string = 'ActsWithThemeColors_0800'
+      console.info(`${SUITE} ${CASE} START`);
       ThemeControl.setDefaultTheme(undefined);
       themeLocalSystem = customButtonSystemTheme;
       let checkKeys: string[] = Object.keys(checkColorTokens);
@@ -305,6 +320,7 @@ export default function withThemeTest() {
       const themeMap: Map<string, Resource> = new Map<string, Resource>();
       fillMap<string>(checkMap, checkKeys, checkValues);
       fillMap<Resource>(themeMap, themeKeys, themeValues);
+      expect(themeMap.size).assertLarger(0);
       themeMap.forEach(((value, key) => {
         let themeToken: Resource;
         themeToken = (value as Resource)?.params?.[0] ?? "";
@@ -324,6 +340,7 @@ export default function withThemeTest() {
      */
     it('ActsWithThemeColors_0900', 0, () => {
       let CASE: string = 'ActsWithThemeColors_0900';
+      console.info(`${SUITE} ${CASE} START`);
       ThemeControl.setDefaultTheme(undefined);
       themeLocalLight = customButtonLightTheme;
       let checkKeys: string[] = Object.keys(checkColorTokens);
@@ -336,6 +353,7 @@ export default function withThemeTest() {
       const themeMap: Map<string, Resource> = new Map<string, Resource>();
       fillMap<string>(checkMap, checkKeys, checkValues);
       fillMap<Resource>(themeMap, themeKeys, themeValues);
+      expect(themeMap.size).assertLarger(0);
       themeMap.forEach(((value, key) => {
         let themeToken: Resource;
         themeToken = (value as Resource)?.params?.[0] ?? "";
@@ -355,6 +373,7 @@ export default function withThemeTest() {
      */
     it('ActsWithThemeColors_1000', 0, () => {
       let CASE: string = 'ActsWithThemeColors_1000';
+      console.info(`${SUITE} ${CASE} START`);
       ThemeControl.setDefaultTheme(undefined);
       themeLocalDark = customButtonDarkTheme;
       let checkKeys: string[] = Object.keys(checkColorTokens);
@@ -367,6 +386,7 @@ export default function withThemeTest() {
       const themeMap: Map<string, Resource> = new Map<string, Resource>();
       fillMap<string>(checkMap, checkKeys, checkValues);
       fillMap<Resource>(themeMap, themeKeys, themeValues);
+      expect(themeMap.size).assertLarger(0);
       themeMap.forEach(((value, key) => {
         let themeToken: Resource;
         themeToken = (value as Resource)?.params?.[0] ?? "";

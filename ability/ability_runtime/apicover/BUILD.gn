@@ -21,6 +21,7 @@ group("apicover") {
       "fasupplement:FaSupplement",
       "formmodule:FormModule",
       "stagesupplement:StageSupplement",
+      "wantconstanttest:WantConstantTest",
     ]
   }
 }

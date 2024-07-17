@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 export default function alphabetTest() {
-  describe('alphabetTest', function () {
-    beforeEach(async function (done) {
+  describe('alphabetTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("alphabetTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/AlphabetIndexer/alphabet',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/AlphabetIndexer/alphabet',
       }
       try {
         router.clear();
@@ -48,12 +48,12 @@ export default function alphabetTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('alphabetTest_0100', 0, async function (done) {
+    it('alphabetTest_0100', 0, async (done: Function) => {
       console.info('alphabetTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('alphabet_1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[alphabetTest_0100] component obj is: " + JSON.stringify(obj));
       console.info("[alphabetTest_0100] component obj.$attrs is: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.autoCollapse).assertEqual('false');

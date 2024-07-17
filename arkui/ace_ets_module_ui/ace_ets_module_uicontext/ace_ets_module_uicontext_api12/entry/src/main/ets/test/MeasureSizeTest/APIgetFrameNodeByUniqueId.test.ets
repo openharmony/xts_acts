@@ -13,31 +13,42 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 import UIAbility from '@ohos.app.ability.UIAbility';
 import window from '@ohos.window';
 import { UIContext } from '@ohos.arkui.UIContext';
 
 export default function APIgetFrameNodeByUniqueId() {
-  describe('APIgetFrameNodeByUniqueId', function () {
-    beforeEach(async function (done) {
+  describe('APIgetFrameNodeByUniqueId', () => {
+    beforeEach(async (done: Function) => {
       console.info("APIgetFrameNodeByUniqueIdTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/MeasureSize/APIgetFrameNodeByUniqueId',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/MeasureSize/APIgetFrameNodeByUniqueId',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get APIgetFrameNodeByUniqueId state pages: " + JSON.stringify(pages));
         if (!("APIgetFrameNodeByUniqueId" == pages.name)) {
           console.info("get APIgetFrameNodeByUniqueId pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await CommonFunc.sleep(2000);
-          console.info("push APIgetFrameNodeByUniqueId page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push APIgetFrameNodeByUniqueId page error: " + err);
@@ -46,27 +57,28 @@ export default function APIgetFrameNodeByUniqueId() {
       console.info("APIgetFrameNodeByUniqueId beforeEach end");
       done()
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("APIgetFrameNodeByUniqueId after each called");
     })
 
     /**
      * @tc.number api
-     * @tc.name   APIgetFrameNodeByUniqueId_0100
-     * @tc.desc   APIgetFrameNodeByUniqueId_0100
-     * @tc.size   APIgetFrameNodeByUniqueId
-     * @tc.type   UIContext
-     * @tc.level  2
+     * @tc.name APIgetFrameNodeByUniqueId_0100
+     * @tc.desc APIgetFrameNodeByUniqueId_0100
+     * @tc.size APIgetFrameNodeByUniqueId
+     * @tc.type UIContext
+     * @tc.level 2
      */
-    it('APIgetFrameNodeByUniqueId_0100', 0, async function (done) {
+    it('APIgetFrameNodeByUniqueId_0100', 0, async (done: Function) => {
       console.info('APIgetFrameNodeByUniqueId_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('APIgetFrameNodeByUniqueId_Text01');
-      let obj = JSON.parse(strJson);
-      console.info("[APIgetFrameNodeByUniqueId_0100] component obj is: " + JSON.stringify(obj), obj.$attrs.content);
-      expect(obj.$attrs.content).assertEqual('APIgetFrameNodeByUniqueId');
+      console.info("[APIgetFrameNodeByUniqueId_0100] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)), JSON.parse(strJson)
+        .$attrs
+        .content);
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('APIgetFrameNodeByUniqueId');
       console.info('[APIgetFrameNodeByUniqueId_0100] END');
       done();
     });

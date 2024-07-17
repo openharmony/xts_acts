@@ -19,8 +19,8 @@ import CommonFunc from '../../../MainAbility/common/Common';
 import { Driver, ON } from '@ohos.UiTest';
 
 export default function tabsOnContentWillChangeIndex15JsunitTest() {
-  describe('tabsOnContentWillChangeIndex15JsunitTest', function () {
-    beforeEach(async function (done) {
+  describe('tabsOnContentWillChangeIndex15JsunitTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("tabsOnContentWillChangeIndex15JsunitTest beforeEach start");
       try {
         router.clear();
@@ -38,7 +38,7 @@ export default function tabsOnContentWillChangeIndex15JsunitTest() {
       console.info("tabsOnContentWillChangeIndex15JsunitTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("tabsOnContentWillChangeIndex15JsunitTest after each called");
     });
@@ -50,7 +50,7 @@ export default function tabsOnContentWillChangeIndex15JsunitTest() {
      * @tc.level  3
      */
 
-    it('tabsOnContentWillChangeJsunitTest_0150', 0, async function (done) {
+    it('tabsOnContentWillChangeJsunitTest_0150', 0, async (done: Function) => {
       console.info('tabsOnContentWillChangeIndex15JsunitTest START');
       // add data
       let driver = Driver.create();

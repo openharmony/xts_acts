@@ -17,8 +17,6 @@ import hilog from '@ohos.hilog';
 import featureAbility from '@ohos.ability.featureAbility';
 import bundle from '@ohos.bundle';
 import commonEvent from '@ohos.commonEvent';
-import CommonEventManager from '@ohos.commonEventManager';
-import { BusinessError } from '@ohos.base';
 
 const Event_FA_DisplayOrientation_0300 = 'Event_FA_DisplayOrientation_0300';
 const Event_FA_DisplayOrientation_0300_LifeCircle = 'Event_FA_DisplayOrientation_0300_LifeCircle';
@@ -27,9 +25,9 @@ const Event_FA_DisplayOrientation_0400_LifeCircle = 'Event_FA_DisplayOrientation
 const Event_FA_DisplayOrientation_0700 = 'Event_FA_DisplayOrientation_0700';
 const Event_FA_DisplayOrientation_0800 = 'Event_FA_DisplayOrientation_0800';
 const Event_FA_DisplayOrientation_0900 = 'Event_FA_DisplayOrientation_0900';
-let lifeCircleData: string[] = [];
+let lifeCircleData = [];
 
-function publishEvent(event: string, value: boolean) {
+function publishEvent(event, value) {
   commonEvent.publish(event,
     {
       parameters: {
@@ -40,20 +38,20 @@ function publishEvent(event: string, value: boolean) {
     })
 }
 
-class Test {
+export default {
   onCreate() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Application onCreate');
     lifeCircleData[0] = 'onCreate';
-  }
+  },
   onDestroy() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Application onDestroy');
-  }
+  },
   onActive() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Application onActive');
     lifeCircleData[1] = 'onActive';
     featureAbility.getWant((error, want) => {
       hilog.info(0x0000, 'testTag', '%{public}s', `get want: ${JSON.stringify(want)}`);
-      let number = want.parameters?.number;
+      let number = want.parameters.number;
       switch (number) {
         case 1:
           hilog.info(0x0000, 'testTag', '%{public}s', 'case 1 ---->');
@@ -114,7 +112,7 @@ class Test {
                     ).then(data => {
                       hilog.info(0x0000, 'testTag', '%{public}s', `fa startAbility data: ${data}`);
                       featureAbility.terminateSelf();
-                    }, ((err: BusinessError) => {
+                    }, (err => {
                       hilog.info(0x0000, 'testTag', '%{public}s', `fa startAbility err: ${JSON.stringify(err)}`);
                     }))
                   }
@@ -144,7 +142,7 @@ class Test {
                     ).then(data => {
                       hilog.info(0x0000, 'testTag', '%{public}s', `4-fa startAbility data: ${data}`);
                       featureAbility.terminateSelf();
-                    }, ((err: BusinessError) => {
+                    }, (err => {
                       hilog.info(0x0000, 'testTag', '%{public}s', `4-fa startAbility err: ${JSON.stringify(err)}`);
                     }))
                   }
@@ -174,7 +172,7 @@ class Test {
                     ).then(data => {
                       hilog.info(0x0000, 'testTag', '%{public}s', `fa startAbility data: ${data}`);
                       featureAbility.terminateSelf();
-                    }, ((err: BusinessError) => {
+                    }, (err => {
                       hilog.info(0x0000, 'testTag', '%{public}s', `fa startAbility err: ${JSON.stringify(err)}`);
                     }))
                   }
@@ -204,7 +202,7 @@ class Test {
                     ).then(data => {
                       hilog.info(0x0000, 'testTag', '%{public}s', `6-fa startAbility data: ${data}`);
                       featureAbility.terminateSelf();
-                    }, ((err: BusinessError) => {
+                    }, (err => {
                       hilog.info(0x0000, 'testTag', '%{public}s', `6-fa startAbility err: ${JSON.stringify(err)}`);
                     }))
                   }
@@ -277,5 +275,3 @@ class Test {
     })
   }
 }
-
-export default new Test()

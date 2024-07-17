@@ -17,6 +17,7 @@ import taskpool from '@ohos.taskpool';
 import { BusinessError } from '@ohos.base'
 import { StrCat, A, B, printStrArgs, printArgs } from './exportFunclist'
 import HashMap from '@ohos.util.HashMap';
+import { errorManager } from '@kit.AbilityKit';
 
 export async function currentFun(): Promise<void> {
   "use concurrent"
@@ -301,4 +302,51 @@ export async function sequenceRunnerPriorityTest(): Promise<string> {
     }
   }
   return finalString;
+}
+
+export class CancelAndExecuteDelayed{
+  private task: taskpool.Task;
+  public res:number = 0;
+  public i:number = 0;
+  public isTerminate:boolean = false;
+  constructor(num: number) {
+    this.task = new taskpool.Task(printArgs, num);
+  }
+
+  postRequest() {
+    try {
+      taskpool.cancel(this.task);
+    } catch (e) {
+    }
+
+    taskpool.executeDelayed(1000, this.task).then((value: Object) => {
+      this.i++;
+      this.res += value as number;
+      this.isTerminate = true;
+    }).catch((e: BusinessError) => {
+    })
+  }
+}
+
+export function errorManageTest() {
+  "use concurrent"
+  let oldObserver = (reason: Error, promise: Promise<string>) => {
+    console.log("This is oldObserver");
+  };
+  errorManager.on("unhandledRejection", oldObserver);
+  errorManager.off("unhandledRejection");
+  let t = Date.now();
+  while (Date.now() - t <= 1000){
+  }
+  new Promise<string>((res, rej) => {
+    rej("rejError")
+  }).then(() => {
+    throw new Error("resError");
+  }).catch(() => {
+    throw new Error("catchError");
+  });
+  let observer = (reason: Error, promise: Promise<string>) => {
+    console.log("This is observer, reject reason is ", reason);
+  };
+  errorManager.on("unhandledRejection", observer);
 }

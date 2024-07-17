@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import events_emitter from '@ohos.events.emitter'
+import events_emitter from '@ohos.events.emitter';
 
 @Entry
 @Component
 struct PageTransitionExample1 {
-  @State scale: number = 1
-  @State opacity: number = 1
-  @State active: boolean = false
-  @State type: RouteType	 = NavigationType.Push
+  @State scale: number = 1;
+  @State opacity: number = 1;
+  @State active: boolean = false;
+  @State type: RouteType = NavigationType.Push;
 
   build() {
     Column() {
@@ -35,14 +35,14 @@ struct PageTransitionExample1 {
         this.active = true
         console.info('pageTransition current action state is: ' + this.active);
         try {
-          var backData = {
+          let backData: events_emitter.EventData = {
             data: {
-              "scale" : this.scale,
-              "opacity" : this.opacity,
+              "scale": this.scale,
+              "opacity": this.opacity,
               "type": this.type
             }
           }
-          var backEvent = {
+          let backEvent: events_emitter.InnerEvent = {
             eventId: 144,
             priority: events_emitter.EventPriority.LOW
           }
@@ -71,21 +71,21 @@ struct PageTransitionExample1 {
   onPageShow() {
     console.info('active page show called');
 
-    var stateChangeEventOne = {
+    let stateChangeEventOne: events_emitter.InnerEvent = {
       eventId: 145,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventOne, this.stateChangCallBack)
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("active page state change called:" + JSON.stringify(eventData));
       if (eventData.data.scale != null) {
-       this.scale = parseInt(eventData.data.scale);
+        this.scale = Number.parseInt(eventData.data.scale);
       }
       if (eventData.data.opacity != null) {
-        this.opacity = parseInt(eventData.data.opacity);
+        this.opacity = Number.parseInt(eventData.data.opacity);
       }
     }
   }

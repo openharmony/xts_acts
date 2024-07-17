@@ -55,7 +55,7 @@ struct Common_ts_ets_apiStaticClear {
         .textOverflow({ overflow: TextOverflow.None })
         .key("labelB")
         .onClick(() => {
-          Environment.envProps(null);
+          Environment.envProps(null!);
         })
       Text(`${this.label}: ${this.varA}`)
         .width(320)
@@ -103,7 +103,7 @@ struct Common_ts_ets_apiStaticClear {
         .textOverflow({ overflow: TextOverflow.None })
         .key("labelE")
         .onClick(() => {
-          PersistentStorage.persistProps(null);
+          PersistentStorage.persistProps(null!);
         })
       Text(`${this.label}: ${this.varA}`)
         .width(320)

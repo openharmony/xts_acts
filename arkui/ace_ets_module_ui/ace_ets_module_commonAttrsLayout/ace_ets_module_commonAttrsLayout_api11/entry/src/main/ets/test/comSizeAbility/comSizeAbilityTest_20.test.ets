@@ -13,16 +13,30 @@
  * limitations under the License.
  */
 import { expect, it, afterEach, afterAll, beforeEach, beforeAll, describe } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import componentUtils from '@ohos.arkui.componentUtils';
-export default function comSizeAbilityTest_20 () {
-  describe('comSizeAbilityTest_20', function () {
-    beforeEach(async function (done) {
+
+export default function comSizeAbilityTest_20() {
+  describe('comSizeAbilityTest_20', () => {
+    beforeEach(async (done: Function) => {
       console.info("comSizeAbilityTest_20 beforeEach start")
-      let options = {
-        uri: 'MainAbility/pages/comSizeAbility/comSizeAbilityTest_20'
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/comSizeAbility/comSizeAbilityTest_20'
       }
       try {
         router.clear()
@@ -30,12 +44,12 @@ export default function comSizeAbilityTest_20 () {
         console.info("get comSizeAbilityTest_20 state pages: " + JSON.stringify(pages))
         if (!("comSizeAbilityTest" == pages.name)) {
           console.info("get comSizeAbilityTest_20 state pages.name: " + JSON.stringify(pages.name))
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           await CommonFunc.sleep(1000);
           console.info("push comSizeAbilityTest_20 success: " + JSON.stringify(result))
         }
       } catch (err) {
-        console.error ("push comSizeAbilityTest_20 page error: " + err)
+        console.error("push comSizeAbilityTest_20 page error: " + err)
         expect().assertFail()
       }
       done()
@@ -47,11 +61,11 @@ export default function comSizeAbilityTest_20 () {
         * @tc.desc  : test the size of component
         * @tc.level : Level 2
         */
-    it('comSizeAbilityTestJsunit_53', 0, async  function (done) {
+    it('comSizeAbilityTestJsunit_53', 0, async (done: Function) => {
       console.info('comSizeAbilityTestJsunit_53 START')
       await CommonFunc.sleep(1000);
-      let modePosition:componentUtils.ComponentInfo = componentUtils.getRectangleById("FormLink_Size");
-      let modePosition1:componentUtils.ComponentInfo = componentUtils.getRectangleById("FormLink_Father");
+      let modePosition: componentUtils.ComponentInfo = componentUtils.getRectangleById("FormLink_Size");
+      let modePosition1: componentUtils.ComponentInfo = componentUtils.getRectangleById("FormLink_Father");
       let Size = modePosition.size
       let SizeWidth = Size.width
       let SizeHeight = Size.height
@@ -75,8 +89,8 @@ export default function comSizeAbilityTest_20 () {
       console.info("[comSizeAbilityTestJsunit_53] component Scale is: " + JSON.stringify(Scale))
       console.info("[comSizeAbilityTestJsunit_53] component Rotate is: " + JSON.stringify(Rotate))
       await CommonFunc.sleep(1000);
-      expect(Math.round(SizeWidth)).assertEqual(Math.round(vp2px(200)));
-      expect(Math.round(SizeHeight)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(SizeWidth - Math.round(vp2px(200))) <= 1).assertTrue();
+      expect(Math.abs(SizeHeight - Math.round(vp2px(100))) <= 1).assertTrue();
       expect(JSON.stringify(Translate)).assertEqual('{"x":1,"y":1,"z":1}');
       expect(JSON.stringify(Scale)).assertEqual('{"x":1,"y":1,"z":1,"centerX":1,"centerY":1}');
       expect(JSON.stringify(Rotate)).assertEqual('{"x":1,"y":1,"z":1,"angle":0,"centerX":1,"centerY":1}');

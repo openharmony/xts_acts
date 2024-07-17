@@ -121,13 +121,14 @@ export default function preferencesV9CallbackTest(){
                 mPreference.get(123, function (err, val) {
                     if (err) {
                         console.log("get err =" + err + ", code =" + err.code + ", message =" + err.message)
-                        expect(false).assertTrue()
+                        expect().assertFail()
                     }
-                    expect(true).assertEqual(val)
+                    expect().assertFail()
                 })
             } catch (err) {
                 console.log("trycatch err =" + err + ", code =" + err.code + ", message =" + err.message)
                 done()
+                expect(error.code == 401).assertTrue();
                 console.log("SUB_DDM_JSPREFERENCEV9_CALLBACK_0200 end.")
             }
         })

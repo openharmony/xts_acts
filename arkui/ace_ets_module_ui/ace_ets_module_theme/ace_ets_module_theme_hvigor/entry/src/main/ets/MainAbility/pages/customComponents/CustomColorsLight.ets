@@ -32,6 +32,7 @@ export struct CustomColorsLight {
   @State data: DataClass[] = [];
 
   onWillApplyTheme(theme: Theme) {
+    customButtonLightTheme = theme;
     setBaseTokens(this.data, theme);
     setFontData(this.data, theme);
     setIconData(this.data, theme);

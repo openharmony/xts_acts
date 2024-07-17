@@ -112,9 +112,9 @@ describe('UrlFunTest', function () {
             params.append(123,"456")
             expect(0).assertEqual(1)
         } catch (err) {
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of 123 must be string`)
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of 123 must be string`)
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual("Parameter error.The type of 123 must be string");
+            expect(err.message).assertEqual("Parameter error. The type of 123 must be string");
         }
     })
 
@@ -135,9 +135,9 @@ describe('UrlFunTest', function () {
             params.append(a, b)
             expect(0).assertEqual(1)
         } catch (err) {
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${b} must be string`)
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of ${b} must be string`)
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual(`Parameter error.The type of ${b} must be string`);
+            expect(err.message).assertEqual(`Parameter error. The type of ${b} must be string`);
         }
     })
 
@@ -236,9 +236,9 @@ describe('UrlFunTest', function () {
             params.delete();
             expect(0).assertEqual(1)
         } catch (err) {
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${arguments[0]} must be string`)
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of ${arguments[0]} must be string`)
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual(`Parameter error.The type of ${arguments[0]} must be string`);
+            expect(err.message).assertEqual(`Parameter error. The type of ${arguments[0]} must be string`);
         }
     })
 
@@ -257,9 +257,9 @@ describe('UrlFunTest', function () {
             params.delete(4);
             expect(0).assertEqual(1)
         } catch (err) {
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of 4 must be string`)
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of 4 must be string`)
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual(`Parameter error.The type of 4 must be string`);
+            expect(err.message).assertEqual(`Parameter error. The type of 4 must be string`);
         }
     })
 
@@ -619,9 +619,9 @@ describe('UrlFunTest', function () {
             params.forEach(func);
             expect(0).assertEqual(1)
         } catch(err) {
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${func} must be function`)
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of ${func} must be function`)
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual(`Parameter error.The type of ${func} must be function`);
+            expect(err.message).assertEqual(`Parameter error. The type of ${func} must be function`);
         }
     })
 
@@ -738,9 +738,9 @@ describe('UrlFunTest', function () {
             var result =  params.get(a)
             expect(0).assertEqual(1)
         }catch(err){
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${a} must be string`)
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of ${a} must be string`)
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual(`Parameter error.The type of ${a} must be string`);
+            expect(err.message).assertEqual(`Parameter error. The type of ${a} must be string`);
         }
     })
 
@@ -835,9 +835,9 @@ describe('UrlFunTest', function () {
             var result =  params.getAll(b)
             expect(0).assertEqual(1)
         } catch(err) {
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${b} must be string`)
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of ${b} must be string`)
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual(`Parameter error.The type of ${b} must be string`);
+            expect(err.message).assertEqual(`Parameter error. The type of ${b} must be string`);
         }
     })
 
@@ -927,9 +927,9 @@ describe('UrlFunTest', function () {
             var a = 1;
             params.has(a);
         } catch(e) {
-            expect(e.toString()).assertEqual(`BusinessError: Parameter error.The type of ${a} must be string`);
+            expect(e.toString()).assertEqual(`BusinessError: Parameter error. The type of ${a} must be string`);
             expect(e.code).assertEqual(401)
-            expect(e.message).assertEqual(`Parameter error.The type of ${a} must be string`);
+            expect(e.message).assertEqual(`Parameter error. The type of ${a} must be string`);
         }
     })
 
@@ -1150,9 +1150,9 @@ describe('UrlFunTest', function () {
             var res = params.toString();
             expect(0).assertEqual(1);
         } catch(err) {
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${a} must be string`)
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of ${a} must be string`)
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual(`Parameter error.The type of ${a} must be string`);
+            expect(err.message).assertEqual(`Parameter error. The type of ${a} must be string`);
         }
     })
 
@@ -1174,9 +1174,9 @@ describe('UrlFunTest', function () {
             var res = params.toString();
             expect(0).assertEqual(1);
         } catch(err) {
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${b} must be string`)
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of ${b} must be string`)
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual(`Parameter error.The type of ${b} must be string`);
+            expect(err.message).assertEqual(`Parameter error. The type of ${b} must be string`);
         }
     })
 
@@ -1554,9 +1554,9 @@ describe('UrlFunTest', function () {
             var param = 123456789;
             let params = new Url.URLParams(param)
         } catch(err) {
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${param} must be string`)
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of ${param} must be string`)
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual(`Parameter error.The type of ${param} must be string`);
+            expect(err.message).assertEqual(`Parameter error. The type of ${param} must be string`);
         }
     })
 
@@ -1575,9 +1575,9 @@ describe('UrlFunTest', function () {
               ];
             let params = new Url.URLParams(param);
         } catch(err) {
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${param} must be string[][]`)
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of ${param} must be string[][]`)
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual(`Parameter error.The type of ${param} must be string[][]`);
+            expect(err.message).assertEqual(`Parameter error. The type of ${param} must be string[][]`);
         }
     })
 
@@ -1693,9 +1693,9 @@ describe('UrlFunTest', function () {
             var a = 1;
             params.append(a, "123")
         } catch(e) {
-            expect(e.toString()).assertEqual(`BusinessError: Parameter error.The type of ${a} must be string`);
+            expect(e.toString()).assertEqual(`BusinessError: Parameter error. The type of ${a} must be string`);
             expect(e.code).assertEqual(401)
-            expect(e.message).assertEqual(`Parameter error.The type of ${a} must be string`);
+            expect(e.message).assertEqual(`Parameter error. The type of ${a} must be string`);
         }
     })
 
@@ -2360,9 +2360,9 @@ describe('UrlFunTest', function () {
             var a = 1;
             params.has(a);
         } catch(e) {
-            expect(e.toString()).assertEqual(`BusinessError: Parameter error.The type of ${a} must be string`);
+            expect(e.toString()).assertEqual(`BusinessError: Parameter error. The type of ${a} must be string`);
             expect(e.code).assertEqual(401)
-            expect(e.message).assertEqual(`Parameter error.The type of ${a} must be string`);
+            expect(e.message).assertEqual(`Parameter error. The type of ${a} must be string`);
         }
     })
 
@@ -2564,9 +2564,9 @@ describe('UrlFunTest', function () {
             var a = 12;
             params.set(a, 'BBB');
         } catch(err) {
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${a} must be string`)
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of ${a} must be string`)
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual(`Parameter error.The type of ${a} must be string`);
+            expect(err.message).assertEqual(`Parameter error. The type of ${a} must be string`);
         }
     })
 
@@ -4515,9 +4515,9 @@ describe('UrlFunTest', function () {
             Url.URL.parseURL(a)
             expect(0).assertEqual(1)
         } catch(err) {
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${a} must be string`)
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of ${a} must be string`)
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual(`Parameter error.The type of ${a} must be string`);
+            expect(err.message).assertEqual(`Parameter error. The type of ${a} must be string`);
         }
     })
 
@@ -4538,9 +4538,9 @@ describe('UrlFunTest', function () {
             Url.URL.parseURL(a, b)
             expect(0).assertEqual(1)
         } catch(err) {
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${a} must be string`)
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of ${a} must be string`)
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual(`Parameter error.The type of ${a} must be string`);
+            expect(err.message).assertEqual(`Parameter error. The type of ${a} must be string`);
         }
     })
 
@@ -4561,9 +4561,9 @@ describe('UrlFunTest', function () {
             Url.URL.parseURL(a, b)
             expect(0).assertEqual(1)
         } catch(err) {
-            expect(err.toString()).assertEqual(`BusinessError: Parameter error.The type of ${b} must be string or URL`);
+            expect(err.toString()).assertEqual(`BusinessError: Parameter error. The type of ${b} must be string or URL`);
             expect(err.code).assertEqual(401)
-            expect(err.message).assertEqual(`Parameter error.The type of ${b} must be string or URL`);
+            expect(err.message).assertEqual(`Parameter error. The type of ${b} must be string or URL`);
         }
     })
 
@@ -5174,5 +5174,377 @@ describe('UrlFunTest', function () {
         const phone2 = u2.params.get('phone')
         expect(u2.params.toString()).assertEqual('phone=%2B86+9')
         expect(phone2.toString()).assertEqual('+86 9')
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_30900
+   * @tc.name: testUrlparseURL0043
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0043', 0, function () {
+        let uu = Url.URL.parseURL('http://www.baidu.com/sajd中文测试/aa?xx=%26');
+        let res = 'http://www.baidu.com/sajd%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/aa?xx=%26';
+        expect(uu.toString()).assertEqual(res);
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_31000
+   * @tc.name: testUrlparseURL0044
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0044', 0, function () {
+        let uu = Url.URL.parseURL('http://www.baidu.com/sajd中文测试/aa?xx=%26%7D');
+        let res = 'http://www.baidu.com/sajd%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/aa?xx=%26%7D';
+        let uu2 = Url.URL.parseURL(uu.toString());
+        expect(uu2.toString()).assertEqual(res);
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_31100
+   * @tc.name: testUrlparseURL0045
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0045', 0, function () {
+      let uu = Url.URL.parseURL('http://www.baidu.com/sajd中文测试/aa?xx=%26优优');
+      let uu2 = Url.URL.parseURL(uu.toString());
+      let res = 'http://www.baidu.com/sajd%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/aa?xx=%26优优';
+      expect(uu2.toString()).assertEqual(res);
+      expect(uu2.pathname).assertEqual('/sajd%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/aa');
+      expect(uu2.params.get('xx')).assertEqual('&优优');
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_31200
+   * @tc.name: testUrlparseURL0046
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0046', 0, function () {
+      let uu = Url.URL.parseURL('http://www.baidu.com/sajd%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/aa?xx=%26优优');
+      let uu2 = Url.URL.parseURL(uu.toString());
+      let res = 'http://www.baidu.com/sajd%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/aa?xx=%26优优';
+      expect(uu2.toString()).assertEqual(res);
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_31300
+   * @tc.name: testUrlparseURL0047
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0047', 0, function () {
+      let uu = Url.URL.parseURL('http://www.baidu.com/sajd/aa#xx=%26优优');
+      let res = 'http://www.baidu.com/sajd/aa#xx=%26%E4%BC%98%E4%BC%98';
+      expect(uu.toString()).assertEqual(res);
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_31400
+   * @tc.name: testUrlparseURL0048
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0048', 0, function () {
+        let uu = Url.URL.parseURL('http://www.baidu.com/sajd中文测试/aa?xx=%26优优');
+      let uu2 = Url.URL.parseURL(uu.toString());
+      let res = 'http://www.baidu.com/sajd%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/aa?xx=%26优优';
+      expect(uu2.toString()).assertEqual(res);
+      expect(uu2.pathname).assertEqual('/sajd%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/aa');
+      expect(uu2.params.get('xx')).assertEqual('&优优');
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_31500
+   * @tc.name: testUrlparseURL0049
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0049', 0, function () {
+      let uu = Url.URL.parseURL('http://k中%:ss8@www.baidu.com/s#a%jd中文测试q/aa?xx=%26%E4%B8%AD');
+      let res = 'http://k%E4%B8%AD%:ss8@www.baidu.com/s#a%jd%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95q/aa?xx=%26%E4%B8%AD';
+      expect(uu.toString()).assertEqual(res);
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_31600
+   * @tc.name: testUrlparseURL0050
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0050', 0, function () {
+      let uu = Url.URL.parseURL('http://k中%:ss8@www.baidu.com/s#a%jd中文测试q/aa?xx=%26%E4%B8%AD');
+      expect(uu.params.get('xx')).assertEqual(undefined);
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_31700
+   * @tc.name: testUrlparseURL0051
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0051', 0, function () {
+      let uu = Url.URL.parseURL('http://k中%:ss8@www.baidu.com/s#a%jd中文测试q/aa?xx=%26%E4%B8%AD');
+      let uu2 = Url.URL.parseURL(uu.toString());
+      let res = 'http://www.baidu.com/sajd%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/aa?xx=%26优优';
+      expect(uu2.pathname).assertEqual('/s');
+      uu2.pathname = '/sa%jd%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95q/aa优'
+      expect(uu2.pathname).assertEqual('/sa%jd%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95q/aa%E4%BC%98');
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_31800
+   * @tc.name: testUrlparseURL0052
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0052', 0, function () {
+      let uu = Url.URL.parseURL('http://k中%:ss8@www.baidu.com/s#a%jd中文测试q/aa?xx=%26%E4%B8%AD');
+      let yy = uu.toString();
+      let uu2 = Url.URL.parseURL(yy);
+      expect(uu2.username).assertEqual('k%E4%B8%AD%');
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_31900
+   * @tc.name: testUrlparseURL0053
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0053', 0, function () {
+      let uu = Url.URL.parseURL('http://www.baidu.com/sajd中文测试/aa?xx=%26优优');
+      let uu2 = Url.URL.parseURL(uu.toString());
+      let res = 'http://www.baidu.com/sajd%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/aa?xx=%26优优';
+      expect(uu2.toString()).assertEqual(res);
+      expect(uu2.pathname).assertEqual('/sajd%E4%B8%AD%E6%96%87%E6%B5%8B%E8%AF%95/aa');
+      expect(uu2.params.get('xx')).assertEqual('&优优');
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_32000
+   * @tc.name: testUrlparseURL0054
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0054', 0, function () {
+      let objectParams = new Url.URLParams("?a%20b=a&a%2Bb=a1");
+      let objectParams1 = new Url.URLParams(objectParams);
+      let str = objectParams1.toString();
+      let res = 'a+b=a&a%2Bb=a1';
+      expect(str).assertEqual(res);
+      objectParams1.append('a+b', 'b2');
+      objectParams1.append('a b', 'b2');
+      expect(objectParams1.toString()).assertEqual('a+b=a&a%2Bb=a1&a%2Bb=b2&a+b=b2');
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_32100
+   * @tc.name: testUrlparseURL0055
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0055', 0, function () {
+      let objectParams = new Url.URLParams();
+      objectParams.set('a b', 'c3');
+      objectParams.set('a+b', 'c3');
+      expect(objectParams.toString()).assertEqual('a+b=c3&a%2Bb=c3');
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_32200
+   * @tc.name: testUrlparseURL0056
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0056', 0, function () {
+      let objectParams = new Url.URLParams('1=3&1=6');
+      objectParams.append('a b', 'abc1');
+      objectParams.append('a&b', 'abc2');
+      objectParams.append('a+b', 'abc3');
+      objectParams.append('a+b', 'abc4');
+      objectParams.sort();
+      expect(objectParams.toString()).assertEqual('1=3&1=6&a+b=abc1&a%26b=abc2&a%2Bb=abc3&a%2Bb=abc4');
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_32300
+   * @tc.name: testUrlparseURL0057
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0057', 0, function () {
+      let objectParams = new Url.URLParams('?key=first2');
+      objectParams.append('a&b', 'abc大2');
+      objectParams.append('a+b', 'abc大2');
+      objectParams.append('a b', 'abc大2');
+      let res = 'key=first2&a%26b=abc%E5%A4%A72&a%2Bb=abc%E5%A4%A72&a+b=abc%E5%A4%A72';
+      expect(objectParams.has('a&b')).assertTrue();
+      expect(objectParams.has('a%26b')).assertFalse();
+      expect(objectParams.toString()).assertEqual(res);
+      expect(objectParams.get('a&b')).assertEqual('abc大2');
+      expect(objectParams.get('a%26b')).assertEqual(undefined);
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_32400
+   * @tc.name: testUrlparseURL0058
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0058', 0, function () {
+      const objectParams = new Url.URLParams('key=a   b   c');
+      expect(objectParams.toString()).assertEqual('key=a+++b+++c');
+      objectParams.append('key1', 'd   e   f');
+      expect(objectParams.toString()).assertEqual('key=a+++b+++c&key1=d+++e+++f');
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_32500
+   * @tc.name: testUrlparseURL0059
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0059', 0, function () {
+      const objectParams = new Url.URLParams('key=a%20b %3D%2Bc++=p%26p%25%E5%A4%A7');
+      expect(objectParams.toString()).assertEqual('key=a+b+%3D%2Bc++%3Dp%26p%25%E5%A4%A7');
+      expect(objectParams.get('key')).assertEqual('a b =+c  =p&p%大');
+      objectParams.append('key1', 'a%20b%3D%2Bc+=%');
+      let res = 'key=a+b+%3D%2Bc++%3Dp%26p%25%E5%A4%A7&key1=a%2520b%253D%252Bc%2B%3D%25';
+      expect(objectParams.toString()).assertEqual(res);
+      expect(objectParams.get('key1')).assertEqual('a%20b%3D%2Bc+=%');
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_32600
+   * @tc.name: testUrlparseURL0060
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0060', 0, function () {
+      const object = Url.URL.parseURL('https://sssw.dasf?key=a%20b %3D%2Bc++=p%26p%25%E5%A4%A7!()~{}[]%大');
+      let res = 'key=a+b+%3D%2Bc++%3Dp%26p%25%E5%A4%A7%21%28%29%7E%7B%7D%5B%5D%25%E5%A4%A7';
+      expect(object.params.toString()).assertEqual(res);
+      expect(object.params.get('key')).assertEqual('a b =+c  =p&p%大!()~{}[]%大');
+      object.params.delete('');
+      for(let tiem of object.params.entries()){
+        expect(tiem[0]).assertEqual('key');
+        expect(tiem[1]).assertEqual('a b =+c  =p&p%大!()~{}[]%大');
+      }
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_32700
+   * @tc.name: testUrlparseURL0061
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0061', 0, function () {
+        const object = Url.URL.parseURL('https://sssw.dasf');
+        object.params.sort();
+        expect(object.params.toString()).assertEqual('');
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_32800
+   * @tc.name: testUrlparseURL0062
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0062', 0, function () {
+        const object = Url.URL.parseURL('https://sssw.dasf?9995=sss');
+        object.params.sort();
+        expect(object.params.toString()).assertEqual('9995=sss');
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_32900
+   * @tc.name: testUrlparseURL0063
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0063', 0, function () {
+        const object = new Url.URLParams('key2=val&key')
+        object.sort();
+        expect(object.toString()).assertEqual('key=&key2=val');
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_33000
+   * @tc.name: testUrlparseURL0064
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0064', 0, function () {
+        const object = new Url.URLSearchParams('')
+        object.sort();
+        expect(object.toString()).assertEqual('');
+        object.append('ket2', 'sc');
+        object.append('e%t2', 's@c');
+        object.sort();
+        expect(object.toString()).assertEqual('e%25t2=s%40c&ket2=sc');
+    })
+
+   /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_URL_33100
+   * @tc.name: testUrlparseURL0065
+   * @tc.desc: URL constructor, which is used to instantiate a URL object.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+    it('testUrlparseURL0065', 0, function () {
+        const object = Url.URL.parseURL('https://sssw.dasf?key2=val&key');
+        object.params.sort();
+        expect(object.toString()).assertEqual('https://sssw.dasf/?key=&key2=val');
+        object.params.delete('key2')
+        object.params.delete('key')
+        object.params.sort();
+        expect(object.toString()).assertEqual('https://sssw.dasf/');
     })
 })}

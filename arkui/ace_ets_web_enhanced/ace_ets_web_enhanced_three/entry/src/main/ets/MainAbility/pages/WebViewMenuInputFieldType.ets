@@ -367,6 +367,27 @@ struct WebViewMenuInputFieldType {
               await driver.mouseMoveTo({x:0, y:0})
               break;
             }
+            case "onInterceptKeyboardAttach0900": {
+              this.ResultKey = 9
+              this.userAgentPC = this.controller.getUserAgent();
+              if ((this.userAgentPC).includes("PC")) {
+                Utils.emitEvent(0, 2881)
+                break;
+              } else {
+                this.controller.loadUrl("resource://rawfile/onInterceptKeyboardAttach_UNSPECIFIED.html")
+              }
+              await Utils.sleep(2000);
+              let webRect = Utils.getComponentRect('WebViewMenuInputFieldTypeTestWebView');
+              let driver = Driver.create();
+              let X = Utils.getRectHorizontalCenterX(webRect)
+              let Y = Utils.getRectVerticalCenterY(webRect)
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_LEFT);
+              await Utils.sleep(2000);
+              await driver.mouseMoveTo({x:0, y:0})
+              break;
+            }
           }
         })
       }
@@ -447,6 +468,9 @@ struct WebViewMenuInputFieldType {
             }
             if(this.ResultKey == 8){
               Utils.emitEvent(enterKeyType, 2880)
+            }
+            if(this.ResultKey == 9){
+              Utils.emitEvent(enterKeyType, 2881)
             }
             return option;
           }

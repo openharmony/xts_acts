@@ -13,17 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils.ets';
+import RectValue from './Rect'
 
+rect_value: RectValue;
 export default function sourceTypeJsunit() {
-  describe('sourceTypeJsunit', function () {
-    beforeEach(async function (done) {
+
+  describe('sourceTypeJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("sourceType beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/sourceType',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/sourceType',
       }
       try {
         router.clear();
@@ -31,7 +34,7 @@ export default function sourceTypeJsunit() {
         console.info("get sourceType state pages:" + JSON.stringify(pages));
         if (!("sourceType" == pages.name)) {
           console.info("get sourceType state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push sourceType page result:" + JSON.stringify(result));
         }
@@ -41,27 +44,30 @@ export default function sourceTypeJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("sourceType after each called");
     });
 
-    it('sourceTypeTest_0100', 0, async function (done) {
+    it('sourceTypeTest_0100', 0, async (done: Function) => {
       await Utils.sleep(1000)
-      let rect = await Utils.getComponentRect('button')
+
+      let rect: RectValue= await Utils.getComponentRect('button')
       console.info("sourceTypeTest_0100 rectInfo is " + JSON.stringify(rect));
-      let x_value = rect.left + (rect.right - rect.left) / 2
-      let y_value = rect.top + (rect.bottom - rect.top) / 2
+      let x_value: number = rect.left + (rect.right - rect.left) / 2
+      let y_value: number = rect.top + (rect.bottom - rect.top) / 2
       console.info("sourceTypeTest_0100 onTouch location is: " + "[x]=== " + x_value + "   [y]===" + y_value);
       let point: TouchObject = {
-        id: 1, x: x_value, y: y_value, type: TouchType.Down,
+        id: 1,
+        x: x_value,
+        y: y_value,
+        type: TouchType.Down,
       }
-      var callback = (eventData) => {
-        console.info("sourceTypeTest_0100 get event state result is: " + JSON.stringify(eventData));
-        let event = JSON.parse(eventData.data.event);
-        expect(event.source).assertEqual(0)
+      let callback = (indexData: emitter.EventData) => {
+        console.info("sourceTypeTest_0100 get event state result is: " + JSON.stringify(indexData));
+        expect(JSON.parse(indexData.data.event).source).assertEqual(0)
       }
-      var innerEvent = {
+      let innerEvent: events_emitter.InnerEvent = {
         eventId: 198,
         priority: events_emitter.EventPriority.LOW
       }

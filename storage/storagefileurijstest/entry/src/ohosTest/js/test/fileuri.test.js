@@ -119,7 +119,7 @@ describe('file_uri_test', function () {
   it('FileUri_Parameter_Name_000', 0, async function () {
     try {
       let name = 'sync_000.txt';
-      let path = '/data/storage/el2/base/haps/entry/files/sync_000.txt';
+      let path = '/data/storage/el2/base/haps/sync_000.txt';
       let uri = fileUri.getUriFromPath(path);
       let fileFromPath = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
       fs.writeSync(fileFromPath.fd, CONTENT);
@@ -151,7 +151,7 @@ describe('file_uri_test', function () {
   it('FileUri_Parameter_Name_001', 0, async function () {
     try {
       let name = 'sync_001.txt';
-      let path = '/data/storage/el2/base/haps/entry/files/sync_001.txt';
+      let path = '/data/storage/el2/base/haps/sync_001.txt';
       let uri = fileUri.getUriFromPath(path);
       let fileUriObject = new fileUri.FileUri(uri);
       expect(name === fileUriObject.name).assertTrue();

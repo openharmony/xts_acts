@@ -87,6 +87,7 @@ export default function ImageReceiverTest() {
         let mPhotoOutput;
         let nextImage;
         let lastestImage;
+        let isSupportCameraVideoProfiles = true;
         let context = featureAbility.getContext();
         const delegator = abilityDelegatorRegistry.getAbilityDelegator();
         function logger(caseName) {
@@ -103,6 +104,20 @@ export default function ImageReceiverTest() {
             await getPermission();
             sleep(1000);
             await driveFn();
+            mCameraManager = cameraObj.getCameraManager(context);
+            if (!mCameraManager) {
+                console.error("camera.getCameraManager error")
+                return;
+            }
+            let cameras = mCameraManager.getSupportedCameras();
+            let cameraDevice = cameras[0];
+            let cameraOutputCapability = mCameraManager.getSupportedOutputCapability(cameraDevice);
+            if (cameraOutputCapability?.videoProfiles) {
+                console.info('Support camera video profiles');
+            } else {
+                isSupportCameraVideoProfiles = false;
+                console.info('Not support camera Video Profiles');
+            }
         })
 
         beforeEach(function () { console.info('beforeEach case'); })
@@ -170,7 +185,7 @@ export default function ImageReceiverTest() {
                 console.info(TAG + 'createCaptureSession FAILED');
             }
             if (isEmpty(mCameraSession)) {
-                console.info(TAG + "createCaptureSession FAILED");
+                console.info(TAG + "createCaptureSession FAILED with empty CameraSession");
                 return false;
             }
             beginCameraSessionConfig();
@@ -322,66 +337,72 @@ export default function ImageReceiverTest() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0100', 0, async function (done) {
-            let mlg = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0100");
-            getCameraManagerInstance();
-            getCameraSupportDevicesArray();
-            try {
-                let options = ndkTest.JsCreateImageReceiverOptions(WIDTH, HEIGHT, CAPACITY);
-                let myReceiver = ndkTest.JsCreateImageReceiver(options);
-                let capacity = CAPACITY;
-
-                let onRet = ndkTest.JsOn(myReceiver, (receiver) => {
-                    mlg.log("Image receiver callback success " + JSON.stringify(receiver));
-                    capacity = capacity + 1;
-                    ndkTest.JsImageReceiverOptionsSetCapacity(options, capacity);
-                    mlg.log("OnCallback success");
-                    expect(receiver != undefined).assertTrue();
-                });
-                expect(onRet != undefined).assertTrue();
-
-                await getPhotoReceiverSurface(myReceiver);
-                await createInput(0);
-                createCameraSessionInstance();
-                mCameraSession.addInput(mCameraInput);
-                createOutput(0);
-                mCameraSession.addOutput(mPreviewOutput);
-                mCameraSession.addOutput(mPhotoOutput);
-                await commitCameraSessionConfig();
-                await mCameraSession.start();
-                mPhotoOutput.capture(captureSetting).then((result) => {
-                    console.info('capture success :' + result);
-                }).catch((err) => {
-                    console.info('capture failed :' + err);
-                });
-                await sleep(1000);
-                nextImage = ndkTest.JsReadNextImage(myReceiver);
-                mlg.log("mTestImage 1 " + JSON.stringify(nextImage));
-                let capacityAfterOn = ndkTest.JsImageReceiverOptionsGetCapacity(options);
-                expect( capacityAfterOn == CAPACITY + 1).assertTrue();
-
-                let onOFF = ndkTest.JsOff(myReceiver);
-                expect(onOFF != undefined).assertTrue();
-
-                mPhotoOutput.capture(captureSetting).then((result) => {
-                    console.info('capture success :' + result);
-                }).catch((err) => {
-                    console.info('capture failed: ' + err);
-                });
-                await sleep(1000);
-                lastestImage = ndkTest.JsReadLatestImage(myReceiver);
-                mlg.log("mTestImage 2 " + JSON.stringify(lastestImage));
-                let capacityAfterOff = ndkTest.JsImageReceiverOptionsGetCapacity(options);
-                expect( capacityAfterOff == CAPACITY + 1).assertTrue();
-
-                await mCameraSession.stop();
-                await sleep(1000);
-                ndkTest.JsReleaseImageReceiverOptions(options);
-                ndkTest.JsReleaseImageReceiver(myReceiver);
+            if (!isSupportCameraVideoProfiles) {
+                console.info('Failed to obtain the default videoProfiles object. Not support usb camera');
+                expect(true).assertTrue();
                 done();
-            } catch (error) {
-                mlg.log("Test exception " + error);
-                expect().assertFail();
-                done();
+            } else {
+                let mlg = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0100");
+                getCameraManagerInstance();
+                getCameraSupportDevicesArray();
+                try {
+                    let options = ndkTest.JsCreateImageReceiverOptions(WIDTH, HEIGHT, CAPACITY);
+                    let myReceiver = ndkTest.JsCreateImageReceiver(options);
+                    let capacity = CAPACITY;
+
+                    let onRet = ndkTest.JsOn(myReceiver, (receiver) => {
+                        mlg.log("Image receiver callback success " + JSON.stringify(receiver));
+                        capacity = capacity + 1;
+                        ndkTest.JsImageReceiverOptionsSetCapacity(options, capacity);
+                        mlg.log("OnCallback success");
+                        expect(receiver != undefined).assertTrue();
+                    });
+                    expect(onRet != undefined).assertTrue();
+
+                    await getPhotoReceiverSurface(myReceiver);
+                    await createInput(0);
+                    createCameraSessionInstance();
+                    mCameraSession.addInput(mCameraInput);
+                    createOutput(0);
+                    mCameraSession.addOutput(mPreviewOutput);
+                    mCameraSession.addOutput(mPhotoOutput);
+                    await commitCameraSessionConfig();
+                    await mCameraSession.start();
+                    mPhotoOutput.capture(captureSetting).then((result) => {
+                        console.info('capture success :' + result);
+                    }).catch((err) => {
+                        console.info('capture failed :' + err);
+                    });
+                    await sleep(1000);
+                    nextImage = ndkTest.JsReadNextImage(myReceiver);
+                    mlg.log("mTestImage 1 " + JSON.stringify(nextImage));
+                    let capacityAfterOn = ndkTest.JsImageReceiverOptionsGetCapacity(options);
+                    expect( capacityAfterOn == CAPACITY + 1).assertTrue();
+
+                    let onOFF = ndkTest.JsOff(myReceiver);
+                    expect(onOFF != undefined).assertTrue();
+
+                    mPhotoOutput.capture(captureSetting).then((result) => {
+                        console.info('capture success :' + result);
+                    }).catch((err) => {
+                        console.info('capture failed: ' + err);
+                    });
+                    await sleep(1000);
+                    lastestImage = ndkTest.JsReadLatestImage(myReceiver);
+                    mlg.log("mTestImage 2 " + JSON.stringify(lastestImage));
+                    let capacityAfterOff = ndkTest.JsImageReceiverOptionsGetCapacity(options);
+                    expect( capacityAfterOff == CAPACITY + 1).assertTrue();
+
+                    await mCameraSession.stop();
+                    await sleep(1000);
+                    ndkTest.JsReleaseImageReceiverOptions(options);
+                    ndkTest.JsReleaseImageReceiver(myReceiver);
+                    done();
+                } catch (error) {
+                    mlg.log("Test exception " + error);
+                    expect().assertFail();
+                    done();
+                }
             }
         })
 
@@ -460,32 +481,38 @@ export default function ImageReceiverTest() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0400', 0, async function (done) {
-            let mlg = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0400");
-            try {
-                let options = ndkTest.JsCreateImageReceiverOptions(WIDTH, HEIGHT, CAPACITY);
-                let myReceiver = ndkTest.JsCreateImageReceiver(options);
-                let optionsSize = ndkTest.JsImageReceiverOptionsGetSize(options);
-                let optionsCapacity = ndkTest.JsImageReceiverOptionsGetCapacity(options);
-                let receiverSize = ndkTest.JsGetSize(myReceiver);
-                let receiverCapacity = ndkTest.JsGetCapacity(myReceiver); 
-                let lastestSize = ndkTest.JsGetImageSize(lastestImage);
-                let nextSize = ndkTest.JsGetImageSize(nextImage);
-                mlg.log("Get all properties success");
-                expect(optionsSize.width == WIDTH).assertTrue();
-                expect(optionsSize.height == HEIGHT).assertTrue();
-                expect(optionsCapacity == CAPACITY).assertTrue();
-                expect(receiverSize.width == WIDTH).assertTrue();
-                expect(receiverSize.height == HEIGHT).assertTrue();
-                expect(receiverCapacity == CAPACITY).assertTrue();
-                expect(lastestSize.height > 0).assertTrue();
-                expect(lastestSize.width > 0).assertTrue();
-                expect(nextSize.height > 0).assertTrue();
-                expect(nextSize.width > 0).assertTrue();
+            if (!isSupportCameraVideoProfiles) {
+                console.info('Failed to obtain the default videoProfiles object. Not support usb camera');
+                expect(true).assertTrue();
                 done();
-            } catch (error) {
-                mlg.log("Test exception " + error);
-                expect().assertFail();
-                done();
+            } else {
+                let mlg = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0400");
+                try {
+                    let options = ndkTest.JsCreateImageReceiverOptions(WIDTH, HEIGHT, CAPACITY);
+                    let myReceiver = ndkTest.JsCreateImageReceiver(options);
+                    let optionsSize = ndkTest.JsImageReceiverOptionsGetSize(options);
+                    let optionsCapacity = ndkTest.JsImageReceiverOptionsGetCapacity(options);
+                    let receiverSize = ndkTest.JsGetSize(myReceiver);
+                    let receiverCapacity = ndkTest.JsGetCapacity(myReceiver); 
+                    let lastestSize = ndkTest.JsGetImageSize(lastestImage);
+                    let nextSize = ndkTest.JsGetImageSize(nextImage);
+                    mlg.log("Get all properties success");
+                    expect(optionsSize.width == WIDTH).assertTrue();
+                    expect(optionsSize.height == HEIGHT).assertTrue();
+                    expect(optionsCapacity == CAPACITY).assertTrue();
+                    expect(receiverSize.width == WIDTH).assertTrue();
+                    expect(receiverSize.height == HEIGHT).assertTrue();
+                    expect(receiverCapacity == CAPACITY).assertTrue();
+                    expect(lastestSize.height > 0).assertTrue();
+                    expect(lastestSize.width > 0).assertTrue();
+                    expect(nextSize.height > 0).assertTrue();
+                    expect(nextSize.width > 0).assertTrue();
+                    done();
+                } catch (error) {
+                    mlg.log("Test exception " + error);
+                    expect().assertFail();
+                    done();
+                }
             }
         })
 
@@ -501,36 +528,42 @@ export default function ImageReceiverTest() {
          * @tc.level     : Level 0
          */
         it('SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0500', 0, async function (done) {
-            let mlg = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0500");
-            try {
-                let size = ndkTest.JsGetImageSize(lastestImage);
-                expect(size.height > 0).assertTrue();
-                expect(size.width > 0).assertTrue();
-                mlg.log("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0500" + size.height);
-                mlg.log("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0500" + size.width);
-                let types = ndkTest.JsGetImageComponentTypes(lastestImage);
-                expect(Array.isArray(types)).assertEqual(true);
-                expect(types.length > 0).assertEqual(true);
-                mlg.log("JsGetImageComponentTypes types " + JSON.stringify(types));
-                let type = types[0];
-                let nativeBuffer = ndkTest.JsGetImageByteBuffer(lastestImage, type);
-                let bufferSize = ndkTest.JsGetImageBufferSize(lastestImage, type);
-                let rowStride = ndkTest.JsGetImageRowStride(lastestImage, type);
-                let pixelStride = ndkTest.JsGetImagePixelStride(lastestImage, type);
-                ndkTest.JsReleaseImage(lastestImage);                
-                ndkTest.JsReleaseImage(nextImage);
-                let sizeAfterRelease = ndkTest.JsGetImageSize(lastestImage);
-                expect(bufferSize > 0).assertTrue();
-                expect(nativeBuffer != undefined).assertTrue();
-                expect(type >= 0).assertTrue();
-                expect(rowStride > 0).assertTrue();
-                expect(pixelStride == Jpg_Stride).assertTrue();
-                expect(sizeAfterRelease == undefined).assertTrue();
+            if (!isSupportCameraVideoProfiles) {
+                console.info('Failed to obtain the default videoProfiles object. Not support usb camera');
+                expect(true).assertTrue();
                 done();
-            } catch (error) {
-                mlg.log("Test exception " + error);
-                expect().assertFail();
-                done();
+            } else {
+                let mlg = logger("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0500");
+                try {
+                    let size = ndkTest.JsGetImageSize(lastestImage);
+                    expect(size.height > 0).assertTrue();
+                    expect(size.width > 0).assertTrue();
+                    mlg.log("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0500" + size.height);
+                    mlg.log("SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_NORMAL_0500" + size.width);
+                    let types = ndkTest.JsGetImageComponentTypes(lastestImage);
+                    expect(Array.isArray(types)).assertEqual(true);
+                    expect(types.length > 0).assertEqual(true);
+                    mlg.log("JsGetImageComponentTypes types " + JSON.stringify(types));
+                    let type = types[0];
+                    let nativeBuffer = ndkTest.JsGetImageByteBuffer(lastestImage, type);
+                    let bufferSize = ndkTest.JsGetImageBufferSize(lastestImage, type);
+                    let rowStride = ndkTest.JsGetImageRowStride(lastestImage, type);
+                    let pixelStride = ndkTest.JsGetImagePixelStride(lastestImage, type);
+                    ndkTest.JsReleaseImage(lastestImage);                
+                    ndkTest.JsReleaseImage(nextImage);
+                    let sizeAfterRelease = ndkTest.JsGetImageSize(lastestImage);
+                    expect(bufferSize > 0).assertTrue();
+                    expect(nativeBuffer != undefined).assertTrue();
+                    expect(type >= 0).assertTrue();
+                    expect(rowStride > 0).assertTrue();
+                    expect(pixelStride == Jpg_Stride).assertTrue();
+                    expect(sizeAfterRelease == undefined).assertTrue();
+                    done();
+                } catch (error) {
+                    mlg.log("Test exception " + error);
+                    expect().assertFail();
+                    done();
+                }
             }
         })
     })

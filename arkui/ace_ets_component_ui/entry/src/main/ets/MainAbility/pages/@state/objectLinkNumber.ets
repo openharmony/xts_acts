@@ -12,6 +12,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import Common from '../../utils/Common'
+
 @Observed
 class ClassAA {
   public a: number;
@@ -73,7 +75,7 @@ struct Child {
 
   build() {
     Column() {
-      Text("count type of " + JSON.stringify(Object.prototype.toString.call(this.count)) + " number is " + JSON.stringify(this.count))
+      Text("count type of " + JSON.stringify(Common.getType(this.count)) + " number is " + JSON.stringify(this.count))
         .fontSize(20).margin(30).key('objectLinkNumber')
 
     }.width('100%')

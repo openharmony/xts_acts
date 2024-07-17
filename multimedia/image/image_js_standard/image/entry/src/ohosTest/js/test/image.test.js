@@ -90,6 +90,17 @@ export default function imageJsTest() {
             })
         }
 
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        function createPixeMapSync(done, testNum, opts) {
+            let pixelmap = image.createPixelMapSync(opts);
+            expect(pixelmap != undefined).assertTrue();
+            console.info(`${testNum} success`);
+            done();
+        }
+
         async function imageSourceImageInfoMimetype(done, testNum, pictureFormat, expectedMimetype, flag) {
             try {
                 await getFd(pictureFormat);
@@ -605,10 +616,10 @@ export default function imageJsTest() {
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_READPIXELSTOBUFFER_SYNC_0100
-         * @tc.name      : readPixelsToBuffer-promise
-         * @tc.desc      : read all pixels to an buffer
-         *                 1.create PixelMap,buffer
-         *                 2.call readPixelsToBuffer
+         * @tc.name      : readPixelsToBufferSync
+         * @tc.desc      : read all pixels to buffer
+         *                 1.create PixelMap, buffer
+         *                 2.call readPixelsToBufferSync
          *                 3.return undefined
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
@@ -1614,11 +1625,10 @@ export default function imageJsTest() {
 
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_PIXELMAP_SYNC_0100
-         * @tc.name      : getImageInfo-pixelmap-promise
+         * @tc.name      : getImageInfo-pixelmap-sync
          * @tc.desc      : 1.create PixelMap,ImageInfo
-         *                 2.call getImageInfo
-         *                 3.call return imageinfo
-         *                 4.callback return undefined
+         *                 2.getImageInfo
+         *                 3.return imageinfo
          * @tc.size      : MEDIUM
          * @tc.type      : Functional
          * @tc.level     : Level 1
@@ -4458,6 +4468,2622 @@ export default function imageJsTest() {
                     done()
                 }
             })
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAP_SYNC_0001
+         * @tc.name      : create pixelmap-sync (pixelFormat: 0, size: { width: 2, height: 2 },
+                           alphaType:image.AlphaType.UNPREMUL)
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAP_SYNC_0001", 0, async function (done) {
+            let opts = { pixelFormat: 0, size: { width: 2, height: 2 }, alphaType: 3 };
+            createPixeMapSync(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAP_SYNC_0001", opts);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAP_SYNC_0002
+         * @tc.name      : create pixelmap-sync (pixelFormat: 0, size: { width: 2, height: 2 },
+                           alphaType:image.AlphaType.UNPREMUL)
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAP_SYNC_0002", 0, async function (done) {
+            let opts = { pixelFormat: 2, size: { width: 2, height: 2 }, alphaType: 3 };
+            createPixeMapSync(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAP_SYNC_0002", opts);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAP_SYNC_0003
+         * @tc.name      : create pixelmap-sync (pixelFormat: 0, size: { width: 2, height: 2 },
+                           alphaType:image.AlphaType.UNPREMUL)
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAP_SYNC_0003", 0, async function (done) {
+            let opts = { pixelFormat: 3, size: { width: 2, height: 2 }, alphaType: 3 };
+            createPixeMapSync(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAP_SYNC_0003", opts);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAP_SYNC_0004
+         * @tc.name      : create pixelmap-sync (pixelFormat: 0, size: { width: 2, height: 2 },
+                           alphaType:image.AlphaType.UNPREMUL)
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAP_SYNC_0004", 0, async function (done) {
+            let opts = { pixelFormat: 4, size: { width: 2, height: 2 }, alphaType: 3 };
+            createPixeMapSync(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAP_SYNC_0004", opts);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAP_SYNC_0005
+         * @tc.name      : create pixelmap-sync (pixelFormat: 0, size: { width: 2, height: 2 },
+                           alphaType:image.AlphaType.UNPREMUL)
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAP_SYNC_0005", 0, async function (done) {
+            let opts = { pixelFormat: 5, size: { width: 2, height: 2 }, alphaType: 3 };
+            createPixeMapSync(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAP_SYNC_0005", opts);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAP_SYNC_0006
+         * @tc.name      : create pixelmap-sync (pixelFormat: 0, size: { width: 2, height: 2 },
+                           alphaType:image.AlphaType.UNPREMUL)
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAP_SYNC_0006", 0, async function (done) {
+            let opts = { pixelFormat: 6, size: { width: 2, height: 2 }, alphaType: 3 };
+            createPixeMapSync(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAP_SYNC_0006", opts);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAP_SYNC_0007
+         * @tc.name      : create pixelmap-sync (pixelFormat: 0, size: { width: 2, height: 2 },
+                           alphaType:image.AlphaType.UNPREMUL)
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAP_SYNC_0007", 0, async function (done) {
+            let opts = { pixelFormat: 7, size: { width: 2, height: 2 }, alphaType: 3 };
+            createPixeMapSync(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAP_SYNC_0007", opts);
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0100
+         * @tc.name      : create PremultiplyPixelMap-promise
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size,color
+         *                 3.using color and opts create newPixelMap
+         *                 4.PremultiplyPixelMap
+         *                 5.return color
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0100", 0, async function (done) {
+            let opts = { pixelFormat: 0, size: { width: 2, height: 2 }, alphaType: 3 };
+            let optsPre =  { pixelFormat: 0, size: { width: 2, height: 2 }, alphaType: 2 };
+
+            const color = new ArrayBuffer(2 * 2*4);
+            let bufferArr = new Uint8Array(color);
+            bufferArr[0] = 255; //b
+            bufferArr[1] = 0;   //g
+            bufferArr[2] = 153; //r
+            bufferArr[3] = 127; //a
+
+            bufferArr[4] = 0;   //b
+            bufferArr[5] = 255;//g
+            bufferArr[6] = 153;//r
+            bufferArr[7] = 127;//a
+
+            bufferArr[8] = 153;//b
+            bufferArr[9] = 0;//g
+            bufferArr[10] = 255;//r
+            bufferArr[11] = 102;//a
+
+            bufferArr[12] = 153;//b
+            bufferArr[13] = 153;//g
+            bufferArr[14] = 153;//r
+            bufferArr[15] = 127;//a
+            const readBuffer_1 = new ArrayBuffer(2 * 2*4);
+            const readBuffer_2 = new ArrayBuffer(2 * 2*4);
+            let srcpixelmap1 = image.createPixelMapSync(color, opts);
+            let dstpixelmap1 = image.createPixelMapSync(opts);
+            let constprepixelmap1 = image.createPixelMapSync(color, optsPre);
+            image.createPremultipliedPixelMap(srcpixelmap1,dstpixelmap1)
+                .then(()=>{
+                    dstpixelmap1.readPixelsToBuffer(readBuffer_1).then(() => {
+                    constprepixelmap1.readPixelsToBuffer(readBuffer_2)
+                        .then(()=>{
+                            let src = new Uint8Array(readBuffer_1);
+                            let dst = new Uint8Array(readBuffer_2);
+                            for (let i = 0; i < src.length; i++) {
+                                if (Math.abs(src[i] - dst[i]) > 1) {
+                                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0100 failed');
+                                    expect(false).assertTrue();
+                                    done();
+                                    break;
+                                } else {
+                                    expect(true).assertTrue();
+                                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0100 success');
+                                    done();
+                                }
+                            }
+                        }).catch((error) => {
+                            expect(false).assertTrue();
+                            console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0100 failed');
+                            done();
+                        })
+                    }).catch((error) => {
+                        expect(false).assertTrue();
+                        console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0100 failed');
+                        done();
+                    })
+                }).catch((error) => {
+                    expect(false).assertTrue();
+                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0100 failed');
+                    done();
+                })
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0200
+         * @tc.name      : create PremultiplyPixelMap-promise
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size,color
+         *                 3.using color and opts create newPixelMap
+         *                 4.PremultiplyPixelMap
+         *                 5.return color
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0200", 0, async function (done) {
+            let opts = { pixelFormat: 2, size: { width: 2, height: 2 }, alphaType: 3 };
+            let optsPre =  { pixelFormat: 2, size: { width: 2, height: 2 }, alphaType: 2 };
+            const color = new ArrayBuffer(2 * 2*4);
+            let bufferArr = new Uint8Array(color);
+            bufferArr[0] = 255; //b
+            bufferArr[1] = 0;   //g
+            bufferArr[2] = 153; //r
+            bufferArr[3] = 127; //a
+
+            bufferArr[4] = 0;   //b
+            bufferArr[5] = 255;//g
+            bufferArr[6] = 153;//r
+            bufferArr[7] = 127;//a
+
+            bufferArr[8] = 153;//b
+            bufferArr[9] = 0;//g
+            bufferArr[10] = 255;//r
+            bufferArr[11] = 102;//a
+
+            bufferArr[12] = 153;//b
+            bufferArr[13] = 153;//g
+            bufferArr[14] = 153;//r
+            bufferArr[15] = 127;//a
+            const readBuffer_1 = new ArrayBuffer(2 * 2*4);
+            const readBuffer_2 = new ArrayBuffer(2 * 2*4);
+            let srcpixelmap1 = image.createPixelMapSync(color, opts);
+            let dstpixelmap1 = image.createPixelMapSync(opts);
+            let constprepixelmap1 = image.createPixelMapSync(color, optsPre);
+            image.createPremultipliedPixelMap(srcpixelmap1, dstpixelmap1)
+                .then(()=>{
+                    dstpixelmap1.readPixelsToBuffer(readBuffer_1).then(() => {
+                    constprepixelmap1.readPixelsToBuffer(readBuffer_2)
+                        .then(()=>{
+                            let src = new Uint8Array(readBuffer_1);
+                            let dst = new Uint8Array(readBuffer_2);
+                            for (let i = 0; i < src.length; i++) {
+                                if (Math.abs(src[i] - dst[i]) != 0) {
+                                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0200 failed');
+                                    expect(false).assertTrue();
+                                    done();
+                                    break;
+                                } else {
+                                    expect(false).assertTrue();
+                                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0200 failed');
+                                    done();
+                                }
+                            }
+                        }).catch((error) => {
+                            expect(true).assertTrue();
+                            console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0200 success');
+                            done();
+                        })
+                    }).catch((error) => {
+                        expect(true).assertTrue();
+                        console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0200 success');
+                        done();
+                    })
+                }).catch((error) => {
+                    expect(true).assertTrue();
+                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0200 success');
+                    done();
+                })
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0300
+         * @tc.name      : create PremultiplyPixelMap-promise
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size,color
+         *                 3.using color and opts create newPixelMap
+         *                 4.PremultiplyPixelMap
+         *                 5.return color
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0300", 0, async function (done) {
+            let opts = { pixelFormat: 3, size: { width: 2, height: 2 }, alphaType: 3 };
+            let optsPre =  { pixelFormat: 3, size: { width: 2, height: 2 }, alphaType: 2 };
+
+            const color = new ArrayBuffer(2 * 2*4);
+            let bufferArr = new Uint8Array(color);
+            bufferArr[0] = 255; //b
+            bufferArr[1] = 0;   //g
+            bufferArr[2] = 153; //r
+            bufferArr[3] = 127; //a
+
+            bufferArr[4] = 0;   //b
+            bufferArr[5] = 255;//g
+            bufferArr[6] = 153;//r
+            bufferArr[7] = 127;//a
+
+            bufferArr[8] = 153;//b
+            bufferArr[9] = 0;//g
+            bufferArr[10] = 255;//r
+            bufferArr[11] = 102;//a
+
+            bufferArr[12] = 153;//b
+            bufferArr[13] = 153;//g
+            bufferArr[14] = 153;//r
+            bufferArr[15] = 127;//a
+            const readBuffer_1 = new ArrayBuffer(2 * 2*4);
+            const readBuffer_2 = new ArrayBuffer(2 * 2*4);
+            let srcpixelmap1 = image.createPixelMapSync(color, opts);
+            let dstpixelmap1 = image.createPixelMapSync(opts);
+            let constprepixelmap1 = image.createPixelMapSync(color, optsPre);
+            image.createPremultipliedPixelMap(srcpixelmap1,dstpixelmap1)
+                .then(()=>{
+                    dstpixelmap1.readPixelsToBuffer(readBuffer_1).then(() => {
+                    constprepixelmap1.readPixelsToBuffer(readBuffer_2)
+                        .then(()=>{
+                            let src = new Uint8Array(readBuffer_1);
+                            let dst = new Uint8Array(readBuffer_2);
+                            for (let i = 0; i < src.length; i++) {
+                                if (Math.abs(src[i] - dst[i]) > 1) {
+                                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0300 failed');
+                                    expect(false).assertTrue();
+                                    done();
+                                    break;
+                                } else {
+                                    expect(true).assertTrue();
+                                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0300 success');
+                                    done();
+                                }
+                            }
+                        }).catch((error) => {
+                            expect(false).assertTrue();
+                            console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0300 failed');
+                            done();
+                        })
+                    }).catch((error) => {
+                        expect(false).assertTrue();
+                        console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0300 failed');
+                        done();
+                    })
+                }).catch((error) => {
+                    expect(false).assertTrue();
+                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0300 failed');
+                    done();
+                })
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0400
+         * @tc.name      : create PremultiplyPixelMap-promise
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size,color
+         *                 3.using color and opts create newPixelMap
+         *                 4.PremultiplyPixelMap
+         *                 5.return color
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0400", 0, async function (done) {
+            let opts = { pixelFormat: 4, size: { width: 2, height: 2 }, alphaType: 3 };
+            let optsPre =  { pixelFormat: 4, size: { width: 2, height: 2 }, alphaType: 2 };
+
+            const color = new ArrayBuffer(2 * 2*4);
+            let bufferArr = new Uint8Array(color);
+            bufferArr[0] = 255; //b
+            bufferArr[1] = 0;   //g
+            bufferArr[2] = 153; //r
+            bufferArr[3] = 127; //a
+
+            bufferArr[4] = 0;   //b
+            bufferArr[5] = 255;//g
+            bufferArr[6] = 153;//r
+            bufferArr[7] = 127;//a
+
+            bufferArr[8] = 153;//b
+            bufferArr[9] = 0;//g
+            bufferArr[10] = 255;//r
+            bufferArr[11] = 102;//a
+
+            bufferArr[12] = 153;//b
+            bufferArr[13] = 153;//g
+            bufferArr[14] = 153;//r
+            bufferArr[15] = 127;//a
+            const readBuffer_1 = new ArrayBuffer(2 * 2*4);
+            const readBuffer_2 = new ArrayBuffer(2 * 2*4);
+            let srcpixelmap1 = image.createPixelMapSync(color, opts);
+            let dstpixelmap1 = image.createPixelMapSync(opts);
+            let constprepixelmap1 = image.createPixelMapSync(color, optsPre);
+            image.createPremultipliedPixelMap(srcpixelmap1,dstpixelmap1)
+                .then(()=>{
+                    dstpixelmap1.readPixelsToBuffer(readBuffer_1).then(() => {
+                    constprepixelmap1.readPixelsToBuffer(readBuffer_2)
+                        .then(()=>{
+                            let src = new Uint8Array(readBuffer_1);
+                            let dst = new Uint8Array(readBuffer_2);
+                            for (let i = 0; i < src.length; i++) {
+                                if (Math.abs(src[i] - dst[i]) > 1) {
+                                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0400 failed');
+                                    expect(false).assertTrue();
+                                    done();
+                                    break;
+                                } else {
+                                    expect(true).assertTrue();
+                                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0400 success');
+                                    done();
+                                }
+                            }
+                        }).catch((error) => {
+                            expect(false).assertTrue();
+                            console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0400 failed');
+                            done();
+                        })
+                    }).catch((error) => {
+                        expect(false).assertTrue();
+                        console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0400 failed');
+                        done();
+                    })
+                }).catch((error) => {
+                    expect(false).assertTrue();
+                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0400 failed');
+                    done();
+                })
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0500
+         * @tc.name      : create PremultiplyPixelMap-promise
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size,color
+         *                 3.using color and opts create newPixelMap
+         *                 4.PremultiplyPixelMap
+         *                 5.return color
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0500", 0, async function (done) {
+            let opts = { pixelFormat: 5, size: { width: 2, height: 2 }, alphaType: 3 };
+            let optsPre =  { pixelFormat: 5, size: { width: 2, height: 2 }, alphaType: 2 };
+            const color = new ArrayBuffer(2 * 2*4);
+            let bufferArr = new Uint8Array(color);
+            bufferArr[0] = 255; //b
+            bufferArr[1] = 0;   //g
+            bufferArr[2] = 153; //r
+            bufferArr[3] = 127; //a
+
+            bufferArr[4] = 0;   //b
+            bufferArr[5] = 255;//g
+            bufferArr[6] = 153;//r
+            bufferArr[7] = 127;//a
+
+            bufferArr[8] = 153;//b
+            bufferArr[9] = 0;//g
+            bufferArr[10] = 255;//r
+            bufferArr[11] = 102;//a
+
+            bufferArr[12] = 153;//b
+            bufferArr[13] = 153;//g
+            bufferArr[14] = 153;//r
+            bufferArr[15] = 127;//a
+            const readBuffer_1 = new ArrayBuffer(2 * 2*4);
+            const readBuffer_2 = new ArrayBuffer(2 * 2*4);
+            let srcpixelmap1 = image.createPixelMapSync(color, opts);
+            let dstpixelmap1 = image.createPixelMapSync(opts);
+            let constprepixelmap1 = image.createPixelMapSync(color, optsPre);
+            image.createPremultipliedPixelMap(srcpixelmap1, dstpixelmap1)
+                .then(()=>{
+                    dstpixelmap1.readPixelsToBuffer(readBuffer_1).then(() => {
+                    constprepixelmap1.readPixelsToBuffer(readBuffer_2)
+                        .then(()=>{
+                            let src = new Uint8Array(readBuffer_1);
+                            let dst = new Uint8Array(readBuffer_2);
+                            for (let i = 0; i < src.length; i++) {
+                                if (Math.abs(src[i] - dst[i]) != 0) {
+                                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0500 failed');
+                                    expect(false).assertTrue();
+                                    done();
+                                    break;
+                                } else {
+                                    expect(false).assertTrue();
+                                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0500 failed');
+                                    done();
+                                }
+                            }
+                        }).catch((error) => {
+                            expect(true).assertTrue();
+                            console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0500 success');
+                            done();
+                        })
+                    }).catch((error) => {
+                        expect(true).assertTrue();
+                        console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0500 success');
+                        done();
+                    })
+                }).catch((error) => {
+                    expect(true).assertTrue();
+                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0500 success');
+                    done();
+                })
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0600
+         * @tc.name      : create PremultiplyPixelMap-promise
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size,color
+         *                 3.using color and opts create newPixelMap
+         *                 4.PremultiplyPixelMap
+         *                 5.return color
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0600", 0, async function (done) {
+            let opts = { pixelFormat: 6, size: { width: 2, height: 2 }, alphaType: 3 };
+            let optsPre =  { pixelFormat: 6, size: { width: 2, height: 2 }, alphaType: 2 };
+
+            const color = new ArrayBuffer(2 * 2*4);
+            let bufferArr = new Uint8Array(color);
+            bufferArr[0] = 255; //b
+            bufferArr[1] = 0;   //g
+            bufferArr[2] = 153; //r
+            bufferArr[3] = 127; //a
+
+            bufferArr[4] = 0;   //b
+            bufferArr[5] = 255;//g
+            bufferArr[6] = 153;//r
+            bufferArr[7] = 127;//a
+
+            bufferArr[8] = 153;//b
+            bufferArr[9] = 0;//g
+            bufferArr[10] = 255;//r
+            bufferArr[11] = 102;//a
+
+            bufferArr[12] = 153;//b
+            bufferArr[13] = 153;//g
+            bufferArr[14] = 153;//r
+            bufferArr[15] = 127;//a
+            const readBuffer_1 = new ArrayBuffer(2 * 2*4);
+            const readBuffer_2 = new ArrayBuffer(2 * 2*4);
+            let srcpixelmap1 = image.createPixelMapSync(color, opts);
+            let dstpixelmap1 = image.createPixelMapSync(opts);
+            let constprepixelmap1 = image.createPixelMapSync(color, optsPre);
+            image.createPremultipliedPixelMap(srcpixelmap1,dstpixelmap1)
+                .then(()=>{
+                    dstpixelmap1.readPixelsToBuffer(readBuffer_1).then(() => {
+                    constprepixelmap1.readPixelsToBuffer(readBuffer_2)
+                        .then(()=>{
+                            let src = new Uint8Array(readBuffer_1);
+                            let dst = new Uint8Array(readBuffer_2);
+                            for (let i = 0; i < src.length; i++) {
+                                if (Math.abs(src[i] - dst[i]) > 1) {
+                                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0600 failed');
+                                    expect(false).assertTrue();
+                                    done();
+                                    break;
+                                } else {
+                                    expect(false).assertTrue();
+                                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0600 failed');
+                                    done();
+                                }
+                            }
+                        }).catch((error) => {
+                            expect(true).assertTrue();
+                            console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0600 success');
+                            done();
+                        })
+                    }).catch((error) => {
+                        expect(true).assertTrue();
+                        console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0600 success');
+                        done();
+                    })
+                }).catch((error) => {
+                    expect(true).assertTrue();
+                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0600 success');
+                    done();
+                })
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0700
+        * @tc.name      : create PremultiplyPixelMap-promise
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size,color
+         *                 3.using color and opts create newPixelMap
+         *                 4.PremultiplyPixelMap
+         *                 5.return color
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0700", 0, async function (done) {
+            let opts = { pixelFormat: 7, size: { width: 2, height: 2 }, alphaType: 3 };
+            let optsPre =  { pixelFormat: 7, size: { width: 2, height: 2 }, alphaType: 2 };
+
+            const color = new ArrayBuffer(2 * 2*4);
+            let bufferArr = new Uint8Array(color);
+            bufferArr[0] = 255; //b
+            bufferArr[1] = 0;   //g
+            bufferArr[2] = 153; //r
+            bufferArr[3] = 127; //a
+
+            bufferArr[4] = 0;   //b
+            bufferArr[5] = 255;//g
+            bufferArr[6] = 153;//r
+            bufferArr[7] = 127;//a
+
+            bufferArr[8] = 153;//b
+            bufferArr[9] = 0;//g
+            bufferArr[10] = 255;//r
+            bufferArr[11] = 102;//a
+
+            bufferArr[12] = 153;//b
+            bufferArr[13] = 153;//g
+            bufferArr[14] = 153;//r
+            bufferArr[15] = 127;//a
+            const readBuffer_1 = new ArrayBuffer(2 * 2*4);
+            const readBuffer_2 = new ArrayBuffer(2 * 2*4);
+             let srcpixelmap1 = image.createPixelMapSync(color, opts);
+            let dstpixelmap1 = image.createPixelMapSync(opts);
+            let constprepixelmap1 = image.createPixelMapSync(color, optsPre);
+            image.createPremultipliedPixelMap(srcpixelmap1,dstpixelmap1)
+                .then(()=>{
+                    dstpixelmap1.readPixelsToBuffer(readBuffer_1).then(() => {
+                    constprepixelmap1.readPixelsToBuffer(readBuffer_2)
+                        .then(()=>{
+                            let src = new Uint8Array(readBuffer_1);
+                            let dst = new Uint8Array(readBuffer_2);
+                            for (let i = 0; i < src.length; i++) {
+                                if (Math.abs(src[i] - dst[i]) != 0) {
+                                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0700 failed');
+                                    expect(false).assertTrue();
+                                    done();
+                                    break;
+                                } else {
+                                    expect(false).assertTrue();
+                                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0700 failed');
+                                    done();
+                                }
+                            }
+                        }).catch((error) => {
+                        expect(true).assertTrue();
+                        console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0700 success');
+                        done();
+                        })
+                    }).catch((error) => {
+                        expect(true).assertTrue();
+                        console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0700 success');
+                        done();
+                    })
+                    }).catch((error) => {
+                    expect(true).assertTrue();
+                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_PROMISE_0700 success');
+                    done();
+                })
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_CALLBACK_0100
+         * @tc.name      : create PremultiplyPixelMap-callback
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size,color
+         *                 3.using color and opts create newPixelMap
+         *                 4.PremultiplyPixelMap
+         *                 5.callback result
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_CALLBACK_0100', 0, async function (done) {
+            let opts = { pixelFormat: 0, size: { width: 2, height: 2 }, alphaType: 3 };
+            let optsPre =  { pixelFormat: 0, size: { width: 2, height: 2 }, alphaType: 2 };
+
+            const color = new ArrayBuffer(2 * 2*4);
+            let bufferArr = new Uint8Array(color);
+            bufferArr[0] = 255; //b
+            bufferArr[1] = 0;   //g
+            bufferArr[2] = 153; //r
+            bufferArr[3] = 127; //a
+
+            bufferArr[4] = 0;   //b
+            bufferArr[5] = 255; //g
+            bufferArr[6] = 153; //r
+            bufferArr[7] = 127; //a
+
+            bufferArr[8] = 153; //b
+            bufferArr[9] = 0;   //g
+            bufferArr[10] = 255;//r
+            bufferArr[11] = 102;//a
+
+            bufferArr[12] = 153;//b
+            bufferArr[13] = 153;//g
+            bufferArr[14] = 153;//r
+            bufferArr[15] = 127;//a
+            const readBuffer_1 = new ArrayBuffer(2 * 2*4);
+            const readBuffer_2 = new ArrayBuffer(2 * 2*4);
+            let srcpixelmap1 = image.createPixelMapSync(color, opts);
+            let dstpixelmap1 = image.createPixelMapSync(opts);
+            let constprepixelmap1 = image.createPixelMapSync(color, optsPre);
+            let res = false
+            image.createPremultipliedPixelMap(srcpixelmap1, dstpixelmap1, () => {
+                dstpixelmap1.readPixelsToBuffer(readBuffer_1).then(() => {
+                    constprepixelmap1.readPixelsToBuffer(readBuffer_2).then(()=>{
+                        let src = new Uint8Array(readBuffer_1);
+                        let dst = new Uint8Array(readBuffer_2);
+                        for (let i = 0; i < src.length; i++) {
+                            if (Math.abs(src[i] - dst[i]) <= 1) {
+                                res = true;
+                            } else {
+                                res = false;
+                                break;
+                            }
+                        }
+                    })
+                })
+            })
+            await sleep(300);
+            if (res) {
+                expect(res == true).assertTrue();
+                console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_CALLBACK_0100 success');
+            } else {
+                expect(res == true).assertTrue();
+                console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_CALLBACK_0100 failed');
+            }
+            done();
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_CALLBACK_0200
+         * @tc.name      : create PremultiplyPixelMap-callback
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size,color
+         *                 3.using color and opts create newPixelMap
+         *                 4.PremultiplyPixelMap
+         *                 5.callback result
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_CALLBACK_0200', 0, async function (done) {
+            let opts = { pixelFormat: 2, size: { width: 2, height: 2 }, alphaType: 3 };
+            let optsPre =  { pixelFormat: 2, size: { width: 2, height: 2 }, alphaType: 2 };
+            const color = new ArrayBuffer(2 * 2*4);
+            let bufferArr = new Uint8Array(color);
+            bufferArr[0] = 255; //b
+            bufferArr[1] = 0;   //g
+            bufferArr[2] = 153; //r
+            bufferArr[3] = 127; //a
+
+            bufferArr[4] = 0;   //b
+            bufferArr[5] = 255; //g
+            bufferArr[6] = 153; //r
+            bufferArr[7] = 127; //a
+
+            bufferArr[8] = 153; //b
+            bufferArr[9] = 0;   //g
+            bufferArr[10] = 255;//r
+            bufferArr[11] = 102;//a
+
+            bufferArr[12] = 153; //b
+            bufferArr[13] = 153; //g
+            bufferArr[14] = 153; //r
+            bufferArr[15] = 127; //a
+            const readBuffer_1 = new ArrayBuffer(2 * 2*4);
+            const readBuffer_2 = new ArrayBuffer(2 * 2*4);
+            let srcpixelmap1 = image.createPixelMapSync(color, opts);
+            let dstpixelmap1 = image.createPixelMapSync(opts);
+            let constprepixelmap1 = image.createPixelMapSync(color, optsPre);
+            let res = false;
+            image.createPremultipliedPixelMap(srcpixelmap1, dstpixelmap1, (err) => {
+                if (!err) {
+                    res = true;
+                }
+            })
+            await sleep(300);
+            expect(res == false).assertTrue();
+            console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_CALLBACK_0200 success');
+            done();
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_CALLBACK_0300
+         * @tc.name      : create PremultiplyPixelMap-callback
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size,color
+         *                 3.using color and opts create newPixelMap
+         *                 4.PremultiplyPixelMap
+         *                 5.callback result
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_CALLBACK_0300', 0, async function (done) {
+            let opts = { pixelFormat: 3, size: { width: 2, height: 2 }, alphaType: 3 };
+            let optsPre =  { pixelFormat: 3, size: { width: 2, height: 2 }, alphaType: 2 };
+
+            const color = new ArrayBuffer(2 * 2*4);
+            let bufferArr = new Uint8Array(color);
+            bufferArr[0] = 255; //b
+            bufferArr[1] = 0;   //g
+            bufferArr[2] = 153; //r
+            bufferArr[3] = 127; //a
+
+            bufferArr[4] = 0;   //b
+            bufferArr[5] = 255; //g
+            bufferArr[6] = 153; //r
+            bufferArr[7] = 127; //a
+
+            bufferArr[8] = 153;  //b
+            bufferArr[9] = 0;    //g
+            bufferArr[10] = 255; //r
+            bufferArr[11] = 102; //a
+
+            bufferArr[12] = 153; //b
+            bufferArr[13] = 153; //g
+            bufferArr[14] = 153; //r
+            bufferArr[15] = 127; //a
+            const readBuffer_1 = new ArrayBuffer(2 * 2*4);
+            const readBuffer_2 = new ArrayBuffer(2 * 2*4);
+            let srcpixelmap1 = image.createPixelMapSync(color, opts);
+            let dstpixelmap1 = image.createPixelMapSync(opts);
+            let constprepixelmap1 = image.createPixelMapSync(color, optsPre);
+            let res = false
+            image.createPremultipliedPixelMap(srcpixelmap1, dstpixelmap1, () => {
+                dstpixelmap1.readPixelsToBuffer(readBuffer_1).then(() => {
+                    constprepixelmap1.readPixelsToBuffer(readBuffer_2).then(()=>{
+                        let src = new Uint8Array(readBuffer_1);
+                        let dst = new Uint8Array(readBuffer_2);
+                        for (let i = 0; i < src.length; i++) {
+                            if (Math.abs(src[i] - dst[i]) <= 1) {
+                                res = true;
+                            } else {
+                                res = false;
+                                    break;
+                            }
+                        }
+                    })
+                })
+            })
+            await sleep(300);
+            if (res) {
+                expect(res == true).assertTrue();
+                console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_CALLBACK_0300 success');
+            } else {
+                expect(res == false).assertTrue();
+                console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_CALLBACK_0300 failed');
+            }
+            done();
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_CALLBACK_0400
+         * @tc.name      : create PremultiplyPixelMap-callback
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size,color
+         *                 3.using color and opts create newPixelMap
+         *                 4.PremultiplyPixelMap
+         *                 5.callback result
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_CALLBACK_0400', 0, async function (done) {
+            let opts = { pixelFormat: 4, size: { width: 2, height: 2 }, alphaType: 3 };
+            let optsPre =  { pixelFormat: 4, size: { width: 2, height: 2 }, alphaType: 2 };
+
+            const color = new ArrayBuffer(2 * 2*4);
+            let bufferArr = new Uint8Array(color);
+            bufferArr[0] = 255; //b
+            bufferArr[1] = 0;   //g
+            bufferArr[2] = 153; //r
+            bufferArr[3] = 127; //a
+
+            bufferArr[4] = 0;   //b
+            bufferArr[5] = 255; //g
+            bufferArr[6] = 153; //r
+            bufferArr[7] = 127; //a
+
+            bufferArr[8] = 153;  //b
+            bufferArr[9] = 0;    //g
+            bufferArr[10] = 255; //r
+            bufferArr[11] = 102; //a
+
+            bufferArr[12] = 153; //b
+            bufferArr[13] = 153; //g
+            bufferArr[14] = 153; //r
+            bufferArr[15] = 127; //a
+            const readBuffer_1 = new ArrayBuffer(2 * 2*4);
+            const readBuffer_2 = new ArrayBuffer(2 * 2*4);
+            let srcpixelmap1 = image.createPixelMapSync(color, opts);
+            let dstpixelmap1 = image.createPixelMapSync(opts);
+            let constprepixelmap1 = image.createPixelMapSync(color, optsPre);
+            let res = false
+            image.createPremultipliedPixelMap(srcpixelmap1, dstpixelmap1, () => {
+                dstpixelmap1.readPixelsToBuffer(readBuffer_1).then(() => {
+                    constprepixelmap1.readPixelsToBuffer(readBuffer_2).then(()=>{
+                        let src = new Uint8Array(readBuffer_1);
+                        let dst = new Uint8Array(readBuffer_2);
+                        for (let i = 0; i < src.length; i++) {
+                            if (Math.abs(src[i] - dst[i]) <= 1) {
+                                res = true;
+                            } else {
+                                res = false;
+                                break;
+                            }
+                        }
+                    })
+                })
+            })
+            await sleep(300);
+            if (res) {
+                expect(res == true).assertTrue();
+                console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_CALLBACK_0400 success');
+            } else {
+                expect(res == false).assertTrue();
+                console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_CALLBACK_0400 failed');
+            }
+            done();
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_CALLBACK_0500
+         * @tc.name      : create PremultiplyPixelMap-callback
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size,color
+         *                 3.using color and opts create newPixelMap
+         *                 4.PremultiplyPixelMap
+         *                 5.callback result
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_CALLBACK_0500', 0, async function (done) {
+            let opts = { pixelFormat: 5, size: { width: 2, height: 2 }, alphaType: 3 };
+            let optsPre =  { pixelFormat: 5, size: { width: 2, height: 2 }, alphaType: 2 };
+
+            const color = new ArrayBuffer(2 * 2*4);
+            let bufferArr = new Uint8Array(color);
+            bufferArr[0] = 255; //b
+            bufferArr[1] = 0;   //g
+            bufferArr[2] = 153; //r
+            bufferArr[3] = 127; //a
+
+            bufferArr[4] = 0;   //b
+            bufferArr[5] = 255; //g
+            bufferArr[6] = 153; //r
+            bufferArr[7] = 127; //a
+
+            bufferArr[8] = 153;  //b
+            bufferArr[9] = 0;    //g
+            bufferArr[10] = 255; //r
+            bufferArr[11] = 102; //a
+
+            bufferArr[12] = 153; //b
+            bufferArr[13] = 153; //g
+            bufferArr[14] = 153; //r
+            bufferArr[15] = 127; //a
+            const readBuffer_1 = new ArrayBuffer(2 * 2*4);
+            const readBuffer_2 = new ArrayBuffer(2 * 2*4);
+            let srcpixelmap1 = image.createPixelMapSync(color, opts);
+            let dstpixelmap1 = image.createPixelMapSync(opts);
+            let constprepixelmap1 = image.createPixelMapSync(color, optsPre);
+            let res = false
+            image.createPremultipliedPixelMap(srcpixelmap1, dstpixelmap1, (err) => {
+                if (!err) {
+                    res = true;
+                }
+            })
+            await sleep(300);
+            expect(res == false).assertTrue();
+            console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_CALLBACK_0200 success');
+            done();
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_CALLBACK_0600
+         * @tc.name      : create PremultiplyPixelMap-callback
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size,color
+         *                 3.using color and opts create newPixelMap
+         *                 4.PremultiplyPixelMap
+         *                 5.callback result
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_CALLBACK_0600', 0, async function (done) {
+            let opts = { pixelFormat: 6, size: { width: 2, height: 2 }, alphaType: 3 };
+            let optsPre =  { pixelFormat: 6, size: { width: 2, height: 2 }, alphaType: 2 };
+
+            const color = new ArrayBuffer(2 * 2*4);
+            let bufferArr = new Uint8Array(color);
+            bufferArr[0] = 255; //b
+            bufferArr[1] = 0;   //g
+            bufferArr[2] = 153; //r
+            bufferArr[3] = 127; //a
+
+            bufferArr[4] = 0;   //b
+            bufferArr[5] = 255; //g
+            bufferArr[6] = 153; //r
+            bufferArr[7] = 127; //a
+
+            bufferArr[8] = 153;  //b
+            bufferArr[9] = 0;    //g
+            bufferArr[10] = 255; //r
+            bufferArr[11] = 102; //a
+
+            bufferArr[12] = 153; //b
+            bufferArr[13] = 153; //g
+            bufferArr[14] = 153; //r
+            bufferArr[15] = 127; //a
+            const readBuffer_1 = new ArrayBuffer(2 * 2*4);
+            const readBuffer_2 = new ArrayBuffer(2 * 2*4);
+            let srcpixelmap1 = image.createPixelMapSync(color, opts);
+            let dstpixelmap1 = image.createPixelMapSync(opts);
+            let constprepixelmap1 = image.createPixelMapSync(color, optsPre);
+            let res = false
+            image.createPremultipliedPixelMap(srcpixelmap1, dstpixelmap1, () => {
+                dstpixelmap1.readPixelsToBuffer(readBuffer_1).then(() => {
+                    constprepixelmap1.readPixelsToBuffer(readBuffer_2).then(()=>{
+                        let src = new Uint8Array(readBuffer_1);
+                        let dst = new Uint8Array(readBuffer_2);
+                        for (let i = 0; i < src.length; i++) {
+                            if (Math.abs(src[i] - dst[i]) <= 1) {
+                                res = true;
+                            } else {
+                                res = false;
+                                break;
+                            }
+                        }
+                    })
+                })
+            })
+            await sleep(300);
+            if (res) {
+                expect(res == true).assertTrue();
+                console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_CALLBACK_0600 success');
+            } else {
+                expect(res == false).assertTrue();
+                console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_CALLBACK_0600 failed');
+            }
+            done();
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_CALLBACK_0700
+         * @tc.name      : create PremultiplyPixelMap-callback
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size,color
+         *                 3.using color and opts create newPixelMap
+         *                 4.PremultiplyPixelMap
+         *                 5.callback result
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_CALLBACK_0700', 0, async function (done) {
+            let opts = { pixelFormat: 7, size: { width: 2, height: 2 }, alphaType: 3 };
+            let optsPre =  { pixelFormat: 7, size: { width: 2, height: 2 }, alphaType: 2 };
+
+            const color = new ArrayBuffer(2 * 2*4);
+            let bufferArr = new Uint8Array(color);
+            bufferArr[0] = 255; //b
+            bufferArr[1] = 0;   //g
+            bufferArr[2] = 153; //r
+            bufferArr[3] = 127; //a
+
+            bufferArr[4] = 0;   //b
+            bufferArr[5] = 255; //g
+            bufferArr[6] = 153; //r
+            bufferArr[7] = 127; //a
+
+            bufferArr[8] = 153; //b
+            bufferArr[9] = 0;   //g
+            bufferArr[10] = 255;//r
+            bufferArr[11] = 102;//a
+
+            bufferArr[12] = 153;//b
+            bufferArr[13] = 153;//g
+            bufferArr[14] = 153;//r
+            bufferArr[15] = 127;//a
+            const readBuffer_1 = new ArrayBuffer(2 * 2*4);
+            const readBuffer_2 = new ArrayBuffer(2 * 2*4);
+            let srcpixelmap1 = image.createPixelMapSync(color, opts);
+            let dstpixelmap1 = image.createPixelMapSync(opts);
+            let constprepixelmap1 = image.createPixelMapSync(color, optsPre);
+            let res = false
+            image.createPremultipliedPixelMap(srcpixelmap1, dstpixelmap1, (err) => {
+                if (!err) {
+                    res = true;
+                }
+            })
+            await sleep(300);
+            expect(res == false).assertTrue();
+            console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_CALLBACK_0700 success');
+            done();
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0100
+         * @tc.name      : create UnPremultiplyPixelMap-promise
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size,color
+         *                 3.using color and opts create newPixelMap
+         *                 4.UnPremultiplyPixelMap
+         *                 5.return color
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0100", 0, async function (done) {
+            let opts = { pixelFormat: 0, size: { width: 2, height: 2 }, alphaType: 3 };
+            let optsPre =  { pixelFormat: 0, size: { width: 2, height: 2 }, alphaType: 2 };
+            const color = new ArrayBuffer(2 * 2*4);
+            let bufferArr = new Uint8Array(color);
+            bufferArr[0] = 255; //b
+            bufferArr[1] = 0;   //g
+            bufferArr[2] = 153; //r
+            bufferArr[3] = 127; //a
+
+            bufferArr[4] = 0;   //b
+            bufferArr[5] = 255;//g
+            bufferArr[6] = 153;//r
+            bufferArr[7] = 127;//a
+
+            bufferArr[8] = 153;//b
+            bufferArr[9] = 0;//g
+            bufferArr[10] = 255;//r
+            bufferArr[11] = 102;//a
+
+            bufferArr[12] = 153;//b
+            bufferArr[13] = 153;//g
+            bufferArr[14] = 153;//r
+            bufferArr[15] = 127;//a
+            const readBuffer_1 = new ArrayBuffer(2 * 2*4);
+            const readBuffer_2 = new ArrayBuffer(2 * 2*4);
+            let srcpixelmap1 = image.createPixelMapSync(color, optsPre);
+            let dstpixelmap1 = image.createPixelMapSync(optsPre);
+            let constprepixelmap1 = image.createPixelMapSync(color, opts);
+            image.createUnpremultipliedPixelMap(srcpixelmap1,dstpixelmap1)
+                .then(()=>{
+                    dstpixelmap1.readPixelsToBuffer(readBuffer_1).then(() => {
+                    constprepixelmap1.readPixelsToBuffer(readBuffer_2)
+                        .then(()=>{
+                            let src = new Uint8Array(readBuffer_1);
+                            let dst = new Uint8Array(readBuffer_2);
+                            for (let i = 0; i < src.length; i++) {
+                                if (Math.abs(src[i] - dst[i]) > 1) {
+                                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0100 failed');
+                                    expect(false).assertTrue();
+                                    done();
+                                    break;
+                                } else {
+                                    expect(true).assertTrue();
+                                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0100 success');
+                                    done();
+                                }
+                            }
+                        }).catch((error) => {
+                            expect(false).assertTrue();
+                            console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0100 failed');
+                            done();
+                        })
+                    }).catch((error) => {
+                        expect(false).assertTrue();
+                        console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0100 failed');
+                        done();
+                    })
+                }).catch((error) => {
+                    expect(false).assertTrue();
+                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0100 failed');
+                    done();
+                })
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0200
+         * @tc.name      : create UnPremultiplyPixelMap-promise
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size,color
+         *                 3.using color and opts create newPixelMap
+         *                 4.UnPremultiplyPixelMap
+         *                 5.return color
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0200", 0, async function (done) {
+            let opts = { pixelFormat: 2, size: { width: 2, height: 2 }, alphaType: 3 };
+            let optsPre =  { pixelFormat: 2, size: { width: 2, height: 2 }, alphaType: 2 };
+            const color = new ArrayBuffer(2 * 2*4);
+            let bufferArr = new Uint8Array(color);
+            bufferArr[0] = 255; //b
+            bufferArr[1] = 0;   //g
+            bufferArr[2] = 153; //r
+            bufferArr[3] = 127; //a
+
+            bufferArr[4] = 0;   //b
+            bufferArr[5] = 255;//g
+            bufferArr[6] = 153;//r
+            bufferArr[7] = 127;//a
+
+            bufferArr[8] = 153;//b
+            bufferArr[9] = 0;//g
+            bufferArr[10] = 255;//r
+            bufferArr[11] = 102;//a
+
+            bufferArr[12] = 153;//b
+            bufferArr[13] = 153;//g
+            bufferArr[14] = 153;//r
+            bufferArr[15] = 127;//a
+            const readBuffer_1 = new ArrayBuffer(2 * 2*4);
+            const readBuffer_2 = new ArrayBuffer(2 * 2*4);
+            let srcpixelmap1 = image.createPixelMapSync(color, optsPre);
+            let dstpixelmap1 = image.createPixelMapSync(optsPre);
+            let constprepixelmap1 = image.createPixelMapSync(color, opts);
+            image.createUnpremultipliedPixelMap(srcpixelmap1,dstpixelmap1)
+                .then(()=>{
+                    dstpixelmap1.readPixelsToBuffer(readBuffer_1).then(() => {
+                    constprepixelmap1.readPixelsToBuffer(readBuffer_2)
+                        .then(()=>{
+                            let src = new Uint8Array(readBuffer_1);
+                            let dst = new Uint8Array(readBuffer_2);
+                            for (let i = 0; i < src.length; i++) {
+                                if (Math.abs(src[i] - dst[i]) != 0) {
+                                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0200 failed');
+                                    expect(false).assertTrue();
+                                    done();
+                                    break;
+                                } else {
+                                    expect(false).assertTrue();
+                                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0200 failed');
+                                    done();
+                                }
+                            }
+                        }).catch((error) => {
+                            expect(true).assertTrue();
+                            console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0200 success');
+                            done();
+                        })
+                    }).catch((error) => {
+                        expect(true).assertTrue();
+                        console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0200 success');
+                        done();
+                    })
+                }).catch((error) => {
+                    expect(true).assertTrue();
+                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0100 success');
+                    done();
+                })
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0300
+         * @tc.name      : create UnPremultiplyPixelMap-promise
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size,color
+         *                 3.using color and opts create newPixelMap
+         *                 4.UnPremultiplyPixelMap
+         *                 5.return color
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0300", 0, async function (done) {
+            let opts = { pixelFormat: 3, size: { width: 2, height: 2 }, alphaType: 3 };
+            let optsPre =  { pixelFormat: 3, size: { width: 2, height: 2 }, alphaType: 2 };
+            const color = new ArrayBuffer(2 * 2*4);
+            let bufferArr = new Uint8Array(color);
+            bufferArr[0] = 255; //b
+            bufferArr[1] = 0;   //g
+            bufferArr[2] = 153; //r
+            bufferArr[3] = 127; //a
+
+            bufferArr[4] = 0;   //b
+            bufferArr[5] = 255;//g
+            bufferArr[6] = 153;//r
+            bufferArr[7] = 127;//a
+
+            bufferArr[8] = 153;//b
+            bufferArr[9] = 0;//g
+            bufferArr[10] = 255;//r
+            bufferArr[11] = 102;//a
+
+            bufferArr[12] = 153;//b
+            bufferArr[13] = 153;//g
+            bufferArr[14] = 153;//r
+            bufferArr[15] = 127;//a
+            const readBuffer_1 = new ArrayBuffer(2 * 2*4);
+            const readBuffer_2 = new ArrayBuffer(2 * 2*4);
+            let srcpixelmap1 = image.createPixelMapSync(color, optsPre);
+            let dstpixelmap1 = image.createPixelMapSync(optsPre);
+            let constprepixelmap1 = image.createPixelMapSync(color, opts);
+            image.createUnpremultipliedPixelMap(srcpixelmap1,dstpixelmap1)
+                .then(()=>{
+                    dstpixelmap1.readPixelsToBuffer(readBuffer_1).then(() => {
+                    constprepixelmap1.readPixelsToBuffer(readBuffer_2)
+                        .then(()=>{
+                            let src = new Uint8Array(readBuffer_1);
+                            let dst = new Uint8Array(readBuffer_2);
+                            for (let i = 0; i < src.length; i++) {
+                                if (Math.abs(src[i] - dst[i]) > 1) {
+                                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0300 failed');
+                                    expect(false).assertTrue();
+                                    done();
+                                    break;
+                                } else {
+                                    expect(true).assertTrue();
+                                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0300 success');
+                                    done();
+                                }
+                            }
+                        }).catch((error) => {
+                            expect(false).assertTrue();
+                            console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0300 failed');
+                            done();
+                        })
+                    }).catch((error) => {
+                        expect(false).assertTrue();
+                        console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0300 failed');
+                        done();
+                    })
+                }).catch((error) => {
+                    expect(false).assertTrue();
+                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0300 failed');
+                    done();
+                })
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0400
+         * @tc.name      : create UnPremultiplyPixelMap-promise
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size,color
+         *                 3.using color and opts create newPixelMap
+         *                 4.UnPremultiplyPixelMap
+         *                 5.return color
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0400", 0, async function (done) {
+            let opts = { pixelFormat: 4, size: { width: 2, height: 2 }, alphaType: 3 };
+            let optsPre =  { pixelFormat: 4, size: { width: 2, height: 2 }, alphaType: 2 };
+            const color = new ArrayBuffer(2 * 2*4);
+            let bufferArr = new Uint8Array(color);
+            bufferArr[0] = 255; //b
+            bufferArr[1] = 0;   //g
+            bufferArr[2] = 153; //r
+            bufferArr[3] = 127; //a
+
+            bufferArr[4] = 0;   //b
+            bufferArr[5] = 255;//g
+            bufferArr[6] = 153;//r
+            bufferArr[7] = 127;//a
+
+            bufferArr[8] = 153;//b
+            bufferArr[9] = 0;//g
+            bufferArr[10] = 255;//r
+            bufferArr[11] = 102;//a
+
+            bufferArr[12] = 153;//b
+            bufferArr[13] = 153;//g
+            bufferArr[14] = 153;//r
+            bufferArr[15] = 127;//a
+            const readBuffer_1 = new ArrayBuffer(2 * 2*4);
+            const readBuffer_2 = new ArrayBuffer(2 * 2*4);
+            let srcpixelmap1 = image.createPixelMapSync(color, optsPre);
+            let dstpixelmap1 = image.createPixelMapSync(optsPre);
+            let constprepixelmap1 = image.createPixelMapSync(color, opts);
+            image.createUnpremultipliedPixelMap(srcpixelmap1,dstpixelmap1)
+                .then(()=>{
+                    dstpixelmap1.readPixelsToBuffer(readBuffer_1).then(() => {
+                    constprepixelmap1.readPixelsToBuffer(readBuffer_2)
+                        .then(()=>{
+                            let src = new Uint8Array(readBuffer_1);
+                            let dst = new Uint8Array(readBuffer_2);
+                            for (let i = 0; i < src.length; i++) {
+                                if (Math.abs(src[i] - dst[i]) > 1) {
+                                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0400 failed');
+                                    expect(false).assertTrue();
+                                    done();
+                                    break;
+                                } else {
+                                    expect(true).assertTrue();
+                                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0400 success');
+                                    done();
+                                }
+                            }
+                        }).catch((error) => {
+                            expect(false).assertTrue();
+                            console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0400 failed');
+                            done();
+                        })
+                    }).catch((error) => {
+                        expect(false).assertTrue();
+                        console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0400 failed');
+                        done();
+                    })
+                }).catch((error) => {
+                    expect(false).assertTrue();
+                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0400 failed');
+                    done();
+                })
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0500
+         * @tc.name      : create UnPremultiplyPixelMap-promise
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size,color
+         *                 3.using color and opts create newPixelMap
+         *                 4.UnPremultiplyPixelMap
+         *                 5.return color
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0500", 0, async function (done) {
+            let opts = { pixelFormat: 5, size: { width: 2, height: 2 }, alphaType: 3 };
+            let optsPre =  { pixelFormat: 5, size: { width: 2, height: 2 }, alphaType: 2 };
+            const color = new ArrayBuffer(2 * 2*4);
+            let bufferArr = new Uint8Array(color);
+            bufferArr[0] = 255; //b
+            bufferArr[1] = 0;   //g
+            bufferArr[2] = 153; //r
+            bufferArr[3] = 127; //a
+
+            bufferArr[4] = 0;   //b
+            bufferArr[5] = 255;//g
+            bufferArr[6] = 153;//r
+            bufferArr[7] = 127;//a
+
+            bufferArr[8] = 153;//b
+            bufferArr[9] = 0;//g
+            bufferArr[10] = 255;//r
+            bufferArr[11] = 102;//a
+
+            bufferArr[12] = 153;//b
+            bufferArr[13] = 153;//g
+            bufferArr[14] = 153;//r
+            bufferArr[15] = 127;//a
+            const readBuffer_1 = new ArrayBuffer(2 * 2*4);
+            const readBuffer_2 = new ArrayBuffer(2 * 2*4);
+            let srcpixelmap1 = image.createPixelMapSync(color, optsPre);
+            let dstpixelmap1 = image.createPixelMapSync(optsPre);
+            let constprepixelmap1 = image.createPixelMapSync(color, opts);
+            image.createUnpremultipliedPixelMap(srcpixelmap1,dstpixelmap1)
+                .then(()=>{
+                    dstpixelmap1.readPixelsToBuffer(readBuffer_1).then(() => {
+                    constprepixelmap1.readPixelsToBuffer(readBuffer_2)
+                        .then(()=>{
+                            let src = new Uint8Array(readBuffer_1);
+                            let dst = new Uint8Array(readBuffer_2);
+                            for (let i = 0; i < src.length; i++) {
+                                if (Math.abs(src[i] - dst[i]) != 0) {
+                                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0500 failed');
+                                    expect(false).assertTrue();
+                                    done();
+                                    break;
+                                } else {
+                                    expect(false).assertTrue();
+                                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0500 failed');
+                                    done();
+                                }
+                            }
+                        }).catch((error) => {
+                            expect(true).assertTrue();
+                            console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0500 success');
+                            done();
+                        })
+                    }).catch((error) => {
+                        expect(true).assertTrue();
+                        console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0500 success');
+                        done();
+                    })
+                }).catch((error) => {
+                    expect(true).assertTrue();
+                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0500 success');
+                    done();
+                })
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0600
+         * @tc.name      : create UnPremultiplyPixelMap-promise
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size,color
+         *                 3.using color and opts create newPixelMap
+         *                 4.UnPremultiplyPixelMap
+         *                 5.return color
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0600", 0, async function (done) {
+            let opts = { pixelFormat: 6, size: { width: 2, height: 2 }, alphaType: 3 };
+            let optsPre =  { pixelFormat: 6, size: { width: 2, height: 2 }, alphaType: 2 };
+            const color = new ArrayBuffer(2 * 2*4);
+            let bufferArr = new Uint8Array(color);
+            bufferArr[0] = 255; //b
+            bufferArr[1] = 0;   //g
+            bufferArr[2] = 153; //r
+            bufferArr[3] = 127; //a
+
+            bufferArr[4] = 0;   //b
+            bufferArr[5] = 255;//g
+            bufferArr[6] = 153;//r
+            bufferArr[7] = 127;//a
+
+            bufferArr[8] = 153;//b
+            bufferArr[9] = 0;//g
+            bufferArr[10] = 255;//r
+            bufferArr[11] = 102;//a
+
+            bufferArr[12] = 153;//b
+            bufferArr[13] = 153;//g
+            bufferArr[14] = 153;//r
+            bufferArr[15] = 127;//a
+            const readBuffer_1 = new ArrayBuffer(2 * 2*4);
+            const readBuffer_2 = new ArrayBuffer(2 * 2*4);
+            let srcpixelmap1 = image.createPixelMapSync(color, optsPre);
+            let dstpixelmap1 = image.createPixelMapSync(optsPre);
+            let constprepixelmap1 = image.createPixelMapSync(color, opts);
+            image.createUnpremultipliedPixelMap(srcpixelmap1,dstpixelmap1)
+                .then(()=>{
+                    dstpixelmap1.readPixelsToBuffer(readBuffer_1).then(() => {
+                    constprepixelmap1.readPixelsToBuffer(readBuffer_2)
+                        .then(()=>{
+                            let src = new Uint8Array(readBuffer_1);
+                            let dst = new Uint8Array(readBuffer_2);
+                            for (let i = 0; i < src.length; i++) {
+                                if (Math.abs(src[i] - dst[i]) > 1) {
+                                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0600 failed');
+                                    expect(false).assertTrue();
+                                    done();
+                                    break;
+                                } else {
+                                    expect(true).assertTrue();
+                                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0600 success');
+                                    done();
+                                }
+                            }
+                        }).catch((error) => {
+                            expect(false).assertTrue();
+                            console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0600 failed');
+                            done();
+                        })
+                    }).catch((error) => {
+                        expect(false).assertTrue();
+                        console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0600 failed');
+                        done();
+                    })
+                }).catch((error) => {
+                    expect(false).assertTrue();
+                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0600 failed');
+                    done();
+                })
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0700
+         * @tc.name      : create UnPremultiplyPixelMap-promise
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size,color
+         *                 3.using color and opts create newPixelMap
+         *                 4.UnPremultiplyPixelMap
+         *                 5.return color
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it("SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0700", 0, async function (done) {
+            let opts = { pixelFormat: 7, size: { width: 2, height: 2 }, alphaType: 3 };
+            let optsPre =  { pixelFormat: 7, size: { width: 2, height: 2 }, alphaType: 2 };
+            const color = new ArrayBuffer(2 * 2*4);
+            let bufferArr = new Uint8Array(color);
+            bufferArr[0] = 255; //b
+            bufferArr[1] = 0;   //g
+            bufferArr[2] = 153; //r
+            bufferArr[3] = 127; //a
+
+            bufferArr[4] = 0;   //b
+            bufferArr[5] = 255;//g
+            bufferArr[6] = 153;//r
+            bufferArr[7] = 127;//a
+
+            bufferArr[8] = 153;//b
+            bufferArr[9] = 0;//g
+            bufferArr[10] = 255;//r
+            bufferArr[11] = 102;//a
+
+            bufferArr[12] = 153;//b
+            bufferArr[13] = 153;//g
+            bufferArr[14] = 153;//r
+            bufferArr[15] = 127;//a
+            const readBuffer_1 = new ArrayBuffer(2 * 2*4);
+            const readBuffer_2 = new ArrayBuffer(2 * 2*4);
+            let srcpixelmap1 = image.createPixelMapSync(color, optsPre);
+            let dstpixelmap1 = image.createPixelMapSync(optsPre);
+            let constprepixelmap1 = image.createPixelMapSync(color, opts);
+            image.createUnpremultipliedPixelMap(srcpixelmap1,dstpixelmap1)
+                .then(()=>{
+                    dstpixelmap1.readPixelsToBuffer(readBuffer_1).then(() => {
+                    constprepixelmap1.readPixelsToBuffer(readBuffer_2)
+                        .then(()=>{
+                            let src = new Uint8Array(readBuffer_1);
+                            let dst = new Uint8Array(readBuffer_2);
+                            for (let i = 0; i < src.length; i++) {
+                                if (Math.abs(src[i] - dst[i]) != 0) {
+                                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0700 failed');
+                                    expect(false).assertTrue();
+                                    done();
+                                    break;
+                                } else {
+                                    expect(false).assertTrue();
+                                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0700 failed');
+                                    done();
+                                }
+                            }
+                        }).catch((error) => {
+                            expect(true).assertTrue();
+                            console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0700 success');
+                            done();
+                        })
+                    }).catch((error) => {
+                        expect(true).assertTrue();
+                        console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0700 success');
+                        done();
+                    })
+                }).catch((error) => {
+                    expect(true).assertTrue();
+                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_PROMISE_0700 success');
+                    done();
+                })
+        });
+
+		/**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_CALLBACK_0100
+         * @tc.name      : create PremultiplyPixelMap-callback
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size,color
+         *                 3.using color and opts create newPixelMap
+         *                 4.UnPremultiplyPixelMap
+         *                 5.callback result
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_CALLBACK_0100', 0, async function (done) {
+            let opts = { pixelFormat: 0, size: { width: 2, height: 2 }, alphaType: 3 };
+            let optsPre =  { pixelFormat: 0, size: { width: 2, height: 2 }, alphaType: 2 };
+            const color = new ArrayBuffer(2 * 2*4);
+            let bufferArr = new Uint8Array(color);
+            bufferArr[0] = 255; //b
+            bufferArr[1] = 0;   //g
+            bufferArr[2] = 153; //r
+            bufferArr[3] = 127; //a
+
+            bufferArr[4] = 0;   //b
+            bufferArr[5] = 255;//g
+            bufferArr[6] = 153;//r
+            bufferArr[7] = 127;//a
+
+            bufferArr[8] = 153;//b
+            bufferArr[9] = 0;//g
+            bufferArr[10] = 255;//r
+            bufferArr[11] = 102;//a
+
+            bufferArr[12] = 153;//b
+            bufferArr[13] = 153;//g
+            bufferArr[14] = 153;//r
+            bufferArr[15] = 127;//a
+            const readBuffer_1 = new ArrayBuffer(2 * 2*4);
+            const readBuffer_2 = new ArrayBuffer(2 * 2*4);
+            let srcpixelmap1 = image.createPixelMapSync(color, optsPre);
+            let dstpixelmap1 = image.createPixelMapSync(optsPre);
+            let constprepixelmap1 = image.createPixelMapSync(color, opts);
+            let res = false;
+            image.createUnpremultipliedPixelMap(srcpixelmap1, dstpixelmap1, () => {
+                    dstpixelmap1.readPixelsToBuffer(readBuffer_1).then(() => {
+                    constprepixelmap1.readPixelsToBuffer(readBuffer_2)
+                        .then(()=>{
+                            let src = new Uint8Array(readBuffer_1);
+                            let dst = new Uint8Array(readBuffer_2);
+                            for (let i = 0; i < src.length; i++) {
+                                if (Math.abs(src[i] - dst[i]) <= 1) {
+                                    res = true;
+                                } else {
+                                    res = false;
+                                    break;
+                                }
+                            }
+                        })
+                    })
+                })
+                await sleep(300);
+                if (res) {
+                    expect(res == true).assertTrue();
+                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_CALLBACK_0600 success');
+                } else {
+                    expect(res == false).assertTrue();
+                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_CALLBACK_0600 failed');
+                }
+                done();
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_CALLBACK_0200
+         * @tc.name      : create PremultiplyPixelMap-callback
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size,color
+         *                 3.using color and opts create newPixelMap
+         *                 4.UnPremultiplyPixelMap
+         *                 5.callback result
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_CALLBACK_0200', 0, async function (done) {
+            let opts = { pixelFormat: 2, size: { width: 2, height: 2 }, alphaType: 3 };
+            let optsPre =  { pixelFormat: 2, size: { width: 2, height: 2 }, alphaType: 2 };
+            const color = new ArrayBuffer(2 * 2*4);
+            let bufferArr = new Uint8Array(color);
+            bufferArr[0] = 255; //b
+            bufferArr[1] = 0;   //g
+            bufferArr[2] = 153; //r
+            bufferArr[3] = 127; //a
+
+            bufferArr[4] = 0;   //b
+            bufferArr[5] = 255;//g
+            bufferArr[6] = 153;//r
+            bufferArr[7] = 127;//a
+
+            bufferArr[8] = 153;//b
+            bufferArr[9] = 0;//g
+            bufferArr[10] = 255;//r
+            bufferArr[11] = 102;//a
+
+            bufferArr[12] = 153;//b
+            bufferArr[13] = 153;//g
+            bufferArr[14] = 153;//r
+            bufferArr[15] = 127;//a
+            const readBuffer_1 = new ArrayBuffer(2 * 2*4);
+            const readBuffer_2 = new ArrayBuffer(2 * 2*4);
+            let srcpixelmap1 = image.createPixelMapSync(color, optsPre);
+            let dstpixelmap1 = image.createPixelMapSync(optsPre);
+            let constprepixelmap1 = image.createPixelMapSync(color, opts);
+            let res = false;
+			image.createUnpremultipliedPixelMap(srcpixelmap1, dstpixelmap1, (err) => {
+                if (!err) {
+                    res = true;
+                }
+            })
+            await sleep(300);
+            expect(res == false).assertTrue();
+            console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_CALLBACK_0200 success');
+            done();
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_CALLBACK_0300
+         * @tc.name      : create PremultiplyPixelMap-callback
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size,color
+         *                 3.using color and opts create newPixelMap
+         *                 4.UnPremultiplyPixelMap
+         *                 5.callback result
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_CALLBACK_0300', 0, async function (done) {
+            let opts = { pixelFormat: 3, size: { width: 2, height: 2 }, alphaType: 3 };
+            let optsPre =  { pixelFormat: 3, size: { width: 2, height: 2 }, alphaType: 2 };
+            const color = new ArrayBuffer(2 * 2*4);
+            let bufferArr = new Uint8Array(color);
+            bufferArr[0] = 255; //b
+            bufferArr[1] = 0;   //g
+            bufferArr[2] = 153; //r
+            bufferArr[3] = 127; //a
+
+            bufferArr[4] = 0;   //b
+            bufferArr[5] = 255;//g
+            bufferArr[6] = 153;//r
+            bufferArr[7] = 127;//a
+
+            bufferArr[8] = 153;//b
+            bufferArr[9] = 0;//g
+            bufferArr[10] = 255;//r
+            bufferArr[11] = 102;//a
+
+            bufferArr[12] = 153;//b
+            bufferArr[13] = 153;//g
+            bufferArr[14] = 153;//r
+            bufferArr[15] = 127;//a
+            const readBuffer_1 = new ArrayBuffer(2 * 2*4);
+            const readBuffer_2 = new ArrayBuffer(2 * 2*4);
+            let srcpixelmap1 = image.createPixelMapSync(color, optsPre);
+            let dstpixelmap1 = image.createPixelMapSync(optsPre);
+            let constprepixelmap1 = image.createPixelMapSync(color, opts);
+            let res = false
+            image.createUnpremultipliedPixelMap(srcpixelmap1, dstpixelmap1, () => {
+                    dstpixelmap1.readPixelsToBuffer(readBuffer_1).then(() => {
+                    constprepixelmap1.readPixelsToBuffer(readBuffer_2)
+                        .then(()=>{
+                            let src = new Uint8Array(readBuffer_1);
+                            let dst = new Uint8Array(readBuffer_2);
+                            for (let i = 0; i < src.length; i++) {
+                                if (Math.abs(src[i] - dst[i]) <= 1) {
+                                    res = true;
+                                } else {
+                                    res = false;
+                                    break;
+                                }
+                            }
+                        })
+                    })
+                })
+                await sleep(300);
+                if (res) {
+                    expect(true).assertTrue();
+                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_CALLBACK_0300 success');
+                } else {
+                    expect(false).assertTrue();
+                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_CALLBACK_0300 failed');
+                }
+                done();
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_CALLBACK_0400
+         * @tc.name      : create PremultiplyPixelMap-callback
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size,color
+         *                 3.using color and opts create newPixelMap
+         *                 4.UnPremultiplyPixelMap
+         *                 5.callback result
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_CALLBACK_0400', 0, async function (done) {
+            let opts = { pixelFormat: 4, size: { width: 2, height: 2 }, alphaType: 3 };
+            let optsPre =  { pixelFormat: 4, size: { width: 2, height: 2 }, alphaType: 2 };
+            const color = new ArrayBuffer(2 * 2*4);
+            let bufferArr = new Uint8Array(color);
+            bufferArr[0] = 255; //b
+            bufferArr[1] = 0;   //g
+            bufferArr[2] = 153; //r
+            bufferArr[3] = 127; //a
+
+            bufferArr[4] = 0;   //b
+            bufferArr[5] = 255;//g
+            bufferArr[6] = 153;//r
+            bufferArr[7] = 127;//a
+
+            bufferArr[8] = 153;//b
+            bufferArr[9] = 0;//g
+            bufferArr[10] = 255;//r
+            bufferArr[11] = 102;//a
+
+            bufferArr[12] = 153;//b
+            bufferArr[13] = 153;//g
+            bufferArr[14] = 153;//r
+            bufferArr[15] = 127;//a
+            const readBuffer_1 = new ArrayBuffer(2 * 2*4);
+            const readBuffer_2 = new ArrayBuffer(2 * 2*4);
+            let srcpixelmap1 = image.createPixelMapSync(color, optsPre);
+            let dstpixelmap1 = image.createPixelMapSync(optsPre);
+            let constprepixelmap1 = image.createPixelMapSync(color, opts);
+            let res = false
+            image.createUnpremultipliedPixelMap(srcpixelmap1, dstpixelmap1, () => {
+                    dstpixelmap1.readPixelsToBuffer(readBuffer_1).then(() => {
+                    constprepixelmap1.readPixelsToBuffer(readBuffer_2)
+                        .then(()=>{
+                            let src = new Uint8Array(readBuffer_1);
+                            let dst = new Uint8Array(readBuffer_2);
+                            for (let i = 0; i < src.length; i++) {
+                                if (Math.abs(src[i] - dst[i]) <= 1) {
+                                    res = true;
+                                } else {
+                                    res = false;
+                                    break;
+                                }
+                            }
+                        })
+                    })
+                })
+                await sleep(300);
+                if (res) {
+                    expect(res == true).assertTrue();
+                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_CALLBACK_0600 success');
+                } else {
+                    expect(res ==false).assertTrue();
+                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_CALLBACK_0600 failed');
+                }
+                done();
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_CALLBACK_0500
+         * @tc.name      : create PremultiplyPixelMap-callback
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size,color
+         *                 3.using color and opts create newPixelMap
+         *                 4.UnPremultiplyPixelMap
+         *                 5.callback result
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_CALLBACK_0500', 0, async function (done) {
+            let opts = { pixelFormat: 5, size: { width: 2, height: 2 }, alphaType: 3 };
+            let optsPre =  { pixelFormat: 5, size: { width: 2, height: 2 }, alphaType: 2 };
+            const color = new ArrayBuffer(2 * 2*4);
+            let bufferArr = new Uint8Array(color);
+            bufferArr[0] = 255; //b
+            bufferArr[1] = 0;   //g
+            bufferArr[2] = 153; //r
+            bufferArr[3] = 127; //a
+
+            bufferArr[4] = 0;   //b
+            bufferArr[5] = 255;//g
+            bufferArr[6] = 153;//r
+            bufferArr[7] = 127;//a
+
+            bufferArr[8] = 153;//b
+            bufferArr[9] = 0;//g
+            bufferArr[10] = 255;//r
+            bufferArr[11] = 102;//a
+
+            bufferArr[12] = 153;//b
+            bufferArr[13] = 153;//g
+            bufferArr[14] = 153;//r
+            bufferArr[15] = 127;//a
+            const readBuffer_1 = new ArrayBuffer(2 * 2*4);
+            const readBuffer_2 = new ArrayBuffer(2 * 2*4);
+            let srcpixelmap1 = image.createPixelMapSync(color, optsPre);
+            let dstpixelmap1 = image.createPixelMapSync(optsPre);
+            let constprepixelmap1 = image.createPixelMapSync(color, opts);
+            let res = false
+            image.createUnpremultipliedPixelMap(srcpixelmap1, dstpixelmap1, (err) => {
+                if (!err) {
+                    res = true;
+                }
+            })
+            await sleep(300);
+            expect(res == false).assertTrue();
+            console.info('SUB_MULTIMEDIA_IMAGE_CREATEPREMULTIPLIEDPIXELMAP_CALLBACK_0500 success');
+            done();
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_CALLBACK_0600
+         * @tc.name      : create PremultiplyPixelMap-callback
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size,color
+         *                 3.using color and opts create newPixelMap
+         *                 4.UnPremultiplyPixelMap
+         *                 5.callback result
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_CALLBACK_0600', 0, async function (done) {
+            let opts = { pixelFormat: 6, size: { width: 2, height: 2 }, alphaType: 3 };
+            let optsPre =  { pixelFormat: 6, size: { width: 2, height: 2 }, alphaType: 2 };
+            const color = new ArrayBuffer(2 * 2*4);
+            let bufferArr = new Uint8Array(color);
+            bufferArr[0] = 255; //b
+            bufferArr[1] = 0;   //g
+            bufferArr[2] = 153; //r
+            bufferArr[3] = 127; //a
+
+            bufferArr[4] = 0;   //b
+            bufferArr[5] = 255;//g
+            bufferArr[6] = 153;//r
+            bufferArr[7] = 127;//a
+
+            bufferArr[8] = 153;//b
+            bufferArr[9] = 0;//g
+            bufferArr[10] = 255;//r
+            bufferArr[11] = 102;//a
+
+            bufferArr[12] = 153;//b
+            bufferArr[13] = 153;//g
+            bufferArr[14] = 153;//r
+            bufferArr[15] = 127;//a
+            const readBuffer_1 = new ArrayBuffer(2 * 2*4);
+            const readBuffer_2 = new ArrayBuffer(2 * 2*4);
+            let srcpixelmap1 = image.createPixelMapSync(color, optsPre);
+            let dstpixelmap1 = image.createPixelMapSync(optsPre);
+            let constprepixelmap1 = image.createPixelMapSync(color, opts);
+            let res = false
+            image.createUnpremultipliedPixelMap(srcpixelmap1, dstpixelmap1, () => {
+                    dstpixelmap1.readPixelsToBuffer(readBuffer_1).then(() => {
+                    constprepixelmap1.readPixelsToBuffer(readBuffer_2)
+                        .then(()=>{
+                            let src = new Uint8Array(readBuffer_1);
+                            let dst = new Uint8Array(readBuffer_2);
+                            for (let i = 0; i < src.length; i++) {
+                                if (Math.abs(src[i] - dst[i]) <= 1) {
+                                    res = true;
+                                } else {
+                                    res = false;
+                                    break;
+                                }
+                            }
+                        })
+                    })
+                })
+                await sleep(300);
+                if (res) {
+                    expect(true).assertTrue();
+                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_CALLBACK_0600 success');
+                } else {
+                    expect(false).assertTrue();
+                    console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_CALLBACK_0600 failed');
+                }
+                done();
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_CALLBACK_0700
+         * @tc.name      : create PremultiplyPixelMap-callback
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size,color
+         *                 3.using color and opts create newPixelMap
+         *                 4.UnPremultiplyPixelMap
+         *                 5.callback result
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_CALLBACK_0700', 0, async function (done) {
+            let opts = { pixelFormat: 7, size: { width: 2, height: 2 }, alphaType: 3 };
+            let optsPre =  { pixelFormat: 7, size: { width: 2, height: 2 }, alphaType: 2 };
+            const color = new ArrayBuffer(2 * 2*4);
+            let bufferArr = new Uint8Array(color);
+            bufferArr[0] = 255; //b
+            bufferArr[1] = 0;   //g
+            bufferArr[2] = 153; //r
+            bufferArr[3] = 127; //a
+
+            bufferArr[4] = 0;   //b
+            bufferArr[5] = 255;//g
+            bufferArr[6] = 153;//r
+            bufferArr[7] = 127;//a
+
+            bufferArr[8] = 153;//b
+            bufferArr[9] = 0;//g
+            bufferArr[10] = 255;//r
+            bufferArr[11] = 102;//a
+
+            bufferArr[12] = 153;//b
+            bufferArr[13] = 153;//g
+            bufferArr[14] = 153;//r
+            bufferArr[15] = 127;//a
+            const readBuffer_1 = new ArrayBuffer(2 * 2*4);
+            const readBuffer_2 = new ArrayBuffer(2 * 2*4);
+            let srcpixelmap1 = image.createPixelMapSync(color, optsPre);
+            let dstpixelmap1 = image.createPixelMapSync(optsPre);
+            let constprepixelmap1 = image.createPixelMapSync(color, opts);
+            let res = false
+            image.createUnpremultipliedPixelMap(srcpixelmap1, dstpixelmap1, (err) => {
+                if (!err) {
+                    res = true;
+                }
+            })
+            await sleep(300);
+            expect(res == false).assertTrue();
+            console.info('SUB_MULTIMEDIA_IMAGE_CREATEUNPREMULTIPLIEDPIXELMAP_CALLBACK_0700 success');
+            done();
+        });
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0100
+         * @tc.name      : create pixlelmap of RGB_565
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0100', 0, async function (done) {
+            const RGB_565 = image.PixelMapFormat.RGB_565;
+            const RGBA_8888 = image.PixelMapFormat.RGBA_8888;
+            const BGRA_8888 = image.PixelMapFormat.BGRA_8888;
+            const RGB_888 = image.PixelMapFormat.RGB_888;
+            const ALPHA_8 = image.PixelMapFormat.ALPHA_8;
+            const RGBA_F16 = image.PixelMapFormat.RGBA_F16;
+            const NV21 = image.PixelMapFormat.NV21;
+            const NV12 = image.PixelMapFormat.NV12;
+        
+            const gPixelFormat = new Map([
+                [RGB_565, "PixelFormat::RGB_565"],
+                [RGBA_8888, "PixelFormat::RGBA_8888"],
+                [BGRA_8888, "PixelFormat::BGRA_8888"],
+                [RGB_888, "PixelFormat::RGB_888"],
+                [ALPHA_8, "PixelFormat::ALPHA_8"],
+                [RGBA_F16, "PixelFormat::RGBA_F16"],
+                [NV21, "PixelFormat::NV21"],
+                [NV12, "PixelFormat::NV12"]
+            ]);
+
+            let options = {
+                editable: true,
+                srcPixelFormat : image.PixelMapFormat.UNKNOWN,
+                pixelFormat: image.PixelMapFormat.UNKNOWN,
+                alphaType :image.AlphaType.OPAQUE,
+                size: {
+                    height: 3,
+                    width: 2
+                }
+            };
+
+            // RGB_565 to others
+            options.srcPixelFormat = RGB_565;
+            for (let item of gPixelFormat.keys()) {
+                let colorlength = 12;
+                const color = new ArrayBuffer(colorlength);
+                let buffer = new Uint8Array(color);
+                for (let i = 0; i < colorlength; i += 6) {
+                    buffer[i] = 0xEA;
+                    buffer[i + 1] = 0x8E;
+                    buffer[i + 2] = 0x0A;
+                    buffer[i + 3] = 0x87;
+                    buffer[i + 4] = 0x0B;
+                    buffer[i + 5] = 0x87;
+                }
+                options.pixelFormat = item;
+                let pixelMap1 = image.createPixelMap(color,options);
+                if (pixelMap1 != undefined) {
+                    expect(pixelMap1 != undefined).assertTrue();
+                    console.info("SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0100 success");
+                    done();
+                }
+            }
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0200
+         * @tc.name      : create pixlelmap of RGBA_8888
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0200', 0, async function (done) {
+            const RGB_565 = image.PixelMapFormat.RGB_565;
+            const RGBA_8888 = image.PixelMapFormat.RGBA_8888;
+            const BGRA_8888 = image.PixelMapFormat.BGRA_8888;
+            const RGB_888 = image.PixelMapFormat.RGB_888;
+            const ALPHA_8 = image.PixelMapFormat.ALPHA_8;
+            const RGBA_F16 = image.PixelMapFormat.RGBA_F16;
+            const NV21 = image.PixelMapFormat.NV21;
+            const NV12 = image.PixelMapFormat.NV12;
+        
+            const gPixelFormat = new Map([
+                [RGB_565, "PixelFormat::RGB_565"],
+                [RGBA_8888, "PixelFormat::RGBA_8888"],
+                [BGRA_8888, "PixelFormat::BGRA_8888"],
+                [RGB_888, "PixelFormat::RGB_888"],
+                [ALPHA_8, "PixelFormat::ALPHA_8"],
+                [RGBA_F16, "PixelFormat::RGBA_F16"],
+                [NV21, "PixelFormat::NV21"],
+                [NV12, "PixelFormat::NV12"]
+            ]);
+
+            let options = {
+                editable: true,
+                srcPixelFormat : image.PixelMapFormat.UNKNOWN,
+                pixelFormat: image.PixelMapFormat.UNKNOWN,
+                alphaType :image.AlphaType.OPAQUE,
+                size: {
+                    height: 3,
+                    width: 2
+                }
+            };
+
+            // RGBA_8888 to others
+            options.srcPixelFormat = RGBA_8888;
+            for (let item of gPixelFormat.keys()) {
+                let colorlength = 24;
+                const color = new ArrayBuffer(colorlength);
+                let buffer = new Uint8Array(color);
+                for (let i = 0; i < colorlength; i += 4) {
+                    buffer[i] = 0x83;
+                    buffer[i + 1] = 0xDF;
+                    buffer[i + 2] = 0x52;
+                    buffer[i + 3] = 0x78;
+                }
+                options.pixelFormat = item;
+                let pixelMap1 = image.createPixelMap(color,options);
+                if (pixelMap1 != undefined) {
+                    expect(pixelMap1 != undefined).assertTrue();
+                    console.info("SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0200 success");
+                    done();
+                }
+            }
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0300
+         * @tc.name      : create pixlelmap of BGRA_8888
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0300', 0, async function (done) {
+            const RGB_565 = image.PixelMapFormat.RGB_565;
+            const RGBA_8888 = image.PixelMapFormat.RGBA_8888;
+            const BGRA_8888 = image.PixelMapFormat.BGRA_8888;
+            const RGB_888 = image.PixelMapFormat.RGB_888;
+            const ALPHA_8 = image.PixelMapFormat.ALPHA_8;
+            const RGBA_F16 = image.PixelMapFormat.RGBA_F16;
+            const NV21 = image.PixelMapFormat.NV21;
+            const NV12 = image.PixelMapFormat.NV12;
+        
+            const gPixelFormat = new Map([
+                [RGB_565, "PixelFormat::RGB_565"],
+                [RGBA_8888, "PixelFormat::RGBA_8888"],
+                [BGRA_8888, "PixelFormat::BGRA_8888"],
+                [RGB_888, "PixelFormat::RGB_888"],
+                [ALPHA_8, "PixelFormat::ALPHA_8"],
+                [RGBA_F16, "PixelFormat::RGBA_F16"],
+                [NV21, "PixelFormat::NV21"],
+                [NV12, "PixelFormat::NV12"]
+            ]);
+
+            let options = {
+                editable: true,
+                srcPixelFormat : image.PixelMapFormat.UNKNOWN,
+                pixelFormat: image.PixelMapFormat.UNKNOWN,
+                alphaType :image.AlphaType.OPAQUE,
+                size: {
+                    height: 3,
+                    width: 2
+                }
+            };
+
+            // BGRA_8888 to others
+            options.srcPixelFormat = BGRA_8888 ;
+            for (let item of gPixelFormat.keys()) {
+                let colorlength = 24;
+                const color = new ArrayBuffer(colorlength);
+                let buffer = new Uint8Array(color);
+                for (let i = 0; i < colorlength; i += 4) {
+                    buffer[i] = 0x83;
+                    buffer[i + 1] = 0xDF;
+                    buffer[i + 2] = 0x52;
+                    buffer[i + 3] = 0x78;
+                }
+                options.pixelFormat = item;
+                let pixelMap1 = image.createPixelMap(color,options);
+                if (pixelMap1 != undefined) {
+                    expect(pixelMap1 != undefined).assertTrue();
+                    console.info("SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0300 success");
+                    done();
+                }
+            }
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0400
+         * @tc.name      : create pixlelmap of RGB_888
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0400', 0, async function (done) {
+            const RGB_565 = image.PixelMapFormat.RGB_565;
+            const RGBA_8888 = image.PixelMapFormat.RGBA_8888;
+            const BGRA_8888 = image.PixelMapFormat.BGRA_8888;
+            const RGB_888 = image.PixelMapFormat.RGB_888;
+            const ALPHA_8 = image.PixelMapFormat.ALPHA_8;
+            const RGBA_F16 = image.PixelMapFormat.RGBA_F16;
+            const NV21 = image.PixelMapFormat.NV21;
+            const NV12 = image.PixelMapFormat.NV12;
+        
+            const gPixelFormat = new Map([
+                [RGB_565, "PixelFormat::RGB_565"],
+                [RGBA_8888, "PixelFormat::RGBA_8888"],
+                [BGRA_8888, "PixelFormat::BGRA_8888"],
+                [RGB_888, "PixelFormat::RGB_888"],
+                [ALPHA_8, "PixelFormat::ALPHA_8"],
+                [RGBA_F16, "PixelFormat::RGBA_F16"],
+                [NV21, "PixelFormat::NV21"],
+                [NV12, "PixelFormat::NV12"]
+            ]);
+
+            let options = {
+                editable: true,
+                srcPixelFormat : image.PixelMapFormat.UNKNOWN,
+                pixelFormat: image.PixelMapFormat.UNKNOWN,
+                alphaType :image.AlphaType.OPAQUE,
+                size: {
+                    height: 3,
+                    width: 2
+                }
+            };
+
+            // RGB_888 to others
+            options.srcPixelFormat = RGB_888 ;
+            for (let item of gPixelFormat.keys()) {
+                let colorlength = 18;
+                const color = new ArrayBuffer(colorlength);
+                let buffer = new Uint8Array(20);
+                for (let i = 0; i < colorlength; i += 3) {
+                    buffer[i] = 0x83;
+                    buffer[i + 1] = 0xDF;
+                    buffer[i + 2] = 0x52;
+                }
+                options.pixelFormat = item;
+                let pixelMap1 = image.createPixelMap(color,options);
+                if (pixelMap1 != undefined) {
+                    expect(pixelMap1 != undefined).assertTrue();
+                    console.info("SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0400 success");
+                    done();
+                }
+            }
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0500
+         * @tc.name      : create pixlelmap of ALPHA_8
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0500', 0, async function (done) {
+            const RGB_565 = image.PixelMapFormat.RGB_565;
+            const RGBA_8888 = image.PixelMapFormat.RGBA_8888;
+            const BGRA_8888 = image.PixelMapFormat.BGRA_8888;
+            const RGB_888 = image.PixelMapFormat.RGB_888;
+            const ALPHA_8 = image.PixelMapFormat.ALPHA_8;
+            const RGBA_F16 = image.PixelMapFormat.RGBA_F16;
+            const NV21 = image.PixelMapFormat.NV21;
+            const NV12 = image.PixelMapFormat.NV12;
+        
+            const gPixelFormat = new Map([
+                [RGB_565, "PixelFormat::RGB_565"],
+                [RGBA_8888, "PixelFormat::RGBA_8888"],
+                [BGRA_8888, "PixelFormat::BGRA_8888"],
+                [RGB_888, "PixelFormat::RGB_888"],
+                [ALPHA_8, "PixelFormat::ALPHA_8"],
+                [RGBA_F16, "PixelFormat::RGBA_F16"],
+                [NV21, "PixelFormat::NV21"],
+                [NV12, "PixelFormat::NV12"]
+            ]);
+
+            let options = {
+                editable: true,
+                srcPixelFormat : image.PixelMapFormat.UNKNOWN,
+                pixelFormat: image.PixelMapFormat.UNKNOWN,
+                alphaType :image.AlphaType.OPAQUE,
+                size: {
+                    height: 3,
+                    width: 2
+                }
+            };
+
+            // ALPHA_8 to others
+            options.srcPixelFormat = ALPHA_8;
+            for (let item of gPixelFormat.keys()) {
+                let colorlength = 6;
+                const color = new ArrayBuffer(6);
+                let buffer = new Uint8Array(8);
+                for (let i = 0; i < colorlength; i++) {
+                    buffer[i] = 0x78;
+                }
+                options.pixelFormat = item;
+                let pixelMap1 = image.createPixelMap(color,options);
+                if (pixelMap1 != undefined) {
+                    expect(pixelMap1 != undefined).assertTrue();
+                    console.info("SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0500 success");
+                    done();
+                }
+            }
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0600
+         * @tc.name      : create pixlelmap of RGBA_F16
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0600', 0, async function (done) {
+            const RGB_565 = image.PixelMapFormat.RGB_565;
+            const RGBA_8888 = image.PixelMapFormat.RGBA_8888;
+            const BGRA_8888 = image.PixelMapFormat.BGRA_8888;
+            const RGB_888 = image.PixelMapFormat.RGB_888;
+            const ALPHA_8 = image.PixelMapFormat.ALPHA_8;
+            const RGBA_F16 = image.PixelMapFormat.RGBA_F16;
+            const NV21 = image.PixelMapFormat.NV21;
+            const NV12 = image.PixelMapFormat.NV12;
+        
+            const gPixelFormat = new Map([
+                [RGB_565, "PixelFormat::RGB_565"],
+                [RGBA_8888, "PixelFormat::RGBA_8888"],
+                [BGRA_8888, "PixelFormat::BGRA_8888"],
+                [RGB_888, "PixelFormat::RGB_888"],
+                [ALPHA_8, "PixelFormat::ALPHA_8"],
+                [RGBA_F16, "PixelFormat::RGBA_F16"],
+                [NV21, "PixelFormat::NV21"],
+                [NV12, "PixelFormat::NV12"]
+            ]);
+
+            let options = {
+                editable: true,
+                srcPixelFormat : image.PixelMapFormat.UNKNOWN,
+                pixelFormat: image.PixelMapFormat.UNKNOWN,
+                alphaType :image.AlphaType.OPAQUE,
+                size: {
+                    height: 3,
+                    width: 2
+                }
+            };
+
+            // RGBA_F16 to others
+            options.srcPixelFormat = RGBA_F16;
+            for (let item of gPixelFormat.keys()) {
+                let colorlength = 48;
+                const color = new ArrayBuffer(colorlength);
+                let buffer = new Uint8Array(color);
+                for (let i = 0; i < colorlength; i += 8) {
+                    buffer[i] = 0xEF;
+                    buffer[i + 1] = 0x82;
+                    buffer[i + 2] = 0x05;
+                    buffer[i + 3] = 0xDF;
+                    buffer[i + 4] = 0x05;
+                    buffer[i + 5] = 0x52;
+                    buffer[i + 6] = 0x78;
+                    buffer[i + 7] = 0x78;
+                }
+                options.pixelFormat = item;
+                let pixelMap1 = image.createPixelMap(color,options);
+                if (pixelMap1 != undefined) {
+                    expect(pixelMap1 != undefined).assertTrue();
+                    console.info("SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0600 success");
+                    done();
+                }
+            }
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0700
+         * @tc.name      : create pixlelmap of NV21
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0700', 0, async function (done) {
+            const RGB_565 = image.PixelMapFormat.RGB_565;
+            const RGBA_8888 = image.PixelMapFormat.RGBA_8888;
+            const BGRA_8888 = image.PixelMapFormat.BGRA_8888;
+            const RGB_888 = image.PixelMapFormat.RGB_888;
+            const ALPHA_8 = image.PixelMapFormat.ALPHA_8;
+            const RGBA_F16 = image.PixelMapFormat.RGBA_F16;
+            const NV21 = image.PixelMapFormat.NV21;
+            const NV12 = image.PixelMapFormat.NV12;
+        
+            const gPixelFormat = new Map([
+                [RGB_565, "PixelFormat::RGB_565"],
+                [RGBA_8888, "PixelFormat::RGBA_8888"],
+                [BGRA_8888, "PixelFormat::BGRA_8888"],
+                [RGB_888, "PixelFormat::RGB_888"],
+                [ALPHA_8, "PixelFormat::ALPHA_8"],
+                [RGBA_F16, "PixelFormat::RGBA_F16"],
+                [NV21, "PixelFormat::NV21"],
+                [NV12, "PixelFormat::NV12"]
+            ]);
+
+            let options = {
+                editable: true,
+                srcPixelFormat : image.PixelMapFormat.UNKNOWN,
+                pixelFormat: image.PixelMapFormat.UNKNOWN,
+                alphaType :image.AlphaType.OPAQUE,
+                size: {
+                    height: 3,
+                    width: 2
+                }
+            };
+
+            // NV21 to others
+            options.srcPixelFormat = NV21;
+            for (let item of gPixelFormat.keys()) {
+                let buffer = new Uint8Array(12);
+                let yLen = options.size.width * options.size.height;  // yLen is 6
+                let w = (options.size.width % 2 == 0) ? (options.size.width) : (options.size.width + 1);
+                let h = (options.size.height % 2 == 0) ? (options.size.height) : (options.size.height + 1);
+                let uvLen = w * h / 2;    // uvLen is 4
+                for (let i = 0; i < yLen; i++) {
+                    buffer[i] = 0xAA;
+                }
+                for (let i = yLen; i < yLen + uvLen; i += 2) {
+                    buffer[i] = 0x62;
+                    buffer[i + 1] = 0x50;
+                }
+                let colorlength = yLen + uvLen;
+                const color = new ArrayBuffer(colorlength);
+                buffer = new Uint8Array(color);
+                options.pixelFormat = item;
+                let pixelMap1 = image.createPixelMap(color,options);
+                if (pixelMap1 != undefined) {
+                    expect(pixelMap1 != undefined).assertTrue();
+                    console.info("SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0700 success");
+                    done();
+                }
+            }
+        })
+
+        /**
+         * @tc.number    : SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0800
+         * @tc.name      : create pixlelmap of NV12
+         * @tc.desc      : 1.create InitializationOptions object
+         *                 2.set editable,pixeFormat,size
+         *                 3.using color and opts create newPixelMap
+         *                 4.return newpixelmap not empty
+         * @tc.size      : MEDIUM
+         * @tc.type      : Functional
+         * @tc.level     : Level 0
+         */
+        it('SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0800', 0, async function (done) {
+            const RGB_565 = image.PixelMapFormat.RGB_565;
+            const RGBA_8888 = image.PixelMapFormat.RGBA_8888;
+            const BGRA_8888 = image.PixelMapFormat.BGRA_8888;
+            const RGB_888 = image.PixelMapFormat.RGB_888;
+            const ALPHA_8 = image.PixelMapFormat.ALPHA_8;
+            const RGBA_F16 = image.PixelMapFormat.RGBA_F16;
+            const NV21 = image.PixelMapFormat.NV21;
+            const NV12 = image.PixelMapFormat.NV12;
+        
+            const gPixelFormat = new Map([
+                [RGB_565, "PixelFormat::RGB_565"],
+                [RGBA_8888, "PixelFormat::RGBA_8888"],
+                [BGRA_8888, "PixelFormat::BGRA_8888"],
+                [RGB_888, "PixelFormat::RGB_888"],
+                [ALPHA_8, "PixelFormat::ALPHA_8"],
+                [RGBA_F16, "PixelFormat::RGBA_F16"],
+                [NV21, "PixelFormat::NV21"],
+                [NV12, "PixelFormat::NV12"]
+            ]);
+
+            let options = {
+                editable: true,
+                srcPixelFormat : image.PixelMapFormat.UNKNOWN,
+                pixelFormat: image.PixelMapFormat.UNKNOWN,
+                alphaType :image.AlphaType.OPAQUE,
+                size: {
+                    height: 3,
+                    width: 2
+                }
+            };
+
+            // NV12 to others
+            options.srcPixelFormat = NV12;
+            for (let item of gPixelFormat.keys()) {
+                let buffer = new Uint8Array(12);
+                let yLen = options.size.width * options.size.height;  // yLen is 6
+                let w = (options.size.width % 2 == 0) ? (options.size.width) : (options.size.width + 1);
+                let h = (options.size.height % 2 == 0) ? (options.size.height) : (options.size.height + 1);
+                let uvLen = w * h / 2;    // uvLen is 4
+                for (let i = 0; i < yLen; i++) {
+                    buffer[i] = 0xAA;
+                }
+                for (let i = yLen; i < yLen + uvLen; i += 2) {
+                    buffer[i] = 0x50;
+                    buffer[i + 1] = 0x62;
+                }
+                let colorlength = yLen + uvLen;
+                const color = new ArrayBuffer(colorlength);
+                buffer = new Uint8Array(color);
+                options.pixelFormat = item;
+                let pixelMap1 = image.createPixelMap(color,options);
+                if (pixelMap1 != undefined) {
+                    expect(pixelMap1 != undefined).assertTrue();
+                    console.info("SUB_MULTIMEDIA_IMAGE_PIXELFORMATTOAVPIXELFORMAT_0800 success");
+                    done();
+                }
+            }
         })
     })
 }

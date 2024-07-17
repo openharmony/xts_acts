@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 
 
 export default function StorageProp20Jsunit() {
-  describe('StorageProp20Jsunit', function () {
-    beforeEach(async function (done) {
+  describe('StorageProp20Jsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("StorageProp20Jsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/StorageProp20',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/StorageProp20',
       }
       try {
         router.clear();
@@ -42,40 +42,40 @@ export default function StorageProp20Jsunit() {
       done();
     });
 
-    it('StorageProp20Jsunit_0100', 0, async function (done) {
+    it('StorageProp20Jsunit_0100', 0, async (done: Function) => {
       console.info('[StorageProp20Jsunit_0100] START');
       let strJson1 = getInspectorByKey('text_state');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[StorageProp20Jsunit_0100] obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('State:10');
       console.info('[StorageProp20Jsunit_0100] END');
       done();
     });
 
-    it('StorageProp20Jsunit_0200', 0, async function (done) {
+    it('StorageProp20Jsunit_0200', 0, async (done: Function) => {
       console.info('[StorageProp20Jsunit_0200] START');
       let strJson1 = getInspectorByKey('text_Link');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[StorageProp20Jsunit_0200] obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('Link:10');
       console.info('[StorageProp20Jsunit_0200] END');
       done();
     });
 
-    it('StorageProp20Jsunit_0300', 0, async function (done) {
+    it('StorageProp20Jsunit_0300', 0, async (done: Function) => {
       console.info('[StorageProp20Jsunit_0300] START');
       let strJson1 = getInspectorByKey('text_Prop');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[StorageProp20Jsunit_0300] obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('Prop:10');
       console.info('[StorageProp20Jsunit_0300] END');
       done();
     });
 
-    it('StorageProp20Jsunit_0400', 0, async function (done) {
+    it('StorageProp20Jsunit_0400', 0, async (done: Function) => {
       console.info('[StorageProp20Jsunit_0400] START');
       let strJson1 = getInspectorByKey('text_Provide');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[StorageProp20Jsunit_0400] obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('Provide:10');
       console.info('[StorageProp20Jsunit_0400] END');

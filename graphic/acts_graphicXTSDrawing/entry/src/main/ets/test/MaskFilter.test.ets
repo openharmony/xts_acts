@@ -52,15 +52,18 @@ export default function maskFilterTest() {
 
       try {
         drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, 10);
-        console.info(msg + ' createBlurMaskFilter(drawing.BlurType.OUTER, 10) successed');
+        console.info(msg + ' createBlurMaskFilter successed');
       } catch (e) {
         console.info(msg + ` createBlurMaskFilter errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();
       }
 
       try {
+        drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.NORMAL, 10.5);
+        drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.SOLID, 10.5);
         drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.OUTER, 10.5);
-        console.info(msg + ' createBlurMaskFilter(drawing.BlurType.OUTER, 10.5) successed');
+        drawing.MaskFilter.createBlurMaskFilter(drawing.BlurType.INNER, 10.5);
+        console.info(msg + ' createBlurMaskFilter successed');
       } catch (e) {
         console.info(msg + ` createBlurMaskFilter errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail();

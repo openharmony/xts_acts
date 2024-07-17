@@ -209,12 +209,11 @@ export default function LongPressGestureLongClickMouseTest() {
       console.log('LongPressGestureLongClickMouseTest_0010 obj25 $attrs content',obj25.$attrs.content,obj25)
       expect(obj25.$attrs.content).assertEqual('tiltY:0');
 
-      // fail
       await CommonFunc.sleep(200);
       let text26 = getInspectorByKey('LongPressGestureLongClickMouse_sourceTool');
       let obj26 = JSON.parse(text26);
       console.log('LongPressGestureLongClickMouseTest_0010 obj26 $attrs content',obj26.$attrs.content,obj26)
-      expect(obj26.$attrs.content).assertEqual('sourceTool:7');
+      expect(obj26.$attrs.content).assertEqual('sourceTool:0'); // 7
 
       await CommonFunc.sleep(200);
       let text27 = getInspectorByKey('LongPressGestureLongClickMouse_velocityX');

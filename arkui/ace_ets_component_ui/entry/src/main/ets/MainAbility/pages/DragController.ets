@@ -22,7 +22,7 @@ import image from '@ohos.multimedia.image';
 @Entry
 @Component
 struct DragController1 {
-  @State pixmap: image.PixelMap = null
+  @State pixmap: image.PixelMap|undefined = undefined
 
   @Builder DraggingBuilder() {
     Column() {
@@ -63,14 +63,12 @@ struct DragController1 {
                 extraInfo: "DragItemInfoTest"
               }
               dragController.executeDrag(dragItemInfo, dragInfo)
-                .then(({event, extraParams}) => {
-                  if (event.getResult() == DragResult.DRAG_SUCCESSFUL) {
+                .then(data => {
+                  if (data.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
                     // ...
-                  } else if (event.getResult() == DragResult.DRAG_FAILED) {
+                  } else if (data.event.getResult() == DragResult.DRAG_FAILED) {
                     // ...
                   }
-                })
-                .catch((err) => {
                 })
             })
           }

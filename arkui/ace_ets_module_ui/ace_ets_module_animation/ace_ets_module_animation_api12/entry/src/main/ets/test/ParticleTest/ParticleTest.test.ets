@@ -15,13 +15,26 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from "@ohos.router";
 import CommonFunc from '../../MainAbility/utils/Common';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from "@ohos.UiTest";
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from "@ohos.UiTest";
 
 export default function ParticleTest() {
-  describe("ParticleTest", function () {
-    beforeEach(async function (done) {
+  describe("ParticleTest", () => {
+    beforeEach(async (done: Function) => {
       console.info("ParticleTest beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Particle/Particle",
       }
       try {
@@ -30,7 +43,7 @@ export default function ParticleTest() {
         console.info("get ParticleTest state pages:" + JSON.stringify(pages));
         if (!("Particle" == pages.name)) {
           console.info("get ParticleTest pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push ParticleTest page result:" + JSON.stringify(result));
         }
@@ -40,20 +53,20 @@ export default function ParticleTest() {
       console.info("ParticleTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("ParticleTest after each called");
     });
 
     /**
-     * @tc.number    ParticleTest
-     * @tc.name      testBack
-     * @tc.desc      Return specified page by index value
-     * @tc.level     Level 3
+     * @tc.number ParticleTest
+     * @tc.name testBack
+     * @tc.desc Return specified page by index value
+     * @tc.level Level 3
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it("ParticleTest_001", 0, async function (done) {
+    it("ParticleTest_001", 0, async (done: Function) => {
       console.info("[ParticleTest_001] START");
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -67,7 +80,7 @@ export default function ParticleTest() {
       done();
     });
 
-    it("ParticleTest_002", 0, async function (done) {
+    it("ParticleTest_002", 0, async (done: Function) => {
       console.info("[ParticleTest_002] START");
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -81,7 +94,7 @@ export default function ParticleTest() {
       done();
     });
 
-    it("ParticleTest_003", 0, async function (done) {
+    it("ParticleTest_003", 0, async (done: Function) => {
       console.info("[ParticleTest_003] START");
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -95,7 +108,7 @@ export default function ParticleTest() {
       done();
     });
 
-    it("ParticleTest_004", 0, async function (done) {
+    it("ParticleTest_004", 0, async (done: Function) => {
       console.info("[ParticleTest_004] START");
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();

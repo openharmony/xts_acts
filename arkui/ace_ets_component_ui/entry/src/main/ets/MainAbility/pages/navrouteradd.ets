@@ -24,7 +24,7 @@ struct NavRouterExample {
     Column() {
       Navigation() {
         List({ space: 12, initialIndex: 0 }) {
-          ForEach(this.arr, (item: number, index: number) => {
+          ForEach(this.arr, (item: number, index: number = -1) => {
             ListItem() {
               NavRouter({name:"",param:""}) {
                 Row() {
@@ -55,7 +55,7 @@ struct NavRouterExample {
                 console.info("the mode is " + NavRouteMode.REPLACE);
               }).mode(NavRouteMode.PUSH)
             }
-          }, item => item)
+          }, (item: string) => item)
         }
         .height('100%')
         .margin({ top: 12, left: 12 })

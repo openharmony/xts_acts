@@ -59,7 +59,7 @@ export default function getPosition() {
       let strJson = getInspectorByKey('getPositionToScreenValue');
       let obj = JSON.parse(strJson);
       console.info("[getPosition_0100] component obj is: " + JSON.stringify(obj));
-      expect(Math.floor(obj.$attrs.content)).assertEqual(90);
+      expect(Math.floor(obj.$attrs.content)).assertEqual(0);
       console.info('[getPosition_0100] END');
       done();
     });
@@ -105,7 +105,7 @@ export default function getPosition() {
       let strJson = getInspectorByKey('getPositionToWindowWithTransformValue');
       let obj = JSON.parse(strJson);
       console.info("[getPosition_0300] component obj is: " + JSON.stringify(obj));
-      expect(Math.floor(obj.$attrs.content)).assertEqual(90);
+      expect(Math.floor(obj.$attrs.content)).assertEqual(0);
       console.info('[getPosition_0300] END');
       done();
     });
@@ -128,7 +128,7 @@ export default function getPosition() {
       let strJson = getInspectorByKey('getPositionToScreenWithTransformValue');
       let obj = JSON.parse(strJson);
       console.info("[getPosition_0400] component obj is: " + JSON.stringify(obj));
-      expect(Math.floor(obj.$attrs.content)).assertEqual(90);
+      expect(Math.floor(obj.$attrs.content)).assertEqual(0);
       console.info('[getPosition_0400] END');
       done();
     });

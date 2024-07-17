@@ -50,7 +50,7 @@ lite_component("acts_component") {
         "//test/xts/acts/startup_lite/bootstrap_hal:ActsBootstrapTest",
         "//test/xts/acts/xts_lite/device_attest_lite/device_attestStart_hal:ActsDeviceAttestTest",
       ]
-      if (enable_ohos_bundle_manager_service == true) {
+      if (bundle_framework_lite_enable_ohos_bundle_manager_service == true) {
         all_features += [
           "//test/xts/acts/appexecfwk_lite/appexecfwk_hal:ActsBundleMgrTest",
         ]

@@ -17,6 +17,7 @@ group("asset") {
   if (is_standard_system) {
     deps = [
       "asset_js:ActsAssetJSFuncTest",
+      "asset_js_noright:ActsAssetNorightJSFuncTest",
       "asset_ndk:ActsAssetNDKFuncTest",
     ]
   }

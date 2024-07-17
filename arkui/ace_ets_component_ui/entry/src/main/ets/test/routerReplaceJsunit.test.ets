@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import router from '@system.router';
+import router from '@ohos.router';
 import CommonFunc from '../MainAbility/utils/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function routerReplaceJsunit() {
-  describe('routerReplaceJsunit', function () {
-    beforeEach(async function (done) {
+  describe('routerReplaceJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("routerReplaceJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/router/routerReplace',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/router/routerReplace',
       }
       try {
         router.clear();
@@ -40,7 +40,7 @@ export default function routerReplaceJsunit() {
       console.info("routerReplaceJsunit beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("routerReplaceJsunit after each called");
     });
@@ -53,7 +53,7 @@ export default function routerReplaceJsunit() {
      * @tc.type
      * @tc.size
      */
-    it('routerReplaceJsunit_0100', 0, async function (done) {
+    it('routerReplaceJsunit_0100', 0, async (done: Function) => {
       console.info('[routerReplaceJsunit_0100] START');
       await CommonFunc.sleep(1000);
 
@@ -65,7 +65,7 @@ export default function routerReplaceJsunit() {
       await CommonFunc.sleep(2000);
 
       let text = getInspectorByKey('replace_getParams');
-      let Obj = JSON.parse(text);
+      let Obj: ESObject = JSON.parse(text);
       expect(Obj.$attrs.content).assertEqual('router_replaceUrl:undefined');
 
       console.info('[routerReplaceJsunit_0100] END');

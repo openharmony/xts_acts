@@ -14,12 +14,12 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function listSContentTest() {
-  describe('listSContentTest', function () {
-    beforeEach(async function (done) {
+  describe('listSContentTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("listSContent beforeEach start");
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function listSContentTest() {
       console.info("listSContent beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("listSContent after each called");
     });
@@ -50,11 +50,11 @@ export default function listSContentTest() {
      * @tc.size
      */
 
-    it('listSContentTest_0100', 0, async function (done) {
+    it('listSContentTest_0100', 0, async (done: Function) => {
       console.info('[listSContentTest_0100] START');
       await CommonFunc.sleep(2000);
       let json = getInspectorByKey('listTestCon');
-      let Obj1 = JSON.parse(json);
+      let Obj1: ESObject = JSON.parse(json);
       console.info("listTestCon json info " + JSON.stringify(json));
       expect(Obj1.$attrs.contentStartOffset).assertEqual('10.000000');
       expect(Obj1.$attrs.contentEndOffset).assertEqual('10.000000');

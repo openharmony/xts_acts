@@ -82,7 +82,7 @@ export default function ListLanes() {
       let ListItem0 = CommonFunc.getComponentRect('ListItem0');
       let ListItem2 = CommonFunc.getComponentRect('ListItem2');
       await CommonFunc.sleep(1000);
-      expect(Math.round(ListItem2.top - ListItem0.bottom)).assertEqual(Math.round(vp2px(20)));
+	  expect(Math.abs(Math.round(ListItem2.top - ListItem0.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
 
       console.info('[ListLanes_002] END');
       done();
@@ -130,7 +130,7 @@ export default function ListLanes() {
       let ListItem0 = CommonFunc.getComponentRect('ListItem0');
       let ListItem1 = CommonFunc.getComponentRect('ListItem1');
       await CommonFunc.sleep(1000);
-      expect(Math.round(ListItem1.left - ListItem0.right)).assertEqual(Math.round(vp2px(10)));
+	  expect(Math.abs(Math.round(ListItem1.left - ListItem0.right) - Math.round(vp2px(10))) <= 1).assertTrue();
 
       console.info('[ListLanes_008] END');
       done();
@@ -150,8 +150,8 @@ export default function ListLanes() {
       let ListItem0 = CommonFunc.getComponentRect('ListItem0');
       let ListItem1 = CommonFunc.getComponentRect('ListItem1');
       await CommonFunc.sleep(1000);
-      expect(Math.round(ListItem1.left - ListItem0.right)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(ListItem0.left - ListLanes.left)).assertEqual(Math.round(vp2px(20)));
+	  expect(Math.abs(Math.round(ListItem1.left - ListItem0.right) - Math.round(vp2px(10))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(ListItem0.left - ListLanes.left) - Math.round(vp2px(20))) <= 1).assertTrue();
 
       console.info('[ListLanes_008] END');
       done();
@@ -172,8 +172,13 @@ export default function ListLanes() {
       let ListItem1 = CommonFunc.getComponentRect('ListItem1');
       let ColumnKey = CommonFunc.getComponentRect('ColumnKey');
       await CommonFunc.sleep(1000);
-      expect(Math.round(ListItem1.left - ListItem0.right)).assertEqual(Math.round(vp2px(10)));
-      expect(Math.round(ListLanes.top - ColumnKey.top)).assertEqual(Math.round(vp2px(10)));
+      console.log('vp2px(10) is:' +vp2px(10));
+      console.log('ListItem0 rect_value is:' +JSON.stringify(ListItem0));
+      console.log('ListItem1 rect_value is:' +JSON.stringify(ListItem1));
+	  expect(Math.abs(Math.round(ListItem1.left - ListItem0.right) - Math.round(vp2px(10))) <= 1).assertTrue();
+      console.log('ListLanes rect_value is:' +JSON.stringify(ListLanes));
+      console.log('ColumnKey rect_value is:' +JSON.stringify(ColumnKey));
+	  expect(Math.abs(Math.round(ListLanes.top - ColumnKey.top) - Math.round(vp2px(10))) <= 1).assertTrue();
 
       console.info('[ListLanes_010] END');
       done();

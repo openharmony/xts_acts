@@ -57,18 +57,18 @@ export default function listSwipeActionApi12Test() {
       await CommonFunc.sleep(500);
       // swipe the listItem to right
       await driver.swipe(
-        Math.round(globalThis.winLeft + vp2px(50)), Math.round(globalThis.winTop + vp2px(108)), Math.round(globalThis.winLeft + vp2px(300)), Math.round(globalThis.winTop + vp2px(108))
+        Math.round(globalThis.winLeft + vp2px(50)), Math.round(globalThis.winTop + vp2px(108)), Math.round(globalThis.winLeft + vp2px(200)), Math.round(globalThis.winTop + vp2px(108))
       );
       await CommonFunc.sleep(5000);
       let strJson1 = getInspectorByKey('ListTestApi12_2');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       expect(obj1.$attrs.content).assertEqual('160');
       await CommonFunc.sleep(1000);
       let btn1 = await driver.findComponent(ON.id('item0'));
       btn1.click();
       await CommonFunc.sleep(1000);
       let strJson2 = getInspectorByKey('ListTestApi12_2');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       expect(obj2.$attrs.content).assertEqual('0');
       done();
     });

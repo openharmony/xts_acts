@@ -15,7 +15,7 @@
 @Entry
 @Component
 struct PopupOptionsExample {
-  @State handlePopup: boolean = false
+  @State handlePopup: boolean = false;
 
   build() {
     Flex({ direction: FlexDirection.Column }) {

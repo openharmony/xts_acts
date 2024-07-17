@@ -22,9 +22,7 @@ struct RichEditorMenuPolicy {
   @State end: number = -1;
   @State message: string = "[-1, -1]"
   @State radius: number = 0
-  @State menuPolicyOptions: number[] = [0, 1, 2]
-  @State menuPolicyOptionStr: string[] = ['DEFAULT', 'HIDE', 'SHOW']
-  @State index: number = 0
+  @State policy: number = 0
   @State count: number = 0
 
   build() {
@@ -47,7 +45,7 @@ struct RichEditorMenuPolicy {
                   onLongPress: () => {
                     console.info("onLongPress测试")
                     this.controller.setSelection(this.start, this.end, {
-                      menuPolicy: this.menuPolicyOptions[this.index]
+                      menuPolicy: this.policy
                     })
                   }
                 }
@@ -56,7 +54,7 @@ struct RichEditorMenuPolicy {
           .borderWidth(1)
           .borderColor(Color.Green)
           .width(400)
-          .height(200)
+          .height(100)
           .borderRadius(this.radius)
       }
       .borderWidth(1)
@@ -66,14 +64,21 @@ struct RichEditorMenuPolicy {
 
       Column() {
         Row({ space: 2 }) {
-          Button('设置menuPolicy属性:' + this.menuPolicyOptionStr[this.index])
-            .id("RichEditorMenuPolicy_" + this.menuPolicyOptionStr[this.index])
+          Button('menuPolicy_DEFAULT')
+            .id("RichEditorMenuPolicy_DEFAULT")
             .onClick(() => {
-            this.index++
-            if (this.index > (this.menuPolicyOptions.length - 1)) {
-              this.index = 0
-            }
-          })
+              this.policy = 0;
+            }).width("30%")
+          Button('menuPolicy_HIDE')
+            .id("RichEditorMenuPolicy_HIDE")
+            .onClick(() => {
+              this.policy = 1;
+            }).width("30%")
+          Button('menuPolicy_SHOW')
+            .id("RichEditorMenuPolicy_SHOW")
+            .onClick(() => {
+              this.policy = 2;
+            }).width("30%")
         }
       }
       .justifyContent(FlexAlign.Center)

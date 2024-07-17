@@ -12,7 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- import {MessageManager,Callback} from '../utils/MessageManager';
+import {MessageManager,Callback} from '../utils/MessageManager';
+
+type Message = string|number|TextCase|TextDecorationType
+
 @Entry
 @Component
 struct SpanExample {
@@ -24,35 +27,35 @@ struct SpanExample {
   @State type:TextDecorationType = TextDecorationType.Underline;
   @State color:string  = '#FFCCEE';
 
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
 
   onPageShow() {
     console.info('span onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'click') {
-          this.message1 = message.value
+          this.message1 = message.value as string
       }
       if (message.name == 'content') {
-          this.content = message.value
+          this.content = message.value as string
       }
       if (message.name == 'fontSize') {
-          this.fontSize = message.value
+          this.fontSize = message.value as number
       }
       if (message.name == 'textCase') {
-          this.textCase = message.value
+          this.textCase = message.value as TextCase
       }
       if (message.name == 'letterSpacing') {
-          this.letterSpacing = message.value
+          this.letterSpacing = message.value as number
       }
       if (message.name == 'type') {
-          this.type = message.value
+          this.type = message.value as TextDecorationType
       }
       if (message.name == 'color') {
-          this.color = message.value
+          this.color = message.value as string
       }
     }
     this.messageManager.registerCallback(callback)

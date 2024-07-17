@@ -15,7 +15,7 @@
 @Entry
 @Component
 struct PopupOptionsTrueExample {
-  @State handlePopup: boolean = false
+  @State handlePopup: boolean = false;
 
   build() {
     Column() {

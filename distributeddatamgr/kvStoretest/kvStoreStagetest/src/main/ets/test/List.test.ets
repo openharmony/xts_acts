@@ -13,28 +13,28 @@
 * limitations under the License.
 */
 
-import deviceKvStoreCallbackTest from './DeviceKvStoreCallbackStage.test';
-import deviceKvStorePromiseTest from './DeviceKvStorePromiseStage.test';
-import kvManagerPromiseTest from './KvManagerPromiseStage.test';
-import singleKvStorePromiseTest from './SingleKvStorePromiseStage.test';
-import singleKvStoreCallbackTest from './SingleKvStoreCallbackStage.test';
-import kvStoreResultSetTest from './KvStoreResultSetStage.test';
-import queryTest from './QueryStage.test';
-import fieldNodeTest from './FieldNodeStage.test';
-import schemaTest from './SchemaStage.test';
-import singleKvStoreEnumTest from './SingleKvStoreEnumStage.test';
-import kvManagerCallbackTest from './KvManagerCallbackStage.test'
+import deviceKvStoreCallbackStageTest from './DeviceKvStoreCallbackStage.test';
+import deviceKvStorePromiseStageTest from './DeviceKvStorePromiseStage.test';
+import kvManagerPromiseStageTest from './KvManagerPromiseStage.test';
+import singleKvStorePromiseStageTest from './SingleKvStorePromiseStage.test';
+import singleKvStoreCallbackStageTest from './SingleKvStoreCallbackStage.test';
+import kvStoreResultSetStageTest from './KvStoreResultSetStage.test';
+import queryStageTest from './QueryStage.test';
+import fieldNodeStageTest from './FieldNodeStage.test';
+import schemaStageTest from './SchemaStage.test';
+import singleKvStoreEnumStageTest from './SingleKvStoreEnumStage.test';
+import kvManagerCallbackStageTest from './KvManagerCallbackStage.test'
 
 export default function testsuite() {
-  deviceKvStoreCallbackTest();
-  deviceKvStorePromiseTest();
-  kvManagerPromiseTest();
-  singleKvStorePromiseTest();
-  singleKvStoreCallbackTest();
-  kvStoreResultSetTest();
-  queryTest();
-  fieldNodeTest();
-  schemaTest();
-  singleKvStoreEnumTest();
-  kvManagerCallbackTest();
+  deviceKvStoreCallbackStageTest();
+  deviceKvStorePromiseStageTest();
+  kvManagerPromiseStageTest();
+  singleKvStorePromiseStageTest();
+  singleKvStoreCallbackStageTest();
+  kvStoreResultSetStageTest();
+  queryStageTest();
+  fieldNodeStageTest();
+  schemaStageTest();
+  singleKvStoreEnumStageTest();
+  kvManagerCallbackStageTest();
 }

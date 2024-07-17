@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../utils/MessageManager';
+import { MessageManager, Callback } from '../../utils/MessageManager';
 
 @Entry
 @Component
@@ -21,18 +21,16 @@ struct onMeasureSize3 {
     console.info('onMeasureSize3  onPageShow');
   }
 
-
   build() {
     Column() {
       CustomLayout({ builder: ColumnChildren })
     }.key('onMeasureSize3_Column_1')
   }
-
 }
 
 @Builder
 function ColumnChildren() {
-  Text('S1' )
+  Text('S1')
     .fontSize(30)
     .width(100)
     .height(100)
@@ -40,7 +38,7 @@ function ColumnChildren() {
     .margin(30)
     .key("onMeasureSize3_text_01")
 
-  Text('S2' )
+  Text('S2')
     .fontSize(30)
     .width(100)
     .height(100)
@@ -48,7 +46,7 @@ function ColumnChildren() {
     .padding(30)
     .key("onMeasureSize3_text_02")
 
-  Text('S3' )
+  Text('S3')
     .fontSize(30)
     .width(300)
     .height(300)
@@ -70,11 +68,10 @@ struct CustomLayout {
     height: 0
   };
 
-
   onPlaceChildren(selfLayoutInfo: GeometryInfo, children: Array<Layoutable>, constraint: ConstraintSizeOptions) {
     let startPos = 300;
-    children.forEach((child,child_index) => {
-      if (child_index != 2 ) {
+    children.forEach((child, child_index) => {
+      if (child_index != 2) {
         let pos = startPos - child.measureResult.height;
         child.layout({ x: pos, y: pos })
 
@@ -84,9 +81,14 @@ struct CustomLayout {
 
   onMeasureSize(selfLayoutInfo: GeometryInfo, children: Array<Measurable>, constraint: ConstraintSizeOptions) {
     let size = 100;
-    children.forEach((child,child_index) => {
-      if (child_index != 2 ){
-        let result: MeasureResult = child.measure({ minHeight: size, minWidth: size, maxWidth: size, maxHeight: size })
+    children.forEach((child, child_index) => {
+      if (child_index != 2) {
+        let result: MeasureResult = child.measure({
+          minHeight: size,
+          minWidth: size,
+          maxWidth: size,
+          maxHeight: size
+        })
         size += result.width / 2;
       }
     })

@@ -13,17 +13,30 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
+import router from '@ohos.router';
 import CommonFunc from '../MainAbility/utils/Common';
 
 export default function APIParticleEmitter() {
 
-  describe('APIParticleEmitter', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/APIParticleEmitter',
+  describe('APIParticleEmitter', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/APIParticleEmitter',
       }
       try {
         router.clear();
@@ -31,7 +44,7 @@ export default function APIParticleEmitter() {
         console.info("get APIParticleEmitter state pages: " + JSON.stringify(pages));
         if (!("APIParticleEmitter" == pages.name)) {
           console.info("get APIParticleEmitter state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push APIParticleEmitter success: " + JSON.stringify(result));
         }
@@ -42,22 +55,20 @@ export default function APIParticleEmitter() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("APIParticleEmitter after each called");
     });
 
     /**
-     * @tc.number    api
-     * @tc.name      APIParticleEmitter_0100
-     * @tc.desc      APIParticleEmitter_0100
-     * @tc.level:    Level 2
+     * @tc.number api
+     * @tc.name APIParticleEmitter_0100
+     * @tc.desc APIParticleEmitter_0100
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-
-
-    it('APIParticleEmitter_0100', 0, async function (done) {
+    it('APIParticleEmitter_0100', 0, async (done: Function) => {
       console.info('APIParticleEmitter_0100 START');
 
       await CommonFunc.sleep(1000);
@@ -67,16 +78,10 @@ export default function APIParticleEmitter() {
       await create.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('APIParticleEmitter_Text01');
-      let obj = JSON.parse(strJson);
-      console.info("[APIParticleEmitter_0100] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('0');
+      console.info("[APIParticleEmitter_0100] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('0');
       console.info('[APIParticleEmitter_0100] END');
       done();
     });
-
-
-
-
-
   })
 }

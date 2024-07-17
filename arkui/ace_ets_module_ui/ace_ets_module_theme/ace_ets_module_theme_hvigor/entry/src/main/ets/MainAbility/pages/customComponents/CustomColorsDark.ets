@@ -32,6 +32,7 @@ export struct  CustomColorsDark {
   @State data: DataClass[] = [];
 
   onWillApplyTheme(theme: Theme) {
+    customButtonDarkTheme = theme;
     setBaseTokens(this.data, theme);
     setFontData(this.data, theme);
     setIconData(this.data, theme);

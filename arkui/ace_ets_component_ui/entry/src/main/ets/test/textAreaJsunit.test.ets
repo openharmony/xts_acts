@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, MouseButton} from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../MainAbility/utils/MessageManager';
 const waitUiReadyMs = 1000;
 
 export default function textAreaJsunit() {
-  describe('textAreaJsunit', function () {
-    beforeEach(async function (done) {
+  describe('textAreaJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("textAreaJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/textArea',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/textArea',
       }
       try {
         router.clear();
@@ -42,12 +42,12 @@ export default function textAreaJsunit() {
       done();
     });
 
-    it('textAreaJsunit_0100', 0, async function (done) {
+    it('textAreaJsunit_0100', 0, async (done: Function) => {
        console.info('textAreaJsunit_0100');
        await CommonFunc.sleep(1000);
        // get the textArea component and test attribute
        let strJson = getInspectorByKey('textArea');
-       let obj = JSON.parse(strJson);
+       let obj: ESObject = JSON.parse(strJson);
        console.info('textAreaJsunit_0100 component obj is: ' + obj.$attrs.placeholderFont + "---" + obj.$attrs.text + "--" + obj.$attrs.placeholderColor + "--" + obj.$attrs.placeholder
        + "--" + obj.$attrs.textAlign + "--" + obj.$attrs.caretColor + "--" + obj.$attrs.fontSize + "--" + obj.$attrs.inputFilter + "--" + obj.$attrs.copyOption);
        expect(obj.$attrs.placeholderFont).assertEqual('{"style":"FontStyle.Normal","size":"16.00fp","weight":"400","fontFamily":"sans-serif"}');
@@ -61,7 +61,7 @@ export default function textAreaJsunit() {
        done();
     });
 
-   it('textAreaJsunit_0200', 0, async function (done) {
+   it('textAreaJsunit_0200', 0, async (done: Function) => {
       console.info('textAreaJsunit_0200 START');
       // modify the type attribute normal value of textArea dynamically
       globalThis.value.message.notify({name:'sizeT',value:20})
@@ -70,13 +70,13 @@ export default function textAreaJsunit() {
       await CommonFunc.sleep(2000);
       // check the value of changed parameter
       let strJson = getInspectorByKey('textArea');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('textAreaJsunit_0200 component obj is: ' + obj.$attrs.placeholderFont);
       expect(obj.$attrs.placeholderFont).assertEqual('{"style":"FontStyle.Normal","size":"20.00fp","weight":"300","fontFamily":"sans-serif"}');
       done();
     });
 
-    it('textAreaJsunit_0300', 0, async function (done) {
+    it('textAreaJsunit_0300', 0, async (done: Function) => {
       console.info('marqueeJsunit_0300 START');
       await CommonFunc.sleep(1000);
       // modify the type attribute illegal value of textArea dynamically
@@ -86,13 +86,13 @@ export default function textAreaJsunit() {
       await CommonFunc.sleep(200);
       // check the value of changed parameter
       let strJson = getInspectorByKey('textArea');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('textAreaJsunit_0300 component obj is: ' + obj.$attrs.placeholderFont);
       expect(obj.$attrs.placeholderFont).assertEqual('{"style":"FontStyle.Normal","size":"-30.00fp","fontWeight":"FontWeight.Normal","fontFamily":"sans-serif"}');
       done();   
    });
    
-    it('textAreaJsunit_0400', 0, async function (done) {
+    it('textAreaJsunit_0400', 0, async (done: Function) => {
       console.info('textAreaJsunit_0400 START');
       // modify the Color attribute normal value of textArea dynamically
       globalThis.value.message.notify({name:'placeholderColor',value:'#FFFFFF'})
@@ -101,14 +101,14 @@ export default function textAreaJsunit() {
       await CommonFunc.sleep(2000);
       // check the value of changed parameter
       let strJson = getInspectorByKey('textArea');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('textAreaJsunit_0400 component obj is: ' + obj.$attrs.placeholderColor + '--' + obj.$attrs.caretColor);
       expect(obj.$attrs.placeholderColor).assertEqual('#FFFFFFFF');
       expect(obj.$attrs.caretColor).assertEqual('#FFEEFFFF');
       done();   
     });
 
-    it('textAreaJsunit_0500', 0, async function (done) {
+    it('textAreaJsunit_0500', 0, async (done: Function) => {
       console.info('textAreaJsunit_0500 START');
       // modify the Color attribute normal value of textArea dynamically
       globalThis.value.message.notify({name:'placeholderColor',value:'rgb(238, 130, 238)'})
@@ -117,14 +117,14 @@ export default function textAreaJsunit() {
       await CommonFunc.sleep(2000);
       // check the value of changed parameter
       let strJson = getInspectorByKey('textArea');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('textAreaJsunit_0500 component obj is: ' + obj.$attrs.placeholderColor + '--' + obj.$attrs.caretColor);
       expect(obj.$attrs.placeholderColor).assertEqual('#FFEE82EE');
       expect(obj.$attrs.caretColor).assertEqual('#FFEE83E9');
       done(); 
     });
 
-    it('textAreaJsunit_0600', 0, async function (done) {
+    it('textAreaJsunit_0600', 0, async (done: Function) => {
       console.info('textAreaJsunit_0600 START');
       // modify the Color attribute normal value of textArea dynamically
       globalThis.value.message.notify({name:'placeholderColor',value:Color.Green})
@@ -133,14 +133,14 @@ export default function textAreaJsunit() {
       await CommonFunc.sleep(2000);
       // check the value of changed parameter
       let strJson = getInspectorByKey('textArea');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('textAreaJsunit_0600 component obj is: ' + obj.$attrs.placeholderColor + '--' + obj.$attrs.caretColor);
       expect(obj.$attrs.placeholderColor).assertEqual('#FF008000');
       expect(obj.$attrs.caretColor).assertEqual('#FFFF0000');
       done(); 
     });
     
-   it('textAreaJsunit_0700', 0, async function (done) {
+   it('textAreaJsunit_0700', 0, async (done: Function) => {
       console.info('textAreaJsunit_0700 START');
       // modify the Color attribute illegal value of textArea dynamically
       globalThis.value.message.notify({name:'placeholderColor',value:'#AED'})
@@ -149,14 +149,14 @@ export default function textAreaJsunit() {
       await CommonFunc.sleep(2000);
       // check the value of changed parameter
       let strJson = getInspectorByKey('textArea');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('textAreaJsunit_0700 component obj is: ' + obj.$attrs.placeholderColor + '--' + obj.$attrs.caretColor);
       expect(obj.$attrs.placeholderColor).assertEqual('#FFAAEEDD');
       expect(obj.$attrs.caretColor).assertEqual('#FFAACCDD');
       done();   
    });
   
-   it('textAreaJsunit_0800', 0, async function (done) {
+   it('textAreaJsunit_0800', 0, async (done: Function) => {
       console.info('textAreaJsunit_0800 START');
       globalThis.value.message.notify({name:'text',value:''})
       await CommonFunc.sleep(1000);
@@ -167,13 +167,13 @@ export default function textAreaJsunit() {
       await text.inputText('123');
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('change');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info('textAreaJsunit_0800 component obj is: ' + obj.$attrs.content);
       expect(obj.$attrs.content).assertEqual('123');
       done();
     });
 
-    it('textAreaJsunit_0900', 0, async function (done) {
+    it('textAreaJsunit_0900', 0, async (done: Function) => {
       console.info('marqueeJsunit_0900 START');
       await CommonFunc.sleep(1000);
       // test the copy event
@@ -218,7 +218,7 @@ export default function textAreaJsunit() {
       done();     
     });
 
-    it('textAreaJsunit_1000', 0, async function (done) {
+    it('textAreaJsunit_1000', 0, async (done: Function) => {
       console.info('textAreaJsunit_1000 START');
       await CommonFunc.sleep(1000);
       // test the cut event

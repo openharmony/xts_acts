@@ -13,10 +13,23 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 import UIAbility from '@ohos.app.ability.UIAbility';
 import window from '@ohos.window';
 import { UIContext } from '@ohos.arkui.UIContext';
@@ -43,22 +56,20 @@ class EntryAbility extends UIAbility {
 }
 
 export default function APIsetDragEventStrictReportingEnabled() {
-  describe('APIsetDragEventStrictReportingEnabled', function () {
-    beforeEach(async function (done) {
+  describe('APIsetDragEventStrictReportingEnabled', () => {
+    beforeEach(async (done: Function) => {
       console.info("APIsetDragEventStrictReportingEnabledTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/MeasureSize/APIsetDragEventStrictReportingEnabled',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/MeasureSize/APIsetDragEventStrictReportingEnabled',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get APIsetDragEventStrictReportingEnabled state pages: " + JSON.stringify(pages));
         if (!("APIsetDragEventStrictReportingEnabled" == pages.name)) {
           console.info("get APIsetDragEventStrictReportingEnabled pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await CommonFunc.sleep(2000);
-          console.info("push APIsetDragEventStrictReportingEnabled page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push APIsetDragEventStrictReportingEnabled page error: " + err);
@@ -67,31 +78,30 @@ export default function APIsetDragEventStrictReportingEnabled() {
       console.info("APIsetDragEventStrictReportingEnabled beforeEach end");
       done()
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("APIsetDragEventStrictReportingEnabled after each called");
     })
 
     /**
      * @tc.number api
-     * @tc.name   APIsetDragEventStrictReportingEnabled_0100
-     * @tc.desc   APIsetDragEventStrictReportingEnabled_0100
-     * @tc.size   APIsetDragEventStrictReportingEnabled
-     * @tc.type   UIContext
-     * @tc.level  2
+     * @tc.name APIsetDragEventStrictReportingEnabled_0100
+     * @tc.desc APIsetDragEventStrictReportingEnabled_0100
+     * @tc.size APIsetDragEventStrictReportingEnabled
+     * @tc.type UIContext
+     * @tc.level 2
      */
-    it('APIsetDragEventStrictReportingEnabled_0100', 0, async function (done) {
+    it('APIsetDragEventStrictReportingEnabled_0100', 0, async (done: Function) => {
       console.info('APIsetDragEventStrictReportingEnabled_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('APIsetDragEventStrictReportingEnabled_Text01');
-      let obj = JSON.parse(strJson);
-      console.info("[APIsetDragEventStrictReportingEnabled_0100] component obj is: " + JSON.stringify(obj), obj.$attrs.content);
-      expect(obj.$attrs.content).assertEqual('APIsetDragEventStrictReportingEnabled');
+      console.info("[APIsetDragEventStrictReportingEnabled_0100] component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)), JSON.parse(strJson)
+        .$attrs
+        .content);
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('APIsetDragEventStrictReportingEnabled');
       console.info('[APIsetDragEventStrictReportingEnabled_0100] END');
       done();
     });
-
-
   })
 }

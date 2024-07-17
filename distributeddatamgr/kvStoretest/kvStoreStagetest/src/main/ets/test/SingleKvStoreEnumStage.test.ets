@@ -16,26 +16,26 @@
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '@ohos/hypium'
 import factory from '@ohos.data.distributedKVStore';
 
-export default function singleKvStoreEnumTest(){
-  describe('singleKvStoreEnumTest', function () {
+export default function singleKvStoreEnumStageTest(){
+  describe('singleKvStoreEnumStageTest', function () {
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_0300
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumEtsApiTest_0300
      * @tc.name [JS-API8]Constants.MAX_KEY_LENGTH
      * @tc.desc Test Js Enum Value Constants.MAX_KEY_LENGTH
      */
-    it('testConstantsMaxKeyLength_001', 0, function () {
+    it('testEtsConstantsMaxKeyLength_001', 0, function () {
       var maxKeyLength = factory.Constants.MAX_KEY_LENGTH;
       console.info('maxKeyLength = ' + maxKeyLength);
       expect(maxKeyLength == 1024).assertTrue()
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_0600
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumEtsApiTest_0600
      * @tc.name [JS-API8]Constants.MAX_VALUE_LENGTH
      * @tc.desc Test Js Enum Value Constants.MAX_VALUE_LENGTH
      */
-    it('testConstantsMaxValueLength_001', 0, function () {
+    it('testEtsConstantsMaxValueLength_001', 0, function () {
       var maxValueLength = factory.Constants.MAX_VALUE_LENGTH;
       console.info('maxValueLength = ' + maxValueLength);
       expect(maxValueLength == 4194303).assertTrue();
@@ -43,11 +43,11 @@ export default function singleKvStoreEnumTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_0700
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumEtsApiTest_0700
      * @tc.name [JS-API8]Constants.MAX_VALUE_LENGTH
      * @tc.desc Test Js Enum Value Constants.MAX_VALUE_LENGTH
      */
-    it('testConstantsMaxValueLength_002', 0, function () {
+    it('testEtsConstantsMaxValueLength_002', 0, function () {
       try {
         factory.Constants.MAX_VALUE_LENGTH = 123;
       } catch (e) {
@@ -57,242 +57,242 @@ export default function singleKvStoreEnumTest(){
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_0200
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumEtsApiTest_0200
      * @tc.name [JS-API8]Constants.MAX_KEY_LENGTH_DEVICE
      * @tc.desc Test Js Enum Value Constants.MAX_KEY_LENGTH_DEVICE
      */
-    it('testConstantsMaxKeyLengthDevice_001', 0, function () {
+    it('testEtsConstantsMaxKeyLengthDevice_001', 0, function () {
       var maxKeyLengthDevice = factory.Constants.MAX_KEY_LENGTH_DEVICE;
       console.info('maxKeyLengthDevice = ' + maxKeyLengthDevice);
       expect(maxKeyLengthDevice == 896).assertTrue()
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_0500
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumEtsApiTest_0500
      * @tc.name [JS-API8]Constants.MAX_STORE_ID_LENGTH
      * @tc.desc Test Js Enum Value Constants.MAX_STORE_ID_LENGTH
      */
-    it('testConstantsMaxStoreIdLength_001', 0, function () {
+    it('testEtsConstantsMaxStoreIdLength_001', 0, function () {
       var maxStoreIdLength = factory.Constants.MAX_STORE_ID_LENGTH;
       console.info('maxStoreIdLength = ' + maxStoreIdLength);
       expect(maxStoreIdLength == 128).assertTrue()
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_0400
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumEtsApiTest_0400
      * @tc.name [JS-API8]Constants.MAX_QUERY_LENGTH
      * @tc.desc Test Js Enum Value Constants.MAX_QUERY_LENGTH
      */
-    it('testConstantsMaxQueryLength_001', 0, function () {
+    it('testEtsConstantsMaxQueryLength_001', 0, function () {
       var maxQueryLength = factory.Constants.MAX_QUERY_LENGTH;
       console.info('maxQueryLength = ' + maxQueryLength);
       expect(maxQueryLength == 512000).assertTrue()
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_0100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumEtsApiTest_0100
      * @tc.name [JS-API8]Constants.MAX_BATCH_SIZE
      * @tc.desc Test Js Enum Value Constants.MAX_BATCH_SIZE
      */
-    it('testConstantsMaxBatchSize_001', 0, function () {
+    it('testEtsConstantsMaxBatchSize_001', 0, function () {
       var maxBatchSize = factory.Constants.MAX_BATCH_SIZE;
       console.info('maxBatchSize = ' + maxBatchSize);
       expect(maxBatchSize == 128).assertTrue()
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_2900
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumEtsApiTest_2900
      * @tc.name [JS-API8]Valuetype.STRING
      * @tc.desc Test Js Enum Value Valuetype.STRING
      */
-    it('testValuetypeString_001', 0, function () {
+    it('testEtsValuetypeString_001', 0, function () {
       var string = factory.ValueType.STRING;
       console.info('string = ' + string);
       expect(string == 0).assertTrue()
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_2800
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumEtsApiTest_2800
      * @tc.name [JS-API8]Valuetype.INTEGER
      * @tc.desc Test Js Enum Value Valuetype.INTEGER
      */
-    it('testValuetypeInteger_001', 0, function () {
+    it('testEtsValuetypeInteger_001', 0, function () {
       var integer = factory.ValueType.INTEGER;
       console.info('integer = ' + integer);
       expect(integer == 1).assertTrue()
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_2700
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumEtsApiTest_2700
      * @tc.name [JS-API8]Valuetype.FLOAT
      * @tc.desc Test Js Enum Value Valuetype.FLOAT
      */
-    it('testValuetypeFloat_001', 0, function () {
+    it('testEtsValuetypeFloat_001', 0, function () {
       var float = factory.ValueType.FLOAT;
       console.info('float = ' + float);
       expect(float == 2).assertTrue()
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_2500
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumEtsApiTest_2500
      * @tc.name [JS-API8]Valuetype.BYTEARRAY
      * @tc.desc Test Js Enum Value Valuetype.BYTEARRAY
      */
-    it('testValuetypeByteArray_001', 0, function () {
+    it('testEtsValuetypeByteArray_001', 0, function () {
       var byteArray = factory.ValueType.BYTE_ARRAY;
       console.info('byteArray = ' + byteArray);
       expect(byteArray == 3).assertTrue()
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_2400
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumEtsApiTest_2400
      * @tc.name [JS-API8]Valuetype.BOOLEAN
      * @tc.desc Test Js Enum Value Valuetype.BOOLEAN
      */
-    it('testValuetypeBoolean_001', 0, function () {
+    it('testEtsValuetypeBoolean_001', 0, function () {
       var boolean = factory.ValueType.BOOLEAN;
       console.info('boolean = ' + boolean);
       expect(boolean == 4).assertTrue()
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_2600
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumEtsApiTest_2600
      * @tc.name [JS-API8]Valuetype.DOUBLE
      * @tc.desc Test Js Enum Value Valuetype.DOUBLE
      */
-    it('testValuetypeDouble_001', 0, function () {
+    it('testEtsValuetypeDouble_001', 0, function () {
       var double = factory.ValueType.DOUBLE;
       console.info('double = ' + double);
       expect(double == 5).assertTrue()
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_2000
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumEtsApiTest_2000
      * @tc.name [JS-API8]Syncmode.PULL_ONLY
      * @tc.desc Test Js Enum Value Syncmode.PULL_ONLY
      */
-    it('testSyncmodePullOnly_001', 0, function () {
+    it('testEtsSyncmodePullOnly_001', 0, function () {
       var pullonly = factory.SyncMode.PULL_ONLY;
       console.info('pullonly = ' + pullonly);
       expect(pullonly == 0).assertTrue()
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_2100
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumEtsApiTest_2100
      * @tc.name [JS-API8]Syncmode.PUSH_ONLY
      * @tc.desc Test Js Enum Value Syncmode.PUSH_ONLY
      */
-    it('testSyncmodePushOnly_001', 0, function () {
+    it('testEtsSyncmodePushOnly_001', 0, function () {
       var pushonly = factory.SyncMode.PUSH_ONLY;
       console.info('pushonly = ' + pushonly);
       expect(pushonly == 1).assertTrue()
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_2200
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumEtsApiTest_2200
      * @tc.name [JS-API8]Syncmode.PUSH_PULL
      * @tc.desc Test Js Enum Value Syncmode.PUSH_PULL
      */
-    it('testSyncmodePushPull_001', 0, function () {
+    it('testEtsSyncmodePushPull_001', 0, function () {
       var pushpull = factory.SyncMode.PUSH_PULL;
       console.info('pushpull = ' + pushpull);
       expect(pushpull == 2).assertTrue()
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_1800
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumEtsApiTest_1800
      * @tc.name [JS-API8]Subscribetype.SUBSCRIBE_TYPE_LOCAL
      * @tc.desc Test Js Enum Value Subscribetype.SUBSCRIBE_TYPE_LOCAL
      */
-    it('testSubscribetypeSubscribeTypeLocal_001', 0, function () {
+    it('testEtsSubscribetypeSubscribeTypeLocal_001', 0, function () {
       var local = factory.SubscribeType.SUBSCRIBE_TYPE_LOCAL;
       console.info('local = ' + local);
       expect(local == 0).assertTrue()
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_1900
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumEtsApiTest_1900
      * @tc.name [JS-API8]Subscribetype.SUBSCRIBE_TYPE_REMOTE
      * @tc.desc Test Js Enum Value Subscribetype.SUBSCRIBE_TYPE_REMOTE
      */
-    it('testSubscribetypeSubscribeTypeRemote_001', 0, function () {
+    it('testEtsSubscribetypeSubscribeTypeRemote_001', 0, function () {
       var remote = factory.SubscribeType.SUBSCRIBE_TYPE_REMOTE;
       console.info('remote = ' + remote);
       expect(remote == 1).assertTrue()
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_1700
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumEtsApiTest_1700
      * @tc.name [JS-API8]Subscribetype.SUBSCRIBE_TYPE_ALL
      * @tc.desc Test Js Enum Value Subscribetype.SUBSCRIBE_TYPE_ALL
      */
-    it('testSubscribetypeSubscribeTypeAll_001', 0, function () {
+    it('testEtsSubscribetypeSubscribeTypeAll_001', 0, function () {
       var all = factory.SubscribeType.SUBSCRIBE_TYPE_ALL;
       console.info('all = ' + all);
       expect(all == 2).assertTrue()
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_0800
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumEtsApiTest_0800
      * @tc.name [JS-API8]Kvstoretype.DEVICE_COLLABORATION
      * @tc.desc Test Js Enum Value Kvstoretype.DEVICE_COLLABORATION
      */
-    it('testKvstoretypeDeviceCollaboration_001', 0, function () {
+    it('testEtsKvstoretypeDeviceCollaboration_001', 0, function () {
       var collaboration = factory.KVStoreType.DEVICE_COLLABORATION;
       console.info('collaboration = ' + collaboration);
       expect(collaboration == 0).assertTrue()
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_1000
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumEtsApiTest_1000
      * @tc.name [JS-API8]Kvstoretype.SINGLE_VERSION
      * @tc.desc Test Js Enum Value Kvstoretype.SINGLE_VERSION
      */
-    it('testKvstoretypeSingleVersion_001', 0, function () {
+    it('testEtsKvstoretypeSingleVersion_001', 0, function () {
       var single = factory.KVStoreType.SINGLE_VERSION;
       console.info('single = ' + single);
       expect(single == 1).assertTrue()
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_1300
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumEtsApiTest_1300
      * @tc.name [JS-API8]Securitylevel.S1
      * @tc.desc Test Js Enum Value Securitylevel.S1
      */
-    it('testSecuritylevelS1_001', 0, function () {
+    it('testEtsSecuritylevelS1_001', 0, function () {
       var s1 = factory.SecurityLevel.S1;
       console.info('s1 = ' + s1);
       expect(s1 == 2).assertTrue()
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_1400
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumEtsApiTest_1400
      * @tc.name [JS-API8]Securitylevel.S2
      * @tc.desc Test Js Enum Value Securitylevel.S2
      */
-    it('testSecuritylevelS2_001', 0, function () {
+    it('testEtsSecuritylevelS2_001', 0, function () {
       var s2 = factory.SecurityLevel.S2;
       console.info('s2 = ' + s2);
       expect(s2 == 3).assertTrue()
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_1500
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumEtsApiTest_1500
      * @tc.name [JS-API8]Securitylevel.S3
      * @tc.desc Test Js Enum Value Securitylevel.S3
      */
-    it('testSecuritylevelS3_001', 0, function () {
+    it('testEtsSecuritylevelS3_001', 0, function () {
       var s3 = factory.SecurityLevel.S3;
       console.info('s3 = ' + s3);
       expect(s3 == 5).assertTrue()
     })
 
     /**
-     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumJsApiTest_1600
+     * @tc.number SUB_DistributedData_KVStore_SDK_KvStoreEnumEtsApiTest_1600
      * @tc.name [JS-API8]Securitylevel.S4
      * @tc.desc Test Js Enum Value Securitylevel.S4
      */
-    it('testSecuritylevelS4_001', 0, function () {
+    it('testEtsSecuritylevelS4_001', 0, function () {
       var s4 = factory.SecurityLevel.S4;
       console.info('s4 = ' + s4);
       expect(s4 == 6).assertTrue()

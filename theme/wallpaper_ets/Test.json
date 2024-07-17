@@ -16,6 +16,12 @@
             "cleanup-apps": true
         },
         {
+            "type": "ShellKit",
+            "run-command": [
+                "target mount"
+            ]
+        },
+        {
             "type": "PushKit",
             "pre-push": [
                 "mount -o rw,remount /",

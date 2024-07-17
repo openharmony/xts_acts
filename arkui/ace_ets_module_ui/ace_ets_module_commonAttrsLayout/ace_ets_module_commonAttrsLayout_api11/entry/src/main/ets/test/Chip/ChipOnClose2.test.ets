@@ -13,18 +13,32 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, MouseButton , WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  MouseButton,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
 
 
 export default function ChipOnClose2() {
-  describe('ChipOnClose2', function () {
-    beforeEach(async function (done) {
+  describe('ChipOnClose2', () => {
+    beforeEach(async (done: Function) => {
       console.info("search_caret beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Chip/ChipOnClose2',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Chip/ChipOnClose2',
       }
       try {
         router.clear();
@@ -32,7 +46,7 @@ export default function ChipOnClose2() {
         console.info("get ChipOnClose2 state pages: " + JSON.stringify(pages));
         if (!("ChipOnClose2" == pages.name)) {
           console.info("get ChipOnClose2 state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push ChipOnClose2 page result: " + JSON.stringify(result));
         }
@@ -49,7 +63,7 @@ export default function ChipOnClose2() {
       * @tc.desc  : set enabled to false and action event test
       * @tc.level : Level 3
       */
-    it('ChipOnClose2_001', 0, async (done:Function)=> {
+    it('ChipOnClose2_001', 0, async (done: Function) => {
 
       console.info('ChipOnClose2_001 START');
       let ChipActionCol = CommonFunc.getComponentRect('ChipOnClose2Col');
@@ -59,15 +73,16 @@ export default function ChipOnClose2() {
       await CommonFunc.sleep(200);
       console.info('ChipOnClose2_001 right：' + right + 'top:' + top);
       let driver = Driver.create();
-      await driver.mouseClick({ x: Math.round(right) , y: Math.round(top) }, MouseButton.MOUSE_BUTTON_LEFT);
+      await driver.mouseClick({
+        x: Math.round(right), y: Math.round(top)
+      }, MouseButton.MOUSE_BUTTON_LEFT);
       await CommonFunc.sleep(1000);
       console.info('ChipOnClose2_001 click success');
 
       let strJson1 = getInspectorByKey('ChipOnClose2');
-      let obj2 = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
       console.info("[ChipOnClose2_001] component obj is: " + JSON.stringify(JSON.parse(strJson1)));
-      expect(obj2.$attrs.content).assertEqual('');
+      expect(JSON.parse(strJson1).$attrs.content).assertEqual('');
       console.info('[ChipOnClose2_001] END');
 
       done();

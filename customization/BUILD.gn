@@ -16,6 +16,9 @@ import("//build/ohos_var.gni")
 group("customization") {
   testonly = true
   if (is_standard_system) {
-    deps = [ "enterprise_device_management:edm_test_grop" ]
+    deps = [
+      "config_policy:ActsConfigPolicyTest",
+      "enterprise_device_management:edm_test_grop",
+    ]
   }
 }

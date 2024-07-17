@@ -16,6 +16,7 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 
 export default function onSelectionChange10() {
   describe('onSelectionChange10', function () {
@@ -49,8 +50,8 @@ export default function onSelectionChange10() {
      * @tc.name      testRichEditor
      * @tc.desc      Determine whether the cursor change triggers onSelectionChange
      * @tc.level     Level 2
-     * @tc.type
-    * @tc.size
+     * @tc.type      Function
+     * @tc.size      MediumTest
      */
     it('onSelectionChange10_0100', 0, async function (done) {
       console.info('[onSelectionChange10_0100] START');
@@ -60,18 +61,20 @@ export default function onSelectionChange10() {
       await CommonFunc.sleep(1000);
 
       let richEditor = await driver.findComponent(ON.id('onSelectionChange10_RichEditor'));
-      await richEditor.longClick();
+      await richEditor.click();
       await CommonFunc.sleep(1000);
+      await richEditor.longClick();
+      await CommonFunc.sleep(2000);
 
       let text1 = getInspectorByKey('onSelectionChange10_text1');
       let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('1');
+      expect(Obj1.$attrs.content).assertEqual('2');
 
       await driver.triggerKey(2017);
       await CommonFunc.sleep(1000);
       let text2 = getInspectorByKey('onSelectionChange10_text1');
       let Obj2 = JSON.parse(text2);
-      expect(Obj2.$attrs.content).assertEqual('3');
+      expect(Obj2.$attrs.content).assertEqual('4');
 
       console.info('[onSelectionChange10_0100] END');
       done();

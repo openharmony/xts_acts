@@ -14,7 +14,7 @@
  * kdslahfahnja fsd skdfsf fsdsdffs
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import router from '@system.router';
+import router from '@ohos.router';
 import {
   Component,
   Driver,
@@ -30,11 +30,11 @@ import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function WaterFlowScrollEdgeCallbackJsunit() {
-  describe('WaterFlowScrollEdgeCallbackTest', function () {
-    beforeEach(async function (done) {
+  describe('WaterFlowScrollEdgeCallbackJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info('text beforeEach start');
-      let options = {
-        uri: 'MainAbility/pages/component/WaterFlowScrollEdgeCallback',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/WaterFlowScrollEdgeCallback',
       }
       try {
         router.clear();
@@ -52,7 +52,7 @@ export default function WaterFlowScrollEdgeCallbackJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info('WaterFlowScrollEdgeCallback after each called');
     });
@@ -65,7 +65,7 @@ export default function WaterFlowScrollEdgeCallbackJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('WaterFlowScrollEdgeCallbackTest_0100', 0, async function (done) {
+    it('WaterFlowScrollEdgeCallbackTest_0100', 0, async (done: Function) => {
       console.info('WaterFlowScrollEdgeCallbackTest_0100 START');
       let driver1 = Driver.create();
       let button = await driver1.findComponent(ON.id('WaterFlowScrollEdgeCallback01'));

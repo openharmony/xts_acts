@@ -20,14 +20,14 @@ struct ListExampleAdd {
   build() {
     Column() {
       List({ space: 20, initialIndex: 0 }) {
-        ForEach(this.arr, (item) => {
+        ForEach(this.arr, (item: number) => {
           ListItem({style:ListItemStyle.CARD}) {
             Text('' + item)
               .width('100%').height(100).fontSize(16)
               .key(''+item)
               .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
           }
-        }, item => item)
+        }, (item: string) => item)
       }
       .listDirection(Axis.Vertical) // 排列方向
       .scrollBar(BarState.Off)

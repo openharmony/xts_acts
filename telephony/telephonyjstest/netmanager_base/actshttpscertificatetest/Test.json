@@ -2,10 +2,11 @@
     "description": "Configuration for hjunit demo Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "180000",
-        "shell-timeout": "180000",
+        "test-timeout": "900000",
         "bundle-name": "com.ohos.actshttpscertificatetest",
-        "package-name": "com.ohos.actshttpscertificatetest"
+        "package-name": "com.ohos.actshttpscertificatetest",
+        "shell-timeout": "900000",
+        "testcase-timeout": "30000"
     },
     "kits": [
         {

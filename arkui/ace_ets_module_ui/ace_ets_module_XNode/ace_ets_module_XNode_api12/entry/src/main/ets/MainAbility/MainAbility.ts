@@ -50,6 +50,20 @@ export default class MainAbility extends Ability {
         return;
       }
       windowClass = data;
+      let isLayoutFullScreen = false;
+      try {
+        windowClass.setWindowLayoutFullScreen(isLayoutFullScreen, (err: BusinessError) => {
+          const errCode: number = err.code;
+          if (errCode) {
+            console.error(`Failed to set the window layout to full-screen mode. Cause code: ${err.code}, message: ${err.message}`);
+            return;
+          }
+          console.info('Succeeded in setting the window layout to full-screen mode.');
+        });
+      } catch (exception) {
+        console.error(`Failed to set the window layout to full-screen mode. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
+
       console.info('Succeeded in obtaining the main window. Data: ' + JSON.stringify(data));
       try {
         let properties : window.WindowProperties = windowClass.getWindowProperties();

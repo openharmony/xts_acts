@@ -76,8 +76,8 @@ struct ListExample {
   private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("edgeEffect page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.edgeEffect != null) {
-        this.edgeEffect = eventData.data.edgeEffect;
+      if (eventData.data?.edgeEffect != null) {
+        this.edgeEffect = eventData.data?.edgeEffect;
       }
     }
   }

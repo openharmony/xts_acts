@@ -18,7 +18,7 @@ struct SheetTransitionExample12 {
   @State isShow:boolean = false
   @State isShow2:boolean = false
   @State sheetHeight:number = 300;
-  @State Height1:number = 10;
+  @State Height1: string = "";
 
   @Builder myBuilder() {
     Column() {
@@ -30,7 +30,7 @@ struct SheetTransitionExample12 {
           this.sheetHeight = 500;
         })
 
-      Button(''+this.Height1 )
+      Button(this.Height1 )
         .id('chaKan')
         .margin(10)
         .fontSize(20)
@@ -61,7 +61,7 @@ struct SheetTransitionExample12 {
           height: this.sheetHeight,
           onHeightDidChange:((value: number)=> {
             console.log("bind sheet shouldDismiss"+ value)
-            this.Height1 = value
+            this.Height1 = "onHeightDidChange success"
           }),
           backgroundColor: Color.Green,
           onWillAppear: () => {console.log("BindSheet onWillAppear.")},

@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../../utils/MessageManager';
+import { MessageManager, Callback } from '../../../utils/MessageManager';
 
 @Entry
 @Component
@@ -25,42 +25,45 @@ struct getListItemGroupRect3 {
   @State indexInGroup: number = 0
   @State x1: number = 0
   @State y1: number = 0
-
   @State x: number = 0
   @State y: number = 0
   @State width1: number = 0
   @State height1: number = 0
 
-  @Builder itemHead(text:string){
+  @Builder
+  itemHead(text: string) {
     Text(text)
       .fontSize(20)
       .backgroundColor(0xAABBCC)
       .width('100%')
       .height(50)
   }
-  @Builder itemFoot(num:number){
-    Text('共' + num + "个")
+
+  @Builder
+  itemFoot(num: number) {
+    Text('共' + num + '个')
       .fontSize(20)
       .backgroundColor(0xAABBCC)
       .width('100%')
       .height(50)
   }
 
-  messageManager:MessageManager = new MessageManager()
+  messageManager: MessageManager = new MessageManager()
+
   onPageShow() {
     console.info('getListItemGroupRect3 onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
+      name: 'messageManager', message: this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback = (message: ESObject) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'index') {
         this.index = message.value;
-      }else if (message.name == 'indexInGroup') {
+      } else if (message.name == 'indexInGroup') {
         this.indexInGroup = message.value;
-      }else if (message.name == 'x1') {
+      } else if (message.name == 'x1') {
         this.x1 = message.value;
-      }else if (message.name == 'y1') {
+      } else if (message.name == 'y1') {
         this.y1 = message.value;
       }
     }
@@ -69,9 +72,9 @@ struct getListItemGroupRect3 {
 
   build() {
     Column() {
-      List({ space: this.space1, initialIndex: 0 ,scroller:this.listScroller}) {
-        ListItemGroup({header:this.itemHead('0'),footer:this.itemFoot(this.arr.length),space:this.space2}){
-          ListItem(){
+      List({ space: this.space1, initialIndex: 0, scroller: this.listScroller }) {
+        ListItemGroup({ header: this.itemHead('0'), footer: this.itemFoot(this.arr.length), space: this.space2 }) {
+          ListItem() {
             Text('listItemGroup0')
               .width('100%')
               .height("100%")
@@ -82,12 +85,12 @@ struct getListItemGroupRect3 {
           }
           .width('100%')
           .height(100)
-          .position({x:this.x1,y:this.y1})
+          .position({ x: this.x1, y: this.y1 })
           .key('getListItemGroupRect3_listItemGroup_0')
 
-          ForEach(this.arr,(item:number) => {
-            ListItem(){
-              Text('listItemGroup'+ item)
+          ForEach(this.arr, (item: number) => {
+            ListItem() {
+              Text('listItemGroup' + item)
                 .width('100%')
                 .height("100%")
                 .fontSize(16)
@@ -110,10 +113,10 @@ struct getListItemGroupRect3 {
       .height(500)
 
       Button('点击获取信息').onClick((event: ClickEvent) => {
-        this.x = this.listScroller.getItemRectInGroup(this.index,this.indexInGroup).x
-        this.y = this.listScroller.getItemRectInGroup(this.index,this.indexInGroup).y
-        this.width1 = this.listScroller.getItemRectInGroup(this.index,this.indexInGroup).width
-        this.height1 = this.listScroller.getItemRectInGroup(this.index,this.indexInGroup).height
+        this.x = this.listScroller.getItemRectInGroup(this.index, this.indexInGroup).x
+        this.y = this.listScroller.getItemRectInGroup(this.index, this.indexInGroup).y
+        this.width1 = this.listScroller.getItemRectInGroup(this.index, this.indexInGroup).width
+        this.height1 = this.listScroller.getItemRectInGroup(this.index, this.indexInGroup).height
       }).id('getListItemGroupRect3_button')
       Text('' + this.x).key('getListItemGroupRect3_text1')
       Text('' + this.y).key('getListItemGroupRect3_text2')

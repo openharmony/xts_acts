@@ -14,6 +14,8 @@
  */
 import {MessageManager,Callback} from '../utils/MessageManager';
 
+type Message = boolean|string|number|InputType|Color|Font|EnterKeyType|CopyOptions|TextAlign
+
 @Entry
 @Component
 struct TextInputPage {
@@ -35,65 +37,65 @@ struct TextInputPage {
   @State onCut: string = ''
   @State onPaste: string = ''
   controller: TextInputController = new TextInputController()
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
 
   onPageShow() {
     console.info('TextInput onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'placeholder') {
-        this.placeholder = message.value
+        this.placeholder = message.value as string
       }
       if (message.name == 'text') {
-        this.text = message.value
+        this.text = message.value as string
       }
       if (message.name == 'type') {
-        this.type = message.value
+        this.type = message.value as InputType
       }
       if (message.name == 'placeholderColor') {
-        this.placeholderColor = message.value
+        this.placeholderColor = message.value as Color
       }
       if (message.name == 'placeholderFont') {
-        this.placeholderFont = message.value
+        this.placeholderFont = message.value as Font
       }
       if (message.name == 'enterKeyType') {
-        this.enterKeyType = message.value
+        this.enterKeyType = message.value as EnterKeyType
       }
       if (message.name == 'caretColor') {
-        this.caretColor = message.value
+        this.caretColor = message.value as Color
       }
       if (message.name == 'maxLength') {
-        this.maxLength = message.value
+        this.maxLength = message.value as number
       }
       if (message.name == 'copyOption') {
-        this.copyOption = message.value
+        this.copyOption = message.value as CopyOptions
       }
       if (message.name == 'showPasswordIcon') {
-        this.showPasswordIcon = message.value
+        this.showPasswordIcon = message.value as boolean
       }
       if (message.name == 'style') {
-        this.style = message.value
+        this.style = message.value as TextInputStyle
       }
       if (message.name == 'textAlign') {
-        this.textAlign = message.value
+        this.textAlign = message.value as TextAlign
       }
       if (message.name == 'onSubmit') {
-        this.onSubmit = message.value
+        this.onSubmit = message.value as string
       }
       if (message.name == 'onEditChange') {
-        this.onEditChange = message.value
+        this.onEditChange = message.value as string
       }
       if (message.name == 'onCopy') {
-        this.onCopy = message.value
+        this.onCopy = message.value as string
       }
       if (message.name == 'onCut') {
-        this.onCut = message.value
+        this.onCut = message.value as string
       }
       if (message.name == 'onPaste') {
-        this.onPaste = message.value
+        this.onPaste = message.value as string
       }
     }
     this.messageManager.registerCallback(callback)

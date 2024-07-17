@@ -47,8 +47,15 @@ export default function PanGestureEventJsunit() {
       // Get the information of the GestureEvent
       console.info('[PanGestureEventJsunit_0100] START');
       let driver = await UiDriver.create()
-      await driver.swipe(200, 400, 400, 400);
       await CommonFunc.sleep(500);
+      let colum = CommonFunc.getComponentRectOnScreen('PanGestureEvent_column_id');
+      let top = colum.top
+      let bottom = colum.bottom
+      let left = colum.left
+      let right = colum.right
+      await driver.swipe(Math.round(left + 100), Math.round((top + bottom) / 2),
+        Math.round(right - 100), Math.round((top + bottom) / 2));
+      await CommonFunc.sleep(2000);
       let textComponent = await driver.findComponent(BY.key('velocityX'));
       let text = await textComponent.getText();
       await CommonFunc.sleep(1000);
@@ -61,8 +68,15 @@ export default function PanGestureEventJsunit() {
       // Get the information of the GestureEvent
       console.info('[PanGestureEventJsunit_0200] START');
       let driver = await UiDriver.create()
-      await driver.swipe(200, 400, 400, 400);
       await CommonFunc.sleep(500);
+      let colum = CommonFunc.getComponentRectOnScreen('PanGestureEvent_column_id');
+      let top = colum.top
+      let bottom = colum.bottom
+      let left = colum.left
+      let right = colum.right
+      await driver.swipe(Math.round(left + 100), Math.round((top + bottom) / 2),
+        Math.round(right - 100), Math.round((top + bottom) / 2));
+      await CommonFunc.sleep(2000);
       let textComponent = await driver.findComponent(BY.key('velocityY'));
       let text = await textComponent.getText();
       await CommonFunc.sleep(1000);
@@ -75,8 +89,15 @@ export default function PanGestureEventJsunit() {
       // Get the information of the GestureEvent
       console.info('[PanGestureEventJsunit_0300] START');
       let driver = await UiDriver.create()
-      await driver.swipe(200, 400, 400, 400);
       await CommonFunc.sleep(500);
+      let colum = CommonFunc.getComponentRectOnScreen('PanGestureEvent_column_id');
+      let top = colum.top
+      let bottom = colum.bottom
+      let left = colum.left
+      let right = colum.right
+      await driver.swipe(Math.round(left + 100), Math.round((top + bottom) / 2),
+        Math.round(right - 100), Math.round((top + bottom) / 2));
+      await CommonFunc.sleep(2000);
        let textComponent = await driver.findComponent(BY.key('velocity'));
       let text = await textComponent.getText();
       await CommonFunc.sleep(1000);

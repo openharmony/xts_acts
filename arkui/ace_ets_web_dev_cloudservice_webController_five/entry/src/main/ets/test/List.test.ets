@@ -13,12 +13,16 @@
  * limitations under the License.
  */
 import webViewSdkSchemeHandler from './webViewSdkSchemeHandler.test';
+import webViewSdkSchemeHandler2 from './webViewSdkSchemeHandler2.test';
 import webViewSetConnectionTimeout from './webViewSetConnectionTimeout.test';
 import webViewGetAndSetRenderProcessMode from './webViewGetAndSetRenderProcessMode.test';
 import webViewOnNavigationEntryCommitted from './webViewOnNavigationEntryCommitted.test';
+import webViewIncognitoMode from './webViewIncognitoMode.test';
 export default function testsuite() {
   webViewSdkSchemeHandler()
   webViewSetConnectionTimeout()
+  webViewSdkSchemeHandler2()
   webViewGetAndSetRenderProcessMode()
   webViewOnNavigationEntryCommitted()
+  webViewIncognitoMode()
 }

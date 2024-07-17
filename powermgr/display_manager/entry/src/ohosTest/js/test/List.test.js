@@ -12,7 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import systemDisplayTest from "./system_display.test"
+import SystemBrightnessTest from "./system_brightness.test.js"
+import BrightnessTest from "./brightness.test.js"
 export default function testsuite() {
-    systemDisplayTest()
+    SystemBrightnessTest()
+    BrightnessTest()
 }

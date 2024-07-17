@@ -15,14 +15,14 @@
 export type Callback = (message: ESObject) => void
 
 export class MessageManager {
-  public callback: Callback
-  public callbacks: Map<string, Callback> = new Map()
+  callback?: Callback = undefined
+  callbacks: Map<string, Callback> = new Map()
 
-  constructor(){
+  constructor() {
 
   }
 
-  registerCallback(callback: Callback, type?: string){
+  registerCallback(callback: Callback, type?: string) {
     if (type == undefined) {
       console.error('registerCallback callback set')
       this.callback = callback
@@ -31,13 +31,15 @@ export class MessageManager {
     this.callbacks.set(type, callback)
   }
 
-  notify(message: ESObject, type?: string){
+  notify(message: ESObject, type?: string) {
     if (type == undefined) {
-      this.callback(message)
+      if (this.callback !== undefined) {
+        this.callback(message)
+      }
       return
     }
 
-    let tmpCallback: Callback = this.callbacks.get(type)
+    let tmpCallback: Callback | undefined = this.callbacks.get(type)
     if (tmpCallback === undefined) {
       console.error('callbacks has no callback for type ' + type)
       return
@@ -45,8 +47,8 @@ export class MessageManager {
     tmpCallback(message)
   }
 
-  clear(){
+  clear() {
     this.callbacks.clear()
-    this.callback = null
+    this.callback = undefined
   }
 }

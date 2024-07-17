@@ -17,12 +17,10 @@ import hilog from '@ohos.hilog';
 import featureAbility from '@ohos.ability.featureAbility';
 import bundle from '@ohos.bundle';
 import commonEvent from '@ohos.commonEvent';
-import CommonEventManager from '@ohos.commonEventManager';
-import { BusinessError } from '@ohos.base';
 
 const Event_FA_DisplayOrientation_1000 = 'Event_FA_DisplayOrientation_1000';
 
-function publishEvent(event: string, value: boolean) {
+function publishEvent(event, value) {
   commonEvent.publish(event,
     {
       parameters: {
@@ -33,13 +31,13 @@ function publishEvent(event: string, value: boolean) {
     })
 }
 
-class Test {
+export default {
   onCreate() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Application onCreate');
-  }
+  },
   onDestroy() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Application onDestroy');
-  }
+  },
   onActive() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Application onActive - sec_ability');
     featureAbility.getWant((error, want) => {

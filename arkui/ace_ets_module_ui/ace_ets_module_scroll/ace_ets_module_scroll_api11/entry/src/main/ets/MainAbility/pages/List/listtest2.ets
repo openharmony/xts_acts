@@ -101,7 +101,7 @@ struct ListIdle {
           .divider({ strokeWidth: 2, color: 0xFFFFFF, startMargin: 20, endMargin: 20 }) // 每行之间的分界线
           .edgeEffect(EdgeEffect.None) // 滑动到边缘无效果
           .chainAnimation(false) // 联动特效关闭
-          .onScroll((scrollOffset: 5, scrollState: ScrollState) => {
+          .onScroll((scrollOffset: number, scrollState: ScrollState) => {
             console.info('scrollOffset' + scrollOffset)
             console.info('scrollState   ' + ScrollState.Scroll)
             console.info('scrollState   ' + ScrollState.Idle)
@@ -121,13 +121,13 @@ struct ListIdle {
               console.info("Scroll start to emit action state")
               events_emitter.emit(backEvent, backData)
             } catch (err) {
-              console.info("Scroll emit action state err: " + JSON.stringify(err.message))
+              console.info("Scroll emit action state err: " + JSON.stringify((err as Error)?.message))
             }
             try {
               this.scroller.scrollPage({ next: true })
               this.onScroll = true
             } catch (err) {
-              console.info("Scroll emit action state err: " + JSON.stringify(err.message))
+              console.info("Scroll emit action state err: " + JSON.stringify((err as Error)?.message))
             }
           })
         }

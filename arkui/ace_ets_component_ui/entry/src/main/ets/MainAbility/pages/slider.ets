@@ -12,9 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- import {MessageManager,Callback} from '../utils/MessageManager';
+import {MessageManager,Callback} from '../utils/MessageManager';
 
-@Entry
+ type Message = boolean|string|number|SliderStyle|Axis
+
+ @Entry
 @Component
 struct SliderExample {
   @State outSetValueOne: number = 40
@@ -40,53 +42,53 @@ struct SliderExample {
   @State trackThickness: string = '10px'
   @State modeT: string = 'mode'
 
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
 
   onPageShow() {
     console.info('slider onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'vInSetValueOne') {
-          this.vInSetValueOne = message.value
+          this.vInSetValueOne = message.value as number
       }
       if (message.name == 'style') {
-          this.style = message.value
+          this.style = message.value as SliderStyle
       }
       if (message.name == 'directionT') {
-          this.directionT = message.value
+          this.directionT = message.value as Axis
       }
       if (message.name == 'reverse') {
-          this.reverse = message.value
+          this.reverse = message.value as boolean
       }
       if (message.name == 'min') {
-          this.min = message.value
+          this.min = message.value as number
       }
       if (message.name == 'max') {
-          this.max = message.value
+          this.max = message.value as number
       }
       if (message.name == 'step') {
-          this.step = message.value
+          this.step = message.value as number
       }
       if (message.name == 'blockColor') {
-          this.blockColor = message.value
+          this.blockColor = message.value as string
       }
       if (message.name == 'trackColor') {
-          this.trackColor = message.value
+          this.trackColor = message.value as string
       }
       if (message.name == 'selectedColor') {
-          this.selectedColor = message.value
+          this.selectedColor = message.value as string
       }
       if (message.name == 'showSteps') {
-          this.showSteps = message.value
+          this.showSteps = message.value as boolean
       }
       if (message.name == 'showTips') {
-          this.showTips = message.value
+          this.showTips = message.value as boolean
       }
       if (message.name == 'trackThickness') {
-          this.trackThickness = message.value
+          this.trackThickness = message.value as string
       }
 
     }

@@ -14,12 +14,12 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/utils/Common';
+import CommonFunc from '../../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function SwiperVisibility() {
-  describe('SwiperVisibility', function () {
-    beforeEach(async function (done) {
+  describe('SwiperVisibility', () => {
+    beforeEach(async (done: Function) => {
       console.info("SwiperVisibility beforeEach start");
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function SwiperVisibility() {
       console.info("SwiperVisibility foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("SwiperLoop after each called");
     });
@@ -50,7 +50,7 @@ export default function SwiperVisibility() {
     * @tc.size
      */
 
-    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0520', 0, async function (done) {
+    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0520', 0, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0520] START');
       await CommonFunc.sleep(2000);
       let bt = CommonFunc.getComponentRect('swiperVisibility');
@@ -64,12 +64,12 @@ export default function SwiperVisibility() {
 
       let driver = await Driver.create();
       await CommonFunc.sleep(1000);
-      driver.swipe(Math.round(btRight), Math.round(btBottom/2), Math.round(btLeft) + 40, Math.round(btBottom/2));
-      await CommonFunc.sleep(3000);
+      driver.swipe(globalThis.winLeft + Math.round(btRight) - Math.round(vp2px(100)), globalThis.winTop + Math.round(btBottom/2), globalThis.winLeft + Math.round(btLeft) + Math.round(vp2px(10)), globalThis.winTop + Math.round(btBottom/2));
+      await CommonFunc.sleep(4800);
 
 
       let strJson = getInspectorByKey('SwiperVisibilityText');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0480] obj is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content=='2').assertTrue();
 

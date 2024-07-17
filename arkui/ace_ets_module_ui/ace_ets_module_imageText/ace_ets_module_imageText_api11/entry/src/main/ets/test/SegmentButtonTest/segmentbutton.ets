@@ -15,6 +15,7 @@
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import router from '@system.router'
 import { Driver, ON } from '@ohos.UiTest'
+import CommonFunc from "../../MainAbility/common/Common";
 
 export default function abilityTest() {
   const SUITE = 'SegmentButton'
@@ -71,6 +72,7 @@ export default function abilityTest() {
       if (await pushItemButton.isClickable()) {
         await pushItemButton.click()
       }
+      await CommonFunc.sleep(2000);
       await driver.assertComponentExist(ON.text('push button'))
       done()
     })
@@ -96,6 +98,7 @@ export default function abilityTest() {
       if (await unShiftItemButton.isClickable()) {
         await unShiftItemButton.click()
       }
+      await CommonFunc.sleep(2000);
       await driver.assertComponentExist(ON.text('unshift button'))
       done()
     })
@@ -116,6 +119,7 @@ export default function abilityTest() {
       if (await spliceItemButton.isClickable()) {
         await spliceItemButton.click()
       }
+      await CommonFunc.sleep(2000);
       await driver.assertComponentExist(ON.text('splice button'))
       done()
     })

@@ -13,8 +13,6 @@
  * limitations under the License.
  */
 import events_emitter from '@ohos.events.emitter';
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
-import { Hypium } from '@ohos/hypium';
 import hilog from '@ohos.hilog';
 
 @Entry
@@ -57,101 +55,97 @@ struct AlphabetIndexerTest {
   @State nullFlag4: boolean = false
   @State nullFlag5: boolean = false
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("sideBar page state change called:" + JSON.stringify(eventData));
     if (eventData != null) {
-      if (eventData.data.popupSelectedColorStr != null) {
-        this.popupSelectedColorStr = eventData.data.popupSelectedColorStr;
+      if (eventData.data?.popupSelectedColorStr != null) {
+        this.popupSelectedColorStr = eventData.data?.popupSelectedColorStr;
       }
-      if (eventData.data.popupUnselectedColorStr != null) {
-        this.popupUnselectedColorStr = eventData.data.popupUnselectedColorStr;
+      if (eventData.data?.popupUnselectedColorStr != null) {
+        this.popupUnselectedColorStr = eventData.data?.popupUnselectedColorStr;
       }
-      if (eventData.data.popupItemBackgroundStr != null) {
-        this.popupItemBackgroundStr = eventData.data.popupItemBackgroundStr;
+      if (eventData.data?.popupItemBackgroundStr != null) {
+        this.popupItemBackgroundStr = eventData.data?.popupItemBackgroundStr;
       }
-      if (eventData.data.popupItemFontSizeStr != null) {
-        this.popupItemFontSizeStr = eventData.data.popupItemFontSizeStr;
+      if (eventData.data?.popupItemFontSizeStr != null) {
+        this.popupItemFontSizeStr = eventData.data?.popupItemFontSizeStr;
       }
-      if (eventData.data.popupItemFontWeightStr != null) {
-        this.popupItemFontWeightStr = eventData.data.popupItemFontWeightStr;
+      if (eventData.data?.popupItemFontWeightStr != null) {
+        this.popupItemFontWeightStr = eventData.data?.popupItemFontWeightStr;
       }
-      if (eventData.data.popupSpaceStr != null) {
-        this.popupSpaceStr = eventData.data.popupSpaceStr;
+      if (eventData.data?.popupSpaceStr != null) {
+        this.popupSpaceStr = eventData.data?.popupSpaceStr;
       }
-      if (eventData.data.popupSelectedColor != null) {
-        this.popupSelectedColor = eventData.data.popupSelectedColor;
+      if (eventData.data?.popupSelectedColor != null) {
+        this.popupSelectedColor = eventData.data?.popupSelectedColor;
       }
-      if (eventData.data.popupUnselectedColor != null) {
-        this.popupUnselectedColor = eventData.data.popupUnselectedColor;
+      if (eventData.data?.popupUnselectedColor != null) {
+        this.popupUnselectedColor = eventData.data?.popupUnselectedColor;
       }
-      if (eventData.data.popupItemBackgroundColor != null) {
-        this.popupItemBackgroundColor = eventData.data.popupItemBackgroundColor;
+      if (eventData.data?.popupItemBackgroundColor != null) {
+        this.popupItemBackgroundColor = eventData.data?.popupItemBackgroundColor;
       }
-      if (eventData.data.popupSelectedColorNum != null) {
-        this.popupSelectedColorNum = eventData.data.popupSelectedColorNum;
+      if (eventData.data?.popupSelectedColorNum != null) {
+        this.popupSelectedColorNum = eventData.data?.popupSelectedColorNum;
       }
 
-      if (eventData.data.popupUnselectedColorNum != null) {
-        this.popupUnselectedColorNum = eventData.data.popupUnselectedColorNum;
+      if (eventData.data?.popupUnselectedColorNum != null) {
+        this.popupUnselectedColorNum = eventData.data?.popupUnselectedColorNum;
       }
-      if (eventData.data.popupItemBackgroundNum != null) {
-        this.popupItemBackgroundNum = eventData.data.popupItemBackgroundNum;
+      if (eventData.data?.popupItemBackgroundNum != null) {
+        this.popupItemBackgroundNum = eventData.data?.popupItemBackgroundNum;
       }
-      if (eventData.data.popupItemFontSizeNum != null) {
-        this.popupItemFontSizeNum = eventData.data.popupItemFontSizeNum;
+      if (eventData.data?.popupItemFontSizeNum != null) {
+        this.popupItemFontSizeNum = eventData.data?.popupItemFontSizeNum;
       }
-      if (eventData.data.popupItemFontWeightStr != null) {
-        this.popupItemFontWeightStr = eventData.data.popupItemFontWeightStr;
+      if (eventData.data?.popupItemFontWeightStr != null) {
+        this.popupItemFontWeightStr = eventData.data?.popupItemFontWeightStr;
       }
-      if (eventData.data.popupSpaceNum != null) {
-        this.popupSpaceNum = eventData.data.popupSpaceNum;
+      if (eventData.data?.popupSpaceNum != null) {
+        this.popupSpaceNum = eventData.data?.popupSpaceNum;
       }
-      if (eventData.data.popupSelectedColorRes != null) {
-        this.popupSelectedColorRes = eventData.data.popupSelectedColorRes;
+      if (eventData.data?.popupSelectedColorRes != null) {
+        this.popupSelectedColorRes = eventData.data?.popupSelectedColorRes;
       }
-      if (eventData.data.popupUnselectedColorRes != null) {
-        this.popupUnselectedColorRes = eventData.data.popupUnselectedColorRes;
+      if (eventData.data?.popupUnselectedColorRes != null) {
+        this.popupUnselectedColorRes = eventData.data?.popupUnselectedColorRes;
       }
-      if (eventData.data.popupItemBackgroundRes != null) {
-        this.popupItemBackgroundRes = eventData.data.popupItemBackgroundRes;
+      if (eventData.data?.popupItemBackgroundRes != null) {
+        this.popupItemBackgroundRes = eventData.data?.popupItemBackgroundRes;
       }
-      if (eventData.data.popupItemFontSizeRes != null) {
-        this.popupItemFontSizeRes = eventData.data.popupItemFontSizeRes;
+      if (eventData.data?.popupItemFontSizeRes != null) {
+        this.popupItemFontSizeRes = eventData.data?.popupItemFontSizeRes;
       }
-      if (eventData.data.popupSpaceRes != null) {
-        this.popupSpaceRes = eventData.data.popupSpaceRes;
+      if (eventData.data?.popupSpaceRes != null) {
+        this.popupSpaceRes = eventData.data?.popupSpaceRes;
       }
-      if (eventData.data.popupItemFontWeightFont != null) {
-        this.popupItemFontWeightFont = eventData.data.popupItemFontWeightFont;
+      if (eventData.data?.popupItemFontWeightFont != null) {
+        this.popupItemFontWeightFont = eventData.data?.popupItemFontWeightFont;
       }
-      if (eventData.data.nullFlag1 != null) {
-        this.nullFlag1 = eventData.data.nullFlag1;
+      if (eventData.data?.nullFlag1 != null) {
+        this.nullFlag1 = eventData.data?.nullFlag1;
       }
-      if (eventData.data.nullFlag2 != null) {
-        this.nullFlag2 = eventData.data.nullFlag2;
+      if (eventData.data?.nullFlag2 != null) {
+        this.nullFlag2 = eventData.data?.nullFlag2;
       }
-      if (eventData.data.nullFlag3 != null) {
-        this.nullFlag3 = eventData.data.nullFlag3;
+      if (eventData.data?.nullFlag3 != null) {
+        this.nullFlag3 = eventData.data?.nullFlag3;
       }
-      if (eventData.data.nullFlag4 != null) {
-        this.nullFlag4 = eventData.data.nullFlag4;
+      if (eventData.data?.nullFlag4 != null) {
+        this.nullFlag4 = eventData.data?.nullFlag4;
       }
-      if (eventData.data.nullFlag5 != null) {
-        this.nullFlag5 = eventData.data.nullFlag5;
+      if (eventData.data?.nullFlag5 != null) {
+        this.nullFlag5 = eventData.data?.nullFlag5;
       }
     }
   }
 
   aboutToAppear() {
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 183,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
-    var abilityDelegator: any
-    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    var abilityDelegatorArguments: any
-    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
     hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
     hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
   }

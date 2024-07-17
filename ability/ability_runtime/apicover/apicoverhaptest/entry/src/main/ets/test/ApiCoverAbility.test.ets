@@ -1091,6 +1091,21 @@ export default function ApiCoverTest() {
         },
         onAbilityContinue:(ability)=>{
            console.log(`${tag} onAbilityContinue success, ability: ${JSON.stringify(ability)}`);
+        },
+        onAbilityWillContinue:(ability)=>{
+           console.log(`${tag} onAbilityWillContinue success, ability: ${JSON.stringify(ability)}`);
+        },
+        onWindowStageWillRestore:(ability, window)=>{
+           console.log(`${tag} onWindowStageWillRestore success, ability: ${JSON.stringify(ability)}`);
+        },
+        onWindowStageRestore:(ability, window)=>{
+           console.log(`${tag} onWindowStageRestore success, ability: ${JSON.stringify(ability)}`);
+        },
+        onAbilityWillSaveState:(ability)=>{
+           console.log(`${tag} onAbilityWillSaveState success, ability: ${JSON.stringify(ability)}`);
+        },
+        onAbilitySaveState:(ability)=>{
+           console.log(`${tag} onAbilitySaveState success, ability: ${JSON.stringify(ability)}`);
         }
       }
       let id = AppStorage.get<common.ApplicationContext>("applicationContext").on('abilityLifecycle', lifeCallback);

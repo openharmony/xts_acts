@@ -10,7 +10,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsManagerJSApiTest.hap"
+                "ActsDeviceManagerJSApiTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

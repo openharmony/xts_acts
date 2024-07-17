@@ -14,17 +14,17 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 export default function TouchTestStrategy() {
-  describe('TouchTestStrategy', function () {
-    beforeEach(async function (done) {
+  describe('TouchTestStrategy', () => {
+    beforeEach(async (done: Function) => {
       console.info("TouchTestStrategy beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Scroll/TouchTestStrategy',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Scroll/TouchTestStrategy',
       }
       try {
         router.clear();
@@ -50,7 +50,7 @@ export default function TouchTestStrategy() {
     * @tc.type :
     * @tc.size :
     */
-    it('TouchTestStrategy_0100', 0, async function (done) {
+    it('TouchTestStrategy_0100', 0, async (done: Function) => {
       console.info('TouchTestStrategy_0100 START');
       await CommonFunc.sleep(1000);
       let gridTop = CommonFunc.getComponentRect('border_TouchStrategy');
@@ -58,10 +58,10 @@ export default function TouchTestStrategy() {
       let gridBottom = CommonFunc.getComponentRect('border_TouchStrategy');
       let bottom = gridBottom.bottom
       let driver = await UiDriver.create()
-      await driver.swipe(150,Math.round(bottom - 10), 200, Math.round(top + 50));
-      await CommonFunc.sleep(1000);
+      await driver.swipe(Math.round(globalThis.winLeft + vp2px(100)),Math.round(globalThis.winTop + bottom - vp2px(6)), Math.round(globalThis.winLeft + vp2px(100)), Math.round(globalThis.winTop + top + vp2px(33)));
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('listText_TouchStrategy');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TouchTestStrategy_0100] component obj is: " + JSON.stringify(obj));
       console.info("[TouchTestStrategy_0100] text: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('Test Text is completely invisible');

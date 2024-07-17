@@ -23,7 +23,7 @@ struct textArea_center {
   @State fontWeight1:number = 400
   controller: TextAreaController = new TextAreaController()
   scroll: Scroller = new Scroller()
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<string>()
 
 
   onPageShow() {

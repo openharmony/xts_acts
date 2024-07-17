@@ -14,16 +14,16 @@
  */
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium';
 import { Driver, ON } from '@ohos.UiTest';
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 
 export default function ListFlingCallbackJsunit() {
-  describe('ListFlingCallbackTest', function () {
-    beforeEach(async function (done) {
+  describe('ListFlingCallbackTest', () => {
+    beforeEach(async (done: Function) => {
       console.info('text beforeEach start');
-      let options = {
-        uri: 'MainAbility/pages/xts/ListFlingCallback',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/xts/ListFlingCallback',
       }
       try {
         router.clear();
@@ -41,7 +41,7 @@ export default function ListFlingCallbackJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info('ListFlingCallback after each called');
     });
@@ -54,14 +54,14 @@ export default function ListFlingCallbackJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ListFlingCallbackTest_0100', 0, async function (done) {
+    it('ListFlingCallbackTest_0100', 0, async (done: Function) => {
       console.info('ListFlingCallbackTest_0100 START');
       let driver1 = Driver.create();
       let button = await driver1.findComponent(ON.id('btn_list_fling_01'));
       await button.click();
       await Utils.sleep(1000);
       let text1 = getInspectorByKey('key_list_fling_text1');
-      let obj = JSON.parse(text1);
+      let obj: ESObject = JSON.parse(text1);
       expect(obj.$attrs.content).assertEqual('1000');
       console.info('ListFlingCallbackTest_0100 END');
       done();
@@ -75,14 +75,14 @@ export default function ListFlingCallbackJsunit() {
      * @tc.type Function
      * @tc.level 0
      */
-    it('ListFlingCallbackTest_0200', 0, async function (done) {
+    it('ListFlingCallbackTest_0200', 0, async (done: Function) => {
       console.info('ListFlingCallbackTest_0200 START');
       let driver1 = Driver.create();
       let button = await driver1.findComponent(ON.id('btn_list_fling_02'));
       await button.click();
       await Utils.sleep(1000);
       let text2 = getInspectorByKey('key_list_fling_text2');
-      let obj = JSON.parse(text2);
+      let obj: ESObject = JSON.parse(text2);
       expect(obj.$attrs.content).assertEqual('-1000');
       console.info('ListFlingCallbackTest_0200 END');
       done();

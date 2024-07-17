@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../MainAbility/utils/MessageManager';
 
 
 export default function RatingJsunit() {
-  describe('RatingJsunit', function () {
-    beforeEach(async function (done) {
+  describe('RatingJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("RatingJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/RatingPage',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/RatingPage',
       }
       try {
         router.clear();
@@ -43,11 +43,11 @@ export default function RatingJsunit() {
       done();
     });
 
-    it('RatingJsunit_0100', 0, async function (done) {
+    it('RatingJsunit_0100', 0, async (done: Function) => {
       // Get the information of the Rating component
       console.info('[RatingJsunit_0100] START');
       let strJson = getInspectorByKey('rating1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RatingJsunit_0100] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.rating).assertEqual('3.500000');
@@ -59,14 +59,14 @@ export default function RatingJsunit() {
       done();
     });
 
-    it('RatingJsunit_0200', 0, async function (done) {
+    it('RatingJsunit_0200', 0, async (done: Function) => {
       // Modify the rating value of the Rating component
       console.info('[RatingJsunit_0200] START');
       globalThis.value.message.notify({name:'rating',value:1})
       await CommonFunc.sleep(2000);
       // Get the rating value of the Rating component
       let strJson = getInspectorByKey('rating1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RatingJsunit_0200] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.rating).assertEqual('1.000000');
       await CommonFunc.sleep(1000);
@@ -74,14 +74,14 @@ export default function RatingJsunit() {
       done();
     });
 
-    it('RatingJsunit_0300', 0, async function (done) {
+    it('RatingJsunit_0300', 0, async (done: Function) => {
       // Modify the indicator value of the Rating component
       console.info('[RatingJsunit_0300] START');
       globalThis.value.message.notify({name:'indicator',value:false})
       await CommonFunc.sleep(2000);
       // Get the indicator value of the Rating component
       let strJson = getInspectorByKey('rating1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RatingJsunit_0300] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.indicator).assertEqual('false');
 
@@ -93,14 +93,14 @@ export default function RatingJsunit() {
 
       // Verify the rating value of the Rating component
       let strJson1 = getInspectorByKey('rating1');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[RatingJsunit_0300] component obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.rating).assertEqual('2.500000');
       console.info('[RatingJsunit_0300] END');
       done();
     });
 
-    it('RatingJsunit_0400', 0, async function (done) {
+    it('RatingJsunit_0400', 0, async (done: Function) => {
       // Modify the stars value of the Rating component
       console.info('[RatingJsunit_0400] START');
       await CommonFunc.sleep(1000);
@@ -108,21 +108,21 @@ export default function RatingJsunit() {
       await CommonFunc.sleep(2000);
       // Get the stars value of the Rating component
       let strJson = getInspectorByKey('rating1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RatingJsunit_0400] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.stars).assertEqual('7');
       console.info('[RatingJsunit_0400] END');
       done();
     });
 
-    it('RatingJsunit_0500', 0, async function (done) {
+    it('RatingJsunit_0500', 0, async (done: Function) => {
       // Modify the stepSize value of the Rating component
       console.info('[RatingJsunit_0500] START');
       globalThis.value.message.notify({name:'stepSize',value:1})
       await CommonFunc.sleep(2000);
       // Get the stepSize value of the Rating component
       let strJson = getInspectorByKey('rating1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RatingJsunit_0500] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.stepSize).assertEqual('1.000000');
       await CommonFunc.sleep(1000);
@@ -130,7 +130,7 @@ export default function RatingJsunit() {
       done();
     });
 
-    it('RatingJsunit_0600', 0, async function (done) {
+    it('RatingJsunit_0600', 0, async (done: Function) => {
       // Verify onChange event of the Rating component
       console.info('[RatingJsunit_0600] START');
       await CommonFunc.sleep(1000);
@@ -148,9 +148,9 @@ export default function RatingJsunit() {
 
       // Get the rating value of the Rating component
       let strJson1 = getInspectorByKey('rating1');
-      let obj = JSON.parse(strJson1);
+      let obj: ESObject = JSON.parse(strJson1);
       console.info("[RatingJsunit_0600] component obj is: " + JSON.stringify(obj));
-      let rating1 = obj.$attrs.rating
+      let rating1: string = obj.$attrs.rating
       console.info("[RatingJsunit_0600] rating1: " + JSON.stringify(rating1));
       
       // Get the component Rating and click
@@ -158,8 +158,8 @@ export default function RatingJsunit() {
       await textComponent.click();
       await CommonFunc.sleep(1000);
       let strJson2 = getInspectorByKey('rating1');
-      let obj2 = JSON.parse(strJson2);
-      let rating2 = obj2.$attrs.rating
+      let obj2: ESObject = JSON.parse(strJson2);
+      let rating2: string = obj2.$attrs.rating
       console.info("[RatingJsunit_0600] rating2: " + JSON.stringify(rating2));
       expect(rating1 == rating2).assertFalse();
 
@@ -171,12 +171,12 @@ export default function RatingJsunit() {
       done();
     });
 
-    it('RatingJsunit_0700', 0, async function (done) {
+    it('RatingJsunit_0700', 0, async (done: Function) => {
       // Get the default value of the Rating component
       console.info('[RatingJsunit_0700] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('rating');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[RatingJsunit_0700] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.rating).assertEqual('0.000000');
       expect(obj.$attrs.indicator).assertEqual('false');

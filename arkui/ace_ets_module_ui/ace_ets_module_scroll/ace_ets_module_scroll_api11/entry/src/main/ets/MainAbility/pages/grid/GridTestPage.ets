@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- //@ts-nocheck
 import events_emitter from '@ohos.events.emitter';
 import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 import { Hypium } from '@ohos/hypium';
@@ -49,8 +48,8 @@ struct GridTestPage {
             .enabled((value1+value2)=='32' 
               || (value1+value2)=='33' ? false : true)
             .key('GridItemStyle_NONE_' + value1 + value2)
-          }, day => day)
-        }, day => day)
+          }, (day: string) => day)
+        }, (day: string) => day)
       }
       .columnsTemplate('1fr 1fr 1fr 1fr')
       .rowsTemplate('1fr 1fr 1fr 1fr')
@@ -80,8 +79,8 @@ struct GridTestPage {
             .enabled((value1+value2)=='32' 
               || (value1+value2)=='33' ? false : true)
             .key('GridItemStyle_PLAIN_' + value1 + value2)
-          }, day => day)
-        }, day => day)
+          }, (day: string) => day)
+        }, (day: string) => day)
       }
       .columnsTemplate('1fr 1fr 1fr 1fr')
       .rowsTemplate('1fr 1fr 1fr 1fr')
@@ -142,8 +141,8 @@ struct GridTestPage {
             .enabled((value1+value2)=='32' 
               || (value1+value2)=='33' ? false : true)
             .key('GridItem_VALUE_NOT_SET_' + value1 + value2)
-          }, day => day)
-        }, day => day)
+          }, (day: string) => day)
+        }, (day: string) => day)
       }
       .columnsTemplate('1fr 1fr 1fr 1fr')
       .rowsTemplate('1fr 1fr 1fr 1fr')

@@ -273,7 +273,7 @@ export default function StreamTest() {
       const test: Function = () => {
         writableStream.write(...[]);
       }
-      expect(test).assertThrowError('The "chunk" argument must be of type string or UintArray');
+      expect(test).assertThrowError("Parameter error. The type of undefined must be string or UintArray");
     });
 
     // Check the StreamWritableWriteError.
@@ -1190,9 +1190,9 @@ export default function StreamTest() {
      * @tc.level: Level 2
      */
     it('testStreamWritableInvalidChunk001', 0, () => {
-      testWriteType(true, 'The "chunk" argument must be of type string or UintArray');
-      testWriteType(undefined, 'The "chunk" argument must be of type string or UintArray');
-      testWriteType(null, 'The "chunk" argument must be of type string or UintArray');
+      testWriteType(true, 'Parameter error. The type of true must be string or UintArray');
+      testWriteType(undefined, 'Parameter error. The type of undefined must be string or UintArray');
+      testWriteType(null, "Parameter error. The type of null must be string or UintArray");
     });
 
     function testWriteType(val, code) {
@@ -1928,7 +1928,7 @@ export default function StreamTest() {
         let readableStream = new stream.Readable();
         readableStream.setEncoding('my invalid encoding')
       }
-      expect(test).assertThrowError('Unknown encoding: my invalid encoding');
+      expect(test).assertThrowError('Parameter error. The type of my invalid encoding must be string.');
     });
 
     // Check the StreamReadableEmitReadableShortStream.
@@ -2987,7 +2987,7 @@ export default function StreamTest() {
       let res = stringdecoder.read();
       expect(res).assertEqual('你好');
     });
-    
+
     // Check the StreamReadablePipe.
     /**
      * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_STREAM_14000

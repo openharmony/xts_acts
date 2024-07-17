@@ -1,0 +1,88 @@
+/*
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+import { describe, it, expect } from '@ohos/hypium'
+import common from '@ohos.app.ability.common'
+
+export default function RequestModalUIExtension() {
+
+  describe('ACTS_RequestModalUIExtension', function () {
+    let TAG = "";
+
+    /*
+     * @tc.number  : ACTS_UIExtension_RequestModalUIExtension001
+     * @tc.name    : test request Modal UIExtension
+     * @tc.desc    : request Modal UIExtension by want
+     */
+    it('ACTS_RequestModalUIExtension001',0, async function (done) {
+      TAG = 'ACTS_UIExtension_RequestModalUIExtension001 == ';
+      console.log(TAG + "begin");
+      try {
+        let want = {
+          bundleName: 'com.example.myapplication',
+          abilityName: 'requestModalUIExtension',
+          moduleName: 'requestModalUIExtension',
+          parameters: {
+            bundleName: 'com.example.myapplication'
+          }
+        };
+        globalThis.abilityContext.requestModalUIExtension(want, (err) => {
+          if (err) {
+            console.error(TAG + "requestModalUIExtension001 fail, err:" + JSON.stringify(err));
+            expect(err.code).assertEqual(202);
+            done();
+          } else {
+            console.log(TAG + "requestModalUIExtension001 success");
+          }
+        });
+      } catch (error) {
+        console.log(TAG + "requestModalUIExtension001 catch fail, err:" + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+
+    /*
+     * @tc.number  : ACTS_UIExtension_RequestModalUIExtension002
+     * @tc.name    : test request Modal UIExtension
+     * @tc.desc    : request Modal UIExtension by want
+     */
+    it('ACTS_RequestModalUIExtension002',0, async function (done) {
+      TAG = 'ACTS_UIExtension_RequestModalUIExtension002 == ';
+      console.log(TAG + "begin");
+      try {
+        let want = {
+          bundleName: 'com.example.myapplication',
+          abilityName: 'requestModalUIExtension',
+          moduleName: 'requestModalUIExtension',
+          parameters: {
+            bundleName: 'com.example.myapplication'
+          }
+        };
+        globalThis.abilityContext.requestModalUIExtension(want).then(() => {
+          console.log(TAG + "requestModalUIExtension002 success");
+        }).catch((err)=> {
+          console.error(TAG + "requestModalUIExtension002 fail, err:" + JSON.stringify(err));
+          expect(err.code).assertEqual(202);
+          done();
+        })
+      } catch (error) {
+        console.log(TAG + "requestModalUIExtension002 catch fail, err:" + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      }
+    })
+  })
+}

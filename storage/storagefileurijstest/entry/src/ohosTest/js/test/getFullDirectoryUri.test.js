@@ -37,8 +37,8 @@ from '@ohos/hypium'
    * @tc.require
    */
   it('fileuri_test_getFullDirectoryUri_async_001', 0, async function () {
-    let fpath = '/data/storage/el2/base/haps/entry/files/fileuri_test_getFullDirectoryUri_async_001';
-    fs.openSync(fpath,fs.OpenMode.CREATE|fs.OpenMode.READ_WAITE);
+    let fpath = '/data/storage/el2/base/haps/fileuri_test_getFullDirectoryUri_async_001';
+    fs.openSync(fpath,fs.OpenMode.CREATE|fs.OpenMode.READ_WRITE);
   
     try {
       let fileUriObject = new fileuri.FileUri(fpath);
@@ -61,7 +61,7 @@ from '@ohos/hypium'
    * @tc.require
    */
   it('fileuri_test_getFullDirectoryUri_async_002', 0, async function () {
-    let dpath = '/data/storage/el2/base/haps/entry/files/fileuri_test_getFullDirectoryUri_async_002';
+    let dpath = '/data/storage/el2/base/haps/fileuri_test_getFullDirectoryUri_async_002';
     fs.mkdirSync(dpath);
   
     try {
@@ -90,7 +90,7 @@ from '@ohos/hypium'
     try {
       let fileUriObject = new fileuri.FileUri(fpath);
       let directoryUri = fileUriObject.getFullDirectoryUri();
-      except(false).assertTrue();
+      expect(false).assertTrue();
     } catch (e) {
       console.log('fileiuri_test_getFullDirectoryUri_async_003 has failed for ' + e);
       expect(e.code == 13900002 && e.message == 'No such file or directory').assertTrue();
@@ -107,8 +107,8 @@ from '@ohos/hypium'
    * @tc.require
    */
   it('fileuri_test_getFullDirectoryUri_async_004', 3, async function () {
-    let fpath = '/data/storage/el2/base/haps/entry/files/fileuri_test_getFullDirectoryUri_async_004';
-    fs.openSync(fpath,fs.OpenMode.CREATE|fs.OpenMode.READ_WAITE);
+    let fpath = '/data/storage/el2/base/haps/fileuri_test_getFullDirectoryUri_async_004';
+    fs.openSync(fpath,fs.OpenMode.CREATE|fs.OpenMode.READ_WRITE);
   
     try {
       let fileUriObject = new fileuri.FileUri(-1);
@@ -130,8 +130,8 @@ from '@ohos/hypium'
    * @tc.require
    */
   it('fileuri_test_getFullDirectoryUri_async_005', 3, async function () {
-    let fpath = '/data/storage/el2/base/haps/entry/files/fileuri_test_getFullDirectoryUri_async_005';
-    fs.openSync(fpath,fs.OpenMode.CREATE|fs.OpenMode.READ_WAITE);
+    let fpath = '/data/storage/el2/base/haps/fileuri_test_getFullDirectoryUri_async_005';
+    fs.openSync(fpath,fs.OpenMode.CREATE|fs.OpenMode.READ_WRITE);
   
     try {
       let fileUriObject = new fileuri.FileUri();

@@ -22,7 +22,7 @@ import { StringContainer, NestedSendableContainer, NullableNestedSendableContain
 import { Nested } from './Nested'
 import { CombinedType } from './SendablesTestImport'
 
-/// TESTS IMPLEMENTATION ///
+// TESTS IMPLEMENTATION //
 
 export function testSendableSimpleDate(): Promise<string> {
   let p = taskpool.execute(testSendableSimpleDateImpl)

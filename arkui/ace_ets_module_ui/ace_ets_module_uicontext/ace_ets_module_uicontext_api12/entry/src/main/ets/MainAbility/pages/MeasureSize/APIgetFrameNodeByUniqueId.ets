@@ -21,7 +21,7 @@ struct APIgetFrameNodeByUniqueId {
     let uniqueId: number = this.getUniqueId();
     let uiContext: UIContext = this.getUIContext();
     if (uiContext) {
-      let node: FrameNode = uiContext.getFrameNodeByUniqueId(uniqueId);
+      let node: FrameNode | null = uiContext.getFrameNodeByUniqueId(uniqueId);
     }
   }
   build(){

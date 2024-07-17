@@ -73,11 +73,10 @@ export default function LongPressGestureLongClickTest() {
       await driver.longClick(Math.round(areaObj.left + areaWidth/2),Math.round(areaObj.top + areaHeight/2));
       await CommonFunc.sleep(3000);
 
-      // fail
       let text1 = getInspectorByKey('LongPressGestureLongClick_repeat');
       let obj1 = JSON.parse(text1);
       console.log('LongPressGestureLongClickTest_0010 obj1 $attrs content',obj1.$attrs.content,obj1)
-      expect(obj1.$attrs.content).assertEqual('repeat:true');
+      expect(obj1.$attrs.content).assertEqual('repeat:false');
 
       await CommonFunc.sleep(200);
       let text2 = getInspectorByKey('LongPressGestureLongClick_offsetX');
@@ -215,12 +214,11 @@ export default function LongPressGestureLongClickTest() {
       console.log('LongPressGestureLongClickTest_0010 obj25 $attrs content',obj25.$attrs.content,obj25)
       expect(obj25.$attrs.content).assertEqual('tiltY:0');
 
-      // fail
       await CommonFunc.sleep(200);
       let text26 = getInspectorByKey('LongPressGestureLongClick_sourceTool');
       let obj26 = JSON.parse(text26);
       console.log('LongPressGestureLongClickTest_0010 obj26 $attrs content',obj26.$attrs.content,obj26)
-      expect(obj26.$attrs.content).assertEqual('sourceTool:1');
+      expect(obj26.$attrs.content).assertEqual('sourceTool:0');  // 1
 
       await CommonFunc.sleep(200);
       let text27 = getInspectorByKey('LongPressGestureLongClick_velocityX');

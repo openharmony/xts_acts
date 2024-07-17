@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../MainAbility/utils/MessageManager';
 
 
 export default function navigationNavbar02() {
-  describe('navigationNavbar02', function () {
-    beforeEach(async function (done) {
+  describe('navigationNavbar02', () => {
+    beforeEach(async (done: Function) => {
       console.info("navigationNavbar02 beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/navigationNavbar02',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/navigationNavbar02',
       }
       try {
         router.clear();
@@ -49,13 +49,13 @@ export default function navigationNavbar02() {
        * @tc.desc  : Set navbarWidth to -2
        * @tc.level : Level 2
        */
-    it('navigationNavbar02_001', 0, async function (done) {
+    it('navigationNavbar02_001', 0, async (done: Function) => {
 
       console.info('[navigationNavbar02_001] START');
       globalThis.value.message.notify({name:'navBarWidth', value: -2 });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('navigationNavbar');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[navigationNavbar02_001] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.navBarWidth).assertEqual('240.00vp');
@@ -69,13 +69,13 @@ export default function navigationNavbar02() {
        * @tc.desc  : Set navbarWidth to 0
        * @tc.level : Level 2
        */
-    it('navigationNavbar02_002', 0, async function (done) {
+    it('navigationNavbar02_002', 0, async (done: Function) => {
 
       console.info('[navigationNavbar02_002] START');
       globalThis.value.message.notify({name:'navBarWidth', value: 0 });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('navigationNavbar');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[navigationNavbar02_002] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.navBarWidth).assertEqual('240.00vp');
@@ -90,13 +90,13 @@ export default function navigationNavbar02() {
        * @tc.desc  : Set navbarWidth to 260
        * @tc.level : Level 2
        */
-    it('navigationNavbar02_003', 0, async function (done) {
+    it('navigationNavbar02_003', 0, async (done: Function) => {
 
       console.info('[navigationNavbar02_003] START');
       globalThis.value.message.notify({name:'navBarWidth', value: 260 });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('navigationNavbar');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[navigationNavbar02_003] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.navBarWidth).assertEqual('260.00vp');
@@ -111,13 +111,13 @@ export default function navigationNavbar02() {
        * @tc.desc  : Set mode to NavigationMode.Stack
        * @tc.level : Level 2
        */
-    it('navigationNavbar02_004', 0, async function (done) {
+    it('navigationNavbar02_004', 0, async (done: Function) => {
 
       console.info('[navigationNavbar02_004] START');
       globalThis.value.message.notify({name:'navModeIndex', value: 1 });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('navigationNavbar');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[navigationNavbar02_004] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.mode).assertEqual('NavigationMode.STACK');
@@ -132,13 +132,13 @@ export default function navigationNavbar02() {
        * @tc.desc  : Set hideNavBar to true
        * @tc.level : Level 2
        */
-    it('navigationNavbar02_005', 0, async function (done) {
+    it('navigationNavbar02_005', 0, async (done: Function) => {
 
       console.info('[navigationNavbar02_005] START');
       globalThis.value.message.notify({name:'hideNavBar', value: true });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('navigationNavbar');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[navigationNavbar02_005] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.hideNavBar).assertEqual(true);
@@ -153,13 +153,13 @@ export default function navigationNavbar02() {
        * @tc.desc  : Set minContentWidth to -2
        * @tc.level : Level 2
        */
-    it('navigationNavbar02_006', 0, async function (done) {
+    it('navigationNavbar02_006', 0, async (done: Function) => {
 
       console.info('[navigationNavbar02_006] START');
       globalThis.value.message.notify({name:'minContentWidth', value: -2 });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('navigationNavbar');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[navigationNavbar02_006] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.minContentWidth).assertEqual('360.00vp');
@@ -174,13 +174,13 @@ export default function navigationNavbar02() {
        * @tc.desc  : Set minContentWidth to 0
        * @tc.level : Level 2
        */
-    // it('navigationNavbar02_007', 0, async function (done) {
+    // it('navigationNavbar02_007', 0, async (done: Function) => {
     //
     //   console.info('[navigationNavbar02_007] START');
     //   globalThis.value.message.notify({name:'minContentWidth', value: 0 });
     //   await CommonFunc.sleep(1000);
     //   let strJson = getInspectorByKey('navigationNavbar');
-    //   let obj = JSON.parse(strJson);
+    //   let obj: ESObject = JSON.parse(strJson);
     //   console.info("[navigationNavbar02_007] component obj is: " + JSON.stringify(obj));
     //   await CommonFunc.sleep(1000);
     //   expect(obj.$attrs.minContentWidth).assertEqual('360.00vp');
@@ -195,13 +195,13 @@ export default function navigationNavbar02() {
        * @tc.desc  : Set minContentWidth to 360
        * @tc.level : Level 2
        */
-    it('navigationNavbar02_008', 0, async function (done) {
+    it('navigationNavbar02_008', 0, async (done: Function) => {
 
       console.info('[navigationNavbar02_008] START');
       globalThis.value.message.notify({name:'minContentWidth', value: 360 });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('navigationNavbar');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[navigationNavbar02_008] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.minContentWidth).assertEqual('360.00vp');
@@ -216,13 +216,13 @@ export default function navigationNavbar02() {
        * @tc.desc  : Set mode to NavigationMode.Split
        * @tc.level : Level 2
        */
-    it('navigationNavbar02_009', 0, async function (done) {
+    it('navigationNavbar02_009', 0, async (done: Function) => {
 
       console.info('[navigationNavbar02_011] START');
       globalThis.value.message.notify({name:'navModeIndex', value: 0 });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('navigationNavbar');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[navigationNavbar02_011] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.mode).assertEqual('NavigationMode.SPLIT');
@@ -237,13 +237,13 @@ export default function navigationNavbar02() {
        * @tc.desc  : Set mode to NavigationMode.Auto
        * @tc.level : Level 2
        */
-    it('navigationNavbar02_010', 0, async function (done) {
+    it('navigationNavbar02_010', 0, async (done: Function) => {
 
       console.info('[navigationNavbar02_012] START');
       globalThis.value.message.notify({name:'navModeIndex', value: 2 });
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('navigationNavbar');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[navigationNavbar02_012] component obj is: " + JSON.stringify(obj));
       await CommonFunc.sleep(1000);
       expect(obj.$attrs.mode).assertEqual('NavigationMode.AUTO');

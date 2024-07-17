@@ -12,9 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+ 
 import formBindingData from '@ohos.app.form.formBindingData';
 import { AddFormMenuItem } from '@ohos.arkui.advanced.FormMenu';
+import hilog from '@ohos.hilog';
 
 @Entry
 @Component
@@ -22,15 +23,6 @@ struct Index {
   @State message: string = 'DEMO';
   @State message2: string = '应用组件加桌';
   @State compId: string = 'add_form';
-  @State compId1: string = 'add_form1';
-  @State compId2: string = 'add_form2';
-  @State textShadows: ShadowOptions | Array<ShadowOptions> =[
-    { radius: 10, color: Color.Red, offsetX: 10, offsetY: 0 },
-    { radius: 10, color: Color.Black, offsetX: 20, offsetY: 0 },
-    { radius: 10, color: Color.Brown, offsetX: 30, offsetY: 0 },
-    { radius: 10, color: Color.Green, offsetX: 40, offsetY: 0 },
-    { radius: 10, color: Color.Yellow, offsetX: 100, offsetY: 0 }
-  ]
 
   @Builder
   MenuBuilder() {
@@ -51,7 +43,7 @@ struct Index {
            }),
            callback:
              (code, formId) => {
-               console.log("AddFormMenuItem success and formId = " + formId + "FormID  " + code + "ReturnCode");
+               hilog.info(0xF811, "JSAPP", "AddFormMenuItemSuccessAndFormId " +formId +"FormID  " +code +"ReturnCode");
              },
            style: {
              options: {
@@ -84,44 +76,9 @@ struct Index {
           .id(this.compId)
           .bindMenu(this.MenuBuilder())
           .margin({ top: 10, left: 10, right: 10, bottom: 50 })
-        Button('组件B')
-          .align(Alignment.Center)
-          .fontSize(20)
-          .fontColor('black')
-          .id(this.compId)
-          .bindMenu(this.MenuBuilder())
-          .margin({ top: 10, left: 10, right: 10, bottom: 50 })
       }
       .width('40%')
-        .height('50%')
-      Column() {
-        TextClock().fontSize(20).textShadow(this.textShadows)
-          .align(Alignment.Center)
-          .margin({ top: 50, left: 10, right: 10, bottom: 50 })
-        Button('组件C')
-          .align(Alignment.Center)
-          .fontSize(20)
-          .fontColor('black')
-          .id(this.compId)
-          .bindContextMenu(this.MenuBuilder(), ResponseType.LongPress)
-          .margin({ top: 10, left: 10, right: 10, bottom: 50 })
-        Button('组件D')
-          .align(Alignment.Center)
-          .fontSize(20)
-          .fontColor('black')
-          .id('buttonPressFour')
-          .bindContextMenu(this.MenuBuilder(), ResponseType.LongPress)
-          .margin({ top: 10, left: 10, right: 10, bottom: 50 })
-        Button('组件E')
-          .align(Alignment.Center)
-          .fontSize(20)
-          .fontColor('black')
-          .id('buttonPressFive')
-          .bindContextMenu(this.MenuBuilder(), ResponseType.LongPress)
-          .margin({ top: 10, left: 10, right: 10, bottom: 50 })
-      }
-      .width('40%')
-        .height('50%')
+      .height('50%')
     }
   }
 }

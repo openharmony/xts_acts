@@ -60,7 +60,7 @@ export default function relativeCTest() {
       let btleft1 = CommonFunc.getComponentRect('row2common');
       let left1 = btleft1.left
       let diff = Math.round(left1 - right)
-      expect(diff + "").assertEqual(vp2px(100)+ "");
+      expect(Math.abs((diff + "") - (vp2px(100)+ "")) <= 1).assertTrue();
       done();
     });
 

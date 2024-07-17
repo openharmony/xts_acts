@@ -13,18 +13,31 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../../MainAbility/utils/MessageManager';
+import { MessageManager, Callback } from '../../../MainAbility/utils/MessageManager';
 
 
 export default function getListItemGroupRect1() {
-  describe('getListItemGroupRect1', function () {
-    beforeEach(async function (done) {
+  describe('getListItemGroupRect1', () => {
+    beforeEach(async (done: Function) => {
       console.info("getListItemGroupRect1 beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/getItemRect/list/getListItemGroupRect1',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/getItemRect/list/getListItemGroupRect1',
       }
       try {
         router.clear();
@@ -32,7 +45,7 @@ export default function getListItemGroupRect1() {
         console.info("get getListItemGroupRect1 state pages: " + JSON.stringify(pages));
         if (!("getListItemGroupRect1" == pages.name)) {
           console.info("get getListItemGroupRect1 state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push getListItemGroupRect1 page result: " + JSON.stringify(result));
         }
@@ -42,7 +55,7 @@ export default function getListItemGroupRect1() {
       }
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
       await CommonFunc.sleep(500);
@@ -58,11 +71,15 @@ export default function getListItemGroupRect1() {
     * @tc.desc  : set index to 0,set indexInGroup to 0
     * @tc.level : Level 2
     */
-    it('getListItemGroupRect1_0100', 0, async function (done) {
+    it('getListItemGroupRect1_0100', 0, async (done: Function) => {
 
       console.info('[getListItemGroupRect1_0100] START');
-      globalThis.value.message.notify({name:'index', value:0});
-      globalThis.value.message.notify({name:'indexInGroup', value:0});
+      globalThis.value.message.notify({
+        name: 'index', value: 0
+      });
+      globalThis.value.message.notify({
+        name: 'indexInGroup', value: 0
+      });
       await CommonFunc.sleep(1000);
 
       console.log('get Initial value')
@@ -84,35 +101,30 @@ export default function getListItemGroupRect1() {
 
       console.log('get text message')
       let strJson1 = getInspectorByKey('getListItemGroupRect1_text1')
-      let obj1 = JSON.parse(strJson1)
-      let x = Number(obj1.$attrs.content)
+      let x = Number(JSON.parse(strJson1).$attrs.content)
       console.log('x' + x)
 
       let strJson2 = getInspectorByKey('getListItemGroupRect1_text2')
-      let obj2 = JSON.parse(strJson2)
-      let y = Number(obj2.$attrs.content)
+      let y = Number(JSON.parse(strJson2).$attrs.content)
       console.log('y' + y)
 
       let strJson3 = getInspectorByKey('getListItemGroupRect1_text3')
-      let obj3 = JSON.parse(strJson3)
-      let width = Number(obj3.$attrs.content)
+      let width = Number(JSON.parse(strJson3).$attrs.content)
       console.log('width' + width)
 
       let strJson4 = getInspectorByKey('getListItemGroupRect1_text4')
-      let obj4 = JSON.parse(strJson4)
-      let height = Number(obj4.$attrs.content)
+      let height = Number(JSON.parse(strJson4).$attrs.content)
       console.log('height' + height)
 
       console.log('assert position')
-      expect(Math.round(x)).assertEqual(Math.round(0));
-
-      expect(Math.round(y)).assertEqual(Math.round(50));
+      expect(Math.abs(Math.round(x) - Math.round(0)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(y) - Math.round(50)) <= 1).assertTrue();
 
       console.log('assert size')
       console.log('listItemGroup_0.right - listItemGroup_0.left' + (listItemGroup_0.right - listItemGroup_0.left))
-      expect(vp2px(Math.round(width))).assertEqual(Math.round(listItemGroup_0.right - listItemGroup_0.left));
+      expect(Math.abs(vp2px(Math.round(width)) - Math.round(listItemGroup_0.right - listItemGroup_0.left)) <= 1).assertTrue();
       console.log('listItemGroup_0.bottom - listItemGroup_0.top' + (listItemGroup_0.bottom - listItemGroup_0.top))
-      expect(vp2px(Math.round(height))).assertEqual(Math.round(listItemGroup_0.bottom - listItemGroup_0.top));
+      expect(Math.abs(vp2px(Math.round(height)) - Math.round(listItemGroup_0.bottom - listItemGroup_0.top)) <= 1).assertTrue();
 
       done();
     });
@@ -123,11 +135,15 @@ export default function getListItemGroupRect1() {
     * @tc.desc  : set index to 0,set indexInGroup to 1
     * @tc.level : Level 2
     */
-    it('getListItemGroupRect1_0200', 0, async function (done) {
+    it('getListItemGroupRect1_0200', 0, async (done: Function) => {
 
       console.info('[getListItemGroupRect1_0200] START');
-      globalThis.value.message.notify({name:'index', value:0});
-      globalThis.value.message.notify({name:'indexInGroup', value:1});
+      globalThis.value.message.notify({
+        name: 'index', value: 0
+      });
+      globalThis.value.message.notify({
+        name: 'indexInGroup', value: 1
+      });
       await CommonFunc.sleep(1000);
 
       console.log('get Initial value')
@@ -149,35 +165,30 @@ export default function getListItemGroupRect1() {
 
       console.log('get text message')
       let strJson1 = getInspectorByKey('getListItemGroupRect1_text1')
-      let obj1 = JSON.parse(strJson1)
-      let x = Number(obj1.$attrs.content)
+      let x = Number(JSON.parse(strJson1).$attrs.content)
       console.log('x' + x)
 
       let strJson2 = getInspectorByKey('getListItemGroupRect1_text2')
-      let obj2 = JSON.parse(strJson2)
-      let y = Number(obj2.$attrs.content)
+      let y = Number(JSON.parse(strJson2).$attrs.content)
       console.log('y' + y)
 
       let strJson3 = getInspectorByKey('getListItemGroupRect1_text3')
-      let obj3 = JSON.parse(strJson3)
-      let width = Number(obj3.$attrs.content)
+      let width = Number(JSON.parse(strJson3).$attrs.content)
       console.log('width' + width)
 
       let strJson4 = getInspectorByKey('getListItemGroupRect1_text4')
-      let obj4 = JSON.parse(strJson4)
-      let height = Number(obj4.$attrs.content)
+      let height = Number(JSON.parse(strJson4).$attrs.content)
       console.log('height' + height)
 
       console.log('assert position')
-      expect(Math.round(x)).assertEqual(Math.round(0));
-
-      expect(Math.round(y)).assertEqual(Math.round(150));
+      expect(Math.abs(Math.round(x) - Math.round(0)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(y) - Math.round(150)) <= 1).assertTrue();
 
       console.log('assert size')
       console.log('listItemGroup_1.right - listItemGroup_1.left' + (listItemGroup_1.right - listItemGroup_1.left))
-      expect(vp2px(Math.round(width))).assertEqual(Math.round(listItemGroup_1.right - listItemGroup_1.left));
+      expect(Math.abs(vp2px(Math.round(width)) - Math.round(listItemGroup_1.right - listItemGroup_1.left)) <= 1).assertTrue();
       console.log('listItemGroup_1.bottom - listItemGroup_1.top' + (listItemGroup_1.bottom - listItemGroup_1.top))
-      expect(vp2px(Math.round(height))).assertEqual(Math.round(listItemGroup_1.bottom - listItemGroup_1.top));
+      expect(Math.abs(vp2px(Math.round(height)) - Math.round(listItemGroup_1.bottom - listItemGroup_1.top)) <= 1).assertTrue();
 
       done();
     });
@@ -188,11 +199,15 @@ export default function getListItemGroupRect1() {
     * @tc.desc  : set index to 0,set indexInGroup to -1
     * @tc.level : Level 2
     */
-    it('getListItemGroupRect1_0300', 0, async function (done) {
+    it('getListItemGroupRect1_0300', 0, async (done: Function) => {
 
       console.info('[getListItemGroupRect1_0300] START');
-      globalThis.value.message.notify({name:'index', value:0});
-      globalThis.value.message.notify({name:'indexInGroup', value:-1});
+      globalThis.value.message.notify({
+        name: 'index', value: 0
+      });
+      globalThis.value.message.notify({
+        name: 'indexInGroup', value: -1
+      });
       await CommonFunc.sleep(1000);
 
       let driver = Driver.create();
@@ -211,32 +226,28 @@ export default function getListItemGroupRect1() {
 
       console.log('get text message')
       let strJson1 = getInspectorByKey('getListItemGroupRect1_text1')
-      let obj1 = JSON.parse(strJson1)
-      let x = Number(obj1.$attrs.content)
+      let x = Number(JSON.parse(strJson1).$attrs.content)
       console.log('x' + x)
 
       let strJson2 = getInspectorByKey('getListItemGroupRect1_text2')
-      let obj2 = JSON.parse(strJson2)
-      let y = Number(obj2.$attrs.content)
+      let y = Number(JSON.parse(strJson2).$attrs.content)
       console.log('y' + y)
 
       let strJson3 = getInspectorByKey('getListItemGroupRect1_text3')
-      let obj3 = JSON.parse(strJson3)
-      let width = Number(obj3.$attrs.content)
+      let width = Number(JSON.parse(strJson3).$attrs.content)
       console.log('width' + width)
 
       let strJson4 = getInspectorByKey('getListItemGroupRect1_text4')
-      let obj4 = JSON.parse(strJson4)
-      let height = Number(obj4.$attrs.content)
+      let height = Number(JSON.parse(strJson4).$attrs.content)
       console.log('height' + height)
 
       console.log('assert position')
-      expect(Math.round(x)).assertEqual(Math.round(0));
-      expect(Math.round(y)).assertEqual(Math.round(0));
+      expect(Math.abs(Math.round(x) - Math.round(0)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(y) - Math.round(0)) <= 1).assertTrue();
 
       console.log('assert size')
-      expect(Math.round(width)).assertEqual(Math.round(0));
-      expect(Math.round(height)).assertEqual(Math.round(0));
+      expect(Math.abs(Math.round(width) - Math.round(0)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(height) - Math.round(0)) <= 1).assertTrue();
 
       done();
     });
@@ -246,11 +257,15 @@ export default function getListItemGroupRect1() {
     * @tc.desc  : set index to 0,set indexInGroup to 0,The first sub component slides out of the screen
     * @tc.level : Level 2
     */
-    it('getListItemGroupRect1_0400', 0, async function (done) {
+    it('getListItemGroupRect1_0400', 0, async (done: Function) => {
 
       console.info('[getListItemGroupRect1_0300] START');
-      globalThis.value.message.notify({name:'index', value:0});
-      globalThis.value.message.notify({name:'indexInGroup', value:0});
+      globalThis.value.message.notify({
+        name: 'index', value: 0
+      });
+      globalThis.value.message.notify({
+        name: 'indexInGroup', value: 0
+      });
       await CommonFunc.sleep(1000);
 
       let driver = Driver.create();
@@ -274,32 +289,28 @@ export default function getListItemGroupRect1() {
 
       console.log('get text message')
       let strJson1 = getInspectorByKey('getListItemGroupRect1_text1')
-      let obj1 = JSON.parse(strJson1)
-      let x = Number(obj1.$attrs.content)
+      let x = Number(JSON.parse(strJson1).$attrs.content)
       console.log('x' + x)
 
       let strJson2 = getInspectorByKey('getListItemGroupRect1_text2')
-      let obj2 = JSON.parse(strJson2)
-      let y = Number(obj2.$attrs.content)
+      let y = Number(JSON.parse(strJson2).$attrs.content)
       console.log('y' + y)
 
       let strJson3 = getInspectorByKey('getListItemGroupRect1_text3')
-      let obj3 = JSON.parse(strJson3)
-      let width = Number(obj3.$attrs.content)
+      let width = Number(JSON.parse(strJson3).$attrs.content)
       console.log('width' + width)
 
       let strJson4 = getInspectorByKey('getListItemGroupRect1_text4')
-      let obj4 = JSON.parse(strJson4)
-      let height = Number(obj4.$attrs.content)
+      let height = Number(JSON.parse(strJson4).$attrs.content)
       console.log('height' + height)
 
       console.log('assert position')
-      expect(Math.round(x)).assertEqual(Math.round(0));
-      expect(Math.round(y)).assertEqual(Math.round(0));
+      expect(Math.abs(Math.round(x) - Math.round(0)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(y) - Math.round(0)) <= 1).assertTrue();
 
       console.log('assert size')
-      expect(Math.round(width)).assertEqual(Math.round(0));
-      expect(Math.round(height)).assertEqual(Math.round(0));
+      expect(Math.abs(Math.round(width) - Math.round(0)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(height) - Math.round(0)) <= 1).assertTrue();
 
       done();
     });
@@ -310,11 +321,15 @@ export default function getListItemGroupRect1() {
     * @tc.desc  : set index to 0,set indexInGroup to 100
     * @tc.level : Level 2
     */
-    it('getListItemGroupRect1_0500', 0, async function (done) {
+    it('getListItemGroupRect1_0500', 0, async (done: Function) => {
 
       console.info('[getListItemGroupRect1_0500] START');
-      globalThis.value.message.notify({name:'index', value:0});
-      globalThis.value.message.notify({name:'indexInGroup', value:100});
+      globalThis.value.message.notify({
+        name: 'index', value: 0
+      });
+      globalThis.value.message.notify({
+        name: 'indexInGroup', value: 100
+      });
       await CommonFunc.sleep(1000);
 
       let driver = Driver.create();
@@ -333,32 +348,28 @@ export default function getListItemGroupRect1() {
 
       console.log('get text message')
       let strJson1 = getInspectorByKey('getListItemGroupRect1_text1')
-      let obj1 = JSON.parse(strJson1)
-      let x = Number(obj1.$attrs.content)
+      let x = Number(JSON.parse(strJson1).$attrs.content)
       console.log('x' + x)
 
       let strJson2 = getInspectorByKey('getListItemGroupRect1_text2')
-      let obj2 = JSON.parse(strJson2)
-      let y = Number(obj2.$attrs.content)
+      let y = Number(JSON.parse(strJson2).$attrs.content)
       console.log('y' + y)
 
       let strJson3 = getInspectorByKey('getListItemGroupRect1_text3')
-      let obj3 = JSON.parse(strJson3)
-      let width = Number(obj3.$attrs.content)
+      let width = Number(JSON.parse(strJson3).$attrs.content)
       console.log('width' + width)
 
       let strJson4 = getInspectorByKey('getListItemGroupRect1_text4')
-      let obj4 = JSON.parse(strJson4)
-      let height = Number(obj4.$attrs.content)
+      let height = Number(JSON.parse(strJson4).$attrs.content)
       console.log('height' + height)
 
       console.log('assert position')
-      expect(Math.round(x)).assertEqual(Math.round(0));
-      expect(Math.round(y)).assertEqual(Math.round(0));
+      expect(Math.abs(Math.round(x) - Math.round(0)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(y) - Math.round(0)) <= 1).assertTrue();
 
       console.log('assert size')
-      expect(Math.round(width)).assertEqual(Math.round(0));
-      expect(Math.round(height)).assertEqual(Math.round(0));
+      expect(Math.abs(Math.round(width) - Math.round(0)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(height) - Math.round(0)) <= 1).assertTrue();
 
       done();
     });
@@ -369,11 +380,15 @@ export default function getListItemGroupRect1() {
     * @tc.desc  : set index to 1,set indexInGroup to 0
     * @tc.level : Level 2
     */
-    it('getListItemGroupRect1_0600', 0, async function (done) {
+    it('getListItemGroupRect1_0600', 0, async (done: Function) => {
 
       console.info('[getListItemGroupRect1_0600] START');
-      globalThis.value.message.notify({name:'index', value:1});
-      globalThis.value.message.notify({name:'indexInGroup', value:0});
+      globalThis.value.message.notify({
+        name: 'index', value: 1
+      });
+      globalThis.value.message.notify({
+        name: 'indexInGroup', value: 0
+      });
       await CommonFunc.sleep(1000);
 
       let driver = Driver.create();
@@ -392,32 +407,28 @@ export default function getListItemGroupRect1() {
 
       console.log('get text message')
       let strJson1 = getInspectorByKey('getListItemGroupRect1_text1')
-      let obj1 = JSON.parse(strJson1)
-      let x = Number(obj1.$attrs.content)
+      let x = Number(JSON.parse(strJson1).$attrs.content)
       console.log('x' + x)
 
       let strJson2 = getInspectorByKey('getListItemGroupRect1_text2')
-      let obj2 = JSON.parse(strJson2)
-      let y = Number(obj2.$attrs.content)
+      let y = Number(JSON.parse(strJson2).$attrs.content)
       console.log('y' + y)
 
       let strJson3 = getInspectorByKey('getListItemGroupRect1_text3')
-      let obj3 = JSON.parse(strJson3)
-      let width = Number(obj3.$attrs.content)
+      let width = Number(JSON.parse(strJson3).$attrs.content)
       console.log('width' + width)
 
       let strJson4 = getInspectorByKey('getListItemGroupRect1_text4')
-      let obj4 = JSON.parse(strJson4)
-      let height = Number(obj4.$attrs.content)
+      let height = Number(JSON.parse(strJson4).$attrs.content)
       console.log('height' + height)
 
       console.log('assert position')
-      expect(Math.round(x)).assertEqual(Math.round(0));
-      expect(Math.round(y)).assertEqual(Math.round(0));
+      expect(Math.abs(Math.round(x) - Math.round(0)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(y) - Math.round(0)) <= 1).assertTrue();
 
       console.log('assert size')
-      expect(Math.round(width)).assertEqual(Math.round(0));
-      expect(Math.round(height)).assertEqual(Math.round(0));
+      expect(Math.abs(Math.round(width) - Math.round(0)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(height) - Math.round(0)) <= 1).assertTrue();
 
       done();
     });
@@ -429,12 +440,18 @@ export default function getListItemGroupRect1() {
     * @tc.desc  : set index to 1,set indexInGroup to 0,the space of lisItemGroup set to 20
     * @tc.level : Level 2
     */
-    it('getListItemGroupRect1_0700', 0, async function (done) {
+    it('getListItemGroupRect1_0700', 0, async (done: Function) => {
 
       console.info('[getListItemGroupRect1_0700] START');
-      globalThis.value.message.notify({name:'index', value:0});
-      globalThis.value.message.notify({name:'indexInGroup', value:1});
-      globalThis.value.message.notify({name:'space2', value:20});
+      globalThis.value.message.notify({
+        name: 'index', value: 0
+      });
+      globalThis.value.message.notify({
+        name: 'indexInGroup', value: 1
+      });
+      globalThis.value.message.notify({
+        name: 'space2', value: 20
+      });
       await CommonFunc.sleep(1000);
 
       console.log('get Initial value')
@@ -456,34 +473,30 @@ export default function getListItemGroupRect1() {
 
       console.log('get text message')
       let strJson1 = getInspectorByKey('getListItemGroupRect1_text1')
-      let obj1 = JSON.parse(strJson1)
-      let x = Number(obj1.$attrs.content)
+      let x = Number(JSON.parse(strJson1).$attrs.content)
       console.log('x' + x)
 
       let strJson2 = getInspectorByKey('getListItemGroupRect1_text2')
-      let obj2 = JSON.parse(strJson2)
-      let y = Number(obj2.$attrs.content)
+      let y = Number(JSON.parse(strJson2).$attrs.content)
       console.log('y' + y)
 
       let strJson3 = getInspectorByKey('getListItemGroupRect1_text3')
-      let obj3 = JSON.parse(strJson3)
-      let width = Number(obj3.$attrs.content)
+      let width = Number(JSON.parse(strJson3).$attrs.content)
       console.log('width' + width)
 
       let strJson4 = getInspectorByKey('getListItemGroupRect1_text4')
-      let obj4 = JSON.parse(strJson4)
-      let height = Number(obj4.$attrs.content)
+      let height = Number(JSON.parse(strJson4).$attrs.content)
       console.log('height' + height)
 
       console.log('assert position')
-      expect(Math.round(x)).assertEqual(Math.round(0));
-      expect(Math.round(y)).assertEqual(Math.round(170));
+      expect(Math.abs(Math.round(x) - Math.round(0)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(y) - Math.round(170)) <= 1).assertTrue();
 
       console.log('assert size')
       console.log('listItemGroup_1.right - listItemGroup_1.left' + (listItemGroup_1.right - listItemGroup_1.left))
-      expect(vp2px(Math.round(width))).assertEqual(Math.round(listItemGroup_1.right - listItemGroup_1.left));
+      expect(Math.abs(vp2px(Math.round(width)) - Math.round(listItemGroup_1.right - listItemGroup_1.left)) <= 1).assertTrue();
       console.log('listItemGroup_1.bottom - listItemGroup_1.top' + (listItemGroup_1.bottom - listItemGroup_1.top))
-      expect(vp2px(Math.round(height))).assertEqual(Math.round(listItemGroup_1.bottom - listItemGroup_1.top));
+      expect(Math.abs(vp2px(Math.round(height)) - Math.round(listItemGroup_1.bottom - listItemGroup_1.top)) <= 1).assertTrue();
 
       done();
     });
@@ -495,12 +508,18 @@ export default function getListItemGroupRect1() {
     * @tc.desc  : set index to 1,set indexInGroup to 0,the padding of lisItemGroup set to 20
     * @tc.level : Level 2
     */
-    it('getListItemGroupRect1_0800', 0, async function (done) {
+    it('getListItemGroupRect1_0800', 0, async (done: Function) => {
 
       console.info('[getListItemGroupRect1_0800] START');
-      globalThis.value.message.notify({name:'index', value:0});
-      globalThis.value.message.notify({name:'indexInGroup', value:0});
-      globalThis.value.message.notify({name:'padding1', value:20});
+      globalThis.value.message.notify({
+        name: 'index', value: 0
+      });
+      globalThis.value.message.notify({
+        name: 'indexInGroup', value: 0
+      });
+      globalThis.value.message.notify({
+        name: 'padding1', value: 20
+      });
       await CommonFunc.sleep(1000);
 
       console.log('get Initial value')
@@ -522,38 +541,34 @@ export default function getListItemGroupRect1() {
 
       console.log('get text message')
       let strJson1 = getInspectorByKey('getListItemGroupRect1_text1')
-      let obj1 = JSON.parse(strJson1)
-      let x = Number(obj1.$attrs.content)
+      let x = Number(JSON.parse(strJson1).$attrs.content)
       console.log('x' + x)
 
       let strJson2 = getInspectorByKey('getListItemGroupRect1_text2')
-      let obj2 = JSON.parse(strJson2)
-      let y = Number(obj2.$attrs.content)
+      let y = Number(JSON.parse(strJson2).$attrs.content)
       console.log('y' + y)
 
       let strJson3 = getInspectorByKey('getListItemGroupRect1_text3')
-      let obj3 = JSON.parse(strJson3)
-      let width = Number(obj3.$attrs.content)
+      let width = Number(JSON.parse(strJson3).$attrs.content)
       console.log('width' + width)
 
       let strJson4 = getInspectorByKey('getListItemGroupRect1_text4')
-      let obj4 = JSON.parse(strJson4)
-      let height = Number(obj4.$attrs.content)
+      let height = Number(JSON.parse(strJson4).$attrs.content)
       console.log('height' + height)
 
       console.log('assert position')
-      expect(Math.round(x)).assertEqual(Math.round(20));
-      expect(Math.round(y)).assertEqual(Math.round(70));
+      expect(Math.abs(Math.round(x) - Math.round(20)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(y) - Math.round(70)) <= 1).assertTrue();
 
       console.log('assert size')
       console.log('listItemGroup_0.right - listItemGroup_0.left' + (listItemGroup_0.right - listItemGroup_0.left))
-      expect(vp2px(Math.round(width))).assertEqual(Math.round(listItemGroup_0.right - listItemGroup_0.left));
+      expect(Math.abs(vp2px(Math.round(width)) - Math.round(listItemGroup_0.right - listItemGroup_0.left)) <= 1).assertTrue();
       console.log('listItemGroup_0.bottom - listItemGroup_0.top' + (listItemGroup_0.bottom - listItemGroup_0.top))
-      expect(vp2px(Math.round(height))).assertEqual(Math.round(listItemGroup_0.bottom - listItemGroup_0.top));
+      expect(Math.abs(vp2px(Math.round(height)) - Math.round(listItemGroup_0.bottom - listItemGroup_0.top)) <= 1).assertTrue();
+
 
       done();
     });
-
 
 
     /* *
@@ -562,13 +577,21 @@ export default function getListItemGroupRect1() {
     * @tc.desc  : set index to 1,set indexInGroup to 0,the margin of lisItem set to 20
     * @tc.level : Level 2
     */
-    it('getListItemGroupRect1_0900', 0, async function (done) {
+    it('getListItemGroupRect1_0900', 0, async (done: Function) => {
 
       console.info('[getListItemGroupRect1_0900] START');
-      globalThis.value.message.notify({name:'index', value:0});
-      globalThis.value.message.notify({name:'indexInGroup', value:0});
-      globalThis.value.message.notify({name:'padding1', value:0});
-      globalThis.value.message.notify({name:'margin1', value:20});
+      globalThis.value.message.notify({
+        name: 'index', value: 0
+      });
+      globalThis.value.message.notify({
+        name: 'indexInGroup', value: 0
+      });
+      globalThis.value.message.notify({
+        name: 'padding1', value: 0
+      });
+      globalThis.value.message.notify({
+        name: 'margin1', value: 20
+      });
       await CommonFunc.sleep(1000);
 
       console.log('get Initial value')
@@ -590,34 +613,31 @@ export default function getListItemGroupRect1() {
 
       console.log('get text message')
       let strJson1 = getInspectorByKey('getListItemGroupRect1_text1')
-      let obj1 = JSON.parse(strJson1)
-      let x = Number(obj1.$attrs.content)
+      let x = Number(JSON.parse(strJson1).$attrs.content)
       console.log('x' + x)
 
       let strJson2 = getInspectorByKey('getListItemGroupRect1_text2')
-      let obj2 = JSON.parse(strJson2)
-      let y = Number(obj2.$attrs.content)
+      let y = Number(JSON.parse(strJson2).$attrs.content)
       console.log('y' + y)
 
       let strJson3 = getInspectorByKey('getListItemGroupRect1_text3')
-      let obj3 = JSON.parse(strJson3)
-      let width = Number(obj3.$attrs.content)
+      let width = Number(JSON.parse(strJson3).$attrs.content)
       console.log('width' + width)
 
       let strJson4 = getInspectorByKey('getListItemGroupRect1_text4')
-      let obj4 = JSON.parse(strJson4)
-      let height = Number(obj4.$attrs.content)
+      let height = Number(JSON.parse(strJson4).$attrs.content)
       console.log('height' + height)
 
       console.log('assert position')
-      expect(Math.round(x)).assertEqual(Math.round(20));
-      expect(Math.round(y)).assertEqual(Math.round(70));
+
+      expect(Math.abs(Math.round(x) - Math.round(70)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(y) - Math.round(70)) <= 1).assertTrue();
 
       console.log('assert size')
       console.log('listItemGroup_0.right - listItemGroup_0.left' + (listItemGroup_0.right - listItemGroup_0.left))
-      expect(vp2px(Math.round(width))).assertEqual(Math.round(listItemGroup_0.right - listItemGroup_0.left));
+      expect(Math.abs(vp2px(Math.round(width)) - Math.round(listItemGroup_0.right - listItemGroup_0.left)) <= 1).assertTrue();
       console.log('listItemGroup_0.bottom - listItemGroup_0.top' + (listItemGroup_0.bottom - listItemGroup_0.top))
-      expect(vp2px(Math.round(height))).assertEqual(Math.round(listItemGroup_0.bottom - listItemGroup_0.top));
+      expect(Math.abs(vp2px(Math.round(height)) - Math.round(listItemGroup_0.bottom - listItemGroup_0.top)) <= 1).assertTrue();
 
       done();
     });

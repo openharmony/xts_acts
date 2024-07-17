@@ -14,8 +14,6 @@
  */
 
 import events_emitter from '@ohos.events.emitter';
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
-import { Hypium } from '@ohos/hypium';
 import hilog from '@ohos.hilog';
 
 @Entry
@@ -68,118 +66,114 @@ struct TabsExample {
 
     @State selfSelectedMode: SelectedMode = SelectedMode.INDICATOR
 
-    private stateChangCallBack = (eventData) => {
+    private stateChangCallBack = (eventData: events_emitter.EventData) => {
         console.info("tabs page state change called:" + JSON.stringify(eventData));
         if (eventData != null) {
-            if (eventData.data.dividerColorStr != null) {
-                this.dividerColorStr = eventData.data.dividerColorStr;
+            if (eventData.data?.dividerColorStr != null) {
+                this.dividerColorStr = eventData.data?.dividerColorStr;
             }
-            if (eventData.data.strokeWidthStr != null) {
-                this.strokeWidthStr = eventData.data.strokeWidthStr;
+            if (eventData.data?.strokeWidthStr != null) {
+                this.strokeWidthStr = eventData.data?.strokeWidthStr;
             }
-            if (eventData.data.startMarginStr != null) {
-                this.startMarginStr = eventData.data.startMarginStr;
+            if (eventData.data?.startMarginStr != null) {
+                this.startMarginStr = eventData.data?.startMarginStr;
             }
-            if (eventData.data.endMarginStr != null) {
-                this.endMarginStr = eventData.data.endMarginStr;
+            if (eventData.data?.endMarginStr != null) {
+                this.endMarginStr = eventData.data?.endMarginStr;
             }
-            if (eventData.data.nullFlag != null) {
-                this.nullFlag = eventData.data.nullFlag;
+            if (eventData.data?.nullFlag != null) {
+                this.nullFlag = eventData.data?.nullFlag;
             }
-            if (eventData.data.dividerColor != null) {
-                this.dividerColor = eventData.data.dividerColor;
+            if (eventData.data?.dividerColor != null) {
+                this.dividerColor = eventData.data?.dividerColor;
             }
-            if (eventData.data.strokeWidthNum != null) {
-                this.strokeWidthNum = eventData.data.strokeWidthNum;
+            if (eventData.data?.strokeWidthNum != null) {
+                this.strokeWidthNum = eventData.data?.strokeWidthNum;
             }
-            if (eventData.data.startMarginNum != null) {
-                this.startMarginNum = eventData.data.startMarginNum;
+            if (eventData.data?.startMarginNum != null) {
+                this.startMarginNum = eventData.data?.startMarginNum;
             }
-            if (eventData.data.endMarginNum != null) {
-                this.endMarginNum = eventData.data.endMarginNum;
-            }
-
-            if (eventData.data.dividerColorRes != null) {
-                this.dividerColorRes = eventData.data.dividerColorRes;
-            }
-            if (eventData.data.strokeWidthRes != null) {
-                this.strokeWidthRes = eventData.data.strokeWidthRes;
-            }
-            if (eventData.data.startMarginRes != null) {
-                this.startMarginRes = eventData.data.startMarginRes;
-            }
-            if (eventData.data.endMarginRes != null) {
-                this.endMarginRes = eventData.data.endMarginRes;
+            if (eventData.data?.endMarginNum != null) {
+                this.endMarginNum = eventData.data?.endMarginNum;
             }
 
-            if (eventData.data.overflowFlag != null) {
-                this.overflowFlag = eventData.data.overflowFlag;
+            if (eventData.data?.dividerColorRes != null) {
+                this.dividerColorRes = eventData.data?.dividerColorRes;
+            }
+            if (eventData.data?.strokeWidthRes != null) {
+                this.strokeWidthRes = eventData.data?.strokeWidthRes;
+            }
+            if (eventData.data?.startMarginRes != null) {
+                this.startMarginRes = eventData.data?.startMarginRes;
+            }
+            if (eventData.data?.endMarginRes != null) {
+                this.endMarginRes = eventData.data?.endMarginRes;
+            }
+
+            if (eventData.data?.overflowFlag != null) {
+                this.overflowFlag = eventData.data?.overflowFlag;
             }
             
-            if (eventData.data.selfIndicatorColor != null) {
-                this.selfIndicatorColor = eventData.data.selfIndicatorColor;
+            if (eventData.data?.selfIndicatorColor != null) {
+                this.selfIndicatorColor = eventData.data?.selfIndicatorColor;
             }
 
-            if (eventData.data.selfIndicatorHeight != null) {
-                this.selfIndicatorHeight = eventData.data.selfIndicatorHeight;
+            if (eventData.data?.selfIndicatorHeight != null) {
+                this.selfIndicatorHeight = eventData.data?.selfIndicatorHeight;
             }
 
-            if (eventData.data.selfIndicatorWidth != null) {
-                this.selfIndicatorWidth = eventData.data.selfIndicatorWidth;
+            if (eventData.data?.selfIndicatorWidth != null) {
+                this.selfIndicatorWidth = eventData.data?.selfIndicatorWidth;
             }
 
-            if (eventData.data.selfIndicatorBorderRadius != null) {
-                this.selfIndicatorBorderRadius = eventData.data.selfIndicatorBorderRadius;
+            if (eventData.data?.selfIndicatorBorderRadius != null) {
+                this.selfIndicatorBorderRadius = eventData.data?.selfIndicatorBorderRadius;
             }
 
-            if (eventData.data.selfSelectedMode != null) {
-                this.selfSelectedMode = eventData.data.selfSelectedMode;
+            if (eventData.data?.selfSelectedMode != null) {
+                this.selfSelectedMode = eventData.data?.selfSelectedMode;
             }
 
-            if (eventData.data.selfSubTabBorderRadius != null) {
-                this.selfSubTabBorderRadius = eventData.data.selfSubTabBorderRadius;
+            if (eventData.data?.selfSubTabBorderRadius != null) {
+                this.selfSubTabBorderRadius = eventData.data?.selfSubTabBorderRadius;
             }
 
-            if (eventData.data.selfMarginTop != null) {
-                this.selfMarginTop = eventData.data.selfMarginTop;
+            if (eventData.data?.selfMarginTop != null) {
+                this.selfMarginTop = eventData.data?.selfMarginTop;
             }
 
-            if (eventData.data.selfIndicatorColorStr != null) {
-                this.selfIndicatorColorStr = eventData.data.selfIndicatorColorStr;
+            if (eventData.data?.selfIndicatorColorStr != null) {
+                this.selfIndicatorColorStr = eventData.data?.selfIndicatorColorStr;
             }
 
-            if (eventData.data.selfIndicatorHeightStr != null) {
-                this.selfIndicatorHeightStr = eventData.data.selfIndicatorHeightStr;
+            if (eventData.data?.selfIndicatorHeightStr != null) {
+                this.selfIndicatorHeightStr = eventData.data?.selfIndicatorHeightStr;
             }
 
-            if (eventData.data.selfIndicatorWidthStr != null) {
-                this.selfIndicatorWidthStr = eventData.data.selfIndicatorWidthStr;
+            if (eventData.data?.selfIndicatorWidthStr != null) {
+                this.selfIndicatorWidthStr = eventData.data?.selfIndicatorWidthStr;
             }
 
-            if (eventData.data.selfIndicatorBorderRadiusStr != null) {
-                this.selfIndicatorBorderRadiusStr = eventData.data.selfIndicatorBorderRadiusStr;
+            if (eventData.data?.selfIndicatorBorderRadiusStr != null) {
+                this.selfIndicatorBorderRadiusStr = eventData.data?.selfIndicatorBorderRadiusStr;
             }
 
-            if (eventData.data.selfSubTabBorderRadiusStr != null) {
-                this.selfSubTabBorderRadiusStr = eventData.data.selfSubTabBorderRadiusStr;
+            if (eventData.data?.selfSubTabBorderRadiusStr != null) {
+                this.selfSubTabBorderRadiusStr = eventData.data?.selfSubTabBorderRadiusStr;
             }
 
-            if (eventData.data.selfMarginTopStr != null) {
-                this.selfMarginTopStr = eventData.data.selfMarginTopStr;
+            if (eventData.data?.selfMarginTopStr != null) {
+                this.selfMarginTopStr = eventData.data?.selfMarginTopStr;
             }
         }
     }
 
     aboutToAppear(){
-        var stateChangeEvent = {
+        let stateChangeEvent: events_emitter.InnerEvent = {
             eventId: 183,
             priority: events_emitter.EventPriority.LOW
         }
         events_emitter.on(stateChangeEvent, this.stateChangCallBack);
-        var abilityDelegator: any
-        abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        var abilityDelegatorArguments: any
-        abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
         hilog.isLoggable(0x0000, 'testTag', hilog.LogLevel.INFO);
         hilog.info(0x0000, 'testTag', '%{public}s', 'start run testcase!!!');
     }

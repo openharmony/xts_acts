@@ -16,11 +16,18 @@ import backgroundImageResizableTest from './backgroundImageTest/backgroundImageR
 import foregroundEffect from './foregroundEffect.test'
 import systemBarEffectTest from './ImageEffectTest/systemBarEffect1.test'
 import freezeTest from './ImageEffectTest/freeze.test'
-
+import fractionStops from './ImageEffectTest/fractionStops.test'
+import backgroundBrightness from './backgroundImageTest/backgroundBrightness.test';
+import visualEffectTest from './visualEffectTest/visualEffect.test'
+import motionBlurTest from './visualEffectTest/motionBlur.test'
 
 export default function testsuite() {
   backgroundImageResizableTest();
   foregroundEffect();
   systemBarEffectTest();
   freezeTest();
+  fractionStops()
+  backgroundBrightness()
+  visualEffectTest();
+  motionBlurTest();
 }

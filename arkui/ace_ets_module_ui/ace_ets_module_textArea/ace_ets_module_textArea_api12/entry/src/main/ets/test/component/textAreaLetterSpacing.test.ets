@@ -13,56 +13,53 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function textAreaLetterSpacing() {
-  describe('textAreaLetterSpacing', function () {
-    beforeEach(async function (done) {
+  describe('textAreaLetterSpacing', () => {
+    beforeEach(async (done: Function) => {
       console.info("textAreaLetterSpacingTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/component/textAreaLetterSpacing',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/component/textAreaLetterSpacing',
       }
-      let result;
       try {
         router.clear();
         let pages = router.getState();
         console.info("get textAreaLetterSpacing state pages: " + JSON.stringify(pages));
         if (!("textAreaLetterSpacing" == pages.name)) {
           console.info("get textAreaLetterSpacing pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
-          await Utils.sleep(2000);
-          console.info("push textAreaLetterSpacing page result: " + JSON.stringify(result));
+          await router.pushUrl(options);
+          await CommonFunc.sleep(2000);
         }
       } catch (err) {
         console.error("push textAreaLetterSpacing page error: " + err);
       }
 
-      await Utils.sleep(1000)
+      await CommonFunc.sleep(1000)
       console.info("textAreaLetterSpacing beforeEach end");
       done()
     });
 
-    afterEach(async function () {
-      await Utils.sleep(1000);
+    afterEach(async () => {
+      await CommonFunc.sleep(1000);
       console.info("textAreaLetterSpacing after each called");
     })
 
     /**
      * @tc.number textAreaLetterSpacing_0100
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set attribute values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set attribute values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textAreaLetterSpacing_0100', 0, async function (done) {
+    it('textAreaLetterSpacing_0100', 0, async (done: Function) => {
       console.info('[textAreaLetterSpacing_0100] START');
       let strJson = getInspectorByKey('key_textArea_letterSpacing_001');
-      let obj = JSON.parse(strJson);
-      console.info("[textAreaLetterSpacing_0100] obj is: " + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.letterSpacing).assertEqual('5.00fp');
+      console.info("[textAreaLetterSpacing_0100] obj is: " + JSON.stringify(JSON.parse(strJson).$attrs));
+      expect(JSON.parse(strJson).$attrs.letterSpacing).assertEqual('5.00fp');
       console.info('[textAreaLetterSpacing_0100] END');
       done();
     });

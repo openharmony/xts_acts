@@ -13,27 +13,25 @@
  * limitations under the License.
  */
 import router from '@ohos.router';
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
-import { Hypium } from '@ohos/hypium'
-import testsuite from '../../../test/List.test'
-
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
+import { Hypium } from '@ohos/hypium';
+import testsuite from '../../../test/List.test';
 
 @Entry
 @Component
 struct Index {
-
-  aboutToAppear(){
+  aboutToAppear() {
     console.info("start run testcase!!!!")
-        var abilityDelegator: any
-        abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        var abilityDelegatorArguments: any
-        abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-        console.info('start run testcase!!!')
-        Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+    let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator
+    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+    let abilityDelegatorArguments: AbilityDelegatorRegistry.AbilityDelegatorArgs
+    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+    console.info('start run testcase!!!')
+    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
   }
 
   build() {
-    Flex({ direction:FlexDirection.Column, alignItems:ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Text('Hello World')
         .fontSize(50)
         .fontWeight(FontWeight.Bold)

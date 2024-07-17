@@ -12,18 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {Core} from '@ohos/hypium'
-
 @Entry
 @Component
 struct Index {
   aboutToAppear() {
     console.info('onShow finish')
-    const core = Core.getInstance()
-    core.init()
-    const configService = core.getDefaultService('config')
-    configService.setConfig(this)
-    core.execute()
   }
 
   build() {

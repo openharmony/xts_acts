@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2023-2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -46,14 +46,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetPreferencesJSAPITest_1100
-     * @tc.name   : testPreferencesGetPreferences000
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetPreferencesJSAPITest_1100
+     * @tc.name   : testPreferencesGetPreferences001
      * @tc.desc   : GetPreferences callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetPreferences000", 0, async (done: Function) => {
+    it("testPreferencesGetPreferences001", 0, async (done: Function) => {
       dataPreferences.getPreferences(context, NAME1, async (err, preferences) => {
         if (err) {
           console.info(TAG + "Get preferences err: " + err);
@@ -71,7 +71,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetPreferencesJSAPITest_0700
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetPreferencesJSAPITest_0700
      * @tc.name   : testPreferencesGetPreferences002
      * @tc.desc   : GetPreferences callback interface test
      * @tc.size   : MediumTest
@@ -92,7 +92,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetPreferencesJSAPITest_0800
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetPreferencesJSAPITest_0800
      * @tc.name   : testPreferencesGetPreferences003
      * @tc.desc   : GetPreferences callback interface test
      * @tc.size   : MediumTest
@@ -106,7 +106,7 @@ export default function preferencesCallBackTest() {
         if (err) {
           console.info(TAG + "Get preferences err: " + err);
           expect(!err).assertTrue();
-        } else {
+        } else { 
           console.info(TAG + "Get preferences success" + preferences);
           await preferences.put(KEY_TEST_STRING_ELEMENT, "test");
           preferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue", (err, ret) => {
@@ -119,7 +119,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetPreferencesJSAPITest_0900
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetPreferencesJSAPITest_0900
      * @tc.name   : testPreferencesGetPreferences004
      * @tc.desc   : GetPreferences callback interface test
      * @tc.size   : MediumTest
@@ -142,7 +142,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_0400
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_0400
      * @tc.name   : testPreferencesDeletePreferences000
      * @tc.desc   : DeletePreferences callback interface test
      * @tc.size   : MediumTest
@@ -167,7 +167,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_0500
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_0500
      * @tc.name   : testPreferencesDeletePreferences001
      * @tc.desc   : DeletePreferences callback interface test
      * @tc.size   : MediumTest
@@ -199,7 +199,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_1600
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_1600
      * @tc.name   : testPreferencesDeletePreferences003
      * @tc.desc   : DeletePreferences callback interface test
      * @tc.size   : MediumTest
@@ -245,7 +245,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_1300
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_1300
      * @tc.name   : testPreferencesDeletePreferences004
      * @tc.desc   : DeletePreferences callback interface test
      * @tc.size   : MediumTest
@@ -274,7 +274,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_1400
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_1400
      * @tc.name   : testPreferencesDeletePreferences005
      * @tc.desc   : DeletePreferences callback interface test
      * @tc.size   : MediumTest
@@ -310,7 +310,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_1200
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_1200
      * @tc.name   : testPreferencesDeletePreferences006
      * @tc.desc   : DeletePreferences callback interface test
      * @tc.size   : MediumTest
@@ -359,14 +359,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_RemoveJSAPITest_0900
-     * @tc.name   : testRemovePreferencesFromCache000
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_RemoveJSAPITest_0900
+     * @tc.name   : testRemovePreferencesFromCache0001
      * @tc.desc   : RemovePreferencesFromCache callback interface test
      * @tc.size   : MediumTest
      * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testRemovePreferencesFromCache000", 0, async (done: Function) => {
+    it("testRemovePreferencesFromCache0001", 0, async (done: Function) => {
       dataPreferences.getPreferences(context, NAME, (err, preferences) => {
         if (err) {
           console.info(TAG + "Get preferences err: " + err);
@@ -384,7 +384,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_RemoveJSAPITest_0200
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_RemoveJSAPITest_0200
      * @tc.name   : testRemovePreferencesFromCache001
      * @tc.desc   : RemovePreferencesFromCache callback interface test
      * @tc.size   : MediumTest
@@ -419,7 +419,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_RemoveJSAPITest_0100
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_RemoveJSAPITest_0100
      * @tc.name   : testRemovePreferencesFromCache003
      * @tc.desc   : RemovePreferencesFromCache callback interface test
      * @tc.size   : MediumTest
@@ -462,7 +462,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_RemoveJSAPITest_0400
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_RemoveJSAPITest_0400
      * @tc.name   : testRemovePreferencesFromCache004
      * @tc.desc   : RemovePreferencesFromCache callback interface test
      * @tc.size   : MediumTest
@@ -492,7 +492,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_RemoveJSAPITest_0400
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_RemoveJSAPITest_0400
      * @tc.name   : testRemovePreferencesFromCache005
      * @tc.desc   : RemovePreferencesFromCache callback interface test
      * @tc.size   : MediumTest
@@ -528,7 +528,7 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_RemoveJSAPITest_0500
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_RemoveJSAPITest_0500
      * @tc.name   : testRemovePreferencesFromCache006
      * @tc.desc   : RemovePreferencesFromCache callback interface test
      * @tc.size   : MediumTest
@@ -572,11 +572,11 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_3200
-     * @tc.name   : testPreferencesGetDefaultValue0000
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetJSAPITest_3200
+     * @tc.name   : testPreferencesGetDefaultValue0001
      * @tc.desc   : Get defaultValue callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesGetDefaultValue0001", 0, async (done: Function) => {
@@ -588,14 +588,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_3300
-     * @tc.name   : testPreferencesGetFloat0000
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetJSAPITest_3300
+     * @tc.name   : testPreferencesGetFloat0001
      * @tc.desc   : Get float callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetFloat0000", 0, async (done: Function) => {
+    it("testPreferencesGetFloat0001", 0, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 3.0);
       await mPreferences.get(KEY_TEST_FLOAT_ELEMENT, 0.0, (err, ret) => {
@@ -605,14 +605,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_3400
-     * @tc.name   : testPreferencesGetInt0000
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetJSAPITest_3400
+     * @tc.name   : testPreferencesGetInt0001
      * @tc.desc   : Get int callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetInt0000", 0, async (done: Function) => {
+    it("testPreferencesGetInt0001", 0, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_INT_ELEMENT, 3);
       await mPreferences.get(KEY_TEST_INT_ELEMENT, 0.0, (err, ret) => {
@@ -622,14 +622,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_3500
-     * @tc.name   : testPreferencesGetLong0000
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetJSAPITest_3500
+     * @tc.name   : testPreferencesGetLong0001
      * @tc.desc   : Get long callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetLong0000", 0, async (done: Function) => {
+    it("testPreferencesGetLong0001", 0, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_LONG_ELEMENT, 3);
       await mPreferences.get(KEY_TEST_LONG_ELEMENT, 0, (err, ret) => {
@@ -639,15 +639,15 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_3800
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetJSAPITest_3800
 
-     * @tc.name   : testPreferencesGetString0000
+     * @tc.name   : testPreferencesGetString001
      * @tc.desc   : Get String callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetString0000", 0, async (done: Function) => {
+    it("testPreferencesGetString001", 0, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
       await mPreferences.flush();
@@ -658,15 +658,15 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_3100
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetJSAPITest_3100
 
-     * @tc.name   : testPreferencesGetBoolean0000
+     * @tc.name   : testPreferencesGetBoolean0001
      * @tc.desc   : Get Boolean callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetBoolean0000", 0, async (done: Function) => {
+    it("testPreferencesGetBoolean0001", 0, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, true);
       await mPreferences.get(KEY_TEST_BOOLEAN_ELEMENT, true, (err, ret) => {
@@ -676,14 +676,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_3700
-     * @tc.name   : testPreferencesGetStringArray0000
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetJSAPITest_3700
+     * @tc.name   : testPreferencesGetStringArray001
      * @tc.desc   : Get StringArray callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetStringArray0000", 0, async (done: Function) => {
+    it("testPreferencesGetStringArray001", 0, async (done: Function) => {
       await mPreferences.clear();
       let stringArr = ["11", "22", "33"];
       await mPreferences.put(KEY_TEST_STRING_ARRAY_ELEMENT, stringArr);
@@ -696,15 +696,15 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_3600
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetJSAPITest_3600
 
-     * @tc.name   : testPreferencesGetNumArray0000
+     * @tc.name   : testPreferencesGetNumArray001
      * @tc.desc   : Get NumArray callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetNumArray0000", 0, async (done: Function) => {
+    it("testPreferencesGetNumArray001", 0, async (done: Function) => {
       await mPreferences.clear();
       let doubleArr = [11, 22, 33];
       await mPreferences.put(KEY_TEST_NUMBER_ARRAY_ELEMENT, doubleArr);
@@ -717,14 +717,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_3000
-     * @tc.name   : testPreferencesGetBoolArray0000
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetJSAPITest_3000
+     * @tc.name   : testPreferencesGetBoolArray0001
      * @tc.desc   : Get BoolArray callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetBoolArray0000", 0, async (done: Function) => {
+    it("testPreferencesGetBoolArray0001", 0, async (done: Function) => {
       await mPreferences.clear();
       let boolArr = [true, false, false, true];
       await mPreferences.put(KEY_TEST_BOOL_ARRAY_ELEMENT, boolArr);
@@ -737,14 +737,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_GetJSAPITest_1700
-     * @tc.name   : testPreferencesGetAll0000
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_GetJSAPITest_1700
+     * @tc.name   : testPreferencesGetAll0001
      * @tc.desc   : GetAll callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesGetAll0000", 0, async (done: Function) => {
+    it("testPreferencesGetAll0001", 0, async (done: Function) => {
       await mPreferences.clear();
       let doubleArr = [11, 22, 33];
       let stringArr = ["11", "22", "33"];
@@ -783,14 +783,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_2900
-     * @tc.name   : testPreferencesPutFloat0000
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_PutJSAPITest_2900
+     * @tc.name   : testPreferencesPutFloat0001
      * @tc.desc   : Put float callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutFloat0000", 0, async (done: Function) => {
+    it("testPreferencesPutFloat0001", 0, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 4.0, async (err, ret) => {
         let pre = await mPreferences.get(KEY_TEST_FLOAT_ELEMENT, 0.0);
@@ -803,14 +803,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_3000
-     * @tc.name   : testPreferencesPutInt0000
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_PutJSAPITest_3000
+     * @tc.name   : testPreferencesPutInt0001
      * @tc.desc   : Put int callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutInt0000", 0, async (done: Function) => {
+    it("testPreferencesPutInt0001", 0, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_INT_ELEMENT, 4, async (err, ret) => {
         let pre = await mPreferences.get(KEY_TEST_INT_ELEMENT, 0);
@@ -823,14 +823,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_3100
-     * @tc.name   : testPreferencesPutLong0000
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_PutJSAPITest_3100
+     * @tc.name   : testPreferencesPutLong0001
      * @tc.desc   : Put long callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutLong0000", 0, async (done: Function) => {
+    it("testPreferencesPutLong0001", 0, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_LONG_ELEMENT, 4);
       await mPreferences.put(KEY_TEST_LONG_ELEMENT, 4, async (err, ret) => {
@@ -844,14 +844,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_3400
-     * @tc.name   : testPreferencesPutString0000
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_PutJSAPITest_3400
+     * @tc.name   : testPreferencesPutString0001
      * @tc.desc   : Put String callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutString0000", 0, async (done: Function) => {
+    it("testPreferencesPutString0001", 0, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, "", async (err, ret) => {
         let pre = await mPreferences.get(KEY_TEST_STRING_ELEMENT, "defaultvalue");
@@ -864,14 +864,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_2800
-     * @tc.name   : testPreferencesPutBoolean0000
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_PutJSAPITest_2800
+     * @tc.name   : testPreferencesPutBoolean0001
      * @tc.desc   : Put Boolean callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutBoolean0000", 0, async (done: Function) => {
+    it("testPreferencesPutBoolean0001", 0, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_BOOLEAN_ELEMENT, true, async (err, ret) => {
         let pre = await mPreferences.get(KEY_TEST_BOOLEAN_ELEMENT, false);
@@ -884,14 +884,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_3300
-     * @tc.name   : testPreferencesPutStringArray0000
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_PutJSAPITest_3300
+     * @tc.name   : testPreferencesPutStringArray0001
      * @tc.desc   : Put StringArray callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutStringArray0000", 0, async (done: Function) => {
+    it("testPreferencesPutStringArray0001", 0, async (done: Function) => {
       await mPreferences.clear();
       let stringArr = ["11", "22", "33"];
       await mPreferences.put(KEY_TEST_STRING_ARRAY_ELEMENT, stringArr, async (err, ret) => {
@@ -905,14 +905,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_3200
-     * @tc.name   : testPreferencesPutNumArray0000
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_PutJSAPITest_3200
+     * @tc.name   : testPreferencesPutNumArray0001
      * @tc.desc   : Put NumberArray callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutNumArray0000", 0, async (done: Function) => {
+    it("testPreferencesPutNumArray0001", 0, async (done: Function) => {
       await mPreferences.clear();
       let doubleArr = [11, 22, 33];
       await mPreferences.put(KEY_TEST_NUMBER_ARRAY_ELEMENT, doubleArr, async (err, ret) => {
@@ -926,14 +926,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_PutJSAPITest_2700
-     * @tc.name   : testPreferencesPutBoolArray0000
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_PutJSAPITest_2700
+     * @tc.name   : testPreferencesPutBoolArray0001
      * @tc.desc   : Put BoolArray callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesPutBoolArray0000", 0, async (done: Function) => {
+    it("testPreferencesPutBoolArray0001", 0, async (done: Function) => {
       await mPreferences.clear();
       let boolArr = [true, false, false, true];
       await mPreferences.put(KEY_TEST_BOOL_ARRAY_ELEMENT, boolArr, async (err, ret) => {
@@ -947,14 +947,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_HasJSAPITest_1400
-     * @tc.name   : testPreferencesHasKey0000
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_HasJSAPITest_1400
+     * @tc.name   : testPreferencesHasKey0005
      * @tc.desc   : Has float callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesHasKey0000", 0, async (done: Function) => {
+    it("testPreferencesHasKey0005", 0, async (done: Function) => {
       await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 1.1);
       await mPreferences.has(KEY_TEST_FLOAT_ELEMENT, (err, ret) => {
         expect(true).assertEqual(ret);
@@ -963,11 +963,11 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_HasJSAPITest_1500
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_HasJSAPITest_1500
      * @tc.name   : testPreferencesHasKey0001
      * @tc.desc   : Has int callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesHasKey0001", 0, async (done: Function) => {
@@ -979,11 +979,11 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_HasJSAPITest_1600
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_HasJSAPITest_1600
      * @tc.name   : testPreferencesHasKey0002
      * @tc.desc   : Has long callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesHasKey0002", 0, async (done: Function) => {
@@ -995,11 +995,11 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_HasJSAPITest_1700
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_HasJSAPITest_1700
      * @tc.name   : testPreferencesHasKey0003
      * @tc.desc   : Has string callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesHasKey0003", 0, async (done: Function) => {
@@ -1011,11 +1011,11 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_HasJSAPITest_1300
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_HasJSAPITest_1300
      * @tc.name   : testPreferencesHasKey0004
      * @tc.desc   : Has boolean callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
     it("testPreferencesHasKey0004", 0, async (done: Function) => {
@@ -1027,14 +1027,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_ClearJSAPITest_0500
-     * @tc.name   : testPreferencesClear0000
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_ClearJSAPITest_0500
+     * @tc.name   : testPreferencesClear0001
      * @tc.desc   : Clear callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesClear0000", 0, async (done: Function) => {
+    it("testPreferencesClear0001", 0, async (done: Function) => {
       await mPreferences.clear();
       let doubleArr = [11, 22, 33];
       let stringArr = ["11", "22", "33"];
@@ -1070,7 +1070,7 @@ export default function preferencesCallBackTest() {
 
       await mPreferences.clear(async (err) => {
         let ret = mPreferences.getAllSync() as Record<string, object>;
-        console.log("testPreferencesClear0000 end." + JSON.stringify(ret.key_test_string));
+        console.log("testPreferencesClear0001 end." + JSON.stringify(ret.key_test_string));
         expect(undefined).assertEqual(ret.key_test_boolean);
         expect(undefined).assertEqual(ret.key_test_string);
         expect(undefined).assertEqual(ret.key_test_float);
@@ -1082,14 +1082,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_2300
-     * @tc.name   : testPreferencesDelete0000
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_DeleteJSAPITest_2400
+     * @tc.name   : testPreferencesDelete0010
      * @tc.desc   : Delete callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesDelete0000", 0, async (done: Function) => {
+    it("testPreferencesDelete0010", 0, async (done: Function) => {
       await mPreferences.put(KEY_TEST_FLOAT_ELEMENT, 3.0);
       let ret = await mPreferences.get(KEY_TEST_FLOAT_ELEMENT, 0.0);
       expect(3.0).assertEqual(ret);
@@ -1107,14 +1107,14 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_FlushJSAPITest_0400
-     * @tc.name   : testPreferencesFlush0000
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_FlushJSAPITest_0400
+     * @tc.name   : testPreferenceCB001
      * @tc.desc   : Flush callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesFlush0000", 0, async (done: Function) => {
+    it("testPreferenceCB001", 0, async (done: Function) => {
       await mPreferences.clear();
       await mPreferences.put(KEY_TEST_STRING_ELEMENT, "test");
       await mPreferences.flush();
@@ -1132,15 +1132,15 @@ export default function preferencesCallBackTest() {
     });
 
     /**
-     * @tc.number : SUB_DistributeData_CrossPlatform_SDK_Preferences_JSAPITest_0200
-     * @tc.name   : testPreferencesCallback0000
+     * @tc.number : SUB_DistributedData_CrossPlatform_SDK_Preferences_JSAPITest_0200
+     * @tc.name   : testPreferencesCallback001
      * @tc.desc   : Clear、Put、Get、Flush String callback interface test
      * @tc.size   : MediumTest
-     * @tc.type   : Method
+     * @tc.type   : Function
      * @tc.level  : Level 2
      */
-    it("testPreferencesCallback0000", 0, (done: Function) => {
-      console.log(TAG + "testPreferencesCallback0000 begin.");
+    it("testPreferencesCallback001", 0, (done: Function) => {
+      console.log(TAG + "testPreferencesCallback001 begin.");
       mPreferences.clear((err, val) => {
         if (err) {
           expect(!err).assertTrue();
@@ -1164,7 +1164,7 @@ export default function preferencesCallBackTest() {
                 }
                 expect("123").assertEqual(pre2);
                 done();
-                console.log(TAG + "testPreferencesCallback0000 end.");
+                console.log(TAG + "testPreferencesCallback001 end.");
               });
             });
           });

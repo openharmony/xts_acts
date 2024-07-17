@@ -19,14 +19,14 @@ import promptAction from '@ohos.promptAction';
 @Component
 struct Index {
   @State targetImage: string = '';
-  @State targetText: string = 'Drag Text';
+  @State targetText: string|undefined = 'Drag Text';
   @State hyperLinkText: string = 'HyperLink';
   @State hyperLinkContent: string = 'HyperLink';
   @State imageWidth: number = 100;
   @State imageHeight: number = 100;
   @State imgState: Visibility = Visibility.Visible;
   @State videoSrc: string = 'resource://RAWFILE/02.mp4';
-  @State abstractContent: string = "abstract";
+  @State abstractContent: string|undefined = "abstract";
   @State textContent: string = "";
 
   getDataFromUdmfRetry(event: DragEvent, callback: (data: DragEvent)=>void)
@@ -124,7 +124,7 @@ struct Index {
               let rect: Rectangle = event.getPreviewRect();
               this.imageWidth = Number(rect.width);
               this.imageHeight = Number(rect.height);
-              this.targetImage = (<udmf.Image>(records[0])).imageUri;
+              this.targetImage = (records[0] as udmf.Image).imageUri;
               event.useCustomDropAnimation = false;
               animateTo({duration: 1000}, ()=>{
                 this.imageWidth = 100;
@@ -152,7 +152,7 @@ struct Index {
             console.info("the getVelocity " + dragEvent.getVelocity());
             this.getDataFromUdmfRetry(dragEvent, event => {
               let records:Array<udmf.UnifiedRecord> = event.getData().getRecords();
-              this.targetText = (<udmf.Text>(records[0])).details['value'];
+              this.targetText = (records[0] as udmf.Text).details?.['value'];
             })
           })
 
@@ -170,7 +170,7 @@ struct Index {
         .onDrop((dragEvent)=>{
           this.getDataFromUdmfRetry(dragEvent, event=>{
             let records: Array<udmf.UnifiedRecord> = event.getData().getRecords();
-            let plainText: udmf.PlainText = <udmf.PlainText>(records[0]);
+            let plainText: udmf.PlainText = records[0] as udmf.PlainText;
             this.abstractContent = plainText.abstract;
             this.textContent = plainText.textContent;
           })

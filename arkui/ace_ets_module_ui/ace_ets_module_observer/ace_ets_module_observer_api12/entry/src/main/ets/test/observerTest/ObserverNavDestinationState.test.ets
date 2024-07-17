@@ -54,7 +54,7 @@ export default function ObserverNavDestinationState() {
      * @tc.desc      Test Observer NavDestinationState
      * @tc.level:    Level 2
      */
-    it('ObserverNavDestinationState_0100', 0, async function (done) {
+    it('ObserverNavDestinationState_0100', 0, async (done: Function) => {
       console.info('[ObserverNavDestinationState_0100] START');
       await CommonFunc.sleep(1000);
 
@@ -80,7 +80,7 @@ export default function ObserverNavDestinationState() {
       await CommonFunc.sleep(3000);
 
       let strJson1 = getInspectorByKey('ObserverNavDestinationState_text');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await CommonFunc.sleep(2000);
       console.info("[ObserverNavDestinationState_0100] obj1 is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('1ON_WILL_APPEAR;1ON_APPEAR;1ON_WILL_SHOW;1ON_SHOWN;2ON_WILL_APPEAR;1ON_WILL_HIDE;2ON_APPEAR;2ON_WILL_SHOW;1ON_HIDDEN;2ON_SHOWN;2ON_BACKPRESS;2ON_WILL_HIDE;1ON_WILL_SHOW;2ON_HIDDEN;2ON_WILL_DISAPPEAR;1ON_SHOWN;2ON_DISAPPEAR;');

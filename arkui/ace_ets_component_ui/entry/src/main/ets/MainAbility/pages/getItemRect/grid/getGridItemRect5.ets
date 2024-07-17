@@ -14,6 +14,8 @@
  */
 import {MessageManager,Callback} from '../../../utils/MessageManager';
 
+type Message = number|GridDirection
+
 @Entry
 @Component
 struct getGridItemRect5 {
@@ -29,18 +31,18 @@ struct getGridItemRect5 {
   @State width1: number = 0
   @State height1: number = 0
 
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
   onPageShow() {
     console.info('getGridItemRect5 onPageShow');
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'index') {
-        this.index = message.value;
+        this.index = message.value as number;
       }else  if (message.name == 'layoutDirection1') {
-        this.layoutDirection1 = message.value;
+        this.layoutDirection1 = message.value as GridDirection;
       }
     }
     this.messageManager.registerCallback(callback);

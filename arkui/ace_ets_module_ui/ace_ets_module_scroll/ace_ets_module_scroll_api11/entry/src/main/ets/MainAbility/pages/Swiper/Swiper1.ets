@@ -18,7 +18,7 @@ import hilog from '@ohos.hilog';
 
 export class MyDataSource implements IDataSource {
   private list: number[] = []
-  private listener: DataChangeListener
+  private listener?: DataChangeListener = undefined
 
   constructor(list: number[]) {
     this.list = list

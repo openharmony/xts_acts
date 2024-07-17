@@ -19,8 +19,8 @@ import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 export default function scrollOffsetJsunit() {
-  describe('scrollOffsetJsunit', function () {
-    beforeEach(async function (done) {
+  describe('scrollOffsetJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("scrollOffsetJsunit beforeEach start");
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/Scroll/scrollOffset',
@@ -50,11 +50,11 @@ export default function scrollOffsetJsunit() {
     * @tc.type:
     * @tc.size:
     */
-    it('scrollOffsetJsunit_0100', 0, async function (done) {
+    it('scrollOffsetJsunit_0100', 0, async (done: Function) => {
       console.info('scrollOffsetJsunit_0100 START');
 
       let strJson = getInspectorByKey('Scroll_Offset');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[scrollOffsetJsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[scrollOffsetJsunit_0100] initialOffset: " + JSON.stringify(obj.$attrs.initialOffset));
       expect(obj.$attrs.initialOffset.xOffset).assertEqual("0.00vp");
@@ -70,7 +70,7 @@ export default function scrollOffsetJsunit() {
      * @tc.type:
      * @tc.size:
      */
-    it('scrollOffsetJsunit_0200', 0, async function (done) {
+    it('scrollOffsetJsunit_0200', 0, async (done: Function) => {
       console.info('scrollOffsetJsunit_0200 START');
 
       let driver = await Driver.create();
@@ -82,8 +82,8 @@ export default function scrollOffsetJsunit() {
 
       let strJson = getInspectorByKey('scroll_mess1');
       let strJson1 = getInspectorByKey('scroll_mess2');
-      let obj = JSON.parse(strJson);
-      let obj1 = JSON.parse(strJson1);
+      let obj: ESObject = JSON.parse(strJson);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[scrollOffsetJsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[scrollOffsetJsunit_0200] component obj1 is: " + JSON.stringify(obj1));
       expect(obj.$attrs.content).assertEqual('onWillScroll');

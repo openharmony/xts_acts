@@ -14,12 +14,12 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/utils/Common';
+import CommonFunc from '../../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function swiper2() {
-  describe('swiper2', function () {
-    beforeEach(async function (done) {
+  describe('swiper2', () => {
+    beforeEach(async (done: Function) => {
       console.info("swiper2 beforeEach start");
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function swiper2() {
       console.info("swiper2 foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("swiper2 after each called");
     });
@@ -50,7 +50,7 @@ export default function swiper2() {
     * @tc.size
      */
 
-    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0260', 0, async function (done) {
+    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0260', 0, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0260] START');
       await CommonFunc.sleep(2000);
       let bt = CommonFunc.getComponentRect('swiperTest2');
@@ -68,7 +68,7 @@ export default function swiper2() {
       await CommonFunc.sleep(5000);
 
       let strJson = getInspectorByKey('swiperText2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0260] obj is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content=='').assertTrue();
 

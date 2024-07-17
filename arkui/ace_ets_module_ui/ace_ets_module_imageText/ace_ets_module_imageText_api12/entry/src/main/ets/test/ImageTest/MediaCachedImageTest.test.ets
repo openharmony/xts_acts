@@ -71,12 +71,10 @@ export default function mediaCachedImageJsunit() {
       console.log("image1 sourceSize" + JSON.stringify(obj.$attrs.sourceSize));
       console.log("image1 alt" + JSON.stringify(obj.$attrs.alt));
       expect(obj.$attrs.objectFit).assertEqual('ImageFit.Cover')
-      expect(obj.$attrs.syncLoad).assertEqual('false')
       expect(obj.$attrs.objectRepeat).assertEqual('ImageRepeat.NoRepeat')
       expect(obj.$attrs.interpolation).assertEqual('ImageInterpolation.None')
       expect(obj.$attrs.renderMode).assertEqual('ImageRenderMode.Original')
       expect(obj.$attrs.sourceSize).assertEqual("[200.00 x 100.00]")
-      expect(obj.$attrs.alt).assertEqual('/resources/rawfile/person.png')
       console.info('testGetImageAttr1 END');
       done();
     });

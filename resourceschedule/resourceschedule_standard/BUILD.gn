@@ -26,6 +26,7 @@ group("resourceschedule_standard") {
       "qos_manager:ActsQoSCAPITest",
       "reminderagent:resourceschedule_reminderagent_js_test",
       "reminderagentManager:resourceschedule_reminderagentmgr_js_test",
+      "reminderagent_nop:resourceschedule_reminderagent_nop_test",
       "workscheduler:resourceschedule_workscheduler_js_test",
     ]
   }

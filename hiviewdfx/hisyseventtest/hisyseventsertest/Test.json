@@ -18,6 +18,8 @@
         {
             "type": "ShellKit",
             "run-command": [
+                "power-shell wakeup",
+                "power-shell setmode 602",
                 "service_control stop hiview"
             ],
             "teardown-command": [

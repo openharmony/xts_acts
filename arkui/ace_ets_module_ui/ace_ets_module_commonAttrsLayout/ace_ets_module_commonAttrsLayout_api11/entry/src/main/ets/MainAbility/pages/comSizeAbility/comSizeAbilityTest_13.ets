@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 import matrix4 from '@ohos.matrix4'
+
 let matrix = matrix4.init([1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0])
+
 @Entry
 @Component
 struct comSizeAbilityTest_13 {
@@ -22,20 +24,35 @@ struct comSizeAbilityTest_13 {
   scroller: Scroller = new Scroller()
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
   @State space: number = 8
+
   build() {
-    Scroll(){
+    Scroll() {
       Column({ space: 20 }) {
-        Column(){
+        Column() {
           RichText(this.data)
             .backgroundColor(0XBDDB69)
             .key("RichText_Size")
             .size({ width: 210, height: 132 })
             .translate({ x: 1, y: 1, z: 1 })
-            .scale({ x: 1, y: 1, z: 1, centerX: 1, centerY: 1 })
-            .rotate({ x: 1, y: 1, z: 1, angle: 0, centerX: 1, centerY: 1 })
+            .scale({
+              x: 1,
+              y: 1,
+              z: 1,
+              centerX: 1,
+              centerY: 1
+            })
+            .rotate({
+              x: 1,
+              y: 1,
+              z: 1,
+              angle: 0,
+              centerX: 1,
+              centerY: 1
+            })
             .transform(matrix)
         }.key('RichText_Father')
-        Column(){
+
+        Column() {
           Scroll(this.scroller) {
             Column() {
               ForEach(this.arr, (item: number) => {
@@ -55,20 +72,47 @@ struct comSizeAbilityTest_13 {
           .scrollBarColor(Color.Gray)
           .scrollBarWidth(10)
           .key("Scroll_Size")
-          .size({ width: 261, height: 140})
+          .size({ width: 261, height: 140 })
           .translate({ x: 1, y: 1, z: 1 })
-          .scale({ x: 1, y: 1, z: 1, centerX: 1, centerY: 1 })
-          .rotate({ x: 1, y: 1, z: 1, angle: 0, centerX: 1, centerY: 1 })
+          .scale({
+            x: 1,
+            y: 1,
+            z: 1,
+            centerX: 1,
+            centerY: 1
+          })
+          .rotate({
+            x: 1,
+            y: 1,
+            z: 1,
+            angle: 0,
+            centerX: 1,
+            centerY: 1
+          })
           .transform(matrix)
         }.key('Scroll_Father')
-        Column(){
+
+        Column() {
           Search()
             .backgroundColor(0XBDDB69)
             .key("Search_Size")
             .size({ width: 360, height: 240 })
             .translate({ x: 1, y: 1, z: 1 })
-            .scale({ x: 1, y: 1, z: 1, centerX: 1, centerY: 1 })
-            .rotate({ x: 1, y: 1, z: 1, angle: 0, centerX: 1, centerY: 1 })
+            .scale({
+              x: 1,
+              y: 1,
+              z: 1,
+              centerX: 1,
+              centerY: 1
+            })
+            .rotate({
+              x: 1,
+              y: 1,
+              z: 1,
+              angle: 0,
+              centerX: 1,
+              centerY: 1
+            })
             .transform(matrix)
         }.key('Search_Father')
       }.width('100%')

@@ -19,21 +19,7 @@ struct NavigationExample2 {
   private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
   @State currentIndex: number = 0
   navPathStack = new NavPathStack();
-  private value:unknown = [1,24,5,6]
-  @State Build: Array<Object> = [
-    {
-      text: 'add',
-      num: 0
-    },
-    {
-      text: 'app',
-      num: 1
-    },
-    {
-      text: 'collect',
-      num: 2
-    }
-  ]
+  private value:Object = [1,24,5,6]
 
 
   @Builder NavigationTitle() {
@@ -75,7 +61,7 @@ struct NavigationExample2 {
           .backgroundColor('#FFFFFF')
           .margin({ top: 8 })
         List({ space: 12, initialIndex: 0 }) {
-          ForEach(this.arr, (item) => {
+          ForEach(this.arr, (item: number) => {
             ListItem() {
               Text('' + item)
                 .width('90%')
@@ -86,7 +72,7 @@ struct NavigationExample2 {
                 .fontWeight(500)
                 .textAlign(TextAlign.Center)
             }.editable(true)
-          }, item => item)
+          }, (item: string) => item)
         }
         .height(324)
         .width('100%')
@@ -98,7 +84,7 @@ struct NavigationExample2 {
       .hideTitleBar(false)
       .key('navigationAdd')
       .hideToolBar(false)
-      .navDestination((name,parm)=> {
+      .navDestination((name: string, parm: Object) => {
           this.navPathStack.pushPathByName(name,parm)
           promptA.showToast({message:name})
 

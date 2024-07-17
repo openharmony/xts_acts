@@ -49,7 +49,7 @@ export default function ListDeleteTest() {
     it('ArkUI_List_Delete_0100', 0, async (done: Function) => {
       let CASE: string = 'ArkUI_List_Delete_0100'
       console.info(`${SUITE} ${CASE} START`);
-
+      await sleep(2000);
       let baseKey: string = 'MyList1_ListItem0'
       let strJson: string = getInspectorByKey(baseKey);
       console.info("the rect json is " + strJson);
@@ -59,7 +59,8 @@ export default function ListDeleteTest() {
 
       let rectCenter: number[] = getRectCenter(JSON.parse(strJson).$rect)
       let driver: Driver = Driver.create()
-      await driver.swipe(Math.round(rectCenter[0]), Math.round(rectCenter[1]), 0, Math.round(rectCenter[1]))
+      console.info("windowRect Left: " + globalThis.winLeft + ',' + "windowRect Top: " + globalThis.winTop);
+      await driver.swipe(Math.round(rectCenter[0] + globalThis.winLeft), Math.round(rectCenter[1] + globalThis.winTop), 0, Math.round(rectCenter[1]) + globalThis.winTop)
       await sleep(3000);
       let strJsonButtonDel: string = getInspectorByKey(baseKey + '_Button_Del');
 
@@ -88,10 +89,11 @@ export default function ListDeleteTest() {
 
       let rectCenter: number[] = getRectCenter(JSON.parse(strJson).$rect)
       let driver: Driver = Driver.create()
-      await driver.swipe(Math.round(rectCenter[0] - 200),
-        Math.round(rectCenter[1]),
-        Math.round(rectCenter[0] + 200),
-        Math.round(rectCenter[1]))
+      console.info("windowRect Left: " + globalThis.winLeft + ',' + "windowRect Top: " + globalThis.winTop);
+      await driver.swipe(Math.round(globalThis.winLeft + rectCenter[0] - (rectCenter[3] -rectCenter[2]) / 4),
+        Math.round(rectCenter[1] +  globalThis.winTop),
+        Math.round(globalThis.winLeft + rectCenter[0] + (rectCenter[3] -rectCenter[2]) / 4),
+        Math.round(rectCenter[1] +  globalThis.winTop))
       await sleep(3000);
       let strJsonButtonDel: string = getInspectorByKey(baseKey + '_Button_Del');
       expect(JSON.parse(strJsonButtonDel).$attrs.visibility).assertEqual("Visibility.Visible");
@@ -114,6 +116,7 @@ export default function ListDeleteTest() {
 
       let driver: Driver = Driver.create()
       await driver.delayMs(1000)
+      console.info("windowRect Left: " + globalThis.winLeft + ',' + "windowRect Top: " + globalThis.winTop);
       let baseKey: string = 'MyList5_ListItem0'
       let strJson: string = getInspectorByKey(baseKey);
 
@@ -121,8 +124,8 @@ export default function ListDeleteTest() {
       expect(JSON.parse(strJson).$attrs.endDeleteAreaDistance).assertEqual("5.00vp");
 
       let rectCenter: number[] = getRectCenter(JSON.parse(strJson).$rect)
-      await driver.swipe(Math.round(rectCenter[0] + 200), Math.round(rectCenter[1]),
-        0, Math.round(rectCenter[1]))
+      await driver.swipe(Math.round(globalThis.winLeft + rectCenter[0] + (rectCenter[3] -rectCenter[2]) / 4), Math.round(globalThis.winTop + rectCenter[1]),
+        0, Math.round(globalThis.winTop + rectCenter[1]))
       await sleep(3000);
       let strJson2: string = getInspectorByKey('MyList5ListItemOnDeleteH');
       expect(JSON.parse(strJson2).$attrs.content).assertEqual("action trigger");
@@ -148,6 +151,8 @@ function getRectCenter(rect: string) {
   return [
     Number.parseFloat(rtn[0].trim()) + (Number.parseFloat(rtn[2].trim()) - Number.parseFloat(rtn[0].trim())) / 2,
     Number.parseFloat(rtn[1].trim()) + (Number.parseFloat(rtn[3].trim()) - Number.parseFloat(rtn[1].trim())) / 2,
+    Number.parseFloat(rtn[0].trim()),
+    Number.parseFloat(rtn[2].trim()),
   ]
 }
 

@@ -14,6 +14,7 @@
  */
 import {MessageManager,Callback} from '../utils/MessageManager';
 
+type Message = boolean|string|number
 
 @Entry
 @Component
@@ -27,32 +28,32 @@ struct MarqueeExample {
   @State message2:string = "message2"
   @State message3:string = "message3"
   @State allowScale:boolean = false
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
 
   onPageShow() {
     console.info('Gauge onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'step') {
-          this.step = message.value
+          this.step = message.value as number
       }
       if (message.name == 'loop') {
-          this.loop = message.value
+          this.loop = message.value as number
       }
       if (message.name == 'src') {
-          this.src = message.value
+          this.src = message.value as string
       }
       if (message.name == 'allowScale') {
-          this.allowScale = message.value
+          this.allowScale = message.value as boolean
       }
       if (message.name == 'fromStart') {
-          this.fromStart = message.value
+          this.fromStart = message.value as boolean
       }
       if (message.name == 'start') {
-          this.start = message.value
+          this.start = message.value as boolean
       }
 
     }

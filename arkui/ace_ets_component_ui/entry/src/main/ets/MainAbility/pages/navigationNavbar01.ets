@@ -14,6 +14,8 @@
  */
 import {MessageManager,Callback} from '../utils/MessageManager';
 
+type Message = boolean|number
+
 @Entry
 @Component
 struct navigationNavbar01 {
@@ -21,7 +23,7 @@ struct navigationNavbar01 {
   @State isActive: boolean = false
   @State dex: number = 0
   @State navBarWidth: number = 100
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
   @State navMode: NavigationMode[] = [NavigationMode.Split, NavigationMode.Stack, NavigationMode.Auto]
   @State navModeIndex: number = 0
   @State hideNavBar: boolean = false
@@ -35,25 +37,25 @@ struct navigationNavbar01 {
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'navBarWidth') {
-        this.navBarWidth = message.value;
+        this.navBarWidth = message.value as number;
       }
       if (message.name == 'navModeIndex') {
-        this.navModeIndex = message.value;
+        this.navModeIndex = message.value as number;
       }
       if (message.name == 'hideNavBar') {
-        this.hideNavBar = message.value;
+        this.hideNavBar = message.value as boolean;
       }
       if (message.name == 'minContentWidth') {
-        this.minContentWidth = message.value;
+        this.minContentWidth = message.value as number;
       }
       if (message.name == 'navBarPositionIndex') {
-        this.navBarPositionIndex = message.value;
+        this.navBarPositionIndex = message.value as number;
       }
       if (message.name == 'NavigationWidth') {
-        this.NavigationWidth = message.value;
+        this.NavigationWidth = message.value as number;
       }
     }
     this.messageManager.registerCallback(callback);

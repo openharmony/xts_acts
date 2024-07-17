@@ -14,7 +14,7 @@
  */
 
 import events_emitter from '@ohos.events.emitter'
-import prompt from '@system.prompt'
+import prompt from '@ohos.prompt'
 
 @Entry
 @Preview

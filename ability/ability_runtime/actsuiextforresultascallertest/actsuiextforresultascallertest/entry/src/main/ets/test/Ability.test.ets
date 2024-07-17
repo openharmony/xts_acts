@@ -18,7 +18,9 @@ import commonEvent from '@ohos.commonEventManager';
 import { BusinessError, Callback } from '@ohos.base';
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { getContext } from '../common/getContext';
+import systemParameterEnhance from '@ohos.systemParameterEnhance';
 
+let deviceType = systemParameterEnhance.getSync('const.product.devicetype');
 let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
 let ACTS_CallFunction: commonEvent.CommonEventSubscribeInfo = {
   events: ['0100', '0200', '0300', '0400', '0500', '0600', '0700', '0800', '0900', '1000', '1100', '1200', '1300',
@@ -204,7 +206,7 @@ export default function abilityTest() {
 
     /*
      * @tc.number: SUB_Ability_AbilityRuntime_UIExtensionStartAbilityForResultAsCaller_0500
-     * @tc.name: SUB_Ability_AbilityRuntime_UIExtensionStartAbilityForResultAsCaller_0400
+     * @tc.name: SUB_Ability_AbilityRuntime_UIExtensionStartAbilityForResultAsCaller_0500
      * @tc.desc: In non-system application, calling the startAbilityForResultAsCaller interface of UIExtensionAbility,
      * the parameters are valid (want and callback parameters), and the call fails.
      * @tc.size: MediumTest
@@ -218,7 +220,7 @@ export default function abilityTest() {
         subscriber = data;
         commonEvent.subscribe(data, subscribeCallBack);
         abilityDelegator.startAbility({
-          bundleName: 'com.example.uiextensionforresultascallerother',
+          bundleName: 'com.example.uiextensionforresultascallersyspicker',
           abilityName: 'EntryAbility',
           parameters: {
             parameter: 'StartAbilityForResultAsCaller_0500'
@@ -318,6 +320,10 @@ export default function abilityTest() {
      */
     it('SUB_Ability_AbilityRuntime_UIExtensionStartAbilityForResultAsCaller_0700', 0, async (done: Function) => {
       await sleep(500);
+      if (deviceType === '2in1') {
+        done();
+        return;
+      }
       let subscriber: commonEvent.CommonEventSubscriber;
       commonEvent.createSubscriber(ACTS_CallFunction).then(async (data) => {
         subscriber = data;

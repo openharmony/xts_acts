@@ -17,7 +17,7 @@
 import Utils from '../../test/Utils';
 import webView from '@ohos.web.webview';
 import events_emitter from '@ohos.events.emitter';
-import { Driver, MouseButton } from '@ohos.UiTest';
+import { Driver, MouseButton, UiWindow  } from '@ohos.UiTest';
 
 @Entry
 @Component
@@ -69,35 +69,31 @@ struct WebViewMenuShowResult {
               break;
             }
             case "emitCopy001": {
+              let driver: Driver = Driver.create();
               this.menuShowState = 'SelectAll'
               this.userAgentPC = this.controller.getUserAgent();
               if ((this.userAgentPC).includes("PC")) {
                 this.controller.loadUrl("resource://rawfile/MenuTestPastePC.html")
+                await Utils.sleep(2000)
+                let window: UiWindow = await driver.findWindow({actived: true});
+                await window.maximize()
+                await Utils.sleep(2000)
               } else {
                 this.controller.loadUrl("resource://rawfile/MenuTestPaste.html")
               }
               await Utils.sleep(2000);
               let webRect = Utils.getComponentRect('WebViewMenuShowResultTestWebView');
-              let driver = Driver.create();
               let X = Utils.getRectHorizontalCenterX(webRect)
               let Y = Utils.getRectVerticalCenterY(webRect)
-              if ((this.userAgentPC).includes("PC")) {
-                await driver.mouseClick({ x: X + 300, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
-              } else {
-                await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
-              }
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
               await Utils.sleep(2000);
               this.menuShowState = 'Copy'
-              if ((this.userAgentPC).includes("PC")) {
-                await driver.mouseClick({ x: X + 300, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
-              } else {
-                await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
-              }
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
               await Utils.sleep(2000);
               this.menuShowState = 'copyPaste'
               await Utils.sleep(2000);
               if ((this.userAgentPC).includes("PC")) {
-                await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT)
+                await driver.mouseClick({ x: webRect.left + 120, y: webRect.top + 400 }, MouseButton.MOUSE_BUTTON_RIGHT)
               } else {
                 await driver.mouseClick({ x: webRect.left + 120, y: webRect.top + 40 }, MouseButton.MOUSE_BUTTON_RIGHT)
               }
@@ -117,26 +113,21 @@ struct WebViewMenuShowResult {
               let driver = Driver.create();
               let X = Utils.getRectHorizontalCenterX(webRect)
               let Y = Utils.getRectVerticalCenterY(webRect)
-              if ((this.userAgentPC).includes("PC")) {
-                await driver.mouseClick({ x: X + 300, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
-              } else {
-                await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
-              }
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
               await Utils.sleep(2000);
               this.menuShowState = 'Cut'
-              if ((this.userAgentPC).includes("PC")) {
-                await driver.mouseClick({ x: X + 300, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
-              } else {
-                await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
-              }
+              await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT);
               await Utils.sleep(2000);
               this.menuShowState = 'cutPaste'
               await Utils.sleep(2000);
               if ((this.userAgentPC).includes("PC")) {
-                await driver.mouseClick({ x: X, y: Y }, MouseButton.MOUSE_BUTTON_RIGHT)
+                await driver.mouseClick({ x: webRect.left + 120, y: webRect.top + 400 }, MouseButton.MOUSE_BUTTON_RIGHT)
               } else {
                 await driver.mouseClick({ x: webRect.left + 120, y: webRect.top + 40 }, MouseButton.MOUSE_BUTTON_RIGHT)
               }
+              await Utils.sleep(2000);
+              let window: UiWindow = await driver.findWindow({actived: true});
+              await window.resume();
               await Utils.sleep(2000);
               break;
             }

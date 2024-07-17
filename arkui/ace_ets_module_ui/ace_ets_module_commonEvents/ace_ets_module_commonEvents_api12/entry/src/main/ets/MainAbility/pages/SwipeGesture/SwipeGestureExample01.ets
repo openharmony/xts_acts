@@ -53,7 +53,9 @@ struct SwipeGestureExample01 {
         .gesture(
           SwipeGesture({ direction: SwipeDirection.All | SwipeDirection.Vertical | SwipeDirection.Horizontal })
             .onAction((event: GestureEvent) => {
+              console.log('SwipeGesture01 11111111111')
               if (event) {
+                console.log('SwipeGesture01 2222222222')
                 this.time = Date.now()
                 this.timestamp = event.timestamp
                 this.repeat = event.repeat + ''
@@ -85,7 +87,10 @@ struct SwipeGestureExample01 {
                 this.velocityX = event.velocityX + ''
                 this.velocityY = event.velocityY + ''
                 this.velocity = event.velocity + ''
+                console.log('SwipeGesture01 3333333333')
               }
+              console.log('SwipeGesture01 4444444444')
+
             })
         )
 

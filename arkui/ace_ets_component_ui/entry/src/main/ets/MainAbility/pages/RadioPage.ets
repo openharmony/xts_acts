@@ -14,6 +14,8 @@
  */
 import {MessageManager,Callback} from '../utils/MessageManager';
 
+type Message = string|Color
+
 @Entry
 @Component
 struct RadioPage {
@@ -21,23 +23,23 @@ struct RadioPage {
   @State radioGroup : string = 'radioGroup'
   @State text : string = 'no change'
   @State backColor : Color = Color.Blue
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
 
   onPageShow() {
     console.info('RadioPage onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'radioValue') {
-        this.radioValue = message.value
+        this.radioValue = message.value as string
       }
       if (message.name == 'radioGroup') {
-        this.radioGroup = message.value
+        this.radioGroup = message.value as string
       }
       if (message.name == 'backColor') {
-        this.backColor = message.value
+        this.backColor = message.value as Color
       }
     }
     this.messageManager.registerCallback(callback)

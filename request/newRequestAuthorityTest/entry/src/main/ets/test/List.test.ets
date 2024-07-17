@@ -19,6 +19,7 @@ import requestDownloadJSUnit from './requestDownload.test';
 import requestDownloadOneJSUnit from './requestDownload001.test';
 import requestDownloadTwoJSUnit from './requestDownload002.test';
 import requestConfigSaveas from './requestConfigSaveas.test'
+import requestUploadConfigTest from './requestUploadConfig.test'
 
 export default function testsuite() {
   requestUploadJSUnit();
@@ -27,4 +28,5 @@ export default function testsuite() {
   requestDownloadOneJSUnit();
   requestDownloadTwoJSUnit();
   requestConfigSaveas();
+  requestUploadConfigTest();
 }

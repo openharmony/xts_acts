@@ -4593,6 +4593,282 @@ static napi_value ThreadSafePriorityWithInvalidParam(napi_env env, napi_callback
     return value;
 }
 
+static napi_value CheckUnwrapFunc(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value argv[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+    const char *testStr = "test";
+    napi_wrap(
+        env, argv[0], (void*)testStr, [](napi_env env, void* data, void* hint) {}, nullptr, nullptr);
+
+    char *tmpTestStr = nullptr;
+    napi_unwrap(env, argv[0], (void **)&tmpTestStr);
+    napi_value value = 0;
+    NAPI_CALL(env, napi_create_int32(env, strcmp(tmpTestStr, testStr), &value));
+    return value;
+}
+
+static napi_value CreateSendableArrayTest(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1];
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+    NAPI_ASSERT(env, argc >= 1, "Wrong number of arguments");
+
+    napi_valuetype valuetype0;
+    NAPI_CALL(env, napi_typeof(env, args[0], &valuetype0));
+
+    NAPI_ASSERT(env, valuetype0 == napi_object, "Wrong type of arguments. Expects an array as first argument.");
+
+    napi_value ret;
+    NAPI_CALL(env, napi_create_sendable_array(env, &ret));
+
+    uint32_t length = 0;
+    NAPI_CALL(env, napi_get_array_length(env, args[0], &length));
+
+    for (uint32_t i = 0; i < length; i++) {
+        napi_value e;
+        NAPI_CALL(env, napi_get_element(env, args[0], i, &e));
+        NAPI_CALL(env, napi_set_element(env, ret, i, e));
+    }
+    return ret;
+}
+
+static napi_value CreateSendableArrayWithLengthTest(napi_env env, napi_callback_info info)
+{
+    size_t argc = 1;
+    napi_value args[1];
+    NAPI_CALL(env, napi_get_cb_info(env, info, &argc, args, nullptr, nullptr));
+    NAPI_ASSERT(env, argc >= 1, "Wrong number of arguments");
+
+    napi_valuetype valuetype0;
+    NAPI_CALL(env, napi_typeof(env, args[0], &valuetype0));
+
+    NAPI_ASSERT(env, valuetype0 == napi_object, "Wrong type of arguments. Expects an array as first argument.");
+
+    uint32_t length = 0;
+    NAPI_CALL(env, napi_get_array_length(env, args[0], &length));
+
+    napi_value result;
+    NAPI_CALL(env, napi_create_sendable_array_with_length(env, length, &result));
+
+    for (uint32_t i = 0; i < length; i++) {
+        napi_value e;
+        NAPI_CALL(env, napi_get_element(env, args[0], i, &e));
+        NAPI_CALL(env, napi_set_element(env, result, i, e));
+    }
+
+    return result;
+}
+
+static napi_value CreateSendableArrayBufferTest(napi_env env, napi_callback_info info)
+{
+    napi_value arrayBuffer = nullptr;
+    void* arrayBufferPtr = nullptr;
+    size_t arrayBufferSize = 1024;
+    napi_status status = napi_create_sendable_arraybuffer(env, arrayBufferSize, &arrayBufferPtr, &arrayBuffer);
+    NAPI_ASSERT(env, status == napi_ok, "success to napi_create_sendable_arraybuffer");
+    NAPI_ASSERT(env, arrayBuffer != nullptr, "success create_sendable_arrayBuffer");
+
+    return arrayBuffer;
+}
+
+static napi_value CreateSendableTypedArrayTest(napi_env env, napi_callback_info info)
+{
+    napi_value arrayBuffer = nullptr;
+    void* arrayBufferPtr = nullptr;
+    size_t arrayBufferSize = 16;
+    size_t typedArrayLength = 4;
+    napi_create_sendable_arraybuffer(env, arrayBufferSize, &arrayBufferPtr, &arrayBuffer);
+
+    void* tmpArrayBufferPtr = nullptr;
+    size_t arrayBufferLength = 0;
+    napi_get_arraybuffer_info(env, arrayBuffer, &tmpArrayBufferPtr, &arrayBufferLength);
+
+    NAPI_ASSERT(env, arrayBufferPtr == tmpArrayBufferPtr, "napi_get_arraybuffer_info success");
+    NAPI_ASSERT(env, arrayBufferSize ==  arrayBufferLength, "napi_create_arraybuffer success");
+
+    napi_value result;
+    napi_create_sendable_typedarray(env, napi_int32_array, typedArrayLength, arrayBuffer, 0, &result);
+
+    return result;
+}
+
+static napi_value CreateSendableObjectWithProperties(napi_env env, napi_callback_info info)
+{
+    napi_value excep;
+    NAPI_CALL(env, napi_get_and_clear_last_exception(env, &excep));
+    napi_value val_false;
+    napi_value val_true;
+    NAPI_CALL(env, napi_get_boolean(env, false, &val_false));
+    NAPI_CALL(env, napi_get_boolean(env, true, &val_true));
+    napi_property_descriptor desc1[] = {
+        DECLARE_NAPI_DEFAULT_PROPERTY("x", val_true),
+    };
+    napi_value obj1;
+    NAPI_CALL(env, napi_create_sendable_object_with_properties(env, 1, desc1, &obj1));
+    napi_valuetype valuetype1;
+    NAPI_CALL(env, napi_typeof(env, obj1, &valuetype1));
+    napi_value obj2;
+    napi_property_descriptor desc2[] = {
+        DECLARE_NAPI_DEFAULT_PROPERTY("a", val_false),
+        DECLARE_NAPI_GETTER_SETTER("b", CreateWithPropertiesTestGetter, CreateWithPropertiesTestSetter),
+        DECLARE_NAPI_DEFAULT_PROPERTY("c", obj1),
+    };
+    NAPI_CALL(env, napi_create_sendable_object_with_properties(env, 3, desc2, &obj2));  // 3 : The property count.
+    napi_valuetype valuetype2;
+    NAPI_CALL(env, napi_typeof(env, obj2, &valuetype2));
+    NAPI_ASSERT(env, valuetype1 == napi_object, "Wrong type of argment. Expects a  object.");
+    NAPI_ASSERT(env, valuetype2 == napi_object, "Wrong type of argment. Expects a  object.");
+    auto checkPropertyEqualsTo = [env] (napi_value obj, const char *keyStr, napi_value expect) -> bool {
+        napi_value result;
+        napi_get_named_property(env, obj, keyStr, &result);
+        bool equal = false;
+        napi_strict_equals(env, result, expect, &equal);
+        return equal;
+    };
+
+    bool equalRes = false;
+    // get obj1.x == true
+    equalRes = checkPropertyEqualsTo(obj1, "x", val_true);
+    NAPI_ASSERT(env, equalRes == true, "equalRes is false.");
+    // set obj1.x = false
+    NAPI_CALL(env, napi_set_named_property(env, obj1, "x", val_false));
+    // get obj1.x == false
+    equalRes = checkPropertyEqualsTo(obj1, "x", val_false);
+    NAPI_ASSERT(env, equalRes == true, "equalRes is false.");
+    // get obj2.a == false
+    equalRes = checkPropertyEqualsTo(obj2, "a", val_false);
+    NAPI_ASSERT(env, equalRes == true, "equalRes is false.");
+    // get obj2.b == false
+    equalRes = checkPropertyEqualsTo(obj2, "b", val_false);
+    NAPI_ASSERT(env, equalRes == true, "equalRes is false.");
+    // set obj2.b = true (useless)
+    NAPI_CALL(env, napi_set_named_property(env, obj2, "b", val_true));
+    // get obj2.b == false
+    equalRes = checkPropertyEqualsTo(obj2, "b", val_false);
+    NAPI_ASSERT(env, equalRes == true, "equalRes is false.");
+
+    napi_value result = 0;
+    NAPI_CALL(env, napi_create_int32(env, 0, &result));
+    return result;
+}
+
+static napi_value NapiWrapSendableTest(napi_env env, napi_callback_info info)
+{
+    napi_value testClass = nullptr;
+    napi_define_sendable_class(
+        env, "WrapSendableTestClass", NAPI_AUTO_LENGTH,
+        [](napi_env env, napi_callback_info info) -> napi_value {
+            napi_value thisVar = nullptr;
+            napi_get_cb_info(env, info, nullptr, nullptr, &thisVar, nullptr);
+
+            return thisVar;
+        },
+        nullptr, 0, nullptr, nullptr, &testClass);
+
+    napi_value instanceValue = nullptr;
+    napi_new_instance(env, testClass, 0, nullptr, &instanceValue);
+
+    const char* testStr = "wrap_sendable_test";
+    napi_wrap_sendable(
+        env, instanceValue, (void*)testStr, [](napi_env env, void* data, void* hint) {}, nullptr);
+
+    napi_value result;
+    NAPI_CALL(env, napi_create_int32(env, 0, &result));
+    return result;
+}
+
+static napi_value NapiWrapSendableWithSizeTest(napi_env env, napi_callback_info info)
+{
+    napi_value testClass = nullptr;
+    napi_define_sendable_class(
+        env, "WrapSendableWithSizeTestClass", NAPI_AUTO_LENGTH,
+        [](napi_env env, napi_callback_info info) -> napi_value {
+            napi_value thisVar = nullptr;
+            napi_get_cb_info(env, info, nullptr, nullptr, &thisVar, nullptr);
+
+            return thisVar;
+        },
+        nullptr, 0, nullptr, nullptr, &testClass);
+
+    napi_value instanceValue = nullptr;
+    napi_new_instance(env, testClass, 0, nullptr, &instanceValue);
+
+    const char* testStr = "wrap_sendable_with_size_test";
+    size_t size = sizeof(*testStr) / sizeof(char);
+    napi_wrap_sendable_with_size(
+        env, instanceValue, (void*)testStr, [](napi_env env, void* data, void* hint) {}, nullptr, size);
+
+    napi_value result;
+    NAPI_CALL(env, napi_create_int32(env, 0, &result));
+    return result;
+}
+
+static napi_value NapiUnWrapSendableTest(napi_env env, napi_callback_info info)
+{
+    napi_value testClass = nullptr;
+    napi_define_sendable_class(
+        env, "UnWrapSendableTestClass", NAPI_AUTO_LENGTH,
+        [](napi_env env, napi_callback_info info) -> napi_value {
+            napi_value thisVar = nullptr;
+            napi_get_cb_info(env, info, nullptr, nullptr, &thisVar, nullptr);
+
+            return thisVar;
+        },
+        nullptr, 0, nullptr, nullptr, &testClass);
+
+    napi_value instanceValue = nullptr;
+    napi_new_instance(env, testClass, 0, nullptr, &instanceValue);
+
+    const char* testStr = "unwrap_sendable_test";
+    size_t size = sizeof(*testStr) / sizeof(char);
+    napi_wrap_sendable_with_size(
+        env, instanceValue, (void*)testStr, [](napi_env env, void* data, void* hint) {}, nullptr, size);
+
+    const char* tmpTestStr = nullptr;
+    NAPI_CALL(env, napi_unwrap_sendable(env, instanceValue, (void**)&tmpTestStr));
+    NAPI_ASSERT(env, tmpTestStr == testStr, "napi_unwrap_sendable fail");
+
+    napi_value result;
+    NAPI_CALL(env, napi_create_int32(env, 0, &result));
+    return result;
+}
+
+static napi_value NapiRemoveWrapSendableTest(napi_env env, napi_callback_info info)
+{
+    napi_value testClass = nullptr;
+    napi_define_sendable_class(
+        env, "RemoveWrapSendableTestClass", NAPI_AUTO_LENGTH,
+        [](napi_env env, napi_callback_info info) -> napi_value {
+            napi_value thisVar = nullptr;
+            napi_get_cb_info(env, info, nullptr, nullptr, &thisVar, nullptr);
+
+            return thisVar;
+        },
+        nullptr, 0, nullptr, nullptr, &testClass);
+
+    napi_value instanceValue = nullptr;
+    napi_new_instance(env, testClass, 0, nullptr, &instanceValue);
+
+    const char* testStr = "remove_wrap_sendable_test";
+    napi_wrap_sendable(
+        env, instanceValue, (void*)testStr, [](napi_env env, void* data, void* hint) {}, nullptr);
+
+    const char* tmpTestStr = nullptr;
+    NAPI_CALL(env, napi_unwrap_sendable(env, instanceValue, (void**)&tmpTestStr));
+    NAPI_ASSERT(env, tmpTestStr == testStr, "napi_unwrap fail");
+
+    const char* tmpTestStr1 = nullptr;
+    napi_remove_wrap_sendable(env, instanceValue, (void**)&tmpTestStr1);
+    NAPI_ASSERT(env, tmpTestStr1 == testStr, "napi_remove_wrap_sendable fail 1");
+
+    napi_value result;
+    NAPI_CALL(env, napi_create_int32(env, 0, &result));
+    return result;
+}
+
 EXTERN_C_START
 
 static napi_value Init(napi_env env, napi_value exports)
@@ -4770,6 +5046,16 @@ static napi_value Init(napi_env env, napi_value exports)
         {"threadSafePriority", nullptr, ThreadSafePriority, nullptr, nullptr, nullptr, napi_default, callbackData},
         {"threadSafePriorityWithInvalidParam", nullptr, ThreadSafePriorityWithInvalidParam, nullptr, nullptr, nullptr,
             napi_default, nullptr},
+        DECLARE_NAPI_FUNCTION("checkUnwrapFunc", CheckUnwrapFunc),
+        DECLARE_NAPI_FUNCTION("createSendableArrayTest", CreateSendableArrayTest),
+        DECLARE_NAPI_FUNCTION("createSendableArrayWithLengthTest", CreateSendableArrayWithLengthTest),
+        DECLARE_NAPI_FUNCTION("createSendableArrayBufferTest", CreateSendableArrayBufferTest),
+        DECLARE_NAPI_FUNCTION("createSendableTypedArrayTest", CreateSendableTypedArrayTest),
+        DECLARE_NAPI_FUNCTION("createSendableObjectWithProperties", CreateSendableObjectWithProperties),
+        DECLARE_NAPI_FUNCTION("napiWrapSendableWithSizeTest", NapiWrapSendableWithSizeTest),
+        DECLARE_NAPI_FUNCTION("napiWrapSendableTest", NapiWrapSendableTest),
+        DECLARE_NAPI_FUNCTION("napiUnWrapSendableTest", NapiUnWrapSendableTest),
+        DECLARE_NAPI_FUNCTION("napiRemoveWrapSendableTest", NapiRemoveWrapSendableTest),
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
 

@@ -19,8 +19,8 @@ import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 
 export default function listVisibleJsunit() {
-  describe('listVisibleJsunit', function () {
-    beforeEach(async function (done) {
+  describe('listVisibleJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("listVisibleJsunit beforeEach start");
       let options: router.RouterOptions = {
         url: 'MainAbility/pages/List/listVisible',
@@ -42,7 +42,7 @@ export default function listVisibleJsunit() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info(" listVisibleJsunit after each called");
     });
@@ -55,12 +55,12 @@ export default function listVisibleJsunit() {
     * @tc.type :
     * @tc.size :
     */
-    it('listVisibleJsunit_0100', 0, async function (done) {
+    it('listVisibleJsunit_0100', 0, async (done: Function) => {
       console.info('listVisibleJsunit_0100 START');
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('listVisible_mess');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[listVisibleJsunit_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('onScrollVisibleContentChange: 2');
       console.info("[listVisibleJsunit_0100] IN_HEADER_AREA success");
@@ -72,8 +72,8 @@ export default function listVisibleJsunit() {
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('listVisible_mess');
       let strJson2 = getInspectorByKey('itemVisible_mess');
-      let obj1 = JSON.parse(strJson1);
-      let obj2 = JSON.parse(strJson2);
+      let obj1: ESObject = JSON.parse(strJson1);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[listVisibleJsunit_0100] component obj1 is: " + JSON.stringify(obj1));
       console.info("[listVisibleJsunit_0100] component obj2 is: " + JSON.stringify(obj2));
       expect(obj1.$attrs.content).assertEqual('onScrollVisibleContentChange: 1');
@@ -85,7 +85,7 @@ export default function listVisibleJsunit() {
       await button2.click();
       await CommonFunc.sleep(1000);
       let strJson3 = getInspectorByKey('listVisible_mess');
-      let obj3 = JSON.parse(strJson3);
+      let obj3: ESObject = JSON.parse(strJson3);
       console.info("[listVisibleJsunit_0100] component obj3 is: " + JSON.stringify(obj3));
       expect(obj3.$attrs.content).assertEqual('onScrollVisibleContentChange: 3');
       console.info("[listVisibleJsunit_0100] IN_FOOTER_AREA success");

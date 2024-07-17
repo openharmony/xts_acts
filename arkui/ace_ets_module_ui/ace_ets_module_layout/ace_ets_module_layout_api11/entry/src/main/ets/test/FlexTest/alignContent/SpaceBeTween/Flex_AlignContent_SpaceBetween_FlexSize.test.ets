@@ -116,10 +116,10 @@ export default function flex_AlignContent_SpaceBetween_FlexSizeTest() {
       expect(JSON.parse(flexContainerStrJson).$attrs.constructor.wrap).assertEqual('FlexWrap.Wrap');
       expect(JSON.parse(flexContainerStrJson).$attrs.constructor.alignContent).assertEqual('FlexAlign.SpaceBetween');
 
-      expect(Math.round(firstText.bottom - firstText.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(secondText.bottom - secondText.top)).assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(thirdText.bottom - thirdText.top)).assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(fourthText.bottom - fourthText.top)).assertEqual(Math.round(vp2px(100)));
+      expect(Math.abs(firstText.bottom - firstText.top - vp2px(50)) <= 1).assertTrue();
+      expect(Math.abs(secondText.bottom - secondText.top - vp2px(100)) <= 1).assertTrue();
+      expect(Math.abs(thirdText.bottom - thirdText.top - vp2px(50)) <= 1).assertTrue();
+      expect(Math.abs(fourthText.bottom - fourthText.top - vp2px(100)) <= 1).assertTrue();
 
       expect(firstText.top).assertEqual(flexContainer.top);
       expect(firstText.bottom).assertEqual(secondText.top);

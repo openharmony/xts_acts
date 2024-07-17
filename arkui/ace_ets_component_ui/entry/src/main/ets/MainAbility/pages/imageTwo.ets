@@ -14,6 +14,7 @@
  */
 import {MessageManager,Callback} from '../utils/MessageManager';
 
+type Message = boolean|number|ImageRenderMode|ImageInterpolation|Color|CopyOptions
 
 @Entry
 @Component
@@ -26,35 +27,35 @@ struct ImageExample2 {
   @State copyOption:CopyOptions = CopyOptions.None
   @State is_draggable:boolean = false
   
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
 
   onPageShow() {
     console.info('Image2 onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'renderMode') {
-          this.renderMode = message.value
+          this.renderMode = message.value as ImageRenderMode
       }
       if (message.name == 'widthS') {
-          this.widthS = message.value
+          this.widthS = message.value as number
       }
       if (message.name == 'heightS') {
-          this.heightS = message.value
+          this.heightS = message.value as number
       }
       if (message.name == 'interpolation') {
-          this.interpolation = message.value
+          this.interpolation = message.value as ImageInterpolation
       }
       if (message.name == 'fillColor') {
-          this.fillColor = message.value
+          this.fillColor = message.value as Color
       }
       if (message.name == 'draggable') {
-          this.is_draggable = message.value
+          this.is_draggable = message.value as boolean
       }
       if (message.name == 'copyOption') {
-          this.copyOption = message.value
+          this.copyOption = message.value as CopyOptions
       }
     }
     this.messageManager.registerCallback(callback)

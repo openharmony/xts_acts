@@ -59,13 +59,13 @@ export default function PanGestureHandlerTest() {
       console.info('PanGestureHandler_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
-      let colum = CommonFunc.getComponentRect('PanGestureHandlerColumn');
+      let colum = CommonFunc.getComponentRectOnScreen('PanGestureHandlerColumn');
       let top = colum.top
       let bottom = colum.bottom
       let left = colum.left
       let right = colum.right
-      await driver.swipe(Math.round(left + 20), Math.round((top + bottom) / 2),
-        Math.round(right - 20), Math.round((top + bottom) / 2));
+      await driver.swipe(Math.round(left + 100), Math.round((top + bottom) / 2),
+        Math.round(right - 100), Math.round((top + bottom) / 2));
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('PanGestureHandler1');
       let obj = JSON.parse(strJson);

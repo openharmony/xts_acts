@@ -26,6 +26,7 @@ const KEY_TEST_STRING_ELEMENT = 'key_test_string';
 const KEY_TEST_NUMBER_ARRAY_ELEMENT = 'key_test_number_array';
 const KEY_TEST_STRING_ARRAY_ELEMENT = 'key_test_string_array';
 const KEY_TEST_BOOL_ARRAY_ELEMENT = 'key_test_bool_array';
+const KEY_TEST_BIGINT = 'key_test_bigint';
 let mPreferences;
 
 export default function preferencesPromiseTest(){
@@ -493,6 +494,95 @@ export default function preferencesPromiseTest(){
                 expect(null).assertFail();
                 done();
             });
+        })
+
+
+        /**
+         * @tc.name testPreferencesPutBigIntPromise0100
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceEtsApiPromiseTest_2200
+         * @tc.desc put Bigint negative test
+         * * @tc.desc get string promise interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('testPreferencesPutBigIntPromise0100', 0, async function () {
+            let bigint = BigInt("-12345678912345678912345678971234567123456");
+            await mPreferences.put(KEY_TEST_BIGINT, bigint);
+            let pre = await mPreferences.get(KEY_TEST_BIGINT, BigInt(0));
+            expect(bigint === pre).assertTrue();
+            await mPreferences.flush();
+            await dataPreferences.removePreferencesFromCache(context, NAME);
+            mPreferences = null;
+            mPreferences = await dataPreferences.getPreferences(context, NAME);
+            let pre2 = await mPreferences.get(KEY_TEST_BIGINT, BigInt(0));
+            expect(bigint === pre2).assertTrue();
+        })
+
+        /**
+         * @tc.name testPreferencesPutBigIntPromise0200
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceEtsApiPromiseTest_2300
+         * @tc.desc put Bigint positive test
+         * @tc.desc get string promise interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('testPreferencesPutBigIntPromise0200', 0, async function () {
+            let bigint = BigInt("12345678912345678912345678971234567123456");
+            await mPreferences.put(KEY_TEST_BIGINT, bigint);
+            let pre = await mPreferences.get(KEY_TEST_BIGINT, BigInt(0));
+            expect(bigint === pre).assertTrue();
+            await mPreferences.flush();
+            await dataPreferences.removePreferencesFromCache(context, NAME);
+            mPreferences = null;
+            mPreferences = await dataPreferences.getPreferences(context, NAME);
+            let pre2 = await mPreferences.get(KEY_TEST_BIGINT, BigInt(0));
+            expect(bigint === pre2).assertTrue();
+        })
+
+        /**
+         * @tc.name testPreferencesPutBigIntPromise0300
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceEtsApiPromiseTest_2400
+         * @tc.desc put Bigint boundary value test
+         * @tc.desc get string promise interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('testPreferencesPutBigIntPromise0300', 0, async function () {
+            let bigint = BigInt(Number.MAX_SAFE_INTEGER);
+            await mPreferences.put(KEY_TEST_BIGINT, bigint);
+            let pre = await mPreferences.get(KEY_TEST_BIGINT, BigInt(0));
+            expect(bigint === pre).assertTrue();
+            await mPreferences.flush();
+            await dataPreferences.removePreferencesFromCache(context, NAME);
+            mPreferences = null;
+            mPreferences = await dataPreferences.getPreferences(context, NAME);
+            let pre2 = await mPreferences.get(KEY_TEST_BIGINT, BigInt(0));
+            expect(bigint === pre2).assertTrue();
+        })
+
+        /**
+         * @tc.name testPreferencesPutBigIntPromise0400
+         * @tc.number SUB_DistributedData_Preference_SDK_PreferenceEtsApiPromiseTest_2500
+         * @tc.desc put Bigint boundary value test
+         * @tc.desc get string promise interface test
+         * @tc.size MediumTest
+         * @tc.type Function
+         * @tc.level Level 2
+         */
+        it('testPreferencesPutBigIntPromise0400', 0, async function () {
+            let bigint = BigInt(Number.MIN_SAFE_INTEGER);
+            await mPreferences.put(KEY_TEST_BIGINT, bigint);
+            let pre = await mPreferences.get(KEY_TEST_BIGINT, BigInt(0));
+            expect(bigint === pre).assertTrue();
+            await mPreferences.flush();
+            await dataPreferences.removePreferencesFromCache(context, NAME);
+            mPreferences = null;
+            mPreferences = await dataPreferences.getPreferences(context, NAME);
+            let pre2 = await mPreferences.get(KEY_TEST_BIGINT, BigInt(0));
+            expect(bigint === pre2).assertTrue();
         })
     })
 }

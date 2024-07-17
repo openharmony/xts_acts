@@ -21,6 +21,9 @@ class Model2 {
   }
 }
 
+interface ValuePropTwoType {
+  value: number
+}
 
 let storage220 = new LocalStorage()
 
@@ -32,14 +35,14 @@ struct LocalStoagePropTwo {
   @LocalStorageProp('Prop3') storProp3: boolean = true
   @LocalStorageProp('Prop4') storProp4: string = 'abc'
   @LocalStorageProp('Prop5') storProp5: He2 = He2.Q
-  @LocalStorageProp('Prop6') storProp6: object = { value : 66 }
+  @LocalStorageProp('Prop6') storProp6: object = { value : 66 } as ValuePropTwoType
 
   @LocalStorageProp('Prop7') storProp7: Array<Model2> = [new Model2(66), new Model2(67)]
   @LocalStorageProp('Prop8') storProp8: Array<number> = [1, 2]
   @LocalStorageProp('Prop9') storProp9: Array<boolean> = [true, false]
   @LocalStorageProp('Prop10') storProp10: Array<string> = ['abc','efd']
   @LocalStorageProp('Prop11') storProp11: Array<He2> = [He2.Q, He2.W]
-  @LocalStorageProp('Prop12') storProp12: Array<object> = [{value:66}, {value:67}]
+  @LocalStorageProp('Prop12') storProp12: Array<object> = [{value:66}, {value:67}] as ValuePropTwoType[]
   build() {
     Column({ space: 15 }) {
       Text(`Prop1:${JSON.stringify(storage220.get('Prop1'))}, Prop2:${storage220.get('Prop2')}, Prop3:${storage220.get('Prop3')}, Prop4:${storage220.get('Prop4')}, Prop5:${storage220.get('Prop5')}, Prop6:${JSON.stringify(storage220.get('Prop6'))}, Prop7:${JSON.stringify(storage220.get('Prop7'))}, Prop8:${JSON.stringify(storage220.get('Prop8'))}, Prop9:${JSON.stringify(storage220.get('Prop9'))}, Prop10:${JSON.stringify(storage220.get('Prop10'))}, Prop11:${JSON.stringify(storage220.get('Prop11'))}, Prop12:${JSON.stringify(storage220.get('Prop12'))}`)

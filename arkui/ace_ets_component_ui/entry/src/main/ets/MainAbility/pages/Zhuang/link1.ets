@@ -23,7 +23,7 @@ struct  CompD{
       Column({ space: 20 }) {
         Text("Link子组件颜色undefined-->Pink")
         Button('button')
-          .backgroundColor(this.color1)
+          .backgroundColor(this.color1!)
           .onClick(() => {
             this.color1 = Color.Pink
           })
@@ -31,7 +31,7 @@ struct  CompD{
 
         Text("Link子组件颜色null-->Pink")
         Button('button')
-          .backgroundColor(this.color2)
+          .backgroundColor(this.color2!)
           .onClick(() => {
             this.color2 = Color.Pink
           })
@@ -39,7 +39,7 @@ struct  CompD{
 
         Text("Link子组件文本undefined-->100")
         Button('button')
-          .fontSize(this.number1)
+          .fontSize(this.number1!)
           .onClick(() => {
             this.number1 = 100
           })
@@ -47,7 +47,7 @@ struct  CompD{
 
         Text("Link子组件文本null-->100")
         Button('button')
-          .fontSize(this.number2)
+          .fontSize(this.number2!)
           .onClick(() => {
             this.number2 = 100
           })
@@ -81,7 +81,7 @@ struct In {
           Column({ space: 20 }) {
             Text("Link父组件颜色undefined-->Pink")
             Button('button')
-              .backgroundColor(this.color1)
+              .backgroundColor(this.color1!)
               .onClick(() => {
                 this.color1 = Color.Pink
               })
@@ -89,7 +89,7 @@ struct In {
 
             Text("Link父组件颜色null-->Pink")
             Button('button')
-              .backgroundColor(this.color2)
+              .backgroundColor(this.color2!)
               .onClick(() => {
                 this.color2 = Color.Pink
               })
@@ -97,7 +97,7 @@ struct In {
 
             Text("Link父组件文本undefined-->100")
             Button('button')
-              .fontSize(this.number1)
+              .fontSize(this.number1!)
               .onClick(() => {
                 this.number1 = 100
               })
@@ -105,7 +105,7 @@ struct In {
 
             Text("Link父组件文本null-->100")
             Button('button')
-              .fontSize(this.number2)
+              .fontSize(this.number2!)
               .onClick(() => {
                 this.number2 = 100
               })

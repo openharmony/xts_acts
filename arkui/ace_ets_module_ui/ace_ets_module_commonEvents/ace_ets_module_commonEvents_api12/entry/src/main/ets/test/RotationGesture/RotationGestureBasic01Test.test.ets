@@ -219,30 +219,30 @@ export default function RotationGestureBasic01Test() {
       await CommonFunc.sleep(200);
       let text18 = getInspectorByKey('RotationGestureBasic01_target_area_position_x');
       let obj18 = JSON.parse(text18);
-      console.log('RotationGestureBasic01Test_0010 obj18 $attrs content',vp2px(Number(obj18.$attrs.content)),areaObj.left-FatherObj.left)
+      console.log('RotationGestureBasic01Test_0010 obj18 $attrs content',vp2px(Number(obj18.$attrs.content)),areaObj1.left-FatherObj.left)
       console.log('RotationGestureBasic01Test_0010 obj18 $attrs position_x',obj18.$attrs.content, Number(obj18.$attrs.content), vp2px(Number(obj18.$attrs.content)))
-      expect(Math.abs(Math.round((vp2px(Number(obj18.$attrs.content)))- (areaObj.left-FatherObj.left))) <= 1).assertTrue();
+      expect(Math.abs(Math.round((vp2px(Number(obj18.$attrs.content)))- (areaObj1.left-FatherObj.left))) <= 1).assertTrue();
 
       await CommonFunc.sleep(200);
       let text19 = getInspectorByKey('RotationGestureBasic01_target_area_position_y');
       let obj19 = JSON.parse(text19);
-      console.log('RotationGestureBasic01Test_0010 obj19 $attrs content',vp2px(Number(obj19.$attrs.content)),areaObj.top-FatherObj.top)
+      console.log('RotationGestureBasic01Test_0010 obj19 $attrs content',vp2px(Number(obj19.$attrs.content)),areaObj1.top-FatherObj.top)
       console.log('RotationGestureBasic01Test_0010 obj19 $attrs position_y',obj19.$attrs.content, Number(obj19.$attrs.content), vp2px(Number(obj19.$attrs.content)))
-      expect(Math.abs(Math.round((vp2px(Number(obj19.$attrs.content)))- (areaObj.top-FatherObj.top))) <= 1).assertTrue();
+      expect(Math.abs(Math.round((vp2px(Number(obj19.$attrs.content)))- (areaObj1.top-FatherObj.top))) <= 1).assertTrue();
 
       await CommonFunc.sleep(200);
       let text20 = getInspectorByKey('RotationGestureBasic01_target_area_globalPosition_x');
       let obj20 = JSON.parse(text20);
-      console.log('RotationGestureBasic01Test_0010 obj20 $attrs content',vp2px(Number(obj20.$attrs.content)),areaObj.left)
+      console.log('RotationGestureBasic01Test_0010 obj20 $attrs content',vp2px(Number(obj20.$attrs.content)),areaObj1.left)
       console.log('RotationGestureBasic01Test_0010 obj20 $attrs area_globalPosition_x',obj20.$attrs.content, Number(obj20.$attrs.content), vp2px(Number(obj20.$attrs.content)))
-      expect(Math.abs(Math.round((vp2px(Number(obj20.$attrs.content)))- (areaObj.left))) <= 1).assertTrue();
+      expect(Math.abs(Math.round((vp2px(Number(obj20.$attrs.content)))- (areaObj1.left))) <= 1).assertTrue();
 
       await CommonFunc.sleep(200);
       let text21 = getInspectorByKey('RotationGestureBasic01_target_area_globalPosition_y');
       let obj21 = JSON.parse(text21);
-      console.log('RotationGestureBasic01Test_0010 obj21 $attrs content',vp2px(Number(obj21.$attrs.content)),areaObj.top)
+      console.log('RotationGestureBasic01Test_0010 obj21 $attrs content',vp2px(Number(obj21.$attrs.content)),areaObj1.top)
       console.log('RotationGestureBasic01Test_0010 obj21 $attrs area_globalPosition_y',obj21.$attrs.content, Number(obj21.$attrs.content), vp2px(Number(obj21.$attrs.content)))
-      expect(Math.abs(Math.round((vp2px(Number(obj21.$attrs.content)))- (areaObj.top))) <= 1).assertTrue();
+      expect(Math.abs(Math.round((vp2px(Number(obj21.$attrs.content)))- (areaObj1.top))) <= 1).assertTrue();
 
       await CommonFunc.sleep(200);
       let text22 = getInspectorByKey('RotationGestureBasic01_source');

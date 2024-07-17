@@ -30,7 +30,7 @@ struct ScrollBarPage {
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback:Callback = (message: ESObject) => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'scroller') {
         this.scroller = message.value
@@ -56,7 +56,7 @@ struct ScrollBarPage {
       Stack({ alignContent: Alignment.End }) {
         Scroll(this.scroller) {
           Flex({ direction: FlexDirection.Column }) {
-            ForEach(this.arr, (item) => {
+            ForEach(this.arr, (item: number) => {
               Row() {
                 Text(item.toString())
                   .width('90%')
@@ -67,7 +67,7 @@ struct ScrollBarPage {
                   .textAlign(TextAlign.Center)
                   .margin({ top: 5 })
               }
-            }, item => item)
+            }, (item: string) => item)
           }.margin({ left: 52 })
         }
         .scrollBar(BarState.Off)

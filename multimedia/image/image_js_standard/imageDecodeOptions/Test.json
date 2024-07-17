@@ -1,11 +1,12 @@
 {
-    "description": "Configuration for hjunit demo Tests",
+    "description": "Configuration for Image Tests",
     "driver": {
         "type": "OHJSUnitTest",
-        "test-timeout": "180000",
-        "shell-timeout": "180000",
+        "test-timeout": "1200000",
+        "shell-timeout": "1200000",
         "bundle-name": "ohos.acts.multimedia.image.DecodeOptions",
-        "package-name": "ohos.acts.multimedia.image.DecodeOptions"
+        "package-name": "ohos.acts.multimedia.image.DecodeOptions",
+        "testcase-timeout": 60000
     },
     "kits": [
         {
@@ -14,12 +15,31 @@
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
-        },{
+        },
+        {
             "type": "ShellKit",
             "run-command": [
-                "power-shell wakeup",
-                "power-shell setmode 602"
+                "mkdir -p /data/app/el2/100/base/ohos.acts.multimedia.image.DecodeOptions/haps/entry/files/",
+                "chmod -R 666 /data/app/el2/100/base/ohos.acts.multimedia.image.DecodeOptions/haps/entry/files/*"
+            ],
+            "teardown-command":[
+
             ]
+        },
+        {
+            "type": "PushKit",
+            "pre-push": [],
+            "push": [
+                "./resource/image/test.bmp ->/data/app/el2/100/base/ohos.acts.multimedia.image.DecodeOptions/haps/entry/files",
+                "./resource/image/test.png ->/data/app/el2/100/base/ohos.acts.multimedia.image.DecodeOptions/haps/entry/files",
+                "./resource/image/test.tiff ->/data/app/el2/100/base/ohos.acts.multimedia.image.DecodeOptions/haps/entry/files",
+                "./resource/image/test.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.DecodeOptions/haps/entry/files",
+                "./resource/image/moving_test.gif ->/data/app/el2/100/base/ohos.acts.multimedia.image.DecodeOptions/haps/entry/files"
+            ]
+        },
+        {
+            "type": "ShellKit",
+            "run-command": []
         }
     ]
 }

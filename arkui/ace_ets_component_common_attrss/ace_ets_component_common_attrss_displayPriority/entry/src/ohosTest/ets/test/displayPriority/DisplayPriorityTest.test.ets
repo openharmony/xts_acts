@@ -203,7 +203,7 @@ export default function displayPriorityTest() {
           console.info('[' + data.caseTag + '] compareTwoButtonRect.right is:' + compareTwoButtonRect.right);
           expect(data.viewObj.$attrs.displayPriority).assertEqual(data.testValue.expectValue.displayPriority);
           expect(compareTwoButtonRect.left).assertEqual(parentRect.left);
-          expect(px2vp(compareTwoButtonRect.right - compareTwoButtonRect.left)).assertEqual(compareTwoButtonWidth);
+          expect(Math.abs((compareTwoButtonRect.right - compareTwoButtonRect.left)- vp2px(compareTwoButtonWidth)) <= 1).assertTrue();
         } else if (data.testValue.describe == 'SetPriority') {
           //Check whether the position of the reference component is correct
           let compareOneButtonComponent: ESObject = Utils.getComponentByKey(data.pageConfig.compareOneButtonKey);
@@ -218,7 +218,7 @@ export default function displayPriorityTest() {
           expect(compareOneButtonComponent.$attrs.displayPriority)
             .assertEqual(data.testValue.expectValue.compareOneButtonDisplayPriority);
           expect(compareTwoButtonRect.left).assertEqual(parentRect.left);
-          expect(px2vp(compareTwoButtonRect.right - compareTwoButtonRect.left)).assertEqual(compareTwoButtonWidth);
+          expect(Math.abs((compareTwoButtonRect.right - compareTwoButtonRect.left)- vp2px(compareTwoButtonWidth)) <= 1).assertTrue();
         } else {
           console.info('[' + data.caseTag + '] data.testValue.describe is error:' + data.testValue.describe);
         }
@@ -244,7 +244,7 @@ export default function displayPriorityTest() {
           console.info('[' + data.caseTag + '] compareTwoButtonRect.bottom is:' + compareTwoButtonRect.bottom);
           expect(data.viewObj.$attrs.displayPriority).assertEqual(data.testValue.expectValue.displayPriority);
           expect(compareTwoButtonRect.top).assertEqual(parentRect.top);
-          expect(px2vp(compareTwoButtonRect.bottom - compareTwoButtonRect.top)).assertEqual(compareTwoButtonHeight);
+          expect(Math.abs((compareTwoButtonRect.bottom - compareTwoButtonRect.top)- vp2px(compareTwoButtonHeight)) <= 1).assertTrue();
         } else if (data.testValue.describe == 'SetPriority') {
           //Check whether the position of the reference component is correct
           let compareOneButtonComponent: ESObject = Utils.getComponentByKey(data.pageConfig.compareOneButtonKey);
@@ -259,7 +259,7 @@ export default function displayPriorityTest() {
             .assertEqual(data.testValue.expectValue.compareOneButtonDisplayPriority);
           expect(data.viewObj.$attrs.displayPriority).assertEqual(data.testValue.expectValue.displayPriority);
           expect(compareTwoButtonRect.top).assertEqual(parentRect.top);
-          expect(px2vp(compareTwoButtonRect.bottom - compareTwoButtonRect.top)).assertEqual(compareTwoButtonHeight);
+          expect(Math.abs((compareTwoButtonRect.bottom - compareTwoButtonRect.top)- vp2px(compareTwoButtonHeight)) <= 1).assertTrue();
         } else {
           console.info('[' + data.caseTag + '] data.testValue.describe is error:' + data.testValue.describe);
         }

@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -80,19 +79,26 @@ struct ImageAnimatorExampleu {
         })
 
       Row() {
-        Button('start').width(100).padding(5).onClick(() => {
+        Button('start')
+          .width(100)
+          .padding(5)
+          .onClick(() => {
           this.state = AnimationStatus.Running
         })
 
-        Button('pause').key('button2').width(100).padding(5).onClick(() => {
+        Button('pause')
+          .key('button2')
+          .width(100)
+          .padding(5)
+          .onClick(() => {
           this.state = AnimationStatus.Paused
           try {
-            var backData = {
+            let backData:events_emitter.EventData = {
               data: {
                 "animationStatus": this.state,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 56,
               priority: events_emitter.EventPriority.LOW
             }
@@ -103,15 +109,19 @@ struct ImageAnimatorExampleu {
           }
         })
 
-        Button('stop').key('button3').width(100).padding(5).onClick(() => {
+        Button('stop')
+          .key('button3')
+          .width(100)
+          .padding(5)
+          .onClick(() => {
           this.state = AnimationStatus.Stopped
           try {
-            var backData = {
+            let backData:events_emitter.EventData = {
               data: {
                 "animationStatus": this.state,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 57,
               priority: events_emitter.EventPriority.LOW
             }
@@ -124,16 +134,28 @@ struct ImageAnimatorExampleu {
       }
 
       Row() {
-        Button('reverse').width(100).padding(5).onClick(() => {
+        Button('reverse')
+          .width(100)
+          .padding(5)
+          .onClick(() => {
           this.reverse = !this.reverse
         })
-        Button('once').width(100).padding(5).onClick(() => {
+        Button('once')
+          .width(100)
+          .padding(5)
+          .onClick(() => {
           this.iterations = 1
         })
-        Button('iteration').width(100).padding(5).onClick(() => {
+        Button('iteration')
+          .width(100)
+          .padding(5)
+          .onClick(() => {
           this.iterations = -1
         })
       }
-    }.width('100%').height('100%').backgroundColor(0xF1F3F5)
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xF1F3F5)
   }
 }

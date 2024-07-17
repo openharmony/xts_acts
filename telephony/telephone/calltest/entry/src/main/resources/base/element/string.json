@@ -1,15 +1,15 @@
 {
   "string": [
     {
-      "name": "module_test_desc",
-      "value": "test ability description"
+      "name": "module_desc",
+      "value": "module description"
     },
     {
-      "name": "TestAbility_desc",
-      "value": "the test ability"
+      "name": "EntryAbility_desc",
+      "value": "description"
     },
     {
-      "name": "TestAbility_label",
+      "name": "EntryAbility_label",
       "value": "label"
     }
   ]

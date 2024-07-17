@@ -15,8 +15,8 @@
 @Entry
 @Component
 struct aboutToAppearFalse {
-  private iconStr: ResourceStr = $r("app.media.icon")
-  @State isShown: boolean = false
+  private iconStr: ResourceStr = $r("app.media.icon");
+  @State isShown: boolean = false;
   @State arr: Array<String> = [];
 
   @Builder
@@ -27,7 +27,6 @@ struct aboutToAppearFalse {
       MenuItem({ startIcon: this.iconStr, content: "菜单选项" })
     }
   }
-
 
   build() {
     Column({ space: 50 }) {
@@ -40,10 +39,10 @@ struct aboutToAppearFalse {
             .margin(100)
             .fontSize(30)
             .bindContextMenu(this.isShown, this.MyMenu, {
-              aboutToAppear: ()=>{
+              aboutToAppear: () => {
                 this.arr.push("aboutToAppear");
               },
-              onAppear: ()=>{
+              onAppear: () => {
                 this.arr.push("onAppear");
                 this.isShown = false;
               }
@@ -51,7 +50,7 @@ struct aboutToAppearFalse {
           Button('click')
             .margin(30)
             .id("aboutToAppearFalse")
-            .onClick(()=>{
+            .onClick(() => {
               this.isShown = !this.isShown;
             })
 

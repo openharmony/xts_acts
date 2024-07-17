@@ -42,7 +42,7 @@ struct ViewA {
             Column(){
               Text("type-->undefined")
               Button('button')
-                .type(this.a.type1)
+                .type(this.a.type1!)
                 .onClick(() => {
                   this.a.type1 = undefined
                 })
@@ -51,7 +51,7 @@ struct ViewA {
             Column(){
               Text("type-->null")
               Button('button')
-                .type(this.a.type2)
+                .type(this.a.type2!)
                 .onClick(() => {
                   this.a.type2 = null
                 })
@@ -65,7 +65,7 @@ struct ViewA {
             Column(){
               Text("文本10-->undefined")
               Button('button')
-                .fontSize(this.a.number1)
+                .fontSize(this.a.number1!)
                 .onClick(() => {
                   this.a.number1 = undefined
                 })
@@ -75,7 +75,7 @@ struct ViewA {
             Column(){
               Text("文本10-->null")
               Button('button')
-                .fontSize(this.a.number2)
+                .fontSize(this.a.number2!)
                 .onClick(() => {
                   this.a.number2 = null
                 })
@@ -104,7 +104,7 @@ struct ViewB {
               Column(){
                 Text("父type-->undefined")
                 Button('button')
-                  .type(this.b.type1)
+                  .type(this.b.type1!)
                   .onClick(() => {
                     this.b.type1 = undefined
                   })
@@ -113,7 +113,7 @@ struct ViewB {
               Column(){
                 Text("父type-->null")
                 Button('button')
-                  .type(this.b.type2)
+                  .type(this.b.type2!)
                   .onClick(() => {
                     this.b.type2 = null
                   })
@@ -126,7 +126,7 @@ struct ViewB {
               Column(){
                 Text("父文本10-->undefined")
                 Button('button')
-                  .fontSize(this.b.number1)
+                  .fontSize(this.b.number1!)
                   .onClick(() => {
                     this.b.number1 = undefined
                   })
@@ -136,7 +136,7 @@ struct ViewB {
               Column(){
                 Text("父文本10-->null")
                 Button('button')
-                  .fontSize(this.b.number2)
+                  .fontSize(this.b.number2!)
                   .onClick(() => {
                     this.b.number2 = null
                   })

@@ -17,6 +17,7 @@ import router from '@ohos.router'
 import {UiDriver, UiComponent, BY, Driver, Component, ON} from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
 import input from '@ohos.multimodalInput.keyCode';
+import { BusinessError } from '@ohos.base';
 
 export default function KeyboardShortcutJsunit() {
 
@@ -24,10 +25,10 @@ export default function KeyboardShortcutJsunit() {
   const baseEvent1 = 35872
   const baseEvent2 = 35873
 
-  describe('KeyboardShortcutJsunit', function () {
+  describe('KeyboardShortcutJsunit', () => {
 
-    beforeEach(async function (done) {
-      let options = {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/KeyboardShortcut",
       }
       try {
@@ -35,7 +36,7 @@ export default function KeyboardShortcutJsunit() {
         if (pages == null || !("KeyboardShortcut" == pages.name)) {
           await router.pushUrl(options).then(()=>{
             console.info(`${SUITE} router.pushUrl success`);
-          }).catch(err => {
+          }).catch((err: BusinessError) => {
             console.error(`${SUITE} router.pushUrl failed, code is ${err.code}, message is ${err.message}`);
           })
         }
@@ -53,16 +54,16 @@ export default function KeyboardShortcutJsunit() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('ArkUI_KeyboardShortcut_0158', 0, async function (done) {
+    it('ArkUI_KeyboardShortcut_0158', 0, async (done: Function) => {
       let CASE = 'ArkUI_KeyboardShortcut_0158'
       console.info(`${SUITE} ${CASE} START`);
 
-      let callback = (event) => {
-        expect(event.data.msg).assertEqual('Ctrl_TAB');
-        console.info(`${SUITE} ${CASE} event.data.msg:` + event.data.msg);
+      let callback = (event: events_emitter.EventData) => {
+        expect(event.data?.msg).assertEqual('Ctrl_TAB');
+        console.info(`${SUITE} ${CASE} event.data.msg:` + event.data?.msg);
         done();
       }
-      let event = {
+      let event: events_emitter.InnerEvent = {
         eventId: baseEvent1,
         priority: events_emitter.EventPriority.LOW
       }
@@ -80,16 +81,16 @@ export default function KeyboardShortcutJsunit() {
     * @tc.type       : Function
     * @tc.level      : Level 1
     */
-    it('ArkUI_KeyboardShortcut_0159', 0, async function (done) {
+    it('ArkUI_KeyboardShortcut_0159', 0, async (done: Function) => {
       let CASE = 'ArkUI_KeyboardShortcut_0159'
       console.info(`${SUITE} ${CASE} START`);
 
-      let callback = (event) => {
-        expect(event.data.msg).assertEqual('Shift_left');
-        console.info(`${SUITE} ${CASE} event.data.msg:` + event.data.msg);
+      let callback = (event: events_emitter.EventData) => {
+        expect(event.data?.msg).assertEqual('Shift_left');
+        console.info(`${SUITE} ${CASE} event.data.msg:` + event.data?.msg);
         done();
       }
-      let event = {
+      let event: events_emitter.InnerEvent = {
         eventId: baseEvent2,
         priority: events_emitter.EventPriority.LOW
       }

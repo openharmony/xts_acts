@@ -13,18 +13,22 @@
  * limitations under the License.
  */
 AppStorage.clear()
-AppStorage.setOrCreate('PropA',47)
-let storage22 = new LocalStorage({"PropA":47})
-let s = new LocalStorage({"PropB":32})
+AppStorage.setOrCreate('propA',47)
+interface LocalStorageProp22 {
+  propA?: number
+  propB?: number
+}
+let storage22 = new LocalStorage({'propA':47} as LocalStorageProp22)
+let s = new LocalStorage({'propB':32} as LocalStorageProp22)
 
 @Entry(storage22)
 @Component
 struct StorageProp22 {
-  @LocalStorageProp('PropA') storProp: number = 12;
-  @State ku: number = storage22.get('PropA')
+  @LocalStorageProp('propA') storProp: number = 12;
+  @State ku: number|undefined = storage22.get('propA')
 
-  @LocalStorageProp('PropB') storPropB: number = 4;
-  @State kuB: number = storage22.get('PropB')
+  @LocalStorageProp('propB') storPropB: number = 4;
+  @State kuB: number|undefined = storage22.get('propB')
 
 
   build() {
@@ -34,11 +38,11 @@ struct StorageProp22 {
       Text(`当前值为${this.storProp}`).margin(10)
         .key('text_sp')
 
-      Button(`button1`).margin(10).width("100%")
+      Button(`button1`).margin(10).width('100%')
         .key('btn_lse1')
         .onClick(() => {
           this.storProp += 1
-          this.ku = storage22.get('PropA')
+          this.ku = storage22.get('propA')
         })
 
 
@@ -47,11 +51,11 @@ struct StorageProp22 {
       Text(`当前值为${this.storPropB}`).margin(10)
         .key('text_spb')
 
-      Button(`button2`).margin(10).width("100%")
+      Button(`button2`).margin(10).width('100%')
         .key('btn_lse2')
         .onClick(() => {
           this.storPropB += 1
-          this.kuB = storage22.get('PropB')
+          this.kuB = storage22.get('propB')
         })
     }
   }

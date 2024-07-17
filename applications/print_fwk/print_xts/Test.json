@@ -1,5 +1,5 @@
 {
-    "description": "Configuration for ActsMindSporeNdkTest Tests",
+    "description": "Configuration for ActsPrintXtsTest Tests",
     "driver": {
         "type": "OHJSUnitTest",
         "test-timeout": "600000",
@@ -10,7 +10,8 @@
     "kits": [
         {
             "test-file-name": [
-              "ActsPrintXtsTest.hap"
+              "ActsPrintXtsTest.hap",
+              "ActsPrintNdkMainTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

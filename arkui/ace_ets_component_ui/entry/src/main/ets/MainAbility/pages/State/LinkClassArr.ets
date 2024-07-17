@@ -57,16 +57,16 @@ struct SonLinkAC {
 @Component
 struct ParentLinkAC {
   @State arr: Array<Number> = [1,2,3]
-  @State class: LinkAC = {value:1}
-  @State classArr: Array<LinkAC> = [{value:1},{value:2}]
+  @State class: LinkAC = new LinkAC(1)
+  @State classArr: Array<LinkAC> = [new LinkAC(1), new LinkAC(2)]
 
   build() {
     Column({ space: 10 }) {
       Button("Reset").id("ParentLinkAC_reset")
         .onClick(() => {
           this.arr = [1,2,3]
-          this.class = {value:1}
-          this.classArr = [{value:1},{value:2}]
+          this.class = new LinkAC(1)
+          this.classArr = [new LinkAC(1), new LinkAC(2)]
         })
       Text(`arrPar: ${this.arr}`).key("arr_ParentAC")
       Text(`classPar: ${this.class.value}`).key("class_ParentAC")

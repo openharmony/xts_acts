@@ -22,7 +22,6 @@
         {
             "type": "ShellKit",
             "run-command": [
-                "sleep 20",
                 "power-shell wakeup",
                 "power-shell timeout -o 5000000",
                 "power-shell setmode 602",

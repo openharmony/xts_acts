@@ -706,11 +706,9 @@ export default function drawingTsCanvasTest() {
         let canvas = new drawing.Canvas(pixel);
         canvas.drawImage(pixel, 100, 100);
         canvas.drawImage(pixel, 100.2, 100.2);
-        if (0) {
-          canvas.drawImage(pixel, 100, 100, new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST));
-          canvas.drawImage(pixel, 100.2, 100.2, new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_LINEAR));
-          canvas.drawImage(pixel, -100.2, -100, new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_LINEAR));
-        }
+        canvas.drawImage(pixel, 100, 100, new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST));
+        canvas.drawImage(pixel, 100.2, 100.2, new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_LINEAR));
+        canvas.drawImage(pixel, -100.2, -100, new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_LINEAR));
         console.info(msg + 'drawImage successed');
       } catch (e) {
         console.info(msg + `drawImage errorCode is:  ${e.code} + errormsg is: ${e.message}`);
@@ -833,10 +831,8 @@ export default function drawingTsCanvasTest() {
       const msg = 'testCanvasDrawImageMultipleCalls';
       try {
         let canvas = new drawing.Canvas(pixel);
-        if (0) {
-          const randomEnum = Math.floor(Math.random() * (getEnumCount(drawing.FilterMode)));
-          canvas.drawImage(pixel, Math.random() * Number.MAX_VALUE, Math.random() * Number.MAX_VALUE, randomEnum);
-        }
+        const randomEnum = Math.floor(Math.random() * (getEnumCount(drawing.FilterMode)));
+        canvas.drawImage(pixel, Math.random() * 200, Math.random() * 200, new drawing.SamplingOptions(randomEnum));
         console.info(msg + 'drawImage successed');
       } catch (e) {
         console.info(msg + `drawImage errorCode is:  ${e.code} + errormsg is: ${e.message}`);
@@ -859,12 +855,35 @@ export default function drawingTsCanvasTest() {
       try {
         canvas.drawColor({ alpha: 0xFF, red: 0xFF, green: 0xFF, blue: 0xFF}, drawing.BlendMode.CLEAR);
         canvas.drawColor({ alpha: 0x00, red: 0x00, green: 0x00, blue: 0x00}, drawing.BlendMode.CLEAR);
-        let blendModeList: Array<string |BlendMode> = Object.values(BlendMode);
-        for (const blendMode of blendModeList) {
-          if (typeof blendMode === 'string') {
-            canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, BlendMode[blendMode]);
-          }
-        }
+
+        canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.CLEAR);
+        canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.SRC);
+        canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.DST);
+        canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.SRC_OVER);
+        canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.DST_OVER);
+        canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.SRC_IN);
+        canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.DST_IN);
+        canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.SRC_OUT);
+        canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.DST_OUT);
+        canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.SRC_ATOP);
+        canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.DST_ATOP);
+        canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.XOR);
+        canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.MODULATE);
+        canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.SCREEN);
+        canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.OVERLAY);
+        canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.DARKEN);
+        canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.LIGHTEN);
+        canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.COLOR_DODGE);
+        canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.COLOR_BURN);
+        canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.HARD_LIGHT);
+        canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.SOFT_LIGHT);
+        canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.DIFFERENCE);
+        canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.EXCLUSION);
+        canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.MULTIPLY);
+        canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.HUE);
+        canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.SATURATION);
+        canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.COLOR);
+        canvas.drawColor({ alpha: 0xFF, red: 0xE0, green: 0x10, blue: 0xFF}, drawing.BlendMode.LUMINOSITY);
         console.info(msg + 'drawColor successed');
       } catch (e) {
         console.info(msg + `drawColor errorCode is:  ${e.code} + errormsg is: ${e.message}`);

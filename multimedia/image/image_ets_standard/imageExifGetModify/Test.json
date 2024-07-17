@@ -28,17 +28,22 @@
             "push": [
                 "./resource/image/test_exif_empty.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageExifGetModify/haps/entry/files",
                 "./resource/image/test_exif_v2.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageExifGetModify/haps/entry/files",
+                "./resource/image/test_exif_v3.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageExifGetModify/haps/entry/files",
                 "./resource/image/test_exif_empty_2.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageExifGetModify/haps/entry/files",
                 "./resource/image/test_exif_empty.png ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageExifGetModify/haps/entry/files",
                 "./resource/image/test_exif_v2.png ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageExifGetModify/haps/entry/files",
+                "./resource/image/test_exif_v3.png ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageExifGetModify/haps/entry/files",
                 "./resource/image/test_exif_empty_2.png ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageExifGetModify/haps/entry/files",
                 "./resource/image/test_exif_empty.heic ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageExifGetModify/haps/entry/files",
                 "./resource/image/test_exif_v2.heic ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageExifGetModify/haps/entry/files",
+                "./resource/image/test_exif_v3.heic ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageExifGetModify/haps/entry/files",
                 "./resource/image/test_exif_empty_2.heic ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageExifGetModify/haps/entry/files",
                 "./resource/image/test_exif_v2.dng ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageExifGetModify/haps/entry/files",
+                "./resource/image/test_exif_v3.dng ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageExifGetModify/haps/entry/files",
                 "./resource/image/test_exif_empty2.dng ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageExifGetModify/haps/entry/files",
                 "./resource/image/test_exif_empty.webp ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageExifGetModify/haps/entry/files",
                 "./resource/image/test_exif_v2.webp ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageExifGetModify/haps/entry/files",
+                "./resource/image/test_exif_v3.webp ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageExifGetModify/haps/entry/files",
                 "./resource/image/test_exif_empty2.webp ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageExifGetModify/haps/entry/files",
                 "./resource/image/test_webp_exif.webp ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageExifGetModify/haps/entry/files"
             ]

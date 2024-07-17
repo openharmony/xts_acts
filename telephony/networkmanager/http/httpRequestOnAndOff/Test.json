@@ -6,7 +6,7 @@
         "bundle-name": "com.acts.httprequestonandoff",
         "module-name": "entry_test",
         "shell-timeout": "1800000",
-        "testcase-timeout": 70000
+        "testcase-timeout": "70000"
 
     },
     "kits": [

@@ -12,34 +12,33 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../../utils/MessageManager';
+import { MessageManager, Callback } from '../../../utils/MessageManager';
 
 @Entry
 @Component
 struct getGridItemRect5 {
   scroller: Scroller = new Scroller()
-  @State arr: number[] = [0,1,2,3,4]
+  @State arr: number[] = [0, 1, 2, 3, 4]
   @State columnsGap1: number = 0
   @State rowsGap1: number = 0
   @State layoutDirection1: GridDirection = GridDirection.Row
-
   @State index: number = 0
   @State x: number = 0
   @State y: number = 0
   @State width1: number = 0
   @State height1: number = 0
+  messageManager: MessageManager = new MessageManager()
 
-  messageManager:MessageManager = new MessageManager()
   onPageShow() {
     console.info('getGridItemRect5 onPageShow');
     globalThis.value = {
-      name:'messageManager',message:this.messageManager
+      name: 'messageManager', message: this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback = (message: ESObject) => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'index') {
         this.index = message.value;
-      }else  if (message.name == 'layoutDirection1') {
+      } else if (message.name == 'layoutDirection1') {
         this.layoutDirection1 = message.value;
       }
     }
@@ -61,7 +60,7 @@ struct getGridItemRect5 {
             }
             .width(60)
             .height(100)
-            .border({width:1})
+            .border({ width: 1 })
 
           }, (item: string) => item)
         }, (item: string) => item)

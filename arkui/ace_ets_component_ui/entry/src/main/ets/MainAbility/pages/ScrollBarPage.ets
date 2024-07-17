@@ -14,6 +14,8 @@
  */
 import {MessageManager,Callback} from '../utils/MessageManager';
 
+type Message = Scroller|ScrollBarDirection|BarState|Color|ScrollDirection
+
 @Entry
 @Component
 struct ScrollBarPage {
@@ -23,29 +25,29 @@ struct ScrollBarPage {
   @State scrollBarDirection: ScrollBarDirection = ScrollBarDirection.Vertical
   @State state: BarState = BarState.Auto
   @State backColor : Color = Color.Grey
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
 
   onPageShow() {
     console.info('ScrollBarPage onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'scroller') {
-        this.scroller = message.value
+        this.scroller = message.value as Scroller
       }
       if (message.name == 'scrollBarDirection') {
-        this.scrollBarDirection = message.value
+        this.scrollBarDirection = message.value as ScrollBarDirection
       }
       if (message.name == 'BarState') {
-        this.state = message.value
+        this.state = message.value as BarState
       }
       if (message.name == 'backgroundColor') {
-        this.backColor = message.value
+        this.backColor = message.value as Color
       }
       if (message.name == 'ScrollDirection') {
-        this.ScrollDirection = message.value
+        this.ScrollDirection = message.value as ScrollDirection
       }
     }
     this.messageManager.registerCallback(callback)
@@ -56,7 +58,7 @@ struct ScrollBarPage {
       Stack({ alignContent: Alignment.End }) {
         Scroll(this.scroller) {
           Flex({ direction: FlexDirection.Column }) {
-            ForEach(this.arr, (item) => {
+            ForEach(this.arr, (item: number) => {
               Row() {
                 Text(item.toString())
                   .width('90%')
@@ -67,7 +69,7 @@ struct ScrollBarPage {
                   .textAlign(TextAlign.Center)
                   .margin({ top: 5 })
               }
-            }, item => item)
+            }, (item: string) => item)
           }.margin({ left: 52 })
         }
         .scrollBar(BarState.Off)

@@ -66,12 +66,12 @@ export default function ObserverNavDestinationId() {
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('ObserverNavDestinationId_text1');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       await CommonFunc.sleep(1000);
       console.info("[ObserverNavDestinationId_0100] obj1 is: " + JSON.stringify(obj1));
 
       let strJson2 = getInspectorByKey('ObserverNavDestinationId_text2');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       await CommonFunc.sleep(1000);
       console.info("[ObserverNavDestinationId_0100] obj2 is: " + JSON.stringify(obj2));
 

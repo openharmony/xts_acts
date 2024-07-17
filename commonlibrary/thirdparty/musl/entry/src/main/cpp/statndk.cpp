@@ -28,6 +28,7 @@
 #include <unistd.h>
 #include <utmp.h>
 #include <uv.h>
+#include <hilog/log.h>
 
 #define ONE 1
 #define TWO 2
@@ -53,6 +54,10 @@
 #define TEST_FIFO_MODE 0666
 #define BUFSIZE 128
 #define PARAM_3 3
+#undef LOG_DOMAIN
+#undef LOG_TAG
+#define LOG_DOMAIN 0xFEFE
+#define LOG_TAG "MUSL_STATNDK"
 
 static napi_value Stat(napi_env env, napi_callback_info info)
 {
@@ -290,7 +295,11 @@ static napi_value MkFifoAt(napi_env env, napi_callback_info info)
     size_t strResult = PARAM_0;
     char path[length];
     napi_get_value_string_utf8(env, args[PARAM_1], path, length, &strResult);
+    errno = 0;
     ret = mkfifoat(name, path, S_IFIFO | TEST_FIFO_MODE);
+    if (ret != 0) {
+        OH_LOG_INFO(LOG_APP, "MUSL mkfifoat ret %{public}d errno : %{public}d", ret, errno);
+    }
     unlink(path);
     remove(path);
     napi_create_int32(env, ret, &result);
@@ -312,9 +321,17 @@ static napi_value MkNodAt(napi_env env, napi_callback_info info)
     napi_get_value_string_utf8(env, args[PARAM_1], path, length, &strResult);
     napi_get_value_int32(env, args[PARAM_2], &mode);
     dev_t st_dev = PARAM_0;
+    errno = 0;
     ret = mknodat(dirfd, path, mode, st_dev);
+    if (ret != 0) {
+        OH_LOG_INFO(LOG_APP, "MUSL mknodat ret %{public}d errno : %{public}d", ret, errno);
+    }
     struct stat newFifo = {PARAM_0};
+    errno = 0;
     ret = stat(path, &newFifo);
+    if (ret != 0) {
+        OH_LOG_INFO(LOG_APP, "MUSL stat ret %{public}d errno : %{public}d", ret, errno);
+    }
     napi_value result;
     napi_create_int32(env, ret, &result);
     unlink(path);

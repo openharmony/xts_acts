@@ -14,12 +14,12 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/utils/Common';
+import CommonFunc from '../../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function SwiperLoop() {
-  describe('SwiperLoop', function () {
-    beforeEach(async function (done) {
+  describe('SwiperLoop', () => {
+    beforeEach(async (done: Function) => {
       console.info("SwiperLoop beforeEach start");
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function SwiperLoop() {
       console.info("SwiperLoop foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("SwiperLoop after each called");
     });
@@ -50,7 +50,7 @@ export default function SwiperLoop() {
     * @tc.size
      */
 
-    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0270', 0, async function (done) {
+    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0270', 0, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0270] START');
       await CommonFunc.sleep(2000);
       let bt = CommonFunc.getComponentRect('swiperLoop');
@@ -67,11 +67,11 @@ export default function SwiperLoop() {
       let button_Bottom = await driver.findComponent(ON.id('swiperLoopButton1'));
       await button_Bottom.click();
       await CommonFunc.sleep(1000);
-      driver.swipe(Math.round(btRight), Math.round(btBottom/2), Math.round(btLeft) + 40, Math.round(btBottom/2));
+      driver.swipe(Math.round(globalThis.winLeft + btRight), Math.round(globalThis.winTop + btBottom/2), Math.round(globalThis.winLeft + btLeft) +  Math.round(vp2px(27)), Math.round(btBottom/2) + globalThis.winTop);
       await CommonFunc.sleep(3500);
 
       let strJson = getInspectorByKey('SwiperLoopText10');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0270] obj is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content=='10').assertTrue();
 
@@ -88,7 +88,7 @@ export default function SwiperLoop() {
     * @tc.size
      */
 
-    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0280', 0, async function (done) {
+    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0280', 0, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0280] START');
       await CommonFunc.sleep(2000);
       let bt = CommonFunc.getComponentRect('swiperLoop');
@@ -105,11 +105,11 @@ export default function SwiperLoop() {
       let button_Bottom = await driver.findComponent(ON.id('swiperLoopButton2'));
       await button_Bottom.click();
       await CommonFunc.sleep(1000);
-      driver.swipe(Math.round(btLeft) + 40, Math.round(btBottom/2), Math.round(btRight), Math.round(btBottom/2));
+      driver.swipe(globalThis.winLeft + Math.round(btLeft) + Math.round(vp2px(27)), Math.round(globalThis.winTop + btBottom/2), Math.round(globalThis.winLeft + btRight), Math.round(globalThis.winTop + btBottom/2));
       await CommonFunc.sleep(3500);
 
       let strJson = getInspectorByKey('SwiperLoopText10');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0280] obj is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content=='10').assertTrue();
 
@@ -126,7 +126,7 @@ export default function SwiperLoop() {
     * @tc.size
      */
 
-    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0340', 0, async function (done) {
+    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0340', 0, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0340] START');
       await CommonFunc.sleep(2000);
       let bt = CommonFunc.getComponentRect('swiperLoop');
@@ -142,11 +142,11 @@ export default function SwiperLoop() {
       let button_Bottom = await driver.findComponent(ON.id('swiperLoopButton3'));
       await button_Bottom.click();
       await CommonFunc.sleep(1000);
-      driver.swipe(Math.round(btRight), Math.round(btBottom/2), Math.round(btLeft) + 40, Math.round(btBottom/2));
+      driver.swipe(Math.round(globalThis.winLeft + btRight - vp2px(50)), Math.round(globalThis.winTop + btBottom/2), Math.round(globalThis.winLeft + btLeft + Math.round(vp2px(27))), Math.round(globalThis.winTop + btBottom/2));
       await CommonFunc.sleep(3500);
 
       let strJson = getInspectorByKey('SwiperLoopText6');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0340] obj is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content=='6').assertTrue();
 
@@ -164,7 +164,7 @@ export default function SwiperLoop() {
     * @tc.size
      */
 
-    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0350', 0, async function (done) {
+    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0350', 0, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0350] START');
       await CommonFunc.sleep(2000);
       let bt = CommonFunc.getComponentRect('swiperLoop');
@@ -177,11 +177,11 @@ export default function SwiperLoop() {
 
       let driver = await Driver.create();
       await CommonFunc.sleep(1000);
-      driver.swipe(Math.round(btLeft) + 40, Math.round(btBottom/2), Math.round(btRight), Math.round(btBottom/2));
+      driver.swipe(Math.round(globalThis.winLeft + btLeft) + Math.round(vp2px(27)), Math.round(globalThis.winTop + btBottom/2), Math.round(globalThis.winLeft + btRight), Math.round(globalThis.winTop + btBottom/2));
       await CommonFunc.sleep(3500);
 
       let strJson = getInspectorByKey('SwiperLoopText5');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0350] obj is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content=='5').assertTrue();
 
@@ -198,7 +198,7 @@ export default function SwiperLoop() {
     * @tc.size
      */
 
-    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0480', 0, async function (done) {
+    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0480', 0, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0480] START');
       await CommonFunc.sleep(2000);
 
@@ -209,7 +209,7 @@ export default function SwiperLoop() {
       await CommonFunc.sleep(4000);
 
       let strJson = getInspectorByKey('SwiperLoopText10');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0480] obj is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content=='10').assertTrue();
 

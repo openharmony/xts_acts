@@ -27,7 +27,7 @@ struct CountDownComponent1{
           Column(){
             Text("type-->undefined")
             Button('button')
-              .type(this.type1)
+              .type(this.type1!)
               .onClick(() => {
                 this.type1 = undefined
               })
@@ -37,7 +37,7 @@ struct CountDownComponent1{
           Column(){
             Text("type-->null")
             Button('button')
-              .type(this.type2)
+              .type(this.type2!)
               .onClick(() => {
                 this.type2 = null
               })
@@ -50,7 +50,7 @@ struct CountDownComponent1{
           Column(){
             Text("文本10-->undefined")
             Button('button')
-              .fontSize(this.number1)
+              .fontSize(this.number1!)
               .onClick(() => {
                 this.number1 = undefined
               })
@@ -59,7 +59,7 @@ struct CountDownComponent1{
           Column(){
             Text("文本10-->null")
             Button('button')
-              .fontSize(this.number2)
+              .fontSize(this.number2!)
               .onClick(() => {
                 this.number2 = null
               })
@@ -90,7 +90,7 @@ struct ParentComponent1 {
               Column(){
                 Text("Prop-->undefined")
                 Button('button')
-                  .type(this.type1)
+                  .type(this.type1!)
                   .onClick(() => {
                     this.type1 = undefined
                   })
@@ -99,7 +99,7 @@ struct ParentComponent1 {
               Column(){
                 Text("Prop-->null")
                 Button('button')
-                  .type(this.type2)
+                  .type(this.type2!)
                   .onClick(() => {
                     this.type2 = null
                   })
@@ -111,7 +111,7 @@ struct ParentComponent1 {
               Column(){
                 Text("文本10-->undefined")
                 Button('button')
-                  .fontSize(this.number1)
+                  .fontSize(this.number1!)
                   .onClick(() => {
                     this.number1 = undefined
                   })
@@ -121,7 +121,7 @@ struct ParentComponent1 {
               Column(){
                 Text("文本10-->null")
                 Button('button')
-                  .fontSize(this.number2)
+                  .fontSize(this.number2!)
                   .onClick(() => {
                     this.number2 = null
                   })

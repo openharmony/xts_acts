@@ -13,19 +13,22 @@
  * limitations under the License.
  */
 AppStorage.clear()
-let storage1 = new LocalStorage({"PropA":47})
+interface LocalStorage39Type {
+  propA: number
+}
+let storage1 = new LocalStorage({'propA':47} as LocalStorage39Type)
 let storage39 = new LocalStorage();
-storage39['PropA'] = 47;
-storage39['PropB'] = 1;
+storage39['propA'] = 47;
+storage39['propB'] = 1;
 
 @Entry(storage39)
 @Component
 struct LocalStorage39 {
-  @LocalStorageProp('PropA') storProp1: number = 1
-  @LocalStorageProp('PropB') storProp2: number = 2
+  @LocalStorageProp('propA') storProp1: number = 1
+  @LocalStorageProp('propB') storProp2: number = 2
   @State sizenum: number = 0;
-  @State value1: string = 'Init'
-  @State value2: string = 'Init'
+  @State value1: string|undefined = 'Init'
+  @State value2: string|undefined = 'Init'
   @State keys1: string = 'Init'
 
 
@@ -36,22 +39,22 @@ struct LocalStorage39 {
       Button('获取键值对的keys')
         .key('button1')
         .onClick(() => {
-          this.keys1 = JSON.stringify(Object.keys(storage39)) + ""
+          this.keys1 = JSON.stringify(Object.keys(storage39)) + ''
         })
 
-      Text(`get PropA：${this.value1}`).key('getText1')
+      Text(`get propA：${this.value1}`).key('getText1')
       //get获取LocalStorage中存在键值对的个数
-      Button('get PropA')
+      Button('get propA')
         .key('button2')
         .onClick(() => {
-          this.value1 = storage39.get("PropA")+""
+          this.value1 = storage39.get('propA')+''
         })
 
-      Text(`get PropE：${this.value2}`).key('getText2')
-      Button('get PropE')
+      Text(`get propE：${this.value2}`).key('getText2')
+      Button('get propE')
         .key('button3')
         .onClick(() => {
-          this.value2 = storage39.get("PropE")+""
+          this.value2 = storage39.get('propE')+''
         })
 
       //Size获取LocalStorage中存在键值对的个数

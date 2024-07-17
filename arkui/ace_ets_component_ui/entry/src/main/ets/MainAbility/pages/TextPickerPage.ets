@@ -14,6 +14,8 @@
  */
 import {MessageManager,Callback} from '../utils/MessageManager';
 
+type Message = string|number|string[]
+
 @Entry
 @Component
 struct TextPickerPage {
@@ -21,28 +23,28 @@ struct TextPickerPage {
   private select: number = 0
   @State parameterValue: string = 'orange2'
   @State defaultPickerItemHeight: number = 20
-  @State getValue: string = 'value'
-  @State getIndex: number = 0
-  messageManager:MessageManager = new MessageManager()
+  @State getValue: string|string[] = 'value'
+  @State getIndex: number|number[] = 0
+  messageManager = new MessageManager<Message>()
 
   onPageShow() {
     console.info('TextPicker onPageShow')
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'fruits') {
-        this.fruits = message.value
+        this.fruits = message.value as string[]
       }
       if (message.name == 'select') {
-        this.select = message.value
+        this.select = message.value as number
       }
       if (message.name == 'parameterValue') {
-        this.parameterValue = message.value
+        this.parameterValue = message.value as string
       }
       if (message.name == 'defaultPickerItemHeight') {
-        this.defaultPickerItemHeight = message.value
+        this.defaultPickerItemHeight = message.value as number
       }
     }
     this.messageManager.registerCallback(callback)
@@ -55,7 +57,7 @@ struct TextPickerPage {
         .width("100%")
         .height("80%")
         .defaultPickerItemHeight(this.defaultPickerItemHeight)
-        .onChange((value: string, index: number) => {
+        .onChange((value: string|string[], index: number|number[]) => {
           console.info('Picker item changed, value: ' + value + ', index: ' + index)
           this.getValue = value
           this.getIndex = index

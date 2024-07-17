@@ -39,7 +39,7 @@ struct ViewC {
           Column({ space: 20 }) {
             Text("@ObjectLink颜色子组件undefined-->Pink")
             Button('button')
-              .backgroundColor(this.a.color1)
+              .backgroundColor(this.a.color1!)
               .onClick(() => {
                 this.a.color1 = Color.Pink
               })
@@ -47,7 +47,7 @@ struct ViewC {
 
             Text("@ObjectLink子组件颜色null-->Pink")
             Button('button')
-              .backgroundColor(this.a.color2)
+              .backgroundColor(this.a.color2!)
               .onClick(() => {
                 this.a.color2 = Color.Pink
               })
@@ -55,7 +55,7 @@ struct ViewC {
 
             Text("@ObjectLink子组件文本undefined-->100")
             Button('button')
-              .fontSize(this.a.number1)
+              .fontSize(this.a.number1!)
               .onClick(() => {
                 this.a.number1 = 100
               })
@@ -63,7 +63,7 @@ struct ViewC {
 
             Text("@ObjectLink子组件文本null-->100")
             Button('button')
-              .fontSize(this.a.number2)
+              .fontSize(this.a.number2!)
               .onClick(() => {
                 this.a.number2 = 100
               })
@@ -86,7 +86,7 @@ struct ViewD {
           Column({ space: 20 }) {
             Text("@ObjectLink父组件颜色undefined-->Pink")
             Button('button')
-              .backgroundColor(this.b.color1)
+              .backgroundColor(this.b.color1!)
               .onClick(() => {
                 this.b.color1 = Color.Pink
               })
@@ -94,7 +94,7 @@ struct ViewD {
 
             Text("@ObjectLink父组件颜色null-->Pink")
             Button('button')
-              .backgroundColor(this.b.color2)
+              .backgroundColor(this.b.color2!)
               .onClick(() => {
                 this.b.color2 = Color.Pink
               })
@@ -102,7 +102,7 @@ struct ViewD {
 
             Text("@ObjectLink父组件文本undefined-->100")
             Button('button')
-              .fontSize(this.b.number1)
+              .fontSize(this.b.number1!)
               .onClick(() => {
                 this.b.number1 = 100
               })
@@ -110,7 +110,7 @@ struct ViewD {
 
             Text("@ObjectLink父组件文本null-->100")
             Button('button')
-              .fontSize(this.b.number2)
+              .fontSize(this.b.number2!)
               .onClick(() => {
                 this.b.number2 = 100
               })

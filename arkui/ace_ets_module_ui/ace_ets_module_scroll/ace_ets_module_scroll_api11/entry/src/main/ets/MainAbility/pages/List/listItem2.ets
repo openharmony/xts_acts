@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,31 +24,31 @@ struct ListItemExample2 {
 
   onPageShow() {
     console.info('[ListItem] page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 122,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
 
-    var stateChangeEventOne = {
+    let stateChangeEventOne: events_emitter.InnerEvent = {
       eventId: 123,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventOne, this.stateChangCallBack);
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("[ListItem] page stateChangCallBack");
     if (eventData != null) {
       console.info("[ListItem] page state change called:" + JSON.stringify(eventData));
-      if(eventData.data.sticky != null) {
-        this.sticky = eventData.data.sticky;
+      if(eventData.data?.sticky != null) {
+        this.sticky = eventData.data?.sticky;
       }
     }
     if (eventData != null) {
       console.info("[ListItem] page state change called:" + JSON.stringify(eventData));
-      if(eventData.data.editMode != null) {
-        this.editMode = eventData.data.editMode;
+      if(eventData.data?.editMode != null) {
+        this.editMode = eventData.data?.editMode;
       }
     }
   }
@@ -66,13 +65,13 @@ struct ListItemExample2 {
             })
         }.sticky(this.sticky).key('ListItem')
 
-        ForEach(this.arr, (item) => {
+        ForEach(this.arr, (item: number) => {
           ListItem() {
             Text('' + item)
               .width('100%').height(100).fontSize(16)
               .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
           }.editable(this.editFlag)
-        }, item => item)
+        }, (item: string) => item)
       }
       .key('List')
       .editMode(this.editMode)

@@ -14,7 +14,9 @@
  */
 
 import printTest from './print.test'
+import oHPrintTest from './ohprint.test'
 
 export default function testsuite() {
   printTest();
+  oHPrintTest();
 }

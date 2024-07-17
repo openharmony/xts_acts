@@ -18,6 +18,7 @@ group("account") {
     deps = [
       "OsAccountTest_js:ActsOsAccountJSApiTest",
       "account_ndk:account_ndk_test",
+      "account_nopermissiontest:ActsAccountNoPermissionTest",
       "appaccount:appaccount_hap",
       "osaccount:osaccount_hap",
     ]

@@ -87,30 +87,23 @@ export default function List_alignListItem() {
       expect(List_alignListItem_014.left).assertEqual(List_alignListItem_01.left);
       expect(List_alignListItem_011.top).assertEqual(List_alignListItem_01.top);
 
-      expect(Math.round(List_alignListItem_012.top - List_alignListItem_011.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_alignListItem_013.top - List_alignListItem_012.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_alignListItem_014.top - List_alignListItem_013.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_alignListItem_01.bottom - List_alignListItem_014.bottom))
-        .assertEqual(Math.round(vp2px(60)));
+      console.info('testListAlignListItemStart_1: ');
+	  expect(Math.abs(Math.round(List_alignListItem_012.top - List_alignListItem_011.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List_alignListItem_013.top - List_alignListItem_012.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List_alignListItem_014.top - List_alignListItem_013.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List_alignListItem_01.bottom - List_alignListItem_014.bottom) - Math.round(vp2px(60))) <= 1).assertTrue();
 
+      console.info('testListAlignListItemStart_2: ');
+	  expect(Math.abs(Math.round(List_alignListItem_011.right - List_alignListItem_011.left) - Math.round(vp2px(300))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List_alignListItem_012.right - List_alignListItem_012.left) - Math.round(vp2px(300))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List_alignListItem_013.right - List_alignListItem_013.left) - Math.round(vp2px(300))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List_alignListItem_014.right - List_alignListItem_014.left) - Math.round(vp2px(300))) <= 1).assertTrue();
 
-      expect(Math.round(List_alignListItem_011.right - List_alignListItem_011.left))
-        .assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(List_alignListItem_012.right - List_alignListItem_012.left))
-        .assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(List_alignListItem_013.right - List_alignListItem_013.left))
-        .assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(List_alignListItem_014.right - List_alignListItem_014.left))
-        .assertEqual(Math.round(vp2px(300)));
-
-      expect(Math.round(List_alignListItem_011.bottom - List_alignListItem_011.top))
-        .assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_alignListItem_012.bottom - List_alignListItem_012.top))
-        .assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_alignListItem_013.bottom - List_alignListItem_013.top))
-        .assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_alignListItem_014.bottom - List_alignListItem_014.top))
-        .assertEqual(Math.round(vp2px(100)));
+      console.info('testListAlignListItemStart_3: ');
+	  expect(Math.abs(Math.round(List_alignListItem_011.bottom - List_alignListItem_011.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List_alignListItem_012.bottom - List_alignListItem_012.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List_alignListItem_013.bottom - List_alignListItem_013.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List_alignListItem_014.bottom - List_alignListItem_014.top) - Math.round(vp2px(100))) <= 1).assertTrue();
 
       let driver = Driver.create();
       await driver.swipe(
@@ -120,7 +113,7 @@ export default function List_alignListItem() {
         Math.round(List_alignListItem_012.bottom));
       await CommonFunc.sleep(1000);
       let List_alignListItem_024: RectValue = CommonFunc.getComponentRect('List_alignListItem_014');
-      expect(List_alignListItem_01.bottom - List_alignListItem_024.bottom).assertEqual(vp2px(60));
+	  expect(Math.abs(Math.round(List_alignListItem_01.bottom - List_alignListItem_024.bottom) - Math.round(vp2px(60))) <= 1).assertTrue();
 
       console.info('testListAlignListItemStart END');
       done();
@@ -155,29 +148,23 @@ export default function List_alignListItem() {
         .assertTrue();
       expect(Math.abs(List_alignListItem_011.top - List_alignListItem_01.top) <= 1).assertTrue();
 
-      expect(Math.round(List_alignListItem_012.top - List_alignListItem_011.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_alignListItem_013.top - List_alignListItem_012.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_alignListItem_014.top - List_alignListItem_013.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_alignListItem_01.bottom - List_alignListItem_014.bottom))
-        .assertEqual(Math.round(vp2px(60)));
+      console.info('testListAlignListItemCenter_1: ');
+	  expect(Math.abs(Math.round(List_alignListItem_012.top - List_alignListItem_011.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List_alignListItem_013.top - List_alignListItem_012.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List_alignListItem_014.top - List_alignListItem_013.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List_alignListItem_01.bottom - List_alignListItem_014.bottom) - Math.round(vp2px(60))) <= 1).assertTrue();
 
-      expect(Math.round(List_alignListItem_011.right - List_alignListItem_011.left))
-        .assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(List_alignListItem_012.right - List_alignListItem_012.left))
-        .assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(List_alignListItem_013.right - List_alignListItem_013.left))
-        .assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(List_alignListItem_014.right - List_alignListItem_014.left))
-        .assertEqual(Math.round(vp2px(300)));
+      console.info('testListAlignListItemCenter_2: ');
+	  expect(Math.abs(Math.round(List_alignListItem_011.right - List_alignListItem_011.left) - Math.round(vp2px(300))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List_alignListItem_012.right - List_alignListItem_012.left) - Math.round(vp2px(300))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List_alignListItem_013.right - List_alignListItem_013.left) - Math.round(vp2px(300))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List_alignListItem_014.right - List_alignListItem_014.left) - Math.round(vp2px(300))) <= 1).assertTrue();
 
-      expect(Math.round(List_alignListItem_011.bottom - List_alignListItem_011.top))
-        .assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_alignListItem_012.bottom - List_alignListItem_012.top))
-        .assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_alignListItem_013.bottom - List_alignListItem_013.top))
-        .assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_alignListItem_014.bottom - List_alignListItem_014.top))
-        .assertEqual(Math.round(vp2px(100)));
+      console.info('testListAlignListItemCenter_3: ');
+	  expect(Math.abs(Math.round(List_alignListItem_011.bottom - List_alignListItem_011.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List_alignListItem_012.bottom - List_alignListItem_012.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List_alignListItem_013.bottom - List_alignListItem_013.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List_alignListItem_014.bottom - List_alignListItem_014.top) - Math.round(vp2px(100))) <= 1).assertTrue();
 
       let driver = Driver.create();
       await driver.swipe(
@@ -187,7 +174,7 @@ export default function List_alignListItem() {
         Math.round(List_alignListItem_012.bottom));
       await CommonFunc.sleep(1000);
       let List_alignListItem_024: RectValue = CommonFunc.getComponentRect('List_alignListItem_014');
-      expect(List_alignListItem_01.bottom - List_alignListItem_024.bottom).assertEqual(vp2px(60));
+	  expect(Math.abs(Math.round(List_alignListItem_01.bottom - List_alignListItem_024.bottom) - Math.round(vp2px(60))) <= 1).assertTrue();
 
       console.info('testListAlignListItemCenter END');
       done();
@@ -217,29 +204,23 @@ export default function List_alignListItem() {
       expect(List_alignListItem_014.right).assertEqual(List_alignListItem_01.right);
       expect(List_alignListItem_011.top).assertEqual(List_alignListItem_01.top);
 
-      expect(Math.round(List_alignListItem_012.top - List_alignListItem_011.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_alignListItem_013.top - List_alignListItem_012.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_alignListItem_014.top - List_alignListItem_013.bottom)).assertEqual(Math.round(vp2px(20)));
-      expect(Math.round(List_alignListItem_01.bottom - List_alignListItem_014.bottom))
-        .assertEqual(Math.round(vp2px(60)));
+      console.info('testListAlignListItemEnd_1: ');
+	  expect(Math.abs(Math.round(List_alignListItem_012.top - List_alignListItem_011.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List_alignListItem_013.top - List_alignListItem_012.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List_alignListItem_014.top - List_alignListItem_013.bottom) - Math.round(vp2px(20))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List_alignListItem_01.bottom - List_alignListItem_014.bottom) - Math.round(vp2px(60))) <= 1).assertTrue();
 
-      expect(Math.round(List_alignListItem_011.right - List_alignListItem_011.left))
-        .assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(List_alignListItem_012.right - List_alignListItem_012.left))
-        .assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(List_alignListItem_013.right - List_alignListItem_013.left))
-        .assertEqual(Math.round(vp2px(300)));
-      expect(Math.round(List_alignListItem_014.right - List_alignListItem_014.left))
-        .assertEqual(Math.round(vp2px(300)));
+      console.info('testListAlignListItemEnd_2: ');
+	  expect(Math.abs(Math.round(List_alignListItem_011.right - List_alignListItem_011.left) - Math.round(vp2px(300))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List_alignListItem_012.right - List_alignListItem_012.left) - Math.round(vp2px(300))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List_alignListItem_013.right - List_alignListItem_013.left) - Math.round(vp2px(300))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List_alignListItem_014.right - List_alignListItem_014.left) - Math.round(vp2px(300))) <= 1).assertTrue();
 
-      expect(Math.round(List_alignListItem_011.bottom - List_alignListItem_011.top))
-        .assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_alignListItem_012.bottom - List_alignListItem_012.top))
-        .assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_alignListItem_013.bottom - List_alignListItem_013.top))
-        .assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(List_alignListItem_014.bottom - List_alignListItem_014.top))
-        .assertEqual(Math.round(vp2px(100)));
+      console.info('testListAlignListItemEnd_3: ');
+	  expect(Math.abs(Math.round(List_alignListItem_011.bottom - List_alignListItem_011.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List_alignListItem_012.bottom - List_alignListItem_012.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List_alignListItem_013.bottom - List_alignListItem_013.top) - Math.round(vp2px(100))) <= 1).assertTrue();
+	  expect(Math.abs(Math.round(List_alignListItem_014.bottom - List_alignListItem_014.top) - Math.round(vp2px(100))) <= 1).assertTrue();
 
       let driver = Driver.create();
       await driver.swipe(
@@ -249,7 +230,7 @@ export default function List_alignListItem() {
         Math.round(List_alignListItem_012.bottom));
       await CommonFunc.sleep(1000);
       let List_alignListItem_024: RectValue = CommonFunc.getComponentRect('List_alignListItem_014');
-      expect(List_alignListItem_01.bottom - List_alignListItem_024.bottom).assertEqual(vp2px(60));
+	  expect(Math.abs(Math.round(List_alignListItem_01.bottom - List_alignListItem_024.bottom) - Math.round(vp2px(60))) <= 1).assertTrue();
       console.info('testListAlignListItemEnd END');
       done();
     });

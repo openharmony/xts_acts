@@ -51,7 +51,7 @@ struct LongPressGestureLongClick {
     Column({space:10}) {
       Text('LongClick').fontSize(20).width(240).height(80).margin({left:0,top:0}).padding({left:0,top:0}).backgroundColor(Color.Yellow).key('LongPressGestureLongClick_Click')
         .gesture(
-          LongPressGesture({ repeat: true })
+          LongPressGesture({ repeat: false })
             .onAction((event: GestureEvent) => {
               if (event) {
                 this.time = Date.now()

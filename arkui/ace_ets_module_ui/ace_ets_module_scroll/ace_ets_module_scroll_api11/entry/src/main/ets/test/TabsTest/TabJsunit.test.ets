@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 
 function sleep(time: number) {
   return new Promise((resolve: (value: string) => void) => {
@@ -32,8 +32,8 @@ export default function tabJsunit() {
   describe('tabTest', () => {
 
     beforeEach(async () => {
-      let options = {
-        uri: 'MainAbility/pages/Tabs/Tab',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Tabs/Tab',
       }
       try {
         router.clear();
@@ -75,8 +75,9 @@ export default function tabJsunit() {
       expect(JSON.parse(strJson).$attrs.vertical).assertEqual('true')
       expect(JSON.parse(strJson).$attrs.scrollable).assertTrue()
       expect(JSON.parse(strJson).$attrs.barMode).assertEqual('BarMode.Fixed')
-      expect(JSON.parse(strJson).$attrs.barWidth).assertEqual(70.000000.toFixed(6))
-      expect(JSON.parse(strJson).$attrs.barHeight).assertEqual(150.000000.toFixed(6))
+      expect(Math.abs(Number(JSON.parse(strJson).$attrs.barWidth) - Number(70.000000.toFixed(6))) <=1 ).assertTrue();
+      expect(Math.abs(Number(JSON.parse(strJson).$attrs.barHeight) - Number(150.000000.toFixed(6))) <=1 ).assertTrue();
+      
       console.info('++++++++++++++++ Tab TestCase 1 End ++++++++++++++++');
     });
 

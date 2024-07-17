@@ -14,12 +14,12 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/utils/Common';
+import CommonFunc from '../../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function swiperGroupTest() {
-  describe('swiperGroupTest', function () {
-    beforeEach(async function (done) {
+  describe('swiperGroupTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("swiperGroupTest beforeEach start");
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function swiperGroupTest() {
       console.info("swiperGroupTest foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("swiperGroupTest after each called");
     });
@@ -50,7 +50,7 @@ export default function swiperGroupTest() {
      * @tc.size
      */
 
-    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0040', 0, async function (done) {
+    it('SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0040', 0, async (done: Function) => {
       console.info('[SUB_ACE_UI_COMPONENT_SCROLL_SWIPER_UX_0040] START');
       await CommonFunc.sleep(2000);
       let bt = CommonFunc.getComponentRect('swiperTestWidth3');
@@ -65,8 +65,8 @@ export default function swiperGroupTest() {
 
       // swipe the component of swiper to right by  group
       let driver = await Driver.create();
-      driver.swipe(Math.round(btRight), Math.round(btBottom/2), Math.round(btLeft) + 40, Math.round(btBottom/2));
-      await CommonFunc.sleep(3500);
+      await driver.swipe(Math.round(globalThis.winLeft + Math.round(btRight) - Math.round(vp2px(100))), Math.round(globalThis.winTop + Math.round(btBottom/2)), Math.round(globalThis.winLeft + Math.round(btLeft) +  Math.round(vp2px(10))), Math.round(globalThis.winTop + Math.round(btBottom/2)));
+      await CommonFunc.sleep(4800);
       // get the component of text_6
       let text3:Component = await driver.findComponent(ON.text('6'));
       let ttContent = await text3.getText();

@@ -70,7 +70,7 @@ export default function alphabetIndexerJsunit() {
       console.info("ArkUI_AlphabetIndexer_0102 start");
       let strJson = getInspectorByKey('alphabetIndexerTest1');
       let obj = JSON.parse(strJson);
-      expect(obj.$attrs.selectFont.fontSize).assertEqual("28.00fp");
+      expect(obj.$attrs.selectedFont.fontSize).assertEqual("28.00fp");
       done();
     });
 

@@ -71,13 +71,15 @@ export default function PanGesture2() {
       console.info('PanGesture2_0200 START');
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
-      await driver.swipe(vp2px(100),vp2px(100),vp2px(500),vp2px(500),600);
+      let colum = CommonFunc.getComponentRectOnScreen('PanGesture2');
+      let top = colum.top
+      await driver.swipe(Math.round(globalThis.winLeft + 100), Math.round(top + 100), Math.round(globalThis.winLeft + 500), Math.round(top + 500))
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('PanGesture2_1');
       let obj = JSON.parse(strJson);
       console.info("[PanGesture2_0200] component obj is: " + JSON.stringify(obj));
       console.info("[PanGesture2_0200] title: " + JSON.stringify(obj.$attrs.content));
-      expect((Number(obj.$attrs.content) - (379)) < 20).assertEqual(true);
+      expect((Math.abs(Number(obj.$attrs.content)) - 379) < 20).assertEqual(true);
       console.info('[PanGesture2_0200] END');
       done();
     });

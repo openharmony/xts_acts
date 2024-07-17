@@ -20,13 +20,13 @@ struct BindMenu {
   @Builder
   MenuBuilder() {
     Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
-      Text('Test menu item 1')
+      Text('Menu1')
         .fontSize(20)
         .width(100)
         .height(50)
         .textAlign(TextAlign.Center)
       Divider().height(10)
-      Text('Test menu item 2')
+      Text('Menu2')
         .fontSize(20)
         .width(100)
         .height(50)
@@ -40,7 +40,7 @@ struct BindMenu {
         Text('placeholder')
           .width("40%")
           .height('100%')
-          .key('BindMenu_placeholder')
+          .id('BindMenu_placeholder')
         Text('click for Menu')
           .width("60%")
           .height('100%')

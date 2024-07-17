@@ -13,22 +13,21 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 import window from '@ohos.window';
 import UIAbility from '@ohos.app.ability.UIAbility';
-import { Component, Driver, ON } from '@ohos.UiTest';
 import { BusinessError } from '@ohos.base';
 
 
 export default function springBack() {
-  describe('springBack', function () {
-    beforeEach(async function (done) {
+  describe('springBack', () => {
+    beforeEach(async (done: Function) => {
       console.info("springBack beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/bindSheet/springBack',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/bindSheet/springBack',
       }
       try {
         router.clear();
@@ -52,7 +51,7 @@ export default function springBack() {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('springBack_0100', 0, async function (done) {
+    it('springBack_0100', 0, async (done: Function) => {
       console.info('springBack_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -60,25 +59,24 @@ export default function springBack() {
       await button.click();
       await CommonFunc.sleep(1000);
 
-      let bindSheetButton = CommonFunc.getComponentRect('springBackButton');
-      console.log('bindSheetButton.top: ' + bindSheetButton.top + ' bindSheetButton.bottom: ' + bindSheetButton.bottom 
-      + ' bindSheetButton.right: ' + bindSheetButton.right + ' bindSheetButton.left: ' + bindSheetButton.left )
-      let bindSheetButtonOne = bindSheetButton.right - (bindSheetButton.right - bindSheetButton.left) / 2;
-      let bindSheetButtonTwo = bindSheetButton.bottom - (bindSheetButton.bottom - bindSheetButton.top) / 2;
-      console.log("bindSheetButtonOne " + bindSheetButtonOne + " bindSheetButtonTwo " + bindSheetButtonTwo)
-      await driver.swipe(
-        Math.round(bindSheetButtonOne), Math.round(bindSheetButtonTwo), Math.round(bindSheetButtonOne), Math.round(bindSheetButtonTwo + 800)
-      );
-      await CommonFunc.sleep(1000);
+      let bindSheetButton: Component = await driver.findComponent(ON.id('springBackButton'));
+      let point = await bindSheetButton.getBoundsCenter();
+      console.log("bindSheetButton-X " + point.x + " bindSheetButton-Y " + point.y)
+      let x1 = Math.round(point.x)
+      let y1 = Math.round(point.y)
+      let y2 = Math.round(point.y + vp2px(150))
+      let stepLen = Math.round(vp2px(30))
+      await driver.fling({x: x1, y: y1},{x: x1, y: y2}, stepLen, 3000);
+      await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('onWillSpringBackWhenDismiss');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[springBack_0100] component obj is: " + JSON.stringify(obj));
       console.info("[springBack_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("springBack success");
 
       let strJson2 = getInspectorByKey('Dismiss_3');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[springBack_0100] component obj2 is: " + JSON.stringify(obj2));
       console.info("[springBack_0100] title: " + JSON.stringify(obj2.$attrs.content));
       expect(obj2.$attrs.content).assertEqual("reason: 3");
@@ -90,4 +88,3 @@ export default function springBack() {
 
   })
 }
-

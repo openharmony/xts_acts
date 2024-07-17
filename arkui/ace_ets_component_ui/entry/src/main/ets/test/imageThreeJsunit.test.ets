@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../MainAbility/utils/MessageManager';
 const waitUiReadyMs = 1000;
 
 export default function imageThreeJsunit() {
-  describe('imageThreeJsunit', function () {
-    beforeEach(async function (done) {
+  describe('imageThreeJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("imageThreeJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/imageThree',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/imageThree',
       }
       try {
         router.clear();
@@ -42,30 +42,30 @@ export default function imageThreeJsunit() {
       done();
     });
 
-    it('imageThreeJsunit_0100', 0, async function (done) {
+    it('imageThreeJsunit_0100', 0, async (done: Function) => {
       console.info('imageThreeJsunit_0100 START');
       await CommonFunc.sleep(1000);
       // test the image complete Event
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('complete');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[imageThreeJsunit_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('complete');
       done();
     });
 
-    it('imageThreeJsunit_0200', 0, async function (done) {
+    it('imageThreeJsunit_0200', 0, async (done: Function) => {
       console.info('imageThreeJsunit_0100 START');
       await CommonFunc.sleep(1000);
       // test the image finish Event
       let strJson = getInspectorByKey('Finish');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[imageThreeJsunit_0200] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('init');
       done();
     });  
     
-    it('imageThreeJsunit_0300', 0, async function (done) {
+    it('imageThreeJsunit_0300', 0, async (done: Function) => {
       console.info('imageThreeJsunit_0300 START');
       await CommonFunc.sleep(1000);
       // test the image click event
@@ -74,20 +74,20 @@ export default function imageThreeJsunit() {
       await btn.click();
       await CommonFunc.sleep(100);
       let strJson = getInspectorByKey('click');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[imageThreeJsunit_0300] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('click');
       done();
     });
 
-    it('imageThreeJsunit_0400', 0, async function (done) {
+    it('imageThreeJsunit_0400', 0, async (done: Function) => {
       console.info('imageThreeJsunit_0200 START');
       await CommonFunc.sleep(1000);
       // test the image error event
       globalThis.value.message.notify({name:'imageName',value:'1.png'})
       await CommonFunc.sleep(300);
       let strJson = getInspectorByKey('error');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[imageThreeJsunit_0400] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('error');
       done();

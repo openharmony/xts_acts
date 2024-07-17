@@ -95,3 +95,5 @@ export const GetPixelMapDynamicRange: (source: image.PixelMap) => number;
 export const PixelMapToSdr: (source: image.PixelMap) => number;
 export const PackingOptionsGetDesiredDynamicRange: (packing:image.PackingOption) => number;
 export const PackingOptionsSetDesiredDynamicRange: (packing:image.PackingOption, dynamicRange:number) => number;
+export const PackingOptionsGetNeedsPackProperties: (packing:image.PackingOption) => number;
+export const PackingOptionsSetNeedsPackProperties: (packing:image.PackingOption, needsPackProperties:number) => number;

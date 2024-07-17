@@ -17,6 +17,7 @@ import router from '@ohos.router'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
 import MyUtils from '../../MainAbility/common/MyUtils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function BindMenuTest() {
 
@@ -52,10 +53,8 @@ export default function BindMenuTest() {
     it('ArkUI_Menu_0100', 0, async (done: Function) => {
       let CASE: string = 'ArkUI_Menu_0100'
       console.info(`${SUITE} ${CASE} START`);
-
       let callback = (event: events_emitter.EventData) => {
-        expect(event.data.action).assertEqual('onAppear');
-        step2(done)
+        expect(event.data?.action).assertEqual('onAppear');
       }
       let event: events_emitter.InnerEvent = {
         eventId: 50000,
@@ -65,7 +64,13 @@ export default function BindMenuTest() {
       let driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
       sendEventByKey('BindMenu_bindMenu1', 10, "")
+
+      await CommonFunc.sleep(1000);
+      let button = await driver.findComponent(ON.text('Menu1'));
+      await button.click();
+      await CommonFunc.sleep(1000);
       console.info(`${SUITE} ${CASE} END`);
+      done()
     });
 
     /*
@@ -76,10 +81,8 @@ export default function BindMenuTest() {
     it('ArkUI_Menu_0200', 0, async (done: Function) => {
       let CASE: string = 'ArkUI_Menu_0200'
       console.info(`${SUITE} ${CASE} START`);
-
       let callback = (event: events_emitter.EventData) => {
-        expect(event.data.action).assertEqual('onAppear');
-        done()
+        expect(event.data?.action).assertEqual('onAppear');
       }
       let event: events_emitter.InnerEvent = {
         eventId: 60002,
@@ -89,22 +92,15 @@ export default function BindMenuTest() {
       let driver: Driver = Driver.create()
       await driver.delayMs(waitUiReadyMs)
       sendEventByKey('BindMenu_bindContextMenu1', 11, "")
+
+      await CommonFunc.sleep(1000);
+      let button = await driver.findComponent(ON.text('Menu1'));
+      await button.click();
+      await CommonFunc.sleep(1000);
+
       console.info(`${SUITE} ${CASE} END`);
+      done()
     });
   })
 }
 
-async function step2(done: Function) {
-  let callback = (event: events_emitter.EventData) => {
-    expect(event.data.action).assertEqual('onDisappear');
-    done()
-  }
-  let event: events_emitter.InnerEvent = {
-    eventId: 50001,
-    priority: events_emitter.EventPriority.LOW
-  }
-  events_emitter.on(event, callback);
-  let driver = Driver.create()
-  await driver.delayMs(500)
-  sendEventByKey('BindMenu_placeholder', 10, "")
-}

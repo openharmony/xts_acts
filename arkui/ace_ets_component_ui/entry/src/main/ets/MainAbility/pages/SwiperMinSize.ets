@@ -39,7 +39,7 @@ class MyDataSource1 implements IDataSource {
 @Entry
 @Component
 struct SwiperMinSize {
-  messageManager:MessageManager = new MessageManager()
+  messageManager = new MessageManager<number>()
   private swiperController: SwiperController = new SwiperController()
   private data: MyDataSource1 = new MyDataSource1([])
   @State minSize: number = 0
@@ -58,7 +58,7 @@ struct SwiperMinSize {
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback<number> = message => {
       console.error('message = ' + message.name + "--" + message.value);
       if (message.name == 'minSize') {
         this.minSize = message.value;

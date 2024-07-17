@@ -133,7 +133,7 @@ export default function flexVisibility_BaselineJsunit() {
 
         expect(JSON.parse(strJson1).$attrs.constructor.direction).assertEqual('FlexDirection.Row')
         expect(JSON.parse(strJson1).$attrs.constructor.alignItems).assertEqual('ItemAlign.Baseline')
-        expect(Math.round(flexVisible.right - textVisible03.right)).assertEqual(Math.round(vp2px(50)))
+        expect(Math.abs(flexVisible.right - textVisible03.right - vp2px(50)) <= 1).assertTrue()
       } catch (err) {
         console.error('[testFlexItemAlignBaselineSubSetVisibilityHidden] failed');
         expect().assertFail();

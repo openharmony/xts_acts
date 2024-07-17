@@ -80,6 +80,106 @@ struct wholeWebPageDrawing {
               }
               break;
             }
+            case "wholeWebPageDrawing0200": {
+              try {
+                await Utils.sleep(10000);
+                await Utils.sleep(10000);
+                await Utils.sleep(10000);
+                this.controller.webPageSnapshot({ id: "hello", size: { width: 100, height: 100 } }, (error, result) => {
+                  if (error) {
+                    console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                    return;
+                  }
+                  if (result) {
+                    console.info('status id is:'+result.status);
+                    Utils.emitEvent(result.status, 2794)
+                  }
+                });
+              } catch (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+              break;
+            }
+            case "wholeWebPageDrawing0300": {
+              try {
+                await Utils.sleep(10000);
+                await Utils.sleep(10000);
+                await Utils.sleep(10000);
+                this.controller.webPageSnapshot({ id: "hello", size: { width: 100, height: 100 } }, (error, result) => {
+                  if (error) {
+                    console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                    return;
+                  }
+                  if (result) {
+                    console.info('size id is:'+result.size.width);
+                    Utils.emitEvent(result.size.width, 2795)
+                  }
+                });
+              } catch (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+              break;
+            }
+            case "wholeWebPageDrawing0400": {
+              try {
+                await Utils.sleep(10000);
+                await Utils.sleep(10000);
+                await Utils.sleep(10000);
+                this.controller.webPageSnapshot({ id: "hello", size: { width: 100, height: 100 } }, (error, result) => {
+                  if (error) {
+                    console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                    return;
+                  }
+                  if (result) {
+                    console.info('size id is:'+result.size.height);
+                    Utils.emitEvent(result.size.height, 2796)
+                  }
+                });
+              } catch (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+              break;
+            }
+            case "wholeWebPageDrawing0500": {
+              try {
+                await Utils.sleep(10000);
+                await Utils.sleep(10000);
+                await Utils.sleep(10000);
+                this.controller.webPageSnapshot({ id: "hello", size: { width: 100, height: 100 } }, (error, result) => {
+                  if (error) {
+                    console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                    return;
+                  }
+                  if (result) {
+                    console.info('imagePixelMap id is:'+result.imagePixelMap.isEditable);
+                    Utils.emitEvent(result.imagePixelMap.isEditable, 2797)
+                  }
+                });
+              } catch (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+              break;
+            }
+            case "wholeWebPageDrawing0600": {
+              try {
+                await Utils.sleep(10000);
+                await Utils.sleep(10000);
+                await Utils.sleep(10000);
+                this.controller.webPageSnapshot({ id: "hello", size: { width: 100, height: 100 } }, (error, result) => {
+                  if (error) {
+                    console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+                    return;
+                  }
+                  if (result) {
+                    console.info('imagePixelMap id is:'+result.imagePixelMap.isStrideAlignment);
+                    Utils.emitEvent(result.imagePixelMap.isStrideAlignment, 2798)
+                  }
+                });
+              } catch (error) {
+                console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              }
+              break;
+            }
           }
         })
       }

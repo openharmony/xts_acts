@@ -17,10 +17,10 @@ import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver} from '@ohos.UiTest';
 export default function Params() {
-  describe('Params', function () {
-    beforeEach(async function (done) {
+  describe('Params', () => {
+    beforeEach(async (done: Function) => {
       console.info("Params beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/back_router/A_page',
       }
       try {
@@ -39,7 +39,7 @@ export default function Params() {
       console.info("Params beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("Params after each called");
     });
@@ -51,14 +51,14 @@ export default function Params() {
      * @tc.type
     * @tc.size
      */
-    it('Params_0100', 0, async function (done) {
+    it('Params_0100', 0, async (done: Function) => {
       console.info('[Params_0100] START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('R_params'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('text_Params1');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       expect(obj1.$attrs.content).assertEqual('{"data1":{"data2":["message","message1"]}}');
       await CommonFunc.sleep(1000);
       done();

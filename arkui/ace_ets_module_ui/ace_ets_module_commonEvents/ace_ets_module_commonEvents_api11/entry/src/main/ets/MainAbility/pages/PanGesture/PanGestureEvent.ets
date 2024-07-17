@@ -28,6 +28,7 @@ struct PanGestureEvent {
         Text(this.velocityY.toString()).id("velocityY")
         Text(this.velocity.toString()).id("velocity")
       }
+      .id("PanGestureEvent_column_id")
       .height("90%")
       .width("90%")
       .padding(20)

@@ -1,9 +1,0 @@
-{
-    "allowToBackupRestore": true,
-    "includes": [
-        "data/storage/el2/"
-    ],
-    "excludes": [
-        "/data/storage/el2/base/files/users/*/hidden.json"
-    ]
-}

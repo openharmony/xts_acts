@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,19 +38,19 @@ struct Tabs3Example {
           this.onActionCalled = true;
           console.info('tabContent1 current action state is: ' + this.onActionCalled);
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "ACTION": this.onActionCalled,
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 212,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("tabContent1 start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("tabContent1 emit action state err: " + JSON.stringify(err.message))
+            console.info("tabContent1 emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
 
@@ -87,51 +86,51 @@ struct Tabs3Example {
 
   onPageShow() {
     console.info('tabs page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent: events_emitter.InnerEvent = {
       eventId: 213,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEvent, this.stateChangCallBack)
 
-    var stateChangeEventOne = {
+    let stateChangeEventOne: events_emitter.InnerEvent = {
       eventId: 214,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventOne, this.stateChangCallBack)
 
-    var stateChangeEventTwo = {
+    let stateChangeEventTwo: events_emitter.InnerEvent = {
       eventId: 215,
       priority: events_emitter.EventPriority.LOW
     }
     events_emitter.on(stateChangeEventTwo, this.stateChangCallBack)
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("tabs page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.index != null) {
-        this.index = parseInt(eventData.data.index);
+      if (eventData.data?.index != null) {
+        this.index = parseInt(eventData.data?.index);
       }
-      if (eventData.data.barPosition != null) {
-        this.barPosition = eventData.data.barPosition;
+      if (eventData.data?.barPosition != null) {
+        this.barPosition = eventData.data?.barPosition;
       }
-      if (eventData.data.vertical != null) {
-        this.vertical = eventData.data.vertical;
+      if (eventData.data?.vertical != null) {
+        this.vertical = eventData.data?.vertical;
       }
-      if (eventData.data.scrollable != null) {
-        this.scrollable = eventData.data.scrollable;
+      if (eventData.data?.scrollable != null) {
+        this.scrollable = eventData.data?.scrollable;
       }
-      if (eventData.data.barMode != null) {
-        this.barMode = eventData.data.barMode;
+      if (eventData.data?.barMode != null) {
+        this.barMode = eventData.data?.barMode;
       }
-      if (eventData.data.barWidth != null) {
-        this.barWidth = parseInt(eventData.data.barWidth);
+      if (eventData.data?.barWidth != null) {
+        this.barWidth = parseInt(eventData.data?.barWidth);
       }
-      if (eventData.data.barHeight != null) {
-        this.barHeight = parseInt(eventData.data.barHeight);
+      if (eventData.data?.barHeight != null) {
+        this.barHeight = parseInt(eventData.data?.barHeight);
       }
-      if (eventData.data.animationDuration != null) {
-        this.animationDuration = parseInt(eventData.data.animationDuration);
+      if (eventData.data?.animationDuration != null) {
+        this.animationDuration = parseInt(eventData.data?.animationDuration);
       }
     }
   }

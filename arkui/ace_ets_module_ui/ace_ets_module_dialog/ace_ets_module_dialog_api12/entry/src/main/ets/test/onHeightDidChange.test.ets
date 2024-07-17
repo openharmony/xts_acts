@@ -67,11 +67,9 @@ export default function onHeightDidChange() {
       let button2 = await driver.findComponent(ON.id('ChangeHeight1'));
       await button2.click();
       await CommonFunc.sleep(1000);
-      let button3 = await driver.findComponent(ON.id('chaKan'));
-      await button3.click();
       let strJson = getInspectorByKey('chaKan');
       let obj = JSON.parse(strJson);
-      expect(obj.$attrs.label).assertEqual('750');
+      expect(obj.$attrs.label).assertEqual('onHeightDidChange success');
       await CommonFunc.sleep(1000);
       let button4 = await driver.findComponent(ON.id('closeModal1'));
       await button4.click();

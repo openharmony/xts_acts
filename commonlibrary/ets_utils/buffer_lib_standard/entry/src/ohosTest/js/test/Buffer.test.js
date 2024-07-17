@@ -118,7 +118,8 @@ describe('BufferTest', function () {
       let buf = buffer.alloc(-5);
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('The type of "size" must be number and the value cannot be negative. Received value is: -5');
+      expect(err.message).assertEqual('Parameter error. The type of "size" must be number and the value cannot be ' +
+                                      'negative. Received value is: -5');
     }
   });
 
@@ -270,7 +271,8 @@ describe('BufferTest', function () {
       let buf = buffer.allocUninitializedFromPool(-5);
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('The type of "size" must be number and the value cannot be negative. Received value is: -5');
+      expect(err.message).assertEqual('Parameter error. The type of "size" must be number and the value cannot be ' +
+                                      'negative. Received value is: -5');
     }
   });
 
@@ -367,7 +369,8 @@ describe('BufferTest', function () {
         let byteLen = buffer.byteLength(10);
       } catch (err) {
         expect(err.name).assertEqual('BusinessError');
-        expect(err.message).assertEqual('The type of "string" must be string or Buffer, ArrayBuffer. Received value is: number');
+        expect(err.message).assertEqual('Parameter error. The type of "string" must be string or Buffer, ' +
+                                        'ArrayBuffer. Received value is: number');
       }
     });
   
@@ -549,7 +552,8 @@ describe('BufferTest', function () {
       let res = buffer.compare(10, buf2);
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('The type of "buf1" must be Buffer or Uint8Array. Received value is: string');
+      expect(err.message).assertEqual('Parameter error. The type of "buf1" must be Buffer or Uint8Array. Received ' +
+                                      'value is: string');
     }
   });
 
@@ -567,7 +571,8 @@ describe('BufferTest', function () {
       let res = buffer.compare(buf1, 10);
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('The type of "buf2" must be Buffer or Uint8Array. Received value is: string');
+      expect(err.message).assertEqual('Parameter error. The type of "buf2" must be Buffer or Uint8Array. Received ' +
+                                      'value is: string');
     }
   });
 
@@ -619,7 +624,7 @@ describe('BufferTest', function () {
       let buf = buffer.concat("test string");
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('The type of "list" must be Array. Received value is: string');
+      expect(err.message).assertEqual('Parameter error. The type of "list" must be Array. Received value is: string');
     }
   });
 
@@ -725,7 +730,8 @@ describe('BufferTest', function () {
       let buf = buffer.transcode(10, "utf8", "ucs2");
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('The type of "source" must be Buffer or Uint8Array. Received value is: number');
+      expect(err.message).assertEqual('Parameter error. The type of "source" must be Buffer or Uint8Array. Received ' +
+                                      'value is: number');
     }
   });
 
@@ -743,7 +749,8 @@ describe('BufferTest', function () {
       let buf = buffer.transcode(buf1, 0, "ucs2");
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('The type of "fromEnc" must be string. Received value is: number');
+      expect(err.message).assertEqual('Parameter error. The type of "fromEnc" must be string. Received value is: ' +
+                                      'number');
     }
   });
 
@@ -761,7 +768,8 @@ describe('BufferTest', function () {
       let buf = buffer.transcode(buf1, "utf8", 0);
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('The type of "toEnc" must be string. Received value is: number');
+      expect(err.message).assertEqual('Parameter error. The type of "toEnc" must be string. Received value is: ' +
+                                      'number');
     }
   });
 
@@ -879,7 +887,8 @@ describe('BufferTest', function () {
       let buf = buffer.alloc(3).fill("$*$", 0, 2, "code");
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('The type of "encoding" must be BufferEncoding. the encoding code is unknown');
+      expect(err.message).assertEqual('Parameter error. The type of "encoding" must be BufferEncoding. the encoding ' +
+                                      'code is unknown');
     }
   });
 
@@ -945,7 +954,8 @@ describe('BufferTest', function () {
       let offset = buf.write("abcde", "utf9");
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('The type of "encoding" must be BufferEncoding. the encoding utf9 is unknown');
+      expect(err.message).assertEqual('Parameter error. The type of "encoding" must be BufferEncoding. the encoding ' +
+                                      'utf9 is unknown');
     }
   });
 
@@ -963,7 +973,7 @@ describe('BufferTest', function () {
       let offset = buf.write(10);
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('The type of "str" must be string. Received value is: number');
+      expect(err.message).assertEqual('Parameter error. The type of "str" must be string. Received value is: number');
     }
   });
 
@@ -1017,7 +1027,8 @@ describe('BufferTest', function () {
       let offset = buf.write("abcde", 1, "code");
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('The type of "encoding" must be BufferEncoding. the encoding code is unknown');
+      expect(err.message).assertEqual('Parameter error. The type of "encoding" must be BufferEncoding. the encoding ' +
+                                      'code is unknown');
     }
   });
 
@@ -1054,7 +1065,8 @@ describe('BufferTest', function () {
       let res = buf1.compare(10);
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('The type of "target" must be Buffer or Uint8Array. Received value is: number');
+      expect(err.message).assertEqual('Parameter error. The type of "target" must be Buffer or Uint8Array. Received ' +
+                                      'value is: number');
     }
   });
 
@@ -1138,7 +1150,8 @@ describe('BufferTest', function () {
       let res = buf1.equals("1236");
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('The type of "otherBuffer" must be Buffer or Uint8Array. Received value is: string');
+      expect(err.message).assertEqual('Parameter error. The type of "otherBuffer" must be Buffer or Uint8Array. ' +
+                                      'Received value is: string');
     }
   });
 
@@ -1303,7 +1316,8 @@ describe('BufferTest', function () {
       let num = buf1.copy(10);
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('The type of "target" must be Buffer or Uint8Array. Received value is: number');
+      expect(err.message).assertEqual('Parameter error. The type of "target" must be Buffer or Uint8Array. Received ' +
+                                      'value is: number');
     }
   });
 
@@ -1597,7 +1611,8 @@ describe('BufferTest', function () {
       let index = buf1.indexOf(true);
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('The type of "value" must be string or number, Buffer, Uint8Array. Received value is: boolean');
+      expect(err.message).assertEqual('Parameter error. The type of "value" must be string or number, Buffer, ' +
+                                      'Uint8Array. Received value is: boolean');
     }
   });
 
@@ -1615,7 +1630,8 @@ describe('BufferTest', function () {
       let index = buf1.indexOf("a", "code");
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('The type of "encoding" must be BufferEncoding. the encoding code is unknown');
+      expect(err.message).assertEqual('Parameter error. The type of "encoding" must be BufferEncoding. the encoding ' +
+                                      'code is unknown');
     }
   });
 
@@ -1721,7 +1737,8 @@ describe('BufferTest', function () {
       let index = buf1.lastIndexOf(true);
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('The type of "value" must be string or number, Buffer, Uint8Array. Received value is: boolean');
+      expect(err.message).assertEqual('Parameter error. The type of "value" must be string or number, Buffer, ' +
+                                      'Uint8Array. Received value is: boolean');
     }
   });
 
@@ -1739,7 +1756,8 @@ describe('BufferTest', function () {
       let index = buf1.lastIndexOf("a", "code");
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('The type of "encoding" must be BufferEncoding. the encoding code is unknown');
+      expect(err.message).assertEqual('Parameter error. The type of "encoding" must be BufferEncoding. the encoding ' +
+                                      'code is unknown');
     }
   });
 
@@ -1861,7 +1879,8 @@ describe('BufferTest', function () {
       let flag = buf1.includes(true);
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('The type of "value" must be string or number, Buffer, Uint8Array. Received value is: boolean');
+      expect(err.message).assertEqual('Parameter error. The type of "value" must be string or number, Buffer, ' +
+                                      'Uint8Array. Received value is: boolean');
     }
   });
  
@@ -1894,7 +1913,7 @@ describe('BufferTest', function () {
       buf1.swap16();
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('Buffer size must be a multiple of 16-bits');
+      expect(err.message).assertEqual('The buffer size must be a multiple of 16-bits');
     }
   });
 
@@ -1927,7 +1946,7 @@ describe('BufferTest', function () {
       buf1.swap32();
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('Buffer size must be a multiple of 32-bits');
+      expect(err.message).assertEqual('The buffer size must be a multiple of 32-bits');
     }
   });
 
@@ -1960,7 +1979,7 @@ describe('BufferTest', function () {
       buf1.swap64();
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('Buffer size must be a multiple of 64-bits');
+      expect(err.message).assertEqual('The buffer size must be a multiple of 64-bits');
     }
   });
 
@@ -2420,7 +2439,8 @@ describe('BufferTest', function () {
       let blob = new buffer.Blob(["a", "b", "c"], 10);
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('The type of "options" must be Object. Received value is: number');
+      expect(err.message).assertEqual('Parameter error. The type of "options" must be Object. Received value is: ' +
+                                      'number');
     }
   });
 
@@ -2437,7 +2457,8 @@ describe('BufferTest', function () {
       let blob = new buffer.Blob("abc", { type: "new type", endings: "transparent" });
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('The type of "sources" must be Iterable. Received value is: string');
+      expect(err.message).assertEqual('Parameter error. The type of "sources" must be Iterable. Received value is: ' +
+                                      'string');
     }
   });
 
@@ -2580,7 +2601,8 @@ describe('BufferTest', function () {
       let ref = buf.writeInt32BE("string", 1);
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('The type of "value" must be number. Received value is: string');
+      expect(err.message).assertEqual('Parameter error. The type of "value" must be number. Received value is: ' +
+                                      'string');
     }
   });
 
@@ -3638,7 +3660,8 @@ describe('BufferTest', function () {
       let ref = buf.readInt32BE("1");
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('The type of "offset" must be number. Received value is: string');
+      expect(err.message).assertEqual('Parameter error. The type of "offset" must be number. Received value is: ' +
+                                      'string');
     }
   });
 
@@ -4390,7 +4413,7 @@ describe('BufferTest', function () {
       buf.length = 10;
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('Cannot set property length of Buffer which has only a getter');
+      expect(err.message).assertEqual('length cannot be set for the buffer that has only a getter');
     }
   });
 
@@ -4407,7 +4430,7 @@ describe('BufferTest', function () {
     let len = buf.length;
     expect(len).assertEqual(22);
   });
-  
+
   /**
    * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_26000
    * @tc.name: testBufferByteOffset0755
@@ -4478,7 +4501,7 @@ describe('BufferTest', function () {
       buf.byteOffset = 3;
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('Cannot set property byteOffset of Buffer which has only a getter');
+      expect(err.message).assertEqual('byteOffset cannot be set for the buffer that has only a getter');
     }
   });
 
@@ -4591,7 +4614,8 @@ describe('BufferTest', function () {
       let buf = buffer.allocUninitialized(-5);
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('The type of "size" must be number and the value cannot be negative. Received value is: -5');
+      expect(err.message).assertEqual('Parameter error. The type of "size" must be number and the value cannot be ' +
+                                      'negative. Received value is: -5');
     }
   });
 
@@ -4609,7 +4633,8 @@ describe('BufferTest', function () {
       const buf = buffer.from(10);
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('The type of "value" must be Buffer or ArrayBuffer, Array, Array-like. Received value is: string');
+      expect(err.message).assertEqual('Parameter error. The type of "value" must be Buffer or ArrayBuffer, Array, ' +
+                                      'Array-like. Received value is: string');
     }
   });
 
@@ -4628,7 +4653,7 @@ describe('BufferTest', function () {
       buf.buffer = buf1;
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('Cannot set property buffer of Buffer which has only a getter');
+      expect(err.message).assertEqual('buffer cannot be set for the buffer that has only a getter');
     }
   });
 
@@ -4646,7 +4671,8 @@ describe('BufferTest', function () {
       let str = buf1.toString("code");
     } catch (err) {
       expect(err.name).assertEqual('BusinessError');
-      expect(err.message).assertEqual('The type of "encoding" must be BufferEncoding. the encoding code is unknown');
+      expect(err.message).assertEqual('Parameter error. The type of "encoding" must be BufferEncoding. the encoding ' +
+                                      'code is unknown');
     }
   });
 

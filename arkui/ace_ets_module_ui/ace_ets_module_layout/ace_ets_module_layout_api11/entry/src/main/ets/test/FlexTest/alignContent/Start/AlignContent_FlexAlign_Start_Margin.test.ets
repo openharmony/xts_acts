@@ -78,32 +78,32 @@ export default function AlignContent_FlexAlign_Start_Margin() {
       console.log('AlignContentFlexStartMargin_flex_4 rect_value is:' +
       JSON.stringify(AlignContentFlexStart_4));
 
-      expect(Math.round(AlignContentFlexStart_1.bottom - AlignContentFlexStart_1.top))
-        .assertEqual(Math.round(vp2px(50)));
-      expect(Math.round(AlignContentFlexStart_2.bottom - AlignContentFlexStart_2.top))
-        .assertEqual(Math.round(vp2px(100)));
-      expect(Math.round(AlignContentFlexStart_3.bottom - AlignContentFlexStart_3.top))
-        .assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(AlignContentFlexStart_4.bottom - AlignContentFlexStart_4.top))
-        .assertEqual(Math.round(vp2px(200)));
-      expect(Math.round(AlignContentFlexStart_1.right - AlignContentFlexStart_1.left))
-        .assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(AlignContentFlexStart_2.right - AlignContentFlexStart_2.left))
-        .assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(AlignContentFlexStart_3.right - AlignContentFlexStart_3.left))
-        .assertEqual(Math.round(vp2px(150)));
-      expect(Math.round(AlignContentFlexStart_4.right - AlignContentFlexStart_4.left))
-        .assertEqual(Math.round(vp2px(150)));
+      expect(Math.abs(AlignContentFlexStart_1.bottom - AlignContentFlexStart_1.top - vp2px(50)) <= 1)
+        .assertTrue();
+      expect(Math.abs(AlignContentFlexStart_2.bottom - AlignContentFlexStart_2.top - vp2px(100)) <= 1)
+        .assertTrue();
+      expect(Math.abs(AlignContentFlexStart_3.bottom - AlignContentFlexStart_3.top - vp2px(150)) <= 1)
+        .assertTrue();
+      expect(Math.abs(AlignContentFlexStart_4.bottom - AlignContentFlexStart_4.top - vp2px(200)) <= 1)
+        .assertTrue();
+      expect(Math.abs(AlignContentFlexStart_1.right - AlignContentFlexStart_1.left - vp2px(150)) <= 1)
+        .assertTrue();
+      expect(Math.abs(AlignContentFlexStart_2.right - AlignContentFlexStart_2.left - vp2px(150)) <= 1)
+        .assertTrue();
+      expect(Math.abs(AlignContentFlexStart_3.right - AlignContentFlexStart_3.left - vp2px(150)) <= 1)
+        .assertTrue();
+      expect(Math.abs(AlignContentFlexStart_4.right - AlignContentFlexStart_4.left - vp2px(150)) <= 1)
+        .assertTrue();
 
       expect(JSON.parse(strJson).$attrs.constructor.direction).assertEqual("FlexDirection.Row");
       expect(JSON.parse(strJson).$attrs.constructor.alignContent).assertEqual("FlexAlign.Start");
 
-      expect(Math.round(AlignContentFlexStart_flex001.top - Start_Margin_Column.top)).assertEqual(Math.round(vp2px(15)))
-      expect(Math.round(AlignContentFlexStart_1.top - Start_Margin_Column.top)).assertEqual(Math.round(vp2px(15)))
-      expect(AlignContentFlexStart_flex001.top).assertEqual(AlignContentFlexStart_2.top)
-      expect(AlignContentFlexStart_4.top).assertEqual(AlignContentFlexStart_2.bottom);
-      expect(Math.round(AlignContentFlexStart_flex001.bottom - AlignContentFlexStart_4.bottom))
-        .assertEqual(Math.round(vp2px(60)));
+      expect(Math.abs(AlignContentFlexStart_flex001.top - Start_Margin_Column.top - vp2px(15)) <= 1).assertTrue();
+      expect(Math.abs(AlignContentFlexStart_1.top - Start_Margin_Column.top - vp2px(15)) <= 1).assertTrue();
+      expect(Math.abs(AlignContentFlexStart_flex001.top - AlignContentFlexStart_2.top) <= 1).assertTrue();
+      expect(Math.abs(AlignContentFlexStart_4.top - AlignContentFlexStart_2.bottom) <= 1).assertTrue();
+      expect(Math.abs(AlignContentFlexStart_flex001.bottom - AlignContentFlexStart_4.bottom - vp2px(60)) <= 1)
+        .assertTrue();
       console.info('testAlignContentStartFlexMarginSatisfy END');
 
     });

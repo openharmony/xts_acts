@@ -12,44 +12,46 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- import {MessageManager,Callback} from '../utils/MessageManager';
+import {MessageManager,Callback} from '../utils/MessageManager';
 
-@Entry
+ type Message = boolean|string|number|number[]|Color
+
+ @Entry
 @Component
 struct NavDestinationPage {
   private arr: number[] = [0, 1, 2, 3]
   @State isActive: boolean = false
-  @State dex: number = 0
+  @State colorIndex: number = 0
   @State stateChange: string = ''
   @State hideTitleBar: boolean = false
   @State backColor: Color = Color.Grey
   @State title: string = 'NavDestination'
-  messageManager: MessageManager = new MessageManager()
+  messageManager = new MessageManager<Message>()
 
   onPageShow() {
     console.info('NavRouter onPageShow')
     globalThis.value = {
       name: 'messageManager', message: this.messageManager
     }
-    let callback: Callback = (message: any) => {
+    let callback: Callback<Message> = message => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'arr') {
-        this.arr = message.value
+        this.arr = message.value as number[]
       }
       if (message.name == 'hideTitleBar') {
-        this.hideTitleBar = message.value
+        this.hideTitleBar = message.value as boolean
       }
       if (message.name == 'backColor') {
-        this.backColor = message.value
+        this.backColor = message.value as Color
       }
       if (message.name == 'title') {
-        this.title = message.value
+        this.title = message.value as string
       }
-      if (message.name == 'dex') {
-        this.dex = message.value
+      if (message.name == 'colorIndex') {
+        this.colorIndex = message.value as number
       }
       if (message.name == 'stateChange') {
-        this.stateChange = message.value
+        this.stateChange = message.value as string
       }
     }
     this.messageManager.registerCallback(callback)
@@ -59,7 +61,7 @@ struct NavDestinationPage {
     Column() {
       Navigation() {
         List({ space: 12, initialIndex: 0 }) {
-          ForEach(this.arr, (item: number, index: number) => {
+          ForEach(this.arr, (item: number, index: number = -1) => {
             ListItem() {
               NavRouter() {
                 Row() {
@@ -71,7 +73,7 @@ struct NavDestinationPage {
                 }
                 .width(180)
                 .height(72)
-                .backgroundColor(this.dex === index ? '#ccc' : '#fff')
+                .backgroundColor(this.colorIndex === index ? '#ccc' : '#fff')
                 .borderRadius(24)
 
                 NavDestination() {
@@ -89,10 +91,10 @@ struct NavDestinationPage {
               }.key('NavRouter' + (item + 1).toString())
               .onStateChange((isActivated: boolean) => {
                 this.stateChange = "stateChange " + isActivated.toString()
-                this.dex = index
+                this.colorIndex = index
               })
             }
-          }, item => item)
+          }, (item: string) => item)
         }
         .height('100%')
         .margin({ top: 12, left: 12 })

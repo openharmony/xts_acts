@@ -51,6 +51,31 @@ export default function datePickerEndTest() {
       expect(nativeFunc.testDatePickerEnd002()).assertEqual(0)
       done()
     })
-    
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_TEXTPICKER_END_0300
+     * @tc.name       : testDatePickerEnd003
+     * @tc.desc       : testing end for DatePicker with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testDatePickerEnd003', 0, async (done: Function) => {
+      expect(nativeFunc.testDatePickerEnd003()).assertEqual(0)
+      done()
+    })
+
+    /*
+     * @tc.number     : SUB_ARKUI_CAPI_TEXTPICKER_END_0400
+     * @tc.name       : testDatePickerEnd004
+     * @tc.desc       : testing end for DatePicker with abnormal value
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('testDatePickerEnd004', 0, async (done: Function) => {
+      expect(nativeFunc.testDatePickerEnd004()).assertEqual(0)
+      done()
+    })
   })
 }

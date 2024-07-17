@@ -24,39 +24,6 @@ export default {
     console.log(TAG1 + 'onCreate');
     lifeList.push('onCreate');
     lifeListActive.push('onCreate');
-
-    ability_featureAbility.getWant().then(async (data) => {
-      console.log(TAG1 + "getWant data = " + JSON.stringify(data));
-
-      if(data.parameters.number == 1) {
-        setWakeUpScreenP(ability_featureAbility, undefined)
-      }
-      if(data.parameters.number == 2) {
-        setWakeUpScreenP(ability_featureAbility, 123)
-      }
-      if(data.parameters.number == 3) {
-        setWakeUpScreenP(ability_featureAbility, "true")
-      }
-      if(data.parameters.number == 4) {
-        setWakeUpScreenP(ability_featureAbility, [true, false])
-      }
-      if(data.parameters.number == 5) {
-        setWakeUpScreenP(ability_featureAbility, {status1: true, status2: true})
-      }
-      await sleep(300);
-      lifeList.push('wakeUpScreen');
-      lifeListActive.push('wakeUpScreen');
-      let options = {
-        parameters: {
-          lifeList: lifeList
-        }
-      }
-      commonEvent.publish(listPush1 + "wakeUpScreen", options, (err) => {
-        console.log(TAG1 + listPush1 + "wakeUpScreen");
-      });
-    }).catch((error) => {
-      console.log(TAG1 + "getWant error = " + JSON.stringify(error));
-    })
   },
   onDestroy() {
     console.log(TAG1 + 'onDestroy');
@@ -87,21 +54,4 @@ export default {
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-function setWakeUpScreenP(featureAbility, wakeUp) {
-  try {
-    console.log(TAG1 + "setWakeUpScreenP start");
-    featureAbility.getContext().setWakeUpScreen(wakeUp).then((data) => {
-      console.log(TAG1 + "setWakeUpScreen data = " + JSON.stringify(data));
-    }).catch((error) => {
-      console.log(TAG1 + "setWakeUpScreen error = " + JSON.stringify(error));
-    })
-  } catch(error) {
-    console.log(TAG1 + "setWakeUpScreen catch error = " + JSON.stringify(error));
-
-    commonEvent.publish(listPush1 + "wakeUpErr", (err) => {
-      console.log(TAG1 + listPush1 + "wakeUpErr");
-    });
-  }
 }

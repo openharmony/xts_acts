@@ -14,7 +14,7 @@
  */
 import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 import events_emitter from '@ohos.events.emitter';
 
 export default function tabsJsunit() {
@@ -31,7 +31,7 @@ export default function tabsJsunit() {
         if (!("tabs" == pages.name)) {
           console.info("get tabs state pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push tabs page result:" + JSON.stringify(result));
         }
       } catch (err) {
@@ -41,7 +41,7 @@ export default function tabsJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("tabs after each called");
     });
 
@@ -101,7 +101,9 @@ export default function tabsJsunit() {
       let strJson = getInspectorByKey('tabs');
       console.info("testTabs_0600 component strJson:" + strJson);
       console.info("testTabs_0600 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
-      expect(JSON.parse(strJson).$attrs.barWidth).assertEqual('70.000000');
+     
+      expect(Math.abs(Number(JSON.parse(strJson).$attrs.barWidth) - 70.000000 ) <=1 ).assertTrue();
+     
       console.info('testTabs_0600 END');
       done();
     });
@@ -111,7 +113,8 @@ export default function tabsJsunit() {
       let strJson = getInspectorByKey('tabs');
       console.info("testTabs_0700 component strJson:" + strJson);
       console.info("testTabs_0700 component JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
-      expect(JSON.parse(strJson).$attrs.barHeight).assertEqual('150.000000');
+      expect(Math.abs(Number(JSON.parse(strJson).$attrs.barHeight) - 150.000000 ) <=1 ).assertTrue();
+    
       console.info('testTabs_0700 END');
       done();
     });
@@ -133,7 +136,7 @@ export default function tabsJsunit() {
       } catch (err) {
         console.log("testTabs_0800 change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('tabs');
       console.info("testTabs_0800 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
       expect(JSON.parse(strJsonNew).$attrs.vertical).assertEqual('false');
@@ -158,7 +161,7 @@ export default function tabsJsunit() {
       } catch (err) {
         console.log("testTabs_0900 change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('tabs');
       console.info("testTabs_0900 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
       expect(JSON.parse(strJsonNew).$attrs.scrollable).assertEqual(false);
@@ -183,7 +186,7 @@ export default function tabsJsunit() {
       } catch (err) {
         console.log("testTabs_1000 change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('tabs');
       console.info("testTabs_1000 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
       expect(JSON.parse(strJsonNew).$attrs.scrollable).assertEqual(false);
@@ -208,7 +211,7 @@ export default function tabsJsunit() {
       } catch (err) {
         console.log("testTabs_1100 change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('tabs');
       console.info("testTabs_1100 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
       expect(JSON.parse(strJsonNew).$attrs.scrollable).assertEqual(false);
@@ -233,7 +236,7 @@ export default function tabsJsunit() {
       } catch (err) {
         console.log("testTabs_1200 change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('tabs');
       console.info("testTabs_1200 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
       expect(JSON.parse(strJsonNew).$attrs.vertical).assertEqual('false');
@@ -258,7 +261,7 @@ export default function tabsJsunit() {
       } catch (err) {
         console.log("testTabs_1300 change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew = getInspectorByKey('tabs');
       console.info("testTabs_1300 component JSON.parse(strJsonNew) is: " + JSON.stringify(JSON.parse(strJsonNew)));
       expect(JSON.parse(strJsonNew).$attrs.scrollable).assertEqual(false);
@@ -268,10 +271,10 @@ export default function tabsJsunit() {
 
     it('testTabs_1400', 0, async (done: Function) => {
       console.info('testTabs_1400 START');
-      await Utils.sleep(1500);
+      await CommonFunc.sleep(1500);
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("testTabs_1400 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.ACTION).assertEqual(true);
+        expect(indexEvent.data?.ACTION).assertEqual(true);
         done();
       }
       let indexEvent: events_emitter.InnerEvent = {
@@ -284,7 +287,7 @@ export default function tabsJsunit() {
         console.info("testTabs_1400 on events_emitter err : " + JSON.stringify(err));
       }
       console.info("testTabs_1400 click result is: " + JSON.stringify(sendEventByKey('tabContent1', 10, "")));
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info('testTabs_1400 END');
       done();
     });

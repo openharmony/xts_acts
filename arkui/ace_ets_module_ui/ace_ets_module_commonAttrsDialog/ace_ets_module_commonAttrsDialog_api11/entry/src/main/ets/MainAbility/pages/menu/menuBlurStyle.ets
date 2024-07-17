@@ -16,7 +16,6 @@
 @Entry
 @Component
 struct menuBlurStyleExample {
-
   @Builder
   MyMenu() {
     Menu() {
@@ -30,7 +29,8 @@ struct menuBlurStyleExample {
     Column({ space: 50 }) {
       Column() {
         Column() {
-          Text('menuBlurStyle').key('menu_blurStyle')
+          Text('menuBlurStyle')
+            .key('menu_blurStyle')
             .width(200)
             .height(80)
             .textAlign(TextAlign.Center)

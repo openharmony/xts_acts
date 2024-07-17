@@ -20,11 +20,11 @@ static napi_value TestTimePickerSelectedTextStyle001(napi_env env, napi_callback
 {
     NAPI_START(timepicker, ARKUI_NODE_TIME_PICKER);
     ArkUI_AttributeItem value_item = {};
-    value_item.string = "#ff182431;14;normal;Arial,HarmonyOS Sans;normal";
+    value_item.string = "#FF182431;14;normal;Arial,HarmonyOS Sans;normal";
     auto ret = nodeAPI->setAttribute(timepicker, NODE_TIME_PICKER_SELECTED_TEXT_STYLE, &value_item);
     ASSERT_EQ(ret, SUCCESS);
     ASSERT_STREQ(nodeAPI->getAttribute(timepicker, NODE_TIME_PICKER_SELECTED_TEXT_STYLE)->string,
-                 "#ff182431;14;normal;Arial,HarmonyOS Sans;normal");
+                 "#FF182431;14;normal;Arial,HarmonyOS Sans;normal");
     NAPI_END;
 }
 
@@ -36,6 +36,138 @@ static napi_value TestTimePickerSelectedTextStyle002(napi_env env, napi_callback
     auto ret = nodeAPI->setAttribute(timepicker, NODE_TIME_PICKER_SELECTED_TEXT_STYLE, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     ASSERT_STRNE(nodeAPI->getAttribute(timepicker, NODE_TIME_PICKER_SELECTED_TEXT_STYLE)->string, "abnormal");
+    NAPI_END;
+}
+
+static napi_value TestTimePickerSelectedTextStyle003(napi_env env, napi_callback_info info)
+{
+    NAPI_START(timepicker, ARKUI_NODE_TIME_PICKER);
+    ArkUI_AttributeItem value_item = {};
+    value_item.string = "#FF182431;14;bold;Arial,HarmonyOS Sans;normal";
+    auto ret = nodeAPI->setAttribute(timepicker, NODE_TIME_PICKER_SELECTED_TEXT_STYLE, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_STREQ(nodeAPI->getAttribute(timepicker, NODE_TIME_PICKER_SELECTED_TEXT_STYLE)->string,
+                 "#FF182431;14;bold;Arial,HarmonyOS Sans;normal");
+    NAPI_END;
+}
+
+static napi_value TestTimePickerSelectedTextStyle004(napi_env env, napi_callback_info info)
+{
+    NAPI_START(timepicker, ARKUI_NODE_TIME_PICKER);
+    ArkUI_AttributeItem value_item = {};
+    value_item.string = "#FF182431;14;bolder;Arial,HarmonyOS Sans;normal";
+    auto ret = nodeAPI->setAttribute(timepicker, NODE_TIME_PICKER_SELECTED_TEXT_STYLE, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_STREQ(nodeAPI->getAttribute(timepicker, NODE_TIME_PICKER_SELECTED_TEXT_STYLE)->string,
+                 "#FF182431;14;bolder;Arial,HarmonyOS Sans;normal");
+    NAPI_END;
+}
+
+static napi_value TestTimePickerSelectedTextStyle005(napi_env env, napi_callback_info info)
+{
+    NAPI_START(timepicker, ARKUI_NODE_TIME_PICKER);
+    ArkUI_AttributeItem value_item = {};
+    value_item.string = "#FF182431;14;lighter;Arial,HarmonyOS Sans;normal";
+    auto ret = nodeAPI->setAttribute(timepicker, NODE_TIME_PICKER_SELECTED_TEXT_STYLE, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_STREQ(nodeAPI->getAttribute(timepicker, NODE_TIME_PICKER_SELECTED_TEXT_STYLE)->string,
+                 "#FF182431;14;lighter;Arial,HarmonyOS Sans;normal");
+    NAPI_END;
+}
+
+static napi_value TestTimePickerSelectedTextStyle006(napi_env env, napi_callback_info info)
+{
+    NAPI_START(timepicker, ARKUI_NODE_TIME_PICKER);
+    ArkUI_AttributeItem value_item = {};
+    value_item.string = "#FF182431;14;medium;Arial,HarmonyOS Sans;normal";
+    auto ret = nodeAPI->setAttribute(timepicker, NODE_TIME_PICKER_SELECTED_TEXT_STYLE, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_STREQ(nodeAPI->getAttribute(timepicker, NODE_TIME_PICKER_SELECTED_TEXT_STYLE)->string,
+                 "#FF182431;14;medium;Arial,HarmonyOS Sans;normal");
+    NAPI_END;
+}
+
+static napi_value TestTimePickerSelectedTextStyle007(napi_env env, napi_callback_info info)
+{
+    NAPI_START(timepicker, ARKUI_NODE_TIME_PICKER);
+    ArkUI_AttributeItem value_item = {};
+    value_item.string = "#FF182431;14;regular;Arial,HarmonyOS Sans;normal";
+    auto ret = nodeAPI->setAttribute(timepicker, NODE_TIME_PICKER_SELECTED_TEXT_STYLE, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_STREQ(nodeAPI->getAttribute(timepicker, NODE_TIME_PICKER_SELECTED_TEXT_STYLE)->string,
+                 "#FF182431;14;regular;Arial,HarmonyOS Sans;normal");
+    NAPI_END;
+}
+
+static napi_value TestTimePickerSelectedTextStyle008(napi_env env, napi_callback_info info)
+{
+    NAPI_START(timepicker, ARKUI_NODE_TIME_PICKER);
+    ArkUI_AttributeItem value_item = {};
+    value_item.string = "#FF182431;14;bold;Arial,HarmonyOS Sans;italic";
+    auto ret = nodeAPI->setAttribute(timepicker, NODE_TIME_PICKER_SELECTED_TEXT_STYLE, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_STREQ(nodeAPI->getAttribute(timepicker, NODE_TIME_PICKER_SELECTED_TEXT_STYLE)->string,
+                 "#FF182431;14;bold;Arial,HarmonyOS Sans;italic");
+    NAPI_END;
+}
+
+static napi_value TestTimePickerSelectedTextStyle009(napi_env env, napi_callback_info info)
+{
+    NAPI_START(timepicker, ARKUI_NODE_TIME_PICKER);
+    ArkUI_AttributeItem value_item = {};
+    value_item.string = "#FF182431;14;normal;Arial,HarmonyOS Sans;italic";
+    auto ret = nodeAPI->setAttribute(timepicker, NODE_TIME_PICKER_SELECTED_TEXT_STYLE, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_STREQ(nodeAPI->getAttribute(timepicker, NODE_TIME_PICKER_SELECTED_TEXT_STYLE)->string,
+                 "#FF182431;14;normal;Arial,HarmonyOS Sans;italic");
+    NAPI_END;
+}
+
+static napi_value TestTimePickerSelectedTextStyle010(napi_env env, napi_callback_info info)
+{
+    NAPI_START(timepicker, ARKUI_NODE_TIME_PICKER);
+    ArkUI_AttributeItem value_item = {};
+    value_item.string = "#FF182431;14;bolder;Arial,HarmonyOS Sans;italic";
+    auto ret = nodeAPI->setAttribute(timepicker, NODE_TIME_PICKER_SELECTED_TEXT_STYLE, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_STREQ(nodeAPI->getAttribute(timepicker, NODE_TIME_PICKER_SELECTED_TEXT_STYLE)->string,
+                 "#FF182431;14;bolder;Arial,HarmonyOS Sans;italic");
+    NAPI_END;
+}
+
+static napi_value TestTimePickerSelectedTextStyle011(napi_env env, napi_callback_info info)
+{
+    NAPI_START(timepicker, ARKUI_NODE_TIME_PICKER);
+    ArkUI_AttributeItem value_item = {};
+    value_item.string = "#FF182431;14;lighter;Arial,HarmonyOS Sans;italic";
+    auto ret = nodeAPI->setAttribute(timepicker, NODE_TIME_PICKER_SELECTED_TEXT_STYLE, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_STREQ(nodeAPI->getAttribute(timepicker, NODE_TIME_PICKER_SELECTED_TEXT_STYLE)->string,
+                 "#FF182431;14;lighter;Arial,HarmonyOS Sans;italic");
+    NAPI_END;
+}
+
+static napi_value TestTimePickerSelectedTextStyle012(napi_env env, napi_callback_info info)
+{
+    NAPI_START(timepicker, ARKUI_NODE_TIME_PICKER);
+    ArkUI_AttributeItem value_item = {};
+    value_item.string = "#FF182431;14;medium;Arial,HarmonyOS Sans;italic";
+    auto ret = nodeAPI->setAttribute(timepicker, NODE_TIME_PICKER_SELECTED_TEXT_STYLE, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_STREQ(nodeAPI->getAttribute(timepicker, NODE_TIME_PICKER_SELECTED_TEXT_STYLE)->string,
+                 "#FF182431;14;medium;Arial,HarmonyOS Sans;italic");
+    NAPI_END;
+}
+
+static napi_value TestTimePickerSelectedTextStyle013(napi_env env, napi_callback_info info)
+{
+    NAPI_START(timepicker, ARKUI_NODE_TIME_PICKER);
+    ArkUI_AttributeItem value_item = {};
+    value_item.string = "#FF182431;14;regular;Arial,HarmonyOS Sans;italic";
+    auto ret = nodeAPI->setAttribute(timepicker, NODE_TIME_PICKER_SELECTED_TEXT_STYLE, &value_item);
+    ASSERT_EQ(ret, SUCCESS);
+    ASSERT_STREQ(nodeAPI->getAttribute(timepicker, NODE_TIME_PICKER_SELECTED_TEXT_STYLE)->string,
+                 "#FF182431;14;regular;Arial,HarmonyOS Sans;italic");
     NAPI_END;
 }
 } // namespace ArkUICapiTest

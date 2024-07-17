@@ -15,7 +15,7 @@
 
 import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from '../../MainAbility/common/Utils.ets'
+import Utils from '../../MainAbility/common/Utils'
 
 export default function animatorOnframeJsunit() {
   describe('animatorOnframeTest', () => {

@@ -36,9 +36,11 @@ struct richEditorApi4 {
           this.controller.setTypingStyle(
             {
               fontSize: 50,
+              fontColor: "#FF182431",
+              decoration:{ type: TextDecorationType.None, color: "#FF182431"}
             })
         }).id('richEditorApi4_btn1')
-        Button('setTypingStyle').onClick((event: ClickEvent) => {
+        Button('getTypingStyle').onClick((event: ClickEvent) => {
           this.text1 = JSON.stringify(this.controller.getTypingStyle())
         }).id('richEditorApi4_btn2')
         Text('' + this.text1).key('richEditorApi4_text1')

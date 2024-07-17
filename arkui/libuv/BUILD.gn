@@ -208,6 +208,7 @@ ohos_executable("libuvruntest") {
     "//third_party/libuv/src/unix",
   ]
   sources = [ "//third_party/libuv/test/run-tests.c" ]
+  external_deps = [ "hilog:libhilog" ]
   deps = [ ":libuvTestStatic" ]
   part_name = "libuv"
   subsystem_name = "thirdparty"
@@ -223,6 +224,7 @@ ohos_moduletest_suite("ActsLibuvTest") {
     "//third_party/libuv/src",
     "//third_party/libuv/src/unix",
   ]
+  external_deps = [ "hilog:libhilog" ]
   deps = [ ":libuvTestStatic" ]
   cflags = [ "-Wno-error" ]
 }

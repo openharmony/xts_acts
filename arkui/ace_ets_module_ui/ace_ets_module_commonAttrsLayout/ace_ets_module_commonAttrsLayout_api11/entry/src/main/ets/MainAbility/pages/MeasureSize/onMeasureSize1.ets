@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../utils/MessageManager';
+import { MessageManager, Callback } from '../../utils/MessageManager';
 
 @Entry
 @Component
@@ -21,14 +21,12 @@ struct onMeasureSize1 {
     console.info('onMeasureSize  onPageShow');
   }
 
-
   build() {
     Column() {
       CustomLayout({ builder: ColumnChildren })
 
     }.key('onMeasureSize1_Column_1')
   }
-
 }
 
 @Builder
@@ -56,7 +54,6 @@ struct CustomLayout {
     height: 0
   };
 
-
   onPlaceChildren(selfLayoutInfo: GeometryInfo, children: Array<Layoutable>, constraint: ConstraintSizeOptions) {
     let startPos = 300;
     children.forEach((child) => {
@@ -66,11 +63,15 @@ struct CustomLayout {
 
   }
 
-
   onMeasureSize(selfLayoutInfo: GeometryInfo, children: Array<Measurable>, constraint: ConstraintSizeOptions) {
     let size = 100;
     children.forEach((child) => {
-      let result: MeasureResult = child.measure({ minHeight: size, minWidth: size, maxWidth: size, maxHeight: size })
+      let result: MeasureResult = child.measure({
+        minHeight: size,
+        minWidth: size,
+        maxWidth: size,
+        maxHeight: size
+      })
       size += result.width / 2;
     })
     this.result.width = 100;

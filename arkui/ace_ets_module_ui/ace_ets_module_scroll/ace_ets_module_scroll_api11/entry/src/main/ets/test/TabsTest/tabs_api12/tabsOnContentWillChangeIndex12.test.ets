@@ -19,8 +19,8 @@ import CommonFunc from '../../../MainAbility/common/Common';
 import { Driver, ON } from '@ohos.UiTest';
 
 export default function tabsOnContentWillChangeIndex12JsunitTest() {
-  describe('tabsOnContentWillChangeIndex12JsunitTest', function () {
-    beforeEach(async function (done) {
+  describe('tabsOnContentWillChangeIndex12JsunitTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("tabsOnContentWillChangeIndex12JsunitTest beforeEach start");
       try {
         router.clear();
@@ -38,7 +38,7 @@ export default function tabsOnContentWillChangeIndex12JsunitTest() {
       console.info("tabsOnContentWillChangeIndex12JsunitTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("tabsOnContentWillChangeIndex12JsunitTest after each called");
     });
@@ -50,7 +50,7 @@ export default function tabsOnContentWillChangeIndex12JsunitTest() {
      * @tc.level  3
      */
 
-    it('tabsOnContentWillChangeJsunitTest_0120', 0, async function (done) {
+    it('tabsOnContentWillChangeJsunitTest_0120', 0, async (done: Function) => {
       console.info('tabsOnContentWillChangeJsunitTest_0120 START');
       let driver = Driver.create();
       // get the content rect value
@@ -58,8 +58,8 @@ export default function tabsOnContentWillChangeIndex12JsunitTest() {
       console.info("tabsOnContentWillChangeJsunitTest_0120  test rect value " + tabsRect.left + "," + tabsRect.right + "," +
       tabsRect.top + "," + tabsRect.bottom );
       // swipe index 0 -1  right swipe to left
-      await driver.swipe(Math.round((tabsRect.right-tabsRect.left)*0.2 + tabsRect.left),Math.round((tabsRect.bottom-tabsRect.top)/2 + tabsRect.top),Math.round((tabsRect.right-tabsRect.left)*0.1 + tabsRect.left),
-        Math.round((tabsRect.bottom-tabsRect.top)/2 + tabsRect.top));
+      await driver.swipe(Math.round(globalThis.winLeft + (tabsRect.right-tabsRect.left)*0.2 + tabsRect.left),Math.round(globalThis.winTop + (tabsRect.bottom-tabsRect.top)/2 + tabsRect.top),Math.round(globalThis.winLeft + (tabsRect.right-tabsRect.left)*0.1 + tabsRect.left),
+        Math.round(globalThis.winTop + (tabsRect.bottom-tabsRect.top)/2 + tabsRect.top));
       await CommonFunc.sleep(2000);
 
       let text01 = await driver.findComponent(ON.text("首页的内容"))

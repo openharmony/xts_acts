@@ -1,0 +1,10 @@
+{
+    "src": [
+        "MainAbility/pages/Index",
+        "MainAbility/pages/webViewSdkTestFrameUrl",
+        "MainAbility/pages/webViewNativeMediaPlayerEnableFalse",
+        "MainAbility/pages/webViewNativeMediaPlayerHandlerEnhanced",
+        "MainAbility/pages/webViewWebResourceTypeProps2"
+    ]
+}
+

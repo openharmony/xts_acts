@@ -15,7 +15,7 @@
 
 class MyDataSourceGrid implements IDataSource {
   private list: string[] = [];
-  private listener: DataChangeListener;
+  private listener?: DataChangeListener = undefined;
 
   constructor(list: string[]) {
     this.list = list

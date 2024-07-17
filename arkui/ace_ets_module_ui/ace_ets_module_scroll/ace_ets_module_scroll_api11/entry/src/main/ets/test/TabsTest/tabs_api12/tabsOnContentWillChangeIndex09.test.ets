@@ -19,8 +19,8 @@ import CommonFunc from '../../../MainAbility/common/Common';
 import { Driver, ON } from '@ohos.UiTest';
 
 export default function tabsOnContentWillChangeIndex09JsunitTest() {
-  describe('tabsOnContentWillChangeIndex09JsunitTest', function () {
-    beforeEach(async function (done) {
+  describe('tabsOnContentWillChangeIndex09JsunitTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("tabsOnContentWillChangeIndex09JsunitTest beforeEach start");
       try {
         router.clear();
@@ -38,7 +38,7 @@ export default function tabsOnContentWillChangeIndex09JsunitTest() {
       console.info("tabsOnContentWillChangeIndex09JsunitTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("tabsOnContentWillChangeIndex9JsunitTest after each called");
     });
@@ -50,7 +50,7 @@ export default function tabsOnContentWillChangeIndex09JsunitTest() {
      * @tc.level  3
      */
 
-    it('tabsOnContentWillChangeJsunitTest_0090', 0, async function (done) {
+    it('tabsOnContentWillChangeJsunitTest_0090', 0, async (done: Function) => {
       console.info('tabsOnContentWillChangeIndex09JsunitTest START');
 
       // click the index tab it chan change
@@ -60,7 +60,7 @@ export default function tabsOnContentWillChangeIndex09JsunitTest() {
       await CommonFunc.sleep(2000);
 
       let strJson1 = getInspectorByKey('currentIndex9x');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[tabsOnContentWillChangeJsunitTest_0090] component obj is: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('2');
 
@@ -72,7 +72,7 @@ export default function tabsOnContentWillChangeIndex09JsunitTest() {
       await CommonFunc.sleep(2000);
 
       let strJson2 = getInspectorByKey('currentIndex9x');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[tabsOnContentWillChangeJsunitTest_0090] component obj is: " + JSON.stringify(obj2));
       expect(obj2.$attrs.content).assertEqual('3');
 

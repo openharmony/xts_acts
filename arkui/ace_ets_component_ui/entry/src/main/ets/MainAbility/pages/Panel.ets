@@ -17,7 +17,6 @@
 @Component
 struct PanelExample {
   @State show: boolean = false;
-  private des: Dimension;
   build() {
     Column() {
       Text('2021-09-30    Today Calendar: 1.afternoon......Click for details')

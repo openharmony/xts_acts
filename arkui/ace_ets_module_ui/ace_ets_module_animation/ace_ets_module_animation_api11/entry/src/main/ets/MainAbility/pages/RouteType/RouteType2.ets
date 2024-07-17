@@ -16,16 +16,23 @@
 @Entry
 @Component
 struct RouteType2 {
-  @State scale2: number = 1
-  @State opacity2: number = 1
+  @State scale2: number = 1;
+  @State opacity2: number = 1;
 
   build() {
     Column() {
       Navigator({ target: 'pages/RouteType1', type: NavigationType.Push }) {
-        Image($r('app.media.icon')).width('100%').height('100%')   // 图片存放在media文件夹下
+        Image($r('app.media.icon'))
+          .width('100%')
+          .height('100%') // 图片存放在media文件夹下
       }
-    }.width('100%').height('100%').scale({ x: this.scale2 }).opacity(this.opacity2)
+    }
+    .width('100%')
+    .height('100%')
+    .scale({ x: this.scale2 })
+    .opacity(this.opacity2)
   }
+
   // 自定义方式1：完全自定义转场过程的效果
   pageTransition() {
     PageTransitionEnter({ type: RouteType.Pop, duration: 1200, curve: Curve.Linear })
