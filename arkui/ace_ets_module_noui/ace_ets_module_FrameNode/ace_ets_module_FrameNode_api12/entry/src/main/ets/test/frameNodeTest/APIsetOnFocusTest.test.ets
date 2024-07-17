@@ -16,11 +16,12 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import router from '@ohos.router';
 import { Component, Driver, UiWindow, On, ON, MouseButton } from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
+
 export default function APIsetOnFocusTest() {
-  describe('APIsetOnFocusTest', function () {
-    beforeEach(async function (done) {
+  describe('APIsetOnFocusTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("APIsetOnFocusTest beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/frameNode/APIsetOnFocus",
       }
       try {
@@ -40,21 +41,21 @@ export default function APIsetOnFocusTest() {
       done();
     });
     /**
-     * @tc.number    frameNode
-     * @tc.name      APIsetOnFocusTest_0100
-     * @tc.desc      api
-     * @tc.level:    Level 2
+     * @tc.number frameNode
+     * @tc.name APIsetOnFocusTest_0100
+     * @tc.desc api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('APIsetOnFocusTest_0100', 0, async function (done) {
+    it('APIsetOnFocusTest_0100', 0, async (done: Function) => {
       console.info('APIsetOnFocusTest_0100 START');
       let strJson = getInspectorByKey('setOnFocus_1');
       let obj = JSON.parse(strJson);
       console.info("[APIsetOnFocusTest_0100] component obj is: " + JSON.stringify(obj));
       console.info("[APIsetOnFocusTest_0100] backgroundColor: " + JSON.stringify(obj.$attrs.backgroundColor));
       expect(obj.$attrs.backgroundColor).assertEqual('#FFFF0000');
-	  
+
       let strJson2 = getInspectorByKey('setOn_text');
       let obj2 = JSON.parse(strJson2);
       console.info("[APIsetOnFocusTest_0100] component obj2 is: " + JSON.stringify(obj2));
@@ -64,19 +65,19 @@ export default function APIsetOnFocusTest() {
       done();
     });
     /**
-     * @tc.number    frameNode
-     * @tc.name      APIsetOnBlurTest_0200
-     * @tc.desc      api
-     * @tc.level:    Level 2
+     * @tc.number frameNode
+     * @tc.name APIsetOnBlurTest_0200
+     * @tc.desc api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('APIsetOnFocusTest_0200', 0, async function (done) {
+    it('APIsetOnFocusTest_0200', 0, async (done: Function) => {
       console.info('APIsetOnFocusTest_0200 START');
 
       let driver = await Driver.create()
       let buttonCl = await driver.findComponent(ON.id('setOnFocus_2'));
-      if(await buttonCl.isFocused()) {
+      if (await buttonCl.isFocused()) {
         console.info('This button is focused');
       } else {
         console.info('This button is not focused');
