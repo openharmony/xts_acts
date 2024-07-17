@@ -99,6 +99,7 @@ export function photoFetchOption(testNum, key, value) : photoAccessHelper.FetchO
       photoKeys.USER_COMMENT,
       photoKeys.DATE_ADDED_MS,
       photoKeys.DATE_MODIFIED_MS,
+      photoKeys.DYNAMIC_RANGE_TYPE,
       'all_exif',
     ],
     predicates: predicates

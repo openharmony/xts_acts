@@ -16,7 +16,6 @@
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { describe, it, expect } from '@ohos/hypium'
 import { genRadomStr, photoType } from '../../../../../../../common';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 export default function createDeleteRequestTest() {
   describe('createDeleteRequestTest', () => {
@@ -86,7 +85,7 @@ export default function createDeleteRequestTest() {
           .then(() => {
             console.log(`${testNum} delete suc`);
           })
-          .catch((error: BusinessError) => {
+          .catch((error) => {
             console.info(`${testNum} error ${JSON.stringify(error)}`);
             expect(true).assertTrue();
           });

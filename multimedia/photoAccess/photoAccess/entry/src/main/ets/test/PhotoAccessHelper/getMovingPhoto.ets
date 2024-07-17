@@ -19,11 +19,10 @@ import photoAccessHelper from '@ohos.file.photoAccessHelper'
 import { BusinessError } from '@ohos.base';
 import dataSharePredicates from '@ohos.data.dataSharePredicates';
 import fs, { Filter, ListFileOptions } from '@ohos.file.fs'
-import { Context } from '@kit.AbilityKit';
 import {
   sleep,
   getPermission
-} from '../util/common';
+} from '../../../../../../../common';
 
 export default function getMovingPhotoTest() {
   describe("getMovingPhotoTest", () => {
@@ -32,7 +31,7 @@ export default function getMovingPhotoTest() {
       await getPermission();
       await sleep();
     });
-    const context: Context = globalThis.abilityContext;
+    const context = globalThis.abilityContext;
     const phAccessHelper = photoAccessHelper.getPhotoAccessHelper(globalThis.abilityContext);
     const sandboxPath = "/data/storage/el2/base/haps/phone/photos/";
     let imageFileName = "ImageFile.jpg";
