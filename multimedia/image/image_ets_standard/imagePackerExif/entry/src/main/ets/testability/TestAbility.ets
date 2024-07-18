@@ -31,6 +31,7 @@ export default class TestAbility extends UIAbility {
         let writeDir: string = this.context.cacheDir
         AppStorage.setOrCreate<string>('pathDir', pathDir);
         AppStorage.setOrCreate<string>('cacheDir', writeDir);
+        AppStorage.setOrCreate('testContext', this.context);
         let abilityDelegator: AbilityDelegatorRegistry.AbilityDelegator
         abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
         let abilityDelegatorArguments: AbilityDelegatorRegistry.AbilityDelegatorArgs
