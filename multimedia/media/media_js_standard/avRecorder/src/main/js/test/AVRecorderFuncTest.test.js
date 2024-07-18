@@ -1926,14 +1926,15 @@ export default function avRecorderTest() {
         */
         it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_MP3_0100', 0, async function (done) {
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_MP3_0100 start')
-            let fileName = avRecorderTestBase.resourceName()
-            fdObject = await mediaTestBase.getAvRecorderFd(fileName, "audio");
+            let timestamp = Date.now();
+            let filename = `avRecorder_${timestamp}.mp3`;
+            fdObject = await mediaTestBase.getFd(fileName);
             fdPath = "fd://" + fdObject.fdNumber;
             console.info('case fdPath is: ' + fdPath);
             avConfig.url = fdPath;
             console.info('avConfig.url ' + avConfig.url);
-            avConfig.profile.fileFormat = FORMAT_MP3;
-            avConfig.profile.audioCodec = ENCORDER_MP3;
+            avProfile.fileFormat = FORMAT_MP3;
+            avProfile.audioCodec = ENCORDER_MP3;
             avRecorderTestBase.avRecorderWithCallBack3(avConfig, avRecorder, RECORDER_TIME, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_MP3_0100 end')
         })
