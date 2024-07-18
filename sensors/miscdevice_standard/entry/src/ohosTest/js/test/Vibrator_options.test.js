@@ -1611,11 +1611,12 @@ describe("VibratorJsTest_misc_7", function () {
         if (isAvailable) {
             try {
                 let ret = vibrator.isSupportEffectSync(INVALID_EFFECT_ID);
+                console.info(TAG + " ret: " + JSON.stringify(ret));
                 expect(typeof(ret)).assertEqual("boolean");
                 done()
             } catch (error) {
                 console.info(TAG + " isSupportEffectSync error: " + JSON.stringify(error));
-                expect(false).assertTrue();
+                expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
                 done()
             }
             console.info(TAG + " end");
@@ -1643,7 +1644,7 @@ describe("VibratorJsTest_misc_7", function () {
                 done()
             } catch (error) {
                 console.info(TAG + " isSupportEffectSync error: " + JSON.stringify(error));
-                expect(false).assertTrue();
+                expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
                 done()
             }
             console.info(TAG + " end");
