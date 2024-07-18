@@ -560,8 +560,9 @@ function testNotifyUpdatePackages() {
       expect(false).assertTrue();
     }).catch ((error: BusinessError)=> {
       expect(error.code == 9201004 || error.code == 801).assertTrue();
+    }).finally(async () => {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
     });
-    await adminManager.disableSuperAdmin(SELFHAPNAME);;
     done();
   });
 }
@@ -624,8 +625,9 @@ function testGetUpdateResult() {
         errorCode: ${data.errorInfo.code}, errorMsg: ${data.errorInfo.message}`)
     }).catch((error: BusinessError) => {
       expect(error.code == 801).assertTrue();
+    }).finally(async () => {
+      await adminManager.disableSuperAdmin(SELFHAPNAME);
     });
-    await adminManager.disableSuperAdmin(SELFHAPNAME);
     done();
   });
 }

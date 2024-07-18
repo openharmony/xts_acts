@@ -52,8 +52,9 @@ export default function adminManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 9200008).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -72,8 +73,9 @@ export default function adminManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -91,8 +93,9 @@ export default function adminManagerTest() {
         adminManager.subscribeManagedEventSync(SELFWANT, SUBSCRIBE_EVENTS);
       } catch (error) {
         expect(false).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -129,8 +132,9 @@ export default function adminManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 9200008).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -149,8 +153,9 @@ export default function adminManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -168,8 +173,9 @@ export default function adminManagerTest() {
         adminManager.unsubscribeManagedEventSync(SELFWANT, SUBSCRIBE_EVENTS);
       } catch (error) {
         expect(false).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
   })
