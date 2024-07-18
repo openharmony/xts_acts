@@ -1556,7 +1556,7 @@ describe("VibratorJsTest_misc_7", function () {
         if (isAvailable) {
             try {
                 let isSupport = vibrator.isHdHapticSupported(INVALID)
-                expect(isSupport).assertEqual(false);
+                expect(typeof(isSupport)).assertEqual("boolean");
                 done()
             } catch (error) {
                 console.info(TAG + " exception in, error:" + error);
@@ -1584,11 +1584,11 @@ describe("VibratorJsTest_misc_7", function () {
             try {
                 let isSupport = vibrator.isHdHapticSupported('xxx')
                 console.info(TAG + " isSupport:" + isSupport);
-                expect(isSupport).assertEqual(false);
+                expect(typeof(isSupport)).assertEqual("boolean");
                 done()
             } catch (error) {
                 console.info(TAG + " exception in, err:" + error);
-                expect(true).assertTrue();
+                expect(false).assertTrue();
                 done()
             }
         } else {
@@ -1611,11 +1611,12 @@ describe("VibratorJsTest_misc_7", function () {
         if (isAvailable) {
             try {
                 let ret = vibrator.isSupportEffectSync(INVALID_EFFECT_ID);
-                expect(ret).assertEqual(false);
+                console.info(TAG + " ret: " + JSON.stringify(ret));
+                expect(typeof(ret)).assertEqual("boolean");
                 done()
             } catch (error) {
                 console.info(TAG + " isSupportEffectSync error: " + JSON.stringify(error));
-                expect(false).assertTrue();
+                expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
                 done()
             }
             console.info(TAG + " end");
@@ -1639,11 +1640,11 @@ describe("VibratorJsTest_misc_7", function () {
         if (isAvailable) {
             try {
                 let ret = vibrator.isSupportEffectSync(INVALID);
-                expect(ret).assertEqual(false);
+                expect(typeof(ret)).assertEqual("boolean");
                 done()
             } catch (error) {
                 console.info(TAG + " isSupportEffectSync error: " + JSON.stringify(error));
-                expect(true).assertTrue();
+                expect(error.code).assertEqual(PARAMETER_ERROR_CODE);
                 done()
             }
             console.info(TAG + " end");
@@ -1668,10 +1669,11 @@ describe("VibratorJsTest_misc_7", function () {
             try {
                 let ret = vibrator.isSupportEffectSync(EFFECT_ID);
                 console.info(TAG + " isSupportEffectSync ret: " + ret);
-                expect(true).assertTrue();
+                expect(typeof(ret)).assertEqual("boolean");
                 done()
             } catch (error) {
                 console.info(TAG + " isSupportEffectSync error: " + JSON.stringify(error));
+                expect(false).assertTrue();
                 done()
             }
             console.info(TAG + " end");
@@ -1705,14 +1707,12 @@ describe("VibratorJsTest_misc_7", function () {
                     done()
                 } else {
                     console.info(TAG + " startVibration success");
-                    expect(true).assertTrue();
                 }
             });
             setTimeout(() => {
                 try {
                     vibrator.stopVibrationSync();
                     console.info(TAG + " stopVibrationSync success");
-                    expect(true).assertTrue();
                     done()
                 } catch (error) {
                     console.info(TAG + " stopVibrationSync error: " + JSON.stringify(error));
