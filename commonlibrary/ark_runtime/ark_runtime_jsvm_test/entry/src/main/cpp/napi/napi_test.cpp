@@ -7454,6 +7454,32 @@ static JSVM_Value IsDetachedArraybuffer(JSVM_Env env, JSVM_CallbackInfo info)
     return isDetached;
 }
 
+static JSVM_Value IsRegExp(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    size_t argc = 1;
+    JSVM_Value args[1] = {nullptr};
+    OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
+    bool result = false;
+    OH_JSVM_IsRegExp(env, args[0], &result);
+    JSVM_Value isRegExp = nullptr;
+    OH_JSVM_GetBoolean(env, result, &isRegExp);
+    return isRegExp;
+}
+
+static JSVM_Value CoerceToBigInt(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    size_t argc = 1;
+    JSVM_Value args[1] = {nullptr};
+    OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
+    JSVM_Value bigInt;
+    OH_JSVM_GetUndefined(env, &bigInt);
+    JSVM_Status status = OH_JSVM_CoerceToBigInt(env, args[0], &bigInt);
+    if (status != JSVM_OK) {
+        OH_JSVM_ThrowError(env, nullptr, "Failed to coerce to bigint");
+    }
+    return bigInt;
+}
+
 static JSVM_Value CoerceToNumber(JSVM_Env env, JSVM_CallbackInfo info)
 {
     strcpy_s(g_dataType, sizeof(g_dataType), "int");
@@ -8769,6 +8795,8 @@ static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = CreateRegExpEnvNullptr},
     {.data = nullptr, .callback = CreateFunctionWithScript},
     {.data = nullptr, .callback = CreateMap},
+    {.data = nullptr, .callback = IsRegExp},
+    {.data = nullptr, .callback = CoerceToBigInt},
 };
 static JSVM_PropertyDescriptor jsDescriptor[] = {
     {"createStringUtf8", nullptr, &param[0], nullptr, nullptr, nullptr, JSVM_DEFAULT},
@@ -8931,6 +8959,8 @@ static JSVM_PropertyDescriptor jsDescriptor[] = {
     {"createRegExpEnvNullptr", nullptr, &param[157], nullptr, nullptr, nullptr, JSVM_DEFAULT},
     {"createFunctionWithScript", nullptr, &param[158], nullptr, nullptr, nullptr, JSVM_DEFAULT},
     {"createMap", nullptr, &param[159], nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"isRegExp", nullptr, &param[160], nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"coerceToBigInt", nullptr, &param[161], nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 
 napi_typedarray_type GetArrayType(JSVM_TypedarrayType typeNum)

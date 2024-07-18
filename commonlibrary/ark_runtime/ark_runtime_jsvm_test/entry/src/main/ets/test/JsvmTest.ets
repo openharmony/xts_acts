@@ -6269,5 +6269,165 @@ instanceOf(obj, Person);
       let result = napitest.runJsVm(script);
       expect(result).assertEqual(false);
     });
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0461
+     * @tc.name JsvmTest0461
+     * @tc.desc JsvmTest
+     */
+    it('JsvmTest0461', 0, function () {
+      let script: string = `
+        coerceToBigInt(false) === BigInt(0)
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertTrue();
+    });
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0462
+     * @tc.name JsvmTest0462
+     * @tc.desc JsvmTest
+     */
+    it('JsvmTest0462', 0, function () {
+      let script: string = `
+        coerceToBigInt(true) === BigInt(1)
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertTrue();
+    });
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0463
+     * @tc.name JsvmTest0463
+     * @tc.desc JsvmTest
+     */
+    it('JsvmTest0463', 0, function () {
+      let script: string = `
+        coerceToBigInt("123") === BigInt(123)
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertTrue();
+    });
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0464
+     * @tc.name JsvmTest0464
+     * @tc.desc JsvmTest
+     */
+    it('JsvmTest0464', 0, function () {
+      let script: string = `
+        let val = getValueBigintUint64(BigInt(123))
+        coerceToBigInt(val) === BigInt(123)
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertTrue();
+    });
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0465
+     * @tc.name JsvmTest0465
+     * @tc.desc JsvmTest
+     */
+    it('JsvmTest0465', 0, function () {
+      let script: string = `
+        let val = /pattern/
+        isRegExp(val)
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertTrue();
+    });
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0466
+     * @tc.name JsvmTest0466
+     * @tc.desc JsvmTest
+     */
+    it('JsvmTest0466', 0, function () {
+      let script: string = `
+        let val
+        isRegExp(val)
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertFalse();
+    });
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0467
+     * @tc.name JsvmTest0467
+     * @tc.desc JsvmTest
+     */
+    it('JsvmTest0467', 0, function () {
+      let script: string = `
+        isRegExp(null)
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertFalse();
+    });
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0468
+     * @tc.name JsvmTest0468
+     * @tc.desc JsvmTest
+     */
+    it('JsvmTest0468', 0, function () {
+      let script: string = `
+        isRegExp(true)
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertFalse();
+    });
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0469
+     * @tc.name JsvmTest0469
+     * @tc.desc JsvmTest
+     */
+    it('JsvmTest0469', 0, function () {
+      let script: string = `
+        isRegExp(123)
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertFalse();
+    });
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0470
+     * @tc.name JsvmTest0470
+     * @tc.desc JsvmTest
+     */
+    it('JsvmTest0470', 0, function () {
+      let script: string = `
+        isRegExp("123")
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertFalse();
+    });
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0471
+     * @tc.name JsvmTest0471
+     * @tc.desc JsvmTest
+     */
+    it('JsvmTest0471', 0, function () {
+      let script: string = `
+        isRegExp({})
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertFalse();
+    });
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0472
+     * @tc.name JsvmTest0472
+     * @tc.desc JsvmTest
+     */
+    it('JsvmTest0472', 0, function () {
+      let script: string = `
+        isRegExp(BigInt(123))
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertFalse();
+    });
+    /**
+     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0473
+     * @tc.name JsvmTest0473
+     * @tc.desc JsvmTest
+     */
+    it('JsvmTest0473', 0, function () {
+      let script: string = `
+        isRegExp(Symbol())
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertFalse();
+    });
+
   });
 }
