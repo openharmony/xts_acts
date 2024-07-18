@@ -18,8 +18,6 @@
 #include "pixelmap_native_impl.h"
 #include "common_utils.h"
 
-
-
 using namespace testing::ext;
 using namespace OHOS::Media;
 namespace OHOS {
