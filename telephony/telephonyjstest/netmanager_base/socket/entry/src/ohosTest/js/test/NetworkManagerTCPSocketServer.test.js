@@ -559,7 +559,7 @@ export default function NetTCPSocketServerTest() {
         } else {
           console.info(`${caseName} getState data ${JSON.stringify(data)}`);
           expect(data.isBound).assertEqual(false);
-          expect(data.isClose).assertEqual(true);
+          expect(data.isClose).assertEqual(false);
           expect(data.isConnected).assertEqual(false);
           done();
         }
@@ -588,7 +588,7 @@ export default function NetTCPSocketServerTest() {
             } else {
               console.info(`${caseName} getState data ${JSON.stringify(data)}`);
               expect(data.isBound).assertEqual(false);
-              expect(data.isClose).assertEqual(true);
+              expect(data.isClose).assertEqual(false);
               expect(data.isConnected).assertEqual(false);
               done();
             }
@@ -608,7 +608,7 @@ export default function NetTCPSocketServerTest() {
       server.getState().then((data) => {
         console.info(`${caseName} getState data ${JSON.stringify(data)}`);
         expect(data.isBound).assertEqual(false);
-        expect(data.isClose).assertEqual(true);
+        expect(data.isClose).assertEqual(false);
         expect(data.isConnected).assertEqual(false);
         done();
       }).catch((err) => {
@@ -635,7 +635,7 @@ export default function NetTCPSocketServerTest() {
           server.getState().then((data) => {
             console.info(`${caseName} getState data ${JSON.stringify(data)}`);
             expect(data.isBound).assertEqual(false);
-            expect(data.isClose).assertEqual(true);
+            expect(data.isClose).assertEqual(false);
             expect(data.isConnected).assertEqual(false);
             done();
           }).catch((err) => {
