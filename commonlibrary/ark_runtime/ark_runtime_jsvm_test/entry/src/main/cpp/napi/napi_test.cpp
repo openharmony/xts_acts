@@ -2434,6 +2434,54 @@ void prototypeof_test_6(JSVM_Env env)
     OH_JSVM_CloseHandleScope(env, handleScope);
 }
 
+void set_test_1(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+    JSVM_Status status = OH_JSVM_CreateSet(env, nullptr);
+    JSVM_ASSERT_RETURN_VOID(env, status != JSVM_OK, "OH_JSVM_CreateSet check status");
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+
+void set_test_2(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value mySet;
+    JSVM_Status status = OH_JSVM_CreateSet(env, &mySet);
+    JSVM_ASSERT_RETURN_VOID(env, status == JSVM_OK, "OH_JSVM_CreateSet check status");
+    bool isSet = false;
+    OH_JSVM_IsSet(env, mySet, &isSet);
+    JSVM_ASSERT_RETURN_VOID(env, mySet != nullptr, "OH_JSVM_CreateSet check status");
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+
+void set_test_3(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value mySet = nullptr;
+    bool isSet = false;
+    OH_JSVM_IsSet(env, mySet, &isSet);
+    JSVM_ASSERT_RETURN_VOID(env, !isSet, "check OH_JSVM_IsSet when not a set");
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+
+void set_test_4(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+    JSVM_Status status = OH_JSVM_CreateSet(nullptr, nullptr);
+    JSVM_ASSERT_RETURN_VOID(env, status != JSVM_OK, "OH_JSVM_CreateSet check status");
+    JSVM_Status status = OH_JSVM_IsSet(nullptr, nullptr);
+    JSVM_ASSERT_RETURN_VOID(env, status != JSVM_OK, "OH_JSVM_IsSet check status");
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+
 static napi_value testValueOperation8(napi_env env1, napi_callback_info info)
 {
     JSVM_InitOptions init_options;
@@ -2472,6 +2520,11 @@ static napi_value testValueOperation8(napi_env env1, napi_callback_info info)
     prototypeof_test_4(env);
     prototypeof_test_5(env);
     prototypeof_test_6(env);
+
+    set_test_1(env);
+    set_test_2(env);
+    set_test_3(env);
+    set_test_4(env);
 
     OH_JSVM_CloseEnvScope(env, envScope);
     OH_JSVM_DestroyEnv(env);
