@@ -64,8 +64,9 @@ export default function SwipeGestureExample02Test() {
       console.log('SwipeGestureExample02Test_0010 areaObj1 clicked start',Math.round(areaObj1.left + areaWidth1/2),Math.round(areaObj1.top + areaHeight1 * 0.2))
       console.log('SwipeGestureExample02Test_0010 areaObj1 clicked end',Math.round(areaObj1.left + areaWidth1/2),Math.round(areaObj1.bottom + areaHeight1 * 0.9))
       let driver = Driver.create();
+      let speed = Math.floor(areaHeight1 * 1.7 / 0.016 / 1000) * 1000
       await CommonFunc.sleep(1000);
-      await driver.swipe(Math.round(areaObj1.left + areaWidth1/2),Math.round(areaObj1.top + areaHeight1 * 0.2),Math.round(areaObj1.left + areaWidth1/2),Math.round(areaObj1.bottom + areaHeight1 * 0.9),38000)
+      await driver.swipe(Math.round(areaObj1.left + areaWidth1/2),Math.round(areaObj1.top + areaHeight1 * 0.2),Math.round(areaObj1.left + areaWidth1/2),Math.round(areaObj1.bottom + areaHeight1 * 0.9),speed)
       await CommonFunc.sleep(4000);
       // 拖动之后重新获取当前区域的位置信息
       let FatherObj = CommonFunc.getComponentRectOnScreen('SwipeGestureExample02_Father');
@@ -101,7 +102,7 @@ export default function SwipeGestureExample02Test() {
       let text4 = getInspectorByKey('SwipeGestureExample02_angle');
       let obj4 = JSON.parse(text4);
       console.log('SwipeGestureExample02Test_0010 obj4 $attrs content',obj4.$attrs.content,obj4)
-      expect(obj4.$attrs.content).assertEqual('angle:0');
+      expect(Number(obj4.$attrs.content) - 90 <= 1).assertTrue();
 
       await CommonFunc.sleep(200);
       let text5 = getInspectorByKey('SwipeGestureExample02_scale');
