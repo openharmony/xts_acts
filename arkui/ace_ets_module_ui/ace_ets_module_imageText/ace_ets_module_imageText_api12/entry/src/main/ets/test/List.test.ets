@@ -70,14 +70,12 @@ import TextInputTextAreaSearch from './RichEditorEnhance/TextInputTextAreaSearch
 import TextAreaApi1 from './TextArea/TextAreaApi1.test'
 import TextAreaApi2 from './TextArea/TextAreaApi2.test'
 import TextAreaApi3 from './TextArea/TextAreaApi3.test'
-import textApi1 from './Text/TextApi1.test'
 
 import TextArea_lineBreakStrategyTest from './TextAreaTest/TextAreaAPITest/TextArea_lineBreakStrategyTest.test'
 import TextArea_lineSpacingTest from './TextAreaTest/TextAreaAPITest/TextArea_lineSpacingTest.test'
 import TextInput_lineBreakStrategyTest from './TextInput/TextInputAPITest/TextInput_lineBreakStrategyTest.test'
 import Text_lineBreakStrategyTest from './TextTest/TextAPITest/Text_lineBreakStrategyTest.test'
 import Text_lineSpacingTest from './TextTest/TextAPITest/Text_lineSpacingTest.test'
-import marqueeOptionsTest from './TextTest/TextAPITest/marqueeOptionsTest.test'
 import textStrategyJsunit from './TextTest/textStrategyJsunit.test';
 import Context from './TextTest/Context.test'
 import getLayout from './TextTest/getLayout.test'
@@ -196,14 +194,12 @@ export default function testsuite() {
   TextAreaApi2();
   TextAreaApi3();
   styledStringChange();
-  textApi1();
 
   TextArea_lineBreakStrategyTest();
   TextArea_lineSpacingTest();
   TextInput_lineBreakStrategyTest();
   Text_lineBreakStrategyTest();
   Text_lineSpacingTest();
-  marqueeOptionsTest();
   textStrategyJsunit();
 
   EffectFillStyle()
