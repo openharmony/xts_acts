@@ -199,18 +199,6 @@ export default function abilityTest() {
             });
           }          
         });
-        try {
-          let allowed = await driver.waitForComponent(ON.text("打开"), 2000);
-          if (allowed) {
-            console.log("find button");
-            let point = await allowed.getBoundsCenter();
-            console.log('point.x : ' + point.x + 'point.y : ' + point.y);
-            await driver.click(point.x, point.y);
-          }
-        } catch (err) {
-          console.error('waitForComponent error' + JSON.stringify(err));
-          done();
-        }
         await sleep(200);
         console.info('Acts_CleanTempFiles_0200 startAbility one');
         console.info('context is ' + JSON.stringify(getContext));
@@ -225,6 +213,18 @@ export default function abilityTest() {
           console.log('Acts_CleanTempFiles_0201 startAbility err: ' + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
+        try {
+          let allowed = await driver.waitForComponent(ON.text("打开"), 2000);
+          if (allowed) {
+            console.log("find button");
+            let point = await allowed.getBoundsCenter();
+            console.log('point.x : ' + point.x + 'point.y : ' + point.y);
+            await driver.click(point.x, point.y);
+          }
+        } catch (err) {
+          console.error('waitForComponent error' + JSON.stringify(err));
+          done();
+        }
         await sleep(4000);
         console.info('Acts_CleanTempFiles_0200 startAbility two');
         getContext().startAbility(
