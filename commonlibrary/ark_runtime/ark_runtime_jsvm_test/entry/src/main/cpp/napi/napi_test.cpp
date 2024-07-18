@@ -68,6 +68,9 @@ const double DIFF_VALUE_DATE = 1501924876711;
 static char g_dataType[32] = "";
 static bool g_threadFlag1 = false;
 static bool g_threadFlag2 = false;
+const int RUN_TEST_RETAIN_SCRIPT_VALUE = 121;
+const int TWO = 2;
+const int THREE = 3;
 
 #define EOK 0
 #define OPENCODE
@@ -2477,8 +2480,9 @@ void set_test_4(JSVM_Env env)
     OH_JSVM_OpenHandleScope(env, &handleScope);
     JSVM_Status status = OH_JSVM_CreateSet(nullptr, nullptr);
     JSVM_ASSERT_RETURN_VOID(env, status != JSVM_OK, "OH_JSVM_CreateSet check status");
-    JSVM_Status status = OH_JSVM_IsSet(nullptr, nullptr);
-    JSVM_ASSERT_RETURN_VOID(env, status != JSVM_OK, "OH_JSVM_IsSet check status");
+    bool isSet = false;
+    JSVM_Status status2 = OH_JSVM_IsSet(nullptr, nullptr, &isSet);
+    JSVM_ASSERT_RETURN_VOID(env, status2 != JSVM_OK, "OH_JSVM_IsSet check status");
     OH_JSVM_CloseHandleScope(env, handleScope);
 }
 
@@ -8687,6 +8691,50 @@ static JSVM_Value CreateMap(JSVM_Env env, JSVM_CallbackInfo info)
     return returnValue;
 }
 
+bool testCompileScriptWithOptions(JSVM_Env env)
+{
+    JSVM_Value jsSrc;
+    JSVM_Script script = nullptr;
+    std::string src(R"JS(let a = 100;a = a + 21)JS");
+    uint8_t *cache;
+    size_t length;
+    JSVM_ScriptOrigin scriptOrgin {
+        .sourceMapUrl = "bundle.js.map",
+        .resourceName = "bundle.js"
+    };
+    JSVM_CompileOptions option[2];
+    option[0] = {
+        .id = JSVM_COMPILE_MODE,
+        .content = { .num = JSVM_COMPILE_MODE_EAGER_COMPILE }
+    };
+    option[1] = {
+        .id = JSVM_COMPILE_SCRIPT_ORIGIN,
+        .content = { &scriptOrgin }
+    };
+    bool rstFlag = false;
+    OH_JSVM_CreateStringUtf8(env, src.c_str(), src.size(), &jsSrc);
+    rstFlag = OH_JSVM_CompileScriptWithOptions(env, jsSrc, TWO, option, &script) == JSVM_OK;
+    OH_JSVM_CreateCodeCache(env, script, (const uint8_t**)&cache, &length);
+    JSVM_CompileOptions optionSecond[3];
+    optionSecond[0] = {
+        .id = JSVM_COMPILE_MODE,
+        .content = { .num = JSVM_COMPILE_MODE_CONSUME_CODE_CACHE }
+    };
+    optionSecond[1] = {
+        .id = JSVM_COMPILE_SCRIPT_ORIGIN,
+        .content = { &scriptOrgin }
+    };
+    JSVM_CodeCache codecache = {
+        .cache = cache,
+        .length = length
+    };
+    optionSecond[2] = {
+        .id = JSVM_COMPILE_CODE_CACHE,
+        .content = { &codecache }
+    };
+    rstFlag = rstFlag && OH_JSVM_CompileScriptWithOptions(env, jsSrc, THREE, option, &script) == JSVM_OK;
+    return rstFlag;
+}
 static napi_value testCompileWithOption(napi_env env1, napi_callback_info info)
 {
     JSVM_InitOptions init_options;
@@ -8712,46 +8760,8 @@ static napi_value testCompileWithOption(napi_env env1, napi_callback_info info)
     OH_JSVM_OpenEnvScope(env, &envScope);
     JSVM_HandleScope handlescope;
     OH_JSVM_OpenHandleScope(env, &handlescope);
-    JSVM_Value jsSrc;
-    JSVM_Script script = nullptr;
-    std::string src(R"JS(let a = 100;a = a + 21)JS");
-    uint8_t *cache;
-    size_t length;
-    JSVM_ScriptOrigin scriptOrgin {
-      .sourceMapUrl = "bundle.js.map",
-      .resourceName = "bundle.js"
-    };
-    JSVM_CompileOptions option[2];
-    option[0] = {
-      .id = JSVM_COMPILE_MODE,
-      .content = { .num = JSVM_COMPILE_MODE_EAGER_COMPILE }
-    };
-    option[1] = {
-      .id = JSVM_COMPILE_SCRIPT_ORIGIN,
-      .content = { &scriptOrgin }
-    };
     bool rstFlag = false;
-    OH_JSVM_CreateStringUtf8(env, src.c_str(), src.size(), &jsSrc);
-    rstFlag = OH_JSVM_CompileScriptWithOptions(env, jsSrc, 2, option, &script) == JSVM_OK;
-    OH_JSVM_CreateCodeCache(env, script, (const uint8_t**)&cache, &length);
-    JSVM_CompileOptions optionSecond[3];
-    optionSecond[0] = {
-      .id = JSVM_COMPILE_MODE,
-      .content = { .num = JSVM_COMPILE_MODE_CONSUME_CODE_CACHE }
-    };
-    optionSecond[1] = {
-      .id = JSVM_COMPILE_SCRIPT_ORIGIN,
-      .content = { &scriptOrgin }
-    };
-    JSVM_CodeCache codecache = {
-      .cache = cache,
-      .length = length
-    };
-    optionSecond[2] = {
-      .id = JSVM_COMPILE_CODE_CACHE,
-      .content = { &codecache }
-    };
-    rstFlag = rstFlag && OH_JSVM_CompileScriptWithOptions(env, jsSrc, 3, option, &script) == JSVM_OK;
+    rstFlag = testCompileScriptWithOptions(env);
     OH_JSVM_CloseHandleScope(env, handlescope);
     OH_JSVM_CloseEnvScope(env, envScope);
     OH_JSVM_DestroyEnv(env);
@@ -8803,7 +8813,7 @@ static napi_value testRetainScript(napi_env env1, napi_callback_info info)
     OH_JSVM_ReleaseScript(env, script);
     int runResult = 0;
     OH_JSVM_GetValueInt32(env, returnValue, &runResult);
-    result = runStatus && runResult == 121;
+    result = runStatus && runResult == RUN_TEST_RETAIN_SCRIPT_VALUE;
     OH_JSVM_CloseHandleScope(env, handlescope);
     OH_JSVM_CloseEnvScope(env, envScope);
     OH_JSVM_DestroyEnv(env);
@@ -8850,8 +8860,8 @@ static napi_value testOpenInspectorWithName(napi_env env1, napi_callback_info in
     JSVM_Value result = nullptr;
     OH_JSVM_RunScript(env, script, &result);
     int runResult = 0;
-    OH_JSVM_GetValueInt32(env, returnValue, &runResult);
-    auto resultFlag = runResult == 121;
+    OH_JSVM_GetValueInt32(env, result, &runResult);
+    auto resultFlag = runResult == RUN_TEST_RETAIN_SCRIPT_VALUE;
     OH_JSVM_CloseHandleScope(env, handleScope);
     OH_JSVM_CloseEnvScope(env, envScope);
     OH_JSVM_CloseInspector(env);

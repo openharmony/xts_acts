@@ -6434,7 +6434,7 @@ instanceOf(obj, Person);
      * @tc.name      JsvmTest0474
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest0438', 0, async function (done) {
+    it('JsvmTest0474', 0, async function (done) {
         let rst = napitest.testCompileWithOption();
         console.info('JsvmTest0474 testString result is:' + JSON.stringify(rst));
         expect(rst).assertEqual(true);
@@ -6446,7 +6446,7 @@ instanceOf(obj, Person);
      * @tc.name      JsvmTest0475
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest0439', 0, async function (done) {
+    it('JsvmTest0475', 0, async function (done) {
         let rst = napitest.testRetainScript();
         console.info('JsvmTest0475 testString result is:' + JSON.stringify(rst));
         expect(rst).assertEqual(true);
@@ -6458,7 +6458,7 @@ instanceOf(obj, Person);
      * @tc.name      JsvmTest0476
      * @tc.desc      JsvmTest
      */
-    it('JsvmTest0440', 0, async function (done) {
+    it('JsvmTest0476', 0, async function (done) {
         let rst = napitest.testOpenInspectorWithName();
         console.info('JsvmTest0476 testString result is:' + JSON.stringify(rst));
         expect(rst).assertEqual(true);
