@@ -37,8 +37,9 @@ export default function bluetoothManagerTest() {
         expect(false).assertTrue();
       } catch(error) {
         expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
     })
 
@@ -95,8 +96,9 @@ export default function bluetoothManagerTest() {
           result.state + ' result.connectionState:' + result.connectionState);
       } catch(error) {
         expect(false).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
     /**
@@ -115,8 +117,9 @@ export default function bluetoothManagerTest() {
         expect(false).assertTrue();
       } catch(error) {
         expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
     })
 
@@ -238,8 +241,9 @@ export default function bluetoothManagerTest() {
         bluetoothManager.getAllowedBluetoothDevices(SELFWANT);
       } catch(error) {
         expect(false).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -294,8 +298,9 @@ export default function bluetoothManagerTest() {
         expect(false).assertTrue();
       } catch(error) {
         expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
     })
 
@@ -352,8 +357,9 @@ export default function bluetoothManagerTest() {
         bluetoothManager.removeAllowedBluetoothDevices(SELFWANT,deviceIds);
       } catch(error) {
         expect(false).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
   })

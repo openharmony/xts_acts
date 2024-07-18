@@ -64,8 +64,9 @@ export default function bundleManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
     })
 
@@ -84,8 +85,9 @@ export default function bundleManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -103,8 +105,9 @@ export default function bundleManagerTest() {
         bundleManager.addAllowedInstallBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
       } catch (error) {
         expect(false).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -141,8 +144,9 @@ export default function bundleManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
     })
 
@@ -161,8 +165,9 @@ export default function bundleManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -180,8 +185,9 @@ export default function bundleManagerTest() {
         bundleManager.removeAllowedInstallBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
       } catch (error) {
         expect(false).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -218,8 +224,9 @@ export default function bundleManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
     })
 
@@ -238,8 +245,9 @@ export default function bundleManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -257,8 +265,9 @@ export default function bundleManagerTest() {
         bundleManager.getAllowedInstallBundlesSync(SELFWANT, DEFAULT_USER_ID);
       } catch (error) {
         expect(false).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -295,8 +304,9 @@ export default function bundleManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
     })
 
@@ -315,8 +325,9 @@ export default function bundleManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -334,8 +345,9 @@ export default function bundleManagerTest() {
         bundleManager.addDisallowedInstallBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
       } catch (error) {
         expect(false).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -372,8 +384,9 @@ export default function bundleManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
     })
 
@@ -392,8 +405,9 @@ export default function bundleManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -411,8 +425,9 @@ export default function bundleManagerTest() {
         bundleManager.removeDisallowedInstallBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
       } catch (error) {
         expect(false).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -449,8 +464,9 @@ export default function bundleManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
     })
 
@@ -469,8 +485,9 @@ export default function bundleManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -488,8 +505,9 @@ export default function bundleManagerTest() {
         bundleManager.getDisallowedInstallBundlesSync(SELFWANT, DEFAULT_USER_ID);
       } catch (error) {
         expect(false).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -526,8 +544,9 @@ export default function bundleManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
     })
 
@@ -546,8 +565,9 @@ export default function bundleManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -565,8 +585,9 @@ export default function bundleManagerTest() {
         bundleManager.addDisallowedUninstallBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
       } catch (error) {
         expect(false).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -603,8 +624,9 @@ export default function bundleManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
     })
 
@@ -623,8 +645,9 @@ export default function bundleManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -642,8 +665,9 @@ export default function bundleManagerTest() {
         bundleManager.removeDisallowedUninstallBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
       } catch (error) {
         expect(false).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -680,8 +704,9 @@ export default function bundleManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
     })
 
@@ -700,8 +725,9 @@ export default function bundleManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -719,8 +745,9 @@ export default function bundleManagerTest() {
         bundleManager.getDisallowedUninstallBundlesSync(SELFWANT, DEFAULT_USER_ID);
       } catch (error) {
         expect(false).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -760,8 +787,9 @@ export default function bundleManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
     })
 
@@ -780,8 +808,9 @@ export default function bundleManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -799,8 +828,9 @@ export default function bundleManagerTest() {
         await bundleManager.uninstall(SELFWANT, WANT1.bundleName, DEFAULT_USER_ID, true);
       } catch (error) {
         expect(false).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -840,8 +870,9 @@ export default function bundleManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
     })
 
@@ -860,8 +891,9 @@ export default function bundleManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -879,8 +911,9 @@ export default function bundleManagerTest() {
         await bundleManager.install(SELFWANT, HAP_FILE_PATH, EDM_INSTALL_PARAM);
       } catch (error) {
         expect(false).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
   })
