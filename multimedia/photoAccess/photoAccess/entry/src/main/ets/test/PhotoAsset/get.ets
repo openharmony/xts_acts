@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 
-import { describe, it, expect } from 'deccjsunit/index'
+import dataSharePredicates from '@ohos.data.dataSharePredicates';
+import photoAccessHelper from '@ohos.file.photoAccessHelper';
+import { describe, it, expect, beforeAll } from "@ohos/hypium";
 import {
   photoKeys,
   photoFetchOption,
@@ -21,11 +23,63 @@ import {
   getAssetId,
   isNum,
   photoType,
+  pushCreateAsset,
+  sleep,
+  getPermission
 } from '../../../../../../../common'
 
 export default function getTest () {
   describe('getTest', function () {
-    async function get (done, testNum, fetchOps, key, value) {
+
+    const phAccessHelper = photoAccessHelper.getPhotoAccessHelper(globalThis.abilityContext);
+    const fileNameList = ["getTest.jpg", "getTest.mp4"];
+    
+    beforeAll(async () => {
+       console.info('beforeAll case');
+       await getPermission();
+       await sleep();
+       await pushCreateAsset(fileNameList);
+    });
+
+    const checkProvisionAsset = async (done: Function, testNum: string, displayName: string) => {
+       try {
+         const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+         let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOps);
+         let fetchCount = fetchResult.getCount();
+         if (fetchCount <= 0) {
+            console.error(`${testNum} :: checkProvisionAsset :: have no Asset displayName is ${displayName}!`);
+            expect(false).assertTrue();
+            done();
+         }
+         done();
+       } catch (error) {
+         console.error(`${testNum} :: checkProvisionAsset failed, err ==> ${error}!`);
+         expect(false).assertTrue();
+         done();
+       }
+    }
+
+    const checkPhotoKeysDateTime = async (done: Function, testNum: string, expectDateMs: number, actualDateMs: number) => {
+       try {
+          console.log(`${testNum} :: expectDateMs is ${expectDateMs}, actualDateMs is ${actualDateMs}`);
+          let lowRange = 0.998 * expectDateMs;
+          let topRange = 1.002 * expectDateMs;
+          if (lowRange <= actualDateMs <= topRange) {
+            console.log(`${testNum} :: ${actualDateMs} is between ${lowRange} and ${topRange} .`);
+            done();
+          } else {
+            console.log(`${testNum} :: ${actualDateMs} is not between ${lowRange} and ${topRange}, failed !`);
+            expect(false).assertTrue();
+            done();
+          }
+       } catch (error) {
+           console.log(`${testNum} :: checkPhotoKeysDateTime error , err is ${error} !`);
+           expect(false).assertTrue();
+           done();
+       }
+    }
+
+    async function checkPhotoKeysValue (done, testNum, fetchOps, key, value) {
       try {
         let asset = await getFileAsset(testNum, fetchOps);
         console.info(`${testNum} key: ${key}, value: ${value}, asset.key: ${asset.get(key)}`);
@@ -52,579 +106,696 @@ export default function getTest () {
     //image
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_0000
-     * @tc.name      : get_000
+     * @tc.name      : get_image_uri_001
      * @tc.desc      : image get photoKeys.URI
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_000', 2, async function (done) {
-      const testNum = 'get_000';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
+    it('get_image_uri_001', 2, async function (done) {
+      const testNum = 'get_image_uri_001';
+      const displayName = 'getTest.jpg';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.URI;
       const value = 'file://media/Photo/';
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_0100
-     * @tc.name      : get_001
+     * @tc.name      : get_image_photo_type_001
      * @tc.desc      : image get photoKeys.PHOTO_TYPE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_001', 2, async function (done) {
-      const testNum = 'get_001';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
+    it('get_image_photo_type_001', 2, async function (done) {
+      const testNum = 'get_image_photo_type_001';
+      const displayName = 'getTest.jpg';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.PHOTO_TYPE;
       const value = photoType.IMAGE;
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_0200
-     * @tc.name      : get_002
+     * @tc.name      : get_image_displayName_001
      * @tc.desc      : image get photoKeys.DISPLAY_NAME
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_002', 2, async function (done) {
-      const testNum = 'get_002';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
+    it('get_image_displayName_001', 2, async function (done) {
+      const testNum = 'get_image_displayName_001';
+      const displayName = 'getTest.jpg';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.DISPLAY_NAME;
-      const value = '01.jpg';
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, displayName);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_0300
-     * @tc.name      : get_003
+     * @tc.name      : get_image_date_added_001
      * @tc.desc      : image get photoKeys.DATE_ADDED
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_003', 2, async function (done) {
-      const testNum = 'get_003';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
+    it('get_image_date_added_001', 2, async function (done) {
+      const testNum = 'get_image_date_added_001';
+      const displayName = 'getTest.jpg';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.DATE_ADDED;
       const value = 1;
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_0400
-     * @tc.name      : get_004
+     * @tc.name      : get_image_date_modified_001
      * @tc.desc      : image get photoKeys.DATE_MODIFIED
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_004', 2, async function (done) {
-      const testNum = 'get_004';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
+    it('get_image_date_modified_001', 2, async function (done) {
+      const testNum = 'get_image_date_modified_001';
+      const displayName = 'getTest.jpg';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.DATE_MODIFIED;
       const value = 1;
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_0500
-     * @tc.name      : get_005
+     * @tc.name      : get_image_duration_001
      * @tc.desc      : image get photoKeys.DURATION
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_005', 2, async function (done) {
-      const testNum = 'get_005';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
+    it('get_image_duration_001', 2, async function (done) {
+      const testNum = 'get_image_duration_001';
+      const displayName = 'getTest.jpg';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.DURATION;
       const value = 0;
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_0600
-     * @tc.name      : get_006
+     * @tc.name      : get_image_width_001
      * @tc.desc      : image get photoKeys.WIDTH
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_006', 2, async function (done) {
-      const testNum = 'get_006';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
+    it('get_image_width_001', 2, async function (done) {
+      const testNum = 'get_image_width_001';
+      const displayName = 'getTest.jpg';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.WIDTH;
       const value = 1279;
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_0700
-     * @tc.name      : get_007
+     * @tc.name      : get_image_height_001
      * @tc.desc      : image get photoKeys.HEIGHT
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_007', 2, async function (done) {
-      const testNum = 'get_007';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
+    it('get_image_height_001', 2, async function (done) {
+      const testNum = 'get_image_height_001';
+      const displayName = 'getTest.jpg';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.HEIGHT;
       const value = 1706;
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_0800
-     * @tc.name      : get_008
+     * @tc.name      : get_image_date_taken_001
      * @tc.desc      : image get photoKeys.DATE_TAKEN
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_008', 2, async function (done) {
-      const testNum = 'get_008';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
+    it('get_image_date_taken_001', 2, async function (done) {
+      const testNum = 'get_image_date_taken_001';
+      const displayName = 'getTest.jpg';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.DATE_TAKEN;
       const value = 1;
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_0900
-     * @tc.name      : get_009
+     * @tc.name      : get_image_orientation_001
      * @tc.desc      : image get photoKeys.ORIENTATION
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_009', 2, async function (done) {
-      const testNum = 'get_009';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
+    it('get_image_orientation_001', 2, async function (done) {
+      const testNum = 'get_image_orientation_001';
+      const displayName = 'getTest.jpg';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.ORIENTATION;
       const value = 0;
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_1000
-     * @tc.name      : get_010
+     * @tc.name      : get_image_favorite_001
      * @tc.desc      : image get photoKeys.FAVORITE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_010', 2, async function (done) {
-      const testNum = 'get_010';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
+    it('get_image_favorite_001', 2, async function (done) {
+      const testNum = 'get_image_favorite_001';
+      const displayName = 'getTest.jpg';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.FAVORITE;
       const value = 0;
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_1100
-     * @tc.name      : get_011
+     * @tc.name      : get_image_size_001
      * @tc.desc      : image get photoKeys.SIZE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_011', 2, async function (done) {
-      const testNum = 'get_011';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
+    it('get_image_size_001', 2, async function (done) {
+      const testNum = 'get_image_size_001';
+      const displayName = 'getTest.jpg';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.SIZE;
       const value = 348113;
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_1200
-     * @tc.name      : get_012
+     * @tc.name      : get_image_title_001
      * @tc.desc      : image get photoKeys.TITLE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_012', 2, async function (done) {
-      const testNum = 'get_012';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
+    it('get_image_title_001', 2, async function (done) {
+      const testNum = 'get_image_title_001';
+      const displayName = 'getTest.jpg';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.TITLE;
-      const value = '01';
-      await get(done, testNum, fetchOps, key, value);
+      const value = 'getTest';
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_1300
-     * @tc.name      : get_013
+     * @tc.name      : get_image_position_001
      * @tc.desc      : image get photoKeys.POSITION
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_013', 2, async function (done) {
-      const testNum = 'get_013';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
+    it('get_image_position_001', 2, async function (done) {
+      const testNum = 'get_image_position_001';
+      const displayName = 'getTest.jpg';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.POSITION;
       const value = 1;
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_1400
-     * @tc.name      : get_014
+     * @tc.name      : get_image_date_trash_001
      * @tc.desc      : image get photoKeys.DATE_TRASHED
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_014', 2, async function (done) {
-      const testNum = 'get_014';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
+    it('get_image_date_trash_001', 2, async function (done) {
+      const testNum = 'get_image_date_trash_001';
+      const displayName = 'getTest.jpg';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.DATE_TRASHED;
       const value = 0;
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_1500
-     * @tc.name      : get_015
+     * @tc.name      : get_image_hidden_001
      * @tc.desc      : image get photoKeys.HIDDEN
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_015', 2, async function (done) {
-      const testNum = 'get_015';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
+    it('get_image_hidden_001', 2, async function (done) {
+      const testNum = 'get_image_hidden_001';
+      const displayName = 'getTest.jpg';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.HIDDEN;
       const value = 0;
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
     //video
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_5000
-     * @tc.name      : get_050
+     * @tc.name      : get_video_uri_001
      * @tc.desc      : video get photoKeys.URI
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_050', 2, async function (done) {
-      const testNum = 'get_050';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
+    it('get_video_uri_001', 2, async function (done) {
+      const testNum = 'get_video_uri_001';
+      const displayName = 'getTest.mp4';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.URI;
       const value = 'file://media/Photo/';
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_5100
-     * @tc.name      : get_051
+     * @tc.name      : get_video_photo_type_001
      * @tc.desc      : video get photoKeys.PHOTO_TYPE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_051', 2, async function (done) {
-      const testNum = 'get_051';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
+    it('get_video_photo_type_001', 2, async function (done) {
+      const testNum = 'get_video_photo_type_001';
+      const displayName = 'getTest.mp4';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.PHOTO_TYPE;
       const value = photoType.VIDEO;
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_5200
-     * @tc.name      : get_052
+     * @tc.name      : get_video_display_name_001
      * @tc.desc      : video get photoKeys.DISPLAY_NAME
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_052', 2, async function (done) {
+    it('get_video_display_name_001', 2, async function (done) {
       const testNum = 'get_052';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
+      const displayName = 'getTest.mp4';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.DISPLAY_NAME;
-      const value = '01.mp4';
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, displayName);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_5300
-     * @tc.name      : get_053
+     * @tc.name      : get_video_date_added_001
      * @tc.desc      : video get photoKeys.DATE_ADDED
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_053', 2, async function (done) {
-      const testNum = 'get_053';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
+    it('get_video_date_added_001', 2, async function (done) {
+      const testNum = 'get_video_date_added_001';
+      const displayName = 'getTest.mp4';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.DATE_ADDED;
       const value = 1;
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_5400
-     * @tc.name      : get_054
+     * @tc.name      : get_video_date_modified_001
      * @tc.desc      : video get photoKeys.DATE_MODIFIED
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_054', 2, async function (done) {
-      const testNum = 'get_054';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
+    it('get_video_date_modified_001', 2, async function (done) {
+      const testNum = 'get_video_date_modified_001';
+      const displayName = 'getTest.mp4';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.DATE_MODIFIED;
       const value = 1;
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_5500
-     * @tc.name      : get_055
+     * @tc.name      : get_video_duration_001
      * @tc.desc      : video get photoKeys.DURATION
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_055', 2, async function (done) {
-      const testNum = 'get_055';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
+    it('get_video_duration_001', 2, async function (done) {
+      const testNum = 'get_video_duration_001';
+      const displayName = 'getTest.mp4';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.DURATION;
       const value = 10100;
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_5600
-     * @tc.name      : get_056
+     * @tc.name      : get_video_width_001
      * @tc.desc      : video get photoKeys.WIDTH
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_056', 2, async function (done) {
-      const testNum = 'get_056';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
+    it('get_video_width_001', 2, async function (done) {
+      const testNum = 'get_video_width_001';
+      const displayName = 'getTest.mp4';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.WIDTH;
       const value = 1280;
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_5700
-     * @tc.name      : get_057
+     * @tc.name      : get_video_height_001
      * @tc.desc      : video get photoKeys.HEIGHT
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_057', 2, async function (done) {
-      const testNum = 'get_057';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
+    it('get_video_height_001', 2, async function (done) {
+      const testNum = 'get_video_height_001';
+      const displayName = 'getTest.mp4';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.HEIGHT;
       const value = 720;
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_5800
-     * @tc.name      : get_058
+     * @tc.name      : get_video_date_taken_001
      * @tc.desc      : video get photoKeys.DATE_TAKEN
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_058', 2, async function (done) {
-      const testNum = 'get_058';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
+    it('get_video_date_taken_001', 2, async function (done) {
+      const testNum = 'get_video_date_taken_001';
+      const displayName = 'getTest.mp4';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.DATE_TAKEN;
       const value = 1;
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_5900
-     * @tc.name      : get_059
+     * @tc.name      : get_video_orientation_001
      * @tc.desc      : video get photoKeys.ORIENTATION
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_059', 2, async function (done) {
-      const testNum = 'get_059';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
+    it('get_video_orientation_001', 2, async function (done) {
+      const testNum = 'get_video_orientation_001';
+      const displayName = 'getTest.mp4';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.ORIENTATION;
       const value = 0;
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_6000
-     * @tc.name      : get_060
+     * @tc.name      : get_video_favorite_001
      * @tc.desc      : video get photoKeys.FAVORITE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_060', 2, async function (done) {
-      const testNum = 'get_060';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
+    it('get_video_favorite_001', 2, async function (done) {
+      const testNum = 'get_video_favorite_001';
+      const displayName = 'getTest.mp4';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.FAVORITE;
       const value = 0;
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_6100
-     * @tc.name      : get_061
+     * @tc.name      : get_video_size_001
      * @tc.desc      : video get photoKeys.SIZE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_061', 2, async function (done) {
-      const testNum = 'get_061';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
+    it('get_video_size_001', 2, async function (done) {
+      const testNum = 'get_video_size_001';
+      const displayName = 'getTest.mp4';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.SIZE;
       const value = 4853005;
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_6200
-     * @tc.name      : get_062
+     * @tc.name      : get_video_title_001
      * @tc.desc      : video get photoKeys.TITLE
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_062', 2, async function (done) {
-      const testNum = 'get_062';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
+    it('get_video_title_001', 2, async function (done) {
+      const testNum = 'get_video_title_001';
+      const displayName = 'getTest.mp4';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.TITLE;
-      const value = '01';
-      await get(done, testNum, fetchOps, key, value);
+      const value = 'getTest';
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_6300
-     * @tc.name      : get_063
+     * @tc.name      : get_video_position_001
      * @tc.desc      : video get photoKeys.POSITION
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_063', 2, async function (done) {
-      const testNum = 'get_063';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
+    it('get_video_position_001', 2, async function (done) {
+      const testNum = 'get_video_position_001';
+      const displayName = 'getTest.mp4';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.POSITION;
       const value = 1;
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_6400
-     * @tc.name      : get_064
+     * @tc.name      : get_video_date_trash_001
      * @tc.desc      : video get photoKeys.DATE_TRASHED
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_064', 2, async function (done) {
-      const testNum = 'get_064';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
+    it('get_video_date_trash_001', 2, async function (done) {
+      const testNum = 'get_video_date_trash_001';
+      const displayName = 'getTest.mp4';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.DATE_TRASHED;
       const value = 0;
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_6500
-     * @tc.name      : get_065
+     * @tc.name      : get_video_hidden_001
      * @tc.desc      : video get photoKeys.HIDDEN
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('get_065', 2, async function (done) {
-      const testNum = 'get_065';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
+    it('get_video_hidden_001', 2, async function (done) {
+      const testNum = 'get_video_hidden_001';
+      const displayName = 'getTest.mp4';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
       const key = photoKeys.HIDDEN;
       const value = 0;
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_6600
-     * @tc.name      : get_066
+     * @tc.name      : get_image_date_add_ms_001
      * @tc.desc      : image get photoKeys.DATE_ADDED_MS
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('get_066', 1, async function (done) {
-      const testNum = 'get_066';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
+    it('get_image_date_add_ms_001', 1, async function (done) {
+      const testNum = 'get_image_date_add_ms_001';
+      const displayName = 'getTest.jpg';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
+      let asset = await getFileAsset(testNum, fetchOps);
+      const dateAdded = asset.get(photoKeys.DATE_ADDED);
+      console.log(`${testNum} :: asset photoKeys.DATE_ADDED is ${dateAdded}`);
       const key = photoKeys.DATE_ADDED_MS;
       const value = 1;
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
+      const dateAddedMs = asset.get(key);
+      console.log(`${testNum} :: asset photoKeys.DATE_ADDED_MS is ${dateAddedMs}`);
+      await checkPhotoKeysDateTime(done, testNum, (dateAdded * 1000), dateAddedMs);
+      done();
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_6700
-     * @tc.name      : get_067
+     * @tc.name      : get_video_date_added_ms_001
      * @tc.desc      : video get photoKeys.DATE_ADDED_MS
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('get_067', 1, async function (done) {
-      const testNum = 'get_067';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
+    it('get_video_date_added_ms_001', 1, async function (done) {
+      const testNum = 'get_video_date_add_ms_001';
+      const displayName = 'getTest.mp4';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
+      let asset = await getFileAsset(testNum, fetchOps);
+      const dateAdded = asset.get(photoKeys.DATE_ADDED);
+      console.log(`${testNum} :: asset photoKeys.DATE_ADDED is ${dateAdded}`);
       const key = photoKeys.DATE_ADDED_MS;
       const value = 1;
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
+      const dateAddedMs = asset.get(key);
+      console.log(`${testNum} :: asset photoKeys.DATE_ADDED_MS is ${dateAddedMs}`);
+      await checkPhotoKeysDateTime(done, testNum, (dateAdded * 1000), dateAddedMs);
+      done();
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_6800
-     * @tc.name      : get_068
+     * @tc.name      : get_image_date_modified_ms_001
      * @tc.desc      : image get photoKeys.DATE_MODIFIED_MS
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('get_068', 1, async function (done) {
-      const testNum = 'get_068';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
+    it('get_image_date_modified_ms_001', 1, async function (done) {
+      const testNum = 'get_image_date_modified_ms_001';
+      const displayName = 'getTest.jpg';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
+      let asset = await getFileAsset(testNum, fetchOps);
+      const dateModified = asset.get(photoKeys.DATE_MODIFIED);
+      console.log(`${testNum} :: asset photoKeys.DATE_MODIFIED is ${dateModified}`);
       const key = photoKeys.DATE_MODIFIED_MS;
       const value = 1;
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
+      const dateModifiedMs = asset.get(key);
+      console.log(`${testNum} :: asset photoKeys.DATE_MODIFIED_MS is ${dateModifiedMs}`);
+      await checkPhotoKeysDateTime(done, testNum, (dateModified * 1000), dateModifiedMs);
+      done();
     });
 
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_6900
-     * @tc.name      : get_069
+     * @tc.name      : get_video_date_modified_ms_001
      * @tc.desc      : video get photoKeys.DATE_MODIFIED_MS
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 1
      */
-    it('get_069', 1, async function (done) {
-      const testNum = 'get_069';
-      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
+    it('get_video_date_modified_ms_001', 1, async function (done) {
+      const testNum = 'get_video_date_modified_ms_001';
+      const displayName = 'getTest.mp4';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
+      let asset = await getFileAsset(testNum, fetchOps);
+      const dateModified = asset.get(photoKeys.DATE_MODIFIED);
+      console.log(`${testNum} :: asset photoKeys.DATE_MODIFIED is ${dateModified}`);
       const key = photoKeys.DATE_MODIFIED_MS;
       const value = 1;
-      await get(done, testNum, fetchOps, key, value);
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
+      const dateModifiedMs = asset.get(key);
+      console.log(`${testNum} :: asset photoKeys.DATE_MODIFIED_MS is ${dateModifiedMs}`);
+      await checkPhotoKeysDateTime(done, testNum, (dateModified * 1000), dateModifiedMs);
+      done();
+    });
+
+
+    /**
+     * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_7000
+     * @tc.name      : get_image_dynamic_range_type_001
+     * @tc.desc      : video get photoKeys.DYNAMIC_RANGE_TYPE
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 1
+     */
+    it('get_image_dynamic_range_type_001', 1, async function (done) {
+      const testNum = 'get_image_dynamic_range_type_001';
+      const displayName = 'getTest.jpg';
+      const fetchOps = photoFetchOption(testNum, photoKeys.DISPLAY_NAME, displayName);
+      await checkProvisionAsset(done, testNum, displayName);
+      const key = photoKeys.DYNAMIC_RANGE_TYPE;
+      const value = 0;
+      await checkPhotoKeysValue(done, testNum, fetchOps, key, value);
     });
 
   })
