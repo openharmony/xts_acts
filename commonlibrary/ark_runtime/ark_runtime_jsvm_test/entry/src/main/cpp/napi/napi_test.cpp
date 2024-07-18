@@ -7253,23 +7253,28 @@ static JSVM_Value CreateFunctionWithScript(JSVM_Env env, JSVM_CallbackInfo info)
 
     uint32_t arrayLen = 0;
     JSVM_CALL(env, OH_JSVM_GetArrayLength(env, argv[1], &arrayLen));
-    JSVM_Value *args = new JSVM_Value[arrayLen];
-    for (auto i = 0; i < arrayLen; i++) {
-      JSVM_CALL(env, OH_JSVM_GetElement(env, argv[1], i, &args[i]));
+    if (arrayLen <= 0 || arrayLen > std::numeric_limits<uint32_t>::max() / sizeof(JSVM_Value)) {
+        OH_JSVM_ThrowError(env, nullptr, "Invalid array length.");
+        return nullptr;
+    } else {
+        JSVM_Value *args = new JSVM_Value[arrayLen];
+        for (auto i = 0; i < arrayLen; i++) {
+            JSVM_CALL(env, OH_JSVM_GetElement(env, argv[1], i, &args[i]));
+        }
+        JSVM_Value js_string;
+        JSVM_CALL(env, OH_JSVM_CoerceToString(env, argv[0], &js_string));
+        size_t length = 0;
+        JSVM_CALL(env, OH_JSVM_GetValueStringUtf8(env, js_string, NULL, 0, &length));
+        size_t capacity = length + 1;
+        char *buffer = new char[capacity];
+        size_t copyLength = 0;
+        JSVM_CALL(env, OH_JSVM_GetValueStringUtf8(env, js_string, buffer, capacity, &copyLength));
+
+        JSVM_Value func = nullptr;
+        JSVM_CALL(env, OH_JSVM_CreateFunctionWithScript(env, buffer, JSVM_AUTO_LENGTH, arrayLen,
+				                        args, argv[ argc - 1 ], &func));
+        return func;
     }
-
-    JSVM_Value js_string;
-    JSVM_CALL(env, OH_JSVM_CoerceToString(env, argv[0], &js_string));
-    size_t length = 0;
-    JSVM_CALL(env, OH_JSVM_GetValueStringUtf8(env, js_string, NULL, 0, &length));
-    size_t capacity = length + 1;
-    char *buffer = new char[capacity];
-    size_t copy_length = 0;
-    JSVM_CALL(env, OH_JSVM_GetValueStringUtf8(env, js_string, buffer, capacity, &copy_length));
-
-    JSVM_Value func = nullptr;
-    JSVM_CALL(env, OH_JSVM_CreateFunctionWithScript(env, buffer, JSVM_AUTO_LENGTH, arrayLen, args, argv[2], &func));
-    return func;
 }
 
 static JSVM_Value GetHeapStatistics(JSVM_Env env, JSVM_CallbackInfo info)
@@ -8901,7 +8906,7 @@ static JSVM_PropertyDescriptor jsDescriptor[] = {
     {"createRegExp4", nullptr, &param[155], nullptr, nullptr, nullptr, JSVM_DEFAULT},
     {"createRegExp5", nullptr, &param[156], nullptr, nullptr, nullptr, JSVM_DEFAULT},
     {"createRegExpEnvNullptr", nullptr, &param[157], nullptr, nullptr, nullptr, JSVM_DEFAULT},
-    {"createFunctionWithScript", nullptr, &param[151], nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"createFunctionWithScript", nullptr, &param[158], nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 
 napi_typedarray_type GetArrayType(JSVM_TypedarrayType typeNum)
