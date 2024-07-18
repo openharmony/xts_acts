@@ -6429,5 +6429,40 @@ instanceOf(obj, Person);
       expect(result).assertFalse();
     });
 
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0474
+     * @tc.name      JsvmTest0474
+     * @tc.desc      JsvmTest
+     */
+    it('JsvmTest0438', 0, async function (done) {
+        let rst = napitest.testCompileWithOption();
+        console.info('JsvmTest0474 testString result is:' + JSON.stringify(rst));
+        expect(rst).assertEqual(true);
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0475
+     * @tc.name      JsvmTest0475
+     * @tc.desc      JsvmTest
+     */
+    it('JsvmTest0439', 0, async function (done) {
+        let rst = napitest.testRetainScript();
+        console.info('JsvmTest0475 testString result is:' + JSON.stringify(rst));
+        expect(rst).assertEqual(true);
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0476
+     * @tc.name      JsvmTest0476
+     * @tc.desc      JsvmTest
+     */
+    it('JsvmTest0440', 0, async function (done) {
+        let rst = napitest.testOpenInspectorWithName();
+        console.info('JsvmTest0476 testString result is:' + JSON.stringify(rst));
+        expect(rst).assertEqual(true);
+      done();
+    });
   });
 }
