@@ -6179,5 +6179,95 @@ instanceOf(obj, Person);
       let result = napitest.runJsVm(script);
       expect(result).assertEqual(5);
     });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0455
+     * @tc.name      JsvmTest0455
+     * @tc.desc      JsvmTest
+     */
+    it('JsvmTest0455', 0, function () {
+      let script: string = `
+        Object.prototype.toString.call(createMap());
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertEqual("[object Map]");
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0456
+     * @tc.name      JsvmTest0456
+     * @tc.desc      JsvmTest
+     */
+    it('JsvmTest0456', 0, function () {
+      let script: string = `
+        var map = createMap();
+        map.toString();
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertEqual("[object Map]");
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0457
+     * @tc.name      JsvmTest0457
+     * @tc.desc      JsvmTest
+     */
+    it('JsvmTest0457', 0, function () {
+      let script: string = `
+        var map = createMap();
+        map.set("key1", "val1");
+        map.set("key2", "val2");
+        map.set("key3", "val3");
+        map.size;
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertEqual(3);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0458
+     * @tc.name      JsvmTest0458
+     * @tc.desc      JsvmTest
+     */
+    it('JsvmTest0458', 0, function () {
+      let script: string = `
+        var map = createMap();
+        map.set("key1", "val1");
+        map.set("key2", "val2");
+        map.set("key3", "val3");
+        map.get("key1");
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertEqual("val1");
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0459
+     * @tc.name      JsvmTest0459
+     * @tc.desc      JsvmTest
+     */
+    it('JsvmTest0459', 0, function () {
+      let script: string = `
+        var map = createMap();
+        map.set("key1", "val1");
+        map.set("key2", "val2");
+        map.set("key3", "val3");
+        map.has("key2");
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0460
+     * @tc.name      JsvmTest0460
+     * @tc.desc      JsvmTest
+     */
+    it('JsvmTest0460', 0, function () {
+      let script: string = `
+        var map = createMap();
+        map.set("key1", "val1");
+        map.set("key2", "val2");
+        map.set("key3", "val3");
+        map.delete("key3");
+        map.has("key3");
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertEqual(false);
+    });
   });
 }

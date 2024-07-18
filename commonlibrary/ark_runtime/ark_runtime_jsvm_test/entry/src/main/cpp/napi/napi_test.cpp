@@ -1821,6 +1821,7 @@ void type_test(JSVM_Env env, JSVM_Value value)
     OH_JSVM_IsObject(env, value, &isValue);
     OH_JSVM_IsBigInt(env, value, &isValue);
     OH_JSVM_IsConstructor(env, value, &isValue);
+    OH_JSVM_IsMap(env, value, &isValue);
 }
 void type_test_Undefined(JSVM_Env env)
 {
@@ -1928,6 +1929,17 @@ void type_test_Bigint(JSVM_Env env)
 
     OH_JSVM_CloseHandleScope(env, handleScope);
 }
+void type_test_Map(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value value = nullptr;
+    OH_JSVM_CreateMap(env, &value);
+    type_test(env, value);
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
 static napi_value testValueOperation5(napi_env env1, napi_callback_info info)
 {
     JSVM_InitOptions init_options;
@@ -1969,6 +1981,7 @@ static napi_value testValueOperation5(napi_env env1, napi_callback_info info)
     type_test_Function(env);
     type_test_Object(env);
     type_test_Bigint(env);
+    type_test_Map(env);
 
     OH_JSVM_CloseEnvScope(env, envScope);
     OH_JSVM_DestroyEnv(env);
@@ -8585,6 +8598,15 @@ static JSVM_Value CreateRegExpEnvNullptr(JSVM_Env env, JSVM_CallbackInfo info)
     OH_JSVM_CreateInt32(env, static_cast<int32_t>(status), &value);
     return value;
 }
+static JSVM_Value CreateMap(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    JSVM_Value returnValue = nullptr;
+    JSVM_Status status = OH_JSVM_CreateMap(env, &returnValue);
+    if (status != JSVM_OK) {
+        OH_JSVM_ThrowError(env, nullptr, "Failed to create map");
+    }
+    return returnValue;
+}
 
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = CreateStringUtf8},
@@ -8746,6 +8768,7 @@ static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = CreateRegExp5},
     {.data = nullptr, .callback = CreateRegExpEnvNullptr},
     {.data = nullptr, .callback = CreateFunctionWithScript},
+    {.data = nullptr, .callback = CreateMap},
 };
 static JSVM_PropertyDescriptor jsDescriptor[] = {
     {"createStringUtf8", nullptr, &param[0], nullptr, nullptr, nullptr, JSVM_DEFAULT},
@@ -8907,6 +8930,7 @@ static JSVM_PropertyDescriptor jsDescriptor[] = {
     {"createRegExp5", nullptr, &param[156], nullptr, nullptr, nullptr, JSVM_DEFAULT},
     {"createRegExpEnvNullptr", nullptr, &param[157], nullptr, nullptr, nullptr, JSVM_DEFAULT},
     {"createFunctionWithScript", nullptr, &param[158], nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"createMap", nullptr, &param[159], nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 
 napi_typedarray_type GetArrayType(JSVM_TypedarrayType typeNum)
