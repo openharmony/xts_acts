@@ -369,4 +369,3 @@ int32_t MockIPreparedModel::GetInputDimRanges(std::vector<std::vector<uint32_t>>
 } // namespace Nnrt
 } // namespace HDI
 } // namespace OHOS
-
