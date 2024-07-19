@@ -4881,4 +4881,74 @@ describe('BufferTest', function () {
     let buf = buffer.alloc(20).fill('');
     expect(buf.length).assertEqual(20);
    });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30060
+   * @tc.name: testIndexOf30060
+   * @tc.desc: The index of the first occurrence of value in buf.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testIndexOf30060", 0, function () {
+    let buf1 = buffer.from("123456789abcdefg");
+    let index = buf1.indexOf("3", -1);
+    expect(index).assertEqual(-1);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30070
+   * @tc.name: testIndexOf30070
+   * @tc.desc: The index of the first occurrence of value in buf.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testIndexOf30070", 0, function () {
+    let buf1 = buffer.from("123456789abcdefg");
+    let index = buf1.indexOf("3", 99999999999999);
+    expect(index).assertEqual(-1);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30080
+   * @tc.name: testIndexOf30080
+   * @tc.desc: The index of the first occurrence of value in buf.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testIndexOf30080", 0, function () {
+    let buf1 = buffer.from("123456789abcdefg");
+    let index = buf1.indexOf("3", -99999999999999);
+    expect(index).assertEqual(2);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30090
+   * @tc.name: testIndexOf30090
+   * @tc.desc: The index of the first occurrence of value in buf.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testIndexOf30090", 0, function () {
+    let buf1 = buffer.from("This is a buffer");
+    let index = buf1.indexOf("is", -5);
+    expect(index).assertEqual(-1);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_BUFFER_30100
+   * @tc.name: testIndexOf30100
+   * @tc.desc: The index of the first occurrence of value in buf.
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("testIndexOf30100", 0, function () {
+    let buf1 = buffer.from("This is a buffer");
+    let index = buf1.indexOf("f", -20);
+    expect(index).assertEqual(12);
+  });
 })}
