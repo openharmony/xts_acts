@@ -4882,6 +4882,12 @@ export const testArkUI014: () => number;
 
 export const testArkUI015: () => number;
 
+export const testArkUI016: () => number;
+
+export const testArkUI017: () => number;
+
+export const testArkUI018: () => number;
+
 export const testRelativeContaineAlignmentRuleOption001: () => number;
 
 export const testRelativeContaineAlignmentRuleOption002: () => number;
