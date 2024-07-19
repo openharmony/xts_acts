@@ -58,18 +58,14 @@ export default function treeViewNodeParamContainer() {
      * @tc.type   Function
      * @tc.level  0
      */
-    it('treeViewNodeParamContainer_0100', 0, async function (done) {
+    it('treeViewNodeParamContainer_0100', 0, async (done: Function) => {
       console.info('[treeViewNodeParamContainer_0100] START');
-      let driver = await Driver.create();
-      await driver.delayMs(2000);
-      // 查看treeViewNodeParamContainer是否存在以下入口。
-      let primaryTitle1 = await driver.findComponent(ON.text('目录5'));
-      let primaryTitle2 = await driver.findComponent(ON.text('目录3'));
-      expect(primaryTitle1 !== null).assertTrue();
-      expect(primaryTitle2 !== null).assertTrue();
-      await driver.delayMs(2000);
-      console.info('[treeViewNodeParamContainer_0100] END');
-      done();
-    });
+      try{
+        let driver: Driver = Driver.create();
+        await driver.assertComponentExist(ON.text('ClickNodeId='));
+      } finally {
+        done();
+      }
+    })
   })
 }
