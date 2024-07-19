@@ -44,8 +44,16 @@ import editableTitleBarSafeAreaTypes from './editableTitleBar/editableTitleBarSa
 import subHeaderButton from './subHeader/subHeaderButton.test.ets';
 import subHeaderIconGroup from './subHeader/subHeaderIconGroup.test.ets';
 import subHeaderTextArrow from './subHeader/subHeaderTextArrow.test.ets';
+import chipDirectionTest from './chip/chipDirection.test';
+import counterDirectionTest from './counter/counterDirection.test';
+import popupDirectionTest from './popup/popupDirectionTest.test';
+import segmentButtonDirectionTest from './segmenButton/segmentbuttonDirection.test';
 
 export default function testsuite() {
+  chipDirectionTest();
+  counterDirectionTest();
+  popupDirectionTest();
+  segmentButtonDirectionTest();
   composeListItemIconType();
   composeListItemOperateItemArrow();
   composeListItemOperateItemButton();
