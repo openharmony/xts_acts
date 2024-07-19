@@ -18,6 +18,9 @@ import delegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import { describe, it, expect } from '@ohos/hypium';
 import { getContext } from '../common/getContext';
 import common from '@ohos.app.ability.common';
+import { Driver, ON } from '@ohos.UiTest'
+
+let driver = Driver.create();
 
 function sleep(ms: number) {
   return new Promise<void>(resolve => setTimeout(resolve, ms));
@@ -101,6 +104,18 @@ export default function abilityTest() {
           console.log('Acts_CleanTempFiles_0101 startAbility err: ' + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
+        try {
+          let allowed = await driver.waitForComponent(ON.text("打开"), 2000);
+          if (allowed) {
+            console.log("find button");
+            let point = await allowed.getBoundsCenter();
+            console.log('point.x : ' + point.x + 'point.y : ' + point.y);
+            await driver.click(point.x, point.y);
+          }
+        } catch (err) {
+          console.error('waitForComponent error' + JSON.stringify(err));
+          done();
+        }
         await sleep(4000);
         console.info('Acts_CleanTempFiles_0100 startAbility two');
         getContext().startAbility(
@@ -114,6 +129,18 @@ export default function abilityTest() {
           console.log('Acts_CleanTempFiles_0102 startAbility err: ' + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
+        try {
+          let allowed = await driver.waitForComponent(ON.text("打开"), 2000);
+          if (allowed) {
+            console.log("find button");
+            let point = await allowed.getBoundsCenter();
+            console.log('point.x : ' + point.x + 'point.y : ' + point.y);
+            await driver.click(point.x, point.y);
+          }
+        } catch (err) {
+          console.error('waitForComponent error' + JSON.stringify(err));
+          done();
+        }
       })
     })
 
@@ -186,6 +213,18 @@ export default function abilityTest() {
           console.log('Acts_CleanTempFiles_0201 startAbility err: ' + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
+        try {
+          let allowed = await driver.waitForComponent(ON.text("打开"), 2000);
+          if (allowed) {
+            console.log("find button");
+            let point = await allowed.getBoundsCenter();
+            console.log('point.x : ' + point.x + 'point.y : ' + point.y);
+            await driver.click(point.x, point.y);
+          }
+        } catch (err) {
+          console.error('waitForComponent error' + JSON.stringify(err));
+          done();
+        }
         await sleep(4000);
         console.info('Acts_CleanTempFiles_0200 startAbility two');
         getContext().startAbility(
@@ -199,6 +238,18 @@ export default function abilityTest() {
           console.log('Acts_CleanTempFiles_0202 startAbility err: ' + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
+        try {
+          let allowed = await driver.waitForComponent(ON.text("打开"), 2000);
+          if (allowed) {
+            console.log("find button");
+            let point = await allowed.getBoundsCenter();
+            console.log('point.x : ' + point.x + 'point.y : ' + point.y);
+            await driver.click(point.x, point.y);
+          }
+        } catch (err) {
+          console.error('waitForComponent error' + JSON.stringify(err));
+          done();
+        }
       })
     })
 
@@ -253,6 +304,18 @@ export default function abilityTest() {
           console.log('Acts_CleanTempFiles_0301 startAbility err: ' + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
+        try {
+          let allowed = await driver.waitForComponent(ON.text("打开"), 2000);
+          if (allowed) {
+            console.log("find button");
+            let point = await allowed.getBoundsCenter();
+            console.log('point.x : ' + point.x + 'point.y : ' + point.y);
+            await driver.click(point.x, point.y);
+          }
+        } catch (err) {
+          console.error('waitForComponent error' + JSON.stringify(err));
+          done();
+        }
         await sleep(2000);
         console.info('Acts_CleanTempFiles_0300 startAbility two');
         getContext().startAbility(
@@ -266,6 +329,18 @@ export default function abilityTest() {
           console.log('Acts_CleanTempFiles_0302 startAbility err: ' + JSON.stringify(err));
           expect(err.code).assertEqual(0);
         })
+        try {
+          let allowed = await driver.waitForComponent(ON.text("打开"), 2000);
+          if (allowed) {
+            console.log("find button");
+            let point = await allowed.getBoundsCenter();
+            console.log('point.x : ' + point.x + 'point.y : ' + point.y);
+            await driver.click(point.x, point.y);
+          }
+        } catch (err) {
+          console.error('waitForComponent error' + JSON.stringify(err));
+          done();
+        }
       })
     })
 
