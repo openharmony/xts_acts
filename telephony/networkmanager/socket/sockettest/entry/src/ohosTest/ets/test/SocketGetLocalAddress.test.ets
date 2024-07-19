@@ -236,23 +236,25 @@ export default function SocketGetLocalSocketTest() {
     it('testNetworkMgrSocketGetLocalAddressTest0200', 0, async (done: Function) => {
       let caseName: string = 'testNetworkMgrSocketGetLocalAddressTest0200';
       console.info(`${caseName} test start`);
+      let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
       try {
-        let multicast: socket.MulticastSocket = socket.constructMulticastSocketInstance();
-        multicast.bind(bindAddr, async (err: BusinessError) => {
+        multicast.bind(bindAddr, (err: BusinessError) => {
           if (err) {
             console.info(`${caseName} err: ${JSON.stringify(err)}`);
             ExpectFail();
             done();
-          } else {
-            multicast.getLocalAddress().then((localAddress: socket.NetAddress) => {
-              expectTrue(localAddress != null);
-              console.log("Multicast_Socket SUCCESS! Local Address is " + JSON.stringify(localAddress));
-            }).catch((err: BusinessError) => {
-              console.log("Multicast_Socket get FAILED! error: " + JSON.stringify(err));
-              ExpectFail();
-              done();
-            })
           }
+          multicast.getLocalAddress().then((localAddress: socket.NetAddress) => {
+            expectTrue(localAddress != null);
+            console.log("UDP_Socket get SUCCESS! IP Port: " + JSON.stringify(localAddress));
+          }).catch((err: BusinessError) => {
+            console.log("UDP_Socket get FAILED! error: " + JSON.stringify(err));
+            ExpectFail();
+            done();
+          })
+          console.info(`${caseName} test end`);
+          multicast.close();
+          done();
         });
       } catch (err) {
         console.info(`${caseName} err: ${JSON.stringify(err)}`);
