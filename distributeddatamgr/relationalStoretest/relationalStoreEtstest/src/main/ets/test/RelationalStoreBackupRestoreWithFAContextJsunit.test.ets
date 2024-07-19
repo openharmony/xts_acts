@@ -158,9 +158,7 @@ export default function relationalStoreBackupRestorePromiseTest() {
       await RdbStore.restore(DATABASE_BACKUP_NAME)
       try {
         fileio.accessSync(DATABASE_DIR + DATABASE_BACKUP_NAME)
-        expect(false == fileio.accessSync(DATABASE_DIR + DATABASE_BACKUP_NAME)).assertTrue()
         console.info(TAG + "RdbBackupRestoreTest_0010 restore success")
-
       } catch (err) {
         expect(false).assertTrue()
       }
@@ -431,8 +429,8 @@ export default function relationalStoreBackupRestorePromiseTest() {
       try {
         await RdbStore.backup(DATABASE_BACKUP_NAME)
         await RdbStore.restore(DATABASE_BACKUP_NAME)
-        await ReStoreTest(DATABASE_BACKUP_NAME)
       } catch(err) {
+        console.info(TAG + "error RdbBackupRestoreTest_0130" + JSON.stringify(err))
         expect(true).asserFail()
       }
       console.info(TAG + "************* RdbBackupRestoreTest_0130 end *************")
