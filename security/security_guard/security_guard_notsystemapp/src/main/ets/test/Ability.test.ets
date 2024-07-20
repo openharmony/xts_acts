@@ -44,7 +44,7 @@ export default function SecurityGuardNotSystemTest() {
     })
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0104
-     * @tc.name Test reportSecurityEvent
+     * @tc.name test reportSecurityEvent
      * @tc.desc No system app expected 202.
      * @tc.size MediumTest
      * @tc.type Function
@@ -71,7 +71,7 @@ export default function SecurityGuardNotSystemTest() {
 
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0204
-     * @tc.name Test querySecurityEvent
+     * @tc.name test querySecurityEvent
      * @tc.desc No system app expected 202.
      * @tc.size MediumTest
      * @tc.type Function
@@ -113,7 +113,7 @@ export default function SecurityGuardNotSystemTest() {
 
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0303
-     * @tc.name Test startSecurityEventCollector
+     * @tc.name test startSecurityEventCollector
      * @tc.desc No system app expected 202.
      * @tc.size MediumTest
      * @tc.type Function
@@ -137,7 +137,7 @@ export default function SecurityGuardNotSystemTest() {
 
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0403
-     * @tc.name Test stopSecurityEventCollector
+     * @tc.name test stopSecurityEventCollector
      * @tc.desc No system app expected 202.
      * @tc.size MediumTest
      * @tc.type Function
@@ -161,7 +161,7 @@ export default function SecurityGuardNotSystemTest() {
 
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0503
-     * @tc.name Test getModelResult
+     * @tc.name test getModelResult
      * @tc.desc No system app expected 202.
      * @tc.size MediumTest
      * @tc.type Function
@@ -186,7 +186,7 @@ export default function SecurityGuardNotSystemTest() {
 
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0605
-     * @tc.name Test on
+     * @tc.name test on
      * @tc.desc No system app expected 202.
      * @tc.size MediumTest
      * @tc.type Function
@@ -210,7 +210,7 @@ export default function SecurityGuardNotSystemTest() {
 
     /**
      * @tc.number SUB_Security_SecurityGuard_JsApi_Func_0705
-     * @tc.name Test off
+     * @tc.name test off
      * @tc.desc No system app expected 202.
      * @tc.size MediumTest
      * @tc.type Function
