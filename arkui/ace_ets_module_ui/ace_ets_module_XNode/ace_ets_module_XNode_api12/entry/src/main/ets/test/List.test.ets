@@ -83,6 +83,10 @@ import APIdisposeTreeTest from './FrameNodeTest/APIdisposeTreeTest.test';
 import typeNodeTextInputTest from './typeNodeTest/TextInput.test';
 import typeNodeListItemTest from './typeNodeTest/ListItem.test';
 import typeNodechildrenMainSizeTest from './typeNodeTest/ChildrenMainSize.test';
+import setLabelTest from './renderNode/setLabel.test';
+import setMarkNodeGroupTest from './renderNode/setMarkNodeGroup.test';
+import setShapeClipTest from './renderNode/setShapeClip.test';
+import attachNodeAdapterTest from './FrameNodeTest/attachNodeAdapter.test';
 export default function testsuite() {
   APIdisposeTreeTest();
   RenderNodeDemo01Test();
@@ -140,4 +144,8 @@ export default function testsuite() {
   typeNodeTextInputTest();
   typeNodeListItemTest();
   typeNodechildrenMainSizeTest();
+  setLabelTest();
+  setMarkNodeGroupTest();
+  setShapeClipTest();
+  attachNodeAdapterTest();
 }
