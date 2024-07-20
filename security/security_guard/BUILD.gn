@@ -18,6 +18,7 @@ group("security_guard") {
     deps = [
       "security_guard_func:ActsSecurityGuardFunctionTest",
       "security_guard_permission:ActsSecurityGuardPermissionTest",
+      "security_guard_notsystemapp:ActsSecurityGuardNotSystemTest",
     ]
   }
 }
