@@ -39,7 +39,7 @@ struct CustomContainerUser {
   @State mmsNum: number = 0;
   @State cameraNum: number = 0;
   @State contactsNum: number = 0;
-  @State toSP_daemon: string = 'SP_daemon -editor coldStartHM com.ohos.settings 设置 ohtest';
+  @State toSP_daemon: string = 'SP_daemon -editor appStartTime';
   @State select: number = 2;
   @State appName: string = '设置';
   @State appBundleName: string = "com.ohos.launcher";
@@ -172,8 +172,8 @@ struct CustomContainerUser {
                               settings
                      */
                     let setReport: string = globalThis.resultNum;
-                    let setHead: number = setReport.indexOf('time:');
-                    let setTime: string = setReport.substring(setHead + 5);
+                    let setHead: number = setReport.indexOf('ResponseTime:');
+                    let setTime: string = setReport.substring(setHead + 13);
                     this.setNum = parseFloat(setTime);
                     if (0 < this.setNum && this.setNum < 2300) {
                       this.num++
