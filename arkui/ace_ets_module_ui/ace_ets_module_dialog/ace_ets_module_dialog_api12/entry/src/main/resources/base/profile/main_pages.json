@@ -46,6 +46,12 @@
     "MainAbility/pages/Menu/subMenuExpandingMode",
     "MainAbility/pages/Menu/MenuApi/SubMenuExpandingMode_SIDE",
     "MainAbility/pages/Menu/MenuApi/SubMenuExpandingMode_EMBEDDED",
-    "MainAbility/pages/TimePickerDialog/DateTimeOptions"
+    "MainAbility/pages/TimePickerDialog/DateTimeOptions",
+    "MainAbility/pages/UIContext/closeBindSheet",
+    "MainAbility/pages/UIContext/closeCustomDialog",
+    "MainAbility/pages/UIContext/openBindSheet",
+    "MainAbility/pages/UIContext/openCustomDialog",
+    "MainAbility/pages/UIContext/updateBindSheet",
+    "MainAbility/pages/UIContext/updateCustomDialog"
   ]
 }
