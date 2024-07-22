@@ -52,7 +52,7 @@ export default function InactiveColor_APITest() {
       await CommonFunc.sleep(1000);
       let inactiveColor = getInspectorByKey('inactiveColor');
       console.info("[InactiveColor_APITest_0100] Tabs animationMode attrs is: " + JSON.stringify(JSON.parse(inactiveColor).$attrs));
-      expect(JSON.parse(inactiveColor).$attrs.backgroundBlurStyle.options.inactiveColor).assertEqual('#21a1dd');
+      expect(JSON.parse(inactiveColor).$attrs.backgroundBlurStyle.options.inactiveColor).assertEqual('#FF21A1DD');
       console.info('[InactiveColor_APITest_0100] END');
       done();
     });
