@@ -491,6 +491,8 @@
 #include "nativexcomponent/native_xcomponent_test.cpp"
 #include "mouseevent/mouse_event_test.cpp"
 #include "pointerevent/pointer_event_test.cpp"
+#include "native/native.cpp"
+
 namespace ArkUICapiTest {
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
@@ -4647,6 +4649,20 @@ static napi_value Init(napi_env env, napi_value exports)
          napi_default, nullptr},
         {"testToggleSwitchPointColor005", nullptr, TestToggleSwitchPointColor005, nullptr, nullptr, nullptr,
          napi_default, nullptr},
+    
+        {"native_001", nullptr, native_001, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"native_002", nullptr, native_002, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"native_003", nullptr, native_003, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"native_005", nullptr, native_005, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"native_006", nullptr, native_006, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"native_007", nullptr, native_007, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"native_008", nullptr, native_008, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"native_009", nullptr, native_009, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"native_010", nullptr, native_010, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"native_011", nullptr, native_011, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"native_012", nullptr, native_012, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"native_013", nullptr, native_013, nullptr , nullptr, nullptr, napi_default, nullptr},
+        {"native_014", nullptr, native_014, nullptr , nullptr, nullptr, napi_default, nullptr},
     };
     if (napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc) != napi_ok) {
         OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "Init", "napi_define_properties failed");

@@ -31,6 +31,8 @@ import TabsAp1 from './TabsTest/TabsAp1.test'
 import ScrollApi1 from './ScrollTest/ScrollApi1.test'
 import SwiperApi from './SwiperTest/SwiperApi.test';
 import tabsAnimationMode from './TabsTest/tabsAnimationMode.test'
+import setTest from './ListTest/childrenMainSizeTest/setTest.test'
+import getTest from './ListTest/childrenMainSizeTest/getTest.test'
 import alphabetEnableJsunit from './AlphabetIndexerTest/alphabetEnableJsunit.test';
 import swiperCountJsunit from './SwiperTest/swiperCountJsunit.test';
 import waterFlowLayoutMode from './WaterFlowTest/waterFlowLayoutMode.test';
@@ -55,6 +57,8 @@ export default function testsuite() {
   ScrollApi1()
   SwiperApi()
   tabsAnimationMode()
+  setTest();
+  getTest();
   alphabetEnableJsunit()
   swiperCountJsunit()
   waterFlowLayoutMode()

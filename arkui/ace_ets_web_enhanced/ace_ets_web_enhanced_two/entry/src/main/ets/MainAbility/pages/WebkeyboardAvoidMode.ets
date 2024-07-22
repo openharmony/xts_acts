@@ -584,6 +584,138 @@ struct WebkeyboardAvoidMode {
               })
               break;
             }
+            case "emitKeyboardAvoidMode2500": {
+              this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  Utils.emitEvent('false', 171725)
+                  break;
+                }
+              this.avoidMode = WebKeyboardAvoidMode.OVERLAYS_CONTENT
+              await Utils.sleep(2000);
+              this.controller.loadUrl("www.baidu.com");
+              await Utils.sleep(2000);
+              this.controller.loadUrl("resource://rawfile/index378.html");
+              await Utils.sleep(2000);
+              let driver = Driver.create();
+              let buttonOne = await driver.findComponent(ON.text('paragraph with text'));
+              await buttonOne.click()
+              await Utils.sleep(4000);
+              this.controller.runJavaScript("checkHeight()", (error, result) => {
+                console.log('The checkHeight() return value is: ${result}')
+                Utils.emitEvent(result, 171725)
+              })
+              break;
+            }
+            case "emitKeyboardAvoidMode2600": {
+              this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  Utils.emitEvent('false', 171726)
+                  break;
+                }
+              this.avoidMode = WebKeyboardAvoidMode.OVERLAYS_CONTENT
+              await Utils.sleep(2000);
+              this.controller.loadUrl("www.baidu.com");
+              await Utils.sleep(2000);
+              this.controller.loadUrl("resource://rawfile/index378.html");
+              await Utils.sleep(2000);
+              let driver = Driver.create();
+              let buttonOne = await driver.findComponent(ON.text('paragraph with tel'));
+              await buttonOne.click()
+              await Utils.sleep(4000);
+              this.controller.runJavaScript("checkHeight()", (error, result) => {
+                console.log('The checkHeight() return value is: ${result}')
+                Utils.emitEvent(result, 171726)
+              })
+              break;
+            }
+            case "emitKeyboardAvoidMode2700": {
+              this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  Utils.emitEvent('false', 171727)
+                  break;
+                }
+              this.avoidMode = WebKeyboardAvoidMode.OVERLAYS_CONTENT
+              await Utils.sleep(2000);
+              this.controller.loadUrl("www.baidu.com");
+              await Utils.sleep(2000);
+              this.controller.loadUrl("resource://rawfile/index378.html");
+              await Utils.sleep(2000);
+              let driver = Driver.create();
+              let buttonOne = await driver.findComponent(ON.text('paragraph with url'));
+              await buttonOne.click()
+              await Utils.sleep(4000);
+              this.controller.runJavaScript("checkHeight()", (error, result) => {
+                console.log('The checkHeight() return value is: ${result}')
+                Utils.emitEvent(result, 171727)
+              })
+              break;
+            }
+            case "emitKeyboardAvoidMode2800": {
+              this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  Utils.emitEvent('false', 171728)
+                  break;
+                }
+              this.avoidMode = WebKeyboardAvoidMode.OVERLAYS_CONTENT
+              await Utils.sleep(2000);
+              this.controller.loadUrl("www.baidu.com");
+              await Utils.sleep(2000);
+              this.controller.loadUrl("resource://rawfile/index378.html");
+              await Utils.sleep(2000);
+              let driver = Driver.create();
+              let buttonOne = await driver.findComponent(ON.text('paragraph with email'));
+              await buttonOne.click()
+              await Utils.sleep(4000);
+              this.controller.runJavaScript("checkHeight()", (error, result) => {
+                console.log('The checkHeight() return value is: ${result}')
+                Utils.emitEvent(result, 171728)
+              })
+              break;
+            }
+            case "emitKeyboardAvoidMode2900": {
+              this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  Utils.emitEvent('false', 171729)
+                  break;
+                }
+              this.avoidMode = WebKeyboardAvoidMode.OVERLAYS_CONTENT
+              await Utils.sleep(2000);
+              this.controller.loadUrl("www.baidu.com");
+              await Utils.sleep(2000);
+              this.controller.loadUrl("resource://rawfile/index378.html");
+              await Utils.sleep(2000);
+              let driver = Driver.create();
+              let buttonOne = await driver.findComponent(ON.text('paragraph with numeric'));
+              await buttonOne.click()
+              await Utils.sleep(4000);
+              this.controller.runJavaScript("checkHeight()", (error, result) => {
+                console.log('The checkHeight() return value is: ${result}')
+                Utils.emitEvent(result, 171729)
+              })
+              break;
+            }
+            case "emitKeyboardAvoidMode3000": {
+              this.userAgentPC = this.controller.getUserAgent();
+                if ((this.userAgentPC).includes("PC")) {
+                  Utils.emitEvent('false', 171730)
+                  break;
+                }
+              this.avoidMode = WebKeyboardAvoidMode.OVERLAYS_CONTENT
+              await Utils.sleep(2000);
+              this.controller.loadUrl("www.baidu.com");
+              await Utils.sleep(2000);
+              this.controller.loadUrl("resource://rawfile/index378.html");
+              await Utils.sleep(2000);
+              let driver = Driver.create();
+              let buttonOne = await driver.findComponent(ON.text('paragraph with decimal'));
+              await buttonOne.click()
+              await Utils.sleep(4000);
+              this.controller.runJavaScript("checkHeight()", (error, result) => {
+                console.log('The checkHeight() return value is: ${result}')
+                Utils.emitEvent(result, 171730)
+              })
+              break;
+            }
 
           }
         })

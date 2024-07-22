@@ -4,6 +4,8 @@
   "MainAbility/pages/Image/APIClipMaskShape",
   "MainAbility/pages/TextInput/APIContentType",
   "MainAbility/pages/TextInput/APIUnderlineColor",
+    "MainAbility/pages/RelativeContainer/RelativeContainerApi1",
+    "MainAbility/pages/Text/TextAddApi1",
     "MainAbility/pages/TextInput/underlineColor",
     "MainAbility/pages/TextInput/TextInputEvent",
     "MainAbility/pages/TextInput/TextInputEvent2",

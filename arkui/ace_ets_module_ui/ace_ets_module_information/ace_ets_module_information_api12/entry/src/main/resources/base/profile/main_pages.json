@@ -7,6 +7,9 @@
         "MainAbility/pages/SymbolGlyph/SymbolGlyph_API/ReplaceSymbolEffect",
         "MainAbility/pages/Tabs/AnimationMode_API/ACTION_FIRST",
         "MainAbility/pages/Tabs/AnimationMode_API/CONTENT_FIRST",
-        "MainAbility/pages/Tabs/AnimationMode_API/NO_ANIMATION"
+        "MainAbility/pages/Tabs/AnimationMode_API/NO_ANIMATION",
+        "MainAbility/pages/ChipGroup/startSpace",
+        "MainAbility/pages/ChipGroup/endSpace",
+        "MainAbility/pages/ChipGroup/itemSpace"
     ]
 }

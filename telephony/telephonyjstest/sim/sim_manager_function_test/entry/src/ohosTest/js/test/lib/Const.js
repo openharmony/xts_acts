@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-export const SLOTID2 = 2;
+export const SLOTID_INVALID = 3;
 export const CORRECT_PIN = '1234';
 export const CORRECT_PUK = '12345678';
 export const CORRECT_PIN2 = '12345678';
