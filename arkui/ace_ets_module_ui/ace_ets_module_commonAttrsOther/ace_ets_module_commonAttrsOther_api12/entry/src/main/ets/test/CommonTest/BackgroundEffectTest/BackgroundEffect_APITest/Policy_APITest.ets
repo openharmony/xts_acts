@@ -21,13 +21,13 @@ export default function Bgde_Policy_APITest() {
     beforeEach(async (done: Function) => {
       console.info("Bgde_Policy_APITest beforeEach start");
       let options: router.RouterOptions = {
-        url: "MainAbility/pages/Common/backgroundBlurStyle/backgroundBlurStyleOptions/Policy",
+        url: "MainAbility/pages/Common/BackgroundEffect/BackgroundEffectOptions/Policy",
       }
       try {
         router.clear();
         let pages = router.getState();
         console.info("get Bgde_Policy_APITest state pages: " + JSON.stringify(pages));
-        if (!("ListMainChildren" == pages.name)) {
+        if (!("Policy" == pages.name)) {
           console.info("get Bgde_Policy_APITest state pages.name: " + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);
