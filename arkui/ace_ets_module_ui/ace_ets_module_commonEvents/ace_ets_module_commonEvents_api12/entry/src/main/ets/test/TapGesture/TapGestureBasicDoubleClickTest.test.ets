@@ -211,7 +211,7 @@ export default function TapGestureBasicDoubleClickTest() {
       let text26 = getInspectorByKey('TapGestureBasicDoubleClick_sourceTool');
       let obj26 = JSON.parse(text26);
       console.log('TapGestureBasicDoubleClickTest_0010 obj26 $attrs content',obj26.$attrs.content,obj26)
-      expect(obj26.$attrs.content).assertEqual('sourceTool:1');
+      expect(obj26.$attrs.content).assertEqual('sourceTool:FINGER');
 
       await CommonFunc.sleep(200);
       let text27 = getInspectorByKey('TapGestureBasicDoubleClick_velocityX');

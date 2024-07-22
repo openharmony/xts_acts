@@ -213,7 +213,7 @@ export default function LongPressGestureLongClickMouseTest() {
       let text26 = getInspectorByKey('LongPressGestureLongClickMouse_sourceTool');
       let obj26 = JSON.parse(text26);
       console.log('LongPressGestureLongClickMouseTest_0010 obj26 $attrs content',obj26.$attrs.content,obj26)
-      expect(obj26.$attrs.content).assertEqual('sourceTool:0'); // 7
+      expect(obj26.$attrs.content).assertEqual('sourceTool:MOUSE');
 
       await CommonFunc.sleep(200);
       let text27 = getInspectorByKey('LongPressGestureLongClickMouse_velocityX');
