@@ -562,6 +562,7 @@ import nodeContentTest from './nodecontent/NodeContentTest.test'
 import nativeXComponentTest from './nativexcomponent/NativeXComponentTest.test'
 import mouseEventTest from './mouseevent/MouseEventTest.test'
 import pointerEventTest from './pointerevent/PointerEventTest.test'
+import nativeTest from './native/nativeTest.test'
 
 export default function testsuite() {
   datePickerAccessibilityDescriptionTest()
@@ -1114,4 +1115,6 @@ export default function testsuite() {
   nativeXComponentTest()
   mouseEventTest()
   pointerEventTest()
+  nativeTest()
+
 }

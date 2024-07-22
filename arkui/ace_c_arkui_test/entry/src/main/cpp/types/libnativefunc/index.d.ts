@@ -5186,3 +5186,17 @@ export const testToggleSelectedColor005: () => number;
 export const testToggleSwitchPointColor004: () => number;
 
 export const testToggleSwitchPointColor005: () => number;
+
+export const native_001: () => number;
+export const native_002: () => number;
+export const native_003: () => number;
+export const native_005: () => number;
+export const native_006: () => number;
+export const native_007: () => number;
+export const native_008: () => number;
+export const native_009: () => number;
+export const native_010: () => number;
+export const native_011: () => number;
+export const native_012: () => number;
+export const native_013: () => number;
+export const native_014: () => number;
