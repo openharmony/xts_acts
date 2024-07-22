@@ -22,6 +22,7 @@ export default function documentPickerCallback(abilityContext: Context) {
     afterEach(async () => {
       await sleep(500);
       await startAbility('ohos.acts.storage.picker', 'com.example.myapplication.MainAbility');
+      await stopAbility('com.huawei.hmos.filemanager');
       await stopAbility('com.ohos.filepicker');
       await sleep(500);
     });
