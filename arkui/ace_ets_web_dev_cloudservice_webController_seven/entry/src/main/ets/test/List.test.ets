@@ -23,13 +23,13 @@ import webViewObjectEmbed3 from './webViewObjectEmbed3.test'
 import webViewIncognitoMode1 from './webViewIncognitoMode1.test'
 import webViewIncognitoMode2 from './webViewIncognitoMode2.test'
 export default function testsuite() {
-  webViewObjectEmbedEnhance()
+  webViewGetSecurityLevel()
   webViewIncognitoMode1()
   webViewGetAndSetRenderProcessMode()
   webViewIncognitoMode2()
-  webViewGetSecurityLevel()
   ActsAceWebSafeBrowsing()
   webViewObjectEmbed()
   webViewObjectEmbed3()
   webViewObjectEmbed2()
+  webViewObjectEmbedEnhance()
 }
