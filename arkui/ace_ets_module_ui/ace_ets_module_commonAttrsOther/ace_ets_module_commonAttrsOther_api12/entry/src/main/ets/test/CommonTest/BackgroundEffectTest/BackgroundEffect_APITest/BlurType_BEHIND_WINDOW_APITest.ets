@@ -52,7 +52,7 @@ export default function BlurType_BEHIND_WINDOW_APITest() {
       await CommonFunc.sleep(1000);
       let BEHIND_WINDOW = getInspectorByKey('BEHIND_WINDOW');
       console.info("[BlurType_BEHIND_WINDOW_APITest_0100] BEHIND_WINDOW attrs is: " + JSON.stringify(JSON.parse(BEHIND_WINDOW).$attrs));
-      expect(JSON.parse(BEHIND_WINDOW).$attrs.backgroundEffect.options.type).assertEqual('BlurType.BEHIND_WINDOW');
+      expect(JSON.parse(BEHIND_WINDOW).$attrs.backgroundEffect.options.type).assertEqual('BEHIND_WINDOW');
       console.info('[BlurType_BEHIND_WINDOW_APITest_0100] END');
       done();
     });
