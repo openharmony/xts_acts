@@ -4,13 +4,13 @@
         "type": "OHJSUnitTest",
         "test-timeout": "180000",
         "shell-timeout": "180000",
-        "bundle-name": "com.example.mypowerappnop",
+        "bundle-name": "com.powermgr.permission.test",
         "module-name": "entry_test"
     },
     "kits": [
         {
             "test-file-name": [
-                "ActsPowerMgrPowerNopTest.hap"
+                "ActsPowermgrPermissionTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

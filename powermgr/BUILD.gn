@@ -16,8 +16,8 @@ group("powermgr") {
   deps = [
     "battery_manager:powermgr_battery_test",
     "display_manager:powermgr_display_test",
+    "permission:powermgr_permission_test",
     "power_manager:powermgr_power_test",
-    "power_manager_nop:powermgr_power_nop_test",
     "thermal_manager:powermgr_thermal_test",
   ]
 }
