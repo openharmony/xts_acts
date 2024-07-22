@@ -11,7 +11,7 @@
     "kits": [
         {
             "test-file-name": [
-                "ActsimagePackerExifTest.hap"
+                "ActsImagePackerExifTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true
