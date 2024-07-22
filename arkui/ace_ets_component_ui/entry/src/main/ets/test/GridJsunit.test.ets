@@ -43,6 +43,14 @@ export default function GridJsunit() {
       done();
     });
 
+    /**
+     * @tc.number GridJsunit_0100
+     * @tc.name testGridProperties
+     * @tc.desc testGridProperties
+     * @tc.level Level 2
+     * @tc.type Function
+     * @tc.size MediumTest
+     */
     it('GridJsunit_0100', 0, async (done: Function) => {
       // Get the information of the Grid component
       console.info('[GridJsunit_0100] START');
@@ -66,6 +74,14 @@ export default function GridJsunit() {
       done();
     });
 
+    /**
+     * @tc.number GridJsunit_0200
+     * @tc.name testGridProperties
+     * @tc.desc testGridProperties
+     * @tc.level Level 2
+     * @tc.type Function
+     * @tc.size MediumTest
+     */
     it('GridJsunit_0200', 0, async (done: Function) => {
       // Modify the properties of component Grid
       console.info('[GridJsunit_0200] START');
@@ -106,12 +122,20 @@ export default function GridJsunit() {
       let strJson2 = getInspectorByKey('grid2');
       let obj2: ESObject = JSON.parse(strJson2);
       console.info("[GridJsunit_0200] component obj2 is: " + JSON.stringify(obj2));
-      expect(obj2.$attrs.scrollBarColor).assertEqual('#FF000000');
+      expect(obj2.$attrs.scrollBarColor).assertEqual(obj.$attrs.scrollBarColor);
       expect(obj2.$attrs.scrollBarWidth).assertEqual('30.00vp');
       console.info('[GridJsunit_0200] END');
       done();
     });
 
+    /**
+     * @tc.number GridJsunit_0300
+     * @tc.name testGridProperties
+     * @tc.desc testGridProperties
+     * @tc.level Level 2
+     * @tc.type Function
+     * @tc.size MediumTest
+     */
     it('GridJsunit_0300', 0, async (done: Function) => {
       // Illegal modification of properties of component grid
       console.info('[GridJsunit_0300] START');
@@ -153,12 +177,20 @@ export default function GridJsunit() {
       let obj2: ESObject = JSON.parse(strJson2);
       console.info("[GridJsunit_0300] component obj2 is: " + JSON.stringify(obj2));
       expect(obj2.$attrs.scrollBar).assertEqual('BarState.Auto');
-      expect(obj2.$attrs.scrollBarColor).assertEqual('#FF000000');
+      expect(obj2.$attrs.scrollBarColor).assertEqual(obj.$attrs.scrollBarColor);
       expect(obj2.$attrs.scrollBarWidth).assertEqual('4.00vp');
       console.info('[GridJsunit_0300] END');
       done();
     });
 
+    /**
+     * @tc.number GridJsunit_0400
+     * @tc.name testGridProperties
+     * @tc.desc testGridProperties
+     * @tc.level Level 2
+     * @tc.type Function
+     * @tc.size MediumTest
+     */
     it('GridJsunit_0400', 0, async (done: Function) => {
       // Verify the event of the Grid component
       console.info('[GridJsunit_0400] START');
@@ -196,6 +228,14 @@ export default function GridJsunit() {
       done();
     });
 
+    /**
+     * @tc.number GridJsunit_0500
+     * @tc.name testGridProperties
+     * @tc.desc testGridProperties
+     * @tc.level Level 2
+     * @tc.type Function
+     * @tc.size MediumTest
+     */
     it('GridJsunit_0500', 0, async (done: Function) => {
       // Get the default attribute value of the Grid component
       console.info('[GridJsunit_0500] START');
@@ -217,6 +257,14 @@ export default function GridJsunit() {
       done();
     });
 
+    /**
+     * @tc.number GridJsunit_0600
+     * @tc.name testGridProperties
+     * @tc.desc testGridProperties
+     * @tc.level Level 2
+     * @tc.type Function
+     * @tc.size MediumTest
+     */
     it('GridJsunit_0600', 0, async (done: Function) => {
       // Verify that rowsTemplate and columnsTemplate are set at the same time
       console.info('[GridJsunit_0600] START');
@@ -243,6 +291,14 @@ export default function GridJsunit() {
       done();
     });
 
+    /**
+     * @tc.number GridJsunit_0700
+     * @tc.name testGridProperties
+     * @tc.desc testGridProperties
+     * @tc.level Level 2
+     * @tc.type Function
+     * @tc.size MediumTest
+     */
     it('GridJsunit_0700', 0, async (done: Function) => {
       // Verify only setting columnsTemplate of Grid component
       console.info('[GridJsunit_0700] START');
@@ -263,6 +319,14 @@ export default function GridJsunit() {
       done();
     });
 
+    /**
+     * @tc.number GridJsunit_0800
+     * @tc.name testGridProperties
+     * @tc.desc testGridProperties
+     * @tc.level Level 2
+     * @tc.type Function
+     * @tc.size MediumTest
+     */
     it('GridJsunit_0800', 0, async (done: Function) => {
       // Verify only setting rowsTemplate of grid component
       console.info('[GridJsunit_0800] START');
@@ -284,6 +348,14 @@ export default function GridJsunit() {
       done();
     });
 
+    /**
+     * @tc.number GridJsunit_0900
+     * @tc.name testGridProperties
+     * @tc.desc testGridProperties
+     * @tc.level Level 2
+     * @tc.type Function
+     * @tc.size MediumTest
+     */
     it('GridJsunit_0900', 0, async (done: Function) => {
       // Verify Neither rowsTemplate nor columnsTemplate is set
       console.info('[GridJsunit_0900] START');
