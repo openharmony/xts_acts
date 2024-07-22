@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 Huawei Device Co., Ltd.
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { AsyncCallback } from '@ohos.base'
-import { sleep, startAbility } from './Common'
+import { sleep, startAbility, stopAbility } from './Common'
 import picker from '@ohos.file.picker'
 import { afterEach, describe, expect, it } from 'deccjsunit/index'
 
@@ -120,6 +120,8 @@ export default function audioPickerCallback(abilityContext: Context) {
     afterEach(async () => {
       await sleep(500);
       await startAbility('ohos.acts.storage.picker', 'com.example.myapplication.MainAbility');
+      await stopAbility('com.huawei.hms.musicservice');
+      await stopAbility('com.ohos.filepicker');
       await sleep(500);
     });
 
