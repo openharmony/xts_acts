@@ -59,9 +59,6 @@
       {
         "name": "ohos.permission.INTERNET"
       },
-      {
-        "name": "ohos.permission.GET_TELEPHONY_STATE",
-      },
     ]
   }
 }
