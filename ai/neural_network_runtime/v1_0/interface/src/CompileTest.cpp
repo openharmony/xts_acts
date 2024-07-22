@@ -103,7 +103,7 @@ HWTEST_F(CompileTest, SUB_AI_NNRt_Func_North_Compilation_Create_0200, Function |
     OH_NNCompilation *compilation = OH_NNCompilation_Construct(model);
     ASSERT_NE(nullptr, compilation);
     ASSERT_EQ(OH_NN_SUCCESS, SetDevice(compilation));
-    ASSERT_EQ(OH_NN_FAILED, OH_NNCompilation_Build(compilation));
+    ASSERT_EQ(OH_NN_INVALID_PARAMETER, OH_NNCompilation_Build(compilation));
     Free(model, compilation);
 }
 
