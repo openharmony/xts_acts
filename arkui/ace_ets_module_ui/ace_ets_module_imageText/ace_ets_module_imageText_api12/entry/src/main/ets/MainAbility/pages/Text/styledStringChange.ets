@@ -162,6 +162,7 @@ struct styled_string_demo1 {
         .draggable(true)
         .copyOption(CopyOptions.LocalDevice)
         .fontSize(30)
+        .height(35)
         .margin(20)
 
 

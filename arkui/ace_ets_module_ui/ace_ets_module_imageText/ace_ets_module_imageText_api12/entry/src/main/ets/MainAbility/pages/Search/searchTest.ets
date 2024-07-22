@@ -56,7 +56,7 @@ struct searchTest {
       Button('text')
         .key('searchTestBt2')
         .onClick((event: ClickEvent) => {
-          this.text2 = 'SearchSearchSearchSearchSearchSearchSearch'
+          this.text2 = 'Search SearchSearchSearch SearchSearchSearch'
         })
 
 
