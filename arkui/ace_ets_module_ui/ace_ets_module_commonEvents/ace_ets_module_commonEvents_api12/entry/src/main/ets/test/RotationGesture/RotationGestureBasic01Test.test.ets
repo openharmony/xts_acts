@@ -272,7 +272,7 @@ export default function RotationGestureBasic01Test() {
       let text26 = getInspectorByKey('RotationGestureBasic01_sourceTool');
       let obj26 = JSON.parse(text26);
       console.log('RotationGestureBasic01Test_0010 obj26 $attrs content',obj26.$attrs.content,obj26)
-      expect(obj26.$attrs.content).assertEqual('sourceTool:1');
+      expect(obj26.$attrs.content).assertEqual('sourceTool:FINGER');
 
       console.info('RotationGestureBasic01Test_0010 END');
       done();
