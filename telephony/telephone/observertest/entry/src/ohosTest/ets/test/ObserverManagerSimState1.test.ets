@@ -87,7 +87,7 @@ export default function observerManagerSimStateTest1() {
       console.info(`${caseName} test start`);
       try {
         observer.on('simStateChange', {
-          slotId: 2
+          slotId: 3
         }, (data: observer.SimStateData) => {
           console.info(`${caseName} data ${JSON.stringify(data)}`);
           ExpectTrue(false);
