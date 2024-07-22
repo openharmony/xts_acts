@@ -15,7 +15,7 @@
 import { describe, beforeEach, afterEach, it } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
-import Utils from '../../MainAbility/common/Utils';;
+import CommonFunc from '../../MainAbility/common/Common';;
 
 export default function focusJsunit() {
   describe('appInfoTest_four_2', () => {
@@ -31,7 +31,7 @@ export default function focusJsunit() {
         if (!("focus" == pages.name)) {
           console.info("get focus state pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push focus page result:" + JSON.stringify(result));
         }
       } catch (err) {
@@ -41,7 +41,7 @@ export default function focusJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("focus after each called");
     });
 
@@ -62,7 +62,7 @@ export default function focusJsunit() {
       } catch (err) {
         console.log("focusTest_0100 change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       console.info('focusTest_0100 END');
       done();
     });

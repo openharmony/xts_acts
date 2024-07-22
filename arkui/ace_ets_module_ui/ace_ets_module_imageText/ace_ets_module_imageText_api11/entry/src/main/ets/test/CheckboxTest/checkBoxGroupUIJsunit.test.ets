@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 const waitUiReadyMs = 1000;
 
 export default function checkBoxGroupUIJsunit() {
-  describe('checkBoxGroupUIJsunit', function () {
-    beforeEach(async function (done) {
+  describe('checkBoxGroupUIJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("checkBoxJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/checkBox/checkBoxGroupUI',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/checkBox/checkBoxGroupUI',
       }
       try {
         router.clear();
@@ -43,25 +43,25 @@ export default function checkBoxGroupUIJsunit() {
     });
   
 
-    it('checkBoxGroupUIJsunit_0100', 0, async function (done) {
+    it('checkBoxGroupUIJsunit_0100', 0, async (done: Function) => {
        console.info('checkBoxGroupUIJsunit_0100 START');
        await CommonFunc.sleep(1000);
        // get the checkboxGroup component and test attribute
        let strJson = getInspectorByKey('allck');
        console.info("checkBoxGroupUIJsunit_0100 strJson:" + strJson);
-       let obj = JSON.parse(strJson);
+       let obj: ESObject = JSON.parse(strJson);
        console.info("checkBoxGroupUIJsunit_0100 component obj is: " + JSON.stringify(obj.$attrs.selectedColor));
        expect(obj.$attrs.selectedColor).assertEqual('#FF007DFF');
        // add assert single checkbox selectedColor
        let strJson2 = getInspectorByKey('cb1');
        console.info("checkBoxGroupUIJsunit_cb1_0100 strJson:" + strJson2);
-       let obj2 = JSON.parse(strJson2);
+       let obj2: ESObject = JSON.parse(strJson2);
        console.info("checkBoxGroupUIJsunit_cb1_0100 component obj2 is: " + JSON.stringify(obj2.$attrs.selectedColor));
        expect(obj2.$attrs.selectedColor).assertEqual('#FF007DEF');
        done();
     });
 
-   it('checkBoxGroupUIJsunit_0200', 0, async function (done) {
+   it('checkBoxGroupUIJsunit_0200', 0, async (done: Function) => {
       console.info('checkBoxGroupUIJsunit_0200 START');
       await CommonFunc.sleep(1000);
       // modify the attribute normal value of checkbox dynamically
@@ -70,18 +70,18 @@ export default function checkBoxGroupUIJsunit() {
       await CommonFunc.sleep(2000);
       // check the value of changed attribute
       let strJson = getInspectorByKey('allck');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[checkBoxGroupUIJsunit_0200'] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.selectedColor).assertEqual('#FFEEAAFF');
       // add assert single checkbox selectedColor
       let strJson2 = getInspectorByKey('cb1');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("checkBoxGroupUIJsunit_cb1_0200 component obj2 is: " + JSON.stringify(obj2.$attrs.selectedColor));
       expect(obj2.$attrs.selectedColor).assertEqual('#FF007DEF');
       done();
     });
 
-    it('checkBoxGroupUIJsunit_0300', 0, async function (done) {
+    it('checkBoxGroupUIJsunit_0300', 0, async (done: Function) => {
       console.info('checkBoxGroupUIJsunit_0300 START');
       await CommonFunc.sleep(1000);
       // modify the attribute illegal value of checkbox dynamically
@@ -89,13 +89,13 @@ export default function checkBoxGroupUIJsunit() {
       await CommonFunc.sleep(2000);
       // check the value of changed attribute
       let strJson = getInspectorByKey('allck');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[checkBoxGroupUIJsunit_0300 '] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.selectedColor).assertEqual('#FFEEAAFF');
       done();
     });
 
-    it('checkBoxGroupUIJsunit_0400', 0, async function (done) {
+    it('checkBoxGroupUIJsunit_0400', 0, async (done: Function) => {
       console.info('checkBoxGroupUIJsunit_0400 START');
       await CommonFunc.sleep(1000);
       // modify the selectedColor 
@@ -103,13 +103,13 @@ export default function checkBoxGroupUIJsunit() {
       await CommonFunc.sleep(2000);
       // check the value of changed attribute
       let strJson = getInspectorByKey('allck');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[checkBoxGroupUIJsunit_0400 '] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.selectedColor).assertEqual('#FFEE82EE');
       done();
     });
 
-     it('checkBoxGroupUIJsunit_0500', 0, async function (done) {
+     it('checkBoxGroupUIJsunit_0500', 0, async (done: Function) => {
       console.info('checkBoxGroupUIJsunit_0500 START');
       await CommonFunc.sleep(1000);
       // modify the selectedColor 
@@ -117,13 +117,13 @@ export default function checkBoxGroupUIJsunit() {
       await CommonFunc.sleep(2000);
       // check the value of changed attribute
       let strJson = getInspectorByKey('allck');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[checkBoxGroupUIJsunit_0500 '] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.selectedColor).assertEqual('#FF008000');
       done();
     });
 
-    it('checkBoxGroupUIJsunit_0600', 0, async function (done) {
+    it('checkBoxGroupUIJsunit_0600', 0, async (done: Function) => {
       console.info('checkBoxGroupUIJsunit_0600 START');
       await CommonFunc.sleep(1000);
       // test the clicking event of checkboxGroup
@@ -148,7 +148,7 @@ export default function checkBoxGroupUIJsunit() {
       done();   
     });
 
-    it('checkBoxGroupUIJsunit_0700', 0, async function (done) {
+    it('checkBoxGroupUIJsunit_0700', 0, async (done: Function) => {
       console.info('checkBoxGroupUIJsunit_0700 START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();

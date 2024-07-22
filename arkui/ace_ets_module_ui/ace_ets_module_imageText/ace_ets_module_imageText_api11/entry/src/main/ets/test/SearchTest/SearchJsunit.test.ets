@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, MouseButton} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 
 export default function SearchJsunit() {
-  describe('SearchJsunit', function () {
-    beforeEach(async function (done) {
+  describe('SearchJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("SearchJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Search/SearchPage',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Search/SearchPage',
       }
       try {
         router.clear();
@@ -43,12 +43,12 @@ export default function SearchJsunit() {
       done();
     });
 
-    it('SearchJsunit_0100', 0, async function (done) {
+    it('SearchJsunit_0100', 0, async (done: Function) => {
       // Get the information of the Search component
       console.info('[SearchJsunit_0100] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('search');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SearchJsunit_0100] component obj is: " + JSON.stringify(obj.inspector));
       console.info("[SearchJsunit_0100] icon: " + JSON.stringify(obj.$attrs.icon));
       console.info("[SearchJsunit_0100] searchButton: " + JSON.stringify(obj.$attrs.searchButton));
@@ -72,7 +72,7 @@ export default function SearchJsunit() {
       done();
     });
 
-    it('SearchJsunit_0200', 0, async function (done) {
+    it('SearchJsunit_0200', 0, async (done: Function) => {
       // Modify the properties of component Search
       console.info('[SearchJsunit_0200] START');
       await CommonFunc.sleep(500);      
@@ -99,7 +99,7 @@ export default function SearchJsunit() {
 
       // Get the properties of the Search component
       let strJson = getInspectorByKey('search');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SearchJsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[SearchJsunit_0200] icon: " + JSON.stringify(obj.$attrs.icon));
       console.info("[SearchJsunit_0200] searchButton: " + JSON.stringify(obj.$attrs.searchButton));
@@ -123,7 +123,7 @@ export default function SearchJsunit() {
       done();
     });
 
-    it('SearchJsunit_0300', 0, async function (done) {
+    it('SearchJsunit_0300', 0, async (done: Function) => {
       // Verify the functions of the Search component
       console.info('[SearchJsunit_0300] START');
       globalThis.value.message.notify({name:'changeValue',value:''})
@@ -135,7 +135,7 @@ export default function SearchJsunit() {
       await textComponent1.inputText("hello")
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('change');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[SearchJsunit_0300] obj1: " + JSON.stringify(obj1));
       expect(obj1.$attrs.content).assertEqual('onChange:hello');
       await CommonFunc.sleep(1000);
@@ -149,7 +149,7 @@ export default function SearchJsunit() {
       await CommonFunc.sleep(1000);
       console.info("[SearchJsunit_0300] CLICK_SEARCH succ ");
       let strJson2 = getInspectorByKey('submit');
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[SearchJsunit_0300] obj2: " + JSON.stringify(obj2));
       expect(obj2.$attrs.content).assertEqual('onSubmit:hello');
 
@@ -173,7 +173,7 @@ export default function SearchJsunit() {
       await CommonFunc.sleep(3000);
       console.info("[SearchJsunit_0300] click copy succ ");
       let strJson3 = getInspectorByKey('copy');
-      let obj3 = JSON.parse(strJson3);
+      let obj3: ESObject = JSON.parse(strJson3);
       console.info("[SearchJsunit_0300] obj3: " + JSON.stringify(obj3));
       expect(obj3.$attrs.content).assertEqual('onCopy:hello');
 
@@ -193,7 +193,7 @@ export default function SearchJsunit() {
       await CommonFunc.sleep(3000);
       console.info("[SearchJsunit_0300] click cut succ ");
       let strJson4 = getInspectorByKey('cut');
-      let obj4 = JSON.parse(strJson4);
+      let obj4: ESObject = JSON.parse(strJson4);
       console.info("[SearchJsunit_0300] obj4: " + JSON.stringify(obj4));
       expect(obj4.$attrs.content).assertEqual('onCut:hello');
 
@@ -208,7 +208,7 @@ export default function SearchJsunit() {
       await CommonFunc.sleep(3000);
       console.info("[SearchJsunit_0300] click paste succ ");
       let strJson5 = getInspectorByKey('paste');
-      let obj5 = JSON.parse(strJson5);
+      let obj5: ESObject = JSON.parse(strJson5);
       console.info("[SearchJsunit_0300] obj5: " + JSON.stringify(obj5));
       expect(obj5.$attrs.content).assertEqual('onPaste:hello');
 
@@ -218,14 +218,14 @@ export default function SearchJsunit() {
       await CommonFunc.sleep(1000);
       console.info("[SearchJsunit_0300] click button succ ");
       let strJson6 = getInspectorByKey('button');
-      let obj6 = JSON.parse(strJson6);
+      let obj6: ESObject = JSON.parse(strJson6);
       console.info("[SearchJsunit_0300] obj6: " + JSON.stringify(obj6));
       expect(obj6.$attrs.label).assertEqual('Set caretPosition 2');
       console.info('[SearchJsunit_0300] END');
       done();
     });
 
-    it('SearchJsunit_0400', 0, async function (done) {
+    it('SearchJsunit_0400', 0, async (done: Function) => {
       // Illegal modification of properties of component Search
       console.info('[SearchJsunit_0400] START');
       await CommonFunc.sleep(1000);
@@ -250,7 +250,7 @@ export default function SearchJsunit() {
 
       // Get the properties of the Search component
       let strJson = getInspectorByKey('search');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SearchJsunit_0400] component obj is: " + JSON.stringify(obj));
       console.info("[SearchJsunit_0400] icon: " + JSON.stringify(obj.$attrs.icon));
       console.info("[SearchJsunit_0400] searchButton: " + JSON.stringify(obj.$attrs.searchButton));

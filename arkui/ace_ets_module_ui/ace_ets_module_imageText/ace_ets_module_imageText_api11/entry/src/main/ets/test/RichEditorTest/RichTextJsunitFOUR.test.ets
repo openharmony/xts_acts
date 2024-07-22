@@ -14,7 +14,7 @@
  */
 import { describe, beforeEach, afterEach, it } from "@ohos/hypium";
 import router from '@ohos.router';
-import Utils from "../../MainAbility/common/Common";
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function richTextJsunitFOUR() {
   describe('richTextJsunitFOUR', () => {
@@ -30,7 +30,7 @@ export default function richTextJsunitFOUR() {
         if (!("richText" == pages.name)) {
           console.info("get richText state pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push richText page result:" + JSON.stringify(result));
         }
       } catch (err) {
@@ -40,7 +40,7 @@ export default function richTextJsunitFOUR() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("richText after each called");
     });
 

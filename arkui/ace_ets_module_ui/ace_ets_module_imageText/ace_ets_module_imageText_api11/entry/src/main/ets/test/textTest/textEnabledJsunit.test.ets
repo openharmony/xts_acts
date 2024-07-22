@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 
 export default function textEnabledJsunit() {
-  describe('textEnabledJsunit', function () {
-    beforeEach(async function (done) {
+  describe('textEnabledJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("textEnabledJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/text/textEnabled',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/text/textEnabled',
       }
       try {
         router.clear();
@@ -43,7 +43,7 @@ export default function textEnabledJsunit() {
       done();
     });
 
-    it('textEnabledJsunit_0100', 0, async function (done) {
+    it('textEnabledJsunit_0100', 0, async (done: Function) => {
 
       console.info('textEnabledJsunit_0100 START');
       let driver = await UiDriver.create()
@@ -51,7 +51,7 @@ export default function textEnabledJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('texEnd1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textEnabledJsunit_0100] component obj is: " + JSON.stringify(obj));
       console.info("[textEnabledJsunit_0100] text1: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("onClick-禁用");
@@ -59,7 +59,7 @@ export default function textEnabledJsunit() {
       done();
     });
 
-    it('textEnabledJsunit_0200', 0, async function (done) {
+    it('textEnabledJsunit_0200', 0, async (done: Function) => {
 
       console.info('textEnabledJsunit_0200 START');
       let driver = await UiDriver.create()
@@ -67,7 +67,7 @@ export default function textEnabledJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('texEnd2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textEnabledJsunit_0200] component obj is: " + JSON.stringify(obj));
       console.info("[textEnabledJsunit_0200] text2: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("onTouch-禁用");
@@ -75,7 +75,7 @@ export default function textEnabledJsunit() {
       done();
     });
 
-    it('textEnabledJsunit_0300', 0, async function (done) {
+    it('textEnabledJsunit_0300', 0, async (done: Function) => {
 
       console.info('textEnabledJsunit_0300 START');
       let driver = await UiDriver.create()
@@ -83,7 +83,7 @@ export default function textEnabledJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('texEnd3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textEnabledJsunit_0300] component obj is: " + JSON.stringify(obj));
       console.info("[textEnabledJsunit_0300] text3: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("onKeyEvent-禁用");
@@ -91,7 +91,7 @@ export default function textEnabledJsunit() {
       done();
     });
 
-    it('textEnabledJsunit_0400', 0, async function (done) {
+    it('textEnabledJsunit_0400', 0, async (done: Function) => {
 
       console.info('textEnabledJsunit_0400 START');
       let driver = await UiDriver.create()
@@ -99,7 +99,7 @@ export default function textEnabledJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('texEnd4');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textEnabledJsunit_0400] component obj is: " + JSON.stringify(obj));
       console.info("[textEnabledJsunit_0400] text4: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("鼠标事件onHover-禁用");
@@ -107,7 +107,7 @@ export default function textEnabledJsunit() {
       done();
     });
 
-    it('textEnabledJsunit_0500', 0, async function (done) {
+    it('textEnabledJsunit_0500', 0, async (done: Function) => {
 
       console.info('textEnabledJsunit_0500 START');
       let driver = await UiDriver.create()
@@ -115,7 +115,7 @@ export default function textEnabledJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('texEnd5');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textEnabledJsunit_0500] component obj is: " + JSON.stringify(obj));
       console.info("[textEnabledJsunit_0500] text5: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("鼠标事件onMouse-禁用");
@@ -123,7 +123,7 @@ export default function textEnabledJsunit() {
       done();
     });
 
-    it('textEnabledJsunit_0600', 0, async function (done) {
+    it('textEnabledJsunit_0600', 0, async (done: Function) => {
 
       console.info('textEnabledJsunit_0600 START');
       let driver = await UiDriver.create()
@@ -131,7 +131,7 @@ export default function textEnabledJsunit() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('texEnd6');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[textEnabledJsunit_0600] component obj is: " + JSON.stringify(obj));
       console.info("[textEnabledJsunit_0600] text6: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("焦点事件-禁用");

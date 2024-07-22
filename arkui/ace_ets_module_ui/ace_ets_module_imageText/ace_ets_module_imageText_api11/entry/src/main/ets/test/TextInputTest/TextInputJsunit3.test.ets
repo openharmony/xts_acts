@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +16,7 @@ import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
 import { UiDriver, BY } from '@ohos.UiTest';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from '../../MainAbility/common/Utils';;
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function textInputJsunit3() {
   describe('appInfoTest_four_12', () => {
@@ -33,7 +32,7 @@ export default function textInputJsunit3() {
         if (!("textInput" == pages.name)) {
           console.info("get textInput state pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push textInput page result:" + JSON.stringify(result));
         }
       } catch (err) {
@@ -43,13 +42,13 @@ export default function textInputJsunit3() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("textInput after each called");
     });
 
     it('textInputTest01', 0, async (done: Function) => {
       console.info('[textInputTest01] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('TextInput');
 
       console.info("[textInputTest01] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -76,7 +75,7 @@ export default function textInputJsunit3() {
       } catch (err) {
         console.log("[textInputTest02] change component data error: " + err.message);
       }
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('TextInput');
 
       console.info("[textInputTest02] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -86,7 +85,7 @@ export default function textInputJsunit3() {
 
     it('textInputTest03', 0, async (done: Function) => {
       console.info('[textInputTest03] START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('TextInput');
       console.info("[textInputTest03] component strJson:" + strJson);
 
@@ -112,7 +111,7 @@ export default function textInputJsunit3() {
       } catch (err) {
         console.log("[textInputTest04] change component data error: " + err.message);
       }
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('TextInput');
 
       console.info("[textInputTest04] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -122,7 +121,7 @@ export default function textInputJsunit3() {
 
     it('textInputTest05', 0, async (done: Function) => {
       console.info('[textInputTest05] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('TextInput');
 
       console.info("[textInputTest05] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -148,7 +147,7 @@ export default function textInputJsunit3() {
       } catch (err) {
         console.log("[textInputTest06] change component data error: " + err.message);
       }
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('TextInput');
 
       console.info("[textInputTest06] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -158,7 +157,7 @@ export default function textInputJsunit3() {
 
     it('textInputTest07', 0, async (done: Function) => {
       console.info('[textInputTest07] START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('TextInput');
       console.info("[textInputTest07] component strJson:" + strJson);
 
@@ -184,7 +183,7 @@ export default function textInputJsunit3() {
       } catch (err) {
         console.log("[textInputTest08] change component data error: " + err.message);
       }
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('TextInput');
 
       console.info("[textInputTest08] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -199,12 +198,12 @@ export default function textInputJsunit3() {
      */
     it('textInputTest09', 0, async (done: Function) => {
       console.info('[textInputTest09] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let driver = UiDriver.create();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn = await driver.findComponent(BY.key('caretOffsetBtn2'));
       await btn.click();
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let caretText = await driver.findComponent(BY.key('caretOffsetText2'));
       let text = await caretText.getText();
       expect(text).assertEqual('Index0');
@@ -218,7 +217,7 @@ export default function textInputJsunit3() {
      */
     it('textInputTest10', 0, async (done: Function) => {
       console.info('[textInputTest10] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -234,12 +233,12 @@ export default function textInputJsunit3() {
       } catch (err) {
         console.log("[textInputTest10] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let driver = UiDriver.create();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn = await driver.findComponent(BY.key('caretOffsetBtn2'));
       await btn.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let caretText = await driver.findComponent(BY.key('caretOffsetText2'));
       let text = await caretText.getText();
       expect(text).assertEqual('Index9');
@@ -253,7 +252,7 @@ export default function textInputJsunit3() {
      */
     it('textInputTest11', 0, async (done: Function) => {
       console.info('[textAreaTest13] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -269,12 +268,12 @@ export default function textInputJsunit3() {
       } catch (err) {
         console.log("[textInputTest11] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let driver = UiDriver.create();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn = await driver.findComponent(BY.key('caretOffsetBtn2'));
       await btn.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let caretText = await driver.findComponent(BY.key('caretOffsetText2'));
       let text = await caretText.getText();
       expect(text).assertEqual('Index10');

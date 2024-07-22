@@ -20,7 +20,7 @@ class BasicDataSource implements IDataSource {
     return 0;
   }
 
-  public getData(index:number): unknown {
+  public getData(index:number): string | undefined {
     return undefined;
   }
 
@@ -71,13 +71,13 @@ class BasicDataSource implements IDataSource {
 }
 
 class MyDataSourceImag extends  BasicDataSource {
-  private dataArray: String[] = ['/path/image0','/path/image1','/path/image2','/path/image3'];
+  private dataArray: string[] = ['/path/image0','/path/image1','/path/image2','/path/image3'];
 
   public totalCount(): number {
     return this.dataArray.length
   }
 
-  public getData(index: number): unknown {
+  public getData(index: number): string | undefined {
     return this.dataArray[index];
   }
 
@@ -104,7 +104,7 @@ struct MyComponentImag{
         ListItem(){
           ReusableChildComponent({item: item})
         }
-      }, item => item)
+      }, (item: string) => item)
     }
     .width('100%')
     .height('100%')
@@ -116,7 +116,7 @@ struct MyComponentImag{
 struct ReusableChildComponent {
   @State item: string = ''
 
-  aboutToReuse(params) {
+  aboutToReuse(params: ESObject) {
     this.item = params.item;
   }
 

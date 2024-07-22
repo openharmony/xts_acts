@@ -14,13 +14,13 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/utils/Common';
+import CommonFunc from '../../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver} from '@ohos.UiTest';
 export default function SetOpacityJsunit() {
-  describe('SetOpacityJsunit', function () {
-    beforeEach(async function (done) {
+  describe('SetOpacityJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("SetOpacityJsunit beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/RenderNode/renderNode001/SetOpacity",
       }
       try {
@@ -39,7 +39,7 @@ export default function SetOpacityJsunit() {
       console.info("SetOpacityJsunit beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("SetOpacityJsunit after each called");
     });
@@ -51,7 +51,7 @@ export default function SetOpacityJsunit() {
      * @tc.type
     * @tc.size
      */
-    it('SetOpacityJsunit_001', 0, async function (done) {
+    it('SetOpacityJsunit_001', 0, async (done: Function) => {
       console.info('[SetOpacityJsunit_001] START');
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
@@ -59,7 +59,7 @@ export default function SetOpacityJsunit() {
       await set.click()
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('Opacity_status');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[SetOpacityJsunit_001] component obj is: " + JSON.stringify(obj));
       console.info("[SetOpacityJsunit_001] component content is: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual("setOpacityStatus:0.5");

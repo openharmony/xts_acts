@@ -12,17 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import router from '@system.router';
+import router from '@ohos.router';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import Utils from '../Utils'
+import CommonFunc from '../../../MainAbility/common/Common';
 import { Driver, ON } from '@ohos.UiTest';
 
 export default function tabsDemo() {
-  describe('tabsDemo', function () {
-    beforeEach(async function (done) {
+  describe('tabsDemo', () => {
+    beforeEach(async (done: Function) => {
       console.info("tabsDemo beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/text/TextApi/tabsDemo',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/text/TextApi/tabsDemo',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function tabsDemo() {
         if (!("tabsDemo" == pages.name)) {
           console.info("get tabsDemo state success " + JSON.stringify(pages.name));
           let result = await router.push(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push tabsDemo page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -40,8 +40,8 @@ export default function tabsDemo() {
       done()
     });
 
-    afterEach(async function () {
-      await Utils.sleep(1000);
+    afterEach(async () => {
+      await CommonFunc.sleep(1000);
       console.info("tabsDemo after each called");
     });
 
@@ -51,19 +51,19 @@ export default function tabsDemo() {
      * @tc.desc        Tabs customContentTransition test
      * @tc.level       Level 2
      */
-    it('tabsDemo_001', 0, async function (done) {
+    it('tabsDemo_001', 0, async (done: Function) => {
       console.info('[tabsDemo_001] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
 
       let driver= Driver.create();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn = await driver.findComponent(ON.text('Yellow'));
       await btn.click()
-      await Utils.sleep(4000);
+      await CommonFunc.sleep(4000);
 
       let strJson = getInspectorByKey('tabsDemo_text1');
-      let obj = JSON.parse(strJson);
-      await Utils.sleep(1000);
+      let obj: ESObject = JSON.parse(strJson);
+      await CommonFunc.sleep(1000);
       console.info("[tabsDemo_001] obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('456');
 

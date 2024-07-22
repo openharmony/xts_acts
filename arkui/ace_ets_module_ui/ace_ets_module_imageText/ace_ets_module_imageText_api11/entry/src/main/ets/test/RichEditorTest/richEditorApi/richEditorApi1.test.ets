@@ -19,10 +19,10 @@ import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 
 export default function richEditorApi1() {
-  describe('richEditorApi1', function () {
-    beforeEach(async function (done) {
+  describe('richEditorApi1', () => {
+    beforeEach(async (done: Function) => {
       console.info("richEditorApi1 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/RichEditor/richEditorApi/richEditorApi1',
       }
       try {
@@ -41,7 +41,7 @@ export default function richEditorApi1() {
       console.info("richEditorApi1 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("richEditorApi1 after each called");
     });
@@ -53,7 +53,7 @@ export default function richEditorApi1() {
      * @tc.type
     * @tc.size
      */
-    it('richEditorApi1_0100', 0, async function (done) {
+    it('richEditorApi1_0100', 0, async (done: Function) => {
       console.info('[richEditorApi1_0100] START');
       await CommonFunc.sleep(2000);
 
@@ -81,7 +81,7 @@ export default function richEditorApi1() {
       await CommonFunc.sleep(1000);
 
       let text1 = getInspectorByKey('richEditorApi1_text1');
-      let Obj1 = JSON.parse(text1);
+      let Obj1: ESObject = JSON.parse(text1);
       expect(Obj1.$attrs.content).assertEqual('222');
 
       console.info('[testRichEditor_0100] END');

@@ -14,7 +14,7 @@
  */
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import router from '@ohos.router';
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function TextStateJsunit() {
   describe('TextStateJsunit', () => {
@@ -29,7 +29,7 @@ export default function TextStateJsunit() {
         if (!("TextState" == pages.name)) {
           console.info("get TextState state pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push TextState page result:" + JSON.stringify(result));
         }
       } catch (err) {

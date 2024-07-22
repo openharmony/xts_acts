@@ -13,7 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {MessageManager,Callback} from '../../utils/MessageManager';
+import { MessageManager, Callback } from '../../common/MessageManager';
+
+interface msgObj {
+  width: number;
+  height: number
+} 
+
 @Entry
 @Component
 struct ImageExample3 {
@@ -37,7 +43,7 @@ struct ImageExample3 {
     globalThis.value = {
       name:'messageManager',message:this.messageManager
     }
-    let callback:Callback = (message:any) => {
+    let callback: Callback = (message: ESObject) => {
       console.error('message = ' + message.name + "--" + message.value)
       if (message.name == 'imageName') {
           this.imageName = message.value
@@ -62,7 +68,7 @@ struct ImageExample3 {
             .objectFit(ImageFit.Cover)
             .height(180).width(180)
             // 图片加载完成后，获取图片尺寸。
-            .onComplete((msg: { width: number,height: number }) => {
+            .onComplete((msg: msgObj) => {
               this.widthValue = msg.width
               this.heightValue = msg.height
               this.m1 = "complete"

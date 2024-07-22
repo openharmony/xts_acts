@@ -43,7 +43,7 @@ struct PlayModeExample {
             console.info("button start to emit action state");
             events_emitter.emit(backEvent, backData);
           } catch (err) {
-            console.info("button emit action state err: " + JSON.stringify(err.message));
+            console.info("button emit action state err: " + JSON.stringify((err as Error)?.message));
           }
         })
     }

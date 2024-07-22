@@ -14,7 +14,7 @@
  */
 import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from '../../../MainAbility/common/Utils'
+import CommonFunc from '../../../MainAbility/common/Common'
 
 export default function TextStyle2() {
   describe('TextStyle2', () => {
@@ -30,7 +30,7 @@ export default function TextStyle2() {
         if (!("TextStyle2" == pages.name)) {
           console.info("get TextStyle pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push TextStyle page result:" + JSON.stringify(result));
         }
       } catch (err) {
@@ -40,7 +40,7 @@ export default function TextStyle2() {
       done();
     });
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("TextStyle after each called");
     });
 
@@ -56,7 +56,7 @@ export default function TextStyle2() {
     it('TextStyle_0001', 0, async (done: Function) => {
 
       console.info('[TextStyle_0001] START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let text1 = getInspectorByKey('buttonStyle');
       expect(JSON.parse(text1).$attrs.buttonStyle).assertEqual('ButtonStyleMode.EMPHASIZED');
       console.info('[TextStyle_0001] END');

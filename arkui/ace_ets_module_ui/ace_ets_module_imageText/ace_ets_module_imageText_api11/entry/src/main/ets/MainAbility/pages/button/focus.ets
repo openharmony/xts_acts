@@ -85,8 +85,8 @@ struct FocusableExample {
   private stateChangCallBack = (eventData: events_emitter.EventData) => {
     if (eventData != null) {
       console.info("focus page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.focusable != null) {
-        this.focusable1 = eventData.data.focusable;
+      if (eventData.data?.focusable != null) {
+        this.focusable1 = eventData.data?.focusable;
       }
     }
   }
