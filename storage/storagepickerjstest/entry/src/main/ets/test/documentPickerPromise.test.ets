@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2023 Huawei Device Co., Ltd.
+ * Copyright (C) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -22,6 +22,7 @@ export default function documentPickerPromise(abilityContext: Context) {
     afterEach(async () => {
       await sleep(500);
       await startAbility('ohos.acts.storage.picker', 'com.example.myapplication.MainAbility');
+      await stopAbility('com.huawei.hmos.filemanager');
       await stopAbility('com.ohos.filepicker');
       await sleep(500);
     })
