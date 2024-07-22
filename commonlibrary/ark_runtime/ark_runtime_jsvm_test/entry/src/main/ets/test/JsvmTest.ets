@@ -6182,7 +6182,10 @@ instanceOf(obj, Person);
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0455
      * @tc.name      JsvmTest0455
-     * @tc.desc      JsvmTest
+     * @tc.desc      Test the function of the OH_JSVM_CreateMap interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
      */
     it('JsvmTest0455', 0, function () {
       let script: string = `
@@ -6194,7 +6197,10 @@ instanceOf(obj, Person);
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0456
      * @tc.name      JsvmTest0456
-     * @tc.desc      JsvmTest
+     * @tc.desc      Test the function of the OH_JSVM_CreateMap interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
      */
     it('JsvmTest0456', 0, function () {
       let script: string = `
@@ -6207,7 +6213,10 @@ instanceOf(obj, Person);
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0457
      * @tc.name      JsvmTest0457
-     * @tc.desc      JsvmTest
+     * @tc.desc      Test the function of the OH_JSVM_CreateMap interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
      */
     it('JsvmTest0457', 0, function () {
       let script: string = `
@@ -6223,7 +6232,10 @@ instanceOf(obj, Person);
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0458
      * @tc.name      JsvmTest0458
-     * @tc.desc      JsvmTest
+     * @tc.desc      Test the function of the OH_JSVM_CreateMap interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
      */
     it('JsvmTest0458', 0, function () {
       let script: string = `
@@ -6239,7 +6251,10 @@ instanceOf(obj, Person);
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0459
      * @tc.name      JsvmTest0459
-     * @tc.desc      JsvmTest
+     * @tc.desc      Test the function of the OH_JSVM_CreateMap interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
      */
     it('JsvmTest0459', 0, function () {
       let script: string = `
@@ -6255,7 +6270,10 @@ instanceOf(obj, Person);
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0460
      * @tc.name      JsvmTest0460
-     * @tc.desc      JsvmTest
+     * @tc.desc      Test the function of the OH_JSVM_CreateMap interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
      */
     it('JsvmTest0460', 0, function () {
       let script: string = `
@@ -6270,9 +6288,12 @@ instanceOf(obj, Person);
       expect(result).assertEqual(false);
     });
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0461
-     * @tc.name JsvmTest0461
-     * @tc.desc JsvmTest
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0461
+     * @tc.name      JsvmTest0461
+     * @tc.desc      Test the function of the OH_JSVM_CoerceToBigInt interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
      */
     it('JsvmTest0461', 0, function () {
       let script: string = `
@@ -6282,9 +6303,12 @@ instanceOf(obj, Person);
       expect(result).assertTrue();
     });
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0462
-     * @tc.name JsvmTest0462
-     * @tc.desc JsvmTest
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0462
+     * @tc.name      JsvmTest0462
+     * @tc.desc      Test the function of the OH_JSVM_CoerceToBigInt interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
      */
     it('JsvmTest0462', 0, function () {
       let script: string = `
@@ -6294,9 +6318,12 @@ instanceOf(obj, Person);
       expect(result).assertTrue();
     });
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0463
-     * @tc.name JsvmTest0463
-     * @tc.desc JsvmTest
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0463
+     * @tc.name      JsvmTest0463
+     * @tc.desc      Test the function of the OH_JSVM_CoerceToBigInt interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
      */
     it('JsvmTest0463', 0, function () {
       let script: string = `
@@ -6306,9 +6333,12 @@ instanceOf(obj, Person);
       expect(result).assertTrue();
     });
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0464
-     * @tc.name JsvmTest0464
-     * @tc.desc JsvmTest
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0464
+     * @tc.name      JsvmTest0464
+     * @tc.desc      Test the function of the OH_JSVM_CoerceToBigInt interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
      */
     it('JsvmTest0464', 0, function () {
       let script: string = `
@@ -6319,9 +6349,12 @@ instanceOf(obj, Person);
       expect(result).assertTrue();
     });
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0465
-     * @tc.name JsvmTest0465
-     * @tc.desc JsvmTest
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0465
+     * @tc.name      JsvmTest0465
+     * @tc.desc      Test the function of the OH_JSVM_IsRegExp interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
      */
     it('JsvmTest0465', 0, function () {
       let script: string = `
@@ -6332,9 +6365,12 @@ instanceOf(obj, Person);
       expect(result).assertTrue();
     });
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0466
-     * @tc.name JsvmTest0466
-     * @tc.desc JsvmTest
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0466
+     * @tc.name      JsvmTest0466
+     * @tc.desc      Test the function of the OH_JSVM_IsRegExp interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
      */
     it('JsvmTest0466', 0, function () {
       let script: string = `
@@ -6345,9 +6381,12 @@ instanceOf(obj, Person);
       expect(result).assertFalse();
     });
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0467
-     * @tc.name JsvmTest0467
-     * @tc.desc JsvmTest
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0467
+     * @tc.name      JsvmTest0467
+     * @tc.desc      Test the function of the OH_JSVM_IsRegExp interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
      */
     it('JsvmTest0467', 0, function () {
       let script: string = `
@@ -6357,9 +6396,12 @@ instanceOf(obj, Person);
       expect(result).assertFalse();
     });
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0468
-     * @tc.name JsvmTest0468
-     * @tc.desc JsvmTest
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0468
+     * @tc.name      JsvmTest0468
+     * @tc.desc      Test the function of the OH_JSVM_IsRegExp interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
      */
     it('JsvmTest0468', 0, function () {
       let script: string = `
@@ -6369,9 +6411,12 @@ instanceOf(obj, Person);
       expect(result).assertFalse();
     });
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0469
-     * @tc.name JsvmTest0469
-     * @tc.desc JsvmTest
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0469
+     * @tc.name      JsvmTest0469
+     * @tc.desc      Test the function of the OH_JSVM_IsRegExp interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
      */
     it('JsvmTest0469', 0, function () {
       let script: string = `
@@ -6381,9 +6426,12 @@ instanceOf(obj, Person);
       expect(result).assertFalse();
     });
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0470
-     * @tc.name JsvmTest0470
-     * @tc.desc JsvmTest
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0470
+     * @tc.name      JsvmTest0470
+     * @tc.desc      Test the function of the OH_JSVM_IsRegExp interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
      */
     it('JsvmTest0470', 0, function () {
       let script: string = `
@@ -6393,9 +6441,12 @@ instanceOf(obj, Person);
       expect(result).assertFalse();
     });
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0471
-     * @tc.name JsvmTest0471
-     * @tc.desc JsvmTest
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0471
+     * @tc.name      JsvmTest0471
+     * @tc.desc      Test the function of the OH_JSVM_IsRegExp interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
      */
     it('JsvmTest0471', 0, function () {
       let script: string = `
@@ -6405,9 +6456,12 @@ instanceOf(obj, Person);
       expect(result).assertFalse();
     });
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0472
-     * @tc.name JsvmTest0472
-     * @tc.desc JsvmTest
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0472
+     * @tc.name      JsvmTest0472
+     * @tc.desc      Test the function of the OH_JSVM_IsRegExp interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
      */
     it('JsvmTest0472', 0, function () {
       let script: string = `
@@ -6417,9 +6471,12 @@ instanceOf(obj, Person);
       expect(result).assertFalse();
     });
     /**
-     * @tc.number SUB_ACE_BASIC_ETS_JSVM_0473
-     * @tc.name JsvmTest0473
-     * @tc.desc JsvmTest
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0473
+     * @tc.name      JsvmTest0473
+     * @tc.desc      Test the function of the OH_JSVM_IsRegExp interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
      */
     it('JsvmTest0473', 0, function () {
       let script: string = `
@@ -6432,7 +6489,10 @@ instanceOf(obj, Person);
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0474
      * @tc.name      JsvmTest0474
-     * @tc.desc      JsvmTest
+     * @tc.desc      Test the function of the OH_JSVM_CompileScriptWithOptions interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
      */
     it('JsvmTest0474', 0, async function (done) {
         let rst = napitest.testCompileWithOption();
@@ -6444,7 +6504,10 @@ instanceOf(obj, Person);
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0475
      * @tc.name      JsvmTest0475
-     * @tc.desc      JsvmTest
+     * @tc.desc      Test the functions of the OH_JSVM_RetainScript and OH_JSVM_ReleaseScript interfaces.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
      */
     it('JsvmTest0475', 0, async function (done) {
         let rst = napitest.testRetainScript();
@@ -6456,7 +6519,10 @@ instanceOf(obj, Person);
     /**
      * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0476
      * @tc.name      JsvmTest0476
-     * @tc.desc      JsvmTest
+     * @tc.desc      Test the function of the OH_JSVM_OpenInspectorWithName interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
      */
     it('JsvmTest0476', 0, async function (done) {
         let rst = napitest.testOpenInspectorWithName();

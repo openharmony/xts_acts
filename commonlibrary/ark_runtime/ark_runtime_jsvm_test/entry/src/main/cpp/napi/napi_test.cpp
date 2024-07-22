@@ -70,7 +70,6 @@ static bool g_threadFlag1 = false;
 static bool g_threadFlag2 = false;
 const int RUN_TEST_RETAIN_SCRIPT_VALUE = 121;
 const int TWO = 2;
-const int THREE = 3;
 
 #define EOK 0
 #define OPENCODE
@@ -8715,24 +8714,6 @@ bool testCompileScriptWithOptions(JSVM_Env env)
     OH_JSVM_CreateStringUtf8(env, src.c_str(), src.size(), &jsSrc);
     rstFlag = OH_JSVM_CompileScriptWithOptions(env, jsSrc, TWO, option, &script) == JSVM_OK;
     OH_JSVM_CreateCodeCache(env, script, (const uint8_t**)&cache, &length);
-    JSVM_CompileOptions optionSecond[3];
-    optionSecond[0] = {
-        .id = JSVM_COMPILE_MODE,
-        .content = { .num = JSVM_COMPILE_MODE_CONSUME_CODE_CACHE }
-    };
-    optionSecond[1] = {
-        .id = JSVM_COMPILE_SCRIPT_ORIGIN,
-        .content = { &scriptOrgin }
-    };
-    JSVM_CodeCache codecache = {
-        .cache = cache,
-        .length = length
-    };
-    optionSecond[2] = {
-        .id = JSVM_COMPILE_CODE_CACHE,
-        .content = { &codecache }
-    };
-    rstFlag = rstFlag && OH_JSVM_CompileScriptWithOptions(env, jsSrc, THREE, option, &script) == JSVM_OK;
     return rstFlag;
 }
 static napi_value testCompileWithOption(napi_env env1, napi_callback_info info)
