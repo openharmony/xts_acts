@@ -41,7 +41,7 @@ export default function PowerPermissionTest() {
 
     /*
      * @tc.number  PowerPermissionTest_0100
-     * @tc.name   power.rebootDevice
+     * @tc.name   testPowerPermissionTest_0100
      * @tc.desc    Function test
      * @tc.level: Level 3
      * @tc.type: Function

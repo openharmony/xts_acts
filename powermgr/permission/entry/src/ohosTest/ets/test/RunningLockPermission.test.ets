@@ -42,7 +42,7 @@ export default function RunningLockPermissionTest() {
 
     /*
      * @tc.number  RunningLockPermissionTest_0100
-     * @tc.name   Create a RunningLock lock (callback)
+     * @tc.name   testRunningLockPermissionTest_0100
      * @tc.desc    Function test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -65,7 +65,7 @@ export default function RunningLockPermissionTest() {
 
     /*
      * @tc.number  RunningLockPermissionTest_0200
-     * @tc.name   Create a RunningLock lock (then)
+     * @tc.name   testRunningLockPermissionTest_0200
      * @tc.desc    Function test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -97,7 +97,7 @@ export default function RunningLockPermissionTest() {
 
     /*
      * @tc.number  RunningLockPermissionTest_0300
-     * @tc.name   test hold RunningLock
+     * @tc.name   testRunningLockPermissionTest_0300
      * @tc.desc    Function test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -128,7 +128,7 @@ export default function RunningLockPermissionTest() {
 
     /*
      * @tc.number  RunningLockPermissionTest_0400
-     * @tc.name   Release RunningLock
+     * @tc.name   testRunningLockPermissionTest_0400
      * @tc.desc    Function test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -158,7 +158,7 @@ export default function RunningLockPermissionTest() {
 
     /*
      * @tc.number  RunningLockPermissionTest_0500
-     * @tc.name   Create a RunningLock lock (callback)
+     * @tc.name   testRunningLockPermissionTest_0500
      * @tc.desc    Function test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -182,7 +182,7 @@ export default function RunningLockPermissionTest() {
 
     /*
      * @tc.number  RunningLockPermissionTest_0600
-     * @tc.name   Create a RunningLock lock (then)
+     * @tc.name   testRunningLockPermissionTest_0600
      * @tc.desc    Function test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -215,7 +215,7 @@ export default function RunningLockPermissionTest() {
 
     /*
      * @tc.number  RunningLockPermissionTest_0700
-     * @tc.name   test hold RunningLock
+     * @tc.name   testRunningLockPermissionTest_0700
      * @tc.desc    Function test
      * @tc.level: Level 3
      * @tc.type: Function
@@ -246,7 +246,7 @@ export default function RunningLockPermissionTest() {
 
     /*
      * @tc.number  RunningLockPermissionTest_0800
-     * @tc.name   Release RunningLock
+     * @tc.name   testRunningLockPermissionTest_0800
      * @tc.desc    Function test
      * @tc.level: Level 3
      * @tc.type: Function
