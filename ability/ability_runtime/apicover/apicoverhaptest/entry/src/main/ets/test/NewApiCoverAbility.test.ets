@@ -23,29 +23,40 @@ function sleep(time: number) {
   return new Promise<void>((resolve) => setTimeout(resolve, time));
 }
 
-let observer: errorManager.LoopObserver = {
-  onLoopTimeOut(timeout: number) {
-    console.log('Duration timeout: ' + timeout);
-  }
-};
-
 export default function NewApiCoverTest() {
   describe('NewApiCoverTestTest', () => {
-    beforeAll(async (done) => {
-      errorManager.on("loopObserver", 1, observer);
-      done();
-    })
-
-    afterAll(async (done) => {
-      errorManager.off("loopObserver");
-      done();
-    })
-
     afterEach(async (done: Function) => {
       setTimeout(() => {
         done();
       }, 2500);
     })
+
+    /*
+     * @tc.number  SUB_AA_ReisterLoopObserver_0100
+     * @tc.name    Test ReisterLoopObserver.
+     * @tc.desc    Function test
+     * @tc.level   3
+     */
+    it('SUB_AA_ReisterLoopObserver_0100', 0, async (done: Function) => {
+      console.info("SUB_AA_ReisterLoopObserver_0100 start");
+      try {
+        let observer: errorManager.LoopObserver = {
+          onLoopTimeOut(timeout: number) {
+            console.info('Duration timeout: ' + timeout);
+          }
+        };
+        errorManager.on("loopObserver", 1, observer);
+        setTimeout(() => {
+          done();
+        }, 2500);
+        errorManager.off("loopObserver");
+        done();
+      } catch (error) {
+        console.info("SUB_AA_ReisterLoopObserver_0100 error: " + JSON.stringify(error));
+        expect(error.code == 16200001).assertTrue();
+        done();
+      }
+    });
 
     /*
      * @tc.number  SUB_AA_ReisterErrorObserver_New_0100
