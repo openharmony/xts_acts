@@ -12,13 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-{
-  "app": {
-    "bundleName": "com.example.mypowerappnop",
-    "vendor": "example",
-    "versionCode": 1000000,
-    "versionName": "1.0.0",
-    "icon": "$media:app_icon",
-    "label": "$string:app_name"
-  }
+import PowerPermissionTest from './PowerPermission.test';
+import RunningLockPermissionTest from './RunningLockPermission.test';
+
+export default function testsuite() {
+  RunningLockPermissionTest();
+  PowerPermissionTest();
 }
