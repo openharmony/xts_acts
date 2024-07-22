@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 import { AsyncCallback } from '@ohos.base'
-import { sleep, startAbility, stopAbility } from './Common'
+import { sleep, startAbility } from './Common'
 import picker from '@ohos.file.picker'
 import { afterEach, describe, expect, it } from 'deccjsunit/index'
 
@@ -120,8 +120,6 @@ export default function audioPickerCallback(abilityContext: Context) {
     afterEach(async () => {
       await sleep(500);
       await startAbility('ohos.acts.storage.picker', 'com.example.myapplication.MainAbility');
-      await stopAbility('com.huawei.hms.musicservice');
-      await stopAbility('com.ohos.filepicker');
       await sleep(500);
     });
 

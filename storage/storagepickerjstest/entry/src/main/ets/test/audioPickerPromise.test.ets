@@ -14,7 +14,7 @@
  */
 
 import { afterEach, describe, expect, it } from 'deccjsunit/index';
-import { sleep, startAbility, stopAbility } from './Common';
+import { sleep, startAbility } from './Common';
 import picker from '@ohos.file.picker';
 
 export default function audioPickerPromise(abilityContext: Context) {
@@ -22,8 +22,6 @@ export default function audioPickerPromise(abilityContext: Context) {
     afterEach(async () => {
       await sleep(500);
       await startAbility('ohos.acts.storage.picker', 'com.example.myapplication.MainAbility');
-      await stopAbility('com.huawei.hms.musicservice');
-      await stopAbility('com.ohos.filepicker');
       await sleep(500);
     });
 
