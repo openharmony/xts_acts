@@ -52,7 +52,7 @@ export default function Bgde_InactiveColor_APITest() {
       await CommonFunc.sleep(1000);
       let bgde_inactiveColor = getInspectorByKey('bgde_inactiveColor');
       console.info("[Bgde_InactiveColor_APITest_0100] Tabs bgde_inactiveColor attrs is: " + JSON.stringify(JSON.parse(bgde_inactiveColor).$attrs));
-      expect(JSON.parse(bgde_inactiveColor).$attrs.backgroundEffect.options.Bgde_InactiveColor).assertEqual('#21a1dd');
+      expect(JSON.parse(bgde_inactiveColor).$attrs.backgroundEffect.options.inactiveColor).assertEqual('#FF21A1DD');
       console.info('[Bgde_InactiveColor_APITest_0100] END');
       done();
     });

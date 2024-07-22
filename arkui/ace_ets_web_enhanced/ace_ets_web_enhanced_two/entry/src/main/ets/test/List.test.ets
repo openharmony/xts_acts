@@ -49,9 +49,11 @@ import webDownloadEnumTest from './WebDownloadEnumTest.test'
 import webSecureDnsModeEnumTest from './WebSecureDnsModeEnumTest.test'
 import webViewControllerDownloadNetworkTest from './WebViewControllerDownloadNetworkTest.test'
 import webViewControllerDownloadFileTest from './WebViewControllerDownloadFileTest.test'
+import WebkeyboardAvoidMode from './WebkeyboardAvoidMode.test'
 
 export default function testsuite() {
   webViewControllerPart3Test()
+  WebkeyboardAvoidMode()
   WebViewEnumAndFontLibraryTwo()
   webOnBeforeUnload()
   webOnInterceptRequestTest()

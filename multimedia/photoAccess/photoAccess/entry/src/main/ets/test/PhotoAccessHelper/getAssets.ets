@@ -14,17 +14,17 @@
  */
 
 import photoAccessHelper from '@ohos.file.photoAccessHelper'
-import { describe, it, expect } from 'deccjsunit/index'
+import { describe, it, expect } from '@ohos/hypium'
 import {
   photoKeys,
   fetchOption,
 } from '../../../../../../../common'
 
 export default function getAssetsTest () {
-  describe('getAssetsTest', function () {
-    const helper = photoAccessHelper.getPhotoAccessHelper(globalThis.abilityContext)
+  describe('getAssetsTest', () => {
+    const helper = photoAccessHelper.getPhotoAccessHelper(globalThis.abilityContext);
 
-    function getAssetsCallbackTest (done, testNum, fetchOps, expectCount) {
+    const getAssetsCallbackTest = async (done: Function, testNum: string, fetchOps: photoAccessHelper.FetchOptions, expectCount: number) => {
       try {
         helper.getAssets(fetchOps, (err, fetchResult) => {
           try {
@@ -39,7 +39,7 @@ export default function getAssetsTest () {
             console.info(`${testNum} getAssets failed; error: ${error}`);
           }
           done();
-        })
+        });
       } catch (error) {
         console.info(`${testNum} failed; error: ${error}`);
         expect(false).assertTrue();
@@ -47,7 +47,8 @@ export default function getAssetsTest () {
       }
     }
 
-    function getAssetsAbnormalCallbackTest (done, testNum, fetchOps) {
+    const getAssetsAbnormalCallbackTest = async (done: Function, testNum: string,
+      fetchOps: photoAccessHelper.FetchOptions | undefined) => {
       try {
         helper.getAssets(fetchOps, (err, fetchResult) => {
           try {
@@ -63,14 +64,15 @@ export default function getAssetsTest () {
             console.info(`${testNum} getAssets failed; error: ${error}`);
           }
           done();
-        })
+        });
       } catch (error) {
         console.info(`${testNum} failed; error: ${error}`);
         done();
       }
     }
 
-    async function getAssetsPromiseTest (done, testNum, fetchOps, expectCount) {
+    const getAssetsPromiseTest = async (done: Function, testNum: string, fetchOps: photoAccessHelper.FetchOptions,
+      expectCount: number) => {
       try {
         const fetchResult = await helper.getAssets(fetchOps);
         expect(fetchResult.getCount()).assertEqual(expectCount);
@@ -83,7 +85,8 @@ export default function getAssetsTest () {
       }
     }
 
-    async function getAssetsAbnormalPromiseTest (done, testNum, fetchOps) {
+    const getAssetsAbnormalPromiseTest = async (done: Function, testNum: string,
+      fetchOps: photoAccessHelper.FetchOptions | undefined) => {
       try {
         await helper.getAssets(fetchOps);
         expect(false).assertTrue();
@@ -93,7 +96,7 @@ export default function getAssetsTest () {
         done();
       }
     }
-    
+
     //image
     //callback
     /**
@@ -104,13 +107,12 @@ export default function getAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getAssets_callback_000', 0, async function (done) {
+    it('getAssets_callback_000', 0, async (done: Function) => {
       const testNum = 'getAssets_callback_000';
       const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
       const expectCount = 1;
       await getAssetsCallbackTest(done, testNum, fetchOps, expectCount);
     });
-
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_GET_ASSETS_0100
      * @tc.name      : getAssets_callback_001
@@ -119,13 +121,12 @@ export default function getAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getAssets_callback_001', 0, async function (done) {
+    it('getAssets_callback_001', 0, async (done: Function) => {
       const testNum = 'getAssets_callback_001';
       const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, '666');
       const expectCount = 0;
       await getAssetsCallbackTest(done, testNum, fetchOps, expectCount);
     });
-
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_CALLBACK_GET_ASSETS_0300
      * @tc.name      : getAssets_callback_003
@@ -134,11 +135,10 @@ export default function getAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getAssets_callback_003', 2, async function (done) {
+    it('getAssets_callback_003', 2, async (done: Function) => {
       const testNum = 'getAssets_callback_003';
       await getAssetsAbnormalCallbackTest(done, testNum, undefined);
     });
-
     //promise
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_GET_ASSETS_0000
@@ -148,13 +148,12 @@ export default function getAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getAssets_promise_000', 0, async function (done) {
+    it('getAssets_promise_000', 0, async (done: Function) => {
       const testNum = 'getAssets_promise_000';
       const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, '01.jpg');
       const expectCount = 1;
       await getAssetsPromiseTest(done, testNum, fetchOps, expectCount);
     });
-
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_GET_ASSETS_0100
      * @tc.name      : getAssets_promise_001
@@ -163,13 +162,12 @@ export default function getAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getAssets_promise_001', 0, async function (done) {
+    it('getAssets_promise_001', 0, async (done: Function) => {
       const testNum = 'getAssets_promise_001';
       const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, '666');
       const expectCount = 0;
       await getAssetsPromiseTest(done, testNum, fetchOps, expectCount);
     });
-
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_GET_ASSETS_0300
      * @tc.name      : getAssets_promise_003
@@ -178,11 +176,10 @@ export default function getAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 2
      */
-    it('getAssets_promise_003', 2, async function (done) {
+    it('getAssets_promise_003', 2, async (done: Function) => {
       const testNum = 'getAssets_promise_003';
       await getAssetsAbnormalPromiseTest(done, testNum, undefined);
     });
-
     //video
     //callback
     /**
@@ -193,13 +190,12 @@ export default function getAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getAssets_callback_004', 0, async function (done) {
+    it('getAssets_callback_004', 0, async (done: Function) => {
       const testNum = 'getAssets_callback_004';
       const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
       const expectCount = 1;
       await getAssetsCallbackTest(done, testNum, fetchOps, expectCount);
     });
-
     //promise
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_PROMISE_GET_ASSETS_0400
@@ -209,7 +205,7 @@ export default function getAssetsTest () {
      * @tc.type      : Function
      * @tc.level     : Level 0
      */
-    it('getAssets_promise_004', 0, async function (done) {
+    it('getAssets_promise_004', 0, async (done: Function) => {
       const testNum = 'getAssets_promise_004';
       const fetchOps = fetchOption(testNum, photoKeys.DISPLAY_NAME, '01.mp4');
       const expectCount = 1;

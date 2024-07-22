@@ -350,3 +350,13 @@ export function errorManageTest() {
   };
   errorManager.on("unhandledRejection", observer);
 }
+
+export function dealHashMapTest(hashMap:HashMap<string, number>) {
+  "use concurrent"
+  hashMap.set('a', 123);
+  return hashMap;
+}
+
+export function noUseConcurrentTest(arg:string) {
+  return arg;
+}

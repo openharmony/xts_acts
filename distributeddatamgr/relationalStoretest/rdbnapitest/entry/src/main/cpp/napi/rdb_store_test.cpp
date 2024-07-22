@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -2179,8 +2179,11 @@ static napi_value SUB_DDM_RDB_4600(napi_env env, napi_callback_info info)
     errCode = OH_Rdb_Subscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD, &briefObs);
     NAPI_ASSERT(env, errCode == RDB_OK, "sub2 failed.");
 
-    errCode = OH_Rdb_Subscribe(nullptr, RDB_SUBSCRIBE_TYPE_CLOUD, &briefObs);
+    errCode = OH_Rdb_Subscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD, nullptr);
     NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "sub3 failed.");
+
+    errCode = OH_Rdb_Subscribe(nullptr, RDB_SUBSCRIBE_TYPE_CLOUD, &briefObs);
+    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "sub4 failed.");
     
     napi_value returnCode;
     if (errCode == RDB_E_INVALID_ARGS) {
@@ -2207,8 +2210,11 @@ static napi_value SUB_DDM_RDB_4700(napi_env env, napi_callback_info info)
     errCode = OH_Rdb_Subscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, &detailObs);
     NAPI_ASSERT(env, errCode == RDB_OK, "sub2 failed.");
 
-    errCode = OH_Rdb_Subscribe(nullptr, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, &detailObs);
+    errCode = OH_Rdb_Subscribe(storeTestRdbStore_, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, nullptr);
     NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "sub3 failed.");
+    
+    errCode = OH_Rdb_Subscribe(nullptr, RDB_SUBSCRIBE_TYPE_CLOUD_DETAILS, &detailObs);
+    NAPI_ASSERT(env, errCode == RDB_E_INVALID_ARGS, "sub4 failed.");
     
     napi_value returnCode;
     if (errCode == RDB_E_INVALID_ARGS) {

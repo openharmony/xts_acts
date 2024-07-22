@@ -68,6 +68,8 @@ const double DIFF_VALUE_DATE = 1501924876711;
 static char g_dataType[32] = "";
 static bool g_threadFlag1 = false;
 static bool g_threadFlag2 = false;
+const int RUN_TEST_RETAIN_SCRIPT_VALUE = 121;
+const int TWO = 2;
 
 #define EOK 0
 #define OPENCODE
@@ -1124,7 +1126,7 @@ static napi_value testCreateData5(napi_env env1, napi_callback_info info) {
     size_t bufferSize = 128;
     size_t copied = 0;
     OH_JSVM_GetValueStringLatin1(env,description, buffer, bufferSize, &copied);
-    const char16_t *str  = u"he"; 
+    const char16_t *str  = u"he";
     JSVM_Value result4;
     OH_JSVM_CreateStringUtf16(env, str, 2, &result4);
     char16_t buffer1[128];    // 128: char16_t type of element size
@@ -1821,6 +1823,7 @@ void type_test(JSVM_Env env, JSVM_Value value)
     OH_JSVM_IsObject(env, value, &isValue);
     OH_JSVM_IsBigInt(env, value, &isValue);
     OH_JSVM_IsConstructor(env, value, &isValue);
+    OH_JSVM_IsMap(env, value, &isValue);
 }
 void type_test_Undefined(JSVM_Env env)
 {
@@ -1928,6 +1931,17 @@ void type_test_Bigint(JSVM_Env env)
 
     OH_JSVM_CloseHandleScope(env, handleScope);
 }
+void type_test_Map(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value value = nullptr;
+    OH_JSVM_CreateMap(env, &value);
+    type_test(env, value);
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
 static napi_value testValueOperation5(napi_env env1, napi_callback_info info)
 {
     JSVM_InitOptions init_options;
@@ -1969,6 +1983,7 @@ static napi_value testValueOperation5(napi_env env1, napi_callback_info info)
     type_test_Function(env);
     type_test_Object(env);
     type_test_Bigint(env);
+    type_test_Map(env);
 
     OH_JSVM_CloseEnvScope(env, envScope);
     OH_JSVM_DestroyEnv(env);
@@ -2421,6 +2436,55 @@ void prototypeof_test_6(JSVM_Env env)
     OH_JSVM_CloseHandleScope(env, handleScope);
 }
 
+void set_test_1(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+    JSVM_Status status = OH_JSVM_CreateSet(env, nullptr);
+    JSVM_ASSERT_RETURN_VOID(env, status != JSVM_OK, "OH_JSVM_CreateSet check status");
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+
+void set_test_2(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value mySet;
+    JSVM_Status status = OH_JSVM_CreateSet(env, &mySet);
+    JSVM_ASSERT_RETURN_VOID(env, status == JSVM_OK, "OH_JSVM_CreateSet check status");
+    bool isSet = false;
+    OH_JSVM_IsSet(env, mySet, &isSet);
+    JSVM_ASSERT_RETURN_VOID(env, mySet != nullptr, "OH_JSVM_CreateSet check status");
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+
+void set_test_3(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+
+    JSVM_Value mySet = nullptr;
+    bool isSet = false;
+    OH_JSVM_IsSet(env, mySet, &isSet);
+    JSVM_ASSERT_RETURN_VOID(env, !isSet, "check OH_JSVM_IsSet when not a set");
+
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+
+void set_test_4(JSVM_Env env)
+{
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+    JSVM_Status status = OH_JSVM_CreateSet(nullptr, nullptr);
+    JSVM_ASSERT_RETURN_VOID(env, status != JSVM_OK, "OH_JSVM_CreateSet check status");
+    bool isSet = false;
+    JSVM_Status status2 = OH_JSVM_IsSet(nullptr, nullptr, &isSet);
+    JSVM_ASSERT_RETURN_VOID(env, status2 != JSVM_OK, "OH_JSVM_IsSet check status");
+    OH_JSVM_CloseHandleScope(env, handleScope);
+}
+
 static napi_value testValueOperation8(napi_env env1, napi_callback_info info)
 {
     JSVM_InitOptions init_options;
@@ -2459,6 +2523,11 @@ static napi_value testValueOperation8(napi_env env1, napi_callback_info info)
     prototypeof_test_4(env);
     prototypeof_test_5(env);
     prototypeof_test_6(env);
+
+    set_test_1(env);
+    set_test_2(env);
+    set_test_3(env);
+    set_test_4(env);
 
     OH_JSVM_CloseEnvScope(env, envScope);
     OH_JSVM_DestroyEnv(env);
@@ -7441,6 +7510,32 @@ static JSVM_Value IsDetachedArraybuffer(JSVM_Env env, JSVM_CallbackInfo info)
     return isDetached;
 }
 
+static JSVM_Value IsRegExp(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    size_t argc = 1;
+    JSVM_Value args[1] = {nullptr};
+    OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
+    bool result = false;
+    OH_JSVM_IsRegExp(env, args[0], &result);
+    JSVM_Value isRegExp = nullptr;
+    OH_JSVM_GetBoolean(env, result, &isRegExp);
+    return isRegExp;
+}
+
+static JSVM_Value CoerceToBigInt(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    size_t argc = 1;
+    JSVM_Value args[1] = {nullptr};
+    OH_JSVM_GetCbInfo(env, info, &argc, args, nullptr, nullptr);
+    JSVM_Value bigInt;
+    OH_JSVM_GetUndefined(env, &bigInt);
+    JSVM_Status status = OH_JSVM_CoerceToBigInt(env, args[0], &bigInt);
+    if (status != JSVM_OK) {
+        OH_JSVM_ThrowError(env, nullptr, "Failed to coerce to bigint");
+    }
+    return bigInt;
+}
+
 static JSVM_Value CoerceToNumber(JSVM_Env env, JSVM_CallbackInfo info)
 {
     strcpy_s(g_dataType, sizeof(g_dataType), "int");
@@ -8585,6 +8680,179 @@ static JSVM_Value CreateRegExpEnvNullptr(JSVM_Env env, JSVM_CallbackInfo info)
     OH_JSVM_CreateInt32(env, static_cast<int32_t>(status), &value);
     return value;
 }
+static JSVM_Value CreateMap(JSVM_Env env, JSVM_CallbackInfo info)
+{
+    JSVM_Value returnValue = nullptr;
+    JSVM_Status status = OH_JSVM_CreateMap(env, &returnValue);
+    if (status != JSVM_OK) {
+        OH_JSVM_ThrowError(env, nullptr, "Failed to create map");
+    }
+    return returnValue;
+}
+
+bool testCompileScriptWithOptions(JSVM_Env env)
+{
+    JSVM_Value jsSrc;
+    JSVM_Script script = nullptr;
+    std::string src(R"JS(let a = 100;a = a + 21)JS");
+    uint8_t *cache;
+    size_t length;
+    JSVM_ScriptOrigin scriptOrgin {
+        .sourceMapUrl = "bundle.js.map",
+        .resourceName = "bundle.js"
+    };
+    JSVM_CompileOptions option[2];
+    option[0] = {
+        .id = JSVM_COMPILE_MODE,
+        .content = { .num = JSVM_COMPILE_MODE_EAGER_COMPILE }
+    };
+    option[1] = {
+        .id = JSVM_COMPILE_SCRIPT_ORIGIN,
+        .content = { &scriptOrgin }
+    };
+    bool rstFlag = false;
+    OH_JSVM_CreateStringUtf8(env, src.c_str(), src.size(), &jsSrc);
+    rstFlag = OH_JSVM_CompileScriptWithOptions(env, jsSrc, TWO, option, &script) == JSVM_OK;
+    OH_JSVM_CreateCodeCache(env, script, (const uint8_t**)&cache, &length);
+    return rstFlag;
+}
+static napi_value testCompileWithOption(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        return nullptr;
+    }
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        return nullptr;
+    }
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+    OH_JSVM_CreateEnv(vm, 0, nullptr, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    bool rstFlag = false;
+    rstFlag = testCompileScriptWithOptions(env);
+    OH_JSVM_CloseHandleScope(env, handlescope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_get_boolean(env1, rstFlag, &result11));
+    return result11;
+}
+
+static napi_value testRetainScript(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        return nullptr;
+    }
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        return nullptr;
+    }
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vm_scope;
+    OH_JSVM_OpenVMScope(vm, &vm_scope);
+    JSVM_Env env;
+    OH_JSVM_CreateEnv(vm, 0, nullptr, &env);
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handlescope;
+    OH_JSVM_OpenHandleScope(env, &handlescope);
+    bool result = true;
+    JSVM_Script script = nullptr;
+    JSVM_HandleScope handlescopeSub;
+    OH_JSVM_OpenHandleScope(env, &handlescopeSub);
+    std::string src(R"JS(let a = 100;a = a + 21)JS");
+
+    JSVM_Value jsSrc;
+    OH_JSVM_CreateStringUtf8(env, src.c_str(), src.size(), &jsSrc);
+    OH_JSVM_CompileScriptWithOptions(env, jsSrc, 0, nullptr, &script);
+    result = result && OH_JSVM_RetainScript(env, script) == JSVM_OK;
+    OH_JSVM_CloseHandleScope(env, handlescopeSub);
+    JSVM_Value returnValue;
+    auto runStatus = OH_JSVM_RunScript(env, script, &returnValue) == JSVM_OK;
+    OH_JSVM_ReleaseScript(env, script);
+    int runResult = 0;
+    OH_JSVM_GetValueInt32(env, returnValue, &runResult);
+    result = runStatus && runResult == RUN_TEST_RETAIN_SCRIPT_VALUE;
+    OH_JSVM_CloseHandleScope(env, handlescope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_CloseVMScope(vm, vm_scope);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_get_boolean(env1, result, &result11));
+    return result11;
+}
+
+static napi_value testOpenInspectorWithName(napi_env env1, napi_callback_info info)
+{
+    JSVM_InitOptions init_options;
+    if (memset_s(&init_options, sizeof(init_options), 0, sizeof(init_options)) != EOK) {
+        return nullptr;
+    }
+    init_options.externalReferences = externals;
+    if (aa == 0) {
+        OH_JSVM_Init(&init_options);
+        aa++;
+    }
+    JSVM_VM vm;
+    JSVM_CreateVMOptions options;
+    if (memset_s(&options, sizeof(options), 0, sizeof(options)) != EOK) {
+        return nullptr;
+    }
+
+    OH_JSVM_CreateVM(&options, &vm);
+    JSVM_VMScope vmScope;
+    OH_JSVM_OpenVMScope(vm, &vmScope);
+    JSVM_Env env;
+    OH_JSVM_CreateEnv(vm, 0, nullptr, &env);
+
+    OH_JSVM_OpenInspectorWithName(env, -1, "test");
+    JSVM_EnvScope envScope;
+    OH_JSVM_OpenEnvScope(env, &envScope);
+    JSVM_HandleScope handleScope;
+    OH_JSVM_OpenHandleScope(env, &handleScope);
+    JSVM_Value strValue = nullptr;
+    std::string src(R"JS(let a = 100;a = a + 21)JS");
+    OH_JSVM_CreateStringUtf8(env, src.c_str(), src.size(), &strValue);
+    JSVM_Script script;
+    OH_JSVM_CompileScript(env, strValue, nullptr, 0, true, nullptr, &script);
+    JSVM_Value result = nullptr;
+    OH_JSVM_RunScript(env, script, &result);
+    int runResult = 0;
+    OH_JSVM_GetValueInt32(env, result, &runResult);
+    auto resultFlag = runResult == RUN_TEST_RETAIN_SCRIPT_VALUE;
+    OH_JSVM_CloseHandleScope(env, handleScope);
+    OH_JSVM_CloseEnvScope(env, envScope);
+    OH_JSVM_CloseInspector(env);
+    OH_JSVM_CloseVMScope(vm, vmScope);
+    OH_JSVM_DestroyEnv(env);
+    OH_JSVM_DestroyVM(vm);
+    napi_value result11;
+    NAPI_CALL(env1, napi_get_boolean(env1, resultFlag, &result11));
+    return result11;
+}
 
 static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = CreateStringUtf8},
@@ -8746,6 +9014,9 @@ static JSVM_CallbackStruct param[] = {
     {.data = nullptr, .callback = CreateRegExp5},
     {.data = nullptr, .callback = CreateRegExpEnvNullptr},
     {.data = nullptr, .callback = CreateFunctionWithScript},
+    {.data = nullptr, .callback = CreateMap},
+    {.data = nullptr, .callback = IsRegExp},
+    {.data = nullptr, .callback = CoerceToBigInt},
 };
 static JSVM_PropertyDescriptor jsDescriptor[] = {
     {"createStringUtf8", nullptr, &param[0], nullptr, nullptr, nullptr, JSVM_DEFAULT},
@@ -8907,6 +9178,9 @@ static JSVM_PropertyDescriptor jsDescriptor[] = {
     {"createRegExp5", nullptr, &param[156], nullptr, nullptr, nullptr, JSVM_DEFAULT},
     {"createRegExpEnvNullptr", nullptr, &param[157], nullptr, nullptr, nullptr, JSVM_DEFAULT},
     {"createFunctionWithScript", nullptr, &param[158], nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"createMap", nullptr, &param[159], nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"isRegExp", nullptr, &param[160], nullptr, nullptr, nullptr, JSVM_DEFAULT},
+    {"coerceToBigInt", nullptr, &param[161], nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
 
 napi_typedarray_type GetArrayType(JSVM_TypedarrayType typeNum)
@@ -9445,6 +9719,9 @@ static napi_value Init(napi_env env, napi_value exports)
         {"TypedArrayTypes", nullptr, nullptr, nullptr, nullptr, typedArrayTypes, napi_default, nullptr},
         DECLARE_NAPI_FUNCTION("testMultithreadFunction", testMultithreadFunction),
         DECLARE_NAPI_FUNCTION("testJswmInterface", testJswmInterface),
+        DECLARE_NAPI_FUNCTION("testCompileWithOption", testCompileWithOption),
+        DECLARE_NAPI_FUNCTION("testRetainScript", testRetainScript),
+        DECLARE_NAPI_FUNCTION("testOpenInspectorWithName", testOpenInspectorWithName),
     };
     NAPI_CALL(env, napi_define_properties(env, exports, sizeof(properties) / sizeof(properties[0]), properties));
     return exports;

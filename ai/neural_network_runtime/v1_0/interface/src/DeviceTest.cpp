@@ -153,7 +153,7 @@ HWTEST_F(DeviceTest, SUB_AI_NNRt_Func_North_Device_DeviceName_0400, Function | M
         std::string sName(name);
         if (m_deviceName == sName) {
             isHaveName = true;
-        }  
+        }
     }
     EXPECT_EQ(isHaveName, true);
 }

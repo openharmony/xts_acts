@@ -213,5 +213,41 @@ export default function testArkUI() {
       expect(nativeFunc.testArkUI015()).assertEqual(0)
       done()
     })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI016', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI016()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI017', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI017()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI018', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI018()).assertEqual(0)
+      done()
+    })
   })
 }

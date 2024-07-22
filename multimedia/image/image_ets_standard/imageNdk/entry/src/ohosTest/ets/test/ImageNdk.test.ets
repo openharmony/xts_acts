@@ -3241,8 +3241,6 @@ export default function imageNdkTest() {
         if (parker) {
           const release: number = ndkTest.PackerRelease(parker)
           if (release != undefined) {
-            console.log('release1234567', release)
-            // hilog.info(0x0000, 'scaleTest', '%{public}s', `release success ${{release}}`)
             hilog.info(0x0000, 'scaleTest', '%{public}s', `SUB_MULTIMEDIA_IMAGE_NDK_PACKING_RELEASE_0100 success`)
             expect(true).assertTrue();
             done()

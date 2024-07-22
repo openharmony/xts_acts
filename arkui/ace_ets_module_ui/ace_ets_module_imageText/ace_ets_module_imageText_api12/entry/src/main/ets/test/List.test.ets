@@ -131,6 +131,8 @@ import imageAddApi2 from './ImageTest/imageAddApi2.test'
 import styledStringAddApi from './Text/styledStringAddApi.test'
 import textAreaPreview from './TextArea/textAreaPreview.test'
 import textInputPreview from './TextInput/textInputPreview.test'
+import RelativeContainerApi1 from './RelativeContainer/RelativeContainerApi1.test'
+import TextAddApi1 from './Text/TextAddApi1.test'
 
 export default function testsuite() {
   APIContentTypeTest();
@@ -194,6 +196,8 @@ export default function testsuite() {
   TextAreaApi2();
   TextAreaApi3();
   styledStringChange();
+  RelativeContainerApi1()
+  TextAddApi1()
 
   TextArea_lineBreakStrategyTest();
   TextArea_lineSpacingTest();

@@ -65,6 +65,131 @@ export default function SymbolGlyphApi() {
 
     });
 
+    /**
+     * @tc.number    SUB_ACE_UI_COMPONENT_SymbolGlyph_002
+     * @tc.desc      symbolEffect test of SymbolGlyph
+     * @tc.desc       : affinity Test
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+
+    it('SymbolGlyphApi_002', 0, async function (done) {
+      console.info('[SymbolGlyphApi_002] START');
+
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('SymbolGlyphApi1');
+      await CommonFunc.sleep(200);
+      let obj = JSON.parse(JSON.parse(strJson).$attrs.symbolEffect).effectType + '';
+      console.info("[SymbolGlyphApi_002] component obj is: " + JSON.stringify(obj));
+      await CommonFunc.sleep(1000);
+
+      expect(obj).assertEqual('7');
+      console.info('[SymbolGlyphApi_002] END');
+      done();
+
+    });
+
+    /**
+     * @tc.number    SUB_ACE_UI_COMPONENT_SymbolGlyph_003
+     * @tc.desc      symbolEffect test of SymbolGlyph
+     * @tc.desc       : affinity Test
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+
+    it('SymbolGlyphApi_003', 0, async function (done) {
+      console.info('[SymbolGlyphApi_003] START');
+
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('SymbolGlyphApi2');
+      await CommonFunc.sleep(200);
+      let obj = JSON.parse(JSON.parse(strJson).$attrs.symbolEffect).effectType + '';
+      console.info("[SymbolGlyphApi_003] component obj is: " + JSON.stringify(obj));
+      await CommonFunc.sleep(1000);
+
+      expect(obj).assertEqual('1');
+      console.info('[SymbolGlyphApi_003] END');
+      done();
+
+    });
+
+    /**
+     * @tc.number    SUB_ACE_UI_COMPONENT_SymbolGlyph_004
+     * @tc.desc      symbolEffect test of SymbolGlyph
+     * @tc.desc       : affinity Test
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+
+    it('SymbolGlyphApi_004', 0, async function (done) {
+      console.info('[SymbolGlyphApi_004] START');
+
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('SymbolGlyphApi3');
+      await CommonFunc.sleep(200);
+      let obj = JSON.parse(JSON.parse(strJson).$attrs.symbolEffect).effectType + '';
+      console.info("[SymbolGlyphApi_004] component obj is: " + JSON.stringify(obj));
+      await CommonFunc.sleep(1000);
+
+      expect(obj).assertEqual('3');
+      console.info('[SymbolGlyphApi_004] END');
+      done();
+
+    });
+
+    /**
+     * @tc.number    SUB_ACE_UI_COMPONENT_SymbolGlyph_005
+     * @tc.desc      symbolEffect test of SymbolGlyph
+     * @tc.desc       : affinity Test
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+
+    it('SymbolGlyphApi_005', 0, async function (done) {
+      console.info('[SymbolGlyphApi_005] START');
+
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('SymbolGlyphApi4');
+      await CommonFunc.sleep(200);
+      let obj = JSON.parse(JSON.parse(strJson).$attrs.symbolEffect).effectType + '';
+      console.info("[SymbolGlyphApi_005] component obj is: " + JSON.stringify(obj));
+      await CommonFunc.sleep(1000);
+
+      expect(obj).assertEqual('4');
+      console.info('[SymbolGlyphApi_005] END');
+      done();
+
+    });
+
+    /**
+     * @tc.number    SUB_ACE_UI_COMPONENT_SymbolGlyph_006
+     * @tc.desc      symbolEffect test of SymbolGlyph
+     * @tc.desc       : affinity Test
+     * @tc.size       : MediumTest
+     * @tc.type       : Function
+     * @tc.level      : Level 3
+     */
+
+    it('SymbolGlyphApi_006', 0, async function (done) {
+      console.info('[SymbolGlyphApi_006] START');
+
+      await CommonFunc.sleep(1000);
+      let strJson = getInspectorByKey('SymbolGlyphApi5');
+      await CommonFunc.sleep(200);
+      let obj = JSON.parse(JSON.parse(strJson).$attrs.symbolEffect).effectType + '';
+      console.info("[SymbolGlyphApi_006] component obj is: " + JSON.stringify(obj));
+      await CommonFunc.sleep(1000);
+
+      expect(obj).assertEqual('5');
+      console.info('[SymbolGlyphApi_006] END');
+      done();
+
+    });
+
 
 
 

@@ -23,7 +23,11 @@ ohos_moduletest_suite("ActsGraphicEffectFliterTest") {
   part_name = "graphic_2d"
   comPath = "../../../../../foundation/graphic/graphic_2d"
 
-  sources = [ "NativeEffectTest.cpp" ]
+  sources = [
+    "ImagePixelMapTest.cpp",
+    "NativeDisplaySoloistTest.cpp",
+    "NativeEffectTest.cpp",
+  ]
 
   cflags = [
     "-Wall",
@@ -34,6 +38,7 @@ ohos_moduletest_suite("ActsGraphicEffectFliterTest") {
   ]
 
   include_dirs = [
+    "$comPath/interfaces/inner_api/hyper_graphic_manager",
     "$comPath/rosen/modules/composer/vsync/include",
     "$comPath/interfaces/inner_api/common",
     "../../../../../foundation/graphic/graphic_2d/frameworks/surface/include",
@@ -71,6 +76,10 @@ ohos_moduletest_suite("ActsGraphicEffectFliterTest") {
     "$comPath/rosen/modules/effect/effect_ndk:native_effect_ndk",
     "$comPath/rosen/modules/effect/egl:libegl_effect",
     "$comPath/rosen/modules/effect/skia_effectChain:skeffectchain",
+    "$comPath/rosen/modules/hyper_graphic_manager/core/native_display_soloist:libnative_display_soloist",
+    "$comPath/rosen/modules/render_service_base:librender_service_base",
+    "$comPath/rosen/modules/render_service_base:render_service_base_src",
+    "$comPath/utils/test_header:test_header",
     "../../../../../foundation/multimedia/image_framework/interfaces/innerkits:image_native",
     "../../../../../foundation/multimedia/image_framework/interfaces/kits/js/common:image",
     "//third_party/googletest:gmock_main",

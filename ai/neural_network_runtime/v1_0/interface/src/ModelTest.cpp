@@ -939,7 +939,7 @@ HWTEST_F(ModelTest, SUB_AI_NNRt_Func_North_Model_GetSupportedOperation_0700, Fun
         if (m_deviceName == sName) {
             isHaveDevice = true;
             deviceId = i;
-        }  
+        }
     }
     ASSERT_EQ(isHaveDevice, true);
     size_t targetDevice = devicesID[deviceId];

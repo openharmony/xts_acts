@@ -112,7 +112,8 @@ public:
     int32_t ExportModelCache(std::vector<SharedBuffer>& modelCache) override;
     int32_t Run(const std::vector<IOTensor>& inputs, const std::vector<IOTensor>& outputs,
     std::vector<std::vector<int32_t>>& outputsDims) override;
-    int32_t GetInputDimRanges(std::vector<std::vector<uint32_t>>& minInputDims, std::vector<std::vector<uint32_t>>& maxInputDims) override;
+    int32_t GetInputDimRanges(
+        std::vector<std::vector<uint32_t>>& minInputDims, std::vector<std::vector<uint32_t>>& maxInputDims) override;
     int32_t GetVersion(uint32_t &majorVersion, uint32_t &minorVersion) override;
     MockIPreparedModel() = default;
     virtual ~MockIPreparedModel();

@@ -20,6 +20,8 @@
 
         "MainAbility/pages/Tabs/TabsAp1",
         "MainAbility/pages/Scroll/ScrollApi1",
-        "MainAbility/pages/Tabs/tabsAnimationMode"
+        "MainAbility/pages/Tabs/tabsAnimationMode",
+        "MainAbility/pages/List/childrenMainSize/set",
+        "MainAbility/pages/List/childrenMainSize/get"
     ]
 }

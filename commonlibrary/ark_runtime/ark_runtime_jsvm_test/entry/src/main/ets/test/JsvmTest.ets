@@ -6179,5 +6179,356 @@ instanceOf(obj, Person);
       let result = napitest.runJsVm(script);
       expect(result).assertEqual(5);
     });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0455
+     * @tc.name      JsvmTest0455
+     * @tc.desc      Test the function of the OH_JSVM_CreateMap interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0455', 0, function () {
+      let script: string = `
+        Object.prototype.toString.call(createMap());
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertEqual("[object Map]");
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0456
+     * @tc.name      JsvmTest0456
+     * @tc.desc      Test the function of the OH_JSVM_CreateMap interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0456', 0, function () {
+      let script: string = `
+        var map = createMap();
+        map.toString();
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertEqual("[object Map]");
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0457
+     * @tc.name      JsvmTest0457
+     * @tc.desc      Test the function of the OH_JSVM_CreateMap interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0457', 0, function () {
+      let script: string = `
+        var map = createMap();
+        map.set("key1", "val1");
+        map.set("key2", "val2");
+        map.set("key3", "val3");
+        map.size;
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertEqual(3);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0458
+     * @tc.name      JsvmTest0458
+     * @tc.desc      Test the function of the OH_JSVM_CreateMap interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0458', 0, function () {
+      let script: string = `
+        var map = createMap();
+        map.set("key1", "val1");
+        map.set("key2", "val2");
+        map.set("key3", "val3");
+        map.get("key1");
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertEqual("val1");
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0459
+     * @tc.name      JsvmTest0459
+     * @tc.desc      Test the function of the OH_JSVM_CreateMap interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0459', 0, function () {
+      let script: string = `
+        var map = createMap();
+        map.set("key1", "val1");
+        map.set("key2", "val2");
+        map.set("key3", "val3");
+        map.has("key2");
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertEqual(true);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0460
+     * @tc.name      JsvmTest0460
+     * @tc.desc      Test the function of the OH_JSVM_CreateMap interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0460', 0, function () {
+      let script: string = `
+        var map = createMap();
+        map.set("key1", "val1");
+        map.set("key2", "val2");
+        map.set("key3", "val3");
+        map.delete("key3");
+        map.has("key3");
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertEqual(false);
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0461
+     * @tc.name      JsvmTest0461
+     * @tc.desc      Test the function of the OH_JSVM_CoerceToBigInt interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0461', 0, function () {
+      let script: string = `
+        coerceToBigInt(false) === BigInt(0)
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertTrue();
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0462
+     * @tc.name      JsvmTest0462
+     * @tc.desc      Test the function of the OH_JSVM_CoerceToBigInt interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0462', 0, function () {
+      let script: string = `
+        coerceToBigInt(true) === BigInt(1)
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertTrue();
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0463
+     * @tc.name      JsvmTest0463
+     * @tc.desc      Test the function of the OH_JSVM_CoerceToBigInt interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0463', 0, function () {
+      let script: string = `
+        coerceToBigInt("123") === BigInt(123)
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertTrue();
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0464
+     * @tc.name      JsvmTest0464
+     * @tc.desc      Test the function of the OH_JSVM_CoerceToBigInt interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0464', 0, function () {
+      let script: string = `
+        let val = getValueBigintUint64(BigInt(123))
+        coerceToBigInt(val) === BigInt(123)
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertTrue();
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0465
+     * @tc.name      JsvmTest0465
+     * @tc.desc      Test the function of the OH_JSVM_IsRegExp interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0465', 0, function () {
+      let script: string = `
+        let val = /pattern/
+        isRegExp(val)
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertTrue();
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0466
+     * @tc.name      JsvmTest0466
+     * @tc.desc      Test the function of the OH_JSVM_IsRegExp interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0466', 0, function () {
+      let script: string = `
+        let val
+        isRegExp(val)
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertFalse();
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0467
+     * @tc.name      JsvmTest0467
+     * @tc.desc      Test the function of the OH_JSVM_IsRegExp interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0467', 0, function () {
+      let script: string = `
+        isRegExp(null)
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertFalse();
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0468
+     * @tc.name      JsvmTest0468
+     * @tc.desc      Test the function of the OH_JSVM_IsRegExp interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0468', 0, function () {
+      let script: string = `
+        isRegExp(true)
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertFalse();
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0469
+     * @tc.name      JsvmTest0469
+     * @tc.desc      Test the function of the OH_JSVM_IsRegExp interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0469', 0, function () {
+      let script: string = `
+        isRegExp(123)
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertFalse();
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0470
+     * @tc.name      JsvmTest0470
+     * @tc.desc      Test the function of the OH_JSVM_IsRegExp interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0470', 0, function () {
+      let script: string = `
+        isRegExp("123")
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertFalse();
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0471
+     * @tc.name      JsvmTest0471
+     * @tc.desc      Test the function of the OH_JSVM_IsRegExp interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0471', 0, function () {
+      let script: string = `
+        isRegExp({})
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertFalse();
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0472
+     * @tc.name      JsvmTest0472
+     * @tc.desc      Test the function of the OH_JSVM_IsRegExp interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0472', 0, function () {
+      let script: string = `
+        isRegExp(BigInt(123))
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertFalse();
+    });
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0473
+     * @tc.name      JsvmTest0473
+     * @tc.desc      Test the function of the OH_JSVM_IsRegExp interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0473', 0, function () {
+      let script: string = `
+        isRegExp(Symbol())
+      `;
+      let result = napitest.runJsVm(script);
+      expect(result).assertFalse();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0474
+     * @tc.name      JsvmTest0474
+     * @tc.desc      Test the function of the OH_JSVM_CompileScriptWithOptions interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0474', 0, async function (done) {
+        let rst = napitest.testCompileWithOption();
+        console.info('JsvmTest0474 testString result is:' + JSON.stringify(rst));
+        expect(rst).assertEqual(true);
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0475
+     * @tc.name      JsvmTest0475
+     * @tc.desc      Test the functions of the OH_JSVM_RetainScript and OH_JSVM_ReleaseScript interfaces.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0475', 0, async function (done) {
+        let rst = napitest.testRetainScript();
+        console.info('JsvmTest0475 testString result is:' + JSON.stringify(rst));
+        expect(rst).assertEqual(true);
+      done();
+    });
+
+    /**
+     * @tc.number    SUB_ACE_BASIC_ETS_JSVM_0476
+     * @tc.name      JsvmTest0476
+     * @tc.desc      Test the function of the OH_JSVM_OpenInspectorWithName interface.
+     * @tc.size      MediumTest
+     * @tc.type      Function
+     * @tc.level     Level 2
+     */
+    it('JsvmTest0476', 0, async function (done) {
+        let rst = napitest.testOpenInspectorWithName();
+        console.info('JsvmTest0476 testString result is:' + JSON.stringify(rst));
+        expect(rst).assertEqual(true);
+      done();
+    });
   });
 }

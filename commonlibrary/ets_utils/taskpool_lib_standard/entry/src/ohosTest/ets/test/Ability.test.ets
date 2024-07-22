@@ -21,8 +21,9 @@ import { currentFun, transferArrayBuffer, transferAtomics, setCloneListTest, set
   printArgsFunc, Sum, delaySum, Add, funcStrCat, arraySum, objectSum, Multi, AdditionDelay, WaitforRunner,
   errorTest, testCancelDelayed, dependend, hashMapTest, delay, randomTest, outerTaskFunc,
   isConcurrentTest1, isConcurrentTest2, sequenceRunnerTest, sequenceRunnerPriorityTest, CancelAndExecuteDelayed,
-  errorManageTest } from './testFunclist'
+  errorManageTest, dealHashMapTest, noUseConcurrentTest } from './testFunclist'
 import { A, B, StrCat, printArgs } from './exportFunclist'
+import HashMap from '@ohos.util.HashMap';
 
 export default function TaskPoolTest() {
   describe('ActsAbilityTest', () => {
@@ -4007,7 +4008,6 @@ export default function TaskPoolTest() {
       let time = setInterval(() => {
         base1.postRequest();
         i++;
-        console.log(i + "秒后又触发成功");
       }, 500);
       setTimeout(() => {
         clearInterval(time);
@@ -4032,6 +4032,132 @@ export default function TaskPoolTest() {
       taskpool.execute(errorManageTest).then(() => {
         console.log("execute errorManageTest");
       })
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0176
+     * @tc.name      : TaskPoolTestClass176
+     * @tc.desc      : taskpool executeDelayed failed to serialize result
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass176', 0, async (done: Function) => {
+      let task: taskpool.Task = new taskpool.Task(hashMapTest, 1);
+      await taskpool.executeDelayed(500, task).catch((e: Error)=>{
+        expect((e as BusinessError).toString()).assertEqual("Error: An exception occurred during serialization, taskpool: failed to serialize result.");
+      })
+
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0177
+     * @tc.name      : TaskPoolTestClass177
+     * @tc.desc      : taskpool executeDelayed failed to serialize arguments
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass177', 0, async (done: Function) => {
+      let hashMap:HashMap<string, number> = new HashMap();
+      hashMap.set("b", 234);
+      let task: taskpool.Task = new taskpool.Task(dealHashMapTest, hashMap);
+      try {
+        taskpool.executeDelayed(500, task)
+      } catch (e) {
+        expect((e as BusinessError).toString()).assertEqual("BusinessError: An exception occurred during serialization, taskpool: failed to serialize arguments.");
+      }
+      done();
+    })
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0178
+     * @tc.name      : TaskPoolTestClass178
+     * @tc.desc      : taskpool executeDelayed failed to task is null
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass178', 0, async (done: Function) => {
+      try {
+        taskpool.executeDelayed(500, null)
+      } catch (e) {
+        expect((e as BusinessError).toString()).assertEqual("BusinessError: Parameter error. The input parameters are invalid, the type of the second param must be object.");
+      }
+
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0179
+     * @tc.name      : TaskPoolTestClass179
+     * @tc.desc      : taskpool executeDelayed failed to serialize function
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass179', 0, async (done: Function) => {
+      let task: taskpool.Task = new taskpool.Task(noUseConcurrentTest, "a");
+      try {
+        taskpool.executeDelayed(500, task)
+      } catch (e) {
+        expect((e as BusinessError).toString()).assertEqual("BusinessError: The function is not marked as concurrent, taskpool: failed to serialize function.");
+      }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0180
+     * @tc.name      : TaskPoolTestClass180
+     * @tc.desc      : taskpool executePeriodically failed to serialize arguments
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass180', 0, async (done: Function) => {
+      try {
+        let task = new taskpool.Task(printArgs, isConcurrentTest2);
+        taskpool.executePeriodically(10, task, taskpool.Priority.HIGH)
+      } catch (e) {
+        expect((e as BusinessError).toString()).assertEqual("BusinessError: An exception occurred during serialization, taskpool: failed to serialize arguments.");
+      }
+      done();
+    })
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0181
+     * @tc.name      : TaskPoolTestClass181
+     * @tc.desc      : taskpool executeDelayed failed to serialize function
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass181', 0, async (done: Function) => {
+      try {
+        let task: taskpool.Task = new taskpool.Task(isConcurrentTest2);
+        taskpool.executePeriodically(10, task, taskpool.Priority.HIGH)
+      } catch (e) {
+        expect((e as BusinessError).toString()).assertEqual("BusinessError: The function is not marked as concurrent, taskpool: failed to serialize function.");
+      }
+
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0182
+     * @tc.name      : TaskPoolTestClass182
+     * @tc.desc      : taskpool executeDelayed failed to serialize function
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass182', 0, async (done: Function) => {
+      try {
+        let task: taskpool.Task = new taskpool.Task(printArgs, 100);
+        taskpool.executePeriodically(-10, task, taskpool.Priority.HIGH)
+      } catch (e) {
+        expect((e as BusinessError).toString()).assertEqual("BusinessError: The period value is less than zero.");
+      }
       done();
     })
   })
