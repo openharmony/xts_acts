@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function getPageInfoByUniqueIdTest() {
-  describe('getPageInfoByUniqueIdTest', function () {
-    beforeEach(async function (done) {
+  describe('getPageInfoByUniqueIdTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("getPageInfoByUniqueIdTest beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/UIContext/getPageInfoByUniqueId",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/UIContext/getPageInfoByUniqueId",
       }
       try {
         router.clear();
@@ -50,7 +50,7 @@ export default function getPageInfoByUniqueIdTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('getPageInfoByUniqueIdTest_0010', 0, async function (done) {
+    it('getPageInfoByUniqueIdTest_0010', 0, async (done: Function) => {
       console.info('getPageInfoByUniqueIdTest_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -58,7 +58,7 @@ export default function getPageInfoByUniqueIdTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('getPageInfoByUniqueId');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[getPageInfoByUniqueIdTest_0010] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('2');
       console.info('[getPageInfoByUniqueIdTest_0010] END');
@@ -73,7 +73,7 @@ export default function getPageInfoByUniqueIdTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('getNavigationInfoByUniqueIdTest_0020', 0, async function (done) {
+    it('getNavigationInfoByUniqueIdTest_0020', 0, async (done: Function) => {
       console.info('getNavigationInfoByUniqueIdTest_0020 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -81,7 +81,7 @@ export default function getPageInfoByUniqueIdTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('getNavigationInfoByUniqueId');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[getNavigationInfoByUniqueIdTest_0020] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('"getNavigationInfoByUniqueId_id"');
       console.info('[getNavigationInfoByUniqueIdTest_0020] END');
