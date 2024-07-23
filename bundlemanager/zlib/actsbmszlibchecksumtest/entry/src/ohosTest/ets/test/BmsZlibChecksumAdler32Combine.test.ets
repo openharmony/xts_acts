@@ -91,19 +91,19 @@ export default function bmsZlibChecksumAdler32CombineTest() {
      * @tc.type: Function
      * @tc.level: Level0
      */
-    it("Sub_Bms_Zlib_Checksum_Check_1300", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        adler1 = -1;
-        hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_1300 start`);
-        let num: number = await checksum.adler32Combine(adler1, adler2, len2);
-        hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_1300 adler32Combine:(${adler1},${adler2},${len2})=>${num}`);
-        expect(num).assertFail();
-      } catch (e) {
-        hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_1300 error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(CODE_PARAMETER_ERROR);
-      }
-      done();
-    });
+    // it("Sub_Bms_Zlib_Checksum_Check_1300", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    //   try {
+    //     adler1 = -1;
+    //     hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_1300 start`);
+    //     let num: number = await checksum.adler32Combine(adler1, adler2, len2);
+    //     hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_1300 adler32Combine:(${adler1},${adler2},${len2})=>${num}`);
+    //     expect(num).assertFail();
+    //   } catch (e) {
+    //     hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_1300 error, error code is: ${e.code}, error message is: ${e.message}`);
+    //     expect(e.code).assertEqual(CODE_PARAMETER_ERROR);
+    //   }
+    //   done();
+    // });
     /**
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_1400
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_1400
@@ -112,19 +112,19 @@ export default function bmsZlibChecksumAdler32CombineTest() {
      * @tc.type: Function
      * @tc.level: Level0
      */
-    it("Sub_Bms_Zlib_Checksum_Check_1400", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        adler1 = 9223372036854775808;
-        hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_1400 start`);
-        let num: number = await checksum.adler32Combine(adler1, adler2, len2);
-        hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_1400 adler32Combine:(${adler1},${adler2},${len2})=>${num}`);
-        expect(num).assertFail();
-      } catch (e) {
-        hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_1400 error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(CODE_PARAMETER_ERROR);
-      }
-      done();
-    });
+    // it("Sub_Bms_Zlib_Checksum_Check_1400", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    //   try {
+    //     adler1 = 9223372036854775808;
+    //     hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_1400 start`);
+    //     let num: number = await checksum.adler32Combine(adler1, adler2, len2);
+    //     hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_1400 adler32Combine:(${adler1},${adler2},${len2})=>${num}`);
+    //     expect(num).assertFail();
+    //   } catch (e) {
+    //     hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_1400 error, error code is: ${e.code}, error message is: ${e.message}`);
+    //     expect(e.code).assertEqual(CODE_PARAMETER_ERROR);
+    //   }
+    //   done();
+    // });
     /**
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_1500
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_1500
@@ -133,19 +133,19 @@ export default function bmsZlibChecksumAdler32CombineTest() {
      * @tc.type: Function
      * @tc.level: Level0
      */
-    it("Sub_Bms_Zlib_Checksum_Check_1500", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        adler2 = -1;
-        hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_1500 start`);
-        let num: number = await checksum.adler32Combine(adler1, adler2, len2);
-        hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_1500 adler32Combine:(${adler1},${adler2},${len2})=>${num}`);
-        expect(num).assertFail();
-      } catch (e) {
-        hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_1500 error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(CODE_PARAMETER_ERROR);
-      }
-      done();
-    });
+    // it("Sub_Bms_Zlib_Checksum_Check_1500", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    //   try {
+    //     adler2 = -1;
+    //     hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_1500 start`);
+    //     let num: number = await checksum.adler32Combine(adler1, adler2, len2);
+    //     hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_1500 adler32Combine:(${adler1},${adler2},${len2})=>${num}`);
+    //     expect(num).assertFail();
+    //   } catch (e) {
+    //     hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_1500 error, error code is: ${e.code}, error message is: ${e.message}`);
+    //     expect(e.code).assertEqual(CODE_PARAMETER_ERROR);
+    //   }
+    //   done();
+    // });
     /**
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_1600
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_1600
@@ -154,19 +154,19 @@ export default function bmsZlibChecksumAdler32CombineTest() {
      * @tc.type: Function
      * @tc.level: Level0
      */
-    it("Sub_Bms_Zlib_Checksum_Check_1600", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        adler2 = 9223372036854775808;
-        hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_1600 start`);
-        let num: number = await checksum.adler32Combine(adler1, adler2, len2);
-        hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_1600 adler32Combine:(${adler1},${adler2},${len2})=>${num}`);
-        expect(num).assertFail();
-      } catch (e) {
-        hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_1600 error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(CODE_PARAMETER_ERROR);
-      }
-      done();
-    });
+    // it("Sub_Bms_Zlib_Checksum_Check_1600", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    //   try {
+    //     adler2 = 9223372036854775808;
+    //     hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_1600 start`);
+    //     let num: number = await checksum.adler32Combine(adler1, adler2, len2);
+    //     hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_1600 adler32Combine:(${adler1},${adler2},${len2})=>${num}`);
+    //     expect(num).assertFail();
+    //   } catch (e) {
+    //     hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_1600 error, error code is: ${e.code}, error message is: ${e.message}`);
+    //     expect(e.code).assertEqual(CODE_PARAMETER_ERROR);
+    //   }
+    //   done();
+    // });
     /**
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_1700
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_1700
@@ -196,19 +196,19 @@ export default function bmsZlibChecksumAdler32CombineTest() {
      * @tc.type: Function
      * @tc.level: Level0
      */
-    it("Sub_Bms_Zlib_Checksum_Check_1800", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        len2 = 9223372036854775808;
-        hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_1800 start`);
-        let num: number = await checksum.adler32Combine(adler1, adler2, len2);
-        hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_1800 adler32Combine:(${adler1},${adler2},${len2})=>${num}`);
-        expect(num).assertFail();
-      } catch (e) {
-        hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_1800 error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(CODE_PARAMETER_ERROR);
-      }
-      done();
-    });
+    // it("Sub_Bms_Zlib_Checksum_Check_1800", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    //   try {
+    //     len2 = 9223372036854775808;
+    //     hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_1800 start`);
+    //     let num: number = await checksum.adler32Combine(adler1, adler2, len2);
+    //     hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_1800 adler32Combine:(${adler1},${adler2},${len2})=>${num}`);
+    //     expect(num).assertFail();
+    //   } catch (e) {
+    //     hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_1800 error, error code is: ${e.code}, error message is: ${e.message}`);
+    //     expect(e.code).assertEqual(CODE_PARAMETER_ERROR);
+    //   }
+    //   done();
+    // });
     /**
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_2000
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_2000

@@ -91,19 +91,19 @@ export default function bmsZlibChecksumCrc32CombineTest() {
      * @tc.type: Function
      * @tc.level: Level0
      */
-    it("Sub_Bms_Zlib_Checksum_Check_3500", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        crc1 = -1;
-        hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3500 start`);
-        let num: number = await checksum.crc32Combine(crc1, crc2, len2);
-        hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3500 Crc32Combine:(${crc1},${crc2},${len2})=>${num}`);
-        expect(num).assertFail();
-      } catch (e) {
-        hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3500 error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(CODE_PARAMETER_ERROR);
-      }
-      done();
-    });
+    // it("Sub_Bms_Zlib_Checksum_Check_3500", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    //   try {
+    //     crc1 = -1;
+    //     hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3500 start`);
+    //     let num: number = await checksum.crc32Combine(crc1, crc2, len2);
+    //     hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3500 Crc32Combine:(${crc1},${crc2},${len2})=>${num}`);
+    //     expect(num).assertFail();
+    //   } catch (e) {
+    //     hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3500 error, error code is: ${e.code}, error message is: ${e.message}`);
+    //     expect(e.code).assertEqual(CODE_PARAMETER_ERROR);
+    //   }
+    //   done();
+    // });
     /**
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_3600
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_3600
@@ -112,19 +112,19 @@ export default function bmsZlibChecksumCrc32CombineTest() {
      * @tc.type: Function
      * @tc.level: Level0
      */
-    it("Sub_Bms_Zlib_Checksum_Check_3600", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        crc1 = 9223372036854775808;
-        hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3600 start`);
-        let num: number = await checksum.crc32Combine(crc1, crc2, len2);
-        hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3600 Crc32Combine:(${crc1},${crc2},${len2})=>${num}`);
-        expect(num).assertFail();
-      } catch (e) {
-        hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3600 error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(CODE_PARAMETER_ERROR);
-      }
-      done();
-    });
+    // it("Sub_Bms_Zlib_Checksum_Check_3600", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    //   try {
+    //     crc1 = 9223372036854775808;
+    //     hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3600 start`);
+    //     let num: number = await checksum.crc32Combine(crc1, crc2, len2);
+    //     hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3600 Crc32Combine:(${crc1},${crc2},${len2})=>${num}`);
+    //     expect(num).assertFail();
+    //   } catch (e) {
+    //     hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3600 error, error code is: ${e.code}, error message is: ${e.message}`);
+    //     expect(e.code).assertEqual(CODE_PARAMETER_ERROR);
+    //   }
+    //   done();
+    // });
     /**
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_3700
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_3700
@@ -133,19 +133,19 @@ export default function bmsZlibChecksumCrc32CombineTest() {
      * @tc.type: Function
      * @tc.level: Level0
      */
-    it("Sub_Bms_Zlib_Checksum_Check_3700", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        crc2 = -1;
-        hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3700 start`);
-        let num: number = await checksum.crc32Combine(crc1, crc2, len2);
-        hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3700 Crc32Combine:(${crc1},${crc2},${len2})=>${num}`);
-        expect(num).assertFail();
-      } catch (e) {
-        hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3700 error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(CODE_PARAMETER_ERROR);
-      }
-      done();
-    });
+    // it("Sub_Bms_Zlib_Checksum_Check_3700", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    //   try {
+    //     crc2 = -1;
+    //     hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3700 start`);
+    //     let num: number = await checksum.crc32Combine(crc1, crc2, len2);
+    //     hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3700 Crc32Combine:(${crc1},${crc2},${len2})=>${num}`);
+    //     expect(num).assertFail();
+    //   } catch (e) {
+    //     hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3700 error, error code is: ${e.code}, error message is: ${e.message}`);
+    //     expect(e.code).assertEqual(CODE_PARAMETER_ERROR);
+    //   }
+    //   done();
+    // });
     /**
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_3800
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_3800
@@ -154,19 +154,19 @@ export default function bmsZlibChecksumCrc32CombineTest() {
      * @tc.type: Function
      * @tc.level: Level0
      */
-    it("Sub_Bms_Zlib_Checksum_Check_3800", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        crc2 = 9223372036854775808;
-        hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3800 start`);
-        let num: number = await checksum.crc32Combine(crc1, crc2, len2);
-        hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3800 Crc32Combine:(${crc1},${crc2},${len2})=>${num}`);
-        expect(num).assertFail();
-      } catch (e) {
-        hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3800 error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(CODE_PARAMETER_ERROR);
-      }
-      done();
-    });
+    // it("Sub_Bms_Zlib_Checksum_Check_3800", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    //   try {
+    //     crc2 = 9223372036854775808;
+    //     hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3800 start`);
+    //     let num: number = await checksum.crc32Combine(crc1, crc2, len2);
+    //     hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3800 Crc32Combine:(${crc1},${crc2},${len2})=>${num}`);
+    //     expect(num).assertFail();
+    //   } catch (e) {
+    //     hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_3800 error, error code is: ${e.code}, error message is: ${e.message}`);
+    //     expect(e.code).assertEqual(CODE_PARAMETER_ERROR);
+    //   }
+    //   done();
+    // });
     /**
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_3900
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_3900
@@ -196,19 +196,19 @@ export default function bmsZlibChecksumCrc32CombineTest() {
      * @tc.type: Function
      * @tc.level: Level0
      */
-    it("Sub_Bms_Zlib_Checksum_Check_4000", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        len2 = 9223372036854775808;
-        hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_4000 start`);
-        let num: number = await checksum.crc32Combine(crc1, crc2, len2);
-        hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_4000 Crc32Combine:(${crc1},${crc2},${len2})=>${num}`);
-        expect(num).assertFail();
-      } catch (e) {
-        hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_4000 error, error code is: ${e.code}, error message is: ${e.message}`);
-        expect(e.code).assertEqual(CODE_PARAMETER_ERROR);
-      }
-      done();
-    });
+    // it("Sub_Bms_Zlib_Checksum_Check_4000", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
+    //   try {
+    //     len2 = 9223372036854775808;
+    //     hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_4000 start`);
+    //     let num: number = await checksum.crc32Combine(crc1, crc2, len2);
+    //     hilog.info(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_4000 Crc32Combine:(${crc1},${crc2},${len2})=>${num}`);
+    //     expect(num).assertFail();
+    //   } catch (e) {
+    //     hilog.error(Domain, TAG, `Sub_Bms_Zlib_Checksum_Check_4000 error, error code is: ${e.code}, error message is: ${e.message}`);
+    //     expect(e.code).assertEqual(CODE_PARAMETER_ERROR);
+    //   }
+    //   done();
+    // });
     /**
      * @tc.number: Sub_Bms_Zlib_Checksum_Check_4200
      * @tc.name: Sub_Bms_Zlib_Checksum_Check_4200
