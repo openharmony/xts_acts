@@ -29,9 +29,13 @@ export default function SendableGroupTest() {
         })
 
         /**
+         * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_GROUP_001
          * @tc.name: testManySendablesToGroup
          * @tc.desc: checks Sendable with primitive type
          * @tc.author: oleg-ignatenko
+         * @tc.size: MediumTest
+         * @tc.type: Function
+         * @tc.level: Level 1
          */
         it('testManySendablesToGroup', 0, async (done: Function) => {
            let result = await testManySendablesToGroup();
@@ -40,9 +44,13 @@ export default function SendableGroupTest() {
         })
 
         /**
+         * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_GROUP_002
          * @tc.name: testSendablesFromOtherTask
          * @tc.desc: checks Sendable with primitive type
          * @tc.author: oleg-ignatenko
+         * @tc.size: MediumTest
+         * @tc.type: Function
+         * @tc.level: Level 2
          */
         it('testSendablesFromOtherTask', 0, async (done: Function) => {
            let result = await skipConditional("testSendablesFromOtherTask excluded", true, testSendablesFromOtherTask);
@@ -51,9 +59,13 @@ export default function SendableGroupTest() {
         })
 
         /**
+         * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_GROUP_003
          * @tc.name: testSendablesFromOtherTask_1
          * @tc.desc: checks Sendable with primitive type
          * @tc.author: oleg-ignatenko
+         * @tc.size: MediumTest
+         * @tc.type: Function
+         * @tc.level: Level 2
          */
         it('testSendablesFromOtherTask_1', 0, async (done: Function) => {
            let result = await skipConditional(
@@ -63,9 +75,13 @@ export default function SendableGroupTest() {
         })
 
         /**
+         * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_GROUP_004
          * @tc.name: testSendableToGroupAndUpdate
          * @tc.desc: checks Sendable with primitive type
          * @tc.author: oleg-ignatenko
+         * @tc.size: MediumTest
+         * @tc.type: Function
+         * @tc.level: Level 2
          */
         it('testSendableToGroupAndUpdate', 0, async (done: Function) => {
            let result = await skipConditional(
@@ -75,9 +91,13 @@ export default function SendableGroupTest() {
         })
 
         /**
+         * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_GROUP_005
          * @tc.name: testSendablesFromOtherTask_2
          * @tc.desc: checks Sendable with primitive type specific scenario
          * @tc.author: oleg-ignatenko
+         * @tc.size: MediumTest
+         * @tc.type: Function
+         * @tc.level: Level 2
          */
         it('testSendablesFromOtherTask_2', 0, async (done: Function) => {
           let result = await skipConditional(
@@ -87,9 +107,13 @@ export default function SendableGroupTest() {
         })
 
         /**
+         * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_GROUP_006
          * @tc.name: testSendablesFromOtherTask_2_1
          * @tc.desc: checks Sendable with primitive type specific scenario
          * @tc.author: oleg-ignatenko
+         * @tc.size: MediumTest
+         * @tc.type: Function
+         * @tc.level: Level 2
          */
         it('testSendablesFromOtherTask_2_1', 0, async (done: Function) => {
           let result = await skipConditional(
@@ -99,9 +123,13 @@ export default function SendableGroupTest() {
         })
 
         /**
+         * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_GROUP_007
          * @tc.name: testSendablesFromOtherTask_3
          * @tc.desc: checks Sendable with primitive type specific scenario
          * @tc.author: oleg-ignatenko
+         * @tc.size: MediumTest
+         * @tc.type: Function
+         * @tc.level: Level 2
          */
         it('testSendablesFromOtherTask_3', 0, async (done: Function) => {
           let result = await skipConditional(
@@ -111,9 +139,13 @@ export default function SendableGroupTest() {
         })
 
         /**
+         * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_CONCURRENCYBASE_GROUP_008
          * @tc.name: testSendablesFromOtherTask_3_1
          * @tc.desc: checks Sendable with primitive type specific scenario
          * @tc.author: oleg-ignatenko
+         * @tc.size: MediumTest
+         * @tc.type: Function
+         * @tc.level: Level 2
          */
         it('testSendablesFromOtherTask_3_1', 0, async (done: Function) => {
           let result = await skipConditional(
