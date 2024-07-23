@@ -1,3 +1,4 @@
+
 /*
  * Copyright (C) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,6 +25,7 @@ import tlsSocketConnectionTest from './TlsSocketConnection.test';
 import TCPSocketConnectionTest from './TCPSocketConnection.test';
 import SocketGetLocalAddressTest from './SocketGetLocalAddress.test';
 import TlsSkipRemoteValidationTest from './TlsSkipRemoteValidation.test';
+import TLSSocketUpgradeTest from './TLSSocketUpgrade.test';
 
 export default function testsuite() {
   TLSSocketServerTest();
@@ -36,4 +38,5 @@ export default function testsuite() {
   tlsSocketConnectionTest();
   SocketGetLocalAddressTest();
   TlsSkipRemoteValidationTest();
+  TLSSocketUpgradeTest();
 }
