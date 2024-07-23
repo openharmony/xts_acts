@@ -25,7 +25,7 @@ ohos_js_hap_suite("ActsInitNdkTest") {
   certificate_profile = "signature/openharmony_sx.p7b"
   hap_name = "ActsInitNdkTest"
   subsystem_name = "startup"
-  part_name = "startup_l2"
+  part_name = "init"
   shared_libraries = [
     "./entry/src/main/cpp:initndk",
     ":libcppsharedso",
@@ -35,7 +35,7 @@ ohos_js_hap_suite("ActsInitNdkTest") {
 ohos_prebuilt_shared_library("libcppsharedso") {
   source = rebase_path(libcxx_ndk_shared_file)
   subsystem_name = "startup"
-  part_name = "startup_l2"
+  part_name = "init"
 }
 
 ohos_app_scope("acts_initndktest_app_profile") {

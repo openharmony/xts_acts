@@ -35,7 +35,7 @@ config("public_config") {
 ohos_shared_library("initndk") {
   testonly = true
   subsystem_name = "startup"
-  part_name = "startup_l2"
+  part_name = "init"
   sources = [ "./initndk.cpp" ]
   libs = [ rebase_path(libcxx_ndk_shared_file) ]
   include_dirs = [ "$INIT_PATH/interfaces/kits/syscap/include" ]
