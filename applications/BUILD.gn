@@ -16,6 +16,7 @@ group("applications") {
   deps = [
     "calendarManager:calendarManager",
     "print_fwk:print_fwk",
+    "settings_ets_Nop:SettingsEtsNopTest",
     "settingsdata:settingsdata",
   ]
 }

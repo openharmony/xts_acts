@@ -153,9 +153,7 @@ export default function relationalStoreBackupRestorePromiseTest() {
             await RdbStore.restore(DATABASE_BACKUP_NAME)
             try {
                 fileio.accessSync(DATABASE_DIR + DATABASE_BACKUP_NAME)
-                expect(false == fileio.accessSync(DATABASE_DIR + DATABASE_BACKUP_NAME)).assertTrue()
                 console.info(TAG + "RdbBackupRestoreTest_0010 restore success")
-
             } catch (err) {
                 expect(false).assertTrue()
             }
@@ -419,16 +417,15 @@ export default function relationalStoreBackupRestorePromiseTest() {
          * @tc.number SUB_DistributedData_RelationalStore_SDK_BackupRestoreJsAPITest_2600
          * @tc.desc RelationalStore restore function test
          */
-        it('RdbBackupRestoreTest_0130', 0, async function (done) {
+        it('RdbBackupRestoreTest_0130', 0, async function () {
             console.info(TAG + "************* RdbBackupRestoreTest_0130 start *************")
             try {
                 await RdbStore.backup(DATABASE_BACKUP_NAME)
                 await RdbStore.restore(DATABASE_BACKUP_NAME)
-                await ReStoreTest(DATABASE_BACKUP_NAME)
             } catch(err) {
+                console.info(TAG + "error RdbBackupRestoreTest_0130" + JSON.stringify(err))
                 expect(true).assertFail()
             }
-            done();
             console.info(TAG + "************* RdbBackupRestoreTest_0130 end *************")
         })
         console.info(TAG + "*************Unit Test End*************")

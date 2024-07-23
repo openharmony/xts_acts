@@ -239,5 +239,43 @@ export default function abilityTest() {
       expect(arkTSByBufferView.length).assertEqual(2);
       done();
     })
+
+    /**
+     * @tc.number    : CollectionsTestClass012
+     * @tc.name      : ArkTS Collections BigInt
+     * @tc.desc      : ArkTS Collections BigInt
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it("CollectionsTestClass012", 0, async (done: Function) => {
+      let options : ArkTSUtils.ASON.ParseOptions = {
+        bigIntMode: ArkTSUtils.ASON.BigIntMode.PARSE_AS_BIGINT,
+        parseReturnType: ArkTSUtils.ASON.ParseReturnType.OBJECT,
+      }
+      let jsonText = '{"big":112233445566778898}';
+      let obj = ArkTSUtils.ASON.parse(jsonText, undefined, options) as lang.ISendable;
+      expect((obj as object)?.["big"]).assertEqual(112233445566778898n);
+      done();
+    })
+
+    /**
+     * @tc.number    : CollectionsTestClass013
+     * @tc.name      : ArkTS Collections Float32Array
+     * @tc.desc      : ArkTS Collections Float32Array
+     * @tc.size      : MEDIUM
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('CollectionsTestClass013', 0, async (done: Function) => {
+      let arkTSTest : collections.Float32Array = new collections.Float32Array(3);
+      expect(arkTSTest.length).assertEqual(3);
+      const buffer : collections.ArrayBuffer = new collections.ArrayBuffer(8);
+      let arkTSByBuffer : collections.Float32Array = new collections.Float32Array(buffer);
+      expect(arkTSByBuffer.length).assertEqual(2);
+      let arkTSByBufferView: collections.Float32Array = new collections.Float32Array(buffer, 0, 2);
+      expect(arkTSByBufferView.length).assertEqual(2);
+      done();
+    })
   })
 }

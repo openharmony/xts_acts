@@ -2198,5 +2198,22 @@ export default function audioNDK() {
       expect(a).assertEqual(0)
       done()
     })
+
+    /**
+     * @tc.number    : SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100
+     * @tc.name      : set  create audioStreamBuilder
+     * @tc.desc      : test OH_AudioCapturer_GetOverflowCount
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100', 0, async (done: Function) => {
+      let a = myaudioNdk.audioCapturerGetOverflowCount_001();
+      console.info(`Tag: SUM_MULTIMEDIA_AUDIO_OH_AudioCapturer_GetOverflowCount_0100`,
+        `audioCapturerGetOverflowCount_001: ${a}`);
+      expect(a).assertEqual(0)
+      done()
+    })
+
   })
 }

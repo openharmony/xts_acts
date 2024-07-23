@@ -55,7 +55,9 @@ export default function ActsNotificationSystemLiveViewTest() {
               },
               button : {
                 names : ['name1','name2'],
-                icons : [pixelMap,pixelMap]
+                icons : [pixelMap,pixelMap],
+                iconsResource : [{bundleName:'iconsResource1',moduleName:'iconsResource1',id:1},
+                {bundleName:'iconsResource2',moduleName:'iconsResource2',id:2}]
               },
               time : {
                 initialTime : 100,

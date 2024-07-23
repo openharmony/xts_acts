@@ -38,12 +38,16 @@ export default function bluetoothAdvertisingTest() {
       }
     }
 
-    async function clickRequestPermission() {
+    let PERMISSION_TEXT:string = "允许";
+    let OPEN_BT_TEXT:string = "开启";
+    let CLOSE_BT_TEXT:string = "关闭";
+
+    async function clickRequestPermission(text:string) {
       try {
         console.info('[bluetooth_js] clickRequestPermission start');
         let driver = Driver.create();
         await driver.delayMs(3000);
-        let button = await driver.findComponent(ON.text("允许"));
+        let button = await driver.findComponent(ON.text(text));
         await button.click();
         await driver.delayMs(3000);
         console.info('[bluetooth_js] clickRequestPermission end');
@@ -57,7 +61,7 @@ export default function bluetoothAdvertisingTest() {
       switch(sta){
         case 0:
           btAccess.enableBluetooth();
-          await clickRequestPermission();
+          await clickRequestPermission(OPEN_BT_TEXT);
           await sleep(10000);
           let sta1 = btAccess.getState();
           console.info('[bluetooth_js] bt turn off:'+ JSON.stringify(sta1));
@@ -71,7 +75,7 @@ export default function bluetoothAdvertisingTest() {
           break;
         case 3:
           btAccess.enableBluetooth();
-          await clickRequestPermission();
+          await clickRequestPermission(OPEN_BT_TEXT);
           await sleep(10000);
           let sta2 = btAccess.getState();
           console.info('[bluetooth_js] bt turning off:'+ JSON.stringify(sta2));
@@ -116,7 +120,7 @@ export default function bluetoothAdvertisingTest() {
     };
 
     beforeAll(async function (done) {
-      await clickRequestPermission();
+      await clickRequestPermission(PERMISSION_TEXT);
       await openPhone();
       console.info('beforeAll called');
       done();
@@ -695,7 +699,7 @@ export default function bluetoothAdvertisingTest() {
      */
     it('SUB_COMMUNICATION_BLUETOOTHBLE_ADVERTISING_1500', 0, async (done) => {
       btAccess.disableBluetooth();
-      await clickRequestPermission();
+      await clickRequestPermission(CLOSE_BT_TEXT);
       await sleep(10000);
       let closeSt = btAccess.getState();
       console.info('[bluetooth_js] bluetooth disable state =' + JSON.stringify(closeSt));

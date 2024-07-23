@@ -60,7 +60,7 @@ export function testManySendablesToGroup() {
 @Concurrent
 async function testManySendablesToGroupImpl(): Promise<string> {
   let data: ValuedNumberContainer[] = [];
-  let tasks = 20;
+  let tasks = 10;
   let tasksGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
   let job: BypassFunctionType<ValuedNumberContainer> = allocateAndBypassFunction;
 

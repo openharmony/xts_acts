@@ -17,6 +17,7 @@ group("security_guard") {
   if (is_standard_system) {
     deps = [
       "security_guard_func:ActsSecurityGuardFunctionTest",
+      "security_guard_notsystemapp:ActsSecurityGuardNotSystemTest",
       "security_guard_permission:ActsSecurityGuardPermissionTest",
     ]
   }

@@ -544,9 +544,8 @@ export default function imagePackerExifTest() {
           const name: string = picMimeType[i].name
           const mimeType: string = picMimeType[i].mimeType
           const fileSuffix: string = picMimeType[i].fileSuffix
-          //TODO type后续修改为rawfile值,目前用该值会导致图片exif获取失败
           const result = await checkPackImageSourcePixelMapPromise(
-            mimeType, name, fileSuffix, tag, "imageSource", "packToFile", true)
+            mimeType, name, fileSuffix, tag, "imageSource", "packToFile", true, "rawfile")
           compResult = compResult && result
         }
         expect(compResult).assertTrue()
@@ -575,9 +574,8 @@ export default function imagePackerExifTest() {
           const name: string = picMimeType[i].name
           const mimeType: string = picMimeType[i].mimeType
           const fileSuffix: string = picMimeType[i].fileSuffix
-          //TODO type后续修改为rawfile值,目前用该值会导致图片exif获取失败
           const result = await checkPackImageSourcePixelMapPromise(
-            mimeType, name, fileSuffix, tag, "imageSource", "packToFile", false)
+            mimeType, name, fileSuffix, tag, "imageSource", "packToFile", false, "rawfile")
           compResult = compResult && result
         }
         expect(compResult).assertTrue()
@@ -908,9 +906,8 @@ export default function imagePackerExifTest() {
           const name: string = picMimeType[i].name
           const mimeType: string = picMimeType[i].mimeType
           const fileSuffix: string = picMimeType[i].fileSuffix
-          //TODO type后续修改为incremental值,目前用该值会导致图片exif获取失败
           const result = await checkPackImageSourcePixelMapCallBack(
-            mimeType, name, fileSuffix, tag, "pixelMap", "packToFile", true)
+            mimeType, name, fileSuffix, tag, "pixelMap", "packToFile", true, "rawfile")
           compResult = compResult && result
         }
         expect(compResult).assertTrue()
@@ -939,9 +936,8 @@ export default function imagePackerExifTest() {
           const name: string = picMimeType[i].name
           const mimeType: string = picMimeType[i].mimeType
           const fileSuffix: string = picMimeType[i].fileSuffix
-          //TODO type后续修改为rawfile值,目前用该值会导致图片exif获取失败
           const result = await checkPackImageSourcePixelMapCallBack(
-            mimeType, name, fileSuffix, tag, "pixelMap", "packToFile", false)
+            mimeType, name, fileSuffix, tag, "pixelMap", "packToFile", false, "rawfile")
           compResult = compResult && result
         }
         expect(compResult).assertTrue()

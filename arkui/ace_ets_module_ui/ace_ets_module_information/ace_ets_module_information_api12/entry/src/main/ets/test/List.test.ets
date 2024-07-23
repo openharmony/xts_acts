@@ -19,13 +19,18 @@ import ACTION_FIRST_APITest from './TabsTest/AnimationMode_APITest/ACTION_FIRST_
 import CONTENT_FIRST_APITest from './TabsTest/AnimationMode_APITest/CONTENT_FIRST_APITest'
 import NO_ANIMATION_APITest from './TabsTest/AnimationMode_APITest/NO_ANIMATION_APITest'
 import PatternLockActivateCircleStyle1 from './PatternLockTest/PatternLockActivateCircleStyle1.test';
-
+import startSpaceTest from './ChipGroupTest/startSpaceTest.test'
+import endSpaceTest from './ChipGroupTest/endSpaceTest.test'
+import itemSpaceTest from './ChipGroupTest/itemSpaceTest.test'
 export default function testsuite() {
-  ProgressMask()
-  BounceSymbolEffect_APITest();
-  ReplaceSymbolEffect_APITest();
-  ACTION_FIRST_APITest();
-  CONTENT_FIRST_APITest();
-  NO_ANIMATION_APITest();
-  PatternLockActivateCircleStyle1();
+    ProgressMask()
+    BounceSymbolEffect_APITest();
+    ReplaceSymbolEffect_APITest();
+    ACTION_FIRST_APITest();
+    CONTENT_FIRST_APITest();
+    NO_ANIMATION_APITest();
+    PatternLockActivateCircleStyle1();
+    startSpaceTest();
+    endSpaceTest();
+    itemSpaceTest();
 }

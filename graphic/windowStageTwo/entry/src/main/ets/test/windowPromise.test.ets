@@ -601,8 +601,9 @@ it("testRectChangeOptions_on_resize", 0, async function (done) {
       expect(true).assertTrue();
       done();
     });
-    await windowClass.resize(1000,1000).then(() => {
+    await windowClass.resize(1000,1000).then(async () => {
       console.info(msgStr +'Succeeded in changing the window size.');
+      await sleep(500);
       windowClass.off('windowRectChange');
       expect(true).assertTrue();
       done();
@@ -649,8 +650,9 @@ it("testRectChangeOptions_on_moveWindowTo", 0, async function (done) {
       expect(true).assertTrue();
       done();
     });
-    await windowClass.moveWindowTo(500, 500).then(() => {
+    await windowClass.moveWindowTo(500, 500).then(async () => {
       console.info(msgStr +'Succeeded in moving the window.');
+      await sleep(1000);
       expect(true).assertTrue();
       done();
     }).catch((err: BusinessError) => {

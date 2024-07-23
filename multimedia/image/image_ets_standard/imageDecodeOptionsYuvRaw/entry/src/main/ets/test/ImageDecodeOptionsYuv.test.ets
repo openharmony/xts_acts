@@ -109,6 +109,65 @@ export default function imageDecodeOptionsYuvTest() {
       }
     }
 
+    const getResultYuv311 = async (TAG: string, width: number, height: number,
+                                   desiredPixelFormat: number, serviceName: string,
+                                   fileName: string, type: string, desiredColorSpace: colorSpaceManager.ColorSpaceManager) => {
+      result = false;
+      const imageSourceApi = await getImageSource(fileName, type);
+      if (imageSourceApi == undefined) {
+        console.info(TAG + " create image source failed");
+      } else {
+        let decodingOptions: image.DecodingOptions = {
+          sampleSize: 1,
+          editable: true,
+          desiredSize: {
+            width: width, height: height
+          },
+          rotate: 90,
+          desiredPixelFormat: desiredPixelFormat,
+          desiredRegion: {
+            size: {
+              height: 300, width: 450
+            }, x: 0, y: 0
+          },
+          index: 0,
+          fitDensity: 240,
+          desiredColorSpace: desiredColorSpace,
+          desiredDynamicRange: 0
+        };
+        switch (serviceName) {
+          case 'promiseCreate':
+            await promiseCreate(TAG, imageSourceApi, decodingOptions);
+            break
+          case 'callBackCreate':
+            await callBackCreate(TAG, imageSourceApi, decodingOptions);
+            break
+          case 'syncCreate':
+            await syncCreate(TAG, imageSourceApi, decodingOptions);
+            break
+        }
+        await sleep(100);
+      }
+    }
+
+
+    const getResultYuv311Null = async (TAG: string, serviceName: string, width: number, height: number,
+                                 fileName: string, type: string) => {
+      result = false;
+      const imageSourceApi = await getImageSource(fileName, type);
+      if (imageSourceApi == undefined) {
+        console.info(TAG + " create image source failed");
+      } else {
+        let decodingOptions: image.DecodingOptions = {};
+        switch (serviceName) {
+          case 'VerifyPixelMap':
+            await VerifyPixelMap(TAG, imageSourceApi, width, height, decodingOptions);
+            break
+        }
+        await sleep(100);
+      }
+    }
+
     const promiseCreate = async (TAG: string, imageSourceApi: image.ImageSource,
                                          decodingOptions: image.DecodingOptions) => {
       await imageSourceApi.createPixelMap(decodingOptions)
@@ -116,16 +175,18 @@ export default function imageDecodeOptionsYuvTest() {
           globalPixelMap = pixelMap;
           await pixelMap.getImageInfo().then((imageInfo) => {
             hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' imageInfo:' + JSON.stringify(imageInfo));
+            hilog.info(0x0000, 'testTag', '%{public}s', TAG + ` decodingOptions:${JSON.stringify(decodingOptions)};`);
             let colorSpaceManager = decodingOptions.desiredColorSpace as colorSpaceManager.ColorSpaceManager
             let desiredPixelFormat = decodingOptions.desiredPixelFormat
             let desiredSize = decodingOptions.desiredSize as Size
             let fitDensity = decodingOptions.fitDensity
-            imageInfo.pixelFormat === desiredPixelFormat &&
-            imageInfo.size.width === desiredSize.width &&
-            imageInfo.size.height === desiredSize.height &&
-            imageInfo.density === fitDensity &&
-            pixelMap.getColorSpace().getColorSpaceName() === colorSpaceManager.getColorSpaceName() &&
-            (result = true);
+            if (imageInfo.pixelFormat === desiredPixelFormat &&
+              imageInfo.size.width === desiredSize.width &&
+              imageInfo.size.height === desiredSize.height &&
+              imageInfo.density === fitDensity &&
+              pixelMap.getColorSpace().getColorSpaceName() === colorSpaceManager.getColorSpaceName()) {
+              result = true
+            }
           })
         }).catch((err: BusinessError) => {
           hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' getImageInfo err ' + JSON.stringify(err));
@@ -139,16 +200,18 @@ export default function imageDecodeOptionsYuvTest() {
           globalPixelMap = pixelMap;
           await pixelMap.getImageInfo().then((imageInfo) => {
             hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' imageInfo:' + JSON.stringify(imageInfo));
+            hilog.info(0x0000, 'testTag', '%{public}s', TAG + ` decodingOptions:${JSON.stringify(decodingOptions)};`);
             let colorSpaceManager = decodingOptions.desiredColorSpace as colorSpaceManager.ColorSpaceManager
             let desiredPixelFormat = decodingOptions.desiredPixelFormat
             let desiredSize = decodingOptions.desiredSize as Size
             let fitDensity = decodingOptions.fitDensity
-            imageInfo.pixelFormat === desiredPixelFormat &&
-            imageInfo.size.width === desiredSize.width &&
-            imageInfo.size.height === desiredSize.height &&
-            imageInfo.density === fitDensity &&
-            pixelMap.getColorSpace().getColorSpaceName() === colorSpaceManager.getColorSpaceName() &&
-            (result = true);
+            if (imageInfo.pixelFormat === desiredPixelFormat &&
+              imageInfo.size.width === desiredSize.width &&
+              imageInfo.size.height === desiredSize.height &&
+              imageInfo.density === fitDensity &&
+              pixelMap.getColorSpace().getColorSpaceName() === colorSpaceManager.getColorSpaceName()) {
+              result = true
+            }
           })
         } else {
           hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' getImageInfo err ' + JSON.stringify(err));
@@ -161,16 +224,38 @@ export default function imageDecodeOptionsYuvTest() {
       globalPixelMap = imageSourceApi.createPixelMapSync(decodingOptions)
       await globalPixelMap.getImageInfo().then((imageInfo) => {
         hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' imageInfo:' + JSON.stringify(imageInfo));
+        hilog.info(0x0000, 'testTag', '%{public}s', TAG + ` decodingOptions:${JSON.stringify(decodingOptions)};`);
         let colorSpaceManager = decodingOptions.desiredColorSpace as colorSpaceManager.ColorSpaceManager
         let desiredPixelFormat = decodingOptions.desiredPixelFormat
         let desiredSize = decodingOptions.desiredSize as Size
         let fitDensity = decodingOptions.fitDensity
-        imageInfo.pixelFormat === desiredPixelFormat &&
-        imageInfo.size.width === desiredSize.width &&
-        imageInfo.size.height === desiredSize.height &&
-        imageInfo.density === fitDensity &&
-        globalPixelMap.getColorSpace().getColorSpaceName() === colorSpaceManager.getColorSpaceName() &&
-        (result = true);
+        if (imageInfo.pixelFormat === desiredPixelFormat &&
+          imageInfo.size.width === desiredSize.width &&
+          imageInfo.size.height === desiredSize.height &&
+          imageInfo.density === fitDensity &&
+          globalPixelMap.getColorSpace().getColorSpaceName() === colorSpaceManager.getColorSpaceName()) {
+          result = true
+        }
+      })
+    }
+
+    const VerifyPixelMap = async (TAG: string, imageSourceApi: image.ImageSource, width: number, height: number,
+                                  decodingOptions: image.DecodingOptions) => {
+      globalPixelMap = imageSourceApi.createPixelMapSync(decodingOptions)
+      await globalPixelMap.getImageInfo().then((imageInfo) => {
+        hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' imageInfo:' + JSON.stringify(imageInfo));
+        let desiredPixelFormat = 3
+        let fitDensity = 0
+        let alphaType = 2
+        hilog.info(0x0000, 'testTag', '%{public}s', TAG + ` expectation desiredPixelFormat:${desiredPixelFormat},
+        fitDensity:${fitDensity}, alphaType:${alphaType}, width:${width}, height:${height}`);
+        if (imageInfo.pixelFormat === desiredPixelFormat &&
+          imageInfo.size.width === width &&
+          imageInfo.size.height === height &&
+          imageInfo.density === fitDensity &&
+          imageInfo.alphaType === alphaType) {
+          result = true
+        }
       })
     }
 
@@ -513,5 +598,312 @@ export default function imageDecodeOptionsYuvTest() {
       }
     });
 
+    /**
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0100
+     * @tc.name      : Test_createPixelMap_decodingOptions_pixelFormat_8_JPEG_I_I_311
+     * @tc.desc      : 1.create imageSource
+     *                 2.set index and DecodeOptions
+     *                 3.create PixelMap
+     *                 4.callback return undefined
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0100", 0, async (done: Function) => {
+      try {
+        await getResultYuv311('SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0100',
+          480, 360, 8, 'promiseCreate', "JPG-480360-YUV311.jpg", "buffer",
+          colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB));
+        expect(result).assertTrue();
+        done();
+      } catch (e) {
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          'SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0100 error:' + e);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0200
+     * @tc.name      : Test_createPixelMap_decodingOptions_pixelFormat_9_JPEG_I_I_311
+     * @tc.desc      : 1.create imageSource
+     *                 2.set index and DecodeOptions
+     *                 3.create PixelMap
+     *                 4.callback return undefined
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0200", 0, async (done: Function) => {
+      try {
+        await getResultYuv311("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0200",
+          480, 360, 9, 'callBackCreate', "JPG-480360-YUV311.jpg", "rawfile",
+          colorSpaceManager.create(colorSpaceManager.ColorSpace.DCI_P3));
+        expect(result).assertTrue();
+        done();
+      } catch (e) {
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          'SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0200 error:' + e);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0300
+     * @tc.name      : Test_createPixelMap_decodingOptions_pixelFormat_8_JPEG_I_odd_311
+     * @tc.desc      : 1.create imageSource
+     *                 2.set index and DecodeOptions
+     *                 3.create PixelMap
+     *                 4.callback return undefined
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0300", 0, async (done: Function) => {
+      try {
+        await getResultYuv311('SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0300',
+          480, 361, 8, 'syncCreate', "JPG-480361-YUV311.jpg", "buffer",
+          colorSpaceManager.create(colorSpaceManager.ColorSpace.DISPLAY_P3));
+        expect(result).assertTrue();
+        done();
+      } catch (e) {
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          'SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0300 error:' + e);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0400
+     * @tc.name      : Test_createPixelMap_decodingOptions_pixelFormat_9_JPEG_I_odd_311
+     * @tc.desc      : 1.create imageSource
+     *                 2.set index and DecodeOptions
+     *                 3.create PixelMap
+     *                 4.callback return undefined
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0400", 0, async (done: Function) => {
+      try {
+        await getResultYuv311("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0400",
+          480, 361, 9, 'promiseCreate', "JPG-480361-YUV311.jpg", "fd",
+          colorSpaceManager.create(colorSpaceManager.ColorSpace.ADOBE_RGB_1998));
+        expect(result).assertTrue();
+        done();
+      } catch (e) {
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          'SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0400 error:' + e);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0500
+     * @tc.name      : Test_createPixelMap_decodingOptions_pixelFormat_8_JPEG_odd_I_311
+     * @tc.desc      : 1.create imageSource
+     *                 2.set index and DecodeOptions
+     *                 3.create PixelMap
+     *                 4.callback return undefined
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0500", 0, async (done: Function) => {
+      try {
+        await getResultYuv311('SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0500',
+          481, 360, 8, 'callBackCreate', "JPG-481360-YUV311.jpg", "buffer",
+          colorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB));
+        expect(result).assertTrue();
+        done();
+      } catch (e) {
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          'SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0500 error:' + e);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0600
+     * @tc.name      : Test_createPixelMap_decodingOptions_pixelFormat_9_JPEG_odd_I_311
+     * @tc.desc      : 1.create imageSource
+     *                 2.set index and DecodeOptions
+     *                 3.create PixelMap
+     *                 4.callback return undefined
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0600", 0, async (done: Function) => {
+      try {
+        await getResultYuv311("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0600",
+          481, 360, 9, 'syncCreate', "JPG-481360-YUV311.jpg", "uri",
+          colorSpaceManager.create(colorSpaceManager.ColorSpace.DCI_P3));
+        expect(result).assertTrue();
+        done();
+      } catch (e) {
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          'SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0600 error:' + e);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0700
+     * @tc.name      : Test_createPixelMap_decodingOptions_pixelFormat_8_JPEG_ODD_odd_odd_311
+     * @tc.desc      : 1.create imageSource
+     *                 2.set index and DecodeOptions
+     *                 3.create PixelMap
+     *                 4.callback return undefined
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0700", 0, async (done: Function) => {
+      try {
+        await getResultYuv311('SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0700',
+          481, 361, 8, 'promiseCreate', "JPG-480360-YUV311.jpg", "rawfile",
+          colorSpaceManager.create(colorSpaceManager.ColorSpace.DISPLAY_P3));
+        expect(result).assertTrue();
+        done();
+      } catch (e) {
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          'SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0700 error:' + e);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0800
+     * @tc.name      : Test_createPixelMap_decodingOptions_pixelFormat_9_JPEG_odd_odd_311
+     * @tc.desc      : 1.create imageSource
+     *                 2.set index and DecodeOptions
+     *                 3.create PixelMap
+     *                 4.callback return undefined
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0800", 0, async (done: Function) => {
+      try {
+        await getResultYuv311("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0800",
+          481, 361, 9, 'callBackCreate', "JPG-480360-YUV311.jpg", "fd",
+          colorSpaceManager.create(colorSpaceManager.ColorSpace.ADOBE_RGB_1998));
+        expect(result).assertTrue();
+        done();
+      } catch (e) {
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          'SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0800 error:' + e);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0900
+     * @tc.name      : Test_createPixelMap_decodingOptions_MULL_pixelFormat_JPEG_I_I_311
+     * @tc.desc      : 1.create imageSource
+     *                 2.set index and DecodeOptions
+     *                 3.create PixelMap
+     *                 4.callback return undefined
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0900", 0, async (done: Function) => {
+      try {
+        await getResultYuv311Null("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0900",
+          'VerifyPixelMap', 480, 360, "JPG-480360-YUV311.jpg", "buffer");
+        expect(result).assertTrue();
+        done();
+      } catch (e) {
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          'SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_0900 error:' + e);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_1000
+     * @tc.name      : Test_createPixelMap_decodingOptions_MULL_pixelFormat_JPEG_I_odd_311
+     * @tc.desc      : 1.create imageSource
+     *                 2.set index and DecodeOptions
+     *                 3.create PixelMap
+     *                 4.callback return undefined
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_1000", 0, async (done: Function) => {
+      try {
+        await getResultYuv311Null("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_1000",
+          'VerifyPixelMap', 480, 361, "JPG-480361-YUV311.jpg", "uri");
+        expect(result).assertTrue();
+        done();
+      } catch (e) {
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          'SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_1000 error:' + e);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_1100
+     * @tc.name      : Test_createPixelMap_decodingOptions_MULL_pixelFormat_JPEG_odd_I_311
+     * @tc.desc      : 1.create imageSource
+     *                 2.set index and DecodeOptions
+     *                 3.create PixelMap
+     *                 4.callback return undefined
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_1100", 0, async (done: Function) => {
+      try {
+        await getResultYuv311Null("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_1100",
+          'VerifyPixelMap', 481, 360, "JPG-481360-YUV311.jpg", "rawfile");
+        expect(result).assertTrue();
+        done();
+      } catch (e) {
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          'SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_1100 error:' + e);
+        expect().assertFail();
+        done();
+      }
+    });
+
+    /**
+     * @tc.number    : SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_1200
+     * @tc.name      : Test_createPixelMap_decodingOptions_MULL_pixelFormat_JPEG_odd_odd_311
+     * @tc.desc      : 1.create imageSource
+     *                 2.set index and DecodeOptions
+     *                 3.create PixelMap
+     *                 4.callback return undefined
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_1200", 0, async (done: Function) => {
+      try {
+        await getResultYuv311Null("SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_1200",
+          'VerifyPixelMap', 481, 361, "JPG-481361-YUV311.jpg", "fd");
+        expect(result).assertTrue();
+        done();
+      } catch (e) {
+        hilog.info(0x0000, 'testTag', '%{public}s',
+          'SUB_DECODEOPTIONS_WITH_YUV311_CREATEPIXELMAP_PIXELFORMAT_1200 error:' + e);
+        expect().assertFail();
+        done();
+      }
+    });
   })
 }

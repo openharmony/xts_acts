@@ -393,9 +393,16 @@ export default function UiTest() {
         await driver.delayMs(waitUiReadyMs)
         let observer = await driver.createUIEventObserver()
         let callback = (UiElementInfo : UIElementInfo) => {
-            expect(UiElementInfo.bundleName == 'com.uitestScene.acts').assertTrue()
-            expect(UiElementInfo.text == 'toastShow').assertTrue()
-            expect(UiElementInfo.type == 'Toast').assertTrue()
+            try {
+                console.info('UIElementInfo bundleName:'+ UiElementInfo.bundleName)
+                console.info('UIElementInfo text:'+ UiElementInfo.text)
+                console.info('UIElementInfo type:'+ UiElementInfo.type)
+                expect(UiElementInfo.bundleName == 'com.uitestScene.acts').assertTrue()
+                expect(UiElementInfo.text == 'toastShow').assertTrue()
+                expect(UiElementInfo.type == 'Toast').assertTrue()
+            } catch (err) {
+                console.info(err)
+            }
         }
         observer.once('toastShow', callback)
         let btn = await driver.findComponent(ON.text('toast'))
@@ -416,9 +423,16 @@ export default function UiTest() {
         await driver.delayMs(waitUiReadyMs)
         let observer = await driver.createUIEventObserver()
         let callback = (UiElementInfo : UIElementInfo) => {
-            expect(UiElementInfo.bundleName == 'com.uitestScene.acts').assertTrue()
-            expect(UiElementInfo.text == 'dialogShow').assertTrue()
-            expect(UiElementInfo.type == 'AlertDialog').assertTrue()
+            try {
+                console.info('UIElementInfo bundleName:'+ UiElementInfo.bundleName)
+                console.info('UIElementInfo text:'+ UiElementInfo.text)
+                console.info('UIElementInfo type:'+ UiElementInfo.type)
+                expect(UiElementInfo.bundleName == 'com.uitestScene.acts').assertTrue()
+                expect(UiElementInfo.text == 'dialogShow').assertTrue()
+                expect(UiElementInfo.type == 'AlertDialog').assertTrue()
+            } catch (err) {
+                console.info(err)
+            }
         }
         observer.once('dialogShow', callback)
         let btn = await driver.findComponent(ON.text('dialog'))

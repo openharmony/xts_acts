@@ -106,7 +106,7 @@ export default function SimManagerTest() {
      */
     it('Telephony_Sim_getISOCountryCodeForSim_Async_0200', 0, async function (done) {
       const CASE_NAME = 'Telephony_Sim_getISOCountryCodeForSim_Async_0200';
-      sim.getISOCountryCodeForSim(env.SLOTID2, (err, data) => {
+      sim.getISOCountryCodeForSim(env.SLOTID_INVALID, (err, data) => {
         if (err) {
           console.info(`${CASE_NAME} expect err: ${err.message}`);
           console.info(`${CASE_NAME} finish`);
@@ -128,7 +128,7 @@ export default function SimManagerTest() {
     it('Telephony_Sim_getISOCountryCodeForSim_Promise_0200', 0, async function (done) {
       const CASE_NAME = 'Telephony_Sim_getISOCountryCodeForSim_Promise_0200';
       try {
-        var data = await sim.getISOCountryCodeForSim(env.SLOTID2);
+        var data = await sim.getISOCountryCodeForSim(env.SLOTID_INVALID);
       } catch (err) {
         console.info(`${CASE_NAME} expect err: ${err.message}`);
         console.info(`${CASE_NAME} finish`);
@@ -148,7 +148,7 @@ export default function SimManagerTest() {
      */
     it('Telephony_Sim_getSimOperatorNumeric_Async_0200', 0, async function (done) {
       const CASE_NAME = 'Telephony_Sim_getSimOperatorNumeric_Async_0200';
-      sim.getSimOperatorNumeric(env.SLOTID2, (err, data) => {
+      sim.getSimOperatorNumeric(env.SLOTID_INVALID, (err, data) => {
         if (err) {
           console.info(`${CASE_NAME} expect err: ${err.message}`);
           console.info(`${CASE_NAME} finish`);
@@ -170,7 +170,7 @@ export default function SimManagerTest() {
     it('Telephony_Sim_getSimOperatorNumeric_Promise_0200', 0, async function (done) {
       const CASE_NAME = 'Telephony_Sim_getSimOperatorNumeric_Promise_0200';
       try {
-        var data = await sim.getSimOperatorNumeric(env.SLOTID2);
+        var data = await sim.getSimOperatorNumeric(env.SLOTID_INVALID);
       } catch (err) {
         console.info(`${CASE_NAME} expect err: ${err.message}`);
         console.info(`${CASE_NAME} finish`);
@@ -189,7 +189,7 @@ export default function SimManagerTest() {
      */
     it('Telephony_Sim_getSimSpn_Async_0200', 0, async function (done) {
       const CASE_NAME = 'Telephony_Sim_getSimSpn_Async_0200';
-      sim.getSimSpn(env.SLOTID2, (err, data) => {
+      sim.getSimSpn(env.SLOTID_INVALID, (err, data) => {
         if (err) {
           console.info(`${CASE_NAME} fail: ${err.message}`);
           console.info(`${CASE_NAME} finish`);
@@ -210,7 +210,7 @@ export default function SimManagerTest() {
     it('Telephony_Sim_getSimSpn_Promise_0200', 0, async function (done) {
       const CASE_NAME = 'Telephony_Sim_getSimSpn_Promise_0200';
       try {
-        var data = await sim.getSimSpn(env.SLOTID2);
+        var data = await sim.getSimSpn(env.SLOTID_INVALID);
       } catch (err) {
         console.info(`${CASE_NAME} expect err: ${err.message}`);
         console.info(`${CASE_NAME} finish`);
@@ -228,7 +228,7 @@ export default function SimManagerTest() {
      * @tc.desc    Function test
      */
     it('Telephony_Sim_getSimState_Async_0200', 0, async function (done) {
-      sim.getSimState(env.SLOTID2, (err, data) => {
+      sim.getSimState(env.SLOTID_INVALID, (err, data) => {
         const CASE_NAME = 'Telephony_Sim_getSimState_Async_0200';
         if (err) {
           console.info(`${CASE_NAME} expect err: ${err.message}`);
@@ -250,7 +250,7 @@ export default function SimManagerTest() {
     it('Telephony_Sim_getSimState_Promise_0200', 0, async function (done) {
       const CASE_NAME = 'Telephony_Sim_getSimState_Promise_0200';
       try {
-        var data = await sim.getSimState(env.SLOTID2);
+        var data = await sim.getSimState(env.SLOTID_INVALID);
       } catch (err) {
         console.info(`${CASE_NAME} expect err: ${err.message}`);
         console.info(`${CASE_NAME} finish`);
@@ -269,7 +269,7 @@ export default function SimManagerTest() {
      * @tc.desc    Function test
      */
     it('Telephony_Sim_isSimActive_Async_0700', 0, async function (done) {
-      sim.isSimActive(env.SLOTID2, (err, data) => {
+      sim.isSimActive(env.SLOTID_INVALID, (err, data) => {
         console.info("isSimActive async err info :" + JSON.stringify(err) + "data:" + JSON.stringify(data));
         expect(err.code).assertEqual(8300001);
         done();
@@ -283,7 +283,7 @@ export default function SimManagerTest() {
      * @tc.desc    Function test
      */
     it('Telephony_Sim_isSimActive_Promise_0700', 0, async function (done) {
-      let promise = sim.isSimActive(env.SLOTID2);
+      let promise = sim.isSimActive(env.SLOTID_INVALID);
       promise.then(data => {
         console.log(`isSimActive success, promise: data->${JSON.stringify(data)}`);
         expect(data).assertFalse();
@@ -303,7 +303,7 @@ export default function SimManagerTest() {
      */
     it('Telephony_Sim_hasSimCard_Async_0600', 0, async function (done) {
       const CASE_NAME = 'Telephony_Sim_hasSimCard_Async_0600';
-      sim.hasSimCard(env.SLOTID2, (err, data) => {
+      sim.hasSimCard(env.SLOTID_INVALID, (err, data) => {
         if (err) {
           expect(err.code).assertEqual(8300001);
           console.info(CASE_NAME +' fail, err: ' + JSON.stringify(err));
@@ -323,7 +323,7 @@ export default function SimManagerTest() {
     it('Telephony_Sim_hasSimCard_Promise_0600', 0, async function (done) {
       const CASE_NAME = 'Telephony_Sim_hasSimCard_Promise_0600';
       try {
-        let data = await sim.hasSimCard(env.SLOTID2);
+        let data = await sim.hasSimCard(env.SLOTID_INVALID);
       } catch (err) {
         expect(err.code).assertEqual(8300001);
         console.info(CASE_NAME +' fail, err: ' + JSON.stringify(err));
@@ -354,7 +354,7 @@ export default function SimManagerTest() {
      */
     it('Telephony_Sim_GetCardType_Async_0400', 0, function (done) {
       const CASE_NAME = 'Telephony_Sim_GetCardType_Async_0400';
-      sim.getCardType(env.SLOTID2, (err, cardType) => {
+      sim.getCardType(env.SLOTID_INVALID, (err, cardType) => {
         if (err) {
           console.info(CASE_NAME + ' GetCardType error: ' + JSON.stringify(err));
           expect(err.code).assertEqual(8300001);
@@ -376,7 +376,7 @@ export default function SimManagerTest() {
     it('Telephony_Sim_GetCardType_Promise_0400', 0, async function (done) {
       const CASE_NAME = 'Telephony_Sim_GetCardType_Promise_0400';
       try {
-        const cardType = await sim.getCardType(env.SLOTID2);
+        const cardType = await sim.getCardType(env.SLOTID_INVALID);
         console.info(CASE_NAME + ' finish');
       } catch (err) {
         console.info(CASE_NAME + ' GetCardType error: ' + JSON.stringify(err));
@@ -393,7 +393,7 @@ export default function SimManagerTest() {
      */
     it('Telephony_Sim_hasOperatorPrivileges_Async_0400', 0, function (done) {
       const CASE_NAME = 'Telephony_Sim_hasOperatorPrivileges_Async_0400';
-      sim.hasOperatorPrivileges(env.SLOTID2, (error, result) => {
+      sim.hasOperatorPrivileges(env.SLOTID_INVALID, (error, result) => {
         if (error) {
           console.info(CASE_NAME + 'hasOperatorPrivileges error: ' + JSON.stringify(error));
           expect(error.code).assertEqual(8300001);
@@ -415,7 +415,7 @@ export default function SimManagerTest() {
     it('Telephony_Sim_hasOperatorPrivileges_Promise_0400', 0, async function (done) {
       const CASE_NAME = 'Telephony_Sim_hasOperatorPrivileges_Promise_0400';
       try {
-        const result = await sim.hasOperatorPrivileges(env.SLOTID2);
+        const result = await sim.hasOperatorPrivileges(env.SLOTID_INVALID);
         console.info(CASE_NAME + ' finish' + JSON.stringify(result));
         expect().assertFail();
         done();

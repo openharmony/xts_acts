@@ -66,13 +66,14 @@ export default function SwipeGestureExample03Test() {
       console.log('SwipeGestureExample03Test_0010 areaObj1 clicked finger[1] start',Math.round(areaObj1.left + areaWidth1 * 0.3),Math.round(areaObj1.top + areaHeight1/2))
       console.log('SwipeGestureExample03Test_0010 areaObj1 clicked finger[1] end',Math.round(areaObj1.left + areaWidth1 * 0.8),Math.round(areaObj1.top + areaHeight1/2))
       let driver: Driver = Driver.create();
+      let speed = Math.floor(areaWidth1 * 0.5 / 0.016 / 1000) * 1000
       await CommonFunc.sleep(1000);
       let pointers: PointerMatrix = PointerMatrix.create(2,2);
       pointers.setPoint(0,0,{x: Math.round(areaObj1.left + areaWidth1 * 0.2),y: Math.round(areaObj1.top + areaHeight1/2) });
       pointers.setPoint(0,1,{x: Math.round(areaObj1.left + areaWidth1 * 0.7),y: Math.round(areaObj1.top + areaHeight1/2) });
       pointers.setPoint(1,0,{x: Math.round(areaObj1.left + areaWidth1 * 0.3),y: Math.round(areaObj1.top + areaHeight1/2) });
       pointers.setPoint(1,1,{x: Math.round(areaObj1.left + areaWidth1 * 0.8),y: Math.round(areaObj1.top + areaHeight1/2) });
-      await driver.injectMultiPointerAction(pointers,38000);
+      await driver.injectMultiPointerAction(pointers,speed);
       await CommonFunc.sleep(4000);
 
       // 拖动之后重新获取当前区域的位置信息
@@ -273,7 +274,7 @@ export default function SwipeGestureExample03Test() {
       let text26 = getInspectorByKey('SwipeGestureExample03_sourceTool');
       let obj26 = JSON.parse(text26);
       console.log('SwipeGestureExample03Test_0010 obj26 $attrs content',obj26.$attrs.content,obj26)
-      expect(obj26.$attrs.content).assertEqual('sourceTool:1');
+      expect(obj26.$attrs.content).assertEqual('sourceTool:FINGER');
 
       console.info('SwipeGestureExample03Test_0010 END');
       done();

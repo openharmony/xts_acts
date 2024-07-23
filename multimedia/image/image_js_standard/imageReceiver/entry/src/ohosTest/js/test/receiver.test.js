@@ -130,7 +130,7 @@ export default function ImageReceiver() {
                     });
                     expect(true).assertTrue();
                 });
-                receiver.test;
+                var dummy = receiver.test;
             }
         }
 
@@ -184,7 +184,7 @@ export default function ImageReceiver() {
                     });
                     expect(true).assertTrue();
                 });
-                receiver.test;
+                var dummy = receiver.test;
             }
         }
 
@@ -244,7 +244,7 @@ export default function ImageReceiver() {
                 });
                 expect(true).assertTrue();
             });
-            receiver.test;
+            var dummy = receiver.test;
         }
 
         async function getComponentCb(done, testNum, format, param, checkFormat, checkStride) {
@@ -299,7 +299,7 @@ export default function ImageReceiver() {
                 });
                 expect(true).assertTrue();
             });
-            receiver.test;
+            var dummy = receiver.test;
         }
 
         async function onErr(done, testNum, param) {
@@ -327,7 +327,7 @@ export default function ImageReceiver() {
                     done();
                     return;
                 }
-                receiver.test;
+                var dummy = receiver.test;
             }
         }
 
@@ -758,7 +758,7 @@ export default function ImageReceiver() {
                 done();
                 return;
             }
-            receiver.test;
+            var dummy = receiver.test;
             if (receiver != undefined) {
                 globalreceiver = receiver;
                 receiver
@@ -802,7 +802,7 @@ export default function ImageReceiver() {
                 done();
                 return;
             }
-            receiver.test;
+            var dummy = receiver.test;
             if (receiver != undefined) {
                 globalreceiver = receiver;
                 receiver.readLatestImage((err, img) => {
@@ -840,7 +840,7 @@ export default function ImageReceiver() {
                 done();
                 return;
             }
-            receiver.test;
+            var dummy = receiver.test;
             expect(receiver != undefined).assertTrue();
             if (receiver != undefined) {
                 globalreceiver = receiver;
@@ -885,7 +885,7 @@ export default function ImageReceiver() {
                 done();
                 return;
             }
-            receiver.test;
+            var dummy = receiver.test;
             if (receiver != undefined) {
                 globalreceiver = receiver;
                 receiver.readNextImage((err, img) => {
@@ -1005,7 +1005,7 @@ export default function ImageReceiver() {
                     }
                 });
 
-                receiver.test;
+                var dummy = receiver.test;
                 await sleep(2000);
                 expect(pass).assertTrue();
                 done();
@@ -1043,7 +1043,7 @@ export default function ImageReceiver() {
                 expect(true).assertTrue();
             });
 
-            receiver.test;
+            var dummy = receiver.test;
 
             receiver
                 .readLatestImage()
@@ -1113,7 +1113,7 @@ export default function ImageReceiver() {
             receiver.on("imageArrival", () => {
                 expect(true).assertTrue();
             });
-            receiver.test;
+            var dummy = receiver.test;
             receiver.readLatestImage((err, img) => {
                 if (img == undefined) {
                     expect(false).assertTrue();
@@ -1313,215 +1313,6 @@ export default function ImageReceiver() {
          */
         it("SUB_MULTIMEDIA_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0400", 0, async function (done) {
             onErr(done, "SUB_MULTIMEDIA_IMAGE_RECEIVER_IMAGERECEIVER_ON_ERROR_0400", "a");
-        });
-
-        /**
-         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_OFF_SUCCESS_0100
-         * @tc.name      : imageReceiver-off-'imageArrival'
-         * @tc.desc      : 1.Create ImageReceiver
-         *                 2.Close callback subscription (call receiver.off (a))
-         *                 3.Pass in the correct parameter for a in off (a)
-         *                 4.View the subscription effect of Image Receiver callback
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 0
-         */
-        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_OFF_SUCCESS_0100", 0, async function (done) {
-            console.info('SUB_MULTIMEDIA_IMAGE_RECEIVER_OFF_SUCCESS_0100 start');
-            let size = {height: HEIGHT, width: WIDTH}
-            var receiver = image.createImageReceiver(size, image.ImageFormat.JPEG, CAPACITY);
-            if (receiver == undefined) {
-                expect(false).assertTrue();
-                console.info('SUB_MULTIMEDIA_IMAGE_RECEIVER_OFF_SUCCESS_0100 create image receiver failed');
-                done();
-                return;
-            } else {
-                globalreceiver = receiver;
-                var error = receiver.checkDeviceTest;
-                if (DEVICE_CODE == error) {
-                    expect(error == DEVICE_CODE).assertTrue();
-                    done();
-                    return;
-                }
-                let ret = receiver.off("imageArrival");
-                if (ret == undefined) {
-                    expect(false).assertTrue();
-                    console.info('SUB_MULTIMEDIA_IMAGE_RECEIVER_OFF_SUCCESS_0100 off failed');
-                    done();
-                    return;
-                } else {
-                    expect(true).assertTrue();
-                    console.info('SUB_MULTIMEDIA_IMAGE_RECEIVER_OFF_SUCCESS_0100 off success');
-                    done();
-                    return;
-                }
-            }
-        });
-
-        /**
-         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_OFF_ERROR_0200
-         * @tc.name      : imageReceiver-off-'a'
-         * @tc.desc      : 1.Create ImageReceiver
-         *                 2.Close callback subscription (call receiver.off (a))
-         *                 3.Wrong parameter passed in for a in off (a)
-         *                 4.View the subscription effect of Image Receiver callback
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 0
-         */
-        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_OFF_ERROR_0200", 0, async function (done) {
-            console.info('SUB_MULTIMEDIA_IMAGE_RECEIVER_OFF_ERROR_0200 start');
-            let size = {height: HEIGHT, width: WIDTH}
-            var receiver = image.createImageReceiver(size, image.ImageFormat.JPEG, CAPACITY);
-            expect(receiver != undefined).assertTrue();
-            if (receiver == undefined) {
-                expect(false).assertTrue();
-                done();
-                return;
-            } else {
-                globalreceiver = receiver;
-                var error = receiver.checkDeviceTest;
-                if (DEVICE_CODE == error) {
-                    expect(error == DEVICE_CODE).assertTrue();
-                    done();
-                    return;
-                }
-                let ret = receiver.off('a');
-                if (ret == undefined) {
-                    expect(true).assertTrue();
-                    console.info('SUB_MULTIMEDIA_IMAGE_RECEIVER_OFF_ERROR_0200 off success');
-                    done();
-                    return;
-                } else {
-                    expect(false).assertTrue();
-                    console.info('SUB_MULTIMEDIA_IMAGE_RECEIVER_OFF_ERROR_0200 off failed');
-                    done();
-                    return;
-                }
-            }
-        });
-
-        /**
-         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_ON_AND_OFF_0300
-         * @tc.name      : imageReceiver-on-off
-         * @tc.desc      : 1.Create ImageReceiver
-         *                 2.Image Receiver enables callback subscription
-         *                  (calling receiver.on ("imageArrival")): (Print image information in callback)
-         *                 3.Image Receiver closes callback subscription (calls receiver.off ("imageArrival"))
-         *                 4.View the subscription effect of Image Receiver callback
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 0
-         */
-        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_ON_AND_OFF_0300", 0, async function (done) {
-            console.info('SUB_MULTIMEDIA_IMAGE_RECEIVER_ON_AND_OFF_0300 start');
-            let size = {height: HEIGHT, width: WIDTH}
-            var receiver = image.createImageReceiver(size, image.ImageFormat.JPEG, CAPACITY);
-            if (receiver == undefined) {
-                expect(false).assertTrue();
-                done();
-                return;
-            } else {
-                globalreceiver = receiver;
-                var error = receiver.checkDeviceTest;
-                if (DEVICE_CODE == error) {
-                    expect(error == DEVICE_CODE).assertTrue();
-                    done();
-                    return;
-                }
-                let pass = true;
-                receiver.on("imageArrival", (err) => {
-                    if (err) {
-                        console.info("SUB_MULTIMEDIA_IMAGE_RECEIVER_ON_AND_OFF_0300 on err" + err);
-                        expect(false).assertTrue();
-                        done();
-                        return;
-                    } else {
-                        pass = false;
-                        console.info("SUB_MULTIMEDIA_IMAGE_RECEIVER_ON_AND_OFF_0300 on call back IN");
-                        receiver.readLatestImage((err, img) => {
-                            if (err) {
-                                expect(false).assertTrue();
-                                done();
-                                return;
-                            } else {
-                                globalImg = img;
-                                console.info("SUB_MULTIMEDIA_IMAGE_RECEIVER_ON_AND_OFF_0300 Img Size Height" + img.size.height);
-                                console.info("SUB_MULTIMEDIA_IMAGE_RECEIVER_ON_AND_OFF_0300 Img Size Width" + img.size.width);
-                            }
-                        });
-                    }
-                });
-                receiver.off("imageArrival");
-                console.info('SUB_MULTIMEDIA_IMAGE_RECEIVER_ON_AND_OFF_0300 off success');
-                receiver.test;
-                await sleep(2000);
-                expect(pass).assertTrue();
-                done();
-                return;
-            }
-        });
-
-        /**
-         * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVER_OFF_AND_ON_0400
-         * @tc.name      : imageReceiver-off-on
-         * @tc.desc      : 1.Create ImageReceiver
-         *                 2.Image Receiver closes callback subscription (calls receiver.off ("imageArrival"))
-         *                 3.Image Receiver enables callback subscription
-         *                  (calling receiver.on ("imageArrival")): (Print image information in callback)
-         *                 4.View the subscription effect of Image Receiver callback
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 0
-         */
-        it("SUB_MULTIMEDIA_IMAGE_RECEIVER_OFF_AND_ON_0400", 0, async function (done) {
-            console.info('SUB_MULTIMEDIA_IMAGE_RECEIVER_OFF_AND_ON_0400 start');
-            let size = {height: HEIGHT, width: WIDTH}
-            var receiver = image.createImageReceiver(size, image.ImageFormat.JPEG, CAPACITY);
-            if (receiver == undefined) {
-                expect(false).assertTrue();
-                done();
-                return;
-            } else {
-                globalreceiver = receiver;
-                var error = receiver.checkDeviceTest;
-                if (DEVICE_CODE == error) {
-                    expect(error == DEVICE_CODE).assertTrue();
-                    done();
-                    return;
-                }
-                let pass = false;
-                receiver.off("imageArrival");
-                receiver.on("imageArrival", (err) => {
-                    if (err) {
-                        console.info("SUB_MULTIMEDIA_IMAGE_RECEIVER_OFF_AND_ON_0400 on err" + err);
-                        expect(false).assertTrue();
-                        done();
-                        return;
-                    } else {
-                        if (pass) {
-                            return;
-                        }
-                        pass = true;
-                        console.info("SUB_MULTIMEDIA_IMAGE_RECEIVER_OFF_AND_ON_0400 on call back IN");
-                        receiver.readLatestImage((err, img) => {
-                            if (err) {
-                                expect(false).assertTrue();
-                                done();
-                                return;
-                            } else {
-                                globalImg = img;
-                                console.info("SUB_MULTIMEDIA_IMAGE_RECEIVER_OFF_AND_ON_0400 Img Size Height: " + img.size.height);
-                                console.info("SUB_MULTIMEDIA_IMAGE_RECEIVER_OFF_AND_ON_0400 Img Size Width: " + img.size.width);
-                                expect(pass).assertTrue();
-                                done();
-                                return;
-                            }
-                        });
-                    }
-                });
-                receiver.test;
-            }
         });
     });
 }

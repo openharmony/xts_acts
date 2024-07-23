@@ -59,6 +59,12 @@ import SubMenuExpandingModeTest_SIDE from './MenuTest/MenuApiTest/SubMenuExpandi
 import SubMenuExpandingModeTest_EMBEDDED from './MenuTest/MenuApiTest/SubMenuExpandingModeTest_EMBEDDED.test';
 import DateTimeOptions from './TimePickerDialogTest/DateTimeOptions.test';
 
+import closeBindSheetTest from './UIContextTest/closeBindSheetTest.test'
+import openBindSheetTest from './UIContextTest/openBindSheetTest.test'
+import updateBindSheetTest from './UIContextTest/updateBindSheetTest.test'
+import closeCustomDialogTest from './UIContextTest/closeCustomDialogTest.test'
+import openCustomDialogTest from './UIContextTest/openCustomDialogTest.test'
+import updateCustomDialogTest from './UIContextTest/updateCustomDialogTest.test'
 export default function testsuite() {
   dialogApi();
   TextPickerDialog();
@@ -105,4 +111,10 @@ export default function testsuite() {
   SubMenuExpandingModeTest_SIDE();
   SubMenuExpandingModeTest_EMBEDDED();
   DateTimeOptions();
+  closeBindSheetTest();
+  openBindSheetTest();
+  updateBindSheetTest();
+  closeCustomDialogTest();
+  openCustomDialogTest();
+  updateCustomDialogTest();
 }

@@ -16,9 +16,6 @@ import("//build/ohos_var.gni")
 group("netmanagerhttp_test") {
   testonly = true
   if (is_standard_system) {
-    deps = [
-      "httpextensions:ActsNetworkManagerExtensionsTest",
-      "httpproxy:ActsNetworkManagerAppProxyTest",
-    ]
+    deps = [ "httpextensions:ActsNetworkManagerExtensionsTest" ]
   }
 }

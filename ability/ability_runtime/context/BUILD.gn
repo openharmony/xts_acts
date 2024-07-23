@@ -23,6 +23,7 @@ group("context") {
       "actscreatemodulecontexttest:ActsCreateModuleContextTest",
       "actsfa8contexttest:ActsFa8ContextTest",
       "actsfacontexttest:ActsFaContextTest",
+      "actssendablecontexttest:ActsSendableContextTest",
       "actsstageappcontext:actsstageappcontext",
       "actsstagecontext:actsstagecontext",
       "actsstagecontexttest:ActsStageContextTest",

@@ -39,7 +39,7 @@ struct CustomContainerUser {
   @State mmsNum: number = 0;
   @State cameraNum: number = 0;
   @State contactsNum: number = 0;
-  @State toSP_daemon: string = 'SP_daemon -editor coldStartHM com.ohos.photos 图库 ohtest';
+  @State toSP_daemon: string = 'SP_daemon -editor appStartTime';
   @State select: number = 2;
   @State appName: string = '图库';
   @State appBundleName: string = 'com.ohos.launcher';
@@ -172,8 +172,8 @@ struct CustomContainerUser {
                               photos
                      */
                     let photosReport = globalThis.resultNum;
-                    let photosHead = photosReport.indexOf('time:');
-                    let photosTime = photosReport.substring(photosHead + 5);
+                    let photosHead = photosReport.indexOf('ResponseTime:');
+                    let photosTime = photosReport.substring(photosHead + 13);
                     this.photosNum = parseFloat(photosTime);
                     if (0 < this.photosNum && this.photosNum < 2300) {
                       this.num++

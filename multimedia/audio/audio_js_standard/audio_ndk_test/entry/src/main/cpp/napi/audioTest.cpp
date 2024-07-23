@@ -3341,6 +3341,34 @@ static napi_value AudioStreamBuilderSetRendererWriteDataCallback_002(napi_env en
     return res;
 }
 
+static napi_value audioCapturerGetOverflowCount_001(napi_env env, napi_callback_info info)
+{
+    OH_AudioStreamBuilder* builder = CreateCapturerBuilder();
+    int32_t samplingRate = 48000;
+    OH_AudioStreamBuilder_SetSamplingRate(builder, samplingRate);
+    int32_t channelCount = 2;
+    OH_AudioStreamBuilder_SetChannelCount(builder, channelCount);
+
+    OH_AudioCapturer_Callbacks callbacks;
+    callbacks.OH_AudioCapturer_OnReadData = AudioCapturerOnReadData;
+    OH_AudioStreamBuilder_SetCapturerCallback(builder, callbacks, NULL);
+
+    OH_AudioCapturer* audioCapturer;
+    OH_AudioStream_Result result = OH_AudioStreamBuilder_GenerateCapturer(builder, &audioCapturer);
+    result = OH_AudioCapturer_Start(audioCapturer);
+
+    uint32_t overFlowCount;
+    result = OH_AudioCapturer_GetOverflowCount(audioCapturer, &overFlowCount);
+
+    OH_AudioCapturer_Stop(audioCapturer);
+    OH_AudioCapturer_Release(audioCapturer);
+
+    OH_AudioStreamBuilder_Destroy(builder);
+    napi_value res;
+    napi_create_int32(env, result, &res);
+    return res;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -3617,6 +3645,8 @@ static napi_value Init(napi_env env, napi_value exports)
             AudioStreamBuilderSetRendererWriteDataCallback_001, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"audioStreamBuilderSetRendererWriteDataCallback_002", nullptr,
             AudioStreamBuilderSetRendererWriteDataCallback_002, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"audioCapturerGetOverflowCount_001", nullptr,
+            audioCapturerGetOverflowCount_001, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
     return exports;

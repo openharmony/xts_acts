@@ -28,6 +28,36 @@ struct SymbolGlyphApi {
           SymbolGlyph($r('sys.symbol.ohos_wifi'))
             .fontSize(96)
             .symbolEffect(new HierarchicalSymbolEffect(EffectFillStyle.ITERATIVE), this.isActive).key('SymbolGlyphApi')
+
+          Row() {
+            SymbolGlyph($r('sys.symbol.repeat_1'))
+              .fontSize(96)
+              .key('SymbolGlyphApi1')
+              .symbolEffect(new ReplaceSymbolEffect()) // type 7
+
+            SymbolGlyph($r('sys.symbol.repeat_1'))
+              .fontSize(96)
+              .key('SymbolGlyphApi2')
+              .symbolEffect(new ScaleSymbolEffect()) // type 1
+
+            SymbolGlyph($r('sys.symbol.repeat_1'))
+              .fontSize(96)
+              .key('SymbolGlyphApi3')
+              .symbolEffect(new AppearSymbolEffect()) // type 3
+          }
+
+          Row() {
+            SymbolGlyph($r('sys.symbol.repeat_1'))
+              .fontSize(96)
+              .key('SymbolGlyphApi4')
+              .symbolEffect(new DisappearSymbolEffect()) // type 4
+
+            SymbolGlyph($r('sys.symbol.repeat_1'))
+              .fontSize(96)
+              .key('SymbolGlyphApi5')
+              .symbolEffect(new BounceSymbolEffect()) // type 5
+          }
+
           Button(this.isActive ? '关闭' : '播放').onClick(() => {
             this.isActive = !this.isActive;
           })

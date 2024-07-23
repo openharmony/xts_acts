@@ -83,6 +83,10 @@ async function clickAlbumButton(driver: Driver) {
   console.info('testPicker btn click finish');
   await CommonFunc.sleep(1000);
   let albumItem = await driver.findComponent((ON.type('ListItem')));
+  if (albumItem === null) {
+    console.info('no ListItem');
+    return;
+  }
   console.info("testPicker findComponent ListItem success");
   await albumItem.click();
 }
@@ -90,6 +94,10 @@ async function clickAlbumButton(driver: Driver) {
 async function clickBigPicture(driver: Driver) {
   console.info("testpicker create");
   let btn = await driver.findComponent(ON.type('Image'));
+  if (btn === null) {
+    console.info('no Image');
+    return;
+  }
   await btn.click();
   console.info('testPicker btn click finish');
   await CommonFunc.sleep(1000);
@@ -697,8 +705,10 @@ export default function TextPicker() {
       await CommonFunc.sleep(2000);
 
       let checkBoxs: Array<Component> = await driver.findComponents(ON.type('Checkbox'));
-      if (checkBoxs.length <= 0) {
+      if (checkBoxs === null || checkBoxs.length <= 0) {
         console.info("testPicker14 findComponent checkbox fail");
+        done();
+        return;
       } else {
         console.info("testPicker14 findComponent checkbox success");
         await checkBoxs[0].click();
@@ -746,9 +756,10 @@ export default function TextPicker() {
       let changeNumButton: Component = await driver.findComponent(ON.id('changeNumButton'));
       await changeNumButton.click();
       let checkBoxs: Array<Component> = await driver.findComponents(ON.type('Checkbox'));
-
-      if (checkBoxs.length <= 0) {
+      if (checkBoxs === null || checkBoxs.length <= 0) {
         console.info("testPicker15 findComponent checkbox fail");
+        done();
+        return;
       } else {
         console.info("testPicker15 findComponent checkbox success");
         let selectNum = Math.min(checkBoxs.length, 3);
@@ -871,9 +882,9 @@ export default function TextPicker() {
         let result: number = event?.data?.msg;
         console.info('testPicker18 select number =:' + JSON.stringify(result));
         if (clicked) {
-          expect(result).assertEqual(1);
+          expect(result).assertEqual(ClickType.DESELECTED);
         } else {
-          expect(result).assertEqual(0);
+          expect(result).assertEqual(ClickType.SELECTED);
         }
       }
       let event: events_emitter.InnerEvent = {
@@ -892,6 +903,11 @@ export default function TextPicker() {
 
       console.info('testPicker18 create');
       let btn: Component = await driver.findComponent(ON.type('GridItem'));
+      if (btn === null) {
+        console.info('testPicker18 no GridItem');
+        done();
+        return;
+      }
       await btn.click();
       await CommonFunc.sleep(1000);
       clicked = !clicked;

@@ -5,3 +5,5 @@
 **/local.properties
 **/oh-package-lock.json5
 **/oh_modules
+**/.vscode
+**/.history

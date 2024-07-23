@@ -71,6 +71,10 @@
         "MainAbility/pages/FrameNode/expectedUpdateInterval",
 	"MainAbility/pages/typeNode/ListItem",
         "MainAbility/pages/typeNode/TextInput",
-        "MainAbility/pages/typeNode/ChildrenMainSize"
+        "MainAbility/pages/typeNode/ChildrenMainSize",
+        "MainAbility/pages/FrameNode/attachNodeAdapter",
+	"MainAbility/pages/renderNode/setLabel",
+        "MainAbility/pages/renderNode/setMarkNodeGroup",
+        "MainAbility/pages/renderNode/setShapeClip"
     ]
 }

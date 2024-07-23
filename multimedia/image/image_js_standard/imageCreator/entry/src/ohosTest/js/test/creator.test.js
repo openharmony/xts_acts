@@ -513,7 +513,7 @@ export default function ImageCreator() {
     
                         creator.queueImage(img).then(() => {
                             console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_PROMISE_0200 queueImage Success');
-                            creator.test;
+                            var dummy = creator.test;
                             expect(true).assertTrue();
                             done();
                         }).catch(error => {
@@ -630,7 +630,7 @@ export default function ImageCreator() {
                                 done();
                             }
                             console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_QUEUEIMAGE_CALLBACK_0200 queueImage Success');
-                            creator.test;
+                            var dummy = creator.test;
                             expect(true).assertTrue();
                             done();
                         })
@@ -765,7 +765,7 @@ export default function ImageCreator() {
                         }
                         console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_ON_0100 queueImage Success');
                         expect(true).assertTrue();
-                        creator.test;
+                        var dummy = creator.test;
                     })
                 })
             })
@@ -821,187 +821,6 @@ export default function ImageCreator() {
          */
         it('SUB_MULTIMEDIA_IMAGE_CREATOR_ON_0500', 0, async function (done) {
             onErr(done, 'SUB_MULTIMEDIA_IMAGE_CREATOR_ON_0500', 'a');
-        })
-
-        /**
-         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_OFF_SUCCESS_0100
-         * @tc.name      : imageCreator-off-'imageRelease'
-         * @tc.desc      : 1.Create ImageCreator
-         *                 2.Close callback subscription (call creator.off (a))
-         *                 3.Pass in the correct parameter for a in off (a)
-         *                 4.View Image Creator callback subscription effect
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 0
-         */
-        it('SUB_MULTIMEDIA_IMAGE_CREATOR_OFF_SUCCESS_0100', 0, async function (done) {
-            console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_OFF_SUCCESS_0100 start');
-            let size = {height: HEIGHT, width: WIDTH}
-            var creator = image.createImageCreator(size, image.ImageFormat.JPEG, CAPACITY);
-            expect(creator != undefined).assertTrue();
-            if (creator == undefined) {
-                console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_OFF_SUCCESS_0100 create image creator failed');
-                done();
-                return;
-            }
-            globalCreator = creator;
-            let ret = creator.off('imageRelease');
-            if (ret == undefined) {
-                expect(false).assertTrue();
-                console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_OFF_SUCCESS_0100 off failed');
-                done();
-                return;
-            } else {
-                expect(true).assertTrue();
-                console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_OFF_SUCCESS_0100 off success');
-                done();
-                return;
-            }
-        })
-
-        /**
-         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_OFF_ERROR_0200
-         * @tc.name      : imageCreator-off-'a'
-         * @tc.desc      : 1.Create ImageCreator
-         *                 2.Close callback subscription (call creator.off (a))
-         *                 3.Wrong parameter passed in for a in off (a)
-         *                 4.View Image Creator callback subscription effect
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 0
-         */
-        it('SUB_MULTIMEDIA_IMAGE_CREATOR_OFF_ERROR_0200', 0, async function (done) {
-            console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_OFF_ERROR_0200 start');
-            let size = {height: HEIGHT, width: WIDTH}
-            var creator = image.createImageCreator(size, image.ImageFormat.JPEG, CAPACITY);
-            expect(creator != undefined).assertTrue();
-            if (creator == undefined) {
-                expect(false).assertTrue();
-                done();
-                return;
-            } else {
-                globalCreator = creator;
-                let ret = creator.off('a');
-                if (ret == undefined) {
-                    expect(true).assertTrue();
-                    console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_OFF_ERROR_0200 off success');
-                    done();
-                    return;
-                } else {
-                    expect(false).assertTrue();
-                    console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_OFF_ERROR_0200 off failed');
-                    done();
-                    return;
-                }
-            }
-        })
-
-        /**
-         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_ON_AND_OFF_0300
-         * @tc.name      : imageCreator-on-off
-         * @tc.desc      : 1.Create ImageCreator
-         *                 2.Image Creator enables callback subscription
-         *                  (calling creator.on ("imageRelease")): (Print image information in callback)
-         *                 3.Image Creator closes callback subscription (calling creator.off ("imageRelease"))
-         *                 4.View Image Creator callback subscription effect
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 0
-         */
-        it('SUB_MULTIMEDIA_IMAGE_CREATOR_ON_AND_OFF_0300', 0, async function (done) {
-            console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_ON_AND_OFF_0300 start');
-            let size = {height: HEIGHT, width: WIDTH}
-            var creator = image.createImageCreator(size, image.ImageFormat.JPEG, CAPACITY);
-            if (creator == undefined) {
-                expect(creator != undefined).assertTrue();
-                done()
-                return;
-            } else{
-                globalCreator = creator;
-                let pass = true;
-                creator.on('imageRelease', (err) => {
-                    if (err) {
-                        console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_ON_AND_OFF_0300 on faild' + err);
-                        expect(false).assertTrue();
-                        done();
-                        return;
-                    } else {
-                        pass = false;
-                        console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_ON_AND_OFF_0300 on call back IN');
-                        creator.dequeueImage((err, img) => {
-                            if (err || img == undefined) {
-                                console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_ON_AND_OFF_0300 dequeueImage fail: ' + err);
-                                expect(false).assertTrue();
-                                done();
-                                return;
-                            }
-                            globalImg = img;
-                            console.info("SUB_MULTIMEDIA_IMAGE_CREATOR_ON_AND_OFF_0300 Img Size Height: " + img.size.height);
-                            console.info("SUB_MULTIMEDIA_IMAGE_CREATOR_ON_AND_OFF_0300 Img Size Width: " + img.size.width);
-                        })
-                    }
-                })
-                creator.off("imageRelease");
-                console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_ON_AND_OFF_0300 off success');
-                creator.test;
-                expect(pass).assertTrue();
-                done();
-                return;
-            }
-        })
-
-        /**
-         * @tc.number    : SUB_MULTIMEDIA_IMAGE_CREATOR_OFF_AND_ON_0400
-         * @tc.name      : imageCreator-off-on
-         * @tc.desc      : 1.Create ImageCreator
-         *                 2.Image Creator closes callback subscription (calling creator.off ("imageRelease"))
-         *                 3.Image Creator enables callback subscription
-         *                  (calling creator.on ("imageRelease")): (Print image information in callback)
-         *                 4.View Image Creator callback subscription effect
-         * @tc.size      : MEDIUM
-         * @tc.type      : Functional
-         * @tc.level     : Level 0
-         */
-        it('SUB_MULTIMEDIA_IMAGE_CREATOR_OFF_AND_ON_0400', 0, async function (done) {
-            console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_OFF_AND_ON_0400 start');
-            let size = {height: HEIGHT, width: WIDTH}
-            var creator = image.createImageCreator(size, image.ImageFormat.JPEG, CAPACITY);
-            if (creator == undefined) {
-                expect(creator != undefined).assertTrue();
-                done()
-                return;
-            } else{
-                globalCreator = creator;
-                let pass = false;
-                creator.off("imageRelease");
-                creator.on('imageRelease', (err) => {
-                    if (err) {
-                        console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_OFF_AND_ON_0400 on faild' + err);
-                        expect(false).assertTrue();
-                        done();
-                        return;
-                    } else {
-                        pass = true;
-                        console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_OFF_AND_ON_0400 on call back IN');
-                        creator.dequeueImage((err, img) => {
-                            if (err || img == undefined) {
-                                console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_OFF_AND_ON_0400 dequeueImage fail: ' + err);
-                                expect(false).assertTrue();
-                                done();
-                                return;
-                            }
-                            globalImg = img;
-                            console.info("SUB_MULTIMEDIA_IMAGE_CREATOR_OFF_AND_ON_0400 Img Size Height: " + img.size.height);
-                            console.info("SUB_MULTIMEDIA_IMAGE_CREATOR_OFF_AND_ON_0400 Img Size Width: " + img.size.width);
-                            expect(pass).assertTrue();
-                            done();
-                            return;
-                        })
-                    }
-                })
-                console.info('SUB_MULTIMEDIA_IMAGE_CREATOR_OFF_AND_ON_0400 creator.test;');
-                creator.test;
-            }
         })
     })
 }

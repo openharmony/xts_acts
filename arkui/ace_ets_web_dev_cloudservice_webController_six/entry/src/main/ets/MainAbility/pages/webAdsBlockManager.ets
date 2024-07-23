@@ -26,6 +26,7 @@ struct webAdsBlockManager {
   src_url: string = 'https://www.baidu.com/';
 
   @State testIsOnAdsBlocked: boolean = false;
+  @State testOnAdsBlockedDetails: boolean = false;
   @State emitKey: string = '';
 
   onPageShow() {
@@ -331,6 +332,50 @@ struct webAdsBlockManager {
                       break;
                     }
 
+                    case 'emitEnableAdsBlockFalse': {
+                      try {
+                        this.controller.enableAdsBlock(false);
+                        console.log(' enableAdsBlock:  true');
+
+                        this.controller.refresh();
+
+                        await Utils.sleep(1000)
+                        Utils.emitEvent(true, 1013)
+                      } catch (error) {
+                        let e:business_error.BusinessError = error as business_error.BusinessError;
+                        console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                        await Utils.sleep(1000)
+                        Utils.emitEvent(false, 1013)
+                      }
+                      break;
+                    }
+
+                    case 'emitIsAdsBlockEnabledCheck': {
+                      try {
+                        let isBlocked: boolean = this.controller.isAdsBlockEnabled();
+                        console.log(' isAdsBlockEnabled:  ', isBlocked);
+
+                        await Utils.sleep(1000)
+                        Utils.emitEvent(!isBlocked, 1014)
+                      } catch (error) {
+                        let e:business_error.BusinessError = error as business_error.BusinessError;
+                        console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                        await Utils.sleep(1000)
+                        Utils.emitEvent(false, 1014)
+                      }
+                      break;
+                    }
+
+                    case 'emitOnAdsBlockedTest': {
+                      if (this.testOnAdsBlockedDetails) {
+                        Utils.emitEvent(true, 1015)
+                      } else {
+                        Utils.emitEvent(false, 1015)
+                      }
+
+                      break;
+                    }
+
                   }
               })
           }
@@ -338,6 +383,7 @@ struct webAdsBlockManager {
             .onAdsBlocked(( details: AdsBlockedDetails) => {
               this.testIsOnAdsBlocked = true;
               if (details) {
+                this.testOnAdsBlockedDetails = true;
                 console.log(' Blocked ' + details.adsBlocked.length + ' in ' + details.url);
               }
               return false;

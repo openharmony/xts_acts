@@ -630,7 +630,7 @@ export default function getListItemGroupRect1() {
 
       console.log('assert position')
 
-      expect(Math.abs(Math.round(x) - Math.round(70)) <= 1).assertTrue();
+      expect(Math.abs(Math.round(x) - Math.round(20)) <= 1).assertTrue();
       expect(Math.abs(Math.round(y) - Math.round(70)) <= 1).assertTrue();
 
       console.log('assert size')

@@ -156,4 +156,87 @@ static napi_value testArkUI015(napi_env env, napi_callback_info info) {
     NAPI_END;
 }
 
+static napi_value testArkUI016(napi_env env, napi_callback_info info) {
+    size_t argc = 2;
+    napi_value args[2] = {nullptr,nullptr};
+
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager","test16 start");
+
+    if(napi_get_cb_info(env,info,&argc,args,nullptr,nullptr) != napi_ok){
+        
+     }
+    if(argc != 2){
+         napi_throw_type_error(env,NULL,"Wrong number of args");
+    }
+    ArkUI_NodeContentHandle contentHandle = nullptr;
+    OH_ArkUI_GetNodeContentFromNapiValue(env,args[0],&contentHandle);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager","testArkUI016-contentHandle %{public}p", contentHandle);
+    if(contentHandle == nullptr){
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager","test16 failed");
+        napi_value result = nullptr;
+        napi_create_int32(env,1,&result);
+        return result;
+    }
+    //ASSERT_EQ(contentHandle,nullptr);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager","test16 end");
+    NAPI_END;
+}
+
+static napi_value testArkUI017(napi_env env, napi_callback_info info) {
+    int testData1 = 10;
+        
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager","test17 start");
+
+    size_t argc = 2;
+    napi_value args[2] = {nullptr,nullptr};
+    if(napi_get_cb_info(env,info,&argc,args,nullptr,nullptr) != napi_ok){
+        
+    }
+    if(argc != 2){
+        napi_throw_type_error(env,NULL,"Wrong number of args");
+    }
+    ArkUI_NodeContentHandle contentHandle = nullptr;
+    OH_ArkUI_GetNodeContentFromNapiValue(env,args[0],&contentHandle);
+    
+    int32_t ret = OH_ArkUI_NodeContent_SetUserData(contentHandle,&testData1);
+        
+    int *userData = reinterpret_cast<int *>(OH_ArkUI_NodeContent_GetUserData(contentHandle));
+    if(userData == nullptr)
+    {
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager","userData null failed");
+        napi_value result = nullptr;
+        napi_create_int32(env,1,&result);
+        return result;
+    }
+
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager","testData1=%{public}d", testData1);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager","userData=%{public}d", *userData);
+    if(testData1 != *userData){
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager","test17 failed");
+        napi_value result = nullptr;
+        napi_create_int32(env,1,&result);
+        return result;
+    }
+    //ASSERT_EQ(testData1,*userData);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager","test17 end");
+    NAPI_END;
+}
+
+static napi_value testArkUI018(napi_env env, napi_callback_info info) {
+    
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager","test18 start");
+
+    ArkUI_NodeContentHandle handle = OH_ArkUI_NodeContentEvent_GetNodeContentHandle(nullptr);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager","testArkUI018-handle %{public}p", handle);
+    if(handle == nullptr){
+        OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager","test18 failed");
+        napi_value result = nullptr;
+        napi_create_int32(env,1,&result);
+        return result;
+    }
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager","test18 end");
+    NAPI_END;
+}
+
 } // namespace ArkUICapiTest
+

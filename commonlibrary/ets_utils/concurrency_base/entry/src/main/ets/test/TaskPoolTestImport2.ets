@@ -20,7 +20,7 @@ export async function taskpoolExecuteChained(data: Uint32Array, index: number, l
   let task: taskpool.Task = new taskpool.Task(indexSetter, data, index);
   let promise: Promise<Object> = taskpool.execute(task) as Promise<Object>;
   if (index < limit + 1) {
-    taskpoolExecuteChainedRecursive(data, index + 1, limit)
+    await taskpoolExecuteChainedRecursive(data, index + 1, limit)
   }
   let ret: Uint32Array = await (promise) as Uint32Array;
   return ret;
