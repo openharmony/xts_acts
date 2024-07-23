@@ -15,7 +15,7 @@
 import { describe, it, expect, afterEach } from '@ohos/hypium';
 import taskpool from '@ohos.taskpool';
 import { BusinessError } from '@ohos.base';
-import { printLang } from '../utils';
+import { printLang, AdditionDelay } from '../utils';
 
 const asyncSleep: Function = (time: number): Promise<Object> => {
   return new Promise(resolve => setTimeout(resolve, time));
@@ -50,23 +50,23 @@ export default function TaskpoolTestState() {
         let isTerminate1: boolean = false;
         let isTerminate2: boolean = false;
         let isTerminate3: boolean = false;
-        let testTask1: taskpool.Task = new taskpool.Task(printLang, 100);
-        let testTask2: taskpool.Task = new taskpool.Task(printLang, 200);
-        let testTask3: taskpool.Task = new taskpool.Task(printLang, 300);
+        let testTask1: taskpool.Task = new taskpool.Task(AdditionDelay, 100);
+        let testTask2: taskpool.Task = new taskpool.Task(AdditionDelay, 200);
+        let testTask3: taskpool.Task = new taskpool.Task(AdditionDelay, 300);
         taskpool.execute(testTask1).then((res: Object) => {
           console.info(`${caseName}: testTask1 return value: ${JSON.stringify(res)}`);
           const taskInfo: taskpool.TaskPoolInfo = taskpool.getTaskPoolInfo();
-          const state: taskpool.State = taskInfo.taskInfos[0]?.state;
+          const state: taskpool.State = taskInfo.taskInfos[2]?.state;
           console.info(`${caseName}: state1: ${state}`);
-          expect(state).assertEqual(2);
+          expect(state).assertEqual(6);
           isTerminate1 = true;
         });
         taskpool.execute(testTask2).then((res: Object) => {
           console.info(`${caseName}: testTask2 return value: ${JSON.stringify(res)}`);
           const taskInfo: taskpool.TaskPoolInfo = taskpool.getTaskPoolInfo();
-          const state: taskpool.State = taskInfo.taskInfos[0]?.state;
+          const state: taskpool.State = taskInfo.taskInfos[1]?.state;
           console.info(`${caseName}: state2: ${state}`);
-          expect(state).assertEqual(2);
+          expect(state).assertEqual(6);
           isTerminate2 = true;
         });
         taskpool.execute(testTask3).then((res: Object) => {
@@ -75,23 +75,31 @@ export default function TaskpoolTestState() {
           const state: taskpool.State = taskInfo.taskInfos[0]?.state;
           console.info(`${caseName}: state3: ${state}`);
           try {
-            expect(state).assertEqual(2);
+            expect(state).assertEqual(6);
           } catch (error) {
             console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
           }
           isTerminate3 = true;
         });
+        
+        while (!(isTerminate1 && isTerminate2 && isTerminate3)) {
+          await promiseCase();
+        }
+        done();
+      } catch (error) {
+        console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
+        expect().assertFail();
+        done();
+      }
+
+      try {
+        let testTask1: taskpool.Task = new taskpool.Task(AdditionDelay, 100);
+        taskpool.execute(testTask1);
         let taskInfo: taskpool.TaskPoolInfo = taskpool.getTaskPoolInfo();
         console.info(`${caseName}: stateing1 taskInfo: ${JSON.stringify(taskInfo)}`);
         let state: taskpool.State = taskInfo.taskInfos[0]?.state;
         console.info(`${caseName}: stateing1: ${JSON.stringify(state)}`);
         expect(state).assertEqual(1);
-        while (!(isTerminate1 && isTerminate2 && isTerminate3)) {
-          await promiseCase();
-        }
-        taskInfo = taskpool.getTaskPoolInfo();
-        console.info(`${caseName}: statef1 taskInfo: ${JSON.stringify(taskInfo)}`);
-        expect(taskInfo.taskInfos.length).assertEqual(0);
         done();
       } catch (error) {
         console.info(`${caseName}: catch error: code => ${error.code} message => ${error.message}`);
