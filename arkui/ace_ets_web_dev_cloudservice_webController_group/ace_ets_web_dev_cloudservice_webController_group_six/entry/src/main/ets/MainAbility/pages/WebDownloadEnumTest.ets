@@ -1,13 +1,13 @@
 /*
  * Copyright (c) 2024 Huawei Device Co., Ltd.
- * Licensed under the Apache License, Version 2.0 (the "License");
+ * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
+ * distributed under the License is distributed on an 'AS IS' BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
@@ -21,7 +21,7 @@ import events_emitter from '@ohos.events.emitter';
 @Component
 struct WebDownloadEnumTest {
   controller: webView.WebviewController = new webView.WebviewController();
-  @State str: string = ""
+  @State str: string = ''
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -36,9 +36,9 @@ struct WebDownloadEnumTest {
   }
 
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
-    console.info("web page valueChangeCallBack");
+    console.info('web page valueChangeCallBack');
     if (eventData != null) {
-      console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+      console.info('valueChangeCallBack:' + JSON.stringify(eventData));
       if (eventData.data != null && eventData.data.ACTION != null) {
         this.str = eventData.data.ACTION;
       }
@@ -50,9 +50,9 @@ struct WebDownloadEnumTest {
       Column() {
         Button('WebDownloadEnumTestButton').key('WebDownloadEnumTestButton')
           .onClick(async () => {
-            console.info("key==>" + this.str)
+            console.info('key==>' + this.str)
             switch (this.str) {
-              case "testWebDownloadEnum001": {
+              case 'testWebDownloadEnum001': {
                 try {
                   Utils.emitEvent(webView.WebDownloadErrorCode.ERROR_UNKNOWN, 70250)
                 } catch (error) {
@@ -60,7 +60,7 @@ struct WebDownloadEnumTest {
                 }
                 break;
               }
-              case "testWebDownloadEnum002": {
+              case 'testWebDownloadEnum002': {
                 try {
                   Utils.emitEvent(webView.WebDownloadErrorCode.FILE_FAILED, 70251)
                 } catch (error) {
@@ -68,7 +68,7 @@ struct WebDownloadEnumTest {
                 }
                 break;
               }
-              case "testWebDownloadEnum003": {
+              case 'testWebDownloadEnum003': {
                 try {
                   Utils.emitEvent(webView.WebDownloadErrorCode.FILE_ACCESS_DENIED, 70252)
                 } catch (error) {
@@ -76,7 +76,7 @@ struct WebDownloadEnumTest {
                 }
                 break;
               }
-              case "testWebDownloadEnum004": {
+              case 'testWebDownloadEnum004': {
                 try {
                   Utils.emitEvent(webView.WebDownloadErrorCode.FILE_NO_SPACE, 70253)
                 } catch (error) {
@@ -84,7 +84,7 @@ struct WebDownloadEnumTest {
                 }
                 break;
               }
-              case "testWebDownloadEnum005": {
+              case 'testWebDownloadEnum005': {
                 try {
                   Utils.emitEvent(webView.WebDownloadErrorCode.FILE_NAME_TOO_LONG, 70254)
                 } catch (error) {
@@ -92,7 +92,7 @@ struct WebDownloadEnumTest {
                 }
                 break;
               }
-              case "testWebDownloadEnum006": {
+              case 'testWebDownloadEnum006': {
                 try {
                   Utils.emitEvent(webView.WebDownloadErrorCode.FILE_TOO_LARGE, 70255)
                 } catch (error) {
@@ -100,7 +100,7 @@ struct WebDownloadEnumTest {
                 }
                 break;
               }
-              case "testWebDownloadEnum007": {
+              case 'testWebDownloadEnum007': {
                 try {
                   Utils.emitEvent(webView.WebDownloadErrorCode.FILE_TRANSIENT_ERROR, 70256)
                 } catch (error) {
@@ -108,7 +108,7 @@ struct WebDownloadEnumTest {
                 }
                 break;
               }
-              case "testWebDownloadEnum008": {
+              case 'testWebDownloadEnum008': {
                 try {
                   Utils.emitEvent(webView.WebDownloadErrorCode.FILE_BLOCKED, 70257)
                 } catch (error) {
@@ -116,7 +116,7 @@ struct WebDownloadEnumTest {
                 }
                 break;
               }
-              case "testWebDownloadEnum009": {
+              case 'testWebDownloadEnum009': {
                 try {
                   Utils.emitEvent(webView.WebDownloadErrorCode.FILE_TOO_SHORT, 70258)
                 } catch (error) {
@@ -124,7 +124,7 @@ struct WebDownloadEnumTest {
                 }
                 break;
               }
-              case "testWebDownloadEnum010": {
+              case 'testWebDownloadEnum010': {
                 try {
                   Utils.emitEvent(webView.WebDownloadErrorCode.FILE_HASH_MISMATCH, 70259)
                 } catch (error) {
@@ -132,7 +132,7 @@ struct WebDownloadEnumTest {
                 }
                 break;
               }
-              case "testWebDownloadEnum011": {
+              case 'testWebDownloadEnum011': {
                 try {
                   Utils.emitEvent(webView.WebDownloadErrorCode.FILE_SAME_AS_SOURCE, 70260)
                 } catch (error) {
@@ -140,7 +140,7 @@ struct WebDownloadEnumTest {
                 }
                 break;
               }
-              case "testWebDownloadEnum012": {
+              case 'testWebDownloadEnum012': {
                 try {
                   Utils.emitEvent(webView.WebDownloadErrorCode.NETWORK_FAILED, 70261)
                 } catch (error) {
@@ -148,7 +148,7 @@ struct WebDownloadEnumTest {
                 }
                 break;
               }
-              case "testWebDownloadEnum013": {
+              case 'testWebDownloadEnum013': {
                 try {
                   Utils.emitEvent(webView.WebDownloadErrorCode.NETWORK_TIMEOUT, 70262)
                 } catch (error) {
@@ -156,7 +156,7 @@ struct WebDownloadEnumTest {
                 }
                 break;
               }
-              case "testWebDownloadEnum014": {
+              case 'testWebDownloadEnum014': {
                 try {
                   Utils.emitEvent(webView.WebDownloadErrorCode.NETWORK_DISCONNECTED, 70263)
                 } catch (error) {
@@ -164,7 +164,7 @@ struct WebDownloadEnumTest {
                 }
                 break;
               }
-              case "testWebDownloadEnum015": {
+              case 'testWebDownloadEnum015': {
                 try {
                   Utils.emitEvent(webView.WebDownloadErrorCode.NETWORK_SERVER_DOWN, 70264)
                 } catch (error) {
@@ -172,7 +172,7 @@ struct WebDownloadEnumTest {
                 }
                 break;
               }
-              case "testWebDownloadEnum016": {
+              case 'testWebDownloadEnum016': {
                 try {
                   Utils.emitEvent(webView.WebDownloadErrorCode.NETWORK_INVALID_REQUEST, 70265)
                 } catch (error) {
@@ -180,7 +180,7 @@ struct WebDownloadEnumTest {
                 }
                 break;
               }
-              case "testWebDownloadEnum017": {
+              case 'testWebDownloadEnum017': {
                 try {
                   Utils.emitEvent(webView.WebDownloadErrorCode.SERVER_FAILED, 70266)
                 } catch (error) {
@@ -188,7 +188,7 @@ struct WebDownloadEnumTest {
                 }
                 break;
               }
-              case "testWebDownloadEnum018": {
+              case 'testWebDownloadEnum018': {
                 try {
                   Utils.emitEvent(webView.WebDownloadErrorCode.SERVER_NO_RANGE, 70267)
                 } catch (error) {
@@ -196,7 +196,7 @@ struct WebDownloadEnumTest {
                 }
                 break;
               }
-              case "testWebDownloadEnum019": {
+              case 'testWebDownloadEnum019': {
                 try {
                   Utils.emitEvent(webView.WebDownloadErrorCode.SERVER_BAD_CONTENT, 70268)
                 } catch (error) {
@@ -204,7 +204,7 @@ struct WebDownloadEnumTest {
                 }
                 break;
               }
-              case "testWebDownloadEnum020": {
+              case 'testWebDownloadEnum020': {
                 try {
                   Utils.emitEvent(webView.WebDownloadErrorCode.SERVER_UNAUTHORIZED, 70269)
                 } catch (error) {
@@ -212,7 +212,7 @@ struct WebDownloadEnumTest {
                 }
                 break;
               }
-              case "testWebDownloadEnum021": {
+              case 'testWebDownloadEnum021': {
                 try {
                   Utils.emitEvent(webView.WebDownloadErrorCode.SERVER_CERT_PROBLEM, 70270)
                 } catch (error) {
@@ -220,7 +220,7 @@ struct WebDownloadEnumTest {
                 }
                 break;
               }
-              case "testWebDownloadEnum022": {
+              case 'testWebDownloadEnum022': {
                 try {
                   Utils.emitEvent(webView.WebDownloadErrorCode.SERVER_FORBIDDEN, 70271)
                 } catch (error) {
@@ -228,7 +228,7 @@ struct WebDownloadEnumTest {
                 }
                 break;
               }
-              case "testWebDownloadEnum023": {
+              case 'testWebDownloadEnum023': {
                 try {
                   Utils.emitEvent(webView.WebDownloadErrorCode.SERVER_UNREACHABLE, 70272)
                 } catch (error) {
@@ -236,7 +236,7 @@ struct WebDownloadEnumTest {
                 }
                 break;
               }
-              case "testWebDownloadEnum024": {
+              case 'testWebDownloadEnum024': {
                 try {
                   Utils.emitEvent(webView.WebDownloadErrorCode.SERVER_CONTENT_LENGTH_MISMATCH, 70273)
                 } catch (error) {
@@ -244,7 +244,7 @@ struct WebDownloadEnumTest {
                 }
                 break;
               }
-              case "testWebDownloadEnum025": {
+              case 'testWebDownloadEnum025': {
                 try {
                   Utils.emitEvent(webView.WebDownloadErrorCode.SERVER_CROSS_ORIGIN_REDIRECT, 70274)
                 } catch (error) {
@@ -252,7 +252,7 @@ struct WebDownloadEnumTest {
                 }
                 break;
               }
-              case "testWebDownloadEnum026": {
+              case 'testWebDownloadEnum026': {
                 try {
                   Utils.emitEvent(webView.WebDownloadErrorCode.USER_CANCELED, 70275)
                 } catch (error) {
@@ -260,7 +260,7 @@ struct WebDownloadEnumTest {
                 }
                 break;
               }
-              case "testWebDownloadEnum027": {
+              case 'testWebDownloadEnum027': {
                 try {
                   Utils.emitEvent(webView.WebDownloadErrorCode.USER_SHUTDOWN, 70276)
                 } catch (error) {
@@ -268,7 +268,7 @@ struct WebDownloadEnumTest {
                 }
                 break;
               }
-              case "testWebDownloadEnum028": {
+              case 'testWebDownloadEnum028': {
                 try {
                   Utils.emitEvent(webView.WebDownloadErrorCode.CRASH, 70277)
                 } catch (error) {
@@ -277,7 +277,7 @@ struct WebDownloadEnumTest {
                 break;
               }
               
-          }
+            }
           })
 
         Web({ src: $rawfile('second.html'), controller: this.controller })

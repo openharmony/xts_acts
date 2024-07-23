@@ -1,12 +1,12 @@
 <html>
 <head>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name='viewport' content='width=device-width,initial-scale=1'>
 </head>
 <script>
       let uploaded = 0;
       let buf = new Uint8Array(1024 * 50);
       let start = Date.now();
-      var rs = new ReadableStream({
+      var rs = new ReadableStream ({
          pull(ctrl) {
             uploaded += buf.byteLength;
             crypto.getRandomValues(buf);
@@ -15,7 +15,6 @@
          }
      });
       function test() {
-            console.log('execute test')
             fetch('https://www.example.com/xhr', {
                   method: 'POST',
                   body: rs,
@@ -32,7 +31,7 @@
        }
 </script>
 <body>
-<div onclick="test()">test post chunked http body.</div>
+<div onclick='test()'>test post chunked http body.</div>
 test()
 </body>
 </html>

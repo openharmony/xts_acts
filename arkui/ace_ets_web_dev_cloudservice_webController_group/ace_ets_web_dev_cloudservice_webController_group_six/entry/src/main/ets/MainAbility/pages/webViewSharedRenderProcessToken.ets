@@ -21,9 +21,9 @@ import business_error from '@ohos.base';
 struct WebComponent {
   controller: webview.WebviewController = new webview.WebviewController();
   @State emitKey: string = '';
-  WebOptions: WebOptions = { src: 'www.example.com', controller: this.controller, sharedRenderProcessToken: "111" }
-  webOptions: WebOptions = { src: 'www.w3.org', controller: this.controller, sharedRenderProcessToken: "111" }
-  WebOptions3: WebOptions = { src: 'www.baidu.com', controller: this.controller, sharedRenderProcessToken: "111" }
+  webOptions: WebOptions = { src: 'www.example.com', controller: this.controller, sharedRenderProcessToken: '111' }
+  webOptions2: WebOptions = { src: 'www.w3.org', controller: this.controller, sharedRenderProcessToken: '111' }
+  webOptions3: WebOptions = { src: 'www.baidu.com', controller: this.controller, sharedRenderProcessToken: '111' }
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -55,7 +55,6 @@ struct WebComponent {
             switch (this.emitKey) {
               case 'emitWebViewSharedRenderProcessToken': {
                 try {
-                  console.log(this.WebOptions.sharedRenderProcessToken)
                   console.log(this.webOptions.sharedRenderProcessToken)
                   Utils.emitEvent(true,1600)
                 } catch (error) {
@@ -67,9 +66,9 @@ struct WebComponent {
             }
           })
       }
-      Web(this.WebOptions)
       Web(this.webOptions)
-      Web(this.WebOptions3)
+      Web(this.webOptions2)
+      Web(this.webOptions3)
     }
   }
 }

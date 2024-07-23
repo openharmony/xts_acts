@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2023 iSoftStone Information Technology (Group) Co.,Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -28,7 +28,7 @@ struct webViewOnFullScreenEnterInfoAudio {
   @State imageAccess: boolean = true;
   @State onlineImageAccess: boolean = true;
   @State databaseAccess: boolean = true;
-  @State checkEleResult: string = "";
+  @State checkEleResult: string = '';
   
   onPageShow() {
       let valueChangeEvent: events_emitter.InnerEvent = {
@@ -40,7 +40,7 @@ struct webViewOnFullScreenEnterInfoAudio {
   
   private valueChangeCallBack = (eventData: events_emitter.EventData) => {
       if (eventData != null) {
-          console.info("valueChangeCallBack:" + JSON.stringify(eventData));
+          console.info('valueChangeCallBack:' + JSON.stringify(eventData));
           if (eventData.data != null && eventData.data.ACTION != null) {
               this.str = eventData.data.ACTION;
           }
@@ -50,21 +50,21 @@ struct webViewOnFullScreenEnterInfoAudio {
   build() {
       Column() {
           Row() {
-              Button("web click")
+              Button('web click')
               .key('webViewOnFullScreenEnterInfoAudio')
               .onClick(async () => {
-                  console.info("key==>" + this.str)
+                  console.info('key==>' + this.str)
                   await Utils.sleep(2000);
                   switch (this.str) {
-                    case "emitOnfullscreenenterAudioInfo": {
+                    case 'emitOnfullscreenenterAudioInfo': {
                         sendEventByKey('TestwebViewOnFullScreenEnterAudioInfo', 10, '');
                         await Utils.sleep(2000);
                         try {
-                            this.controller.runJavaScript("elementFullScreen()", (error, result) => {
+                            this.controller.runJavaScript('elementFullScreen()', (error, result) => {
                                 console.log('The elementFullScreen() return value is: ${result}');
                             })
                             await Utils.sleep(2000);
-                            this.controller.runJavaScript("checkIsFullScreen()", (error, result) => {
+                            this.controller.runJavaScript('checkIsFullScreen()', (error, result) => {
                                 this.checkEleResult = JSON.stringify(result)
                                 console.log('The checkIsFullScreen() return value is: ${result}');
                             })
@@ -78,7 +78,7 @@ struct webViewOnFullScreenEnterInfoAudio {
               })
           }
           Web({ src: $rawfile('fullScreenAudioTest.html'), controller: this.controller })
-                .key("TestwebViewOnFullScreenEnterAudioInfo")
+                .key('TestwebViewOnFullScreenEnterAudioInfo')
                 .javaScriptAccess(this.javaScriptAccess)
                 .fileAccess(this.fileAccess)
                 .imageAccess(this.imageAccess)
@@ -87,11 +87,11 @@ struct webViewOnFullScreenEnterInfoAudio {
                 .databaseAccess(this.databaseAccess)
                 
                 .onFullScreenEnter((event) => {
-                    console.log("onFullScreenEnter...")
+                    console.log('onFullScreenEnter...')
                     this.handler = event.handler
-                    console.log("this.handler: " + JSON.stringify(this.handler))
-                    console.log("videoWidth: " + event.videoWidth)
-                    console.log("videoHeight: " + event.videoHeight)
+                    console.log('this.handler: ' + JSON.stringify(this.handler))
+                    console.log('videoWidth: ' + event.videoWidth)
+                    console.log('videoHeight: ' + event.videoHeight)
                     let isVideoWidth = event.videoWidth != null && event.videoWidth == 0
                     let isVideoHeight = event.videoHeight != null && event.videoHeight == 0
                     Utils.emitEvent(isVideoWidth && isVideoHeight, 1540)
