@@ -74,7 +74,7 @@ struct webViewOnFullScreenEnterInfoAudio {
                         }
                         break;
                     }
-                }
+                  }
               })
           }
           Web({ src: $rawfile('fullScreenAudioTest.html'), controller: this.controller })

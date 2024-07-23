@@ -95,7 +95,7 @@ struct webViewCookieTrack {
   private triggerCookie = async () => {
       this.controller.enableIntelligentTrackingPrevention(true);
       web_webview.WebCookieManager.putAcceptThirdPartyCookieEnabled(true);
-      console.log("当前状态：" + this.controller.isIntelligentTrackingPreventionEnabled())
+      console.log('当前状态：' + this.controller.isIntelligentTrackingPreventionEnabled())
       web_webview.WebCookieManager.clearAllCookiesSync()
       this.controller.removeCache(true);
       this.controller.loadUrl(this.webUrl)
