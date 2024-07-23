@@ -1558,39 +1558,28 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let msgStr = "testCreateSubWindowWithOptions_Function_Promise";
       console.log(msgStr + " begin");
       let windowClass = undefined;
-      try {
-        console.log(msgStr + " try begin")
-        let options: ohosWindow.SubWindowOptions = {
-          title: 'title',
-          decorEnabled: true,
-          isModal: false,
-        };
-        let promise = windowStage.createSubWindowWithOptions('mySubWindow', options);
-        promise.then((data) => {
-          windowClass = data;
-          console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
-          expect(true).assertTrue();
-          done();
-        }).catch((error) => {
-          console.log(msgStr + 'Failed to create the subwindow. Cause: ' + JSON.stringify(error));
-          if (error.code == 1300002) {
-            expect(true).assertTrue();
-            done();
-          } else {
-            expect().assertFail();
-            done();
-          }
-        });
-      } catch (error) {
-        console.log('Failed to create the subwindow. Cause: ' + JSON.stringify(error));
-        if (error.code == 1300002) {
-          expect().assertTrue();
+      console.log(msgStr + " try begin")
+      let options: ohosWindow.SubWindowOptions = {
+        title: 'title',
+        decorEnabled: true,
+        isModal: false,
+      };
+      await windowStage.createSubWindowWithOptions('mySubWindow', options).then((data) => {
+        windowClass = data;
+        console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
+        done();
+      }).catch((err: BusinessError) => {
+        if (err.code != 801) {
+          console.error(msgStr + `Failed to create the subwindow. Cause code: ${err.code}, message: ${err.message}`);
+          expect().assertFail();
           done();
         } else {
-          expect.assertFail();
+          console.log(msgStr + '当前设备类型不支持系统能力SystemCapability.Window.SessionManager')
+          console.log(msgStr + JSON.stringify(err))
+          expect(err.code).assertEqual(801);
           done();
         }
-      }
+      });
     })
     /**
      * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_STAGE_JS_API_3920
