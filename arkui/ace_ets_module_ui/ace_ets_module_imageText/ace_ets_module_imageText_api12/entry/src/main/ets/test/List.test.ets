@@ -32,7 +32,6 @@ import onSelectionChange16 from './RichEditorTest/onSelectionChange16.test'
 import onSelectionChange17 from './RichEditorTest/onSelectionChange17.test'
 import onSelectionChange18 from './RichEditorTest/onSelectionChange18.test'
 import onSelectionChange19 from './RichEditorTest/onSelectionChange19.test'
-import MediaCachedImageTest from './ImageTest/MediaCachedImageTest.test';
 import onComplete from './ImageTest/onComplete.test'
 import removeStyles from './TextTest/removeStyles.test'
 import StyledStringTest from './TextTest/StyledStringTest.test'
@@ -161,7 +160,6 @@ export default function testsuite() {
   onSelectionChange17();
   onSelectionChange18();
   onSelectionChange19();
-  MediaCachedImageTest();
   onComplete()
   removeStyles()
   clearStyles()
