@@ -101,7 +101,7 @@ export default function imageJsTest() {
             done();
         }
 
-        async function imageSourceImageInfoMimetype(done, testNum, pictureFormat, expectedMimetype, flag) {
+        async function testImageSourceImageInfoMimetype(done, testNum, pictureFormat, expectedMimetype, flag) {
             try {
                 await getFd(pictureFormat);
                 const imageSourceApi = image.createImageSource(fdNumber);
@@ -175,7 +175,7 @@ export default function imageJsTest() {
             }
         }
 
-        async function pixelMapImageInfoMimetype(done, testNum, pictureFormat, expectedMimetype, flag) {
+        async function testPixelMapImageInfoMimetype(done, testNum, pictureFormat, expectedMimetype, flag) {
             try {
                 await getFd(pictureFormat);
                 const imageSourceApi = image.createImageSource(fdNumber);
@@ -3738,7 +3738,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0100', 0, async function (done) {
-            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0100', 'test.jpg', 'image/jpeg', 'Promise');
+            testImageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0100', 'test.jpg', 'image/jpeg', 'Promise');
         })
 
         /**
@@ -3753,7 +3753,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0200', 0, async function (done) {
-            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0200', 'test.jpeg', 'image/jpeg', 'Promise');
+            testImageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0200', 'test.jpeg', 'image/jpeg', 'Promise');
         })
 
         /**
@@ -3768,7 +3768,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0300', 0, async function (done) {
-            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0300', 'test.png', 'image/png', 'PromiseNumber');
+            testImageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0300', 'test.png', 'image/png', 'PromiseNumber');
         })
 
         /**
@@ -3783,7 +3783,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0400', 0, async function (done) {
-            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0400', 'test.gif', 'image/gif', 'PromiseNumber');
+            testImageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0400', 'test.gif', 'image/gif', 'PromiseNumber');
         })
 
         /**
@@ -3798,7 +3798,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0500', 0, async function (done) {
-            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0500', 'moving_test.webp', 'image/webp', 'Callback');
+            testImageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0500', 'moving_test.webp', 'image/webp', 'Callback');
         })
 
         /**
@@ -3813,7 +3813,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0600', 0, async function (done) {
-            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0600', 'test.ico', 'image/x-ico', 'Callback');
+            testImageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0600', 'test.ico', 'image/x-ico', 'Callback');
         })
 
         /**
@@ -3828,7 +3828,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0700', 0, async function (done) {
-            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0700', 'test.svg', 'image/svg+xml', 'Callback');
+            testImageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0700', 'test.svg', 'image/svg+xml', 'Callback');
         })
 
         /**
@@ -3843,7 +3843,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0800', 0, async function (done) {
-            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0800', 'test.bmp', 'image/bmp', 'CallbackNumber');
+            testImageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0800', 'test.bmp', 'image/bmp', 'CallbackNumber');
         })
 
         /**
@@ -3858,7 +3858,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0900', 0, async function (done) {
-            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0900', 'test.dng', 'image/raw', 'CallbackNumber');
+            testImageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0900', 'test.dng', 'image/raw', 'CallbackNumber');
         })
 
         /**
@@ -3873,7 +3873,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
          it('SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0100', 0, async function (done) {
-            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0100', 'test.jpeg', 'image/jpeg', 'Promise');
+            testPixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0100', 'test.jpeg', 'image/jpeg', 'Promise');
         })
 
         /**
@@ -3888,7 +3888,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0200', 0, async function (done) {
-            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0200', 'test.png', 'image/png', 'Promise');
+            testPixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0200', 'test.png', 'image/png', 'Promise');
         })
 
         /**
@@ -3903,7 +3903,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0300', 0, async function (done) {
-            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0300', 'test.gif', 'image/gif', 'PromiseNumber');
+            testPixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0300', 'test.gif', 'image/gif', 'PromiseNumber');
         })
 
         /**
@@ -3918,7 +3918,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0400', 0, async function (done) {
-            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0400', 'test.bmp', 'image/bmp', 'PromiseNumber');
+            testPixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0400', 'test.bmp', 'image/bmp', 'PromiseNumber');
         })
 
         /**
@@ -3933,7 +3933,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0500', 0, async function (done) {
-            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0500', 'moving_test.webp', 'image/webp', 'Callback');
+            testPixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0500', 'moving_test.webp', 'image/webp', 'Callback');
         })
 
         /**
@@ -3948,7 +3948,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0600', 0, async function (done) {
-            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0600', 'test.ico', 'image/x-ico', 'Callback');
+            testPixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0600', 'test.ico', 'image/x-ico', 'Callback');
         })
 
         /**
@@ -3963,7 +3963,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0700', 0, async function (done) {
-            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0700', 'test.svg', 'image/svg+xml', 'Callback');
+            testPixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0700', 'test.svg', 'image/svg+xml', 'Callback');
         })
 
         /**
@@ -3978,7 +3978,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0800', 0, async function (done) {
-            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0800', 'test.jpg', 'image/jpeg', 'Callback');
+            testPixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0800', 'test.jpg', 'image/jpeg', 'Callback');
         })
 
         /**
@@ -3993,7 +3993,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0900', 0, async function (done) {
-            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0900', 'test.dng', 'image/raw', 'Callback');
+            testPixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_IMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0900', 'test.dng', 'image/raw', 'Callback');
         })
 
         /**
@@ -4008,7 +4008,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0100', 0, async function (done) {
-            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0100', 'wrong_suffix_jpg.jpeg', 'image/jpeg', 'Promise');
+            testImageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0100', 'wrong_suffix_jpg.jpeg', 'image/jpeg', 'Promise');
         })
 
         /**
@@ -4023,7 +4023,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0200', 0, async function (done) {
-            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0200', 'wrong_suffix_jpeg.png', 'image/jpeg', 'Promise');
+            testImageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0200', 'wrong_suffix_jpeg.png', 'image/jpeg', 'Promise');
         })
 
         /**
@@ -4038,7 +4038,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0300', 0, async function (done) {
-            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0300', 'wrong_suffix_png.gif', 'image/png', 'PromiseNumber');
+            testImageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0300', 'wrong_suffix_png.gif', 'image/png', 'PromiseNumber');
         })
 
         /**
@@ -4053,7 +4053,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0400', 0, async function (done) {
-            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0400', 'wrong_suffix_gif.tiff', 'image/gif', 'PromiseNumber');
+            testImageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_PROMISE_0400', 'wrong_suffix_gif.tiff', 'image/gif', 'PromiseNumber');
         })
 
         /**
@@ -4068,7 +4068,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0500', 0, async function (done) {
-            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0500', 'wrong_suffix_webp.ico', 'image/webp', 'Callback');
+            testImageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0500', 'wrong_suffix_webp.ico', 'image/webp', 'Callback');
         })
 
         /**
@@ -4083,7 +4083,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0600', 0, async function (done) {
-            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0600', 'wrong_suffix_ico.svg', 'image/x-ico', 'Callback');
+            testImageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0600', 'wrong_suffix_ico.svg', 'image/x-ico', 'Callback');
         })
 
         /**
@@ -4098,7 +4098,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0700', 0, async function (done) {
-            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0700', 'wrong_suffix_svg.bmp', 'image/svg+xml', 'Callback');
+            testImageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0700', 'wrong_suffix_svg.bmp', 'image/svg+xml', 'Callback');
         })
 
         /**
@@ -4113,7 +4113,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0800', 0, async function (done) {
-            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0800', 'wrong_suffix_bmp.dng', 'image/bmp', 'CallbackNumber');
+            testImageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0800', 'wrong_suffix_bmp.dng', 'image/bmp', 'CallbackNumber');
         })
 
         /**
@@ -4128,7 +4128,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0900', 0, async function (done) {
-            imageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0900', 'wrong_suffix_dng.jpg', 'image/raw', 'CallbackNumber');
+            testImageSourceImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_GETIMAGEINFO_MIMETYPE_CALLBACK_0900', 'wrong_suffix_dng.jpg', 'image/raw', 'CallbackNumber');
         })
 
         /**
@@ -4143,7 +4143,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0100', 0, async function (done) {
-            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0100', 'wrong_suffix_jpeg.png', 'image/jpeg', 'Promise');
+            testPixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0100', 'wrong_suffix_jpeg.png', 'image/jpeg', 'Promise');
         })
 
         /**
@@ -4158,7 +4158,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0200', 0, async function (done) {
-            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0200', 'wrong_suffix_png.gif', 'image/png', 'Promise');
+            testPixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0200', 'wrong_suffix_png.gif', 'image/png', 'Promise');
         })
 
         /**
@@ -4173,7 +4173,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0300', 0, async function (done) {
-            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0300', 'wrong_suffix_gif.tiff', 'image/gif', 'PromiseNumber');
+            testPixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0300', 'wrong_suffix_gif.tiff', 'image/gif', 'PromiseNumber');
         })
 
         /**
@@ -4188,7 +4188,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0400', 0, async function (done) {
-            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0400', 'wrong_suffix_bmp.dng', 'image/bmp', 'PromiseNumber');
+            testPixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_PROMISE_0400', 'wrong_suffix_bmp.dng', 'image/bmp', 'PromiseNumber');
         })
 
         /**
@@ -4203,7 +4203,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0500', 0, async function (done) {
-            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0500', 'wrong_suffix_webp.ico', 'image/webp', 'Callback');
+            testPixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0500', 'wrong_suffix_webp.ico', 'image/webp', 'Callback');
         })
 
         /**
@@ -4218,7 +4218,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0600', 0, async function (done) {
-            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0500', 'wrong_suffix_ico.svg', 'image/x-ico', 'Callback');
+            testPixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0500', 'wrong_suffix_ico.svg', 'image/x-ico', 'Callback');
         })
 
         /**
@@ -4233,7 +4233,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0700', 0, async function (done) {
-            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0700', 'wrong_suffix_svg.bmp', 'image/svg+xml', 'Callback');
+            testPixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0700', 'wrong_suffix_svg.bmp', 'image/svg+xml', 'Callback');
         })
 
         /**
@@ -4248,7 +4248,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0800', 0, async function (done) {
-            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0800', 'wrong_suffix_jpg.jpeg', 'image/jpeg', 'Callback');
+            testPixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0800', 'wrong_suffix_jpg.jpeg', 'image/jpeg', 'Callback');
         })
 
         /**
@@ -4263,7 +4263,7 @@ export default function imageJsTest() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0900', 0, async function (done) {
-            pixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0900', 'wrong_suffix_dng.jpg', 'image/raw', 'Callback');
+            testPixelMapImageInfoMimetype(done, 'SUB_MULTIMEDIA_WRONGSUFFIXIMAGE_BYPIXELMAP_GETIMAGEINFO_MIMETYPE_CALLBACK_0900', 'wrong_suffix_dng.jpg', 'image/raw', 'Callback');
         })
         
         /**
