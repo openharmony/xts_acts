@@ -178,5 +178,68 @@ describe('rdbStorePluginLibsTest', function () {
         console.log(TAG + "*************  testPluginLibs0006 end  *************");
     })
 
+    /**
+     * @tc.name testPluginLibs0007
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PluginLibsEtsAPITest_0700
+     * @tc.desc Test plugin libs count exceeds 16
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 1
+     */
+    it('testPluginLibs0007', 0, async function () {
+        console.log(TAG + "************* testPluginLibs0007 start *************");
+        try {
+            storeConfig.pluginLibs = null;
+            rdbStore = await data_relationalStore.getRdbStore(context, storeConfig);
+            expect(rdbStore != null).assertTrue();
+        } catch (e) {
+            console.log("testPluginLibs0007 getRdbStore err: failed, err: code=" + e.code + " message=" + e.message);
+            expect().assertFail();
+        }
+        console.log(TAG + "*************  testPluginLibs0007 end  *************");
+    })
+
+    /**
+     * @tc.name testPluginLibs0008
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PluginLibsEtsAPITest_0800
+     * @tc.desc Test plugin libs count exceeds 16
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 1
+     */
+    it('testPluginLibs0008', 0, async function () {
+        console.log(TAG + "************* testPluginLibs0008 start *************");
+        try {
+            storeConfig.pluginLibs = undefined;
+            rdbStore = await data_relationalStore.getRdbStore(context, storeConfig);
+            expect(rdbStore != null).assertTrue();
+        } catch (e) {
+            console.log("testPluginLibs0008 getRdbStore err: failed, err: code=" + e.code + " message=" + e.message);
+            expect().assertFail();
+        }
+        console.log(TAG + "*************  testPluginLibs0008 end  *************");
+    })
+
+    /**
+     * @tc.name testPluginLibs0009
+     * @tc.number SUB_DistributedData_RelationalStore_SDK_PluginLibsEtsAPITest_0900
+     * @tc.desc Test plugin libs count exceeds 16
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 1
+     */
+    it('testPluginLibs0009', 0, async function () {
+        console.log(TAG + "************* testPluginLibs0008 start *************");
+        try {
+            storeConfig.pluginLibs = "./rdbstore";
+            rdbStore = await data_relationalStore.getRdbStore(context, storeConfig);
+            expect(rdbStore != null).assertTrue();
+        } catch (e) {
+            console.log("testPluginLibs0009 getRdbStore err: failed, err: code=" + e.code + " message=" + e.message);
+            expect().assertFail();
+        }
+        console.log(TAG + "*************  testPluginLibs0009 end  *************");
+    })
+
 })
 }
