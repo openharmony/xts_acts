@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function typeNodeTextSelectableMode1Test() {
-  describe('typeNodeTextSelectableMode1Test', function () {
-    beforeEach(async function (done) {
+  describe('typeNodeTextSelectableMode1Test', () => {
+    beforeEach(async (done: Function) => {
       console.info("TextSelectableMode1Test beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/Text/TextSelectableMode1",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/Text/TextSelectableMode1",
       }
       try {
         router.clear();
@@ -50,7 +50,7 @@ export default function typeNodeTextSelectableMode1Test() {
      * @tc.type :
      * @tc.size :
      */
-    it('TextSelectableMode1Test_0100', 0, async function (done) {
+    it('TextSelectableMode1Test_0100', 0, async (done: Function) => {
       console.info('TextSelectableMode1Test_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -58,7 +58,7 @@ export default function typeNodeTextSelectableMode1Test() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('TypeNode_TextSelectableMode1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TextSelectableMode1Test_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.textSelectable).assertEqual('selectable-focusable');
       console.info('[TextSelectableMode1Test_0100] END');

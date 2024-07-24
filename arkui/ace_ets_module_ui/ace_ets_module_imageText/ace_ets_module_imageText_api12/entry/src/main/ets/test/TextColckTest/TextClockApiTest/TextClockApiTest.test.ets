@@ -14,14 +14,14 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import router from "@ohos.router";
-import CommonFunc from "../../../MainAbility/utils/Common";
+import CommonFunc from "../../../MainAbility/common/Common";
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from "@ohos.UiTest";
 
 export default function TextClockApiTest() {
-  describe("TextClockApiTest", function () {
-    beforeEach(async function (done) {
+  describe("TextClockApiTest", () => {
+    beforeEach(async (done: Function) => {
       console.info("TextClockApiTest beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/TextClock/TextClockApi/TextClockApi",
       }
       try {
@@ -40,7 +40,7 @@ export default function TextClockApiTest() {
       console.info("TextClockApiTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("TextClockApiTest after each called");
     });
@@ -53,7 +53,7 @@ export default function TextClockApiTest() {
      * @tc.type
     * @tc.size
      */
-    it("TextClockApiTest_001", 0, async function (done) {
+    it("TextClockApiTest_001", 0, async (done: Function) => {
       console.info("[TextClockApiTest_001] START");
       await CommonFunc.sleep(1000);
       let started = getInspectorByKey("started");
@@ -71,7 +71,7 @@ export default function TextClockApiTest() {
      * @tc.type
     * @tc.size
      */
-    it("TextClockApiTest_002", 0, async function (done) {
+    it("TextClockApiTest_002", 0, async (done: Function) => {
       console.info("[TextClockApiTest_002] START");
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();
@@ -80,7 +80,7 @@ export default function TextClockApiTest() {
       await CommonFunc.sleep(1000);
       let TimeValue = getInspectorByKey("TimeValue");
       console.info("TimeValue11--" + JSON.parse(TimeValue).$attrs.content);
-      let time1 = Number(JSON.parse(TimeValue).$attrs.content)
+      let time1: number = Number(JSON.parse(TimeValue).$attrs.content)
       console.info("time1--" + time1);
       await CommonFunc.sleep(1000);
       let start: Component = await driver.findComponent(ON.id("start"));
@@ -88,7 +88,7 @@ export default function TextClockApiTest() {
       let TimeValue2 = getInspectorByKey("TimeValue2");
       console.info("TimeValue22--" + JSON.parse(TimeValue2).$attrs.content);
       await CommonFunc.sleep(1000);
-      let time2 = Number(JSON.parse(TimeValue).$attrs.content)
+      let time2: number = Number(JSON.parse(TimeValue).$attrs.content)
       console.info("time2--" + time2);
       await CommonFunc.sleep(1000);
       expect(Math.abs(time2 - time1) <= 3).assertTrue();

@@ -14,12 +14,12 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, MouseButton, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function searchTest() {
-  describe('searchTest', function () {
-    beforeEach(async function (done) {
+  describe('searchTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("searchTest beforeEach start");
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function searchTest() {
       console.info("searchTest foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("searchTest after each called");
     });
@@ -51,7 +51,7 @@ export default function searchTest() {
      * @tc.level      : Level 3
      */
 
-    it('searchTest_001', 0, async function (done) {
+    it('searchTest_001', 0, async (done: Function) => {
       console.info('[searchTest_001] START');
 
       await CommonFunc.sleep(1000);
@@ -62,8 +62,8 @@ export default function searchTest() {
       let strJson = getInspectorByKey('searchTestText3');
       let strJson2 = getInspectorByKey('searchTestText1');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
-      let obj2 = JSON.parse(strJson2);
+      let obj: ESObject = JSON.parse(strJson);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[searchTest_001] component obj is: " + JSON.stringify(obj));
       console.info("[searchTest_001] component obj2 is: " + JSON.stringify(obj2));
       await CommonFunc.sleep(1000);
@@ -83,7 +83,7 @@ export default function searchTest() {
      * @tc.level      : Level 3
      */
 
-    it('searchTest_002', 0, async function (done) {
+    it('searchTest_002', 0, async (done: Function) => {
       console.info('[searchTest_002] START');
 
       await CommonFunc.sleep(1000);
@@ -98,8 +98,8 @@ export default function searchTest() {
       let strJson = getInspectorByKey('searchTestText3');
       let strJson2 = getInspectorByKey('searchTestText1');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
-      let obj2 = JSON.parse(strJson2);
+      let obj: ESObject = JSON.parse(strJson);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[searchTest_002] component obj2 is: " + JSON.stringify(obj2));
       await CommonFunc.sleep(1000);
       expect(obj2.$attrs.content).assertEqual('false');
@@ -117,7 +117,7 @@ export default function searchTest() {
      * @tc.level      : Level 3
      */
 
-    it('searchTest_003', 0, async function (done) {
+    it('searchTest_003', 0, async (done: Function) => {
       console.info('[searchTest_003] START');
 
       await CommonFunc.sleep(1000);
@@ -138,7 +138,7 @@ export default function searchTest() {
 
       let strJson2 = getInspectorByKey('searchTestText2');
       await CommonFunc.sleep(200);
-      let obj2 = JSON.parse(strJson2);
+      let obj2: ESObject = JSON.parse(strJson2);
       console.info("[searchTest_002] component obj2 is: " + JSON.stringify(obj2));
       await CommonFunc.sleep(1000);
       expect(obj2.$attrs.content).assertEqual('true');

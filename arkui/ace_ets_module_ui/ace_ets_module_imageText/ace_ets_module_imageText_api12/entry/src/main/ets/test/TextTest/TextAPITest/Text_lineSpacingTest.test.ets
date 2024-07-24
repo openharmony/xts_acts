@@ -14,14 +14,14 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/utils/Common';
+import CommonFunc from '../../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function Text_lineSpacingTest() {
-  describe('Text_lineSpacingTest', function () {
-    beforeEach(async function (done) {
+  describe('Text_lineSpacingTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("Text_lineSpacingTest beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Text/TextAPI/lineSpacing",
       }
       try {
@@ -40,7 +40,7 @@ export default function Text_lineSpacingTest() {
       console.info("Text_lineSpacingTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("Text_lineSpacingTest after each called");
     });
@@ -53,7 +53,7 @@ export default function Text_lineSpacingTest() {
      * @tc.type
     * @tc.size
      */
-    it('Text_lineSpacingTest_001', 0, async function (done) {
+    it('Text_lineSpacingTest_001', 0, async (done: Function) => {
       console.info('[Text_lineSpacingTest_001] START');
       await CommonFunc.sleep(1000);
       let driver: Driver = Driver.create();

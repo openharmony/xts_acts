@@ -18,10 +18,10 @@ import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function dstIndexTest() {
-  describe('dstIndexTest', function () {
-    beforeEach(async function (done) {
+  describe('dstIndexTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("dstIndexTest beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Matrix/dstIndex",
       }
       try {
@@ -40,7 +40,7 @@ export default function dstIndexTest() {
       console.info("dstIndexTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("dstIndexTest after each called");
     });
@@ -53,7 +53,7 @@ export default function dstIndexTest() {
      * @tc.type
      * @tc.size
      */
-    it('dstIndexTest_001', 0, async function (done) {
+    it('dstIndexTest_001', 0, async (done: Function) => {
       console.info('[dstIndexTest_001] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();

@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 
 
 export default function EffectScope() {
-  describe('EffectScope', function () {
-    beforeEach(async function (done) {
+  describe('EffectScope', () => {
+    beforeEach(async (done: Function) => {
       console.info("EffectScope beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/SymbolGlyph/EffectScope",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/SymbolGlyph/EffectScope",
       }
       try {
         router.clear();
@@ -51,10 +51,10 @@ export default function EffectScope() {
      * @tc.type : 
      * @tc.size :
      */
-    it('EffectScope_0100', 0, async function (done) {
+    it('EffectScope_0100', 0, async (done: Function) => {
       console.info('EffectScope_0100 START');
       let strJson = getInspectorByKey('LAYER');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[EffectScope_0100] component obj is: " + JSON.stringify(obj));
       console.info("[EffectScope_0100] symbolEffect: " + JSON.stringify(obj.$attrs.symbolEffect));
       expect(obj.$attrs.symbolEffect).assertEqual("{\"effectType\":7,\"scopeType\":0,\"commonSubType\":0,\"fillStyle\":0,\"isTxtActive\":false,\"triggerNum\":0}");
@@ -70,10 +70,10 @@ export default function EffectScope() {
      * @tc.type : 
      * @tc.size :
      */
-    it('EffectScope_0200', 0, async function (done) {
+    it('EffectScope_0200', 0, async (done: Function) => {
       console.info('EffectScope_0100 START');
       let strJson = getInspectorByKey('WHOLE');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[EffectScope_0200] component obj is: " + JSON.stringify(obj));
       console.info("[EffectScope_0200] symbolEffect: " + JSON.stringify(obj.$attrs.symbolEffect));
       expect(obj.$attrs.symbolEffect).assertEqual("{\"effectType\":7,\"scopeType\":1,\"commonSubType\":0,\"fillStyle\":0,\"isTxtActive\":false,\"triggerNum\":0}");
