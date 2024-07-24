@@ -14,8 +14,7 @@
             if ((start + 1000) < Date.now()) { ctrl.close() };
          }
      });
-      function test() {
-            let url = 'https://w3.org/xhr';
+      function test(url) {
             fetch(url, {
                   method: 'POST',
                   body: rs,
@@ -23,8 +22,7 @@
             }).then(r => JSON.stringify( r.json()) ).then(console.log).catch();
             console.log('execute end');
       }
-       function testError() {
-            let url = 'custom://w3.org/xhrError';
+       function testError(url) {
             fetch(url, {
                 method: 'POST',
                 body: rs,

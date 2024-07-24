@@ -73,7 +73,7 @@ struct webViewSdkSchemeHandlerEnhanced {
                   console.info('key==>' + this.emitKey)
                   this.controller.loadUrl($rawfile('chunked_post_stream.html'))
                   await Utils.sleep(2000)
-                  this.controller.runJavaScript('test()', (error, result) => {
+                  this.controller.runJavaScript('test(\'https://www.example.com/xhr\')', (error, result) => {
                   })
                   await Utils.sleep(1000)
                   switch (this.emitKey) {
