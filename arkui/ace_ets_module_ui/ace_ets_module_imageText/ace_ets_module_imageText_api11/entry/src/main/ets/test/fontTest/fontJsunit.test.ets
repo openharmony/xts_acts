@@ -69,7 +69,7 @@ export default function fontJsunit() {
       let strJson = getInspectorByKey('fontName');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[GridColOffsetJsunit_0200] component  strJson:" + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual("");
+      expect(obj.$attrs.content).assertEqual("HarmonyOS Sans Italic");
       done();
     });
 

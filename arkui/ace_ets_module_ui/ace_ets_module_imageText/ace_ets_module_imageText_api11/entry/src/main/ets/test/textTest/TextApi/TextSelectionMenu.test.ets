@@ -55,12 +55,12 @@ export default function TextSelectionMenu() {
       console.info('[TextSelectionMenu_001] START');
       await CommonFunc.sleep(1000);
 
-      let driver= Driver.create();
+      let driver = Driver.create();
       await CommonFunc.sleep(1000);
       let text3 = CommonFunc.getComponentRectOnScreen('Text_bindSelectionMenu_test')
-      await driver.mouseClick({
-        x:Number((text3.right-text3.left)*0.5+text3.left),
-        y:Number((text3.bottom-text3.top)*0.5+text3.top)}, MouseButton.MOUSE_BUTTON_RIGHT)
+      let x: number = Math.floor(((text3.right-text3.left)*0.5+text3.left))
+      let y: number = Math.floor(((text3.bottom-text3.top)*0.5+text3.top))
+      await driver.mouseClick({ x: x, y: y}, MouseButton.MOUSE_BUTTON_RIGHT)
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('textApi_text1_test');
@@ -84,12 +84,12 @@ export default function TextSelectionMenu() {
       console.info('[TextSelectionMenu_002] START');
       await CommonFunc.sleep(1000);
 
-      let driver= Driver.create();
+      let driver = Driver.create();
       await CommonFunc.sleep(1000);
       let test4 = CommonFunc.getComponentRectOnScreen('text_TextResponseType')
-      await driver.longClick(
-        Number((test4.right-test4.left)*0.2+test4.left),
-        Number((test4.bottom-test4.top)*0.5+test4.top))
+      let x: number = Math.floor((test4.right-test4.left)*0.2+test4.left)
+      let y: number = Math.floor((test4.bottom-test4.top)*0.5+test4.top)
+      await driver.longClick(x, y)
       await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('textApi_text2');
