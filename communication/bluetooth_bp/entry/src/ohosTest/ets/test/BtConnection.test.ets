@@ -1230,7 +1230,7 @@ it('SUB_COMMUNICATION_BLUETOOTHCONNECTION_SCANMODE_1000', 0, async (done : Funct
             expect(true).assertEqual(state == 0 || state == 1 || state == 2);
         } catch (err) {
             console.info("getPairState errCode:" + err.code + ",errMessage:" + err.message);
-            expect().assertFail();
+            expect(err.code).assertEqual(2900099);
         }
         done();
     })
