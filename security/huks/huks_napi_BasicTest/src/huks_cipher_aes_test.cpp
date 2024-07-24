@@ -13,14 +13,17 @@
  * limitations under the License.
  */
 #include "huks_cipher_aes_test.h"
-#include "huks_cipher_aes_test_common.h"
 
 #include <gtest/gtest.h>
 
+#include "huks_cipher_aes_test_common.h"
+
 using namespace testing::ext;
-namespace Unittest::AesCipher {
-class HuksCipherAESTest : public testing::Test {
-public:
+namespace Unittest::AesCipher
+{
+class HuksCipherAESTest : public testing::Test
+{
+   public:
     static void SetUpTestCase(void);
 
     static void TearDownTestCase(void);
@@ -30,168 +33,65 @@ public:
     void TearDown();
 };
 
-void HuksCipherAESTest::SetUpTestCase(void)
-{
-}
+void HuksCipherAESTest::SetUpTestCase(void) {}
 
-void HuksCipherAESTest::TearDownTestCase(void)
-{
-}
+void HuksCipherAESTest::TearDownTestCase(void) {}
 
-void HuksCipherAESTest::SetUp()
-{
-    
-}
+void HuksCipherAESTest::SetUp() {}
 
-void HuksCipherAESTest::TearDown()
-{
-}
+void HuksCipherAESTest::TearDown() {}
 
 static struct OH_Huks_Param g_genParams015[] = {
-    {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_AES
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_ENCRYPT | OH_HUKS_KEY_PURPOSE_DECRYPT
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_AES_KEY_SIZE_256
-    }, {
-        .tag = OH_HUKS_TAG_PADDING,
-        .uint32Param = OH_HUKS_PADDING_NONE
-    }, {
-        .tag = OH_HUKS_TAG_BLOCK_MODE,
-        .uint32Param = OH_HUKS_MODE_CBC
-    }
-};
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_AES},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_ENCRYPT | OH_HUKS_KEY_PURPOSE_DECRYPT},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_AES_KEY_SIZE_256},
+    {.tag = OH_HUKS_TAG_PADDING, .uint32Param = OH_HUKS_PADDING_NONE},
+    {.tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_CBC},
+    {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE}};
 static struct OH_Huks_Param g_encryptParams015[] = {
-    {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_AES
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_ENCRYPT
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_AES_KEY_SIZE_256
-    }, {
-        .tag = OH_HUKS_TAG_PADDING,
-        .uint32Param = OH_HUKS_PADDING_NONE
-    }, {
-        .tag = OH_HUKS_TAG_BLOCK_MODE,
-        .uint32Param = OH_HUKS_MODE_CBC
-    }, {
-        .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_NONE
-    }, {
-        .tag = OH_HUKS_TAG_IV,
-        .blob = {
-            .size = IV_SIZE,
-            .data = (uint8_t *)IV
-        }
-    }
-};
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_AES},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_ENCRYPT},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_AES_KEY_SIZE_256},
+    {.tag = OH_HUKS_TAG_PADDING, .uint32Param = OH_HUKS_PADDING_NONE},
+    {.tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_CBC},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_NONE},
+    {.tag = OH_HUKS_TAG_IV, .blob = {.size = IV_SIZE, .data = (uint8_t *)IV}},
+    {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE}};
 static struct OH_Huks_Param g_decryptParams015[] = {
-    {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_AES
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_DECRYPT
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_AES_KEY_SIZE_256
-    }, {
-        .tag = OH_HUKS_TAG_PADDING,
-        .uint32Param = OH_HUKS_PADDING_NONE
-    }, {
-        .tag = OH_HUKS_TAG_BLOCK_MODE,
-        .uint32Param = OH_HUKS_MODE_CBC
-    }, {
-        .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_NONE
-    }, {
-        .tag = OH_HUKS_TAG_IV,
-        .blob = {
-            .size = IV_SIZE,
-            .data = (uint8_t *)IV
-        }
-    }
-};
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_AES},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_DECRYPT},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_AES_KEY_SIZE_256},
+    {.tag = OH_HUKS_TAG_PADDING, .uint32Param = OH_HUKS_PADDING_NONE},
+    {.tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_CBC},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_NONE},
+    {.tag = OH_HUKS_TAG_IV, .blob = {.size = IV_SIZE, .data = (uint8_t *)IV}},
+    {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE}};
 
 static struct OH_Huks_Param g_genParams019[] = {
-    {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_AES
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_ENCRYPT | OH_HUKS_KEY_PURPOSE_DECRYPT
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_AES_KEY_SIZE_256
-    }, {
-        .tag = OH_HUKS_TAG_PADDING,
-        .uint32Param = OH_HUKS_PADDING_NONE
-    }, {
-        .tag = OH_HUKS_TAG_BLOCK_MODE,
-        .uint32Param = OH_HUKS_MODE_CTR
-    }
-};
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_AES},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_ENCRYPT | OH_HUKS_KEY_PURPOSE_DECRYPT},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_AES_KEY_SIZE_256},
+    {.tag = OH_HUKS_TAG_PADDING, .uint32Param = OH_HUKS_PADDING_NONE},
+    {.tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_CTR},
+    {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE}};
 static struct OH_Huks_Param g_encryptParams019[] = {
-    {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_AES
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_ENCRYPT
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_AES_KEY_SIZE_256
-    }, {
-        .tag = OH_HUKS_TAG_PADDING,
-        .uint32Param = OH_HUKS_PADDING_NONE
-    }, {
-        .tag = OH_HUKS_TAG_BLOCK_MODE,
-        .uint32Param = OH_HUKS_MODE_CTR
-    }, {
-        .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_NONE
-    }, {
-        .tag = OH_HUKS_TAG_IV,
-        .blob = {
-            .size = IV_SIZE,
-            .data = (uint8_t *)IV
-        }
-    }
-};
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_AES},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_ENCRYPT},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_AES_KEY_SIZE_256},
+    {.tag = OH_HUKS_TAG_PADDING, .uint32Param = OH_HUKS_PADDING_NONE},
+    {.tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_CTR},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_NONE},
+    {.tag = OH_HUKS_TAG_IV, .blob = {.size = IV_SIZE, .data = (uint8_t *)IV}},
+    {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE}};
 static struct OH_Huks_Param g_decryptParams019[] = {
-    {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_AES
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_DECRYPT
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_AES_KEY_SIZE_256
-    }, {
-        .tag = OH_HUKS_TAG_PADDING,
-        .uint32Param = OH_HUKS_PADDING_NONE
-    }, {
-        .tag = OH_HUKS_TAG_BLOCK_MODE,
-        .uint32Param = OH_HUKS_MODE_CTR
-    }, {
-        .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_NONE
-    }, {
-        .tag = OH_HUKS_TAG_IV,
-        .blob = {
-            .size = IV_SIZE,
-            .data = (uint8_t *)IV
-        }
-    }
-};
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_AES},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_DECRYPT},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_AES_KEY_SIZE_256},
+    {.tag = OH_HUKS_TAG_PADDING, .uint32Param = OH_HUKS_PADDING_NONE},
+    {.tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_CTR},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_NONE},
+    {.tag = OH_HUKS_TAG_IV, .blob = {.size = IV_SIZE, .data = (uint8_t *)IV}},
+    {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE}};
 
 /**
  * @tc.name: HuksCipherAESTest.Security_HUKS_NAPI_Cipher_AES_0100
@@ -201,7 +101,7 @@ static struct OH_Huks_Param g_decryptParams019[] = {
 HWTEST_F(HuksCipherAESTest, Security_HUKS_NAPI_Cipher_AES_0100, TestSize.Level0)
 {
     char tmpKeyAlias[] = "HksAESCipherKeyAliasTest015";
-    struct OH_Huks_Blob keyAlias = { strlen(tmpKeyAlias), (uint8_t *)tmpKeyAlias };
+    struct OH_Huks_Blob keyAlias = {strlen(tmpKeyAlias), (uint8_t *)tmpKeyAlias};
 
     struct OH_Huks_ParamSet *genParamSet = nullptr;
     OH_Huks_Result ret = InitParamSet(&genParamSet, g_genParams015, sizeof(g_genParams015) / sizeof(OH_Huks_Param));
@@ -231,9 +131,8 @@ HWTEST_F(HuksCipherAESTest, Security_HUKS_NAPI_Cipher_AES_0100, TestSize.Level0)
 HWTEST_F(HuksCipherAESTest, Security_HUKS_NAPI_Cipher_AES_0200, TestSize.Level0)
 {
     char tmpKeyAlias[] = "HksAESDecryptKeyAliasTest022";
-    struct OH_Huks_Blob keyAlias = { strlen(tmpKeyAlias), (uint8_t *)tmpKeyAlias };
-    struct OH_Huks_Blob inData = { g_inData.length(),
-                              (uint8_t *)g_inData.c_str() };
+    struct OH_Huks_Blob keyAlias = {strlen(tmpKeyAlias), (uint8_t *)tmpKeyAlias};
+    struct OH_Huks_Blob inData = {g_inData.length(), (uint8_t *)g_inData.c_str()};
 
     /* 1. Generate Key */
     struct OH_Huks_ParamSet *genParamSet = nullptr;
@@ -249,12 +148,12 @@ HWTEST_F(HuksCipherAESTest, Security_HUKS_NAPI_Cipher_AES_0200, TestSize.Level0)
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "InitParamSet failed.";
     // Init
     uint8_t handleE[sizeof(uint64_t)] = {0};
-    struct OH_Huks_Blob handleEncrypt = { sizeof(uint64_t), handleE };
+    struct OH_Huks_Blob handleEncrypt = {sizeof(uint64_t), handleE};
     ret = OH_Huks_InitSession(&keyAlias, encryptParamSet, &handleEncrypt, nullptr);
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "Init failed.";
     // Update & Finish
     uint8_t cipher[AES_COMMON_SIZE] = {0};
-    struct OH_Huks_Blob cipherText = { AES_COMMON_SIZE, cipher };
+    struct OH_Huks_Blob cipherText = {AES_COMMON_SIZE, cipher};
     ret = TestUpdateLoopFinish(&handleEncrypt, encryptParamSet, &inData, &cipherText);
     EXPECT_NE(HksMemCmp(inData.data, cipherText.data, inData.size), OH_HUKS_SUCCESS) << "cipherText equals inData";
 
@@ -264,7 +163,7 @@ HWTEST_F(HuksCipherAESTest, Security_HUKS_NAPI_Cipher_AES_0200, TestSize.Level0)
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "InitParamSet failed.";
     // Init
     uint8_t handleD[sizeof(uint64_t)] = {0};
-    struct OH_Huks_Blob handleDecrypt = { sizeof(uint64_t), handleD };
+    struct OH_Huks_Blob handleDecrypt = {sizeof(uint64_t), handleD};
     ret = OH_Huks_InitSession(&keyAlias, decryptParamSet, &handleDecrypt, nullptr);
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "Init failed.";
     // Update loop
@@ -283,4 +182,4 @@ HWTEST_F(HuksCipherAESTest, Security_HUKS_NAPI_Cipher_AES_0200, TestSize.Level0)
     OH_Huks_FreeParamSet(&decryptParamSet);
 }
 
-} // namespace Unittest::AesCipher
+}  // namespace Unittest::AesCipher
