@@ -81,6 +81,7 @@ import bindPopupJsunit from './MenuTest/BindPopupJsunit.test.ets';
 import CustomDialogRouter from './customDialogTest/CustomDialogRouter.test'
 
 export default function testsuite() {
+  menuEnabledJsunit();
   ActionSheetTrue()
   CustomDialogTrue();
   openCustomDialogTrue();
@@ -143,7 +144,6 @@ export default function testsuite() {
   DialogJsunit();
   PanelUIJsunit();
   ActionSheetJsunit();
-  menuEnabledJsunit();
   responseRegionJsunit();
   bindMenuJsunitt()
   bindPopupJsunit();
