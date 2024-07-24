@@ -19,7 +19,7 @@
 
 </body>
 <script>
-    let ele=document.getElementById('content');
+    let ele = document.getElementById('content');
     let loadContent;
     window.onload = function() {
         loadContent = 'load complete';
@@ -46,7 +46,7 @@
         }
     }
     function exitFullScreen(el) {
-        var el= document,
+        var el = document,
             cfs = el.cancelFullScreen || el.webkitCancelFullScreen || el.mozCancelFullScreen || el.exitFullScreen,
             wscript;
         if (typeof cfs !== 'undefined' && cfs) {
@@ -67,7 +67,7 @@
         fullScreen(content);
     };
     var closeBtn = document.getElementById('closeBtn');
-    closeBtn.onclick = function(){
+    closeBtn.onclick = function() {
         exitFullScreen();
     };
 
@@ -78,7 +78,7 @@
 
     function testFullScreen() {
         if (document.fullscreenElement) {
-            console.log('already fullscreen return')
+            console.log('already fullscreen return');
             return null;
         }
         let content = document.getElementById('content');
@@ -90,7 +90,7 @@
     }
 
     function checkIsFullScreen() {
-        var isFull =!! (document.webkitIsFullScreen || document.mozFullScreen || document.msFullscreenElement || document.fullscreenElement);
+        var isFull = !! (document.webkitIsFullScreen || document.mozFullScreen || document.msFullscreenElement || document.fullscreenElement);
         return isFull;
     }
 </script>

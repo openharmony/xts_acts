@@ -11,19 +11,21 @@
             uploaded += buf.byteLength;
             crypto.getRandomValues(buf);
             ctrl.enqueue(buf);
-            if ((start + 1000) < Date.now()) ctrl.close();
+            if ((start + 1000) < Date.now()) { ctrl.close() };
          }
      });
       function test() {
-            fetch('https://www.w3.org/xhr', {
+            let url = 'https://www.baidu.com/xhr'
+            fetch(url, {
                   method: 'POST',
                   body: rs,
                   duplex: 'half'
             }).then(r => JSON.stringify( r.json()) ).then(console.log).catch();
-            console.log('execute end')
+            console.log('execute end');
       }
        function testError() {
-            fetch('custom://www.w3.org/xhrError', {
+            let url = 'custom://www.baidu.com/xhrError'
+            fetch(url, {
                 method: 'POST',
                 body: rs,
                 duplex: 'half'
