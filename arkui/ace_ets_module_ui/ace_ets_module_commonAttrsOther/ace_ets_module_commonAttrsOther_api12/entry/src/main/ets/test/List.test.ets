@@ -35,6 +35,7 @@ import Bgde_InactiveColor_APITest from './CommonTest/BackgroundEffectTest/Backgr
 import getPageInfoByUniqueIdTest from './UIContextTest/getPageInfoByUniqueId.test'
 import setFrameRateRangeTest from './UIContextTest/setFrameRateRange.test'
 import AttributeUpdaterTest from './AttributeUpdaterTest/AttributeUpdater.test'
+import componentSnapshotTest from './componentSnapshotTest/componentSnapshot.test'
 export default function testsuite() {
   OverlayManagerTest_001()
   OverlayManagerTest_002()
@@ -59,4 +60,5 @@ export default function testsuite() {
   getPageInfoByUniqueIdTest();
   setFrameRateRangeTest();
   AttributeUpdaterTest();
+  componentSnapshotTest();
 }
