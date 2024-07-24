@@ -1493,6 +1493,7 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawSingleCharacter, TestSize.Level1
     const char* strThree = "";
     EXPECT_EQ(OH_Drawing_CanvasDrawSingleCharacter(canvas, strThree, font, x, y), OH_DRAWING_ERROR_INVALID_PARAMETER);
     OH_Drawing_FontDestroy(font);
+    OH_Drawing_CanvasDestroy(canvas);
 }
 } // namespace Drawing
 } // namespace Rosen
