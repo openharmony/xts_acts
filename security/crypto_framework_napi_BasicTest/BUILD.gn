@@ -35,11 +35,11 @@ ohos_moduletest_suite("ActsCryptoFrameworkNAPITest") {
   part_name = "crypto_framework"
 
   sources = [
+    "src/crypto_framework_asym_key_test.cpp",
     "src/crypto_framework_digest_test.cpp",
-    "src/crypto_framework_sym_key_test.cpp",
     "src/crypto_framework_sym_cipher_test.cpp",
+    "src/crypto_framework_sym_key_test.cpp",
     "src/crypto_framework_verify_test.cpp",
-    "src/crypto_framework_asym_key_test.cpp"
   ]
 
   include_dirs = [
@@ -49,16 +49,16 @@ ohos_moduletest_suite("ActsCryptoFrameworkNAPITest") {
     "$root_path/base/security/crypto_framework/common/inc",
     "$root_path/base/security/crypto_framework/interfaces/innerkits/crypto_operation",
   ]
-  
+
   external_deps = [
     "c_utils:utils",
     "hilog:libhilog",
   ]
-  
+
   deps = [
-    "$root_path/third_party/openssl:libcrypto_shared",
     "$root_path/base/security/crypto_framework/common:crypto_plugin_common",
     "$root_path/base/security/crypto_framework/frameworks:crypto_framework_lib",
     "$root_path/base/security/crypto_framework/frameworks/native:ohcrypto",
+    "$root_path/third_party/openssl:libcrypto_shared",
   ]
 }
