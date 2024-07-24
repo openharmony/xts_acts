@@ -15,7 +15,7 @@
          }
      });
       function test() {
-            let url = 'https://www.baidu.com/xhr'
+            let url = 'https://w3.org/xhr';
             fetch(url, {
                   method: 'POST',
                   body: rs,
@@ -24,7 +24,7 @@
             console.log('execute end');
       }
        function testError() {
-            let url = 'custom://www.baidu.com/xhrError'
+            let url = 'custom://w3.org/xhrError';
             fetch(url, {
                 method: 'POST',
                 body: rs,
