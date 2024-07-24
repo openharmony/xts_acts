@@ -1476,20 +1476,22 @@ HWTEST_F(DrawingNativeCanvasTest, testCanvasReadPixelsToBitmapMaximum, TestSize.
  */
 HWTEST_F(DrawingNativeCanvasTest, testCanvasDrawSingleCharacter, TestSize.Level1)
 {
+    // 1. Create a canvas object by calling OH_Drawing_CanvasCreate
+    OH_Drawing_Canvas *canvas = OH_Drawing_CanvasCreate();
     const char* strOne = "a";
     const char* strTwo = "你好";
     OH_Drawing_Font *font = OH_Drawing_FontCreate();
     EXPECT_NE(font, nullptr);
     float x = 0.f;
     float y = 0.f;
-    EXPECT_EQ(OH_Drawing_CanvasDrawSingleCharacter(canvas_, strOne, font, x, y), OH_DRAWING_SUCCESS);
-    EXPECT_EQ(OH_Drawing_CanvasDrawSingleCharacter(canvas_, strTwo, font, x, y), OH_DRAWING_SUCCESS);
+    EXPECT_EQ(OH_Drawing_CanvasDrawSingleCharacter(canvas, strOne, font, x, y), OH_DRAWING_SUCCESS);
+    EXPECT_EQ(OH_Drawing_CanvasDrawSingleCharacter(canvas, strTwo, font, x, y), OH_DRAWING_SUCCESS);
     EXPECT_EQ(OH_Drawing_CanvasDrawSingleCharacter(nullptr, strOne, font, x, y), OH_DRAWING_ERROR_INVALID_PARAMETER);
-    EXPECT_EQ(OH_Drawing_CanvasDrawSingleCharacter(canvas_, nullptr, font, x, y), OH_DRAWING_ERROR_INVALID_PARAMETER);
-    EXPECT_EQ(OH_Drawing_CanvasDrawSingleCharacter(canvas_, strOne, nullptr, x, y),
+    EXPECT_EQ(OH_Drawing_CanvasDrawSingleCharacter(canvas, nullptr, font, x, y), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(OH_Drawing_CanvasDrawSingleCharacter(canvas, strOne, nullptr, x, y),
         OH_DRAWING_ERROR_INVALID_PARAMETER);
     const char* strThree = "";
-    EXPECT_EQ(OH_Drawing_CanvasDrawSingleCharacter(canvas_, strThree, font, x, y), OH_DRAWING_ERROR_INVALID_PARAMETER);
+    EXPECT_EQ(OH_Drawing_CanvasDrawSingleCharacter(canvas, strThree, font, x, y), OH_DRAWING_ERROR_INVALID_PARAMETER);
     OH_Drawing_FontDestroy(font);
 }
 } // namespace Drawing
