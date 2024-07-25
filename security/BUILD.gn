@@ -24,7 +24,6 @@ group("security") {
       "certificate_framework",
       "certificate_manager",
       "cipher/datacipher:datacipher",
-      "crossplatform:crossplatform",
       "cryptoFramework",
       "dlp_permission_service:DlpTest",
       "huks",
