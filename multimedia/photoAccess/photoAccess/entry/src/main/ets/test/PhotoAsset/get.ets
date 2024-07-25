@@ -819,7 +819,7 @@ export default function getTest () {
     /**
      * @tc.number    : SUB_PHOTOACCESS_HELPER_GET_7002
      * @tc.name      : get_video_cover_position_001
-     * @tc.desc      : common image get photoKeys.COVER_POSITION
+     * @tc.desc      : video get photoKeys.COVER_POSITION
      * @tc.size      : MEDIUM
      * @tc.type      : Function
      * @tc.level     : Level 1
