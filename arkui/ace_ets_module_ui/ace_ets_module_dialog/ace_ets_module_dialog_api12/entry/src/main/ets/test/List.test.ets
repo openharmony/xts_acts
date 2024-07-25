@@ -65,6 +65,7 @@ import updateBindSheetTest from './UIContextTest/updateBindSheetTest.test'
 import closeCustomDialogTest from './UIContextTest/closeCustomDialogTest.test'
 import openCustomDialogTest from './UIContextTest/openCustomDialogTest.test'
 import updateCustomDialogTest from './UIContextTest/updateCustomDialogTest.test'
+import subMenuExpandingModeTest_STACK_EXPAND from './MenuTest/MenuApiTest/subMenuExpandingModeTest_STACK_EXPAND.test';
 export default function testsuite() {
   dialogApi();
   TextPickerDialog();
@@ -117,4 +118,5 @@ export default function testsuite() {
   closeCustomDialogTest();
   openCustomDialogTest();
   updateCustomDialogTest();
+  subMenuExpandingModeTest_STACK_EXPAND();
 }
