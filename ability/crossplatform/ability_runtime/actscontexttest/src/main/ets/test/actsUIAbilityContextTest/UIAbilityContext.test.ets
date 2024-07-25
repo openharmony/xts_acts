@@ -1135,7 +1135,7 @@ export default function UIAbilityContext() {
         }).catch(err => {
           console.log(`testStartAbilityCallback013 aa fail` + JSON.stringify(err))
         })
-
+        await sleep(500);
         context.startAbility(want, (err) => {
           if (err.code) {
             console.log(`testStartAbilityCallback013 fail2: ` + err);
