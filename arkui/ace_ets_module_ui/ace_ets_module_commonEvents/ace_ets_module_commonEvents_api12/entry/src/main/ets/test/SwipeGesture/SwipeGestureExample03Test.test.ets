@@ -274,7 +274,7 @@ export default function SwipeGestureExample03Test() {
       let text26 = getInspectorByKey('SwipeGestureExample03_sourceTool');
       let obj26 = JSON.parse(text26);
       console.log('SwipeGestureExample03Test_0010 obj26 $attrs content',obj26.$attrs.content,obj26)
-      expect(obj26.$attrs.content).assertEqual('sourceTool:1');
+      expect(obj26.$attrs.content).assertEqual('sourceTool:FINGER');
 
       console.info('SwipeGestureExample03Test_0010 END');
       done();

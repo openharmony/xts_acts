@@ -218,7 +218,7 @@ export default function LongPressGestureLongClickTest() {
       let text26 = getInspectorByKey('LongPressGestureLongClick_sourceTool');
       let obj26 = JSON.parse(text26);
       console.log('LongPressGestureLongClickTest_0010 obj26 $attrs content',obj26.$attrs.content,obj26)
-      expect(obj26.$attrs.content).assertEqual('sourceTool:0');  // 1
+      expect(obj26.$attrs.content).assertEqual('sourceTool:FINGER');
 
       await CommonFunc.sleep(200);
       let text27 = getInspectorByKey('LongPressGestureLongClick_velocityX');

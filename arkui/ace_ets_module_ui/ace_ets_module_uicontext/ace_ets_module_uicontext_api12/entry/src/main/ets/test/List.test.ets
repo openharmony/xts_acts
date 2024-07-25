@@ -16,9 +16,11 @@
 import MeasureJsunit from './MeasureSizeTest/MeasureJsunit.test';
 import APIsetDragEventStrictReportingEnabled from './MeasureSizeTest/APIsetDragEventStrictReportingEnabled.test';
 import APIgetFrameNodeByUniqueId from './MeasureSizeTest/APIgetFrameNodeByUniqueId.test';
+import PageInfo1 from './PageInfo/PageInfo1.test';
 
 export default function testsuite() {
   MeasureJsunit();
   APIsetDragEventStrictReportingEnabled();
   APIgetFrameNodeByUniqueId();
+  PageInfo1();
 }

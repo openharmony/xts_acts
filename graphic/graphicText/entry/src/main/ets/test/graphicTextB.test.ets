@@ -275,6 +275,74 @@ export default function graphicTextBTest() {
       }
     })
 
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_060
+     * @tc.name      : testPaintOnPath
+     * @tc.desc      : To test interface paintOnPath of Paragraph.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testPaintOnPath', 2, async function (done) {
+      let msg = "====testPaintOnPath===="
+      console.info(msg + ' begin');
+      try{
+        let myParagraphStyle: text.ParagraphStyle = {
+          align: 3,
+        };
+        let fontCollection = new text.FontCollection();
+        let ParagraphGraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+        let paragraph = ParagraphGraphBuilder.build();
+
+        const color: ArrayBuffer = new ArrayBuffer(160000);
+        let opts: image.InitializationOptions = { editable: true, pixelFormat: 3, size: { height: 200, width: 200 } }
+        let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+        let canvas = new drawing.Canvas(pixelMap);
+        let path = new drawing.Path();
+        console.log(msg + ' Succeed in every Variable!')
+
+        path.arcTo(20, 20, 180, 180, 180, 90);
+        console.log(msg + ' Succeed in arcTo!')
+
+        paragraph.paintOnPath(canvas, path, 0, 0);
+        console.log(msg + ' Succeed in paragraph.paintOnPath')
+        expect(true).assertTrue()
+        done()
+      }catch(err){
+        console.info(msg + 'test paragraph.paintOnPath error ' + JSON.stringify(err));
+        console.info(msg + 'test paragraph.paintOnPath error ' + err);
+        expect().assertFail();
+        done()
+      }
+    })
+    
+    /**
+     * @tc.number    : SUB_BASIC_WMS_SPCIAL_XTS_GRAPHICTEXT_JS_API_061
+     * @tc.name      : testClearCaches
+     * @tc.desc      : To test interface clearCaches of FontCollection.
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testClearCaches', 7, async function (done) {
+      let msg = "====testClearCaches===="
+      console.info(msg + ' begin ');
+      try {
+        let fontCollection = text.FontCollection.getGlobalInstance();
+        console.log(msg + ' text.FontCollection.getGlobalInstance OK, fontCollection is  ' + JSON.stringify(fontCollection) )
+        console.log(msg + ' text.FontCollection.getGlobalInstance OK, fontCollection is  ' + fontCollection )
+        fontCollection.clearCaches();
+        console.log(msg + ' Succeed in fontCollection.clearCaches.')
+        expect(true).assertTrue()
+        done()
+      } catch (err) {
+        console.info(msg + ' Failed in fontCollection.getGlobalInstance.    Cause: ' + JSON.stringify(err));
+        console.info(msg + ' Failed in fontCollection.getGlobalInstance.    Cause: ' + err);
+        expect().assertFail();
+        done()
+      }
+    })
+    
 
   })
 }

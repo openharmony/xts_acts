@@ -196,5 +196,50 @@ export default function webViewNativeMediaPlayerHandler() {
       Utils.registerEvent("testWebViewNativeMediaPlayerHandleError", true, 1309, done);
       sendEventByKey('webViewNativeMediaPlayerHandler', 10, '');
     })
+
+    /*
+     *@tc.number SUB_ACE_WEB_seek_API_0001
+     *@tc.name testWebViewNativeMediaSetSeek
+     *@tc.desc test seek
+     *@tc.size MediumTest
+     *@tc.type Function
+     *@tc.level 1
+     */
+    it('testWebViewNativeMediaSetSeek', 0, async (done: Function) => {
+      let emitKey = "emitWebViewNativeVideoSetSeek";
+      Utils.emitEvent(emitKey, 10)
+      Utils.registerEvent("testWebViewNativeMediaSetSeek", true, 1293, done);
+      sendEventByKey('webViewNativeMediaPlayerHandler', 10, '');
+    })
+
+    /*
+     *@tc.number SUB_ACE_WEB_setVolume_API_0001
+     *@tc.name testWebViewNativeMediaSetVolume
+     *@tc.desc test setVolume
+     *@tc.size MediumTest
+     *@tc.type Function
+     *@tc.level 1
+     */
+    it('testWebViewNativeMediaSetVolume', 0, async (done: Function) => {
+      let emitKey = "emitWebViewNativeMediaSetVolume";
+      Utils.emitEvent(emitKey, 10)
+      Utils.registerEvent("testWebViewNativeMediaSetVolume", true, 1290, done);
+      sendEventByKey('webViewNativeMediaPlayerHandler', 10, '');
+    })
+
+    /*
+     *@tc.number SUB_ACE_WEB_mediaInfo_API_0001
+     *@tc.name testWebViewNativeMediaMediaInfo
+     *@tc.desc test embedID,mediaType,mediaSrcList,surfaceInfo,controlsShown,controlList,posterUrl,preload,attributes
+     *@tc.type Function
+     *@tc.size MediumTest
+     *@tc.level 1
+     */
+    it('testWebViewNativeMediaMediaInfo', 0, async (done: Function) => {
+      let emitKey="emitWebViewNativeMediaMediaInfo"
+      Utils.emitEvent(emitKey,10)
+      Utils.registerEvent("testWebViewNativeMediaMediaInfo", true, 1289, done);
+      sendEventByKey('webViewNativeMediaPlayerHandler', 10, '');
+    })
   })
 }

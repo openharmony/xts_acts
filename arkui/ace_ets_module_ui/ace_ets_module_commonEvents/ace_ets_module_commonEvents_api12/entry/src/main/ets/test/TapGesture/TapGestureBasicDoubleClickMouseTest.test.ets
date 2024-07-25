@@ -213,7 +213,7 @@ export default function TapGestureBasicDoubleClickMouseTest() {
       let text26 = getInspectorByKey('TapGestureBasicDoubleClickMouse_sourceTool');
       let obj26 = JSON.parse(text26);
       console.log('TapGestureBasicDoubleClickMouseTest_0010 obj26 $attrs content',obj26.$attrs.content,obj26)
-      expect(obj26.$attrs.content).assertEqual('sourceTool:7');
+      expect(obj26.$attrs.content).assertEqual('sourceTool:MOUSE');
 
       await CommonFunc.sleep(200);
       let text27 = getInspectorByKey('TapGestureBasicDoubleClickMouse_velocityX');

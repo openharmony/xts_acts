@@ -12,10 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export interface Callback {
-  (message:any):void
-}
-
+export type Callback = (message: ESObject) => void
 export class MessageManager {
     public callback:Callback
     public callbacks:Map<string,Callback> = new Map()
@@ -33,7 +30,7 @@ export class MessageManager {
     this.callbacks.set(type,callback)
   }
 
-   notify(message:any, type?:string){
+   notify(message:ESObject, type?:string){
     if (type == undefined) {
       this.callback(message)
       return

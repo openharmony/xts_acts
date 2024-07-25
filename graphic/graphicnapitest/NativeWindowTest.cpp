@@ -1496,7 +1496,7 @@ HWTEST_F(NativeWindowTest, NativeWindowGetDefaultWidthAndHeight001, Function | M
  */
 HWTEST_F(NativeWindowTest, NativeWindowSetBufferHold001, Function | MediumTest | Level1)
 {
-    NativeWindowSetBufferHold(nativeWindow);
+    OH_NativeWindow_SetBufferHold(nativeWindow); // buffer one frame in advance
     int fenceFd = -1;
     struct Region *region = new Region();
     region->rectNumber = 0;

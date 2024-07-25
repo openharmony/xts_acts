@@ -249,5 +249,641 @@ export default function testArkUI() {
       expect(nativeFunc.testArkUI018()).assertEqual(0)
       done()
     })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI019', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI019()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI020', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI020()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI021', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI021()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI022', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI022()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI024', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI024()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI025', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI025()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI026', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI026()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI028', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI028()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI029', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI029()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI030', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI030()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI031', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI031()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI032', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI032()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI033', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI033()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI034', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI034()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI035', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI035()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI036', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI036()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI037', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI037()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI038', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI038()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI039', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI039()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI040', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI040()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI041', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI041()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI042', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI042()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI043', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI043()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI044', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI044()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI045', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI045()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI046', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI046()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI047', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI047()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI048', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI048()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI049', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI049()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI050', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI050()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI051', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI051()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI054', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI054()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI055', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI055()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI056', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI056()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI057', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI057()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI058', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI058()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI059', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI059()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI060', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI060()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI061', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI061()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI062', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI062()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI063', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI063()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI064', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI064()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI065', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI065()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI066', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI066()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI067', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI067()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI068', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI068()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI069', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI069()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI070', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI070()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI071', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI071()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI072', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI072()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI073', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI073()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI074', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI074()).assertEqual(0)
+      done()
+    })
+    /*
+      * @tc.number     : SUB_ARKUI_CAPI_TESTARKUI_0600
+      * @tc.name       : testArkUI011
+      * @tc.desc       : testing OH_ArkUI_GuidelineOption_SetPositionEnd OH_ArkUI_GuidelineOption_GetPositionEnd OH_ArkUI_GuidelineOption_Dispose
+      * @tc.size       : MediumTest
+      * @tc.type       : Function
+      * @tc.level      : Level 1
+      */
+    it('testArkUI075', 0, async (done: Function) => {
+      expect(nativeFunc.testArkUI075()).assertEqual(0)
+      done()
+    })
   })
 }

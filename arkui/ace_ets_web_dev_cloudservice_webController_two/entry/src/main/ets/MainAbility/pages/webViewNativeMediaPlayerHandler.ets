@@ -466,10 +466,16 @@ class NativeMediaPlayerImpl implements webview.NativeMediaPlayerBridge{
     }
     seek(targetTime: number) {
         console.log('[BrowserShell] ===gpz=== MediaPlayer.seek(' + targetTime + ')');
+        if (targetTime == 50) {
+            Utils.emitEvent(true, 1293)
+        }
         this.nativePlayer?.seek(targetTime);
     }
     setVolume(volume: number) {
         console.log('[BrowserShell] ===gpz=== MediaPlayer.setVolume(' + volume + ')');
+        if (volume == 0.5) {
+            Utils.emitEvent(true, 1290)
+        }
         this.nativePlayer?.setVolume(volume);
     }
     setMuted(muted: boolean) {
@@ -1039,6 +1045,66 @@ struct WebComponent {
                         }
                         break;
                     }
+                    case "emitWebViewNativeVideoSetSeek": {
+                        try {
+                            console.log('emitWebViewNativeVideoSetSeek==>')
+                            this.controller.loadUrl($rawfile('nativeMediaSetSeek.html'))
+                            await Utils.sleep(1000)
+                            this.controller.runJavaScript("buttonPlay()", (error, result) => {
+                                console.error('The play(0 return error is: ${error}');
+                                console.log('The play(0 return value is: ${result}');
+                            })
+                            await Utils.sleep(1000)
+                            this.controller.runJavaScript("setSeek()", (error, result) => {
+                                console.log('The setSeek(0 return value is: ${result}');
+                            })
+                            await Utils.sleep(2000)
+                            Utils.emitEvent(true, 1293)
+                        } catch (error) {
+                            Utils.emitEvent('error',1293)
+                        }
+                        break;
+                    }
+
+                    case "emitWebViewNativeMediaSetVolume": {
+                        try {
+                            this.controller.loadUrl($rawfile('nativeMediaSetVolume.html'))
+                            console.log('emitWebViewNativeMediaSetVolume==>')
+                            await Utils.sleep(1000)
+                            this.controller.runJavaScript("buttonPlay()", (error, result) => {
+                                console.error('The play(0 return error is: ${error}');
+                                console.log('The play(0 return value is: ${result}');
+                            })
+                            await Utils.sleep(1000)
+                            this.controller.runJavaScript("setVolume()", (error, result) => {
+                                console.log('The setVolume(0 return value is: ${result}');
+                            })
+                            await Utils.sleep(2000)
+                            Utils.emitEvent(true, 1290)
+                        } catch (error) {
+                            Utils.emitEvent('error',1290)
+                        }
+                        break;
+                    }
+                    case "emitWebViewNativeMediaMediaInfo": {
+                        try {
+                            this.controller.loadUrl($rawfile('nativeMediaInfo.html'))
+                            console.log('emitWebViewNativeMediaMediaInfo==>')
+                            this.controller.runJavaScript("buttonLoad()", (error, result) => {
+                                console.log('The load() return value is: ${result}');
+                            })
+                            await Utils.sleep(1000)
+                            this.controller.runJavaScript("buttonPlay()", (error, result) => {
+                                console.error('The play() return error is: ${error}');
+                                console.log('The play() return value is: ${result}');
+                            })
+                            await Utils.sleep(2000)
+                            Utils.emitEvent(true, 1289)
+                        } catch (error) {
+                            Utils.emitEvent('error',1289)
+                        }
+                        break;
+                    }
                 }
               })
           }
@@ -1059,9 +1125,36 @@ struct WebComponent {
                 .onPageBegin((event: PageBeginParam) => {
                     console.error('enter onPageBegin, url:' + event.url);
                     console.error(' in onPageBegin, onCreateNativeMediaPlayer:' + this.controller.onCreateNativeMediaPlayer);
-                    this.controller.onCreateNativeMediaPlayer((handler: webview.NativeMediaPlayerHandler, videoInfo: webview.MediaInfo) => {
-                        console.error('onCreateNativeMediaPlayer(' + JSON.stringify(videoInfo) + ')');
-                        this.nativePlayer = new NativeMediaPlayerImpl(this, new NativeMediaPlayerHandlerImpl(handler), videoInfo);
+                    this.controller.onCreateNativeMediaPlayer((handler: webview.NativeMediaPlayerHandler, mediaInfo: webview.MediaInfo) => {
+                        console.error('onCreateNativeMediaPlayer(' + JSON.stringify(mediaInfo) + ')');
+                        let mediaInfoJson = JSON.parse(JSON.stringify(mediaInfo))
+                        console.log("mediaInfoJSon" + JSON.stringify(mediaInfo))
+                        let isEmbedId = mediaInfo.embedID && mediaInfo.embedID != ''
+                        let isMediaType = JSON.has(mediaInfoJson,'mediaType') && (mediaInfo.mediaType == 0)
+                        let isMediaSrcList = mediaInfo.mediaSrcList && mediaInfo.mediaSrcList.length ===2
+                        let isSurfaceInfo = mediaInfo.surfaceInfo && !!mediaInfo.surfaceInfo.id && !!mediaInfo.surfaceInfo.rect
+                        let isControlShown = mediaInfo.controlsShown && mediaInfo.controlsShown == true
+                        let isControlList = mediaInfo.controlList && mediaInfo.controlList.length > 0
+                        let isAttributesMap = mediaInfo.attributes && JSON.has(mediaInfoJson, 'attributes')
+                        let isPredload = !!mediaInfo.preload
+                        let isPosterUrl = mediaInfo.posterUrl && (mediaInfo.posterUrl != '')
+                        let isMediaInfo = isEmbedId && isMediaType && isMediaSrcList && isSurfaceInfo && isControlShown && isAttributesMap && isPredload && isPosterUrl
+
+                        console.error("isPosterUrl" + isPosterUrl)
+                        console.error("isMediaInfo" + isMediaInfo)
+                        console.error("isEmbedId" + isEmbedId)
+                        console.error("isMediaType" + isMediaType)
+                        console.error("isMediaSrcList" + isMediaSrcList)
+                        console.error("isSurfaceInfo" + isSurfaceInfo)
+                        console.error("isControlShown" + isControlShown)
+                        console.error("isAttributesMap" + isAttributesMap)
+                        console.error("isPosterUrl" + isPosterUrl)
+                        console.error("isControlList" + isControlList)
+                        console.error("isPredload" + isPredload)
+                        if (this.emitKey == 'emitWebViewNativeMediaMediaInfo') {
+                            Utils.emitEvent(isEmbedId, 1289)
+                        }
+                        this.nativePlayer = new NativeMediaPlayerImpl(this, new NativeMediaPlayerHandlerImpl(handler), mediaInfo);
                         return this.nativePlayer;
                     });
                     console.error('exit onPageBegin');

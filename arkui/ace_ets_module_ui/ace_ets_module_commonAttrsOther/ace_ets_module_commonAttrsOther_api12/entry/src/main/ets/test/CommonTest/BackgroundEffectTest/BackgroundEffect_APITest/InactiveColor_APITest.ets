@@ -21,13 +21,13 @@ export default function Bgde_InactiveColor_APITest() {
     beforeEach(async (done: Function) => {
       console.info("Bgde_InactiveColor_APITest beforeEach start");
       let options: router.RouterOptions = {
-        url: "MainAbility/pages/Common/backgroundBlurStyle/backgroundBlurStyleOptions/Bgde_InactiveColor",
+        url: "MainAbility/pages/Common/BackgroundEffect/BackgroundEffectOptions/inactiveColor",
       }
       try {
         router.clear();
         let pages = router.getState();
         console.info("get Bgde_InactiveColor_APITest state pages: " + JSON.stringify(pages));
-        if (!("ListMainChildren" == pages.name)) {
+        if (!("inactiveColor" == pages.name)) {
           console.info("get Bgde_InactiveColor_APITest state pages.name: " + JSON.stringify(pages.name));
           let result = await router.push(options);
           await CommonFunc.sleep(2000);

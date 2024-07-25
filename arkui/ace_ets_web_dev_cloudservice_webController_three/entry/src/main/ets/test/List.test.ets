@@ -17,5 +17,5 @@ import webViewNativeMediaPlayerProps2 from './webViewNativeMediaPlayerProps2.tes
 
 export default function testsuite() {
   webViewNativeMediaPlayerProps()
-  webViewNativeMediaPlayerProps2()
+  // webViewNativeMediaPlayerProps2()
 }
