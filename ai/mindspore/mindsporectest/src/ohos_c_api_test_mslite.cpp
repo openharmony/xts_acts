@@ -255,7 +255,7 @@ void FillInputsData(OH_AI_TensorHandleArray inputs, string model_name, bool is_t
 }
 
 // compare result after predict
-void CompareResult(OH_AI_TensorHandleArray outputs, string model_name, float atol = 0.01, float rtol = 0.01) {
+void CompareResult(OH_AI_TensorHandleArray outputs, string model_name, float atol = 0.01, float rtol = 0.01, bool isquant = false) {
     printf("==========GetOutput==========\n");
     for (size_t i = 0; i < outputs.handle_num; ++i) {
         OH_AI_TensorHandle tensor = outputs.handle_list[i];
@@ -269,7 +269,7 @@ void CompareResult(OH_AI_TensorHandleArray outputs, string model_name, float ato
         printf("\n");
         printf("==========compFp32WithTData==========\n");
         string output_file = "/data/test/" + model_name + std::to_string(i) + ".output";
-        bool result = compFp32WithTData(output_data, output_file, atol, rtol, false);
+        bool result = compFp32WithTData(output_data, output_file, atol, rtol, isquant);
         EXPECT_EQ(result, true);
     }
 }
@@ -1397,6 +1397,22 @@ void Predict_CPU() {
     OH_AI_ContextHandle context = OH_AI_ContextCreate();
     ASSERT_NE(context, nullptr);
     AddContextDeviceCPU(context);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    ModelPredict(model, context, "ml_face_isface", {}, false, true, false);
+}
+
+// predict on cpu
+void Predict_NPU() {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceNNRT(context);
     printf("==========Create model==========\n");
     OH_AI_ModelHandle model = OH_AI_ModelCreate();
     ASSERT_NE(model, nullptr);
@@ -2758,7 +2774,7 @@ HWTEST(MSLiteTest, OHOS_Input_0004, Function | MediumTest | Level1) {
     printf("==========Create model==========\n");
     OH_AI_ModelHandle model = OH_AI_ModelCreate();
     ASSERT_NE(model, nullptr);
-    ModelPredict(model, context, "ml_face_isface", {}, false, true, false);
+    ModelPredict(model, context, "ml_face_isface_quant", {}, false, true, false);
 }
 
 // 正常场景：循环多次执行推理流程
@@ -2840,6 +2856,28 @@ HWTEST(MSLiteTest, OHOS_Parallel_0001, Function | MediumTest | Level1) {
     std::thread t1(Predict_CPU);
     std::cout << "1111111111111" << std::endl;
     std::thread t2(Predict_CPU);
+    std::cout << "2222222222222" << std::endl;
+    t1.join();
+    t2.join();
+}
+
+// 正常场景：两个模型都在NPU上并行推理
+HWTEST(MSLiteTest, OHOS_Parallel_0002, Function | MediumTest | Level1) {
+    std::cout << "run start" << std::endl;
+    std::thread t1(Predict_NPU);
+    std::cout << "1111111111111" << std::endl;
+    std::thread t2(Predict_NPU);
+    std::cout << "2222222222222" << std::endl;
+    t1.join();
+    t2.join();
+}
+
+// 正常场景：两个模型在CPU NPU上并行推理
+HWTEST(MSLiteTest, OHOS_Parallel_0003, Function | MediumTest | Level1) {
+    std::cout << "run start" << std::endl;
+    std::thread t1(Predict_CPU);
+    std::cout << "1111111111111" << std::endl;
+    std::thread t2(Predict_NPU);
     std::cout << "2222222222222" << std::endl;
     t1.join();
     t2.join();
@@ -3369,4 +3407,797 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_CPU_copy_free_0001, Function | MediumTest | 
     RunMSLiteModel(model, "ml_face_isface", true);
     printf("==========OH_AI_ModelDestroy==========\n");
     OH_AI_ModelDestroy(&model);
+}
+
+
+// 正常场景：npu循环推理
+HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0004, Function | MediumTest | Level1) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    AddContextDeviceNNRT(context);
+    printf("==========Build model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "ml_face_isface", true);
+    for (size_t i = 0; i < 50; ++i) {
+        printf("==========Model Predict==========\n");
+        OH_AI_TensorHandleArray outputs;
+        ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
+        ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+        CompareResult(outputs, "ml_face_isface");
+    }
+    OH_AI_ModelDestroy(&model);
+}
+
+// 正常场景：npu免拷贝场景循环推理
+HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_copy_free_0005, Function | MediumTest | Level1) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    AddContextDeviceNNRT(context);
+    printf("==========Build model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    const size_t MAX_DIMS = 10;
+    int64_t shape[MAX_DIMS];
+    size_t shape_num;
+    OH_AI_TensorHandleArray in_tensor_array;
+    OH_AI_TensorHandleArray out_tensor_array;
+    printf("==========OH_AI_TensorSetAllocator in_tensor==========\n");
+    OH_AI_TensorHandleArray inputs_handle = OH_AI_ModelGetInputs(model);
+    in_tensor_array.handle_num = inputs_handle.handle_num;
+    in_tensor_array.handle_list = (OH_AI_TensorHandle *)malloc(sizeof(OH_AI_TensorHandle) * in_tensor_array.handle_num);
+    for (size_t i = 0; i < inputs_handle.handle_num; i++) {
+        auto ori_tensor = inputs_handle.handle_list[i];
+        auto shape_ptr = OH_AI_TensorGetShape(ori_tensor, &shape_num);
+        for (size_t j = 0; j < shape_num; j++) {
+        shape[j] = shape_ptr[j];
+        }
+        void *in_allocator = OH_AI_TensorGetAllocator(ori_tensor);
+        OH_AI_TensorHandle in_tensor = OH_AI_TensorCreate(OH_AI_TensorGetName(ori_tensor), OH_AI_TensorGetDataType(ori_tensor),
+                                        shape, shape_num, nullptr, 0);  
+        OH_AI_TensorSetAllocator(in_tensor, in_allocator);
+        in_tensor_array.handle_list[i] = in_tensor;
+    }
+    printf("==========FillInputsData==========\n");
+    FillInputsData(in_tensor_array, "ml_face_isface", true);
+    printf("==========OH_AI_TensorSetAllocator out_tensor==========\n");
+    OH_AI_TensorHandleArray outputs_handle = OH_AI_ModelGetOutputs(model);
+    out_tensor_array.handle_num = outputs_handle.handle_num;
+    out_tensor_array.handle_list = (OH_AI_TensorHandle *)malloc(sizeof(OH_AI_TensorHandle) * out_tensor_array.handle_num);
+    for (size_t i = 0; i < outputs_handle.handle_num; i++) {
+        auto ori_tensor = outputs_handle.handle_list[i];
+        auto shape_ptr = OH_AI_TensorGetShape(ori_tensor, &shape_num);
+        for (size_t j = 0; j < shape_num; j++) {
+        shape[j] = shape_ptr[j];
+        }
+        void *in_allocator = OH_AI_TensorGetAllocator(ori_tensor);
+        OH_AI_TensorHandle out_tensor = OH_AI_TensorCreate(OH_AI_TensorGetName(ori_tensor), OH_AI_TensorGetDataType(ori_tensor),
+                                        shape, shape_num, nullptr, 0);
+        OH_AI_TensorSetAllocator(out_tensor, in_allocator);
+        out_tensor_array.handle_list[i] = out_tensor;
+    }
+    for (size_t i = 0; i < 50; ++i) {
+        printf("==========OH_AI_ModelPredict==========\n");
+        auto ret = OH_AI_ModelPredict(model, in_tensor_array, &out_tensor_array, NULL, NULL);
+        ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+        CompareResult(out_tensor_array, "ml_face_isface");
+    }
+    printf("==========OH_AI_TensorDestroy==========\n");
+    for (size_t i = 0; i < in_tensor_array.handle_num; i++) {
+        auto ori_tensor = in_tensor_array.handle_list[i];
+        OH_AI_TensorDestroy(&ori_tensor);
+    }
+    free(in_tensor_array.handle_list);
+    for (size_t i = 0; i < out_tensor_array.handle_num; i++) {
+        auto ori_tensor = out_tensor_array.handle_list[i];
+        OH_AI_TensorDestroy(&ori_tensor);
+    }
+    free(out_tensor_array.handle_list);
+    printf("==========OH_AI_ModelDestroy==========\n");
+    OH_AI_ModelDestroy(&model);
+}
+
+// 正常场景：NPU权重量化模型
+HWTEST(MSLiteTest, OHOS_NNRT_QUANT_0001, Function | MediumTest | Level1) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    ASSERT_NE(context, nullptr);
+    AddContextDeviceNNRT(context);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    ASSERT_NE(model, nullptr);
+    ModelPredict(model, context, "ml_face_isface_quant", {}, false, true, false);
+}
+
+
+// add nnrt hiai device info
+void AddContextDeviceHIAI(OH_AI_ContextHandle context) {
+    auto nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    std::cout << "found " << num << " nnrt devices" << std::endl;
+    NNRTDeviceDesc *desc_1 = nullptr;
+    for (size_t i = 0; i < num; i++) {
+        auto desc = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+        if (strcmp(name, "HIAI_F") == 0) {
+            desc_1 = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        }
+    }
+
+    auto id_1 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_1);
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_1);
+    const char *band_mode = "HIAI_BANDMODE_HIGH";
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "BandMode", band_mode, strlen(band_mode));
+
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+}
+
+// 异常场景：HIAI流程，离线模型支持NNRT后端,Model创建一次，Build多次
+HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0004, Function | MediumTest | Level1) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    AddContextDeviceHIAI(context);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.om.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========Build model==========\n");
+    OH_AI_Status ret2 = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.om.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret2, OH_AI_STATUS_LITE_MODEL_REBUILD);
+    OH_AI_ModelDestroy(&model);
+}
+
+// 异常场景：HIAI流程，离线模型支持NNRT后端,ModelPredict，input为空
+HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0005, Function | MediumTest | Level1) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    AddContextDeviceHIAI(context);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.om.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray inputs;
+    OH_AI_TensorHandleArray outputs;
+    ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(ret, OH_AI_STATUS_LITE_ERROR);
+    OH_AI_ModelDestroy(&model);
+}
+
+// 异常场景：HIAI流程，非离线模型支持NNRT后端,ms模型未转换为NNRT后端模型
+HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0006, Function | MediumTest | Level1) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    AddContextDeviceHIAI(context);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_LITE_ERROR);
+}
+
+// 正常场景：HIAI流程，离线模型配置量化参数
+HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0007, Function | MediumTest | Level1) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    auto nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    std::cout << "found " << num << " nnrt devices" << std::endl;
+    NNRTDeviceDesc *desc_1 = nullptr;
+    for (size_t i = 0; i < num; i++) {
+        auto desc = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+        if (strcmp(name, "HIAI_F") == 0) {
+            desc_1 = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        }
+    }
+
+    auto id_1 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_1);
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_1);
+    const char *band_mode = "HIAI_BANDMODE_HIGH";
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "BandMode", band_mode, strlen(band_mode));
+    size_t q_size;
+    char *quant_config = ReadFile("/data/test/googlenet_param", &q_size);
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "QuantConfigData", quant_config, q_size);
+
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/googlenet.om.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "googlenet", false);
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    OH_AI_Status predict_ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
+    CompareResult(outputs, "googlenet", 0.01, 0.01, true);
+    OH_AI_ModelDestroy(&model);
+}
+
+// 正常场景：HIAI流程，设置量化配置QuantConfigData为空指针时等于不量化
+HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0008, Function | MediumTest | Level1) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    auto nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    std::cout << "found " << num << " nnrt devices" << std::endl;
+    NNRTDeviceDesc *desc_1 = nullptr;
+    for (size_t i = 0; i < num; i++) {
+        auto desc = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+        if (strcmp(name, "HIAI_F") == 0) {
+            desc_1 = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        }
+    }
+
+    auto id_1 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_1);
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_1);
+    const char *band_mode = "HIAI_BANDMODE_HIGH";
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "BandMode", band_mode, strlen(band_mode));
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "QuantConfigData", nullptr, 0);
+
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/googlenet.om.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "googlenet", false);
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    OH_AI_Status predict_ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
+    CompareResult(outputs, "googlenet", 0.01, 0.01, true);
+    OH_AI_ModelDestroy(&model);
+}
+
+// 异常场景：HIAI流程，设置量化配置QuantConfigData为错误配置文件
+HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0009, Function | MediumTest | Level1) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    auto nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    std::cout << "found " << num << " nnrt devices" << std::endl;
+    NNRTDeviceDesc *desc_1 = nullptr;
+    for (size_t i = 0; i < num; i++) {
+        auto desc = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+        if (strcmp(name, "HIAI_F") == 0) {
+            desc_1 = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        }
+    }
+
+    auto id_1 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_1);
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_1);
+    const char *band_mode = "HIAI_BANDMODE_HIGH";
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "BandMode", band_mode, strlen(band_mode));
+    size_t q_size;
+    char *quant_config = ReadFile("/data/test/googlenet.om.ms", &q_size);
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "QuantConfigData", quant_config, q_size);
+
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/googlenet.om.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_LITE_ERROR);
+}
+
+// 异常场景：HIAI流程，设置量化q_size为异常值
+HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0010, Function | MediumTest | Level1) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    auto nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    std::cout << "found " << num << " nnrt devices" << std::endl;
+    NNRTDeviceDesc *desc_1 = nullptr;
+    for (size_t i = 0; i < num; i++) {
+        auto desc = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+        if (strcmp(name, "HIAI_F") == 0) {
+            desc_1 = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        }
+    }
+
+    auto id_1 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_1);
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_1);
+    const char *band_mode = "HIAI_BANDMODE_HIGH";
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "BandMode", band_mode, strlen(band_mode));
+    size_t q_size;
+    char *quant_config = ReadFile("/data/test/googlenet_param", &q_size);
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "QuantConfigData", quant_config, 0);
+
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/googlenet.om.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_LITE_ERROR);
+}
+
+// 正常场景：HIAI流程，设置 NPU 和外围输入/输出(I/O)设备的带宽模式BandMode模式为HIAI_BANDMODE_NORMAL
+HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0011, Function | MediumTest | Level1) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    auto nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    std::cout << "found " << num << " nnrt devices" << std::endl;
+    NNRTDeviceDesc *desc_1 = nullptr;
+    for (size_t i = 0; i < num; i++) {
+        auto desc = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+        if (strcmp(name, "HIAI_F") == 0) {
+            desc_1 = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        }
+    }
+
+    auto id_1 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_1);
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_1);
+    const char *band_mode = "HIAI_BANDMODE_NORMAL";
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "BandMode", band_mode, strlen(band_mode));
+    size_t q_size;
+    char *quant_config = ReadFile("/data/test/googlenet_param", &q_size);
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "QuantConfigData", quant_config, q_size);
+
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/googlenet.om.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "googlenet", false);
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    OH_AI_Status predict_ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
+    CompareResult(outputs, "googlenet", 0.01, 0.01, true);
+    OH_AI_ModelDestroy(&model);
+}
+
+// 正常场景：HIAI流程，设置 NPU 和外围输入/输出(I/O)设备的带宽模式BandMode模式为HIAI_BANDMODE_LOW
+HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0012, Function | MediumTest | Level1) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    auto nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    std::cout << "found " << num << " nnrt devices" << std::endl;
+    NNRTDeviceDesc *desc_1 = nullptr;
+    for (size_t i = 0; i < num; i++) {
+        auto desc = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+        if (strcmp(name, "HIAI_F") == 0) {
+            desc_1 = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        }
+    }
+
+    auto id_1 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_1);
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_1);
+    const char *band_mode = "HIAI_BANDMODE_LOW";
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "BandMode", band_mode, strlen(band_mode));
+    size_t q_size;
+    char *quant_config = ReadFile("/data/test/googlenet_param", &q_size);
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "QuantConfigData", quant_config, q_size);
+
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/googlenet.om.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "googlenet", false);
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    OH_AI_Status predict_ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
+    CompareResult(outputs, "googlenet", 0.01, 0.01, true);
+    OH_AI_ModelDestroy(&model);
+}
+
+// 正常场景：HIAI流程，设置 NPU 和外围输入/输出(I/O)设备的带宽模式BandMode模式为HIAI_BANDMODE_UNSET
+HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0013, Function | MediumTest | Level1) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    printf("==========Init Context==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    auto nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    std::cout << "found " << num << " nnrt devices" << std::endl;
+    NNRTDeviceDesc *desc_1 = nullptr;
+    for (size_t i = 0; i < num; i++) {
+        auto desc = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc);
+        if (strcmp(name, "HIAI_F") == 0) {
+            desc_1 = OH_AI_GetElementOfNNRTDeviceDescs(descs, i);
+        }
+    }
+
+    auto id_1 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_1);
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_1);
+    const char *band_mode = "HIAI_BANDMODE_UNSET";
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "BandMode", band_mode, strlen(band_mode));
+    size_t q_size;
+    char *quant_config = ReadFile("/data/test/googlenet_param", &q_size);
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "QuantConfigData", quant_config, q_size);
+
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+    printf("==========Create model==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/googlenet.om.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "googlenet", false);
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    OH_AI_Status predict_ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
+    CompareResult(outputs, "googlenet", 0.01, 0.01, true);
+    OH_AI_ModelDestroy(&model);
+}
+
+
+void PrintMem(const std::string &position) {
+  std::string proc_file = "/proc/" + std::to_string(getpid()) + "/status";
+  std::ifstream infile(proc_file);
+  if (infile.good()) {
+    std::string line;
+    while (std::getline(infile, line)) {
+      if (line.find("VmRSS") != std::string::npos) {
+        std::cout << position << " mem size: " << line << std::endl;
+      }
+    }
+    infile.close();
+  }
+}
+
+
+// 正常场景：context配置cache信息，执行推理流程
+HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_Cache_0001, Function | MediumTest | Level1) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    auto nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    auto desc_0 = OH_AI_GetElementOfNNRTDeviceDescs(descs, 0);
+    auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc_0);
+    std::cout << "OH_AI_GetNameFromNNRTDeviceDesc: " << name << std::endl;
+    auto id_0 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_0);
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_0);
+    const char *cache_path = "/data/local/tmp";
+    const char *cache_version = "1";
+    const char *model_name = "cache_model";
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "CachePath", cache_path, strlen(cache_path));
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "CacheVersion", cache_version, strlen(cache_version));
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "ModelName", model_name, strlen(model_name));
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+    printf("==========OH_AI_ModelCreate==========\n");
+    PrintMem("before build");
+    uint64_t timeStartPrepare = getTimeInUs();
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    uint64_t timeEndPrepare = getTimeInUs();
+    float init_session_time_once = (timeEndPrepare - timeStartPrepare) / 1000.0;
+    std::cout << "init_session_time_once: " << init_session_time_once << std::endl;
+    PrintMem("after build");
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "ml_face_isface", true);
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    OH_AI_Status predict_ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
+    CompareResult(outputs, "ml_face_isface", 0.01, 0.01, true);
+    OH_AI_ModelDestroy(&model);
+}
+
+// 正常场景：context配置cache信息，量化模型执行推理流程
+HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_Cache_0002, Function | MediumTest | Level1) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    auto nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    auto desc_0 = OH_AI_GetElementOfNNRTDeviceDescs(descs, 0);
+    auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc_0);
+    std::cout << "OH_AI_GetNameFromNNRTDeviceDesc: " << name << std::endl;
+    auto id_0 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_0);
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_0);
+    const char *cache_path = "/data/local/tmp";
+    const char *cache_version = "1";
+    const char *model_name = "cache_model_quant";
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "CachePath", cache_path, strlen(cache_path));
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "CacheVersion", cache_version, strlen(cache_version));
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "ModelName", model_name, strlen(model_name));
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface_quant.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "ml_face_isface_quant", true);
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    OH_AI_Status predict_ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
+    CompareResult(outputs, "ml_face_isface_quant", 0.01, 0.01, true);
+    OH_AI_ModelDestroy(&model);
+}
+
+// 正常场景：多个不同模型在同一路径下缓存，执行推理流程
+HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_Cache_0003, Function | MediumTest | Level1) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    auto nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    auto desc_0 = OH_AI_GetElementOfNNRTDeviceDescs(descs, 0);
+    auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc_0);
+    std::cout << "OH_AI_GetNameFromNNRTDeviceDesc: " << name << std::endl;
+    auto id_0 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_0);
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_0);
+    const char *cache_path = "/data/local/tmp";
+    const char *cache_version = "1";
+    const char *model_name = "cache_a";
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "CachePath", cache_path, strlen(cache_path));
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "CacheVersion", cache_version, strlen(cache_version));
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "ModelName", model_name, strlen(model_name));
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_ocr_cn.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ContextCreate2==========\n");
+    OH_AI_ContextHandle context2 = OH_AI_ContextCreate();
+    auto nnrt_device_info2 = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    size_t num2 = 0;
+    auto descs2 = OH_AI_GetAllNNRTDeviceDescs(&num2);
+    auto desc2_0 = OH_AI_GetElementOfNNRTDeviceDescs(descs2, 0);
+    auto name2 = OH_AI_GetNameFromNNRTDeviceDesc(desc2_0);
+    std::cout << "OH_AI_GetNameFromNNRTDeviceDesc: " << name2 << std::endl;
+    auto id2_0 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc2_0);
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info2, id2_0);
+    const char *cache_path2 = "/data/local/tmp";
+    const char *cache_version2 = "1";
+    const char *model_name2 = "cache_b";
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info2, "CachePath", cache_path2, strlen(cache_path2));
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info2, "CacheVersion", cache_version2, strlen(cache_version2));
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info2, "ModelName", model_name2, strlen(model_name2));
+    OH_AI_ContextAddDeviceInfo(context2, nnrt_device_info2);
+    printf("==========OH_AI_ModelCreate2==========\n");
+    OH_AI_ModelHandle model2 = OH_AI_ModelCreate();
+    OH_AI_Status ret2 = OH_AI_ModelBuildFromFile(model2, "/data/test/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context2);
+    ASSERT_EQ(ret2, OH_AI_STATUS_SUCCESS);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "ml_ocr_cn", true);
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    OH_AI_Status predict_ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
+    CompareResult(outputs, "ml_ocr_cn", 0.01, 0.01, true);
+    OH_AI_ModelDestroy(&model);
+    printf("==========GetInputs2==========\n");
+    OH_AI_TensorHandleArray inputs2 = OH_AI_ModelGetInputs(model2);
+    ASSERT_NE(inputs2.handle_list, nullptr);
+    FillInputsData(inputs2, "ml_face_isface", true);
+    printf("==========Model Predict2==========\n");
+    OH_AI_TensorHandleArray outputs2;
+    OH_AI_Status predict_ret2 = OH_AI_ModelPredict(model2, inputs2, &outputs2, nullptr, nullptr);
+    ASSERT_EQ(predict_ret2, OH_AI_STATUS_SUCCESS);
+    CompareResult(outputs2, "ml_face_isface", 0.01, 0.01, true);
+    OH_AI_ModelDestroy(&model2);
+}
+
+// 异常场景：CachePath路径非法值或不存在
+HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_Cache_0004, Function | MediumTest | Level1) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    auto nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    auto desc_0 = OH_AI_GetElementOfNNRTDeviceDescs(descs, 0);
+    auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc_0);
+    std::cout << "OH_AI_GetNameFromNNRTDeviceDesc: " << name << std::endl;
+    auto id_0 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_0);
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_0);
+    const char *cache_path = "/data/local/tmp/notexist/";
+    const char *cache_version = "1";
+    const char *model_name = "cache_error";
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "CachePath", cache_path, strlen(cache_path));
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "CacheVersion", cache_version, strlen(cache_version));
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "ModelName", model_name, strlen(model_name));
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_LITE_ERROR);
+}
+
+// 异常场景：CacheVersion在取值范围外
+HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_Cache_0005, Function | MediumTest | Level1) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    auto nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    auto desc_0 = OH_AI_GetElementOfNNRTDeviceDescs(descs, 0);
+    auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc_0);
+    std::cout << "OH_AI_GetNameFromNNRTDeviceDesc: " << name << std::endl;
+    auto id_0 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_0);
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_0);
+    const char *cache_path = "/data/local/tmp";
+    const char *cache_version = "-1";
+    const char *model_name = "cache_error";
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "CachePath", cache_path, strlen(cache_path));
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "CacheVersion", cache_version, strlen(cache_version));
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "ModelName", model_name, strlen(model_name));
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_LITE_ERROR);
+}
+
+// 异常场景：a模型生成缓存，b模型用相同的CachePath、CacheVersion、modelname
+HWTEST(MSLiteTest, SUB_AI_MindSpore_NNRT_Cache_0006, Function | MediumTest | Level1) {
+    if (!IsNPU()) {
+        printf("NNRt is not NPU, skip this test");
+        return;
+    }
+    printf("==========OH_AI_ContextCreate==========\n");
+    OH_AI_ContextHandle context = OH_AI_ContextCreate();
+    auto nnrt_device_info = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    size_t num = 0;
+    auto descs = OH_AI_GetAllNNRTDeviceDescs(&num);
+    auto desc_0 = OH_AI_GetElementOfNNRTDeviceDescs(descs, 0);
+    auto name = OH_AI_GetNameFromNNRTDeviceDesc(desc_0);
+    std::cout << "OH_AI_GetNameFromNNRTDeviceDesc: " << name << std::endl;
+    auto id_0 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc_0);
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info, id_0);
+    const char *cache_path = "/data/local/tmp";
+    const char *cache_version = "1";
+    const char *model_name = "cache_same";
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "CachePath", cache_path, strlen(cache_path));
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "CacheVersion", cache_version, strlen(cache_version));
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info, "ModelName", model_name, strlen(model_name));
+    OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
+    printf("==========OH_AI_ModelCreate==========\n");
+    OH_AI_ModelHandle model = OH_AI_ModelCreate();
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/ml_face_isface.ms", OH_AI_MODELTYPE_MINDIR, context);
+    ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
+    printf("==========OH_AI_ContextCreate2==========\n");
+    OH_AI_ContextHandle context2 = OH_AI_ContextCreate();
+    auto nnrt_device_info2 = OH_AI_DeviceInfoCreate(OH_AI_DEVICETYPE_NNRT);
+    size_t num2 = 0;
+    auto descs2 = OH_AI_GetAllNNRTDeviceDescs(&num2);
+    auto desc2_0 = OH_AI_GetElementOfNNRTDeviceDescs(descs2, 0);
+    auto name2 = OH_AI_GetNameFromNNRTDeviceDesc(desc2_0);
+    std::cout << "OH_AI_GetNameFromNNRTDeviceDesc: " << name2 << std::endl;
+    auto id2_0 = OH_AI_GetDeviceIdFromNNRTDeviceDesc(desc2_0);
+    OH_AI_DeviceInfoSetDeviceId(nnrt_device_info2, id2_0);
+    const char *cache_path2 = "/data/local/tmp";
+    const char *cache_version2 = "1";
+    const char *model_name2 = "cache_same";
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info2, "CachePath", cache_path2, strlen(cache_path2));
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info2, "CacheVersion", cache_version2, strlen(cache_version2));
+    OH_AI_DeviceInfoAddExtension(nnrt_device_info2, "ModelName", model_name2, strlen(model_name2));
+    OH_AI_ContextAddDeviceInfo(context2, nnrt_device_info2);
+    printf("==========OH_AI_ModelCreate2==========\n");
+    OH_AI_ModelHandle model2 = OH_AI_ModelCreate();
+    OH_AI_Status ret2 = OH_AI_ModelBuildFromFile(model2, "/data/test/ml_ocr_cn.ms", OH_AI_MODELTYPE_MINDIR, context2);
+    ASSERT_EQ(ret2, OH_AI_STATUS_SUCCESS);
+    printf("==========GetInputs==========\n");
+    OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
+    ASSERT_NE(inputs.handle_list, nullptr);
+    FillInputsData(inputs, "ml_face_isface", true);
+    printf("==========Model Predict==========\n");
+    OH_AI_TensorHandleArray outputs;
+    OH_AI_Status predict_ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
+    ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
+    CompareResult(outputs, "ml_face_isface", 0.01, 0.01, true);
+    OH_AI_ModelDestroy(&model);
+    printf("==========GetInputs2==========\n");
+    OH_AI_TensorHandleArray inputs2 = OH_AI_ModelGetInputs(model2);
+    ASSERT_NE(inputs2.handle_list, nullptr);
+    FillInputsData(inputs2, "ml_ocr_cn", true);
+    printf("==========Model Predict2==========\n");
+    OH_AI_TensorHandleArray outputs2;
+    OH_AI_Status predict_ret2 = OH_AI_ModelPredict(model2, inputs2, &outputs2, nullptr, nullptr);
+    ASSERT_EQ(predict_ret2, OH_AI_STATUS_LITE_ERROR);
+    OH_AI_ModelDestroy(&model2);
 }
