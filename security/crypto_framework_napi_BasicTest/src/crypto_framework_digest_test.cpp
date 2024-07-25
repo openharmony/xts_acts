@@ -80,7 +80,7 @@ INSTANTIATE_TEST_CASE_P(OHCryptoFrameworkDigestNapiTest, MD_TEST, ::testing::Val
 
 /**
 * @tc.number SUB_Security_CryptoFramework_NAPI_Digest_Test_0100
-* @tc.name OHCryptoFrameworkDigestNapiTest/MD_TEST.SUB_Security_CryptoFramework_NAPI_Digest_Test_0100/*
+* @tc.name OHCryptoFrameworkDigestNapiTest/MD_TEST.SUB_Security_CryptoFramework_NAPI_Digest_Test_0100/x
 * @tc.desc algorithm is Digest
 * @tc.size Medium
 * @tc.type Func
@@ -186,7 +186,7 @@ HWTEST_F(OHCryptoFrameworkDigestNapiTest, SUB_Security_CryptoFramework_NAPI_Dige
 
 /**
 * @tc.number SUB_Security_CryptoFramework_NAPI_Digest_Test_0500
-* @tc.name OHCryptoFrameworkDigestNapiTest/MD_TEST.SUB_Security_CryptoFramework_NAPI_Digest_Test_0500/*
+* @tc.name OHCryptoFrameworkDigestNapiTest/MD_TEST.SUB_Security_CryptoFramework_NAPI_Digest_Test_0500/x
 * @tc.desc algorithm is Digest
 * @tc.size Medium
 * @tc.type Func
@@ -220,7 +220,7 @@ HWTEST_P(MD_TEST, Security_CryptoFramework_NAPI_Digest_Test_0500, TestSize.Level
 
 /**
 * @tc.number SUB_Security_CryptoFramework_NAPI_Digest_Test_0600
-* @tc.name OHCryptoFrameworkDigestNapiTest/MD_TEST.SUB_Security_CryptoFramework_NAPI_Digest_Test_0600/*
+* @tc.name OHCryptoFrameworkDigestNapiTest/MD_TEST.SUB_Security_CryptoFramework_NAPI_Digest_Test_0600/x
 * @tc.desc algorithm is Digest
 * @tc.size Medium
 * @tc.type Func
@@ -254,7 +254,7 @@ HWTEST_P(MD_TEST, SUB_Security_CryptoFramework_NAPI_Digest_Test_0600, TestSize.L
 
 /**
 * @tc.number SUB_Security_CryptoFramework_NAPI_Digest_Test_0700
-* @tc.name OHCryptoFrameworkDigestNapiTest/MD_TEST.SUB_Security_CryptoFramework_NAPI_Digest_Test_0700/*
+* @tc.name OHCryptoFrameworkDigestNapiTest/MD_TEST.SUB_Security_CryptoFramework_NAPI_Digest_Test_0700/x
 * @tc.desc algorithm is Digest
 * @tc.size Medium
 * @tc.type Func
@@ -296,7 +296,7 @@ HWTEST_P(MD_TEST, SUB_Security_CryptoFramework_NAPI_Digest_Test_0700, TestSize.L
 
 /**
 * @tc.number SUB_Security_CryptoFramework_NAPI_Digest_Test_0800
-* @tc.name OHCryptoFrameworkDigestNapiTest/MD_TEST.SUB_Security_CryptoFramework_NAPI_Digest_Test_0800/*
+* @tc.name OHCryptoFrameworkDigestNapiTest/MD_TEST.SUB_Security_CryptoFramework_NAPI_Digest_Test_0800/x
 * @tc.desc algorithm is Digest
 * @tc.size Medium
 * @tc.type Func
@@ -321,7 +321,7 @@ HWTEST_P(MD_TEST, SUB_Security_CryptoFramework_NAPI_Digest_Test_0800, TestSize.L
 
 /**
 * @tc.number SUB_Security_CryptoFramework_NAPI_Digest_Test_0900
-* @tc.name OHCryptoFrameworkDigestNapiTest/MD_TEST.SUB_Security_CryptoFramework_NAPI_Digest_Test_0900/*
+* @tc.name OHCryptoFrameworkDigestNapiTest/MD_TEST.SUB_Security_CryptoFramework_NAPI_Digest_Test_0900/x
 * @tc.desc algorithm is Digest
 * @tc.size Medium
 * @tc.type Func

@@ -195,7 +195,7 @@ INSTANTIATE_TEST_CASE_P(OHCryptoFrameworkAsymKeyNapiTest, ASYMKEY_TEST, ::testin
 
 /**
 * @tc.number SUB_Security_CryptoFramework_NAPI_AsymKey_Test_0100
-* @tc.name OHCryptoFrameworkAsymKeyNapiTest/ASYMKEY_TEST.SUB_Security_CryptoFramework_NAPI_AsymKey_Test_0100/*
+* @tc.name OHCryptoFrameworkAsymKeyNapiTest/ASYMKEY_TEST.SUB_Security_CryptoFramework_NAPI_AsymKey_Test_0100/x
 * @tc.desc algorithm is Asym Key
 * @tc.size Medium
 * @tc.type Func

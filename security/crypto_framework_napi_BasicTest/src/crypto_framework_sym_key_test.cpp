@@ -97,7 +97,7 @@ INSTANTIATE_TEST_CASE_P(OHCryptoFrameworkSymKeyNapiTest, SYMKEY_TEST, ::testing:
 
 /**
 * @tc.number SUB_Security_CryptoFramework_NAPI_SymKey_Test_0100
-* @tc.name OHCryptoFrameworkSymKeyNapiTest/SYMKEY_TEST.SUB_Security_CryptoFramework_NAPI_SymKey_Test_0100/*
+* @tc.name OHCryptoFrameworkSymKeyNapiTest/SYMKEY_TEST.SUB_Security_CryptoFramework_NAPI_SymKey_Test_0100/x
 * @tc.desc algorithm is Sym Key
 * @tc.size Medium
 * @tc.type Func
@@ -140,7 +140,7 @@ INSTANTIATE_TEST_CASE_P(OHCryptoFrameworkSymKeyConvertNapiTest, SYMKEY_CONVERT_T
 
 /**
 * @tc.number SUB_Security_CryptoFramework_NAPI_SymKey_Test_0200
-* @tc.name OHCryptoFrameworkSymKeyConvertNapiTest/SYMKEY_CONVERT_TEST.SUB_Security_CryptoFramework_NAPI_SymKey_Test_0200/*
+* @tc.name OHCryptoFrameworkSymKeyConvertNapiTest/SYMKEY_CONVERT_TEST.SUB_Security_CryptoFramework_NAPI_SymKey_Test_0200/x
 * @tc.desc algorithm is Sym Key
 * @tc.size Medium
 * @tc.type Func
