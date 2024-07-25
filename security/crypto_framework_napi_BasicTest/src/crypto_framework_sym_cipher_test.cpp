@@ -207,11 +207,14 @@ INSTANTIATE_TEST_CASE_P(OHCryptoFrameworkSymCipherCcmNapiTest, SYMCIPHER_CCM_TES
 INSTANTIATE_TEST_CASE_P(OHCryptoFrameworkSymCipherIvErrorNapiTest, SYMCIPHER_IV_ERROR_TEST, ::testing::ValuesIn(g_symCipherIvError));
 
 /**
- * @tc.name: OHCryptoFrameworkSymCipherNapiTest/SYMCIPHER_TEST.Security_CryptoFramework_NAPI_SymCipher_Test_0100/x
- * @tc.desc: alg-symKey
- * @tc.type: FUNC
- */
-HWTEST_P(SYMCIPHER_TEST, Security_CryptoFramework_NAPI_SymCipher_Test_0100, TestSize.Level0)
+* @tc.number SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0100
+* @tc.name OHCryptoFrameworkSymCipherNapiTest/SYMCIPHER_TEST.SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0100/*
+* @tc.desc algorithm is Sym Cipher
+* @tc.size Medium
+* @tc.type Func
+* @tc.level Level0
+*/
+HWTEST_P(SYMCIPHER_TEST, SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0100, TestSize.Level0)
 {
     SymCipherSpec symCipherData = GetParam();
     OH_CryptoSymKeyGenerator *genCtx = nullptr;
@@ -264,10 +267,13 @@ HWTEST_P(SYMCIPHER_TEST, Security_CryptoFramework_NAPI_SymCipher_Test_0100, Test
 }
 
 /**
- * @tc.name: OHCryptoFrameworkSymCipherGcmNapiTest/SYMCIPHER_GCM_TEST.Security_CryptoFramework_NAPI_SymCipher_Test_0200/x
- * @tc.desc: alg-symKey
- * @tc.type: FUNC
- */
+* @tc.number SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0200
+* @tc.name OHCryptoFrameworkSymCipherGcmNapiTest/SYMCIPHER_GCM_TEST.SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0200/*
+* @tc.desc algorithm is Sym Cipher
+* @tc.size Medium
+* @tc.type Func
+* @tc.level Level0
+*/
 HWTEST_P(SYMCIPHER_GCM_TEST, Security_CryptoFramework_NAPI_SymCipher_Test_0200, TestSize.Level0)
 {
     SymCipherSpec symCipherAEADData = GetParam();
@@ -328,11 +334,14 @@ HWTEST_P(SYMCIPHER_GCM_TEST, Security_CryptoFramework_NAPI_SymCipher_Test_0200, 
 }
 
 /**
- * @tc.name: OHCryptoFrameworkSymCipherCcmNapiTest/SYMCIPHER_CCM_TEST.Security_CryptoFramework_NAPI_SymCipher_Test_0300/x
- * @tc.desc: alg-symKey
- * @tc.type: FUNC
- */
-HWTEST_P(SYMCIPHER_CCM_TEST, Security_CryptoFramework_NAPI_SymCipher_Test_0300, TestSize.Level0)
+* @tc.number SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0300
+* @tc.name OHCryptoFrameworkSymCipherCcmNapiTest/SYMCIPHER_CCM_TEST.SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0300/*
+* @tc.desc algorithm is Sym Cipher
+* @tc.size Medium
+* @tc.type Func
+* @tc.level Level0
+*/
+HWTEST_P(SYMCIPHER_CCM_TEST, SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0300, TestSize.Level0)
 {
     SymCipherSpec symCipherAEADData = GetParam();
     OH_CryptoSymKeyGenerator *genCtx = nullptr;
@@ -392,11 +401,14 @@ HWTEST_P(SYMCIPHER_CCM_TEST, Security_CryptoFramework_NAPI_SymCipher_Test_0300, 
 }
 
 /**
- * @tc.name: OHCryptoFrameworkSymCipherNapiTest/SYMCIPHER_TEST.Security_CryptoFramework_NAPI_SymCipher_Test_0400/x
- * @tc.desc: alg-symKey
- * @tc.type: FUNC
- */
-HWTEST_P(SYMCIPHER_TEST, Security_CryptoFramework_NAPI_SymCipher_Test_0400, TestSize.Level0)
+* @tc.number SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0400
+* @tc.name OHCryptoFrameworkSymCipherNapiTest/SYMCIPHER_TEST.SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0400/*
+* @tc.desc algorithm is Sym Cipher
+* @tc.size Medium
+* @tc.type Func
+* @tc.level Level0
+*/
+HWTEST_P(SYMCIPHER_TEST, SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0400, TestSize.Level0)
 {
     SymCipherSpec symCipherData = GetParam();
     OH_CryptoSymKeyGenerator *genCtx = nullptr;
@@ -477,11 +489,14 @@ HWTEST_P(SYMCIPHER_TEST, Security_CryptoFramework_NAPI_SymCipher_Test_0400, Test
 }
 
 /**
- * @tc.name: OHCryptoFrameworkSymCipherGcmNapiTest/SYMCIPHER_GCM_TEST.Security_CryptoFramework_NAPI_SymCipher_Test_0401/x
- * @tc.desc: alg-symKey
- * @tc.type: FUNC
- */
-HWTEST_P(SYMCIPHER_GCM_TEST, Security_CryptoFramework_NAPI_SymCipher_Test_0401, TestSize.Level0)
+* @tc.number SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0401
+* @tc.name OHCryptoFrameworkSymCipherGcmNapiTest/SYMCIPHER_GCM_TEST.SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0401/*
+* @tc.desc algorithm is Sym Cipher
+* @tc.size Medium
+* @tc.type Func
+* @tc.level Level0
+*/
+HWTEST_P(SYMCIPHER_GCM_TEST, SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0401, TestSize.Level0)
 {
     SymCipherSpec symCipherAEADData = GetParam();
     OH_CryptoSymKeyGenerator *genCtx = nullptr;
@@ -567,21 +582,27 @@ HWTEST_P(SYMCIPHER_GCM_TEST, Security_CryptoFramework_NAPI_SymCipher_Test_0401, 
 }
 
 /**
- * @tc.name: OHCryptoFrameworkSymCipherNapiTest.Security_CryptoFramework_NAPI_SymCipher_Test_0500
- * @tc.desc: alg-symKey
- * @tc.type: FUNC
- */
-HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, Security_CryptoFramework_NAPI_SymCipher_Test_0500, TestSize.Level0)
+* @tc.number SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0500
+* @tc.name OHCryptoFrameworkSymCipherNapiTest.SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0500
+* @tc.desc algorithm is Sym Cipher
+* @tc.size Medium
+* @tc.type Func
+* @tc.level Level0
+*/
+HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0500, TestSize.Level0)
 {
     EXPECT_EQ(OH_CryptoSymCipherParams_Create(nullptr), CRYPTO_INVALID_PARAMS);
 }
 
 /**
- * @tc.name: OHCryptoFrameworkSymCipherNapiTest.Security_CryptoFramework_NAPI_SymCipher_Test_0600
- * @tc.desc: alg-symKey
- * @tc.type: FUNC
- */
-HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, Security_CryptoFramework_NAPI_SymCipher_Test_0600, TestSize.Level0)
+* @tc.number SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0600
+* @tc.name OHCryptoFrameworkSymCipherNapiTest.SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0600
+* @tc.desc algorithm is Sym Cipher
+* @tc.size Medium
+* @tc.type Func
+* @tc.level Level0
+*/
+HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0600, TestSize.Level0)
 {
     OH_CryptoSymCipherParams *params = nullptr;
     HcfBlob ivBlob = {0};
@@ -594,11 +615,14 @@ HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, Security_CryptoFramework_NAPI_SymCi
 }
 
 /**
- * @tc.name: OHCryptoFrameworkSymCipherNapiTest.Security_CryptoFramework_NAPI_SymCipher_Test_0700
- * @tc.desc: alg-symKey
- * @tc.type: FUNC
- */
-HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, Security_CryptoFramework_NAPI_SymCipher_Test_0700, TestSize.Level0)
+* @tc.number SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0700
+* @tc.name OHCryptoFrameworkSymCipherNapiTest.SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0700
+* @tc.desc algorithm is Sym Cipher
+* @tc.size Medium
+* @tc.type Func
+* @tc.level Level0
+*/
+HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0700, TestSize.Level0)
 {
     OH_CryptoSymCipher *encCtx = nullptr;
 
@@ -610,11 +634,14 @@ HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, Security_CryptoFramework_NAPI_SymCi
 }
 
 /**
- * @tc.name: OHCryptoFrameworkSymCipherNapiTest.Security_CryptoFramework_NAPI_SymCipher_Test_0800
- * @tc.desc: alg-symKey
- * @tc.type: FUNC
- */
-HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, Security_CryptoFramework_NAPI_SymCipher_Test_0800, TestSize.Level0)
+* @tc.number SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0800
+* @tc.name OHCryptoFrameworkSymCipherNapiTest.SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0800
+* @tc.desc algorithm is Sym Cipher
+* @tc.size Medium
+* @tc.type Func
+* @tc.level Level0
+*/
+HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0800, TestSize.Level0)
 {
     OH_CryptoSymKeyGenerator *genCtx = nullptr;
     OH_CryptoSymCipher *encCtx = nullptr;
@@ -664,11 +691,14 @@ HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, Security_CryptoFramework_NAPI_SymCi
 }
 
 /**
- * @tc.name: OHCryptoFrameworkSymCipherNapiTest.Security_CryptoFramework_NAPI_SymCipher_Test_0900
- * @tc.desc: alg-symKey
- * @tc.type: FUNC
- */
-HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, Security_CryptoFramework_NAPI_SymCipher_Test_0900, TestSize.Level0)
+* @tc.number SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0900
+* @tc.name OHCryptoFrameworkSymCipherNapiTest.SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0900
+* @tc.desc algorithm is Sym Cipher
+* @tc.size Medium
+* @tc.type Func
+* @tc.level Level0
+*/
+HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0900, TestSize.Level0)
 {
     OH_CryptoSymCipher *encCtx = nullptr;
     OH_CryptoSymCipherParams *params = nullptr;
@@ -700,11 +730,14 @@ HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, Security_CryptoFramework_NAPI_SymCi
 }
 
 /**
- * @tc.name: OHCryptoFrameworkSymCipherNapiTest.Security_CryptoFramework_NAPI_SymCipher_Test_1000
- * @tc.desc: alg-symKey
- * @tc.type: FUNC
- */
-HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, Security_CryptoFramework_NAPI_SymCipher_Test_1000, TestSize.Level0)
+* @tc.number SUB_Security_CryptoFramework_NAPI_SymCipher_Test_1000
+* @tc.name OHCryptoFrameworkSymCipherNapiTest.SUB_Security_CryptoFramework_NAPI_SymCipher_Test_1000
+* @tc.desc algorithm is Sym Cipher
+* @tc.size Medium
+* @tc.type Func
+* @tc.level Level0
+*/
+HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, SUB_Security_CryptoFramework_NAPI_SymCipher_Test_1000, TestSize.Level0)
 {
     OH_CryptoSymCipher *encCtx = nullptr;
     Crypto_DataBlob out= {.data = nullptr, .len = 0};
@@ -726,11 +759,14 @@ HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, Security_CryptoFramework_NAPI_SymCi
 }
 
 /**
- * @tc.name: OHCryptoFrameworkSymCipherIvErrorNapiTest/SYMCIPHER_IV_ERROR_TEST.Security_CryptoFramework_NAPI_SymCipher_Test_1100/x
- * @tc.desc: alg-symKey
- * @tc.type: FUNC
- */
-HWTEST_P(SYMCIPHER_IV_ERROR_TEST, Security_CryptoFramework_NAPI_SymCipher_Test_1100, TestSize.Level0)
+* @tc.number SUB_Security_CryptoFramework_NAPI_SymCipher_Test_1100
+* @tc.name OHCryptoFrameworkSymCipherIvErrorNapiTest/SYMCIPHER_IV_ERROR_TEST.SUB_Security_CryptoFramework_NAPI_SymCipher_Test_1100/*
+* @tc.desc algorithm is Sym Cipher
+* @tc.size Medium
+* @tc.type Func
+* @tc.level Level0
+*/
+HWTEST_P(SYMCIPHER_IV_ERROR_TEST, SUB_Security_CryptoFramework_NAPI_SymCipher_Test_1100, TestSize.Level0)
 {
     SymCipherSpec symCipherData = GetParam();
     OH_CryptoSymKeyGenerator *genCtx = nullptr;
@@ -760,11 +796,14 @@ HWTEST_P(SYMCIPHER_IV_ERROR_TEST, Security_CryptoFramework_NAPI_SymCipher_Test_1
 }
 
 /**
- * @tc.name: OHCryptoFrameworkSymCipherNapiTest.Security_CryptoFramework_NAPI_SymCipher_Test_1200
- * @tc.desc: alg-symKey
- * @tc.type: FUNC
- */
-HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, Security_CryptoFramework_NAPI_SymCipher_Test_1200, TestSize.Level0)
+* @tc.number SUB_Security_CryptoFramework_NAPI_SymCipher_Test_1200
+* @tc.name OHCryptoFrameworkSymCipherNapiTest.SUB_Security_CryptoFramework_NAPI_SymCipher_Test_1200
+* @tc.desc algorithm is Sym Cipher
+* @tc.size Medium
+* @tc.type Func
+* @tc.level Level0
+*/
+HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, SUB_Security_CryptoFramework_NAPI_SymCipher_Test_1200, TestSize.Level0)
 {
     OH_CryptoSymKeyGenerator *genCtx = nullptr;
     OH_CryptoSymCipher *encCtx = nullptr;
@@ -802,11 +841,14 @@ HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, Security_CryptoFramework_NAPI_SymCi
 }
 
 /**
- * @tc.name: OHCryptoFrameworkSymCipherNapiTest.Security_CryptoFramework_NAPI_SymCipher_Test_1300
- * @tc.desc: alg-symKey
- * @tc.type: FUNC
- */
-HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, Security_CryptoFramework_NAPI_SymCipher_Test_1300, TestSize.Level0)
+* @tc.number SUB_Security_CryptoFramework_NAPI_SymCipher_Test_1300
+* @tc.name OHCryptoFrameworkSymCipherNapiTest.SUB_Security_CryptoFramework_NAPI_SymCipher_Test_1300
+* @tc.desc algorithm is Sym Cipher
+* @tc.size Medium
+* @tc.type Func
+* @tc.level Level0
+*/
+HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, SUB_Security_CryptoFramework_NAPI_SymCipher_Test_1300, TestSize.Level0)
 {
     OH_CryptoSymKeyGenerator *genCtx = nullptr;
     OH_CryptoSymCipher *encCtx = nullptr;
@@ -850,11 +892,14 @@ HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, Security_CryptoFramework_NAPI_SymCi
 }
 
 /**
- * @tc.name: OHCryptoFrameworkSymCipherNapiTest.Security_CryptoFramework_NAPI_SymCipher_Test_1400
- * @tc.desc: alg-symKey
- * @tc.type: FUNC
- */
-HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, Security_CryptoFramework_NAPI_SymCipher_Test_1400, TestSize.Level0)
+* @tc.number SUB_Security_CryptoFramework_NAPI_SymCipher_Test_1400
+* @tc.name OHCryptoFrameworkSymCipherNapiTest.SUB_Security_CryptoFramework_NAPI_SymCipher_Test_1400
+* @tc.desc algorithm is Sym Cipher
+* @tc.size Medium
+* @tc.type Func
+* @tc.level Level0
+*/
+HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, SUB_Security_CryptoFramework_NAPI_SymCipher_Test_1400, TestSize.Level0)
 {
     OH_CryptoSymKeyGenerator *genCtx = nullptr;
     OH_CryptoSymCipher *encCtx = nullptr;
@@ -899,11 +944,14 @@ HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, Security_CryptoFramework_NAPI_SymCi
 }
 
 /**
- * @tc.name: OHCryptoFrameworkSymCipherNapiTest.Security_CryptoFramework_NAPI_SymCipher_Test_1500
- * @tc.desc: alg-symKey
- * @tc.type: FUNC
- */
-HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, Security_CryptoFramework_NAPI_SymCipher_Test_1500, TestSize.Level0)
+* @tc.number SUB_Security_CryptoFramework_NAPI_SymCipher_Test_1500
+* @tc.name OHCryptoFrameworkSymCipherNapiTest.SUB_Security_CryptoFramework_NAPI_SymCipher_Test_1500
+* @tc.desc algorithm is Sym Cipher
+* @tc.size Medium
+* @tc.type Func
+* @tc.level Level0
+*/
+HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, SUB_Security_CryptoFramework_NAPI_SymCipher_Test_1500, TestSize.Level0)
 {
     OH_CryptoSymKeyGenerator *genCtx = nullptr;
     OH_CryptoSymCipher *encCtx = nullptr;
@@ -948,11 +996,14 @@ HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, Security_CryptoFramework_NAPI_SymCi
 }
 
 /**
- * @tc.name: OHCryptoFrameworkSymCipherNapiTest.Security_CryptoFramework_NAPI_SymCipher_Test_1600
- * @tc.desc: alg-symKey
- * @tc.type: FUNC
- */
-HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, Security_CryptoFramework_NAPI_SymCipher_Test_1600, TestSize.Level0)
+* @tc.number SUB_Security_CryptoFramework_NAPI_SymCipher_Test_1600
+* @tc.name OHCryptoFrameworkSymCipherNapiTest.SUB_Security_CryptoFramework_NAPI_SymCipher_Test_1600
+* @tc.desc algorithm is Sym Cipher
+* @tc.size Medium
+* @tc.type Func
+* @tc.level Level0
+*/
+HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, SUB_Security_CryptoFramework_NAPI_SymCipher_Test_1600, TestSize.Level0)
 {
     OH_CryptoSymKeyGenerator *genCtx = nullptr;
     OH_CryptoSymCipher *encCtx = nullptr;
@@ -998,11 +1049,14 @@ HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, Security_CryptoFramework_NAPI_SymCi
 }
 
 /**
- * @tc.name: OHCryptoFrameworkSymCipherNapiTest.Security_CryptoFramework_NAPI_SymCipher_Test_1700
- * @tc.desc: alg-symKey
- * @tc.type: FUNC
- */
-HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, Security_CryptoFramework_NAPI_SymCipher_Test_1700, TestSize.Level0)
+* @tc.number SUB_Security_CryptoFramework_NAPI_SymCipher_Test_1700
+* @tc.name OHCryptoFrameworkSymCipherNapiTest.SUB_Security_CryptoFramework_NAPI_SymCipher_Test_1700
+* @tc.desc algorithm is Sym Cipher
+* @tc.size Medium
+* @tc.type Func
+* @tc.level Level0
+*/
+HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, SUB_Security_CryptoFramework_NAPI_SymCipher_Test_1700, TestSize.Level0)
 {
     OH_CryptoSymKeyGenerator *genCtx = nullptr;
     OH_CryptoSymCipher *encCtx = nullptr;
