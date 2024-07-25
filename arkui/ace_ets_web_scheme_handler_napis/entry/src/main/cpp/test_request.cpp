@@ -212,6 +212,7 @@ void TestRequest::Start()
     OH_ArkWebRequestHeaderList_Destroy(headerList);
     OH_LOG_INFO(LOG_APP, "OH_ArkWebRequestHeaderList_Destroy Start");
     
+    headerList = nullptr;
     int32_t headerListSize1 = OH_ArkWebRequestHeaderList_GetSize(headerList);
     if (headerListSize1 <= 0) {
         isHeaderDestroy_ = true;
@@ -248,7 +249,7 @@ void TestRequest::Stop()
     
     OH_LOG_INFO(LOG_APP, "OH_ArkWeb_DestroyResponse Before %{public}p", response_);
     OH_ArkWeb_DestroyResponse(response_);
-    
+    response_ = nullptr;
     int afterStatus = OH_ArkWebResponse_GetStatus(response_);
     OH_LOG_INFO(LOG_APP, "OH_ArkWeb_DestroyResponse afterStatus %{public}d", afterStatus);
     OH_LOG_INFO(LOG_APP, "OH_ArkWeb_DestroyResponse After %{public}p", response_);
