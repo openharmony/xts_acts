@@ -14,8 +14,21 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
-import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  Driver,
+  Component,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../../MainAbility/utils/Common';
+
 export default function ReplaceSymbolEffect_APITest() {
   describe('ReplaceSymbolEffect_APITest', () => {
     beforeEach(async (done: Function) => {
@@ -40,10 +53,10 @@ export default function ReplaceSymbolEffect_APITest() {
       done();
     });
     /**
-     * @tc.number    ReplaceSymbolEffect
-     * @tc.name      ReplaceSymbolEffect_APITest_0100
-     * @tc.desc      api
-     * @tc.level:    Level 2
+     * @tc.number ReplaceSymbolEffect
+     * @tc.name ReplaceSymbolEffect_APITest_0100
+     * @tc.desc api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
@@ -55,7 +68,8 @@ export default function ReplaceSymbolEffect_APITest() {
       await btn.click();
       await CommonFunc.sleep(1000);
       let ReplaceSymbolEffect = getInspectorByKey('ReplaceSymbolEffect');
-      console.info("[ReplaceSymbolEffect_APITest_0100] Tabs animationMode attrs is: " + JSON.stringify(JSON.parse(ReplaceSymbolEffect).$attrs));
+      console.info("[ReplaceSymbolEffect_APITest_0100] Tabs animationMode attrs is: " +
+      JSON.stringify(JSON.parse(ReplaceSymbolEffect).$attrs));
       expect(JSON.parse(ReplaceSymbolEffect).$attrs.content).assertEqual('1');
       console.info('[ReplaceSymbolEffect_APITest_0100] END');
       done();

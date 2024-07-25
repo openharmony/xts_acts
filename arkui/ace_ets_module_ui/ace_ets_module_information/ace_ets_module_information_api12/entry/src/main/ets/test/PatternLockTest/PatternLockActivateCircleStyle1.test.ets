@@ -48,12 +48,12 @@ export default function PatternLockActivateCircleStyle1() {
     });
 
     /**
-     * @tc.number    PatternLockActivateCircleStyle1_0100
-     * @tc.name      PatternLockActivateCircleStyle1_0100
-     * @tc.desc      Test PatternLock activateCircleStyle
-     * @tc.level     Level 2
+     * @tc.number PatternLockActivateCircleStyle1_0100
+     * @tc.name PatternLockActivateCircleStyle1_0100
+     * @tc.desc Test PatternLock activateCircleStyle
+     * @tc.level Level 2
      */
-    it('PatternLockActivateCircleStyle1_0100', 0, async function (done) {
+    it('PatternLockActivateCircleStyle1_0100', 0, async (done: Function) => {
       console.info('[PatternLockActivateCircleStyle1_0100] START');
       await CommonFunc.sleep(2000);
 
