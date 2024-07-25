@@ -152,8 +152,8 @@ struct textAreaUx {
         .margin(20)
         .fontSize(16)
         .maxLength(asNumber(this.flag ? (this.isNum ? this.textNum : this.textStr) : (this.isNull ? null : undefined)))
-        .showCounter(asBoolean(this.boolFlag ? this.bool : (this.boolIsNum ? this.boolNum : (this.boolIsStr ? this.boolStr :
-          (this.boolIsNull ? null : undefined)))))
+        .showCounter(asBoolean(this.boolFlag ? this.bool : (this.boolIsNum ? this.boolNum :
+          (this.boolIsStr ? this.boolStr : (this.boolIsNull ? null : undefined)))))
         .backgroundColor('#FFFFFF')
         .onChange((value: string) => {
           this.text = value
