@@ -208,7 +208,7 @@ INSTANTIATE_TEST_CASE_P(OHCryptoFrameworkSymCipherIvErrorNapiTest, SYMCIPHER_IV_
 
 /**
 * @tc.number SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0100
-* @tc.name OHCryptoFrameworkSymCipherNapiTest/SYMCIPHER_TEST.SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0100/*
+* @tc.name OHCryptoFrameworkSymCipherNapiTest/SYMCIPHER_TEST.SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0100/x
 * @tc.desc algorithm is Sym Cipher
 * @tc.size Medium
 * @tc.type Func
@@ -268,7 +268,7 @@ HWTEST_P(SYMCIPHER_TEST, SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0100, 
 
 /**
 * @tc.number SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0200
-* @tc.name OHCryptoFrameworkSymCipherGcmNapiTest/SYMCIPHER_GCM_TEST.SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0200/*
+* @tc.name OHCryptoFrameworkSymCipherGcmNapiTest/SYMCIPHER_GCM_TEST.SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0200/x
 * @tc.desc algorithm is Sym Cipher
 * @tc.size Medium
 * @tc.type Func
@@ -335,7 +335,7 @@ HWTEST_P(SYMCIPHER_GCM_TEST, Security_CryptoFramework_NAPI_SymCipher_Test_0200, 
 
 /**
 * @tc.number SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0300
-* @tc.name OHCryptoFrameworkSymCipherCcmNapiTest/SYMCIPHER_CCM_TEST.SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0300/*
+* @tc.name OHCryptoFrameworkSymCipherCcmNapiTest/SYMCIPHER_CCM_TEST.SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0300/x
 * @tc.desc algorithm is Sym Cipher
 * @tc.size Medium
 * @tc.type Func
@@ -402,7 +402,7 @@ HWTEST_P(SYMCIPHER_CCM_TEST, SUB_Security_CryptoFramework_NAPI_SymCipher_Test_03
 
 /**
 * @tc.number SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0400
-* @tc.name OHCryptoFrameworkSymCipherNapiTest/SYMCIPHER_TEST.SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0400/*
+* @tc.name OHCryptoFrameworkSymCipherNapiTest/SYMCIPHER_TEST.SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0400/x
 * @tc.desc algorithm is Sym Cipher
 * @tc.size Medium
 * @tc.type Func
@@ -490,7 +490,7 @@ HWTEST_P(SYMCIPHER_TEST, SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0400, 
 
 /**
 * @tc.number SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0401
-* @tc.name OHCryptoFrameworkSymCipherGcmNapiTest/SYMCIPHER_GCM_TEST.SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0401/*
+* @tc.name OHCryptoFrameworkSymCipherGcmNapiTest/SYMCIPHER_GCM_TEST.SUB_Security_CryptoFramework_NAPI_SymCipher_Test_0401/x
 * @tc.desc algorithm is Sym Cipher
 * @tc.size Medium
 * @tc.type Func
@@ -760,7 +760,7 @@ HWTEST_F(OHCryptoFrameworkSymCipherNapiTest, SUB_Security_CryptoFramework_NAPI_S
 
 /**
 * @tc.number SUB_Security_CryptoFramework_NAPI_SymCipher_Test_1100
-* @tc.name OHCryptoFrameworkSymCipherIvErrorNapiTest/SYMCIPHER_IV_ERROR_TEST.SUB_Security_CryptoFramework_NAPI_SymCipher_Test_1100/*
+* @tc.name OHCryptoFrameworkSymCipherIvErrorNapiTest/SYMCIPHER_IV_ERROR_TEST.SUB_Security_CryptoFramework_NAPI_SymCipher_Test_1100/x
 * @tc.desc algorithm is Sym Cipher
 * @tc.size Medium
 * @tc.type Func

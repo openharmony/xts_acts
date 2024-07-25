@@ -576,7 +576,7 @@ INSTANTIATE_TEST_CASE_P(OHCryptoFrameworkVerifyNapiTest, VERIFY_RSA_ONLY_SIGN_TE
 
 /**
 * @tc.number SUB_Security_CryptoFramework_NAPI_Verify_Test_0100
-* @tc.name OHCryptoFrameworkVerifyNapiTest/VERIFY_PKCS1_TEST.SUB_Security_CryptoFramework_NAPI_Verify_Test_0100/*
+* @tc.name OHCryptoFrameworkVerifyNapiTest/VERIFY_PKCS1_TEST.SUB_Security_CryptoFramework_NAPI_Verify_Test_0100/x
 * @tc.desc algorithm is Verify
 * @tc.size Medium
 * @tc.type Func
@@ -639,7 +639,7 @@ HWTEST_P(VERIFY_PKCS1_TEST, SUB_Security_CryptoFramework_NAPI_Verify_Test_0100, 
 
 /**
 * @tc.number SUB_Security_CryptoFramework_NAPI_Verify_Test_0200
-* @tc.name OHCryptoFrameworkVerifyNapiTest/VERIFY_PSS_TEST.SUB_Security_CryptoFramework_NAPI_Verify_Test_0200/*
+* @tc.name OHCryptoFrameworkVerifyNapiTest/VERIFY_PSS_TEST.SUB_Security_CryptoFramework_NAPI_Verify_Test_0200/x
 * @tc.desc algorithm is Verify
 * @tc.size Medium
 * @tc.type Func
@@ -719,7 +719,7 @@ HWTEST_F(OHCryptoFrameworkVerifyNapiTest, SUB_Security_CryptoFramework_NAPI_Veri
 
 /**
 * @tc.number SUB_Security_CryptoFramework_NAPI_Verify_Test_0300
-* @tc.name OHCryptoFrameworkVerifyNapiTest/VERIFY_ECC_TEST.SUB_Security_CryptoFramework_NAPI_Verify_Test_0300/*
+* @tc.name OHCryptoFrameworkVerifyNapiTest/VERIFY_ECC_TEST.SUB_Security_CryptoFramework_NAPI_Verify_Test_0300/x
 * @tc.desc algorithm is Verify
 * @tc.size Medium
 * @tc.type Func
@@ -763,7 +763,7 @@ HWTEST_P(VERIFY_ECC_TEST, SUB_Security_CryptoFramework_NAPI_Verify_Test_0300, Te
 
 /**
 * @tc.number SUB_Security_CryptoFramework_NAPI_Verify_Test_0400
-* @tc.name OHCryptoFrameworkVerifyNapiTest/VERIFY_DSA_TEST.SUB_Security_CryptoFramework_NAPI_Verify_Test_0400/*
+* @tc.name OHCryptoFrameworkVerifyNapiTest/VERIFY_DSA_TEST.SUB_Security_CryptoFramework_NAPI_Verify_Test_0400/x
 * @tc.desc algorithm is Verify
 * @tc.size Medium
 * @tc.type Func
@@ -807,7 +807,7 @@ HWTEST_P(VERIFY_DSA_TEST, SUB_Security_CryptoFramework_NAPI_Verify_Test_0400, Te
 
 /**
 * @tc.number SUB_Security_CryptoFramework_NAPI_Verify_Test_0500
-* @tc.name OHCryptoFrameworkVerifyNapiTest/VERIFY_RSA_ONLY_SIGN_TEST.SUB_Security_CryptoFramework_NAPI_Verify_Test_0500/*
+* @tc.name OHCryptoFrameworkVerifyNapiTest/VERIFY_RSA_ONLY_SIGN_TEST.SUB_Security_CryptoFramework_NAPI_Verify_Test_0500/x
 * @tc.desc algorithm is Verify
 * @tc.size Medium
 * @tc.type Func
