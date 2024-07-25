@@ -42,7 +42,15 @@ export default function DatePickerDialogJsunit() {
       }
       done()
     });
-
+    
+    /**
+     * @tc.number    DatePickerDialogJsunit_0100
+     * @tc.name      DatePickerDialogJsunit_0100
+     * @tc.desc      api
+     * @tc.level:    Level 2
+     * @tc.type :
+     * @tc.size :
+     */
     it('DatePickerDialogJsunit_0100', 0, async function (done) {
 
       console.info('DatePickerDialogJsunit_0100 START');
