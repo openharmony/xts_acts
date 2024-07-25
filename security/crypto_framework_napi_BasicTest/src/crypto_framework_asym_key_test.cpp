@@ -194,11 +194,14 @@ static OH_Crypto_ErrCode GetEncode(const char *name, OH_CryptoPubKey *pubKey, Cr
 INSTANTIATE_TEST_CASE_P(OHCryptoFrameworkAsymKeyNapiTest, ASYMKEY_TEST, ::testing::ValuesIn(g_asymKeyData));
 
 /**
- * @tc.name: OHCryptoFrameworkAsymKeyNapiTest/ASYMKEY_TEST.Security_CryptoFramework_NAPI_AsymKey_Test_0100/x
- * @tc.desc: alg-asymKey key
- * @tc.type: FUNC
- */
-HWTEST_P(ASYMKEY_TEST, Security_CryptoFramework_NAPI_AsymKey_Test_0100, TestSize.Level0)
+* @tc.number SUB_Security_CryptoFramework_NAPI_AsymKey_Test_0100
+* @tc.name OHCryptoFrameworkAsymKeyNapiTest/ASYMKEY_TEST.SUB_Security_CryptoFramework_NAPI_AsymKey_Test_0100/*
+* @tc.desc algorithm is Asym Key
+* @tc.size Medium
+* @tc.type Func
+* @tc.level Level0
+*/
+HWTEST_P(ASYMKEY_TEST, SUB_Security_CryptoFramework_NAPI_AsymKey_Test_0100, TestSize.Level0)
 {
     AsymKeySpec AsymKeyData = GetParam();
     OH_CryptoAsymKeyGenerator *ctx = nullptr;
@@ -252,11 +255,14 @@ HWTEST_P(ASYMKEY_TEST, Security_CryptoFramework_NAPI_AsymKey_Test_0100, TestSize
 }
 
 /**
- * @tc.name: OHCryptoFrameworkAsymKeyNapiTest.Security_CryptoFramework_NAPI_AsymKey_Test_0200
- * @tc.desc: alg-asymKey key
- * @tc.type: FUNC
- */
-HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, Security_CryptoFramework_NAPI_AsymKey_Test_0200, TestSize.Level0)
+* @tc.number SUB_Security_CryptoFramework_NAPI_AsymKey_Test_0200
+* @tc.name OHCryptoFrameworkAsymKeyNapiTest.SUB_Security_CryptoFramework_NAPI_AsymKey_Test_0200
+* @tc.desc algorithm is Asym Key
+* @tc.size Medium
+* @tc.type Func
+* @tc.level Level0
+*/
+HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, SUB_Security_CryptoFramework_NAPI_AsymKey_Test_0200, TestSize.Level0)
 {
     OH_CryptoAsymKeyGenerator *ctx = nullptr;
     OH_Crypto_ErrCode ret;
@@ -266,11 +272,14 @@ HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, Security_CryptoFramework_NAPI_AsymKey
 }
 
 /**
- * @tc.name: OHCryptoFrameworkAsymKeyNapiTest.Security_CryptoFramework_NAPI_AsymKey_Test_0300
- * @tc.desc: alg-asymKey key
- * @tc.type: FUNC
- */
-HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, Security_CryptoFramework_NAPI_AsymKey_Test_0300, TestSize.Level0)
+* @tc.number SUB_Security_CryptoFramework_NAPI_AsymKey_Test_0300
+* @tc.name OHCryptoFrameworkAsymKeyNapiTest.SUB_Security_CryptoFramework_NAPI_AsymKey_Test_0300
+* @tc.desc algorithm is Asym Key
+* @tc.size Medium
+* @tc.type Func
+* @tc.level Level0
+*/
+HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, SUB_Security_CryptoFramework_NAPI_AsymKey_Test_0300, TestSize.Level0)
 {
     OH_CryptoAsymKeyGenerator *ctx = nullptr;
     OH_Crypto_ErrCode ret;
@@ -280,11 +289,14 @@ HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, Security_CryptoFramework_NAPI_AsymKey
 }
 
 /**
- * @tc.name: OHCryptoFrameworkAsymKeyNapiTest.Security_CryptoFramework_NAPI_AsymKey_Test_0400
- * @tc.desc: alg-asymKey key
- * @tc.type: FUNC
- */
-HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, Security_CryptoFramework_NAPI_AsymKey_Test_0400, TestSize.Level0)
+* @tc.number SUB_Security_CryptoFramework_NAPI_AsymKey_Test_0400
+* @tc.name OHCryptoFrameworkAsymKeyNapiTest.SUB_Security_CryptoFramework_NAPI_AsymKey_Test_0400
+* @tc.desc algorithm is Asym Key
+* @tc.size Medium
+* @tc.type Func
+* @tc.level Level0
+*/
+HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, SUB_Security_CryptoFramework_NAPI_AsymKey_Test_0400, TestSize.Level0)
 {
     OH_CryptoAsymKeyGenerator *ctx = nullptr;
     OH_CryptoKeyPair *dupKeyPair = nullptr;
@@ -305,11 +317,14 @@ HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, Security_CryptoFramework_NAPI_AsymKey
 }
 
 /**
- * @tc.name: OHCryptoFrameworkAsymKeyNapiTest.Security_CryptoFramework_NAPI_AsymKey_Test_0500
- * @tc.desc: alg-asymKey key
- * @tc.type: FUNC
- */
-HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, Security_CryptoFramework_NAPI_AsymKey_Test_0500, TestSize.Level0)
+* @tc.number SUB_Security_CryptoFramework_NAPI_AsymKey_Test_0500
+* @tc.name OHCryptoFrameworkAsymKeyNapiTest.SUB_Security_CryptoFramework_NAPI_AsymKey_Test_0500
+* @tc.desc algorithm is Asym Key
+* @tc.size Medium
+* @tc.type Func
+* @tc.level Level0
+*/
+HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, SUB_Security_CryptoFramework_NAPI_AsymKey_Test_0500, TestSize.Level0)
 {
     OH_CryptoAsymKeyGenerator *ctx = nullptr;
     OH_CryptoKeyPair *dupKeyPair = nullptr;
@@ -332,11 +347,14 @@ HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, Security_CryptoFramework_NAPI_AsymKey
 }
 
 /**
- * @tc.name: OHCryptoFrameworkAsymKeyNapiTest.Security_CryptoFramework_NAPI_AsymKey_Test_0600
- * @tc.desc: alg-asymKey key
- * @tc.type: FUNC
- */
-HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, Security_CryptoFramework_NAPI_AsymKey_Test_0600, TestSize.Level0)
+* @tc.number SUB_Security_CryptoFramework_NAPI_AsymKey_Test_0600
+* @tc.name OHCryptoFrameworkAsymKeyNapiTest.SUB_Security_CryptoFramework_NAPI_AsymKey_Test_0600
+* @tc.desc algorithm is Asym Key
+* @tc.size Medium
+* @tc.type Func
+* @tc.level Level0
+*/
+HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, SUB_Security_CryptoFramework_NAPI_AsymKey_Test_0600, TestSize.Level0)
 {
     OH_CryptoAsymKeyGenerator *ctx = nullptr;
     OH_CryptoKeyPair *keyPair = nullptr;
@@ -366,11 +384,14 @@ HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, Security_CryptoFramework_NAPI_AsymKey
 }
 
 /**
- * @tc.name: OHCryptoFrameworkAsymKeyNapiTest.Security_CryptoFramework_NAPI_AsymKey_Test_0700
- * @tc.desc: alg-asymKey key
- * @tc.type: FUNC
- */
-HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, Security_CryptoFramework_NAPI_AsymKey_Test_0700, TestSize.Level0)
+* @tc.number SUB_Security_CryptoFramework_NAPI_AsymKey_Test_0700
+* @tc.name OHCryptoFrameworkAsymKeyNapiTest.SUB_Security_CryptoFramework_NAPI_AsymKey_Test_0700
+* @tc.desc algorithm is Asym Key
+* @tc.size Medium
+* @tc.type Func
+* @tc.level Level0
+*/
+HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, SUB_Security_CryptoFramework_NAPI_AsymKey_Test_0700, TestSize.Level0)
 {
     OH_CryptoAsymKeyGenerator *ctx = nullptr;
     OH_CryptoKeyPair *keyPair = nullptr;
@@ -423,11 +444,14 @@ HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, Security_CryptoFramework_NAPI_AsymKey
 }
 
 /**
- * @tc.name: OHCryptoFrameworkAsymKeyNapiTest.Security_CryptoFramework_NAPI_AsymKey_Test_0800
- * @tc.desc: alg-asymKey key
- * @tc.type: FUNC
- */
-HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, Security_CryptoFramework_NAPI_AsymKey_Test_0800, TestSize.Level0)
+* @tc.number SUB_Security_CryptoFramework_NAPI_AsymKey_Test_0800
+* @tc.name OHCryptoFrameworkAsymKeyNapiTest.SUB_Security_CryptoFramework_NAPI_AsymKey_Test_0800
+* @tc.desc algorithm is Asym Key
+* @tc.size Medium
+* @tc.type Func
+* @tc.level Level0
+*/
+HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, SUB_Security_CryptoFramework_NAPI_AsymKey_Test_0800, TestSize.Level0)
 {
     OH_CryptoAsymKeyGenerator *ctx = nullptr;
     OH_CryptoKeyPair *keyPair = nullptr;
@@ -450,11 +474,14 @@ HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, Security_CryptoFramework_NAPI_AsymKey
 }
 
 /**
- * @tc.name: OHCryptoFrameworkAsymKeyNapiTest.Security_CryptoFramework_NAPI_AsymKey_Test_0900
- * @tc.desc: alg-asymKey key
- * @tc.type: FUNC
- */
-HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, Security_CryptoFramework_NAPI_AsymKey_Test_0900, TestSize.Level0)
+* @tc.number SUB_Security_CryptoFramework_NAPI_AsymKey_Test_0900
+* @tc.name OHCryptoFrameworkAsymKeyNapiTest.SUB_Security_CryptoFramework_NAPI_AsymKey_Test_0900
+* @tc.desc algorithm is Asym Key
+* @tc.size Medium
+* @tc.type Func
+* @tc.level Level0
+*/
+HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, SUB_Security_CryptoFramework_NAPI_AsymKey_Test_0900, TestSize.Level0)
 {
     OH_CryptoAsymKeyGenerator *ctx = nullptr;
     OH_CryptoKeyPair *keyPair = nullptr;
@@ -483,11 +510,14 @@ HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, Security_CryptoFramework_NAPI_AsymKey
 }
 
 /**
- * @tc.name: OHCryptoFrameworkAsymKeyNapiTest.Security_CryptoFramework_NAPI_AsymKey_Test_1000
- * @tc.desc: alg-asymKey key
- * @tc.type: FUNC
- */
-HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, Security_CryptoFramework_NAPI_AsymKey_Test_1000, TestSize.Level0)
+* @tc.number SUB_Security_CryptoFramework_NAPI_AsymKey_Test_1000
+* @tc.name OHCryptoFrameworkAsymKeyNapiTest.SUB_Security_CryptoFramework_NAPI_AsymKey_Test_1000
+* @tc.desc algorithm is Asym Key
+* @tc.size Medium
+* @tc.type Func
+* @tc.level Level0
+*/
+HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, SUB_Security_CryptoFramework_NAPI_AsymKey_Test_1000, TestSize.Level0)
 {
     OH_CryptoAsymKeyGenerator *ctx = nullptr;
     OH_CryptoKeyPair *keyPair = nullptr;
@@ -507,11 +537,14 @@ HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, Security_CryptoFramework_NAPI_AsymKey
 }
 
 /**
- * @tc.name: OHCryptoFrameworkAsymKeyNapiTest.Security_CryptoFramework_NAPI_AsymKey_Test_1100
- * @tc.desc: alg-asymKey key
- * @tc.type: FUNC
- */
-HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, Security_CryptoFramework_NAPI_AsymKey_Test_1100, TestSize.Level0)
+* @tc.number SUB_Security_CryptoFramework_NAPI_AsymKey_Test_1100
+* @tc.name OHCryptoFrameworkAsymKeyNapiTest.SUB_Security_CryptoFramework_NAPI_AsymKey_Test_1100
+* @tc.desc algorithm is Asym Key
+* @tc.size Medium
+* @tc.type Func
+* @tc.level Level0
+*/
+HWTEST_F(OHCryptoFrameworkAsymKeyNapiTest, SUB_Security_CryptoFramework_NAPI_AsymKey_Test_1100, TestSize.Level0)
 {
     OH_CryptoAsymKeyGenerator *ctx = nullptr;
     OH_CryptoKeyPair *keyPair = nullptr;
