@@ -212,6 +212,7 @@ void TestRequest::Start()
     OH_ArkWebRequestHeaderList_Destroy(headerList);
     OH_LOG_INFO(LOG_APP, "OH_ArkWebRequestHeaderList_Destroy Start");
     
+    headerList = nullptr;
     int32_t headerListSize1 = OH_ArkWebRequestHeaderList_GetSize(headerList);
     if (headerListSize1 <= 0) {
         isHeaderDestroy_ = true;
