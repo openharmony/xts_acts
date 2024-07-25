@@ -14,7 +14,8 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
+import RectValue from '../../MainAbility/common/Rect';
 import {UiComponent, UiDriver, Component, Driver, MouseButton, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import text from "@ohos.graphics.text"
 
@@ -56,10 +57,10 @@ export default function RelativeContainerApi1() {
       console.info('[RelativeContainerApi1_001] START');
       await CommonFunc.sleep(1000);
 
-      let row = CommonFunc.getComponentRectOnScreen('row1');
-      let row11 = CommonFunc.getComponentRectOnScreen('row11');
-      let rel = CommonFunc.getComponentRectOnScreen('RelativeContainerApi1');
-      let rel2 = CommonFunc.getComponentRectOnScreen('RelativeContainerApi2');
+      let row: RectValue = CommonFunc.getComponentRectOnScreen('row1');
+      let row11: RectValue = CommonFunc.getComponentRectOnScreen('row11');
+      let rel: RectValue = CommonFunc.getComponentRectOnScreen('RelativeContainerApi1');
+      let rel2: RectValue = CommonFunc.getComponentRectOnScreen('RelativeContainerApi2');
       await CommonFunc.sleep(1000);
 
       console.info("[RelativeContainerApi1_001] RelativeContainerTop is: " + row.top);
