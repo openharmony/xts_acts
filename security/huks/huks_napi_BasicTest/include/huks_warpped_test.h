@@ -16,7 +16,8 @@
 #include "huks_wrapped_test_common.h"
 #ifndef HUKS_WARPPED_TEST_H
 #define HUKS_WARPPED_TEST_H
-namespace Unittest::ImportWrapped {
+namespace Unittest::ImportWrapped
+{
 int Security_HUKS_NAPI_Wrapped_0100(void);
-} // namespace Unittest::ImportWrapped
-#endif // HUKS_WARPPED_TEST_H
+}  // namespace Unittest::ImportWrapped
+#endif  // HUKS_WARPPED_TEST_H

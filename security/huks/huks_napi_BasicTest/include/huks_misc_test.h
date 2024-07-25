@@ -13,17 +13,18 @@
  * limitations under the License.
  */
 
-#include "huks_three_stage_test_common.h"
 #include <gtest/gtest.h>
 #include <unistd.h>
 
+#include "huks_three_stage_test_common.h"
 #include "native_huks_api.h"
-#include "native_huks_type.h"
 #include "native_huks_param.h"
+#include "native_huks_type.h"
 
 #ifndef HUKS_MISC_TEST_H
 #define HUKS_MISC_TEST_H
-namespace Unittest::MiscTest {
+namespace Unittest::MiscTest
+{
 int Security_HUKS_NAPI_Misc_0100(void);
-} // namespace Unittest::MiscTest
-#endif // HUKS_MISC_TEST_H
+}  // namespace Unittest::MiscTest
+#endif  // HUKS_MISC_TEST_H

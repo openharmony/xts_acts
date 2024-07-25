@@ -17,11 +17,14 @@
 #define HUKS_HMAC_TEST_H
 
 #include <string>
+
 #include "huks_three_stage_test_common.h"
-namespace Unittest::Hmac {
-static const std::string g_inData = "Hks_HMAC_Test_000000000000000000000000000000000000000000000000000000000000000000"
-                                    "00000000000000000000000000000000000000000000000000000000000000000000000000000000"
-                                    "0000000000000000000000000000000000000000000000000000000000000000000000000_string";
+namespace Unittest::Hmac
+{
+static const std::string g_inData =
+    "Hks_HMAC_Test_000000000000000000000000000000000000000000000000000000000000000000"
+    "00000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    "0000000000000000000000000000000000000000000000000000000000000000000000000_string";
 const uint32_t COMMON_SIZE = 256;
 struct GenerateKeyCaseParam {
     uint32_t id;
@@ -30,5 +33,5 @@ struct GenerateKeyCaseParam {
 };
 int Security_HUKS_NAPI_HMAC_hmac_0100(void);
 int Security_HUKS_NAPI_HMAC_SM3_0100(void);
-}
-#endif // HUKS_HMAC_TEST_H
+}  // namespace Unittest::Hmac
+#endif  // HUKS_HMAC_TEST_H

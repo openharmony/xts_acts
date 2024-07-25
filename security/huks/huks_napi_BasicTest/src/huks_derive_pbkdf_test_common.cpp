@@ -18,14 +18,14 @@
 #include <gtest/gtest.h>
 
 using namespace testing::ext;
-namespace Unittest::Pbkdf2Derive {
-OH_Huks_Result HksPbkdf2DeriveTestNormalCase(const struct OH_Huks_Blob keyAlias,
-    const struct OH_Huks_ParamSet *genParamSet, struct OH_Huks_ParamSet *deriveParamSet, struct OH_Huks_ParamSet *deriveFinalParamsSet)
+namespace Unittest::Pbkdf2Derive
 {
-    struct OH_Huks_Blob inData = {
-        g_inData.length(),
-        (uint8_t *)g_inData.c_str()
-    };
+OH_Huks_Result HksPbkdf2DeriveTestNormalCase(const struct OH_Huks_Blob keyAlias,
+                                             const struct OH_Huks_ParamSet *genParamSet,
+                                             struct OH_Huks_ParamSet *deriveParamSet,
+                                             struct OH_Huks_ParamSet *deriveFinalParamsSet)
+{
+    struct OH_Huks_Blob inData = {g_inData.length(), (uint8_t *)g_inData.c_str()};
 
     /* 1. Generate Key */
     // Generate Key
@@ -35,17 +35,17 @@ OH_Huks_Result HksPbkdf2DeriveTestNormalCase(const struct OH_Huks_Blob keyAlias,
     /* 2. Derive Three Stage */
     // Init
     uint8_t handleD[sizeof(uint64_t)] = {0};
-    struct OH_Huks_Blob handleDerive = { sizeof(uint64_t), handleD };
+    struct OH_Huks_Blob handleDerive = {sizeof(uint64_t), handleD};
     ret = OH_Huks_InitSession(&keyAlias, deriveParamSet, &handleDerive, nullptr);
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "Init failed.";
     // Update
     uint8_t tmpOut[COMMON_SIZE] = {0};
-    struct OH_Huks_Blob outData = { COMMON_SIZE, tmpOut };
+    struct OH_Huks_Blob outData = {COMMON_SIZE, tmpOut};
     ret = OH_Huks_UpdateSession(&handleDerive, deriveParamSet, &inData, &outData);
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "Update failed.";
     // Finish
     uint8_t outDataD[COMMON_SIZE] = {0};
-    struct OH_Huks_Blob outDataDerive = { COMMON_SIZE, outDataD };
+    struct OH_Huks_Blob outDataDerive = {COMMON_SIZE, outDataD};
     ret = OH_Huks_FinishSession(&handleDerive, deriveFinalParamsSet, &inData, &outDataDerive);
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "Finish failed.";
 
@@ -53,12 +53,11 @@ OH_Huks_Result HksPbkdf2DeriveTestNormalCase(const struct OH_Huks_Blob keyAlias,
 }
 
 OH_Huks_Result HksPbkdf2DeriveTestCmpCase(const struct OH_Huks_Blob keyAlias,
-    const struct OH_Huks_ParamSet *genParamSet, struct OH_Huks_ParamSet *deriveParamSet, struct OH_Huks_ParamSet *deriveFinalParamsSet)
+                                          const struct OH_Huks_ParamSet *genParamSet,
+                                          struct OH_Huks_ParamSet *deriveParamSet,
+                                          struct OH_Huks_ParamSet *deriveFinalParamsSet)
 {
-    struct OH_Huks_Blob inData = {
-        g_inData.length(),
-        (uint8_t *)g_inData.c_str()
-    };
+    struct OH_Huks_Blob inData = {g_inData.length(), (uint8_t *)g_inData.c_str()};
 
     /* 1. Generate Key */
     // Generate Key
@@ -68,20 +67,20 @@ OH_Huks_Result HksPbkdf2DeriveTestCmpCase(const struct OH_Huks_Blob keyAlias,
     /* 2. Derive Three Stage */
     // Init
     uint8_t handleD[sizeof(uint64_t)] = {0};
-    struct OH_Huks_Blob handleDerive = { sizeof(uint64_t), handleD };
+    struct OH_Huks_Blob handleDerive = {sizeof(uint64_t), handleD};
     ret = OH_Huks_InitSession(&keyAlias, deriveParamSet, &handleDerive, nullptr);
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "Init failed.";
     // Update
     uint8_t tmpOut[COMMON_SIZE] = {0};
-    struct OH_Huks_Blob outData = { COMMON_SIZE, tmpOut };
+    struct OH_Huks_Blob outData = {COMMON_SIZE, tmpOut};
     ret = OH_Huks_UpdateSession(&handleDerive, deriveParamSet, &inData, &outData);
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "Update failed.";
     // Finish
     uint8_t outDataD[COMMON_SIZE] = {0};
-    struct OH_Huks_Blob outDataDerive = { COMMON_SIZE, outDataD };
+    struct OH_Huks_Blob outDataDerive = {COMMON_SIZE, outDataD};
     ret = OH_Huks_FinishSession(&handleDerive, deriveFinalParamsSet, &inData, &outDataDerive);
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "Finish failed.";
 
     return ret;
 }
-}
+}  // namespace Unittest::Pbkdf2Derive

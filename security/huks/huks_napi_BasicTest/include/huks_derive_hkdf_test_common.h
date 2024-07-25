@@ -17,19 +17,25 @@
 #define HUKS_DERIVE_HKDF_TEST_COMMON_H
 
 #include <string>
+
 #include "huks_three_stage_test_common.h"
-namespace Unittest::HkdfDerive {
-static const std::string g_inData = "Hks_HKDF_Derive_Test_00000000000000000000000000000000000000000000000000000000000"
-                                    "00000000000000000000000000000000000000000000000000000000000000000000000000000000"
-                                    "0000000000000000000000000000000000000000000000000000000000000000000000000_string";
+namespace Unittest::HkdfDerive
+{
+static const std::string g_inData =
+    "Hks_HKDF_Derive_Test_00000000000000000000000000000000000000000000000000000000000"
+    "00000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    "0000000000000000000000000000000000000000000000000000000000000000000000000_string";
 static const uint32_t COMMON_SIZE = 2048;
 static const uint32_t DERIVE_KEY_SIZE_32 = 32;
 static const uint32_t DERIVE_KEY_SIZE_48 = 48;
 static const uint32_t DERIVE_KEY_SIZE_64 = 64;
 
-OH_Huks_Result HksHkdfDeriveTestNormalCase(const struct OH_Huks_Blob keyAlias, const struct OH_Huks_ParamSet *genParamSet,
-    struct OH_Huks_ParamSet *DeriveParamSet, struct OH_Huks_ParamSet *DeriveFinalParamsSet);
+OH_Huks_Result HksHkdfDeriveTestNormalCase(const struct OH_Huks_Blob keyAlias,
+                                           const struct OH_Huks_ParamSet *genParamSet,
+                                           struct OH_Huks_ParamSet *DeriveParamSet,
+                                           struct OH_Huks_ParamSet *DeriveFinalParamsSet);
 OH_Huks_Result HksHkdfDeriveTestCmpCase(const struct OH_Huks_Blob keyAlias, const struct OH_Huks_ParamSet *genParamSet,
-    struct OH_Huks_ParamSet *DeriveParamSet, struct OH_Huks_ParamSet *DeriveFinalParamsSet);
-}
-#endif // HUKS_DERIVE_HKDF_TEST_COMMON_H
+                                        struct OH_Huks_ParamSet *DeriveParamSet,
+                                        struct OH_Huks_ParamSet *DeriveFinalParamsSet);
+}  // namespace Unittest::HkdfDerive
+#endif  // HUKS_DERIVE_HKDF_TEST_COMMON_H
