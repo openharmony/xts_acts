@@ -4994,6 +4994,28 @@ export const testArkUI074: () => number;
 
 export const testArkUI075: () => number;
 
+export const testArkUI076: () => number;
+
+export const testArkUI077: () => number;
+
+export const testArkUI078: () => number;
+
+export const testArkUI079: () => number;
+
+export const testArkUI080: () => number;
+
+export const testArkUI081: () => number;
+
+export const testArkUI082: () => number;
+
+export const testArkUI083: () => number;
+
+export const testArkUI084: () => number;
+
+export const testArkUI085: () => number;
+
+export const testArkUI086: () => number;
+
 export const testRelativeContaineAlignmentRuleOption001: () => number;
 
 export const testRelativeContaineAlignmentRuleOption002: () => number;
