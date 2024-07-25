@@ -17,6 +17,7 @@ import { BusinessError } from '@ohos.base';
 import text from "@ohos.graphics.text"
 import drawing from '@ohos.graphics.drawing';
 import common2D from '@ohos.graphics.common2D';
+import image from '@ohos.multimedia.image'
 
 export default function graphicTextBTest() {
 
