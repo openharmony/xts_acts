@@ -248,7 +248,7 @@ void TestRequest::Stop()
     
     OH_LOG_INFO(LOG_APP, "OH_ArkWeb_DestroyResponse Before %{public}p", response_);
     OH_ArkWeb_DestroyResponse(response_);
-    
+    response_ = nullptr;
     int afterStatus = OH_ArkWebResponse_GetStatus(response_);
     OH_LOG_INFO(LOG_APP, "OH_ArkWeb_DestroyResponse afterStatus %{public}d", afterStatus);
     OH_LOG_INFO(LOG_APP, "OH_ArkWeb_DestroyResponse After %{public}p", response_);
