@@ -23,6 +23,7 @@ import fontTest from './Font.test';
 import typefaceTest from './Typeface.test';
 import textBlobTest from './TextBlob.test';
 import drawingTsPathTest from './Path.test';
+import drawingTsPath2Test from './Path2.test';
 import drawingTsCanvasTest from './Canvas.test';
 import drawingTsCanvasPart2Test from './CanvasPart2.test';
 import drawingTsCanvasPart3Test from './CanvasPart3.test';
@@ -40,6 +41,7 @@ export default function testsuite() {
   typefaceTest();
   textBlobTest();
   drawingTsPathTest();
+  drawingTsPath2Test();
   drawingTsCanvasTest();
   drawingTsCanvasPart2Test();
   drawingTsCanvasPart3Test(); 
