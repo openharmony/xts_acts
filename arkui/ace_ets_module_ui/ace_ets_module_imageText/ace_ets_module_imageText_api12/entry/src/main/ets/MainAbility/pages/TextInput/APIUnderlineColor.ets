@@ -32,7 +32,7 @@ struct APIUnderlineColor {
         .onClick(() => {
           let strJson = getInspectorByKey('APIUnderlineColorTextInput');
           if(JSON.parse(strJson).$attrs.underlineColor) {
-            let obj: ESObject = JSON.parse(strJson)
+            let obj: Record<string, ESObject> = JSON.parse(strJson)
             let underlineColor: string = JSON.parse(obj.$attrs.underlineColor)
             this.text = underlineColor.typing + ''
           } else {

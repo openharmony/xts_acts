@@ -19,8 +19,8 @@ import {UiComponent, UiDriver, Component, Driver, MouseButton, UiWindow, ON, BY,
 import text from "@ohos.graphics.text"
 
 export default function RelativeContainerApi1() {
-  describe('RelativeContainerApi1', function () {
-    beforeEach(async function (done) {
+  describe('RelativeContainerApi1', () => {
+    beforeEach(async (done: Function) => {
       console.info("RelativeContainerApi1 beforeEach start");
       try {
         router.clear();
@@ -38,7 +38,7 @@ export default function RelativeContainerApi1() {
       console.info("RelativeContainerApi1 foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("RelativeContainerApi1 after each called");
     });
@@ -52,7 +52,7 @@ export default function RelativeContainerApi1() {
      * @tc.level      : Level 3
      */
 
-    it('RelativeContainerApi1_001', 0, async function (done) {
+    it('RelativeContainerApi1_001', 0, async (done: Function) => {
       console.info('[RelativeContainerApi1_001] START');
       await CommonFunc.sleep(1000);
 
