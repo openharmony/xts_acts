@@ -1132,6 +1132,29 @@ static napi_value OHEffectFilterReleaseFilterNames(napi_env env, napi_callback_i
     return ret;
 }
 
+ImageEffect_FilterDelegate getFilterDelegate() 
+{
+    ImageEffect_FilterDelegate filterDelegate = {
+        .setValue = 
+            [](OH_EffectFilter *filter, const char *key, const ImageEffect_Any *value) { 
+                return true; 
+            },
+        .render = [](OH_EffectFilter *filter, OH_EffectBufferInfo *info,
+                     OH_EffectFilterDelegate_PushData pushData) { 
+                return true; 
+            },
+        .save = 
+            [](OH_EffectFilter *filter, char **info) { 
+                return true; 
+            },
+        .restore =
+            [](const char *info) {
+                OH_EffectFilter *filter = OH_EffectFilter_Create(CUSTOM_FILTER);
+                return filter;
+            }};
+    return filterDelegate;
+}
+
 static napi_value OHEffectFilterRender(napi_env env, napi_callback_info info)
 {
     size_t argc = 1;
@@ -1139,27 +1162,10 @@ static napi_value OHEffectFilterRender(napi_env env, napi_callback_info info)
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     int32_t index;
     napi_get_value_int32(env, args[0], &index);
-    
     std::shared_ptr<OH_PixelmapNative> pixelmapNativePtr = PixelMapHelper::Decode(imagePath);
     OH_PixelmapNative *inputPixelmap = pixelmapNativePtr.get();
     OH_PixelmapNative *outputPixelmap = inputPixelmap;
-    ImageEffect_FilterDelegate filterDelegate = {
-        .setValue =
-            [](OH_EffectFilter *filter, const char *key, const ImageEffect_Any *value) {
-                return true;
-            },
-        .render = [](OH_EffectFilter *filter, OH_EffectBufferInfo *info, OH_EffectFilterDelegate_PushData pushData) {
-                return true;
-            },
-        .save =
-            [](OH_EffectFilter *filter, char **info) {
-                return true;
-            },
-        .restore =
-            [](const char *info) {
-                OH_EffectFilter *filter = OH_EffectFilter_Create(CUSTOM_FILTER);
-                return filter;
-            }};
+    ImageEffect_FilterDelegate filterDelegate = getFilterDelegate();
     // 创建 OH_EffectFilterInfo 实例
     OH_EffectFilterInfo *customFilterInfo = OH_EffectFilterInfo_Create();
     // 设置自定义滤镜滤镜名
@@ -1193,7 +1199,6 @@ static napi_value OHEffectFilterRender(napi_env env, napi_callback_info info)
         break;
     }
     errorCode = OH_EffectFilter_Render(filter, inputPixelmap, outputPixelmap);
-    // 销毁滤镜实例
     OH_EffectFilter_Release(filter);
     napi_value ret;
     napi_create_int32(env, errorCode, &ret);
@@ -1601,7 +1606,7 @@ static napi_value OHImageEffectSetInputNativeBuffer(napi_env env, napi_callback_
     OH_NativeBuffer *buffer = OH_NativeBuffer_Alloc(&config);
     if (code == EFFECT_SUCCESS && buffer != nullptr) {
         code = OH_ImageEffect_SetInputNativeBuffer(imageEffect, buffer);
-    } 
+    }
     napi_value ret;
     napi_create_int32(env, code, &ret);
     return ret;

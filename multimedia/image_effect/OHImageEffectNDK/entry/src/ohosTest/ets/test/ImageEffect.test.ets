@@ -1357,8 +1357,8 @@ export default function imageEffectTest() {
     });
 
     /**
-     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHEFFECTFILTERRENDER_0100
-     * @tc.name   : testOHEffectFilterRender001
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHEFFECTFILTERRENDER_0200
+     * @tc.name   : testOHEffectFilterRender002
      * @tc.desc   : Perform image rendering.
      * @tc.size   : MediumTest
      * @tc.type   : Function
@@ -1371,8 +1371,8 @@ export default function imageEffectTest() {
     });
 
     /**
-     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHEFFECTFILTERRENDER_0100
-     * @tc.name   : testOHEffectFilterRender001
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHEFFECTFILTERRENDER_0300
+     * @tc.name   : testOHEffectFilterRender003
      * @tc.desc   : Perform image rendering.
      * @tc.size   : MediumTest
      * @tc.type   : Function
