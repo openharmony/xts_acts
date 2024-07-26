@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
 const waitUiReadyMs = 1000;
 
 export default function stepperUIJsunit() {
-  describe('stepperUIJsunit', function () {
-    beforeEach(async function (done) {
+  describe('stepperUIJsunit',  () =>{
+    beforeEach(async  (done:Function) =>{
       console.info("stepperUIJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/stepper/stepperUI',
+      let options:router.RouterOptions = {
+        url: 'MainAbility/pages/stepper/stepperUI',
       }
       try {
         router.clear();
@@ -32,7 +32,7 @@ export default function stepperUIJsunit() {
         console.info("get stepperUIJsunit state pages:" + JSON.stringify(pages));
         if (!("stepperUI" == pages.name)) {
           console.info("get stepperUIJsunit state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           console.info("push stepperUIJsunit success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -42,7 +42,7 @@ export default function stepperUIJsunit() {
       done();
     });
 
-    it('stepperUIJsunit_0100', 0, async function (done) {
+    it('stepperUIJsunit_0100', 0, async  (done:Function) =>{
        console.info('stepperUIJsunit_0100');
        await CommonFunc.sleep(1000);
        // get the stepperItem component and test attribute
@@ -55,7 +55,7 @@ export default function stepperUIJsunit() {
        done();
     });
 
-   it('stepperUIJsunit_0200', 0, async function (done) {
+   it('stepperUIJsunit_0200', 0, async  (done:Function) =>{
       console.info('stepperUIJsunit_0200 START');
       // modify the normal value of stepperItem dynamically
       globalThis.value.message.notify({name:'nextLabel',value:'hhe'});
@@ -74,7 +74,7 @@ export default function stepperUIJsunit() {
       done();   
     });
 
-    it('stepperUIJsunit_0300', 0, async function (done) {
+    it('stepperUIJsunit_0300', 0, async  (done:Function) =>{
       console.info('stepperUIJsunit_0300 START');
       await CommonFunc.sleep(1000);
       // test the status of enum value dynamically
@@ -93,7 +93,7 @@ export default function stepperUIJsunit() {
       done();   
    });
    
-    it('stepperUIJsunit_0400', 0, async function (done) {
+    it('stepperUIJsunit_0400', 0, async  (done:Function) =>{
       console.info('stepperUIJsunit_0400 START');
        await CommonFunc.sleep(1000);
       // test the status of illegal enum value dynamically
@@ -106,7 +106,7 @@ export default function stepperUIJsunit() {
       done();   
     });
 
-    it('stepperUIJsunit_0500', 0, async function (done) {
+    it('stepperUIJsunit_0500', 0, async  (done:Function) =>{
        console.info('stepperUIJsunit_0500 START');
       // get the stepper component and test attribute
        await CommonFunc.sleep(1000);
@@ -118,7 +118,7 @@ export default function stepperUIJsunit() {
        done();
     });
 
-    it('stepperUIJsunit_0600', 0, async function (done) {
+    it('stepperUIJsunit_0600', 0, async  (done:Function) =>{
       console.info('stepperUIJsunit_0600 START');
       globalThis.value.message.notify({name:'status',value:ItemState.Normal});
       // test the stepper onChange onNext onPrevious event
@@ -153,7 +153,7 @@ export default function stepperUIJsunit() {
       done();
     });
 
-    it('stepperUIJsunit_0700', 0, async function (done) {
+    it('stepperUIJsunit_0700', 0, async  (done:Function) =>{
       console.info('stepperUIJsunit_0700 START');
       // test the stepper onFinish event
       await CommonFunc.sleep(1000);
@@ -178,7 +178,7 @@ export default function stepperUIJsunit() {
       done();
     });
     
-    it('stepperUIJsunit_0800', 0, async function (done) {
+    it('stepperUIJsunit_0800', 0, async  (done:Function) =>{
       console.info('stepperUIJsunit_0800');
       // test the stepper onSkip event
       await CommonFunc.sleep(1000);

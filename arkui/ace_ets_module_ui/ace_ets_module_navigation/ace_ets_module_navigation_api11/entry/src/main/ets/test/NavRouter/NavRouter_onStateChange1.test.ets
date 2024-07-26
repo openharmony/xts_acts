@@ -15,13 +15,26 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 
 export default function NavRouter_onStateChange1() {
-  describe('NavRouter_onStateChange1', function () {
-    beforeEach(async function (done) {
+  describe('NavRouter_onStateChange1', () => {
+    beforeEach(async (done: Function) => {
       console.info("NavRouter_onStateChange1 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/NavRouter/NavRouter_onStateChange1',
       }
       try {
@@ -30,7 +43,7 @@ export default function NavRouter_onStateChange1() {
         console.info("get NavRouter_onStateChange1 state pages:" + JSON.stringify(pages));
         if (!("NavRouter_onStateChange1" == pages.name)) {
           console.info("get NavRouter_onStateChange1 pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push NavRouter_onStateChange1 page result:" + JSON.stringify(result));
         }
@@ -40,19 +53,19 @@ export default function NavRouter_onStateChange1() {
       console.info("NavRouter_onStateChange1 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("NavRouter_onStateChange1 after each called");
     });
     /**
-     * @tc.number    SUB_ACE_NavRouter_onStateChange1_0100
-     * @tc.name      testNavRouter
-     * @tc.desc      Determine whether the cursor change triggers onSelectionChange
-     * @tc.level     Level 2
+     * @tc.number SUB_ACE_NavRouter_onStateChange1_0100
+     * @tc.name testNavRouter
+     * @tc.desc Determine whether the cursor change triggers onSelectionChange
+     * @tc.level Level 2
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it('NavRouter_onStateChange1_0100', 0, async function (done) {
+    it('NavRouter_onStateChange1_0100', 0, async (done: Function) => {
       console.info('[NavRouter_onStateChange1_0100] START');
       await CommonFunc.sleep(1000);
 
@@ -64,11 +77,7 @@ export default function NavRouter_onStateChange1() {
       await CommonFunc.sleep(1000);
 
       let text1 = getInspectorByKey('NavRouter_onStateChange1_text1');
-      let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('true');
-
-
-
+      expect(JSON.parse(text1).$attrs.content).assertEqual('true');
       console.info('[NavRouter_onStateChange1_0100] END');
       done();
     });

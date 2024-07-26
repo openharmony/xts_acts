@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from '../../MainAbility/common/Utils'
 
@@ -22,8 +22,8 @@ export default function pageRouteTest() {
   describe('pageRouteTest', () => {
     beforeEach(async () => {
       console.info("pageRouteTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/pageRoute/pageRoute',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/pageRoute/pageRoute',
       }
       // let result;
       try {
@@ -32,7 +32,7 @@ export default function pageRouteTest() {
         console.info("get pageRouteTest pages: " + JSON.stringify(pages));
         if (!("pageRoute" == pages.name)) {
           console.info("get pageRouteTest pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("pageRouteTest page result: " + JSON.stringify(result));
         }
