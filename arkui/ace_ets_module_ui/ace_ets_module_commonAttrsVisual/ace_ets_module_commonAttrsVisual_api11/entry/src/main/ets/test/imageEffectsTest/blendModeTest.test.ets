@@ -44,7 +44,7 @@ export default function blendModeTest() {
         console.info("get blendModeTest state pages: " + JSON.stringify(pages));
         if (!("blendMode" == pages.name)) {
           console.info("get blendModeTest state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push blendModeTest success: " + JSON.stringify(result));
         }
