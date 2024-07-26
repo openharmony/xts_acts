@@ -1182,6 +1182,9 @@ static napi_value OHEffectFilterRender(napi_env env, napi_callback_info info)
     ImageEffect_ErrorCode errorCode = OH_EffectFilter_Register(customFilterInfo, &filterDelegate);
     // 创建滤镜。比如：创建对比度效果器
     OH_EffectFilter *filter = OH_EffectFilter_Create(CUSTOM_FILTER);
+    
+    std::shared_ptr<OH_PixelmapNative> outPixePtr = PixelMapHelper::Decode(outImagePath);
+
     // 生效滤镜效果
     switch (index) {
     case CASE_INDEX_1:
@@ -1191,7 +1194,6 @@ static napi_value OHEffectFilterRender(napi_env env, napi_callback_info info)
         outputPixelmap = inputPixelmap;
         break;
     case CASE_INDEX_3: {
-        std::shared_ptr<OH_PixelmapNative> outPixePtr = PixelMapHelper::Decode(outImagePath);
         outputPixelmap = outPixePtr.get();
     }
         break;

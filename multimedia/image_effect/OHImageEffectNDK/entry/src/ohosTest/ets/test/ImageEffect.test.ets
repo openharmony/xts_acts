@@ -53,7 +53,7 @@ export default function imageEffectTest() {
       await ImageUtils.getInstance().savePixelMap(filePath, $r('app.media.original'));
       testNapi.savePixelMapForPath(filePath);
       let outFilePath = context.filesDir + "/outtest.jpg";
-      await ImageUtils.getInstance().savePixelMap(outFilePath, $r('app.media.test'));
+      await ImageUtils.getInstance().savePixelMap(outFilePath, $r('app.media.d23116'));
       testNapi.creatOutPixeMapForPath(outFilePath);
       done();
     });
@@ -1381,7 +1381,7 @@ export default function imageEffectTest() {
     it('testOHEffectFilterRender003', 0, () => {
       let result: number = testNapi.OHEffectFilterRender(CASE_INDEX_3);
       console.log(`test render3${result}`);
-      expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
+      expect(result).assertEqual(EFFECT_SUCCESS);
     });
 
     /**
