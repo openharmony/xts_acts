@@ -1042,118 +1042,6 @@ export default function abilityTest() {
     })
 
     /*
-     * @tc.number  : ACTS_UIExtension_Device_01
-     * @tc.name    : test UIExtension back to desktop
-     * @tc.desc    : UIExtension connect service successful back to desktop
-     */
-    it('ACTS_UIExtension_Device_01',0, async function (done) {
-      TAG = 'ACTS_UIExtension_Device_01 == ';
-      console.log(TAG + "begin");
-      AbilityDelegatorRegistry.getAbilityDelegator().startAbility({
-        bundleName:'com.example.uiextensiontest',
-        abilityName:'TestAbility'
-      })
-
-      let appearEvent = 'ACTS_UIExtension_AboutToAppear';
-      let successBackToDesktop = 'ACTS_UIExtension_Success_Back_To_Desktop';
-      let failBackToDesktop = 'ACTS_UIExtension_Fail_Back_To_Desktop';
-      let deviceEvent01 = 'ACTS_UIExtension_Device_Event_01';
-      let canBackToDesktop = 'ACTS_UIExtension_Can_Back_To_Desktop';
-      var subscribeInfo = {
-        events: [appearEvent, successBackToDesktop,failBackToDesktop,canBackToDesktop]
-      }
-      await commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
-        console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
-        globalscribe = data;
-        commonEventManager.subscribe(globalscribe, async (err, data) => {
-          console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
-
-          if (data.event == appearEvent) {
-            commonEventManager.publish(deviceEvent01, (err) => {
-              if (err) {
-                console.log(TAG + `publish connectAbilityEvent failed, code is ${err.code}, message is ${err.message}`);
-              } else {
-                console.log(TAG + 'publish connectAbilityEvent success');
-              }
-            });
-          } else if (data.event == canBackToDesktop) {
-            let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-            await abilityDelegator.executeShellCommand("uinput -T -d 564 2759 -m 564 2759 633 2335 -u 633 2335").then((data)=>{
-              console.log(TAG + '___back to desktop');
-            }).catch((error)=>{
-              console.log(TAG + '___back to desktop error');
-            })
-          } else if (data.event == successBackToDesktop) {
-            done()
-          }else if (data.event == failBackToDesktop) {
-            expect().assertFail();
-            done()
-          }
-        });
-      }).catch((error) => {
-        console.log(TAG + "createSubscriber err : " + JSON.stringify(error));
-        expect().assertFail();
-        done();
-      })
-    })
-
-    /*
-     * @tc.number  : ACTS_UIExtension_Device_02
-     * @tc.name    : test UIExtension off the screen
-     * @tc.desc    : UIExtension connect service successful then off the screen
-     */
-    it('ACTS_UIExtension_Device_02',0, async function (done) {
-      TAG = 'ACTS_UIExtension_Device_02 == ';
-      console.log(TAG + "begin");
-      AbilityDelegatorRegistry.getAbilityDelegator().startAbility({
-        bundleName:'com.example.uiextensiontest',
-        abilityName:'TestAbility'
-      })
-
-      let appearEvent = 'ACTS_UIExtension_AboutToAppear';
-      let successOffTheScreen = 'ACTS_UIExtension_Success_Off_The_Screen';
-      let failOffTheScreen = 'ACTS_UIExtension_Fail_Off_The_Screen';
-      let deviceEvent02 = 'ACTS_UIExtension_Device_Event_02';
-      let canOffTheScreen = 'ACTS_UIExtension_Can_Off_The_Screen';
-      var subscribeInfo = {
-        events: [appearEvent, successOffTheScreen,failOffTheScreen,canOffTheScreen]
-      }
-      await commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
-        console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
-        globalscribe = data;
-        commonEventManager.subscribe(globalscribe, async (err, data) => {
-          console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
-
-          if (data.event == appearEvent) {
-            commonEventManager.publish(deviceEvent02, (err) => {
-              if (err) {
-                console.log(TAG + `publish connectAbilityEvent failed, code is ${err.code}, message is ${err.message}`);
-              } else {
-                console.log(TAG + 'publish connectAbilityEvent success');
-              }
-            });
-          } else if (data.event == canOffTheScreen) {
-            let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
-            await abilityDelegator.executeShellCommand("uinput -K -d 18 -u 18").then((data)=>{
-              console.log(TAG + '___screen off');
-            }).catch((error)=>{
-              console.log(TAG + '___screen off error');
-            })
-          } else if (data.event == successOffTheScreen) {
-            done()
-          }else if (data.event == failOffTheScreen) {
-            expect().assertFail();
-            done()
-          }
-        });
-      }).catch((error) => {
-        console.log(TAG + "createSubscriber err : " + JSON.stringify(error));
-        expect().assertFail();
-        done();
-      })
-    })
-
-    /*
      * @tc.number  : ACTS_UIExtension_StartAbilityByType001
      * @tc.name    : test start UIExtensionAbility by type failed
      * @tc.desc    : start UIExtensionAbility not configured in json
@@ -1281,6 +1169,118 @@ export default function abilityTest() {
         expect().assertFail();
         done();
       }
+    })
+
+    /*
+     * @tc.number  : ACTS_UIExtension_Device_01
+     * @tc.name    : test UIExtension back to desktop
+     * @tc.desc    : UIExtension connect service successful back to desktop
+     */
+    it('ACTS_UIExtension_Device_01',0, async function (done) {
+      TAG = 'ACTS_UIExtension_Device_01 == ';
+      console.log(TAG + "begin");
+      AbilityDelegatorRegistry.getAbilityDelegator().startAbility({
+        bundleName:'com.example.uiextensiontest',
+        abilityName:'TestAbility'
+      })
+
+      let appearEvent = 'ACTS_UIExtension_AboutToAppear';
+      let successBackToDesktop = 'ACTS_UIExtension_Success_Back_To_Desktop';
+      let failBackToDesktop = 'ACTS_UIExtension_Fail_Back_To_Desktop';
+      let deviceEvent01 = 'ACTS_UIExtension_Device_Event_01';
+      let canBackToDesktop = 'ACTS_UIExtension_Can_Back_To_Desktop';
+      var subscribeInfo = {
+        events: [appearEvent, successBackToDesktop,failBackToDesktop,canBackToDesktop]
+      }
+      await commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
+        console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
+        globalscribe = data;
+        commonEventManager.subscribe(globalscribe, async (err, data) => {
+          console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
+
+          if (data.event == appearEvent) {
+            commonEventManager.publish(deviceEvent01, (err) => {
+              if (err) {
+                console.log(TAG + `publish connectAbilityEvent failed, code is ${err.code}, message is ${err.message}`);
+              } else {
+                console.log(TAG + 'publish connectAbilityEvent success');
+              }
+            });
+          } else if (data.event == canBackToDesktop) {
+            let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+            await abilityDelegator.executeShellCommand("uinput -T -d 564 2759 -m 564 2759 633 2335 -u 633 2335").then((data)=>{
+              console.log(TAG + '___back to desktop');
+            }).catch((error)=>{
+              console.log(TAG + '___back to desktop error');
+            })
+          } else if (data.event == successBackToDesktop) {
+            done()
+          }else if (data.event == failBackToDesktop) {
+            expect().assertFail();
+            done()
+          }
+        });
+      }).catch((error) => {
+        console.log(TAG + "createSubscriber err : " + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      })
+    })
+
+    /*
+     * @tc.number  : ACTS_UIExtension_Device_02
+     * @tc.name    : test UIExtension off the screen
+     * @tc.desc    : UIExtension connect service successful then off the screen
+     */
+    it('ACTS_UIExtension_Device_02',0, async function (done) {
+      TAG = 'ACTS_UIExtension_Device_02 == ';
+      console.log(TAG + "begin");
+      AbilityDelegatorRegistry.getAbilityDelegator().startAbility({
+        bundleName:'com.example.uiextensiontest',
+        abilityName:'TestAbility'
+      })
+
+      let appearEvent = 'ACTS_UIExtension_AboutToAppear';
+      let successOffTheScreen = 'ACTS_UIExtension_Success_Off_The_Screen';
+      let failOffTheScreen = 'ACTS_UIExtension_Fail_Off_The_Screen';
+      let deviceEvent02 = 'ACTS_UIExtension_Device_Event_02';
+      let canOffTheScreen = 'ACTS_UIExtension_Can_Off_The_Screen';
+      var subscribeInfo = {
+        events: [appearEvent, successOffTheScreen,failOffTheScreen,canOffTheScreen]
+      }
+      await commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
+        console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
+        globalscribe = data;
+        commonEventManager.subscribe(globalscribe, async (err, data) => {
+          console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
+
+          if (data.event == appearEvent) {
+            commonEventManager.publish(deviceEvent02, (err) => {
+              if (err) {
+                console.log(TAG + `publish connectAbilityEvent failed, code is ${err.code}, message is ${err.message}`);
+              } else {
+                console.log(TAG + 'publish connectAbilityEvent success');
+              }
+            });
+          } else if (data.event == canOffTheScreen) {
+            let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
+            await abilityDelegator.executeShellCommand("uinput -K -d 18 -u 18").then((data)=>{
+              console.log(TAG + '___screen off');
+            }).catch((error)=>{
+              console.log(TAG + '___screen off error');
+            })
+          } else if (data.event == successOffTheScreen) {
+            done()
+          }else if (data.event == failOffTheScreen) {
+            expect().assertFail();
+            done()
+          }
+        });
+      }).catch((error) => {
+        console.log(TAG + "createSubscriber err : " + JSON.stringify(error));
+        expect().assertFail();
+        done();
+      })
     })
   })
 }

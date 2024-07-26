@@ -127,7 +127,7 @@ export default function startAbilityTest(abilityContext) {
           console.info("executeShellCommand5 : err : " + JSON.stringify(err), " data : " + JSON.stringify(d));
         })
       }
-      await sleep(500);
+      await sleep(2000);
       done();
     });
 

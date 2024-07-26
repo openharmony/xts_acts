@@ -18,10 +18,10 @@ import CommonFunc from '../../MainAbility/utils/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function navigation_pushDestination9() {
-  describe('navigation_pushDestination9', function () {
-    beforeEach(async function (done) {
+  describe('navigation_pushDestination9',  () =>{
+    beforeEach(async  (done:Function) =>{
       console.info("navigation_pushDestination9 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Navigation_pushResult/navigation_pushDestination9',
       }
       try {
@@ -30,7 +30,7 @@ export default function navigation_pushDestination9() {
         console.info("get navigation_pushDestination9 state pages:" + JSON.stringify(pages));
         if (!("navigation_pushDestination9" == pages.name)) {
           console.info("get navigation_pushDestination9 pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push navigation_pushDestination9 page result:" + JSON.stringify(result));
         }
@@ -40,7 +40,7 @@ export default function navigation_pushDestination9() {
       console.info("navigation_pushDestination9 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async  () =>{
       await CommonFunc.sleep(1000);
       console.info("navigation_pushDestination9 after each called");
     });
@@ -51,7 +51,7 @@ export default function navigation_pushDestination9() {
      * @tc.desc      Navigation pushDestination result test
      * @tc.level     Level 1
      */
-    it('navigation_pushDestination9_0100', 0, async function (done) {
+    it('navigation_pushDestination9_0100', 0, async  (done:Function) =>{
       console.info('[navigation_pushDestination9_0100] START');
       await CommonFunc.sleep(2000);
 
@@ -63,8 +63,7 @@ export default function navigation_pushDestination9() {
       console.info('[navigation_pushDestination9_0100] btn1');
 
       let text1 = getInspectorByKey('navigation_pushDestination9_text_result1');
-      let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('success');
+      expect(JSON.parse(text1).$attrs.content).assertEqual('success');
 
       let btn2 = await driver.findComponent(ON.id('navigation_pushDestination9_pop'));
       await btn2.click();
@@ -77,8 +76,7 @@ export default function navigation_pushDestination9() {
       console.info('[navigation_pushDestination9_0100] btn3');
 
       let text2 = getInspectorByKey('navigation_pushDestination9_text_result2');
-      let Obj2 = JSON.parse(text2);
-      expect(Obj2.$attrs.content).assertEqual('100006NavDestination not found.');
+      expect(JSON.parse(text2).$attrs.content).assertEqual('100006NavDestination not found.');
 
       let btn4 = await driver.findComponent(ON.id('navigation_pushDestination9_btn'));
       await btn4.click();
@@ -91,8 +89,7 @@ export default function navigation_pushDestination9() {
       console.info('[navigation_pushDestination9_0100] btn5');
 
       let text3 = getInspectorByKey('navigation_pushDestination9_text_result3');
-      let Obj3 = JSON.parse(text3);
-      expect(Obj3.$attrs.content).assertEqual('100005Builder function not registered.');
+      expect(JSON.parse(text3).$attrs.content).assertEqual('100005Builder function not registered.');
 
       console.info('[navigation_pushDestination9_0100] END');
       done();

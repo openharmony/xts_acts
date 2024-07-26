@@ -19,8 +19,8 @@
 
 #include <securec.h>
 
-#include "native_huks_api.h"
 #include "huks_mem.h"
+#include "native_huks_api.h"
 #include "native_huks_param.h"
 #include "native_huks_type.h"
 
@@ -39,7 +39,8 @@ struct HksTestCertChain {
 static uint32_t g_size = 4096;
 static uint32_t CERT_COUNT = 4;
 
-namespace Unittest::AttestKey {
+namespace Unittest::AttestKey
+{
 #define SEC_INFO_DATA "hi_security_level_info"
 #define CHALLENGE_DATA "hi_challenge_data"
 #define VERSION_DATA "hi_os_version_data"
@@ -52,13 +53,13 @@ void FreeCertChain(struct OH_Huks_CertChain **certChain, const uint32_t pos);
 
 OH_Huks_Result TestGenerateKey(const struct OH_Huks_Blob *keyAlias);
 
-int32_t ConstructDataToCertChain(struct OH_Huks_CertChain **certChain,
-    const struct HksTestCertChain *certChainParam);
+int32_t ConstructDataToCertChain(struct OH_Huks_CertChain **certChain, const struct HksTestCertChain *certChainParam);
 
-OH_Huks_Result GenerateParamSet(struct OH_Huks_ParamSet **paramSet, const struct OH_Huks_Param tmpParams[], uint32_t paramCount);
+OH_Huks_Result GenerateParamSet(struct OH_Huks_ParamSet **paramSet, const struct OH_Huks_Param tmpParams[],
+                                uint32_t paramCount);
 
 OH_Huks_Result ValidateCertChainTest(const struct OH_Huks_CertChain *certChain, const struct OH_Huks_Param tmpParam[],
-    ParamType type);
-}
+                                     ParamType type);
+}  // namespace Unittest::AttestKey
 
 #endif

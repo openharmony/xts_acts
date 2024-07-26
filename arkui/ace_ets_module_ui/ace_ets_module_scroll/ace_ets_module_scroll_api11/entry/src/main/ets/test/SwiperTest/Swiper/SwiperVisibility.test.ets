@@ -64,7 +64,7 @@ export default function SwiperVisibility() {
 
       let driver = await Driver.create();
       await CommonFunc.sleep(1000);
-      driver.swipe(globalThis.winLeft + Math.round(btRight) - Math.round(vp2px(100)), globalThis.winTop + Math.round(btBottom/2), globalThis.winLeft + Math.round(btLeft) + Math.round(vp2px(10)), globalThis.winTop + Math.round(btBottom/2));
+      await driver.swipe(globalThis.winLeft + Math.round(btRight) - Math.round(vp2px(100)), globalThis.winTop + Math.round(btBottom/2), globalThis.winLeft + Math.round(btLeft) + Math.round(vp2px(10)), globalThis.winTop + Math.round(btBottom/2));
       await CommonFunc.sleep(4800);
 
 

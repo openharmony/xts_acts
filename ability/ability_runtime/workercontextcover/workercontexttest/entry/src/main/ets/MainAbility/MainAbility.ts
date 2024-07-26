@@ -16,40 +16,41 @@ import Ability from '@ohos.app.ability.UIAbility';
 
 var printLog1 = 'Worker:MainAbility:'
 var listPush1 = 'Worker_MainAbility_'
+
 export default class MainAbility extends Ability {
-    onCreate(want, launchParam) {
-        console.info(printLog1 + 'onCreate')
-        globalThis.abilityWant = want
-        globalThis.applicationContext = this.context.getApplicationContext()
-        globalThis.abilityContext = this.context
-    }
+  onCreate(want, launchParam) {
+    console.info(printLog1 + 'onCreate')
+    globalThis.abilityWant = want
+    globalThis.applicationContext = this.context.getApplicationContext()
+    globalThis.abilityContext = this.context
+  }
 
-    onDestroy() {
-        console.info(printLog1 + 'onDestroy')
-    }
+  onDestroy() {
+    console.info(printLog1 + 'onDestroy')
+  }
 
-    onWindowStageCreate(windowStage) {
-        // Main window is created, set main page for this ability
-        console.info(printLog1 + 'onWindowStageCreate')
+  onWindowStageCreate(windowStage) {
+    // Main window is created, set main page for this ability
+    console.info(printLog1 + 'onWindowStageCreate')
 
-        windowStage.loadContent("MainAbility/pages/index", (err, data) => {
-            if (err.code) {
-                console.error('Failed to load the content. Cause:' + JSON.stringify(err));
-                return;
-            }
-            console.info('Succeeded in loading the content. Data: ' + JSON.stringify(data))
-        });
-    }
+    windowStage.loadContent("MainAbility/pages/index", (err, data) => {
+      if (err.code) {
+        console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+        return;
+      }
+      console.info('Succeeded in loading the content. Data: ' + JSON.stringify(data))
+    });
+  }
 
-    onWindowStageDestroy() {
-        console.info(printLog1 + 'onWindowStageDestroy')
-    }
+  onWindowStageDestroy() {
+    console.info(printLog1 + 'onWindowStageDestroy')
+  }
 
-    onForeground() {
-        console.info(printLog1 + 'onForeground')
-    }
+  onForeground() {
+    console.info(printLog1 + 'onForeground')
+  }
 
-    onBackground() {
-        console.info(printLog1 + 'onBackground')
-    }
+  onBackground() {
+    console.info(printLog1 + 'onBackground')
+  }
 };

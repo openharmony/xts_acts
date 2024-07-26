@@ -18,44 +18,45 @@
 
 #include "huks_three_stage_test_common.h"
 
-namespace Unittest::ImportWrapped {
-    struct HksImportWrappedKeyTestParams {
-        struct OH_Huks_Blob *wrappingKeyAlias;
-        struct OH_Huks_Blob *agreeKeyAlgName;
-        struct OH_Huks_ParamSet *genWrappingKeyParamSet;
-        uint32_t publicKeySize;
+namespace Unittest::ImportWrapped
+{
+struct HksImportWrappedKeyTestParams {
+    struct OH_Huks_Blob *wrappingKeyAlias;
+    struct OH_Huks_Blob *agreeKeyAlgName;
+    struct OH_Huks_ParamSet *genWrappingKeyParamSet;
+    uint32_t publicKeySize;
 
-        struct OH_Huks_Blob *callerKeyAlias;
-        struct OH_Huks_ParamSet *genCallerKeyParamSet;
+    struct OH_Huks_Blob *callerKeyAlias;
+    struct OH_Huks_ParamSet *genCallerKeyParamSet;
 
-        struct OH_Huks_Blob *callerKekAlias;
-        struct OH_Huks_Blob *callerKek;
-        struct OH_Huks_ParamSet *importCallerKekParamSet;
+    struct OH_Huks_Blob *callerKekAlias;
+    struct OH_Huks_Blob *callerKek;
+    struct OH_Huks_ParamSet *importCallerKekParamSet;
 
-        struct OH_Huks_Blob *callerAgreeKeyAlias;
-        struct OH_Huks_ParamSet *agreeParamSet;
+    struct OH_Huks_Blob *callerAgreeKeyAlias;
+    struct OH_Huks_ParamSet *agreeParamSet;
 
-        struct OH_Huks_ParamSet *importWrappedKeyParamSet;
-        struct OH_Huks_Blob *importedKeyAlias;
-        struct OH_Huks_Blob *importedPlainKey;
-        uint32_t keyMaterialLen;
-    };
+    struct OH_Huks_ParamSet *importWrappedKeyParamSet;
+    struct OH_Huks_Blob *importedKeyAlias;
+    struct OH_Huks_Blob *importedPlainKey;
+    uint32_t keyMaterialLen;
+};
 
-    static const uint32_t IV_SIZE = 16;
-    static uint8_t IV[IV_SIZE] = "bababababababab";
+static const uint32_t IV_SIZE = 16;
+static uint8_t IV[IV_SIZE] = "bababababababab";
 
-    static const uint32_t AAD_SIZE = 16;
-    static uint8_t AAD[AAD_SIZE] = "abababababababa";
+static const uint32_t AAD_SIZE = 16;
+static uint8_t AAD[AAD_SIZE] = "abababababababa";
 
-    static const uint32_t NONCE_SIZE = 12;
-    static uint8_t NONCE[NONCE_SIZE] = "hahahahahah";
+static const uint32_t NONCE_SIZE = 12;
+static uint8_t NONCE[NONCE_SIZE] = "hahahahahah";
 
-    static const uint32_t AEAD_TAG_SIZE = 16;
+static const uint32_t AEAD_TAG_SIZE = 16;
 
-    static const uint32_t X25519_256_SIZE = 256;
+static const uint32_t X25519_256_SIZE = 256;
 
-    void HksImportWrappedKeyTestCommonCase(const struct HksImportWrappedKeyTestParams *params);
+void HksImportWrappedKeyTestCommonCase(const struct HksImportWrappedKeyTestParams *params);
 
-    void HksClearKeysForWrappedKeyTest(const struct HksImportWrappedKeyTestParams *params);
-} //namespace Unittest::ImportWrapped
-#endif // HUKS_WRAPPED_TEST_COMMON_H
+void HksClearKeysForWrappedKeyTest(const struct HksImportWrappedKeyTestParams *params);
+}  // namespace Unittest::ImportWrapped
+#endif  // HUKS_WRAPPED_TEST_COMMON_H

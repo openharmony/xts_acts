@@ -15,7 +15,8 @@
 #include "huks_three_stage_test_common.h"
 #ifndef HUKS_ATTEST_TEST_H
 #define HUKS_ATTEST_TEST_H
-namespace Unittest::AttestTest {
+namespace Unittest::AttestTest
+{
 int Security_HUKS_NAPI_Attest_0100(void);
-} // namespace Unittest::AttestTest
-#endif // HUKS_ATTEST_TEST_H
+}  // namespace Unittest::AttestTest
+#endif  // HUKS_ATTEST_TEST_H

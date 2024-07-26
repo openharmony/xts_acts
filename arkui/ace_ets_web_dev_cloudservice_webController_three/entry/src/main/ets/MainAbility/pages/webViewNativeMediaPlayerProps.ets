@@ -724,7 +724,7 @@ struct WebComponent {
   private retryPlayingGen = (emitKey: string) => {
       return async () => {
           let retryTime = 1
-          while(retryTime < 5) {
+          while(retryTime < 3) {
               retryTime += 1
               if (emitKey != this.emitKey) {
                   return
@@ -849,7 +849,18 @@ struct WebComponent {
                         }
                         break;
                     }
-                    
+                    case "emitWebViewNativeMediaPlayerProps2": {
+                        try {
+                            this.controller.loadUrl($rawfile('nativeMediaPlayerHandler.html'))
+                            await Utils.sleep(2000)
+                            if(!isPreloadMeta) {
+                                Utils.emitEvent(true, 1355)
+                            }
+                        } catch (error) {
+                            Utils.emitEvent('error', 1355)
+                        }
+                        break;
+                    }
                 }
               })
           }
@@ -867,10 +878,20 @@ struct WebComponent {
                             } else {
                                 isPreloadMeta = false
                             }
+                            console.log('mediaPlayerProps:' + webview.MediaType.VIDEO)
+                            console.log('mediaPlayerProps:' + webview.MediaType.AUDIO)
+                            console.log('mediaPlayerProps:' + webview.SourceType.URL)
+                            console.log('mediaPlayerProps:' + webview.SourceType.MSE)
+                            console.log('mediaPlayerProps:' + webview.Preload.NONE)
+                            console.log('mediaPlayerProps:' + webview.Preload.METADATA)
+                            console.log('mediaPlayerProps:' + webview.Preload.AUTO)
+                            if(mediaInfo.preload.toString() == webview.Preload.NONE.toString()) {
+                                Utils.emitEvent(true, 1355)
+                            }
                             this.nativePlayer = new NativeMediaPlayerImpl(this, new NativeMediaPlayerHandlerImpl(handler), mediaInfo);
                             return this.nativePlayer;
                         }
-                        
+
                         if(typeof callback == 'function' ){
                             isCreateNativeMediaPlayerCallback = true
                         }

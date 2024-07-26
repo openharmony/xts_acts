@@ -48,7 +48,7 @@ export default function listVisibleJsunit() {
     });
 
     /* *
-    * @tc.number: SUB_ACE_SWIPER_listVisibleJsunit_0100
+    * @tc.number: SUB_ACE_SWIPER_ListItemGroupArea_0100
     * @tc.name  : listVisibleJsunit_0100
     * @tc.desc  : Trigger onScrollVisibleContentChange callback.
     * @tc.level : Level 2
@@ -62,7 +62,7 @@ export default function listVisibleJsunit() {
       let strJson = getInspectorByKey('listVisible_mess');
       let obj: ESObject = JSON.parse(strJson);
       console.info("[listVisibleJsunit_0100] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('onScrollVisibleContentChange: 2');
+      expect(obj.$attrs.content).assertEqual('onScrollVisibleContentChange: 2');//IN_HEADER_AREA
       console.info("[listVisibleJsunit_0100] IN_HEADER_AREA success");
 
       let driver = await Driver.create();
@@ -76,7 +76,7 @@ export default function listVisibleJsunit() {
       let obj2: ESObject = JSON.parse(strJson2);
       console.info("[listVisibleJsunit_0100] component obj1 is: " + JSON.stringify(obj1));
       console.info("[listVisibleJsunit_0100] component obj2 is: " + JSON.stringify(obj2));
-      expect(obj1.$attrs.content).assertEqual('onScrollVisibleContentChange: 1');
+      expect(obj1.$attrs.content).assertEqual('onScrollVisibleContentChange: 1');//IN_LIST_ITEM_AREA
       expect(obj2.$attrs.content).assertEqual('itemIndexInGroup: 0');
       console.info("[listVisibleJsunit_0100] IN_LIST_ITEM_AREA success");
 
@@ -87,7 +87,7 @@ export default function listVisibleJsunit() {
       let strJson3 = getInspectorByKey('listVisible_mess');
       let obj3: ESObject = JSON.parse(strJson3);
       console.info("[listVisibleJsunit_0100] component obj3 is: " + JSON.stringify(obj3));
-      expect(obj3.$attrs.content).assertEqual('onScrollVisibleContentChange: 3');
+      expect(obj3.$attrs.content).assertEqual('onScrollVisibleContentChange: 3');//IN_FOOTER_AREA
       console.info("[listVisibleJsunit_0100] IN_FOOTER_AREA success");
 
       console.info('[listVisibleJsunit_0100] END');

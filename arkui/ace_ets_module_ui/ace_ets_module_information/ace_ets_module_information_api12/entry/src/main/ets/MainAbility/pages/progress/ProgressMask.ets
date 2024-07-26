@@ -23,7 +23,8 @@ struct ProgressExample {
       Text(JSON.stringify(this.progress1)).fontSize(20).id("ProgressMaskImage")
       Text(this.enableValue).fontSize(20).id("ProgressMaskText")
       Image($r('app.media.icon'))
-        .width(80).height(80)
+        .width(80)
+        .height(80)
         .mask(this.progress1)
         .borderRadius(20)
         .onAppear(() => {

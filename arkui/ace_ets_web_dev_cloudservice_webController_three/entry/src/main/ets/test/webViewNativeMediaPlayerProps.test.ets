@@ -169,5 +169,19 @@ export default function webViewNativeMediaPlayerProps() {
       sendEventByKey('webViewNativeMediaPlayerProps', 10, '');
     })
 
+    /*
+     *@tc.number SUB_ACE_WEB_MediaPlayer_Props2_API_0001
+     *@tc.name testWebViewNativeMediaPlayerProps2
+     *@tc.desc test MediaPlayerProps2
+     *@tc.type Function
+     *@tc.size MediumTest
+     *@tc.level 1
+     */
+    it('testWebViewNativeMediaPlayerProps2', 0, async (done: Function) => {
+      let emitKey = "emitWebViewNativeMediaPlayerProps2";
+      Utils.emitEvent(emitKey, 10)
+      Utils.registerEvent("testWebViewNativeMediaPlayerProps2", true, 1355, done);
+      sendEventByKey('webViewNativeMediaPlayerProps', 10, '');
+    })
   })
 }

@@ -14,14 +14,26 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@system.router';
-import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  Driver,
+  Component,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
 
 
 export default function ResourceStrarray() {
-  describe('ResourceStrarray', function () {
-    beforeEach(async function (done) {
+  describe('ResourceStrarray', () => {
+    beforeEach(async (done: Function) => {
       console.info("ResourceStrarray beforeEach start");
       let options = {
         uri: 'MainAbility/pages/Resource/ResourceStrarray',
@@ -43,7 +55,7 @@ export default function ResourceStrarray() {
       done();
     });
 
-    it('ResourceStrarray_0100', 0, async function (done) {
+    it('ResourceStrarray_0100', 0, async (done: Function) => {
       console.info('ResourceStrarray_0100 START');
       try {
         let strJson = getInspectorByKey('strarray');
@@ -60,7 +72,7 @@ export default function ResourceStrarray() {
       done();
     });
 
-    it('ResourceStrarray_0200', 0, async function (done) {
+    it('ResourceStrarray_0200', 0, async (done: Function) => {
       console.info('ResourceStrarray_0200 START');
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
@@ -75,7 +87,6 @@ export default function ResourceStrarray() {
       console.info('[ResourceStrarray_0200] END');
       done();
     });
-
 
 
   })

@@ -14,8 +14,21 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
-import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  Driver,
+  Component,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../../MainAbility/utils/Common';
+
 export default function BounceSymbolEffect_APITest() {
   describe('BounceSymbolEffect_APITest', () => {
     beforeEach(async (done: Function) => {
@@ -40,10 +53,10 @@ export default function BounceSymbolEffect_APITest() {
       done();
     });
     /**
-     * @tc.number    BounceSymbolEffect
-     * @tc.name      BounceSymbolEffect_APITest_0100
-     * @tc.desc      api
-     * @tc.level:    Level 2
+     * @tc.number BounceSymbolEffect
+     * @tc.name BounceSymbolEffect_APITest_0100
+     * @tc.desc api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
@@ -55,7 +68,8 @@ export default function BounceSymbolEffect_APITest() {
       await btn.click();
       await CommonFunc.sleep(1000);
       let BounceSymbolEffect = getInspectorByKey('BounceSymbolEffect');
-      console.info("[BounceSymbolEffect_APITest_0100] Tabs animationMode attrs is: " + JSON.stringify(JSON.parse(BounceSymbolEffect).$attrs));
+      console.info("[BounceSymbolEffect_APITest_0100] Tabs animationMode attrs is: " +
+      JSON.stringify(JSON.parse(BounceSymbolEffect).$attrs));
       expect(JSON.parse(BounceSymbolEffect).$attrs.content).assertEqual('0');
       console.info('[BounceSymbolEffect_APITest_0100] END');
       done();

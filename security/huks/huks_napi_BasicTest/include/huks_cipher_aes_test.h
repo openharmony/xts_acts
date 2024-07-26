@@ -15,9 +15,10 @@
 #include "huks_three_stage_test_common.h"
 #ifndef HUKS_CIPHER_AES_TEST_H
 #define HUKS_CIPHER_AES_TEST_H
-namespace Unittest::AesCipher {
+namespace Unittest::AesCipher
+{
 int Security_HUKS_NAPI_Cipher_AES_0100(void);
 
 int Security_HUKS_NAPI_Cipher_AES_0200(void);
-} // namespace Unittest::AesCipher
-#endif // HUKS_CIPHER_AES_TEST_H
+}  // namespace Unittest::AesCipher
+#endif  // HUKS_CIPHER_AES_TEST_H

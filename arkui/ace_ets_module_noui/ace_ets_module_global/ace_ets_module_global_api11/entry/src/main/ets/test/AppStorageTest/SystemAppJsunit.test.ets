@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,7 +27,7 @@ export default function systemAppJsunit() {
         expect(a.appID == "com.open.harmony.acetestfour").assertTrue();
         console.info('systemAppTest_0100 END');
       } else {
-        expect(a == null).assertTrue(true);
+        expect(a == null).assertTrue();
       }
       done();
     });
@@ -40,7 +39,7 @@ export default function systemAppJsunit() {
       if (a != null) {
         expect(a.appName == "$string:entry_MainAbility").assertTrue();
       } else {
-        expect(a == null).assertTrue(true);
+        expect(a == null).assertTrue();
       }
       console.info('systemAppTest_0200 END');
       done();
@@ -53,7 +52,7 @@ export default function systemAppJsunit() {
       if (a != null) {
         expect(a.versionName == "1.0.0").assertTrue();
       } else {
-        expect(a == null).assertTrue(true);
+        expect(a == null).assertTrue();
       }
       console.info('systemAppTest_0300 END');
       done();

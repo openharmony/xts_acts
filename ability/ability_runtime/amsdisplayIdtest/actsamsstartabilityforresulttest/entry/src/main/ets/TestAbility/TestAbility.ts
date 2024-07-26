@@ -13,10 +13,12 @@
  * limitations under the License.
  */
 import Ability from '@ohos.app.ability.UIAbility'
+import common from '@ohos.app.ability.common';
 
 export default class TestAbility extends Ability {
     onCreate(want, launchParam) {
-        console.log('TestAbility onCreate')
+        console.log('TestAbility onCreate');
+        AppStorage.setOrCreate<common.UIAbilityContext>("abilityContext", this.context);
     }
 
     onDestroy() {

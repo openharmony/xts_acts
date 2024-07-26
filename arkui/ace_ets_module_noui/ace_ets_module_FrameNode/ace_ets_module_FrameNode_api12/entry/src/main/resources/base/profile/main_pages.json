@@ -7,6 +7,9 @@
 	"MainAbility/pages/frameNode/nodeContainer",
 	"MainAbility/pages/frameNode/frameNodeTestGetInterface",
 		"MainAbility/pages/frameNode/APIsetOnFocus",
-		"MainAbility/pages/frameNode/APIsetOnHover"
+		"MainAbility/pages/frameNode/APIsetOnHover",
+	  "MainAbility/pages/frameNode/nodeList",
+	  "MainAbility/pages/frameNode/nodeListItemGroup",
+	  "MainAbility/pages/frameNode/nodeWaterFlow"
     ]
 }

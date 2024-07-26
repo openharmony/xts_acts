@@ -15,7 +15,8 @@
 #include "huks_three_stage_test_common.h"
 #ifndef HKS_SIGNVERIFY_RSA_TEST_H
 #define HKS_SIGNVERIFY_RSA_TEST_H
-namespace Unittest::RsaSignVerify {
+namespace Unittest::RsaSignVerify
+{
 int Security_HUKS_NAPI_SignVerify_RSA_0100(void);
-} // namespace Unittest::AesCipher
-#endif // HKS_SIGNVERIFY_RSA_TEST_H
+}  // namespace Unittest::RsaSignVerify
+#endif  // HKS_SIGNVERIFY_RSA_TEST_H

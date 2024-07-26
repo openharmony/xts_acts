@@ -26,9 +26,9 @@ export default function callTest() {
     'group_name': 'test1',
     'ringtone_modify_time': 28
   };
-  var dataAssert = "";
-  var subscriber;
-  var subscribeInfo = {
+  let dataAssert = "";
+  let subscriber;
+  let subscribeInfo = {
     events: ["call_event"]
   };
 
@@ -56,14 +56,14 @@ export default function callTest() {
     }
   }
 
-  describe('callTest', function () {
+  describe('callTest',  () => {
     /*
      * @tc.number  CallTest_0100
      * @tc.name    The deviceid passed in is null, so the installation free process is implemented
      * @tc.desc    Function test
      * @tc.level   0
      */
-    it("CallTest_0100", 0, async function (done) {
+    it("CallTest_0100", 0, async  (done: Function) => {
       console.info("------------start CallTest_0100-------------");
       console.info("CallTest_0100 commonEvent.createSubscriber start!!!");
       commonEvent.createSubscriber(subscribeInfo, CreateSubscriberCallBack);
@@ -78,9 +78,9 @@ export default function callTest() {
       });
       await Utils.sleep(2000);
       expect(details.result).assertEqual("{\"group_name\":{\"data\":\"test1\",\"type\":10}," +
-      "\"ringtone_modify_time\":{\"data\":\"28wTypeToString\",\"type\":9}}");
+        "\"ringtone_modify_time\":{\"data\":\"28wTypeToString\",\"type\":9}}");
       expect(dataAssert).assertEqual("{\"group_name\":{\"data\":\"test1\",\"type\":10}" +
-      ",\"ringtone_modify_time\":{\"data\":\"28wTypeToString\",\"type\":9}}");
+        ",\"ringtone_modify_time\":{\"data\":\"28wTypeToString\",\"type\":9}}");
       console.info("------------end CallTest_0100-------------");
       done();
     });

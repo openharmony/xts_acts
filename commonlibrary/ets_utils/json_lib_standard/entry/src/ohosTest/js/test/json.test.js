@@ -654,4 +654,70 @@ describe('JsonTest', function () {
     let jsonStr = JSON.stringify(obj);
     expect(jsonStr).assertEqual('{"big":112233445566778899}');
   });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0039
+   * @tc.name: teststringify0039
+   * @tc.desc: Convert a JavaScript object or value to a JSON string
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("teststringify0039", 0, function () {
+    let obj = JSON.stringify(null);
+    expect(obj).assertEqual('null');
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0040
+   * @tc.name: teststringify0040
+   * @tc.desc: Convert a JavaScript object or value to a JSON string
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("teststringify0040", 0, function () {
+    let obj = JSON.stringify(undefined);
+    expect(obj).assertEqual(undefined);
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0041
+   * @tc.name: teststringify0041
+   * @tc.desc: Convert a JavaScript object or value to a JSON string
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("teststringify0041", 0, function () {
+    let obj = JSON.stringify(123);
+    expect(obj).assertEqual('123');
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0042
+   * @tc.name: teststringify0042
+   * @tc.desc: Convert a JavaScript object or value to a JSON string
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("teststringify0042", 0, function () {
+    let obj = JSON.stringify(-123);
+    expect(obj).assertEqual('-123');
+  });
+
+  /**
+   * @tc.number: SUB_COMMONLIBRARY_ETSUTILS_JSON_0043
+   * @tc.name: teststringify0043
+   * @tc.desc: Convert a JavaScript object or value to a JSON string
+   * @tc.size: MediumTest
+   * @tc.type: Function
+   * @tc.level: Level 2
+   */
+  it("teststringify0043", 0, function () {
+    let rst = " ";
+    let obj = JSON.stringify(rst);
+    expect(obj).assertEqual('" "');
+  });
 })}

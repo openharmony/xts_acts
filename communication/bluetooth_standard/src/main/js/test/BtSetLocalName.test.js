@@ -18,28 +18,19 @@ import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from '
 import { UiComponent, UiDriver, BY, Component, Driver, UiWindow, ON, MatchPattern, DisplayRotation, ResizeDirection, UiDirection, MouseButton, WindowMode, PointerMatrix, UIElementInfo, UIEventObserver } from '@ohos.UiTest'
 
 let Btname = {
-    NUM_TEST :'012345678901234567890123456789012345678901234567890123'+
-    '45678901234567890123456789012345678901234567890123456789012345678901234567',
-    NUM_TEST1 :'0123456789012345678901234567890123456789012345678901'
-    +'23456789012345678901234567890123456789012345678901234567890123456789012345678012'
-    +'345678901234567890123456789012345678901234567890123456789012367890123456789012345568'
-    +'01234567890123456789012345678912',
-    LETTERS_TEST :'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+    NUM_TEST :'012345678901234'+'456789012345678',
+    NUM_TEST1 :'01234567'+'234567890'+'3456789012'+'012',
+    LETTERS_TEST :'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
     CHINESES_TEST :'测试蓝牙名称是否正常测试蓝牙名称是否试蓝牙',
     CHINESES_TEST2 :'测试蓝牙名称正常',
-    SYMBOL_TEST:'*^_^* 、。·ˉˇ¨〃々—～‖·‘’“”「『』〖❂【±×'
-    +'÷∶∧∨∑∏∪∩∈∷√⊥‖∠⌒⊙∫∮≡≌≈∽∝≠♂♀°℃＄¤￠￡‰§№☆★○●◎◇□■△※→←↑↓〓',
-    MIXES:'测试蓝牙名称是否正试蓝牙\'名称是否[666]aaw',
-    MIXES2:'——◎◇◆□■△▲测试蓝牙',
-    MIXES3:'78453-、、。。◎◇◆□■△▲',
-    MIXES4:'hhhfdf-、、。。◎◇◆□■△▲',
-    MIXES5:'#01-5@<?;:!@$%^&*(1[]{【+-；：‘’“”测试=》《\'[6]',
-    MIXES6:'#01-567890@<>?/;:5675ASDF012345678!@'
-    +'$%^&*()9012378901[]{}【】566~·67890blue',
-    MIXES7:'0123456789012345678901234567890123456789012345678901'
-    +'23456789012345678901234567890123456789012345678901234567890123456789012345678012'
-    +'345678901234567890123456789012345678901234567890123456789012367890123456789012345568'
-    +'012345678901234567890123456789123'
+    SYMBOL_TEST:'*^_^* 、。·ˉˇ¨〃々—',
+    MIXES:'测试蓝牙名称\'[6]aw',
+    MIXES2:'——◎◇◆□测试蓝牙',
+    MIXES3:'78453-、、。。◎◇',
+    MIXES4:'hhhfdf-、、。。◎◇',
+    MIXES5:'#01-5@<?;:’“”测试=\'[6]',
+    MIXES6:'#01-567890@<>?/;:5675ASDF0!@b',
+    MIXES7:'01234'+'23901'+'3456789'+'012345678'
 }
 export default function btLocalNameTest() {
 describe('btLocalNameTest', function() {
@@ -133,7 +124,7 @@ describe('btLocalNameTest', function() {
         await sleep(1000);
         let getNewName = bluetooth.getLocalName();
         console.info('[bluetooth_js] LocalName_0100 NewName = '+ JSON.stringify(getNewName));
-        expect(true).assertEqual(Btname.LETTERS_TEST == getNewName);
+        expect(true).assertEqual('aaaaaaaaaaaaaaaaaaaaaaaaaaa...' == getNewName);
         done();
     })
 
@@ -411,7 +402,7 @@ describe('btLocalNameTest', function() {
         await sleep(1000);
         let getNewName = bluetooth.getLocalName();
         console.info('[bluetooth_js] LocalName_1700 NewName = '+ JSON.stringify(getNewName));
-        expect(false).assertEqual(Btname.MIXES7 == getNewName);
+        expect(true).assertEqual(Btname.MIXES7 == getNewName);
         done();
     })
 

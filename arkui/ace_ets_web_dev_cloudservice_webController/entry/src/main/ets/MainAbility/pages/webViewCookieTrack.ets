@@ -33,7 +33,6 @@ class DataTrans {
 struct webViewCookieTrack {
   controller: web_webview.WebviewController = new web_webview.WebviewController();
   @State emitKey: string = "emitCookieTrackRemoveTrackingPrevention";
-  @State userAgent: string = "Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.88 Mobile Safari/537.36";
   @State getUrlStr: string = ""
   @State cookie: string = ""
   @State whiteUrlList: string[] = ["mc.yandex.ru","hm.baidu.com"]

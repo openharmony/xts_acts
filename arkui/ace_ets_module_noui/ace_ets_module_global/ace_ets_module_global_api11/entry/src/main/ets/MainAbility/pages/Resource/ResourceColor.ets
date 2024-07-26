@@ -58,13 +58,12 @@ struct ResourceColor1 {
             Column() {
               Text('color test').fontSize(20)
               Text('color').backgroundColor($r('app.color.color_' + item.toString())).id('color')
-            }.border({ width:2 }).margin(30)
-            
+            }.border({ width: 2 }).margin(30)
+
           }
           .justifyContent(FlexAlign.SpaceEvenly)
           .width(300)
           .height(300)
-
 
         }, (item: string) => item)
       }

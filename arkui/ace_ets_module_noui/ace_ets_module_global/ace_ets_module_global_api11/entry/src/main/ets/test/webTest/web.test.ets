@@ -14,14 +14,14 @@
  */
 
 import router from '@ohos.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils.ets'
 
 export default function webEditTextJsunit() {
-  describe('webEditTextTest', () =>{
-    beforeEach(async (done:Function) => {
+  describe('webEditTextTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options:router.RouterOptions = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/web/web',
       }
       try {
@@ -40,7 +40,7 @@ export default function webEditTextJsunit() {
       done()
     });
 
-    afterEach(async () =>{
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("webEditText after each called");
     });

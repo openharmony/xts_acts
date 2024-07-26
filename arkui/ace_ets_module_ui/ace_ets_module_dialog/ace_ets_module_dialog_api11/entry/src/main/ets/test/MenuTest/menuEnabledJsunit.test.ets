@@ -46,7 +46,7 @@ export default function menuEnabledJsunit() {
     it('menuEnabledJsunit_0100', 0, async function (done) {
 
       console.info('menuEnabledJsunit_0100 START');
-      let driver = await UiDriver.create()
+      let driver: Driver = Driver.create();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('bindMenuEnd');
       let obj = JSON.parse(strJson);

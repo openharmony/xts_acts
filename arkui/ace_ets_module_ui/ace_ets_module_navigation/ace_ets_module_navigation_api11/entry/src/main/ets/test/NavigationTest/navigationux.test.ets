@@ -19,7 +19,7 @@ import router from '@ohos.router';
 import Utils from '../Utils';
 
 export default function navigationuxtest() {
-  describe('navigationuxtest', function () {
+  describe('navigationuxtest',  () =>{
     const SUITE: string = 'navigationuxtest'
     beforeEach(async (done: Function) => {
       let options: router.RouterOptions = {
@@ -46,7 +46,7 @@ export default function navigationuxtest() {
      *tc.name   Add interfaces to control the disable and active states on the toolbar
      *tc.desc   Gets the toolbarConfiguration value undefined
      */
-    it('ArkUX_Stage_Navigation_0100', 0, async function (done) {
+    it('ArkUX_Stage_Navigation_0100', 0, async  (done:Function) =>{
       console.info('ArkUX_Stage_Navigation_0100 START');
       setTimeout(() => {
         try {

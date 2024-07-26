@@ -66,7 +66,7 @@ def check_hvigor_wrapper_js(acts_root_dir, hvigor_prj_list):
 
 def check_hvigor_version(hvigor_prj_list):
     unmatch_prj_list = []
-    baseline_version = '4.0.2'
+    baseline_version = '4.0.5'
     for dir in hvigor_prj_list:
         filename = os.path.join(dir, 'hvigor', 'hvigor-config.json5')
         version = get_hvigor_version(filename)

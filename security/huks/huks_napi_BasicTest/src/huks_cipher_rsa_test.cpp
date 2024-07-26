@@ -14,14 +14,17 @@
  */
 
 #include "huks_cipher_rsa_test.h"
-#include "huks_cipher_rsa_test_common.h"
 
 #include <gtest/gtest.h>
 
+#include "huks_cipher_rsa_test_common.h"
+
 using namespace testing::ext;
-namespace Unittest::RsaCipher {
-class HuksCipherRSATest : public testing::Test {
-public:
+namespace Unittest::RsaCipher
+{
+class HuksCipherRSATest : public testing::Test
+{
+   public:
     static void SetUpTestCase(void);
 
     static void TearDownTestCase(void);
@@ -31,86 +34,38 @@ public:
     void TearDown();
 };
 
-void HuksCipherRSATest::SetUpTestCase(void)
-{
-}
+void HuksCipherRSATest::SetUpTestCase(void) {}
 
-void HuksCipherRSATest::TearDownTestCase(void)
-{
-}
+void HuksCipherRSATest::TearDownTestCase(void) {}
 
-void HuksCipherRSATest::SetUp()
-{
-    
-}
+void HuksCipherRSATest::SetUp() {}
 
-void HuksCipherRSATest::TearDown()
-{
-}
+void HuksCipherRSATest::TearDown() {}
 
 static struct OH_Huks_Param g_genParams041[] = {
-    {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_RSA
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_ENCRYPT | OH_HUKS_KEY_PURPOSE_DECRYPT
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_RSA_KEY_SIZE_4096
-    }, {
-        .tag = OH_HUKS_TAG_PADDING,
-        .uint32Param = OH_HUKS_PADDING_OAEP
-    }, {
-        .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_SHA384
-    }, {
-        .tag = OH_HUKS_TAG_BLOCK_MODE,
-        .uint32Param = OH_HUKS_MODE_ECB
-    }
-};
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_RSA},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_ENCRYPT | OH_HUKS_KEY_PURPOSE_DECRYPT},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_RSA_KEY_SIZE_4096},
+    {.tag = OH_HUKS_TAG_PADDING, .uint32Param = OH_HUKS_PADDING_OAEP},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SHA384},
+    {.tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_ECB},
+    {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE}};
 static struct OH_Huks_Param g_encryptParams041[] = {
-    {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_RSA
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_ENCRYPT
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_RSA_KEY_SIZE_4096
-    }, {
-        .tag = OH_HUKS_TAG_PADDING,
-        .uint32Param = OH_HUKS_PADDING_OAEP
-    }, {
-        .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_SHA384
-    }, {
-        .tag = OH_HUKS_TAG_BLOCK_MODE,
-        .uint32Param = OH_HUKS_MODE_ECB
-    }
-};
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_RSA},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_ENCRYPT},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_RSA_KEY_SIZE_4096},
+    {.tag = OH_HUKS_TAG_PADDING, .uint32Param = OH_HUKS_PADDING_OAEP},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SHA384},
+    {.tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_ECB},
+    {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE}};
 static struct OH_Huks_Param g_decryptParams041[] = {
-    {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_RSA
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_DECRYPT
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_RSA_KEY_SIZE_4096
-    }, {
-        .tag = OH_HUKS_TAG_PADDING,
-        .uint32Param = OH_HUKS_PADDING_OAEP
-    }, {
-        .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_SHA384
-    }, {
-        .tag = OH_HUKS_TAG_BLOCK_MODE,
-        .uint32Param = OH_HUKS_MODE_ECB
-    }
-};
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_RSA},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_DECRYPT},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_RSA_KEY_SIZE_4096},
+    {.tag = OH_HUKS_TAG_PADDING, .uint32Param = OH_HUKS_PADDING_OAEP},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SHA384},
+    {.tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_ECB},
+    {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE}};
 
 /**
  * @tc.name: HuksCipherRSATest.Security_HUKS_NAPI_Cipher_RSA_0100
@@ -120,9 +75,8 @@ static struct OH_Huks_Param g_decryptParams041[] = {
 HWTEST_F(HuksCipherRSATest, Security_HUKS_NAPI_Cipher_RSA_0100, TestSize.Level1)
 {
     char tmpKeyAlias[] = "HksRSACipherKeyAliasTest041";
-    struct OH_Huks_Blob keyAlias = { strlen(tmpKeyAlias), (uint8_t *)tmpKeyAlias };
-    struct OH_Huks_Blob inData = { g_inData_32.length(),
-                              (uint8_t *)g_inData_32.c_str() };
+    struct OH_Huks_Blob keyAlias = {strlen(tmpKeyAlias), (uint8_t *)tmpKeyAlias};
+    struct OH_Huks_Blob inData = {g_inData_32.length(), (uint8_t *)g_inData_32.c_str()};
 
     struct OH_Huks_ParamSet *genParamSet = nullptr;
     OH_Huks_Result ret = InitParamSet(&genParamSet, g_genParams041, sizeof(g_genParams041) / sizeof(OH_Huks_Param));
@@ -143,4 +97,4 @@ HWTEST_F(HuksCipherRSATest, Security_HUKS_NAPI_Cipher_RSA_0100, TestSize.Level1)
     OH_Huks_FreeParamSet(&encryptParamSet);
     OH_Huks_FreeParamSet(&decryptParamSet);
 }
-} // namespace Unittest::RsaCipher
+}  // namespace Unittest::RsaCipher

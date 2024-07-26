@@ -13,48 +13,50 @@
  * limitations under the License.
  */
 import Ability from '@ohos.app.ability.UIAbility'
-
+import Want from '@ohos.app.ability.Want'
+import AbilityConstant from '@ohos.app.ability.AbilityConstant'
+import window from '@ohos.window';
 export default class TestAbility extends Ability {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        console.log('TestAbility onCreate')
-    }
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    console.log('TestAbility onCreate')
+  }
 
-    onDestroy() {
-        console.log('TestAbility onDestroy')
-    }
+  onDestroy() {
+    console.log('TestAbility onDestroy')
+  }
 
-    onWindowStageCreate(windowStage: Window.WindowStage) {
-        console.log('TestAbility onWindowStageCreate')
-        windowStage.loadContent("TestAbility/pages/index", (err, data) => {
-            if (err.code) {
-                console.error('Failed to load the content. Cause:' + JSON.stringify(err));
-                return;
-            }
-            console.info('Succeeded in loading the content. Data: ' + JSON.stringify(data))
-        });
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    console.log('TestAbility onWindowStageCreate')
+    windowStage.loadContent("TestAbility/pages/index", (err, data) => {
+      if (err.code) {
+        console.error('Failed to load the content. Cause:' + JSON.stringify(err));
+        return;
+      }
+      console.info('Succeeded in loading the content. Data: ' + JSON.stringify(data))
+    });
 
-        globalThis.abilityContext = this.context;
-        let windowClass = null;
-        windowStage.getMainWindow((err, data) => {
-            if (err.code) {
-                console.error('Failed to obtain the main window. Cause: ' + JSON.stringify(err));
-                return;
-            }
-            windowClass = data;
-            globalThis.uiContext = windowClass.getUIContext();
-        });
+    globalThis.abilityContext = this.context;
+    let windowClass = null;
+    windowStage.getMainWindow((err, data) => {
+      if (err.code) {
+        console.error('Failed to obtain the main window. Cause: ' + JSON.stringify(err));
+        return;
+      }
+      windowClass = data;
+      globalThis.uiContext = windowClass.getUIContext();
+    });
 
-    }
+  }
 
-    onWindowStageDestroy() {
-        console.log('TestAbility onWindowStageDestroy')
-    }
+  onWindowStageDestroy() {
+    console.log('TestAbility onWindowStageDestroy')
+  }
 
-    onForeground() {
-        console.log('TestAbility onForeground')
-    }
+  onForeground() {
+    console.log('TestAbility onForeground')
+  }
 
-    onBackground() {
-        console.log('TestAbility onBackground')
-    }
+  onBackground() {
+    console.log('TestAbility onBackground')
+  }
 };
