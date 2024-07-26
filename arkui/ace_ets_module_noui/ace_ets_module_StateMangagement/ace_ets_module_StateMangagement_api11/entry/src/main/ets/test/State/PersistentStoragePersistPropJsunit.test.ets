@@ -12,19 +12,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import events_emitter from '@ohos.events.emitter'
 
 
 export default function PersistentStoragePersistPropJsunit() {
-  describe('PersistentStoragePersistPropJsunit', function () {
-    beforeEach(async function (done) {
+  describe('PersistentStoragePersistPropJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("PersistentStoragePersistPropJsunit beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/State/PersistentStoragePersistProp",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/State/PersistentStoragePersistProp",
       }
       try {
         router.clear();
@@ -32,7 +45,7 @@ export default function PersistentStoragePersistPropJsunit() {
         console.info("get PersistentStoragePersistPropJsunit state pages: " + JSON.stringify(pages));
         if (!("PersistentStoragePersistProp" == pages.name)) {
           console.info("get PersistentStoragePersistPropJsunit state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push PersistentStoragePersistPropJsunit page result: " + JSON.stringify(result));
         }
@@ -44,18 +57,18 @@ export default function PersistentStoragePersistPropJsunit() {
     });
 
 
-    it('PersistentStoragePersistPropJsunit_0100', 0, async function (done) {
+    it('PersistentStoragePersistPropJsunit_0100', 0, async (done: Function) => {
       console.info('[PersistentStoragePersistPropJsunit_0100] START');
       let driver = await UiDriver.create()
       let button_PersistProp = await driver.findComponent(BY.key('button_PersistProp'));
       await button_PersistProp.click();
       await CommonFunc.sleep(1000);
 
-	    let button_Keys = await driver.findComponent(BY.key('button_Keys'));
+      let button_Keys = await driver.findComponent(BY.key('button_Keys'));
       await button_Keys.click();
       await CommonFunc.sleep(1000);
 
-	    let text_button_Keys = await driver.findComponent(BY.key('text_button_Keys'));
+      let text_button_Keys = await driver.findComponent(BY.key('text_button_Keys'));
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('text_button_Keys');
@@ -63,31 +76,31 @@ export default function PersistentStoragePersistPropJsunit() {
       console.info("[PersistentStoragePersistPropJsunit_0100] obj1 is: " + JSON.stringify(obj1));
 
       expect(obj1.$attrs.content).assertEqual('Keys:["aPropA","aPropB"]');
-	    let button_DeleteProp = await driver.findComponent(BY.key('button_DeleteProp'));
+      let button_DeleteProp = await driver.findComponent(BY.key('button_DeleteProp'));
       await button_DeleteProp.click();
       await CommonFunc.sleep(1000);
-	    let button_Keys2 = await driver.findComponent(BY.key('button_Keys'));
+      let button_Keys2 = await driver.findComponent(BY.key('button_Keys'));
       await button_Keys2.click();
       await CommonFunc.sleep(1000);
-	    let strJson2 = getInspectorByKey('text_button_Keys');
+      let strJson2 = getInspectorByKey('text_button_Keys');
       let obj2 = JSON.parse(strJson2);
       console.info("[PersistentStoragePersistPropJsunit_0102] obj2 is: " + JSON.stringify(obj2));
-	    console.info(obj2.$attrs.content);
+      console.info(obj2.$attrs.content);
       expect(obj2.$attrs.content).assertEqual('Keys:["aPropA"]');
       console.info('[PersistentStoragePersistPropJsunit_0100] END');
       done();
     });
 
-	  it('PersistentStoragePersistPropJsunit_0200', 0, async function (done) {
+    it('PersistentStoragePersistPropJsunit_0200', 0, async (done: Function) => {
 
       console.info('[PersistentStoragePersistPropJsunit_0200] START');
       let driver = await UiDriver.create()
 
-	    let button_Keys = await driver.findComponent(BY.key('button_Keys'));
+      let button_Keys = await driver.findComponent(BY.key('button_Keys'));
       await button_Keys.click();
       await CommonFunc.sleep(1000);
 
-	    let text_button_Keys = await driver.findComponent(BY.key('text_button_Keys'));
+      let text_button_Keys = await driver.findComponent(BY.key('text_button_Keys'));
       await CommonFunc.sleep(1000);
 
       let strJson1 = getInspectorByKey('text_button_Keys');
@@ -99,14 +112,14 @@ export default function PersistentStoragePersistPropJsunit() {
       done();
     });
 
-    it('PersistentStoragePersistPropJsunit_0300', 0, async function (done) {
+    it('PersistentStoragePersistPropJsunit_0300', 0, async (done: Function) => {
       console.info('[PersistentStoragePersistPropJsunit_0300] START');
       let driver = await UiDriver.create()
       let button_PersistProp_default = await driver.findComponent(BY.key('button_PersistProp_default'));
       await button_PersistProp_default.click();
       await CommonFunc.sleep(1000);
       let button_PersistProp_default_keys = await driver.findComponent(BY.key('button_PersistProp_default_keys'));
-      let content =await  button_PersistProp_default_keys.getText()
+      let content = await button_PersistProp_default_keys.getText()
       expect(content).assertEqual('keys:aPropA:42,highScore:0,wightScore:1');
       console.info('[PersistentStoragePersistPropJsunit_0300] END');
       done();

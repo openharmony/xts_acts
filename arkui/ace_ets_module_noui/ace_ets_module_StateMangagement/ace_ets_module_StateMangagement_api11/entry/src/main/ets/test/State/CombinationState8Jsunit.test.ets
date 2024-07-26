@@ -13,17 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 
 
 export default function CombinationState8Jsunit() {
-  describe('CombinationState8Jsunit', function () {
-    beforeEach(async function (done) {
+  describe('CombinationState8Jsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("CombinationState8 beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/CombinationState8',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/CombinationState8',
       }
       try {
         router.clear();
@@ -31,7 +44,7 @@ export default function CombinationState8Jsunit() {
         console.info("get CombinationState8J state pages: " + JSON.stringify(pages));
         if (!("CombinationState8" == pages.name)) {
           console.info("get CombinationState8 state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push CombinationState8 page result: " + JSON.stringify(result));
         }
@@ -42,7 +55,7 @@ export default function CombinationState8Jsunit() {
       done();
     });
 
-    it('CombinationState8Jsunit_0100', 0, async function (done) {
+    it('CombinationState8Jsunit_0100', 0, async (done: Function) => {
       console.info('[CombinationState8Jsunit_0100] START');
       let strJson = getInspectorByKey('SubState1');
       let obj = JSON.parse(strJson);
@@ -53,7 +66,7 @@ export default function CombinationState8Jsunit() {
       done();
     });
 
-    it('CombinationState8Jsunit_0200', 0, async function (done) {
+    it('CombinationState8Jsunit_0200', 0, async (done: Function) => {
       console.info('[CombinationState8Jsunit_0200] START');
       let strJson = getInspectorByKey('SubProp1');
       let obj = JSON.parse(strJson);
@@ -64,7 +77,7 @@ export default function CombinationState8Jsunit() {
       done();
     });
 
-    it('CombinationState8Jsunit_0300', 0, async function (done) {
+    it('CombinationState8Jsunit_0300', 0, async (done: Function) => {
       console.info('[CombinationState8Jsunit_0300] START');
       let strJson = getInspectorByKey('SubProvide1');
       let obj = JSON.parse(strJson);
@@ -75,7 +88,7 @@ export default function CombinationState8Jsunit() {
       done();
     });
 
-    it('CombinationState8Jsunit_0400', 0, async function (done) {
+    it('CombinationState8Jsunit_0400', 0, async (done: Function) => {
       console.info('[CombinationState8Jsunit_0400] START');
       let strJson = getInspectorByKey('SubLink1');
       let obj = JSON.parse(strJson);
