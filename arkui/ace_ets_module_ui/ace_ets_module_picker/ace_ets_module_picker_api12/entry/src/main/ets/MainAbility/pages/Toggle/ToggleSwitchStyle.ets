@@ -16,8 +16,7 @@
 @Entry
 @Component
 struct ToggleSwitchStyleTest {
-  @State text: string = ''
-
+  @State text:string = ''
   build() {
     Column({ space: 10 }) {
       Toggle({ type: ToggleType.Switch, isOn: false })

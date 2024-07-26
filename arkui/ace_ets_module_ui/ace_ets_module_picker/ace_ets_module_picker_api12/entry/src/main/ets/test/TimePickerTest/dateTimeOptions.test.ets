@@ -13,30 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@ohos.router';
-import {
-  UiComponent,
-  Driver,
-  Component,
-  UiWindow,
-  ON,
-  BY,
-  MatchPattern,
-  DisplayRotation,
-  ResizeDirection,
-  WindowMode,
-  PointerMatrix
-} from '@ohos.UiTest';
+import router from '@system.router';
+import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
-import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 import window from '@ohos.window';
 
 export default function dateTimeOptions() {
-  describe('dateTimeOptions', () => {
-    beforeEach(async (done: Function) => {
+  describe('dateTimeOptions', function () {
+    beforeEach(async function (done) {
       console.info("dateTimeOptions beforeEach start");
-      let options: router.RouterOptions = {
-        url: 'MainAbility/pages/TimePicker/dateTimeOptions',
+      let options = {
+        uri: 'MainAbility/pages/TimePicker/dateTimeOptions',
       }
       try {
         router.clear();
@@ -44,7 +32,7 @@ export default function dateTimeOptions() {
         console.info("get dateTimeOptions state pages: " + JSON.stringify(pages));
         if (!("dateTimeOptions" == pages.name)) {
           console.info("get dateTimeOptions state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.pushUrl(options);
+          let result = await router.push(options);
           await CommonFunc.sleep(2000);
           console.info("push dateTimeOptions success: " + JSON.stringify(result));
         }
@@ -60,7 +48,7 @@ export default function dateTimeOptions() {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('dateTimeOptions_0100', 0, async (done: Function) => {
+    it('dateTimeOptions_0100', 0, async function (done) {
       console.info('dateTimeOptions_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);

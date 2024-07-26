@@ -2,11 +2,9 @@ import { MenuItemModifier } from '@ohos.arkui.modifier'
 
 class MyMenuItemContentModifier implements ContentModifier<MenuItemConfiguration> {
   modifierText: string = ""
-
   constructor(text: string) {
     this.modifierText = text;
   }
-
   applyContent(): WrappedBuilder<[MenuItemConfiguration]> {
     return wrapBuilder(MenuItemBuilder)
   }
@@ -46,7 +44,7 @@ struct triggerSelectExample {
         Select([{ value: 'item1', icon: $r("app.media.icon") },
           { value: 'item2', icon: $r("app.media.icon") }])
           .value(this.text)
-          .onSelect((index: number, text?: string) => {
+          .onSelect((index:number, text?: string)=>{
             this.triggerSelect = 'Select index:' + index + 'Select text:' + text
             console.info('Select index:' + index)
             console.info('Select text:' + text)

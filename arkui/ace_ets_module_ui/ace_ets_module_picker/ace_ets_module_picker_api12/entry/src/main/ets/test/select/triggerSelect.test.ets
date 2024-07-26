@@ -13,30 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@ohos.router';
-import {
-  UiComponent,
-  Driver,
-  Component,
-  UiWindow,
-  ON,
-  BY,
-  MatchPattern,
-  DisplayRotation,
-  ResizeDirection,
-  WindowMode,
-  PointerMatrix
-} from '@ohos.UiTest';
+import router from '@system.router';
+import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
-import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 
 
 export default function triggerSelect() {
-  describe('triggerSelect', () => {
-    beforeEach(async (done: Function) => {
+  describe('triggerSelect', function () {
+    beforeEach(async function (done) {
       console.info("triggerSelect beforeEach start");
-      let options: router.RouterOptions = {
-        url: 'MainAbility/pages/select/triggerSelect',
+      let options = {
+        uri: 'MainAbility/pages/select/triggerSelect',
       }
       try {
         router.clear();
@@ -44,7 +32,7 @@ export default function triggerSelect() {
         console.info("get triggerSelect state pages: " + JSON.stringify(pages));
         if (!("triggerSelect" == pages.name)) {
           console.info("get triggerSelect state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.pushUrl(options);
+          let result = await router.push(options);
           await CommonFunc.sleep(2000);
           console.info("push triggerSelect success: " + JSON.stringify(result));
         }
@@ -54,16 +42,16 @@ export default function triggerSelect() {
       }
       done();
     });
-
-    /**
-     * @tc.number SUB_ACE_triggerSelect_0100
-     * @tc.name triggerSelect_0100
-     * @tc.desc set api
-     * @tc.level: Level 2
-     * @tc.type :
+    
+     /**
+     * @tc.number    SUB_ACE_triggerSelect_0100
+     * @tc.name      triggerSelect_0100
+     * @tc.desc      set api
+     * @tc.level:    Level 2
+     * @tc.type : 
      * @tc.size :
      */
-    it('triggerSelect_0100', 0, async (done: Function) => {
+    it('triggerSelect_0100', 0, async function (done) {
       console.info('triggerSelect_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -83,7 +71,7 @@ export default function triggerSelect() {
       console.info('[triggerSelect_0100] END');
       done();
     });
-
+    
 
   })
 }

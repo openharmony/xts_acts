@@ -18,10 +18,10 @@ import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function indicatorBuilderTest() {
-  describe('indicatorBuilderTest', () =>{
-    beforeEach(async  (done:Function) =>{
+  describe('indicatorBuilderTest', function () {
+    beforeEach(async function (done) {
       console.info("indicatorBuilderTest beforeEach start");
-      let options:router.RouterOptions = {
+      let options = {
         url: "MainAbility/pages/Checkbox/indicatorBuilder",
       }
       try {
@@ -30,7 +30,7 @@ export default function indicatorBuilderTest() {
         console.info("get indicatorBuilderTest state pages:" + JSON.stringify(pages));
         if (!("indicatorBuilder" == pages.name)) {
           console.info("get indicatorBuilderTest pages.name:" + JSON.stringify(pages.name));
-          let result = await router.pushUrl(options);
+          let result = await router.push(options);
           await CommonFunc.sleep(2000);
           console.info("push indicatorBuilderTest page result:" + JSON.stringify(result));
         }
@@ -40,7 +40,7 @@ export default function indicatorBuilderTest() {
       console.info("indicatorBuilderTest beforeEach end");
       done();
     });
-    afterEach(async () =>{
+    afterEach(async function () {
       await CommonFunc.sleep(1000);
       console.info("indicatorBuilderTest after each called");
     });
@@ -53,7 +53,7 @@ export default function indicatorBuilderTest() {
      * @tc.type
      * @tc.size
      */
-    it('indicatorBuilderTest_001', 0, async  (done:Function) =>{
+    it('indicatorBuilderTest_001', 0, async function (done) {
       console.info('[indicatorBuilderTest_001] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();

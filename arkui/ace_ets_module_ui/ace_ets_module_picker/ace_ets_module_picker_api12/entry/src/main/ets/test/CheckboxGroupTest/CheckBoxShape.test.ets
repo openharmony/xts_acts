@@ -13,15 +13,15 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@ohos.router';
+import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../../MainAbility/common/Utils';
 
 export default function CheckBoxShape() {
-  describe('CheckBoxShape', () =>{
-    beforeEach(async  (done:Function) =>{
-      let options:router.RouterOptions = {
-        url: 'MainAbility/pages/CheckboxGroup/CheckBoxShape',
+  describe('CheckBoxShape', function () {
+    beforeEach(async function (done) {
+      let options = {
+        uri: 'MainAbility/pages/CheckboxGroup/CheckBoxShape',
       }
       try {
         router.clear();
@@ -29,7 +29,7 @@ export default function CheckBoxShape() {
         console.info("get CheckBoxShape state success " + JSON.stringify(pages));
         if (!("CheckBoxShape" == pages.name)) {
           console.info("get CheckBoxShape state success " + JSON.stringify(pages.name));
-          let result = await router.pushUrl(options);
+          let result = await router.push(options);
           await Utils.sleep(1000);
           console.info("push CheckBoxShape page success " + JSON.stringify(result));
         }
@@ -39,12 +39,12 @@ export default function CheckBoxShape() {
       done()
     });
 
-    afterEach(async () =>{
+    afterEach(async function () {
       await Utils.sleep(1000);
       console.info("CheckBoxShape after each called");
     });
 
-    it('CheckBoxShapeTest_0100', 0, async  (done:Function) =>{
+    it('CheckBoxShapeTest_0100', 0, async function (done) {
       console.info('CheckBoxShapeText_0100 START');
       let strJson = getInspectorByKey('CheckBoxShapeXTS');
       console.info("CheckBoxShapeText_0100 component strJson:" + strJson);
