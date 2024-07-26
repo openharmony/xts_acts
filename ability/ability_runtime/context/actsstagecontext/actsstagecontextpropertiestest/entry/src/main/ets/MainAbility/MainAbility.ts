@@ -13,21 +13,22 @@
  * limitations under the License.
  */
 import Ability from '@ohos.app.ability.UIAbility'
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import { Hypium } from '@ohos/hypium'
 import testsuite from '../test/List.test'
+import window from '@ohos.window'
+import Want from '@ohos.app.ability.Want'
+import AbilityConstant from '@ohos.app.ability.AbilityConstant'
 
 export default class MainAbility extends Ability {
-    onCreate(want, launchParam) {
+    onCreate(want:Want, launchParam:AbilityConstant.LaunchParam) {
         // Ability is creating, initialize resources for this ability
         console.log("ActsStageContextPropertiesTest  MainAbility onCreate")
         globalThis.abilityWant = want;
         globalThis.abilityContext = this.context
         globalThis.abilityContextRes = this.context.createModuleContext('entry_test')
-        let abilityDelegator: any
-        abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        let abilityDelegatorArguments: any
-        abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+        let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+        let abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
         console.info('start run testcase!!!')
         Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
     }
@@ -37,11 +38,11 @@ export default class MainAbility extends Ability {
         console.log("ActsStageContextPropertiesTest  MainAbility onDestroy")
     }
 
-    onWindowStageCreate(windowStage) {
+    onWindowStageCreate(windowStage:window.WindowStage) {
         // Main window is created, set main page for this ability
         console.log("ActsStageContextPropertiesTest  MainAbility onWindowStageCreate")
 
-        windowStage.setUIContent(this.context, "pages/index/index", null)
+        windowStage.loadContent("pages/index/index")
         console.log("ActsStageContextPropertiesTest  MainAbility onWindowStageCreate finish")
     }
 
