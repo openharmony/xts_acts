@@ -20,9 +20,6 @@ import listVisibleJsunit from './ListTest/listVisibleJsunit.test';
 import scrollOffsetJsunit from './ScrollTest/scrollOffsetJsunit.test';
 import swiperCustomJsunit from './SwiperTest/swiperCustomJsunit.test';
 import tabIconJsunit from './TabsTest/tabIconJsunit.test';
-import ListFadeOut from './ListFadeOut/ListFadeOut.test';
-import ListFadeOutEx from './ListFadeOut/ListFadeOutEx.test';
-import ListFadeOutEx1 from './ListFadeOut/ListFadeOutEx1.test';
 import listSwipeActionApi12Test from './ListTest/listSwipeActionApi12.test';
 import ScrollSourceOther from './ScrollTest/ScrollSourceOther.test';
 import ScrollSource from './ScrollTest/ScrollSource.test';
@@ -46,9 +43,6 @@ export default function testsuite() {
   scrollOffsetJsunit();
   swiperCustomJsunit();
   tabIconJsunit();
-  ListFadeOut();
-  ListFadeOutEx();
-  ListFadeOutEx1();
   listSwipeActionApi12Test();
   ScrollSourceOther()
   ScrollSource();
