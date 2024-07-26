@@ -18,10 +18,10 @@ import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/common/Common';
 
 class ShadowValue {
-  radius: number
-  color: Color
-  offsetX: number
-  offsetY: number
+  radius: number = 0
+  color: Color | ColoringStrategy = Color.Gray
+  offsetX: number = 0
+  offsetY: number = 0
 }
 
 export default function imageEffectsJsunit() {
