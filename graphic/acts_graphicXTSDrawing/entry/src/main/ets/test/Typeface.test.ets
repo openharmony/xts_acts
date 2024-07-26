@@ -19,6 +19,8 @@ import drawing from '@ohos.graphics.drawing';
 export default function typefaceTest() {
   describe('DrawingTsTypeFaceTest', () => {
     const DEFAULT = 0;
+    const FONT_PATH = "/system/fonts/HarmonyOS_Sans_Italic.ttf";
+
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(async () => {
 
@@ -118,7 +120,7 @@ export default function typefaceTest() {
       let font = new drawing.Font();
 
       try {
-        let str = "/system/fonts/HarmonyOS_Sans_Italic.ttf";
+        let str = FONT_PATH;
         let mytypeface = drawing.Typeface.makeFromFile(str);
 
         mytypeface = drawing.Typeface.makeFromFile("");
@@ -177,7 +179,7 @@ export default function typefaceTest() {
 
       try {
         for (let i = 0; i < 20; i += 1) {
-          let str = "/system/fonts/HarmonyOS_Sans_Italic.ttf";
+          let str = FONT_PATH;
           const mytypeface = drawing.Typeface.makeFromFile(str);
         }
 
