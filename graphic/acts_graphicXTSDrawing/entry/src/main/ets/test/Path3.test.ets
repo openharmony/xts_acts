@@ -826,7 +826,7 @@ export default function drawingTsPath3Test() {
 
       try {
         for (let i = 0; i < 20; i += 1) {
-          let svgStr: string =  "M150 100 L75 300 L225 300 Z";
+          let svgStr: string = "M150 100 L75 300 L225 300 Z";
           path.buildFromSvgString(svgStr);
         }
         console.info(msg + 'reset successes');
@@ -883,7 +883,7 @@ export default function drawingTsPath3Test() {
       const path = new drawing.Path()
 
       try {
-        let svgStr: string =  "M150 100 L75 300 L225 300 Z";
+        let svgStr: string = "M150 100 L75 300 L225 300 Z";
         path.buildFromSvgString(svgStr, svgStr);
         console.info(msg + `reset error`);
         expect().assertFail()
@@ -912,26 +912,5 @@ export default function drawingTsPath3Test() {
 
     })
 
-
-
-    // ===============================================
-    /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_0XXX
-     * @tc.name      : testXXX
-     * @tc.desc      : testXXX
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    // it('testXXX', DEFAULT, () => {
-    //   const msg = 'testXXX';
-    //
-    //   try {
-    //     console.info(msg + 'reset successes');
-    //   } catch (e) {
-    //     console.info(msg + `reset errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-    //     expect().assertFail()
-    //   }
-    // })
   })
 }
