@@ -15,6 +15,5 @@
 import callTest from "./callTest.test";
 
 export default function testsuite() {
-    callTest();
-
+  callTest();
 }

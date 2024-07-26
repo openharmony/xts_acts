@@ -14,37 +14,37 @@
  */
 
 import commonEvent from '@ohos.commonEvent';
+
 var publishOptions = {
-    parameters: {
-        "assertData": "{\"group_name\":{\"data\":\"test1\",\"type\":10},"
-        +"\"ringtone_modify_time\":{\"data\":\"28wTypeToString\",\"type\":9}}"
-    }
+  parameters: {
+    "assertData": "{\"group_name\":{\"data\":\"test1\",\"type\":10},"
+      + "\"ringtone_modify_time\":{\"data\":\"28wTypeToString\",\"type\":9}}"
+  }
 };
 
 function PublishCallBack(err) {
-    if (err.code) {
-        console.error("callTest publish failed " + JSON.stringify(err));
-    } else {
-        console.info("callTest publish success!!!");
-    }
+  if (err.code) {
+    console.error("callTest publish failed " + JSON.stringify(err));
+  } else {
+    console.info("callTest publish success!!!");
+  }
 }
 
 export default {
-    onInitialized(abilityInfo) {
-        console.info('DataAbility onInitialized');
-    },
-    call(method, arg, extras) {
-        console.info('DataAbility call test000');
-        console.info('call succeeded data111 ' + JSON.stringify(extras));
-        var temp = JSON.stringify(extras);
-        if(temp == "\"{\\\"group_name\\\":{\\\"data\\\":\\\"test1\\\",\\\"type\\\":10}," +
-        "\\\"ringtone_modify_time\\\":{\\\"data\\\":\\\"28wTypeToString\\\",\\\"type\\\":9}}\"")
-        {
-            console.info('call commonEvent.publish start!!!!');
-            commonEvent.publish("call_event", publishOptions, PublishCallBack);
-        }else {
-            console.info('call not commonEvent.publish!!!');
-        }
-        return extras;
+  onInitialized(abilityInfo) {
+    console.info('DataAbility onInitialized');
+  },
+  call(method, arg, extras) {
+    console.info('DataAbility call test000');
+    console.info('call succeeded data111 ' + JSON.stringify(extras));
+    var temp = JSON.stringify(extras);
+    if (temp == "\"{\\\"group_name\\\":{\\\"data\\\":\\\"test1\\\",\\\"type\\\":10}," +
+      "\\\"ringtone_modify_time\\\":{\\\"data\\\":\\\"28wTypeToString\\\",\\\"type\\\":9}}\"") {
+      console.info('call commonEvent.publish start!!!!');
+      commonEvent.publish("call_event", publishOptions, PublishCallBack);
+    } else {
+      console.info('call not commonEvent.publish!!!');
     }
+    return extras;
+  }
 };
