@@ -52,6 +52,9 @@ export default function imageEffectTest() {
       let filePath = context.filesDir + "/test.jpg";
       await ImageUtils.getInstance().savePixelMap(filePath, $r('app.media.original'));
       testNapi.savePixelMapForPath(filePath);
+      let outFilePath = context.filesDir + "/outtest.jpg";
+      await ImageUtils.getInstance().savePixelMap(outFilePath, $r('app.media.test'));
+      testNapi.creatOutPixeMapForPath(outFilePath);
       done();
     });
     beforeEach(() => {
@@ -1348,8 +1351,37 @@ export default function imageEffectTest() {
      * @tc.level  : Level 1
      */
     it('testOHEffectFilterRender001', 0, () => {
-      let result: number = testNapi.OHEffectFilterRender();
+      let result: number = testNapi.OHEffectFilterRender(CASE_INDEX_1);
+      console.log(`test render1${result}`);
+      expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
+    });
+
+    /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHEFFECTFILTERRENDER_0100
+     * @tc.name   : testOHEffectFilterRender001
+     * @tc.desc   : Perform image rendering.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHEffectFilterRender002', 0, () => {
+      let result: number = testNapi.OHEffectFilterRender(CASE_INDEX_2);
+      console.log(`test render2${result}`);
       expect(result).assertEqual(EFFECT_SUCCESS);
+    });
+
+    /**
+     * @tc.number : SUB_MULTIMEDIA_IMAGE_IMAGEEFFECT_OHEFFECTFILTERRENDER_0100
+     * @tc.name   : testOHEffectFilterRender001
+     * @tc.desc   : Perform image rendering.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 1
+     */
+    it('testOHEffectFilterRender003', 0, () => {
+      let result: number = testNapi.OHEffectFilterRender(CASE_INDEX_3);
+      console.log(`test render3${result}`);
+      expect(result).assertEqual(EFFECT_ERROR_PARAM_INVALID);
     });
 
     /**
