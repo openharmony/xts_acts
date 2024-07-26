@@ -36,7 +36,7 @@ struct ScrollBarExample {
 
         }
       }
-      .key("scroll")
+      .key('scroll')
       .width('100%')
       .scrollable(ScrollDirection.Vertical)
       .scrollBarWidth(10)

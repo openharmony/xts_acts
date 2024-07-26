@@ -62,6 +62,7 @@ import scrollBarJsunit from './ScrollBarJsunit.test'
 export default function testsuite() {
        webViewControllerJsunit()
        webViewOnErrorReceive02Jsunit()
+       scrollBarJsunit()
        webViewHasImageJsunit()
        webViewSetPrintBackgroundJsunit()
        webViewSrollToJsunit()
@@ -105,5 +106,4 @@ export default function testsuite() {
        //webViewMediaOption()
        webViewOnWindowNewJsunit()
        webViewOnErrorReceive03Jsunit()
-       scrollBarJsunit()
 }
