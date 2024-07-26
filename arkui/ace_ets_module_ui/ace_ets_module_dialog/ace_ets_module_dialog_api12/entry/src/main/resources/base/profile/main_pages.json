@@ -52,6 +52,7 @@
     "MainAbility/pages/UIContext/openBindSheet",
     "MainAbility/pages/UIContext/openCustomDialog",
     "MainAbility/pages/UIContext/updateBindSheet",
-    "MainAbility/pages/UIContext/updateCustomDialog"
+    "MainAbility/pages/UIContext/updateCustomDialog",
+    "MainAbility/pages/Menu/MenuApi/subMenuExpandingMode_STACK_EXPAND"
   ]
 }
