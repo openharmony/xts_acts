@@ -20,9 +20,10 @@ import common2D from '@ohos.graphics.common2D';
 import { getEnumCount } from './utils';
 
 export default function drawingTsCanvasPart5Test() {
-  describe('DrawingTsCanvasTest', () => {
+  describe('DrawingTsCanvas5Test', () => {
     let pixel: image.PixelMap;
     const DEFAULT = 0;
+    const TEST_1_JPG = "test_1.jpg"
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(async () => {
       const color: ArrayBuffer = new ArrayBuffer(40000); // 96为需要创建的像素buffer大小，取值为：height * width *4
@@ -63,7 +64,7 @@ export default function drawingTsCanvasPart5Test() {
       const maxVal = Number.MAX_VALUE;
 
       try {
-        let pixelMap: image.PixelMap = globalThis.getInstance().getPixelMap("test_1.jpg");
+        let pixelMap: image.PixelMap = globalThis.getInstance().getPixelMap(TEST_1_JPG);
         canvas.drawImageRect(pixelMap, {
           left: 0, top: 0, right: 600, bottom: 600
         });
@@ -100,7 +101,7 @@ export default function drawingTsCanvasPart5Test() {
       const canvas = new drawing.Canvas(pixel);
       try {
         for (let i = 0; i < 20; i += 1) {
-          let pixelMap: image.PixelMap = globalThis.getInstance().getPixelMap("test_1.jpg");
+          let pixelMap: image.PixelMap = globalThis.getInstance().getPixelMap(TEST_1_JPG);
           const randomEnum = Math.floor(getEnumCount(drawing.FilterMode) * Math.random())
           canvas.drawImageRect(pixelMap, {
             left: Math.random(), top: Math.random(), right: Math.random(), bottom: Math.random()
@@ -125,7 +126,7 @@ export default function drawingTsCanvasPart5Test() {
     it('testCanvasDrawImageRectToNull', 3, () => {
       const msg = 'testCanvasDrawImageRectToNull';
       const canvas = new drawing.Canvas(pixel);
-      const pixelMap: image.PixelMap = globalThis.getInstance().getPixelMap("test_1.jpg");
+      const pixelMap: image.PixelMap = globalThis.getInstance().getPixelMap(TEST_1_JPG);
 
       try {
         canvas.drawImageRect(null, {
@@ -202,7 +203,7 @@ export default function drawingTsCanvasPart5Test() {
     it('testCanvasDrawImageRectMismatch', 3, () => {
       const msg = 'testCanvasDrawImageRectMismatch';
       const canvas = new drawing.Canvas(pixel);
-      const pixelMap: image.PixelMap = globalThis.getInstance().getPixelMap("test_1.jpg");
+      const pixelMap: image.PixelMap = globalThis.getInstance().getPixelMap(TEST_1_JPG);
 
       try {
         canvas.drawImageRect(pixelMap, {
@@ -249,7 +250,7 @@ export default function drawingTsCanvasPart5Test() {
     it('testCanvasDrawImageRectAbnormal', 3, () => {
       const msg = 'testCanvasDrawImageRectAbnormal';
       const canvas = new drawing.Canvas(pixel);
-      const pixelMap: image.PixelMap = globalThis.getInstance().getPixelMap("test_1.jpg");
+      const pixelMap: image.PixelMap = globalThis.getInstance().getPixelMap(TEST_1_JPG);
 
       try {
         canvas.drawImageRect(pixelMap, {
@@ -1055,7 +1056,7 @@ export default function drawingTsCanvasPart5Test() {
     it('testCanvasDrawImageRectWithSrcNormal', DEFAULT, () => {
       const msg = 'testCanvasDrawImageRectWithSrcNormal';
       const canvas = new drawing.Canvas(pixel);
-      let pixelMap: image.PixelMap = globalThis.getInstance().getPixelMap("test_1.jpg");
+      let pixelMap: image.PixelMap = globalThis.getInstance().getPixelMap(TEST_1_JPG);
       const maxVal = Number.MAX_VALUE;
       try {
         canvas.drawImageRectWithSrc(pixelMap, {
@@ -1119,7 +1120,7 @@ export default function drawingTsCanvasPart5Test() {
     it('testCanvasDrawImageRectWithSrcMultipleCalls', 3, () => {
       const msg = 'testCanvasDrawImageRectWithSrcMultipleCalls';
       const canvas = new drawing.Canvas(pixel);
-      let pixelMap: image.PixelMap = globalThis.getInstance().getPixelMap("test_1.jpg");
+      let pixelMap: image.PixelMap = globalThis.getInstance().getPixelMap(TEST_1_JPG);
       try {
         for (let i = 0; i < 20; i += 1) {
           const e1 = Math.floor(Math.random() * getEnumCount(drawing.SamplingOptions))
@@ -1149,7 +1150,7 @@ export default function drawingTsCanvasPart5Test() {
     it('testCanvasDrawImageRectWithSrcToNull', 3, () => {
       const msg = 'testCanvasDrawImageRectWithSrcToNull';
       const canvas = new drawing.Canvas(pixel);
-      let pixelMap: image.PixelMap = globalThis.getInstance().getPixelMap("test_1.jpg");
+      let pixelMap: image.PixelMap = globalThis.getInstance().getPixelMap(TEST_1_JPG);
 
       try {
         canvas.drawImageRectWithSrc(null, {
@@ -1287,7 +1288,7 @@ export default function drawingTsCanvasPart5Test() {
     it('testCanvasDrawImageRectWithSrcAbnormal', 3, () => {
       const msg = 'testCanvasDrawImageRectWithSrcAbnormal';
       const canvas = new drawing.Canvas(pixel);
-      let pixelMap: image.PixelMap = globalThis.getInstance().getPixelMap("test_1.jpg");
+      let pixelMap: image.PixelMap = globalThis.getInstance().getPixelMap(TEST_1_JPG);
 
       try {
         canvas.drawImageRectWithSrc(pixelMap, {
@@ -1316,6 +1317,191 @@ export default function drawingTsCanvasPart5Test() {
       }
 
     })
+
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_4200
+     * @tc.name      : testCanvasDrawRoundRectNormal
+     * @tc.desc      : testCanvasDrawRoundRectNormal
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('testCanvasDrawRoundRectNormal', DEFAULT, () => {
+      const msg = 'testCanvasDrawRoundRectNormal';
+      const canvas = new drawing.Canvas(pixel);
+
+      try {
+        let rectOne: common2D.Rect = {
+          left: 10, top: 100, right: 200, bottom: 300
+        };
+        let roundRect = new drawing.RoundRect(rectOne, 10, 10);
+        canvas.drawRoundRect(roundRect);
+        console.info(msg + 'test successes');
+      } catch (e) {
+        console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
+    })
+
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_4201
+     * @tc.name      : testCanvasDrawRoundRectMultipleCalls
+     * @tc.desc      : testCanvasDrawRoundRectMultipleCalls
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testCanvasDrawRoundRectMultipleCalls', 3, () => {
+      const msg = 'testCanvasDrawRoundRectMultipleCalls';
+      const canvas = new drawing.Canvas(pixel);
+
+      try {
+        for (let i = 0; i < 20; i += 1) {
+          let rectOne: common2D.Rect = {
+            left: 10, top: 100, right: 200, bottom: 300
+          };
+          let roundRect = new drawing.RoundRect(rectOne, 10, 10);
+          canvas.drawRoundRect(roundRect);
+        }
+        console.info(msg + 'test successes');
+      } catch (e) {
+        console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
+    })
+
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_4202
+     * @tc.name      : testCanvasDrawRoundRectToNull
+     * @tc.desc      : testCanvasDrawRoundRectToNull
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testCanvasDrawRoundRectToNull', 3, () => {
+      const msg = 'testCanvasDrawRoundRectToNull';
+      const canvas = new drawing.Canvas(pixel);
+
+      try {
+        canvas.drawRoundRect(null);
+        console.info(msg + `test error`);
+        expect().assertFail()
+      } catch (e) {
+        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        canvas.drawRoundRect(undefined);
+        console.info(msg + `test error`);
+        expect().assertFail()
+      } catch (e) {
+        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        expect(e.code).assertEqual(401);
+      }
+    })
+
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_4300
+     * @tc.name      : testCanvasGetLocalClipBoundsNormal
+     * @tc.desc      : testCanvasGetLocalClipBoundsNormal
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('testCanvasGetLocalClipBoundsNormal', DEFAULT, () => {
+      const msg = 'testCanvasGetLocalClipBoundsNormal';
+      const canvas = new drawing.Canvas(pixel);
+
+      try {
+        let rect: common2D.Rect = canvas.getLocalClipBounds();
+
+        canvas.clipRect({
+          left: 10, right: 500, top: 300, bottom: 900
+        }, drawing.ClipOp.DIFFERENCE, true);
+        rect = canvas.getLocalClipBounds();
+        console.info(msg + 'test successes');
+      } catch (e) {
+        console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
+    })
+
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_4301
+     * @tc.name      : testCanvasGetLocalClipBoundsMultipleCalls
+     * @tc.desc      : testCanvasGetLocalClipBoundsMultipleCalls
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testCanvasGetLocalClipBoundsMultipleCalls', 3, () => {
+      const msg = 'testCanvasGetLocalClipBoundsMultipleCalls';
+      const canvas = new drawing.Canvas(pixel);
+
+      try {
+        for (let i = 0; i < 20; i += 1) {
+          let rect: common2D.Rect = canvas.getLocalClipBounds();
+        }
+        console.info(msg + 'test successes');
+      } catch (e) {
+        console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
+    })
+
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_4400
+     * @tc.name      : testCanvasGetTotalMatrixNormal
+     * @tc.desc      : testCanvasGetTotalMatrixNormal
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level0
+     */
+    it('testCanvasGetTotalMatrixNormal', DEFAULT, () => {
+      const msg = 'testCanvasGetTotalMatrixNormal';
+      const canvas = new drawing.Canvas(pixel);
+
+      try {
+        let matrixResult = canvas.getTotalMatrix();
+        matrixResult = canvas.getTotalMatrix();
+        console.info(msg + 'test successes');
+      } catch (e) {
+        console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
+    })
+
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_4401
+     * @tc.name      : testCanvasGetTotalMatrixMultipleCalls
+     * @tc.desc      : testCanvasGetTotalMatrixMultipleCalls
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testCanvasGetTotalMatrixMultipleCalls', 3, () => {
+      const msg = 'testCanvasGetTotalMatrixMultipleCalls';
+      const canvas = new drawing.Canvas(pixel);
+
+      try {
+        for (let i = 0; i < 20; i += 1) {
+          let matrixResult = canvas.getTotalMatrix();
+        }
+        console.info(msg + 'test successes');
+      } catch (e) {
+        console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        expect().assertFail();
+      }
+    })
+
 
   })
 }

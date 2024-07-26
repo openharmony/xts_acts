@@ -20,7 +20,7 @@ import common2D from '@ohos.graphics.common2D';
 import { getEnumCount } from './utils';
 
 export default function drawingTsCanvasPart4Test() {
-  describe('DrawingTsCanvasTest', () => {
+  describe('DrawingTsCanvas4Test', () => {
     let pixel: image.PixelMap;
     const DEFAULT = 0;
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
@@ -1355,7 +1355,7 @@ export default function drawingTsCanvasPart4Test() {
       try {
         let matrix = new drawing.Matrix();
         canvas.concatMatrix(matrix);
-        matrix.setMatrix(5, 0, 0, 0, 1, 2, 0, 0, 1);
+        matrix.setMatrix([5, 0, 0, 0, 1, 2, 0, 0, 1]);
         canvas.concatMatrix(matrix);
         console.info(msg + 'test successes');
       } catch (e) {
@@ -1477,7 +1477,7 @@ export default function drawingTsCanvasPart4Test() {
       try {
         let matrix = new drawing.Matrix();
         canvas.setMatrix(matrix);
-        matrix.setMatrix(5.1, 1.1, 1.1, 1.1, 1.1, 1.1, 5.1, 0.3, 1.7);
+        matrix.setMatrix([5.1, 1.1, 1.1, 1.1, 1.1, 1.1, 5.1, 0.3, 1.7]);
         canvas.setMatrix(matrix);
         console.info(msg + 'test successes');
       } catch (e) {
