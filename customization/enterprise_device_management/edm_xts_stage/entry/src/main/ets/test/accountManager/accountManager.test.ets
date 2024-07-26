@@ -144,7 +144,7 @@ export default function accountManagerTest() {
         console.info(' --- disallowOsAccountAddition_test_005 error 401 is expected, actually catch: ' + error.code);
         expect(error.code == 401).assertTrue();
       } finally {
-        await adminManager.disableSuperAdmin(SELFHAPNAME);
+        await adminManager.disableAdmin(SELFWANT);
       }
       done();
       console.info(' --- disallowOsAccountAddition_test_005  -------- END --------');
@@ -506,7 +506,7 @@ export default function accountManagerTest() {
         console.info(' --- addOsAccountAsync_test_003 error 401 is expected, actually catch: ' + error.code);
         expect(error.code == 401).assertTrue();
       } finally {
-        await adminManager.disableSuperAdmin(SELFHAPNAME);
+        await adminManager.disableAdmin(SELFWANT);
       }
       done();
       console.info(' --- addOsAccountAsync_test_003  -------- END --------');
