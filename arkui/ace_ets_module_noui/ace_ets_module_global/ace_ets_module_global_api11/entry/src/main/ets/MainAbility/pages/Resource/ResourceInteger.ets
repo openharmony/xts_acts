@@ -59,14 +59,12 @@ struct ResourceInteger {
             Column() {
               Text('integer test').fontSize(20)
               Text('integer').fontSize($r('app.integer.integer_' + item.toString())).id('integer')
-            }.border({ width:2 }).margin(30)
-
+            }.border({ width: 2 }).margin(30)
 
           }
           .justifyContent(FlexAlign.SpaceEvenly)
           .width(300)
           .height(300)
-
 
         }, (item: string) => item)
       }

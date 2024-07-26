@@ -62,8 +62,7 @@ export default function LockTest() {
      * @tc.author: konstantin-grebenschikov
      */
     it('exclusiveMultiWorkerTest', 0, async (done: Function) => {
-      let result: Object = await skipConditional(
-        'exclusiveMultiWorkerTest in progress', true, exclusiveMultiWorkerTest);
+      let result: Object = await exclusiveMultiWorkerTest();
       expect(result).assertEqual("PASSED");
       done();
     })
@@ -96,8 +95,7 @@ export default function LockTest() {
      * @tc.author: konstantin-grebenschikov
      */
     it('sharedMultiWorkerTest', 0, async (done: Function) => {
-      let result: Object = await skipConditional(
-        'sharedMultiWorkerTest in progress', true, sharedMultiWorkerTest);
+      let result: Object = await sharedMultiWorkerTest();
       expect(result).assertEqual("PASSED");
       done();
     })
@@ -174,7 +172,7 @@ export default function LockTest() {
      * @tc.author: konstantin-grebenschikov
      */
     it('multipleWakeupTest', 0, async (done: Function) => {
-      let result = await skipConditional("multipleWakeupTest in progress", true, multipleWakeupTest);
+      let result = await multipleWakeupTest();
       expect(result).assertEqual("PASSED");
       done();
     })

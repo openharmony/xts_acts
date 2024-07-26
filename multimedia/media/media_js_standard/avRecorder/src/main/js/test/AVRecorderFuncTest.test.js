@@ -23,7 +23,9 @@ export default function avRecorderTest() {
         let avRecorder = null;
         const RECORDER_TIME = 3000;
         const FORMAT_M4A = media.ContainerFormatType.CFT_MPEG_4A;
+        const FORMAT_MP3 = media.ContainerFormatType.CFT_MP3;
         const ENCORDER_AAC = media.CodecMimeType.AUDIO_AAC;
+        const ENCORDER_MP3 = media.CodecMimeType.AUDIO_MP3;
         let fdObject;
         let fdPath;
 
@@ -1913,6 +1915,28 @@ export default function avRecorderTest() {
 
             eventEmitter.emit(mySteps[0], avRecorder, avConfig, 3000, mySteps, done);
             console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_ONAUDIOCAPTURERCHANGECALLBACK_API_001 end')
+        })
+        /* *
+            * @tc.number    : SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_MP3_0100
+            * @tc.name      : 003.test recording mp3 3 seconds to stop
+            * @tc.desc      : Local Video recording mp3 3 seconds to stop
+            * @tc.size      : MediumTest
+            * @tc.type      : Function test
+            * @tc.level     : Level2
+        */
+        it('SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_MP3_0100', 0, async function (done) {
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_MP3_0100 start')
+            let timestamp = Date.now();
+            let fileName = `avRecorder_${timestamp}.mp3`;
+            fdObject = await mediaTestBase.getFd(fileName);
+            fdPath = "fd://" + fdObject.fdNumber;
+            console.info('case fdPath is: ' + fdPath);
+            avConfig.url = fdPath;
+            console.info('avConfig.url ' + avConfig.url);
+            avProfile.fileFormat = FORMAT_MP3;
+            avProfile.audioCodec = ENCORDER_MP3;
+            avRecorderTestBase.avRecorderWithCallBack3(avConfig, avRecorder, RECORDER_TIME, done);
+            console.info(TAG + 'SUB_MULTIMEDIA_MEDIA_AVRECORDER_AUDIO_RECORDER_MP3_0100 end')
         })
     })
 }

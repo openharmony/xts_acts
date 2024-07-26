@@ -15,7 +15,8 @@
 #include "huks_three_stage_test_common.h"
 #ifndef HUKS_NULLPTR_TEST_H
 #define HUKS_NULLPTR_TEST_H
-namespace Unittest::NullptrTest {
+namespace Unittest::NullptrTest
+{
 int Security_HUKS_NAPI_nullptr_0100(void);
-} // namespace Unittest::NullptrTest
-#endif // HUKS_NULLPTR_TEST_H
+}  // namespace Unittest::NullptrTest
+#endif  // HUKS_NULLPTR_TEST_H

@@ -14,12 +14,25 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 export default function ProgressMask() {
-  describe('ProgressMask', function () {
-    beforeEach(async function (done) {
+  describe('ProgressMask', () => {
+    beforeEach(async (done: Function) => {
       console.info("ProgressMask beforeEach start");
       let options = {
         uri: "MainAbility/pages/progress/ProgressMask",
@@ -42,34 +55,35 @@ export default function ProgressMask() {
     });
 
     /**
-     * @tc.number    ProgressMask_0100
-     * @tc.name      ProgressMask_0100
-     * @tc.desc      frameNode: ProgressMaskToWindow
-     * @tc.level:    Level 2
+     * @tc.number ProgressMask_0100
+     * @tc.name ProgressMask_0100
+     * @tc.desc frameNode: ProgressMaskToWindow
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('ProgressMask_0100', 0, async function (done) {
+    it('ProgressMask_0100', 0, async (done: Function) => {
       console.info('ProgressMask_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ProgressMaskImage');
       let obj = JSON.parse(strJson);
       console.info("[ProgressMask_0100] component obj is: " + JSON.stringify(obj));
       console.info("[ProgressMask_0100] mask obj is: " + JSON.stringify(obj.$attrs.content));
-      expect(obj.$attrs.content).assertEqual('{"type":"ProgressMask","value":0,"total":100,"color":"#66000000","breathe":true}');
+      expect(obj.$attrs.content)
+        .assertEqual('{"type":"ProgressMask","value":0,"total":100,"color":"#66000000","breathe":true}');
       console.info('[ProgressMask_0100] END');
       done();
     });
 
     /**
-     * @tc.number    ProgressMask_0200
-     * @tc.name      ProgressMask_0200
-     * @tc.desc      frameNode: ProgressMaskToWindow
-     * @tc.level:    Level 2
+     * @tc.number ProgressMask_0200
+     * @tc.name ProgressMask_0200
+     * @tc.desc frameNode: ProgressMaskToWindow
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('ProgressMask_0200', 0, async function (done) {
+    it('ProgressMask_0200', 0, async (done: Function) => {
       console.info('ProgressMask_0200 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('ProgressMaskText');
@@ -80,7 +94,6 @@ export default function ProgressMask() {
       console.info('[ProgressMask_0200] END');
       done();
     });
-
 
   })
 }

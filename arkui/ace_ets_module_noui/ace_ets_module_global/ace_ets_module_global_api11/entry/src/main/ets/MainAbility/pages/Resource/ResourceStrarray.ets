@@ -59,14 +59,12 @@ struct ResourceStrarray {
             Column() {
               Text('strarray test').fontSize(20)
               TextPicker({ range: $r('app.strarray.arr_' + item.toString()) }).id('strarray')
-            }.border({ width:2 }).margin(30)
-
+            }.border({ width: 2 }).margin(30)
 
           }
           .justifyContent(FlexAlign.SpaceEvenly)
           .width(300)
           .height(300)
-
 
         }, (item: string) => item)
       }

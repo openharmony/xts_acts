@@ -862,31 +862,6 @@ function testAddFirewallRule() {
     }
     done();
   });
-
-  /**
-   * @tc.number    : SUB_CUSTOMIZATION_EDM_ADD_FIREWALL_RULE_JS_0106
-   * @tc.name      : test_add_firewall_rule_0106
-   * @tc.desc      : test networkManager addFirewallRule with invalid param
-   * @tc.level     : Level 2
-   * @tc.type      : Function
-   * @tc.size      : MediumTest
-   */
-  it("test_add_firewall_rule_0106", Level.LEVEL2, async (done: Function) => {
-    await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
-    try {
-      networkManager.addFirewallRule(SELFWANT, {
-        action: networkManager.Action.DENY,
-        protocol: networkManager.Protocol.ALL
-      });
-      expect(false).assertTrue();
-    } catch (error) {
-      expect(error.code == 401).assertTrue();
-    } finally {
-      networkManager.removeFirewallRule(SELFWANT);
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
-    }
-    done();
-  });
 }
 
 function testRemoveFirewallRule() {

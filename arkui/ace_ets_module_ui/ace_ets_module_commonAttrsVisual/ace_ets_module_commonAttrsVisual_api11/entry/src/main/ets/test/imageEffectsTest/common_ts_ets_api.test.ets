@@ -14,7 +14,7 @@
  */
 
 import events_emitter from '@ohos.events.emitter';
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
 import font from '@ohos.font'
@@ -23,8 +23,8 @@ export default function common_ts_ets_apiStaticClearJsunit() {
   describe('common_ts_ets_apiStaticClearTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/imageEffects/common_ts_ets_api',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/imageEffects/common_ts_ets_api',
       }
       try {
         router.clear();
@@ -59,7 +59,7 @@ export default function common_ts_ets_apiStaticClearJsunit() {
           eventId: 60230,
           priority: events_emitter.EventPriority.LOW
         }
-        let callback = (eventData) => {
+        let callback = (eventData: events_emitter.EventData) => {
           console.info("common_ts_ets_apiPersistProp0001 get event state result is: " + JSON.stringify(eventData));
           expect(eventData.data.Score).assertEqual("Score");
         }
@@ -83,7 +83,7 @@ export default function common_ts_ets_apiStaticClearJsunit() {
           eventId: 60231,
           priority: events_emitter.EventPriority.LOW
         }
-        let callback = (eventData) => {
+        let callback = (eventData: events_emitter.EventData) => {
           console.info("common_ts_ets_apiEnvProp0001 get event state result is: " + JSON.stringify(eventData));
           expect(eventData.data.Result).assertEqual(false);
         }

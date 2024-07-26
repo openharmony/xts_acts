@@ -93,8 +93,9 @@ export default function accountManagerTest() {
       } catch (error) {
         console.info(' --- disallowOsAccountAddition_test_003 error 9200002 is expected, actually catch: ' + error.code);
         expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
       console.info(' --- disallowOsAccountAddition_test_003  -------- END --------');
     })
@@ -117,8 +118,9 @@ export default function accountManagerTest() {
       } catch (error) {
         console.info(' --- disallowOsAccountAddition_test_004 error 9200002 is expected, actually catch: ' + error.code);
         expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
       console.info(' --- disallowOsAccountAddition_test_004  -------- END --------');
     })
@@ -141,8 +143,9 @@ export default function accountManagerTest() {
       } catch (error) {
         console.info(' --- disallowOsAccountAddition_test_005 error 401 is expected, actually catch: ' + error.code);
         expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
       console.info(' --- disallowOsAccountAddition_test_005  -------- END --------');
     })
@@ -176,8 +179,8 @@ export default function accountManagerTest() {
         expect(false).assertTrue();
       } finally {
         accountManager.disallowOsAccountAddition(SELFWANT, false);
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
       console.info(' --- disallowOsAccountAddition_test_006  -------- END --------');
     })
@@ -210,8 +213,8 @@ export default function accountManagerTest() {
         expect(false).assertTrue();
       } finally {
         accountManager.disallowOsAccountAddition(SELFWANT, false, DEFAULT_USER_ID);
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
       console.info(' --- disallowOsAccountAddition_test_007  -------- END --------');
     })
@@ -256,8 +259,8 @@ export default function accountManagerTest() {
           accountManager.disallowOsAccountAddition(SELFWANT, false, localId);
           await osAccountManager.removeOsAccount(localId);
         }
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
       console.info(' --- disallowOsAccountAddition_test_008  -------- END --------');
     })
@@ -279,8 +282,9 @@ export default function accountManagerTest() {
       } catch (error) {
         console.info(' --- disallowOsAccountAddition_test_009 error 401 is expected, actually catch: ' + error.code);
         expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
       console.info(' --- disallowOsAccountAddition_test_009  -------- END --------');
     })
@@ -306,8 +310,9 @@ export default function accountManagerTest() {
         expect(false).assertTrue();
       } finally {
         accountManager.disallowOsAccountAddition(SELFWANT, false);
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
       console.info(' --- disallowOsAccountAddition_test_0010  -------- END --------');
     })
@@ -333,8 +338,9 @@ export default function accountManagerTest() {
         expect(false).assertTrue();
       } finally {
         accountManager.disallowOsAccountAddition(SELFWANT, false, DEFAULT_USER_ID);
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
       console.info(' --- disallowOsAccountAddition_test_0011  -------- END --------');
     })
@@ -402,8 +408,9 @@ export default function accountManagerTest() {
       } catch (error) {
         console.info(' --- isOsAccountAdditionDisallowed_test_003 error 9200002 is expected, actually catch: ' + error.code);
         expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
       console.info(' --- isOsAccountAdditionDisallowed_test_003  -------- END --------');
     })
@@ -426,8 +433,9 @@ export default function accountManagerTest() {
       } catch (error) {
         console.info(' --- isOsAccountAdditionDisallowed_test_004 error 9200002 is expected, actually catch: ' + error.code);
         expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
       console.info(' --- isOsAccountAdditionDisallowed_test_004  -------- END --------');
     })
@@ -472,8 +480,9 @@ export default function accountManagerTest() {
       } catch (error) {
         console.info(' --- addOsAccountAsync_test_002 error 9200002 is expected, actually catch: ' + error.code);
         expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
       console.info(' --- addOsAccountAsync_test_002  -------- END --------');
     })
@@ -496,8 +505,9 @@ export default function accountManagerTest() {
       } catch (error) {
         console.info(' --- addOsAccountAsync_test_003 error 401 is expected, actually catch: ' + error.code);
         expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
       console.info(' --- addOsAccountAsync_test_003  -------- END --------');
     })
@@ -531,8 +541,8 @@ export default function accountManagerTest() {
         if (isMultiAccountEnabled) {
           await osAccountManager.removeOsAccount(localId);
         }
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
       console.info(' --- addOsAccountAsync_test_004  -------- END --------');
     })
@@ -566,8 +576,8 @@ export default function accountManagerTest() {
         if (isMultiAccountEnabled) {
           await osAccountManager.removeOsAccount(localId);
         }
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
       console.info(' --- addOsAccountAsync_test_005  -------- END --------');
     })
@@ -601,8 +611,8 @@ export default function accountManagerTest() {
         if (isMultiAccountEnabled) {
           await osAccountManager.removeOsAccount(localId);
         }
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
       console.info(' --- addOsAccountAsync_test_006  -------- END --------');
     })
@@ -630,8 +640,9 @@ export default function accountManagerTest() {
       } catch (error) {
         console.info(' --- addOsAccountAsync_test_007 error 9201003 is expected, actually catch: ' + error.code);
         expect(error.code == 9201003).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
       console.info(' --- addOsAccountAsync_test_007  -------- END --------');
     })
@@ -656,8 +667,9 @@ export default function accountManagerTest() {
       } catch (error) {
         console.info(' --- addOsAccountAsync_test_008 error 401 is expected, actually catch: ' + error.code);
         expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
       console.info(' --- addOsAccountAsync_test_008  -------- END --------');
     })

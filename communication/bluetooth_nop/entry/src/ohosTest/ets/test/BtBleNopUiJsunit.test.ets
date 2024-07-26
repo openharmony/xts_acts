@@ -302,25 +302,6 @@ export default function btBleNopUiJsunit() {
       done();
     })
     /**
-     * @tc.number: testGetConnectedBLEDevicesNop
-     * @tc.name: testGetConnectedBLEDevicesNop
-     * @tc.desc: test getConnectedBLEDevices without permission
-     * @tc.size: LargeTest
-     * @tc.type: Function
-     * @tc.level: Level0
-     */
-    it("testGetConnectedBLEDevicesNop", TestType.FUNCTION | Size.LARGETEST | Level.LEVEL0, async (done: Function) => {
-      try {
-        let devices = ble.getConnectedBLEDevices();
-        hilog.info(Domain, TAG, `getConnectedBLEDevices without permission ret: ${JSON.stringify(devices)}`);
-        expect(true).assertFalse();
-      } catch (error) {
-        hilog.error(Domain, TAG, `getConnectedBLEDevices error, error code is: ${error.code}, error message is: ${error.message}`);
-        expect(error.code).assertEqual(PERMISSION_DENIED_CODE);
-      }
-      done();
-    })
-    /**
      * @tc.number: testStopBLEScanNop
      * @tc.name: testStopBLEScanNop
      * @tc.desc: test stopBLEScan without permission

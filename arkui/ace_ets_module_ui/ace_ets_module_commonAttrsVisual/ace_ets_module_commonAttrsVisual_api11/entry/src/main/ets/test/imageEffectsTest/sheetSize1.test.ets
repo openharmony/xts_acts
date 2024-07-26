@@ -13,16 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 import bundle from '@ohos.bundle.bundleManager';
+
 export default function sheetSize1Jsunit() {
-  describe('sheetSize1Jsunit', function () {
-    beforeEach(async function (done) {
+  describe('sheetSize1Jsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("sheetSize1Jsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/imageEffects/sheetSize',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/imageEffects/sheetSize',
       }
       try {
         router.clear();
@@ -30,7 +44,7 @@ export default function sheetSize1Jsunit() {
         console.info("get sheetSize1Jsunit state pages: " + JSON.stringify(pages));
         if (!("sheetSize" == pages.name)) {
           console.info("get sheetSize1Jsunit state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push sheetSize1Jsunit page result: " + JSON.stringify(result));
         }
@@ -41,36 +55,35 @@ export default function sheetSize1Jsunit() {
       done();
     });
     /**
-     * @tc.number    sheetSize1Jsunit_0100
-     * @tc.name  sheetSize1Jsunit_0100
-     * @tc.desc      set api
-     * @tc.level:    Level 2
-     * @tc.type : 
+     * @tc.number sheetSize1Jsunit_0100
+     * @tc.name sheetSize1Jsunit_0100
+     * @tc.desc set api
+     * @tc.level: Level 2
+     * @tc.type :
      * @tc.size :
      */
-    it('sheetSize1Jsunit_0100', 0, async function (done) {
+    it('sheetSize1Jsunit_0100', 0, async (done: Function) => {
       // Get the sheetSize of the bindSheet
       await CommonFunc.sleep(1000);
       console.info('[sheetSize1Jsunit_0100] START');
       let strJson = getInspectorByKey('detents');
-      let obj = JSON.parse(strJson);
       await CommonFunc.sleep(1000);
-      console.info("[sheetSize1Jsunit_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[sheetSize1Jsunit_0100] component obj is: " + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.content).assertEqual("MEDIUM,LARGE,FIT_CONTENT");
+      console.info("[sheetSize1Jsunit_0100] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[sheetSize1Jsunit_0100] component obj is: " + JSON.stringify(JSON.parse(strJson).$attrs));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual("MEDIUM,LARGE,FIT_CONTENT");
       console.info('[sheetSize1Jsunit_0100] END');
       done();
     });
-    
+
     /**
-     * @tc.number    sheetSize1Jsunit_0200
-     * @tc.name  sheetSize1Jsunit_0200
-     * @tc.desc      set api
-     * @tc.level:    Level 2
-     * @tc.type : 
+     * @tc.number sheetSize1Jsunit_0200
+     * @tc.name sheetSize1Jsunit_0200
+     * @tc.desc set api
+     * @tc.level: Level 2
+     * @tc.type :
      * @tc.size :
      */
-    it('sheetSize1Jsunit_0200', 0, async function (done) {
+    it('sheetSize1Jsunit_0200', 0, async (done: Function) => {
       // Get the sheetSize of the bindSheet
       console.info('[sheetSize1Jsunit_0200] START');
       let driver: Driver = Driver.create();
@@ -81,9 +94,8 @@ export default function sheetSize1Jsunit() {
       await driver.click(Math.round(globalThis.winLeft + vp2px(100)), Math.round(globalThis.winTop + vp2px(100)))
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('bindSheet_dismiss1');
-      let obj = JSON.parse(strJson);
-      console.info("[sheetSize1Jsunit_0200] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual("dismiss succ");
+      console.info("[sheetSize1Jsunit_0200] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual("dismiss succ");
       console.info('[sheetSize1Jsunit_0200] END');
       done();
     });

@@ -25,6 +25,14 @@ export async function startAbility(bundleName: string, abilityName: string) {
   })
 }
 
+export async function stopAbility(bundleName: string) {
+  await delegator.executeShellCommand(`aa force-stop ${bundleName}`).then(result => {
+    console.info(`[picker] stop abilityFinished: ${result}`)
+  }).catch((err: Error) => {
+    console.error(`[picker] stop abilityFailed: ${err}`)
+  })
+}
+
 export async function sleep(times: number) {
   if (!times) {
     times = 10;

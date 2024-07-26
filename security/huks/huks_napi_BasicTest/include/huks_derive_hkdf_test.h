@@ -15,7 +15,8 @@
 #include "huks_three_stage_test_common.h"
 #ifndef HUKS_DERIVE_HKDF_TEST_H
 #define HUKS_DERIVE_HKDF_TEST_H
-namespace Unittest::HkdfDerive {
+namespace Unittest::HkdfDerive
+{
 int Security_HUKS_NAPI_Derive_hkdf_0100(void);
-} // namespace Unittest::HkdfDerive
-#endif // HUKS_DERIVE_HKDF_TEST_H
+}  // namespace Unittest::HkdfDerive
+#endif  // HUKS_DERIVE_HKDF_TEST_H

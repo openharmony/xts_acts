@@ -60,6 +60,8 @@ export default function onSelectionChange19() {
       await CommonFunc.sleep(1000);
 
       let richEditor = await driver.findComponent(ON.id('onSelectionChange19_RichEditor'));
+      await richEditor.click();
+      await CommonFunc.sleep(1000);
       await richEditor.longClick();
       await CommonFunc.sleep(1000);
       let Select  = await driver.findComponent(ON.text('全选'))

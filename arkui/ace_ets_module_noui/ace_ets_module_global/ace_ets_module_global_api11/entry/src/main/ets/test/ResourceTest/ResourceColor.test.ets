@@ -14,14 +14,26 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@system.router';
-import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  Driver,
+  Component,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
 
 
 export default function ResourceColor() {
-  describe('ResourceColor', function () {
-    beforeEach(async function (done) {
+  describe('ResourceColor', () => {
+    beforeEach(async (done: Function) => {
       console.info("ResourceColor beforeEach start");
       let options = {
         uri: 'MainAbility/pages/Resource/ResourceColor',
@@ -43,7 +55,7 @@ export default function ResourceColor() {
       done();
     });
 
-    it('ResourceColor_0100', 0, async function (done) {
+    it('ResourceColor_0100', 0, async (done: Function) => {
       console.info('ResourceColor_0100 START');
       let strJson = getInspectorByKey('color');
       let obj = JSON.parse(strJson);
@@ -54,7 +66,7 @@ export default function ResourceColor() {
       done();
     });
 
-    it('ResourceColor_0200', 0, async function (done) {
+    it('ResourceColor_0200', 0, async (done: Function) => {
       console.info('ResourceColor_0200 START');
       let driver = Driver.create();
       await CommonFunc.sleep(2000);
@@ -70,7 +82,6 @@ export default function ResourceColor() {
       done();
       done();
     });
-
 
 
   })

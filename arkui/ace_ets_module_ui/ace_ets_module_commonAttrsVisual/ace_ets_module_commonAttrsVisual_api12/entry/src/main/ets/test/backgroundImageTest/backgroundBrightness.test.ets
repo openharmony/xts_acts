@@ -13,17 +13,30 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
+import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
 
 export default function backgroundBrightness() {
 
-  describe('backgroundBrightness', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: "MainAbility/pages/backgroundImage/backgroundBrightness",
+  describe('backgroundBrightness', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/backgroundImage/backgroundBrightness",
       }
       try {
         router.clear();
@@ -31,7 +44,7 @@ export default function backgroundBrightness() {
         console.info("get backgroundBrightness state pages: " + JSON.stringify(pages));
         if (!("backgroundBrightness" == pages.name)) {
           console.info("get backgroundBrightness state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push backgroundBrightness success: " + JSON.stringify(result));
         }
@@ -42,27 +55,29 @@ export default function backgroundBrightness() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("backgroundBrightness after each called");
     });
 
     /**
-     * @tc.number    backgroundBrightness_0100
-     * @tc.name      backgroundBrightness_0100
-     * @tc.desc      test api of systemBarEffect
-     * @tc.level:    Level 2
+     * @tc.number backgroundBrightness_0100
+     * @tc.name backgroundBrightness_0100
+     * @tc.desc test api of systemBarEffect
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('backgroundBrightness_0100', 0, async function (done) {
+    it('backgroundBrightness_0100', 0, async (done: Function) => {
       console.info('backgroundBrightness_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('backgroundBrightness');
-      let obj = JSON.parse(strJson);
-      console.info("[backgroundBrightness_0100] component obj is: " + JSON.stringify(obj));
-      console.info("[backgroundBrightness_0100] backgroundBrightness obj is: " + JSON.stringify(obj.$attrs.BackgroundBrightness));
-      expect(JSON.stringify(obj.$attrs.BackgroundBrightness)).assertEqual('{"dynamicLightUpRate":0.5,"dynamicLightUpDegree":0.5}');
+      console.info("[backgroundBrightness_0100] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      console.info("[backgroundBrightness_0100] backgroundBrightness obj is: " + JSON.stringify(JSON.parse(strJson)
+        .$attrs
+        .BackgroundBrightness));
+      expect(JSON.stringify(JSON.parse(strJson).$attrs.BackgroundBrightness))
+        .assertEqual('{"dynamicLightUpRate":0.5,"dynamicLightUpDegree":0.5}');
       console.info('[backgroundBrightness_0100] END');
       done();
     });

@@ -268,7 +268,7 @@ export default function PinchGestureBasic02Test() {
       let text26 = getInspectorByKey('PinchGestureBasic02_sourceTool');
       let obj26 = JSON.parse(text26);
       console.log('PinchGestureBasic02Test_0010 obj26 $attrs content',obj26.$attrs.content,obj26)
-      expect(obj26.$attrs.content).assertEqual('sourceTool:1');
+      expect(obj26.$attrs.content).assertEqual('sourceTool:FINGER');
 
       console.info('PinchGestureBasic02Test_0010 END');
       done();

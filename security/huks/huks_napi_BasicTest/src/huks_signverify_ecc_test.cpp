@@ -14,14 +14,17 @@
  */
 
 #include "huks_signverify_ecc_test.h"
-#include "huks_signverify_ecc_test_common.h"
 
 #include <gtest/gtest.h>
 
+#include "huks_signverify_ecc_test_common.h"
+
 using namespace testing::ext;
-namespace Unittest::EccSifnVerify {
-class HuksSignVerifyECCTest : public testing::Test {
-public:
+namespace Unittest::EccSifnVerify
+{
+class HuksSignVerifyECCTest : public testing::Test
+{
+   public:
     static void SetUpTestCase(void);
 
     static void TearDownTestCase(void);
@@ -31,67 +34,32 @@ public:
     void TearDown();
 };
 
-void HuksSignVerifyECCTest::SetUpTestCase(void)
-{
-}
+void HuksSignVerifyECCTest::SetUpTestCase(void) {}
 
-void HuksSignVerifyECCTest::TearDownTestCase(void)
-{
-}
+void HuksSignVerifyECCTest::TearDownTestCase(void) {}
 
-void HuksSignVerifyECCTest::SetUp()
-{
-}
+void HuksSignVerifyECCTest::SetUp() {}
 
-void HuksSignVerifyECCTest::TearDown()
-{
-}
+void HuksSignVerifyECCTest::TearDown() {}
 
 static struct OH_Huks_Param g_genParamsTest001[] = {
-    {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_ECC
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_SIGN | OH_HUKS_KEY_PURPOSE_VERIFY
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_ECC_KEY_SIZE_256
-    }, {
-        .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_SHA256
-    }
-};
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_ECC},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_SIGN | OH_HUKS_KEY_PURPOSE_VERIFY},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_ECC_KEY_SIZE_256},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SHA256},
+    {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE}};
 static struct OH_Huks_Param g_signParamsTest001[] = {
-    {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_ECC
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_SIGN
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_ECC_KEY_SIZE_256
-    }, {
-        .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_SHA256
-    }
-};
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_ECC},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_SIGN},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_ECC_KEY_SIZE_256},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SHA256},
+    {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE}};
 static struct OH_Huks_Param g_verifyParamsTest001[] = {
-    {
-        .tag = OH_HUKS_TAG_ALGORITHM,
-        .uint32Param = OH_HUKS_ALG_ECC
-    }, {
-        .tag = OH_HUKS_TAG_PURPOSE,
-        .uint32Param = OH_HUKS_KEY_PURPOSE_VERIFY
-    }, {
-        .tag = OH_HUKS_TAG_KEY_SIZE,
-        .uint32Param = OH_HUKS_ECC_KEY_SIZE_256
-    }, {
-        .tag = OH_HUKS_TAG_DIGEST,
-        .uint32Param = OH_HUKS_DIGEST_SHA256
-    }
-};
+    {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_ECC},
+    {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_VERIFY},
+    {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_ECC_KEY_SIZE_256},
+    {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SHA256},
+    {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE}};
 
 /**
  * @tc.name: HuksSignVerifyECCTest.Security_HUKS_NAPI_SignVerify_ECC_0100
@@ -104,9 +72,10 @@ HWTEST_F(HuksSignVerifyECCTest, Security_HUKS_NAPI_SignVerify_ECC_0100, TestSize
     struct OH_Huks_ParamSet *genParamSet = nullptr;
     struct OH_Huks_ParamSet *signParamSet = nullptr;
     struct OH_Huks_ParamSet *verifyParamSet = nullptr;
-    struct OH_Huks_Blob keyAlias = { strlen(keyAliasString), (uint8_t *)keyAliasString };
+    struct OH_Huks_Blob keyAlias = {strlen(keyAliasString), (uint8_t *)keyAliasString};
 
-    OH_Huks_Result ret = InitParamSet(&genParamSet, g_genParamsTest001, sizeof(g_genParamsTest001) / sizeof(OH_Huks_Param));
+    OH_Huks_Result ret =
+        InitParamSet(&genParamSet, g_genParamsTest001, sizeof(g_genParamsTest001) / sizeof(OH_Huks_Param));
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "InitParamSet failed.";
     ret = InitParamSet(&signParamSet, g_signParamsTest001, sizeof(g_signParamsTest001) / sizeof(OH_Huks_Param));
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "InitParamSet failed.";
@@ -124,4 +93,4 @@ HWTEST_F(HuksSignVerifyECCTest, Security_HUKS_NAPI_SignVerify_ECC_0100, TestSize
     OH_Huks_FreeParamSet(&signParamSet);
     OH_Huks_FreeParamSet(&verifyParamSet);
 }
-} // namespace Unittest::EccSifnVerify
+}  // namespace Unittest::EccSifnVerify

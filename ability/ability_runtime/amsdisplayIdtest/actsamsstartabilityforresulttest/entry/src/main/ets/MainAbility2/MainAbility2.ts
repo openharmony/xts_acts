@@ -13,12 +13,12 @@
  * limitations under the License.
  */
 import Ability from '@ohos.app.ability.UIAbility'
-import commonEvent from '@ohos.commonEvent'
+import commonEvent from '@ohos.commonEventManager'
 
 async function onShowProcess() {
-    var abilityWant = globalThis.abilityWant2;
+    let abilityWant = globalThis.abilityWant2;
 
-    var commonEventPublishData = {
+    let commonEventPublishData = {
         parameters: {
             displayId: abilityWant.parameters['ohos.aafwk.param.displayId'],
         }
@@ -27,7 +27,7 @@ async function onShowProcess() {
     console.log("AbilityMultiInstanceAppA abilityWant = " + JSON.stringify(abilityWant));
   
     commonEvent.publish("ACTS_TerminateSelf_CommonEvent", commonEventPublishData, () => {
-        console.log('============>querytestsecond success==========>>')
+        console.log('============>querytestsecond success==========>>');
         globalThis.abilityContext2.terminateSelf();
     });
     
@@ -36,36 +36,36 @@ export default class MainAbility extends Ability {
 
     onCreate(want, launchParam) {
         // Ability is creating, initialize resources for this ability
-        console.log("MainAbility2 onCreate")
+        console.log("MainAbility2 onCreate");
         globalThis.abilityWant2 = want;
         console.log("AbilityMultiInstanceAppA abilityWant = " + JSON.stringify( globalThis.abilityWant2));
     }
 
     onDestroy() {
         // Ability is destroying, release resources for this ability
-        console.log("MainAbility2 onDestroy")
+        console.log("MainAbility2 onDestroy");
     }
 
     onWindowStageCreate(windowStage) {
         // Main window is created, set main page for this ability
-        console.log("MainAbility2 onWindowStageCreate")
-        globalThis.abilityContext2 = this.context
-        windowStage.setUIContent(this.context, "MainAbility/pages/second/second", null)
+        console.log("MainAbility2 onWindowStageCreate");
+        globalThis.abilityContext2 = this.context;
+        windowStage.setUIContent(this.context, "MainAbility/pages/second/second", null);
     }
 
     onWindowStageDestroy() {
         // Main window is destroyed, release UI related resources
-        console.log("MainAbility onWindowStageDestroy")
+        console.log("MainAbility onWindowStageDestroy");
     }
 
     onForeground() {
         // Ability has brought to foreground
-        console.log("MainAbility onForeground")
+        console.log("MainAbility onForeground");
         onShowProcess();
     }
 
     onBackground() {
         // Ability has back to background
-        console.log("MainAbility onBackground")
+        console.log("MainAbility onBackground");
     }
 };

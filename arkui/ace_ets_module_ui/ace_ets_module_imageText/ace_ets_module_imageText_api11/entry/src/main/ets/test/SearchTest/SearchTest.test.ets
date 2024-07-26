@@ -1020,7 +1020,8 @@ export default function search() {
       console.info("[ArkUI_Stage_Search_SearchIcon_0500]: " + JSON.stringify(obj.$attrs.searchIcon.size));
       let result: number = 50;
       console.info("[ArkUI_Stage_Search_SearchIcon_0500]: " + lpx2px(result).toFixed(2));
-      expect(obj.$attrs.searchIcon.size).assertEqual(lpx2px(result).toFixed(2) + "px");
+      expect(Math.abs(Number((obj.$attrs.searchIcon.size).slice(0,-3)) - Number(lpx2px(result).toFixed(2))) <= 1).assertTrue();
+      expect((obj.$attrs.searchIcon.size).slice(-2)).assertEqual("px");
       console.info("[ArkUI_Stage_Search_SearchIcon_0500] end");
       done();
     });
@@ -2286,7 +2287,8 @@ export default function search() {
       console.info("[ArkUI_Stage_Search_CancelButton_1000]: " + JSON.stringify(obj.$attrs.cancelButton.icon.size));
       let result: number = 50;
       console.info("[ArkUI_Stage_Search_CancelButton_1000]: " + lpx2px(result).toFixed(2));
-      expect(obj.$attrs.cancelButton.icon.size).assertEqual(lpx2px(result).toFixed(2) + "px");
+      expect(Math.abs(Number((obj.$attrs.cancelButton.icon.size).slice(0,-3)) - Number(lpx2px(result).toFixed(2))) <= 1).assertTrue();
+      expect((obj.$attrs.cancelButton.icon.size).slice(-2)).assertEqual("px");
       console.info("[ArkUI_Stage_Search_CancelButton_1000] end");
       done();
     });

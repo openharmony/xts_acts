@@ -15,6 +15,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 
 
 export default function RichEditor3() {
@@ -119,8 +120,14 @@ export default function RichEditor3() {
       console.info('[RichEditor3_0300] START');
       let driver = Driver.create();
       await driver.delayMs(1000)
-      let RichEditorGetAttribute = await driver.findComponent(ON.id("RichEditorGetAttribute"));
-      await RichEditorGetAttribute.doubleClick()
+      // doubleClick
+      let richEditor = await driver.findComponent(ON.id('RichEditorGetAttribute'));
+      let centerPoint = await richEditor.getBoundsCenter();
+      let point = `${centerPoint.x} ${centerPoint.y}`;
+      let cmd = `uinput -T -d ${point} -u ${point} -i 50 -d ${point} -u ${point}`;
+      let abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
+      abilityDelegator.executeShellCommand(cmd);
+      await driver.delayMs(500)
       let quanxuan = await driver.findComponent(ON.text("全选"));
       await quanxuan.click()
       let PSTextAlign = await driver.findComponent(ON.id("PSTextAlign"));
@@ -154,6 +161,7 @@ export default function RichEditor3() {
       await driver.delayMs(1000)
       let getSelection = await driver.findComponent(ON.id("getSelection"));
       await getSelection.click()
+      await driver.delayMs(500)
       let PSTextAlign = await driver.findComponent(ON.id("PSTextAlign"));
       let PSLeadingMargin = await driver.findComponent(ON.id("PSLeadingMargin"));
       let LSBorderRadius = await driver.findComponent(ON.id("LSBorderRadius"));

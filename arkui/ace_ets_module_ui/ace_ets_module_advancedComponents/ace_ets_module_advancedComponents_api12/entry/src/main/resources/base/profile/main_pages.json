@@ -31,6 +31,10 @@
     "MainAbility/pages/editableTitleBar/editableTitleBarSafeAreaTypes",
     "MainAbility/pages/subHeader/subHeaderButton",
     "MainAbility/pages/subHeader/subHeaderIconGroup",
-    "MainAbility/pages/subHeader/subHeaderTextArrow"
+    "MainAbility/pages/subHeader/subHeaderTextArrow",
+    "MainAbility/pages/chip/ChipDirection",
+    "MainAbility/pages/counter/CounterDirection",
+    "MainAbility/pages/popup/PopupDirection",
+    "MainAbility/pages/segmentButton/SegmentButtonDirection"
   ]
 }

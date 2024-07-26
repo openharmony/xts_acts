@@ -100,5 +100,26 @@ describe('backupdir_js_test',async function(){
          expect(false).assertTrue();
       }
    });
+
+   /**
+   * @tc.number SUB_BASIC_FM_FileAPI_BackupDir_0200
+   * @tc.name backup_onRestoreEx_001
+   * @tc.desc Test onRestoreEx() interfaces
+   * @tc.size MEDIUM
+   * @tc.type Function
+   * @tc.level Level 3
+   * @tc.require
+   */
+   it("backup_onRestoreEx_001", 3, () => {
+      try {
+         let BackupExtensionAbility = new MyBackupExtAbility();
+         BackupExtensionAbility.onRestoreEx();
+         console.log('backup-onRestoreEx run ok');
+         expect(true).assertTrue();
+      } catch (error) {
+         console.info(`backup_onRestoreEx_001 error: ${JSON.stringify(error)}`);
+         expect(false).assertTrue();
+      }
+   });
 });
 }

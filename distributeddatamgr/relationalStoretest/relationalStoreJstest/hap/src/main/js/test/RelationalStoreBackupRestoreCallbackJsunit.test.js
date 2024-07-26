@@ -163,9 +163,9 @@ export default function relationalStoreBackupRestoreCallbackTest() {
                             expect(false).assertTrue()
                         }else{
                             try {
-                                fileio.accessSync(DATABASE_DIR + DATABASE_BACKUP_NAME)
-                                expect(false).assertTrue()
+                                fileio.accessSync(DATABASE_DIR + DATABASE_BACKUP_NAME);
                             } catch (err) {
+                                expect(false).assertTrue()
                                 console.info(TAG + " restore1 done ")
                             }
 
@@ -510,11 +510,9 @@ export default function relationalStoreBackupRestoreCallbackTest() {
                         RdbStore.restore(DATABASE_BACKUP_NAME, function (error) {
                             if (error !== undefined) {
                                 console.error(`Restore failed, code is ${error.code},message is ${error.message}`);
-								done();
-                                expect(error.code === 14800010).assertTrue();
+                                expect(error !== undefined).assertFail();
                             } else {
                                 console.info(`Restore2 success.`);
-                                expect(error !== undefined).assertFail();
                                 done();
                             }
                         })

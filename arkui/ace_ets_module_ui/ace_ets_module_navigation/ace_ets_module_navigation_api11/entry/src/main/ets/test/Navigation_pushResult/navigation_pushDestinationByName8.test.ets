@@ -15,13 +15,26 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 
 export default function navigation_pushDestinationByName8() {
-  describe('navigation_pushDestinationByName8', function () {
-    beforeEach(async function (done) {
+  describe('navigation_pushDestinationByName8', () => {
+    beforeEach(async (done: Function) => {
       console.info("navigation_pushDestinationByName8 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Navigation_pushResult/navigation_pushDestinationByName8',
       }
       try {
@@ -30,7 +43,7 @@ export default function navigation_pushDestinationByName8() {
         console.info("get navigation_pushDestinationByName8 state pages:" + JSON.stringify(pages));
         if (!("navigation_pushDestinationByName8" == pages.name)) {
           console.info("get navigation_pushDestinationByName8 pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push navigation_pushDestinationByName8 page result:" + JSON.stringify(result));
         }
@@ -40,18 +53,18 @@ export default function navigation_pushDestinationByName8() {
       console.info("navigation_pushDestinationByName8 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("navigation_pushDestinationByName8 after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_UI_COMPONENT_NAV_NAVIGATION_PUSH_009
-     * @tc.name      navigation_pushDestinationByName8_0100
-     * @tc.desc      Navigation pushDestinationByName result test
-     * @tc.level     Level 1
+     * @tc.number SUB_ACE_UI_COMPONENT_NAV_NAVIGATION_PUSH_009
+     * @tc.name navigation_pushDestinationByName8_0100
+     * @tc.desc Navigation pushDestinationByName result test
+     * @tc.level Level 1
      */
-    it('navigation_pushDestinationByName8_0100', 0, async function (done) {
+    it('navigation_pushDestinationByName8_0100', 0, async (done: Function) => {
       console.info('[navigation_pushDestinationByName8_0100] START');
       await CommonFunc.sleep(2000);
 
@@ -62,8 +75,7 @@ export default function navigation_pushDestinationByName8() {
       await CommonFunc.sleep(2000);
 
       let text1 = getInspectorByKey('navigation_pushDestinationByName8_text_code');
-      let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('100006NavDestination not found.');
+      expect(JSON.parse(text1).$attrs.content).assertEqual('100006NavDestination not found.');
 
       console.info('[navigation_pushDestinationByName8_0100] END');
       done();

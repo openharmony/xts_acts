@@ -12,14 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@system.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from '../../MainAbility/utils/Common';
+import emitter from '@ohos.events.emitter';
 
 export default function configurationJsunit() {
-  describe('configurationJsunit', function () {
-    beforeEach(async function (done) {
+  describe('configurationJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("prompt beforeEach start");
       let options = {
         uri: 'MainAbility/pages/configuration/configuration',
@@ -40,11 +41,11 @@ export default function configurationJsunit() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("prompt each called");
     });
-    it('configurationTest_0100', 0, async function (done) {
+    it('configurationTest_0100', 0, async(done: Function) {
       console.info('configurationTest_0100 is start');
       try {
         let callBackConfiguration = (backData) => {
@@ -53,7 +54,7 @@ export default function configurationJsunit() {
           expect(backData.data.DIR).assertEqual('ltr');
           done();
         }
-        var configurationEvent = {
+        let configurationEvent: emitter.InnerEvent = {
           eventId: 78,
           priority: events_emitter.EventPriority.LOW
         }
@@ -63,7 +64,10 @@ export default function configurationJsunit() {
       }
       console.info("testAppear01 click result is: " + JSON.stringify(sendEventByKey('button_c', 10, "")));
       console.info('[configurationTest01] END');
-    });
+    }
+
+    )
+    ;
   })
 }
 

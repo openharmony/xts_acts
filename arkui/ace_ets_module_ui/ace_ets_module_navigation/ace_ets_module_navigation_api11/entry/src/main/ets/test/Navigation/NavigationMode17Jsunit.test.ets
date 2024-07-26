@@ -13,15 +13,15 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 export default function NavigationMode17Jsunit() {
-  describe('NavigationMode17Jsunit', function () {
-    beforeEach(async function (done) {
+  describe('NavigationMode17Jsunit',  () =>{
+    beforeEach(async  (done:Function) =>{
       console.info("NavigationMode17Jsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Navigation/NavigationModel17',
+      let options:router.RouterOptions = {
+        url: 'MainAbility/pages/Navigation/NavigationModel17',
       }
       try {
         router.clear();
@@ -29,7 +29,7 @@ export default function NavigationMode17Jsunit() {
         console.info("get NavigationMode17Jsunit state pages:" + JSON.stringify(pages));
         if (!("NavigationModel17" == pages.name)) {
           console.info("get NavigationMode17Jsunit state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           console.info("push NavigationMode17Jsunit success " + JSON.stringify(result));
           await CommonFunc.sleep(3000);
         }
@@ -45,7 +45,7 @@ export default function NavigationMode17Jsunit() {
     * @tc.desc  : NavigationMode: Dynamically switches the stack mode and split mode.
     * @tc.level : Level 3
     */
-    it('NavigationMode17Jsunit_0100', 0, async function (done) {
+    it('NavigationMode17Jsunit_0100', 0, async  (done:Function) =>{
       console.info('NavigationMode17Jsunit_0100 START')
       await CommonFunc.sleep(1000);
       let driver = await UiDriver.create()
@@ -54,10 +54,9 @@ export default function NavigationMode17Jsunit() {
       await CZbutton.click();
       await CommonFunc.sleep(2000);
       let strcontent = getInspectorByKey('NavigationModel17Txt');
-      let obj = JSON.parse(strcontent);
       await CommonFunc.sleep(1000);
-      console.info('NavigationMode17Jsunit_0100 component obj is: ' + obj.$attrs.content);
-      expect(obj.$attrs.content).assertEqual('doing2');
+      console.info('NavigationMode17Jsunit_0100 component obj is: ' + JSON.parse(strcontent).$attrs.content);
+      expect(JSON.parse(strcontent).$attrs.content).assertEqual('doing2');
       console.info('NavigationMode17Jsunit_0100 END')
       done();
     });

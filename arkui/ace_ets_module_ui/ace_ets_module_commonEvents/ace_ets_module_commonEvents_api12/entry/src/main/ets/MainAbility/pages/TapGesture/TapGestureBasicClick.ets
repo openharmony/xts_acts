@@ -80,7 +80,7 @@ struct TapGestureBasicClick {
                 this.pressure = event.pressure + ''
                 this.tiltX = event.tiltX + ''
                 this.tiltY = event.tiltY + ''
-                this.sourceTool = event.sourceTool + ''
+                this.sourceTool = SourceTool[event.sourceTool] + ''
                 this.velocityX = event.velocityX + ''
                 this.velocityY = event.velocityY + ''
                 this.velocity = event.velocity + ''
