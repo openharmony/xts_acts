@@ -448,7 +448,7 @@ napi_value Freeaddrinfo(napi_env env, napi_callback_info info)
     catch(...)
     {
         errno = FAIL;
-    } 
+    }
     napi_value result = nullptr;
     napi_create_int32(env, errno, &result);
     return result;
