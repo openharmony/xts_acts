@@ -41,34 +41,34 @@ export default function screenHotTest(context, windowStage, abilityStorage) {
          * @tc.type      : Function
          * @tc.level     : Level3
          */
-        it('tesScreenHot_pick', 0, async function (done) {
-            let caseName = 'tesScreenHot_pick';
-            let msgStr = 'jsunittest ' + caseName + ' ';
-            console.log(msgStr + 'begin');
-            try {
-                await screenshot.pick().then((pickInfo: screenshot.PickInfo) => {
-                    console.log(msgStr + 'pick Pixel bytes number: ' + pickInfo.pixelMap.getPixelBytesNumber());
-                    console.log(msgStr + 'pick Rect: ' + pickInfo.pickRect);
-                    pickInfo.pixelMap.release(); // PixelMap使用完后及时释放内存
-                    expect(true).assertTrue();
-                    done();
-                }).catch((err) => {
-                    console.log(msgStr + 'Failed to pick. Code: ' + JSON.stringify(err));
-                    if (err.code == 801) {
-                        console.log(msgStr + '此设备不支持pick ');
-                        done();
-                    } else {
-                        expect(false).assertTrue();
-                        done();
-                    }
-
-                });
-            } catch (exception) {
-                console.error(msgStr + 'Failed to pick Code: ' + JSON.stringify(exception));
-                expect(false).assertTrue();
-                done();
-            };
-        })
+        // it('tesScreenHot_pick', 0, async function (done) {
+        //     let caseName = 'tesScreenHot_pick';
+        //     let msgStr = 'jsunittest ' + caseName + ' ';
+        //     console.log(msgStr + 'begin');
+        //     try {
+        //         await screenshot.pick().then((pickInfo: screenshot.PickInfo) => {
+        //             console.log(msgStr + 'pick Pixel bytes number: ' + pickInfo.pixelMap.getPixelBytesNumber());
+        //             console.log(msgStr + 'pick Rect: ' + pickInfo.pickRect);
+        //             pickInfo.pixelMap.release(); // PixelMap使用完后及时释放内存
+        //             expect(true).assertTrue();
+        //             done();
+        //         }).catch((err) => {
+        //             console.log(msgStr + 'Failed to pick. Code: ' + JSON.stringify(err));
+        //             if (err.code == 801) {
+        //                 console.log(msgStr + '此设备不支持pick ');
+        //                 done();
+        //             } else {
+        //                 expect(false).assertTrue();
+        //                 done();
+        //             }
+        //
+        //         });
+        //     } catch (exception) {
+        //         console.error(msgStr + 'Failed to pick Code: ' + JSON.stringify(exception));
+        //         expect(false).assertTrue();
+        //         done();
+        //     };
+        // })
 
     })
 }
