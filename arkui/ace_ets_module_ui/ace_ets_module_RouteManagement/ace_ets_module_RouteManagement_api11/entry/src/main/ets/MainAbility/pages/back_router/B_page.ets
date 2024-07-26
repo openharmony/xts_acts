@@ -13,18 +13,21 @@
  * limitations under the License.
  */
 import router from '@ohos.router'
+
 @Entry
 @Component
 struct routerParams_1 {
-  @State str:string = '1'
-  aboutToAppear(){
+  @State str: string = '1'
+
+  aboutToAppear() {
     this.str = JSON.stringify(router.getParams())
   }
+
   build() {
-    Column({space:5}) {
-      Text(this.str).id('text_Params1').margin({top:50})
-    }.width('100%').height('100%')
-
-
+    Column({ space: 5 }) {
+      Text(this.str).id('text_Params1').margin({ top: 50 })
+    }
+    .width('100%')
+    .height('100%')
   }
 }

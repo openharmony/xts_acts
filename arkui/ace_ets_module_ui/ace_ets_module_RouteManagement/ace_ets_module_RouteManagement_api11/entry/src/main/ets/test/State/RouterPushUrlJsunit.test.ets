@@ -14,15 +14,29 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
+
 const waitUiReadyMs = 1000;
 
 export default function RouterPushUrlJsunit() {
-  describe('RouterPushUrlJsunit', function () {
-    beforeEach(async function (done) {
+  describe('RouterPushUrlJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("RouterPushUrlJsunit beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/State/RouterPushOne',
       }
       try {
@@ -31,7 +45,7 @@ export default function RouterPushUrlJsunit() {
         console.info("get RouterPushUrlJsunit state pages: " + JSON.stringify(pages));
         if (!("RouterPushOne" == pages.name)) {
           console.info("get RouterPushUrlJsunit state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           console.info("push RouterPushUrlJsunit page result:" + JSON.stringify(result));
           router.clear()
         }
@@ -41,12 +55,12 @@ export default function RouterPushUrlJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       router.clear()
     });
 
-    it('RouterPushUrlJsunit_0001', 0, async function (done) {
+    it('RouterPushUrlJsunit_0001', 0, async (done: Function) => {
       console.info('[RouterPushUrlJsunit_0001] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -61,7 +75,7 @@ export default function RouterPushUrlJsunit() {
       done();
     });
 
-    it('RouterPushUrlJsunit_0002', 0, async function (done) {
+    it('RouterPushUrlJsunit_0002', 0, async (done: Function) => {
       console.info('[RouterPushUrlJsunit_0002] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -77,7 +91,7 @@ export default function RouterPushUrlJsunit() {
     });
 
 
-    it('RouterPushUrlJsunit_0003', 0, async function (done) {
+    it('RouterPushUrlJsunit_0003', 0, async (done: Function) => {
       console.info('[RouterPushUrlJsunit_0003] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -103,7 +117,7 @@ export default function RouterPushUrlJsunit() {
     });
 
 
-    it('RouterPushUrlJsunit_0004', 0, async function (done) {
+    it('RouterPushUrlJsunit_0004', 0, async (done: Function) => {
       console.info('[RouterPushUrlJsunit_0004] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -128,7 +142,7 @@ export default function RouterPushUrlJsunit() {
       done()
     });
 
-    it('RouterPushUrlJsunit_0005', 0, async function (done) {
+    it('RouterPushUrlJsunit_0005', 0, async (done: Function) => {
       console.info('[RouterPushUrlJsunit_0005] START');
       let driver = Driver.create();
       let btn = await driver.findComponent(ON.id('turn_RouterPushReplace_noParms'));
@@ -144,7 +158,7 @@ export default function RouterPushUrlJsunit() {
       done();
     });
 
-    it('RouterPushUrlJsunit_0006', 0, async function (done) {
+    it('RouterPushUrlJsunit_0006', 0, async (done: Function) => {
       console.info('[RouterPushUrlJsunit_0006] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -161,7 +175,7 @@ export default function RouterPushUrlJsunit() {
       done();
     });
 
-    it('RouterPushUrlJsunit_0007', 0, async function (done) {
+    it('RouterPushUrlJsunit_0007', 0, async (done: Function) => {
       console.info('[RouterPushUrlJsunit_0007] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -176,7 +190,7 @@ export default function RouterPushUrlJsunit() {
       done();
     });
 
-    it('RouterPushUrlJsunit_0008', 0, async function (done) {
+    it('RouterPushUrlJsunit_0008', 0, async (done: Function) => {
       console.info('[RouterPushUrlJsunit_0008] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -192,7 +206,7 @@ export default function RouterPushUrlJsunit() {
     });
 
 
-    it('RouterPushUrlJsunit_0009', 0, async function (done) {
+    it('RouterPushUrlJsunit_0009', 0, async (done: Function) => {
       console.info('[RouterPushUrlJsunit_0009] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -218,7 +232,7 @@ export default function RouterPushUrlJsunit() {
     });
 
 
-    it('RouterPushUrlJsunit_0010', 0, async function (done) {
+    it('RouterPushUrlJsunit_0010', 0, async (done: Function) => {
       console.info('[RouterPushUrlJsunit_0010] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -243,7 +257,7 @@ export default function RouterPushUrlJsunit() {
       done()
     });
 
-    it('RouterPushUrlJsunit_0011', 0, async function (done) {
+    it('RouterPushUrlJsunit_0011', 0, async (done: Function) => {
       console.info('[RouterPushUrlJsunit_0011] START');
       let driver = Driver.create();
       let btn = await driver.findComponent(ON.id('turn_UIRouterPushReplace_noParms'));
@@ -259,7 +273,7 @@ export default function RouterPushUrlJsunit() {
       done();
     });
 
-    it('RouterPushUrlJsunit_0012', 0, async function (done) {
+    it('RouterPushUrlJsunit_0012', 0, async (done: Function) => {
       console.info('[RouterPushUrlJsunit_0012] START');
       let driver = Driver.create();
       await driver.delayMs(waitUiReadyMs);
@@ -275,6 +289,6 @@ export default function RouterPushUrlJsunit() {
       expect(txt).assertEqual("UIRouterPushTwo params")
       done();
     });
-        
+
   })
 }

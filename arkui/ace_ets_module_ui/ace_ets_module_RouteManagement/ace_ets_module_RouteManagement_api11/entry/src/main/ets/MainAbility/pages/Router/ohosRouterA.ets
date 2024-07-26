@@ -19,7 +19,7 @@ import router from '@system.router';
 @Component
 struct OhosRouterA {
   build() {
-    Flex({direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center}) {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
       Text('A Page')
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
@@ -27,7 +27,7 @@ struct OhosRouterA {
         .key('pushButtonA')
         .backgroundColor('#FF0B8FE2')
         .fontSize(20)
-        .margin({top: 20})
+        .margin({ top: 20 })
         .onClick(() => {
           router.push({
             uri: 'pages/ohosRouterB',
@@ -40,7 +40,7 @@ struct OhosRouterA {
         .key('pushButtonA')
         .backgroundColor('#FF0B8FE2')
         .fontSize(20)
-        .margin({top: 20})
+        .margin({ top: 20 })
         .onClick(() => {
           router.push({
             uri: 'pages/ohosRouterB',
@@ -53,7 +53,7 @@ struct OhosRouterA {
         .key('pushButtonA')
         .backgroundColor('#FF0B8FE2')
         .fontSize(20)
-        .margin({top: 20})
+        .margin({ top: 20 })
         .onClick(() => {
           router.push({
             uri: 'pages/ohosRouterB',
@@ -66,7 +66,7 @@ struct OhosRouterA {
         .key('pushButtonA')
         .backgroundColor('#FF0B8FE2')
         .fontSize(20)
-        .margin({top: 20})
+        .margin({ top: 20 })
         .onClick(() => {
           router.push({
             uri: 'pages/ohosRouterB',
@@ -79,7 +79,7 @@ struct OhosRouterA {
         .key('pushButtonA')
         .backgroundColor('#FF0B8FE2')
         .fontSize(20)
-        .margin({top: 20})
+        .margin({ top: 20 })
         .onClick(() => {
           router.push({
             uri: 'pages/ohosRouterB',
@@ -92,7 +92,7 @@ struct OhosRouterA {
         .key('pushButtonA')
         .backgroundColor('#FF0B8FE2')
         .fontSize(20)
-        .margin({top: 20})
+        .margin({ top: 20 })
         .onClick(() => {
           router.push({
             uri: 'pages/ohosRouterB',

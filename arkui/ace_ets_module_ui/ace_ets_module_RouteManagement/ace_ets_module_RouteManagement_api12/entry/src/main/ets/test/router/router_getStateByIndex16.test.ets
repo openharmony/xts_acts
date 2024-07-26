@@ -15,13 +15,26 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 
 export default function router_getStateByIndex16() {
-  describe('router_getStateByIndex16', function () {
-    beforeEach(async function (done) {
+  describe('router_getStateByIndex16', () => {
+    beforeEach(async (done: Function) => {
       console.info("router_getStateByIndex16 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/router/router_getStateByIndex16',
       }
       try {
@@ -30,7 +43,7 @@ export default function router_getStateByIndex16() {
         console.info("get router_getStateByIndex16 state pages:" + JSON.stringify(pages));
         if (!("router_getStateByIndex16" == pages.name)) {
           console.info("get router_getStateByIndex16 pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push router_getStateByIndex16 page result:" + JSON.stringify(result));
         }
@@ -40,20 +53,20 @@ export default function router_getStateByIndex16() {
       console.info("router_getStateByIndex16 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("router_getStateByIndex16 after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_UI_ABILITY_ROUTER_0460
-     * @tc.name      testBack
-     * @tc.desc      Retrieve the status information of the corresponding page through index values
-     * @tc.level     Level 3
+     * @tc.number SUB_ACE_UI_ABILITY_ROUTER_0460
+     * @tc.name testBack
+     * @tc.desc Retrieve the status information of the corresponding page through index values
+     * @tc.level Level 3
      * @tc.type
      * @tc.size
      */
-    it('router_getStateByIndex16_0100', 0, async function (done) {
+    it('router_getStateByIndex16_0100', 0, async (done: Function) => {
       console.info('[router_getStateByIndex16_0100] START');
       await CommonFunc.sleep(1000);
 
@@ -76,8 +89,8 @@ export default function router_getStateByIndex16() {
       console.info('[router_getStateByIndex16_0100] btn3');
 
       let text1 = getInspectorByKey('router_getStateByIndex16b_text1');
-      let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('index=3;name=router_getStateByIndex16a;path=MainAbility/pages/router/;params={"age":18};');
+      expect(JSON.parse(text1).$attrs.content)
+        .assertEqual('index=3;name=router_getStateByIndex16a;path=MainAbility/pages/router/;params={"age":18};');
 
       let btn4 = await driver.findComponent(ON.id('router_getStateByIndex16b_btn2'));
       await btn4.click();
@@ -85,8 +98,8 @@ export default function router_getStateByIndex16() {
       console.info('[router_getStateByIndex16_0100] btn4');
 
       let text2 = getInspectorByKey('router_getStateByIndex16b_text2');
-      let Obj2 = JSON.parse(text2);
-      expect(Obj2.$attrs.content).assertEqual('index=4;name=router_getStateByIndex16b;path=MainAbility/pages/router/;params={"age":18};');
+      expect(JSON.parse(text2).$attrs.content)
+        .assertEqual('index=4;name=router_getStateByIndex16b;path=MainAbility/pages/router/;params={"age":18};');
 
       console.info('[router_getStateByIndex16_0100] END');
       done();

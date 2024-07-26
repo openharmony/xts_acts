@@ -15,25 +15,25 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
 import { Driver, ON } from '@ohos.UiTest';
 
 
 export default function Router1() {
-  describe('Router1', function () {
-    beforeEach(async function (done) {
+  describe('Router1', () => {
+    beforeEach(async (done: Function) => {
       console.info("GridFrictionPage beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Router/Router1',
       }
       try {
         router.clear();
         let pages = router.getState();
         console.info("get " +
-        " state pages:" + JSON.stringify(pages));
+          " state pages:" + JSON.stringify(pages));
         if (!("Router1" == pages.name)) {
           console.info("get Router1 pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Router1 page result:" + JSON.stringify(result));
         }
@@ -43,21 +43,21 @@ export default function Router1() {
       console.info("Router1 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       router.back()
       console.info("Router1 after each called");
     });
     /**
-     * @tc.number    Router1_0100
-     * @tc.name      Router1_0100
-     * @tc.desc      Page carrying parameter redirection
-     * @tc.level:    Level 2
+     * @tc.number Router1_0100
+     * @tc.name Router1_0100
+     * @tc.desc Page carrying parameter redirection
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
 
-    it('Router1_0100', 0, async function (done) {
+    it('Router1_0100', 0, async (done: Function) => {
       console.info('[Router1_0100] START');
       console.info('[scrollToJsunit_0100] START');
       await CommonFunc.sleep(1000);
@@ -69,17 +69,14 @@ export default function Router1() {
 
 
       let strJson1 = getInspectorByKey('data1String');
-      let obj1 = JSON.parse(strJson1);
-      expect(obj1.$attrs.content).assertEqual('message');
-      console.info('data1String' + obj1.$attrs.content)
+      expect(JSON.parse(strJson1).$attrs.content).assertEqual('message');
+      console.info('data1String' + JSON.parse(strJson1).$attrs.content)
 
       let strJson2 = getInspectorByKey('data2String');
-      let obj2 = JSON.parse(strJson2);
-      expect(obj2.$attrs.content).assertEqual('12345');
-      console.info('data2String' + obj1.$attrs.content)
+      expect(JSON.parse(strJson2).$attrs.content).assertEqual('12345');
+      console.info('data2String' + JSON.parse(strJson1).$attrs.content)
 
       done();
-
     });
   })
 }

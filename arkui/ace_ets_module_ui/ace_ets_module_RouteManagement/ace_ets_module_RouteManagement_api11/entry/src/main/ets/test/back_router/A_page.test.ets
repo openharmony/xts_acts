@@ -15,12 +15,30 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix,
+  UiDirection,
+  MouseButton,
+  UIElementInfo,
+  UIEventObserver
+} from '@ohos.UiTest';
+
 export default function Params() {
-  describe('Params', function () {
-    beforeEach(async function (done) {
+  describe('Params', () => {
+    beforeEach(async (done: Function) => {
       console.info("Params beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/back_router/A_page',
       }
       try {
@@ -29,7 +47,7 @@ export default function Params() {
         console.info("get Params state pages:" + JSON.stringify(pages));
         if (!("Params" == pages.name)) {
           console.info("get WaterFlow_WaterFlow pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Params page result:" + JSON.stringify(result));
         }
@@ -39,27 +57,26 @@ export default function Params() {
       console.info("Params beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("Params after each called");
     });
     /**
-     * @tc.number    SUB_ACE_RICHEDITOR_Params_0100
-     * @tc.name      Params
-     * @tc.desc      set api
-     * @tc.level     Level 2
+     * @tc.number SUB_ACE_RICHEDITOR_Params_0100
+     * @tc.name Params
+     * @tc.desc set api
+     * @tc.level Level 2
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it('Params_0100', 0, async function (done) {
+    it('Params_0100', 0, async (done: Function) => {
       console.info('[Params_0100] START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('R_params'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('text_Params1');
-      let obj1 = JSON.parse(strJson1);
-      expect(obj1.$attrs.content).assertEqual('{"data1":{"data2":["message","message1"]}}');
+      expect(JSON.parse(strJson1).$attrs.content).assertEqual('{"data1":{"data2":["message","message1"]}}');
       await CommonFunc.sleep(1000);
       done();
     });

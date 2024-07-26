@@ -21,26 +21,25 @@ struct router_back15b {
   @State index: string = 's'
 
   build() {
-    Column({space:5}) {
+    Column({ space: 5 }) {
       Text('back15b')
 
       Text(this.index).id('router_back15b_text')
 
       Button('go to next page')
         .id('router_back15b_btn1')
-        .onClick(()=>{
-          router.pushUrl({url:"MainAbility/pages/router/router_back15c"})
+        .onClick(() => {
+          router.pushUrl({ url: "MainAbility/pages/router/router_back15c" })
         })
 
       Button('get page index')
         .id('router_back15b_btn2')
-        .onClick(()=>{
+        .onClick(() => {
           let page = router.getState();
           this.index = String(page.index);
         })
 
     }.width('100%').height('100%')
-
 
   }
 }

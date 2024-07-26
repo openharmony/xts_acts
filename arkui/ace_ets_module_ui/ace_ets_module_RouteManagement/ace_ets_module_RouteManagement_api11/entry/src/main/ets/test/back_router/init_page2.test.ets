@@ -15,12 +15,30 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix,
+  UiDirection,
+  MouseButton,
+  UIElementInfo,
+  UIEventObserver
+} from '@ohos.UiTest';
+
 export default function aboutToAppearRouterTest2() {
-  describe('aboutToAppearRouterTest2', function () {
-    beforeEach(async function (done) {
+  describe('aboutToAppearRouterTest2', () => {
+    beforeEach(async (done: Function) => {
       console.info("aboutToAppearRouterTest2 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/back_router/init_page',
       }
       try {
@@ -29,7 +47,7 @@ export default function aboutToAppearRouterTest2() {
         console.info("get aboutToAppearRouterTest2 state pages:" + JSON.stringify(pages));
         if (!("aboutToAppearRouterTest2" == pages.name)) {
           console.info("get WaterFlow_WaterFlow pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push aboutToAppearRouterTest2 page result:" + JSON.stringify(result));
         }
@@ -39,56 +57,50 @@ export default function aboutToAppearRouterTest2() {
       console.info("aboutToAppearRouterTest2 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("aboutToAppearRouterTest2 after each called");
     });
     /**
-     * @tc.number    SUB_ACE_RICHEDITOR_aboutToAppearRouterTest_0100
-     * @tc.name      aboutToAppearRouterTest
-     * @tc.desc      set api
-     * @tc.level     Level 2
+     * @tc.number SUB_ACE_RICHEDITOR_aboutToAppearRouterTest_0100
+     * @tc.name aboutToAppearRouterTest
+     * @tc.desc set api
+     * @tc.level Level 2
      * @tc.type
-    * @tc.size
+     * @tc.size
      */
-    it('aboutToAppearRouterTest2_0100', 0, async function (done) {
+    it('aboutToAppearRouterTest2_0100', 0, async (done: Function) => {
       console.info('[aboutToAppearRouterTest2_0100] START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('Router1_A'));
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson1 = getInspectorByKey('text_amount');
-      let obj1 = JSON.parse(strJson1);
       let strJson = getInspectorByKey('text_page');
-      let obj = JSON.parse(strJson);
-      expect(obj1.$attrs.content).assertEqual("3");
-      expect(obj.$attrs.content).assertEqual("3");
+      expect(JSON.parse(strJson1).$attrs.content).assertEqual("3");
+      expect(JSON.parse(strJson).$attrs.content).assertEqual("3");
       let button2 = await driver.findComponent(ON.id('RouterA1'));
       await button2.click();
       await CommonFunc.sleep(1000);
       //B页面
       let strJson2 = getInspectorByKey('amount1');
-      let obj2 = JSON.parse(strJson2);
       let strJson3 = getInspectorByKey('page1');
-      let obj3 = JSON.parse(strJson3);
-      expect(obj2.$attrs.content).assertEqual("4");
-      expect(obj3.$attrs.content).assertEqual("4");
+      expect(JSON.parse(strJson2).$attrs.content).assertEqual("4");
+      expect(JSON.parse(strJson3).$attrs.content).assertEqual("4");
       //清空所有页
       await CommonFunc.sleep(1000);
       let button4 = await driver.findComponent(ON.id('clear'))
       await button4.click();
       await CommonFunc.sleep(3000);
-      let objStr1 = JSON.parse(getInspectorByKey('index'))
-      let objStr2 = JSON.parse(getInspectorByKey('length'))
-      expect(objStr1.$attrs.content).assertEqual("1");
-      expect(objStr2.$attrs.content).assertEqual("1");
+      expect(JSON.parse(getInspectorByKey('index')).$attrs.content).assertEqual("1");
+      expect(JSON.parse(getInspectorByKey('length')).$attrs.content).assertEqual("1");
       await CommonFunc.sleep(1000);
       //返回上一页
       let button5 = await driver.findComponent(ON.id('ReturnBack'))
       await button5.click();
       await CommonFunc.sleep(1000);
-      expect(objStr1.$attrs.content).assertEqual("1");
-      expect(objStr2.$attrs.content).assertEqual("1");
+      expect(JSON.parse(getInspectorByKey('index')).$attrs.content).assertEqual("1");
+      expect(JSON.parse(getInspectorByKey('length')).$attrs.content).assertEqual("1");
       await CommonFunc.sleep(1000);
       done();
     });
