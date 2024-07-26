@@ -1,4 +1,4 @@
-@rem Copyright (C) 2023 Huawei Device Co., Ltd.
+@rem Copyright (C) 2024 Huawei Device Co., Ltd.
 @rem Licensed under the Apache License, Version 2.0 (the "License");
 @rem you may not use this file except in compliance with the License.
 @rem You may obtain a copy of the License at
@@ -10,7 +10,9 @@
 @rem WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 @rem See the License for the specific language governing permissions and
 @rem limitations under the License.
-@if "%DEBUG%" == "" @echo off
+
+@echo off
+@if NOT "%DEBUG%" == "" @echo on
 @rem ##########################################################################
 @rem
 @rem  Hvigor startup script for Windows
