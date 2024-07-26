@@ -58,7 +58,7 @@
       },
       {
         "name": "ohos.permission.INTERNET"
-      },
+      }
     ]
   }
 }
