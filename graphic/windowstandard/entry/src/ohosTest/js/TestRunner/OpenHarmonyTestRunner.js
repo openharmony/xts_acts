@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2022 Huawei Device Co., Ltd.
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -20,6 +20,7 @@ function translateParamsToString(parameters) {
         '-s class', '-s notClass', '-s suite', '-s itName',
         '-s level', '-s testType', '-s size', '-s timeout',
         '-s package', '-s dryRun'
+        
     ])
     let targetParams = '';
     for (const key in parameters) {
