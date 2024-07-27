@@ -4565,7 +4565,7 @@ export default function UDMFApiDescriptorTest() {
       console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
       console.log("mimeTypes:" + typeObj.mimeTypes.toString());
       expect(typeObj.typeId).assertEqual("org.openxmlformats.openxml");
-      expect(typeObj.belongingToTypes[0]).assertEqual("general.zip-archive");
+      expect(typeObj.belongingToTypes[0]).assertEqual("general.archive");
       expect(typeObj.description).assertEqual("Office Open XML.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
@@ -4681,7 +4681,7 @@ export default function UDMFApiDescriptorTest() {
       console.log("filenameExtensions:" + typeObj.filenameExtensions.toString());
       console.log("mimeTypes:" + typeObj.mimeTypes.toString());
       expect(typeObj.typeId).assertEqual("org.oasis.opendocument");
-      expect(typeObj.belongingToTypes[0]).assertEqual("general.zip-archive");
+      expect(typeObj.belongingToTypes[0]).assertEqual("general.archive");
       expect(typeObj.description).assertEqual("Open Document Format for Office Applications.");
       expect(typeObj.referenceURL).assertEqual(REFERENCE_URL);
       expect(typeObj.iconFile).assertEqual("");
