@@ -35,7 +35,7 @@ import VideoReset12 from './VideoTest/VideoReset/VideoReset12.test';
 import VideoReset13 from './VideoTest/VideoReset/VideoReset13.test';
 import VideoReset14 from './VideoTest/VideoReset/VideoReset14.test';
 import VideoTest2 from './VideoTest/VideoTest2.test';
-
+import SurfaceRotationOptionsLockTest from './XComponentTest/SurfaceRotationOptionsLock.test';
 export default function testsuite() {
   getXComponentSurfaceRectJsunit();
   onSurfaceCreatedJsunit();
@@ -59,4 +59,5 @@ export default function testsuite() {
   VideoReset13();
   VideoReset14();
   VideoTest2();
+  SurfaceRotationOptionsLockTest();
 }
