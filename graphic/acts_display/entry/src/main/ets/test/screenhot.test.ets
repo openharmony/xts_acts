@@ -32,6 +32,14 @@ export default function screenHotTest(context, windowStage, abilityStorage) {
             let result = await promise;
             clearTimeout(timeoutId)
         }
+        /**
+         * @tc.number    : SUB_BASIC_WMS_SPCIAL_SCREEN_HOT_0100
+         * @tc.name      : tesScreenHot_pick
+         * @tc.desc      : tesScreenHot_pick
+         * @tc.size      : MediumTest
+         * @tc.type      : Function
+         * @tc.level     : Level3
+         */
         // it('tesScreenHot_pick', 0, async function (done) {
         //     let caseName = 'tesScreenHot_pick';
         //     let msgStr = 'jsunittest ' + caseName + ' ';
