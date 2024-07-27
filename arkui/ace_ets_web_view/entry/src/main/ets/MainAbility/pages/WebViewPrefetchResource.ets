@@ -69,9 +69,6 @@ struct WebViewPrefetchResource {
       console.info("ets toString:" + String(str));
     },
     register: (res: object) => {
-//      if (this.registerJavaScriptProxyFlag == true) {
-//        Utils.emitEvent(String(res), 100075);
-//      }
       return "web222"
     }
   }
