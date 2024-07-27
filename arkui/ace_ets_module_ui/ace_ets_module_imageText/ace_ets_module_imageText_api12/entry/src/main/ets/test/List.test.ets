@@ -132,6 +132,8 @@ import textAreaPreview from './TextArea/textAreaPreview.test'
 import textInputPreview from './TextInput/textInputPreview.test'
 import RelativeContainerApi1 from './RelativeContainer/RelativeContainerApi1.test'
 import TextAddApi1 from './Text/TextAddApi1.test'
+import StyledStringKeyTest1 from './StyledString/StyledStringKeyTest1.test'
+import RichEditorAddApi from './RichEditor/RichEditorAddApi.test'
 
 export default function testsuite() {
   APIContentTypeTest();
@@ -252,4 +254,6 @@ export default function testsuite() {
 
   textAreaPreview();
   textInputPreview();
+  StyledStringKeyTest1();
+  RichEditorAddApi();
 }

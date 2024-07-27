@@ -122,6 +122,7 @@
         "MainAbility/pages/MultiNavigation/MultiNavigation30",
         "MainAbility/pages/MultiNavigation/MultiNavigation31",
         "MainAbility/pages/MultiNavigation/MultiNavigation32",
-        "MainAbility/pages/Navigation/NavigationLaunchMode"
+        "MainAbility/pages/Navigation/NavigationLaunchMode",
+        "MainAbility/pages/Navigation/NavigationTitleTest1"
     ]
 }
