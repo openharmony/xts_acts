@@ -19,6 +19,7 @@ import ObserverPageId from './observerTest/ObserverPageId.test';
 import ObserverApi1 from './observerTest/ObserverApi1.test';
 import DensityInfoTest from './observerTest/DensityInfo.test';
 import tabContentState from './observerTest/tabContentState.test';
+import observeTabJsunit from './observerTest/observeTabJsunit.test';
 
 export default function testsuite() {
   observerScrollTest()
@@ -28,4 +29,5 @@ export default function testsuite() {
   ObserverApi1();
   DensityInfoTest();
   tabContentState();
+  observeTabJsunit();
 }
