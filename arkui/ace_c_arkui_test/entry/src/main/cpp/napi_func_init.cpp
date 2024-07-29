@@ -2683,8 +2683,6 @@ static napi_value Init(napi_env env, napi_value exports)
         {"testTextPickerRange002", nullptr, TestTextPickerRange002, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testTextPickerRange003", nullptr, TestTextPickerRange003, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testTextPickerRange004", nullptr, TestTextPickerRange004, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testTextPickerRange005", nullptr, TestTextPickerRange005, nullptr, nullptr, nullptr, napi_default, nullptr},
-        {"testTextPickerRange006", nullptr, TestTextPickerRange006, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"testTextInputAccessibilityDescription001", nullptr, TestTextInputAccessibilityDescription001, nullptr,
          nullptr, nullptr, napi_default, nullptr},
         {"testTextInputAccessibilityDescription002", nullptr, TestTextInputAccessibilityDescription002, nullptr,

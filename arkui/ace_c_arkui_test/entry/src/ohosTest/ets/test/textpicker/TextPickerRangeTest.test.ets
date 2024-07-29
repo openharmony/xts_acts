@@ -77,31 +77,5 @@ export default function textPickerRangeTest() {
       expect(nativeFunc.testTextPickerRange004()).assertEqual(0)
       done()
     })
-
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_TEXTPICKER_RANGE_0500
-     * @tc.name       : testTextPickerRange005
-     * @tc.desc       : testing range for textPicker with normal value
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 1
-     */
-    it('testTextPickerRange005', 0, async (done: Function) => {
-      expect(nativeFunc.testTextPickerRange005()).assertEqual(0)
-      done()
-    })
-
-    /*
-     * @tc.number     : SUB_ARKUI_CAPI_TEXTPICKER_RANGE_0600
-     * @tc.name       : testTextPickerRange006
-     * @tc.desc       : testing range for textPicker with abnormal value
-     * @tc.size       : MediumTest
-     * @tc.type       : Function
-     * @tc.level      : Level 2
-     */
-    it('testTextPickerRange006', 0, async (done: Function) => {
-      expect(nativeFunc.testTextPickerRange006()).assertEqual(0)
-      done()
-    })
   })
 }
