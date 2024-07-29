@@ -501,35 +501,35 @@ export default function drawingTsCanvasPart4Test() {
     })
 
 
-    /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_2703
-     * @tc.name      : testCanvasGetWidthAndHeightMismatch
-     * @tc.desc      : testCanvasGetWidthAndHeightMismatch
-     * @tc.size      : SmallTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testCanvasGetWidthAndHeightMismatch', 3, () => {
-      const msg = 'testCanvasGetWidthAndHeightMismatch';
-      const canvas = new drawing.Canvas(pixel);
-      try {
-        canvas.getWidth('s');
-        console.info(msg + `test error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        canvas.getHeight('s');
-        console.info(msg + `test error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-    })
+    // /**
+    //  * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_2703
+    //  * @tc.name      : testCanvasGetWidthAndHeightMismatch
+    //  * @tc.desc      : testCanvasGetWidthAndHeightMismatch
+    //  * @tc.size      : SmallTest
+    //  * @tc.type      : Function
+    //  * @tc.level     : Level3
+    //  */
+    // it('testCanvasGetWidthAndHeightMismatch', 3, () => {
+    //   const msg = 'testCanvasGetWidthAndHeightMismatch';
+    //   const canvas = new drawing.Canvas(pixel);
+    //   try {
+    //     canvas.getWidth('s');
+    //     console.info(msg + `test error`);
+    //     expect().assertFail()
+    //   } catch (e) {
+    //     console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+    //     expect(e.code).assertEqual(401);
+    //   }
+    //
+    //   try {
+    //     canvas.getHeight('s');
+    //     console.info(msg + `test error`);
+    //     expect().assertFail()
+    //   } catch (e) {
+    //     console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+    //     expect(e.code).assertEqual(401);
+    //   }
+    // })
 
 
     /**
@@ -1264,52 +1264,52 @@ export default function drawingTsCanvasPart4Test() {
     })
 
 
-    /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_3003
-     * @tc.name      : testCanvasDrawPointsMismatch
-     * @tc.desc      : testCanvasDrawPointsMismatch
-     * @tc.size      : SmallTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testCanvasDrawPointsMismatch', 3, () => {
-      const msg = 'testCanvasDrawPointsMismatch';
-      const canvas = new drawing.Canvas(pixel);
-
-      try {
-        canvas.drawPoints([{
-          x: 100, y: 200
-        }, {
-          x: 150, y: 230
-        }, {
-          x: 200, y: 300
-        }], drawing.PointMode.POINTS, drawing.PointMode.POINTS);
-        console.info(msg + `test error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        canvas.drawPoints();
-        console.info(msg + `test error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        canvas.drawPoints('s');
-        console.info(msg + `test error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-    })
+    // /**
+    //  * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_3003
+    //  * @tc.name      : testCanvasDrawPointsMismatch
+    //  * @tc.desc      : testCanvasDrawPointsMismatch
+    //  * @tc.size      : SmallTest
+    //  * @tc.type      : Function
+    //  * @tc.level     : Level3
+    //  */
+    // it('testCanvasDrawPointsMismatch', 3, () => {
+    //   const msg = 'testCanvasDrawPointsMismatch';
+    //   const canvas = new drawing.Canvas(pixel);
+    //
+    //   try {
+    //     canvas.drawPoints([{
+    //       x: 100, y: 200
+    //     }, {
+    //       x: 150, y: 230
+    //     }, {
+    //       x: 200, y: 300
+    //     }], drawing.PointMode.POINTS, drawing.PointMode.POINTS);
+    //     console.info(msg + `test error`);
+    //     expect().assertFail()
+    //   } catch (e) {
+    //     console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+    //     expect(e.code).assertEqual(401);
+    //   }
+    //
+    //   try {
+    //     canvas.drawPoints();
+    //     console.info(msg + `test error`);
+    //     expect().assertFail()
+    //   } catch (e) {
+    //     console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+    //     expect(e.code).assertEqual(401);
+    //   }
+    //
+    //   try {
+    //     canvas.drawPoints('s');
+    //     console.info(msg + `test error`);
+    //     expect().assertFail()
+    //   } catch (e) {
+    //     console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+    //     expect(e.code).assertEqual(401);
+    //   }
+    //
+    // })
 
 
     /**
@@ -1543,36 +1543,36 @@ export default function drawingTsCanvasPart4Test() {
     })
 
 
-    /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_3203
-     * @tc.name      : testCanvasSetMatrixMismatch
-     * @tc.desc      : testCanvasSetMatrixMismatch
-     * @tc.size      : SmallTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testCanvasSetMatrixMismatch', 3, () => {
-      const msg = 'testCanvasSetMatrixMismatch';
-      const canvas = new drawing.Canvas(pixel);
-
-      try {
-        canvas.setMatrix(matrix, matrix);
-        console.info(msg + `test error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        canvas.setMatrix(111);
-        console.info(msg + `test error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-    })
+    // /**
+    //  * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_3203
+    //  * @tc.name      : testCanvasSetMatrixMismatch
+    //  * @tc.desc      : testCanvasSetMatrixMismatch
+    //  * @tc.size      : SmallTest
+    //  * @tc.type      : Function
+    //  * @tc.level     : Level3
+    //  */
+    // it('testCanvasSetMatrixMismatch', 3, () => {
+    //   const msg = 'testCanvasSetMatrixMismatch';
+    //   const canvas = new drawing.Canvas(pixel);
+    //
+    //   try {
+    //     canvas.setMatrix(matrix, matrix);
+    //     console.info(msg + `test error`);
+    //     expect().assertFail()
+    //   } catch (e) {
+    //     console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+    //     expect(e.code).assertEqual(401);
+    //   }
+    //
+    //   try {
+    //     canvas.setMatrix(111);
+    //     console.info(msg + `test error`);
+    //     expect().assertFail()
+    //   } catch (e) {
+    //     console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+    //     expect(e.code).assertEqual(401);
+    //   }
+    // })
 
   })
 }

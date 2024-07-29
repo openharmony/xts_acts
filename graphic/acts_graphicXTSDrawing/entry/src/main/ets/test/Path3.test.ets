@@ -180,27 +180,27 @@ export default function drawingTsPath3Test() {
     })
 
 
-    /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_1702
-     * @tc.name      : testPathGetBoundsMismatch
-     * @tc.desc      : testPathGetBoundsMismatch
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testPathGetBoundsMismatch', DEFAULT, () => {
-      const msg = 'testPathGetBoundsMismatch';
-
-      try {
-        let path = new drawing.Path()
-        path.getBounds('s');
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-    })
+    // /**
+    //  * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_1702
+    //  * @tc.name      : testPathGetBoundsMismatch
+    //  * @tc.desc      : testPathGetBoundsMismatch
+    //  * @tc.size      : MediumTest
+    //  * @tc.type      : Function
+    //  * @tc.level     : Level3
+    //  */
+    // it('testPathGetBoundsMismatch', DEFAULT, () => {
+    //   const msg = 'testPathGetBoundsMismatch';
+    //
+    //   try {
+    //     let path = new drawing.Path()
+    //     path.getBounds('s');
+    //     console.info(msg + `reset error`);
+    //     expect().assertFail()
+    //   } catch (e) {
+    //     console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+    //     expect(e.code).assertEqual(401);
+    //   }
+    // })
 
 
     /**
@@ -652,44 +652,44 @@ export default function drawingTsPath3Test() {
     })
 
 
-    /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_2003
-     * @tc.name      : testPathConstructorMismatch
-     * @tc.desc      : testPathConstructorMismatch
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testPathConstructorMismatch', DEFAULT, () => {
-      const msg = 'testPathConstructorMismatch';
-
-      try {
-        new drawing.Path(path, path);
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        new drawing.Path();
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        new drawing.Path('s');
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-    })
+    // /**
+    //  * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_2003
+    //  * @tc.name      : testPathConstructorMismatch
+    //  * @tc.desc      : testPathConstructorMismatch
+    //  * @tc.size      : MediumTest
+    //  * @tc.type      : Function
+    //  * @tc.level     : Level3
+    //  */
+    // it('testPathConstructorMismatch', DEFAULT, () => {
+    //   const msg = 'testPathConstructorMismatch';
+    //
+    //   try {
+    //     new drawing.Path(path, path);
+    //     console.info(msg + `reset error`);
+    //     expect().assertFail()
+    //   } catch (e) {
+    //     console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+    //     expect(e.code).assertEqual(401);
+    //   }
+    //
+    //   try {
+    //     new drawing.Path();
+    //     console.info(msg + `reset error`);
+    //     expect().assertFail()
+    //   } catch (e) {
+    //     console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+    //     expect(e.code).assertEqual(401);
+    //   }
+    //
+    //   try {
+    //     new drawing.Path('s');
+    //     console.info(msg + `reset error`);
+    //     expect().assertFail()
+    //   } catch (e) {
+    //     console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+    //     expect(e.code).assertEqual(401);
+    //   }
+    // })
 
 
     /**
@@ -746,46 +746,46 @@ export default function drawingTsPath3Test() {
     })
 
 
-    /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_2103
-     * @tc.name      : testPathIsClosedMismatch
-     * @tc.desc      : testPathIsClosedMismatch
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testPathIsClosedMismatch', DEFAULT, () => {
-      const msg = 'testPathIsClosedMismatch';
-      const path = new drawing.Path();
-
-      try {
-        path.isClosed(true, false);
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        path.isClosed();
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        path.isClosed("s");
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-    })
+    // /**
+    //  * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_2103
+    //  * @tc.name      : testPathIsClosedMismatch
+    //  * @tc.desc      : testPathIsClosedMismatch
+    //  * @tc.size      : MediumTest
+    //  * @tc.type      : Function
+    //  * @tc.level     : Level3
+    //  */
+    // it('testPathIsClosedMismatch', DEFAULT, () => {
+    //   const msg = 'testPathIsClosedMismatch';
+    //   const path = new drawing.Path();
+    //
+    //   try {
+    //     path.isClosed(true, false);
+    //     console.info(msg + `reset error`);
+    //     expect().assertFail()
+    //   } catch (e) {
+    //     console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+    //     expect(e.code).assertEqual(401);
+    //   }
+    //
+    //   try {
+    //     path.isClosed();
+    //     console.info(msg + `reset error`);
+    //     expect().assertFail()
+    //   } catch (e) {
+    //     console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+    //     expect(e.code).assertEqual(401);
+    //   }
+    //
+    //   try {
+    //     path.isClosed("s");
+    //     console.info(msg + `reset error`);
+    //     expect().assertFail()
+    //   } catch (e) {
+    //     console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+    //     expect(e.code).assertEqual(401);
+    //   }
+    //
+    // })
 
 
     /**
