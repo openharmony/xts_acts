@@ -1132,26 +1132,17 @@ static napi_value OHEffectFilterReleaseFilterNames(napi_env env, napi_callback_i
     return ret;
 }
 
-ImageEffect_FilterDelegate getFilterDelegate() 
-{
+ImageEffect_FilterDelegate getFilterDelegate() {
     ImageEffect_FilterDelegate filterDelegate = {
-        .setValue = 
-            [](OH_EffectFilter *filter, const char *key, const ImageEffect_Any *value) { 
-                return true; 
-            },
+        .setValue = [](OH_EffectFilter *filter, const char *key, const ImageEffect_Any *value) { return true; },
         .render = [](OH_EffectFilter *filter, OH_EffectBufferInfo *info,
-                     OH_EffectFilterDelegate_PushData pushData) { 
-                return true; 
-            },
-        .save = 
-            [](OH_EffectFilter *filter, char **info) { 
-                return true; 
-            },
-        .restore =
-            [](const char *info) {
-                OH_EffectFilter *filter = OH_EffectFilter_Create(CUSTOM_FILTER);
-                return filter;
-            }};
+    OH_EffectFilterDelegate_PushData pushData) { return true; },
+        .save = [](OH_EffectFilter *filter, char **info) { return true; },
+        .restore = [](const char *info) {
+        OH_EffectFilter *filter = OH_EffectFilter_Create(CUSTOM_FILTER);
+        return filter;
+        }
+    };
     return filterDelegate;
 }
 
@@ -1605,7 +1596,7 @@ static napi_value OHImageEffectSetInputNativeBuffer(napi_env env, napi_callback_
     value.dataValue.floatValue = IMAGE_EFFECT_100F;
     ImageEffect_ErrorCode code = OH_EffectFilter_SetValue(filter, KEY_FILTER_INTENSITY, &value);
     
-    OH_NativeBuffer *buffer;
+    OH_NativeBuffer *buffer = (OH_NativeBuffer *)0x1;
     code = OH_ImageEffect_SetInputNativeBuffer(imageEffect, buffer);
     napi_value ret;
     napi_create_int32(env, code, &ret);
@@ -1768,7 +1759,7 @@ static napi_value OHImageEffectSetOutputNativeBuffer(napi_env env, napi_callback
     value.dataValue.floatValue = IMAGE_EFFECT_100F;
     ImageEffect_ErrorCode code = OH_EffectFilter_SetValue(filter, KEY_FILTER_INTENSITY, &value);
 
-    OH_NativeBuffer *nativeBuffer;
+    OH_NativeBuffer *nativeBuffer = (OH_NativeBuffer *)0x1;
     if (code == EFFECT_SUCCESS) {
         code = OH_ImageEffect_SetInputNativeBuffer(imageEffect, nativeBuffer);
     }
