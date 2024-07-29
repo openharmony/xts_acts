@@ -384,7 +384,6 @@ HWTEST_F(NativeFontTest, NativeFontTest_FontMeasureText016, TestSize.Level1)
  */
 HWTEST_F(NativeFontTest, NativeFontTest_FontMeasureText017, TestSize.Level1)
 {
-    
     OH_Drawing_TextStyle* txtStyle = OH_Drawing_CreateTextStyle();
     EXPECT_EQ(txtStyle == nullptr, false);
     const char* key = "宋体";
