@@ -20,6 +20,7 @@ const TEST_CONNECT_STATUS = continuationManager.DeviceConnectState.CONNECTED;
 let token = -1;
 import featureAbility from '@ohos.ability.featureAbility';
 import { UiDriver, BY } from '@ohos.UiTest'
+import abilityConstant from '@ohos.app.ability.AbilityConstant'
 
 export default function continuationManagerTest() {
     describe('continuationManagerTest', function () {
@@ -100,6 +101,26 @@ export default function continuationManagerTest() {
             }
             done();
             console.info('afterEach end');
+        })
+		
+        /*
+        * @tc.number  SUM_DMS_AbilityConstant_0100
+        * @tc.name    Test abilityConstant
+        * @tc.desc    Function test
+        * @tc.size    MediumTest
+        * @tc.type:   Function
+        * @tc.level   Level3
+        */
+        it('SUM_DMS_AbilityConstant_0100', 0 , async function (done) {
+            console.log("----------------------SUM_DMS_AbilityConstant_0100 start----------------------");
+            try {
+                console.log("----------------------SUM_DMS_AbilityConstant_0100----------------------" + abilityConstant.LaunchParam.PREPARE_CONTINUATION);
+                expect(10).assertEqual(abilityConstant.LaunchParam.PREPARE_CONTINUATION);
+            } catch (error) {
+                console.log("----------------------SUM_DMS_AbilityConstant_0100----------------------"" + error);  
+            }
+            console.log("----------------------SUM_DMS_AbilityConstant_0100 end----------------------");
+			done();
         })
 
         /*
