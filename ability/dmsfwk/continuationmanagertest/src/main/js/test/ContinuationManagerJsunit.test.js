@@ -111,7 +111,7 @@ export default function continuationManagerTest() {
         * @tc.type:   Function
         * @tc.level   Level3
         */
-        it('SUM_DMS_AbilityConstant_0100', 0 , async function (done) {
+        it('SUM_DMS_AbilityConstant_0100', 0 , async (done) => {
             console.log("----------------------SUM_DMS_AbilityConstant_0100 start----------------------");
             try {
                 console.log("----------------------SUM_DMS_AbilityConstant_0100----------------------" + abilityConstant.LaunchParam.PREPARE_CONTINUATION);
@@ -120,7 +120,7 @@ export default function continuationManagerTest() {
                 console.log("----------------------SUM_DMS_AbilityConstant_0100----------------------"" + error);  
             }
             console.log("----------------------SUM_DMS_AbilityConstant_0100 end----------------------");
-			done();
+            done();
         })
 
         /*
