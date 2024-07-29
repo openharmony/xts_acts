@@ -75,6 +75,7 @@
         "MainAbility/pages/FrameNode/attachNodeAdapter",
 	"MainAbility/pages/renderNode/setLabel",
         "MainAbility/pages/renderNode/setMarkNodeGroup",
-        "MainAbility/pages/renderNode/setShapeClip"
+        "MainAbility/pages/renderNode/setShapeClip",
+        "MainAbility/pages/typeNode/XComponent1"
     ]
 }

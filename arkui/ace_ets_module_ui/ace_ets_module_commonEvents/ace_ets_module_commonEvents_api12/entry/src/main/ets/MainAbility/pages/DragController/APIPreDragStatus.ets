@@ -23,6 +23,7 @@ struct APIPreDragStatus {
   @State text4: string = 'start'
   @State text5: string = 'start'
   @State text6: string = 'start'
+  @State text7: string = 'start'
 
   private PreDragChange(preDragStatus: PreDragStatus): void {
     if (preDragStatus == PreDragStatus.ACTION_DETECTING_STATUS) {
@@ -37,6 +38,8 @@ struct APIPreDragStatus {
       this.text5 = 'PREVIEW_LANDING_STARTED'
     } else if (preDragStatus == PreDragStatus.PREVIEW_LANDING_FINISHED) {
       this.text6 = 'PREVIEW_LANDING_FINISHED'
+    } else if (preDragStatus == PreDragStatus.ACTION_CANCELED_BEFORE_DRAG) {
+      this.text7 = 'ACTION_CANCELED_BEFORE_DRAG'
     }
   }
 
@@ -48,6 +51,7 @@ struct APIPreDragStatus {
       Text(this.text4).key('APIPreDragStatusText04')
       Text(this.text5).key('APIPreDragStatusText05')
       Text(this.text6).key('APIPreDragStatusText06')
+      Text(this.text7).key('APIPreDragStatusText07')
       Column() {
         Text('this is abstract')
           .fontSize(30).fontWeight(700)
@@ -76,6 +80,7 @@ struct APIPreDragStatus {
           this.text4 = 'start'
           this.text5 = 'start'
           this.text6 = 'start'
+          this.text7 = 'start'
         })
     }
   }

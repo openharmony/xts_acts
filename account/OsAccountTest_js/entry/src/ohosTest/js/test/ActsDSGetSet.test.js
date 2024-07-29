@@ -1293,6 +1293,148 @@ export default function ActsDAGetSetTest() {
                 expect().assertFail();
                 done();
             })
-        })
-    })
+        });
+        
+        /**
+         * @tc.number  : SUB_Account_DistributedAccount_ErrCode_0100
+         * @tc.name    : testParameterVerify
+         * @tc.desc    : Test getOsAccountDistributedInfo no parameter interface but call with parameter null
+         * @tc.level   : Level3
+         * @tc.size    : MediumTest
+         * @tc.type    : Function
+         */
+        it('SUB_Account_DistributedAccount_ErrCode_0100', 3, async function (done) {
+            console.info("====>SUB_Account_DistributedAccount_ErrCode_0100 start====");
+            let accountAbility = account.getDistributedAccountAbility();
+            try {
+                accountAbility.getOsAccountDistributedInfo(null, (err, data) => {
+                    console.info('====>SUB_Account_DistributedAccount_ErrCode_0100 exception: ' + JSON.stringify(err));
+                    try {
+                        expect().assertFail();
+                    } catch (err) {
+                        console.info('====>Assert err: ' + JSON.stringify(err));
+                    }
+                    done();
+                });
+                done();
+            } catch (err) {
+                console.info('====>SUB_Account_DistributedAccount_ErrCode_0100 catch exception: ' + JSON.stringify(err));
+                expect().assertFail();
+                done();
+            }
+        });
+
+        /**
+         * @tc.number  : SUB_Account_DistributedAccount_ErrCode_0200
+         * @tc.name    : testParameterVerify
+         * @tc.desc    : Test getOsAccountDistributedInfo callback 401 errcode.
+         * @tc.level   : Level3
+         * @tc.size    : MediumTest
+         * @tc.type    : Function
+         */
+        it('SUB_Account_DistributedAccount_ErrCode_0200', 3, async function (done) {
+            console.info("====>SUB_Account_DistributedAccount_ErrCode_0200 start====");
+            let accountAbility = account.getDistributedAccountAbility();
+            try {
+                accountAbility.getOsAccountDistributedInfo("", (err, data) => {
+                    console.info('====>SUB_Account_DistributedAccount_ErrCode_0200 exception: ' + JSON.stringify(err));
+                    try {
+                        expect().assertFail();
+                    } catch (err) {
+                        console.info('====>Assert err: ' + JSON.stringify(err));
+                    }
+                    done();
+                });
+            } catch (err) {
+                console.info('====>SUB_Account_DistributedAccount_ErrCode_0200 catch exception: ' + JSON.stringify(err));
+                expect(err.code).assertEqual(401);
+                done();
+            }
+        });
+
+        /**
+         * @tc.number  : SUB_Account_DistributedAccount_ErrCode_0300
+         * @tc.name    : testParameterVerify
+         * @tc.desc    : Test getOsAccountDistributedInfo callback 401 errcode.
+         * @tc.level   : Level3
+         * @tc.size    : MediumTest
+         * @tc.type    : Function
+         */
+        it('SUB_Account_DistributedAccount_ErrCode_0300', 3, async function (done) {
+            console.info("====>SUB_Account_DistributedAccount_ErrCode_0300 start====");
+            let accountAbility = account.getDistributedAccountAbility();
+            try {
+                accountAbility.getOsAccountDistributedInfo(true, (err, data) => {
+                    console.info('====>SUB_Account_DistributedAccount_ErrCode_0300 exception: ' + JSON.stringify(err));
+                    try {
+                        expect().assertFail();
+                    } catch (err) {
+                        console.info('====>Assert err: ' + JSON.stringify(err));
+                    }
+                    done();
+                });
+            } catch (err) {
+                console.info('====>SUB_Account_DistributedAccount_ErrCode_0300 catch exception: ' + JSON.stringify(err));
+                expect(err.code).assertEqual(401);
+                done();
+            }
+        });
+
+        /**
+         * @tc.number  : SUB_Account_DistributedAccount_ErrCode_0400
+         * @tc.name    : testParameterVerify
+         * @tc.desc    : Test getOsAccountDistributedInfo callback 401 errcode.
+         * @tc.level   : Level3
+         * @tc.size    : MediumTest
+         * @tc.type    : Function
+         */
+        it('SUB_Account_DistributedAccount_ErrCode_0400', 3, async function (done) {
+            console.info("====>SUB_Account_DistributedAccount_ErrCode_0400 start====");
+            let accountAbility = account.getDistributedAccountAbility();
+            try {
+                accountAbility.getOsAccountDistributedInfo(0, (err, data) => {
+                    console.info('====>SUB_Account_DistributedAccount_ErrCode_0400 exception: ' + JSON.stringify(err));
+                    try {
+                        expect().assertFail();
+                    } catch (err) {
+                        console.info('====>Assert err: ' + JSON.stringify(err));
+                    }
+                    done();
+                });
+            } catch (err) {
+                console.info('====>SUB_Account_DistributedAccount_ErrCode_0400 catch exception: ' + JSON.stringify(err));
+                expect(err.code).assertEqual(401);
+                done();
+            }
+        });
+
+        /**
+         * @tc.number  : SUB_Account_DistributedAccount_ErrCode_0500
+         * @tc.name    : testParameterVerify
+         * @tc.desc    : Test getOsAccountDistributedInfo no parameter interface but call with parameter undefined
+         * @tc.level   : Level3
+         * @tc.size    : MediumTest
+         * @tc.type    : Function
+         */
+        it('SUB_Account_DistributedAccount_ErrCode_0500', 3, async function (done) {
+            console.info("====>SUB_Account_DistributedAccount_ErrCode_0500 start====");
+            let accountAbility = account.getDistributedAccountAbility();
+            try {
+                accountAbility.getOsAccountDistributedInfo(undefined, (err, data) => {
+                    console.info('====>SUB_Account_DistributedAccount_ErrCode_0500 exception: ' + JSON.stringify(err));
+                    try {
+                        expect().assertFail();
+                    } catch (err) {
+                        console.info('====>Assert err: ' + JSON.stringify(err));
+                    }
+                    done();
+                });
+                done();
+            } catch (err) {
+                console.info('====>SUB_Account_DistributedAccount_ErrCode_0500 catch exception: ' + JSON.stringify(err));
+                expect().assertFail();
+                done();
+            }
+        });
+    });
 }

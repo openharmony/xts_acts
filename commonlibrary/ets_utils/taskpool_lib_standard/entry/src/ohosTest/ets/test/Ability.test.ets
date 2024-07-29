@@ -4029,9 +4029,15 @@ export default function TaskPoolTest() {
      * @tc.level     : Level 0
      */
      it('TaskPoolTestClass175', 0, async (done: Function) => {
-      taskpool.execute(errorManageTest).then(() => {
+      let isTerminate: boolean = false;
+      taskpool.execute(errorManageTest).then((ret) => {
+        isTerminate = true;
         console.log("execute errorManageTest");
+        expect(!ret).assertTrue();
       })
+      while (!isTerminate) {
+        await promiseCase();
+      }
       done();
     })
 
@@ -4158,6 +4164,90 @@ export default function TaskPoolTest() {
       } catch (e) {
         expect((e as BusinessError).toString()).assertEqual("BusinessError: The period value is less than zero.");
       }
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0183
+     * @tc.name      : TaskPoolTestClass183
+     * @tc.desc      : taskpool isDone interface
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass183', 0, async (done: Function) => {
+      let task1: taskpool.Task = new taskpool.Task(printArgs, 100);
+      let result1: number = await taskpool.execute(task1) as number;
+      expect(task1.isDone()).assertTrue();
+
+      let isFinish: boolean = false;
+      let task2: taskpool.Task = new taskpool.Task(printArgs, 100);
+      taskpool.execute(task2).then(()=>{
+        isFinish = true;
+        expect(task2.isDone()).assertTrue();
+      });
+      while(!isFinish) {
+        await promiseCase();
+      }
+      expect(task2.isDone()).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0184
+     * @tc.name      : TaskPoolTestClass184
+     * @tc.desc      : taskpool isDone interface
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass184', 0, async (done: Function) => {
+      let finalString: string = "";
+      let task1: taskpool.Task = new taskpool.Task(AdditionDelay, 500);
+      let task2: taskpool.Task = new taskpool.Task(AdditionDelay, 300);
+      let task3: taskpool.Task = new taskpool.Task(AdditionDelay, 100);
+      let task4: taskpool.Task = new taskpool.Task(WaitforRunner, finalString);
+
+      let runner: taskpool.SequenceRunner = new taskpool.SequenceRunner();
+      runner.execute(task1).then(() => {
+        finalString += 'a';
+        expect(task1.isDone()).assertTrue();
+      });
+      runner.execute(task2).then(() => {
+        finalString += 'b';
+        expect(task2.isDone()).assertTrue();
+      });
+      runner.execute(task3).then(() => {
+        finalString += 'c';
+        expect(task3.isDone()).assertTrue();
+      });
+
+      await runner.execute(task4);
+      expect(task4.isDone()).assertTrue();
+      done();
+    })
+
+    /**
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_TASKPOOL_0185
+     * @tc.name      : TaskPoolTestClass185
+     * @tc.desc      : taskpool isDone interface
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('TaskPoolTestClass185', 0, async (done: Function) => {
+      let taskGroup1: taskpool.TaskGroup = new taskpool.TaskGroup();
+      let task1: taskpool.Task = new taskpool.Task(printArgs, 100);
+      taskGroup1.addTask(task1);
+      taskpool.execute(taskGroup1).then(() => {
+        expect(task1.isDone()).assertTrue();
+      });
+
+      let taskGroup2: taskpool.TaskGroup = new taskpool.TaskGroup();
+      let task2: taskpool.Task = new taskpool.Task(printArgs, 200);
+      taskGroup2.addTask(task2);
+      await taskpool.execute(taskGroup2);
+      expect(task2.isDone()).assertTrue();
       done();
     })
   })

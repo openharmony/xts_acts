@@ -88,6 +88,7 @@ export default function ImageReceiverTest() {
         let nextImage;
         let lastestImage;
         let isSupportCameraVideoProfiles = true;
+        let imageArrival = false;
         let context = featureAbility.getContext();
         const delegator = abilityDelegatorRegistry.getAbilityDelegator();
         function logger(caseName) {
@@ -255,6 +256,16 @@ export default function ImageReceiverTest() {
             return true;
         }
 
+        async function waitUntilImageArrival() {
+            let waitTime = 0;
+            let step = 100;
+            while (imageArrival == false) {
+                await sleep(step);
+                waitTime += step;
+            }
+            console.info(TAG + 'image arrival cost(ms): ' + waitTime);
+        }
+
         /**
          * @tc.number    : SUB_MULTIMEDIA_IMAGE_RECEIVERNDK_RELEASE_0100
          * @tc.name      : test release image receiver options
@@ -352,6 +363,7 @@ export default function ImageReceiverTest() {
 
                     let onRet = ndkTest.JsOn(myReceiver, (receiver) => {
                         mlg.log("Image receiver callback success " + JSON.stringify(receiver));
+                        imageArrival = true;
                         capacity = capacity + 1;
                         ndkTest.JsImageReceiverOptionsSetCapacity(options, capacity);
                         mlg.log("OnCallback success");
@@ -373,28 +385,28 @@ export default function ImageReceiverTest() {
                     }).catch((err) => {
                         console.info('capture failed :' + err);
                     });
-                    await sleep(1000);
+                    await waitUntilImageArrival();
                     nextImage = ndkTest.JsReadNextImage(myReceiver);
                     mlg.log("mTestImage 1 " + JSON.stringify(nextImage));
                     let capacityAfterOn = ndkTest.JsImageReceiverOptionsGetCapacity(options);
                     expect( capacityAfterOn == CAPACITY + 1).assertTrue();
-
-                    let onOFF = ndkTest.JsOff(myReceiver);
-                    expect(onOFF != undefined).assertTrue();
+                    imageArrival = false;
 
                     mPhotoOutput.capture(captureSetting).then((result) => {
                         console.info('capture success :' + result);
                     }).catch((err) => {
                         console.info('capture failed: ' + err);
                     });
-                    await sleep(1000);
+                    await waitUntilImageArrival();
                     lastestImage = ndkTest.JsReadLatestImage(myReceiver);
                     mlg.log("mTestImage 2 " + JSON.stringify(lastestImage));
                     let capacityAfterOff = ndkTest.JsImageReceiverOptionsGetCapacity(options);
-                    expect( capacityAfterOff == CAPACITY + 1).assertTrue();
+                    expect( capacityAfterOff == CAPACITY + 2).assertTrue();
 
                     await mCameraSession.stop();
                     await sleep(1000);
+                    let onOFF = ndkTest.JsOff(myReceiver);
+                    expect(onOFF != undefined).assertTrue();
                     ndkTest.JsReleaseImageReceiverOptions(options);
                     ndkTest.JsReleaseImageReceiver(myReceiver);
                     done();

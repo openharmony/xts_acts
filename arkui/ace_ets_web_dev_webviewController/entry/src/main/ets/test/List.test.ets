@@ -57,9 +57,12 @@ import webViewSetAudioMuted from './webViewSetAudioMuted.test'
 import webViewGetAccessibleGeolocation from './webViewGetAccessibleGeolocation.test'
 import webViewOnAudioStateChanged from './webViewOnAudioStateChanged.test'
 import webViewMediaOption from './webViewMediaOption.test'
+import scrollBarJsunit from './ScrollBarJsunit.test'
+
 export default function testsuite() {
        webViewControllerJsunit()
        webViewOnErrorReceive02Jsunit()
+       scrollBarJsunit()
        webViewHasImageJsunit()
        webViewSetPrintBackgroundJsunit()
        webViewSrollToJsunit()
