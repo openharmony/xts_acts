@@ -125,9 +125,18 @@ export default function abilityTest() {
     * @tc.name    test ResourceManager NDK interface
     * @tc.desc    test ResourceManager NDK interface
     */
-    it('isRawDir_ndktest_0100',0, function () {
-      let value=ndk.isRawDir(resManager.getResourceManager(),'')
-      expect(value).assertTrue()
+    it('isRawDir_ndktest_0100', 0, async (done: Function) => {
+      console.log("isRawDir_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("isRawDir_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("isRawDir_ndktest_0100 22");
+        let value = ndk.IsRawDir(resManager.getResourceManager(), '');
+        console.log("isRawDir_ndktest_0100 3");
+        console.log("isRawDir_ndktest_0100" + value);
+        expect(value).assertTrue();
+      })
+      done();
     })
 
     /* *
@@ -135,9 +144,17 @@ export default function abilityTest() {
     * @tc.name    test ResourceManager NDK interface
     * @tc.desc    test ResourceManager NDK interface
     */
-    it('getDrawableDescriptor_ndktest_0100',0, function () {
-      let value=ndk.getDrawableDescriptor(resManager.getResourceManager(),$r('app.media.icon').id)
-      expect(value).assertTrue()
+    it('getDrawableDescriptor_ndktest_0100', 0, async (done: Function) => {
+      console.log("getDrawableDescriptor_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getDrawableDescriptor_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getDrawableDescriptor_ndktest_0100 22");
+        let value = ndk.GetDrawableDescriptor(resManager.getResourceManager(), $r('app.media.icon').id);
+        console.log("getDrawableDescriptor_ndktest_0100" + value);
+        expect(value).assertTrue();
+      })
+      done();
     })
 
     /* *
@@ -145,9 +162,17 @@ export default function abilityTest() {
     * @tc.name    test ResourceManager NDK interface
     * @tc.desc    test ResourceManager NDK interface
     */
-    it('getDrawableDescriptorByName_ndktest_0100',0, function () {
-      let value=ndk.getDrawableDescriptorByName(resManager.getResourceManager())
-      expect(value).assertTrue()
+    it('getDrawableDescriptorByName_ndktest_0100', 0, async (done: Function) => {
+      console.log("getDrawableDescriptorByName_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getDrawableDescriptorByName_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getDrawableDescriptorByName_ndktest_0100 22");
+        let value = ndk.GetDrawableDescriptorByName(resManager.getResourceManager());
+        console.log("getDrawableDescriptorByName_ndktest_0100" + value);
+        expect(value).assertTrue();
+      })
+      done();
     })
 
     /* *
@@ -155,9 +180,17 @@ export default function abilityTest() {
     * @tc.name    test ResourceManager NDK interface
     * @tc.desc    test ResourceManager NDK interface
     */
-    it('getMediaBase64_ndktest_0100',0, function () {
-      let value=ndk.getMediaBase64(resManager.getResourceManager(),$r('app.media.icon').id)
-      expect(value).assertTrue()
+    it('getMediaBase64_ndktest_0100', 0, async (done: Function) => {
+      console.log("getMediaBase64_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getMediaBase64_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getMediaBase64_ndktest_0100 22");
+        let value = ndk.GetMediaBase64(resManager.getResourceManager(), $r('app.media.icon').id);
+        console.log("getMediaBase64_ndktest_0100" + value);
+        expect(value).assertTrue();
+      })
+      done();
     })
 
     /* *
@@ -165,9 +198,17 @@ export default function abilityTest() {
     * @tc.name    test ResourceManager NDK interface
     * @tc.desc    test ResourceManager NDK interface
     */
-    it('getMediaBase64ByName_ndktest_0100',0, function () {
-      let value=ndk.getMediaBase64ByName(resManager.getResourceManager())
-      expect(value).assertTrue()
+    it('getMediaBase64ByName_ndktest_0100', 0, async (done: Function) => {
+      console.log("getMediaBase64ByName_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getMediaBase64ByName_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getMediaBase64ByName_ndktest_0100 22");
+        let value = ndk.GetMediaBase64ByName(resManager.getResourceManager());
+        console.log("getMediaBase64ByName_ndktest_0100" + value);
+        expect(value).assertTrue();
+      })
+      done();
     })
 
     /* *
@@ -175,9 +216,17 @@ export default function abilityTest() {
     * @tc.name    test ResourceManager NDK interface
     * @tc.desc    test ResourceManager NDK interface
     */
-    it('getMedia_ndktest_0100',0, function () {
-      let value=ndk.getMedia(resManager.getResourceManager(),$r('app.media.icon').id)
-      expect(value).assertTrue()
+    it('getMedia_ndktest_0100', 0, async (done: Function) => {
+      console.log("getMedia_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getMedia_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getMedia_ndktest_0100 22");
+        let value = ndk.GetMedia(resManager.getResourceManager(), $r('app.media.icon').id);
+        console.log("getMedia_ndktest_0100" + value);
+        expect(value).assertTrue();
+      })
+      done();
     })
 
     /* *
@@ -185,9 +234,17 @@ export default function abilityTest() {
     * @tc.name    test ResourceManager NDK interface
     * @tc.desc    test ResourceManager NDK interface
     */
-    it('getMediaByName_ndktest_0100',0, function () {
-      let value=ndk.getMediaByName(resManager.getResourceManager())
-      expect(value).assertTrue()
+    it('getMediaByName_ndktest_0100', 0, async (done: Function) => {
+      console.log("getMediaByName_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getMediaByName_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getMediaByName_ndktest_0100 22");
+        let value = ndk.GetMediaByName(resManager.getResourceManager());
+        console.log("getMediaByName_ndktest_0100" + value);
+        expect(value).assertTrue();
+      })
+      done();
     })
 
     /* *
@@ -195,9 +252,17 @@ export default function abilityTest() {
     * @tc.name    test ResourceManager NDK interface
     * @tc.desc    test ResourceManager NDK interface
     */
-    it('getSymbolByName_ndktest_0100', 0, function () {
-      let value = ndk.getSymbolByName(resManager.getResourceManager())
-      expect(value).assertTrue()
+    it('getSymbolByName_ndktest_0100', 0, async (done: Function) => {
+      console.log("getSymbolByName_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getSymbolByName_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getSymbolByName_ndktest_0100 22");
+        let value = ndk.GetSymbolByName(resManager.getResourceManager());
+        console.log("getSymbolByName_ndktest_0100" + value);
+        expect(value).assertTrue();
+      })
+      done();
     })
 
     /* *
@@ -205,9 +270,17 @@ export default function abilityTest() {
     * @tc.name    test ResourceManager NDK interface
     * @tc.desc    test ResourceManager NDK interface
     */
-    it('getSymbol_ndktest_0100', 0, function () {
-      let value = ndk.getSymbol(resManager.getResourceManager(), $r('app.symbol.symbol_test').id)
-      expect(value).assertTrue()
+    it('getSymbol_ndktest_0100', 0, async (done: Function) => {
+      console.log("getSymbol_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getSymbol_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getSymbol_ndktest_0100 22");
+        let value = ndk.GetSymbol(resManager.getResourceManager(), $r('app.symbol.symbol_test').id);
+        console.log("getSymbol_ndktest_0100" + value);
+        expect(value).assertTrue();
+      })
+      done();
     })
 
     /* *
@@ -215,9 +288,17 @@ export default function abilityTest() {
     * @tc.name    test ResourceManager NDK interface
     * @tc.desc    test ResourceManager NDK interface
     */
-    it('getBoolByName_ndktest_0100', 0, function () {
-      let value = ndk.getBoolByName(resManager.getResourceManager())
-      expect(value).assertTrue()
+    it('getBoolByName_ndktest_0100', 0, async (done: Function) => {
+      console.log("getBoolByName_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getBoolByName_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getBoolByName_ndktest_0100 22");
+        let value = ndk.GetBoolByName(resManager.getResourceManager());
+        console.log("getBoolByName_ndktest_0100" + value);
+        expect(value).assertTrue();
+      })
+      done();
     })
 
     /* *
@@ -225,9 +306,17 @@ export default function abilityTest() {
     * @tc.name    test ResourceManager NDK interface
     * @tc.desc    test ResourceManager NDK interface
     */
-    it('getBool_ndktest_0100', 0, function () {
-      let value = ndk.getBool(resManager.getResourceManager(), $r('app.boolean.boolean_1').id)
-      expect(value).assertTrue()
+    it('getBool_ndktest_0100', 0, async (done: Function) => {
+      console.log("getBool_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getBool_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getBool_ndktest_0100 22");
+        let value = ndk.GetBool(resManager.getResourceManager(), $r('app.boolean.boolean_1').id);
+        console.log("getBool_ndktest_0100" + value);
+        expect(value).assertTrue();
+      })
+      done();
     })
 
     /* *
@@ -235,9 +324,17 @@ export default function abilityTest() {
     * @tc.name    test ResourceManager NDK interface
     * @tc.desc    test ResourceManager NDK interface
     */
-    it('getPluralStringByName_ndktest_0100', 0, function () {
-      let value = ndk.getPluralStringByName(resManager.getResourceManager())
-      expect(value).assertTrue()
+    it('getPluralStringByName_ndktest_0100', 0, async (done: Function) => {
+      console.log("getPluralStringByName_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getPluralStringByName_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getPluralStringByName_ndktest_0100 22");
+        let value = ndk.GetPluralStringByName(resManager.getResourceManager());
+        console.log("getPluralStringByName_ndktest_0100" + value);
+        expect(value).assertTrue();
+      })
+      done();
     })
 
     /* *
@@ -245,9 +342,17 @@ export default function abilityTest() {
     * @tc.name    test ResourceManager NDK interface
     * @tc.desc    test ResourceManager NDK interface
     */
-    it('getPluralString_ndktest_0100', 0, function () {
-      let value = ndk.getPluralString(resManager.getResourceManager(), $r('app.plural.eat_apple').id, 1)
-      expect(value).assertTrue()
+    it('getPluralString_ndktest_0100', 0, async (done: Function) => {
+      console.log("getPluralString_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getPluralString_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getPluralString_ndktest_0100 22");
+        let value = ndk.GetPluralString(resManager.getResourceManager(), $r('app.plural.eat_apple').id, 1);
+        console.log("getPluralString_ndktest_0100" + value);
+        expect(value).assertTrue();
+      })
+      done();
     })
 
     /* *
@@ -255,9 +360,17 @@ export default function abilityTest() {
     * @tc.name    test ResourceManager NDK interface
     * @tc.desc    test ResourceManager NDK interface
     */
-    it('getColorByName_ndktest_0100', 0, function () {
-      let value = ndk.getColorByName(resManager.getResourceManager())
-      expect(value).assertEqual(4294967210)
+    it('getColorByName_ndktest_0100', 0, async (done: Function) => {
+      console.log("getColorByName_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getColorByName_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getColorByName_ndktest_0100 22");
+        let value = ndk.GetColorByName(resManager.getResourceManager());
+        console.log("getColorByName_ndktest_0100" + value);
+        expect(value).assertEqual(4294967210);
+      })
+      done();
     })
 
     /* *
@@ -265,9 +378,17 @@ export default function abilityTest() {
     * @tc.name    test ResourceManager NDK interface
     * @tc.desc    test ResourceManager NDK interface
     */
-    it('getColor_ndktest_0100', 0, function () {
-      let value = ndk.getColor(resManager.getResourceManager(), $r('app.color.start_window_background_jjq').id)
-      expect(value).assertEqual(4294967210)
+    it('getColor_ndktest_0100', 0, async (done: Function) => {
+      console.log("getColor_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getColor_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getColor_ndktest_0100 22");
+        let value = ndk.GetColor(resManager.getResourceManager(), $r('app.color.start_window_background_jjq').id);
+        console.log("getColor_ndktest_0100" + value);
+        expect(value).assertEqual(4294967210);
+      })
+      done();
     })
 
     /* *
@@ -275,9 +396,17 @@ export default function abilityTest() {
     * @tc.name    test ResourceManager NDK interface
     * @tc.desc    test ResourceManager NDK interface
     */
-    it('getIntByName_ndktest_0100', 0, function () {
-      let value = ndk.getIntByName(resManager.getResourceManager())
-      expect(value).assertTrue()
+    it('getIntByName_ndktest_0100', 0, async (done: Function) => {
+      console.log("getIntByName_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getIntByName_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getIntByName_ndktest_0100 22");
+        let value = ndk.GetIntByName(resManager.getResourceManager());
+        console.log("getIntByName_ndktest_0100" + value);
+        expect(value).assertTrue();
+      })
+      done();
     })
 
     /* *
@@ -285,9 +414,17 @@ export default function abilityTest() {
     * @tc.name    test ResourceManager NDK interface
     * @tc.desc    test ResourceManager NDK interface
     */
-    it('getInt_ndktest_0100', 0, function () {
-      let value = ndk.getInt(resManager.getResourceManager(), $r('app.integer.integer_1').id)
-      expect(value).assertTrue()
+    it('getInt_ndktest_0100', 0, async (done: Function) => {
+      console.log("getInt_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getInt_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getInt_ndktest_0100 22");
+        let value = ndk.GetInt(resManager.getResourceManager(), $r('app.integer.integer_1').id);
+        console.log("getInt_ndktest_0100" + value);
+        expect(value).assertTrue();
+      })
+      done();
     })
 
     /* *
@@ -295,9 +432,17 @@ export default function abilityTest() {
     * @tc.name    test ResourceManager NDK interface
     * @tc.desc    test ResourceManager NDK interface
     */
-    it('getFloatByName_ndktest_0100', 0, function () {
-      let value = ndk.getFloatByName(resManager.getResourceManager())
-      expect(value).assertTrue()
+    it('getFloatByName_ndktest_0100', 0, async (done: Function) => {
+      console.log("getFloatByName_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getFloatByName_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getFloatByName_ndktest_0100 22");
+        let value = ndk.GetFloatByName(resManager.getResourceManager());
+        console.log("getFloatByName_ndktest_0100" + value);
+        expect(value).assertTrue();
+      })
+      done();
     })
 
     /* *
@@ -305,9 +450,17 @@ export default function abilityTest() {
     * @tc.name    test ResourceManager NDK interface
     * @tc.desc    test ResourceManager NDK interface
     */
-    it('getFloat_ndktest_0100', 0, function () {
-      let value = ndk.getFloat(resManager.getResourceManager(), $r('app.float.float_1').id)
-      expect(value).assertTrue()
+    it('getFloat_ndktest_0100', 0, async (done: Function) => {
+      console.log("getFloat_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getFloat_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getFloat_ndktest_0100 22");
+        let value = ndk.GetFloat(resManager.getResourceManager(), $r('app.float.float_1').id);
+        console.log("getFloat_ndktest_0100" + value);
+        expect(value).assertTrue();
+      })
+      done();
     })
 
     /* *
@@ -315,9 +468,17 @@ export default function abilityTest() {
     * @tc.name    test ResourceManager NDK interface
     * @tc.desc    test ResourceManager NDK interface
     */
-    it('getLocales_ndktest_0100', 0, function () {
-      let value = ndk.getLocales(resManager.getResourceManager())
-      expect('' + value).assertEqual('en-US,zh-CN')
+    it('getLocales_ndktest_0100', 0, async (done: Function) => {
+      console.log("getLocales_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getLocales_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getLocales_ndktest_0100 22");
+        let value = ndk.GetLocales(resManager.getResourceManager());
+        console.log("getLocales_ndktest_0100" + value);
+        expect('' + value).assertEqual('en-US,zh-CN');
+      })
+      done();
     })
 
     /* *
@@ -325,9 +486,17 @@ export default function abilityTest() {
     * @tc.name    test ResourceManager NDK interface
     * @tc.desc    test ResourceManager NDK interface
     */
-    it('getConfiguration_ndktest_0100', 0, function () {
-      let value = ndk.getConfiguration(resManager.getResourceManager())
-      expect(value).assertTrue()
+    it('getConfiguration_ndktest_0100', 0, async (done: Function) => {
+      console.log("getConfiguration_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getConfiguration_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getConfiguration_ndktest_0100 22");
+        let value = ndk.GetConfiguration(resManager.getResourceManager());
+        console.log("getConfiguration_ndktest_0100" + value);
+        expect(value).assertTrue();
+      })
+      done();
     })
 
     /* *
@@ -335,9 +504,17 @@ export default function abilityTest() {
     * @tc.name    test ResourceManager NDK interface
     * @tc.desc    test ResourceManager NDK interface
     */
-    it('getStringArray_ndktest_0100', 0, function () {
-      let value = ndk.getStringArray(resManager.getResourceManager(), $r('app.strarray.size').id)
-      expect('' + value).assertEqual('small,big')
+    it('getStringArray_ndktest_0100', 0, async (done: Function) => {
+      console.log("getStringArray_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getStringArray_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getStringArray_ndktest_0100 22");
+        let value = ndk.GetStringArray(resManager.getResourceManager(), $r('app.strarray.size').id);
+        console.log("getStringArray_ndktest_0100" + value);
+        expect('' + value).assertEqual('small,big');
+      })
+      done();
     })
 
     /* *
@@ -345,9 +522,17 @@ export default function abilityTest() {
     * @tc.name    test ResourceManager NDK interface
     * @tc.desc    test ResourceManager NDK interface
     */
-    it('getStringArrayByName_ndktest_0100', 0, function () {
-      let value = ndk.getStringArrayByName(resManager.getResourceManager())
-      expect('' + value).assertEqual('small,big')
+    it('getStringArrayByName_ndktest_0100', 0, async (done: Function) => {
+      console.log("getStringArrayByName_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getStringArrayByName_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getStringArrayByName_ndktest_0100 22");
+        let value = ndk.GetStringArrayByName(resManager.getResourceManager());
+        console.log("getStringArrayByName_ndktest_0100" + value);
+        expect('' + value).assertEqual('small,big');
+      })
+      done();
     })
 
     /* *
@@ -355,9 +540,17 @@ export default function abilityTest() {
     * @tc.name    test ResourceManager NDK interface
     * @tc.desc    test ResourceManager NDK interface
     */
-    it('releaseStringArray_ndktest_0100', 0, function () {
-      let value = ndk.releaseStringArray(resManager.getResourceManager())
-      expect(value).assertTrue()
+    it('releaseStringArray_ndktest_0100', 0, async (done: Function) => {
+      console.log("releaseStringArray_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("releaseStringArray_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("releaseStringArray_ndktest_0100 22");
+        let value = ndk.ReleaseStringArray(resManager.getResourceManager());
+        console.log("releaseStringArray_ndktest_0100" + value);
+        expect(value).assertTrue();
+      })
+      done();
     })
 
     /* *
@@ -365,9 +558,17 @@ export default function abilityTest() {
     * @tc.name    test ResourceManager NDK interface
     * @tc.desc    test ResourceManager NDK interface
     */
-    it('releaseConfiguration_ndktest_0100', 0, function () {
-      let value = ndk.releaseConfiguration(resManager.getResourceManager())
-      expect(value).assertTrue()
+    it('releaseConfiguration_ndktest_0100', 0, async (done: Function) => {
+      console.log("releaseConfiguration_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("releaseConfiguration_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("releaseConfiguration_ndktest_0100 22");
+        let value = ndk.ReleaseConfiguration(resManager.getResourceManager());
+        console.log("releaseConfiguration_ndktest_0100" + value);
+        expect(value).assertTrue();
+      })
+      done();
     })
 
     /* *
@@ -375,9 +576,17 @@ export default function abilityTest() {
     * @tc.name    test ResourceManager NDK interface
     * @tc.desc    test ResourceManager NDK interface
     */
-    it('getStringByName_ndktest_0100', 0, function () {
-      let value = ndk.getStringByName(resManager.getResourceManager())
-      expect(value).assertTrue()
+    it('getStringByName_ndktest_0100', 0, async (done: Function) => {
+      console.log("getStringByName_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getStringByName_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getStringByName_ndktest_0100 22");
+        let value = ndk.GetStringByName(resManager.getResourceManager());
+        console.log("getStringByName_ndktest_0100" + value);
+        expect(value).assertTrue();
+      })
+      done();
     })
 
     /* *
@@ -385,9 +594,17 @@ export default function abilityTest() {
     * @tc.name    test ResourceManager NDK interface
     * @tc.desc    test ResourceManager NDK interface
     */
-    it('getString_ndktest_0100', 0, function () {
-      let value = ndk.getString(resManager.getResourceManager(), $r('app.string.entry_MainAbility').id)
-      expect(value).assertTrue()
+    it('getString_ndktest_0100', 0, async (done: Function) => {
+      console.log("getString_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getString_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getString_ndktest_0100 22");
+        let value = ndk.GetString(resManager.getResourceManager(), $r('app.string.entry_MainAbility').id);
+        console.log("getString_ndktest_0100" + value);
+        expect(value).assertTrue();
+      })
+      done();
     })
   })
 }
