@@ -29,6 +29,14 @@ struct DragControllerPage {
   @State pixmap: image.PixelMap|null = null
   @State dragFlag: string = "Init"
 
+  aboutToAppear(): void {
+    try {
+      loadNativeModule('global')
+    } catch {
+      console.log('loadNativeModule error')
+    }
+  }
+
   @Builder DraggingBuilder() {
     Column() {
       Text("DraggingBuilder")
