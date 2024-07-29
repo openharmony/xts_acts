@@ -30,6 +30,6 @@ export default function testsuite() {
   webViewMetaViewportFalse()
   webViewMetaViewportTrue()
   webViewJsBridgeLastJsProxyCallingFrameUrl()
-  webViewNativeVideoUpdateRect()
   webViewCookieTrack()
+  webViewNativeVideoUpdateRect()
 }

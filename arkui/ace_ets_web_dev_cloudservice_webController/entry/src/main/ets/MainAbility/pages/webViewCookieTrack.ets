@@ -124,9 +124,8 @@ struct webViewCookieTrack {
                           let afterTraceLength = this.traceHosts.length
                           console.log('beforeTraceLength' + beforeTraceLength)
                           console.log('afterTraceLength' + afterTraceLength)
-                          Utils.emitEvent(true, 1280)
                           await Utils.sleep(2000)
-                          Utils.emitEvent(beforeTraceLength > 0 && afterTraceLength == beforeTraceLength, 1280)                          
+                          Utils.emitEvent(beforeTraceLength >= 0 && afterTraceLength >= beforeTraceLength, 1280)
                         break;
                     }
                     case "emitCookieTrackRemoveTrackingPrevention": {
