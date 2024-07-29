@@ -132,6 +132,7 @@ import textAreaPreview from './TextArea/textAreaPreview.test'
 import textInputPreview from './TextInput/textInputPreview.test'
 import RelativeContainerApi1 from './RelativeContainer/RelativeContainerApi1.test'
 import TextAddApi1 from './Text/TextAddApi1.test'
+import editMeunOptionsTest from './Text/editMeunOptions.test'
 
 export default function testsuite() {
   APIContentTypeTest();
@@ -252,4 +253,5 @@ export default function testsuite() {
 
   textAreaPreview();
   textInputPreview();
+  editMeunOptionsTest();
 }
