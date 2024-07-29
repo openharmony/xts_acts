@@ -1605,10 +1605,8 @@ static napi_value OHImageEffectSetInputNativeBuffer(napi_env env, napi_callback_
     value.dataValue.floatValue = IMAGE_EFFECT_100F;
     ImageEffect_ErrorCode code = OH_EffectFilter_SetValue(filter, KEY_FILTER_INTENSITY, &value);
     
-    OH_NativeBuffer *buffer = OH_NativeBuffer_Alloc(&config);
-    if (code == EFFECT_SUCCESS && buffer != nullptr) {
-        code = OH_ImageEffect_SetInputNativeBuffer(imageEffect, buffer);
-    }
+    OH_NativeBuffer *buffer;
+    code = OH_ImageEffect_SetInputNativeBuffer(imageEffect, buffer);
     napi_value ret;
     napi_create_int32(env, code, &ret);
     return ret;
@@ -1770,12 +1768,12 @@ static napi_value OHImageEffectSetOutputNativeBuffer(napi_env env, napi_callback
     value.dataValue.floatValue = IMAGE_EFFECT_100F;
     ImageEffect_ErrorCode code = OH_EffectFilter_SetValue(filter, KEY_FILTER_INTENSITY, &value);
 
-    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&config);
-    if (code == EFFECT_SUCCESS && nativeBuffer != nullptr) {
+    OH_NativeBuffer *nativeBuffer;
+    if (code == EFFECT_SUCCESS) {
         code = OH_ImageEffect_SetInputNativeBuffer(imageEffect, nativeBuffer);
     }
-    OH_NativeBuffer *outNativeBuffer = OH_NativeBuffer_Alloc(&config);
-    if (code == EFFECT_SUCCESS && outNativeBuffer != nullptr) {
+    OH_NativeBuffer *outNativeBuffer = nullptr;
+    if (code == EFFECT_SUCCESS) {
         code = OH_ImageEffect_SetOutputNativeBuffer(imageEffect, outNativeBuffer);
     }
     napi_value ret;
