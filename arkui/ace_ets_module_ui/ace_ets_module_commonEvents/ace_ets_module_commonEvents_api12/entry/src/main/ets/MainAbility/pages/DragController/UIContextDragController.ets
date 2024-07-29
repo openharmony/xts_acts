@@ -28,6 +28,7 @@ let storages = LocalStorage.getShared();
 struct DragControllerPage {
   @State pixmap: image.PixelMap|null = null
   @State dragFlag: string = "Init"
+  private arr: number[] = [0, 1, 2]
 
   aboutToAppear(): void {
     try {
@@ -109,6 +110,19 @@ struct DragControllerPage {
             }
           }
       }).margin({top:100})
+
+    List({ space: 20, initialIndex: 0 }) {
+        ForEach(this.arr, (item: number) => {
+          ListItem() {
+            Text('' + item)
+              .width('100%').height(100).fontSize(16)
+              .textAlign(TextAlign.Center).borderRadius(10).backgroundColor(0xFFFFFF)
+          }
+        }, (item: string) => item)
+          .onMove((from:number, to: number)=>{
+            console.log('onMove succ from:' + from + ' to:' + to)
+          })
+      }
     }
     .width('100%')
     .height('100%')
