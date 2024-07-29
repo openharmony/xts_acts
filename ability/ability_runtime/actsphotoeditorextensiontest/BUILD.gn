@@ -28,7 +28,7 @@ ohos_js_hap_suite("PhotoEditorExtensionTest") {
 }
 
 ohos_app_scope("photoeditorextensiontest_app_profile") {
-  app_profile = "AppScope/app.json"
+  app_profile = "AppScope/app.json5"
   sources = [ "AppScope/resources" ]
 }
 
@@ -39,5 +39,5 @@ ohos_js_assets("photoeditorextensiontest_js_assets") {
 ohos_resources("photoeditorextensiontest_resources") {
   sources = [ "entry/src/main/resources" ]
   deps = [ ":photoeditorextensiontest_app_profile" ]
-  hap_profile = "entry/src/main/module.json"
+  hap_profile = "entry/src/main/module.json5"
 }
