@@ -44,7 +44,7 @@
 
 OH_PixelmapNative *TEST_PIXELMAP = nullptr;
 const char *LOG_APP = "ImageNDK";
-const char* VPE_SO_NAME = "/system/lib64/libvideoprocessingengine.z.so";
+const char* VPE_SO_NAME = "/sys_prod/lib64/VideoProcessingEngine/libaihdr_engine.so";
 
 static void DataCopy(void *dest, int32_t dest_size, const void *src, int32_t n) {
     if (dest == nullptr || src == nullptr) {
