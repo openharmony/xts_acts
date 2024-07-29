@@ -17,14 +17,13 @@
 import cameraObj from 'libImageReceiverNativeTest.so';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from 'hypium/index'
 import cameraObject from '@ohos.multimedia.camera';
-import featureAbility from '@ohos.ability.featureAbility';
 
 const TAG = "ImageReceiverModuleTest: ";
 
 // multi-device
 let camera: cameraObj.cameraInfo;
 let isSupportCameraVideoProfiles = true;
-let context = featureAbility.getContext();
+let context = globalThis.abilityContext;
 let mCameraManager;
 
 function isEmpty(data: cameraObj.cameraInfo | number) {

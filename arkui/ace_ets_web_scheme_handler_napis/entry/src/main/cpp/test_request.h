@@ -18,6 +18,7 @@
 #include <bits/alltypes.h>
 #include <rawfile/raw_file_manager.h>
 #include <web/arkweb_scheme_handler.h>
+#include <string>
 
 
 class TestRequest

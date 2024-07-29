@@ -59,7 +59,7 @@ export default function SourceToolTest() {
       console.info('SourceTool_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
-      let colum = CommonFunc.getComponentRect('PanGestureSourceToolColumn');
+      let colum = CommonFunc.getComponentRectOnScreen('PanGestureSourceToolColumn');
       let top = colum.top
       let bottom = colum.bottom
       let left = colum.left
@@ -86,7 +86,7 @@ export default function SourceToolTest() {
       console.info('SourceTool_0020 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
-      let colum = CommonFunc.getComponentRect('PanGestureSourceToolColumn');
+      let colum = CommonFunc.getComponentRectOnScreen('PanGestureSourceToolColumn');
       let top = colum.top
       let bottom = colum.bottom
       let left = colum.left
@@ -135,7 +135,7 @@ export default function SourceToolTest() {
       console.info('axisHorizontal_0040 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
-      let colum = CommonFunc.getComponentRect('PanGestureSourceToolColumn');
+      let colum = CommonFunc.getComponentRectOnScreen('PanGestureSourceToolColumn');
       let top = colum.top
       let bottom = colum.bottom
       let left = colum.left
@@ -162,7 +162,7 @@ export default function SourceToolTest() {
       console.info('axisVertical_0050 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
-      let colum = CommonFunc.getComponentRect('PanGestureSourceToolColumn');
+      let colum = CommonFunc.getComponentRectOnScreen('PanGestureSourceToolColumn');
       let top = colum.top
       let bottom = colum.bottom
       let left = colum.left

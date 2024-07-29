@@ -75,7 +75,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       let tempWnd: ohosWindow.Window = tempWindow as ohosWindow.Window;
       console.log(msgStr + 'windowStage.getMainWindow, tempWnd: ' + tempWnd);
       await tempWnd.setWindowLayoutFullScreen(true).catch((err: BusinessError) => {
-        console.error('Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+        console.error(msgStr +'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
@@ -97,12 +97,24 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setFullScreen(true)', done);
       });
       console.log(msgStr + 'tempWnd.setFullScreen(true) success');
+      await tempWnd.setWindowLayoutFullScreen(false).catch((err: BusinessError) => {
+        console.error(msgStr +'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      console.log(msgStr + 'tempWnd.setWindowLayoutFullScreen(false) success');
       await tempWnd.setSystemBarEnable([]).catch((err: BusinessError) => {
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
       listenerOnFlag = true;
       await sleep(800);
+      await tempWnd.setWindowLayoutFullScreen(true).catch((err: BusinessError) => {
+        console.error(msgStr +'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      console.log(msgStr + 'tempWnd.setWindowLayoutFullScreen(true) success');
       await tempWnd.setSystemBarEnable(['status', 'navigation']).catch((err: BusinessError) => {
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
       });
@@ -175,7 +187,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
       console.log(msgStr + 'windowStage.getMainWindow, tempWnd: ' + tempWnd);
       expect(!!tempWnd).assertTrue();
       await tempWnd.setWindowLayoutFullScreen(true).catch((err: BusinessError) => {
-        console.error('Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+        console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
         expect().assertFail();
         done();
       });
@@ -193,12 +205,23 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setFullScreen(true)', done);
       });
       console.log(msgStr + 'tempWnd.setFullScreen(true) success');
+      await tempWnd.setWindowLayoutFullScreen(false).catch((err: BusinessError) => {
+        console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      console.log(msgStr + 'tempWnd.setWindowLayoutFullScreen(false) success');
       await tempWnd.setSystemBarEnable([]).catch((err: BusinessError) => {
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([])', done);
       });
       console.log(msgStr + 'tempWnd.setSystemBarEnable([]) success');
       await sleep(500);
-      console.log(msgStr + 'tempWnd.off systemAvoidAreaChange finished');
+      await tempWnd.setWindowLayoutFullScreen(true).catch((err: BusinessError) => {
+        console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      console.log(msgStr + 'tempWnd.setWindowLayoutFullScreen(true) success');
       await tempWnd.setSystemBarEnable(['status', 'navigation']).catch((err: BusinessError) => {
         unexpectedError(TRUE_FLAG, err, caseName, 'tempWnd.setSystemBarEnable([status, navigation])', done);
       });
@@ -1564,7 +1587,7 @@ export default function windowPromiseTest(context: common.UIAbilityContext, wind
         decorEnabled: true,
         isModal: false,
       };
-      await windowStage.createSubWindowWithOptions('mySubWindow', options).then((data) => {
+      await windowStage.createSubWindowWithOptions('testCreateSubWindowWithOptions_Function_Promise', options).then((data) => {
         windowClass = data;
         console.info(msgStr + 'Succeeded in creating the subwindow. Data: ' + JSON.stringify(data));
         done();

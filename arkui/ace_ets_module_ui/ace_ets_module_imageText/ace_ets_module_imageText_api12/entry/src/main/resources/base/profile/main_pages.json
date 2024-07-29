@@ -126,6 +126,7 @@
     "MainAbility/pages/TextArea/textAreaPreview",
     "MainAbility/pages/TextInput/textInputPreview",
     "MainAbility/pages/RichEditor/RichEditorAddApi",
-    "MainAbility/pages/StyledString/StyledStringKeyTest1"
+    "MainAbility/pages/StyledString/StyledStringKeyTest1",
+    "MainAbility/pages/Text/editMeunOptions"
   ]
 }

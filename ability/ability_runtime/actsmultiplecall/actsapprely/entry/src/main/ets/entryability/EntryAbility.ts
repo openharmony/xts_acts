@@ -119,6 +119,7 @@ export default class EntryAbility extends Ability {
     }
 
     globalThis.singleCallFunction_0300 = () => {
+
       function releaseCallback(data): void {
         console.debug('====>Acts_SingleInstanceCallFunction_0300 releaseCallBack:' + data);
         let commonEventData = {
@@ -165,6 +166,7 @@ export default class EntryAbility extends Ability {
 
     globalThis.singleCallFunction_0400 = () => {
       let caller;
+
       function releaseCallback(data): void {
         console.debug('====>Acts_SingleInstanceCallFunction_0400 releaseCallBack:' + data);
         let commonEventData = {
@@ -276,8 +278,8 @@ export default class EntryAbility extends Ability {
           })
           caller.release();
           let callerReleaseRetryNum = 0;
-          let intervalId = setInterval(()=>{
-            callerReleaseRetryNum ++;
+          let intervalId = setInterval(() => {
+            callerReleaseRetryNum++;
             if (callerReleaseRetryNum === 10 || isCallerRelease) {
               clearInterval(intervalId);
               this.context.startAbilityByCall({
@@ -322,7 +324,7 @@ export default class EntryAbility extends Ability {
       let isCallerRelease = false;
       let isCaller1Release = false;
       let verifyResult = (str) => {
-        console.info('====>Acts_SingleInstanceCallFunction_0800 verify' + isCallerRelease +" "+ isCaller1Release);
+        console.info('====>Acts_SingleInstanceCallFunction_0800 verify' + isCallerRelease + " " + isCaller1Release);
         if (isCallerRelease && isCaller1Release) {
           let commonEventData = {
             parameters: {

@@ -33,6 +33,9 @@ import BlurType_WITHIN_WINDOW_APITest from './CommonTest/BackgroundEffectTest/Ba
 import Bgde_Policy_APITest from './CommonTest/BackgroundEffectTest/BackgroundEffect_APITest/Policy_APITest'
 import Bgde_InactiveColor_APITest from './CommonTest/BackgroundEffectTest/BackgroundEffect_APITest/InactiveColor_APITest'
 import getPageInfoByUniqueIdTest from './UIContextTest/getPageInfoByUniqueId.test'
+import setFrameRateRangeTest from './UIContextTest/setFrameRateRange.test'
+import AttributeUpdaterTest from './AttributeUpdaterTest/AttributeUpdater.test'
+import componentSnapshotTest from './componentSnapshotTest/componentSnapshot.test'
 export default function testsuite() {
   OverlayManagerTest_001()
   OverlayManagerTest_002()
@@ -55,4 +58,7 @@ export default function testsuite() {
   Bgde_Policy_APITest();
   Bgde_InactiveColor_APITest();
   getPageInfoByUniqueIdTest();
+  setFrameRateRangeTest();
+  AttributeUpdaterTest();
+  componentSnapshotTest();
 }

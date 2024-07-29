@@ -134,6 +134,7 @@ import RelativeContainerApi1 from './RelativeContainer/RelativeContainerApi1.tes
 import TextAddApi1 from './Text/TextAddApi1.test'
 import StyledStringKeyTest1 from './StyledString/StyledStringKeyTest1.test'
 import RichEditorAddApi from './RichEditor/RichEditorAddApi.test'
+import editMeunOptionsTest from './Text/editMeunOptions.test'
 
 export default function testsuite() {
   APIContentTypeTest();
@@ -256,4 +257,5 @@ export default function testsuite() {
   textInputPreview();
   StyledStringKeyTest1();
   RichEditorAddApi();
+  editMeunOptionsTest();
 }
