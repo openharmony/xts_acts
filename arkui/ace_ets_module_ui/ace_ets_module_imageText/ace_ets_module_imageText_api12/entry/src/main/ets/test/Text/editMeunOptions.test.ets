@@ -99,6 +99,8 @@ export default function editMeunOptionsTest() {
       await CommonFunc.sleep(2000);
       await driver.assertComponentExist(ON.text('Custom 2'));
       console.info('editMeunOptionsTest_0300 END');
+      await driver.assertComponentExist(ON.text('Custom 2'));
+      console.info('editMeunOptionsTest_0100 END');
       done();
     });
 

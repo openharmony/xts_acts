@@ -1,5 +1,5 @@
-/**
- * Copyright (c) 2023 iSoftStone Information Technology (Group) Co.,Ltd.
+/*
+ * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -29,6 +29,11 @@ struct webViewScrollTo {
   @State res: boolean = false;
   @State xNum: number = 0;
   @State yNum: number = 0;
+  @State duration: number =0;
+  @State onScrollx: number = 0;
+  @State onScrolly: number = 0;
+  @State onScrollx1: number = 0;
+  @State onScrolly1: number = 0;
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -228,6 +233,90 @@ struct webViewScrollTo {
                 Utils.emitEvent(this.res, 226)
                 console.info("emitScrollToSeven  res: " + result);
               })
+              break;
+            }
+            case "emitScrollToEight": {
+              this.controller.loadUrl($rawfile('theScroll.html'));
+              this.xNum = -10;
+              this.yNum = -10;
+              this.duration = 0;
+              this.onScrollx = 0;
+              this.onScrolly = 0;
+              await Utils.sleep(1000);
+              try {
+                this.controller.scrollTo(this.xNum, this.yNum,this.duration);
+                await Utils.sleep(1000)
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              }
+              if (this.onScrollx == 0 && this.onScrolly == 0) {
+                  Utils.emitEvent(true, 228726)
+                } else {
+                  Utils.emitEvent(false, 228726)
+                }
+              break;
+            }
+            case "emitScrollToNine": {
+              this.controller.loadUrl($rawfile('theScroll.html'));
+              this.xNum = -10;
+              this.yNum = 200;
+              this.onScrollx = 0;
+              this.onScrolly = 0;
+              this.duration = 500;
+              await Utils.sleep(1000);
+              try {
+                this.controller.scrollTo(this.xNum, this.yNum,this.duration);
+                await Utils.sleep(1000)
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              }
+              if (this.onScrollx == 0 && this.onScrolly == 0) {
+                  Utils.emitEvent(true, 230726)
+                } else {
+                  Utils.emitEvent(false, 230726)
+                }
+              break;
+            }
+            case "emitScrollToTen": {
+              this.controller.loadUrl($rawfile('theScroll.html'));
+              this.xNum = 200;
+              this.yNum = -10;
+              this.onScrollx = 0;
+              this.onScrolly = 0;
+              this.duration = 500;
+              await Utils.sleep(1000);
+              try {
+                this.controller.scrollTo(this.xNum, this.yNum,this.duration);
+                await Utils.sleep(1000)
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              }
+              if (this.onScrollx == 0 && this.onScrolly == 0) {
+                  Utils.emitEvent(true, 232726)
+                } else {
+                  Utils.emitEvent(false, 232726)
+                }
+              break;
+            }
+            case "emitScrollToEleven": {
+              this.controller.loadUrl($rawfile('theScroll.html'));
+              this.xNum = 200;
+              this.yNum = 200;
+              this.onScrollx = 0;
+              this.onScrolly = 0;
+              this.duration = 500;
+              await Utils.sleep(1000);
+              try {
+                this.controller.scrollTo(this.xNum, this.yNum,this.duration);
+                await Utils.sleep(1000)
+              } catch (error) {
+                console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+              }
+              if (this.onScrollx == 0 && this.onScrolly == 0) {
+                  Utils.emitEvent(true, 234726)
+                } else {
+                  Utils.emitEvent(false, 234726)
+                }
               break;
             }
           }

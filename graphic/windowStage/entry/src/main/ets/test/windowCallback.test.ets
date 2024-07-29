@@ -894,11 +894,23 @@ export default function windowCallbackTest(context: common.UIAbilityContext, win
         }
       })
       listenerOnFlag = true;
+      await tempWnd.setWindowLayoutFullScreen(false).catch((err: BusinessError) => {
+        console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      console.log(msgStr + 'tempWnd.setWindowLayoutFullScreen(false) success');
       await setSystemBarEnable(tempWnd).catch((err: BusinessError) => {
         console.info(msgStr + 'setWindowSystemBarEnable error : ' + JSON.stringify(err));
         expect().assertFail();
       });
       await sleep(800)
+      await tempWnd.setWindowLayoutFullScreen(true).catch((err: BusinessError) => {
+        console.error(msgStr + 'Failed to set the window layout to full-screen mode. Cause:' + JSON.stringify(err));
+        expect().assertFail();
+        done();
+      });
+      console.log(msgStr + 'tempWnd.setWindowLayoutFullScreen(true) success');
       await setSystemBarEnableT(tempWnd).catch((err: BusinessError) => {
         console.info(msgStr + 'setWindowSystemBarEnable error : ' + JSON.stringify(err));
         expect().assertFail();

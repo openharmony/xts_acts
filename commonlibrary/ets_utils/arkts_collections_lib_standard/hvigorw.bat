@@ -21,7 +21,6 @@
 @rem    Add %NODE_HOME%/bin to the PATH environment variable
 @rem ----------------------------------------------------------------------------
 @rem
-
 @echo off
 @if NOT "%DEBUG%" == "" @echo on
 
