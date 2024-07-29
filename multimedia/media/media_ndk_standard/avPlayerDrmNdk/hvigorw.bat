@@ -13,7 +13,7 @@
  @rem limitations under the License.
  @echo off
 
-@if NOT "%DEBUG%" == "" @echo on
+@if "%DEBUG%" == "" @echo off
 @rem ##########################################################################
 @rem
 @rem  Hvigor startup script for Windows
