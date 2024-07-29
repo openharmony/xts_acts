@@ -19,7 +19,8 @@
     "deviceType": [
       "default",
       "tablet",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "distro": {
       "deliveryWithInstall": true,
@@ -47,12 +48,12 @@
         "launchType": "standard",
         "language": "C++",
         "metaData": {
-            "customizeData": [
-                {
-                    "name": "originWidgetName",
-                    "value": "com.weather.testWidget"
-                }
-            ]
+          "customizeData": [
+            {
+              "name": "originWidgetName",
+              "value": "com.weather.testWidget"
+            }
+          ]
         }
       }
     ],
@@ -68,10 +69,10 @@
         }
       }
     ],
-    "reqPermissions":[
+    "reqPermissions": [
       {
-          "name":"ohos.permission.DISTRIBUTED_DATASYNC",
-          "reason":"use ohos.permission.DISTRIBUTED_DATASYNC"
+        "name": "ohos.permission.DISTRIBUTED_DATASYNC",
+        "reason": "use ohos.permission.DISTRIBUTED_DATASYNC"
       },
       {
         "name": "ohos.permission.KEEP_BACKGROUND_RUNNING",

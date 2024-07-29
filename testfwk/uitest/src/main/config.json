@@ -22,7 +22,8 @@
       "tablet",
       "default",
       "phone",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "distro": {
       "moduleType": "entry",

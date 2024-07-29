@@ -6,9 +6,10 @@
     "description": "$string:entry_desc",
     "mainElement": "MainAbility",
     "deviceTypes": [
-        "default",
-        "tablet",
-        "2in1"
+      "default",
+      "tablet",
+      "2in1",
+      "wearable"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,

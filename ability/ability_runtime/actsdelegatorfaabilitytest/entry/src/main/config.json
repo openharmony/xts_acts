@@ -18,7 +18,8 @@
     "mainAbility": ".TestAbility",
     "deviceType": [
       "phone",
-      "tablet"
+      "tablet",
+      "wearable"
     ],
     "distro": {
       "deliveryWithInstall": true,

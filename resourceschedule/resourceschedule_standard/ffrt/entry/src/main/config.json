@@ -17,12 +17,12 @@
     "package": "com.actsffrt.napitest",
     "name": ".MyApplication",
     "mainAbility": "com.actsffrt.napitest.MainAbility",
-
     "deviceType": [
       "default",
       "tablet",
       "phone",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "distro": {
       "deliveryWithInstall": true,

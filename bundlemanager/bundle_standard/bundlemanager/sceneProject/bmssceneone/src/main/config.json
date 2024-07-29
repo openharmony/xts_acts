@@ -19,7 +19,8 @@
     "deviceType": [
       "default",
       "tablet",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "distro": {
       "deliveryWithInstall": true,
@@ -47,14 +48,16 @@
         "launchType": "standard",
         "orientation": "unspecified",
         "language": "C++",
-        "permissions":["com.permission.BMS_PERMISSION_CAMERA"],
+        "permissions": [
+          "com.permission.BMS_PERMISSION_CAMERA"
+        ],
         "metaData": {
-            "customizeData": [
-                {
-                    "name": "originWidgetName",
-                    "value": "com.weather.testWidget"
-                }
-            ]
+          "customizeData": [
+            {
+              "name": "originWidgetName",
+              "value": "com.weather.testWidget"
+            }
+          ]
         }
       }
     ],
@@ -83,7 +86,9 @@
       {
         "name": "com.permission.PERMISSION_A",
         "grantMode": "system_grant",
-        "availableScope": ["signature"]
+        "availableScope": [
+          "signature"
+        ]
       }
     ],
     "reqPermissions": [
@@ -98,13 +103,15 @@
         }
       }
     ],
-    "metaData":{
-      "customizeData":[{
-        "name":"metaDataName",
-        "value":"metaDataValue",
-        "extra":"$string:app_name"
-      }]
+    "metaData": {
+      "customizeData": [
+        {
+          "name": "metaDataName",
+          "value": "metaDataValue",
+          "extra": "$string:app_name"
+        }
+      ]
     },
-    "description":"$string:entry_description"
+    "description": "$string:entry_description"
   }
 }

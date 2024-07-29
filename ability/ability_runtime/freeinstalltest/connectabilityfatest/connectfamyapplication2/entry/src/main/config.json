@@ -6,7 +6,7 @@
       "code": 1000000,
       "name": "1.0.0"
     },
-	"apiVersion": {
+    "apiVersion": {
       "compatible": 8,
       "releaseType": "Release",
       "target": 8
@@ -18,7 +18,8 @@
     "deviceType": [
       "default",
       "tablet",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "abilities": [
       {

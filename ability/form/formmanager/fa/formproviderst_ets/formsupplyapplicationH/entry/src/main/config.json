@@ -21,7 +21,8 @@
     "deviceType": [
       "default",
       "tablet",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "distro": {
       "deliveryWithInstall": true,
@@ -79,20 +80,20 @@
             "updateDuration": 1
           },
           {
-            "jsComponentName":"widget",
-            "isDefault":false,
-            "defaultDimension":"2*2",
-            "formVisibleNotify":true,
-            "name":"Form_Js002",
-            "colorMode":"auto",
-            "description":"This is a form 002",
-            "supportDimensions":[
+            "jsComponentName": "widget",
+            "isDefault": false,
+            "defaultDimension": "2*2",
+            "formVisibleNotify": true,
+            "name": "Form_Js002",
+            "colorMode": "auto",
+            "description": "This is a form 002",
+            "supportDimensions": [
               "1*2",
               "2*2"
             ],
-            "type":"JS",
-            "updateEnabled":true,
-            "updateDuration":1
+            "type": "JS",
+            "updateEnabled": true,
+            "updateDuration": 1
           }
         ],
         "srcLanguage": "ets"

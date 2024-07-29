@@ -6,7 +6,8 @@
     "mainElement": "TestAbility",
     "deviceTypes": [
       "default",
-      "tablet"
+      "tablet",
+      "wearable"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
