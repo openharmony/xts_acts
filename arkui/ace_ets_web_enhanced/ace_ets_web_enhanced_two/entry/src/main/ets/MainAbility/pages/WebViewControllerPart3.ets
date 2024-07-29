@@ -1066,6 +1066,8 @@ struct WebViewControllerPart3 {
                 this.controller.removeCache(true)
                 this.controller.loadUrl('https://www.huawei.com')
                 await Utils.sleep(3000)
+                this.controller.removeCache(true);
+                await Utils.sleep(3000)
                 this.controller.prefetchPage('https://www.huawei.com');
                 await Utils.sleep(3000)
                 this.controller.loadUrl('https://www.huawei.com')

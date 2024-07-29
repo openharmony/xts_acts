@@ -63,7 +63,7 @@ export default function webOnBeforeUnload() {
       Utils.emitEvent("emitOnBeforeUnload001", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnBeforeUnload001", "resource://rawfile/onBeforeUnloadTest.html", 60402, done);
-      Utils.registerEvent("testOnBeforeUnload001", "系统可能不会保存您所做的更改。", 60403, done);
+      Utils.registerEvent("testOnBeforeUnload001", true, 60403, done);
       sendEventByKey('webOnBeforeUnload', 10, '');
     })
 
@@ -79,7 +79,7 @@ export default function webOnBeforeUnload() {
       Utils.emitEvent("emitOnBeforeUnload002", 10)
       await Utils.sleep(2000);
       Utils.registerEvent("testOnBeforeUnload002", "resource://rawfile/onBeforeUnloadTest.html", 60404, done);
-      Utils.registerEvent("testOnBeforeUnload002", "系统可能不会保存您所做的更改。", 60405, done);
+      Utils.registerEvent("testOnBeforeUnload002", true, 60405, done);
       sendEventByKey('webOnBeforeUnload', 10, '');
     })
   })
