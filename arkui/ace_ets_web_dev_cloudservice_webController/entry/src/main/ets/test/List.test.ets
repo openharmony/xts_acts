@@ -24,12 +24,12 @@ import webViewMetaViewportTrue from './webViewMetaViewportTrue.test';
 
 export default function testsuite() {
   webViewOnFullScreenEnterVideoInfo()
-  webViewNativeVideoUpdateRect()
   webViewSetRenderProcessMode()
   webViewRegisterNativeEmbedRule()
   webViewOnOverrideUrlLoading()
   webViewMetaViewportFalse()
   webViewMetaViewportTrue()
   webViewJsBridgeLastJsProxyCallingFrameUrl()
+  webViewNativeVideoUpdateRect()
   webViewCookieTrack()
 }
