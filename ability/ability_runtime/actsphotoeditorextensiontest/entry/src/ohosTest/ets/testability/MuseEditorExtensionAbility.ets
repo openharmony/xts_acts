@@ -18,9 +18,9 @@ export default class MuseEditorExtensionAbility extends PhotoEditorExtensionAbil
         hilog.info(0x0000, TAG, `startContentEditing want ==> ${JSON.stringify(want)}`)
 
         const storage: LocalStorage = new LocalStorage({
-            "session": session,
-            "callerWant": want,
-            "uri": uri
+            'session': session,
+            'callerWant': want,
+            'uri': uri
         } as Record<string, Object>);
 
         session.loadContent('pages/PhotoEditor', storage);
