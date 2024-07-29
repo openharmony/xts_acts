@@ -62,16 +62,16 @@ export default function abilityTest() {
         })
 
        /**
-        * @tc.number ACTS_PhotoEditorExtension_001
-        * @tc.name ACTS_PhotoEditorExtension_001
+        * @tc.number SUB_ABILITY_ABILITYRUNTIME_PHOTOEDITOREXTENSION_0100
+        * @tc.name test PhotoEditorExtension interface
         * @tc.desc Start the PhotoEditorExtensionAbility, and the test is successful.
         * @tc.size MediumTest
         * @tc.level Level0
         * @tc.type Function
         */
-        it('ACTS_PhotoEditorExtension_001', 0, () => {
+        it('ACTS_PhotoEditorExtension_0100', 0, () => {
             // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-            TAG = 'ACTS_PhotoEditorExtension_001 == ';
+            TAG = 'ACTS_PhotoEditorExtension_0100 == ';
 
             let subscriber: commonEventManager.CommonEventSubscriber | null = null;
             let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
