@@ -1132,7 +1132,8 @@ static napi_value OHEffectFilterReleaseFilterNames(napi_env env, napi_callback_i
     return ret;
 }
 
-ImageEffect_FilterDelegate getFilterDelegate() {
+ImageEffect_FilterDelegate getFilterDelegate() 
+{
     ImageEffect_FilterDelegate filterDelegate = {
         .setValue = [](OH_EffectFilter *filter, const char *key, const ImageEffect_Any *value) { return true; },
         .render = [](OH_EffectFilter *filter, OH_EffectBufferInfo *info,
