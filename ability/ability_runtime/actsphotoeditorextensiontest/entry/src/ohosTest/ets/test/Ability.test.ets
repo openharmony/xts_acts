@@ -63,7 +63,7 @@ export default function abilityTest() {
 
        /**
         * @tc.number: ACTS_PhotoEditorExtension_001
-        * @tc.name: Test PhotoEditorExtension basic function.
+        * @tc.name: ACTS_PhotoEditorExtension_001
         * @tc.desc: Start the PhotoEditorExtensionAbility, and the test is successful.
         * @tc.size MediumTest
         * @tc.level Level0
