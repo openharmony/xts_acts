@@ -115,7 +115,6 @@ struct TextEditMenuOptions {
           }
         })
         .margin({ top: 50 })
-        .margin({ top: 100 })
     }
     .width("90%")
     .margin("5%")
