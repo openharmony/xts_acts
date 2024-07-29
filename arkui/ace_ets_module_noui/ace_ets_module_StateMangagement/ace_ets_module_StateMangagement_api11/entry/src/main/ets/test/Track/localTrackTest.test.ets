@@ -13,16 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
+
 export default function localTrackTest() {
-  describe('localTrackTest', function () {
-    beforeEach(async function (done) {
+  describe('localTrackTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("localTrackTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Track/localTrack',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Track/localTrack',
       }
       try {
         router.clear();
@@ -30,7 +44,7 @@ export default function localTrackTest() {
         console.info("get localTrackTest state pages: " + JSON.stringify(pages));
         if (!("localTrack" == pages.name)) {
           console.info("get localTrackTest state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push localTrackTest success: " + JSON.stringify(result));
         }
@@ -40,7 +54,7 @@ export default function localTrackTest() {
       }
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       let driver = Driver.create();
       await CommonFunc.sleep(500);
       let button = await driver.findComponent(ON.id('localTrack_reset'));
@@ -49,14 +63,14 @@ export default function localTrackTest() {
       await CommonFunc.sleep(2000);
     });
     /**
-     * @tc.number    SUB_ACE_localTrackTest_0100
-     * @tc.name      localTrackTest_0100
-     * @tc.desc      localTrack
-     * @tc.level:    Level 2
+     * @tc.number SUB_ACE_localTrackTest_0100
+     * @tc.name localTrackTest_0100
+     * @tc.desc localTrack
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('localTrackTest_0100', 0, async function (done) {
+    it('localTrackTest_0100', 0, async (done: Function) => {
       console.info('localTrackTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -75,14 +89,14 @@ export default function localTrackTest() {
       done();
     });
     /**
-     * @tc.number    SUB_ACE_localTrackTest_0200
-     * @tc.name      localTrackTest_0200
-     * @tc.desc      localTrack
-     * @tc.level:    Level 2
+     * @tc.number SUB_ACE_localTrackTest_0200
+     * @tc.name localTrackTest_0200
+     * @tc.desc localTrack
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('localTrackTest_0200', 0, async function (done) {
+    it('localTrackTest_0200', 0, async (done: Function) => {
       console.info('localTrackTest_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);

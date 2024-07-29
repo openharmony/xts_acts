@@ -14,7 +14,7 @@
  */
 
 import events_emitter from '@ohos.events.emitter';
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
 
@@ -22,8 +22,8 @@ export default function stateManagementGetSharedJsunit() {
   describe('stateManagementGetSharedTest', () => {
     beforeAll(async () => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/stateMangagement/stateManagementNew',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/stateMangagement/stateManagementNew',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function stateManagementGetSharedJsunit() {
         console.info("get stateManagement state success " + JSON.stringify(pages));
         if (!("stateManagement" == pages.name)) {
           console.info("get stateManagement state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push stateManagement page success " + JSON.stringify(result));
         }

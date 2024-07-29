@@ -1231,5 +1231,26 @@ describe("ArraylistTest", function () {
       expect(err.message).assertEqual(`The isEmpty method cannot be bound`);
     }
   });
+
+  /**
+   * @tc.number: SUB_Arraylist_JSTest_0066
+   * @tc.name: testRemoveByIndex066
+   * @tc.size: SmallTest
+   * @tc.type: Function
+   * @tc.level: Level 0
+   * @tc.desc: In the ArrayList instance, delete the element based on its subscript index. 
+   * For example: linkedList.removeByIndex(0).
+   */
+  it("testRemoveByIndex066", 0, function () {
+    let arrayList = new ArrayList();
+    try {
+      let res = arrayList.removeByIndex(0);
+      expect(true).assertEqual(false);
+    } catch (err) {
+      expect(err.name).assertEqual("BusinessError");
+      expect(err.code).assertEqual(10200001);
+      expect(err.message).assertEqual("Container is empty");
+    }
+  });
 });
 }

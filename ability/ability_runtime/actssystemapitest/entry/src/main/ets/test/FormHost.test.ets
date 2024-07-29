@@ -15,10 +15,12 @@
 
 import { describe, it, expect } from '@ohos/hypium'
 import formHost from '@ohos.app.form.formHost'
+import { BusinessError } from '@ohos.base';
+import Want from '@ohos.app.ability.Want';
 
 let ERROR_CODE = 202;
 export default function formHostTest() {
-  describe('formHostTest', function () {
+  describe('formHostTest', () => {
 
     /**
      * @tc.number: System_API_Test_Form_Host_0100
@@ -26,12 +28,12 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call deleteForm will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_0100',0, async function (done) {
+    it('System_API_Test_Form_Host_0100',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_0100';
       console.log(TAG + ' formHost deleteForm BEGIN');
       try {
         let formId = "12400633174999288";
-        formHost.deleteForm(formId, (error, data) => {
+        formHost.deleteForm(formId, (error: BusinessError, data) => {
           if (error) {
             console.log(TAG + ' formHost deleteForm, error:' + JSON.stringify(error.code));
             expect(error.code).assertEqual(ERROR_CODE);
@@ -53,7 +55,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call deleteForm will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_0200',0, async function (done) {
+    it('System_API_Test_Form_Host_0200',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_0200';
       try {
         let formId = "12400633174999288";
@@ -62,7 +64,7 @@ export default function formHostTest() {
             expect().assertFail();
             done();
           })
-          .catch((error) => {
+          .catch((error: BusinessError) => {
             console.log(TAG + ' formHost deleteForm, error:' + JSON.stringify(error));
             expect(error.code).assertEqual(ERROR_CODE);
             done();
@@ -82,7 +84,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call deleteForm will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_0300',0, async function (done) {
+    it('System_API_Test_Form_Host_0300',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_0300';
       try {
         let formId = "12400633174999288";
@@ -108,7 +110,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call releaseForm will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_0400',0, async function (done) {
+    it('System_API_Test_Form_Host_0400',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_0400';
       try {
         let formId = "12400633174999288";
@@ -134,7 +136,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call releaseForm will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_0500',0, async function (done) {
+    it('System_API_Test_Form_Host_0500',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_0500';
       try {
         let formId = "12400633174999288";
@@ -143,7 +145,7 @@ export default function formHostTest() {
             expect().assertFail();
             done();
           })
-          .catch((error) => {
+          .catch((error: BusinessError) => {
             console.log(TAG + ' formHost releaseForm, error:' + JSON.stringify(error));
             expect(error.code).assertEqual(ERROR_CODE);
             done();
@@ -161,7 +163,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call requestForm will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_0600',0, async function (done) {
+    it('System_API_Test_Form_Host_0600',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_0600';
       try {
         let formId = "12400633174999288";
@@ -187,7 +189,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call requestForm will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_0700',0, async function (done) {
+    it('System_API_Test_Form_Host_0700',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_0700';
       try {
         let formId = "12400633174999288";
@@ -196,7 +198,7 @@ export default function formHostTest() {
             expect().assertFail();
             done();
           })
-          .catch((error) => {
+          .catch((error: BusinessError) => {
             console.log(TAG + ' formHost requestForm, error:' + JSON.stringify(error));
             expect(error.code).assertEqual(ERROR_CODE);
             done();
@@ -214,7 +216,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call castToNormalForm will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_0800',0, async function (done) {
+    it('System_API_Test_Form_Host_0800',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_0800';
       try {
         let formId = "12400633174999288";
@@ -240,7 +242,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call castToNormalForm will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_0900',0, async function (done) {
+    it('System_API_Test_Form_Host_0900',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_0900';
       try {
         let formId = "12400633174999288";
@@ -249,7 +251,7 @@ export default function formHostTest() {
             expect().assertFail();
             done();
           })
-          .catch((error) => {
+          .catch((error: BusinessError) => {
             console.log(TAG + ' formHost castToNormalForm, error:' + JSON.stringify(error));
             expect(error.code).assertEqual(ERROR_CODE);
             done();
@@ -267,7 +269,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call notifyVisibleForms will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_1000',0, async function (done) {
+    it('System_API_Test_Form_Host_1000',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_1000';
       try {
         let formId = "12400633174999288";
@@ -293,7 +295,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call notifyVisibleForms will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_1100',0, async function (done) {
+    it('System_API_Test_Form_Host_1100',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_1100';
       try {
         let formId = "12400633174999288";
@@ -302,7 +304,7 @@ export default function formHostTest() {
             expect().assertFail();
             done();
           })
-          .catch((error) => {
+          .catch((error: BusinessError) => {
             console.log(TAG + ' formHost castToNormalForm, error:' + JSON.stringify(error));
             expect(error.code).assertEqual(ERROR_CODE);
             done();
@@ -320,7 +322,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call notifyInvisibleForms will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_1200',0, async function (done) {
+    it('System_API_Test_Form_Host_1200',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_1200';
       try {
         let formId = "12400633174999288";
@@ -346,7 +348,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call notifyInvisibleForms will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_1300',0, async function (done) {
+    it('System_API_Test_Form_Host_1300',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_1300';
       try {
         let formId = "12400633174999288";
@@ -355,7 +357,7 @@ export default function formHostTest() {
             expect().assertFail();
             done();
           })
-          .catch((error) => {
+          .catch((error: BusinessError) => {
             console.log(TAG + ' formHost notifyInvisibleForms, error:' + JSON.stringify(error));
             expect(error.code).assertEqual(ERROR_CODE);
             done();
@@ -373,7 +375,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call enableFormsUpdate will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_1400',0, async function (done) {
+    it('System_API_Test_Form_Host_1400',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_1400';
       try {
         let formId = "12400633174999288";
@@ -399,7 +401,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call enableFormsUpdate will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_1500',0, async function (done) {
+    it('System_API_Test_Form_Host_1500',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_1500';
       try {
         let formId = "12400633174999288";
@@ -408,7 +410,7 @@ export default function formHostTest() {
             expect().assertFail();
             done();
           })
-          .catch((error) => {
+          .catch((error: BusinessError) => {
             console.log(TAG + ' formHost enableFormsUpdate, error:' + JSON.stringify(error));
             expect(error.code).assertEqual(ERROR_CODE);
             done();
@@ -426,7 +428,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call disableFormsUpdate will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_1600',0, async function (done) {
+    it('System_API_Test_Form_Host_1600',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_1600';
       try {
         let formId = "12400633174999288";
@@ -452,7 +454,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call disableFormsUpdate will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_1700',0, async function (done) {
+    it('System_API_Test_Form_Host_1700',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_1700';
       try {
         let formId = "12400633174999288";
@@ -461,7 +463,7 @@ export default function formHostTest() {
             expect().assertFail();
             done();
           })
-          .catch((error) => {
+          .catch((error: BusinessError) => {
             console.log(TAG + ' formHost disableFormsUpdate, error:' + JSON.stringify(error));
             expect(error.code).assertEqual(ERROR_CODE);
             done();
@@ -479,7 +481,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call isSystemReady will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_1800',0, async function (done) {
+    it('System_API_Test_Form_Host_1800',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_1800';
       try {
         formHost.isSystemReady((data) => {
@@ -498,7 +500,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call isSystemReady will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_1900',0, async function (done) {
+    it('System_API_Test_Form_Host_1900',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_1900';
       try {
         formHost.isSystemReady()
@@ -506,7 +508,7 @@ export default function formHostTest() {
             expect().assertFail();
             done();
           })
-          .catch((error) => {
+          .catch((error: BusinessError) => {
             console.log(TAG + ` promise catch err->${JSON.stringify(error)}`);
           })
       } catch (error) {
@@ -522,7 +524,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call getAllFormsInfo will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_2000',0, async function (done) {
+    it('System_API_Test_Form_Host_2000',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_2000';
       try {
         formHost.getAllFormsInfo((error, data) => {
@@ -543,7 +545,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call getAllFormsInfo will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_2100',0, async function (done) {
+    it('System_API_Test_Form_Host_2100',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_2100';
       try {
         formHost.getAllFormsInfo()
@@ -551,7 +553,7 @@ export default function formHostTest() {
             expect().assertFail();
             done();
            })
-          .catch((error) => {
+          .catch((error: BusinessError) => {
             console.log(TAG + ' formHost getAllFormsInfo, error:' + JSON.stringify(error));
             expect(error.code).assertEqual(ERROR_CODE);
             done();
@@ -570,7 +572,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call getFormsInfo will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_2200',0, async function (done) {
+    it('System_API_Test_Form_Host_2200',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_2200';
       try {
         let bundleName = "bundleName";
@@ -596,7 +598,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call getFormsInfo will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_2300',0, async function (done) {
+    it('System_API_Test_Form_Host_2300',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_2300';
       try {
         let bundleName = "bundleName";
@@ -623,7 +625,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call getFormsInfo will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_2400',0, async function (done) {
+    it('System_API_Test_Form_Host_2400',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_2400';
       try {
         let bundleName = "bundleName";
@@ -632,7 +634,7 @@ export default function formHostTest() {
             expect().assertFail();
             done();
           })
-          .catch((error) => {
+          .catch((error: BusinessError) => {
             console.log(TAG + ' formHost getFormsInfo, error:' + JSON.stringify(error));
             expect(error.code).assertEqual(ERROR_CODE);
             done();
@@ -650,7 +652,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call deleteInvalidForms will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_2500',0, async function (done) {
+    it('System_API_Test_Form_Host_2500',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_2500';
       try {
         let formId = "12400633174999288";
@@ -676,7 +678,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call deleteInvalidForms will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_2600',0, async function (done) {
+    it('System_API_Test_Form_Host_2600',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_2600';
       try {
         let formId = "12400633174999288";
@@ -685,7 +687,7 @@ export default function formHostTest() {
             expect().assertFail();
             done();
           })
-          .catch((error) => {
+          .catch((error: BusinessError) => {
             console.log(TAG + ' formHost deleteInvalidForms, error:' + JSON.stringify(error));
             expect(error.code).assertEqual(ERROR_CODE);
             done();
@@ -703,10 +705,10 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call acquireFormState will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_2700',0, async function (done) {
+    it('System_API_Test_Form_Host_2700',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_2700';
       try {
-        let want = {
+        let want: Want = {
           abilityName: "aaa",
           bundleName: "bbb"
         };
@@ -732,10 +734,10 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call deleteForm will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_2800',0, async function (done) {
+    it('System_API_Test_Form_Host_2800',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_2800';
       try {
-        let want = {
+        let want: Want = {
           abilityName: "aaa",
           bundleName: "bbb"
         };
@@ -744,7 +746,7 @@ export default function formHostTest() {
             expect().assertFail();
             done();
           })
-          .catch((error) => {
+          .catch((error: BusinessError) => {
             console.log(TAG + ' formHost acquireFormState, error:' + JSON.stringify(error));
             expect(error.code).assertEqual(ERROR_CODE);
             done();
@@ -762,7 +764,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call on will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_2900',0, async function (done) {
+    it('System_API_Test_Form_Host_2900',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_2900';
       try {
         formHost.on("formUninstall", (data) => {
@@ -783,7 +785,7 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call off will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_3000',0, async function (done) {
+    it('System_API_Test_Form_Host_3000',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_3000';
       try {
         formHost.off("formUninstall", (data) => {
@@ -804,10 +806,10 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call notifyFormsVisible will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_3100',0, async function (done) {
+    it('System_API_Test_Form_Host_3100',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_3100';
       try {
-        let formId = "12400633174999288";
+        let formId: string = "12400633174999288";
         formHost.notifyFormsVisible([formId], false, (error, data) => {
           if (error) {
             console.log(TAG + ' formHost notifyFormsVisible, error:' + JSON.stringify(error));
@@ -830,15 +832,15 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call notifyFormsVisible will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_3200',0, async function (done) {
+    it('System_API_Test_Form_Host_3200',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_3200';
       try {
-        let formId = "12400633174999288";
+        let formId: string = "12400633174999288";
         formHost.notifyFormsVisible([formId], false)
           .then(() => {
 
           })
-          .catch((error) => {
+          .catch((error: BusinessError) => {
             console.log(TAG + ' formHost notifyFormsVisible, error:' + JSON.stringify(error));
             expect(error.code).assertEqual(ERROR_CODE);
             done();
@@ -856,10 +858,10 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call notifyFormsEnableUpdate will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_3300',0, async function (done) {
+    it('System_API_Test_Form_Host_3300',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_3300';
       try {
-        let formId = "12400633174999288";
+        let formId: string = "12400633174999288";
         formHost.notifyFormsEnableUpdate([formId], false, (error, data) => {
           if (error) {
             console.log(TAG + ' formHost notifyFormsEnableUpdate, error:' + JSON.stringify(error));
@@ -882,13 +884,13 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call notifyFormsEnableUpdate will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_3400',0, async function (done) {
+    it('System_API_Test_Form_Host_3400',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_3400';
-      let formId = "12400633174999288";
+      let formId: string = "12400633174999288";
       formHost.notifyFormsEnableUpdate([formId], false)
         .then(() => {
         })
-        .catch((error) => {
+        .catch((error: BusinessError) => {
           console.log(TAG + ' formHost notifyFormsEnableUpdate, error:' + JSON.stringify(error));
           expect(error.code).assertEqual(ERROR_CODE);
           done();
@@ -901,11 +903,11 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call shareForm will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_3500',0, async function (done) {
+    it('System_API_Test_Form_Host_3500',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_3500';
       try {
-        let formId = "1337079774";
-        let deviceId = "12400633174999288";
+        let formId: string = "1337079774";
+        let deviceId: string = "12400633174999288";
         formHost.shareForm(formId, deviceId, (error, data) => {
           if (error) {
             console.log(TAG + ' formHost shareForm, error:' + JSON.stringify(error));
@@ -928,16 +930,16 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call shareForm will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_3600',0, async function (done) {
+    it('System_API_Test_Form_Host_3600',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_3600';
-      let formId = "1337079774";
-      let deviceId = "12400633174999288";
+      let formId: string = "1337079774";
+      let deviceId: string = "12400633174999288";
       formHost.shareForm(formId, deviceId)
         .then(() => {
           expect().assertFail();
           done();
         })
-        .catch((error) => {
+        .catch((error: BusinessError) => {
           console.log(TAG + ' formHost shareForm, error:' + JSON.stringify(error));
           expect(error.code).assertEqual(ERROR_CODE);
           done();
@@ -950,10 +952,10 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call notifyFormsPrivacyProtected will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_3700',0, async function (done) {
+    it('System_API_Test_Form_Host_3700',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_3700';
       try {
-        let formId = "12400633174999288";
+        let formId: string = "12400633174999288";
         formHost.notifyFormsPrivacyProtected([formId], false, (error, data) => {
           if (error) {
             console.log(TAG + ' formHost notifyFormsPrivacyProtected, error:' + JSON.stringify(error));
@@ -976,15 +978,15 @@ export default function formHostTest() {
      * @tc.desc:  Test the third-party application call notifyFormsPrivacyProtected will be blocked
      * @tc.level   3
      */
-    it('System_API_Test_Form_Host_3800',0, async function (done) {
+    it('System_API_Test_Form_Host_3800',0, async (done: Function) => {
       let TAG = 'System_API_Test_Form_Host_3800';
       try {
-        let formId = "12400633174999288";
+        let formId: string = "12400633174999288";
         formHost.notifyFormsPrivacyProtected([formId], false)
           .then(() => {
 
           })
-          .catch((error) => {
+          .catch((error: BusinessError) => {
             console.log(TAG + ' formHost notifyFormsPrivacyProtected, error:' + JSON.stringify(error));
             expect(error.code).assertEqual(ERROR_CODE);
             done();

@@ -13,16 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
+
 export default function StateTrackTest() {
-  describe('StateTrackTest', function () {
-    beforeEach(async function (done) {
+  describe('StateTrackTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("StateTrackTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Track/StateTrack',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Track/StateTrack',
       }
       try {
         router.clear();
@@ -30,7 +44,7 @@ export default function StateTrackTest() {
         console.info("get StateTrackTest state pages: " + JSON.stringify(pages));
         if (!("StateTrack" == pages.name)) {
           console.info("get StateTrackTest state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push StateTrackTest success: " + JSON.stringify(result));
         }
@@ -40,7 +54,7 @@ export default function StateTrackTest() {
       }
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       let driver = Driver.create();
       await CommonFunc.sleep(500);
       let button = await driver.findComponent(ON.id('StateTrack_reset'));
@@ -49,14 +63,14 @@ export default function StateTrackTest() {
       await CommonFunc.sleep(2000);
     });
     /**
-     * @tc.number    SUB_ACE_StateTrackTest_0100
-     * @tc.name      StateTrackTest_0100
-     * @tc.desc      StateTrack
-     * @tc.level:    Level 2
+     * @tc.number SUB_ACE_StateTrackTest_0100
+     * @tc.name StateTrackTest_0100
+     * @tc.desc StateTrack
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('StateTrackTest_0100', 0, async function (done) {
+    it('StateTrackTest_0100', 0, async (done: Function) => {
       console.info('StateTrackTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -81,14 +95,14 @@ export default function StateTrackTest() {
       done();
     });
     /**
-     * @tc.number    SUB_ACE_StateTrackTest_0200
-     * @tc.name      StateTrackTest_0200
-     * @tc.desc      StateTrack
-     * @tc.level:    Level 2
+     * @tc.number SUB_ACE_StateTrackTest_0200
+     * @tc.name StateTrackTest_0200
+     * @tc.desc StateTrack
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('StateTrackTest_0200', 0, async function (done) {
+    it('StateTrackTest_0200', 0, async (done: Function) => {
       console.info('StateTrackTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);

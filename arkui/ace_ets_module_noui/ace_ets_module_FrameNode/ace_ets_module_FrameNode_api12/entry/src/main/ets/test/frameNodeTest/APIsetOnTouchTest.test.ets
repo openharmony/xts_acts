@@ -13,15 +13,29 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
+
 export default function APIsetOnTouchTest() {
-  describe('APIsetOnTouchTest', function () {
-    beforeEach(async function (done) {
+  describe('APIsetOnTouchTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("APIsetOnTouchTest beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/frameNode/APIsetOnTouch",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/frameNode/APIsetOnTouch",
       }
       try {
         router.clear();
@@ -29,7 +43,7 @@ export default function APIsetOnTouchTest() {
         console.info("get APIsetOnTouchTest state pages: " + JSON.stringify(pages));
         if (!("APIsetOnTouch" == pages.name)) {
           console.info("get APIsetOnTouchTest state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push APIsetOnTouchTest success: " + JSON.stringify(result));
         }
@@ -40,14 +54,14 @@ export default function APIsetOnTouchTest() {
       done();
     });
     /**
-     * @tc.number    frameNode
-     * @tc.name      APIsetOnTouchTest_0100
-     * @tc.desc      api
-     * @tc.level:    Level 2
+     * @tc.number frameNode
+     * @tc.name APIsetOnTouchTest_0100
+     * @tc.desc api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('APIsetOnTouchTest_0100', 0, async function (done) {
+    it('APIsetOnTouchTest_0100', 0, async (done: Function) => {
       console.info('APIsetOnTouchTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);

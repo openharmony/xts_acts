@@ -13,17 +13,29 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  Driver,
+  Component,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
 
 export default function ProvideColor() {
-  describe('ProvideColor', function () {
-    beforeEach(async function (done) {
+  describe('ProvideColor', () => {
+    beforeEach(async (done: Function) => {
       console.info("ProvideColor beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/@state/ProvideColor',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/@state/ProvideColor',
       }
       try {
         router.clear();
@@ -31,7 +43,7 @@ export default function ProvideColor() {
         console.info("get ProvideColor state pages: " + JSON.stringify(pages));
         if (!("ProvideColor" == pages.name)) {
           console.info("get ProvideColor state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push ProvideColor success: " + JSON.stringify(result));
         }
@@ -47,7 +59,7 @@ export default function ProvideColor() {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('ProvideColor_0100', 0, async function (done) {
+    it('ProvideColor_0100', 0, async (done: Function) => {
       console.info('ProvideColor_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -68,7 +80,7 @@ export default function ProvideColor() {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('ProvideColor_0200', 0, async function (done) {
+    it('ProvideColor_0200', 0, async (done: Function) => {
       console.info('ProvideColor_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -89,7 +101,7 @@ export default function ProvideColor() {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('ProvideColor_0300', 0, async function (done) {
+    it('ProvideColor_0300', 0, async (done: Function) => {
       console.info('ProvideColor_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -110,7 +122,7 @@ export default function ProvideColor() {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('ProvideColor_0400', 0, async function (done) {
+    it('ProvideColor_0400', 0, async (done: Function) => {
       console.info('ProvideColor_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -131,7 +143,7 @@ export default function ProvideColor() {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('ProvideColor_0500', 0, async function (done) {
+    it('ProvideColor_0500', 0, async (done: Function) => {
       console.info('ProvideColor_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -152,7 +164,7 @@ export default function ProvideColor() {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('ProvideColor_0600', 0, async function (done) {
+    it('ProvideColor_0600', 0, async (done: Function) => {
       console.info('ProvideColor_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);

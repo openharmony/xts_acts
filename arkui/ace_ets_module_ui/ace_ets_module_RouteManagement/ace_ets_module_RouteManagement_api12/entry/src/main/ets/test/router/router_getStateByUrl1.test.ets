@@ -15,13 +15,26 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 
 export default function router_getStateByUrl1() {
-  describe('router_getStateByUrl1', function () {
-    beforeEach(async function (done) {
+  describe('router_getStateByUrl1', () => {
+    beforeEach(async (done: Function) => {
       console.info("router_getStateByUrl1 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/router/router_getStateByUrl1',
       }
       try {
@@ -30,7 +43,7 @@ export default function router_getStateByUrl1() {
         console.info("get router_getStateByUrl1 state pages:" + JSON.stringify(pages));
         if (!("router_getStateByUrl1" == pages.name)) {
           console.info("get router_getStateByUrl1 pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push router_getStateByUrl1 page result:" + JSON.stringify(result));
         }
@@ -40,20 +53,20 @@ export default function router_getStateByUrl1() {
       console.info("router_getStateByUrl1 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("router_getStateByUrl1 after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_UI_ABILITY_ROUTER_0010
-     * @tc.name      testGetStateByUrl
-     * @tc.desc      Retrieve the status information of the current page through the URL
-     * @tc.level     Level 3
+     * @tc.number SUB_ACE_UI_ABILITY_ROUTER_0010
+     * @tc.name testGetStateByUrl
+     * @tc.desc Retrieve the status information of the current page through the URL
+     * @tc.level Level 3
      * @tc.type
      * @tc.size
      */
-    it('router_getStateByUrl1_0100', 0, async function (done) {
+    it('router_getStateByUrl1_0100', 0, async (done: Function) => {
       console.info('[router_getStateByUrl1_0100] START');
       await CommonFunc.sleep(1000);
 
@@ -65,8 +78,8 @@ export default function router_getStateByUrl1() {
       await CommonFunc.sleep(2000);
 
       let text1 = getInspectorByKey('router_getStateByUrl1_text');
-      let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('index=2;name=router_getStateByUrl1;path=MainAbility/pages/router/;params={};');
+      expect(JSON.parse(text1).$attrs.content)
+        .assertEqual('index=2;name=router_getStateByUrl1;path=MainAbility/pages/router/;params={};');
 
       console.info('[router_getStateByUrl1_0100] END');
       done();

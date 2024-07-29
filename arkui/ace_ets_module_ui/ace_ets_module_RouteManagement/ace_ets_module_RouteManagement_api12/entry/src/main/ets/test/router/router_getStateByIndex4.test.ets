@@ -15,13 +15,26 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 
 export default function router_getStateByIndex4() {
-  describe('router_getStateByIndex4', function () {
-    beforeEach(async function (done) {
+  describe('router_getStateByIndex4', () => {
+    beforeEach(async (done: Function) => {
       console.info("router_getStateByIndex4 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/router/router_getStateByIndex4',
       }
       try {
@@ -30,7 +43,7 @@ export default function router_getStateByIndex4() {
         console.info("get router_getStateByIndex4 state pages:" + JSON.stringify(pages));
         if (!("router_getStateByIndex4" == pages.name)) {
           console.info("get router_getStateByIndex4 pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push router_getStateByIndex4 page result:" + JSON.stringify(result));
         }
@@ -40,20 +53,20 @@ export default function router_getStateByIndex4() {
       console.info("router_getStateByIndex4 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("router_getStateByIndex4 after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_UI_ABILITY_ROUTER_0040
-     * @tc.name      testGetStateByIndex
-     * @tc.desc      Retrieve the status information of the corresponding page through index values.
-     * @tc.level     Level 3
+     * @tc.number SUB_ACE_UI_ABILITY_ROUTER_0040
+     * @tc.name testGetStateByIndex
+     * @tc.desc Retrieve the status information of the corresponding page through index values.
+     * @tc.level Level 3
      * @tc.type
      * @tc.size
      */
-    it('router_getStateByIndex4_0100', 0, async function (done) {
+    it('router_getStateByIndex4_0100', 0, async (done: Function) => {
       console.info('[router_getStateByIndex4_0100] START');
       await CommonFunc.sleep(1000);
 
@@ -66,8 +79,7 @@ export default function router_getStateByIndex4() {
       console.info('[router_getStateByIndex4_0100] btn1');
 
       let text1 = getInspectorByKey('router_getStateByIndex4_text1');
-      let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('undefined');
+      expect(JSON.parse(text1).$attrs.content).assertEqual('undefined');
       console.info('[router_getStateByIndex4_0100] text1');
 
       let btn2 = await driver.findComponent(ON.id('router_getStateByIndex4_btn2'));
@@ -76,8 +88,7 @@ export default function router_getStateByIndex4() {
       console.info('[router_getStateByIndex4_0100] btn2');
 
       let text2 = getInspectorByKey('router_getStateByIndex4_text2');
-      let Obj2 = JSON.parse(text2);
-      expect(Obj2.$attrs.content).assertEqual('undefined');
+      expect(JSON.parse(text2).$attrs.content).assertEqual('undefined');
       console.info('[router_getStateByIndex4_0100] text2');
 
       let btn3 = await driver.findComponent(ON.id('router_getStateByIndex4_btn3'));
@@ -86,8 +97,7 @@ export default function router_getStateByIndex4() {
       console.info('[router_getStateByIndex4_0100] btn3');
 
       let text3 = getInspectorByKey('router_getStateByIndex4_text3');
-      let Obj3 = JSON.parse(text3);
-      expect(Obj3.$attrs.content).assertEqual('undefined');
+      expect(JSON.parse(text3).$attrs.content).assertEqual('undefined');
       console.info('[router_getStateByIndex4_0100] text3');
 
       let btn4 = await driver.findComponent(ON.id('router_getStateByIndex4_btn4'));
@@ -96,8 +106,7 @@ export default function router_getStateByIndex4() {
       console.info('[router_getStateByIndex4_0100] btn4');
 
       let text4 = getInspectorByKey('router_getStateByIndex4_text4');
-      let Obj4 = JSON.parse(text4);
-      expect(Obj4.$attrs.content).assertEqual('undefined');
+      expect(JSON.parse(text4).$attrs.content).assertEqual('undefined');
       console.info('[router_getStateByIndex4_0100] text4');
 
       console.info('[router_getStateByIndex4_0100] END');

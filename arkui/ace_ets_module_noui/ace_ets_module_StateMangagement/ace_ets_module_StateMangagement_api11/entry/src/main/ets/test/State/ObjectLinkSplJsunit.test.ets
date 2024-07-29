@@ -13,18 +13,31 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
 
 
 export default function ObjectLinkSplJsunit() {
-  describe('ObjectLinkSplJsunit', function () {
-    beforeEach(async function (done) {
+  describe('ObjectLinkSplJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("ObjectLinkSplJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/ObjectLinkSpl',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/ObjectLinkSpl',
       }
       try {
         router.clear();
@@ -32,7 +45,7 @@ export default function ObjectLinkSplJsunit() {
         console.info("get ObjectLinkSplJsunit state pages: " + JSON.stringify(pages));
         if (!("ObjectLinkSpl" == pages.name)) {
           console.info("get ObjectLinkSplJsunit state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push ObjectLinkSplJsunit success: " + JSON.stringify(result));
         }
@@ -42,16 +55,16 @@ export default function ObjectLinkSplJsunit() {
       }
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       let driver = Driver.create();
-      await CommonFunc.sleep(500);      
+      await CommonFunc.sleep(500);
       let button = await driver.findComponent(ON.id('ViewAS_reset'));
       await button.click();
       console.log('reset button click succ')
       await CommonFunc.sleep(1000);
     });
 
-    it('ObjectLinkSplJsunit_0100', 0, async function (done) {
+    it('ObjectLinkSplJsunit_0100', 0, async (done: Function) => {
 
       console.info('ObjectLinkSplJsunit_0100 START');
       let driver = await UiDriver.create()
@@ -86,7 +99,7 @@ export default function ObjectLinkSplJsunit() {
       done();
     });
 
-    it('ObjectLinkSplJsunit_0200', 0, async function (done) {
+    it('ObjectLinkSplJsunit_0200', 0, async (done: Function) => {
 
       console.info('ObjectLinkSplJsunit_0200 START');
       let driver = await UiDriver.create()
@@ -121,7 +134,7 @@ export default function ObjectLinkSplJsunit() {
       done();
     });
 
-    it('ObjectLinkSplJsunit_0300', 0, async function (done) {
+    it('ObjectLinkSplJsunit_0300', 0, async (done: Function) => {
 
       console.info('ObjectLinkSplJsunit_0300 START');
       let driver = await UiDriver.create()
@@ -156,7 +169,7 @@ export default function ObjectLinkSplJsunit() {
       done();
     });
 
-    it('ObjectLinkSplJsunit_0400', 0, async function (done) {
+    it('ObjectLinkSplJsunit_0400', 0, async (done: Function) => {
 
       console.info('ObjectLinkSplJsunit_0400 START');
       let driver = await UiDriver.create()

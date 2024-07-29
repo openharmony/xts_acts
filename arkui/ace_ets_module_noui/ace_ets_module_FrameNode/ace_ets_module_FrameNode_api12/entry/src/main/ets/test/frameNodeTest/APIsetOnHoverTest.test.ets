@@ -14,13 +14,27 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
+
 export default function APIsetOnHoverTest() {
-  describe('APIsetOnHoverTest', function () {
-    beforeEach(async function (done) {
+  describe('APIsetOnHoverTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("APIsetOnHoverTest beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/frameNode/APIsetOnHover",
       }
       try {
@@ -40,21 +54,23 @@ export default function APIsetOnHoverTest() {
       done();
     });
     /**
-     * @tc.number    frameNode
-     * @tc.name      APIsetOnHoverTest_0100
-     * @tc.desc      api
-     * @tc.level:    Level 2
+     * @tc.number frameNode
+     * @tc.name APIsetOnHoverTest_0100
+     * @tc.desc api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('APIsetOnHoverTest_0100', 0, async function (done) {
+    it('APIsetOnHoverTest_0100', 0, async (done: Function) => {
       console.info('APIsetOnHoverTest_0100 START');
 
       let driver = await Driver.create()
       let buttonCl = await driver.findComponent(ON.id('setOnHover_1'));
       await CommonFunc.sleep(500);
       let point = await buttonCl.getBoundsCenter();
-      await driver.mouseMoveTo({x:point.x , y:point.y })
+      await driver.mouseMoveTo({
+        x: point.x, y: point.y
+      })
       await CommonFunc.sleep(1000);
 
       let strJson = getInspectorByKey('setOnHover_1');

@@ -13,16 +13,29 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import router from '@system.router';
+import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 
 export default function routerReplaceJsunit() {
-  describe('routerReplaceJsunit', function () {
-    beforeEach(async function (done) {
+  describe('routerReplaceJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("routerReplaceJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Router/routerReplace',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Router/routerReplace',
       }
       try {
         router.clear();
@@ -30,7 +43,7 @@ export default function routerReplaceJsunit() {
         console.info("get routerReplaceJsunit state pages:" + JSON.stringify(pages));
         if (!("routerReplace" == pages.name)) {
           console.info("get routerReplaceJsunit pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push routerReplaceJsunit page result:" + JSON.stringify(result));
         }
@@ -40,20 +53,20 @@ export default function routerReplaceJsunit() {
       console.info("routerReplaceJsunit beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("routerReplaceJsunit after each called");
     });
 
     /**
-     * @tc.number    routerReplaceJsunit_0100
-     * @tc.name      testReplace
-     * @tc.desc      The replace interface does not set params
-     * @tc.level     Level 3
+     * @tc.number routerReplaceJsunit_0100
+     * @tc.name testReplace
+     * @tc.desc The replace interface does not set params
+     * @tc.level Level 3
      * @tc.type
      * @tc.size
      */
-    it('routerReplaceJsunit_0100', 0, async function (done) {
+    it('routerReplaceJsunit_0100', 0, async (done: Function) => {
       console.info('[routerReplaceJsunit_0100] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -62,8 +75,7 @@ export default function routerReplaceJsunit() {
       await btn.click();
       await CommonFunc.sleep(2000);
       let text = getInspectorByKey('replace_getParams');
-      let Obj = JSON.parse(text);
-      expect(Obj.$attrs.content).assertEqual('router_replaceUrl:undefined');
+      expect(JSON.parse(text).$attrs.content).assertEqual('router_replaceUrl:undefined');
       console.info('[routerReplaceJsunit_0100] END');
       done();
     });

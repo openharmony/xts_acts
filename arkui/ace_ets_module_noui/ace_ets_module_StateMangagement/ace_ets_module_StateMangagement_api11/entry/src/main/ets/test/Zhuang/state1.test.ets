@@ -13,17 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 
 
 export default function state1() {
-  describe('state1', function () {
-    beforeEach(async function (done) {
+  describe('state1', () => {
+    beforeEach(async (done: Function) => {
       console.info("state1 beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Zhuang/state1',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Zhuang/state1',
       }
       try {
         router.clear();
@@ -31,7 +44,7 @@ export default function state1() {
         console.info("get state1 state pages: " + JSON.stringify(pages));
         if (!("state1" == pages.name)) {
           console.info("get state1 state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push state1 success: " + JSON.stringify(result));
         }
@@ -41,11 +54,11 @@ export default function state1() {
       }
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       router.back()
     });
-    it('state1_0100', 0, async function (done) {
+    it('state1_0100', 0, async (done: Function) => {
       console.info('state1_0100 START');
       let driver = await UiDriver.create()
       let button = await driver.findComponent(BY.key('sBtn1'));
@@ -61,7 +74,7 @@ export default function state1() {
 
     });
 
-    it('state1_0200', 0, async function (done) {
+    it('state1_0200', 0, async (done: Function) => {
       console.info('state1_0200 START');
       let driver = await UiDriver.create()
       let button = await driver.findComponent(BY.key('sBtn2'));
@@ -78,7 +91,7 @@ export default function state1() {
     });
 
 
-    it('state1_0300', 0, async function (done) {
+    it('state1_0300', 0, async (done: Function) => {
       console.info('state1_0300 START');
       let driver = await UiDriver.create()
       let button = await driver.findComponent(BY.key('sBtn3'));
@@ -94,7 +107,7 @@ export default function state1() {
 
     });
 
-    it('state1_0400', 0, async function (done) {
+    it('state1_0400', 0, async (done: Function) => {
       console.info('state1_0400 START');
       let driver = await UiDriver.create()
       let button = await driver.findComponent(BY.key('sBtn4'));
@@ -109,10 +122,6 @@ export default function state1() {
       done();
 
     });
-
-
-
-
 
 
   })

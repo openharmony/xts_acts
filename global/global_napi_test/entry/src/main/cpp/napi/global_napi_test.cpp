@@ -22,6 +22,8 @@
 #include <js_native_api_types.h>
 #include <vector>
 #include "ohresmgr.h"
+#include <string>
+
 int GLOBAL_RESMGR = 0xDDD;
 const int SUBLEN = 100;
 static napi_value GetFileList(napi_env env, napi_callback_info info)

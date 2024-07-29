@@ -13,19 +13,22 @@
  * limitations under the License.
  */
 import router from '@ohos.router'
+
 @Entry
 @Component
 struct router_PageC {
-  @State amount:string = '0'
-  @State page:number = 0
-  aboutToAppear(){
+  @State amount: string = '0'
+  @State page: number = 0
+
+  aboutToAppear() {
     this.amount = router.getLength()
     this.page = router.getState().index;
   }
+
   build() {
-    Column({space:5}) {
-      Text(this.amount).id('amountC').fontSize(20).margin({top:50})
-      Text(this.page + '').id('pageC').fontSize(20).margin({top:50})
+    Column({ space: 5 }) {
+      Text(this.amount).id('amountC').fontSize(20).margin({ top: 50 })
+      Text(this.page + '').id('pageC').fontSize(20).margin({ top: 50 })
       Button("返回上一级")
         .type(ButtonType.Capsule)
         .id("RouteC2")
@@ -36,11 +39,9 @@ struct router_PageC {
         .type(ButtonType.Capsule)
         .id("RouteC2_A")
         .onClick(() => {
-          router.back({url: "MainAbility/pages/back_router/pageC"})
+          router.back({ url: "MainAbility/pages/back_router/pageC" })
         })
 
     }.width('100%').height('100%')
-
-
   }
 }

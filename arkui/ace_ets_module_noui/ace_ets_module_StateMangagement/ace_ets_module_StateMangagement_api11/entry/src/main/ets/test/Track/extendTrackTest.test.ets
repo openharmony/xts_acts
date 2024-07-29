@@ -13,16 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
+
 export default function extendTrackTest() {
-  describe('extendTrackTest', function () {
-    beforeEach(async function (done) {
+  describe('extendTrackTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("extendTrackTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Track/extendTrack',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Track/extendTrack',
       }
       try {
         router.clear();
@@ -30,7 +44,7 @@ export default function extendTrackTest() {
         console.info("get extendTrackTest state pages: " + JSON.stringify(pages));
         if (!("extendTrack" == pages.name)) {
           console.info("get extendTrackTest state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push extendTrackTest success: " + JSON.stringify(result));
         }
@@ -40,7 +54,7 @@ export default function extendTrackTest() {
       }
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       let driver = Driver.create();
       await CommonFunc.sleep(500);
       let button = await driver.findComponent(ON.id('extendTrack_reset'));
@@ -49,14 +63,14 @@ export default function extendTrackTest() {
       await CommonFunc.sleep(2000);
     });
     /**
-     * @tc.number    SUB_ACE_extendTrackTest_0100
-     * @tc.name      extendTrackTest_0100
-     * @tc.desc      extendTrack
-     * @tc.level:    Level 2
+     * @tc.number SUB_ACE_extendTrackTest_0100
+     * @tc.name extendTrackTest_0100
+     * @tc.desc extendTrack
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('extendTrackTest_0100', 0, async function (done) {
+    it('extendTrackTest_0100', 0, async (done: Function) => {
       console.info('extendTrackTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -72,14 +86,14 @@ export default function extendTrackTest() {
       done();
     });
     /**
-     * @tc.number    SUB_ACE_extendTrackTest_0200
-     * @tc.name      extendTrackTest_0200
-     * @tc.desc      extendTrack
-     * @tc.level:    Level 2
+     * @tc.number SUB_ACE_extendTrackTest_0200
+     * @tc.name extendTrackTest_0200
+     * @tc.desc extendTrack
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('extendTrackTest_0200', 0, async function (done) {
+    it('extendTrackTest_0200', 0, async (done: Function) => {
       console.info('extendTrackTest_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -95,14 +109,14 @@ export default function extendTrackTest() {
       done();
     });
     /**
-     * @tc.number    SUB_ACE_extendTrackTest_0300
-     * @tc.name      extendTrackTest_0300
-     * @tc.desc      extendTrack
-     * @tc.level:    Level 2
+     * @tc.number SUB_ACE_extendTrackTest_0300
+     * @tc.name extendTrackTest_0300
+     * @tc.desc extendTrack
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('extendTrackTest_0300', 0, async function (done) {
+    it('extendTrackTest_0300', 0, async (done: Function) => {
       console.info('extendTrackTest_0300 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -118,14 +132,14 @@ export default function extendTrackTest() {
       done();
     });
     /**
-     * @tc.number    SUB_ACE_extendTrackTest_0400
-     * @tc.name      extendTrackTest_0400
-     * @tc.desc      extendTrack
-     * @tc.level:    Level 2
+     * @tc.number SUB_ACE_extendTrackTest_0400
+     * @tc.name extendTrackTest_0400
+     * @tc.desc extendTrack
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('extendTrackTest_0400', 0, async function (done) {
+    it('extendTrackTest_0400', 0, async (done: Function) => {
       console.info('extendTrackTest_0400 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);

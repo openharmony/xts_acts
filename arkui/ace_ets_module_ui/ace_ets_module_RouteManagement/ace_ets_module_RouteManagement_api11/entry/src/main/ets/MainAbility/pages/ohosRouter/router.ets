@@ -16,7 +16,7 @@
 import router from '@ohos.router'
 // import uiAppearance from '@ohos.uiAppearance';
 
-import Log from '../../common/Log.ets';
+import Log from '../../common/Log';
 
 const TAG = 'ets_apiLack_add';
 
@@ -24,7 +24,7 @@ const TAG = 'ets_apiLack_add';
 @Component
 struct RouterStandard {
   async routePage() {
-    let options:router.RouterOptions = {
+    let options: router.RouterOptions = {
       url: 'pages/ohosRouter/page1',
       params: {
         text: '这是第一页的值',
@@ -39,7 +39,7 @@ struct RouterStandard {
   }
 
   async routeSinglePage() {
-    let options:router.RouterOptions = {
+    let options: router.RouterOptions = {
       url: 'pages/ohosRouter/page2',
       params: {
         text: '这是第二页的值',

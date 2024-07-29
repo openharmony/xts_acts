@@ -23,6 +23,8 @@ ohos_js_hap_suite("ActsZlibInterfaceTest") {
   ets2abc = true
   certificate_profile = "signature/com.actszlibinterfacetest.test.p7b"
   hap_name = "ActsZlibInterfaceTest"
+  subsystem_name = "bundlemanager"
+  part_name = "bundle_framework"
 }
 
 ohos_app_scope("arkui_web_enhanced_four_profile") {

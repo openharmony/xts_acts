@@ -15,13 +15,26 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 
 export default function router_back8() {
-  describe('router_back8', function () {
-    beforeEach(async function (done) {
+  describe('router_back8', () => {
+    beforeEach(async (done: Function) => {
       console.info("router_back8 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/router/router_back8',
       }
       try {
@@ -30,7 +43,7 @@ export default function router_back8() {
         console.info("get router_back8 state pages:" + JSON.stringify(pages));
         if (!("router_back8" == pages.name)) {
           console.info("get router_back8 pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push router_back8 page result:" + JSON.stringify(result));
         }
@@ -40,20 +53,20 @@ export default function router_back8() {
       console.info("router_back8 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("router_back8 after each called");
     });
 
     /**
-     * @tc.number    SUB_ACE_UI_ABILITY_ROUTER_0210
-     * @tc.name      testBack
-     * @tc.desc      Return specified page by index value, add an inquiry box before returning to the page
-     * @tc.level     Level 3
+     * @tc.number SUB_ACE_UI_ABILITY_ROUTER_0210
+     * @tc.name testBack
+     * @tc.desc Return specified page by index value, add an inquiry box before returning to the page
+     * @tc.level Level 3
      * @tc.type
      * @tc.size
      */
-    it('router_back8_0100', 0, async function (done) {
+    it('router_back8_0100', 0, async (done: Function) => {
       console.info('[router_back8_0100] START');
       await CommonFunc.sleep(1000);
 
@@ -81,8 +94,7 @@ export default function router_back8() {
       console.info('[router_back8_0100] btn4');
 
       let text1 = getInspectorByKey('router_back8_text');
-      let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('{"age":18}');
+      expect(JSON.parse(text1).$attrs.content).assertEqual('{"age":18}');
 
       console.info('[router_back8_0100] END');
       done();

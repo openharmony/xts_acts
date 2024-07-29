@@ -22,6 +22,7 @@ import { BusinessError } from '@ohos.base';
 import abilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry';
 import fs from '@ohos.file.fs';
 import systemParameterEnhance from '@ohos.systemParameterEnhance';
+import { ChildProcessOptions } from '@ohos.app.ability.ChildProcessOptions';
 
 export default function arkProcessTest() {
   describe('StartArkChildProcessTest', () => {
@@ -72,6 +73,9 @@ export default function arkProcessTest() {
             'fd1': file.fd
           }
         };
+        let options: ChildProcessOptions = {
+          isolationMode: false
+        };
         let subscribeInfo: CommonEventManager.CommonEventSubscribeInfo = {
           events: [XTSArkProcess.EVENT]
         };
@@ -105,7 +109,7 @@ export default function arkProcessTest() {
 
         await sleep(500);
         XTSArkProcess.toString();
-        pid = await childProcessManager.startArkChildProcess(arkProcessPath, args);
+        pid = await childProcessManager.startArkChildProcess(arkProcessPath, args, options);
         console.log(`${tag} startArkChildProcess success, pid: ${pid}`);
         expect(pid > 0).assertTrue();
 

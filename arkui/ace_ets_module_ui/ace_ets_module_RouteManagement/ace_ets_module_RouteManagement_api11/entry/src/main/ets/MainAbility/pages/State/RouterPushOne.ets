@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
- 
+
 import hilog from '@ohos.hilog';
 import router from '@ohos.router';
 import { Router, UIContext } from '@ohos.arkui.UIContext';
@@ -34,7 +34,6 @@ struct RouterPushOne {
   @State message: string = 'RouterPushUrlOne'
   @State messageUI: string = 'UIRouterPushUrlOne'
   @State routerUI: Router = undefined
-
 
   build() {
     Row() {
@@ -120,7 +119,7 @@ struct RouterPushOne {
                 view: "params"
               }
             })
-          })        
+          })
 
         Button("turn_UIRouterPushReplace_noParms")
           .type(ButtonType.Capsule)

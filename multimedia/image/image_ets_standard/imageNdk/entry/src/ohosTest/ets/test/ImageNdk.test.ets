@@ -67,6 +67,63 @@ export default function imageNdkTest() {
       buffer = bufferRead
     }
 
+    const NDK_CreatePixelMap = async (TAG: string, type:string, filename: string, width: number, height: number,done:Function) => {
+      try {
+        await getFd(filename);
+        let imageSourceApi: image.ImageSource = ndkTest.CreateFromUri(filePath);
+        if (type === 'Fd') {
+          imageSourceApi = ndkTest.CreateFromFd(fileFd);
+        }
+        if (type === 'Buffer') {
+          await getBuffer(filename);
+          imageSourceApi = ndkTest.CreateFromData(buffer);
+        }
+        if (type === 'RawFile') {
+          hilog.info(0x0000, 'scaleTest', '%{public}s', TAG + `type = rawfile`)
+          const resourceMgr: resourceManager.ResourceManager = testContext.createModuleContext("entry").resourceManager;
+          let rawFileDescriptor: resourceManager.RawFileDescriptor = await resourceMgr.getRawFd(filename);
+          let imageSourceApi: image.ImageSource = ndkTest.CreateFromRawFile(rawFileDescriptor.fd,
+            rawFileDescriptor.offset, rawFileDescriptor.length);
+        }
+        if (typeof imageSourceApi === "object") {
+          hilog.info(0x0000, 'scaleTest', '%{public}s', TAG + `create image source success:${imageSourceApi}`)
+          const pixelMap:image.PixelMap | number = ndkTest.CreatePixelMap(imageSourceApi)
+          if (typeof pixelMap === "object") {
+            let result: boolean = false;
+            hilog.info(0x0000, 'scaleTest', '%{public}s', TAG + `pixelMap success :${pixelMap}`)
+
+            const pixelMapInfo = ndkTest.testGetImageInfo();
+            hilog.info(0x0000, 'testTag', '%{public}s', TAG + ' imageInfo :' + JSON.stringify(pixelMapInfo));
+            let desiredPixelFormat: number = 3
+            let alphaType: number = 0
+            if (pixelMapInfo.pixelFormat === desiredPixelFormat &&
+              pixelMapInfo.width === width &&
+              pixelMapInfo.height === height &&
+              pixelMapInfo.alphaType === alphaType) {
+              result = true
+            }
+            expect(result).assertTrue();
+            ndkTest.SourceRelease(imageSourceApi);
+            ndkTest.PixelMapRelease(pixelMap);
+            done()
+          } else {
+            hilog.info(0x0000, 'scaleTest', '%{public}s',TAG + `pixelMap failed: ${pixelMap}`)
+            ndkTest.SourceRelease(imageSourceApi)
+            expect(false).assertTrue();
+            done()
+          }
+        } else {
+          hilog.info(0x0000, 'scaleTest', '%{public}s', TAG + `create image source failed :${imageSourceApi}`)
+          expect(false).assertTrue();
+          done();
+        }
+      } catch (error) {
+        console.error(TAG + "Test exception " + error);
+        expect(false).assertTrue();
+        done();
+      }
+    }
+
     const NDK_CreateFromUri = async (TAG: string, filename: string, done: Function) => {
       hilog.info(0x0000, 'scaleTest', '%{public}s', TAG + `ndkTest： ` + JSON.stringify(ndkTest))
       await getFd(filename);
@@ -1765,7 +1822,7 @@ export default function imageNdkTest() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_0100
      * @tc.name      : CreatePixelMap
-     * @tc.desc      : 1.getimagepath,2.createImageSourceFromuUri,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromUri,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
      *                 5.DecodingOptionsSetIndex,6.DecodingOptionsSetRotate,7.DecodingOptionsSetDesiredSize,
      *                 8.DecodingOptionsSetDesiredRegion,9.CreatePixelMap
      * @tc.size      : MediumTest
@@ -1787,7 +1844,7 @@ export default function imageNdkTest() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_0200
      * @tc.name      : CreatePixelMap
-     * @tc.desc      : 1.getimagepath,2.createImageSourceFromuUri,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromUri,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
      *                 5.DecodingOptionsSetIndex,6.DecodingOptionsSetRotate,7.DecodingOptionsSetDesiredSize,
      *                 8.DecodingOptionsSetDesiredRegion,9.CreatePixelMap
      * @tc.size      : MediumTest
@@ -1809,7 +1866,7 @@ export default function imageNdkTest() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_0300
      * @tc.name      : CreatePixelMap
-     * @tc.desc      : 1.getimagepath,2.createImageSourceFromuUri,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromUri,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
      *                 5.DecodingOptionsSetIndex,6.DecodingOptionsSetRotate,7.DecodingOptionsSetDesiredSize,
      *                 8.DecodingOptionsSetDesiredRegion,9.CreatePixelMap
      * @tc.size      : MediumTest
@@ -1831,7 +1888,7 @@ export default function imageNdkTest() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_0400
      * @tc.name      : CreatePixelMap
-     * @tc.desc      : 1.getimagepath,2.createImageSourceFromuUri,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromUri,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
      *                 5.DecodingOptionsSetIndex,6.DecodingOptionsSetRotate,7.DecodingOptionsSetDesiredSize,
      *                 8.DecodingOptionsSetDesiredRegion,9.CreatePixelMap
      * @tc.size      : MediumTest
@@ -1853,7 +1910,7 @@ export default function imageNdkTest() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_0500
      * @tc.name      : CreatePixelMap
-     * @tc.desc      : 1.getimagepath,2.createImageSourceFromuUri,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromUri,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
      *                 5.DecodingOptionsSetIndex,6.DecodingOptionsSetRotate,7.DecodingOptionsSetDesiredSize,
      *                 8.DecodingOptionsSetDesiredRegion,9.CreatePixelMap
      * @tc.size      : MediumTest
@@ -1875,7 +1932,7 @@ export default function imageNdkTest() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_0600
      * @tc.name      : CreatePixelMap
-     * @tc.desc      : 1.getimagepath,2.createImageSourceFromuUri,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromUri,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
      *                 5.DecodingOptionsSetIndex,6.DecodingOptionsSetRotate,7.DecodingOptionsSetDesiredSize,
      *                 8.DecodingOptionsSetDesiredRegion,9.CreatePixelMap
      * @tc.size      : MediumTest
@@ -1897,7 +1954,7 @@ export default function imageNdkTest() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_0700
      * @tc.name      : CreatePixelMap
-     * @tc.desc      : 1.getimagepath,2.createImageSourceFromuUri,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromUri,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
      *                 5.DecodingOptionsSetIndex,6.DecodingOptionsSetRotate,7.DecodingOptionsSetDesiredSize,
      *                 8.DecodingOptionsSetDesiredRegion,9.CreatePixelMap
      * @tc.size      : MediumTest
@@ -1919,7 +1976,7 @@ export default function imageNdkTest() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_0800
      * @tc.name      : CreatePixelMap
-     * @tc.desc      : 1.getimagepath,2.createImageSourceFromuUri,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromUri,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
      *                 5.DecodingOptionsSetIndex,6.DecodingOptionsSetRotate,7.DecodingOptionsSetDesiredSize,
      *                 8.DecodingOptionsSetDesiredRegion,9.CreatePixelMap
      * @tc.size      : MediumTest
@@ -1939,9 +1996,33 @@ export default function imageNdkTest() {
     });
 
     /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_0900
+     * @tc.name      : CreatePixelMap
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromUri,3.CreatePixelMap
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_0900", 0, async (done: Function) => {
+      await NDK_CreatePixelMap('SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_0900', "uri", "test5.jpg", 480, 360, done);
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_1000
+     * @tc.name      : CreatePixelMap
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromUri,3.CreatePixelMap
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_1000", 0, async (done: Function) => {
+      await NDK_CreatePixelMap('SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYURI_1000', "uri", "test7.png", 550, 550, done);
+    });
+
+    /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_0100
      * @tc.name      : CreatePixelMap
-     * @tc.desc      : 1.getimagepath,2.createImageSourceFromuFd,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromFd,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
      *                 5.DecodingOptionsSetIndex,6.DecodingOptionsSetRotate,7.DecodingOptionsSetDesiredSize,
      *                 8.DecodingOptionsSetDesiredRegion,9.CreatePixelMap
      * @tc.size      : MediumTest
@@ -1963,7 +2044,7 @@ export default function imageNdkTest() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_0200
      * @tc.name      : CreatePixelMap
-     * @tc.desc      : 1.getimagepath,2.createImageSourceFromuFd,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromFd,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
      *                 5.DecodingOptionsSetIndex,6.DecodingOptionsSetRotate,7.DecodingOptionsSetDesiredSize,
      *                 8.DecodingOptionsSetDesiredRegion,9.CreatePixelMap
      * @tc.size      : MediumTest
@@ -1985,7 +2066,7 @@ export default function imageNdkTest() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_0300
      * @tc.name      : CreatePixelMap
-     * @tc.desc      : 1.getimagepath,2.createImageSourceFromuFd,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromFd,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
      *                 5.DecodingOptionsSetIndex,6.DecodingOptionsSetRotate,7.DecodingOptionsSetDesiredSize,
      *                 8.DecodingOptionsSetDesiredRegion,9.CreatePixelMap
      * @tc.size      : MediumTest
@@ -2007,7 +2088,7 @@ export default function imageNdkTest() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_0400
      * @tc.name      : CreatePixelMap
-     * @tc.desc      : 1.getimagepath,2.createImageSourceFromuFd,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromFd,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
      *                 5.DecodingOptionsSetIndex,6.DecodingOptionsSetRotate,7.DecodingOptionsSetDesiredSize,
      *                 8.DecodingOptionsSetDesiredRegion,9.CreatePixelMap
      * @tc.size      : MediumTest
@@ -2029,7 +2110,7 @@ export default function imageNdkTest() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_0500
      * @tc.name      : CreatePixelMap
-     * @tc.desc      : 1.getimagepath,2.createImageSourceFromuFd,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromFd,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
      *                 5.DecodingOptionsSetIndex,6.DecodingOptionsSetRotate,7.DecodingOptionsSetDesiredSize,
      *                 8.DecodingOptionsSetDesiredRegion,9.CreatePixelMap
      * @tc.size      : MediumTest
@@ -2051,7 +2132,7 @@ export default function imageNdkTest() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_0600
      * @tc.name      : CreatePixelMap
-     * @tc.desc      : 1.getimagepath,2.createImageSourceFromuFd,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromFd,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
      *                 5.DecodingOptionsSetIndex,6.DecodingOptionsSetRotate,7.DecodingOptionsSetDesiredSize,
      *                 8.DecodingOptionsSetDesiredRegion,9.CreatePixelMap
      * @tc.size      : MediumTest
@@ -2073,7 +2154,7 @@ export default function imageNdkTest() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_0700
      * @tc.name      : CreatePixelMap
-     * @tc.desc      : 1.getimagepath,2.createImageSourceFromuFd,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromFd,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
      *                 5.DecodingOptionsSetIndex,6.DecodingOptionsSetRotate,7.DecodingOptionsSetDesiredSize,
      *                 8.DecodingOptionsSetDesiredRegion,9.CreatePixelMap
      * @tc.size      : MediumTest
@@ -2095,7 +2176,7 @@ export default function imageNdkTest() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_0800
      * @tc.name      : CreatePixelMap
-     * @tc.desc      : 1.getimagepath,2.createImageSourceFromuFd,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromFd,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
      *                 5.DecodingOptionsSetIndex,6.DecodingOptionsSetRotate,7.DecodingOptionsSetDesiredSize,
      *                 8.DecodingOptionsSetDesiredRegion,9.CreatePixelMap
      * @tc.size      : MediumTest
@@ -2115,9 +2196,33 @@ export default function imageNdkTest() {
     });
 
     /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_0900
+     * @tc.name      : CreatePixelMap
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromFd,3.CreatePixelMap
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_0900", 0, async (done: Function) => {
+      await NDK_CreatePixelMap('SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_0900', "Fd", "test6.gif", 480, 270, done);
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_1000
+     * @tc.name      : CreatePixelMap
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromFd,3.CreatePixelMap
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_1000", 0, async (done: Function) => {
+      await NDK_CreatePixelMap('SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYFD_1000', "Fd", "test8.bmp", 959, 959, done);
+    });
+
+    /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_0100
      * @tc.name      : CreatePixelMap
-     * @tc.desc      : 1.getimagepath,2.createImageSourceFromuData,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromData,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
      *                 5.DecodingOptionsSetIndex,6.DecodingOptionsSetRotate,7.DecodingOptionsSetDesiredSize,
      *                 8.DecodingOptionsSetDesiredRegion,9.CreatePixelMap
      * @tc.size      : MediumTest
@@ -2139,7 +2244,7 @@ export default function imageNdkTest() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_0200
      * @tc.name      : CreatePixelMap
-     * @tc.desc      : 1.getimagepath,2.createImageSourceFromuData,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromData,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
      *                 5.DecodingOptionsSetIndex,6.DecodingOptionsSetRotate,7.DecodingOptionsSetDesiredSize,
      *                 8.DecodingOptionsSetDesiredRegion,9.CreatePixelMap
      * @tc.size      : MediumTest
@@ -2161,7 +2266,7 @@ export default function imageNdkTest() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_0300
      * @tc.name      : CreatePixelMap
-     * @tc.desc      : 1.getimagepath,2.createImageSourceFromuData,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromData,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
      *                 5.DecodingOptionsSetIndex,6.DecodingOptionsSetRotate,7.DecodingOptionsSetDesiredSize,
      *                 8.DecodingOptionsSetDesiredRegion,9.CreatePixelMap
      * @tc.size      : MediumTest
@@ -2183,7 +2288,7 @@ export default function imageNdkTest() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_0400
      * @tc.name      : CreatePixelMap
-     * @tc.desc      : 1.getimagepath,2.createImageSourceFromuData,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromData,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
      *                 5.DecodingOptionsSetIndex,6.DecodingOptionsSetRotate,7.DecodingOptionsSetDesiredSize,
      *                 8.DecodingOptionsSetDesiredRegion,9.CreatePixelMap
      * @tc.size      : MediumTest
@@ -2205,7 +2310,7 @@ export default function imageNdkTest() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_0500
      * @tc.name      : CreatePixelMap
-     * @tc.desc      : 1.getimagepath,2.createImageSourceFromuData,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromData,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
      *                 5.DecodingOptionsSetIndex,6.DecodingOptionsSetRotate,7.DecodingOptionsSetDesiredSize,
      *                 8.DecodingOptionsSetDesiredRegion,9.CreatePixelMap
      * @tc.size      : MediumTest
@@ -2227,7 +2332,7 @@ export default function imageNdkTest() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_0600
      * @tc.name      : CreatePixelMap
-     * @tc.desc      : 1.getimagepath,2.createImageSourceFromuData,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromData,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
      *                 5.DecodingOptionsSetIndex,6.DecodingOptionsSetRotate,7.DecodingOptionsSetDesiredSize,
      *                 8.DecodingOptionsSetDesiredRegion,9.CreatePixelMap
      * @tc.size      : MediumTest
@@ -2249,7 +2354,7 @@ export default function imageNdkTest() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_0700
      * @tc.name      : CreatePixelMap
-     * @tc.desc      : 1.getimagepath,2.createImageSourceFromuData,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromData,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
      *                 5.DecodingOptionsSetIndex,6.DecodingOptionsSetRotate,7.DecodingOptionsSetDesiredSize,
      *                 8.DecodingOptionsSetDesiredRegion,9.CreatePixelMap
      * @tc.size      : MediumTest
@@ -2271,7 +2376,7 @@ export default function imageNdkTest() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_0800
      * @tc.name      : CreatePixelMap
-     * @tc.desc      : 1.getimagepath,2.createImageSourceFromuData,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromData,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
      *                 5.DecodingOptionsSetIndex,6.DecodingOptionsSetRotate,7.DecodingOptionsSetDesiredSize,
      *                 8.DecodingOptionsSetDesiredRegion,9.CreatePixelMap
      * @tc.size      : MediumTest
@@ -2291,9 +2396,33 @@ export default function imageNdkTest() {
     });
 
     /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_0900
+     * @tc.name      : CreatePixelMap
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromData,3.CreatePixelMap
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_0900", 0, async (done: Function) => {
+      await NDK_CreatePixelMap('SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_0900', "Buffer", "test.webp", 1212, 681, done);
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_1000
+     * @tc.name      : CreatePixelMap
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromData,3.CreatePixelMap
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_1000", 0, async (done: Function) => {
+      await NDK_CreatePixelMap('SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_BYDATA_1000', "Buffer", "test.arw", 3074, 2728, done);
+    });
+
+    /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_GIF_CREATE_RGBA8888LIST_BYURI_0100
      * @tc.name      : CreatePixelMapList
-     * @tc.desc      : 1.getimagepath,2.createImageSourceFromuUri,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromUri,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
      *                 5.DecodingOptionsSetIndex,6.DecodingOptionsSetRotate,7.DecodingOptionsSetDesiredSize,
      *                 8.DecodingOptionsSetDesiredRegion,9.CreatePixelMapList
      * @tc.size      : MediumTest
@@ -2315,7 +2444,7 @@ export default function imageNdkTest() {
     /**
      * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_WEBP_CREATE_RGBA8888LIST_BYURI_0100
      * @tc.name      : CreatePixelMapList
-     * @tc.desc      : 1.getimagepath,2.createImageSourceFromuUri,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromUri,3.CreateDecodingOptions,4.DecodingOptionsSetFormat，
      *                 5.DecodingOptionsSetIndex,6.DecodingOptionsSetRotate,7.DecodingOptionsSetDesiredSize,
      *                 8.DecodingOptionsSetDesiredRegion,9.CreatePixelMapList
      * @tc.size      : MediumTest
@@ -4070,6 +4199,30 @@ export default function imageNdkTest() {
         expect(false).assertTrue();
         done();
       }
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_0900
+     * @tc.name      : CreatePixelMap
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromRawFile,3.CreatePixelMap
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_0900", 0, async (done: Function) => {
+      await NDK_CreatePixelMap('SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_0900', "RawFile", "docx.ico", 512, 512, done);
+    });
+
+    /**
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_1000
+     * @tc.name      : CreatePixelMap
+     * @tc.desc      : 1.getimagepath,2.createImageSourceFromRawFile,3.CreatePixelMap
+     * @tc.size      : MEDIUM
+     * @tc.type      : Functional
+     * @tc.level     : Level 0
+     */
+    it("SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_1000", 0, async (done: Function) => {
+      await NDK_CreatePixelMap('SUB_MULTIMEDIA_IMAGE_NDK_SOURCENDK_CREATE_RAWFILE_1000', "RawFile", "SVG.svg", 1593, 1594, done);
     });
 
     /**
