@@ -29,6 +29,7 @@ struct RichEditorAddApi {
   controller: RichEditorController = new RichEditorController();
   options: RichEditorOptions = { controller: this.controller }
   @State text: string = ''
+  @State con: TextEditControllerEx | undefined = undefined
   textStyle: TextStyle = new TextStyle({
     fontWeight: FontWeight.Lighter,
     fontFamily: 'HarmonyOS Sans',
