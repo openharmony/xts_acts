@@ -2228,7 +2228,6 @@ function setAVPlayerPlay(src, avPlayer, done) {
                 done();
                 break;
             case AV_PLAYER_STATE.ERROR:
-                console.info(`case error called, AV_PLAYER_STATE.ERROR, ignore`);
                 expect().assertFail();
                 avPlayer.release().then(() => {
                 }, mediaTestBase.failureCallback).catch(mediaTestBase.catchCallback);
