@@ -49,6 +49,7 @@ group("ability_runtime") {
       "actsondestroytest:actsondestroytest",
       "actsopenlinktest:actsopenlinktest",
       "actsparsingparameterstest:actsparsingparameterstest",
+      "actsphotoeditorextensiontest:PhotoEditorExtensionTest",
       "actsqueryfunctiontest:actsqueryfunctiontest",
       "actsrequestdialogtest:actsrequestdialogtest",
       "actsrevokequickfixtest:ActsRevokeQuickFixApp",
@@ -91,7 +92,6 @@ group("ability_runtime") {
       "stopserviceextension:stopserviceextension",
       "want:want",
       "workercontextcover:workercontextcover",
-      "actsphotoeditorextensiontest:PhotoEditorExtensionTest"
     ]
   }
 }
