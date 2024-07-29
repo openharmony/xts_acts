@@ -39,7 +39,11 @@
                 "./resource/image/test_treeodd_422.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageDecodeOptionsYuvRaw/haps/entry/files",
                 "./resource/image/test_treeodd_440.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageDecodeOptionsYuvRaw/haps/entry/files",
                 "./resource/image/test_treeodd_444.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageDecodeOptionsYuvRaw/haps/entry/files",
-                "./resource/image/test2.arw ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageDecodeOptionsYuvRaw/haps/entry/files"
+                "./resource/image/test2.arw ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageDecodeOptionsYuvRaw/haps/entry/files",
+                "./resource/image/JPG-480360-YUV311.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageDecodeOptionsYuvRaw/haps/entry/files",
+                "./resource/image/JPG-480361-YUV311.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageDecodeOptionsYuvRaw/haps/entry/files",
+                "./resource/image/JPG-481360-YUV311.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageDecodeOptionsYuvRaw/haps/entry/files",
+                "./resource/image/JPG-481361-YUV311.jpg ->/data/app/el2/100/base/ohos.acts.multimedia.image.imageDecodeOptionsYuvRaw/haps/entry/files"
             ]
         }
     ]
