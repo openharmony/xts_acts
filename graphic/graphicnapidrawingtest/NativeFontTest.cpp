@@ -377,6 +377,27 @@ HWTEST_F(NativeFontTest, NativeFontTest_FontMeasureText016, TestSize.Level1)
     EXPECT_TRUE(shadow != nullptr);
 }
 
+/*
+ * @tc.name: NativeFontTest_FontMeasureText017
+ * @tc.desc: test for the fontVariation.
+ * @tc.type: FUNC
+ */
+HWTEST_F(NativeFontTest, NativeFontTest_FontMeasureText017, TestSize.Level1)
+{
+    OH_Drawing_TextStyle* txtStyle = OH_Drawing_CreateTextStyle();
+    EXPECT_EQ(txtStyle == nullptr, false);
+    const char* key = "宋体";
+    int value = 1;
+    OH_Drawing_TextStyleAddFontFeature(txtStyle, key, value);
+    OH_Drawing_TextStyleAddFontVariation(txtStyle, key, value);
+    EXPECT_EQ(OH_Drawing_TextStyleGetFontFeatureSize(txtStyle), 1);
+    OH_Drawing_FontCollection* fontCollection = OH_Drawing_CreateFontCollection();
+    OH_Drawing_ClearFontCaches(fontCollection);
+    EXPECT_EQ(fontCollection == nullptr, false);
+    OH_Drawing_DestroyFontCollection(fontCollection);
+    OH_Drawing_DestroyTextStyle(txtStyle);
+}
+
 } // namespace Drawing
 } // namespace Rosen
 } // namespace OHOS
