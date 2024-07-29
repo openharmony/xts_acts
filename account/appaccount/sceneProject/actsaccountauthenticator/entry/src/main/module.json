@@ -8,7 +8,8 @@
         "deviceTypes": [
             "tablet",
             "default",
-            "2in1"
+            "2in1",
+            "wearable"
         ],
         "deliveryWithInstall": true,
         "installationFree": false,
@@ -23,28 +24,34 @@
                 "label": "$string:entry_label",
                 "visible": true,
                 "orientation": "portrait",
-                "skills": [{
-                    "actions": [
-                        "action.system.home"
-                    ],
-                    "entities": [
-                        "entity.system.home"
-                    ]
-                }]
+                "skills": [
+                    {
+                        "actions": [
+                            "action.system.home"
+                        ],
+                        "entities": [
+                            "entity.system.home"
+                        ]
+                    }
+                ]
             }
         ],
         "extensionAbilities": [
-          {
-            "name": "ServiceExtAbility",
-            "icon": "$media:icon",
-            "description": "service",
-            "type": "service",
-            "exported": true,
-            "srcEntry": "./ets/ServiceExtAbility/ServiceExtAbility.ets",
-            "skills": [{"actions": [
-              "ohos.appAccount.action.auth"
-            ]}]
-          }
+            {
+                "name": "ServiceExtAbility",
+                "icon": "$media:icon",
+                "description": "service",
+                "type": "service",
+                "exported": true,
+                "srcEntry": "./ets/ServiceExtAbility/ServiceExtAbility.ets",
+                "skills": [
+                    {
+                        "actions": [
+                            "ohos.appAccount.action.auth"
+                        ]
+                    }
+                ]
+            }
         ]
     }
 }

@@ -59,7 +59,8 @@
         "deviceType": [
             "tablet",
             "default",
-            "2in1"
+            "2in1",
+            "wearable"
         ],
         "mainAbility": ".MainAbility",
         "distro": {

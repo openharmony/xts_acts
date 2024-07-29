@@ -8,7 +8,8 @@
       "phone",
       "tablet",
       "default",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
@@ -35,57 +36,57 @@
         ]
       }
     ],
-    "requestPermissions":[
+    "requestPermissions": [
       {
         "name": "ohos.permission.USE_BLUETOOTH",
         "reason": "",
         "usedScene": {
-            "ability": [
-                "ohos.acts.communication.bluetooth.bluetoothhost.MainAbility"
-            ],
-            "when": "inuse"
+          "ability": [
+            "ohos.acts.communication.bluetooth.bluetoothhost.MainAbility"
+          ],
+          "when": "inuse"
         }
-    },
-    {
+      },
+      {
         "name": "ohos.permission.MANAGE_BLUETOOTH",
         "reason": "",
         "usedScene": {
-            "ability": [
-                "ohos.acts.communication.bluetooth.bluetoothhost.MainAbility"
-            ],
-            "when": "inuse"
+          "ability": [
+            "ohos.acts.communication.bluetooth.bluetoothhost.MainAbility"
+          ],
+          "when": "inuse"
         }
-    },
-    {
+      },
+      {
         "name": "ohos.permission.APPROXIMATELY_LOCATION",
         "reason": "",
         "usedScene": {
-            "ability": [
-                "ohos.acts.communication.bluetooth.bluetoothhost.MainAbility"
-            ],
-            "when": "inuse"
+          "ability": [
+            "ohos.acts.communication.bluetooth.bluetoothhost.MainAbility"
+          ],
+          "when": "inuse"
         }
-    },
-    {
+      },
+      {
         "name": "ohos.permission.DISCOVER_BLUETOOTH",
         "reason": "",
         "usedScene": {
-            "ability": [
-                "ohos.acts.communication.bluetooth.bluetoothhost.MainAbility"
-            ],
-            "when": "inuse"
+          "ability": [
+            "ohos.acts.communication.bluetooth.bluetoothhost.MainAbility"
+          ],
+          "when": "inuse"
         }
-    },
-    {
+      },
+      {
         "name": "ohos.permission.LOCATION",
         "reason": "",
         "usedScene": {
-            "ability": [
-                "ohos.acts.communication.bluetooth.bluetoothhost.MainAbility"
-            ],
-            "when": "inuse"
+          "ability": [
+            "ohos.acts.communication.bluetooth.bluetoothhost.MainAbility"
+          ],
+          "when": "inuse"
         }
-    }
+      }
     ],
     "testRunner": {
       "name": "OpenHarmonyTestRunner",

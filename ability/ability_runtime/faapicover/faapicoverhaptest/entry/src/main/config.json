@@ -17,7 +17,8 @@
     "deviceType": [
       "default",
       "tablet",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "abilities": [
       {
@@ -44,17 +45,17 @@
         "launchType": "singleton"
       },
       {
-          "orientation": "unspecified",
-          "formsEnabled": false,
-          "name": ".TestAbility",
-          "srcLanguage": "ets",
-          "srcPath": "TestAbility",
-          "icon": "$media:icon",
-          "description": "$string:TestAbility_desc",
-          "label": "$string:TestAbility_label",
-          "type": "page",
-          "visible": true,
-          "launchType": "singleton"
+        "orientation": "unspecified",
+        "formsEnabled": false,
+        "name": ".TestAbility",
+        "srcLanguage": "ets",
+        "srcPath": "TestAbility",
+        "icon": "$media:icon",
+        "description": "$string:TestAbility_desc",
+        "label": "$string:TestAbility_label",
+        "type": "page",
+        "visible": true,
+        "launchType": "singleton"
       },
       {
         "srcPath": "ServiceAbility",

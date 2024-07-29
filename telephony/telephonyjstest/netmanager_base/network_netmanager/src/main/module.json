@@ -9,7 +9,8 @@
       "tablet",
       "default",
       "phone",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
@@ -35,13 +36,13 @@
         ]
       }
     ],
-   "requestPermissions": [
-     {
-       "name": "ohos.permission.GET_NETWORK_INFO"
-     },
-     {
-       "name": "ohos.permission.INTERNET"
-     }
-   ]
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.GET_NETWORK_INFO"
+      },
+      {
+        "name": "ohos.permission.INTERNET"
+      }
+    ]
   }
 }

@@ -13,7 +13,7 @@
     }
   },
   "deviceConfig": {
-    "default":{}
+    "default": {}
   },
   "module": {
     "package": "com.example.system1",
@@ -22,7 +22,8 @@
     "deviceType": [
       "default",
       "tablet",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "distro": {
       "deliveryWithInstall": true,
@@ -49,7 +50,12 @@
         "forms": [
           {
             "description": "JS1S Form",
-            "supportDimensions": [ "1*2", "2*2", "2*4", "4*4"],
+            "supportDimensions": [
+              "1*2",
+              "2*2",
+              "2*4",
+              "4*4"
+            ],
             "type": "JS",
             "jsComponentName": "JS_name1S",
             "metaData": {
@@ -77,21 +83,27 @@
         ],
         "launchType": "standard",
         "metaData": {
-          "parameters": [{
-            "name": "Data1S",
-            "type": "float",
-            "description": "$string:mainability_description"
-          }],
-          "results": [{
-            "name": "Data1S",
-            "type": "float",
-            "description": "$string:mainability_description"
-          }],
-          "customizeData": [{
-            "name": "Data1S",
-            "value": "float",
-            "extra": "$string:mainability_description"
-          }]
+          "parameters": [
+            {
+              "name": "Data1S",
+              "type": "float",
+              "description": "$string:mainability_description"
+            }
+          ],
+          "results": [
+            {
+              "name": "Data1S",
+              "type": "float",
+              "description": "$string:mainability_description"
+            }
+          ],
+          "customizeData": [
+            {
+              "name": "Data1S",
+              "value": "float",
+              "extra": "$string:mainability_description"
+            }
+          ]
         }
       }
     ],
@@ -102,8 +114,8 @@
         "label": "$string:shortcut",
         "intents": [
           {
-            "targetClass":"com.example.system1.MainAbility",
-            "targetBundle":"com.example.system1"
+            "targetClass": "com.example.system1.MainAbility",
+            "targetBundle": "com.example.system1"
           }
         ]
       }

@@ -17,9 +17,10 @@
         "name": ".entry",
         "mainAbility": ".MainAbility",
         "deviceType": [
-      "tablet",
-      "default",
-            "phone"
+            "tablet",
+            "default",
+            "phone",
+            "wearable"
         ],
         "distro": {
             "deliveryWithInstall": true,

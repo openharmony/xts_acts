@@ -19,7 +19,8 @@
     "deviceType": [
       "default",
       "tablet",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "distro": {
       "deliveryWithInstall": true,
@@ -47,14 +48,21 @@
           {
             "colorMode": "dark",
             "description": "JS1V Form",
-            "supportDimensions": ["1*2", "2*2", "test", "2*4"],
+            "supportDimensions": [
+              "1*2",
+              "2*2",
+              "test",
+              "2*4"
+            ],
             "type": "Java",
             "jsComponentName": "JS_name1V",
             "metaData": {
-              "customizeData": [{
-                "name": "originWidgetName1V",
-                "value": "com.openharmony.weather.testWidget1V"
-              }]
+              "customizeData": [
+                {
+                  "name": "originWidgetName1V",
+                  "value": "com.openharmony.weather.testWidget1V"
+                }
+              ]
             },
             "isDefault": false,
             "deepLink": "ability://com.example.myapplication.fa/.MainAbility",
@@ -71,7 +79,11 @@
           {
             "colorMode": "light",
             "description": " JS1V2 Form",
-            "supportDimensions": [ "1*2", "2*4", "4*4"],
+            "supportDimensions": [
+              "1*2",
+              "2*4",
+              "4*4"
+            ],
             "type": "JS",
             "jsComponentName": "JS_name1V2",
             "metaData": {
@@ -93,21 +105,25 @@
         ],
         "launchType": "standard",
         "metaData": {
-          "parameters": [{
-            "name": "Data1V0",
-            "type": "float",
-            "description": "$string:mainability_description"
-          },
-        {
-          "name": "Data1V1",
-          "type": "float",
-          "description": "$string:mainability_description"
-        }],
-          "results": [{
-            "name": "Data1V",
-            "type": "float",
-            "description": "$string:mainability_description"
-          }],
+          "parameters": [
+            {
+              "name": "Data1V0",
+              "type": "float",
+              "description": "$string:mainability_description"
+            },
+            {
+              "name": "Data1V1",
+              "type": "float",
+              "description": "$string:mainability_description"
+            }
+          ],
+          "results": [
+            {
+              "name": "Data1V",
+              "type": "float",
+              "description": "$string:mainability_description"
+            }
+          ],
           "customizeData": [
             {
               "name": "vendorName",
@@ -125,8 +141,8 @@
         "label": "$string:shortcut",
         "intents": [
           {
-            "targetClass":"com.example.vendor1.MainAbility",
-            "targetBundle":"com.example.vendor1"
+            "targetClass": "com.example.vendor1.MainAbility",
+            "targetBundle": "com.example.vendor1"
           }
         ]
       }
