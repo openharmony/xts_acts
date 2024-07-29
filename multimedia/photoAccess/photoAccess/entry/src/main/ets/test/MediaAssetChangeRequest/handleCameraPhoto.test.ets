@@ -100,12 +100,12 @@ export default function handleCameraPhotoTest() {
     }
 
     /**
-     * @tc.number    : Sub_PhotoAccess_Helper_Save_Camera_Photo_001
-     * @tc.name      : save_camera_photo_by_exist_photo_asset_001
-     * @tc.desc      : add existing photoAsset as param to saveCameraPhoto interface
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.number : Sub_PhotoAccess_Helper_Save_Camera_Photo_001
+     * @tc.name : save_camera_photo_by_exist_photo_asset_001
+     * @tc.desc : add existing photoAsset as param to saveCameraPhoto interface
+     * @tc.size : MEDIUM
+     * @tc.type : Function
+     * @tc.level : Level 0
      */
     it('save_camera_photo_by_exist_photo_asset_001', 0, async (done) => {
       let testNum = 'save_camera_photo_by_exist_photo_asset_001';
@@ -113,12 +113,12 @@ export default function handleCameraPhotoTest() {
     })
 
     /**
-     * @tc.number    : Sub_PhotoAccess_Helper_Discard_Camera_Photo_001
-     * @tc.name      : discard_camera_photo_by_exist_photo_asset_001
-     * @tc.desc      : add existing photoAsset as param to discardCameraPhoto interface, expect fail
-     * @tc.size      : MEDIUM
-     * @tc.type      : Function
-     * @tc.level     : Level 0
+     * @tc.number : Sub_PhotoAccess_Helper_Discard_Camera_Photo_001
+     * @tc.name : discard_camera_photo_by_exist_photo_asset_001
+     * @tc.desc : add existing photoAsset as param to discardCameraPhoto interface, expect fail
+     * @tc.size : MEDIUM
+     * @tc.type : Function
+     * @tc.level : Level 0
      */
     it('discard_camera_photo_by_exist_photo_asset_001', 0, async (done) => {
       let testNum = 'discard_camera_photo_by_exist_photo_asset_001';
