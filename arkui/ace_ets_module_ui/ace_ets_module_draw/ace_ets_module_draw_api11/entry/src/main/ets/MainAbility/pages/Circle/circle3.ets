@@ -23,7 +23,7 @@ struct CircleExample {
 
   onPageShow() {
     console.info('[circle] page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent:events_emitter.InnerEvent = {
       eventId: 77,
       priority: events_emitter.EventPriority.LOW
     }
@@ -31,7 +31,7 @@ struct CircleExample {
     events_emitter.on(stateChangeEvent, this.stateChangCallBack);
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack  = (eventData:events_emitter.EventData) => {
     console.info("[circle] page stateChangCallBack");
     if (eventData != null) {
       console.info("[circle] page state change called:" + JSON.stringify(eventData));
