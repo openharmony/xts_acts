@@ -105,10 +105,10 @@ export default function ActsAcewebViewCookieTrack() {
      *@tc.type Function
      *@tc.level 1
      */
-    it('testCookieTrackAddTrackingPrevention', 0, async (done: Function) => {
-      let emitKey = "emitCookieTrackAddTrackingPrevention";
+    it('testCookieTrackClearTrackingPrevention', 0, async (done: Function) => {
+      let emitKey = "emitCookieTrackClearTrackingPrevention";
       Utils.emitEvent(emitKey, 10)
-      Utils.registerEvent("testCookieTrackAddTrackingPrevention", true, 1280, done);
+      Utils.registerEvent("testCookieTrackClearTrackingPrevention", true, 1282, done);
       sendEventByKey('webViewCookieTrackTriggerButton', 10, '');
     })
 
