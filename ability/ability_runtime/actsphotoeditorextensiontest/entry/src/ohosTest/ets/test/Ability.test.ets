@@ -71,7 +71,7 @@ export default function abilityTest() {
         */
         it('ACTS_PhotoEditorExtension_0100', 0, () => {
             // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
-            TAG = 'ACTS_PhotoEditorExtension_0100 == ';
+            const newTag = 'ACTS_PhotoEditorExtension_0100 == ';
 
             let subscriber: commonEventManager.CommonEventSubscriber | null = null;
             let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
@@ -79,14 +79,14 @@ export default function abilityTest() {
             };
 
             await commonEventManager.createSubscriber(subscribeInfo).then(async (data) => {
-                console.log(TAG + "createSubscriber data : " + JSON.stringify(data));
+                console.log(newTag + "createSubscriber data : " + JSON.stringify(data));
                 globalscribe = data;
                 commonEventManager.subscribe(globalscribe, async (err, data) => {
-                    console.log(TAG + "SubscribeInfoCallback : " + JSON.stringify(data));
+                    console.log(newTag + "SubscribeInfoCallback : " + JSON.stringify(data));
 
                     let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
                     await abilityDelegator.executeShellCommand('aa dump -e').then((data) => {
-                        console.info(TAG + 'data: ' + JSON.stringify(data));
+                        console.info(newTag + 'data: ' + JSON.stringify(data));
                         var output = JSON.stringify(data);
                         try {
                             expect(output).assertContain("MuseEditorExtensionAbility");
@@ -96,7 +96,7 @@ export default function abilityTest() {
                     });
                 });
             }).catch((error) => {
-                console.log(TAG + "createSubscriber err : " + JSON.stringify(error));
+                console.log(newTag + "createSubscriber err : " + JSON.stringify(error));
                 expect().assertFail();
             })
         })
