@@ -19,6 +19,8 @@ import drawing from '@ohos.graphics.drawing';
 export default function typefaceTest() {
   describe('DrawingTsTypeFaceTest', () => {
     const DEFAULT = 0;
+    const FONT_PATH = "/system/fonts/HarmonyOS_Sans_Italic.ttf";
+
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(async () => {
 
@@ -104,6 +106,89 @@ export default function typefaceTest() {
       }
     });
 
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_TYPEFACE_0200
+     * @tc.name      : testTypeFaceMakeFromFileNormal
+     * @tc.desc      : testTypeFaceMakeFromFileNormal
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 0
+     */
+    it('testTypeFaceMakeFromFileNormal', DEFAULT, () => {
+      const msg = 'testTypeFaceMakeFromFileNormal';
+      let font = new drawing.Font();
+
+      try {
+        let str = FONT_PATH;
+        let mytypeface = drawing.Typeface.makeFromFile(str);
+
+        mytypeface = drawing.Typeface.makeFromFile("");
+
+        console.info(msg + ' test succeeded.');
+      } catch (e) {
+        console.info(msg + ` test failed, errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect().assertFail();
+      }
+    });
+
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_TYPEFACE_0201
+     * @tc.name      : testTypeFaceMakeFromFileMismatch
+     * @tc.desc      : testTypeFaceMakeFromFileMismatch
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testTypeFaceMakeFromFileMismatch', 3, () => {
+      const msg = 'testTypeFaceMakeFromFileMismatch';
+
+      try {
+        drawing.Typeface.makeFromFile(null);
+        console.info(msg + `test error`);
+        expect().assertFail()
+      } catch (e) {
+        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        expect(e.code).assertEqual(401);
+      }
+
+      try {
+        drawing.Typeface.makeFromFile(undefined);
+        console.info(msg + `test error`);
+        expect().assertFail()
+      } catch (e) {
+        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        expect(e.code).assertEqual(401);
+      }
+
+    });
+
+
+    /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_TYPEFACE_0202
+     * @tc.name      : testTypeFaceMakeFromFileMultipleCalls
+     * @tc.desc      : testTypeFaceMakeFromFileMultipleCalls
+     * @tc.size      : SmallTest
+     * @tc.type      : Function
+     * @tc.level     : Level 3
+     */
+    it('testTypeFaceMakeFromFileMultipleCalls', 3, () => {
+      const msg = 'testTypeFaceMakeFromFileMultipleCalls';
+      let font = new drawing.Font();
+
+      try {
+        for (let i = 0; i < 20; i += 1) {
+          let str = FONT_PATH;
+          const mytypeface = drawing.Typeface.makeFromFile(str);
+        }
+
+        console.info(msg + ' test succeeded.');
+      } catch (e) {
+        console.info(msg + ` test failed, errorCode is:  ${e.code}, errorMessage is: ${e.message}`);
+        expect().assertFail();
+      }
+    });
 
   })
 }
