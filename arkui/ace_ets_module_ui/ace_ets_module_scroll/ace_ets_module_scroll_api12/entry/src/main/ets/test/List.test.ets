@@ -33,6 +33,8 @@ import getTest from './ListTest/childrenMainSizeTest/getTest.test'
 import alphabetEnableJsunit from './AlphabetIndexerTest/alphabetEnableJsunit.test';
 import swiperCountJsunit from './SwiperTest/swiperCountJsunit.test';
 import waterFlowLayoutMode from './WaterFlowTest/waterFlowLayoutMode.test';
+import listOffsetJsunit from './ListTest/listOffsetJsunit.test';
+import swiperSyncType from './SwiperTest/swiperSyncType.test';
 
 export default function testsuite() {
   ListScrollTest1()
@@ -56,4 +58,6 @@ export default function testsuite() {
   alphabetEnableJsunit()
   swiperCountJsunit()
   waterFlowLayoutMode()
+  listOffsetJsunit()
+  swiperSyncType()
 }

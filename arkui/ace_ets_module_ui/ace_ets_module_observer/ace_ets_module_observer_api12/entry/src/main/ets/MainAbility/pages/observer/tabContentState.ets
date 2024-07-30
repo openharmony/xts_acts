@@ -12,14 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import uiObserver from '@ohos.arkui.observer';
+import observer from '@ohos.arkui.observer';
 
-function callbackFunc(info: uiObserver.TabContentInfo) {
+function callbackFunc(info: observer.TabContentInfo) {
   console.info('tabContentUpdate', JSON.stringify(info));
   if(info.id) {
-    if (info.state == uiObserver.TabContentState.ON_SHOW){
+    if (info.state == observer.TabContentState.ON_SHOW){
       AppStorage.setOrCreate('Observer_SHOW', 'Show')
-    } else if (info.state == uiObserver.TabContentState.ON_HIDE){
+    } else if (info.state == observer.TabContentState.ON_HIDE){
       AppStorage.setOrCreate('Observer_HIDE', 'Hide')
     }
   }
@@ -31,11 +31,11 @@ struct TabsStateExample {
   @State text:string = '1'
 
   aboutToAppear(): void {
-    uiObserver.on('tabContentUpdate', { id: 'tabsId' }, callbackFunc);
+    observer.on('tabContentUpdate', { id: 'tabsId' }, callbackFunc);
   }
 
   aboutToDisappear(): void {
-    uiObserver.off('tabContentUpdate', { id: 'tabsId' }, callbackFunc);
+    observer.off('tabContentUpdate', { id: 'tabsId' }, callbackFunc);
   }
 
   build() {
