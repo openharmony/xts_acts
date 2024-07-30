@@ -276,8 +276,11 @@ Camera_ErrorCode NDKCamera::GetSupportedCameras(void)
         LOG("Get supported cameras failed.");
         return CAMERA_INVALID_ARGUMENT;
     }
-    uint32_t orientation;
+    uint32_t orientation = 361;
     OH_CameraDevice_GetCameraOrientation(&cameras_[cameraDeviceIndex_], &orientation);
+    if (orientation > 360) {
+        LOG("GetCameraOrientation failed.");
+    }
     LOG("camera0 cameraOrientation: %{public}d", orientation);
     return ret_;
 }
