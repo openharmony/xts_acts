@@ -34,7 +34,7 @@ export default function abilityTest() {
         beforeEach(async () => {
             hilog.info(0x0000, TAG, `ACTS_PhotoEditorExtension beforeEach start`);
 
-            let options: commonEventManager.CommonEventPublishData = {
+            let options: router.RouterOptions = {
                 url: 'testAbility/pages/p1',
             }
             try {
