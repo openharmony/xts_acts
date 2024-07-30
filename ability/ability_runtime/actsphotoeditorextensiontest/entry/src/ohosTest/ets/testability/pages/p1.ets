@@ -41,7 +41,7 @@ struct Index {
                 }).width('100%').height('100%')
                     .onRemoteReady((data) => {
                         let onResultEvent: string = 'ACTS_PhotoEditorExtension_OnRemoteReady';
-                        let options: CommonEventManager.CommonEventPublishData = {
+                        let options: commonEventManager.CommonEventPublishData = {
                             parameters: {
                                 'result': data
                             }
