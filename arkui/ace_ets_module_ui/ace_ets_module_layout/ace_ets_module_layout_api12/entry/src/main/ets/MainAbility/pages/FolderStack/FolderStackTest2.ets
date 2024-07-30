@@ -72,6 +72,8 @@ struct FolderStackTest2 {
           this.text = 'ROTATION_90'
         } else if (msg.appRotation === AppRotation.ROTATION_180) {
           this.text = 'ROTATION_180'
+        } else if (msg.appRotation === AppRotation.ROTATION_270) {
+          this.text = 'ROTATION_270'
         }
       })
       // folderStack如果不撑满页面全屏，作为普通Stack使用
