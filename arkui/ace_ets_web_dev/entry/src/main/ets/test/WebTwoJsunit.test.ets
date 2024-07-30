@@ -76,8 +76,9 @@ export default function webTwoJsunit() {
       Utils.registerLargerEvent("overviewModeAccessTrue", 168, done);
       sendEventByKey('webcomponenttwo', 10, '');
     })
+
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV02_API_002                                                                                                                                                          
+     *tc.number SUB_ACE_BASIC_ETS_WEB_DEV02_API_002                      
      *tc.name overviewModeAccessFalse                                                                                                                                                                                                                 
      *tc.desic Sets not allow the Web access overview mode
      */
