@@ -111,26 +111,22 @@ struct PinchGestureTemplate {
 
       Button('template').id('PinchGestureTemplate_template')
         .onClick(()=>{
-          if(this.template_arr.length > 3) {
-            let timeLimit = (this.endTime - this.startTime) / this.cnt * 1000000 * 2;
-            let mid: number = Math.ceil(this.template_arr.length / 2)
-            let x: number = Math.abs(this.template_arr[1] - this.template_arr[0])
-            let y: number = Math.abs(this.template_arr[this.template_arr.length - mid + 1] - this.template_arr[this.template_arr.length - mid])
-            let z: number = Math.abs(this.template_arr[this.template_arr.length - 2] - this.template_arr[this.template_arr.length - 3])
-            console.log("PinchGestureTemplateTest_0010 : x " + x + ", y " + y + ", z " + z + ", timeLimit " + timeLimit);
-            if(x <= timeLimit && y <= timeLimit && z <= timeLimit) {
-              this.template_flag = true
-            } else {
-              let a = -1
-              for (let i = 1; i < this.inputTemplate_arr.length; i++) {
-                let datax = this.inputTemplate_arr[i] - this.inputTemplate_arr[i-1]
-                if (datax > a) {
-                  a = datax
+          if(this.template_arr.length > 0) {
+            this.template_flag = true
+            for(let i = 1; i <= this.template_arr.length - 2; i++) {
+              console.log('PinchGestureTemplate_template i is:',i)
+              if(this.template_arr[i] > 0) {
+                if(this.template_arr[i] > this.template_arr[i+1]) {
+                  console.log('PinchGestureTemplate_template template_arr[i] and template_arr[i+1] is:',this.template_arr[i],this.template_arr[i+1])
+                  this.template_flag = false
+                  break;
                 }
+              } else {
+                console.log('PinchGestureTemplate_template template_arr[1] is:',this.template_arr[i])
+                this.template_flag = false
+                break;
               }
-              console.log('PinchGestureTemplateTest_0010 datax', a)
             }
-
           }
         })
       Text(`templateFlag:${this.template_flag}`).key('PinchGestureTemplate_Text')
