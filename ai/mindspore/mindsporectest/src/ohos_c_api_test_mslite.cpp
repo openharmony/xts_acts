@@ -3631,23 +3631,23 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0007, Function | MediumTes
     const char *band_mode = "HIAI_BANDMODE_HIGH";
     OH_AI_DeviceInfoAddExtension(nnrt_device_info, "BandMode", band_mode, strlen(band_mode));
     size_t q_size;
-    char *quant_config = ReadFile("/data/test/googlenet_param", &q_size);
+    char *quant_config = ReadFile("/data/test/test_model_param", &q_size);
     OH_AI_DeviceInfoAddExtension(nnrt_device_info, "QuantConfigData", quant_config, q_size);
 
     OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
     printf("==========Create model==========\n");
     OH_AI_ModelHandle model = OH_AI_ModelCreate();
-    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/googlenet.om.ms", OH_AI_MODELTYPE_MINDIR, context);
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/test_model.om.ms", OH_AI_MODELTYPE_MINDIR, context);
     ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
     printf("==========GetInputs==========\n");
     OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
     ASSERT_NE(inputs.handle_list, nullptr);
-    FillInputsData(inputs, "googlenet", false);
+    FillInputsData(inputs, "test_model", false);
     printf("==========Model Predict==========\n");
     OH_AI_TensorHandleArray outputs;
     OH_AI_Status predict_ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
     ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
-    CompareResult(outputs, "googlenet", 0.01, 0.01, true);
+    CompareResult(outputs, "test_model", 0.01, 0.01, true);
     OH_AI_ModelDestroy(&model);
 }
 
@@ -3681,17 +3681,17 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0008, Function | MediumTes
     OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
     printf("==========Create model==========\n");
     OH_AI_ModelHandle model = OH_AI_ModelCreate();
-    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/googlenet.om.ms", OH_AI_MODELTYPE_MINDIR, context);
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/test_model.om.ms", OH_AI_MODELTYPE_MINDIR, context);
     ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
     printf("==========GetInputs==========\n");
     OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
     ASSERT_NE(inputs.handle_list, nullptr);
-    FillInputsData(inputs, "googlenet", false);
+    FillInputsData(inputs, "test_model", false);
     printf("==========Model Predict==========\n");
     OH_AI_TensorHandleArray outputs;
     OH_AI_Status predict_ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
     ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
-    CompareResult(outputs, "googlenet", 0.01, 0.01, true);
+    CompareResult(outputs, "test_model", 0.01, 0.01, true);
     OH_AI_ModelDestroy(&model);
 }
 
@@ -3721,13 +3721,13 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0009, Function | MediumTes
     const char *band_mode = "HIAI_BANDMODE_HIGH";
     OH_AI_DeviceInfoAddExtension(nnrt_device_info, "BandMode", band_mode, strlen(band_mode));
     size_t q_size;
-    char *quant_config = ReadFile("/data/test/googlenet.om.ms", &q_size);
+    char *quant_config = ReadFile("/data/test/test_model.om.ms", &q_size);
     OH_AI_DeviceInfoAddExtension(nnrt_device_info, "QuantConfigData", quant_config, q_size);
 
     OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
     printf("==========Create model==========\n");
     OH_AI_ModelHandle model = OH_AI_ModelCreate();
-    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/googlenet.om.ms", OH_AI_MODELTYPE_MINDIR, context);
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/test_model.om.ms", OH_AI_MODELTYPE_MINDIR, context);
     ASSERT_EQ(ret, OH_AI_STATUS_LITE_ERROR);
 }
 
@@ -3757,13 +3757,13 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0010, Function | MediumTes
     const char *band_mode = "HIAI_BANDMODE_HIGH";
     OH_AI_DeviceInfoAddExtension(nnrt_device_info, "BandMode", band_mode, strlen(band_mode));
     size_t q_size;
-    char *quant_config = ReadFile("/data/test/googlenet_param", &q_size);
+    char *quant_config = ReadFile("/data/test/test_model_param", &q_size);
     OH_AI_DeviceInfoAddExtension(nnrt_device_info, "QuantConfigData", quant_config, 0);
 
     OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
     printf("==========Create model==========\n");
     OH_AI_ModelHandle model = OH_AI_ModelCreate();
-    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/googlenet.om.ms", OH_AI_MODELTYPE_MINDIR, context);
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/test_model.om.ms", OH_AI_MODELTYPE_MINDIR, context);
     ASSERT_EQ(ret, OH_AI_STATUS_LITE_ERROR);
 }
 
@@ -3793,23 +3793,23 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0011, Function | MediumTes
     const char *band_mode = "HIAI_BANDMODE_NORMAL";
     OH_AI_DeviceInfoAddExtension(nnrt_device_info, "BandMode", band_mode, strlen(band_mode));
     size_t q_size;
-    char *quant_config = ReadFile("/data/test/googlenet_param", &q_size);
+    char *quant_config = ReadFile("/data/test/test_model_param", &q_size);
     OH_AI_DeviceInfoAddExtension(nnrt_device_info, "QuantConfigData", quant_config, q_size);
 
     OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
     printf("==========Create model==========\n");
     OH_AI_ModelHandle model = OH_AI_ModelCreate();
-    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/googlenet.om.ms", OH_AI_MODELTYPE_MINDIR, context);
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/test_model.om.ms", OH_AI_MODELTYPE_MINDIR, context);
     ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
     printf("==========GetInputs==========\n");
     OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
     ASSERT_NE(inputs.handle_list, nullptr);
-    FillInputsData(inputs, "googlenet", false);
+    FillInputsData(inputs, "test_model", false);
     printf("==========Model Predict==========\n");
     OH_AI_TensorHandleArray outputs;
     OH_AI_Status predict_ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
     ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
-    CompareResult(outputs, "googlenet", 0.01, 0.01, true);
+    CompareResult(outputs, "test_model", 0.01, 0.01, true);
     OH_AI_ModelDestroy(&model);
 }
 
@@ -3839,23 +3839,23 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0012, Function | MediumTes
     const char *band_mode = "HIAI_BANDMODE_LOW";
     OH_AI_DeviceInfoAddExtension(nnrt_device_info, "BandMode", band_mode, strlen(band_mode));
     size_t q_size;
-    char *quant_config = ReadFile("/data/test/googlenet_param", &q_size);
+    char *quant_config = ReadFile("/data/test/test_model_param", &q_size);
     OH_AI_DeviceInfoAddExtension(nnrt_device_info, "QuantConfigData", quant_config, q_size);
 
     OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
     printf("==========Create model==========\n");
     OH_AI_ModelHandle model = OH_AI_ModelCreate();
-    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/googlenet.om.ms", OH_AI_MODELTYPE_MINDIR, context);
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/test_model.om.ms", OH_AI_MODELTYPE_MINDIR, context);
     ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
     printf("==========GetInputs==========\n");
     OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
     ASSERT_NE(inputs.handle_list, nullptr);
-    FillInputsData(inputs, "googlenet", false);
+    FillInputsData(inputs, "test_model", false);
     printf("==========Model Predict==========\n");
     OH_AI_TensorHandleArray outputs;
     OH_AI_Status predict_ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
     ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
-    CompareResult(outputs, "googlenet", 0.01, 0.01, true);
+    CompareResult(outputs, "test_model", 0.01, 0.01, true);
     OH_AI_ModelDestroy(&model);
 }
 
@@ -3885,23 +3885,23 @@ HWTEST(MSLiteTest, SUB_AI_MindSpore_HIAI_OfflineModel_0013, Function | MediumTes
     const char *band_mode = "HIAI_BANDMODE_UNSET";
     OH_AI_DeviceInfoAddExtension(nnrt_device_info, "BandMode", band_mode, strlen(band_mode));
     size_t q_size;
-    char *quant_config = ReadFile("/data/test/googlenet_param", &q_size);
+    char *quant_config = ReadFile("/data/test/test_model_param", &q_size);
     OH_AI_DeviceInfoAddExtension(nnrt_device_info, "QuantConfigData", quant_config, q_size);
 
     OH_AI_ContextAddDeviceInfo(context, nnrt_device_info);
     printf("==========Create model==========\n");
     OH_AI_ModelHandle model = OH_AI_ModelCreate();
-    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/googlenet.om.ms", OH_AI_MODELTYPE_MINDIR, context);
+    OH_AI_Status ret = OH_AI_ModelBuildFromFile(model, "/data/test/test_model.om.ms", OH_AI_MODELTYPE_MINDIR, context);
     ASSERT_EQ(ret, OH_AI_STATUS_SUCCESS);
     printf("==========GetInputs==========\n");
     OH_AI_TensorHandleArray inputs = OH_AI_ModelGetInputs(model);
     ASSERT_NE(inputs.handle_list, nullptr);
-    FillInputsData(inputs, "googlenet", false);
+    FillInputsData(inputs, "test_model", false);
     printf("==========Model Predict==========\n");
     OH_AI_TensorHandleArray outputs;
     OH_AI_Status predict_ret = OH_AI_ModelPredict(model, inputs, &outputs, nullptr, nullptr);
     ASSERT_EQ(predict_ret, OH_AI_STATUS_SUCCESS);
-    CompareResult(outputs, "googlenet", 0.01, 0.01, true);
+    CompareResult(outputs, "test_model", 0.01, 0.01, true);
     OH_AI_ModelDestroy(&model);
 }
 
