@@ -24,7 +24,7 @@ const TAG = "ACTS_PhotoEditorExtension"
 
 export default function abilityTest() {
     describe('ActsAbilityTest', () => {
-        let globalscribe: CommonEventSubscriber|undefined = undefined;
+        let globalscribe: commonEventManager.CommonEventSubscriber|undefined = undefined;
 
         // Defines a test suite. Two parameters are supported: test suite name and test suite function.
         beforeAll(() => {
@@ -34,7 +34,7 @@ export default function abilityTest() {
         beforeEach(async () => {
             hilog.info(0x0000, TAG, `ACTS_PhotoEditorExtension beforeEach start`);
 
-            let options: CommonEventManager.CommonEventPublishData = {
+            let options: commonEventManager.CommonEventPublishData = {
                 url: 'testAbility/pages/p1',
             }
             try {
