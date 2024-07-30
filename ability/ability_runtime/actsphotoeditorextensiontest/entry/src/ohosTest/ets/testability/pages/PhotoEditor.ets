@@ -26,10 +26,10 @@ struct PhotoEditor {
 
     const uiContext = getContext(this) as common.PhotoEditorExtensionContext;
 
-    let originalImage: image.PixelMap;
+    let originalImage: image.PixelMap|null = null;
     let packOpts: image.PackingOption = { format: 'image/jpeg', quality: 98 };
     try {
-      uiContext.saveEditedContentWithImage(originalImage,
+      uiContext.saveEditedContentWithImage(originalImage as image.PixelMap,
         packOpts).then(data => {
         if (data.resultCode == 0) {
           hilog.info(0x0000, TAG, `Save succeed.`);
