@@ -51,7 +51,6 @@ struct Index {
         }.margin(30)
         Button('点击触发postDelayedFrameCallback')
           .onClick(() => {
-            // this.getUIContext().postDelayedFrameCallback(new MyFrameCallback("delayTask"), 5);
             this.mText2 = 'postDelayedFrameCallback'
             this.horizontalSplitRatioText = 'horizontalSplitRatio'
             this.verticalSplitRatioText = 'verticalSplitRatio'
