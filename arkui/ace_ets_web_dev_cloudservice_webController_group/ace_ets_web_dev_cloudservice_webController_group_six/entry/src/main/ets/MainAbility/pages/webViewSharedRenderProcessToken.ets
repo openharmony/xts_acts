@@ -17,7 +17,7 @@ import webview from '@ohos.web.webview';
 import Utils from '../../test/Utils';
 import business_error from '@ohos.base';
 
-class testClass {
+class TestClass {
   constructor() {
   }
 
@@ -38,7 +38,7 @@ struct WebComponent {
   webOptions: WebOptions = { src: 'www.example.com', controller: this.controller, sharedRenderProcessToken: '111' }
   webOptions2: WebOptions = { src: 'www.w3.org', controller: this.controller, sharedRenderProcessToken: '111' }
   webOptions3: WebOptions = { src: 'www.baidu.com', controller: this.controller, sharedRenderProcessToken: '111' }
-  @State testObj: testClass = new testClass();
+  @State testObj: TestClass = new TestClass();
 
 
   onPageShow() {
@@ -109,8 +109,8 @@ struct WebComponent {
       Web(this.webOptions)
         .javaScriptProxy({
         object: this.testObj,
-        name: "testObjName",
-        methodList: ["test"],
+        name: 'testObjName',
+        methodList: ['test'],
         controller: this.controller,
         // 可选参数
         asyncMethodList: [],

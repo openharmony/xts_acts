@@ -80,7 +80,10 @@ export default function ActsAcewebViewSharedRenderProcessToken() {
     it('testWebViewSharedRenderProcessToken', 0, async (done: Function) => {
       emitKey = "emitWebViewSharedRenderProcessToken"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerEvent("testWebViewSharedRenderProcessToken", true, 1600, done);
+      Utils.registerBaseEvent('testWebViewSharedRenderProcessToken', true, 1600, done,
+        (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
       sendEventByKey('webViewSharedRenderProcessToken', 10, '');
     })
 
@@ -95,7 +98,7 @@ export default function ActsAcewebViewSharedRenderProcessToken() {
     it('testWebViewWebViewJsBridge', 0, async (done: Function) => {
       emitKey = "emitWebViewWebViewJsBridge"
       Utils.emitEvent(emitKey, 10);
-      Utils.registerBaseEvent('testWebViewSharedRenderProcessToken', true, 1601, done,
+      Utils.registerBaseEvent('testWebViewWebViewJsBridge', true, 1601, done,
         (backData: events_emitter.EventData, expected: Object) => {
           expect(backData?.data?.ACTION).assertEqual(expected);
         });
