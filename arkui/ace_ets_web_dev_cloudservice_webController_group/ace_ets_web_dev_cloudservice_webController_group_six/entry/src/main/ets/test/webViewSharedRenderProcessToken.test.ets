@@ -83,5 +83,23 @@ export default function ActsAcewebViewSharedRenderProcessToken() {
       Utils.registerEvent("testWebViewSharedRenderProcessToken", true, 1600, done);
       sendEventByKey('webViewSharedRenderProcessToken', 10, '');
     })
+
+    /*
+     *@tc.number SUB_ACE_WEB_JSBRIDGE_API_0001
+     *@tc.name testWebViewJsBridge
+     *@tc.desc test WebViewJsBridge
+     *@tc.size MediumTest
+     *@tc.type Function
+     *@tc.level 1
+     */
+    it('testWebViewWebViewJsBridge', 0, async (done: Function) => {
+      emitKey = "emitWebViewWebViewJsBridge"
+      Utils.emitEvent(emitKey, 10);
+      Utils.registerBaseEvent('testWebViewSharedRenderProcessToken', true, 1601, done,
+        (backData: events_emitter.EventData, expected: Object) => {
+          expect(backData?.data?.ACTION).assertEqual(expected);
+        });
+      sendEventByKey('webViewSharedRenderProcessToken', 10, '');
+    })
   })
 }
