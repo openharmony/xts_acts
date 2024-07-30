@@ -23,7 +23,7 @@ const TAG = "ACTS_PhotoEditorExtension"
 
 export default function abilityTest() {
     describe('ActsAbilityTest', () => {
-        let globalscribe = undefined;
+        let globalscribe: CommonEventSubscriber|undefined = undefined;
 
         // Defines a test suite. Two parameters are supported: test suite name and test suite function.
         beforeAll(() => {
@@ -33,14 +33,13 @@ export default function abilityTest() {
         beforeEach(async () => {
             hilog.info(0x0000, TAG, `ACTS_PhotoEditorExtension beforeEach start`);
 
-            let options = {
+            let options: CommonEventManager.CommonEventPublishData = {
                 url: 'testAbility/pages/p1',
             }
-            let result;
             try {
-                result = await router.pushUrl(options);
+                await router.pushUrl(options);
                 await Utils.sleep(500);
-                console.info("ACTS_PhotoEditorExtension push page result: " + JSON.stringify(result));
+                console.info("ACTS_PhotoEditorExtension push page suceed");
             } catch (err) {
                 console.error("ACTS_PhotoEditorExtension push page error: " + err);
             }
@@ -87,7 +86,7 @@ export default function abilityTest() {
                     let abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator();
                     await abilityDelegator.executeShellCommand('aa dump -e').then((data) => {
                         console.info(newTag + 'data: ' + JSON.stringify(data));
-                        var output = JSON.stringify(data);
+                        let output = JSON.stringify(data);
                         try {
                             expect(output).assertContain("MuseEditorExtensionAbility");
                         } catch {
@@ -96,7 +95,7 @@ export default function abilityTest() {
                     });
                 });
             }).catch((error) => {
-                console.log(newTag + "createSubscriber err : " + JSON.stringify(error));
+                console.log(newTag + "createSubscriber err");
                 expect().assertFail();
             })
         })
