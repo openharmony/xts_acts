@@ -24,6 +24,8 @@
         "MainAbility/pages/UIContext/getPageInfoByUniqueId",
         "MainAbility/pages/UIContext/setFrameRateRange",
         "MainAbility/pages/AttributeUpdater/AttributeUpdater",
-	"MainAbility/pages/componentSnapshot/componentSnapshot"
+	    "MainAbility/pages/componentSnapshot/componentSnapshot",
+        "MainAbility/pages/UIContext/postDelayedFrameCallback",
+        "MainAbility/pages/UIContext/postFrameCallback"
     ]
 }

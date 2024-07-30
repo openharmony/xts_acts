@@ -36,6 +36,8 @@ import getPageInfoByUniqueIdTest from './UIContextTest/getPageInfoByUniqueId.tes
 import setFrameRateRangeTest from './UIContextTest/setFrameRateRange.test'
 import AttributeUpdaterTest from './AttributeUpdaterTest/AttributeUpdater.test'
 import componentSnapshotTest from './componentSnapshotTest/componentSnapshot.test'
+import postDelayedFrameCallbackTest from './UIContextTest/postDelayedFrameCallbackTest';
+import postFrameCallbackTest from './UIContextTest/postFrameCallbackTest';
 export default function testsuite() {
   OverlayManagerTest_001()
   OverlayManagerTest_002()
@@ -61,4 +63,6 @@ export default function testsuite() {
   setFrameRateRangeTest();
   AttributeUpdaterTest();
   componentSnapshotTest();
+  postDelayedFrameCallbackTest();
+  postFrameCallbackTest();
 }
