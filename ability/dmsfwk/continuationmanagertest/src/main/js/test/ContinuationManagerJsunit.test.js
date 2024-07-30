@@ -117,7 +117,7 @@ export default function continuationManagerTest() {
                 console.log("----------------------SUM_DMS_AbilityConstant_0100----------------------" + abilityConstant.LaunchParam.PREPARE_CONTINUATION);
                 expect(10).assertEqual(abilityConstant.LaunchParam.PREPARE_CONTINUATION);
             } catch (error) {
-                console.log("----------------------SUM_DMS_AbilityConstant_0100----------------------"" + error);  
+                console.log("----------------------SUM_DMS_AbilityConstant_0100----------------------" + error);  
             }
             console.log("----------------------SUM_DMS_AbilityConstant_0100 end----------------------");
             done();
