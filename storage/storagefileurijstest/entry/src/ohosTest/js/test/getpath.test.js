@@ -69,10 +69,10 @@ describe('file_uri_test', function () {
      */
     it('fileuri_getpath_003', 0, function () {
       try{
-        let fileuristr = "file://com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files/test.txt?networkid=***";
+        let fileuristr = "file://com.ohos.UserFile.ExternalFileManager/data/storage/el2/distributedfiles/.remote_share/***/storage/Users/currentUser/Documents/test.txt?networkid=***";
         let uriOBJ = new fileUri.FileUri(fileuristr);
-        let fpath = uriOBJ.path
-        expect(fpath === '/data/storage/el2/share/r/com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files/test.txt').assertTrue();
+        let fpath = uriOBJ.path;
+        expect(fpath === '/storage/Users/currentUser/appdata/el2/distributedfiles/com.ohos.UserFile.ExternalFileManager/.remote_share/***/storage/Users/currentUser/Documents/test.txt').assertTrue();
       }catch(e){
         console.log('fileuri_getpath_003 has failed for:' + e.message);
         expect(false).assertTrue();
@@ -130,10 +130,10 @@ describe('file_uri_test', function () {
      */
     it('fileuri_getpath_006', 1, function () {
       try{
-        let fileuristr = "file://com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files/test.txt?networkid=";
+        let fileuristr = "file://com.ohos.UserFile.ExternalFileManager/data/storage/el2/distributedfiles/.remote_share/storage/Users/currentUser/Documents/test.txt?networkid=";
         let uriOBJ = new fileUri.FileUri(fileuristr);
         let fpath = uriOBJ.path
-        expect(fpath === '/data/storage/el2/share/r/com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files/test.txt').assertTrue();
+        expect(fpath === '/storage/Users/currentUser/appdata/el2/distributedfiles/com.ohos.UserFile.ExternalFileManager/.remote_share/storage/Users/currentUser/Documents/test.txt').assertTrue();
       }catch(e){
         console.log('fileuri_getpath_006 has failed for:' + e.message);
         expect(false).assertTrue();
@@ -150,7 +150,7 @@ describe('file_uri_test', function () {
      */
     it('fileuri_getpath_007', 0, function () {
       try{
-        let diruri = 'file://com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files/test#?$@/';
+        let diruri = 'file://com.ohos.UserFile.ExternalFileManager/data/storage/el2/distributedfiles/.remote_share/***/storage/Users/currentUser/Documents/test#?$@/';
         for(let i = 1;i <= 100;i++){
           let diruri100 = "test" + i + "/";
           diruri = diruri + diruri100;
@@ -158,7 +158,7 @@ describe('file_uri_test', function () {
         let fileuri100 = diruri + ' test.txt?networkid=**TEST!@#';
         let uriOBJ = new fileUri.FileUri(fileuri100);
         let fpath = uriOBJ.path
-        expect(fpath === '/data/storage/el2/share/r/com.example.demo/data/stroage/el2/distributedfiles/.remote_share/data/stroage/el2/base/files/test').assertTrue();
+        expect(fpath === '/storage/Users/currentUser/appdata/el2/distributedfiles/com.ohos.UserFile.ExternalFileManager/.remote_share/***/storage/Users/currentUser/Documents/test').assertTrue();
       }catch(e){
         console.log('fileuri_getpath_007 has failed for:' + e.message);
         expect(false).assertTrue();
