@@ -17,6 +17,8 @@
 @Component
 struct TextEditMenuOptions {
   @State text: string = 'Text editMenuOptions'
+  @State textArea: string = 'TextArea editMenuOptions'
+  @State textInput: string = 'TextInput editMenuOptions'
 
   onCreateMenu(menuItems: Array<TextMenuItem>) {
     menuItems.forEach((value, index) => {
@@ -66,7 +68,53 @@ struct TextEditMenuOptions {
             return false;
           }
         })
-        .margin({ top: 100 })
+        .margin({ top: 50 })
+
+      TextArea({ text:this.textArea })
+        .id("TextAreaEditMenuOptions")
+        .fontSize(20)
+        .copyOption(CopyOptions.LocalDevice)
+        .editMenuOptions({
+          onCreateMenu: this.onCreateMenu, onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
+            if (menuItem.id.equals(TextMenuItemId.of("custom2"))) {
+              console.log("Intercepted id: custom2 start:" + textRange.start + "; end:" + textRange.end)
+              return true;
+            }
+            if (menuItem.id.equals(TextMenuItemId.COPY)) {
+              console.log("Intercepted COPY start:" + textRange.start + "; end:" + textRange.end)
+              return true;
+            }
+            if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
+              console.log("Did not intercept SELECT_ALL start:" + textRange.start + "; end:" + textRange.end)
+              return false;
+            }
+            return false;
+          }
+        })
+        .margin({ top: 50 })
+
+      TextInput({ text:this.textInput })
+        .id("TextInputEditMenuOptions")
+        .fontSize(20)
+        .copyOption(CopyOptions.LocalDevice)
+        .editMenuOptions({
+          onCreateMenu: this.onCreateMenu, onMenuItemClick: (menuItem: TextMenuItem, textRange: TextRange) => {
+            if (menuItem.id.equals(TextMenuItemId.of("custom2"))) {
+              console.log("Intercepted id: custom2 start:" + textRange.start + "; end:" + textRange.end)
+              return true;
+            }
+            if (menuItem.id.equals(TextMenuItemId.COPY)) {
+              console.log("Intercepted COPY start:" + textRange.start + "; end:" + textRange.end)
+              return true;
+            }
+            if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
+              console.log("Did not intercept SELECT_ALL start:" + textRange.start + "; end:" + textRange.end)
+              return false;
+            }
+            return false;
+          }
+        })
+        .margin({ top: 50 })
     }
     .width("90%")
     .margin("5%")

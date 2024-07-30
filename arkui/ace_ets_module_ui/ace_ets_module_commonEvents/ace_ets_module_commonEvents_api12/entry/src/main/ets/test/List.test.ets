@@ -60,11 +60,8 @@ import RotationGestureUpdateTest from './RotationGesture/RotationGestureUpdateTe
 import onAttachTest from './onAttachTest/onAttach.test';
 import GestureRecognizerState from './GestureRecognizer/GestureRecognizerState.test';
 import APIshouldBuiltInRecognizerParallelWith from './APIshouldBuiltInRecognizerParallelWith.test';
-
-
-
 import typeNodeGestureTest from './PanGesture/Gesture.test';
-
+import UIContextDragControllerTest from './DragController/UIContextDragController.test';
 export default function testsuite() {
   APIshouldBuiltInRecognizerParallelWith();
   APIPreDragStatusTest();
@@ -115,4 +112,5 @@ export default function testsuite() {
   onAttachTest();
   GestureRecognizerState();
   typeNodeGestureTest();
+  UIContextDragControllerTest();
 }

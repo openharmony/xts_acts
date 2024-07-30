@@ -25,6 +25,7 @@
         "MainAbility/pages/Video/VideoReset/VideoReset12",
         "MainAbility/pages/Video/VideoReset/VideoReset13",
         "MainAbility/pages/Video/VideoReset/VideoReset14",
-        "MainAbility/pages/Video/VideoTest2"
+        "MainAbility/pages/Video/VideoTest2",
+        "MainAbility/pages/XComponent/surfaceRotationOptionsLock"
     ]
 }

@@ -170,7 +170,6 @@ export default function testsuite() {
   underlineColor();
   srcIndexTest();
   dstIndexTest();
-  
   RichEditorApi1();
   RichEditorApi3();
   RichEditorApi5();
@@ -197,14 +196,12 @@ export default function testsuite() {
   styledStringChange();
   RelativeContainerApi1()
   TextAddApi1()
-
   TextArea_lineBreakStrategyTest();
   TextArea_lineSpacingTest();
   TextInput_lineBreakStrategyTest();
   Text_lineBreakStrategyTest();
   Text_lineSpacingTest();
   textStrategyJsunit();
-
   EffectFillStyle()
   EffectScope()
   menuPolicyHIDE()
@@ -222,7 +219,6 @@ export default function testsuite() {
   AttributeUpdaterTest();
   UnitTest();
   APIClipMaskShape();
-
   RichEditorChangeValueTest1();
   RichEditorGetLayoutManagerTest1();
   RichEditorStyledStringTest1();
@@ -237,7 +233,6 @@ export default function testsuite() {
   searchTest()
   imageAddApi2()
   styledStringAddApi()
-
   RichEditorApi8()
   RichEditorApi9()
   RichEditorApi10()
@@ -250,7 +245,6 @@ export default function testsuite() {
   typeNodeTextSelectableMode1Test();
   typeNodeTextSelectableMode2Test();
   typeNodeTextSelectableMode3Test();
-
   textAreaPreview();
   textInputPreview();
   editMeunOptionsTest();
