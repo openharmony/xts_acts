@@ -16,6 +16,20 @@ import events_emitter from '@ohos.events.emitter';
 import webview from '@ohos.web.webview';
 import Utils from '../../test/Utils';
 import business_error from '@ohos.base';
+
+class TestClass {
+  constructor() {
+  }
+
+  test(): string {
+    return 'ArkUI Web Component';
+  }
+
+  toString(): void {
+    console.log('Web Component toString');
+  }
+}
+
 @Entry
 @Component
 struct WebComponent {
@@ -24,6 +38,8 @@ struct WebComponent {
   webOptions: WebOptions = { src: 'www.example.com', controller: this.controller, sharedRenderProcessToken: '111' }
   webOptions2: WebOptions = { src: 'www.w3.org', controller: this.controller, sharedRenderProcessToken: '111' }
   webOptions3: WebOptions = { src: 'www.baidu.com', controller: this.controller, sharedRenderProcessToken: '111' }
+  @State testObj: TestClass = new TestClass();
+
 
   onPageShow() {
     let valueChangeEvent: events_emitter.InnerEvent = {
@@ -63,10 +79,48 @@ struct WebComponent {
                 }
                 break;
               }
+
+              case 'emitWebViewWebViewJsBridge': {
+                try {
+                  this.controller.registerJavaScriptProxy(this.testObj, 'testObjName', ['test', 'toString'],
+                    // 可选参数, asyncMethodList
+                    [],
+                    // 可选参数, permission
+                    '{"javascriptProxyPermission":{"urlPermissionList":[{"scheme":"resource","host":"rawfile",' +
+                      '"port":"","path":""},{"scheme":"e","host":"f","port":"g","path":"h"}],' +
+                      '"methodList":[{"methodName":"test","urlPermissionList":' +
+                      '[{"scheme":"https","host":"xxx.com","port":"","path":""},' +
+                      '{"scheme":"resource","host":"rawfile","port":"","path":""}]},' +
+                      '{"methodName":"test11","urlPermissionList":[{"scheme":"q","host":"r","port":"","path":"t"},' +
+                      '{"scheme":"u","host":"v","port":"","path":""}]}]}}'
+                  );
+                  Utils.emitEvent(true,1601)
+                } catch (error) {
+                  let e:business_error.BusinessError = error as business_error.BusinessError;
+                  console.error(`ErrorCode: ${e.code},  Message: ${e.message}`);
+                  Utils.emitEvent(false,1601)
+
+                }
+                break;
+              }
             }
           })
       }
       Web(this.webOptions)
+        .javaScriptProxy({
+        object: this.testObj,
+        name: 'testObjName',
+        methodList: ['test'],
+        controller: this.controller,
+        // 可选参数
+        asyncMethodList: [],
+        permission: '{"javascriptProxyPermission":{"urlPermissionList":[{"scheme":"resource",' +
+          '"host":"rawfile","port":"","path":""},' +
+          '{"scheme":"e","host":"f","port":"g","path":"h"}],"methodList":[{"methodName":"test","urlPermissionList":' +
+          '[{"scheme":"https","host":"xxx.com","port":"","path":""},{"scheme":"resource","host":"rawfile","port":""' +
+          ',"path":""}]},{"methodName":"test11","urlPermissionList":[{"scheme":"q","host":"r","port":"","path":"t"},' +
+          '{"scheme":"u","host":"v","port":"","path":""}]}]}}'
+      })
       Web(this.webOptions2)
       Web(this.webOptions3)
     }

@@ -314,7 +314,7 @@ export default function imageSync() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0500', 0, async function (done) {
-            testGetImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0500", "test.dng", 160, 120, "image/raw", 0);
+            testGetImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0500", "test.dng", 5976, 3992, "image/raw", 0);
         })
 
         /**
