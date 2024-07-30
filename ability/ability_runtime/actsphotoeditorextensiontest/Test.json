@@ -5,7 +5,7 @@
         "test-timeout": "180000",
         "shell-timeout": "180000",
         "bundle-name": "com.acts.photoeditorextensiontest",
-        "module-name": "entry"
+        "module-name": "entry_test"
     },
     "kits": [
         {
