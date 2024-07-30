@@ -23,11 +23,8 @@ export default function drawingTsCanvasPart5Test() {
   describe('DrawingTsCanvas5Test', () => {
     let pixel: image.PixelMap;
     const DEFAULT = 0;
-    const TEST_1_JPG = "test_1.jpg"
-    let resManager = getContext().resourceManager
-    let pixmap: DrawableDescriptor = (resManager.getDrawableDescriptor($r('app.media.icon')
-      .id)) as DrawableDescriptor;
-    let pixelMap: image.PixelMap = pixmap.getPixelMap()
+    let pixelMap: image.PixelMap;
+
     // Defines a test suite. Two parameters are supported: test suite name and test suite function.
     beforeAll(async () => {
       const color: ArrayBuffer = new ArrayBuffer(40000); // 96为需要创建的像素buffer大小，取值为：height * width *4
@@ -37,6 +34,7 @@ export default function drawingTsCanvasPart5Test() {
         }
       }
       pixel = await image.createPixelMap(color, opts);
+      pixelMap = await image.createPixelMap(color, opts);
     })
     beforeEach(() => {
       // Presets an action, which is performed before each unit test case starts.
@@ -73,13 +71,13 @@ export default function drawingTsCanvasPart5Test() {
         });
         canvas.drawImageRect(pixelMap, {
           left: 100.1, top: 10.10, right: 900.1, bottom: 900.1
-        }, drawing.FilterMode.FILTER_MODE_NEAREST);
+        }, new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST));
         canvas.drawImageRect(pixelMap, {
           left: -200, top: -200, right: 1000, bottom: 1000
-        }, drawing.FilterMode.FILTER_MODE_LINEAR);
+        }, new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_LINEAR));
         canvas.drawImageRect(pixelMap, {
           left: 200, top: 200, right: -1000, bottom: -1000
-        }, drawing.FilterMode.FILTER_MODE_LINEAR);
+        }, new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_LINEAR));
         canvas.drawImageRect(pixelMap, {
           left: maxVal, top: maxVal, right: maxVal, bottom: maxVal
         });
@@ -107,7 +105,7 @@ export default function drawingTsCanvasPart5Test() {
           const randomEnum = Math.floor(getEnumCount(drawing.FilterMode) * Math.random())
           canvas.drawImageRect(pixelMap, {
             left: Math.random(), top: Math.random(), right: Math.random(), bottom: Math.random()
-          }, randomEnum);
+          }, new drawing.SamplingOptions(randomEnum));
         }
         console.info(msg + 'test successes');
       } catch (e) {
@@ -191,52 +189,6 @@ export default function drawingTsCanvasPart5Test() {
         expect(e.code).assertEqual(401);
       }
     })
-
-
-    // /**
-    //  * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_3303
-    //  * @tc.name      : testCanvasDrawImageRectMismatch
-    //  * @tc.desc      : testCanvasDrawImageRectMismatch
-    //  * @tc.size      : SmallTest
-    //  * @tc.type      : Function
-    //  * @tc.level     : Level3
-    //  */
-    // it('testCanvasDrawImageRectMismatch', 3, () => {
-    //   const msg = 'testCanvasDrawImageRectMismatch';
-    //   const canvas = new drawing.Canvas(pixel);
-    //
-    //   try {
-    //     canvas.drawImageRect(pixelMap, {
-    //       left: 0, top: 0, right: 600, bottom: 600
-    //     }, drawing.FilterMode.FILTER_MODE_NEAREST, drawing.FilterMode.FILTER_MODE_NEAREST);
-    //     console.info(msg + `test error`);
-    //     expect().assertFail()
-    //   } catch (e) {
-    //     console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-    //     expect(e.code).assertEqual(401);
-    //   }
-    //
-    //   try {
-    //     canvas.drawImageRect(pixelMap);
-    //     console.info(msg + `test error`);
-    //     expect().assertFail()
-    //   } catch (e) {
-    //     console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-    //     expect(e.code).assertEqual(401);
-    //   }
-    //
-    //   try {
-    //     canvas.drawImageRect('s', {
-    //       left: 0, top: 0, right: 600, bottom: 600
-    //     }, drawing.FilterMode.FILTER_MODE_NEAREST);
-    //     console.info(msg + `test error`);
-    //     expect().assertFail()
-    //   } catch (e) {
-    //     console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-    //     expect(e.code).assertEqual(401);
-    //   }
-    //
-    // })
 
 
     /**
@@ -1066,7 +1018,7 @@ export default function drawingTsCanvasPart5Test() {
           left: 100.1, top: 100.2, right: 700.1, bottom: 700.2
         }, {
           left: 200.1, top: 200.2, right: 800.1, bottom: 800.1
-        }, drawing.FilterMode.FILTER_MODE_NEAREST);
+        }, new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST));
 
         for (let i = 0; i < getEnumCount(drawing.FilterMode); i += 1) {
           for (let j = 0; j < getEnumCount(drawing.SrcRectConstraint); j += 1) {
@@ -1074,7 +1026,7 @@ export default function drawingTsCanvasPart5Test() {
               left: 100, top: 100.2, right: 700, bottom: 700.2
             }, {
               left: 200.1, top: 200.2, right: 800.1, bottom: 800.1
-            }, i, j);
+            }, new drawing.SamplingOptions(i), j);
             //枚举值samplingOptions和constraint交叉遍历验证
           }
         }
@@ -1126,7 +1078,7 @@ export default function drawingTsCanvasPart5Test() {
             left: Math.random(), top: Math.random(), right: Math.random(), bottom: Math.random()
           }, {
             left: Math.random(), top: Math.random(), right: Math.random(), bottom: Math.random()
-          }, e1, e2);
+          }, new drawing.SamplingOptions(e1), e2);
         }
         console.info(msg + 'test successes');
       } catch (e) {
@@ -1153,7 +1105,7 @@ export default function drawingTsCanvasPart5Test() {
           left: 100, top: 100.2, right: 700, bottom: 700.2
         }, {
           left: 200.1, top: 200.2, right: 800.1, bottom: 800.1
-        }, drawing.FilterMode.FILTER_MODE_NEAREST, drawing.SrcRectConstraint.STRICT);
+        }, new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST), drawing.SrcRectConstraint.STRICT);
         console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {
@@ -1164,7 +1116,7 @@ export default function drawingTsCanvasPart5Test() {
       try {
         canvas.drawImageRectWithSrc(pixelMap, null, {
           left: 200.1, top: 200.2, right: 800.1, bottom: 800.1
-        }, drawing.FilterMode.FILTER_MODE_NEAREST, drawing.SrcRectConstraint.STRICT);
+        }, new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST), drawing.SrcRectConstraint.STRICT);
         console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {
@@ -1175,7 +1127,7 @@ export default function drawingTsCanvasPart5Test() {
       try {
         canvas.drawImageRectWithSrc(pixelMap, {
           left: 100, top: 100.2, right: 700, bottom: 700.2
-        }, null, drawing.FilterMode.FILTER_MODE_NEAREST, drawing.SrcRectConstraint.STRICT);
+        }, null, new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST), drawing.SrcRectConstraint.STRICT);
         console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {
@@ -1201,7 +1153,7 @@ export default function drawingTsCanvasPart5Test() {
           left: 100, top: 100.2, right: 700, bottom: 700.2
         }, {
           left: 200.1, top: 200.2, right: 800.1, bottom: 800.1
-        }, drawing.FilterMode.FILTER_MODE_NEAREST, null);
+        }, new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST), null);
         console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {
@@ -1214,7 +1166,7 @@ export default function drawingTsCanvasPart5Test() {
           left: 100, top: 100.2, right: 700, bottom: 700.2
         }, {
           left: 200.1, top: 200.2, right: 800.1, bottom: 800.1
-        }, drawing.FilterMode.FILTER_MODE_NEAREST, drawing.SrcRectConstraint.STRICT);
+        }, new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST), drawing.SrcRectConstraint.STRICT);
         console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {
@@ -1225,7 +1177,7 @@ export default function drawingTsCanvasPart5Test() {
       try {
         canvas.drawImageRectWithSrc(pixelMap, undefined, {
           left: 200.1, top: 200.2, right: 800.1, bottom: 800.1
-        }, drawing.FilterMode.FILTER_MODE_NEAREST, drawing.SrcRectConstraint.STRICT);
+        }, new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST), drawing.SrcRectConstraint.STRICT);
         console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {
@@ -1236,7 +1188,7 @@ export default function drawingTsCanvasPart5Test() {
       try {
         canvas.drawImageRectWithSrc(pixelMap, {
           left: 100, top: 100.2, right: 700, bottom: 700.2
-        }, undefined, drawing.FilterMode.FILTER_MODE_NEAREST, drawing.SrcRectConstraint.STRICT);
+        }, undefined, new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST), drawing.SrcRectConstraint.STRICT);
         console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {
@@ -1262,7 +1214,7 @@ export default function drawingTsCanvasPart5Test() {
           left: 100, top: 100.2, right: 700, bottom: 700.2
         }, {
           left: 200.1, top: 200.2, right: 800.1, bottom: 800.1
-        }, drawing.FilterMode.FILTER_MODE_NEAREST, undefined);
+        }, new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST), undefined);
         console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {
@@ -1290,7 +1242,7 @@ export default function drawingTsCanvasPart5Test() {
           left: 100, top: 100.2, right: 700, bottom: 700.2
         }, {
           left: 200.1, top: 200.2, right: 800.1, bottom: 800.1
-        }, 10, drawing.SrcRectConstraint.STRICT);
+        }, new drawing.SamplingOptions(10), drawing.SrcRectConstraint.STRICT);
         console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {
@@ -1303,7 +1255,7 @@ export default function drawingTsCanvasPart5Test() {
           left: 100, top: 100.2, right: 700, bottom: 700.2
         }, {
           left: 200.1, top: 200.2, right: 800.1, bottom: 800.1
-        }, drawing.FilterMode.FILTER_MODE_NEAREST, 10);
+        }, new drawing.SamplingOptions(drawing.FilterMode.FILTER_MODE_NEAREST), 10);
         console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {

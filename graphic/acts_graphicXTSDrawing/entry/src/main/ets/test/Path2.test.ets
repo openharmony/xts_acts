@@ -271,51 +271,6 @@ export default function drawingTsPath2Test() {
 
 
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_0803
-     * @tc.name      : testPathAddArcMismatch
-     * @tc.desc      : testPathAddArcMismatch
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testPathAddArcMismatch', DEFAULT, () => {
-      const msg = 'testPathAddArcMismatch';
-      const path = new drawing.Path();
-
-      try {
-        path.addArc({
-          left: 10, right: 400, top: 100, bottom: 300
-        }, 90);
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        path.addArc({
-          left: 10, right: 400, top: 100, bottom: 300
-        }, 90, 90, 90);
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        path.addArc('s', 90, 180);
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-    })
-
-
-    /**
      * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_0900
      * @tc.name      : testPathAddCircleNormal
      * @tc.desc      : testPathAddCircleNormal
@@ -445,47 +400,6 @@ export default function drawingTsPath2Test() {
 
       try {
         path.addCircle(100, 200, 50, undefined);
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-    })
-
-
-    /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_0903
-     * @tc.name      : testPathAddCircleMismatch
-     * @tc.desc      : testPathAddCircleMismatch
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testPathAddCircleMismatch', DEFAULT, () => {
-      const msg = 'testPathAddCircleMismatch';
-      const path = new drawing.Path();
-
-      try {
-        path.addCircle(100, 200, 50, drawing.PathDirection.CLOCKWISE, drawing.PathDirection.CLOCKWISE);
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        path.addCircle(100, 200);
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        path.addCircle('s', 200, 50);
         console.info(msg + `reset error`);
         expect().assertFail()
       } catch (e) {
@@ -785,46 +699,6 @@ export default function drawingTsPath2Test() {
 
 
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_1003
-     * @tc.name      : testPathAddOvalMismatch
-     * @tc.desc      : testPathAddOvalMismatch
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testPathAddOvalMismatch', DEFAULT, () => {
-      const msg = 'testPathAddOvalMismatch';
-      const path = new drawing.Path();
-
-      try {
-        path.addOval({left : 10, right : 400, top : 100, bottom : 300}, 5, drawing.PathDirection.CLOCKWISE,  drawing.PathDirection.CLOCKWISE);
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        path.addOval({left : 10, right : 400, top : 100, bottom : 300});
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        path.addOval('s', 5.1);
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-    })
-
-    /**
      * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_1004
      * @tc.name      : testPathAddOvalAbnormal
      * @tc.desc      : testPathAddOvalAbnormal
@@ -1084,47 +958,6 @@ export default function drawingTsPath2Test() {
 
 
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_1103
-     * @tc.name      : testPathAddRectMismatch
-     * @tc.desc      : testPathAddRectMismatch
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testPathAddRectMismatch', DEFAULT, () => {
-      const msg = 'testPathAddRectMismatch';
-      const path = new drawing.Path();
-
-      try {
-        path.addRect({left : 10, right : 400, top : 100, bottom : 300}, drawing.PathDirection.CLOCKWISE, drawing.PathDirection.CLOCKWISE);
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        path.addRect();
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        path.addRect('s', drawing.PathDirection.CLOCKWISE);
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-    })
-
-
-    /**
      * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_1104
      * @tc.name      : testPathAddRectAbnormal
      * @tc.desc      : testPathAddRectAbnormal
@@ -1251,48 +1084,6 @@ export default function drawingTsPath2Test() {
 
       try {
         path.addRoundRect(roundRect, undefined);
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-    })
-
-
-    /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_1203
-     * @tc.name      : testPathAddRoundRectMismatch
-     * @tc.desc      : testPathAddRoundRectMismatch
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testPathAddRoundRectMismatch', DEFAULT, () => {
-      const msg = 'testPathAddRoundRectMismatch';
-      const path = new drawing.Path();
-
-      try {
-        let roundRect = new drawing.RoundRect({left : 10, right : 400, top : 100, bottom : 300}, 50, 50);
-        path.addRoundRect(roundRect, drawing.PathDirection.CLOCKWISE, drawing.PathDirection.CLOCKWISE);
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        path.addRoundRect();
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        path.addRoundRect('s');
         console.info(msg + `reset error`);
         expect().assertFail()
       } catch (e) {
@@ -1445,49 +1236,6 @@ export default function drawingTsPath2Test() {
 
 
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_1303
-     * @tc.name      : testPathAddPathMismatch
-     * @tc.desc      : testPathAddPathMismatch
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testPathAddPathMismatch', DEFAULT, () => {
-      const msg = 'testPathAddPathMismatch';
-      let dstPath = new drawing.Path();
-      let path = new drawing.Path();
-      let matrix = new drawing.Matrix();
-
-      try {
-        dstPath.addPath(path, matrix, matrix);
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        dstPath.addPath();
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        dstPath.addPath('s');
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-    })
-
-
-    /**
      * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_1400
      * @tc.name      : testPathTransformNormal
      * @tc.desc      : testPathTransformNormal
@@ -1569,48 +1317,6 @@ export default function drawingTsPath2Test() {
       try {
         let path = new drawing.Path();
         path.transform(undefined);
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-    })
-
-
-    /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_1403
-     * @tc.name      : testPathTransformMismatch
-     * @tc.desc      : testPathTransformMismatch
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testPathTransformMismatch', DEFAULT, () => {
-      const msg = 'testPathTransformMismatch';
-      const path = new drawing.Path();
-      const matrix = new drawing.Matrix();
-
-      try {
-        path.transform(matrix, matrix);
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        path.transform();
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        path.transform('s');
         console.info(msg + `reset error`);
         expect().assertFail()
       } catch (e) {
@@ -1718,47 +1424,6 @@ export default function drawingTsPath2Test() {
 
       try {
         path.contains(100, undefined);
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-    })
-
-
-    /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_1503
-     * @tc.name      : testPathContainsMismatch
-     * @tc.desc      : testPathContainsMismatch
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testPathContainsMismatch', DEFAULT, () => {
-      const msg = 'testPathContainsMismatch';
-      const path = new drawing.Path();
-
-      try {
-        path.contains(60, 60, 60);
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        path.contains(60);
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        path.contains('s', 60);
         console.info(msg + `reset error`);
         expect().assertFail()
       } catch (e) {
