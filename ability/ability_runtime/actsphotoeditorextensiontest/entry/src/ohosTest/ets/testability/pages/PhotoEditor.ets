@@ -15,21 +15,24 @@
 import hilog from '@ohos.hilog';
 import { common } from '@kit.AbilityKit';
 import { image } from '@kit.ImageKit';
+import { testPng, testJpg } from '../model/testImg';
 
 const TAG = 'MuseEditorExtensionAbility';
 
 @Entry
 @Component
 struct PhotoEditor {
-  aboutToAppear() {
+  async aboutToAppear() {
     hilog.info(0x0000, 'testTag', '%{public}s', 'PhotoEditor index aboutToAppear');
 
     const uiContext = getContext(this) as common.PhotoEditorExtensionContext;
 
-    let originalImage: image.PixelMap|null = null;
+    let imageSourceApi: image.ImageSource = image.createImageSource(testJpg.buffer);
+    let pixmap: image.PixelMap = await imageSourceApi.createPixelMap();
+
     let packOpts: image.PackingOption = { format: 'image/jpeg', quality: 98 };
     try {
-      uiContext.saveEditedContentWithImage(originalImage as image.PixelMap,
+      uiContext.saveEditedContentWithImage(pixmap,
         packOpts).then(data => {
         if (data.resultCode == 0) {
           hilog.info(0x0000, TAG, `Save succeed.`);
