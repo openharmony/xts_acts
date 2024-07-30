@@ -13,8 +13,9 @@
  * limitations under the License.
  */
 import commonEventManager from '@ohos.commonEventManager'
+
 export default class Utils {
-    static sleep(time) {
+    static sleep(time: number) {
       return new Promise<void>((resolve, reject) => {
         setTimeout(() => {
           resolve()
@@ -24,7 +25,7 @@ export default class Utils {
       })
     }
 
-    static unsubscribe(subscriber) {
+    static unsubscribe(subscriber: CommonEventSubscriber) {
       if(subscriber != undefined){
         commonEventManager.unsubscribe(subscriber, async (err, data) => {
           console.log("UnSubscribeInfoCallback : " + JSON.stringify(data));
