@@ -22,7 +22,7 @@ class testClass {
   }
 
   test(): string {
-    return "ArkUI Web Component";
+    return 'ArkUI Web Component';
   }
 
   toString(): void {
@@ -82,7 +82,7 @@ struct WebComponent {
 
               case 'emitWebViewWebViewJsBridge': {
                 try {
-                  this.controller.registerJavaScriptProxy(this.testObj, "testObjName", ["test", "toString"],
+                  this.controller.registerJavaScriptProxy(this.testObj, 'testObjName', ['test', 'toString'],
                     // 可选参数, asyncMethodList
                     [],
                     // 可选参数, permission
