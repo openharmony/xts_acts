@@ -49,7 +49,6 @@ struct Index {
         }.margin(30)
         Button('点击触发postFrameCallback')
           .onClick(() => {
-            // this.getUIContext().postFrameCallback(new MyFrameCallback("normTask"));
             this.mText1 = 'postFrameCallback'
             this.status = false
           }).id('btn1')
