@@ -20,6 +20,7 @@ import SymbolGlyphTest from './SymbolGlyphTest/SymbolGlyphTest.test'
 import ParticleTest from './ParticleTest/ParticleTest.test'
 import ParticleAnimatorTest from './Particle/ParticleAnimatorTest.test'
 import APIParticleEmitter from './APIParticleEmitter.test'
+import animateToTest from './AnimatorResultTest/animateToTest.test'
 export default function testsuite() {
   AnimatorResultTest()
   setExpectedFrameRateRangeTest()
@@ -28,4 +29,5 @@ export default function testsuite() {
   ParticleTest();
   ParticleAnimatorTest();
   APIParticleEmitter();
+  animateToTest()
 }

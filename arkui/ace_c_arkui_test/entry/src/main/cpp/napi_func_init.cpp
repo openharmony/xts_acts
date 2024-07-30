@@ -4343,6 +4343,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"TestArkUIAddApi021", nullptr, TestArkUIAddApi021, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"TestArkUIAddApi022", nullptr, TestArkUIAddApi022, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"TestArkUIAddApi023", nullptr, TestArkUIAddApi023, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"TestArkUIAddApi024", nullptr, TestArkUIAddApi024, nullptr, nullptr, nullptr, napi_default, nullptr},
     
         {"testAnimation_001", nullptr, testAnimation_001, nullptr , nullptr, nullptr, napi_default, nullptr},
         {"testAnimation_002", nullptr, testAnimation_002, nullptr , nullptr, nullptr, napi_default, nullptr},
