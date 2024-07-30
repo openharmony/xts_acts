@@ -9,6 +9,7 @@
         "MainAbility/pages/Scroll/scrollOffset",
         "MainAbility/pages/Swiper/swiperCustom",
         "MainAbility/pages/Tabs/tabIcon",
+        "MainAbility/pages/List/ListAddApi",
         "MainAbility/pages/List/listSwipeActionApi12",
         "MainAbility/pages/Scroll/ScrollSourceOther",
         "MainAbility/pages/Scroll/ScrollSource",
