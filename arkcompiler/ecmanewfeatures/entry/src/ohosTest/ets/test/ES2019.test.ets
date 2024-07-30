@@ -17,7 +17,6 @@ import { describe, it, expect } from '@ohos/hypium';
 import { test2019_01_ans } from './test2019_01'
 import { test2019_03_ans } from './test2019_03'
 import { test2019_06_ans } from './test2019_06'
-import { test2019_07_ans } from './test2019_07'
 
 
 export default function es2019Test() {
@@ -105,17 +104,6 @@ export default function es2019Test() {
     })
     /**
      * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_ES2019NewFeatures_0007
-     * @tc.name      : testFunction.toString
-     * @tc.desc      : add name of task for taskpool
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-     */
-    it('testFunction.toString', 0, () => {
-      expect(test2019_07_ans).assertEqual("function foo() {\n" + "    \"show source\";\n" + "}")
-    })
-    /**
-     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_ES2019NewFeatures_0008
      * @tc.name      : testJsonSuperSet
      * @tc.desc      : add name of task for taskpool
      * @tc.size      : MediumTest
@@ -127,7 +115,7 @@ export default function es2019Test() {
       expect(jsonObj.toString()).assertContain("Hello,World!");
     })
     /**
-     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_ES2019NewFeatures_0009
+     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_ES2019NewFeatures_0008
      * @tc.name      : testJson.stringfy
      * @tc.desc      : add name of task for taskpool
      * @tc.size      : MediumTest
