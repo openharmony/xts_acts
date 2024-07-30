@@ -62,7 +62,7 @@ describe('imageExif', function () {
     })
  
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0100
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0100
      * @tc.name      : getImageProperty(BitsPerSample)-promise
      * @tc.desc      : 1.create imagesource
      *                 2.set property
@@ -72,22 +72,22 @@ describe('imageExif', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0100', 0, async function (done) {
         await getFd('test_exif1.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
-            console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0100 create image source failed');
+            console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0100 create image source failed');
             expect(false).assertTrue();
             done();
         } else {
             imageSourceApi.getImageProperty("BitsPerSample")
                 .then(data => {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0100 BitsPerSample ' + data);
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0100 BitsPerSample ' + data);
                     expect(data != undefined && data != '').assertTrue();
                     done();
                 })
                 .catch(error => {
-                    console.log('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0100 error: ' + error);
+                    console.log('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0100 error: ' + error);
                     expect(false).assertFail();
                     done();
                 })
@@ -95,7 +95,7 @@ describe('imageExif', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0200
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0200
      * @tc.name      : getImageProperty(Orientation)-promise
      * @tc.desc      : 1.create imagesource
      *                 2.set property
@@ -105,22 +105,22 @@ describe('imageExif', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0200', 0, async function (done) {
         await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
-            console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0200 create image source failed');
+            console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0200 create image source failed');
             expect(false).assertTrue();
             done();
         } else {
             imageSourceApi.getImageProperty("Orientation")
                 .then(data => {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0200 Orientation ' + data);
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0200 Orientation ' + data);
                     expect(data != undefined && data != '').assertTrue();
                     done();
                 })
                 .catch(error => {
-                    console.log('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0200 error: ' + error);
+                    console.log('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0200 error: ' + error);
                     expect(false).assertFail();
                     done();
                 })
@@ -128,7 +128,7 @@ describe('imageExif', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0300
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0300
      * @tc.name      : getImageProperty(ImageLength)-promise
      * @tc.desc      : 1.create imagesource
      *                 2.set property
@@ -138,22 +138,22 @@ describe('imageExif', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0300', 0, async function (done) {
         await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
-            console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0300 create image source failed');
+            console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0300 create image source failed');
             expect(false).assertTrue();
             done();
         } else {
             imageSourceApi.getImageProperty("ImageLength")
                 .then(data => {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0300 ImageLength ' + data);
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0300 ImageLength ' + data);
                     expect(data != undefined && data != '').assertTrue();
                     done();
                 })
                 .catch(error => {
-                    console.log('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0300 error: ' + error);
+                    console.log('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0300 error: ' + error);
                     expect(false).assertFail();
                     done();
                 })
@@ -161,7 +161,7 @@ describe('imageExif', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0400
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0400
      * @tc.name      : getImageProperty(ImageWidth)-promise
      * @tc.desc      : 1.create imagesource
      *                 2.set property
@@ -171,22 +171,22 @@ describe('imageExif', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0400', 0, async function (done) {
         await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
-            console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0400 create image source failed');
+            console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0400 create image source failed');
             expect(false).assertTrue();
             done();
         } else {
             imageSourceApi.getImageProperty("ImageWidth")
                 .then(data => {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0400 ImageWidth ' + data);
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0400 ImageWidth ' + data);
                     expect(data != undefined && data != '').assertTrue();
                     done();
                 })
                 .catch(error => {
-                    console.log('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0400 error: ' + error);
+                    console.log('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0400 error: ' + error);
                     expect(false).assertFail();
                     done();
                 })
@@ -194,7 +194,7 @@ describe('imageExif', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0500
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0500
      * @tc.name      : getImageProperty(GPSLatitude)-promise
      * @tc.desc      : 1.create imagesource
      *                 2.set property
@@ -204,22 +204,22 @@ describe('imageExif', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0500', 0, async function (done) {
         await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
-            console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0500 create image source failed');
+            console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0500 create image source failed');
             expect(false).assertTrue();
             done();
         } else {
             imageSourceApi.getImageProperty("GPSLatitude")
                 .then(data => {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0500 GPSLatitude ' + data);
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0500 GPSLatitude ' + data);
                     expect(data != undefined && data != '').assertTrue();
                     done();
                 })
                 .catch(error => {
-                    console.log('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0500 error: ' + error);
+                    console.log('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0500 error: ' + error);
                     expect(false).assertFail();
                     done();
                 })
@@ -227,7 +227,7 @@ describe('imageExif', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0600
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0600
      * @tc.name      : getImageProperty(GPSLongitude)-promise
      * @tc.desc      : 1.create imagesource
      *                 2.set property
@@ -237,22 +237,22 @@ describe('imageExif', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0600', 0, async function (done) {
         await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
-            console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0600 create image source failed');
+            console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0600 create image source failed');
             expect(false).assertTrue();
             done();
         } else {
             imageSourceApi.getImageProperty("GPSLongitude")
                 .then(data => {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0600 GPSLongitude ' + data);
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0600 GPSLongitude ' + data);
                     expect(data != undefined && data != '').assertTrue();
                     done();
                 })
                 .catch(error => {
-                    console.log('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0600 error: ' + error);
+                    console.log('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0600 error: ' + error);
                     expect(false).assertFail();
                     done();
                 })
@@ -260,7 +260,7 @@ describe('imageExif', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0700
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0700
      * @tc.name      : getImageProperty(GPSLatitudeRef)-promise
      * @tc.desc      : 1.create imagesource
      *                 2.set property
@@ -270,22 +270,22 @@ describe('imageExif', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0700', 0, async function (done) {
         await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
-            console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0700 create image source failed');
+            console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0700 create image source failed');
             expect(false).assertTrue();
             done();
         } else {
             imageSourceApi.getImageProperty("GPSLatitudeRef")
                 .then(data => {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0700 GPSLatitudeRef ' + data);
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0700 GPSLatitudeRef ' + data);
                     expect(data != undefined && data != '').assertTrue();
                     done();
                 })
                 .catch(error => {
-                    console.log('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0700 error: ' + error);
+                    console.log('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0700 error: ' + error);
                     expect(false).assertFail();
                     done();
                 })
@@ -293,7 +293,7 @@ describe('imageExif', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0800
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0800
      * @tc.name      : getImageProperty(GPSLongitudeRef)-promise
      * @tc.desc      : 1.create imagesource
      *                 2.set property
@@ -303,22 +303,22 @@ describe('imageExif', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0800', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0800', 0, async function (done) {
         await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
-            console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0800 create image source failed');
+            console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0800 create image source failed');
             expect(false).assertTrue();
             done();
         } else {
             imageSourceApi.getImageProperty("GPSLongitudeRef")
                 .then(data => {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0800 GPSLongitudeRef ' + data);
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0800 GPSLongitudeRef ' + data);
                     expect(data != undefined && data != '').assertTrue();
                     done();
                 })
                 .catch(error => {
-                    console.log('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0800 error: ' + error);
+                    console.log('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0800 error: ' + error);
                     expect(false).assertFail();
                     done();
                 })
@@ -326,7 +326,7 @@ describe('imageExif', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0900
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0900
      * @tc.name      : getImageProperty(DateTimeOriginal)-promise
      * @tc.desc      : 1.create imagesource
      *                 2.set property
@@ -336,22 +336,22 @@ describe('imageExif', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0900', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0900', 0, async function (done) {
         await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
-            console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0900 create image source failed');
+            console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0900 create image source failed');
             expect(false).assertTrue();
             done();
         } else {
             imageSourceApi.getImageProperty("DateTimeOriginal")
                 .then(data => {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0900 DateTimeOriginal ' + data);
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0900 DateTimeOriginal ' + data);
                     expect(data != undefined && data != '').assertTrue();
                     done();
                 })
                 .catch(error => {
-                    console.log('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0900 error: ' + error);
+                    console.log('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROMISE_0900 error: ' + error);
                     expect(false).assertFail();
                     done();
                 })
@@ -359,7 +359,7 @@ describe('imageExif', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0100
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0100
      * @tc.name      : getImageProperty(BitsPerSample)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.call getImageProperty(BitsPerSample)
@@ -368,21 +368,21 @@ describe('imageExif', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0100', 0, async function (done) {
         await getFd('test_exif1.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
-            console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0100 create image source failed');
+            console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0100 create image source failed');
             expect(false).assertTrue();
             done();
         } else {
             imageSourceApi.getImageProperty("BitsPerSample", (error, data) => {
                 if (error) {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0100 getImageProperty BitsPerSample error');
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0100 getImageProperty BitsPerSample error');
                     expect(false).assertTrue();
                     done();
                 } else {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0100 BitsPerSample ' + data);
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0100 BitsPerSample ' + data);
                     expect(data != undefined && data != '').assertTrue();
                     done();
                 }
@@ -391,7 +391,7 @@ describe('imageExif', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0200
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0200
      * @tc.name      : getImageProperty(Orientation)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.call getImageProperty(Orientation)
@@ -400,21 +400,21 @@ describe('imageExif', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0200', 0, async function (done) {
         await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
-            console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0200 create image source failed');
+            console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0200 create image source failed');
             expect(false).assertTrue();
             done();
         } else {
             imageSourceApi.getImageProperty("Orientation", (error, data) => {
                 if (error) {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0200 getImageProperty Orientation error');
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0200 getImageProperty Orientation error');
                     expect(false).assertTrue();
                     done();
                 } else {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0200 Orientation ' + data);
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0200 Orientation ' + data);
                     expect(data != undefined && data != '').assertTrue();
                     done();
                 }
@@ -423,7 +423,7 @@ describe('imageExif', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0300
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0300
      * @tc.name      : getImageProperty(ImageLength)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.call getImageProperty(ImageLength)
@@ -432,21 +432,21 @@ describe('imageExif', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0300', 0, async function (done) {
         await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
-            console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0300 create image source failed');
+            console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0300 create image source failed');
             expect(false).assertTrue();
             done();
         } else {
             imageSourceApi.getImageProperty("ImageLength", (error, data) => {
                 if (error) {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0300 getImageProperty ImageLength error');
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0300 getImageProperty ImageLength error');
                     expect(false).assertTrue();
                     done();
                 } else {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0300 ImageLength ' + data);
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0300 ImageLength ' + data);
                     expect(data != undefined && data != '').assertTrue();
                     done();
                 }
@@ -455,7 +455,7 @@ describe('imageExif', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0400
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0400
      * @tc.name      : getImageProperty(ImageWidth)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.call getImageProperty(ImageWidth)
@@ -464,21 +464,21 @@ describe('imageExif', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0400', 0, async function (done) {
         await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
-            console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0400 create image source failed');
+            console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0400 create image source failed');
             expect(false).assertTrue();
             done();
         } else {
             imageSourceApi.getImageProperty("ImageWidth", (error, data) => {
                 if (error) {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0400 getImageProperty ImageWidth error');
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0400 getImageProperty ImageWidth error');
                     expect(false).assertTrue();
                     done();
                 } else {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0400 ImageWidth ' + data);
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0400 ImageWidth ' + data);
                     expect(data != undefined && data != '').assertTrue();
                     done();
                 }
@@ -487,7 +487,7 @@ describe('imageExif', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0500
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0500
      * @tc.name      : getImageProperty(GPSLatitude)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.call getImageProperty(GPSLatitude)
@@ -496,21 +496,21 @@ describe('imageExif', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0500', 0, async function (done) {
         await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
-            console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0500 create image source failed');
+            console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0500 create image source failed');
             expect(false).assertTrue();
             done();
         } else {
             imageSourceApi.getImageProperty("GPSLatitude", (error, data) => {
                 if (error) {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0500 getImageProperty GPSLatitude error');
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0500 getImageProperty GPSLatitude error');
                     expect(false).assertTrue();
                     done();
                 } else {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0500 GPSLatitude ' + data);
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0500 GPSLatitude ' + data);
                     expect(data != undefined && data != '').assertTrue();
                     done();
                 }
@@ -519,7 +519,7 @@ describe('imageExif', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0600
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0600
      * @tc.name      : getImageProperty(GPSLongitude)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.call getImageProperty(GPSLongitude)
@@ -528,21 +528,21 @@ describe('imageExif', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0600', 0, async function (done) {
         await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
-            console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0600 create image source failed');
+            console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0600 create image source failed');
             expect(false).assertTrue();
             done();
         } else {
             imageSourceApi.getImageProperty("GPSLongitude", (error, data) => {
                 if (error) {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0600 getImageProperty GPSLongitude error');
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0600 getImageProperty GPSLongitude error');
                     expect(false).assertTrue();
                     done();
                 } else {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0600 GPSLongitude ' + data);
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0600 GPSLongitude ' + data);
                     expect(data != undefined && data != '').assertTrue();
                     done();
                 }
@@ -551,7 +551,7 @@ describe('imageExif', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0700
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0700
      * @tc.name      : getImageProperty(GPSLatitudeRef)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.call getImageProperty(GPSLatitudeRef)
@@ -560,21 +560,21 @@ describe('imageExif', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0700', 0, async function (done) {
         await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
-            console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0700 create image source failed');
+            console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0700 create image source failed');
             expect(false).assertTrue();
             done();
         } else {
             imageSourceApi.getImageProperty("GPSLatitudeRef", (error, data) => {
                 if (error) {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0700 getImageProperty GPSLatitudeRef error');
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0700 getImageProperty GPSLatitudeRef error');
                     expect(false).assertTrue();
                     done();
                 } else {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0700 GPSLatitudeRef ' + data);
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0700 GPSLatitudeRef ' + data);
                     expect(data != undefined && data != '').assertTrue();
                     done();
                 }
@@ -583,7 +583,7 @@ describe('imageExif', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0800
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0800
      * @tc.name      : getImageProperty(GPSLongitudeRef)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.call getImageProperty(GPSLongitudeRef)
@@ -592,21 +592,21 @@ describe('imageExif', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0800', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0800', 0, async function (done) {
         await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
-            console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0800 create image source failed');
+            console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0800 create image source failed');
             expect(false).assertTrue();
             done();
         } else {
             imageSourceApi.getImageProperty("GPSLongitudeRef", (error, data) => {
                 if (error) {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0800 getImageProperty GPSLongitudeRef error');
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0800 getImageProperty GPSLongitudeRef error');
                     expect(false).assertTrue();
                     done();
                 } else {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0800 GPSLongitudeRef ' + data);
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0800 GPSLongitudeRef ' + data);
                     expect(data != undefined && data != '').assertTrue();
                     done();
                 }
@@ -615,7 +615,7 @@ describe('imageExif', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0900
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0900
      * @tc.name      : getImageProperty(DateTimeOriginal)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.call getImageProperty(DateTimeOriginal)
@@ -624,21 +624,21 @@ describe('imageExif', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0900', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0900', 0, async function (done) {
         await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
-            console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0900 create image source failed');
+            console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0900 create image source failed');
             expect(false).assertTrue();
             done();
         } else {
             imageSourceApi.getImageProperty("DateTimeOriginal", (error, data) => {
                 if (error) {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0900 getImageProperty DateTimeOriginal error');
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0900 getImageProperty DateTimeOriginal error');
                     expect(false).assertTrue();
                     done();
                 } else {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0900 DateTimeOriginal ' + data);
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_CALLBACK_0900 DateTimeOriginal ' + data);
                     expect(data != undefined && data != '').assertTrue();
                     done();
                 }
@@ -647,7 +647,7 @@ describe('imageExif', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0100
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0100
      * @tc.name      : getImageProperty(BitsPerSample,property)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.set property
@@ -657,22 +657,22 @@ describe('imageExif', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0100', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0100', 0, async function (done) {
         await getFd('test_exif1.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
-            console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0100 create image source failed');
+            console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0100 create image source failed');
             expect(false).assertTrue();
             done();
         } else {
             let property = { index: 0, defaultValue: '9999' }
             imageSourceApi.getImageProperty("BitsPerSample", property, (error, data) => {
                 if (error) {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0100 getImageProperty BitsPerSample error');
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0100 getImageProperty BitsPerSample error');
                     expect(false).assertTrue();
                     done();
                 } else {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0100 BitsPerSample ' + data);
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0100 BitsPerSample ' + data);
                     expect(data != '9999' && data != undefined && data != '').assertTrue();
                     done();
                 }
@@ -681,7 +681,7 @@ describe('imageExif', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0200
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0200
      * @tc.name      : getImageProperty(Orientation,property)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.set property
@@ -691,22 +691,22 @@ describe('imageExif', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0200', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0200', 0, async function (done) {
         await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
-            console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0200 create image source failed');
+            console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0200 create image source failed');
             expect(false).assertTrue();
             done();
         } else {
             let property = { index: 0, defaultValue: '9999' }
             imageSourceApi.getImageProperty("Orientation", property, (error, data) => {
                 if (error) {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0200 getImageProperty Orientation error');
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0200 getImageProperty Orientation error');
                     expect(false).assertTrue();
                     done();
                 } else {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0200 Orientation ' + data);
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0200 Orientation ' + data);
                     expect(data != '9999' && data != undefined && data != '').assertTrue();
                     done();
                 }
@@ -715,7 +715,7 @@ describe('imageExif', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0300
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0300
      * @tc.name      : getImageProperty(ImageLength,property)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.set property
@@ -725,22 +725,22 @@ describe('imageExif', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0300', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0300', 0, async function (done) {
         await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
-            console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0300 create image source failed');
+            console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0300 create image source failed');
             expect(false).assertTrue();
             done();
         } else {
             let property = { index: 0, defaultValue: '9999' }
             imageSourceApi.getImageProperty("ImageLength", property, (error, data) => {
                 if (error) {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0300 getImageProperty ImageLength error');
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0300 getImageProperty ImageLength error');
                     expect(false).assertTrue();
                     done();
                 } else {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0300 ImageLength ' + data);
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0300 ImageLength ' + data);
                     expect(data != '9999' && data != undefined && data != '').assertTrue();
                     done();
                 }
@@ -749,7 +749,7 @@ describe('imageExif', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0400
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0400
      * @tc.name      : getImageProperty(ImageWidth,property)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.set property
@@ -759,22 +759,22 @@ describe('imageExif', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0400', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0400', 0, async function (done) {
         await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
-            console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0400 create image source failed');
+            console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0400 create image source failed');
             expect(false).assertTrue();
             done();
         } else {
             let property = { index: 0, defaultValue: '9999' }
             imageSourceApi.getImageProperty("ImageWidth", property, (error, data) => {
                 if (error) {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0400 getImageProperty ImageWidth error');
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0400 getImageProperty ImageWidth error');
                     expect(false).assertTrue();
                     done();
                 } else {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0400 ImageWidth ' + data);
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0400 ImageWidth ' + data);
                     expect(data != '9999' && data != undefined && data != '').assertTrue();
                     done();
                 }
@@ -783,7 +783,7 @@ describe('imageExif', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0500
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0500
      * @tc.name      : getImageProperty(GPSLatitude,property)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.set property
@@ -793,22 +793,22 @@ describe('imageExif', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0500', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0500', 0, async function (done) {
         await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
-            console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0500 create image source failed');
+            console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0500 create image source failed');
             expect(false).assertTrue();
             done();
         } else {
             let property = { index: 0, defaultValue: '9999' }
             imageSourceApi.getImageProperty("GPSLatitude", property, (error, data) => {
                 if (error) {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0500 getImageProperty GPSLatitude error');
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0500 getImageProperty GPSLatitude error');
                     expect(false).assertTrue();
                     done();
                 } else {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0500 GPSLatitude ' + data);
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0500 GPSLatitude ' + data);
                     expect(data != '9999' && data != undefined && data != '').assertTrue();
                     done();
                 }
@@ -817,7 +817,7 @@ describe('imageExif', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0600
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0600
      * @tc.name      : getImageProperty(GPSLongitude,property)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.set property
@@ -827,22 +827,22 @@ describe('imageExif', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0600', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0600', 0, async function (done) {
         await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
-            console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0600 create image source failed');
+            console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0600 create image source failed');
             expect(false).assertTrue();
             done();
         } else {
             let property = { index: 0, defaultValue: '9999' }
             imageSourceApi.getImageProperty("GPSLongitude", property, (error, data) => {
                 if (error) {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0600 getImageProperty GPSLongitude error');
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0600 getImageProperty GPSLongitude error');
                     expect(false).assertTrue();
                     done();
                 } else {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0600 GPSLongitude ' + data);
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0600 GPSLongitude ' + data);
                     expect(data != '9999' && data != undefined && data != '').assertTrue();
                     done();
                 }
@@ -851,7 +851,7 @@ describe('imageExif', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0700
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0700
      * @tc.name      : getImageProperty(GPSLatitudeRef,property)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.set property
@@ -861,22 +861,22 @@ describe('imageExif', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0700', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0700', 0, async function (done) {
         await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
-            console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0700 create image source failed');
+            console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0700 create image source failed');
             expect(false).assertTrue();
             done();
         } else {
             let property = { index: 0, defaultValue: '9999' }
             imageSourceApi.getImageProperty("GPSLatitudeRef", property, (error, data) => {
                 if (error) {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0700 getImageProperty GPSLatitudeRef error');
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0700 getImageProperty GPSLatitudeRef error');
                     expect(false).assertTrue();
                     done();
                 } else {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0700 GPSLatitudeRef ' + data);
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0700 GPSLatitudeRef ' + data);
                     expect(data != '9999' && data != undefined && data != '').assertTrue();
                     done();
                 }
@@ -885,7 +885,7 @@ describe('imageExif', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0800
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0800
      * @tc.name      : getImageProperty(GPSLongitudeRef,property)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.set property
@@ -895,22 +895,22 @@ describe('imageExif', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0800', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0800', 0, async function (done) {
         await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
-            console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0800 create image source failed');
+            console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0800 create image source failed');
             expect(false).assertTrue();
             done();
         } else {
             let property = { index: 0, defaultValue: '9999' }
             imageSourceApi.getImageProperty("GPSLongitudeRef", property, (error, data) => {
                 if (error) {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0800 getImageProperty GPSLongitudeRef error');
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0800 getImageProperty GPSLongitudeRef error');
                     expect(false).assertTrue();
                     done();
                 } else {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0800 GPSLongitudeRef ' + data);
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0800 GPSLongitudeRef ' + data);
                     expect(data != '9999' && data != undefined && data != '').assertTrue();
                     done();
                 }
@@ -919,7 +919,7 @@ describe('imageExif', function () {
     })
 
     /**
-     * @tc.number    : SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0900
+     * @tc.number    : SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0900
      * @tc.name      : getImageProperty(DateTimeOriginal,property)-callback
      * @tc.desc      : 1.create imagesource
      *                 2.set property
@@ -929,22 +929,22 @@ describe('imageExif', function () {
      * @tc.type      : Functional
      * @tc.level     : Level 1
      */
-    it('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0900', 0, async function (done) {
+    it('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0900', 0, async function (done) {
         await getFd('test_exif.jpg');
         const imageSourceApi = image.createImageSource(fdNumber);
         if (imageSourceApi == undefined) {
-            console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0900 create image source failed');
+            console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0900 create image source failed');
             expect(false).assertTrue();
             done();
         } else {
             let property = { index: 0, defaultValue: '9999' }
             imageSourceApi.getImageProperty("DateTimeOriginal", property, (error, data) => {
                 if (error) {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0900 getImageProperty DateTimeOriginal error');
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0900 getImageProperty DateTimeOriginal error');
                     expect(false).assertTrue();
                     done();
                 } else {
-                    console.info('SUB_GRAPHIC_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0900 DateTimeOriginal ' + data);
+                    console.info('SUB_MULTIMEDIA_IMAGE_EXIF_GETIMAGEPROPERTY_PROPERTY_CALLBACK_0900 DateTimeOriginal ' + data);
                     expect(data != '9999' && data != undefined && data != '').assertTrue();
                     done();
                 }
