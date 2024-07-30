@@ -14,6 +14,7 @@
  */
 import hilog from '@ohos.hilog';
 import { wantConstant } from '@kit.AbilityKit';
+import commonEventManager from '@ohos.commonEventManager'
 
 const TAG = 'MuseEditorExtensionAbility';
 
@@ -39,8 +40,8 @@ struct Index {
                     }
                 }).width('100%').height('100%')
                     .onRemoteReady((data) => {
-                        let onResultEvent = 'ACTS_PhotoEditorExtension_OnRemoteReady';
-                        let options = {
+                        let onResultEvent: string = 'ACTS_PhotoEditorExtension_OnRemoteReady';
+                        let options: CommonEventManager.CommonEventPublishData = {
                             parameters: {
                                 'result': data
                             }
