@@ -198,7 +198,7 @@ struct audioNew {
       .backgroundColor(Color.Black)
 
       List({ space: 5 }) {
-        ForEach(this.TestCaseList, (item: mediaLibrary.FileAsset, index) => {
+        ForEach(this.TestCaseList, (item: string, index) => {
           ListItem() {
             Row() {
               Text(item.displayName).fontSize(16).fontColor(Color.Black)
