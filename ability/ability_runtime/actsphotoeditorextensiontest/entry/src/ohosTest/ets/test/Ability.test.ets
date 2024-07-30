@@ -30,7 +30,7 @@ export default function abilityTest() {
             // Presets an action, which is performed only once before all test cases of the test suite start.
             // This API supports only one parameter: preset action function.
         })
-        beforeEach(() => {
+        beforeEach(async () => {
             hilog.info(0x0000, TAG, `ACTS_PhotoEditorExtension beforeEach start`);
 
             let options = {
