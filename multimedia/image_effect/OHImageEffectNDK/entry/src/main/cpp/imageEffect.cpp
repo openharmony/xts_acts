@@ -1185,9 +1185,8 @@ static napi_value OHEffectFilterRender(napi_env env, napi_callback_info info)
     case CASE_INDEX_2:
         outputPixelmap = inputPixelmap;
         break;
-    case CASE_INDEX_3: {
+    case CASE_INDEX_3:
         outputPixelmap = outPixePtr.get();
-    }
         break;
     default:
         break;
@@ -1764,7 +1763,7 @@ static napi_value OHImageEffectSetOutputNativeBuffer(napi_env env, napi_callback
     if (code == EFFECT_SUCCESS) {
         code = OH_ImageEffect_SetInputNativeBuffer(imageEffect, nativeBuffer);
     }
-    OH_NativeBuffer *outNativeBuffer = nullptr;
+    OH_NativeBuffer *outNativeBuffer = (OH_NativeBuffer *)0x2;
     if (code == EFFECT_SUCCESS) {
         code = OH_ImageEffect_SetOutputNativeBuffer(imageEffect, outNativeBuffer);
     }
