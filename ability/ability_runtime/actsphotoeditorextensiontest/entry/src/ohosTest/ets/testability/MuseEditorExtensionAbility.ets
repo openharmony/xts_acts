@@ -3,7 +3,6 @@
  */
 
 import { PhotoEditorExtensionAbility,UIExtensionContentSession,Want } from '@kit.AbilityKit';
-import Want from '@ohos.app.ability.Want';
 import hilog from '@ohos.hilog';
 
 const TAG = 'MuseEditorExtensionAbility';
