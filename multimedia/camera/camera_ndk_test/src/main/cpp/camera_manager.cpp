@@ -281,7 +281,6 @@ Camera_ErrorCode NDKCamera::GetSupportedCameras(void)
     if (orientation > 360) {
         LOG("GetCameraOrientation failed.");
     }
-    LOG("camera0 cameraOrientation: %{public}d", orientation);
     return ret_;
 }
 
