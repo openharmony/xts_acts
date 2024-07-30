@@ -50,6 +50,8 @@ import LocalTestJsunit from './ComponentV2Test/LocalTestJsunit.test';
 import ComponentV2TestJsunit from './ComponentV2Test/ComponentV2TestJsunit.test';
 import ParamTestJsunit from './ComponentV2Test/ParamTestJsunit.test';
 import ParamTestJsunit1 from './ComponentV2Test/ParamTestJsunit1.test';
+import appStorageV2 from './StorageTest/appStorageV2.test';
+import persistenceV2 from './StorageTest/persistenceV2.test';
 export default function testsuite() {
   ExtendTrackTest();
   NestTrackTest();
@@ -89,4 +91,6 @@ export default function testsuite() {
   ComponentV2TestJsunit();
   ParamTestJsunit();
   ParamTestJsunit1()
+  appStorageV2();
+  persistenceV2();
 }

@@ -64,6 +64,7 @@
 
 const std::string g_jpgUri = std::string("file:///data/test/resource/image_effect_1k_test1.jpg");
 static std::string imagePath;
+static std::string outImagePath;
 static napi_value savePixelMapForPath(napi_env env, napi_callback_info info)
 {
     napi_value result = nullptr;
@@ -75,6 +76,23 @@ static napi_value savePixelMapForPath(napi_env env, napi_callback_info info)
     napi_value ret;
     int status = -1;
     if (imagePath.length() > 0) {
+        status = 0;
+    }
+    napi_create_int32(env, status, &ret);
+    return ret;
+}
+
+static napi_value creatOutPixeMapForPath(napi_env env, napi_callback_info info)
+{
+    napi_value result = nullptr;
+    napi_get_undefined(env, &result);
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    outImagePath = CommonUtils::GetStringArgument(env, args[0]);
+    napi_value ret;
+    int status = -1;
+    if (outImagePath.length() > 0) {
         status = 0;
     }
     napi_create_int32(env, status, &ret);
@@ -1114,28 +1132,32 @@ static napi_value OHEffectFilterReleaseFilterNames(napi_env env, napi_callback_i
     return ret;
 }
 
+ImageEffect_FilterDelegate getFilterDelegate()
+{
+    ImageEffect_FilterDelegate filterDelegate = {
+        .setValue = [](OH_EffectFilter *filter, const char *key, const ImageEffect_Any *value) { return true; },
+        .render = [](OH_EffectFilter *filter, OH_EffectBufferInfo *info,
+    OH_EffectFilterDelegate_PushData pushData) { return true; },
+        .save = [](OH_EffectFilter *filter, char **info) { return true; },
+        .restore = [](const char *info) {
+        OH_EffectFilter *filter = OH_EffectFilter_Create(CUSTOM_FILTER);
+        return filter;
+        }
+    };
+    return filterDelegate;
+}
+
 static napi_value OHEffectFilterRender(napi_env env, napi_callback_info info)
 {
+    size_t argc = 1;
+    napi_value args[1] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    int32_t index;
+    napi_get_value_int32(env, args[0], &index);
     std::shared_ptr<OH_PixelmapNative> pixelmapNativePtr = PixelMapHelper::Decode(imagePath);
     OH_PixelmapNative *inputPixelmap = pixelmapNativePtr.get();
     OH_PixelmapNative *outputPixelmap = inputPixelmap;
-    ImageEffect_FilterDelegate filterDelegate = {
-        .setValue =
-            [](OH_EffectFilter *filter, const char *key, const ImageEffect_Any *value) {
-                return true;
-            },
-        .render = [](OH_EffectFilter *filter, OH_EffectBufferInfo *info, OH_EffectFilterDelegate_PushData pushData) {
-                return true;
-            },
-        .save =
-            [](OH_EffectFilter *filter, char **info) {
-                return true;
-            },
-        .restore =
-            [](const char *info) {
-                OH_EffectFilter *filter = OH_EffectFilter_Create(CUSTOM_FILTER);
-                return filter;
-            }};
+    ImageEffect_FilterDelegate filterDelegate = getFilterDelegate();
     // 创建 OH_EffectFilterInfo 实例
     OH_EffectFilterInfo *customFilterInfo = OH_EffectFilterInfo_Create();
     // 设置自定义滤镜滤镜名
@@ -1152,16 +1174,29 @@ static napi_value OHEffectFilterRender(napi_env env, napi_callback_info info)
     ImageEffect_ErrorCode errorCode = OH_EffectFilter_Register(customFilterInfo, &filterDelegate);
     // 创建滤镜。比如：创建对比度效果器
     OH_EffectFilter *filter = OH_EffectFilter_Create(CUSTOM_FILTER);
+    
+    std::shared_ptr<OH_PixelmapNative> outPixePtr = PixelMapHelper::Decode(outImagePath);
+
     // 生效滤镜效果
+    switch (index) {
+    case CASE_INDEX_1:
+        outputPixelmap = nullptr;
+        break;
+    case CASE_INDEX_2:
+        outputPixelmap = inputPixelmap;
+        break;
+    case CASE_INDEX_3:
+        outputPixelmap = outPixePtr.get();
+        break;
+    default:
+        break;
+    }
     errorCode = OH_EffectFilter_Render(filter, inputPixelmap, outputPixelmap);
-    // 销毁滤镜实例
     OH_EffectFilter_Release(filter);
     napi_value ret;
     napi_create_int32(env, errorCode, &ret);
     return ret;
 }
-
-
 /**-------------------------------------------------- Effect -------------------------------------------------------**/
 static napi_value OHImageEffectCreate(napi_env env, napi_callback_info info)
 {
@@ -1561,10 +1596,8 @@ static napi_value OHImageEffectSetInputNativeBuffer(napi_env env, napi_callback_
     value.dataValue.floatValue = IMAGE_EFFECT_100F;
     ImageEffect_ErrorCode code = OH_EffectFilter_SetValue(filter, KEY_FILTER_INTENSITY, &value);
     
-    OH_NativeBuffer *buffer = OH_NativeBuffer_Alloc(&config);
-    if (code == EFFECT_SUCCESS && buffer != nullptr) {
-        code = OH_ImageEffect_SetInputNativeBuffer(imageEffect, buffer);
-    }
+    OH_NativeBuffer *buffer = (OH_NativeBuffer *)0x1;
+    code = OH_ImageEffect_SetInputNativeBuffer(imageEffect, buffer);
     napi_value ret;
     napi_create_int32(env, code, &ret);
     return ret;
@@ -1726,12 +1759,12 @@ static napi_value OHImageEffectSetOutputNativeBuffer(napi_env env, napi_callback
     value.dataValue.floatValue = IMAGE_EFFECT_100F;
     ImageEffect_ErrorCode code = OH_EffectFilter_SetValue(filter, KEY_FILTER_INTENSITY, &value);
 
-    OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&config);
-    if (code == EFFECT_SUCCESS && nativeBuffer != nullptr) {
+    OH_NativeBuffer *nativeBuffer = (OH_NativeBuffer *)0x1;
+    if (code == EFFECT_SUCCESS) {
         code = OH_ImageEffect_SetInputNativeBuffer(imageEffect, nativeBuffer);
     }
-    OH_NativeBuffer *outNativeBuffer = OH_NativeBuffer_Alloc(&config);
-    if (code == EFFECT_SUCCESS && outNativeBuffer != nullptr) {
+    OH_NativeBuffer *outNativeBuffer = (OH_NativeBuffer *)0x2;
+    if (code == EFFECT_SUCCESS) {
         code = OH_ImageEffect_SetOutputNativeBuffer(imageEffect, outNativeBuffer);
     }
     napi_value ret;
@@ -1938,16 +1971,22 @@ static napi_value OHImageEffectStart(napi_env env, napi_callback_info info)
     
     // 4、设置输入的Pixelmap
     errorCode = OH_ImageEffect_SetInputPixelmap(imageEffect, inputPixelmap);
-
+    if (errorCode != EFFECT_SUCCESS) {
+        napi_value ret;
+        napi_create_int32(env, errorCode, &ret);
+        return ret;
+    }
     // 5、设置输出的Pixelmap（可选），不调用该接口时会在输入Pixelmap上直接生效滤镜效果
     errorCode = OH_ImageEffect_SetOutputPixelmap(imageEffect, outputPixelmap);
-
+    if (errorCode != EFFECT_SUCCESS) {
+        napi_value ret;
+        napi_create_int32(env, errorCode, &ret);
+        return ret;
+    }
     // 6、执行生效滤镜效果
     errorCode = OH_ImageEffect_Start(imageEffect);
-
     // 7、释放imageEffect实例资源
     OH_ImageEffect_Release(imageEffect);
-
     napi_value ret;
     napi_create_int32(env, errorCode, &ret);
     return ret;
@@ -1974,13 +2013,25 @@ static napi_value OHImageEffectStop(napi_env env, napi_callback_info info)
 
     // 4、设置输入的Pixelmap
     errorCode = OH_ImageEffect_SetInputPixelmap(imageEffect, inputPixelmap);
-
+    if (errorCode != EFFECT_SUCCESS) {
+        napi_value ret;
+        napi_create_int32(env, errorCode, &ret);
+        return ret;
+    }
     // 5、设置输出的Pixelmap（可选），不调用该接口时会在输入Pixelmap上直接生效滤镜效果
     errorCode = OH_ImageEffect_SetOutputPixelmap(imageEffect, outputPixelmap);
-
+    if (errorCode != EFFECT_SUCCESS) {
+        napi_value ret;
+        napi_create_int32(env, errorCode, &ret);
+        return ret;
+    }
     // 6、执行生效滤镜效果
     errorCode = OH_ImageEffect_Start(imageEffect);
-
+    if (errorCode != EFFECT_SUCCESS) {
+        napi_value ret;
+        napi_create_int32(env, errorCode, &ret);
+        return ret;
+    }
     // 7、执行生效滤镜效果
     errorCode = OH_ImageEffect_Stop(imageEffect);
 
@@ -1994,6 +2045,7 @@ static napi_value OHImageEffectStop(napi_env env, napi_callback_info info)
 
 napi_property_descriptor desc1[] = {
     {"savePixelMapForPath", nullptr, savePixelMapForPath, nullptr, nullptr, nullptr, napi_default, nullptr},
+    {"creatOutPixeMapForPath", nullptr, creatOutPixeMapForPath, nullptr, nullptr, nullptr, napi_default, nullptr},
     {"OHEffectBufferInfoCreate", nullptr, OHEffectBufferInfoCreate, nullptr, nullptr, nullptr, napi_default, nullptr},
     {"OHEffectBufferInfoSetAddr", nullptr, OHEffectBufferInfoSetAddr, nullptr, nullptr, nullptr, napi_default, nullptr},
     {"OHEffectBufferInfoGetAddr", nullptr, OHEffectBufferInfoGetAddr, nullptr, nullptr, nullptr, napi_default, nullptr},

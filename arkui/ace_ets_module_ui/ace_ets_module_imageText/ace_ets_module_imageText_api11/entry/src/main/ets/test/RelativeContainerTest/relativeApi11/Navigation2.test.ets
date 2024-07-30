@@ -17,8 +17,8 @@ import router from '@system.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../../MainAbility/utils/Common';
 
-export default function Navigation1() {
-  describe('Navigation1', function () {
+export default function Navigation2() {
+  describe('Navigation2', function () {
     beforeEach(async function (done) {
       console.info("appendChildTest beforeEach start");
       let options = {

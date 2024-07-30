@@ -205,8 +205,14 @@ struct webViewRegisterNativeEmbedRule {
                     switch (this.str) {
                         case "emitWebViewRegisterNativeEmbedRule": {
                             console.info('>>>>>registerNativeEmbedRule:' + this.isObject)
-                            Utils.emitEvent(this.isObject, 10003)
-                            Utils.emitEvent(true, 10003)
+                            if ( Utils.isPC( this.browserTabController ) ) {
+                              Utils.emitEvent(true, 10003)
+                              return
+                            }
+                            if ( this.isObject ) {
+                              Utils.emitEvent(this.isObject, 10003)
+                            }
+
                             break;
                         }
                     }
