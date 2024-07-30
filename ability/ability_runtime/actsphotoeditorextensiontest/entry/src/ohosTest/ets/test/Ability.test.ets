@@ -18,6 +18,7 @@ import commonEventManager from '@ohos.commonEventManager'
 import router from '@ohos.router'
 import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import Utils from './Utils'
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const TAG = "ACTS_PhotoEditorExtension"
 
@@ -94,7 +95,7 @@ export default function abilityTest() {
                         }
                     });
                 });
-            }).catch((error) => {
+            }).catch((error: BusinessError) => {
                 console.log(newTag + "createSubscriber err");
                 expect().assertFail();
             })
