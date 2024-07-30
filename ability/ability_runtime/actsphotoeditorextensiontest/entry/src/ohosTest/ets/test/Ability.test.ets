@@ -30,7 +30,7 @@ export default function abilityTest() {
             // Presets an action, which is performed only once before all test cases of the test suite start.
             // This API supports only one parameter: preset action function.
         })
-        beforeEach(async () => {
+        beforeEach(async function(done) => {
             hilog.info(0x0000, TAG, `ACTS_PhotoEditorExtension beforeEach start`);
 
             let options = {
@@ -48,8 +48,12 @@ export default function abilityTest() {
             setTimeout(async () => {
                 if (globalscribe !== undefined) {
                     Utils.unsubscribe(globalscribe)
+                    done()
                 }
             }, 8000); // max wait 8s
+            setTimeout(async () => {
+              done()
+            }, 300);
         })
         afterEach(() => {
             // Presets a clear action, which is performed after each unit test case ends.
@@ -69,7 +73,7 @@ export default function abilityTest() {
         * @tc.level Level0
         * @tc.type Function
         */
-        it('ACTS_PhotoEditorExtension_0100', 0, () => {
+        it('ACTS_PhotoEditorExtension_0100', 0, async () => {
             // Defines a test case. This API supports three parameters: test case name, filter parameter, and test case function.
             const newTag = 'ACTS_PhotoEditorExtension_0100 == ';
 
