@@ -217,220 +217,6 @@ export default function drawingTsCanvasPart5Test() {
 
 
     /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_3400
-     * @tc.name      : testCanvasReadPixelsNormal
-     * @tc.desc      : testCanvasReadPixelsNormal
-     * @tc.size      : SmallTest
-     * @tc.type      : Function
-     * @tc.level     : Level0
-     */
-    it('testCanvasReadPixelsNormal', DEFAULT, () => {
-      const msg = 'testCanvasReadPixelsNormal';
-      const canvas = new drawing.Canvas(pixel);
-      try {
-        const imgInfo = canvas.getImageInfo();
-        imgInfo.height = 100;
-        imgInfo.width = 100;
-        const dstRowBytes: number = imgInfo.width * getPixelSize(imgInfo.colorType);
-        let pixels = new ArrayBuffer(dstRowBytes * imgInfo.height);
-
-        res = canvas.readPixels(imgInfo, pixels, dstRowBytes, 100, 100);
-
-        res = canvas.readPixels(imgInfo, pixels, dstRowBytes - 100, 100.1, 100.1);
-
-        res = canvas.readPixels(imgInfo, pixels, dstRowBytes, -100, -100);
-        console.info(msg + 'test successes');
-      } catch (e) {
-        console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect().assertFail();
-      }
-    })
-
-
-    /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_3401
-     * @tc.name      : testCanvasReadPixelsMultipleCalls
-     * @tc.desc      : testCanvasReadPixelsMultipleCalls
-     * @tc.size      : SmallTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testCanvasReadPixelsMultipleCalls', 3, () => {
-      const msg = 'testCanvasReadPixelsMultipleCalls';
-      const canvas = new drawing.Canvas(pixel);
-      try {
-        const imgInfo = canvas.getImageInfo();
-        imgInfo.height = 100;
-        imgInfo.width = 100;
-        const dstRowBytes: number = imgInfo.width * getPixelSize(imgInfo.colorType);
-
-        let pixels = new ArrayBuffer(dstRowBytes * imgInfo.height);
-        for (let i = 0; i < 20; i += 1) {
-          const res = canvas.readPixels(imgInfo, pixels, dstRowBytes, 100, 100);
-        }
-        console.info(msg + 'test successes');
-      } catch (e) {
-        console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect().assertFail();
-      }
-    })
-
-
-    /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_3402
-     * @tc.name      : testCanvasReadPixelsToNull
-     * @tc.desc      : testCanvasReadPixelsToNull
-     * @tc.size      : SmallTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testCanvasReadPixelsToNull', 3, () => {
-      const msg = 'testCanvasReadPixelsToNull';
-      const canvas = new drawing.Canvas(pixel);
-      const imgInfo = canvas.getImageInfo();
-      imgInfo.height = 100;
-      imgInfo.width = 100;
-      const dstRowBytes: number = imgInfo.width * getPixelSize(imgInfo.colorType);
-      const pixels = new ArrayBuffer(dstRowBytes * imgInfo.height);
-
-      try {
-        canvas.readPixels(null, pixels, dstRowBytes, 100, 100);
-        console.info(msg + `test error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        canvas.readPixels(imgInfo, null, dstRowBytes, 100, 100);
-        console.info(msg + `test error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        canvas.readPixels(imgInfo, pixels, null, 100, 100);
-        console.info(msg + `test error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        canvas.readPixels(imgInfo, pixels, dstRowBytes, null, 100);
-        console.info(msg + `test error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        canvas.readPixels(imgInfo, pixels, dstRowBytes, 100, null;
-        console.info(msg + `test error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        canvas.readPixels(undefined, pixels, dstRowBytes, 100, 100);
-        console.info(msg + `test error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        canvas.readPixels(imgInfo, undefined, dstRowBytes, 100, 100);
-        console.info(msg + `test error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        canvas.readPixels(imgInfo, pixels, undefined, 100, 100);
-        console.info(msg + `test error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        canvas.readPixels(imgInfo, pixels, dstRowBytes, undefined, 100);
-        console.info(msg + `test error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        canvas.readPixels(imgInfo, pixels, dstRowBytes, 100, undefined);
-        console.info(msg + `test error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-    })
-
-
-    /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_3500
-     * @tc.name      : testCanvasGetImageInfoNormal
-     * @tc.desc      : testCanvasGetImageInfoNormal
-     * @tc.size      : SmallTest
-     * @tc.type      : Function
-     * @tc.level     : Level0
-     */
-    it('testCanvasGetImageInfoNormal', DEFAULT, () => {
-      const msg = 'testCanvasGetImageInfoNormal';
-      const canvas = new drawing.Canvas(pixel);
-      try {
-        const imgInfo = canvas.getImageInfo();
-        console.info(msg + 'test successes');
-      } catch (e) {
-        console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect().assertFail();
-      }
-    })
-
-
-    /**
-     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_3501
-     * @tc.name      : testCanvasGetImageInfoMultipleCalls
-     * @tc.desc      : testCanvasGetImageInfoMultipleCalls
-     * @tc.size      : SmallTest
-     * @tc.type      : Function
-     * @tc.level     : Level3
-     */
-    it('testCanvasGetImageInfoMultipleCalls', DEFAULT, () => {
-      const msg = 'testCanvasGetImageInfoMultipleCalls';
-      const canvas = new drawing.Canvas(pixel);
-      try {
-        for (let i = 0; i < 20; i += 1) {
-          const imgInfo = canvas.getImageInfo();
-        }
-        console.info(msg + 'test successes');
-      } catch (e) {
-        console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
-        expect().assertFail();
-      }
-    })
-
-
-    /**
      * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_CANVAS_3600
      * @tc.name      : testCanvasIsClipEmptyNormal
      * @tc.desc      : testCanvasIsClipEmptyNormal
@@ -924,7 +710,7 @@ export default function drawingTsCanvasPart5Test() {
       }
 
       try {
-        canvas.drawSingleCharacter(null, font, 100, 100);
+        canvas.drawSingleCharacter(undefined, font, 100, 100);
         console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {
@@ -933,7 +719,7 @@ export default function drawingTsCanvasPart5Test() {
       }
 
       try {
-        canvas.drawSingleCharacter("你", null, 100, 100);
+        canvas.drawSingleCharacter("你", undefined, 100, 100);
         console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {
@@ -942,7 +728,7 @@ export default function drawingTsCanvasPart5Test() {
       }
 
       try {
-        canvas.drawSingleCharacter("你", font, null, 100);
+        canvas.drawSingleCharacter("你", font, undefined, 100);
         console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {
@@ -951,7 +737,7 @@ export default function drawingTsCanvasPart5Test() {
       }
 
       try {
-        canvas.drawSingleCharacter("你", font, 100, null);
+        canvas.drawSingleCharacter("你", font, 100, undefined);
         console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {

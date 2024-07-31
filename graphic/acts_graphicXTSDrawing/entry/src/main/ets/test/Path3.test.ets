@@ -124,6 +124,30 @@ export default function drawingTsPath3Test() {
 
 
     /**
+     * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_1604
+     * @tc.name      : testPathSetFillTypeAbnormal
+     * @tc.desc      : testPathSetFillTypeAbnormal
+     * @tc.size      : MediumTest
+     * @tc.type      : Function
+     * @tc.level     : Level3
+     */
+    it('testPathSetFillTypeAbnormal', DEFAULT, () => {
+      const msg = 'testPathSetFillTypeAbnormal';
+      const path = new drawing.Path();
+
+      try {
+        path.setFillType(10);
+        console.info(msg + `test error`);
+        expect().assertFail()
+      } catch (e) {
+        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        expect(e.code).assertEqual(401);
+      }
+
+    })
+
+
+    /**
      * @tc.number    : SUB_BASIC_GRAPHICS_SPECIAL_API_TS_DRAWING_PATH_1700
      * @tc.name      : testPathGetBoundsNormal
      * @tc.desc      : testPathGetBoundsNormal
@@ -148,9 +172,9 @@ export default function drawingTsPath3Test() {
         }, drawing.PathDirection.CLOCKWISE);
         rect = path.getBounds();
 
-        console.info(msg + 'reset successes');
+        console.info(msg + 'test successes');
       } catch (e) {
-        console.info(msg + `reset errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail()
       }
     })
@@ -172,9 +196,9 @@ export default function drawingTsPath3Test() {
         for (let i = 0; i < 20; i += 1) {
           const rect = path.getBounds()
         }
-        console.info(msg + 'reset successes');
+        console.info(msg + 'test successes');
       } catch (e) {
-        console.info(msg + `reset errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail()
       }
     })
@@ -201,9 +225,9 @@ export default function drawingTsPath3Test() {
 
         len = path.getLength(true);
 
-        console.info(msg + 'reset successes');
+        console.info(msg + 'test successes');
       } catch (e) {
-        console.info(msg + `reset errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail()
       }
     })
@@ -226,9 +250,9 @@ export default function drawingTsPath3Test() {
           path.getLength(true);
         }
 
-        console.info(msg + 'reset successes');
+        console.info(msg + 'test successes');
       } catch (e) {
-        console.info(msg + `reset errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail()
       }
     })
@@ -248,20 +272,20 @@ export default function drawingTsPath3Test() {
       try {
         let path = new drawing.Path();
         path.getLength(null);
-        console.info(msg + `reset error`);
+        console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
         expect(e.code).assertEqual(401);
       }
 
       try {
         let path = new drawing.Path();
         path.getLength(undefined);
-        console.info(msg + `reset error`);
+        console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
         expect(e.code).assertEqual(401);
       }
     })
@@ -307,9 +331,9 @@ export default function drawingTsPath3Test() {
         }, {
           x: 600.1, y: 600.1
         })
-        console.info(msg + 'reset successes');
+        console.info(msg + 'test successes');
       } catch (e) {
-        console.info(msg + `reset errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail()
       }
     })
@@ -335,9 +359,9 @@ export default function drawingTsPath3Test() {
             x: 200, y: 200
           });
         }
-        console.info(msg + 'reset successes');
+        console.info(msg + 'test successes');
       } catch (e) {
-        console.info(msg + `reset errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail()
       }
     })
@@ -361,10 +385,10 @@ export default function drawingTsPath3Test() {
         }, {
           x: 200, y: 200
         });
-        console.info(msg + `reset error`);
+        console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
         expect(e.code).assertEqual(401);
       }
 
@@ -374,10 +398,10 @@ export default function drawingTsPath3Test() {
         }, {
           x: 200, y: 200
         });
-        console.info(msg + `reset error`);
+        console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
         expect(e.code).assertEqual(401);
       }
 
@@ -385,10 +409,10 @@ export default function drawingTsPath3Test() {
         path.getPositionAndTangent(false, 100, null, {
           x: 200, y: 200
         });
-        console.info(msg + `reset error`);
+        console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
         expect(e.code).assertEqual(401);
       }
 
@@ -396,10 +420,10 @@ export default function drawingTsPath3Test() {
         path.getPositionAndTangent(false, 100, {
           x: 20, y: 20
         }, null);
-        console.info(msg + `reset error`);
+        console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
         expect(e.code).assertEqual(401);
       }
 
@@ -409,10 +433,10 @@ export default function drawingTsPath3Test() {
         }, {
           x: 200, y: 200
         });
-        console.info(msg + `reset error`);
+        console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
         expect(e.code).assertEqual(401);
       }
 
@@ -422,10 +446,10 @@ export default function drawingTsPath3Test() {
         }, {
           x: 200, y: 200
         });
-        console.info(msg + `reset error`);
+        console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
         expect(e.code).assertEqual(401);
       }
 
@@ -433,10 +457,10 @@ export default function drawingTsPath3Test() {
         path.getPositionAndTangent(false, 100, undefined, {
           x: 200, y: 200
         });
-        console.info(msg + `reset error`);
+        console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
         expect(e.code).assertEqual(401);
       }
 
@@ -444,10 +468,10 @@ export default function drawingTsPath3Test() {
         path.getPositionAndTangent(false, 100, {
           x: 20, y: 20
         }, undefined);
-        console.info(msg + `reset error`);
+        console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
         expect(e.code).assertEqual(401);
       }
     })
@@ -472,9 +496,9 @@ export default function drawingTsPath3Test() {
         path.close();
         newPath = new drawing.Path(path);
 
-        console.info(msg + 'reset successes');
+        console.info(msg + 'test successes');
       } catch (e) {
-        console.info(msg + `reset errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail()
       }
     })
@@ -496,9 +520,9 @@ export default function drawingTsPath3Test() {
           let path = new drawing.Path();
           let newPath = new drawing.Path(path);
         }
-        console.info(msg + 'reset successes');
+        console.info(msg + 'test successes');
       } catch (e) {
-        console.info(msg + `reset errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail()
       }
     })
@@ -517,19 +541,19 @@ export default function drawingTsPath3Test() {
 
       try {
         new drawing.Path(null);
-        console.info(msg + `reset error`);
+        console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
         expect(e.code).assertEqual(401);
       }
 
       try {
         new drawing.Path(undefined);
-        console.info(msg + `reset error`);
+        console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
         expect(e.code).assertEqual(401);
       }
     })
@@ -559,7 +583,7 @@ export default function drawingTsPath3Test() {
         close = path.isClosed(false);
         close = path.isClosed(true);
       } catch (e) {
-        console.info(msg + `reset errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail()
       }
     })
@@ -581,9 +605,9 @@ export default function drawingTsPath3Test() {
         for (let i = 0; i < 20; i += 1) {
           let close = path.isClosed(true);
         }
-        console.info(msg + 'reset successes');
+        console.info(msg + 'test successes');
       } catch (e) {
-        console.info(msg + `reset errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail()
       }
     })
@@ -605,9 +629,9 @@ export default function drawingTsPath3Test() {
         path.buildFromSvgString('');
         let svgStr: string = "M150 100 L75 300 L225 300 Z";
         path.buildFromSvgString(svgStr);
-        console.info(msg + 'reset successes');
+        console.info(msg + 'test successes');
       } catch (e) {
-        console.info(msg + `reset errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail()
       }
     })
@@ -630,9 +654,9 @@ export default function drawingTsPath3Test() {
           let svgStr: string = "M150 100 L75 300 L225 300 Z";
           path.buildFromSvgString(svgStr);
         }
-        console.info(msg + 'reset successes');
+        console.info(msg + 'test successes');
       } catch (e) {
-        console.info(msg + `reset errorCode is:  ${e.code} + errormsg is: ${e.message}`);
+        console.info(msg + `test errorCode is:  ${e.code} + errormsg is: ${e.message}`);
         expect().assertFail()
       }
     })
@@ -652,19 +676,19 @@ export default function drawingTsPath3Test() {
 
       try {
         path.buildFromSvgString(null);
-        console.info(msg + `reset error`);
+        console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
         expect(e.code).assertEqual(401);
       }
 
       try {
         path.buildFromSvgString(undefined);
-        console.info(msg + `reset error`);
+        console.info(msg + `test error`);
         expect().assertFail()
       } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
+        console.info(msg + `test successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
         expect(e.code).assertEqual(401);
       }
 

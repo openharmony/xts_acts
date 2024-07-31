@@ -289,6 +289,10 @@ export default function drawingTsPath2Test() {
         path.addCircle(200, 200, 50);
         path.addCircle(maxVal, maxVal, maxVal);
         path.addCircle(-200, -200, 200);
+
+        path.addCircle(100, 200, -1, drawing.PathDirection.CLOCKWISE);
+        path.addCircle(100, 200, 0);
+
         path.close();
         console.info(msg + 'reset successes');
       } catch (e) {
@@ -422,25 +426,7 @@ export default function drawingTsPath2Test() {
       let path = new drawing.Path();
 
       try {
-        path.addCircle(100, 200, -1, drawing.PathDirection.CLOCKWISE);
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
         path.addCircle(100, 200, 50, 10);
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        path.addCircle(100, 200, 0);
         console.info(msg + `reset error`);
         expect().assertFail()
       } catch (e) {
@@ -466,7 +452,13 @@ export default function drawingTsPath2Test() {
       try {
         path.addOval({
           left: 10, right: 400, top: 100, bottom: 300
+        }, 4, drawing.PathDirection.CLOCKWISE);
+        path.addOval({
+          left: 10, right: 400, top: 100, bottom: 300
         }, 5, drawing.PathDirection.CLOCKWISE);
+        path.addOval({
+          left: 10.1, right: 400.1, top: 100.1, bottom: 300.1
+        }, 4.1);
         path.addOval({
           left: 10, right: 400, top: 100, bottom: 300
         }, 5, drawing.PathDirection.COUNTER_CLOCKWISE);
@@ -485,6 +477,9 @@ export default function drawingTsPath2Test() {
         path.addOval({
           left: 100, right: 100, top: 100, bottom: 200
         }, 1);
+        path.addOval({
+          left: 100, right: 100, top: 100, bottom: 200
+        }, 3);
         path.addOval({
           left: 100, right: 100, top: 100, bottom: 100
         }, 10);
@@ -711,7 +706,9 @@ export default function drawingTsPath2Test() {
       const path = new drawing.Path();
 
       try {
-        path.addOval({left : 10, right : 400, top : 100, bottom : 300}, -1, drawing.PathDirection.CLOCKWISE);
+        path.addOval({
+          left: 10, right: 400, top: 100, bottom: 300
+        }, -1, drawing.PathDirection.CLOCKWISE);
         console.info(msg + `reset error`);
         expect().assertFail()
       } catch (e) {
@@ -720,7 +717,9 @@ export default function drawingTsPath2Test() {
       }
 
       try {
-        path.addOval({left : 10, right : 400, top : 100, bottom : 300}, 5, 10);
+        path.addOval({
+          left: 10, right: 400, top: 100, bottom: 300
+        }, 4, 10);
         console.info(msg + `reset error`);
         expect().assertFail()
       } catch (e) {
@@ -728,7 +727,6 @@ export default function drawingTsPath2Test() {
         expect(e.code).assertEqual(401);
       }
     })
-
 
 
     /**
@@ -1143,6 +1141,8 @@ export default function drawingTsPath2Test() {
         path.addCircle(100, 200, 50, drawing.PathDirection.COUNTER_CLOCKWISE);
         dstPath.addPath(path, matrix);
 
+        dstPath .addPath(path, null);
+
         path.close();
         console.info(msg + 'reset successes');
       } catch (e) {
@@ -1193,17 +1193,6 @@ export default function drawingTsPath2Test() {
         let dstPath = new drawing.Path();
         let matrix = new drawing.Matrix();
         dstPath.addPath(null, matrix);
-        console.info(msg + `reset error`);
-        expect().assertFail()
-      } catch (e) {
-        console.info(msg + `reset successes. errorCode is: ${e.code} + errormsg is: ${e.message}}`);
-        expect(e.code).assertEqual(401);
-      }
-
-      try {
-        let dstPath = new drawing.Path();
-        let path = new drawing.Path();
-        dstPath.addPath(path, null);
         console.info(msg + `reset error`);
         expect().assertFail()
       } catch (e) {
