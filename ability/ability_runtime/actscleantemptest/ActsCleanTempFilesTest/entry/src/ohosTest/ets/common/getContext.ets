@@ -16,7 +16,7 @@
 import common from '@ohos.app.ability.common';
 
 export function getContext(): common.UIAbilityContext {
-    let context = AppStorage.get('context') as common.UIAbilityContext;
-    console.info('getContext is ' + context);
-    return context;
+  let context = AppStorage.get('context') as common.UIAbilityContext;
+  console.info('getContext is ' + context);
+  return context;
 }
