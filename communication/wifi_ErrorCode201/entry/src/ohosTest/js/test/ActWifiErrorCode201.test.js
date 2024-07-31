@@ -71,6 +71,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testIsWifiActive
         * @tc.desc Test isWifiActive API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0100', 0, async function (done) {
@@ -89,6 +90,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testScan
         * @tc.desc Test scan API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0003', 0, async function(done) {
@@ -107,6 +109,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testGetScanInfoList
         * @tc.desc Test getScanInfoList API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0038', 0, async function(done) {
@@ -125,6 +128,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testAddCandidateConfig
         * @tc.desc Test addCandidateConfig API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0039', 0, async function (done) {
@@ -153,6 +157,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testAddCandidateConfig
         * @tc.desc Test addCandidateConfig API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0040', 0, async function (done) {
@@ -186,6 +191,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testRemoveCandidateConfig
         * @tc.desc Test removeCandidateConfig API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0041', 0, async function (done) {
@@ -207,6 +213,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testRemoveCandidateConfig
         * @tc.desc Test removeCandidateConfig API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0042', 0, async function (done) {
@@ -233,6 +240,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testGetCandidateConfigs
         * @tc.desc Test getCandidateConfigs API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0043', 0, async function (done) {
@@ -251,6 +259,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testConnectToCandidateConfig
         * @tc.desc Test connectToCandidateConfig API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0044', 0, async function (done) {
@@ -269,6 +278,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testGetSignalLevel
         * @tc.desc Test getSignalLevel API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0045', 0, async function (done) {
@@ -287,6 +297,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testGetLinkedInfo
         * @tc.desc Test getLinkedInfo API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0046', 0, async function (done) {
@@ -308,6 +319,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testGetLinkedInfo
         * @tc.desc Test getLinkedInfo API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0047', 0, async function (done) {
@@ -334,6 +346,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testIsConnected
         * @tc.desc Test isConnected API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0048', 0, async function (done) {
@@ -352,6 +365,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testIsFeatureSupported
         * @tc.desc Test isFeatureSupported API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0049', 0, async function (done) {
@@ -370,6 +384,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testGetIpInfo
         * @tc.desc Test getIpInfo API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0050', 0, async function (done) {
@@ -388,6 +403,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testGetCountryCode
         * @tc.desc Test getCountryCode API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0051', 0, async function (done) {
@@ -406,6 +422,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testGetP2pLinkedInfo
         * @tc.desc Test getP2pLinkedInfo API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0052', 0, async function (done) {
@@ -428,6 +445,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testGetP2pLinkedInfo
         * @tc.desc Test getP2pLinkedInfo API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0053', 0, async function (done) {
@@ -455,6 +473,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testGetCurrentP2pGroup
         * @tc.desc Test getCurrentP2pGroup API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0054', 0, async function (done) {
@@ -476,6 +495,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testGetCurrentP2pGroup
         * @tc.desc Test getCurrentP2pGroup API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0055', 0, async function (done) {
@@ -502,6 +522,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testGetP2pPeerDevices
         * @tc.desc Test getP2pPeerDevices API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0056', 0, async function (done) {
@@ -523,6 +544,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testGetP2pPeerDevices
         * @tc.desc Test getP2pPeerDevices API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0057', 0, async function (done) {
@@ -549,6 +571,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testGetP2pLocalDevice
         * @tc.desc Test getP2pLocalDevice API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0058', 0, async function (done) {
@@ -570,6 +593,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testGetP2pLocalDevice
         * @tc.desc Test getP2pLocalDevice API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0059', 0, async function (done) {
@@ -596,6 +620,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testCreateP2pGroup
         * @tc.desc Test getP2pLocalDevice API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0060', 0, async function (done) {
@@ -621,6 +646,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testRemoveP2pGroup
         * @tc.desc Test removeP2pGroup API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0061', 0, async function (done) {
@@ -639,6 +665,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testP2pConnect
         * @tc.desc Test p2pConnect API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0062', 0, async function (done) {
@@ -665,6 +692,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testP2pCancelConnect
         * @tc.desc Test p2pCancelConnect API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0063', 0, async function (done) {
@@ -684,6 +712,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testStartDiscoverDevices
         * @tc.desc Test startDiscoverDevices API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0064', 0, async function (done) {
@@ -703,6 +732,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testStopDiscoverP2pDevices
         * @tc.desc Test stopDiscoverP2pDevices API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0065', 0, async function (done) {
@@ -722,6 +752,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testWifiStateChange
         * @tc.desc Test wifiStateChange API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0066', 0, async function (done) {
@@ -753,6 +784,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testWifiConnectionChange
         * @tc.desc Test wifiConnectionChange API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0067', 0, async function (done) {
@@ -784,6 +816,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testWifiScanStateChange
         * @tc.desc Test wifiScanStateChange API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0068', 0, async function (done) {
@@ -815,6 +848,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testWifiRssiChange
         * @tc.desc Test wifiRssiChange API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0069', 0, async function (done) {
@@ -846,6 +880,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testHotspotStateChange
         * @tc.desc Test hotspotStateChange API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0070', 0, async function (done) {
@@ -877,6 +912,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testP2pStateChange
         * @tc.desc Test p2pStateChange API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0071', 0, async function (done) {
@@ -908,6 +944,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testP2pConnectionChange
         * @tc.desc Test p2pConnectionChange API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0072', 0, async function (done) {
@@ -939,6 +976,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testP2pDeviceChange
         * @tc.desc Test p2pDeviceChange API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0073', 0, async function (done) {
@@ -970,6 +1008,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testP2pPeerDeviceChange
         * @tc.desc Test p2pPeerDeviceChange API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0074', 0, async function (done) {
@@ -1001,6 +1040,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testP2pPersistentGroupChange
         * @tc.desc Test p2pPersistentGroupChange API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0075', 0, async function (done) {
@@ -1032,6 +1072,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testP2pDiscoveryChange
         * @tc.desc Test p2pDiscoveryChange API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0076', 0, async function (done) {
