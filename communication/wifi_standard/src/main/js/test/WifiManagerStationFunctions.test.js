@@ -72,6 +72,7 @@ export default function actsWifiManagerFunctionsTest() {
          * @tc.name testGetSignalLevel
          * @tc.desc Test getSignalLevel API functionality..
          * @tc.type Function
+         * @tc.size LargeTest
          * @tc.level Level 3
          */
         it('SUB_Communication_WiFi_XTS_Sta_0021', 0, function () {
@@ -121,6 +122,7 @@ export default function actsWifiManagerFunctionsTest() {
          * @tc.name testgetCountryCode
          * @tc.desc Test getCountryCode API function.
          * @tc.type Function
+         * @tc.size LargeTest
          * @tc.level Level 3
          */
         it('SUB_Communication_WiFi_XTS_Sta_0017', 0, function () {
@@ -155,6 +157,7 @@ export default function actsWifiManagerFunctionsTest() {
          * @tc.name testFeatureSupported
          * @tc.desc Test FeatureSupported API function.
          * @tc.type Function
+         * @tc.size LargeTest
          * @tc.level Level 3
          */
         it('SUB_Communication_WiFi_XTS_Sta_0020', 0, function () {
@@ -198,6 +201,7 @@ export default function actsWifiManagerFunctionsTest() {
          * @tc.name testGetLinkedInfo
          * @tc.desc Test Test getLinkedInfo and getIpInfo  information.
          * @tc.type Function
+         * @tc.size LargeTest
          * @tc.level Level 1
          */
         it('SUB_Communication_WiFi_XTS_Sta_0004', 0, async function (done) {
@@ -305,6 +309,7 @@ export default function actsWifiManagerFunctionsTest() {
          * @tc.name testgetScanResultsSync
          * @tc.desc Test getScanResults Sync API functionality.
          * @tc.type Function
+         * @tc.size LargeTest
          * @tc.level Level 0
          */
         it('SUB_Communication_WiFi_XTS_Sta_0034', 0, async function(done) {
@@ -347,6 +352,7 @@ export default function actsWifiManagerFunctionsTest() {
          * @tc.name testisBandTypeSupported
          * @tc.desc Test isBandTypeSupported API functionality.
          * @tc.type Function
+         * @tc.size LargeTest
          * @tc.level Level 0
          */
         it('SUB_Communication_WiFi_XTS_Sta_0035', 0, async function(done) {
@@ -377,6 +383,7 @@ export default function actsWifiManagerFunctionsTest() {
          * @tc.name testgetScanResults
          * @tc.desc Test getScanResults promise and callback API functionality.
          * @tc.type Function
+         * @tc.size LargeTest
          * @tc.level Level 0
          */
         it('SUB_Communication_WiFi_XTS_Sta_0036', 0, async function (done) {
@@ -419,6 +426,7 @@ export default function actsWifiManagerFunctionsTest() {
         * @tc.name testgetIpv6Info
         * @tc.desc Test getIpv6Info API functionality.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
          it('Communication_WiFi_XTS_Sta_0037', 0, function () {
