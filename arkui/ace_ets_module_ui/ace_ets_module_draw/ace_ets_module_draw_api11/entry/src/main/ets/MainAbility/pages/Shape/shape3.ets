@@ -26,42 +26,42 @@ struct ShapeExample {
   @State antiAlias: boolean = true;
   @State strokeDashArray: Array<Length> = [20];
   @State fillOpacity: number = 0;
-  @State strokeValue: Color = '#FF000000';
+  @State strokeValue: string = '#FF000000';
   private stateChangCallBack  = (eventData:events_emitter.EventData) => {
     if (eventData != null) {
       console.info("text page state change called:" + JSON.stringify(eventData));
       if (eventData.data?.strokeDashOffset != null) {
-        this.strokeDashOffset = parseInt(eventData.data?.strokeDashOffset);
+        this.strokeDashOffset = parseInt(eventData.data.strokeDashOffset);
       }
       if (eventData.data?.strokeLineCap != null) {
-        this.strokeLineCap = eventData.data?.strokeLineCap;
+        this.strokeLineCap = eventData.data.strokeLineCap;
       }
       if (eventData.data?.strokeLineJoin != null) {
         this.strokeLineJoin = eventData.data?.strokeLineJoin;
       }
       if (eventData.data?.strokeMiterLimit != null) {
-        this.strokeMiterLimit = eventData.data?.strokeMiterLimit;
+        this.strokeMiterLimit = eventData.data.strokeMiterLimit;
       }
       if (eventData.data?.strokeOpacity != null) {
-        this.strokeOpacity = parseInt(eventData.data?.strokeOpacity);
+        this.strokeOpacity = parseInt(eventData.data.strokeOpacity);
       }
       if (eventData.data?.fillOpacity != null) {
-        this.fillOpacity = parseInt(eventData.data?.fillOpacity);
+        this.fillOpacity = parseInt(eventData.data.fillOpacity);
       }
       if (eventData.data?.antiAlias != null) {
-        this.antiAlias = eventData.data?.antiAlias;
+        this.antiAlias = eventData.data.antiAlias;
       }
       if (eventData.data?.strokeDashArrayOne != null) {
-        this.strokeDashArray[0] = parseInt(eventData.data?.strokeDashArrayOne);
+        this.strokeDashArray[0] = parseInt(eventData.data.strokeDashArrayOne);
       }
       if (eventData.data?.strokeDashArrayTwo != null) {
-        this.strokeDashArray[1] = parseInt(eventData.data?.strokeDashArrayTwo);
+        this.strokeDashArray[1] = parseInt(eventData.data.strokeDashArrayTwo);
       }
       if (eventData.data?.strokeDashArrayThree != null) {
-        this.strokeDashArray[2] = parseInt(eventData.data?.strokeDashArrayThree);
+        this.strokeDashArray[2] = parseInt(eventData.data.strokeDashArrayThree);
       }
       if (eventData.data?.stroke != null) {
-        this.strokeValue = eventData.data?.stroke;
+        this.strokeValue = eventData.data.stroke as string;
       }
     }
   }
