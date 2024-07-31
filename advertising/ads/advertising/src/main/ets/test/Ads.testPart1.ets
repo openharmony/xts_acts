@@ -67,7 +67,7 @@ const advertisement: advertising.Advertisement = {
   ]),
   rewarded: false,
   shown: false,
-  uniqueId: "5bb42294-e601-4d84-9185-b6fd0f6f49b8"
+  uniqueId: "5bb42294-e601-44-9185-b6fd0f6f49b8"
 };
 
 export default function adsTestPart1() {

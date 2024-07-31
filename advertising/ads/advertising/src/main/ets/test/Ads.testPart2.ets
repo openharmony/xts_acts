@@ -46,7 +46,7 @@ const adOption: advertising.AdOptions = {
 };
 const adResponse =
     "{\n" +
-    "  \"clientAdRequestId\":\"763fa78c-0d9a-4908-bab4-25a149801d82\",\n" +
+    "  \"clientAdRequestId\":\"763fa78c-0d9a-4908-bab4-25a1498012\",\n" +
     "  \"cost\":\"18,11,0,10,3,0,1,10,1\",\n" +
     "  \"ctrlSwitchs\":\"0\",\n" +
     "  \"multiad\":[\n" +
