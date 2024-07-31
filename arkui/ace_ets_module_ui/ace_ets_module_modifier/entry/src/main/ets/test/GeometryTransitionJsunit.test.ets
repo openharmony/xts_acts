@@ -13,15 +13,15 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 
 export default function geometryTransitionJsunit() {
-  describe('common_geometryTransitionTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/geometryTransition',
+  describe('common_geometryTransitionTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/geometryTransition',
       }
       try {
         router.clear();
@@ -29,9 +29,8 @@ export default function geometryTransitionJsunit() {
         console.info("get geometryTransition state success " + JSON.stringify(pages));
         if (!("geometryTransition" == pages.name)) {
           console.info("get geometryTransition state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(1000);
-          console.info("push geometryTransition page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push geometryTransition page error: " + err);
@@ -39,27 +38,27 @@ export default function geometryTransitionJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("geometryTransition after each called");
     });
 
     /**
      * @tc.number geometryTransitionTest_0100
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set geometryTransition values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set geometryTransition values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('geometryTransitionTest_0100', 0, async function (done) {
+    it('geometryTransitionTest_0100', 0, async (done: Function) => {
       console.info('geometryTransitionTest_0100 START');
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 104,
         priority: events_emitter.EventPriority.LOW
       }
       await Utils.sleep(1000);
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("geometryTransitionTest_0100 get state result is: " + JSON.stringify(indexEvent));
         expect(indexEvent.data.btn1).assertEqual(false);
         done();

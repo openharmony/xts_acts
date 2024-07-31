@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter'
 import Utils from './Utils';
 
 export default function sharedTransitionJsunit() {
-  describe('common_sharedTransitionTest', function () {
-    beforeEach(async function (done) {
+  describe('common_sharedTransitionTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("sharedTransition beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/sharedTransition',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/sharedTransition',
       }
       try {
         router.clear();
@@ -30,9 +30,8 @@ export default function sharedTransitionJsunit() {
         console.info("get sharedTransition state pages:" + JSON.stringify(pages));
         if (!("sharedTransition" == pages.name)) {
           console.info("get sharedTransition state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push sharedTransition page result:" + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push sharedTransition page error:" + JSON.stringify(err));
@@ -40,20 +39,20 @@ export default function sharedTransitionJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await Utils.sleep(1000);
       console.info("sharedTransition after each called");
     });
 
     /**
      * @tc.number sharedTransitionTest_0100
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set sharedTransition values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set sharedTransition values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('sharedTransitionTest_0100', 0, async function (done) {
+    it('sharedTransitionTest_0100', 0, async (done: Function) => {
       console.info('sharedTransitionTest_0100 START');
       try {
         let eventData = {

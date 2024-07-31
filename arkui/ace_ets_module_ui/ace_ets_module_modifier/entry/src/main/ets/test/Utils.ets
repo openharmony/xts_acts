@@ -84,7 +84,7 @@ export default class Utils {
     if (drag) {
       await this.sleep(500)
     }
-    for (var i = 1;i <= swipeSteps; i++) {
+    for (var i = 1; i <= swipeSteps; i++) {
       var movePoint: TouchObject = {
         id: 1,
         x: downX + (xStep * i),
@@ -120,7 +120,7 @@ export default class Utils {
   static getRectVerticalCenterY(rect): number {
     return (rect.bottom - rect.top) / 2 + rect.top;
   }
-  
+
   static getSystemTime() {
     return systemDateTime.getTime(true) / 1000
   }

@@ -14,17 +14,17 @@
  */
 
 import events_emitter from '@ohos.events.emitter';
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest';
 
 export default function listItemGroupJsunit() {
-  describe('listItemGroupTest', function () {
-    beforeAll(async function (done) {
+  describe('listItemGroupTest', () => {
+    beforeAll(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/listItemGroup',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/listItemGroup',
       }
       try {
         router.clear();
@@ -32,9 +32,8 @@ export default function listItemGroupJsunit() {
         console.info("get list_item_group state success " + JSON.stringify(pages));
         if (!("listItemGroup" == pages.name)) {
           console.info("get list_item_group state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(5000);
-          console.info("push list_item_group page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push list_item_group page error: " + err);
@@ -44,13 +43,13 @@ export default function listItemGroupJsunit() {
 
     /**
      * @tc.number testList_item_group0007
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set divider values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set divider values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testList_item_group0007', 0, async function (done) {
+    it('testList_item_group0007', 0, async (done: Function) => {
       console.info('testList_item_group0007 START');
       let strJson = getInspectorByKey('ListItemGroupKey1');
       let obj = JSON.parse(strJson);
@@ -67,13 +66,13 @@ export default function listItemGroupJsunit() {
 
     /**
      * @tc.number testList_item_group0008
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change divider values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change divider values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testList_item_group0008', 0, async function (done) {
+    it('testList_item_group0008', 0, async (done: Function) => {
       console.info('testList_item_group0008 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

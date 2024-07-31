@@ -13,18 +13,31 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
-import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix } from '@ohos.UiTest';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import { MessageManager, Callback } from '../MainAbility/utils/MessageManager';
 
 
 export default function toggleJsunit() {
-  describe('toggleTest', function () {
-    beforeEach(async function (done) {
+  describe('toggleTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("Toggle beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/toggle',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/toggle',
       }
       try {
         router.clear();
@@ -32,8 +45,7 @@ export default function toggleJsunit() {
         console.info("get Toggle state pages: " + JSON.stringify(pages));
         if (!("toggle" == pages.name)) {
           console.info("get Toggle state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
-          console.info("push Toggle page result: " + JSON.stringify(result));
+          await router.pushUrl(options);
         }
       } catch (err) {
         console.error("push Toggle page error: " + err);
@@ -44,13 +56,13 @@ export default function toggleJsunit() {
 
     /**
      * @tc.number ToggleJsunit001
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set selectedColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set selectedColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ToggleJsunit001', 0, async function (done) {
+    it('ToggleJsunit001', 0, async (done: Function) => {
       console.info('[ToggleJsunit001] START');
       let strJson = getInspectorByKey('toggleCheckbox');
       let obj = JSON.parse(strJson);
@@ -62,13 +74,13 @@ export default function toggleJsunit() {
 
     /**
      * @tc.number ToggleJsunit002
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set switchPointColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set switchPointColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ToggleJsunit002', 0, async function (done) {
+    it('ToggleJsunit002', 0, async (done: Function) => {
       console.info('[ToggleJsunit002] START');
       let strJson = getInspectorByKey('toggleCheckbox');
       let obj = JSON.parse(strJson);
@@ -80,13 +92,13 @@ export default function toggleJsunit() {
 
     /**
      * @tc.number ToggleJsunit003
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change selectedColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change selectedColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ToggleJsunit003', 0, async function (done) {
+    it('ToggleJsunit003', 0, async (done: Function) => {
       console.info('ToggleJsunit003 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

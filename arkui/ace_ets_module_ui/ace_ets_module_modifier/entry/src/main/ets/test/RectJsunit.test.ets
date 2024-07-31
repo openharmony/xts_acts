@@ -13,28 +13,27 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest';
 
 export default function rectJsunit() {
-  describe('rectTest', function () {
-    beforeAll(async function (done) {
+  describe('rectTest', () => {
+    beforeAll(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/rect',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/rect',
       }
-      let result;
+
       try {
         router.clear();
         let pages = router.getState();
         console.info("get rect state success " + JSON.stringify(pages));
         if (!("rect" == pages.name)) {
           console.info("get rect state success " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push rect page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push rect page error: " + err);
@@ -44,13 +43,13 @@ export default function rectJsunit() {
 
     /**
      * @tc.number testrect_radiusHeight
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set radiusHeight values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set radiusHeight values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testrect_radiusHeight', 0, async function (done) {
+    it('testrect_radiusHeight', 0, async (done: Function) => {
       console.info('[testrect_radiusHeight] START');
       let strJson = getInspectorByKey('Rect1');
       let obj = JSON.parse(strJson);
@@ -66,13 +65,13 @@ export default function rectJsunit() {
 
     /**
      * @tc.number testrect_radius
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set radius values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set radius values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testrect_radius', 0, async function (done) {
+    it('testrect_radius', 0, async (done: Function) => {
       console.info('[testrect_radius] START');
       let strJson = getInspectorByKey('Rect2');
       let obj = JSON.parse(strJson);
@@ -88,13 +87,13 @@ export default function rectJsunit() {
 
     /**
      * @tc.number testrect_radiusWidth
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set radiusWidth values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set radiusWidth values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testrect_radiusWidth', 0, async function (done) {
+    it('testrect_radiusWidth', 0, async (done: Function) => {
       console.info('[testrect_radiusWidth] START');
       let strJson = getInspectorByKey('Rect3');
       let obj = JSON.parse(strJson);
@@ -110,13 +109,13 @@ export default function rectJsunit() {
 
     /**
      * @tc.number testrect__001
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change radiusHeight values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change radiusHeight values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testrect__001', 0, async function (done) {
+    it('testrect__001', 0, async (done: Function) => {
       console.info('testrect__001 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

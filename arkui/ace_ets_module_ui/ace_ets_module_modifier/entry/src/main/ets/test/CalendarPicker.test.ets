@@ -16,26 +16,25 @@
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
-import router from '@system.router';
+import router from '@ohos.router';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest';
 
 export default function calendarPickerJsunit() {
-  describe('calendarPickerTest', function () {
-    beforeEach(async function (done) {
+  describe('calendarPickerTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("calendarpicker beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/calendarpicker',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/calendarpicker',
       }
-      let result;
+
       try {
         router.clear();
         let pages = router.getState();
         console.info("get calendarpicker state pages: " + JSON.stringify(pages));
         if (!("calendarpicker" == pages.name)) {
           console.info("get calendarpicker state pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(5000);
-          console.info("push calendarpicker page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push calendarpicker page error: " + err);
@@ -45,13 +44,13 @@ export default function calendarPickerJsunit() {
 
     /**
      * @tc.number ArkUI_Stage_CalendarPicker_attributeModifier_0100
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set edgeAlign values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set edgeAlign values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Stage_CalendarPicker_0100', 0, async function (done) {
+    it('ArkUI_Stage_CalendarPicker_0100', 0, async (done: Function) => {
       console.info('[ArkUI_Stage_CalendarPicker_0100] START');
       let strJson = getInspectorByKey('CalendarPickerKey1');
       let obj = JSON.parse(strJson);
@@ -68,13 +67,13 @@ export default function calendarPickerJsunit() {
 
     /**
      * @tc.number ArkUI_Stage_CalendarPicker_attributeModifier_0101
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set textStyle values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set textStyle values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Stage_CalendarPicker_attributeModifier_0101', 0, async function (done) {
+    it('ArkUI_Stage_CalendarPicker_attributeModifier_0101', 0, async (done: Function) => {
       console.info('[ArkUI_Stage_CalendarPicker_attributeModifier_0101] START');
       let strJson = getInspectorByKey('CalendarPickerKey1');
       let obj = JSON.parse(strJson);
@@ -91,13 +90,13 @@ export default function calendarPickerJsunit() {
 
     /**
      * @tc.number ArkUI_Stage_CalendarPicker_attributeModifier_0102
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change edgeAlign values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change edgeAlign values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Stage_CalendarPicker_attributeModifier_0102', 0, async function (done) {
+    it('ArkUI_Stage_CalendarPicker_attributeModifier_0102', 0, async (done: Function) => {
       console.info('ArkUI_Stage_CalendarPicker_attributeModifier_0102 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

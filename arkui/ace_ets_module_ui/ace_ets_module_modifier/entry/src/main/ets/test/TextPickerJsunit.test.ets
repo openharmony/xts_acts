@@ -16,25 +16,24 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
-import router from '@system.router';
+import router from '@ohos.router';
 
 export default function textpickerJsunit() {
-  describe('textpickerTest', function () {
-    beforeEach(async function (done) {
+  describe('textpickerTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("textpicker beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/textPicker',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/textPicker',
       }
-      let result;
+
       try {
         router.clear();
         let pages = router.getState();
         console.info("get textpicker state pages: " + JSON.stringify(pages));
         if (!("textPicker" == pages.name)) {
           console.info("get textpicker state pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push textpicker page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push textpicker page error: " + err);
@@ -44,13 +43,13 @@ export default function textpickerJsunit() {
 
     /**
      * @tc.number ArkUI_textpicker_002
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set textStyle values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set textStyle values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_textpicker_002', 0, async function (done) {
+    it('ArkUI_textpicker_002', 0, async (done: Function) => {
       console.info('[ArkUI_textpicker_002] START');
       let strJson = getInspectorByKey('textPicker');
       let obj = JSON.parse(strJson);
@@ -64,13 +63,13 @@ export default function textpickerJsunit() {
 
     /**
      * @tc.number ArkUI_textpicker_003
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set selectedTextStyle values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set selectedTextStyle values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_textpicker_003', 0, async function (done) {
+    it('ArkUI_textpicker_003', 0, async (done: Function) => {
       console.info('[ArkUI_textpicker_003] START');
       let strJson = getInspectorByKey('textPicker');
       let obj = JSON.parse(strJson);
@@ -84,13 +83,13 @@ export default function textpickerJsunit() {
 
     /**
      * @tc.number ArkUI_textpicker_004
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set disappearTextStyle values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set disappearTextStyle values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_textpicker_004', 0, async function (done) {
+    it('ArkUI_textpicker_004', 0, async (done: Function) => {
       console.info('[ArkUI_textpicker_004] START');
       let strJson = getInspectorByKey('textPicker');
       let obj = JSON.parse(strJson);
@@ -104,13 +103,13 @@ export default function textpickerJsunit() {
 
     /**
      * @tc.number ArkUI_textpicker_005
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set canLoop values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set canLoop values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_textpicker_005', 0, async function (done) {
+    it('ArkUI_textpicker_005', 0, async (done: Function) => {
       console.info('[ArkUI_textpicker_005] START');
       let strJson = getInspectorByKey('textPicker');
       let obj = JSON.parse(strJson);
@@ -121,13 +120,13 @@ export default function textpickerJsunit() {
 
     /**
      * @tc.number ArkUI_textpicker_006
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set defaultPickerItemHeight values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set defaultPickerItemHeight values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_textpicker_006', 0, async function (done) {
+    it('ArkUI_textpicker_006', 0, async (done: Function) => {
       console.info('[ArkUI_textpicker_006] START');
       let strJson = getInspectorByKey('textPicker');
       let obj = JSON.parse(strJson);
@@ -138,13 +137,13 @@ export default function textpickerJsunit() {
 
     /**
      * @tc.number ArkUI_textpicker_001
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set selectedIndex values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set selectedIndex values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_textpicker_001', 0, async function (done) {
+    it('ArkUI_textpicker_001', 0, async (done: Function) => {
       console.info('[ArkUI_textpicker_001] START');
       let strJson = getInspectorByKey('textPicker');
       let obj = JSON.parse(strJson);
@@ -159,13 +158,13 @@ export default function textpickerJsunit() {
 
     /**
      * @tc.number ArkUI_textpicker_011
-     * @tc.name   Test the properties of components
-     * @tc.desc   change canLoop values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc change canLoop values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_textpicker_011', 0, async function (done) {
+    it('ArkUI_textpicker_011', 0, async (done: Function) => {
       console.info('[ArkUI_textpicker_011] START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

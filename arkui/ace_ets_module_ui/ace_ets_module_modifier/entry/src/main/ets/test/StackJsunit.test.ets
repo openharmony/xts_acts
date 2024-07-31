@@ -14,16 +14,16 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
 
 export default function stackJsunit() {
-  describe('stackTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/stack',
+  describe('stackTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/stack',
       }
       try {
         router.clear();
@@ -31,9 +31,8 @@ export default function stackJsunit() {
         console.info("get stack state success " + JSON.stringify(pages));
         if (!("stack" == pages.name)) {
           console.info("get stack state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(1000);
-          console.info("push stack page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push stack page error: " + err);
@@ -43,13 +42,13 @@ export default function stackJsunit() {
 
     /**
      * @tc.number stackTest_002
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set alignContent values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set alignContent values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('stackTest_002', 0, async function (done) {
+    it('stackTest_002', 0, async (done: Function) => {
       console.info('stackTest_002 START');
       let strJsonNew = getInspectorByKey('stack');
       let objNew = JSON.parse(strJsonNew);
@@ -61,13 +60,13 @@ export default function stackJsunit() {
 
     /**
      * @tc.number stackTest_001
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change alignContent values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change alignContent values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-     it('stackTest_001', 0, async function (done) {
+    it('stackTest_001', 0, async (done: Function) => {
       console.info('stackTest_001 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));
@@ -80,5 +79,5 @@ export default function stackJsunit() {
       console.info('stackTest_001 END');
       done();
     });
-    })
+  })
 }
