@@ -877,9 +877,10 @@ export default function common9Jsunit() {
     it('common_accessibilityLevel', 0, async (done: Function) => {
       console.info('[common_accessibilityLevel] START');
       let strJson = getInspectorByKey('rowModifier');
-      let obj = JSON.parse(strJson);
-      console.info("[common_accessibilityLevel] obj is : " + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.accessibilityLevel).assertEqual("auto");
+
+      console.info("[common_accessibilityLevel] JSON.parse(strJson) is : " + JSON.stringify(JSON.parse(strJson)
+        .$attrs));
+      expect(JSON.parse(strJson).$attrs.accessibilityLevel).assertEqual("auto");
       console.info('[common_accessibilityLevel] END');
       done();
     });
@@ -894,9 +895,10 @@ export default function common9Jsunit() {
     it('common_accessibilityDescription', 0, async (done: Function) => {
       console.info('[common_accessibilityDescription] START');
       let strJson = getInspectorByKey('rowModifier');
-      let obj = JSON.parse(strJson);
-      console.info("[common_accessibilityDescription] obj is : " + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.accessibilityDescription).assertEqual("");
+
+      console.info("[common_accessibilityDescription] JSON.parse(strJson) is : " + JSON.stringify(JSON.parse(strJson)
+        .$attrs));
+      expect(JSON.parse(strJson).$attrs.accessibilityDescription).assertEqual("");
       console.info('[common_accessibilityDescription] END');
       done();
     });
@@ -912,9 +914,9 @@ export default function common9Jsunit() {
     it('common_accessibilityText', 0, async (done: Function) => {
       console.info('[common_accessibilityText] START');
       let strJson = getInspectorByKey('rowModifier');
-      let obj = JSON.parse(strJson);
-      console.info("[common_accessibilityText] obj is : " + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.accessibilityText).assertEqual("");
+
+      console.info("[common_accessibilityText] JSON.parse(strJson) is : " + JSON.stringify(JSON.parse(strJson).$attrs));
+      expect(JSON.parse(strJson).$attrs.accessibilityText).assertEqual("");
       console.info('[common_accessibilityText] END');
       done();
     });
@@ -930,9 +932,10 @@ export default function common9Jsunit() {
     it('common_accessibilityGroup', 0, async (done: Function) => {
       console.info('[common_accessibilityGroup] START');
       let strJson = getInspectorByKey('rowModifier');
-      let obj = JSON.parse(strJson);
-      console.info("[common_accessibilityGroup] obj is : " + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.accessibilityGroup).assertEqual(false);
+
+      console.info("[common_accessibilityGroup] JSON.parse(strJson) is : " + JSON.stringify(JSON.parse(strJson)
+        .$attrs));
+      expect(JSON.parse(strJson).$attrs.accessibilityGroup).assertEqual(false);
       console.info('[common_accessibilityGroup] END');
       done();
     });
