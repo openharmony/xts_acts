@@ -21,7 +21,7 @@ export default function userauthTest_Nopermission_API12() {
 
         /*
             * @tc.number    : SUB_Security_IAM_Func_API12_0110
-            * @tc.name      : Unapplied permission call GetEnrolledState
+            * @tc.name      : unapplied permission call GetEnrolledState
             * @tc.desc      : Unapplied permission call GetEnrolledState
             * @tc.size      : MediumTest
             * @tc.type      : Function

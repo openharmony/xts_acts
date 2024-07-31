@@ -21,7 +21,8 @@ export default function userauthTest() {
 
         /*
             * @tc.number    : Security_IAM_Func_0102
-            * @tc.name      : Kit interface get AvailabeStatus
+            * @tc.name      : kit interface get AvailabeStatus
+            * @tc.desc      : Abnormal testing
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 0
@@ -70,6 +71,7 @@ export default function userauthTest() {
         /*
             * @tc.number    : Security_IAM_Func_0104
             * @tc.name      : getAvailableStatus invalid parameters
+            * @tc.desc      : Abnormal testing
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 0
@@ -136,7 +138,8 @@ export default function userauthTest() {
 
         /*
         * @tc.number    : Security_IAM_Func_0111
-        * @tc.name      : Kit interface get getAuthInstance
+        * @tc.name      : kit interface get getAuthInstance
+        * @tc.desc      : Abnormal testing
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level 0
@@ -173,6 +176,7 @@ export default function userauthTest() {
         /*
             * @tc.number    : Security_IAM_Func_0105
             * @tc.name      : getAuthInstance invalid parameters
+            * @tc.desc      : Abnormal testing
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 0
@@ -253,6 +257,7 @@ export default function userauthTest() {
         /*
             * @tc.number    : Security_IAM_Func_0106
             * @tc.name      : on,off invalid parameters
+            * @tc.desc      : Abnormal testing
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 0
@@ -373,7 +378,8 @@ export default function userauthTest() {
 
         /*
         * @tc.number    : Security_IAM_Func_0103
-        * @tc.name      : Kit interface auth & cancel auth
+        * @tc.name      : kit interface auth & cancel auth
+        * @tc.desc      : Abnormal testing
         * @tc.size      : MediumTest
         * @tc.type      : Function
         * @tc.level     : Level 0
@@ -425,6 +431,7 @@ export default function userauthTest() {
         /*
          * @tc.number    : Security_IAM_Func_0108
          * @tc.name      : off direct
+         * @tc.desc      : Abnormal testing
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level 0
@@ -448,6 +455,7 @@ export default function userauthTest() {
         /*
          * @tc.number    : Security_IAM_Func_0109
          * @tc.name      : cancel direct
+         * @tc.desc      : Abnormal testing
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level 0
@@ -471,6 +479,7 @@ export default function userauthTest() {
         /*
          * @tc.number    : Security_IAM_Func_0110
          * @tc.name      : getAuthInstance faceType ATL4
+         * @tc.desc      : A normal response is expected
          * @tc.size      : MediumTest
          * @tc.type      : Function
          * @tc.level     : Level 0
@@ -492,7 +501,8 @@ export default function userauthTest() {
 
         /*
             * @tc.number    : Security_IAM_PIN_Kit_Func_0104
-            * @tc.name      : Kit interface enum AuthTrustLevel
+            * @tc.name      : kit interface enum AuthTrustLevel
+            * @tc.desc      : Enumeration testing
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 0
@@ -509,7 +519,8 @@ export default function userauthTest() {
 
         /*
             * @tc.number    : Security_IAM_PIN_Kit_Func_0105
-            * @tc.name      : Kit interface enum FaceTips
+            * @tc.name      : kit interface enum FaceTips
+            * @tc.desc      : Enumeration testing
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 0
@@ -533,7 +544,8 @@ export default function userauthTest() {
 
         /*
             * @tc.number    : Security_IAM_PIN_Kit_Func_0106
-            * @tc.name      : Kit interface enum UserAuthType
+            * @tc.name      : kit interface enum UserAuthType
+            * @tc.desc      : Enumeration testing
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 0
@@ -548,7 +560,8 @@ export default function userauthTest() {
 
         /*
             * @tc.number    : Security_IAM_Func_0107
-            * @tc.name      : Kit interface enum ResultCode
+            * @tc.name      : kit interface enum ResultCode
+            * @tc.desc      : Enumeration testing
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 0
@@ -571,7 +584,8 @@ export default function userauthTest() {
 
         /*
             * @tc.number    : Security_IAM_PIN_Kit_Func_0108
-            * @tc.name      : Kit interface enum FingerprintTips
+            * @tc.name      : kit interface enum FingerprintTips
+            * @tc.desc      : Enumeration testing
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 0

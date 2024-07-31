@@ -23,7 +23,8 @@ export default function userauthTest() {
 
         /*
             * @tc.number    : Security_IAM_PIN_Kit_Func_0101
-            * @tc.name      : Kit interface get version
+            * @tc.name      : kit interface get version
+            * @tc.desc      : A normal response is expected
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 0
@@ -43,7 +44,8 @@ export default function userauthTest() {
 
         /*
             * @tc.number    : Security_IAM_PIN_Kit_Func_0102
-            * @tc.name      : Kit interface get AvailabeStatus
+            * @tc.name      : kit interface get AvailabeStatus
+            * @tc.desc      : Abnormal testing
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 0
@@ -92,7 +94,8 @@ export default function userauthTest() {
 
         /*
             * @tc.number    : Security_IAM_PIN_Kit_Func_0112
-            * @tc.name      : Kit interface get AvailabeStatus invalid param
+            * @tc.name      : kit interface get AvailabeStatus invalid param
+            * @tc.desc      : Abnormal testing
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 0
@@ -170,7 +173,8 @@ export default function userauthTest() {
 
         /*
            * @tc.number    : Security_IAM_PIN_Kit_Func_0113
-           * @tc.name      : Kit interface auth & cancel auth
+           * @tc.name      : kit interface auth & cancel auth
+           * @tc.desc      : Abnormal testing
            * @tc.size      : MediumTest
            * @tc.type      : Function
            * @tc.level     : Level 0
@@ -229,7 +233,8 @@ export default function userauthTest() {
 
         /*
             * @tc.number    : Security_IAM_PIN_Kit_Func_0107
-            * @tc.name      : Kit interface enum ResultCode
+            * @tc.name      : kit interface enum ResultCode
+            * @tc.desc      : Enumeration testing
             * @tc.size      : MediumTest
             * @tc.type      : Function
             * @tc.level     : Level 0
