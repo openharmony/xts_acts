@@ -44,25 +44,10 @@ struct videoNew {
   @State Url: string = 'pages/Player/Player_index';
   @State TestCaseList: TestCase[] = [
       {
-        displayName: 'AAC160001.aac', uri: ''
+        displayName: 'h264Mp3.mkv', uri: ''
       },
       {
-        displayName: 'AAC48000321.aac', uri: ''
-      },
-      {
-        displayName: 'FLAC48000321.flac', uri: ''
-      },
-      {
-        displayName: 'MP348000321.mp3', uri: ''
-      },
-      {
-        displayName: 'MPEG448000321.m4a', uri: ''
-      },
-      {
-        displayName: 'MOGG480001.ogg', uri: ''
-      },
-      {
-        displayName: 'vorbis48000321.wav', uri: ''
+        displayName: 'h264Mp3.mp4', uri: ''
       },
     ];
   @State ColorObject: string[] = VarColor;
