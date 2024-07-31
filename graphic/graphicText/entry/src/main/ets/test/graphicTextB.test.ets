@@ -408,7 +408,7 @@ export default function graphicTextBTest() {
           backgroundRect: [myRectStyle],
           baselineShift: 20,
           fontFeatures: [myFontFeature],
-          FontVariation: [myFontVariation]
+          fontVariations: [myFontVariation]
         };
         let myParagraphStyle: text.ParagraphStyle = {
           textStyle: myTextStyle,
