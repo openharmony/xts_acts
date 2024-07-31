@@ -273,7 +273,6 @@ Camera_ErrorCode NDKCamera::GetSupportedCameras(void)
 
     ret_ = OH_CameraManager_GetSupportedCameras(cameraManager_, &cameras_, &size_);
     if (cameras_ == nullptr || ret_ != CAMERA_OK) {
-        LOG("Get supported cameras failed.");
         return CAMERA_INVALID_ARGUMENT;
     }
     return ret_;
