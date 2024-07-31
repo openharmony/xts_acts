@@ -20,7 +20,6 @@ function translateParamsToString(parameters) {
         '-s class', '-s notClass', '-s suite', '-s itName',
         '-s level', '-s testType', '-s size', '-s timeout',
         '-s package', '-s dryRun'
-        
     ])
     let targetParams = '';
     for (const key in parameters) {
