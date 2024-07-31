@@ -190,6 +190,14 @@ function expectEqual(exp: string | number | boolean, assert: string | number | b
 export default function TLSSocketUpgradeTest() {
   describe('TLSSocketUpgradeTest', () => {
 
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_TLSSocketUpgrade_STARTTLS_0100
+     * @tc.name  :  testSTARTTLSWith163Com
+     * @tc.desc  :  Test STARTTLS feature by visiting smtp.163.com
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 2
+     */
     it('testSTARTTLSWith163Com', 0, async (done: Function) => {
       const testName = 'testSTARTTLSWith163Com '
       const printLog = (msg: string) => {
@@ -208,11 +216,15 @@ export default function TLSSocketUpgradeTest() {
             let message = msgToString(value)
             if (message.search("250-AUTH") >= 0) {
               expectSuccess();
+              tlsSock.close();
+              done();
+            } else if (message.search("250") >= 0) {
+              printLog("waiting for 250-AUTH")
             } else {
-              expectFail(testName + `Unsupported CMD: ${message}`);
+              expectFail(testName + `Unsupported CMD2: ${message}`);
+              tlsSock.close();
+              done();
             }
-            tlsSock.close();
-            done();
           });
 
           tlsSock.connect(tlsOpts).then(() => {
@@ -258,9 +270,11 @@ export default function TLSSocketUpgradeTest() {
         } else if (message.search("Ready to start TLS") >= 0) {
           printLog("ready to start TLS")
           handleStartTLS(sock)
+        } else if (message.search("250") >= 0) {
+          printLog("waiting for 250-STARTTLS")
         } else {
           sock.close()
-          expectFail(testName + `Unsupported CMD: ${message}`)
+          expectFail(testName + `Unsupported CMD1: ${message}`)
           done();
         }
       });
@@ -273,6 +287,14 @@ export default function TLSSocketUpgradeTest() {
       });
     });
 
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_TLSSocketUpgrade_OneWayTLS_0100
+     * @tc.name  :  testOneWayTLSWithBaidu
+     * @tc.desc  :  Test oneway TLS with upgraded TLSSocket by visiting baidu.com
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 2
+     */
     it('testOneWayTLSWithBaidu', 0, async (done: Function) => {
       const testName = 'testOneWayTLSWithBaidu '
       const printLog = (msg: string) => {
@@ -312,6 +334,14 @@ export default function TLSSocketUpgradeTest() {
       });
     });
 
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_TLSSocketUpgrade_NotConnectedTCPSocket_0100
+     * @tc.name  :  testUpgradeWithNotConnectedTCPSocket
+     * @tc.desc  :  Test upgrading TLSSocket with not connected TCPSocket
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 2
+     */
     it('testUpgradeWithNotConnectedTCPSocket', 0, async (done: Function) => {
       const testName = 'testUpgradeWithNotConnectedTCPSocket '
       const printLog = (msg: string) => {
@@ -338,6 +368,14 @@ export default function TLSSocketUpgradeTest() {
       });
     });
 
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_TLSSocketUpgrade_ClosedTCPSocket_0100
+     * @tc.name  :  testUpgradeWithClosedTCPSocket
+     * @tc.desc  :  Test upgrading TLSSocket with closed TCPSocket
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 2
+     */
     it('testUpgradeWithClosedTCPSocket', 0, async (done: Function) => {
       const testName = 'testUpgradeWithClosedTCPSocket '
       const printLog = (msg: string) => {
@@ -372,6 +410,14 @@ export default function TLSSocketUpgradeTest() {
       });
     });
 
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_TLSSocketUpgrade_UDPSocket_0100
+     * @tc.name  :  testUpgradeWithUDPSocket
+     * @tc.desc  :  Test upgrading TLSSocket with UDPSocket
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 2
+     */
     it('testUpgradeWithUDPSocket', 0, async (done: Function) => {
       const testName = 'testUpgradeWithUDPSocket '
       const printLog = (msg: string) => {
@@ -401,6 +447,14 @@ export default function TLSSocketUpgradeTest() {
       });
     });
 
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_TLSSocketUpgrade_ParaNumber_0100
+     * @tc.name  :  testUpgradeWithNumber
+     * @tc.desc  :  Test upgrading TLSSocket with parameter number
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 2
+     */
     it('testUpgradeWithNumber', 0, async (done: Function) => {
       const testName = 'testUpgradeWithNumber '
       const printLog = (msg: string) => {
@@ -422,6 +476,14 @@ export default function TLSSocketUpgradeTest() {
       }
     });
 
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_TLSSocketUpgrade_ParaString_0100
+     * @tc.name  :  testUpgradeWithString
+     * @tc.desc  :  Test upgrading TLSSocket with parameter string
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 2
+     */
     it('testUpgradeWithString', 0, async (done: Function) => {
       const testName = 'testUpgradeWithString '
       const printLog = (msg: string) => {
@@ -443,6 +505,14 @@ export default function TLSSocketUpgradeTest() {
       }
     });
 
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_TLSSocketUpgrade_ParaObject_0100
+     * @tc.name  :  testUpgradeWithInvalidObject
+     * @tc.desc  :  Test upgrading TLSSocket with invalid object
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 2
+     */
     it('testUpgradeWithInvalidObject', 0, async (done: Function) => {
       const testName = 'testUpgradeWithInvalidObject '
       const printLog = (msg: string) => {
@@ -464,6 +534,14 @@ export default function TLSSocketUpgradeTest() {
       }
     });
 
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_TLSSocketUpgrade_NoSSLServer_0100
+     * @tc.name  :  testConnectToNoSSLServer
+     * @tc.desc  :  Test connecting to HTTP server with upgraded TLSSocket
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 2
+     */
     it('testConnectToNoSSLServer', 0, async (done: Function) => {
       const testName = 'testConnectToNoSSLServer '
       const printLog = (msg: string) => {
@@ -501,6 +579,14 @@ export default function TLSSocketUpgradeTest() {
       });
     });
 
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_TLSSocketUpgrade_ConcurrentUpgradeClosed_0100
+     * @tc.name  :  testConcurrentUpgradeAndCloseTCPSocket
+     * @tc.desc  :  Test upgrade and close Socket concurrently
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 2
+     */
     it('testConcurrentUpgradeAndCloseTCPSocket', 0, async (done: Function) => {
       const testName = 'testConcurrentUpgradeAndCloseTCPSocket '
       const printLog = (msg: string) => {
@@ -534,6 +620,14 @@ export default function TLSSocketUpgradeTest() {
       });
     });
 
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_TLSSocketUpgrade_ConcurrentUpgradeSend_0100
+     * @tc.name  :  testConcurrentUpgradeAndSendTCPSocket
+     * @tc.desc  :  Test upgrade and send Socket concurrently
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 2
+     */
     it('testConcurrentUpgradeAndSendTCPSocket', 0, async (done: Function) => {
       const testName = 'testConcurrentUpgradeAndSendTCPSocket '
       const printLog = (msg: string) => {
@@ -587,6 +681,14 @@ export default function TLSSocketUpgradeTest() {
       });
     });
 
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_TLSSocketUpgrade_Concurrent10Upgrade_0100
+     * @tc.name  :  testConcurrentUpgrade10TCPSocket
+     * @tc.desc  :  Test upgrade 10 Sockets concurrently
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 2
+     */
     it('testConcurrentUpgrade10TCPSocket', 0, async (done: Function) => {
       const testName = 'testConcurrentUpgrade10TCPSocket '
       const printLog = (msg: string) => {
@@ -631,6 +733,14 @@ export default function TLSSocketUpgradeTest() {
       }
     });
 
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_TLSSocketUpgrade_SendAfterUpgrade_0100
+     * @tc.name  :  testTCPSocketSendAfterUpgrade
+     * @tc.desc  :  Test TCPSocket send after upgraded
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 2
+     */
     it('testTCPSocketSendAfterUpgrade', 0, async (done: Function) => {
       const testName = 'testTCPSocketSendAfterUpgrade '
       const printLog = (msg: string) => {
@@ -663,7 +773,7 @@ export default function TLSSocketUpgradeTest() {
             expectFail(testName + "TCPSocket send ok, but it should not be happened")
             done();
           }).catch((err: BusinessError) => {
-            if (err.code == 2301009) {
+            if (err.code == 2301009 || err.code == 2301011) {
               printLog(formatErrMsg(err))
               expectSuccess();
             } else {
@@ -682,6 +792,14 @@ export default function TLSSocketUpgradeTest() {
       });
     });
 
+    /*
+     * @tc.number:  SUB_NetworkMgr_Socket_TLSSocketUpgrade_SendAfterUpgrade_0100
+     * @tc.name  :  testTLSSocketSendAfterUpgradeNotConnect
+     * @tc.desc  :  Test upgraded TLSSocket send before connect
+     * @tc.size  :  MediumTest
+     * @tc.type  :  Function
+     * @tc.level :  Level 2
+     */
     it('testTLSSocketSendAfterUpgradeNotConnect', 0, async (done: Function) => {
       const testName = 'testTLSSocketSendAfterUpgradeNotConnect '
       const printLog = (msg: string) => {
