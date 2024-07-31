@@ -98,7 +98,7 @@ struct TabsExampleSec {
                 .barHeight(70)
                 .animationDuration(200)
                 .height('90%')
-                .width('90%')
+                .width(380)
                 .backgroundColor("#F5F5F5")
                 .key('TabsOverlapTest1')
 
