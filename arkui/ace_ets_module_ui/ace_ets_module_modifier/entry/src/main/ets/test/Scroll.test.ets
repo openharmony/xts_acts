@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import Utils from './Utils.ets'
+import Utils from './Utils'
 import events_emitter from '@ohos.events.emitter';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 
 export default function scrollOnScrollBeginJsunit() {
-  describe('scrollTest', function () {
-    beforeAll(async function (done) {
+  describe('scrollTest', () => {
+    beforeAll(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/scroll',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/scroll',
       }
       try {
         router.clear();
@@ -32,9 +32,8 @@ export default function scrollOnScrollBeginJsunit() {
         console.info("get scroll state success " + JSON.stringify(pages));
         if (!("scroll" == pages.name)) {
           console.info("get scroll state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push scroll page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push scroll page error: " + err);
@@ -44,13 +43,13 @@ export default function scrollOnScrollBeginJsunit() {
 
     /**
      * @tc.number testScroll0001
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set scrollSnapAlign values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set scrollSnapAlign values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testScroll0001', 0, async function (done) {
+    it('testScroll0001', 0, async (done: Function) => {
       console.info('testScroll0001 START');
       let strJson = getInspectorByKey('ScrollKey1');
       let obj = JSON.parse(strJson);
@@ -62,13 +61,13 @@ export default function scrollOnScrollBeginJsunit() {
 
     /**
      * @tc.number testScroll0002
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set friction values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set friction values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testScroll0002', 0, async function (done) {
+    it('testScroll0002', 0, async (done: Function) => {
       console.info('testScroll0002 START');
       let strJson = getInspectorByKey('ScrollKey1');
       let obj = JSON.parse(strJson);
@@ -80,13 +79,13 @@ export default function scrollOnScrollBeginJsunit() {
 
     /**
      * @tc.number testScroll0003
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set enableScrollInteraction values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set enableScrollInteraction values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testScroll0003', 0, async function (done) {
+    it('testScroll0003', 0, async (done: Function) => {
       console.info('testScroll0003 START');
       let strJson = getInspectorByKey('ScrollKey1');
       let obj = JSON.parse(strJson);
@@ -98,13 +97,13 @@ export default function scrollOnScrollBeginJsunit() {
 
     /**
      * @tc.number testScroll0005
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set scrollable values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set scrollable values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testScroll0005', 0, async function (done) {
+    it('testScroll0005', 0, async (done: Function) => {
       console.info('testScroll0005 START');
       let strJson = getInspectorByKey('ScrollKey1');
       let obj = JSON.parse(strJson);
@@ -116,13 +115,13 @@ export default function scrollOnScrollBeginJsunit() {
 
     /**
      * @tc.number testScroll0006
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set scrollBar values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set scrollBar values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testScroll0006', 0, async function (done) {
+    it('testScroll0006', 0, async (done: Function) => {
       console.info('testScroll0006 START');
       let strJson = getInspectorByKey('ScrollKey1');
       let obj = JSON.parse(strJson);
@@ -134,13 +133,13 @@ export default function scrollOnScrollBeginJsunit() {
 
     /**
      * @tc.number testScroll0007
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set scrollBarWidth values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set scrollBarWidth values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testScroll0007', 0, async function (done) {
+    it('testScroll0007', 0, async (done: Function) => {
       console.info('testScroll0007 START');
       let strJson = getInspectorByKey('ScrollKey1');
       let obj = JSON.parse(strJson);
@@ -152,13 +151,13 @@ export default function scrollOnScrollBeginJsunit() {
 
     /**
      * @tc.number testScroll0008
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set edgeEffect values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set edgeEffect values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testScroll0008', 0, async function (done) {
+    it('testScroll0008', 0, async (done: Function) => {
       console.info('testScroll0008 START');
       let strJson = getInspectorByKey('ScrollKey1');
       let obj = JSON.parse(strJson);
@@ -170,13 +169,13 @@ export default function scrollOnScrollBeginJsunit() {
 
     /**
      * @tc.number testScroll0009
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set scrollBarColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set scrollBarColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testScroll0009', 0, async function (done) {
+    it('testScroll0009', 0, async (done: Function) => {
       console.info('testScroll0009 START');
       let strJson = getInspectorByKey('ScrollKey1');
       let obj = JSON.parse(strJson);
@@ -188,13 +187,13 @@ export default function scrollOnScrollBeginJsunit() {
 
     /**
      * @tc.number testScroll0010
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set enablePaging values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set enablePaging values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testScroll0010', 0, async function (done) {
+    it('testScroll0010', 0, async (done: Function) => {
       console.info('testScroll0010 START');
       let strJson = getInspectorByKey('ScrollKey1');
       let obj = JSON.parse(strJson);
@@ -205,14 +204,14 @@ export default function scrollOnScrollBeginJsunit() {
     });
 
     /**
-    * @tc.number testScroll0011
-    * @tc.name   Test the properties of components
-    * @tc.desc   Change scrollBarColor values
-    * @tc.size   MediumTest
-    * @tc.type   Function
-    * @tc.level  0
-    */
-    it('testScroll0011', 0, async function (done) {
+     * @tc.number testScroll0011
+     * @tc.name Test the properties of components
+     * @tc.desc Change scrollBarColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
+     */
+    it('testScroll0011', 0, async (done: Function) => {
       console.info('testScroll0011 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

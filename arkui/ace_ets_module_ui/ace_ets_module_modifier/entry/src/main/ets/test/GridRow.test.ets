@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
 
 export default function gridRowJsunit() {
-  describe('gridRowTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/gridRow',
+  describe('gridRowTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/gridRow',
       }
       try {
         router.clear();
@@ -30,9 +30,8 @@ export default function gridRowJsunit() {
         console.info("get gridRow state success " + JSON.stringify(pages));
         if (!("gridRow" == pages.name)) {
           console.info("get gridRow state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(1000);
-          console.info("push gridRow page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push gridRow page error: " + err);
@@ -42,32 +41,31 @@ export default function gridRowJsunit() {
 
     /**
      * @tc.number gridRowTest_0001
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set alignItems values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set alignItems values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('gridRowTest_0001', 0, async function (done) {
+    it('gridRowTest_0001', 0, async (done: Function) => {
       console.info('gridRowTest_0001 START');
       let strJsonNew = getInspectorByKey('gridRow');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("gridRowTest_0001 component  is: " + JSON.stringify(objNew.$attrs));
+      console.info("gridRowTest_0001 component  is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
 
-      expect(objNew.$attrs.alignItems).assertEqual(undefined);
+      expect(JSON.parse(strJsonNew).$attrs.alignItems).assertEqual(undefined);
       console.info('gridRowTest_0001 END');
       done();
     });
 
     /**
      * @tc.number gridRowTest_0002
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change alignItems values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change alignItems values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('gridRowTest_0002', 0, async function (done) {
+    it('gridRowTest_0002', 0, async (done: Function) => {
 
       console.info('gridRowTest_0002 START');
       let driver = Driver.create();
@@ -76,10 +74,9 @@ export default function gridRowJsunit() {
       await Utils.sleep(2000)
 
       let strJsonNew = getInspectorByKey('gridRow');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("gridRowTest_0002 component  is: " + JSON.stringify(objNew.$attrs));
+      console.info("gridRowTest_0002 component  is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
 
-      expect(objNew.$attrs.alignItems).assertEqual(undefined);
+      expect(JSON.parse(strJsonNew).$attrs.alignItems).assertEqual(undefined);
       console.info('gridRowTest_0002 END');
       done();
     });

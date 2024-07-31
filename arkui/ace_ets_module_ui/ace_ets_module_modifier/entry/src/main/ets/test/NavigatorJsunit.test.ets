@@ -13,44 +13,43 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 
 export default function navigatorJsunit() {
-  describe('navigatorTest', function () {
-    beforeEach(async function (done) {
+  describe('navigatorTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("NavigatorClick beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/navigator',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/navigator',
       }
-      let result;
+
       try {
         router.clear();
         let pages = router.getState();
         console.info("get NavigatorTest state pages:" + JSON.stringify(pages));
         if (!("navigator" == pages.name)) {
           console.info("get NavigatorTest state pages.name:" + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push NavigatorTest page result:" + JSON.stringify(result));
         }
       } catch (err) {
-        console.error("push NavigatorTest page error:" + JSON.stringify(result));
+        console.error("push NavigatorTest page error:" + JSON.stringify(err));
       }
       done();
     });
 
     /**
      * @tc.number test_Navigator_0021
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set params values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set params values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_Navigator_0021', 0, async function (done) {
+    it('test_Navigator_0021', 0, async (done: Function) => {
       console.info('[test_Navigator_0021] START');
       let strJson = getInspectorByKey('Navigator1');
       let obj = JSON.parse(strJson);
@@ -62,13 +61,13 @@ export default function navigatorJsunit() {
 
     /**
      * @tc.number test_Navigator_0022
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set active values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set active values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_Navigator_0022', 0, async function (done) {
+    it('test_Navigator_0022', 0, async (done: Function) => {
       console.info('[test_Navigator_0022] START');
       let strJson = getInspectorByKey('Navigator1');
       let obj = JSON.parse(strJson);
@@ -80,13 +79,13 @@ export default function navigatorJsunit() {
 
     /**
      * @tc.number test_Navigator_0023
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set target values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set target values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_Navigator_0023', 0, async function (done) {
+    it('test_Navigator_0023', 0, async (done: Function) => {
       console.info('[test_Navigator_0023] START');
       let strJson = getInspectorByKey('Navigator1');
       let obj = JSON.parse(strJson);
@@ -98,13 +97,13 @@ export default function navigatorJsunit() {
 
     /**
      * @tc.number test_Navigator_0024
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set type values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set type values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_Navigator_0024', 0, async function (done) {
+    it('test_Navigator_0024', 0, async (done: Function) => {
       console.info('[test_Navigator_0024] START');
       let strJson = getInspectorByKey('Navigator1');
       let obj = JSON.parse(strJson);
@@ -116,13 +115,13 @@ export default function navigatorJsunit() {
 
     /**
      * @tc.number test_Navigator_0025
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change type values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change type values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_Navigator_0025', 0, async function (done) {
+    it('test_Navigator_0025', 0, async (done: Function) => {
       console.info('test_Navigator_0025 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

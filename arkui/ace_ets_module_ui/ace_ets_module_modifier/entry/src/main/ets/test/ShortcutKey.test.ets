@@ -14,27 +14,28 @@
  */
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import router from '@ohos.router'
-import {UiDriver, UiComponent, BY, Driver, Component, ON} from '@ohos.UiTest'
+import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
 import input from '@ohos.multimodalInput.keyCode';
+import { BusinessError } from '@ohos.base';
 
 export default function shortcutKeyJsunit() {
 
   const SUITE = 'ShortcutKey'
   const baseEvent = 62000
 
-  describe('common_shortcutKeyTest', function () {
+  describe('common_shortcutKeyTest', () => {
 
-    beforeEach(async function (done) {
-      let options = {
+    beforeEach(async (done: Function) => {
+      let options:router.RouterOptions = {
         url: "MainAbility/pages/shortcutKey",
       }
       try {
         let pages = router.getState();
         if (pages == null || !("shortcutKey" == pages.name)) {
-          await router.pushUrl(options).then(()=>{
+          await router.pushUrl(options).then(() => {
             console.info(`${SUITE} router.pushUrl success`);
-          }).catch(err => {
+          }).catch((err:BusinessError) => {
             console.error(`${SUITE} router.pushUrl failed, code is ${err.code}, message is ${err.message}`);
           })
         }
@@ -46,13 +47,13 @@ export default function shortcutKeyJsunit() {
 
     /**
      * @tc.number ArkUI_Shortcut_Key_0100
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set shortcut values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set shortcut values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Shortcut_Key_0100', 0, async function (done) {
+    it('ArkUI_Shortcut_Key_0100', 0, async (done: Function) => {
       let CASE = 'ArkUI_Shortcut_Key_0100'
       console.info(`${SUITE} ${CASE} START`);
       let callback = (event) => {

@@ -14,16 +14,16 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
 
 export default function textAreaJsunit() {
-  describe('textAreaTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/textArea',
+  describe('textAreaTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/textArea',
       }
       try {
         router.clear();
@@ -31,9 +31,8 @@ export default function textAreaJsunit() {
         console.info("get textArea state success " + JSON.stringify(pages));
         if (!("textArea" == pages.name)) {
           console.info("get textArea state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(1000);
-          console.info("push textArea page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push textArea page error: " + err);
@@ -43,13 +42,13 @@ export default function textAreaJsunit() {
 
     /**
      * @tc.number textAreaTest_002
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set copyOption values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set copyOption values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textAreaTest_002', 0, async function (done) {
+    it('textAreaTest_002', 0, async (done: Function) => {
       console.info('textAreaTest_002 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew = JSON.parse(strJsonNew);
@@ -61,13 +60,13 @@ export default function textAreaJsunit() {
 
     /**
      * @tc.number textAreaTest_003
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set fontColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set fontColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textAreaTest_003', 0, async function (done) {
+    it('textAreaTest_003', 0, async (done: Function) => {
       console.info('textAreaTest_003 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew = JSON.parse(strJsonNew);
@@ -80,13 +79,13 @@ export default function textAreaJsunit() {
 
     /**
      * @tc.number textAreaTest_004
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set placeholderColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set placeholderColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textAreaTest_004', 0, async function (done) {
+    it('textAreaTest_004', 0, async (done: Function) => {
       console.info('textAreaTest_004 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew = JSON.parse(strJsonNew);
@@ -98,31 +97,32 @@ export default function textAreaJsunit() {
 
     /**
      * @tc.number textAreaTest_005
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set placeholderFont values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set placeholderFont values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textAreaTest_005', 0, async function (done) {
+    it('textAreaTest_005', 0, async (done: Function) => {
       console.info('textAreaTest_005 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew = JSON.parse(strJsonNew);
       console.info("textAreaTest_005 component  is: " + JSON.stringify(objNew.$attrs));
-      expect(objNew.$attrs.placeholderFont).assertEqual("{\"style\":\"FontStyle.Normal\",\"size\":\"16.00fp\",\"weight\":\"400\",\"fontFamily\":\"sans-serif\"}");
+      expect(objNew.$attrs.placeholderFont)
+        .assertEqual("{\"style\":\"FontStyle.Normal\",\"size\":\"16.00fp\",\"weight\":\"400\",\"fontFamily\":\"sans-serif\"}");
       console.info('textAreaTest_005 END');
       done();
     });
 
     /**
      * @tc.number textAreaTest_006
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set fontWeight values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set fontWeight values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textAreaTest_006', 0, async function (done) {
+    it('textAreaTest_006', 0, async (done: Function) => {
       console.info('textAreaTest_006 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew = JSON.parse(strJsonNew);
@@ -134,13 +134,13 @@ export default function textAreaJsunit() {
 
     /**
      * @tc.number textAreaTest_007
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set textAlign values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set textAlign values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textAreaTest_007', 0, async function (done) {
+    it('textAreaTest_007', 0, async (done: Function) => {
       console.info('textAreaTest_007 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew = JSON.parse(strJsonNew);
@@ -152,13 +152,13 @@ export default function textAreaJsunit() {
 
     /**
      * @tc.number textAreaTest_008
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set selectionMenuHidden values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set selectionMenuHidden values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textAreaTest_008', 0, async function (done) {
+    it('textAreaTest_008', 0, async (done: Function) => {
       console.info('textAreaTest_008 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew = JSON.parse(strJsonNew);
@@ -170,13 +170,13 @@ export default function textAreaJsunit() {
 
     /**
      * @tc.number textAreaTest_009
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set enableKeyboardOnFocus values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set enableKeyboardOnFocus values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textAreaTest_009', 0, async function (done) {
+    it('textAreaTest_009', 0, async (done: Function) => {
       console.info('textAreaTest_009 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew = JSON.parse(strJsonNew);
@@ -188,13 +188,13 @@ export default function textAreaJsunit() {
 
     /**
      * @tc.number textAreaTest_010
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set caretColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set caretColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textAreaTest_010', 0, async function (done) {
+    it('textAreaTest_010', 0, async (done: Function) => {
       console.info('textAreaTest_010 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew = JSON.parse(strJsonNew);
@@ -206,13 +206,13 @@ export default function textAreaJsunit() {
 
     /**
      * @tc.number textAreaTest_011
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set maxLength values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set maxLength values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textAreaTest_011', 0, async function (done) {
+    it('textAreaTest_011', 0, async (done: Function) => {
       console.info('textAreaTest_011 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew = JSON.parse(strJsonNew);
@@ -224,13 +224,13 @@ export default function textAreaJsunit() {
 
     /**
      * @tc.number textAreaTest_012
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set maxLines values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set maxLines values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textAreaTest_012', 0, async function (done) {
+    it('textAreaTest_012', 0, async (done: Function) => {
       console.info('textAreaTest_012 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew = JSON.parse(strJsonNew);
@@ -242,13 +242,13 @@ export default function textAreaJsunit() {
 
     /**
      * @tc.number textAreaTest_013
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set style values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set style values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textAreaTest_013', 0, async function (done) {
+    it('textAreaTest_013', 0, async (done: Function) => {
       console.info('textAreaTest_013 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew = JSON.parse(strJsonNew);
@@ -260,13 +260,13 @@ export default function textAreaJsunit() {
 
     /**
      * @tc.number textAreaTest_014
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set fontStyle values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set fontStyle values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textAreaTest_014', 0, async function (done) {
+    it('textAreaTest_014', 0, async (done: Function) => {
       console.info('textAreaTest_014 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew = JSON.parse(strJsonNew);
@@ -278,13 +278,13 @@ export default function textAreaJsunit() {
 
     /**
      * @tc.number textAreaTest_018
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set fontSize values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set fontSize values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textAreaTest_018', 0, async function (done) {
+    it('textAreaTest_018', 0, async (done: Function) => {
       console.info('textAreaTest_018 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew = JSON.parse(strJsonNew);
@@ -296,13 +296,13 @@ export default function textAreaJsunit() {
 
     /**
      * @tc.number textAreaTest_015
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set fontFamily values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set fontFamily values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textAreaTest_015', 0, async function (done) {
+    it('textAreaTest_015', 0, async (done: Function) => {
       console.info('textAreaTest_015 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew = JSON.parse(strJsonNew);
@@ -314,13 +314,13 @@ export default function textAreaJsunit() {
 
     /**
      * @tc.number textAreaTest_016
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set barState values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set barState values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textAreaTest_016', 0, async function (done) {
+    it('textAreaTest_016', 0, async (done: Function) => {
       console.info('textAreaTest_016 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew = JSON.parse(strJsonNew);
@@ -332,13 +332,13 @@ export default function textAreaJsunit() {
 
     /**
      * @tc.number textAreaTest_017
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set showCounter values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set showCounter values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('textAreaTest_017', 0, async function (done) {
+    it('textAreaTest_017', 0, async (done: Function) => {
       console.info('textAreaTest_017 START');
       let strJsonNew = getInspectorByKey('textArea');
       let objNew = JSON.parse(strJsonNew);
@@ -350,13 +350,13 @@ export default function textAreaJsunit() {
 
     /**
      * @tc.number textAreaTest_001
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change fontColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change fontColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-     it('textAreaTest_001', 0, async function (done) {
+    it('textAreaTest_001', 0, async (done: Function) => {
       console.info('textAreaTest_001 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));
@@ -371,5 +371,5 @@ export default function textAreaJsunit() {
       done();
     });
 
-    })
+  })
 }

@@ -13,27 +13,26 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import Utils from './Utils';
 
 export default function menuItemJsunit() {
-  describe('menuItemTest', function () {
-    beforeEach(async function (done) {
+  describe('menuItemTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("menuItemJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/menuItem',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/menuItem',
       }
-      let result;
+
       try {
         router.clear();
         let pages = router.getState();
         console.info("get menuItem state pages: " + JSON.stringify(pages));
         if (!("menuItem" == pages.name)) {
           console.info("get menuItem state pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push menuItem page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push menuItem page error: " + err);
@@ -44,13 +43,13 @@ export default function menuItemJsunit() {
 
     /**
      * @tc.number menuItemJsunit01
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set size values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set size values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('menuItemJsunit01', 0, async function (done) {
+    it('menuItemJsunit01', 0, async (done: Function) => {
       console.info('[menuItemJsunit01] START');
       let strJson = getInspectorByKey('menuItem_options1');
       let obj = JSON.parse(strJson);
@@ -62,13 +61,13 @@ export default function menuItemJsunit() {
 
     /**
      * @tc.number menuItemJsunit02
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set contentFontColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set contentFontColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('menuItemJsunit02', 0, async function (done) {
+    it('menuItemJsunit02', 0, async (done: Function) => {
       console.info('[menuItemJsunit02] START');
       let strJson = getInspectorByKey('menuItem_options1');
       let obj = JSON.parse(strJson);
@@ -80,13 +79,13 @@ export default function menuItemJsunit() {
 
     /**
      * @tc.number menuItemJsunit03
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set labelFont values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set labelFont values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('menuItemJsunit03', 0, async function (done) {
+    it('menuItemJsunit03', 0, async (done: Function) => {
       console.info('[menuItemJsunit03] START');
       let strJson = getInspectorByKey('menuItem_options1');
       let obj = JSON.parse(strJson);
@@ -98,13 +97,13 @@ export default function menuItemJsunit() {
 
     /**
      * @tc.number menuItemJsunit04
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set labelFontColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set labelFontColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('menuItemJsunit04', 0, async function (done) {
+    it('menuItemJsunit04', 0, async (done: Function) => {
       console.info('[menuItemJsunit04] START');
       let strJson = getInspectorByKey('menuItem_options1');
       let obj = JSON.parse(strJson);
@@ -116,13 +115,13 @@ export default function menuItemJsunit() {
 
     /**
      * @tc.number menuItemJsunit05
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set attribute values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set attribute values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('menuItemJsunit05', 0, async function (done) {
+    it('menuItemJsunit05', 0, async (done: Function) => {
       console.info('[menuItemJsunit05] START');
       let driver = Driver.create();
       let menuItem = await driver.findComponent(ON.id('menuItem_options1'));
@@ -134,31 +133,31 @@ export default function menuItemJsunit() {
 
     /**
      * @tc.number menuItemJsunit06
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set attribute values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set attribute values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('menuItemJsunit06', 0, async function (done) {
+    it('menuItemJsunit06', 0, async (done: Function) => {
       console.info('[menuItemJsunit06] START');
       let strJson = getInspectorByKey('menuItem_options1');
       let obj = JSON.parse(strJson);
       console.info("[menuItemJsunit06] obj is: " + JSON.stringify(obj.$attrs));
-      expect(obj.$attrs.selectIcon).assertEqual("true");   
+      expect(obj.$attrs.selectIcon).assertEqual("true");
       console.info('[menuItemJsunit06] END');
       done();
     });
 
     /**
      * @tc.number menuItemJsunit07
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change labelFontColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change labelFontColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-     it('menuItemJsunit07', 0, async function (done) {
+    it('menuItemJsunit07', 0, async (done: Function) => {
 
       console.info('menuItemJsunit07 START');
       let driver = Driver.create();

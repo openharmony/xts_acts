@@ -13,29 +13,28 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest';
 
-export default function shape(){
-  describe("shapeTest",function (){
-    beforeEach(async function (done){
+export default function shape() {
+  describe("shapeTest",  () =>{
+    beforeEach(async  (done:Function) =>{
       console.info("shapeJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/shape',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/shape',
       }
-      let result;
-      try{
+
+      try {
         router.clear();
         let pages = router.getState();
         console.info("get shape state pages: " + JSON.stringify(pages));
         if (!("shape" == pages.name)) {
           console.info("get shape state pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push shape page result: " + JSON.stringify(result));
         }
-      }catch(err) {
+      } catch (err) {
         console.error("push panel page error: " + err);
       }
       done();
@@ -43,13 +42,13 @@ export default function shape(){
 
     /**
      * @tc.number ShapeJsunit_001
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set viewPort values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set viewPort values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ShapeJsunit_001',0,async function (done) {
+    it('ShapeJsunit_001', 0, async (done: Function) => {
       console.info('[ShapeJsunit_001] START');
       let strJson = getInspectorByKey('ShapeKey1');
       let obj = JSON.parse(strJson);
@@ -64,13 +63,13 @@ export default function shape(){
 
     /**
      * @tc.number ShapeJsunit_002
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set stroke values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set stroke values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ShapeJsunit_002',0,async function (done) {
+    it('ShapeJsunit_002', 0, async (done: Function) => {
       console.info('[ShapeJsunit_002] START');
       let strJson = getInspectorByKey('ShapeKey1');
       let obj = JSON.parse(strJson);
@@ -82,13 +81,13 @@ export default function shape(){
 
     /**
      * @tc.number ShapeJsunit_003
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set fill values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set fill values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ShapeJsunit_003',0,async function (done) {
+    it('ShapeJsunit_003', 0, async (done: Function) => {
       console.info('[ShapeJsunit_003] START');
       let strJson = getInspectorByKey('ShapeKey1');
       let obj = JSON.parse(strJson);
@@ -100,13 +99,13 @@ export default function shape(){
 
     /**
      * @tc.number ShapeJsunit_004
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set strokeDashOffset values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set strokeDashOffset values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ShapeJsunit_004',0,async function (done) {
+    it('ShapeJsunit_004', 0, async (done: Function) => {
       console.info('[ShapeJsunit_004] START');
       let strJson = getInspectorByKey('ShapeKey1');
       let obj = JSON.parse(strJson);
@@ -118,13 +117,13 @@ export default function shape(){
 
     /**
      * @tc.number ShapeJsunit_005
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set strokeDashArray values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set strokeDashArray values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ShapeJsunit_005',0,async function (done) {
+    it('ShapeJsunit_005', 0, async (done: Function) => {
       console.info('[ShapeJsunit_005] START');
       let strJson = getInspectorByKey('ShapeKey1');
       let obj = JSON.parse(strJson);
@@ -136,13 +135,13 @@ export default function shape(){
 
     /**
      * @tc.number ShapeJsunit_006
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set strokeLineJoin values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set strokeLineJoin values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ShapeJsunit_006',0,async function (done) {
+    it('ShapeJsunit_006', 0, async (done: Function) => {
       console.info('[ShapeJsunit_006] START');
       let strJson = getInspectorByKey('ShapeKey1');
       let obj = JSON.parse(strJson);
@@ -154,13 +153,13 @@ export default function shape(){
 
     /**
      * @tc.number ShapeJsunit_007
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set strokeLineCap values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set strokeLineCap values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ShapeJsunit_007',0,async function (done) {
+    it('ShapeJsunit_007', 0, async (done: Function) => {
       console.info('[ShapeJsunit_007] START');
       let strJson = getInspectorByKey('ShapeKey1');
       let obj = JSON.parse(strJson);
@@ -172,13 +171,13 @@ export default function shape(){
 
     /**
      * @tc.number ShapeJsunit_008
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set strokeOpacity values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set strokeOpacity values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ShapeJsunit_008',0,async function (done) {
+    it('ShapeJsunit_008', 0, async (done: Function) => {
       console.info('[ShapeJsunit_008] START');
       let strJson = getInspectorByKey('ShapeKey1');
       let obj = JSON.parse(strJson);
@@ -190,13 +189,13 @@ export default function shape(){
 
     /**
      * @tc.number ShapeJsunit_009
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set strokeMiterLimit values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set strokeMiterLimit values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ShapeJsunit_009',0,async function (done) {
+    it('ShapeJsunit_009', 0, async (done: Function) => {
       console.info('[ShapeJsunit_009] START');
       let strJson = getInspectorByKey('ShapeKey1');
       let obj = JSON.parse(strJson);
@@ -208,13 +207,13 @@ export default function shape(){
 
     /**
      * @tc.number ShapeJsunit_0010
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set mesh values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set mesh values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ShapeJsunit_0010',0,async function (done) {
+    it('ShapeJsunit_0010', 0, async (done: Function) => {
       console.info('[ShapeJsunit_0010] START');
       let strJson = getInspectorByKey('ShapeKey1');
       let obj = JSON.parse(strJson);
@@ -228,13 +227,13 @@ export default function shape(){
 
     /**
      * @tc.number ShapeJsunit_0011
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set strokeWidth values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set strokeWidth values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ShapeJsunit_0011',0,async function (done) {
+    it('ShapeJsunit_0011', 0, async (done: Function) => {
       console.info('[ShapeJsunit_0011] START');
       let strJson = getInspectorByKey('ShapeKey1');
       let obj = JSON.parse(strJson);
@@ -246,13 +245,13 @@ export default function shape(){
 
     /**
      * @tc.number ShapeJsunit_0012
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set fillOpacity values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set fillOpacity values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ShapeJsunit_0012',0,async function (done) {
+    it('ShapeJsunit_0012', 0, async (done: Function) => {
       console.info('[ShapeJsunit_0012] START');
       let strJson = getInspectorByKey('ShapeKey1');
       let obj = JSON.parse(strJson);
@@ -264,13 +263,13 @@ export default function shape(){
 
     /**
      * @tc.number ShapeJsunit_0013
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set antiAlias values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set antiAlias values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ShapeJsunit_0013',0,async function (done) {
+    it('ShapeJsunit_0013', 0, async (done: Function) => {
       console.info('[ShapeJsunit_0013] START');
       let strJson = getInspectorByKey('ShapeKey1');
       let obj = JSON.parse(strJson);
@@ -282,13 +281,13 @@ export default function shape(){
 
     /**
      * @tc.number ShapeJsunit_0014
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change strokeDashOffset values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change strokeDashOffset values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ShapeJsunit_0014', 0, async function (done) {
+    it('ShapeJsunit_0014', 0, async (done: Function) => {
       console.info('ShapeJsunit_0014 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

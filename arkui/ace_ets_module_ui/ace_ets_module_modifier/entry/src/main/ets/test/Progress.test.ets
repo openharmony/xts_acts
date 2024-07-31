@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 
-import router from '@system.router';
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import Utils from './Utils.ets'
+import router from '@ohos.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import Utils from './Utils'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 
 export default function progressStyleJsunit() {
-  describe('progressTest', function () {
-    beforeAll(async function (done) {
+  describe('progressTest', () => {
+    beforeAll(async (done: Function) => {
       console.info("flex beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/progress',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/progress',
       }
       try {
         router.clear();
@@ -31,9 +31,8 @@ export default function progressStyleJsunit() {
         console.info("get progress state success " + JSON.stringify(pages));
         if (!("progress" == pages.name)) {
           console.info("get progress state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push progress page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push progress page error: " + err);
@@ -43,13 +42,13 @@ export default function progressStyleJsunit() {
 
     /**
      * @tc.number testProgressStyle0001
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set color values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set color values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testProgressStyle0001', 0, async function (done) {
+    it('testProgressStyle0001', 0, async (done: Function) => {
       console.info('testProgressStyle0001 START');
       let strJson = getInspectorByKey('ProgressKey1');
       let obj = JSON.parse(strJson);
@@ -63,13 +62,13 @@ export default function progressStyleJsunit() {
 
     /**
      * @tc.number testProgressStyle0002
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set value values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set value values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testProgressStyle0002', 0, async function (done) {
+    it('testProgressStyle0002', 0, async (done: Function) => {
       console.info('testProgressStyle0002 START');
       let strJson = getInspectorByKey('ProgressKey1');
       let obj = JSON.parse(strJson);
@@ -83,13 +82,13 @@ export default function progressStyleJsunit() {
 
     /**
      * @tc.number testProgressStyle0003
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set style values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set style values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testProgressStyle0003', 0, async function (done) {
+    it('testProgressStyle0003', 0, async (done: Function) => {
       console.info('testProgressStyle0003 START');
       let strJson = getInspectorByKey('ProgressKey1');
       let obj = JSON.parse(strJson);
@@ -101,13 +100,13 @@ export default function progressStyleJsunit() {
     });
     /**
      * @tc.number testProgressStyle0004
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change value values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change value values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('testProgressStyle0004', 0, async function (done) {
+    it('testProgressStyle0004', 0, async (done: Function) => {
       console.info('testProgressStyle0004 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));
