@@ -18,6 +18,11 @@ import router from '@ohos.router';
 import fs from '@ohos.file.fs';
 import data_preferences from '@ohos.data.preferences';
 
+class TestCase {
+  displayName : string;
+  uri: string;
+}
+
 const TAG = 'ParseXML';
 let path = globalThis.dir;
 let path1 = path + '/Player';
@@ -37,7 +42,29 @@ struct videoNew {
   @State result: string = '';
   @State TEST: number = 0;
   @State Url: string = 'pages/Player/Player_index';
-  @State TestCaseList: Array<string> = [];
+  @State TestCaseList: TestCase[] = [
+      {
+        displayName: 'AAC160001.aac', uri: ''
+      },
+      {
+        displayName: 'AAC48000321.aac', uri: ''
+      },
+      {
+        displayName: 'FLAC48000321.flac', uri: ''
+      },
+      {
+        displayName: 'MP348000321.mp3', uri: ''
+      },
+      {
+        displayName: 'MPEG448000321.m4a', uri: ''
+      },
+      {
+        displayName: 'MOGG480001.ogg', uri: ''
+      },
+      {
+        displayName: 'vorbis48000321.wav', uri: ''
+      },
+    ];
   @State ColorObject: string[] = VarColor;
 
   async onPageShow() {
@@ -55,11 +82,13 @@ struct videoNew {
       Test = data;
       console.info("Succeeded in getting value of 'PlayerVideo'. Data: " + data);
     });
-    this.TestCaseList = fs.listFileSync('Videos/ValidatorData/');
-    console.info("listFile succeed");
     for (let i = 0; i < this.TestCaseList.length; i++) {
-      console.info("TestCaseList: %s", this.TestCaseList[i]);
-    }
+    	console.info("TestCaseList succeed");
+        let pathName = context.filesDir + '/' + this.TestCaseList[i].displayName;
+        let file = fs.openSync(pathName, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+        this.TestCaseList[i].uri = 'fd://' + file.fd;
+        fs.closeSync(file.fd);
+      }
 
     if (Test != 1) {
       let fd = fs.openSync(ColorBackPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
@@ -200,7 +229,7 @@ struct videoNew {
       .backgroundColor(Color.Black)
 
       List({ space: 5 }) {
-        ForEach(this.TestCaseList, (item: String, index) => {
+        ForEach(this.TestCaseList, (item, index) => {
           ListItem() {
             Row() {
               Text(item.displayName).fontSize(16).fontColor(Color.Black)
@@ -222,7 +251,7 @@ struct videoNew {
               })
             })
           }
-        }, item => item.title)
+        }, item => item.displayName)
       }.width('100%').height('80%')
 
       Row() {
