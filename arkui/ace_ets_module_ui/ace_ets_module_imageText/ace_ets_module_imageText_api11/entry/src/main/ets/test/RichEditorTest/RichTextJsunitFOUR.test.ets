@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { describe, beforeEach, afterEach, it } from "@ohos/hypium";
+import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
 import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 
@@ -45,10 +45,15 @@ export default function richTextJsunitFOUR() {
     });
 
     it('testRichText01', 0, async (done: Function) => {
-      console.info('[testRichText01] START');
-      let strJson: string = getInspectorByKey('richText');
-      console.info('[testRichText01]' + strJson);
-      console.info('[testRichText01] END');
+      try {
+        console.info('[testRichText01] START');
+        let strJson: string = getInspectorByKey('richText');
+        console.info('[testRichText01]' + strJson);
+        console.info('[testRichText01] END');
+      } catch (err) {
+        console.error("[testRichText01] error: " + err);
+        expect().assertFail();
+      }
       done();
     });
   });
