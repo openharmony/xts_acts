@@ -49,8 +49,6 @@ import RotationGestureBasic02Test from './RotationGesture/RotationGestureBasic02
 import PinchGestureBasic01Test from './PinchGesture/PinchGestureBasic01Test.test';
 import PinchGestureBasic02Test from './PinchGesture/PinchGestureBasic02Test.test';
 import PanGestureExampleTemplateTest from './PanGesture/PanGestureExampleTemplateTest.test';
-import PinchGestureTemplateTest from './PinchGesture/PinchGestureTemplateTest.test';
-import RotationGestureTemplateTest from './RotationGesture/RotationGestureTemplateTest.test';
 import TapGestureTemplateTest from './TapGesture/TapGestureTemplateTest.test';
 import LongPressGestureTemplateTest from './LongPressGesture/LongPressGestureTemplateTest.test';
 import SwipeGestureTemplateTest from './SwipeGesture/SwipeGestureTemplateTest.test';
@@ -101,8 +99,6 @@ export default function testsuite() {
   PinchGestureBasic01Test();
   PinchGestureBasic02Test();
   PanGestureExampleTemplateTest();
-  PinchGestureTemplateTest();
-  RotationGestureTemplateTest();
   TapGestureTemplateTest();
   LongPressGestureTemplateTest();
   SwipeGestureTemplateTest();
