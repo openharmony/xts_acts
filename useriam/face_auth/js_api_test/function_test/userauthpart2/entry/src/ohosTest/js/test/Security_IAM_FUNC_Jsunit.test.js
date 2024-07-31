@@ -15,13 +15,6 @@
 
 import { describe, it, expect } from '@ohos/hypium'
 import userAuthNorth from '@ohos.userIAM.userAuth'
-import deviceInfo from '@ohos.deviceInfo'
-
-let productSeriesInfo = deviceInfo.productSeries;
-console.info('the value of the deviceinfo productSeries is :' + productSeriesInfo);
-
-let productModelInfo = deviceInfo.productModel;
-console.info('the value of the deviceinfo productModel is :' + productModelInfo);
 
 export default function userauthTest() {
     describe('userauthTest_API9', function () {
@@ -35,43 +28,41 @@ export default function userauthTest() {
         */
         it('Security_IAM_Func_0102', 0, async function (done) {
             console.info('testFace getAvailableStatusTest0102 start');
-            if (productSeriesInfo != "NOH" && productSeriesInfo != "HYM" && productSeriesInfo != "HXX") {
-                let authType = [userAuthNorth.UserAuthType.FACE, userAuthNorth.UserAuthType.FINGERPRINT, userAuthNorth.UserAuthType.PIN]
-                let level = [userAuthNorth.AuthTrustLevel.ATL1, userAuthNorth.AuthTrustLevel.ATL2, userAuthNorth.AuthTrustLevel.ATL3]
-                for (let idx0 = 0; idx0 < authType.length; idx0++) {
-                    for (let idx1 = 0; idx1 < level.length; idx1++) {
-                        try {
-                            console.info('getAvailableStatusTest0102 authtype:' + authType[idx0] + 'trustlevel:' + level[idx1])
-                            userAuthNorth.getAvailableStatus(authType[idx0], level[idx1]);
-                        } catch (e) {
-                            console.log("getAvailableStatusTest0102 fail " + 'authType:' + authType[idx0] + 'trustlevel:' + level[idx1] + 'e.code:' + e.code);
-                            expect(e.code).assertEqual(userAuthNorth.UserAuthResultCode.NOT_ENROLLED);
-                            done();
-                        }
-                    }
-                }
-                let authType1 = [userAuthNorth.UserAuthType.FINGERPRINT, userAuthNorth.UserAuthType.PIN];
-                let level1 = userAuthNorth.AuthTrustLevel.ATL4;
-                for (let idx2 = 0; idx2 < authType1.length; idx2++) {
+            let authType = [userAuthNorth.UserAuthType.FACE, userAuthNorth.UserAuthType.FINGERPRINT, userAuthNorth.UserAuthType.PIN]
+            let level = [userAuthNorth.AuthTrustLevel.ATL1, userAuthNorth.AuthTrustLevel.ATL2, userAuthNorth.AuthTrustLevel.ATL3]
+            for (let idx0 = 0; idx0 < authType.length; idx0++) {
+                for (let idx1 = 0; idx1 < level.length; idx1++) {
                     try {
-                        console.info('getAvailableStatusTest0102 authtype:' + authType1[idx2] + 'trustlevel:' + level1)
-                        userAuthNorth.getAvailableStatus(authType1[idx2], level1);
+                        console.info('getAvailableStatusTest0102 authtype:' + authType[idx0] + 'trustlevel:' + level[idx1])
+                        userAuthNorth.getAvailableStatus(authType[idx0], level[idx1]);
                     } catch (e) {
-                        console.log("getAvailableStatusTest0102 fail " + 'authType:' + authType1[idx2] + 'trustlevel:' + level1 + 'e.code:' + e.code);
+                        console.log("getAvailableStatusTest0102 fail " + 'authType:' + authType[idx0] + 'trustlevel:' + level[idx1] + 'e.code:' + e.code);
                         expect(e.code).assertEqual(userAuthNorth.UserAuthResultCode.NOT_ENROLLED);
                         done();
                     }
                 }
-                let authType2 = userAuthNorth.UserAuthType.FACE;
-                try {
-                    console.info('getAvailableStatusTest0102 authtype:' + authType2 + 'trustlevel:' + level1)
-                        userAuthNorth.getAvailableStatus(authType2, level1);
-                    } catch (e) {
-                        console.log("getAvailableStatusTest0102 fail " + 'authType:' + authType2 + 'trustlevel:' + level1 + 'e.code:' + e.code);
-                        expect((e.code == userAuthNorth.UserAuthResultCode.NOT_ENROLLED) || (e.code == userAuthNorth.UserAuthResultCode.TRUST_LEVEL_NOT_SUPPORT)).assertTrue();
-                        done();
-                    }
             }
+            let authType1 = [userAuthNorth.UserAuthType.FINGERPRINT, userAuthNorth.UserAuthType.PIN];
+            let level1 = userAuthNorth.AuthTrustLevel.ATL4;
+            for (let idx2 = 0; idx2 < authType1.length; idx2++) {
+                try {
+                    console.info('getAvailableStatusTest0102 authtype:' + authType1[idx2] + 'trustlevel:' + level1)
+                    userAuthNorth.getAvailableStatus(authType1[idx2], level1);
+                } catch (e) {
+                    console.log("getAvailableStatusTest0102 fail " + 'authType:' + authType1[idx2] + 'trustlevel:' + level1 + 'e.code:' + e.code);
+                    expect(e.code).assertEqual(userAuthNorth.UserAuthResultCode.NOT_ENROLLED);
+                    done();
+                }
+            }
+            let authType2 = userAuthNorth.UserAuthType.FACE;
+            try {
+                console.info('getAvailableStatusTest0102 authtype:' + authType2 + 'trustlevel:' + level1)
+                    userAuthNorth.getAvailableStatus(authType2, level1);
+                } catch (e) {
+                    console.log("getAvailableStatusTest0102 fail " + 'authType:' + authType2 + 'trustlevel:' + level1 + 'e.code:' + e.code);
+                    expect((e.code == userAuthNorth.UserAuthResultCode.NOT_ENROLLED) || (e.code == userAuthNorth.UserAuthResultCode.TRUST_LEVEL_NOT_SUPPORT)).assertTrue();
+                    done();
+                }
             done();
         })
 
