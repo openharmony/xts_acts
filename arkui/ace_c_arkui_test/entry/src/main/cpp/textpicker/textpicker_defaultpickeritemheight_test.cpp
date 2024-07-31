@@ -43,12 +43,12 @@ static napi_value TestTextPickerDefaultPickerItemHeight002(napi_env env, napi_ca
 static napi_value TestTextPickerDefaultPickerItemHeight003(napi_env env, napi_callback_info info)
 {
     NAPI_START(textPicker, ARKUI_NODE_TEXT_PICKER);
-    ArkUI_NumberValue value[] = {{.i32 = PARAM_NEGATIVE_1}};
+    ArkUI_NumberValue value[] = {{.f32 = PARAM_NEGATIVE_1}};
     ArkUI_AttributeItem value_item = {value, sizeof(value) / sizeof(ArkUI_NumberValue)};
     auto ret = nodeAPI->setAttribute(textPicker, NODE_TEXT_PICKER_DEFAULT_PICKER_ITEM_HEIGHT, &value_item);
     ASSERT_EQ(ret, INVALID_PARAM);
     if (nodeAPI->getAttribute(textPicker, NODE_TEXT_PICKER_DEFAULT_PICKER_ITEM_HEIGHT) != nullptr) {
-        ASSERT_NE(nodeAPI->getAttribute(textPicker, NODE_TEXT_PICKER_DEFAULT_PICKER_ITEM_HEIGHT)->value[PARAM_0].i32,
+        ASSERT_NE(nodeAPI->getAttribute(textPicker, NODE_TEXT_PICKER_DEFAULT_PICKER_ITEM_HEIGHT)->value[PARAM_0].f32,
                   PARAM_NEGATIVE_1);
     }
     NAPI_END;

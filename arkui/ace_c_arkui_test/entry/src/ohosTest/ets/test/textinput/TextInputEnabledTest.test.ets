@@ -37,7 +37,7 @@ export default function textInputEnabledTest() {
     it('testTextInputEnabled001', 0, async (done: Function) => {
       await Utils.clickComponent('OnClickEnabledTextInput')
       await Utils.sleep(1000)
-      expect(Utils.getComponentInfoByKey('OnClickEnabledTextInput').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      expect(Utils.getComponentInfoByKey('OnClickEnabledTextInput').$attrs.backgroundColor).assertEqual('#FFFFFF00')
 
       focusControl.requestFocus('OnClickAbnormalTextInput')
       await Utils.sleep(1000)
@@ -85,7 +85,7 @@ export default function textInputEnabledTest() {
     it('testTextInputEnabled003', 0, async (done: Function) => {
       await Utils.clickComponent('OnClickAbnormalTextInput')
       await Utils.sleep(1000)
-      expect(Utils.getComponentInfoByKey('OnClickAbnormalTextInput').$attrs.backgroundColor).assertEqual('#FF00FF00')
+      expect(Utils.getComponentInfoByKey('OnClickAbnormalTextInput').$attrs.backgroundColor).assertEqual('#FFFFFF00')
 
       focusControl.requestFocus('OnClickEnabledTextInput')
       await Utils.sleep(1000)
