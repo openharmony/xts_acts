@@ -19,13 +19,13 @@ import userAuthNorth from '@ohos.userIAM.userAuth'
 export default function userauthTest() {
     describe('userauthTest_API9', function () {
 
-        /*
-            * @tc.number    : Security_IAM_Func_0102
-            * @tc.name      : kit interface get AvailabeStatus
-            * @tc.desc      : Abnormal testing
-            * @tc.size      : MediumTest
-            * @tc.type      : Function
-            * @tc.level     : Level 0
+        /**
+        * @tc.number    : Security_IAM_Func_0102
+        * @tc.name      : kit interface get AvailabeStatus
+        * @tc.desc      : Abnormal testing
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 0
         */
         it('Security_IAM_Func_0102', 0, async function (done) {
             console.info('testFace getAvailableStatusTest0102 start');
