@@ -606,5 +606,150 @@ export default function abilityTest() {
       })
       done();
     })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_getRawFileDescriptorData_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getRawFileDescriptorData_ndktest_0100', 0, async (done: Function) => {
+      console.log("getRawFileDescriptorData_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getRawFileDescriptorData_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getRawFileDescriptorData_ndktest_0100 22");
+        let value = ndk.GetRawFileDescriptorData(resManager.getResourceManager(), "test/aa.xml");
+        console.log("getRawFileDescriptorData_ndktest_0100" + value);
+        expect(value.length).assertLarger(0);
+      })
+      done();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_getLocalesData_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getLocalesData_ndktest_0100', 0, async (done: Function) => {
+      console.log("getLocalesData_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getLocalesData_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getLocalesData_ndktest_0100 22");
+        let value = ndk.GetLocalesData(resManager.getResourceManager());
+        console.log("getLocalesData_ndktest_0100" + value);
+        expect(value != null).assertTrue();
+      })
+      done();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_getMediaBase64DataByName_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getMediaBase64DataByName_ndktest_0100', 0, async (done: Function) => {
+      console.log("getMediaBase64DataByName_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getMediaBase64DataByName_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getMediaBase64DataByName_ndktest_0100 22");
+        let value = ndk.GetMediaBase64DataByName(resManager.getResourceManager(), "icon");
+        console.log("getMediaBase64DataByName_ndktest_0100" + value);
+        expect(value != null).assertTrue();
+      })
+      done();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_getMediaBase64Data_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getMediaBase64Data_ndktest_0100', 0, async (done: Function) => {
+      console.log("getMediaBase64Data_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getMediaBase64Data_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getMediaBase64Data_ndktest_0100 22");
+        let value = ndk.GetMediaBase64Data(resManager.getResourceManager(), $r('app.media.icon').id);
+        console.log("getMediaBase64Data_ndktest_0100" + value);
+        expect(value != null).assertTrue();
+      })
+      done();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_getMediaData_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getMediaData_ndktest_0100', 0, async (done: Function) => {
+      console.log("getMediaData_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getMediaData_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getMediaData_ndktest_0100 22");
+        let value = ndk.GetMediaData(resManager.getResourceManager(), $r('app.media.icon').id);
+        console.log("getMediaData_ndktest_0100" + value);
+        expect(value).assertTrue();
+      })
+      done();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_getMediaDataByName_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getMediaDataByName_ndktest_0100', 0, async (done: Function) => {
+      console.log("getMediaDataByName_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getMediaDataByName_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getMediaDataByName_ndktest_0100 22");
+        let value = ndk.GetMediaDataByName(resManager.getResourceManager(), "icon");
+        console.log("getMediaDataByName_ndktest_0100" + value);
+        expect(value).assertTrue();
+      })
+      done();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_getDrawableDescriptorData_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getDrawableDescriptorData_ndktest_0100', 0, async (done: Function) => {
+      console.log("getDrawableDescriptorData_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getDrawableDescriptorData_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getDrawableDescriptorData_ndktest_0100 22");
+        let value = ndk.GetDrawableDescriptorData(resManager.getResourceManager(), $r('app.media.icon').id);
+        console.log("getDrawableDescriptorData_ndktest_0100" + value);
+        expect(value).assertTrue();
+      })
+      done();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_getDrawableDescriptorDataByName_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('getDrawableDescriptorDataByName_ndktest_0100', 0, async (done: Function) => {
+      console.log("getDrawableDescriptorDataByName_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("getDrawableDescriptorDataByName_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("getDrawableDescriptorDataByName_ndktest_0100 22");
+        let value = ndk.GetDrawableDescriptorDataByName(resManager.getResourceManager(), "icon");
+        console.log("getDrawableDescriptorDataByName_ndktest_0100" + value);
+        expect(value).assertTrue();
+      })
+      done();
+    })
+
   })
 }
