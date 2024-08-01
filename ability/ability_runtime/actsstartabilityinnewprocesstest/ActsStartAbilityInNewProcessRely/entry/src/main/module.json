@@ -7,7 +7,8 @@
     "deviceTypes": [
       "default",
       "tablet",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
@@ -44,10 +45,8 @@
         "exported": true,
         "skills": [
           {
-            "entities": [
-            ],
-            "actions": [
-            ]
+            "entities": [],
+            "actions": []
           }
         ]
       },
@@ -63,10 +62,8 @@
         "launchType": "multiton",
         "skills": [
           {
-            "entities": [
-            ],
-            "actions": [
-            ]
+            "entities": [],
+            "actions": []
           }
         ]
       },
@@ -82,10 +79,8 @@
         "launchType": "specified",
         "skills": [
           {
-            "entities": [
-            ],
-            "actions": [
-            ]
+            "entities": [],
+            "actions": []
           }
         ]
       }

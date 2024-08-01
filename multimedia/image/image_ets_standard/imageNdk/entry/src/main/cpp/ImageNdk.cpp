@@ -44,7 +44,7 @@
 
 OH_PixelmapNative *TEST_PIXELMAP = nullptr;
 const char *LOG_APP = "ImageNDK";
-const char* VPE_SO_NAME = "/system/lib64/libvideoprocessingengine.z.so";
+const char* VPE_SO_NAME = "/sys_prod/lib64/VideoProcessingEngine/libaihdr_engine.so";
 
 static void DataCopy(void *dest, int32_t dest_size, const void *src, int32_t n) {
     if (dest == nullptr || src == nullptr) {
@@ -1321,7 +1321,7 @@ static napi_value CreatePixelMap(napi_env env, napi_callback_info info) {
 
     napi_get_undefined(env, &result);
 
-    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok || argCount < NUM_2) {
+    if (napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr) != napi_ok) {
         return result;
     }
 
@@ -1329,15 +1329,29 @@ static napi_value CreatePixelMap(napi_env env, napi_callback_info info) {
     napi_status status = napi_get_value_external(env, argValue[NUM_0], &ptr);
     OH_ImageSourceNative *imageSource = reinterpret_cast<OH_ImageSourceNative *>(ptr);
 
-    status = napi_get_value_external(env, argValue[NUM_1], &ptr);
-    OH_DecodingOptions *decodeOpts = reinterpret_cast<OH_DecodingOptions *>(ptr);
-
+    OH_DecodingOptions *decodeOpts = nullptr;
+    if (2 == argCount) {
+        status = napi_get_value_external(env, argValue[NUM_1], &ptr);
+        OH_DecodingOptions *decodeOpts = reinterpret_cast<OH_DecodingOptions *>(ptr);
+    }
+    
     OH_PixelmapNative *resPixMap = nullptr;
     Image_ErrorCode errCode = OH_ImageSourceNative_CreatePixelmap(imageSource, decodeOpts, &resPixMap);
     if (IMAGE_SUCCESS != errCode) {
         napi_create_int32(env, errCode, &result);
         return result;
     }
+
+    if (TEST_PIXELMAP != nullptr) {
+        errCode = releaseTestPixelmap();
+        if (errCode != IMAGE_SUCCESS) {
+            OH_LOG_ERROR(LOG_APP,
+                         "ImagePixelmapNativeCTest createPixelMap releaseTestPixelmap failed, errCode: %{public}d.",
+                         errCode);
+            return result;
+        }
+    }
+    TEST_PIXELMAP = resPixMap;
 
     status = napi_create_external(env, reinterpret_cast<void *>(resPixMap), nullptr, nullptr, &result);
     if (status != napi_ok) {

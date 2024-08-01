@@ -17,12 +17,12 @@
     "package": "com.acts.theme.screenlocktest",
     "name": ".MyApplication",
     "mainAbility": "com.acts.theme.screenlocktest.MainAbility",
-
     "deviceType": [
       "tablet",
       "default",
       "phone",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "distro": {
       "deliveryWithInstall": true,

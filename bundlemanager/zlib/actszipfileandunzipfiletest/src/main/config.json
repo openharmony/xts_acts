@@ -17,11 +17,12 @@
     "package": "com.example.amsZipfileUnzipfileST",
     "name": ".entry",
     "mainAbility": ".MainAbility",
-    "srcPath":"",
+    "srcPath": "",
     "deviceType": [
       "tablet",
       "default",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "distro": {
       "deliveryWithInstall": true,
@@ -52,8 +53,8 @@
         "type": "page",
         "visible": true,
         "launchType": "standard"
-    },
-    {
+      },
+      {
         "orientation": "unspecified",
         "formsEnabled": false,
         "name": ".TestAbility",
@@ -65,10 +66,9 @@
         "type": "page",
         "visible": true,
         "launchType": "standard"
-    }
-],
-    "reqPermissions": [
+      }
     ],
+    "reqPermissions": [],
     "js": [
       {
         "pages": [
@@ -92,8 +92,8 @@
       }
     ],
     "testRunner": {
-        "name": "OpenHarmonyTestRunner",
-        "srcPath": "TestRunner"
+      "name": "OpenHarmonyTestRunner",
+      "srcPath": "TestRunner"
     }
   }
 }

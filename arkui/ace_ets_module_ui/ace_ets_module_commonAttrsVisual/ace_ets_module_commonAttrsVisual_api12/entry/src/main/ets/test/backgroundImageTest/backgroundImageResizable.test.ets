@@ -13,16 +13,29 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  Driver,
+  Component,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
+
 export default function backgroundImageResizableTest() {
-  describe('backgroundImageResizableTest', function () {
-    beforeEach(async function (done) {
+  describe('backgroundImageResizableTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("backgroundImageResizableTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/backgroundImage/backgroundImageResizable',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/backgroundImage/backgroundImageResizable',
       }
       try {
         router.clear();
@@ -30,7 +43,7 @@ export default function backgroundImageResizableTest() {
         console.info("get backgroundImageResizableTest state pages: " + JSON.stringify(pages));
         if (!("backgroundImageResizable" == pages.name)) {
           console.info("get backgroundImageResizableTest state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push backgroundImageResizableTest success: " + JSON.stringify(result));
         }
@@ -41,21 +54,25 @@ export default function backgroundImageResizableTest() {
       done();
     });
     /**
-     * @tc.number    backgroundImageResizable
-     * @tc.name      backgroundImageResizableTest_0100
-     * @tc.desc      api
-     * @tc.level:    Level 2
+     * @tc.number backgroundImageResizable
+     * @tc.name backgroundImageResizableTest_0100
+     * @tc.desc api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('backgroundImageResizableTest_0100', 0, async function (done) {
+    it('backgroundImageResizableTest_0100', 0, async (done: Function) => {
       console.info('backgroundImageResizableTest_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('backgroundImageResizable_1');
-      let obj = JSON.parse(strJson);
-      console.log('backgroundImageResizableTest_0100',obj.$attrs)
-      console.log('backgroundImageResizableTest_0100',obj.$attrs.backgroundImageResizable.slice.top)
-      expect(obj.$attrs.backgroundImageResizable).assertEqual(('ImageResizableSlice: {left: 20.00px, right: 20.00px, top: 20.00px, bottom: 20.00px}'));
+      console.log('backgroundImageResizableTest_0100', JSON.parse(strJson).$attrs)
+      console.log('backgroundImageResizableTest_0100', JSON.parse(strJson)
+        .$attrs
+        .backgroundImageResizable
+        .slice
+        .top)
+      expect(JSON.parse(strJson).$attrs.backgroundImageResizable)
+        .assertEqual(('ImageResizableSlice: {left: 20.00px, right: 20.00px, top: 20.00px, bottom: 20.00px}'));
       console.info('[backgroundImageResizableTest_0100] END');
       done();
     });

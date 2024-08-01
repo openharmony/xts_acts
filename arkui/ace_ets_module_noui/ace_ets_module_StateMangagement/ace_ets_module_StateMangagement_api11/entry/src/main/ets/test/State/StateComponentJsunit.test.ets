@@ -13,18 +13,31 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
 
 
 export default function StateComponentJsunit() {
-  describe('StateComponentJsunit', function () {
-    beforeEach(async function (done) {
+  describe('StateComponentJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("StateComponentJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/StateComponent',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/StateComponent',
       }
       try {
         router.clear();
@@ -32,7 +45,7 @@ export default function StateComponentJsunit() {
         console.info("get StateComponentJsunit state pages: " + JSON.stringify(pages));
         if (!("StateComponent" == pages.name)) {
           console.info("get StateComponentJsunit state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push StateComponentJsunit success: " + JSON.stringify(result));
         }
@@ -42,12 +55,14 @@ export default function StateComponentJsunit() {
       }
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
-      router.back({uri:"MainAbility/pages/index/index"});
+      router.back({
+        uri: "MainAbility/pages/index/index"
+      });
     });
 
-    it('StateComponentJsunit_0100', 0, async function (done) {
+    it('StateComponentJsunit_0100', 0, async (done: Function) => {
       // get the value of title1
       console.info('StateComponentJsunit_0100 START');
       let strJson1 = getInspectorByKey('text_component1');
@@ -66,7 +81,7 @@ export default function StateComponentJsunit() {
       done();
     });
 
-    it('StateComponentJsunit_0200', 0, async function (done) {
+    it('StateComponentJsunit_0200', 0, async (done: Function) => {
 
       console.info('StateComponentJsunit_0200 START');
       let driver = await UiDriver.create()
@@ -82,7 +97,7 @@ export default function StateComponentJsunit() {
       done();
     });
 
-    it('StateComponentJsunit_0300', 0, async function (done) {
+    it('StateComponentJsunit_0300', 0, async (done: Function) => {
 
       console.info('StateComponentJsunit_0300 START');
       let driver = await UiDriver.create()
@@ -98,7 +113,7 @@ export default function StateComponentJsunit() {
       done();
     });
 
-    it('StateComponentJsunit_0400', 0, async function (done) {
+    it('StateComponentJsunit_0400', 0, async (done: Function) => {
 
       console.info('StateComponentJsunit_0400 START');
       let driver = await UiDriver.create()
@@ -114,7 +129,7 @@ export default function StateComponentJsunit() {
       done();
     });
 
-    it('StateComponentJsunit_0500', 0, async function (done) {
+    it('StateComponentJsunit_0500', 0, async (done: Function) => {
 
       console.info('StateComponentJsunit_0500 START');
       let driver = await UiDriver.create()

@@ -1043,69 +1043,91 @@ export default function ApiCoverTest() {
       let lifeCallback:abilityLifecycleCallback = {
         onAbilityCreate:(ability)=>{
          console.log(`${tag} onAbilityCreate success, ability: ${JSON.stringify(ability)}`);
+         try{expect().assertFail()}catch{}
         },
         onAbilityWillCreate:(ability)=>{
            console.log(`${tag} onAbilityWillCreate success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onWindowStageCreate:(ability, window)=>{
            console.log(`${tag} onWindowStageCreate success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onWindowStageWillCreate:(ability, window)=>{
            console.log(`${tag} onWindowStageWillCreate success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onWillNewWant:(ability)=>{
            console.log(`${tag} onWillNewWant success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onNewWant:(ability)=>{
            console.log(`${tag} onNewWant success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onWindowStageActive:(ability, window)=>{
            console.log(`${tag} onWindowStageActive success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onWindowStageInactive:(ability, window)=>{
            console.log(`${tag} onWindowStageInactive success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onWindowStageDestroy:(ability, window)=>{
            console.log(`${tag} onWindowStageDestroy success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onWindowStageWillDestroy:(ability, window)=>{
            console.log(`${tag} onWindowStageWillDestroy success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onAbilityDestroy:(ability, window)=>{
            console.log(`${tag} onAbilityDestroy success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onAbilityWillDestroy:(ability, window)=>{
            console.log(`${tag} onAbilityWillDestroy success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onAbilityForeground:(ability)=>{
            console.log(`${tag} onAbilityForeground success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onAbilityWillForeground:(ability)=>{
            console.log(`${tag} onAbilityWillForeground success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onAbilityBackground:(ability)=>{
            console.log(`${tag} onAbilityBackground success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onAbilityWillBackground:(ability)=>{
            console.log(`${tag} onAbilityWillBackground success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onAbilityContinue:(ability)=>{
            console.log(`${tag} onAbilityContinue success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onAbilityWillContinue:(ability)=>{
            console.log(`${tag} onAbilityWillContinue success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onWindowStageWillRestore:(ability, window)=>{
            console.log(`${tag} onWindowStageWillRestore success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onWindowStageRestore:(ability, window)=>{
            console.log(`${tag} onWindowStageRestore success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onAbilityWillSaveState:(ability)=>{
            console.log(`${tag} onAbilityWillSaveState success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         },
         onAbilitySaveState:(ability)=>{
            console.log(`${tag} onAbilitySaveState success, ability: ${JSON.stringify(ability)}`);
+           try{expect().assertFail()}catch{}
         }
       }
       let id = AppStorage.get<common.ApplicationContext>("applicationContext").on('abilityLifecycle', lifeCallback);
@@ -1114,6 +1136,37 @@ export default function ApiCoverTest() {
         console.log(`${tag}, it end`);
         done();
       })
+    });
+    /*
+     * @tc.number : SUB_Ability_AbilityRuntime_setSupportedProcessCache_0100
+     * @tc.name   : Test setSupportedProcessCache can not use in iphone.
+     * @tc.desc   : Uri Flag api cover
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : 1
+     */
+    it('SUB_Ability_AbilityRuntime_setSupportedProcessCache_0100', 0, async (done: Function) => {
+      let tag = `SUB_Ability_AbilityRuntime_setSupportedProcessCache_0100`;
+      let capablity = canIUse("SystemCapability.Ability.AbilityRuntime.Core")
+      if(capablity){
+        try{
+          AppStorage.get<common.ApplicationContext>("applicationContext").setSupportedProcessCache(false)
+        }catch(e){
+          console.log(`${tag}, it end`);
+          expect(e?.code).assertEqual(801)
+        }
+        done();
+      }else{
+        try{
+          let result = AppStorage.get<common.ApplicationContext>("applicationContext").setSupportedProcessCache(false)
+          expect(result).assertEqual(undefined)
+        }catch(e){
+          console.log(`${tag}, it end`);
+          expect().assertFail()
+        }
+        done();
+      }
+      
     });
   })
 }

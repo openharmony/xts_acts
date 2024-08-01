@@ -19,17 +19,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-void *HksMalloc(size_t size)
-{
-    return malloc(size);
-}
+void *HksMalloc(size_t size) { return malloc(size); }
 
-void HksFree(void *ptr)
-{
-    free(ptr);
-}
+void HksFree(void *ptr) { free(ptr); }
 
-int32_t HksMemCmp(const void *ptr1, const void *ptr2, uint32_t size)
-{
-    return memcmp(ptr1, ptr2, size);
-}
+int32_t HksMemCmp(const void *ptr1, const void *ptr2, uint32_t size) { return memcmp(ptr1, ptr2, size); }

@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -53,14 +52,14 @@ export default function AppStorageJsunit() {
      */
     it('stateManagement_AppStorage_setOrCreate_0100', 0, (done: Function) => {
       console.info('[stateManagement_AppStorage_setOrCreate_0100] START');
-      AppStorage.SetOrCreate<string>("key1", "value1");
-      AppStorage.SetOrCreate<string>("key2", "value2");
-      AppStorage.SetOrCreate<string>("key3", "value3");
+      AppStorage.setOrCreate<string>("key1", "value1");
+      AppStorage.setOrCreate<string>("key2", "value2");
+      AppStorage.setOrCreate<string>("key3", "value3");
       let size = AppStorage.Size();
       console.info('[stateManagement_AppStorage_setOrCreate_0100] size =' + size);
       expect(size == 3)
         .assertTrue;
-      let key1 = AppStorage.Get<string>("key1");
+      let key1 = AppStorage.get<string>("key1");
       console.info('[stateManagement_AppStorage_setOrCreate_0100] key1 = ' + key1);
       console.info('[stateManagement_AppStorage_setOrCreate_0100] END');
       done();
@@ -110,8 +109,8 @@ export default function AppStorageJsunit() {
         }, {
           key: "layoutDirection", defaultValue: LayoutDirection.LTR
         }]);
-        let enable:number = AppStorage.Get("colorMode");
-        let enable1:number = AppStorage.Get("layoutDirection");
+        let enable: number = AppStorage.get("colorMode");
+        let enable1: number = AppStorage.get("layoutDirection");
         expect(enable == ColorMode.LIGHT)
           .assertTrue;
         expect(enable1 == LayoutDirection.RTL)

@@ -13,17 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
 
 export default function QueryNavDestinationInfoNavDestinationJsunit() {
-  describe('QueryNavDestinationInfoNavDestinationJsunit', function () {
-    beforeEach(async function (done) {
+  describe('QueryNavDestinationInfoNavDestinationJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("QueryNavDestinationInfoNavDestinationJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/NavDestination/QueryNavDestinationInfoNavDestination',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/NavDestination/QueryNavDestinationInfoNavDestination',
       }
       try {
         router.clear();
@@ -31,7 +44,7 @@ export default function QueryNavDestinationInfoNavDestinationJsunit() {
         console.info("get QueryNavDestinationInfoNavDestinationJsunit state pages:" + JSON.stringify(pages));
         if (!("QueryNavDestinationInfoNavDestination" == pages.name)) {
           console.info("get QueryNavDestinationInfoNavDestinationJsunit state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           console.info("push QueryNavDestinationInfoNavDestinationJsunit success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -40,37 +53,36 @@ export default function QueryNavDestinationInfoNavDestinationJsunit() {
       }
       done();
     });
-    it('QueryNavDestinationInfoNavDestinationJsunit_0100', 0, async function (done) {
+
+    it('QueryNavDestinationInfoNavDestinationJsunit_0100', 0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       console.info('QueryNavDestinationInfoNavDestinationJsunit_0100 START');
-
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
       let btn1 = await driver.findComponent(ON.id('QueryNavDestinationInfoNavDestinationText01'));
       await btn1.click();
       await CommonFunc.sleep(2000);
       let strcontent = getInspectorByKey('QueryNavDestinationInfoNavDestinationTextObserver');
-      let obj = JSON.parse(strcontent);
       await CommonFunc.sleep(1000);
-      console.info('QueryNavDestinationInfoNavDestinationJsunit_0100 component obj.width is: ' + obj.$attrs.content);
-
-      expect(obj.$attrs.content).assertEqual('"QueryNavDestinationInfoNavDestination123"');
+      console.info('QueryNavDestinationInfoNavDestinationJsunit_0100 component obj.width is: ' + JSON.parse(strcontent)
+        .$attrs
+        .content);
+      expect(JSON.parse(strcontent).$attrs.content).assertEqual('"QueryNavDestinationInfoNavDestination123"');
       console.info('QueryNavDestinationInfoNavDestinationJsunit_0100 END')
       done();
     });
-    it('QueryNavDestinationInfoNavDestinationJsunit_0200', 0, async function (done) {
+
+    it('QueryNavDestinationInfoNavDestinationJsunit_0200', 0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       console.info('QueryNavDestinationInfoNavDestinationJsunit_0200 START');
-
       let strcontent = getInspectorByKey('XXqueryNavDestinationInfoNavDestinationText01');
-      let obj = JSON.parse(strcontent);
       await CommonFunc.sleep(1000);
-      console.info('QueryNavDestinationInfoNavDestinationJsunit_0200 component obj.width is: ' + obj.$attrs.content);
-
-      expect(obj.$attrs.content).assertEqual('1');
+      console.info('QueryNavDestinationInfoNavDestinationJsunit_0200 component obj.width is: ' + JSON.parse(strcontent)
+        .$attrs
+        .content);
+      expect(JSON.parse(strcontent).$attrs.content).assertEqual('1');
       console.info('QueryNavDestinationInfoNavDestinationJsunit_0200 END')
       done();
     });
-
   })
 }

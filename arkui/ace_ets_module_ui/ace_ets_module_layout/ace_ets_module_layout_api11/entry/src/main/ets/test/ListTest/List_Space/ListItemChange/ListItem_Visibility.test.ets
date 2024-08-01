@@ -243,7 +243,7 @@ export default function listItem_Visibility() {
       await CommonFunc.sleep(1000);
       let locationText4Again: RectValue = CommonFunc.getComponentRect('ListItemTest44');
       expect(locationText4Again.bottom).assertEqual(locationList.bottom);
-      await driver.swipe(Math.round(globalThis.winLeft + left + (right -left)/2), Math.round(top +  globalThis.winTop), Math.round(globalThis.winLeft + left + (right -left)/2), Math.round((bottom-top)/2 + top + globalThis.winTop));
+      await driver.swipe(Math.round(globalThis.winLeft + left + (right -left)/2), Math.round(top + vp2px(50) + globalThis.winTop), Math.round(globalThis.winLeft + left + (right -left)/2), Math.round((bottom-top)/2 + top + globalThis.winTop));
       await CommonFunc.sleep(2000);
       console.info('new testListItemVisibilityFirstHidden END');
       done();
@@ -304,7 +304,7 @@ export default function listItem_Visibility() {
       await CommonFunc.sleep(1000);
       let locationText4Again: RectValue = CommonFunc.getComponentRect('ListItemTest44');
       expect(locationText4Again.bottom).assertEqual(locationList.bottom);
-      await driver.swipe(Math.round(globalThis.winLeft + left + (right -left)/2), Math.round(top + globalThis.winTop), Math.round(globalThis.winLeft + left + (right -left)/2), Math.round((bottom-top)/2 + top +  globalThis.winTop));
+      await driver.swipe(Math.round(globalThis.winLeft + left + (right -left)/2), Math.round(top + vp2px(50) + globalThis.winTop), Math.round(globalThis.winLeft + left + (right -left)/2), Math.round((bottom-top)/2 + top +  globalThis.winTop));
       await CommonFunc.sleep(1000);
       console.info('new testListItemVisibilityFirstVisibile END');
       done();

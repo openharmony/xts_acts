@@ -66,7 +66,7 @@ export default function imageSync() {
             })
         }
 
-        async function getImageInfo(done, testNum, fileName, imageWidth, imageHeight, mimeType, index) {
+        async function testGetImageInfo(done, testNum, fileName, imageWidth, imageHeight, mimeType, index) {
             try {
                 await getFd(fileName);
                 const imageSourceApi = image.createImageSource(fdNumber);
@@ -128,7 +128,7 @@ export default function imageSync() {
             }
         }
 
-        async function createIncrementalSourcePixelMap(done, testNum, buffer) {
+        async function testCreateIncrementalSourcePixelMap(done, testNum, buffer) {
             try {
                 let testimagebuffer = buffer;
                 console.info(`${testNum} start image buffer length: ` + testimagebuffer.length);
@@ -169,7 +169,7 @@ export default function imageSync() {
             }
         }
 
-        async function createPixelMap(done, testNum, fileName, opts) {
+        async function testCreatePixelMap(done, testNum, fileName, opts) {
             try {
                 await getFd(fileName);
                 const imageSourceApi = image.createImageSource(fdNumber);
@@ -258,7 +258,7 @@ export default function imageSync() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0100', 0, async function (done) {
-            getImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0100", "test.jpg", 1446, 1476, "image/jpeg", 0);
+            testGetImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0100", "test.jpg", 1446, 1476, "image/jpeg", 0);
         })
 
         /**
@@ -272,7 +272,7 @@ export default function imageSync() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0200', 0, async function (done) {
-            getImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0200", "test.bmp", 1399, 1042, "image/bmp", 0);
+            testGetImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0200", "test.bmp", 1399, 1042, "image/bmp", 0);
         })
 
         /**
@@ -286,7 +286,7 @@ export default function imageSync() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0300', 0, async function (done) {
-            getImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0300", "test.png", 6016, 3384, "image/png", 0);
+            testGetImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0300", "test.png", 6016, 3384, "image/png", 0);
         })
 
         /**
@@ -300,7 +300,7 @@ export default function imageSync() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0400', 0, async function (done) {
-            getImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0400", "test.gif", 6016, 3384, "image/gif", 0);
+            testGetImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0400", "test.gif", 6016, 3384, "image/gif", 0);
         })
 
         /**
@@ -314,7 +314,7 @@ export default function imageSync() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0500', 0, async function (done) {
-            getImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0500", "test.dng", 160, 120, "image/raw", 0);
+            testGetImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0500", "test.dng", 5976, 3992, "image/raw", 0);
         })
 
         /**
@@ -328,7 +328,7 @@ export default function imageSync() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0600', 0, async function (done) {
-            getImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0600", "test_large.webp", 1212, 681, "image/webp", 0);
+            testGetImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0600", "test_large.webp", 1212, 681, "image/webp", 0);
         })
 
         /**
@@ -342,7 +342,7 @@ export default function imageSync() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0700', 0, async function (done) {
-            getImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0700", "test_large.svg", 2136, 1968, "image/svg+xml", 0);
+            testGetImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0700", "test_large.svg", 2136, 1968, "image/svg+xml", 0);
         })
 
         /**
@@ -356,7 +356,7 @@ export default function imageSync() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0800', 0, async function (done) {
-            getImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0800", "test.ico", 64, 64, "image/x-ico", 0);
+            testGetImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0800", "test.ico", 64, 64, "image/x-ico", 0);
         })
 
         /**
@@ -370,7 +370,7 @@ export default function imageSync() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0900', 0, async function (done) {
-            getImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0900", "test.123", 6016, 3384, "image/bmp", 0);
+            testGetImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_0900", "test.123", 6016, 3384, "image/bmp", 0);
         })
 
         /**
@@ -412,7 +412,7 @@ export default function imageSync() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_INDEX_0300', 0, async function (done) {
-            getImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_INDEX_0300", "moving_test.gif", 198, 202, "image/gif", 1);
+            testGetImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_INDEX_0300", "moving_test.gif", 198, 202, "image/gif", 1);
         })
 
         /**
@@ -440,7 +440,7 @@ export default function imageSync() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_INDEX_0500', 0, async function (done) {
-            getImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_INDEX_0500", "moving_test.webp", 658, 494, "image/webp", 1);
+            testGetImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_INDEX_0500", "moving_test.webp", 658, 494, "image/webp", 1);
         })
 
         /**
@@ -454,7 +454,7 @@ export default function imageSync() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_INDEX_0600', 0, async function (done) {
-            getImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_INDEX_0600", "test.jpg", 1446, 1476, "image/jpeg", null);
+            testGetImageInfo(done, "SUB_MULTIMEDIA_IMAGE_GETIMAGEINFOSYNC_INDEX_0600", "test.jpg", 1446, 1476, "image/jpeg", null);
         })
 
         /**
@@ -468,7 +468,7 @@ export default function imageSync() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0100', 0, async function (done) {
-            createIncrementalSourcePixelMap(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0100", testPng);
+            testCreateIncrementalSourcePixelMap(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0100", testPng);
         })
 
         /**
@@ -482,7 +482,7 @@ export default function imageSync() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0200', 0, async function (done) {
-            createIncrementalSourcePixelMap(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0200", testJpg);
+            testCreateIncrementalSourcePixelMap(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0200", testJpg);
         })
 
         /**
@@ -510,7 +510,7 @@ export default function imageSync() {
                 desiredColorSpace: csm,
                 desiredDynamicRange: 0
             };
-            createPixelMap(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0300", "test.jpg", decodingOptions);
+            testCreatePixelMap(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0300", "test.jpg", decodingOptions);
         })
 
         /**
@@ -562,7 +562,7 @@ export default function imageSync() {
                 fitDensity: 240,
                 desiredColorSpace: csm
             };
-            createPixelMap(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0500", "test.jpg", decodingOptions);
+            testCreatePixelMap(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0500", "test.jpg", decodingOptions);
         })
 
         /**
@@ -589,7 +589,7 @@ export default function imageSync() {
                 fitDensity: 200,
                 desiredColorSpace: csm
             };
-            createPixelMap(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0600", "test.jpg", decodingOptions);
+            testCreatePixelMap(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0600", "test.jpg", decodingOptions);
         })
 
         /**
@@ -616,7 +616,7 @@ export default function imageSync() {
                 fitDensity: 200,
                 desiredColorSpace: csm
             };
-            createPixelMap(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0700", "test.jpg", decodingOptions);
+            testCreatePixelMap(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0700", "test.jpg", decodingOptions);
         })
 
         /**
@@ -643,7 +643,7 @@ export default function imageSync() {
                 fitDensity: 150,
                 desiredColorSpace: csm
             };
-            createPixelMap(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0800", "test.jpg", decodingOptions);
+            testCreatePixelMap(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0800", "test.jpg", decodingOptions);
         })
 
         /**
@@ -680,7 +680,7 @@ export default function imageSync() {
                 fitDensity: 150,
                 desiredColorSpace: csm
             };
-            createPixelMap(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0900", "test.jpg", decodingOptions);
+            testCreatePixelMap(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_0900", "test.jpg", decodingOptions);
         })
 
         /**
@@ -707,7 +707,7 @@ export default function imageSync() {
                 fitDensity: 100,
                 desiredColorSpace: csm
             };
-            createPixelMap(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_1000", "test.jpg", decodingOptions);
+            testCreatePixelMap(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_1000", "test.jpg", decodingOptions);
         })
 
         /**
@@ -734,7 +734,7 @@ export default function imageSync() {
                 fitDensity: 100,
                 desiredColorSpace: csm
             };
-            createPixelMap(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_1100", "test.jpg", decodingOptions);
+            testCreatePixelMap(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_1100", "test.jpg", decodingOptions);
         })
 
         /**
@@ -758,7 +758,7 @@ export default function imageSync() {
                 fitDensity: 50,
                 desiredColorSpace: csm
             };
-            createPixelMap(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_1200", "test.jpg", decodingOptions);
+            testCreatePixelMap(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_1200", "test.jpg", decodingOptions);
         })
 
         /**
@@ -773,7 +773,7 @@ export default function imageSync() {
          * @tc.level     : Level 1
          */
         it('SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_1300', 0, async function (done) {
-            createPixelMap(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_1300", "test.jpg", null);
+            testCreatePixelMap(done, "SUB_MULTIMEDIA_IMAGE_CREATEPIXELMAPSYNC_1300", "test.jpg", null);
         })
     })
 }

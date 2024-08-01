@@ -20,6 +20,12 @@
         "MainAbility/pages/Common/BackgroundEffect/BackgroundEffectOptions/BlurType_WITHIN_WINDOW",
         "MainAbility/pages/Common/BackgroundEffect/BackgroundEffectOptions/inactiveColor",
         "MainAbility/pages/Common/BackgroundEffect/BackgroundEffectOptions/Policy",
-        "MainAbility/pages/Button/Button_API/Role"
+        "MainAbility/pages/Button/Button_API/Role",
+        "MainAbility/pages/UIContext/getPageInfoByUniqueId",
+        "MainAbility/pages/UIContext/setFrameRateRange",
+        "MainAbility/pages/AttributeUpdater/AttributeUpdater",
+	    "MainAbility/pages/componentSnapshot/componentSnapshot",
+        "MainAbility/pages/UIContext/postDelayedFrameCallback",
+        "MainAbility/pages/UIContext/postFrameCallback"
     ]
 }

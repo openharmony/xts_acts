@@ -20,8 +20,9 @@ struct Index {
     console.info('MainAbility index aboutToAppear')
     console.info('start run testcase!!!')
   }
-    
+
   @State message: string = 'MainAbility4 Hello'
+
   build() {
     Row() {
       Column() {
@@ -32,15 +33,16 @@ struct Index {
           Text('next page')
             .fontSize(20)
             .fontWeight(FontWeight.Bold)
-        }.type(ButtonType.Capsule)
-          .margin({
-            top: 20
-          })
-          .backgroundColor('#0D9FFB')
-          .width('35%')
-          .height('5%')
-          .onClick(() => {
-          })
+        }
+        .type(ButtonType.Capsule)
+        .margin({
+          top: 20
+        })
+        .backgroundColor('#0D9FFB')
+        .width('35%')
+        .height('5%')
+        .onClick(() => {
+        })
       }
       .width('100%')
     }

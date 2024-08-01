@@ -15,7 +15,8 @@
 #include "huks_three_stage_test_common.h"
 #ifndef HUKS_CIPHER_SM4_TEST_H
 #define HUKS_CIPHER_SM4_TEST_H
-namespace Unittest::SM4Cipher {
+namespace Unittest::SM4Cipher
+{
 int Security_HUKS_NAPI_Cipher_SM4_0100(void);
-} // namespace Unittest::SM4Cipher
-#endif // HUKS_CIPHER_SM4_TEST_H
+}  // namespace Unittest::SM4Cipher
+#endif  // HUKS_CIPHER_SM4_TEST_H

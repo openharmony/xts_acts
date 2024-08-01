@@ -15,10 +15,12 @@
 
 import { describe, it, expect } from '@ohos/hypium'
 import common from '@ohos.app.ability.common'
+import Want from '@ohos.app.ability.Want';
+import { BusinessError } from '@ohos.base';
 
 export default function RequestModalUIExtension() {
 
-  describe('ACTS_RequestModalUIExtension', function () {
+  describe('ACTS_RequestModalUIExtension', () => {
     let TAG = "";
 
     /*
@@ -26,11 +28,11 @@ export default function RequestModalUIExtension() {
      * @tc.name    : test request Modal UIExtension
      * @tc.desc    : request Modal UIExtension by want
      */
-    it('ACTS_RequestModalUIExtension001',0, async function (done) {
+    it('ACTS_RequestModalUIExtension001', 0, async (done: Function) => {
       TAG = 'ACTS_UIExtension_RequestModalUIExtension001 == ';
       console.log(TAG + "begin");
       try {
-        let want = {
+        let want: Want = {
           bundleName: 'com.example.myapplication',
           abilityName: 'requestModalUIExtension',
           moduleName: 'requestModalUIExtension',
@@ -38,7 +40,7 @@ export default function RequestModalUIExtension() {
             bundleName: 'com.example.myapplication'
           }
         };
-        globalThis.abilityContext.requestModalUIExtension(want, (err) => {
+        globalThis.abilityContext.requestModalUIExtension(want, (err: BusinessError) => {
           if (err) {
             console.error(TAG + "requestModalUIExtension001 fail, err:" + JSON.stringify(err));
             expect(err.code).assertEqual(202);
@@ -48,7 +50,7 @@ export default function RequestModalUIExtension() {
           }
         });
       } catch (error) {
-        console.log(TAG + "requestModalUIExtension001 catch fail, err:" + JSON.stringify(err));
+        console.log(TAG + "requestModalUIExtension001 catch fail, err:" + JSON.stringify(error));
         expect().assertFail();
         done();
       }
@@ -59,11 +61,11 @@ export default function RequestModalUIExtension() {
      * @tc.name    : test request Modal UIExtension
      * @tc.desc    : request Modal UIExtension by want
      */
-    it('ACTS_RequestModalUIExtension002',0, async function (done) {
+    it('ACTS_RequestModalUIExtension002', 0, async (done: Function) => {
       TAG = 'ACTS_UIExtension_RequestModalUIExtension002 == ';
       console.log(TAG + "begin");
       try {
-        let want = {
+        let want: Want = {
           bundleName: 'com.example.myapplication',
           abilityName: 'requestModalUIExtension',
           moduleName: 'requestModalUIExtension',
@@ -73,7 +75,7 @@ export default function RequestModalUIExtension() {
         };
         globalThis.abilityContext.requestModalUIExtension(want).then(() => {
           console.log(TAG + "requestModalUIExtension002 success");
-        }).catch((err)=> {
+        }).catch((err: BusinessError) => {
           console.error(TAG + "requestModalUIExtension002 fail, err:" + JSON.stringify(err));
           expect(err.code).assertEqual(202);
           done();

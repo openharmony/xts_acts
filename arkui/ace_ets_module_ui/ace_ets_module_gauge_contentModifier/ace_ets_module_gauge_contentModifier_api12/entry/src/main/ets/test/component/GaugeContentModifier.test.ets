@@ -55,7 +55,7 @@ export default function GaugeContentModifier() {
     it('GaugeContentModifier_001', 0, async (done: Function) => {
       console.info('[GaugeContentModifier_001] START');
       let strJson = getInspectorByKey('GaugeContentModifier01');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject>= JSON.parse(strJson);
       await Utils.sleep(1000);
       console.info('[GaugeContentModifier_001] obj is: ' + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('value:60');
@@ -73,7 +73,7 @@ export default function GaugeContentModifier() {
     it('GaugeContentModifier_002', 0, async (done: Function) => {
       console.info('[GaugeContentModifier_001] START');
       let strJson = getInspectorByKey('GaugeContentModifier02');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject>= JSON.parse(strJson);
       await Utils.sleep(1000);
       console.info('[GaugeContentModifier_002] obj is: ' + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('min:0');
@@ -91,7 +91,7 @@ export default function GaugeContentModifier() {
     it('GaugeContentModifier_003', 0, async (done: Function) => {
       console.info('[GaugeContentModifier_003] START');
       let strJson = getInspectorByKey('GaugeContentModifier03');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject>= JSON.parse(strJson);
       await Utils.sleep(1000);
       console.info('[GaugeContentModifier_003] obj3 is: ' + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('max:100');
@@ -109,7 +109,7 @@ export default function GaugeContentModifier() {
     it('GaugeContentModifier_004', 0, async (done: Function) => {
       console.info('[GaugeContentModifier_004] START');
       let strJson = getInspectorByKey('GaugeContentModifier04');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject>= JSON.parse(strJson);
       await Utils.sleep(1000);
       console.info('[GaugeContentModifier_004] obj is: ' + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('startAngle:20');
@@ -127,7 +127,7 @@ export default function GaugeContentModifier() {
     it('GaugeContentModifier_005', 0, async (done: Function) => {
       console.info('[GaugeContentModifier_005] START');
       let strJson = getInspectorByKey('GaugeContentModifier05');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject>= JSON.parse(strJson);
       await Utils.sleep(1000);
       console.info('[GaugeContentModifier_005] obj is: ' + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('endAngle:180');
@@ -145,7 +145,7 @@ export default function GaugeContentModifier() {
     it('GaugeContentModifier_006', 0, async (done: Function) => {
       console.info('[GaugeContentModifier_006] START');
       let strJson = getInspectorByKey('GaugeContentModifier06');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject>= JSON.parse(strJson);
       await Utils.sleep(1000);
       console.info('[GaugeContentModifier_006] obj is: ' + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('colors:#ff000000');
@@ -163,7 +163,7 @@ export default function GaugeContentModifier() {
     it('GaugeContentModifier_007', 0, async (done: Function) => {
       console.info('[GaugeContentModifier_007] START');
       let strJson = getInspectorByKey('GaugeContentModifier07');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject>= JSON.parse(strJson);
       await Utils.sleep(1000);
       console.info('[GaugeContentModifier_007] obj is: ' + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('strokeWidth:20');
@@ -181,7 +181,7 @@ export default function GaugeContentModifier() {
     it('GaugeContentModifier_008', 0, async (done: Function) => {
       console.info('[GaugeContentModifier_008] START');
       let strJson = getInspectorByKey('GaugeContentModifier08');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject>= JSON.parse(strJson);
       await Utils.sleep(1000);
       console.info('[GaugeContentModifier_008] obj is: ' + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('width:100');
@@ -200,7 +200,7 @@ export default function GaugeContentModifier() {
     it('GaugeContentModifier_009', 0, async (done: Function) => {
       console.info('[GaugeContentModifier_009] START');
       let strJson = getInspectorByKey('GaugeContentModifier09');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject>= JSON.parse(strJson);
       await Utils.sleep(1000);
       console.info('[GaugeContentModifier_009] obj is: ' + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('height:100');
@@ -218,7 +218,7 @@ export default function GaugeContentModifier() {
     it('GaugeContentModifier_010', 0, async (done: Function) => {
       console.info('[GaugeContentModifier_010] START');
       let strJson = getInspectorByKey('GaugeContentModifier10');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject>= JSON.parse(strJson);
       await Utils.sleep(1000);
       console.info('[GaugeContentModifier_010] obj is: ' + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('sizeWidth:100');
@@ -237,7 +237,7 @@ export default function GaugeContentModifier() {
     it('GaugeContentModifier_011', 0, async (done: Function) => {
       console.info('[GaugeContentModifier_011] START');
       let strJson = getInspectorByKey('GaugeContentModifier11');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject>= JSON.parse(strJson);
       await Utils.sleep(1000);
       console.info('[GaugeContentModifier_011] obj is: ' + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('sizeHeight:100');
@@ -256,7 +256,7 @@ export default function GaugeContentModifier() {
     it('GaugeContentModifier_012', 0, async (done: Function) => {
       console.info('[GaugeContentModifier_012] START');
       let strJson = getInspectorByKey('GaugeContentModifier12');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject>= JSON.parse(strJson);
       await Utils.sleep(1000);
       console.info('[GaugeContentModifier_012] obj is: ' + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('padding:20');
@@ -275,7 +275,7 @@ export default function GaugeContentModifier() {
     it('GaugeContentModifier_013', 0, async (done: Function) => {
       console.info('[GaugeContentModifier_013] START');
       let strJson = getInspectorByKey('GaugeContentModifier13');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject>= JSON.parse(strJson);
       await Utils.sleep(1000);
       console.info('[GaugeContentModifier_013] obj is: ' + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('margin:10');
@@ -294,7 +294,7 @@ export default function GaugeContentModifier() {
     it('GaugeContentModifier_014', 0, async (done: Function) => {
       console.info('[GaugeContentModifier_014] START');
       let strJson = getInspectorByKey('GaugeContentModifier14');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject>= JSON.parse(strJson);
       await Utils.sleep(1000);
       console.info('[GaugeContentModifier_014] obj is: ' + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('layoutWeight:5');
@@ -313,7 +313,7 @@ export default function GaugeContentModifier() {
     it('GaugeContentModifier_015', 0, async (done: Function) => {
       console.info('[GaugeContentModifier_015] START');
       let strJson = getInspectorByKey('GaugeContentModifier15');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject>= JSON.parse(strJson);
       await Utils.sleep(1000);
       console.info('[GaugeContentModifier_015] obj is: ' + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('constraintSizeMinWidth:1');
@@ -331,7 +331,7 @@ export default function GaugeContentModifier() {
     it('GaugeContentModifier_016', 0, async (done: Function) => {
       console.info('[GaugeContentModifier_016] START');
       let strJson = getInspectorByKey('GaugeContentModifier16');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject>= JSON.parse(strJson);
       await Utils.sleep(1000);
       console.info('[GaugeContentModifier_016] obj is: ' + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('constraintSizeMaxWidth:100');
@@ -349,7 +349,7 @@ export default function GaugeContentModifier() {
     it('GaugeContentModifier_017', 0, async (done: Function) => {
       console.info('[GaugeContentModifier_017] START');
       let strJson = getInspectorByKey('GaugeContentModifier17');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject>= JSON.parse(strJson);
       await Utils.sleep(1000);
       console.info('[GaugeContentModifier_017] obj is: ' + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('constraintSizeMinHeight:1');
@@ -367,7 +367,7 @@ export default function GaugeContentModifier() {
     it('GaugeContentModifier_018', 0, async (done: Function) => {
       console.info('[GaugeContentModifier_018] START');
       let strJson = getInspectorByKey('GaugeContentModifier18');
-      let obj = JSON.parse(strJson);
+      let obj: Record<string, ESObject>= JSON.parse(strJson);
       await Utils.sleep(1000);
       console.info('[GaugeContentModifier_018] obj is: ' + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('constraintSizeMaxHeight:100');

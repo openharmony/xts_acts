@@ -15,26 +15,25 @@
 
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
 
 export default function MenuJsunit() {
-  describe('menuTest', function () {
-    beforeEach(async function (done) {
+  describe('menuTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("Menu beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/menu',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/menu',
       }
-      let result;
+
       try {
         router.clear();
         let pages = router.getState();
         console.info("get Menu state pages: " + JSON.stringify(pages));
         if (!("menu" == pages.name)) {
           console.info("get Menu state pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push Menu page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push Menu page error: " + err);
@@ -44,13 +43,13 @@ export default function MenuJsunit() {
 
     /**
      * @tc.number ArkUX_Stage_Menu_attrs_0100
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set fontColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set fontColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUX_Stage_Menu_attrs_0100', 0, async function (done) {
+    it('ArkUX_Stage_Menu_attrs_0100', 0, async (done: Function) => {
       try {
         console.info('ArkUX_Stage_Menu_attrs_0100 START');
         let strJson = getInspectorByKey('MenuKey1');
@@ -66,13 +65,13 @@ export default function MenuJsunit() {
 
     /**
      * @tc.number ArkUX_Stage_Menu_attrs_0101
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set font values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set font values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUX_Stage_Menu_attrs_0101', 0, async function (done) {
+    it('ArkUX_Stage_Menu_attrs_0101', 0, async (done: Function) => {
       try {
         console.info('ArkUX_Stage_Menu_attrs_0101 START');
         let strJson = getInspectorByKey('MenuKey1');
@@ -91,13 +90,13 @@ export default function MenuJsunit() {
 
     /**
      * @tc.number ArkUX_Stage_Menu_attrs_0102
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set borderRadius values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set borderRadius values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUX_Stage_Menu_attrs_0102', 0, async function (done) {
+    it('ArkUX_Stage_Menu_attrs_0102', 0, async (done: Function) => {
       try {
         console.info('ArkUX_Stage_Menu_attrs_0102 START');
         let strJson = getInspectorByKey('MenuKey1');
@@ -116,13 +115,13 @@ export default function MenuJsunit() {
 
     /**
      * @tc.number ArkUX_Stage_Menu_attrs_0103
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change borderRadius values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change borderRadius values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-     it('ArkUX_Stage_Menu_attrs_0103', 0, async function (done) {
+    it('ArkUX_Stage_Menu_attrs_0103', 0, async (done: Function) => {
 
       console.info('ArkUX_Stage_Menu_attrs_0103 START');
       let driver = Driver.create();

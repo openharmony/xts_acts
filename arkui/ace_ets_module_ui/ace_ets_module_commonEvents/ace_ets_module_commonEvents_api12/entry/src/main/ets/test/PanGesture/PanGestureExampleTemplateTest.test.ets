@@ -70,7 +70,7 @@ export default function PanGestureExampleTemplateTest() {
       await CommonFunc.sleep(4000);
       let button = await driver.findComponent(ON.id('PanGestureExampleTemplate_template'));
       await button.click();
-      await CommonFunc.sleep(1000);
+      await CommonFunc.sleep(3000);
 
       let text1 = getInspectorByKey('PanGestureExampleTemplate_Text');
       let obj1 = JSON.parse(text1);

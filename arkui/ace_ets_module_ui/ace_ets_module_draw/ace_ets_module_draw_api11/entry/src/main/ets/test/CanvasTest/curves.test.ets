@@ -14,7 +14,7 @@
  */
 
 import events_emitter from '@ohos.events.emitter';
-import router from '@system.router';
+import router from '@ohos.router';
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import Utils from '../../MainAbility/common/Utils'
 
@@ -28,11 +28,11 @@ export default function curvesStepsJsunit() {
       console.info('[curvesStepsTest] before each called')
 
       // let result = '';
-      let options = {
-        uri: 'MainAbility/pages/Canvas/curves'
+     let options:router.RouterOptions = {
+        url:'MainAbility/pages/Canvas/curves'
       }
       try {
-        let result = router.push(options)
+        let result = router.pushUrl(options)
         console.info("push curves page success " + JSON.stringify(result));
       } catch (err) {
         console.error("push curves page error " + JSON.stringify(err));
@@ -59,7 +59,7 @@ export default function curvesStepsJsunit() {
         eventId: 60229,
         priority: events_emitter.EventPriority.LOW
       }
-      let callback = (eventData) => {
+      let callback  = (eventData:events_emitter.EventData) => {
         try {
           console.info("callback success");
           console.info("curveApi eventData.data.curveApi result is: " + eventData.data.curveApi);

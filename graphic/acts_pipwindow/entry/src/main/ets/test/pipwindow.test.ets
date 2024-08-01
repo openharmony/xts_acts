@@ -21,6 +21,9 @@ import { UiDriver, BY, ON, PointerMatrix } from '@ohos.UiTest'
 import pipWindow from '@ohos.PiPWindow';
 import bundleManager from '@ohos.bundle.bundleManager';
 import { BusinessError } from '@ohos.base';
+import { TextNodeController } from './CustomNode.test';
+
+
 
 export default function pipWindowTest(context1) {
   describe('window_pipWindow_test', function () {
@@ -37,6 +40,18 @@ export default function pipWindowTest(context1) {
       })
       let result = await promise;
       clearTimeout(timeoutId)
+    }
+
+    function initConfig(PiPTemplateType: pipWindow.PiPTemplateType) {
+      let config: pipWindow.PiPConfiguration;
+      config = {
+        context: globalThis.abilityContext,
+        componentController: new XComponentController(),
+        templateType: PiPTemplateType,
+        contentWidth: 400,
+        contentHeight: 600,
+      };
+      return config;
     }
 
     /**
@@ -1524,6 +1539,680 @@ export default function pipWindowTest(context1) {
         console.log(`${tag} test_VideoMeetingControlGroup_HANG_UP_BUTTON_MUTE_SWITCH_CAMERA_SWITCH Failed. Cause` + JSON.stringify(error));
         expect().assertFail();
         done();
+      }
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_PIP_TABIET_CONTROLS_1800
+     * @tc.name       : TestUpdatePiPControlStatusInVideoPlay
+     * @tc.desc       : TestUpdatePiPControlStatusInVideoPlay
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('TestUpdatePiPControlStatusInVideoPlay', 2, (done: Function) => {
+      const message = 'TestUpdatePiPControlStatusInVideoPlay';
+      const config = initConfig(pipWindow.PiPTemplateType.VIDEO_PLAY);
+      let pipController: pipWindow.PiPController;
+      try {
+        pipWindow.create(config).then((data: pipWindow.PiPController) => {
+          pipController = data;
+          pipController.startPiP().then(async () => {
+            let count = 0;
+            pipController.on('controlPanelActionEvent', (event: pipWindow.PiPActionEventType, status?: number) => {
+              switch (event) {
+                case 'playbackStateChanged':
+                  if (status === 0) {
+                    count--;
+                  } else if (status === 1) {
+                    count++;
+                  }
+                  break;
+                default:
+                  break;
+              }
+            })
+            try {
+              pipController.updatePiPControlStatus(pipWindow.PiPControlType.VIDEO_PLAY_PAUSE, pipWindow.PiPControlStatus.PLAY);
+              console.info(`${message} Succeeded updatePiPControlStatus VIDEO_PLAY_PAUSE to PLAY`);
+              await sleep(1000);
+              pipController.updatePiPControlStatus(pipWindow.PiPControlType.VIDEO_PLAY_PAUSE, pipWindow.PiPControlStatus.PAUSE);
+              console.info(`${message} Succeeded updatePiPControlStatus VIDEO_PLAY_PAUSE to PAUSE`);
+
+              console.info(`${message} count is：${count}`);
+              expect(0).assertEqual(count);
+              pipController.off('controlPanelActionEvent');
+              done();
+            } catch (error) {
+              if(error.code == 801){
+                console.info(`${message} The current device type does not support to updatePiPControlStatus`);
+                expect(true).assertTrue();
+                done();
+              } else{
+                console.error(`${message} Params error. Cause` + JSON.stringify(error));
+                expect().assertFail();
+                done();
+              }
+            }
+          }).catch((err: BusinessError) => {
+            if(err.code == 801){
+              console.info(`${message} The current device type does not support to start pip`);
+              expect(true).assertTrue();
+              done();
+            } else{
+              console.error(`${message} Failed to start pip. Cause:${err.code}, message:${err.message}`);
+              expect().assertFail();
+              done();
+            }
+          });
+
+        }).catch((err: BusinessError) => {
+          if(err.code == 801){
+            console.info(`${message} The current device type does not support to create pipController`);
+            expect(true).assertTrue();
+            done();
+          } else{
+            console.info(`${message} Failed to create pipController. Cause` + JSON.stringify(err));
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (error) {
+        if(error.code == 801){
+          console.info(`${message} The current device type does not support to create pipController`);
+          expect(true).assertTrue();
+          done();
+        } else{
+          console.info(`${message} Failed to create pipController. Cause` + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+      }
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_PIP_TABIET_CONTROLS_1900
+     * @tc.name       : TestUpdatePiPControlStatelessType
+     * @tc.desc       : TestUpdatePiPControlStatelessType
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('TestUpdatePiPControlStatelessType', 2, (done: Function) => {
+      const message = 'TestUpdatePiPControlStatelessType';
+      const config = initConfig(pipWindow.PiPTemplateType.VIDEO_PLAY);
+      let pipController: pipWindow.PiPController;
+      try {
+        pipWindow.create(config).then((data: pipWindow.PiPController) => {
+          pipController = data;
+          pipController.startPiP().then(async () => {
+            try {
+              pipController.updatePiPControlStatus(pipWindow.PiPControlType.FAST_FORWARD, pipWindow.PiPControlStatus.PLAY);
+              await sleep(1000);
+              pipController.updatePiPControlStatus(pipWindow.PiPControlType.FAST_BACKWARD, pipWindow.PiPControlStatus.PAUSE);
+
+              pipController.updatePiPControlStatus(pipWindow.PiPControlType.VIDEO_PREVIOUS, pipWindow.PiPControlStatus.PLAY);
+              await sleep(1000);
+              pipController.updatePiPControlStatus(pipWindow.PiPControlType.VIDEO_NEXT, pipWindow.PiPControlStatus.PAUSE);
+
+              await sleep(1000);
+              pipController.updatePiPControlStatus(pipWindow.PiPControlType.HANG_UP_BUTTON, pipWindow.PiPControlStatus.PAUSE);
+
+              expect(true).assertTrue();
+              done();
+            } catch (error) {
+              if(error.code == 801){
+                console.info(`${message} The current device type does not support to updatePiPControlStatus`);
+                expect(true).assertTrue();
+                done();
+              } else{
+                console.error(`${message} Params error. Cause` + JSON.stringify(error));
+                expect().assertFail();
+                done();
+              }
+            }
+          }).catch((err: BusinessError) => {
+            if(err.code == 801){
+              console.info(`${message} The current device type does not support to start pip`);
+              expect(true).assertTrue();
+              done();
+            } else{
+              console.error(`${message} Failed to start pip. Cause:${err.code}, message:${err.message}`);
+              expect().assertFail();
+              done();
+            }
+          });
+        }).catch((err: BusinessError) => {
+          if(err.code == 801){
+            console.info(`${message} The current device type does not support to create pipController`);
+            expect(true).assertTrue();
+            done();
+          } else{
+            console.info(`${message} Failed to create pipController. Cause` + JSON.stringify(err));
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (error) {
+        if(error.code == 801){
+          console.info(`${message} The current device type does not support to create pipController`);
+          expect(true).assertTrue();
+          done();
+        } else{
+          console.info(`${message} Failed to create pipController. Cause` + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+      }
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_PIP_TABIET_CONTROLS_2000
+     * @tc.name       : TestUpdatePiPControlStatusInVideoCall
+     * @tc.desc       : TestUpdatePiPControlStatusInVideoCall
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('TestUpdatePiPControlStatusInVideoCall', 2, (done: Function) => {
+      const message = 'TestUpdatePiPControlStatusInVideoCall';
+      const config = initConfig(pipWindow.PiPTemplateType.VIDEO_CALL);
+      let pipController: pipWindow.PiPController;
+      try {
+        pipWindow.create(config).then((data: pipWindow.PiPController) => {
+          pipController = data;
+          pipController.startPiP().then(async () => {
+            let count = 0;
+            pipController.on('controlPanelActionEvent', (event: pipWindow.PiPActionEventType, status?: number) => {
+              switch (event) {
+                case 'videoStateChanged':
+                  if (status === 0) {
+                    count--;
+                  } else if (status === 1) {
+                    count++;
+                  }
+                  break;
+                default:
+                  break;
+              }
+            })
+            try {
+              pipController.updatePiPControlStatus(pipWindow.PiPControlType.CAMERA_SWITCH, pipWindow.PiPControlStatus.OPEN);
+              console.info(`${message} Succeeded updatePiPControlStatus CAMERA_SWITCH to OPEN`);
+              await sleep(2000);
+              pipController.updatePiPControlStatus(pipWindow.PiPControlType.CAMERA_SWITCH, pipWindow.PiPControlStatus.CLOSE);
+              console.info(`${message} Succeeded updatePiPControlStatus CAMERA_SWITCH to CLOSE`);
+
+              console.info(`${message} count is：${count}`);
+              expect(0).assertEqual(count);
+              done();
+            } catch (error) {
+              if(error.code == 801){
+                console.info(`${message} The current device type does not support to updatePiPControlStatus`);
+                expect(true).assertTrue();
+                done();
+              } else{
+                console.info(`${message} Params error. Cause` + JSON.stringify(error));
+                expect().assertFail();
+                done();
+              }
+            }
+          }).catch((err: BusinessError) => {
+            if(err.code == 801){
+              console.info(`${message} The current device type does not support to start pip`);
+              expect(true).assertTrue();
+              done();
+            } else{
+              console.error(`${message} Failed to start pip. Cause:${err.code}, message:${err.message}`);
+              expect().assertFail();
+              done();
+            }
+          });
+        }).catch((err: BusinessError) => {
+          if(err.code == 801){
+            console.info(`${message} The current device type does not support to create pipController`);
+            expect(true).assertTrue();
+            done();
+          } else{
+            console.info(`${message} Failed to create pipController. Cause` + JSON.stringify(err));
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (error) {
+        if(error.code == 801){
+          console.info(`${message} The current device type does not support to create pipController`);
+          expect(true).assertTrue();
+          done();
+        } else{
+          console.info(`${message} Failed to create pipController. Cause` + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+      }
+    })
+
+    /**
+     * @tc.number     : SUB_BASIC_WMS_PIP_TABIET_CONTROLS_2100
+     * @tc.name       : TestUpdatePiPControlStatusInVideoMeeting
+     * @tc.desc       : TestUpdatePiPControlStatusInVideoMeeting
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('TestUpdatePiPControlStatusInVideoMeeting', 2, (done: Function) => {
+      const message = 'TestUpdatePiPControlStatusInVideoMeeting';
+      const config = initConfig(pipWindow.PiPTemplateType.VIDEO_MEETING);
+      let pipController: pipWindow.PiPController;
+      try {
+        pipWindow.create(config).then((data: pipWindow.PiPController) => {
+          pipController = data;
+          pipController.startPiP().then(async () => {
+            let count = 0;
+            pipController.on('controlPanelActionEvent', (event: pipWindow.PiPActionEventType, status?: number) => {
+              switch (event) {
+                case 'videoStateChanged':
+                  if (status === 0) {
+                    count--;
+                  } else if (status === 1) {
+                    count++;
+                  }
+                  break;
+                default:
+                  break;
+              }
+            })
+            try {
+              pipController.updatePiPControlStatus(pipWindow.PiPControlType.CAMERA_SWITCH, pipWindow.PiPControlStatus.OPEN);
+              console.info(`${message} Succeeded updatePiPControlStatus CAMERA_SWITCH to OPEN`);
+              await sleep(2000);
+              pipController.updatePiPControlStatus(pipWindow.PiPControlType.CAMERA_SWITCH, pipWindow.PiPControlStatus.CLOSE);
+              console.info(`${message} Succeeded updatePiPControlStatus CAMERA_SWITCH to CLOSE`);
+
+              console.info(`${message} count is：${count}`);
+              expect(0).assertEqual(count);
+              done();
+            } catch (error) {
+              if(error.code == 801){
+                console.info(`${message} The current device type does not support to updatePiPControlStatus`);
+                expect(true).assertTrue();
+                done();
+              } else{
+                console.error(`${message} Params error. Cause` + JSON.stringify(error));
+                expect().assertFail();
+                done();
+              }
+            }
+          }).catch((err: BusinessError) => {
+            if(err.code == 801){
+              console.info(`${message} The current device type does not support to start pip`);
+              expect(true).assertTrue();
+              done();
+            } else{
+              console.error(`${message}} Failed to start pip. Cause:${err.code}, message:${err.message}`);
+              expect().assertFail();
+              done();
+            }
+          });
+
+        }).catch((err: BusinessError) => {
+          if(err.code == 801){
+            console.info(`${message} The current device type does not support to create pipController`);
+            expect(true).assertTrue();
+            done();
+          } else{
+            console.info(`${message} Failed to create pipController. Cause` + JSON.stringify(err));
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (error) {
+        if(error.code == 801){
+          console.info(`${message} The current device type does not support to create pipController`);
+          expect(true).assertTrue();
+          done();
+        } else{
+          console.info(`${message} Failed to create pipController. Cause` + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+      }
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_PIP_TABIET_CONTROLS_2200
+     * @tc.name       : TestUpdatePiPControlStatusInVideoLive
+     * @tc.desc       : TestUpdatePiPControlStatusInVideoLive
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('TestUpdatePiPControlStatusInVideoLive', 2, (done: Function) => {
+      const message = 'TestUpdatePiPControlStatusInVideoLive';
+      const config = initConfig(pipWindow.PiPTemplateType.VIDEO_LIVE);
+      let pipController: pipWindow.PiPController;
+      try {
+        pipWindow.create(config).then((data: pipWindow.PiPController) => {
+          pipController = data;
+          pipController.startPiP().then(async () => {
+            let count = 0;
+            pipController.on('controlPanelActionEvent', (event: pipWindow.PiPActionEventType, status?: number) => {
+              switch (event) {
+                case 'playbackStateChanged':
+                  if (status === 0) {
+                    count--;
+                  } else if (status === 1) {
+                    count++;
+                  }
+                  break;
+                default:
+                  break;
+              }
+            })
+            try {
+              pipController.updatePiPControlStatus(pipWindow.PiPControlType.VIDEO_PLAY_PAUSE, pipWindow.PiPControlStatus.PLAY);
+              console.info(`${message} Succeeded updatePiPControlStatus VIDEO_PLAY_PAUSE to PLAY`);
+              await sleep(2000);
+              pipController.updatePiPControlStatus(pipWindow.PiPControlType.VIDEO_PLAY_PAUSE, pipWindow.PiPControlStatus.PAUSE);
+              console.info(`${message} Succeeded updatePiPControlStatus VIDEO_PLAY_PAUSE to PAUSE`);
+
+              console.info(`${message} count is：${count}`);
+              expect(0).assertEqual(count);
+              done();
+            } catch (error) {
+              if(error.code == 801){
+                console.info(`${message} The current device type does not support to updatePiPControlStatus`);
+                expect(true).assertTrue();
+                done();
+              } else{
+                console.info(`${message} Params error. Cause` + JSON.stringify(error));
+                expect().assertFail();
+                done();
+              }
+            }
+          }).catch((err: BusinessError) => {
+            if(err.code == 801){
+              console.info(`${message} The current device type does not support to start pip`);
+              expect(true).assertTrue();
+              done();
+            } else{
+              console.error(`${message} Failed to start pip. Cause:${err.code}, message:${err.message}`);
+              expect().assertFail();
+              done();
+            }
+          });
+        }).catch((err: BusinessError) => {
+          if(err.code == 801){
+            console.info(`${message} The current device type does not support to create pipController`);
+            expect(true).assertTrue();
+            done();
+          } else{
+            console.info(`${message} Failed to create pipController. Cause` + JSON.stringify(err));
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (error) {
+        if(error.code == 801){
+          console.info(`${message} The current device type does not support to create pipController`);
+          expect(true).assertTrue();
+          done();
+        } else{
+          console.info(`${message} Failed to create pipController. Cause` + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+      }
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_PIP_TABIET_CONTROLS_2300
+     * @tc.name       : TestSetPiPControlEnabledInVideoPlay
+     * @tc.desc       : TestSetPiPControlEnabledInVideoPlay
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('TestSetPiPControlEnabledInVideoPlay', 2, (done: Function) => {
+      const message = 'TestSetPiPControlEnabledInVideoPlay';
+      const config = initConfig(pipWindow.PiPTemplateType.VIDEO_PLAY);
+      let pipController: pipWindow.PiPController;
+      try {
+        pipWindow.create(config).then((data: pipWindow.PiPController) => {
+          pipController = data;
+          pipController.startPiP().then(async () => {
+            try {
+              pipController.setPiPControlEnabled(pipWindow.PiPControlType.VIDEO_PLAY_PAUSE, false);
+              console.info(`${message} Succeeded setPiPControlEnabled VIDEO_PLAY_PAUSE false`);
+              await sleep(1000);
+              pipController.setPiPControlEnabled(pipWindow.PiPControlType.VIDEO_PLAY_PAUSE, true);
+              console.info(`${message} Succeeded setPiPControlEnabled VIDEO_PLAY_PAUSE true`);
+              expect(true).assertTrue();
+              done();
+            } catch (error) {
+              if(error.code == 801){
+                console.info(`${message} The current device type does not support to setPiPControlEnabled`);
+                expect(true).assertTrue();
+                done();
+              } else{
+                console.info(`${message} Params error. Cause` + JSON.stringify(error));
+                expect().assertFail();
+                done();
+              }
+            }
+          }).catch((err: BusinessError) => {
+            if(err.code == 801){
+              console.info(`${message} The current device type does not support to start pip`);
+              expect(true).assertTrue();
+              done();
+            } else{
+              console.error(`${message} Failed to start pip. Cause:${err.code}, message:${err.message}`);
+              expect().assertFail();
+              done();
+            }
+          });
+        }).catch((err: BusinessError) => {
+          if(err.code == 801){
+            console.info(`${message} The current device type does not support to create pipController`);
+            expect(true).assertTrue();
+            done();
+          } else{
+            console.info(`${message} Failed to create pipController. Cause` + JSON.stringify(err));
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (error) {
+        if(error.code == 801){
+          console.info(`${message} The current device type does not support to create pipController`);
+          expect(true).assertTrue();
+          done();
+        } else{
+          console.info(`${message} Failed to create pipController. Cause` + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+      }
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_PIP_TABIET_CONTROLS_2400
+     * @tc.name       : TestSetPiPControlEnabledInVideoCall
+     * @tc.desc       : TestSetPiPControlEnabledInVideoCall
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('TestSetPiPControlEnabledInVideoCall', 2, (done: Function) => {
+      const message = 'TestSetPiPControlEnabledInVideoCall';
+      const config = initConfig(pipWindow.PiPTemplateType.VIDEO_CALL);
+      let pipController: pipWindow.PiPController;
+      try {
+        pipWindow.create(config).then((data: pipWindow.PiPController) => {
+          pipController = data;
+          pipController.startPiP().then(async () => {
+            try {
+              pipController.setPiPControlEnabled(pipWindow.PiPControlType.MICROPHONE_SWITCH, false);
+              console.info(`${message} Succeeded setPiPControlEnabled MICROPHONE_SWITCH false`);
+              await sleep(1000);
+              pipController.setPiPControlEnabled(pipWindow.PiPControlType.MICROPHONE_SWITCH, true);
+              console.info(`${message} Succeeded setPiPControlEnabled MICROPHONE_SWITCH true`);
+              expect(true).assertTrue();
+              done();
+            } catch (error) {
+              if(error.code == 801){
+                console.info(`${message} The current device type does not support to setPiPControlEnabled`);
+                expect(true).assertTrue();
+                done();
+              } else{
+                console.info(`${message} Params error. Cause` + JSON.stringify(error));
+                expect().assertFail();
+                done();
+              }
+            }
+          }).catch((err: BusinessError) => {
+            if(err.code == 801){
+              console.info(`${message} The current device type does not support to start pip`);
+              expect(true).assertTrue();
+              done();
+            } else{
+              console.error(`${message} Failed to start pip. Cause:${err.code}, message:${err.message}`);
+              expect().assertFail();
+              done();
+            }
+          });
+        }).catch((err: BusinessError) => {
+          if(err.code == 801){
+            console.info(`${message} The current device type does not support to create pipController`);
+            expect(true).assertTrue();
+            done();
+          } else{
+            console.info(`${message} Failed to create pipController. Cause` + JSON.stringify(err));
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (error) {
+        if(error.code == 801){
+          console.info(`${message} The current device type does not support to create pipController`);
+          expect(true).assertTrue();
+          done();
+        } else{
+          console.info(`${message} Failed to create pipController. Cause` + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+      }
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_PIP_TABIET_CONTROLS_2500
+     * @tc.name       : TestSetPiPControlEnabledInVideoMeeting
+     * @tc.desc       : TestSetPiPControlEnabledInVideoMeeting
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('TestSetPiPControlEnabledInVideoMeeting', 2, (done: Function) => {
+      const message = 'TestSetPiPControlEnabledInVideoMeeting';
+      const config = initConfig(pipWindow.PiPTemplateType.VIDEO_MEETING);
+      let pipController: pipWindow.PiPController;
+      try {
+        pipWindow.create(config).then((data: pipWindow.PiPController) => {
+          pipController = data;
+          pipController.startPiP().then(async () => {
+            try {
+              pipController.setPiPControlEnabled(pipWindow.PiPControlType.MUTE_SWITCH, false);
+              console.info(`${message} Succeeded setPiPControlEnabled MUTE_SWITCH false`);
+              await sleep(1000);
+              pipController.setPiPControlEnabled(pipWindow.PiPControlType.MUTE_SWITCH, true);
+              console.info(`${message} Succeeded setPiPControlEnabled MUTE_SWITCH true`);
+              expect(true).assertTrue();
+              done();
+            } catch (error) {
+              if(error.code == 801){
+                console.info(`${message} The current device type does not support to setPiPControlEnabled`);
+                expect(true).assertTrue();
+                done();
+              } else{
+                console.info(`${message} Params error. Cause` + JSON.stringify(error));
+                expect().assertFail();
+                done();
+              }
+            }
+          }).catch((err: BusinessError) => {
+            if(err.code == 801){
+              console.info(`${message} The current device type does not support to start pip`);
+              expect(true).assertTrue();
+              done();
+            } else{
+              console.error(`${message} Failed to start pip. Cause:${err.code}, message:${err.message}`);
+              expect().assertFail();
+              done();
+            }
+          });
+        }).catch((err: BusinessError) => {
+          if(err.code == 801){
+            console.info(`${message} The current device type does not support to create pipController`);
+            expect(true).assertTrue();
+            done();
+          } else{
+            console.info(`${message} Failed to create pipController. Cause` + JSON.stringify(err));
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (error) {
+        if(error.code == 801){
+          console.info(`${message} The current device type does not support to create pipController`);
+          expect(true).assertTrue();
+          done();
+        } else{
+          console.info(`${message} Failed to create pipController. Cause` + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
+      }
+    })
+    /**
+     * @tc.number     : SUB_BASIC_WMS_PIP_TABIET_CONTROLS_2600
+     * @tc.name       : test_PiPControlCustomUI
+     * @tc.desc       : test_PiPControlCustomUI
+     * @tc.size       : MediumTestTest
+     * @tc.type       : Function
+     * @tc.level      : Level 2
+     */
+    it('test_PiPControlCustomUI', 2, (done: Function) => {
+      console.log(`${tag} test_PiPControlCustomUI begin`);
+      const message = 'test_PiPControlCustomUI';
+      let nodeController: TextNodeController = new TextNodeController('this is custom UI');
+      let config: pipWindow.PiPConfiguration = {
+        context: globalThis.abilityContext,
+        componentController: new XComponentController(),
+        templateType: pipWindow.PiPTemplateType.VIDEO_PLAY,
+        contentWidth: 400,
+        contentHeight: 600,
+        customUIController: nodeController
+      };
+      try {
+        pipWindow.create(config).then(async (data: pipWindow.PiPController) => {
+          console.log(`${message}} Succeeded to creat pip controller. PiPControllerData：${data}`)
+          expect(true).assertTrue();
+          done();
+        }).catch((err: BusinessError) => {
+          if(err.code == 801){
+            console.info(`${message} The current device type does not support to create pipController`);
+            expect(true).assertTrue();
+            done();
+          } else{
+            console.info(`${message} Failed to create pipController. Cause` + JSON.stringify(err));
+            expect().assertFail();
+            done();
+          }
+        });
+      } catch (error) {
+        if(error.code == 801){
+          console.info(`${message} The current device type does not support to create pipController`);
+          expect(true).assertTrue();
+          done();
+        } else{
+          console.info(`${message} Failed to create pipController. Cause` + JSON.stringify(error));
+          expect().assertFail();
+          done();
+        }
       }
     })
 

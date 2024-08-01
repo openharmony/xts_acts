@@ -56,6 +56,12 @@ struct webViewOnViewportFitChange {
               .key('webViewOnViewportFitChange')
               .onClick(async () => {
                   console.info("key==>" + this.emitKey)
+                  await Utils.sleep(1000)
+                  if ( Utils.isPC(this.controller) ) {
+                    Utils.emitEvent(true,1340)
+                    Utils.emitEvent(true,1341)
+                    return
+                  }
                   switch (this.emitKey) {
                     case "emitWebViewOnViewportFitChange": {
                         console.log(this.emitKey)

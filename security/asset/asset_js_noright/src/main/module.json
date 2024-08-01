@@ -7,14 +7,13 @@
     "deviceTypes": [
       "default",
       "tablet",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:test_pages",
-    "requestPermissions": [
-      
-    ],
+    "requestPermissions": [],
     "abilities": [
       {
         "name": "TestAbility",

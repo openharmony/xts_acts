@@ -52,4 +52,8 @@ void getDimInfo(FILE *fp, std::vector<int64_t>* dim_info);
 char *ReadFile(const char *file, size_t* size);
 void PackNCHWToNHWCFp32(const char *src, char *dst, int batch, int plane, int channel);
 
+uint64_t getTimeInUs();
+std::map<std::string,float> CalculateIntVector(std::vector<float> vec);
+
+
 #endif  // GE_COMMON_H

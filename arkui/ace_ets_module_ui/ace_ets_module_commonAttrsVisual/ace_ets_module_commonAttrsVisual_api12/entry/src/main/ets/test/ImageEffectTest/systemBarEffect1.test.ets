@@ -13,17 +13,30 @@
  * limitations under the License.
  */
 
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
+import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/utils/Common';
 
 export default function systemBarEffectTest() {
 
-  describe('systemBarEffectTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/ImageEffect/systemBarEffect',
+  describe('systemBarEffectTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/ImageEffect/systemBarEffect',
       }
       try {
         router.clear();
@@ -31,7 +44,7 @@ export default function systemBarEffectTest() {
         console.info("get systemBarEffectTest state pages: " + JSON.stringify(pages));
         if (!("systemBarEffect" == pages.name)) {
           console.info("get systemBarEffectTest state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push systemBarEffectTest success: " + JSON.stringify(result));
         }
@@ -42,20 +55,20 @@ export default function systemBarEffectTest() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("systemBarEffectTest after each called");
     });
 
     /**
-     * @tc.number    systemBarEffectTest_0100
-     * @tc.name      systemBarEffectTest_0100
-     * @tc.desc      test api of systemBarEffect
-     * @tc.level:    Level 2
+     * @tc.number systemBarEffectTest_0100
+     * @tc.name systemBarEffectTest_0100
+     * @tc.desc test api of systemBarEffect
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
-    it('systemBarEffectTest_0100', 0, async function (done) {
+    it('systemBarEffectTest_0100', 0, async (done: Function) => {
       console.info('systemBarEffectTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -63,8 +76,7 @@ export default function systemBarEffectTest() {
       await button1.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('SystemBarEffect_text');
-      let obj = JSON.parse(strJson);
-      expect(obj.$attrs.content).assertEqual('systemBarEffect succ');
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('systemBarEffect succ');
       console.info('[systemBarEffectTest_0100] END');
       done();
     });

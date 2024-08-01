@@ -80,9 +80,9 @@ struct Index {
   }
 
   aboutToAppear() {
-    let abilityDelegator: any
+    let abilityDelegator;
     abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-    let abilityDelegatorArguments: any
+    let abilityDelegatorArguments;
     abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
     console.info('start run testcase!!!')
     Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
@@ -101,7 +101,7 @@ struct Index {
                 }).
                onWindowNew((event) => {
                 console.log("onWindowNew...");
-                var popController: web_webview.WebviewController = new web_webview.WebviewController();
+                let popController: web_webview.WebviewController = new web_webview.WebviewController();
                 event.handler.setWebController(popController);
                 setTimeout(()=>{
                     Utils.emitEvent(this.isVoid,801)

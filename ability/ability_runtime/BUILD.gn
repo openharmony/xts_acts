@@ -49,6 +49,7 @@ group("ability_runtime") {
       "actsondestroytest:actsondestroytest",
       "actsopenlinktest:actsopenlinktest",
       "actsparsingparameterstest:actsparsingparameterstest",
+      "actsphotoeditorextensiontest:ActsPhotoEditorExtensionTest",
       "actsqueryfunctiontest:actsqueryfunctiontest",
       "actsrequestdialogtest:actsrequestdialogtest",
       "actsrevokequickfixtest:ActsRevokeQuickFixApp",

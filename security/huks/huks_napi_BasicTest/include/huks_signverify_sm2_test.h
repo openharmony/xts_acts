@@ -17,20 +17,22 @@
 #define HUKS_SIGNVERIFY_SM2_TEST_H
 
 #include <string>
+
 #include "huks_three_stage_test_common.h"
-namespace Unittest::Sm2SignVerify {
-static const std::string g_inData = "Hks_SM2_Sign_Verify_Test_0000000000000000000000000000000000000000000000000000000"
-                                    "00000000000000000000000000000000000000000000000000000000000000000000000000000000"
-                                    "0000000000000000000000000000000000000000000000000000000000000000000000000_string";
+namespace Unittest::Sm2SignVerify
+{
+static const std::string g_inData =
+    "Hks_SM2_Sign_Verify_Test_0000000000000000000000000000000000000000000000000000000"
+    "00000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    "0000000000000000000000000000000000000000000000000000000000000000000000000_string";
 static const uint32_t SM2_COMMON_SIZE = 1024;
 
 struct GenerateKeyCaseParam {
     uint32_t id;
     int32_t result;
-    struct OH_Huks_Param params[4];
+    struct OH_Huks_Param params[5];
 };
 
 int Security_HUKS_NAPI_SignVerify_SM2_0100(void);
-}
-#endif // HUKS_SIGNVERIFY_SM2_TEST_H
-
+}  // namespace Unittest::Sm2SignVerify
+#endif  // HUKS_SIGNVERIFY_SM2_TEST_H

@@ -14,7 +14,7 @@
  */
 
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 
 function sleep(time: number) {
   return new Promise((resolve: (value: string) => void) => {
@@ -31,8 +31,8 @@ export default function appStorageJsunit() {
 
   describe('appStorageTest', () => {
     beforeEach(async () => {
-      let options = {
-        uri: 'MainAbility/pages/AppStorage/AppStorage',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/AppStorage/AppStorage',
       }
       try {
         router.clear();
@@ -40,7 +40,7 @@ export default function appStorageJsunit() {
         console.info("get AppStorage state success " + JSON.stringify(pages));
         if (!("AppStorage" == pages.name)) {
           console.info("get AppStorage state success " + JSON.stringify(pages.name));
-          let result = await router.push(options)
+          let result = await router.pushUrl(options)
           console.info("push AppStorage page success " + JSON.stringify(result));
         }
       } catch (err) {

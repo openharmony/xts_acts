@@ -17,9 +17,11 @@
 #define HUKS_CIPHER_SM4_TEST_COMMON_H
 
 #include <string>
+
 #include "huks_three_stage_test_common.h"
 
-namespace Unittest::Sm4Cipher {
+namespace Unittest::Sm4Cipher
+{
 static const uint32_t SM4_COMMON_SIZE = 256;
 static const uint32_t IV_SIZE = 16;
 static const uint32_t AAD_SIZE = 16;
@@ -32,9 +34,10 @@ static uint8_t AAD[AAD_SIZE] = {0};
 static uint8_t NONCE[NONCE_SIZE] = {0};
 static uint8_t AEAD[AEAD_SIZE] = {0};
 
-static const std::string g_inData = "Hks_SM4_Cipher_Test_000000000000000000000000000000000000000000000000000000000000"
-                                    "00000000000000000000000000000000000000000000000000000000000000000000000000000000"
-                                    "0000000000000000000000000000000000000000000000000000000000000000000000000_string";
+static const std::string g_inData =
+    "Hks_SM4_Cipher_Test_000000000000000000000000000000000000000000000000000000000000"
+    "00000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    "0000000000000000000000000000000000000000000000000000000000000000000000000_string";
 
 struct FailureCaseParam {
     uint32_t id;
@@ -43,6 +46,7 @@ struct FailureCaseParam {
 };
 
 OH_Huks_Result HksSm4CipherTestCaseOther(const struct OH_Huks_Blob *keyAlias, struct OH_Huks_ParamSet *genParamSet,
-    struct OH_Huks_ParamSet *encryptParamSet, struct OH_Huks_ParamSet *decryptParamSet);
-} // namespace Unittest::Sm4Cipher
-#endif // HUKS_CIPHER_SM4_TEST_COMMON_H
+                                         struct OH_Huks_ParamSet *encryptParamSet,
+                                         struct OH_Huks_ParamSet *decryptParamSet);
+}  // namespace Unittest::Sm4Cipher
+#endif  // HUKS_CIPHER_SM4_TEST_COMMON_H

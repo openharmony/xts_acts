@@ -16,25 +16,25 @@
 import { describe, beforeEach, afterEach, it, expect } from '@ohos/hypium'
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
-import router from '@system.router';
+import router from '@ohos.router';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
+
 export default function scrollEnablePagingJsunit() {
-  describe('scroll_enablePagingTest', function () {
-    beforeEach(async function (done) {
+  describe('scroll_enablePagingTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("scrollEnablePaging beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/scrollEnablePaging',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/scrollEnablePaging',
       }
-      let result;
+
       try {
         router.clear();
         let pages = router.getState();
         console.info("get scrollEnablePaging state pages: " + JSON.stringify(pages));
         if (!("scrollEnablePaging" == pages.name)) {
           console.info("get scrollEnablePaging state pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(1000);
-          console.info("push scrollEnablePaging page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push scrollEnablePaging page error: " + err);
@@ -44,13 +44,13 @@ export default function scrollEnablePagingJsunit() {
 
     /**
      * @tc.number ArkUI_Stage_scrollEnablePaging01
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set scrollEnablePaging values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set scrollEnablePaging values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUI_Stage_scrollEnablePaging01', 0, async function (done) {
+    it('ArkUI_Stage_scrollEnablePaging01', 0, async (done: Function) => {
       console.info('[ArkUI_Stage_scrollEnablePaging01] START');
       await Utils.sleep(2000)
       let scrollRect = Utils.getComponentRect('ScrollTest');

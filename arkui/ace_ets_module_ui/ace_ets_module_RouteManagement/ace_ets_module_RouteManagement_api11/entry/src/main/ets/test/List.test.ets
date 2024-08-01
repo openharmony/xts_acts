@@ -12,7 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import pushPageInit from './supplementRouterTest/pushPageInit.test.ets'
+import pushPageInit from './supplementRouterTest/pushPageInit.test'
 import router_back1 from './router10/router_back1.test'
 import router_push1 from './router10/router_push1.test'
 import Router1 from './Router/Router1.test'
@@ -27,11 +27,11 @@ import goWithParams from './back_router/A_page.test'
 import RouterPushUrlJsunit from './State/RouterPushUrlJsunit.test';
 import RouterWithParamJsunit from './State/RouterWithParamJsunit.test';
 import RouterUrlErrorJsunit from './State/RouterUrlErrorJsunit.test';
-import routerReplaceJsunit from './Router/routerReplaceJsunit.test.ets';
+import routerReplaceJsunit from './Router/routerReplaceJsunit.test';
 
 import systemRouterJsunit from './Router/SystemRouterJsunit.test';
-import routerStandardJsunit from './ohosRouterTest/router.test.ets';
-import ohosRouterJsunit from './Router/OhosRouterJsnuit.test.ets';
+import routerStandardJsunit from './ohosRouterTest/router.test';
+import ohosRouterJsunit from './Router/OhosRouterJsnuit.test';
 
 export default function testsuite() {
   pushPageInit();
@@ -49,9 +49,7 @@ export default function testsuite() {
   RouterUrlErrorJsunit();
   stageRouterTest();
   routerReplaceJsunit();
-  
   systemRouterJsunit()
   routerStandardJsunit()
   ohosRouterJsunit();
-
 }

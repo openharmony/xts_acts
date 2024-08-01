@@ -64,8 +64,9 @@ export default function applicationManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
     })
 
@@ -81,12 +82,12 @@ export default function applicationManagerTest() {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         applicationManager.addDisallowedRunningBundlesSync(SELFWANT, APP_IDS_1, TEST_USER_ID);
-        let ret:Array<string> = applicationManager.getDisallowedRunningBundlesSync(SELFWANT, TEST_USER_ID);
-        expect(ret.length == APP_IDS_1.length).assertTrue();
+        expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -104,8 +105,9 @@ export default function applicationManagerTest() {
         applicationManager.addDisallowedRunningBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
       } catch (error) {
         expect(false).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -142,8 +144,9 @@ export default function applicationManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
     })
 
@@ -159,12 +162,12 @@ export default function applicationManagerTest() {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
         applicationManager.removeDisallowedRunningBundlesSync(SELFWANT, APP_IDS_1, TEST_USER_ID);
-        let ret:Array<string> = applicationManager.getDisallowedRunningBundlesSync(SELFWANT, TEST_USER_ID);
-        expect(ret.length == 0).assertTrue();
+        expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -182,8 +185,9 @@ export default function applicationManagerTest() {
         applicationManager.removeDisallowedRunningBundlesSync(SELFWANT, APP_IDS_1, DEFAULT_USER_ID);
       } catch (error) {
         expect(false).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -220,8 +224,9 @@ export default function applicationManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
     })
 
@@ -236,12 +241,13 @@ export default function applicationManagerTest() {
     it("test_getDisallowedRunningBundlesSync_003", 0, async function (done) {
       try {
         await adminManager.enableAdmin(SELFWANT, ENTINFO1, adminManager.AdminType.ADMIN_TYPE_SUPER);
-        let ret:Array<string> = applicationManager.getDisallowedRunningBundlesSync(SELFWANT, TEST_USER_ID);
-        expect(ret.length == 0).assertTrue();
+        applicationManager.getDisallowedRunningBundlesSync(SELFWANT, TEST_USER_ID);
+        expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -259,8 +265,9 @@ export default function applicationManagerTest() {
         applicationManager.getDisallowedRunningBundlesSync(SELFWANT, DEFAULT_USER_ID);
       } catch (error) {
         expect(false).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -299,8 +306,9 @@ export default function applicationManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
     })
 
@@ -319,8 +327,9 @@ export default function applicationManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -339,8 +348,9 @@ export default function applicationManagerTest() {
         applicationManager.addAutoStartApps(SELFWANT, autoStartApps);
       } catch (error) {
         expect(false).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -379,8 +389,9 @@ export default function applicationManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
     })
 
@@ -399,8 +410,9 @@ export default function applicationManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -419,8 +431,9 @@ export default function applicationManagerTest() {
         applicationManager.removeAutoStartApps(SELFWANT, autoStartApps);
       } catch (error) {
         expect(false).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -457,8 +470,9 @@ export default function applicationManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 9200002).assertTrue();
+      } finally {
+        await adminManager.disableAdmin(SELFWANT);
       }
-      await adminManager.disableAdmin(SELFWANT);
       done();
     })
 
@@ -477,8 +491,9 @@ export default function applicationManagerTest() {
         expect(false).assertTrue();
       } catch (error) {
         expect(error.code == 401).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
 
@@ -496,8 +511,9 @@ export default function applicationManagerTest() {
         applicationManager.getAutoStartApps(SELFWANT);
       } catch (error) {
         expect(false).assertTrue();
+      } finally {
+        await adminManager.disableSuperAdmin(SELFHAPNAME);
       }
-      await adminManager.disableSuperAdmin(SELFHAPNAME);
       done();
     })
   })

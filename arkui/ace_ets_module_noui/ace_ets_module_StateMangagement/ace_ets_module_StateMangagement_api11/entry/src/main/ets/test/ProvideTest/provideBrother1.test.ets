@@ -13,18 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  Driver,
+  Component,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import { MessageManager, Callback } from '../../MainAbility/utils/MessageManager';
 
 
 export default function provideBrother1() {
-  describe('provideBrother1', function () {
-    beforeEach(async function (done) {
+  describe('provideBrother1', () => {
+    beforeEach(async (done: Function) => {
       console.info("provideBrother1 beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Provide/provideBrother1',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Provide/provideBrother1',
       }
       try {
         router.clear();
@@ -32,7 +44,7 @@ export default function provideBrother1() {
         console.info("get provideBrother1 state pages: " + JSON.stringify(pages));
         if (!("provideBrother1" == pages.name)) {
           console.info("get provideBrother1 state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push provideBrother1 success: " + JSON.stringify(result));
         }
@@ -42,16 +54,16 @@ export default function provideBrother1() {
       }
       done();
     });
-    
-     /**
-     * @tc.number    SUB_ACE_provideBrother1_0100
-     * @tc.name      provideBrother1_0100
-     * @tc.desc      set api
-     * @tc.level:    Level 2
-     * @tc.type : 
+
+    /**
+     * @tc.number SUB_ACE_provideBrother1_0100
+     * @tc.name provideBrother1_0100
+     * @tc.desc set api
+     * @tc.level: Level 2
+     * @tc.type :
      * @tc.size :
      */
-    it('provideBrotherOneTest_0100', 0, async function (done) {
+    it('provideBrotherOneTest_0100', 0, async (done: Function) => {
       console.info('provideBrotherOneTest_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('provideBrother1');
@@ -62,7 +74,7 @@ export default function provideBrother1() {
       console.info('[provideBrotherOneTest_0100] END');
       done();
     });
-    
+
 
   })
 }

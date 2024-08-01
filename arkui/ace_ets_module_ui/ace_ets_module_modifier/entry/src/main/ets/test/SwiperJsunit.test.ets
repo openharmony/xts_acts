@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
 
 export default function swiperJsunit() {
-  describe('swiperTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/swiper',
+  describe('swiperTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/swiper',
       }
       try {
         router.clear();
@@ -30,9 +30,8 @@ export default function swiperJsunit() {
         console.info("get swiper state success " + JSON.stringify(pages));
         if (!("swiper" == pages.name)) {
           console.info("get swiper state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(1000);
-          console.info("push swiper page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push swiper page error: " + err);
@@ -42,13 +41,13 @@ export default function swiperJsunit() {
 
     /**
      * @tc.number swiperTest_0001
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set nextMargin values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set nextMargin values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('swiperTest_0001', 0, async function (done) {
+    it('swiperTest_0001', 0, async (done: Function) => {
       console.info('swiperTest_0001 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew = JSON.parse(strJsonNew);
@@ -60,13 +59,13 @@ export default function swiperJsunit() {
 
     /**
      * @tc.number swiperTest_0002
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set prevMargin values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set prevMargin values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('swiperTest_0002', 0, async function (done) {
+    it('swiperTest_0002', 0, async (done: Function) => {
       console.info('swiperTest_0002 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew = JSON.parse(strJsonNew);
@@ -78,13 +77,13 @@ export default function swiperJsunit() {
 
     /**
      * @tc.number swiperTest_0003
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set displayCount values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set displayCount values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('swiperTest_0003', 0, async function (done) {
+    it('swiperTest_0003', 0, async (done: Function) => {
       console.info('swiperTest_0003 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew = JSON.parse(strJsonNew);
@@ -96,13 +95,13 @@ export default function swiperJsunit() {
 
     /**
      * @tc.number swiperTest_0004
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set disableSwipe values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set disableSwipe values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('swiperTest_0004', 0, async function (done) {
+    it('swiperTest_0004', 0, async (done: Function) => {
       console.info('swiperTest_0004 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew = JSON.parse(strJsonNew);
@@ -114,13 +113,13 @@ export default function swiperJsunit() {
 
     /**
      * @tc.number swiperTest_0005
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set effectMode values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set effectMode values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('swiperTest_0005', 0, async function (done) {
+    it('swiperTest_0005', 0, async (done: Function) => {
       console.info('swiperTest_0005 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew = JSON.parse(strJsonNew);
@@ -132,13 +131,13 @@ export default function swiperJsunit() {
 
     /**
      * @tc.number swiperTest_0000
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set cachedCount values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set cachedCount values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('swiperTest_0006', 0, async function (done) {
+    it('swiperTest_0006', 0, async (done: Function) => {
       console.info('swiperTest_0006 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew = JSON.parse(strJsonNew);
@@ -150,13 +149,13 @@ export default function swiperJsunit() {
 
     /**
      * @tc.number swiperTest_0007
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set displayMode values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set displayMode values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('swiperTest_0007', 0, async function (done) {
+    it('swiperTest_0007', 0, async (done: Function) => {
       console.info('swiperTest_0007 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew = JSON.parse(strJsonNew);
@@ -168,13 +167,13 @@ export default function swiperJsunit() {
 
     /**
      * @tc.number swiperTest_0008
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set itemSpace values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set itemSpace values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('swiperTest_0008', 0, async function (done) {
+    it('swiperTest_0008', 0, async (done: Function) => {
       console.info('swiperTest_0008 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew = JSON.parse(strJsonNew);
@@ -186,13 +185,13 @@ export default function swiperJsunit() {
 
     /**
      * @tc.number swiperTest_0009
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set loop values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set loop values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('swiperTest_0009', 0, async function (done) {
+    it('swiperTest_0009', 0, async (done: Function) => {
       console.info('swiperTest_0009 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew = JSON.parse(strJsonNew);
@@ -204,13 +203,13 @@ export default function swiperJsunit() {
 
     /**
      * @tc.number swiperTest_0010
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set interval values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set interval values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('swiperTest_0010', 0, async function (done) {
+    it('swiperTest_0010', 0, async (done: Function) => {
       console.info('swiperTest_0010 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew = JSON.parse(strJsonNew);
@@ -222,13 +221,13 @@ export default function swiperJsunit() {
 
     /**
      * @tc.number swiperTest_0011
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set vertical values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set vertical values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('swiperTest_0011', 0, async function (done) {
+    it('swiperTest_0011', 0, async (done: Function) => {
       console.info('swiperTest_0011 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew = JSON.parse(strJsonNew);
@@ -240,13 +239,13 @@ export default function swiperJsunit() {
 
     /**
      * @tc.number swiperTest_0012
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set autoPlay values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set autoPlay values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('swiperTest_0012', 0, async function (done) {
+    it('swiperTest_0012', 0, async (done: Function) => {
       console.info('swiperTest_0012 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew = JSON.parse(strJsonNew);
@@ -258,13 +257,13 @@ export default function swiperJsunit() {
 
     /**
      * @tc.number swiperTest_0013
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set index values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set index values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('swiperTest_0013', 0, async function (done) {
+    it('swiperTest_0013', 0, async (done: Function) => {
       console.info('swiperTest_0013 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew = JSON.parse(strJsonNew);
@@ -276,13 +275,13 @@ export default function swiperJsunit() {
 
     /**
      * @tc.number swiperTest_0014
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set indicator values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set indicator values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('swiperTest_0014', 0, async function (done) {
+    it('swiperTest_0014', 0, async (done: Function) => {
       console.info('swiperTest_0014 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew = JSON.parse(strJsonNew);
@@ -295,13 +294,13 @@ export default function swiperJsunit() {
 
     /**
      * @tc.number swiperTest_015
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set curve values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set curve values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('swiperTest_015', 0, async function (done) {
+    it('swiperTest_015', 0, async (done: Function) => {
       console.info('swiperTest_015 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew = JSON.parse(strJsonNew);
@@ -313,13 +312,13 @@ export default function swiperJsunit() {
 
     /**
      * @tc.number swiperTest_016
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set duration values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set duration values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('swiperTest_016', 0, async function (done) {
+    it('swiperTest_016', 0, async (done: Function) => {
       console.info('swiperTest_016 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew = JSON.parse(strJsonNew);
@@ -331,13 +330,13 @@ export default function swiperJsunit() {
 
     /**
      * @tc.number swiperTest_017
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set displayArrow values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set displayArrow values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('swiperTest_017', 0, async function (done) {
+    it('swiperTest_017', 0, async (done: Function) => {
       console.info('swiperTest_017 START');
       let strJsonNew = getInspectorByKey('swiper');
       let objNew = JSON.parse(strJsonNew);
@@ -347,15 +346,15 @@ export default function swiperJsunit() {
       done();
     });
 
-     /**
+    /**
      * @tc.number swiperTest_018
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change index values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change index values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-     it('swiperTest_018', 0, async function (done) {
+    it('swiperTest_018', 0, async (done: Function) => {
       console.info('swiperTest_018 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

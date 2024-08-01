@@ -71,12 +71,13 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testIsWifiActive
         * @tc.desc Test isWifiActive API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0100', 0, async function (done) {
             try {
                 let isWifiActive = wifiMg.isWifiActive();
-                await sleep(3000);
+                expect().assertFail();
             } catch (error) {
                 console.error(`isWifiActive failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("201");
@@ -89,11 +90,13 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testScan
         * @tc.desc Test scan API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0003', 0, async function(done) {
             try {
                 let sacnResult = wifiMg.scan();
+                expect().assertFail();
             } catch(error) {
                 console.error(`scan failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("201")
@@ -106,11 +109,13 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testGetScanInfoList
         * @tc.desc Test getScanInfoList API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0038', 0, async function(done) {
             try {
                 let getScanInfo = wifiMg.getScanInfoList();
+                expect().assertFail();
             } catch(error) {
                 console.error(`getScanInfoList failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("201")
@@ -123,6 +128,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testAddCandidateConfig
         * @tc.desc Test addCandidateConfig API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0039', 0, async function (done) {
@@ -137,6 +143,7 @@ export default function actsWifiErrorCode201Test() {
                     };
                     let result = await wifiMg.addCandidateConfig(wifiDeviceConfig)
                     console.info("[wifi_test] addCandidateConfig  promise successful :" + JSON.stringify(result));
+                    expect().assertFail();
                 } catch(error) {
                     console.error(`addCandidateConfig promise failed, code ${error.code}, message ${error.message}`);
                     expect(error.code).assertEqual("201")
@@ -150,6 +157,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testAddCandidateConfig
         * @tc.desc Test addCandidateConfig API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0040', 0, async function (done) {
@@ -169,6 +177,7 @@ export default function actsWifiErrorCode201Test() {
                             return;
                         }
                         console.info("[wifi_test] addCandidateConfig callback result: " + JSON.stringify(data));
+                        expect().assertFail();
                     });
             } catch (error) {
                 console.error(`addCandidateConfig failed, code is ${error.code}, message is ${error.message}`);
@@ -182,6 +191,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testRemoveCandidateConfig
         * @tc.desc Test removeCandidateConfig API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0041', 0, async function (done) {
@@ -189,6 +199,7 @@ export default function actsWifiErrorCode201Test() {
                 try {
                     let result = await wifiMg.removeCandidateConfig(0);
                     console.info("[wifi_test] removeCandidateConfig  promise successful :" + JSON.stringify(result));
+                    expect().assertFail();
                 } catch(error) {
                     console.error(`removeCandidateConfig promise failed, code ${error.code}, message ${error.message}`);
                     expect(error.code).assertEqual("201")
@@ -202,6 +213,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testRemoveCandidateConfig
         * @tc.desc Test removeCandidateConfig API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0042', 0, async function (done) {
@@ -214,6 +226,7 @@ export default function actsWifiErrorCode201Test() {
                             return;
                         }
                         console.info("[wifi_test] removeCandidateConfig callback result: " + JSON.stringify(data));
+                        expect().assertFail();
                     });
             } catch (error) {
                 console.error(`removeCandidateConfig failed, code is ${error.code}, message is ${error.message}`);
@@ -227,11 +240,13 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testGetCandidateConfigs
         * @tc.desc Test getCandidateConfigs API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0043', 0, async function (done) {
             try {
                 let getCandidateConfigs = wifiMg.getCandidateConfigs();
+                expect().assertFail();
             } catch (error) {
                 console.error(`getCandidateConfigs failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("201")
@@ -244,11 +259,13 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testConnectToCandidateConfig
         * @tc.desc Test connectToCandidateConfig API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0044', 0, async function (done) {
             try {
                 let connectToCandidateConfig = wifiMg.connectToCandidateConfig(0);
+                expect().assertFail();
             } catch (error) {
                 console.error(`connectToCandidateConfig failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("201")
@@ -261,11 +278,13 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testGetSignalLevel
         * @tc.desc Test getSignalLevel API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0045', 0, async function (done) {
             try {
                 let getSignalLevel = wifiMg.getSignalLevel(-65,1);
+                expect().assertFail();
             } catch (error) {
                 console.error(`getSignalLevel failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("201")
@@ -278,6 +297,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testGetLinkedInfo
         * @tc.desc Test getLinkedInfo API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0046', 0, async function (done) {
@@ -285,6 +305,7 @@ export default function actsWifiErrorCode201Test() {
                 try {
                     let result = await wifiMg.getLinkedInfo();
                     console.info("[wifi_test] getLinkedInfo  promise successful :" + JSON.stringify(result));
+                    expect().assertFail();
                 } catch(error) {
                     console.error(`getLinkedInfo promise failed, code is ${error.code}, message is ${error.message}`);
                     expect(error.code).assertEqual("201")
@@ -298,6 +319,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testGetLinkedInfo
         * @tc.desc Test getLinkedInfo API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0047', 0, async function (done) {
@@ -310,6 +332,7 @@ export default function actsWifiErrorCode201Test() {
                             return;
                         }
                         console.info("[wifi_test] getLinkedInfo callback result: " + JSON.stringify(data));
+                        expect().assertFail();
                     });
             } catch (error) {
                 console.error(`getLinkedInfo failed, code is ${error.code}, message is ${error.message}`);
@@ -323,11 +346,13 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testIsConnected
         * @tc.desc Test isConnected API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0048', 0, async function (done) {
             try {
                 let isConnected = wifiMg.isConnected();
+                expect().assertFail();
             } catch (error) {
                 console.error(`isConnected failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("201")
@@ -340,11 +365,13 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testIsFeatureSupported
         * @tc.desc Test isFeatureSupported API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0049', 0, async function (done) {
             try {
                 let isFeatureSupport = wifiMg.isFeatureSupported(0);
+                expect().assertFail();
             } catch (error) {
                 console.error(`isFeatureSupported failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("201")
@@ -357,11 +384,13 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testGetIpInfo
         * @tc.desc Test getIpInfo API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0050', 0, async function (done) {
             try {
                 let getIpInfo = wifiMg.getIpInfo();
+                expect().assertFail();
             } catch (error) {
                 console.error(`getIpInfo failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("201")
@@ -374,11 +403,13 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testGetCountryCode
         * @tc.desc Test getCountryCode API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0051', 0, async function (done) {
             try {
                 let getCountryCode = wifiMg.getCountryCode();
+                expect().assertFail();
             } catch (error) {
                 console.error(`getCountryCode failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("201")
@@ -391,6 +422,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testGetP2pLinkedInfo
         * @tc.desc Test getP2pLinkedInfo API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0052', 0, async function (done) {
@@ -399,6 +431,7 @@ export default function actsWifiErrorCode201Test() {
                     let result = await wifiMg.getP2pLinkedInfo();
                     await sleep(3000);
                     console.info("[wifi_test] getP2pLinkedInfo  promise successful :" + JSON.stringify(result));
+                    expect().assertFail();
                 } catch(error) {
                     console.error(`[wifi_test] getP2pLinkedInfo promise ,code ${error.code}, message ${error.message}`);
                     expect(error.code).assertEqual("201")
@@ -412,6 +445,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testGetP2pLinkedInfo
         * @tc.desc Test getP2pLinkedInfo API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0053', 0, async function (done) {
@@ -425,6 +459,7 @@ export default function actsWifiErrorCode201Test() {
                             return;
                         }
                         console.info("[wifi_test] getP2pLinkedInfo callback result: " + JSON.stringify(data));
+                        expect().assertFail();
                     });
             } catch (error) {
                 console.error(`getP2pLinkedInfo failed, code is ${error.code}, message is ${error.message}`);
@@ -438,6 +473,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testGetCurrentP2pGroup
         * @tc.desc Test getCurrentP2pGroup API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0054', 0, async function (done) {
@@ -445,6 +481,7 @@ export default function actsWifiErrorCode201Test() {
                 try {
                     let result = await wifiMg.getCurrentP2pGroup();
                     console.info("[wifi_test] getCurrentP2pGroup  promise successful :" + JSON.stringify(result));
+                    expect().assertFail();
                 } catch(error) {
                     console.error(`getCurrentP2pGroup promise failed, code ${error.code}, message ${error.message}`);
                     expect(error.code).assertEqual("201")
@@ -458,6 +495,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testGetCurrentP2pGroup
         * @tc.desc Test getCurrentP2pGroup API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0055', 0, async function (done) {
@@ -470,6 +508,7 @@ export default function actsWifiErrorCode201Test() {
                             return;
                         }
                         console.info("[wifi_test] getCurrentP2pGroup callback result: " + JSON.stringify(data));
+                        expect().assertFail();
                     });
             } catch (error) {
                 console.error(`getCurrentP2pGroup failed, code is ${error.code}, message is ${error.message}`);
@@ -483,6 +522,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testGetP2pPeerDevices
         * @tc.desc Test getP2pPeerDevices API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0056', 0, async function (done) {
@@ -490,6 +530,7 @@ export default function actsWifiErrorCode201Test() {
                 try {
                     let result = await wifiMg.getP2pPeerDevices();
                     console.info("[wifi_test] getP2pPeerDevices  promise successful :" + JSON.stringify(result));
+                    expect().assertFail();
                 } catch(error) {
                     console.error(`getP2pPeerDevices promise failed, code ${error.code}, message ${error.message}`);
                     expect(error.code).assertEqual("201")
@@ -503,6 +544,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testGetP2pPeerDevices
         * @tc.desc Test getP2pPeerDevices API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0057', 0, async function (done) {
@@ -515,6 +557,7 @@ export default function actsWifiErrorCode201Test() {
                             return;
                         }
                         console.info("[wifi_test] getP2pPeerDevices callback result: " + JSON.stringify(data));
+                        expect().assertFail();
                     });
             } catch (error) {
                 console.error(`getP2pPeerDevices failed, code is ${error.code}, message is ${error.message}`);
@@ -528,6 +571,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testGetP2pLocalDevice
         * @tc.desc Test getP2pLocalDevice API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0058', 0, async function (done) {
@@ -535,6 +579,7 @@ export default function actsWifiErrorCode201Test() {
                 try {
                     let result = await wifiMg.getP2pLocalDevice();
                     console.info("[wifi_test] getP2pLocalDevice  promise successful :" + JSON.stringify(result));
+                    expect().assertFail();
                 } catch(error) {
                     console.error(`getP2pLocalDevice promise failed, code ${error.code}, message ${error.message}`);
                     expect(error.code).assertEqual("201")
@@ -548,6 +593,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testGetP2pLocalDevice
         * @tc.desc Test getP2pLocalDevice API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0059', 0, async function (done) {
@@ -560,6 +606,7 @@ export default function actsWifiErrorCode201Test() {
                             return;
                         }
                         console.info("[wifi_test] getP2pLocalDevice callback result: " + JSON.stringify(data));
+                        expect().assertFail();
                     });
             } catch (error) {
                 console.error(`getP2pLocalDevice failed, code is ${error.code}, message is ${error.message}`);
@@ -573,6 +620,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testCreateP2pGroup
         * @tc.desc Test getP2pLocalDevice API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0060', 0, async function (done) {
@@ -585,6 +633,7 @@ export default function actsWifiErrorCode201Test() {
                     goBand : wifiMg.GroupOwnerBand.GO_BAND_2GHZ,
                 };
                 let createGroup = wifiMg.createP2pGroup(wifiP2PConfig);
+                expect().assertFail();
             } catch (error) {
                 console.error(`createP2pGroup failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("201")
@@ -597,11 +646,13 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testRemoveP2pGroup
         * @tc.desc Test removeP2pGroup API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0061', 0, async function (done) {
             try {
                 let removeGroup = wifiMg.removeP2pGroup();
+                expect().assertFail();
             } catch (error) {
                 console.error(`removeGroup failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("201")
@@ -614,6 +665,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testP2pConnect
         * @tc.desc Test p2pConnect API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0062', 0, async function (done) {
@@ -626,6 +678,8 @@ export default function actsWifiErrorCode201Test() {
                     goBand : wifiMg.GroupOwnerBand.GO_BAND_2GHZ,
                 };
                 let p2pConnect = wifiMg.p2pConnect(wifiP2PConfig);
+                console.info("201 fail,has no permission but api is true");
+                expect().assertFail();
             } catch (error) {
                 console.error(`p2pConnect failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("201")
@@ -638,11 +692,14 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testP2pCancelConnect
         * @tc.desc Test p2pCancelConnect API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0063', 0, async function (done) {
             try {
                 let p2pCancelConnect = wifiMg.p2pCancelConnect();
+                console.info("201 fail,has no permission but api is true");
+                expect().assertFail();
             } catch (error) {
                 console.error(`p2pCancelConnect failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("201")
@@ -655,11 +712,14 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testStartDiscoverDevices
         * @tc.desc Test startDiscoverDevices API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0064', 0, async function (done) {
             try {
                 let startDiscoverDevices = wifiMg.startDiscoverP2pDevices();
+                console.info("201 fail,has no permission but api is true");
+                expect().assertFail();
             } catch (error) {
                 console.error(`startDiscoverP2pDevices failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("201")
@@ -672,11 +732,14 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testStopDiscoverP2pDevices
         * @tc.desc Test stopDiscoverP2pDevices API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0065', 0, async function (done) {
             try {
                 let stopDiscoverDevices = wifiMg.stopDiscoverP2pDevices();
+                console.info("201 fail,has no permission but api is true");
+                expect().assertFail();
             } catch (error) {
                 console.error(`stopDiscoverP2pDevices failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("201")
@@ -689,6 +752,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testWifiStateChange
         * @tc.desc Test wifiStateChange API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0066', 0, async function (done) {
@@ -698,12 +762,16 @@ export default function actsWifiErrorCode201Test() {
             }
             try {
                 wifiMg.on(wifiState, wifiStateChangeCallback);
+                console.info("wifiStateChange 201 fail,has no permission but api is true");
+                expect().assertFail();
             } catch (error) {
                 console.error(`wifiStateChange on failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("201")
             }
             try {
                 wifiMg.off(wifiState, wifiStateChangeCallback);
+                console.info("wifiStateChange off 201 fail,has no permission but api is true");
+                expect().assertFail();
             } catch (error) {
                 console.error(`wifiStateChange off failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("2501000")
@@ -716,6 +784,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testWifiConnectionChange
         * @tc.desc Test wifiConnectionChange API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0067', 0, async function (done) {
@@ -725,12 +794,16 @@ export default function actsWifiErrorCode201Test() {
             }
             try {
                 wifiMg.on(wifiState, wifiStateChangeCallback);
+                console.info("wifiConnectionChange 201 fail,has no permission but api is true");
+                expect().assertFail();
             } catch (error) {
                 console.error(`wifiConnectionChange on failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("201")
             }
             try {
                 wifiMg.off(wifiState, wifiStateChangeCallback);
+                console.info("wifiConnectionChange off 201 fail,has no permission but api is true");
+                expect().assertFail();
             } catch (error) {
                 console.error(`wifiConnectionChange off failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("2501000")
@@ -743,6 +816,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testWifiScanStateChange
         * @tc.desc Test wifiScanStateChange API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0068', 0, async function (done) {
@@ -752,12 +826,16 @@ export default function actsWifiErrorCode201Test() {
             }
             try {
                 wifiMg.on(wifiState, wifiStateChangeCallback);
+                console.info("wifiScanStateChange 201 fail,has no permission but api is true");
+                expect().assertFail();
             } catch (error) {
                 console.error(`wifiScanStateChange on failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("201")
             }
             try {
                 wifiMg.off(wifiState, wifiStateChangeCallback);
+                console.info("wifiScanStateChange off 201 fail,has no permission but api is true");
+                expect().assertFail();
             } catch (error) {
                 console.error(`wifiScanStateChange off failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("2501000")
@@ -770,6 +848,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testWifiRssiChange
         * @tc.desc Test wifiRssiChange API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0069', 0, async function (done) {
@@ -779,12 +858,16 @@ export default function actsWifiErrorCode201Test() {
             }
             try {
                 wifiMg.on(wifiState, wifiStateChangeCallback);
+                console.info("wifiRssiChange 201 fail,has no permission but api is true");
+                expect().assertFail();
             } catch (error) {
                 console.error(`wifiRssiChange on failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("201")
             }
             try {
                 wifiMg.off(wifiState, wifiStateChangeCallback);
+                console.info("wifiRssiChange off 201 fail,has no permission but api is true");
+                expect().assertFail();
             } catch (error) {
                 console.error(`wifiRssiChange off failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("2501000")
@@ -797,6 +880,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testHotspotStateChange
         * @tc.desc Test hotspotStateChange API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0070', 0, async function (done) {
@@ -806,12 +890,16 @@ export default function actsWifiErrorCode201Test() {
             }
             try {
                 wifiMg.on(wifiState, wifiStateChangeCallback);
+                console.info("hotspotStateChange 201 fail,has no permission but api is true");
+                expect().assertFail();
             } catch (error) {
                 console.error(`hotspotStateChange on failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("201")
             }
             try {
                 wifiMg.off(wifiState, wifiStateChangeCallback);
+                console.info("hotspotStateChange off 201 fail,has no permission but api is true");
+                expect().assertFail();
             } catch (error) {
                 console.error(`hotspotStateChange off failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("2601000")
@@ -824,6 +912,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testP2pStateChange
         * @tc.desc Test p2pStateChange API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0071', 0, async function (done) {
@@ -833,12 +922,16 @@ export default function actsWifiErrorCode201Test() {
             }
             try {
                 wifiMg.on(wifiState, wifiStateChangeCallback);
+                console.info("p2pStateChange 201 fail,has no permission but api is true");
+                expect().assertFail();
             } catch (error) {
                 console.error(`p2pStateChange on failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("201")
             }
             try {
                 wifiMg.off(wifiState, wifiStateChangeCallback);
+                console.info("p2pStateChange off 201 fail,has no permission but api is true");
+                expect().assertFail();
             } catch (error) {
                 console.error(`p2pStateChange off failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("2801000")
@@ -851,6 +944,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testP2pConnectionChange
         * @tc.desc Test p2pConnectionChange API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0072', 0, async function (done) {
@@ -860,12 +954,16 @@ export default function actsWifiErrorCode201Test() {
             }
             try {
                 wifiMg.on(wifiState, wifiStateChangeCallback);
+                console.info("p2pConnectionChange 201 fail,has no permission but api is true");
+                expect().assertFail();
             } catch (error) {
                 console.error(`p2pConnectionChange on failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("201")
             }
             try {
                 wifiMg.off(wifiState, wifiStateChangeCallback);
+                console.info("p2pConnectionChange off 201 fail,has no permission but api is true");
+                expect().assertFail();
             } catch (error) {
                 console.error(`p2pConnectionChange off failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("2801000")
@@ -878,6 +976,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testP2pDeviceChange
         * @tc.desc Test p2pDeviceChange API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0073', 0, async function (done) {
@@ -887,12 +986,16 @@ export default function actsWifiErrorCode201Test() {
             }
             try {
                 wifiMg.on(wifiState, wifiStateChangeCallback);
+                console.info("p2pDeviceChange 201 fail,has no permission but api is true");
+                expect().assertFail();
             } catch (error) {
                 console.error(`p2pDeviceChange on failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("201")
             }
             try {
                 wifiMg.off(wifiState, wifiStateChangeCallback);
+                console.info("p2pDeviceChange off 201 fail,has no permission but api is true");
+                expect().assertFail();
             } catch (error) {
                 console.error(`p2pDeviceChange off failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("2801000")
@@ -905,6 +1008,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testP2pPeerDeviceChange
         * @tc.desc Test p2pPeerDeviceChange API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0074', 0, async function (done) {
@@ -914,12 +1018,16 @@ export default function actsWifiErrorCode201Test() {
             }
             try {
                 wifiMg.on(wifiState, wifiStateChangeCallback);
+                console.info("p2pPeerDeviceChange 201 fail,has no permission but api is true");
+                expect().assertFail();
             } catch (error) {
                 console.error(`p2pPeerDeviceChange on failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("201")
             }
             try {
                 wifiMg.off(wifiState, wifiStateChangeCallback);
+                console.info("p2pPeerDeviceChange off 201 fail,has no permission but api is true");
+                expect().assertFail();
             } catch (error) {
                 console.error(`p2pPeerDeviceChange off failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("2801000")
@@ -932,6 +1040,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testP2pPersistentGroupChange
         * @tc.desc Test p2pPersistentGroupChange API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0075', 0, async function (done) {
@@ -941,12 +1050,16 @@ export default function actsWifiErrorCode201Test() {
             }
             try {
                 wifiMg.on(wifiState, wifiStateChangeCallback);
+                console.info("p2pPersistentGroupChange 201 fail,has no permission but api is true");
+                expect().assertFail();
             } catch (error) {
                 console.error(`p2pPersistentGroupChange on failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("201")
             }
             try {
                 wifiMg.off(wifiState, wifiStateChangeCallback);
+                console.info("p2pPersistentGroupChange off 201 fail,has no permission but api is true");
+                expect().assertFail();
             } catch (error) {
                 console.error(`p2pPersistentGroupChange off failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("2801000")
@@ -959,6 +1072,7 @@ export default function actsWifiErrorCode201Test() {
         * @tc.name testP2pDiscoveryChange
         * @tc.desc Test p2pDiscoveryChange API ErrorCode 201.
         * @tc.type Function
+        * @tc.size LargeTest
         * @tc.level Level 0
         */
         it('SUB_Communication_WiFi_XTS_ErrorCode_0076', 0, async function (done) {
@@ -968,12 +1082,16 @@ export default function actsWifiErrorCode201Test() {
             }
             try {
                 wifiMg.on(wifiState, wifiStateChangeCallback);
+                console.info("p2pDiscoveryChange 201 fail,has no permission but api is true");
+                expect().assertFail();
             } catch (error) {
                 console.error(`p2pDiscoveryChange on failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("201")
             }
             try {
                 wifiMg.off(wifiState, wifiStateChangeCallback);
+                console.info("p2pDiscoveryChange off 201 fail,has no permission but api is true");
+                expect().assertFail();
             } catch (error) {
                 console.error(`p2pDiscoveryChange off failed, code is ${error.code}, message is ${error.message}`);
                 expect(error.code).assertEqual("2801000")
@@ -984,3 +1102,4 @@ export default function actsWifiErrorCode201Test() {
             console.log("*************[wifi_test] start wifi js unit test end*************");
     })
 }
+

@@ -23,12 +23,12 @@ import globalContext from '../test/GlobalContext'
 import common from '@ohos.app.ability.common'
 
 export default function testsuite() {
-  photoPickerCallback(globalContext.getContext().getAbility())
-  photoPickerPromise(globalContext.getContext().getAbility())
   documentPickerCallback(globalContext.getContext().getAbility())
   documentPickerPromise(globalContext.getContext().getAbility())
   audioPickerCallback(globalContext.getContext().getAbility())
   audioPickerPromise(globalContext.getContext().getAbility())
+  photoPickerCallback(globalContext.getContext().getAbility())
+  photoPickerPromise(globalContext.getContext().getAbility())
   /*
   globalContext.getContext().setObject("ui", a.UIAbilityContext)
   globalContext.getContext().setObject("ui", common.UIAbilityContext)

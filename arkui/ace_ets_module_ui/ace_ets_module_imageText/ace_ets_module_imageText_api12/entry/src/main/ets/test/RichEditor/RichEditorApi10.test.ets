@@ -47,14 +47,17 @@ export default function RichEditorApi10() {
     /**
      * @tc.number RichEditorApi10_0100
      * @tc.name   testFocus
-     * @tc.desc
+     * @tc.desc   Test onWillChange interface.
+     * @tc.size   : MediumTest
+     * @tc.type   : Function
+     * @tc.level  : Level 2
      */
     it('RichEditorApi10_0100', 0, async (done: Function) => {
       console.info('RichEditorApi10_0100 START');
       await CommonFunc.sleep(1000);
 
       let text1 = getInspectorByKey('RichEditorApi10_text1');
-      expect(String(JSON.parse(text1).$attrs.content)).assertEqual('aaaaaaaa')
+      expect(String(JSON.parse(text1).$attrs.content)).assertEqual('30')
 
       await CommonFunc.sleep(1000);
 

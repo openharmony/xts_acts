@@ -27,6 +27,7 @@ struct searchTest {
 
       Search({ value: this.text2, controller: this.controller })
         .key('searchTest1')
+        .width(150)
         .onChange((value: string) => {
           this.text2 = value
         })
@@ -38,6 +39,7 @@ struct searchTest {
         })
 
       Search()
+        .width(150)
         .key('searchTest2')
         .onEditChange((e) => {
           this.text1 = e + ''
@@ -56,7 +58,7 @@ struct searchTest {
       Button('text')
         .key('searchTestBt2')
         .onClick((event: ClickEvent) => {
-          this.text2 = 'SearchSearchSearchSearchSearchSearchSearch'
+          this.text2 = 'Search SearchSearchSearch SearchSearchSearch'
         })
 
 

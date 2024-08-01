@@ -15,12 +15,14 @@
 
 #include "huks_attest_test_common.h"
 
-#include <cstdlib>
 #include <gtest/gtest.h>
+
+#include <cstdlib>
 
 using namespace testing::ext;
 
-namespace Unittest::AttestKey {
+namespace Unittest::AttestKey
+{
 const static uint32_t g_paramCountInKeyAttest = 4;
 const static uint32_t g_paramCountInIdAttest = 7;
 const static uint32_t g_index0 = 0;
@@ -63,15 +65,15 @@ void FreeCertChain(struct OH_Huks_CertChain **certChain, const uint32_t pos)
 OH_Huks_Result TestGenerateKey(const struct OH_Huks_Blob *keyAlias)
 {
     struct OH_Huks_Param tmpParams[] = {
-        { .tag = OH_HUKS_TAG_KEY_STORAGE_FLAG, .uint32Param = OH_HUKS_STORAGE_PERSISTENT },
-        { .tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_RSA },
-        { .tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_RSA_KEY_SIZE_2048 },
-        { .tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_VERIFY },
-        { .tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SHA256 },
-        { .tag = OH_HUKS_TAG_PADDING, .uint32Param = OH_HUKS_PADDING_PSS },
-        { .tag = OH_HUKS_TAG_KEY_GENERATE_TYPE, .uint32Param = OH_HUKS_KEY_GENERATE_TYPE_DEFAULT },
-        { .tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_ECB },
-    };
+        {.tag = OH_HUKS_TAG_KEY_STORAGE_FLAG, .uint32Param = OH_HUKS_STORAGE_PERSISTENT},
+        {.tag = OH_HUKS_TAG_ALGORITHM, .uint32Param = OH_HUKS_ALG_RSA},
+        {.tag = OH_HUKS_TAG_KEY_SIZE, .uint32Param = OH_HUKS_RSA_KEY_SIZE_2048},
+        {.tag = OH_HUKS_TAG_PURPOSE, .uint32Param = OH_HUKS_KEY_PURPOSE_VERIFY},
+        {.tag = OH_HUKS_TAG_DIGEST, .uint32Param = OH_HUKS_DIGEST_SHA256},
+        {.tag = OH_HUKS_TAG_PADDING, .uint32Param = OH_HUKS_PADDING_PSS},
+        {.tag = OH_HUKS_TAG_KEY_GENERATE_TYPE, .uint32Param = OH_HUKS_KEY_GENERATE_TYPE_DEFAULT},
+        {.tag = OH_HUKS_TAG_BLOCK_MODE, .uint32Param = OH_HUKS_MODE_ECB},
+        {.tag = OH_HUKS_TAG_AUTH_STORAGE_LEVEL, .uint32Param = OH_HUKS_AUTH_STORAGE_LEVEL_DE}};
     struct OH_Huks_ParamSet *paramSet = nullptr;
     OH_Huks_Result ret = OH_Huks_InitParamSet(&paramSet);
     if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
@@ -95,8 +97,7 @@ OH_Huks_Result TestGenerateKey(const struct OH_Huks_Blob *keyAlias)
     return ret;
 }
 
-int32_t ConstructDataToCertChain(struct OH_Huks_CertChain **certChain,
-    const struct HksTestCertChain *certChainParam)
+int32_t ConstructDataToCertChain(struct OH_Huks_CertChain **certChain, const struct HksTestCertChain *certChainParam)
 {
     if (!certChainParam->certChainExist) {
         return 0;
@@ -132,7 +133,8 @@ int32_t ConstructDataToCertChain(struct OH_Huks_CertChain **certChain,
     return 0;
 }
 
-OH_Huks_Result GenerateParamSet(struct OH_Huks_ParamSet **paramSet, const struct OH_Huks_Param tmpParams[], uint32_t paramCount)
+OH_Huks_Result GenerateParamSet(struct OH_Huks_ParamSet **paramSet, const struct OH_Huks_Param tmpParams[],
+                                uint32_t paramCount)
 {
     OH_Huks_Result ret = OH_Huks_InitParamSet(paramSet);
     if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
@@ -154,7 +156,7 @@ OH_Huks_Result GenerateParamSet(struct OH_Huks_ParamSet **paramSet, const struct
 }
 
 static int32_t ValidataAndCompareCertInfo(ParamType type, const struct OH_Huks_CertChain *certChain,
-    struct OH_Huks_ParamSet *paramSet)
+                                          struct OH_Huks_ParamSet *paramSet)
 {
     if (certChain == nullptr || paramSet == nullptr) {
         return OH_HUKS_ERR_CODE_ILLEGAL_ARGUMENT;
@@ -176,7 +178,8 @@ static int32_t ValidataAndCompareCertInfo(ParamType type, const struct OH_Huks_C
     return ret;
 }
 
-OH_Huks_Result ValidateCertChainTest(const struct OH_Huks_CertChain *certChain, const struct OH_Huks_Param tmpParam[], ParamType type)
+OH_Huks_Result ValidateCertChainTest(const struct OH_Huks_CertChain *certChain, const struct OH_Huks_Param tmpParam[],
+                                     ParamType type)
 {
     OH_Huks_Result ret;
     struct OH_Huks_ParamSet *paramSet = nullptr;
@@ -204,4 +207,4 @@ OH_Huks_Result ValidateCertChainTest(const struct OH_Huks_CertChain *certChain, 
     OH_Huks_FreeParamSet(&paramSet);
     return ret;
 }
-}
+}  // namespace Unittest::AttestKey

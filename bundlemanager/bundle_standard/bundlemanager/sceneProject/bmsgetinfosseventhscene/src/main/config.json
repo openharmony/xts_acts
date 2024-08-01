@@ -23,7 +23,8 @@
     "deviceType": [
       "default",
       "tablet",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "abilities": [
       {
@@ -37,7 +38,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".MainAbility",
@@ -74,7 +74,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".actionStringLenZero",
@@ -94,7 +93,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".actionSingleString",
@@ -115,7 +113,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".actionDoubleString",
@@ -142,7 +139,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".actionDoubleSkill",
@@ -163,7 +159,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".entityEmpty",
@@ -186,7 +181,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".entitySingleString",
@@ -210,7 +204,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".entityDoubleString",
@@ -243,7 +236,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".entityDoubleSkill",
@@ -264,7 +256,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".uriEmpty",
@@ -289,7 +280,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".uriScheme",
@@ -315,7 +305,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".uriSchemeHost",
@@ -342,7 +331,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".uriSchemeHostPort",
@@ -370,7 +358,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".uriSchemeHostPortPath",
@@ -398,7 +385,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".uriSchemeHostPortPathStartWith",
@@ -426,7 +412,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".uriSchemeHostPortPathRegx",
@@ -453,7 +438,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".uriSchemeEmpty",
@@ -480,7 +464,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".uriHostEmpty",
@@ -507,7 +490,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".uriPortEmptyWithPath",
@@ -534,7 +516,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".uriPortEmptyWithPathStartWith",
@@ -561,7 +542,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".uriPortEmptyWithPathRegx",
@@ -591,7 +571,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".uriMultiPath",
@@ -616,7 +595,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".TypeDoubleWildCard",
@@ -641,7 +619,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".TypeSingleWildCard",
@@ -666,7 +643,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".TypeString",
@@ -691,7 +667,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".TypeStringExt",
@@ -716,7 +691,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".TypeEmpty",
@@ -739,7 +713,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".TypeEmptyExt",
@@ -762,7 +735,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".allAE",
@@ -786,7 +758,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".allAEs",
@@ -817,7 +788,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".allUT",
@@ -850,7 +820,6 @@
             ]
           }
         ],
-        
         "visible": true,
         "srcPath": "MainAbility",
         "name": ".allAEUT",

@@ -7,7 +7,8 @@
     "deviceTypes": [
       "default",
       "tablet",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "requestPermissions": [
       {
@@ -17,10 +18,12 @@
     "deliveryWithInstall": true,
     "installationFree": false,
     "pages": "$profile:test_pages",
-    "metadata": [{
-      "name": "ArkTSPartialUpdate",
-      "value": "true"
-    }],
+    "metadata": [
+      {
+        "name": "ArkTSPartialUpdate",
+        "value": "true"
+      }
+    ],
     "abilities": [
       {
         "name": "TestAbility",

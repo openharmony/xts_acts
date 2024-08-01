@@ -12,18 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@system.router';
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import bundle from '@ohos.bundle.bundleManager';
 
 export default function qrCodeJsunit() {
-  describe('qrCodeTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/qrCode',
+  describe('qrCodeTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/qrCode',
       }
       try {
         router.clear();
@@ -31,9 +31,8 @@ export default function qrCodeJsunit() {
         console.info("get QrCode state success " + JSON.stringify(pages));
         if (!("qrCode" == pages.name)) {
           console.info("get QrCode pages success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push QrCode page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push QrCode page error: " + err);
@@ -43,13 +42,13 @@ export default function qrCodeJsunit() {
 
     /**
      * @tc.number test_qrCode_001
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set opacity values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set opacity values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_qrCode_001', 0, async function (done) {
+    it('test_qrCode_001', 0, async (done: Function) => {
       console.info('[test_qrCode_001] START');
       var strJson = getInspectorByKey('QrCodeColorKey1');
       var obj = JSON.parse(strJson);
@@ -61,13 +60,13 @@ export default function qrCodeJsunit() {
 
     /**
      * @tc.number test_qrCode_002
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set color values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set color values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_qrCode_002', 0, async function (done) {
+    it('test_qrCode_002', 0, async (done: Function) => {
       console.info('[test_qrCode_002] START');
       var strJson = getInspectorByKey('QrCodeColorKey1');
       var obj = JSON.parse(strJson);
@@ -81,31 +80,31 @@ export default function qrCodeJsunit() {
 
     /**
      * @tc.number test_qrCode_003
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set contentOpacity values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set contentOpacity values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_qrCode_003', 0, async function (done) {
+    it('test_qrCode_003', 0, async (done: Function) => {
       console.info('[test_qrCode_003] START');
       var strJson = getInspectorByKey('QrCodeColorKey1');
       var obj = JSON.parse(strJson);
       console.info("[test_qrCode_003] obj is: " + JSON.stringify(obj.$attrs));
-      
+
       expect(obj.$attrs.contentOpacity).assertEqual(undefined); //not support
       console.info('[test_qrCode_003] END');
       done();
     });
     /**
      * @tc.number test_qrCode_004
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change backgroundColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change backgroundColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_qrCode_004', 0, async function (done) {
+    it('test_qrCode_004', 0, async (done: Function) => {
       console.info('test_qrCode_004 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

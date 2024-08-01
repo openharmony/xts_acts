@@ -4,11 +4,12 @@
     "type": "entry",
     "srcEntrance": "./ets/Application/AbilityStage.ts",
     "description": "$string:module_desc",
-    "mainElement": "MainAbility", 
+    "mainElement": "MainAbility",
     "deviceTypes": [
       "tablet",
       "2in1",
-      "default"
+      "default",
+      "wearable"
     ],
     "deliveryWithInstall": true,
     "installationFree": false,

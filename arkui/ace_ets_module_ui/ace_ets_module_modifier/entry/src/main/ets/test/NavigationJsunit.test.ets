@@ -13,28 +13,40 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import { UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix } from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import { MessageManager, Callback } from '../MainAbility/utils/MessageManager';
 import Utils from './Utils';
 
 export default function navigationJsunit() {
-  describe('navigationTest', function () {
-    beforeEach(async function (done) {
+  describe('navigationTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("NavigationJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/navigation',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/navigation',
       }
-      let result;
+
       try {
         router.clear();
         let pages = router.getState();
         console.info("get NavigationJsunit state pages: " + JSON.stringify(pages));
         if (!("navigation" == pages.name)) {
           console.info("get NavigationJsunit state pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push NavigationJsunit success: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push NavigationJsunit page error: " + err);
@@ -45,13 +57,13 @@ export default function navigationJsunit() {
 
     /**
      * @tc.number NavigationJsunit_1000
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set minContentWidth values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set minContentWidth values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('NavigationJsunit_1000', 0, async function (done) {
+    it('NavigationJsunit_1000', 0, async (done: Function) => {
 
       console.info('[NavigationJsunit_1000] START');
       let strJson = getInspectorByKey('navigation1');
@@ -65,13 +77,13 @@ export default function navigationJsunit() {
 
     /**
      * @tc.number NavigationJsunit_1001
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set navBarWidthRange values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set navBarWidthRange values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('NavigationJsunit_1001', 0, async function (done) {
+    it('NavigationJsunit_1001', 0, async (done: Function) => {
 
       console.info('[NavigationJsunit_1001] START');
       let strJson = getInspectorByKey('navigation1');
@@ -85,13 +97,13 @@ export default function navigationJsunit() {
 
     /**
      * @tc.number NavigationJsunit_1002
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set navBarWidth values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set navBarWidth values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('NavigationJsunit_1002', 0, async function (done) {
+    it('NavigationJsunit_1002', 0, async (done: Function) => {
 
       console.info('[NavigationJsunit_1002] START');
       let strJson = getInspectorByKey('navigation1');
@@ -105,13 +117,13 @@ export default function navigationJsunit() {
 
     /**
      * @tc.number NavigationJsunit_1003
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set navBarPosition values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set navBarPosition values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('NavigationJsunit_1003', 0, async function (done) {
+    it('NavigationJsunit_1003', 0, async (done: Function) => {
 
       console.info('[NavigationJsunit_1003] START');
       let strJson = getInspectorByKey('navigation1');
@@ -125,13 +137,13 @@ export default function navigationJsunit() {
 
     /**
      * @tc.number NavigationJsunit_1004
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set mode values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set mode values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('NavigationJsunit_1004', 0, async function (done) {
+    it('NavigationJsunit_1004', 0, async (done: Function) => {
 
       console.info('[NavigationJsunit_1004] START');
       let strJson = getInspectorByKey('navigation1');
@@ -145,13 +157,13 @@ export default function navigationJsunit() {
 
     /**
      * @tc.number NavigationJsunit_1005
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set backButtonIcon values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set backButtonIcon values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('NavigationJsunit_1005', 0, async function (done) {
+    it('NavigationJsunit_1005', 0, async (done: Function) => {
 
       console.info('[NavigationJsunit_1005] START');
       let strJson = getInspectorByKey('navigation1');
@@ -165,13 +177,13 @@ export default function navigationJsunit() {
 
     /**
      * @tc.number NavigationJsunit_1006
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set hideNavBar values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set hideNavBar values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('NavigationJsunit_1006', 0, async function (done) {
+    it('NavigationJsunit_1006', 0, async (done: Function) => {
 
       console.info('[NavigationJsunit_1006] START');
       let strJson = getInspectorByKey('navigation1');
@@ -185,13 +197,13 @@ export default function navigationJsunit() {
 
     /**
      * @tc.number NavigationJsunit_1007
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set hideTitleBar values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set hideTitleBar values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('NavigationJsunit_1007', 0, async function (done) {
+    it('NavigationJsunit_1007', 0, async (done: Function) => {
 
       console.info('[NavigationJsunit_1007] START');
       let strJson = getInspectorByKey('navigation1');
@@ -205,13 +217,13 @@ export default function navigationJsunit() {
 
     /**
      * @tc.number NavigationJsunit_1008
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set subtitle values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set subtitle values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('NavigationJsunit_1008', 0, async function (done) {
+    it('NavigationJsunit_1008', 0, async (done: Function) => {
 
       console.info('[NavigationJsunit_1008] START');
       let strJson = getInspectorByKey('navigation1');
@@ -225,13 +237,13 @@ export default function navigationJsunit() {
 
     /**
      * @tc.number NavigationJsunit_1009
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set hideBackButton values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set hideBackButton values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('NavigationJsunit_1009', 0, async function (done) {
+    it('NavigationJsunit_1009', 0, async (done: Function) => {
 
       console.info('[NavigationJsunit_1009] START');
       let strJson = getInspectorByKey('navigation1');
@@ -245,13 +257,13 @@ export default function navigationJsunit() {
 
     /**
      * @tc.number NavigationJsunit_1010
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set titleMode values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set titleMode values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('NavigationJsunit_1010', 0, async function (done) {
+    it('NavigationJsunit_1010', 0, async (done: Function) => {
 
       console.info('[NavigationJsunit_1010] START');
       let strJson = getInspectorByKey('navigation1');
@@ -265,13 +277,13 @@ export default function navigationJsunit() {
 
     /**
      * @tc.number NavigationJsunit_1011
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set hideToolBar values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set hideToolBar values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('NavigationJsunit_1011', 0, async function (done) {
+    it('NavigationJsunit_1011', 0, async (done: Function) => {
 
       console.info('[NavigationJsunit_1011] START');
       let strJson = getInspectorByKey('navigation1');
@@ -285,13 +297,13 @@ export default function navigationJsunit() {
 
     /**
      * @tc.number NavigationJsunit_1012
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change minContentWidth values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change minContentWidth values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('NavigationJsunit_1012', 0, async function (done) {
+    it('NavigationJsunit_1012', 0, async (done: Function) => {
       console.info('[NavigationJsunit_1012] START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

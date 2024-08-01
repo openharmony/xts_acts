@@ -42,11 +42,19 @@ export default function DatePickerDialogJsunit() {
       }
       done()
     });
-
+    
+    /**
+     * @tc.number    DatePickerDialogJsunit_0100
+     * @tc.name      DatePickerDialogJsunit_0100
+     * @tc.desc      api
+     * @tc.level:    Level 2
+     * @tc.type :
+     * @tc.size :
+     */
     it('DatePickerDialogJsunit_0100', 0, async function (done) {
 
       console.info('DatePickerDialogJsunit_0100 START');
-	  let driver = await UiDriver.create()
+	    let driver = await UiDriver.create()
       let button = await driver.findComponent(BY.key('DatePickerDialog'));
       await button.click();
       await CommonFunc.sleep(1000);
@@ -56,7 +64,8 @@ export default function DatePickerDialogJsunit() {
       console.info("[DatePickerDialogJsunit_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual("DatePickerDialog");
       console.info('[DatePickerDialogJsunit_0100] END');
-	  await driver.pressBack();
+	    await driver.pressBack();
+      await CommonFunc.sleep(1500);
       done();
     });
 

@@ -61,7 +61,8 @@
             "default",
             "tv",
             "wearable",
-            "2in1"
+            "2in1",
+            "wearable"
         ],
         "reqPermissions": [
             {

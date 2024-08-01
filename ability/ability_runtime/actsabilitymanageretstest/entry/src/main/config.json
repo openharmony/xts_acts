@@ -19,9 +19,10 @@
     "srcPath": "",
     "mainAbility": "com.ohos.acecollaboration.MainAbility",
     "deviceType": [
-        "default",
-        "tablet",
-        "2in1"
+      "default",
+      "tablet",
+      "2in1",
+      "wearable"
     ],
     "reqPermissions": [
       {

@@ -66,8 +66,9 @@ export default function webTwoJsunit() {
       await Utils.sleep(2000);
       done();
     })
+
     /* 
-     *tc.number SUB_ACE_BASIC_ETS_WEB02_DEV_THREE_API_001                                                                                                                                                                     
+     *tc.number SUB_ACE_BASIC_ETS_WEB02_DEV_THREE_API_001                                                                                                   
      *tc.name AllowWindowOpenMethod                                                                                                                                                                                                                 
      *tc.desic Sets allow the Web access overview mode
      */

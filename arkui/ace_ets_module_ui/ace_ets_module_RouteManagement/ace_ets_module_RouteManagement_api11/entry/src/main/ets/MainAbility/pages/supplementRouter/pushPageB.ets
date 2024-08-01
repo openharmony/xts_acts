@@ -18,19 +18,21 @@ import router from '@ohos.router'
 @Entry
 @Component
 struct pushPageB {
-  @State amount:string = '0'
-  @State page:number = 0
-  aboutToAppear(){
+  @State amount: string = '0'
+  @State page: number = 0
+
+  aboutToAppear() {
     this.amount = router.getLength()
     this.page = router.getState().index;
   }
+
   build() {
-    Column({space:5}) {
-      Text(this.amount).id('pushPageB_amount').fontSize(20).margin({top:50})
-      Text(this.page + '').id('pushPageB_page').fontSize(20).margin({top:50})
+    Column({ space: 5 }) {
+      Text(this.amount).id('pushPageB_amount').fontSize(20).margin({ top: 50 })
+      Text(this.page + '').id('pushPageB_page').fontSize(20).margin({ top: 50 })
       Button("跳转pageC")
         .type(ButtonType.Capsule)
-        .margin({bottom:50})
+        .margin({ bottom: 50 })
         .id("pushPageB")
         .onClick(() => {
           router.pushUrl({

@@ -15,7 +15,7 @@
                 "ActsDemoMainTest-hspdephsp-default-signed.hsp",
                 "ActsDemoMainTest-Sharelibraryhsp-default-signed.hsp",
                 "ActsDemoMainTest-entry-default-signed.hap",
-                "ActsHSPDemoTest.hap"
+                "ActsHspDemoTest.hap"
             ],
             "type": "AppInstallKit",
             "cleanup-apps": true

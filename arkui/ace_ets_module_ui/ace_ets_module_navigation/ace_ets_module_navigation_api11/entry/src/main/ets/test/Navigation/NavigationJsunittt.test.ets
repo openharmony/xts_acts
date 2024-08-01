@@ -14,16 +14,16 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from '../Utils';
 
 export default function navigationJsunittt() {
-  describe('navigationJsunittt', function () {
-    beforeEach(async function (done) {
+  describe('navigationJsunittt',  () =>{
+    beforeEach(async  (done:Function) =>{
       console.info("navigation beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Navigation/navigationtt',
+      let options:router.RouterOptions = {
+        url: 'MainAbility/pages/Navigation/navigationtt',
       }
       try {
         router.clear();
@@ -31,7 +31,7 @@ export default function navigationJsunittt() {
         console.info("get navigation state pages:" + JSON.stringify(pages));
         if (!("navigationtt" == pages.name)) {
           console.info("get navigation state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await Utils.sleep(2000);
           console.info("push navigation page result:" + JSON.stringify(result));
         }
@@ -41,12 +41,12 @@ export default function navigationJsunittt() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async  () =>{
       await Utils.sleep(1000);
       console.info("navigation after each called");
     });
 
-    it('testNavigation_100', 0, async function (done) {
+    it('testNavigation_100', 0, async  (done:Function) =>{
       console.info('[testNavigation_100] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('Navigation');
@@ -57,7 +57,7 @@ export default function navigationJsunittt() {
       done();
     });
 
-    it('testNavigation_200', 0, async function (done) {
+    it('testNavigation_200', 0, async  (done:Function) =>{
       console.info('testNavigation_200 START');
       await Utils.sleep(1000);
       let callback = (indexEvent) => {
@@ -79,7 +79,7 @@ export default function navigationJsunittt() {
       console.info('testNavigation_200 END');
     });
 
-    it('testNavigation_300', 0, async function (done) {
+    it('testNavigation_300', 0, async  (done:Function) =>{
       console.info('[testNavigation_300] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('Navigation');
@@ -90,7 +90,7 @@ export default function navigationJsunittt() {
       done();
     });
 
-    it('testNavigation_400', 0, async function (done) {
+    it('testNavigation_400', 0, async  (done:Function) =>{
       console.info('[testNavigation_400] START');
       await Utils.sleep(1000);
       let strJson = getInspectorByKey('Navigation');

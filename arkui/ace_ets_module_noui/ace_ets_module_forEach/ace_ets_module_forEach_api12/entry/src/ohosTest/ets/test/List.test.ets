@@ -15,8 +15,12 @@
 import DataOperationTypeTest from './lazyforeachTest/DataOperationType.test';
 import lazyChangeJsunit from './lazyforeachTest/lazyChangeJsunit.test';
 import lazyReloadJsunit from './lazyforeachTest/lazyReloadJsunit.test';
+import Prefetcher1 from './lazyforeachTest/Prefetcher1.test';
+import Prefetcher2 from './lazyforeachTest/Prefetcher2.test';
 export default function testsuite() {
   DataOperationTypeTest()
   lazyChangeJsunit()
   lazyReloadJsunit()
+  Prefetcher1()
+  Prefetcher2()
 }

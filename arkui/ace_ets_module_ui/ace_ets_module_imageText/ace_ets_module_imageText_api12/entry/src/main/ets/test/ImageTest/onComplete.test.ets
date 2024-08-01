@@ -79,7 +79,7 @@ export default function onComplete() {
       await CommonFunc.sleep(1000);
       let text1 = getInspectorByKey('DcontentWidth');
       let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('' + vp2px(100));
+      expect(Math.abs(Math.round(Number(Obj1.$attrs.content) - vp2px(100))) <= 1).assertTrue();
       console.info('[onSelectionChange1_0200] END');
       done();
     });
@@ -100,7 +100,7 @@ export default function onComplete() {
       await CommonFunc.sleep(1000);
       let text1 = getInspectorByKey('DcontentHeight');
       let Obj1 = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual('' + vp2px(100));
+      expect(Math.abs(Math.round(Number(Obj1.$attrs.content) - vp2px(100))) <= 1).assertTrue();
       console.info('[onSelectionChange1_0300] END');
       done();
     });

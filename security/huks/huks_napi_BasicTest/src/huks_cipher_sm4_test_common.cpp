@@ -17,12 +17,14 @@
 
 #include <gtest/gtest.h>
 using namespace testing::ext;
-namespace Unittest::Sm4Cipher {
+namespace Unittest::Sm4Cipher
+{
 static OH_Huks_Result HksSm4CipherTestEncrypt(const struct OH_Huks_Blob *keyAlias,
-    const struct OH_Huks_ParamSet *encryptParamSet, const struct OH_Huks_Blob *inData, struct OH_Huks_Blob *cipherText)
+                                              const struct OH_Huks_ParamSet *encryptParamSet,
+                                              const struct OH_Huks_Blob *inData, struct OH_Huks_Blob *cipherText)
 {
     uint8_t handleE[sizeof(uint64_t)] = {0};
-    struct OH_Huks_Blob handleEncrypt = { sizeof(uint64_t), handleE };
+    struct OH_Huks_Blob handleEncrypt = {sizeof(uint64_t), handleE};
     OH_Huks_Result ret = OH_Huks_InitSession(keyAlias, encryptParamSet, &handleEncrypt, nullptr);
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "Init failed.";
     if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
@@ -34,17 +36,19 @@ static OH_Huks_Result HksSm4CipherTestEncrypt(const struct OH_Huks_Blob *keyAlia
     if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
         return ret;
     }
-    EXPECT_NE(HksMemCmp(inData->data, cipherText->data, inData->size), (int32_t)OH_HUKS_SUCCESS) << "cipherText equals inData";
+    EXPECT_NE(HksMemCmp(inData->data, cipherText->data, inData->size), (int32_t)OH_HUKS_SUCCESS)
+        << "cipherText equals inData";
 
     return ret;
 }
 
 static OH_Huks_Result HksSm4CipherTestDecrypt(const struct OH_Huks_Blob *keyAlias,
-    const struct OH_Huks_ParamSet *decryptParamSet, const struct OH_Huks_Blob *cipherText, struct OH_Huks_Blob *plainText,
-    const struct OH_Huks_Blob *inData)
+                                              const struct OH_Huks_ParamSet *decryptParamSet,
+                                              const struct OH_Huks_Blob *cipherText, struct OH_Huks_Blob *plainText,
+                                              const struct OH_Huks_Blob *inData)
 {
     uint8_t handleD[sizeof(uint64_t)] = {0};
-    struct OH_Huks_Blob handleDecrypt = { sizeof(uint64_t), handleD };
+    struct OH_Huks_Blob handleDecrypt = {sizeof(uint64_t), handleD};
     OH_Huks_Result ret = OH_Huks_InitSession(keyAlias, decryptParamSet, &handleDecrypt, nullptr);
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "Init failed.";
     if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
@@ -56,18 +60,17 @@ static OH_Huks_Result HksSm4CipherTestDecrypt(const struct OH_Huks_Blob *keyAlia
     if (ret.errorCode != (int32_t)OH_HUKS_SUCCESS) {
         return ret;
     }
-    EXPECT_EQ(HksMemCmp(inData->data, plainText->data, inData->size), (int32_t)OH_HUKS_SUCCESS) << "plainText not equals inData";
+    EXPECT_EQ(HksMemCmp(inData->data, plainText->data, inData->size), (int32_t)OH_HUKS_SUCCESS)
+        << "plainText not equals inData";
 
     return ret;
 }
 OH_Huks_Result HksSm4CipherTestCaseOther(const struct OH_Huks_Blob *keyAlias, struct OH_Huks_ParamSet *genParamSet,
-    struct OH_Huks_ParamSet *encryptParamSet, struct OH_Huks_ParamSet *decryptParamSet)
+                                         struct OH_Huks_ParamSet *encryptParamSet,
+                                         struct OH_Huks_ParamSet *decryptParamSet)
 {
     char tmpInData[] = "SM4_ECB_INDATA_1";
-    struct OH_Huks_Blob inData = {
-        g_inData.length(),
-        (uint8_t *)g_inData.c_str()
-    };
+    struct OH_Huks_Blob inData = {g_inData.length(), (uint8_t *)g_inData.c_str()};
 
     struct OH_Huks_Param *modeParam = nullptr;
     OH_Huks_GetParam(genParamSet, OH_HUKS_TAG_BLOCK_MODE, &modeParam);
@@ -84,13 +87,13 @@ OH_Huks_Result HksSm4CipherTestCaseOther(const struct OH_Huks_Blob *keyAlias, st
 
     /* 2. Encrypt */
     uint8_t cipher[SM4_COMMON_SIZE] = {0};
-    struct OH_Huks_Blob cipherText = { SM4_COMMON_SIZE, cipher };
+    struct OH_Huks_Blob cipherText = {SM4_COMMON_SIZE, cipher};
     ret = HksSm4CipherTestEncrypt(keyAlias, encryptParamSet, &inData, &cipherText);
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "HksAesCipherTestEncrypt failed.";
 
     /* 3. Decrypt Three Stage */
     uint8_t plain[SM4_COMMON_SIZE] = {0};
-    struct OH_Huks_Blob plainText = { SM4_COMMON_SIZE, plain };
+    struct OH_Huks_Blob plainText = {SM4_COMMON_SIZE, plain};
     ret = HksSm4CipherTestDecrypt(keyAlias, decryptParamSet, &cipherText, &plainText, &inData);
     EXPECT_EQ(ret.errorCode, (int32_t)OH_HUKS_SUCCESS) << "HksAesCipherTestDecrypt failed.";
 
@@ -98,5 +101,4 @@ OH_Huks_Result HksSm4CipherTestCaseOther(const struct OH_Huks_Blob *keyAlias, st
     EXPECT_EQ(OH_Huks_DeleteKeyItem(keyAlias, genParamSet).errorCode, (int32_t)OH_HUKS_SUCCESS) << "DeleteKey failed.";
     return ret;
 }
-}
-
+}  // namespace Unittest::Sm4Cipher

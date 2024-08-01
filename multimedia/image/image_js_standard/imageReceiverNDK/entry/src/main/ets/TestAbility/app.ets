@@ -20,6 +20,7 @@ import testsuite from '../test/List.test'
 export default {
   onCreate() {
     console.info('Application onCreate')
+    globalThis.abilityContext = this.context
     var abilityDelegator: any
     abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
     var abilityDelegatorArguments: any

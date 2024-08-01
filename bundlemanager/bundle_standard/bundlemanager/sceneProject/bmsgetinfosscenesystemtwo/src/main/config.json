@@ -13,7 +13,7 @@
     }
   },
   "deviceConfig": {
-    "default":{}
+    "default": {}
   },
   "module": {
     "package": "com.example.system2",
@@ -22,7 +22,8 @@
     "deviceType": [
       "default",
       "tablet",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "distro": {
       "deliveryWithInstall": true,

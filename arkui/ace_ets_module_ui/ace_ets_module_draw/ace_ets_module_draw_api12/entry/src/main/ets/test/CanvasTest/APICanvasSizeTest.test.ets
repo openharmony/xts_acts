@@ -13,15 +13,15 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 export default function APICanvasSizeTest() {
-  describe('APICanvasSizeTest', function () {
-    beforeEach(async function (done) {
+  describe('APICanvasSizeTest', () =>{
+    beforeEach(async  (done:Function)=> {
       console.info("APICanvasSizeTest beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/Canvas/APICanvasSize",
+     let options:router.RouterOptions = {
+        url:"MainAbility/pages/Canvas/APICanvasSize",
       }
       try {
         router.clear();
@@ -29,7 +29,7 @@ export default function APICanvasSizeTest() {
         console.info("get APICanvasSizeTest state pages: " + JSON.stringify(pages));
         if (!("APICanvasSize" == pages.name)) {
           console.info("get APICanvasSizeTest state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push APICanvasSizeTest success: " + JSON.stringify(result));
         }
@@ -47,7 +47,7 @@ export default function APICanvasSizeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('APICanvasSizeTest_0100', 0, async function (done) {
+    it('APICanvasSizeTest_0100', 0, async  (done:Function)=> {
       console.info('APICanvasSizeTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -56,9 +56,9 @@ export default function APICanvasSizeTest() {
       await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('APICanvasSizeText1');
-      let obj = JSON.parse(strJson);
-      console.info("[APICanvasSizeTest_0100] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('300');
+
+      console.info("[APICanvasSizeTest_0100] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('300');
       console.info('[APICanvasSizeTest_0100] END');
       done();
     });
@@ -70,7 +70,7 @@ export default function APICanvasSizeTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('APICanvasSizeTest_0200', 0, async function (done) {
+    it('APICanvasSizeTest_0200', 0, async  (done:Function)=> {
       console.info('APICanvasSizeTest_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -79,9 +79,9 @@ export default function APICanvasSizeTest() {
       await CommonFunc.sleep(2000);
 
       let strJson = getInspectorByKey('APICanvasSizeText2');
-      let obj = JSON.parse(strJson);
-      console.info("[APICanvasSizeTest_0200] component obj is: " + JSON.stringify(obj));
-      expect(obj.$attrs.content).assertEqual('300');
+
+      console.info("[APICanvasSizeTest_0200] component obj is: " + JSON.stringify(JSON.parse(strJson)));
+      expect(JSON.parse(strJson).$attrs.content).assertEqual('300');
       console.info('[APICanvasSizeTest_0200] END');
       done();
     });

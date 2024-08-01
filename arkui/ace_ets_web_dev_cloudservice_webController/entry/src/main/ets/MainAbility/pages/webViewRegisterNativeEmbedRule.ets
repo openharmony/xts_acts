@@ -175,8 +175,6 @@ struct webViewRegisterNativeEmbedRule {
   @State onlineImageAccess: boolean = true;
   @State isObject : boolean = false;
   @State databaseAccess: boolean = true;
-  @State userAgent: string = "Mozilla/5.0 (Window NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)" +
-         "Chrome/105.0.0.0 Safari/537.36 Edg/105.0.1343.27";
   
   onPageShow() {
       let valueChangeEvent: events_emitter.InnerEvent = {
@@ -207,8 +205,14 @@ struct webViewRegisterNativeEmbedRule {
                     switch (this.str) {
                         case "emitWebViewRegisterNativeEmbedRule": {
                             console.info('>>>>>registerNativeEmbedRule:' + this.isObject)
-                            Utils.emitEvent(this.isObject, 10003)
-                            Utils.emitEvent(true, 10003)
+                            if ( Utils.isPC( this.browserTabController ) ) {
+                              Utils.emitEvent(true, 10003)
+                              return
+                            }
+                            if ( this.isObject ) {
+                              Utils.emitEvent(this.isObject, 10003)
+                            }
+
                             break;
                         }
                     }

@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2024 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,12 +16,11 @@
 @Entry
 @Component
 struct GlobalExample {
-
-  private settings: RenderingContextSettings = new RenderingContextSettings (true)
+  private settings: RenderingContextSettings = new RenderingContextSettings(true)
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings)
-  private offContext: OffscreenCanvasRenderingContext2D  = new OffscreenCanvasRenderingContext2D(300, 300, this.settings);
+  private offContext: OffscreenCanvasRenderingContext2D = new OffscreenCanvasRenderingContext2D(300, 300, this.settings);
   private img: ImageBitmap = new ImageBitmap("/images/bg.jpg")
-  
+
   onPageShow() {
     console.info("global page called")
   }

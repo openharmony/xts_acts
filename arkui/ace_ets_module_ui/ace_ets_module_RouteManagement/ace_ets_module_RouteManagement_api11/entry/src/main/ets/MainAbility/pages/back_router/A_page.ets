@@ -14,13 +14,11 @@
  */
 import router from '@ohos.router'
 
-
 @Entry
 @Component
 struct router_page1 {
-
   build() {
-    Column({space:5}) {
+    Column({ space: 5 }) {
 
       Button("跳转pageB--带参数")
         .type(ButtonType.Capsule)
@@ -29,17 +27,14 @@ struct router_page1 {
           router.pushUrl({
             url: "MainAbility/pages/back_router/B_page",
             params: {
-              data1:{
-                data2:['message','message1']
+              data1: {
+                data2: ['message', 'message1']
               }
             }
           })
         })
-
-
-
-    }.width('100%').height('100%')
-
-
+    }
+    .width('100%')
+    .height('100%')
   }
 }

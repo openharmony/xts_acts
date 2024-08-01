@@ -45,6 +45,9 @@ import Monitor1Jsunit from './ComponentV2Test/Monitor1Jsunit.test';
 import Monitor2Jsunit from './ComponentV2Test/Monitor2Jsunit.test';
 import Monitor3Jsunit from './ComponentV2Test/Monitor3Jsunit.test';
 import Monitor4Jsunit from './ComponentV2Test/Monitor4Jsunit.test';
+import repeatCountJsunit from './RepeatTest/repeatCountJsunit.test';
+import appStorageV2 from './StorageTest/appStorageV2.test';
+import persistenceV2 from './StorageTest/persistenceV2.test';
 export default function testsuite() {
   ExtendTrackTest();
   NestTrackTest();
@@ -79,4 +82,7 @@ export default function testsuite() {
   Monitor2Jsunit();
   Monitor3Jsunit();
   Monitor4Jsunit();
+  repeatCountJsunit();
+  appStorageV2();
+  persistenceV2();
 }

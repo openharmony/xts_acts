@@ -28,7 +28,7 @@ struct LineExample {
     }.margin({ top: 5 })
   }
 
-  private stateChangCallBack = (eventData) => {
+  private stateChangCallBack = (eventData:events_emitter.EventData) => {
     if (eventData != null) {
       console.info("line page state change called:" + JSON.stringify(eventData));
       if (eventData.data.startPoint != null) {
@@ -48,7 +48,7 @@ struct LineExample {
 
   onPageShow() {
     console.info('line page show called');
-    var stateChangeEvent = {
+    let stateChangeEvent:events_emitter.InnerEvent = {
       eventId: 131,
       priority: events_emitter.EventPriority.LOW
     }

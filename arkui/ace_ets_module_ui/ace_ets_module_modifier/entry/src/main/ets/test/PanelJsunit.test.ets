@@ -12,18 +12,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
+import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium";
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
 import bundle from '@ohos.bundle.bundleManager';
 
 export default function panelJsunit() {
-  describe('panelTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/panel',
+  describe('panelTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/panel',
       }
       try {
         router.clear();
@@ -31,9 +31,8 @@ export default function panelJsunit() {
         console.info("get panel state success " + JSON.stringify(pages));
         if (!("panel" == pages.name)) {
           console.info("get panel pages success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push panel page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push panel page error: " + err);
@@ -43,13 +42,13 @@ export default function panelJsunit() {
 
     /**
      * @tc.number test_panel_001
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set type values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set type values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_panel_001', 0, async function (done) {
+    it('test_panel_001', 0, async (done: Function) => {
       console.info('[test_panel_001] START');
       var strJson = getInspectorByKey('PanelKey1');
       var obj = JSON.parse(strJson);
@@ -63,13 +62,13 @@ export default function panelJsunit() {
 
     /**
      * @tc.number test_panel_002
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set showCloseIcon values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set showCloseIcon values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_panel_002', 0, async function (done) {
+    it('test_panel_002', 0, async (done: Function) => {
       console.info('[test_panel_002] START');
       var strJson = getInspectorByKey('PanelKey1');
       var obj = JSON.parse(strJson);
@@ -83,13 +82,13 @@ export default function panelJsunit() {
 
     /**
      * @tc.number test_panel_003
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set show values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set show values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_panel_003', 0, async function (done) {
+    it('test_panel_003', 0, async (done: Function) => {
       console.info('[test_panel_003] START');
       var strJson = getInspectorByKey('PanelKey1');
       var obj = JSON.parse(strJson);
@@ -103,13 +102,13 @@ export default function panelJsunit() {
 
     /**
      * @tc.number test_panel_004
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set mode values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set mode values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_panel_004', 0, async function (done) {
+    it('test_panel_004', 0, async (done: Function) => {
       console.info('[test_panel_004] START');
       var strJson = getInspectorByKey('PanelKey1');
       var obj = JSON.parse(strJson);
@@ -123,13 +122,13 @@ export default function panelJsunit() {
 
     /**
      * @tc.number test_panel_005
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set dragBar values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set dragBar values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_panel_005', 0, async function (done) {
+    it('test_panel_005', 0, async (done: Function) => {
       console.info('[test_panel_005] START');
       var strJson = getInspectorByKey('PanelKey1');
       var obj = JSON.parse(strJson);
@@ -143,13 +142,13 @@ export default function panelJsunit() {
 
     /**
      * @tc.number test_panel_006
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set miniHeight values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set miniHeight values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_panel_006', 0, async function (done) {
+    it('test_panel_006', 0, async (done: Function) => {
       console.info('[test_panel_006] START');
       var strJson = getInspectorByKey('PanelKey1');
       var obj = JSON.parse(strJson);
@@ -163,13 +162,13 @@ export default function panelJsunit() {
 
     /**
      * @tc.number test_panel_007
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set halfHeight values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set halfHeight values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_panel_007', 0, async function (done) {
+    it('test_panel_007', 0, async (done: Function) => {
       console.info('[test_panel_007] START');
       var strJson = getInspectorByKey('PanelKey1');
       var obj = JSON.parse(strJson);
@@ -183,13 +182,13 @@ export default function panelJsunit() {
 
     /**
      * @tc.number test_panel_008
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set fullHeight values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set fullHeight values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_panel_008', 0, async function (done) {
+    it('test_panel_008', 0, async (done: Function) => {
       console.info('[test_panel_008] START');
       var strJson = getInspectorByKey('PanelKey1');
       var obj = JSON.parse(strJson);
@@ -203,13 +202,13 @@ export default function panelJsunit() {
 
     /**
      * @tc.number test_panel_009
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set customHeight values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set customHeight values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_panel_009', 0, async function (done) {
+    it('test_panel_009', 0, async (done: Function) => {
       console.info('[test_panel_009] START');
       var strJson = getInspectorByKey('PanelKey2');
       var obj = JSON.parse(strJson);
@@ -221,13 +220,13 @@ export default function panelJsunit() {
 
     /**
      * @tc.number test_panel_0010
-     * @tc.name   Test the properties of components
-     * @tc.desc   Set backgroundMask values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Set backgroundMask values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('test_panel_0010', 0, async function (done) {
+    it('test_panel_0010', 0, async (done: Function) => {
       console.info('[test_panel_0010] START');
       var strJson = getInspectorByKey('PanelKey2');
       var obj = JSON.parse(strJson);
@@ -243,15 +242,15 @@ export default function panelJsunit() {
       done();
     });
 
-     /**
+    /**
      * @tc.number test_panel_0011
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change backgroundMask values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change backgroundMask values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-     it('test_panel_0011', 0, async function (done) {
+    it('test_panel_0011', 0, async (done: Function) => {
 
       console.info('test_panel_0011 START');
       let driver = Driver.create();

@@ -15,7 +15,8 @@
 #include "huks_three_stage_test_common.h"
 #ifndef HUKS_CIPHER_RSA_TEST_H
 #define HUKS_CIPHER_RSA_TEST_H
-namespace Unittest::RsaCipher {
+namespace Unittest::RsaCipher
+{
 int Security_HUKS_NAPI_Cipher_RSA_0100(void);
-} // namespace Unittest::RsaCipher
-#endif // HUKS_CIPHER_RSA_TEST_H
+}  // namespace Unittest::RsaCipher
+#endif  // HUKS_CIPHER_RSA_TEST_H

@@ -14,8 +14,10 @@
  */
 import onSizeChange from './onSizeChangeTest/onSizeChange.test'
 import LocalizedBorderRadiuses from './borderRadiusTest/LocalizedBorderRadiuses.test'
+import BorderOptionsTest1 from './BorderOptions/BorderOptionsTest1.test'
 
 export default function testsuite() {
    onSizeChange()
    LocalizedBorderRadiuses();
+   BorderOptionsTest1();
 }

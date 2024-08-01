@@ -19,7 +19,8 @@
     "deviceType": [
       "default",
       "tablet",
-      "2in1"
+      "2in1",
+      "wearable"
     ],
     "distro": {
       "deliveryWithInstall": true,
@@ -47,12 +48,12 @@
         "launchType": "standard",
         "language": "C++",
         "metaData": {
-            "customizeData": [
-                {
-                    "name": "originWidgetName",
-                    "value": "com.weather.testWidget"
-                }
-            ]
+          "customizeData": [
+            {
+              "name": "originWidgetName",
+              "value": "com.weather.testWidget"
+            }
+          ]
         }
       },
       {
@@ -199,7 +200,8 @@
           "designWidth": 720,
           "autoDesignWidth": false
         }
-      },{
+      },
+      {
         "pages": [
           "pages/index/index"
         ],
@@ -208,7 +210,8 @@
           "designWidth": 720,
           "autoDesignWidth": false
         }
-      },{
+      },
+      {
         "pages": [
           "pages/index/index"
         ],
@@ -217,7 +220,8 @@
           "designWidth": 720,
           "autoDesignWidth": false
         }
-      },{
+      },
+      {
         "pages": [
           "pages/index/index"
         ],
@@ -228,10 +232,10 @@
         }
       }
     ],
-    "reqPermissions":[
+    "reqPermissions": [
       {
-          "name":"ohos.permission.DISTRIBUTED_DATASYNC",
-          "reason":"use ohos.permission.DISTRIBUTED_DATASYNC"
+        "name": "ohos.permission.DISTRIBUTED_DATASYNC",
+        "reason": "use ohos.permission.DISTRIBUTED_DATASYNC"
       },
       {
         "name": "ohos.permission.KEEP_BACKGROUND_RUNNING",

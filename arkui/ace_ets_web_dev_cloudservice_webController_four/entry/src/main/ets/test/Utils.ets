@@ -34,6 +34,19 @@ export default class Utils {
   static getSystemTime() {
       return systemDateTime.getTime(true) / 1000
   }
+
+  static isPC(controller: webview.WebviewController) {
+    let userAgent = controller.getUserAgent();
+    console.info("userAgent" + userAgent);
+
+    try {
+      let isPc = userAgent.includes('PC') || userAgent.toLowerCase().includes('pc') || userAgent.includes("2in1")
+      console.log('device is pc:' + isPc)
+      return isPc
+    } catch (error) {
+      console.info("userAgent error:" + error);
+    }
+  }
   
   static deletFile(filePath: string) {
       console.info("[deleteFile] filePath:" + filePath);

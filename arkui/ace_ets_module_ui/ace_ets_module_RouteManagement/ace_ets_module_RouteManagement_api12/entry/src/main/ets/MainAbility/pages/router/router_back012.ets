@@ -18,14 +18,13 @@ import { BusinessError } from '@ohos.base'
 @Entry
 @Component
 struct router_back012 {
-
   build() {
-    Column({space:5}) {
+    Column({ space: 5 }) {
       Text('back012')
 
       Button('back')
         .id('router_back012_btn')
-        .onClick(()=>{
+        .onClick(() => {
           try {
             router.showAlertBeforeBackPage({
               message: '确定要返回吗？'
@@ -39,7 +38,6 @@ struct router_back012 {
         })
 
     }.width('100%').height('100%')
-
 
   }
 }

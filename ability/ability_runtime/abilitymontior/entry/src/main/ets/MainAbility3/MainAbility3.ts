@@ -21,6 +21,7 @@ let EVENT_TIME = 500;
 function PublishCallBack() {
   console.debug("====>Publish CallBack ====>");
 }
+
 export default class MainAbility3 extends Ability {
   onCreate(want, launchParam) {
     console.log("[Demo] MainAbility3 onCreate")
@@ -38,8 +39,8 @@ export default class MainAbility3 extends Ability {
     console.log("[Demo] MainAbility3 onWindowStageCreate")
 
     windowStage.setUIContent(this.context, "pages/index", null)
-    setTimeout(()=>{
-      globalThis.abilityContext.terminateSelf().then(()=>{
+    setTimeout(() => {
+      globalThis.abilityContext.terminateSelf().then(() => {
         console.log("====>in terminateSelf====>");
       })
     }, TERMINATE_SELF_TIME);
@@ -53,7 +54,7 @@ export default class MainAbility3 extends Ability {
   onForeground() {
     // Ability has brought to foreground
     console.log("[Demo] MainAbility3 onForeground")
-    setTimeout(()=>{
+    setTimeout(() => {
       commonEvent.publish("commonEvent_foreground", PublishCallBack);
     }, EVENT_TIME);
   }

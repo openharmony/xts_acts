@@ -405,6 +405,96 @@ export default function WebkeyboardAvoidMode() {
       sendEventByKey('keyboardAvoidMode', 10, '');
     })
 
+    /*
+    * @tc.number     : SUB_WEB_KEYBOARDAVOIDMODE_2500
+    * @tc.name       : testKeyboardAvoidMode2500
+    * @tc.desc       : test KeyboardAvoidMode
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('emitKeyboardAvoidMode2500', 0, async (done: Function) => {
+      Utils.emitEvent("emitKeyboardAvoidMode2500", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("emitKeyboardAvoidMode2500", 'false', 171725, done);
+      sendEventByKey('keyboardAvoidMode', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_KEYBOARDAVOIDMODE_2600
+    * @tc.name       : testKeyboardAvoidMode2600
+    * @tc.desc       : test KeyboardAvoidMode
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('emitKeyboardAvoidMode2600', 0, async (done: Function) => {
+      Utils.emitEvent("emitKeyboardAvoidMode2600", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("emitKeyboardAvoidMode2600", 'false', 171726, done);
+      sendEventByKey('keyboardAvoidMode', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_KEYBOARDAVOIDMODE_2700
+    * @tc.name       : testKeyboardAvoidMode2700
+    * @tc.desc       : test KeyboardAvoidMode
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('emitKeyboardAvoidMode2700', 0, async (done: Function) => {
+      Utils.emitEvent("emitKeyboardAvoidMode2700", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("emitKeyboardAvoidMode2700", 'false', 171727, done);
+      sendEventByKey('keyboardAvoidMode', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_KEYBOARDAVOIDMODE_2800
+    * @tc.name       : testKeyboardAvoidMode2800
+    * @tc.desc       : test KeyboardAvoidMode
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('emitKeyboardAvoidMode2800', 0, async (done: Function) => {
+      Utils.emitEvent("emitKeyboardAvoidMode2800", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("emitKeyboardAvoidMode2800", 'false', 171728, done);
+      sendEventByKey('keyboardAvoidMode', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_KEYBOARDAVOIDMODE_2900
+    * @tc.name       : testKeyboardAvoidMode2900
+    * @tc.desc       : test KeyboardAvoidMode
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('emitKeyboardAvoidMode2900', 0, async (done: Function) => {
+      Utils.emitEvent("emitKeyboardAvoidMode2900", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("emitKeyboardAvoidMode2900", 'false', 171729, done);
+      sendEventByKey('keyboardAvoidMode', 10, '');
+    })
+
+    /*
+    * @tc.number     : SUB_WEB_KEYBOARDAVOIDMODE_3000
+    * @tc.name       : testKeyboardAvoidMode3000
+    * @tc.desc       : test KeyboardAvoidMode
+    * @tc.size       : MediumTest
+    * @tc.type       : Function
+    * @tc.level      : Level 1
+    */
+    it('emitKeyboardAvoidMode3000', 0, async (done: Function) => {
+      Utils.emitEvent("emitKeyboardAvoidMode3000", 10)
+      await Utils.sleep(2000);
+      Utils.registerEvent("emitKeyboardAvoidMode3000", 'false', 171730, done);
+      sendEventByKey('keyboardAvoidMode', 10, '');
+    })
+
 
   })
 }

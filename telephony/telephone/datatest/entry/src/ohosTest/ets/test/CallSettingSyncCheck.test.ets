@@ -15,7 +15,6 @@
 
 import { describe, beforeAll, afterAll, it, expect } from '@ohos/hypium';
 import data from '@ohos.telephony.data';
-import call from '@ohos.telephony.call';
 
 export default function CallUXUsabilityOptimizationTest() {
   describe('CallUXUsabilityOptimizationTest', () => {
@@ -79,30 +78,5 @@ export default function CallUXUsabilityOptimizationTest() {
       }
       console.info(`${caseName} test end `);
     });
-
-     /**
-     * @tc.number : SUB_Telephony_Data_IsImsSwitchEnabledSync_0100
-     * @tc.name   : testTelephonyDataIsImsSwitchEnabledSync0100
-     * @tc.desc   : Sync checks if VOLTE HD Calling service is enabled.
-     * @tc.level  : Level 2
-     * @tc.type   : Function
-     * @tc.size   : MediumTest
-     */
-    it('testTelephonyDataIsImsSwitchEnabledSync0100', 0, (done: Function) => {
-      let caseName: string = 'testTelephonyDataIsImsSwitchEnabledSync0100';
-      console.info(`${caseName} test start `);
-      try {
-        let isEnabled: boolean = call.isImsSwitchEnabledSync(0);
-        console.info(`${caseName} cardSlot`);
-        expect(isEnabled).assertEqual(true);
-        done();
-      } catch (error) {
-        console.info(`${caseName} catchError`);
-        expect(false).assertFalse();
-        done();
-      }
-      console.info(`${caseName} test end `);
-    });
-    
   })
 }

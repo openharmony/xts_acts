@@ -52,7 +52,7 @@ export default function BlurType_WITHIN_WINDOW_APITest() {
       await CommonFunc.sleep(1000);
       let WITHIN_WINDOW = getInspectorByKey('WITHIN_WINDOW');
       console.info("[BlurType_WITHIN_WINDOW_APITest_0100] WITHIN_WINDOW attrs is: " + JSON.stringify(JSON.parse(WITHIN_WINDOW).$attrs));
-      expect(JSON.parse(WITHIN_WINDOW).$attrs.backgroundEffect.options.type).assertEqual('BlurType.WITHIN_WINDOW');
+      expect(JSON.parse(WITHIN_WINDOW).$attrs.backgroundEffect.options.type).assertEqual('WITHIN_WINDOW');
       console.info('[BlurType_WITHIN_WINDOW_APITest_0100] END');
       done();
     });

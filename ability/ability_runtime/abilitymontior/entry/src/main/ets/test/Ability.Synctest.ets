@@ -15,18 +15,18 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium'
 import Subscriber from '@ohos.commonEvent'
 
-var commonEventSubscribeInfo = { events: ["MainAbility5_onWindowStageDestroy"] };
+const commonEventSubscribeInfo = { events: ["MainAbility5_onWindowStageDestroy"] };
+
+function sleep(time: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, time));
+}
 
 export default function abilityTestSync() {
 
-  let monitor = undefined;
-  describe('ActsAbilityMonitorSync', function () {
+  let monitor: ESObject = undefined;
+  describe('ActsAbilityMonitorSync', () => {
 
-    function sleep(time) {
-      return new Promise((resolve) => setTimeout(resolve, time));
-    }
-
-    afterEach(async function (done) {
+    afterEach(async (done: Function) => {
       console.info("afterEach each called");
       if (monitor) {
         console.info("afterEach removeAbilityMonitor monitor");
@@ -43,8 +43,8 @@ export default function abilityTestSync() {
      * @tc.name: Verify that the addAbilityMonitorSync interface functions normally.
      * @tc.desc: Use addAbilityMonitorSync to add a monitor then use startAbility to trigger onAbilityCreate (Callback).
      */
-    it('ACTS_AddAbilityMonitorSync_0100', 0, async function (done) {
-      var CallbackFlag = 0
+    it('ACTS_AddAbilityMonitorSync_0100', 0, async (done: Function) => {
+      let CallbackFlag = 0
       console.log("====>ACTS_AddAbilityMonitorSync_0100--addAbilityMonitorSync--Subscriber====>");
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
         Subscriber.subscribe(sub, (err, msg) => {
@@ -54,7 +54,7 @@ export default function abilityTestSync() {
         })
       })
 
-      function onAbilityCreate() {
+      let onAbilityCreate = () => {
         console.log("====>ACTS_AddAbilityMonitorSync_0100--onAbilityCreate====>");
         CallbackFlag = 1;
       }
@@ -88,8 +88,8 @@ export default function abilityTestSync() {
      * @tc.desc: Use addAbilityMonitorSync to add a monitor then use startAbility to
      * trigger onAbilityForeground (Callback).
      */
-    it('ACTS_AddAbilityMonitorSync_0200', 0, async function (done) {
-      var CallbackFlag = 0
+    it('ACTS_AddAbilityMonitorSync_0200', 0, async (done: Function) => {
+      let CallbackFlag = 0
       console.log("====>ACTS_AddAbilityMonitorSync_0200--addAbilityMonitorSync--Subscriber====>");
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
         Subscriber.subscribe(sub, (err, msg) => {
@@ -99,7 +99,7 @@ export default function abilityTestSync() {
         })
       })
 
-      function onAbilityForeground() {
+      let onAbilityForeground = () => {
         console.log("====>ACTS_AddAbilityMonitorSync_0200--onAbilityCreate====>");
         CallbackFlag = 1;
       }
@@ -108,7 +108,7 @@ export default function abilityTestSync() {
       monitor = {
         abilityName: 'MainAbility5',
         onAbilityForeground: onAbilityForeground,
-        onWindowStageRestore: (Ability) => {
+        onWindowStageRestore: (Ability: ESObject) => {
           console.info("===>ACTS_AddAbilityMonitorSync_0200 onWindowStageRestore");
         }
       }
@@ -136,8 +136,8 @@ export default function abilityTestSync() {
      * @tc.desc: Use addAbilityMonitorSync to add a monitor then use startAbility to trigger
      * onAbilityBackground (Callback).
      */
-    it('ACTS_AddAbilityMonitorSync_0300', 0, async function (done) {
-      var CallbackFlag = 0
+    it('ACTS_AddAbilityMonitorSync_0300', 0, async (done: Function) => {
+      let CallbackFlag = 0
       console.log("====>ACTS_AddAbilityMonitorSync_0300--addAbilityMonitorSync--Subscriber====>");
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
         Subscriber.subscribe(sub, (err, msg) => {
@@ -147,7 +147,7 @@ export default function abilityTestSync() {
         })
       })
 
-      function onAbilityBackgroundPromise() {
+      let onAbilityBackgroundPromise = () => {
         console.log("====>ACTS_AddAbilityMonitorSync_0300 onAbilityBackgroundPromise ====>");
         CallbackFlag = 1;
       }
@@ -181,8 +181,8 @@ export default function abilityTestSync() {
      * @tc.desc: Use addAbilityMonitorSync to add a monitor then use startAbility
      * to trigger onAbilityDestroy (Callback).
      */
-    it('ACTS_AddAbilityMonitorSync_0400', 0, async function (done) {
-      var CallbackFlag = 0
+    it('ACTS_AddAbilityMonitorSync_0400', 0, async (done: Function) => {
+      let CallbackFlag = 0
       console.log("====>ACTS_AddAbilityMonitorSync_0400--addAbilityMonitorSync--Subscriber====>");
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
         Subscriber.subscribe(sub, (err, msg) => {
@@ -192,7 +192,7 @@ export default function abilityTestSync() {
         })
       })
 
-      function onAbilityDestroy() {
+      let onAbilityDestroy = () => {
         console.log("====>ACTS_AddAbilityMonitorSync_0400 onAbilityDestroy ====>");
         CallbackFlag = 1;
       }
@@ -225,8 +225,8 @@ export default function abilityTestSync() {
      * @tc.desc: Use addAbilityMonitorSync to add a monitor then use startAbility
      * to trigger onWindowStageCreate (Callback).
      */
-    it('ACTS_AddAbilityMonitorSync_0500', 0, async function (done) {
-      var CallbackFlag = 0
+    it('ACTS_AddAbilityMonitorSync_0500', 0, async (done: Function) => {
+      let CallbackFlag = 0
       console.log("====>ACTS_AddAbilityMonitorSync_0500--addAbilityMonitorSync--Subscriber====>");
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
         Subscriber.subscribe(sub, (err, msg) => {
@@ -236,7 +236,7 @@ export default function abilityTestSync() {
         })
       })
 
-      function onWindowStageCreate() {
+      let onWindowStageCreate = () => {
         console.log("====>ACTS_AddAbilityMonitorSync_0500 onWindowStageCreate ====>");
         CallbackFlag = 1;
       }
@@ -270,8 +270,8 @@ export default function abilityTestSync() {
      * @tc.desc: Use addAbilityMonitor to add a monitor then use startAbility
      * to trigger onWindowStageDestroy (Callback).
      */
-    it('ACTS_AddAbilityMonitorSync_0600', 0, async function (done) {
-      var CallbackFlag = 0
+    it('ACTS_AddAbilityMonitorSync_0600', 0, async (done: Function) => {
+      let CallbackFlag = 0
       console.log("====>ACTS_AddAbilityMonitorSync_0600--addAbilityMonitorSync--Subscriber====>");
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
         Subscriber.subscribe(sub, (err, msg) => {
@@ -281,7 +281,7 @@ export default function abilityTestSync() {
         })
       })
 
-      function onWindowStageDestroy() {
+      let onWindowStageDestroy = () => {
         console.log("====>ACTS_AddAbilityMonitor_0600 onWindowStageDestroy ====>");
         CallbackFlag = 1;
       }
@@ -317,8 +317,8 @@ export default function abilityTestSync() {
      * to remove monitor then trigger
      *           onAbilityCreate (Callback).
      */
-    it('ACTS_RemoveAbilityMonitorSync_0100', 0, async function (done) {
-      var CallbackFlag = 0
+    it('ACTS_RemoveAbilityMonitorSync_0100', 0, async (done: Function) => {
+      let CallbackFlag = 0
       console.log("====>ACTS_AddAbilityMonitorSync_0600--addAbilityMonitorSync--Subscriber====>");
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
         Subscriber.subscribe(sub, (err, msg) => {
@@ -328,12 +328,12 @@ export default function abilityTestSync() {
         })
       })
 
-      function onAbilityCreate() {
+      let onAbilityCreate = () => {
         CallbackFlag = -1
         console.log("====>ACTS_RemoveAbilityMonitorSync_0100 onAbilityCreate ====>");
       }
 
-      var monitor = {
+      let monitor: ESObject = {
         abilityName: 'MainAbility5',
         onAbilityCreate: onAbilityCreate
       }
@@ -366,8 +366,8 @@ export default function abilityTestSync() {
      * to remove monitor then trigger
      *           onAbilityForeground (Callback).
      */
-    it('ACTS_RemoveAbilityMonitorSync_0200', 0, async function (done) {
-      var CallbackFlag = 0
+    it('ACTS_RemoveAbilityMonitorSync_0200', 0, async (done: Function) => {
+      let CallbackFlag = 0
       console.log("====>ACTS_AddAbilityMonitorSync_0600--addAbilityMonitorSync--Subscriber====>");
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
         Subscriber.subscribe(sub, (err, msg) => {
@@ -377,12 +377,12 @@ export default function abilityTestSync() {
         })
       })
 
-      function onAbilityForeground() {
+      let onAbilityForeground = () => {
         CallbackFlag = -1
         console.log("====>ACTS_RemoveAbilityMonitorSync_0200 onAbilityForeground ====>");
       }
 
-      var monitor = {
+      let monitor: ESObject = {
         abilityName: 'MainAbility5',
         onAbilityForeground: onAbilityForeground
       }
@@ -414,8 +414,8 @@ export default function abilityTestSync() {
      * to remove monitor then trigger
      *           onAbilityBackground (Callback).
      */
-    it('ACTS_RemoveAbilityMonitorSync_0300', 0, async function (done) {
-      var CallbackFlag = 0
+    it('ACTS_RemoveAbilityMonitorSync_0300', 0, async (done: Function) => {
+      let CallbackFlag = 0
       console.log("====>ACTS_AddAbilityMonitorSync_0600--addAbilityMonitorSync--Subscriber====>");
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
         Subscriber.subscribe(sub, (err, msg) => {
@@ -425,12 +425,12 @@ export default function abilityTestSync() {
         })
       })
 
-      function onAbilityBackground() {
+      let onAbilityBackground = () => {
         CallbackFlag = -1
         console.log("====>ACTS_RemoveAbilityMonitorSync_0300 onAbilityBackground ====>");
       }
 
-      var monitor = {
+      let monitor: ESObject = {
         abilityName: 'MainAbility5',
         onAbilityBackground: onAbilityBackground
       }
@@ -462,8 +462,8 @@ export default function abilityTestSync() {
      * to remove monitor then trigger
      *           onAbilityDestroy (Callback).
      */
-    it('ACTS_RemoveAbilityMonitor_0400', 0, async function (done) {
-      var CallbackFlag = 0
+    it('ACTS_RemoveAbilityMonitor_0400', 0, async (done: Function) => {
+      let CallbackFlag = 0
       console.log("====>ACTS_AddAbilityMonitorSync_0400--addAbilityMonitorSync--Subscriber====>");
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
         Subscriber.subscribe(sub, (err, msg) => {
@@ -473,12 +473,12 @@ export default function abilityTestSync() {
         })
       })
 
-      function onAbilityDestroy() {
+      let onAbilityDestroy = () => {
         CallbackFlag = -1
         console.log("====>ACTS_RemoveAbilityMonitor_0400 onAbilityDestroy ====>");
       }
 
-      var monitor = {
+      let monitor: ESObject = {
         abilityName: 'MainAbility5',
         onAbilityDestroy: onAbilityDestroy
       }
@@ -510,8 +510,8 @@ export default function abilityTestSync() {
      * to remove monitor then trigger
      *           onWindowStageCreate (Callback).
      */
-    it('ACTS_RemoveAbilityMonitorSync_0500', 0, async function (done) {
-      var CallbackFlag = 0
+    it('ACTS_RemoveAbilityMonitorSync_0500', 0, async (done: Function) => {
+      let CallbackFlag = 0
       console.log("====>ACTS_AddAbilityMonitorSync_0600--addAbilityMonitorSync--Subscriber====>");
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
         Subscriber.subscribe(sub, (err, msg) => {
@@ -521,12 +521,12 @@ export default function abilityTestSync() {
         })
       })
 
-      function onWindowStageCreate() {
+      let onWindowStageCreate = () => {
         CallbackFlag = -1
         console.log("====>onWindowStageCreate ====>");
       }
 
-      var monitor = {
+      let monitor: ESObject = {
         abilityName: 'MainAbility5',
         onWindowStageCreate: onWindowStageCreate
       }
@@ -558,8 +558,8 @@ export default function abilityTestSync() {
      * to remove monitor then trigger
      *           onWindowStageDestroy (Callback).
      */
-    it('ACTS_RemoveAbilityMonitorSync_0600', 0, async function (done) {
-      var CallbackFlag = 0
+    it('ACTS_RemoveAbilityMonitorSync_0600', 0, async (done: Function) => {
+      let CallbackFlag = 0
       console.log("====>ACTS_AddAbilityMonitorSync_0600--addAbilityMonitorSync--Subscriber====>");
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
         Subscriber.subscribe(sub, (err, msg) => {
@@ -569,12 +569,12 @@ export default function abilityTestSync() {
         })
       })
 
-      function onWindowStageDestroy() {
+      let onWindowStageDestroy = () => {
         CallbackFlag = -1
         console.log("====>ACTS_RemoveAbilityMonitorSync_0600 onWindowStageDestroy ====>");
       }
 
-      var monitor = {
+      let monitor: ESObject = {
         abilityName: 'MainAbility5',
         onWindowStageDestroy: onWindowStageDestroy
       }
@@ -606,9 +606,9 @@ export default function abilityTestSync() {
      * to remove monitor then trigger
      *           onAbilityCreate (Callback).
      */
-    it('ACTS_RemoveAbilityMonitorSync_0700', 0, async function (done) {
+    it('ACTS_RemoveAbilityMonitorSync_0700', 0, async (done: Function) => {
 
-      function onAbilityCreate() {
+      let onAbilityCreate = () => {
         console.log("====>onAbilityCreate====>");
       }
 
@@ -634,8 +634,8 @@ export default function abilityTestSync() {
      * to remove monitor then trigger
      *           onAbilityCreate (Callback).
      */
-    it('ACTS_RemoveAbilityMonitorSync_0800', 0, async function (done) {
-      var CallbackFlag = 0
+    it('ACTS_RemoveAbilityMonitorSync_0800', 0, async (done: Function) => {
+      let CallbackFlag = 0
       console.log("====>ACTS_AddAbilityMonitorSync_0600--addAbilityMonitorSync--Subscriber====>");
       Subscriber.createSubscriber(commonEventSubscribeInfo, (err, sub) => {
         Subscriber.subscribe(sub, (err, msg) => {
@@ -645,12 +645,12 @@ export default function abilityTestSync() {
         })
       })
 
-      function onAbilityCreate() {
+      let onAbilityCreate = () => {
         CallbackFlag = -1
         console.log("====>ACTS_RemoveAbilityMonitorSync_0800 onAbilityCreate ====>");
       }
 
-      var monitor = {
+      let monitor: ESObject = {
         abilityName: 'MainAbility5',
         onAbilityCreate: onAbilityCreate
       }

@@ -14,8 +14,21 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
-import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import {
+  UiComponent,
+  Driver,
+  Component,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../../MainAbility/utils/Common';
+
 export default function CONTENT_FIRST_APITest() {
   describe('CONTENT_FIRST_APITest', () => {
     beforeEach(async (done: Function) => {
@@ -40,10 +53,10 @@ export default function CONTENT_FIRST_APITest() {
       done();
     });
     /**
-     * @tc.number    CONTENT_FIRST
-     * @tc.name      CONTENT_FIRST_APITest_0100
-     * @tc.desc      api
-     * @tc.level:    Level 2
+     * @tc.number CONTENT_FIRST
+     * @tc.name CONTENT_FIRST_APITest_0100
+     * @tc.desc api
+     * @tc.level: Level 2
      * @tc.type :
      * @tc.size :
      */
@@ -51,8 +64,10 @@ export default function CONTENT_FIRST_APITest() {
       console.info('CONTENT_FIRST_APITest_0100 START');
       await CommonFunc.sleep(1000);
       let CONTENT_FIRST = getInspectorByKey('CONTENT_FIRST');
-      console.info("[CONTENT_FIRST_APITest_0100] Tabs animationMode attrs is: " + JSON.stringify(JSON.parse(CONTENT_FIRST).$attrs));
-      console.info("[CONTENT_FIRST_APITest_0100] Tabs animationMode attrs2 is: " + JSON.stringify(JSON.parse(CONTENT_FIRST)));
+      console.info("[CONTENT_FIRST_APITest_0100] Tabs animationMode attrs is: " +
+      JSON.stringify(JSON.parse(CONTENT_FIRST).$attrs));
+      console.info("[CONTENT_FIRST_APITest_0100] Tabs animationMode attrs2 is: " +
+      JSON.stringify(JSON.parse(CONTENT_FIRST)));
       expect(JSON.parse(CONTENT_FIRST).$attrs.animationMode).assertEqual('AnimationMode.CONTENT_FIRST');
       console.info('[CONTENT_FIRST_APITest_0100] END');
       done();

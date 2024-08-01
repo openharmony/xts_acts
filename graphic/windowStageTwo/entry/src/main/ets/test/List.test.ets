@@ -12,8 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import windowPromiseTest from './windowPromise.test'
+import windowPromiseTest from './windowPromise.test';
+import windowMaximize from './windowMaximize.test';
 
 export default function testsuite() {
-  windowPromiseTest(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage)
+  windowPromiseTest(globalThis.abilityContext,globalThis.windowStage,globalThis.abilityStorage);
+  windowMaximize(globalThis.windowStage);
 }

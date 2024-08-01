@@ -15,14 +15,10 @@
 
 import router from '@ohos.router';
 import promptAction from '@ohos.promptAction';
-import mediaLibrary from '@ohos.multimedia.mediaLibrary';
 import Logger from '../model/Logger';
-import image from '@ohos.multimedia.image';
 import fs from '@ohos.file.fs';
-import screenshot from '@ohos.screenshot';
 import FirstDialog from '../model/FirstDialog';
 import { BusinessError } from '@ohos.base';
-import { Info } from './InfoObj';
 
 let path = globalThis.dir;
 const TAG = '[Gauge]';
@@ -79,7 +75,6 @@ struct gauge {
             result: 'true ', title: this.name,
           }
         })
-        this.getScreen(isFullScreen);
         promptAction.showToast({
           message: '通过', duration: 1000
         });
@@ -104,7 +99,6 @@ struct gauge {
           result: 'false', title: this.name,
         }
       })
-      this.getScreen(isFullScreen);
       promptAction.showToast({
         message: '失败', duration: 1000
       });
@@ -260,55 +254,6 @@ struct gauge {
     .width('100%')
     .height('100%')
     .backgroundColor('#F1F3F5')
-  }
-
-  async savePicture(data: image.PixelMap, context: ESObject) {
-    Logger.info(TAG, `savePicture`);
-    let packOpts: image.PackingOption = {
-      format: "image/jpeg", quality: 100
-    };
-    let info: Info = {
-      prefix: 'IMG_', suffix: '.jpg', directory: mediaLibrary.DirectoryType.DIR_IMAGE
-    };
-    let name = this.name;
-    let displayName = `${info.prefix}${name}${info.suffix}`;
-    let dirPath = path + '/screenshot' + '/' + displayName;
-    let imagePackerApi = image.createImagePacker();
-    let arrayBuffer = await imagePackerApi.packing(data, packOpts);
-    let fd = fs.openSync(dirPath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-    imagePackerApi.release();
-    try {
-      await fs.write(fd.fd, arrayBuffer);
-    } catch (err) {
-      Logger.error(`write failed, code is ${err.code}, message is ${err.message}`);
-    }
-    await fs.close(fd);
-    Logger.info(TAG, `write done`);
-  }
-
-  getScreen = (isFullScreen: boolean) => {
-    let screenshotOptions: screenshot.ScreenshotOptions = {
-      screenRect: { left: 0, top: 0, width: 400, height: 400 },
-      imageSize: { width: 400, height: 400 },
-      rotation: 0,
-      displayId: 0
-    };
-    if (isFullScreen) {
-      screenshotOptions = {
-        rotation: 0
-      }
-    }
-    try {
-      screenshot.save(screenshotOptions, (err: BusinessError, data: image.PixelMap) => {
-        if (err) {
-          Logger.info(TAG, `Failed to save the screenshot. Error:${JSON.stringify(err)}`);
-        }
-        Logger.info(TAG, 'save callback');
-        this.savePicture(data, getContext(this) as ESObject);
-      })
-    } catch (err) {
-      Logger.error(`save failed, code is ${err.code}, message isaction ${err.message}`);
-    }
   }
 }
 

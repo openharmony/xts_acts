@@ -864,7 +864,7 @@ describe("ListTest", function () {
     } catch (err) {
       expect(err.name).assertEqual("BusinessError");
       expect(err.code).assertEqual(10200001);
-      expect(err.message).assertEqual(`The value of "index" is out of range. It must be >= 0 && <= 0. Received value is: 1`);
+      expect(err.message).assertEqual("Container is empty");
     }
   });
     

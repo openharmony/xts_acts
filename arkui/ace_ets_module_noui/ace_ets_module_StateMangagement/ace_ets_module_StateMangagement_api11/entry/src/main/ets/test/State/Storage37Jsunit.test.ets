@@ -13,17 +13,30 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
-import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
+import router from '@ohos.router';
+import {
+  UiComponent,
+  UiDriver,
+  Component,
+  Driver,
+  UiWindow,
+  ON,
+  BY,
+  MatchPattern,
+  DisplayRotation,
+  ResizeDirection,
+  WindowMode,
+  PointerMatrix
+} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/utils/Common';
 
 
 export default function Storage37Jsunit() {
-  describe('Storage37Jsunit', function () {
-    beforeEach(async function (done) {
+  describe('Storage37Jsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("Storage37Jsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/State/Storage37',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/State/Storage37',
       }
       try {
         router.clear();
@@ -31,7 +44,7 @@ export default function Storage37Jsunit() {
         console.info("get Storage37Jsunit state pages: " + JSON.stringify(pages));
         if (!("Storage37" == pages.name)) {
           console.info("get Storage37Jsunit state pages.name: " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          let result = await router.pushUrl(options);
           await CommonFunc.sleep(2000);
           console.info("push Storage37Jsunit page result: " + JSON.stringify(result));
         }
@@ -42,7 +55,7 @@ export default function Storage37Jsunit() {
       done();
     });
 
-    it('Storage37Jsunit_0100', 0, async function (done) {
+    it('Storage37Jsunit_0100', 0, async (done: Function) => {
       console.info('Storage37Jsunit_0100 START');
       let strJson = getInspectorByKey('text37_prop1');
       let obj = JSON.parse(strJson);
@@ -53,7 +66,7 @@ export default function Storage37Jsunit() {
       done();
     });
 
-    it('Storage37Jsunit_0200', 0, async function (done) {
+    it('Storage37Jsunit_0200', 0, async (done: Function) => {
       console.info('Storage37Jsunit_0200 START');
       let strJson = getInspectorByKey('text37_link1Date');
       let obj = JSON.parse(strJson);
@@ -64,7 +77,7 @@ export default function Storage37Jsunit() {
       done();
     });
 
-    it('Storage37Jsunit_0300', 0, async function (done) {
+    it('Storage37Jsunit_0300', 0, async (done: Function) => {
       console.info('Storage37Jsunit_0300 START');
       let strJson = getInspectorByKey('text37_link1Date2');
       let obj = JSON.parse(strJson);
@@ -75,7 +88,7 @@ export default function Storage37Jsunit() {
       done();
     });
 
-    it('Storage37Jsunit_0400', 0, async function (done) {
+    it('Storage37Jsunit_0400', 0, async (done: Function) => {
       console.info('Storage37Jsunit_0400 START');
       let driver = await UiDriver.create()
       let button = await driver.findComponent(BY.key('Storage37Btn'));
@@ -90,7 +103,7 @@ export default function Storage37Jsunit() {
       done();
     });
 
-    it('Storage37Jsunit_0500', 0, async function (done) {
+    it('Storage37Jsunit_0500', 0, async (done: Function) => {
       console.info('Storage37Jsunit_0500 START');
       let driver = await UiDriver.create()
       let button = await driver.findComponent(BY.key('Storage37Btn'));

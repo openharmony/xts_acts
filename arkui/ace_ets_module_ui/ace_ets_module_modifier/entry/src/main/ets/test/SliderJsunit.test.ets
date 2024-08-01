@@ -17,25 +17,24 @@ import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
 import Utils from './Utils';
-import router from '@system.router';
+import router from '@ohos.router';
 
 export default function sliderTest() {
-  describe('sliderTest', function () {
-    beforeEach(async function (done) {
+  describe('sliderTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("sliderJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/slider',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/slider',
       }
-      let result;
+
       try {
         router.clear();
         let pages = router.getState();
         console.info("get slider state pages: " + JSON.stringify(pages));
         if (!("slider" == pages.name)) {
           console.info("get slider state pages.name: " + JSON.stringify(pages.name));
-          result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(2000);
-          console.info("push slider page result: " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push slider page error: " + err);
@@ -45,13 +44,13 @@ export default function sliderTest() {
 
     /**
      * @tc.number ArkUX_Stage_Slider_010
-     * @tc.name   Test the properties of components
-     * @tc.desc   set stepSize values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc set stepSize values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUX_Stage_Slider_010', 0, async function (done) {
+    it('ArkUX_Stage_Slider_010', 0, async (done: Function) => {
       console.info('ArkUX_Stage_Slider_010 START');
       let strJsonNew = getInspectorByKey('slider');
       let objNew = JSON.parse(strJsonNew);
@@ -63,13 +62,13 @@ export default function sliderTest() {
 
     /**
      * @tc.number ArkUX_Stage_Slider_011
-     * @tc.name   Test the properties of components
-     * @tc.desc   set stepColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc set stepColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUX_Stage_Slider_011', 0, async function (done) {
+    it('ArkUX_Stage_Slider_011', 0, async (done: Function) => {
       console.info('ArkUX_Stage_Slider_011 START');
       let strJsonNew = getInspectorByKey('slider');
       let objNew = JSON.parse(strJsonNew);
@@ -81,13 +80,13 @@ export default function sliderTest() {
 
     /**
      * @tc.number ArkUX_Stage_Slider_012
-     * @tc.name   Test the properties of components
-     * @tc.desc   set blockBorderWidth values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc set blockBorderWidth values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUX_Stage_Slider_012', 0, async function (done) {
+    it('ArkUX_Stage_Slider_012', 0, async (done: Function) => {
       console.info('ArkUX_Stage_Slider_012 START');
       let strJsonNew = getInspectorByKey('slider');
       let objNew = JSON.parse(strJsonNew);
@@ -99,13 +98,13 @@ export default function sliderTest() {
 
     /**
      * @tc.number ArkUX_Stage_Slider_013
-     * @tc.name   Test the properties of components
-     * @tc.desc   set trackBorderRadius values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc set trackBorderRadius values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUX_Stage_Slider_013', 0, async function (done) {
+    it('ArkUX_Stage_Slider_013', 0, async (done: Function) => {
       console.info('ArkUX_Stage_Slider_013 START');
       let strJsonNew = getInspectorByKey('slider');
       let objNew = JSON.parse(strJsonNew);
@@ -117,13 +116,13 @@ export default function sliderTest() {
 
     /**
      * @tc.number ArkUX_Stage_Slider_014
-     * @tc.name   Test the properties of components
-     * @tc.desc   set showTips values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc set showTips values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUX_Stage_Slider_014', 0, async function (done) {
+    it('ArkUX_Stage_Slider_014', 0, async (done: Function) => {
       console.info('ArkUX_Stage_Slider_014 START');
       let strJsonNew = getInspectorByKey('slider');
       let objNew = JSON.parse(strJsonNew);
@@ -135,13 +134,13 @@ export default function sliderTest() {
 
     /**
      * @tc.number ArkUX_Stage_Slider_015
-     * @tc.name   Test the properties of components
-     * @tc.desc   set blockBorderColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc set blockBorderColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUX_Stage_Slider_015', 0, async function (done) {
+    it('ArkUX_Stage_Slider_015', 0, async (done: Function) => {
       console.info('ArkUX_Stage_Slider_015 START');
       let strJsonNew = getInspectorByKey('slider');
       let objNew = JSON.parse(strJsonNew);
@@ -153,13 +152,13 @@ export default function sliderTest() {
 
     /**
      * @tc.number ArkUX_Stage_Slider_017
-     * @tc.name   Test the properties of components
-     * @tc.desc   set blockSize values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc set blockSize values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUX_Stage_Slider_017', 0, async function (done) {
+    it('ArkUX_Stage_Slider_017', 0, async (done: Function) => {
       console.info('ArkUX_Stage_Slider_017 START');
       let strJsonNew = getInspectorByKey('slider');
       let objNew = JSON.parse(strJsonNew);
@@ -172,13 +171,13 @@ export default function sliderTest() {
 
     /**
      * @tc.number ArkUX_Stage_Slider_018
-     * @tc.name   Test the properties of components
-     * @tc.desc   set blockColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc set blockColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUX_Stage_Slider_018', 0, async function (done) {
+    it('ArkUX_Stage_Slider_018', 0, async (done: Function) => {
       console.info('ArkUX_Stage_Slider_018 START');
       let strJsonNew = getInspectorByKey('slider');
       let objNew = JSON.parse(strJsonNew);
@@ -190,13 +189,13 @@ export default function sliderTest() {
 
     /**
      * @tc.number ArkUX_Stage_Slider_019
-     * @tc.name   Test the properties of components
-     * @tc.desc   set trackColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc set trackColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUX_Stage_Slider_019', 0, async function (done) {
+    it('ArkUX_Stage_Slider_019', 0, async (done: Function) => {
       console.info('ArkUX_Stage_Slider_019 START');
       let strJsonNew = getInspectorByKey('slider');
       let objNew = JSON.parse(strJsonNew);
@@ -208,13 +207,13 @@ export default function sliderTest() {
 
     /**
      * @tc.number ArkUX_Stage_Slider_020
-     * @tc.name   Test the properties of components
-     * @tc.desc   set selectedColor values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc set selectedColor values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUX_Stage_Slider_020', 0, async function (done) {
+    it('ArkUX_Stage_Slider_020', 0, async (done: Function) => {
       console.info('ArkUX_Stage_Slider_020 START');
       let strJsonNew = getInspectorByKey('slider');
       let objNew = JSON.parse(strJsonNew);
@@ -226,13 +225,13 @@ export default function sliderTest() {
 
     /**
      * @tc.number ArkUX_Stage_Slider_021
-     * @tc.name   Test the properties of components
-     * @tc.desc   set showSteps values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc set showSteps values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUX_Stage_Slider_021', 0, async function (done) {
+    it('ArkUX_Stage_Slider_021', 0, async (done: Function) => {
       console.info('ArkUX_Stage_Slider_021 START');
       let strJsonNew = getInspectorByKey('slider');
       let objNew = JSON.parse(strJsonNew);
@@ -244,13 +243,13 @@ export default function sliderTest() {
 
     /**
      * @tc.number ArkUX_Stage_Slider_022
-     * @tc.name   Test the properties of components
-     * @tc.desc   set trackThickness values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc set trackThickness values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUX_Stage_Slider_022', 0, async function (done) {
+    it('ArkUX_Stage_Slider_022', 0, async (done: Function) => {
       console.info('ArkUX_Stage_Slider_022 START');
       let strJsonNew = getInspectorByKey('slider');
       let objNew = JSON.parse(strJsonNew);
@@ -262,13 +261,13 @@ export default function sliderTest() {
 
     /**
      * @tc.number ArkUX_Stage_Slider_023
-     * @tc.name   Test the properties of components
-     * @tc.desc   set blockType values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc set blockType values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUX_Stage_Slider_023', 0, async function (done) {
+    it('ArkUX_Stage_Slider_023', 0, async (done: Function) => {
       console.info('ArkUX_Stage_Slider_023 START');
       let strJsonNew = getInspectorByKey('slider');
       let objNew = JSON.parse(strJsonNew);
@@ -280,13 +279,13 @@ export default function sliderTest() {
 
     /**
      * @tc.number ArkUX_Stage_Slider_0110
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change stepSize values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change stepSize values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('ArkUX_Stage_Slider_0110', 0, async function (done) {
+    it('ArkUX_Stage_Slider_0110', 0, async (done: Function) => {
       console.info('ArkUX_Stage_Slider_0110 START');
       let driver = Driver.create();
       let button = await driver.findComponent(ON.id('changeButton'));

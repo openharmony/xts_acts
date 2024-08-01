@@ -13,39 +13,39 @@
  * limitations under the License.
  */
 import Ability from '@ohos.app.ability.UIAbility'
-import AbilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry'
+import AbilityDelegatorRegistry from '@ohos.app.ability.abilityDelegatorRegistry'
 import { Hypium } from '@ohos/hypium'
 import testsuite from '../test/List.test'
 
 export default class TestAbility extends Ability {
-    onCreate(want, launchParam) {
-        globalThis.abilityContext = this.context;
-        console.info('TestAbility onCreate')
-        let abilityDelegatorArguments: any
-        let abilityDelegator: any
-        abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
-        abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
-        Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
-    }
+  onCreate(want, launchParam) {
+    globalThis.abilityContext = this.context;
+    console.info('TestAbility onCreate')
+    let abilityDelegatorArguments: any
+    let abilityDelegator: any
+    abilityDelegator = AbilityDelegatorRegistry.getAbilityDelegator()
+    abilityDelegatorArguments = AbilityDelegatorRegistry.getArguments()
+    Hypium.hypiumTest(abilityDelegator, abilityDelegatorArguments, testsuite)
+  }
 
-    onDestroy() {
-        console.log('TestAbility onDestroy')
-    }
+  onDestroy() {
+    console.log('TestAbility onDestroy')
+  }
 
-    onWindowStageCreate(windowStage) {
-        console.log('TestAbility onWindowStageCreate')
-        windowStage.setUIContent(this.context, 'TestAbility/pages/index', null)
-    }
+  onWindowStageCreate(windowStage) {
+    console.log('TestAbility onWindowStageCreate')
+    windowStage.setUIContent(this.context, 'TestAbility/pages/index', null)
+  }
 
-    onWindowStageDestroy() {
-        console.log('TestAbility onWindowStageDestroy')
-    }
+  onWindowStageDestroy() {
+    console.log('TestAbility onWindowStageDestroy')
+  }
 
-    onForeground() {
-        console.log('TestAbility onForeground')
-    }
+  onForeground() {
+    console.log('TestAbility onForeground')
+  }
 
-    onBackground() {
-        console.log('TestAbility onBackground')
-    }
+  onBackground() {
+    console.log('TestAbility onBackground')
+  }
 };

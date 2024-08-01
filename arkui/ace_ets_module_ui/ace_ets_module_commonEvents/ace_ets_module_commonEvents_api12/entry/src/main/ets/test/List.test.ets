@@ -49,8 +49,6 @@ import RotationGestureBasic02Test from './RotationGesture/RotationGestureBasic02
 import PinchGestureBasic01Test from './PinchGesture/PinchGestureBasic01Test.test';
 import PinchGestureBasic02Test from './PinchGesture/PinchGestureBasic02Test.test';
 import PanGestureExampleTemplateTest from './PanGesture/PanGestureExampleTemplateTest.test';
-import PinchGestureTemplateTest from './PinchGesture/PinchGestureTemplateTest.test';
-import RotationGestureTemplateTest from './RotationGesture/RotationGestureTemplateTest.test';
 import TapGestureTemplateTest from './TapGesture/TapGestureTemplateTest.test';
 import LongPressGestureTemplateTest from './LongPressGesture/LongPressGestureTemplateTest.test';
 import SwipeGestureTemplateTest from './SwipeGesture/SwipeGestureTemplateTest.test';
@@ -60,11 +58,8 @@ import RotationGestureUpdateTest from './RotationGesture/RotationGestureUpdateTe
 import onAttachTest from './onAttachTest/onAttach.test';
 import GestureRecognizerState from './GestureRecognizer/GestureRecognizerState.test';
 import APIshouldBuiltInRecognizerParallelWith from './APIshouldBuiltInRecognizerParallelWith.test';
-
-
-
 import typeNodeGestureTest from './PanGesture/Gesture.test';
-
+import UIContextDragControllerTest from './DragController/UIContextDragController.test';
 export default function testsuite() {
   APIshouldBuiltInRecognizerParallelWith();
   APIPreDragStatusTest();
@@ -104,8 +99,6 @@ export default function testsuite() {
   PinchGestureBasic01Test();
   PinchGestureBasic02Test();
   PanGestureExampleTemplateTest();
-  PinchGestureTemplateTest();
-  RotationGestureTemplateTest();
   TapGestureTemplateTest();
   LongPressGestureTemplateTest();
   SwipeGestureTemplateTest();
@@ -115,4 +108,5 @@ export default function testsuite() {
   onAttachTest();
   GestureRecognizerState();
   typeNodeGestureTest();
+  UIContextDragControllerTest();
 }

@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import Utils from './Utils';
 import { UiDriver, UiComponent, BY, Driver, Component, ON } from '@ohos.UiTest'
 import events_emitter from '@ohos.events.emitter';
 
 export default function imageSpanJsunit() {
-  describe('imageSpanTest', function () {
-    beforeEach(async function (done) {
-      let options = {
-        uri: 'MainAbility/pages/imageSpan',
+  describe('imageSpanTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/imageSpan',
       }
       try {
         router.clear();
@@ -30,9 +30,8 @@ export default function imageSpanJsunit() {
         console.info("get imageSpan state success " + JSON.stringify(pages));
         if (!("imageSpan" == pages.name)) {
           console.info("get imageSpan state success " + JSON.stringify(pages.name));
-          let result = await router.push(options);
+          await router.pushUrl(options);
           await Utils.sleep(1000);
-          console.info("push imageSpan page success " + JSON.stringify(result));
         }
       } catch (err) {
         console.error("push imageSpan page error: " + err);
@@ -42,52 +41,52 @@ export default function imageSpanJsunit() {
 
     /**
      * @tc.number imageSpanTest_0001
-     * @tc.name   Test the properties of components
-     * @tc.desc   set verticalAlign values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc set verticalAlign values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('imageSpanTest_0001', 0, async function (done) {
+    it('imageSpanTest_0001', 0, async (done: Function) => {
       console.info('imageSpanTest_0001 START');
       let strJsonNew = getInspectorByKey('imageSpan');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("imageSpanTest_0001 component is: " + JSON.stringify(objNew.$attrs));
+      
+      console.info("imageSpanTest_0001 component is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
 
-      expect(objNew.$attrs.verticalAlign).assertEqual('VerticalAlign.BASELINE');
+      expect(JSON.parse(strJsonNew).$attrs.verticalAlign).assertEqual('VerticalAlign.BASELINE');
       console.info('imageSpanTest_0001 END');
       done();
     });
 
     /**
      * @tc.number imageSpanTest_0002
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change objectFit values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change objectFit values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('imageSpanTest_0002', 0, async function (done) {
+    it('imageSpanTest_0002', 0, async (done: Function) => {
 
       console.info('imageSpanTest_0002 START');
       let strJsonNew = getInspectorByKey('imageSpan');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("imageSpanTest_0002 component is: " + JSON.stringify(objNew.$attrs));
+      
+      console.info("imageSpanTest_0002 component is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
 
-      expect(objNew.$attrs.objectFit).assertEqual('ImageFit.Cover');
+      expect(JSON.parse(strJsonNew).$attrs.objectFit).assertEqual('ImageFit.Cover');
       console.info('imageSpanTest_0002 END');
       done();
     });
 
     /**
      * @tc.number imageSpanTest_0003
-     * @tc.name   Test the properties of components
-     * @tc.desc   Change objectFit values
-     * @tc.size   MediumTest
-     * @tc.type   Function
-     * @tc.level  0
+     * @tc.name Test the properties of components
+     * @tc.desc Change objectFit values
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level 0
      */
-    it('imageSpanTest_0003', 0, async function (done) {
+    it('imageSpanTest_0003', 0, async (done: Function) => {
 
       console.info('imageSpanTest_0003 START');
       let driver = Driver.create();
@@ -96,10 +95,10 @@ export default function imageSpanJsunit() {
       await Utils.sleep(2000)
 
       let strJsonNew = getInspectorByKey('imageSpan');
-      let objNew = JSON.parse(strJsonNew);
-      console.info("imageSpanTest_0003 component is: " + JSON.stringify(objNew.$attrs));
+      
+      console.info("imageSpanTest_0003 component is: " + JSON.stringify(JSON.parse(strJsonNew).$attrs));
 
-      expect(objNew.$attrs.objectFit).assertEqual('ImageFit.Contain');
+      expect(JSON.parse(strJsonNew).$attrs.objectFit).assertEqual('ImageFit.Contain');
       console.info('imageSpanTest_0003 END');
       done();
     });
