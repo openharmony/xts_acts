@@ -63,8 +63,11 @@ export default function rdbStoreExcuteTest(){
     })
 
     /**
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ExecuteJsAPITest_1000
-     * @tc.name Normal test case of Execute, check integrity for store
+     * @tc.name testExecute0001
      * @tc.desc 1. Execute sql: PRAGMA integrity_check
      *          2. Check returned value
      */
@@ -82,8 +85,11 @@ export default function rdbStoreExcuteTest(){
     })
 
     /**
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ExecuteJsAPITest_1100
-     * @tc.name Normal test case of Execute, check integrity for store
+     * @tc.name testExecute0002
      * @tc.desc 1. Execute sql: PRAGMA quick_check
      *          2. Check returned value
      */
@@ -101,8 +107,11 @@ export default function rdbStoreExcuteTest(){
     })
 
     /**
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ExecuteJsAPITest_1200
-     * @tc.name Normal test case of Execute, get user_version of store
+     * @tc.name testExecute0003
      * @tc.desc 1. Execute sql: PRAGMA user_version
      *          2. Check returned value
      */
@@ -121,8 +130,11 @@ export default function rdbStoreExcuteTest(){
     })
 
     /**
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ExecuteJsAPITest_1300
-     * @tc.name AbNormal test case of Execute, execute select sql
+     * @tc.name testExecute0004
      * @tc.desc 1. Execute select sql
      *          2. Check returned value
      */
@@ -132,7 +144,7 @@ export default function rdbStoreExcuteTest(){
         await rdbStore.execute("SELECT * FROM test");
         expect(null).assertFail();
       } catch (err) {
-        expect(14800000).assertEqual(err.code);
+        expect(14800021).assertEqual(err.code);
         console.error(`execute select sql failed, code:${err.code}, message: ${err.message}`);
       }
       done();
@@ -140,8 +152,11 @@ export default function rdbStoreExcuteTest(){
     })
 
     /**
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ExecuteJsAPITest_1400
-     * @tc.name Normal test case of Execute, execute sql for inserting data
+     * @tc.name testExecute0005
      * @tc.desc 1. Execute insert sql
      *          2. Check returned value
      */
@@ -159,8 +174,11 @@ export default function rdbStoreExcuteTest(){
     })
 
     /**
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ExecuteJsAPITest_1500
-     * @tc.name Normal test case of Execute, execute sql for inserting data
+     * @tc.name testExecute0006
      * @tc.desc 1. Execute insert sql
      *          2. Check returned value
      */
@@ -178,8 +196,11 @@ export default function rdbStoreExcuteTest(){
     })
 
     /**
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ExecuteJsAPITest_1600
-     * @tc.name Normal test case of Execute, execute sql for batch insert data
+     * @tc.name testExecute0007
      * @tc.desc 1. Execute batch insert sql
      *          2. Check returned value
      */
@@ -198,8 +219,11 @@ export default function rdbStoreExcuteTest(){
     })
 
     /**
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ExecuteJsAPITest_1700
-     * @tc.name Normal test case of Execute, execute sql for updating data
+     * @tc.name testExecute0008
      * @tc.desc 1. Execute update sql
      *          2. Check returned value
      */
@@ -221,8 +245,11 @@ export default function rdbStoreExcuteTest(){
     })
 
     /**
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ExecuteJsAPITest_1800
-     * @tc.name Normal test case of Execute, execute sql for deleting data
+     * @tc.name testExecute0009
      * @tc.desc 1. Execute delete sql
      *          2. Check returned value
      */
@@ -243,8 +270,11 @@ export default function rdbStoreExcuteTest(){
     })
 
     /**
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ExecuteJsAPITest_1900
-     * @tc.name AbNormal test case of Execute, execute sql for attaching database and transaction
+     * @tc.name testExecute0010
      * @tc.desc 1. Execute attach sql
      *          2. Execute detach sql
      *          3. Execute transaction sql
@@ -257,7 +287,7 @@ export default function rdbStoreExcuteTest(){
         expect(null).assertFail();
       } catch (err) {
 
-        expect(14800000).assertEqual(err.code);
+        expect(14800021).assertEqual(err.code);
         console.error(`execute attach sql failed, code:${err.code}, message: ${err.message}`);
       }
 
@@ -266,7 +296,7 @@ export default function rdbStoreExcuteTest(){
         expect(null).assertFail();
       } catch (err) {
 
-        expect(14800000).assertEqual(err.code);
+        expect(14800021).assertEqual(err.code);
         console.error(`execute detach sql failed, code:${err.code}, message: ${err.message}`);
       }
 
@@ -275,7 +305,7 @@ export default function rdbStoreExcuteTest(){
         expect(null).assertFail();
       } catch (err) {
 
-        expect(14800000).assertEqual(err.code);
+        expect(14800021).assertEqual(err.code);
         console.error(`execute begin transaction sql failed, code:${err.code}, message: ${err.message}`);
       }
 
@@ -284,7 +314,7 @@ export default function rdbStoreExcuteTest(){
         expect(null).assertFail();
       } catch (err) {
 
-        expect(14800000).assertEqual(err.code);
+        expect(14800021).assertEqual(err.code);
         console.error(`execute commit sql failed, code:${err.code}, message: ${err.message}`);
       }
 
@@ -292,7 +322,7 @@ export default function rdbStoreExcuteTest(){
         await rdbStore.execute("ROLLBACK");
         expect(null).assertFail();
       } catch (err) {
-        expect(14800000).assertEqual(err.code);
+        expect(14800021).assertEqual(err.code);
         console.error(`execute rollback sql failed, code:${err.code}, message: ${err.message}`);
       }
       done();
@@ -300,8 +330,11 @@ export default function rdbStoreExcuteTest(){
     })
 
     /**
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ExecuteJsAPITest_2000
-     * @tc.name Normal test case of Execute, execute DDL sql for creating and dropping table
+     * @tc.name testExecute0011
      * @tc.desc 1. Create table
      *          2. Drop table
      */
@@ -331,8 +364,11 @@ export default function rdbStoreExcuteTest(){
     })
 
     /**
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ExecuteJsAPITest_2100
-     * @tc.name Normal test case of Execute, execute sql for creating table and insert, query data
+     * @tc.name testExecute0012
      * @tc.desc 1. Create table
      *          2. Insert data
      *          3. Query data
@@ -361,8 +397,11 @@ export default function rdbStoreExcuteTest(){
     })
 
     /**
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ExecuteJsAPITest_2200
-     * @tc.name AbNormal test case of Execute, if sql is ""
+     * @tc.name testExecute0013
      * @tc.desc 1. Execute sql: ""
      *          2. Check returned value
      */
@@ -381,8 +420,11 @@ export default function rdbStoreExcuteTest(){
     })
 
     /**
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ExecuteJsAPITest_2300
-     * @tc.name AbNormal test case of Execute, execute sql insert data and if args is []
+     * @tc.name testExecute0014
      * @tc.desc 1. Insert data
      *          2. Check returned value
      */
@@ -400,8 +442,11 @@ export default function rdbStoreExcuteTest(){
     })
 
     /**
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ExecuteJsAPITest_2400
-     * @tc.name AbNormal test case of Execute, if sql is null or undefined
+     * @tc.name testExecute0015
      * @tc.desc 1. Insert data and set sql as null or undefined
      *          2. Check returned value
      */
@@ -427,8 +472,11 @@ export default function rdbStoreExcuteTest(){
     })
 
     /**
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ExecuteJsAPITest_2500
-     * @tc.name AbNormal test case of Execute, if args is null or undefined
+     * @tc.name testExecute0016
      * @tc.desc 1. Insert data and set args as null or undefined
      *          2. Check returned value
      */
@@ -455,8 +503,11 @@ export default function rdbStoreExcuteTest(){
 
 
           /**
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ExecuteJsAPITest_2600
-     * @tc.name AbNormal test case of Execute, if args is null or undefined
+     * @tc.name testExecute0017
      * @tc.desc 1. Insert data and set args as null or undefined
      *          2. Check returned value
      */
@@ -477,8 +528,11 @@ export default function rdbStoreExcuteTest(){
 
 
     /**
+     * @tc.size MediumTest
+     * @tc.type Function
+     * @tc.level Level 2
      * @tc.number SUB_DistributedData_RelationalStore_SDK_ExecuteJsAPITest_2700
-     * @tc.name AbNormal test case of Execute, if args is null or undefined
+     * @tc.name testExecute0018
      * @tc.desc 1. Insert data and set args as null or undefined
      *          2. Check returned value
      */
@@ -489,7 +543,7 @@ export default function rdbStoreExcuteTest(){
             await rdbStore.execute("PRAGMA table_info(test)");
             expect(null).assertFail();
         } catch (err) {
-            expect(14800000).assertEqual(err.code);
+            expect(14800021).assertEqual(err.code);
             console.error(`get table info failed, code:${err.code}, message: ${err.message}`);
         }
         done();
