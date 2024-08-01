@@ -17,13 +17,11 @@
     margin: 10px;
     
 }
-
 @media screen and (device-type: phone) and (orientation: landscape) {
     .title {
         font-size: 60px;
     }
 }
-
 @media screen and (device-type: tablet) and (orientation: landscape) {
     .title {
         font-size: 100px;
