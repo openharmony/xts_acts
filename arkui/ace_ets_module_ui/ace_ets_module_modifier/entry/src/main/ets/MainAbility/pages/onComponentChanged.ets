@@ -38,16 +38,16 @@ struct updaterDemo4 {
   build() {
     Row() {
       Column() {
-        Button("Test")
+        Button('Test')
           .onClick(() => {
             this.btnState = !this.btnState
           })
 
         if (this.btnState) {
-          Button("Button")
+          Button('Button')
             .attributeModifier(this.modifier)
         } else {
-          Button("Button")
+          Button('Button')
             .attributeModifier(this.modifier)
         }
       }
