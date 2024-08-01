@@ -162,9 +162,9 @@ static napi_value testArkUI015(napi_env env, napi_callback_info info) {
 static napi_value testArkUI016(napi_env env, napi_callback_info info) {
 
     ArkUI_NodeContentHandle contentHandle = nullptr;
-    OH_ArkUI_GetNodeContentFromNapiValue(env,nullptr,&contentHandle);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager","testArkUI016-contentHandle %{public}p", contentHandle);
-    ASSERT_OBJ(contentHandle,nullptr);
+    OH_ArkUI_GetNodeContentFromNapiValue(env, nullptr, &contentHandle);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "testArkUI016-contentHandle %{public}p", contentHandle);
+    ASSERT_OBJ(contentHandle, nullptr);
     
     NAPI_END;
 }
@@ -172,27 +172,27 @@ static napi_value testArkUI016(napi_env env, napi_callback_info info) {
 static napi_value testArkUI017(napi_env env, napi_callback_info info) {
     int testData1 = 10;
         
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager","test17 start");
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "test17 start");
 
-    int32_t ret = OH_ArkUI_NodeContent_SetUserData(nullptr,&testData1);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager","testArkUI017-ret %{public}d", ret);
-    ASSERT_NE(ret,res4);
+    int32_t ret = OH_ArkUI_NodeContent_SetUserData(nullptr, &testData1);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "testArkUI017-ret %{public}d", ret);
+    ASSERT_NE(ret, res4);
         
     int *userData = reinterpret_cast<int *>(OH_ArkUI_NodeContent_GetUserData(nullptr));
-    ASSERT_OBJ(userData,nullptr);
+    ASSERT_OBJ(userData, nullptr);
 
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager","test17 end");
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "test17 end");
     NAPI_END;
 }
 
 static napi_value testArkUI018(napi_env env, napi_callback_info info) {
     
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager","test18 start");
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "test18 start");
 
     ArkUI_NodeContentHandle handle = OH_ArkUI_NodeContentEvent_GetNodeContentHandle(nullptr);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager","testArkUI018-handle %{public}p", handle);
-    ASSERT_OBJ(handle,nullptr);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager","test18 end");
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "testArkUI018-handle %{public}p", handle);
+    ASSERT_OBJ(handle, nullptr);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "test18 end");
     NAPI_END;
 }
 
