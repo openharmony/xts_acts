@@ -114,8 +114,8 @@ export default function continuationManagerTest() {
         it('SUM_DMS_AbilityConstant_0100', 0 , async (done) => {
             console.log("----------------------SUM_DMS_AbilityConstant_0100 start----------------------");
             try {
-                console.log("----------------------SUM_DMS_AbilityConstant_0100----------------------" + abilityConstant.LaunchParam.PREPARE_CONTINUATION);
-                expect(10).assertEqual(abilityConstant.LaunchParam.PREPARE_CONTINUATION);
+                console.log("---------------------PREPARE_CONTINUATION---------------------" + abilityConstant.LaunchParam.PREPARE_CONTINUATION);
+                expect(10).assertEqual(abilityConstant.LaunchReason.PREPARE_CONTINUATION);
             } catch (error) {
                 console.log("----------------------SUM_DMS_AbilityConstant_0100----------------------" + error);  
             }
