@@ -86,9 +86,7 @@ struct audioNew {
     for (let i = 0; i < this.TestCaseList.length; i++) {
     	console.info("TestCaseList succeed");
         let pathName = context.filesDir + '/' + this.TestCaseList[i].displayName;
-        let file = fs.openSync(pathName, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-        this.TestCaseList[i].uri = 'fd://' + file.fd;
-        fs.closeSync(file.fd);
+        this.TestCaseList[i].uri = 'file://' + pathName;
       }
 
     if (Test != 1) {
