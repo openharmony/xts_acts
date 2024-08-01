@@ -15,35 +15,26 @@
 
 import { describe, it, expect } from '@ohos/hypium'
 import userAuthNorth from '@ohos.userIAM.userAuth'
-import deviceInfo from '@ohos.deviceInfo'
-
-let productSeriesInfo = deviceInfo.productSeries;
-console.info('the value of the deviceinfo productSeries is :' + productSeriesInfo);
-
-let productModelInfo = deviceInfo.productModel;
-console.info('the value of the deviceinfo productModel is :' + productModelInfo);
 
 export default function userauthTest_Nopermission_API12() {
     describe('userauthTest_Nopermission_API12', function () {
 
-        /*
-            * @tc.number    : SUB_Security_IAM_Func_API12_0110
-            * @tc.name      : Unapplied permission call GetEnrolledState
-            * @tc.desc      : Unapplied permission call GetEnrolledState
-            * @tc.size      : MediumTest
-            * @tc.type      : Function
-            * @tc.level     : Level 1
+        /**
+        * @tc.number    : SUB_Security_IAM_Func_API12_0110
+        * @tc.name      : unapplied permission call GetEnrolledState
+        * @tc.desc      : Unapplied permission call GetEnrolledState
+        * @tc.size      : MediumTest
+        * @tc.type      : Function
+        * @tc.level     : Level 1
         */
         it('SUB_Security_IAM_Func_API12_0110', 1, async function (done) {
             console.info('testFace SUB_Security_IAM_Func_API12_0110 start');
-            if (productSeriesInfo != "NOH" && productSeriesInfo != "HYM") {
-                let authType = 1
-                try {
-                    userAuthNorth.getEnrolledState(authType);
-                } catch (e) {
-                    console.log("SUB_Security_IAM_Func_API12_0110 fail " + 'authType:' + authType + 'e.code:' + e.code);
-                    expect(e.code).assertEqual(201);
-                }
+            let authType = 1
+            try {
+                userAuthNorth.getEnrolledState(authType);
+            } catch (e) {
+                console.log("SUB_Security_IAM_Func_API12_0110 fail " + 'authType:' + authType + 'e.code:' + e.code);
+                expect(e.code).assertEqual(201);
             }
             done();
         })
