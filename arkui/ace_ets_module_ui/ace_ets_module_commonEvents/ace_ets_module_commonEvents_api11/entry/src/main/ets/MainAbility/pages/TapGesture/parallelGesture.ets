@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,19 +25,19 @@ struct GestureSettingsExample {
         .onAction(() => {
           this.value = 'gesture onAction'
           try {
-            var backData = {
+            let backData: events_emitter.EventData = {
               data: {
                 "value": this.value
               }
             }
-            var backEvent = {
+            let backEvent: events_emitter.InnerEvent = {
               eventId: 150,
               priority: events_emitter.EventPriority.LOW
             }
             console.info("click to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("click action state err: " + JSON.stringify(err.message))
+            console.info("click action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
       )

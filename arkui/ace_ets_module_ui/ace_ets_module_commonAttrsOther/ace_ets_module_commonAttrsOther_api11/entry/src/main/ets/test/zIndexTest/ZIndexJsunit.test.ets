@@ -16,7 +16,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function zIndexJsunit() {
   describe('zIndexTest', () => {
@@ -32,7 +32,7 @@ export default function zIndexJsunit() {
         if (!("zIndex" == pages.name)) {
           console.info("get zIndex state pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push zIndex page result:" + JSON.stringify(result));
         }
       } catch (err) {
@@ -41,13 +41,13 @@ export default function zIndexJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       console.info("zIndex after each called");
     });
 
     it('testZIndex01', 0, async () => {
       console.info('[testZIndex01] START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('zIndex');
       console.info("[testZIndex01] obj is: " + JSON.stringify(JSON.parse(strJson).$attrs));
       expect(JSON.parse(strJson).$attrs.zIndex).assertEqual(1);
@@ -72,7 +72,7 @@ export default function zIndexJsunit() {
       } catch (err) {
         console.log("[testZIndex02] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('zIndex');
       console.info("[testZIndex02] obj is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$attrs.zIndex).assertEqual(4);
@@ -97,7 +97,7 @@ export default function zIndexJsunit() {
       } catch (err) {
         console.log("[testZIndex03] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('zIndex');
       console.info("[testZIndex03] obj is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$attrs.zIndex).assertEqual(-5);
@@ -122,7 +122,7 @@ export default function zIndexJsunit() {
       } catch (err) {
         console.log("[testZIndex04] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson: string = getInspectorByKey('zIndex');
       console.info("[testZIndex04] obj is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$attrs.zIndex).assertEqual(889900444);

@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 
 
 export default function TapGesture2() {
-  describe('TapGesture2', function () {
-    beforeEach(async function (done) {
+  describe('TapGesture2', () => {
+    beforeEach(async (done: Function) => {
       console.info("TapGesture2 beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/TapGesture/TapGesture2',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/TapGesture/TapGesture2',
       }
       try {
         router.clear();
@@ -48,13 +48,13 @@ export default function TapGesture2() {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('TapGesture2_0100', 0, async function (done) {
+    it('TapGesture2_0100', 0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       console.info('TapGesture2_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Tap3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TapGesture2_0100] component obj is: " + JSON.stringify(obj));
       console.info("[TapGesture2_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('PanGesture offset:X:10Y:20');
@@ -67,7 +67,7 @@ export default function TapGesture2() {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('TapGesture2_0200', 0, async function (done) {
+    it('TapGesture2_0200', 0, async (done: Function) => {
       console.info('TapGesture2_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -75,7 +75,7 @@ export default function TapGesture2() {
       await Column.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('Tap4');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[TapGesture2_0200] component obj is: " + JSON.stringify(obj));
       console.info("[TapGesture2_0200] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('TapGesture');

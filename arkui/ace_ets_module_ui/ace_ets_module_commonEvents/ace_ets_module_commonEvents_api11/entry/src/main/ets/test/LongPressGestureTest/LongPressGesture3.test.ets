@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 
 
 export default function LongPressGesture3() {
-  describe('LongPressGesture3', function () {
-    beforeEach(async function (done) {
+  describe('LongPressGesture3', () => {
+    beforeEach(async (done: Function) => {
       console.info("LongPressGesture3 beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/LongPressGesture/LongPressGesture3',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/LongPressGesture/LongPressGesture3',
       }
       try {
         router.clear();
@@ -48,13 +48,13 @@ export default function LongPressGesture3() {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('LongPressGesture3_0100', 0, async function (done) {
+    it('LongPressGesture3_0100', 0, async (done: Function) => {
       await CommonFunc.sleep(1000);
       console.info('LongPressGesture3_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('LongPress5');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[LongPressGesture3_0100] component obj is: " + JSON.stringify(obj));
       console.info("[LongPressGesture3_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('PinchGesture center:(0.5,0.5)');
@@ -67,7 +67,7 @@ export default function LongPressGesture3() {
     * @tc.desc  : To test that the Provide decorator supports union types.
     * @tc.level : Level 2
     */
-    it('LongPressGesture3_0200', 0, async function (done) {
+    it('LongPressGesture3_0200', 0, async (done: Function) => {
       console.info('LongPressGesture3_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -75,7 +75,7 @@ export default function LongPressGesture3() {
       await Column.longClick();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('LongPress6');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[LongPressGesture3_0200] component obj is: " + JSON.stringify(obj));
       console.info("[LongPressGesture3_0200] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('LongPress onAction:2');

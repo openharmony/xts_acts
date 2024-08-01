@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,8 +14,12 @@
  */
 import { describe, beforeAll, it, expect } from "@ohos/hypium"
 import display from '@ohos.display';
-import Utils from './Utils';
+import CommonFunc from '../MainAbility/common/Common';
 import { BusinessError } from '@ohos.base';
+
+function asNum(v: string | number) {
+  return v as number;
+}
 
 
 export default function commonJsunit() {
@@ -30,7 +33,7 @@ export default function commonJsunit() {
         console.info('getDefaultDisplay id : ' + JSON.stringify(dsp));
         dpiValue = dsp.densityDPI;
         console.info('getDefaultDisplay dpiValue is : ' + JSON.stringify(dpiValue));
-        Utils.sleep(2000);
+        CommonFunc.sleep(2000);
       }, (err: BusinessError) => {
         console.info('getDefaultDisplay failed, err :' + JSON.stringify(err));
       })
@@ -75,7 +78,7 @@ export default function commonJsunit() {
     it('commonTest_0300', 0, async (done: Function) => {
       console.info('commonTest_0300 START');
       let a = '30';
-      let b = vp2px(a);
+      let b = vp2px(asNum(a));
       console.info('commonTest_0300 vp2px result:' + b);
       expect(b == undefined).assertTrue();
       console.info('commonTest_0300 END');
@@ -107,7 +110,7 @@ export default function commonJsunit() {
     it('commonTest_0600', 0, async (done: Function) => {
       console.info('commonTest_0600 START');
       let a = '80';
-      let b = px2vp(a);
+      let b = px2vp(asNum(a));
       console.info('commonTest_0600 px2vp result:' + b);
       expect(b == undefined).assertTrue();
       console.info('commonTest_0600 END');
@@ -139,7 +142,7 @@ export default function commonJsunit() {
     it('commonTest_0900', 0, async (done: Function) => {
       console.info('commonTest_0900 START');
       let a = '70';
-      let b = fp2px(a);
+      let b = fp2px(asNum(a));
       console.info('commonTest_0900 fp2px result:' + b);
       expect(b == undefined).assertTrue();
       console.info('commonTest_0900 END');
@@ -171,7 +174,7 @@ export default function commonJsunit() {
     it('commonTest_1200', 0, async (done: Function) => {
       console.info('commonTest_1200 START');
       let a = '60';
-      let b = px2fp(a);
+      let b = px2fp(asNum(a));
       console.info('commonTest_1200 px2fp result:' + b);
       expect(b == undefined).assertTrue();
       console.info('commonTest_1200 END');
@@ -182,7 +185,7 @@ export default function commonJsunit() {
     it('commonTest_1500', 0, async (done: Function) => {
       console.info('commonTest_1500 START');
       let a = '50';
-      let b = lpx2px(a);
+      let b = lpx2px(asNum(a));
       console.info('commonTest_1500 lpx2px result:' + b);
       expect(b == undefined).assertTrue();
       console.info('commonTest_1500 END');
@@ -192,7 +195,7 @@ export default function commonJsunit() {
     it('commonTest_1800', 0, async (done: Function) => {
       console.info('commonTest_1800 START');
       let a = '40';
-      let b = px2lpx(a);
+      let b = px2lpx(asNum(a));
       console.info('commonTest_1800 px2lpx result:' + b);
       expect(b == undefined).assertTrue();
       console.info('commonTest_1800 END');

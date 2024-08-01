@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 
 
 export default function HoverJsunit23() {
-  describe('HoverJsunit23', function () {
-   beforeEach(async function (done) {
+  describe('HoverJsunit23', () => {
+   beforeEach(async (done: Function) => {
      console.info("HoverJsunit beforeEach start");
-     let options = {
-       uri: 'MainAbility/pages/Hover/Hover23',
+     let options: router.RouterOptions = {
+       url: 'MainAbility/pages/Hover/Hover23',
      }
      try {
        router.clear();
@@ -45,19 +45,19 @@ export default function HoverJsunit23() {
 
 
 
-    it('HoverJsunit_0100', 0, async function (done) {
+    it('HoverJsunit_0100', 0, async (done: Function) => {
       console.info('HoverJsunit_0200 START');
       let driver = await Driver.create()
       await driver.mouseMoveTo({x: globalThis.winLeft + vp2px(100), y:globalThis.winTop + vp2px(100)})
       await CommonFunc.sleep(1000);
       let strJsonA = getInspectorByKey('hoverA23');
-      let objA = JSON.parse(strJsonA);
+      let objA: ESObject = JSON.parse(strJsonA);
       console.info("[HoverJsunit_0200] component obj is: " + JSON.stringify(objA));
       console.info("[HoverJsunit_0200] title: " + JSON.stringify(objA.$attrs.content));
       expect(objA.$attrs.content).assertEqual('Atrue');
 
       let strJsonB = getInspectorByKey('hoverB23');
-      let objB = JSON.parse(strJsonB);
+      let objB: ESObject = JSON.parse(strJsonB);
       console.info("[HoverJsunit_0200] component obj is: " + JSON.stringify(objB));
       console.info("[HoverJsunit_0200] title: " + JSON.stringify(objB.$attrs.content));
       expect(objB.$attrs.content).assertEqual('Bfalse');
@@ -65,7 +65,7 @@ export default function HoverJsunit23() {
       done();
     });
 
-    it('HoverJsunit_0200', 0, async function (done) {
+    it('HoverJsunit_0200', 0, async (done: Function) => {
       console.info('HoverJsunit_0200 START');
       let driver = await Driver.create()
       let buttonCl = await driver.findComponent(ON.id('column_23B'));
@@ -74,13 +74,13 @@ export default function HoverJsunit23() {
       await driver.mouseMoveTo({x:point.x + vp2px(100), y:point.y + vp2px(100)})
       await CommonFunc.sleep(1000);
       let strJsonA = getInspectorByKey('hoverA23');
-      let objA = JSON.parse(strJsonA);
+      let objA: ESObject = JSON.parse(strJsonA);
       console.info("[HoverJsunit_0200] component obj is: " + JSON.stringify(objA));
       console.info("[HoverJsunit_0200] title: " + JSON.stringify(objA.$attrs.content));
       expect(objA.$attrs.content).assertEqual('Afalse');
 
       let strJsonB = getInspectorByKey('hoverB23');
-      let objB = JSON.parse(strJsonB);
+      let objB: ESObject = JSON.parse(strJsonB);
       console.info("[HoverJsunit_0200] component obj is: " + JSON.stringify(objB));
       console.info("[HoverJsunit_0200] title: " + JSON.stringify(objB.$attrs.content));
       expect(objB.$attrs.content).assertEqual('Btrue');
@@ -88,7 +88,7 @@ export default function HoverJsunit23() {
       done();
     });
 
-    it('HoverJsunit_0300', 0, async function (done) {
+    it('HoverJsunit_0300', 0, async (done: Function) => {
       console.info('HoverJsunit_0300 START');
       let driver = await Driver.create()
       let buttonCl = await driver.findComponent(ON.id('column_23B'));
@@ -97,13 +97,13 @@ export default function HoverJsunit23() {
       await driver.mouseMoveTo({x:point.x + vp2px(100), y:point.y + vp2px(100)})
       await CommonFunc.sleep(1000);
       let strJsonA = getInspectorByKey('hoverA23');
-      let objA = JSON.parse(strJsonA);
+      let objA: ESObject = JSON.parse(strJsonA);
       console.info("[HoverJsunit_0300] component obj is: " + JSON.stringify(objA));
       console.info("[HoverJsunit_0300] title: " + JSON.stringify(objA.$attrs.content));
       expect(objA.$attrs.content).assertEqual('Afalse');
 
       let strJsonB = getInspectorByKey('hoverB23');
-      let objB = JSON.parse(strJsonB);
+      let objB: ESObject = JSON.parse(strJsonB);
       console.info("[HoverJsunit_0300] component obj is: " + JSON.stringify(objB));
       console.info("[HoverJsunit_0300] title: " + JSON.stringify(objB.$attrs.content));
       expect(objB.$attrs.content).assertEqual('Btrue');

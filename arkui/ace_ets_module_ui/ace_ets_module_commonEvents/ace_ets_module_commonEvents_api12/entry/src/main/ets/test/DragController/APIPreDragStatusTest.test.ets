@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
-import router from '@system.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import router from '@ohos.router';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function APIPreDragStatusTest() {
-  describe('APIPreDragStatusTest', function () {
-    beforeEach(async function (done) {
+  describe('APIPreDragStatusTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("APIPreDragStatusTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/DragController/APIPreDragStatus',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/DragController/APIPreDragStatus',
       }
       try {
         router.clear();
@@ -41,7 +41,7 @@ export default function APIPreDragStatusTest() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(2000);
       console.info("APIPreDragStatusTest after each called");
     });
@@ -54,7 +54,7 @@ export default function APIPreDragStatusTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('APIPreDragStatusTest_0010', 0, async function (done) {
+    it('APIPreDragStatusTest_0010', 0, async (done: Function) => {
       console.info('APIPreDragStatusTest_0010 START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -63,7 +63,7 @@ export default function APIPreDragStatusTest() {
       await obj1.longClick();
       await CommonFunc.sleep(2000);
       let text2 = getInspectorByKey('APIPreDragStatusText01');
-      let obj2 = JSON.parse(text2);
+      let obj2: ESObject = JSON.parse(text2);
       console.log('APIPreDragStatusTest_0010 obj2',obj2)
       console.log('APIPreDragStatusTest_0010 obj2 $attrs content',obj2.$attrs.content)
       expect(obj2.$attrs.content).assertEqual('ACTION_DETECTING_STATUS');
@@ -79,7 +79,7 @@ export default function APIPreDragStatusTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('APIPreDragStatusTest_0020', 0, async function (done) {
+    it('APIPreDragStatusTest_0020', 0, async (done: Function) => {
       console.info('APIPreDragStatusTest_0020 START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -91,7 +91,7 @@ export default function APIPreDragStatusTest() {
       await obj1.longClick();
       await CommonFunc.sleep(2000);
       let text2 = getInspectorByKey('APIPreDragStatusText02');
-      let obj2 = JSON.parse(text2);
+      let obj2: ESObject = JSON.parse(text2);
       console.log('APIPreDragStatusTest_0020 obj2',obj2)
       console.log('APIPreDragStatusTest_0020 obj2 $attrs content',obj2.$attrs.content)
       expect(obj2.$attrs.content).assertEqual('READY_TO_TRIGGER_DRAG_ACTION');
@@ -107,7 +107,7 @@ export default function APIPreDragStatusTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('APIPreDragStatusTest_0030', 0, async function (done) {
+    it('APIPreDragStatusTest_0030', 0, async (done: Function) => {
       console.info('APIPreDragStatusTest_0030 START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -119,7 +119,7 @@ export default function APIPreDragStatusTest() {
       await obj1.longClick();
       await CommonFunc.sleep(2000);
       let text2 = getInspectorByKey('APIPreDragStatusText03');
-      let obj2 = JSON.parse(text2);
+      let obj2: ESObject = JSON.parse(text2);
       console.log('APIPreDragStatusTest_0030 obj2',obj2)
       console.log('APIPreDragStatusTest_0030 obj2 $attrs content',obj2.$attrs.content)
       expect(obj2.$attrs.content).assertEqual('PREVIEW_LIFT_STARTED');
@@ -134,7 +134,7 @@ export default function APIPreDragStatusTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('APIPreDragStatusTest_0040', 0, async function (done) {
+    it('APIPreDragStatusTest_0040', 0, async (done: Function) => {
       console.info('APIPreDragStatusTest_0040 START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -147,7 +147,7 @@ export default function APIPreDragStatusTest() {
       await CommonFunc.sleep(2000);
 
       let text2 = getInspectorByKey('APIPreDragStatusText04');
-      let obj2 = JSON.parse(text2);
+      let obj2: ESObject = JSON.parse(text2);
       console.log('APIPreDragStatusTest_0040 obj2',obj2)
       console.log('APIPreDragStatusTest_0040 obj2 $attrs content',obj2.$attrs.content)
       expect(obj2.$attrs.content).assertEqual('PREVIEW_LIFT_FINISHED');
@@ -162,7 +162,7 @@ export default function APIPreDragStatusTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('APIPreDragStatusTest_0050', 0, async function (done) {
+    it('APIPreDragStatusTest_0050', 0, async (done: Function) => {
       console.info('APIPreDragStatusTest_0050 START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -174,7 +174,7 @@ export default function APIPreDragStatusTest() {
       await obj1.longClick();
       await CommonFunc.sleep(2000);
       let text2 = getInspectorByKey('APIPreDragStatusText05');
-      let obj2 = JSON.parse(text2);
+      let obj2: ESObject = JSON.parse(text2);
       console.log('APIPreDragStatusTest_0050 obj2',obj2)
       console.log('APIPreDragStatusTest_0050 obj2 $attrs content',obj2.$attrs.content)
       expect(obj2.$attrs.content).assertEqual('PREVIEW_LANDING_STARTED');
@@ -190,7 +190,7 @@ export default function APIPreDragStatusTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('APIPreDragStatusTest_0060', 0, async function (done) {
+    it('APIPreDragStatusTest_0060', 0, async (done: Function) => {
       console.info('APIPreDragStatusTest_0060 START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();
@@ -202,7 +202,7 @@ export default function APIPreDragStatusTest() {
       await obj1.longClick();
       await CommonFunc.sleep(2000);
       let text2 = getInspectorByKey('APIPreDragStatusText06');
-      let obj2 = JSON.parse(text2);
+      let obj2: ESObject = JSON.parse(text2);
       console.log('APIPreDragStatusTest_0060 obj2',obj2)
       console.log('APIPreDragStatusTest_0060 obj2 $attrs content',obj2.$attrs.content)
       expect(obj2.$attrs.content).assertEqual('PREVIEW_LANDING_FINISHED');

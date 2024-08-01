@@ -67,7 +67,7 @@ struct UiAppearanceALWAYS_DARK {
             console.info("AlwaysDark start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("AlwaysDark emit action state err: " + JSON.stringify(err.message))
+            console.info("AlwaysDark emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
 
@@ -102,7 +102,7 @@ struct UiAppearanceALWAYS_DARK {
             console.info("AlwaysLight start to emit action state")
             events_emitter.emit(backEvent, backData)
           } catch (err) {
-            console.info("AlwaysLight emit action state err: " + JSON.stringify(err.message))
+            console.info("AlwaysLight emit action state err: " + JSON.stringify((err as Error)?.message))
           }
         })
 

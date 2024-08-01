@@ -40,7 +40,7 @@ struct noBarrierComponents {
   private patternLockController: PatternLockController = new PatternLockController();
   private value1: string = 'hello world';
   @State rating: number = 3.5;
-  @State target: WindowAnimationTarget = undefined;
+  @State target?: WindowAnimationTarget = undefined;
   @State data: string = '<h1 style="text-align: center;">h1标题</h1>';
   @State changeValue: string = '';
   @State submitValue: string = '';
@@ -247,7 +247,7 @@ struct noBarrierComponents {
         })
           .lunar(this.isLunar)
           .onChange((value: DatePickerResult) => {
-            this.selectedDate.setFullYear(value.year, value.month, value.day)
+            this.selectedDate.setFullYear(value.year!, value.month, value.day)
             console.info('select current date is: ' + JSON.stringify(value))
           })
           .key("DatePicker")

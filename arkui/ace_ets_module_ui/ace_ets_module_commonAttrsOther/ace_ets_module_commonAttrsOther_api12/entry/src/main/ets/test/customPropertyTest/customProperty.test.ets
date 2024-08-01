@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import CommonFunc from '../../MainAbility/common/Common';
 
 
 export default function customPropertyTest() {
-  describe('customPropertyTest', function () {
-    beforeEach(async function (done) {
+  describe('customPropertyTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("customPropertyTest beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/customProperty/customProperty",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/customProperty/customProperty",
       }
       try {
         router.clear();
@@ -50,7 +50,7 @@ export default function customPropertyTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('customPropertyTest_0010', 0, async function (done) {
+    it('customPropertyTest_0010', 0, async (done: Function) => {
       console.info('customPropertyTest_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(500);
@@ -58,7 +58,7 @@ export default function customPropertyTest() {
       await button.click();
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('CustomProperty1_button');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[customPropertyTest_0010] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.label).assertEqual('{"number":10,"string":"this is a string","bool":true,"object":{"name":"name","value":100}}');
       console.info('[customPropertyTest_0010] END');

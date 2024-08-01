@@ -18,10 +18,10 @@ import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function getContextMenuController() {
-  describe('getContextMenuController', function () {
-    beforeEach(async function (done) {
+  describe('getContextMenuController', () => {
+    beforeEach(async (done: Function) => {
       console.info("getContextMenuController beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/UIContext/getContextMenuController",
       }
       try {
@@ -40,7 +40,7 @@ export default function getContextMenuController() {
       console.info("getContextMenuController beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("getContextMenuController after each called");
     });
@@ -53,7 +53,7 @@ export default function getContextMenuController() {
      * @tc.type
     * @tc.size
      */
-    it('getContextMenuController_001', 0, async function (done) {
+    it('getContextMenuController_001', 0, async (done: Function) => {
       console.info('[getContextMenuController_001] START');
       let driver = Driver.create();
       await CommonFunc.sleep(1000);

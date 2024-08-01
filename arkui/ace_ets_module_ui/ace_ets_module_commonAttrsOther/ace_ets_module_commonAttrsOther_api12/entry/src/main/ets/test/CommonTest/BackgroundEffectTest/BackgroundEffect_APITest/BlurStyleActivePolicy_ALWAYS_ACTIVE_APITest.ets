@@ -15,7 +15,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../../../MainAbility/utils/Common';
+import CommonFunc from '../../../../MainAbility/common/Common';
 export default function BlurStyleActivePolicy_ALWAYS_ACTIVE_APITest() {
   describe('BlurStyleActivePolicy_ALWAYS_ACTIVE_APITest', () => {
     beforeEach(async (done: Function) => {

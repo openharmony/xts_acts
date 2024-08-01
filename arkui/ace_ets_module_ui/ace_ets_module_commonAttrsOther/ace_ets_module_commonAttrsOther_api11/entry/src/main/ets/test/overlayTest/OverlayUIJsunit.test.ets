@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import {MessageManager,Callback} from '../../MainAbility/common/MessageManager';
 import events_emitter from '@ohos.events.emitter'
 
 export default function overLayJsunit() {
-  describe('overLayJsunit', function () {
-    beforeEach(async function (done) {
+  describe('overLayJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("overLayJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/overlay/overlayUI',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/overlay/overlayUI',
       }
       try {
         router.clear();
@@ -42,16 +42,16 @@ export default function overLayJsunit() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("overlay after each called");
     });
 
-    it('overLayJsunit_0100', 0, async function (done) {
+    it('overLayJsunit_0100', 0, async (done: Function) => {
       console.info('[overLayJsunit_0100] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('overlay');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[overLayJsunit_0100] obj is: " + JSON.stringify(obj.$attrs.overlay));
       expect(obj.$attrs.overlay.title).assertEqual("old title");
       expect(obj.$attrs.overlay.options.align).assertEqual("Alignment.Bottom");
@@ -61,15 +61,15 @@ export default function overLayJsunit() {
       done();
     });
 
-    it('overLayJsunit_0200', 0, async function (done) {
+    it('overLayJsunit_0200', 0, async (done: Function) => {
       console.info('[overLayJsunit_0200] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "title": "new title"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 143,
           priority: events_emitter.EventPriority.LOW
         }
@@ -80,24 +80,24 @@ export default function overLayJsunit() {
       }
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('overlay');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[overLayJsunit_0200] obj is: " + JSON.stringify(obj.$attrs.overlay));
       expect(obj.$attrs.overlay.title).assertEqual("new title");
       console.info('overLayJsunit_0200 END');
       done();
     });
 
-    it('overLayJsunit_0300', 0, async function (done) {
+    it('overLayJsunit_0300', 0, async (done: Function) => {
       console.info('[overLayJsunit_0300] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "align": "Alignment.TopStart",
             "x": 30,
             "y": -30
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 143,
           priority: events_emitter.EventPriority.LOW
         }
@@ -108,7 +108,7 @@ export default function overLayJsunit() {
       }
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('overlay');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[overLayJsunit_0300] obj is: " + JSON.stringify(obj.$attrs.overlay));
       expect(obj.$attrs.overlay.options.align).assertEqual("Alignment.TopStart");
       expect(obj.$attrs.overlay.options.offset.x).assertEqual('30.00vp');
@@ -117,16 +117,16 @@ export default function overLayJsunit() {
       done();
     });
 
-    it('overLayJsunit_0400', 0, async function (done) {
+    it('overLayJsunit_0400', 0, async (done: Function) => {
       console.info('[overLayJsunit_0400] START');
       await CommonFunc.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "align": "Alignment.Center"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 143,
           priority: events_emitter.EventPriority.LOW
         }
@@ -137,22 +137,22 @@ export default function overLayJsunit() {
       }
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('overlay');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[overLayJsunit_0400] obj is: " + JSON.stringify(obj.$attrs.overlay));
       expect(obj.$attrs.overlay.options.align).assertEqual("Alignment.TopStart");
       console.info('overLayJsunit_0400 END');
       done();
     });
 
-    it('overLayJsunit_0500', 0, async function (done) {
+    it('overLayJsunit_0500', 0, async (done: Function) => {
       console.info('[overLayJsunit_0500] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "align":'-1'
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 1110,
           priority: events_emitter.EventPriority.LOW
         }
@@ -163,23 +163,23 @@ export default function overLayJsunit() {
       }
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('overlay');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[overLayJsunit_0500] obj is: " + JSON.stringify(obj.$attrs.overlay));
       expect(obj.$attrs.overlay.options.align).assertEqual("Alignment.Center");
       console.info('overLayJsunit_0500 END');
       done();
     });
 
-    it('overLayJsunit_0600', 0, async function (done) {
+    it('overLayJsunit_0600', 0, async (done: Function) => {
       console.info('[overLayJsunit_0600] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "x": -30,
             "y": 30
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 1110,
           priority: events_emitter.EventPriority.LOW
         }
@@ -190,7 +190,7 @@ export default function overLayJsunit() {
       }
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('overlay');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[overLayJsunit_0600] obj is: " + JSON.stringify(obj.$attrs.overlay));
       expect(obj.$attrs.overlay.options.offset.x).assertEqual('-30.00vp');
       expect(obj.$attrs.overlay.options.offset.y).assertEqual('30.00vp');
@@ -198,15 +198,15 @@ export default function overLayJsunit() {
       done();
     });
 
-    it('overLayJsunit_0700', 0, async function (done) {
+    it('overLayJsunit_0700', 0, async (done: Function) => {
       console.info('[overLayJsunit_0700] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "x": 1111111111
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 1110,
           priority: events_emitter.EventPriority.LOW
         }
@@ -217,22 +217,22 @@ export default function overLayJsunit() {
       }
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('overlay');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[overLayJsunit_0700] obj is: " + JSON.stringify(obj.$attrs.overlay));
       expect(obj.$attrs.overlay.options.offset.x).assertEqual('1111111111.00vp');
       console.info('overLayJsunit_0700 END');
       done();
     });
 
-    it('overLayJsunit_0800', 0, async function (done) {
+    it('overLayJsunit_0800', 0, async (done: Function) => {
       console.info('[overLayJsunit_0800] START');
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "y": 1111111111
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 1110,
           priority: events_emitter.EventPriority.LOW
         }
@@ -243,23 +243,23 @@ export default function overLayJsunit() {
       }
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('overlay');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[overLayJsunit_0800] obj is: " + JSON.stringify(obj.$attrs.overlay));
       expect(obj.$attrs.overlay.options.offset.x).assertEqual('1111111111.00vp');
       console.info('overLayJsunit_0800 END');
       done();
     });
 
-    it('overLayJsunit_0900', 0, async function (done) {
+    it('overLayJsunit_0900', 0, async (done: Function) => {
       console.info('[overLayJsunit_0900] START');
       await CommonFunc.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "align": "Alignment.Top"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 1110,
           priority: events_emitter.EventPriority.LOW
         }
@@ -270,23 +270,23 @@ export default function overLayJsunit() {
       }
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('overlay');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[overLayJsunit_0900] obj is: " + JSON.stringify(obj.$attrs.overlay));
       expect(obj.$attrs.overlay.options.align).assertEqual("Alignment.TopStart");
       console.info('overLayJsunit_0900 END');
       done();
     });
 
-    it('overLayJsunit_1000', 0, async function (done) {
+    it('overLayJsunit_1000', 0, async (done: Function) => {
       console.info('[overLayJsunit_1000] START');
       await CommonFunc.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "align": "Alignment.TopEnd"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 143,
           priority: events_emitter.EventPriority.LOW
         }
@@ -297,23 +297,23 @@ export default function overLayJsunit() {
       }
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('overlay');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[overLayJsunit_1000] obj is: " + JSON.stringify(obj.$attrs.overlay));
       expect(obj.$attrs.overlay.options.align).assertEqual("Alignment.TopStart");
       console.info('overLayJsunit_1000 END');
       done();
     });
 
-    it('overLayJsunit_1100', 0, async function (done) {
+    it('overLayJsunit_1100', 0, async (done: Function) => {
       console.info('[overLayJsunit_1100] START');
       await CommonFunc.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "align": "Alignment.Start"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 143,
           priority: events_emitter.EventPriority.LOW
         }
@@ -324,23 +324,23 @@ export default function overLayJsunit() {
       }
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('overlay');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[overLayJsunit_1100] obj is: " + JSON.stringify(obj.$attrs.overlay));
       expect(obj.$attrs.overlay.options.align).assertEqual("Alignment.TopStart");
       console.info('overLayJsunit_1100 END');
       done();
     });
 
-    it('overLayJsunit_1200', 0, async function (done) {
+    it('overLayJsunit_1200', 0, async (done: Function) => {
       console.info('[overLayJsunit_1200] START');
       await CommonFunc.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "align": "Alignment.End"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 143,
           priority: events_emitter.EventPriority.LOW
         }
@@ -351,23 +351,23 @@ export default function overLayJsunit() {
       }
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('overlay');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[overLayJsunit_1200] obj is: " + JSON.stringify(obj.$attrs.overlay));
       expect(obj.$attrs.overlay.options.align).assertEqual("Alignment.TopStart");
       console.info('overLayJsunit_1200 END');
       done();
     });
 
-    it('overLayJsunit_1300', 0, async function (done) {
+    it('overLayJsunit_1300', 0, async (done: Function) => {
       console.info('[overLayJsunit_1300] START');
       await CommonFunc.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "align": "Alignment.BottomEnd"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 143,
           priority: events_emitter.EventPriority.LOW
         }
@@ -378,23 +378,23 @@ export default function overLayJsunit() {
       }
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('overlay');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[overLayJsunit_1300] obj is: " + JSON.stringify(obj.$attrs.overlay));
       expect(obj.$attrs.overlay.options.align).assertEqual("Alignment.TopStart");
       console.info('overLayJsunit_1300 END');
       done();
     });
 
-    it('overLayJsunit_1400', 0, async function (done) {
+    it('overLayJsunit_1400', 0, async (done: Function) => {
       console.info('[overLayJsunit_1400] START');
       await CommonFunc.sleep(1000);
       try {
-        var eventData = {
+        let eventData: events_emitter.EventData = {
           data: {
             "align": "Alignment.BottomStart"
           }
         }
-        var innerEvent = {
+        let innerEvent: events_emitter.InnerEvent = {
           eventId: 143,
           priority: events_emitter.EventPriority.LOW
         }
@@ -405,7 +405,7 @@ export default function overLayJsunit() {
       }
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('overlay');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[overLayJsunit_1400] obj is: " + JSON.stringify(obj.$attrs.overlay));
       expect(obj.$attrs.overlay.options.align).assertEqual("Alignment.TopStart");
       console.info('overLayJsunit_1400 END');

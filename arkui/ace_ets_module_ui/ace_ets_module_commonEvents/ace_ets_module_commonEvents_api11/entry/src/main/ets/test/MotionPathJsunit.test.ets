@@ -15,7 +15,7 @@
 
 import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
-import Utils from './Utils';
+import CommonFunc from '../MainAbility/common/Common';
 import events_emitter from '@ohos.events.emitter';
 
 export default function motionPathJsunit() {
@@ -31,7 +31,7 @@ export default function motionPathJsunit() {
         if (!("motionPath" == pages.name)) {
           console.info("get motionPath state success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(1000);
+          await CommonFunc.sleep(1000);
           console.info("push motionPath page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -41,7 +41,7 @@ export default function motionPathJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("motionPath after each called");
     });
 
@@ -58,8 +58,8 @@ export default function motionPathJsunit() {
       console.info('motionPathTest_0200 START');
       let callback = (indexEventOne: events_emitter.EventData) => {
         console.info("motionPathTest_0200 get state result is: " + JSON.stringify(indexEventOne));
-        expect(indexEventOne.data.fromX).assertEqual(0);
-        expect(indexEventOne.data.toY).assertEqual(1);
+        expect(indexEventOne.data?.fromX).assertEqual(0);
+        expect(indexEventOne.data?.toY).assertEqual(1);
         done();
       }
       let indexEventOne: events_emitter.InnerEvent = {
@@ -72,17 +72,17 @@ export default function motionPathJsunit() {
         console.info("motionPathTest_0200 on events_emitter err : " + JSON.stringify(err));
       }
       console.info("motionPathTest_0200 click result is: " + JSON.stringify(sendEventByKey('button1', 10, "")));
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info('motionPathTest_0200 END');
       done();
     });
 
     it('motionPathTest_0300', 0, async (done: Function) => {
       console.info('motionPathTest_0300 START');
-      await Utils.sleep(1500);
+      await CommonFunc.sleep(1500);
       let callback = (indexEvent: events_emitter.EventData) => {
         console.info("motionPathTest_0300 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.ACTION).assertEqual(true);
+        expect(indexEvent.data?.ACTION).assertEqual(true);
         done();
       }
       let indexEvent: events_emitter.InnerEvent = {
@@ -95,7 +95,7 @@ export default function motionPathJsunit() {
         console.info("motionPathTest_0300 on events_emitter err : " + JSON.stringify(err));
       }
       console.info("motionPathTest_0300 click result is: " + JSON.stringify(sendEventByKey('button', 10, "")));
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info('motionPathTest_0300 END');
     });
   })
