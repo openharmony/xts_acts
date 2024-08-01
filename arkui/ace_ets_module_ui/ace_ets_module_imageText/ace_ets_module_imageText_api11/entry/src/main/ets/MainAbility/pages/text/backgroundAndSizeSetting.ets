@@ -31,11 +31,11 @@ struct BackgroundExample {
     if (eventData != null) {
       console.info("gauge page state change called:" + JSON.stringify(eventData));
 
-      if (eventData.data.width != null) {
-        this.width1 = eventData.data.width;
+      if (eventData.data?.width != null) {
+        this.width1 = eventData.data?.width;
       }
-      if (eventData.data.height != null) {
-        this.height1 = eventData.data.height;
+      if (eventData.data?.height != null) {
+        this.height1 = eventData.data?.height;
       }
     }
   }
@@ -45,23 +45,23 @@ struct BackgroundExample {
   private stateChangCallBackOne = (eventData: events_emitter.EventData) => {
     console.info("size page stateChangCallBack" + JSON.stringify(eventData));
     if (eventData) {
-      this.width1 = eventData.data.width;
-      this.height1 = eventData.data.height;
-      this.padding1 = eventData.data.padding;
-      this.margin1 = eventData.data.margin;
+      this.width1 = eventData.data?.width;
+      this.height1 = eventData.data?.height;
+      this.padding1 = eventData.data?.padding;
+      this.margin1 = eventData.data?.margin;
     }
   }
   private sizeChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("size page sizeChangCallBack" + JSON.stringify(eventData));
     if (eventData) {
-      this.sizeWidth = eventData.data.width;
-      this.sizeHeight = eventData.data.height;
+      this.sizeWidth = eventData.data?.width;
+      this.sizeHeight = eventData.data?.height;
     }
   }
   private weightChangCallBack = (eventData: events_emitter.EventData) => {
     console.info("size page weightChangCallBack" + JSON.stringify(eventData));
     if (eventData) {
-      this.layoutWeight1 = eventData.data.weight;
+      this.layoutWeight1 = eventData.data?.weight;
     }
   }
 

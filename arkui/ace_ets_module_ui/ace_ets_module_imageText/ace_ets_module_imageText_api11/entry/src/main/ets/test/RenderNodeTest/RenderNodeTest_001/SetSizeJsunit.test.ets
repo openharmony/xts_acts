@@ -14,13 +14,13 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../../MainAbility/utils/Common';
+import CommonFunc from '../../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix, UiDirection, MouseButton, UIElementInfo, UIEventObserver} from '@ohos.UiTest';
 export default function SetSizeJsunit() {
-  describe('SetSizeJsunit', function () {
-    beforeEach(async function (done) {
+  describe('SetSizeJsunit', () => {
+    beforeEach(async (done: Function) => {
       console.info("SetSizeJsunit beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/RenderNode/renderNode001/SetSize",
       }
       try {
@@ -39,7 +39,7 @@ export default function SetSizeJsunit() {
       console.info("SetSizeJsunit beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("SetSizeJsunit after each called");
     });
@@ -51,7 +51,7 @@ export default function SetSizeJsunit() {
      * @tc.type
     * @tc.size
      */
-    it('SetSizeJsunit_001', 0, async function (done) {
+    it('SetSizeJsunit_001', 0, async (done: Function) => {
       console.info('[SetSizeJsunit_001] START');
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
@@ -59,8 +59,8 @@ export default function SetSizeJsunit() {
       await set.click()
       let strJson1 = getInspectorByKey('Width_status');
       let strJson2 = getInspectorByKey('Height_status');
-      let obj1 = JSON.parse(strJson1);
-      let obj2 = JSON.parse(strJson2);
+      let obj1: ESObject = JSON.parse(strJson1);
+      let obj2: ESObject = JSON.parse(strJson2);
       await CommonFunc.sleep(1000);
       console.info("[SetSizeJsunit_001] component obj1 is: " + JSON.stringify(obj1));
       console.info("[SetSizeJsunit_001] component obj2 is: " + JSON.stringify(obj2));

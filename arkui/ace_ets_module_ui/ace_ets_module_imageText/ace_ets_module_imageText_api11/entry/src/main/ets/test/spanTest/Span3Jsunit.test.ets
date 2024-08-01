@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +15,7 @@
 import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function span3Jsunit() {
   describe('span3Jsunit', () => {
@@ -31,7 +30,7 @@ export default function span3Jsunit() {
         if (!("span3" == pages.name)) {
           console.info("get span success " + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push span page success " + JSON.stringify(result));
         }
       } catch (err) {
@@ -41,13 +40,13 @@ export default function span3Jsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       console.info("span after each called");
     });
 
     it('testSpan001', 0, async (done: Function) => {
       console.info('[testSpan001] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('decoration');
       console.info("[testSpan001] component strJson:" + strJson);
 
@@ -58,7 +57,7 @@ export default function span3Jsunit() {
 
     it('testSpan002', 0, async (done: Function) => {
       console.info('[testSpan002] START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('decoration');
       console.info("[testSpan002] component strJson:" + strJson);
 
@@ -84,7 +83,7 @@ export default function span3Jsunit() {
       } catch (err) {
         console.log("[testSpan003] change component data error: " + err.message);
       }
-      await Utils.sleep(4000);
+      await CommonFunc.sleep(4000);
       let strJson = getInspectorByKey('decoration');
       console.info("[testSpan003] component strJson:" + strJson);
 
@@ -95,7 +94,7 @@ export default function span3Jsunit() {
 
     it('testSpan004', 0, async (done: Function) => {
       console.info('[testSpan004] START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('fontColor');
       console.info("[testSpan004] component strJson:" + strJson);
 
@@ -121,7 +120,7 @@ export default function span3Jsunit() {
       } catch (err) {
         console.log("[testSpan005] change component data error: " + err.message);
       }
-      await Utils.sleep(4000);
+      await CommonFunc.sleep(4000);
       let strJson = getInspectorByKey('fontColor');
       console.info("[testSpan005] component strJson:" + strJson);
 
@@ -135,7 +134,7 @@ export default function span3Jsunit() {
       try {
         let eventData: events_emitter.EventData = {
           data: {
-            "textCaseValue": a
+            "textCaseValue": undefined!
           }
         }
         let indexEvent: events_emitter.InnerEvent = {
@@ -147,7 +146,7 @@ export default function span3Jsunit() {
       } catch (err) {
         console.log("[testSpan006] change component data error: " + err.message);
       }
-      await Utils.sleep(4000);
+      await CommonFunc.sleep(4000);
       let strJson = getInspectorByKey('decoration');
       console.info("[testSpan006] component strJson:" + strJson);
 
@@ -173,7 +172,7 @@ export default function span3Jsunit() {
       } catch (err) {
         console.log("[testSpan007] change component data error: " + err.message);
       }
-      await Utils.sleep(4000);
+      await CommonFunc.sleep(4000);
       let strJson = getInspectorByKey('decoration');
       console.info("[testSpan007] component strJson:" + strJson);
 

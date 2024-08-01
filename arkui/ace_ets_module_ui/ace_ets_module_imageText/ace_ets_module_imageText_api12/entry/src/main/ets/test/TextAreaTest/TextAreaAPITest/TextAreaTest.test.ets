@@ -13,15 +13,15 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../../MainAbility/utils/Common';
+import CommonFunc from '../../../MainAbility/common/Common';
 export default function TextAreaTest() {
-  describe('TextAreaTest', function () {
-    beforeEach(async function (done) {
+  describe('TextAreaTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("TextAreaTest beforeEach start");
-      let options = {
-        uri: "MainAbility/pages/TextArea/TextAreaAPI/TextArea",
+      let options: router.RouterOptions = {
+        url: "MainAbility/pages/TextArea/TextAreaAPI/TextArea",
       }
       try {
         router.clear();
@@ -47,7 +47,7 @@ export default function TextAreaTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('TextAreaTest_0100', 0, async function (done) {
+    it('TextAreaTest_0100', 0, async (done: Function) => {
       console.info('TextAreaTest_0100 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -57,9 +57,9 @@ export default function TextAreaTest() {
       await button.inputText("hello")
       await CommonFunc.sleep(2000);
       let strJson = getInspectorByKey('TextArea_1');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       let strJson1 = getInspectorByKey('TextArea_2');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[TextAreaTest_0100] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('onWillInsert');
       expect(obj1.$attrs.content).assertEqual('onDidInsert');
@@ -74,7 +74,7 @@ export default function TextAreaTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('TextAreaTest_0200', 0, async function (done) {
+    it('TextAreaTest_0200', 0, async (done: Function) => {
       console.info('TextAreaTest_0200 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -84,9 +84,9 @@ export default function TextAreaTest() {
       await button.clearText()
       await CommonFunc.sleep(3000);
       let strJson = getInspectorByKey('TextArea_3');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       let strJson1 = getInspectorByKey('TextArea_4');
-      let obj1 = JSON.parse(strJson1);
+      let obj1: ESObject = JSON.parse(strJson1);
       console.info("[TextAreaTest_0200] component obj is: " + JSON.stringify(obj));
       expect(obj.$attrs.content).assertEqual('onWillDelete');
       expect(obj1.$attrs.content).assertEqual('onDidDelete');

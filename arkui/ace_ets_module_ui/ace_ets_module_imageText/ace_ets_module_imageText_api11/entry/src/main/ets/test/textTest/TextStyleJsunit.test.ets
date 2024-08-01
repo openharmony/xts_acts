@@ -16,7 +16,7 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function textStyleJsunit() {
   describe('textStyleTest', () => {
@@ -31,7 +31,7 @@ export default function textStyleJsunit() {
         if (!("textStyle" == pages.name)) {
           console.info("get textStyle state pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push textStyle page result:" + JSON.stringify(result));
         }
       } catch (err) {
@@ -41,14 +41,14 @@ export default function textStyleJsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("textStyle after each called");
     });
 
 
     it('testTextStyle006', 0, async () => {
       console.info('[testTextStyle006] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('fontSize');
       console.info("[testTextStyle006] component strJson:" + strJson);
       
@@ -74,7 +74,7 @@ export default function textStyleJsunit() {
       } catch (err) {
         console.log("[testTextStyle007] change component data error: " + err.message);
       }
-      await Utils.sleep(4000);
+      await CommonFunc.sleep(4000);
       let strJson: string = getInspectorByKey('fontSize');
       console.info("[testTextStyle007] component strJson:" + strJson);
       
@@ -100,7 +100,7 @@ export default function textStyleJsunit() {
       } catch (err) {
         console.log("[testTextStyle008] change component data error: " + err.message);
       }
-      await Utils.sleep(4000);
+      await CommonFunc.sleep(4000);
       let strJson: string = getInspectorByKey('fontSize');
       console.info("[testTextStyle008] component strJson:" + strJson);
       
@@ -126,7 +126,7 @@ export default function textStyleJsunit() {
       } catch (err) {
         console.log("[testTextStyle009] change component data error: " + err.message);
       }
-      await Utils.sleep(4000);
+      await CommonFunc.sleep(4000);
       let strJson: string = getInspectorByKey('fontSize');
       console.info("[testTextStyle009] component strJson:" + strJson);
       
@@ -152,7 +152,7 @@ export default function textStyleJsunit() {
       } catch (err) {
         console.log("[testTextStyle010] change component data error: " + err.message);
       }
-      await Utils.sleep(4000);
+      await CommonFunc.sleep(4000);
       let strJson: string = getInspectorByKey('fontSize');
       console.info("[testTextStyle010] component strJson:" + strJson);
       
@@ -163,7 +163,7 @@ export default function textStyleJsunit() {
 
     it('testTextStyle011', 0, async () => {
       console.info('[testTextStyle011] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('fontStyle');
       console.info("[testTextStyle011] component strJson:" + strJson);
       
@@ -189,7 +189,7 @@ export default function textStyleJsunit() {
       } catch (err) {
         console.log("[testTextStyle012] change component data error: " + err.message);
       }
-      await Utils.sleep(3000);
+      await CommonFunc.sleep(3000);
       let strJson: string = getInspectorByKey('fontStyle');
       console.info("[testTextStyle012] component strJson:" + strJson);
       
@@ -215,7 +215,7 @@ export default function textStyleJsunit() {
       } catch (err) {
         console.log("[testTextStyle013] change component data error: " + err.message);
       }
-      await Utils.sleep(3000);
+      await CommonFunc.sleep(3000);
       let strJson: string = getInspectorByKey('fontStyle');
       console.info("[testTextStyle013] component strJson:" + strJson);
       
@@ -241,7 +241,7 @@ export default function textStyleJsunit() {
       } catch (err) {
         console.log("[testTextStyle014] change component data error: " + err.message);
       }
-      await Utils.sleep(3000);
+      await CommonFunc.sleep(3000);
       let strJson: string = getInspectorByKey('fontStyle');
       console.info("[testTextStyle014] component strJson:" + strJson);
       
@@ -267,7 +267,7 @@ export default function textStyleJsunit() {
       } catch (err) {
         console.log("[testTextStyle015] change component data error: " + err.message);
       }
-      await Utils.sleep(3000);
+      await CommonFunc.sleep(3000);
       let strJson: string = getInspectorByKey('fontStyle');
       console.info("[testTextStyle015] component strJson:" + strJson);
       
@@ -278,7 +278,7 @@ export default function textStyleJsunit() {
 
     it('testTextStyle016', 0, async () => {
       console.info('[testTextStyle016] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('fontWeight');
       console.info("[testTextStyle016] component strJson:" + strJson);
       
@@ -304,7 +304,7 @@ export default function textStyleJsunit() {
       } catch (err) {
         console.log("[testTextStyle017] change component data error: " + err.message);
       }
-      await Utils.sleep(3000);
+      await CommonFunc.sleep(3000);
       let strJson: string = getInspectorByKey('fontWeight');
       console.info("[testTextStyle017] component strJson:" + strJson);
       
@@ -330,7 +330,7 @@ export default function textStyleJsunit() {
       } catch (err) {
         console.log("[testTextStyle018] change component data error: " + err.message);
       }
-      await Utils.sleep(3000);
+      await CommonFunc.sleep(3000);
       let strJson: string = getInspectorByKey('fontWeight');
       console.info("[testTextStyle018] component strJson:" + strJson);
       
@@ -356,7 +356,7 @@ export default function textStyleJsunit() {
       } catch (err) {
         console.log("[testTextStyle019] change component data error: " + err.message);
       }
-      await Utils.sleep(3000);
+      await CommonFunc.sleep(3000);
       let strJson: string = getInspectorByKey('fontWeight');
       console.info("[testTextStyle019] component strJson:" + strJson);
       
@@ -382,7 +382,7 @@ export default function textStyleJsunit() {
       } catch (err) {
         console.log("[testTextStyle020] change component data error: " + err.message);
       }
-      await Utils.sleep(3000);
+      await CommonFunc.sleep(3000);
       let strJson: string = getInspectorByKey('fontWeight');
       console.info("[testTextStyle020] component strJson:" + strJson);
       
@@ -393,7 +393,7 @@ export default function textStyleJsunit() {
 
     it('testTextStyle021', 0, async () => {
       console.info('[testTextStyle021] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('fontFamily');
       console.info("[testTextStyle021] component strJson:" + strJson);
       
@@ -419,7 +419,7 @@ export default function textStyleJsunit() {
       } catch (err) {
         console.log("[testTextStyle022] change component data error: " + err.message);
       }
-      await Utils.sleep(3000);
+      await CommonFunc.sleep(3000);
       let strJson: string = getInspectorByKey('fontFamily');
       console.info("[testTextStyle022] component strJson:" + strJson);
       
@@ -445,7 +445,7 @@ export default function textStyleJsunit() {
       } catch (err) {
         console.log("[testTextStyle023] change component data error: " + err.message);
       }
-      await Utils.sleep(3000);
+      await CommonFunc.sleep(3000);
       let strJson: string = getInspectorByKey('fontFamily');
       console.info("[testTextStyle023] component strJson:" + strJson);
       

@@ -14,12 +14,12 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, MouseButton, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function APIClipMaskShape() {
-  describe('APIClipMaskShape', function () {
-    beforeEach(async function (done) {
+  describe('APIClipMaskShape', () => {
+    beforeEach(async (done: Function) => {
       console.info("APIClipMaskShape beforeEach start");
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function APIClipMaskShape() {
       console.info("APIClipMaskShape foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("APIClipMaskShape after each called");
     });
@@ -49,12 +49,12 @@ export default function APIClipMaskShape() {
      * @tc.type   Attribute
      * @tc.level  2
      */
-    it('APIClipMaskShape_001', 0, async function (done) {
+    it('APIClipMaskShape_001', 0, async (done: Function) => {
       console.info('[APIClipMaskShape_001] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('APIClipMaskShape_Image1');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[APIClipMaskShape_001] component obj is: " + JSON.stringify(obj));
       console.info("[APIClipMaskShape_001] component obj attrs is: " + 'width' + obj.$attrs.width + 'height:' + obj.$attrs.height);
       // 会返回500.00px
@@ -74,12 +74,12 @@ export default function APIClipMaskShape() {
      * @tc.type   Attribute
      * @tc.level  2
      */
-    it('APIClipMaskShape_002', 0, async function (done) {
+    it('APIClipMaskShape_002', 0, async (done: Function) => {
       console.info('[APIClipMaskShape_002] START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('APIClipMaskShape_Image2');
       await CommonFunc.sleep(200);
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[APIClipMaskShape_002] component obj is: " + JSON.stringify(obj));
       console.info("[APIClipMaskShape_002] component obj attrs is: " + 'width' + obj.$attrs.width + 'height:' + obj.$attrs.height);
       await CommonFunc.sleep(1000);

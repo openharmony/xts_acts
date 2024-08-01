@@ -14,15 +14,14 @@
  */
 import router from '@ohos.router';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-// import Utils from '../Utils'
 import CommonFunc from "../../MainAbility/common/Common";
 import { Driver, ON } from '@ohos.UiTest';
 
 export default function textDataDataDetectorConfig() {
-  describe('textDataDataDetectorConfig', function () {
-    beforeEach(async function (done) {
+  describe('textDataDataDetectorConfig', () => {
+    beforeEach(async (done: Function) => {
       console.info("textDataDataDetectorConfig beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/text/textDataDataDetectorConfig',
       }
       try {
@@ -42,7 +41,7 @@ export default function textDataDataDetectorConfig() {
       console.info("textDataDataDetectorConfig beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("textDataDataDetectorConfig after each called");
     });
@@ -57,7 +56,7 @@ export default function textDataDataDetectorConfig() {
      * @tc.type
     * @tc.size
      */
-    it('textDataDataDetectorConfig_0001', 0, async function (done) {
+    it('textDataDataDetectorConfig_0001', 0, async (done: Function) => {
 
       console.info('[textDataDataDetectorConfig_0001] START');
       let driver = await Driver.create()
@@ -69,7 +68,7 @@ export default function textDataDataDetectorConfig() {
 
 
       let text1 = getInspectorByKey('dataDetectorConfigText');
-      let Obj2 = JSON.parse(text1);
+      let Obj2: ESObject = JSON.parse(text1);
       expect(Obj2.$attrs.content).assertEqual('222');
 
       console.info('[textDataDataDetectorConfig_0001] END');
@@ -86,7 +85,7 @@ export default function textDataDataDetectorConfig() {
      * @tc.type
     * @tc.size
      */
-    it('textDataDataDetectorConfig_0002', 0, async function (done) {
+    it('textDataDataDetectorConfig_0002', 0, async (done: Function) => {
 
       console.info('[textDataDataDetectorConfig_0002] START');
       let driver = await Driver.create()
@@ -98,7 +97,7 @@ export default function textDataDataDetectorConfig() {
 
 
       let text1 = getInspectorByKey('dataDetectorConfigText');
-      let Obj2 = JSON.parse(text1);
+      let Obj2: ESObject = JSON.parse(text1);
       expect(Obj2.$attrs.content).assertEqual('222');
 
 
@@ -115,7 +114,7 @@ export default function textDataDataDetectorConfig() {
      * @tc.type
     * @tc.size
      */
-    it('textDataDataDetectorConfig_0003', 0, async function (done) {
+    it('textDataDataDetectorConfig_0003', 0, async (done: Function) => {
 
       console.info('[textDataDataDetectorConfig_0003] START');
       let driver = await Driver.create()
@@ -127,7 +126,7 @@ export default function textDataDataDetectorConfig() {
 
 
       let text1 = getInspectorByKey('dataDetectorConfigText');
-      let Obj2 = JSON.parse(text1);
+      let Obj2: ESObject = JSON.parse(text1);
       expect(Obj2.$attrs.content).assertEqual('222');
 
       console.info('[textDataDataDetectorConfig_0003] END');
@@ -143,7 +142,7 @@ export default function textDataDataDetectorConfig() {
      * @tc.type
     * @tc.size
      */
-    it('textDataDataDetectorConfig_0004', 0, async function (done) {
+    it('textDataDataDetectorConfig_0004', 0, async (done: Function) => {
 
       console.info('[textDataDataDetectorConfig_0004] START');
       let driver = await Driver.create()
@@ -155,7 +154,7 @@ export default function textDataDataDetectorConfig() {
 
 
       let text1 = getInspectorByKey('dataDetectorConfigText');
-      let Obj2 = JSON.parse(text1);
+      let Obj2: ESObject = JSON.parse(text1);
       expect(Obj2.$attrs.content).assertEqual('222');
 
       console.info('[textDataDataDetectorConfig_0004] END');

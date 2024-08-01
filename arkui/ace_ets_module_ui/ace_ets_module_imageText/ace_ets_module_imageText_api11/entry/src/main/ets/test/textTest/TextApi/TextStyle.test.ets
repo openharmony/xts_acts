@@ -15,14 +15,14 @@
 
 import router from '@ohos.router';
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium"
-import Utils from '../Utils'
+import CommonFunc from '../../../MainAbility/common/Common';
 import { Driver, ON } from '@ohos.UiTest';
 
 export default function TextStyle() {
-  describe('TextStyle', function () {
-    beforeEach(async function (done) {
+  describe('TextStyle', () => {
+    beforeEach(async (done: Function) => {
       console.info("TextStyle beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/text/TextApi/TextStyle',
       }
       try {
@@ -32,7 +32,7 @@ export default function TextStyle() {
         if (!("TextStyle" == pages.name)) {
           console.info("get TextStyle pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push TextStyle page result:" + JSON.stringify(result));
         }
       } catch (err) {
@@ -41,8 +41,8 @@ export default function TextStyle() {
       console.info("TextStyle beforeEach end");
       done();
     });
-    afterEach(async function () {
-      await Utils.sleep(1000);
+    afterEach(async () => {
+      await CommonFunc.sleep(1000);
       console.info("TextStyle after each called");
     });
 
@@ -56,12 +56,12 @@ export default function TextStyle() {
      * @tc.type
     * @tc.size
      */
-    it('TextStyle_0001', 0, async function (done) {
+    it('TextStyle_0001', 0, async (done: Function) => {
 
       console.info('[TextStyle_0001] START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let text1 = getInspectorByKey('buttonStyle');
-      let Obj1 = JSON.parse(text1);
+      let Obj1: ESObject = JSON.parse(text1);
       expect(Obj1.$attrs.buttonStyle).assertEqual('ButtonStyleMode.EMPHASIZED');
 
       console.info('[TextStyle_0001] END');
@@ -76,12 +76,12 @@ export default function TextStyle() {
      * @tc.type
     * @tc.size
      */
-    it('TextStyle_0002', 0, async function (done) {
+    it('TextStyle_0002', 0, async (done: Function) => {
 
       console.info('[TextStyle_0002] START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let text1 = getInspectorByKey('searchEMAIL66666666');
-      let Obj1 = JSON.parse(text1);
+      let Obj1: ESObject = JSON.parse(text1);
       expect(Obj1.$attrs.type).assertEqual('SearchType.EMAIL');
 
       console.info('[TextStyle_0002] END');
@@ -96,12 +96,12 @@ export default function TextStyle() {
      * @tc.type
     * @tc.size
      */
-    it('TextStyle_0003', 0, async function (done) {
+    it('TextStyle_0003', 0, async (done: Function) => {
 
       console.info('[TextStyle_0003] START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let text1 = getInspectorByKey('TextAreaTypeEMAIL333333333');
-      let Obj1 = JSON.parse(text1);
+      let Obj1: ESObject = JSON.parse(text1);
       expect(Obj1.$attrs.type).assertEqual('TextAreaType.EMAIL');
 
       console.info('[TextStyle_0003] END');
@@ -117,12 +117,12 @@ export default function TextStyle() {
      * @tc.type
     * @tc.size
      */
-    it('TextStyle_0004', 0, async function (done) {
+    it('TextStyle_0004', 0, async (done: Function) => {
 
       console.info('[TextStyle_0004] START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let text1 = getInspectorByKey('TextAreaTypeNUMBER44444444');
-      let Obj1 = JSON.parse(text1);
+      let Obj1: ESObject = JSON.parse(text1);
       expect(Obj1.$attrs.type).assertEqual('TextAreaType.PHONE_NUMBER');
 
       console.info('[TextStyle_0004] END');
@@ -138,12 +138,12 @@ export default function TextStyle() {
      * @tc.type
     * @tc.size
      */
-    it('TextStyle_0005', 0, async function (done) {
+    it('TextStyle_0005', 0, async (done: Function) => {
 
       console.info('[TextStyle_0005] START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let text1 = getInspectorByKey('TextKeyAllNUMBER8898888888');
-      let Obj1 = JSON.parse(text1);
+      let Obj1: ESObject = JSON.parse(text1);
       expect(Obj1.$attrs.ellipsisMode).assertEqual('EllipsisMode.START');
 
       console.info('[TextStyle_0005] END');
@@ -159,12 +159,12 @@ export default function TextStyle() {
      * @tc.type
     * @tc.size
      */
-    it('TextStyle_0006', 0, async function (done) {
+    it('TextStyle_0006', 0, async (done: Function) => {
 
       console.info('[TextStyle_0006] START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let text1 = getInspectorByKey('searchType777777');
-      let Obj1 = JSON.parse(text1);
+      let Obj1: ESObject = JSON.parse(text1);
       expect(Obj1.$attrs.type).assertEqual('SearchType.PHONE_NUMBER');
 
       console.info('[TextStyle_0006] END');
@@ -180,12 +180,12 @@ export default function TextStyle() {
      * @tc.type
     * @tc.size
      */
-    it('TextStyle_0007', 0, async function (done) {
+    it('TextStyle_0007', 0, async (done: Function) => {
 
       console.info('[TextStyle_0007] START');
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let text1 = getInspectorByKey('searchEMAIL66666666');
-      let Obj1 = JSON.parse(text1);
+      let Obj1: ESObject = JSON.parse(text1);
       expect(Obj1.$attrs.type).assertEqual('SearchType.EMAIL');
 
       console.info('[TextStyle_0007] END');
@@ -201,19 +201,19 @@ export default function TextStyle() {
      * @tc.type
     * @tc.size
      */
-    it('TextStyle_0008', 0, async function (done) {
+    it('TextStyle_0008', 0, async (done: Function) => {
       console.info('[TextStyle_0008] START');
       let driver= Driver.create();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn = await driver.findComponent(ON.id('buttonSelect'));
       await btn.click()
-      await Utils.sleep(4000);
+      await CommonFunc.sleep(4000);
       let text1 = getInspectorByKey('selectionStart');
-      let Obj1 = JSON.parse(text1);
+      let Obj1: ESObject = JSON.parse(text1);
       expect(Obj1.$attrs.content).assertEqual('10');
 
       let text2 = getInspectorByKey('selectionEnd');
-      let Obj2 = JSON.parse(text2);
+      let Obj2: ESObject = JSON.parse(text2);
       expect(Obj2.$attrs.content).assertEqual('30');
 
       console.info('[TextStyle_0008] END');

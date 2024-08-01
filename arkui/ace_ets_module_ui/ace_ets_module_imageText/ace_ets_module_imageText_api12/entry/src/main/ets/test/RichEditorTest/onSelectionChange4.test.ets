@@ -14,15 +14,15 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 import abilityDelegatorRegistry from '@ohos.application.abilityDelegatorRegistry';
 
 export default function onSelectionChange4() {
-  describe('onSelectionChange4', function () {
-    beforeEach(async function (done) {
+  describe('onSelectionChange4', () => {
+    beforeEach(async (done: Function) => {
       console.info("onSelectionChange4 beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/RichEditor/onSelectionChange4',
       }
       try {
@@ -41,7 +41,7 @@ export default function onSelectionChange4() {
       console.info("onSelectionChange4 beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("onSelectionChange4 after each called");
     });
@@ -53,7 +53,7 @@ export default function onSelectionChange4() {
      * @tc.type
     * @tc.size
      */
-    it('onSelectionChange4_0100', 0, async function (done) {
+    it('onSelectionChange4_0100', 0, async (done: Function) => {
       console.info('[onSelectionChange4_0100] START');
       await CommonFunc.sleep(1000);
 
@@ -67,26 +67,26 @@ export default function onSelectionChange4() {
       await Select .click()
       await CommonFunc.sleep(1000);
       let text1_1 = getInspectorByKey('onSelectionChange4_text1');
-      let Obj1_1 = JSON.parse(text1_1);
+      let Obj1_1: ESObject = JSON.parse(text1_1);
       expect(Obj1_1.$attrs.content).assertEqual('2');
       let text2_1 = getInspectorByKey('onSelectionChange4_text2');
-      let Obj2_1 = JSON.parse(text2_1);
+      let Obj2_1: ESObject = JSON.parse(text2_1);
       expect(Obj2_1.$attrs.content).assertEqual('0');
       let text3_1 = getInspectorByKey('onSelectionChange4_text3');
-      let Obj3_1 = JSON.parse(text3_1);
+      let Obj3_1: ESObject = JSON.parse(text3_1);
       expect(Obj3_1.$attrs.content).assertEqual('2');
 
       let copy = await driver.findComponent(ON.text('复制'))
       await copy.click()
       await CommonFunc.sleep(1000);
       let text1_2 = getInspectorByKey('onSelectionChange4_text1');
-      let Obj1_2 = JSON.parse(text1_2);
+      let Obj1_2: ESObject = JSON.parse(text1_2);
       expect(Obj1_2.$attrs.content).assertEqual('2');
       let text2_2 = getInspectorByKey('onSelectionChange4_text2');
-      let Obj2_2 = JSON.parse(text2_2);
+      let Obj2_2: ESObject = JSON.parse(text2_2);
       expect(Obj2_2.$attrs.content).assertEqual('0');
       let text3_2 = getInspectorByKey('onSelectionChange4_text3');
-      let Obj3_2 = JSON.parse(text3_2);
+      let Obj3_2: ESObject = JSON.parse(text3_2);
       expect(Obj3_2.$attrs.content).assertEqual('2');
       await CommonFunc.sleep(2500);
 
@@ -105,13 +105,13 @@ export default function onSelectionChange4() {
       await paste.click()
       await CommonFunc.sleep(1000);
       let text1_3 = getInspectorByKey('onSelectionChange4_text1');
-      let Obj1_3 = JSON.parse(text1_3);
+      let Obj1_3: ESObject = JSON.parse(text1_3);
       expect(Obj1_3.$attrs.content).assertEqual('3');
       let text2_3 = getInspectorByKey('onSelectionChange4_text2');
-      let Obj2_3 = JSON.parse(text2_3);
+      let Obj2_3: ESObject = JSON.parse(text2_3);
       expect(Obj2_3.$attrs.content).assertEqual('2');
       let text3_3 = getInspectorByKey('onSelectionChange4_text3');
-      let Obj3_3 = JSON.parse(text3_3);
+      let Obj3_3: ESObject = JSON.parse(text3_3);
       expect(Obj3_3.$attrs.content).assertEqual('2');
 
       console.info('[onSelectionChange4_0100] END');

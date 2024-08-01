@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +16,7 @@ import { describe, beforeEach, afterEach, it, expect } from "@ohos/hypium";
 import { UiDriver, BY } from '@ohos.UiTest';
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from '../../MainAbility/common/Utils';;
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function textAreaJsunit3() {
   describe('appInfoTest_four_10', () => {
@@ -32,24 +31,24 @@ export default function textAreaJsunit3() {
         console.info("get textArea state pages:" + JSON.stringify(pages));
         if (!("textArea3" == pages.name)) {
           console.info("get textArea state pages.name:" + JSON.stringify(pages.name));
-          let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
-          console.info("push textArea page result:" + JSON.stringify(result));
+          await router.pushUrl(options);
+          await CommonFunc.sleep(2000);
+          console.info("push textArea page success");
         }
       } catch (err) {
-        console.error("push textArea page error:" + JSON.stringify(result));
+        console.error("push textArea page error:" + JSON.stringify(err));
       }
       done()
     });
 
     afterEach(async () => {
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       console.info("textArea after each called");
     });
 
     it('textAreaTest01', 0, async (done: Function) => {
       console.info('[textAreaTest01] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('textArea');
       console.info("[textAreaTest01] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$type).assertEqual('TextArea');
@@ -75,7 +74,7 @@ export default function textAreaJsunit3() {
       } catch (err) {
         console.log("[textAreaTest02] change component data error: " + err.message);
       }
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('textArea');
 
       console.info("[textAreaTest02] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -86,7 +85,7 @@ export default function textAreaJsunit3() {
 
     it('textAreaTest03', 0, async (done: Function) => {
       console.info('[textAreaTest03] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('textArea');
 
       console.info("[textAreaTest03] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -113,7 +112,7 @@ export default function textAreaJsunit3() {
       } catch (err) {
         console.log("[textAreaTest04] change component data error: " + err.message);
       }
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('textArea');
 
       console.info("[textAreaTest04] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -124,7 +123,7 @@ export default function textAreaJsunit3() {
 
     it('textAreaTest05', 0, async (done: Function) => {
       console.info('[testArea05] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('textArea');
 
       console.info("[textAreaTest05] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -150,7 +149,7 @@ export default function textAreaJsunit3() {
       } catch (err) {
         console.log("[textAreaTest06] change component data error: " + err.message);
       }
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('textArea');
 
       console.info("[textAreaTest06] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -161,7 +160,7 @@ export default function textAreaJsunit3() {
 
     it('textAreaTest07', 0, async (done: Function) => {
       console.info('[textAreaTest07] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('textArea');
 
       console.info("[textAreaTest07] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)
@@ -189,7 +188,7 @@ export default function textAreaJsunit3() {
       } catch (err) {
         console.log("[textAreaTest08] change component data error: " + err.message);
       }
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('textArea');
 
       console.info("[textAreaTest08] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)
@@ -202,7 +201,7 @@ export default function textAreaJsunit3() {
 
     it('textAreaTest09', 0, async (done: Function) => {
       console.info('[textAreaTest09] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('textArea');
 
       console.info("[textAreaTest09] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -228,7 +227,7 @@ export default function textAreaJsunit3() {
       } catch (err) {
         console.log("[textAreaTest10] change component data error: " + err.message);
       }
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('textArea');
 
       console.info("[textAreaTest10] JSON.parse(strJson) is: " + JSON.stringify(JSON.parse(strJson)));
@@ -244,12 +243,12 @@ export default function textAreaJsunit3() {
      */
     it('textAreaTest11', 0, async (done: Function) => {
       console.info('[textAreaTest11] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let driver = UiDriver.create();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn = await driver.findComponent(BY.key('caretOffsetBtn1'));
       await btn.click();
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let caretText = await driver.findComponent(BY.key('caretOffsetText1'));
       let text = await caretText.getText();
       expect(text).assertEqual('Index0');
@@ -263,7 +262,7 @@ export default function textAreaJsunit3() {
      */
     it('textAreaTest12', 0, async (done: Function) => {
       console.info('[textAreaTest12] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -279,12 +278,12 @@ export default function textAreaJsunit3() {
       } catch (err) {
         console.log("[textAreaTest12] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let driver = UiDriver.create();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn = await driver.findComponent(BY.key('caretOffsetBtn1'));
       await btn.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let caretText = await driver.findComponent(BY.key('caretOffsetText1'));
       let text = await caretText.getText();
       expect(text).assertEqual('Index9');
@@ -298,7 +297,7 @@ export default function textAreaJsunit3() {
      */
     it('textAreaTest13', 0, async (done: Function) => {
       console.info('[textAreaTest13] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       try {
         let eventData: events_emitter.EventData = {
           data: {
@@ -314,12 +313,12 @@ export default function textAreaJsunit3() {
       } catch (err) {
         console.log("[textAreaTest13] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let driver = UiDriver.create();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let btn = await driver.findComponent(BY.key('caretOffsetBtn1'));
       await btn.click();
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let caretText = await driver.findComponent(BY.key('caretOffsetText1'));
       let text = await caretText.getText();
       expect(text).assertEqual('Index10');

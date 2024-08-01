@@ -14,14 +14,14 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function clearStyles() {
-  describe('clearStyles', function () {
-    beforeEach(async function (done) {
+  describe('clearStyles', () => {
+    beforeEach(async (done: Function) => {
       console.info("clearStyles beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Text/clearStyles',
       }
       try {
@@ -40,7 +40,7 @@ export default function clearStyles() {
       console.info("clearStyles beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("clearStyles after each called");
     });
@@ -52,7 +52,7 @@ export default function clearStyles() {
      * @tc.type
     * @tc.size
      */
-    it('clearStyles_0100', 0, async function (done) {
+    it('clearStyles_0100', 0, async (done: Function) => {
       console.info('[clearStyles_0100] START');
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
@@ -61,7 +61,7 @@ export default function clearStyles() {
       await CommonFunc.sleep(1000);
 
       let text1 = getInspectorByKey('clearLengthId');
-      let Obj1 = JSON.parse(text1);
+      let Obj1: ESObject = JSON.parse(text1);
       expect(Obj1.$attrs.content).assertEqual('6');
       await CommonFunc.sleep(500);
 
@@ -71,7 +71,7 @@ export default function clearStyles() {
       await CommonFunc.sleep(1000);
 
       let text3 = getInspectorByKey('clearLengthId');
-      let Obj3 = JSON.parse(text3);
+      let Obj3: ESObject = JSON.parse(text3);
       expect(Obj3.$attrs.content).assertEqual('0');
       await CommonFunc.sleep(500);
 

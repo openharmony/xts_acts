@@ -14,12 +14,12 @@
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from '@ohos/hypium';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function RelativeGuideLine4() {
-  describe('RelativeGuideLine4', function () {
-    beforeEach(async function (done) {
+  describe('RelativeGuideLine4', () => {
+    beforeEach(async (done: Function) => {
       console.info("RelativeGuideLine4 beforeEach start");
       try {
         router.clear();
@@ -37,7 +37,7 @@ export default function RelativeGuideLine4() {
       console.info("RelativeGuideLine4 foreEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("RelativeGuideLine4 after each called");
     });
@@ -50,7 +50,7 @@ export default function RelativeGuideLine4() {
     * @tc.size
      */
 
-    it('RelativeGuideLine4_001', 0, async function (done) {
+    it('RelativeGuideLine4_001', 0, async (done: Function) => {
       console.info('[RelativeGuideLine4_001] START');
 
       await CommonFunc.sleep(1000);
@@ -75,7 +75,7 @@ export default function RelativeGuideLine4() {
      * @tc.size
      */
 
-    it('RelativeGuideLine4_002', 0, async function (done) {
+    it('RelativeGuideLine4_002', 0, async (done: Function) => {
       console.info('[RelativeGuideLine4_002] START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create();
@@ -104,7 +104,7 @@ export default function RelativeGuideLine4() {
      * @tc.size
      */
 
-    it('RelativeGuideLine4_003', 0, async function (done) {
+    it('RelativeGuideLine4_003', 0, async (done: Function) => {
       console.info('[RelativeGuideLine4_003] START');
       await CommonFunc.sleep(1000);
       let driver = await Driver.create();

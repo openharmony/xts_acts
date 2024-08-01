@@ -13,18 +13,18 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, Driver, Component, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
-import {MessageManager,Callback} from '../../MainAbility/utils/MessageManager';
+import CommonFunc from '../../MainAbility/common/Common';
+import { MessageManager, Callback } from '../../MainAbility/common/MessageManager';
 
 
 export default function transformTest() {
-  describe('transformTest', function () {
-    beforeEach(async function (done) {
+  describe('transformTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("transformTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/RenderNode/transform',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/RenderNode/transform',
       }
       try {
         router.clear();
@@ -51,11 +51,11 @@ export default function transformTest() {
      * @tc.type : 
      * @tc.size :
      */
-    it('transformTest_0100', 0, async function (done) {
+    it('transformTest_0100', 0, async (done: Function) => {
       console.info('transformTest_0100 START');
       await CommonFunc.sleep(1000);
       let strJson = getInspectorByKey('transform');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[transformTest_0100] component obj is: " + JSON.stringify(obj));
       console.info("[transformTest_0100] title: " + JSON.stringify(obj.$attrs.content));
       expect(obj.$attrs.content).assertEqual('transform is 1,0,45,0,0,1,0,0,0,0,1,0,0,0,0,1');

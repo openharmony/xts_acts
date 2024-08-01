@@ -18,10 +18,10 @@ import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function srcIndexTest() {
-  describe('srcIndexTest', function () {
-    beforeEach(async function (done) {
+  describe('srcIndexTest', () => {
+    beforeEach(async (done: Function) => {
       console.info("srcIndexTest beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/Matrix/srcIndex",
       }
       try {
@@ -40,7 +40,7 @@ export default function srcIndexTest() {
       console.info("srcIndexTest beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("srcIndexTest after each called");
     });
@@ -53,7 +53,7 @@ export default function srcIndexTest() {
      * @tc.type
      * @tc.size
      */
-    it('srcIndexTest_001', 0, async function (done) {
+    it('srcIndexTest_001', 0, async (done: Function) => {
       console.info('[srcIndexTest_001] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();

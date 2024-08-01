@@ -13,16 +13,16 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
-import CommonFunc from '../../../MainAbility/utils/Common';
+import CommonFunc from '../../../MainAbility/common/Common';
 
 export default function Navigation2() {
-  describe('Navigation2', function () {
-    beforeEach(async function (done) {
+  describe('Navigation2', () => {
+    beforeEach(async (done: Function) => {
       console.info("appendChildTest beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/RelativeContainer/relativeApi11/Navigation2',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/RelativeContainer/relativeApi11/Navigation2',
       }
       try {
         router.clear();
@@ -50,10 +50,10 @@ export default function Navigation2() {
      * @tc.type :
      * @tc.size :
      */
-    it('Navigation2_0100', 0, async function (done) {
+    it('Navigation2_0100', 0, async (done: Function) => {
       console.info('Navigation2_0100 START');
       let strJson = getInspectorByKey('NavigtionText2');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       expect(obj.$attrs.content).assertEqual('NavPathStack');
       console.info('[Navigation2_0100] END');
       done();

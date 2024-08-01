@@ -15,15 +15,15 @@
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
 import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
-import Utils from '../Utils';
+import CommonFunc from '../../MainAbility/common/Common';
 
 class ScaleValue {
-  x: number;
-  y: number;
+  x: number = 0
+  y: number = 0
 }
 
 class Matrix {
-  x: number
+  x: number = 0
 }
 
 export default function ohosMatrix4Jsunit() {
@@ -40,7 +40,7 @@ export default function ohosMatrix4Jsunit() {
         if (!("ohosMatrix4 " == pages.name)) {
           console.info("get ohosMatrix4  state pages.name:" + JSON.stringify(pages.name));
           let result = await router.pushUrl(options);
-          await Utils.sleep(2000);
+          await CommonFunc.sleep(2000);
           console.info("push ohosMatrix4  page result:" + JSON.stringify(result));
         }
       } catch (err) {
@@ -50,13 +50,13 @@ export default function ohosMatrix4Jsunit() {
     });
 
     afterEach(async () => {
-      await Utils.sleep(3000);
+      await CommonFunc.sleep(3000);
       console.info("OhosMatrix4 each called");
     });
 
     it('test_OhosMatrix4_001', 0, async (done: Function) => {
       console.info('[test_OhosMatrix4_001] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('rotate7');
       console.info("[test_OhosMatrix4_001] component strJson:" + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$type).assertEqual('Image');
@@ -69,7 +69,7 @@ export default function ohosMatrix4Jsunit() {
 
     it('test_OhosMatrix4_002', 0, async (done: Function) => {
       console.info('[test_OhosMatrix4_002] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('rotate8');
       console.info("[test_OhosMatrix4_001] component strJson:" + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$type).assertEqual('Image');
@@ -82,7 +82,7 @@ export default function ohosMatrix4Jsunit() {
 
     it('test_OhosMatrix4_003', 0, async (done: Function) => {
       console.info('[test_OhosMatrix4_003] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let strJson: string = getInspectorByKey('rotate9');
       console.info("[test_OhosMatrix4_003] component strJson:" + JSON.stringify(JSON.parse(strJson)));
       expect(JSON.parse(strJson).$type).assertEqual('Image');
@@ -95,7 +95,7 @@ export default function ohosMatrix4Jsunit() {
 
     it('test_OhosMatrix4_004', 0, async (done: Function) => {
       console.info('[test_OhosMatrix4_004] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let scaleValue: ScaleValue = {
         x: 1, y: 1
       }
@@ -114,7 +114,7 @@ export default function ohosMatrix4Jsunit() {
       } catch (err) {
         console.log("[test_OhosMatrix4_004] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('rotate3');
       console.info("[test_OhosMatrix4_004] component objNew is: " + JSON.stringify(JSON.parse(strJsonNew)));
       expect(JSON.parse(strJsonNew).$attrs.scale.x).assertEqual('1.000000');
@@ -123,10 +123,10 @@ export default function ohosMatrix4Jsunit() {
     });
 
     it('test_OhosMatrix4_005', 0, async (done: Function) => {
-      await Utils.sleep(1000)
+      await CommonFunc.sleep(1000)
       let callback = (eventData: events_emitter.EventData) => {
         console.info("[test_OhosMatrix4_005] get event state result is: " + JSON.stringify(eventData));
-        expect(eventData.data.matrix1).assertEqual("[100, 10]")
+        expect(eventData.data?.matrix1).assertEqual("[100, 10]")
       }
       let innerEvent: events_emitter.InnerEvent = {
         eventId: 141,
@@ -138,14 +138,14 @@ export default function ohosMatrix4Jsunit() {
         console.info("[test_OhosMatrix4_005] on events_emitter err : " + JSON.stringify(err));
       }
       console.info('[test_OhosMatrix4_005] sendEventByKey ' + JSON.stringify(sendEventByKey('rotate5', 10, "")));
-      await Utils.sleep(1000)
+      await CommonFunc.sleep(1000)
       console.info('[test_OhosMatrix4_005] testSendTouchEvent END');
       done();
     });
 
     it('test_OhosMatrix4_006', 0, async (done: Function) => {
       console.info('[test_OhosMatrix4_006] START');
-      await Utils.sleep(1000);
+      await CommonFunc.sleep(1000);
       let matrix2: Matrix = {
         x: 400
       }
@@ -168,7 +168,7 @@ export default function ohosMatrix4Jsunit() {
       } catch (err) {
         console.log("[test_OhosMatrix4_006] change component data error: " + err.message);
       }
-      await Utils.sleep(2000);
+      await CommonFunc.sleep(2000);
       let strJsonNew: string = getInspectorByKey('rotate6');
       console.info("[test_OhosMatrix4_006] component objNew is: " + JSON.stringify(JSON.parse(strJsonNew)));
       console.info("[test_OhosMatrix4_006] component transform is: " + JSON.stringify(JSON.parse(strJsonNew)
