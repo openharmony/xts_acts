@@ -355,7 +355,7 @@ export default function common9Jsunit() {
 
       console.info("[common_border] JSON.parse(strJson) is : " + JSON.stringify(JSON.parse(strJson).$attrs));
       expect(JSON.parse(strJson).$attrs.border)
-        .assertEqual("{\"style\":{\"left\":\"BorderStyle.Dashed\",\"top\":\"BorderStyle.Solid\",\"right\":\"BorderStyle.Dotted\",\"bottom\":\"BorderStyle.Dashed\"},\"color\":{\"left\":\"#FF000000\",\"right\":\"#FF000000\",\"top\":\"#FF0F0F0F\",\"bottom\":\"#FFF0F0F0\"},\"width\":{\"left\":\"3.00vp\",\"top\":\"10.00vp\",\"right\":\"6.00vp\",\"bottom\":\"15.00vp\"},\"radius\":{\"topLeft\":\"10.00vp\",\"topRight\":\"20.00vp\",\"bottomLeft\":\"40.00vp\",\"bottomRight\":\"80.00vp\"}}");
+        .assertEqual("{\"style\":{\"left\":\"BorderStyle.Dashed\",\"top\":\"BorderStyle.Solid\",\"right\":\"BorderStyle.Dotted\",\"bottom\":\"BorderStyle.Dashed\"},\"color\":{\"left\":\"#FF000000\",\"right\":\"#FF000000\",\"top\":\"#FF0F0F0F\",\"bottom\":\"#FFF0F0F0\"},\"width\":{\"left\":\"3.00vp\",\"top\":\"10.00vp\",\"right\":\"6.00vp\",\"bottom\":\"15.00vp\"},\"radius\":{\"topLeft\":\"10.00vp\",\"topRight\":\"20.00vp\",\"bottomLeft\":\"40.00vp\",\"bottomRight\":\"80.00vp\"},\"dashGap\":\"-1.00px\",\"dashWidth\":\"-1.00px\"}");
       console.info('[common_border] END');
       done();
     });
