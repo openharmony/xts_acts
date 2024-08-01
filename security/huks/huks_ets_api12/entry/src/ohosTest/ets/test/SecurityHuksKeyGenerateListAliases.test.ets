@@ -79,15 +79,15 @@ export default function SecurityHUKSKeyGenerateListAliasesTest() {
     })
 
     /**
-     * @tc.number : SUB_Security_HUKS_KeyGenerate_ListAliases_Func_0100
+     * @tc.number : SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0100
      * @tc.name   : test listAliases with de level, process success
      * @tc.desc   : generate key, list aliases
      * @tc.size   : SmallTest
      * @tc.type   : Function
      * @tc.level  : Level2
      */
-    it('SUB_Security_HUKS_KeyGenerate_ListAliases_Func_0100', 0, async () => {
-      let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_Func_0100";
+    it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0100', 0, async () => {
+      let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0100";
       let DEArr = ["DE_Alias-001", "DE_Alias-002", "DE_Alias-003", "DE_Alias-004", "DE_Alias-005"];
       let CEArr = ["CE_Alias-001", "CE_Alias-002", "CE_Alias-003", "CE_Alias-004", "CE_Alias-005"];
       let ECEArr = ["ECE_Alias-001", "ECE_Alias-002", "ECE_Alias-003", "ECE_Alias-004", "ECE_Alias-005"];
@@ -112,15 +112,15 @@ export default function SecurityHUKSKeyGenerateListAliasesTest() {
     })
 
     /**
-     * @tc.number : SUB_Security_HUKS_KeyGenerate_ListAliases_Func_0200
+     * @tc.number : SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0200
      * @tc.name   : test listAliases with ce level, process success
      * @tc.desc   : generate key, list aliases
      * @tc.size   : SmallTest
      * @tc.type   : Function
      * @tc.level  : Level1
      */
-    it('SUB_Security_HUKS_KeyGenerate_ListAliases_Func_0200', 0, async () => {
-      let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_Func_0200";
+    it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0200', 0, async () => {
+      let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0200";
       let DEArr = ["DE_Alias-001", "DE_Alias-002", "DE_Alias-003", "DE_Alias-004", "DE_Alias-005"];
       let CEArr = ["CE_Alias#:<>?\\\|001", "CE_Alias#:<>?\\\|002", "CE_Alias#:<>?\\\|003", "CE_Alias#:<>?\\\|004", "CE_Alias#:<>?\\\|005"];
       let ECEArr = ["ECE_Alias-001", "ECE_Alias-002", "ECE_Alias-003", "ECE_Alias-004", "ECE_Alias-005"];
@@ -145,15 +145,15 @@ export default function SecurityHUKSKeyGenerateListAliasesTest() {
     })
 
     /**
-     * @tc.number : SUB_Security_HUKS_KeyGenerate_ListAliases_Func_0300
+     * @tc.number : SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0300
      * @tc.name   : test listAliases with ece level, process success
      * @tc.desc   : generate key, list aliases
      * @tc.size   : SmallTest
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_KeyGenerate_ListAliases_Func_0300', 0, async () => {
-      let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_Func_0300";
+    it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0300', 0, async () => {
+      let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0300";
       let DEArr = ["DE_Alias-001", "DE_Alias-002", "DE_Alias-003", "DE_Alias-004", "DE_Alias-005"];
       let CEArr = ["CE_Alias-001", "CE_Alias-002", "CE_Alias-003", "CE_Alias-004", "CE_Alias-005"];
       let ECEArr = ["ECE_Alias#:<>?\\\|001", "ECE_Alias#:<>?\\\|002", "ECE_Alias#:<>?\\\|003", "ECE_Alias#:<>?\\\|004", "ECE_Alias#:<>?\\\|005"];
@@ -178,15 +178,15 @@ export default function SecurityHUKSKeyGenerateListAliasesTest() {
     })
 
     /**
-     * @tc.number : SUB_Security_HUKS_KeyGenerate_ListAliases_Func_0400
+     * @tc.number : SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0400
      * @tc.name   : test listAliases with default level, process success
      * @tc.desc   : generate key, list aliases
      * @tc.size   : SmallTest
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_KeyGenerate_ListAliases_Func_0400', 0, async () => {
-      let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_Func_0400";
+    it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0400', 0, async () => {
+      let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0400";
       let CEArr = ["C", "C" + getDataBySize(63)];
       try {
         deleteParam(CEOption, huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL);
@@ -206,15 +206,15 @@ export default function SecurityHUKSKeyGenerateListAliasesTest() {
     })
 
     /**
-     * @tc.number : SUB_Security_HUKS_KeyGenerate_ListAliases_Func_0500
+     * @tc.number : SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0500
      * @tc.name   : test listAliases with de level, process success
      * @tc.desc   : generate key, delete some key, list aliases
      * @tc.size   : SmallTest
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_KeyGenerate_ListAliases_Func_0500', 0, async () => {
-      let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_Func_0500";
+    it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0500', 0, async () => {
+      let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0500";
       let DEArr = ["DE_Alias#001", "DE_Alias#002", "DE_Alias#003", "DE_Alias#004", "DE_Alias#005"];
       let CEArr = ["CE_Alias#001", "CE_Alias#002", "CE_Alias#003", "CE_Alias#004", "CE_Alias#005"];
       let ECEArr = ["ECE_Alias#001", "ECE_Alias#002", "ECE_Alias#003", "ECE_Alias#004", "ECE_Alias#005"];
@@ -247,15 +247,15 @@ export default function SecurityHUKSKeyGenerateListAliasesTest() {
     })
 
     /**
-     * @tc.number : SUB_Security_HUKS_KeyGenerate_ListAliases_Func_0600
+     * @tc.number : SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0600
      * @tc.name   : test listAliases with ce level, process success
      * @tc.desc   : generate key, delete some key, list aliases
      * @tc.size   : SmallTest
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_KeyGenerate_ListAliases_Func_0600', 0, async () => {
-      let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_Func_0600";
+    it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0600', 0, async () => {
+      let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0600";
       let DEArr = ["DE_Alias#001", "DE_Alias#002", "DE_Alias#003", "DE_Alias#004", "DE_Alias#005"];
       let CEArr = ["CE_Alias#001", "CE_Alias#002", "CE_Alias#003", "CE_Alias#004", "CE_Alias#005"];
       let ECEArr = ["ECE_Alias#001", "ECE_Alias#002", "ECE_Alias#003", "ECE_Alias#004", "ECE_Alias#005"];
@@ -288,15 +288,15 @@ export default function SecurityHUKSKeyGenerateListAliasesTest() {
     })
 
     /**
-     * @tc.number : SUB_Security_HUKS_KeyGenerate_ListAliases_Func_0700
+     * @tc.number : SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0700
      * @tc.name   : test listAliases with ece level, process success
      * @tc.desc   : generate key, delete all key, list aliases
      * @tc.size   : SmallTest
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_KeyGenerate_ListAliases_Func_0700', 0, async () => {
-      let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_Func_0700";
+    it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0700', 0, async () => {
+      let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0700";
       let DEArr = ["DE_Alias#001", "DE_Alias#002", "DE_Alias#003", "DE_Alias#004", "DE_Alias#005"];
       let CEArr = ["CE_Alias#001", "CE_Alias#002", "CE_Alias#003", "CE_Alias#004", "CE_Alias#005"];
       let ECEArr = ["ECE_Alias#001", "ECE_Alias#002", "ECE_Alias#003", "ECE_Alias#004", "ECE_Alias#005"];
@@ -320,15 +320,15 @@ export default function SecurityHUKSKeyGenerateListAliasesTest() {
     })
 
     /**
-     * @tc.number : SUB_Security_HUKS_KeyGenerate_ListAliases_Func_0800
+     * @tc.number : SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0800
      * @tc.name   : test listAliases with default level, process success
      * @tc.desc   : list aliases
      * @tc.size   : SmallTest
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_KeyGenerate_ListAliases_Func_0800', 0, async () => {
-      let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_Func_0800";
+    it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0800', 0, async () => {
+      let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0800";
       try {
         deleteParam(DEOption, huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL);
         let resArr = (await huks.listAliases(DEOption)).keyAliases;
@@ -340,15 +340,15 @@ export default function SecurityHUKSKeyGenerateListAliasesTest() {
     })
 
     /**
-     * @tc.number : SUB_Security_HUKS_KeyGenerate_ListAliases_Func_0900
+     * @tc.number : SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0900
      * @tc.name   : test listAliases with 2049 DE level key, process fail
      * @tc.desc   : generate 2048 key, list aliases, generate one more key, list aliases
      * @tc.size   : SmallTest
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_KeyGenerate_ListAliases_Func_0900', 0, async () => {
-      let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_Func_0900";
+    it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0900', 0, async () => {
+      let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_0900";
       let CEArr = ["CE_Alias#001", "CE_Alias#002", "CE_Alias#003", "CE_Alias#004", "CE_Alias#005"];
       let ECEArr = ["ECE_Alias#001", "ECE_Alias#002", "ECE_Alias#003", "ECE_Alias#004", "ECE_Alias#005"];
       let DEArr: Array<string> = new Array();
@@ -386,15 +386,15 @@ export default function SecurityHUKSKeyGenerateListAliasesTest() {
     })
 
     /**
-     * @tc.number : SUB_Security_HUKS_KeyGenerate_ListAliases_Func_1000
+     * @tc.number : SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_1000
      * @tc.name   : test listAliases with null, process fail
      * @tc.desc   : list aliases
      * @tc.size   : SmallTest
      * @tc.type   : Function
      * @tc.level  : Level3
      */
-    it('SUB_Security_HUKS_KeyGenerate_ListAliases_Func_1000', 0, async () => {
-      let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_Func_1000";
+    it('SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_1000', 0, async () => {
+      let testNumber: string = "SUB_Security_HUKS_KeyGenerate_ListAliases_API12_Func_1000";
       try {
         await huks.listAliases(null);
         expect(null).assertFail();
