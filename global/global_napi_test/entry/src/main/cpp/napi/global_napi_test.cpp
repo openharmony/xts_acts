@@ -64,7 +64,48 @@ static napi_value GetFileList(napi_env env, napi_callback_info info)
 napi_value CreateJsString(napi_env env, char *str)
 {
     napi_value result;
-    if (napi_create_string_utf8(env, str, NAPI_AUTO_LENGTH, &result) != napi_ok){
+    if (napi_create_string_utf8(env, str, NAPI_AUTO_LENGTH, &result) != napi_ok)
+    {
+        return result;
+    }
+    return result;
+}
+
+napi_value createJsFileDescriptor(napi_env env, RawFileDescriptor *descriptor)
+{
+    napi_value result;
+    napi_status status = napi_create_object(env, &result);
+    if (status != napi_ok) {
+        return result;
+    }
+    
+    napi_value fd;
+    status = napi_create_int32(env, descriptor->fd, &fd);
+    if (status != napi_ok) {
+        return result;
+    }
+    status = napi_set_named_property(env, result, "fd", fd);
+    if (status != napi_ok) {
+        return result;
+    }
+    
+    napi_value offset;
+    status = napi_create_int32(env, descriptor->start, &offset);
+    if (status != napi_ok) {
+        return result;
+    }
+    status = napi_set_named_property(env, result, "offset", offset);
+    if (status != napi_ok) {
+        return result;
+    }
+    
+    napi_value length;
+    status = napi_create_int32(env, descriptor->length, &length);
+    if (status != napi_ok) {
+        return result;
+    }
+    status = napi_set_named_property(env, result, "length", length);
+    if (status != napi_ok) {
         return result;
     }
     return result;
@@ -635,7 +676,7 @@ static napi_value GetLocales(napi_env env, napi_callback_info info)
     OH_ResourceManager_GetLocales(mNativeResMgr, &resultValue, &resultLen, includeSystem);
 
     std::vector<std::string> tempArray;
-    for (int i = 0; i < resultLen; i++) {
+    for (uint32_t i = 0; i < resultLen; i++) {
         tempArray.push_back(resultValue[i]);
     }
     napi_value jsStringArray;
@@ -677,7 +718,7 @@ static napi_value GetStringArray(napi_env env, napi_callback_info info)
     OH_ResourceManager_GetStringArray(mNativeResMgr, resId, &resultValue, &resultLen);
 
     std::vector<std::string> tempArray;
-    for (int i = 0; i < resultLen; i++) {
+    for (uint32_t i = 0; i < resultLen; i++) {
         tempArray.push_back(resultValue[i]);
     }
     napi_value jsStringArray;
@@ -702,7 +743,7 @@ static napi_value GetStringArrayByName(napi_env env, napi_callback_info info)
     OH_ResourceManager_GetStringArrayByName(mNativeResMgr, name, &resultValue, &resultLen);
 
     std::vector<std::string> tempArray;
-    for (int i = 0; i < resultLen; i++) {
+    for (uint32_t i = 0; i < resultLen; i++) {
         tempArray.push_back(resultValue[i]);
     }
     napi_value jsStringArray;
@@ -799,8 +840,11 @@ static napi_value GetRawFileDescriptorData(napi_env env, napi_callback_info info
 
     napi_get_value_string_utf8(env, argv[1], strBuf, sizeof(strBuf), &strSize);
     std::string filename(strBuf, strSize);
-    RawFile *rawFile = OH_ResourceManager_OpenRawFile(mNativeResMgr, filename.c_str);
-    bool result = OH_ResourceManager_ReleaseRawFileDescriptorData(descriptor);
+    RawFile *rawFile = OH_ResourceManager_OpenRawFile(mNativeResMgr, filename.c_str());
+    RawFileDescriptor *descriptor = new RawFileDescriptor();
+    OH_ResourceManager_GetRawFileDescriptorData(rawFile, descriptor);
+    OH_ResourceManager_ReleaseRawFileDescriptorData(descriptor);
+    OH_ResourceManager_GetRawFileDescriptorData(rawFile, descriptor);
     OH_ResourceManager_CloseRawFile(rawFile);
     OH_ResourceManager_ReleaseNativeResourceManager(mNativeResMgr);
     return createJsFileDescriptor(env, descriptor);
@@ -814,19 +858,19 @@ static napi_value GetLocalesData(napi_env env, napi_callback_info info)
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
     char **resultValue;
     uint32_t resultLen;
-    ResourceManager_ErrorCode code = OH_ResourceManager_GetLocalesData(mNativeResMgr, &resultValue, &resultLen, false);
+    OH_ResourceManager_GetLocalesData(mNativeResMgr, &resultValue, &resultLen, false);
     char **resultValue1;
     uint32_t resultLen1;
-    ResourceManager_ErrorCode code = OH_ResourceManager_GetLocalesData(mNativeResMgr, &resultValue1, &resultLen1, false);
+    OH_ResourceManager_GetLocalesData(mNativeResMgr, &resultValue1, &resultLen1, false);
     std::vector<std::string> tempArray;
-    for (uint32_t i = 0; i < resultLen; i++){
+    for (uint32_t i = 0; i < resultLen; i++) {
         tempArray.push_back(resultValue[i]);
     }
     napi_value jsStringArray;
     napi_create_array(env, &jsStringArray);
-    for (size_t i = 0; i < tempArray.size(); i++){
+    for (size_t i = 0; i < tempArray.size(); i++) {
         napi_value jsString;
-        napi_get_value_string_utf8(env, tempArray[i].c_str(), NAPI_AUTO_LENGTH, &jsString);
+        napi_create_string_utf8(env, tempArray[i].c_str(), NAPI_AUTO_LENGTH, &jsString);
         napi_set_element(env, jsStringArray, i, jsString);
     }
     return jsStringArray;
@@ -853,7 +897,7 @@ static napi_value GetMediaBase64Data(napi_env env, napi_callback_info info)
     napi_value argv[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
     uint32_t id = 0x000000;
-    napi_get_value_uint32(env, argv[1], &resId);
+    napi_get_value_uint32(env, argv[1], &id);
 
     std::stringstream ss;
     ss << std::hex << id;
@@ -873,7 +917,7 @@ static napi_value GetMediaData(napi_env env, napi_callback_info info)
     napi_value argv[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
     uint32_t id = 0;
-    napi_get_value_uint32(env, argv[1], &resId);
+    napi_get_value_uint32(env, argv[1], &id);
 
     uint8_t *result = NULL;
     uint64_t len = 0;
@@ -915,14 +959,14 @@ static napi_value GetDrawableDescriptorData(napi_env env, napi_callback_info inf
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
 
     uint32_t id = 0x000000;
-    napi_get_value_uint32(env, argv[1], &resId);
+    napi_get_value_uint32(env, argv[1], &id);
 
     std::stringstream ss;
     ss << std::hex << id;
     uint32_t hexValue;
     ss >> hexValue;
 
-    ResourceManager_ErrorCode code = OH_ResourceManager_GetDrawableDescriptorData(mNativeResMgr, id, &drawable, 0, 0);
+    OH_ResourceManager_GetDrawableDescriptorData(mNativeResMgr, id, &drawable, 0, 0);
     bool flag = (drawable != NULL);
     napi_value value = nullptr;
     napi_get_boolean(env, flag, &value);
@@ -940,7 +984,7 @@ static napi_value GetDrawableDescriptorDataByName(napi_env env, napi_callback_in
     ArkUI_DrawableDescriptor *drawable = NULL;
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
 
-    ResourceManager_ErrorCode code = OH_ResourceManager_GetDrawableDescriptorDataByName(mNativeResMgr, strBuf, &drawable, 0, 0);
+    OH_ResourceManager_GetDrawableDescriptorDataByName(mNativeResMgr, strBuf, &drawable, 0, 0);
     bool flag = (drawable != NULL);
     napi_value value = nullptr;
     napi_get_boolean(env, flag, &value);
