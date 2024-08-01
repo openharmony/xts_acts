@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -112,46 +111,46 @@ struct CalendarComponentExample {
   private stateChangCallBack = (eventData:events_emitter.EventData) => {
     if (eventData != null) {
       console.info("Calendar page state change called:" + JSON.stringify(eventData));
-      if (eventData.data.colSpace != null) {
-        this.colSpace = eventData.data.colSpace;
+      if (eventData.data?.colSpace != null) {
+        this.colSpace = eventData.data?.colSpace;
         console.log("Calendar page colSpace value" + this.colSpace);
       }
-      if (eventData.data.dailyFiveRowSpace != null) {
-        this.dailyFiveRowSpace = eventData.data.dailyFiveRowSpace;
+      if (eventData.data?.dailyFiveRowSpace != null) {
+        this.dailyFiveRowSpace = eventData.data?.dailyFiveRowSpace;
         console.log("Calendar page dailyFiveRowSpace value" + this.dailyFiveRowSpace);
       }
-      if (eventData.data.dailySixRowSpace != null) {
-        this.dailySixRowSpace = eventData.data.dailySixRowSpace;
+      if (eventData.data?.dailySixRowSpace != null) {
+        this.dailySixRowSpace = eventData.data?.dailySixRowSpace;
         console.log("Calendar page dailySixRowSpace value" + this.dailySixRowSpace);
       }
-      if (eventData.data.underscoreWidth != null) {
-        this.underscoreWidth = eventData.data.underscoreWidth;
+      if (eventData.data?.underscoreWidth != null) {
+        this.underscoreWidth = eventData.data?.underscoreWidth;
         console.log("Calendar page underscoreWidth value" + this.underscoreWidth);
       }
-      if (eventData.data.underscoreLength != null) {
-        this.underscoreLength = eventData.data.underscoreLength;
+      if (eventData.data?.underscoreLength != null) {
+        this.underscoreLength = eventData.data?.underscoreLength;
         console.log("Calendar page underscoreLength value" + this.underscoreLength);
       }
-      if (eventData.data.lunarHeight != null) {
-        this.lunarHeight = eventData.data.lunarHeight;
+      if (eventData.data?.lunarHeight != null) {
+        this.lunarHeight = eventData.data?.lunarHeight;
         console.log("Calendar page lunarHeight value" + this.lunarHeight);
       }
-      if (eventData.data.scheduleMarkerRadius != null) {
-        this.scheduleMarkerRadius = eventData.data.scheduleMarkerRadius;
+      if (eventData.data?.scheduleMarkerRadius != null) {
+        this.scheduleMarkerRadius = eventData.data?.scheduleMarkerRadius;
         console.log("Calendar page scheduleMarkerRadius value" + this.scheduleMarkerRadius);
       }
-      if (eventData.data.boundaryRowOffset != null) {
-        this.boundaryRowOffset = eventData.data.boundaryRowOffset;
+      if (eventData.data?.boundaryRowOffset != null) {
+        this.boundaryRowOffset = eventData.data?.boundaryRowOffset;
         console.log("Calendar page boundaryRowOffset value" + this.boundaryRowOffset);
       }
 
-      if (eventData.data.weekAndDayRowSpace != null) {
-        this.weekAndDayRowSpace = eventData.data.weekAndDayRowSpace;
+      if (eventData.data?.weekAndDayRowSpace != null) {
+        this.weekAndDayRowSpace = eventData.data?.weekAndDayRowSpace;
         console.log("Calendar page weekAndDayRowSpace value" + this.weekAndDayRowSpace);
       }
 
-      if (eventData.data.direction != null) {
-        this.direction1 = eventData.data.direction;
+      if (eventData.data?.direction != null) {
+        this.direction1 = eventData.data?.direction;
         console.log("Calendar page direction value" + this.direction1);
       }
     }

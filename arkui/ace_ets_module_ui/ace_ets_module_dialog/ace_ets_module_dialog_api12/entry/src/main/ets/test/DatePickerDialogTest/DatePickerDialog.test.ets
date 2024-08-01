@@ -17,10 +17,10 @@ import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 export default function DatePickerDialog() {
-  describe('DatePickerDialog', function () {
-    beforeEach(async function (done) {
+  describe('DatePickerDialog', () => {
+    beforeEach(async (done: Function) => {
       console.info("DatePickerDialog beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/DatePickerDialog/DatePickerDialog",
       }
       try {
@@ -39,7 +39,7 @@ export default function DatePickerDialog() {
       console.info("DatePickerDialog beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("DatePickerDialog after each called");
     });
@@ -51,7 +51,7 @@ export default function DatePickerDialog() {
      * @tc.type
      * @tc.size
      */
-    it('DatePickerDialog_001', 0, async function (done) {
+    it('DatePickerDialog_001', 0, async (done: Function) => {
       console.info('[DatePickerDialog_001] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();

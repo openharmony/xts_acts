@@ -18,10 +18,10 @@ import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 
 export default function ButtonStyle() {
-  describe('ButtonStyle', function () {
-    beforeEach(async function (done) {
+  describe('ButtonStyle', () => {
+    beforeEach(async (done: Function) => {
       console.info("ButtonStyle beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/CalendarPickerDialog/ButtonStyle",
       }
       try {
@@ -40,7 +40,7 @@ export default function ButtonStyle() {
       console.info("ButtonStyle beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("ButtonStyle after each called");
     });
@@ -52,7 +52,7 @@ export default function ButtonStyle() {
      * @tc.type
      * @tc.size
      */
-    it('ButtonStyle_001', 0, async function (done) {
+    it('ButtonStyle_001', 0, async (done: Function) => {
       console.info('[ButtonStyle_001] START');
       let driver = Driver.create();
       await CommonFunc.sleep(1000);
@@ -60,7 +60,7 @@ export default function ButtonStyle() {
       await btn1.click();
       await CommonFunc.sleep(1000);
 
-      let obj2 = JSON.parse(JSON.stringify(getInspectorTree()));
+      let obj2: ESObject = JSON.parse(JSON.stringify(getInspectorTree()));
       await CommonFunc.sleep(1000);
       console.info("[ButtonStyle_001] obj2 is: " + JSON.stringify(obj2));
       console.info("[ButtonStyle_001] obj2.$children[1].$children[0].$children[0].$children[2].$children[0] is: " + JSON.stringify(obj2.$children[1].$children[0].$children[0].$children[2].$children[0]));

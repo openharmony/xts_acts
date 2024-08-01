@@ -17,10 +17,10 @@ import router from '@ohos.router';
 import CommonFunc from '../../MainAbility/common/Common';
 import {UiComponent, UiDriver, Component, Driver, UiWindow, ON, BY, MatchPattern, DisplayRotation, ResizeDirection, WindowMode, PointerMatrix} from '@ohos.UiTest';
 export default function TextPickerDialog() {
-  describe('TextPickerDialog', function () {
-    beforeEach(async function (done) {
+  describe('TextPickerDialog', () => {
+    beforeEach(async (done: Function) => {
       console.info("TextPickerDialog beforeEach start");
-      let options = {
+      let options: router.RouterOptions = {
         url: "MainAbility/pages/TextPickerDialog/TextPickerDialog",
       }
       try {
@@ -39,7 +39,7 @@ export default function TextPickerDialog() {
       console.info("TextPickerDialog beforeEach end");
       done();
     });
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("TextPickerDialog after each called");
     });
@@ -52,7 +52,7 @@ export default function TextPickerDialog() {
      * @tc.type
      * @tc.size
      */
-    it('TextPickerDialog_001', 0, async function (done) {
+    it('TextPickerDialog_001', 0, async (done: Function) => {
       console.info('[TextPickerDialog_001] START');
       await CommonFunc.sleep(1000);
       let driver = Driver.create();

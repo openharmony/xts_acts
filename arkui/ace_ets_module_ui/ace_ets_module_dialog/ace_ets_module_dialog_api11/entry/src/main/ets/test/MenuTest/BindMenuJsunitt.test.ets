@@ -1,4 +1,3 @@
-// @ts-nocheck
 /**
  * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,16 +13,16 @@
  * limitations under the License.
  */
 import {describe, beforeAll, beforeEach, afterEach, afterAll, it, expect} from "@ohos/hypium";
-import router from '@system.router';
+import router from '@ohos.router';
 import events_emitter from '@ohos.events.emitter';
 import CommonFunc from "../../MainAbility/common/Common";
 
 export default function bindMenuTesttt() {
-  describe('bindMenuTesttt', function () {
-    beforeEach(async function (done) {
+  describe('bindMenuTesttt', () => {
+    beforeEach(async (done: Function) => {
       console.info("bindMenu beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/Menu/bindMenuu',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/Menu/bindMenuu',
       }
       try {
         router.clear();
@@ -41,22 +40,22 @@ export default function bindMenuTesttt() {
       done()
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("bindMenu after each called");
     });
 
-    it('bindMenuTest_0100', 0, async function (done) {
+    it('bindMenuTest_0100', 0, async (done: Function) => {
       console.info('bindMenuTest_0100 START');
       await CommonFunc.sleep(1000);
       console.info("bindMenuTest_0100 text click result is: " + JSON.stringify(sendEventByKey('text',10,"")));
       await CommonFunc.sleep(1500);
-      let callback = (indexEvent) => {
+      let callback = (indexEvent: events_emitter.EventData) => {
         console.info("bindMenuTest_0100 get state result is: " + JSON.stringify(indexEvent));
-        expect(indexEvent.data.ACTION).assertEqual(true);
+        expect(indexEvent.data?.ACTION).assertEqual(true);
         done();
       }
-      let indexEvent = {
+      let indexEvent: events_emitter.InnerEvent = {
         eventId: 64,
         priority: events_emitter.EventPriority.LOW
       }

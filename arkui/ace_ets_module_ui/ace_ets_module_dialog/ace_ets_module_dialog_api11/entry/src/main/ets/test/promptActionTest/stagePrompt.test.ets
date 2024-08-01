@@ -61,7 +61,7 @@ export default function stagePromptTest() {
         }
         let callback1 = (eventData: events_emitter.EventData) => {
           console.info("testPromptActionShowToast001 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.STATUS).assertEqual(true);
+          expect(eventData.data?.STATUS).assertEqual(true);
           done();
         }
         try {
@@ -87,7 +87,7 @@ export default function stagePromptTest() {
         }
         let callback1 = (eventData: events_emitter.EventData) => {
           console.info("testPromptActionShowToast002 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.STATUS).assertEqual(true);
+          expect(eventData.data?.STATUS).assertEqual(true);
           done();
         }
         try {
@@ -112,7 +112,7 @@ export default function stagePromptTest() {
         }
         let callback1 = (eventData: events_emitter.EventData) => {
           console.info("testPromptActionShowToast003 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.STATUS).assertEqual(true);
+          expect(eventData.data?.STATUS).assertEqual(true);
           done();
         }
         try {
@@ -137,7 +137,7 @@ export default function stagePromptTest() {
         }
         let callback1 = (eventData: events_emitter.EventData) => {
           console.info("testPromptActionShowToast004 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.STATUS).assertEqual(true);
+          expect(eventData.data?.STATUS).assertEqual(true);
           done();
         }
         try {
@@ -162,7 +162,7 @@ export default function stagePromptTest() {
         }
         let callback1 = (eventData: events_emitter.EventData) => {
           console.info("testPromptActionShowToast005 get event state result is: " + JSON.stringify(eventData));
-          expect(eventData.data.STATUS).assertEqual(true);
+          expect(eventData.data?.STATUS).assertEqual(true);
           done();
         }
         try {

@@ -35,12 +35,12 @@ struct CalendarPickerDialogExampleA {
             onChange: (value) => {
             },
             onWillAppear: () => {
-              var eventData = {
+              let eventData: events_emitter.EventData = {
                 data: {
                   "action": 'onWillAppear'
                 }
               }
-              let event = {
+              let event: events_emitter.InnerEvent = {
                 eventId: 50001,
                 priority: events_emitter.EventPriority.LOW
               }
@@ -48,12 +48,12 @@ struct CalendarPickerDialogExampleA {
               console.info("CalendarPickerDialog: onWillAppear()")
             },
             onDidAppear: () => {
-              var eventData = {
+              let eventData: events_emitter.EventData = {
                 data: {
                   "action": 'onDidAppear'
                 }
               }
-              let event = {
+              let event: events_emitter.InnerEvent = {
                 eventId: 50002,
                 priority: events_emitter.EventPriority.LOW
               }
@@ -61,12 +61,12 @@ struct CalendarPickerDialogExampleA {
               console.info("CalendarPickerDialog: onDidAppear()")
             },
             onWillDisappear: () => {
-              var eventData = {
+              let eventData: events_emitter.EventData = {
                 data: {
                   "action": 'onWillDisappear'
                 }
               }
-              let event = {
+              let event: events_emitter.InnerEvent = {
                 eventId: 50003,
                 priority: events_emitter.EventPriority.LOW
               }
@@ -74,12 +74,12 @@ struct CalendarPickerDialogExampleA {
               console.info("CalendarPickerDialog: onWillDisappear()")
             },
             onDidDisappear: () => {
-              var eventData = {
+              let eventData: events_emitter.EventData = {
                 data: {
                   "action": 'onDidDisappear'
                 }
               }
-              let event = {
+              let event: events_emitter.InnerEvent = {
                 eventId: 50004,
                 priority: events_emitter.EventPriority.LOW
               }

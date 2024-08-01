@@ -16,13 +16,13 @@
 import {describe, beforeAll, beforeEach, afterEach, it, expect} from "@ohos/hypium"
 import {UiComponent, UiDriver, Component, Driver, ON, BY, } from '@ohos.UiTest';
 import router from '@ohos.router';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 
 export default function interstitialDialogActionTest() {
 
-  describe('interstitialDialogActionTest', function () {
-    beforeEach(async function (done) {
-      let options = {
+  describe('interstitialDialogActionTest', () => {
+    beforeEach(async (done: Function) => {
+      let options: router.RouterOptions = {
         url: 'MainAbility/pages/Dialog/InterstitialDialogAction',
       }
       try {
@@ -42,7 +42,7 @@ export default function interstitialDialogActionTest() {
       done();
     });
 
-    afterEach(async function () {
+    afterEach(async () => {
       await CommonFunc.sleep(1000);
       console.info("interstitialDialogActionTest after each called");
     });
@@ -55,7 +55,7 @@ export default function interstitialDialogActionTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('interstitialDialogActionTest_0010', 0, async function (done) {
+    it('interstitialDialogActionTest_0010', 0, async (done: Function) => {
       console.info('interstitialDialogActionTest_0010 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -75,7 +75,7 @@ export default function interstitialDialogActionTest() {
      * @tc.type :
      * @tc.size :
      */
-    it('interstitialDialogActionTest_0020', 0, async function (done) {
+    it('interstitialDialogActionTest_0020', 0, async (done: Function) => {
       console.info('interstitialDialogActionTest_0020 START');
       let driver = await Driver.create()
       await CommonFunc.sleep(1000);
@@ -85,7 +85,7 @@ export default function interstitialDialogActionTest() {
       await driver.assertComponentExist(ON.text('Main Title'));
       await CommonFunc.sleep(5000);
       let strJson = getInspectorByKey('interstitialDialogAction_id');
-      let obj = JSON.parse(strJson);
+      let obj: ESObject = JSON.parse(strJson);
       console.info("[interstitialDialogActionTest_0020] dragPreviewOptions: " + JSON.stringify(obj));
       console.info("[interstitialDialogActionTest_0020] dragPreviewOptions: " + JSON.stringify(obj.$attrs));
       expect(obj.$attrs.label).assertEqual('closeDialog succ');

@@ -24,8 +24,8 @@ struct CustomDialogExampleOptions {
   private flag: boolean = true
   controller: CustomDialogController
   // 若尝试在CustomDialog中传入多个其他的Controller，以实现在CustomDialog中打开另一个或另一些CustomDialog，那么此处需要将指向自己的controller放在最后
-  cancel: () => void
-  confirm: () => void
+  cancel: () => void = () => {}
+  confirm: () => void = () => {}
 
   build() {
     Column() {
@@ -67,7 +67,7 @@ struct CustomDialogExampleOptions {
 struct CustomDialogUser {
   @State textValue: string = ''
   @State inputValue: string = 'click me'
-  dialogController: CustomDialogController = new CustomDialogController({
+  dialogController: CustomDialogController | undefined = new CustomDialogController({
     builder: CustomDialogExampleOptions({
       cancel: this.onCancel,
       confirm: this.onAccept,
@@ -99,7 +99,6 @@ struct CustomDialogUser {
 
   // 在自定义组件即将析构销毁时将dialogControlle删除和置空
   aboutToDisappear() {
-    delete this.dialogController, // 删除dialogController
     this.dialogController = undefined // 将dialogController置空
   }
 

@@ -15,7 +15,8 @@
 @CustomDialog
 struct UserDialog0100 {
   controller: CustomDialogController
-  action: () => void
+  action: () => void = () => {
+  }
 
   build() {
     Row() {

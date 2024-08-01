@@ -13,17 +13,17 @@
  * limitations under the License.
  */
 import { describe, beforeAll, beforeEach, afterEach, afterAll, it, expect } from "@ohos/hypium"
-import router from '@system.router';
+import router from '@ohos.router';
 import { Driver, ON } from '@ohos.UiTest';
-import CommonFunc from '../../MainAbility/utils/Common';
+import CommonFunc from '../../MainAbility/common/Common';
 import events_emitter from '@ohos.events.emitter';
 
 export default function TimePickerDialogCallback() {
-  describe('TimePickerDialogCallback', function () {
-    beforeEach(async function (done) {
+  describe('TimePickerDialogCallback', () => {
+    beforeEach(async (done: Function) => {
       console.info("TimePickerDialogAJsunit beforeEach start");
-      let options = {
-        uri: 'MainAbility/pages/TimePickerDialog/TimePickerDialogCallback',
+      let options: router.RouterOptions = {
+        url: 'MainAbility/pages/TimePickerDialog/TimePickerDialogCallback',
       }
       try {
         router.clear();
@@ -50,14 +50,14 @@ export default function TimePickerDialogCallback() {
      * @tc.type      : Function
      * @tc.level     : level 0
      */
-    it('TimePickerDialogCallback_0100', 0, async (done) => {
+    it('TimePickerDialogCallback_0100', 0, async (done: Function) => {
       let driver1 = Driver.create();
 
-      let callback = (event) => {
-        expect(event.data.action).assertEqual('onWillAppear');
-        console.info('TimePickerDialogCallback_0100 event01: ' + event.data.action);
+      let callback = (event: events_emitter.EventData) => {
+        expect(event.data?.action).assertEqual('onWillAppear');
+        console.info('TimePickerDialogCallback_0100 event01: ' + event.data?.action);
       }
-      let event = {
+      let event: events_emitter.InnerEvent = {
         eventId: 50001,
         priority: events_emitter.EventPriority.LOW
       }
@@ -65,35 +65,35 @@ export default function TimePickerDialogCallback() {
       console.info('TimePickerDialogCallback_0100 START');
       let button = await driver1.findComponent(ON.id('TimePicker_dialog_B'));
       await button.click();
-      await new Promise((res, rej) => setTimeout(res, 3000, '1'))
+      await CommonFunc.sleep(3000)
       console.info('TimePickerDialogCallback_0100 2');
 
-      let callback1 = (event) => {
-        expect(event.data.action).assertEqual('onDidAppear');
-        console.info('TimePickerDialogCallback_0100 event02: ' + event.data.action);
+      let callback1 = (event: events_emitter.EventData) => {
+        expect(event.data?.action).assertEqual('onDidAppear');
+        console.info('TimePickerDialogCallback_0100 event02: ' + event.data?.action);
       }
-      let event1 = {
+      let event1: events_emitter.InnerEvent = {
         eventId: 50002,
         priority: events_emitter.EventPriority.LOW
       }
       events_emitter.on(event1, callback1);
 
-      let callback2 = (event) => {
-        expect(event.data.action).assertEqual('onWillDisappear');
-        console.info('TimePickerDialogCallback_0100 event03: ' + event.data.action);
+      let callback2 = (event: events_emitter.EventData) => {
+        expect(event.data?.action).assertEqual('onWillDisappear');
+        console.info('TimePickerDialogCallback_0100 event03: ' + event.data?.action);
       }
-      let event2 = {
+      let event2: events_emitter.InnerEvent = {
         eventId: 50003,
         priority: events_emitter.EventPriority.LOW
       }
       events_emitter.on(event2, callback2);
 
-      let callback3 = (event) => {
-        expect(event.data.action).assertEqual('onDidDisappear');
-        console.info('TimePickerDialogCallback_0100 event04: ' + event.data.action);
+      let callback3 = (event: events_emitter.EventData) => {
+        expect(event.data?.action).assertEqual('onDidDisappear');
+        console.info('TimePickerDialogCallback_0100 event04: ' + event.data?.action);
         done();
       }
-      let event3 = {
+      let event3: events_emitter.InnerEvent = {
         eventId: 50004,
         priority: events_emitter.EventPriority.LOW
       }
