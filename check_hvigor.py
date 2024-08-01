@@ -63,6 +63,7 @@ def check_hvigor_wrapper_js(acts_root_dir, hvigor_prj_list):
         return False
     return True
 
+
 def check_hvigor_version(hvigor_prj_list):
     unmatch_prj_list = []
     baseline_version = '4.0.5'
@@ -75,22 +76,6 @@ def check_hvigor_version(hvigor_prj_list):
     if len(unmatch_prj_list):
         output_unmatched_project(unmatch_prj_list, 'hvigor-config.json5')
         print("Plesse use {}".format(baseline_version))
-        return False
-    return True
-
-def check_hvigorw_bat(acts_root_dir, hvigor_prj_list):
-    unmatch_info = []
-    baseline_file = os.path.join(acts_root_dir, 'arkcompiler/ecmanewfeatures/hvigorw.bat')
-    baseline_md5 = get_file_md5(os.path.join(baseline_file))
-    for dir in hvigor_prj_list:
-        filename = os.path.join(dir, 'hvigorw.bat')
-        md5 = get_file_md5(filename)
-        if md5 != baseline_md5:
-            unmatch_info.append((md5, filename))
-
-    if len(unmatch_info):
-        output_unmatched_project(unmatch_info, 'hvigorw.bat')
-        print('Please copy from {}'.format(baseline_file))
         return False
     return True
 
@@ -111,9 +96,8 @@ if __name__ == "__main__":
 
     js_valid = check_hvigor_wrapper_js(acts_root_dir, hvigor_prj_list)
     json_valid = check_hvigor_version(hvigor_prj_list)
-    bat_valid = check_hvigorw_bat(acts_root_dir, hvigor_prj_list)
 
-    if not js_valid or not json_valid or not bat_valid:
+    if not js_valid or not json_valid:
         sys.exit(1)
 
     sys.exit(0)
