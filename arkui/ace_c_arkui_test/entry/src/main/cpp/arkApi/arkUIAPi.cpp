@@ -163,7 +163,7 @@ static napi_value testArkUI016(napi_env env, napi_callback_info info) {
 
     ArkUI_NodeContentHandle contentHandle = nullptr;
     OH_ArkUI_GetNodeContentFromNapiValue(env, nullptr, &contentHandle);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "testArkUI016-contentHandle %{public}p", contentHandle);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "testArkUI016-Handle %{public}p", contentHandle);
     ASSERT_OBJ(contentHandle, nullptr);
     
     NAPI_END;
