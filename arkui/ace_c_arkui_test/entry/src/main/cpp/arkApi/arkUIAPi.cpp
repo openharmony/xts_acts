@@ -629,13 +629,13 @@ static napi_value testArkUI077(napi_env env, napi_callback_info info) {
 }
 
 static napi_value testArkUI078(napi_env env, napi_callback_info info) {
-    OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE,"ArkUI_NativeNodeAPI_1");
+    OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_NODE, "ArkUI_NativeNodeAPI_1");
     auto ret = OH_ArkUI_Curve_CreateCurveByType(ARKUI_CURVE_LINEAR);
-    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager","testArkUI078-ret %{public}p", ret);
+    OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager", "testArkUI078-ret %{public}p", ret);
     
-    if(ret == nullptr){
+    if (ret == nullptr) {
         napi_value result = nullptr;
-        napi_create_int32(env,1,&result);
+        napi_create_int32(env, 1, &result);
         return result;
     }
     NAPI_END;
@@ -645,9 +645,9 @@ static napi_value testArkUI079(napi_env env, napi_callback_info info) {
     auto ret = OH_ArkUI_Curve_CreateStepsCurve(1,true);
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager","testArkUI079-ret %{public}p", ret);
     
-    if(ret == nullptr){
+    if (ret == nullptr) {
         napi_value result = nullptr;
-        napi_create_int32(env,1,&result);
+        napi_create_int32(env, 1, &result);
         return result;
     }
     NAPI_END;
@@ -657,9 +657,9 @@ static napi_value testArkUI080(napi_env env, napi_callback_info info) {
     auto ret = OH_ArkUI_Curve_CreateCubicBezierCurve(0.0f,0.1f,0.0f,0.1f);
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager","testArkUI080-ret %{public}p", ret);
     
-    if(ret == nullptr){
+    if (ret == nullptr) {
         napi_value result = nullptr;
-        napi_create_int32(env,1,&result);
+        napi_create_int32(env, 1, &result);
         return result;
     }
     NAPI_END;
@@ -669,9 +669,9 @@ static napi_value testArkUI081(napi_env env, napi_callback_info info) {
     auto ret = OH_ArkUI_Curve_CreateSpringCurve(1.0f,1.0f,1.0f,1.0f);
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager","testArkUI081-ret %{public}p", ret);
     
-    if(ret == nullptr){
+    if (ret == nullptr) {
         napi_value result = nullptr;
-        napi_create_int32(env,1,&result);
+        napi_create_int32(env, 1, &result);
         return result;
     }
     NAPI_END;
@@ -681,9 +681,9 @@ static napi_value testArkUI082(napi_env env, napi_callback_info info) {
     auto ret = OH_ArkUI_Curve_CreateSpringMotion(1.0f,1.0f,1.0f);
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager","testArkUI082-ret %{public}p", ret);
     
-    if(ret == nullptr){
+    if (ret == nullptr) {
         napi_value result = nullptr;
-        napi_create_int32(env,1,&result);
+        napi_create_int32(env, 1, &result);
         return result;
     }
     NAPI_END;
@@ -693,9 +693,9 @@ static napi_value testArkUI083(napi_env env, napi_callback_info info) {
     auto ret = OH_ArkUI_Curve_CreateResponsiveSpringMotion(1.0f,1.0f,1.0f);
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager","testArkUI083-ret %{public}p", ret);
     
-    if(ret == nullptr){
+    if (ret == nullptr) {
         napi_value result = nullptr;
-        napi_create_int32(env,1,&result);
+        napi_create_int32(env, 1, &result);
         return result;
     }
     NAPI_END;
@@ -705,9 +705,9 @@ static napi_value testArkUI084(napi_env env, napi_callback_info info) {
     auto ret = OH_ArkUI_Curve_CreateInterpolatingSpring(1.0f,1.0f,1.0f,1.0f);
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager","testArkUI084-ret %{public}p", ret);
     
-    if(ret == nullptr){
+    if (ret == nullptr) {
         napi_value result = nullptr;
-        napi_create_int32(env,1,&result);
+        napi_create_int32(env, 1, &result);
         return result;
     }
     NAPI_END;
@@ -717,9 +717,9 @@ static napi_value testArkUI085(napi_env env, napi_callback_info info) {
     auto ret = OH_ArkUI_Curve_CreateCustomCurve(nullptr,nullptr);
     OH_LOG_Print(LOG_APP, LOG_INFO, LOG_PRINT_DOMAIN, "Manager","testArkUI085-ret %{public}p", ret);
     
-    if(ret == nullptr){
+    if (ret == nullptr) {
         napi_value result = nullptr;
-        napi_create_int32(env,1,&result);
+        napi_create_int32(env, 1, &result);
         return result;
     }
     NAPI_END;
