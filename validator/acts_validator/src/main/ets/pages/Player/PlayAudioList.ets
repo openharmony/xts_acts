@@ -19,8 +19,8 @@ import fs from '@ohos.file.fs';
 import data_preferences from '@ohos.data.preferences';
 
 class TestCase {
-  displayName : string;
-  uri: string;
+  public displayName : string;
+  public uri : string;
 }
 
 const TAG = 'ParseXML';
