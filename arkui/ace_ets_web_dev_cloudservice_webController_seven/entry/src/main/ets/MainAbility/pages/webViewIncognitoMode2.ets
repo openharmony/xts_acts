@@ -67,6 +67,7 @@ struct webViewIncognitoMode2 {
                   await Utils.sleep(2000);
                   webview.WebCookieManager.clearAllCookiesSync();
                   await Utils.sleep(2000);
+                  webview.WebCookieManager.clearAllCookiesSync();
                   let isExistCookie = webview.WebCookieManager.existCookie();
                   if (!isExistCookie) {
                     Utils.emitEvent('success', 8024);
