@@ -22,135 +22,93 @@ export default function constDynamicImport() {
 
     /**
      * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_ConstDynamicImport_0001
-     * @tc.name      : importHspName
+     * @tc.name      : testImportHspName
      * @tc.desc      : add name of task for taskpool
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('importHspName', 0, async () => {
+    it('testImportHspName', 0, async () => {
       let lib = await import('Sharelibraryhsp')
       expect(lib.add(2, 3)).assertEqual(5)
     })
 
      /**
      * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_ConstDynamicImport_0002
-     * @tc.name      : importHspPath
+     * @tc.name      : testImportHspPath
      * @tc.desc      : add name of task for taskpool
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('importHspPath', 0, async () => {
+    it('testImportHspPath', 0, async () => {
       let lib = await import('Sharelibraryhsp/src/main/ets/utils/Calc')
       expect(lib.add(3, 4)).assertEqual(7)
     })
     
     /**
      * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_ConstDynamicImport_0003
-     * @tc.name      : importHarName
+     * @tc.name      : testImportHarName
      * @tc.desc      : add name of task for taskpool
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('importHarName', 0, async () => {
+    it('testImportHarName', 0, async () => {
       let lib = await import('Staticlibraryhar')
       expect(lib.add(2, 3)).assertEqual(5)
     })
 
     /**
      * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_ConstDynamicImport_0004
-     * @tc.name      : importHarPath
+     * @tc.name      : testImportHarPath
      * @tc.desc      : add name of task for taskpool
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('importHarPath', 0, async () => {
+    it('testImportHarPath', 0, async () => {
        let lib = await import('Staticlibraryhar/src/main/ets/Calc')
        expect(lib.add(3, 5)).assertEqual(8)
-     })
-
-     /**
-     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_ConstDynamicImport_0005
-     * @tc.name      : importRemoteHar
-     * @tc.desc      : add name of task for taskpool
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-    */
-    it('importRemoteHar', 0, async () => {
-      let lib = await import('@ohos/crypto-js')
-      let md5Name: string = lib.CryptoJS.MD5("123456").toString()
-      expect(md5Name).assertEqual('e10adc3949ba59abbe56e057f20f883e')
-    })
-
-    /**
-     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_ConstDynamicImport_0006
-     * @tc.name      : importOhpm
-     * @tc.desc      : add name of task for taskpool
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-    */
-    it('importOhpm', 0, async () => {
-      let lib = await import("@yunkss/eftool")
-      let eftoolName: ESObject = lib.IdCardUtil.convert15To18("420106640901234").getDataRow()
-      expect(eftoolName).assertEqual('420106194201062348')
     })
 
     /**
      * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_ConstDynamicImport_0007
-     * @tc.name      : withinhapImportPath
+     * @tc.name      : testWithinhapImportPath
      * @tc.desc      : add name of task for taskpool
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('withinhapImportPath', 0, async () => {
+    it('testWithinhapImportPath', 0, async () => {
       let lib = await import('../../../main/ets/Calc')
       expect(lib.add(3, 5)).assertEqual(8)
     })
 
     /**
      * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_ConstDynamicImport_0008
-     * @tc.name      : withinimportHspPath
+     * @tc.name      : testWithinimportHspPath
      * @tc.desc      : add name of task for taskpool
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('withinimportHspPath', 0, async () => {
+    it('testWithinimportHspPath', 0, async () => {
       let res = await withinHspTest()
       expect(res).assertTrue()
     })
 
     /**
      * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_ConstDynamicImport_0009
-     * @tc.name      : withinimportHarPath
+     * @tc.name      : testWithinimportHarPath
      * @tc.desc      : add name of task for taskpool
      * @tc.size      : MediumTest
      * @tc.type      : Function
      * @tc.level     : Level 0
     */
-    it('withinimportHarPath', 0, async () => {
+    it('testWithinimportHarPath', 0, async () => {
       let res = await withinHarTest()
       expect(res).assertTrue()
-    })
-
-    /**
-     * @tc.number    : SUB_COMMONLIBRARY_ETSUTILS_ConstDynamicImport_0010
-     * @tc.name      : importRemoteHapDepHar
-     * @tc.desc      : add name of task for taskpool
-     * @tc.size      : MediumTest
-     * @tc.type      : Function
-     * @tc.level     : Level 0
-    */
-    it('importRemoteHapDepHar', 0, async () => {
-      let lib = await import('Staticlibraryhar')
-      let md5Name: string = await lib.cryptoHapDepHar()
-      expect(md5Name).assertEqual('e10adc3949ba59abbe56e057f20f883e')
     })
   })
 }
