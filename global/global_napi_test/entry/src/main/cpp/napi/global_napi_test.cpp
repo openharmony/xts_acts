@@ -341,7 +341,8 @@ static napi_value GetRawFileDescriptor64(napi_env env, napi_callback_info info)
     return createJsFileDescriptor64(env, descriptor);
 }
 
-static napi_value IsRawDir(napi_env env, napi_callback_info info) {
+static napi_value IsRawDir(napi_env env, napi_callback_info info)
+{
     size_t argc = 2;
     napi_value argv[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
@@ -357,7 +358,8 @@ static napi_value IsRawDir(napi_env env, napi_callback_info info) {
     return value;
 }
 
-static napi_value GetDrawableDescriptor(napi_env env, napi_callback_info info) {
+static napi_value GetDrawableDescriptor(napi_env env, napi_callback_info info)
+{
     size_t argc = 2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -373,7 +375,8 @@ static napi_value GetDrawableDescriptor(napi_env env, napi_callback_info info) {
     return value;
 }
 
-static napi_value GetDrawableDescriptorByName(napi_env env, napi_callback_info info) {
+static napi_value GetDrawableDescriptorByName(napi_env env, napi_callback_info info)
+{
     size_t argc = 2;
     napi_value args[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
@@ -406,7 +409,8 @@ static napi_value GetMediaBase64(napi_env env, napi_callback_info info) {
     return value;
 }
 
-static napi_value GetMediaBase64ByName(napi_env env, napi_callback_info info) {
+static napi_value GetMediaBase64ByName(napi_env env, napi_callback_info info)
+{
     size_t argc = 2;
     napi_value argv[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
@@ -422,7 +426,8 @@ static napi_value GetMediaBase64ByName(napi_env env, napi_callback_info info) {
     return value;
 }
 
-static napi_value GetMedia(napi_env env, napi_callback_info info) {
+static napi_value GetMedia(napi_env env, napi_callback_info info)
+{
     size_t argc = 2;
     napi_value argv[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
@@ -441,7 +446,8 @@ static napi_value GetMedia(napi_env env, napi_callback_info info) {
     return value;
 }
 
-static napi_value GetMediaByName(napi_env env, napi_callback_info info) {
+static napi_value GetMediaByName(napi_env env, napi_callback_info info)
+{
     size_t argc = 2;
     napi_value argv[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
