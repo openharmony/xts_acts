@@ -13,17 +13,5 @@
  * limitations under the License.
  */
  
-{
-  "name": "entry",
-  "version": "1.0.0",
-  "description": "Please describe the basic information.",
-  "main": "",
-  "author": "",
-  "license": "",
-  "dependencies": {
-    "library": "file:../library",
-    "library2": "file:../library2",
-    "library3": "file:../library3"
-  }
-}
-
+export { add } from "./src/main/ets/utils/Calc"
+export { getModuleDescription } from "./src/main/ets/utils/BaseInfo"
