@@ -38,7 +38,7 @@ struct observerTabsExample {
           Column().width('100%').height('100%').backgroundColor('#FFBF00')
         }.tabBar('yellow').id('tabContent03')
       }
-      .id('tabsId')
+      .id('tabsId2')
       .width(360)
       .height(296)
       .backgroundColor('#F1F3F5')
@@ -57,7 +57,7 @@ struct observerTabsExample {
         Button('observer on')
           .id('observer_tabOn')
           .onClick(()=>{
-            observer.on('tabContentUpdate', { id: 'tabsId' }, (info: observer.TabContentInfo) => {
+            observer.on('tabContentUpdate', { id: 'tabsId2' }, (info: observer.TabContentInfo) => {
               this.uniqueId = info.uniqueId
               this.uniqueId1 = info.tabContentUniqueId
               this.text1 = info.tabContentId
@@ -67,7 +67,7 @@ struct observerTabsExample {
           Button('observer off')
             .id('observer_tabOff')
             .onClick(()=>{
-              observer.off('tabContentUpdate', { id: 'tabsId' }, (info: observer.TabContentInfo) => {
+              observer.off('tabContentUpdate', { id: 'tabsId2' }, (info: observer.TabContentInfo) => {
                 console.info('off tabContentUpdate with id', JSON.stringify(info));
               })
           })
