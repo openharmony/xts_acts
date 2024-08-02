@@ -537,6 +537,10 @@ struct WebComponent {
               Button("web click").key('webViewNativeMediaUpdateRect').onClick(async () => {
                   console.info("key==>" + this.emitKey)
                     await Utils.sleep(2000)
+                    if ( Utils.isPC( this.controller ) ) {
+                       Utils.emitEvent(true, 1291)
+                       return
+                    }
                     switch (this.emitKey) {
                         case "emitWebViewNativeMediaUpdateRect": {
                             try {

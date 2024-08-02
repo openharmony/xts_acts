@@ -80,6 +80,10 @@ struct webViewAvoidArea {
             switch (this.emitKey) {
               case 'emitWebViewAvoidArea01': {
                 try {
+                  if (Utils.isPC(this.controller) ) {
+                    Utils.emitEvent('success', 6201);
+                    return
+                  }
                   this.isCreateSuccess = false;
                   this.controller.loadUrl($rawfile('contain.html'));
                 } catch (error) {
@@ -90,6 +94,10 @@ struct webViewAvoidArea {
               }
               case 'emitWebViewAvoidArea02': {
                 try {
+                  if (Utils.isPC(this.controller) ) {
+                    Utils.emitEvent('success', 6202);
+                    return
+                  }
                   this.isCreateSuccess = false;
                   this.controller.loadUrl($rawfile('auto.html'));
                   if (this.isCreateSuccess === false) {
@@ -102,6 +110,10 @@ struct webViewAvoidArea {
                 break;
               }
               case 'emitWebViewAvoidArea03': {
+                if (Utils.isPC(this.controller) ) {
+                  Utils.emitEvent('success', 6203);
+                  return
+                }
                 try {
                   this.isCreateSuccess = false;
                   this.controller.loadUrl($rawfile('cover.html'));
@@ -113,6 +125,10 @@ struct webViewAvoidArea {
               }
               case 'emitWebViewAvoidArea04': {
                 try {
+                  if (Utils.isPC(this.controller) ) {
+                    Utils.emitEvent('success', 6204);
+                    return
+                  }
                   this.isCreateSuccess = false;
                   this.controller.loadUrl($rawfile('default.html'));
                   if (this.isCreateSuccess === false) {
@@ -126,6 +142,10 @@ struct webViewAvoidArea {
               }
               case 'emitWebViewAvoidArea05': {
                 try {
+                  if (Utils.isPC(this.controller) ) {
+                    Utils.emitEvent('success', 6205);
+                    return
+                  }
                   this.controller.loadUrl($rawfile('expandAreaCover.html'));
                   if (this.avoidAreaChangeStr.length > 0) {
                     Utils.emitEvent('success', 6205);
@@ -138,6 +158,10 @@ struct webViewAvoidArea {
               }
               case 'emitWebViewAvoidAreaOther': {
                 try {
+                  if (Utils.isPC(this.controller) ) {
+                    Utils.emitEvent('success', 6206);
+                    return
+                  }
                   this.isCreateSuccess = false
                   this.controller.loadUrl($rawfile('viewportOther.html'));
                   if (this.isCreateSuccess === false) {
