@@ -12,24 +12,4 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-@Entry
-@Component
-struct Index {
-  aboutToAppear() {
-    console.info('display manager TestAbility index aboutToAppear')
-  }
-
-  @State message: string = 'Display Manager Test Ability'
-    build() {
-    Row() {
-      Column() {
-        Text(this.message)
-          .fontSize(25)
-          .fontWeight(FontWeight.Bold)
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
+export { hapTasks } from '@ohos/hvigor-ohos-plugin';
