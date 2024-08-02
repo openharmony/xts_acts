@@ -996,7 +996,7 @@ static napi_value GetDrawableDescriptorDataByName(napi_env env, napi_callback_in
     return value;
 }
 
-static napi_value AddResource(napi_env env, napi_callback_info info) 
+static napi_value AddResource(napi_env env, napi_callback_info info)
 {
     size_t argc = 2;
     napi_value argv[2] = {nullptr};
@@ -1008,7 +1008,7 @@ static napi_value AddResource(napi_env env, napi_callback_info info)
     return value;
 }
 
-static napi_value RemoveResource(napi_env env, napi_callback_info info) 
+static napi_value RemoveResource(napi_env env, napi_callback_info info)
 {
     size_t argc = 2;
     napi_value argv[2] = {nullptr};
@@ -1032,7 +1032,7 @@ static napi_value Init(napi_env env, napi_value exports)
         {"IsRawDir", nullptr, IsRawDir, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"GetDrawableDescriptor", nullptr, GetDrawableDescriptor, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"GetDrawableDescriptorByName", nullptr, GetDrawableDescriptorByName, nullptr,
-        nullptr, nullptr, napi_default, nullptr},
+            nullptr, nullptr, napi_default, nullptr},
         {"GetMediaBase64", nullptr, GetMediaBase64, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"GetMediaBase64ByName", nullptr, GetMediaBase64ByName, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"GetMedia", nullptr, GetMedia, nullptr, nullptr, nullptr, napi_default, nullptr},
@@ -1058,17 +1058,17 @@ static napi_value Init(napi_env env, napi_value exports)
         {"GetStringByName", nullptr, GetStringByName, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"GetString", nullptr, GetString, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"GetRawFileDescriptorData", nullptr, GetRawFileDescriptorData, nullptr, nullptr,
-        nullptr, napi_default, nullptr},
+            nullptr, napi_default, nullptr},
         {"GetLocalesData", nullptr, GetLocalesData, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"GetMediaBase64DataByName", nullptr, GetMediaBase64DataByName, nullptr, nullptr,
-        nullptr, napi_default, nullptr},
+            nullptr, napi_default, nullptr},
         {"GetMediaBase64Data", nullptr, GetMediaBase64Data, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"GetMediaData", nullptr, GetMediaData, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"GetMediaDataByName", nullptr, GetMediaDataByName, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"GetDrawableDescriptorData", nullptr, GetDrawableDescriptorData, nullptr,
-        nullptr, nullptr, napi_default, nullptr},
+            nullptr, nullptr, napi_default, nullptr},
         {"GetDrawableDescriptorDataByName", nullptr, GetDrawableDescriptorDataByName, nullptr,
-        nullptr, nullptr, napi_default, nullptr},
+            nullptr, nullptr, napi_default, nullptr},
         {"AddResource", nullptr, AddResource, nullptr, nullptr, nullptr, napi_default, nullptr},
         {"RemoveResource", nullptr, RemoveResource, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
