@@ -30,10 +30,10 @@ const int SUBLEN = 100;
 static napi_value GetFileList(napi_env env, napi_callback_info info)
 {
     size_t argc = 2;
-    napi_value argv[2] = { nullptr };
+    napi_value argv[2] = {nullptr};
 
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
-    
+
     napi_valuetype valueType;
     napi_typeof(env, argv[0], &valueType);
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
@@ -41,7 +41,7 @@ static napi_value GetFileList(napi_env env, napi_callback_info info)
     char strBuf[256];
     napi_get_value_string_utf8(env, argv[1], strBuf, sizeof(strBuf), &strSize);
     std::string filename(strBuf, strSize);
-    RawDir* rawDir = OH_ResourceManager_OpenRawDir(mNativeResMgr, filename.c_str());
+    RawDir *rawDir = OH_ResourceManager_OpenRawDir(mNativeResMgr, filename.c_str());
     int count = OH_ResourceManager_GetRawFileCount(rawDir);
     std::vector<std::string> tempArray;
     for (int i = 0; i < count; i++) {
@@ -64,8 +64,7 @@ static napi_value GetFileList(napi_env env, napi_callback_info info)
 napi_value CreateJsString(napi_env env, char *str)
 {
     napi_value result;
-    if (napi_create_string_utf8(env, str, NAPI_AUTO_LENGTH, &result) != napi_ok)
-    {
+    if (napi_create_string_utf8(env, str, NAPI_AUTO_LENGTH, &result) != napi_ok) {
         return result;
     }
     return result;
@@ -78,7 +77,7 @@ napi_value createJsFileDescriptor(napi_env env, RawFileDescriptor *descriptor)
     if (status != napi_ok) {
         return result;
     }
-    
+
     napi_value fd;
     status = napi_create_int32(env, descriptor->fd, &fd);
     if (status != napi_ok) {
@@ -88,7 +87,7 @@ napi_value createJsFileDescriptor(napi_env env, RawFileDescriptor *descriptor)
     if (status != napi_ok) {
         return result;
     }
-    
+
     napi_value offset;
     status = napi_create_int32(env, descriptor->start, &offset);
     if (status != napi_ok) {
@@ -98,7 +97,7 @@ napi_value createJsFileDescriptor(napi_env env, RawFileDescriptor *descriptor)
     if (status != napi_ok) {
         return result;
     }
-    
+
     napi_value length;
     status = napi_create_int32(env, descriptor->length, &length);
     if (status != napi_ok) {
@@ -133,7 +132,7 @@ napi_value CreateJsArrayValue(napi_env env, std::unique_ptr<uint8_t[]> &data, lo
 static napi_value GetRawFileContent(napi_env env, napi_callback_info info)
 {
     size_t argc = 2;
-    napi_value argv[2] = { nullptr };
+    napi_value argv[2] = {nullptr};
 
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
 
@@ -152,12 +151,12 @@ static napi_value GetRawFileContent(napi_env env, napi_callback_info info)
     std::unique_ptr<uint8_t[]> data = std::make_unique<uint8_t[]>(len);
 
     long offset = OH_ResourceManager_GetRawFileOffset(rawFile);
-    if(offset == 0){
+    if (offset == 0) {
         return nullptr;
     }
 
     long size = OH_ResourceManager_SeekRawFile(rawFile, 1, 0);
-    if(size == -1){
+    if (size == -1) {
         return nullptr;
     }
 
@@ -189,7 +188,7 @@ static napi_value GetRawFileContent64(napi_env env, napi_callback_info info)
         return nullptr;
     }
     long len = OH_ResourceManager_GetRawFileSize64(rawFile);
-    std::unique_ptr<uint8_t[]>data = std::make_unique<uint8_t[]>(len);
+    std::unique_ptr<uint8_t[]> data = std::make_unique<uint8_t[]>(len);
 
     int64_t offset = OH_ResourceManager_GetRawFileOffset64(rawFile);
     if (offset == 0) {
@@ -291,10 +290,10 @@ napi_value createJsFileDescriptor64(napi_env env, RawFileDescriptor64 *descripto
 static napi_value GetRawFileDescriptor(napi_env env, napi_callback_info info)
 {
     size_t argc = 2;
-    napi_value argv[2] = { nullptr };
+    napi_value argv[2] = {nullptr};
 
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
-    
+
     napi_valuetype valueType;
     napi_typeof(env, argv[0], &valueType);
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
@@ -312,7 +311,7 @@ static napi_value GetRawFileDescriptor(napi_env env, napi_callback_info info)
 
     OH_ResourceManager_CloseRawFile(rawFile);
     OH_ResourceManager_ReleaseNativeResourceManager(mNativeResMgr);
-    return createJsFileDescriptor(env,descriptor);
+    return createJsFileDescriptor(env, descriptor);
 }
 
 static napi_value GetRawFileDescriptor64(napi_env env, napi_callback_info info)
@@ -342,31 +341,31 @@ static napi_value GetRawFileDescriptor64(napi_env env, napi_callback_info info)
     return createJsFileDescriptor64(env, descriptor);
 }
 
-static napi_value IsRawDir(napi_env env, napi_callback_info info){
-    size_t argc=2;
-    napi_value argv[2]={nullptr};
-    napi_get_cb_info(env,info,&argc,argv,nullptr,nullptr);
+static napi_value IsRawDir(napi_env env, napi_callback_info info) {
+    size_t argc = 2;
+    napi_value argv[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
     size_t strSize;
     char strBuf[256];
-    napi_get_value_string_utf8(env, argv[1], strBuf,sizeof(strBuf),&strSize);
-    std::string filename(strBuf,strSize);
+    napi_get_value_string_utf8(env, argv[1], strBuf, sizeof(strBuf), &strSize);
+    std::string filename(strBuf, strSize);
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
-    bool result = OH_ResourceManager_IsRawDir(mNativeResMgr,filename.c_str());
+    bool result = OH_ResourceManager_IsRawDir(mNativeResMgr, filename.c_str());
     bool flag = (result == false);
     napi_value value = nullptr;
     napi_get_boolean(env, flag, &value);
     return value;
 }
 
-static napi_value GetDrawableDescriptor(napi_env env, napi_callback_info info){
-    size_t argc=2;
-    napi_value args[2]={nullptr};
-    napi_get_cb_info(env,info,&argc,args,nullptr,nullptr);
+static napi_value GetDrawableDescriptor(napi_env env, napi_callback_info info) {
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     ArkUI_DrawableDescriptor *drawable = nullptr;
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, args[0]);
-    uint32_t id =0;
+    uint32_t id = 0;
     napi_get_value_uint32(env, args[1], &id);
-    OH_ResourceManager_GetDrawableDescriptor(mNativeResMgr,id,&drawable);
+    OH_ResourceManager_GetDrawableDescriptor(mNativeResMgr, id, &drawable);
 
     bool flag = (drawable == nullptr);
     napi_value value = nullptr;
@@ -374,14 +373,13 @@ static napi_value GetDrawableDescriptor(napi_env env, napi_callback_info info){
     return value;
 }
 
-
-static napi_value GetDrawableDescriptorByName(napi_env env, napi_callback_info info){
-    size_t argc=2;
-    napi_value args[2]={nullptr};
-    napi_get_cb_info(env,info,&argc,args,nullptr,nullptr);
+static napi_value GetDrawableDescriptorByName(napi_env env, napi_callback_info info) {
+    size_t argc = 2;
+    napi_value args[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
     ArkUI_DrawableDescriptor *drawable = nullptr;
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, args[0]);
-    OH_ResourceManager_GetDrawableDescriptorByName(mNativeResMgr,"icon",&drawable);
+    OH_ResourceManager_GetDrawableDescriptorByName(mNativeResMgr, "icon", &drawable);
 
     bool flag = (drawable != nullptr);
     napi_value value = nullptr;
@@ -389,71 +387,71 @@ static napi_value GetDrawableDescriptorByName(napi_env env, napi_callback_info i
     return value;
 }
 
-static napi_value GetMediaBase64(napi_env env, napi_callback_info info){
-    size_t argc=2;
-    napi_value argv[2]={nullptr};
-    napi_get_cb_info(env,info,&argc,argv,nullptr,nullptr);
-    
+static napi_value GetMediaBase64(napi_env env, napi_callback_info info) {
+    size_t argc = 2;
+    napi_value argv[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+
     uint32_t id = 0;
-    napi_get_value_uint32(env, argv[1],&id);
-    
-    char *result =nullptr;
+    napi_get_value_uint32(env, argv[1], &id);
+
+    char *result = nullptr;
     uint64_t len = 0;
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
-    OH_ResourceManager_GetMediaBase64(mNativeResMgr,id,&result,&len);
-    
-    bool flag = (result != nullptr && len!=0);
+    OH_ResourceManager_GetMediaBase64(mNativeResMgr, id, &result, &len);
+
+    bool flag = (result != nullptr && len != 0);
     napi_value value = nullptr;
     napi_get_boolean(env, flag, &value);
     return value;
 }
 
-static napi_value GetMediaBase64ByName(napi_env env, napi_callback_info info){
-    size_t argc=2;
-    napi_value argv[2]={nullptr};
-    napi_get_cb_info(env,info,&argc,argv,nullptr,nullptr);
-    
-    char *result =nullptr;
+static napi_value GetMediaBase64ByName(napi_env env, napi_callback_info info) {
+    size_t argc = 2;
+    napi_value argv[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+
+    char *result = nullptr;
     uint64_t len = 0;
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
-    OH_ResourceManager_GetMediaBase64ByName(mNativeResMgr,"icon",&result,&len);
+    OH_ResourceManager_GetMediaBase64ByName(mNativeResMgr, "icon", &result, &len);
 
-    bool flag = (result != nullptr && len!=0);
+    bool flag = (result != nullptr && len != 0);
     napi_value value = nullptr;
     napi_get_boolean(env, flag, &value);
     return value;
 }
 
-static napi_value GetMedia(napi_env env, napi_callback_info info){
-    size_t argc=2;
-    napi_value argv[2]={nullptr};
-    napi_get_cb_info(env,info,&argc,argv,nullptr,nullptr);
-    
+static napi_value GetMedia(napi_env env, napi_callback_info info) {
+    size_t argc = 2;
+    napi_value argv[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+
     uint32_t id = 0;
-    napi_get_value_uint32(env, argv[1],&id);
-    
-    uint8_t *result =nullptr;
+    napi_get_value_uint32(env, argv[1], &id);
+
+    uint8_t *result = nullptr;
     uint64_t len = 0;
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
-    OH_ResourceManager_GetMedia(mNativeResMgr,id,&result,&len);
-    
-    bool flag = (result != nullptr && len!=0);
+    OH_ResourceManager_GetMedia(mNativeResMgr, id, &result, &len);
+
+    bool flag = (result != nullptr && len != 0);
     napi_value value = nullptr;
     napi_get_boolean(env, flag, &value);
     return value;
 }
 
-static napi_value GetMediaByName(napi_env env, napi_callback_info info){
-    size_t argc=2;
-    napi_value argv[2]={nullptr};
-    napi_get_cb_info(env,info,&argc,argv,nullptr,nullptr);
-    
-    uint8_t *result =nullptr;
+static napi_value GetMediaByName(napi_env env, napi_callback_info info) {
+    size_t argc = 2;
+    napi_value argv[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+
+    uint8_t *result = nullptr;
     uint64_t len = 0;
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
-    OH_ResourceManager_GetMediaByName(mNativeResMgr,"icon",&result,&len);
+    OH_ResourceManager_GetMediaByName(mNativeResMgr, "icon", &result, &len);
 
-    bool flag = (result != nullptr && len!=0);
+    bool flag = (result != nullptr && len != 0);
     napi_value value = nullptr;
     napi_get_boolean(env, flag, &value);
     return value;
@@ -699,7 +697,7 @@ static napi_value GetConfiguration(napi_env env, napi_callback_info info)
     ResourceManager_ErrorCode code = OH_ResourceManager_GetConfiguration(mNativeResMgr, &config);
 
     bool flag = (code == 0 && config.direction == 0 && config.deviceType == 0 && config.screenDensity == 3 &&
-    config.colorMode == 1 && config.mcc == 0 && config.mnc == 0 && strcmp(config.locale, "zh_Hans_CN") == 0);
+                 config.colorMode == 1 && config.mcc == 0 && config.mnc == 0 && strcmp(config.locale, "zh_Hans_CN") == 0);
     napi_value value = nullptr;
     napi_get_boolean(env, flag, &value);
     return value;
@@ -888,7 +886,7 @@ static napi_value GetMediaBase64DataByName(napi_env env, napi_callback_info info
     uint64_t len = 0;
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
     OH_ResourceManager_GetMediaBase64DataByName(mNativeResMgr, strBuf, &result, &len, 0);
-    return CreateJsString(env, result);  
+    return CreateJsString(env, result);
 }
 
 static napi_value GetMediaBase64Data(napi_env env, napi_callback_info info)
@@ -908,7 +906,7 @@ static napi_value GetMediaBase64Data(napi_env env, napi_callback_info info)
     uint64_t len = 0;
     NativeResourceManager *mNativeResMgr = OH_ResourceManager_InitNativeResourceManager(env, argv[0]);
     OH_ResourceManager_GetMediaBase64Data(mNativeResMgr, hexValue, &result, &len, 0);
-    return CreateJsString(env, result); 
+    return CreateJsString(env, result);
 }
 
 static napi_value GetMediaData(napi_env env, napi_callback_info info)
@@ -995,46 +993,51 @@ EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
     napi_property_descriptor desc[] = {
-        { "GetFileList", nullptr, GetFileList, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "GetRawFileContent", nullptr, GetRawFileContent, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "GetRawFileDescriptor", nullptr, GetRawFileDescriptor, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "GetRawFileContent64", nullptr, GetRawFileContent64, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "GetRawFileDescriptor64", nullptr, GetRawFileDescriptor64, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "IsRawDir", nullptr, IsRawDir, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "GetDrawableDescriptor", nullptr, GetDrawableDescriptor, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "GetDrawableDescriptorByName", nullptr, GetDrawableDescriptorByName, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "GetMediaBase64", nullptr, GetMediaBase64, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "GetMediaBase64ByName", nullptr, GetMediaBase64ByName, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "GetMedia", nullptr, GetMedia, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "GetMediaByName", nullptr, GetMediaByName, nullptr, nullptr, nullptr, napi_default, nullptr },
-        { "GetSymbolByName", nullptr, GetSymbolByName, nullptr, nullptr, nullptr, napi_default, nullptr},
-        { "GetSymbol", nullptr, GetSymbol, nullptr, nullptr, nullptr, napi_default, nullptr},
-        { "GetBoolByName", nullptr, GetBoolByName, nullptr, nullptr, nullptr, napi_default, nullptr},
-        { "GetBool", nullptr, GetBool, nullptr, nullptr, nullptr, napi_default, nullptr},
-        { "GetPluralStringByName", nullptr, GetPluralStringByName, nullptr, nullptr, nullptr, napi_default, nullptr},
-        { "GetPluralString", nullptr, GetPluralString, nullptr, nullptr, nullptr, napi_default, nullptr},
-        { "GetColorByName", nullptr, GetColorByName, nullptr, nullptr, nullptr, napi_default, nullptr},
-        { "GetColor", nullptr, GetColor, nullptr, nullptr, nullptr, napi_default, nullptr},
-        { "GetIntByName", nullptr, GetIntByName, nullptr, nullptr, nullptr, napi_default, nullptr},
-        { "GetInt", nullptr, GetInt, nullptr, nullptr, nullptr, napi_default, nullptr},
-        { "GetFloatByName", nullptr, GetFloatByName, nullptr, nullptr, nullptr, napi_default, nullptr},
-        { "GetFloat", nullptr, GetFloat, nullptr, nullptr, nullptr, napi_default, nullptr},
-        { "GetLocales", nullptr, GetLocales, nullptr, nullptr, nullptr, napi_default, nullptr},
-        { "GetConfiguration", nullptr, GetConfiguration, nullptr, nullptr, nullptr, napi_default, nullptr},
-        { "GetStringArray", nullptr, GetStringArray, nullptr, nullptr, nullptr, napi_default, nullptr},
-        { "GetStringArrayByName", nullptr, GetStringArrayByName, nullptr, nullptr, nullptr, napi_default, nullptr},
-        { "ReleaseStringArray", nullptr, ReleaseStringArray, nullptr, nullptr, nullptr, napi_default, nullptr},
-        { "ReleaseConfiguration", nullptr, ReleaseConfiguration, nullptr, nullptr, nullptr, napi_default, nullptr},
-        { "GetStringByName", nullptr, GetStringByName, nullptr, nullptr, nullptr, napi_default, nullptr},
-        { "GetString", nullptr, GetString, nullptr, nullptr, nullptr, napi_default, nullptr},
-        { "GetRawFileDescriptorData", nullptr, GetRawFileDescriptorData, nullptr, nullptr, nullptr, napi_default, nullptr},
-        { "GetLocalesData", nullptr, GetLocalesData, nullptr, nullptr, nullptr, napi_default, nullptr},
-        { "GetMediaBase64DataByName", nullptr, GetMediaBase64DataByName, nullptr, nullptr, nullptr, napi_default, nullptr},
-        { "GetMediaBase64Data", nullptr, GetMediaBase64Data, nullptr, nullptr, nullptr, napi_default, nullptr},
-        { "GetMediaData", nullptr, GetMediaData, nullptr, nullptr, nullptr, napi_default, nullptr},
-        { "GetMediaDataByName", nullptr, GetMediaDataByName, nullptr, nullptr, nullptr, napi_default, nullptr},
-        { "GetDrawableDescriptorData", nullptr, GetDrawableDescriptorData, nullptr, nullptr, nullptr, napi_default, nullptr},
-        { "GetDrawableDescriptorDataByName", nullptr, GetDrawableDescriptorDataByName, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetFileList", nullptr, GetFileList, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetRawFileContent", nullptr, GetRawFileContent, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetRawFileDescriptor", nullptr, GetRawFileDescriptor, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetRawFileContent64", nullptr, GetRawFileContent64, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetRawFileDescriptor64", nullptr, GetRawFileDescriptor64, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"IsRawDir", nullptr, IsRawDir, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetDrawableDescriptor", nullptr, GetDrawableDescriptor, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetDrawableDescriptorByName", nullptr, GetDrawableDescriptorByName, nullptr,
+        nullptr, nullptr, napi_default, nullptr},
+        {"GetMediaBase64", nullptr, GetMediaBase64, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetMediaBase64ByName", nullptr, GetMediaBase64ByName, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetMedia", nullptr, GetMedia, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetMediaByName", nullptr, GetMediaByName, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetSymbolByName", nullptr, GetSymbolByName, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetSymbol", nullptr, GetSymbol, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetBoolByName", nullptr, GetBoolByName, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetBool", nullptr, GetBool, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetPluralStringByName", nullptr, GetPluralStringByName, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetPluralString", nullptr, GetPluralString, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetColorByName", nullptr, GetColorByName, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetColor", nullptr, GetColor, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetIntByName", nullptr, GetIntByName, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetInt", nullptr, GetInt, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetFloatByName", nullptr, GetFloatByName, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetFloat", nullptr, GetFloat, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetLocales", nullptr, GetLocales, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetConfiguration", nullptr, GetConfiguration, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetStringArray", nullptr, GetStringArray, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetStringArrayByName", nullptr, GetStringArrayByName, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"ReleaseStringArray", nullptr, ReleaseStringArray, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"ReleaseConfiguration", nullptr, ReleaseConfiguration, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetStringByName", nullptr, GetStringByName, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetString", nullptr, GetString, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetRawFileDescriptorData", nullptr, GetRawFileDescriptorData, nullptr, nullptr,
+        nullptr, napi_default, nullptr},
+        {"GetLocalesData", nullptr, GetLocalesData, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetMediaBase64DataByName", nullptr, GetMediaBase64DataByName, nullptr, nullptr,
+        nullptr, napi_default, nullptr},
+        {"GetMediaBase64Data", nullptr, GetMediaBase64Data, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetMediaData", nullptr, GetMediaData, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetMediaDataByName", nullptr, GetMediaDataByName, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"GetDrawableDescriptorData", nullptr, GetDrawableDescriptorData, nullptr,
+        nullptr, nullptr, napi_default, nullptr},
+        {"GetDrawableDescriptorDataByName", nullptr, GetDrawableDescriptorDataByName, nullptr,
+        nullptr, nullptr, napi_default, nullptr},
     };
 
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
@@ -1043,13 +1046,13 @@ static napi_value Init(napi_env env, napi_value exports)
 EXTERN_C_END
 
 static napi_module demoModule = {
-    .nm_version =1,
+    .nm_version = 1,
     .nm_flags = 0,
     .nm_filename = nullptr,
     .nm_register_func = Init,
     .nm_modname = "resmgrndk",
-    .nm_priv = ((void*)0),
-    .reserved = { 0 },
+    .nm_priv = ((void *)0),
+    .reserved = {0},
 };
 
 extern "C" __attribute__((constructor)) void RegisterEntryModule(void)
