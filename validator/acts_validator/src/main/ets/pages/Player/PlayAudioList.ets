@@ -59,7 +59,7 @@ struct audioNew {
         displayName: 'MPEG448000321.m4a', uri: ''
       },
       {
-        displayName: 'MOGG480001.ogg', uri: ''
+        displayName: 'OGG480001.ogg', uri: ''
       },
       {
         displayName: 'vorbis48000321.wav', uri: ''
