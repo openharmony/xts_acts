@@ -751,5 +751,41 @@ export default function abilityTest() {
       done();
     })
 
+    /* *
+    * @tc.number  SUB_GLOBAL_addResource_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('addResource_ndktest_0100', 0, async (done: Function) => {
+      console.log("addResource_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("addResource_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("addResource_ndktest_0100 22");
+        let value = ndk.AddResource(resManager.getResourceManager(), "");
+        console.log("addResource_ndktest_0100" + value);
+        expect(value).assertTrue();
+      })
+      done();
+    })
+
+    /* *
+    * @tc.number  SUB_GLOBAL_removeResource_NDK_0100
+    * @tc.name    test ResourceManager NDK interface
+    * @tc.desc    test ResourceManager NDK interface
+    */
+    it('removeResource_ndktest_0100', 0, async (done: Function) => {
+      console.log("removeResource_ndktest_0100 1");
+      resManager.getResourceManager().then(mgr => {
+        console.log("removeResource_ndktest_0100 2");
+        expect(mgr !== null).assertTrue();
+        console.log("removeResource_ndktest_0100 22");
+        let value = ndk.RemoveResource(resManager.getResourceManager(), "");
+        console.log("removeResource_ndktest_0100" + value);
+        expect(value).assertTrue();
+      })
+      done();
+    })
+
   })
 }

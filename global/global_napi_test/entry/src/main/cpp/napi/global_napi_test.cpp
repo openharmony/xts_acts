@@ -996,6 +996,30 @@ static napi_value GetDrawableDescriptorDataByName(napi_env env, napi_callback_in
     return value;
 }
 
+static napi_value AddResource(napi_env env, napi_callback_info info) 
+{
+    size_t argc = 2;
+    napi_value argv[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+    ResourceManager_ErrorCode code = OH_ResourceManager_AddResource(nullptr, "");
+    bool flag = (code == 401);
+    napi_value value = nullptr;
+    napi_get_boolean(env, flag, &value);
+    return value;
+}
+
+static napi_value RemoveResource(napi_env env, napi_callback_info info) 
+{
+    size_t argc = 2;
+    napi_value argv[2] = {nullptr};
+    napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
+    ResourceManager_ErrorCode code = OH_ResourceManager_RemoveResource(nullptr, "");
+    bool flag = (code == 401);
+    napi_value value = nullptr;
+    napi_get_boolean(env, flag, &value);
+    return value;
+}
+
 EXTERN_C_START
 static napi_value Init(napi_env env, napi_value exports)
 {
@@ -1045,6 +1069,8 @@ static napi_value Init(napi_env env, napi_value exports)
         nullptr, nullptr, napi_default, nullptr},
         {"GetDrawableDescriptorDataByName", nullptr, GetDrawableDescriptorDataByName, nullptr,
         nullptr, nullptr, napi_default, nullptr},
+        {"AddResource", nullptr, AddResource, nullptr, nullptr, nullptr, napi_default, nullptr},
+        {"RemoveResource", nullptr, RemoveResource, nullptr, nullptr, nullptr, napi_default, nullptr},
     };
 
     napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
