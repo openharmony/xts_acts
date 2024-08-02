@@ -197,7 +197,7 @@ export default function textInput() {
       let strJson = getInspectorByKey('textInputKey1');
       let obj = JSON.parse(strJson);
       console.info("[textInputJsunit_0109] obj is: " + JSON.stringify(obj.$attrs));
-      let caretStyle_obj = JSON.parse(obj.$attrs.caretStyle)
+      let caretStyle_obj = JSON.parse(obj.$attrs.caretStyle);
       expect(caretStyle_obj.width).assertEqual("12.00vp");
       console.info('textInputJsunit_0109 END');
       done();
