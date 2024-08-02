@@ -390,7 +390,8 @@ static napi_value GetDrawableDescriptorByName(napi_env env, napi_callback_info i
     return value;
 }
 
-static napi_value GetMediaBase64(napi_env env, napi_callback_info info) {
+static napi_value GetMediaBase64(napi_env env, napi_callback_info info)
+{
     size_t argc = 2;
     napi_value argv[2] = {nullptr};
     napi_get_cb_info(env, info, &argc, argv, nullptr, nullptr);
@@ -703,7 +704,7 @@ static napi_value GetConfiguration(napi_env env, napi_callback_info info)
     ResourceManager_ErrorCode code = OH_ResourceManager_GetConfiguration(mNativeResMgr, &config);
 
     bool flag = (code == 0 && config.direction == 0 && config.deviceType == 0 && config.screenDensity == 3 &&
-                 config.colorMode == 1 && config.mcc == 0 && config.mnc == 0 && strcmp(config.locale, "zh_Hans_CN") == 0);
+    config.colorMode == 1 && config.mcc == 0 && config.mnc == 0 && strcmp(config.locale, "zh_Hans_CN") == 0);
     napi_value value = nullptr;
     napi_get_boolean(env, flag, &value);
     return value;
