@@ -68,7 +68,7 @@ export default function richEditorApi2() {
 
       let text1 = getInspectorByKey('richEditorApi2_text1');
       let Obj1: ESObject = JSON.parse(text1);
-      expect(Obj1.$attrs.content).assertEqual(`{"size":[80,80],"verticalAlign":3,"objectFit":2,"layoutStyle":{"borderRadius":"50.00px","margin":"left: [0.00px]right: [0.00px]top: [0.00px]bottom: [0.00px]"}}`);
+      expect(Obj1.$attrs.content).assertEqual(`{"size":[80,80],"verticalAlign":3,"objectFit":2,"layoutStyle":{"borderRadius":"50.00px","margin":"[0.00px,0.00px,0.00px,0.00px]"}}`);
 
       console.info('[testRichEditor_0100] END');
       done();
