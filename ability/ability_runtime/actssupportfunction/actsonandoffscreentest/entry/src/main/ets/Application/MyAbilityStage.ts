@@ -15,8 +15,9 @@
 import AbilityStage from "@ohos.app.ability.AbilityStage";
 
 var TAG0 = 'ActsOnAndOffScreenTest:MyAbilityStage:';
+
 export default class MyAbilityStage extends AbilityStage {
-    onCreate() {
-        console.log(TAG0 + "onCreate")
-    }
+  onCreate() {
+    console.log(TAG0 + "onCreate")
+  }
 }

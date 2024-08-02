@@ -14,9 +14,10 @@
  */
 import commonEvent from '@ohos.commonEvent';
 
-var TAG1 = "Fa:FaOnAndOffScreen:MainAbility:";
-var listPush1 = "FaOnAndOffScreen_MainAbility_";
-var lifeList = [];
+const TAG1 = "Fa:FaOnAndOffScreen:MainAbility:";
+const listPush1 = "FaOnAndOffScreen_MainAbility_";
+const lifeList: string[] = [];
+
 export default {
   onCreate() {
     console.log(TAG1 + 'onCreate');
