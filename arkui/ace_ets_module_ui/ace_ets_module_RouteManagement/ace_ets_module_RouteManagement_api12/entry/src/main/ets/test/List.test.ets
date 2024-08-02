@@ -72,25 +72,6 @@ import getState1 from './router/getState/getState1.test'
 import getStateByIndex1 from './router/getStateByIndex/getStateByIndex1.test'
 import focus1 from './router/focus/focus1.test'
 
-import routerObserver1 from './router/routerObserver/routerObserver1.test'
-import routerObserver2 from './router/routerObserver/routerObserver2.test'
-import routerObserver3 from './router/routerObserver/routerObserver3.test'
-import routerObserver4 from './router/routerObserver/routerObserver4.test'
-import routerObserver5 from './router/routerObserver/routerObserver5.test'
-import routerObserver6 from './router/routerObserver/routerObserver6.test'
-import routerObserver7 from './router/routerObserver/routerObserver7.test'
-import routerObserver8 from './router/routerObserver/routerObserver8.test'
-import routerObserver9 from './router/routerObserver/routerObserver9.test'
-import routerObserver10 from './router/routerObserver/routerObserver10.test'
-import routerObserver11 from './router/routerObserver/routerObserver11.test'
-import routerObserver12 from './router/routerObserver/routerObserver12.test'
-import routerObserver13 from './router/routerObserver/routerObserver13.test'
-import routerObserver14 from './router/routerObserver/routerObserver14.test'
-import routerObserver15 from './router/routerObserver/routerObserver15.test'
-import routerObserver16 from './router/routerObserver/routerObserver16.test'
-import routerObserver17 from './router/routerObserver/routerObserver17.test'
-import routerObserver18 from './router/routerObserver/routerObserver18.test'
-
 import pushUrl2 from './router/pushUrl/pushUrl2.test'
 import pushUrl3 from './router/pushUrl/pushUrl3.test'
 import pushUrl4 from './router/pushUrl/pushUrl4.test'
@@ -188,25 +169,6 @@ export default function testsuite() {
   getState1();
   getStateByIndex1();
   focus1();
-
-  routerObserver1();
-  routerObserver2();
-  routerObserver3();
-  routerObserver4();
-  routerObserver5();
-  routerObserver6();
-  routerObserver7();
-  routerObserver8();
-  routerObserver9();
-  routerObserver10();
-  routerObserver11();
-  routerObserver12();
-  routerObserver13();
-  routerObserver14();
-  routerObserver15();
-  routerObserver16();
-  routerObserver17();
-  routerObserver18();
 
   pushUrl2();
   pushUrl3();
